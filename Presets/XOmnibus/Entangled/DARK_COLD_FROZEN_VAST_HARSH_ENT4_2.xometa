@@ -1,45 +1,52 @@
 {
-  "name": "DARK_COLD_FROZEN_VAST_HARSH_ENT4_2",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.793,
+    "source": "Obsidian",
+    "target": "Outwit",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.986,
+    "brightness": 0.062,
+    "density": 0.561,
+    "movement": 0.081,
+    "space": 0.888,
+    "warmth": 0.129
+  },
   "engines": [
-    "OBSIDIAN",
-    "OUTWIT"
+    "Obsidian",
+    "Outwit"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.069,
+    "COUPLING": 0.793,
+    "MOVEMENT": 0.081,
+    "SPACE": 0.915
+  },
+  "mood": "Entangled",
+  "name": "DARK_COLD_FROZEN_VAST_HARSH_ENT4_2",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.072,
-      "macro_movement": 0.088,
       "macro_coupling": 0.537,
+      "macro_movement": 0.088,
       "macro_space": 0.913
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.066,
-      "macro_movement": 0.074,
       "macro_coupling": 0.583,
+      "macro_movement": 0.074,
       "macro_space": 0.916
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBSIDIAN",
-    "target": "OUTWIT",
-    "amount": 0.793
-  },
-  "dna": {
-    "brightness": 0.062,
-    "warmth": 0.129,
-    "movement": 0.081,
-    "density": 0.561,
-    "space": 0.888,
-    "aggression": 0.986
-  },
-  "macros": {
-    "CHARACTER": 0.069,
-    "MOVEMENT": 0.081,
-    "COUPLING": 0.793,
-    "SPACE": 0.915
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +55,6 @@
     "cold",
     "vast",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

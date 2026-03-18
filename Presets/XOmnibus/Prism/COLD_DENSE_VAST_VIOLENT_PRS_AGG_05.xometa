@@ -1,45 +1,52 @@
 {
-  "name": "COLD DENSE VAST VIOLENT PRS AGG 5",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.811,
+    "source": "Oblique",
+    "target": "Osteria",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.978,
+    "brightness": 0.616,
+    "density": 0.891,
+    "movement": 0.603,
+    "space": 0.973,
+    "warmth": 0.082
+  },
   "engines": [
-    "OBLIQUE",
-    "OSTERIA"
+    "Oblique",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.591,
+    "COUPLING": 0.885,
+    "MOVEMENT": 0.571,
+    "SPACE": 0.93
+  },
+  "mood": "Prism",
+  "name": "COLD DENSE VAST VIOLENT PRS AGG 5",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.607,
-      "macro_movement": 0.58,
       "macro_coupling": 0.871,
+      "macro_movement": 0.58,
       "macro_space": 0.947
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.576,
-      "macro_movement": 0.562,
       "macro_coupling": 0.899,
+      "macro_movement": 0.562,
       "macro_space": 0.914
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBLIQUE",
-    "target": "OSTERIA",
-    "amount": 0.811
-  },
-  "dna": {
-    "brightness": 0.616,
-    "warmth": 0.082,
-    "movement": 0.603,
-    "density": 0.891,
-    "space": 0.973,
-    "aggression": 0.978
-  },
-  "macros": {
-    "CHARACTER": 0.591,
-    "MOVEMENT": 0.571,
-    "COUPLING": 0.885,
-    "SPACE": 0.93
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "aggressive",
@@ -47,5 +54,6 @@
     "violent",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

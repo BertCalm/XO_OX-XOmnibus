@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "HOT DENSE STATIC VIOLENT F1",
-  "mood": "Flux",
-  "sonic_dna": {
-    "brightness": 0.587,
-    "warmth": 0.891,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Temporal",
+  "description": "Ultra-diverse Flux preset — extreme hot warmth, extreme violent aggression, extreme static movement, extreme dense density. Maximum contrast character design.",
+  "dna": {
     "aggression": 0.933,
-    "movement": 0.079,
+    "brightness": 0.587,
     "density": 0.897,
-    "space": 0.508
+    "movement": 0.079,
+    "space": 0.508,
+    "warmth": 0.891
   },
   "engines": [
-    "ORCA"
+    "Orca"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme hot warmth, extreme violent aggression, extreme static movement, extreme dense density. Maximum contrast character design.",
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "HOT DENSE STATIC VIOLENT F1",
+  "parameters": {
+    "Orca": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.933,
+    "brightness": 0.587,
+    "density": 0.897,
+    "movement": 0.079,
+    "space": 0.508,
+    "warmth": 0.891
+  },
   "tags": [
     "warm",
     "aggressive",
@@ -24,25 +44,5 @@
     "flux",
     "extreme"
   ],
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "couplingIntensity": "Temporal",
-  "dna": {
-    "brightness": 0.587,
-    "warmth": 0.891,
-    "movement": 0.079,
-    "density": 0.897,
-    "space": 0.508,
-    "aggression": 0.933
-  },
-  "parameters": {
-    "ORCA": {}
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

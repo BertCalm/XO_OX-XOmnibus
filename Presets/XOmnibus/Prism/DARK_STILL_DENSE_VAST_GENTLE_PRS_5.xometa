@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "DARK_STILL_DENSE_VAST_GENTLE_PRS_5",
-  "mood": "Prism",
-  "engines": [
-    "OBLIQUE",
-    "OSTERIA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.718,
+    "source": "Oblique",
+    "target": "Osteria",
+    "type": "ENVELOPE_LINK"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_STILL_DENSE_VAST_GENTLE. Variant 5.",
+  "dna": {
+    "aggression": 0.073,
+    "brightness": 0.09,
+    "density": 0.905,
+    "movement": 0.089,
+    "space": 0.985,
+    "warmth": 0.499
+  },
+  "engines": [
+    "Oblique",
+    "Osteria"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.093,
+    "COUPLING": 0.829,
+    "MOVEMENT": 0.122,
+    "SPACE": 0.982
+  },
+  "mood": "Prism",
+  "name": "DARK_STILL_DENSE_VAST_GENTLE_PRS_5",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.083,
+      "macro_coupling": 0.798,
+      "macro_movement": 0.057,
+      "macro_space": 1.0
+    },
+    "Osteria": {
+      "macro_character": 0.104,
+      "macro_coupling": 0.859,
+      "macro_movement": 0.187,
+      "macro_space": 0.965
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "dark",
@@ -19,53 +66,6 @@
     "still",
     "dense"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OBLIQUE": {
-      "macro_character": 0.083,
-      "macro_movement": 0.057,
-      "macro_coupling": 0.798,
-      "macro_space": 1.0
-    },
-    "OSTERIA": {
-      "macro_character": 0.104,
-      "macro_movement": 0.187,
-      "macro_coupling": 0.859,
-      "macro_space": 0.965
-    }
-  },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OBLIQUE",
-    "target": "OSTERIA",
-    "amount": 0.718
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.09,
-    "warmth": 0.499,
-    "movement": 0.089,
-    "density": 0.905,
-    "space": 0.985,
-    "aggression": 0.073
-  },
-  "macros": {
-    "CHARACTER": 0.093,
-    "MOVEMENT": 0.122,
-    "COUPLING": 0.829,
-    "SPACE": 0.982
-  }
+  "version": "1.0.0"
 }

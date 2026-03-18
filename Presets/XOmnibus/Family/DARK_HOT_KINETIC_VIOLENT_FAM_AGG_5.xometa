@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_KINETIC_VIOLENT_FAM_AGG_5",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.989,
+    "source": "Odyssey",
+    "target": "Opal",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.934,
+    "brightness": 0.089,
+    "density": 0.431,
+    "movement": 0.88,
+    "space": 0.57,
+    "warmth": 0.918
+  },
   "engines": [
-    "ODYSSEY",
-    "OPAL"
+    "Odyssey",
+    "Opal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.922,
+    "COUPLING": 0.882,
+    "MOVEMENT": 0.726,
+    "SPACE": 0.643
+  },
+  "mood": "Family",
+  "name": "DARK_HOT_KINETIC_VIOLENT_FAM_AGG_5",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.922,
-      "macro_movement": 0.726,
       "macro_coupling": 0.882,
+      "macro_movement": 0.726,
       "macro_space": 0.643
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.926,
-      "macro_movement": 0.738,
       "macro_coupling": 0.855,
+      "macro_movement": 0.738,
       "macro_space": 0.661
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ODYSSEY",
-    "target": "OPAL",
-    "amount": 0.989
-  },
-  "dna": {
-    "brightness": 0.089,
-    "warmth": 0.918,
-    "movement": 0.88,
-    "density": 0.431,
-    "space": 0.57,
-    "aggression": 0.934
-  },
-  "macros": {
-    "CHARACTER": 0.922,
-    "MOVEMENT": 0.726,
-    "COUPLING": 0.882,
-    "SPACE": 0.643
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "dark",
     "hot",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,14 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Commune Frequency Display",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Optic",
+        "engineB": "Ohm",
+        "type": "SpectralMorph"
+      },
+      {
+        "amount": 0.4,
+        "engineA": "Ohm",
+        "engineB": "Optic",
+        "type": "AmpToFilter"
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "The commune tunes the dial until OPTIC confirms resonance — resistance visualized as glowing filament.",
+  "dna": {
+    "aggression": 0.245,
+    "brightness": 0.72,
+    "density": 0.512,
+    "movement": 0.633,
+    "space": 0.733,
+    "warmth": 0.435
+  },
   "engines": [
     "Optic",
     "Ohm"
   ],
-  "author": "XPN Tool \u2014 Optic/Oblique/Ocelot Coupling Pack",
-  "version": "1.0.0",
-  "description": "The commune tunes the dial until OPTIC confirms resonance \u2014 resistance visualized as glowing filament.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Commune Frequency Display",
+  "parameters": {
+    "Ohm": {
+      "ohm_ampAttack": 0.03,
+      "ohm_ampRelease": 1.5,
+      "ohm_filterCutoff": 2800.0,
+      "ohm_filterReso": 0.3
+    },
+    "Optic": {
+      "optic_autoPulse": 0,
+      "optic_inputGain": 0.85,
+      "optic_modDepth": 0.6,
+      "optic_pulseRate": 0.45,
+      "optic_pulseShape": 0.5,
+      "optic_reactivity": 0.7,
+      "optic_vizFeedback": 0.5,
+      "optic_vizIntensity": 0.65,
+      "optic_vizMode": 1,
+      "optic_vizSpeed": 0.55
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "optic",
     "ohm",
@@ -17,63 +74,6 @@
     "entangled",
     "coupling"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Optic": {
-      "optic_reactivity": 0.7,
-      "optic_inputGain": 0.85,
-      "optic_autoPulse": 0,
-      "optic_pulseRate": 0.45,
-      "optic_pulseShape": 0.5,
-      "optic_modDepth": 0.6,
-      "optic_vizMode": 1,
-      "optic_vizFeedback": 0.5,
-      "optic_vizSpeed": 0.55,
-      "optic_vizIntensity": 0.65
-    },
-    "Ohm": {
-      "ohm_filterCutoff": 2800.0,
-      "ohm_filterReso": 0.3,
-      "ohm_ampAttack": 0.03,
-      "ohm_ampRelease": 1.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "OHM",
-        "type": "SpectralMorph",
-        "amount": 0.6
-      },
-      {
-        "engineA": "OHM",
-        "engineB": "Optic",
-        "type": "AmpToFilter",
-        "amount": 0.4
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.72,
-    "warmth": 0.435,
-    "movement": 0.633,
-    "density": 0.512,
-    "space": 0.733,
-    "aggression": 0.245
-  }
+  "version": "1.0.0"
 }

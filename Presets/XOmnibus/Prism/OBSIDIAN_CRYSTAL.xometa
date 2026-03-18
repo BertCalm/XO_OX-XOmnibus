@@ -1,48 +1,56 @@
 {
-  "name": "OBSIDIAN CRYSTAL",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.659,
+    "source": "Obbligato",
+    "target": "Osprey",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.287,
+    "brightness": 0.038,
+    "density": 0.536,
+    "movement": 0.048,
+    "space": 0.121,
+    "warmth": 0.343
+  },
   "engines": [
-    "OBBLIGATO",
-    "OSPREY"
+    "Obbligato",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.737,
+    "COUPLING": 0.694,
+    "MOVEMENT": 0.477,
+    "SPACE": 0.605
+  },
+  "mood": "Prism",
+  "name": "OBSIDIAN CRYSTAL",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.496,
-      "macro_movement": 0.646,
       "macro_coupling": 0.114,
+      "macro_movement": 0.646,
       "macro_space": 0.333
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.566,
-      "macro_movement": 0.002,
       "macro_coupling": 1.0,
+      "macro_movement": 0.002,
       "macro_space": 0.098
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OBBLIGATO",
-    "target": "OSPREY",
-    "amount": 0.659
-  },
-  "dna": {
-    "brightness": 0.038,
-    "warmth": 0.343,
-    "movement": 0.048,
-    "density": 0.536,
-    "space": 0.121,
-    "aggression": 0.287
-  },
-  "macros": {
-    "CHARACTER": 0.737,
-    "MOVEMENT": 0.477,
-    "COUPLING": 0.694,
-    "SPACE": 0.605
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-  ]
+  ],
+  "version": "1.0"
 }

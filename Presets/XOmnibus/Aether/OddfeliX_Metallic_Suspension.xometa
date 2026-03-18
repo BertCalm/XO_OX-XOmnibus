@@ -1,42 +1,63 @@
 {
-  "schema_version": 1,
-  "name": "Metallic Suspension",
-  "mood": "Aether",
-  "engines": ["OddfeliX"],
-  "author": "Guru Bin — Core Engine Deepening 2026-03-16",
-  "version": "1.0.0",
-  "description": "snap_decay at maximum (8s) dissolves the percussive identity entirely. pitchLock off, heavy unison, SCHOOL macro high — the neon tetra school shimmers in suspension. What starts as a struck bell becomes a metallic drone that breathes across the stereo field. The snap trigger is a distant memory by the time the tone fully blooms.",
-  "tags": ["aether", "metallic", "sustained", "shimmer", "drone", "bell", "suspended"],
-  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-16",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "snap_decay at maximum (8s) dissolves the percussive identity entirely. pitchLock off, heavy unison, SCHOOL macro high — the neon tetra school shimmers in suspension. What starts as a struck bell becomes a metallic drone that breathes across the stereo field. The snap trigger is a distant memory by the time the tone fully blooms.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.72,
+    "density": 0.55,
+    "movement": 0.42,
+    "space": 0.88,
+    "warmth": 0.3
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "DART",
+    "SCHOOL",
+    "SURFACE",
+    "DEPTH"
+  ],
+  "mood": "Aether",
+  "name": "Metallic Suspension",
   "parameters": {
     "OddfeliX": {
-      "snap_snap": 0.22,
       "snap_decay": 8.0,
       "snap_detune": 28.0,
       "snap_filterCutoff": 3800.0,
-      "snap_filterReso": 0.45,
       "snap_filterEnvDepth": 0.18,
-      "snap_unison": 4,
-      "snap_sweepDirection": -0.35,
-      "snap_pitchLock": 0,
+      "snap_filterReso": 0.45,
       "snap_macroDart": 0.12,
+      "snap_macroDepth": 0.7,
       "snap_macroSchool": 0.82,
       "snap_macroSurface": 0.55,
-      "snap_macroDepth": 0.70
+      "snap_pitchLock": 0,
+      "snap_snap": 0.22,
+      "snap_sweepDirection": -0.35,
+      "snap_unison": 4
     }
   },
-  "coupling": {"pairs": []},
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.72,
-    "warmth": 0.30,
-    "movement": 0.42,
-    "density": 0.55,
-    "space": 0.88,
-    "aggression": 0.08
-  }
+  "tags": [
+    "aether",
+    "metallic",
+    "sustained",
+    "shimmer",
+    "drone",
+    "bell",
+    "suspended"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

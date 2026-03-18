@@ -1,45 +1,52 @@
 {
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FLX_3",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9109,
+    "source": "Odyssey",
+    "target": "Oracle",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.873,
+    "brightness": 0.0703,
+    "density": 0.6035,
+    "movement": 0.9317,
+    "space": 0.13,
+    "warmth": 0.6498
+  },
   "engines": [
-    "ODYSSEY",
-    "ORACLE"
+    "Odyssey",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1885,
+    "COUPLING": 0.7512,
+    "MOVEMENT": 0.8331,
+    "SPACE": 0.2065
+  },
+  "mood": "Flux",
+  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FLX_3",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.1885,
-      "macro_movement": 0.8331,
       "macro_coupling": 0.7512,
+      "macro_movement": 0.8331,
       "macro_space": 0.2065
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.1448,
-      "macro_movement": 0.9426,
       "macro_coupling": 0.7247,
+      "macro_movement": 0.9426,
       "macro_space": 0.1687
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ODYSSEY",
-    "target": "ORACLE",
-    "amount": 0.9109
-  },
-  "dna": {
-    "brightness": 0.0703,
-    "warmth": 0.6498,
-    "movement": 0.9317,
-    "density": 0.6035,
-    "space": 0.13,
-    "aggression": 0.873
-  },
-  "macros": {
-    "CHARACTER": 0.1885,
-    "MOVEMENT": 0.8331,
-    "COUPLING": 0.7512,
-    "SPACE": 0.2065
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "high-movement",
     "low-space",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

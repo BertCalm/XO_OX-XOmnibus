@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_GENTLE_ATM_5",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.62,
+    "source": "Oceanic",
+    "target": "Organon",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.068,
+    "brightness": 0.898,
+    "density": 0.611,
+    "movement": 0.947,
+    "space": 0.334,
+    "warmth": 0.883
+  },
   "engines": [
-    "OCEANIC",
-    "ORGANON"
+    "Oceanic",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.381,
+    "COUPLING": 0.661,
+    "MOVEMENT": 0.907,
+    "SPACE": 0.366
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT_WARM_KINETIC_GENTLE_ATM_5",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.381,
-      "macro_movement": 0.907,
       "macro_coupling": 0.661,
+      "macro_movement": 0.907,
       "macro_space": 0.366
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.598,
-      "macro_movement": 0.924,
       "macro_coupling": 0.665,
+      "macro_movement": 0.924,
       "macro_space": 0.28
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OCEANIC",
-    "target": "ORGANON",
-    "amount": 0.62
-  },
-  "dna": {
-    "brightness": 0.898,
-    "warmth": 0.883,
-    "movement": 0.947,
-    "density": 0.611,
-    "space": 0.334,
-    "aggression": 0.068
-  },
-  "macros": {
-    "CHARACTER": 0.381,
-    "MOVEMENT": 0.907,
-    "COUPLING": 0.661,
-    "SPACE": 0.366
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "warm",
     "kinetic",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

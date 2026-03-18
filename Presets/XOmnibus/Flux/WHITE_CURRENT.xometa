@@ -1,49 +1,57 @@
 {
-  "name": "WHITE CURRENT",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.664,
+    "source": "Obsidian",
+    "target": "Opal",
+    "type": "PITCH_TRACK"
+  },
+  "dna": {
+    "aggression": 0.421,
+    "brightness": 0.895,
+    "density": 0.479,
+    "movement": 0.143,
+    "space": 0.354,
+    "warmth": 0.484
+  },
   "engines": [
-    "OBSIDIAN",
-    "OPAL"
+    "Obsidian",
+    "Opal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.637,
+    "COUPLING": 0.854,
+    "MOVEMENT": 0.648,
+    "SPACE": 0.37
+  },
+  "mood": "Flux",
+  "name": "WHITE CURRENT",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.964,
-      "macro_movement": 0.718,
       "macro_coupling": 0.778,
+      "macro_movement": 0.718,
       "macro_space": 0.164
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.311,
-      "macro_movement": 0.579,
       "macro_coupling": 0.929,
+      "macro_movement": 0.579,
       "macro_space": 0.576
     }
   },
-  "coupling": {
-    "type": "PITCH_TRACK",
-    "source": "OBSIDIAN",
-    "target": "OPAL",
-    "amount": 0.664
-  },
-  "dna": {
-    "brightness": 0.895,
-    "warmth": 0.484,
-    "movement": 0.143,
-    "density": 0.479,
-    "space": 0.354,
-    "aggression": 0.421
-  },
-  "macros": {
-    "CHARACTER": 0.637,
-    "MOVEMENT": 0.648,
-    "COUPLING": 0.854,
-    "SPACE": 0.37
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "extreme",
     "low-movement"
-  ]
+  ],
+  "version": "1.0"
 }

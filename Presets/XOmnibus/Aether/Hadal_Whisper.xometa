@@ -1,37 +1,45 @@
 {
-  "name": "Hadal Whisper",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "dna": {
+    "aggression": 0.03,
+    "brightness": 0.14,
+    "density": 0.28,
+    "movement": 0.25,
+    "space": 0.97,
+    "warmth": 0.38
+  },
   "engines": [
-    "OCEANIC"
+    "Oceanic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2,
+    "COUPLING": 0.37,
+    "MOVEMENT": 0.25,
+    "SPACE": 0.97
+  },
+  "mood": "Aether",
+  "name": "Hadal Whisper",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "oceanic_macro_character": 0.36,
-      "oceanic_macro_movement": 0.3,
       "oceanic_macro_coupling": 0.41,
+      "oceanic_macro_movement": 0.3,
       "oceanic_macro_space": 0.97
     }
   },
-  "dna": {
-    "brightness": 0.14,
-    "warmth": 0.38,
-    "movement": 0.25,
-    "density": 0.28,
-    "space": 0.97,
-    "aggression": 0.03
-  },
-  "macros": {
-    "CHARACTER": 0.2,
-    "MOVEMENT": 0.25,
-    "COUPLING": 0.37,
-    "SPACE": 0.97
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "dark",
     "void",
     "hadal",
     "whisper"
-  ]
+  ],
+  "version": "1.0"
 }

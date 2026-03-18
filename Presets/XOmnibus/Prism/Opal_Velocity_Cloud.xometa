@@ -1,52 +1,94 @@
 {
-  "schema_version": 1,
-  "name": "Velocity Cloud",
-  "mood": "Prism",
-  "engines": ["Opal"],
-  "author": "Guru Bin — OPAL Deep Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Velocity is the instrument here: soft keys produce a single grain per second — a sparse, meditative drip. Hard keys produce a dense simultaneous cloud of 80+ grains — the full granular fog. Between those poles is the entire dynamic range of granular synthesis. Mod wheel adjusts grain size during performance, moving between punctuation (large, slow) and texture (small, fast). Aftertouch adds filter resonance for expressive peak.",
-  "tags": ["granular", "prism", "velocity", "dynamic", "cloud", "density", "expressive", "performance"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "modMatrix": [
-    {"source": "velocity", "destination": "opal_density", "amount": 0.85},
-    {"source": "velocity", "destination": "opal_filterCutoff", "amount": 0.4},
-    {"source": "modWheel", "destination": "opal_grainSize", "amount": 0.5},
-    {"source": "modWheel", "destination": "opal_posScatter", "amount": 0.35},
-    {"source": "aftertouch", "destination": "opal_filterReso", "amount": 0.55},
-    {"source": "aftertouch", "destination": "opal_pitchScatter", "amount": 0.15}
-  ],
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.35,
-    "space": 0.5,
-    "aggression": 0.2
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Velocity is the instrument here: soft keys produce a single grain per second — a sparse, meditative drip. Hard keys produce a dense simultaneous cloud of 80+ grains — the full granular fog. Between those poles is the entire dynamic range of granular synthesis. Mod wheel adjusts grain size during performance, moving between punctuation (large, slow) and texture (small, fast). Aftertouch adds filter resonance for expressive peak.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.55,
+    "density": 0.35,
+    "movement": 0.6,
+    "space": 0.5,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "modMatrix": [
+    {
+      "amount": 0.85,
+      "destination": "opal_density",
+      "source": "velocity"
+    },
+    {
+      "amount": 0.4,
+      "destination": "opal_filterCutoff",
+      "source": "velocity"
+    },
+    {
+      "amount": 0.5,
+      "destination": "opal_grainSize",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.35,
+      "destination": "opal_posScatter",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.55,
+      "destination": "opal_filterReso",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.15,
+      "destination": "opal_pitchScatter",
+      "source": "aftertouch"
+    }
+  ],
+  "mood": "Prism",
+  "name": "Velocity Cloud",
   "parameters": {
     "Opal": {
-      "opal_grainSize": 0.3,
-      "opal_density": 0.15,
-      "opal_posScatter": 0.3,
-      "opal_pitchScatter": 0.0,
-      "opal_filterCutoff": 0.5,
-      "opal_filterReso": 0.1,
       "opal_ampAttack": 0.08,
       "opal_ampDecay": 0.5,
-      "opal_ampSustain": 0.8,
       "opal_ampRelease": 2.0,
-      "opal_speed": 1.0,
-      "opal_reverse": 0.0,
+      "opal_ampSustain": 0.8,
+      "opal_density": 0.15,
+      "opal_filterCutoff": 0.5,
+      "opal_filterReso": 0.1,
+      "opal_grainSize": 0.3,
       "opal_macroCharacter": 0.0,
-      "opal_macroMovement": 0.0,
       "opal_macroCoupling": 0.0,
-      "opal_macroSpace": 0.0
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitchScatter": 0.0,
+      "opal_posScatter": 0.3,
+      "opal_reverse": 0.0,
+      "opal_speed": 1.0
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "granular",
+    "prism",
+    "velocity",
+    "dynamic",
+    "cloud",
+    "density",
+    "expressive",
+    "performance"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

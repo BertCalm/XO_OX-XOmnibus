@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Oblong Pluck Anchor",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Plucked bass note. Short, definite, supports harmony without drama.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.4,
+    "density": 0.75,
+    "movement": 0.55,
+    "space": 0.2,
+    "warmth": 0.6
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Plucked bass note. Short, definite, supports harmony without drama.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Oblong Pluck Anchor",
+  "parameters": {
+    "Oblong": {
+      "ob_body": 0.7,
+      "ob_decay": 0.25,
+      "ob_drive": 0.4,
+      "ob_sub": 0.65,
+      "ob_tone": 0.4
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "work-horse",
     "anchor",
@@ -17,37 +48,6 @@
     "bass",
     "workhorse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oblong": {
-      "ob_drive": 0.4,
-      "ob_body": 0.7,
-      "ob_tone": 0.4,
-      "ob_decay": 0.25,
-      "ob_sub": 0.65
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.55,
-    "density": 0.75,
-    "space": 0.2,
-    "aggression": 0.5
-  }
+  "version": "1.0.0"
 }

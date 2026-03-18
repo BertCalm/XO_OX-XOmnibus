@@ -1,50 +1,58 @@
 {
-  "name": "OSMIUM FABRIC",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9153,
+    "source": "Oblique",
+    "target": "Orphica",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.9116,
+    "brightness": 0.1666,
+    "density": 0.9067,
+    "movement": 0.4471,
+    "space": 0.7268,
+    "warmth": 0.4439
+  },
   "engines": [
-    "OBLIQUE",
-    "ORPHICA"
+    "Oblique",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6149,
+    "COUPLING": 0.8918,
+    "MOVEMENT": 0.4349,
+    "SPACE": 0.7915
+  },
+  "mood": "Entangled",
+  "name": "OSMIUM FABRIC",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.4306,
-      "macro_movement": 0.9951,
       "macro_coupling": 0.6722,
+      "macro_movement": 0.9951,
       "macro_space": 0.2938
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.1026,
-      "macro_movement": 0.3279,
       "macro_coupling": 0.7183,
+      "macro_movement": 0.3279,
       "macro_space": 0.4459
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBLIQUE",
-    "target": "ORPHICA",
-    "amount": 0.9153
-  },
-  "dna": {
-    "brightness": 0.1666,
-    "warmth": 0.4439,
-    "movement": 0.4471,
-    "density": 0.9067,
-    "space": 0.7268,
-    "aggression": 0.9116
-  },
-  "macros": {
-    "CHARACTER": 0.6149,
-    "MOVEMENT": 0.4349,
-    "COUPLING": 0.8918,
-    "SPACE": 0.7915
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
     "compressed",
     "extreme-density",
     "massive"
-  ]
+  ],
+  "version": "1.0"
 }

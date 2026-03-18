@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_KINETIC_VIOLENT_ATM_1",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.651,
+    "source": "Organon",
+    "target": "Origami",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.913,
+    "brightness": 0.091,
+    "density": 0.65,
+    "movement": 0.925,
+    "space": 0.379,
+    "warmth": 0.971
+  },
   "engines": [
-    "ORGANON",
-    "ORIGAMI"
+    "Organon",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.365,
+    "COUPLING": 0.678,
+    "MOVEMENT": 0.814,
+    "SPACE": 0.307
+  },
+  "mood": "Atmosphere",
+  "name": "DARK_HOT_KINETIC_VIOLENT_ATM_1",
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.365,
-      "macro_movement": 0.814,
       "macro_coupling": 0.678,
+      "macro_movement": 0.814,
       "macro_space": 0.307
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.682,
-      "macro_movement": 0.849,
       "macro_coupling": 0.837,
+      "macro_movement": 0.849,
       "macro_space": 0.388
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORGANON",
-    "target": "ORIGAMI",
-    "amount": 0.651
-  },
-  "dna": {
-    "brightness": 0.091,
-    "warmth": 0.971,
-    "movement": 0.925,
-    "density": 0.65,
-    "space": 0.379,
-    "aggression": 0.913
-  },
-  "macros": {
-    "CHARACTER": 0.365,
-    "MOVEMENT": 0.814,
-    "COUPLING": 0.678,
-    "SPACE": 0.307
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "warm",
     "kinetic",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

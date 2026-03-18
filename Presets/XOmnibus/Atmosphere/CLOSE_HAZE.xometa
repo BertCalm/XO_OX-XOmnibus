@@ -1,50 +1,58 @@
 {
-  "name": "CLOSE HAZE",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.79,
+    "source": "Obese",
+    "target": "Organon",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.17,
+    "brightness": 0.322,
+    "density": 0.031,
+    "movement": 0.392,
+    "space": 0.089,
+    "warmth": 0.609
+  },
   "engines": [
-    "OBESE",
-    "ORGANON"
+    "Obese",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.721,
+    "COUPLING": 0.126,
+    "MOVEMENT": 0.283,
+    "SPACE": 0.089
+  },
+  "mood": "Atmosphere",
+  "name": "CLOSE HAZE",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.683,
-      "macro_movement": 0.231,
       "macro_coupling": 0.404,
+      "macro_movement": 0.231,
       "macro_space": 0.089
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.612,
-      "macro_movement": 0.546,
       "macro_coupling": 0.648,
+      "macro_movement": 0.546,
       "macro_space": 0.099
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OBESE",
-    "target": "ORGANON",
-    "amount": 0.79
-  },
-  "dna": {
-    "brightness": 0.322,
-    "warmth": 0.609,
-    "movement": 0.392,
-    "density": 0.031,
-    "space": 0.089,
-    "aggression": 0.17
-  },
-  "macros": {
-    "CHARACTER": 0.721,
-    "MOVEMENT": 0.283,
-    "COUPLING": 0.126,
-    "SPACE": 0.089
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-  ]
+  ],
+  "version": "1.0"
 }

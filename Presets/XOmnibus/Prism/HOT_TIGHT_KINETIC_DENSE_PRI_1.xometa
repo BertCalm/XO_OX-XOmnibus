@@ -1,47 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "HOT TIGHT KINETIC DENSE PRI 1",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Extreme",
+    "sourceEngine": "Orphica",
+    "targetEngine": null,
+    "type": "Filter"
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Prism preset: HOT TIGHT KINETIC DENSE PRI 1.",
+  "dna": {
+    "aggression": 0.548,
+    "brightness": 0.536,
+    "density": 0.952,
+    "movement": 0.938,
+    "space": 0.056,
+    "warmth": 0.949
+  },
   "engines": [
     "Orphica"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Prism preset: HOT TIGHT KINETIC DENSE PRI 1.",
-  "tags": [
-    "x-high-warmth",
-    "x-high-density",
-    "x-high-movement",
-    "x-low-space"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "HOT TIGHT KINETIC DENSE PRI 1",
   "parameters": {},
-  "coupling": {
-    "type": "Filter",
-    "intensity": "Extreme",
-    "sourceEngine": "Orphica",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.536,
-    "warmth": 0.949,
-    "aggression": 0.548,
-    "density": 0.952,
-    "movement": 0.938,
-    "space": 0.056
-  }
+  "tags": [
+    "x-high-warmth",
+    "x-high-density",
+    "x-high-movement",
+    "x-low-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

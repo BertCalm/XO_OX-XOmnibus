@@ -1,45 +1,52 @@
 {
-  "name": "DARK WARM DENSE VIOLENT AET AGG 1",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OSPREY",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.108,
-      "macro_movement": 0.668,
-      "macro_coupling": 0.852,
-      "macro_space": 0.41
-    },
-    "OBLIQUE": {
-      "macro_character": 0.114,
-      "macro_movement": 0.652,
-      "macro_coupling": 0.912,
-      "macro_space": 0.426
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OSPREY",
-    "target": "OBLIQUE",
-    "amount": 0.945
+    "amount": 0.945,
+    "source": "Osprey",
+    "target": "Oblique",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.939,
     "brightness": 0.115,
-    "warmth": 0.957,
-    "movement": 0.687,
     "density": 0.942,
+    "movement": 0.687,
     "space": 0.441,
-    "aggression": 0.939
+    "warmth": 0.957
   },
+  "engines": [
+    "Osprey",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.111,
-    "MOVEMENT": 0.66,
     "COUPLING": 0.882,
+    "MOVEMENT": 0.66,
     "SPACE": 0.418
   },
+  "mood": "Aether",
+  "name": "DARK WARM DENSE VIOLENT AET AGG 1",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.114,
+      "macro_coupling": 0.912,
+      "macro_movement": 0.652,
+      "macro_space": 0.426
+    },
+    "Osprey": {
+      "macro_character": 0.108,
+      "macro_coupling": 0.852,
+      "macro_movement": 0.668,
+      "macro_space": 0.41
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "aggressive",
@@ -47,5 +54,6 @@
     "violent",
     "dark",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

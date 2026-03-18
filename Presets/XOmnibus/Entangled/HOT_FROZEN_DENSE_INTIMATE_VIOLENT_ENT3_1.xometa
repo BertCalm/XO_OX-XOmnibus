@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "HOT_FROZEN_DENSE_INTIMATE_VIOLENT_ENT3_1",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8083,
+    "source": "Ohm",
+    "target": "Organon",
+    "type": "PITCH_SYNC"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: HOT_FROZEN_DENSE_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.8897,
+    "brightness": 0.4476,
+    "density": 0.9562,
+    "movement": 0.1064,
+    "space": 0.1056,
+    "warmth": 0.9427
+  },
   "engines": [
-    "OHM",
-    "ORGANON"
+    "Ohm",
+    "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: HOT_FROZEN_DENSE_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7337,
+    "COUPLING": 0.9745,
+    "MOVEMENT": 0.1164,
+    "SPACE": 0.429
+  },
+  "mood": "Entangled",
+  "name": "HOT_FROZEN_DENSE_INTIMATE_VIOLENT_ENT3_1",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.7836,
+      "macro_coupling": 0.9729,
+      "macro_movement": 0.1227,
+      "macro_space": 0.5894
+    },
+    "Organon": {
+      "macro_character": 0.6839,
+      "macro_coupling": 0.976,
+      "macro_movement": 0.1101,
+      "macro_space": 0.2686
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +66,6 @@
     "dense",
     "intimate"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OHM": {
-      "macro_character": 0.7836,
-      "macro_movement": 0.1227,
-      "macro_coupling": 0.9729,
-      "macro_space": 0.5894
-    },
-    "ORGANON": {
-      "macro_character": 0.6839,
-      "macro_movement": 0.1101,
-      "macro_coupling": 0.976,
-      "macro_space": 0.2686
-    }
-  },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OHM",
-    "target": "ORGANON",
-    "amount": 0.8083
-  },
-  "macros": {
-    "CHARACTER": 0.7337,
-    "MOVEMENT": 0.1164,
-    "COUPLING": 0.9745,
-    "SPACE": 0.429
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.4476,
-    "warmth": 0.9427,
-    "movement": 0.1064,
-    "density": 0.9562,
-    "space": 0.1056,
-    "aggression": 0.8897
-  }
+  "version": "1.0.0"
 }

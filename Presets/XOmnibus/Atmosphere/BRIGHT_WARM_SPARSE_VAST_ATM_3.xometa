@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_SPARSE_VAST_ATM_3",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.941,
+    "source": "Opal",
+    "target": "Organon",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.652,
+    "brightness": 0.898,
+    "density": 0.048,
+    "movement": 0.539,
+    "space": 0.885,
+    "warmth": 0.927
+  },
   "engines": [
-    "OPAL",
-    "ORGANON"
+    "Opal",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.335,
+    "COUPLING": 0.832,
+    "MOVEMENT": 0.583,
+    "SPACE": 0.908
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT_WARM_SPARSE_VAST_ATM_3",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.335,
-      "macro_movement": 0.583,
       "macro_coupling": 0.832,
+      "macro_movement": 0.583,
       "macro_space": 0.908
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.387,
-      "macro_movement": 0.57,
       "macro_coupling": 0.794,
+      "macro_movement": 0.57,
       "macro_space": 0.741
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OPAL",
-    "target": "ORGANON",
-    "amount": 0.941
-  },
-  "dna": {
-    "brightness": 0.898,
-    "warmth": 0.927,
-    "movement": 0.539,
-    "density": 0.048,
-    "space": 0.885,
-    "aggression": 0.652
-  },
-  "macros": {
-    "CHARACTER": 0.335,
-    "MOVEMENT": 0.583,
-    "COUPLING": 0.832,
-    "SPACE": 0.908
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "warm",
     "sparse",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

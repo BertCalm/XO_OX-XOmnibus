@@ -1,45 +1,52 @@
 {
-  "name": "DARK VAST KINETIC ATM 13",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OTTONI",
-    "OSPREY"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.274,
-      "macro_movement": 0.899,
-      "macro_coupling": 0.485,
-      "macro_space": 0.961
-    },
-    "OSPREY": {
-      "macro_character": 0.279,
-      "macro_movement": 0.939,
-      "macro_coupling": 0.393,
-      "macro_space": 1.0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OTTONI",
-    "target": "OSPREY",
-    "amount": 0.9
+    "amount": 0.9,
+    "source": "Ottoni",
+    "target": "Osprey",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.618,
     "brightness": 0.072,
-    "warmth": 0.477,
-    "movement": 0.899,
     "density": 0.489,
+    "movement": 0.899,
     "space": 0.961,
-    "aggression": 0.618
+    "warmth": 0.477
   },
+  "engines": [
+    "Ottoni",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.274,
-    "MOVEMENT": 0.899,
     "COUPLING": 0.485,
+    "MOVEMENT": 0.899,
     "SPACE": 0.961
   },
+  "mood": "Atmosphere",
+  "name": "DARK VAST KINETIC ATM 13",
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.279,
+      "macro_coupling": 0.393,
+      "macro_movement": 0.939,
+      "macro_space": 1.0
+    },
+    "Ottoni": {
+      "macro_character": 0.274,
+      "macro_coupling": 0.485,
+      "macro_movement": 0.899,
+      "macro_space": 0.961
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -47,5 +54,6 @@
     "kinetic",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

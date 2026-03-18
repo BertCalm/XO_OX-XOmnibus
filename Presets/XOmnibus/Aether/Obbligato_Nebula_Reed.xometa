@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Nebula Reed",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "The argument dissolved. What remains is pure wind, two voices breathing as one.",
+  "dna": {
+    "aggression": 0.19,
+    "brightness": 0.65,
+    "density": 0.61,
+    "movement": 0.5,
+    "space": 0.62,
+    "warmth": 0.58
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "aether",
-    "experimental",
-    "aether"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.65,
-    "warmth": 0.58,
-    "movement": 0.5,
-    "density": 0.61,
-    "space": 0.62,
-    "aggression": 0.19
-  },
+  "mood": "Aether",
+  "name": "Nebula Reed",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.71,
-      "obbl_embouchureA": 0.644,
       "obbl_airFlutterA": 0.236,
-      "obbl_instrumentA": 3,
       "obbl_bodySizeA": 0.595,
-      "obbl_breathB": 0.716,
-      "obbl_reedStiffness": 0.321,
-      "obbl_reedBite": 0.38,
-      "obbl_instrumentB": 3,
       "obbl_bodySizeB": 0.578,
-      "obbl_voiceRouting": 1,
-      "obbl_damping": 0.994,
-      "obbl_sympatheticAmt": 0.335,
-      "obbl_driftRate": 0.071,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.738,
       "obbl_bondIntensity": 0.693,
       "obbl_bondRate": 0.174,
-      "obbl_fxAChorus": 0.208,
+      "obbl_bondStage": 0.738,
+      "obbl_breathA": 0.71,
+      "obbl_breathB": 0.716,
+      "obbl_damping": 0.994,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.071,
+      "obbl_embouchureA": 0.644,
       "obbl_fxABrightDelay": 0.187,
-      "obbl_fxAPlate": 0.212,
+      "obbl_fxAChorus": 0.208,
       "obbl_fxAExciter": 0.057,
-      "obbl_fxBPhaser": 0.218,
+      "obbl_fxAPlate": 0.212,
       "obbl_fxBDarkDelay": 0.218,
+      "obbl_fxBPhaser": 0.218,
       "obbl_fxBSpring": 0.249,
       "obbl_fxBTapeSat": 0.162,
-      "obbl_macroBreath": 0.617,
+      "obbl_instrumentA": 3,
+      "obbl_instrumentB": 3,
       "obbl_macroBond": 0.541,
+      "obbl_macroBreath": 0.617,
       "obbl_macroMischief": 0.447,
-      "obbl_macroWind": 0.254
+      "obbl_macroWind": 0.254,
+      "obbl_reedBite": 0.38,
+      "obbl_reedStiffness": 0.321,
+      "obbl_sympatheticAmt": 0.335,
+      "obbl_voiceRouting": 1
     }
   },
-  "coupling": null,
-  "description": "The argument dissolved. What remains is pure wind, two voices breathing as one."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "aether",
+    "experimental",
+    "aether"
+  ],
+  "version": "1.0.0"
 }

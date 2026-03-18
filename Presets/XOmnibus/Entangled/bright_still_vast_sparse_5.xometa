@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT STILL VAST SPARSE 5",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.9334,
-    "movement": 0.0569,
-    "space": 0.9539,
-    "density": 0.05,
-    "warmth": 0.4922,
-    "aggression": 0.4508
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "High",
+  "couplingType": "TANGLE",
+  "description": "Ultra-diverse Entangled preset — bright still vast sparse. Designed for TANGLE coupling with XOuroboros.",
   "dna": {
+    "aggression": 0.4508,
     "brightness": 0.9334,
+    "density": 0.05,
     "movement": 0.0569,
     "space": 0.9539,
-    "density": 0.05,
-    "warmth": 0.4922,
-    "aggression": 0.4508
+    "warmth": 0.4922
   },
   "engines": [
-    "XOuroboros"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 bright still vast sparse. Designed for TANGLE coupling with XOuroboros.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "tangle",
-    "ouroboros"
+    "Ouroboros"
   ],
   "macroLabels": [
     "VOID",
@@ -36,15 +23,28 @@
     "PULSE",
     "LUSTER"
   ],
-  "couplingType": "TANGLE",
-  "couplingIntensity": "High",
+  "mood": "Entangled",
+  "name": "BRIGHT STILL VAST SPARSE 5",
   "parameters": {
-    "XOuroboros": {
-      "couplingLevel": 0.579,
-      "couplingBus": 3
+    "Ouroboros": {
+      "couplingBus": 3,
+      "couplingLevel": 0.579
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4508,
+    "brightness": 0.9334,
+    "density": 0.05,
+    "movement": 0.0569,
+    "space": 0.9539,
+    "warmth": 0.4922
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "tangle",
+    "ouroboros"
+  ],
+  "version": "1.0.0"
 }

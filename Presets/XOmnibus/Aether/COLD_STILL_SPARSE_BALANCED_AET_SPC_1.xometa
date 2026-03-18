@@ -1,50 +1,58 @@
 {
-  "name": "COLD STILL SPARSE BALANCED AET SPC 1",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.774,
+    "source": "Oblique",
+    "target": "Organon",
+    "type": "SPECTRAL_MORPH"
+  },
+  "dna": {
+    "aggression": 0.073,
+    "brightness": 0.594,
+    "density": 0.074,
+    "movement": 0.119,
+    "space": 0.432,
+    "warmth": 0.108
+  },
   "engines": [
-    "OBLIQUE",
-    "ORGANON"
+    "Oblique",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.351,
+    "COUPLING": 0.682,
+    "MOVEMENT": 0.119,
+    "SPACE": 0.432
+  },
+  "mood": "Aether",
+  "name": "COLD STILL SPARSE BALANCED AET SPC 1",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.351,
-      "macro_movement": 0.119,
       "macro_coupling": 0.682,
+      "macro_movement": 0.119,
       "macro_space": 0.432
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.331,
-      "macro_movement": 0.117,
       "macro_coupling": 0.66,
+      "macro_movement": 0.117,
       "macro_space": 0.439
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBLIQUE",
-    "target": "ORGANON",
-    "amount": 0.774
-  },
-  "dna": {
-    "brightness": 0.594,
-    "warmth": 0.108,
-    "movement": 0.119,
-    "density": 0.074,
-    "space": 0.432,
-    "aggression": 0.073
-  },
-  "macros": {
-    "CHARACTER": 0.351,
-    "MOVEMENT": 0.119,
-    "COUPLING": 0.682,
-    "SPACE": 0.432
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
     "room",
     "space-mid",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,14 +1,54 @@
 {
-  "schema_version": 1,
-  "name": "Living Drift Circle",
-  "mood": "Entangled",
-  "engines": [
-    "OHM",
-    "ORGANON"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.87,
+        "engineA": "Ohm",
+        "engineB": "Organon",
+        "type": "Amp->Drive"
+      }
+    ]
+  },
+  "couplingIntensity": "Light",
+  "created": "2026-03-16",
   "description": "Sage green commune meets bioluminescent metabolism — OHM's harmonics breathe through ORGANON's variational free energy.",
+  "dna": {
+    "aggression": 0.13,
+    "brightness": 0.61,
+    "density": 0.48,
+    "movement": 0.53,
+    "space": 0.92,
+    "warmth": 0.75
+  },
+  "engines": [
+    "Ohm",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.68,
+    "COUPLING": 0.694,
+    "MOVEMENT": 0.53,
+    "SPACE": 0.92
+  },
+  "mood": "Entangled",
+  "name": "Living Drift Circle",
+  "parameters": {
+    "ohm_droneFund": 0.492,
+    "ohm_macroCommune": 0.725,
+    "ohm_macroMeddling": 0.612,
+    "ohm_orgHarmonics": 0.588,
+    "organon_metabolicRate": 0.665,
+    "organon_variationalEnergy": 0.75
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -21,46 +61,6 @@
     "metabolic",
     "bioluminescent"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Light",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "ohm_macroMeddling": 0.612,
-    "ohm_macroCommune": 0.725,
-    "ohm_orgHarmonics": 0.588,
-    "ohm_droneFund": 0.492,
-    "organon_metabolicRate": 0.665,
-    "organon_variationalEnergy": 0.75
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OHM",
-        "engineB": "ORGANON",
-        "type": "Amp->Drive",
-        "amount": 0.87
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.68,
-    "MOVEMENT": 0.53,
-    "COUPLING": 0.694,
-    "SPACE": 0.92
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.61,
-    "warmth": 0.75,
-    "movement": 0.53,
-    "density": 0.48,
-    "space": 0.92,
-    "aggression": 0.13
-  }
+  "version": "1.0.0"
 }

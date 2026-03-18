@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_DENSE_INTIMATE_FAM_VOL_53",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OTTONI",
-    "OHM"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.897,
-      "macro_movement": 0.611,
-      "macro_coupling": 0.773,
-      "macro_space": 0.113
-    },
-    "OHM": {
-      "macro_character": 0.924,
-      "macro_movement": 0.595,
-      "macro_coupling": 0.747,
-      "macro_space": 0.099
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OHM",
-    "target": "OTTONI",
-    "amount": 0.787
+    "amount": 0.787,
+    "source": "Ohm",
+    "target": "Ottoni",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
+    "aggression": 0.545,
     "brightness": 0.942,
-    "warmth": 0.907,
-    "movement": 0.599,
     "density": 0.971,
+    "movement": 0.599,
     "space": 0.095,
-    "aggression": 0.545
+    "warmth": 0.907
   },
+  "engines": [
+    "Ottoni",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.911,
-    "MOVEMENT": 0.603,
     "COUPLING": 0.76,
+    "MOVEMENT": 0.603,
     "SPACE": 0.106
   },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_DENSE_INTIMATE_FAM_VOL_53",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.924,
+      "macro_coupling": 0.747,
+      "macro_movement": 0.595,
+      "macro_space": 0.099
+    },
+    "Ottoni": {
+      "macro_character": 0.897,
+      "macro_coupling": 0.773,
+      "macro_movement": 0.611,
+      "macro_space": 0.113
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "dense",
     "intimate",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

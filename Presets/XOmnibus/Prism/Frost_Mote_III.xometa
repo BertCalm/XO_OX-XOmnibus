@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Frost Mote III",
-  "mood": "Prism",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Frigid air column with no warmth, no weight, pure geometry.",
+  "dna": {
+    "aggression": 0.193,
     "brightness": 0.737,
-    "warmth": 0.119,
-    "movement": 0.137,
     "density": 0.159,
+    "movement": 0.137,
     "space": 0.873,
-    "aggression": 0.193
+    "warmth": 0.119
   },
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Frigid air column with no warmth, no weight, pure geometry.",
+  "macroLabels": [
+    "PRISM",
+    "DISTANCE",
+    "COUPLING",
+    "TAIL"
+  ],
+  "mood": "Prism",
+  "name": "Frost Mote III",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.193,
+    "brightness": 0.737,
+    "density": 0.159,
+    "movement": 0.137,
+    "space": 0.873,
+    "warmth": 0.119
+  },
   "tags": [
     "prism",
     "cold",
@@ -25,23 +43,5 @@
     "spacious",
     "bright"
   ],
-  "macroLabels": [
-    "PRISM",
-    "DISTANCE",
-    "COUPLING",
-    "TAIL"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.737,
-    "warmth": 0.119,
-    "movement": 0.137,
-    "density": 0.159,
-    "space": 0.873,
-    "aggression": 0.193
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

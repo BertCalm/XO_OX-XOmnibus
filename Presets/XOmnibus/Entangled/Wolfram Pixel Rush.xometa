@@ -1,33 +1,41 @@
 {
-  "name": "Wolfram Pixel Rush",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.68,
+    "source": "Octopus",
+    "target": "Overworld",
+    "type": "HARMONIC_BLEND"
+  },
+  "description": "Wolfram cellular automata rushing through NES registers at icy velocity.",
   "engines": [
-    "OCTOPUS",
-    "OVERWORLD"
+    "Octopus",
+    "Overworld"
   ],
-  "mood": "Entangled",
-  "strategy": "Fast Cold",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.75,
-    "MOVEMENT": 0.92,
     "COUPLING": 0.72,
+    "MOVEMENT": 0.92,
     "SPACE": 0.55
   },
-  "sonic_dna": {
-    "brightness": 0.7,
-    "warmth": 0.09,
-    "movement": 0.91,
-    "density": 0.55,
-    "space": 0.52,
-    "aggression": 0.6
-  },
+  "mood": "Entangled",
+  "name": "Wolfram Pixel Rush",
   "parameters": {},
-  "coupling": {
-    "type": "HARMONIC_BLEND",
-    "source": "OCTOPUS",
-    "target": "OVERWORLD",
-    "amount": 0.68
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.6,
+    "brightness": 0.7,
+    "density": 0.55,
+    "movement": 0.91,
+    "space": 0.52,
+    "warmth": 0.09
   },
+  "strategy": "Fast Cold",
   "tags": [
     "entangled",
     "cold",
@@ -35,5 +43,5 @@
     "ca",
     "chiptune"
   ],
-  "description": "Wolfram cellular automata rushing through NES registers at icy velocity."
+  "version": "1.0"
 }

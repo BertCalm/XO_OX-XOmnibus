@@ -1,45 +1,52 @@
 {
-  "name": "COLD_KINETIC_VAST_VIOLENT_FND_5",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ODDOSCAR",
-    "OBESE"
-  ],
-  "parameters": {
-    "ODDOSCAR": {
-      "macro_character": 0.443,
-      "macro_movement": 0.86,
-      "macro_coupling": 0.78,
-      "macro_space": 0.224
-    },
-    "OBESE": {
-      "macro_character": 0.799,
-      "macro_movement": 0.276,
-      "macro_coupling": 0.881,
-      "macro_space": 0.526
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ODDOSCAR",
-    "target": "OBESE",
-    "amount": 0.477
+    "amount": 0.477,
+    "source": "OddOscar",
+    "target": "Obese",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.924,
     "brightness": 0.402,
-    "warmth": 0.131,
-    "movement": 0.956,
     "density": 0.373,
+    "movement": 0.956,
     "space": 0.941,
-    "aggression": 0.924
+    "warmth": 0.131
   },
+  "engines": [
+    "OddOscar",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.783,
-    "MOVEMENT": 0.537,
     "COUPLING": 0.549,
+    "MOVEMENT": 0.537,
     "SPACE": 0.406
   },
+  "mood": "Foundation",
+  "name": "COLD_KINETIC_VAST_VIOLENT_FND_5",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.799,
+      "macro_coupling": 0.881,
+      "macro_movement": 0.276,
+      "macro_space": 0.526
+    },
+    "OddOscar": {
+      "macro_character": 0.443,
+      "macro_coupling": 0.78,
+      "macro_movement": 0.86,
+      "macro_space": 0.224
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -49,5 +56,6 @@
     "violent",
     "aggressive",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

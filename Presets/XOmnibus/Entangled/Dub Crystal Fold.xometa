@@ -1,33 +1,41 @@
 {
-  "name": "Dub Crystal Fold",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6,
+    "source": "Overdub",
+    "target": "Origami",
+    "type": "SPECTRAL_FOLD"
+  },
+  "description": "Geometric folds shimmering in cavernous dub space — sharp cold light.",
   "engines": [
-    "ORIGAMI",
-    "OVERDUB"
+    "Origami",
+    "Overdub"
   ],
-  "mood": "Entangled",
-  "strategy": "Bright Dark",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.65,
-    "MOVEMENT": 0.5,
     "COUPLING": 0.75,
+    "MOVEMENT": 0.5,
     "SPACE": 0.85
   },
-  "sonic_dna": {
-    "brightness": 0.95,
-    "warmth": 0.06,
-    "movement": 0.52,
-    "density": 0.3,
-    "space": 0.83,
-    "aggression": 0.2
-  },
+  "mood": "Entangled",
+  "name": "Dub Crystal Fold",
   "parameters": {},
-  "coupling": {
-    "type": "SPECTRAL_FOLD",
-    "source": "OVERDUB",
-    "target": "ORIGAMI",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2,
+    "brightness": 0.95,
+    "density": 0.3,
+    "movement": 0.52,
+    "space": 0.83,
+    "warmth": 0.06
   },
+  "strategy": "Bright Dark",
   "tags": [
     "entangled",
     "bright",
@@ -35,5 +43,5 @@
     "sparse",
     "spacious"
   ],
-  "description": "Geometric folds shimmering in cavernous dub space \u2014 sharp cold light."
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_COLD_STILL_VAST_FLX_SLW_5",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORGANON",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.501,
-      "macro_movement": 0.024,
-      "macro_coupling": 0.866,
-      "macro_space": 0.949
-    },
-    "ODYSSEY": {
-      "macro_character": 0.653,
-      "macro_movement": 0.024,
-      "macro_coupling": 0.693,
-      "macro_space": 0.979
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORGANON",
-    "target": "ODYSSEY",
-    "amount": 0.693
+    "amount": 0.693,
+    "source": "Organon",
+    "target": "Odyssey",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.61,
     "brightness": 0.938,
-    "warmth": 0.089,
-    "movement": 0.026,
     "density": 0.413,
+    "movement": 0.026,
     "space": 0.891,
-    "aggression": 0.61
+    "warmth": 0.089
   },
+  "engines": [
+    "Organon",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.511,
-    "MOVEMENT": 0.026,
     "COUPLING": 0.851,
+    "MOVEMENT": 0.026,
     "SPACE": 0.891
   },
+  "mood": "Flux",
+  "name": "BRIGHT_COLD_STILL_VAST_FLX_SLW_5",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.653,
+      "macro_coupling": 0.693,
+      "macro_movement": 0.024,
+      "macro_space": 0.979
+    },
+    "Organon": {
+      "macro_character": 0.501,
+      "macro_coupling": 0.866,
+      "macro_movement": 0.024,
+      "macro_space": 0.949
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +54,6 @@
     "cold",
     "vast",
     "imperceptible-morph"
-  ]
+  ],
+  "version": "1.0"
 }

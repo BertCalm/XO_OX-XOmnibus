@@ -1,53 +1,82 @@
 {
-  "schema_version": 1,
-  "name": "Living Texture",
-  "mood": "Entangled",
-  "engines": ["Onset", "Overbite"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ONSET snare envelope drives BITE's filter. Every drum hit makes the bass snarl.",
-  "tags": ["living", "rhythmic", "coupled", "texture"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "SPACE"],
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-11",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
-  "parameters": {
-    "Overbite": {
-      "poss_oscAWave": 0,
-      "poss_oscALevel": 0.6,
-      "poss_oscAPulseWidth": 0.5,
-      "poss_oscBWave": 0,
-      "poss_oscBLevel": 0.5,
-      "poss_oscBDetune": 5.0,
-      "poss_subLevel": 0.55,
-      "poss_noiseLevel": 0.0,
-      "poss_filterMode": 0,
-      "poss_filterCutoff": 500.0,
-      "poss_filterReso": 0.35,
-      "poss_filterEnvAmt": 0.1,
-      "poss_fur": 0.2,
-      "poss_chew": 0.15,
-      "poss_gnash": 0.25,
-      "poss_trashMode": 0,
-      "poss_trashAmount": 0.0,
-      "poss_ampAttack": 0.01,
-      "poss_ampDecay": 0.4,
-      "poss_ampSustain": 0.8,
-      "poss_ampRelease": 0.15,
-      "poss_filtEnvAttack": 0.005,
-      "poss_filtEnvDecay": 0.35,
-      "poss_filtEnvSustain": 0.15,
-      "poss_filtEnvRelease": 0.12,
-      "poss_glide": 0.0,
-      "poss_masterVolume": 0.8
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
-      {"source": "Onset", "target": "Overbite", "type": "AmpToFilter", "amount": 0.7}
+      {
+        "amount": 0.7,
+        "source": "Onset",
+        "target": "Overbite",
+        "type": "AmpToFilter"
+      }
     ]
   },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-11",
+  "description": "ONSET snare envelope drives BITE's filter. Every drum hit makes the bass snarl.",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.35,
+    "density": 0.55,
+    "movement": 0.45,
+    "space": 0.1,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Onset",
+    "Overbite"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Living Texture",
+  "parameters": {
+    "Overbite": {
+      "poss_ampAttack": 0.01,
+      "poss_ampDecay": 0.4,
+      "poss_ampRelease": 0.15,
+      "poss_ampSustain": 0.8,
+      "poss_chew": 0.15,
+      "poss_filtEnvAttack": 0.005,
+      "poss_filtEnvDecay": 0.35,
+      "poss_filtEnvRelease": 0.12,
+      "poss_filtEnvSustain": 0.15,
+      "poss_filterCutoff": 500.0,
+      "poss_filterEnvAmt": 0.1,
+      "poss_filterMode": 0,
+      "poss_filterReso": 0.35,
+      "poss_fur": 0.2,
+      "poss_glide": 0.0,
+      "poss_gnash": 0.25,
+      "poss_masterVolume": 0.8,
+      "poss_noiseLevel": 0.0,
+      "poss_oscALevel": 0.6,
+      "poss_oscAPulseWidth": 0.5,
+      "poss_oscAWave": 0,
+      "poss_oscBDetune": 5.0,
+      "poss_oscBLevel": 0.5,
+      "poss_oscBWave": 0,
+      "poss_subLevel": 0.55,
+      "poss_trashAmount": 0.0,
+      "poss_trashMode": 0
+    }
+  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {"brightness": 0.35, "warmth": 0.5, "movement": 0.45, "density": 0.55, "space": 0.1, "aggression": 0.35}
+  "tags": [
+    "living",
+    "rhythmic",
+    "coupled",
+    "texture"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

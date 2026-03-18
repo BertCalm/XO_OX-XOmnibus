@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FLX_AGG_1",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORGANON",
-    "OPAL"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.595,
-      "macro_movement": 0.465,
-      "macro_coupling": 0.907,
-      "macro_space": 0.117
-    },
-    "OPAL": {
-      "macro_character": 0.745,
-      "macro_movement": 0.491,
-      "macro_coupling": 0.875,
-      "macro_space": 0.15
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ORGANON",
-    "target": "OPAL",
-    "amount": 0.85
+    "amount": 0.85,
+    "source": "Organon",
+    "target": "Opal",
+    "type": "TIMBRE_BLEND"
   },
   "dna": {
+    "aggression": 0.954,
     "brightness": 0.976,
-    "warmth": 0.117,
-    "movement": 0.448,
     "density": 0.363,
+    "movement": 0.448,
     "space": 0.112,
-    "aggression": 0.954
+    "warmth": 0.117
   },
+  "engines": [
+    "Organon",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.67,
-    "MOVEMENT": 0.448,
     "COUPLING": 0.907,
+    "MOVEMENT": 0.448,
     "SPACE": 0.112
   },
+  "mood": "Flux",
+  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FLX_AGG_1",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.745,
+      "macro_coupling": 0.875,
+      "macro_movement": 0.491,
+      "macro_space": 0.15
+    },
+    "Organon": {
+      "macro_character": 0.595,
+      "macro_coupling": 0.907,
+      "macro_movement": 0.465,
+      "macro_space": 0.117
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "bright",
     "cold",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

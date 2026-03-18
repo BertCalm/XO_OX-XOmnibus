@@ -1,49 +1,57 @@
 {
-  "name": "ECLIPSE SPACE",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.399,
+    "source": "Obbligato",
+    "target": "Overworld",
+    "type": "SPECTRAL_MORPH"
+  },
+  "dna": {
+    "aggression": 0.963,
+    "brightness": 0.09,
+    "density": 0.297,
+    "movement": 0.426,
+    "space": 0.699,
+    "warmth": 0.279
+  },
   "engines": [
-    "OBBLIGATO",
-    "OVERWORLD"
+    "Obbligato",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.441,
+    "COUPLING": 0.713,
+    "MOVEMENT": 0.348,
+    "SPACE": 0.344
+  },
+  "mood": "Aether",
+  "name": "ECLIPSE SPACE",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.438,
-      "macro_movement": 0.411,
       "macro_coupling": 0.676,
+      "macro_movement": 0.411,
       "macro_space": 0.238
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.444,
-      "macro_movement": 0.285,
       "macro_coupling": 0.749,
+      "macro_movement": 0.285,
       "macro_space": 0.449
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBBLIGATO",
-    "target": "OVERWORLD",
-    "amount": 0.399
-  },
-  "dna": {
-    "brightness": 0.09,
-    "warmth": 0.279,
-    "movement": 0.426,
-    "density": 0.297,
-    "space": 0.699,
-    "aggression": 0.963
-  },
-  "macros": {
-    "CHARACTER": 0.441,
-    "MOVEMENT": 0.348,
-    "COUPLING": 0.713,
-    "SPACE": 0.344
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "dark",
     "extreme",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

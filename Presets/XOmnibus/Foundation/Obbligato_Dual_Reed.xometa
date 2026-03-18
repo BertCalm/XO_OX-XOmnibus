@@ -1,50 +1,62 @@
 {
-  "schema_version": 1,
-  "name": "Dual Reed",
-  "mood": "Foundation",
-  "engines": ["Obbligato"],
-  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
-  "version": "1.0.0",
-  "description": "Two woodwinds intertwined at half-strength BOND — obligatory counterpoint where each voice answers the other. Warm and breathing.",
-  "tags": ["woodwind", "counterpoint", "dual", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "sonic_dna": {
-    "brightness": 0.5,
-    "warmth": 0.7,
-    "movement": 0.5,
-    "density": 0.55,
-    "space": 0.45,
-    "aggression": 0.2
-  },
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.7,
-    "movement": 0.5,
-    "density": 0.55,
-    "space": 0.45,
-    "aggression": 0.2
-  },
-  "parameters": {
-    "Obbligato": {
-      "obbl_breathA": 0.65,
-      "obbl_breathB": 0.6,
-      "obbl_bond": 0.5,
-      "obbl_reedA": 0.55,
-      "obbl_reedB": 0.5,
-      "obbl_vibrato": 0.35,
-      "obbl_filterCutoff": 0.55,
-      "obbl_filterReso": 0.25,
-      "obbl_reverbMix": 0.3,
-      "obbl_ampAttack": 0.12,
-      "obbl_ampRelease": 0.4,
-      "obbl_outputLevel": 0.8,
-      "obbl_outputPan": 0.0,
-      "obbl_couplingLevel": 0.5,
-      "obbl_couplingBus": 0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
-  }
+  },
+  "couplingIntensity": "None",
+  "description": "Two woodwinds intertwined at half-strength BOND — obligatory counterpoint where each voice answers the other. Warm and breathing.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.5,
+    "density": 0.55,
+    "movement": 0.5,
+    "space": 0.45,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Dual Reed",
+  "parameters": {
+    "Obbligato": {
+      "obbl_ampAttack": 0.12,
+      "obbl_ampRelease": 0.4,
+      "obbl_bond": 0.5,
+      "obbl_breathA": 0.65,
+      "obbl_breathB": 0.6,
+      "obbl_couplingBus": 0,
+      "obbl_couplingLevel": 0.5,
+      "obbl_filterCutoff": 0.55,
+      "obbl_filterReso": 0.25,
+      "obbl_outputLevel": 0.8,
+      "obbl_outputPan": 0.0,
+      "obbl_reedA": 0.55,
+      "obbl_reedB": 0.5,
+      "obbl_reverbMix": 0.3,
+      "obbl_vibrato": 0.35
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2,
+    "brightness": 0.5,
+    "density": 0.55,
+    "movement": 0.5,
+    "space": 0.45,
+    "warmth": 0.7
+  },
+  "tags": [
+    "woodwind",
+    "counterpoint",
+    "dual",
+    "foundation"
+  ],
+  "version": "1.0.0"
 }

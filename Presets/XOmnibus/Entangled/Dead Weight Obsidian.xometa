@@ -1,33 +1,41 @@
 {
-  "name": "Dead Weight Obsidian",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.85,
+    "source": "Obsidian",
+    "target": "Obese",
+    "type": "PHASE_LOCK"
+  },
+  "description": "Obsidian's hardness bearing down on XObese's mass — completely static, devastatingly heavy.",
   "engines": [
-    "OBESE",
-    "OBSIDIAN"
+    "Obese",
+    "Obsidian"
   ],
-  "mood": "Entangled",
-  "strategy": "Still Aggressive",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.95,
-    "MOVEMENT": 0.04,
     "COUPLING": 0.88,
+    "MOVEMENT": 0.04,
     "SPACE": 0.35
   },
-  "sonic_dna": {
-    "brightness": 0.15,
-    "warmth": 0.45,
-    "movement": 0.04,
-    "density": 0.95,
-    "space": 0.3,
-    "aggression": 0.97
-  },
+  "mood": "Entangled",
+  "name": "Dead Weight Obsidian",
   "parameters": {},
-  "coupling": {
-    "type": "PHASE_LOCK",
-    "source": "OBSIDIAN",
-    "target": "OBESE",
-    "amount": 0.85
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.97,
+    "brightness": 0.15,
+    "density": 0.95,
+    "movement": 0.04,
+    "space": 0.3,
+    "warmth": 0.45
   },
+  "strategy": "Still Aggressive",
   "tags": [
     "entangled",
     "aggressive",
@@ -35,5 +43,5 @@
     "heavy",
     "obsidian"
   ],
-  "description": "Obsidian's hardness bearing down on XObese's mass \u2014 completely static, devastatingly heavy."
+  "version": "1.0"
 }

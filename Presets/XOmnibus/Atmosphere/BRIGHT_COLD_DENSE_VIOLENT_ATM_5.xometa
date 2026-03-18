@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_COLD_DENSE_VIOLENT_ATM_5",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.557,
+    "source": "Obscura",
+    "target": "Optic",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.89,
+    "brightness": 0.962,
+    "density": 0.879,
+    "movement": 0.319,
+    "space": 0.541,
+    "warmth": 0.099
+  },
   "engines": [
-    "OBSCURA",
-    "OPTIC"
+    "Obscura",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.344,
+    "COUPLING": 0.401,
+    "MOVEMENT": 0.279,
+    "SPACE": 0.491
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT_COLD_DENSE_VIOLENT_ATM_5",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.344,
-      "macro_movement": 0.279,
       "macro_coupling": 0.401,
+      "macro_movement": 0.279,
       "macro_space": 0.491
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.609,
-      "macro_movement": 0.27,
       "macro_coupling": 0.813,
+      "macro_movement": 0.27,
       "macro_space": 0.506
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OBSCURA",
-    "target": "OPTIC",
-    "amount": 0.557
-  },
-  "dna": {
-    "brightness": 0.962,
-    "warmth": 0.099,
-    "movement": 0.319,
-    "density": 0.879,
-    "space": 0.541,
-    "aggression": 0.89
-  },
-  "macros": {
-    "CHARACTER": 0.344,
-    "MOVEMENT": 0.279,
-    "COUPLING": 0.401,
-    "SPACE": 0.491
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "cold",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

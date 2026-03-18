@@ -1,52 +1,58 @@
 {
-  "schema_version": 1,
-  "name": "Trailing Web",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "OPAL"
-  ],
-  "author": "XO_OX",
-  "macros": {
-    "CHARACTER": 0.56,
-    "MOVEMENT": 0.49,
-    "COUPLING": 0.8,
-    "SPACE": 0.83
-  },
-  "sonic_dna": {
-    "movement": 0.62,
-    "brightness": 0.67,
-    "aggression": 0.23,
-    "space": 0.83,
-    "warmth": 0.53,
-    "density": 0.64
-  },
-  "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.738,
-      "olap_decay": 0.761,
-      "olap_damping": 0.616,
-      "olap_diffusion": 0.569,
-      "olap_modDepth": 0.305,
-      "olap_modRate": 0.24,
-      "olap_preDelay": 0.123,
-      "olap_earlyMix": 0.232,
-      "olap_lateMix": 0.539,
-      "olap_filterCutoff": 0.533,
-      "olap_filterReso": 0.301,
-      "olap_outputLevel": 0.822,
-      "olap_couplingLevel": 0.632,
-      "olap_couplingBus": 0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_MODULATION",
-    "source": "OVERLAP",
-    "target": "OPAL",
-    "amount": 0.8
+    "amount": 0.8,
+    "source": "Overlap",
+    "target": "Opal",
+    "type": "FREQUENCY_MODULATION"
   },
   "couplingIntensity": "Deep",
+  "description": "Opal grain density drives OVERLAP diffusion rate — the more fragments, the wider the frond-web",
+  "engines": [
+    "Overlap",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.56,
+    "COUPLING": 0.8,
+    "MOVEMENT": 0.49,
+    "SPACE": 0.83
+  },
+  "mood": "Entangled",
+  "name": "Trailing Web",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.632,
+      "olap_damping": 0.616,
+      "olap_decay": 0.761,
+      "olap_diffusion": 0.569,
+      "olap_earlyMix": 0.232,
+      "olap_filterCutoff": 0.533,
+      "olap_filterReso": 0.301,
+      "olap_lateMix": 0.539,
+      "olap_modDepth": 0.305,
+      "olap_modRate": 0.24,
+      "olap_outputLevel": 0.822,
+      "olap_preDelay": 0.123,
+      "olap_size": 0.738
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.23,
+    "brightness": 0.67,
+    "density": 0.64,
+    "movement": 0.62,
+    "space": 0.83,
+    "warmth": 0.53
+  },
   "tags": [
     "entangled",
     "coupling",
@@ -56,5 +62,5 @@
     "fdn",
     "reverb"
   ],
-  "description": "Opal grain density drives OVERLAP diffusion rate \u2014 the more fragments, the wider the frond-web"
+  "version": "1.0"
 }

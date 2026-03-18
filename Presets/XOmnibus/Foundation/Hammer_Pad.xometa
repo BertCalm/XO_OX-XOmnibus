@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Hammer Pad",
-  "mood": "Foundation",
-  "sonic_dna": {
-    "brightness": 0.2801,
-    "warmth": 0.6716,
-    "movement": 0.6579,
-    "density": 0.7142,
-    "space": 0.2714,
-    "aggression": 0.8637
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Granular impact cloud — every grain hits hard",
   "dna": {
+    "aggression": 0.8637,
     "brightness": 0.2801,
-    "warmth": 0.6716,
-    "movement": 0.6579,
     "density": 0.7142,
+    "movement": 0.6579,
     "space": 0.2714,
-    "aggression": 0.8637
+    "warmth": 0.6716
   },
   "engines": [
-    "OPAL"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Granular impact cloud \u2014 every grain hits hard",
-  "tags": [
-    "foundation",
-    "aggressive",
-    "extreme",
-    "anchor",
-    "drive"
+    "Opal"
   ],
   "macroLabels": [
     "GRAIN",
@@ -38,24 +23,39 @@
     "SPACE"
   ],
   "macros": {
+    "DENSITY": 0.8549,
     "GRAIN": 0.35,
     "SCATTER": 0.8182,
-    "DENSITY": 0.8549,
     "SPACE": 0.5997
   },
-  "couplingIntensity": "None",
+  "mood": "Foundation",
+  "name": "Hammer Pad",
   "parameters": {
-    "OPAL": {
+    "Opal": {
+      "opal_couplingBus": 0,
+      "opal_couplingLevel": 0.5,
+      "opal_macro_density": 0.8549,
       "opal_macro_grain": 0.35,
       "opal_macro_scatter": 0.8182,
-      "opal_macro_density": 0.8549,
       "opal_macro_space": 0.5997,
-      "opal_outputLevel": 0.85,
-      "opal_couplingLevel": 0.5,
-      "opal_couplingBus": 0
+      "opal_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.8637,
+    "brightness": 0.2801,
+    "density": 0.7142,
+    "movement": 0.6579,
+    "space": 0.2714,
+    "warmth": 0.6716
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "extreme",
+    "anchor",
+    "drive"
+  ],
+  "version": "1.0.0"
 }

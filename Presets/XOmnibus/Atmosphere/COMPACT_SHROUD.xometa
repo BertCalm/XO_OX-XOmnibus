@@ -1,50 +1,58 @@
 {
-  "name": "COMPACT SHROUD",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OTTONI",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.481,
-      "macro_movement": 0.669,
-      "macro_coupling": 0.459,
-      "macro_space": 0.084
-    },
-    "OCEANIC": {
-      "macro_character": 0.335,
-      "macro_movement": 0.424,
-      "macro_coupling": 0.295,
-      "macro_space": 0.021
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OTTONI",
-    "target": "OCEANIC",
-    "amount": 0.665
+    "amount": 0.665,
+    "source": "Ottoni",
+    "target": "Oceanic",
+    "type": "FREQUENCY_SHIFT"
   },
   "dna": {
+    "aggression": 0.218,
     "brightness": 0.324,
-    "warmth": 0.577,
-    "movement": 0.933,
     "density": 0.513,
+    "movement": 0.933,
     "space": 0.084,
-    "aggression": 0.218
+    "warmth": 0.577
   },
+  "engines": [
+    "Ottoni",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.395,
-    "MOVEMENT": 0.543,
     "COUPLING": 0.375,
+    "MOVEMENT": 0.543,
     "SPACE": 0.084
   },
+  "mood": "Atmosphere",
+  "name": "COMPACT SHROUD",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.335,
+      "macro_coupling": 0.295,
+      "macro_movement": 0.424,
+      "macro_space": 0.021
+    },
+    "Ottoni": {
+      "macro_character": 0.481,
+      "macro_coupling": 0.459,
+      "macro_movement": 0.669,
+      "macro_space": 0.084
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-  ]
+  ],
+  "version": "1.0"
 }

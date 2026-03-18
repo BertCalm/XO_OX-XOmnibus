@@ -1,50 +1,58 @@
 {
-  "name": "ENCLOSED HAZE",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.641,
+    "source": "Odyssey",
+    "target": "Overworld",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.358,
+    "brightness": 0.933,
+    "density": 0.795,
+    "movement": 0.201,
+    "space": 0.03,
+    "warmth": 0.658
+  },
   "engines": [
-    "ODYSSEY",
-    "OVERWORLD"
+    "Odyssey",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.143,
+    "COUPLING": 0.55,
+    "MOVEMENT": 0.219,
+    "SPACE": 0.03
+  },
+  "mood": "Atmosphere",
+  "name": "ENCLOSED HAZE",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.247,
-      "macro_movement": 0.141,
       "macro_coupling": 0.853,
+      "macro_movement": 0.141,
       "macro_space": 0.03
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.758,
-      "macro_movement": 0.421,
       "macro_coupling": 0.159,
+      "macro_movement": 0.421,
       "macro_space": 0.058
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ODYSSEY",
-    "target": "OVERWORLD",
-    "amount": 0.641
-  },
-  "dna": {
-    "brightness": 0.933,
-    "warmth": 0.658,
-    "movement": 0.201,
-    "density": 0.795,
-    "space": 0.03,
-    "aggression": 0.358
-  },
-  "macros": {
-    "CHARACTER": 0.143,
-    "MOVEMENT": 0.219,
-    "COUPLING": 0.55,
-    "SPACE": 0.03
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-  ]
+  ],
+  "version": "1.0"
 }

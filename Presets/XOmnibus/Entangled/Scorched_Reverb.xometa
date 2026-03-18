@@ -1,49 +1,57 @@
 {
-  "name": "Scorched Reverb",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERDUB",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.95,
-      "macro_movement": 0.4,
-      "macro_coupling": 0.43,
-      "macro_space": 0.91
-    },
-    "ODYSSEY": {
-      "macro_character": 0.86,
-      "macro_movement": 0.51,
-      "macro_coupling": 0.52,
-      "macro_space": 0.79
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_LOCK",
-    "source": "OVERDUB",
-    "target": "ODYSSEY",
-    "amount": 0.58
+    "amount": 0.58,
+    "source": "Overdub",
+    "target": "Odyssey",
+    "type": "HARMONIC_LOCK"
   },
   "dna": {
+    "aggression": 0.3,
     "brightness": 0.4,
-    "warmth": 0.94,
-    "movement": 0.54,
     "density": 0.46,
+    "movement": 0.54,
     "space": 0.78,
-    "aggression": 0.3
+    "warmth": 0.94
   },
+  "engines": [
+    "Overdub",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.91,
-    "MOVEMENT": 0.46,
     "COUPLING": 0.47,
+    "MOVEMENT": 0.46,
     "SPACE": 0.85
   },
+  "mood": "Entangled",
+  "name": "Scorched Reverb",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.86,
+      "macro_coupling": 0.52,
+      "macro_movement": 0.51,
+      "macro_space": 0.79
+    },
+    "Overdub": {
+      "macro_character": 0.95,
+      "macro_coupling": 0.43,
+      "macro_movement": 0.4,
+      "macro_space": 0.91
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

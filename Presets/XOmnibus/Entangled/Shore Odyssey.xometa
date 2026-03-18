@@ -1,31 +1,39 @@
 {
-  "name": "Shore Odyssey",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Odyssey",
+    "target": "Osprey",
+    "type": "COASTAL_DIVE"
+  },
+  "description": "Drift FM lands at the shoreline — osprey plunge marks the destination of the voyage",
   "engines": [
-    "ODYSSEY",
-    "OSPREY"
+    "Odyssey",
+    "Osprey"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.65,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.57,
-    "warmth": 0.5,
-    "movement": 0.67,
-    "density": 0.55,
-    "space": 0.6,
-    "aggression": 0.43
-  },
+  "mood": "Entangled",
+  "name": "Shore Odyssey",
   "parameters": {},
-  "coupling": {
-    "type": "COASTAL_DIVE",
-    "source": "ODYSSEY",
-    "target": "OSPREY",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.43,
+    "brightness": 0.57,
+    "density": 0.55,
+    "movement": 0.67,
+    "space": 0.6,
+    "warmth": 0.5
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "osprey",
     "wavetable"
   ],
-  "description": "Drift FM lands at the shoreline \u2014 osprey plunge marks the destination of the voyage"
+  "version": "1.0"
 }

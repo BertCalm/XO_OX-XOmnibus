@@ -1,14 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 2",
-  "mood": "Entangled",
-  "engines": [
-    "OBLONG",
-    "ODYSSEY"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.67,
+    "source": "Oblong",
+    "target": "Odyssey",
+    "type": "PITCH_FOLLOW"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.092,
+    "brightness": 0.946,
+    "density": 0.073,
+    "movement": 0.069,
+    "space": 0.916,
+    "warmth": 0.448
+  },
+  "engines": [
+    "Oblong",
+    "Odyssey"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 2",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.86,
+      "macro_coupling": 0.77,
+      "macro_movement": 0.65,
+      "macro_space": 0.25
+    },
+    "Odyssey": {
+      "macro_character": 0.67,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.78,
+      "macro_space": 0.23
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +58,6 @@
     "dense",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OBLONG": {
-      "macro_character": 0.86,
-      "macro_movement": 0.65,
-      "macro_coupling": 0.77,
-      "macro_space": 0.25
-    },
-    "ODYSSEY": {
-      "macro_character": 0.67,
-      "macro_movement": 0.78,
-      "macro_coupling": 0.6,
-      "macro_space": 0.23
-    }
-  },
-  "coupling": {
-    "type": "PITCH_FOLLOW",
-    "source": "OBLONG",
-    "target": "ODYSSEY",
-    "amount": 0.67
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.946,
-    "warmth": 0.448,
-    "movement": 0.069,
-    "density": 0.073,
-    "space": 0.916,
-    "aggression": 0.092
-  }
+  "version": "1.0.0"
 }

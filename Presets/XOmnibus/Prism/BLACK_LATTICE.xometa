@@ -1,48 +1,56 @@
 {
-  "name": "BLACK LATTICE",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OVERDUB",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.501,
-      "macro_movement": 0.126,
-      "macro_coupling": 0.273,
-      "macro_space": 0.199
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.363,
-      "macro_movement": 0.271,
-      "macro_coupling": 0.963,
-      "macro_space": 0.562
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OVERDUB",
-    "target": "OBBLIGATO",
-    "amount": 0.507
+    "amount": 0.507,
+    "source": "Overdub",
+    "target": "Obbligato",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.87,
     "brightness": 0.108,
-    "warmth": 0.373,
-    "movement": 0.062,
     "density": 0.028,
+    "movement": 0.062,
     "space": 0.019,
-    "aggression": 0.87
+    "warmth": 0.373
   },
+  "engines": [
+    "Overdub",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.715,
-    "MOVEMENT": 0.546,
     "COUPLING": 0.329,
+    "MOVEMENT": 0.546,
     "SPACE": 0.091
   },
+  "mood": "Prism",
+  "name": "BLACK LATTICE",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.363,
+      "macro_coupling": 0.963,
+      "macro_movement": 0.271,
+      "macro_space": 0.562
+    },
+    "Overdub": {
+      "macro_character": 0.501,
+      "macro_coupling": 0.273,
+      "macro_movement": 0.126,
+      "macro_space": 0.199
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-  ]
+  ],
+  "version": "1.0"
 }

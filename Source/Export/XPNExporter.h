@@ -116,13 +116,14 @@ public:
     //==========================================================================
 
     struct RenderSettings {
-        double sampleRate    = 48000.0;
+        double sampleRate    = 44100.0;
         int    bitDepth      = 24;             // 16 or 24
         float  renderSeconds = 4.0f;           // note hold time
         float  tailSeconds   = 2.0f;           // after noteOff
         float  normCeiling   = -0.3f;          // dBFS normalization target
         int    velocityLayers = 1;             // 1-3
         bool   useSoundShapes = false;         // auto-adjust per preset via SoundShapeClassifier
+        bool   generatePreviews = false;       // generate low-quality .mp3 preview per WAV
 
         // Note sampling strategy
         enum class NoteStrategy { EveryMinor3rd, Chromatic, EveryFifth, OctavesOnly };
@@ -588,37 +589,82 @@ private:
     // WAV rendering (offline, worker thread)
     //==========================================================================
 
-    IOResult renderNoteToWav(const PresetData& /*preset*/, int note, float velocity,
+    IOResult renderNoteToWav(const PresetData& preset, int note, float velocity,
                              const RenderSettings& settings, const juce::File& outputFile)
     {
-        // Calculate total samples
         int totalSamples = (int)((settings.renderSeconds + settings.tailSeconds) * settings.sampleRate);
         int holdSamples  = (int)(settings.renderSeconds * settings.sampleRate);
 
-        // Render buffer (stereo)
         juce::AudioBuffer<float> buffer(2, totalSamples);
         buffer.clear();
 
-        // NOTE: In a full implementation, this would:
-        // 1. Create a temporary processor instance
-        // 2. Load the preset's engines and parameters
-        // 3. Set up coupling routes
-        // 4. Send MIDI noteOn(note, velocity)
-        // 5. Render holdSamples of audio
-        // 6. Send MIDI noteOff
-        // 7. Render tailSamples for release/FX decay
-        //
-        // For now, generate a silent placeholder WAV.
-        // Integration with the real processor is the next step.
+        // Synthesis stub: generate test tone shaped by preset DNA.
+        // Real engine integration will replace this — but at least we output
+        // actual audio instead of silence.
 
-        (void)note;
-        (void)velocity;
-        (void)holdSamples;
+        // Frequency from MIDI note
+        double freq = 440.0 * std::pow(2.0, (note - 69) / 12.0);
+        double phase = 0.0;
+        double phaseInc = freq / settings.sampleRate * juce::MathConstants<double>::twoPi;
 
-        // Apply normalization
+        // ADSR from DNA
+        float attackTime  = 0.01f + preset.dna.density * 0.5f;   // 10ms to 510ms
+        float releaseTime = 0.1f  + preset.dna.space   * 2.0f;   // 100ms to 2.1s
+        int attackSamples  = (int)(attackTime  * (float)settings.sampleRate);
+        int releaseSamples = (int)(releaseTime * (float)settings.sampleRate);
+        int releaseStart   = holdSamples;
+
+        // Harmonic content from brightness
+        int numHarmonics = 1 + (int)(preset.dna.brightness * 7);  // 1-8 harmonics
+        float warmth = preset.dna.warmth;
+
+        for (int i = 0; i < totalSamples; ++i)
+        {
+            // Envelope
+            float env = 0.0f;
+            if (i < attackSamples)
+                env = (float)i / (float)attackSamples;
+            else if (i < releaseStart)
+                env = 1.0f;
+            else
+            {
+                int releasePos = i - releaseStart;
+                if (releasePos < releaseSamples)
+                    env = 1.0f - (float)releasePos / (float)releaseSamples;
+            }
+
+            // Additive synthesis
+            float sample = 0.0f;
+            for (int h = 1; h <= numHarmonics; ++h)
+            {
+                float harmonicAmp = 1.0f / (float)(h * h) * (1.0f - warmth * 0.5f * (h > 1 ? 1.0f : 0.0f));
+                sample += harmonicAmp * (float)std::sin(phase * h);
+            }
+
+            // Normalize and apply envelope + velocity
+            sample *= env * velocity * 0.5f;
+
+            // Stereo with slight spread from movement
+            float spread = preset.dna.movement * 0.3f;
+            float left  = sample * (1.0f + spread * (float)std::sin(phase * 0.1));
+            float right = sample * (1.0f - spread * (float)std::sin(phase * 0.1));
+
+            buffer.setSample(0, i, left);
+            buffer.setSample(1, i, right);
+
+            phase += phaseInc;
+        }
+
         normalizeBuffer(buffer, settings.normCeiling);
 
-        // Write WAV
+        // Optional preview generation
+        if (settings.generatePreviews)
+        {
+            auto previewFile = outputFile.getParentDirectory().getChildFile(
+                outputFile.getFileNameWithoutExtension() + ".mp3");
+            generatePreview(buffer, settings.sampleRate, previewFile);
+        }
+
         return writeWav(outputFile, buffer, settings.sampleRate, settings.bitDepth);
     }
 
@@ -651,56 +697,118 @@ private:
     IOResult writeXPM(const juce::File& file, const PresetData& preset,
                       const std::vector<int>& notes, const RenderSettings& settings)
     {
-        juce::XmlElement root("Keygroup");
+        // MPCVObject format — the correct MPC keygroup program structure
+        juce::XmlElement root("MPCVObject");
+        root.setAttribute("type", "com.akaipro.mpc.keygroup.program");
+        root.setAttribute("version", "2.0");
 
-        // Required MPC attributes
-        root.setAttribute("KeyTrack", KEY_TRACK ? "True" : "False");
+        auto* program = root.createNewChildElement("Program");
+        program->createNewChildElement("ProgramName")->addTextElement(preset.name);
+        program->createNewChildElement("KeyTrack")->addTextElement(KEY_TRACK ? "True" : "False");
+        program->createNewChildElement("NumKeygroups")->addTextElement(juce::String((int)notes.size()));
+
+        auto* keygroups = program->createNewChildElement("Keygroups");
 
         for (int i = 0; i < (int)notes.size(); ++i)
         {
             int note = notes[(size_t)i];
-            int lowKey  = (i == 0) ? 0 : (notes[(size_t)i - 1] + note) / 2;
-            int highKey = (i == (int)notes.size() - 1) ? 127 : (note + notes[(size_t)i + 1]) / 2;
+            int lowNote  = (i == 0) ? 0 : (notes[(size_t)i - 1] + note) / 2;
+            int highNote = (i == (int)notes.size() - 1) ? 127 : (note + notes[(size_t)i + 1]) / 2;
 
-            auto* zone = root.createNewChildElement("Zone");
-            zone->setAttribute("RootNote", ROOT_NOTE);
-            zone->setAttribute("LowKey", lowKey);
-            zone->setAttribute("HighKey", highKey);
+            auto* kg = keygroups->createNewChildElement("Keygroup");
+            kg->setAttribute("index", i);
+
+            kg->createNewChildElement("LowNote")->addTextElement(juce::String(lowNote));
+            kg->createNewChildElement("HighNote")->addTextElement(juce::String(highNote));
+            kg->createNewChildElement("RootNote")->addTextElement(juce::String(ROOT_NOTE));
+
+            auto* layers = kg->createNewChildElement("Layers");
 
             for (int v = 0; v < settings.velocityLayers; ++v)
             {
-                auto* layer = zone->createNewChildElement("Layer");
-                layer->setAttribute("SampleFile",
-                    sanitizeFilename(preset.name) + "/" + wavFilename(preset.name, note, v));
+                auto* layer = layers->createNewChildElement("Layer");
+                layer->setAttribute("index", v);
 
-                // Velocity ranges
+                auto sampleName = sanitizeFilename(preset.name) + "/" + wavFilename(preset.name, note, v);
+                layer->createNewChildElement("SampleName")->addTextElement(sampleName);
+
                 if (settings.velocityLayers == 1)
                 {
-                    layer->setAttribute("VelStart", 0);
-                    layer->setAttribute("VelEnd", 127);
+                    layer->createNewChildElement("VelStart")->addTextElement("0");
+                    layer->createNewChildElement("VelEnd")->addTextElement("127");
                 }
                 else
                 {
                     int velRange = 128 / settings.velocityLayers;
-                    layer->setAttribute("VelStart", v * velRange);
-                    layer->setAttribute("VelEnd", (v == settings.velocityLayers - 1) ? 127 : (v + 1) * velRange - 1);
+                    int velStart = v * velRange;
+                    int velEnd = (v == settings.velocityLayers - 1) ? 127 : (v + 1) * velRange - 1;
+                    layer->createNewChildElement("VelStart")->addTextElement(juce::String(velStart));
+                    layer->createNewChildElement("VelEnd")->addTextElement(juce::String(velEnd));
                 }
             }
 
             // Empty layers get VelStart = 0 (critical rule #3)
-            if (settings.velocityLayers < 4)
+            for (int v = settings.velocityLayers; v < 4; ++v)
             {
-                for (int v = settings.velocityLayers; v < 4; ++v)
-                {
-                    auto* emptyLayer = zone->createNewChildElement("Layer");
-                    emptyLayer->setAttribute("VelStart", EMPTY_VEL_START);
-                    emptyLayer->setAttribute("VelEnd", 0);
-                }
+                auto* emptyLayer = layers->createNewChildElement("Layer");
+                emptyLayer->setAttribute("index", v);
+                emptyLayer->createNewChildElement("VelStart")->addTextElement(juce::String(EMPTY_VEL_START));
+                emptyLayer->createNewChildElement("VelEnd")->addTextElement("0");
             }
         }
 
         if (!root.writeTo(file))
             return { false, "Failed to write XPM: " + file.getFullPathName() };
+
+        return { true, {} };
+    }
+
+    //==========================================================================
+    // Preview generation — low-quality WAV with .mp3 extension
+    // (8-bit, mono, 22050Hz, first 2 seconds — MPC browsers play it)
+    //==========================================================================
+
+    static IOResult generatePreview(const juce::AudioBuffer<float>& sourceBuffer,
+                                    double sourceSampleRate,
+                                    const juce::File& previewFile)
+    {
+        // Take first 2 seconds max
+        int previewRate = 22050;
+        int maxSourceSamples = juce::jmin(sourceBuffer.getNumSamples(),
+                                          (int)(2.0 * sourceSampleRate));
+        int previewSamples = (int)((double)maxSourceSamples * previewRate / sourceSampleRate);
+
+        // Mono mixdown + resample
+        juce::AudioBuffer<float> preview(1, previewSamples);
+        preview.clear();
+
+        for (int i = 0; i < previewSamples; ++i)
+        {
+            int srcIdx = (int)((double)i * sourceSampleRate / previewRate);
+            if (srcIdx >= maxSourceSamples) break;
+
+            float mono = 0.0f;
+            for (int ch = 0; ch < sourceBuffer.getNumChannels(); ++ch)
+                mono += sourceBuffer.getSample(ch, srcIdx);
+            mono /= (float)sourceBuffer.getNumChannels();
+
+            preview.setSample(0, i, mono);
+        }
+
+        // Write as 8-bit WAV with .mp3 extension
+        previewFile.deleteFile();
+        auto stream = previewFile.createOutputStream();
+        if (!stream)
+            return { false, "Cannot create preview stream: " + previewFile.getFullPathName() };
+
+        juce::WavAudioFormat wav;
+        auto writer = std::unique_ptr<juce::AudioFormatWriter>(
+            wav.createWriterFor(stream.release(), (double)previewRate, 1, 8, {}, 0));
+        if (!writer)
+            return { false, "Cannot create preview writer" };
+
+        if (!writer->writeFromAudioSampleBuffer(preview, 0, previewSamples))
+            return { false, "Failed to write preview data" };
 
         return { true, {} };
     }

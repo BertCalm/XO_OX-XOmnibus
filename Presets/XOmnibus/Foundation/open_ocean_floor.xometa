@@ -1,49 +1,57 @@
 {
-  "name": "OPEN OCEAN FLOOR",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OVERLAP",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "OVERLAP": {
-      "macro_character": 0.596,
-      "macro_movement": 0.049,
-      "macro_coupling": 0.776,
-      "macro_space": 0.899
-    },
-    "ORBITAL": {
-      "macro_character": 0.909,
-      "macro_movement": 0.017,
-      "macro_coupling": 0.589,
-      "macro_space": 0.902
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OVERLAP",
-    "target": "ORBITAL",
-    "amount": 0.698
+    "amount": 0.698,
+    "source": "Overlap",
+    "target": "Orbital",
+    "type": "FREQUENCY_SHIFT"
   },
   "dna": {
+    "aggression": 0.811,
     "brightness": 0.577,
-    "warmth": 0.686,
-    "movement": 0.037,
     "density": 0.152,
+    "movement": 0.037,
     "space": 0.906,
-    "aggression": 0.811
+    "warmth": 0.686
   },
+  "engines": [
+    "Overlap",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.06,
-    "MOVEMENT": 0.037,
     "COUPLING": 0.96,
+    "MOVEMENT": 0.037,
     "SPACE": 0.906
   },
+  "mood": "Foundation",
+  "name": "OPEN OCEAN FLOOR",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.909,
+      "macro_coupling": 0.589,
+      "macro_movement": 0.017,
+      "macro_space": 0.902
+    },
+    "Overlap": {
+      "macro_character": 0.596,
+      "macro_coupling": 0.776,
+      "macro_movement": 0.049,
+      "macro_space": 0.899
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

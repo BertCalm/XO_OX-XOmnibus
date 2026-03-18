@@ -1,14 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD VAST VIOLENT FAM 3",
-  "mood": "Family",
-  "engines": [
-    "OPAL",
-    "ORACLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, dark, cold, vast.",
+  "coupling": [
+    {
+      "amount": 0.506,
+      "destination": "ORACLE",
+      "source": "OPAL",
+      "type": "HARMONIC_FOLD"
+    }
+  ],
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — family, dark, cold, vast.",
+  "dna": {
+    "aggression": 0.906,
+    "brightness": 0.062,
+    "density": 0.429,
+    "movement": 0.489,
+    "space": 0.934,
+    "warmth": 0.099
+  },
+  "engines": [
+    "Opal",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "DARK COLD VAST VIOLENT FAM 3",
+  "parameters": {
+    "Opal": {
+      "level": 0.844,
+      "pan": 0.018
+    },
+    "Oracle": {
+      "level": 0.675,
+      "pan": -0.062
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "dark",
@@ -17,40 +51,6 @@
     "violent",
     "ultra-diverse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.062,
-    "warmth": 0.099,
-    "movement": 0.489,
-    "density": 0.429,
-    "space": 0.934,
-    "aggression": 0.906
-  },
-  "parameters": {
-    "OPAL": {
-      "level": 0.844,
-      "pan": 0.018
-    },
-    "ORACLE": {
-      "level": 0.675,
-      "pan": -0.062
-    }
-  },
-  "coupling": [
-    {
-      "source": "OPAL",
-      "destination": "ORACLE",
-      "type": "HARMONIC_FOLD",
-      "amount": 0.506
-    }
-  ],
-  "sequencer": null
+  "version": "1.0.0"
 }

@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Bounce Cascade",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.85,
+        "engineA": "Oblique",
+        "engineB": "Onset",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "RTJ-mode prism with velocity coupling to Onset — percussive light cascade.",
+  "dna": {
+    "aggression": 0.9,
+    "brightness": 0.82,
+    "density": 0.74,
+    "movement": 0.84,
+    "space": 0.24,
+    "warmth": 0.2
+  },
   "engines": [
-    "OBLIQUE",
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "RTJ-mode prism with velocity coupling to Onset \u2014 percussive light cascade.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "bright",
-    "oblique",
-    "onset",
-    "bounce"
+    "Oblique",
+    "Onset"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,29 @@
   ],
   "macros": {
     "CHARACTER": 0.82,
-    "MOVEMENT": 0.84,
     "COUPLING": 0.85,
+    "MOVEMENT": 0.84,
     "SPACE": 0.24
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.82,
-    "warmth": 0.2,
-    "movement": 0.84,
-    "density": 0.74,
-    "space": 0.24,
-    "aggression": 0.9
-  },
-  "sonic_dna": {
-    "brightness": 0.82,
-    "warmth": 0.2,
-    "movement": 0.84,
-    "density": 0.74,
-    "space": 0.24,
-    "aggression": 0.9
-  },
+  "mood": "Entangled",
+  "name": "Bounce Cascade",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBLIQUE",
-        "engineB": "ONSET",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.85
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9,
+    "brightness": 0.82,
+    "density": 0.74,
+    "movement": 0.84,
+    "space": 0.24,
+    "warmth": 0.2
+  },
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "oblique",
+    "onset",
+    "bounce"
+  ],
+  "version": "1.0.0"
 }

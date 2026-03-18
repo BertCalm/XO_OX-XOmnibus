@@ -1,45 +1,52 @@
 {
-  "name": "DARK_HOT_KINETIC_INTIMATE_AET2_1",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "ORBITAL",
-    "ORACLE"
-  ],
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.0457,
-      "macro_movement": 0.9455,
-      "macro_coupling": 0.5918,
-      "macro_space": 0.0899
-    },
-    "ORACLE": {
-      "macro_character": 0.0714,
-      "macro_movement": 0.9307,
-      "macro_coupling": 0.6262,
-      "macro_space": 0.1259
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ORBITAL",
-    "target": "ORACLE",
-    "amount": 0.5087
+    "amount": 0.5087,
+    "source": "Orbital",
+    "target": "Oracle",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.6328,
     "brightness": 0.0433,
-    "warmth": 0.9092,
-    "space": 0.0809,
-    "movement": 0.9155,
     "density": 0.6008,
-    "aggression": 0.6328
+    "movement": 0.9155,
+    "space": 0.0809,
+    "warmth": 0.9092
   },
+  "engines": [
+    "Orbital",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.0586,
-    "MOVEMENT": 0.9381,
     "COUPLING": 0.5087,
+    "MOVEMENT": 0.9381,
     "SPACE": 0.0809
   },
+  "mood": "Aether",
+  "name": "DARK_HOT_KINETIC_INTIMATE_AET2_1",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.0714,
+      "macro_coupling": 0.6262,
+      "macro_movement": 0.9307,
+      "macro_space": 0.1259
+    },
+    "Orbital": {
+      "macro_character": 0.0457,
+      "macro_coupling": 0.5918,
+      "macro_movement": 0.9455,
+      "macro_space": 0.0899
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +56,6 @@
     "kinetic",
     "intimate",
     "smoldering"
-  ]
+  ],
+  "version": "1.0"
 }

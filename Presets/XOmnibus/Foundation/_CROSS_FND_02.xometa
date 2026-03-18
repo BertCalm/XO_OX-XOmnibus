@@ -1,49 +1,57 @@
 {
-  "name": "CROSS FND 02",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.729,
+    "source": "Overdub",
+    "target": "Ouroboros",
+    "type": "SPATIAL_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.025,
+    "brightness": 0.892,
+    "density": 0.973,
+    "movement": 0.614,
+    "space": 0.921,
+    "warmth": 0.104
+  },
   "engines": [
-    "OVERDUB",
-    "OUROBOROS"
+    "Overdub",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.498,
+    "COUPLING": 0.473,
+    "MOVEMENT": 0.793,
+    "SPACE": 0.921
+  },
+  "mood": "Foundation",
+  "name": "CROSS FND 02",
   "parameters": {
-    "OVERDUB": {
+    "Ouroboros": {
       "macro_character": 0.498,
-      "macro_movement": 0.793,
       "macro_coupling": 0.473,
+      "macro_movement": 0.793,
       "macro_space": 0.921
     },
-    "OUROBOROS": {
+    "Overdub": {
       "macro_character": 0.498,
-      "macro_movement": 0.793,
       "macro_coupling": 0.473,
+      "macro_movement": 0.793,
       "macro_space": 0.921
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OVERDUB",
-    "target": "OUROBOROS",
-    "amount": 0.729
-  },
-  "dna": {
-    "brightness": 0.892,
-    "warmth": 0.104,
-    "movement": 0.614,
-    "density": 0.973,
-    "space": 0.921,
-    "aggression": 0.025
-  },
-  "macros": {
-    "CHARACTER": 0.498,
-    "MOVEMENT": 0.793,
-    "COUPLING": 0.473,
-    "SPACE": 0.921
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-  ]
+  ],
+  "version": "1.0"
 }

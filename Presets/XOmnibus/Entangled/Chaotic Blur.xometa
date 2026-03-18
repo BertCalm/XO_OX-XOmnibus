@@ -1,22 +1,35 @@
 {
-  "schema_version": 1,
-  "name": "Chaotic Blur",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.55,
+        "engineA": "Ouroboros",
+        "engineB": "Obscura",
+        "type": "Audio->AM"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Obscura's photographic blur depth controlled by attractor position. Focus dissolves cyclically.",
+  "dna": {
+    "aggression": 0.63,
+    "brightness": 0.36,
+    "density": 0.879,
+    "movement": 0.805,
+    "space": 0.445,
+    "warmth": 0.722
+  },
   "engines": [
     "Ouroboros",
     "Obscura"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Obscura's photographic blur depth controlled by attractor position. Focus dissolves cyclically.",
-  "tags": [
-    "blur",
-    "daguerreotype",
-    "dissolve",
-    "entangled",
-    "ouroboros",
-    "obscura"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -25,52 +38,39 @@
   ],
   "macros": {
     "CHARACTER": 0.6,
-    "MOVEMENT": 0.75,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.75,
     "SPACE": 0.5
   },
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Chaotic Blur",
   "parameters": {
-    "Ouroboros": {
-      "ouro_topology": 1,
-      "ouro_rate": 80.0,
-      "ouro_chaosIndex": 0.5,
-      "ouro_leash": 0.4,
-      "ouro_theta": 0.0,
-      "ouro_phi": 0.35,
-      "ouro_damping": 0.35,
-      "ouro_injection": 0.0
-    },
     "Obscura": {
-      "obscura_stiffness": 0.5,
       "obscura_blur": 0.4,
-      "obscura_grain": 0.6
+      "obscura_grain": 0.6,
+      "obscura_stiffness": 0.5
+    },
+    "Ouroboros": {
+      "ouro_chaosIndex": 0.5,
+      "ouro_damping": 0.35,
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.4,
+      "ouro_phi": 0.35,
+      "ouro_rate": 80.0,
+      "ouro_theta": 0.0,
+      "ouro_topology": 1
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Obscura",
-        "type": "Audio->AM",
-        "amount": 0.55
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.36,
-    "warmth": 0.722,
-    "movement": 0.805,
-    "density": 0.879,
-    "space": 0.445,
-    "aggression": 0.63
-  }
+  "tags": [
+    "blur",
+    "daguerreotype",
+    "dissolve",
+    "entangled",
+    "ouroboros",
+    "obscura"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

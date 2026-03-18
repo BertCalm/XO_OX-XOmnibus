@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_INTIMATE_GENTLE_FAM_VOL_90",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.579,
+    "source": "Ohm",
+    "target": "Ole",
+    "type": "MODULATION_FLOW"
+  },
+  "dna": {
+    "aggression": 0.087,
+    "brightness": 0.114,
+    "density": 0.369,
+    "movement": 0.655,
+    "space": 0.057,
+    "warmth": 0.921
+  },
   "engines": [
-    "OHM",
-    "OLE"
+    "Ohm",
+    "Ole"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.504,
+    "COUPLING": 0.213,
+    "MOVEMENT": 0.659,
+    "SPACE": 0.046
+  },
+  "mood": "Family",
+  "name": "DARK_HOT_INTIMATE_GENTLE_FAM_VOL_90",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.51,
-      "macro_movement": 0.678,
       "macro_coupling": 0.226,
+      "macro_movement": 0.678,
       "macro_space": 0.063
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.499,
-      "macro_movement": 0.64,
       "macro_coupling": 0.2,
+      "macro_movement": 0.64,
       "macro_space": 0.029
     }
   },
-  "coupling": {
-    "type": "MODULATION_FLOW",
-    "source": "OHM",
-    "target": "OLE",
-    "amount": 0.579
-  },
-  "dna": {
-    "brightness": 0.114,
-    "warmth": 0.921,
-    "movement": 0.655,
-    "density": 0.369,
-    "space": 0.057,
-    "aggression": 0.087
-  },
-  "macros": {
-    "CHARACTER": 0.504,
-    "MOVEMENT": 0.659,
-    "COUPLING": 0.213,
-    "SPACE": 0.046
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "intimate",
     "gentle",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

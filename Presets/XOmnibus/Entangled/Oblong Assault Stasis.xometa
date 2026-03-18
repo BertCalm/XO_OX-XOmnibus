@@ -1,33 +1,41 @@
 {
-  "name": "Oblong Assault Stasis",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.85,
+    "source": "Oblong",
+    "target": "Onset",
+    "type": "SPECTRAL_FOLD"
+  },
+  "description": "Full assault locked in stasis — every drum hit absorbed into Oblong's stationary weight.",
   "engines": [
-    "ONSET",
-    "OBLONG"
+    "Onset",
+    "Oblong"
   ],
-  "mood": "Entangled",
-  "strategy": "Still Aggressive",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.9,
-    "MOVEMENT": 0.04,
     "COUPLING": 0.88,
+    "MOVEMENT": 0.04,
     "SPACE": 0.38
   },
-  "sonic_dna": {
-    "brightness": 0.25,
-    "warmth": 0.42,
-    "movement": 0.04,
-    "density": 0.88,
-    "space": 0.35,
-    "aggression": 0.97
-  },
+  "mood": "Entangled",
+  "name": "Oblong Assault Stasis",
   "parameters": {},
-  "coupling": {
-    "type": "SPECTRAL_FOLD",
-    "source": "OBLONG",
-    "target": "ONSET",
-    "amount": 0.85
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.97,
+    "brightness": 0.25,
+    "density": 0.88,
+    "movement": 0.04,
+    "space": 0.35,
+    "warmth": 0.42
   },
+  "strategy": "Still Aggressive",
   "tags": [
     "entangled",
     "aggressive",
@@ -35,5 +43,5 @@
     "heavy",
     "dense"
   ],
-  "description": "Full assault locked in stasis \u2014 every drum hit absorbed into Oblong's stationary weight."
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "DARK_COLD_FROZEN_VAST_HARSH_ENT4_5",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OSPREY",
-    "ORCA"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.12,
-      "macro_movement": 0.04,
-      "macro_coupling": 0.676,
-      "macro_space": 0.866
-    },
-    "ORCA": {
-      "macro_character": 0.099,
-      "macro_movement": 0.029,
-      "macro_coupling": 0.67,
-      "macro_space": 0.895
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OSPREY",
-    "target": "ORCA",
-    "amount": 0.703
+    "amount": 0.703,
+    "source": "Osprey",
+    "target": "Orca",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
+    "aggression": 0.925,
     "brightness": 0.116,
-    "warmth": 0.088,
-    "movement": 0.032,
     "density": 0.665,
+    "movement": 0.032,
     "space": 0.887,
-    "aggression": 0.925
+    "warmth": 0.088
   },
+  "engines": [
+    "Osprey",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.11,
-    "MOVEMENT": 0.035,
     "COUPLING": 0.703,
+    "MOVEMENT": 0.035,
     "SPACE": 0.881
   },
+  "mood": "Entangled",
+  "name": "DARK_COLD_FROZEN_VAST_HARSH_ENT4_5",
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.099,
+      "macro_coupling": 0.67,
+      "macro_movement": 0.029,
+      "macro_space": 0.895
+    },
+    "Osprey": {
+      "macro_character": 0.12,
+      "macro_coupling": 0.676,
+      "macro_movement": 0.04,
+      "macro_space": 0.866
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +55,6 @@
     "cold",
     "vast",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

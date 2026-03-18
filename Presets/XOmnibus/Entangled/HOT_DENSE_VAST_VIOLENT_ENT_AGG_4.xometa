@@ -1,50 +1,58 @@
 {
-  "name": "HOT_DENSE_VAST_VIOLENT_ENT_AGG_4",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.822,
+    "source": "Obbligato",
+    "target": "Ouroboros",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.876,
+    "brightness": 0.464,
+    "density": 0.921,
+    "movement": 0.676,
+    "space": 0.98,
+    "warmth": 0.975
+  },
   "engines": [
-    "OBBLIGATO",
-    "OUROBOROS"
+    "Obbligato",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.47,
+    "COUPLING": 0.775,
+    "MOVEMENT": 0.676,
+    "SPACE": 0.98
+  },
+  "mood": "Entangled",
+  "name": "HOT_DENSE_VAST_VIOLENT_ENT_AGG_4",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.465,
-      "macro_movement": 0.641,
       "macro_coupling": 0.775,
+      "macro_movement": 0.641,
       "macro_space": 0.978
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.475,
-      "macro_movement": 0.711,
       "macro_coupling": 0.763,
+      "macro_movement": 0.711,
       "macro_space": 0.986
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBBLIGATO",
-    "target": "OUROBOROS",
-    "amount": 0.822
-  },
-  "dna": {
-    "brightness": 0.464,
-    "warmth": 0.975,
-    "movement": 0.676,
-    "density": 0.921,
-    "space": 0.98,
-    "aggression": 0.876
-  },
-  "macros": {
-    "CHARACTER": 0.47,
-    "MOVEMENT": 0.676,
-    "COUPLING": 0.775,
-    "SPACE": 0.98
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "hot",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

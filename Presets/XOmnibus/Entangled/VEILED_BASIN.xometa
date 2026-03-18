@@ -1,48 +1,56 @@
 {
-  "name": "VEILED BASIN",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.827,
+    "source": "Onset",
+    "target": "Optic",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.577,
+    "brightness": 0.829,
+    "density": 0.394,
+    "movement": 0.062,
+    "space": 0.045,
+    "warmth": 0.719
+  },
   "engines": [
-    "ONSET",
-    "OPTIC"
+    "Onset",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.03,
+    "COUPLING": 0.243,
+    "MOVEMENT": 0.062,
+    "SPACE": 0.667
+  },
+  "mood": "Entangled",
+  "name": "VEILED BASIN",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.76,
-      "macro_movement": 0.054,
       "macro_coupling": 0.931,
+      "macro_movement": 0.054,
       "macro_space": 0.594
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.16,
-      "macro_movement": 0.071,
       "macro_coupling": 0.481,
+      "macro_movement": 0.071,
       "macro_space": 0.683
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ONSET",
-    "target": "OPTIC",
-    "amount": 0.827
-  },
-  "dna": {
-    "brightness": 0.829,
-    "warmth": 0.719,
-    "movement": 0.062,
-    "density": 0.394,
-    "space": 0.045,
-    "aggression": 0.577
-  },
-  "macros": {
-    "CHARACTER": 0.03,
-    "MOVEMENT": 0.062,
-    "COUPLING": 0.243,
-    "SPACE": 0.667
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "veiled"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,48 +1,56 @@
 {
-  "name": "PLACID POINT",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORCA",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "ORCA": {
-      "macro_character": 0.952,
-      "macro_movement": 0.094,
-      "macro_coupling": 0.345,
-      "macro_space": 0.929
-    },
-    "ORBITAL": {
-      "macro_character": 0.352,
-      "macro_movement": 0.094,
-      "macro_coupling": 0.673,
-      "macro_space": 0.435
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORCA",
-    "target": "ORBITAL",
-    "amount": 0.837
+    "amount": 0.837,
+    "source": "Orca",
+    "target": "Orbital",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.411,
     "brightness": 0.209,
-    "warmth": 0.473,
-    "movement": 0.094,
     "density": 0.698,
+    "movement": 0.094,
     "space": 0.007,
-    "aggression": 0.411
+    "warmth": 0.473
   },
+  "engines": [
+    "Orca",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.041,
-    "MOVEMENT": 0.094,
     "COUPLING": 0.798,
+    "MOVEMENT": 0.094,
     "SPACE": 0.03
   },
+  "mood": "Entangled",
+  "name": "PLACID POINT",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.352,
+      "macro_coupling": 0.673,
+      "macro_movement": 0.094,
+      "macro_space": 0.435
+    },
+    "Orca": {
+      "macro_character": 0.952,
+      "macro_coupling": 0.345,
+      "macro_movement": 0.094,
+      "macro_space": 0.929
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "placid"
-  ]
+  ],
+  "version": "1.0"
 }

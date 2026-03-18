@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Penumbra Drift",
-  "mood": "Atmosphere",
-  "engines": [
-    "OMBRE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Shadowy environmental texture. Low brightness, expansive space. OMBRE in void register.",
+  "dna": {
+    "aggression": 0.059,
+    "brightness": 0.133,
+    "density": 0.473,
+    "movement": 0.359,
+    "space": 0.776,
+    "warmth": 0.536
+  },
+  "engines": [
+    "Ombre"
+  ],
+  "macroLabels": [
+    "GRADIENT",
+    "WARMTH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "COUPLING": 0.132,
+    "GRADIENT": 0.048,
+    "SPACE": 0.723,
+    "WARMTH": 0.331
+  },
+  "mood": "Atmosphere",
+  "name": "Penumbra Drift",
+  "parameters": {
+    "Ombre": {
+      "coupling": 0.132,
+      "gradient": 0.048,
+      "space": 0.723,
+      "warmth": 0.331
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -16,36 +47,5 @@
     "environmental",
     "deep"
   ],
-  "macroLabels": [
-    "GRADIENT",
-    "WARMTH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.133,
-    "warmth": 0.536,
-    "movement": 0.359,
-    "density": 0.473,
-    "space": 0.776,
-    "aggression": 0.059
-  },
-  "parameters": {
-    "OMBRE": {
-      "gradient": 0.048,
-      "warmth": 0.331,
-      "coupling": 0.132,
-      "space": 0.723
-    }
-  },
-  "macros": {
-    "GRADIENT": 0.048,
-    "WARMTH": 0.331,
-    "COUPLING": 0.132,
-    "SPACE": 0.723
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

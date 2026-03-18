@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Oracle Surge",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.679,
-    "warmth": 0.3123,
-    "movement": 0.8317,
-    "density": 0.7019,
-    "space": 0.3471,
-    "aggression": 0.8426
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Drift surge at peak aggression and movement",
   "dna": {
+    "aggression": 0.8426,
     "brightness": 0.679,
-    "warmth": 0.3123,
-    "movement": 0.8317,
     "density": 0.7019,
+    "movement": 0.8317,
     "space": 0.3471,
-    "aggression": 0.8426
+    "warmth": 0.3123
   },
   "engines": [
-    "ORACLE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Drift surge at peak aggression and movement",
-  "tags": [
-    "prism",
-    "brutal",
-    "movement",
-    "aggressive",
-    "anchor"
+    "Oracle"
   ],
   "macroLabels": [
     "SIGNAL",
@@ -38,24 +23,39 @@
     "SPACE"
   ],
   "macros": {
-    "SIGNAL": 0.2525,
-    "DRIFT": 0.7728,
     "COUPLE": 0.5154,
+    "DRIFT": 0.7728,
+    "SIGNAL": 0.2525,
     "SPACE": 0.6157
   },
-  "couplingIntensity": "None",
+  "mood": "Prism",
+  "name": "Oracle Surge",
   "parameters": {
-    "ORACLE": {
-      "orc_macro_signal": 0.2525,
-      "orc_macro_drift": 0.7728,
-      "orc_macro_couple": 0.5154,
-      "orc_macro_space": 0.6157,
-      "orc_outputLevel": 0.85,
+    "Oracle": {
+      "orc_couplingBus": 0,
       "orc_couplingLevel": 0.5,
-      "orc_couplingBus": 0
+      "orc_macro_couple": 0.5154,
+      "orc_macro_drift": 0.7728,
+      "orc_macro_signal": 0.2525,
+      "orc_macro_space": 0.6157,
+      "orc_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.8426,
+    "brightness": 0.679,
+    "density": 0.7019,
+    "movement": 0.8317,
+    "space": 0.3471,
+    "warmth": 0.3123
+  },
+  "tags": [
+    "prism",
+    "brutal",
+    "movement",
+    "aggressive",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

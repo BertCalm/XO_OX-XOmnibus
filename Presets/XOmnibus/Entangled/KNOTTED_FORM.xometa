@@ -1,45 +1,52 @@
 {
-  "name": "KNOTTED FORM",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERDUB",
-    "OSPREY"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.6063,
-      "macro_movement": 0.7907,
-      "macro_coupling": 0.6903,
-      "macro_space": 0.5226
-    },
-    "OSPREY": {
-      "macro_character": 0.4505,
-      "macro_movement": 0.4427,
-      "macro_coupling": 0.9441,
-      "macro_space": 0.99
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERDUB",
-    "target": "OSPREY",
-    "amount": 0.7916
+    "amount": 0.7916,
+    "source": "Overdub",
+    "target": "Osprey",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.2078,
     "brightness": 0.621,
-    "warmth": 0.6096,
-    "movement": 0.7401,
     "density": 0.8885,
+    "movement": 0.7401,
     "space": 0.9476,
-    "aggression": 0.2078
+    "warmth": 0.6096
   },
+  "engines": [
+    "Overdub",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.211,
-    "MOVEMENT": 0.6604,
     "COUPLING": 0.7471,
+    "MOVEMENT": 0.6604,
     "SPACE": 0.1738
   },
+  "mood": "Entangled",
+  "name": "KNOTTED FORM",
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.4505,
+      "macro_coupling": 0.9441,
+      "macro_movement": 0.4427,
+      "macro_space": 0.99
+    },
+    "Overdub": {
+      "macro_character": 0.6063,
+      "macro_coupling": 0.6903,
+      "macro_movement": 0.7907,
+      "macro_space": 0.5226
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -47,5 +54,6 @@
     "dark",
     "bound",
     "extreme-density"
-  ]
+  ],
+  "version": "1.0"
 }

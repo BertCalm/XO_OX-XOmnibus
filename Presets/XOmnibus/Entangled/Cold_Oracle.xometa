@@ -1,50 +1,58 @@
 {
-  "name": "Cold Oracle",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.66,
+    "source": "Opal",
+    "target": "Oracle",
+    "type": "TIMBRE_BLEND"
+  },
+  "description": "Lavender grain and prophecy indigo blend — a cold oracle speaking in scattered light.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.12,
+    "density": 0.14,
+    "movement": 0.325,
+    "space": 0.89,
+    "warmth": 0.224
+  },
   "engines": [
-    "OPAL",
-    "ORACLE"
+    "Opal",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.19,
+    "COUPLING": 0.66,
+    "MOVEMENT": 0.52,
+    "SPACE": 0.89
+  },
+  "mood": "Entangled",
+  "name": "Cold Oracle",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.19,
-      "macro_movement": 0.52,
       "macro_coupling": 0.66,
+      "macro_movement": 0.52,
       "macro_space": 0.89
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.16,
-      "macro_movement": 0.47,
       "macro_coupling": 0.71,
+      "macro_movement": 0.47,
       "macro_space": 0.92
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OPAL",
-    "target": "ORACLE",
-    "amount": 0.66
-  },
-  "dna": {
-    "brightness": 0.12,
-    "warmth": 0.224,
-    "movement": 0.325,
-    "density": 0.14,
-    "space": 0.89,
-    "aggression": 0.0
-  },
-  "macros": {
-    "CHARACTER": 0.19,
-    "MOVEMENT": 0.52,
-    "COUPLING": 0.66,
-    "SPACE": 0.89
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "cold",
     "oracle"
   ],
-  "description": "Lavender grain and prophecy indigo blend \u2014 a cold oracle speaking in scattered light."
+  "version": "1.0"
 }

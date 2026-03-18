@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_INTIMATE_GENTLE_FAM_VOL_86",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ODDFELIX",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "ODDFELIX": {
-      "macro_character": 0.478,
-      "macro_movement": 0.64,
-      "macro_coupling": 0.247,
-      "macro_space": 0.085
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.522,
-      "macro_movement": 0.614,
-      "macro_coupling": 0.257,
-      "macro_space": 0.136
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_MESH",
-    "source": "OBBLIGATO",
-    "target": "ODDFELIX",
-    "amount": 0.588
+    "amount": 0.588,
+    "source": "Obbligato",
+    "target": "OddfeliX",
+    "type": "HARMONIC_MESH"
   },
   "dna": {
+    "aggression": 0.036,
     "brightness": 0.078,
-    "warmth": 0.929,
-    "movement": 0.624,
     "density": 0.454,
+    "movement": 0.624,
     "space": 0.106,
-    "aggression": 0.036
+    "warmth": 0.929
   },
+  "engines": [
+    "OddfeliX",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.627,
     "COUPLING": 0.252,
+    "MOVEMENT": 0.627,
     "SPACE": 0.111
   },
+  "mood": "Family",
+  "name": "DARK_HOT_INTIMATE_GENTLE_FAM_VOL_86",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.522,
+      "macro_coupling": 0.257,
+      "macro_movement": 0.614,
+      "macro_space": 0.136
+    },
+    "OddfeliX": {
+      "macro_character": 0.478,
+      "macro_coupling": 0.247,
+      "macro_movement": 0.64,
+      "macro_space": 0.085
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "intimate",
     "gentle",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

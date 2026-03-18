@@ -1,48 +1,56 @@
 {
-  "name": "SHADOW STEM",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.789,
+    "source": "Ombre",
+    "target": "Outwit",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.778,
+    "brightness": 0.45,
+    "density": 0.065,
+    "movement": 0.84,
+    "space": 0.277,
+    "warmth": 0.752
+  },
   "engines": [
-    "OMBRE",
-    "OUTWIT"
+    "Ombre",
+    "Outwit"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.485,
+    "COUPLING": 0.44,
+    "MOVEMENT": 0.239,
+    "SPACE": 0.714
+  },
+  "mood": "Entangled",
+  "name": "SHADOW STEM",
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.755,
-      "macro_movement": 0.443,
       "macro_coupling": 0.815,
+      "macro_movement": 0.443,
       "macro_space": 0.892
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.427,
-      "macro_movement": 0.907,
       "macro_coupling": 0.446,
+      "macro_movement": 0.907,
       "macro_space": 0.159
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OMBRE",
-    "target": "OUTWIT",
-    "amount": 0.789
-  },
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.752,
-    "movement": 0.84,
-    "density": 0.065,
-    "space": 0.277,
-    "aggression": 0.778
-  },
-  "macros": {
-    "CHARACTER": 0.485,
-    "MOVEMENT": 0.239,
-    "COUPLING": 0.44,
-    "SPACE": 0.714
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "thin",
     "ghosted"
-  ]
+  ],
+  "version": "1.0"
 }

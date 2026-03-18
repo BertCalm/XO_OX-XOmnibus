@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Edge Character",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.522,
+        "engineA": "Obsidian",
+        "engineB": "Oblong",
+        "type": "ENVELOPE_SHARING"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Mineral sharpness stretched through OBLONG oblate character.",
+  "dna": {
+    "aggression": 0.285,
+    "brightness": 0.773,
+    "density": 0.555,
+    "movement": 0.373,
+    "space": 0.577,
+    "warmth": 0.377
+  },
   "engines": [
     "Obsidian",
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Mineral sharpness stretched through OBLONG oblate character.",
-  "tags": [
-    "obsidian",
-    "oblong",
-    "crystal",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Edge Character",
   "parameters": {
-    "Obsidian": {
-      "obsidian_brightness": 0.819,
-      "obsidian_warmth": 0.203,
-      "obsidian_movement": 0.212,
-      "obsidian_density": 0.5,
-      "obsidian_space": 0.67,
-      "obsidian_aggression": 0.128,
-      "obsidian_level": 0.791
-    },
     "Oblong": {
-      "bob_brightness": 0.553,
-      "bob_warmth": 0.661,
-      "bob_movement": 0.508,
-      "bob_density": 0.688,
-      "bob_space": 0.479,
       "bob_aggression": 0.428,
-      "bob_level": 0.811
+      "bob_brightness": 0.553,
+      "bob_density": 0.688,
+      "bob_level": 0.811,
+      "bob_movement": 0.508,
+      "bob_space": 0.479,
+      "bob_warmth": 0.661
+    },
+    "Obsidian": {
+      "obsidian_aggression": 0.128,
+      "obsidian_brightness": 0.819,
+      "obsidian_density": 0.5,
+      "obsidian_level": 0.791,
+      "obsidian_movement": 0.212,
+      "obsidian_space": 0.67,
+      "obsidian_warmth": 0.203
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Oblong",
-        "type": "ENVELOPE_SHARING",
-        "amount": 0.522
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.773,
-    "warmth": 0.377,
-    "movement": 0.373,
-    "density": 0.555,
-    "space": 0.577,
-    "aggression": 0.285
-  }
+  "tags": [
+    "obsidian",
+    "oblong",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,48 +1,56 @@
 {
-  "name": "OSCILLATOR RIOT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.713,
+    "source": "Oblong",
+    "target": "Ohm",
+    "type": "SPECTRAL_MORPH"
+  },
+  "dna": {
+    "aggression": 0.661,
+    "brightness": 0.108,
+    "density": 0.444,
+    "movement": 0.962,
+    "space": 0.899,
+    "warmth": 0.712
+  },
   "engines": [
-    "OBLONG",
-    "OHM"
+    "Oblong",
+    "Ohm"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.148,
+    "COUPLING": 0.126,
+    "MOVEMENT": 0.962,
+    "SPACE": 0.624
+  },
+  "mood": "Entangled",
+  "name": "OSCILLATOR RIOT",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.659,
-      "macro_movement": 0.953,
       "macro_coupling": 0.302,
+      "macro_movement": 0.953,
       "macro_space": 0.643
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.031,
-      "macro_movement": 0.971,
       "macro_coupling": 0.999,
+      "macro_movement": 0.971,
       "macro_space": 0.847
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBLONG",
-    "target": "OHM",
-    "amount": 0.713
-  },
-  "dna": {
-    "brightness": 0.108,
-    "warmth": 0.712,
-    "movement": 0.962,
-    "density": 0.444,
-    "space": 0.899,
-    "aggression": 0.661
-  },
-  "macros": {
-    "CHARACTER": 0.148,
-    "MOVEMENT": 0.962,
-    "COUPLING": 0.126,
-    "SPACE": 0.624
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "wild",
     "movement"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,48 +1,56 @@
 {
-  "name": "GHOSTED ECHO",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.141,
+    "source": "Obscura",
+    "target": "Overworld",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.131,
+    "brightness": 0.634,
+    "density": 0.047,
+    "movement": 0.044,
+    "space": 0.334,
+    "warmth": 0.829
+  },
   "engines": [
-    "OBSCURA",
-    "OVERWORLD"
+    "Obscura",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.98,
+    "COUPLING": 0.442,
+    "MOVEMENT": 0.162,
+    "SPACE": 0.706
+  },
+  "mood": "Entangled",
+  "name": "GHOSTED ECHO",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.282,
-      "macro_movement": 0.211,
       "macro_coupling": 0.343,
+      "macro_movement": 0.211,
       "macro_space": 0.687
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.853,
-      "macro_movement": 0.505,
       "macro_coupling": 0.251,
+      "macro_movement": 0.505,
       "macro_space": 0.908
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OBSCURA",
-    "target": "OVERWORLD",
-    "amount": 0.141
-  },
-  "dna": {
-    "brightness": 0.634,
-    "warmth": 0.829,
-    "movement": 0.044,
-    "density": 0.047,
-    "space": 0.334,
-    "aggression": 0.131
-  },
-  "macros": {
-    "CHARACTER": 0.98,
-    "MOVEMENT": 0.162,
-    "COUPLING": 0.442,
-    "SPACE": 0.706
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "sparse",
     "minimal"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "TORCH PRISM",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.673,
+    "source": "Oblong",
+    "target": "Overlap",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.764,
+    "brightness": 0.167,
+    "density": 0.393,
+    "movement": 0.398,
+    "space": 0.106,
+    "warmth": 0.899
+  },
   "engines": [
-    "OBLONG",
-    "OVERLAP"
+    "Oblong",
+    "Overlap"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.439,
+    "COUPLING": 0.219,
+    "MOVEMENT": 0.758,
+    "SPACE": 0.282
+  },
+  "mood": "Prism",
+  "name": "TORCH PRISM",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.9,
-      "macro_movement": 0.648,
       "macro_coupling": 0.414,
+      "macro_movement": 0.648,
       "macro_space": 0.135
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.504,
-      "macro_movement": 0.172,
       "macro_coupling": 0.643,
+      "macro_movement": 0.172,
       "macro_space": 0.89
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBLONG",
-    "target": "OVERLAP",
-    "amount": 0.673
-  },
-  "dna": {
-    "brightness": 0.167,
-    "warmth": 0.899,
-    "movement": 0.398,
-    "density": 0.393,
-    "space": 0.106,
-    "aggression": 0.764
-  },
-  "macros": {
-    "CHARACTER": 0.439,
-    "MOVEMENT": 0.758,
-    "COUPLING": 0.219,
-    "SPACE": 0.282
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

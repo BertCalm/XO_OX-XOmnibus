@@ -1,49 +1,57 @@
 {
-  "name": "NOON SPACE",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.544,
+    "source": "OddOscar",
+    "target": "Oracle",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.603,
+    "brightness": 0.953,
+    "density": 0.961,
+    "movement": 0.461,
+    "space": 0.234,
+    "warmth": 0.569
+  },
   "engines": [
-    "ODDOSCAR",
-    "ORACLE"
+    "OddOscar",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.681,
+    "COUPLING": 0.299,
+    "MOVEMENT": 0.714,
+    "SPACE": 0.079
+  },
+  "mood": "Aether",
+  "name": "NOON SPACE",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.513,
-      "macro_movement": 0.75,
       "macro_coupling": 0.16,
+      "macro_movement": 0.75,
       "macro_space": 0.031
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.849,
-      "macro_movement": 0.678,
       "macro_coupling": 0.438,
+      "macro_movement": 0.678,
       "macro_space": 0.126
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ODDOSCAR",
-    "target": "ORACLE",
-    "amount": 0.544
-  },
-  "dna": {
-    "brightness": 0.953,
-    "warmth": 0.569,
-    "movement": 0.461,
-    "density": 0.961,
-    "space": 0.234,
-    "aggression": 0.603
-  },
-  "macros": {
-    "CHARACTER": 0.681,
-    "MOVEMENT": 0.714,
-    "COUPLING": 0.299,
-    "SPACE": 0.079
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "bright",
     "extreme",
     "high-density"
-  ]
+  ],
+  "version": "1.0"
 }

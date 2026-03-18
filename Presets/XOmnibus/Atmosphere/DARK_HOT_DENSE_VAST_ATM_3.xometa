@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_DENSE_VAST_ATM_3",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORACLE",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.341,
-      "macro_movement": 0.577,
-      "macro_coupling": 0.734,
-      "macro_space": 0.801
-    },
-    "ODDFELIX": {
-      "macro_character": 0.539,
-      "macro_movement": 0.529,
-      "macro_coupling": 0.539,
-      "macro_space": 0.697
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORACLE",
-    "target": "ODDFELIX",
-    "amount": 0.611
+    "amount": 0.611,
+    "source": "Oracle",
+    "target": "OddfeliX",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.44,
     "brightness": 0.082,
-    "warmth": 0.969,
-    "movement": 0.615,
     "density": 0.871,
+    "movement": 0.615,
     "space": 0.861,
-    "aggression": 0.44
+    "warmth": 0.969
   },
+  "engines": [
+    "Oracle",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.341,
-    "MOVEMENT": 0.577,
     "COUPLING": 0.734,
+    "MOVEMENT": 0.577,
     "SPACE": 0.801
   },
+  "mood": "Atmosphere",
+  "name": "DARK_HOT_DENSE_VAST_ATM_3",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.539,
+      "macro_coupling": 0.539,
+      "macro_movement": 0.529,
+      "macro_space": 0.697
+    },
+    "Oracle": {
+      "macro_character": 0.341,
+      "macro_coupling": 0.734,
+      "macro_movement": 0.577,
+      "macro_space": 0.801
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "warm",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

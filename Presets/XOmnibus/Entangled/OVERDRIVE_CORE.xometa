@@ -1,48 +1,56 @@
 {
-  "name": "OVERDRIVE CORE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.64,
+    "source": "Odyssey",
+    "target": "Orphica",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.852,
+    "brightness": 0.298,
+    "density": 0.982,
+    "movement": 0.942,
+    "space": 0.771,
+    "warmth": 0.941
+  },
   "engines": [
-    "ODYSSEY",
-    "ORPHICA"
+    "Odyssey",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.69,
+    "COUPLING": 0.489,
+    "MOVEMENT": 0.942,
+    "SPACE": 0.48
+  },
+  "mood": "Entangled",
+  "name": "OVERDRIVE CORE",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.868,
-      "macro_movement": 0.935,
       "macro_coupling": 0.681,
+      "macro_movement": 0.935,
       "macro_space": 0.804
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.264,
-      "macro_movement": 0.948,
       "macro_coupling": 0.484,
+      "macro_movement": 0.948,
       "macro_space": 0.957
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ODYSSEY",
-    "target": "ORPHICA",
-    "amount": 0.64
-  },
-  "dna": {
-    "brightness": 0.298,
-    "warmth": 0.941,
-    "movement": 0.942,
-    "density": 0.982,
-    "space": 0.771,
-    "aggression": 0.852
-  },
-  "macros": {
-    "CHARACTER": 0.69,
-    "MOVEMENT": 0.942,
-    "COUPLING": 0.489,
-    "SPACE": 0.48
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "explosive",
     "unstable"
-  ]
+  ],
+  "version": "1.0"
 }

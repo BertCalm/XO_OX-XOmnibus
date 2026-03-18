@@ -1,31 +1,39 @@
 {
-  "name": "Phosphor Dub",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6,
+    "source": "Oceanic",
+    "target": "Overdub",
+    "type": "TIDAL_MODULATION"
+  },
+  "description": "Oceanic phosphorescence lights the spring trail from within — bioluminescent reverb",
   "engines": [
-    "OVERDUB",
-    "OCEANIC"
+    "Overdub",
+    "Oceanic"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.5,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.5,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.46,
-    "warmth": 0.59,
-    "movement": 0.57,
-    "density": 0.6,
-    "space": 0.61,
-    "aggression": 0.37
-  },
+  "mood": "Entangled",
+  "name": "Phosphor Dub",
   "parameters": {},
-  "coupling": {
-    "type": "TIDAL_MODULATION",
-    "source": "OCEANIC",
-    "target": "OVERDUB",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.37,
+    "brightness": 0.46,
+    "density": 0.6,
+    "movement": 0.57,
+    "space": 0.61,
+    "warmth": 0.59
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "oceanic",
     "dub"
   ],
-  "description": "Oceanic phosphorescence lights the spring trail from within \u2014 bioluminescent reverb"
+  "version": "1.0"
 }

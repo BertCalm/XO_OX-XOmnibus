@@ -1,45 +1,52 @@
 {
-  "name": "DARK_DENSE_VAST_GENTLE_FLX_1",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERWORLD",
-    "ORGANON"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.1756,
-      "macro_movement": 0.5479,
-      "macro_coupling": 0.1768,
-      "macro_space": 0.8946
-    },
-    "ORGANON": {
-      "macro_character": 0.173,
-      "macro_movement": 0.6471,
-      "macro_coupling": 0.171,
-      "macro_space": 0.947
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OVERWORLD",
-    "target": "ORGANON",
-    "amount": 0.6564
+    "amount": 0.6564,
+    "source": "Overworld",
+    "target": "Organon",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.0848,
     "brightness": 0.0512,
-    "warmth": 0.5269,
-    "movement": 0.5937,
     "density": 0.8731,
+    "movement": 0.5937,
     "space": 0.9475,
-    "aggression": 0.0848
+    "warmth": 0.5269
   },
+  "engines": [
+    "Overworld",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.1756,
-    "MOVEMENT": 0.5479,
     "COUPLING": 0.1768,
+    "MOVEMENT": 0.5479,
     "SPACE": 0.8946
   },
+  "mood": "Flux",
+  "name": "DARK_DENSE_VAST_GENTLE_FLX_1",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.173,
+      "macro_coupling": 0.171,
+      "macro_movement": 0.6471,
+      "macro_space": 0.947
+    },
+    "Overworld": {
+      "macro_character": 0.1756,
+      "macro_coupling": 0.1768,
+      "macro_movement": 0.5479,
+      "macro_space": 0.8946
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "high-density",
     "high-space",
     "low-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

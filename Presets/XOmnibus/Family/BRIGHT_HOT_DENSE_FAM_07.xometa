@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT HOT DENSE FAM 07",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ORPHICA",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.953,
-      "macro_movement": 0.401,
-      "macro_coupling": 0.766,
-      "macro_space": 0.615
-    },
-    "ORBITAL": {
-      "macro_character": 1.0,
-      "macro_movement": 0.472,
-      "macro_coupling": 0.664,
-      "macro_space": 0.478
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ORPHICA",
-    "target": "ORBITAL",
-    "amount": 0.818
+    "amount": 0.818,
+    "source": "Orphica",
+    "target": "Orbital",
+    "type": "FREQUENCY_SHIFT"
   },
   "dna": {
+    "aggression": 0.438,
     "brightness": 0.937,
-    "warmth": 0.968,
-    "movement": 0.401,
     "density": 0.881,
+    "movement": 0.401,
     "space": 0.615,
-    "aggression": 0.438
+    "warmth": 0.968
   },
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.953,
-    "MOVEMENT": 0.401,
     "COUPLING": 0.766,
+    "MOVEMENT": 0.401,
     "SPACE": 0.615
   },
+  "mood": "Family",
+  "name": "BRIGHT HOT DENSE FAM 07",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.664,
+      "macro_movement": 0.472,
+      "macro_space": 0.478
+    },
+    "Orphica": {
+      "macro_character": 0.953,
+      "macro_coupling": 0.766,
+      "macro_movement": 0.401,
+      "macro_space": 0.615
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
@@ -47,5 +54,6 @@
     "dense",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

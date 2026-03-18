@@ -1,14 +1,67 @@
 {
-  "schema_version": 1,
-  "name": "Fold Tannin",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.431,
+        "engineA": "Origami",
+        "engineB": "Osteria",
+        "type": "timbral_blend"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Origami × Osteria coupling (harmonic lock). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.573,
+    "density": 0.56,
+    "movement": 0.532,
+    "space": 0.554,
+    "warmth": 0.619
+  },
   "engines": [
     "Origami",
     "Osteria"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Origami \u00d7 Osteria coupling (harmonic lock). Stub preset \u2014 sound-design pass pending.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Fold Tannin",
+  "parameters": {
+    "Origami": {
+      "origami_couplingOut": 0.476,
+      "origami_crease": 0.8,
+      "origami_foldPoint": 0.464,
+      "origami_macro1": 0.464,
+      "origami_macro2": 0.448,
+      "origami_macro3": 0.571,
+      "origami_macro4": 0.618,
+      "origami_pleatRate": 0.654,
+      "origami_tessellate": 0.645,
+      "origami_valleyDepth": 0.641
+    },
+    "Osteria": {
+      "osteria_couplingIn": 0.643,
+      "osteria_couplingOut": 0.614,
+      "osteria_macro1": 0.32,
+      "osteria_macro2": 0.425,
+      "osteria_macro3": 0.407,
+      "osteria_macro4": 0.672
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "origami",
     "osteria",
@@ -16,59 +69,6 @@
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Subtle",
   "tempo": 105,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Origami": {
-      "origami_foldPoint": 0.464,
-      "origami_crease": 0.8,
-      "origami_valleyDepth": 0.641,
-      "origami_pleatRate": 0.654,
-      "origami_tessellate": 0.645,
-      "origami_macro1": 0.464,
-      "origami_macro2": 0.448,
-      "origami_macro3": 0.571,
-      "origami_macro4": 0.618,
-      "origami_couplingOut": 0.476
-    },
-    "Osteria": {
-      "osteria_macro1": 0.32,
-      "osteria_macro2": 0.425,
-      "osteria_macro3": 0.407,
-      "osteria_macro4": 0.672,
-      "osteria_couplingOut": 0.614,
-      "osteria_couplingIn": 0.643
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Osteria",
-        "type": "timbral_blend",
-        "amount": 0.431
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.573,
-    "warmth": 0.619,
-    "movement": 0.532,
-    "density": 0.56,
-    "space": 0.554,
-    "aggression": 0.5
-  }
+  "version": "1.0.0"
 }

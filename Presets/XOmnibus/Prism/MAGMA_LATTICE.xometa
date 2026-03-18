@@ -1,49 +1,57 @@
 {
-  "name": "MAGMA LATTICE",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "ONSET",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "ONSET": {
-      "macro_character": 0.55,
-      "macro_movement": 0.894,
-      "macro_coupling": 0.123,
-      "macro_space": 0.264
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.546,
-      "macro_movement": 0.24,
-      "macro_coupling": 0.791,
-      "macro_space": 0.842
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ONSET",
-    "target": "OBBLIGATO",
-    "amount": 0.305
+    "amount": 0.305,
+    "source": "Onset",
+    "target": "Obbligato",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.853,
     "brightness": 0.288,
-    "warmth": 0.916,
-    "movement": 0.894,
     "density": 0.501,
+    "movement": 0.894,
     "space": 0.926,
-    "aggression": 0.853
+    "warmth": 0.916
   },
+  "engines": [
+    "Onset",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.961,
-    "MOVEMENT": 0.982,
     "COUPLING": 0.789,
+    "MOVEMENT": 0.982,
     "SPACE": 0.298
   },
+  "mood": "Prism",
+  "name": "MAGMA LATTICE",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.546,
+      "macro_coupling": 0.791,
+      "macro_movement": 0.24,
+      "macro_space": 0.842
+    },
+    "Onset": {
+      "macro_character": 0.55,
+      "macro_coupling": 0.123,
+      "macro_movement": 0.894,
+      "macro_space": 0.264
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

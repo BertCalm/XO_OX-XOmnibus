@@ -1,31 +1,39 @@
 {
-  "name": "Coral Trash",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.55,
+    "source": "Overbite",
+    "target": "Obbligato",
+    "type": "BITE_TRIGGER"
+  },
+  "description": "OBBLIGATO BOND macro linked to overbite TRASH macro — necessary connection, chaotic content",
   "engines": [
-    "OBBLIGATO",
-    "OVERBITE"
+    "Obbligato",
+    "Overbite"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.55,
+    "MOVEMENT": 0.55,
     "SPACE": 0.5
   },
-  "sonic_dna": {
-    "brightness": 0.55,
-    "warmth": 0.65,
-    "movement": 0.55,
-    "density": 0.67,
-    "space": 0.5,
-    "aggression": 0.47
-  },
+  "mood": "Entangled",
+  "name": "Coral Trash",
   "parameters": {},
-  "coupling": {
-    "type": "BITE_TRIGGER",
-    "source": "OVERBITE",
-    "target": "OBBLIGATO",
-    "amount": 0.55
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.47,
+    "brightness": 0.55,
+    "density": 0.67,
+    "movement": 0.55,
+    "space": 0.5,
+    "warmth": 0.65
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "overbite",
     "wind"
   ],
-  "description": "OBBLIGATO BOND macro linked to overbite TRASH macro \u2014 necessary connection, chaotic content"
+  "version": "1.0"
 }

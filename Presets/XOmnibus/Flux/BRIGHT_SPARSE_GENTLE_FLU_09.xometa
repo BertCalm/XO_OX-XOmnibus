@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT SPARSE GENTLE FLU 09",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.948,
+    "source": "Onset",
+    "target": "Osteria",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.052,
+    "brightness": 0.94,
+    "density": 0.032,
+    "movement": 0.539,
+    "space": 0.615,
+    "warmth": 0.557
+  },
   "engines": [
-    "ONSET",
-    "OSTERIA"
+    "Onset",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.748,
+    "COUPLING": 0.463,
+    "MOVEMENT": 0.539,
+    "SPACE": 0.615
+  },
+  "mood": "Flux",
+  "name": "BRIGHT SPARSE GENTLE FLU 09",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.748,
-      "macro_movement": 0.539,
       "macro_coupling": 0.463,
+      "macro_movement": 0.539,
       "macro_space": 0.615
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.619,
-      "macro_movement": 0.619,
       "macro_coupling": 0.594,
+      "macro_movement": 0.619,
       "macro_space": 0.53
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ONSET",
-    "target": "OSTERIA",
-    "amount": 0.948
-  },
-  "dna": {
-    "brightness": 0.94,
-    "warmth": 0.557,
-    "movement": 0.539,
-    "density": 0.032,
-    "space": 0.615,
-    "aggression": 0.052
-  },
-  "macros": {
-    "CHARACTER": 0.748,
-    "MOVEMENT": 0.539,
-    "COUPLING": 0.463,
-    "SPACE": 0.615
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
@@ -47,5 +54,6 @@
     "gentle",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

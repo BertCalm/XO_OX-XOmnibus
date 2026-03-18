@@ -1,50 +1,58 @@
 {
-  "name": "DARK_KINETIC_DENSE_VIOLENT_FLX_AGG_5",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OCEANIC",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "OCEANIC": {
-      "macro_character": 0.402,
-      "macro_movement": 0.852,
-      "macro_coupling": 0.86,
-      "macro_space": 0.438
-    },
-    "OBLIQUE": {
-      "macro_character": 0.608,
-      "macro_movement": 0.907,
-      "macro_coupling": 0.828,
-      "macro_space": 0.43
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OCEANIC",
-    "target": "OBLIQUE",
-    "amount": 0.896
+    "amount": 0.896,
+    "source": "Oceanic",
+    "target": "Oblique",
+    "type": "TIMBRE_BLEND"
   },
   "dna": {
+    "aggression": 0.902,
     "brightness": 0.082,
-    "warmth": 0.427,
-    "movement": 0.901,
     "density": 0.95,
+    "movement": 0.901,
     "space": 0.426,
-    "aggression": 0.902
+    "warmth": 0.427
   },
+  "engines": [
+    "Oceanic",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.505,
-    "MOVEMENT": 0.901,
     "COUPLING": 0.86,
+    "MOVEMENT": 0.901,
     "SPACE": 0.426
   },
+  "mood": "Flux",
+  "name": "DARK_KINETIC_DENSE_VIOLENT_FLX_AGG_5",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.608,
+      "macro_coupling": 0.828,
+      "macro_movement": 0.907,
+      "macro_space": 0.43
+    },
+    "Oceanic": {
+      "macro_character": 0.402,
+      "macro_coupling": 0.86,
+      "macro_movement": 0.852,
+      "macro_space": 0.438
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "kinetic",
     "dark",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

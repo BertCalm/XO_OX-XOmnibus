@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "DARK_HOT_DENSE_VAST_GENTLE_FND_2",
-  "mood": "Foundation",
-  "engines": [
-    "OVERBITE",
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.592,
+    "source": "Overbite",
+    "target": "Onset",
+    "type": "FILTER_MOD"
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_DENSE_VAST_GENTLE. Variant 2.",
+  "dna": {
+    "aggression": 0.123,
+    "brightness": 0.13,
+    "density": 0.896,
+    "movement": 0.329,
+    "space": 0.902,
+    "warmth": 0.99
+  },
+  "engines": [
+    "Overbite",
+    "Onset"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.21,
+    "COUPLING": 1.0,
+    "MOVEMENT": 0.311,
+    "SPACE": 0.886
+  },
+  "mood": "Foundation",
+  "name": "DARK_HOT_DENSE_VAST_GENTLE_FND_2",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.256,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.282,
+      "macro_space": 0.95
+    },
+    "Overbite": {
+      "macro_character": 0.164,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.34,
+      "macro_space": 0.823
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "hot",
     "extreme",
@@ -19,53 +66,6 @@
     "foundation",
     "dense"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.164,
-      "macro_movement": 0.34,
-      "macro_coupling": 1.0,
-      "macro_space": 0.823
-    },
-    "ONSET": {
-      "macro_character": 0.256,
-      "macro_movement": 0.282,
-      "macro_coupling": 1.0,
-      "macro_space": 0.95
-    }
-  },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERBITE",
-    "target": "ONSET",
-    "amount": 0.592
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.13,
-    "warmth": 0.99,
-    "movement": 0.329,
-    "density": 0.896,
-    "space": 0.902,
-    "aggression": 0.123
-  },
-  "macros": {
-    "CHARACTER": 0.21,
-    "MOVEMENT": 0.311,
-    "COUPLING": 1.0,
-    "SPACE": 0.886
-  }
+  "version": "1.0.0"
 }

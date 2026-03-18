@@ -1,33 +1,41 @@
 {
-  "name": "Infinite Still Tension",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.78,
+    "source": "Ouroboros",
+    "target": "Organon",
+    "type": "SPECTRAL_FOLD"
+  },
+  "description": "The snake eating itself according to formal logical rules — infinite aggression held motionless.",
   "engines": [
-    "ORGANON",
-    "OUROBOROS"
+    "Organon",
+    "Ouroboros"
   ],
-  "mood": "Entangled",
-  "strategy": "Still Aggressive",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8,
-    "MOVEMENT": 0.04,
     "COUPLING": 0.85,
+    "MOVEMENT": 0.04,
     "SPACE": 0.45
   },
-  "sonic_dna": {
-    "brightness": 0.32,
-    "warmth": 0.45,
-    "movement": 0.04,
-    "density": 0.85,
-    "space": 0.42,
-    "aggression": 0.98
-  },
+  "mood": "Entangled",
+  "name": "Infinite Still Tension",
   "parameters": {},
-  "coupling": {
-    "type": "SPECTRAL_FOLD",
-    "source": "OUROBOROS",
-    "target": "ORGANON",
-    "amount": 0.78
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.98,
+    "brightness": 0.32,
+    "density": 0.85,
+    "movement": 0.04,
+    "space": 0.42,
+    "warmth": 0.45
   },
+  "strategy": "Still Aggressive",
   "tags": [
     "entangled",
     "aggressive",
@@ -35,5 +43,5 @@
     "infinite",
     "tension"
   ],
-  "description": "The snake eating itself according to formal logical rules \u2014 infinite aggression held motionless."
+  "version": "1.0"
 }

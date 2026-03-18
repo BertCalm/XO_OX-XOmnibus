@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_WARM_FROZEN_DENSE_VAST_ENT3_2",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7689,
+    "source": "Obbligato",
+    "target": "Organon",
+    "type": "HARMONIC_FOLD"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_VAST. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.3622,
+    "brightness": 0.9671,
+    "density": 0.9538,
+    "movement": 0.0906,
+    "space": 0.9108,
+    "warmth": 0.8708
+  },
   "engines": [
-    "OBBLIGATO",
-    "ORGANON"
+    "Obbligato",
+    "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_VAST. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7205,
+    "COUPLING": 0.8492,
+    "MOVEMENT": 0.1021,
+    "SPACE": 0.6881
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT_WARM_FROZEN_DENSE_VAST_ENT3_2",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.5454,
+      "macro_coupling": 0.7732,
+      "macro_movement": 0.0947,
+      "macro_space": 0.8204
+    },
+    "Organon": {
+      "macro_character": 0.8955,
+      "macro_coupling": 0.9251,
+      "macro_movement": 0.1095,
+      "macro_space": 0.5558
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +66,6 @@
     "dense",
     "vast"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OBBLIGATO": {
-      "macro_character": 0.5454,
-      "macro_movement": 0.0947,
-      "macro_coupling": 0.7732,
-      "macro_space": 0.8204
-    },
-    "ORGANON": {
-      "macro_character": 0.8955,
-      "macro_movement": 0.1095,
-      "macro_coupling": 0.9251,
-      "macro_space": 0.5558
-    }
-  },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBBLIGATO",
-    "target": "ORGANON",
-    "amount": 0.7689
-  },
-  "macros": {
-    "CHARACTER": 0.7205,
-    "MOVEMENT": 0.1021,
-    "COUPLING": 0.8492,
-    "SPACE": 0.6881
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.9671,
-    "warmth": 0.8708,
-    "movement": 0.0906,
-    "density": 0.9538,
-    "space": 0.9108,
-    "aggression": 0.3622
-  }
+  "version": "1.0.0"
 }

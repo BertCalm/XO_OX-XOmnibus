@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_COLD_STILL_SPARSE_INTIMATE_FND_4",
-  "mood": "Foundation",
-  "engines": [
-    "ODDOSCAR",
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.58,
+    "source": "OddOscar",
+    "target": "Ouroboros",
+    "type": "RESONANCE_SHARE"
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_STILL_SPARSE_INTIMATE. Variant 4.",
+  "dna": {
+    "aggression": 0.654,
+    "brightness": 0.876,
+    "density": 0.105,
+    "movement": 0.087,
+    "space": 0.07,
+    "warmth": 0.128
+  },
+  "engines": [
+    "OddOscar",
+    "Ouroboros"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.912,
+    "COUPLING": 0.193,
+    "MOVEMENT": 0.153,
+    "SPACE": 0.095
+  },
+  "mood": "Foundation",
+  "name": "BRIGHT_COLD_STILL_SPARSE_INTIMATE_FND_4",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.955,
+      "macro_coupling": 0.221,
+      "macro_movement": 0.159,
+      "macro_space": 0.126
+    },
+    "Ouroboros": {
+      "macro_character": 0.87,
+      "macro_coupling": 0.164,
+      "macro_movement": 0.148,
+      "macro_space": 0.063
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "sparse",
     "extreme",
@@ -19,53 +66,6 @@
     "intimate",
     "foundation"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ODDOSCAR": {
-      "macro_character": 0.955,
-      "macro_movement": 0.159,
-      "macro_coupling": 0.221,
-      "macro_space": 0.126
-    },
-    "OUROBOROS": {
-      "macro_character": 0.87,
-      "macro_movement": 0.148,
-      "macro_coupling": 0.164,
-      "macro_space": 0.063
-    }
-  },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ODDOSCAR",
-    "target": "OUROBOROS",
-    "amount": 0.58
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.876,
-    "warmth": 0.128,
-    "movement": 0.087,
-    "density": 0.105,
-    "space": 0.07,
-    "aggression": 0.654
-  },
-  "macros": {
-    "CHARACTER": 0.912,
-    "MOVEMENT": 0.153,
-    "COUPLING": 0.193,
-    "SPACE": 0.095
-  }
+  "version": "1.0.0"
 }

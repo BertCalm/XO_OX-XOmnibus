@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Shallow Scaffold",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.729,
+        "engineA": "Oceanic",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "aggression": 0.235,
+    "brightness": 0.505,
+    "density": 0.43,
+    "movement": 0.7,
+    "space": 1.0,
+    "warmth": 0.53
+  },
   "engines": [
-    "OCEANIC",
-    "ORIGAMI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "oceanic",
-    "origami"
+    "Oceanic",
+    "Origami"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.52,
-    "MOVEMENT": 0.56,
     "COUPLING": 0.421,
+    "MOVEMENT": 0.56,
     "SPACE": 0.914
   },
-  "couplingIntensity": "Strong",
-  "dna": {
-    "brightness": 0.505,
-    "warmth": 0.53,
-    "movement": 0.7,
-    "density": 0.43,
-    "space": 1.0,
-    "aggression": 0.235
-  },
-  "sonic_dna": {
-    "brightness": 0.505,
-    "warmth": 0.53,
-    "movement": 0.7,
-    "density": 0.43,
-    "space": 1.0,
-    "aggression": 0.235
-  },
+  "mood": "Entangled",
+  "name": "Shallow Scaffold",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.6,
-      "macro_movement": 0.649,
       "macro_coupling": 0.561,
+      "macro_movement": 0.649,
       "macro_space": 0.68
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.573,
-      "macro_movement": 0.45,
       "macro_coupling": 0.432,
+      "macro_movement": 0.45,
       "macro_space": 0.204
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OCEANIC",
-        "engineB": "ORIGAMI",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.729
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.235,
+    "brightness": 0.505,
+    "density": 0.43,
+    "movement": 0.7,
+    "space": 1.0,
+    "warmth": 0.53
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "oceanic",
+    "origami"
+  ],
+  "version": "1.0.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "THERMAL PRISM",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OUTWIT",
-    "OHM"
-  ],
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.081,
-      "macro_movement": 0.38,
-      "macro_coupling": 0.043,
-      "macro_space": 0.474
-    },
-    "OHM": {
-      "macro_character": 0.521,
-      "macro_movement": 0.657,
-      "macro_coupling": 0.287,
-      "macro_space": 0.414
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OUTWIT",
-    "target": "OHM",
-    "amount": 0.861
+    "amount": 0.861,
+    "source": "Outwit",
+    "target": "Ohm",
+    "type": "TIMBRE_BLEND"
   },
   "dna": {
+    "aggression": 0.823,
     "brightness": 0.554,
-    "warmth": 0.976,
-    "movement": 0.003,
     "density": 0.224,
+    "movement": 0.003,
     "space": 0.45,
-    "aggression": 0.823
+    "warmth": 0.976
   },
+  "engines": [
+    "Outwit",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.42,
-    "MOVEMENT": 0.552,
     "COUPLING": 0.727,
+    "MOVEMENT": 0.552,
     "SPACE": 0.842
   },
+  "mood": "Prism",
+  "name": "THERMAL PRISM",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.521,
+      "macro_coupling": 0.287,
+      "macro_movement": 0.657,
+      "macro_space": 0.414
+    },
+    "Outwit": {
+      "macro_character": 0.081,
+      "macro_coupling": 0.043,
+      "macro_movement": 0.38,
+      "macro_space": 0.474
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

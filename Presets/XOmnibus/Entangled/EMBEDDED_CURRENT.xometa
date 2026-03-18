@@ -1,48 +1,56 @@
 {
-  "name": "EMBEDDED CURRENT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.292,
+    "source": "Ombre",
+    "target": "Onset",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.533,
+    "brightness": 0.23,
+    "density": 0.346,
+    "movement": 0.085,
+    "space": 0.734,
+    "warmth": 0.24
+  },
   "engines": [
-    "OMBRE",
-    "ONSET"
+    "Ombre",
+    "Onset"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.37,
+    "COUPLING": 0.642,
+    "MOVEMENT": 0.085,
+    "SPACE": 0.509
+  },
+  "mood": "Entangled",
+  "name": "EMBEDDED CURRENT",
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.003,
-      "macro_movement": 0.072,
       "macro_coupling": 0.74,
+      "macro_movement": 0.072,
       "macro_space": 0.99
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.924,
-      "macro_movement": 0.098,
       "macro_coupling": 0.645,
+      "macro_movement": 0.098,
       "macro_space": 0.78
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OMBRE",
-    "target": "ONSET",
-    "amount": 0.292
-  },
-  "dna": {
-    "brightness": 0.23,
-    "warmth": 0.24,
-    "movement": 0.085,
-    "density": 0.346,
-    "space": 0.734,
-    "aggression": 0.533
-  },
-  "macros": {
-    "CHARACTER": 0.37,
-    "MOVEMENT": 0.085,
-    "COUPLING": 0.642,
-    "SPACE": 0.509
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "embedded"
-  ]
+  ],
+  "version": "1.0"
 }

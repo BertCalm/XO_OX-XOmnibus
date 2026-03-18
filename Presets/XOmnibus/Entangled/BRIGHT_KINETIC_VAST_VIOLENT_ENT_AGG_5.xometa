@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_KINETIC_VAST_VIOLENT_ENT_AGG_5",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OSPREY",
-    "OCTOPUS"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.652,
-      "macro_movement": 0.964,
-      "macro_coupling": 0.912,
-      "macro_space": 0.961
-    },
-    "OCTOPUS": {
-      "macro_character": 0.44,
-      "macro_movement": 0.98,
-      "macro_coupling": 0.879,
-      "macro_space": 0.915
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OSPREY",
-    "target": "OCTOPUS",
-    "amount": 0.85
+    "amount": 0.85,
+    "source": "Osprey",
+    "target": "Octopus",
+    "type": "SPECTRAL_MORPH"
   },
   "dna": {
+    "aggression": 0.879,
     "brightness": 0.986,
-    "warmth": 0.418,
-    "movement": 0.974,
     "density": 0.622,
+    "movement": 0.974,
     "space": 0.926,
-    "aggression": 0.879
+    "warmth": 0.418
   },
+  "engines": [
+    "Osprey",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.546,
-    "MOVEMENT": 0.974,
     "COUPLING": 0.912,
+    "MOVEMENT": 0.974,
     "SPACE": 0.926
   },
+  "mood": "Entangled",
+  "name": "BRIGHT_KINETIC_VAST_VIOLENT_ENT_AGG_5",
+  "parameters": {
+    "Octopus": {
+      "macro_character": 0.44,
+      "macro_coupling": 0.879,
+      "macro_movement": 0.98,
+      "macro_space": 0.915
+    },
+    "Osprey": {
+      "macro_character": 0.652,
+      "macro_coupling": 0.912,
+      "macro_movement": 0.964,
+      "macro_space": 0.961
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "bright",
     "kinetic",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

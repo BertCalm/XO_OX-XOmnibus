@@ -1,50 +1,58 @@
 {
-  "name": "ANVIL KNOT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8652,
+    "source": "Onset",
+    "target": "Optic",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.7236,
+    "brightness": 0.9435,
+    "density": 0.8846,
+    "movement": 0.7634,
+    "space": 0.4886,
+    "warmth": 0.3376
+  },
   "engines": [
-    "ONSET",
-    "OPTIC"
+    "Onset",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7396,
+    "COUPLING": 0.9198,
+    "MOVEMENT": 0.4608,
+    "SPACE": 0.3522
+  },
+  "mood": "Entangled",
+  "name": "ANVIL KNOT",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.5533,
-      "macro_movement": 0.584,
       "macro_coupling": 0.888,
+      "macro_movement": 0.584,
       "macro_space": 0.2952
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.1962,
-      "macro_movement": 0.23,
       "macro_coupling": 0.8279,
+      "macro_movement": 0.23,
       "macro_space": 0.2457
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ONSET",
-    "target": "OPTIC",
-    "amount": 0.8652
-  },
-  "dna": {
-    "brightness": 0.9435,
-    "warmth": 0.3376,
-    "movement": 0.7634,
-    "density": 0.8846,
-    "space": 0.4886,
-    "aggression": 0.7236
-  },
-  "macros": {
-    "CHARACTER": 0.7396,
-    "MOVEMENT": 0.4608,
-    "COUPLING": 0.9198,
-    "SPACE": 0.3522
-  },
+  "schema_version": 1,
   "tags": [
     "compressed",
     "dense",
     "heavy",
     "entangled",
     "monolithic"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "HOT VIOLENT KINETIC BRIGHT 1",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "warmth": 0.8999,
-    "aggression": 0.9577,
-    "movement": 0.9502,
-    "brightness": 0.9407,
-    "density": 0.596,
-    "space": 0.5935
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "High",
+  "couplingType": "ORBIT",
+  "description": "Ultra-diverse Entangled preset — hot violent kinetic bright. Designed for ORBIT coupling with XOceanic.",
   "dna": {
-    "warmth": 0.8999,
     "aggression": 0.9577,
-    "movement": 0.9502,
     "brightness": 0.9407,
     "density": 0.596,
-    "space": 0.5935
+    "movement": 0.9502,
+    "space": 0.5935,
+    "warmth": 0.8999
   },
   "engines": [
-    "XOceanic"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 hot violent kinetic bright. Designed for ORBIT coupling with XOceanic.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "orbit",
-    "oceanic"
+    "Oceanic"
   ],
   "macroLabels": [
     "IMPACT",
@@ -36,15 +23,28 @@
     "GLEAM",
     "BURN"
   ],
-  "couplingType": "ORBIT",
-  "couplingIntensity": "High",
+  "mood": "Entangled",
+  "name": "HOT VIOLENT KINETIC BRIGHT 1",
   "parameters": {
-    "XOceanic": {
-      "couplingLevel": 0.768,
-      "couplingBus": 1
+    "Oceanic": {
+      "couplingBus": 1,
+      "couplingLevel": 0.768
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9577,
+    "brightness": 0.9407,
+    "density": 0.596,
+    "movement": 0.9502,
+    "space": 0.5935,
+    "warmth": 0.8999
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "orbit",
+    "oceanic"
+  ],
+  "version": "1.0.0"
 }

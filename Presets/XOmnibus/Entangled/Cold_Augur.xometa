@@ -1,50 +1,58 @@
 {
-  "name": "Cold Augur",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORACLE",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.22,
-      "macro_movement": 0.58,
-      "macro_coupling": 0.64,
-      "macro_space": 0.87
-    },
-    "OBSCURA": {
-      "macro_character": 0.19,
-      "macro_movement": 0.53,
-      "macro_coupling": 0.69,
-      "macro_space": 0.9
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ORACLE",
-    "target": "OBSCURA",
-    "amount": 0.64
+    "amount": 0.64,
+    "source": "Oracle",
+    "target": "Obscura",
+    "type": "FREQUENCY_SHIFT"
   },
+  "description": "Oracle shifts Obscura's resonant frequencies into cold augury — reading the stiffness of ice.",
   "dna": {
+    "aggression": 0.11,
     "brightness": 0.14,
-    "warmth": 0.08,
-    "movement": 0.58,
     "density": 0.16,
+    "movement": 0.58,
     "space": 0.87,
-    "aggression": 0.11
+    "warmth": 0.08
   },
+  "engines": [
+    "Oracle",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.22,
-    "MOVEMENT": 0.58,
     "COUPLING": 0.64,
+    "MOVEMENT": 0.58,
     "SPACE": 0.87
   },
+  "mood": "Entangled",
+  "name": "Cold Augur",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.19,
+      "macro_coupling": 0.69,
+      "macro_movement": 0.53,
+      "macro_space": 0.9
+    },
+    "Oracle": {
+      "macro_character": 0.22,
+      "macro_coupling": 0.64,
+      "macro_movement": 0.58,
+      "macro_space": 0.87
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "augur",
     "spectral"
   ],
-  "description": "Oracle shifts Obscura's resonant frequencies into cold augury \u2014 reading the stiffness of ice."
+  "version": "1.0"
 }

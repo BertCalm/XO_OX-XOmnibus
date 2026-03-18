@@ -1,45 +1,52 @@
 {
-  "name": "DENSITY PULSE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8622,
+    "source": "Oblong",
+    "target": "Overlap",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.0784,
+    "brightness": 0.3838,
+    "density": 0.9729,
+    "movement": 0.7905,
+    "space": 0.6893,
+    "warmth": 0.7397
+  },
   "engines": [
-    "OBLONG",
-    "OVERLAP"
+    "Oblong",
+    "Overlap"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7455,
+    "COUPLING": 0.7293,
+    "MOVEMENT": 0.3459,
+    "SPACE": 0.2321
+  },
+  "mood": "Entangled",
+  "name": "DENSITY PULSE",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.8207,
-      "macro_movement": 0.8209,
       "macro_coupling": 0.9715,
+      "macro_movement": 0.8209,
       "macro_space": 0.2993
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.564,
-      "macro_movement": 0.5667,
       "macro_coupling": 0.9398,
+      "macro_movement": 0.5667,
       "macro_space": 0.677
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OBLONG",
-    "target": "OVERLAP",
-    "amount": 0.8622
-  },
-  "dna": {
-    "brightness": 0.3838,
-    "warmth": 0.7397,
-    "movement": 0.7905,
-    "density": 0.9729,
-    "space": 0.6893,
-    "aggression": 0.0784
-  },
-  "macros": {
-    "CHARACTER": 0.7455,
-    "MOVEMENT": 0.3459,
-    "COUPLING": 0.7293,
-    "SPACE": 0.2321
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -47,5 +54,6 @@
     "deep",
     "heavy",
     "bound"
-  ]
+  ],
+  "version": "1.0"
 }

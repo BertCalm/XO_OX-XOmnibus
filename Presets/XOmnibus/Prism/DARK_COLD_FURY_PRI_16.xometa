@@ -1,45 +1,52 @@
 {
-  "name": "DARK COLD FURY PRI 16",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OUTWIT",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.053,
-      "macro_movement": 0.304,
-      "macro_coupling": 0.479,
-      "macro_space": 0.66
-    },
-    "OCEANIC": {
-      "macro_character": 0.007,
-      "macro_movement": 0.33,
-      "macro_coupling": 0.663,
-      "macro_space": 0.637
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OUTWIT",
-    "target": "OCEANIC",
-    "amount": 0.7
+    "amount": 0.7,
+    "source": "Outwit",
+    "target": "Oceanic",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.941,
     "brightness": 0.053,
-    "warmth": 0.053,
-    "movement": 0.304,
     "density": 0.622,
+    "movement": 0.304,
     "space": 0.66,
-    "aggression": 0.941
+    "warmth": 0.053
   },
+  "engines": [
+    "Outwit",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.053,
-    "MOVEMENT": 0.304,
     "COUPLING": 0.479,
+    "MOVEMENT": 0.304,
     "SPACE": 0.66
   },
+  "mood": "Prism",
+  "name": "DARK COLD FURY PRI 16",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.007,
+      "macro_coupling": 0.663,
+      "macro_movement": 0.33,
+      "macro_space": 0.637
+    },
+    "Outwit": {
+      "macro_character": 0.053,
+      "macro_coupling": 0.479,
+      "macro_movement": 0.304,
+      "macro_space": 0.66
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
@@ -47,5 +54,6 @@
     "aggressive",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

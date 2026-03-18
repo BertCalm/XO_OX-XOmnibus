@@ -1,19 +1,25 @@
 {
-  "schema_version": 1,
-  "name": "Fading Photograph",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "A pad that slowly forgets itself. Hold a chord and listen as the memory dissolves into warm grain.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.35,
+    "density": 0.4,
+    "movement": 0.55,
+    "space": 0.8,
+    "warmth": 0.65
+  },
   "engines": [
     "Ombre"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "A pad that slowly forgets itself. Hold a chord and listen as the memory dissolves into warm grain.",
-  "tags": [
-    "pad",
-    "evolving",
-    "memory",
-    "ambient"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": "Ombre",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -21,50 +27,92 @@
     "SPACE"
   ],
   "macroTargets": [
-    { "macro": 1, "engineId": "Ombre", "parameterId": "ombre_blend", "min": 0.0, "max": 1.0 },
-    { "macro": 1, "engineId": "Ombre", "parameterId": "ombre_interference", "min": 0.0, "max": 0.8 },
-    { "macro": 2, "engineId": "Ombre", "parameterId": "ombre_memoryDrift", "min": 0.0, "max": 1.0 },
-    { "macro": 2, "engineId": "Ombre", "parameterId": "ombre_reactivity", "min": 0.0, "max": 1.0 },
-    { "macro": 3, "engineId": "Ombre", "parameterId": "ombre_interference", "min": 0.0, "max": 1.0 },
-    { "macro": 3, "engineId": "Ombre", "parameterId": "ombre_memoryGrain", "min": 5.0, "max": 500.0 },
-    { "macro": 4, "engineId": "Ombre", "parameterId": "ombre_memoryDecay", "min": 0.5, "max": 25.0 },
-    { "macro": 4, "engineId": "Ombre", "parameterId": "ombre_filterCutoff", "min": 200.0, "max": 12000.0 }
+    {
+      "engineId": "Ombre",
+      "macro": 1,
+      "max": 1.0,
+      "min": 0.0,
+      "parameterId": "ombre_blend"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 1,
+      "max": 0.8,
+      "min": 0.0,
+      "parameterId": "ombre_interference"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 2,
+      "max": 1.0,
+      "min": 0.0,
+      "parameterId": "ombre_memoryDrift"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 2,
+      "max": 1.0,
+      "min": 0.0,
+      "parameterId": "ombre_reactivity"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 3,
+      "max": 1.0,
+      "min": 0.0,
+      "parameterId": "ombre_interference"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 3,
+      "max": 500.0,
+      "min": 5.0,
+      "parameterId": "ombre_memoryGrain"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 4,
+      "max": 25.0,
+      "min": 0.5,
+      "parameterId": "ombre_memoryDecay"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 4,
+      "max": 12000.0,
+      "min": 200.0,
+      "parameterId": "ombre_filterCutoff"
+    }
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-14",
-  "legacy": {
-    "sourceInstrument": "Ombre",
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Fading Photograph",
   "parameters": {
     "Ombre": {
+      "ombre_attack": 0.8,
       "ombre_blend": 0.25,
-      "ombre_interference": 0.45,
-      "ombre_memoryDecay": 10.0,
-      "ombre_memoryGrain": 180.0,
-      "ombre_memoryDrift": 0.3,
-      "ombre_oscShape": 1.0,
-      "ombre_reactivity": 0.2,
-      "ombre_subLevel": 0.35,
+      "ombre_decay": 1.2,
       "ombre_filterCutoff": 3200.0,
       "ombre_filterReso": 0.25,
-      "ombre_attack": 0.8,
-      "ombre_decay": 1.2,
-      "ombre_sustain": 0.7,
+      "ombre_interference": 0.45,
+      "ombre_level": 0.75,
+      "ombre_memoryDecay": 10.0,
+      "ombre_memoryDrift": 0.3,
+      "ombre_memoryGrain": 180.0,
+      "ombre_oscShape": 1.0,
+      "ombre_reactivity": 0.2,
       "ombre_release": 3.0,
-      "ombre_level": 0.75
+      "ombre_subLevel": 0.35,
+      "ombre_sustain": 0.7
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.65,
-    "movement": 0.55,
-    "density": 0.40,
-    "space": 0.80,
-    "aggression": 0.10
-  }
+  "tags": [
+    "pad",
+    "evolving",
+    "memory",
+    "ambient"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

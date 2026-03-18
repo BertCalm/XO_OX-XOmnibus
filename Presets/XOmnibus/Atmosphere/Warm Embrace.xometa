@@ -1,61 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Warm Embrace",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Ethereal pads wash with warm character.",
+  "dna": {
+    "aggression": 0.103,
+    "brightness": 0.367,
+    "density": 0.141,
+    "movement": 0.0,
+    "space": 0.259,
+    "warmth": 0.208
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ethereal pads wash with warm character.",
-  "tags": [
-    "chorus",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Pads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Pads",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Warm Embrace",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 0.0,
-      "drift_oscA_level": 0.7,
-      "drift_oscB_mode": 0.0,
-      "drift_oscB_shape": 1.0,
-      "drift_oscB_level": 0.4,
-      "drift_oscB_pw": 0.55,
-      "drift_oscB_tune": -12.0,
-      "drift_subLevel": 0.35,
-      "drift_hazeAmount": 0.2,
+      "drift_attack": 200.0,
+      "drift_decay": 600.0,
       "drift_filterCutoff": 2000.0,
       "drift_filterReso": 0.15,
       "drift_filterSlope": 1.0,
-      "drift_attack": 200.0,
-      "drift_decay": 600.0,
-      "drift_sustain": 0.8,
+      "drift_hazeAmount": 0.2,
+      "drift_level": -3.0,
+      "drift_oscA_level": 0.7,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_pw": 0.55,
+      "drift_oscB_shape": 1.0,
+      "drift_oscB_tune": -12.0,
       "drift_release": 1200.0,
-      "drift_level": -3.0
+      "drift_subLevel": 0.35,
+      "drift_sustain": 0.8
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.367,
-    "warmth": 0.208,
-    "movement": 0.0,
-    "density": 0.141,
-    "space": 0.259,
-    "aggression": 0.103
-  }
+  "tags": [
+    "chorus",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

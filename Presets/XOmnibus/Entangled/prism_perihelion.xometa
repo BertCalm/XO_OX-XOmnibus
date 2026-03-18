@@ -1,50 +1,58 @@
 {
-  "name": "Prism Perihelion",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.728,
+    "source": "Oblique",
+    "target": "Orbital",
+    "type": "SPECTRAL_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.88,
+    "density": 0.4,
+    "movement": 0.7,
+    "space": 0.8,
+    "warmth": 0.25
+  },
   "engines": [
-    "OBLIQUE",
-    "ORBITAL"
+    "Oblique",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.728,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.625
+  },
+  "mood": "Entangled",
+  "name": "Prism Perihelion",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.838,
-      "macro_movement": 0.788,
       "macro_coupling": 0.688,
+      "macro_movement": 0.788,
       "macro_space": 0.588
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.362,
-      "macro_movement": 0.512,
       "macro_coupling": 0.462,
+      "macro_movement": 0.512,
       "macro_space": 0.662
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_SHIFT",
-    "source": "OBLIQUE",
-    "target": "ORBITAL",
-    "amount": 0.728
-  },
-  "dna": {
-    "brightness": 0.88,
-    "warmth": 0.25,
-    "movement": 0.7,
-    "density": 0.4,
-    "space": 0.8,
-    "aggression": 0.3
-  },
-  "macros": {
-    "CHARACTER": 0.6,
-    "MOVEMENT": 0.65,
-    "COUPLING": 0.728,
-    "SPACE": 0.625
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "prismatic",
     "orbital"
-  ]
+  ],
+  "version": "1.0"
 }

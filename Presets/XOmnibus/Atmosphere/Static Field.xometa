@@ -1,59 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Static Field",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expansive textures atmosphere with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.026,
+    "brightness": 0.447,
+    "density": 0.255,
+    "movement": 0.0,
+    "space": 0.396,
+    "warmth": 0.466
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expansive textures atmosphere with bob character and analog drift.",
-  "tags": [
-    "texture",
-    "static",
-    "ambient"
-  ],
+  "legacy": {
+    "sourceCategory": "Textures",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Textures",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Static Field",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
+      "bob_ampAttack": 3.5,
+      "bob_ampRelease": 7.0,
+      "bob_ampSustain": 0.92,
+      "bob_bobMode": 0.52,
+      "bob_fltCutoff": 5500.0,
+      "bob_fltMode": 0.0,
+      "bob_fltReso": 0.08,
       "bob_oscA_drift": 0.35,
       "bob_oscA_shape": 0.15,
+      "bob_oscA_wave": 0.0,
       "bob_oscB_blend": 0.0,
       "bob_texLevel": 0.68,
       "bob_texMode": 2.0,
       "bob_texTone": 0.35,
-      "bob_texWidth": 1.0,
-      "bob_fltMode": 0.0,
-      "bob_fltCutoff": 5500.0,
-      "bob_fltReso": 0.08,
-      "bob_ampAttack": 3.5,
-      "bob_ampSustain": 0.92,
-      "bob_ampRelease": 7.0,
-      "bob_bobMode": 0.52
+      "bob_texWidth": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.447,
-    "warmth": 0.466,
-    "movement": 0.0,
-    "density": 0.255,
-    "space": 0.396,
-    "aggression": 0.026
-  }
+  "tags": [
+    "texture",
+    "static",
+    "ambient"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

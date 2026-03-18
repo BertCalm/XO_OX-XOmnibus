@@ -1,48 +1,56 @@
 {
-  "name": "SKELETAL GRID",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OUROBOROS",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.332,
-      "macro_movement": 0.931,
-      "macro_coupling": 0.802,
-      "macro_space": 0.864
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.811,
-      "macro_movement": 0.267,
-      "macro_coupling": 0.787,
-      "macro_space": 0.108
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OUROBOROS",
-    "target": "OBBLIGATO",
-    "amount": 0.798
+    "amount": 0.798,
+    "source": "Ouroboros",
+    "target": "Obbligato",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.305,
     "brightness": 0.859,
-    "warmth": 0.222,
-    "movement": 0.817,
     "density": 0.111,
+    "movement": 0.817,
     "space": 0.46,
-    "aggression": 0.305
+    "warmth": 0.222
   },
+  "engines": [
+    "Ouroboros",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.795,
-    "MOVEMENT": 0.228,
     "COUPLING": 0.024,
+    "MOVEMENT": 0.228,
     "SPACE": 0.193
   },
+  "mood": "Entangled",
+  "name": "SKELETAL GRID",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.811,
+      "macro_coupling": 0.787,
+      "macro_movement": 0.267,
+      "macro_space": 0.108
+    },
+    "Ouroboros": {
+      "macro_character": 0.332,
+      "macro_coupling": 0.802,
+      "macro_movement": 0.931,
+      "macro_space": 0.864
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "sparse",
     "spectral"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "DARK VAST KINETIC FLU 08",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OPAL",
-    "OMBRE"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.375,
-      "macro_movement": 0.957,
-      "macro_coupling": 0.889,
-      "macro_space": 0.942
-    },
-    "OMBRE": {
-      "macro_character": 0.344,
-      "macro_movement": 0.864,
-      "macro_coupling": 0.466,
-      "macro_space": 1.0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OPAL",
-    "target": "OMBRE",
-    "amount": 0.782
+    "amount": 0.782,
+    "source": "Opal",
+    "target": "Ombre",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.518,
     "brightness": 0.07,
-    "warmth": 0.68,
-    "movement": 0.957,
     "density": 0.34,
+    "movement": 0.957,
     "space": 0.942,
-    "aggression": 0.518
+    "warmth": 0.68
   },
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.375,
-    "MOVEMENT": 0.957,
     "COUPLING": 0.889,
+    "MOVEMENT": 0.957,
     "SPACE": 0.942
   },
+  "mood": "Flux",
+  "name": "DARK VAST KINETIC FLU 08",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.344,
+      "macro_coupling": 0.466,
+      "macro_movement": 0.864,
+      "macro_space": 1.0
+    },
+    "Opal": {
+      "macro_character": 0.375,
+      "macro_coupling": 0.889,
+      "macro_movement": 0.957,
+      "macro_space": 0.942
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -47,5 +54,6 @@
     "kinetic",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

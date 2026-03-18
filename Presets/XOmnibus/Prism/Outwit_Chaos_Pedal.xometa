@@ -1,49 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "Chaos Pedal",
-  "mood": "Prism",
-  "engines": ["Outwit"],
-  "author": "Guru Bin — OUTWIT Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Rule 30 at rest, held back by low mutation. Mod wheel opens the mutation flood — the automaton accelerates from order through turbulence to total randomness and back. Press the pedal to the floor and the octopus loses its mind. Release and it remembers.",
-  "tags": ["prism", "expressive", "chaos", "mutation", "mod-wheel", "performance"],
-  "macroLabels": ["CHARACTER", "CHAOS", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.4,
-    "movement": 0.7,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.6
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Rule 30 at rest, held back by low mutation. Mod wheel opens the mutation flood — the automaton accelerates from order through turbulence to total randomness and back. Press the pedal to the floor and the octopus loses its mind. Release and it remembers.",
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.5,
+    "density": 0.6,
+    "movement": 0.7,
+    "space": 0.5,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Outwit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Chaos Pedal",
   "parameters": {
     "Outwit": {
-      "owit_rule": 30,
-      "owit_armBalance": 0.55,
-      "owit_mutationRate": 0.05,
-      "owit_armSpread": 0.55,
-      "owit_sync": 0.6,
-      "owit_feedbackAmt": 0.4,
-      "owit_chaos": 0.15,
-      "owit_density": 0.6,
       "owit_ampAttack": 0.02,
       "owit_ampDecay": 0.25,
-      "owit_ampSustain": 0.85,
       "owit_ampRelease": 0.8,
+      "owit_ampSustain": 0.85,
+      "owit_armBalance": 0.55,
+      "owit_armSpread": 0.55,
+      "owit_chaos": 0.15,
+      "owit_density": 0.6,
+      "owit_feedbackAmt": 0.4,
       "owit_filterCutoff": 0.58,
       "owit_filterRes": 0.38,
-      "owit_lfoRate": 0.12,
       "owit_lfoDepth": 0.18,
-      "owit_macroCharacter": 0.0,
+      "owit_lfoRate": 0.12,
       "owit_macroChaos": 0.0,
+      "owit_macroCharacter": 0.0,
       "owit_macroCoupling": 0.0,
       "owit_macroSpace": 0.0,
+      "owit_modWheelDepth": 0.95,
       "owit_modWheelTarget": "owit_mutationRate",
-      "owit_modWheelDepth": 0.95
+      "owit_mutationRate": 0.05,
+      "owit_rule": 30,
+      "owit_sync": 0.6
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "prism",
+    "expressive",
+    "chaos",
+    "mutation",
+    "mod-wheel",
+    "performance"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

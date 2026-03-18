@@ -1,25 +1,33 @@
 {
-  "name": "Thick Horizon",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Bronze singing bowl at rest. Rich overtones decaying over geological time.",
   "engines": [
-    "OBBLIGATO"
+    "Obbligato"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.574,
-    "MOVEMENT": 0.099,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.099,
     "SPACE": 0.605
   },
-  "sonic_dna": {
-    "brightness": 0.238,
-    "warmth": 0.909,
-    "movement": 0.099,
-    "density": 0.88,
-    "space": 0.605,
-    "aggression": 0.04
-  },
+  "mood": "Atmosphere",
+  "name": "Thick Horizon",
   "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.04,
+    "brightness": 0.238,
+    "density": 0.88,
+    "movement": 0.099,
+    "space": 0.605,
+    "warmth": 0.909
+  },
   "tags": [
     "atmosphere",
     "drone",
@@ -27,5 +35,5 @@
     "warm",
     "thick"
   ],
-  "description": "Bronze singing bowl at rest. Rich overtones decaying over geological time."
+  "version": "1.0"
 }

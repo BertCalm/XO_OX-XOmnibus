@@ -1,50 +1,58 @@
 {
-  "name": "Stiff Paper",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.63,
+    "source": "Origami",
+    "target": "Obscura",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "description": "Origami fold angles frequency-shift Obscura's string stiffness — paper becomes wire.",
+  "dna": {
+    "aggression": 0.267,
+    "brightness": 0.0,
+    "density": 0.17,
+    "movement": 0.347,
+    "space": 0.87,
+    "warmth": 0.07
+  },
   "engines": [
-    "OBSCURA",
-    "ORIGAMI"
+    "Obscura",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.21,
+    "COUPLING": 0.63,
+    "MOVEMENT": 0.56,
+    "SPACE": 0.87
+  },
+  "mood": "Entangled",
+  "name": "Stiff Paper",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.21,
-      "macro_movement": 0.56,
       "macro_coupling": 0.63,
+      "macro_movement": 0.56,
       "macro_space": 0.87
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.18,
-      "macro_movement": 0.51,
       "macro_coupling": 0.68,
+      "macro_movement": 0.51,
       "macro_space": 0.9
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ORIGAMI",
-    "target": "OBSCURA",
-    "amount": 0.63
-  },
-  "dna": {
-    "brightness": 0.0,
-    "warmth": 0.07,
-    "movement": 0.347,
-    "density": 0.17,
-    "space": 0.87,
-    "aggression": 0.267
-  },
-  "macros": {
-    "CHARACTER": 0.21,
-    "MOVEMENT": 0.56,
-    "COUPLING": 0.63,
-    "SPACE": 0.87
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "stiff",
     "paper"
   ],
-  "description": "Origami fold angles frequency-shift Obscura's string stiffness \u2014 paper becomes wire."
+  "version": "1.0"
 }

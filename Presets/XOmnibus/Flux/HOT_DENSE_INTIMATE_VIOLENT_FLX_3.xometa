@@ -1,45 +1,52 @@
 {
-  "name": "HOT_DENSE_INTIMATE_VIOLENT_FLX_3",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6508,
+    "source": "Oceanic",
+    "target": "Odyssey",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.8724,
+    "brightness": 0.3201,
+    "density": 0.8899,
+    "movement": 0.6886,
+    "space": 0.0386,
+    "warmth": 0.8786
+  },
   "engines": [
-    "OCEANIC",
-    "ODYSSEY"
+    "Oceanic",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4048,
+    "COUPLING": 0.7684,
+    "MOVEMENT": 0.637,
+    "SPACE": 0.1065
+  },
+  "mood": "Flux",
+  "name": "HOT_DENSE_INTIMATE_VIOLENT_FLX_3",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.4048,
-      "macro_movement": 0.637,
       "macro_coupling": 0.7684,
+      "macro_movement": 0.637,
       "macro_space": 0.1065
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.2059,
-      "macro_movement": 0.7132,
       "macro_coupling": 0.8551,
+      "macro_movement": 0.7132,
       "macro_space": 0.1676
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OCEANIC",
-    "target": "ODYSSEY",
-    "amount": 0.6508
-  },
-  "dna": {
-    "brightness": 0.3201,
-    "warmth": 0.8786,
-    "movement": 0.6886,
-    "density": 0.8899,
-    "space": 0.0386,
-    "aggression": 0.8724
-  },
-  "macros": {
-    "CHARACTER": 0.4048,
-    "MOVEMENT": 0.637,
-    "COUPLING": 0.7684,
-    "SPACE": 0.1065
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "high-density",
     "low-space",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

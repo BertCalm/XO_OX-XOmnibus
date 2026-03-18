@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_VAST_GENTLE_PRS_DRK_2",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7252,
+    "source": "Ottoni",
+    "target": "Overworld",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.0639,
+    "brightness": 0.1068,
+    "density": 0.5759,
+    "movement": 0.6021,
+    "space": 0.9556,
+    "warmth": 0.9815
+  },
   "engines": [
-    "OTTONI",
-    "OVERWORLD"
+    "Ottoni",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5227,
+    "COUPLING": 0.5759,
+    "MOVEMENT": 0.6021,
+    "SPACE": 0.9556
+  },
+  "mood": "Prism",
+  "name": "DARK_HOT_VAST_GENTLE_PRS_DRK_2",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.5227,
-      "macro_movement": 0.6021,
       "macro_coupling": 0.5759,
+      "macro_movement": 0.6021,
       "macro_space": 0.9556
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.5241,
-      "macro_movement": 0.5718,
       "macro_coupling": 0.5539,
+      "macro_movement": 0.5718,
       "macro_space": 0.9426
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OTTONI",
-    "target": "OVERWORLD",
-    "amount": 0.7252
-  },
-  "dna": {
-    "brightness": 0.1068,
-    "warmth": 0.9815,
-    "movement": 0.6021,
-    "density": 0.5759,
-    "space": 0.9556,
-    "aggression": 0.0639
-  },
-  "macros": {
-    "CHARACTER": 0.5227,
-    "MOVEMENT": 0.6021,
-    "COUPLING": 0.5759,
-    "SPACE": 0.9556
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "hot",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

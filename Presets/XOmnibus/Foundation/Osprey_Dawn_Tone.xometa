@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Osprey Dawn Tone",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "First light. The osprey calls once and the day begins.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.55,
+    "density": 0.6,
+    "movement": 0.35,
+    "space": 0.45,
+    "warmth": 0.75
+  },
   "engines": [
     "Osprey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "First light. The osprey calls once and the day begins.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Osprey Dawn Tone",
+  "parameters": {
+    "Osprey": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "call",
     "tone",
@@ -16,31 +41,6 @@
     "foundation",
     "dawn"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Osprey": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.75,
-    "movement": 0.35,
-    "density": 0.6,
-    "space": 0.45,
-    "aggression": 0.2
-  }
+  "version": "1.0.0"
 }

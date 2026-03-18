@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "NES Crusher",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.1116,
-    "warmth": 0.4752,
-    "movement": 0.5144,
-    "density": 0.8001,
-    "space": 0.2717,
-    "aggression": 0.736
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "YM2612 dense crunch, brightness cut to zero",
   "dna": {
+    "aggression": 0.736,
     "brightness": 0.1116,
-    "warmth": 0.4752,
-    "movement": 0.5144,
     "density": 0.8001,
+    "movement": 0.5144,
     "space": 0.2717,
-    "aggression": 0.736
+    "warmth": 0.4752
   },
   "engines": [
-    "OVERWORLD"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "YM2612 dense crunch, brightness cut to zero",
-  "tags": [
-    "prism",
-    "dark",
-    "dense",
-    "extreme",
-    "anchor"
+    "Overworld"
   ],
   "macroLabels": [
     "ERA",
@@ -38,24 +23,39 @@
     "SPACE"
   ],
   "macros": {
-    "ERA": 0.1534,
     "CHAOS": 0.6583,
     "COUPLE": 0.5255,
+    "ERA": 0.1534,
     "SPACE": 0.7183
   },
-  "couplingIntensity": "None",
+  "mood": "Prism",
+  "name": "NES Crusher",
   "parameters": {
-    "OVERWORLD": {
-      "ow_macro_era": 0.1534,
+    "Overworld": {
+      "ow_couplingBus": 0,
+      "ow_couplingLevel": 0.5,
       "ow_macro_chaos": 0.6583,
       "ow_macro_couple": 0.5255,
+      "ow_macro_era": 0.1534,
       "ow_macro_space": 0.7183,
-      "ow_outputLevel": 0.85,
-      "ow_couplingLevel": 0.5,
-      "ow_couplingBus": 0
+      "ow_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.736,
+    "brightness": 0.1116,
+    "density": 0.8001,
+    "movement": 0.5144,
+    "space": 0.2717,
+    "warmth": 0.4752
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "dense",
+    "extreme",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

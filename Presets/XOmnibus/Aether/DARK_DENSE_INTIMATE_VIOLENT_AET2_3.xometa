@@ -1,45 +1,52 @@
 {
-  "name": "DARK_DENSE_INTIMATE_VIOLENT_AET2_3",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8804,
+    "source": "Oblique",
+    "target": "Orbital",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.9834,
+    "brightness": 0.0516,
+    "density": 0.9356,
+    "movement": 0.4197,
+    "space": 0.0259,
+    "warmth": 0.6951
+  },
   "engines": [
-    "OBLIQUE",
-    "ORBITAL"
+    "Oblique",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0462,
+    "COUPLING": 0.8804,
+    "MOVEMENT": 0.42,
+    "SPACE": 0.0259
+  },
+  "mood": "Aether",
+  "name": "DARK_DENSE_INTIMATE_VIOLENT_AET2_3",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.0336,
-      "macro_movement": 0.4128,
       "macro_coupling": 0.9346,
+      "macro_movement": 0.4128,
       "macro_space": 0.0101
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.0588,
-      "macro_movement": 0.4272,
       "macro_coupling": 0.9849,
+      "macro_movement": 0.4272,
       "macro_space": 0.01
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OBLIQUE",
-    "target": "ORBITAL",
-    "amount": 0.8804
-  },
-  "dna": {
-    "brightness": 0.0516,
-    "density": 0.9356,
-    "space": 0.0259,
-    "aggression": 0.9834,
-    "warmth": 0.6951,
-    "movement": 0.4197
-  },
-  "macros": {
-    "CHARACTER": 0.0462,
-    "MOVEMENT": 0.42,
-    "COUPLING": 0.8804,
-    "SPACE": 0.0259
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +56,6 @@
     "intimate",
     "violent",
     "abyssal"
-  ]
+  ],
+  "version": "1.0"
 }

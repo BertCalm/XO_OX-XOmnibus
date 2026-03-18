@@ -1,48 +1,56 @@
 {
-  "name": "RHYTHMIC FOUNDATION",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ORIGAMI",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.769,
-      "macro_movement": 0.887,
-      "macro_coupling": 0.367,
-      "macro_space": 0.258
-    },
-    "ORBITAL": {
-      "macro_character": 0.354,
-      "macro_movement": 0.904,
-      "macro_coupling": 0.577,
-      "macro_space": 0.336
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ORIGAMI",
-    "target": "ORBITAL",
-    "amount": 0.732
+    "amount": 0.732,
+    "source": "Origami",
+    "target": "Orbital",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.69,
     "brightness": 0.567,
-    "warmth": 0.792,
-    "movement": 0.887,
     "density": 0.592,
+    "movement": 0.887,
     "space": 0.889,
-    "aggression": 0.69
+    "warmth": 0.792
   },
+  "engines": [
+    "Origami",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.602,
-    "MOVEMENT": 0.887,
     "COUPLING": 0.732,
+    "MOVEMENT": 0.887,
     "SPACE": 0.889
   },
+  "mood": "Foundation",
+  "name": "RHYTHMIC FOUNDATION",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.354,
+      "macro_coupling": 0.577,
+      "macro_movement": 0.904,
+      "macro_space": 0.336
+    },
+    "Origami": {
+      "macro_character": 0.769,
+      "macro_coupling": 0.367,
+      "macro_movement": 0.887,
+      "macro_space": 0.258
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-  ]
+  ],
+  "version": "1.0"
 }

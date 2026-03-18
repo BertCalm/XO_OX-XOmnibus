@@ -1,31 +1,39 @@
 {
-  "name": "Harp & Claw",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7,
+    "source": "Orphica",
+    "target": "Ocelot",
+    "type": "PREDATOR_STALK"
+  },
+  "description": "Gossamer string plucks interrupted by sudden predatory stabs — beauty and danger",
   "engines": [
-    "ORPHICA",
-    "OCELOT"
+    "Orphica",
+    "Ocelot"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.65,
-    "MOVEMENT": 0.7,
     "COUPLING": 0.7,
+    "MOVEMENT": 0.7,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.68,
-    "warmth": 0.52,
-    "movement": 0.78,
-    "density": 0.46,
-    "space": 0.54,
-    "aggression": 0.37
-  },
+  "mood": "Entangled",
+  "name": "Harp & Claw",
   "parameters": {},
-  "coupling": {
-    "type": "PREDATOR_STALK",
-    "source": "ORPHICA",
-    "target": "OCELOT",
-    "amount": 0.7
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.37,
+    "brightness": 0.68,
+    "density": 0.46,
+    "movement": 0.78,
+    "space": 0.54,
+    "warmth": 0.52
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "ocelot",
     "microsound"
   ],
-  "description": "Gossamer string plucks interrupted by sudden predatory stabs \u2014 beauty and danger"
+  "version": "1.0"
 }

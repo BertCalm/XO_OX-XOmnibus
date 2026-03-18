@@ -1,45 +1,52 @@
 {
-  "name": "Fat Loop",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.88,
+    "source": "Ouroboros",
+    "target": "Obese",
+    "type": "FEEDBACK_RING"
+  },
+  "dna": {
+    "aggression": 0.95,
+    "brightness": 0.15,
+    "density": 1.0,
+    "movement": 0.75,
+    "space": 0.1,
+    "warmth": 0.9
+  },
   "engines": [
-    "OBESE",
-    "OUROBOROS"
+    "Obese",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.95,
+    "COUPLING": 0.9,
+    "MOVEMENT": 0.7,
+    "SPACE": 0.1
+  },
+  "mood": "Entangled",
+  "name": "Fat Loop",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.95,
-      "macro_movement": 0.7,
       "macro_coupling": 0.9,
+      "macro_movement": 0.7,
       "macro_space": 0.1
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.85,
-      "macro_movement": 0.8,
       "macro_coupling": 0.85,
+      "macro_movement": 0.8,
       "macro_space": 0.2
     }
   },
-  "coupling": {
-    "type": "FEEDBACK_RING",
-    "source": "OUROBOROS",
-    "target": "OBESE",
-    "amount": 0.88
-  },
-  "dna": {
-    "brightness": 0.15,
-    "warmth": 0.9,
-    "movement": 0.75,
-    "density": 1.0,
-    "space": 0.1,
-    "aggression": 0.95
-  },
-  "macros": {
-    "CHARACTER": 0.95,
-    "MOVEMENT": 0.7,
-    "COUPLING": 0.9,
-    "SPACE": 0.1
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "obese",
@@ -48,5 +55,6 @@
     "feedback",
     "extreme",
     "fat"
-  ]
+  ],
+  "version": "1.0"
 }

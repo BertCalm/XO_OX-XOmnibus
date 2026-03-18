@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_DENSE_VIOLENT_ENT_AGG_2",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.805,
+    "source": "Obese",
+    "target": "Oracle",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.926,
+    "brightness": 0.965,
+    "density": 0.981,
+    "movement": 0.63,
+    "space": 0.476,
+    "warmth": 0.941
+  },
   "engines": [
-    "OBESE",
-    "ORACLE"
+    "Obese",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.491,
+    "COUPLING": 0.815,
+    "MOVEMENT": 0.63,
+    "SPACE": 0.476
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT_WARM_DENSE_VIOLENT_ENT_AGG_2",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.472,
-      "macro_movement": 0.624,
       "macro_coupling": 0.815,
+      "macro_movement": 0.624,
       "macro_space": 0.486
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.511,
-      "macro_movement": 0.669,
       "macro_coupling": 0.834,
+      "macro_movement": 0.669,
       "macro_space": 0.486
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBESE",
-    "target": "ORACLE",
-    "amount": 0.805
-  },
-  "dna": {
-    "brightness": 0.965,
-    "warmth": 0.941,
-    "movement": 0.63,
-    "density": 0.981,
-    "space": 0.476,
-    "aggression": 0.926
-  },
-  "macros": {
-    "CHARACTER": 0.491,
-    "MOVEMENT": 0.63,
-    "COUPLING": 0.815,
-    "SPACE": 0.476
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "bright",
     "warm",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

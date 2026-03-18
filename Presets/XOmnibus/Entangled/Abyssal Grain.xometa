@@ -1,31 +1,39 @@
 {
-  "name": "Abyssal Grain",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6,
+    "source": "Opal",
+    "target": "Owlfish",
+    "type": "RESONANT_PIPE"
+  },
+  "description": "Opal grain cloud descends past the thermocline — owlfish pipes resonating through particles",
   "engines": [
-    "OPAL",
-    "OWLFISH"
+    "Opal",
+    "Owlfish"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.45,
-    "MOVEMENT": 0.6,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.6,
     "SPACE": 0.8
   },
-  "sonic_dna": {
-    "brightness": 0.48,
-    "warmth": 0.57,
-    "movement": 0.52,
-    "density": 0.56,
-    "space": 0.68,
-    "aggression": 0.24
-  },
+  "mood": "Entangled",
+  "name": "Abyssal Grain",
   "parameters": {},
-  "coupling": {
-    "type": "RESONANT_PIPE",
-    "source": "OPAL",
-    "target": "OWLFISH",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.24,
+    "brightness": 0.48,
+    "density": 0.56,
+    "movement": 0.52,
+    "space": 0.68,
+    "warmth": 0.57
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "owlfish",
     "granular"
   ],
-  "description": "Opal grain cloud descends past the thermocline \u2014 owlfish pipes resonating through particles"
+  "version": "1.0"
 }

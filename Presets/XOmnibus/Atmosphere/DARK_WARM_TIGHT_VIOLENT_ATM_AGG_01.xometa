@@ -1,45 +1,52 @@
 {
-  "name": "DARK WARM TIGHT VIOLENT ATM AGG 1",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.975,
+    "source": "Oceanic",
+    "target": "Orbital",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.9,
+    "brightness": 0.056,
+    "density": 0.601,
+    "movement": 0.452,
+    "space": 0.112,
+    "warmth": 0.961
+  },
   "engines": [
-    "OCEANIC",
-    "ORBITAL"
+    "Oceanic",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.052,
+    "COUPLING": 0.863,
+    "MOVEMENT": 0.428,
+    "SPACE": 0.111
+  },
+  "mood": "Atmosphere",
+  "name": "DARK WARM TIGHT VIOLENT ATM AGG 1",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.052,
-      "macro_movement": 0.417,
       "macro_coupling": 0.85,
+      "macro_movement": 0.417,
       "macro_space": 0.112
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.053,
-      "macro_movement": 0.439,
       "macro_coupling": 0.876,
+      "macro_movement": 0.439,
       "macro_space": 0.109
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OCEANIC",
-    "target": "ORBITAL",
-    "amount": 0.975
-  },
-  "dna": {
-    "brightness": 0.056,
-    "warmth": 0.961,
-    "movement": 0.452,
-    "density": 0.601,
-    "space": 0.112,
-    "aggression": 0.9
-  },
-  "macros": {
-    "CHARACTER": 0.052,
-    "MOVEMENT": 0.428,
-    "COUPLING": 0.863,
-    "SPACE": 0.111
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -47,5 +54,6 @@
     "violent",
     "dark",
     "tight"
-  ]
+  ],
+  "version": "1.0"
 }

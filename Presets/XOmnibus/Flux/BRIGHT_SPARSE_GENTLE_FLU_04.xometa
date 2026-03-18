@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT SPARSE GENTLE FLU 04",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.815,
+    "source": "Oracle",
+    "target": "Organon",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.095,
+    "brightness": 0.89,
+    "density": 0.117,
+    "movement": 0.356,
+    "space": 0.644,
+    "warmth": 0.685
+  },
   "engines": [
-    "ORACLE",
-    "ORGANON"
+    "Oracle",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.788,
+    "COUPLING": 0.89,
+    "MOVEMENT": 0.356,
+    "SPACE": 0.644
+  },
+  "mood": "Flux",
+  "name": "BRIGHT SPARSE GENTLE FLU 04",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.788,
-      "macro_movement": 0.356,
       "macro_coupling": 0.89,
+      "macro_movement": 0.356,
       "macro_space": 0.644
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.879,
-      "macro_movement": 0.316,
       "macro_coupling": 0.971,
+      "macro_movement": 0.316,
       "macro_space": 0.498
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ORACLE",
-    "target": "ORGANON",
-    "amount": 0.815
-  },
-  "dna": {
-    "brightness": 0.89,
-    "warmth": 0.685,
-    "movement": 0.356,
-    "density": 0.117,
-    "space": 0.644,
-    "aggression": 0.095
-  },
-  "macros": {
-    "CHARACTER": 0.788,
-    "MOVEMENT": 0.356,
-    "COUPLING": 0.89,
-    "SPACE": 0.644
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
@@ -47,5 +54,6 @@
     "gentle",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

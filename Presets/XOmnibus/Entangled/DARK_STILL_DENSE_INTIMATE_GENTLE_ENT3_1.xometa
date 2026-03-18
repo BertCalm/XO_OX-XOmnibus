@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "DARK_STILL_DENSE_INTIMATE_GENTLE_ENT3_1",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7637,
+    "source": "Orphica",
+    "target": "Origami",
+    "type": "RESONANCE_SHARE"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_STILL_DENSE_INTIMATE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.0887,
+    "brightness": 0.1036,
+    "density": 0.9377,
+    "movement": 0.1024,
+    "space": 0.0899,
+    "warmth": 0.4796
+  },
   "engines": [
-    "ORPHICA",
-    "ORIGAMI"
+    "Orphica",
+    "Origami"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_STILL_DENSE_INTIMATE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7527,
+    "COUPLING": 0.8485,
+    "MOVEMENT": 0.1076,
+    "SPACE": 0.3999
+  },
+  "mood": "Entangled",
+  "name": "DARK_STILL_DENSE_INTIMATE_GENTLE_ENT3_1",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.7898,
+      "macro_coupling": 0.8345,
+      "macro_movement": 0.1009,
+      "macro_space": 0.1631
+    },
+    "Orphica": {
+      "macro_character": 0.7155,
+      "macro_coupling": 0.8625,
+      "macro_movement": 0.1143,
+      "macro_space": 0.6367
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +66,6 @@
     "dense",
     "intimate"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.7155,
-      "macro_movement": 0.1143,
-      "macro_coupling": 0.8625,
-      "macro_space": 0.6367
-    },
-    "ORIGAMI": {
-      "macro_character": 0.7898,
-      "macro_movement": 0.1009,
-      "macro_coupling": 0.8345,
-      "macro_space": 0.1631
-    }
-  },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORPHICA",
-    "target": "ORIGAMI",
-    "amount": 0.7637
-  },
-  "macros": {
-    "CHARACTER": 0.7527,
-    "MOVEMENT": 0.1076,
-    "COUPLING": 0.8485,
-    "SPACE": 0.3999
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.1036,
-    "warmth": 0.4796,
-    "movement": 0.1024,
-    "density": 0.9377,
-    "space": 0.0899,
-    "aggression": 0.0887
-  }
+  "version": "1.0.0"
 }

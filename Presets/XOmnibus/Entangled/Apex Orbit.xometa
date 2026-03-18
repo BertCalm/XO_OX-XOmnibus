@@ -1,33 +1,41 @@
 {
-  "name": "Apex Orbit",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.78,
+    "source": "Orbital",
+    "target": "Orca",
+    "type": "HARMONIC_BLEND"
+  },
+  "description": "Orbital's locked rotation containing Orca's apex predator force — still, massive, circling.",
   "engines": [
-    "ORBITAL",
-    "ORCA"
+    "Orbital",
+    "Orca"
   ],
-  "mood": "Entangled",
-  "strategy": "Still Aggressive",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8,
-    "MOVEMENT": 0.05,
     "COUPLING": 0.85,
+    "MOVEMENT": 0.05,
     "SPACE": 0.55
   },
-  "sonic_dna": {
-    "brightness": 0.45,
-    "warmth": 0.35,
-    "movement": 0.05,
-    "density": 0.7,
-    "space": 0.52,
-    "aggression": 0.94
-  },
+  "mood": "Entangled",
+  "name": "Apex Orbit",
   "parameters": {},
-  "coupling": {
-    "type": "HARMONIC_BLEND",
-    "source": "ORBITAL",
-    "target": "ORCA",
-    "amount": 0.78
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.94,
+    "brightness": 0.45,
+    "density": 0.7,
+    "movement": 0.05,
+    "space": 0.52,
+    "warmth": 0.35
   },
+  "strategy": "Still Aggressive",
   "tags": [
     "entangled",
     "aggressive",
@@ -35,5 +43,5 @@
     "orbital",
     "apex"
   ],
-  "description": "Orbital's locked rotation containing Orca's apex predator force \u2014 still, massive, circling."
+  "version": "1.0"
 }

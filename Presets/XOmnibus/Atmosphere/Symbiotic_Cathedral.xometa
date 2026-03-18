@@ -1,14 +1,64 @@
 {
-  "schema_version": 1,
-  "name": "Symbiotic Cathedral",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.35,
+        "engineA": "Odyssey",
+        "engineB": "Organon",
+        "type": "Audio->FM"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-10",
+  "description": "DRIFT's vast space coupled with Organon's living harmonics. Sacred biology.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.4,
+    "density": 0.4,
+    "movement": 0.3,
+    "space": 0.7,
+    "warmth": 0.55
+  },
   "engines": [
     "Odyssey",
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "DRIFT's vast space coupled with Organon's living harmonics. Sacred biology.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "DRIFT SPACE",
+    "ORGANISM",
+    "COUPLING",
+    "REVERB"
+  ],
+  "mood": "Atmosphere",
+  "name": "Symbiotic Cathedral",
+  "parameters": {
+    "Odyssey": {
+      "drift_hazeAmount": 0.6,
+      "drift_level": -5.0,
+      "drift_oscA_mode": 0
+    },
+    "Organon": {
+      "organon_catalystDrive": 0.4,
+      "organon_dampingCoeff": 0.06,
+      "organon_enzymeSelect": 1200.0,
+      "organon_isotopeBalance": 0.45,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.65,
+      "organon_metabolicRate": 0.2,
+      "organon_noiseColor": 0.5,
+      "organon_phasonShift": 0.0,
+      "organon_signalFlux": 0.6
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "drift",
     "organon",
@@ -16,56 +66,6 @@
     "sacred",
     "vast"
   ],
-  "macroLabels": [
-    "DRIFT SPACE",
-    "ORGANISM",
-    "COUPLING",
-    "REVERB"
-  ],
-  "couplingIntensity": "Subtle",
   "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Odyssey": {
-      "drift_oscA_mode": 0,
-      "drift_hazeAmount": 0.6,
-      "drift_level": -5.0
-    },
-    "Organon": {
-      "organon_metabolicRate": 0.2,
-      "organon_enzymeSelect": 1200.0,
-      "organon_catalystDrive": 0.4,
-      "organon_dampingCoeff": 0.06,
-      "organon_signalFlux": 0.6,
-      "organon_phasonShift": 0.0,
-      "organon_isotopeBalance": 0.45,
-      "organon_lockIn": 0.0,
-      "organon_membrane": 0.65,
-      "organon_noiseColor": 0.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "Organon",
-        "type": "Audio->FM",
-        "amount": 0.35
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.55,
-    "movement": 0.3,
-    "density": 0.4,
-    "space": 0.7,
-    "aggression": 0.05
-  }
+  "version": "1.0.0"
 }

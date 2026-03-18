@@ -1,13 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Crevasse Hymn",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Triangle wave, minimal fold, two slow prism bounces across maximum spread. Release of 12 seconds — notes dissolve into the space they were born in. Singing ice.",
+  "dna": {
+    "aggression": 0.13,
+    "brightness": 0.25,
+    "density": 0.78,
+    "movement": 0.68,
+    "space": 0.98,
+    "warmth": 0.88
+  },
   "engines": [
     "Oblique"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "Triangle wave, minimal fold, two slow prism bounces across maximum spread. Release of 12 seconds \u2014 notes dissolve into the space they were born in. Singing ice.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "SPACE",
+    "FOLD",
+    "PRISM DEPTH",
+    "FILTER"
+  ],
+  "mood": "Atmosphere",
+  "name": "Crevasse Hymn",
+  "parameters": {
+    "Oblique": {
+      "oblq_attack": 4.5,
+      "oblq_bounceCnt": 2.0,
+      "oblq_bounceDamp": 0.99,
+      "oblq_bounceGravity": 0.08,
+      "oblq_bounceRate": 2000.0,
+      "oblq_bounceSwing": 0.0,
+      "oblq_clickTone": 300.0,
+      "oblq_decay": 6.0,
+      "oblq_filterCut": 850.0,
+      "oblq_filterRes": 0.06,
+      "oblq_glide": 0.78,
+      "oblq_level": 0.68,
+      "oblq_oscDetune": 8.0,
+      "oblq_oscFold": 0.22,
+      "oblq_oscWave": 1,
+      "oblq_percClick": 0.0,
+      "oblq_percDecay": 0.01,
+      "oblq_phaserDepth": 0.72,
+      "oblq_phaserFeedback": 0.55,
+      "oblq_phaserMix": 0.58,
+      "oblq_phaserRate": 0.008,
+      "oblq_prismColor": 0.38,
+      "oblq_prismDamp": 0.82,
+      "oblq_prismDelay": 600.0,
+      "oblq_prismFeedback": 0.85,
+      "oblq_prismMix": 0.78,
+      "oblq_prismSpread": 0.98,
+      "oblq_prismWidth": 0.98,
+      "oblq_release": 12.0,
+      "oblq_sustain": 0.98
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "calm",
@@ -16,64 +74,6 @@
     "crevasse",
     "vast"
   ],
-  "macroLabels": [
-    "SPACE",
-    "FOLD",
-    "PRISM DEPTH",
-    "FILTER"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oblique": {
-      "oblq_oscWave": 1,
-      "oblq_oscFold": 0.22,
-      "oblq_oscDetune": 8.0,
-      "oblq_level": 0.68,
-      "oblq_glide": 0.78,
-      "oblq_percClick": 0.0,
-      "oblq_percDecay": 0.01,
-      "oblq_bounceRate": 2000.0,
-      "oblq_bounceGravity": 0.08,
-      "oblq_bounceDamp": 0.99,
-      "oblq_bounceCnt": 2.0,
-      "oblq_bounceSwing": 0.0,
-      "oblq_clickTone": 300.0,
-      "oblq_filterCut": 850.0,
-      "oblq_filterRes": 0.06,
-      "oblq_attack": 4.5,
-      "oblq_decay": 6.0,
-      "oblq_sustain": 0.98,
-      "oblq_release": 12.0,
-      "oblq_prismDelay": 600.0,
-      "oblq_prismSpread": 0.98,
-      "oblq_prismColor": 0.38,
-      "oblq_prismWidth": 0.98,
-      "oblq_prismFeedback": 0.85,
-      "oblq_prismMix": 0.78,
-      "oblq_prismDamp": 0.82,
-      "oblq_phaserRate": 0.008,
-      "oblq_phaserDepth": 0.72,
-      "oblq_phaserFeedback": 0.55,
-      "oblq_phaserMix": 0.58
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.25,
-    "warmth": 0.88,
-    "movement": 0.68,
-    "density": 0.78,
-    "space": 0.98,
-    "aggression": 0.13
-  }
+  "version": "1.0.0"
 }

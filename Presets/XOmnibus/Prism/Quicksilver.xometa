@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Quicksilver",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "Liquid, mercurial lead that shifts shape constantly.",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.65,
+    "density": 0.45,
+    "movement": 0.55,
+    "space": 0.15,
+    "warmth": 0.3
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Liquid, mercurial lead that shifts shape constantly.",
-  "tags": [
-    "liquid",
-    "mercurial",
-    "shifting",
-    "lead"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Quicksilver",
   "parameters": {
     "Organon": {
-      "organon_metabolicRate": 5.0,
-      "organon_enzymeSelect": 3500.0,
       "organon_catalystDrive": 0.7,
       "organon_dampingCoeff": 0.3,
-      "organon_signalFlux": 0.6,
-      "organon_phasonShift": 0.3,
+      "organon_enzymeSelect": 3500.0,
       "organon_isotopeBalance": 0.68,
       "organon_lockIn": 0.0,
       "organon_membrane": 0.15,
-      "organon_noiseColor": 0.68
+      "organon_metabolicRate": 5.0,
+      "organon_noiseColor": 0.68,
+      "organon_phasonShift": 0.3,
+      "organon_signalFlux": 0.6
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.65,
-    "warmth": 0.3,
-    "movement": 0.55,
-    "density": 0.45,
-    "space": 0.15,
-    "aggression": 0.3
-  }
+  "tags": [
+    "liquid",
+    "mercurial",
+    "shifting",
+    "lead"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

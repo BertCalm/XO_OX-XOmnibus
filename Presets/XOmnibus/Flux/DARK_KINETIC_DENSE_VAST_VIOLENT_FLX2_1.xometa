@@ -1,45 +1,52 @@
 {
-  "name": "DARK_KINETIC_DENSE_VAST_VIOLENT_FLX2_1",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.864,
+    "source": "Opal",
+    "target": "Oracle",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.9698,
+    "brightness": 0.0327,
+    "density": 0.9662,
+    "movement": 0.909,
+    "space": 0.9442,
+    "warmth": 0.3083
+  },
   "engines": [
-    "OPAL",
-    "ORACLE"
+    "Opal",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1571,
+    "COUPLING": 0.9619,
+    "MOVEMENT": 0.9068,
+    "SPACE": 0.9311
+  },
+  "mood": "Flux",
+  "name": "DARK_KINETIC_DENSE_VAST_VIOLENT_FLX2_1",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.1551,
-      "macro_movement": 0.9143,
       "macro_coupling": 0.9676,
+      "macro_movement": 0.9143,
       "macro_space": 0.9379
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.1591,
-      "macro_movement": 0.8994,
       "macro_coupling": 0.9562,
+      "macro_movement": 0.8994,
       "macro_space": 0.9243
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OPAL",
-    "target": "ORACLE",
-    "amount": 0.864
-  },
-  "dna": {
-    "brightness": 0.0327,
-    "warmth": 0.3083,
-    "movement": 0.909,
-    "density": 0.9662,
-    "space": 0.9442,
-    "aggression": 0.9698
-  },
-  "macros": {
-    "CHARACTER": 0.1571,
-    "MOVEMENT": 0.9068,
-    "COUPLING": 0.9619,
-    "SPACE": 0.9311
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -47,5 +54,6 @@
     "dense",
     "vast",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_KINETIC_GENTLE_FAM_VOL_29",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OSTERIA",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "OSTERIA": {
-      "macro_character": 0.528,
-      "macro_movement": 0.99,
-      "macro_coupling": 0.215,
-      "macro_space": 0.518
-    },
-    "ODYSSEY": {
-      "macro_character": 0.487,
-      "macro_movement": 0.981,
-      "macro_coupling": 0.206,
-      "macro_space": 0.575
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PHASE_COUPLE",
-    "source": "OSTERIA",
-    "target": "ODYSSEY",
-    "amount": 0.69
+    "amount": 0.69,
+    "source": "Osteria",
+    "target": "Odyssey",
+    "type": "PHASE_COUPLE"
   },
   "dna": {
+    "aggression": 0.101,
     "brightness": 0.043,
-    "warmth": 0.99,
-    "movement": 0.979,
     "density": 0.313,
+    "movement": 0.979,
     "space": 0.547,
-    "aggression": 0.101
+    "warmth": 0.99
   },
+  "engines": [
+    "Osteria",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.508,
-    "MOVEMENT": 0.986,
     "COUPLING": 0.21,
+    "MOVEMENT": 0.986,
     "SPACE": 0.546
   },
+  "mood": "Family",
+  "name": "DARK_HOT_KINETIC_GENTLE_FAM_VOL_29",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.487,
+      "macro_coupling": 0.206,
+      "macro_movement": 0.981,
+      "macro_space": 0.575
+    },
+    "Osteria": {
+      "macro_character": 0.528,
+      "macro_coupling": 0.215,
+      "macro_movement": 0.99,
+      "macro_space": 0.518
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "kinetic",
     "gentle",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

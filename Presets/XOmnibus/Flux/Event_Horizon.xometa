@@ -1,53 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Event Horizon",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Warm FDN mass collapsed to near-infinite feedback density.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.65,
+    "density": 0.88,
+    "movement": 0.72,
+    "space": 0.32,
+    "warmth": 0.75
+  },
   "engines": [
     "Overlap"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Warm FDN mass collapsed to near-infinite feedback density.",
-  "tags": [
-    "flux",
-    "extreme",
-    "reverb",
-    "dense"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Event Horizon",
   "parameters": {
     "Overlap": {
-      "olap_knotType": 4.0,
+      "olap_brightness": 0.68,
+      "olap_damping": 0.18,
+      "olap_decay": 0.95,
       "olap_delayFeedback": 0.96,
       "olap_diffusion": 0.82,
-      "olap_spread": 0.72,
+      "olap_knotType": 4.0,
       "olap_size": 0.25,
-      "olap_decay": 0.95,
-      "olap_damping": 0.18,
-      "olap_brightness": 0.68
+      "olap_spread": 0.72
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.65,
-    "warmth": 0.75,
-    "movement": 0.72,
-    "density": 0.88,
-    "space": 0.32,
-    "aggression": 0.45
-  }
+  "tags": [
+    "flux",
+    "extreme",
+    "reverb",
+    "dense"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

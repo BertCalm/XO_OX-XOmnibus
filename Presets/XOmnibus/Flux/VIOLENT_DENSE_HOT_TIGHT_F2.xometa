@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "VIOLENT DENSE HOT TIGHT F2",
-  "mood": "Flux",
-  "sonic_dna": {
-    "brightness": 0.568,
-    "warmth": 0.933,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Spatial",
+  "description": "Ultra-diverse Flux preset — extreme hot warmth, extreme violent aggression, extreme dense density, extreme tight space. Maximum contrast character design.",
+  "dna": {
     "aggression": 0.907,
-    "movement": 0.495,
+    "brightness": 0.568,
     "density": 0.898,
-    "space": 0.106
+    "movement": 0.495,
+    "space": 0.106,
+    "warmth": 0.933
   },
   "engines": [
-    "OBSCURA"
+    "Obscura"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme hot warmth, extreme violent aggression, extreme dense density, extreme tight space. Maximum contrast character design.",
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "VIOLENT DENSE HOT TIGHT F2",
+  "parameters": {
+    "Obscura": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.907,
+    "brightness": 0.568,
+    "density": 0.898,
+    "movement": 0.495,
+    "space": 0.106,
+    "warmth": 0.933
+  },
   "tags": [
     "warm",
     "aggressive",
@@ -24,25 +44,5 @@
     "flux",
     "extreme"
   ],
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "couplingIntensity": "Spatial",
-  "dna": {
-    "brightness": 0.568,
-    "warmth": 0.933,
-    "movement": 0.495,
-    "density": 0.898,
-    "space": 0.106,
-    "aggression": 0.907
-  },
-  "parameters": {
-    "OBSCURA": {}
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

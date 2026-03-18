@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT HOT VIOLENT KINETIC 1",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.9114,
-    "warmth": 0.9307,
-    "aggression": 0.9231,
-    "movement": 0.9272,
-    "density": 0.4851,
-    "space": 0.5492
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "High",
+  "couplingType": "TANGLE",
+  "description": "Ultra-diverse Entangled preset — bright hot violent kinetic. Designed for TANGLE coupling with XOsprey.",
   "dna": {
-    "brightness": 0.9114,
-    "warmth": 0.9307,
     "aggression": 0.9231,
-    "movement": 0.9272,
+    "brightness": 0.9114,
     "density": 0.4851,
-    "space": 0.5492
+    "movement": 0.9272,
+    "space": 0.5492,
+    "warmth": 0.9307
   },
   "engines": [
-    "XOsprey"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 bright hot violent kinetic. Designed for TANGLE coupling with XOsprey.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "tangle",
-    "osprey"
+    "Osprey"
   ],
   "macroLabels": [
     "BURN",
@@ -36,15 +23,28 @@
     "STRIKE",
     "RADIANCE"
   ],
-  "couplingType": "TANGLE",
-  "couplingIntensity": "High",
+  "mood": "Entangled",
+  "name": "BRIGHT HOT VIOLENT KINETIC 1",
   "parameters": {
-    "XOsprey": {
-      "couplingLevel": 0.626,
-      "couplingBus": 3
+    "Osprey": {
+      "couplingBus": 3,
+      "couplingLevel": 0.626
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9231,
+    "brightness": 0.9114,
+    "density": 0.4851,
+    "movement": 0.9272,
+    "space": 0.5492,
+    "warmth": 0.9307
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "tangle",
+    "osprey"
+  ],
+  "version": "1.0.0"
 }

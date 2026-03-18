@@ -1,45 +1,52 @@
 {
-  "name": "Mojo Serpent",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7,
+    "source": "Obese",
+    "target": "Ouroboros",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.85,
+    "brightness": 0.25,
+    "density": 0.9,
+    "movement": 0.65,
+    "space": 0.2,
+    "warmth": 0.8
+  },
   "engines": [
-    "OBESE",
-    "OUROBOROS"
+    "Obese",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.55,
+    "SPACE": 0.25
+  },
+  "mood": "Entangled",
+  "name": "Mojo Serpent",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.8,
-      "macro_movement": 0.55,
       "macro_coupling": 0.7,
+      "macro_movement": 0.55,
       "macro_space": 0.25
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.7,
-      "macro_movement": 0.65,
       "macro_coupling": 0.75,
+      "macro_movement": 0.65,
       "macro_space": 0.3
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBESE",
-    "target": "OUROBOROS",
-    "amount": 0.7
-  },
-  "dna": {
-    "brightness": 0.25,
-    "warmth": 0.8,
-    "movement": 0.65,
-    "density": 0.9,
-    "space": 0.2,
-    "aggression": 0.85
-  },
-  "macros": {
-    "CHARACTER": 0.8,
-    "MOVEMENT": 0.55,
-    "COUPLING": 0.7,
-    "SPACE": 0.25
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "obese",
@@ -47,5 +54,6 @@
     "bass",
     "mojo",
     "serpent"
-  ]
+  ],
+  "version": "1.0"
 }

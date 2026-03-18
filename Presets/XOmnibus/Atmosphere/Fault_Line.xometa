@@ -1,13 +1,57 @@
 {
-  "schema_version": 1,
-  "name": "Fault Line",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Filter resonance elevated, drive beginning to bite. LFO introduces irregular movement — not rhythm but unease. The tectonic plates are touching.",
+  "dna": {
+    "aggression": 0.38,
+    "brightness": 0.42,
+    "density": 0.78,
+    "movement": 0.62,
+    "space": 0.72,
+    "warmth": 0.35
+  },
   "engines": [
     "Orca"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "Filter resonance elevated, drive beginning to bite. LFO introduces irregular movement \u2014 not rhythm but unease. The tectonic plates are touching.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Fault Line",
+  "parameters": {
+    "Orca": {
+      "orca_ampAttack": 0.8,
+      "orca_ampDecay": 1.2,
+      "orca_ampRelease": 4.0,
+      "orca_ampSustain": 0.72,
+      "orca_drive": 0.38,
+      "orca_echoDelay": 0.58,
+      "orca_echoFeedback": 0.55,
+      "orca_filterCutoff": 0.52,
+      "orca_filterReso": 0.55,
+      "orca_lfoDepth": 0.72,
+      "orca_lfoRate": 0.18,
+      "orca_macroCharacter": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroMovement": 0.0,
+      "orca_macroSpace": 0.0,
+      "orca_reverbMix": 0.62
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "tense",
@@ -15,50 +59,6 @@
     "fault-line",
     "seismic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Orca": {
-      "orca_filterCutoff": 0.52,
-      "orca_filterReso": 0.55,
-      "orca_drive": 0.38,
-      "orca_lfoRate": 0.18,
-      "orca_lfoDepth": 0.72,
-      "orca_echoDelay": 0.58,
-      "orca_echoFeedback": 0.55,
-      "orca_reverbMix": 0.62,
-      "orca_ampAttack": 0.8,
-      "orca_ampDecay": 1.2,
-      "orca_ampSustain": 0.72,
-      "orca_ampRelease": 4.0,
-      "orca_macroCharacter": 0.0,
-      "orca_macroMovement": 0.0,
-      "orca_macroCoupling": 0.0,
-      "orca_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.42,
-    "warmth": 0.35,
-    "movement": 0.62,
-    "density": 0.78,
-    "space": 0.72,
-    "aggression": 0.38
-  }
+  "version": "1.0.0"
 }

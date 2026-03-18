@@ -1,45 +1,52 @@
 {
-  "name": "HOT_KINETIC_SPARSE_VAST_VIOLENT_FLX2_1",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.436,
+    "source": "Oceanic",
+    "target": "Opal",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.9884,
+    "brightness": 0.3691,
+    "density": 0.1092,
+    "movement": 0.9897,
+    "space": 0.9861,
+    "warmth": 0.9556
+  },
   "engines": [
-    "OCEANIC",
-    "OPAL"
+    "Oceanic",
+    "Opal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6764,
+    "COUPLING": 0.1285,
+    "MOVEMENT": 0.99,
+    "SPACE": 0.9883
+  },
+  "mood": "Flux",
+  "name": "HOT_KINETIC_SPARSE_VAST_VIOLENT_FLX2_1",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.6649,
-      "macro_movement": 0.99,
       "macro_coupling": 0.1303,
+      "macro_movement": 0.99,
       "macro_space": 0.99
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.688,
-      "macro_movement": 0.99,
       "macro_coupling": 0.1268,
+      "macro_movement": 0.99,
       "macro_space": 0.9866
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OCEANIC",
-    "target": "OPAL",
-    "amount": 0.436
-  },
-  "dna": {
-    "brightness": 0.3691,
-    "warmth": 0.9556,
-    "movement": 0.9897,
-    "density": 0.1092,
-    "space": 0.9861,
-    "aggression": 0.9884
-  },
-  "macros": {
-    "CHARACTER": 0.6764,
-    "MOVEMENT": 0.99,
-    "COUPLING": 0.1285,
-    "SPACE": 0.9883
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "warm",
@@ -47,5 +54,6 @@
     "sparse",
     "vast",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

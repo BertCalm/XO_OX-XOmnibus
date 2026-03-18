@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT WARM SPARSE VAST GENTLE FAM2 4",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OSTERIA",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "OSTERIA": {
-      "macro_character": 0.913,
-      "macro_movement": 0.319,
-      "macro_coupling": 0.072,
-      "macro_space": 0.988
-    },
-    "ODDFELIX": {
-      "macro_character": 0.905,
-      "macro_movement": 0.347,
-      "macro_coupling": 0.062,
-      "macro_space": 0.99
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OSTERIA",
-    "target": "ODDFELIX",
-    "amount": 0.072
+    "amount": 0.072,
+    "source": "Osteria",
+    "target": "OddfeliX",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.103,
     "brightness": 0.938,
-    "warmth": 0.889,
-    "movement": 0.319,
     "density": 0.041,
+    "movement": 0.319,
     "space": 0.988,
-    "aggression": 0.103
+    "warmth": 0.889
   },
+  "engines": [
+    "Osteria",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.913,
-    "MOVEMENT": 0.319,
     "COUPLING": 0.072,
+    "MOVEMENT": 0.319,
     "SPACE": 0.988
   },
+  "mood": "Family",
+  "name": "BRIGHT WARM SPARSE VAST GENTLE FAM2 4",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.905,
+      "macro_coupling": 0.062,
+      "macro_movement": 0.347,
+      "macro_space": 0.99
+    },
+    "Osteria": {
+      "macro_character": 0.913,
+      "macro_coupling": 0.072,
+      "macro_movement": 0.319,
+      "macro_space": 0.988
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
@@ -47,5 +54,6 @@
     "sparse",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

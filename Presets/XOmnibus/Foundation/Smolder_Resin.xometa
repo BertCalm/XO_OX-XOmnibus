@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Smolder Resin",
-  "mood": "Foundation",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Molten core tone. Filter barely open, heat radiating outward.",
+  "dna": {
+    "aggression": 0.633,
     "brightness": 0.566,
-    "warmth": 0.937,
-    "movement": 0.611,
     "density": 0.901,
+    "movement": 0.611,
     "space": 0.413,
-    "aggression": 0.633
+    "warmth": 0.937
   },
   "engines": [
-    "OTTONI"
+    "Ottoni"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Molten core tone. Filter barely open, heat radiating outward.",
+  "macroLabels": [
+    "WARMTH",
+    "WEIGHT",
+    "COUPLING",
+    "DEPTH"
+  ],
+  "mood": "Foundation",
+  "name": "Smolder Resin",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.633,
+    "brightness": 0.566,
+    "density": 0.901,
+    "movement": 0.611,
+    "space": 0.413,
+    "warmth": 0.937
+  },
   "tags": [
     "foundation",
     "warm",
@@ -25,23 +43,5 @@
     "aggressive",
     "evolving"
   ],
-  "macroLabels": [
-    "WARMTH",
-    "WEIGHT",
-    "COUPLING",
-    "DEPTH"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.566,
-    "warmth": 0.937,
-    "movement": 0.611,
-    "density": 0.901,
-    "space": 0.413,
-    "aggression": 0.633
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

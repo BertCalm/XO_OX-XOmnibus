@@ -1,51 +1,58 @@
 {
-  "name": "Dense Cycle Gate",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8,
+    "source": "Odyssey",
+    "target": "Ouroboros",
+    "type": "AMPLITUDE_MOD"
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.4,
+    "density": 0.8,
+    "movement": 0.5,
+    "space": 0.3,
+    "warmth": 0.7
+  },
   "engines": [
-    "ODYSSEY",
-    "OUROBOROS"
+    "Odyssey",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.8,
+    "MOVEMENT": 0.55,
+    "SPACE": 0.3
+  },
+  "mood": "Entangled",
+  "name": "Dense Cycle Gate",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.5,
-      "macro_movement": 0.5,
       "macro_coupling": 0.8,
+      "macro_movement": 0.5,
       "macro_space": 0.3
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.7,
-      "macro_movement": 0.6,
       "macro_coupling": 0.8,
+      "macro_movement": 0.6,
       "macro_space": 0.3
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ODYSSEY",
-    "target": "OUROBOROS",
-    "amount": 0.8
-  },
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.7,
-    "movement": 0.5,
-    "density": 0.8,
-    "space": 0.3,
-    "aggression": 0.5
-  },
-  "macros": {
-    "CHARACTER": 0.6,
-    "MOVEMENT": 0.55,
-    "COUPLING": 0.8,
-    "SPACE": 0.3
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "odyssey",
     "ouroboros"
   ],
-  "author": "XO_OX Coverage Pack 2026-03-16",
-  "created": "2026-03-16"
+  "version": "1.0"
 }

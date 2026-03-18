@@ -1,49 +1,57 @@
 {
-  "name": "YIELDING MESH",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OLE",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OLE": {
-      "macro_character": 0.184,
-      "macro_movement": 0.869,
-      "macro_coupling": 0.608,
-      "macro_space": 0.763
-    },
-    "OBLONG": {
-      "macro_character": 0.666,
-      "macro_movement": 0.448,
-      "macro_coupling": 0.687,
-      "macro_space": 0.872
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OLE",
-    "target": "OBLONG",
-    "amount": 0.403
+    "amount": 0.403,
+    "source": "Ole",
+    "target": "Oblong",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.075,
     "brightness": 0.899,
-    "warmth": 0.443,
-    "movement": 0.086,
     "density": 0.373,
+    "movement": 0.086,
     "space": 0.965,
-    "aggression": 0.075
+    "warmth": 0.443
   },
+  "engines": [
+    "Ole",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.747,
-    "MOVEMENT": 0.531,
     "COUPLING": 0.487,
+    "MOVEMENT": 0.531,
     "SPACE": 0.448
   },
+  "mood": "Entangled",
+  "name": "YIELDING MESH",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.666,
+      "macro_coupling": 0.687,
+      "macro_movement": 0.448,
+      "macro_space": 0.872
+    },
+    "Ole": {
+      "macro_character": 0.184,
+      "macro_coupling": 0.608,
+      "macro_movement": 0.869,
+      "macro_space": 0.763
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "yielding",
     "entangled",
     "delicate",
     "tender"
-  ]
+  ],
+  "version": "1.0"
 }

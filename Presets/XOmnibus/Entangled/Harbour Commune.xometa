@@ -1,14 +1,46 @@
 {
-  "schema_version": 1,
-  "name": "Harbour Commune",
-  "mood": "Entangled",
-  "engines": [
-    "OSTERIA",
-    "OHM"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "OHM's communal drone gathers at the harbour table \u2014 everyone eats, everyone hums.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.55,
+        "engineA": "Osteria",
+        "engineB": "Ohm",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OHM's communal drone gathers at the harbour table — everyone eats, everyone hums.",
+  "dna": {
+    "aggression": 0.26,
+    "brightness": 0.51,
+    "density": 0.58,
+    "movement": 0.38,
+    "space": 0.54,
+    "warmth": 0.76
+  },
+  "engines": [
+    "Osteria",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "COUPLING": 0.6,
+    "MOVEMENT": 0.35,
+    "SPACE": 0.6
+  },
+  "mood": "Entangled",
+  "name": "Harbour Commune",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -19,38 +51,6 @@
     "drone",
     "harbour"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.45,
-    "MOVEMENT": 0.35,
-    "COUPLING": 0.6,
-    "SPACE": 0.6
-  },
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.51,
-    "warmth": 0.76,
-    "movement": 0.38,
-    "density": 0.58,
-    "space": 0.54,
-    "aggression": 0.26
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OSTERIA",
-        "engineB": "OHM",
-        "type": "HARMONIC_BLEND",
-        "amount": 0.55
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

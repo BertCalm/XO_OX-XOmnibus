@@ -1,45 +1,52 @@
 {
-  "name": "DARK COLD STILL DENSE GENTLE FAM2 5",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ORPHICA",
-    "OPAL"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.06,
-      "macro_movement": 0.049,
-      "macro_coupling": 0.482,
-      "macro_space": 0.609
-    },
-    "OPAL": {
-      "macro_character": 0.029,
-      "macro_movement": 0.044,
-      "macro_coupling": 0.46,
-      "macro_space": 0.573
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORPHICA",
-    "target": "OPAL",
-    "amount": 0.482
+    "amount": 0.482,
+    "source": "Orphica",
+    "target": "Opal",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.049,
     "brightness": 0.054,
-    "warmth": 0.067,
-    "movement": 0.049,
     "density": 0.915,
+    "movement": 0.049,
     "space": 0.609,
-    "aggression": 0.049
+    "warmth": 0.067
   },
+  "engines": [
+    "Orphica",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.06,
-    "MOVEMENT": 0.049,
     "COUPLING": 0.482,
+    "MOVEMENT": 0.049,
     "SPACE": 0.609
   },
+  "mood": "Family",
+  "name": "DARK COLD STILL DENSE GENTLE FAM2 5",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.029,
+      "macro_coupling": 0.46,
+      "macro_movement": 0.044,
+      "macro_space": 0.573
+    },
+    "Orphica": {
+      "macro_character": 0.06,
+      "macro_coupling": 0.482,
+      "macro_movement": 0.049,
+      "macro_space": 0.609
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
@@ -47,5 +54,6 @@
     "still",
     "dense",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

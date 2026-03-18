@@ -1,14 +1,76 @@
 {
-  "schema_version": 1,
-  "name": "Grain Memory Fade",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "source": "Ombre",
+        "target": "Opal",
+        "type": "ENVELOPE_SHARING"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Granular position scrubbing backward through a memory — each grain a slightly older moment.",
+  "dna": {
+    "aggression": 0.116,
+    "brightness": 0.452,
+    "density": 0.414,
+    "movement": 0.584,
+    "space": 0.798,
+    "warmth": 0.455
+  },
   "engines": [
     "Ombre",
     "Opal"
   ],
-  "author": "XO_OX Deep Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "Granular position scrubbing backward through a memory — each grain a slightly older moment.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Grain Memory Fade",
+  "parameters": {
+    "Ombre": {
+      "ombre_ampAttack": 0.0773,
+      "ombre_ampDecay": 0.87,
+      "ombre_ampRelease": 1.249,
+      "ombre_ampSustain": 0.457,
+      "ombre_blend": 0.237,
+      "ombre_crossfadeRate": 0.462,
+      "ombre_duskPosition": 0.489,
+      "ombre_filterCutoff": 1561.5,
+      "ombre_filterReso": 0.386,
+      "ombre_forgetRate": 0.674,
+      "ombre_level": 0.713,
+      "ombre_lfo1Depth": 0.453,
+      "ombre_lfo1Rate": 1.289,
+      "ombre_lfo2Depth": 0.188,
+      "ombre_lfo2Rate": 0.595,
+      "ombre_memoryDepth": 0.829,
+      "ombre_modAttack": 0.0907,
+      "ombre_modDecay": 0.407,
+      "ombre_modRelease": 0.823,
+      "ombre_modSustain": 0.576,
+      "ombre_narrativeA": 0.87,
+      "ombre_narrativeB": 0.36,
+      "ombre_reverbDamp": 0.353,
+      "ombre_reverbSize": 0.66,
+      "ombre_shadowAmount": 0.641,
+      "ombre_spaceMix": 0.511,
+      "ombre_toneA": 3999.5,
+      "ombre_toneB": 960.2
+    },
+    "Opal": {
+      "opal_filterCutoff": 7542.2,
+      "opal_level": 0.793
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -18,68 +80,6 @@
     "twilight",
     "liminal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "Ombre": {
-      "ombre_blend": 0.237,
-      "ombre_memoryDepth": 0.829,
-      "ombre_forgetRate": 0.674,
-      "ombre_shadowAmount": 0.641,
-      "ombre_duskPosition": 0.489,
-      "ombre_narrativeA": 0.87,
-      "ombre_narrativeB": 0.36,
-      "ombre_crossfadeRate": 0.462,
-      "ombre_toneA": 3999.5,
-      "ombre_toneB": 960.2,
-      "ombre_filterCutoff": 1561.5,
-      "ombre_filterReso": 0.386,
-      "ombre_level": 0.713,
-      "ombre_ampAttack": 0.0773,
-      "ombre_ampDecay": 0.87,
-      "ombre_ampSustain": 0.457,
-      "ombre_ampRelease": 1.249,
-      "ombre_modAttack": 0.0907,
-      "ombre_modDecay": 0.407,
-      "ombre_modSustain": 0.576,
-      "ombre_modRelease": 0.823,
-      "ombre_lfo1Rate": 1.289,
-      "ombre_lfo1Depth": 0.453,
-      "ombre_lfo2Rate": 0.595,
-      "ombre_lfo2Depth": 0.188,
-      "ombre_spaceMix": 0.511,
-      "ombre_reverbSize": 0.66,
-      "ombre_reverbDamp": 0.353
-    },
-    "Opal": {
-      "opal_level": 0.793,
-      "opal_filterCutoff": 7542.2
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "ENVELOPE_SHARING",
-        "source": "Ombre",
-        "target": "Opal",
-        "amount": 0.6
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.452,
-    "warmth": 0.455,
-    "movement": 0.584,
-    "density": 0.414,
-    "space": 0.798,
-    "aggression": 0.116
-  }
+  "version": "1.0.0"
 }

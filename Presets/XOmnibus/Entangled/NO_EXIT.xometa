@@ -1,49 +1,57 @@
 {
-  "name": "NO EXIT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.711,
+    "source": "OddfeliX",
+    "target": "Ole",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.138,
+    "brightness": 0.197,
+    "density": 0.722,
+    "movement": 0.14,
+    "space": 0.078,
+    "warmth": 0.31
+  },
   "engines": [
-    "ODDFELIX",
-    "OLE"
+    "OddfeliX",
+    "Ole"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.206,
+    "COUPLING": 0.244,
+    "MOVEMENT": 0.181,
+    "SPACE": 0.078
+  },
+  "mood": "Entangled",
+  "name": "NO EXIT",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.779,
-      "macro_movement": 0.273,
       "macro_coupling": 0.812,
+      "macro_movement": 0.273,
       "macro_space": 0.081
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.603,
-      "macro_movement": 0.38,
       "macro_coupling": 0.718,
+      "macro_movement": 0.38,
       "macro_space": 0.107
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ODDFELIX",
-    "target": "OLE",
-    "amount": 0.711
-  },
-  "dna": {
-    "brightness": 0.197,
-    "warmth": 0.31,
-    "movement": 0.14,
-    "density": 0.722,
-    "space": 0.078,
-    "aggression": 0.138
-  },
-  "macros": {
-    "CHARACTER": 0.206,
-    "MOVEMENT": 0.181,
-    "COUPLING": 0.244,
-    "SPACE": 0.078
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-  ]
+  ],
+  "version": "1.0"
 }

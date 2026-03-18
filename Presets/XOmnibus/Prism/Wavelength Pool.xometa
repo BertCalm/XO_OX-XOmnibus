@@ -1,13 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Wavelength Pool",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Still pool of standing wavelengths — spectral calm before prismatic storm.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.86,
+    "density": 0.37,
+    "movement": 0.3,
+    "space": 0.71,
+    "warmth": 0.21
+  },
   "engines": [
     "Optic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Still pool of standing wavelengths — spectral calm before prismatic storm.",
+  "legacy": {
+    "sourceCategory": "Prism",
+    "sourceInstrument": "Optic",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Wavelength Pool",
+  "parameters": {
+    "Optic": {
+      "optic_ampAttack": 0.0076,
+      "optic_ampDecay": 0.939,
+      "optic_ampRelease": 2.036,
+      "optic_ampSustain": 0.758,
+      "optic_chromaticShift": 0.516,
+      "optic_dispersion": 0.731,
+      "optic_filterCutoff": 16180.0,
+      "optic_filterReso": 0.13,
+      "optic_level": 0.78,
+      "optic_macroCharacter": 0.688,
+      "optic_macroCoupling": 0.0,
+      "optic_macroMovement": 0.3,
+      "optic_macroSpace": 0.71,
+      "optic_modulationDepth": 0.12,
+      "optic_modulationRate": 1.84,
+      "optic_reverbMix": 0.532,
+      "optic_stereoWidth": 0.834
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "spectral",
     "wavelength",
@@ -15,49 +58,6 @@
     "still",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": "Optic",
-    "sourceCategory": "Prism",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Optic": {
-      "optic_dispersion": 0.731,
-      "optic_chromaticShift": 0.516,
-      "optic_modulationRate": 1.84,
-      "optic_modulationDepth": 0.12,
-      "optic_filterCutoff": 16180.0,
-      "optic_filterReso": 0.13,
-      "optic_reverbMix": 0.532,
-      "optic_ampAttack": 0.0076,
-      "optic_ampDecay": 0.939,
-      "optic_ampSustain": 0.758,
-      "optic_ampRelease": 2.036,
-      "optic_stereoWidth": 0.834,
-      "optic_level": 0.78,
-      "optic_macroCharacter": 0.688,
-      "optic_macroMovement": 0.3,
-      "optic_macroCoupling": 0.0,
-      "optic_macroSpace": 0.71
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.86,
-    "warmth": 0.21,
-    "movement": 0.3,
-    "density": 0.37,
-    "space": 0.71,
-    "aggression": 0.15
-  }
+  "version": "1.0.0"
 }

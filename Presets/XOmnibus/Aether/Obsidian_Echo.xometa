@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Obsidian Echo",
-  "mood": "Aether",
-  "sonic_dna": {
-    "brightness": 0.1,
-    "warmth": 0.55,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Dark reverb tail — reflection from obsidian walls",
+  "dna": {
     "aggression": 0.15,
-    "movement": 0.2,
+    "brightness": 0.1,
     "density": 0.5,
-    "space": 0.8
+    "movement": 0.2,
+    "space": 0.8,
+    "warmth": 0.55
   },
   "engines": [
-    "ORACLE"
+    "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dark reverb tail \u2014 reflection from obsidian walls",
+  "macroLabels": [
+    "PROPHECY",
+    "VOID",
+    "COUPLING",
+    "ECHO"
+  ],
+  "mood": "Aether",
+  "name": "Obsidian Echo",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.15,
+    "brightness": 0.1,
+    "density": 0.5,
+    "movement": 0.2,
+    "space": 0.8,
+    "warmth": 0.55
+  },
   "tags": [
     "aether",
     "dark",
@@ -24,23 +42,5 @@
     "obsidian",
     "reverb"
   ],
-  "macroLabels": [
-    "PROPHECY",
-    "VOID",
-    "COUPLING",
-    "ECHO"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.1,
-    "warmth": 0.55,
-    "movement": 0.2,
-    "density": 0.5,
-    "space": 0.8,
-    "aggression": 0.15
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

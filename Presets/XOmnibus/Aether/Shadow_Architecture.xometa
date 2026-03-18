@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Shadow Architecture",
-  "mood": "Aether",
-  "sonic_dna": {
-    "brightness": 0.13,
-    "warmth": 0.7,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Structural shadow — form defined only by absence",
+  "dna": {
     "aggression": 0.22,
-    "movement": 0.18,
+    "brightness": 0.13,
     "density": 0.65,
-    "space": 0.5
+    "movement": 0.18,
+    "space": 0.5,
+    "warmth": 0.7
   },
   "engines": [
-    "OBSCURA"
+    "Obscura"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Structural shadow \u2014 form defined only by absence",
+  "macroLabels": [
+    "SHADOW",
+    "BLUR",
+    "COUPLING",
+    "VEIL"
+  ],
+  "mood": "Aether",
+  "name": "Shadow Architecture",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.22,
+    "brightness": 0.13,
+    "density": 0.65,
+    "movement": 0.18,
+    "space": 0.5,
+    "warmth": 0.7
+  },
   "tags": [
     "aether",
     "dark",
@@ -24,23 +42,5 @@
     "structure",
     "negative"
   ],
-  "macroLabels": [
-    "SHADOW",
-    "BLUR",
-    "COUPLING",
-    "VEIL"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.13,
-    "warmth": 0.7,
-    "movement": 0.18,
-    "density": 0.65,
-    "space": 0.5,
-    "aggression": 0.22
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

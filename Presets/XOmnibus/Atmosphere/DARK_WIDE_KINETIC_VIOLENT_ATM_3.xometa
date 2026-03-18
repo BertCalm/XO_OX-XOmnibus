@@ -1,47 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "DARK WIDE KINETIC VIOLENT ATM 3",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Extreme",
+    "sourceEngine": "OddOscar",
+    "targetEngine": null,
+    "type": "Harmonic"
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: DARK WIDE KINETIC VIOLENT ATM 3.",
+  "dna": {
+    "aggression": 0.945,
+    "brightness": 0.08,
+    "density": 0.405,
+    "movement": 0.915,
+    "space": 0.956,
+    "warmth": 0.403
+  },
   "engines": [
     "OddOscar"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Atmosphere preset: DARK WIDE KINETIC VIOLENT ATM 3.",
-  "tags": [
-    "x-low-brightness",
-    "x-high-aggression",
-    "x-high-movement",
-    "x-high-space"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "DARK WIDE KINETIC VIOLENT ATM 3",
   "parameters": {},
-  "coupling": {
-    "type": "Harmonic",
-    "intensity": "Extreme",
-    "sourceEngine": "OddOscar",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.08,
-    "warmth": 0.403,
-    "aggression": 0.945,
-    "density": 0.405,
-    "movement": 0.915,
-    "space": 0.956
-  }
+  "tags": [
+    "x-low-brightness",
+    "x-high-aggression",
+    "x-high-movement",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

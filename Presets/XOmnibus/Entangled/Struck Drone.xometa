@@ -1,19 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Struck Drone",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.809,
+        "description": "Owlfish drives Onset via WavetableSync",
+        "source": "Owlfish",
+        "target": "Onset",
+        "type": "WavetableSync"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "created": "2026-03-16",
+  "description": "ONSET percussion strikes initiate OWLFISH's resonant decay — each drum hit sets a new drone frequency, rhythm as tuning gesture.",
+  "dna": {
+    "aggression": 0.492,
+    "brightness": 0.56,
+    "density": 0.682,
+    "movement": 0.558,
+    "space": 0.377,
+    "warmth": 0.47
+  },
   "engines": [
     "Owlfish",
     "Onset"
-  ],
-  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "ONSET percussion strikes initiate OWLFISH's resonant decay — each drum hit sets a new drone frequency, rhythm as tuning gesture.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "owlfish",
-    "onset"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,63 +32,52 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Strong",
-  "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.56,
-    "warmth": 0.47,
-    "movement": 0.558,
-    "density": 0.682,
-    "space": 0.377,
-    "aggression": 0.492
-  },
+  "mood": "Entangled",
+  "name": "Struck Drone",
   "parameters": {
+    "Onset": {
+      "perc_kickDecay": 0.304,
+      "perc_kickPunch": 0.702,
+      "perc_kickTune": 0.36,
+      "perc_macroMachine": 0.0,
+      "perc_macroPunch": 0.032,
+      "perc_noiseLevel": 0.253
+    },
     "Owlfish": {
-      "owl_filterCutoff": 0.604,
-      "owl_filterRes": 0.476,
-      "owl_oscPitch": 0.508,
-      "owl_oscLevel": 0.664,
-      "owl_subLevel": 0.204,
-      "owl_mixturSpread": 0.368,
-      "owl_mixturBlend": 0.593,
-      "owl_resonantPitch": 0.607,
-      "owl_resonantFeedback": 0.33,
       "owl_abyssalDrive": 0.286,
       "owl_ampAttack": 0.154,
       "owl_ampDecay": 0.662,
-      "owl_ampSustain": 0.651,
       "owl_ampRelease": 3.1,
-      "owl_lfoRate": 0.015,
-      "owl_lfoDepth": 0.334,
-      "owl_lfoShape": 0.369,
+      "owl_ampSustain": 0.651,
       "owl_envDepth": 0.355,
+      "owl_filterCutoff": 0.604,
+      "owl_filterRes": 0.476,
       "owl_hall": 0.49,
-      "owl_shimmer": 0.277,
+      "owl_lfoDepth": 0.334,
+      "owl_lfoRate": 0.015,
+      "owl_lfoShape": 0.369,
       "owl_macroCharacter": 0.0,
-      "owl_macroMovement": 0.0,
       "owl_macroCoupling": 0.0,
-      "owl_macroSpace": 0.0
-    },
-    "Onset": {
-      "perc_kickTune": 0.36,
-      "perc_kickDecay": 0.304,
-      "perc_kickPunch": 0.702,
-      "perc_noiseLevel": 0.253,
-      "perc_macroMachine": 0.0,
-      "perc_macroPunch": 0.032
+      "owl_macroMovement": 0.0,
+      "owl_macroSpace": 0.0,
+      "owl_mixturBlend": 0.593,
+      "owl_mixturSpread": 0.368,
+      "owl_oscLevel": 0.664,
+      "owl_oscPitch": 0.508,
+      "owl_resonantFeedback": 0.33,
+      "owl_resonantPitch": 0.607,
+      "owl_shimmer": 0.277,
+      "owl_subLevel": 0.204
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "source": "Owlfish",
-        "target": "Onset",
-        "type": "WavetableSync",
-        "amount": 0.809,
-        "description": "Owlfish drives Onset via WavetableSync"
-      }
-    ]
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "onset"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

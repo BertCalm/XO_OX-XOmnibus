@@ -1,14 +1,54 @@
 {
-  "schema_version": 1,
-  "name": "Unfolded Drift Circle",
-  "mood": "Entangled",
-  "engines": [
-    "OHM",
-    "ORIGAMI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.87,
+        "engineA": "Ohm",
+        "engineB": "Origami",
+        "type": "Pitch->Mod"
+      }
+    ]
+  },
+  "couplingIntensity": "Light",
+  "created": "2026-03-16",
   "description": "The commune folds itself into geometric patience — OHM's organ harmonics crease through ORIGAMI's folded architecture.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.78,
+    "density": 0.87,
+    "movement": 0.45,
+    "space": 0.55,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Ohm",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.715,
+    "COUPLING": 0.811,
+    "MOVEMENT": 0.45,
+    "SPACE": 0.55
+  },
+  "mood": "Entangled",
+  "name": "Unfolded Drift Circle",
+  "parameters": {
+    "ohm_droneFund": 0.648,
+    "ohm_macroCommune": 0.695,
+    "ohm_macroMeddling": 0.58,
+    "ohm_orgHarmonics": 0.724,
+    "origami_creaseDensity": 0.748,
+    "origami_foldPoint": 0.722
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -21,46 +61,6 @@
     "folded",
     "geometric"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Light",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "ohm_macroMeddling": 0.58,
-    "ohm_macroCommune": 0.695,
-    "ohm_orgHarmonics": 0.724,
-    "ohm_droneFund": 0.648,
-    "origami_foldPoint": 0.722,
-    "origami_creaseDensity": 0.748
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OHM",
-        "engineB": "ORIGAMI",
-        "type": "Pitch->Mod",
-        "amount": 0.87
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.715,
-    "MOVEMENT": 0.45,
-    "COUPLING": 0.811,
-    "SPACE": 0.55
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.78,
-    "warmth": 0.65,
-    "movement": 0.45,
-    "density": 0.87,
-    "space": 0.55,
-    "aggression": 0.08
-  }
+  "version": "1.0.0"
 }

@@ -1,31 +1,39 @@
 {
-  "name": "Diagonal Reverb",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.55,
+    "source": "Oblique",
+    "target": "Overdub",
+    "type": "ANGULAR_DEFLECT"
+  },
+  "description": "Spring trail bent obliquely at the peak — dub warmth arriving from wrong direction",
   "engines": [
-    "OVERDUB",
-    "OBLIQUE"
+    "Overdub",
+    "Oblique"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.4,
     "COUPLING": 0.55,
+    "MOVEMENT": 0.4,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.42,
-    "warmth": 0.59,
-    "movement": 0.49,
-    "density": 0.6,
-    "space": 0.59,
-    "aggression": 0.41
-  },
+  "mood": "Entangled",
+  "name": "Diagonal Reverb",
   "parameters": {},
-  "coupling": {
-    "type": "ANGULAR_DEFLECT",
-    "source": "OBLIQUE",
-    "target": "OVERDUB",
-    "amount": 0.55
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.41,
+    "brightness": 0.42,
+    "density": 0.6,
+    "movement": 0.49,
+    "space": 0.59,
+    "warmth": 0.59
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "oblique",
     "dub"
   ],
-  "description": "Spring trail bent obliquely at the peak \u2014 dub warmth arriving from wrong direction"
+  "version": "1.0"
 }

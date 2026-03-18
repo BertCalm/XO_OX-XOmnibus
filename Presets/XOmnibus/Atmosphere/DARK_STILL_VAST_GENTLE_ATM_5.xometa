@@ -1,50 +1,58 @@
 {
-  "name": "DARK_STILL_VAST_GENTLE_ATM_5",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.92,
+    "source": "Oceanic",
+    "target": "Orbital",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.099,
+    "brightness": 0.068,
+    "density": 0.615,
+    "movement": 0.063,
+    "space": 0.972,
+    "warmth": 0.303
+  },
   "engines": [
-    "OCEANIC",
-    "ORBITAL"
+    "Oceanic",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.382,
+    "COUPLING": 0.525,
+    "MOVEMENT": 0.156,
+    "SPACE": 0.909
+  },
+  "mood": "Atmosphere",
+  "name": "DARK_STILL_VAST_GENTLE_ATM_5",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.382,
-      "macro_movement": 0.156,
       "macro_coupling": 0.525,
+      "macro_movement": 0.156,
       "macro_space": 0.909
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.619,
-      "macro_movement": 0.212,
       "macro_coupling": 0.743,
+      "macro_movement": 0.212,
       "macro_space": 0.886
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OCEANIC",
-    "target": "ORBITAL",
-    "amount": 0.92
-  },
-  "dna": {
-    "brightness": 0.068,
-    "warmth": 0.303,
-    "movement": 0.063,
-    "density": 0.615,
-    "space": 0.972,
-    "aggression": 0.099
-  },
-  "macros": {
-    "CHARACTER": 0.382,
-    "MOVEMENT": 0.156,
-    "COUPLING": 0.525,
-    "SPACE": 0.909
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "still",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

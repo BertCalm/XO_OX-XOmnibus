@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_VOL_78",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.555,
+    "source": "Oblong",
+    "target": "Ohm",
+    "type": "MODULATION_FLOW"
+  },
+  "dna": {
+    "aggression": 0.948,
+    "brightness": 0.942,
+    "density": 0.582,
+    "movement": 0.894,
+    "space": 0.66,
+    "warmth": 0.913
+  },
   "engines": [
-    "OHM",
-    "OBLONG"
+    "Ohm",
+    "Oblong"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.932,
+    "COUPLING": 0.765,
+    "MOVEMENT": 0.899,
+    "SPACE": 0.65
+  },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_VOL_78",
   "parameters": {
-    "OHM": {
-      "macro_character": 0.93,
-      "macro_movement": 0.913,
-      "macro_coupling": 0.737,
+    "Oblong": {
+      "macro_character": 0.934,
+      "macro_coupling": 0.793,
+      "macro_movement": 0.886,
       "macro_space": 0.65
     },
-    "OBLONG": {
-      "macro_character": 0.934,
-      "macro_movement": 0.886,
-      "macro_coupling": 0.793,
+    "Ohm": {
+      "macro_character": 0.93,
+      "macro_coupling": 0.737,
+      "macro_movement": 0.913,
       "macro_space": 0.65
     }
   },
-  "coupling": {
-    "type": "MODULATION_FLOW",
-    "source": "OBLONG",
-    "target": "OHM",
-    "amount": 0.555
-  },
-  "dna": {
-    "brightness": 0.942,
-    "warmth": 0.913,
-    "movement": 0.894,
-    "density": 0.582,
-    "space": 0.66,
-    "aggression": 0.948
-  },
-  "macros": {
-    "CHARACTER": 0.932,
-    "MOVEMENT": 0.899,
-    "COUPLING": 0.765,
-    "SPACE": 0.65
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "aggressive",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

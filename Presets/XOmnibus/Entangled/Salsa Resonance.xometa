@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Salsa Resonance",
-  "mood": "Entangled",
-  "engines": [
-    "OLE",
-    "ORGANON"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "OLE-ORGANON resonance peaks dance together \u2014 living salsa rhythm.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Ole",
+        "engineB": "Organon",
+        "type": "RESONANCE_SHARE"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OLE-ORGANON resonance peaks dance together — living salsa rhythm.",
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.6,
+    "density": 0.58,
+    "movement": 0.68,
+    "space": 0.4,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Ole",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.585,
+    "COUPLING": 0.6,
+    "MOVEMENT": 0.635,
+    "SPACE": 0.46
+  },
+  "mood": "Entangled",
+  "name": "Salsa Resonance",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.65,
+      "macro_space": 0.4
+    },
+    "Organon": {
+      "macro_character": 0.52,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.62,
+      "macro_space": 0.52
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "resonance",
     "shared"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.7,
-    "movement": 0.68,
-    "density": 0.58,
-    "space": 0.4,
-    "aggression": 0.6
-  },
-  "parameters": {
-    "OLE": {
-      "macro_character": 0.65,
-      "macro_movement": 0.65,
-      "macro_coupling": 0.6,
-      "macro_space": 0.4
-    },
-    "ORGANON": {
-      "macro_character": 0.52,
-      "macro_movement": 0.62,
-      "macro_coupling": 0.6,
-      "macro_space": 0.52
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OLE",
-        "engineB": "ORGANON",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.6
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.585,
-    "MOVEMENT": 0.635,
-    "COUPLING": 0.6,
-    "SPACE": 0.46
-  },
-  "sequencer": null
+  "version": "1.0"
 }

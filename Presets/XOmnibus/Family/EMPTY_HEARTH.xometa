@@ -1,48 +1,56 @@
 {
-  "name": "EMPTY HEARTH",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.87,
+    "source": "OddfeliX",
+    "target": "Overlap",
+    "type": "AMP_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.824,
+    "brightness": 0.884,
+    "density": 0.042,
+    "movement": 0.915,
+    "space": 0.868,
+    "warmth": 0.561
+  },
   "engines": [
-    "ODDFELIX",
-    "OVERLAP"
+    "OddfeliX",
+    "Overlap"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.696,
+    "COUPLING": 0.587,
+    "MOVEMENT": 0.54,
+    "SPACE": 0.727
+  },
+  "mood": "Family",
+  "name": "EMPTY HEARTH",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.045,
-      "macro_movement": 0.037,
       "macro_coupling": 0.996,
+      "macro_movement": 0.037,
       "macro_space": 0.116
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.235,
-      "macro_movement": 0.538,
       "macro_coupling": 0.389,
+      "macro_movement": 0.538,
       "macro_space": 0.371
     }
   },
-  "coupling": {
-    "type": "AMP_COUPLE",
-    "source": "ODDFELIX",
-    "target": "OVERLAP",
-    "amount": 0.87
-  },
-  "dna": {
-    "brightness": 0.884,
-    "warmth": 0.561,
-    "movement": 0.915,
-    "density": 0.042,
-    "space": 0.868,
-    "aggression": 0.824
-  },
-  "macros": {
-    "CHARACTER": 0.696,
-    "MOVEMENT": 0.54,
-    "COUPLING": 0.587,
-    "SPACE": 0.727
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "sparse",
     "xlow-density"
-  ]
+  ],
+  "version": "1.0"
 }

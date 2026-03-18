@@ -1,48 +1,56 @@
 {
-  "name": "STATIC CURRENT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.739,
+    "source": "Oblong",
+    "target": "Overbite",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.788,
+    "brightness": 0.11,
+    "density": 0.119,
+    "movement": 0.132,
+    "space": 0.358,
+    "warmth": 0.866
+  },
   "engines": [
-    "OBLONG",
-    "OVERBITE"
+    "Oblong",
+    "Overbite"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.589,
+    "COUPLING": 0.265,
+    "MOVEMENT": 0.016,
+    "SPACE": 0.127
+  },
+  "mood": "Entangled",
+  "name": "STATIC CURRENT",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.233,
-      "macro_movement": 0.774,
       "macro_coupling": 0.789,
+      "macro_movement": 0.774,
       "macro_space": 0.596
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.277,
-      "macro_movement": 0.984,
       "macro_coupling": 0.988,
+      "macro_movement": 0.984,
       "macro_space": 0.54
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OBLONG",
-    "target": "OVERBITE",
-    "amount": 0.739
-  },
-  "dna": {
-    "brightness": 0.11,
-    "warmth": 0.866,
-    "movement": 0.132,
-    "density": 0.119,
-    "space": 0.358,
-    "aggression": 0.788
-  },
-  "macros": {
-    "CHARACTER": 0.589,
-    "MOVEMENT": 0.016,
-    "COUPLING": 0.265,
-    "SPACE": 0.127
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "drift",
     "filament"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,14 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Elliptical Refraction",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Oblique",
+        "engineB": "Orbital",
+        "type": "SpectralMorph"
+      },
+      {
+        "amount": 0.45,
+        "engineA": "Orbital",
+        "engineB": "Oblique",
+        "type": "RhythmGate"
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "ORBITAL's planetary orbit tilted through OBLIQUE's prism — an ellipse that bends in color.",
+  "dna": {
+    "aggression": 0.438,
+    "brightness": 0.682,
+    "density": 0.532,
+    "movement": 0.8,
+    "space": 0.712,
+    "warmth": 0.405
+  },
   "engines": [
     "Oblique",
     "Orbital"
   ],
-  "author": "XPN Tool \u2014 Optic/Oblique/Ocelot Coupling Pack",
-  "version": "1.0.0",
-  "description": "ORBITAL's planetary orbit tilted through OBLIQUE's prism \u2014 an ellipse that bends in color.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Elliptical Refraction",
+  "parameters": {
+    "Oblique": {
+      "oblq_ampAttack": 0.02,
+      "oblq_ampRelease": 1.2,
+      "oblq_bounce": 0.65,
+      "oblq_filterCutoff": 3200.0,
+      "oblq_filterReso": 0.35,
+      "oblq_funkDepth": 0.7,
+      "oblq_modDepth": 0.6,
+      "oblq_modRate": 0.5,
+      "oblq_prismAngle": 0.55,
+      "oblq_refraction": 0.6
+    },
+    "Orbital": {
+      "orb_ampAttack": 0.03,
+      "orb_ampRelease": 1.5,
+      "orb_filterCutoff": 2800.0,
+      "orb_filterReso": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "oblique",
     "orbital",
@@ -19,63 +76,6 @@
     "entangled",
     "coupling"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oblique": {
-      "oblq_prismAngle": 0.55,
-      "oblq_bounce": 0.65,
-      "oblq_refraction": 0.6,
-      "oblq_funkDepth": 0.7,
-      "oblq_modRate": 0.5,
-      "oblq_modDepth": 0.6,
-      "oblq_filterCutoff": 3200.0,
-      "oblq_filterReso": 0.35,
-      "oblq_ampAttack": 0.02,
-      "oblq_ampRelease": 1.2
-    },
-    "Orbital": {
-      "orb_filterCutoff": 2800.0,
-      "orb_filterReso": 0.3,
-      "orb_ampAttack": 0.03,
-      "orb_ampRelease": 1.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Orbital",
-        "type": "SpectralMorph",
-        "amount": 0.65
-      },
-      {
-        "engineA": "Orbital",
-        "engineB": "Oblique",
-        "type": "RhythmGate",
-        "amount": 0.45
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.682,
-    "warmth": 0.405,
-    "movement": 0.8,
-    "density": 0.532,
-    "space": 0.712,
-    "aggression": 0.438
-  }
+  "version": "1.0.0"
 }

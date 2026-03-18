@@ -1,50 +1,58 @@
 {
-  "name": "CROWDED MIST",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OSPREY",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.691,
-      "macro_movement": 0.321,
-      "macro_coupling": 0.572,
-      "macro_space": 0.1
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.577,
-      "macro_movement": 0.884,
-      "macro_coupling": 0.766,
-      "macro_space": 0.081
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OSPREY",
-    "target": "ODDOSCAR",
-    "amount": 0.407
+    "amount": 0.407,
+    "source": "Osprey",
+    "target": "OddOscar",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.184,
     "brightness": 0.381,
-    "warmth": 0.463,
-    "movement": 0.035,
     "density": 0.677,
+    "movement": 0.035,
     "space": 0.1,
-    "aggression": 0.184
+    "warmth": 0.463
   },
+  "engines": [
+    "Osprey",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.389,
-    "MOVEMENT": 0.342,
     "COUPLING": 0.666,
+    "MOVEMENT": 0.342,
     "SPACE": 0.1
   },
+  "mood": "Atmosphere",
+  "name": "CROWDED MIST",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.577,
+      "macro_coupling": 0.766,
+      "macro_movement": 0.884,
+      "macro_space": 0.081
+    },
+    "Osprey": {
+      "macro_character": 0.691,
+      "macro_coupling": 0.572,
+      "macro_movement": 0.321,
+      "macro_space": 0.1
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-  ]
+  ],
+  "version": "1.0"
 }

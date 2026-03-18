@@ -1,53 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Drift Bell",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Focused keys tone with warm character.",
+  "dna": {
+    "aggression": 0.021,
+    "brightness": 0.563,
+    "density": 0.067,
+    "movement": 0.0,
+    "space": 0.231,
+    "warmth": 0.0
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Focused keys tone with warm character.",
-  "tags": [
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Keys",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Keys",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Drift Bell",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 3.0,
-      "drift_oscA_level": 0.8,
-      "drift_oscA_fmDepth": 0.4,
-      "drift_filterCutoff": 12000.0,
-      "drift_filterReso": 0.05,
       "drift_attack": 1.0,
       "drift_decay": 1500.0,
-      "drift_sustain": 0.0,
+      "drift_filterCutoff": 12000.0,
+      "drift_filterReso": 0.05,
+      "drift_level": -3.0,
+      "drift_oscA_fmDepth": 0.4,
+      "drift_oscA_level": 0.8,
+      "drift_oscA_mode": 3.0,
       "drift_release": 1000.0,
       "drift_shimmerAmount": 0.15,
-      "drift_level": -3.0
+      "drift_sustain": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.563,
-    "warmth": 0.0,
-    "movement": 0.0,
-    "density": 0.067,
-    "space": 0.231,
-    "aggression": 0.021
-  }
+  "tags": [
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

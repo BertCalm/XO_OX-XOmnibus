@@ -1,59 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Low Wool",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expansive warm pads atmosphere with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.026,
+    "brightness": 0.505,
+    "density": 0.135,
+    "movement": 0.0,
+    "space": 0.422,
+    "warmth": 0.469
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expansive warm pads atmosphere with bob character and analog drift.",
-  "tags": [
-    "warm",
-    "muffled",
-    "dark"
-  ],
+  "legacy": {
+    "sourceCategory": "Warm Pads",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Warm Pads",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Low Wool",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
-      "bob_oscA_drift": 0.4,
-      "bob_oscA_shape": 0.25,
-      "bob_oscB_wave": 3.0,
-      "bob_oscB_blend": 0.3,
-      "bob_oscB_detune": 3.0,
-      "bob_fltMode": 3.0,
-      "bob_fltCutoff": 1700.0,
-      "bob_fltReso": 0.08,
-      "bob_fltChar": 0.55,
       "bob_ampAttack": 1.2,
       "bob_ampDecay": 1.5,
-      "bob_ampSustain": 0.9,
       "bob_ampRelease": 1.8,
-      "bob_bobMode": 0.4
+      "bob_ampSustain": 0.9,
+      "bob_bobMode": 0.4,
+      "bob_fltChar": 0.55,
+      "bob_fltCutoff": 1700.0,
+      "bob_fltMode": 3.0,
+      "bob_fltReso": 0.08,
+      "bob_oscA_drift": 0.4,
+      "bob_oscA_shape": 0.25,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.3,
+      "bob_oscB_detune": 3.0,
+      "bob_oscB_wave": 3.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.505,
-    "warmth": 0.469,
-    "movement": 0.0,
-    "density": 0.135,
-    "space": 0.422,
-    "aggression": 0.026
-  }
+  "tags": [
+    "warm",
+    "muffled",
+    "dark"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_4",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.844,
+    "source": "OddOscar",
+    "target": "Opal",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.875,
+    "brightness": 0.922,
+    "density": 0.495,
+    "movement": 0.951,
+    "space": 0.567,
+    "warmth": 0.904
+  },
   "engines": [
-    "ODDOSCAR",
-    "OPAL"
+    "OddOscar",
+    "Opal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.587,
+    "COUPLING": 0.355,
+    "MOVEMENT": 0.71,
+    "SPACE": 0.531
+  },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_4",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.587,
-      "macro_movement": 0.71,
       "macro_coupling": 0.355,
+      "macro_movement": 0.71,
       "macro_space": 0.531
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.558,
-      "macro_movement": 0.674,
       "macro_coupling": 0.331,
+      "macro_movement": 0.674,
       "macro_space": 0.514
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ODDOSCAR",
-    "target": "OPAL",
-    "amount": 0.844
-  },
-  "dna": {
-    "brightness": 0.922,
-    "warmth": 0.904,
-    "movement": 0.951,
-    "density": 0.495,
-    "space": 0.567,
-    "aggression": 0.875
-  },
-  "macros": {
-    "CHARACTER": 0.587,
-    "MOVEMENT": 0.71,
-    "COUPLING": 0.355,
-    "SPACE": 0.531
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "bright",
     "warm",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

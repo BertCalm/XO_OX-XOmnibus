@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_KINETIC_GENTLE_FAM_VOL_28",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.422,
+    "source": "Obbligato",
+    "target": "Organon",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.074,
+    "brightness": 0.062,
+    "density": 0.617,
+    "movement": 0.984,
+    "space": 0.45,
+    "warmth": 0.888
+  },
   "engines": [
-    "OBBLIGATO",
-    "ORGANON"
+    "Obbligato",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.478,
+    "COUPLING": 0.341,
+    "MOVEMENT": 0.974,
+    "SPACE": 0.454
+  },
+  "mood": "Family",
+  "name": "DARK_HOT_KINETIC_GENTLE_FAM_VOL_28",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.491,
-      "macro_movement": 0.99,
       "macro_coupling": 0.359,
+      "macro_movement": 0.99,
       "macro_space": 0.48
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.465,
-      "macro_movement": 0.958,
       "macro_coupling": 0.323,
+      "macro_movement": 0.958,
       "macro_space": 0.428
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBBLIGATO",
-    "target": "ORGANON",
-    "amount": 0.422
-  },
-  "dna": {
-    "brightness": 0.062,
-    "warmth": 0.888,
-    "movement": 0.984,
-    "density": 0.617,
-    "space": 0.45,
-    "aggression": 0.074
-  },
-  "macros": {
-    "CHARACTER": 0.478,
-    "MOVEMENT": 0.974,
-    "COUPLING": 0.341,
-    "SPACE": 0.454
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "kinetic",
     "gentle",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

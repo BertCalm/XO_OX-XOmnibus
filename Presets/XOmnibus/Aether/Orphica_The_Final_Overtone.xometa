@@ -1,19 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "The Final Overtone",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The series continues past the audible into the felt. What blooms here is the overtone that closes the harmonic series — infinite frequency, zero amplitude.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.92,
+    "density": 0.12,
+    "movement": 0.1,
+    "space": 0.98,
+    "warmth": 0.18
+  },
   "engines": [
     "Orphica"
-  ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "The series continues past the audible into the felt. What blooms here is the overtone that closes the harmonic series \u2014 infinite frequency, zero amplitude.",
-  "tags": [
-    "aether",
-    "transcendent",
-    "overtones",
-    "infinite",
-    "harmonic"
   ],
   "macroLabels": [
     "PLUCK",
@@ -21,35 +22,34 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.92,
-    "warmth": 0.18,
-    "movement": 0.1,
-    "density": 0.12,
-    "space": 0.98,
-    "aggression": 0.0
-  },
+  "mood": "Aether",
+  "name": "The Final Overtone",
   "parameters": {
     "Orphica": {
-      "orph_microsoundDensity": 0.1,
-      "orph_pluckBrightness": 1.0,
-      "orph_filterCutoff": 0.98,
-      "orph_filterReso": 0.1,
       "orph_ampAttack": 0.01,
       "orph_ampDecay": 8.0,
-      "orph_ampSustain": 0.3,
       "orph_ampRelease": 10.0,
-      "orph_reverbMix": 0.96,
-      "orph_shimmerAmt": 1.0,
-      "orph_macroPluck": 0.0,
+      "orph_ampSustain": 0.3,
+      "orph_filterCutoff": 0.98,
+      "orph_filterReso": 0.1,
       "orph_macroBloom": 0.0,
       "orph_macroCoupling": 0.0,
-      "orph_macroSpace": 0.0
+      "orph_macroPluck": 0.0,
+      "orph_macroSpace": 0.0,
+      "orph_microsoundDensity": 0.1,
+      "orph_pluckBrightness": 1.0,
+      "orph_reverbMix": 0.96,
+      "orph_shimmerAmt": 1.0
     }
   },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "transcendent",
+    "overtones",
+    "infinite",
+    "harmonic"
+  ],
+  "version": "1.0.0"
 }

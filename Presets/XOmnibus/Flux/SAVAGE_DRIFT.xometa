@@ -1,49 +1,57 @@
 {
-  "name": "SAVAGE DRIFT",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.892,
+    "source": "OddOscar",
+    "target": "Orca",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.897,
+    "brightness": 0.088,
+    "density": 0.366,
+    "movement": 0.661,
+    "space": 0.301,
+    "warmth": 0.646
+  },
   "engines": [
-    "ODDOSCAR",
-    "ORCA"
+    "OddOscar",
+    "Orca"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.573,
+    "COUPLING": 0.956,
+    "MOVEMENT": 0.573,
+    "SPACE": 0.401
+  },
+  "mood": "Flux",
+  "name": "SAVAGE DRIFT",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.573,
-      "macro_movement": 0.573,
       "macro_coupling": 0.956,
+      "macro_movement": 0.573,
       "macro_space": 0.401
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.659,
-      "macro_movement": 0.509,
       "macro_coupling": 1.0,
+      "macro_movement": 0.509,
       "macro_space": 0.47
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ODDOSCAR",
-    "target": "ORCA",
-    "amount": 0.892
-  },
-  "dna": {
-    "brightness": 0.088,
-    "warmth": 0.646,
-    "movement": 0.661,
-    "density": 0.366,
-    "space": 0.301,
-    "aggression": 0.897
-  },
-  "macros": {
-    "CHARACTER": 0.573,
-    "MOVEMENT": 0.573,
-    "COUPLING": 0.956,
-    "SPACE": 0.401
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "violent",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

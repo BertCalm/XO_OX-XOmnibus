@@ -1,50 +1,58 @@
 {
-  "name": "Cold Granularity",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OPAL",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.1,
-      "macro_movement": 0.2,
-      "macro_coupling": 0.82,
-      "macro_space": 0.96
-    },
-    "ODYSSEY": {
-      "macro_character": 0.07,
-      "macro_movement": 0.15,
-      "macro_coupling": 0.87,
-      "macro_space": 0.99
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ODYSSEY",
-    "target": "OPAL",
-    "amount": 0.82
+    "amount": 0.82,
+    "source": "Odyssey",
+    "target": "Opal",
+    "type": "ENVELOPE_LINK"
   },
+  "description": "Odyssey envelope gates grain density — few grains emerge; most remain frozen.",
   "dna": {
+    "aggression": 0.222,
     "brightness": 0.06,
-    "warmth": 0.0,
-    "movement": 0.0,
     "density": 0.07,
+    "movement": 0.0,
     "space": 0.96,
-    "aggression": 0.222
+    "warmth": 0.0
   },
+  "engines": [
+    "Opal",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.1,
-    "MOVEMENT": 0.2,
     "COUPLING": 0.82,
+    "MOVEMENT": 0.2,
     "SPACE": 0.96
   },
+  "mood": "Entangled",
+  "name": "Cold Granularity",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.07,
+      "macro_coupling": 0.87,
+      "macro_movement": 0.15,
+      "macro_space": 0.99
+    },
+    "Opal": {
+      "macro_character": 0.1,
+      "macro_coupling": 0.82,
+      "macro_movement": 0.2,
+      "macro_space": 0.96
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "cold",
     "granular"
   ],
-  "description": "Odyssey envelope gates grain density \u2014 few grains emerge; most remain frozen."
+  "version": "1.0"
 }

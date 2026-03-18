@@ -1,14 +1,45 @@
 {
-  "schema_version": 1,
-  "name": "Coral Rascal \u00d7 Ohm",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.548,
+        "engineA": "Obbligato",
+        "engineB": "Ohm",
+        "type": "Amp->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "A hippy-dad commune — OHM's commune axis holds OBBLIGATO's breath voices in harmonic orbit via BOND.",
+  "dna": {
+    "aggression": 0.079,
+    "brightness": 0.493,
+    "density": 0.321,
+    "movement": 0.572,
+    "space": 0.342,
+    "warmth": 0.707
+  },
   "engines": [
-    "OBBLIGATO",
-    "OHM"
+    "Obbligato",
+    "Ohm"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "A hippy-dad commune \u2014 OHM's commune axis holds OBBLIGATO's breath voices in harmonic orbit via BOND.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Coral Rascal × Ohm",
+  "parameters": {
+    "obbl_breathA": 0.464,
+    "obbl_breathB": 0.462,
+    "obbl_macroBond": 0.603
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -17,37 +48,6 @@
     "drone",
     "meditative"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "obbl_breathA": 0.464,
-    "obbl_breathB": 0.462,
-    "obbl_macroBond": 0.603
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBBLIGATO",
-        "engineB": "OHM",
-        "type": "Amp->Filter",
-        "amount": 0.548
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.493,
-    "warmth": 0.707,
-    "movement": 0.572,
-    "density": 0.321,
-    "space": 0.342,
-    "aggression": 0.079
-  }
+  "version": "1.0.0"
 }

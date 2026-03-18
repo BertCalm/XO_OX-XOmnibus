@@ -1,14 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 5",
-  "mood": "Entangled",
-  "engines": [
-    "OVERBITE",
-    "OHM"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.61,
+    "source": "Overbite",
+    "target": "Ohm",
+    "type": "RING_MOD"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.938,
+    "brightness": 0.06,
+    "density": 0.913,
+    "movement": 0.914,
+    "space": 0.44,
+    "warmth": 0.075
+  },
+  "engines": [
+    "Overbite",
+    "Ohm"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 5",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.77,
+      "macro_coupling": 0.53,
+      "macro_movement": 0.87,
+      "macro_space": 0.3
+    },
+    "Overbite": {
+      "macro_character": 0.69,
+      "macro_coupling": 0.83,
+      "macro_movement": 0.89,
+      "macro_space": 0.32
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +58,6 @@
     "dense",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.69,
-      "macro_movement": 0.89,
-      "macro_coupling": 0.83,
-      "macro_space": 0.32
-    },
-    "OHM": {
-      "macro_character": 0.77,
-      "macro_movement": 0.87,
-      "macro_coupling": 0.53,
-      "macro_space": 0.3
-    }
-  },
-  "coupling": {
-    "type": "RING_MOD",
-    "source": "OVERBITE",
-    "target": "OHM",
-    "amount": 0.61
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.06,
-    "warmth": 0.075,
-    "movement": 0.914,
-    "density": 0.913,
-    "space": 0.44,
-    "aggression": 0.938
-  }
+  "version": "1.0.0"
 }

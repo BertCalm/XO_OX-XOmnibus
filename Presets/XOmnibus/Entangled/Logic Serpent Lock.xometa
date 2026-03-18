@@ -1,33 +1,41 @@
 {
-  "name": "Logic Serpent Lock",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.82,
+    "source": "Organon",
+    "target": "Ouroboros",
+    "type": "TIMBRAL_WARP"
+  },
+  "description": "Organon's logical system imprisoning Ouroboros in a perfectly still cycle of force.",
   "engines": [
-    "ORGANON",
-    "OUROBOROS"
+    "Organon",
+    "Ouroboros"
   ],
-  "mood": "Entangled",
-  "strategy": "Still Aggressive",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.75,
-    "MOVEMENT": 0.05,
     "COUPLING": 0.88,
+    "MOVEMENT": 0.05,
     "SPACE": 0.5
   },
-  "sonic_dna": {
-    "brightness": 0.35,
-    "warmth": 0.42,
-    "movement": 0.05,
-    "density": 0.8,
-    "space": 0.48,
-    "aggression": 0.95
-  },
+  "mood": "Entangled",
+  "name": "Logic Serpent Lock",
   "parameters": {},
-  "coupling": {
-    "type": "TIMBRAL_WARP",
-    "source": "ORGANON",
-    "target": "OUROBOROS",
-    "amount": 0.82
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.95,
+    "brightness": 0.35,
+    "density": 0.8,
+    "movement": 0.05,
+    "space": 0.48,
+    "warmth": 0.42
   },
+  "strategy": "Still Aggressive",
   "tags": [
     "entangled",
     "aggressive",
@@ -35,5 +43,5 @@
     "logic",
     "serpent"
   ],
-  "description": "Organon's logical system imprisoning Ouroboros in a perfectly still cycle of force."
+  "version": "1.0"
 }

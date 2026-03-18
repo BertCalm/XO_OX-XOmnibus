@@ -1,49 +1,57 @@
 {
-  "name": "Blazing Orbit",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORIGAMI",
-    "OHM"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.8,
-      "macro_movement": 0.54,
-      "macro_coupling": 0.54,
-      "macro_space": 0.46
-    },
-    "OHM": {
-      "macro_character": 0.69,
-      "macro_movement": 0.7,
-      "macro_coupling": 0.49,
-      "macro_space": 0.58
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "DYNAMICS_SHARE",
-    "source": "ORIGAMI",
-    "target": "OHM",
-    "amount": 0.6
+    "amount": 0.6,
+    "source": "Origami",
+    "target": "Ohm",
+    "type": "DYNAMICS_SHARE"
   },
   "dna": {
+    "aggression": 0.18,
     "brightness": 0.85,
-    "warmth": 0.91,
-    "movement": 0.67,
     "density": 0.58,
+    "movement": 0.67,
     "space": 0.55,
-    "aggression": 0.18
+    "warmth": 0.91
   },
+  "engines": [
+    "Origami",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.74,
-    "MOVEMENT": 0.62,
     "COUPLING": 0.52,
+    "MOVEMENT": 0.62,
     "SPACE": 0.52
   },
+  "mood": "Entangled",
+  "name": "Blazing Orbit",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.69,
+      "macro_coupling": 0.49,
+      "macro_movement": 0.7,
+      "macro_space": 0.58
+    },
+    "Origami": {
+      "macro_character": 0.8,
+      "macro_coupling": 0.54,
+      "macro_movement": 0.54,
+      "macro_space": 0.46
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

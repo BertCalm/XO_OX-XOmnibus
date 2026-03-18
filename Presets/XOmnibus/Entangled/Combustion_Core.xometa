@@ -1,49 +1,57 @@
 {
-  "name": "Combustion Core",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ODDOSCAR",
-    "OBESE"
-  ],
-  "parameters": {
-    "ODDOSCAR": {
-      "macro_character": 0.86,
-      "macro_movement": 0.37,
-      "macro_coupling": 0.61,
-      "macro_space": 0.46
-    },
-    "OBESE": {
-      "macro_character": 0.82,
-      "macro_movement": 0.35,
-      "macro_coupling": 0.56,
-      "macro_space": 0.33
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_LOCK",
-    "source": "ODDOSCAR",
-    "target": "OBESE",
-    "amount": 0.7
+    "amount": 0.7,
+    "source": "OddOscar",
+    "target": "Obese",
+    "type": "HARMONIC_LOCK"
   },
   "dna": {
+    "aggression": 0.34,
     "brightness": 0.64,
-    "warmth": 0.97,
-    "movement": 0.48,
     "density": 0.89,
+    "movement": 0.48,
     "space": 0.51,
-    "aggression": 0.34
+    "warmth": 0.97
   },
+  "engines": [
+    "OddOscar",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.84,
-    "MOVEMENT": 0.36,
     "COUPLING": 0.58,
+    "MOVEMENT": 0.36,
     "SPACE": 0.4
   },
+  "mood": "Entangled",
+  "name": "Combustion Core",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.82,
+      "macro_coupling": 0.56,
+      "macro_movement": 0.35,
+      "macro_space": 0.33
+    },
+    "OddOscar": {
+      "macro_character": 0.86,
+      "macro_coupling": 0.61,
+      "macro_movement": 0.37,
+      "macro_space": 0.46
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

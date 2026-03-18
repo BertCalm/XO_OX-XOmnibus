@@ -1,13 +1,36 @@
 {
-  "schema_version": 1,
-  "name": "Odyssey Open Sea",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "ODYSSEY maximum drift across warm water — wavetable horizon, endless space.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.6,
+    "density": 0.25,
+    "movement": 0.72,
+    "space": 0.9,
+    "warmth": 0.88
+  },
   "engines": [
-    "ODYSSEY"
+    "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ODYSSEY maximum drift across warm water \u2014 wavetable horizon, endless space.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "JOURNEY",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Odyssey Open Sea",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "portrait",
@@ -16,29 +39,6 @@
     "spatial",
     "drift"
   ],
-  "macroLabels": [
-    "JOURNEY",
-    "DRIFT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.88,
-    "movement": 0.72,
-    "density": 0.25,
-    "space": 0.9,
-    "aggression": 0.1
-  }
+  "version": "1.0.0"
 }

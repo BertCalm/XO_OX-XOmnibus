@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "DARK_COLD_FROZEN_SPARSE_VIOLENT_ENT3_1",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8405,
+    "source": "OddfeliX",
+    "target": "Owlfish",
+    "type": "VELOCITY_COUPLE"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_COLD_FROZEN_SPARSE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.9309,
+    "brightness": 0.115,
+    "density": 0.0656,
+    "movement": 0.089,
+    "space": 0.6737,
+    "warmth": 0.0504
+  },
   "engines": [
-    "ODDFELIX",
-    "OWLFISH"
+    "OddfeliX",
+    "Owlfish"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_COLD_FROZEN_SPARSE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8899,
+    "COUPLING": 0.9041,
+    "MOVEMENT": 0.0888,
+    "SPACE": 0.5523
+  },
+  "mood": "Entangled",
+  "name": "DARK_COLD_FROZEN_SPARSE_VIOLENT_ENT3_1",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.8558,
+      "macro_coupling": 0.951,
+      "macro_movement": 0.0954,
+      "macro_space": 0.5929
+    },
+    "Owlfish": {
+      "macro_character": 0.924,
+      "macro_coupling": 0.8572,
+      "macro_movement": 0.0823,
+      "macro_space": 0.5117
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +66,6 @@
     "violent",
     "sparse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ODDFELIX": {
-      "macro_character": 0.8558,
-      "macro_movement": 0.0954,
-      "macro_coupling": 0.951,
-      "macro_space": 0.5929
-    },
-    "OWLFISH": {
-      "macro_character": 0.924,
-      "macro_movement": 0.0823,
-      "macro_coupling": 0.8572,
-      "macro_space": 0.5117
-    }
-  },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ODDFELIX",
-    "target": "OWLFISH",
-    "amount": 0.8405
-  },
-  "macros": {
-    "CHARACTER": 0.8899,
-    "MOVEMENT": 0.0888,
-    "COUPLING": 0.9041,
-    "SPACE": 0.5523
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.115,
-    "warmth": 0.0504,
-    "movement": 0.089,
-    "density": 0.0656,
-    "space": 0.6737,
-    "aggression": 0.9309
-  }
+  "version": "1.0.0"
 }

@@ -1,14 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "DARK_KINETIC_DENSE_GENTLE_ENT_2",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7292,
+    "pairs": [
+      {
+        "amount": 0.7292,
+        "source": "Orphica",
+        "target": "Octopus",
+        "type": "SPECTRAL_MORPH"
+      }
+    ],
+    "source": "Orphica",
+    "target": "Octopus",
+    "type": "SPECTRAL_MORPH"
+  },
+  "couplingIntensity": "Medium",
+  "description": "Dark Kinetic Dense Gentle character entanglement — ORPHICA × OCTOPUS via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.1196,
+    "brightness": 0.0499,
+    "density": 0.8987,
+    "movement": 0.9589,
+    "space": 0.3203,
+    "warmth": 0.3437
+  },
   "engines": [
-    "ORPHICA",
-    "OCTOPUS"
+    "Orphica",
+    "Octopus"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dark Kinetic Dense Gentle character entanglement \u2014 ORPHICA \u00d7 OCTOPUS via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "PLUCK",
+    "SCATTER",
+    "RESONATE",
+    "HALL"
+  ],
+  "macros": {
+    "CHARACTER": 0.1968,
+    "COUPLING": 0.7292,
+    "MOVEMENT": 0.9589,
+    "SPACE": 0.3203
+  },
+  "mood": "Entangled",
+  "name": "DARK_KINETIC_DENSE_GENTLE_ENT_2",
+  "parameters": {
+    "Octopus": {
+      "amp_attack": 0.0294,
+      "amp_release": 0.3259,
+      "coupling_level": 0.6208,
+      "density": 0.8616,
+      "drive": 0.1804,
+      "filter_cutoff": 0.254,
+      "filter_resonance": 0.1878,
+      "macro_character": 0.4171,
+      "macro_coupling": 0.6541,
+      "macro_movement": 0.9804,
+      "macro_space": 0.2989,
+      "output_level": 0.9516,
+      "reverb_mix": 0.3196,
+      "reverb_size": 0.4192
+    },
+    "Orphica": {
+      "amp_attack": 0.039,
+      "amp_release": 0.3044,
+      "coupling_level": 0.5806,
+      "density": 0.9192,
+      "drive": 0.1577,
+      "filter_cutoff": 0.2721,
+      "filter_resonance": 0.198,
+      "macro_character": 0.4388,
+      "macro_coupling": 0.6564,
+      "macro_movement": 0.9567,
+      "macro_space": 0.2913,
+      "output_level": 0.9077,
+      "reverb_mix": 0.3567,
+      "reverb_size": 0.3903
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.1196,
+    "brightness": 0.0499,
+    "density": 0.8987,
+    "movement": 0.9589,
+    "space": 0.3203,
+    "warmth": 0.3437
+  },
   "tags": [
     "entangled",
     "dark",
@@ -17,81 +93,5 @@
     "gentle",
     "resonant"
   ],
-  "macroLabels": [
-    "PLUCK",
-    "SCATTER",
-    "RESONATE",
-    "HALL"
-  ],
-  "couplingIntensity": "Medium",
-  "dna": {
-    "brightness": 0.0499,
-    "warmth": 0.3437,
-    "movement": 0.9589,
-    "density": 0.8987,
-    "space": 0.3203,
-    "aggression": 0.1196
-  },
-  "sonic_dna": {
-    "brightness": 0.0499,
-    "warmth": 0.3437,
-    "movement": 0.9589,
-    "density": 0.8987,
-    "space": 0.3203,
-    "aggression": 0.1196
-  },
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.4388,
-      "macro_movement": 0.9567,
-      "macro_coupling": 0.6564,
-      "macro_space": 0.2913,
-      "filter_cutoff": 0.2721,
-      "filter_resonance": 0.198,
-      "amp_attack": 0.039,
-      "amp_release": 0.3044,
-      "reverb_mix": 0.3567,
-      "reverb_size": 0.3903,
-      "drive": 0.1577,
-      "density": 0.9192,
-      "output_level": 0.9077,
-      "coupling_level": 0.5806
-    },
-    "OCTOPUS": {
-      "macro_character": 0.4171,
-      "macro_movement": 0.9804,
-      "macro_coupling": 0.6541,
-      "macro_space": 0.2989,
-      "filter_cutoff": 0.254,
-      "filter_resonance": 0.1878,
-      "amp_attack": 0.0294,
-      "amp_release": 0.3259,
-      "reverb_mix": 0.3196,
-      "reverb_size": 0.4192,
-      "drive": 0.1804,
-      "density": 0.8616,
-      "output_level": 0.9516,
-      "coupling_level": 0.6208
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORPHICA",
-    "target": "OCTOPUS",
-    "amount": 0.7292,
-    "pairs": [
-      {
-        "source": "ORPHICA",
-        "target": "OCTOPUS",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.7292
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.1968,
-    "MOVEMENT": 0.9589,
-    "COUPLING": 0.7292,
-    "SPACE": 0.3203
-  }
+  "version": "1.0.0"
 }

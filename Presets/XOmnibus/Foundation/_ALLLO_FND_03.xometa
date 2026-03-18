@@ -1,49 +1,57 @@
 {
-  "name": "ALLLO FND 03",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.115,
+    "source": "Ouroboros",
+    "target": "Oblong",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.101,
+    "brightness": 0.044,
+    "density": 0.044,
+    "movement": 0.518,
+    "space": 0.073,
+    "warmth": 0.042
+  },
   "engines": [
-    "OUROBOROS",
-    "OBLONG"
+    "Ouroboros",
+    "Oblong"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.043,
+    "COUPLING": 0.087,
+    "MOVEMENT": 0.281,
+    "SPACE": 0.073
+  },
+  "mood": "Foundation",
+  "name": "ALLLO FND 03",
   "parameters": {
-    "OUROBOROS": {
+    "Oblong": {
       "macro_character": 0.043,
-      "macro_movement": 0.281,
       "macro_coupling": 0.087,
+      "macro_movement": 0.281,
       "macro_space": 0.073
     },
-    "OBLONG": {
+    "Ouroboros": {
       "macro_character": 0.043,
-      "macro_movement": 0.281,
       "macro_coupling": 0.087,
+      "macro_movement": 0.281,
       "macro_space": 0.073
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OUROBOROS",
-    "target": "OBLONG",
-    "amount": 0.115
-  },
-  "dna": {
-    "brightness": 0.044,
-    "warmth": 0.042,
-    "movement": 0.518,
-    "density": 0.044,
-    "space": 0.073,
-    "aggression": 0.101
-  },
-  "macros": {
-    "CHARACTER": 0.043,
-    "MOVEMENT": 0.281,
-    "COUPLING": 0.087,
-    "SPACE": 0.073
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

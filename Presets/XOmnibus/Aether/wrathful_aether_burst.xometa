@@ -1,49 +1,57 @@
 {
-  "name": "WRATHFUL AETHER BURST",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "ORACLE",
-    "ONSET"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.02,
-      "macro_movement": 0.705,
-      "macro_coupling": 0.044,
-      "macro_space": 0.537
-    },
-    "ONSET": {
-      "macro_character": 0.373,
-      "macro_movement": 0.693,
-      "macro_coupling": 0.357,
-      "macro_space": 0.518
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORACLE",
-    "target": "ONSET",
-    "amount": 0.469
+    "amount": 0.469,
+    "source": "Oracle",
+    "target": "Onset",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
+    "aggression": 0.901,
     "brightness": 0.523,
-    "warmth": 0.361,
-    "movement": 0.668,
     "density": 0.953,
+    "movement": 0.668,
     "space": 0.544,
-    "aggression": 0.901
+    "warmth": 0.361
   },
+  "engines": [
+    "Oracle",
+    "Onset"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.657,
-    "MOVEMENT": 0.668,
     "COUPLING": 0.104,
+    "MOVEMENT": 0.668,
     "SPACE": 0.544
   },
+  "mood": "Aether",
+  "name": "WRATHFUL AETHER BURST",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.373,
+      "macro_coupling": 0.357,
+      "macro_movement": 0.693,
+      "macro_space": 0.518
+    },
+    "Oracle": {
+      "macro_character": 0.02,
+      "macro_coupling": 0.044,
+      "macro_movement": 0.705,
+      "macro_space": 0.537
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,14 +1,45 @@
 {
-  "schema_version": 1,
-  "name": "Coral The Bond \u00d7 Oblong",
-  "mood": "Entangled",
-  "engines": [
-    "OBBLIGATO",
-    "OBLONG"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.558,
+        "engineA": "Obbligato",
+        "engineB": "Oblong",
+        "type": "Env->Pitch"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
   "description": "OBLONG's bob filter sweeps OBBLIGATO's dual voices; BOND tethers the coral thread to amber curves.",
+  "dna": {
+    "aggression": 0.469,
+    "brightness": 0.569,
+    "density": 1.0,
+    "movement": 0.349,
+    "space": 0.582,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Obbligato",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Coral The Bond × Oblong",
+  "parameters": {
+    "obbl_breathA": 0.615,
+    "obbl_breathB": 0.509,
+    "obbl_macroBond": 0.817
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -17,37 +48,6 @@
     "amber",
     "warm"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "obbl_breathA": 0.615,
-    "obbl_breathB": 0.509,
-    "obbl_macroBond": 0.817
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBBLIGATO",
-        "engineB": "OBLONG",
-        "type": "Env->Pitch",
-        "amount": 0.558
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.569,
-    "warmth": 0.65,
-    "movement": 0.349,
-    "density": 1.0,
-    "space": 0.582,
-    "aggression": 0.469
-  }
+  "version": "1.0.0"
 }

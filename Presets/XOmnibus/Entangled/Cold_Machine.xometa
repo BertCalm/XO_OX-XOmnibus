@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Cold Machine",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.94,
+        "engineA": "Obsidian",
+        "engineB": "Onset",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Obsidian crystal density driving Onset percussion velocity — cold machine with perfect silence between hits.",
+  "dna": {
+    "aggression": 0.98,
+    "brightness": 0.09,
+    "density": 0.9,
+    "movement": 0.76,
+    "space": 0.1,
+    "warmth": 0.11
+  },
   "engines": [
-    "OBSIDIAN",
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Obsidian crystal density driving Onset percussion velocity \u2014 cold machine with perfect silence between hits.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "cold",
-    "obsidian",
-    "onset",
-    "machine"
+    "Obsidian",
+    "Onset"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,29 @@
   ],
   "macros": {
     "CHARACTER": 0.9,
-    "MOVEMENT": 0.76,
     "COUPLING": 0.94,
+    "MOVEMENT": 0.76,
     "SPACE": 0.1
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.09,
-    "warmth": 0.11,
-    "movement": 0.76,
-    "density": 0.9,
-    "space": 0.1,
-    "aggression": 0.98
-  },
-  "sonic_dna": {
-    "brightness": 0.09,
-    "warmth": 0.11,
-    "movement": 0.76,
-    "density": 0.9,
-    "space": 0.1,
-    "aggression": 0.98
-  },
+  "mood": "Entangled",
+  "name": "Cold Machine",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBSIDIAN",
-        "engineB": "ONSET",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.94
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.98,
+    "brightness": 0.09,
+    "density": 0.9,
+    "movement": 0.76,
+    "space": 0.1,
+    "warmth": 0.11
+  },
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obsidian",
+    "onset",
+    "machine"
+  ],
+  "version": "1.0.0"
 }

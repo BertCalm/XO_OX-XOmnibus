@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "COLD_FROZEN_DENSE_VAST_VIOLENT_ENT3_4",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9452,
+    "source": "Orca",
+    "target": "Ouroboros",
+    "type": "RESONANCE_SHARE"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: COLD_FROZEN_DENSE_VAST_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.9083,
+    "brightness": 0.6443,
+    "density": 0.9145,
+    "movement": 0.0231,
+    "space": 0.9374,
+    "warmth": 0.1273
+  },
   "engines": [
-    "ORCA",
-    "OUROBOROS"
+    "Orca",
+    "Ouroboros"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: COLD_FROZEN_DENSE_VAST_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6597,
+    "COUPLING": 0.8536,
+    "MOVEMENT": 0.0262,
+    "SPACE": 0.2466
+  },
+  "mood": "Entangled",
+  "name": "COLD_FROZEN_DENSE_VAST_VIOLENT_ENT3_4",
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.6311,
+      "macro_coupling": 0.8095,
+      "macro_movement": 0.0147,
+      "macro_space": 0.1823
+    },
+    "Ouroboros": {
+      "macro_character": 0.6882,
+      "macro_coupling": 0.8977,
+      "macro_movement": 0.0377,
+      "macro_space": 0.311
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +66,6 @@
     "dense",
     "vast"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORCA": {
-      "macro_character": 0.6311,
-      "macro_movement": 0.0147,
-      "macro_coupling": 0.8095,
-      "macro_space": 0.1823
-    },
-    "OUROBOROS": {
-      "macro_character": 0.6882,
-      "macro_movement": 0.0377,
-      "macro_coupling": 0.8977,
-      "macro_space": 0.311
-    }
-  },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORCA",
-    "target": "OUROBOROS",
-    "amount": 0.9452
-  },
-  "macros": {
-    "CHARACTER": 0.6597,
-    "MOVEMENT": 0.0262,
-    "COUPLING": 0.8536,
-    "SPACE": 0.2466
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.6443,
-    "warmth": 0.1273,
-    "movement": 0.0231,
-    "density": 0.9145,
-    "space": 0.9374,
-    "aggression": 0.9083
-  }
+  "version": "1.0.0"
 }

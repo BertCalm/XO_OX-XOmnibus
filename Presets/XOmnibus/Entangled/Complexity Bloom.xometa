@@ -1,14 +1,80 @@
 {
-  "schema_version": 1,
-  "name": "Complexity Bloom",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.8,
+        "engineA": "Overlap",
+        "engineB": "Outwit",
+        "type": "FILTER_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "OUTWIT arm patterns feed OVERLAP FDN node routing — cellular intelligence chooses the reflection path",
+  "dna": {
+    "aggression": 0.375,
+    "brightness": 0.625,
+    "density": 0.45,
+    "movement": 0.376,
+    "space": 0.982,
+    "warmth": 0.5
+  },
   "engines": [
-    "OVERLAP",
-    "OUTWIT"
+    "Overlap",
+    "Outwit"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OUTWIT arm patterns feed OVERLAP FDN node routing \u2014 cellular intelligence chooses the reflection path",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Complexity Bloom",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.119,
+      "owit_ampRelease": 0.359,
+      "owit_arms": 7,
+      "owit_cellSize": 0.14,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.619,
+      "owit_density": 0.719,
+      "owit_evolveRate": 0.306,
+      "owit_filterCutoff": 0.738,
+      "owit_filterReso": 0.126,
+      "owit_mutateProb": 0.086,
+      "owit_outputLevel": 0.775,
+      "owit_pitchSpread": 0.548,
+      "owit_rule": 30
+    },
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.633,
+      "olap_damping": 0.466,
+      "olap_decay": 0.627,
+      "olap_diffusion": 0.82,
+      "olap_earlyMix": 0.396,
+      "olap_filterCutoff": 0.786,
+      "olap_filterReso": 0.138,
+      "olap_lateMix": 0.461,
+      "olap_modDepth": 0.233,
+      "olap_modRate": 0.347,
+      "olap_outputLevel": 0.843,
+      "olap_preDelay": 0.198,
+      "olap_size": 0.714
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.375,
+    "brightness": 0.625,
+    "density": 0.675,
+    "movement": 0.7,
+    "space": 0.7,
+    "warmth": 0.5
+  },
   "tags": [
     "coupling",
     "entangled",
@@ -21,71 +87,5 @@
     "wolfram",
     "cellular-automata"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
-  "dna": {
-    "aggression": 0.375,
-    "space": 0.982,
-    "warmth": 0.5,
-    "brightness": 0.625,
-    "density": 0.45,
-    "movement": 0.376
-  },
-  "sonic_dna": {
-    "aggression": 0.375,
-    "space": 0.7,
-    "warmth": 0.5,
-    "brightness": 0.625,
-    "density": 0.675,
-    "movement": 0.7
-  },
-  "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.714,
-      "olap_decay": 0.627,
-      "olap_damping": 0.466,
-      "olap_diffusion": 0.82,
-      "olap_modDepth": 0.233,
-      "olap_modRate": 0.347,
-      "olap_preDelay": 0.198,
-      "olap_earlyMix": 0.396,
-      "olap_lateMix": 0.461,
-      "olap_filterCutoff": 0.786,
-      "olap_filterReso": 0.138,
-      "olap_outputLevel": 0.843,
-      "olap_couplingLevel": 0.633,
-      "olap_couplingBus": 0
-    },
-    "OUTWIT": {
-      "owit_rule": 30,
-      "owit_arms": 7,
-      "owit_cellSize": 0.14,
-      "owit_density": 0.719,
-      "owit_evolveRate": 0.306,
-      "owit_mutateProb": 0.086,
-      "owit_pitchSpread": 0.548,
-      "owit_filterCutoff": 0.738,
-      "owit_filterReso": 0.126,
-      "owit_ampAttack": 0.119,
-      "owit_ampRelease": 0.359,
-      "owit_outputLevel": 0.775,
-      "owit_couplingLevel": 0.619,
-      "owit_couplingBus": 0
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERLAP",
-        "engineB": "OUTWIT",
-        "type": "FILTER_MOD",
-        "amount": 0.8
-      }
-    ]
-  }
+  "version": "1.0.0"
 }

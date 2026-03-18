@@ -1,31 +1,39 @@
 {
-  "name": "Drift Into Evening",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.55,
+    "source": "Odyssey",
+    "target": "Ombre",
+    "type": "GRADIENT_DISSOLVE"
+  },
+  "description": "Odyssey wavetable fades through ombre gradient — the voyage dissolving to shadow",
   "engines": [
-    "ODYSSEY",
-    "OMBRE"
+    "Odyssey",
+    "Ombre"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.55,
+    "MOVEMENT": 0.65,
     "SPACE": 0.7
   },
-  "sonic_dna": {
-    "brightness": 0.51,
-    "warmth": 0.52,
-    "movement": 0.57,
-    "density": 0.53,
-    "space": 0.66,
-    "aggression": 0.29
-  },
+  "mood": "Entangled",
+  "name": "Drift Into Evening",
   "parameters": {},
-  "coupling": {
-    "type": "GRADIENT_DISSOLVE",
-    "source": "ODYSSEY",
-    "target": "OMBRE",
-    "amount": 0.55
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.29,
+    "brightness": 0.51,
+    "density": 0.53,
+    "movement": 0.57,
+    "space": 0.66,
+    "warmth": 0.52
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "ombre",
     "wavetable"
   ],
-  "description": "Odyssey wavetable fades through ombre gradient \u2014 the voyage dissolving to shadow"
+  "version": "1.0"
 }

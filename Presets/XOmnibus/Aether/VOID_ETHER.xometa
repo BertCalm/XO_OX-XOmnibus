@@ -1,49 +1,57 @@
 {
-  "name": "VOID ETHER",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.351,
+    "source": "Ocelot",
+    "target": "OddfeliX",
+    "type": "PHASE_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.625,
+    "brightness": 0.037,
+    "density": 0.597,
+    "movement": 0.102,
+    "space": 0.277,
+    "warmth": 0.75
+  },
   "engines": [
-    "OCELOT",
-    "ODDFELIX"
+    "Ocelot",
+    "OddfeliX"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.631,
+    "COUPLING": 0.662,
+    "MOVEMENT": 0.795,
+    "SPACE": 0.52
+  },
+  "mood": "Aether",
+  "name": "VOID ETHER",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.559,
-      "macro_movement": 0.643,
       "macro_coupling": 0.328,
+      "macro_movement": 0.643,
       "macro_space": 0.128
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.703,
-      "macro_movement": 0.947,
       "macro_coupling": 0.997,
+      "macro_movement": 0.947,
       "macro_space": 0.912
     }
   },
-  "coupling": {
-    "type": "PHASE_COUPLE",
-    "source": "OCELOT",
-    "target": "ODDFELIX",
-    "amount": 0.351
-  },
-  "dna": {
-    "brightness": 0.037,
-    "warmth": 0.75,
-    "movement": 0.102,
-    "density": 0.597,
-    "space": 0.277,
-    "aggression": 0.625
-  },
-  "macros": {
-    "CHARACTER": 0.631,
-    "MOVEMENT": 0.795,
-    "COUPLING": 0.662,
-    "SPACE": 0.52
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "dark",
     "extreme",
     "low-movement"
-  ]
+  ],
+  "version": "1.0"
 }

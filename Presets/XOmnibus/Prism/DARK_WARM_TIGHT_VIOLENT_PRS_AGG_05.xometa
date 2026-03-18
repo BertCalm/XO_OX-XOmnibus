@@ -1,45 +1,52 @@
 {
-  "name": "DARK WARM TIGHT VIOLENT PRS AGG 5",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.833,
+    "source": "Orphica",
+    "target": "Ottoni",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.937,
+    "brightness": 0.087,
+    "density": 0.449,
+    "movement": 0.339,
+    "space": 0.129,
+    "warmth": 0.885
+  },
   "engines": [
-    "ORPHICA",
-    "OTTONI"
+    "Orphica",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.082,
+    "COUPLING": 0.899,
+    "MOVEMENT": 0.315,
+    "SPACE": 0.125
+  },
+  "mood": "Prism",
+  "name": "DARK WARM TIGHT VIOLENT PRS AGG 5",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.083,
-      "macro_movement": 0.316,
       "macro_coupling": 0.892,
+      "macro_movement": 0.316,
       "macro_space": 0.123
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.08,
-      "macro_movement": 0.313,
       "macro_coupling": 0.905,
+      "macro_movement": 0.313,
       "macro_space": 0.127
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORPHICA",
-    "target": "OTTONI",
-    "amount": 0.833
-  },
-  "dna": {
-    "brightness": 0.087,
-    "warmth": 0.885,
-    "movement": 0.339,
-    "density": 0.449,
-    "space": 0.129,
-    "aggression": 0.937
-  },
-  "macros": {
-    "CHARACTER": 0.082,
-    "MOVEMENT": 0.315,
-    "COUPLING": 0.899,
-    "SPACE": 0.125
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "aggressive",
@@ -47,5 +54,6 @@
     "violent",
     "dark",
     "tight"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Shuriken Barrage",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.89,
+        "engineA": "Origami",
+        "engineB": "Onset",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Origami crane chaos-injected into Onset trigger rate — folded paper as weaponized percussion.",
+  "dna": {
+    "aggression": 0.93,
+    "brightness": 0.74,
+    "density": 0.67,
+    "movement": 0.93,
+    "space": 0.16,
+    "warmth": 0.22
+  },
   "engines": [
-    "ORIGAMI",
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Origami crane chaos-injected into Onset trigger rate \u2014 folded paper as weaponized percussion.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "movement",
-    "origami",
-    "onset",
-    "shuriken"
+    "Origami",
+    "Onset"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,29 @@
   ],
   "macros": {
     "CHARACTER": 0.84,
-    "MOVEMENT": 0.93,
     "COUPLING": 0.89,
+    "MOVEMENT": 0.93,
     "SPACE": 0.16
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.74,
-    "warmth": 0.22,
-    "movement": 0.93,
-    "density": 0.67,
-    "space": 0.16,
-    "aggression": 0.93
-  },
-  "sonic_dna": {
-    "brightness": 0.74,
-    "warmth": 0.22,
-    "movement": 0.93,
-    "density": 0.67,
-    "space": 0.16,
-    "aggression": 0.93
-  },
+  "mood": "Entangled",
+  "name": "Shuriken Barrage",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORIGAMI",
-        "engineB": "ONSET",
-        "type": "CHAOS_INJECT",
-        "amount": 0.89
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.93,
+    "brightness": 0.74,
+    "density": 0.67,
+    "movement": 0.93,
+    "space": 0.16,
+    "warmth": 0.22
+  },
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "origami",
+    "onset",
+    "shuriken"
+  ],
+  "version": "1.0.0"
 }

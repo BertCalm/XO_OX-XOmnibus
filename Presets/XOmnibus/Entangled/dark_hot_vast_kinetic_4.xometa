@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK HOT VAST KINETIC 4",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.0841,
-    "warmth": 0.9036,
-    "space": 0.9387,
-    "movement": 0.9246,
-    "aggression": 0.4488,
-    "density": 0.5312
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Low",
+  "couplingType": "ECHO",
+  "description": "Ultra-diverse Entangled preset — dark hot vast kinetic. Designed for ECHO coupling with XOblongBob.",
   "dna": {
-    "brightness": 0.0841,
-    "warmth": 0.9036,
-    "space": 0.9387,
-    "movement": 0.9246,
     "aggression": 0.4488,
-    "density": 0.5312
+    "brightness": 0.0841,
+    "density": 0.5312,
+    "movement": 0.9246,
+    "space": 0.9387,
+    "warmth": 0.9036
   },
   "engines": [
-    "XOblongBob"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark hot vast kinetic. Designed for ECHO coupling with XOblongBob.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "echo",
-    "oblong"
+    "Oblong"
   ],
   "macroLabels": [
     "VOID",
@@ -36,15 +23,28 @@
     "SHIMMER",
     "GLOW"
   ],
-  "couplingType": "ECHO",
-  "couplingIntensity": "Low",
+  "mood": "Entangled",
+  "name": "DARK HOT VAST KINETIC 4",
   "parameters": {
-    "XOblongBob": {
-      "couplingLevel": 0.902,
-      "couplingBus": 3
+    "Oblong": {
+      "couplingBus": 3,
+      "couplingLevel": 0.902
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4488,
+    "brightness": 0.0841,
+    "density": 0.5312,
+    "movement": 0.9246,
+    "space": 0.9387,
+    "warmth": 0.9036
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "echo",
+    "oblong"
+  ],
+  "version": "1.0.0"
 }

@@ -1,14 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 6",
-  "mood": "Aether",
-  "engines": [
-    "OPTIC",
-    "OBLONG"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.71,
+    "source": "Optic",
+    "target": "Oblong",
+    "type": "RING_MOD"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.92,
+    "brightness": 0.085,
+    "density": 0.904,
+    "movement": 0.481,
+    "space": 0.08,
+    "warmth": 0.08
+  },
+  "engines": [
+    "Optic",
+    "Oblong"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 6",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.89,
+      "macro_coupling": 0.74,
+      "macro_movement": 0.62,
+      "macro_space": 0.25
+    },
+    "Optic": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.88,
+      "macro_movement": 0.95,
+      "macro_space": 0.42
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +58,6 @@
     "dense",
     "aether"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OPTIC": {
-      "macro_character": 0.65,
-      "macro_movement": 0.95,
-      "macro_coupling": 0.88,
-      "macro_space": 0.42
-    },
-    "OBLONG": {
-      "macro_character": 0.89,
-      "macro_movement": 0.62,
-      "macro_coupling": 0.74,
-      "macro_space": 0.25
-    }
-  },
-  "coupling": {
-    "type": "RING_MOD",
-    "source": "OPTIC",
-    "target": "OBLONG",
-    "amount": 0.71
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.085,
-    "warmth": 0.08,
-    "movement": 0.481,
-    "density": 0.904,
-    "space": 0.08,
-    "aggression": 0.92
-  }
+  "version": "1.0.0"
 }

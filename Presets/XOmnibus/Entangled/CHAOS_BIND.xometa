@@ -1,49 +1,57 @@
 {
-  "name": "CHAOS BIND",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.902,
+    "source": "Obsidian",
+    "target": "Overdub",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.959,
+    "brightness": 0.617,
+    "density": 0.528,
+    "movement": 0.095,
+    "space": 0.981,
+    "warmth": 0.826
+  },
   "engines": [
-    "OBSIDIAN",
-    "OVERDUB"
+    "Obsidian",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.87,
+    "COUPLING": 0.801,
+    "MOVEMENT": 0.841,
+    "SPACE": 0.107
+  },
+  "mood": "Entangled",
+  "name": "CHAOS BIND",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.831,
-      "macro_movement": 0.24,
       "macro_coupling": 0.806,
+      "macro_movement": 0.24,
       "macro_space": 0.241
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.836,
-      "macro_movement": 0.898,
       "macro_coupling": 0.418,
+      "macro_movement": 0.898,
       "macro_space": 0.496
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OBSIDIAN",
-    "target": "OVERDUB",
-    "amount": 0.902
-  },
-  "dna": {
-    "brightness": 0.617,
-    "warmth": 0.826,
-    "movement": 0.095,
-    "density": 0.528,
-    "space": 0.981,
-    "aggression": 0.959
-  },
-  "macros": {
-    "CHARACTER": 0.87,
-    "MOVEMENT": 0.841,
-    "COUPLING": 0.801,
-    "SPACE": 0.107
-  },
+  "schema_version": 1,
   "tags": [
     "chaos",
     "aggressive",
     "obliterating",
     "savage"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Bob Prism Riot",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.4603,
-    "warmth": 0.2722,
-    "movement": 0.8944,
-    "density": 0.5623,
-    "space": 0.3448,
-    "aggression": 0.8932
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Oblong in brutal movement prism configuration",
   "dna": {
+    "aggression": 0.8932,
     "brightness": 0.4603,
-    "warmth": 0.2722,
-    "movement": 0.8944,
     "density": 0.5623,
+    "movement": 0.8944,
     "space": 0.3448,
-    "aggression": 0.8932
+    "warmth": 0.2722
   },
   "engines": [
-    "OBLONG"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Oblong in brutal movement prism configuration",
-  "tags": [
-    "prism",
-    "brutal",
-    "movement",
-    "aggressive",
-    "anchor"
+    "Oblong"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -39,23 +24,38 @@
   ],
   "macros": {
     "CHARACTER": 0.4127,
-    "MOVEMENT": 0.8516,
     "COUPLING": 0.2829,
+    "MOVEMENT": 0.8516,
     "SPACE": 0.7351
   },
-  "couplingIntensity": "None",
+  "mood": "Prism",
+  "name": "Bob Prism Riot",
   "parameters": {
-    "OBLONG": {
-      "bob_macro_character": 0.4127,
-      "bob_macro_movement": 0.8516,
-      "bob_macro_coupling": 0.2829,
-      "bob_macro_space": 0.7351,
-      "bob_outputLevel": 0.85,
+    "Oblong": {
+      "bob_couplingBus": 0,
       "bob_couplingLevel": 0.5,
-      "bob_couplingBus": 0
+      "bob_macro_character": 0.4127,
+      "bob_macro_coupling": 0.2829,
+      "bob_macro_movement": 0.8516,
+      "bob_macro_space": 0.7351,
+      "bob_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.8932,
+    "brightness": 0.4603,
+    "density": 0.5623,
+    "movement": 0.8944,
+    "space": 0.3448,
+    "warmth": 0.2722
+  },
+  "tags": [
+    "prism",
+    "brutal",
+    "movement",
+    "aggressive",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

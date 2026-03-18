@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Riot Low",
-  "mood": "Foundation",
-  "sonic_dna": {
-    "brightness": 0.2205,
-    "warmth": 0.5137,
-    "movement": 0.6956,
-    "density": 0.753,
-    "space": 0.4352,
-    "aggression": 0.8274
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Driven oscillator sweeping aggressive low territory",
   "dna": {
+    "aggression": 0.8274,
     "brightness": 0.2205,
-    "warmth": 0.5137,
-    "movement": 0.6956,
     "density": 0.753,
+    "movement": 0.6956,
     "space": 0.4352,
-    "aggression": 0.8274
+    "warmth": 0.5137
   },
   "engines": [
-    "ODYSSEY"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Driven oscillator sweeping aggressive low territory",
-  "tags": [
-    "foundation",
-    "aggressive",
-    "extreme",
-    "anchor",
-    "drive"
+    "Odyssey"
   ],
   "macroLabels": [
     "ODYSSEY",
@@ -38,24 +23,39 @@
     "SPACE"
   ],
   "macros": {
-    "ODYSSEY": 0.4961,
-    "MOTION": 0.8796,
     "COUPLING": 0.8968,
+    "MOTION": 0.8796,
+    "ODYSSEY": 0.4961,
     "SPACE": 0.6387
   },
-  "couplingIntensity": "None",
+  "mood": "Foundation",
+  "name": "Riot Low",
   "parameters": {
-    "ODYSSEY": {
-      "od_macro_odyssey": 0.4961,
-      "od_macro_motion": 0.8796,
-      "od_macro_coupling": 0.8968,
-      "od_macro_space": 0.6387,
-      "od_outputLevel": 0.85,
+    "Odyssey": {
+      "od_couplingBus": 0,
       "od_couplingLevel": 0.5,
-      "od_couplingBus": 0
+      "od_macro_coupling": 0.8968,
+      "od_macro_motion": 0.8796,
+      "od_macro_odyssey": 0.4961,
+      "od_macro_space": 0.6387,
+      "od_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.8274,
+    "brightness": 0.2205,
+    "density": 0.753,
+    "movement": 0.6956,
+    "space": 0.4352,
+    "warmth": 0.5137
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "extreme",
+    "anchor",
+    "drive"
+  ],
+  "version": "1.0.0"
 }

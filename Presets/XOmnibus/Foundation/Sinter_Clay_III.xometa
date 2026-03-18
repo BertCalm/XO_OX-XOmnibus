@@ -1,27 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Sinter Clay III",
-  "mood": "Foundation",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Wool-thick pad with heavy body resonance and amber warmth.",
+  "dna": {
+    "aggression": 0.472,
     "brightness": 0.476,
-    "warmth": 0.838,
-    "movement": 0.522,
     "density": 0.869,
+    "movement": 0.522,
     "space": 0.174,
-    "aggression": 0.472
+    "warmth": 0.838
   },
   "engines": [
     "OddOscar"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Wool-thick pad with heavy body resonance and amber warmth.",
-  "tags": [
-    "foundation",
-    "warm",
-    "dense",
-    "analog",
-    "thick"
   ],
   "macroLabels": [
     "BODY",
@@ -29,17 +22,24 @@
     "COUPLING",
     "ROOM"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.476,
-    "warmth": 0.838,
-    "movement": 0.522,
-    "density": 0.869,
-    "space": 0.174,
-    "aggression": 0.472
-  },
+  "mood": "Foundation",
+  "name": "Sinter Clay III",
   "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.472,
+    "brightness": 0.476,
+    "density": 0.869,
+    "movement": 0.522,
+    "space": 0.174,
+    "warmth": 0.838
+  },
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick"
+  ],
+  "version": "1.0.0"
 }

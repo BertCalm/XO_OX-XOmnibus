@@ -1,51 +1,51 @@
 {
-  "schema_version": 1,
-  "name": "Zero Kelvin Drone",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Boid swarm frozen. Separation at maximum. No coherence, no warmth.",
+  "dna": {
+    "aggression": 0.04,
+    "brightness": 0.05,
+    "density": 0.05,
+    "movement": 0.06,
+    "space": 1.0,
+    "warmth": 0.0
+  },
   "engines": [
     "Oceanic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Boid swarm frozen. Separation at maximum. No coherence, no warmth.",
-  "tags": [
-    "cold-sparse",
-    "extreme",
-    "aether",
-    "drone"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Aether",
+  "name": "Zero Kelvin Drone",
   "parameters": {
     "Oceanic": {
-      "ocean_separation": 0.97,
       "ocean_alignment": 0.03,
-      "ocean_cohesion": 0.03,
       "ocean_brightness": 0.06,
+      "ocean_cohesion": 0.03,
       "ocean_depth": 0.96,
+      "ocean_separation": 0.97,
       "ocean_turbulence": 0.03
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.05,
-    "warmth": 0.0,
-    "movement": 0.06,
-    "density": 0.05,
-    "space": 1.0,
-    "aggression": 0.04
-  }
+  "tags": [
+    "cold-sparse",
+    "extreme",
+    "aether",
+    "drone"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

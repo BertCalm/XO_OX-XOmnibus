@@ -1,50 +1,58 @@
 {
-  "name": "DARK_DENSE_VAST_VIOLENT_FLX_AGG_1",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.896,
+    "source": "Oblong",
+    "target": "Origami",
+    "type": "SPECTRAL_MORPH"
+  },
+  "dna": {
+    "aggression": 0.972,
+    "brightness": 0.039,
+    "density": 0.876,
+    "movement": 0.507,
+    "space": 0.9,
+    "warmth": 0.683
+  },
   "engines": [
-    "OBLONG",
-    "ORIGAMI"
+    "Oblong",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.602,
+    "COUPLING": 0.91,
+    "MOVEMENT": 0.507,
+    "SPACE": 0.9
+  },
+  "mood": "Flux",
+  "name": "DARK_DENSE_VAST_VIOLENT_FLX_AGG_1",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.533,
-      "macro_movement": 0.517,
       "macro_coupling": 0.91,
+      "macro_movement": 0.517,
       "macro_space": 0.945
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.671,
-      "macro_movement": 0.546,
       "macro_coupling": 0.919,
+      "macro_movement": 0.546,
       "macro_space": 0.922
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBLONG",
-    "target": "ORIGAMI",
-    "amount": 0.896
-  },
-  "dna": {
-    "brightness": 0.039,
-    "warmth": 0.683,
-    "movement": 0.507,
-    "density": 0.876,
-    "space": 0.9,
-    "aggression": 0.972
-  },
-  "macros": {
-    "CHARACTER": 0.602,
-    "MOVEMENT": 0.507,
-    "COUPLING": 0.91,
-    "SPACE": 0.9
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "dark",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,48 +1,56 @@
 {
-  "name": "EMPTY LINEAGE",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OPAL",
-    "OMBRE"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.362,
-      "macro_movement": 0.363,
-      "macro_coupling": 0.18,
-      "macro_space": 0.214
-    },
-    "OMBRE": {
-      "macro_character": 0.948,
-      "macro_movement": 0.486,
-      "macro_coupling": 0.227,
-      "macro_space": 0.138
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "GRANULAR_SYNC",
-    "source": "OPAL",
-    "target": "OMBRE",
-    "amount": 0.346
+    "amount": 0.346,
+    "source": "Opal",
+    "target": "Ombre",
+    "type": "GRANULAR_SYNC"
   },
   "dna": {
+    "aggression": 0.739,
     "brightness": 0.914,
-    "warmth": 0.792,
-    "movement": 0.813,
     "density": 0.087,
+    "movement": 0.813,
     "space": 0.829,
-    "aggression": 0.739
+    "warmth": 0.792
   },
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.844,
-    "MOVEMENT": 0.101,
     "COUPLING": 0.771,
+    "MOVEMENT": 0.101,
     "SPACE": 0.835
   },
+  "mood": "Family",
+  "name": "EMPTY LINEAGE",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.948,
+      "macro_coupling": 0.227,
+      "macro_movement": 0.486,
+      "macro_space": 0.138
+    },
+    "Opal": {
+      "macro_character": 0.362,
+      "macro_coupling": 0.18,
+      "macro_movement": 0.363,
+      "macro_space": 0.214
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "sparse",
     "xlow-density"
-  ]
+  ],
+  "version": "1.0"
 }

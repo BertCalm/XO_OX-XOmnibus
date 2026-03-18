@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Optic Lens Sweep",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Slow filter sweep, optically controlled. Earns its keep.",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.6,
+    "density": 0.7,
+    "movement": 0.55,
+    "space": 0.35,
+    "warmth": 0.5
+  },
   "engines": [
     "Optic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Slow filter sweep, optically controlled. Earns its keep.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Optic Lens Sweep",
+  "parameters": {
+    "Optic": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "filter",
     "work-horse",
@@ -17,31 +42,6 @@
     "foundation",
     "workhorse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Optic": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.5,
-    "movement": 0.55,
-    "density": 0.7,
-    "space": 0.35,
-    "aggression": 0.35
-  }
+  "version": "1.0.0"
 }

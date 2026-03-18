@@ -1,17 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Microsound Halo",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "ORPHICA — bright extreme brightness preset for Atmosphere.",
+  "dna": {
+    "aggression": 0.74,
+    "brightness": 0.96,
+    "density": 0.31,
+    "movement": 0.14,
+    "space": 0.51,
+    "warmth": 0.43
+  },
   "engines": [
-    "ORPHICA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "ORPHICA \u2014 bright extreme brightness preset for Atmosphere.",
-  "tags": [
-    "atmosphere",
-    "bright",
-    "extreme-brightness"
+    "Orphica"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -19,44 +22,41 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "sonic_dna": {
-    "brightness": 0.96,
-    "warmth": 0.43,
-    "movement": 0.14,
-    "density": 0.31,
-    "space": 0.51,
-    "aggression": 0.74
-  },
-  "dna": {
-    "brightness": 0.96,
-    "warmth": 0.43,
-    "movement": 0.14,
-    "density": 0.31,
-    "space": 0.51,
-    "aggression": 0.74
-  },
+  "mood": "Atmosphere",
+  "name": "Microsound Halo",
   "parameters": {
-    "ORPHICA": {
-      "orph_pluckDecay": 144.2,
-      "orph_resonanceBody": 0.78,
-      "orph_filterCutoff": 0.46,
-      "orph_filterReso": 0.7,
+    "Orphica": {
       "orph_ampAttack": 507.2,
       "orph_ampDecay": 650.1,
-      "orph_ampSustain": 0.34,
       "orph_ampRelease": 622.1,
-      "orph_lfoRate": 0.46,
-      "orph_lfoDepth": 0.29,
-      "orph_reverbMix": 0.04,
-      "orph_delayMix": 0.2,
+      "orph_ampSustain": 0.34,
       "orph_character": 0.04,
+      "orph_coupling": 0.99,
+      "orph_delayMix": 0.2,
+      "orph_filterCutoff": 0.46,
+      "orph_filterReso": 0.7,
+      "orph_lfoDepth": 0.29,
+      "orph_lfoRate": 0.46,
       "orph_movement": 0.93,
-      "orph_space": 0.52,
-      "orph_coupling": 0.99
+      "orph_pluckDecay": 144.2,
+      "orph_resonanceBody": 0.78,
+      "orph_reverbMix": 0.04,
+      "orph_space": 0.52
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.74,
+    "brightness": 0.96,
+    "density": 0.31,
+    "movement": 0.14,
+    "space": 0.51,
+    "warmth": 0.43
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+  ],
+  "version": "1.0"
 }

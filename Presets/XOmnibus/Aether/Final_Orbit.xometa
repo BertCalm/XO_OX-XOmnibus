@@ -1,37 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Final Orbit",
-  "mood": "Aether",
-  "engines": ["Ouroboros"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Maximum chaos, maximum damping, glacial rate. A distant, smoothed rumble of mathematical entropy.",
-  "tags": ["ambient", "distant", "rumble", "ethereal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Maximum chaos, maximum damping, glacial rate. A distant, smoothed rumble of mathematical entropy.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.15,
+    "density": 0.3,
+    "movement": 0.5,
+    "space": 0.9,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Ouroboros"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Final Orbit",
   "parameters": {
     "Ouroboros": {
-      "ouro_topology": 1,
-      "ouro_rate": 40.0,
       "ouro_chaosIndex": 0.8,
-      "ouro_leash": 0.0,
-      "ouro_theta": 1.0,
-      "ouro_phi": -0.6,
       "ouro_damping": 0.9,
-      "ouro_injection": 0.0
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.0,
+      "ouro_phi": -0.6,
+      "ouro_rate": 40.0,
+      "ouro_theta": 1.0,
+      "ouro_topology": 1
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.15,
-    "warmth": 0.7,
-    "movement": 0.5,
-    "density": 0.3,
-    "space": 0.9,
-    "aggression": 0.1
-  }
+  "tags": [
+    "ambient",
+    "distant",
+    "rumble",
+    "ethereal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

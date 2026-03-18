@@ -1,59 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Formant Solo",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Bright soft leads character with warm character.",
+  "dna": {
+    "aggression": 0.114,
+    "brightness": 0.645,
+    "density": 0.116,
+    "movement": 0.0,
+    "space": 0.105,
+    "warmth": 0.156
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bright soft leads character with warm character.",
-  "tags": [
-    "lead",
-    "formant",
-    "vocal"
-  ],
+  "legacy": {
+    "sourceCategory": "Soft Leads",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Soft Leads",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Formant Solo",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
-      "bob_oscA_shape": 0.62,
-      "bob_oscA_drift": 0.12,
-      "bob_oscB_wave": 3.0,
-      "bob_oscB_blend": 0.28,
-      "bob_oscB_detune": 2.0,
-      "bob_fltMode": 2.0,
-      "bob_fltCutoff": 5500.0,
-      "bob_fltReso": 0.35,
-      "bob_fltChar": 0.72,
       "bob_ampAttack": 0.014,
       "bob_ampDecay": 0.35,
-      "bob_ampSustain": 0.68,
       "bob_ampRelease": 0.6,
-      "bob_bobMode": 0.18
+      "bob_ampSustain": 0.68,
+      "bob_bobMode": 0.18,
+      "bob_fltChar": 0.72,
+      "bob_fltCutoff": 5500.0,
+      "bob_fltMode": 2.0,
+      "bob_fltReso": 0.35,
+      "bob_oscA_drift": 0.12,
+      "bob_oscA_shape": 0.62,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.28,
+      "bob_oscB_detune": 2.0,
+      "bob_oscB_wave": 3.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.645,
-    "warmth": 0.156,
-    "movement": 0.0,
-    "density": 0.116,
-    "space": 0.105,
-    "aggression": 0.114
-  }
+  "tags": [
+    "lead",
+    "formant",
+    "vocal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

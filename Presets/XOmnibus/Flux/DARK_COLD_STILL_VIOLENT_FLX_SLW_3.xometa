@@ -1,45 +1,52 @@
 {
-  "name": "DARK_COLD_STILL_VIOLENT_FLX_SLW_3",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORIGAMI",
-    "OPAL"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.64,
-      "macro_movement": 0.022,
-      "macro_coupling": 0.807,
-      "macro_space": 0.624
-    },
-    "OPAL": {
-      "macro_character": 0.645,
-      "macro_movement": 0.016,
-      "macro_coupling": 0.887,
-      "macro_space": 0.652
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ORIGAMI",
-    "target": "OPAL",
-    "amount": 0.919
+    "amount": 0.919,
+    "source": "Origami",
+    "target": "Opal",
+    "type": "VELOCITY_COUPLE"
   },
   "dna": {
+    "aggression": 0.941,
     "brightness": 0.113,
-    "warmth": 0.086,
-    "movement": 0.018,
     "density": 0.385,
+    "movement": 0.018,
     "space": 0.612,
-    "aggression": 0.941
+    "warmth": 0.086
   },
+  "engines": [
+    "Origami",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.663,
-    "MOVEMENT": 0.018,
     "COUPLING": 0.712,
+    "MOVEMENT": 0.018,
     "SPACE": 0.612
   },
+  "mood": "Flux",
+  "name": "DARK_COLD_STILL_VIOLENT_FLX_SLW_3",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.645,
+      "macro_coupling": 0.887,
+      "macro_movement": 0.016,
+      "macro_space": 0.652
+    },
+    "Origami": {
+      "macro_character": 0.64,
+      "macro_coupling": 0.807,
+      "macro_movement": 0.022,
+      "macro_space": 0.624
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +54,6 @@
     "cold",
     "violent",
     "frozen-instability"
-  ]
+  ],
+  "version": "1.0"
 }

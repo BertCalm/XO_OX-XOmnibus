@@ -1,59 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Digital Decay",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expansive textures atmosphere with warm haze and glitch fracture.",
+  "dna": {
+    "aggression": 0.352,
+    "brightness": 0.422,
+    "density": 0.103,
+    "movement": 0.188,
+    "space": 0.086,
+    "warmth": 0.165
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expansive textures atmosphere with warm haze and glitch fracture.",
-  "tags": [
-    "saturated",
-    "fractured",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Textures",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Textures",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Digital Decay",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 1.0,
-      "drift_oscA_level": 0.6,
-      "drift_oscA_pw": 0.3,
-      "drift_oscB_mode": 3.0,
-      "drift_oscB_level": 0.4,
-      "drift_oscB_fmDepth": 0.3,
-      "drift_hazeAmount": 0.4,
-      "drift_filterCutoff": 4000.0,
-      "drift_filterReso": 0.2,
       "drift_attack": 50.0,
       "drift_decay": 800.0,
-      "drift_sustain": 0.4,
+      "drift_filterCutoff": 4000.0,
+      "drift_filterReso": 0.2,
+      "drift_hazeAmount": 0.4,
+      "drift_level": -4.0,
+      "drift_oscA_level": 0.6,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_pw": 0.3,
+      "drift_oscA_shape": 1.0,
+      "drift_oscB_fmDepth": 0.3,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_mode": 3.0,
       "drift_release": 1000.0,
-      "drift_level": -4.0
+      "drift_sustain": 0.4
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.422,
-    "warmth": 0.165,
-    "movement": 0.188,
-    "density": 0.103,
-    "space": 0.086,
-    "aggression": 0.352
-  }
+  "tags": [
+    "saturated",
+    "fractured",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

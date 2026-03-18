@@ -1,45 +1,52 @@
 {
-  "name": "WARM KINETIC VAST VIOLENT ATM AGG 4",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.893,
+    "source": "Optic",
+    "target": "Osprey",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.949,
+    "brightness": 0.519,
+    "density": 0.472,
+    "movement": 0.904,
+    "space": 0.94,
+    "warmth": 0.87
+  },
   "engines": [
-    "OPTIC",
-    "OSPREY"
+    "Optic",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.506,
+    "COUPLING": 0.857,
+    "MOVEMENT": 0.877,
+    "SPACE": 0.885
+  },
+  "mood": "Atmosphere",
+  "name": "WARM KINETIC VAST VIOLENT ATM AGG 4",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.497,
-      "macro_movement": 0.864,
       "macro_coupling": 0.859,
+      "macro_movement": 0.864,
       "macro_space": 0.9
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.515,
-      "macro_movement": 0.889,
       "macro_coupling": 0.854,
+      "macro_movement": 0.889,
       "macro_space": 0.871
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OPTIC",
-    "target": "OSPREY",
-    "amount": 0.893
-  },
-  "dna": {
-    "brightness": 0.519,
-    "warmth": 0.87,
-    "movement": 0.904,
-    "density": 0.472,
-    "space": 0.94,
-    "aggression": 0.949
-  },
-  "macros": {
-    "CHARACTER": 0.506,
-    "MOVEMENT": 0.877,
-    "COUPLING": 0.857,
-    "SPACE": 0.885
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -47,5 +54,6 @@
     "violent",
     "kinetic",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

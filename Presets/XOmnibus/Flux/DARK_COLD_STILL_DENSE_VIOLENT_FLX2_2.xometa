@@ -1,45 +1,52 @@
 {
-  "name": "DARK_COLD_STILL_DENSE_VIOLENT_FLX2_2",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORGANON",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.1021,
-      "macro_movement": 0.02,
-      "macro_coupling": 0.8575,
-      "macro_space": 0.646
-    },
-    "ODYSSEY": {
-      "macro_character": 0.1042,
-      "macro_movement": 0.0426,
-      "macro_coupling": 0.87,
-      "macro_space": 0.6836
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ORGANON",
-    "target": "ODYSSEY",
-    "amount": 0.738
+    "amount": 0.738,
+    "source": "Organon",
+    "target": "Odyssey",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.9267,
     "brightness": 0.0986,
-    "warmth": 0.0569,
-    "movement": 0.0361,
     "density": 0.8746,
+    "movement": 0.0361,
     "space": 0.667,
-    "aggression": 0.9267
+    "warmth": 0.0569
   },
+  "engines": [
+    "Organon",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.1031,
-    "MOVEMENT": 0.0313,
     "COUPLING": 0.8638,
+    "MOVEMENT": 0.0313,
     "SPACE": 0.6648
   },
+  "mood": "Flux",
+  "name": "DARK_COLD_STILL_DENSE_VIOLENT_FLX2_2",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.1042,
+      "macro_coupling": 0.87,
+      "macro_movement": 0.0426,
+      "macro_space": 0.6836
+    },
+    "Organon": {
+      "macro_character": 0.1021,
+      "macro_coupling": 0.8575,
+      "macro_movement": 0.02,
+      "macro_space": 0.646
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -47,5 +54,6 @@
     "still",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

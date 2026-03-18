@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Bass Forward Off-Axis",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.78,
+    "pairs": [
+      {
+        "amount": 0.78,
+        "engineA": "Overbite",
+        "engineB": "Oblique",
+        "type": "LFO->Pitch"
+      }
+    ],
+    "type": "LFO->Pitch"
+  },
+  "couplingIntensity": "Deep",
+  "description": "OVERBITE clench bends OBLIQUE angle. Bitten geometry. [LFO->Pitch]",
+  "dna": {
+    "aggression": 0.565,
     "brightness": 0.637,
-    "warmth": 0.495,
-    "movement": 0.58,
     "density": 0.589,
+    "movement": 0.58,
     "space": 0.55,
-    "aggression": 0.565
+    "warmth": 0.495
   },
   "engines": [
-    "XOverbite",
-    "XOblique"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE clench bends OBLIQUE angle. Bitten geometry. [LFO->Pitch]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "overbite",
-    "oblique",
-    "bite"
+    "Overbite",
+    "Oblique"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Deep",
-  "dna": {
-    "brightness": 0.637,
-    "warmth": 0.495,
-    "movement": 0.58,
-    "density": 0.589,
-    "space": 0.55,
-    "aggression": 0.565
-  },
+  "mood": "Entangled",
+  "name": "Bass Forward Off-Axis",
   "parameters": {
-    "XOverbite": {
-      "poss_outputLevel": 0.81,
-      "poss_outputPan": 0.01,
-      "poss_couplingLevel": 0.62,
-      "poss_couplingBus": 0,
-      "poss_brightness": 0.518,
-      "poss_warmth": 0.574,
-      "poss_aggression": 0.612
-    },
-    "XOblique": {
+    "Oblique": {
+      "obl_aggression": 0.55,
+      "obl_brightness": 0.73,
+      "obl_couplingBus": 0,
+      "obl_couplingLevel": 0.59,
       "obl_outputLevel": 0.81,
       "obl_outputPan": 0.05,
-      "obl_couplingLevel": 0.59,
-      "obl_couplingBus": 0,
-      "obl_brightness": 0.73,
-      "obl_warmth": 0.428,
-      "obl_aggression": 0.55
+      "obl_warmth": 0.428
+    },
+    "Overbite": {
+      "poss_aggression": 0.612,
+      "poss_brightness": 0.518,
+      "poss_couplingBus": 0,
+      "poss_couplingLevel": 0.62,
+      "poss_outputLevel": 0.81,
+      "poss_outputPan": 0.01,
+      "poss_warmth": 0.574
     }
   },
-  "coupling": {
-    "type": "LFO->Pitch",
-    "amount": 0.78,
-    "pairs": [
-      {
-        "engineA": "XOverbite",
-        "engineB": "XOblique",
-        "type": "LFO->Pitch",
-        "amount": 0.78
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.565,
+    "brightness": 0.637,
+    "density": 0.589,
+    "movement": 0.58,
+    "space": 0.55,
+    "warmth": 0.495
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "overbite",
+    "oblique",
+    "bite"
+  ],
+  "version": "1.0.0"
 }

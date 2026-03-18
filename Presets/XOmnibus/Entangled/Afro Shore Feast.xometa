@@ -1,14 +1,46 @@
 {
-  "schema_version": 1,
-  "name": "Afro Shore Feast",
-  "mood": "Entangled",
-  "engines": [
-    "OSTERIA",
-    "OLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "Osteria",
+        "engineB": "Ole",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
   "description": "OLE's Afro-Latin pulse transforms the osteria into a coastal celebration.",
+  "dna": {
+    "aggression": 0.34,
+    "brightness": 0.61,
+    "density": 0.56,
+    "movement": 0.52,
+    "space": 0.5,
+    "warmth": 0.74
+  },
+  "engines": [
+    "Osteria",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "COUPLING": 0.75,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Afro Shore Feast",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -19,38 +51,6 @@
     "celebration",
     "feast"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.7,
-    "MOVEMENT": 0.65,
-    "COUPLING": 0.75,
-    "SPACE": 0.5
-  },
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {
-    "brightness": 0.61,
-    "warmth": 0.74,
-    "movement": 0.52,
-    "density": 0.56,
-    "space": 0.5,
-    "aggression": 0.34
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OSTERIA",
-        "engineB": "OLE",
-        "type": "HARMONIC_BLEND",
-        "amount": 0.7
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

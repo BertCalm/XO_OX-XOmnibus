@@ -1,49 +1,57 @@
 {
-  "name": "ECLIPSE TRIBE",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ORIGAMI",
-    "OBSIDIAN"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.537,
-      "macro_movement": 0.847,
-      "macro_coupling": 0.431,
-      "macro_space": 0.882
-    },
-    "OBSIDIAN": {
-      "macro_character": 0.728,
-      "macro_movement": 0.764,
-      "macro_coupling": 0.366,
-      "macro_space": 0.401
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORIGAMI",
-    "target": "OBSIDIAN",
-    "amount": 0.582
+    "amount": 0.582,
+    "source": "Origami",
+    "target": "Obsidian",
+    "type": "SPECTRAL_MORPH"
   },
   "dna": {
+    "aggression": 0.593,
     "brightness": 0.071,
-    "warmth": 0.329,
-    "movement": 0.017,
     "density": 0.497,
+    "movement": 0.017,
     "space": 0.729,
-    "aggression": 0.593
+    "warmth": 0.329
   },
+  "engines": [
+    "Origami",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.633,
-    "MOVEMENT": 0.805,
     "COUPLING": 0.398,
+    "MOVEMENT": 0.805,
     "SPACE": 0.641
   },
+  "mood": "Family",
+  "name": "ECLIPSE TRIBE",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.728,
+      "macro_coupling": 0.366,
+      "macro_movement": 0.764,
+      "macro_space": 0.401
+    },
+    "Origami": {
+      "macro_character": 0.537,
+      "macro_coupling": 0.431,
+      "macro_movement": 0.847,
+      "macro_space": 0.882
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
     "extreme",
     "low-movement"
-  ]
+  ],
+  "version": "1.0"
 }

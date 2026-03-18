@@ -1,50 +1,58 @@
 {
-  "name": "DARK_KINETIC_SPARSE_GENTLE_ATM_2",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.817,
+    "source": "Obscura",
+    "target": "Oracle",
+    "type": "SPATIAL_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.058,
+    "brightness": 0.094,
+    "density": 0.046,
+    "movement": 0.907,
+    "space": 0.353,
+    "warmth": 0.392
+  },
   "engines": [
-    "OBSCURA",
-    "ORACLE"
+    "Obscura",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.591,
+    "COUPLING": 0.532,
+    "MOVEMENT": 0.923,
+    "SPACE": 0.349
+  },
+  "mood": "Atmosphere",
+  "name": "DARK_KINETIC_SPARSE_GENTLE_ATM_2",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.591,
-      "macro_movement": 0.923,
       "macro_coupling": 0.532,
+      "macro_movement": 0.923,
       "macro_space": 0.349
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.551,
-      "macro_movement": 0.732,
       "macro_coupling": 0.521,
+      "macro_movement": 0.732,
       "macro_space": 0.398
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OBSCURA",
-    "target": "ORACLE",
-    "amount": 0.817
-  },
-  "dna": {
-    "brightness": 0.094,
-    "warmth": 0.392,
-    "movement": 0.907,
-    "density": 0.046,
-    "space": 0.353,
-    "aggression": 0.058
-  },
-  "macros": {
-    "CHARACTER": 0.591,
-    "MOVEMENT": 0.923,
-    "COUPLING": 0.532,
-    "SPACE": 0.349
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "kinetic",
     "sparse",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

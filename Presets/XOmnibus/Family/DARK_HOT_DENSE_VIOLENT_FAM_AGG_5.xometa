@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_DENSE_VIOLENT_FAM_AGG_5",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ORPHICA",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.426,
-      "macro_movement": 0.689,
-      "macro_coupling": 0.391,
-      "macro_space": 0.809
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.397,
-      "macro_movement": 0.661,
-      "macro_coupling": 0.428,
-      "macro_space": 0.792
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ORPHICA",
-    "target": "ODDOSCAR",
-    "amount": 0.929
+    "amount": 0.929,
+    "source": "Orphica",
+    "target": "OddOscar",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.899,
     "brightness": 0.093,
-    "warmth": 0.947,
-    "movement": 0.539,
     "density": 0.873,
+    "movement": 0.539,
     "space": 0.615,
-    "aggression": 0.899
+    "warmth": 0.947
   },
+  "engines": [
+    "Orphica",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.426,
-    "MOVEMENT": 0.689,
     "COUPLING": 0.391,
+    "MOVEMENT": 0.689,
     "SPACE": 0.809
   },
+  "mood": "Family",
+  "name": "DARK_HOT_DENSE_VIOLENT_FAM_AGG_5",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.397,
+      "macro_coupling": 0.428,
+      "macro_movement": 0.661,
+      "macro_space": 0.792
+    },
+    "Orphica": {
+      "macro_character": 0.426,
+      "macro_coupling": 0.391,
+      "macro_movement": 0.689,
+      "macro_space": 0.809
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "dark",
     "hot",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "HOT_DENSE_VAST_GENTLE_FND_3",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ODDFELIX",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "ODDFELIX": {
-      "macro_character": 0.642,
-      "macro_movement": 0.871,
-      "macro_coupling": 0.706,
-      "macro_space": 0.547
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.2,
-      "macro_movement": 0.254,
-      "macro_coupling": 0.574,
-      "macro_space": 0.728
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ODDFELIX",
-    "target": "ODDOSCAR",
-    "amount": 0.816
+    "amount": 0.816,
+    "source": "OddfeliX",
+    "target": "OddOscar",
+    "type": "TIMBRE_BLEND"
   },
   "dna": {
+    "aggression": 0.071,
     "brightness": 0.372,
-    "warmth": 0.968,
-    "movement": 0.376,
     "density": 0.94,
+    "movement": 0.376,
     "space": 0.929,
-    "aggression": 0.071
+    "warmth": 0.968
   },
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.249,
-    "MOVEMENT": 0.618,
     "COUPLING": 0.138,
+    "MOVEMENT": 0.618,
     "SPACE": 0.166
   },
+  "mood": "Foundation",
+  "name": "HOT_DENSE_VAST_GENTLE_FND_3",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.2,
+      "macro_coupling": 0.574,
+      "macro_movement": 0.254,
+      "macro_space": 0.728
+    },
+    "OddfeliX": {
+      "macro_character": 0.642,
+      "macro_coupling": 0.706,
+      "macro_movement": 0.871,
+      "macro_space": 0.547
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -48,5 +55,6 @@
     "vast",
     "gentle",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

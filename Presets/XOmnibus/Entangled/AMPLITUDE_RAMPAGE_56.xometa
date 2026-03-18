@@ -1,48 +1,56 @@
 {
-  "name": "AMPLITUDE RAMPAGE 56",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OMBRE",
-    "OHM"
-  ],
-  "parameters": {
-    "OMBRE": {
-      "macro_character": 0.175,
-      "macro_movement": 0.938,
-      "macro_coupling": 0.519,
-      "macro_space": 0.442
-    },
-    "OHM": {
-      "macro_character": 0.278,
-      "macro_movement": 0.956,
-      "macro_coupling": 0.997,
-      "macro_space": 0.436
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OMBRE",
-    "target": "OHM",
-    "amount": 0.907
+    "amount": 0.907,
+    "source": "Ombre",
+    "target": "Ohm",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.552,
     "brightness": 0.969,
-    "warmth": 0.47,
-    "movement": 0.947,
     "density": 0.408,
+    "movement": 0.947,
     "space": 0.321,
-    "aggression": 0.552
+    "warmth": 0.47
   },
+  "engines": [
+    "Ombre",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.161,
-    "MOVEMENT": 0.947,
     "COUPLING": 0.412,
+    "MOVEMENT": 0.947,
     "SPACE": 0.495
   },
+  "mood": "Entangled",
+  "name": "AMPLITUDE RAMPAGE 56",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.278,
+      "macro_coupling": 0.997,
+      "macro_movement": 0.956,
+      "macro_space": 0.436
+    },
+    "Ombre": {
+      "macro_character": 0.175,
+      "macro_coupling": 0.519,
+      "macro_movement": 0.938,
+      "macro_space": 0.442
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "storm",
     "vortex"
-  ]
+  ],
+  "version": "1.0"
 }

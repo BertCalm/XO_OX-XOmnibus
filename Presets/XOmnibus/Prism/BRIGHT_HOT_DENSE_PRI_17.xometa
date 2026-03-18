@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT HOT DENSE PRI 17",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.826,
+    "source": "OddOscar",
+    "target": "Overworld",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.529,
+    "brightness": 0.956,
+    "density": 0.923,
+    "movement": 0.454,
+    "space": 0.395,
+    "warmth": 0.898
+  },
   "engines": [
-    "ODDOSCAR",
-    "OVERWORLD"
+    "OddOscar",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.927,
+    "COUPLING": 0.687,
+    "MOVEMENT": 0.454,
+    "SPACE": 0.395
+  },
+  "mood": "Prism",
+  "name": "BRIGHT HOT DENSE PRI 17",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.927,
-      "macro_movement": 0.454,
       "macro_coupling": 0.687,
+      "macro_movement": 0.454,
       "macro_space": 0.395
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.866,
-      "macro_movement": 0.597,
       "macro_coupling": 0.943,
+      "macro_movement": 0.597,
       "macro_space": 0.327
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ODDOSCAR",
-    "target": "OVERWORLD",
-    "amount": 0.826
-  },
-  "dna": {
-    "brightness": 0.956,
-    "warmth": 0.898,
-    "movement": 0.454,
-    "density": 0.923,
-    "space": 0.395,
-    "aggression": 0.529
-  },
-  "macros": {
-    "CHARACTER": 0.927,
-    "MOVEMENT": 0.454,
-    "COUPLING": 0.687,
-    "SPACE": 0.395
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "bright",
@@ -47,5 +54,6 @@
     "dense",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

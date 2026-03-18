@@ -1,45 +1,52 @@
 {
-  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 5",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OLE",
-    "OHM"
-  ],
-  "parameters": {
-    "OLE": {
-      "macro_character": 0.519,
-      "macro_movement": 0.628,
-      "macro_coupling": 0.529,
-      "macro_space": 0.095
-    },
-    "OHM": {
-      "macro_character": 0.498,
-      "macro_movement": 0.59,
-      "macro_coupling": 0.524,
-      "macro_space": 0.084
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OLE",
-    "target": "OHM",
-    "amount": 0.529
+    "amount": 0.529,
+    "source": "Ole",
+    "target": "Ohm",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.068,
     "brightness": 0.088,
-    "warmth": 0.95,
-    "movement": 0.628,
     "density": 0.99,
+    "movement": 0.628,
     "space": 0.095,
-    "aggression": 0.068
+    "warmth": 0.95
   },
+  "engines": [
+    "Ole",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.519,
-    "MOVEMENT": 0.628,
     "COUPLING": 0.529,
+    "MOVEMENT": 0.628,
     "SPACE": 0.095
   },
+  "mood": "Family",
+  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 5",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.498,
+      "macro_coupling": 0.524,
+      "macro_movement": 0.59,
+      "macro_space": 0.084
+    },
+    "Ole": {
+      "macro_character": 0.519,
+      "macro_coupling": 0.529,
+      "macro_movement": 0.628,
+      "macro_space": 0.095
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
@@ -47,5 +54,6 @@
     "dense",
     "intimate",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

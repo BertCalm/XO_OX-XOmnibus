@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Oblique Utility Chord",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Slightly off-angle chord voicing that sits in every mix.",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.5,
+    "density": 0.7,
+    "movement": 0.45,
+    "space": 0.35,
+    "warmth": 0.6
+  },
   "engines": [
     "Oblique"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Slightly off-angle chord voicing that sits in every mix.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Oblique Utility Chord",
+  "parameters": {
+    "Oblique": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "work-horse",
     "utility",
@@ -16,31 +41,6 @@
     "foundation",
     "workhorse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oblique": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.6,
-    "movement": 0.45,
-    "density": 0.7,
-    "space": 0.35,
-    "aggression": 0.3
-  }
+  "version": "1.0.0"
 }

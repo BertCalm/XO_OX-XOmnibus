@@ -1,14 +1,64 @@
 {
-  "schema_version": 1,
-  "name": "Cascade Spread",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.587,
+        "engineA": "Overlap",
+        "engineB": "Odyssey",
+        "type": "FILTER_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Odyssey tidal swell expands OVERLAP room size — tide and tail rise together",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.625,
+    "density": 0.6,
+    "movement": 0.65,
+    "space": 0.8,
+    "warmth": 0.6
+  },
   "engines": [
-    "OVERLAP",
-    "ODYSSEY"
+    "Overlap",
+    "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Odyssey tidal swell expands OVERLAP room size \u2014 tide and tail rise together",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Cascade Spread",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.671,
+      "olap_damping": 0.494,
+      "olap_decay": 0.508,
+      "olap_diffusion": 0.706,
+      "olap_earlyMix": 0.22,
+      "olap_filterCutoff": 0.532,
+      "olap_filterReso": 0.254,
+      "olap_lateMix": 0.413,
+      "olap_modDepth": 0.103,
+      "olap_modRate": 0.262,
+      "olap_outputLevel": 0.706,
+      "olap_preDelay": 0.015,
+      "olap_size": 0.576
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.25,
+    "brightness": 0.625,
+    "density": 0.6,
+    "movement": 0.65,
+    "space": 0.8,
+    "warmth": 0.6
+  },
   "tags": [
     "coupling",
     "entangled",
@@ -19,55 +69,5 @@
     "fdn",
     "reverb"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "aggression": 0.25,
-    "space": 0.8,
-    "warmth": 0.6,
-    "brightness": 0.625,
-    "density": 0.6,
-    "movement": 0.65
-  },
-  "sonic_dna": {
-    "aggression": 0.25,
-    "space": 0.8,
-    "warmth": 0.6,
-    "brightness": 0.625,
-    "density": 0.6,
-    "movement": 0.65
-  },
-  "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.576,
-      "olap_decay": 0.508,
-      "olap_damping": 0.494,
-      "olap_diffusion": 0.706,
-      "olap_modDepth": 0.103,
-      "olap_modRate": 0.262,
-      "olap_preDelay": 0.015,
-      "olap_earlyMix": 0.22,
-      "olap_lateMix": 0.413,
-      "olap_filterCutoff": 0.532,
-      "olap_filterReso": 0.254,
-      "olap_outputLevel": 0.706,
-      "olap_couplingLevel": 0.671,
-      "olap_couplingBus": 0
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERLAP",
-        "engineB": "ODYSSEY",
-        "type": "FILTER_MOD",
-        "amount": 0.587
-      }
-    ]
-  }
+  "version": "1.0.0"
 }

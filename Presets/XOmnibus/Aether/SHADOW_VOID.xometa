@@ -1,49 +1,57 @@
 {
-  "name": "SHADOW VOID",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.501,
+    "source": "Obsidian",
+    "target": "Orbital",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.579,
+    "brightness": 0.044,
+    "density": 0.945,
+    "movement": 0.432,
+    "space": 0.231,
+    "warmth": 0.751
+  },
   "engines": [
-    "OBSIDIAN",
-    "ORBITAL"
+    "Obsidian",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.591,
+    "COUPLING": 0.495,
+    "MOVEMENT": 0.761,
+    "SPACE": 0.201
+  },
+  "mood": "Aether",
+  "name": "SHADOW VOID",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.33,
-      "macro_movement": 0.558,
       "macro_coupling": 0.387,
+      "macro_movement": 0.558,
       "macro_space": 0.252
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.852,
-      "macro_movement": 0.964,
       "macro_coupling": 0.603,
+      "macro_movement": 0.964,
       "macro_space": 0.15
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBSIDIAN",
-    "target": "ORBITAL",
-    "amount": 0.501
-  },
-  "dna": {
-    "brightness": 0.044,
-    "warmth": 0.751,
-    "movement": 0.432,
-    "density": 0.945,
-    "space": 0.231,
-    "aggression": 0.579
-  },
-  "macros": {
-    "CHARACTER": 0.591,
-    "MOVEMENT": 0.761,
-    "COUPLING": 0.495,
-    "SPACE": 0.201
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "dark",
     "extreme",
     "high-density"
-  ]
+  ],
+  "version": "1.0"
 }

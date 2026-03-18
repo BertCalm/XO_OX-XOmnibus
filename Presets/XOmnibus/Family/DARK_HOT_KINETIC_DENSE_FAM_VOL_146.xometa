@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_KINETIC_DENSE_FAM_VOL_146",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OTTONI",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.535,
-      "macro_movement": 0.935,
-      "macro_coupling": 0.805,
-      "macro_space": 0.314
-    },
-    "OBLONG": {
-      "macro_character": 0.485,
-      "macro_movement": 0.957,
-      "macro_coupling": 0.811,
-      "macro_space": 0.334
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_WEAVE",
-    "source": "OTTONI",
-    "target": "OBLONG",
-    "amount": 0.661
+    "amount": 0.661,
+    "source": "Ottoni",
+    "target": "Oblong",
+    "type": "SPECTRAL_WEAVE"
   },
   "dna": {
+    "aggression": 0.68,
     "brightness": 0.051,
-    "warmth": 0.974,
-    "movement": 0.957,
     "density": 0.888,
+    "movement": 0.957,
     "space": 0.343,
-    "aggression": 0.68
+    "warmth": 0.974
   },
+  "engines": [
+    "Ottoni",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.51,
-    "MOVEMENT": 0.946,
     "COUPLING": 0.808,
+    "MOVEMENT": 0.946,
     "SPACE": 0.324
   },
+  "mood": "Family",
+  "name": "DARK_HOT_KINETIC_DENSE_FAM_VOL_146",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.485,
+      "macro_coupling": 0.811,
+      "macro_movement": 0.957,
+      "macro_space": 0.334
+    },
+    "Ottoni": {
+      "macro_character": 0.535,
+      "macro_coupling": 0.805,
+      "macro_movement": 0.935,
+      "macro_space": 0.314
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "kinetic",
     "dense",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

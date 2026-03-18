@@ -1,48 +1,56 @@
 {
-  "name": "HARSH FOUNDATION",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ODYSSEY",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "ODYSSEY": {
-      "macro_character": 0.376,
-      "macro_movement": 0.686,
-      "macro_coupling": 0.363,
-      "macro_space": 0.683
-    },
-    "ODDFELIX": {
-      "macro_character": 0.466,
-      "macro_movement": 0.34,
-      "macro_coupling": 0.723,
-      "macro_space": 0.25
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ODYSSEY",
-    "target": "ODDFELIX",
-    "amount": 0.726
+    "amount": 0.726,
+    "source": "Odyssey",
+    "target": "OddfeliX",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
+    "aggression": 0.936,
     "brightness": 0.391,
-    "warmth": 0.484,
-    "movement": 0.748,
     "density": 0.123,
+    "movement": 0.748,
     "space": 0.793,
-    "aggression": 0.936
+    "warmth": 0.484
   },
+  "engines": [
+    "Odyssey",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.755,
-    "MOVEMENT": 0.748,
     "COUPLING": 0.726,
+    "MOVEMENT": 0.748,
     "SPACE": 0.793
   },
+  "mood": "Foundation",
+  "name": "HARSH FOUNDATION",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.466,
+      "macro_coupling": 0.723,
+      "macro_movement": 0.34,
+      "macro_space": 0.25
+    },
+    "Odyssey": {
+      "macro_character": 0.376,
+      "macro_coupling": 0.363,
+      "macro_movement": 0.686,
+      "macro_space": 0.683
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

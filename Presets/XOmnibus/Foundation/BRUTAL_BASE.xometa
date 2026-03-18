@@ -1,48 +1,56 @@
 {
-  "name": "BRUTAL BASE",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.713,
+    "source": "OddfeliX",
+    "target": "Overbite",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.93,
+    "brightness": 0.595,
+    "density": 0.118,
+    "movement": 0.448,
+    "space": 0.417,
+    "warmth": 0.526
+  },
   "engines": [
-    "ODDFELIX",
-    "OVERBITE"
+    "OddfeliX",
+    "Overbite"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.604,
+    "COUPLING": 0.713,
+    "MOVEMENT": 0.448,
+    "SPACE": 0.417
+  },
+  "mood": "Foundation",
+  "name": "BRUTAL BASE",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.68,
-      "macro_movement": 0.381,
       "macro_coupling": 0.575,
+      "macro_movement": 0.381,
       "macro_space": 0.664
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.519,
-      "macro_movement": 0.579,
       "macro_coupling": 0.361,
+      "macro_movement": 0.579,
       "macro_space": 0.687
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ODDFELIX",
-    "target": "OVERBITE",
-    "amount": 0.713
-  },
-  "dna": {
-    "brightness": 0.595,
-    "warmth": 0.526,
-    "movement": 0.448,
-    "density": 0.118,
-    "space": 0.417,
-    "aggression": 0.93
-  },
-  "macros": {
-    "CHARACTER": 0.604,
-    "MOVEMENT": 0.448,
-    "COUPLING": 0.713,
-    "SPACE": 0.417
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

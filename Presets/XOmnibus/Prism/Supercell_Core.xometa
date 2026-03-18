@@ -1,52 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Supercell Core",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Chip-era chaos maximized. Every channel at peak saturation.",
+  "dna": {
+    "aggression": 0.83,
+    "brightness": 0.94,
+    "density": 0.87,
+    "movement": 0.75,
+    "space": 0.06,
+    "warmth": 0.86
+  },
   "engines": [
     "Overworld"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Chip-era chaos maximized. Every channel at peak saturation.",
-  "tags": [
-    "hot-dense",
-    "extreme",
-    "prism",
-    "chip"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Supercell Core",
   "parameters": {
     "Overworld": {
+      "ow_drive": 0.9,
       "ow_era": 0.92,
       "ow_eraY": 0.88,
-      "ow_voiceMode": 2.0,
-      "ow_masterVol": 0.85,
       "ow_filterCutoff": 6000.0,
-      "ow_drive": 0.9,
-      "ow_glitchAmt": 0.75
+      "ow_glitchAmt": 0.75,
+      "ow_masterVol": 0.85,
+      "ow_voiceMode": 2.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.94,
-    "warmth": 0.86,
-    "movement": 0.75,
-    "density": 0.87,
-    "space": 0.06,
-    "aggression": 0.83
-  }
+  "tags": [
+    "hot-dense",
+    "extreme",
+    "prism",
+    "chip"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

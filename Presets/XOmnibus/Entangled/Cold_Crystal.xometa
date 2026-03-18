@@ -1,50 +1,58 @@
 {
-  "name": "Cold Crystal",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.78,
+    "source": "Obsidian",
+    "target": "Opal",
+    "type": "PITCH_SYNC"
+  },
+  "description": "Obsidian pitch-syncs grain positions — crystal geometry determines grain coordinates.",
+  "dna": {
+    "aggression": 0.375,
+    "brightness": 0.38,
+    "density": 0.08,
+    "movement": 0.26,
+    "space": 0.95,
+    "warmth": 0.0
+  },
   "engines": [
-    "OBSIDIAN",
-    "OPAL"
+    "Obsidian",
+    "Opal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.11,
+    "COUPLING": 0.78,
+    "MOVEMENT": 0.26,
+    "SPACE": 0.95
+  },
+  "mood": "Entangled",
+  "name": "Cold Crystal",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.11,
-      "macro_movement": 0.26,
       "macro_coupling": 0.78,
+      "macro_movement": 0.26,
       "macro_space": 0.95
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.08,
-      "macro_movement": 0.21,
       "macro_coupling": 0.83,
+      "macro_movement": 0.21,
       "macro_space": 0.98
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBSIDIAN",
-    "target": "OPAL",
-    "amount": 0.78
-  },
-  "dna": {
-    "brightness": 0.38,
-    "warmth": 0.0,
-    "movement": 0.26,
-    "density": 0.08,
-    "space": 0.95,
-    "aggression": 0.375
-  },
-  "macros": {
-    "CHARACTER": 0.11,
-    "MOVEMENT": 0.26,
-    "COUPLING": 0.78,
-    "SPACE": 0.95
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "cold",
     "crystal"
   ],
-  "description": "Obsidian pitch-syncs grain positions \u2014 crystal geometry determines grain coordinates."
+  "version": "1.0"
 }

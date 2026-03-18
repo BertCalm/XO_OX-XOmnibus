@@ -1,48 +1,56 @@
 {
-  "name": "OPEN COVENANT",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OPAL",
-    "OMBRE"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.201,
-      "macro_movement": 0.787,
-      "macro_coupling": 0.876,
-      "macro_space": 0.366
-    },
-    "OMBRE": {
-      "macro_character": 0.502,
-      "macro_movement": 0.273,
-      "macro_coupling": 0.165,
-      "macro_space": 0.914
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_SHARE",
-    "source": "OPAL",
-    "target": "OMBRE",
-    "amount": 0.867
+    "amount": 0.867,
+    "source": "Opal",
+    "target": "Ombre",
+    "type": "ENVELOPE_SHARE"
   },
   "dna": {
+    "aggression": 0.131,
     "brightness": 0.627,
-    "warmth": 0.039,
-    "movement": 0.789,
     "density": 0.023,
+    "movement": 0.789,
     "space": 0.062,
-    "aggression": 0.131
+    "warmth": 0.039
   },
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.967,
-    "MOVEMENT": 0.295,
     "COUPLING": 0.87,
+    "MOVEMENT": 0.295,
     "SPACE": 0.804
   },
+  "mood": "Family",
+  "name": "OPEN COVENANT",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.502,
+      "macro_coupling": 0.165,
+      "macro_movement": 0.273,
+      "macro_space": 0.914
+    },
+    "Opal": {
+      "macro_character": 0.201,
+      "macro_coupling": 0.876,
+      "macro_movement": 0.787,
+      "macro_space": 0.366
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "sparse",
     "xlow-density"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,53 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Harmonic Blade",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Focused leads tone with warm character.",
+  "dna": {
+    "aggression": 0.041,
+    "brightness": 0.477,
+    "density": 0.071,
+    "movement": 0.0,
+    "space": 0.043,
+    "warmth": 0.0
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Focused leads tone with warm character.",
-  "tags": [
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Leads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Leads",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Harmonic Blade",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 3.0,
-      "drift_oscA_level": 0.85,
-      "drift_oscA_fmDepth": 0.5,
-      "drift_filterCutoff": 8000.0,
-      "drift_filterReso": 0.1,
       "drift_attack": 3.0,
       "drift_decay": 300.0,
-      "drift_sustain": 0.7,
-      "drift_release": 200.0,
+      "drift_filterCutoff": 8000.0,
       "drift_filterEnvAmt": 0.4,
-      "drift_level": -3.0
+      "drift_filterReso": 0.1,
+      "drift_level": -3.0,
+      "drift_oscA_fmDepth": 0.5,
+      "drift_oscA_level": 0.85,
+      "drift_oscA_mode": 3.0,
+      "drift_release": 200.0,
+      "drift_sustain": 0.7
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.477,
-    "warmth": 0.0,
-    "movement": 0.0,
-    "density": 0.071,
-    "space": 0.043,
-    "aggression": 0.041
-  }
+  "tags": [
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

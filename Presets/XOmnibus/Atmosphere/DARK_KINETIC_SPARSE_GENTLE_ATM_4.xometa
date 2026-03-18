@@ -1,50 +1,58 @@
 {
-  "name": "DARK_KINETIC_SPARSE_GENTLE_ATM_4",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORGANON",
-    "OPAL"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.439,
-      "macro_movement": 0.737,
-      "macro_coupling": 0.62,
-      "macro_space": 0.516
-    },
-    "OPAL": {
-      "macro_character": 0.585,
-      "macro_movement": 0.88,
-      "macro_coupling": 0.489,
-      "macro_space": 0.492
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORGANON",
-    "target": "OPAL",
-    "amount": 0.943
+    "amount": 0.943,
+    "source": "Organon",
+    "target": "Opal",
+    "type": "SPECTRAL_MORPH"
   },
   "dna": {
+    "aggression": 0.106,
     "brightness": 0.06,
-    "warmth": 0.416,
-    "movement": 0.887,
     "density": 0.102,
+    "movement": 0.887,
     "space": 0.491,
-    "aggression": 0.106
+    "warmth": 0.416
   },
+  "engines": [
+    "Organon",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.439,
-    "MOVEMENT": 0.737,
     "COUPLING": 0.62,
+    "MOVEMENT": 0.737,
     "SPACE": 0.516
   },
+  "mood": "Atmosphere",
+  "name": "DARK_KINETIC_SPARSE_GENTLE_ATM_4",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.585,
+      "macro_coupling": 0.489,
+      "macro_movement": 0.88,
+      "macro_space": 0.492
+    },
+    "Organon": {
+      "macro_character": 0.439,
+      "macro_coupling": 0.62,
+      "macro_movement": 0.737,
+      "macro_space": 0.516
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "kinetic",
     "sparse",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

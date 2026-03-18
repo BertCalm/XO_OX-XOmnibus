@@ -1,25 +1,33 @@
 {
-  "name": "Voltage Shimmer",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Voltage shimmer from a transformer bank. Industrial brightness, controlled drift.",
   "engines": [
-    "OSTERIA"
+    "Osteria"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.569,
-    "MOVEMENT": 0.676,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.676,
     "SPACE": 0.522
   },
-  "sonic_dna": {
-    "brightness": 0.846,
-    "warmth": 0.291,
-    "movement": 0.676,
-    "density": 0.494,
-    "space": 0.522,
-    "aggression": 0.207
-  },
+  "mood": "Atmosphere",
+  "name": "Voltage Shimmer",
   "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.207,
+    "brightness": 0.846,
+    "density": 0.494,
+    "movement": 0.676,
+    "space": 0.522,
+    "warmth": 0.291
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +35,5 @@
     "electric",
     "phosphor"
   ],
-  "description": "Voltage shimmer from a transformer bank. Industrial brightness, controlled drift."
+  "version": "1.0"
 }

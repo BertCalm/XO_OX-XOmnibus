@@ -1,50 +1,58 @@
 {
-  "name": "HOT_VAST_VIOLENT_DENSE_AET3_5",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7717,
+    "source": "Oblique",
+    "target": "Ombre",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.8849,
+    "brightness": 0.5799,
+    "density": 0.9526,
+    "movement": 0.5002,
+    "space": 0.9046,
+    "warmth": 0.9383
+  },
   "engines": [
-    "OBLIQUE",
-    "OMBRE"
+    "Oblique",
+    "Ombre"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7591,
+    "COUPLING": 0.7717,
+    "MOVEMENT": 0.5002,
+    "SPACE": 0.9046
+  },
+  "mood": "Aether",
+  "name": "HOT_VAST_VIOLENT_DENSE_AET3_5",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.2194,
-      "macro_movement": 0.3717,
       "macro_coupling": 0.7057,
+      "macro_movement": 0.3717,
       "macro_space": 0.8454
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.6403,
-      "macro_movement": 0.2156,
       "macro_coupling": 0.7736,
+      "macro_movement": 0.2156,
       "macro_space": 0.8161
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OBLIQUE",
-    "target": "OMBRE",
-    "amount": 0.7717
-  },
-  "dna": {
-    "brightness": 0.5799,
-    "warmth": 0.9383,
-    "movement": 0.5002,
-    "density": 0.9526,
-    "space": 0.9046,
-    "aggression": 0.8849
-  },
-  "macros": {
-    "CHARACTER": 0.7591,
-    "MOVEMENT": 0.5002,
-    "COUPLING": 0.7717,
-    "SPACE": 0.9046
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "warm",
     "vast",
     "violent",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

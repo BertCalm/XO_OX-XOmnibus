@@ -1,49 +1,57 @@
 {
-  "name": "ALLHI FAM 06",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.928,
+    "source": "Orphica",
+    "target": "OddOscar",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.423,
+    "brightness": 0.956,
+    "density": 0.892,
+    "movement": 0.95,
+    "space": 0.969,
+    "warmth": 0.954
+  },
   "engines": [
-    "ORPHICA",
-    "ODDOSCAR"
+    "Orphica",
+    "OddOscar"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.955,
+    "COUPLING": 0.696,
+    "MOVEMENT": 0.921,
+    "SPACE": 0.969
+  },
+  "mood": "Family",
+  "name": "ALLHI FAM 06",
   "parameters": {
-    "ORPHICA": {
+    "OddOscar": {
       "macro_character": 0.955,
-      "macro_movement": 0.921,
       "macro_coupling": 0.696,
+      "macro_movement": 0.921,
       "macro_space": 0.969
     },
-    "ODDOSCAR": {
+    "Orphica": {
       "macro_character": 0.955,
-      "macro_movement": 0.921,
       "macro_coupling": 0.696,
+      "macro_movement": 0.921,
       "macro_space": 0.969
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ORPHICA",
-    "target": "ODDOSCAR",
-    "amount": 0.928
-  },
-  "dna": {
-    "brightness": 0.956,
-    "warmth": 0.954,
-    "movement": 0.95,
-    "density": 0.892,
-    "space": 0.969,
-    "aggression": 0.423
-  },
-  "macros": {
-    "CHARACTER": 0.955,
-    "MOVEMENT": 0.921,
-    "COUPLING": 0.696,
-    "SPACE": 0.969
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

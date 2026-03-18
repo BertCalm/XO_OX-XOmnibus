@@ -1,48 +1,56 @@
 {
-  "name": "AGGRESSIVE FLOOR",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OUROBOROS",
-    "OSTERIA"
-  ],
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.44,
-      "macro_movement": 0.576,
-      "macro_coupling": 0.409,
-      "macro_space": 0.422
-    },
-    "OSTERIA": {
-      "macro_character": 0.418,
-      "macro_movement": 0.445,
-      "macro_coupling": 0.79,
-      "macro_space": 0.384
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OUROBOROS",
-    "target": "OSTERIA",
-    "amount": 0.87
+    "amount": 0.87,
+    "source": "Ouroboros",
+    "target": "Osteria",
+    "type": "TIMBRE_BLEND"
   },
   "dna": {
+    "aggression": 0.914,
     "brightness": 0.552,
-    "warmth": 0.636,
-    "movement": 0.93,
     "density": 0.593,
+    "movement": 0.93,
     "space": 0.7,
-    "aggression": 0.914
+    "warmth": 0.636
   },
+  "engines": [
+    "Ouroboros",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.751,
-    "MOVEMENT": 0.93,
     "COUPLING": 0.87,
+    "MOVEMENT": 0.93,
     "SPACE": 0.7
   },
+  "mood": "Foundation",
+  "name": "AGGRESSIVE FLOOR",
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.418,
+      "macro_coupling": 0.79,
+      "macro_movement": 0.445,
+      "macro_space": 0.384
+    },
+    "Ouroboros": {
+      "macro_character": 0.44,
+      "macro_coupling": 0.409,
+      "macro_movement": 0.576,
+      "macro_space": 0.422
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

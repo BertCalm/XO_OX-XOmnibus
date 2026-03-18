@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT HOT DENSE PRI 12",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OVERDUB",
-    "OCTOPUS"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.946,
-      "macro_movement": 0.65,
-      "macro_coupling": 0.761,
-      "macro_space": 0.51
-    },
-    "OCTOPUS": {
-      "macro_character": 0.992,
-      "macro_movement": 0.546,
-      "macro_coupling": 0.596,
-      "macro_space": 0.651
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERDUB",
-    "target": "OCTOPUS",
-    "amount": 0.735
+    "amount": 0.735,
+    "source": "Overdub",
+    "target": "Octopus",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.483,
     "brightness": 0.933,
-    "warmth": 0.958,
-    "movement": 0.65,
     "density": 0.92,
+    "movement": 0.65,
     "space": 0.51,
-    "aggression": 0.483
+    "warmth": 0.958
   },
+  "engines": [
+    "Overdub",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.946,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.761,
+    "MOVEMENT": 0.65,
     "SPACE": 0.51
   },
+  "mood": "Prism",
+  "name": "BRIGHT HOT DENSE PRI 12",
+  "parameters": {
+    "Octopus": {
+      "macro_character": 0.992,
+      "macro_coupling": 0.596,
+      "macro_movement": 0.546,
+      "macro_space": 0.651
+    },
+    "Overdub": {
+      "macro_character": 0.946,
+      "macro_coupling": 0.761,
+      "macro_movement": 0.65,
+      "macro_space": 0.51
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "bright",
@@ -47,5 +54,6 @@
     "dense",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

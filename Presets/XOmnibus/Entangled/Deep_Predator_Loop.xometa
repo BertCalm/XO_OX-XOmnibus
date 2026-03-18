@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Deep Predator Loop",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.89,
+        "engineA": "Orca",
+        "engineB": "Ouroboros",
+        "type": "FREQUENCY_SMEAR"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Frequency smear locks Orca breach timing to strange attractor rhythm — looped predation.",
+  "dna": {
+    "aggression": 0.96,
+    "brightness": 0.38,
+    "density": 0.89,
+    "movement": 0.7,
+    "space": 0.1,
+    "warmth": 0.22
+  },
   "engines": [
-    "ORCA",
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Frequency smear locks Orca breach timing to strange attractor rhythm \u2014 looped predation.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "dense",
-    "orca",
-    "ouroboros",
-    "deep"
+    "Orca",
+    "Ouroboros"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,29 @@
   ],
   "macros": {
     "CHARACTER": 0.88,
-    "MOVEMENT": 0.7,
     "COUPLING": 0.89,
+    "MOVEMENT": 0.7,
     "SPACE": 0.1
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.38,
-    "warmth": 0.22,
-    "movement": 0.7,
-    "density": 0.89,
-    "space": 0.1,
-    "aggression": 0.96
-  },
-  "sonic_dna": {
-    "brightness": 0.38,
-    "warmth": 0.22,
-    "movement": 0.7,
-    "density": 0.89,
-    "space": 0.1,
-    "aggression": 0.96
-  },
+  "mood": "Entangled",
+  "name": "Deep Predator Loop",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORCA",
-        "engineB": "OUROBOROS",
-        "type": "FREQUENCY_SMEAR",
-        "amount": 0.89
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.96,
+    "brightness": 0.38,
+    "density": 0.89,
+    "movement": 0.7,
+    "space": 0.1,
+    "warmth": 0.22
+  },
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "orca",
+    "ouroboros",
+    "deep"
+  ],
+  "version": "1.0.0"
 }

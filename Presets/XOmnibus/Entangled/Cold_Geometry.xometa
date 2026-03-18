@@ -1,50 +1,58 @@
 {
-  "name": "Cold Geometry",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.73,
+    "source": "Origami",
+    "target": "Odyssey",
+    "type": "PITCH_SYNC"
+  },
+  "description": "Origami locks Odyssey's pitch to fold angles — synth geometry becomes paper geometry.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.09,
+    "density": 0.09,
+    "movement": 0.3,
+    "space": 0.94,
+    "warmth": 0.0
+  },
   "engines": [
-    "ODYSSEY",
-    "ORIGAMI"
+    "Odyssey",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.14,
+    "COUPLING": 0.73,
+    "MOVEMENT": 0.3,
+    "SPACE": 0.94
+  },
+  "mood": "Entangled",
+  "name": "Cold Geometry",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.14,
-      "macro_movement": 0.3,
       "macro_coupling": 0.73,
+      "macro_movement": 0.3,
       "macro_space": 0.94
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.11,
-      "macro_movement": 0.25,
       "macro_coupling": 0.78,
+      "macro_movement": 0.25,
       "macro_space": 0.97
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORIGAMI",
-    "target": "ODYSSEY",
-    "amount": 0.73
-  },
-  "dna": {
-    "brightness": 0.09,
-    "warmth": 0.0,
-    "movement": 0.3,
-    "density": 0.09,
-    "space": 0.94,
-    "aggression": 0.0
-  },
-  "macros": {
-    "CHARACTER": 0.14,
-    "MOVEMENT": 0.3,
-    "COUPLING": 0.73,
-    "SPACE": 0.94
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "cold",
     "geometry"
   ],
-  "description": "Origami locks Odyssey's pitch to fold angles \u2014 synth geometry becomes paper geometry."
+  "version": "1.0"
 }

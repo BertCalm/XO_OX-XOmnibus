@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Reef Calm",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Warm strum with ocean air. DRAMA simmering but nothing boiling yet.",
+  "dna": {
+    "aggression": 0.16,
+    "brightness": 0.28,
+    "density": 0.29,
+    "movement": 0.17,
+    "space": 0.69,
+    "warmth": 0.68
+  },
   "engines": [
     "Ole"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "latin",
-    "strummed",
-    "atmosphere",
-    "pad",
-    "atmosphere"
   ],
   "macroLabels": [
     "FUEGO",
@@ -20,42 +21,41 @@
     "SIDES",
     "ISLA"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.28,
-    "warmth": 0.68,
-    "movement": 0.17,
-    "density": 0.29,
-    "space": 0.69,
-    "aggression": 0.16
-  },
+  "mood": "Atmosphere",
+  "name": "Reef Calm",
   "parameters": {
     "Ole": {
+      "ole_allianceBlend": 0.492,
+      "ole_allianceConfig": 0,
+      "ole_aunt1Brightness": 0.737,
       "ole_aunt1Level": 0.803,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.737,
-      "ole_aunt2Level": 0.689,
       "ole_aunt2CoinPress": 0.0,
       "ole_aunt2GourdSize": 0.339,
+      "ole_aunt2Level": 0.689,
+      "ole_aunt3Brightness": 0.573,
       "ole_aunt3Level": 0.713,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.573,
       "ole_damping": 0.994,
-      "ole_sympatheticAmt": 0.266,
-      "ole_driftRate": 0.066,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 0,
-      "ole_allianceBlend": 0.492,
-      "ole_husbandOudLevel": 0.0,
+      "ole_driftRate": 0.066,
       "ole_husbandBouzLevel": 0.0,
+      "ole_husbandOudLevel": 0.0,
       "ole_husbandPinLevel": 0.0,
-      "ole_macroFuego": 0.671,
       "ole_macroDrama": 0.0,
+      "ole_macroFuego": 0.671,
+      "ole_macroIsla": 0.517,
       "ole_macroSides": 0.0,
-      "ole_macroIsla": 0.517
+      "ole_sympatheticAmt": 0.266
     }
   },
-  "coupling": null,
-  "description": "Warm strum with ocean air. DRAMA simmering but nothing boiling yet."
+  "schema_version": 1,
+  "tags": [
+    "latin",
+    "strummed",
+    "atmosphere",
+    "pad",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
 }

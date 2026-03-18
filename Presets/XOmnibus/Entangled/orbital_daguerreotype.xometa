@@ -1,49 +1,57 @@
 {
-  "name": "Orbital Daguerreotype",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.547,
+    "source": "Obscura",
+    "target": "Orbital",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.35,
+    "density": 0.5,
+    "movement": 0.45,
+    "space": 0.85,
+    "warmth": 0.3
+  },
   "engines": [
-    "OBSCURA",
-    "ORBITAL"
+    "Obscura",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.375,
+    "COUPLING": 0.547,
+    "MOVEMENT": 0.4,
+    "SPACE": 0.65
+  },
+  "mood": "Entangled",
+  "name": "Orbital Daguerreotype",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.335,
-      "macro_movement": 0.235,
       "macro_coupling": 0.535,
+      "macro_movement": 0.235,
       "macro_space": 0.585
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.415,
-      "macro_movement": 0.565,
       "macro_coupling": 0.515,
+      "macro_movement": 0.565,
       "macro_space": 0.715
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBSCURA",
-    "target": "ORBITAL",
-    "amount": 0.547
-  },
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.3,
-    "movement": 0.45,
-    "density": 0.5,
-    "space": 0.85,
-    "aggression": 0.12
-  },
-  "macros": {
-    "CHARACTER": 0.375,
-    "MOVEMENT": 0.4,
-    "COUPLING": 0.547,
-    "SPACE": 0.65
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "cosmic"
-  ]
+  ],
+  "version": "1.0"
 }

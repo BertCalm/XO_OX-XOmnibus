@@ -1,55 +1,72 @@
 {
-  "schema_version": 1,
-  "name": "Atlantic Ground",
-  "mood": "Foundation",
-  "engines": ["Osprey"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Atlantic coastline at anchor — calm sea state, long swell period, resonators tuned to Guitarra Portuguesa and Kora overtones. The foundational OSPREY patch: ocean as steady ground, not weather.",
-  "tags": ["atlantic", "foundation", "calm", "resonator", "ocean"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Atlantic coastline at anchor — calm sea state, long swell period, resonators tuned to Guitarra Portuguesa and Kora overtones. The foundational OSPREY patch: ocean as steady ground, not weather.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.35,
+    "density": 0.35,
+    "movement": 0.2,
+    "space": 0.45,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Osprey"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Atlantic Ground",
   "parameters": {
     "Osprey": {
-      "osprey_shore": 0.0,
-      "osprey_seaState": 0.15,
-      "osprey_swellPeriod": 14.0,
-      "osprey_windDir": 0.5,
-      "osprey_depth": 0.25,
-      "osprey_resonatorBright": 0.4,
-      "osprey_resonatorDecay": 1.5,
-      "osprey_sympathyAmount": 0.3,
-      "osprey_creatureRate": 0.1,
-      "osprey_creatureDepth": 0.2,
-      "osprey_coherence": 0.8,
-      "osprey_foam": 0.05,
-      "osprey_brine": 0.05,
-      "osprey_hull": 0.25,
-      "osprey_filterTilt": 0.45,
-      "osprey_filterEnvDepth": 0.2,
-      "osprey_harborVerb": 0.25,
-      "osprey_fog": 0.1,
       "osprey_ampAttack": 0.4,
       "osprey_ampDecay": 1.2,
-      "osprey_ampSustain": 0.75,
       "osprey_ampRelease": 2.5,
+      "osprey_ampSustain": 0.75,
+      "osprey_brine": 0.05,
+      "osprey_coherence": 0.8,
+      "osprey_creatureDepth": 0.2,
+      "osprey_creatureRate": 0.1,
+      "osprey_depth": 0.25,
+      "osprey_filterEnvDepth": 0.2,
+      "osprey_filterTilt": 0.45,
+      "osprey_foam": 0.05,
+      "osprey_fog": 0.1,
+      "osprey_harborVerb": 0.25,
+      "osprey_hull": 0.25,
       "osprey_macroCharacter": 0.0,
-      "osprey_macroMovement": 0.0,
       "osprey_macroCoupling": 0.0,
-      "osprey_macroSpace": 0.0
+      "osprey_macroMovement": 0.0,
+      "osprey_macroSpace": 0.0,
+      "osprey_resonatorBright": 0.4,
+      "osprey_resonatorDecay": 1.5,
+      "osprey_seaState": 0.15,
+      "osprey_shore": 0.0,
+      "osprey_swellPeriod": 14.0,
+      "osprey_sympathyAmount": 0.3,
+      "osprey_windDir": 0.5
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.55,
-    "movement": 0.2,
-    "density": 0.35,
-    "space": 0.45,
-    "aggression": 0.05
-  }
+  "tags": [
+    "atlantic",
+    "foundation",
+    "calm",
+    "resonator",
+    "ocean"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

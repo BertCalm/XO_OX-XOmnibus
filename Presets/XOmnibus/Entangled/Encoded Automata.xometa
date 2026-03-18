@@ -1,52 +1,58 @@
 {
-  "schema_version": 1,
-  "name": "Encoded Automata",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "OHM"
-  ],
-  "author": "XO_OX",
-  "macros": {
-    "CHARACTER": 0.59,
-    "MOVEMENT": 0.66,
-    "COUPLING": 0.85,
-    "SPACE": 0.61
-  },
-  "sonic_dna": {
-    "movement": 0.7,
-    "brightness": 0.54,
-    "aggression": 0.42,
-    "space": 0.61,
-    "warmth": 0.57,
-    "density": 0.63
-  },
-  "parameters": {
-    "OUTWIT": {
-      "owit_rule": 30,
-      "owit_arms": 6,
-      "owit_cellSize": 0.184,
-      "owit_density": 0.487,
-      "owit_evolveRate": 0.341,
-      "owit_mutateProb": 0.245,
-      "owit_pitchSpread": 0.554,
-      "owit_filterCutoff": 0.513,
-      "owit_filterReso": 0.317,
-      "owit_ampAttack": 0.032,
-      "owit_ampRelease": 0.758,
-      "owit_outputLevel": 0.823,
-      "owit_couplingLevel": 0.793,
-      "owit_couplingBus": 0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_TRACKING",
-    "source": "OUTWIT",
-    "target": "OHM",
-    "amount": 0.847
+    "amount": 0.847,
+    "source": "Outwit",
+    "target": "Ohm",
+    "type": "PITCH_TRACKING"
   },
   "couplingIntensity": "Deep",
+  "description": "OHM commune warmth modulates OUTWIT evolve rate — the slower the jam, the slower the cellular drift",
+  "engines": [
+    "Outwit",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.59,
+    "COUPLING": 0.85,
+    "MOVEMENT": 0.66,
+    "SPACE": 0.61
+  },
+  "mood": "Entangled",
+  "name": "Encoded Automata",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.032,
+      "owit_ampRelease": 0.758,
+      "owit_arms": 6,
+      "owit_cellSize": 0.184,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.793,
+      "owit_density": 0.487,
+      "owit_evolveRate": 0.341,
+      "owit_filterCutoff": 0.513,
+      "owit_filterReso": 0.317,
+      "owit_mutateProb": 0.245,
+      "owit_outputLevel": 0.823,
+      "owit_pitchSpread": 0.554,
+      "owit_rule": 30
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.42,
+    "brightness": 0.54,
+    "density": 0.63,
+    "movement": 0.7,
+    "space": 0.61,
+    "warmth": 0.57
+  },
   "tags": [
     "entangled",
     "coupling",
@@ -56,5 +62,5 @@
     "wolfram",
     "cellular-automata"
   ],
-  "description": "OHM commune warmth modulates OUTWIT evolve rate \u2014 the slower the jam, the slower the cellular drift"
+  "version": "1.0"
 }

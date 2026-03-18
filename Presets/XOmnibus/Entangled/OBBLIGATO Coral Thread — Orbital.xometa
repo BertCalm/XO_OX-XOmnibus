@@ -1,14 +1,45 @@
 {
-  "schema_version": 1,
-  "name": "OBBLIGATO Coral Thread \u2014 Orbital",
-  "mood": "Entangled",
-  "engines": [
-    "OBBLIGATO",
-    "ORBITAL"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.604,
+        "engineA": "Obbligato",
+        "engineB": "Orbital",
+        "type": "LFO->Pan"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
   "description": "ORBITAL brightness sweeps OBBLIGATO's filter; BOND makes the obligate wind arc a complete orbit.",
+  "dna": {
+    "aggression": 0.63,
+    "brightness": 0.573,
+    "density": 0.951,
+    "movement": 0.578,
+    "space": 0.343,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Obbligato",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "OBBLIGATO Coral Thread — Orbital",
+  "parameters": {
+    "obbl_breathA": 0.576,
+    "obbl_breathB": 0.702,
+    "obbl_macroBond": 0.562
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -17,37 +48,6 @@
     "group-envelope",
     "warm"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "obbl_breathA": 0.576,
-    "obbl_breathB": 0.702,
-    "obbl_macroBond": 0.562
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBBLIGATO",
-        "engineB": "ORBITAL",
-        "type": "LFO->Pan",
-        "amount": 0.604
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.573,
-    "warmth": 0.65,
-    "movement": 0.578,
-    "density": 0.951,
-    "space": 0.343,
-    "aggression": 0.63
-  }
+  "version": "1.0.0"
 }

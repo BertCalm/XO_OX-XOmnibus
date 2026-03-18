@@ -1,13 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "Oceanic Night Migration",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The deep migration that happens only in darkness. Schools of bioluminescence navigating by pressure gradient — movement felt not seen.",
+  "dna": {
+    "aggression": 0.04,
+    "brightness": 0.07,
+    "density": 0.45,
+    "movement": 0.38,
+    "space": 0.88,
+    "warmth": 0.45
+  },
   "engines": [
     "Oceanic"
   ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "The deep migration that happens only in darkness. Schools of bioluminescence navigating by pressure gradient \u2014 movement felt not seen.",
+  "macroLabels": [
+    "DEPTH",
+    "CURRENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Oceanic Night Migration",
+  "parameters": {
+    "Oceanic": {
+      "ocean_ampAttack": 3.5,
+      "ocean_ampRelease": 7.5,
+      "ocean_delayFeedback": 0.5,
+      "ocean_filterCutoff": 0.05,
+      "ocean_filterReso": 0.3,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroCurrent": 0.0,
+      "ocean_macroDepth": 0.0,
+      "ocean_macroSpace": 0.0,
+      "ocean_reverbMix": 0.9,
+      "ocean_separation": 0.75,
+      "ocean_wavefolderAmt": 0.2
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "dark-aether",
@@ -16,39 +50,5 @@
     "nocturnal",
     "deep"
   ],
-  "macroLabels": [
-    "DEPTH",
-    "CURRENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.07,
-    "warmth": 0.45,
-    "movement": 0.38,
-    "density": 0.45,
-    "space": 0.88,
-    "aggression": 0.04
-  },
-  "parameters": {
-    "Oceanic": {
-      "ocean_filterCutoff": 0.05,
-      "ocean_filterReso": 0.3,
-      "ocean_separation": 0.75,
-      "ocean_wavefolderAmt": 0.2,
-      "ocean_ampAttack": 3.5,
-      "ocean_ampRelease": 7.5,
-      "ocean_reverbMix": 0.9,
-      "ocean_delayFeedback": 0.5,
-      "ocean_macroDepth": 0.0,
-      "ocean_macroCurrent": 0.0,
-      "ocean_macroCoupling": 0.0,
-      "ocean_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

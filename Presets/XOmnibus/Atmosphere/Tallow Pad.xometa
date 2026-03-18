@@ -1,25 +1,33 @@
 {
-  "name": "Tallow Pad",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Tallow and beeswax — organic warmth that refuses to move.",
   "engines": [
-    "ODDOSCAR"
+    "OddOscar"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.553,
-    "MOVEMENT": 0.004,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.004,
     "SPACE": 0.544
   },
-  "sonic_dna": {
-    "brightness": 0.276,
-    "warmth": 0.83,
-    "movement": 0.004,
-    "density": 0.683,
-    "space": 0.544,
-    "aggression": 0.026
-  },
+  "mood": "Atmosphere",
+  "name": "Tallow Pad",
   "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.026,
+    "brightness": 0.276,
+    "density": 0.683,
+    "movement": 0.004,
+    "space": 0.544,
+    "warmth": 0.83
+  },
   "tags": [
     "atmosphere",
     "drone",
@@ -27,5 +35,5 @@
     "warm",
     "thick"
   ],
-  "description": "Tallow and beeswax \u2014 organic warmth that refuses to move."
+  "version": "1.0"
 }

@@ -1,50 +1,58 @@
 {
-  "name": "TOXIC VEIL",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OVERWORLD",
-    "OLE"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.896,
-      "macro_movement": 0.524,
-      "macro_coupling": 0.463,
-      "macro_space": 0.36
-    },
-    "OLE": {
-      "macro_character": 0.179,
-      "macro_movement": 0.661,
-      "macro_coupling": 0.782,
-      "macro_space": 0.584
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OVERWORLD",
-    "target": "OLE",
-    "amount": 0.656
+    "amount": 0.656,
+    "source": "Overworld",
+    "target": "Ole",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.965,
     "brightness": 0.649,
-    "warmth": 0.492,
-    "movement": 0.828,
     "density": 0.012,
+    "movement": 0.828,
     "space": 0.539,
-    "aggression": 0.965
+    "warmth": 0.492
   },
+  "engines": [
+    "Overworld",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.715,
-    "MOVEMENT": 0.677,
     "COUPLING": 0.272,
+    "MOVEMENT": 0.677,
     "SPACE": 0.539
   },
+  "mood": "Atmosphere",
+  "name": "TOXIC VEIL",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.179,
+      "macro_coupling": 0.782,
+      "macro_movement": 0.661,
+      "macro_space": 0.584
+    },
+    "Overworld": {
+      "macro_character": 0.896,
+      "macro_coupling": 0.463,
+      "macro_movement": 0.524,
+      "macro_space": 0.36
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

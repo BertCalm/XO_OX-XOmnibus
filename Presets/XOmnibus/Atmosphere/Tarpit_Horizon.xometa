@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Tarpit Horizon",
-  "mood": "Atmosphere",
-  "engines": [
-    "OMBRE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Shadowy environmental texture. Low brightness, expansive space. OMBRE in void register.",
+  "dna": {
+    "aggression": 0.118,
+    "brightness": 0.123,
+    "density": 0.33,
+    "movement": 0.395,
+    "space": 0.701,
+    "warmth": 0.552
+  },
+  "engines": [
+    "Ombre"
+  ],
+  "macroLabels": [
+    "GRADIENT",
+    "WARMTH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "COUPLING": 0.176,
+    "GRADIENT": 0.233,
+    "SPACE": 0.691,
+    "WARMTH": 0.357
+  },
+  "mood": "Atmosphere",
+  "name": "Tarpit Horizon",
+  "parameters": {
+    "Ombre": {
+      "coupling": 0.176,
+      "gradient": 0.233,
+      "space": 0.691,
+      "warmth": 0.357
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -16,36 +47,5 @@
     "environmental",
     "deep"
   ],
-  "macroLabels": [
-    "GRADIENT",
-    "WARMTH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.123,
-    "warmth": 0.552,
-    "movement": 0.395,
-    "density": 0.33,
-    "space": 0.701,
-    "aggression": 0.118
-  },
-  "parameters": {
-    "OMBRE": {
-      "gradient": 0.233,
-      "warmth": 0.357,
-      "coupling": 0.176,
-      "space": 0.691
-    }
-  },
-  "macros": {
-    "GRADIENT": 0.233,
-    "WARMTH": 0.357,
-    "COUPLING": 0.176,
-    "SPACE": 0.691
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

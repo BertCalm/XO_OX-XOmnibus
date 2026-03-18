@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Tar Vein Slow",
-  "mood": "Foundation",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Wool-thick pad with heavy body resonance and amber warmth.",
+  "dna": {
+    "aggression": 0.705,
     "brightness": 0.365,
-    "warmth": 0.946,
-    "movement": 0.312,
     "density": 0.9,
+    "movement": 0.312,
     "space": 0.339,
-    "aggression": 0.705
+    "warmth": 0.946
   },
   "engines": [
-    "OBESE"
+    "Obese"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Wool-thick pad with heavy body resonance and amber warmth.",
+  "macroLabels": [
+    "MELT",
+    "COMPRESS",
+    "COUPLING",
+    "TAIL"
+  ],
+  "mood": "Foundation",
+  "name": "Tar Vein Slow",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.705,
+    "brightness": 0.365,
+    "density": 0.9,
+    "movement": 0.312,
+    "space": 0.339,
+    "warmth": 0.946
+  },
   "tags": [
     "foundation",
     "warm",
@@ -24,23 +42,5 @@
     "thick",
     "aggressive"
   ],
-  "macroLabels": [
-    "MELT",
-    "COMPRESS",
-    "COUPLING",
-    "TAIL"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.365,
-    "warmth": 0.946,
-    "movement": 0.312,
-    "density": 0.9,
-    "space": 0.339,
-    "aggression": 0.705
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

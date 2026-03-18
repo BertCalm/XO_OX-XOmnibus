@@ -1,49 +1,57 @@
 {
-  "name": "CROSS PRS 01",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.529,
+    "source": "Ole",
+    "target": "Optic",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.078,
+    "brightness": 0.899,
+    "density": 0.088,
+    "movement": 0.939,
+    "space": 0.557,
+    "warmth": 0.962
+  },
   "engines": [
-    "OLE",
-    "OPTIC"
+    "Ole",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.93,
+    "COUPLING": 0.318,
+    "MOVEMENT": 0.513,
+    "SPACE": 0.557
+  },
+  "mood": "Prism",
+  "name": "CROSS PRS 01",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.93,
-      "macro_movement": 0.513,
       "macro_coupling": 0.318,
+      "macro_movement": 0.513,
       "macro_space": 0.557
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.93,
-      "macro_movement": 0.513,
       "macro_coupling": 0.318,
+      "macro_movement": 0.513,
       "macro_space": 0.557
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OLE",
-    "target": "OPTIC",
-    "amount": 0.529
-  },
-  "dna": {
-    "brightness": 0.899,
-    "warmth": 0.962,
-    "movement": 0.939,
-    "density": 0.088,
-    "space": 0.557,
-    "aggression": 0.078
-  },
-  "macros": {
-    "CHARACTER": 0.93,
-    "MOVEMENT": 0.513,
-    "COUPLING": 0.318,
-    "SPACE": 0.557
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "ALLLO ENT 06",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.242,
+    "source": "Oblique",
+    "target": "Obscura",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.386,
+    "brightness": 0.092,
+    "density": 0.07,
+    "movement": 0.062,
+    "space": 0.103,
+    "warmth": 0.083
+  },
   "engines": [
-    "OBLIQUE",
-    "OBSCURA"
+    "Oblique",
+    "Obscura"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.087,
+    "COUPLING": 0.244,
+    "MOVEMENT": 0.066,
+    "SPACE": 0.103
+  },
+  "mood": "Entangled",
+  "name": "ALLLO ENT 06",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.087,
-      "macro_movement": 0.066,
       "macro_coupling": 0.244,
+      "macro_movement": 0.066,
       "macro_space": 0.103
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.087,
-      "macro_movement": 0.066,
       "macro_coupling": 0.244,
+      "macro_movement": 0.066,
       "macro_space": 0.103
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OBLIQUE",
-    "target": "OBSCURA",
-    "amount": 0.242
-  },
-  "dna": {
-    "brightness": 0.092,
-    "warmth": 0.083,
-    "movement": 0.062,
-    "density": 0.07,
-    "space": 0.103,
-    "aggression": 0.386
-  },
-  "macros": {
-    "CHARACTER": 0.087,
-    "MOVEMENT": 0.066,
-    "COUPLING": 0.244,
-    "SPACE": 0.103
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

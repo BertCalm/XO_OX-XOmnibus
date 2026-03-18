@@ -1,31 +1,39 @@
 {
-  "name": "Brass Ambush",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Ottoni",
+    "target": "Ocelot",
+    "type": "PREDATOR_STALK"
+  },
+  "description": "Triple brass fanfare interrupted by sudden ocelot pounce — stately meeting feral",
   "engines": [
-    "OTTONI",
-    "OCELOT"
+    "Ottoni",
+    "Ocelot"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.75,
-    "MOVEMENT": 0.45,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.45,
     "SPACE": 0.45
   },
-  "sonic_dna": {
-    "brightness": 0.65,
-    "warmth": 0.58,
-    "movement": 0.6,
-    "density": 0.64,
-    "space": 0.48,
-    "aggression": 0.64
-  },
+  "mood": "Entangled",
+  "name": "Brass Ambush",
   "parameters": {},
-  "coupling": {
-    "type": "PREDATOR_STALK",
-    "source": "OTTONI",
-    "target": "OCELOT",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.64,
+    "brightness": 0.65,
+    "density": 0.64,
+    "movement": 0.6,
+    "space": 0.48,
+    "warmth": 0.58
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "ocelot",
     "triple"
   ],
-  "description": "Triple brass fanfare interrupted by sudden ocelot pounce \u2014 stately meeting feral"
+  "version": "1.0"
 }

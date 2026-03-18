@@ -1,13 +1,36 @@
 {
-  "schema_version": 1,
-  "name": "Obese Core Collapse",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OBESE beyond event horizon — saturation beyond recovery, density star.",
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.28,
+    "density": 0.97,
+    "movement": 0.45,
+    "space": 0.15,
+    "warmth": 0.55
+  },
   "engines": [
-    "OBESE"
+    "Obese"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE beyond event horizon \u2014 saturation beyond recovery, density star.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "WEIGHT",
+    "SATURATE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Obese Core Collapse",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "portrait",
@@ -16,29 +39,6 @@
     "aggressive",
     "saturated"
   ],
-  "macroLabels": [
-    "WEIGHT",
-    "SATURATE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.28,
-    "warmth": 0.55,
-    "movement": 0.45,
-    "density": 0.97,
-    "space": 0.15,
-    "aggression": 0.88
-  }
+  "version": "1.0.0"
 }

@@ -1,13 +1,36 @@
 {
-  "schema_version": 1,
-  "name": "Oracle at Midnight",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "ORACLE speaking from the pit — voice from total dark, gravity of prophecy.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.09,
+    "density": 0.75,
+    "movement": 0.35,
+    "space": 0.55,
+    "warmth": 0.4
+  },
   "engines": [
-    "ORACLE"
+    "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ORACLE speaking from the pit \u2014 voice from total dark, gravity of prophecy.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "VOICE",
+    "MYSTERY",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Oracle at Midnight",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "portrait",
@@ -16,29 +39,6 @@
     "voice",
     "prophetic"
   ],
-  "macroLabels": [
-    "VOICE",
-    "MYSTERY",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.09,
-    "warmth": 0.4,
-    "movement": 0.35,
-    "density": 0.75,
-    "space": 0.55,
-    "aggression": 0.55
-  }
+  "version": "1.0.0"
 }

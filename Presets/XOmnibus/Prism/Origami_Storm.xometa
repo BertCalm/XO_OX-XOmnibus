@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Origami Storm",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.4516,
-    "warmth": 0.2586,
-    "movement": 0.9276,
-    "density": 0.5918,
-    "space": 0.3636,
-    "aggression": 0.9237
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Fast-folding chaos, brutal rhythmic density",
   "dna": {
+    "aggression": 0.9237,
     "brightness": 0.4516,
-    "warmth": 0.2586,
-    "movement": 0.9276,
     "density": 0.5918,
+    "movement": 0.9276,
     "space": 0.3636,
-    "aggression": 0.9237
+    "warmth": 0.2586
   },
   "engines": [
-    "ORIGAMI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Fast-folding chaos, brutal rhythmic density",
-  "tags": [
-    "prism",
-    "brutal",
-    "movement",
-    "aggressive",
-    "anchor"
+    "Origami"
   ],
   "macroLabels": [
     "FOLD",
@@ -38,24 +23,39 @@
     "SPACE"
   ],
   "macros": {
-    "FOLD": 0.4382,
-    "TENSION": 0.7025,
     "COUPLE": 0.6908,
-    "SPACE": 0.3934
+    "FOLD": 0.4382,
+    "SPACE": 0.3934,
+    "TENSION": 0.7025
   },
-  "couplingIntensity": "None",
+  "mood": "Prism",
+  "name": "Origami Storm",
   "parameters": {
-    "ORIGAMI": {
-      "ori_macro_fold": 0.4382,
-      "ori_macro_tension": 0.7025,
-      "ori_macro_couple": 0.6908,
-      "ori_macro_space": 0.3934,
-      "ori_outputLevel": 0.85,
+    "Origami": {
+      "ori_couplingBus": 0,
       "ori_couplingLevel": 0.5,
-      "ori_couplingBus": 0
+      "ori_macro_couple": 0.6908,
+      "ori_macro_fold": 0.4382,
+      "ori_macro_space": 0.3934,
+      "ori_macro_tension": 0.7025,
+      "ori_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9237,
+    "brightness": 0.4516,
+    "density": 0.5918,
+    "movement": 0.9276,
+    "space": 0.3636,
+    "warmth": 0.2586
+  },
+  "tags": [
+    "prism",
+    "brutal",
+    "movement",
+    "aggressive",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

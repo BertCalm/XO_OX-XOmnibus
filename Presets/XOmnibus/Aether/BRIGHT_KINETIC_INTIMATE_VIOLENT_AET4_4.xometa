@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_AET4_4",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "ORGANON",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.7914,
-      "macro_movement": 0.4586,
-      "macro_coupling": 0.7497,
-      "macro_space": 0.6712
-    },
-    "ORBITAL": {
-      "macro_character": 0.7786,
-      "macro_movement": 0.7514,
-      "macro_coupling": 0.4494,
-      "macro_space": 0.2333
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ORGANON",
-    "target": "ORBITAL",
-    "amount": 0.5073
+    "amount": 0.5073,
+    "source": "Organon",
+    "target": "Orbital",
+    "type": "VELOCITY_COUPLE"
   },
   "dna": {
+    "aggression": 0.9331,
     "brightness": 0.8803,
-    "warmth": 0.6953,
-    "movement": 0.987,
     "density": 0.4562,
+    "movement": 0.987,
     "space": 0.0274,
-    "aggression": 0.9331
+    "warmth": 0.6953
   },
+  "engines": [
+    "Organon",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7878,
-    "MOVEMENT": 0.987,
     "COUPLING": 0.5073,
+    "MOVEMENT": 0.987,
     "SPACE": 0.0274
   },
+  "mood": "Aether",
+  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_AET4_4",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.7786,
+      "macro_coupling": 0.4494,
+      "macro_movement": 0.7514,
+      "macro_space": 0.2333
+    },
+    "Organon": {
+      "macro_character": 0.7914,
+      "macro_coupling": 0.7497,
+      "macro_movement": 0.4586,
+      "macro_space": 0.6712
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "kinetic",
     "bright",
     "intimate",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

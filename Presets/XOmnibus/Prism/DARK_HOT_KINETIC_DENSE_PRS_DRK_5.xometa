@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_KINETIC_DENSE_PRS_DRK_5",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9458,
+    "source": "Ohm",
+    "target": "Owlfish",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.3979,
+    "brightness": 0.0832,
+    "density": 0.9462,
+    "movement": 0.8786,
+    "space": 0.5137,
+    "warmth": 0.952
+  },
   "engines": [
-    "OHM",
-    "OWLFISH"
+    "Ohm",
+    "Owlfish"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6749,
+    "COUPLING": 0.9462,
+    "MOVEMENT": 0.8786,
+    "SPACE": 0.5137
+  },
+  "mood": "Prism",
+  "name": "DARK_HOT_KINETIC_DENSE_PRS_DRK_5",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.6749,
-      "macro_movement": 0.8786,
       "macro_coupling": 0.9462,
+      "macro_movement": 0.8786,
       "macro_space": 0.5137
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.6861,
-      "macro_movement": 0.8832,
       "macro_coupling": 0.961,
+      "macro_movement": 0.8832,
       "macro_space": 0.5411
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OHM",
-    "target": "OWLFISH",
-    "amount": 0.9458
-  },
-  "dna": {
-    "brightness": 0.0832,
-    "warmth": 0.952,
-    "movement": 0.8786,
-    "density": 0.9462,
-    "space": 0.5137,
-    "aggression": 0.3979
-  },
-  "macros": {
-    "CHARACTER": 0.6749,
-    "MOVEMENT": 0.8786,
-    "COUPLING": 0.9462,
-    "SPACE": 0.5137
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "hot",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

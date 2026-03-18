@@ -1,48 +1,56 @@
 {
-  "name": "OBSIDIAN PRISM",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.505,
+    "source": "Ole",
+    "target": "Orbital",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.691,
+    "brightness": 0.028,
+    "density": 0.485,
+    "movement": 0.472,
+    "space": 0.106,
+    "warmth": 0.167
+  },
   "engines": [
-    "OLE",
-    "ORBITAL"
+    "Ole",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.687,
+    "COUPLING": 0.17,
+    "MOVEMENT": 0.61,
+    "SPACE": 0.512
+  },
+  "mood": "Prism",
+  "name": "OBSIDIAN PRISM",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.587,
-      "macro_movement": 0.635,
       "macro_coupling": 0.257,
+      "macro_movement": 0.635,
       "macro_space": 0.771
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.978,
-      "macro_movement": 0.966,
       "macro_coupling": 0.786,
+      "macro_movement": 0.966,
       "macro_space": 0.727
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OLE",
-    "target": "ORBITAL",
-    "amount": 0.505
-  },
-  "dna": {
-    "brightness": 0.028,
-    "warmth": 0.167,
-    "movement": 0.472,
-    "density": 0.485,
-    "space": 0.106,
-    "aggression": 0.691
-  },
-  "macros": {
-    "CHARACTER": 0.687,
-    "MOVEMENT": 0.61,
-    "COUPLING": 0.17,
-    "SPACE": 0.512
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-  ]
+  ],
+  "version": "1.0"
 }

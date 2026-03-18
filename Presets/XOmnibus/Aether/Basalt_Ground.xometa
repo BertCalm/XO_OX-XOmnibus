@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Basalt Ground",
-  "mood": "Aether",
-  "sonic_dna": {
-    "brightness": 0.12,
-    "warmth": 0.82,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Basalt ocean floor — nothing reflects, everything absorbs",
+  "dna": {
     "aggression": 0.28,
-    "movement": 0.05,
+    "brightness": 0.12,
     "density": 0.88,
-    "space": 0.22
+    "movement": 0.05,
+    "space": 0.22,
+    "warmth": 0.82
   },
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Basalt ocean floor \u2014 nothing reflects, everything absorbs",
+  "macroLabels": [
+    "EDGE",
+    "DENSITY",
+    "COUPLING",
+    "PRESSURE"
+  ],
+  "mood": "Aether",
+  "name": "Basalt Ground",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.28,
+    "brightness": 0.12,
+    "density": 0.88,
+    "movement": 0.05,
+    "space": 0.22,
+    "warmth": 0.82
+  },
   "tags": [
     "aether",
     "dark",
@@ -24,23 +42,5 @@
     "ground",
     "absorb"
   ],
-  "macroLabels": [
-    "EDGE",
-    "DENSITY",
-    "COUPLING",
-    "PRESSURE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.12,
-    "warmth": 0.82,
-    "movement": 0.05,
-    "density": 0.88,
-    "space": 0.22,
-    "aggression": 0.28
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "KINETIC VIOLENT SPARSE VAST F5",
-  "mood": "Flux",
-  "sonic_dna": {
-    "brightness": 0.442,
-    "warmth": 0.557,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Sync",
+  "description": "Ultra-diverse Flux preset — extreme violent aggression, extreme kinetic movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "dna": {
     "aggression": 0.932,
-    "movement": 0.913,
+    "brightness": 0.442,
     "density": 0.071,
-    "space": 0.937
+    "movement": 0.913,
+    "space": 0.937,
+    "warmth": 0.557
   },
   "engines": [
-    "OBESE"
+    "Obese"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme violent aggression, extreme kinetic movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "KINETIC VIOLENT SPARSE VAST F5",
+  "parameters": {
+    "Obese": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.932,
+    "brightness": 0.442,
+    "density": 0.071,
+    "movement": 0.913,
+    "space": 0.937,
+    "warmth": 0.557
+  },
   "tags": [
     "aggressive",
     "kinetic",
@@ -24,25 +44,5 @@
     "flux",
     "extreme"
   ],
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "couplingIntensity": "Sync",
-  "dna": {
-    "brightness": 0.442,
-    "warmth": 0.557,
-    "movement": 0.913,
-    "density": 0.071,
-    "space": 0.937,
-    "aggression": 0.932
-  },
-  "parameters": {
-    "OBESE": {}
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

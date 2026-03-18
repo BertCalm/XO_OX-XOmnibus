@@ -1,13 +1,36 @@
 {
-  "schema_version": 1,
-  "name": "Volcanic Glass",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OBSIDIAN unsheathed — edge maximum, mass full, brightness nearly absent. The sharpest thing in the kit. Use with intent.",
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.18,
+    "density": 0.82,
+    "movement": 0.38,
+    "space": 0.42,
+    "warmth": 0.35
+  },
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBSIDIAN unsheathed \u2014 edge maximum, mass full, brightness nearly absent. The sharpest thing in the kit. Use with intent.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "EDGE",
+    "MASS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Volcanic Glass",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "signature",
@@ -18,29 +41,6 @@
     "brutal",
     "batch1-signatures"
   ],
-  "macroLabels": [
-    "EDGE",
-    "MASS",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.18,
-    "warmth": 0.35,
-    "movement": 0.38,
-    "density": 0.82,
-    "space": 0.42,
-    "aggression": 0.7
-  }
+  "version": "1.0.0"
 }

@@ -1,13 +1,36 @@
 {
-  "schema_version": 1,
-  "name": "Warm Fang",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OVERBITE signature — BITE forward, warmth underneath. Gallery code OVERBITE: bass-forward character with Fang White accent. The synth that bites back softly.",
+  "dna": {
+    "aggression": 0.48,
+    "brightness": 0.45,
+    "density": 0.68,
+    "movement": 0.52,
+    "space": 0.48,
+    "warmth": 0.65
+  },
   "engines": [
-    "OVERBITE"
+    "Overbite"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE signature \u2014 BITE forward, warmth underneath. Gallery code OVERBITE: bass-forward character with Fang White accent. The synth that bites back softly.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "BITE",
+    "WARMTH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Warm Fang",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "signature",
@@ -18,29 +41,6 @@
     "bite",
     "batch1-signatures"
   ],
-  "macroLabels": [
-    "BITE",
-    "WARMTH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.65,
-    "movement": 0.52,
-    "density": 0.68,
-    "space": 0.48,
-    "aggression": 0.48
-  }
+  "version": "1.0.0"
 }

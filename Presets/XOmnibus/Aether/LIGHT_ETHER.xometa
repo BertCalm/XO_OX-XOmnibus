@@ -1,49 +1,57 @@
 {
-  "name": "LIGHT ETHER",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.731,
+    "source": "Ombre",
+    "target": "Oracle",
+    "type": "PHASE_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.8,
+    "brightness": 0.937,
+    "density": 0.567,
+    "movement": 0.531,
+    "space": 0.053,
+    "warmth": 0.682
+  },
   "engines": [
-    "OMBRE",
-    "ORACLE"
+    "Ombre",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.749,
+    "COUPLING": 0.636,
+    "MOVEMENT": 0.706,
+    "SPACE": 0.377
+  },
+  "mood": "Aether",
+  "name": "LIGHT ETHER",
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.526,
-      "macro_movement": 0.769,
       "macro_coupling": 0.823,
+      "macro_movement": 0.769,
       "macro_space": 0.074
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.972,
-      "macro_movement": 0.642,
       "macro_coupling": 0.45,
+      "macro_movement": 0.642,
       "macro_space": 0.68
     }
   },
-  "coupling": {
-    "type": "PHASE_COUPLE",
-    "source": "OMBRE",
-    "target": "ORACLE",
-    "amount": 0.731
-  },
-  "dna": {
-    "brightness": 0.937,
-    "warmth": 0.682,
-    "movement": 0.531,
-    "density": 0.567,
-    "space": 0.053,
-    "aggression": 0.8
-  },
-  "macros": {
-    "CHARACTER": 0.749,
-    "MOVEMENT": 0.706,
-    "COUPLING": 0.636,
-    "SPACE": 0.377
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "bright",
     "extreme",
     "low-space"
-  ]
+  ],
+  "version": "1.0"
 }

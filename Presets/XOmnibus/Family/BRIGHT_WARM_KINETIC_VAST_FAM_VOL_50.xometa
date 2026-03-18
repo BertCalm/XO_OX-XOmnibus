@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_VAST_FAM_VOL_50",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OSTERIA",
-    "OSPREY"
-  ],
-  "parameters": {
-    "OSTERIA": {
-      "macro_character": 0.931,
-      "macro_movement": 0.918,
-      "macro_coupling": 0.567,
-      "macro_space": 0.922
-    },
-    "OSPREY": {
-      "macro_character": 0.938,
-      "macro_movement": 0.914,
-      "macro_coupling": 0.566,
-      "macro_space": 0.907
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_MESH",
-    "source": "OSPREY",
-    "target": "OSTERIA",
-    "amount": 0.711
+    "amount": 0.711,
+    "source": "Osprey",
+    "target": "Osteria",
+    "type": "HARMONIC_MESH"
   },
   "dna": {
+    "aggression": 0.504,
     "brightness": 0.97,
-    "warmth": 0.902,
-    "movement": 0.937,
     "density": 0.654,
+    "movement": 0.937,
     "space": 0.9,
-    "aggression": 0.504
+    "warmth": 0.902
   },
+  "engines": [
+    "Osteria",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.934,
-    "MOVEMENT": 0.916,
     "COUPLING": 0.567,
+    "MOVEMENT": 0.916,
     "SPACE": 0.915
   },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_KINETIC_VAST_FAM_VOL_50",
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.938,
+      "macro_coupling": 0.566,
+      "macro_movement": 0.914,
+      "macro_space": 0.907
+    },
+    "Osteria": {
+      "macro_character": 0.931,
+      "macro_coupling": 0.567,
+      "macro_movement": 0.918,
+      "macro_space": 0.922
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "vast",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

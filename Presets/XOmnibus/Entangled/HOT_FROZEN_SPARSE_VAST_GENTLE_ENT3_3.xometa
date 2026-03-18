@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "HOT_FROZEN_SPARSE_VAST_GENTLE_ENT3_3",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8502,
+    "source": "Ottoni",
+    "target": "Opal",
+    "type": "PITCH_SYNC"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: HOT_FROZEN_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.0935,
+    "brightness": 0.4723,
+    "density": 0.0453,
+    "movement": 0.0633,
+    "space": 0.937,
+    "warmth": 0.8855
+  },
   "engines": [
-    "OTTONI",
-    "OPAL"
+    "Ottoni",
+    "Opal"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: HOT_FROZEN_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6164,
+    "COUPLING": 0.8766,
+    "MOVEMENT": 0.0606,
+    "SPACE": 0.4678
+  },
+  "mood": "Entangled",
+  "name": "HOT_FROZEN_SPARSE_VAST_GENTLE_ENT3_3",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.5382,
+      "macro_coupling": 0.8251,
+      "macro_movement": 0.0595,
+      "macro_space": 0.4649
+    },
+    "Ottoni": {
+      "macro_character": 0.6946,
+      "macro_coupling": 0.9281,
+      "macro_movement": 0.0617,
+      "macro_space": 0.4708
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +66,6 @@
     "sparse",
     "vast"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.6946,
-      "macro_movement": 0.0617,
-      "macro_coupling": 0.9281,
-      "macro_space": 0.4708
-    },
-    "OPAL": {
-      "macro_character": 0.5382,
-      "macro_movement": 0.0595,
-      "macro_coupling": 0.8251,
-      "macro_space": 0.4649
-    }
-  },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OTTONI",
-    "target": "OPAL",
-    "amount": 0.8502
-  },
-  "macros": {
-    "CHARACTER": 0.6164,
-    "MOVEMENT": 0.0606,
-    "COUPLING": 0.8766,
-    "SPACE": 0.4678
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.4723,
-    "warmth": 0.8855,
-    "movement": 0.0633,
-    "density": 0.0453,
-    "space": 0.937,
-    "aggression": 0.0935
-  }
+  "version": "1.0.0"
 }

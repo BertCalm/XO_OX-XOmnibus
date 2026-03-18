@@ -1,47 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD DENSE VIOLENT ATM 4",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "None",
+    "sourceEngine": "Obbligato",
+    "targetEngine": null,
+    "type": "Chaos"
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: DARK COLD DENSE VIOLENT ATM 4.",
+  "dna": {
+    "aggression": 0.938,
+    "brightness": 0.042,
+    "density": 0.922,
+    "movement": 0.587,
+    "space": 0.589,
+    "warmth": 0.073
+  },
   "engines": [
     "Obbligato"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Atmosphere preset: DARK COLD DENSE VIOLENT ATM 4.",
-  "tags": [
-    "x-low-brightness",
-    "x-low-warmth",
-    "x-high-aggression",
-    "x-high-density"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "DARK COLD DENSE VIOLENT ATM 4",
   "parameters": {},
-  "coupling": {
-    "type": "Chaos",
-    "intensity": "None",
-    "sourceEngine": "Obbligato",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.042,
-    "warmth": 0.073,
-    "aggression": 0.938,
-    "density": 0.922,
-    "movement": 0.587,
-    "space": 0.589
-  }
+  "tags": [
+    "x-low-brightness",
+    "x-low-warmth",
+    "x-high-aggression",
+    "x-high-density"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

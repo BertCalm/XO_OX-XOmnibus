@@ -1,45 +1,52 @@
 {
-  "name": "COLD_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_5",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.841,
+    "source": "Oblong",
+    "target": "Organon",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.9303,
+    "brightness": 0.5713,
+    "density": 0.9623,
+    "movement": 0.9229,
+    "space": 0.1056,
+    "warmth": 0.0827
+  },
   "engines": [
-    "OBLONG",
-    "ORGANON"
+    "Oblong",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3178,
+    "COUPLING": 0.9769,
+    "MOVEMENT": 0.9035,
+    "SPACE": 0.1274
+  },
+  "mood": "Flux",
+  "name": "COLD_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_5",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.3053,
-      "macro_movement": 0.9079,
       "macro_coupling": 0.9708,
+      "macro_movement": 0.9079,
       "macro_space": 0.128
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.3303,
-      "macro_movement": 0.8991,
       "macro_coupling": 0.9831,
+      "macro_movement": 0.8991,
       "macro_space": 0.1267
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBLONG",
-    "target": "ORGANON",
-    "amount": 0.841
-  },
-  "dna": {
-    "brightness": 0.5713,
-    "warmth": 0.0827,
-    "movement": 0.9229,
-    "density": 0.9623,
-    "space": 0.1056,
-    "aggression": 0.9303
-  },
-  "macros": {
-    "CHARACTER": 0.3178,
-    "MOVEMENT": 0.9035,
-    "COUPLING": 0.9769,
-    "SPACE": 0.1274
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "cold",
@@ -47,5 +54,6 @@
     "dense",
     "intimate",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

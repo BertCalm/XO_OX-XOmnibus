@@ -1,49 +1,57 @@
 {
-  "name": "SAVAGE SPIRAL",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8,
+    "source": "Ombre",
+    "target": "Outwit",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.902,
+    "brightness": 0.379,
+    "density": 0.379,
+    "movement": 0.517,
+    "space": 0.178,
+    "warmth": 0.122
+  },
   "engines": [
-    "OMBRE",
-    "OUTWIT"
+    "Ombre",
+    "Outwit"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.844,
+    "COUPLING": 0.513,
+    "MOVEMENT": 0.692,
+    "SPACE": 0.542
+  },
+  "mood": "Entangled",
+  "name": "SAVAGE SPIRAL",
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.678,
-      "macro_movement": 0.462,
       "macro_coupling": 0.154,
+      "macro_movement": 0.462,
       "macro_space": 0.136
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.669,
-      "macro_movement": 0.118,
       "macro_coupling": 0.374,
+      "macro_movement": 0.118,
       "macro_space": 0.187
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OMBRE",
-    "target": "OUTWIT",
-    "amount": 0.8
-  },
-  "dna": {
-    "brightness": 0.379,
-    "warmth": 0.122,
-    "movement": 0.517,
-    "density": 0.379,
-    "space": 0.178,
-    "aggression": 0.902
-  },
-  "macros": {
-    "CHARACTER": 0.844,
-    "MOVEMENT": 0.692,
-    "COUPLING": 0.513,
-    "SPACE": 0.542
-  },
+  "schema_version": 1,
   "tags": [
     "savage",
     "brutal",
     "aggressive",
     "entangled"
-  ]
+  ],
+  "version": "1.0"
 }

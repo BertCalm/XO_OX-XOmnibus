@@ -1,49 +1,57 @@
 {
-  "name": "ECLIPSE WAVE",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OPAL",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.621,
-      "macro_movement": 0.155,
-      "macro_coupling": 0.93,
-      "macro_space": 0.865
-    },
-    "OCEANIC": {
-      "macro_character": 0.976,
-      "macro_movement": 0.811,
-      "macro_coupling": 0.881,
-      "macro_space": 0.025
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRAL_BLEND",
-    "source": "OPAL",
-    "target": "OCEANIC",
-    "amount": 0.544
+    "amount": 0.544,
+    "source": "Opal",
+    "target": "Oceanic",
+    "type": "TIMBRAL_BLEND"
   },
   "dna": {
+    "aggression": 0.73,
     "brightness": 0.058,
-    "warmth": 0.879,
-    "movement": 0.35,
     "density": 0.262,
+    "movement": 0.35,
     "space": 0.668,
-    "aggression": 0.73
+    "warmth": 0.879
   },
+  "engines": [
+    "Opal",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.798,
-    "MOVEMENT": 0.483,
     "COUPLING": 0.905,
+    "MOVEMENT": 0.483,
     "SPACE": 0.445
   },
+  "mood": "Flux",
+  "name": "ECLIPSE WAVE",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.976,
+      "macro_coupling": 0.881,
+      "macro_movement": 0.811,
+      "macro_space": 0.025
+    },
+    "Opal": {
+      "macro_character": 0.621,
+      "macro_coupling": 0.93,
+      "macro_movement": 0.155,
+      "macro_space": 0.865
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "extreme",
     "high-warmth"
-  ]
+  ],
+  "version": "1.0"
 }

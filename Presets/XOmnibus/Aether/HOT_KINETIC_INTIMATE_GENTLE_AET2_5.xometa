@@ -1,45 +1,52 @@
 {
-  "name": "HOT_KINETIC_INTIMATE_GENTLE_AET2_5",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "ORGANON",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.5002,
-      "macro_movement": 0.9306,
-      "macro_coupling": 0.608,
-      "macro_space": 0.0219
-    },
-    "OBSCURA": {
-      "macro_character": 0.5102,
-      "macro_movement": 0.971,
-      "macro_coupling": 0.5901,
-      "macro_space": 0.0689
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORGANON",
-    "target": "OBSCURA",
-    "amount": 0.527
+    "amount": 0.527,
+    "source": "Organon",
+    "target": "Obscura",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
-    "warmth": 0.9524,
-    "movement": 0.9269,
-    "space": 0.0273,
     "aggression": 0.0294,
     "brightness": 0.4728,
-    "density": 0.5978
+    "density": 0.5978,
+    "movement": 0.9269,
+    "space": 0.0273,
+    "warmth": 0.9524
   },
+  "engines": [
+    "Organon",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5052,
-    "MOVEMENT": 0.9508,
     "COUPLING": 0.527,
+    "MOVEMENT": 0.9508,
     "SPACE": 0.0273
   },
+  "mood": "Aether",
+  "name": "HOT_KINETIC_INTIMATE_GENTLE_AET2_5",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.5102,
+      "macro_coupling": 0.5901,
+      "macro_movement": 0.971,
+      "macro_space": 0.0689
+    },
+    "Organon": {
+      "macro_character": 0.5002,
+      "macro_coupling": 0.608,
+      "macro_movement": 0.9306,
+      "macro_space": 0.0219
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +56,6 @@
     "intimate",
     "gentle",
     "tender"
-  ]
+  ],
+  "version": "1.0"
 }

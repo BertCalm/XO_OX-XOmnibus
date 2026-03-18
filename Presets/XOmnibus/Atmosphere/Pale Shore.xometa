@@ -1,25 +1,33 @@
 {
-  "name": "Pale Shore",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "The sky becomes gold before you notice. Space opens like held breath released.",
   "engines": [
-    "OHM"
+    "Ohm"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.734,
-    "MOVEMENT": 0.148,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.148,
     "SPACE": 0.633
   },
-  "sonic_dna": {
-    "brightness": 0.75,
-    "warmth": 0.717,
-    "movement": 0.148,
-    "density": 0.484,
-    "space": 0.633,
-    "aggression": 0.123
-  },
+  "mood": "Atmosphere",
+  "name": "Pale Shore",
   "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.123,
+    "brightness": 0.75,
+    "density": 0.484,
+    "movement": 0.148,
+    "space": 0.633,
+    "warmth": 0.717
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +35,5 @@
     "dawn",
     "gentle"
   ],
-  "description": "The sky becomes gold before you notice. Space opens like held breath released."
+  "version": "1.0"
 }

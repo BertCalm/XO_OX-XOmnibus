@@ -1,13 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Origami Charged",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Eight layers at near-zero symmetry — maximum odd harmonic content. High fold amount, low fold point cuts into the wave aggressively. Dense, buzzing, charged atmospheric texture.",
+  "dna": {
+    "aggression": 0.62,
+    "brightness": 0.68,
+    "density": 0.88,
+    "movement": 0.72,
+    "space": 0.62,
+    "warmth": 0.22
+  },
   "engines": [
     "Origami"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "Eight layers at near-zero symmetry \u2014 maximum odd harmonic content. High fold amount, low fold point cuts into the wave aggressively. Dense, buzzing, charged atmospheric texture.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "FOLD",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Origami Charged",
+  "parameters": {
+    "Origami": {
+      "origami_ampAttack": 0.3,
+      "origami_ampDecay": 0.8,
+      "origami_ampRelease": 3.5,
+      "origami_ampSustain": 0.65,
+      "origami_filterCutoff": 0.72,
+      "origami_filterReso": 0.55,
+      "origami_foldAmt": 0.88,
+      "origami_foldPoint": 0.22,
+      "origami_layers": 8,
+      "origami_oscPitch": 0.0,
+      "origami_symmetry": 0.08
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "charged",
@@ -15,45 +54,6 @@
     "electric-fold",
     "odd-harmonic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "FOLD",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Origami": {
-      "origami_foldPoint": 0.22,
-      "origami_foldAmt": 0.88,
-      "origami_layers": 8,
-      "origami_symmetry": 0.08,
-      "origami_filterCutoff": 0.72,
-      "origami_filterReso": 0.55,
-      "origami_oscPitch": 0.0,
-      "origami_ampAttack": 0.3,
-      "origami_ampDecay": 0.8,
-      "origami_ampSustain": 0.65,
-      "origami_ampRelease": 3.5
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.68,
-    "warmth": 0.22,
-    "movement": 0.72,
-    "density": 0.88,
-    "space": 0.62,
-    "aggression": 0.62
-  }
+  "version": "1.0.0"
 }

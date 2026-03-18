@@ -1,49 +1,57 @@
 {
-  "name": "AGGRESSIVE ETHER RISE",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OVERBITE",
-    "OHM"
-  ],
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.289,
-      "macro_movement": 0.253,
-      "macro_coupling": 0.45,
-      "macro_space": 0.054
-    },
-    "OHM": {
-      "macro_character": 0.825,
-      "macro_movement": 0.276,
-      "macro_coupling": 0.611,
-      "macro_space": 0.029
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERBITE",
-    "target": "OHM",
-    "amount": 0.368
+    "amount": 0.368,
+    "source": "Overbite",
+    "target": "Ohm",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.895,
     "brightness": 0.366,
-    "warmth": 0.403,
-    "movement": 0.264,
     "density": 0.045,
+    "movement": 0.264,
     "space": 0.051,
-    "aggression": 0.895
+    "warmth": 0.403
   },
+  "engines": [
+    "Overbite",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.373,
-    "MOVEMENT": 0.264,
     "COUPLING": 0.987,
+    "MOVEMENT": 0.264,
     "SPACE": 0.051
   },
+  "mood": "Aether",
+  "name": "AGGRESSIVE ETHER RISE",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.825,
+      "macro_coupling": 0.611,
+      "macro_movement": 0.276,
+      "macro_space": 0.029
+    },
+    "Overbite": {
+      "macro_character": 0.289,
+      "macro_coupling": 0.45,
+      "macro_movement": 0.253,
+      "macro_space": 0.054
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

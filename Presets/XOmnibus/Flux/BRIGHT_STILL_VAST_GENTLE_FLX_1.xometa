@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_STILL_VAST_GENTLE_FLX_1",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.921,
+    "source": "Oracle",
+    "target": "Overdub",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.1293,
+    "brightness": 0.9556,
+    "density": 0.6451,
+    "movement": 0.1136,
+    "space": 0.871,
+    "warmth": 0.3235
+  },
   "engines": [
-    "ORACLE",
-    "OVERDUB"
+    "Oracle",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9369,
+    "COUPLING": 0.1902,
+    "MOVEMENT": 0.17,
+    "SPACE": 0.755
+  },
+  "mood": "Flux",
+  "name": "BRIGHT_STILL_VAST_GENTLE_FLX_1",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.9369,
-      "macro_movement": 0.17,
       "macro_coupling": 0.1902,
+      "macro_movement": 0.17,
       "macro_space": 0.755
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.887,
-      "macro_movement": 0.0665,
       "macro_coupling": 0.257,
+      "macro_movement": 0.0665,
       "macro_space": 0.8783
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORACLE",
-    "target": "OVERDUB",
-    "amount": 0.921
-  },
-  "dna": {
-    "brightness": 0.9556,
-    "warmth": 0.3235,
-    "movement": 0.1136,
-    "density": 0.6451,
-    "space": 0.871,
-    "aggression": 0.1293
-  },
-  "macros": {
-    "CHARACTER": 0.9369,
-    "MOVEMENT": 0.17,
-    "COUPLING": 0.1902,
-    "SPACE": 0.755
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "low-movement",
     "high-space",
     "low-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

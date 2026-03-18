@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_HOT_STILL_INTIMATE_GENTLE_PRS_4",
-  "mood": "Prism",
-  "engines": [
-    "OHM",
-    "OBLIQUE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.738,
+    "source": "Ohm",
+    "target": "Oblique",
+    "type": "ENVELOPE_LINK"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_HOT_STILL_INTIMATE_GENTLE. Variant 4.",
+  "dna": {
+    "aggression": 0.029,
+    "brightness": 0.949,
+    "density": 0.619,
+    "movement": 0.088,
+    "space": 0.098,
+    "warmth": 0.88
+  },
+  "engines": [
+    "Ohm",
+    "Oblique"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.955,
+    "COUPLING": 0.55,
+    "MOVEMENT": 0.071,
+    "SPACE": 0.019
+  },
+  "mood": "Prism",
+  "name": "BRIGHT_HOT_STILL_INTIMATE_GENTLE_PRS_4",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.989,
+      "macro_coupling": 0.591,
+      "macro_movement": 0.099,
+      "macro_space": 0.003
+    },
+    "Ohm": {
+      "macro_character": 0.921,
+      "macro_coupling": 0.509,
+      "macro_movement": 0.042,
+      "macro_space": 0.035
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "hot",
     "extreme",
@@ -19,53 +66,6 @@
     "still",
     "gentle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OHM": {
-      "macro_character": 0.921,
-      "macro_movement": 0.042,
-      "macro_coupling": 0.509,
-      "macro_space": 0.035
-    },
-    "OBLIQUE": {
-      "macro_character": 0.989,
-      "macro_movement": 0.099,
-      "macro_coupling": 0.591,
-      "macro_space": 0.003
-    }
-  },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OHM",
-    "target": "OBLIQUE",
-    "amount": 0.738
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.949,
-    "warmth": 0.88,
-    "movement": 0.088,
-    "density": 0.619,
-    "space": 0.098,
-    "aggression": 0.029
-  },
-  "macros": {
-    "CHARACTER": 0.955,
-    "MOVEMENT": 0.071,
-    "COUPLING": 0.55,
-    "SPACE": 0.019
-  }
+  "version": "1.0.0"
 }

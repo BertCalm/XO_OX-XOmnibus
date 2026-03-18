@@ -1,49 +1,57 @@
 {
-  "name": "ALLHI PRS 01",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.748,
+    "source": "Orphica",
+    "target": "Optic",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.97,
+    "brightness": 0.496,
+    "density": 0.929,
+    "movement": 0.939,
+    "space": 0.957,
+    "warmth": 0.917
+  },
   "engines": [
-    "ORPHICA",
-    "OPTIC"
+    "Orphica",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.707,
+    "COUPLING": 0.964,
+    "MOVEMENT": 0.934,
+    "SPACE": 0.957
+  },
+  "mood": "Prism",
+  "name": "ALLHI PRS 01",
   "parameters": {
-    "ORPHICA": {
+    "Optic": {
       "macro_character": 0.707,
-      "macro_movement": 0.934,
       "macro_coupling": 0.964,
+      "macro_movement": 0.934,
       "macro_space": 0.957
     },
-    "OPTIC": {
+    "Orphica": {
       "macro_character": 0.707,
-      "macro_movement": 0.934,
       "macro_coupling": 0.964,
+      "macro_movement": 0.934,
       "macro_space": 0.957
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ORPHICA",
-    "target": "OPTIC",
-    "amount": 0.748
-  },
-  "dna": {
-    "brightness": 0.496,
-    "warmth": 0.917,
-    "movement": 0.939,
-    "density": 0.929,
-    "space": 0.957,
-    "aggression": 0.97
-  },
-  "macros": {
-    "CHARACTER": 0.707,
-    "MOVEMENT": 0.934,
-    "COUPLING": 0.964,
-    "SPACE": 0.957
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

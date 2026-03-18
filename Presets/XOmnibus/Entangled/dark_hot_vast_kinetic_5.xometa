@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK HOT VAST KINETIC 5",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.0887,
-    "warmth": 0.9225,
-    "space": 0.929,
-    "movement": 0.9542,
-    "aggression": 0.4243,
-    "density": 0.4267
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Extreme",
+  "couplingType": "PULSE",
+  "description": "Ultra-diverse Entangled preset — dark hot vast kinetic. Designed for PULSE coupling with XObese.",
   "dna": {
-    "brightness": 0.0887,
-    "warmth": 0.9225,
-    "space": 0.929,
-    "movement": 0.9542,
     "aggression": 0.4243,
-    "density": 0.4267
+    "brightness": 0.0887,
+    "density": 0.4267,
+    "movement": 0.9542,
+    "space": 0.929,
+    "warmth": 0.9225
   },
   "engines": [
-    "XObese"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark hot vast kinetic. Designed for PULSE coupling with XObese.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "pulse",
-    "obese"
+    "Obese"
   ],
   "macroLabels": [
     "SWEEP",
@@ -36,15 +23,28 @@
     "FORGE",
     "RADIANCE"
   ],
-  "couplingType": "PULSE",
-  "couplingIntensity": "Extreme",
+  "mood": "Entangled",
+  "name": "DARK HOT VAST KINETIC 5",
   "parameters": {
-    "XObese": {
-      "couplingLevel": 0.975,
-      "couplingBus": 3
+    "Obese": {
+      "couplingBus": 3,
+      "couplingLevel": 0.975
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4243,
+    "brightness": 0.0887,
+    "density": 0.4267,
+    "movement": 0.9542,
+    "space": 0.929,
+    "warmth": 0.9225
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "pulse",
+    "obese"
+  ],
+  "version": "1.0.0"
 }

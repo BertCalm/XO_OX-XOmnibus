@@ -1,50 +1,58 @@
 {
-  "name": "HOT_KINETIC_VAST_GENTLE_ATM_1",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OPTIC",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "OPTIC": {
-      "macro_character": 0.534,
-      "macro_movement": 0.831,
-      "macro_coupling": 0.631,
-      "macro_space": 0.953
-    },
-    "OBSCURA": {
-      "macro_character": 0.568,
-      "macro_movement": 0.878,
-      "macro_coupling": 0.827,
-      "macro_space": 0.826
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OPTIC",
-    "target": "OBSCURA",
-    "amount": 0.881
+    "amount": 0.881,
+    "source": "Optic",
+    "target": "Obscura",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.137,
     "brightness": 0.479,
-    "warmth": 0.944,
-    "movement": 0.938,
     "density": 0.448,
+    "movement": 0.938,
     "space": 0.964,
-    "aggression": 0.137
+    "warmth": 0.944
   },
+  "engines": [
+    "Optic",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.534,
-    "MOVEMENT": 0.831,
     "COUPLING": 0.631,
+    "MOVEMENT": 0.831,
     "SPACE": 0.953
   },
+  "mood": "Atmosphere",
+  "name": "HOT_KINETIC_VAST_GENTLE_ATM_1",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.568,
+      "macro_coupling": 0.827,
+      "macro_movement": 0.878,
+      "macro_space": 0.826
+    },
+    "Optic": {
+      "macro_character": 0.534,
+      "macro_coupling": 0.631,
+      "macro_movement": 0.831,
+      "macro_space": 0.953
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "warm",
     "kinetic",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

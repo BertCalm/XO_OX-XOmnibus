@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Grey Percussion",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.88,
+        "engineA": "Ombre",
+        "engineB": "Onset",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Ombre shadow mauve velocity coupling into Onset — grey percussion with zero warmth.",
+  "dna": {
+    "aggression": 0.94,
+    "brightness": 0.15,
+    "density": 0.85,
+    "movement": 0.7,
+    "space": 0.14,
+    "warmth": 0.2
+  },
   "engines": [
-    "OMBRE",
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ombre shadow mauve velocity coupling into Onset \u2014 grey percussion with zero warmth.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "cold",
-    "ombre",
-    "onset",
-    "grey"
+    "Ombre",
+    "Onset"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,29 @@
   ],
   "macros": {
     "CHARACTER": 0.86,
-    "MOVEMENT": 0.7,
     "COUPLING": 0.88,
+    "MOVEMENT": 0.7,
     "SPACE": 0.14
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.15,
-    "warmth": 0.2,
-    "movement": 0.7,
-    "density": 0.85,
-    "space": 0.14,
-    "aggression": 0.94
-  },
-  "sonic_dna": {
-    "brightness": 0.15,
-    "warmth": 0.2,
-    "movement": 0.7,
-    "density": 0.85,
-    "space": 0.14,
-    "aggression": 0.94
-  },
+  "mood": "Entangled",
+  "name": "Grey Percussion",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OMBRE",
-        "engineB": "ONSET",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.88
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.94,
+    "brightness": 0.15,
+    "density": 0.85,
+    "movement": 0.7,
+    "space": 0.14,
+    "warmth": 0.2
+  },
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "ombre",
+    "onset",
+    "grey"
+  ],
+  "version": "1.0.0"
 }

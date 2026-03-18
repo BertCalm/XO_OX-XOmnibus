@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Still Air",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Long airborne sustain from both brothers. Space fills between flute and reed. 'Still Air' holds the moment without wavering.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.22,
+    "density": 0.29,
+    "movement": 0.2,
+    "space": 0.83,
+    "warmth": 0.54
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "atmosphere",
-    "pad",
-    "atmosphere"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.22,
-    "warmth": 0.54,
-    "movement": 0.2,
-    "density": 0.29,
-    "space": 0.83,
-    "aggression": 0.0
-  },
+  "mood": "Atmosphere",
+  "name": "Still Air",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.712,
-      "obbl_embouchureA": 0.663,
       "obbl_airFlutterA": 0.233,
-      "obbl_instrumentA": 1,
       "obbl_bodySizeA": 0.399,
-      "obbl_breathB": 0.756,
-      "obbl_reedStiffness": 0.588,
-      "obbl_reedBite": 0.332,
-      "obbl_instrumentB": 1,
       "obbl_bodySizeB": 0.453,
-      "obbl_voiceRouting": 0,
-      "obbl_damping": 0.993,
-      "obbl_sympatheticAmt": 0.338,
-      "obbl_driftRate": 0.06,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.0,
       "obbl_bondIntensity": 0.377,
       "obbl_bondRate": 0.227,
-      "obbl_fxAChorus": 0.192,
+      "obbl_bondStage": 0.0,
+      "obbl_breathA": 0.712,
+      "obbl_breathB": 0.756,
+      "obbl_damping": 0.993,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.06,
+      "obbl_embouchureA": 0.663,
       "obbl_fxABrightDelay": 0.141,
-      "obbl_fxAPlate": 0.218,
+      "obbl_fxAChorus": 0.192,
       "obbl_fxAExciter": 0.115,
-      "obbl_fxBPhaser": 0.266,
+      "obbl_fxAPlate": 0.218,
       "obbl_fxBDarkDelay": 0.43,
+      "obbl_fxBPhaser": 0.266,
       "obbl_fxBSpring": 0.147,
       "obbl_fxBTapeSat": 0.033,
-      "obbl_macroBreath": 0.59,
+      "obbl_instrumentA": 1,
+      "obbl_instrumentB": 1,
       "obbl_macroBond": 0.0,
+      "obbl_macroBreath": 0.59,
       "obbl_macroMischief": 0.067,
-      "obbl_macroWind": 0.323
+      "obbl_macroWind": 0.323,
+      "obbl_reedBite": 0.332,
+      "obbl_reedStiffness": 0.588,
+      "obbl_sympatheticAmt": 0.338,
+      "obbl_voiceRouting": 0
     }
   },
-  "coupling": null,
-  "description": "Long airborne sustain from both brothers. Space fills between flute and reed. 'Still Air' holds the moment without wavering."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "atmosphere",
+    "pad",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
 }

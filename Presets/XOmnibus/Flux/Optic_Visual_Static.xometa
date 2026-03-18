@@ -1,44 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Visual Static",
-  "mood": "Flux",
-  "engines": ["Optic"],
-  "author": "Guru Bin — Flux Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "AutoPulse at maximum rate with full accent — the pulse system has gone haywire, firing subdivisions at speeds the visualizer cannot track. Scanlines overloading, feedback loop running near saturation. The zero-audio identity becomes a cascade of visual artifacts: the synthesizer is a TV receiving nothing, broadcasting everything.",
-  "tags": ["optic", "flux", "static", "autopulse", "visual", "chaos", "feedback"],
-  "macroLabels": ["PULSE RATE", "BRIGHTNESS", "DENSITY", "AGGRESSION"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-16",
+  "description": "AutoPulse at maximum rate with full accent — the pulse system has gone haywire, firing subdivisions at speeds the visualizer cannot track. Scanlines overloading, feedback loop running near saturation. The zero-audio identity becomes a cascade of visual artifacts: the synthesizer is a TV receiving nothing, broadcasting everything.",
+  "dna": {
+    "aggression": 0.9,
+    "brightness": 0.95,
+    "density": 0.92,
+    "movement": 0.98,
+    "space": 0.55,
+    "warmth": 0.1
+  },
+  "engines": [
+    "Optic"
+  ],
+  "macroLabels": [
+    "PULSE RATE",
+    "BRIGHTNESS",
+    "DENSITY",
+    "AGGRESSION"
+  ],
+  "mood": "Flux",
+  "name": "Visual Static",
   "parameters": {
     "Optic": {
-      "optic_reactivity": 1.0,
-      "optic_inputGain": 3.0,
       "optic_autoPulse": 1,
-      "optic_pulseRate": 8.5,
-      "optic_pulseShape": 0.05,
-      "optic_pulseSwing": 0.05,
-      "optic_pulseEvolve": 0.95,
-      "optic_pulseSubdiv": 0.95,
-      "optic_pulseAccent": 1.0,
+      "optic_inputGain": 3.0,
       "optic_modDepth": 0.95,
       "optic_modMixPulse": 0.95,
       "optic_modMixSpec": 0.85,
-      "optic_vizMode": 3,
+      "optic_pulseAccent": 1.0,
+      "optic_pulseEvolve": 0.95,
+      "optic_pulseRate": 8.5,
+      "optic_pulseShape": 0.05,
+      "optic_pulseSubdiv": 0.95,
+      "optic_pulseSwing": 0.05,
+      "optic_reactivity": 1.0,
       "optic_vizFeedback": 0.95,
-      "optic_vizSpeed": 3.0,
-      "optic_vizIntensity": 1.0
+      "optic_vizIntensity": 1.0,
+      "optic_vizMode": 3,
+      "optic_vizSpeed": 3.0
     }
   },
-  "coupling": { "pairs": [] },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.95,
-    "warmth": 0.1,
-    "movement": 0.98,
-    "density": 0.92,
-    "space": 0.55,
-    "aggression": 0.9
-  }
+  "tags": [
+    "optic",
+    "flux",
+    "static",
+    "autopulse",
+    "visual",
+    "chaos",
+    "feedback"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

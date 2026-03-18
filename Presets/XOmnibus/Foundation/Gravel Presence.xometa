@@ -1,13 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "Gravel Presence",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Close-miked optic presence. Dry and immediate — space locked at 0.05. No reverb needed. The room is your ears.",
+  "dna": {
+    "aggression": 0.537,
+    "brightness": 0.313,
+    "density": 0.608,
+    "movement": 0.621,
+    "space": 0.053,
+    "warmth": 0.597
+  },
   "engines": [
     "Optic"
   ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "Close-miked optic presence. Dry and immediate \u2014 space locked at 0.05. No reverb needed. The room is your ears.",
+  "macroLabels": [
+    "REACTIVITY",
+    "TEMPO",
+    "EVOLVE",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Gravel Presence",
+  "parameters": {
+    "Optic": {
+      "optic_autoPulse": 1,
+      "optic_inputGain": 0.778,
+      "optic_modDepth": 0.604,
+      "optic_modMixPulse": 0.525,
+      "optic_modMixSpec": 0.304,
+      "optic_pulseAccent": 0.669,
+      "optic_pulseEvolve": 0.673,
+      "optic_pulseRate": 0.635,
+      "optic_pulseShape": 0.157,
+      "optic_pulseSubdiv": 0.665,
+      "optic_pulseSwing": 0.248,
+      "optic_reactivity": 0.715,
+      "optic_space": 0.053
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "foundation",
     "intimate",
@@ -16,40 +50,6 @@
     "present",
     "optic"
   ],
-  "macroLabels": [
-    "REACTIVITY",
-    "TEMPO",
-    "EVOLVE",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.313,
-    "warmth": 0.597,
-    "movement": 0.621,
-    "density": 0.608,
-    "space": 0.053,
-    "aggression": 0.537
-  },
-  "parameters": {
-    "Optic": {
-      "optic_reactivity": 0.715,
-      "optic_inputGain": 0.778,
-      "optic_autoPulse": 1,
-      "optic_pulseRate": 0.635,
-      "optic_pulseShape": 0.157,
-      "optic_pulseSwing": 0.248,
-      "optic_pulseEvolve": 0.673,
-      "optic_pulseSubdiv": 0.665,
-      "optic_pulseAccent": 0.669,
-      "optic_modDepth": 0.604,
-      "optic_modMixPulse": 0.525,
-      "optic_modMixSpec": 0.304,
-      "optic_space": 0.053
-    }
-  },
-  "coupling": null,
-  "sequencer": null
+  "version": "1.0"
 }

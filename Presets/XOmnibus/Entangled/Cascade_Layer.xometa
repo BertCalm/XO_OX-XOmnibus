@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Cascade Layer",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.495,
+        "engineA": "Orca",
+        "engineB": "Owlfish",
+        "type": "AMPLITUDE_LOCK"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.56,
+    "brightness": 0.335,
+    "density": 1.0,
+    "movement": 0.63,
+    "space": 0.635,
+    "warmth": 0.5
+  },
   "engines": [
-    "ORCA",
-    "OWLFISH"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "orca",
-    "owlfish"
+    "Orca",
+    "Owlfish"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.434,
-    "MOVEMENT": 0.609,
     "COUPLING": 0.684,
+    "MOVEMENT": 0.609,
     "SPACE": 0.508
   },
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.335,
-    "warmth": 0.5,
-    "movement": 0.63,
-    "density": 1.0,
-    "space": 0.635,
-    "aggression": 0.56
-  },
-  "sonic_dna": {
-    "brightness": 0.335,
-    "warmth": 0.5,
-    "movement": 0.63,
-    "density": 1.0,
-    "space": 0.635,
-    "aggression": 0.56
-  },
+  "mood": "Entangled",
+  "name": "Cascade Layer",
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.641,
-      "macro_movement": 0.483,
       "macro_coupling": 0.567,
+      "macro_movement": 0.483,
       "macro_space": 0.258
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.444,
-      "macro_movement": 0.583,
       "macro_coupling": 0.728,
+      "macro_movement": 0.583,
       "macro_space": 0.641
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORCA",
-        "engineB": "OWLFISH",
-        "type": "AMPLITUDE_LOCK",
-        "amount": 0.495
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.56,
+    "brightness": 0.335,
+    "density": 1.0,
+    "movement": 0.63,
+    "space": 0.635,
+    "warmth": 0.5
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "orca",
+    "owlfish"
+  ],
+  "version": "1.0.0"
 }

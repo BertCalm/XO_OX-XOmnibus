@@ -1,48 +1,56 @@
 {
-  "name": "EMPTY NEST",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.719,
+    "source": "OddOscar",
+    "target": "Overworld",
+    "type": "FM_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.028,
+    "brightness": 0.323,
+    "density": 0.071,
+    "movement": 0.404,
+    "space": 0.988,
+    "warmth": 0.97
+  },
   "engines": [
-    "ODDOSCAR",
-    "OVERWORLD"
+    "OddOscar",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.121,
+    "COUPLING": 0.609,
+    "MOVEMENT": 0.973,
+    "SPACE": 0.239
+  },
+  "mood": "Family",
+  "name": "EMPTY NEST",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.362,
-      "macro_movement": 0.756,
       "macro_coupling": 0.625,
+      "macro_movement": 0.756,
       "macro_space": 0.76
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.204,
-      "macro_movement": 0.549,
       "macro_coupling": 0.928,
+      "macro_movement": 0.549,
       "macro_space": 0.438
     }
   },
-  "coupling": {
-    "type": "FM_COUPLE",
-    "source": "ODDOSCAR",
-    "target": "OVERWORLD",
-    "amount": 0.719
-  },
-  "dna": {
-    "brightness": 0.323,
-    "warmth": 0.97,
-    "movement": 0.404,
-    "density": 0.071,
-    "space": 0.988,
-    "aggression": 0.028
-  },
-  "macros": {
-    "CHARACTER": 0.121,
-    "MOVEMENT": 0.973,
-    "COUPLING": 0.609,
-    "SPACE": 0.239
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "sparse",
     "xlow-density"
-  ]
+  ],
+  "version": "1.0"
 }

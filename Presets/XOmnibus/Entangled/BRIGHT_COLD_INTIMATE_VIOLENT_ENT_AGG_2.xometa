@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_ENT_AGG_2",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.954,
+    "source": "Obese",
+    "target": "Ottoni",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.879,
+    "brightness": 0.931,
+    "density": 0.323,
+    "movement": 0.481,
+    "space": 0.111,
+    "warmth": 0.054
+  },
   "engines": [
-    "OBESE",
-    "OTTONI"
+    "Obese",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.694,
+    "COUPLING": 0.898,
+    "MOVEMENT": 0.481,
+    "SPACE": 0.111
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_ENT_AGG_2",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.696,
-      "macro_movement": 0.477,
       "macro_coupling": 0.898,
+      "macro_movement": 0.477,
       "macro_space": 0.116
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.692,
-      "macro_movement": 0.51,
       "macro_coupling": 0.93,
+      "macro_movement": 0.51,
       "macro_space": 0.106
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBESE",
-    "target": "OTTONI",
-    "amount": 0.954
-  },
-  "dna": {
-    "brightness": 0.931,
-    "warmth": 0.054,
-    "movement": 0.481,
-    "density": 0.323,
-    "space": 0.111,
-    "aggression": 0.879
-  },
-  "macros": {
-    "CHARACTER": 0.694,
-    "MOVEMENT": 0.481,
-    "COUPLING": 0.898,
-    "SPACE": 0.111
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "bright",
     "cold",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

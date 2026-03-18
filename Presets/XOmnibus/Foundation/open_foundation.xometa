@@ -1,50 +1,58 @@
 {
-  "name": "OPEN FOUNDATION",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OSTERIA",
-    "OCELOT"
-  ],
-  "parameters": {
-    "OSTERIA": {
-      "macro_character": 0.625,
-      "macro_movement": 0.914,
-      "macro_coupling": 0.508,
-      "macro_space": 0.896
-    },
-    "OCELOT": {
-      "macro_character": 0.374,
-      "macro_movement": 0.846,
-      "macro_coupling": 0.953,
-      "macro_space": 0.939
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OSTERIA",
-    "target": "OCELOT",
-    "amount": 0.943
+    "amount": 0.943,
+    "source": "Osteria",
+    "target": "Ocelot",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.762,
     "brightness": 0.722,
-    "warmth": 0.72,
-    "movement": 0.88,
     "density": 0.972,
+    "movement": 0.88,
     "space": 0.914,
-    "aggression": 0.762
+    "warmth": 0.72
   },
+  "engines": [
+    "Osteria",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.599,
-    "MOVEMENT": 0.88,
     "COUPLING": 0.489,
+    "MOVEMENT": 0.88,
     "SPACE": 0.914
   },
+  "mood": "Foundation",
+  "name": "OPEN FOUNDATION",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.374,
+      "macro_coupling": 0.953,
+      "macro_movement": 0.846,
+      "macro_space": 0.939
+    },
+    "Osteria": {
+      "macro_character": 0.625,
+      "macro_coupling": 0.508,
+      "macro_movement": 0.914,
+      "macro_space": 0.896
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh",
     "movement-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

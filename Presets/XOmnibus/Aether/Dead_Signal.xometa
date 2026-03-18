@@ -1,51 +1,51 @@
 {
-  "schema_version": 1,
-  "name": "Dead Signal",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "A plucked string with all resonance removed. Cold mathematics only.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.336,
+    "density": 0.0,
+    "movement": 0.06,
+    "space": 1.0,
+    "warmth": 0.07
+  },
   "engines": [
     "Obscura"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "A plucked string with all resonance removed. Cold mathematics only.",
-  "tags": [
-    "cold-sparse",
-    "extreme",
-    "aether",
-    "minimal"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Aether",
+  "name": "Dead Signal",
   "parameters": {
     "Obscura": {
-      "obscura_stiffness": 0.06,
-      "obscura_damping": 0.96,
-      "obscura_nonlinear": 0.02,
       "obscura_brightness": 0.05,
+      "obscura_damping": 0.96,
       "obscura_decay": 0.04,
-      "obscura_exciteAmt": 0.08
+      "obscura_exciteAmt": 0.08,
+      "obscura_nonlinear": 0.02,
+      "obscura_stiffness": 0.06
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.336,
-    "warmth": 0.07,
-    "movement": 0.06,
-    "density": 0.0,
-    "space": 1.0,
-    "aggression": 0.05
-  }
+  "tags": [
+    "cold-sparse",
+    "extreme",
+    "aether",
+    "minimal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

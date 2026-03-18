@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Orca Depth Charge",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Low-frequency detonation. The orca surfaces briefly then plunges.",
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.15,
+    "density": 0.85,
+    "movement": 0.35,
+    "space": 0.2,
+    "warmth": 0.7
+  },
   "engines": [
     "Orca"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Low-frequency detonation. The orca surfaces briefly then plunges.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Orca Depth Charge",
+  "parameters": {
+    "Orca": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "bedrock",
     "sub",
@@ -16,31 +41,6 @@
     "bass",
     "orca"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Orca": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.15,
-    "warmth": 0.7,
-    "movement": 0.35,
-    "density": 0.85,
-    "space": 0.2,
-    "aggression": 0.7
-  }
+  "version": "1.0.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "DARK_DENSE_INTIMATE_VIOLENT_FND_3",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.799,
+    "source": "Oblong",
+    "target": "Overdub",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.894,
+    "brightness": 0.095,
+    "density": 0.942,
+    "movement": 0.444,
+    "space": 0.125,
+    "warmth": 0.473
+  },
   "engines": [
-    "OBLONG",
-    "OVERDUB"
+    "Oblong",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.378,
+    "COUPLING": 0.366,
+    "MOVEMENT": 0.833,
+    "SPACE": 0.665
+  },
+  "mood": "Foundation",
+  "name": "DARK_DENSE_INTIMATE_VIOLENT_FND_3",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.659,
-      "macro_movement": 0.864,
       "macro_coupling": 0.346,
+      "macro_movement": 0.864,
       "macro_space": 0.802
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.235,
-      "macro_movement": 0.123,
       "macro_coupling": 0.717,
+      "macro_movement": 0.123,
       "macro_space": 0.626
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBLONG",
-    "target": "OVERDUB",
-    "amount": 0.799
-  },
-  "dna": {
-    "brightness": 0.095,
-    "warmth": 0.473,
-    "movement": 0.444,
-    "density": 0.942,
-    "space": 0.125,
-    "aggression": 0.894
-  },
-  "macros": {
-    "CHARACTER": 0.378,
-    "MOVEMENT": 0.833,
-    "COUPLING": 0.366,
-    "SPACE": 0.665
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -48,5 +55,6 @@
     "intimate",
     "violent",
     "aggressive"
-  ]
+  ],
+  "version": "1.0"
 }

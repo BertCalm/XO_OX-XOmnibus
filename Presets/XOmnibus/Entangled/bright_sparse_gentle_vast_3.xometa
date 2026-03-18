@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT SPARSE GENTLE VAST 3",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.9195,
-    "density": 0.0595,
-    "aggression": 0.0575,
-    "space": 0.9546,
-    "warmth": 0.4886,
-    "movement": 0.5723
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Low",
+  "couplingType": "MIRROR",
+  "description": "Ultra-diverse Entangled preset — bright sparse gentle vast. Designed for MIRROR coupling with XOceanic.",
   "dna": {
+    "aggression": 0.0575,
     "brightness": 0.9195,
     "density": 0.0595,
-    "aggression": 0.0575,
+    "movement": 0.5723,
     "space": 0.9546,
-    "warmth": 0.4886,
-    "movement": 0.5723
+    "warmth": 0.4886
   },
   "engines": [
-    "XOceanic"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 bright sparse gentle vast. Designed for MIRROR coupling with XOceanic.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "mirror",
-    "oceanic"
+    "Oceanic"
   ],
   "macroLabels": [
     "VOID",
@@ -36,15 +23,28 @@
     "MASS",
     "GLEAM"
   ],
-  "couplingType": "MIRROR",
-  "couplingIntensity": "Low",
+  "mood": "Entangled",
+  "name": "BRIGHT SPARSE GENTLE VAST 3",
   "parameters": {
-    "XOceanic": {
-      "couplingLevel": 0.963,
-      "couplingBus": 3
+    "Oceanic": {
+      "couplingBus": 3,
+      "couplingLevel": 0.963
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.0575,
+    "brightness": 0.9195,
+    "density": 0.0595,
+    "movement": 0.5723,
+    "space": 0.9546,
+    "warmth": 0.4886
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "mirror",
+    "oceanic"
+  ],
+  "version": "1.0.0"
 }

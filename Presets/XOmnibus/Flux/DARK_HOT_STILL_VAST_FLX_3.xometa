@@ -1,45 +1,52 @@
 {
-  "name": "DARK_HOT_STILL_VAST_FLX_3",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORACLE",
-    "OPTIC"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.1529,
-      "macro_movement": 0.1963,
-      "macro_coupling": 0.7174,
-      "macro_space": 0.847
-    },
-    "OPTIC": {
-      "macro_character": 0.075,
-      "macro_movement": 0.1757,
-      "macro_coupling": 0.7339,
-      "macro_space": 0.8996
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ORACLE",
-    "target": "OPTIC",
-    "amount": 0.738
+    "amount": 0.738,
+    "source": "Oracle",
+    "target": "Optic",
+    "type": "VELOCITY_COUPLE"
   },
   "dna": {
+    "aggression": 0.5931,
     "brightness": 0.0575,
-    "warmth": 0.901,
-    "movement": 0.1163,
     "density": 0.6592,
+    "movement": 0.1163,
     "space": 0.9789,
-    "aggression": 0.5931
+    "warmth": 0.901
   },
+  "engines": [
+    "Oracle",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.1529,
-    "MOVEMENT": 0.1963,
     "COUPLING": 0.7174,
+    "MOVEMENT": 0.1963,
     "SPACE": 0.847
   },
+  "mood": "Flux",
+  "name": "DARK_HOT_STILL_VAST_FLX_3",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.075,
+      "macro_coupling": 0.7339,
+      "macro_movement": 0.1757,
+      "macro_space": 0.8996
+    },
+    "Oracle": {
+      "macro_character": 0.1529,
+      "macro_coupling": 0.7174,
+      "macro_movement": 0.1963,
+      "macro_space": 0.847
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "high-warmth",
     "low-movement",
     "high-space"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,58 @@
 {
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FAM_AGG_5",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.874,
+    "source": "OddOscar",
+    "target": "Osprey",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.985,
+    "brightness": 0.473,
+    "density": 0.886,
+    "movement": 0.915,
+    "space": 0.324,
+    "warmth": 0.959
+  },
   "engines": [
-    "ODDOSCAR",
-    "OSPREY"
+    "OddOscar",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.687,
+    "COUPLING": 0.596,
+    "MOVEMENT": 0.752,
+    "SPACE": 0.874
+  },
+  "mood": "Family",
+  "name": "HOT_KINETIC_DENSE_VIOLENT_FAM_AGG_5",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.687,
-      "macro_movement": 0.752,
       "macro_coupling": 0.596,
+      "macro_movement": 0.752,
       "macro_space": 0.874
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.731,
-      "macro_movement": 0.744,
       "macro_coupling": 0.638,
+      "macro_movement": 0.744,
       "macro_space": 0.829
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ODDOSCAR",
-    "target": "OSPREY",
-    "amount": 0.874
-  },
-  "dna": {
-    "brightness": 0.473,
-    "warmth": 0.959,
-    "movement": 0.915,
-    "density": 0.886,
-    "space": 0.324,
-    "aggression": 0.985
-  },
-  "macros": {
-    "CHARACTER": 0.687,
-    "MOVEMENT": 0.752,
-    "COUPLING": 0.596,
-    "SPACE": 0.874
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "hot",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "COLD_DENSE_INTIMATE_GENTLE_FLX_5",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6461,
+    "source": "Opal",
+    "target": "Origami",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.0543,
+    "brightness": 0.6057,
+    "density": 0.8744,
+    "movement": 0.5116,
+    "space": 0.0469,
+    "warmth": 0.0396
+  },
   "engines": [
-    "OPAL",
-    "ORIGAMI"
+    "Opal",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5746,
+    "COUPLING": 0.1875,
+    "MOVEMENT": 0.5371,
+    "SPACE": 0.1546
+  },
+  "mood": "Flux",
+  "name": "COLD_DENSE_INTIMATE_GENTLE_FLX_5",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.5746,
-      "macro_movement": 0.5371,
       "macro_coupling": 0.1875,
+      "macro_movement": 0.5371,
       "macro_space": 0.1546
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.5926,
-      "macro_movement": 0.4608,
       "macro_coupling": 0.1084,
+      "macro_movement": 0.4608,
       "macro_space": 0.1213
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OPAL",
-    "target": "ORIGAMI",
-    "amount": 0.6461
-  },
-  "dna": {
-    "brightness": 0.6057,
-    "warmth": 0.0396,
-    "movement": 0.5116,
-    "density": 0.8744,
-    "space": 0.0469,
-    "aggression": 0.0543
-  },
-  "macros": {
-    "CHARACTER": 0.5746,
-    "MOVEMENT": 0.5371,
-    "COUPLING": 0.1875,
-    "SPACE": 0.1546
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "high-density",
     "low-space",
     "low-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

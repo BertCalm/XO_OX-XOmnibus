@@ -1,45 +1,52 @@
 {
-  "name": "DARK_STILL_VAST_GENTLE_FLX_SLW_1",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.801,
+    "source": "Oblong",
+    "target": "Odyssey",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.075,
+    "brightness": 0.082,
+    "density": 0.344,
+    "movement": 0.027,
+    "space": 0.958,
+    "warmth": 0.594
+  },
   "engines": [
-    "OBLONG",
-    "ODYSSEY"
+    "Oblong",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.209,
+    "COUPLING": 0.715,
+    "MOVEMENT": 0.027,
+    "SPACE": 0.958
+  },
+  "mood": "Flux",
+  "name": "DARK_STILL_VAST_GENTLE_FLX_SLW_1",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.342,
-      "macro_movement": 0.025,
       "macro_coupling": 0.937,
+      "macro_movement": 0.025,
       "macro_space": 0.882
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.366,
-      "macro_movement": 0.024,
       "macro_coupling": 0.803,
+      "macro_movement": 0.024,
       "macro_space": 0.992
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBLONG",
-    "target": "ODYSSEY",
-    "amount": 0.801
-  },
-  "dna": {
-    "brightness": 0.082,
-    "warmth": 0.594,
-    "movement": 0.027,
-    "density": 0.344,
-    "space": 0.958,
-    "aggression": 0.075
-  },
-  "macros": {
-    "CHARACTER": 0.209,
-    "MOVEMENT": 0.027,
-    "COUPLING": 0.715,
-    "SPACE": 0.958
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +54,6 @@
     "vast",
     "gentle",
     "suspended-chaos"
-  ]
+  ],
+  "version": "1.0"
 }

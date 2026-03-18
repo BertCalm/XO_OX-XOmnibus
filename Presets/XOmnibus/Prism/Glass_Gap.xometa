@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Glass Gap",
-  "mood": "Prism",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Glass filament vibration, barely there, barely audible.",
+  "dna": {
+    "aggression": 0.096,
     "brightness": 0.868,
-    "warmth": 0.052,
-    "movement": 0.16,
     "density": 0.135,
+    "movement": 0.16,
     "space": 0.816,
-    "aggression": 0.096
+    "warmth": 0.052
   },
   "engines": [
     "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Glass filament vibration, barely there, barely audible.",
+  "macroLabels": [
+    "FREEZE",
+    "GLINT",
+    "COUPLING",
+    "VOID"
+  ],
+  "mood": "Prism",
+  "name": "Glass Gap",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.096,
+    "brightness": 0.868,
+    "density": 0.135,
+    "movement": 0.16,
+    "space": 0.816,
+    "warmth": 0.052
+  },
   "tags": [
     "prism",
     "cold",
@@ -25,23 +43,5 @@
     "spacious",
     "bright"
   ],
-  "macroLabels": [
-    "FREEZE",
-    "GLINT",
-    "COUPLING",
-    "VOID"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.868,
-    "warmth": 0.052,
-    "movement": 0.16,
-    "density": 0.135,
-    "space": 0.816,
-    "aggression": 0.096
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

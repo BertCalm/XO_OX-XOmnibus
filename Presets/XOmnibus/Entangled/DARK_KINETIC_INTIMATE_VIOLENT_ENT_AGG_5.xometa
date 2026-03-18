@@ -1,50 +1,58 @@
 {
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_ENT_AGG_5",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORIGAMI",
-    "OBSIDIAN"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.665,
-      "macro_movement": 0.846,
-      "macro_coupling": 0.754,
-      "macro_space": 0.026
-    },
-    "OBSIDIAN": {
-      "macro_character": 0.586,
-      "macro_movement": 0.844,
-      "macro_coupling": 0.719,
-      "macro_space": 0.029
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ORIGAMI",
-    "target": "OBSIDIAN",
-    "amount": 0.869
+    "amount": 0.869,
+    "source": "Origami",
+    "target": "Obsidian",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.913,
     "brightness": 0.079,
-    "warmth": 0.619,
-    "movement": 0.883,
     "density": 0.647,
+    "movement": 0.883,
     "space": 0.034,
-    "aggression": 0.913
+    "warmth": 0.619
   },
+  "engines": [
+    "Origami",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.625,
-    "MOVEMENT": 0.883,
     "COUPLING": 0.754,
+    "MOVEMENT": 0.883,
     "SPACE": 0.034
   },
+  "mood": "Entangled",
+  "name": "DARK_KINETIC_INTIMATE_VIOLENT_ENT_AGG_5",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.586,
+      "macro_coupling": 0.719,
+      "macro_movement": 0.844,
+      "macro_space": 0.029
+    },
+    "Origami": {
+      "macro_character": 0.665,
+      "macro_coupling": 0.754,
+      "macro_movement": 0.846,
+      "macro_space": 0.026
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "dark",
     "kinetic",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

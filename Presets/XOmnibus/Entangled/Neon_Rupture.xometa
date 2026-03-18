@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Neon Rupture",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.86,
+        "engineA": "Overworld",
+        "engineB": "Obese",
+        "type": "SATURATION_DRIVE"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Overworld neon green running through OBESE saturation — chip signal with infinite harmonic weight.",
+  "dna": {
+    "aggression": 0.92,
+    "brightness": 0.85,
+    "density": 0.82,
+    "movement": 0.78,
+    "space": 0.14,
+    "warmth": 0.2
+  },
   "engines": [
-    "OVERWORLD",
-    "OBESE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Overworld neon green running through OBESE saturation \u2014 chip signal with infinite harmonic weight.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "bright",
-    "overworld",
-    "obese",
-    "neon"
+    "Overworld",
+    "Obese"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,29 @@
   ],
   "macros": {
     "CHARACTER": 0.86,
-    "MOVEMENT": 0.78,
     "COUPLING": 0.86,
+    "MOVEMENT": 0.78,
     "SPACE": 0.14
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.85,
-    "warmth": 0.2,
-    "movement": 0.78,
-    "density": 0.82,
-    "space": 0.14,
-    "aggression": 0.92
-  },
-  "sonic_dna": {
-    "brightness": 0.85,
-    "warmth": 0.2,
-    "movement": 0.78,
-    "density": 0.82,
-    "space": 0.14,
-    "aggression": 0.92
-  },
+  "mood": "Entangled",
+  "name": "Neon Rupture",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERWORLD",
-        "engineB": "OBESE",
-        "type": "SATURATION_DRIVE",
-        "amount": 0.86
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.92,
+    "brightness": 0.85,
+    "density": 0.82,
+    "movement": 0.78,
+    "space": 0.14,
+    "warmth": 0.2
+  },
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "overworld",
+    "obese",
+    "neon"
+  ],
+  "version": "1.0.0"
 }

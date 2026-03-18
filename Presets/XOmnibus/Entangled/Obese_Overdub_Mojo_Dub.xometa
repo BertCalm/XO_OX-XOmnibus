@@ -1,45 +1,52 @@
 {
-  "name": "Mojo Dub",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.85,
+    "source": "Obese",
+    "target": "Overdub",
+    "type": "SIDECHAIN_DUCK"
+  },
+  "dna": {
+    "aggression": 0.8,
+    "brightness": 0.2,
+    "density": 0.95,
+    "movement": 0.55,
+    "space": 0.5,
+    "warmth": 0.9
+  },
   "engines": [
-    "OBESE",
-    "OVERDUB"
+    "Obese",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9,
+    "COUPLING": 0.85,
+    "MOVEMENT": 0.4,
+    "SPACE": 0.2
+  },
+  "mood": "Entangled",
+  "name": "Mojo Dub",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.9,
-      "macro_movement": 0.4,
       "macro_coupling": 0.85,
+      "macro_movement": 0.4,
       "macro_space": 0.2
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.55,
-      "macro_movement": 0.75,
       "macro_coupling": 0.65,
+      "macro_movement": 0.75,
       "macro_space": 0.7
     }
   },
-  "coupling": {
-    "type": "SIDECHAIN_DUCK",
-    "source": "OBESE",
-    "target": "OVERDUB",
-    "amount": 0.85
-  },
-  "dna": {
-    "brightness": 0.2,
-    "warmth": 0.9,
-    "movement": 0.55,
-    "density": 0.95,
-    "space": 0.5,
-    "aggression": 0.8
-  },
-  "macros": {
-    "CHARACTER": 0.9,
-    "MOVEMENT": 0.4,
-    "COUPLING": 0.85,
-    "SPACE": 0.2
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "obese",
@@ -47,5 +54,6 @@
     "bass",
     "mojo",
     "dub"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,91 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "Steppers Riddim",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-05",
+  "description": "Roots steppers rhythm with deep filter ducking. X drives a four-on-the-floor pump on O's cutoff, O modulates X's pitch for wobble.",
+  "dna": {
+    "aggression": 0.43,
+    "brightness": 0.908,
+    "density": 0.616,
+    "movement": 0.538,
+    "space": 0.755,
+    "warmth": 0.657
+  },
   "engines": [
     "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Roots steppers rhythm with deep filter ducking. X drives a four-on-the-floor pump on O's cutoff, O modulates X's pitch for wobble.",
-  "tags": [
-    "steppers",
-    "riddim",
-    "roots",
-    "dub",
-    "four-on-the-floor"
-  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "Snap+Morph",
     "Bloom",
     "Coupling",
     "Space"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": 138,
-  "created": "2026-03-05",
-  "legacy": {
-    "sourceInstrument": "OddfeliX",
-    "sourceCategory": "Entangled",
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Steppers Riddim",
   "parameters": {
     "OddfeliX": {
+      "compAttack": 21.606,
+      "compRatio": 6.152,
+      "compRelease": 204.546,
+      "compThreshold": -18.303,
+      "compressorEnabled": 1,
       "couplingAmount": 0.55,
-      "masterBalance": 0.05,
-      "xOscMode": 2,
-      "xSnap": 0.632,
-      "xDecay": 2.791,
-      "xFilterCutoff": 6181.848,
-      "xFilterReso": 0.532,
-      "xDetune": 21.606,
-      "xLevel": 0.849,
-      "xPitchLock": 0,
-      "xUnison": 1,
-      "xPolyphony": 3,
-      "oMorph": 2.491,
-      "oBloom": 2.991,
-      "oDecay": 4.321,
-      "oSustain": 0.798,
-      "oRelease": 2.991,
-      "oFilterCutoff": 5781.848,
-      "oFilterReso": 0.492,
-      "oDrift": 0.432,
-      "oSub": 0.615,
-      "oDetune": 21.606,
-      "oLevel": 0.849,
-      "oPolyphony": 4,
+      "delayEnabled": 1,
+      "delayFeedback": 0.841,
+      "delayMix": 0.591,
+      "delayTime": 0.652,
+      "delayWobble": 0.258,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
       "macro1": 0.499,
       "macro2": 0.533,
       "macro3": 0.567,
       "macro4": 0.566,
-      "delayEnabled": 1,
-      "delayTime": 0.652,
-      "delayFeedback": 0.841,
-      "delayMix": 0.591,
-      "delayWobble": 0.258,
-      "reverbEnabled": 1,
-      "reverbDecay": 0.791,
-      "reverbSize": 1.264,
-      "reverbMix": 0.449,
-      "reverbDamping": 0.532,
-      "phaserEnabled": 0,
-      "phaserRate": 0.5,
+      "masterBalance": 0.05,
+      "oBloom": 2.991,
+      "oDecay": 4.321,
+      "oDetune": 21.606,
+      "oDrift": 0.432,
+      "oFilterCutoff": 5781.848,
+      "oFilterReso": 0.492,
+      "oLevel": 0.849,
+      "oMorph": 2.491,
+      "oPolyphony": 4,
+      "oRelease": 2.991,
+      "oSub": 0.615,
+      "oSustain": 0.798,
       "phaserDepth": 0.5,
+      "phaserEnabled": 0,
       "phaserMix": 0.3,
-      "lofiEnabled": 0,
-      "lofiBitDepth": 12.0,
-      "lofiRateReduce": 1.0,
-      "lofiWowFlutter": 0.0,
-      "lofiMix": 0.3,
-      "compressorEnabled": 1,
-      "compThreshold": -18.303,
-      "compRatio": 6.152,
-      "compAttack": 21.606,
-      "compRelease": 204.546
+      "phaserRate": 0.5,
+      "reverbDamping": 0.532,
+      "reverbDecay": 0.791,
+      "reverbEnabled": 1,
+      "reverbMix": 0.449,
+      "reverbSize": 1.264,
+      "xDecay": 2.791,
+      "xDetune": 21.606,
+      "xFilterCutoff": 6181.848,
+      "xFilterReso": 0.532,
+      "xLevel": 0.849,
+      "xOscMode": 2,
+      "xPitchLock": 0,
+      "xPolyphony": 3,
+      "xSnap": 0.632,
+      "xUnison": 1
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": {
     "bpm": 138.0,
     "swing": 0.316,
@@ -96,32 +95,32 @@
         "muted": false,
         "steps": [
           {
+            "active": false,
             "index": 0,
-            "active": false,
             "note": 36,
-            "velocity": 0.9,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.9
           },
           {
+            "active": false,
             "index": 4,
-            "active": false,
             "note": 36,
-            "velocity": 0.9,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.9
           },
           {
+            "active": false,
             "index": 8,
-            "active": false,
             "note": 36,
-            "velocity": 0.9,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.9
           },
           {
-            "index": 12,
             "active": false,
+            "index": 12,
             "note": 36,
-            "velocity": 0.9,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.9
           }
         ]
       },
@@ -131,18 +130,18 @@
         "muted": false,
         "steps": [
           {
+            "active": false,
             "index": 4,
-            "active": false,
             "note": 38,
-            "velocity": 0.8,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8
           },
           {
-            "index": 12,
             "active": false,
+            "index": 12,
             "note": 38,
-            "velocity": 0.8,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8
           }
         ]
       },
@@ -152,60 +151,60 @@
         "muted": false,
         "steps": [
           {
-            "index": 0,
             "active": false,
+            "index": 0,
             "note": 42,
-            "velocity": 0.6,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.6
           },
           {
+            "active": false,
             "index": 2,
-            "active": false,
             "note": 42,
-            "velocity": 0.4,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.4
           },
           {
+            "active": false,
             "index": 4,
-            "active": false,
             "note": 42,
-            "velocity": 0.6,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.6
           },
           {
+            "active": false,
             "index": 6,
-            "active": false,
             "note": 42,
-            "velocity": 0.4,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.4
           },
           {
+            "active": false,
             "index": 8,
-            "active": false,
             "note": 42,
-            "velocity": 0.6,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.6
           },
           {
+            "active": false,
             "index": 10,
-            "active": false,
             "note": 42,
-            "velocity": 0.4,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.4
           },
           {
+            "active": false,
             "index": 12,
-            "active": false,
             "note": 42,
-            "velocity": 0.6,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.6
           },
           {
-            "index": 14,
             "active": false,
+            "index": 14,
             "note": 42,
-            "velocity": 0.4,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.4
           }
         ]
       },
@@ -215,36 +214,37 @@
         "muted": false,
         "steps": [
           {
+            "active": false,
             "index": 3,
-            "active": false,
             "note": 65,
-            "velocity": 0.6891451874256938,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.6891451874256938
           },
           {
+            "active": false,
             "index": 6,
-            "active": false,
             "note": 70,
-            "velocity": 0.7387678533417098,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.7387678533417098
           },
           {
-            "index": 9,
             "active": false,
+            "index": 9,
             "note": 73,
-            "velocity": 0.6968491163563098,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.6968491163563098
           }
         ]
       }
     ]
   },
-  "dna": {
-    "brightness": 0.908,
-    "warmth": 0.657,
-    "movement": 0.538,
-    "density": 0.616,
-    "space": 0.755,
-    "aggression": 0.43
-  }
+  "tags": [
+    "steppers",
+    "riddim",
+    "roots",
+    "dub",
+    "four-on-the-floor"
+  ],
+  "tempo": 138,
+  "version": "1.0.0"
 }

@@ -1,42 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Filter Storm",
-  "mood": "Flux",
-  "engines": ["Oblong"],
-  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
-  "version": "1.0.0",
-  "description": "Rapid LFO sweeping the filter cutoff through its full range — brightness in constant flux, resonance high enough to self-oscillate at the peaks. Bob's analog character makes each sweep slightly different. A weather system compressed into a single note.",
-  "tags": ["flux", "filter", "sweep", "lfo", "resonance", "fast", "storm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.45,
-    "movement": 0.85,
-    "density": 0.5,
-    "space": 0.35,
-    "aggression": 0.55
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Rapid LFO sweeping the filter cutoff through its full range — brightness in constant flux, resonance high enough to self-oscillate at the peaks. Bob's analog character makes each sweep slightly different. A weather system compressed into a single note.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.55,
+    "density": 0.5,
+    "movement": 0.85,
+    "space": 0.35,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Filter Storm",
   "parameters": {
     "Oblong": {
-      "bob_oscWave": 2,
-      "bob_oscDetune": 0.22,
-      "bob_fltCutoff": 0.58,
-      "bob_fltReso": 0.65,
-      "bob_drive": 0.42,
-      "bob_lfo1Rate": 1.8,
-      "bob_lfo1Depth": 0.88,
       "bob_ampAttack": 0.008,
       "bob_ampDecay": 0.25,
-      "bob_ampSustain": 0.8,
       "bob_ampRelease": 0.8,
+      "bob_ampSustain": 0.8,
+      "bob_drive": 0.42,
+      "bob_fltCutoff": 0.58,
+      "bob_fltReso": 0.65,
+      "bob_lfo1Depth": 0.88,
+      "bob_lfo1Rate": 1.8,
       "bob_macroCharacter": 0.0,
-      "bob_macroMovement": 0.0,
       "bob_macroCoupling": 0.0,
-      "bob_macroSpace": 0.0
+      "bob_macroMovement": 0.0,
+      "bob_macroSpace": 0.0,
+      "bob_oscDetune": 0.22,
+      "bob_oscWave": 2
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "flux",
+    "filter",
+    "sweep",
+    "lfo",
+    "resonance",
+    "fast",
+    "storm"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

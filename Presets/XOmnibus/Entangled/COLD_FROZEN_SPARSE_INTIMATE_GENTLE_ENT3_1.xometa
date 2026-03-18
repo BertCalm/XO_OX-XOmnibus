@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "COLD_FROZEN_SPARSE_INTIMATE_GENTLE_ENT3_1",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7534,
+    "source": "Ocelot",
+    "target": "Octopus",
+    "type": "SPECTRAL_MORPH"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: COLD_FROZEN_SPARSE_INTIMATE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.0404,
+    "brightness": 0.3483,
+    "density": 0.0789,
+    "movement": 0.022,
+    "space": 0.1038,
+    "warmth": 0.0412
+  },
   "engines": [
-    "OCELOT",
-    "OCTOPUS"
+    "Ocelot",
+    "Octopus"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: COLD_FROZEN_SPARSE_INTIMATE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.808,
+    "COUPLING": 0.9206,
+    "MOVEMENT": 0.0212,
+    "SPACE": 0.549
+  },
+  "mood": "Entangled",
+  "name": "COLD_FROZEN_SPARSE_INTIMATE_GENTLE_ENT3_1",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.6355,
+      "macro_coupling": 0.8915,
+      "macro_movement": 0.0259,
+      "macro_space": 0.7462
+    },
+    "Octopus": {
+      "macro_character": 0.9805,
+      "macro_coupling": 0.9498,
+      "macro_movement": 0.0164,
+      "macro_space": 0.3518
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +66,6 @@
     "sparse",
     "intimate"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OCELOT": {
-      "macro_character": 0.6355,
-      "macro_movement": 0.0259,
-      "macro_coupling": 0.8915,
-      "macro_space": 0.7462
-    },
-    "OCTOPUS": {
-      "macro_character": 0.9805,
-      "macro_movement": 0.0164,
-      "macro_coupling": 0.9498,
-      "macro_space": 0.3518
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OCELOT",
-    "target": "OCTOPUS",
-    "amount": 0.7534
-  },
-  "macros": {
-    "CHARACTER": 0.808,
-    "MOVEMENT": 0.0212,
-    "COUPLING": 0.9206,
-    "SPACE": 0.549
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.3483,
-    "warmth": 0.0412,
-    "movement": 0.022,
-    "density": 0.0789,
-    "space": 0.1038,
-    "aggression": 0.0404
-  }
+  "version": "1.0.0"
 }

@@ -1,14 +1,46 @@
 {
-  "schema_version": 1,
-  "name": "Dub Cellar",
-  "mood": "Entangled",
-  "engines": [
-    "OSTERIA",
-    "OVERDUB"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Tape echo wraps the cellar in warm amber delay \u2014 dub bass from the cask.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Osteria",
+        "engineB": "Overdub",
+        "type": "LFO->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Tape echo wraps the cellar in warm amber delay — dub bass from the cask.",
+  "dna": {
+    "aggression": 0.26,
+    "brightness": 0.51,
+    "density": 0.56,
+    "movement": 0.44,
+    "space": 0.56,
+    "warmth": 0.74
+  },
+  "engines": [
+    "Osteria",
+    "Overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.45,
+    "SPACE": 0.6
+  },
+  "mood": "Entangled",
+  "name": "Dub Cellar",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -19,38 +51,6 @@
     "dub",
     "bass"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5,
-    "MOVEMENT": 0.45,
-    "COUPLING": 0.7,
-    "SPACE": 0.6
-  },
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.51,
-    "warmth": 0.74,
-    "movement": 0.44,
-    "density": 0.56,
-    "space": 0.56,
-    "aggression": 0.26
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OSTERIA",
-        "engineB": "OVERDUB",
-        "type": "LFO->Filter",
-        "amount": 0.65
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

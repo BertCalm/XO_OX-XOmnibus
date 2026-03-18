@@ -1,45 +1,52 @@
 {
-  "name": "KNOTTED MATTER",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERDUB",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.54,
-      "macro_movement": 0.4378,
-      "macro_coupling": 0.8392,
-      "macro_space": 0.8894
-    },
-    "ODYSSEY": {
-      "macro_character": 0.7345,
-      "macro_movement": 0.6037,
-      "macro_coupling": 0.6103,
-      "macro_space": 0.2289
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OVERDUB",
-    "target": "ODYSSEY",
-    "amount": 0.9023
+    "amount": 0.9023,
+    "source": "Overdub",
+    "target": "Odyssey",
+    "type": "TIMBRE_BLEND"
   },
   "dna": {
+    "aggression": 0.8214,
     "brightness": 0.8605,
-    "warmth": 0.5871,
-    "movement": 0.0207,
     "density": 0.9239,
+    "movement": 0.0207,
     "space": 0.7648,
-    "aggression": 0.8214
+    "warmth": 0.5871
   },
+  "engines": [
+    "Overdub",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5762,
-    "MOVEMENT": 0.7631,
     "COUPLING": 0.7526,
+    "MOVEMENT": 0.7631,
     "SPACE": 0.519
   },
+  "mood": "Entangled",
+  "name": "KNOTTED MATTER",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.7345,
+      "macro_coupling": 0.6103,
+      "macro_movement": 0.6037,
+      "macro_space": 0.2289
+    },
+    "Overdub": {
+      "macro_character": 0.54,
+      "macro_coupling": 0.8392,
+      "macro_movement": 0.4378,
+      "macro_space": 0.8894
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -49,5 +56,6 @@
     "iron",
     "monolithic",
     "industrial"
-  ]
+  ],
+  "version": "1.0"
 }

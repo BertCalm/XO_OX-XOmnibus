@@ -1,48 +1,56 @@
 {
-  "name": "IMMOBILE DRIFT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.276,
+    "source": "Obese",
+    "target": "Overworld",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.774,
+    "brightness": 0.179,
+    "density": 0.572,
+    "movement": 0.082,
+    "space": 0.619,
+    "warmth": 0.145
+  },
   "engines": [
-    "OBESE",
-    "OVERWORLD"
+    "Obese",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.37,
+    "COUPLING": 0.167,
+    "MOVEMENT": 0.082,
+    "SPACE": 0.286
+  },
+  "mood": "Entangled",
+  "name": "IMMOBILE DRIFT",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.386,
-      "macro_movement": 0.067,
       "macro_coupling": 0.144,
+      "macro_movement": 0.067,
       "macro_space": 0.038
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.046,
-      "macro_movement": 0.097,
       "macro_coupling": 0.103,
+      "macro_movement": 0.097,
       "macro_space": 0.297
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBESE",
-    "target": "OVERWORLD",
-    "amount": 0.276
-  },
-  "dna": {
-    "brightness": 0.179,
-    "warmth": 0.145,
-    "movement": 0.082,
-    "density": 0.572,
-    "space": 0.619,
-    "aggression": 0.774
-  },
-  "macros": {
-    "CHARACTER": 0.37,
-    "MOVEMENT": 0.082,
-    "COUPLING": 0.167,
-    "SPACE": 0.286
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "immobile"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,13 +1,36 @@
 {
-  "schema_version": 1,
-  "name": "Onset Flashpoint",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "ONSET transient maximum — the brightest hit, attack fully lit, presence absolute.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.89,
+    "density": 0.45,
+    "movement": 0.75,
+    "space": 0.65,
+    "warmth": 0.35
+  },
   "engines": [
-    "ONSET"
+    "Onset"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ONSET transient maximum \u2014 the brightest hit, attack fully lit, presence absolute.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Onset Flashpoint",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "portrait",
@@ -16,29 +39,6 @@
     "percussive",
     "transient"
   ],
-  "macroLabels": [
-    "MACHINE",
-    "PUNCH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.89,
-    "warmth": 0.35,
-    "movement": 0.75,
-    "density": 0.45,
-    "space": 0.65,
-    "aggression": 0.55
-  }
+  "version": "1.0.0"
 }

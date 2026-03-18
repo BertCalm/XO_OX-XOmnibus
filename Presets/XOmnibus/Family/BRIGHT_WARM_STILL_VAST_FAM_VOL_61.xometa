@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_STILL_VAST_FAM_VOL_61",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ODYSSEY",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "ODYSSEY": {
-      "macro_character": 0.956,
-      "macro_movement": 0.03,
-      "macro_coupling": 0.567,
-      "macro_space": 0.883
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.965,
-      "macro_movement": 0.05,
-      "macro_coupling": 0.607,
-      "macro_space": 0.867
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_WEAVE",
-    "source": "ODDOSCAR",
-    "target": "ODYSSEY",
-    "amount": 0.94
+    "amount": 0.94,
+    "source": "OddOscar",
+    "target": "Odyssey",
+    "type": "SPECTRAL_WEAVE"
   },
   "dna": {
+    "aggression": 0.687,
     "brightness": 0.984,
-    "warmth": 0.97,
-    "movement": 0.032,
     "density": 0.487,
+    "movement": 0.032,
     "space": 0.87,
-    "aggression": 0.687
+    "warmth": 0.97
   },
+  "engines": [
+    "Odyssey",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.96,
-    "MOVEMENT": 0.04,
     "COUPLING": 0.587,
+    "MOVEMENT": 0.04,
     "SPACE": 0.875
   },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_STILL_VAST_FAM_VOL_61",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.965,
+      "macro_coupling": 0.607,
+      "macro_movement": 0.05,
+      "macro_space": 0.867
+    },
+    "Odyssey": {
+      "macro_character": 0.956,
+      "macro_coupling": 0.567,
+      "macro_movement": 0.03,
+      "macro_space": 0.883
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "still",
     "vast",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,17 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Osprey Nocturne",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OSPREY — dark extreme brightness preset for Atmosphere.",
+  "dna": {
+    "aggression": 0.37,
+    "brightness": 0.07,
+    "density": 0.59,
+    "movement": 0.45,
+    "space": 0.22,
+    "warmth": 0.37
+  },
   "engines": [
-    "OSPREY"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "OSPREY \u2014 dark extreme brightness preset for Atmosphere.",
-  "tags": [
-    "atmosphere",
-    "dark",
-    "extreme-brightness"
+    "Osprey"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -19,43 +22,40 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "sonic_dna": {
-    "brightness": 0.07,
-    "warmth": 0.37,
-    "movement": 0.45,
-    "density": 0.59,
-    "space": 0.22,
-    "aggression": 0.37
-  },
-  "dna": {
-    "brightness": 0.07,
-    "warmth": 0.37,
-    "movement": 0.45,
-    "density": 0.59,
-    "space": 0.22,
-    "aggression": 0.37
-  },
+  "mood": "Atmosphere",
+  "name": "Osprey Nocturne",
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
+      "osp_ampAttack": 544.7,
+      "osp_ampDecay": 46.6,
+      "osp_ampRelease": 271.0,
+      "osp_ampSustain": 0.74,
+      "osp_character": 0.85,
+      "osp_coupling": 0.15,
+      "osp_delayMix": 0.25,
       "osp_diveSpeed": 1,
       "osp_filterCutoff": 0.39,
       "osp_filterReso": 0.77,
-      "osp_ampAttack": 544.7,
-      "osp_ampDecay": 46.6,
-      "osp_ampSustain": 0.74,
-      "osp_ampRelease": 271.0,
-      "osp_lfoRate": 0.33,
       "osp_lfoDepth": 0.56,
-      "osp_reverbMix": 0.39,
-      "osp_delayMix": 0.25,
-      "osp_character": 0.85,
+      "osp_lfoRate": 0.33,
       "osp_movement": 0.96,
-      "osp_space": 0.6,
-      "osp_coupling": 0.15
+      "osp_reverbMix": 0.39,
+      "osp_space": 0.6
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.37,
+    "brightness": 0.07,
+    "density": 0.59,
+    "movement": 0.45,
+    "space": 0.22,
+    "warmth": 0.37
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme-brightness"
+  ],
+  "version": "1.0"
 }

@@ -1,51 +1,89 @@
 {
-  "schema_version": 1,
-  "name": "Fragment To Fog",
-  "mood": "Prism",
-  "engines": ["Opal"],
-  "author": "Guru Bin — OPAL Deep Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "The mod wheel performs the fundamental granular transformation in real time: wheel at 0 = grain size 0.7 — large fragments, recognizable sound shapes moving slowly through the source buffer. Wheel at 127 = grain size 0.05 — texture and fog, all identifiable shape dissolved. The performance is the journey between. Aftertouch adds posScatter — pressing hard breaks the orderly playhead and randomizes each grain's starting position. Start with a held chord, wheel up slowly. Watch recognition dissolve.",
-  "tags": ["granular", "prism", "mod-wheel", "aftertouch", "fragment", "texture", "performance", "expressive"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "modMatrix": [
-    {"source": "modWheel", "destination": "opal_grainSize", "amount": -0.65},
-    {"source": "modWheel", "destination": "opal_density", "amount": 0.4},
-    {"source": "aftertouch", "destination": "opal_posScatter", "amount": 0.75},
-    {"source": "aftertouch", "destination": "opal_pitchScatter", "amount": 0.2},
-    {"source": "velocity", "destination": "opal_filterCutoff", "amount": 0.35}
-  ],
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.55,
-    "movement": 0.55,
-    "density": 0.5,
-    "space": 0.55,
-    "aggression": 0.1
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "The mod wheel performs the fundamental granular transformation in real time: wheel at 0 = grain size 0.7 — large fragments, recognizable sound shapes moving slowly through the source buffer. Wheel at 127 = grain size 0.05 — texture and fog, all identifiable shape dissolved. The performance is the journey between. Aftertouch adds posScatter — pressing hard breaks the orderly playhead and randomizes each grain's starting position. Start with a held chord, wheel up slowly. Watch recognition dissolve.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.5,
+    "density": 0.5,
+    "movement": 0.55,
+    "space": 0.55,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "modMatrix": [
+    {
+      "amount": -0.65,
+      "destination": "opal_grainSize",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.4,
+      "destination": "opal_density",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.75,
+      "destination": "opal_posScatter",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.2,
+      "destination": "opal_pitchScatter",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.35,
+      "destination": "opal_filterCutoff",
+      "source": "velocity"
+    }
+  ],
+  "mood": "Prism",
+  "name": "Fragment To Fog",
   "parameters": {
     "Opal": {
-      "opal_grainSize": 0.7,
-      "opal_density": 0.45,
-      "opal_posScatter": 0.1,
-      "opal_pitchScatter": 0.0,
-      "opal_filterCutoff": 0.55,
-      "opal_filterReso": 0.15,
       "opal_ampAttack": 0.4,
       "opal_ampDecay": 0.6,
-      "opal_ampSustain": 0.85,
       "opal_ampRelease": 2.5,
-      "opal_speed": 1.0,
-      "opal_reverse": 0.0,
+      "opal_ampSustain": 0.85,
+      "opal_density": 0.45,
+      "opal_filterCutoff": 0.55,
+      "opal_filterReso": 0.15,
+      "opal_grainSize": 0.7,
       "opal_macroCharacter": 0.0,
-      "opal_macroMovement": 0.0,
       "opal_macroCoupling": 0.0,
-      "opal_macroSpace": 0.0
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitchScatter": 0.0,
+      "opal_posScatter": 0.1,
+      "opal_reverse": 0.0,
+      "opal_speed": 1.0
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "granular",
+    "prism",
+    "mod-wheel",
+    "aftertouch",
+    "fragment",
+    "texture",
+    "performance",
+    "expressive"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

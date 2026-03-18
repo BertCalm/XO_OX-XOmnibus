@@ -1,54 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Brass Exposure",
-  "mood": "Entangled",
-  "engines": [
-    "OTTONI",
-    "OBSCURA"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Spatial coupling spreads triple brass across OBSCURA's reverberant field.",
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.7,
-      "macro_movement": 0.55,
-      "macro_coupling": 0.72,
-      "macro_space": 0.46
-    },
-    "OBSCURA": {
-      "macro_character": 0.58,
-      "macro_movement": 0.52,
-      "macro_coupling": 0.64,
-      "macro_space": 0.52
-    }
-  },
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OTTONI",
-    "target": "OBSCURA",
     "amount": 0.72,
-    "intensity": "Deep"
+    "intensity": "Deep",
+    "source": "Ottoni",
+    "target": "Obscura",
+    "type": "SPATIAL_COUPLE"
   },
+  "description": "Spatial coupling spreads triple brass across OBSCURA's reverberant field.",
   "dna": {
+    "aggression": 0.07,
     "brightness": 0.55,
-    "warmth": 0.78,
-    "movement": 0.52,
     "density": 0.62,
+    "movement": 0.52,
     "space": 0.48,
-    "aggression": 0.07
+    "warmth": 0.78
   },
+  "engines": [
+    "Ottoni",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.72,
+    "MOVEMENT": 0.55,
     "SPACE": 0.46
   },
+  "mood": "Entangled",
+  "name": "Brass Exposure",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.58,
+      "macro_coupling": 0.64,
+      "macro_movement": 0.52,
+      "macro_space": 0.52
+    },
+    "Ottoni": {
+      "macro_character": 0.7,
+      "macro_coupling": 0.72,
+      "macro_movement": 0.55,
+      "macro_space": 0.46
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "ottoni",
     "obscura",
     "spatial",
     "exposure"
-  ]
+  ],
+  "version": "1.0"
 }

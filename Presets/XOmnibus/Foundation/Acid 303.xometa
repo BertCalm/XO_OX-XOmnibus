@@ -1,56 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Acid 303",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Solid, grounding bass tone with warm character.",
+  "dna": {
+    "aggression": 0.371,
+    "brightness": 0.271,
+    "density": 0.075,
+    "movement": 0.0,
+    "space": 0.0,
+    "warmth": 0.124
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Solid, grounding bass tone with warm character.",
-  "tags": [
-    "saturated",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Bass",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Bass",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Acid 303",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 0.0,
-      "drift_oscA_level": 0.9,
+      "drift_attack": 1.0,
+      "drift_decay": 150.0,
       "drift_filterCutoff": 600.0,
+      "drift_filterEnvAmt": 0.7,
       "drift_filterReso": 0.6,
       "drift_filterSlope": 1.0,
       "drift_hazeAmount": 0.3,
-      "drift_attack": 1.0,
-      "drift_decay": 150.0,
-      "drift_sustain": 0.3,
+      "drift_level": -2.0,
+      "drift_oscA_level": 0.9,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
       "drift_release": 100.0,
-      "drift_filterEnvAmt": 0.7,
-      "drift_level": -2.0
+      "drift_sustain": 0.3
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.271,
-    "warmth": 0.124,
-    "movement": 0.0,
-    "density": 0.075,
-    "space": 0.0,
-    "aggression": 0.371
-  }
+  "tags": [
+    "saturated",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

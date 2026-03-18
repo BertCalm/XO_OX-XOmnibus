@@ -1,49 +1,57 @@
 {
-  "name": "Incandescent Room",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7,
+    "source": "Odyssey",
+    "target": "Osprey",
+    "type": "DYNAMICS_SHARE"
+  },
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.57,
+    "density": 0.62,
+    "movement": 0.61,
+    "space": 0.7,
+    "warmth": 0.95
+  },
   "engines": [
-    "ODYSSEY",
-    "OSPREY"
+    "Odyssey",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.71,
+    "COUPLING": 0.62,
+    "MOVEMENT": 0.64,
+    "SPACE": 0.71
+  },
+  "mood": "Entangled",
+  "name": "Incandescent Room",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.73,
-      "macro_movement": 0.59,
       "macro_coupling": 0.72,
+      "macro_movement": 0.59,
       "macro_space": 0.66
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.69,
-      "macro_movement": 0.69,
       "macro_coupling": 0.52,
+      "macro_movement": 0.69,
       "macro_space": 0.75
     }
   },
-  "coupling": {
-    "type": "DYNAMICS_SHARE",
-    "source": "ODYSSEY",
-    "target": "OSPREY",
-    "amount": 0.7
-  },
-  "dna": {
-    "brightness": 0.57,
-    "warmth": 0.95,
-    "movement": 0.61,
-    "density": 0.62,
-    "space": 0.7,
-    "aggression": 0.4
-  },
-  "macros": {
-    "CHARACTER": 0.71,
-    "MOVEMENT": 0.64,
-    "COUPLING": 0.62,
-    "SPACE": 0.71
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "REMOTE FLUX",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.871,
+    "source": "Obsidian",
+    "target": "Ouroboros",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.441,
+    "brightness": 0.448,
+    "density": 0.15,
+    "movement": 0.438,
+    "space": 0.916,
+    "warmth": 0.521
+  },
   "engines": [
-    "OBSIDIAN",
-    "OUROBOROS"
+    "Obsidian",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.444,
+    "COUPLING": 0.672,
+    "MOVEMENT": 0.352,
+    "SPACE": 0.896
+  },
+  "mood": "Flux",
+  "name": "REMOTE FLUX",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.444,
-      "macro_movement": 0.352,
       "macro_coupling": 0.672,
+      "macro_movement": 0.352,
       "macro_space": 0.896
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.386,
-      "macro_movement": 0.271,
       "macro_coupling": 0.738,
+      "macro_movement": 0.271,
       "macro_space": 0.841
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBSIDIAN",
-    "target": "OUROBOROS",
-    "amount": 0.871
-  },
-  "dna": {
-    "brightness": 0.448,
-    "warmth": 0.521,
-    "movement": 0.438,
-    "density": 0.15,
-    "space": 0.916,
-    "aggression": 0.441
-  },
-  "macros": {
-    "CHARACTER": 0.444,
-    "MOVEMENT": 0.352,
-    "COUPLING": 0.672,
-    "SPACE": 0.896
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "spatial",
     "sparse",
     "open"
-  ]
+  ],
+  "version": "1.0"
 }

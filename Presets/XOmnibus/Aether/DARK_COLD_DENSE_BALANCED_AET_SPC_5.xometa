@@ -1,45 +1,52 @@
 {
-  "name": "DARK COLD DENSE BALANCED AET SPC 5",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OPAL",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.039,
-      "macro_movement": 0.672,
-      "macro_coupling": 0.539,
-      "macro_space": 0.599
-    },
-    "OCEANIC": {
-      "macro_character": 0.038,
-      "macro_movement": 0.646,
-      "macro_coupling": 0.555,
-      "macro_space": 0.615
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OPAL",
-    "target": "OCEANIC",
-    "amount": 0.921
+    "amount": 0.921,
+    "source": "Opal",
+    "target": "Oceanic",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.907,
     "brightness": 0.056,
-    "warmth": 0.022,
-    "movement": 0.672,
     "density": 0.975,
+    "movement": 0.672,
     "space": 0.599,
-    "aggression": 0.907
+    "warmth": 0.022
   },
+  "engines": [
+    "Opal",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.039,
-    "MOVEMENT": 0.672,
     "COUPLING": 0.539,
+    "MOVEMENT": 0.672,
     "SPACE": 0.599
   },
+  "mood": "Aether",
+  "name": "DARK COLD DENSE BALANCED AET SPC 5",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.038,
+      "macro_coupling": 0.555,
+      "macro_movement": 0.646,
+      "macro_space": 0.615
+    },
+    "Opal": {
+      "macro_character": 0.039,
+      "macro_coupling": 0.539,
+      "macro_movement": 0.672,
+      "macro_space": 0.599
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -47,5 +54,6 @@
     "space-mid",
     "aggressive",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_SPARSE_VAST_GENTLE_ATM_2",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORIGAMI",
-    "ORACLE"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.436,
-      "macro_movement": 0.468,
-      "macro_coupling": 0.734,
-      "macro_space": 0.773
-    },
-    "ORACLE": {
-      "macro_character": 0.693,
-      "macro_movement": 0.466,
-      "macro_coupling": 0.51,
-      "macro_space": 0.855
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ORIGAMI",
-    "target": "ORACLE",
-    "amount": 0.452
+    "amount": 0.452,
+    "source": "Origami",
+    "target": "Oracle",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.08,
     "brightness": 0.888,
-    "warmth": 0.483,
-    "movement": 0.347,
     "density": 0.087,
+    "movement": 0.347,
     "space": 0.872,
-    "aggression": 0.08
+    "warmth": 0.483
   },
+  "engines": [
+    "Origami",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.436,
-    "MOVEMENT": 0.468,
     "COUPLING": 0.734,
+    "MOVEMENT": 0.468,
     "SPACE": 0.773
   },
+  "mood": "Atmosphere",
+  "name": "BRIGHT_SPARSE_VAST_GENTLE_ATM_2",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.693,
+      "macro_coupling": 0.51,
+      "macro_movement": 0.466,
+      "macro_space": 0.855
+    },
+    "Origami": {
+      "macro_character": 0.436,
+      "macro_coupling": 0.734,
+      "macro_movement": 0.468,
+      "macro_space": 0.773
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "sparse",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Molten Pulse",
-  "mood": "Foundation",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Compressor glue holding a dense harmonic mass in place.",
+  "dna": {
+    "aggression": 0.511,
     "brightness": 0.283,
-    "warmth": 0.828,
-    "movement": 0.408,
     "density": 0.881,
+    "movement": 0.408,
     "space": 0.274,
-    "aggression": 0.511
+    "warmth": 0.828
   },
   "engines": [
-    "OSTERIA"
+    "Osteria"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Compressor glue holding a dense harmonic mass in place.",
+  "macroLabels": [
+    "CHARACTER",
+    "DRIVE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Molten Pulse",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.511,
+    "brightness": 0.283,
+    "density": 0.881,
+    "movement": 0.408,
+    "space": 0.274,
+    "warmth": 0.828
+  },
   "tags": [
     "foundation",
     "warm",
@@ -24,23 +42,5 @@
     "thick",
     "aggressive"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "DRIVE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.283,
-    "warmth": 0.828,
-    "movement": 0.408,
-    "density": 0.881,
-    "space": 0.274,
-    "aggression": 0.511
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

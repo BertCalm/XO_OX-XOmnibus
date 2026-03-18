@@ -1,48 +1,56 @@
 {
-  "name": "Organ Mass",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.56,
+    "source": "Obese",
+    "target": "Organon",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.49,
+    "brightness": 0.31,
+    "density": 0.87,
+    "movement": 0.65,
+    "space": 0.19,
+    "warmth": 0.91
+  },
   "engines": [
-    "OBESE",
-    "ORGANON"
+    "Obese",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.78,
+    "COUPLING": 0.53,
+    "MOVEMENT": 0.6,
+    "SPACE": 0.27
+  },
+  "mood": "Entangled",
+  "name": "Organ Mass",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.75,
-      "macro_movement": 0.53,
       "macro_coupling": 0.63,
+      "macro_movement": 0.53,
       "macro_space": 0.25
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.81,
-      "macro_movement": 0.68,
       "macro_coupling": 0.42,
+      "macro_movement": 0.68,
       "macro_space": 0.28
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBESE",
-    "target": "ORGANON",
-    "amount": 0.56
-  },
-  "dna": {
-    "brightness": 0.31,
-    "warmth": 0.91,
-    "movement": 0.65,
-    "density": 0.87,
-    "space": 0.19,
-    "aggression": 0.49
-  },
-  "macros": {
-    "CHARACTER": 0.78,
-    "MOVEMENT": 0.6,
-    "COUPLING": 0.53,
-    "SPACE": 0.27
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-  ]
+  ],
+  "version": "1.0"
 }

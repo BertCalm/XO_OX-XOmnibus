@@ -1,50 +1,58 @@
 {
-  "name": "CHASM HAZE",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.341,
+    "source": "Ohm",
+    "target": "Origami",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.078,
+    "brightness": 0.275,
+    "density": 0.714,
+    "movement": 0.113,
+    "space": 0.038,
+    "warmth": 0.252
+  },
   "engines": [
-    "OHM",
-    "ORIGAMI"
+    "Ohm",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.729,
+    "COUPLING": 0.393,
+    "MOVEMENT": 0.801,
+    "SPACE": 0.038
+  },
+  "mood": "Atmosphere",
+  "name": "CHASM HAZE",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.731,
-      "macro_movement": 0.127,
       "macro_coupling": 0.392,
+      "macro_movement": 0.127,
       "macro_space": 0.038
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.828,
-      "macro_movement": 0.361,
       "macro_coupling": 0.432,
+      "macro_movement": 0.361,
       "macro_space": 0.031
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OHM",
-    "target": "ORIGAMI",
-    "amount": 0.341
-  },
-  "dna": {
-    "brightness": 0.275,
-    "warmth": 0.252,
-    "movement": 0.113,
-    "density": 0.714,
-    "space": 0.038,
-    "aggression": 0.078
-  },
-  "macros": {
-    "CHARACTER": 0.729,
-    "MOVEMENT": 0.801,
-    "COUPLING": 0.393,
-    "SPACE": 0.038
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-  ]
+  ],
+  "version": "1.0"
 }

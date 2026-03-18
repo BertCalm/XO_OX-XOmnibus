@@ -1,54 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Afro Prophecy",
-  "mood": "Entangled",
-  "engines": [
-    "OLE",
-    "ORACLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
+  "coupling": {
+    "amount": 0.68,
+    "intensity": "Moderate",
+    "source": "Ole",
+    "target": "Oracle",
+    "type": "PITCH_SYNC"
+  },
   "description": "Pitch sync aligns OLE's tumbadora tuning to ORACLE's microtonal breakpoint grid.",
+  "dna": {
+    "aggression": 0.86,
+    "brightness": 0.55,
+    "density": 0.62,
+    "movement": 0.64,
+    "space": 0.46,
+    "warmth": 0.68
+  },
+  "engines": [
+    "Ole",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.68,
+    "COUPLING": 0.68,
+    "MOVEMENT": 0.62,
+    "SPACE": 0.48
+  },
+  "mood": "Entangled",
+  "name": "Afro Prophecy",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.68,
-      "macro_movement": 0.62,
       "macro_coupling": 0.68,
+      "macro_movement": 0.62,
       "macro_space": 0.48
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.55,
-      "macro_movement": 0.58,
       "macro_coupling": 0.6,
+      "macro_movement": 0.58,
       "macro_space": 0.55
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OLE",
-    "target": "ORACLE",
-    "amount": 0.68,
-    "intensity": "Moderate"
-  },
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.68,
-    "movement": 0.64,
-    "density": 0.62,
-    "space": 0.46,
-    "aggression": 0.86
-  },
-  "macros": {
-    "CHARACTER": 0.68,
-    "MOVEMENT": 0.62,
-    "COUPLING": 0.68,
-    "SPACE": 0.48
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "ole",
     "oracle",
     "pitch",
     "afro"
-  ]
+  ],
+  "version": "1.0"
 }

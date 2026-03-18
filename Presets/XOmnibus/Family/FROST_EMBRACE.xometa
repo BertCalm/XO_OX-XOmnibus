@@ -1,48 +1,56 @@
 {
-  "name": "FROST EMBRACE",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OVERDUB",
-    "OCTOPUS"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.184,
-      "macro_movement": 0.051,
-      "macro_coupling": 0.941,
-      "macro_space": 0.478
-    },
-    "OCTOPUS": {
-      "macro_character": 0.822,
-      "macro_movement": 0.401,
-      "macro_coupling": 0.074,
-      "macro_space": 0.629
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_GATE",
-    "source": "OVERDUB",
-    "target": "OCTOPUS",
-    "amount": 0.332
+    "amount": 0.332,
+    "source": "Overdub",
+    "target": "Octopus",
+    "type": "SPECTRAL_GATE"
   },
   "dna": {
+    "aggression": 0.012,
     "brightness": 0.292,
-    "warmth": 0.114,
-    "movement": 0.638,
     "density": 0.753,
+    "movement": 0.638,
     "space": 0.066,
-    "aggression": 0.012
+    "warmth": 0.114
   },
+  "engines": [
+    "Overdub",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.149,
-    "MOVEMENT": 0.563,
     "COUPLING": 0.304,
+    "MOVEMENT": 0.563,
     "SPACE": 0.994
   },
+  "mood": "Family",
+  "name": "FROST EMBRACE",
+  "parameters": {
+    "Octopus": {
+      "macro_character": 0.822,
+      "macro_coupling": 0.074,
+      "macro_movement": 0.401,
+      "macro_space": 0.629
+    },
+    "Overdub": {
+      "macro_character": 0.184,
+      "macro_coupling": 0.941,
+      "macro_movement": 0.051,
+      "macro_space": 0.478
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "cold",
     "xlow-warmth"
-  ]
+  ],
+  "version": "1.0"
 }

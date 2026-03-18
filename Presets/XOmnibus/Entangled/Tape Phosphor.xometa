@@ -1,31 +1,39 @@
 {
-  "name": "Tape Phosphor",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Overdub",
+    "target": "Optic",
+    "type": "SPECTRAL_REFRACTION"
+  },
+  "description": "Dub delay trails caught in optical scan — each echo a phosphorescent afterimage",
   "engines": [
-    "OVERDUB",
-    "OPTIC"
+    "Overdub",
+    "Optic"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.4,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.4,
     "SPACE": 0.7
   },
-  "sonic_dna": {
-    "brightness": 0.58,
-    "warmth": 0.53,
-    "movement": 0.53,
-    "density": 0.54,
-    "space": 0.55,
-    "aggression": 0.37
-  },
+  "mood": "Entangled",
+  "name": "Tape Phosphor",
   "parameters": {},
-  "coupling": {
-    "type": "SPECTRAL_REFRACTION",
-    "source": "OVERDUB",
-    "target": "OPTIC",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.37,
+    "brightness": 0.58,
+    "density": 0.54,
+    "movement": 0.53,
+    "space": 0.55,
+    "warmth": 0.53
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "optic",
     "dub"
   ],
-  "description": "Dub delay trails caught in optical scan \u2014 each echo a phosphorescent afterimage"
+  "version": "1.0"
 }

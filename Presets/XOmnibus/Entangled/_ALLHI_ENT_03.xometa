@@ -1,49 +1,57 @@
 {
-  "name": "ALLHI ENT 03",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.796,
+    "source": "Oceanic",
+    "target": "Ottoni",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.93,
+    "brightness": 0.923,
+    "density": 0.918,
+    "movement": 0.64,
+    "space": 0.954,
+    "warmth": 0.976
+  },
   "engines": [
-    "OCEANIC",
-    "OTTONI"
+    "Oceanic",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.95,
+    "COUPLING": 0.942,
+    "MOVEMENT": 0.779,
+    "SPACE": 0.954
+  },
+  "mood": "Entangled",
+  "name": "ALLHI ENT 03",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.95,
-      "macro_movement": 0.779,
       "macro_coupling": 0.942,
+      "macro_movement": 0.779,
       "macro_space": 0.954
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.95,
-      "macro_movement": 0.779,
       "macro_coupling": 0.942,
+      "macro_movement": 0.779,
       "macro_space": 0.954
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OCEANIC",
-    "target": "OTTONI",
-    "amount": 0.796
-  },
-  "dna": {
-    "brightness": 0.923,
-    "warmth": 0.976,
-    "movement": 0.64,
-    "density": 0.918,
-    "space": 0.954,
-    "aggression": 0.93
-  },
-  "macros": {
-    "CHARACTER": 0.95,
-    "MOVEMENT": 0.779,
-    "COUPLING": 0.942,
-    "SPACE": 0.954
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

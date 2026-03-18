@@ -1,33 +1,41 @@
 {
-  "name": "Slant Transient Hail",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7,
+    "source": "Oblique",
+    "target": "Onset",
+    "type": "TIMBRAL_WARP"
+  },
+  "description": "Transient hail falling at a slant — cold, dense, oblique and unrelenting.",
   "engines": [
-    "OBLIQUE",
-    "ONSET"
+    "Oblique",
+    "Onset"
   ],
-  "mood": "Entangled",
-  "strategy": "Fast Cold",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7,
-    "MOVEMENT": 0.9,
     "COUPLING": 0.75,
+    "MOVEMENT": 0.9,
     "SPACE": 0.5
   },
-  "sonic_dna": {
-    "brightness": 0.68,
-    "warmth": 0.09,
-    "movement": 0.9,
-    "density": 0.65,
-    "space": 0.48,
-    "aggression": 0.68
-  },
+  "mood": "Entangled",
+  "name": "Slant Transient Hail",
   "parameters": {},
-  "coupling": {
-    "type": "TIMBRAL_WARP",
-    "source": "OBLIQUE",
-    "target": "ONSET",
-    "amount": 0.7
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.68,
+    "brightness": 0.68,
+    "density": 0.65,
+    "movement": 0.9,
+    "space": 0.48,
+    "warmth": 0.09
   },
+  "strategy": "Fast Cold",
   "tags": [
     "entangled",
     "cold",
@@ -35,5 +43,5 @@
     "transient",
     "kinetic"
   ],
-  "description": "Transient hail falling at a slant \u2014 cold, dense, oblique and unrelenting."
+  "version": "1.0"
 }

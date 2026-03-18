@@ -1,48 +1,56 @@
 {
-  "name": "Slab Grain",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.85,
+    "source": "Oblong",
+    "target": "Opal",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.37,
+    "brightness": 0.3,
+    "density": 0.93,
+    "movement": 0.35,
+    "space": 0.54,
+    "warmth": 0.95
+  },
   "engines": [
-    "OBLONG",
-    "OPAL"
+    "Oblong",
+    "Opal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.85,
+    "COUPLING": 0.85,
+    "MOVEMENT": 0.34,
+    "SPACE": 0.44
+  },
+  "mood": "Entangled",
+  "name": "Slab Grain",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.85,
-      "macro_movement": 0.34,
       "macro_coupling": 0.8,
+      "macro_movement": 0.34,
       "macro_space": 0.5
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.85,
-      "macro_movement": 0.35,
       "macro_coupling": 0.9,
+      "macro_movement": 0.35,
       "macro_space": 0.38
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OBLONG",
-    "target": "OPAL",
-    "amount": 0.85
-  },
-  "dna": {
-    "brightness": 0.3,
-    "warmth": 0.95,
-    "movement": 0.35,
-    "density": 0.93,
-    "space": 0.54,
-    "aggression": 0.37
-  },
-  "macros": {
-    "CHARACTER": 0.85,
-    "MOVEMENT": 0.34,
-    "COUPLING": 0.85,
-    "SPACE": 0.44
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-  ]
+  ],
+  "version": "1.0"
 }

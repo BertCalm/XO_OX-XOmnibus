@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Sides Rotate",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Alliance and drama both in motion. The family gathering is escalating.",
+  "dna": {
+    "aggression": 0.41,
+    "brightness": 0.6,
+    "density": 0.5,
+    "movement": 0.9,
+    "space": 0.34,
+    "warmth": 0.44
+  },
   "engines": [
     "Ole"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "latin",
-    "strummed",
-    "flux",
-    "movement",
-    "flux"
   ],
   "macroLabels": [
     "FUEGO",
@@ -20,42 +21,41 @@
     "SIDES",
     "ISLA"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.44,
-    "movement": 0.9,
-    "density": 0.5,
-    "space": 0.34,
-    "aggression": 0.41
-  },
+  "mood": "Flux",
+  "name": "Sides Rotate",
   "parameters": {
     "Ole": {
+      "ole_allianceBlend": 0.37,
+      "ole_allianceConfig": 2,
+      "ole_aunt1Brightness": 0.738,
       "ole_aunt1Level": 0.679,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.738,
-      "ole_aunt2Level": 0.566,
       "ole_aunt2CoinPress": 0.237,
       "ole_aunt2GourdSize": 0.309,
+      "ole_aunt2Level": 0.566,
+      "ole_aunt3Brightness": 0.542,
       "ole_aunt3Level": 0.717,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.542,
       "ole_damping": 0.994,
-      "ole_sympatheticAmt": 0.284,
-      "ole_driftRate": 0.131,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 2,
-      "ole_allianceBlend": 0.37,
-      "ole_husbandOudLevel": 0.286,
+      "ole_driftRate": 0.131,
       "ole_husbandBouzLevel": 0.325,
+      "ole_husbandOudLevel": 0.286,
       "ole_husbandPinLevel": 0.498,
-      "ole_macroFuego": 0.391,
       "ole_macroDrama": 0.564,
+      "ole_macroFuego": 0.391,
+      "ole_macroIsla": 0.249,
       "ole_macroSides": 0.23,
-      "ole_macroIsla": 0.249
+      "ole_sympatheticAmt": 0.284
     }
   },
-  "coupling": null,
-  "description": "Alliance and drama both in motion. The family gathering is escalating."
+  "schema_version": 1,
+  "tags": [
+    "latin",
+    "strummed",
+    "flux",
+    "movement",
+    "flux"
+  ],
+  "version": "1.0.0"
 }

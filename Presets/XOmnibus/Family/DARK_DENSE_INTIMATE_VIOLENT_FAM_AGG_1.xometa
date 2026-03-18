@@ -1,50 +1,58 @@
 {
-  "name": "DARK_DENSE_INTIMATE_VIOLENT_FAM_AGG_1",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.926,
+    "source": "OddOscar",
+    "target": "Ohm",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.98,
+    "brightness": 0.022,
+    "density": 0.944,
+    "movement": 0.621,
+    "space": 0.112,
+    "warmth": 0.43
+  },
   "engines": [
-    "ODDOSCAR",
-    "OHM"
+    "OddOscar",
+    "Ohm"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.403,
+    "COUPLING": 0.496,
+    "MOVEMENT": 0.857,
+    "SPACE": 0.703
+  },
+  "mood": "Family",
+  "name": "DARK_DENSE_INTIMATE_VIOLENT_FAM_AGG_1",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.403,
-      "macro_movement": 0.857,
       "macro_coupling": 0.496,
+      "macro_movement": 0.857,
       "macro_space": 0.703
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.405,
-      "macro_movement": 0.847,
       "macro_coupling": 0.477,
+      "macro_movement": 0.847,
       "macro_space": 0.687
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ODDOSCAR",
-    "target": "OHM",
-    "amount": 0.926
-  },
-  "dna": {
-    "brightness": 0.022,
-    "warmth": 0.43,
-    "movement": 0.621,
-    "density": 0.944,
-    "space": 0.112,
-    "aggression": 0.98
-  },
-  "macros": {
-    "CHARACTER": 0.403,
-    "MOVEMENT": 0.857,
-    "COUPLING": 0.496,
-    "SPACE": 0.703
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "dark",
     "dense",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

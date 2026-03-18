@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_INTIMATE_GENTLE_FAM_VOL_32",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OSPREY",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.925,
-      "macro_movement": 0.595,
-      "macro_coupling": 0.2,
-      "macro_space": 0.049
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.928,
-      "macro_movement": 0.599,
-      "macro_coupling": 0.228,
-      "macro_space": 0.068
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "DYNAMIC_CROSS",
-    "source": "ODDOSCAR",
-    "target": "OSPREY",
-    "amount": 0.429
+    "amount": 0.429,
+    "source": "OddOscar",
+    "target": "Osprey",
+    "type": "DYNAMIC_CROSS"
   },
   "dna": {
+    "aggression": 0.023,
     "brightness": 0.967,
-    "warmth": 0.942,
-    "movement": 0.596,
     "density": 0.378,
+    "movement": 0.596,
     "space": 0.045,
-    "aggression": 0.023
+    "warmth": 0.942
   },
+  "engines": [
+    "Osprey",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.927,
-    "MOVEMENT": 0.597,
     "COUPLING": 0.214,
+    "MOVEMENT": 0.597,
     "SPACE": 0.059
   },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_INTIMATE_GENTLE_FAM_VOL_32",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.928,
+      "macro_coupling": 0.228,
+      "macro_movement": 0.599,
+      "macro_space": 0.068
+    },
+    "Osprey": {
+      "macro_character": 0.925,
+      "macro_coupling": 0.2,
+      "macro_movement": 0.595,
+      "macro_space": 0.049
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "intimate",
     "gentle",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

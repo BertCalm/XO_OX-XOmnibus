@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_2",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OTTONI",
-    "OLE"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.354,
-      "macro_movement": 0.872,
-      "macro_coupling": 0.69,
-      "macro_space": 0.59
-    },
-    "OLE": {
-      "macro_character": 0.318,
-      "macro_movement": 0.885,
-      "macro_coupling": 0.643,
-      "macro_space": 0.615
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OTTONI",
-    "target": "OLE",
-    "amount": 0.809
+    "amount": 0.809,
+    "source": "Ottoni",
+    "target": "Ole",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.911,
     "brightness": 0.97,
-    "warmth": 0.902,
-    "movement": 0.892,
     "density": 0.581,
+    "movement": 0.892,
     "space": 0.424,
-    "aggression": 0.911
+    "warmth": 0.902
   },
+  "engines": [
+    "Ottoni",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.354,
-    "MOVEMENT": 0.872,
     "COUPLING": 0.69,
+    "MOVEMENT": 0.872,
     "SPACE": 0.59
   },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_2",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.318,
+      "macro_coupling": 0.643,
+      "macro_movement": 0.885,
+      "macro_space": 0.615
+    },
+    "Ottoni": {
+      "macro_character": 0.354,
+      "macro_coupling": 0.69,
+      "macro_movement": 0.872,
+      "macro_space": 0.59
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "bright",
     "warm",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

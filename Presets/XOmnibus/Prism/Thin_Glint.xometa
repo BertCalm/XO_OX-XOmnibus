@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Thin Glint",
-  "mood": "Prism",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Sub-zero shimmer. The silence between notes is the sound.",
+  "dna": {
+    "aggression": 0.088,
     "brightness": 0.88,
-    "warmth": 0.163,
-    "movement": 0.234,
     "density": 0.093,
+    "movement": 0.234,
     "space": 0.731,
-    "aggression": 0.088
+    "warmth": 0.163
   },
   "engines": [
-    "OPTIC"
+    "Optic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Sub-zero shimmer. The silence between notes is the sound.",
+  "macroLabels": [
+    "FREEZE",
+    "GLINT",
+    "COUPLING",
+    "VOID"
+  ],
+  "mood": "Prism",
+  "name": "Thin Glint",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.088,
+    "brightness": 0.88,
+    "density": 0.093,
+    "movement": 0.234,
+    "space": 0.731,
+    "warmth": 0.163
+  },
   "tags": [
     "prism",
     "cold",
@@ -25,23 +43,5 @@
     "spacious",
     "bright"
   ],
-  "macroLabels": [
-    "FREEZE",
-    "GLINT",
-    "COUPLING",
-    "VOID"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.88,
-    "warmth": 0.163,
-    "movement": 0.234,
-    "density": 0.093,
-    "space": 0.731,
-    "aggression": 0.088
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

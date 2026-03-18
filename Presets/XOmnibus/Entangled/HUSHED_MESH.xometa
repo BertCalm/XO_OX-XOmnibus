@@ -1,48 +1,56 @@
 {
-  "name": "HUSHED MESH",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.484,
+    "source": "OddOscar",
+    "target": "Onset",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.984,
+    "brightness": 0.602,
+    "density": 0.986,
+    "movement": 0.11,
+    "space": 0.054,
+    "warmth": 0.92
+  },
   "engines": [
-    "ODDOSCAR",
-    "ONSET"
+    "OddOscar",
+    "Onset"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.318,
+    "COUPLING": 0.43,
+    "MOVEMENT": 0.11,
+    "SPACE": 0.601
+  },
+  "mood": "Entangled",
+  "name": "HUSHED MESH",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.371,
-      "macro_movement": 0.117,
       "macro_coupling": 0.402,
+      "macro_movement": 0.117,
       "macro_space": 0.862
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.468,
-      "macro_movement": 0.102,
       "macro_coupling": 0.271,
+      "macro_movement": 0.102,
       "macro_space": 0.716
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ODDOSCAR",
-    "target": "ONSET",
-    "amount": 0.484
-  },
-  "dna": {
-    "brightness": 0.602,
-    "warmth": 0.92,
-    "movement": 0.11,
-    "density": 0.986,
-    "space": 0.054,
-    "aggression": 0.984
-  },
-  "macros": {
-    "CHARACTER": 0.318,
-    "MOVEMENT": 0.11,
-    "COUPLING": 0.43,
-    "SPACE": 0.601
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "hushed"
-  ]
+  ],
+  "version": "1.0"
 }

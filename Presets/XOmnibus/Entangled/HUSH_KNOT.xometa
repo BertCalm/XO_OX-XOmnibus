@@ -1,49 +1,57 @@
 {
-  "name": "HUSH KNOT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.595,
+    "source": "Obsidian",
+    "target": "Ohm",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.037,
+    "brightness": 0.787,
+    "density": 0.24,
+    "movement": 0.053,
+    "space": 0.629,
+    "warmth": 0.216
+  },
   "engines": [
-    "OBSIDIAN",
-    "OHM"
+    "Obsidian",
+    "Ohm"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.697,
+    "COUPLING": 0.722,
+    "MOVEMENT": 0.481,
+    "SPACE": 0.511
+  },
+  "mood": "Entangled",
+  "name": "HUSH KNOT",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.121,
-      "macro_movement": 0.112,
       "macro_coupling": 0.732,
+      "macro_movement": 0.112,
       "macro_space": 0.29
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.359,
-      "macro_movement": 0.239,
       "macro_coupling": 0.142,
+      "macro_movement": 0.239,
       "macro_space": 0.693
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBSIDIAN",
-    "target": "OHM",
-    "amount": 0.595
-  },
-  "dna": {
-    "brightness": 0.787,
-    "warmth": 0.216,
-    "movement": 0.053,
-    "density": 0.24,
-    "space": 0.629,
-    "aggression": 0.037
-  },
-  "macros": {
-    "CHARACTER": 0.697,
-    "MOVEMENT": 0.481,
-    "COUPLING": 0.722,
-    "SPACE": 0.511
-  },
+  "schema_version": 1,
   "tags": [
     "yielding",
     "tender",
     "gentle",
     "soft"
-  ]
+  ],
+  "version": "1.0"
 }

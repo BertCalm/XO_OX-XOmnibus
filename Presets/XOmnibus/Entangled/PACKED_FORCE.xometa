@@ -1,50 +1,58 @@
 {
-  "name": "PACKED FORCE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9072,
+    "source": "Oceanic",
+    "target": "Ombre",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.6004,
+    "brightness": 0.6272,
+    "density": 0.9764,
+    "movement": 0.7725,
+    "space": 0.8503,
+    "warmth": 0.1019
+  },
   "engines": [
-    "OCEANIC",
-    "OMBRE"
+    "Oceanic",
+    "Ombre"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1211,
+    "COUPLING": 0.9348,
+    "MOVEMENT": 0.9838,
+    "SPACE": 0.3472
+  },
+  "mood": "Entangled",
+  "name": "PACKED FORCE",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.1081,
-      "macro_movement": 0.0257,
       "macro_coupling": 0.7248,
+      "macro_movement": 0.0257,
       "macro_space": 0.6773
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.9582,
-      "macro_movement": 0.3967,
       "macro_coupling": 0.886,
+      "macro_movement": 0.3967,
       "macro_space": 0.076
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OCEANIC",
-    "target": "OMBRE",
-    "amount": 0.9072
-  },
-  "dna": {
-    "brightness": 0.6272,
-    "warmth": 0.1019,
-    "movement": 0.7725,
-    "density": 0.9764,
-    "space": 0.8503,
-    "aggression": 0.6004
-  },
-  "macros": {
-    "CHARACTER": 0.1211,
-    "MOVEMENT": 0.9838,
-    "COUPLING": 0.9348,
-    "SPACE": 0.3472
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
     "bound",
     "crushing",
     "layered"
-  ]
+  ],
+  "version": "1.0"
 }

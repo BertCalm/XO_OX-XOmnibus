@@ -1,47 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD DENSE OPEN PRI 5",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Low",
+    "sourceEngine": "Organon",
+    "targetEngine": null,
+    "type": "Chaos"
+  },
+  "couplingIntensity": "Low",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Prism preset: DARK COLD DENSE OPEN PRI 5.",
+  "dna": {
+    "aggression": 0.945,
+    "brightness": 0.044,
+    "density": 0.892,
+    "movement": 0.563,
+    "space": 0.531,
+    "warmth": 0.087
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Prism preset: DARK COLD DENSE OPEN PRI 5.",
-  "tags": [
-    "x-low-brightness",
-    "x-low-warmth",
-    "x-high-aggression",
-    "x-high-density"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Low",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "DARK COLD DENSE OPEN PRI 5",
   "parameters": {},
-  "coupling": {
-    "type": "Chaos",
-    "intensity": "Low",
-    "sourceEngine": "Organon",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.044,
-    "warmth": 0.087,
-    "aggression": 0.945,
-    "density": 0.892,
-    "movement": 0.563,
-    "space": 0.531
-  }
+  "tags": [
+    "x-low-brightness",
+    "x-low-warmth",
+    "x-high-aggression",
+    "x-high-density"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

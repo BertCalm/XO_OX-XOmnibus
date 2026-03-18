@@ -1,51 +1,58 @@
 {
-  "name": "Fold Horizon Line",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7,
+    "source": "Odyssey",
+    "target": "Origami",
+    "type": "ENVELOPE_LINK"
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.6,
+    "density": 0.5,
+    "movement": 0.7,
+    "space": 0.6,
+    "warmth": 0.5
+  },
   "engines": [
-    "ODYSSEY",
-    "ORIGAMI"
+    "Odyssey",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.65
+  },
+  "mood": "Entangled",
+  "name": "Fold Horizon Line",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.6,
-      "macro_movement": 0.7,
       "macro_coupling": 0.7,
+      "macro_movement": 0.7,
       "macro_space": 0.6
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.5,
-      "macro_movement": 0.6,
       "macro_coupling": 0.6,
+      "macro_movement": 0.6,
       "macro_space": 0.7
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ODYSSEY",
-    "target": "ORIGAMI",
-    "amount": 0.7
-  },
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.5,
-    "movement": 0.7,
-    "density": 0.5,
-    "space": 0.6,
-    "aggression": 0.2
-  },
-  "macros": {
-    "CHARACTER": 0.55,
-    "MOVEMENT": 0.65,
-    "COUPLING": 0.7,
-    "SPACE": 0.65
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "odyssey",
     "origami"
   ],
-  "author": "XO_OX Coverage Pack 2026-03-16",
-  "created": "2026-03-16"
+  "version": "1.0"
 }

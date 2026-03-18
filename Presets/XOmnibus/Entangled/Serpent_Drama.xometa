@@ -1,54 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Serpent Drama",
-  "mood": "Entangled",
-  "engines": [
-    "OLE",
-    "OUROBOROS"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
+  "coupling": {
+    "amount": 0.85,
+    "intensity": "Deep",
+    "source": "Ole",
+    "target": "Ouroboros",
+    "type": "CHAOS_INJECT"
+  },
   "description": "Chaos injection from OUROBOROS dismantles OLE's Afro-Latin phrase structure, rebuilding it recursively.",
+  "dna": {
+    "aggression": 0.85,
+    "brightness": 0.68,
+    "density": 0.78,
+    "movement": 0.82,
+    "space": 0.28,
+    "warmth": 0.72
+  },
+  "engines": [
+    "Ole",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.84,
+    "COUPLING": 0.85,
+    "MOVEMENT": 0.76,
+    "SPACE": 0.32
+  },
+  "mood": "Entangled",
+  "name": "Serpent Drama",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.84,
-      "macro_movement": 0.76,
       "macro_coupling": 0.85,
+      "macro_movement": 0.76,
       "macro_space": 0.32
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.76,
-      "macro_movement": 0.8,
       "macro_coupling": 0.8,
+      "macro_movement": 0.8,
       "macro_space": 0.36
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OLE",
-    "target": "OUROBOROS",
-    "amount": 0.85,
-    "intensity": "Deep"
-  },
-  "dna": {
-    "brightness": 0.68,
-    "warmth": 0.72,
-    "movement": 0.82,
-    "density": 0.78,
-    "space": 0.28,
-    "aggression": 0.85
-  },
-  "macros": {
-    "CHARACTER": 0.84,
-    "MOVEMENT": 0.76,
-    "COUPLING": 0.85,
-    "SPACE": 0.32
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "ole",
     "ouroboros",
     "chaos",
     "serpent"
-  ]
+  ],
+  "version": "1.0"
 }

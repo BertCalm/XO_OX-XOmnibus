@@ -1,50 +1,58 @@
 {
-  "name": "KINETIC_DENSE_VAST_VIOLENT_AET4_3",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "ORGANON",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.9103,
-      "macro_movement": 0.9479,
-      "macro_coupling": 0.8843,
-      "macro_space": 0.2701
-    },
-    "OBSCURA": {
-      "macro_character": 0.7028,
-      "macro_movement": 0.5814,
-      "macro_coupling": 0.2137,
-      "macro_space": 0.4316
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORGANON",
-    "target": "OBSCURA",
-    "amount": 0.8163
+    "amount": 0.8163,
+    "source": "Organon",
+    "target": "Obscura",
+    "type": "SPECTRAL_MORPH"
   },
   "dna": {
+    "aggression": 0.9487,
     "brightness": 0.5649,
-    "warmth": 0.3516,
-    "movement": 0.9496,
     "density": 0.98,
+    "movement": 0.9496,
     "space": 0.9072,
-    "aggression": 0.9487
+    "warmth": 0.3516
   },
+  "engines": [
+    "Organon",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.4582,
-    "MOVEMENT": 0.9496,
     "COUPLING": 0.8163,
+    "MOVEMENT": 0.9496,
     "SPACE": 0.9072
   },
+  "mood": "Aether",
+  "name": "KINETIC_DENSE_VAST_VIOLENT_AET4_3",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.7028,
+      "macro_coupling": 0.2137,
+      "macro_movement": 0.5814,
+      "macro_space": 0.4316
+    },
+    "Organon": {
+      "macro_character": 0.9103,
+      "macro_coupling": 0.8843,
+      "macro_movement": 0.9479,
+      "macro_space": 0.2701
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "kinetic",
     "dense",
     "vast",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

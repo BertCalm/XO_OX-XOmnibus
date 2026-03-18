@@ -1,47 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD DRY STILL PRI 3",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "None",
+    "sourceEngine": "Obese",
+    "targetEngine": null,
+    "type": "RingMod"
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Prism preset: DARK COLD DRY STILL PRI 3.",
+  "dna": {
+    "aggression": 0.087,
+    "brightness": 0.068,
+    "density": 0.101,
+    "movement": 0.052,
+    "space": 0.552,
+    "warmth": 0.406
+  },
   "engines": [
     "Obese"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Prism preset: DARK COLD DRY STILL PRI 3.",
-  "tags": [
-    "x-low-brightness",
-    "x-low-aggression",
-    "x-low-density",
-    "x-low-movement"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "DARK COLD DRY STILL PRI 3",
   "parameters": {},
-  "coupling": {
-    "type": "RingMod",
-    "intensity": "None",
-    "sourceEngine": "Obese",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.068,
-    "warmth": 0.406,
-    "aggression": 0.087,
-    "density": 0.101,
-    "movement": 0.052,
-    "space": 0.552
-  }
+  "tags": [
+    "x-low-brightness",
+    "x-low-aggression",
+    "x-low-density",
+    "x-low-movement"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

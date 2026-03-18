@@ -1,45 +1,52 @@
 {
-  "name": "DARK HOT DENSE INTIMATE VIOLENT ENT2 4",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.958,
+    "source": "OddOscar",
+    "target": "Osteria",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.926,
+    "brightness": 0.073,
+    "density": 0.99,
+    "movement": 0.682,
+    "space": 0.02,
+    "warmth": 0.96
+  },
   "engines": [
-    "ODDOSCAR",
-    "OSTERIA"
+    "OddOscar",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.516,
+    "COUPLING": 0.958,
+    "MOVEMENT": 0.682,
+    "SPACE": 0.02
+  },
+  "mood": "Entangled",
+  "name": "DARK HOT DENSE INTIMATE VIOLENT ENT2 4",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.516,
-      "macro_movement": 0.682,
       "macro_coupling": 0.958,
+      "macro_movement": 0.682,
       "macro_space": 0.02
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.508,
-      "macro_movement": 0.677,
       "macro_coupling": 0.946,
+      "macro_movement": 0.677,
       "macro_space": 0.053
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ODDOSCAR",
-    "target": "OSTERIA",
-    "amount": 0.958
-  },
-  "dna": {
-    "brightness": 0.073,
-    "warmth": 0.96,
-    "movement": 0.682,
-    "density": 0.99,
-    "space": 0.02,
-    "aggression": 0.926
-  },
-  "macros": {
-    "CHARACTER": 0.516,
-    "MOVEMENT": 0.682,
-    "COUPLING": 0.958,
-    "SPACE": 0.02
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
@@ -47,5 +54,6 @@
     "dense",
     "intimate",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

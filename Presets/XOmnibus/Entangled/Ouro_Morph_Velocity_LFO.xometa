@@ -1,81 +1,81 @@
 {
-  "schema_version": 1,
-  "name": "Velocity Morph",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.4,
+        "engineA": "Ouroboros",
+        "engineB": "OddOscar",
+        "type": "LFO->Pitch"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-10",
+  "description": "Ouroboros velocity vectors drive MORPH's wavetable position via channels 2/3. Non-repeating complex modulation from the attractor.",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.55,
+    "density": 0.5,
+    "movement": 0.75,
+    "space": 0.35,
+    "warmth": 0.45
+  },
   "engines": [
     "Ouroboros",
     "OddOscar"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ouroboros velocity vectors drive MORPH's wavetable position via channels 2/3. Non-repeating complex modulation from the attractor.",
-  "tags": [
-    "coupled",
-    "morphing",
-    "complex",
-    "wavetable"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "ATTRACTOR",
     "MORPH SWEEP",
     "VELOCITY DEPTH",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Velocity Morph",
   "parameters": {
-    "Ouroboros": {
-      "ouro_topology": 0,
-      "ouro_rate": 130.0,
-      "ouro_chaosIndex": 0.4,
-      "ouro_leash": 0.55,
-      "ouro_theta": 0.5,
-      "ouro_phi": -0.3,
-      "ouro_damping": 0.2,
-      "ouro_injection": 0.0
-    },
     "OddOscar": {
-      "morph_oscA_wave": 0,
+      "morph_attack": 0.05,
+      "morph_blend": 0.5,
+      "morph_decay": 0.8,
+      "morph_filterCutoff": 8000.0,
+      "morph_filterEnv": 0.3,
+      "morph_filterReso": 0.2,
+      "morph_level": 0.65,
+      "morph_morphSpeed": 0.3,
       "morph_oscA_shape": 0.5,
       "morph_oscA_tune": 0.0,
-      "morph_oscB_wave": 2,
+      "morph_oscA_wave": 0,
       "morph_oscB_shape": 0.5,
       "morph_oscB_tune": 0.0,
-      "morph_blend": 0.5,
-      "morph_morphSpeed": 0.3,
-      "morph_filterCutoff": 8000.0,
-      "morph_filterReso": 0.2,
-      "morph_filterEnv": 0.3,
-      "morph_attack": 0.05,
-      "morph_decay": 0.8,
-      "morph_sustain": 0.6,
+      "morph_oscB_wave": 2,
       "morph_release": 0.5,
-      "morph_level": 0.65
+      "morph_sustain": 0.6
+    },
+    "Ouroboros": {
+      "ouro_chaosIndex": 0.4,
+      "ouro_damping": 0.2,
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.55,
+      "ouro_phi": -0.3,
+      "ouro_rate": 130.0,
+      "ouro_theta": 0.5,
+      "ouro_topology": 0
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "OddOscar",
-        "type": "LFO->Pitch",
-        "amount": 0.4
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.45,
-    "movement": 0.75,
-    "density": 0.5,
-    "space": 0.35,
-    "aggression": 0.3
-  }
+  "tags": [
+    "coupled",
+    "morphing",
+    "complex",
+    "wavetable"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

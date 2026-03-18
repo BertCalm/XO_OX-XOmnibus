@@ -1,48 +1,56 @@
 {
-  "name": "WINTER FAMILY",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.855,
+    "source": "Oblique",
+    "target": "Obsidian",
+    "type": "PITCH_LOCK"
+  },
+  "dna": {
+    "aggression": 0.365,
+    "brightness": 0.08,
+    "density": 0.278,
+    "movement": 0.101,
+    "space": 0.101,
+    "warmth": 0.043
+  },
   "engines": [
-    "OBLIQUE",
-    "OBSIDIAN"
+    "Oblique",
+    "Obsidian"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.688,
+    "COUPLING": 0.324,
+    "MOVEMENT": 0.22,
+    "SPACE": 0.768
+  },
+  "mood": "Family",
+  "name": "WINTER FAMILY",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.702,
-      "macro_movement": 0.684,
       "macro_coupling": 0.071,
+      "macro_movement": 0.684,
       "macro_space": 0.635
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.534,
-      "macro_movement": 0.245,
       "macro_coupling": 0.462,
+      "macro_movement": 0.245,
       "macro_space": 0.27
     }
   },
-  "coupling": {
-    "type": "PITCH_LOCK",
-    "source": "OBLIQUE",
-    "target": "OBSIDIAN",
-    "amount": 0.855
-  },
-  "dna": {
-    "brightness": 0.08,
-    "warmth": 0.043,
-    "movement": 0.101,
-    "density": 0.278,
-    "space": 0.101,
-    "aggression": 0.365
-  },
-  "macros": {
-    "CHARACTER": 0.688,
-    "MOVEMENT": 0.22,
-    "COUPLING": 0.324,
-    "SPACE": 0.768
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "cold",
     "xlow-warmth"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,58 @@
 {
-  "name": "DARK_SPARSE_VAST_VIOLENT_PRS_DRK_3",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OPTIC",
-    "OCELOT"
-  ],
-  "parameters": {
-    "OPTIC": {
-      "macro_character": 0.6821,
-      "macro_movement": 0.599,
-      "macro_coupling": 0.0801,
-      "macro_space": 0.9424
-    },
-    "OCELOT": {
-      "macro_character": 0.6732,
-      "macro_movement": 0.6125,
-      "macro_coupling": 0.104,
-      "macro_space": 0.9603
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OPTIC",
-    "target": "OCELOT",
-    "amount": 0.7443
+    "amount": 0.7443,
+    "source": "Optic",
+    "target": "Ocelot",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.8965,
     "brightness": 0.1058,
-    "warmth": 0.4676,
-    "movement": 0.599,
     "density": 0.0801,
+    "movement": 0.599,
     "space": 0.9424,
-    "aggression": 0.8965
+    "warmth": 0.4676
   },
+  "engines": [
+    "Optic",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.6821,
-    "MOVEMENT": 0.599,
     "COUPLING": 0.0801,
+    "MOVEMENT": 0.599,
     "SPACE": 0.9424
   },
+  "mood": "Prism",
+  "name": "DARK_SPARSE_VAST_VIOLENT_PRS_DRK_3",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.6732,
+      "macro_coupling": 0.104,
+      "macro_movement": 0.6125,
+      "macro_space": 0.9603
+    },
+    "Optic": {
+      "macro_character": 0.6821,
+      "macro_coupling": 0.0801,
+      "macro_movement": 0.599,
+      "macro_space": 0.9424
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "sparse",
     "vast",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

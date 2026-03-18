@@ -1,45 +1,52 @@
 {
-  "name": "VOID FRONT",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORIGAMI",
-    "OBLONG"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.1384,
-      "macro_movement": 0.2313,
-      "macro_coupling": 0.8776,
-      "macro_space": 0.7064
-    },
-    "OBLONG": {
-      "macro_character": 0.0642,
-      "macro_movement": 0.4076,
-      "macro_coupling": 0.817,
-      "macro_space": 0.4158
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORIGAMI",
-    "target": "OBLONG",
-    "amount": 0.7621
+    "amount": 0.7621,
+    "source": "Origami",
+    "target": "Oblong",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.8567,
     "brightness": 0.4201,
-    "warmth": 0.9048,
-    "movement": 0.5841,
     "density": 0.924,
+    "movement": 0.5841,
     "space": 0.6955,
-    "aggression": 0.8567
+    "warmth": 0.9048
   },
+  "engines": [
+    "Origami",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7656,
-    "MOVEMENT": 0.3804,
     "COUPLING": 0.7018,
+    "MOVEMENT": 0.3804,
     "SPACE": 0.3518
   },
+  "mood": "Entangled",
+  "name": "VOID FRONT",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.0642,
+      "macro_coupling": 0.817,
+      "macro_movement": 0.4076,
+      "macro_space": 0.4158
+    },
+    "Origami": {
+      "macro_character": 0.1384,
+      "macro_coupling": 0.8776,
+      "macro_movement": 0.2313,
+      "macro_space": 0.7064
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -48,5 +55,6 @@
     "packed",
     "dark",
     "massive"
-  ]
+  ],
+  "version": "1.0"
 }

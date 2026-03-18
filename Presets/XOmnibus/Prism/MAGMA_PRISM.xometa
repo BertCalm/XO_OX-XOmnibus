@@ -1,49 +1,57 @@
 {
-  "name": "MAGMA PRISM",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OSPREY",
-    "ORPHICA"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.765,
-      "macro_movement": 0.778,
-      "macro_coupling": 0.726,
-      "macro_space": 0.894
-    },
-    "ORPHICA": {
-      "macro_character": 0.404,
-      "macro_movement": 0.097,
-      "macro_coupling": 0.334,
-      "macro_space": 0.02
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OSPREY",
-    "target": "ORPHICA",
-    "amount": 0.324
+    "amount": 0.324,
+    "source": "Osprey",
+    "target": "Orphica",
+    "type": "FREQUENCY_SHIFT"
   },
   "dna": {
+    "aggression": 0.906,
     "brightness": 0.391,
-    "warmth": 0.945,
-    "movement": 0.296,
     "density": 0.038,
+    "movement": 0.296,
     "space": 0.12,
-    "aggression": 0.906
+    "warmth": 0.945
   },
+  "engines": [
+    "Osprey",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.786,
-    "MOVEMENT": 0.575,
     "COUPLING": 0.975,
+    "MOVEMENT": 0.575,
     "SPACE": 0.268
   },
+  "mood": "Prism",
+  "name": "MAGMA PRISM",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.404,
+      "macro_coupling": 0.334,
+      "macro_movement": 0.097,
+      "macro_space": 0.02
+    },
+    "Osprey": {
+      "macro_character": 0.765,
+      "macro_coupling": 0.726,
+      "macro_movement": 0.778,
+      "macro_space": 0.894
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

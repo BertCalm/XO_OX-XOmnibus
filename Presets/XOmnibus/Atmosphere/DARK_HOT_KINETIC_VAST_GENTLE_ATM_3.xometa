@@ -1,45 +1,52 @@
 {
-  "name": "DARK_HOT_KINETIC_VAST_GENTLE_ATM_3",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OPAL",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.5403,
-      "macro_movement": 0.9156,
-      "macro_coupling": 0.5114,
-      "macro_space": 0.8827
-    },
-    "OBSCURA": {
-      "macro_character": 0.5586,
-      "macro_movement": 0.9038,
-      "macro_coupling": 0.5113,
-      "macro_space": 0.9053
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OPAL",
-    "target": "OBSCURA",
-    "amount": 0.401
+    "amount": 0.401,
+    "source": "Opal",
+    "target": "Obscura",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.0641,
     "brightness": 0.1219,
-    "warmth": 0.9718,
-    "movement": 0.89,
     "density": 0.4943,
+    "movement": 0.89,
     "space": 0.8956,
-    "aggression": 0.0641
+    "warmth": 0.9718
   },
+  "engines": [
+    "Opal",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5494,
-    "MOVEMENT": 0.9097,
     "COUPLING": 0.5113,
+    "MOVEMENT": 0.9097,
     "SPACE": 0.894
   },
+  "mood": "Atmosphere",
+  "name": "DARK_HOT_KINETIC_VAST_GENTLE_ATM_3",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.5586,
+      "macro_coupling": 0.5113,
+      "macro_movement": 0.9038,
+      "macro_space": 0.9053
+    },
+    "Opal": {
+      "macro_character": 0.5403,
+      "macro_coupling": 0.5114,
+      "macro_movement": 0.9156,
+      "macro_space": 0.8827
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -47,5 +54,6 @@
     "kinetic",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

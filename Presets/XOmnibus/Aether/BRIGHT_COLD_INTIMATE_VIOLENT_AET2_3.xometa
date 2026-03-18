@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_AET2_3",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6724,
+    "source": "Obscura",
+    "target": "Ombre",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.9026,
+    "brightness": 0.903,
+    "density": 0.5161,
+    "movement": 0.4279,
+    "space": 0.0429,
+    "warmth": 0.0285
+  },
   "engines": [
-    "OBSCURA",
-    "OMBRE"
+    "Obscura",
+    "Ombre"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8909,
+    "COUPLING": 0.6724,
+    "MOVEMENT": 0.3974,
+    "SPACE": 0.0429
+  },
+  "mood": "Aether",
+  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_AET2_3",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.8822,
-      "macro_movement": 0.4107,
       "macro_coupling": 0.511,
+      "macro_movement": 0.4107,
       "macro_space": 0.0328
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.8996,
-      "macro_movement": 0.3841,
       "macro_coupling": 0.5494,
+      "macro_movement": 0.3841,
       "macro_space": 0.0318
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBSCURA",
-    "target": "OMBRE",
-    "amount": 0.6724
-  },
-  "dna": {
-    "brightness": 0.903,
-    "warmth": 0.0285,
-    "space": 0.0429,
-    "aggression": 0.9026,
-    "movement": 0.4279,
-    "density": 0.5161
-  },
-  "macros": {
-    "CHARACTER": 0.8909,
-    "MOVEMENT": 0.3974,
-    "COUPLING": 0.6724,
-    "SPACE": 0.0429
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +56,6 @@
     "intimate",
     "violent",
     "crystalline"
-  ]
+  ],
+  "version": "1.0"
 }

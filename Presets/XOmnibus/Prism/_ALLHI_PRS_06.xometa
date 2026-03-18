@@ -1,49 +1,57 @@
 {
-  "name": "ALLHI PRS 06",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.868,
+    "source": "Ocelot",
+    "target": "Osteria",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.639,
+    "brightness": 0.907,
+    "density": 0.901,
+    "movement": 0.965,
+    "space": 0.972,
+    "warmth": 0.951
+  },
   "engines": [
-    "OCELOT",
-    "OSTERIA"
+    "Ocelot",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.929,
+    "COUPLING": 0.805,
+    "MOVEMENT": 0.933,
+    "SPACE": 0.972
+  },
+  "mood": "Prism",
+  "name": "ALLHI PRS 06",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.929,
-      "macro_movement": 0.933,
       "macro_coupling": 0.805,
+      "macro_movement": 0.933,
       "macro_space": 0.972
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.929,
-      "macro_movement": 0.933,
       "macro_coupling": 0.805,
+      "macro_movement": 0.933,
       "macro_space": 0.972
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OCELOT",
-    "target": "OSTERIA",
-    "amount": 0.868
-  },
-  "dna": {
-    "brightness": 0.907,
-    "warmth": 0.951,
-    "movement": 0.965,
-    "density": 0.901,
-    "space": 0.972,
-    "aggression": 0.639
-  },
-  "macros": {
-    "CHARACTER": 0.929,
-    "MOVEMENT": 0.933,
-    "COUPLING": 0.805,
-    "SPACE": 0.972
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

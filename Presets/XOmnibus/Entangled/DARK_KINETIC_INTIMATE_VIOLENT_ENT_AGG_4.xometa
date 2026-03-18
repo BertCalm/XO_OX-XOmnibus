@@ -1,50 +1,58 @@
 {
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_ENT_AGG_4",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORBITAL",
-    "OCELOT"
-  ],
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.576,
-      "macro_movement": 0.845,
-      "macro_coupling": 0.934,
-      "macro_space": 0.084
-    },
-    "OCELOT": {
-      "macro_character": 0.377,
-      "macro_movement": 0.856,
-      "macro_coupling": 0.906,
-      "macro_space": 0.087
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ORBITAL",
-    "target": "OCELOT",
-    "amount": 0.801
+    "amount": 0.801,
+    "source": "Orbital",
+    "target": "Ocelot",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.885,
     "brightness": 0.091,
-    "warmth": 0.539,
-    "movement": 0.873,
     "density": 0.615,
+    "movement": 0.873,
     "space": 0.047,
-    "aggression": 0.885
+    "warmth": 0.539
   },
+  "engines": [
+    "Orbital",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.476,
-    "MOVEMENT": 0.873,
     "COUPLING": 0.934,
+    "MOVEMENT": 0.873,
     "SPACE": 0.047
   },
+  "mood": "Entangled",
+  "name": "DARK_KINETIC_INTIMATE_VIOLENT_ENT_AGG_4",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.377,
+      "macro_coupling": 0.906,
+      "macro_movement": 0.856,
+      "macro_space": 0.087
+    },
+    "Orbital": {
+      "macro_character": 0.576,
+      "macro_coupling": 0.934,
+      "macro_movement": 0.845,
+      "macro_space": 0.084
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "dark",
     "kinetic",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

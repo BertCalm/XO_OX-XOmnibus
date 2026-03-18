@@ -1,14 +1,76 @@
 {
-  "schema_version": 1,
-  "name": "Amber Dusk Swell",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.75,
+        "source": "Ombre",
+        "target": "Oblong",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Bob's amber warmth pooling at the low end of the shadow gradient — heat settling into night.",
+  "dna": {
+    "aggression": 0.343,
+    "brightness": 0.499,
+    "density": 0.688,
+    "movement": 0.416,
+    "space": 0.582,
+    "warmth": 0.591
+  },
   "engines": [
     "Ombre",
     "Oblong"
   ],
-  "author": "XO_OX Deep Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "Bob's amber warmth pooling at the low end of the shadow gradient — heat settling into night.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Amber Dusk Swell",
+  "parameters": {
+    "Oblong": {
+      "bob_filterCutoff": 9386.7,
+      "bob_level": 0.653
+    },
+    "Ombre": {
+      "ombre_ampAttack": 0.0204,
+      "ombre_ampDecay": 0.353,
+      "ombre_ampRelease": 1.91,
+      "ombre_ampSustain": 0.515,
+      "ombre_blend": 0.41,
+      "ombre_crossfadeRate": 0.176,
+      "ombre_duskPosition": 0.644,
+      "ombre_filterCutoff": 6574.0,
+      "ombre_filterReso": 0.36,
+      "ombre_forgetRate": 0.262,
+      "ombre_level": 0.731,
+      "ombre_lfo1Depth": 0.481,
+      "ombre_lfo1Rate": 1.005,
+      "ombre_lfo2Depth": 0.445,
+      "ombre_lfo2Rate": 0.671,
+      "ombre_memoryDepth": 0.774,
+      "ombre_modAttack": 0.0187,
+      "ombre_modDecay": 0.263,
+      "ombre_modRelease": 0.688,
+      "ombre_modSustain": 0.454,
+      "ombre_narrativeA": 0.834,
+      "ombre_narrativeB": 0.517,
+      "ombre_reverbDamp": 0.654,
+      "ombre_reverbSize": 0.722,
+      "ombre_shadowAmount": 0.483,
+      "ombre_spaceMix": 0.577,
+      "ombre_toneA": 3056.9,
+      "ombre_toneB": 1357.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -18,68 +80,6 @@
     "twilight",
     "liminal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "Ombre": {
-      "ombre_blend": 0.41,
-      "ombre_memoryDepth": 0.774,
-      "ombre_forgetRate": 0.262,
-      "ombre_shadowAmount": 0.483,
-      "ombre_duskPosition": 0.644,
-      "ombre_narrativeA": 0.834,
-      "ombre_narrativeB": 0.517,
-      "ombre_crossfadeRate": 0.176,
-      "ombre_toneA": 3056.9,
-      "ombre_toneB": 1357.3,
-      "ombre_filterCutoff": 6574.0,
-      "ombre_filterReso": 0.36,
-      "ombre_level": 0.731,
-      "ombre_ampAttack": 0.0204,
-      "ombre_ampDecay": 0.353,
-      "ombre_ampSustain": 0.515,
-      "ombre_ampRelease": 1.91,
-      "ombre_modAttack": 0.0187,
-      "ombre_modDecay": 0.263,
-      "ombre_modSustain": 0.454,
-      "ombre_modRelease": 0.688,
-      "ombre_lfo1Rate": 1.005,
-      "ombre_lfo1Depth": 0.481,
-      "ombre_lfo2Rate": 0.671,
-      "ombre_lfo2Depth": 0.445,
-      "ombre_spaceMix": 0.577,
-      "ombre_reverbSize": 0.722,
-      "ombre_reverbDamp": 0.654
-    },
-    "Oblong": {
-      "bob_level": 0.653,
-      "bob_filterCutoff": 9386.7
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "HARMONIC_BLEND",
-        "source": "Ombre",
-        "target": "Oblong",
-        "amount": 0.75
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.499,
-    "warmth": 0.591,
-    "movement": 0.416,
-    "density": 0.688,
-    "space": 0.582,
-    "aggression": 0.343
-  }
+  "version": "1.0.0"
 }

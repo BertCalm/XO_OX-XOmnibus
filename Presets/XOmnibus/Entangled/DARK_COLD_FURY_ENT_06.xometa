@@ -1,45 +1,52 @@
 {
-  "name": "DARK COLD FURY ENT 06",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.986,
+    "source": "Obbligato",
+    "target": "Origami",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.943,
+    "brightness": 0.044,
+    "density": 0.526,
+    "movement": 0.568,
+    "space": 0.387,
+    "warmth": 0.041
+  },
   "engines": [
-    "OBBLIGATO",
-    "ORIGAMI"
+    "Obbligato",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.042,
+    "COUPLING": 0.783,
+    "MOVEMENT": 0.568,
+    "SPACE": 0.387
+  },
+  "mood": "Entangled",
+  "name": "DARK COLD FURY ENT 06",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.042,
-      "macro_movement": 0.568,
       "macro_coupling": 0.783,
+      "macro_movement": 0.568,
       "macro_space": 0.387
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.074,
-      "macro_movement": 0.642,
       "macro_coupling": 0.368,
+      "macro_movement": 0.642,
       "macro_space": 0.483
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBBLIGATO",
-    "target": "ORIGAMI",
-    "amount": 0.986
-  },
-  "dna": {
-    "brightness": 0.044,
-    "warmth": 0.041,
-    "movement": 0.568,
-    "density": 0.526,
-    "space": 0.387,
-    "aggression": 0.943
-  },
-  "macros": {
-    "CHARACTER": 0.042,
-    "MOVEMENT": 0.568,
-    "COUPLING": 0.783,
-    "SPACE": 0.387
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
@@ -47,5 +54,6 @@
     "aggressive",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

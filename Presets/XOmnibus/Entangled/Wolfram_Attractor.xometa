@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Wolfram Attractor",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.9,
+        "engineA": "Outwit",
+        "engineB": "Ouroboros",
+        "type": "TIMBRAL_WARP"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Ouroboros timbral warp modulating Outwit arm evolution rate — strange attractor as cellular rule.",
+  "dna": {
+    "aggression": 0.95,
+    "brightness": 0.52,
+    "density": 0.68,
+    "movement": 0.92,
+    "space": 0.18,
+    "warmth": 0.2
+  },
   "engines": [
-    "OUTWIT",
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ouroboros timbral warp modulating Outwit arm evolution rate \u2014 strange attractor as cellular rule.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "movement",
-    "outwit",
-    "ouroboros",
-    "wolfram"
+    "Outwit",
+    "Ouroboros"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,29 @@
   ],
   "macros": {
     "CHARACTER": 0.8,
-    "MOVEMENT": 0.92,
     "COUPLING": 0.9,
+    "MOVEMENT": 0.92,
     "SPACE": 0.18
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.52,
-    "warmth": 0.2,
-    "movement": 0.92,
-    "density": 0.68,
-    "space": 0.18,
-    "aggression": 0.95
-  },
-  "sonic_dna": {
-    "brightness": 0.52,
-    "warmth": 0.2,
-    "movement": 0.92,
-    "density": 0.68,
-    "space": 0.18,
-    "aggression": 0.95
-  },
+  "mood": "Entangled",
+  "name": "Wolfram Attractor",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OUTWIT",
-        "engineB": "OUROBOROS",
-        "type": "TIMBRAL_WARP",
-        "amount": 0.9
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.95,
+    "brightness": 0.52,
+    "density": 0.68,
+    "movement": 0.92,
+    "space": 0.18,
+    "warmth": 0.2
+  },
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "outwit",
+    "ouroboros",
+    "wolfram"
+  ],
+  "version": "1.0.0"
 }

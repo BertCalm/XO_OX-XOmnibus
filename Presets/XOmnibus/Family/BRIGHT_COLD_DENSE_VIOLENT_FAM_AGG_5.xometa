@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_COLD_DENSE_VIOLENT_FAM_AGG_5",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OTTONI",
-    "ORPHICA"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.831,
-      "macro_movement": 0.433,
-      "macro_coupling": 0.5,
-      "macro_space": 0.735
-    },
-    "ORPHICA": {
-      "macro_character": 0.868,
-      "macro_movement": 0.438,
-      "macro_coupling": 0.46,
-      "macro_space": 0.77
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OTTONI",
-    "target": "ORPHICA",
-    "amount": 0.783
+    "amount": 0.783,
+    "source": "Ottoni",
+    "target": "Orphica",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.968,
     "brightness": 0.925,
-    "warmth": 0.051,
-    "movement": 0.453,
     "density": 0.933,
+    "movement": 0.453,
     "space": 0.687,
-    "aggression": 0.968
+    "warmth": 0.051
   },
+  "engines": [
+    "Ottoni",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.831,
-    "MOVEMENT": 0.433,
     "COUPLING": 0.5,
+    "MOVEMENT": 0.433,
     "SPACE": 0.735
   },
+  "mood": "Family",
+  "name": "BRIGHT_COLD_DENSE_VIOLENT_FAM_AGG_5",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.868,
+      "macro_coupling": 0.46,
+      "macro_movement": 0.438,
+      "macro_space": 0.77
+    },
+    "Ottoni": {
+      "macro_character": 0.831,
+      "macro_coupling": 0.5,
+      "macro_movement": 0.433,
+      "macro_space": 0.735
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "bright",
     "cold",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

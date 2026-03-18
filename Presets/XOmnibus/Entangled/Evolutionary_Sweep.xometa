@@ -1,14 +1,66 @@
 {
-  "schema_version": 1,
-  "name": "Evolutionary Sweep",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Odyssey",
+        "engineB": "Organon",
+        "type": "Env->Morph"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-10",
+  "description": "DRIFT's long envelopes sweep Organon's isotope balance. Spectral co-evolution.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.45,
+    "density": 0.45,
+    "movement": 0.5,
+    "space": 0.45,
+    "warmth": 0.55
+  },
   "engines": [
     "Odyssey",
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "DRIFT's long envelopes sweep Organon's isotope balance. Spectral co-evolution.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "DRIFT ENV",
+    "ORGANISM",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Evolutionary Sweep",
+  "parameters": {
+    "Odyssey": {
+      "drift_delay_enable": 1.0,
+      "drift_hazeAmount": 0.3,
+      "drift_level": -3.0,
+      "drift_oscA_mode": 1,
+      "drift_osc_b_mode": 2
+    },
+    "Organon": {
+      "organon_catalystDrive": 0.45,
+      "organon_dampingCoeff": 0.1,
+      "organon_enzymeSelect": 1000.0,
+      "organon_isotopeBalance": 0.5,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.4,
+      "organon_metabolicRate": 0.4,
+      "organon_noiseColor": 0.5,
+      "organon_phasonShift": 0.08,
+      "organon_signalFlux": 0.7
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "drift",
     "organon",
@@ -16,58 +68,6 @@
     "evolution",
     "spectral"
   ],
-  "macroLabels": [
-    "DRIFT ENV",
-    "ORGANISM",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Odyssey": {
-      "drift_oscA_mode": 1,
-      "drift_osc_b_mode": 2,
-      "drift_hazeAmount": 0.3,
-      "drift_delay_enable": 1.0,
-      "drift_level": -3.0
-    },
-    "Organon": {
-      "organon_metabolicRate": 0.4,
-      "organon_enzymeSelect": 1000.0,
-      "organon_catalystDrive": 0.45,
-      "organon_dampingCoeff": 0.1,
-      "organon_signalFlux": 0.7,
-      "organon_phasonShift": 0.08,
-      "organon_isotopeBalance": 0.5,
-      "organon_lockIn": 0.0,
-      "organon_membrane": 0.4,
-      "organon_noiseColor": 0.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "Organon",
-        "type": "Env->Morph",
-        "amount": 0.6
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.55,
-    "movement": 0.5,
-    "density": 0.45,
-    "space": 0.45,
-    "aggression": 0.08
-  }
+  "version": "1.0.0"
 }

@@ -1,14 +1,75 @@
 {
-  "schema_version": 1,
-  "name": "Velocity of Metabolism",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.9,
+        "engineA": "Ouroboros",
+        "engineB": "Organon",
+        "type": "Audio->AM"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "B007 Velocity Coupling Outputs feed directly into Organon's metabolic rate. Harder playing accelerates the organism.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.186,
+    "density": 0.675,
+    "movement": 0.936,
+    "space": 0.669,
+    "warmth": 0.5
+  },
   "engines": [
     "Ouroboros",
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "B007 Velocity Coupling Outputs feed directly into Organon's metabolic rate. Harder playing accelerates the organism.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.95,
+    "MOVEMENT": 0.8,
+    "SPACE": 0.45
+  },
+  "mood": "Entangled",
+  "name": "Velocity of Metabolism",
+  "parameters": {
+    "Organon": {
+      "organon_catalystDrive": 1.2,
+      "organon_dampingCoeff": 0.4,
+      "organon_enzymeSelect": 750.0,
+      "organon_isotopeBalance": 0.5,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.55,
+      "organon_metabolicRate": 4.5,
+      "organon_noiseColor": 0.6,
+      "organon_phasonShift": 0.25,
+      "organon_signalFlux": 0.85
+    },
+    "Ouroboros": {
+      "ouro_chaosIndex": 0.55,
+      "ouro_damping": 0.25,
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.4,
+      "ouro_phi": 0.35,
+      "ouro_rate": 90.0,
+      "ouro_theta": 0.0,
+      "ouro_topology": 1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "marquee",
     "velocity",
@@ -18,67 +79,6 @@
     "entangled",
     "ouroboros-organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.55,
-    "MOVEMENT": 0.8,
-    "COUPLING": 0.95,
-    "SPACE": 0.45
-  },
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Ouroboros": {
-      "ouro_topology": 1,
-      "ouro_rate": 90.0,
-      "ouro_chaosIndex": 0.55,
-      "ouro_leash": 0.4,
-      "ouro_theta": 0.0,
-      "ouro_phi": 0.35,
-      "ouro_damping": 0.25,
-      "ouro_injection": 0.0
-    },
-    "Organon": {
-      "organon_metabolicRate": 4.5,
-      "organon_enzymeSelect": 750.0,
-      "organon_catalystDrive": 1.2,
-      "organon_dampingCoeff": 0.4,
-      "organon_signalFlux": 0.85,
-      "organon_phasonShift": 0.25,
-      "organon_isotopeBalance": 0.5,
-      "organon_lockIn": 0.0,
-      "organon_membrane": 0.55,
-      "organon_noiseColor": 0.6
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Organon",
-        "type": "Audio->AM",
-        "amount": 0.9
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.186,
-    "warmth": 0.5,
-    "movement": 0.936,
-    "density": 0.675,
-    "space": 0.669,
-    "aggression": 0.55
-  }
+  "version": "1.0.0"
 }

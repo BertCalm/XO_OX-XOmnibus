@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK VAST KINETIC VIOLENT 3",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.1085,
-    "space": 0.9273,
-    "movement": 0.8988,
-    "aggression": 0.9362,
-    "warmth": 0.5894,
-    "density": 0.433
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Extreme",
+  "couplingType": "DRIFT",
+  "description": "Ultra-diverse Entangled preset — dark vast kinetic violent. Designed for DRIFT coupling with XObsidian.",
   "dna": {
-    "brightness": 0.1085,
-    "space": 0.9273,
-    "movement": 0.8988,
     "aggression": 0.9362,
-    "warmth": 0.5894,
-    "density": 0.433
+    "brightness": 0.1085,
+    "density": 0.433,
+    "movement": 0.8988,
+    "space": 0.9273,
+    "warmth": 0.5894
   },
   "engines": [
-    "XObsidian"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark vast kinetic violent. Designed for DRIFT coupling with XObsidian.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "drift",
-    "obsidian"
+    "Obsidian"
   ],
   "macroLabels": [
     "FORCE",
@@ -36,15 +23,28 @@
     "SURGE",
     "RADIANCE"
   ],
-  "couplingType": "DRIFT",
-  "couplingIntensity": "Extreme",
+  "mood": "Entangled",
+  "name": "DARK VAST KINETIC VIOLENT 3",
   "parameters": {
-    "XObsidian": {
-      "couplingLevel": 0.699,
-      "couplingBus": 2
+    "Obsidian": {
+      "couplingBus": 2,
+      "couplingLevel": 0.699
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9362,
+    "brightness": 0.1085,
+    "density": 0.433,
+    "movement": 0.8988,
+    "space": 0.9273,
+    "warmth": 0.5894
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "drift",
+    "obsidian"
+  ],
+  "version": "1.0.0"
 }

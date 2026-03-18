@@ -1,48 +1,56 @@
 {
-  "name": "TORRENT 5",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OSPREY",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.55,
-      "macro_movement": 0.947,
-      "macro_coupling": 0.29,
-      "macro_space": 0.3
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.158,
-      "macro_movement": 0.951,
-      "macro_coupling": 0.71,
-      "macro_space": 0.7
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OSPREY",
-    "target": "ODDOSCAR",
-    "amount": 0.587
+    "amount": 0.587,
+    "source": "Osprey",
+    "target": "OddOscar",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.618,
     "brightness": 0.361,
-    "warmth": 0.224,
-    "movement": 0.949,
     "density": 0.985,
+    "movement": 0.949,
     "space": 0.792,
-    "aggression": 0.618
+    "warmth": 0.224
   },
+  "engines": [
+    "Osprey",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.494,
-    "MOVEMENT": 0.949,
     "COUPLING": 0.361,
+    "MOVEMENT": 0.949,
     "SPACE": 0.572
   },
+  "mood": "Entangled",
+  "name": "TORRENT 5",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.158,
+      "macro_coupling": 0.71,
+      "macro_movement": 0.951,
+      "macro_space": 0.7
+    },
+    "Osprey": {
+      "macro_character": 0.55,
+      "macro_coupling": 0.29,
+      "macro_movement": 0.947,
+      "macro_space": 0.3
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "rupture",
     "intensity"
-  ]
+  ],
+  "version": "1.0"
 }

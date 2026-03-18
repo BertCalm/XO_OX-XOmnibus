@@ -1,49 +1,57 @@
 {
-  "name": "Darkroom Bounce",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OBSCURA",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "OBSCURA": {
-      "macro_character": 0.355,
-      "macro_movement": 0.255,
-      "macro_coupling": 0.555,
-      "macro_space": 0.605
-    },
-    "OBLIQUE": {
-      "macro_character": 0.795,
-      "macro_movement": 0.745,
-      "macro_coupling": 0.645,
-      "macro_space": 0.545
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RHYTHM_SYNC",
-    "source": "OBSCURA",
-    "target": "OBLIQUE",
-    "amount": 0.751
+    "amount": 0.751,
+    "source": "Obscura",
+    "target": "Oblique",
+    "type": "RHYTHM_SYNC"
   },
   "dna": {
+    "aggression": 0.7,
     "brightness": 0.55,
-    "warmth": 0.2,
-    "movement": 0.88,
     "density": 0.6,
+    "movement": 0.88,
     "space": 0.5,
-    "aggression": 0.7
+    "warmth": 0.2
   },
+  "engines": [
+    "Obscura",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.575,
-    "MOVEMENT": 0.5,
     "COUPLING": 0.751,
+    "MOVEMENT": 0.5,
     "SPACE": 0.575
   },
+  "mood": "Entangled",
+  "name": "Darkroom Bounce",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.795,
+      "macro_coupling": 0.645,
+      "macro_movement": 0.745,
+      "macro_space": 0.545
+    },
+    "Obscura": {
+      "macro_character": 0.355,
+      "macro_coupling": 0.555,
+      "macro_movement": 0.255,
+      "macro_space": 0.605
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "rhythmic"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "DARK COLD DENSE BALANCED AET SPC 2",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "ORACLE",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.072,
-      "macro_movement": 0.699,
-      "macro_coupling": 0.806,
-      "macro_space": 0.498
-    },
-    "OBSCURA": {
-      "macro_character": 0.078,
-      "macro_movement": 0.692,
-      "macro_coupling": 0.812,
-      "macro_space": 0.496
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORACLE",
-    "target": "OBSCURA",
-    "amount": 0.488
+    "amount": 0.488,
+    "source": "Oracle",
+    "target": "Obscura",
+    "type": "SPECTRAL_MORPH"
   },
   "dna": {
+    "aggression": 0.961,
     "brightness": 0.084,
-    "warmth": 0.06,
-    "movement": 0.699,
     "density": 0.887,
+    "movement": 0.699,
     "space": 0.498,
-    "aggression": 0.961
+    "warmth": 0.06
   },
+  "engines": [
+    "Oracle",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.072,
-    "MOVEMENT": 0.699,
     "COUPLING": 0.806,
+    "MOVEMENT": 0.699,
     "SPACE": 0.498
   },
+  "mood": "Aether",
+  "name": "DARK COLD DENSE BALANCED AET SPC 2",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.078,
+      "macro_coupling": 0.812,
+      "macro_movement": 0.692,
+      "macro_space": 0.496
+    },
+    "Oracle": {
+      "macro_character": 0.072,
+      "macro_coupling": 0.806,
+      "macro_movement": 0.699,
+      "macro_space": 0.498
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -47,5 +54,6 @@
     "space-mid",
     "aggressive",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

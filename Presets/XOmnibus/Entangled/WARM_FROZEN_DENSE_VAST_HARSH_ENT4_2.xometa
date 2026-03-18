@@ -1,45 +1,52 @@
 {
-  "name": "WARM_FROZEN_DENSE_VAST_HARSH_ENT4_2",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERBITE",
-    "OLE"
-  ],
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.657,
-      "macro_movement": 0.08,
-      "macro_coupling": 0.965,
-      "macro_space": 0.934
-    },
-    "OLE": {
-      "macro_character": 0.678,
-      "macro_movement": 0.09,
-      "macro_coupling": 0.964,
-      "macro_space": 0.917
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OVERBITE",
-    "target": "OLE",
-    "amount": 0.881
+    "amount": 0.881,
+    "source": "Overbite",
+    "target": "Ole",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
+    "aggression": 0.875,
     "brightness": 0.421,
-    "warmth": 0.952,
-    "movement": 0.082,
     "density": 0.966,
+    "movement": 0.082,
     "space": 0.938,
-    "aggression": 0.875
+    "warmth": 0.952
   },
+  "engines": [
+    "Overbite",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.667,
-    "MOVEMENT": 0.085,
     "COUPLING": 0.881,
+    "MOVEMENT": 0.085,
     "SPACE": 0.925
   },
+  "mood": "Entangled",
+  "name": "WARM_FROZEN_DENSE_VAST_HARSH_ENT4_2",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.678,
+      "macro_coupling": 0.964,
+      "macro_movement": 0.09,
+      "macro_space": 0.917
+    },
+    "Overbite": {
+      "macro_character": 0.657,
+      "macro_coupling": 0.965,
+      "macro_movement": 0.08,
+      "macro_space": 0.934
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +55,6 @@
     "dense",
     "vast",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

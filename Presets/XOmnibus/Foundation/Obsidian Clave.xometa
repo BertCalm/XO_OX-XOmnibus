@@ -1,91 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "Obsidian Clave",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-05",
+  "description": "Dark glassy clave pattern with FM-generated tones and subtle coupling resonance. Ancient and modern.",
+  "dna": {
+    "aggression": 0.277,
+    "brightness": 0.406,
+    "density": 0.217,
+    "movement": 0.211,
+    "space": 0.182,
+    "warmth": 0.161
+  },
   "engines": [
     "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dark glassy clave pattern with FM-generated tones and subtle coupling resonance. Ancient and modern.",
-  "tags": [
-    "tribal",
-    "clave",
-    "dark",
-    "glassy",
-    "rhythmic"
-  ],
+  "legacy": {
+    "sourceCategory": "Grounded",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "Snap+Morph",
     "Bloom",
     "Coupling",
     "Space"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": 115,
-  "created": "2026-03-05",
-  "legacy": {
-    "sourceInstrument": "OddfeliX",
-    "sourceCategory": "Grounded",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Obsidian Clave",
   "parameters": {
     "OddfeliX": {
+      "compAttack": 6.236,
+      "compRatio": 2.309,
+      "compRelease": 89.273,
+      "compThreshold": -10.618,
+      "compressorEnabled": 1,
       "couplingAmount": 0.134,
-      "masterBalance": -0.319,
-      "xOscMode": 0,
-      "xSnap": 0.425,
-      "xDecay": 0.193,
-      "xFilterCutoff": 292.733,
-      "xFilterReso": 0.225,
-      "xDetune": 6.236,
-      "xLevel": 0.765,
-      "xPitchLock": 0,
-      "xUnison": 0,
-      "xPolyphony": 0,
-      "oMorph": 0.185,
-      "oBloom": 0.193,
-      "oDecay": 0.655,
-      "oSustain": 0.131,
-      "oRelease": 0.193,
-      "oFilterCutoff": 224.186,
-      "oFilterReso": 0.494,
-      "oDrift": 0.125,
-      "oSub": 0.231,
-      "oDetune": 6.236,
-      "oLevel": 0.219,
-      "oPolyphony": 1,
+      "delayEnabled": 1,
+      "delayFeedback": 0.219,
+      "delayMix": 0.115,
+      "delayTime": 0.391,
+      "delayWobble": 0.065,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
       "macro1": 0.269,
       "macro2": 0.535,
       "macro3": 0.51,
       "macro4": 0.412,
-      "delayEnabled": 1,
-      "delayTime": 0.391,
-      "delayFeedback": 0.219,
-      "delayMix": 0.115,
-      "delayWobble": 0.065,
-      "reverbEnabled": 1,
-      "reverbDecay": 0.322,
-      "reverbSize": 0.337,
-      "reverbMix": 0.112,
-      "reverbDamping": 0.525,
-      "phaserEnabled": 0,
-      "phaserRate": 0.5,
+      "masterBalance": -0.319,
+      "oBloom": 0.193,
+      "oDecay": 0.655,
+      "oDetune": 6.236,
+      "oDrift": 0.125,
+      "oFilterCutoff": 224.186,
+      "oFilterReso": 0.494,
+      "oLevel": 0.219,
+      "oMorph": 0.185,
+      "oPolyphony": 1,
+      "oRelease": 0.193,
+      "oSub": 0.231,
+      "oSustain": 0.131,
       "phaserDepth": 0.5,
+      "phaserEnabled": 0,
       "phaserMix": 0.3,
-      "lofiEnabled": 0,
-      "lofiBitDepth": 12.0,
-      "lofiRateReduce": 1.0,
-      "lofiWowFlutter": 0.0,
-      "lofiMix": 0.3,
-      "compressorEnabled": 1,
-      "compThreshold": -10.618,
-      "compRatio": 2.309,
-      "compAttack": 6.236,
-      "compRelease": 89.273
+      "phaserRate": 0.5,
+      "reverbDamping": 0.525,
+      "reverbDecay": 0.322,
+      "reverbEnabled": 1,
+      "reverbMix": 0.112,
+      "reverbSize": 0.337,
+      "xDecay": 0.193,
+      "xDetune": 6.236,
+      "xFilterCutoff": 292.733,
+      "xFilterReso": 0.225,
+      "xLevel": 0.765,
+      "xOscMode": 0,
+      "xPitchLock": 0,
+      "xPolyphony": 0,
+      "xSnap": 0.425,
+      "xUnison": 0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": {
     "bpm": 115.0,
     "swing": 0.012,
@@ -96,46 +95,46 @@
         "muted": false,
         "steps": [
           {
+            "active": false,
             "index": 0,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
+            "active": false,
             "index": 3,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
+            "active": false,
             "index": 6,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
+            "active": false,
             "index": 9,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
+            "active": false,
             "index": 12,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
-            "index": 15,
             "active": false,
+            "index": 15,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           }
         ]
       },
@@ -157,29 +156,30 @@
         "muted": false,
         "steps": [
           {
-            "index": 7,
             "active": false,
+            "index": 7,
             "note": 64,
-            "velocity": 0.5567388837357841,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.5567388837357841
           },
           {
-            "index": 14,
             "active": false,
+            "index": 14,
             "note": 68,
-            "velocity": 0.8694317556846496,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8694317556846496
           }
         ]
       }
     ]
   },
-  "dna": {
-    "brightness": 0.406,
-    "warmth": 0.161,
-    "movement": 0.211,
-    "density": 0.217,
-    "space": 0.182,
-    "aggression": 0.277
-  }
+  "tags": [
+    "tribal",
+    "clave",
+    "dark",
+    "glassy",
+    "rhythmic"
+  ],
+  "tempo": 115,
+  "version": "1.0.0"
 }

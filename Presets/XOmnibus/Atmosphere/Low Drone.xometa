@@ -1,63 +1,63 @@
 {
-  "schema_version": 1,
-  "name": "Abyssal Fundamental",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Ethereal textures wash with voyager drift and warm haze.",
+  "dna": {
+    "aggression": 0.256,
+    "brightness": 0.294,
+    "density": 0.21,
+    "movement": 0.03,
+    "space": 0.33,
+    "warmth": 0.654
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ethereal textures wash with voyager drift and warm haze.",
-  "tags": [
-    "drifty",
-    "saturated",
-    "spacious",
-    "slow-attack"
-  ],
+  "legacy": {
+    "sourceCategory": "Textures",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Textures",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Abyssal Fundamental",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 0.0,
-      "drift_oscA_level": 0.8,
-      "drift_oscB_mode": 0.0,
-      "drift_oscB_shape": 0.0,
-      "drift_oscB_level": 0.7,
-      "drift_oscB_tune": -12.0,
-      "drift_subLevel": 0.6,
-      "drift_hazeAmount": 0.4,
+      "drift_attack": 1000.0,
+      "drift_driftDepth": 0.5,
+      "drift_driftRate": 0.04,
       "drift_filterCutoff": 800.0,
       "drift_filterReso": 0.3,
       "drift_filterSlope": 1.0,
-      "drift_driftDepth": 0.5,
-      "drift_driftRate": 0.04,
-      "drift_attack": 1000.0,
-      "drift_sustain": 0.8,
+      "drift_hazeAmount": 0.4,
+      "drift_level": -5.0,
+      "drift_oscA_level": 0.8,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscB_level": 0.7,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 0.0,
+      "drift_oscB_tune": -12.0,
       "drift_release": 3000.0,
-      "drift_level": -5.0
+      "drift_subLevel": 0.6,
+      "drift_sustain": 0.8
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.294,
-    "warmth": 0.654,
-    "movement": 0.03,
-    "density": 0.21,
-    "space": 0.33,
-    "aggression": 0.256
-  }
+  "tags": [
+    "drifty",
+    "saturated",
+    "spacious",
+    "slow-attack"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

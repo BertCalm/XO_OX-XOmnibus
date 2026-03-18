@@ -1,49 +1,57 @@
 {
-  "name": "BRUTAL TETHER",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.423,
+    "source": "Octopus",
+    "target": "Orca",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.965,
+    "brightness": 0.103,
+    "density": 0.714,
+    "movement": 0.621,
+    "space": 0.433,
+    "warmth": 0.561
+  },
   "engines": [
-    "OCTOPUS",
-    "ORCA"
+    "Octopus",
+    "Orca"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.158,
+    "COUPLING": 0.452,
+    "MOVEMENT": 0.148,
+    "SPACE": 0.487
+  },
+  "mood": "Entangled",
+  "name": "BRUTAL TETHER",
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.611,
-      "macro_movement": 0.498,
       "macro_coupling": 0.602,
+      "macro_movement": 0.498,
       "macro_space": 0.332
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.865,
-      "macro_movement": 0.486,
       "macro_coupling": 0.744,
+      "macro_movement": 0.486,
       "macro_space": 0.648
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OCTOPUS",
-    "target": "ORCA",
-    "amount": 0.423
-  },
-  "dna": {
-    "brightness": 0.103,
-    "warmth": 0.561,
-    "movement": 0.621,
-    "density": 0.714,
-    "space": 0.433,
-    "aggression": 0.965
-  },
-  "macros": {
-    "CHARACTER": 0.158,
-    "MOVEMENT": 0.148,
-    "COUPLING": 0.452,
-    "SPACE": 0.487
-  },
+  "schema_version": 1,
   "tags": [
     "obliterating",
     "fury",
     "violent",
     "entangled"
-  ]
+  ],
+  "version": "1.0"
 }

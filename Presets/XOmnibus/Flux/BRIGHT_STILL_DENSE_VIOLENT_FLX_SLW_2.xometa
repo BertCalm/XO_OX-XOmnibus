@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_STILL_DENSE_VIOLENT_FLX_SLW_2",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.659,
+    "source": "Organon",
+    "target": "Overdub",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.89,
+    "brightness": 0.89,
+    "density": 0.967,
+    "movement": 0.055,
+    "space": 0.579,
+    "warmth": 0.441
+  },
   "engines": [
-    "ORGANON",
-    "OVERDUB"
+    "Organon",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.928,
+    "COUPLING": 0.688,
+    "MOVEMENT": 0.055,
+    "SPACE": 0.579
+  },
+  "mood": "Flux",
+  "name": "BRIGHT_STILL_DENSE_VIOLENT_FLX_SLW_2",
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.868,
-      "macro_movement": 0.05,
       "macro_coupling": 0.742,
+      "macro_movement": 0.05,
       "macro_space": 0.579
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.91,
-      "macro_movement": 0.057,
       "macro_coupling": 0.816,
+      "macro_movement": 0.057,
       "macro_space": 0.567
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORGANON",
-    "target": "OVERDUB",
-    "amount": 0.659
-  },
-  "dna": {
-    "brightness": 0.89,
-    "warmth": 0.441,
-    "movement": 0.055,
-    "density": 0.967,
-    "space": 0.579,
-    "aggression": 0.89
-  },
-  "macros": {
-    "CHARACTER": 0.928,
-    "MOVEMENT": 0.055,
-    "COUPLING": 0.688,
-    "SPACE": 0.579
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +54,6 @@
     "dense",
     "violent",
     "frozen-instability"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,17 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Ohm Zenith",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OHM — bright extreme brightness preset for Atmosphere.",
+  "dna": {
+    "aggression": 0.77,
+    "brightness": 0.98,
+    "density": 0.6,
+    "movement": 0.48,
+    "space": 0.62,
+    "warmth": 0.66
+  },
   "engines": [
-    "OHM"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "OHM \u2014 bright extreme brightness preset for Atmosphere.",
-  "tags": [
-    "atmosphere",
-    "bright",
-    "extreme-brightness"
+    "Ohm"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -19,44 +22,41 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "sonic_dna": {
-    "brightness": 0.98,
-    "warmth": 0.66,
-    "movement": 0.48,
-    "density": 0.6,
-    "space": 0.62,
-    "aggression": 0.77
-  },
-  "dna": {
-    "brightness": 0.98,
-    "warmth": 0.66,
-    "movement": 0.48,
-    "density": 0.6,
-    "space": 0.62,
-    "aggression": 0.77
-  },
+  "mood": "Atmosphere",
+  "name": "Ohm Zenith",
   "parameters": {
-    "OHM": {
-      "ohm_commune": 0.43,
-      "ohm_meddling": 0.88,
-      "ohm_filterCutoff": 0.73,
-      "ohm_filterReso": 0.76,
+    "Ohm": {
       "ohm_ampAttack": 295.9,
       "ohm_ampDecay": 323.5,
-      "ohm_ampSustain": 0.7,
       "ohm_ampRelease": 159.8,
-      "ohm_lfoRate": 0.55,
-      "ohm_lfoDepth": 0.07,
-      "ohm_reverbMix": 0.5,
-      "ohm_delayMix": 0.76,
+      "ohm_ampSustain": 0.7,
       "ohm_character": 0.28,
+      "ohm_commune": 0.43,
+      "ohm_coupling": 0.12,
+      "ohm_delayMix": 0.76,
+      "ohm_filterCutoff": 0.73,
+      "ohm_filterReso": 0.76,
+      "ohm_lfoDepth": 0.07,
+      "ohm_lfoRate": 0.55,
+      "ohm_meddling": 0.88,
       "ohm_movement": 0.99,
-      "ohm_space": 0.68,
-      "ohm_coupling": 0.12
+      "ohm_reverbMix": 0.5,
+      "ohm_space": 0.68
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.77,
+    "brightness": 0.98,
+    "density": 0.6,
+    "movement": 0.48,
+    "space": 0.62,
+    "warmth": 0.66
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+  ],
+  "version": "1.0"
 }

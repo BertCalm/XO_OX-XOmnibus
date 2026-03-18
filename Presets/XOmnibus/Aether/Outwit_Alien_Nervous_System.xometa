@@ -1,47 +1,63 @@
 {
-  "schema_version": 1,
-  "name": "Alien Nervous System",
-  "mood": "Aether",
-  "engines": ["Outwit"],
-  "author": "Guru Bin — OUTWIT Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Rule 193 — an obscure, asymmetric rule producing signals that resemble neural firing patterns. High chaos, near-maximum feedback. Arms radiate at full spread like axons transmitting incomprehensible cognition. The octopus has nine brains. This is the sound of all nine thinking simultaneously.",
-  "tags": ["aether", "abstract", "neural", "alien", "cognitive", "maximal"],
-  "macroLabels": ["CHARACTER", "CHAOS", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.25,
-    "movement": 0.9,
-    "density": 0.75,
-    "space": 0.85,
-    "aggression": 0.75
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Rule 193 — an obscure, asymmetric rule producing signals that resemble neural firing patterns. High chaos, near-maximum feedback. Arms radiate at full spread like axons transmitting incomprehensible cognition. The octopus has nine brains. This is the sound of all nine thinking simultaneously.",
+  "dna": {
+    "aggression": 0.75,
+    "brightness": 0.6,
+    "density": 0.75,
+    "movement": 0.9,
+    "space": 0.85,
+    "warmth": 0.25
+  },
+  "engines": [
+    "Outwit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Alien Nervous System",
   "parameters": {
     "Outwit": {
-      "owit_rule": 193,
-      "owit_armBalance": 0.55,
-      "owit_mutationRate": 0.8,
-      "owit_armSpread": 0.9,
-      "owit_sync": 0.05,
-      "owit_feedbackAmt": 0.75,
-      "owit_chaos": 0.8,
-      "owit_density": 0.75,
       "owit_ampAttack": 0.01,
       "owit_ampDecay": 0.15,
-      "owit_ampSustain": 0.88,
       "owit_ampRelease": 0.6,
+      "owit_ampSustain": 0.88,
+      "owit_armBalance": 0.55,
+      "owit_armSpread": 0.9,
+      "owit_chaos": 0.8,
+      "owit_density": 0.75,
+      "owit_feedbackAmt": 0.75,
       "owit_filterCutoff": 0.75,
       "owit_filterRes": 0.55,
-      "owit_lfoRate": 0.4,
       "owit_lfoDepth": 0.35,
-      "owit_macroCharacter": 0.0,
+      "owit_lfoRate": 0.4,
       "owit_macroChaos": 0.0,
+      "owit_macroCharacter": 0.0,
       "owit_macroCoupling": 0.0,
-      "owit_macroSpace": 0.0
+      "owit_macroSpace": 0.0,
+      "owit_mutationRate": 0.8,
+      "owit_rule": 193,
+      "owit_sync": 0.05
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "abstract",
+    "neural",
+    "alien",
+    "cognitive",
+    "maximal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

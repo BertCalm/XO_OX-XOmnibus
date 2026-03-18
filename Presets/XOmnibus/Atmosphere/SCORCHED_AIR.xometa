@@ -1,50 +1,58 @@
 {
-  "name": "SCORCHED AIR",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.555,
+    "source": "Ole",
+    "target": "Origami",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.956,
+    "brightness": 0.116,
+    "density": 0.708,
+    "movement": 0.704,
+    "space": 0.6,
+    "warmth": 0.495
+  },
   "engines": [
-    "OLE",
-    "ORIGAMI"
+    "Ole",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.348,
+    "COUPLING": 0.146,
+    "MOVEMENT": 0.462,
+    "SPACE": 0.6
+  },
+  "mood": "Atmosphere",
+  "name": "SCORCHED AIR",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.602,
-      "macro_movement": 0.221,
       "macro_coupling": 0.155,
+      "macro_movement": 0.221,
       "macro_space": 0.791
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.342,
-      "macro_movement": 0.32,
       "macro_coupling": 0.145,
+      "macro_movement": 0.32,
       "macro_space": 0.454
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OLE",
-    "target": "ORIGAMI",
-    "amount": 0.555
-  },
-  "dna": {
-    "brightness": 0.116,
-    "warmth": 0.495,
-    "movement": 0.704,
-    "density": 0.708,
-    "space": 0.6,
-    "aggression": 0.956
-  },
-  "macros": {
-    "CHARACTER": 0.348,
-    "MOVEMENT": 0.462,
-    "COUPLING": 0.146,
-    "SPACE": 0.6
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

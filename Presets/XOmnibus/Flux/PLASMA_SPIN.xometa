@@ -1,49 +1,57 @@
 {
-  "name": "PLASMA SPIN",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.832,
+    "source": "Origami",
+    "target": "Outwit",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.504,
+    "brightness": 0.614,
+    "density": 0.477,
+    "movement": 0.889,
+    "space": 0.57,
+    "warmth": 0.923
+  },
   "engines": [
-    "ORIGAMI",
-    "OUTWIT"
+    "Origami",
+    "Outwit"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.548,
+    "COUPLING": 0.876,
+    "MOVEMENT": 0.765,
+    "SPACE": 0.556
+  },
+  "mood": "Flux",
+  "name": "PLASMA SPIN",
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.548,
-      "macro_movement": 0.765,
       "macro_coupling": 0.876,
+      "macro_movement": 0.765,
       "macro_space": 0.556
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.686,
-      "macro_movement": 0.836,
       "macro_coupling": 0.924,
+      "macro_movement": 0.836,
       "macro_space": 0.491
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ORIGAMI",
-    "target": "OUTWIT",
-    "amount": 0.832
-  },
-  "dna": {
-    "brightness": 0.614,
-    "warmth": 0.923,
-    "movement": 0.889,
-    "density": 0.477,
-    "space": 0.57,
-    "aggression": 0.504
-  },
-  "macros": {
-    "CHARACTER": 0.548,
-    "MOVEMENT": 0.765,
-    "COUPLING": 0.876,
-    "SPACE": 0.556
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "warm",
     "kinetic",
     "movement"
-  ]
+  ],
+  "version": "1.0"
 }

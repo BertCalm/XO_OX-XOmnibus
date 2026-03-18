@@ -1,31 +1,39 @@
 {
-  "name": "Pod Cloud",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Orca",
+    "target": "Opal",
+    "type": "ECHOLOCATION_SYNC"
+  },
+  "description": "Opal grain cloud navigated by orca pod — granular terrain mapped by echolocation",
   "engines": [
-    "OPAL",
-    "ORCA"
+    "Opal",
+    "Orca"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.45,
-    "MOVEMENT": 0.7,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.7,
     "SPACE": 0.7
   },
-  "sonic_dna": {
-    "brightness": 0.54,
-    "warmth": 0.51,
-    "movement": 0.64,
-    "density": 0.56,
-    "space": 0.66,
-    "aggression": 0.42
-  },
+  "mood": "Entangled",
+  "name": "Pod Cloud",
   "parameters": {},
-  "coupling": {
-    "type": "ECHOLOCATION_SYNC",
-    "source": "ORCA",
-    "target": "OPAL",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.42,
+    "brightness": 0.54,
+    "density": 0.56,
+    "movement": 0.64,
+    "space": 0.66,
+    "warmth": 0.51
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "orca",
     "granular"
   ],
-  "description": "Opal grain cloud navigated by orca pod \u2014 granular terrain mapped by echolocation"
+  "version": "1.0"
 }

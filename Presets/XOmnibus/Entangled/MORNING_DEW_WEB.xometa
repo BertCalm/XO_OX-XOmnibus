@@ -1,49 +1,57 @@
 {
-  "name": "MORNING DEW WEB",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.823,
+    "source": "Oblique",
+    "target": "Ocelot",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.084,
+    "brightness": 0.94,
+    "density": 0.686,
+    "movement": 0.564,
+    "space": 0.172,
+    "warmth": 0.077
+  },
   "engines": [
-    "OBLIQUE",
-    "OCELOT"
+    "Oblique",
+    "Ocelot"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.306,
+    "COUPLING": 0.485,
+    "MOVEMENT": 0.76,
+    "SPACE": 0.745
+  },
+  "mood": "Entangled",
+  "name": "MORNING DEW WEB",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.336,
-      "macro_movement": 0.698,
       "macro_coupling": 0.241,
+      "macro_movement": 0.698,
       "macro_space": 0.206
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.532,
-      "macro_movement": 0.877,
       "macro_coupling": 0.525,
+      "macro_movement": 0.877,
       "macro_space": 0.831
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBLIQUE",
-    "target": "OCELOT",
-    "amount": 0.823
-  },
-  "dna": {
-    "brightness": 0.94,
-    "warmth": 0.077,
-    "movement": 0.564,
-    "density": 0.686,
-    "space": 0.172,
-    "aggression": 0.084
-  },
-  "macros": {
-    "CHARACTER": 0.306,
-    "MOVEMENT": 0.76,
-    "COUPLING": 0.485,
-    "SPACE": 0.745
-  },
+  "schema_version": 1,
   "tags": [
     "yielding",
     "delicate",
     "gentle",
     "soft"
-  ]
+  ],
+  "version": "1.0"
 }

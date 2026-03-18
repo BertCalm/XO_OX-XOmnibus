@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "HOT_FROZEN_DENSE_INTIMATE_VIOLENT_ENT3_2",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9025,
+    "source": "Oblong",
+    "target": "Ottoni",
+    "type": "SPECTRAL_MORPH"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: HOT_FROZEN_DENSE_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.9379,
+    "brightness": 0.5789,
+    "density": 0.9667,
+    "movement": 0.0784,
+    "space": 0.1076,
+    "warmth": 0.9062
+  },
   "engines": [
-    "OBLONG",
-    "OTTONI"
+    "Oblong",
+    "Ottoni"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: HOT_FROZEN_DENSE_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6336,
+    "COUPLING": 0.8798,
+    "MOVEMENT": 0.08,
+    "SPACE": 0.3377
+  },
+  "mood": "Entangled",
+  "name": "HOT_FROZEN_DENSE_INTIMATE_VIOLENT_ENT3_2",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.761,
+      "macro_coupling": 0.9088,
+      "macro_movement": 0.0843,
+      "macro_space": 0.1586
+    },
+    "Ottoni": {
+      "macro_character": 0.5062,
+      "macro_coupling": 0.8508,
+      "macro_movement": 0.0757,
+      "macro_space": 0.5167
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +66,6 @@
     "dense",
     "intimate"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OBLONG": {
-      "macro_character": 0.761,
-      "macro_movement": 0.0843,
-      "macro_coupling": 0.9088,
-      "macro_space": 0.1586
-    },
-    "OTTONI": {
-      "macro_character": 0.5062,
-      "macro_movement": 0.0757,
-      "macro_coupling": 0.8508,
-      "macro_space": 0.5167
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBLONG",
-    "target": "OTTONI",
-    "amount": 0.9025
-  },
-  "macros": {
-    "CHARACTER": 0.6336,
-    "MOVEMENT": 0.08,
-    "COUPLING": 0.8798,
-    "SPACE": 0.3377
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.5789,
-    "warmth": 0.9062,
-    "movement": 0.0784,
-    "density": 0.9667,
-    "space": 0.1076,
-    "aggression": 0.9379
-  }
+  "version": "1.0.0"
 }

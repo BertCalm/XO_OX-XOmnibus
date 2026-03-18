@@ -1,48 +1,56 @@
 {
-  "name": "RAW STRAND",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.875,
+    "source": "Overdub",
+    "target": "Owlfish",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.639,
+    "brightness": 0.949,
+    "density": 0.079,
+    "movement": 0.092,
+    "space": 0.212,
+    "warmth": 0.824
+  },
   "engines": [
-    "OVERDUB",
-    "OWLFISH"
+    "Overdub",
+    "Owlfish"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.971,
+    "COUPLING": 0.334,
+    "MOVEMENT": 0.051,
+    "SPACE": 0.989
+  },
+  "mood": "Entangled",
+  "name": "RAW STRAND",
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.236,
-      "macro_movement": 0.363,
       "macro_coupling": 0.981,
+      "macro_movement": 0.363,
       "macro_space": 0.367
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.902,
-      "macro_movement": 0.645,
       "macro_coupling": 0.061,
+      "macro_movement": 0.645,
       "macro_space": 0.276
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OVERDUB",
-    "target": "OWLFISH",
-    "amount": 0.875
-  },
-  "dna": {
-    "brightness": 0.949,
-    "warmth": 0.824,
-    "movement": 0.092,
-    "density": 0.079,
-    "space": 0.212,
-    "aggression": 0.639
-  },
-  "macros": {
-    "CHARACTER": 0.971,
-    "MOVEMENT": 0.051,
-    "COUPLING": 0.334,
-    "SPACE": 0.989
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "thin",
     "ghosted"
-  ]
+  ],
+  "version": "1.0"
 }

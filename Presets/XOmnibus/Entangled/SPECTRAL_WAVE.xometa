@@ -1,48 +1,56 @@
 {
-  "name": "SPECTRAL WAVE",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERDUB",
-    "OBSIDIAN"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.048,
-      "macro_movement": 0.656,
-      "macro_coupling": 0.273,
-      "macro_space": 0.799
-    },
-    "OBSIDIAN": {
-      "macro_character": 0.437,
-      "macro_movement": 0.4,
-      "macro_coupling": 0.44,
-      "macro_space": 0.956
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERDUB",
-    "target": "OBSIDIAN",
-    "amount": 0.371
+    "amount": 0.371,
+    "source": "Overdub",
+    "target": "Obsidian",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.267,
     "brightness": 0.187,
-    "warmth": 0.692,
-    "movement": 0.367,
     "density": 0.125,
+    "movement": 0.367,
     "space": 0.797,
-    "aggression": 0.267
+    "warmth": 0.692
   },
+  "engines": [
+    "Overdub",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.083,
-    "MOVEMENT": 0.424,
     "COUPLING": 0.431,
+    "MOVEMENT": 0.424,
     "SPACE": 0.995
   },
+  "mood": "Entangled",
+  "name": "SPECTRAL WAVE",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.437,
+      "macro_coupling": 0.44,
+      "macro_movement": 0.4,
+      "macro_space": 0.956
+    },
+    "Overdub": {
+      "macro_character": 0.048,
+      "macro_coupling": 0.273,
+      "macro_movement": 0.656,
+      "macro_space": 0.799
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "bare",
     "skeletal"
-  ]
+  ],
+  "version": "1.0"
 }

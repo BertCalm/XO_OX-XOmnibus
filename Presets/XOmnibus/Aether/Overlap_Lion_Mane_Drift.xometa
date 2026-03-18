@@ -1,39 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Lion Mane Drift",
-  "mood": "Aether",
-  "engines": ["Overlap"],
-  "author": "Guru Bin — OVERLAP Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "The namesake preset — a figure-8 topology with maximum modulation depth and a rate so slow it operates on the scale of minutes. The six delay lines are the six primary bell clusters of the Lion's Mane jellyfish. The feedback ensures they never stop ringing. The drift is geological. This is not a reverb — it is a habitat.",
-  "tags": ["namesake", "maximal", "figure-8", "jellyfish", "aether", "glacial"],
-  "macroLabels": ["CHARACTER", "SPACE", "COUPLING", "DECAY"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.55,
-    "movement": 0.88,
-    "density": 0.88,
-    "space": 0.99,
-    "aggression": 0.08
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "The namesake preset — a figure-8 topology with maximum modulation depth and a rate so slow it operates on the scale of minutes. The six delay lines are the six primary bell clusters of the Lion's Mane jellyfish. The feedback ensures they never stop ringing. The drift is geological. This is not a reverb — it is a habitat.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.5,
+    "density": 0.88,
+    "movement": 0.88,
+    "space": 0.99,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "mood": "Aether",
+  "name": "Lion Mane Drift",
   "parameters": {
     "Overlap": {
-      "olap_knotType": 1,
+      "olap_damping": 0.08,
+      "olap_decay": 60.0,
       "olap_delayFeedback": 0.95,
       "olap_diffusion": 0.85,
-      "olap_spread": 0.99,
-      "olap_decay": 60.0,
+      "olap_knotType": 1,
+      "olap_macroCharacter": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0,
+      "olap_macroSpace": 0.0,
       "olap_modDepth": 0.72,
       "olap_modRate": 0.008,
-      "olap_damping": 0.08,
-      "olap_macroCharacter": 0.0,
-      "olap_macroSpace": 0.0,
-      "olap_macroCoupling": 0.0,
-      "olap_macroDecay": 0.0
+      "olap_spread": 0.99
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "namesake",
+    "maximal",
+    "figure-8",
+    "jellyfish",
+    "aether",
+    "glacial"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

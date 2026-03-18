@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_DENSE_VIOLENT_FAM_AGG_5",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.877,
+    "source": "OddfeliX",
+    "target": "Ole",
+    "type": "SPECTRAL_MORPH"
+  },
+  "dna": {
+    "aggression": 0.93,
+    "brightness": 0.974,
+    "density": 0.932,
+    "movement": 0.322,
+    "space": 0.549,
+    "warmth": 0.925
+  },
   "engines": [
-    "ODDFELIX",
-    "OLE"
+    "OddfeliX",
+    "Ole"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.615,
+    "COUPLING": 0.51,
+    "MOVEMENT": 0.381,
+    "SPACE": 0.429
+  },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_DENSE_VIOLENT_FAM_AGG_5",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.615,
-      "macro_movement": 0.381,
       "macro_coupling": 0.51,
+      "macro_movement": 0.381,
       "macro_space": 0.429
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.594,
-      "macro_movement": 0.419,
       "macro_coupling": 0.508,
+      "macro_movement": 0.419,
       "macro_space": 0.382
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ODDFELIX",
-    "target": "OLE",
-    "amount": 0.877
-  },
-  "dna": {
-    "brightness": 0.974,
-    "warmth": 0.925,
-    "movement": 0.322,
-    "density": 0.932,
-    "space": 0.549,
-    "aggression": 0.93
-  },
-  "macros": {
-    "CHARACTER": 0.615,
-    "MOVEMENT": 0.381,
-    "COUPLING": 0.51,
-    "SPACE": 0.429
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "bright",
     "warm",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

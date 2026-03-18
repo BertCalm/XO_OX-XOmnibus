@@ -1,50 +1,58 @@
 {
-  "name": "DARK_COLD_DENSE_GENTLE_PRS_DRK_3",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8905,
+    "source": "Oblique",
+    "target": "Ole",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.0784,
+    "brightness": 0.0255,
+    "density": 0.9272,
+    "movement": 0.3201,
+    "space": 0.6678,
+    "warmth": 0.0545
+  },
   "engines": [
-    "OBLIQUE",
-    "OLE"
+    "Oblique",
+    "Ole"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0664,
+    "COUPLING": 0.9272,
+    "MOVEMENT": 0.3201,
+    "SPACE": 0.6678
+  },
+  "mood": "Prism",
+  "name": "DARK_COLD_DENSE_GENTLE_PRS_DRK_3",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.0664,
-      "macro_movement": 0.3201,
       "macro_coupling": 0.9272,
+      "macro_movement": 0.3201,
       "macro_space": 0.6678
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.0319,
-      "macro_movement": 0.2855,
       "macro_coupling": 0.9561,
+      "macro_movement": 0.2855,
       "macro_space": 0.6601
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBLIQUE",
-    "target": "OLE",
-    "amount": 0.8905
-  },
-  "dna": {
-    "brightness": 0.0255,
-    "warmth": 0.0545,
-    "movement": 0.3201,
-    "density": 0.9272,
-    "space": 0.6678,
-    "aggression": 0.0784
-  },
-  "macros": {
-    "CHARACTER": 0.0664,
-    "MOVEMENT": 0.3201,
-    "COUPLING": 0.9272,
-    "SPACE": 0.6678
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "cold",
     "dense",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

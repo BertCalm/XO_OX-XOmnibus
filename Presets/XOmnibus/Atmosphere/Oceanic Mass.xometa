@@ -1,25 +1,33 @@
 {
-  "name": "Oceanic Mass",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "The basin as instrument. Bottomless resonance, infinite sustain.",
   "engines": [
-    "OVERDUB"
+    "Overdub"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.309,
-    "MOVEMENT": 0.234,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.234,
     "SPACE": 0.909
   },
-  "sonic_dna": {
-    "brightness": 0.18,
-    "warmth": 0.439,
-    "movement": 0.234,
-    "density": 0.514,
-    "space": 0.909,
-    "aggression": 0.084
-  },
+  "mood": "Atmosphere",
+  "name": "Oceanic Mass",
   "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.084,
+    "brightness": 0.18,
+    "density": 0.514,
+    "movement": 0.234,
+    "space": 0.909,
+    "warmth": 0.439
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +35,5 @@
     "deep",
     "vast"
   ],
-  "description": "The basin as instrument. Bottomless resonance, infinite sustain."
+  "version": "1.0"
 }

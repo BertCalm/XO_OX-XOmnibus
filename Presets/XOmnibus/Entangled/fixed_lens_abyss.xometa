@@ -1,50 +1,58 @@
 {
-  "name": "Fixed Lens Abyss",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.842,
+    "source": "Obscura",
+    "target": "Oceanic",
+    "type": "RESONANCE_CHAIN"
+  },
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.1,
+    "density": 0.65,
+    "movement": 0.35,
+    "space": 0.88,
+    "warmth": 0.3
+  },
   "engines": [
-    "OBSCURA",
-    "OCEANIC"
+    "Obscura",
+    "Oceanic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.325,
+    "COUPLING": 0.842,
+    "MOVEMENT": 0.3,
+    "SPACE": 0.7
+  },
+  "mood": "Entangled",
+  "name": "Fixed Lens Abyss",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.31,
-      "macro_movement": 0.21,
       "macro_coupling": 0.51,
+      "macro_movement": 0.21,
       "macro_space": 0.56
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.34,
-      "macro_movement": 0.39,
       "macro_coupling": 0.49,
+      "macro_movement": 0.39,
       "macro_space": 0.84
     }
   },
-  "coupling": {
-    "type": "RESONANCE_CHAIN",
-    "source": "OBSCURA",
-    "target": "OCEANIC",
-    "amount": 0.842
-  },
-  "dna": {
-    "brightness": 0.1,
-    "warmth": 0.3,
-    "movement": 0.35,
-    "density": 0.65,
-    "space": 0.88,
-    "aggression": 0.08
-  },
-  "macros": {
-    "CHARACTER": 0.325,
-    "MOVEMENT": 0.3,
-    "COUPLING": 0.842,
-    "SPACE": 0.7
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "abyssal",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

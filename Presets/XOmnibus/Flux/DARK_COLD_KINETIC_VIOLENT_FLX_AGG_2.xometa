@@ -1,50 +1,58 @@
 {
-  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_AGG_2",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ODYSSEY",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "ODYSSEY": {
-      "macro_character": 0.436,
-      "macro_movement": 0.921,
-      "macro_coupling": 0.775,
-      "macro_space": 0.504
-    },
-    "OBLIQUE": {
-      "macro_character": 0.655,
-      "macro_movement": 0.971,
-      "macro_coupling": 0.8,
-      "macro_space": 0.492
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ODYSSEY",
-    "target": "OBLIQUE",
-    "amount": 0.902
+    "amount": 0.902,
+    "source": "Odyssey",
+    "target": "Oblique",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.903,
     "brightness": 0.051,
-    "warmth": 0.116,
-    "movement": 0.961,
     "density": 0.364,
+    "movement": 0.961,
     "space": 0.469,
-    "aggression": 0.903
+    "warmth": 0.116
   },
+  "engines": [
+    "Odyssey",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.545,
-    "MOVEMENT": 0.961,
     "COUPLING": 0.775,
+    "MOVEMENT": 0.961,
     "SPACE": 0.469
   },
+  "mood": "Flux",
+  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_AGG_2",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.655,
+      "macro_coupling": 0.8,
+      "macro_movement": 0.971,
+      "macro_space": 0.492
+    },
+    "Odyssey": {
+      "macro_character": 0.436,
+      "macro_coupling": 0.775,
+      "macro_movement": 0.921,
+      "macro_space": 0.504
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "kinetic",
     "dark",
     "cold"
-  ]
+  ],
+  "version": "1.0"
 }

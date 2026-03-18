@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT COLD KINETIC VIOLENT PRS AGG 5",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.777,
+    "source": "Ocelot",
+    "target": "Orphica",
+    "type": "SPATIAL_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.949,
+    "brightness": 0.934,
+    "density": 0.677,
+    "movement": 0.89,
+    "space": 0.362,
+    "warmth": 0.075
+  },
   "engines": [
-    "OCELOT",
-    "ORPHICA"
+    "Ocelot",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.917,
+    "COUPLING": 0.885,
+    "MOVEMENT": 0.841,
+    "SPACE": 0.35
+  },
+  "mood": "Prism",
+  "name": "BRIGHT COLD KINETIC VIOLENT PRS AGG 5",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.913,
-      "macro_movement": 0.862,
       "macro_coupling": 0.931,
+      "macro_movement": 0.862,
       "macro_space": 0.349
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.921,
-      "macro_movement": 0.821,
       "macro_coupling": 0.84,
+      "macro_movement": 0.821,
       "macro_space": 0.352
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OCELOT",
-    "target": "ORPHICA",
-    "amount": 0.777
-  },
-  "dna": {
-    "brightness": 0.934,
-    "warmth": 0.075,
-    "movement": 0.89,
-    "density": 0.677,
-    "space": 0.362,
-    "aggression": 0.949
-  },
-  "macros": {
-    "CHARACTER": 0.917,
-    "MOVEMENT": 0.841,
-    "COUPLING": 0.885,
-    "SPACE": 0.35
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "aggressive",
@@ -47,5 +54,6 @@
     "violent",
     "bright",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

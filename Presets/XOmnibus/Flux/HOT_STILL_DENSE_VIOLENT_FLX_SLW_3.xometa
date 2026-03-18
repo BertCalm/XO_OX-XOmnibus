@@ -1,45 +1,52 @@
 {
-  "name": "HOT_STILL_DENSE_VIOLENT_FLX_SLW_3",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERDUB",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.834,
-      "macro_movement": 0.012,
-      "macro_coupling": 0.751,
-      "macro_space": 0.327
-    },
-    "OBLONG": {
-      "macro_character": 0.937,
-      "macro_movement": 0.016,
-      "macro_coupling": 0.769,
-      "macro_space": 0.354
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OVERDUB",
-    "target": "OBLONG",
-    "amount": 0.942
+    "amount": 0.942,
+    "source": "Overdub",
+    "target": "Oblong",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.882,
     "brightness": 0.362,
-    "warmth": 0.987,
-    "movement": 0.015,
     "density": 0.9,
+    "movement": 0.015,
     "space": 0.331,
-    "aggression": 0.882
+    "warmth": 0.987
   },
+  "engines": [
+    "Overdub",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.891,
-    "MOVEMENT": 0.015,
     "COUPLING": 0.861,
+    "MOVEMENT": 0.015,
     "SPACE": 0.331
   },
+  "mood": "Flux",
+  "name": "HOT_STILL_DENSE_VIOLENT_FLX_SLW_3",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.937,
+      "macro_coupling": 0.769,
+      "macro_movement": 0.016,
+      "macro_space": 0.354
+    },
+    "Overdub": {
+      "macro_character": 0.834,
+      "macro_coupling": 0.751,
+      "macro_movement": 0.012,
+      "macro_space": 0.327
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +54,6 @@
     "dense",
     "violent",
     "imperceptible-morph"
-  ]
+  ],
+  "version": "1.0"
 }

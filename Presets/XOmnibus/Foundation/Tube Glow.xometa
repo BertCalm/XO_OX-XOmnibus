@@ -1,61 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Tube Glow",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Deep warm bass presence with warm character.",
+  "dna": {
+    "aggression": 0.18,
+    "brightness": 0.49,
+    "density": 0.179,
+    "movement": 0.0,
+    "space": 0.0,
+    "warmth": 0.162
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Deep warm bass presence with warm character.",
-  "tags": [
-    "bass",
-    "tube",
-    "glowing"
-  ],
+  "legacy": {
+    "sourceCategory": "Warm Bass",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Warm Bass",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Tube Glow",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
-      "bob_oscA_tune": -12.0,
-      "bob_oscA_shape": 0.45,
-      "bob_oscA_drift": 0.14,
-      "bob_oscB_wave": 0.0,
-      "bob_oscB_blend": 0.55,
-      "bob_oscB_detune": -6.0,
-      "bob_fltMode": 3.0,
-      "bob_fltCutoff": 1000.0,
-      "bob_fltReso": 0.15,
-      "bob_fltDrive": 0.35,
-      "bob_fltChar": 0.65,
       "bob_ampAttack": 0.018,
       "bob_ampDecay": 0.5,
-      "bob_ampSustain": 0.72,
       "bob_ampRelease": 0.6,
-      "bob_bobMode": 0.12
+      "bob_ampSustain": 0.72,
+      "bob_bobMode": 0.12,
+      "bob_fltChar": 0.65,
+      "bob_fltCutoff": 1000.0,
+      "bob_fltDrive": 0.35,
+      "bob_fltMode": 3.0,
+      "bob_fltReso": 0.15,
+      "bob_oscA_drift": 0.14,
+      "bob_oscA_shape": 0.45,
+      "bob_oscA_tune": -12.0,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.55,
+      "bob_oscB_detune": -6.0,
+      "bob_oscB_wave": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.49,
-    "warmth": 0.162,
-    "movement": 0.0,
-    "density": 0.179,
-    "space": 0.0,
-    "aggression": 0.18
-  }
+  "tags": [
+    "bass",
+    "tube",
+    "glowing"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

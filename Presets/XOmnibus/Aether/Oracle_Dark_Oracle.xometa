@@ -1,13 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "Dark Oracle",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The oracle sees only darkness and interprets it as prophecy. Spectral analysis of the void. Depth that cannot be measured.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.1,
+    "density": 0.42,
+    "movement": 0.18,
+    "space": 0.9,
+    "warmth": 0.2
+  },
   "engines": [
     "Oracle"
   ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "The oracle sees only darkness and interprets it as prophecy. Spectral analysis of the void. Depth that cannot be measured.",
+  "macroLabels": [
+    "VISION",
+    "DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Dark Oracle",
+  "parameters": {
+    "Oracle": {
+      "oracle_ampAttack": 5.0,
+      "oracle_ampRelease": 9.0,
+      "oracle_delayFeedback": 0.4,
+      "oracle_feedbackAmt": 0.35,
+      "oracle_filterCutoff": 0.08,
+      "oracle_filterReso": 0.15,
+      "oracle_harmonicSpread": 0.6,
+      "oracle_macroCoupling": 0.0,
+      "oracle_macroDepth": 0.0,
+      "oracle_macroSpace": 0.0,
+      "oracle_macroVision": 0.0,
+      "oracle_reverbMix": 0.9,
+      "oracle_spectralBlur": 0.9
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "dark-aether",
@@ -16,40 +51,5 @@
     "deep",
     "vast"
   ],
-  "macroLabels": [
-    "VISION",
-    "DEPTH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.1,
-    "warmth": 0.2,
-    "movement": 0.18,
-    "density": 0.42,
-    "space": 0.9,
-    "aggression": 0.05
-  },
-  "parameters": {
-    "Oracle": {
-      "oracle_spectralBlur": 0.9,
-      "oracle_harmonicSpread": 0.6,
-      "oracle_feedbackAmt": 0.35,
-      "oracle_filterCutoff": 0.08,
-      "oracle_filterReso": 0.15,
-      "oracle_ampAttack": 5.0,
-      "oracle_ampRelease": 9.0,
-      "oracle_reverbMix": 0.9,
-      "oracle_delayFeedback": 0.4,
-      "oracle_macroVision": 0.0,
-      "oracle_macroDepth": 0.0,
-      "oracle_macroCoupling": 0.0,
-      "oracle_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

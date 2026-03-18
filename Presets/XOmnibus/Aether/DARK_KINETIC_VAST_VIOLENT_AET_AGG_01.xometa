@@ -1,45 +1,52 @@
 {
-  "name": "DARK KINETIC VAST VIOLENT AET AGG 1",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.845,
+    "source": "Orbital",
+    "target": "Origami",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.955,
+    "brightness": 0.117,
+    "density": 0.552,
+    "movement": 0.873,
+    "space": 0.966,
+    "warmth": 0.494
+  },
   "engines": [
-    "ORBITAL",
-    "ORIGAMI"
+    "Orbital",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.114,
+    "COUPLING": 0.918,
+    "MOVEMENT": 0.808,
+    "SPACE": 0.922
+  },
+  "mood": "Aether",
+  "name": "DARK KINETIC VAST VIOLENT AET AGG 1",
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.111,
-      "macro_movement": 0.804,
       "macro_coupling": 0.887,
+      "macro_movement": 0.804,
       "macro_space": 0.906
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.116,
-      "macro_movement": 0.811,
       "macro_coupling": 0.949,
+      "macro_movement": 0.811,
       "macro_space": 0.939
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ORBITAL",
-    "target": "ORIGAMI",
-    "amount": 0.845
-  },
-  "dna": {
-    "brightness": 0.117,
-    "warmth": 0.494,
-    "movement": 0.873,
-    "density": 0.552,
-    "space": 0.966,
-    "aggression": 0.955
-  },
-  "macros": {
-    "CHARACTER": 0.114,
-    "MOVEMENT": 0.808,
-    "COUPLING": 0.918,
-    "SPACE": 0.922
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "aggressive",
@@ -48,5 +55,6 @@
     "dark",
     "kinetic",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

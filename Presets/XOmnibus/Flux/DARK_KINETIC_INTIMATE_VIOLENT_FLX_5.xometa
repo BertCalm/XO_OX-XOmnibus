@@ -1,45 +1,52 @@
 {
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FLX_5",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORIGAMI",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.1292,
-      "macro_movement": 0.8426,
-      "macro_coupling": 0.8574,
-      "macro_space": 0.1393
-    },
-    "ODYSSEY": {
-      "macro_character": 0.1357,
-      "macro_movement": 0.9018,
-      "macro_coupling": 0.8628,
-      "macro_space": 0.2111
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORIGAMI",
-    "target": "ODYSSEY",
-    "amount": 0.8044
+    "amount": 0.8044,
+    "source": "Origami",
+    "target": "Odyssey",
+    "type": "SPECTRAL_MORPH"
   },
   "dna": {
+    "aggression": 0.9643,
     "brightness": 0.0488,
-    "warmth": 0.4582,
-    "movement": 0.8905,
     "density": 0.4686,
+    "movement": 0.8905,
     "space": 0.0949,
-    "aggression": 0.9643
+    "warmth": 0.4582
   },
+  "engines": [
+    "Origami",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.1292,
-    "MOVEMENT": 0.8426,
     "COUPLING": 0.8574,
+    "MOVEMENT": 0.8426,
     "SPACE": 0.1393
   },
+  "mood": "Flux",
+  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FLX_5",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.1357,
+      "macro_coupling": 0.8628,
+      "macro_movement": 0.9018,
+      "macro_space": 0.2111
+    },
+    "Origami": {
+      "macro_character": 0.1292,
+      "macro_coupling": 0.8574,
+      "macro_movement": 0.8426,
+      "macro_space": 0.1393
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "high-movement",
     "low-space",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

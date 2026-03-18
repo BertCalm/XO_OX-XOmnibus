@@ -1,14 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "Apogee Pastoral",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.42,
+        "engineA": "Orbital",
+        "engineB": "Ohm",
+        "type": "filter_modulation"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Orbital × Ohm coupling (pitch follow). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.39,
+    "brightness": 0.486,
+    "density": 0.615,
+    "movement": 0.592,
+    "space": 0.575,
+    "warmth": 0.687
+  },
   "engines": [
     "Orbital",
     "Ohm"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Orbital \u00d7 Ohm coupling (pitch follow). Stub preset \u2014 sound-design pass pending.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Apogee Pastoral",
+  "parameters": {
+    "Ohm": {
+      "ohm_couplingIn": 0.6,
+      "ohm_couplingOut": 0.618,
+      "ohm_macro1": 0.537,
+      "ohm_macro2": 0.453,
+      "ohm_macro3": 0.332,
+      "ohm_macro4": 0.591
+    },
+    "Orbital": {
+      "orb_arcDecay": 0.446,
+      "orb_brightness": 0.584,
+      "orb_couplingIn": 0.555,
+      "orb_groupEnv": 0.311,
+      "orb_harmonicAmt": 0.351,
+      "orb_macro1": 0.468,
+      "orb_macro2": 0.696,
+      "orb_macro3": 0.667,
+      "orb_macro4": 0.491,
+      "orb_phaseSpread": 0.45,
+      "orb_resonantPeak": 0.627
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "orbital",
     "ohm",
@@ -16,60 +70,6 @@
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Subtle",
   "tempo": 110,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Orbital": {
-      "orb_brightness": 0.584,
-      "orb_groupEnv": 0.311,
-      "orb_phaseSpread": 0.45,
-      "orb_arcDecay": 0.446,
-      "orb_resonantPeak": 0.627,
-      "orb_harmonicAmt": 0.351,
-      "orb_macro1": 0.468,
-      "orb_macro2": 0.696,
-      "orb_macro3": 0.667,
-      "orb_macro4": 0.491,
-      "orb_couplingIn": 0.555
-    },
-    "Ohm": {
-      "ohm_macro1": 0.537,
-      "ohm_macro2": 0.453,
-      "ohm_macro3": 0.332,
-      "ohm_macro4": 0.591,
-      "ohm_couplingOut": 0.618,
-      "ohm_couplingIn": 0.6
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Ohm",
-        "type": "filter_modulation",
-        "amount": 0.42
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.486,
-    "warmth": 0.687,
-    "movement": 0.592,
-    "density": 0.615,
-    "space": 0.575,
-    "aggression": 0.39
-  }
+  "version": "1.0.0"
 }

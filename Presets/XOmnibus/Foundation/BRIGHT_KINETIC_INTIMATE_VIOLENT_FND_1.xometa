@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_FND_1",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ORACLE",
-    "ONSET"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.26,
-      "macro_movement": 0.218,
-      "macro_coupling": 0.24,
-      "macro_space": 0.58
-    },
-    "ONSET": {
-      "macro_character": 0.824,
-      "macro_movement": 0.801,
-      "macro_coupling": 0.51,
-      "macro_space": 0.292
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORACLE",
-    "target": "ONSET",
-    "amount": 0.56
+    "amount": 0.56,
+    "source": "Oracle",
+    "target": "Onset",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.909,
     "brightness": 0.914,
-    "warmth": 0.356,
-    "movement": 0.978,
     "density": 0.406,
+    "movement": 0.978,
     "space": 0.089,
-    "aggression": 0.909
+    "warmth": 0.356
   },
+  "engines": [
+    "Oracle",
+    "Onset"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.104,
-    "MOVEMENT": 0.75,
     "COUPLING": 0.283,
+    "MOVEMENT": 0.75,
     "SPACE": 0.537
   },
+  "mood": "Foundation",
+  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_FND_1",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.824,
+      "macro_coupling": 0.51,
+      "macro_movement": 0.801,
+      "macro_space": 0.292
+    },
+    "Oracle": {
+      "macro_character": 0.26,
+      "macro_coupling": 0.24,
+      "macro_movement": 0.218,
+      "macro_space": 0.58
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -48,5 +55,6 @@
     "intimate",
     "violent",
     "aggressive"
-  ]
+  ],
+  "version": "1.0"
 }

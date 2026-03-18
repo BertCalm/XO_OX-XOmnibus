@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_DENSE_VIOLENT_FLX2_5",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.934,
+    "source": "Oceanic",
+    "target": "Overworld",
+    "type": "SPATIAL_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.9495,
+    "brightness": 0.9178,
+    "density": 0.9718,
+    "movement": 0.8847,
+    "space": 0.4819,
+    "warmth": 0.8928
+  },
   "engines": [
-    "OCEANIC",
-    "OVERWORLD"
+    "Oceanic",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8829,
+    "COUPLING": 0.9826,
+    "MOVEMENT": 0.8896,
+    "SPACE": 0.4931
+  },
+  "mood": "Flux",
+  "name": "BRIGHT_WARM_KINETIC_DENSE_VIOLENT_FLX2_5",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.8783,
-      "macro_movement": 0.8747,
       "macro_coupling": 0.99,
+      "macro_movement": 0.8747,
       "macro_space": 0.4991
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.8876,
-      "macro_movement": 0.9045,
       "macro_coupling": 0.9751,
+      "macro_movement": 0.9045,
       "macro_space": 0.4871
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OCEANIC",
-    "target": "OVERWORLD",
-    "amount": 0.934
-  },
-  "dna": {
-    "brightness": 0.9178,
-    "warmth": 0.8928,
-    "movement": 0.8847,
-    "density": 0.9718,
-    "space": 0.4819,
-    "aggression": 0.9495
-  },
-  "macros": {
-    "CHARACTER": 0.8829,
-    "MOVEMENT": 0.8896,
-    "COUPLING": 0.9826,
-    "SPACE": 0.4931
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
@@ -47,5 +54,6 @@
     "kinetic",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

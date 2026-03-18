@@ -1,68 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "Migratory",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Cross-modulated living energy with analog drift and reverb depth.",
+  "dna": {
+    "aggression": 0.072,
+    "brightness": 0.381,
+    "density": 0.231,
+    "movement": 0.789,
+    "space": 0.495,
+    "warmth": 0.276
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Cross-modulated living energy with analog drift and reverb depth.",
-  "tags": [
-    "moving",
-    "migratory",
-    "traveling"
-  ],
+  "legacy": {
+    "sourceCategory": "Living",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Living",
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Migratory",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 1.0,
-      "bob_oscA_shape": 0.48,
-      "bob_oscA_drift": 0.35,
-      "bob_oscB_wave": 0.0,
-      "bob_oscB_blend": 0.48,
-      "bob_oscB_detune": 6.0,
-      "bob_fltMode": 3.0,
-      "bob_fltCutoff": 2400.0,
-      "bob_fltReso": 0.22,
-      "bob_fltEnvAmt": 0.6,
-      "bob_lfo1Rate": 0.15,
-      "bob_lfo1Depth": 0.4,
-      "bob_curMode": 1.0,
-      "bob_curAmount": 0.6,
-      "bob_motAttack": 1.2,
-      "bob_motDecay": 1.5,
-      "bob_motSustain": 0.65,
-      "bob_motRelease": 2.5,
-      "bob_motDepth": 0.72,
       "bob_ampAttack": 0.4,
       "bob_ampDecay": 1.0,
-      "bob_ampSustain": 0.82,
       "bob_ampRelease": 3.0,
-      "bob_glide": 0.5
+      "bob_ampSustain": 0.82,
+      "bob_curAmount": 0.6,
+      "bob_curMode": 1.0,
+      "bob_fltCutoff": 2400.0,
+      "bob_fltEnvAmt": 0.6,
+      "bob_fltMode": 3.0,
+      "bob_fltReso": 0.22,
+      "bob_glide": 0.5,
+      "bob_lfo1Depth": 0.4,
+      "bob_lfo1Rate": 0.15,
+      "bob_motAttack": 1.2,
+      "bob_motDecay": 1.5,
+      "bob_motDepth": 0.72,
+      "bob_motRelease": 2.5,
+      "bob_motSustain": 0.65,
+      "bob_oscA_drift": 0.35,
+      "bob_oscA_shape": 0.48,
+      "bob_oscA_wave": 1.0,
+      "bob_oscB_blend": 0.48,
+      "bob_oscB_detune": 6.0,
+      "bob_oscB_wave": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.381,
-    "warmth": 0.276,
-    "movement": 0.789,
-    "density": 0.231,
-    "space": 0.495,
-    "aggression": 0.072
-  }
+  "tags": [
+    "moving",
+    "migratory",
+    "traveling"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

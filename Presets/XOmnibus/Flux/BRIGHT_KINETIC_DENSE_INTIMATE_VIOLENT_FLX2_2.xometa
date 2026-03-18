@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_2",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERDUB",
-    "OPTIC"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.6908,
-      "macro_movement": 0.99,
-      "macro_coupling": 0.9488,
-      "macro_space": 0.0774
-    },
-    "OPTIC": {
-      "macro_character": 0.7053,
-      "macro_movement": 0.9616,
-      "macro_coupling": 0.9392,
-      "macro_space": 0.0631
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OVERDUB",
-    "target": "OPTIC",
-    "amount": 0.8
+    "amount": 0.8,
+    "source": "Overdub",
+    "target": "Optic",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.9809,
     "brightness": 0.9774,
-    "warmth": 0.4547,
-    "movement": 0.9868,
     "density": 0.9295,
+    "movement": 0.9868,
     "space": 0.0747,
-    "aggression": 0.9809
+    "warmth": 0.4547
   },
+  "engines": [
+    "Overdub",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.6981,
-    "MOVEMENT": 0.9758,
     "COUPLING": 0.944,
+    "MOVEMENT": 0.9758,
     "SPACE": 0.0703
   },
+  "mood": "Flux",
+  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_2",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.7053,
+      "macro_coupling": 0.9392,
+      "macro_movement": 0.9616,
+      "macro_space": 0.0631
+    },
+    "Overdub": {
+      "macro_character": 0.6908,
+      "macro_coupling": 0.9488,
+      "macro_movement": 0.99,
+      "macro_space": 0.0774
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
@@ -47,5 +54,6 @@
     "dense",
     "intimate",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,59 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Flannel Bloom",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Floating warm pads texture with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.046,
+    "brightness": 0.503,
+    "density": 0.225,
+    "movement": 0.0,
+    "space": 0.348,
+    "warmth": 0.345
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Floating warm pads texture with bob character and analog drift.",
-  "tags": [
-    "warm",
-    "slow",
-    "textured"
-  ],
+  "legacy": {
+    "sourceCategory": "Warm Pads",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Warm Pads",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Flannel Bloom",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 1.0,
-      "bob_oscA_shape": 0.4,
-      "bob_oscA_drift": 0.3,
-      "bob_oscB_wave": 3.0,
-      "bob_oscB_blend": 0.5,
-      "bob_oscB_detune": 5.0,
-      "bob_fltMode": 3.0,
-      "bob_fltCutoff": 2800.0,
-      "bob_fltReso": 0.14,
-      "bob_fltChar": 0.4,
       "bob_ampAttack": 0.7,
       "bob_ampDecay": 1.1,
-      "bob_ampSustain": 0.87,
       "bob_ampRelease": 2.1,
-      "bob_bobMode": 0.28
+      "bob_ampSustain": 0.87,
+      "bob_bobMode": 0.28,
+      "bob_fltChar": 0.4,
+      "bob_fltCutoff": 2800.0,
+      "bob_fltMode": 3.0,
+      "bob_fltReso": 0.14,
+      "bob_oscA_drift": 0.3,
+      "bob_oscA_shape": 0.4,
+      "bob_oscA_wave": 1.0,
+      "bob_oscB_blend": 0.5,
+      "bob_oscB_detune": 5.0,
+      "bob_oscB_wave": 3.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.503,
-    "warmth": 0.345,
-    "movement": 0.0,
-    "density": 0.225,
-    "space": 0.348,
-    "aggression": 0.046
-  }
+  "tags": [
+    "warm",
+    "slow",
+    "textured"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Serpent Strike",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.87,
+        "engineA": "Ouroboros",
+        "engineB": "Overbite",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Ouroboros topology chaos feeding Overbite BITE macro — fractal fang.",
+  "dna": {
+    "aggression": 0.93,
+    "brightness": 0.58,
+    "density": 0.91,
+    "movement": 0.7,
+    "space": 0.07,
+    "warmth": 0.28
+  },
   "engines": [
-    "OUROBOROS",
-    "OVERBITE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ouroboros topology chaos feeding Overbite BITE macro \u2014 fractal fang.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "dense",
-    "ouroboros",
-    "overbite",
-    "serpent"
+    "Ouroboros",
+    "Overbite"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,29 @@
   ],
   "macros": {
     "CHARACTER": 0.9,
-    "MOVEMENT": 0.7,
     "COUPLING": 0.87,
+    "MOVEMENT": 0.7,
     "SPACE": 0.07
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.58,
-    "warmth": 0.28,
-    "movement": 0.7,
-    "density": 0.91,
-    "space": 0.07,
-    "aggression": 0.93
-  },
-  "sonic_dna": {
-    "brightness": 0.58,
-    "warmth": 0.28,
-    "movement": 0.7,
-    "density": 0.91,
-    "space": 0.07,
-    "aggression": 0.93
-  },
+  "mood": "Entangled",
+  "name": "Serpent Strike",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OUROBOROS",
-        "engineB": "OVERBITE",
-        "type": "CHAOS_INJECT",
-        "amount": 0.87
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.93,
+    "brightness": 0.58,
+    "density": 0.91,
+    "movement": 0.7,
+    "space": 0.07,
+    "warmth": 0.28
+  },
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "ouroboros",
+    "overbite",
+    "serpent"
+  ],
+  "version": "1.0.0"
 }

@@ -1,27 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Permafrost Core",
-  "mood": "Aether",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Negative thermal density. Mass without heat, depth without air.",
+  "dna": {
+    "aggression": 0.414,
     "brightness": 0.234,
-    "warmth": 0.141,
-    "movement": 0.413,
     "density": 0.962,
+    "movement": 0.413,
     "space": 0.369,
-    "aggression": 0.414
+    "warmth": 0.141
   },
   "engines": [
-    "OCTOPUS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Negative thermal density. Mass without heat, depth without air.",
-  "tags": [
-    "aether",
-    "cold",
-    "dense",
-    "dark",
-    "pressure"
+    "Octopus"
   ],
   "macroLabels": [
     "GRAVITY",
@@ -29,17 +22,24 @@
     "COUPLING",
     "DESCENT"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.234,
-    "warmth": 0.141,
-    "movement": 0.413,
-    "density": 0.962,
-    "space": 0.369,
-    "aggression": 0.414
-  },
+  "mood": "Aether",
+  "name": "Permafrost Core",
   "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.414,
+    "brightness": 0.234,
+    "density": 0.962,
+    "movement": 0.413,
+    "space": 0.369,
+    "warmth": 0.141
+  },
+  "tags": [
+    "aether",
+    "cold",
+    "dense",
+    "dark",
+    "pressure"
+  ],
+  "version": "1.0.0"
 }

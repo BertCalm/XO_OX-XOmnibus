@@ -1,49 +1,57 @@
 {
-  "name": "CONCRETE WEAVE",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORIGAMI",
-    "OBLONG"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.9452,
-      "macro_movement": 0.6682,
-      "macro_coupling": 0.9057,
-      "macro_space": 0.4124
-    },
-    "OBLONG": {
-      "macro_character": 0.8425,
-      "macro_movement": 0.2314,
-      "macro_coupling": 0.8829,
-      "macro_space": 0.0091
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORIGAMI",
-    "target": "OBLONG",
-    "amount": 0.8517
+    "amount": 0.8517,
+    "source": "Origami",
+    "target": "Oblong",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.4832,
     "brightness": 0.3732,
-    "warmth": 0.6178,
-    "movement": 0.6668,
     "density": 0.9288,
+    "movement": 0.6668,
     "space": 0.6165,
-    "aggression": 0.4832
+    "warmth": 0.6178
   },
+  "engines": [
+    "Origami",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.4879,
-    "MOVEMENT": 0.0066,
     "COUPLING": 0.8655,
+    "MOVEMENT": 0.0066,
     "SPACE": 0.0119
   },
+  "mood": "Entangled",
+  "name": "CONCRETE WEAVE",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.8425,
+      "macro_coupling": 0.8829,
+      "macro_movement": 0.2314,
+      "macro_space": 0.0091
+    },
+    "Origami": {
+      "macro_character": 0.9452,
+      "macro_coupling": 0.9057,
+      "macro_movement": 0.6682,
+      "macro_space": 0.4124
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "industrial",
     "dense",
     "massive"
-  ]
+  ],
+  "version": "1.0"
 }

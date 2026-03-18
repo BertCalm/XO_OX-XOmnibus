@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Deep Gradient",
-  "mood": "Aether",
-  "sonic_dna": {
-    "brightness": 0.05,
-    "warmth": 0.82,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Smooth descent into total darkness — no hard edge",
+  "dna": {
     "aggression": 0.12,
-    "movement": 0.15,
+    "brightness": 0.05,
     "density": 0.6,
-    "space": 0.55
+    "movement": 0.15,
+    "space": 0.55,
+    "warmth": 0.82
   },
   "engines": [
-    "OMBRE"
+    "Ombre"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Smooth descent into total darkness \u2014 no hard edge",
+  "macroLabels": [
+    "FADE",
+    "DEPTH",
+    "COUPLING",
+    "SHADE"
+  ],
+  "mood": "Aether",
+  "name": "Deep Gradient",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.12,
+    "brightness": 0.05,
+    "density": 0.6,
+    "movement": 0.15,
+    "space": 0.55,
+    "warmth": 0.82
+  },
   "tags": [
     "aether",
     "dark",
@@ -24,23 +42,5 @@
     "fade",
     "deep"
   ],
-  "macroLabels": [
-    "FADE",
-    "DEPTH",
-    "COUPLING",
-    "SHADE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.05,
-    "warmth": 0.82,
-    "movement": 0.15,
-    "density": 0.6,
-    "space": 0.55,
-    "aggression": 0.12
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FLX2_3",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.865,
+    "source": "Oblong",
+    "target": "Optic",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.9059,
+    "brightness": 0.0516,
+    "density": 0.9834,
+    "movement": 0.8789,
+    "space": 0.6951,
+    "warmth": 0.0801
+  },
   "engines": [
-    "OBLONG",
-    "OPTIC"
+    "Oblong",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.059,
+    "COUPLING": 0.9862,
+    "MOVEMENT": 0.8777,
+    "SPACE": 0.681
+  },
+  "mood": "Flux",
+  "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FLX2_3",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.0478,
-      "macro_movement": 0.872,
       "macro_coupling": 0.9824,
+      "macro_movement": 0.872,
       "macro_space": 0.6793
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.0702,
-      "macro_movement": 0.8834,
       "macro_coupling": 0.99,
+      "macro_movement": 0.8834,
       "macro_space": 0.6828
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OBLONG",
-    "target": "OPTIC",
-    "amount": 0.865
-  },
-  "dna": {
-    "brightness": 0.0516,
-    "warmth": 0.0801,
-    "movement": 0.8789,
-    "density": 0.9834,
-    "space": 0.6951,
-    "aggression": 0.9059
-  },
-  "macros": {
-    "CHARACTER": 0.059,
-    "MOVEMENT": 0.8777,
-    "COUPLING": 0.9862,
-    "SPACE": 0.681
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -47,5 +54,6 @@
     "kinetic",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

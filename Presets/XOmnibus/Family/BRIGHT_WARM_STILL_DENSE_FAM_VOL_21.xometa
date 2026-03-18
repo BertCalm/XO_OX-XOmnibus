@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_STILL_DENSE_FAM_VOL_21",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OVERDUB",
-    "ORIGAMI"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.89,
-      "macro_movement": 0.04,
-      "macro_coupling": 0.749,
-      "macro_space": 0.668
-    },
-    "ORIGAMI": {
-      "macro_character": 0.9,
-      "macro_movement": 0.013,
-      "macro_coupling": 0.722,
-      "macro_space": 0.677
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_WEAVE",
-    "source": "ORIGAMI",
-    "target": "OVERDUB",
-    "amount": 0.698
+    "amount": 0.698,
+    "source": "Origami",
+    "target": "Overdub",
+    "type": "SPECTRAL_WEAVE"
   },
   "dna": {
+    "aggression": 0.497,
     "brightness": 0.915,
-    "warmth": 0.887,
-    "movement": 0.021,
     "density": 0.949,
+    "movement": 0.021,
     "space": 0.659,
-    "aggression": 0.497
+    "warmth": 0.887
   },
+  "engines": [
+    "Overdub",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.895,
-    "MOVEMENT": 0.026,
     "COUPLING": 0.736,
+    "MOVEMENT": 0.026,
     "SPACE": 0.673
   },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_STILL_DENSE_FAM_VOL_21",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.9,
+      "macro_coupling": 0.722,
+      "macro_movement": 0.013,
+      "macro_space": 0.677
+    },
+    "Overdub": {
+      "macro_character": 0.89,
+      "macro_coupling": 0.749,
+      "macro_movement": 0.04,
+      "macro_space": 0.668
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "still",
     "dense",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

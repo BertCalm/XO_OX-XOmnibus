@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Mojo Rhythmic",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.67,
+    "pairs": [
+      {
+        "amount": 0.67,
+        "engineA": "Obese",
+        "engineB": "Onset",
+        "type": "Env->Morph"
+      }
+    ],
+    "type": "Env->Morph"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OBESE drive compresses ONSET transients. Thick percussion character. [Env->Morph]",
+  "dna": {
+    "aggression": 0.759,
     "brightness": 0.554,
-    "warmth": 0.633,
-    "movement": 0.597,
     "density": 0.735,
+    "movement": 0.597,
     "space": 0.441,
-    "aggression": 0.759
+    "warmth": 0.633
   },
   "engines": [
-    "XObese",
-    "XOnset"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE drive compresses ONSET transients. Thick percussion character. [Env->Morph]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "obese",
-    "onset",
-    "fat"
+    "Obese",
+    "Onset"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.554,
-    "warmth": 0.633,
-    "movement": 0.597,
-    "density": 0.735,
-    "space": 0.441,
-    "aggression": 0.759
-  },
+  "mood": "Entangled",
+  "name": "Mojo Rhythmic",
   "parameters": {
-    "XObese": {
+    "Obese": {
+      "fat_aggression": 0.766,
+      "fat_brightness": 0.542,
+      "fat_couplingBus": 0,
+      "fat_couplingLevel": 0.67,
       "fat_outputLevel": 0.8,
       "fat_outputPan": -0.04,
-      "fat_couplingLevel": 0.67,
-      "fat_couplingBus": 0,
-      "fat_brightness": 0.542,
-      "fat_warmth": 0.659,
-      "fat_aggression": 0.766
+      "fat_warmth": 0.659
     },
-    "XOnset": {
+    "Onset": {
+      "ons_aggression": 0.686,
+      "ons_brightness": 0.55,
+      "ons_couplingBus": 0,
+      "ons_couplingLevel": 0.56,
       "ons_outputLevel": 0.89,
       "ons_outputPan": 0.0,
-      "ons_couplingLevel": 0.56,
-      "ons_couplingBus": 0,
-      "ons_brightness": 0.55,
-      "ons_warmth": 0.522,
-      "ons_aggression": 0.686
+      "ons_warmth": 0.522
     }
   },
-  "coupling": {
-    "type": "Env->Morph",
-    "amount": 0.67,
-    "pairs": [
-      {
-        "engineA": "XObese",
-        "engineB": "XOnset",
-        "type": "Env->Morph",
-        "amount": 0.67
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.759,
+    "brightness": 0.554,
+    "density": 0.735,
+    "movement": 0.597,
+    "space": 0.441,
+    "warmth": 0.633
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "onset",
+    "fat"
+  ],
+  "version": "1.0.0"
 }

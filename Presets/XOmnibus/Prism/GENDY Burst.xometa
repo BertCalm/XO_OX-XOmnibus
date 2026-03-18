@@ -1,13 +1,70 @@
 {
-  "schema_version": 1,
-  "name": "GENDY Burst",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "GENDY breakpoints in high-frequency stochastic territory — large time step forces rapid waveform evolution pushing spectral content into the upper register. Barrier elasticity at maximum so breakpoints bounce hard, generating bright harmonic crashes. Equal temperament gravity at zero lets microtonal upper partials bloom freely. The reef in direct sunlight.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.85,
+    "density": 0.42,
+    "movement": 0.72,
+    "space": 0.5,
+    "warmth": 0.18
+  },
   "engines": [
     "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "GENDY breakpoints in high-frequency stochastic territory — large time step forces rapid waveform evolution pushing spectral content into the upper register. Barrier elasticity at maximum so breakpoints bounce hard, generating bright harmonic crashes. Equal temperament gravity at zero lets microtonal upper partials bloom freely. The reef in direct sunlight.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
+  "mood": "Prism",
+  "name": "GENDY Burst",
+  "parameters": {
+    "Oracle": {
+      "oracle_ampAttack": 0.01,
+      "oracle_ampDecay": 0.3,
+      "oracle_ampRelease": 0.8,
+      "oracle_ampStep": 0.15,
+      "oracle_ampSustain": 0.7,
+      "oracle_barrierElasticity": 0.95,
+      "oracle_breakpoints": 8,
+      "oracle_distribution": 0.9,
+      "oracle_drift": 0.25,
+      "oracle_glide": 0.0,
+      "oracle_gravity": 0.0,
+      "oracle_level": 0.72,
+      "oracle_lfo1Depth": 0.3,
+      "oracle_lfo1Rate": 0.45,
+      "oracle_lfo1Shape": 0,
+      "oracle_lfo2Depth": 0.15,
+      "oracle_lfo2Rate": 1.2,
+      "oracle_lfo2Shape": 0,
+      "oracle_macroDrift": 0.2,
+      "oracle_macroEvolution": 0.55,
+      "oracle_macroGravity": 0.0,
+      "oracle_macroProphecy": 0.85,
+      "oracle_maqam": 0,
+      "oracle_stochEnvAttack": 0.002,
+      "oracle_stochEnvDecay": 0.15,
+      "oracle_stochEnvRelease": 0.5,
+      "oracle_stochEnvSustain": 0.75,
+      "oracle_timeStep": 0.82,
+      "oracle_voiceMode": 2
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "bright",
     "stochastic",
@@ -16,63 +73,6 @@
     "shimmer",
     "prism"
   ],
-  "macroLabels": [
-    "PROPHECY",
-    "EVOLUTION",
-    "GRAVITY",
-    "DRIFT"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-14",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oracle": {
-      "oracle_breakpoints": 8,
-      "oracle_timeStep": 0.82,
-      "oracle_ampStep": 0.15,
-      "oracle_distribution": 0.9,
-      "oracle_barrierElasticity": 0.95,
-      "oracle_maqam": 0,
-      "oracle_gravity": 0.0,
-      "oracle_drift": 0.25,
-      "oracle_level": 0.72,
-      "oracle_ampAttack": 0.01,
-      "oracle_ampDecay": 0.3,
-      "oracle_ampSustain": 0.7,
-      "oracle_ampRelease": 0.8,
-      "oracle_stochEnvAttack": 0.002,
-      "oracle_stochEnvDecay": 0.15,
-      "oracle_stochEnvSustain": 0.75,
-      "oracle_stochEnvRelease": 0.5,
-      "oracle_lfo1Rate": 0.45,
-      "oracle_lfo1Depth": 0.3,
-      "oracle_lfo1Shape": 0,
-      "oracle_lfo2Rate": 1.2,
-      "oracle_lfo2Depth": 0.15,
-      "oracle_lfo2Shape": 0,
-      "oracle_voiceMode": 2,
-      "oracle_glide": 0.0,
-      "oracle_macroProphecy": 0.85,
-      "oracle_macroEvolution": 0.55,
-      "oracle_macroGravity": 0.0,
-      "oracle_macroDrift": 0.2
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.85,
-    "warmth": 0.18,
-    "movement": 0.72,
-    "density": 0.42,
-    "space": 0.5,
-    "aggression": 0.55
-  }
+  "version": "1.0.0"
 }

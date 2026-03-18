@@ -1,13 +1,36 @@
 {
-  "schema_version": 1,
-  "name": "Bite Engine Maximum",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OVERBITE full aggression mode — BITE at maximum, density stacked, no mercy.",
+  "dna": {
+    "aggression": 0.9,
+    "brightness": 0.38,
+    "density": 0.9,
+    "movement": 0.62,
+    "space": 0.18,
+    "warmth": 0.48
+  },
   "engines": [
-    "OVERBITE"
+    "Overbite"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE full aggression mode \u2014 BITE at maximum, density stacked, no mercy.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "BITE",
+    "WARMTH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Bite Engine Maximum",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "portrait",
@@ -16,29 +39,6 @@
     "aggressive",
     "bite"
   ],
-  "macroLabels": [
-    "BITE",
-    "WARMTH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.38,
-    "warmth": 0.48,
-    "movement": 0.62,
-    "density": 0.9,
-    "space": 0.18,
-    "aggression": 0.9
-  }
+  "version": "1.0.0"
 }

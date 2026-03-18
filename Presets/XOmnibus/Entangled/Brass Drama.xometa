@@ -1,19 +1,29 @@
 {
-  "schema_version": 1,
-  "name": "Brass Drama",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.806,
+        "engineA": "Ottoni",
+        "engineB": "Ole",
+        "type": "Env->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "OTTONI and OLE coupled via Env->Filter. Blended Constellation DNA — stub seeded for expansion.",
+  "dna": {
+    "aggression": 0.608,
+    "brightness": 0.634,
+    "density": 0.664,
+    "movement": 0.692,
+    "space": 0.588,
+    "warmth": 0.605
+  },
   "engines": [
-    "OTTONI",
-    "OLE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OTTONI and OLE coupled via Env->Filter. Blended Constellation DNA \u2014 stub seeded for expansion.",
-  "tags": [
-    "coupling",
-    "constellation",
-    "ottoni",
-    "ole"
+    "Ottoni",
+    "Ole"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,27 +31,17 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-16",
+  "mood": "Entangled",
+  "name": "Brass Drama",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OTTONI",
-        "engineB": "OLE",
-        "type": "Env->Filter",
-        "amount": 0.806
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.634,
-    "warmth": 0.605,
-    "movement": 0.692,
-    "density": 0.664,
-    "space": 0.588,
-    "aggression": 0.608
-  }
+  "tags": [
+    "coupling",
+    "constellation",
+    "ottoni",
+    "ole"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

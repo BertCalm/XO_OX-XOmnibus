@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Arctic Shimmer",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.97,
-    "warmth": 0.15,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Razor-edge shimmer dispersed across the upper register",
+  "dna": {
     "aggression": 0.1,
-    "movement": 0.65,
+    "brightness": 0.97,
     "density": 0.3,
-    "space": 0.7
+    "movement": 0.65,
+    "space": 0.7,
+    "warmth": 0.15
   },
   "engines": [
-    "ODDFELIX"
+    "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Razor-edge shimmer dispersed across the upper register",
+  "macroLabels": [
+    "SHIMMER",
+    "SCATTER",
+    "COUPLING",
+    "AIR"
+  ],
+  "mood": "Prism",
+  "name": "Arctic Shimmer",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.1,
+    "brightness": 0.97,
+    "density": 0.3,
+    "movement": 0.65,
+    "space": 0.7,
+    "warmth": 0.15
+  },
   "tags": [
     "prism",
     "bright",
@@ -24,23 +42,5 @@
     "shimmer",
     "airy"
   ],
-  "macroLabels": [
-    "SHIMMER",
-    "SCATTER",
-    "COUPLING",
-    "AIR"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.97,
-    "warmth": 0.15,
-    "movement": 0.65,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.1
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

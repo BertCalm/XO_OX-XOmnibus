@@ -1,13 +1,36 @@
 {
-  "schema_version": 1,
-  "name": "Bob at Maximum Mass",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OBLONG at maximum density — shape compressed to its most irreducible weight.",
+  "dna": {
+    "aggression": 0.85,
+    "brightness": 0.35,
+    "density": 0.95,
+    "movement": 0.58,
+    "space": 0.2,
+    "warmth": 0.45
+  },
   "engines": [
-    "OBLONG"
+    "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBLONG at maximum density \u2014 shape compressed to its most irreducible weight.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "SHAPE",
+    "MASS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Bob at Maximum Mass",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "portrait",
@@ -16,29 +39,6 @@
     "aggressive",
     "massive"
   ],
-  "macroLabels": [
-    "SHAPE",
-    "MASS",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.45,
-    "movement": 0.58,
-    "density": 0.95,
-    "space": 0.2,
-    "aggression": 0.85
-  }
+  "version": "1.0.0"
 }

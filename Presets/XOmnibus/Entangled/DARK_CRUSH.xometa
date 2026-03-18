@@ -1,49 +1,57 @@
 {
-  "name": "DARK CRUSH",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OWLFISH",
-    "OLE"
-  ],
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.5199,
-      "macro_movement": 0.8065,
-      "macro_coupling": 0.8747,
-      "macro_space": 0.9403
-    },
-    "OLE": {
-      "macro_character": 0.737,
-      "macro_movement": 0.197,
-      "macro_coupling": 0.7725,
-      "macro_space": 0.9489
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OWLFISH",
-    "target": "OLE",
-    "amount": 0.9762
+    "amount": 0.9762,
+    "source": "Owlfish",
+    "target": "Ole",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.5071,
     "brightness": 0.6232,
-    "warmth": 0.6634,
-    "movement": 0.1246,
     "density": 0.899,
+    "movement": 0.1246,
     "space": 0.9,
-    "aggression": 0.5071
+    "warmth": 0.6634
   },
+  "engines": [
+    "Owlfish",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.6669,
-    "MOVEMENT": 0.3262,
     "COUPLING": 0.9092,
+    "MOVEMENT": 0.3262,
     "SPACE": 0.5544
   },
+  "mood": "Entangled",
+  "name": "DARK CRUSH",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.737,
+      "macro_coupling": 0.7725,
+      "macro_movement": 0.197,
+      "macro_space": 0.9489
+    },
+    "Owlfish": {
+      "macro_character": 0.5199,
+      "macro_coupling": 0.8747,
+      "macro_movement": 0.8065,
+      "macro_space": 0.9403
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "stacked",
     "dense",
     "extreme-density",
     "entangled"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,58 +1,58 @@
 {
-  "schema_version": 1,
-  "name": "Whiplash",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Dub engine stripped to one violent transient. Tape crack in a void.",
+  "dna": {
+    "aggression": 0.97,
+    "brightness": 0.88,
+    "density": 0.0,
+    "movement": 0.9,
+    "space": 1.0,
+    "warmth": 0.0
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dub engine stripped to one violent transient. Tape crack in a void.",
-  "tags": [
-    "aggressive-sparse",
-    "extreme",
-    "prism",
-    "transient"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Whiplash",
   "parameters": {
     "Overdub": {
-      "dub_oscWave": 1.0,
-      "dub_oscOctave": 1.0,
-      "dub_oscTune": 0.0,
-      "dub_drive": 0.97,
-      "dub_filterCutoff": 7000.0,
-      "dub_filterReso": 0.92,
-      "dub_filterEnvAmt": 0.95,
       "dub_attack": 0.3,
       "dub_decay": 35.0,
-      "dub_sustain": 0.0,
-      "dub_release": 25.0,
       "dub_distortion": 0.95,
-      "dub_level": -3.0
+      "dub_drive": 0.97,
+      "dub_filterCutoff": 7000.0,
+      "dub_filterEnvAmt": 0.95,
+      "dub_filterReso": 0.92,
+      "dub_level": -3.0,
+      "dub_oscOctave": 1.0,
+      "dub_oscTune": 0.0,
+      "dub_oscWave": 1.0,
+      "dub_release": 25.0,
+      "dub_sustain": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.88,
-    "warmth": 0.0,
-    "movement": 0.9,
-    "density": 0.0,
-    "space": 1.0,
-    "aggression": 0.97
-  }
+  "tags": [
+    "aggressive-sparse",
+    "extreme",
+    "prism",
+    "transient"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

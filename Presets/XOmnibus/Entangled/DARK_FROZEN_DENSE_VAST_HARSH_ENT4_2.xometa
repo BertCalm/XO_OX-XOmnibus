@@ -1,45 +1,52 @@
 {
-  "name": "DARK_FROZEN_DENSE_VAST_HARSH_ENT4_2",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.779,
+    "source": "Oracle",
+    "target": "Ole",
+    "type": "SPECTRAL_MORPH"
+  },
+  "dna": {
+    "aggression": 0.933,
+    "brightness": 0.029,
+    "density": 0.955,
+    "movement": 0.014,
+    "space": 0.989,
+    "warmth": 0.558
+  },
   "engines": [
-    "ORACLE",
-    "OLE"
+    "Oracle",
+    "Ole"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.295,
+    "COUPLING": 0.779,
+    "MOVEMENT": 0.01,
+    "SPACE": 0.99
+  },
+  "mood": "Entangled",
+  "name": "DARK_FROZEN_DENSE_VAST_HARSH_ENT4_2",
   "parameters": {
-    "ORACLE": {
-      "macro_character": 0.288,
-      "macro_movement": 0.011,
-      "macro_coupling": 0.961,
+    "Ole": {
+      "macro_character": 0.302,
+      "macro_coupling": 0.931,
+      "macro_movement": 0.01,
       "macro_space": 0.99
     },
-    "OLE": {
-      "macro_character": 0.302,
-      "macro_movement": 0.01,
-      "macro_coupling": 0.931,
+    "Oracle": {
+      "macro_character": 0.288,
+      "macro_coupling": 0.961,
+      "macro_movement": 0.011,
       "macro_space": 0.99
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORACLE",
-    "target": "OLE",
-    "amount": 0.779
-  },
-  "dna": {
-    "brightness": 0.029,
-    "warmth": 0.558,
-    "movement": 0.014,
-    "density": 0.955,
-    "space": 0.989,
-    "aggression": 0.933
-  },
-  "macros": {
-    "CHARACTER": 0.295,
-    "MOVEMENT": 0.01,
-    "COUPLING": 0.779,
-    "SPACE": 0.99
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +55,6 @@
     "dense",
     "vast",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

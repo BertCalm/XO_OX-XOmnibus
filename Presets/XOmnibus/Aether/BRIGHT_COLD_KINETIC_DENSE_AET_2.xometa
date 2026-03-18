@@ -1,14 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT COLD KINETIC DENSE AET 2",
-  "mood": "Aether",
-  "engines": [
-    "OCTOPUS",
-    "OBLONG"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, bright, cold, kinetic.",
+  "coupling": [
+    {
+      "amount": 0.561,
+      "destination": "OBLONG",
+      "source": "OCTOPUS",
+      "type": "CHAOS_INJECT"
+    }
+  ],
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — aether, bright, cold, kinetic.",
+  "dna": {
+    "aggression": 0.472,
+    "brightness": 0.957,
+    "density": 0.914,
+    "movement": 0.948,
+    "space": 0.44,
+    "warmth": 0.056
+  },
+  "engines": [
+    "Octopus",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "BRIGHT COLD KINETIC DENSE AET 2",
+  "parameters": {
+    "Oblong": {
+      "level": 0.745,
+      "pan": 0.087
+    },
+    "Octopus": {
+      "level": 0.777,
+      "pan": 0.015
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "bright",
@@ -17,40 +51,6 @@
     "dense",
     "ultra-diverse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.957,
-    "warmth": 0.056,
-    "movement": 0.948,
-    "density": 0.914,
-    "space": 0.44,
-    "aggression": 0.472
-  },
-  "parameters": {
-    "OCTOPUS": {
-      "level": 0.777,
-      "pan": 0.015
-    },
-    "OBLONG": {
-      "level": 0.745,
-      "pan": 0.087
-    }
-  },
-  "coupling": [
-    {
-      "source": "OCTOPUS",
-      "destination": "OBLONG",
-      "type": "CHAOS_INJECT",
-      "amount": 0.561
-    }
-  ],
-  "sequencer": null
+  "version": "1.0.0"
 }

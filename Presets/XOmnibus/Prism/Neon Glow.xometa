@@ -1,56 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Neon Glow",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Focused leads tone with prism shimmer.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.604,
+    "density": 0.067,
+    "movement": 0.0,
+    "space": 0.277,
+    "warmth": 0.0
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Focused leads tone with prism shimmer.",
-  "tags": [
-    "shimmery",
-    "chorus",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Leads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Leads",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Neon Glow",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 2.0,
-      "drift_oscA_level": 0.8,
-      "drift_shimmerAmount": 0.35,
-      "drift_shimmerTone": 0.6,
-      "drift_filterCutoff": 6000.0,
-      "drift_filterReso": 0.12,
       "drift_attack": 20.0,
       "drift_decay": 500.0,
-      "drift_sustain": 0.6,
+      "drift_filterCutoff": 6000.0,
+      "drift_filterReso": 0.12,
+      "drift_level": -3.0,
+      "drift_oscA_level": 0.8,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 2.0,
       "drift_release": 400.0,
-      "drift_level": -3.0
+      "drift_shimmerAmount": 0.35,
+      "drift_shimmerTone": 0.6,
+      "drift_sustain": 0.6
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.604,
-    "warmth": 0.0,
-    "movement": 0.0,
-    "density": 0.067,
-    "space": 0.277,
-    "aggression": 0.05
-  }
+  "tags": [
+    "shimmery",
+    "chorus",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

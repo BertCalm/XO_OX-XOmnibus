@@ -1,14 +1,37 @@
 {
-  "schema_version": 1,
-  "name": "Pixels and Machine",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Light",
+  "created": "2026-03-16",
+  "description": "OVERWORLD chip melody + ONSET percussion — the NES band reunion. The cartridge that has a drum kit. 8-bit groove, full production.",
+  "dna": {
+    "aggression": 0.52,
+    "brightness": 0.62,
+    "density": 0.68,
+    "movement": 0.82,
+    "space": 0.58,
+    "warmth": 0.38
+  },
   "engines": [
-    "OVERWORLD",
-    "ONSET"
+    "Overworld",
+    "Onset"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERWORLD chip melody + ONSET percussion \u2014 the NES band reunion. The cartridge that has a drum kit. 8-bit groove, full production.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Pixels and Machine",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "reunion",
@@ -19,29 +42,6 @@
     "retro",
     "batch3-reunion"
   ],
-  "macroLabels": [
-    "ERA",
-    "CHAOS",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Light",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.62,
-    "warmth": 0.38,
-    "movement": 0.82,
-    "density": 0.68,
-    "space": 0.58,
-    "aggression": 0.52
-  }
+  "version": "1.0.0"
 }

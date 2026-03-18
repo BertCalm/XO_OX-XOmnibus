@@ -1,45 +1,52 @@
 {
-  "name": "DARK WARM DENSE VIOLENT AET AGG 5",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.867,
+    "source": "Orbital",
+    "target": "Organon",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.898,
+    "brightness": 0.033,
+    "density": 0.886,
+    "movement": 0.472,
+    "space": 0.513,
+    "warmth": 0.93
+  },
   "engines": [
-    "ORBITAL",
-    "ORGANON"
+    "Orbital",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.032,
+    "COUPLING": 0.834,
+    "MOVEMENT": 0.455,
+    "SPACE": 0.481
+  },
+  "mood": "Aether",
+  "name": "DARK WARM DENSE VIOLENT AET AGG 5",
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.032,
-      "macro_movement": 0.459,
       "macro_coupling": 0.828,
+      "macro_movement": 0.459,
       "macro_space": 0.488
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.032,
-      "macro_movement": 0.451,
       "macro_coupling": 0.84,
+      "macro_movement": 0.451,
       "macro_space": 0.475
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ORBITAL",
-    "target": "ORGANON",
-    "amount": 0.867
-  },
-  "dna": {
-    "brightness": 0.033,
-    "warmth": 0.93,
-    "movement": 0.472,
-    "density": 0.886,
-    "space": 0.513,
-    "aggression": 0.898
-  },
-  "macros": {
-    "CHARACTER": 0.032,
-    "MOVEMENT": 0.455,
-    "COUPLING": 0.834,
-    "SPACE": 0.481
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "aggressive",
@@ -47,5 +54,6 @@
     "violent",
     "dark",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

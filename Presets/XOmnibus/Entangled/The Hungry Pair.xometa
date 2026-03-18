@@ -1,22 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "The Hungry Pair",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.85,
+    "pairs": [
+      {
+        "amount": 0.85,
+        "engineA": "Obese",
+        "engineB": "Overbite",
+        "type": "Audio->Wavetable"
+      }
+    ],
+    "type": "Audio->Wavetable"
+  },
+  "couplingIntensity": "Deep",
+  "description": "Full bidirectional entanglement — OBESE and OVERBITE feeding each other. Ravenous.",
+  "dna": {
+    "aggression": 0.718,
     "brightness": 0.515,
-    "warmth": 0.677,
-    "movement": 0.513,
     "density": 0.779,
+    "movement": 0.513,
     "space": 0.411,
-    "aggression": 0.718
+    "warmth": 0.677
   },
   "engines": [
-    "XObese",
-    "XOverbite"
+    "Obese",
+    "Overbite"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Full bidirectional entanglement \u2014 OBESE and OVERBITE feeding each other. Ravenous.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "The Hungry Pair",
+  "parameters": {
+    "Obese": {
+      "fat_aggression": 0.734,
+      "fat_brightness": 0.52,
+      "fat_couplingBus": 0,
+      "fat_couplingLevel": 0.62,
+      "fat_outputLevel": 0.89,
+      "fat_outputPan": 0.04,
+      "fat_warmth": 0.695
+    },
+    "Overbite": {
+      "poss_aggression": 0.648,
+      "poss_brightness": 0.469,
+      "poss_couplingBus": 0,
+      "poss_couplingLevel": 0.59,
+      "poss_outputLevel": 0.85,
+      "poss_outputPan": 0.01,
+      "poss_warmth": 0.696
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.718,
+    "brightness": 0.515,
+    "density": 0.779,
+    "movement": 0.513,
+    "space": 0.411,
+    "warmth": 0.677
+  },
   "tags": [
     "coupling",
     "entangled",
@@ -25,51 +71,5 @@
     "bidirectional",
     "hungry"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
-  "dna": {
-    "brightness": 0.515,
-    "warmth": 0.677,
-    "movement": 0.513,
-    "density": 0.779,
-    "space": 0.411,
-    "aggression": 0.718
-  },
-  "parameters": {
-    "XObese": {
-      "fat_outputLevel": 0.89,
-      "fat_outputPan": 0.04,
-      "fat_couplingLevel": 0.62,
-      "fat_couplingBus": 0,
-      "fat_brightness": 0.52,
-      "fat_warmth": 0.695,
-      "fat_aggression": 0.734
-    },
-    "XOverbite": {
-      "poss_outputLevel": 0.85,
-      "poss_outputPan": 0.01,
-      "poss_couplingLevel": 0.59,
-      "poss_couplingBus": 0,
-      "poss_brightness": 0.469,
-      "poss_warmth": 0.696,
-      "poss_aggression": 0.648
-    }
-  },
-  "coupling": {
-    "type": "Audio->Wavetable",
-    "amount": 0.85,
-    "pairs": [
-      {
-        "engineA": "XObese",
-        "engineB": "XOverbite",
-        "type": "Audio->Wavetable",
-        "amount": 0.85
-      }
-    ]
-  }
+  "version": "1.0.0"
 }

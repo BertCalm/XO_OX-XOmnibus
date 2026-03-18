@@ -1,31 +1,39 @@
 {
-  "name": "Slant Dub",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6,
+    "source": "Overdub",
+    "target": "Oblique",
+    "type": "ANGULAR_DEFLECT"
+  },
+  "description": "Tape loop deflected mid-play — the expected echo arrives from a crooked angle",
   "engines": [
-    "OVERDUB",
-    "OBLIQUE"
+    "Overdub",
+    "Oblique"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.4,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.4,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.42,
-    "warmth": 0.59,
-    "movement": 0.49,
-    "density": 0.6,
-    "space": 0.59,
-    "aggression": 0.41
-  },
+  "mood": "Entangled",
+  "name": "Slant Dub",
   "parameters": {},
-  "coupling": {
-    "type": "ANGULAR_DEFLECT",
-    "source": "OVERDUB",
-    "target": "OBLIQUE",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.41,
+    "brightness": 0.42,
+    "density": 0.6,
+    "movement": 0.49,
+    "space": 0.59,
+    "warmth": 0.59
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "oblique",
     "dub"
   ],
-  "description": "Tape loop deflected mid-play \u2014 the expected echo arrives from a crooked angle"
+  "version": "1.0"
 }

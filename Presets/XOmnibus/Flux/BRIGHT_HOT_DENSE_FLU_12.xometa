@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT HOT DENSE FLU 12",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERDUB",
-    "OCTOPUS"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.917,
-      "macro_movement": 0.647,
-      "macro_coupling": 0.43,
-      "macro_space": 0.483
-    },
-    "OCTOPUS": {
-      "macro_character": 0.887,
-      "macro_movement": 0.703,
-      "macro_coupling": 0.636,
-      "macro_space": 0.606
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OVERDUB",
-    "target": "OCTOPUS",
-    "amount": 0.629
+    "amount": 0.629,
+    "source": "Overdub",
+    "target": "Octopus",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.686,
     "brightness": 0.884,
-    "warmth": 0.95,
-    "movement": 0.647,
     "density": 0.927,
+    "movement": 0.647,
     "space": 0.483,
-    "aggression": 0.686
+    "warmth": 0.95
   },
+  "engines": [
+    "Overdub",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.917,
-    "MOVEMENT": 0.647,
     "COUPLING": 0.43,
+    "MOVEMENT": 0.647,
     "SPACE": 0.483
   },
+  "mood": "Flux",
+  "name": "BRIGHT HOT DENSE FLU 12",
+  "parameters": {
+    "Octopus": {
+      "macro_character": 0.887,
+      "macro_coupling": 0.636,
+      "macro_movement": 0.703,
+      "macro_space": 0.606
+    },
+    "Overdub": {
+      "macro_character": 0.917,
+      "macro_coupling": 0.43,
+      "macro_movement": 0.647,
+      "macro_space": 0.483
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
@@ -47,5 +54,6 @@
     "dense",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

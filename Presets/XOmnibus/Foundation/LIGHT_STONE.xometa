@@ -1,49 +1,57 @@
 {
-  "name": "LIGHT STONE",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.665,
+    "source": "Oblique",
+    "target": "Optic",
+    "type": "PHASE_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.784,
+    "brightness": 0.885,
+    "density": 0.108,
+    "movement": 0.757,
+    "space": 0.273,
+    "warmth": 0.53
+  },
   "engines": [
-    "OBLIQUE",
-    "OPTIC"
+    "Oblique",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.166,
+    "COUPLING": 0.732,
+    "MOVEMENT": 0.575,
+    "SPACE": 0.507
+  },
+  "mood": "Foundation",
+  "name": "LIGHT STONE",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.239,
-      "macro_movement": 0.158,
       "macro_coupling": 0.551,
+      "macro_movement": 0.158,
       "macro_space": 0.552
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.093,
-      "macro_movement": 0.992,
       "macro_coupling": 0.913,
+      "macro_movement": 0.992,
       "macro_space": 0.461
     }
   },
-  "coupling": {
-    "type": "PHASE_COUPLE",
-    "source": "OBLIQUE",
-    "target": "OPTIC",
-    "amount": 0.665
-  },
-  "dna": {
-    "brightness": 0.885,
-    "warmth": 0.53,
-    "movement": 0.757,
-    "density": 0.108,
-    "space": 0.273,
-    "aggression": 0.784
-  },
-  "macros": {
-    "CHARACTER": 0.166,
-    "MOVEMENT": 0.575,
-    "COUPLING": 0.732,
-    "SPACE": 0.507
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "bright",
     "extreme",
     "low-density"
-  ]
+  ],
+  "version": "1.0"
 }

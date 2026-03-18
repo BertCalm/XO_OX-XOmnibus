@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_COLD_SPARSE_VAST_FND_3",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.72,
+    "source": "OddfeliX",
+    "target": "Overworld",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.614,
+    "brightness": 0.95,
+    "density": 0.136,
+    "movement": 0.473,
+    "space": 0.945,
+    "warmth": 0.069
+  },
   "engines": [
-    "ODDFELIX",
-    "OVERWORLD"
+    "OddfeliX",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.703,
+    "COUPLING": 0.139,
+    "MOVEMENT": 0.256,
+    "SPACE": 0.391
+  },
+  "mood": "Foundation",
+  "name": "BRIGHT_COLD_SPARSE_VAST_FND_3",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.673,
-      "macro_movement": 0.632,
       "macro_coupling": 0.177,
+      "macro_movement": 0.632,
       "macro_space": 0.277
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.715,
-      "macro_movement": 0.327,
       "macro_coupling": 0.174,
+      "macro_movement": 0.327,
       "macro_space": 0.148
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ODDFELIX",
-    "target": "OVERWORLD",
-    "amount": 0.72
-  },
-  "dna": {
-    "brightness": 0.95,
-    "warmth": 0.069,
-    "movement": 0.473,
-    "density": 0.136,
-    "space": 0.945,
-    "aggression": 0.614
-  },
-  "macros": {
-    "CHARACTER": 0.703,
-    "MOVEMENT": 0.256,
-    "COUPLING": 0.139,
-    "SPACE": 0.391
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -48,5 +55,6 @@
     "sparse",
     "vast",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

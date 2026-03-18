@@ -1,19 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Gill Resonance",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.654,
+        "description": "Owlfish drives OddOscar via EnvToMod",
+        "source": "Owlfish",
+        "target": "OddOscar",
+        "type": "EnvToMod"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "created": "2026-03-16",
+  "description": "ODDOSCAR's axolotl gill structure as acoustic resonator for OWLFISH's drone — regenerative form and sustained tone in biological sympathy.",
+  "dna": {
+    "aggression": 0.345,
+    "brightness": 0.485,
+    "density": 0.64,
+    "movement": 0.508,
+    "space": 0.372,
+    "warmth": 0.701
+  },
   "engines": [
     "Owlfish",
     "OddOscar"
-  ],
-  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "ODDOSCAR's axolotl gill structure as acoustic resonator for OWLFISH's drone — regenerative form and sustained tone in biological sympathy.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "owlfish",
-    "oddoscar"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,64 +32,53 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Strong",
-  "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.485,
-    "warmth": 0.701,
-    "movement": 0.508,
-    "density": 0.64,
-    "space": 0.372,
-    "aggression": 0.345
-  },
+  "mood": "Entangled",
+  "name": "Gill Resonance",
   "parameters": {
+    "OddOscar": {
+      "morph_attack": 0.002,
+      "morph_filterCutoff": 0.566,
+      "morph_lfoRate": 0.142,
+      "morph_macroCharacter": 0.0,
+      "morph_macroCoupling": 0.084,
+      "morph_morph": 0.406,
+      "morph_release": 1.0
+    },
     "Owlfish": {
-      "owl_filterCutoff": 0.532,
-      "owl_filterRes": 0.616,
-      "owl_oscPitch": 0.583,
-      "owl_oscLevel": 0.681,
-      "owl_subLevel": 0.144,
-      "owl_mixturSpread": 0.564,
-      "owl_mixturBlend": 0.733,
-      "owl_resonantPitch": 0.34,
-      "owl_resonantFeedback": 0.206,
       "owl_abyssalDrive": 0.17,
       "owl_ampAttack": 0.138,
       "owl_ampDecay": 0.926,
-      "owl_ampSustain": 0.606,
       "owl_ampRelease": 1.3,
-      "owl_lfoRate": 0.063,
-      "owl_lfoDepth": 0.309,
-      "owl_lfoShape": 0.272,
+      "owl_ampSustain": 0.606,
       "owl_envDepth": 0.578,
+      "owl_filterCutoff": 0.532,
+      "owl_filterRes": 0.616,
       "owl_hall": 0.264,
-      "owl_shimmer": 0.262,
+      "owl_lfoDepth": 0.309,
+      "owl_lfoRate": 0.063,
+      "owl_lfoShape": 0.272,
       "owl_macroCharacter": 0.0,
-      "owl_macroMovement": 0.0,
       "owl_macroCoupling": 0.0,
-      "owl_macroSpace": 0.0
-    },
-    "OddOscar": {
-      "morph_morph": 0.406,
-      "morph_filterCutoff": 0.566,
-      "morph_lfoRate": 0.142,
-      "morph_attack": 0.002,
-      "morph_release": 1.0,
-      "morph_macroCharacter": 0.0,
-      "morph_macroCoupling": 0.084
+      "owl_macroMovement": 0.0,
+      "owl_macroSpace": 0.0,
+      "owl_mixturBlend": 0.733,
+      "owl_mixturSpread": 0.564,
+      "owl_oscLevel": 0.681,
+      "owl_oscPitch": 0.583,
+      "owl_resonantFeedback": 0.206,
+      "owl_resonantPitch": 0.34,
+      "owl_shimmer": 0.262,
+      "owl_subLevel": 0.144
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "source": "Owlfish",
-        "target": "OddOscar",
-        "type": "EnvToMod",
-        "amount": 0.654,
-        "description": "Owlfish drives OddOscar via EnvToMod"
-      }
-    ]
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "oddoscar"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

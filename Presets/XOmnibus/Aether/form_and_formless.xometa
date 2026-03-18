@@ -1,42 +1,50 @@
 {
-  "name": "Form and Formless",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "dna": {
+    "aggression": 0.07,
+    "brightness": 0.55,
+    "density": 0.14,
+    "movement": 0.82,
+    "space": 0.85,
+    "warmth": 0.38
+  },
   "engines": [
-    "OBBLIGATO",
-    "ORPHICA"
+    "Obbligato",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.32,
+    "COUPLING": 0.5,
+    "MOVEMENT": 0.82,
+    "SPACE": 0.85
+  },
+  "mood": "Aether",
+  "name": "Form and Formless",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.38,
-      "macro_movement": 0.85,
       "macro_coupling": 0.5,
+      "macro_movement": 0.85,
       "macro_space": 0.82
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.25,
-      "macro_movement": 0.78,
       "macro_coupling": 0.5,
+      "macro_movement": 0.78,
       "macro_space": 0.88
     }
   },
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.38,
-    "movement": 0.82,
-    "density": 0.14,
-    "space": 0.85,
-    "aggression": 0.07
-  },
-  "macros": {
-    "CHARACTER": 0.32,
-    "MOVEMENT": 0.82,
-    "COUPLING": 0.5,
-    "SPACE": 0.85
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "shifting-aether",
     "entangled"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,48 +1,56 @@
 {
-  "name": "LONE ANCESTRY",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.364,
+    "source": "Obbligato",
+    "target": "Origami",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.288,
+    "brightness": 0.638,
+    "density": 0.11,
+    "movement": 0.142,
+    "space": 0.465,
+    "warmth": 0.46
+  },
   "engines": [
-    "OBBLIGATO",
-    "ORIGAMI"
+    "Obbligato",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.381,
+    "COUPLING": 0.296,
+    "MOVEMENT": 0.359,
+    "SPACE": 0.699
+  },
+  "mood": "Family",
+  "name": "LONE ANCESTRY",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.988,
-      "macro_movement": 0.299,
       "macro_coupling": 0.962,
+      "macro_movement": 0.299,
       "macro_space": 0.69
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.457,
-      "macro_movement": 0.302,
       "macro_coupling": 0.999,
+      "macro_movement": 0.302,
       "macro_space": 0.853
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBBLIGATO",
-    "target": "ORIGAMI",
-    "amount": 0.364
-  },
-  "dna": {
-    "brightness": 0.638,
-    "warmth": 0.46,
-    "movement": 0.142,
-    "density": 0.11,
-    "space": 0.465,
-    "aggression": 0.288
-  },
-  "macros": {
-    "CHARACTER": 0.381,
-    "MOVEMENT": 0.359,
-    "COUPLING": 0.296,
-    "SPACE": 0.699
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "sparse",
     "xlow-density"
-  ]
+  ],
+  "version": "1.0"
 }

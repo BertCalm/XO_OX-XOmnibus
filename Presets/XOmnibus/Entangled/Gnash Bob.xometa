@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Gnash Bob",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.64,
+    "pairs": [
+      {
+        "amount": 0.64,
+        "engineA": "Overbite",
+        "engineB": "Oblong",
+        "type": "Amp->Filter"
+      }
+    ],
+    "type": "Amp->Filter"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OVERBITE fang bites into OBLONG's harmonic curiosity. Bass-forward Bob. [Amp->Filter]",
+  "dna": {
+    "aggression": 0.59,
     "brightness": 0.526,
-    "warmth": 0.665,
-    "movement": 0.512,
     "density": 0.698,
+    "movement": 0.512,
     "space": 0.558,
-    "aggression": 0.59
+    "warmth": 0.665
   },
   "engines": [
-    "XOverbite",
-    "XOblong"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE fang bites into OBLONG's harmonic curiosity. Bass-forward Bob. [Amp->Filter]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "overbite",
-    "oblong",
-    "bite"
+    "Overbite",
+    "Oblong"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.526,
-    "warmth": 0.665,
-    "movement": 0.512,
-    "density": 0.698,
-    "space": 0.558,
-    "aggression": 0.59
-  },
+  "mood": "Entangled",
+  "name": "Gnash Bob",
   "parameters": {
-    "XOverbite": {
-      "poss_outputLevel": 0.76,
-      "poss_outputPan": 0.01,
-      "poss_couplingLevel": 0.77,
-      "poss_couplingBus": 0,
-      "poss_brightness": 0.467,
-      "poss_warmth": 0.641,
-      "poss_aggression": 0.592
-    },
-    "XOblong": {
+    "Oblong": {
+      "bob_aggression": 0.526,
+      "bob_brightness": 0.54,
+      "bob_couplingBus": 0,
+      "bob_couplingLevel": 0.78,
       "bob_outputLevel": 0.82,
       "bob_outputPan": 0.02,
-      "bob_couplingLevel": 0.78,
-      "bob_couplingBus": 0,
-      "bob_brightness": 0.54,
-      "bob_warmth": 0.666,
-      "bob_aggression": 0.526
+      "bob_warmth": 0.666
+    },
+    "Overbite": {
+      "poss_aggression": 0.592,
+      "poss_brightness": 0.467,
+      "poss_couplingBus": 0,
+      "poss_couplingLevel": 0.77,
+      "poss_outputLevel": 0.76,
+      "poss_outputPan": 0.01,
+      "poss_warmth": 0.641
     }
   },
-  "coupling": {
-    "type": "Amp->Filter",
-    "amount": 0.64,
-    "pairs": [
-      {
-        "engineA": "XOverbite",
-        "engineB": "XOblong",
-        "type": "Amp->Filter",
-        "amount": 0.64
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.59,
+    "brightness": 0.526,
+    "density": 0.698,
+    "movement": 0.512,
+    "space": 0.558,
+    "warmth": 0.665
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "overbite",
+    "oblong",
+    "bite"
+  ],
+  "version": "1.0.0"
 }

@@ -1,14 +1,67 @@
 {
-  "schema_version": 1,
-  "name": "Washi Shimmer",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.443,
+        "engineA": "Origami",
+        "engineB": "Opal",
+        "type": "rhythm_sync"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Origami × Opal coupling (rhythm sync). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.346,
+    "brightness": 0.681,
+    "density": 0.484,
+    "movement": 0.747,
+    "space": 0.674,
+    "warmth": 0.503
+  },
   "engines": [
     "Origami",
     "Opal"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Origami \u00d7 Opal coupling (rhythm sync). Stub preset \u2014 sound-design pass pending.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Washi Shimmer",
+  "parameters": {
+    "Opal": {
+      "opal_couplingIn": 0.578,
+      "opal_couplingOut": 0.65,
+      "opal_macro1": 0.308,
+      "opal_macro2": 0.543,
+      "opal_macro3": 0.679,
+      "opal_macro4": 0.452
+    },
+    "Origami": {
+      "origami_couplingOut": 0.776,
+      "origami_crease": 0.395,
+      "origami_foldPoint": 0.65,
+      "origami_macro1": 0.327,
+      "origami_macro2": 0.302,
+      "origami_macro3": 0.511,
+      "origami_macro4": 0.359,
+      "origami_pleatRate": 0.76,
+      "origami_tessellate": 0.491,
+      "origami_valleyDepth": 0.773
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "origami",
     "opal",
@@ -16,59 +69,6 @@
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": 130,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Origami": {
-      "origami_foldPoint": 0.65,
-      "origami_crease": 0.395,
-      "origami_valleyDepth": 0.773,
-      "origami_pleatRate": 0.76,
-      "origami_tessellate": 0.491,
-      "origami_macro1": 0.327,
-      "origami_macro2": 0.302,
-      "origami_macro3": 0.511,
-      "origami_macro4": 0.359,
-      "origami_couplingOut": 0.776
-    },
-    "Opal": {
-      "opal_macro1": 0.308,
-      "opal_macro2": 0.543,
-      "opal_macro3": 0.679,
-      "opal_macro4": 0.452,
-      "opal_couplingOut": 0.65,
-      "opal_couplingIn": 0.578
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Opal",
-        "type": "rhythm_sync",
-        "amount": 0.443
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.681,
-    "warmth": 0.503,
-    "movement": 0.747,
-    "density": 0.484,
-    "space": 0.674,
-    "aggression": 0.346
-  }
+  "version": "1.0.0"
 }

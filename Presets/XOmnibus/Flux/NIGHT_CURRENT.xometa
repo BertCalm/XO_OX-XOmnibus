@@ -1,49 +1,57 @@
 {
-  "name": "NIGHT CURRENT",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.496,
+    "source": "Ombre",
+    "target": "Overdub",
+    "type": "HARMONIC_LOCK"
+  },
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.036,
+    "density": 0.136,
+    "movement": 0.598,
+    "space": 0.504,
+    "warmth": 0.574
+  },
   "engines": [
-    "OMBRE",
-    "OVERDUB"
+    "Ombre",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.538,
+    "COUPLING": 0.183,
+    "MOVEMENT": 0.651,
+    "SPACE": 0.617
+  },
+  "mood": "Flux",
+  "name": "NIGHT CURRENT",
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.697,
-      "macro_movement": 0.554,
       "macro_coupling": 0.192,
+      "macro_movement": 0.554,
       "macro_space": 0.665
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.379,
-      "macro_movement": 0.748,
       "macro_coupling": 0.174,
+      "macro_movement": 0.748,
       "macro_space": 0.569
     }
   },
-  "coupling": {
-    "type": "HARMONIC_LOCK",
-    "source": "OMBRE",
-    "target": "OVERDUB",
-    "amount": 0.496
-  },
-  "dna": {
-    "brightness": 0.036,
-    "warmth": 0.574,
-    "movement": 0.598,
-    "density": 0.136,
-    "space": 0.504,
-    "aggression": 0.6
-  },
-  "macros": {
-    "CHARACTER": 0.538,
-    "MOVEMENT": 0.651,
-    "COUPLING": 0.183,
-    "SPACE": 0.617
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "extreme",
     "low-density"
-  ]
+  ],
+  "version": "1.0"
 }

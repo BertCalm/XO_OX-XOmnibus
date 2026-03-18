@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK VAST KINETIC VIOLENT 5",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.045,
-    "space": 0.9342,
-    "movement": 0.906,
-    "aggression": 0.9534,
-    "warmth": 0.5719,
-    "density": 0.4142
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Medium",
+  "couplingType": "ECHO",
+  "description": "Ultra-diverse Entangled preset — dark vast kinetic violent. Designed for ECHO coupling with XOrigami.",
   "dna": {
-    "brightness": 0.045,
-    "space": 0.9342,
-    "movement": 0.906,
     "aggression": 0.9534,
-    "warmth": 0.5719,
-    "density": 0.4142
+    "brightness": 0.045,
+    "density": 0.4142,
+    "movement": 0.906,
+    "space": 0.9342,
+    "warmth": 0.5719
   },
   "engines": [
-    "XOrigami"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark vast kinetic violent. Designed for ECHO coupling with XOrigami.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "echo",
-    "origami"
+    "Origami"
   ],
   "macroLabels": [
     "RADIANCE",
@@ -36,15 +23,28 @@
     "OPEN",
     "SWEEP"
   ],
-  "couplingType": "ECHO",
-  "couplingIntensity": "Medium",
+  "mood": "Entangled",
+  "name": "DARK VAST KINETIC VIOLENT 5",
   "parameters": {
-    "XOrigami": {
-      "couplingLevel": 0.566,
-      "couplingBus": 2
+    "Origami": {
+      "couplingBus": 2,
+      "couplingLevel": 0.566
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9534,
+    "brightness": 0.045,
+    "density": 0.4142,
+    "movement": 0.906,
+    "space": 0.9342,
+    "warmth": 0.5719
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "echo",
+    "origami"
+  ],
+  "version": "1.0.0"
 }

@@ -1,50 +1,58 @@
 {
-  "name": "CHROMATIC ASSAULT",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.514,
+    "source": "Odyssey",
+    "target": "Owlfish",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.967,
+    "brightness": 0.878,
+    "density": 0.391,
+    "movement": 0.415,
+    "space": 0.336,
+    "warmth": 0.932
+  },
   "engines": [
-    "ODYSSEY",
-    "OWLFISH"
+    "Odyssey",
+    "Owlfish"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.931,
+    "COUPLING": 0.856,
+    "MOVEMENT": 0.408,
+    "SPACE": 0.418
+  },
+  "mood": "Flux",
+  "name": "CHROMATIC ASSAULT",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.931,
-      "macro_movement": 0.408,
       "macro_coupling": 0.856,
+      "macro_movement": 0.408,
       "macro_space": 0.418
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.992,
-      "macro_movement": 0.288,
       "macro_coupling": 0.756,
+      "macro_movement": 0.288,
       "macro_space": 0.358
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ODYSSEY",
-    "target": "OWLFISH",
-    "amount": 0.514
-  },
-  "dna": {
-    "brightness": 0.878,
-    "warmth": 0.932,
-    "movement": 0.415,
-    "density": 0.391,
-    "space": 0.336,
-    "aggression": 0.967
-  },
-  "macros": {
-    "CHARACTER": 0.931,
-    "MOVEMENT": 0.408,
-    "COUPLING": 0.856,
-    "SPACE": 0.418
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "hot",
     "violent",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

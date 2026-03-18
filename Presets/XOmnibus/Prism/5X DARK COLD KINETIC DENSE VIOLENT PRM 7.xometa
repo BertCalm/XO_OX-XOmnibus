@@ -1,14 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT PRM 7",
-  "mood": "Prism",
-  "engines": [
-    "OSPREY",
-    "OBLIQUE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.86,
+    "source": "Osprey",
+    "target": "Oblique",
+    "type": "ENVELOPE_SLAVE"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.943,
+    "brightness": 0.065,
+    "density": 0.956,
+    "movement": 0.503,
+    "space": 0.052,
+    "warmth": 0.075
+  },
+  "engines": [
+    "Osprey",
+    "Oblique"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT PRM 7",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.85,
+      "macro_coupling": 0.74,
+      "macro_movement": 0.97,
+      "macro_space": 0.49
+    },
+    "Osprey": {
+      "macro_character": 0.63,
+      "macro_coupling": 0.67,
+      "macro_movement": 0.71,
+      "macro_space": 0.49
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +58,6 @@
     "dense",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.63,
-      "macro_movement": 0.71,
-      "macro_coupling": 0.67,
-      "macro_space": 0.49
-    },
-    "OBLIQUE": {
-      "macro_character": 0.85,
-      "macro_movement": 0.97,
-      "macro_coupling": 0.74,
-      "macro_space": 0.49
-    }
-  },
-  "coupling": {
-    "type": "ENVELOPE_SLAVE",
-    "source": "OSPREY",
-    "target": "OBLIQUE",
-    "amount": 0.86
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.065,
-    "warmth": 0.075,
-    "movement": 0.503,
-    "density": 0.956,
-    "space": 0.052,
-    "aggression": 0.943
-  }
+  "version": "1.0.0"
 }

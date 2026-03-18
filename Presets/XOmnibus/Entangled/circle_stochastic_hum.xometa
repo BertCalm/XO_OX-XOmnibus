@@ -1,14 +1,54 @@
 {
-  "schema_version": 1,
-  "name": "Circle Stochastic Hum",
-  "mood": "Entangled",
-  "engines": [
-    "OHM",
-    "ORACLE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.63,
+        "engineA": "Ohm",
+        "engineB": "Oracle",
+        "type": "LFO->Pitch"
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Hippie sage wisdom meets stochastic prophecy — OHM's COMMUNE axis channels through ORACLE's GENDY breakpoints.",
+  "dna": {
+    "aggression": 0.22,
+    "brightness": 0.38,
+    "density": 0.65,
+    "movement": 0.85,
+    "space": 0.78,
+    "warmth": 0.32
+  },
+  "engines": [
+    "Ohm",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.35,
+    "COUPLING": 0.745,
+    "MOVEMENT": 0.85,
+    "SPACE": 0.78
+  },
+  "mood": "Entangled",
+  "name": "Circle Stochastic Hum",
+  "parameters": {
+    "ohm_droneFund": 0.56,
+    "ohm_macroCommune": 0.596,
+    "ohm_macroMeddling": 0.74,
+    "ohm_orgHarmonics": 0.404,
+    "oracle_breakpoints": 0.725,
+    "oracle_stochasticRate": 0.74
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -21,46 +61,6 @@
     "stochastic",
     "prophetic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "ohm_macroMeddling": 0.74,
-    "ohm_macroCommune": 0.596,
-    "ohm_orgHarmonics": 0.404,
-    "ohm_droneFund": 0.56,
-    "oracle_breakpoints": 0.725,
-    "oracle_stochasticRate": 0.74
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OHM",
-        "engineB": "ORACLE",
-        "type": "LFO->Pitch",
-        "amount": 0.63
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.35,
-    "MOVEMENT": 0.85,
-    "COUPLING": 0.745,
-    "SPACE": 0.78
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.38,
-    "warmth": 0.32,
-    "movement": 0.85,
-    "density": 0.65,
-    "space": 0.78,
-    "aggression": 0.22
-  }
+  "version": "1.0.0"
 }

@@ -1,54 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Tuning Oracle",
-  "mood": "Entangled",
-  "engines": [
-    "OTTONI",
-    "ORACLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Pitch sync locks OTTONI's third brass voice to ORACLE's microtonal breakpoint map.",
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.65,
-      "macro_movement": 0.5,
-      "macro_coupling": 0.65,
-      "macro_space": 0.52
-    },
-    "ORACLE": {
-      "macro_character": 0.52,
-      "macro_movement": 0.55,
-      "macro_coupling": 0.58,
-      "macro_space": 0.56
-    }
-  },
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OTTONI",
-    "target": "ORACLE",
     "amount": 0.65,
-    "intensity": "Moderate"
+    "intensity": "Moderate",
+    "source": "Ottoni",
+    "target": "Oracle",
+    "type": "PITCH_SYNC"
   },
+  "description": "Pitch sync locks OTTONI's third brass voice to ORACLE's microtonal breakpoint map.",
   "dna": {
+    "aggression": 0.08,
     "brightness": 0.52,
-    "warmth": 0.7,
-    "movement": 0.5,
     "density": 0.55,
+    "movement": 0.5,
     "space": 0.54,
-    "aggression": 0.08
+    "warmth": 0.7
   },
+  "engines": [
+    "Ottoni",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.65,
-    "MOVEMENT": 0.5,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.5,
     "SPACE": 0.52
   },
+  "mood": "Entangled",
+  "name": "Tuning Oracle",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.52,
+      "macro_coupling": 0.58,
+      "macro_movement": 0.55,
+      "macro_space": 0.56
+    },
+    "Ottoni": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.5,
+      "macro_space": 0.52
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "ottoni",
     "oracle",
     "pitch",
     "tuning"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_SPARSE_FAM_VOL_94",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.591,
+    "source": "Odyssey",
+    "target": "Organon",
+    "type": "ENVELOPE_MIRROR"
+  },
+  "dna": {
+    "aggression": 0.49,
+    "brightness": 0.957,
+    "density": 0.05,
+    "movement": 0.946,
+    "space": 0.456,
+    "warmth": 0.981
+  },
   "engines": [
-    "ODYSSEY",
-    "ORGANON"
+    "Odyssey",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.99,
+    "COUPLING": 0.273,
+    "MOVEMENT": 0.939,
+    "SPACE": 0.44
+  },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_KINETIC_SPARSE_FAM_VOL_94",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.99,
-      "macro_movement": 0.957,
       "macro_coupling": 0.247,
+      "macro_movement": 0.957,
       "macro_space": 0.453
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.99,
-      "macro_movement": 0.92,
       "macro_coupling": 0.3,
+      "macro_movement": 0.92,
       "macro_space": 0.427
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_MIRROR",
-    "source": "ODYSSEY",
-    "target": "ORGANON",
-    "amount": 0.591
-  },
-  "dna": {
-    "brightness": 0.957,
-    "warmth": 0.981,
-    "movement": 0.946,
-    "density": 0.05,
-    "space": 0.456,
-    "aggression": 0.49
-  },
-  "macros": {
-    "CHARACTER": 0.99,
-    "MOVEMENT": 0.939,
-    "COUPLING": 0.273,
-    "SPACE": 0.44
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "sparse",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

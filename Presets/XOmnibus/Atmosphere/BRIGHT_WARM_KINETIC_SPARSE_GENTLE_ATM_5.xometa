@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_SPARSE_GENTLE_ATM_5",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORBITAL",
-    "OPTIC"
-  ],
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.9406,
-      "macro_movement": 0.9722,
-      "macro_coupling": 0.0514,
-      "macro_space": 0.5234
-    },
-    "OPTIC": {
-      "macro_character": 0.9791,
-      "macro_movement": 0.9474,
-      "macro_coupling": 0.0275,
-      "macro_space": 0.5186
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORBITAL",
-    "target": "OPTIC",
-    "amount": 0.945
+    "amount": 0.945,
+    "source": "Orbital",
+    "target": "Optic",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.0696,
     "brightness": 0.9617,
-    "warmth": 0.9428,
-    "movement": 0.9649,
     "density": 0.0448,
+    "movement": 0.9649,
     "space": 0.509,
-    "aggression": 0.0696
+    "warmth": 0.9428
   },
+  "engines": [
+    "Orbital",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.9598,
-    "MOVEMENT": 0.9598,
     "COUPLING": 0.0394,
+    "MOVEMENT": 0.9598,
     "SPACE": 0.521
   },
+  "mood": "Atmosphere",
+  "name": "BRIGHT_WARM_KINETIC_SPARSE_GENTLE_ATM_5",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.9791,
+      "macro_coupling": 0.0275,
+      "macro_movement": 0.9474,
+      "macro_space": 0.5186
+    },
+    "Orbital": {
+      "macro_character": 0.9406,
+      "macro_coupling": 0.0514,
+      "macro_movement": 0.9722,
+      "macro_space": 0.5234
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
@@ -47,5 +54,6 @@
     "kinetic",
     "sparse",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

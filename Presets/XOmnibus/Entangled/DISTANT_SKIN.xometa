@@ -1,48 +1,56 @@
 {
-  "name": "DISTANT SKIN",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.845,
+    "source": "Obsidian",
+    "target": "Orphica",
+    "type": "SPECTRAL_MORPH"
+  },
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.396,
+    "density": 0.721,
+    "movement": 0.114,
+    "space": 0.081,
+    "warmth": 0.8
+  },
   "engines": [
-    "OBSIDIAN",
-    "ORPHICA"
+    "Obsidian",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.728,
+    "COUPLING": 0.179,
+    "MOVEMENT": 0.114,
+    "SPACE": 0.416
+  },
+  "mood": "Entangled",
+  "name": "DISTANT SKIN",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.78,
-      "macro_movement": 0.119,
       "macro_coupling": 0.906,
+      "macro_movement": 0.119,
       "macro_space": 0.5
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.518,
-      "macro_movement": 0.11,
       "macro_coupling": 0.596,
+      "macro_movement": 0.11,
       "macro_space": 0.124
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBSIDIAN",
-    "target": "ORPHICA",
-    "amount": 0.845
-  },
-  "dna": {
-    "brightness": 0.396,
-    "warmth": 0.8,
-    "movement": 0.114,
-    "density": 0.721,
-    "space": 0.081,
-    "aggression": 0.7
-  },
-  "macros": {
-    "CHARACTER": 0.728,
-    "MOVEMENT": 0.114,
-    "COUPLING": 0.179,
-    "SPACE": 0.416
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "distant"
-  ]
+  ],
+  "version": "1.0"
 }

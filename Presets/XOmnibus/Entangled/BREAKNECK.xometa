@@ -1,48 +1,56 @@
 {
-  "name": "BREAKNECK",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.701,
+    "source": "Onset",
+    "target": "Ottoni",
+    "type": "SPATIAL_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.76,
+    "brightness": 0.04,
+    "density": 0.714,
+    "movement": 0.891,
+    "space": 0.804,
+    "warmth": 0.039
+  },
   "engines": [
-    "ONSET",
-    "OTTONI"
+    "Onset",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.149,
+    "COUPLING": 0.893,
+    "MOVEMENT": 0.891,
+    "SPACE": 0.14
+  },
+  "mood": "Entangled",
+  "name": "BREAKNECK",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.373,
-      "macro_movement": 0.893,
       "macro_coupling": 0.987,
+      "macro_movement": 0.893,
       "macro_space": 0.558
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.366,
-      "macro_movement": 0.89,
       "macro_coupling": 0.144,
+      "macro_movement": 0.89,
       "macro_space": 0.602
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ONSET",
-    "target": "OTTONI",
-    "amount": 0.701
-  },
-  "dna": {
-    "brightness": 0.04,
-    "warmth": 0.039,
-    "movement": 0.891,
-    "density": 0.714,
-    "space": 0.804,
-    "aggression": 0.76
-  },
-  "macros": {
-    "CHARACTER": 0.149,
-    "MOVEMENT": 0.891,
-    "COUPLING": 0.893,
-    "SPACE": 0.14
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "wild",
     "movement"
-  ]
+  ],
+  "version": "1.0"
 }

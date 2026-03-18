@@ -1,48 +1,56 @@
 {
-  "name": "SHADOW REFRACTION",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "ODDOSCAR",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "ODDOSCAR": {
-      "macro_character": 0.843,
-      "macro_movement": 0.286,
-      "macro_coupling": 0.727,
-      "macro_space": 0.585
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.902,
-      "macro_movement": 0.215,
-      "macro_coupling": 0.292,
-      "macro_space": 0.55
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ODDOSCAR",
-    "target": "OBBLIGATO",
-    "amount": 0.791
+    "amount": 0.791,
+    "source": "OddOscar",
+    "target": "Obbligato",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.907,
     "brightness": 0.077,
-    "warmth": 0.546,
-    "movement": 0.96,
     "density": 0.273,
+    "movement": 0.96,
     "space": 0.426,
-    "aggression": 0.907
+    "warmth": 0.546
   },
+  "engines": [
+    "OddOscar",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.743,
-    "MOVEMENT": 0.99,
     "COUPLING": 0.338,
+    "MOVEMENT": 0.99,
     "SPACE": 0.26
   },
+  "mood": "Prism",
+  "name": "SHADOW REFRACTION",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.902,
+      "macro_coupling": 0.292,
+      "macro_movement": 0.215,
+      "macro_space": 0.55
+    },
+    "OddOscar": {
+      "macro_character": 0.843,
+      "macro_coupling": 0.727,
+      "macro_movement": 0.286,
+      "macro_space": 0.585
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-  ]
+  ],
+  "version": "1.0"
 }

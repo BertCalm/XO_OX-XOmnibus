@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT KINETIC VAST VIOLENT ATM AGG 4",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.766,
+    "source": "Oblique",
+    "target": "Oceanic",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.934,
+    "brightness": 0.95,
+    "density": 0.329,
+    "movement": 0.952,
+    "space": 0.946,
+    "warmth": 0.581
+  },
   "engines": [
-    "OBLIQUE",
-    "OCEANIC"
+    "Oblique",
+    "Oceanic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.909,
+    "COUPLING": 0.855,
+    "MOVEMENT": 0.902,
+    "SPACE": 0.934
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT KINETIC VAST VIOLENT ATM AGG 4",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.893,
-      "macro_movement": 0.911,
       "macro_coupling": 0.852,
+      "macro_movement": 0.911,
       "macro_space": 0.94
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.926,
-      "macro_movement": 0.893,
       "macro_coupling": 0.858,
+      "macro_movement": 0.893,
       "macro_space": 0.928
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OBLIQUE",
-    "target": "OCEANIC",
-    "amount": 0.766
-  },
-  "dna": {
-    "brightness": 0.95,
-    "warmth": 0.581,
-    "movement": 0.952,
-    "density": 0.329,
-    "space": 0.946,
-    "aggression": 0.934
-  },
-  "macros": {
-    "CHARACTER": 0.909,
-    "MOVEMENT": 0.902,
-    "COUPLING": 0.855,
-    "SPACE": 0.934
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -48,5 +55,6 @@
     "bright",
     "kinetic",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

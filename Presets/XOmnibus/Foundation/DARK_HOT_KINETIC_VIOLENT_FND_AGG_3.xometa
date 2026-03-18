@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_KINETIC_VIOLENT_FND_AGG_3",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.773,
+    "source": "Oblong",
+    "target": "Overbite",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.954,
+    "brightness": 0.022,
+    "density": 0.69,
+    "movement": 0.903,
+    "space": 0.521,
+    "warmth": 0.934
+  },
   "engines": [
-    "OBLONG",
-    "OVERBITE"
+    "Oblong",
+    "Overbite"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.426,
+    "COUPLING": 0.645,
+    "MOVEMENT": 0.871,
+    "SPACE": 0.874
+  },
+  "mood": "Foundation",
+  "name": "DARK_HOT_KINETIC_VIOLENT_FND_AGG_3",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.426,
-      "macro_movement": 0.871,
       "macro_coupling": 0.645,
+      "macro_movement": 0.871,
       "macro_space": 0.874
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.433,
-      "macro_movement": 0.868,
       "macro_coupling": 0.639,
+      "macro_movement": 0.868,
       "macro_space": 0.842
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OBLONG",
-    "target": "OVERBITE",
-    "amount": 0.773
-  },
-  "dna": {
-    "brightness": 0.022,
-    "warmth": 0.934,
-    "movement": 0.903,
-    "density": 0.69,
-    "space": 0.521,
-    "aggression": 0.954
-  },
-  "macros": {
-    "CHARACTER": 0.426,
-    "MOVEMENT": 0.871,
-    "COUPLING": 0.645,
-    "SPACE": 0.874
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "hot",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

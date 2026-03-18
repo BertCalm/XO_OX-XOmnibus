@@ -1,33 +1,41 @@
 {
-  "name": "Impact Suspended",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.72,
+    "source": "Onset",
+    "target": "Oblong",
+    "type": "TIMBRAL_WARP"
+  },
+  "description": "Maximum impact suspended in time — aggression held at the moment of strike.",
   "engines": [
-    "ONSET",
-    "OBLONG"
+    "Onset",
+    "Oblong"
   ],
-  "mood": "Entangled",
-  "strategy": "Still Aggressive",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8,
-    "MOVEMENT": 0.06,
     "COUPLING": 0.8,
+    "MOVEMENT": 0.06,
     "SPACE": 0.45
   },
-  "sonic_dna": {
-    "brightness": 0.28,
-    "warmth": 0.48,
-    "movement": 0.06,
-    "density": 0.8,
-    "space": 0.42,
-    "aggression": 0.93
-  },
+  "mood": "Entangled",
+  "name": "Impact Suspended",
   "parameters": {},
-  "coupling": {
-    "type": "TIMBRAL_WARP",
-    "source": "ONSET",
-    "target": "OBLONG",
-    "amount": 0.72
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.93,
+    "brightness": 0.28,
+    "density": 0.8,
+    "movement": 0.06,
+    "space": 0.42,
+    "warmth": 0.48
   },
+  "strategy": "Still Aggressive",
   "tags": [
     "entangled",
     "aggressive",
@@ -35,5 +43,5 @@
     "impact",
     "suspension"
   ],
-  "description": "Maximum impact suspended in time \u2014 aggression held at the moment of strike."
+  "version": "1.0"
 }

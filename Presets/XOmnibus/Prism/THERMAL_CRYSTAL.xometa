@@ -1,49 +1,57 @@
 {
-  "name": "THERMAL CRYSTAL",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OVERWORLD",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.167,
-      "macro_movement": 0.224,
-      "macro_coupling": 0.721,
-      "macro_space": 0.592
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.397,
-      "macro_movement": 0.057,
-      "macro_coupling": 0.935,
-      "macro_space": 0.684
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OVERWORLD",
-    "target": "ODDOSCAR",
-    "amount": 0.842
+    "amount": 0.842,
+    "source": "Overworld",
+    "target": "OddOscar",
+    "type": "SPECTRAL_MORPH"
   },
   "dna": {
+    "aggression": 0.806,
     "brightness": 0.184,
-    "warmth": 0.897,
-    "movement": 0.129,
     "density": 0.317,
+    "movement": 0.129,
     "space": 0.116,
-    "aggression": 0.806
+    "warmth": 0.897
   },
+  "engines": [
+    "Overworld",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.522,
-    "MOVEMENT": 0.535,
     "COUPLING": 0.239,
+    "MOVEMENT": 0.535,
     "SPACE": 0.647
   },
+  "mood": "Prism",
+  "name": "THERMAL CRYSTAL",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.397,
+      "macro_coupling": 0.935,
+      "macro_movement": 0.057,
+      "macro_space": 0.684
+    },
+    "Overworld": {
+      "macro_character": 0.167,
+      "macro_coupling": 0.721,
+      "macro_movement": 0.224,
+      "macro_space": 0.592
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

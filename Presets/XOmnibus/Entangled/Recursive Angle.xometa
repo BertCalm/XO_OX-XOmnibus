@@ -1,14 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Recursive Angle",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Oblique",
+        "engineB": "Ouroboros",
+        "type": "RhythmGate"
+      },
+      {
+        "amount": 0.45,
+        "engineA": "Ouroboros",
+        "engineB": "Oblique",
+        "type": "AudioToFM"
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "OUROBOROS loops feeding into OBLIQUE's bounce — each revolution exits at a different angle than it entered.",
+  "dna": {
+    "aggression": 0.573,
+    "brightness": 0.637,
+    "density": 0.645,
+    "movement": 0.778,
+    "space": 0.578,
+    "warmth": 0.473
+  },
   "engines": [
     "Oblique",
     "Ouroboros"
   ],
-  "author": "XPN Tool \u2014 Optic/Oblique/Ocelot Coupling Pack",
-  "version": "1.0.0",
-  "description": "OUROBOROS loops feeding into OBLIQUE's bounce \u2014 each revolution exits at a different angle than it entered.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Recursive Angle",
+  "parameters": {
+    "Oblique": {
+      "oblq_ampAttack": 0.02,
+      "oblq_ampRelease": 1.2,
+      "oblq_bounce": 0.65,
+      "oblq_filterCutoff": 3200.0,
+      "oblq_filterReso": 0.35,
+      "oblq_funkDepth": 0.7,
+      "oblq_modDepth": 0.6,
+      "oblq_modRate": 0.5,
+      "oblq_prismAngle": 0.55,
+      "oblq_refraction": 0.6
+    },
+    "Ouroboros": {
+      "ouro_ampAttack": 0.03,
+      "ouro_ampRelease": 1.5,
+      "ouro_filterCutoff": 2800.0,
+      "ouro_filterReso": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "oblique",
     "ouroboros",
@@ -19,63 +76,6 @@
     "entangled",
     "coupling"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oblique": {
-      "oblq_prismAngle": 0.55,
-      "oblq_bounce": 0.65,
-      "oblq_refraction": 0.6,
-      "oblq_funkDepth": 0.7,
-      "oblq_modRate": 0.5,
-      "oblq_modDepth": 0.6,
-      "oblq_filterCutoff": 3200.0,
-      "oblq_filterReso": 0.35,
-      "oblq_ampAttack": 0.02,
-      "oblq_ampRelease": 1.2
-    },
-    "Ouroboros": {
-      "ouro_filterCutoff": 2800.0,
-      "ouro_filterReso": 0.3,
-      "ouro_ampAttack": 0.03,
-      "ouro_ampRelease": 1.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Ouroboros",
-        "type": "RhythmGate",
-        "amount": 0.65
-      },
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Oblique",
-        "type": "AudioToFM",
-        "amount": 0.45
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.637,
-    "warmth": 0.473,
-    "movement": 0.778,
-    "density": 0.645,
-    "space": 0.578,
-    "aggression": 0.573
-  }
+  "version": "1.0.0"
 }

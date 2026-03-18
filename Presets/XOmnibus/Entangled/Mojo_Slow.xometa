@@ -1,78 +1,78 @@
 {
-  "schema_version": 1,
-  "name": "Mojo Slow",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.858,
+        "engineA": "Obese",
+        "engineB": "Osteria",
+        "type": "amplitude_sidechain"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "OBESE woolly warmth ferments in OSTERIA cask. Dense slow vintage heat.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.463,
+    "density": 0.71,
+    "movement": 0.542,
+    "space": 0.497,
+    "warmth": 0.686
+  },
   "engines": [
     "Obese",
     "Osteria"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE woolly warmth ferments in OSTERIA cask. Dense slow vintage heat.",
-  "tags": [
-    "obese",
-    "osteria",
-    "coupling",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
-  "tempo": 110,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Mojo Slow",
   "parameters": {
     "Obese": {
+      "fat_analog": 0.312,
+      "fat_compress": 0.716,
+      "fat_couplingIn": 0.655,
+      "fat_couplingOut": 0.708,
+      "fat_digital": 0.525,
       "fat_macro1": 0.605,
       "fat_macro2": 0.453,
       "fat_macro3": 0.581,
       "fat_macro4": 0.62,
-      "fat_couplingOut": 0.708,
-      "fat_couplingIn": 0.655,
+      "fat_mojoCtrl": 0.613,
       "fat_outputLevel": 0.888,
       "fat_outputPan": -0.003,
-      "fat_satDrive": 0.619,
-      "fat_mojoCtrl": 0.613,
-      "fat_analog": 0.312,
-      "fat_digital": 0.525,
-      "fat_compress": 0.716
+      "fat_satDrive": 0.619
     },
     "Osteria": {
+      "osteria_couplingIn": 0.559,
+      "osteria_couplingOut": 0.74,
       "osteria_macro1": 0.342,
       "osteria_macro2": 0.337,
       "osteria_macro3": 0.513,
       "osteria_macro4": 0.397,
-      "osteria_couplingOut": 0.74,
-      "osteria_couplingIn": 0.559,
       "osteria_outputLevel": 0.772,
       "osteria_outputPan": 0.011
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obese",
-        "engineB": "Osteria",
-        "type": "amplitude_sidechain",
-        "amount": 0.858
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.463,
-    "warmth": 0.686,
-    "movement": 0.542,
-    "density": 0.71,
-    "space": 0.497,
-    "aggression": 0.55
-  }
+  "tags": [
+    "obese",
+    "osteria",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 110,
+  "version": "1.0.0"
 }

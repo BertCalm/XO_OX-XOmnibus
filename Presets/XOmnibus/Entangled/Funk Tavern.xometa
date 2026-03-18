@@ -1,14 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Funk Tavern",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Oblique",
+        "engineB": "Osteria",
+        "type": "PitchSync"
+      },
+      {
+        "amount": 0.45,
+        "engineA": "Osteria",
+        "engineB": "Oblique",
+        "type": "SpectralMorph"
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "RTJ × Funk DNA landing in OSTERIA's warm communal space — the groove is served alongside the meal.",
+  "dna": {
+    "aggression": 0.46,
+    "brightness": 0.682,
+    "density": 0.645,
+    "movement": 0.665,
+    "space": 0.555,
+    "warmth": 0.562
+  },
   "engines": [
     "Oblique",
     "Osteria"
   ],
-  "author": "XPN Tool \u2014 Optic/Oblique/Ocelot Coupling Pack",
-  "version": "1.0.0",
-  "description": "RTJ \u00d7 Funk DNA landing in OSTERIA's warm communal space \u2014 the groove is served alongside the meal.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Funk Tavern",
+  "parameters": {
+    "Oblique": {
+      "oblq_ampAttack": 0.02,
+      "oblq_ampRelease": 1.2,
+      "oblq_bounce": 0.65,
+      "oblq_filterCutoff": 3200.0,
+      "oblq_filterReso": 0.35,
+      "oblq_funkDepth": 0.7,
+      "oblq_modDepth": 0.6,
+      "oblq_modRate": 0.5,
+      "oblq_prismAngle": 0.55,
+      "oblq_refraction": 0.6
+    },
+    "Osteria": {
+      "ost_ampAttack": 0.03,
+      "ost_ampRelease": 1.5,
+      "ost_filterCutoff": 2800.0,
+      "ost_filterReso": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "oblique",
     "osteria",
@@ -19,63 +76,6 @@
     "entangled",
     "coupling"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oblique": {
-      "oblq_prismAngle": 0.55,
-      "oblq_bounce": 0.65,
-      "oblq_refraction": 0.6,
-      "oblq_funkDepth": 0.7,
-      "oblq_modRate": 0.5,
-      "oblq_modDepth": 0.6,
-      "oblq_filterCutoff": 3200.0,
-      "oblq_filterReso": 0.35,
-      "oblq_ampAttack": 0.02,
-      "oblq_ampRelease": 1.2
-    },
-    "Osteria": {
-      "ost_filterCutoff": 2800.0,
-      "ost_filterReso": 0.3,
-      "ost_ampAttack": 0.03,
-      "ost_ampRelease": 1.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Osteria",
-        "type": "PitchSync",
-        "amount": 0.65
-      },
-      {
-        "engineA": "Osteria",
-        "engineB": "Oblique",
-        "type": "SpectralMorph",
-        "amount": 0.45
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.682,
-    "warmth": 0.562,
-    "movement": 0.665,
-    "density": 0.645,
-    "space": 0.555,
-    "aggression": 0.46
-  }
+  "version": "1.0.0"
 }

@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Fractal Density",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.83,
+        "engineA": "Ouroboros",
+        "engineB": "Oblong",
+        "type": "FREQUENCY_SMEAR"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Ouroboros fractal frequency smearing Bob's filter cutoff — warmth buried under mathematical weight.",
+  "dna": {
+    "aggression": 0.9,
+    "brightness": 0.57,
+    "density": 0.88,
+    "movement": 0.66,
+    "space": 0.09,
+    "warmth": 0.48
+  },
   "engines": [
-    "OUROBOROS",
-    "OBLONG"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ouroboros fractal frequency smearing Bob's filter cutoff \u2014 warmth buried under mathematical weight.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "dense",
-    "ouroboros",
-    "oblong",
-    "fractal"
+    "Ouroboros",
+    "Oblong"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,29 @@
   ],
   "macros": {
     "CHARACTER": 0.87,
-    "MOVEMENT": 0.66,
     "COUPLING": 0.83,
+    "MOVEMENT": 0.66,
     "SPACE": 0.09
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.57,
-    "warmth": 0.48,
-    "movement": 0.66,
-    "density": 0.88,
-    "space": 0.09,
-    "aggression": 0.9
-  },
-  "sonic_dna": {
-    "brightness": 0.57,
-    "warmth": 0.48,
-    "movement": 0.66,
-    "density": 0.88,
-    "space": 0.09,
-    "aggression": 0.9
-  },
+  "mood": "Entangled",
+  "name": "Fractal Density",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OUROBOROS",
-        "engineB": "OBLONG",
-        "type": "FREQUENCY_SMEAR",
-        "amount": 0.83
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9,
+    "brightness": 0.57,
+    "density": 0.88,
+    "movement": 0.66,
+    "space": 0.09,
+    "warmth": 0.48
+  },
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "ouroboros",
+    "oblong",
+    "fractal"
+  ],
+  "version": "1.0.0"
 }

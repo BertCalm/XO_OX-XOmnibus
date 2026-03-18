@@ -1,19 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Scatter Into Light",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Maximum position scatter — the grains have no assigned location. They drift through the source material like photons through atmosphere, emerging as diffuse luminosity.",
+  "dna": {
+    "aggression": 0.02,
+    "brightness": 0.86,
+    "density": 0.2,
+    "movement": 0.35,
+    "space": 0.91,
+    "warmth": 0.22
+  },
   "engines": [
     "Opal"
-  ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "Maximum position scatter \u2014 the grains have no assigned location. They drift through the source material like photons through atmosphere, emerging as diffuse luminosity.",
-  "tags": [
-    "aether",
-    "transcendent",
-    "scatter",
-    "diffuse",
-    "luminous"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,37 +22,36 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.86,
-    "warmth": 0.22,
-    "movement": 0.35,
-    "density": 0.2,
-    "space": 0.91,
-    "aggression": 0.02
-  },
+  "mood": "Aether",
+  "name": "Scatter Into Light",
   "parameters": {
     "Opal": {
-      "opal_grainSize": 0.6,
-      "opal_density": 0.22,
-      "opal_posScatter": 0.95,
-      "opal_pitchScatter": 0.0,
-      "opal_filterCutoff": 0.88,
-      "opal_filterReso": 0.08,
       "opal_ampAttack": 3.0,
       "opal_ampDecay": 1.5,
-      "opal_ampSustain": 0.9,
       "opal_ampRelease": 6.0,
-      "opal_speed": 0.4,
-      "opal_reverse": 0.0,
+      "opal_ampSustain": 0.9,
+      "opal_density": 0.22,
+      "opal_filterCutoff": 0.88,
+      "opal_filterReso": 0.08,
+      "opal_grainSize": 0.6,
       "opal_macroCharacter": 0.0,
-      "opal_macroMovement": 0.0,
       "opal_macroCoupling": 0.0,
-      "opal_macroSpace": 0.0
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitchScatter": 0.0,
+      "opal_posScatter": 0.95,
+      "opal_reverse": 0.0,
+      "opal_speed": 0.4
     }
   },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "transcendent",
+    "scatter",
+    "diffuse",
+    "luminous"
+  ],
+  "version": "1.0.0"
 }

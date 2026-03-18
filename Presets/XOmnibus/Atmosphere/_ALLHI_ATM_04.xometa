@@ -1,49 +1,57 @@
 {
-  "name": "ALLHI ATM 04",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.942,
+    "source": "Optic",
+    "target": "Orbital",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.895,
+    "brightness": 0.915,
+    "density": 0.608,
+    "movement": 0.934,
+    "space": 0.945,
+    "warmth": 0.982
+  },
   "engines": [
-    "OPTIC",
-    "ORBITAL"
+    "Optic",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.949,
+    "COUPLING": 0.92,
+    "MOVEMENT": 0.771,
+    "SPACE": 0.945
+  },
+  "mood": "Atmosphere",
+  "name": "ALLHI ATM 04",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.949,
-      "macro_movement": 0.771,
       "macro_coupling": 0.92,
+      "macro_movement": 0.771,
       "macro_space": 0.945
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.949,
-      "macro_movement": 0.771,
       "macro_coupling": 0.92,
+      "macro_movement": 0.771,
       "macro_space": 0.945
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OPTIC",
-    "target": "ORBITAL",
-    "amount": 0.942
-  },
-  "dna": {
-    "brightness": 0.915,
-    "warmth": 0.982,
-    "movement": 0.934,
-    "density": 0.608,
-    "space": 0.945,
-    "aggression": 0.895
-  },
-  "macros": {
-    "CHARACTER": 0.949,
-    "MOVEMENT": 0.771,
-    "COUPLING": 0.92,
-    "SPACE": 0.945
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

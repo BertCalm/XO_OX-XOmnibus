@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_WARM_STILL_VAST_FLX_SLW_1",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERDUB",
-    "ORACLE"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.632,
-      "macro_movement": 0.04,
-      "macro_coupling": 0.937,
-      "macro_space": 1.0
-    },
-    "ORACLE": {
-      "macro_character": 0.55,
-      "macro_movement": 0.052,
-      "macro_coupling": 0.828,
-      "macro_space": 0.999
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERDUB",
-    "target": "ORACLE",
-    "amount": 0.876
+    "amount": 0.876,
+    "source": "Overdub",
+    "target": "Oracle",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.406,
     "brightness": 0.905,
-    "warmth": 0.94,
-    "movement": 0.049,
     "density": 0.454,
+    "movement": 0.049,
     "space": 0.961,
-    "aggression": 0.406
+    "warmth": 0.94
   },
+  "engines": [
+    "Overdub",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.43,
-    "MOVEMENT": 0.049,
     "COUPLING": 0.705,
+    "MOVEMENT": 0.049,
     "SPACE": 0.961
   },
+  "mood": "Flux",
+  "name": "BRIGHT_WARM_STILL_VAST_FLX_SLW_1",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.55,
+      "macro_coupling": 0.828,
+      "macro_movement": 0.052,
+      "macro_space": 0.999
+    },
+    "Overdub": {
+      "macro_character": 0.632,
+      "macro_coupling": 0.937,
+      "macro_movement": 0.04,
+      "macro_space": 1.0
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +54,6 @@
     "warm",
     "vast",
     "suspended-chaos"
-  ]
+  ],
+  "version": "1.0"
 }

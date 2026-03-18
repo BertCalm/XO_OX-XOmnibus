@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_COLD_STILL_INTIMATE_AET2_5",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OSPREY",
-    "OMBRE"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.8908,
-      "macro_movement": 0.0309,
-      "macro_coupling": 0.5112,
-      "macro_space": 0.047
-    },
-    "OMBRE": {
-      "macro_character": 0.8883,
-      "macro_movement": 0.0739,
-      "macro_coupling": 0.4873,
-      "macro_space": 0.0384
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OSPREY",
-    "target": "OMBRE",
-    "amount": 0.937
+    "amount": 0.937,
+    "source": "Osprey",
+    "target": "Ombre",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.5651,
     "brightness": 0.9178,
+    "density": 0.4819,
     "movement": 0.0409,
     "space": 0.0298,
-    "warmth": 0.1133,
-    "density": 0.4819,
-    "aggression": 0.5651
+    "warmth": 0.1133
   },
+  "engines": [
+    "Osprey",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8896,
-    "MOVEMENT": 0.0524,
     "COUPLING": 0.937,
+    "MOVEMENT": 0.0524,
     "SPACE": 0.0298
   },
+  "mood": "Aether",
+  "name": "BRIGHT_COLD_STILL_INTIMATE_AET2_5",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.8883,
+      "macro_coupling": 0.4873,
+      "macro_movement": 0.0739,
+      "macro_space": 0.0384
+    },
+    "Osprey": {
+      "macro_character": 0.8908,
+      "macro_coupling": 0.5112,
+      "macro_movement": 0.0309,
+      "macro_space": 0.047
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +56,6 @@
     "still",
     "intimate",
     "frozen"
-  ]
+  ],
+  "version": "1.0"
 }

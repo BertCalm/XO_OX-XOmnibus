@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Timeless Current",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.584,
+        "engineA": "Owlfish",
+        "engineB": "Osteria",
+        "type": "RHYTHM_LOCK"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.47,
+    "density": 0.6,
+    "movement": 0.465,
+    "space": 0.63,
+    "warmth": 0.605
+  },
   "engines": [
-    "OSTERIA",
-    "OWLFISH"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "osteria",
-    "owlfish"
+    "Osteria",
+    "Owlfish"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.551,
-    "MOVEMENT": 0.326,
     "COUPLING": 0.627,
+    "MOVEMENT": 0.326,
     "SPACE": 0.584
   },
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.47,
-    "warmth": 0.605,
-    "movement": 0.465,
-    "density": 0.6,
-    "space": 0.63,
-    "aggression": 0.0
-  },
-  "sonic_dna": {
-    "brightness": 0.47,
-    "warmth": 0.605,
-    "movement": 0.465,
-    "density": 0.6,
-    "space": 0.63,
-    "aggression": 0.0
-  },
+  "mood": "Entangled",
+  "name": "Timeless Current",
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.554,
-      "macro_movement": 0.384,
       "macro_coupling": 0.731,
+      "macro_movement": 0.384,
       "macro_space": 0.54
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.523,
-      "macro_movement": 0.409,
       "macro_coupling": 0.588,
+      "macro_movement": 0.409,
       "macro_space": 0.633
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OWLFISH",
-        "engineB": "OSTERIA",
-        "type": "RHYTHM_LOCK",
-        "amount": 0.584
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.0,
+    "brightness": 0.47,
+    "density": 0.6,
+    "movement": 0.465,
+    "space": 0.63,
+    "warmth": 0.605
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "osteria",
+    "owlfish"
+  ],
+  "version": "1.0.0"
 }

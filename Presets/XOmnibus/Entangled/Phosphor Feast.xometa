@@ -1,22 +1,35 @@
 {
-  "schema_version": 1,
-  "name": "Phosphor Feast",
-  "mood": "Entangled",
-  "engines": [
-    "OSPREY",
-    "OSTERIA",
-    "OCEANIC"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Oceanic",
+        "engineB": "Osteria",
+        "type": "LFO->Amp"
+      },
+      {
+        "amount": 0.6,
+        "engineA": "Osteria",
+        "engineB": "Osprey",
+        "type": "Env->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
   "description": "Bioluminescent ocean feeds warm tavern warmth; a seabird circles the glow.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "shore",
-    "bioluminescent",
-    "warmth",
-    "coastal"
+  "dna": {
+    "aggression": 0.134,
+    "brightness": 0.585,
+    "density": 0.808,
+    "movement": 0.797,
+    "space": 0.61,
+    "warmth": 0.675
+  },
+  "engines": [
+    "Osprey",
+    "Osteria",
+    "Oceanic"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,36 +39,23 @@
   ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.75,
+    "MOVEMENT": 0.55,
     "SPACE": 0.6
   },
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.585,
-    "warmth": 0.675,
-    "movement": 0.797,
-    "density": 0.808,
-    "space": 0.61,
-    "aggression": 0.134
-  },
+  "mood": "Entangled",
+  "name": "Phosphor Feast",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OCEANIC",
-        "engineB": "OSTERIA",
-        "type": "LFO->Amp",
-        "amount": 0.65
-      },
-      {
-        "engineA": "OSTERIA",
-        "engineB": "OSPREY",
-        "type": "Env->Filter",
-        "amount": 0.6
-      }
-    ]
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "bioluminescent",
+    "warmth",
+    "coastal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

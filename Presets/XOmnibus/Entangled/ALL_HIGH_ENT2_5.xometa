@@ -1,45 +1,52 @@
 {
-  "name": "ALL HIGH ENT2 5",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORPHICA",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.913,
-      "macro_movement": 0.382,
-      "macro_coupling": 0.953,
-      "macro_space": 0.925
-    },
-    "ODYSSEY": {
-      "macro_character": 0.865,
-      "macro_movement": 0.393,
-      "macro_coupling": 0.962,
-      "macro_space": 0.902
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORPHICA",
-    "target": "ODYSSEY",
-    "amount": 0.953
+    "amount": 0.953,
+    "source": "Orphica",
+    "target": "Odyssey",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.98,
     "brightness": 0.965,
-    "warmth": 0.861,
-    "movement": 0.382,
     "density": 0.926,
+    "movement": 0.382,
     "space": 0.925,
-    "aggression": 0.98
+    "warmth": 0.861
   },
+  "engines": [
+    "Orphica",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.913,
-    "MOVEMENT": 0.382,
     "COUPLING": 0.953,
+    "MOVEMENT": 0.382,
     "SPACE": 0.925
   },
+  "mood": "Entangled",
+  "name": "ALL HIGH ENT2 5",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.865,
+      "macro_coupling": 0.962,
+      "macro_movement": 0.393,
+      "macro_space": 0.902
+    },
+    "Orphica": {
+      "macro_character": 0.913,
+      "macro_coupling": 0.953,
+      "macro_movement": 0.382,
+      "macro_space": 0.925
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "bright",
@@ -47,5 +54,6 @@
     "dense",
     "vast",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

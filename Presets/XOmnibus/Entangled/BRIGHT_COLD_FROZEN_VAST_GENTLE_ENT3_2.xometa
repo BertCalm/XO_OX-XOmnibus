@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_COLD_FROZEN_VAST_GENTLE_ENT3_2",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8128,
+    "source": "Obsidian",
+    "target": "Onset",
+    "type": "RESONANCE_SHARE"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_COLD_FROZEN_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.0285,
+    "brightness": 0.8739,
+    "density": 0.4484,
+    "movement": 0.055,
+    "space": 0.9233,
+    "warmth": 0.0369
+  },
   "engines": [
-    "OBSIDIAN",
-    "ONSET"
+    "Obsidian",
+    "Onset"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_COLD_FROZEN_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5962,
+    "COUPLING": 0.8101,
+    "MOVEMENT": 0.0725,
+    "SPACE": 0.4385
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT_COLD_FROZEN_VAST_GENTLE_ENT3_2",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.6798,
+      "macro_coupling": 0.8255,
+      "macro_movement": 0.0734,
+      "macro_space": 0.3369
+    },
+    "Onset": {
+      "macro_character": 0.5127,
+      "macro_coupling": 0.7947,
+      "macro_movement": 0.0715,
+      "macro_space": 0.5401
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +66,6 @@
     "gentle",
     "vast"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OBSIDIAN": {
-      "macro_character": 0.6798,
-      "macro_movement": 0.0734,
-      "macro_coupling": 0.8255,
-      "macro_space": 0.3369
-    },
-    "ONSET": {
-      "macro_character": 0.5127,
-      "macro_movement": 0.0715,
-      "macro_coupling": 0.7947,
-      "macro_space": 0.5401
-    }
-  },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBSIDIAN",
-    "target": "ONSET",
-    "amount": 0.8128
-  },
-  "macros": {
-    "CHARACTER": 0.5962,
-    "MOVEMENT": 0.0725,
-    "COUPLING": 0.8101,
-    "SPACE": 0.4385
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.8739,
-    "warmth": 0.0369,
-    "movement": 0.055,
-    "density": 0.4484,
-    "space": 0.9233,
-    "aggression": 0.0285
-  }
+  "version": "1.0.0"
 }

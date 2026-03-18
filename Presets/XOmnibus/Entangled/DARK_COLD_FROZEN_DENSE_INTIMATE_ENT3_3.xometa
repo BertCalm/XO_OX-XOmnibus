@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "DARK_COLD_FROZEN_DENSE_INTIMATE_ENT3_3",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9083,
+    "source": "Ohm",
+    "target": "Oblique",
+    "type": "RESONANCE_SHARE"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_COLD_FROZEN_DENSE_INTIMATE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.6716,
+    "brightness": 0.1056,
+    "density": 0.9089,
+    "movement": 0.0101,
+    "space": 0.0221,
+    "warmth": 0.0783
+  },
   "engines": [
-    "OHM",
-    "OBLIQUE"
+    "Ohm",
+    "Oblique"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_COLD_FROZEN_DENSE_INTIMATE. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6332,
+    "COUPLING": 0.8637,
+    "MOVEMENT": 0.0153,
+    "SPACE": 0.8257
+  },
+  "mood": "Entangled",
+  "name": "DARK_COLD_FROZEN_DENSE_INTIMATE_ENT3_3",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.7381,
+      "macro_coupling": 0.7666,
+      "macro_movement": 0.0207,
+      "macro_space": 0.7465
+    },
+    "Ohm": {
+      "macro_character": 0.5284,
+      "macro_coupling": 0.9607,
+      "macro_movement": 0.01,
+      "macro_space": 0.9049
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +66,6 @@
     "dense",
     "intimate"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OHM": {
-      "macro_character": 0.5284,
-      "macro_movement": 0.01,
-      "macro_coupling": 0.9607,
-      "macro_space": 0.9049
-    },
-    "OBLIQUE": {
-      "macro_character": 0.7381,
-      "macro_movement": 0.0207,
-      "macro_coupling": 0.7666,
-      "macro_space": 0.7465
-    }
-  },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OHM",
-    "target": "OBLIQUE",
-    "amount": 0.9083
-  },
-  "macros": {
-    "CHARACTER": 0.6332,
-    "MOVEMENT": 0.0153,
-    "COUPLING": 0.8637,
-    "SPACE": 0.8257
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.1056,
-    "warmth": 0.0783,
-    "movement": 0.0101,
-    "density": 0.9089,
-    "space": 0.0221,
-    "aggression": 0.6716
-  }
+  "version": "1.0.0"
 }

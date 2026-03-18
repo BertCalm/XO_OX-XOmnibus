@@ -1,14 +1,67 @@
 {
-  "schema_version": 1,
-  "name": "Impact Nutrition",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.75,
+        "engineA": "Onset",
+        "engineB": "Organon",
+        "type": "Audio->FM"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-10",
+  "description": "ONSET drum hits trigger metabolic spikes. Organic percussion-to-pad.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.6,
+    "density": 0.5,
+    "movement": 0.55,
+    "space": 0.15,
+    "warmth": 0.3
+  },
   "engines": [
     "Onset",
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ONSET drum hits trigger metabolic spikes. Organic percussion-to-pad.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "DRUM HIT",
+    "BLOOM",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Impact Nutrition",
+  "parameters": {
+    "Onset": {
+      "perc_drive": 0.0,
+      "perc_level": 0.8,
+      "perc_masterTone": 0.5,
+      "perc_v1_decay": 0.2,
+      "perc_v1_snap": 0.5,
+      "perc_v1_tone": 0.5
+    },
+    "Organon": {
+      "organon_catalystDrive": 1.0,
+      "organon_dampingCoeff": 0.35,
+      "organon_enzymeSelect": 3500.0,
+      "organon_isotopeBalance": 0.65,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.2,
+      "organon_metabolicRate": 4.0,
+      "organon_noiseColor": 0.5,
+      "organon_phasonShift": 0.0,
+      "organon_signalFlux": 0.9
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "onset",
     "organon",
@@ -16,59 +69,6 @@
     "impact",
     "organic"
   ],
-  "macroLabels": [
-    "DRUM HIT",
-    "BLOOM",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Onset": {
-      "perc_v1_decay": 0.2,
-      "perc_v1_tone": 0.5,
-      "perc_v1_snap": 0.5,
-      "perc_level": 0.8,
-      "perc_drive": 0.0,
-      "perc_masterTone": 0.5
-    },
-    "Organon": {
-      "organon_metabolicRate": 4.0,
-      "organon_enzymeSelect": 3500.0,
-      "organon_catalystDrive": 1.0,
-      "organon_dampingCoeff": 0.35,
-      "organon_signalFlux": 0.9,
-      "organon_phasonShift": 0.0,
-      "organon_isotopeBalance": 0.65,
-      "organon_lockIn": 0.0,
-      "organon_membrane": 0.2,
-      "organon_noiseColor": 0.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Organon",
-        "type": "Audio->FM",
-        "amount": 0.75
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.3,
-    "movement": 0.55,
-    "density": 0.5,
-    "space": 0.15,
-    "aggression": 0.4
-  }
+  "version": "1.0.0"
 }

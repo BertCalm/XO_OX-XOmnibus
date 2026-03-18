@@ -1,51 +1,58 @@
 {
-  "name": "Spectral Covenant",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6,
+    "source": "Odyssey",
+    "target": "Organon",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.8,
+    "density": 0.4,
+    "movement": 0.7,
+    "space": 0.7,
+    "warmth": 0.3
+  },
   "engines": [
-    "ODYSSEY",
-    "ORGANON"
+    "Odyssey",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.6,
+    "MOVEMENT": 0.7,
+    "SPACE": 0.65
+  },
+  "mood": "Entangled",
+  "name": "Spectral Covenant",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.7,
-      "macro_movement": 0.8,
       "macro_coupling": 0.6,
+      "macro_movement": 0.8,
       "macro_space": 0.7
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.5,
-      "macro_movement": 0.6,
       "macro_coupling": 0.7,
+      "macro_movement": 0.6,
       "macro_space": 0.6
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ODYSSEY",
-    "target": "ORGANON",
-    "amount": 0.6
-  },
-  "dna": {
-    "brightness": 0.8,
-    "warmth": 0.3,
-    "movement": 0.7,
-    "density": 0.4,
-    "space": 0.7,
-    "aggression": 0.2
-  },
-  "macros": {
-    "CHARACTER": 0.6,
-    "MOVEMENT": 0.7,
-    "COUPLING": 0.6,
-    "SPACE": 0.65
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "odyssey",
     "organon"
   ],
-  "author": "XO_OX Coverage Pack 2026-03-16",
-  "created": "2026-03-16"
+  "version": "1.0"
 }

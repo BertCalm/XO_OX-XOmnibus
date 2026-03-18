@@ -1,49 +1,57 @@
 {
-  "name": "ALLLO FND 02",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.125,
+    "source": "OddfeliX",
+    "target": "Overdub",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.039,
+    "brightness": 0.056,
+    "density": 0.071,
+    "movement": 0.102,
+    "space": 0.085,
+    "warmth": 0.37
+  },
   "engines": [
-    "ODDFELIX",
-    "OVERDUB"
+    "OddfeliX",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.213,
+    "COUPLING": 0.062,
+    "MOVEMENT": 0.086,
+    "SPACE": 0.085
+  },
+  "mood": "Foundation",
+  "name": "ALLLO FND 02",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.213,
-      "macro_movement": 0.086,
       "macro_coupling": 0.062,
+      "macro_movement": 0.086,
       "macro_space": 0.085
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.213,
-      "macro_movement": 0.086,
       "macro_coupling": 0.062,
+      "macro_movement": 0.086,
       "macro_space": 0.085
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ODDFELIX",
-    "target": "OVERDUB",
-    "amount": 0.125
-  },
-  "dna": {
-    "brightness": 0.056,
-    "warmth": 0.37,
-    "movement": 0.102,
-    "density": 0.071,
-    "space": 0.085,
-    "aggression": 0.039
-  },
-  "macros": {
-    "CHARACTER": 0.213,
-    "MOVEMENT": 0.086,
-    "COUPLING": 0.062,
-    "SPACE": 0.085
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

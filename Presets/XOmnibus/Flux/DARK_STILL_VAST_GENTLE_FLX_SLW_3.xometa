@@ -1,45 +1,52 @@
 {
-  "name": "DARK_STILL_VAST_GENTLE_FLX_SLW_3",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERDUB",
-    "OUROBOROS"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.371,
-      "macro_movement": 0.027,
-      "macro_coupling": 0.701,
-      "macro_space": 0.959
-    },
-    "OUROBOROS": {
-      "macro_character": 0.523,
-      "macro_movement": 0.02,
-      "macro_coupling": 0.805,
-      "macro_space": 1.0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OVERDUB",
-    "target": "OUROBOROS",
-    "amount": 0.754
+    "amount": 0.754,
+    "source": "Overdub",
+    "target": "Ouroboros",
+    "type": "VELOCITY_COUPLE"
   },
   "dna": {
+    "aggression": 0.025,
     "brightness": 0.083,
-    "warmth": 0.478,
-    "movement": 0.025,
     "density": 0.531,
+    "movement": 0.025,
     "space": 0.932,
-    "aggression": 0.025
+    "warmth": 0.478
   },
+  "engines": [
+    "Overdub",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.278,
-    "MOVEMENT": 0.025,
     "COUPLING": 0.891,
+    "MOVEMENT": 0.025,
     "SPACE": 0.932
   },
+  "mood": "Flux",
+  "name": "DARK_STILL_VAST_GENTLE_FLX_SLW_3",
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.523,
+      "macro_coupling": 0.805,
+      "macro_movement": 0.02,
+      "macro_space": 1.0
+    },
+    "Overdub": {
+      "macro_character": 0.371,
+      "macro_coupling": 0.701,
+      "macro_movement": 0.027,
+      "macro_space": 0.959
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +54,6 @@
     "vast",
     "gentle",
     "suspended-chaos"
-  ]
+  ],
+  "version": "1.0"
 }

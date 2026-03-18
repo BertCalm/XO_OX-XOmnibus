@@ -1,47 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "HOT OPEN KINETIC BRIGHT PRI 4",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "High",
+    "sourceEngine": "Oblong",
+    "targetEngine": null,
+    "type": "Rhythmic"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Prism preset: HOT OPEN KINETIC BRIGHT PRI 4.",
+  "dna": {
+    "aggression": 0.94,
+    "brightness": 0.907,
+    "density": 0.506,
+    "movement": 0.931,
+    "space": 0.469,
+    "warmth": 0.942
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Prism preset: HOT OPEN KINETIC BRIGHT PRI 4.",
-  "tags": [
-    "x-high-brightness",
-    "x-high-warmth",
-    "x-high-aggression",
-    "x-high-movement"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "High",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "HOT OPEN KINETIC BRIGHT PRI 4",
   "parameters": {},
-  "coupling": {
-    "type": "Rhythmic",
-    "intensity": "High",
-    "sourceEngine": "Oblong",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.907,
-    "warmth": 0.942,
-    "aggression": 0.94,
-    "density": 0.506,
-    "movement": 0.931,
-    "space": 0.469
-  }
+  "tags": [
+    "x-high-brightness",
+    "x-high-warmth",
+    "x-high-aggression",
+    "x-high-movement"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

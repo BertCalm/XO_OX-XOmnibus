@@ -1,49 +1,57 @@
 {
-  "name": "SEALED CAVITY",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.351,
+    "source": "Oracle",
+    "target": "Overworld",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.363,
+    "brightness": 0.553,
+    "density": 0.582,
+    "movement": 0.973,
+    "space": 0.092,
+    "warmth": 0.367
+  },
   "engines": [
-    "ORACLE",
-    "OVERWORLD"
+    "Oracle",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.751,
+    "COUPLING": 0.142,
+    "MOVEMENT": 0.375,
+    "SPACE": 0.092
+  },
+  "mood": "Entangled",
+  "name": "SEALED CAVITY",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.686,
-      "macro_movement": 0.558,
       "macro_coupling": 0.411,
+      "macro_movement": 0.558,
       "macro_space": 0.096
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.745,
-      "macro_movement": 0.793,
       "macro_coupling": 0.698,
+      "macro_movement": 0.793,
       "macro_space": 0.064
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ORACLE",
-    "target": "OVERWORLD",
-    "amount": 0.351
-  },
-  "dna": {
-    "brightness": 0.553,
-    "warmth": 0.367,
-    "movement": 0.973,
-    "density": 0.582,
-    "space": 0.092,
-    "aggression": 0.363
-  },
-  "macros": {
-    "CHARACTER": 0.751,
-    "MOVEMENT": 0.375,
-    "COUPLING": 0.142,
-    "SPACE": 0.092
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-  ]
+  ],
+  "version": "1.0"
 }

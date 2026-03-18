@@ -1,19 +1,29 @@
 {
-  "schema_version": 1,
-  "name": "Still Waters Shimmer",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.558,
+        "engineA": "Ohm",
+        "engineB": "Orphica",
+        "type": "Env->Morph"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OHM and ORPHICA coupled via Env->Morph. Blended Constellation DNA — stub seeded for expansion.",
+  "dna": {
+    "aggression": 0.257,
+    "brightness": 0.62,
+    "density": 0.466,
+    "movement": 0.648,
+    "space": 0.65,
+    "warmth": 0.551
+  },
   "engines": [
-    "OHM",
-    "ORPHICA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OHM and ORPHICA coupled via Env->Morph. Blended Constellation DNA \u2014 stub seeded for expansion.",
-  "tags": [
-    "coupling",
-    "constellation",
-    "ohm",
-    "orphica"
+    "Ohm",
+    "Orphica"
   ],
   "macroLabels": [
     "WARMTH",
@@ -21,27 +31,17 @@
     "ENTANGLE",
     "AIR"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
+  "mood": "Entangled",
+  "name": "Still Waters Shimmer",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OHM",
-        "engineB": "ORPHICA",
-        "type": "Env->Morph",
-        "amount": 0.558
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.62,
-    "warmth": 0.551,
-    "movement": 0.648,
-    "density": 0.466,
-    "space": 0.65,
-    "aggression": 0.257
-  }
+  "tags": [
+    "coupling",
+    "constellation",
+    "ohm",
+    "orphica"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

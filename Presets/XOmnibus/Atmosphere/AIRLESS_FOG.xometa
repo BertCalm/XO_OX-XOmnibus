@@ -1,50 +1,58 @@
 {
-  "name": "AIRLESS FOG",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OVERDUB",
-    "ORCA"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.526,
-      "macro_movement": 0.629,
-      "macro_coupling": 0.155,
-      "macro_space": 0.077
-    },
-    "ORCA": {
-      "macro_character": 0.11,
-      "macro_movement": 0.436,
-      "macro_coupling": 0.492,
-      "macro_space": 0.072
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OVERDUB",
-    "target": "ORCA",
-    "amount": 0.503
+    "amount": 0.503,
+    "source": "Overdub",
+    "target": "Orca",
+    "type": "SPECTRAL_MORPH"
   },
   "dna": {
+    "aggression": 0.079,
     "brightness": 0.975,
-    "warmth": 0.294,
-    "movement": 0.658,
     "density": 0.341,
+    "movement": 0.658,
     "space": 0.077,
-    "aggression": 0.079
+    "warmth": 0.294
   },
+  "engines": [
+    "Overdub",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.39,
-    "MOVEMENT": 0.813,
     "COUPLING": 0.468,
+    "MOVEMENT": 0.813,
     "SPACE": 0.077
   },
+  "mood": "Atmosphere",
+  "name": "AIRLESS FOG",
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.11,
+      "macro_coupling": 0.492,
+      "macro_movement": 0.436,
+      "macro_space": 0.072
+    },
+    "Overdub": {
+      "macro_character": 0.526,
+      "macro_coupling": 0.155,
+      "macro_movement": 0.629,
+      "macro_space": 0.077
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-  ]
+  ],
+  "version": "1.0"
 }

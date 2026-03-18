@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Clarinet Pure",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Both brothers holding the same note. BOND balanced — no mischief yet.",
+  "dna": {
+    "aggression": 0.04,
+    "brightness": 0.29,
+    "density": 0.4,
+    "movement": 0.13,
+    "space": 0.18,
+    "warmth": 0.69
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "foundation",
-    "clean",
-    "foundation"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.29,
-    "warmth": 0.69,
-    "movement": 0.13,
-    "density": 0.4,
-    "space": 0.18,
-    "aggression": 0.04
-  },
+  "mood": "Foundation",
+  "name": "Clarinet Pure",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.584,
-      "obbl_embouchureA": 0.34,
       "obbl_airFlutterA": 0.134,
-      "obbl_instrumentA": 3,
       "obbl_bodySizeA": 0.358,
-      "obbl_breathB": 0.627,
-      "obbl_reedStiffness": 0.336,
-      "obbl_reedBite": 0.242,
-      "obbl_instrumentB": 3,
       "obbl_bodySizeB": 0.463,
-      "obbl_voiceRouting": 3,
-      "obbl_damping": 0.992,
-      "obbl_sympatheticAmt": 0.373,
-      "obbl_driftRate": 0.086,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.0,
       "obbl_bondIntensity": 0.456,
       "obbl_bondRate": 0.164,
-      "obbl_fxAChorus": 0.274,
+      "obbl_bondStage": 0.0,
+      "obbl_breathA": 0.584,
+      "obbl_breathB": 0.627,
+      "obbl_damping": 0.992,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.086,
+      "obbl_embouchureA": 0.34,
       "obbl_fxABrightDelay": 0.165,
-      "obbl_fxAPlate": 0.125,
+      "obbl_fxAChorus": 0.274,
       "obbl_fxAExciter": 0.152,
-      "obbl_fxBPhaser": 0.124,
+      "obbl_fxAPlate": 0.125,
       "obbl_fxBDarkDelay": 0.211,
+      "obbl_fxBPhaser": 0.124,
       "obbl_fxBSpring": 0.25,
       "obbl_fxBTapeSat": 0.114,
-      "obbl_macroBreath": 0.497,
+      "obbl_instrumentA": 3,
+      "obbl_instrumentB": 3,
       "obbl_macroBond": 0.251,
+      "obbl_macroBreath": 0.497,
       "obbl_macroMischief": 0.0,
-      "obbl_macroWind": 0.085
+      "obbl_macroWind": 0.085,
+      "obbl_reedBite": 0.242,
+      "obbl_reedStiffness": 0.336,
+      "obbl_sympatheticAmt": 0.373,
+      "obbl_voiceRouting": 3
     }
   },
-  "coupling": null,
-  "description": "Both brothers holding the same note. BOND balanced \u2014 no mischief yet."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "foundation",
+    "clean",
+    "foundation"
+  ],
+  "version": "1.0.0"
 }

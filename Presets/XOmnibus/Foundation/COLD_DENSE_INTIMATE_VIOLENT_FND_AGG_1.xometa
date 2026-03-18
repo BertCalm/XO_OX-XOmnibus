@@ -1,50 +1,58 @@
 {
-  "name": "COLD_DENSE_INTIMATE_VIOLENT_FND_AGG_1",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.711,
+    "source": "Obese",
+    "target": "Oracle",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.903,
+    "brightness": 0.309,
+    "density": 0.974,
+    "movement": 0.431,
+    "space": 0.126,
+    "warmth": 0.041
+  },
   "engines": [
-    "OBESE",
-    "ORACLE"
+    "Obese",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.735,
+    "COUPLING": 0.939,
+    "MOVEMENT": 0.59,
+    "SPACE": 0.672
+  },
+  "mood": "Foundation",
+  "name": "COLD_DENSE_INTIMATE_VIOLENT_FND_AGG_1",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.735,
-      "macro_movement": 0.59,
       "macro_coupling": 0.939,
+      "macro_movement": 0.59,
       "macro_space": 0.672
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.779,
-      "macro_movement": 0.552,
       "macro_coupling": 0.986,
+      "macro_movement": 0.552,
       "macro_space": 0.64
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBESE",
-    "target": "ORACLE",
-    "amount": 0.711
-  },
-  "dna": {
-    "brightness": 0.309,
-    "warmth": 0.041,
-    "movement": 0.431,
-    "density": 0.974,
-    "space": 0.126,
-    "aggression": 0.903
-  },
-  "macros": {
-    "CHARACTER": 0.735,
-    "MOVEMENT": 0.59,
-    "COUPLING": 0.939,
-    "SPACE": 0.672
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "cold",
     "dense",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

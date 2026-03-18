@@ -1,34 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Void Sustain",
-  "mood": "Foundation",
-  "sonic_dna": {
-    "brightness": 0.1229,
-    "warmth": 0.599,
-    "movement": 0.2638,
-    "density": 0.8474,
-    "space": 0.492,
-    "aggression": 0.2392
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Limitless sustain in pure darkness",
   "dna": {
+    "aggression": 0.2392,
     "brightness": 0.1229,
-    "warmth": 0.599,
-    "movement": 0.2638,
     "density": 0.8474,
+    "movement": 0.2638,
     "space": 0.492,
-    "aggression": 0.2392
+    "warmth": 0.599
   },
   "engines": [
-    "ODYSSEY"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Limitless sustain in pure darkness",
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme",
-    "anchor"
+    "Odyssey"
   ],
   "macroLabels": [
     "ODYSSEY",
@@ -37,24 +23,38 @@
     "SPACE"
   ],
   "macros": {
-    "ODYSSEY": 0.108,
-    "MOTION": 0.79,
     "COUPLING": 0.7432,
+    "MOTION": 0.79,
+    "ODYSSEY": 0.108,
     "SPACE": 0.6789
   },
-  "couplingIntensity": "None",
+  "mood": "Foundation",
+  "name": "Void Sustain",
   "parameters": {
-    "ODYSSEY": {
-      "od_macro_odyssey": 0.108,
-      "od_macro_motion": 0.79,
-      "od_macro_coupling": 0.7432,
-      "od_macro_space": 0.6789,
-      "od_outputLevel": 0.85,
+    "Odyssey": {
+      "od_couplingBus": 0,
       "od_couplingLevel": 0.5,
-      "od_couplingBus": 0
+      "od_macro_coupling": 0.7432,
+      "od_macro_motion": 0.79,
+      "od_macro_odyssey": 0.108,
+      "od_macro_space": 0.6789,
+      "od_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2392,
+    "brightness": 0.1229,
+    "density": 0.8474,
+    "movement": 0.2638,
+    "space": 0.492,
+    "warmth": 0.599
+  },
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

@@ -1,35 +1,43 @@
 {
-  "name": "Veil of Quartz",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.981,
+    "density": 0.11,
+    "movement": 0.54,
+    "space": 1.0,
+    "warmth": 0.2
+  },
   "engines": [
-    "OCTOPUS"
+    "Octopus"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.22,
+    "COUPLING": 0.12,
+    "MOVEMENT": 0.54,
+    "SPACE": 0.92
+  },
+  "mood": "Aether",
+  "name": "Veil of Quartz",
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.22,
-      "macro_movement": 0.54,
       "macro_coupling": 0.12,
+      "macro_movement": 0.54,
       "macro_space": 0.92
     }
   },
-  "dna": {
-    "brightness": 0.981,
-    "warmth": 0.2,
-    "movement": 0.54,
-    "density": 0.11,
-    "space": 1.0,
-    "aggression": 0.05
-  },
-  "macros": {
-    "CHARACTER": 0.22,
-    "MOVEMENT": 0.54,
-    "COUPLING": 0.12,
-    "SPACE": 0.92
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "crystalline",
     "otherworldly"
-  ]
+  ],
+  "version": "1.0"
 }

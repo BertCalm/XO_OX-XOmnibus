@@ -1,14 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 3",
-  "mood": "Aether",
-  "engines": [
-    "ORGANON",
-    "OCEANIC"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.66,
+    "source": "Organon",
+    "target": "Oceanic",
+    "type": "PITCH_FOLLOW"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.491,
+    "brightness": 0.958,
+    "density": 0.056,
+    "movement": 0.098,
+    "space": 0.907,
+    "warmth": 0.911
+  },
+  "engines": [
+    "Organon",
+    "Oceanic"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 3",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.8,
+      "macro_coupling": 0.74,
+      "macro_movement": 0.88,
+      "macro_space": 0.41
+    },
+    "Organon": {
+      "macro_character": 0.77,
+      "macro_coupling": 0.79,
+      "macro_movement": 0.99,
+      "macro_space": 0.25
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +58,6 @@
     "dense",
     "aether"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.77,
-      "macro_movement": 0.99,
-      "macro_coupling": 0.79,
-      "macro_space": 0.25
-    },
-    "OCEANIC": {
-      "macro_character": 0.8,
-      "macro_movement": 0.88,
-      "macro_coupling": 0.74,
-      "macro_space": 0.41
-    }
-  },
-  "coupling": {
-    "type": "PITCH_FOLLOW",
-    "source": "ORGANON",
-    "target": "OCEANIC",
-    "amount": 0.66
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.958,
-    "warmth": 0.911,
-    "movement": 0.098,
-    "density": 0.056,
-    "space": 0.907,
-    "aggression": 0.491
-  }
+  "version": "1.0.0"
 }

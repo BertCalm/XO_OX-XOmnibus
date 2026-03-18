@@ -1,50 +1,58 @@
 {
-  "name": "WRATHFUL COSMIC SURGE",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OSPREY",
-    "ORIGAMI"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.709,
-      "macro_movement": 0.967,
-      "macro_coupling": 0.115,
-      "macro_space": 0.833
-    },
-    "ORIGAMI": {
-      "macro_character": 0.325,
-      "macro_movement": 1.005,
-      "macro_coupling": 0.618,
-      "macro_space": 0.882
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OSPREY",
-    "target": "ORIGAMI",
-    "amount": 0.944
+    "amount": 0.944,
+    "source": "Osprey",
+    "target": "Origami",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.888,
     "brightness": 0.042,
-    "warmth": 0.019,
-    "movement": 0.975,
     "density": 0.921,
+    "movement": 0.975,
     "space": 0.862,
-    "aggression": 0.888
+    "warmth": 0.019
   },
+  "engines": [
+    "Osprey",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.088,
-    "MOVEMENT": 0.975,
     "COUPLING": 0.844,
+    "MOVEMENT": 0.975,
     "SPACE": 0.862
   },
+  "mood": "Aether",
+  "name": "WRATHFUL COSMIC SURGE",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.325,
+      "macro_coupling": 0.618,
+      "macro_movement": 1.005,
+      "macro_space": 0.882
+    },
+    "Osprey": {
+      "macro_character": 0.709,
+      "macro_coupling": 0.115,
+      "macro_movement": 0.967,
+      "macro_space": 0.833
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh",
     "movement-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

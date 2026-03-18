@@ -1,49 +1,57 @@
 {
-  "name": "ALLHI FND 02",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.83,
+    "source": "OddfeliX",
+    "target": "OddOscar",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.944,
+    "brightness": 0.912,
+    "density": 0.91,
+    "movement": 0.893,
+    "space": 0.955,
+    "warmth": 0.502
+  },
   "engines": [
-    "ODDFELIX",
-    "ODDOSCAR"
+    "OddfeliX",
+    "OddOscar"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.707,
+    "COUPLING": 0.95,
+    "MOVEMENT": 0.901,
+    "SPACE": 0.955
+  },
+  "mood": "Foundation",
+  "name": "ALLHI FND 02",
   "parameters": {
-    "ODDFELIX": {
+    "OddOscar": {
       "macro_character": 0.707,
-      "macro_movement": 0.901,
       "macro_coupling": 0.95,
+      "macro_movement": 0.901,
       "macro_space": 0.955
     },
-    "ODDOSCAR": {
+    "OddfeliX": {
       "macro_character": 0.707,
-      "macro_movement": 0.901,
       "macro_coupling": 0.95,
+      "macro_movement": 0.901,
       "macro_space": 0.955
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ODDFELIX",
-    "target": "ODDOSCAR",
-    "amount": 0.83
-  },
-  "dna": {
-    "brightness": 0.912,
-    "warmth": 0.502,
-    "movement": 0.893,
-    "density": 0.91,
-    "space": 0.955,
-    "aggression": 0.944
-  },
-  "macros": {
-    "CHARACTER": 0.707,
-    "MOVEMENT": 0.901,
-    "COUPLING": 0.95,
-    "SPACE": 0.955
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

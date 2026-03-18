@@ -1,14 +1,64 @@
 {
-  "schema_version": 1,
-  "name": "Spread Diffuse",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.713,
+        "engineA": "Overlap",
+        "engineB": "Oracle",
+        "type": "AMP_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Oracle resonance feeds OVERLAP early reflections — prophecy echoed in cavern walls",
+  "dna": {
+    "aggression": 0.275,
+    "brightness": 0.36,
+    "density": 0.65,
+    "movement": 0.55,
+    "space": 1.0,
+    "warmth": 0.356
+  },
   "engines": [
-    "OVERLAP",
-    "ORACLE"
+    "Overlap",
+    "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Oracle resonance feeds OVERLAP early reflections \u2014 prophecy echoed in cavern walls",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Spread Diffuse",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.629,
+      "olap_damping": 0.357,
+      "olap_decay": 0.792,
+      "olap_diffusion": 0.633,
+      "olap_earlyMix": 0.405,
+      "olap_filterCutoff": 0.71,
+      "olap_filterReso": 0.169,
+      "olap_lateMix": 0.737,
+      "olap_modDepth": 0.446,
+      "olap_modRate": 0.242,
+      "olap_outputLevel": 0.656,
+      "olap_preDelay": 0.139,
+      "olap_size": 0.618
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.275,
+    "brightness": 0.6,
+    "density": 0.65,
+    "movement": 0.55,
+    "space": 0.775,
+    "warmth": 0.575
+  },
   "tags": [
     "coupling",
     "entangled",
@@ -19,55 +69,5 @@
     "fdn",
     "reverb"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
-  "dna": {
-    "aggression": 0.275,
-    "space": 1.0,
-    "warmth": 0.356,
-    "brightness": 0.36,
-    "density": 0.65,
-    "movement": 0.55
-  },
-  "sonic_dna": {
-    "aggression": 0.275,
-    "space": 0.775,
-    "warmth": 0.575,
-    "brightness": 0.6,
-    "density": 0.65,
-    "movement": 0.55
-  },
-  "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.618,
-      "olap_decay": 0.792,
-      "olap_damping": 0.357,
-      "olap_diffusion": 0.633,
-      "olap_modDepth": 0.446,
-      "olap_modRate": 0.242,
-      "olap_preDelay": 0.139,
-      "olap_earlyMix": 0.405,
-      "olap_lateMix": 0.737,
-      "olap_filterCutoff": 0.71,
-      "olap_filterReso": 0.169,
-      "olap_outputLevel": 0.656,
-      "olap_couplingLevel": 0.629,
-      "olap_couplingBus": 0
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERLAP",
-        "engineB": "ORACLE",
-        "type": "AMP_MOD",
-        "amount": 0.713
-      }
-    ]
-  }
+  "version": "1.0.0"
 }

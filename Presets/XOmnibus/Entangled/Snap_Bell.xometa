@@ -1,77 +1,77 @@
 {
-  "schema_version": 1,
-  "name": "Snap Bell",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.834,
+        "engineA": "Overbite",
+        "engineB": "Ottoni",
+        "type": "amplitude_sidechain"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "OVERBITE maw feeds OTTONI brass embouchure. Fang-shaped fanfare.",
+  "dna": {
+    "aggression": 0.665,
+    "brightness": 0.506,
+    "density": 0.679,
+    "movement": 0.528,
+    "space": 0.44,
+    "warmth": 0.551
+  },
   "engines": [
     "Overbite",
     "Ottoni"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE maw feeds OTTONI brass embouchure. Fang-shaped fanfare.",
-  "tags": [
-    "overbite",
-    "ottoni",
-    "coupling",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": 115,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Snap Bell",
   "parameters": {
-    "Overbite": {
-      "poss_macro1": 0.341,
-      "poss_macro2": 0.432,
-      "poss_macro3": 0.604,
-      "poss_macro4": 0.319,
-      "poss_couplingOut": 0.602,
-      "poss_couplingIn": 0.727,
-      "poss_outputLevel": 0.873,
-      "poss_outputPan": -0.011,
-      "poss_biteDepth": 0.866,
-      "poss_fangAttack": 0.094,
-      "poss_gnashAmt": 0.419,
-      "poss_snapRelease": 0.569
-    },
     "Ottoni": {
+      "otto_couplingIn": 0.514,
+      "otto_couplingOut": 0.595,
       "otto_macro1": 0.545,
       "otto_macro2": 0.546,
       "otto_macro3": 0.364,
       "otto_macro4": 0.408,
-      "otto_couplingOut": 0.595,
-      "otto_couplingIn": 0.514,
       "otto_outputLevel": 0.909,
       "otto_outputPan": 0.021
+    },
+    "Overbite": {
+      "poss_biteDepth": 0.866,
+      "poss_couplingIn": 0.727,
+      "poss_couplingOut": 0.602,
+      "poss_fangAttack": 0.094,
+      "poss_gnashAmt": 0.419,
+      "poss_macro1": 0.341,
+      "poss_macro2": 0.432,
+      "poss_macro3": 0.604,
+      "poss_macro4": 0.319,
+      "poss_outputLevel": 0.873,
+      "poss_outputPan": -0.011,
+      "poss_snapRelease": 0.569
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Ottoni",
-        "type": "amplitude_sidechain",
-        "amount": 0.834
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.506,
-    "warmth": 0.551,
-    "movement": 0.528,
-    "density": 0.679,
-    "space": 0.44,
-    "aggression": 0.665
-  }
+  "tags": [
+    "overbite",
+    "ottoni",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 115,
+  "version": "1.0.0"
 }

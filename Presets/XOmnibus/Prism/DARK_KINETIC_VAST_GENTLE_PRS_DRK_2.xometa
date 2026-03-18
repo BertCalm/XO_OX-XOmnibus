@@ -1,50 +1,58 @@
 {
-  "name": "DARK_KINETIC_VAST_GENTLE_PRS_DRK_2",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OWLFISH",
-    "OCELOT"
-  ],
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.3475,
-      "macro_movement": 0.9156,
-      "macro_coupling": 0.6634,
-      "macro_space": 0.9057
-    },
-    "OCELOT": {
-      "macro_character": 0.3563,
-      "macro_movement": 0.9348,
-      "macro_coupling": 0.6992,
-      "macro_space": 0.8823
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OWLFISH",
-    "target": "OCELOT",
-    "amount": 0.7984
+    "amount": 0.7984,
+    "source": "Owlfish",
+    "target": "Ocelot",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.0847,
     "brightness": 0.0757,
-    "warmth": 0.6103,
-    "movement": 0.9156,
     "density": 0.6634,
+    "movement": 0.9156,
     "space": 0.9057,
-    "aggression": 0.0847
+    "warmth": 0.6103
   },
+  "engines": [
+    "Owlfish",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.3475,
-    "MOVEMENT": 0.9156,
     "COUPLING": 0.6634,
+    "MOVEMENT": 0.9156,
     "SPACE": 0.9057
   },
+  "mood": "Prism",
+  "name": "DARK_KINETIC_VAST_GENTLE_PRS_DRK_2",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.3563,
+      "macro_coupling": 0.6992,
+      "macro_movement": 0.9348,
+      "macro_space": 0.8823
+    },
+    "Owlfish": {
+      "macro_character": 0.3475,
+      "macro_coupling": 0.6634,
+      "macro_movement": 0.9156,
+      "macro_space": 0.9057
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "kinetic",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

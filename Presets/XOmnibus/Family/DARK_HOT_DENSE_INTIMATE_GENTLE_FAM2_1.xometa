@@ -1,45 +1,52 @@
 {
-  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 1",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.503,
+    "source": "Organon",
+    "target": "Osprey",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.119,
+    "density": 0.956,
+    "movement": 0.685,
+    "space": 0.066,
+    "warmth": 0.913
+  },
   "engines": [
-    "ORGANON",
-    "OSPREY"
+    "Organon",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.516,
+    "COUPLING": 0.503,
+    "MOVEMENT": 0.685,
+    "SPACE": 0.066
+  },
+  "mood": "Family",
+  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 1",
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.516,
-      "macro_movement": 0.685,
       "macro_coupling": 0.503,
+      "macro_movement": 0.685,
       "macro_space": 0.066
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.496,
-      "macro_movement": 0.662,
       "macro_coupling": 0.48,
+      "macro_movement": 0.662,
       "macro_space": 0.082
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORGANON",
-    "target": "OSPREY",
-    "amount": 0.503
-  },
-  "dna": {
-    "brightness": 0.119,
-    "warmth": 0.913,
-    "movement": 0.685,
-    "density": 0.956,
-    "space": 0.066,
-    "aggression": 0.05
-  },
-  "macros": {
-    "CHARACTER": 0.516,
-    "MOVEMENT": 0.685,
-    "COUPLING": 0.503,
-    "SPACE": 0.066
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
@@ -47,5 +54,6 @@
     "dense",
     "intimate",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

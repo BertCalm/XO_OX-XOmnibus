@@ -1,58 +1,80 @@
 {
-  "schema_version": 1,
-  "name": "Saba Fog",
-  "mood": "Atmosphere",
-  "engines": ["Oracle"],
-  "author": "Guru Bin — Atmosphere Deepening 2026-03-16",
-  "version": "1.0.0",
-  "description": "Maqam Saba (maqam 5) — the lowered second degree creates a half-step shadow just above the tonic, a sound of mourning and compressed gravity. Eight-voice poly lets the fog fill the room. Amp attack is 3 seconds — the tone materializes slowly like morning fog finding its form. 5-second release: the fog does not clear, it fades into the next phrase. A world described in low visibility.",
-  "tags": ["saba", "maqam", "lowered-second", "fog", "slow-attack", "poly8", "atmosphere", "mourning"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-16",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "description": "Maqam Saba (maqam 5) — the lowered second degree creates a half-step shadow just above the tonic, a sound of mourning and compressed gravity. Eight-voice poly lets the fog fill the room. Amp attack is 3 seconds — the tone materializes slowly like morning fog finding its form. 5-second release: the fog does not clear, it fades into the next phrase. A world described in low visibility.",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.28,
+    "density": 0.65,
+    "movement": 0.32,
+    "space": 0.88,
+    "warmth": 0.75
+  },
+  "engines": [
+    "Oracle"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
+  "mood": "Atmosphere",
+  "name": "Saba Fog",
   "parameters": {
     "Oracle": {
-      "oracle_breakpoints": 18,
-      "oracle_timeStep": 0.04,
-      "oracle_ampStep": 0.10,
-      "oracle_distribution": 0.58,
-      "oracle_barrierElasticity": 0.65,
-      "oracle_maqam": 5,
-      "oracle_gravity": 0.68,
-      "oracle_drift": 0.25,
-      "oracle_level": 0.74,
       "oracle_ampAttack": 3.0,
       "oracle_ampDecay": 1.5,
-      "oracle_ampSustain": 0.88,
       "oracle_ampRelease": 5.0,
-      "oracle_stochEnvAttack": 0.80,
-      "oracle_stochEnvDecay": 2.5,
-      "oracle_stochEnvSustain": 0.85,
-      "oracle_stochEnvRelease": 4.5,
-      "oracle_lfo1Rate": 0.022,
-      "oracle_lfo1Depth": 0.12,
-      "oracle_lfo1Shape": 0,
-      "oracle_lfo2Rate": 0.010,
-      "oracle_lfo2Depth": 0.07,
-      "oracle_lfo2Shape": 0,
-      "oracle_voiceMode": 4,
+      "oracle_ampStep": 0.1,
+      "oracle_ampSustain": 0.88,
+      "oracle_barrierElasticity": 0.65,
+      "oracle_breakpoints": 18,
+      "oracle_distribution": 0.58,
+      "oracle_drift": 0.25,
       "oracle_glide": 0.05,
-      "oracle_macroProphecy": 0.0,
+      "oracle_gravity": 0.68,
+      "oracle_level": 0.74,
+      "oracle_lfo1Depth": 0.12,
+      "oracle_lfo1Rate": 0.022,
+      "oracle_lfo1Shape": 0,
+      "oracle_lfo2Depth": 0.07,
+      "oracle_lfo2Rate": 0.01,
+      "oracle_lfo2Shape": 0,
+      "oracle_macroDrift": 0.0,
       "oracle_macroEvolution": 0.0,
       "oracle_macroGravity": 0.0,
-      "oracle_macroDrift": 0.0
+      "oracle_macroProphecy": 0.0,
+      "oracle_maqam": 5,
+      "oracle_stochEnvAttack": 0.8,
+      "oracle_stochEnvDecay": 2.5,
+      "oracle_stochEnvRelease": 4.5,
+      "oracle_stochEnvSustain": 0.85,
+      "oracle_timeStep": 0.04,
+      "oracle_voiceMode": 4
     }
   },
-  "coupling": { "pairs": [] },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.28,
-    "warmth": 0.75,
-    "movement": 0.32,
-    "density": 0.65,
-    "space": 0.88,
-    "aggression": 0.06
-  }
+  "tags": [
+    "saba",
+    "maqam",
+    "lowered-second",
+    "fog",
+    "slow-attack",
+    "poly8",
+    "atmosphere",
+    "mourning"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

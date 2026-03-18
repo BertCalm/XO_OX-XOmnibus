@@ -1,45 +1,52 @@
 {
-  "name": "DENSE FRONT",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORIGAMI",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.3333,
-      "macro_movement": 0.6701,
-      "macro_coupling": 0.9431,
-      "macro_space": 0.3298
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.6937,
-      "macro_movement": 0.2882,
-      "macro_coupling": 0.9781,
-      "macro_space": 0.8136
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ORIGAMI",
-    "target": "ODDOSCAR",
-    "amount": 0.865
+    "amount": 0.865,
+    "source": "Origami",
+    "target": "OddOscar",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.4042,
     "brightness": 0.4548,
-    "warmth": 0.3145,
-    "movement": 0.3233,
     "density": 0.8981,
+    "movement": 0.3233,
     "space": 0.9702,
-    "aggression": 0.4042
+    "warmth": 0.3145
   },
+  "engines": [
+    "Origami",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5146,
-    "MOVEMENT": 0.9881,
     "COUPLING": 0.8973,
+    "MOVEMENT": 0.9881,
     "SPACE": 0.5426
   },
+  "mood": "Entangled",
+  "name": "DENSE FRONT",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.6937,
+      "macro_coupling": 0.9781,
+      "macro_movement": 0.2882,
+      "macro_space": 0.8136
+    },
+    "Origami": {
+      "macro_character": 0.3333,
+      "macro_coupling": 0.9431,
+      "macro_movement": 0.6701,
+      "macro_space": 0.3298
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -49,5 +56,6 @@
     "compressed",
     "granite",
     "extreme-density"
-  ]
+  ],
+  "version": "1.0"
 }

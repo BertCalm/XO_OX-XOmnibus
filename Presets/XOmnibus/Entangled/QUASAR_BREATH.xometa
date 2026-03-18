@@ -1,49 +1,57 @@
 {
-  "name": "QUASAR BREATH",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.745,
+    "source": "Oblong",
+    "target": "Owlfish",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.577,
+    "brightness": 0.659,
+    "density": 0.428,
+    "movement": 0.323,
+    "space": 0.936,
+    "warmth": 0.907
+  },
   "engines": [
-    "OBLONG",
-    "OWLFISH"
+    "Oblong",
+    "Owlfish"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.762,
+    "COUPLING": 0.2,
+    "MOVEMENT": 0.182,
+    "SPACE": 0.936
+  },
+  "mood": "Entangled",
+  "name": "QUASAR BREATH",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.135,
-      "macro_movement": 0.392,
       "macro_coupling": 0.06,
+      "macro_movement": 0.392,
       "macro_space": 0.941
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.275,
-      "macro_movement": 0.956,
       "macro_coupling": 0.973,
+      "macro_movement": 0.956,
       "macro_space": 0.96
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OBLONG",
-    "target": "OWLFISH",
-    "amount": 0.745
-  },
-  "dna": {
-    "brightness": 0.659,
-    "warmth": 0.907,
-    "movement": 0.323,
-    "density": 0.428,
-    "space": 0.936,
-    "aggression": 0.577
-  },
-  "macros": {
-    "CHARACTER": 0.762,
-    "MOVEMENT": 0.182,
-    "COUPLING": 0.2,
-    "SPACE": 0.936
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "vast",
     "cosmic",
     "xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

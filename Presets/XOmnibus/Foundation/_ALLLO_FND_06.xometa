@@ -1,49 +1,57 @@
 {
-  "name": "ALLLO FND 06",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.157,
+    "source": "Overdub",
+    "target": "OddOscar",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.642,
+    "brightness": 0.046,
+    "density": 0.085,
+    "movement": 0.02,
+    "space": 0.085,
+    "warmth": 0.034
+  },
   "engines": [
-    "OVERDUB",
-    "ODDOSCAR"
+    "Overdub",
+    "OddOscar"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.04,
+    "COUPLING": 0.363,
+    "MOVEMENT": 0.053,
+    "SPACE": 0.085
+  },
+  "mood": "Foundation",
+  "name": "ALLLO FND 06",
   "parameters": {
-    "OVERDUB": {
+    "OddOscar": {
       "macro_character": 0.04,
-      "macro_movement": 0.053,
       "macro_coupling": 0.363,
+      "macro_movement": 0.053,
       "macro_space": 0.085
     },
-    "ODDOSCAR": {
+    "Overdub": {
       "macro_character": 0.04,
-      "macro_movement": 0.053,
       "macro_coupling": 0.363,
+      "macro_movement": 0.053,
       "macro_space": 0.085
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERDUB",
-    "target": "ODDOSCAR",
-    "amount": 0.157
-  },
-  "dna": {
-    "brightness": 0.046,
-    "warmth": 0.034,
-    "movement": 0.02,
-    "density": 0.085,
-    "space": 0.085,
-    "aggression": 0.642
-  },
-  "macros": {
-    "CHARACTER": 0.04,
-    "MOVEMENT": 0.053,
-    "COUPLING": 0.363,
-    "SPACE": 0.085
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

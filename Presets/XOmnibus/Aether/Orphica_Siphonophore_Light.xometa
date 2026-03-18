@@ -1,19 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Siphonophore Light",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The microsound harp plays only the overtones of silence. Each pluck is a bioluminescent pulse — brief, cold, perfect.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.9,
+    "density": 0.15,
+    "movement": 0.18,
+    "space": 0.96,
+    "warmth": 0.2
+  },
   "engines": [
     "Orphica"
-  ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "The microsound harp plays only the overtones of silence. Each pluck is a bioluminescent pulse \u2014 brief, cold, perfect.",
-  "tags": [
-    "aether",
-    "transcendent",
-    "microsound",
-    "bioluminescent",
-    "delicate"
   ],
   "macroLabels": [
     "PLUCK",
@@ -21,35 +22,34 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.9,
-    "warmth": 0.2,
-    "movement": 0.18,
-    "density": 0.15,
-    "space": 0.96,
-    "aggression": 0.0
-  },
+  "mood": "Aether",
+  "name": "Siphonophore Light",
   "parameters": {
     "Orphica": {
-      "orph_microsoundDensity": 0.2,
-      "orph_pluckBrightness": 0.9,
-      "orph_filterCutoff": 0.92,
-      "orph_filterReso": 0.1,
       "orph_ampAttack": 0.01,
       "orph_ampDecay": 5.0,
-      "orph_ampSustain": 0.3,
       "orph_ampRelease": 7.0,
-      "orph_reverbMix": 0.93,
-      "orph_shimmerAmt": 0.85,
-      "orph_macroPluck": 0.0,
+      "orph_ampSustain": 0.3,
+      "orph_filterCutoff": 0.92,
+      "orph_filterReso": 0.1,
       "orph_macroBloom": 0.0,
       "orph_macroCoupling": 0.0,
-      "orph_macroSpace": 0.0
+      "orph_macroPluck": 0.0,
+      "orph_macroSpace": 0.0,
+      "orph_microsoundDensity": 0.2,
+      "orph_pluckBrightness": 0.9,
+      "orph_reverbMix": 0.93,
+      "orph_shimmerAmt": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "transcendent",
+    "microsound",
+    "bioluminescent",
+    "delicate"
+  ],
+  "version": "1.0.0"
 }

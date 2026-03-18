@@ -1,48 +1,56 @@
 {
-  "name": "SPECTRAL BLAST",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORACLE",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.975,
-      "macro_movement": 0.953,
-      "macro_coupling": 0.131,
-      "macro_space": 0.371
-    },
-    "OCEANIC": {
-      "macro_character": 0.562,
-      "macro_movement": 0.966,
-      "macro_coupling": 0.319,
-      "macro_space": 0.466
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ORACLE",
-    "target": "OCEANIC",
-    "amount": 0.634
+    "amount": 0.634,
+    "source": "Oracle",
+    "target": "Oceanic",
+    "type": "FREQUENCY_SHIFT"
   },
   "dna": {
+    "aggression": 0.808,
     "brightness": 0.248,
-    "warmth": 0.097,
-    "movement": 0.96,
     "density": 0.29,
+    "movement": 0.96,
     "space": 0.384,
-    "aggression": 0.808
+    "warmth": 0.097
   },
+  "engines": [
+    "Oracle",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.248,
-    "MOVEMENT": 0.96,
     "COUPLING": 0.865,
+    "MOVEMENT": 0.96,
     "SPACE": 0.16
   },
+  "mood": "Entangled",
+  "name": "SPECTRAL BLAST",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.562,
+      "macro_coupling": 0.319,
+      "macro_movement": 0.966,
+      "macro_space": 0.466
+    },
+    "Oracle": {
+      "macro_character": 0.975,
+      "macro_coupling": 0.131,
+      "macro_movement": 0.953,
+      "macro_space": 0.371
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "wild",
     "movement"
-  ]
+  ],
+  "version": "1.0"
 }

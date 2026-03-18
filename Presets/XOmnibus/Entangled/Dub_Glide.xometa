@@ -1,48 +1,56 @@
 {
-  "name": "Dub Glide",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERDUB",
-    "OSPREY"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.85,
-      "macro_movement": 0.76,
-      "macro_coupling": 0.72,
-      "macro_space": 0.55
-    },
-    "OSPREY": {
-      "macro_character": 0.76,
-      "macro_movement": 0.6,
-      "macro_coupling": 0.57,
-      "macro_space": 0.48
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OVERDUB",
-    "target": "OSPREY",
-    "amount": 0.78
+    "amount": 0.78,
+    "source": "Overdub",
+    "target": "Osprey",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.56,
     "brightness": 0.32,
-    "warmth": 0.94,
-    "movement": 0.72,
     "density": 0.82,
+    "movement": 0.72,
     "space": 0.51,
-    "aggression": 0.56
+    "warmth": 0.94
   },
+  "engines": [
+    "Overdub",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8,
-    "MOVEMENT": 0.68,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.68,
     "SPACE": 0.52
   },
+  "mood": "Entangled",
+  "name": "Dub Glide",
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.76,
+      "macro_coupling": 0.57,
+      "macro_movement": 0.6,
+      "macro_space": 0.48
+    },
+    "Overdub": {
+      "macro_character": 0.85,
+      "macro_coupling": 0.72,
+      "macro_movement": 0.76,
+      "macro_space": 0.55
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-  ]
+  ],
+  "version": "1.0"
 }

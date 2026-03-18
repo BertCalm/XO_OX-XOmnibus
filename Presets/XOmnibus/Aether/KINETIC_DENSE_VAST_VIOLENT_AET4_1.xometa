@@ -1,50 +1,58 @@
 {
-  "name": "KINETIC_DENSE_VAST_VIOLENT_AET4_1",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.5679,
+    "source": "OddOscar",
+    "target": "Origami",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.9396,
+    "brightness": 0.6817,
+    "density": 0.9413,
+    "movement": 0.8808,
+    "space": 0.9161,
+    "warmth": 0.5956
+  },
   "engines": [
-    "ODDOSCAR",
-    "ORIGAMI"
+    "OddOscar",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6386,
+    "COUPLING": 0.5679,
+    "MOVEMENT": 0.8808,
+    "SPACE": 0.9161
+  },
+  "mood": "Aether",
+  "name": "KINETIC_DENSE_VAST_VIOLENT_AET4_1",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.2464,
-      "macro_movement": 0.2776,
       "macro_coupling": 0.8743,
+      "macro_movement": 0.2776,
       "macro_space": 0.4576
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.7357,
-      "macro_movement": 0.5784,
       "macro_coupling": 0.3294,
+      "macro_movement": 0.5784,
       "macro_space": 0.3858
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ODDOSCAR",
-    "target": "ORIGAMI",
-    "amount": 0.5679
-  },
-  "dna": {
-    "brightness": 0.6817,
-    "warmth": 0.5956,
-    "movement": 0.8808,
-    "density": 0.9413,
-    "space": 0.9161,
-    "aggression": 0.9396
-  },
-  "macros": {
-    "CHARACTER": 0.6386,
-    "MOVEMENT": 0.8808,
-    "COUPLING": 0.5679,
-    "SPACE": 0.9161
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "kinetic",
     "dense",
     "vast",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

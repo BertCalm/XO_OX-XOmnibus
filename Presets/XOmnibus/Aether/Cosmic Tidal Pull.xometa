@@ -1,13 +1,50 @@
 {
-  "schema_version": 1,
-  "name": "Cosmic Tidal Pull",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Oceanic dissolved into infinite space. Space dimension at 0.99 — cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "dna": {
+    "aggression": 0.331,
+    "brightness": 0.162,
+    "density": 0.719,
+    "movement": 0.383,
+    "space": 0.988,
+    "warmth": 0.581
+  },
   "engines": [
     "Oceanic"
   ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "Oceanic dissolved into infinite space. Space dimension at 0.99 \u2014 cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Cosmic Tidal Pull",
+  "parameters": {
+    "Oceanic": {
+      "ocean_alignment": 0.588,
+      "ocean_ampAttack": 0.514,
+      "ocean_ampDecay": 1.188,
+      "ocean_ampRelease": 4.25,
+      "ocean_ampSustain": 0.591,
+      "ocean_cohesion": 0.532,
+      "ocean_damping": 0.106,
+      "ocean_macroCharacter": 0.162,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroMovement": 0.383,
+      "ocean_macroSpace": 0.988,
+      "ocean_scatter": 0.643,
+      "ocean_separation": 0.241,
+      "ocean_subflocks": 3,
+      "ocean_tether": 0.207,
+      "ocean_waveform": 1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "vast",
@@ -18,43 +55,6 @@
     "oceanic",
     "infinite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.162,
-    "warmth": 0.581,
-    "movement": 0.383,
-    "density": 0.719,
-    "space": 0.988,
-    "aggression": 0.331
-  },
-  "parameters": {
-    "Oceanic": {
-      "ocean_separation": 0.241,
-      "ocean_alignment": 0.588,
-      "ocean_cohesion": 0.532,
-      "ocean_tether": 0.207,
-      "ocean_scatter": 0.643,
-      "ocean_subflocks": 3,
-      "ocean_damping": 0.106,
-      "ocean_waveform": 1,
-      "ocean_ampAttack": 0.514,
-      "ocean_ampDecay": 1.188,
-      "ocean_ampSustain": 0.591,
-      "ocean_ampRelease": 4.25,
-      "ocean_macroCharacter": 0.162,
-      "ocean_macroMovement": 0.383,
-      "ocean_macroCoupling": 0.0,
-      "ocean_macroSpace": 0.988
-    }
-  },
-  "coupling": null,
-  "sequencer": null
+  "version": "1.0"
 }

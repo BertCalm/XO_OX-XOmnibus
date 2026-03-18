@@ -1,27 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Glow Horizon",
-  "mood": "Atmosphere",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Amber filament in open sky — warm, sparse, weightless.",
+  "dna": {
+    "aggression": 0.306,
     "brightness": 0.491,
-    "warmth": 0.927,
-    "movement": 0.528,
     "density": 0.128,
+    "movement": 0.528,
     "space": 0.68,
-    "aggression": 0.306
+    "warmth": 0.927
   },
   "engines": [
-    "OSPREY"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Amber filament in open sky \u2014 warm, sparse, weightless.",
-  "tags": [
-    "atmosphere",
-    "warm",
-    "sparse",
-    "airy",
-    "breath"
+    "Osprey"
   ],
   "macroLabels": [
     "GLOW",
@@ -29,17 +22,24 @@
     "COUPLING",
     "AIR"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.491,
-    "warmth": 0.927,
-    "movement": 0.528,
-    "density": 0.128,
-    "space": 0.68,
-    "aggression": 0.306
-  },
+  "mood": "Atmosphere",
+  "name": "Glow Horizon",
   "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.306,
+    "brightness": 0.491,
+    "density": 0.128,
+    "movement": 0.528,
+    "space": 0.68,
+    "warmth": 0.927
+  },
+  "tags": [
+    "atmosphere",
+    "warm",
+    "sparse",
+    "airy",
+    "breath"
+  ],
+  "version": "1.0.0"
 }

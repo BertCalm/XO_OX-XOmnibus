@@ -1,48 +1,56 @@
 {
-  "name": "HYPERDRIVE 47",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.588,
+    "source": "Obese",
+    "target": "Ohm",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.924,
+    "brightness": 0.958,
+    "density": 0.05,
+    "movement": 0.917,
+    "space": 0.249,
+    "warmth": 0.518
+  },
   "engines": [
-    "OBESE",
-    "OHM"
+    "Obese",
+    "Ohm"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.456,
+    "COUPLING": 0.801,
+    "MOVEMENT": 0.917,
+    "SPACE": 0.668
+  },
+  "mood": "Entangled",
+  "name": "HYPERDRIVE 47",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.656,
-      "macro_movement": 0.929,
       "macro_coupling": 0.006,
+      "macro_movement": 0.929,
       "macro_space": 0.751
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.77,
-      "macro_movement": 0.904,
       "macro_coupling": 0.107,
+      "macro_movement": 0.904,
       "macro_space": 0.425
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBESE",
-    "target": "OHM",
-    "amount": 0.588
-  },
-  "dna": {
-    "brightness": 0.958,
-    "warmth": 0.518,
-    "movement": 0.917,
-    "density": 0.05,
-    "space": 0.249,
-    "aggression": 0.924
-  },
-  "macros": {
-    "CHARACTER": 0.456,
-    "MOVEMENT": 0.917,
-    "COUPLING": 0.801,
-    "SPACE": 0.668
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "wild",
     "movement"
-  ]
+  ],
+  "version": "1.0"
 }

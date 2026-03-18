@@ -1,48 +1,56 @@
 {
-  "name": "KINETIC GROUND",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ORACLE",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.365,
-      "macro_movement": 0.952,
-      "macro_coupling": 0.79,
-      "macro_space": 0.281
-    },
-    "OBSCURA": {
-      "macro_character": 0.521,
-      "macro_movement": 0.9,
-      "macro_coupling": 0.653,
-      "macro_space": 0.48
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORACLE",
-    "target": "OBSCURA",
-    "amount": 0.567
+    "amount": 0.567,
+    "source": "Oracle",
+    "target": "Obscura",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.698,
     "brightness": 0.351,
-    "warmth": 0.745,
-    "movement": 0.931,
     "density": 0.856,
+    "movement": 0.931,
     "space": 0.581,
-    "aggression": 0.698
+    "warmth": 0.745
   },
+  "engines": [
+    "Oracle",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.356,
-    "MOVEMENT": 0.931,
     "COUPLING": 0.567,
+    "MOVEMENT": 0.931,
     "SPACE": 0.581
   },
+  "mood": "Foundation",
+  "name": "KINETIC GROUND",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.521,
+      "macro_coupling": 0.653,
+      "macro_movement": 0.9,
+      "macro_space": 0.48
+    },
+    "Oracle": {
+      "macro_character": 0.365,
+      "macro_coupling": 0.79,
+      "macro_movement": 0.952,
+      "macro_space": 0.281
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-  ]
+  ],
+  "version": "1.0"
 }

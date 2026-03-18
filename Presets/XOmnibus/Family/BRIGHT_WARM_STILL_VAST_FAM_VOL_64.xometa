@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_STILL_VAST_FAM_VOL_64",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OVERDUB",
-    "ORPHICA"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.934,
-      "macro_movement": 0.109,
-      "macro_coupling": 0.45,
-      "macro_space": 0.875
-    },
-    "ORPHICA": {
-      "macro_character": 0.885,
-      "macro_movement": 0.088,
-      "macro_coupling": 0.445,
-      "macro_space": 0.899
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_LINK",
-    "source": "OVERDUB",
-    "target": "ORPHICA",
-    "amount": 0.841
+    "amount": 0.841,
+    "source": "Overdub",
+    "target": "Orphica",
+    "type": "FILTER_LINK"
   },
   "dna": {
+    "aggression": 0.36,
     "brightness": 0.931,
-    "warmth": 0.895,
-    "movement": 0.118,
     "density": 0.501,
+    "movement": 0.118,
     "space": 0.891,
-    "aggression": 0.36
+    "warmth": 0.895
   },
+  "engines": [
+    "Overdub",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.909,
-    "MOVEMENT": 0.099,
     "COUPLING": 0.448,
+    "MOVEMENT": 0.099,
     "SPACE": 0.887
   },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_STILL_VAST_FAM_VOL_64",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.885,
+      "macro_coupling": 0.445,
+      "macro_movement": 0.088,
+      "macro_space": 0.899
+    },
+    "Overdub": {
+      "macro_character": 0.934,
+      "macro_coupling": 0.45,
+      "macro_movement": 0.109,
+      "macro_space": 0.875
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "still",
     "vast",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Volcanic Glass",
-  "mood": "Aether",
-  "sonic_dna": {
-    "brightness": 0.06,
-    "warmth": 0.78,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Hardest darkness — razor density, zero treble",
+  "dna": {
     "aggression": 0.5,
-    "movement": 0.1,
+    "brightness": 0.06,
     "density": 0.85,
-    "space": 0.25
+    "movement": 0.1,
+    "space": 0.25,
+    "warmth": 0.78
   },
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Hardest darkness \u2014 razor density, zero treble",
+  "macroLabels": [
+    "EDGE",
+    "DENSITY",
+    "COUPLING",
+    "PRESSURE"
+  ],
+  "mood": "Aether",
+  "name": "Volcanic Glass",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.5,
+    "brightness": 0.06,
+    "density": 0.85,
+    "movement": 0.1,
+    "space": 0.25,
+    "warmth": 0.78
+  },
   "tags": [
     "aether",
     "dark",
@@ -24,23 +42,5 @@
     "glass",
     "dense"
   ],
-  "macroLabels": [
-    "EDGE",
-    "DENSITY",
-    "COUPLING",
-    "PRESSURE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.06,
-    "warmth": 0.78,
-    "movement": 0.1,
-    "density": 0.85,
-    "space": 0.25,
-    "aggression": 0.5
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

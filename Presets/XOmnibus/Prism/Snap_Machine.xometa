@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Snap Machine",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.89,
-    "warmth": 0.15,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Clap + snap layered for hyper-bright transient impact",
+  "dna": {
     "aggression": 0.35,
-    "movement": 0.8,
+    "brightness": 0.89,
     "density": 0.55,
-    "space": 0.5
+    "movement": 0.8,
+    "space": 0.5,
+    "warmth": 0.15
   },
   "engines": [
-    "ONSET"
+    "Onset"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Clap + snap layered for hyper-bright transient impact",
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Snap Machine",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.35,
+    "brightness": 0.89,
+    "density": 0.55,
+    "movement": 0.8,
+    "space": 0.5,
+    "warmth": 0.15
+  },
   "tags": [
     "prism",
     "bright",
@@ -24,23 +42,5 @@
     "snap",
     "bright-drum"
   ],
-  "macroLabels": [
-    "MACHINE",
-    "PUNCH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.89,
-    "warmth": 0.15,
-    "movement": 0.8,
-    "density": 0.55,
-    "space": 0.5,
-    "aggression": 0.35
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

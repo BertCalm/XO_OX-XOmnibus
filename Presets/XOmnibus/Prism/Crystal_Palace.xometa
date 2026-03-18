@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Crystal Palace",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.9,
-    "warmth": 0.22,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "YM2612 FM operators locked to a bright resonant peak",
+  "dna": {
     "aggression": 0.12,
-    "movement": 0.5,
+    "brightness": 0.9,
     "density": 0.35,
-    "space": 0.75
+    "movement": 0.5,
+    "space": 0.75,
+    "warmth": 0.22
   },
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "YM2612 FM operators locked to a bright resonant peak",
+  "macroLabels": [
+    "ERA",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Crystal Palace",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.12,
+    "brightness": 0.9,
+    "density": 0.35,
+    "movement": 0.5,
+    "space": 0.75,
+    "warmth": 0.22
+  },
   "tags": [
     "prism",
     "bright",
@@ -24,23 +42,5 @@
     "fm",
     "retro"
   ],
-  "macroLabels": [
-    "ERA",
-    "GLITCH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.9,
-    "warmth": 0.22,
-    "movement": 0.5,
-    "density": 0.35,
-    "space": 0.75,
-    "aggression": 0.12
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

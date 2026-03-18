@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Refracted Sax",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Brass harmonics prismatically revealed. High GROW brings teen precision into sharp focus.",
+  "dna": {
+    "aggression": 0.19,
+    "brightness": 0.73,
+    "density": 0.28,
+    "movement": 0.27,
+    "space": 0.46,
+    "warmth": 0.33
+  },
   "engines": [
     "Ottoni"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "brass",
-    "sax",
-    "prism",
-    "bright",
-    "prism"
   ],
   "macroLabels": [
     "EMBOUCHURE",
@@ -20,48 +21,47 @@
     "FOREIGN",
     "LAKE"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.73,
-    "warmth": 0.33,
-    "movement": 0.27,
-    "density": 0.28,
-    "space": 0.46,
-    "aggression": 0.19
-  },
+  "mood": "Prism",
+  "name": "Refracted Sax",
   "parameters": {
     "Ottoni": {
+      "otto_chorusRate": 0.505,
+      "otto_damping": 0.991,
+      "otto_delayMix": 0.108,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.139,
+      "otto_driveAmount": 0.0,
+      "otto_foreignCold": 0.139,
+      "otto_foreignDrift": 0.0,
+      "otto_foreignStretch": 0.0,
+      "otto_macroEmbouchure": 0.662,
+      "otto_macroForeign": 0.144,
+      "otto_macroGrow": 0.538,
+      "otto_macroLake": 0.337,
+      "otto_reverbSize": 0.209,
+      "otto_sympatheticAmt": 0.321,
+      "otto_teenBore": 0.436,
+      "otto_teenEmbouchure": 0.74,
+      "otto_teenInst": 1,
+      "otto_teenLevel": 0.694,
+      "otto_teenVibratoDepth": 0.307,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 1,
       "otto_toddlerLevel": 0.652,
       "otto_toddlerPressure": 0.3,
-      "otto_toddlerInst": 1,
-      "otto_tweenLevel": 0.374,
       "otto_tweenEmbouchure": 0.461,
-      "otto_tweenValve": 0.391,
       "otto_tweenInst": 1,
-      "otto_teenLevel": 0.694,
-      "otto_teenEmbouchure": 0.74,
-      "otto_teenBore": 0.436,
-      "otto_teenInst": 1,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.307,
-      "otto_damping": 0.991,
-      "otto_sympatheticAmt": 0.321,
-      "otto_driftRate": 0.139,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.0,
-      "otto_foreignDrift": 0.0,
-      "otto_foreignCold": 0.139,
-      "otto_reverbSize": 0.209,
-      "otto_chorusRate": 0.505,
-      "otto_driveAmount": 0.0,
-      "otto_delayMix": 0.108,
-      "otto_macroEmbouchure": 0.662,
-      "otto_macroGrow": 0.538,
-      "otto_macroForeign": 0.144,
-      "otto_macroLake": 0.337
+      "otto_tweenLevel": 0.374,
+      "otto_tweenValve": 0.391
     }
   },
-  "coupling": null,
-  "description": "Brass harmonics prismatically revealed. High GROW brings teen precision into sharp focus."
+  "schema_version": 1,
+  "tags": [
+    "brass",
+    "sax",
+    "prism",
+    "bright",
+    "prism"
+  ],
+  "version": "1.0.0"
 }

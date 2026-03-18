@@ -1,49 +1,57 @@
 {
-  "name": "Bouncing Ellipse",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.805,
+    "source": "Oblique",
+    "target": "Orbital",
+    "type": "RHYTHM_SYNC"
+  },
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.75,
+    "density": 0.45,
+    "movement": 0.9,
+    "space": 0.65,
+    "warmth": 0.3
+  },
   "engines": [
-    "OBLIQUE",
-    "ORBITAL"
+    "Oblique",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.805,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.625
+  },
+  "mood": "Entangled",
+  "name": "Bouncing Ellipse",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.825,
-      "macro_movement": 0.775,
       "macro_coupling": 0.675,
+      "macro_movement": 0.775,
       "macro_space": 0.575
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.375,
-      "macro_movement": 0.525,
       "macro_coupling": 0.475,
+      "macro_movement": 0.525,
       "macro_space": 0.675
     }
   },
-  "coupling": {
-    "type": "RHYTHM_SYNC",
-    "source": "OBLIQUE",
-    "target": "ORBITAL",
-    "amount": 0.805
-  },
-  "dna": {
-    "brightness": 0.75,
-    "warmth": 0.3,
-    "movement": 0.9,
-    "density": 0.45,
-    "space": 0.65,
-    "aggression": 0.7
-  },
-  "macros": {
-    "CHARACTER": 0.6,
-    "MOVEMENT": 0.65,
-    "COUPLING": 0.805,
-    "SPACE": 0.625
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "rhythmic"
-  ]
+  ],
+  "version": "1.0"
 }

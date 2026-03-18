@@ -1,52 +1,99 @@
 {
-  "schema_version": 1,
-  "name": "Past Dissolves",
-  "mood": "Prism",
-  "engines": ["Ombre"],
-  "author": "Guru Bin — Prism Expression Pass 2026-03-16",
-  "version": "1.0.0",
-  "description": "Blend starts at 0.2 — deep in memory territory, the perception layer barely present, notes arriving through long grain reconstruction. The attack is slow: each note rebuilds itself from memory traces before it becomes audible. Mod wheel pulls the listener into the present: blend rises toward 0.9 as the wheel climbs, memoryGrain shrinks to near-real-time, the reconstruction collapsing into direct signal. At full wheel, the preset is an entirely different instrument — immediate, present, the past fully dissolved. Return the wheel and memory reasserts itself slowly, the notes once again arriving as echoes of themselves. Aftertouch intensifies interference at any blend position, making the membrane between memory and perception vibrate harder. Velocity controls memoryDecay — soft keys let the past linger almost indefinitely; hard strikes accelerate decay, the memory burning away faster as if struck too hard to sustain.",
-  "tags": ["ombre", "memory", "dissolve", "granular", "aftertouch", "mod-wheel", "prism", "expression", "ambient"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-16",
-  "modMatrix": [
-    {"source": "modWheel", "destination": "ombre_blend", "amount": 0.7},
-    {"source": "modWheel", "destination": "ombre_memoryGrain", "amount": -0.75},
-    {"source": "modWheel", "destination": "ombre_memoryDrift", "amount": -0.5},
-    {"source": "aftertouch", "destination": "ombre_interference", "amount": 0.8},
-    {"source": "aftertouch", "destination": "ombre_filterReso", "amount": 0.4},
-    {"source": "velocity", "destination": "ombre_memoryDecay", "amount": -0.7},
-    {"source": "velocity", "destination": "ombre_attack", "amount": -0.6}
+  "description": "Blend starts at 0.2 — deep in memory territory, the perception layer barely present, notes arriving through long grain reconstruction. The attack is slow: each note rebuilds itself from memory traces before it becomes audible. Mod wheel pulls the listener into the present: blend rises toward 0.9 as the wheel climbs, memoryGrain shrinks to near-real-time, the reconstruction collapsing into direct signal. At full wheel, the preset is an entirely different instrument — immediate, present, the past fully dissolved. Return the wheel and memory reasserts itself slowly, the notes once again arriving as echoes of themselves. Aftertouch intensifies interference at any blend position, making the membrane between memory and perception vibrate harder. Velocity controls memoryDecay — soft keys let the past linger almost indefinitely; hard strikes accelerate decay, the memory burning away faster as if struck too hard to sustain.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.3,
+    "density": 0.35,
+    "movement": 0.25,
+    "space": 0.8,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Ombre"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "modMatrix": [
+    {
+      "amount": 0.7,
+      "destination": "ombre_blend",
+      "source": "modWheel"
+    },
+    {
+      "amount": -0.75,
+      "destination": "ombre_memoryGrain",
+      "source": "modWheel"
+    },
+    {
+      "amount": -0.5,
+      "destination": "ombre_memoryDrift",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.8,
+      "destination": "ombre_interference",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.4,
+      "destination": "ombre_filterReso",
+      "source": "aftertouch"
+    },
+    {
+      "amount": -0.7,
+      "destination": "ombre_memoryDecay",
+      "source": "velocity"
+    },
+    {
+      "amount": -0.6,
+      "destination": "ombre_attack",
+      "source": "velocity"
+    }
+  ],
+  "mood": "Prism",
+  "name": "Past Dissolves",
   "parameters": {
     "Ombre": {
+      "ombre_attack": 0.18,
       "ombre_blend": 0.2,
-      "ombre_interference": 0.08,
-      "ombre_memoryDecay": 18.0,
-      "ombre_memoryGrain": 320.0,
-      "ombre_memoryDrift": 0.55,
-      "ombre_oscShape": 0.7,
-      "ombre_reactivity": 0.3,
-      "ombre_subLevel": 0.15,
+      "ombre_decay": 0.9,
       "ombre_filterCutoff": 3800.0,
       "ombre_filterReso": 0.08,
-      "ombre_attack": 0.18,
-      "ombre_decay": 0.9,
-      "ombre_sustain": 0.5,
+      "ombre_interference": 0.08,
+      "ombre_level": 0.72,
+      "ombre_memoryDecay": 18.0,
+      "ombre_memoryDrift": 0.55,
+      "ombre_memoryGrain": 320.0,
+      "ombre_oscShape": 0.7,
+      "ombre_reactivity": 0.3,
       "ombre_release": 3.5,
-      "ombre_level": 0.72
+      "ombre_subLevel": 0.15,
+      "ombre_sustain": 0.5
     }
   },
-  "coupling": { "pairs": [] },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.3,
-    "warmth": 0.6,
-    "movement": 0.25,
-    "density": 0.35,
-    "space": 0.8,
-    "aggression": 0.05
-  }
+  "tags": [
+    "ombre",
+    "memory",
+    "dissolve",
+    "granular",
+    "aftertouch",
+    "mod-wheel",
+    "prism",
+    "expression",
+    "ambient"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

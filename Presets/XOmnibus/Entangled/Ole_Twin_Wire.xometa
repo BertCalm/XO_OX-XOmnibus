@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Twin Wire",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "SIDES rotating — leadership passes between aunts. The husbands wait at the door.",
+  "dna": {
+    "aggression": 0.28,
+    "brightness": 0.4,
+    "density": 0.54,
+    "movement": 0.4,
+    "space": 0.41,
+    "warmth": 0.51
+  },
   "engines": [
     "Ole"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "latin",
-    "strummed",
-    "entangled",
-    "coupled",
-    "entangled"
   ],
   "macroLabels": [
     "FUEGO",
@@ -20,42 +21,41 @@
     "SIDES",
     "ISLA"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.51,
-    "movement": 0.4,
-    "density": 0.54,
-    "space": 0.41,
-    "aggression": 0.28
-  },
+  "mood": "Entangled",
+  "name": "Twin Wire",
   "parameters": {
     "Ole": {
+      "ole_allianceBlend": 0.32,
+      "ole_allianceConfig": 2,
+      "ole_aunt1Brightness": 0.707,
       "ole_aunt1Level": 0.771,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.707,
-      "ole_aunt2Level": 0.718,
       "ole_aunt2CoinPress": 0.0,
       "ole_aunt2GourdSize": 0.56,
+      "ole_aunt2Level": 0.718,
+      "ole_aunt3Brightness": 0.366,
       "ole_aunt3Level": 0.764,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.366,
       "ole_damping": 0.992,
-      "ole_sympatheticAmt": 0.375,
-      "ole_driftRate": 0.124,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 2,
-      "ole_allianceBlend": 0.32,
-      "ole_husbandOudLevel": 0.0,
+      "ole_driftRate": 0.124,
       "ole_husbandBouzLevel": 0.0,
+      "ole_husbandOudLevel": 0.0,
       "ole_husbandPinLevel": 0.0,
-      "ole_macroFuego": 0.643,
       "ole_macroDrama": 0.126,
+      "ole_macroFuego": 0.643,
+      "ole_macroIsla": 0.212,
       "ole_macroSides": 0.0,
-      "ole_macroIsla": 0.212
+      "ole_sympatheticAmt": 0.375
     }
   },
-  "coupling": null,
-  "description": "SIDES rotating \u2014 leadership passes between aunts. The husbands wait at the door."
+  "schema_version": 1,
+  "tags": [
+    "latin",
+    "strummed",
+    "entangled",
+    "coupled",
+    "entangled"
+  ],
+  "version": "1.0.0"
 }

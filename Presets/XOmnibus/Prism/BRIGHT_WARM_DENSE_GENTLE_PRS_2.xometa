@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_DENSE_GENTLE_PRS_2",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.628,
+    "source": "Osteria",
+    "target": "Optic",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.124,
+    "brightness": 0.937,
+    "density": 0.872,
+    "movement": 0.522,
+    "space": 0.638,
+    "warmth": 0.965
+  },
   "engines": [
-    "OSTERIA",
-    "OPTIC"
+    "Osteria",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.53,
+    "COUPLING": 0.831,
+    "MOVEMENT": 0.522,
+    "SPACE": 0.638
+  },
+  "mood": "Prism",
+  "name": "BRIGHT_WARM_DENSE_GENTLE_PRS_2",
   "parameters": {
-    "OSTERIA": {
-      "macro_character": 0.53,
+    "Optic": {
+      "macro_character": 0.093,
+      "macro_coupling": 0.858,
       "macro_movement": 0.522,
-      "macro_coupling": 0.831,
       "macro_space": 0.638
     },
-    "OPTIC": {
-      "macro_character": 0.093,
+    "Osteria": {
+      "macro_character": 0.53,
+      "macro_coupling": 0.831,
       "macro_movement": 0.522,
-      "macro_coupling": 0.858,
       "macro_space": 0.638
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OSTERIA",
-    "target": "OPTIC",
-    "amount": 0.628
-  },
-  "dna": {
-    "brightness": 0.937,
-    "warmth": 0.965,
-    "movement": 0.522,
-    "density": 0.872,
-    "space": 0.638,
-    "aggression": 0.124
-  },
-  "macros": {
-    "CHARACTER": 0.53,
-    "MOVEMENT": 0.522,
-    "COUPLING": 0.831,
-    "SPACE": 0.638
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "bright",
     "warm",
     "dense",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

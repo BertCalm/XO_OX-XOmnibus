@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Plankton Bloom",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "Shimmering upper-register atmosphere that multiplies slowly.",
+  "dna": {
+    "aggression": 0.03,
+    "brightness": 0.8,
+    "density": 0.25,
+    "movement": 0.3,
+    "space": 0.55,
+    "warmth": 0.3
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Shimmering upper-register atmosphere that multiplies slowly.",
-  "tags": [
-    "shimmer",
-    "bright",
-    "bloom",
-    "multiplying"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Plankton Bloom",
   "parameters": {
     "Organon": {
-      "organon_metabolicRate": 0.5,
-      "organon_enzymeSelect": 6000.0,
       "organon_catalystDrive": 0.35,
       "organon_dampingCoeff": 0.07,
-      "organon_signalFlux": 0.45,
-      "organon_phasonShift": 0.08,
+      "organon_enzymeSelect": 6000.0,
       "organon_isotopeBalance": 0.8,
       "organon_lockIn": 0.0,
       "organon_membrane": 0.55,
-      "organon_noiseColor": 0.85
+      "organon_metabolicRate": 0.5,
+      "organon_noiseColor": 0.85,
+      "organon_phasonShift": 0.08,
+      "organon_signalFlux": 0.45
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.8,
-    "warmth": 0.3,
-    "movement": 0.3,
-    "density": 0.25,
-    "space": 0.55,
-    "aggression": 0.03
-  }
+  "tags": [
+    "shimmer",
+    "bright",
+    "bloom",
+    "multiplying"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

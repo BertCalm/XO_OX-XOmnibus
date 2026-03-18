@@ -1,50 +1,58 @@
 {
-  "name": "DARK_STILL_VAST_GENTLE_ATM_4",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORBITAL",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.717,
-      "macro_movement": 0.275,
-      "macro_coupling": 0.854,
-      "macro_space": 0.932
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.601,
-      "macro_movement": 0.146,
-      "macro_coupling": 0.593,
-      "macro_space": 0.773
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORBITAL",
-    "target": "ODDOSCAR",
-    "amount": 0.777
+    "amount": 0.777,
+    "source": "Orbital",
+    "target": "OddOscar",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.078,
     "brightness": 0.042,
-    "warmth": 0.592,
-    "movement": 0.109,
     "density": 0.441,
+    "movement": 0.109,
     "space": 0.927,
-    "aggression": 0.078
+    "warmth": 0.592
   },
+  "engines": [
+    "Orbital",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.717,
-    "MOVEMENT": 0.275,
     "COUPLING": 0.854,
+    "MOVEMENT": 0.275,
     "SPACE": 0.932
   },
+  "mood": "Atmosphere",
+  "name": "DARK_STILL_VAST_GENTLE_ATM_4",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.601,
+      "macro_coupling": 0.593,
+      "macro_movement": 0.146,
+      "macro_space": 0.773
+    },
+    "Orbital": {
+      "macro_character": 0.717,
+      "macro_coupling": 0.854,
+      "macro_movement": 0.275,
+      "macro_space": 0.932
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "still",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

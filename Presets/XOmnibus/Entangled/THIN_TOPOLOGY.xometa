@@ -1,48 +1,56 @@
 {
-  "name": "THIN TOPOLOGY",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ODDFELIX",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "ODDFELIX": {
-      "macro_character": 0.913,
-      "macro_movement": 0.461,
-      "macro_coupling": 0.117,
-      "macro_space": 0.832
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.498,
-      "macro_movement": 0.717,
-      "macro_coupling": 0.509,
-      "macro_space": 0.273
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ODDFELIX",
-    "target": "OBBLIGATO",
-    "amount": 0.768
+    "amount": 0.768,
+    "source": "OddfeliX",
+    "target": "Obbligato",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.922,
     "brightness": 0.98,
-    "warmth": 0.244,
-    "movement": 0.551,
     "density": 0.139,
+    "movement": 0.551,
     "space": 0.384,
-    "aggression": 0.922
+    "warmth": 0.244
   },
+  "engines": [
+    "OddfeliX",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.508,
-    "MOVEMENT": 0.879,
     "COUPLING": 0.864,
+    "MOVEMENT": 0.879,
     "SPACE": 0.276
   },
+  "mood": "Entangled",
+  "name": "THIN TOPOLOGY",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.498,
+      "macro_coupling": 0.509,
+      "macro_movement": 0.717,
+      "macro_space": 0.273
+    },
+    "OddfeliX": {
+      "macro_character": 0.913,
+      "macro_coupling": 0.117,
+      "macro_movement": 0.461,
+      "macro_space": 0.832
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "drift",
     "filament"
-  ]
+  ],
+  "version": "1.0"
 }

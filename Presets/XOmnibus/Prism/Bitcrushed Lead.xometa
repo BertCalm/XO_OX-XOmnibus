@@ -1,57 +1,57 @@
 {
-  "schema_version": 1,
-  "name": "Fracture Signal",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Focused leads tone with warm haze and glitch fracture.",
+  "dna": {
+    "aggression": 0.575,
+    "brightness": 0.422,
+    "density": 0.067,
+    "movement": 0.075,
+    "space": 0.043,
+    "warmth": 0.289
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Focused leads tone with warm haze and glitch fracture.",
-  "tags": [
-    "saturated",
-    "fractured",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Leads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Leads",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Fracture Signal",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 1.0,
-      "drift_oscA_level": 0.8,
-      "drift_oscA_pw": 0.45,
-      "drift_hazeAmount": 0.7,
+      "drift_attack": 3.0,
+      "drift_decay": 250.0,
       "drift_filterCutoff": 4000.0,
       "drift_filterReso": 0.2,
       "drift_filterSlope": 1.0,
-      "drift_attack": 3.0,
-      "drift_decay": 250.0,
-      "drift_sustain": 0.7,
+      "drift_hazeAmount": 0.7,
+      "drift_level": -3.0,
+      "drift_oscA_level": 0.8,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_pw": 0.45,
+      "drift_oscA_shape": 1.0,
       "drift_release": 200.0,
-      "drift_level": -3.0
+      "drift_sustain": 0.7
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.422,
-    "warmth": 0.289,
-    "movement": 0.075,
-    "density": 0.067,
-    "space": 0.043,
-    "aggression": 0.575
-  }
+  "tags": [
+    "saturated",
+    "fractured",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

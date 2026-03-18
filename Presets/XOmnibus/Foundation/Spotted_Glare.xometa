@@ -1,17 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Spotted Glare",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OCELOT — bright extreme brightness preset for Foundation.",
+  "dna": {
+    "aggression": 0.57,
+    "brightness": 0.98,
+    "density": 0.94,
+    "movement": 0.51,
+    "space": 0.59,
+    "warmth": 0.48
+  },
   "engines": [
-    "OCELOT"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "OCELOT \u2014 bright extreme brightness preset for Foundation.",
-  "tags": [
-    "foundation",
-    "bright",
-    "extreme-brightness"
+    "Ocelot"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -19,44 +22,41 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "sonic_dna": {
-    "brightness": 0.98,
-    "warmth": 0.48,
-    "movement": 0.51,
-    "density": 0.94,
-    "space": 0.59,
-    "aggression": 0.57
-  },
-  "dna": {
-    "brightness": 0.98,
-    "warmth": 0.48,
-    "movement": 0.51,
-    "density": 0.94,
-    "space": 0.59,
-    "aggression": 0.57
-  },
+  "mood": "Foundation",
+  "name": "Spotted Glare",
   "parameters": {
-    "OCELOT": {
-      "ocel_huntMode": 1,
-      "ocel_filterCutoff": 0.41,
-      "ocel_filterReso": 0.19,
+    "Ocelot": {
       "ocel_ampAttack": 292.6,
       "ocel_ampDecay": 606.4,
-      "ocel_ampSustain": 0.74,
       "ocel_ampRelease": 609.2,
-      "ocel_lfoRate": 0.2,
-      "ocel_lfoDepth": 0.55,
-      "ocel_reverbMix": 0.93,
-      "ocel_delayMix": 0.44,
+      "ocel_ampSustain": 0.74,
       "ocel_character": 0.7,
-      "ocel_movement": 0.12,
-      "ocel_space": 0.97,
       "ocel_coupling": 0.61,
-      "ocel_prowl": 0.24
+      "ocel_delayMix": 0.44,
+      "ocel_filterCutoff": 0.41,
+      "ocel_filterReso": 0.19,
+      "ocel_huntMode": 1,
+      "ocel_lfoDepth": 0.55,
+      "ocel_lfoRate": 0.2,
+      "ocel_movement": 0.12,
+      "ocel_prowl": 0.24,
+      "ocel_reverbMix": 0.93,
+      "ocel_space": 0.97
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.57,
+    "brightness": 0.98,
+    "density": 0.94,
+    "movement": 0.51,
+    "space": 0.59,
+    "warmth": 0.48
+  },
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme-brightness"
+  ],
+  "version": "1.0"
 }

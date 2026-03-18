@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT WARM KINETIC SPARSE VIOLENT ENT2 4",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.479,
+    "source": "OddfeliX",
+    "target": "Owlfish",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.875,
+    "brightness": 0.91,
+    "density": 0.083,
+    "movement": 0.977,
+    "space": 0.416,
+    "warmth": 0.96
+  },
   "engines": [
-    "ODDFELIX",
-    "OWLFISH"
+    "OddfeliX",
+    "Owlfish"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.935,
+    "COUPLING": 0.479,
+    "MOVEMENT": 0.977,
+    "SPACE": 0.416
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT WARM KINETIC SPARSE VIOLENT ENT2 4",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.935,
-      "macro_movement": 0.977,
       "macro_coupling": 0.479,
+      "macro_movement": 0.977,
       "macro_space": 0.416
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.927,
-      "macro_movement": 0.99,
       "macro_coupling": 0.431,
+      "macro_movement": 0.99,
       "macro_space": 0.474
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ODDFELIX",
-    "target": "OWLFISH",
-    "amount": 0.479
-  },
-  "dna": {
-    "brightness": 0.91,
-    "warmth": 0.96,
-    "movement": 0.977,
-    "density": 0.083,
-    "space": 0.416,
-    "aggression": 0.875
-  },
-  "macros": {
-    "CHARACTER": 0.935,
-    "MOVEMENT": 0.977,
-    "COUPLING": 0.479,
-    "SPACE": 0.416
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "bright",
@@ -47,5 +54,6 @@
     "kinetic",
     "sparse",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "WARM CRYSTAL",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OUTWIT",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.448,
-      "macro_movement": 0.223,
-      "macro_coupling": 0.735,
-      "macro_space": 0.263
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.66,
-      "macro_movement": 0.516,
-      "macro_coupling": 0.444,
-      "macro_space": 0.397
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OUTWIT",
-    "target": "ODDOSCAR",
-    "amount": 0.695
+    "amount": 0.695,
+    "source": "Outwit",
+    "target": "OddOscar",
+    "type": "VELOCITY_COUPLE"
   },
   "dna": {
+    "aggression": 0.787,
     "brightness": 0.402,
-    "warmth": 0.933,
-    "movement": 0.383,
     "density": 0.085,
+    "movement": 0.383,
     "space": 0.726,
-    "aggression": 0.787
+    "warmth": 0.933
   },
+  "engines": [
+    "Outwit",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.677,
-    "MOVEMENT": 0.928,
     "COUPLING": 0.143,
+    "MOVEMENT": 0.928,
     "SPACE": 0.974
   },
+  "mood": "Prism",
+  "name": "WARM CRYSTAL",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.66,
+      "macro_coupling": 0.444,
+      "macro_movement": 0.516,
+      "macro_space": 0.397
+    },
+    "Outwit": {
+      "macro_character": 0.448,
+      "macro_coupling": 0.735,
+      "macro_movement": 0.223,
+      "macro_space": 0.263
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

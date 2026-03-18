@@ -1,49 +1,57 @@
 {
-  "name": "SAVAGE ETHER COLLAPSE",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OVERDUB",
-    "ONSET"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.917,
-      "macro_movement": 0.222,
-      "macro_coupling": 0.831,
-      "macro_space": 0.351
-    },
-    "ONSET": {
-      "macro_character": 0.469,
-      "macro_movement": 0.237,
-      "macro_coupling": 0.906,
-      "macro_space": 0.306
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OVERDUB",
-    "target": "ONSET",
-    "amount": 0.451
+    "amount": 0.451,
+    "source": "Overdub",
+    "target": "Onset",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.889,
     "brightness": 0.319,
-    "warmth": 0.099,
-    "movement": 0.225,
     "density": 0.715,
+    "movement": 0.225,
     "space": 0.335,
-    "aggression": 0.889
+    "warmth": 0.099
   },
+  "engines": [
+    "Overdub",
+    "Onset"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.15,
-    "MOVEMENT": 0.225,
     "COUPLING": 0.94,
+    "MOVEMENT": 0.225,
     "SPACE": 0.335
   },
+  "mood": "Aether",
+  "name": "SAVAGE ETHER COLLAPSE",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.469,
+      "macro_coupling": 0.906,
+      "macro_movement": 0.237,
+      "macro_space": 0.306
+    },
+    "Overdub": {
+      "macro_character": 0.917,
+      "macro_coupling": 0.831,
+      "macro_movement": 0.222,
+      "macro_space": 0.351
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

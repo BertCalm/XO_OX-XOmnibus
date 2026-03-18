@@ -1,49 +1,57 @@
 {
-  "name": "WHITE HEARTH",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.752,
+    "source": "OddOscar",
+    "target": "Owlfish",
+    "type": "TEXTURE_WEAVE"
+  },
+  "dna": {
+    "aggression": 0.341,
+    "brightness": 0.889,
+    "density": 0.349,
+    "movement": 0.394,
+    "space": 0.356,
+    "warmth": 0.03
+  },
   "engines": [
-    "ODDOSCAR",
-    "OWLFISH"
+    "OddOscar",
+    "Owlfish"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.804,
+    "COUPLING": 0.392,
+    "MOVEMENT": 0.497,
+    "SPACE": 0.065
+  },
+  "mood": "Family",
+  "name": "WHITE HEARTH",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.954,
-      "macro_movement": 0.302,
       "macro_coupling": 0.723,
+      "macro_movement": 0.302,
       "macro_space": 0.011
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.654,
-      "macro_movement": 0.693,
       "macro_coupling": 0.062,
+      "macro_movement": 0.693,
       "macro_space": 0.118
     }
   },
-  "coupling": {
-    "type": "TEXTURE_WEAVE",
-    "source": "ODDOSCAR",
-    "target": "OWLFISH",
-    "amount": 0.752
-  },
-  "dna": {
-    "brightness": 0.889,
-    "warmth": 0.03,
-    "movement": 0.394,
-    "density": 0.349,
-    "space": 0.356,
-    "aggression": 0.341
-  },
-  "macros": {
-    "CHARACTER": 0.804,
-    "MOVEMENT": 0.497,
-    "COUPLING": 0.392,
-    "SPACE": 0.065
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "extreme",
     "low-warmth"
-  ]
+  ],
+  "version": "1.0"
 }

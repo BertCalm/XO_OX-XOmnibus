@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT SPARSE GENTLE VAST F2",
-  "mood": "Flux",
-  "sonic_dna": {
-    "brightness": 0.927,
-    "warmth": 0.411,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Chaotic",
+  "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme gentle aggression, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "dna": {
     "aggression": 0.076,
-    "movement": 0.57,
+    "brightness": 0.927,
     "density": 0.045,
-    "space": 0.895
+    "movement": 0.57,
+    "space": 0.895,
+    "warmth": 0.411
   },
   "engines": [
-    "OBSCURA"
+    "Obscura"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme bright brightness, extreme gentle aggression, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "BRIGHT SPARSE GENTLE VAST F2",
+  "parameters": {
+    "Obscura": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.076,
+    "brightness": 0.927,
+    "density": 0.045,
+    "movement": 0.57,
+    "space": 0.895,
+    "warmth": 0.411
+  },
   "tags": [
     "bright",
     "gentle",
@@ -24,25 +44,5 @@
     "flux",
     "extreme"
   ],
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "couplingIntensity": "Chaotic",
-  "dna": {
-    "brightness": 0.927,
-    "warmth": 0.411,
-    "movement": 0.57,
-    "density": 0.045,
-    "space": 0.895,
-    "aggression": 0.076
-  },
-  "parameters": {
-    "OBSCURA": {}
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

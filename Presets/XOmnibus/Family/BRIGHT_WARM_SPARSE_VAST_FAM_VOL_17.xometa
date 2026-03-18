@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_SPARSE_VAST_FAM_VOL_17",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ODDFELIX",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "ODDFELIX": {
-      "macro_character": 0.891,
-      "macro_movement": 0.496,
-      "macro_coupling": 0.31,
-      "macro_space": 0.946
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.9,
-      "macro_movement": 0.52,
-      "macro_coupling": 0.295,
-      "macro_space": 0.974
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "DYNAMIC_CROSS",
-    "source": "ODDOSCAR",
-    "target": "ODDFELIX",
-    "amount": 0.607
+    "amount": 0.607,
+    "source": "OddOscar",
+    "target": "OddfeliX",
+    "type": "DYNAMIC_CROSS"
   },
   "dna": {
+    "aggression": 0.555,
     "brightness": 0.936,
-    "warmth": 0.897,
-    "movement": 0.523,
     "density": 0.034,
+    "movement": 0.523,
     "space": 0.971,
-    "aggression": 0.555
+    "warmth": 0.897
   },
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.895,
-    "MOVEMENT": 0.508,
     "COUPLING": 0.302,
+    "MOVEMENT": 0.508,
     "SPACE": 0.96
   },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_SPARSE_VAST_FAM_VOL_17",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.9,
+      "macro_coupling": 0.295,
+      "macro_movement": 0.52,
+      "macro_space": 0.974
+    },
+    "OddfeliX": {
+      "macro_character": 0.891,
+      "macro_coupling": 0.31,
+      "macro_movement": 0.496,
+      "macro_space": 0.946
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "sparse",
     "vast",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

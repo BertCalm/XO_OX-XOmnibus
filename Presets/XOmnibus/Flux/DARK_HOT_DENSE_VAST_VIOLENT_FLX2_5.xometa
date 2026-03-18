@@ -1,45 +1,52 @@
 {
-  "name": "DARK_HOT_DENSE_VAST_VIOLENT_FLX2_5",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERDUB",
-    "OUROBOROS"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.5219,
-      "macro_movement": 0.6938,
-      "macro_coupling": 0.9618,
-      "macro_space": 0.8728
-    },
-    "OUROBOROS": {
-      "macro_character": 0.5326,
-      "macro_movement": 0.654,
-      "macro_coupling": 0.9865,
-      "macro_space": 0.883
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OVERDUB",
-    "target": "OUROBOROS",
-    "amount": 0.421
+    "amount": 0.421,
+    "source": "Overdub",
+    "target": "Ouroboros",
+    "type": "FREQUENCY_SHIFT"
   },
   "dna": {
+    "aggression": 0.9311,
     "brightness": 0.1074,
-    "warmth": 0.9107,
-    "movement": 0.6756,
     "density": 0.9606,
+    "movement": 0.6756,
     "space": 0.8939,
-    "aggression": 0.9311
+    "warmth": 0.9107
   },
+  "engines": [
+    "Overdub",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5272,
-    "MOVEMENT": 0.6739,
     "COUPLING": 0.9742,
+    "MOVEMENT": 0.6739,
     "SPACE": 0.8779
   },
+  "mood": "Flux",
+  "name": "DARK_HOT_DENSE_VAST_VIOLENT_FLX2_5",
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.5326,
+      "macro_coupling": 0.9865,
+      "macro_movement": 0.654,
+      "macro_space": 0.883
+    },
+    "Overdub": {
+      "macro_character": 0.5219,
+      "macro_coupling": 0.9618,
+      "macro_movement": 0.6938,
+      "macro_space": 0.8728
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -47,5 +54,6 @@
     "dense",
     "vast",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

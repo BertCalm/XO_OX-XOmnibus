@@ -1,14 +1,46 @@
 {
-  "schema_version": 1,
-  "name": "8-Bit Seabird",
-  "mood": "Entangled",
-  "engines": [
-    "OSPREY",
-    "OVERWORLD"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Osprey",
+        "engineB": "Overworld",
+        "type": "LFO->Pitch"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
   "description": "Chiptune glitch drives osprey pitch swoops; coastal and retro in unlikely harmony.",
+  "dna": {
+    "aggression": 0.39,
+    "brightness": 0.69,
+    "density": 0.48,
+    "movement": 0.64,
+    "space": 0.59,
+    "warmth": 0.47
+  },
+  "engines": [
+    "Osprey",
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.75,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "8-Bit Seabird",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -19,38 +51,6 @@
     "glitch",
     "swooping"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.6,
-    "MOVEMENT": 0.75,
-    "COUPLING": 0.7,
-    "SPACE": 0.5
-  },
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.69,
-    "warmth": 0.47,
-    "movement": 0.64,
-    "density": 0.48,
-    "space": 0.59,
-    "aggression": 0.39
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OSPREY",
-        "engineB": "OVERWORLD",
-        "type": "LFO->Pitch",
-        "amount": 0.65
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

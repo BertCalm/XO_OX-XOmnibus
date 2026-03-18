@@ -1,49 +1,57 @@
 {
-  "name": "INFINITE OPEN GROUND",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.824,
+    "source": "Opal",
+    "target": "Overworld",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.663,
+    "brightness": 0.949,
+    "density": 0.623,
+    "movement": 0.431,
+    "space": 0.918,
+    "warmth": 0.921
+  },
   "engines": [
-    "OPAL",
-    "OVERWORLD"
+    "Opal",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.174,
+    "COUPLING": 0.569,
+    "MOVEMENT": 0.431,
+    "SPACE": 0.918
+  },
+  "mood": "Foundation",
+  "name": "INFINITE OPEN GROUND",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.507,
-      "macro_movement": 0.448,
       "macro_coupling": 0.326,
+      "macro_movement": 0.448,
       "macro_space": 0.93
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.554,
-      "macro_movement": 0.4,
       "macro_coupling": 0.665,
+      "macro_movement": 0.4,
       "macro_space": 0.911
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OPAL",
-    "target": "OVERWORLD",
-    "amount": 0.824
-  },
-  "dna": {
-    "brightness": 0.949,
-    "warmth": 0.921,
-    "movement": 0.431,
-    "density": 0.623,
-    "space": 0.918,
-    "aggression": 0.663
-  },
-  "macros": {
-    "CHARACTER": 0.174,
-    "MOVEMENT": 0.431,
-    "COUPLING": 0.569,
-    "SPACE": 0.918
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

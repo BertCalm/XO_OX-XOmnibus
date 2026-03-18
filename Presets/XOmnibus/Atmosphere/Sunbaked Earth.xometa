@@ -1,25 +1,33 @@
 {
-  "name": "Sunbaked Earth",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Sunbaked stone holding the heat of the afternoon. Dense mineral warmth.",
   "engines": [
-    "OTTONI"
+    "Ottoni"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.622,
-    "MOVEMENT": 0.058,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.058,
     "SPACE": 0.526
   },
-  "sonic_dna": {
-    "brightness": 0.373,
-    "warmth": 0.871,
-    "movement": 0.058,
-    "density": 0.672,
-    "space": 0.526,
-    "aggression": 0.022
-  },
+  "mood": "Atmosphere",
+  "name": "Sunbaked Earth",
   "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.022,
+    "brightness": 0.373,
+    "density": 0.672,
+    "movement": 0.058,
+    "space": 0.526,
+    "warmth": 0.871
+  },
   "tags": [
     "atmosphere",
     "drone",
@@ -27,5 +35,5 @@
     "warm",
     "thick"
   ],
-  "description": "Sunbaked stone holding the heat of the afternoon. Dense mineral warmth."
+  "version": "1.0"
 }

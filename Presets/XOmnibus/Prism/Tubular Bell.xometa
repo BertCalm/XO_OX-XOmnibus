@@ -1,61 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Tubular Bell",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expressive keys & bells voice with reverb depth.",
+  "dna": {
+    "aggression": 0.163,
+    "brightness": 0.625,
+    "density": 0.481,
+    "movement": 0.0,
+    "space": 0.449,
+    "warmth": 0.168
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expressive keys & bells voice with reverb depth.",
-  "tags": [
-    "bell",
-    "tubular",
-    "chime"
-  ],
+  "legacy": {
+    "sourceCategory": "Keys & Bells",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Keys & Bells",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Tubular Bell",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
-      "bob_oscA_shape": 0.6,
-      "bob_oscA_drift": 0.08,
-      "bob_oscB_wave": 1.0,
-      "bob_oscB_fm": 0.42,
-      "bob_oscB_blend": 0.65,
-      "bob_oscB_detune": 9.0,
-      "bob_fltMode": 2.0,
-      "bob_fltCutoff": 6000.0,
-      "bob_fltReso": 0.5,
-      "bob_fltChar": 0.62,
-      "bob_fltEnvAmt": 0.55,
       "bob_ampAttack": 0.001,
       "bob_ampDecay": 2.5,
-      "bob_ampSustain": 0.0,
       "bob_ampRelease": 2.0,
-      "bob_bobMode": 0.15
+      "bob_ampSustain": 0.0,
+      "bob_bobMode": 0.15,
+      "bob_fltChar": 0.62,
+      "bob_fltCutoff": 6000.0,
+      "bob_fltEnvAmt": 0.55,
+      "bob_fltMode": 2.0,
+      "bob_fltReso": 0.5,
+      "bob_oscA_drift": 0.08,
+      "bob_oscA_shape": 0.6,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.65,
+      "bob_oscB_detune": 9.0,
+      "bob_oscB_fm": 0.42,
+      "bob_oscB_wave": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.625,
-    "warmth": 0.168,
-    "movement": 0.0,
-    "density": 0.481,
-    "space": 0.449,
-    "aggression": 0.163
-  }
+  "tags": [
+    "bell",
+    "tubular",
+    "chime"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,47 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD DENSE VIOLENT ATM 1",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Extreme",
+    "sourceEngine": "Octopus",
+    "targetEngine": null,
+    "type": "Filter"
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: DARK COLD DENSE VIOLENT ATM 1.",
+  "dna": {
+    "aggression": 0.89,
+    "brightness": 0.093,
+    "density": 0.937,
+    "movement": 0.509,
+    "space": 0.454,
+    "warmth": 0.065
+  },
   "engines": [
     "Octopus"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Atmosphere preset: DARK COLD DENSE VIOLENT ATM 1.",
-  "tags": [
-    "x-low-brightness",
-    "x-low-warmth",
-    "x-high-aggression",
-    "x-high-density"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "DARK COLD DENSE VIOLENT ATM 1",
   "parameters": {},
-  "coupling": {
-    "type": "Filter",
-    "intensity": "Extreme",
-    "sourceEngine": "Octopus",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.093,
-    "warmth": 0.065,
-    "aggression": 0.89,
-    "density": 0.937,
-    "movement": 0.509,
-    "space": 0.454
-  }
+  "tags": [
+    "x-low-brightness",
+    "x-low-warmth",
+    "x-high-aggression",
+    "x-high-density"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

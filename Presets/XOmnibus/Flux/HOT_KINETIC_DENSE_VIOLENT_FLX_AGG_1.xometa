@@ -1,50 +1,58 @@
 {
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FLX_AGG_1",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.949,
+    "source": "Optic",
+    "target": "Oracle",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.934,
+    "brightness": 0.687,
+    "density": 0.918,
+    "movement": 0.947,
+    "space": 0.692,
+    "warmth": 0.903
+  },
   "engines": [
-    "OPTIC",
-    "ORACLE"
+    "Optic",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.561,
+    "COUPLING": 0.983,
+    "MOVEMENT": 0.947,
+    "SPACE": 0.692
+  },
+  "mood": "Flux",
+  "name": "HOT_KINETIC_DENSE_VIOLENT_FLX_AGG_1",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.726,
-      "macro_movement": 0.955,
       "macro_coupling": 0.983,
+      "macro_movement": 0.955,
       "macro_space": 0.74
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.396,
-      "macro_movement": 0.901,
       "macro_coupling": 0.991,
+      "macro_movement": 0.901,
       "macro_space": 0.677
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OPTIC",
-    "target": "ORACLE",
-    "amount": 0.949
-  },
-  "dna": {
-    "brightness": 0.687,
-    "warmth": 0.903,
-    "movement": 0.947,
-    "density": 0.918,
-    "space": 0.692,
-    "aggression": 0.934
-  },
-  "macros": {
-    "CHARACTER": 0.561,
-    "MOVEMENT": 0.947,
-    "COUPLING": 0.983,
-    "SPACE": 0.692
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "kinetic",
     "hot",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "HOT DENSE STILL FAM 05",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.772,
+    "source": "Obscura",
+    "target": "Ouroboros",
+    "type": "SPECTRAL_MORPH"
+  },
+  "dna": {
+    "aggression": 0.344,
+    "brightness": 0.42,
+    "density": 0.951,
+    "movement": 0.068,
+    "space": 0.483,
+    "warmth": 0.884
+  },
   "engines": [
-    "OBSCURA",
-    "OUROBOROS"
+    "Obscura",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.652,
+    "COUPLING": 0.853,
+    "MOVEMENT": 0.068,
+    "SPACE": 0.483
+  },
+  "mood": "Family",
+  "name": "HOT DENSE STILL FAM 05",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.652,
-      "macro_movement": 0.068,
       "macro_coupling": 0.853,
+      "macro_movement": 0.068,
       "macro_space": 0.483
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.507,
-      "macro_movement": 0.073,
       "macro_coupling": 0.621,
+      "macro_movement": 0.073,
       "macro_space": 0.376
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBSCURA",
-    "target": "OUROBOROS",
-    "amount": 0.772
-  },
-  "dna": {
-    "brightness": 0.42,
-    "warmth": 0.884,
-    "movement": 0.068,
-    "density": 0.951,
-    "space": 0.483,
-    "aggression": 0.344
-  },
-  "macros": {
-    "CHARACTER": 0.652,
-    "MOVEMENT": 0.068,
-    "COUPLING": 0.853,
-    "SPACE": 0.483
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
@@ -47,5 +54,6 @@
     "static",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

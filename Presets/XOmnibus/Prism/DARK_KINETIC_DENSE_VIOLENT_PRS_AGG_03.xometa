@@ -1,45 +1,52 @@
 {
-  "name": "DARK KINETIC DENSE VIOLENT PRS AGG 3",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.878,
+    "source": "Origami",
+    "target": "Owlfish",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.029,
+    "density": 0.935,
+    "movement": 0.969,
+    "space": 0.428,
+    "warmth": 0.541
+  },
   "engines": [
-    "ORIGAMI",
-    "OWLFISH"
+    "Origami",
+    "Owlfish"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.028,
+    "COUPLING": 0.808,
+    "MOVEMENT": 0.917,
+    "SPACE": 0.416
+  },
+  "mood": "Prism",
+  "name": "DARK KINETIC DENSE VIOLENT PRS AGG 3",
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.028,
-      "macro_movement": 0.915,
       "macro_coupling": 0.838,
+      "macro_movement": 0.915,
       "macro_space": 0.408
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.028,
-      "macro_movement": 0.919,
       "macro_coupling": 0.779,
+      "macro_movement": 0.919,
       "macro_space": 0.424
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ORIGAMI",
-    "target": "OWLFISH",
-    "amount": 0.878
-  },
-  "dna": {
-    "brightness": 0.029,
-    "warmth": 0.541,
-    "movement": 0.969,
-    "density": 0.935,
-    "space": 0.428,
-    "aggression": 0.88
-  },
-  "macros": {
-    "CHARACTER": 0.028,
-    "MOVEMENT": 0.917,
-    "COUPLING": 0.808,
-    "SPACE": 0.416
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "aggressive",
@@ -48,5 +55,6 @@
     "dark",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

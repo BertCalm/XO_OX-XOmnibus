@@ -1,52 +1,58 @@
 {
-  "schema_version": 1,
-  "name": "Mutant Map",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "ODDOSCAR"
-  ],
-  "author": "XO_OX",
-  "macros": {
-    "CHARACTER": 0.43,
-    "MOVEMENT": 0.68,
-    "COUPLING": 0.79,
-    "SPACE": 0.55
-  },
-  "sonic_dna": {
-    "movement": 0.7,
-    "brightness": 0.56,
-    "aggression": 0.44,
-    "space": 0.55,
-    "warmth": 0.55,
-    "density": 0.63
-  },
-  "parameters": {
-    "OUTWIT": {
-      "owit_rule": 184,
-      "owit_arms": 6,
-      "owit_cellSize": 0.258,
-      "owit_density": 0.635,
-      "owit_evolveRate": 0.42,
-      "owit_mutateProb": 0.129,
-      "owit_pitchSpread": 0.501,
-      "owit_filterCutoff": 0.379,
-      "owit_filterReso": 0.26,
-      "owit_ampAttack": 0.15,
-      "owit_ampRelease": 0.798,
-      "owit_outputLevel": 0.665,
-      "owit_couplingLevel": 0.564,
-      "owit_couplingBus": 0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "GRANULAR_EXCHANGE",
-    "source": "OUTWIT",
-    "target": "ODDOSCAR",
-    "amount": 0.786
+    "amount": 0.786,
+    "source": "Outwit",
+    "target": "OddOscar",
+    "type": "GRANULAR_EXCHANGE"
   },
   "couplingIntensity": "Deep",
+  "description": "Oscar's gill-pulse modulates OUTWIT arm count — axolotl respiration shapes the automata's reach",
+  "engines": [
+    "Outwit",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.43,
+    "COUPLING": 0.79,
+    "MOVEMENT": 0.68,
+    "SPACE": 0.55
+  },
+  "mood": "Entangled",
+  "name": "Mutant Map",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.15,
+      "owit_ampRelease": 0.798,
+      "owit_arms": 6,
+      "owit_cellSize": 0.258,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.564,
+      "owit_density": 0.635,
+      "owit_evolveRate": 0.42,
+      "owit_filterCutoff": 0.379,
+      "owit_filterReso": 0.26,
+      "owit_mutateProb": 0.129,
+      "owit_outputLevel": 0.665,
+      "owit_pitchSpread": 0.501,
+      "owit_rule": 184
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.44,
+    "brightness": 0.56,
+    "density": 0.63,
+    "movement": 0.7,
+    "space": 0.55,
+    "warmth": 0.55
+  },
   "tags": [
     "entangled",
     "coupling",
@@ -56,5 +62,5 @@
     "wolfram",
     "cellular-automata"
   ],
-  "description": "Oscar's gill-pulse modulates OUTWIT arm count \u2014 axolotl respiration shapes the automata's reach"
+  "version": "1.0"
 }

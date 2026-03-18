@@ -1,44 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Spectral Migration",
-  "mood": "Prism",
-  "engines": ["Odyssey"],
-  "author": "Guru Bin — Engine Deepening 2026-03-16",
-  "version": "1.0.0",
-  "description": "Medium drift on two oscillator modes simultaneously — voices catching light differently depending on their angle of departure. The shimmer and haze work against each other, shimmer pulling bright, haze pulling soft. The result moves through the spectrum on its own timetable.",
-  "tags": ["prism", "drift", "spectral", "movement", "evolving", "cinematic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.55,
-    "space": 0.7,
-    "aggression": 0.1
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Medium drift on two oscillator modes simultaneously — voices catching light differently depending on their angle of departure. The shimmer and haze work against each other, shimmer pulling bright, haze pulling soft. The result moves through the spectrum on its own timetable.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.6,
+    "density": 0.55,
+    "movement": 0.6,
+    "space": 0.7,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Spectral Migration",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 1,
-      "drift_oscB_mode": 2,
-      "drift_drift": 0.52,
-      "drift_shimmer": 0.58,
-      "drift_haze": 0.44,
-      "drift_filterCutoff": 0.65,
-      "drift_filterReso": 0.22,
       "drift_ampAttack": 0.9,
       "drift_ampDecay": 0.8,
-      "drift_ampSustain": 0.82,
       "drift_ampRelease": 3.2,
-      "drift_lfoRate": 0.055,
+      "drift_ampSustain": 0.82,
+      "drift_drift": 0.52,
+      "drift_filterCutoff": 0.65,
+      "drift_filterReso": 0.22,
+      "drift_haze": 0.44,
       "drift_lfoDepth": 0.3,
+      "drift_lfoRate": 0.055,
       "drift_macroCharacter": 0.0,
-      "drift_macroMovement": 0.0,
       "drift_macroCoupling": 0.0,
-      "drift_macroSpace": 0.0
+      "drift_macroMovement": 0.0,
+      "drift_macroSpace": 0.0,
+      "drift_oscA_mode": 1,
+      "drift_oscB_mode": 2,
+      "drift_shimmer": 0.58
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "prism",
+    "drift",
+    "spectral",
+    "movement",
+    "evolving",
+    "cinematic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

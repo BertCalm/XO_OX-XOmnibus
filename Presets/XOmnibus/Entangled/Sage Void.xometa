@@ -1,31 +1,39 @@
 {
-  "name": "Sage Void",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Obsidian",
+    "target": "Ohm",
+    "type": "CRYSTAL_RESONANCE"
+  },
+  "description": "Ohm commune swallowed by obsidian depth — warmth persists as a memory in the crystal",
   "engines": [
-    "OHM",
-    "OBSIDIAN"
+    "Ohm",
+    "Obsidian"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.6,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.55,
     "SPACE": 0.75
   },
-  "sonic_dna": {
-    "brightness": 0.4,
-    "warmth": 0.59,
-    "movement": 0.54,
-    "density": 0.58,
-    "space": 0.66,
-    "aggression": 0.36
-  },
+  "mood": "Entangled",
+  "name": "Sage Void",
   "parameters": {},
-  "coupling": {
-    "type": "CRYSTAL_RESONANCE",
-    "source": "OBSIDIAN",
-    "target": "OHM",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.36,
+    "brightness": 0.4,
+    "density": 0.58,
+    "movement": 0.54,
+    "space": 0.66,
+    "warmth": 0.59
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "obsidian",
     "hippy"
   ],
-  "description": "Ohm commune swallowed by obsidian depth \u2014 warmth persists as a memory in the crystal"
+  "version": "1.0"
 }

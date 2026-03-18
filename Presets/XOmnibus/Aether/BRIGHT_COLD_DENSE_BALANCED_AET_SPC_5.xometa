@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT COLD DENSE BALANCED AET SPC 5",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.654,
+    "source": "Opal",
+    "target": "Osprey",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.077,
+    "brightness": 0.925,
+    "density": 0.986,
+    "movement": 0.429,
+    "space": 0.471,
+    "warmth": 0.055
+  },
   "engines": [
-    "OPAL",
-    "OSPREY"
+    "Opal",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.49,
+    "COUPLING": 0.524,
+    "MOVEMENT": 0.429,
+    "SPACE": 0.471
+  },
+  "mood": "Aether",
+  "name": "BRIGHT COLD DENSE BALANCED AET SPC 5",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.49,
-      "macro_movement": 0.429,
       "macro_coupling": 0.524,
+      "macro_movement": 0.429,
       "macro_space": 0.471
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.491,
-      "macro_movement": 0.436,
       "macro_coupling": 0.524,
+      "macro_movement": 0.436,
       "macro_space": 0.468
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OPAL",
-    "target": "OSPREY",
-    "amount": 0.654
-  },
-  "dna": {
-    "brightness": 0.925,
-    "warmth": 0.055,
-    "movement": 0.429,
-    "density": 0.986,
-    "space": 0.471,
-    "aggression": 0.077
-  },
-  "macros": {
-    "CHARACTER": 0.49,
-    "MOVEMENT": 0.429,
-    "COUPLING": 0.524,
-    "SPACE": 0.471
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -48,5 +55,6 @@
     "gentle",
     "bright",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

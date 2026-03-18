@@ -1,45 +1,52 @@
 {
-  "name": "HOT KINETIC DENSE VAST VIOLENT ENT2 4",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.94,
+    "source": "Obbligato",
+    "target": "Odyssey",
+    "type": "SPECTRAL_MORPH"
+  },
+  "dna": {
+    "aggression": 0.973,
+    "brightness": 0.564,
+    "density": 0.907,
+    "movement": 0.971,
+    "space": 0.948,
+    "warmth": 0.919
+  },
   "engines": [
-    "OBBLIGATO",
-    "ODYSSEY"
+    "Obbligato",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.742,
+    "COUPLING": 0.94,
+    "MOVEMENT": 0.971,
+    "SPACE": 0.948
+  },
+  "mood": "Entangled",
+  "name": "HOT KINETIC DENSE VAST VIOLENT ENT2 4",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.742,
-      "macro_movement": 0.971,
       "macro_coupling": 0.94,
+      "macro_movement": 0.971,
       "macro_space": 0.948
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.785,
-      "macro_movement": 0.99,
       "macro_coupling": 0.945,
+      "macro_movement": 0.99,
       "macro_space": 0.981
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBBLIGATO",
-    "target": "ODYSSEY",
-    "amount": 0.94
-  },
-  "dna": {
-    "brightness": 0.564,
-    "warmth": 0.919,
-    "movement": 0.971,
-    "density": 0.907,
-    "space": 0.948,
-    "aggression": 0.973
-  },
-  "macros": {
-    "CHARACTER": 0.742,
-    "MOVEMENT": 0.971,
-    "COUPLING": 0.94,
-    "SPACE": 0.948
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
@@ -47,5 +54,6 @@
     "dense",
     "vast",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

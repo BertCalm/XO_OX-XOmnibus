@@ -1,48 +1,56 @@
 {
-  "name": "PLACID GLASS",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OMBRE",
-    "OBSIDIAN"
-  ],
-  "parameters": {
-    "OMBRE": {
-      "macro_character": 0.795,
-      "macro_movement": 0.09,
-      "macro_coupling": 0.682,
-      "macro_space": 0.15
-    },
-    "OBSIDIAN": {
-      "macro_character": 0.586,
-      "macro_movement": 0.072,
-      "macro_coupling": 0.352,
-      "macro_space": 0.156
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OMBRE",
-    "target": "OBSIDIAN",
-    "amount": 0.609
+    "amount": 0.609,
+    "source": "Ombre",
+    "target": "Obsidian",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.046,
     "brightness": 0.194,
-    "warmth": 0.511,
-    "movement": 0.081,
     "density": 0.144,
+    "movement": 0.081,
     "space": 0.202,
-    "aggression": 0.046
+    "warmth": 0.511
   },
+  "engines": [
+    "Ombre",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.557,
-    "MOVEMENT": 0.081,
     "COUPLING": 0.067,
+    "MOVEMENT": 0.081,
     "SPACE": 0.59
   },
+  "mood": "Entangled",
+  "name": "PLACID GLASS",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.586,
+      "macro_coupling": 0.352,
+      "macro_movement": 0.072,
+      "macro_space": 0.156
+    },
+    "Ombre": {
+      "macro_character": 0.795,
+      "macro_coupling": 0.682,
+      "macro_movement": 0.09,
+      "macro_space": 0.15
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "placid"
-  ]
+  ],
+  "version": "1.0"
 }

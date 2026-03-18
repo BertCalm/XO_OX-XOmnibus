@@ -1,14 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FND 4",
-  "mood": "Foundation",
-  "engines": [
-    "OBSIDIAN",
-    "OUTWIT"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.62,
+    "source": "Obsidian",
+    "target": "Outwit",
+    "type": "FM_CROSS"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.049,
+    "brightness": 0.949,
+    "density": 0.528,
+    "movement": 0.088,
+    "space": 0.92,
+    "warmth": 0.9
+  },
+  "engines": [
+    "Obsidian",
+    "Outwit"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT FND 4",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.9,
+      "macro_coupling": 0.76,
+      "macro_movement": 0.69,
+      "macro_space": 0.5
+    },
+    "Outwit": {
+      "macro_character": 0.75,
+      "macro_coupling": 0.79,
+      "macro_movement": 0.94,
+      "macro_space": 0.42
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +58,6 @@
     "dense",
     "foundation"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OBSIDIAN": {
-      "macro_character": 0.9,
-      "macro_movement": 0.69,
-      "macro_coupling": 0.76,
-      "macro_space": 0.5
-    },
-    "OUTWIT": {
-      "macro_character": 0.75,
-      "macro_movement": 0.94,
-      "macro_coupling": 0.79,
-      "macro_space": 0.42
-    }
-  },
-  "coupling": {
-    "type": "FM_CROSS",
-    "source": "OBSIDIAN",
-    "target": "OUTWIT",
-    "amount": 0.62
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.949,
-    "warmth": 0.9,
-    "movement": 0.088,
-    "density": 0.528,
-    "space": 0.92,
-    "aggression": 0.049
-  }
+  "version": "1.0.0"
 }

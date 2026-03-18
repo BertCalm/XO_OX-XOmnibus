@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "KINETIC VIOLENT SPARSE VAST 4",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "movement": 0.9439,
-    "aggression": 0.9562,
-    "density": 0.0414,
-    "space": 0.9516,
-    "brightness": 0.5151,
-    "warmth": 0.4954
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "High",
+  "couplingType": "TANGLE",
+  "description": "Ultra-diverse Entangled preset — kinetic violent sparse vast. Designed for TANGLE coupling with XOrbital.",
   "dna": {
-    "movement": 0.9439,
     "aggression": 0.9562,
-    "density": 0.0414,
-    "space": 0.9516,
     "brightness": 0.5151,
+    "density": 0.0414,
+    "movement": 0.9439,
+    "space": 0.9516,
     "warmth": 0.4954
   },
   "engines": [
-    "XOrbital"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 kinetic violent sparse vast. Designed for TANGLE coupling with XOrbital.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "tangle",
-    "orbital"
+    "Orbital"
   ],
   "macroLabels": [
     "PACK",
@@ -36,15 +23,28 @@
     "DEPTH",
     "SWEEP"
   ],
-  "couplingType": "TANGLE",
-  "couplingIntensity": "High",
+  "mood": "Entangled",
+  "name": "KINETIC VIOLENT SPARSE VAST 4",
   "parameters": {
-    "XOrbital": {
-      "couplingLevel": 0.874,
-      "couplingBus": 0
+    "Orbital": {
+      "couplingBus": 0,
+      "couplingLevel": 0.874
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9562,
+    "brightness": 0.5151,
+    "density": 0.0414,
+    "movement": 0.9439,
+    "space": 0.9516,
+    "warmth": 0.4954
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "tangle",
+    "orbital"
+  ],
+  "version": "1.0.0"
 }

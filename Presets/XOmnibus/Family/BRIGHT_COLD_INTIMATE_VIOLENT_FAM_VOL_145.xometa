@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FAM_VOL_145",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ODYSSEY",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "ODYSSEY": {
-      "macro_character": 0.53,
-      "macro_movement": 0.462,
-      "macro_coupling": 0.773,
-      "macro_space": 0.065
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.535,
-      "macro_movement": 0.433,
-      "macro_coupling": 0.763,
-      "macro_space": 0.057
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBBLIGATO",
-    "target": "ODYSSEY",
-    "amount": 0.652
+    "amount": 0.652,
+    "source": "Obbligato",
+    "target": "Odyssey",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.9,
     "brightness": 0.965,
-    "warmth": 0.129,
-    "movement": 0.434,
     "density": 0.625,
+    "movement": 0.434,
     "space": 0.07,
-    "aggression": 0.9
+    "warmth": 0.129
   },
+  "engines": [
+    "Odyssey",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.532,
-    "MOVEMENT": 0.448,
     "COUPLING": 0.768,
+    "MOVEMENT": 0.448,
     "SPACE": 0.061
   },
+  "mood": "Family",
+  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FAM_VOL_145",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.535,
+      "macro_coupling": 0.763,
+      "macro_movement": 0.433,
+      "macro_space": 0.057
+    },
+    "Odyssey": {
+      "macro_character": 0.53,
+      "macro_coupling": 0.773,
+      "macro_movement": 0.462,
+      "macro_space": 0.065
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "cold",
     "intimate",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

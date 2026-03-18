@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_DENSE_INTIMATE_FAM_VOL_60",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OSPREY",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.49,
-      "macro_movement": 0.64,
-      "macro_coupling": 0.711,
-      "macro_space": 0.037
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.468,
-      "macro_movement": 0.615,
-      "macro_coupling": 0.677,
-      "macro_space": 0.042
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OSPREY",
-    "target": "OBBLIGATO",
-    "amount": 0.88
+    "amount": 0.88,
+    "source": "Osprey",
+    "target": "Obbligato",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.485,
     "brightness": 0.103,
-    "warmth": 0.872,
-    "movement": 0.644,
     "density": 0.91,
+    "movement": 0.644,
     "space": 0.049,
-    "aggression": 0.485
+    "warmth": 0.872
   },
+  "engines": [
+    "Osprey",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.479,
-    "MOVEMENT": 0.627,
     "COUPLING": 0.694,
+    "MOVEMENT": 0.627,
     "SPACE": 0.04
   },
+  "mood": "Family",
+  "name": "DARK_HOT_DENSE_INTIMATE_FAM_VOL_60",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.468,
+      "macro_coupling": 0.677,
+      "macro_movement": 0.615,
+      "macro_space": 0.042
+    },
+    "Osprey": {
+      "macro_character": 0.49,
+      "macro_coupling": 0.711,
+      "macro_movement": 0.64,
+      "macro_space": 0.037
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "dense",
     "intimate",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

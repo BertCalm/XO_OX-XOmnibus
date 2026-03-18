@@ -1,14 +1,46 @@
 {
-  "schema_version": 1,
-  "name": "Dub Pressure",
-  "mood": "Entangled",
-  "engines": [
-    "OCEANIC",
-    "OVERDUB"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Tape dub pressure increases with depth \u2014 bass as atmospheric compression.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Oceanic",
+        "engineB": "Overdub",
+        "type": "Env->Amp"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Tape dub pressure increases with depth — bass as atmospheric compression.",
+  "dna": {
+    "aggression": 0.525,
+    "brightness": 1.0,
+    "density": 0.53,
+    "movement": 0.59,
+    "space": 0.68,
+    "warmth": 0.59
+  },
+  "engines": [
+    "Oceanic",
+    "Overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.75,
+    "MOVEMENT": 0.55,
+    "SPACE": 0.65
+  },
+  "mood": "Entangled",
+  "name": "Dub Pressure",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -19,38 +51,6 @@
     "dub",
     "pressure"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5,
-    "MOVEMENT": 0.55,
-    "COUPLING": 0.75,
-    "SPACE": 0.65
-  },
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 1.0,
-    "warmth": 0.59,
-    "movement": 0.59,
-    "density": 0.53,
-    "space": 0.68,
-    "aggression": 0.525
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OCEANIC",
-        "engineB": "OVERDUB",
-        "type": "Env->Amp",
-        "amount": 0.65
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

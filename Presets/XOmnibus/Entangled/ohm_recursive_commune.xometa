@@ -1,14 +1,54 @@
 {
-  "schema_version": 1,
-  "name": "OHM Recursive Commune",
-  "mood": "Entangled",
-  "engines": [
-    "OHM",
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.55,
+        "engineA": "Ohm",
+        "engineB": "Ouroboros",
+        "type": "Env->Cutoff"
+      }
+    ]
+  },
+  "couplingIntensity": "Light",
+  "created": "2026-03-16",
   "description": "The hippie circle and the serpent — OHM's drone locks into OUROBOROS's recursive chaos with a gentle leash.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.58,
+    "density": 0.64,
+    "movement": 0.87,
+    "space": 0.42,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Ohm",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.59,
+    "COUPLING": 0.742,
+    "MOVEMENT": 0.87,
+    "SPACE": 0.42
+  },
+  "mood": "Entangled",
+  "name": "OHM Recursive Commune",
+  "parameters": {
+    "ohm_droneFund": 0.556,
+    "ohm_macroCommune": 0.68,
+    "ohm_macroMeddling": 0.748,
+    "ohm_orgHarmonics": 0.564,
+    "ouro_chaosLeash": 0.725,
+    "ouro_topology": 0.63
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -22,46 +62,6 @@
     "recursive",
     "serpent"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Light",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "ohm_macroMeddling": 0.748,
-    "ohm_macroCommune": 0.68,
-    "ohm_orgHarmonics": 0.564,
-    "ohm_droneFund": 0.556,
-    "ouro_topology": 0.63,
-    "ouro_chaosLeash": 0.725
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OHM",
-        "engineB": "OUROBOROS",
-        "type": "Env->Cutoff",
-        "amount": 0.55
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.59,
-    "MOVEMENT": 0.87,
-    "COUPLING": 0.742,
-    "SPACE": 0.42
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.58,
-    "warmth": 0.6,
-    "movement": 0.87,
-    "density": 0.64,
-    "space": 0.42,
-    "aggression": 0.55
-  }
+  "version": "1.0.0"
 }

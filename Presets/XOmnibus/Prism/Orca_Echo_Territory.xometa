@@ -1,49 +1,92 @@
 {
-  "schema_version": 1,
-  "name": "Echo Territory",
-  "mood": "Prism",
-  "engines": ["Orca"],
-  "author": "Guru Bin — Prism Expression 2026-03-16",
-  "version": "1.0.0",
-  "description": "Echolocation as spatial awareness — the orca mapping the size of its world. echoReso sits at 0.7, resonance already audible, comb filtering colouring every note. Mod wheel sweeps resonance from 0.4 to 0.95, approaching self-oscillation — the space getting smaller as reflections multiply, walls closing in. At maximum wheel the territory becomes a corridor of pure resonant tone. Aftertouch damps the echo suddenly, a safety valve — the space snapping open again. Velocity opens filterCutoff, soft touches exploring the darker registers of the water column, hard strikes piercing through toward the surface.",
-  "tags": ["orca", "echolocation", "echo", "resonance", "spatial", "mod-wheel", "aftertouch", "prism", "expression"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-16",
-  "modMatrix": [
-    {"source": "modWheel", "destination": "orca_echoReso", "amount": 0.55},
-    {"source": "modWheel", "destination": "orca_filterCutoff", "amount": 0.4},
-    {"source": "aftertouch", "destination": "orca_echoReso", "amount": -0.5},
-    {"source": "aftertouch", "destination": "orca_huntMacro", "amount": -0.3},
-    {"source": "velocity", "destination": "orca_filterCutoff", "amount": 0.6},
-    {"source": "velocity", "destination": "orca_formantIntensity", "amount": 0.45}
+  "description": "Echolocation as spatial awareness — the orca mapping the size of its world. echoReso sits at 0.7, resonance already audible, comb filtering colouring every note. Mod wheel sweeps resonance from 0.4 to 0.95, approaching self-oscillation — the space getting smaller as reflections multiply, walls closing in. At maximum wheel the territory becomes a corridor of pure resonant tone. Aftertouch damps the echo suddenly, a safety valve — the space snapping open again. Velocity opens filterCutoff, soft touches exploring the darker registers of the water column, hard strikes piercing through toward the surface.",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.5,
+    "density": 0.6,
+    "movement": 0.58,
+    "space": 0.75,
+    "warmth": 0.25
+  },
+  "engines": [
+    "Orca"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "modMatrix": [
+    {
+      "amount": 0.55,
+      "destination": "orca_echoReso",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.4,
+      "destination": "orca_filterCutoff",
+      "source": "modWheel"
+    },
+    {
+      "amount": -0.5,
+      "destination": "orca_echoReso",
+      "source": "aftertouch"
+    },
+    {
+      "amount": -0.3,
+      "destination": "orca_huntMacro",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.6,
+      "destination": "orca_filterCutoff",
+      "source": "velocity"
+    },
+    {
+      "amount": 0.45,
+      "destination": "orca_formantIntensity",
+      "source": "velocity"
+    }
+  ],
+  "mood": "Prism",
+  "name": "Echo Territory",
   "parameters": {
     "Orca": {
-      "orca_huntMacro": 0.35,
-      "orca_wtScanRate": 0.25,
-      "orca_echoReso": 0.7,
-      "orca_breachThreshold": 0.85,
+      "orca_attack": 0.04,
       "orca_breachSub": 0.2,
-      "orca_formantIntensity": 0.4,
+      "orca_breachThreshold": 0.85,
+      "orca_decay": 0.8,
+      "orca_echoReso": 0.7,
       "orca_filterCutoff": 2200.0,
       "orca_filterReso": 0.22,
-      "orca_attack": 0.04,
-      "orca_decay": 0.8,
-      "orca_sustain": 0.55,
+      "orca_formantIntensity": 0.4,
+      "orca_huntMacro": 0.35,
+      "orca_level": 0.72,
       "orca_release": 3.0,
-      "orca_level": 0.72
+      "orca_sustain": 0.55,
+      "orca_wtScanRate": 0.25
     }
   },
-  "coupling": { "pairs": [] },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.25,
-    "movement": 0.58,
-    "density": 0.6,
-    "space": 0.75,
-    "aggression": 0.35
-  }
+  "tags": [
+    "orca",
+    "echolocation",
+    "echo",
+    "resonance",
+    "spatial",
+    "mod-wheel",
+    "aftertouch",
+    "prism",
+    "expression"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

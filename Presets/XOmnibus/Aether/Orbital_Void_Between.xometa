@@ -1,39 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Void Between",
-  "mood": "Aether",
-  "engines": ["Orbital"],
-  "author": "Guru Bin — Fleet Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Four voices at maximum spread with group envelope depth set so that at any given moment only one or two voices are audible — the others rest below the threshold. The chord exists as a statistical object: at each instant you hear the void between notes as much as the notes themselves. The space between stars.",
-  "tags": ["aether", "sparse", "meditative", "void", "space", "transcendent"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.45,
-    "movement": 0.28,
-    "density": 0.3,
-    "space": 0.92,
-    "aggression": 0.02
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Four voices at maximum spread with group envelope depth set so that at any given moment only one or two voices are audible — the others rest below the threshold. The chord exists as a statistical object: at each instant you hear the void between notes as much as the notes themselves. The space between stars.",
+  "dna": {
+    "aggression": 0.02,
+    "brightness": 0.35,
+    "density": 0.3,
+    "movement": 0.28,
+    "space": 0.92,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Void Between",
   "parameters": {
     "Orbital": {
+      "orb_ampAttack": 2.0,
+      "orb_ampDecay": 1.5,
+      "orb_ampRelease": 5.0,
+      "orb_ampSustain": 0.7,
       "orb_brightness": 0.35,
-      "orb_groupEnvRate": 0.09,
-      "orb_groupEnvDepth": 0.98,
-      "orb_oscCount": 4,
-      "orb_spread": 0.92,
       "orb_detune": 0.06,
       "orb_filterCutoff": 0.38,
       "orb_filterReso": 0.08,
-      "orb_ampAttack": 2.0,
-      "orb_ampDecay": 1.5,
-      "orb_ampSustain": 0.7,
-      "orb_ampRelease": 5.0
+      "orb_groupEnvDepth": 0.98,
+      "orb_groupEnvRate": 0.09,
+      "orb_oscCount": 4,
+      "orb_spread": 0.92
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "sparse",
+    "meditative",
+    "void",
+    "space",
+    "transcendent"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,14 +1,67 @@
 {
-  "schema_version": 1,
-  "name": "Originator Spectrum",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.749,
+        "engineA": "Origami",
+        "engineB": "Optic",
+        "type": "pitch_follow"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "Origami × Optic coupling (spectral cross). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.352,
+    "brightness": 0.792,
+    "density": 0.5,
+    "movement": 0.748,
+    "space": 0.538,
+    "warmth": 0.455
+  },
   "engines": [
     "Origami",
     "Optic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Origami \u00d7 Optic coupling (spectral cross). Stub preset \u2014 sound-design pass pending.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Originator Spectrum",
+  "parameters": {
+    "Optic": {
+      "optic_couplingIn": 0.716,
+      "optic_couplingOut": 0.641,
+      "optic_macro1": 0.47,
+      "optic_macro2": 0.44,
+      "optic_macro3": 0.368,
+      "optic_macro4": 0.643
+    },
+    "Origami": {
+      "origami_couplingOut": 0.61,
+      "origami_crease": 0.337,
+      "origami_foldPoint": 0.465,
+      "origami_macro1": 0.463,
+      "origami_macro2": 0.471,
+      "origami_macro3": 0.327,
+      "origami_macro4": 0.585,
+      "origami_pleatRate": 0.648,
+      "origami_tessellate": 0.699,
+      "origami_valleyDepth": 0.485
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "origami",
     "optic",
@@ -16,59 +69,6 @@
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Extreme",
   "tempo": 100,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Origami": {
-      "origami_foldPoint": 0.465,
-      "origami_crease": 0.337,
-      "origami_valleyDepth": 0.485,
-      "origami_pleatRate": 0.648,
-      "origami_tessellate": 0.699,
-      "origami_macro1": 0.463,
-      "origami_macro2": 0.471,
-      "origami_macro3": 0.327,
-      "origami_macro4": 0.585,
-      "origami_couplingOut": 0.61
-    },
-    "Optic": {
-      "optic_macro1": 0.47,
-      "optic_macro2": 0.44,
-      "optic_macro3": 0.368,
-      "optic_macro4": 0.643,
-      "optic_couplingOut": 0.641,
-      "optic_couplingIn": 0.716
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Optic",
-        "type": "pitch_follow",
-        "amount": 0.749
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.792,
-    "warmth": 0.455,
-    "movement": 0.748,
-    "density": 0.5,
-    "space": 0.538,
-    "aggression": 0.352
-  }
+  "version": "1.0.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "SOLAR CLOUD",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ODDOSCAR",
-    "OBLONG"
-  ],
-  "parameters": {
-    "ODDOSCAR": {
-      "macro_character": 0.657,
-      "macro_movement": 0.224,
-      "macro_coupling": 0.108,
-      "macro_space": 0.845
-    },
-    "OBLONG": {
-      "macro_character": 0.368,
-      "macro_movement": 0.763,
-      "macro_coupling": 0.574,
-      "macro_space": 0.807
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_LOCK",
-    "source": "ODDOSCAR",
-    "target": "OBLONG",
-    "amount": 0.428
+    "amount": 0.428,
+    "source": "OddOscar",
+    "target": "Oblong",
+    "type": "FREQUENCY_LOCK"
   },
   "dna": {
+    "aggression": 0.547,
     "brightness": 0.947,
-    "warmth": 0.721,
-    "movement": 0.633,
     "density": 0.781,
+    "movement": 0.633,
     "space": 0.899,
-    "aggression": 0.547
+    "warmth": 0.721
   },
+  "engines": [
+    "OddOscar",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.512,
-    "MOVEMENT": 0.493,
     "COUPLING": 0.341,
+    "MOVEMENT": 0.493,
     "SPACE": 0.826
   },
+  "mood": "Atmosphere",
+  "name": "SOLAR CLOUD",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.368,
+      "macro_coupling": 0.574,
+      "macro_movement": 0.763,
+      "macro_space": 0.807
+    },
+    "OddOscar": {
+      "macro_character": 0.657,
+      "macro_coupling": 0.108,
+      "macro_movement": 0.224,
+      "macro_space": 0.845
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "extreme",
     "high-space"
-  ]
+  ],
+  "version": "1.0"
 }

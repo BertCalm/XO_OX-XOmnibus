@@ -1,51 +1,51 @@
 {
-  "schema_version": 1,
-  "name": "Thermocline",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "The layer where hot meets cold. Maximum turbulence at the boundary.",
+  "dna": {
+    "aggression": 0.65,
+    "brightness": 0.68,
+    "density": 0.72,
+    "movement": 0.92,
+    "space": 0.3,
+    "warmth": 0.55
+  },
   "engines": [
     "Oceanic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "The layer where hot meets cold. Maximum turbulence at the boundary.",
-  "tags": [
-    "flux",
-    "extreme",
-    "swarm",
-    "boundary"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Thermocline",
   "parameters": {
     "Oceanic": {
-      "ocean_separation": 0.5,
       "ocean_alignment": 0.72,
-      "ocean_cohesion": 0.72,
       "ocean_brightness": 0.55,
+      "ocean_cohesion": 0.72,
       "ocean_depth": 0.45,
+      "ocean_separation": 0.5,
       "ocean_turbulence": 0.95
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.68,
-    "warmth": 0.55,
-    "movement": 0.92,
-    "density": 0.72,
-    "space": 0.3,
-    "aggression": 0.65
-  }
+  "tags": [
+    "flux",
+    "extreme",
+    "swarm",
+    "boundary"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,31 +1,39 @@
 {
-  "name": "Neural Pluck",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Octopus",
+    "target": "Orphica",
+    "type": "NEURAL_WEAVE"
+  },
+  "description": "Orphica grains processed through octopus neural net — distributed shimmer",
   "engines": [
-    "ORPHICA",
-    "OCTOPUS"
+    "Orphica",
+    "Octopus"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.7,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.7,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.62,
-    "warmth": 0.52,
-    "movement": 0.8,
-    "density": 0.52,
-    "space": 0.56,
-    "aggression": 0.31
-  },
+  "mood": "Entangled",
+  "name": "Neural Pluck",
   "parameters": {},
-  "coupling": {
-    "type": "NEURAL_WEAVE",
-    "source": "OCTOPUS",
-    "target": "ORPHICA",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.31,
+    "brightness": 0.62,
+    "density": 0.52,
+    "movement": 0.8,
+    "space": 0.56,
+    "warmth": 0.52
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "octopus",
     "microsound"
   ],
-  "description": "Orphica grains processed through octopus neural net \u2014 distributed shimmer"
+  "version": "1.0"
 }

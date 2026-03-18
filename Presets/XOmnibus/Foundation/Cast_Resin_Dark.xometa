@@ -1,27 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Cast Resin Dark",
-  "mood": "Foundation",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Cauldron harmonic — boiling slowly, dense as cast iron.",
+  "dna": {
+    "aggression": 0.482,
     "brightness": 0.293,
-    "warmth": 0.917,
-    "movement": 0.52,
     "density": 0.878,
+    "movement": 0.52,
     "space": 0.222,
-    "aggression": 0.482
+    "warmth": 0.917
   },
   "engines": [
-    "ORCA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Cauldron harmonic \u2014 boiling slowly, dense as cast iron.",
-  "tags": [
-    "foundation",
-    "warm",
-    "dense",
-    "analog",
-    "thick"
+    "Orca"
   ],
   "macroLabels": [
     "WARMTH",
@@ -29,17 +22,24 @@
     "COUPLING",
     "DEPTH"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.293,
-    "warmth": 0.917,
-    "movement": 0.52,
-    "density": 0.878,
-    "space": 0.222,
-    "aggression": 0.482
-  },
+  "mood": "Foundation",
+  "name": "Cast Resin Dark",
   "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.482,
+    "brightness": 0.293,
+    "density": 0.878,
+    "movement": 0.52,
+    "space": 0.222,
+    "warmth": 0.917
+  },
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick"
+  ],
+  "version": "1.0.0"
 }

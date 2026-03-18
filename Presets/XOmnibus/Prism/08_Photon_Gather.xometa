@@ -1,26 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Photon Gather",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.9,
-    "warmth": 0.65,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Extreme compression with open resonant filter captures every photon — crystalline sub-bass",
+  "dna": {
     "aggression": 0.35,
-    "movement": 0.6,
+    "brightness": 0.9,
     "density": 0.7,
-    "space": 0.7
+    "movement": 0.6,
+    "space": 0.7,
+    "warmth": 0.65
   },
   "engines": [
-    "XOwlfish"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Extreme compression with open resonant filter captures every photon — crystalline sub-bass",
-  "tags": [
-    "crystalline",
-    "compressed",
-    "bright",
-    "resonant"
+    "Owlfish"
   ],
   "macroLabels": [
     "DEPTH",
@@ -28,21 +22,50 @@
     "DEFENSE",
     "PRESSURE"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.9,
-    "warmth": 0.65,
-    "movement": 0.6,
-    "density": 0.7,
-    "space": 0.7,
-    "aggression": 0.35
-  },
+  "mood": "Prism",
+  "name": "Photon Gather",
   "parameters": {
-    "XOwlfish": {
-      "owl_portamento": 0.15,
+    "Owlfish": {
+      "owl_ampAttack": 8,
+      "owl_ampDecay": 350,
+      "owl_ampRelease": 500,
+      "owl_ampSustain": 0.8,
+      "owl_armorDecay": 0.4,
+      "owl_armorDelay": 0.15,
+      "owl_armorDuck": 0.2,
+      "owl_armorScatter": 0.2,
+      "owl_armorThreshold": 0.85,
+      "owl_bodyFreq": 48,
+      "owl_bodyLevel": 0.35,
+      "owl_compAttack": 0.1,
+      "owl_compRatio": 0.8,
+      "owl_compRelease": 0.3,
+      "owl_compThreshold": 0.3,
+      "owl_couplingBus": 0,
+      "owl_couplingLevel": 0.5,
+      "owl_defense": 0.2,
+      "owl_depth": 0.4,
+      "owl_feedRate": 0.5,
+      "owl_feeding": 0.15,
+      "owl_filterCutoff": 0.7,
+      "owl_filterReso": 0.65,
+      "owl_filterTrack": 0.8,
+      "owl_fundWave": 0.05,
+      "owl_grainDensity": 0.0,
+      "owl_grainMix": 0.0,
+      "owl_grainPitch": 0.0,
+      "owl_grainSize": 0.3,
       "owl_legatoMode": 1,
+      "owl_mixtur": 0.12,
       "owl_morphGlide": 0.4,
-      "owl_subMix": 0.4,
+      "owl_outputLevel": 0.82,
+      "owl_outputPan": 0.0,
+      "owl_portamento": 0.15,
+      "owl_pressure": 0.35,
+      "owl_reverbDamp": 0.35,
+      "owl_reverbMix": 0.3,
+      "owl_reverbPreDelay": 0.3,
+      "owl_reverbSize": 0.45,
       "owl_subDiv1": 1,
       "owl_subDiv2": 2,
       "owl_subDiv3": 0,
@@ -51,47 +74,24 @@
       "owl_subLevel2": 0.45,
       "owl_subLevel3": 0.0,
       "owl_subLevel4": 0.0,
-      "owl_mixtur": 0.12,
-      "owl_fundWave": 0.05,
-      "owl_subWave": 0.15,
-      "owl_bodyFreq": 48,
-      "owl_bodyLevel": 0.35,
-      "owl_compRatio": 0.8,
-      "owl_compThreshold": 0.3,
-      "owl_compAttack": 0.1,
-      "owl_compRelease": 0.3,
-      "owl_filterCutoff": 0.7,
-      "owl_filterReso": 0.65,
-      "owl_filterTrack": 0.8,
-      "owl_grainSize": 0.3,
-      "owl_grainDensity": 0.0,
-      "owl_grainPitch": 0.0,
-      "owl_grainMix": 0.0,
-      "owl_feedRate": 0.5,
-      "owl_armorThreshold": 0.85,
-      "owl_armorDecay": 0.4,
-      "owl_armorScatter": 0.2,
-      "owl_armorDuck": 0.2,
-      "owl_armorDelay": 0.15,
-      "owl_reverbSize": 0.45,
-      "owl_reverbDamp": 0.35,
-      "owl_reverbPreDelay": 0.3,
-      "owl_reverbMix": 0.3,
-      "owl_ampAttack": 8,
-      "owl_ampDecay": 350,
-      "owl_ampSustain": 0.8,
-      "owl_ampRelease": 500,
-      "owl_depth": 0.4,
-      "owl_feeding": 0.15,
-      "owl_defense": 0.2,
-      "owl_pressure": 0.35,
-      "owl_outputLevel": 0.82,
-      "owl_outputPan": 0.0,
-      "owl_couplingLevel": 0.5,
-      "owl_couplingBus": 0
+      "owl_subMix": 0.4,
+      "owl_subWave": 0.15
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.35,
+    "brightness": 0.9,
+    "density": 0.7,
+    "movement": 0.6,
+    "space": 0.7,
+    "warmth": 0.65
+  },
+  "tags": [
+    "crystalline",
+    "compressed",
+    "bright",
+    "resonant"
+  ],
+  "version": "1.0.0"
 }

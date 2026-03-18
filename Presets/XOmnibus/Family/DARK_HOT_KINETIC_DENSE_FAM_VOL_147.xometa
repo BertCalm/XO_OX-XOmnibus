@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_KINETIC_DENSE_FAM_VOL_147",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OTTONI",
-    "OHM"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.502,
-      "macro_movement": 0.899,
-      "macro_coupling": 0.765,
-      "macro_space": 0.444
-    },
-    "OHM": {
-      "macro_character": 0.488,
-      "macro_movement": 0.898,
-      "macro_coupling": 0.774,
-      "macro_space": 0.474
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_MIRROR",
-    "source": "OTTONI",
-    "target": "OHM",
-    "amount": 0.582
+    "amount": 0.582,
+    "source": "Ottoni",
+    "target": "Ohm",
+    "type": "ENVELOPE_MIRROR"
   },
   "dna": {
+    "aggression": 0.537,
     "brightness": 0.032,
-    "warmth": 0.922,
-    "movement": 0.897,
     "density": 0.978,
+    "movement": 0.897,
     "space": 0.445,
-    "aggression": 0.537
+    "warmth": 0.922
   },
+  "engines": [
+    "Ottoni",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.495,
-    "MOVEMENT": 0.899,
     "COUPLING": 0.77,
+    "MOVEMENT": 0.899,
     "SPACE": 0.459
   },
+  "mood": "Family",
+  "name": "DARK_HOT_KINETIC_DENSE_FAM_VOL_147",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.488,
+      "macro_coupling": 0.774,
+      "macro_movement": 0.898,
+      "macro_space": 0.474
+    },
+    "Ottoni": {
+      "macro_character": 0.502,
+      "macro_coupling": 0.765,
+      "macro_movement": 0.899,
+      "macro_space": 0.444
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "kinetic",
     "dense",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

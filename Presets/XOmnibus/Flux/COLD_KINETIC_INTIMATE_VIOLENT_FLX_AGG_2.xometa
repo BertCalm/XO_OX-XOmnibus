@@ -1,50 +1,58 @@
 {
-  "name": "COLD_KINETIC_INTIMATE_VIOLENT_FLX_AGG_2",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OPAL",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.655,
-      "macro_movement": 0.862,
-      "macro_coupling": 0.802,
-      "macro_space": 0.042
-    },
-    "ODYSSEY": {
-      "macro_character": 0.424,
-      "macro_movement": 0.91,
-      "macro_coupling": 0.81,
-      "macro_space": 0.081
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OPAL",
-    "target": "ODYSSEY",
-    "amount": 0.958
+    "amount": 0.958,
+    "source": "Opal",
+    "target": "Odyssey",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.934,
     "brightness": 0.408,
-    "warmth": 0.048,
-    "movement": 0.884,
     "density": 0.377,
+    "movement": 0.884,
     "space": 0.033,
-    "aggression": 0.934
+    "warmth": 0.048
   },
+  "engines": [
+    "Opal",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.539,
-    "MOVEMENT": 0.884,
     "COUPLING": 0.802,
+    "MOVEMENT": 0.884,
     "SPACE": 0.033
   },
+  "mood": "Flux",
+  "name": "COLD_KINETIC_INTIMATE_VIOLENT_FLX_AGG_2",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.424,
+      "macro_coupling": 0.81,
+      "macro_movement": 0.91,
+      "macro_space": 0.081
+    },
+    "Opal": {
+      "macro_character": 0.655,
+      "macro_coupling": 0.802,
+      "macro_movement": 0.862,
+      "macro_space": 0.042
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "cold",
     "kinetic",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

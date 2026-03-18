@@ -1,50 +1,58 @@
 {
-  "name": "FLARE TORRENT",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.928,
+    "source": "Ombre",
+    "target": "Outwit",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.895,
+    "brightness": 0.954,
+    "density": 0.433,
+    "movement": 0.494,
+    "space": 0.605,
+    "warmth": 0.904
+  },
   "engines": [
-    "OMBRE",
-    "OUTWIT"
+    "Ombre",
+    "Outwit"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.919,
+    "COUPLING": 0.96,
+    "MOVEMENT": 0.476,
+    "SPACE": 0.594
+  },
+  "mood": "Flux",
+  "name": "FLARE TORRENT",
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.919,
-      "macro_movement": 0.476,
       "macro_coupling": 0.96,
+      "macro_movement": 0.476,
       "macro_space": 0.594
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 1.0,
-      "macro_movement": 0.62,
       "macro_coupling": 0.882,
+      "macro_movement": 0.62,
       "macro_space": 0.559
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OMBRE",
-    "target": "OUTWIT",
-    "amount": 0.928
-  },
-  "dna": {
-    "brightness": 0.954,
-    "warmth": 0.904,
-    "movement": 0.494,
-    "density": 0.433,
-    "space": 0.605,
-    "aggression": 0.895
-  },
-  "macros": {
-    "CHARACTER": 0.919,
-    "MOVEMENT": 0.476,
-    "COUPLING": 0.96,
-    "SPACE": 0.594
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "hot",
     "violent",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_DENSE_VIOLENT_FND_AGG_3",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OVERBITE",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.607,
-      "macro_movement": 0.356,
-      "macro_coupling": 0.395,
-      "macro_space": 0.88
-    },
-    "ODDFELIX": {
-      "macro_character": 0.647,
-      "macro_movement": 0.361,
-      "macro_coupling": 0.428,
-      "macro_space": 0.888
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERBITE",
-    "target": "ODDFELIX",
-    "amount": 0.825
+    "amount": 0.825,
+    "source": "Overbite",
+    "target": "OddfeliX",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.936,
     "brightness": 0.87,
-    "warmth": 0.963,
-    "movement": 0.555,
     "density": 0.901,
+    "movement": 0.555,
     "space": 0.596,
-    "aggression": 0.936
+    "warmth": 0.963
   },
+  "engines": [
+    "Overbite",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.607,
-    "MOVEMENT": 0.356,
     "COUPLING": 0.395,
+    "MOVEMENT": 0.356,
     "SPACE": 0.88
   },
+  "mood": "Foundation",
+  "name": "BRIGHT_WARM_DENSE_VIOLENT_FND_AGG_3",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.647,
+      "macro_coupling": 0.428,
+      "macro_movement": 0.361,
+      "macro_space": 0.888
+    },
+    "Overbite": {
+      "macro_character": 0.607,
+      "macro_coupling": 0.395,
+      "macro_movement": 0.356,
+      "macro_space": 0.88
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "bright",
     "warm",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

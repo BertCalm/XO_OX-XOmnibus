@@ -1,27 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Glacial Scatter",
-  "mood": "Prism",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Arctic breath tone. Maximum air, minimum body.",
+  "dna": {
+    "aggression": 0.148,
     "brightness": 0.615,
-    "warmth": 0.094,
-    "movement": 0.34,
     "density": 0.089,
+    "movement": 0.34,
     "space": 0.656,
-    "aggression": 0.148
+    "warmth": 0.094
   },
   "engines": [
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Arctic breath tone. Maximum air, minimum body.",
-  "tags": [
-    "prism",
-    "cold",
-    "sparse",
-    "crystalline",
-    "airy"
+    "Onset"
   ],
   "macroLabels": [
     "CRYSTAL",
@@ -29,17 +22,24 @@
     "COUPLING",
     "OPEN"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.615,
-    "warmth": 0.094,
-    "movement": 0.34,
-    "density": 0.089,
-    "space": 0.656,
-    "aggression": 0.148
-  },
+  "mood": "Prism",
+  "name": "Glacial Scatter",
   "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.148,
+    "brightness": 0.615,
+    "density": 0.089,
+    "movement": 0.34,
+    "space": 0.656,
+    "warmth": 0.094
+  },
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy"
+  ],
+  "version": "1.0.0"
 }

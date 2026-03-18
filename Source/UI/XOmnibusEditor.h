@@ -10,10 +10,31 @@ namespace xomnibus {
 // Light mode is the primary presentation (brand rule). Dark mode is a toggle.
 namespace GalleryColors {
 
-    // Theme state — light by default (brand rule)
+    // Theme state — light by default (brand rule), persisted to disk.
+    inline bool loadDarkModePref()
+    {
+        juce::PropertiesFile::Options opts;
+        opts.applicationName = "XOmnibus";
+        opts.folderName = "XO_OX";
+        opts.filenameSuffix = ".settings";
+        juce::PropertiesFile props(opts);
+        return props.getBoolValue("darkMode", false);
+    }
+
+    inline void saveDarkModePref(bool dark)
+    {
+        juce::PropertiesFile::Options opts;
+        opts.applicationName = "XOmnibus";
+        opts.folderName = "XO_OX";
+        opts.filenameSuffix = ".settings";
+        juce::PropertiesFile props(opts);
+        props.setValue("darkMode", dark);
+        props.saveIfNeeded();
+    }
+
     inline bool& darkMode()
     {
-        static bool dark = false;
+        static bool dark = loadDarkModePref();
         return dark;
     }
 
@@ -277,8 +298,7 @@ public:
         // Focus ring (WCAG 2.4.7) — use focus colour instead of border when focused
         if (btn.hasKeyboardFocus (true))
         {
-            g.setColour (A11y::focusRingColour());
-            g.drawRoundedRectangle (b, 5.0f, 2.0f);
+            A11y::drawFocusRing (g, b, 5.0f);
         }
         else
         {
@@ -2072,6 +2092,7 @@ public:
         themeToggleBtn.onClick = [this]
         {
             GalleryColors::darkMode() = themeToggleBtn.getToggleState();
+            GalleryColors::saveDarkModePref(themeToggleBtn.getToggleState());
             laf->applyTheme();
             repaint();
             for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
@@ -2136,6 +2157,18 @@ public:
             return true;
         }
         return false;
+    }
+
+    std::unique_ptr<juce::AccessibilityHandler> createAccessibilityHandler() override
+    {
+        return std::make_unique<juce::AccessibilityHandler> (
+            *this,
+            juce::AccessibilityRole::group,
+            juce::AccessibilityActions{}
+                .addAction (juce::AccessibilityActionType::showMenu, [this] {
+                    // Focus the preset browser when accessibility requests a menu
+                    presetBrowser.grabKeyboardFocus();
+                }));
     }
 
     void paint(juce::Graphics& g) override

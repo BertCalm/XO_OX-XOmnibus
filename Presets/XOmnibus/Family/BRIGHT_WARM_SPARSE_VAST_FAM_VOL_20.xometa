@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_SPARSE_VAST_FAM_VOL_20",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.909,
+    "source": "Ole",
+    "target": "Osprey",
+    "type": "ENVELOPE_MIRROR"
+  },
+  "dna": {
+    "aggression": 0.455,
+    "brightness": 0.894,
+    "density": 0.03,
+    "movement": 0.458,
+    "space": 0.914,
+    "warmth": 0.892
+  },
   "engines": [
-    "OLE",
-    "OSPREY"
+    "Ole",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.916,
+    "COUPLING": 0.266,
+    "MOVEMENT": 0.475,
+    "SPACE": 0.927
+  },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_SPARSE_VAST_FAM_VOL_20",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.921,
-      "macro_movement": 0.473,
       "macro_coupling": 0.268,
+      "macro_movement": 0.473,
       "macro_space": 0.915
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.911,
-      "macro_movement": 0.477,
       "macro_coupling": 0.263,
+      "macro_movement": 0.477,
       "macro_space": 0.939
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_MIRROR",
-    "source": "OLE",
-    "target": "OSPREY",
-    "amount": 0.909
-  },
-  "dna": {
-    "brightness": 0.894,
-    "warmth": 0.892,
-    "movement": 0.458,
-    "density": 0.03,
-    "space": 0.914,
-    "aggression": 0.455
-  },
-  "macros": {
-    "CHARACTER": 0.916,
-    "MOVEMENT": 0.475,
-    "COUPLING": 0.266,
-    "SPACE": 0.927
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "sparse",
     "vast",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

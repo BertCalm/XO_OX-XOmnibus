@@ -1,45 +1,52 @@
 {
-  "name": "COLD KINETIC DENSE VIOLENT AET AGG 4",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OSPREY",
-    "OMBRE"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.571,
-      "macro_movement": 0.911,
-      "macro_coupling": 0.942,
-      "macro_space": 0.616
-    },
-    "OMBRE": {
-      "macro_character": 0.565,
-      "macro_movement": 0.881,
-      "macro_coupling": 0.886,
-      "macro_space": 0.614
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OSPREY",
-    "target": "OMBRE",
-    "amount": 0.729
+    "amount": 0.729,
+    "source": "Osprey",
+    "target": "Ombre",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.949,
     "brightness": 0.579,
-    "warmth": 0.079,
-    "movement": 0.94,
     "density": 0.957,
+    "movement": 0.94,
     "space": 0.654,
-    "aggression": 0.949
+    "warmth": 0.079
   },
+  "engines": [
+    "Osprey",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.568,
-    "MOVEMENT": 0.896,
     "COUPLING": 0.914,
+    "MOVEMENT": 0.896,
     "SPACE": 0.615
   },
+  "mood": "Aether",
+  "name": "COLD KINETIC DENSE VIOLENT AET AGG 4",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.565,
+      "macro_coupling": 0.886,
+      "macro_movement": 0.881,
+      "macro_space": 0.614
+    },
+    "Osprey": {
+      "macro_character": 0.571,
+      "macro_coupling": 0.942,
+      "macro_movement": 0.911,
+      "macro_space": 0.616
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "aggressive",
@@ -47,5 +54,6 @@
     "violent",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

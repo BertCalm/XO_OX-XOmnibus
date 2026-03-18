@@ -1,33 +1,41 @@
 {
-  "name": "8-Arm Pixel Blitz",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Octopus",
+    "target": "Overworld",
+    "type": "SPECTRAL_FOLD"
+  },
+  "description": "Eight CA arms controlling OVERWORLD's chip oscillators at blitz speed — cold and hyper.",
   "engines": [
-    "OCTOPUS",
-    "OVERWORLD"
+    "Octopus",
+    "Overworld"
   ],
-  "mood": "Entangled",
-  "strategy": "Fast Cold",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8,
-    "MOVEMENT": 0.95,
     "COUPLING": 0.7,
+    "MOVEMENT": 0.95,
     "SPACE": 0.5
   },
-  "sonic_dna": {
-    "brightness": 0.72,
-    "warmth": 0.08,
-    "movement": 0.95,
-    "density": 0.6,
-    "space": 0.48,
-    "aggression": 0.65
-  },
+  "mood": "Entangled",
+  "name": "8-Arm Pixel Blitz",
   "parameters": {},
-  "coupling": {
-    "type": "SPECTRAL_FOLD",
-    "source": "OCTOPUS",
-    "target": "OVERWORLD",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.65,
+    "brightness": 0.72,
+    "density": 0.6,
+    "movement": 0.95,
+    "space": 0.48,
+    "warmth": 0.08
   },
+  "strategy": "Fast Cold",
   "tags": [
     "entangled",
     "cold",
@@ -35,5 +43,5 @@
     "octopus",
     "chiptune"
   ],
-  "description": "Eight CA arms controlling OVERWORLD's chip oscillators at blitz speed \u2014 cold and hyper."
+  "version": "1.0"
 }

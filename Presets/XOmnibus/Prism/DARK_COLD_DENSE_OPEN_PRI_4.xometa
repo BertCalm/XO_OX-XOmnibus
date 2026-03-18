@@ -1,47 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD DENSE OPEN PRI 4",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Extreme",
+    "sourceEngine": "Overlap",
+    "targetEngine": null,
+    "type": "Filter"
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Prism preset: DARK COLD DENSE OPEN PRI 4.",
+  "dna": {
+    "aggression": 0.903,
+    "brightness": 0.086,
+    "density": 0.941,
+    "movement": 0.571,
+    "space": 0.473,
+    "warmth": 0.077
+  },
   "engines": [
     "Overlap"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Prism preset: DARK COLD DENSE OPEN PRI 4.",
-  "tags": [
-    "x-low-brightness",
-    "x-low-warmth",
-    "x-high-aggression",
-    "x-high-density"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "DARK COLD DENSE OPEN PRI 4",
   "parameters": {},
-  "coupling": {
-    "type": "Filter",
-    "intensity": "Extreme",
-    "sourceEngine": "Overlap",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.086,
-    "warmth": 0.077,
-    "aggression": 0.903,
-    "density": 0.941,
-    "movement": 0.571,
-    "space": 0.473
-  }
+  "tags": [
+    "x-low-brightness",
+    "x-low-warmth",
+    "x-high-aggression",
+    "x-high-density"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

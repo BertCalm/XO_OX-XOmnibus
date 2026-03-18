@@ -1,50 +1,58 @@
 {
-  "name": "DARK_COLD_STILL_DENSE_PRS_DRK_3",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OVERWORLD",
-    "OPTIC"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.2364,
-      "macro_movement": 0.0587,
-      "macro_coupling": 0.9244,
-      "macro_space": 0.4226
-    },
-    "OPTIC": {
-      "macro_character": 0.2393,
-      "macro_movement": 0.0797,
-      "macro_coupling": 0.8992,
-      "macro_space": 0.3999
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OVERWORLD",
-    "target": "OPTIC",
-    "amount": 0.5978
+    "amount": 0.5978,
+    "source": "Overworld",
+    "target": "Optic",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.3922,
     "brightness": 0.1097,
-    "warmth": 0.0805,
-    "movement": 0.0587,
     "density": 0.9244,
+    "movement": 0.0587,
     "space": 0.4226,
-    "aggression": 0.3922
+    "warmth": 0.0805
   },
+  "engines": [
+    "Overworld",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.2364,
-    "MOVEMENT": 0.0587,
     "COUPLING": 0.9244,
+    "MOVEMENT": 0.0587,
     "SPACE": 0.4226
   },
+  "mood": "Prism",
+  "name": "DARK_COLD_STILL_DENSE_PRS_DRK_3",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.2393,
+      "macro_coupling": 0.8992,
+      "macro_movement": 0.0797,
+      "macro_space": 0.3999
+    },
+    "Overworld": {
+      "macro_character": 0.2364,
+      "macro_coupling": 0.9244,
+      "macro_movement": 0.0587,
+      "macro_space": 0.4226
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "cold",
     "still",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

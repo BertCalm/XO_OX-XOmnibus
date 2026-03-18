@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_VAST_GENTLE_PRS_4",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.688,
+    "source": "Oblique",
+    "target": "Ocelot",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.92,
+    "density": 0.684,
+    "movement": 0.363,
+    "space": 0.87,
+    "warmth": 0.962
+  },
   "engines": [
-    "OBLIQUE",
-    "OCELOT"
+    "Oblique",
+    "Ocelot"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.485,
+    "COUPLING": 0.552,
+    "MOVEMENT": 0.363,
+    "SPACE": 0.87
+  },
+  "mood": "Prism",
+  "name": "BRIGHT_WARM_VAST_GENTLE_PRS_4",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.485,
-      "macro_movement": 0.363,
       "macro_coupling": 0.552,
+      "macro_movement": 0.363,
       "macro_space": 0.87
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.065,
-      "macro_movement": 0.363,
       "macro_coupling": 0.65,
+      "macro_movement": 0.363,
       "macro_space": 0.87
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBLIQUE",
-    "target": "OCELOT",
-    "amount": 0.688
-  },
-  "dna": {
-    "brightness": 0.92,
-    "warmth": 0.962,
-    "movement": 0.363,
-    "density": 0.684,
-    "space": 0.87,
-    "aggression": 0.05
-  },
-  "macros": {
-    "CHARACTER": 0.485,
-    "MOVEMENT": 0.363,
-    "COUPLING": 0.552,
-    "SPACE": 0.87
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "bright",
     "warm",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

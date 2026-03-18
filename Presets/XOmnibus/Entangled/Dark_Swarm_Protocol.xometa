@@ -1,48 +1,56 @@
 {
-  "name": "Dark Swarm Protocol",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.94,
+    "source": "Overworld",
+    "target": "Outwit",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.32,
+    "brightness": 0.05,
+    "density": 0.67,
+    "movement": 0.86,
+    "space": 0.43,
+    "warmth": 0.27
+  },
   "engines": [
-    "OUTWIT",
-    "OVERWORLD"
+    "Outwit",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.34,
+    "COUPLING": 0.78,
+    "MOVEMENT": 0.86,
+    "SPACE": 0.43
+  },
+  "mood": "Entangled",
+  "name": "Dark Swarm Protocol",
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.77,
-      "macro_movement": 0.77,
       "macro_coupling": 0.65,
+      "macro_movement": 0.77,
       "macro_space": 0.85
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.44,
-      "macro_movement": 0.64,
       "macro_coupling": 0.71,
+      "macro_movement": 0.64,
       "macro_space": 0.24
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERWORLD",
-    "target": "OUTWIT",
-    "amount": 0.94
-  },
-  "dna": {
-    "brightness": 0.05,
-    "warmth": 0.27,
-    "movement": 0.86,
-    "density": 0.67,
-    "space": 0.43,
-    "aggression": 0.32
-  },
-  "macros": {
-    "CHARACTER": 0.34,
-    "MOVEMENT": 0.86,
-    "COUPLING": 0.78,
-    "SPACE": 0.43
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-  ]
+  ],
+  "version": "1.0"
 }

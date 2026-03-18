@@ -1,25 +1,33 @@
 {
-  "name": "Honey Sustain",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Honey over a low note. Slow, thick, impossible to separate from comfort.",
   "engines": [
-    "OVERDUB"
+    "Overdub"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.6,
-    "MOVEMENT": 0.147,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.147,
     "SPACE": 0.691
   },
-  "sonic_dna": {
-    "brightness": 0.397,
-    "warmth": 0.802,
-    "movement": 0.147,
-    "density": 0.741,
-    "space": 0.691,
-    "aggression": 0.068
-  },
+  "mood": "Atmosphere",
+  "name": "Honey Sustain",
   "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.068,
+    "brightness": 0.397,
+    "density": 0.741,
+    "movement": 0.147,
+    "space": 0.691,
+    "warmth": 0.802
+  },
   "tags": [
     "atmosphere",
     "drone",
@@ -27,5 +35,5 @@
     "warm",
     "thick"
   ],
-  "description": "Honey over a low note. Slow, thick, impossible to separate from comfort."
+  "version": "1.0"
 }

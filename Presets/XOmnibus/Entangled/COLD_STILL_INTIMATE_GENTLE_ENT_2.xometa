@@ -1,14 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "COLD_STILL_INTIMATE_GENTLE_ENT_2",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6988,
+    "pairs": [
+      {
+        "amount": 0.6988,
+        "source": "Organon",
+        "target": "Ouroboros",
+        "type": "SPECTRAL_MORPH"
+      }
+    ],
+    "source": "Organon",
+    "target": "Ouroboros",
+    "type": "SPECTRAL_MORPH"
+  },
+  "couplingIntensity": "Medium",
+  "description": "Cold Still Intimate Gentle character entanglement — ORGANON × OUROBOROS via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.0767,
+    "brightness": 0.4828,
+    "density": 0.5387,
+    "movement": 0.1196,
+    "space": 0.0218,
+    "warmth": 0.0322
+  },
   "engines": [
-    "ORGANON",
-    "OUROBOROS"
+    "Organon",
+    "Ouroboros"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Cold Still Intimate Gentle character entanglement \u2014 ORGANON \u00d7 OUROBOROS via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "VOICE",
+    "BREATH",
+    "CHOIR",
+    "NAVE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2575,
+    "COUPLING": 0.6988,
+    "MOVEMENT": 0.1196,
+    "SPACE": 0.0218
+  },
+  "mood": "Entangled",
+  "name": "COLD_STILL_INTIMATE_GENTLE_ENT_2",
+  "parameters": {
+    "Organon": {
+      "amp_attack": 0.3676,
+      "amp_release": 0.1152,
+      "coupling_level": 0.5916,
+      "density": 0.5299,
+      "drive": 0.1157,
+      "filter_cutoff": 0.5048,
+      "filter_resonance": 0.1764,
+      "macro_character": 0.4669,
+      "macro_coupling": 0.6201,
+      "macro_movement": 0.0988,
+      "macro_space": 0.0349,
+      "output_level": 0.8323,
+      "reverb_mix": 0.1626,
+      "reverb_size": 0.2522
+    },
+    "Ouroboros": {
+      "amp_attack": 0.4125,
+      "amp_release": 0.1348,
+      "coupling_level": 0.5547,
+      "density": 0.5424,
+      "drive": 0.0749,
+      "filter_cutoff": 0.5256,
+      "filter_resonance": 0.157,
+      "macro_character": 0.4962,
+      "macro_coupling": 0.5881,
+      "macro_movement": 0.0999,
+      "macro_space": 0.0449,
+      "output_level": 0.8598,
+      "reverb_mix": 0.1808,
+      "reverb_size": 0.1997
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.0767,
+    "brightness": 0.4828,
+    "density": 0.5387,
+    "movement": 0.1196,
+    "space": 0.0218,
+    "warmth": 0.0322
+  },
   "tags": [
     "entangled",
     "cold",
@@ -17,81 +93,5 @@
     "gentle",
     "resonant"
   ],
-  "macroLabels": [
-    "VOICE",
-    "BREATH",
-    "CHOIR",
-    "NAVE"
-  ],
-  "couplingIntensity": "Medium",
-  "dna": {
-    "brightness": 0.4828,
-    "warmth": 0.0322,
-    "movement": 0.1196,
-    "density": 0.5387,
-    "space": 0.0218,
-    "aggression": 0.0767
-  },
-  "sonic_dna": {
-    "brightness": 0.4828,
-    "warmth": 0.0322,
-    "movement": 0.1196,
-    "density": 0.5387,
-    "space": 0.0218,
-    "aggression": 0.0767
-  },
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.4669,
-      "macro_movement": 0.0988,
-      "macro_coupling": 0.6201,
-      "macro_space": 0.0349,
-      "filter_cutoff": 0.5048,
-      "filter_resonance": 0.1764,
-      "amp_attack": 0.3676,
-      "amp_release": 0.1152,
-      "reverb_mix": 0.1626,
-      "reverb_size": 0.2522,
-      "drive": 0.1157,
-      "density": 0.5299,
-      "output_level": 0.8323,
-      "coupling_level": 0.5916
-    },
-    "OUROBOROS": {
-      "macro_character": 0.4962,
-      "macro_movement": 0.0999,
-      "macro_coupling": 0.5881,
-      "macro_space": 0.0449,
-      "filter_cutoff": 0.5256,
-      "filter_resonance": 0.157,
-      "amp_attack": 0.4125,
-      "amp_release": 0.1348,
-      "reverb_mix": 0.1808,
-      "reverb_size": 0.1997,
-      "drive": 0.0749,
-      "density": 0.5424,
-      "output_level": 0.8598,
-      "coupling_level": 0.5547
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORGANON",
-    "target": "OUROBOROS",
-    "amount": 0.6988,
-    "pairs": [
-      {
-        "source": "ORGANON",
-        "target": "OUROBOROS",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.6988
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.2575,
-    "MOVEMENT": 0.1196,
-    "COUPLING": 0.6988,
-    "SPACE": 0.0218
-  }
+  "version": "1.0.0"
 }

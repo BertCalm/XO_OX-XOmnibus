@@ -1,50 +1,58 @@
 {
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_ENT_AGG_2",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERWORLD",
-    "OUROBOROS"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.404,
-      "macro_movement": 0.952,
-      "macro_coupling": 0.911,
-      "macro_space": 0.023
-    },
-    "OUROBOROS": {
-      "macro_character": 0.531,
-      "macro_movement": 0.931,
-      "macro_coupling": 0.883,
-      "macro_space": 0.022
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OVERWORLD",
-    "target": "OUROBOROS",
-    "amount": 0.819
+    "amount": 0.819,
+    "source": "Overworld",
+    "target": "Ouroboros",
+    "type": "SPECTRAL_MORPH"
   },
   "dna": {
+    "aggression": 0.976,
     "brightness": 0.035,
-    "warmth": 0.679,
-    "movement": 0.907,
     "density": 0.497,
+    "movement": 0.907,
     "space": 0.031,
-    "aggression": 0.976
+    "warmth": 0.679
   },
+  "engines": [
+    "Overworld",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.468,
-    "MOVEMENT": 0.907,
     "COUPLING": 0.911,
+    "MOVEMENT": 0.907,
     "SPACE": 0.031
   },
+  "mood": "Entangled",
+  "name": "DARK_KINETIC_INTIMATE_VIOLENT_ENT_AGG_2",
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.531,
+      "macro_coupling": 0.883,
+      "macro_movement": 0.931,
+      "macro_space": 0.022
+    },
+    "Overworld": {
+      "macro_character": 0.404,
+      "macro_coupling": 0.911,
+      "macro_movement": 0.952,
+      "macro_space": 0.023
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "dark",
     "kinetic",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

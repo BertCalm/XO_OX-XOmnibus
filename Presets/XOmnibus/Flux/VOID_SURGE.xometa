@@ -1,49 +1,57 @@
 {
-  "name": "VOID SURGE",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERLAP",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "OVERLAP": {
-      "macro_character": 0.527,
-      "macro_movement": 0.465,
-      "macro_coupling": 0.44,
-      "macro_space": 0.617
-    },
-    "ORBITAL": {
-      "macro_character": 0.386,
-      "macro_movement": 0.414,
-      "macro_coupling": 0.444,
-      "macro_space": 0.551
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OVERLAP",
-    "target": "ORBITAL",
-    "amount": 0.743
+    "amount": 0.743,
+    "source": "Overlap",
+    "target": "Orbital",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.857,
     "brightness": 0.033,
-    "warmth": 0.522,
-    "movement": 0.535,
     "density": 0.303,
+    "movement": 0.535,
     "space": 0.583,
-    "aggression": 0.857
+    "warmth": 0.522
   },
+  "engines": [
+    "Overlap",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.527,
-    "MOVEMENT": 0.465,
     "COUPLING": 0.44,
+    "MOVEMENT": 0.465,
     "SPACE": 0.617
   },
+  "mood": "Flux",
+  "name": "VOID SURGE",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.386,
+      "macro_coupling": 0.444,
+      "macro_movement": 0.414,
+      "macro_space": 0.551
+    },
+    "Overlap": {
+      "macro_character": 0.527,
+      "macro_coupling": 0.44,
+      "macro_movement": 0.465,
+      "macro_space": 0.617
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "violent",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

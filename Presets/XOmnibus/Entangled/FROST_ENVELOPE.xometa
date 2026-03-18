@@ -1,49 +1,57 @@
 {
-  "name": "FROST ENVELOPE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.567,
+    "source": "Organon",
+    "target": "Overdub",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.857,
+    "brightness": 0.209,
+    "density": 0.636,
+    "movement": 0.463,
+    "space": 0.944,
+    "warmth": 0.109
+  },
   "engines": [
-    "ORGANON",
-    "OVERDUB"
+    "Organon",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.236,
+    "COUPLING": 0.981,
+    "MOVEMENT": 0.363,
+    "SPACE": 0.367
+  },
+  "mood": "Entangled",
+  "name": "FROST ENVELOPE",
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.885,
-      "macro_movement": 0.655,
       "macro_coupling": 0.834,
+      "macro_movement": 0.655,
       "macro_space": 0.616
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.939,
-      "macro_movement": 0.28,
       "macro_coupling": 0.69,
+      "macro_movement": 0.28,
       "macro_space": 0.217
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ORGANON",
-    "target": "OVERDUB",
-    "amount": 0.567
-  },
-  "dna": {
-    "brightness": 0.209,
-    "warmth": 0.109,
-    "movement": 0.463,
-    "density": 0.636,
-    "space": 0.944,
-    "aggression": 0.857
-  },
-  "macros": {
-    "CHARACTER": 0.236,
-    "MOVEMENT": 0.363,
-    "COUPLING": 0.981,
-    "SPACE": 0.367
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-  ]
+  ],
+  "version": "1.0"
 }

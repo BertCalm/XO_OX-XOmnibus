@@ -1,49 +1,57 @@
 {
-  "name": "BLACK CASCADE",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OCEANIC",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OCEANIC": {
-      "macro_character": 0.611,
-      "macro_movement": 0.629,
-      "macro_coupling": 0.724,
-      "macro_space": 0.345
-    },
-    "OBLONG": {
-      "macro_character": 0.465,
-      "macro_movement": 0.507,
-      "macro_coupling": 0.8,
-      "macro_space": 0.266
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OCEANIC",
-    "target": "OBLONG",
-    "amount": 0.703
+    "amount": 0.703,
+    "source": "Oceanic",
+    "target": "Oblong",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.928,
     "brightness": 0.135,
-    "warmth": 0.33,
-    "movement": 0.623,
     "density": 0.642,
+    "movement": 0.623,
     "space": 0.339,
-    "aggression": 0.928
+    "warmth": 0.33
   },
+  "engines": [
+    "Oceanic",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.611,
-    "MOVEMENT": 0.629,
     "COUPLING": 0.724,
+    "MOVEMENT": 0.629,
     "SPACE": 0.345
   },
+  "mood": "Flux",
+  "name": "BLACK CASCADE",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.465,
+      "macro_coupling": 0.8,
+      "macro_movement": 0.507,
+      "macro_space": 0.266
+    },
+    "Oceanic": {
+      "macro_character": 0.611,
+      "macro_coupling": 0.724,
+      "macro_movement": 0.629,
+      "macro_space": 0.345
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "violent",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

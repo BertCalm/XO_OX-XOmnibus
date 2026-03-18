@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_COLD_FROZEN_DENSE_CLOSE_ENT4_4",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OHM",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "OHM": {
-      "macro_character": 0.476,
-      "macro_movement": 0.088,
-      "macro_coupling": 0.876,
-      "macro_space": 0.054
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.526,
-      "macro_movement": 0.077,
-      "macro_coupling": 0.904,
-      "macro_space": 0.033
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OHM",
-    "target": "OBBLIGATO",
-    "amount": 0.751
+    "amount": 0.751,
+    "source": "Ohm",
+    "target": "Obbligato",
+    "type": "SPECTRAL_MORPH"
   },
   "dna": {
+    "aggression": 0.581,
     "brightness": 0.873,
-    "warmth": 0.122,
-    "movement": 0.085,
     "density": 0.902,
+    "movement": 0.085,
     "space": 0.04,
-    "aggression": 0.581
+    "warmth": 0.122
   },
+  "engines": [
+    "Ohm",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.501,
-    "MOVEMENT": 0.082,
     "COUPLING": 0.751,
+    "MOVEMENT": 0.082,
     "SPACE": 0.043
   },
+  "mood": "Entangled",
+  "name": "BRIGHT_COLD_FROZEN_DENSE_CLOSE_ENT4_4",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.526,
+      "macro_coupling": 0.904,
+      "macro_movement": 0.077,
+      "macro_space": 0.033
+    },
+    "Ohm": {
+      "macro_character": 0.476,
+      "macro_coupling": 0.876,
+      "macro_movement": 0.088,
+      "macro_space": 0.054
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +55,6 @@
     "cold",
     "dense",
     "close"
-  ]
+  ],
+  "version": "1.0"
 }

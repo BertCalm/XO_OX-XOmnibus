@@ -1,45 +1,52 @@
 {
-  "name": "DARK_HOT_KINETIC_INTIMATE_VIOLENT_FLX2_1",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.538,
+    "source": "Organon",
+    "target": "Overworld",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.9033,
+    "brightness": 0.1094,
+    "density": 0.6155,
+    "movement": 0.9629,
+    "space": 0.0856,
+    "warmth": 0.898
+  },
   "engines": [
-    "ORGANON",
-    "OVERWORLD"
+    "Organon",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5027,
+    "COUPLING": 0.5959,
+    "MOVEMENT": 0.9599,
+    "SPACE": 0.0613
+  },
+  "mood": "Flux",
+  "name": "DARK_HOT_KINETIC_INTIMATE_VIOLENT_FLX2_1",
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.4842,
-      "macro_movement": 0.9726,
       "macro_coupling": 0.587,
+      "macro_movement": 0.9726,
       "macro_space": 0.0565
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.5211,
-      "macro_movement": 0.9472,
       "macro_coupling": 0.6049,
+      "macro_movement": 0.9472,
       "macro_space": 0.0661
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORGANON",
-    "target": "OVERWORLD",
-    "amount": 0.538
-  },
-  "dna": {
-    "brightness": 0.1094,
-    "warmth": 0.898,
-    "movement": 0.9629,
-    "density": 0.6155,
-    "space": 0.0856,
-    "aggression": 0.9033
-  },
-  "macros": {
-    "CHARACTER": 0.5027,
-    "MOVEMENT": 0.9599,
-    "COUPLING": 0.5959,
-    "SPACE": 0.0613
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -47,5 +54,6 @@
     "kinetic",
     "intimate",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,13 +1,46 @@
 {
-  "schema_version": 1,
-  "name": "Spectral Drum Ghost",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The drum machine ghost — all transients removed, only the ring and reverberant bloom of each voice. The kit plays itself in negative space.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.52,
+    "density": 0.35,
+    "movement": 0.65,
+    "space": 0.9,
+    "warmth": 0.5
+  },
   "engines": [
     "Onset"
   ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "The drum machine ghost \u2014 all transients removed, only the ring and reverberant bloom of each voice. The kit plays itself in negative space.",
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "mood": "Aether",
+  "name": "Spectral Drum Ghost",
+  "parameters": {
+    "Onset": {
+      "perc_delayFeedback": 0.5,
+      "perc_filterCutoff": 0.45,
+      "perc_hihatDecay": 0.8,
+      "perc_kickTune": 0.5,
+      "perc_macroMachine": 0.0,
+      "perc_macroMutate": 0.0,
+      "perc_macroPunch": 0.0,
+      "perc_macroSpace": 0.0,
+      "perc_noiseLevel": 0.4,
+      "perc_reverbMix": 0.92,
+      "perc_snareTone": 0.4
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "shifting-aether",
@@ -16,38 +49,5 @@
     "reverberant",
     "movement"
   ],
-  "macroLabels": [
-    "MACHINE",
-    "PUNCH",
-    "SPACE",
-    "MUTATE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.52,
-    "warmth": 0.5,
-    "movement": 0.65,
-    "density": 0.35,
-    "space": 0.9,
-    "aggression": 0.08
-  },
-  "parameters": {
-    "Onset": {
-      "perc_noiseLevel": 0.4,
-      "perc_kickTune": 0.5,
-      "perc_snareTone": 0.4,
-      "perc_hihatDecay": 0.8,
-      "perc_reverbMix": 0.92,
-      "perc_delayFeedback": 0.5,
-      "perc_filterCutoff": 0.45,
-      "perc_macroMachine": 0.0,
-      "perc_macroPunch": 0.0,
-      "perc_macroSpace": 0.0,
-      "perc_macroMutate": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

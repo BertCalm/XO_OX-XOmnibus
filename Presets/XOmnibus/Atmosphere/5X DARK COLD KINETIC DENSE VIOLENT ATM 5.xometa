@@ -1,14 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 5",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORIGAMI",
-    "ORACLE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.73,
+    "source": "Origami",
+    "target": "Oracle",
+    "type": "FM_CROSS"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.063,
+    "brightness": 0.907,
+    "density": 0.489,
+    "movement": 0.088,
+    "space": 0.904,
+    "warmth": 0.938
+  },
+  "engines": [
+    "Origami",
+    "Oracle"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 5",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.96,
+      "macro_coupling": 0.81,
+      "macro_movement": 0.92,
+      "macro_space": 0.27
+    },
+    "Origami": {
+      "macro_character": 0.89,
+      "macro_coupling": 0.66,
+      "macro_movement": 0.99,
+      "macro_space": 0.17
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +58,6 @@
     "dense",
     "atmosphere"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.89,
-      "macro_movement": 0.99,
-      "macro_coupling": 0.66,
-      "macro_space": 0.17
-    },
-    "ORACLE": {
-      "macro_character": 0.96,
-      "macro_movement": 0.92,
-      "macro_coupling": 0.81,
-      "macro_space": 0.27
-    }
-  },
-  "coupling": {
-    "type": "FM_CROSS",
-    "source": "ORIGAMI",
-    "target": "ORACLE",
-    "amount": 0.73
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.907,
-    "warmth": 0.938,
-    "movement": 0.088,
-    "density": 0.489,
-    "space": 0.904,
-    "aggression": 0.063
-  }
+  "version": "1.0.0"
 }

@@ -1,52 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Cryogenic Flash",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Cold transient burst. Sparse aggression with zero warmth.",
+  "dna": {
+    "aggression": 0.93,
+    "brightness": 0.82,
+    "density": 0.12,
+    "movement": 0.88,
+    "space": 0.78,
+    "warmth": 0.08
+  },
   "engines": [
     "Onset"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Cold transient burst. Sparse aggression with zero warmth.",
-  "tags": [
-    "flux",
-    "extreme",
-    "cold",
-    "transient"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Cryogenic Flash",
   "parameters": {
     "Onset": {
-      "perc_v1_blend": 0.92,
       "perc_v1_algoMode": 0.0,
-      "perc_v1_pitch": 380.0,
-      "perc_v1_drive": 0.88,
-      "perc_v1_punch": 0.95,
+      "perc_v1_blend": 0.92,
       "perc_v1_decay": 22.0,
+      "perc_v1_drive": 0.88,
+      "perc_v1_pitch": 380.0,
+      "perc_v1_punch": 0.95,
       "perc_v2_blend": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.82,
-    "warmth": 0.08,
-    "movement": 0.88,
-    "density": 0.12,
-    "space": 0.78,
-    "aggression": 0.93
-  }
+  "tags": [
+    "flux",
+    "extreme",
+    "cold",
+    "transient"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,25 +1,33 @@
 {
-  "name": "Depth Mantra",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Fathoms of silence, broken only by current. Warm low frequencies endure.",
   "engines": [
-    "ORGANON"
+    "Organon"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.363,
-    "MOVEMENT": 0.055,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.055,
     "SPACE": 0.866
   },
-  "sonic_dna": {
-    "brightness": 0.171,
-    "warmth": 0.554,
-    "movement": 0.055,
-    "density": 0.653,
-    "space": 0.866,
-    "aggression": 0.03
-  },
+  "mood": "Atmosphere",
+  "name": "Depth Mantra",
   "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.03,
+    "brightness": 0.171,
+    "density": 0.653,
+    "movement": 0.055,
+    "space": 0.866,
+    "warmth": 0.554
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +35,5 @@
     "deep",
     "vast"
   ],
-  "description": "Fathoms of silence, broken only by current. Warm low frequencies endure."
+  "version": "1.0"
 }

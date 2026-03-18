@@ -1,50 +1,58 @@
 {
-  "name": "HOT_STILL_DENSE_VIOLENT_PRS_4",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.533,
+    "source": "Ohm",
+    "target": "Ottoni",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.962,
+    "brightness": 0.398,
+    "density": 0.905,
+    "movement": 0.097,
+    "space": 0.311,
+    "warmth": 0.916
+  },
   "engines": [
-    "OHM",
-    "OTTONI"
+    "Ohm",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.68,
+    "COUPLING": 0.61,
+    "MOVEMENT": 0.097,
+    "SPACE": 0.311
+  },
+  "mood": "Prism",
+  "name": "HOT_STILL_DENSE_VIOLENT_PRS_4",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.68,
-      "macro_movement": 0.097,
       "macro_coupling": 0.61,
+      "macro_movement": 0.097,
       "macro_space": 0.311
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.782,
-      "macro_movement": 0.097,
       "macro_coupling": 0.415,
+      "macro_movement": 0.097,
       "macro_space": 0.311
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OHM",
-    "target": "OTTONI",
-    "amount": 0.533
-  },
-  "dna": {
-    "brightness": 0.398,
-    "warmth": 0.916,
-    "movement": 0.097,
-    "density": 0.905,
-    "space": 0.311,
-    "aggression": 0.962
-  },
-  "macros": {
-    "CHARACTER": 0.68,
-    "MOVEMENT": 0.097,
-    "COUPLING": 0.61,
-    "SPACE": 0.311
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "hot",
     "still",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

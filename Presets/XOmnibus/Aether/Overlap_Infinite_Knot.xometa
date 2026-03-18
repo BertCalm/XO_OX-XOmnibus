@@ -1,39 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Infinite Knot",
-  "mood": "Aether",
-  "engines": ["Overlap"],
-  "author": "Guru Bin — OVERLAP Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "A trefoil knot with near-infinite decay — the cross-coupling between all six delay lines ensures the sound never truly resolves, only transforms. Each traversal of the knot filters differently; by the 100th traversal what entered as a piano has become something ancient. This sound began before you played it.",
-  "tags": ["infinite", "eternal", "trefoil", "abstract", "aether", "maximal"],
-  "macroLabels": ["CHARACTER", "SPACE", "COUPLING", "DECAY"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.6,
-    "movement": 0.45,
-    "density": 0.85,
-    "space": 0.98,
-    "aggression": 0.1
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "A trefoil knot with near-infinite decay — the cross-coupling between all six delay lines ensures the sound never truly resolves, only transforms. Each traversal of the knot filters differently; by the 100th traversal what entered as a piano has become something ancient. This sound began before you played it.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.45,
+    "density": 0.85,
+    "movement": 0.45,
+    "space": 0.98,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "mood": "Aether",
+  "name": "Infinite Knot",
   "parameters": {
     "Overlap": {
-      "olap_knotType": 0,
+      "olap_damping": 0.15,
+      "olap_decay": 30.0,
       "olap_delayFeedback": 0.92,
       "olap_diffusion": 0.88,
-      "olap_spread": 0.95,
-      "olap_decay": 30.0,
+      "olap_knotType": 0,
+      "olap_macroCharacter": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0,
+      "olap_macroSpace": 0.0,
       "olap_modDepth": 0.2,
       "olap_modRate": 0.05,
-      "olap_damping": 0.15,
-      "olap_macroCharacter": 0.0,
-      "olap_macroSpace": 0.0,
-      "olap_macroCoupling": 0.0,
-      "olap_macroDecay": 0.0
+      "olap_spread": 0.95
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "infinite",
+    "eternal",
+    "trefoil",
+    "abstract",
+    "aether",
+    "maximal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

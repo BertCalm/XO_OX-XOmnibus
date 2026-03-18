@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Velocity Siren",
-  "mood": "Entangled",
-  "engines": [
-    "OUROBOROS",
-    "ORPHICA"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Ouroboros velocity output drives ORPHICA harp intensity \u2014 siren song emerges.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "Ouroboros",
+        "engineB": "Orphica",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Ouroboros velocity output drives ORPHICA harp intensity — siren song emerges.",
+  "dna": {
+    "aggression": 0.44,
+    "brightness": 0.8,
+    "density": 0.42,
+    "movement": 0.68,
+    "space": 0.74,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Ouroboros",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.63,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.61,
+    "SPACE": 0.6
+  },
+  "mood": "Entangled",
+  "name": "Velocity Siren",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.68,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.5,
+      "macro_space": 0.76
+    },
+    "Ouroboros": {
+      "macro_character": 0.58,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.72,
+      "macro_space": 0.44
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "siren",
     "harp"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {
-    "brightness": 0.8,
-    "warmth": 0.4,
-    "movement": 0.68,
-    "density": 0.42,
-    "space": 0.74,
-    "aggression": 0.44
-  },
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.58,
-      "macro_movement": 0.72,
-      "macro_coupling": 0.7,
-      "macro_space": 0.44
-    },
-    "ORPHICA": {
-      "macro_character": 0.68,
-      "macro_movement": 0.5,
-      "macro_coupling": 0.7,
-      "macro_space": 0.76
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OUROBOROS",
-        "engineB": "ORPHICA",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.7
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.63,
-    "MOVEMENT": 0.61,
-    "COUPLING": 0.7,
-    "SPACE": 0.6
-  },
-  "sequencer": null
+  "version": "1.0"
 }

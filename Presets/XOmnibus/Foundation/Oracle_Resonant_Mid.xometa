@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Oracle Resonant Mid",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Mid-range resonance locked in. The tone that fills the hole.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.55,
+    "density": 0.75,
+    "movement": 0.5,
+    "space": 0.3,
+    "warmth": 0.6
+  },
   "engines": [
     "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Mid-range resonance locked in. The tone that fills the hole.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Oracle Resonant Mid",
+  "parameters": {
+    "Oracle": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "work-horse",
     "fill",
@@ -17,31 +42,6 @@
     "resonant",
     "workhorse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oracle": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.6,
-    "movement": 0.5,
-    "density": 0.75,
-    "space": 0.3,
-    "aggression": 0.4
-  }
+  "version": "1.0.0"
 }

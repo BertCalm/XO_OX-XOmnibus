@@ -1,49 +1,57 @@
 {
-  "name": "VAST OCEAN BASE",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ORIGAMI",
-    "ORGANON"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.409,
-      "macro_movement": 0.782,
-      "macro_coupling": 0.47,
-      "macro_space": 0.881
-    },
-    "ORGANON": {
-      "macro_character": 0.288,
-      "macro_movement": 0.741,
-      "macro_coupling": 0.86,
-      "macro_space": 0.883
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ORIGAMI",
-    "target": "ORGANON",
-    "amount": 0.463
+    "amount": 0.463,
+    "source": "Origami",
+    "target": "Organon",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.24,
     "brightness": 0.626,
-    "warmth": 0.265,
-    "movement": 0.763,
     "density": 0.081,
+    "movement": 0.763,
     "space": 0.909,
-    "aggression": 0.24
+    "warmth": 0.265
   },
+  "engines": [
+    "Origami",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.265,
-    "MOVEMENT": 0.763,
     "COUPLING": 0.791,
+    "MOVEMENT": 0.763,
     "SPACE": 0.909
   },
+  "mood": "Foundation",
+  "name": "VAST OCEAN BASE",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.288,
+      "macro_coupling": 0.86,
+      "macro_movement": 0.741,
+      "macro_space": 0.883
+    },
+    "Origami": {
+      "macro_character": 0.409,
+      "macro_coupling": 0.47,
+      "macro_movement": 0.782,
+      "macro_space": 0.881
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

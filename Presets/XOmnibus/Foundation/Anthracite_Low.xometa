@@ -1,34 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Anthracite Low",
-  "mood": "Foundation",
-  "sonic_dna": {
-    "brightness": 0.1292,
-    "warmth": 0.6766,
-    "movement": 0.1691,
-    "density": 0.6954,
-    "space": 0.5988,
-    "aggression": 0.2323
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Coal-black fundamental, no overtone relief",
   "dna": {
+    "aggression": 0.2323,
     "brightness": 0.1292,
-    "warmth": 0.6766,
-    "movement": 0.1691,
     "density": 0.6954,
+    "movement": 0.1691,
     "space": 0.5988,
-    "aggression": 0.2323
+    "warmth": 0.6766
   },
   "engines": [
-    "OBLONG"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Coal-black fundamental, no overtone relief",
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme",
-    "anchor"
+    "Oblong"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -38,23 +24,37 @@
   ],
   "macros": {
     "CHARACTER": 0.2704,
-    "MOVEMENT": 0.8025,
     "COUPLING": 0.208,
+    "MOVEMENT": 0.8025,
     "SPACE": 0.7045
   },
-  "couplingIntensity": "None",
+  "mood": "Foundation",
+  "name": "Anthracite Low",
   "parameters": {
-    "OBLONG": {
-      "bob_macro_character": 0.2704,
-      "bob_macro_movement": 0.8025,
-      "bob_macro_coupling": 0.208,
-      "bob_macro_space": 0.7045,
-      "bob_outputLevel": 0.85,
+    "Oblong": {
+      "bob_couplingBus": 0,
       "bob_couplingLevel": 0.5,
-      "bob_couplingBus": 0
+      "bob_macro_character": 0.2704,
+      "bob_macro_coupling": 0.208,
+      "bob_macro_movement": 0.8025,
+      "bob_macro_space": 0.7045,
+      "bob_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2323,
+    "brightness": 0.1292,
+    "density": 0.6954,
+    "movement": 0.1691,
+    "space": 0.5988,
+    "warmth": 0.6766
+  },
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

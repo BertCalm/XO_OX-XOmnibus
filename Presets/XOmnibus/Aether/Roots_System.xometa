@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Roots System",
-  "mood": "Aether",
-  "sonic_dna": {
-    "brightness": 0.11,
-    "warmth": 0.76,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Underground root network — exchange in total darkness",
+  "dna": {
     "aggression": 0.28,
-    "movement": 0.3,
+    "brightness": 0.11,
     "density": 0.78,
-    "space": 0.38
+    "movement": 0.3,
+    "space": 0.38,
+    "warmth": 0.76
   },
   "engines": [
-    "OUROBOROS"
+    "Ouroboros"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Underground root network \u2014 exchange in total darkness",
+  "macroLabels": [
+    "CYCLE",
+    "CONSUME",
+    "COUPLING",
+    "VOID"
+  ],
+  "mood": "Aether",
+  "name": "Roots System",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.28,
+    "brightness": 0.11,
+    "density": 0.78,
+    "movement": 0.3,
+    "space": 0.38,
+    "warmth": 0.76
+  },
   "tags": [
     "aether",
     "dark",
@@ -24,23 +42,5 @@
     "underground",
     "system"
   ],
-  "macroLabels": [
-    "CYCLE",
-    "CONSUME",
-    "COUPLING",
-    "VOID"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.11,
-    "warmth": 0.76,
-    "movement": 0.3,
-    "density": 0.78,
-    "space": 0.38,
-    "aggression": 0.28
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

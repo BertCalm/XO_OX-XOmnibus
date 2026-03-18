@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Bronze Tower",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.578,
+        "engineA": "Owlfish",
+        "engineB": "Ole",
+        "type": "RHYTHM_LOCK"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.37,
+    "brightness": 0.505,
+    "density": 0.565,
+    "movement": 0.605,
+    "space": 0.93,
+    "warmth": 0.57
+  },
   "engines": [
-    "OLE",
-    "OWLFISH"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "ole",
-    "owlfish"
+    "Ole",
+    "Owlfish"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.544,
-    "MOVEMENT": 0.534,
     "COUPLING": 0.566,
+    "MOVEMENT": 0.534,
     "SPACE": 0.831
   },
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.505,
-    "warmth": 0.57,
-    "movement": 0.605,
-    "density": 0.565,
-    "space": 0.93,
-    "aggression": 0.37
-  },
-  "sonic_dna": {
-    "brightness": 0.505,
-    "warmth": 0.57,
-    "movement": 0.605,
-    "density": 0.565,
-    "space": 0.93,
-    "aggression": 0.37
-  },
+  "mood": "Entangled",
+  "name": "Bronze Tower",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.726,
-      "macro_movement": 0.482,
       "macro_coupling": 0.695,
+      "macro_movement": 0.482,
       "macro_space": 0.22
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.486,
-      "macro_movement": 0.554,
       "macro_coupling": 0.754,
+      "macro_movement": 0.554,
       "macro_space": 0.345
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OWLFISH",
-        "engineB": "OLE",
-        "type": "RHYTHM_LOCK",
-        "amount": 0.578
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.37,
+    "brightness": 0.505,
+    "density": 0.565,
+    "movement": 0.605,
+    "space": 0.93,
+    "warmth": 0.57
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "ole",
+    "owlfish"
+  ],
+  "version": "1.0.0"
 }

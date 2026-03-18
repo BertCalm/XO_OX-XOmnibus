@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_WARM_SPARSE_VIOLENT_FLX_3",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.668,
+    "source": "Oceanic",
+    "target": "Ouroboros",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.9517,
+    "brightness": 0.9577,
+    "density": 0.0584,
+    "movement": 0.3748,
+    "space": 0.4937,
+    "warmth": 0.8845
+  },
   "engines": [
-    "OCEANIC",
-    "OUROBOROS"
+    "Oceanic",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8647,
+    "COUPLING": 0.8725,
+    "MOVEMENT": 0.46,
+    "SPACE": 0.497
+  },
+  "mood": "Flux",
+  "name": "BRIGHT_WARM_SPARSE_VIOLENT_FLX_3",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.8647,
-      "macro_movement": 0.46,
       "macro_coupling": 0.8725,
+      "macro_movement": 0.46,
       "macro_space": 0.497
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.939,
-      "macro_movement": 0.4202,
       "macro_coupling": 0.9345,
+      "macro_movement": 0.4202,
       "macro_space": 0.64
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OCEANIC",
-    "target": "OUROBOROS",
-    "amount": 0.668
-  },
-  "dna": {
-    "brightness": 0.9577,
-    "warmth": 0.8845,
-    "movement": 0.3748,
-    "density": 0.0584,
-    "space": 0.4937,
-    "aggression": 0.9517
-  },
-  "macros": {
-    "CHARACTER": 0.8647,
-    "MOVEMENT": 0.46,
-    "COUPLING": 0.8725,
-    "SPACE": 0.497
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "high-warmth",
     "low-density",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

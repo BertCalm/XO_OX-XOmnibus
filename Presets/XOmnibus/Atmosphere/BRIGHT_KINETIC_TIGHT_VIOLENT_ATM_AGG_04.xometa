@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT KINETIC TIGHT VIOLENT ATM AGG 4",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORBITAL",
-    "ORACLE"
-  ],
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.97,
-      "macro_movement": 0.887,
-      "macro_coupling": 0.857,
-      "macro_space": 0.038
-    },
-    "ORACLE": {
-      "macro_character": 0.903,
-      "macro_movement": 0.899,
-      "macro_coupling": 0.777,
-      "macro_space": 0.037
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORBITAL",
-    "target": "ORACLE",
-    "amount": 0.975
+    "amount": 0.975,
+    "source": "Orbital",
+    "target": "Oracle",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.876,
     "brightness": 0.975,
-    "warmth": 0.53,
-    "movement": 0.926,
     "density": 0.476,
+    "movement": 0.926,
     "space": 0.04,
-    "aggression": 0.876
+    "warmth": 0.53
   },
+  "engines": [
+    "Orbital",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.936,
-    "MOVEMENT": 0.893,
     "COUPLING": 0.817,
+    "MOVEMENT": 0.893,
     "SPACE": 0.037
   },
+  "mood": "Atmosphere",
+  "name": "BRIGHT KINETIC TIGHT VIOLENT ATM AGG 4",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.903,
+      "macro_coupling": 0.777,
+      "macro_movement": 0.899,
+      "macro_space": 0.037
+    },
+    "Orbital": {
+      "macro_character": 0.97,
+      "macro_coupling": 0.857,
+      "macro_movement": 0.887,
+      "macro_space": 0.038
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -48,5 +55,6 @@
     "bright",
     "kinetic",
     "tight"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,48 +1,56 @@
 {
-  "name": "TRACE WAVE",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OCEANIC",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OCEANIC": {
-      "macro_character": 0.4,
-      "macro_movement": 0.981,
-      "macro_coupling": 0.536,
-      "macro_space": 0.939
-    },
-    "OBLONG": {
-      "macro_character": 0.115,
-      "macro_movement": 0.97,
-      "macro_coupling": 0.179,
-      "macro_space": 0.963
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OCEANIC",
-    "target": "OBLONG",
-    "amount": 0.312
+    "amount": 0.312,
+    "source": "Oceanic",
+    "target": "Oblong",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.606,
     "brightness": 0.108,
-    "warmth": 0.435,
-    "movement": 0.729,
     "density": 0.101,
+    "movement": 0.729,
     "space": 0.314,
-    "aggression": 0.606
+    "warmth": 0.435
   },
+  "engines": [
+    "Oceanic",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.511,
-    "MOVEMENT": 0.385,
     "COUPLING": 0.577,
+    "MOVEMENT": 0.385,
     "SPACE": 0.255
   },
+  "mood": "Entangled",
+  "name": "TRACE WAVE",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.115,
+      "macro_coupling": 0.179,
+      "macro_movement": 0.97,
+      "macro_space": 0.963
+    },
+    "Oceanic": {
+      "macro_character": 0.4,
+      "macro_coupling": 0.536,
+      "macro_movement": 0.981,
+      "macro_space": 0.939
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "drift",
     "filament"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,14 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 7",
-  "mood": "Aether",
-  "engines": [
-    "OSTERIA",
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9,
+    "source": "Osteria",
+    "target": "Ouroboros",
+    "type": "FM_CROSS"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.065,
+    "brightness": 0.919,
+    "density": 0.472,
+    "movement": 0.083,
+    "space": 0.919,
+    "warmth": 0.951
+  },
+  "engines": [
+    "Osteria",
+    "Ouroboros"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 7",
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.94,
+      "macro_coupling": 0.55,
+      "macro_movement": 0.93,
+      "macro_space": 0.41
+    },
+    "Ouroboros": {
+      "macro_character": 0.93,
+      "macro_coupling": 0.83,
+      "macro_movement": 0.81,
+      "macro_space": 0.48
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +58,6 @@
     "dense",
     "aether"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OSTERIA": {
-      "macro_character": 0.94,
-      "macro_movement": 0.93,
-      "macro_coupling": 0.55,
-      "macro_space": 0.41
-    },
-    "OUROBOROS": {
-      "macro_character": 0.93,
-      "macro_movement": 0.81,
-      "macro_coupling": 0.83,
-      "macro_space": 0.48
-    }
-  },
-  "coupling": {
-    "type": "FM_CROSS",
-    "source": "OSTERIA",
-    "target": "OUROBOROS",
-    "amount": 0.9
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.919,
-    "warmth": 0.951,
-    "movement": 0.083,
-    "density": 0.472,
-    "space": 0.919,
-    "aggression": 0.065
-  }
+  "version": "1.0.0"
 }

@@ -1,48 +1,56 @@
 {
-  "name": "SHADOW PRISM",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "ORBITAL",
-    "OPTIC"
-  ],
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.793,
-      "macro_movement": 0.894,
-      "macro_coupling": 0.732,
-      "macro_space": 0.286
-    },
-    "OPTIC": {
-      "macro_character": 0.337,
-      "macro_movement": 0.405,
-      "macro_coupling": 0.727,
-      "macro_space": 0.745
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ORBITAL",
-    "target": "OPTIC",
-    "amount": 0.582
+    "amount": 0.582,
+    "source": "Orbital",
+    "target": "Optic",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.973,
     "brightness": 0.051,
-    "warmth": 0.663,
-    "movement": 0.028,
     "density": 0.167,
+    "movement": 0.028,
     "space": 0.076,
-    "aggression": 0.973
+    "warmth": 0.663
   },
+  "engines": [
+    "Orbital",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.157,
-    "MOVEMENT": 0.342,
     "COUPLING": 0.851,
+    "MOVEMENT": 0.342,
     "SPACE": 0.681
   },
+  "mood": "Prism",
+  "name": "SHADOW PRISM",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.337,
+      "macro_coupling": 0.727,
+      "macro_movement": 0.405,
+      "macro_space": 0.745
+    },
+    "Orbital": {
+      "macro_character": 0.793,
+      "macro_coupling": 0.732,
+      "macro_movement": 0.894,
+      "macro_space": 0.286
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-  ]
+  ],
+  "version": "1.0"
 }

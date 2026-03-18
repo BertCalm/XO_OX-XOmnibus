@@ -1,33 +1,41 @@
 {
-  "name": "Stroboscopic Ritual",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.58,
+    "source": "Onset",
+    "target": "Obscura",
+    "type": "PHASE_LOCK"
+  },
+  "description": "Percussion strobes carving cold light into darkness — mechanized and relentless.",
   "engines": [
-    "ONSET",
-    "OBSCURA"
+    "Onset",
+    "Obscura"
   ],
-  "mood": "Entangled",
-  "strategy": "Bright Dark",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8,
-    "MOVEMENT": 0.8,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.8,
     "SPACE": 0.55
   },
-  "sonic_dna": {
-    "brightness": 0.96,
-    "warmth": 0.08,
-    "movement": 0.82,
-    "density": 0.7,
-    "space": 0.5,
-    "aggression": 0.65
-  },
+  "mood": "Entangled",
+  "name": "Stroboscopic Ritual",
   "parameters": {},
-  "coupling": {
-    "type": "PHASE_LOCK",
-    "source": "ONSET",
-    "target": "OBSCURA",
-    "amount": 0.58
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.65,
+    "brightness": 0.96,
+    "density": 0.7,
+    "movement": 0.82,
+    "space": 0.5,
+    "warmth": 0.08
   },
+  "strategy": "Bright Dark",
   "tags": [
     "entangled",
     "bright",
@@ -35,5 +43,5 @@
     "aggressive",
     "ritual"
   ],
-  "description": "Percussion strobes carving cold light into darkness \u2014 mechanized and relentless."
+  "version": "1.0"
 }

@@ -1,13 +1,36 @@
 {
-  "schema_version": 1,
-  "name": "Fold Under Pressure",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "ORIGAMI under maximum fold tension — geometry stressed to densest possible form.",
+  "dna": {
+    "aggression": 0.75,
+    "brightness": 0.5,
+    "density": 0.85,
+    "movement": 0.55,
+    "space": 0.2,
+    "warmth": 0.35
+  },
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ORIGAMI under maximum fold tension \u2014 geometry stressed to densest possible form.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "FOLD",
+    "TENSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Fold Under Pressure",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "portrait",
@@ -16,29 +39,6 @@
     "aggressive",
     "geometric"
   ],
-  "macroLabels": [
-    "FOLD",
-    "TENSION",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.35,
-    "movement": 0.55,
-    "density": 0.85,
-    "space": 0.2,
-    "aggression": 0.75
-  }
+  "version": "1.0.0"
 }

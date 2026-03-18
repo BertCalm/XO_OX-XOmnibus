@@ -1,42 +1,50 @@
 {
-  "name": "Obsidian Tide",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.18,
+    "density": 0.28,
+    "movement": 0.57,
+    "space": 0.82,
+    "warmth": 0.5
+  },
   "engines": [
-    "OBSIDIAN",
-    "OCEANIC"
+    "Obsidian",
+    "Oceanic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.58,
+    "COUPLING": 0.5,
+    "MOVEMENT": 0.57,
+    "SPACE": 0.82
+  },
+  "mood": "Aether",
+  "name": "Obsidian Tide",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.65,
-      "macro_movement": 0.55,
       "macro_coupling": 0.5,
+      "macro_movement": 0.55,
       "macro_space": 0.85
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.5,
-      "macro_movement": 0.6,
       "macro_coupling": 0.5,
+      "macro_movement": 0.6,
       "macro_space": 0.8
     }
   },
-  "dna": {
-    "brightness": 0.18,
-    "warmth": 0.5,
-    "movement": 0.57,
-    "density": 0.28,
-    "space": 0.82,
-    "aggression": 0.2
-  },
-  "macros": {
-    "CHARACTER": 0.58,
-    "MOVEMENT": 0.57,
-    "COUPLING": 0.5,
-    "SPACE": 0.82
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "dark-aether",
     "entangled"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,14 +1,46 @@
 {
-  "schema_version": 1,
-  "name": "Prismatic Water Column",
-  "mood": "Entangled",
-  "engines": [
-    "OCEANIC",
-    "OPTIC"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "OPTIC prisms refract inside the water column \u2014 light bending with depth.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "Oceanic",
+        "engineB": "Optic",
+        "type": "Pitch->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "OPTIC prisms refract inside the water column — light bending with depth.",
+  "dna": {
+    "aggression": 0.32,
+    "brightness": 0.68,
+    "density": 0.49,
+    "movement": 0.63,
+    "space": 0.68,
+    "warmth": 0.47
+  },
+  "engines": [
+    "Oceanic",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.75,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.75
+  },
+  "mood": "Entangled",
+  "name": "Prismatic Water Column",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -19,38 +51,6 @@
     "refraction",
     "depth"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.55,
-    "MOVEMENT": 0.65,
-    "COUPLING": 0.75,
-    "SPACE": 0.75
-  },
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {
-    "brightness": 0.68,
-    "warmth": 0.47,
-    "movement": 0.63,
-    "density": 0.49,
-    "space": 0.68,
-    "aggression": 0.32
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OCEANIC",
-        "engineB": "OPTIC",
-        "type": "Pitch->Filter",
-        "amount": 0.7
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

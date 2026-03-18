@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Prism Cradle",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.55,
+        "engineA": "Ottoni",
+        "engineB": "Owlfish",
+        "type": "SPECTRAL_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.495,
+    "brightness": 0.465,
+    "density": 0.965,
+    "movement": 0.5,
+    "space": 0.57,
+    "warmth": 0.565
+  },
   "engines": [
-    "OTTONI",
-    "OWLFISH"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "ottoni",
-    "owlfish"
+    "Ottoni",
+    "Owlfish"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.525,
-    "MOVEMENT": 0.498,
     "COUPLING": 0.746,
+    "MOVEMENT": 0.498,
     "SPACE": 0.463
   },
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.465,
-    "warmth": 0.565,
-    "movement": 0.5,
-    "density": 0.965,
-    "space": 0.57,
-    "aggression": 0.495
-  },
-  "sonic_dna": {
-    "brightness": 0.465,
-    "warmth": 0.565,
-    "movement": 0.5,
-    "density": 0.965,
-    "space": 0.57,
-    "aggression": 0.495
-  },
+  "mood": "Entangled",
+  "name": "Prism Cradle",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.626,
-      "macro_movement": 0.492,
       "macro_coupling": 0.899,
+      "macro_movement": 0.492,
       "macro_space": 0.421
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.749,
-      "macro_movement": 0.576,
       "macro_coupling": 0.508,
+      "macro_movement": 0.576,
       "macro_space": 0.39
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OTTONI",
-        "engineB": "OWLFISH",
-        "type": "SPECTRAL_BLEND",
-        "amount": 0.55
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.495,
+    "brightness": 0.465,
+    "density": 0.965,
+    "movement": 0.5,
+    "space": 0.57,
+    "warmth": 0.565
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "ottoni",
+    "owlfish"
+  ],
+  "version": "1.0.0"
 }

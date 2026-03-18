@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_WARM_SPARSE_VIOLENT_FLX_4",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9668,
+    "source": "Opal",
+    "target": "Origami",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.9069,
+    "brightness": 0.9056,
+    "density": 0.0561,
+    "movement": 0.4191,
+    "space": 0.3445,
+    "warmth": 0.9068
+  },
   "engines": [
-    "OPAL",
-    "ORIGAMI"
+    "Opal",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8171,
+    "COUPLING": 0.7786,
+    "MOVEMENT": 0.3684,
+    "SPACE": 0.2133
+  },
+  "mood": "Flux",
+  "name": "BRIGHT_WARM_SPARSE_VIOLENT_FLX_4",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.8171,
-      "macro_movement": 0.3684,
       "macro_coupling": 0.7786,
+      "macro_movement": 0.3684,
       "macro_space": 0.2133
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.8225,
-      "macro_movement": 0.4063,
       "macro_coupling": 0.7784,
+      "macro_movement": 0.4063,
       "macro_space": 0.3425
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OPAL",
-    "target": "ORIGAMI",
-    "amount": 0.9668
-  },
-  "dna": {
-    "brightness": 0.9056,
-    "warmth": 0.9068,
-    "movement": 0.4191,
-    "density": 0.0561,
-    "space": 0.3445,
-    "aggression": 0.9069
-  },
-  "macros": {
-    "CHARACTER": 0.8171,
-    "MOVEMENT": 0.3684,
-    "COUPLING": 0.7786,
-    "SPACE": 0.2133
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "high-warmth",
     "low-density",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

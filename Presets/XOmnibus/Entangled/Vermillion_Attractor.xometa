@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Vermillion Attractor",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.87,
+        "engineA": "Origami",
+        "engineB": "Ouroboros",
+        "type": "TIMBRAL_WARP"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Ouroboros timbral warping Origami fold timbre — vermillion crease fractal.",
+  "dna": {
+    "aggression": 0.91,
+    "brightness": 0.72,
+    "density": 0.7,
+    "movement": 0.84,
+    "space": 0.2,
+    "warmth": 0.24
+  },
   "engines": [
-    "ORIGAMI",
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ouroboros timbral warping Origami fold timbre \u2014 vermillion crease fractal.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "movement",
-    "origami",
-    "ouroboros",
-    "vermillion"
+    "Origami",
+    "Ouroboros"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,29 @@
   ],
   "macros": {
     "CHARACTER": 0.84,
-    "MOVEMENT": 0.84,
     "COUPLING": 0.87,
+    "MOVEMENT": 0.84,
     "SPACE": 0.2
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.72,
-    "warmth": 0.24,
-    "movement": 0.84,
-    "density": 0.7,
-    "space": 0.2,
-    "aggression": 0.91
-  },
-  "sonic_dna": {
-    "brightness": 0.72,
-    "warmth": 0.24,
-    "movement": 0.84,
-    "density": 0.7,
-    "space": 0.2,
-    "aggression": 0.91
-  },
+  "mood": "Entangled",
+  "name": "Vermillion Attractor",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORIGAMI",
-        "engineB": "OUROBOROS",
-        "type": "TIMBRAL_WARP",
-        "amount": 0.87
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.91,
+    "brightness": 0.72,
+    "density": 0.7,
+    "movement": 0.84,
+    "space": 0.2,
+    "warmth": 0.24
+  },
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "origami",
+    "ouroboros",
+    "vermillion"
+  ],
+  "version": "1.0.0"
 }

@@ -1,25 +1,33 @@
 {
-  "name": "Amber Column",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Amber resin hardened around a sustained note. Dense, immovable, warm.",
   "engines": [
-    "ODDOSCAR"
+    "OddOscar"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.689,
-    "MOVEMENT": 0.102,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.102,
     "SPACE": 0.517
   },
-  "sonic_dna": {
-    "brightness": 0.406,
-    "warmth": 0.972,
-    "movement": 0.102,
-    "density": 0.877,
-    "space": 0.517,
-    "aggression": 0.095
-  },
+  "mood": "Atmosphere",
+  "name": "Amber Column",
   "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.095,
+    "brightness": 0.406,
+    "density": 0.877,
+    "movement": 0.102,
+    "space": 0.517,
+    "warmth": 0.972
+  },
   "tags": [
     "atmosphere",
     "drone",
@@ -27,5 +35,5 @@
     "warm",
     "thick"
   ],
-  "description": "Amber resin hardened around a sustained note. Dense, immovable, warm."
+  "version": "1.0"
 }

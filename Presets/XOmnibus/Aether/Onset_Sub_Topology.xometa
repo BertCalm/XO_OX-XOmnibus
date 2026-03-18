@@ -1,56 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Sub Topology",
-  "mood": "Aether",
-  "engines": ["Onset"],
-  "author": "Guru Bin — ONSET Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Single voice — an 808-derived sub kick pitched down 36 semitones below standard. Below rhythm. Below bass. A geological event with a 4-second decay. The body IS the space. Every other voice silent. XVC routes the sub pulse back into its own character parameter creating a self-modulating topology. One thing, going very deep.",
-  "tags": ["aether", "sub", "single-voice", "extreme", "808", "topology", "bass"],
-  "macroLabels": ["MACHINE", "PUNCH", "SPACE", "MUTATE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "dna": {
-    "brightness": 0.05,
-    "warmth": 0.9,
-    "movement": 0.08,
-    "density": 0.95,
-    "space": 0.78,
-    "aggression": 0.15
-  },
-  "parameters": {
-    "Onset": {
-      "perc_v1_blend": 1.0,
-      "perc_v1_algoMode": 1,
-      "perc_v1_pitch": -36.0,
-      "perc_v1_decay": 4.2,
-      "perc_v1_tone": 0.04,
-      "perc_v1_snap": 0.45,
-      "perc_v1_body": 0.98,
-      "perc_v1_character": 0.22,
-      "perc_v1_level": 0.95,
-      "perc_v1_pan": 0.0,
-      "perc_macro_machine": 0.12,
-      "perc_macro_punch": 0.85,
-      "perc_macro_space": 0.72,
-      "perc_macro_mutate": 0.35,
-      "perc_xvc_global_amount": 0.35,
-      "perc_level": 0.9,
-      "perc_drive": 0.18,
-      "perc_masterTone": 0.08,
-      "perc_fx_reverb_size": 0.82,
-      "perc_fx_reverb_decay": 0.78,
-      "perc_fx_reverb_mix": 0.45
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Single voice — an 808-derived sub kick pitched down 36 semitones below standard. Below rhythm. Below bass. A geological event with a 4-second decay. The body IS the space. Every other voice silent. XVC routes the sub pulse back into its own character parameter creating a self-modulating topology. One thing, going very deep.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.05,
+    "density": 0.95,
+    "movement": 0.08,
+    "space": 0.78,
+    "warmth": 0.9
+  },
+  "engines": [
+    "Onset"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "mood": "Aether",
+  "name": "Sub Topology",
+  "parameters": {
+    "Onset": {
+      "perc_drive": 0.18,
+      "perc_fx_reverb_decay": 0.78,
+      "perc_fx_reverb_mix": 0.45,
+      "perc_fx_reverb_size": 0.82,
+      "perc_level": 0.9,
+      "perc_macro_machine": 0.12,
+      "perc_macro_mutate": 0.35,
+      "perc_macro_punch": 0.85,
+      "perc_macro_space": 0.72,
+      "perc_masterTone": 0.08,
+      "perc_v1_algoMode": 1,
+      "perc_v1_blend": 1.0,
+      "perc_v1_body": 0.98,
+      "perc_v1_character": 0.22,
+      "perc_v1_decay": 4.2,
+      "perc_v1_level": 0.95,
+      "perc_v1_pan": 0.0,
+      "perc_v1_pitch": -36.0,
+      "perc_v1_snap": 0.45,
+      "perc_v1_tone": 0.04,
+      "perc_xvc_global_amount": 0.35
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "sub",
+    "single-voice",
+    "extreme",
+    "808",
+    "topology",
+    "bass"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

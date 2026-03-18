@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Glass Tone",
-  "mood": "Foundation",
-  "sonic_dna": {
-    "brightness": 0.9251,
-    "warmth": 0.2759,
-    "movement": 0.2835,
-    "density": 0.1981,
-    "space": 0.7462,
-    "aggression": 0.0516
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Glassy oscillator with minimal density, pure shimmer",
   "dna": {
+    "aggression": 0.0516,
     "brightness": 0.9251,
-    "warmth": 0.2759,
-    "movement": 0.2835,
     "density": 0.1981,
+    "movement": 0.2835,
     "space": 0.7462,
-    "aggression": 0.0516
+    "warmth": 0.2759
   },
   "engines": [
-    "ODYSSEY"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Glassy oscillator with minimal density, pure shimmer",
-  "tags": [
-    "foundation",
-    "bright",
-    "sparse",
-    "crystalline",
-    "anchor"
+    "Odyssey"
   ],
   "macroLabels": [
     "ODYSSEY",
@@ -38,24 +23,39 @@
     "SPACE"
   ],
   "macros": {
-    "ODYSSEY": 0.6903,
-    "MOTION": 0.4096,
     "COUPLING": 0.6644,
+    "MOTION": 0.4096,
+    "ODYSSEY": 0.6903,
     "SPACE": 0.8573
   },
-  "couplingIntensity": "None",
+  "mood": "Foundation",
+  "name": "Glass Tone",
   "parameters": {
-    "ODYSSEY": {
-      "od_macro_odyssey": 0.6903,
-      "od_macro_motion": 0.4096,
-      "od_macro_coupling": 0.6644,
-      "od_macro_space": 0.8573,
-      "od_outputLevel": 0.85,
+    "Odyssey": {
+      "od_couplingBus": 0,
       "od_couplingLevel": 0.5,
-      "od_couplingBus": 0
+      "od_macro_coupling": 0.6644,
+      "od_macro_motion": 0.4096,
+      "od_macro_odyssey": 0.6903,
+      "od_macro_space": 0.8573,
+      "od_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.0516,
+    "brightness": 0.9251,
+    "density": 0.1981,
+    "movement": 0.2835,
+    "space": 0.7462,
+    "warmth": 0.2759
+  },
+  "tags": [
+    "foundation",
+    "bright",
+    "sparse",
+    "crystalline",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

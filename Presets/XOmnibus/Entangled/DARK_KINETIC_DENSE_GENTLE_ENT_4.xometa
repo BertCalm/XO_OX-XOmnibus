@@ -1,14 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "DARK_KINETIC_DENSE_GENTLE_ENT_4",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7722,
+    "pairs": [
+      {
+        "amount": 0.7722,
+        "source": "Obscura",
+        "target": "Orca",
+        "type": "SPECTRAL_MORPH"
+      }
+    ],
+    "source": "Obscura",
+    "target": "Orca",
+    "type": "SPECTRAL_MORPH"
+  },
+  "couplingIntensity": "High",
+  "description": "Dark Kinetic Dense Gentle character entanglement — OBSCURA × ORCA via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.083,
+    "brightness": 0.0622,
+    "density": 0.9096,
+    "movement": 0.902,
+    "space": 0.533,
+    "warmth": 0.4787
+  },
   "engines": [
-    "OBSCURA",
-    "ORCA"
+    "Obscura",
+    "Orca"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dark Kinetic Dense Gentle character entanglement \u2014 OBSCURA \u00d7 ORCA via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "SHADOW",
+    "VEIL",
+    "BLUR",
+    "MIST"
+  ],
+  "macros": {
+    "CHARACTER": 0.2705,
+    "COUPLING": 0.7722,
+    "MOVEMENT": 0.902,
+    "SPACE": 0.533
+  },
+  "mood": "Entangled",
+  "name": "DARK_KINETIC_DENSE_GENTLE_ENT_4",
+  "parameters": {
+    "Obscura": {
+      "amp_attack": 0.1108,
+      "amp_release": 0.435,
+      "coupling_level": 0.5815,
+      "density": 0.8873,
+      "drive": 0.1058,
+      "filter_cutoff": 0.2773,
+      "filter_resonance": 0.1725,
+      "macro_character": 0.5235,
+      "macro_coupling": 0.6018,
+      "macro_movement": 0.8992,
+      "macro_space": 0.5479,
+      "output_level": 0.964,
+      "reverb_mix": 0.4543,
+      "reverb_size": 0.5551
+    },
+    "Orca": {
+      "amp_attack": 0.1134,
+      "amp_release": 0.4458,
+      "coupling_level": 0.5855,
+      "density": 0.9326,
+      "drive": 0.1241,
+      "filter_cutoff": 0.2765,
+      "filter_resonance": 0.1621,
+      "macro_character": 0.5065,
+      "macro_coupling": 0.6189,
+      "macro_movement": 0.9411,
+      "macro_space": 0.5492,
+      "output_level": 0.9294,
+      "reverb_mix": 0.4641,
+      "reverb_size": 0.5342
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.083,
+    "brightness": 0.0622,
+    "density": 0.9096,
+    "movement": 0.902,
+    "space": 0.533,
+    "warmth": 0.4787
+  },
   "tags": [
     "entangled",
     "dark",
@@ -17,81 +93,5 @@
     "gentle",
     "resonant"
   ],
-  "macroLabels": [
-    "SHADOW",
-    "VEIL",
-    "BLUR",
-    "MIST"
-  ],
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.0622,
-    "warmth": 0.4787,
-    "movement": 0.902,
-    "density": 0.9096,
-    "space": 0.533,
-    "aggression": 0.083
-  },
-  "sonic_dna": {
-    "brightness": 0.0622,
-    "warmth": 0.4787,
-    "movement": 0.902,
-    "density": 0.9096,
-    "space": 0.533,
-    "aggression": 0.083
-  },
-  "parameters": {
-    "OBSCURA": {
-      "macro_character": 0.5235,
-      "macro_movement": 0.8992,
-      "macro_coupling": 0.6018,
-      "macro_space": 0.5479,
-      "filter_cutoff": 0.2773,
-      "filter_resonance": 0.1725,
-      "amp_attack": 0.1108,
-      "amp_release": 0.435,
-      "reverb_mix": 0.4543,
-      "reverb_size": 0.5551,
-      "drive": 0.1058,
-      "density": 0.8873,
-      "output_level": 0.964,
-      "coupling_level": 0.5815
-    },
-    "ORCA": {
-      "macro_character": 0.5065,
-      "macro_movement": 0.9411,
-      "macro_coupling": 0.6189,
-      "macro_space": 0.5492,
-      "filter_cutoff": 0.2765,
-      "filter_resonance": 0.1621,
-      "amp_attack": 0.1134,
-      "amp_release": 0.4458,
-      "reverb_mix": 0.4641,
-      "reverb_size": 0.5342,
-      "drive": 0.1241,
-      "density": 0.9326,
-      "output_level": 0.9294,
-      "coupling_level": 0.5855
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBSCURA",
-    "target": "ORCA",
-    "amount": 0.7722,
-    "pairs": [
-      {
-        "source": "OBSCURA",
-        "target": "ORCA",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.7722
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.2705,
-    "MOVEMENT": 0.902,
-    "COUPLING": 0.7722,
-    "SPACE": 0.533
-  }
+  "version": "1.0.0"
 }

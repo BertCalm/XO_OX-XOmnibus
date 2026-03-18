@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Grip Fold",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.58,
+    "pairs": [
+      {
+        "amount": 0.58,
+        "engineA": "Overbite",
+        "engineB": "Origami",
+        "type": "LFO->Pitch"
+      }
+    ],
+    "type": "LFO->Pitch"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OVERBITE fang creases ORIGAMI fold. Bass-crisp edge. [LFO->Pitch]",
+  "dna": {
+    "aggression": 0.626,
     "brightness": 0.63,
-    "warmth": 0.544,
-    "movement": 0.558,
     "density": 0.581,
+    "movement": 0.558,
     "space": 0.542,
-    "aggression": 0.626
+    "warmth": 0.544
   },
   "engines": [
-    "XOverbite",
-    "XOrigami"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE fang creases ORIGAMI fold. Bass-crisp edge. [LFO->Pitch]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "overbite",
-    "origami",
-    "bite"
+    "Overbite",
+    "Origami"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.63,
-    "warmth": 0.544,
-    "movement": 0.558,
-    "density": 0.581,
-    "space": 0.542,
-    "aggression": 0.626
-  },
+  "mood": "Entangled",
+  "name": "Grip Fold",
   "parameters": {
-    "XOverbite": {
-      "poss_outputLevel": 0.9,
-      "poss_outputPan": 0.04,
-      "poss_couplingLevel": 0.57,
-      "poss_couplingBus": 0,
-      "poss_brightness": 0.498,
-      "poss_warmth": 0.625,
-      "poss_aggression": 0.608
-    },
-    "XOrigami": {
+    "Origami": {
+      "ori_aggression": 0.612,
+      "ori_brightness": 0.68,
+      "ori_couplingBus": 0,
+      "ori_couplingLevel": 0.55,
       "ori_outputLevel": 0.85,
       "ori_outputPan": 0.0,
-      "ori_couplingLevel": 0.55,
-      "ori_couplingBus": 0,
-      "ori_brightness": 0.68,
-      "ori_warmth": 0.494,
-      "ori_aggression": 0.612
+      "ori_warmth": 0.494
+    },
+    "Overbite": {
+      "poss_aggression": 0.608,
+      "poss_brightness": 0.498,
+      "poss_couplingBus": 0,
+      "poss_couplingLevel": 0.57,
+      "poss_outputLevel": 0.9,
+      "poss_outputPan": 0.04,
+      "poss_warmth": 0.625
     }
   },
-  "coupling": {
-    "type": "LFO->Pitch",
-    "amount": 0.58,
-    "pairs": [
-      {
-        "engineA": "XOverbite",
-        "engineB": "XOrigami",
-        "type": "LFO->Pitch",
-        "amount": 0.58
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.626,
+    "brightness": 0.63,
+    "density": 0.581,
+    "movement": 0.558,
+    "space": 0.542,
+    "warmth": 0.544
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "overbite",
+    "origami",
+    "bite"
+  ],
+  "version": "1.0.0"
 }

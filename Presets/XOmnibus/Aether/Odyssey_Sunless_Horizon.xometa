@@ -1,13 +1,50 @@
 {
-  "schema_version": 1,
-  "name": "Sunless Horizon",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The horizon exists but holds no sunrise. The odyssey navigates by dark stars — direction without light, purpose without warmth.",
+  "dna": {
+    "aggression": 0.03,
+    "brightness": 0.19,
+    "density": 0.35,
+    "movement": 0.22,
+    "space": 0.94,
+    "warmth": 0.3
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "The horizon exists but holds no sunrise. The odyssey navigates by dark stars \u2014 direction without light, purpose without warmth.",
+  "macroLabels": [
+    "JOURNEY",
+    "HORIZON",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Sunless Horizon",
+  "parameters": {
+    "Odyssey": {
+      "drift_ampAttack": 5.0,
+      "drift_ampDecay": 2.0,
+      "drift_ampRelease": 9.0,
+      "drift_ampSustain": 0.8,
+      "drift_delayFeedback": 0.5,
+      "drift_filterCutoff": 0.16,
+      "drift_filterReso": 0.2,
+      "drift_lfoDepth": 0.3,
+      "drift_lfoRate": 0.04,
+      "drift_macroCoupling": 0.0,
+      "drift_macroHorizon": 0.0,
+      "drift_macroJourney": 0.0,
+      "drift_macroSpace": 0.0,
+      "drift_oscA_mode": 0,
+      "drift_reverbMix": 0.92
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "dark-aether",
@@ -16,42 +53,5 @@
     "vast",
     "journey"
   ],
-  "macroLabels": [
-    "JOURNEY",
-    "HORIZON",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.19,
-    "warmth": 0.3,
-    "movement": 0.22,
-    "density": 0.35,
-    "space": 0.94,
-    "aggression": 0.03
-  },
-  "parameters": {
-    "Odyssey": {
-      "drift_oscA_mode": 0,
-      "drift_filterCutoff": 0.16,
-      "drift_filterReso": 0.2,
-      "drift_lfoRate": 0.04,
-      "drift_lfoDepth": 0.3,
-      "drift_ampAttack": 5.0,
-      "drift_ampDecay": 2.0,
-      "drift_ampSustain": 0.8,
-      "drift_ampRelease": 9.0,
-      "drift_reverbMix": 0.92,
-      "drift_delayFeedback": 0.5,
-      "drift_macroJourney": 0.0,
-      "drift_macroHorizon": 0.0,
-      "drift_macroCoupling": 0.0,
-      "drift_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

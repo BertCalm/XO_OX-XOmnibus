@@ -1,91 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "Tangled Arp",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-05",
+  "description": "Sequenced arpeggiation with cross-coupled filter and pitch modulation. Each note triggers a cascade of interaction between X and O.",
+  "dna": {
+    "aggression": 0.268,
+    "brightness": 0.657,
+    "density": 0.243,
+    "movement": 0.201,
+    "space": 0.321,
+    "warmth": 0.234
+  },
   "engines": [
     "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Sequenced arpeggiation with cross-coupled filter and pitch modulation. Each note triggers a cascade of interaction between X and O.",
-  "tags": [
-    "arpeggio",
-    "sequenced",
-    "cascade",
-    "melodic",
-    "interlocked"
-  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "Snap+Morph",
     "Bloom",
     "Coupling",
     "Space"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": 125,
-  "created": "2026-03-05",
-  "legacy": {
-    "sourceInstrument": "OddfeliX",
-    "sourceCategory": "Entangled",
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Tangled Arp",
   "parameters": {
     "OddfeliX": {
+      "compAttack": 5.852,
+      "compRatio": 2.213,
+      "compRelease": 86.393,
+      "compThreshold": -10.426,
+      "compressorEnabled": 1,
       "couplingAmount": 0.431,
-      "masterBalance": -0.069,
-      "xOscMode": 0,
-      "xSnap": 0.317,
-      "xDecay": 0.428,
-      "xFilterCutoff": 1455.735,
-      "xFilterReso": 0.217,
-      "xDetune": 5.852,
-      "xLevel": 0.613,
-      "xPitchLock": 1,
-      "xUnison": 0,
-      "xPolyphony": 0,
-      "oMorph": 0.128,
-      "oBloom": 0.628,
-      "oDecay": 1.17,
-      "oSustain": 0.326,
-      "oRelease": 0.628,
-      "oFilterCutoff": 1055.735,
-      "oFilterReso": 0.557,
-      "oDrift": 0.117,
-      "oSub": 0.221,
-      "oDetune": 5.852,
-      "oLevel": 0.613,
-      "oPolyphony": 1,
+      "delayEnabled": 1,
+      "delayFeedback": 0.317,
+      "delayMix": 0.213,
+      "delayTime": 0.36,
+      "delayWobble": 0.061,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
       "macro1": 0.263,
       "macro2": 0.585,
       "macro3": 0.5,
       "macro4": 0.409,
-      "delayEnabled": 1,
-      "delayTime": 0.36,
-      "delayFeedback": 0.317,
-      "delayMix": 0.213,
-      "delayWobble": 0.061,
-      "reverbEnabled": 1,
-      "reverbDecay": 0.515,
-      "reverbSize": 0.634,
-      "reverbMix": 0.213,
-      "reverbDamping": 0.217,
-      "phaserEnabled": 0,
-      "phaserRate": 0.5,
+      "masterBalance": -0.069,
+      "oBloom": 0.628,
+      "oDecay": 1.17,
+      "oDetune": 5.852,
+      "oDrift": 0.117,
+      "oFilterCutoff": 1055.735,
+      "oFilterReso": 0.557,
+      "oLevel": 0.613,
+      "oMorph": 0.128,
+      "oPolyphony": 1,
+      "oRelease": 0.628,
+      "oSub": 0.221,
+      "oSustain": 0.326,
       "phaserDepth": 0.5,
+      "phaserEnabled": 0,
       "phaserMix": 0.3,
-      "lofiEnabled": 0,
-      "lofiBitDepth": 12.0,
-      "lofiRateReduce": 1.0,
-      "lofiWowFlutter": 0.0,
-      "lofiMix": 0.3,
-      "compressorEnabled": 1,
-      "compThreshold": -10.426,
-      "compRatio": 2.213,
-      "compAttack": 5.852,
-      "compRelease": 86.393
+      "phaserRate": 0.5,
+      "reverbDamping": 0.217,
+      "reverbDecay": 0.515,
+      "reverbEnabled": 1,
+      "reverbMix": 0.213,
+      "reverbSize": 0.634,
+      "xDecay": 0.428,
+      "xDetune": 5.852,
+      "xFilterCutoff": 1455.735,
+      "xFilterReso": 0.217,
+      "xLevel": 0.613,
+      "xOscMode": 0,
+      "xPitchLock": 1,
+      "xPolyphony": 0,
+      "xSnap": 0.317,
+      "xUnison": 0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": {
     "bpm": 125.0,
     "swing": 0.009,
@@ -96,32 +95,32 @@
         "muted": false,
         "steps": [
           {
+            "active": false,
             "index": 0,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
+            "active": false,
             "index": 4,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
+            "active": false,
             "index": 8,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
-            "index": 12,
             "active": false,
+            "index": 12,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           }
         ]
       },
@@ -131,18 +130,18 @@
         "muted": false,
         "steps": [
           {
-            "index": 4,
             "active": false,
+            "index": 4,
             "note": 38,
-            "velocity": 0.8,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8
           },
           {
-            "index": 12,
             "active": false,
+            "index": 12,
             "note": 38,
-            "velocity": 0.8,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8
           }
         ]
       },
@@ -160,12 +159,13 @@
       }
     ]
   },
-  "dna": {
-    "brightness": 0.657,
-    "warmth": 0.234,
-    "movement": 0.201,
-    "density": 0.243,
-    "space": 0.321,
-    "aggression": 0.268
-  }
+  "tags": [
+    "arpeggio",
+    "sequenced",
+    "cascade",
+    "melodic",
+    "interlocked"
+  ],
+  "tempo": 125,
+  "version": "1.0.0"
 }

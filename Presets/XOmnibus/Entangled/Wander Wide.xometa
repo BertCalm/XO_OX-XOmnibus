@@ -1,63 +1,63 @@
 {
-  "schema_version": 1,
-  "name": "Wander Wide",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Cross-modulated curious motion energy with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.104,
+    "brightness": 0.562,
+    "density": 0.13,
+    "movement": 0.76,
+    "space": 0.167,
+    "warmth": 0.411
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Cross-modulated curious motion energy with bob character and analog drift.",
-  "tags": [
-    "curious",
-    "wander",
-    "wide"
-  ],
+  "legacy": {
+    "sourceCategory": "Curious Motion",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Curious Motion",
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Wander Wide",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 2.0,
-      "bob_oscA_drift": 0.35,
-      "bob_oscA_shape": 0.5,
-      "bob_oscB_wave": 2.0,
-      "bob_oscB_blend": 0.4,
-      "bob_oscB_detune": -8.0,
-      "bob_curMode": 1.0,
-      "bob_curAmount": 0.82,
-      "bob_lfo1Rate": 0.2,
-      "bob_lfo1Depth": 0.5,
-      "bob_fltMode": 2.0,
-      "bob_fltCutoff": 3500.0,
-      "bob_fltReso": 0.32,
-      "bob_fltChar": 0.55,
-      "bob_motDepth": 0.5,
-      "bob_fltEnvAmt": 0.4,
       "bob_ampAttack": 0.25,
       "bob_ampRelease": 1.6,
-      "bob_bobMode": 0.48
+      "bob_bobMode": 0.48,
+      "bob_curAmount": 0.82,
+      "bob_curMode": 1.0,
+      "bob_fltChar": 0.55,
+      "bob_fltCutoff": 3500.0,
+      "bob_fltEnvAmt": 0.4,
+      "bob_fltMode": 2.0,
+      "bob_fltReso": 0.32,
+      "bob_lfo1Depth": 0.5,
+      "bob_lfo1Rate": 0.2,
+      "bob_motDepth": 0.5,
+      "bob_oscA_drift": 0.35,
+      "bob_oscA_shape": 0.5,
+      "bob_oscA_wave": 2.0,
+      "bob_oscB_blend": 0.4,
+      "bob_oscB_detune": -8.0,
+      "bob_oscB_wave": 2.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.562,
-    "warmth": 0.411,
-    "movement": 0.76,
-    "density": 0.13,
-    "space": 0.167,
-    "aggression": 0.104
-  }
+  "tags": [
+    "curious",
+    "wander",
+    "wide"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

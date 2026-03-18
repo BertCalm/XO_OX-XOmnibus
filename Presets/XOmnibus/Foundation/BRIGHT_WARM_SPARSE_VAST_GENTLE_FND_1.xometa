@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_FND_1",
-  "mood": "Foundation",
-  "engines": [
-    "ORIGAMI",
-    "OBESE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.523,
+    "source": "Origami",
+    "target": "Obese",
+    "type": "AMPLITUDE_MOD"
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_WARM_SPARSE_VAST_GENTLE. Variant 1.",
+  "dna": {
+    "aggression": 0.034,
+    "brightness": 0.945,
+    "density": 0.024,
+    "movement": 0.615,
+    "space": 0.914,
+    "warmth": 0.875
+  },
+  "engines": [
+    "Origami",
+    "Obese"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 1.0,
+    "COUPLING": 0.06,
+    "MOVEMENT": 0.615,
+    "SPACE": 0.873
+  },
+  "mood": "Foundation",
+  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_FND_1",
+  "parameters": {
+    "Obese": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.0,
+      "macro_movement": 0.664,
+      "macro_space": 0.837
+    },
+    "Origami": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.121,
+      "macro_movement": 0.566,
+      "macro_space": 0.91
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "sparse",
     "extreme",
@@ -19,53 +66,6 @@
     "foundation",
     "gentle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 1.0,
-      "macro_movement": 0.566,
-      "macro_coupling": 0.121,
-      "macro_space": 0.91
-    },
-    "OBESE": {
-      "macro_character": 1.0,
-      "macro_movement": 0.664,
-      "macro_coupling": 0.0,
-      "macro_space": 0.837
-    }
-  },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORIGAMI",
-    "target": "OBESE",
-    "amount": 0.523
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.945,
-    "warmth": 0.875,
-    "movement": 0.615,
-    "density": 0.024,
-    "space": 0.914,
-    "aggression": 0.034
-  },
-  "macros": {
-    "CHARACTER": 1.0,
-    "MOVEMENT": 0.615,
-    "COUPLING": 0.06,
-    "SPACE": 0.873
-  }
+  "version": "1.0.0"
 }

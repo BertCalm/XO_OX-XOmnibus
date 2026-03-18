@@ -1,13 +1,57 @@
 {
-  "schema_version": 1,
-  "name": "Magnetic Interference",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "AutoPulse at moderate rate with swing — the pulse is irregular, slightly wrong. Reactivity elevated, feedback accumulating. A screen with bad signal from a distant source.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.65,
+    "density": 0.62,
+    "movement": 0.68,
+    "space": 0.72,
+    "warmth": 0.25
+  },
   "engines": [
     "Optic"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "AutoPulse at moderate rate with swing \u2014 the pulse is irregular, slightly wrong. Reactivity elevated, feedback accumulating. A screen with bad signal from a distant source.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Magnetic Interference",
+  "parameters": {
+    "Optic": {
+      "optic_autoPulse": 1,
+      "optic_inputGain": 0.85,
+      "optic_modDepth": 0.62,
+      "optic_modMixPulse": 0.58,
+      "optic_modMixSpec": 0.48,
+      "optic_pulseAccent": 0.58,
+      "optic_pulseEvolve": 0.55,
+      "optic_pulseRate": 0.35,
+      "optic_pulseShape": 0.45,
+      "optic_pulseSubdiv": 0.52,
+      "optic_pulseSwing": 0.18,
+      "optic_reactivity": 0.55,
+      "optic_vizFeedback": 0.62,
+      "optic_vizIntensity": 0.58,
+      "optic_vizMode": 1,
+      "optic_vizSpeed": 0.48
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "tense",
@@ -15,50 +59,6 @@
     "interference",
     "magnetic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Optic": {
-      "optic_reactivity": 0.55,
-      "optic_inputGain": 0.85,
-      "optic_autoPulse": 1,
-      "optic_pulseRate": 0.35,
-      "optic_pulseShape": 0.45,
-      "optic_pulseSwing": 0.18,
-      "optic_pulseEvolve": 0.55,
-      "optic_pulseSubdiv": 0.52,
-      "optic_pulseAccent": 0.58,
-      "optic_modDepth": 0.62,
-      "optic_modMixPulse": 0.58,
-      "optic_modMixSpec": 0.48,
-      "optic_vizMode": 1,
-      "optic_vizFeedback": 0.62,
-      "optic_vizSpeed": 0.48,
-      "optic_vizIntensity": 0.58
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.65,
-    "warmth": 0.25,
-    "movement": 0.68,
-    "density": 0.62,
-    "space": 0.72,
-    "aggression": 0.45
-  }
+  "version": "1.0.0"
 }

@@ -1,48 +1,56 @@
 {
-  "name": "RIPTIDE 27",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.692,
+    "source": "Origami",
+    "target": "Overdub",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.638,
+    "brightness": 0.922,
+    "density": 0.879,
+    "movement": 0.941,
+    "space": 0.864,
+    "warmth": 0.508
+  },
   "engines": [
-    "ORIGAMI",
-    "OVERDUB"
+    "Origami",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.79,
+    "COUPLING": 0.415,
+    "MOVEMENT": 0.941,
+    "SPACE": 0.934
+  },
+  "mood": "Entangled",
+  "name": "RIPTIDE 27",
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.509,
-      "macro_movement": 0.93,
       "macro_coupling": 0.273,
+      "macro_movement": 0.93,
       "macro_space": 0.835
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.98,
-      "macro_movement": 0.952,
       "macro_coupling": 0.244,
+      "macro_movement": 0.952,
       "macro_space": 0.551
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ORIGAMI",
-    "target": "OVERDUB",
-    "amount": 0.692
-  },
-  "dna": {
-    "brightness": 0.922,
-    "warmth": 0.508,
-    "movement": 0.941,
-    "density": 0.879,
-    "space": 0.864,
-    "aggression": 0.638
-  },
-  "macros": {
-    "CHARACTER": 0.79,
-    "MOVEMENT": 0.941,
-    "COUPLING": 0.415,
-    "SPACE": 0.934
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "explosive",
     "unstable"
-  ]
+  ],
+  "version": "1.0"
 }

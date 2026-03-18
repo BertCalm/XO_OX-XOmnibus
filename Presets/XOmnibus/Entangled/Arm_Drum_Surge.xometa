@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Arm Drum Surge",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.88,
+        "engineA": "Octopus",
+        "engineB": "Onset",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Octopus CA rule 30 chaos injected into Onset drum voices — alien intelligence driving drums.",
+  "dna": {
+    "aggression": 0.93,
+    "brightness": 0.58,
+    "density": 0.72,
+    "movement": 0.91,
+    "space": 0.17,
+    "warmth": 0.18
+  },
   "engines": [
-    "OCTOPUS",
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Octopus CA rule 30 chaos injected into Onset drum voices \u2014 alien intelligence driving drums.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "movement",
-    "octopus",
-    "onset",
-    "arm"
+    "Octopus",
+    "Onset"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,29 @@
   ],
   "macros": {
     "CHARACTER": 0.78,
-    "MOVEMENT": 0.91,
     "COUPLING": 0.88,
+    "MOVEMENT": 0.91,
     "SPACE": 0.17
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.58,
-    "warmth": 0.18,
-    "movement": 0.91,
-    "density": 0.72,
-    "space": 0.17,
-    "aggression": 0.93
-  },
-  "sonic_dna": {
-    "brightness": 0.58,
-    "warmth": 0.18,
-    "movement": 0.91,
-    "density": 0.72,
-    "space": 0.17,
-    "aggression": 0.93
-  },
+  "mood": "Entangled",
+  "name": "Arm Drum Surge",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OCTOPUS",
-        "engineB": "ONSET",
-        "type": "CHAOS_INJECT",
-        "amount": 0.88
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.93,
+    "brightness": 0.58,
+    "density": 0.72,
+    "movement": 0.91,
+    "space": 0.17,
+    "warmth": 0.18
+  },
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "octopus",
+    "onset",
+    "arm"
+  ],
+  "version": "1.0.0"
 }

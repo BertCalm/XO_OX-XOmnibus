@@ -1,45 +1,52 @@
 {
-  "name": "COLD_FROZEN_SPARSE_CLOSE_CALM_ENT4_4",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERWORLD",
-    "OMBRE"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.271,
-      "macro_movement": 0.013,
-      "macro_coupling": 0.033,
-      "macro_space": 0.103
-    },
-    "OMBRE": {
-      "macro_character": 0.274,
-      "macro_movement": 0.012,
-      "macro_coupling": 0.032,
-      "macro_space": 0.098
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OVERWORLD",
-    "target": "OMBRE",
-    "amount": 0.832
+    "amount": 0.832,
+    "source": "Overworld",
+    "target": "Ombre",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.037,
     "brightness": 0.55,
-    "warmth": 0.049,
-    "movement": 0.017,
     "density": 0.046,
+    "movement": 0.017,
     "space": 0.081,
-    "aggression": 0.037
+    "warmth": 0.049
   },
+  "engines": [
+    "Overworld",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.273,
-    "MOVEMENT": 0.013,
     "COUPLING": 0.832,
+    "MOVEMENT": 0.013,
     "SPACE": 0.101
   },
+  "mood": "Entangled",
+  "name": "COLD_FROZEN_SPARSE_CLOSE_CALM_ENT4_4",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.274,
+      "macro_coupling": 0.032,
+      "macro_movement": 0.012,
+      "macro_space": 0.098
+    },
+    "Overworld": {
+      "macro_character": 0.271,
+      "macro_coupling": 0.033,
+      "macro_movement": 0.013,
+      "macro_space": 0.103
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +55,6 @@
     "sparse",
     "close",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

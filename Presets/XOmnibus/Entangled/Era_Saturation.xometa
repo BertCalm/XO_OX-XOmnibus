@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Era Saturation",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.84,
+        "engineA": "Overworld",
+        "engineB": "Obese",
+        "type": "TIMBRAL_WARP"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "ERA crossfade timbral-warped by OBESE mojo — chip eras dissolving in saturation heat.",
+  "dna": {
+    "aggression": 0.9,
+    "brightness": 0.82,
+    "density": 0.85,
+    "movement": 0.72,
+    "space": 0.12,
+    "warmth": 0.25
+  },
   "engines": [
-    "OVERWORLD",
-    "OBESE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ERA crossfade timbral-warped by OBESE mojo \u2014 chip eras dissolving in saturation heat.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "bright",
-    "overworld",
-    "obese",
-    "era"
+    "Overworld",
+    "Obese"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,29 @@
   ],
   "macros": {
     "CHARACTER": 0.88,
-    "MOVEMENT": 0.72,
     "COUPLING": 0.84,
+    "MOVEMENT": 0.72,
     "SPACE": 0.12
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.82,
-    "warmth": 0.25,
-    "movement": 0.72,
-    "density": 0.85,
-    "space": 0.12,
-    "aggression": 0.9
-  },
-  "sonic_dna": {
-    "brightness": 0.82,
-    "warmth": 0.25,
-    "movement": 0.72,
-    "density": 0.85,
-    "space": 0.12,
-    "aggression": 0.9
-  },
+  "mood": "Entangled",
+  "name": "Era Saturation",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERWORLD",
-        "engineB": "OBESE",
-        "type": "TIMBRAL_WARP",
-        "amount": 0.84
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9,
+    "brightness": 0.82,
+    "density": 0.85,
+    "movement": 0.72,
+    "space": 0.12,
+    "warmth": 0.25
+  },
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "overworld",
+    "obese",
+    "era"
+  ],
+  "version": "1.0.0"
 }

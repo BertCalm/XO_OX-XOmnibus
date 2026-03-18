@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_PRS_5",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.425,
+    "source": "Ole",
+    "target": "Osteria",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.873,
+    "brightness": 0.941,
+    "density": 0.959,
+    "movement": 0.534,
+    "space": 0.133,
+    "warmth": 0.569
+  },
   "engines": [
-    "OLE",
-    "OSTERIA"
+    "Ole",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.907,
+    "COUPLING": 0.69,
+    "MOVEMENT": 0.534,
+    "SPACE": 0.133
+  },
+  "mood": "Prism",
+  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_PRS_5",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.907,
-      "macro_movement": 0.534,
       "macro_coupling": 0.69,
+      "macro_movement": 0.534,
       "macro_space": 0.133
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.466,
-      "macro_movement": 0.534,
       "macro_coupling": 0.37,
+      "macro_movement": 0.534,
       "macro_space": 0.133
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OLE",
-    "target": "OSTERIA",
-    "amount": 0.425
-  },
-  "dna": {
-    "brightness": 0.941,
-    "warmth": 0.569,
-    "movement": 0.534,
-    "density": 0.959,
-    "space": 0.133,
-    "aggression": 0.873
-  },
-  "macros": {
-    "CHARACTER": 0.907,
-    "MOVEMENT": 0.534,
-    "COUPLING": 0.69,
-    "SPACE": 0.133
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "bright",
     "dense",
     "intimate",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,14 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FND 10",
-  "mood": "Foundation",
-  "engines": [
-    "ORCA",
-    "OVERWORLD"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.66,
+    "source": "Orca",
+    "target": "Overworld",
+    "type": "RHYTHM_GATE"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.063,
+    "brightness": 0.939,
+    "density": 0.532,
+    "movement": 0.05,
+    "space": 0.91,
+    "warmth": 0.937
+  },
+  "engines": [
+    "Orca",
+    "Overworld"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT FND 10",
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.96,
+      "macro_coupling": 0.58,
+      "macro_movement": 0.87,
+      "macro_space": 0.24
+    },
+    "Overworld": {
+      "macro_character": 0.73,
+      "macro_coupling": 0.67,
+      "macro_movement": 0.66,
+      "macro_space": 0.14
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +58,6 @@
     "dense",
     "foundation"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORCA": {
-      "macro_character": 0.96,
-      "macro_movement": 0.87,
-      "macro_coupling": 0.58,
-      "macro_space": 0.24
-    },
-    "OVERWORLD": {
-      "macro_character": 0.73,
-      "macro_movement": 0.66,
-      "macro_coupling": 0.67,
-      "macro_space": 0.14
-    }
-  },
-  "coupling": {
-    "type": "RHYTHM_GATE",
-    "source": "ORCA",
-    "target": "OVERWORLD",
-    "amount": 0.66
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.939,
-    "warmth": 0.937,
-    "movement": 0.05,
-    "density": 0.532,
-    "space": 0.91,
-    "aggression": 0.063
-  }
+  "version": "1.0.0"
 }

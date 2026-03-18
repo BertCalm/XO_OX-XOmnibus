@@ -1,49 +1,57 @@
 {
-  "name": "INFERNAL PULSE",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.788,
+    "source": "Oblong",
+    "target": "Ohm",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.633,
+    "brightness": 0.386,
+    "density": 0.486,
+    "movement": 0.89,
+    "space": 0.325,
+    "warmth": 0.9
+  },
   "engines": [
-    "OBLONG",
-    "OHM"
+    "Oblong",
+    "Ohm"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.534,
+    "COUPLING": 0.634,
+    "MOVEMENT": 0.769,
+    "SPACE": 0.382
+  },
+  "mood": "Flux",
+  "name": "INFERNAL PULSE",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.534,
-      "macro_movement": 0.769,
       "macro_coupling": 0.634,
+      "macro_movement": 0.769,
       "macro_space": 0.382
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.615,
-      "macro_movement": 0.903,
       "macro_coupling": 0.49,
+      "macro_movement": 0.903,
       "macro_space": 0.496
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OBLONG",
-    "target": "OHM",
-    "amount": 0.788
-  },
-  "dna": {
-    "brightness": 0.386,
-    "warmth": 0.9,
-    "movement": 0.89,
-    "density": 0.486,
-    "space": 0.325,
-    "aggression": 0.633
-  },
-  "macros": {
-    "CHARACTER": 0.534,
-    "MOVEMENT": 0.769,
-    "COUPLING": 0.634,
-    "SPACE": 0.382
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "warm",
     "kinetic",
     "movement"
-  ]
+  ],
+  "version": "1.0"
 }

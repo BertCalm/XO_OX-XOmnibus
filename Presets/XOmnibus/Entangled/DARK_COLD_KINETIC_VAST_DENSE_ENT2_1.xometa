@@ -1,45 +1,52 @@
 {
-  "name": "DARK COLD KINETIC VAST DENSE ENT2 1",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERBITE",
-    "OPAL"
-  ],
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.086,
-      "macro_movement": 0.956,
-      "macro_coupling": 0.681,
-      "macro_space": 0.961
-    },
-    "OPAL": {
-      "macro_character": 0.098,
-      "macro_movement": 0.926,
-      "macro_coupling": 0.698,
-      "macro_space": 0.962
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OVERBITE",
-    "target": "OPAL",
-    "amount": 0.681
+    "amount": 0.681,
+    "source": "Overbite",
+    "target": "Opal",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.379,
     "brightness": 0.072,
-    "warmth": 0.101,
-    "movement": 0.956,
     "density": 0.983,
+    "movement": 0.956,
     "space": 0.961,
-    "aggression": 0.379
+    "warmth": 0.101
   },
+  "engines": [
+    "Overbite",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.086,
-    "MOVEMENT": 0.956,
     "COUPLING": 0.681,
+    "MOVEMENT": 0.956,
     "SPACE": 0.961
   },
+  "mood": "Entangled",
+  "name": "DARK COLD KINETIC VAST DENSE ENT2 1",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.098,
+      "macro_coupling": 0.698,
+      "macro_movement": 0.926,
+      "macro_space": 0.962
+    },
+    "Overbite": {
+      "macro_character": 0.086,
+      "macro_coupling": 0.681,
+      "macro_movement": 0.956,
+      "macro_space": 0.961
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
@@ -47,5 +54,6 @@
     "kinetic",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

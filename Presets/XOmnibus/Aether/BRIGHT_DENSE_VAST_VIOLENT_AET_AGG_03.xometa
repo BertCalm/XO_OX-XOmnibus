@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT DENSE VAST VIOLENT AET AGG 3",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "ORIGAMI",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.907,
-      "macro_movement": 0.448,
-      "macro_coupling": 0.929,
-      "macro_space": 0.881
-    },
-    "ORBITAL": {
-      "macro_character": 0.904,
-      "macro_movement": 0.457,
-      "macro_coupling": 0.86,
-      "macro_space": 0.909
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORIGAMI",
-    "target": "ORBITAL",
-    "amount": 0.786
+    "amount": 0.786,
+    "source": "Origami",
+    "target": "Orbital",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.947,
     "brightness": 0.951,
-    "warmth": 0.363,
-    "movement": 0.477,
     "density": 0.911,
+    "movement": 0.477,
     "space": 0.941,
-    "aggression": 0.947
+    "warmth": 0.363
   },
+  "engines": [
+    "Origami",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.905,
-    "MOVEMENT": 0.453,
     "COUPLING": 0.895,
+    "MOVEMENT": 0.453,
     "SPACE": 0.895
   },
+  "mood": "Aether",
+  "name": "BRIGHT DENSE VAST VIOLENT AET AGG 3",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.904,
+      "macro_coupling": 0.86,
+      "macro_movement": 0.457,
+      "macro_space": 0.909
+    },
+    "Origami": {
+      "macro_character": 0.907,
+      "macro_coupling": 0.929,
+      "macro_movement": 0.448,
+      "macro_space": 0.881
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "aggressive",
@@ -48,5 +55,6 @@
     "bright",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

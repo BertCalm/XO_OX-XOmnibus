@@ -1,45 +1,52 @@
 {
-  "name": "HOT_STILL_SPARSE_VAST_FLX_1",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERDUB",
-    "ORIGAMI"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.5682,
-      "macro_movement": 0.1195,
-      "macro_coupling": 0.6525,
-      "macro_space": 0.8948
-    },
-    "ORIGAMI": {
-      "macro_character": 0.7361,
-      "macro_movement": 0.0892,
-      "macro_coupling": 0.4786,
-      "macro_space": 0.8452
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OVERDUB",
-    "target": "ORIGAMI",
-    "amount": 0.8392
+    "amount": 0.8392,
+    "source": "Overdub",
+    "target": "Origami",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
+    "aggression": 0.5279,
     "brightness": 0.5926,
-    "warmth": 0.913,
-    "movement": 0.0348,
     "density": 0.0476,
+    "movement": 0.0348,
     "space": 0.9109,
-    "aggression": 0.5279
+    "warmth": 0.913
   },
+  "engines": [
+    "Overdub",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5682,
-    "MOVEMENT": 0.1195,
     "COUPLING": 0.6525,
+    "MOVEMENT": 0.1195,
     "SPACE": 0.8948
   },
+  "mood": "Flux",
+  "name": "HOT_STILL_SPARSE_VAST_FLX_1",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.7361,
+      "macro_coupling": 0.4786,
+      "macro_movement": 0.0892,
+      "macro_space": 0.8452
+    },
+    "Overdub": {
+      "macro_character": 0.5682,
+      "macro_coupling": 0.6525,
+      "macro_movement": 0.1195,
+      "macro_space": 0.8948
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "low-movement",
     "low-density",
     "high-space"
-  ]
+  ],
+  "version": "1.0"
 }

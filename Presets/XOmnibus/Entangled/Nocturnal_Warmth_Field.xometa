@@ -1,48 +1,56 @@
 {
-  "name": "Nocturnal Warmth Field",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8,
+    "source": "Opal",
+    "target": "Ohm",
+    "type": "LFO_SYNC"
+  },
+  "dna": {
+    "aggression": 0.47,
+    "brightness": 0.09,
+    "density": 0.61,
+    "movement": 0.19,
+    "space": 0.44,
+    "warmth": 0.76
+  },
   "engines": [
-    "OHM",
-    "OPAL"
+    "Ohm",
+    "Opal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.69,
+    "MOVEMENT": 0.19,
+    "SPACE": 0.44
+  },
+  "mood": "Entangled",
+  "name": "Nocturnal Warmth Field",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.58,
-      "macro_movement": 0.85,
       "macro_coupling": 0.54,
+      "macro_movement": 0.85,
       "macro_space": 0.83
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.17,
-      "macro_movement": 0.15,
       "macro_coupling": 0.81,
+      "macro_movement": 0.15,
       "macro_space": 0.84
     }
   },
-  "coupling": {
-    "type": "LFO_SYNC",
-    "source": "OPAL",
-    "target": "OHM",
-    "amount": 0.8
-  },
-  "dna": {
-    "brightness": 0.09,
-    "warmth": 0.76,
-    "movement": 0.19,
-    "density": 0.61,
-    "space": 0.44,
-    "aggression": 0.47
-  },
-  "macros": {
-    "CHARACTER": 0.5,
-    "MOVEMENT": 0.19,
-    "COUPLING": 0.69,
-    "SPACE": 0.44
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-  ]
+  ],
+  "version": "1.0"
 }

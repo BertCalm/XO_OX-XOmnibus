@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_STILL_INTIMATE_FAM_VOL_2",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ORIGAMI",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.97,
-      "macro_movement": 0.087,
-      "macro_coupling": 0.492,
-      "macro_space": 0.14
-    },
-    "ODDFELIX": {
-      "macro_character": 0.977,
-      "macro_movement": 0.094,
-      "macro_coupling": 0.516,
-      "macro_space": 0.144
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ODDFELIX",
-    "target": "ORIGAMI",
-    "amount": 0.875
+    "amount": 0.875,
+    "source": "OddfeliX",
+    "target": "Origami",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
+    "aggression": 0.41,
     "brightness": 0.959,
-    "warmth": 0.99,
-    "movement": 0.107,
     "density": 0.603,
+    "movement": 0.107,
     "space": 0.129,
-    "aggression": 0.41
+    "warmth": 0.99
   },
+  "engines": [
+    "Origami",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.974,
-    "MOVEMENT": 0.09,
     "COUPLING": 0.504,
+    "MOVEMENT": 0.09,
     "SPACE": 0.142
   },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_STILL_INTIMATE_FAM_VOL_2",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.977,
+      "macro_coupling": 0.516,
+      "macro_movement": 0.094,
+      "macro_space": 0.144
+    },
+    "Origami": {
+      "macro_character": 0.97,
+      "macro_coupling": 0.492,
+      "macro_movement": 0.087,
+      "macro_space": 0.14
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "intimate",
     "bright",
     "still"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "DREAM LINK",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.204,
+    "source": "Oblique",
+    "target": "Orbital",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.085,
+    "brightness": 0.289,
+    "density": 0.845,
+    "movement": 0.024,
+    "space": 0.941,
+    "warmth": 0.896
+  },
   "engines": [
-    "OBLIQUE",
-    "ORBITAL"
+    "Oblique",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.163,
+    "COUPLING": 0.768,
+    "MOVEMENT": 0.305,
+    "SPACE": 0.539
+  },
+  "mood": "Entangled",
+  "name": "DREAM LINK",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.733,
-      "macro_movement": 0.21,
       "macro_coupling": 0.33,
+      "macro_movement": 0.21,
       "macro_space": 0.764
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.657,
-      "macro_movement": 0.211,
       "macro_coupling": 0.664,
+      "macro_movement": 0.211,
       "macro_space": 0.459
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBLIQUE",
-    "target": "ORBITAL",
-    "amount": 0.204
-  },
-  "dna": {
-    "brightness": 0.289,
-    "warmth": 0.896,
-    "movement": 0.024,
-    "density": 0.845,
-    "space": 0.941,
-    "aggression": 0.085
-  },
-  "macros": {
-    "CHARACTER": 0.163,
-    "MOVEMENT": 0.305,
-    "COUPLING": 0.768,
-    "SPACE": 0.539
-  },
+  "schema_version": 1,
   "tags": [
     "delicate",
     "entangled",
     "yielding",
     "quiet"
-  ]
+  ],
+  "version": "1.0"
 }

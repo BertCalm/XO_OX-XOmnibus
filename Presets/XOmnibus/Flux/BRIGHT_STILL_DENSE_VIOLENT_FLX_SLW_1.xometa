@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_STILL_DENSE_VIOLENT_FLX_SLW_1",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.684,
+    "source": "Oceanic",
+    "target": "Origami",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.914,
+    "brightness": 0.945,
+    "density": 0.967,
+    "movement": 0.068,
+    "space": 0.435,
+    "warmth": 0.396
+  },
   "engines": [
-    "OCEANIC",
-    "ORIGAMI"
+    "Oceanic",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.941,
+    "COUPLING": 0.825,
+    "MOVEMENT": 0.068,
+    "SPACE": 0.435
+  },
+  "mood": "Flux",
+  "name": "BRIGHT_STILL_DENSE_VIOLENT_FLX_SLW_1",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.854,
-      "macro_movement": 0.081,
       "macro_coupling": 0.706,
+      "macro_movement": 0.081,
       "macro_space": 0.419
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.963,
-      "macro_movement": 0.076,
       "macro_coupling": 0.908,
+      "macro_movement": 0.076,
       "macro_space": 0.468
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OCEANIC",
-    "target": "ORIGAMI",
-    "amount": 0.684
-  },
-  "dna": {
-    "brightness": 0.945,
-    "warmth": 0.396,
-    "movement": 0.068,
-    "density": 0.967,
-    "space": 0.435,
-    "aggression": 0.914
-  },
-  "macros": {
-    "CHARACTER": 0.941,
-    "MOVEMENT": 0.068,
-    "COUPLING": 0.825,
-    "SPACE": 0.435
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +54,6 @@
     "dense",
     "violent",
     "frozen-instability"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "Stiff String Orbit",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Obscura",
+    "target": "Orbital",
+    "type": "HARMONIC_LOCK"
+  },
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.5,
+    "density": 0.6,
+    "movement": 0.55,
+    "space": 0.85,
+    "warmth": 0.35
+  },
   "engines": [
-    "OBSCURA",
-    "ORBITAL"
+    "Obscura",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.375,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.4,
+    "SPACE": 0.65
+  },
+  "mood": "Entangled",
+  "name": "Stiff String Orbit",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.35,
-      "macro_movement": 0.25,
       "macro_coupling": 0.55,
+      "macro_movement": 0.25,
       "macro_space": 0.6
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.4,
-      "macro_movement": 0.55,
       "macro_coupling": 0.5,
+      "macro_movement": 0.55,
       "macro_space": 0.7
     }
   },
-  "coupling": {
-    "type": "HARMONIC_LOCK",
-    "source": "OBSCURA",
-    "target": "ORBITAL",
-    "amount": 0.65
-  },
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.35,
-    "movement": 0.55,
-    "density": 0.6,
-    "space": 0.85,
-    "aggression": 0.2
-  },
-  "macros": {
-    "CHARACTER": 0.375,
-    "MOVEMENT": 0.4,
-    "COUPLING": 0.65,
-    "SPACE": 0.65
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "harmonic"
-  ]
+  ],
+  "version": "1.0"
 }

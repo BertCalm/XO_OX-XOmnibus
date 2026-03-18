@@ -1,48 +1,56 @@
 {
-  "name": "STRIPPED SILENCE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.766,
+    "source": "Oceanic",
+    "target": "Osprey",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.881,
+    "brightness": 0.389,
+    "density": 0.039,
+    "movement": 0.946,
+    "space": 0.02,
+    "warmth": 0.77
+  },
   "engines": [
-    "OCEANIC",
-    "OSPREY"
+    "Oceanic",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.576,
+    "COUPLING": 0.943,
+    "MOVEMENT": 0.477,
+    "SPACE": 0.299
+  },
+  "mood": "Entangled",
+  "name": "STRIPPED SILENCE",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.151,
-      "macro_movement": 0.383,
       "macro_coupling": 0.153,
+      "macro_movement": 0.383,
       "macro_space": 0.214
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.415,
-      "macro_movement": 0.331,
       "macro_coupling": 0.466,
+      "macro_movement": 0.331,
       "macro_space": 0.062
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OCEANIC",
-    "target": "OSPREY",
-    "amount": 0.766
-  },
-  "dna": {
-    "brightness": 0.389,
-    "warmth": 0.77,
-    "movement": 0.946,
-    "density": 0.039,
-    "space": 0.02,
-    "aggression": 0.881
-  },
-  "macros": {
-    "CHARACTER": 0.576,
-    "MOVEMENT": 0.477,
-    "COUPLING": 0.943,
-    "SPACE": 0.299
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "drift",
     "filament"
-  ]
+  ],
+  "version": "1.0"
 }

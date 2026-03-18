@@ -1,50 +1,58 @@
 {
-  "name": "Facet Dispersion",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.63,
+    "source": "Opal",
+    "target": "Obsidian",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "description": "Opal frequency-shifts Obsidian's crystal facets — each facet refracts a different grain.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.441,
+    "density": 0.0,
+    "movement": 0.58,
+    "space": 1.0,
+    "warmth": 0.07
+  },
   "engines": [
-    "OBSIDIAN",
-    "OPAL"
+    "Obsidian",
+    "Opal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2,
+    "COUPLING": 0.63,
+    "MOVEMENT": 0.58,
+    "SPACE": 0.87
+  },
+  "mood": "Entangled",
+  "name": "Facet Dispersion",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.2,
-      "macro_movement": 0.58,
       "macro_coupling": 0.63,
+      "macro_movement": 0.58,
       "macro_space": 0.87
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.17,
-      "macro_movement": 0.53,
       "macro_coupling": 0.68,
+      "macro_movement": 0.53,
       "macro_space": 0.9
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OPAL",
-    "target": "OBSIDIAN",
-    "amount": 0.63
-  },
-  "dna": {
-    "brightness": 0.441,
-    "warmth": 0.07,
-    "movement": 0.58,
-    "density": 0.0,
-    "space": 1.0,
-    "aggression": 0.1
-  },
-  "macros": {
-    "CHARACTER": 0.2,
-    "MOVEMENT": 0.58,
-    "COUPLING": 0.63,
-    "SPACE": 0.87
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "facet",
     "dispersion"
   ],
-  "description": "Opal frequency-shifts Obsidian's crystal facets \u2014 each facet refracts a different grain."
+  "version": "1.0"
 }

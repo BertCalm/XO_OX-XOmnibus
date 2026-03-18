@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_HOT_DENSE_VAST_AET3_4",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.5948,
+    "source": "Orbital",
+    "target": "Overworld",
+    "type": "SPATIAL_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.5213,
+    "brightness": 0.9485,
+    "density": 0.9681,
+    "movement": 0.3537,
+    "space": 0.9059,
+    "warmth": 0.8709
+  },
   "engines": [
-    "ORBITAL",
-    "OVERWORLD"
+    "Orbital",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9097,
+    "COUPLING": 0.5948,
+    "MOVEMENT": 0.3537,
+    "SPACE": 0.9059
+  },
+  "mood": "Aether",
+  "name": "BRIGHT_HOT_DENSE_VAST_AET3_4",
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.4572,
-      "macro_movement": 0.7156,
       "macro_coupling": 0.8397,
+      "macro_movement": 0.7156,
       "macro_space": 0.5791
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.3883,
-      "macro_movement": 0.8811,
       "macro_coupling": 0.2381,
+      "macro_movement": 0.8811,
       "macro_space": 0.6757
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORBITAL",
-    "target": "OVERWORLD",
-    "amount": 0.5948
-  },
-  "dna": {
-    "brightness": 0.9485,
-    "warmth": 0.8709,
-    "movement": 0.3537,
-    "density": 0.9681,
-    "space": 0.9059,
-    "aggression": 0.5213
-  },
-  "macros": {
-    "CHARACTER": 0.9097,
-    "MOVEMENT": 0.3537,
-    "COUPLING": 0.5948,
-    "SPACE": 0.9059
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "warm",
     "bright",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Haze Pipe",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Peter's flute floats high while Wolf's reed anchors below. Wide stereo breath.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.4,
+    "density": 0.4,
+    "movement": 0.34,
+    "space": 0.86,
+    "warmth": 0.72
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "atmosphere",
-    "pad",
-    "atmosphere"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.72,
-    "movement": 0.34,
-    "density": 0.4,
-    "space": 0.86,
-    "aggression": 0.0
-  },
+  "mood": "Atmosphere",
+  "name": "Haze Pipe",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.592,
-      "obbl_embouchureA": 0.541,
       "obbl_airFlutterA": 0.274,
-      "obbl_instrumentA": 7,
       "obbl_bodySizeA": 0.412,
-      "obbl_breathB": 0.76,
-      "obbl_reedStiffness": 0.626,
-      "obbl_reedBite": 0.261,
-      "obbl_instrumentB": 7,
       "obbl_bodySizeB": 0.547,
-      "obbl_voiceRouting": 1,
-      "obbl_damping": 0.995,
-      "obbl_sympatheticAmt": 0.345,
-      "obbl_driftRate": 0.093,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.392,
       "obbl_bondIntensity": 0.683,
       "obbl_bondRate": 0.263,
-      "obbl_fxAChorus": 0.155,
+      "obbl_bondStage": 0.392,
+      "obbl_breathA": 0.592,
+      "obbl_breathB": 0.76,
+      "obbl_damping": 0.995,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.093,
+      "obbl_embouchureA": 0.541,
       "obbl_fxABrightDelay": 0.172,
-      "obbl_fxAPlate": 0.209,
+      "obbl_fxAChorus": 0.155,
       "obbl_fxAExciter": 0.149,
-      "obbl_fxBPhaser": 0.165,
+      "obbl_fxAPlate": 0.209,
       "obbl_fxBDarkDelay": 0.283,
+      "obbl_fxBPhaser": 0.165,
       "obbl_fxBSpring": 0.221,
       "obbl_fxBTapeSat": 0.084,
-      "obbl_macroBreath": 0.545,
+      "obbl_instrumentA": 7,
+      "obbl_instrumentB": 7,
       "obbl_macroBond": 0.0,
+      "obbl_macroBreath": 0.545,
       "obbl_macroMischief": 0.0,
-      "obbl_macroWind": 0.529
+      "obbl_macroWind": 0.529,
+      "obbl_reedBite": 0.261,
+      "obbl_reedStiffness": 0.626,
+      "obbl_sympatheticAmt": 0.345,
+      "obbl_voiceRouting": 1
     }
   },
-  "coupling": null,
-  "description": "Peter's flute floats high while Wolf's reed anchors below. Wide stereo breath."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "atmosphere",
+    "pad",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
 }

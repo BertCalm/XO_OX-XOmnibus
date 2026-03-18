@@ -1,50 +1,58 @@
 {
-  "name": "STACKED WAVE",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "OTTONI"
-  ],
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.7196,
-      "macro_movement": 0.9696,
-      "macro_coupling": 0.8442,
-      "macro_space": 0.7524
-    },
-    "OTTONI": {
-      "macro_character": 0.7838,
-      "macro_movement": 0.234,
-      "macro_coupling": 0.6957,
-      "macro_space": 0.9656
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OUTWIT",
-    "target": "OTTONI",
-    "amount": 0.9353
+    "amount": 0.9353,
+    "source": "Outwit",
+    "target": "Ottoni",
+    "type": "TIMBRE_BLEND"
   },
   "dna": {
+    "aggression": 0.4406,
     "brightness": 0.904,
-    "warmth": 0.194,
-    "movement": 0.6783,
     "density": 0.9521,
+    "movement": 0.6783,
     "space": 0.5704,
-    "aggression": 0.4406
+    "warmth": 0.194
   },
+  "engines": [
+    "Outwit",
+    "Ottoni"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7694,
-    "MOVEMENT": 0.7781,
     "COUPLING": 0.8509,
+    "MOVEMENT": 0.7781,
     "SPACE": 0.4187
   },
+  "mood": "Entangled",
+  "name": "STACKED WAVE",
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.7838,
+      "macro_coupling": 0.6957,
+      "macro_movement": 0.234,
+      "macro_space": 0.9656
+    },
+    "Outwit": {
+      "macro_character": 0.7196,
+      "macro_coupling": 0.8442,
+      "macro_movement": 0.9696,
+      "macro_space": 0.7524
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
     "extreme-density",
     "granite",
     "coiled"
-  ]
+  ],
+  "version": "1.0"
 }

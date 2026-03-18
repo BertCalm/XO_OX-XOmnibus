@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT SPARSE GENTLE FOU 14",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.667,
+    "source": "Odyssey",
+    "target": "Owlfish",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.905,
+    "density": 0.07,
+    "movement": 0.669,
+    "space": 0.645,
+    "warmth": 0.4
+  },
   "engines": [
-    "ODYSSEY",
-    "OWLFISH"
+    "Odyssey",
+    "Owlfish"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.653,
+    "COUPLING": 0.425,
+    "MOVEMENT": 0.669,
+    "SPACE": 0.645
+  },
+  "mood": "Foundation",
+  "name": "BRIGHT SPARSE GENTLE FOU 14",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.653,
-      "macro_movement": 0.669,
       "macro_coupling": 0.425,
+      "macro_movement": 0.669,
       "macro_space": 0.645
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.754,
-      "macro_movement": 0.81,
       "macro_coupling": 1.0,
+      "macro_movement": 0.81,
       "macro_space": 0.75
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ODYSSEY",
-    "target": "OWLFISH",
-    "amount": 0.667
-  },
-  "dna": {
-    "brightness": 0.905,
-    "warmth": 0.4,
-    "movement": 0.669,
-    "density": 0.07,
-    "space": 0.645,
-    "aggression": 0.08
-  },
-  "macros": {
-    "CHARACTER": 0.653,
-    "MOVEMENT": 0.669,
-    "COUPLING": 0.425,
-    "SPACE": 0.645
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "bright",
@@ -47,5 +54,6 @@
     "gentle",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

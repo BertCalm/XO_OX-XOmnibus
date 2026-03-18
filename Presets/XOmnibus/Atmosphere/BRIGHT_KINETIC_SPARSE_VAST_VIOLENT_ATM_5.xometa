@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_KINETIC_SPARSE_VAST_VIOLENT_ATM_5",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OSPREY",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.7408,
-      "macro_movement": 0.9084,
-      "macro_coupling": 0.0419,
-      "macro_space": 0.9138
-    },
-    "ODDFELIX": {
-      "macro_character": 0.7763,
-      "macro_movement": 0.8745,
-      "macro_coupling": 0.0844,
-      "macro_space": 0.8891
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OSPREY",
-    "target": "ODDFELIX",
-    "amount": 0.846
+    "amount": 0.846,
+    "source": "Osprey",
+    "target": "OddfeliX",
+    "type": "VELOCITY_COUPLE"
   },
   "dna": {
+    "aggression": 0.9809,
     "brightness": 0.8895,
-    "warmth": 0.62,
-    "movement": 0.8912,
     "density": 0.0654,
+    "movement": 0.8912,
     "space": 0.8915,
-    "aggression": 0.9809
+    "warmth": 0.62
   },
+  "engines": [
+    "Osprey",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7586,
-    "MOVEMENT": 0.8915,
     "COUPLING": 0.0631,
+    "MOVEMENT": 0.8915,
     "SPACE": 0.9014
   },
+  "mood": "Atmosphere",
+  "name": "BRIGHT_KINETIC_SPARSE_VAST_VIOLENT_ATM_5",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.7763,
+      "macro_coupling": 0.0844,
+      "macro_movement": 0.8745,
+      "macro_space": 0.8891
+    },
+    "Osprey": {
+      "macro_character": 0.7408,
+      "macro_coupling": 0.0419,
+      "macro_movement": 0.9084,
+      "macro_space": 0.9138
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
@@ -47,5 +54,6 @@
     "sparse",
     "vast",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

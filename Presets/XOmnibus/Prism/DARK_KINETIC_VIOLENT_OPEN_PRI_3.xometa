@@ -1,47 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "DARK KINETIC VIOLENT OPEN PRI 3",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Medium",
+    "sourceEngine": "Onset",
+    "targetEngine": null,
+    "type": "Waveshape"
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Prism preset: DARK KINETIC VIOLENT OPEN PRI 3.",
+  "dna": {
+    "aggression": 0.939,
+    "brightness": 0.084,
+    "density": 0.445,
+    "movement": 0.893,
+    "space": 0.929,
+    "warmth": 0.421
+  },
   "engines": [
     "Onset"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Prism preset: DARK KINETIC VIOLENT OPEN PRI 3.",
-  "tags": [
-    "x-low-brightness",
-    "x-high-aggression",
-    "x-high-movement",
-    "x-high-space"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "DARK KINETIC VIOLENT OPEN PRI 3",
   "parameters": {},
-  "coupling": {
-    "type": "Waveshape",
-    "intensity": "Medium",
-    "sourceEngine": "Onset",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.084,
-    "warmth": 0.421,
-    "aggression": 0.939,
-    "density": 0.445,
-    "movement": 0.893,
-    "space": 0.929
-  }
+  "tags": [
+    "x-low-brightness",
+    "x-high-aggression",
+    "x-high-movement",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

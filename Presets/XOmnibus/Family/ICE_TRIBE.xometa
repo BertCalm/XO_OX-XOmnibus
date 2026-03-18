@@ -1,48 +1,56 @@
 {
-  "name": "ICE TRIBE",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OTTONI",
-    "OSPREY"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.589,
-      "macro_movement": 0.429,
-      "macro_coupling": 0.569,
-      "macro_space": 0.06
-    },
-    "OSPREY": {
-      "macro_character": 0.96,
-      "macro_movement": 0.099,
-      "macro_coupling": 0.763,
-      "macro_space": 0.626
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_SHARE",
-    "source": "OTTONI",
-    "target": "OSPREY",
-    "amount": 0.459
+    "amount": 0.459,
+    "source": "Ottoni",
+    "target": "Osprey",
+    "type": "ENVELOPE_SHARE"
   },
   "dna": {
+    "aggression": 0.895,
     "brightness": 0.118,
-    "warmth": 0.096,
-    "movement": 0.606,
     "density": 0.791,
+    "movement": 0.606,
     "space": 0.226,
-    "aggression": 0.895
+    "warmth": 0.096
   },
+  "engines": [
+    "Ottoni",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.081,
-    "MOVEMENT": 0.24,
     "COUPLING": 0.552,
+    "MOVEMENT": 0.24,
     "SPACE": 0.157
   },
+  "mood": "Family",
+  "name": "ICE TRIBE",
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.96,
+      "macro_coupling": 0.763,
+      "macro_movement": 0.099,
+      "macro_space": 0.626
+    },
+    "Ottoni": {
+      "macro_character": 0.589,
+      "macro_coupling": 0.569,
+      "macro_movement": 0.429,
+      "macro_space": 0.06
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "cold",
     "xlow-warmth"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,14 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "DARK_HOT_VAST_VIOLENT_ENT_5",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7342,
+    "pairs": [
+      {
+        "amount": 0.7342,
+        "source": "Overworld",
+        "target": "Owlfish",
+        "type": "HARMONIC_FOLD"
+      }
+    ],
+    "source": "Overworld",
+    "target": "Owlfish",
+    "type": "HARMONIC_FOLD"
+  },
+  "couplingIntensity": "Medium",
+  "description": "Dark Hot Vast Violent character entanglement — OWLFISH × OVERWORLD via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.8875,
+    "brightness": 0.0265,
+    "density": 0.5806,
+    "movement": 0.5624,
+    "space": 0.8859,
+    "warmth": 0.9033
+  },
   "engines": [
-    "OWLFISH",
-    "OVERWORLD"
+    "Owlfish",
+    "Overworld"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dark Hot Vast Violent character entanglement \u2014 OWLFISH \u00d7 OVERWORLD via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4649,
+    "COUPLING": 0.7342,
+    "MOVEMENT": 0.5624,
+    "SPACE": 0.8859
+  },
+  "mood": "Entangled",
+  "name": "DARK_HOT_VAST_VIOLENT_ENT_5",
+  "parameters": {
+    "Overworld": {
+      "amp_attack": 0.2408,
+      "amp_release": 0.6595,
+      "coupling_level": 0.8908,
+      "density": 0.6066,
+      "drive": 0.7975,
+      "filter_cutoff": 0.2564,
+      "filter_resonance": 0.5545,
+      "macro_character": 0.6759,
+      "macro_coupling": 0.9384,
+      "macro_movement": 0.5919,
+      "macro_space": 0.8534,
+      "output_level": 0.8447,
+      "reverb_mix": 0.6609,
+      "reverb_size": 0.7233
+    },
+    "Owlfish": {
+      "amp_attack": 0.2486,
+      "amp_release": 0.653,
+      "coupling_level": 0.904,
+      "density": 0.6108,
+      "drive": 0.7756,
+      "filter_cutoff": 0.2086,
+      "filter_resonance": 0.5097,
+      "macro_character": 0.6607,
+      "macro_coupling": 0.9212,
+      "macro_movement": 0.5338,
+      "macro_space": 0.8961,
+      "output_level": 0.8415,
+      "reverb_mix": 0.6294,
+      "reverb_size": 0.7515
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.8875,
+    "brightness": 0.0265,
+    "density": 0.5806,
+    "movement": 0.5624,
+    "space": 0.8859,
+    "warmth": 0.9033
+  },
   "tags": [
     "entangled",
     "dark",
@@ -17,81 +93,5 @@
     "violent",
     "resonant"
   ],
-  "macroLabels": [
-    "DEPTH",
-    "FEEDING",
-    "DEFENSE",
-    "PRESSURE"
-  ],
-  "couplingIntensity": "Medium",
-  "dna": {
-    "brightness": 0.0265,
-    "warmth": 0.9033,
-    "movement": 0.5624,
-    "density": 0.5806,
-    "space": 0.8859,
-    "aggression": 0.8875
-  },
-  "sonic_dna": {
-    "brightness": 0.0265,
-    "warmth": 0.9033,
-    "movement": 0.5624,
-    "density": 0.5806,
-    "space": 0.8859,
-    "aggression": 0.8875
-  },
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.6607,
-      "macro_movement": 0.5338,
-      "macro_coupling": 0.9212,
-      "macro_space": 0.8961,
-      "filter_cutoff": 0.2086,
-      "filter_resonance": 0.5097,
-      "amp_attack": 0.2486,
-      "amp_release": 0.653,
-      "reverb_mix": 0.6294,
-      "reverb_size": 0.7515,
-      "drive": 0.7756,
-      "density": 0.6108,
-      "output_level": 0.8415,
-      "coupling_level": 0.904
-    },
-    "OVERWORLD": {
-      "macro_character": 0.6759,
-      "macro_movement": 0.5919,
-      "macro_coupling": 0.9384,
-      "macro_space": 0.8534,
-      "filter_cutoff": 0.2564,
-      "filter_resonance": 0.5545,
-      "amp_attack": 0.2408,
-      "amp_release": 0.6595,
-      "reverb_mix": 0.6609,
-      "reverb_size": 0.7233,
-      "drive": 0.7975,
-      "density": 0.6066,
-      "output_level": 0.8447,
-      "coupling_level": 0.8908
-    }
-  },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OVERWORLD",
-    "target": "OWLFISH",
-    "amount": 0.7342,
-    "pairs": [
-      {
-        "source": "OVERWORLD",
-        "target": "OWLFISH",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.7342
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.4649,
-    "MOVEMENT": 0.5624,
-    "COUPLING": 0.7342,
-    "SPACE": 0.8859
-  }
+  "version": "1.0.0"
 }

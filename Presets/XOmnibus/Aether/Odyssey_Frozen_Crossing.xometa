@@ -1,13 +1,50 @@
 {
-  "schema_version": 1,
-  "name": "Frozen Crossing",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The journey suspended at absolute zero. The odyssey continues but no motion is visible — only the vast dark between destinations.",
+  "dna": {
+    "aggression": 0.02,
+    "brightness": 0.12,
+    "density": 0.38,
+    "movement": 0.07,
+    "space": 0.96,
+    "warmth": 0.2
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "The journey suspended at absolute zero. The odyssey continues but no motion is visible \u2014 only the vast dark between destinations.",
+  "macroLabels": [
+    "JOURNEY",
+    "HORIZON",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Frozen Crossing",
+  "parameters": {
+    "Odyssey": {
+      "drift_ampAttack": 7.0,
+      "drift_ampDecay": 2.0,
+      "drift_ampRelease": 10.0,
+      "drift_ampSustain": 0.8,
+      "drift_delayFeedback": 0.5,
+      "drift_filterCutoff": 0.08,
+      "drift_filterReso": 0.2,
+      "drift_lfoDepth": 0.2,
+      "drift_lfoRate": 0.02,
+      "drift_macroCoupling": 0.0,
+      "drift_macroHorizon": 0.0,
+      "drift_macroJourney": 0.0,
+      "drift_macroSpace": 0.0,
+      "drift_oscA_mode": 0,
+      "drift_reverbMix": 0.94
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "dark-aether",
@@ -16,42 +53,5 @@
     "vast",
     "dark"
   ],
-  "macroLabels": [
-    "JOURNEY",
-    "HORIZON",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.12,
-    "warmth": 0.2,
-    "movement": 0.07,
-    "density": 0.38,
-    "space": 0.96,
-    "aggression": 0.02
-  },
-  "parameters": {
-    "Odyssey": {
-      "drift_oscA_mode": 0,
-      "drift_filterCutoff": 0.08,
-      "drift_filterReso": 0.2,
-      "drift_lfoRate": 0.02,
-      "drift_lfoDepth": 0.2,
-      "drift_ampAttack": 7.0,
-      "drift_ampDecay": 2.0,
-      "drift_ampSustain": 0.8,
-      "drift_ampRelease": 10.0,
-      "drift_reverbMix": 0.94,
-      "drift_delayFeedback": 0.5,
-      "drift_macroJourney": 0.0,
-      "drift_macroHorizon": 0.0,
-      "drift_macroCoupling": 0.0,
-      "drift_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

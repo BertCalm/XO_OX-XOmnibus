@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_COLD_STILL_VAST_FLX_SLW_2",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.789,
+    "source": "Odyssey",
+    "target": "Oracle",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.315,
+    "brightness": 0.935,
+    "density": 0.49,
+    "movement": 0.097,
+    "space": 0.893,
+    "warmth": 0.081
+  },
   "engines": [
-    "ODYSSEY",
-    "ORACLE"
+    "Odyssey",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.402,
+    "COUPLING": 0.683,
+    "MOVEMENT": 0.097,
+    "SPACE": 0.893
+  },
+  "mood": "Flux",
+  "name": "BRIGHT_COLD_STILL_VAST_FLX_SLW_2",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.326,
-      "macro_movement": 0.101,
       "macro_coupling": 0.679,
+      "macro_movement": 0.101,
       "macro_space": 0.918
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.58,
-      "macro_movement": 0.089,
       "macro_coupling": 0.66,
+      "macro_movement": 0.089,
       "macro_space": 0.913
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ODYSSEY",
-    "target": "ORACLE",
-    "amount": 0.789
-  },
-  "dna": {
-    "brightness": 0.935,
-    "warmth": 0.081,
-    "movement": 0.097,
-    "density": 0.49,
-    "space": 0.893,
-    "aggression": 0.315
-  },
-  "macros": {
-    "CHARACTER": 0.402,
-    "MOVEMENT": 0.097,
-    "COUPLING": 0.683,
-    "SPACE": 0.893
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +54,6 @@
     "cold",
     "vast",
     "imperceptible-morph"
-  ]
+  ],
+  "version": "1.0"
 }

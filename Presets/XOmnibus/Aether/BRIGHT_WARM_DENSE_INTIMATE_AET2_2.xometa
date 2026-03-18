@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_WARM_DENSE_INTIMATE_AET2_2",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OSPREY",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.9167,
-      "macro_movement": 0.4202,
-      "macro_coupling": 0.9579,
-      "macro_space": 0.0763
-    },
-    "OBSCURA": {
-      "macro_character": 0.8888,
-      "macro_movement": 0.4849,
-      "macro_coupling": 0.99,
-      "macro_space": 0.0572
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OSPREY",
-    "target": "OBSCURA",
-    "amount": 0.5463
+    "amount": 0.5463,
+    "source": "Osprey",
+    "target": "Obscura",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.591,
     "brightness": 0.9313,
-    "warmth": 0.8837,
-    "space": 0.0608,
     "density": 0.9787,
     "movement": 0.4398,
-    "aggression": 0.591
+    "space": 0.0608,
+    "warmth": 0.8837
   },
+  "engines": [
+    "Osprey",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.9027,
-    "MOVEMENT": 0.4526,
     "COUPLING": 0.5463,
+    "MOVEMENT": 0.4526,
     "SPACE": 0.0608
   },
+  "mood": "Aether",
+  "name": "BRIGHT_WARM_DENSE_INTIMATE_AET2_2",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.8888,
+      "macro_coupling": 0.99,
+      "macro_movement": 0.4849,
+      "macro_space": 0.0572
+    },
+    "Osprey": {
+      "macro_character": 0.9167,
+      "macro_coupling": 0.9579,
+      "macro_movement": 0.4202,
+      "macro_space": 0.0763
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +56,6 @@
     "dense",
     "intimate",
     "lush"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "VAST RESONANT GROUND",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OSPREY",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.652,
-      "macro_movement": 0.107,
-      "macro_coupling": 0.95,
-      "macro_space": 0.905
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.02,
-      "macro_movement": 0.047,
-      "macro_coupling": 0.126,
-      "macro_space": 0.933
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OSPREY",
-    "target": "OBBLIGATO",
-    "amount": 0.695
+    "amount": 0.695,
+    "source": "Osprey",
+    "target": "Obbligato",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
+    "aggression": 0.35,
     "brightness": 0.019,
-    "warmth": 0.539,
-    "movement": 0.082,
     "density": 1.0,
+    "movement": 0.082,
     "space": 0.923,
-    "aggression": 0.35
+    "warmth": 0.539
   },
+  "engines": [
+    "Osprey",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.218,
-    "MOVEMENT": 0.082,
     "COUPLING": 0.699,
+    "MOVEMENT": 0.082,
     "SPACE": 0.923
   },
+  "mood": "Foundation",
+  "name": "VAST RESONANT GROUND",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.02,
+      "macro_coupling": 0.126,
+      "macro_movement": 0.047,
+      "macro_space": 0.933
+    },
+    "Osprey": {
+      "macro_character": 0.652,
+      "macro_coupling": 0.95,
+      "macro_movement": 0.107,
+      "macro_space": 0.905
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

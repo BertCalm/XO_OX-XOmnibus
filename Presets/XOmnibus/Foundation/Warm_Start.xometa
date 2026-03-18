@@ -1,13 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Warm Start",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "A warm, slowly evolving pad that breathes on its own. The first organism.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.3,
+    "density": 0.3,
+    "movement": 0.3,
+    "space": 0.2,
+    "warmth": 0.7
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "A warm, slowly evolving pad that breathes on its own. The first organism.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Warm Start",
+  "parameters": {
+    "Organon": {
+      "organon_catalystDrive": 0.4,
+      "organon_dampingCoeff": 0.15,
+      "organon_enzymeSelect": 800.0,
+      "organon_isotopeBalance": 0.35,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.2,
+      "organon_metabolicRate": 0.5,
+      "organon_noiseColor": 0.4,
+      "organon_phasonShift": 0.0,
+      "organon_signalFlux": 0.6
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "pad",
     "warm",
@@ -15,42 +51,6 @@
     "organic",
     "starter"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Organon": {
-      "organon_metabolicRate": 0.5,
-      "organon_enzymeSelect": 800.0,
-      "organon_catalystDrive": 0.4,
-      "organon_dampingCoeff": 0.15,
-      "organon_signalFlux": 0.6,
-      "organon_phasonShift": 0.0,
-      "organon_isotopeBalance": 0.35,
-      "organon_lockIn": 0.0,
-      "organon_membrane": 0.2,
-      "organon_noiseColor": 0.4
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.3,
-    "warmth": 0.7,
-    "movement": 0.3,
-    "density": 0.3,
-    "space": 0.2,
-    "aggression": 0.1
-  }
+  "version": "1.0.0"
 }

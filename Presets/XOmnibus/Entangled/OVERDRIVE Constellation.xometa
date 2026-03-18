@@ -1,19 +1,29 @@
 {
-  "schema_version": 1,
-  "name": "OVERDRIVE Constellation",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.825,
+        "engineA": "Ole",
+        "engineB": "Overdub",
+        "type": "LFO->Pitch"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "OLE and OVERDRIVE coupled via LFO->Pitch. Blended Constellation DNA — stub seeded for expansion.",
+  "dna": {
+    "aggression": 0.66,
+    "brightness": 0.73,
+    "density": 0.638,
+    "movement": 0.654,
+    "space": 0.604,
+    "warmth": 0.595
+  },
   "engines": [
-    "OLE",
-    "OVERDRIVE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OLE and OVERDRIVE coupled via LFO->Pitch. Blended Constellation DNA \u2014 stub seeded for expansion.",
-  "tags": [
-    "coupling",
-    "constellation",
-    "ole",
-    "overdrive"
+    "Ole",
+    "Overdub"
   ],
   "macroLabels": [
     "TEXTURE",
@@ -21,27 +31,17 @@
     "BRIDGE",
     "DEPTH"
   ],
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-16",
+  "mood": "Entangled",
+  "name": "OVERDRIVE Constellation",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OLE",
-        "engineB": "OVERDRIVE",
-        "type": "LFO->Pitch",
-        "amount": 0.825
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.73,
-    "warmth": 0.595,
-    "movement": 0.654,
-    "density": 0.638,
-    "space": 0.604,
-    "aggression": 0.66
-  }
+  "tags": [
+    "coupling",
+    "constellation",
+    "ole",
+    "overdrive"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

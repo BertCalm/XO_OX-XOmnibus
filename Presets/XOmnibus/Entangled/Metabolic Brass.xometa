@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Metabolic Brass",
-  "mood": "Entangled",
-  "engines": [
-    "OTTONI",
-    "ORGANON"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Organon metabolic rhythm amplitude-modulates OTTONI brass \u2014 breathing sculpture.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Ottoni",
+        "engineB": "Organon",
+        "type": "AMPLITUDE_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Organon metabolic rhythm amplitude-modulates OTTONI brass — breathing sculpture.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.48,
+    "density": 0.58,
+    "movement": 0.6,
+    "space": 0.38,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Ottoni",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.56,
+    "COUPLING": 0.6,
+    "MOVEMENT": 0.6,
+    "SPACE": 0.45
+  },
+  "mood": "Entangled",
+  "name": "Metabolic Brass",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.5,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.65,
+      "macro_space": 0.5
+    },
+    "Ottoni": {
+      "macro_character": 0.62,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.55,
+      "macro_space": 0.4
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "breathing",
     "organic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.48,
-    "warmth": 0.7,
-    "movement": 0.6,
-    "density": 0.58,
-    "space": 0.38,
-    "aggression": 0.1
-  },
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.62,
-      "macro_movement": 0.55,
-      "macro_coupling": 0.6,
-      "macro_space": 0.4
-    },
-    "ORGANON": {
-      "macro_character": 0.5,
-      "macro_movement": 0.65,
-      "macro_coupling": 0.6,
-      "macro_space": 0.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OTTONI",
-        "engineB": "ORGANON",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.6
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.56,
-    "MOVEMENT": 0.6,
-    "COUPLING": 0.6,
-    "SPACE": 0.45
-  },
-  "sequencer": null
+  "version": "1.0"
 }

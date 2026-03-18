@@ -1,50 +1,58 @@
 {
-  "name": "HARSH BREATH",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OUTWIT",
-    "OPTIC"
-  ],
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.175,
-      "macro_movement": 0.636,
-      "macro_coupling": 0.507,
-      "macro_space": 0.83
-    },
-    "OPTIC": {
-      "macro_character": 0.347,
-      "macro_movement": 0.861,
-      "macro_coupling": 0.373,
-      "macro_space": 0.115
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OUTWIT",
-    "target": "OPTIC",
-    "amount": 0.736
+    "amount": 0.736,
+    "source": "Outwit",
+    "target": "Optic",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.946,
     "brightness": 0.203,
-    "warmth": 0.667,
-    "movement": 0.168,
     "density": 0.947,
+    "movement": 0.168,
     "space": 0.898,
-    "aggression": 0.946
+    "warmth": 0.667
   },
+  "engines": [
+    "Outwit",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.254,
-    "MOVEMENT": 0.9,
     "COUPLING": 0.224,
+    "MOVEMENT": 0.9,
     "SPACE": 0.898
   },
+  "mood": "Atmosphere",
+  "name": "HARSH BREATH",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.347,
+      "macro_coupling": 0.373,
+      "macro_movement": 0.861,
+      "macro_space": 0.115
+    },
+    "Outwit": {
+      "macro_character": 0.175,
+      "macro_coupling": 0.507,
+      "macro_movement": 0.636,
+      "macro_space": 0.83
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

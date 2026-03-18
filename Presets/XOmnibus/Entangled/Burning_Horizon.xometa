@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Burning Horizon",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.633,
+        "engineA": "Odyssey",
+        "engineB": "Orbital",
+        "type": "RESONANCE_SHARE"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.365,
+    "brightness": 0.6,
+    "density": 0.4,
+    "movement": 1.0,
+    "space": 0.77,
+    "warmth": 0.465
+  },
   "engines": [
-    "ODYSSEY",
-    "ORBITAL"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "odyssey",
-    "orbital"
+    "Odyssey",
+    "Orbital"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.519,
-    "MOVEMENT": 0.809,
     "COUPLING": 0.462,
+    "MOVEMENT": 0.809,
     "SPACE": 0.736
   },
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.465,
-    "movement": 1.0,
-    "density": 0.4,
-    "space": 0.77,
-    "aggression": 0.365
-  },
-  "sonic_dna": {
-    "brightness": 0.6,
-    "warmth": 0.465,
-    "movement": 1.0,
-    "density": 0.4,
-    "space": 0.77,
-    "aggression": 0.365
-  },
+  "mood": "Entangled",
+  "name": "Burning Horizon",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.783,
-      "macro_movement": 0.554,
       "macro_coupling": 0.656,
+      "macro_movement": 0.554,
       "macro_space": 0.361
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.398,
-      "macro_movement": 0.553,
       "macro_coupling": 0.432,
+      "macro_movement": 0.553,
       "macro_space": 0.245
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ODYSSEY",
-        "engineB": "ORBITAL",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.633
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.365,
+    "brightness": 0.6,
+    "density": 0.4,
+    "movement": 1.0,
+    "space": 0.77,
+    "warmth": 0.465
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "odyssey",
+    "orbital"
+  ],
+  "version": "1.0.0"
 }

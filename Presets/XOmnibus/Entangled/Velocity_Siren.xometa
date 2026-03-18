@@ -1,54 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Velocity Siren",
-  "mood": "Entangled",
-  "engines": [
-    "ORPHICA",
-    "OUROBOROS"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
+  "coupling": {
+    "amount": 0.72,
+    "intensity": "Deep",
+    "source": "Orphica",
+    "target": "Ouroboros",
+    "type": "VELOCITY_COUPLE"
+  },
   "description": "Velocity coupling: delicate ORPHICA touch slows OUROBOROS's cycle; hard attacks accelerate it.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.87,
+    "density": 0.32,
+    "movement": 0.6,
+    "space": 0.72,
+    "warmth": 0.629
+  },
+  "engines": [
+    "Orphica",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.72,
+    "COUPLING": 0.72,
+    "MOVEMENT": 0.58,
+    "SPACE": 0.7
+  },
+  "mood": "Entangled",
+  "name": "Velocity Siren",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.72,
-      "macro_movement": 0.58,
       "macro_coupling": 0.72,
+      "macro_movement": 0.58,
       "macro_space": 0.7
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.64,
-      "macro_movement": 0.66,
       "macro_coupling": 0.67,
+      "macro_movement": 0.66,
       "macro_space": 0.42
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ORPHICA",
-    "target": "OUROBOROS",
-    "amount": 0.72,
-    "intensity": "Deep"
-  },
-  "dna": {
-    "brightness": 0.87,
-    "warmth": 0.629,
-    "movement": 0.6,
-    "density": 0.32,
-    "space": 0.72,
-    "aggression": 0.0
-  },
-  "macros": {
-    "CHARACTER": 0.72,
-    "MOVEMENT": 0.58,
-    "COUPLING": 0.72,
-    "SPACE": 0.7
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "orphica",
     "ouroboros",
     "velocity",
     "siren"
-  ]
+  ],
+  "version": "1.0"
 }

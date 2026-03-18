@@ -1,54 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Serpent Forge",
-  "mood": "Entangled",
-  "engines": [
-    "OTTONI",
-    "OUROBOROS"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Harmonic folding draws the ouroboros into brass's recursive grain \u2014 dense and relentless.",
+  "coupling": {
+    "amount": 0.82,
+    "intensity": "Deep",
+    "source": "Ottoni",
+    "target": "Ouroboros",
+    "type": "HARMONIC_FOLD"
+  },
+  "description": "Harmonic folding draws the ouroboros into brass's recursive grain — dense and relentless.",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.65,
+    "density": 0.72,
+    "movement": 0.68,
+    "space": 0.32,
+    "warmth": 0.85
+  },
+  "engines": [
+    "Ottoni",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.78,
+    "COUPLING": 0.82,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.35
+  },
+  "mood": "Entangled",
+  "name": "Serpent Forge",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.78,
-      "macro_movement": 0.65,
       "macro_coupling": 0.82,
+      "macro_movement": 0.65,
       "macro_space": 0.35
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.7,
-      "macro_movement": 0.72,
       "macro_coupling": 0.75,
+      "macro_movement": 0.72,
       "macro_space": 0.4
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OTTONI",
-    "target": "OUROBOROS",
-    "amount": 0.82,
-    "intensity": "Deep"
-  },
-  "dna": {
-    "brightness": 0.65,
-    "warmth": 0.85,
-    "movement": 0.68,
-    "density": 0.72,
-    "space": 0.32,
-    "aggression": 0.25
-  },
-  "macros": {
-    "CHARACTER": 0.78,
-    "MOVEMENT": 0.65,
-    "COUPLING": 0.82,
-    "SPACE": 0.35
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "ottoni",
     "ouroboros",
     "chaos",
     "serpent"
-  ]
+  ],
+  "version": "1.0"
 }

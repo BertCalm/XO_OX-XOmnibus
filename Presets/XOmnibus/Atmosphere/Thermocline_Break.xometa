@@ -1,13 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Thermocline Break",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Rule 30 at mid chaos — genuinely unpredictable output. Arms partially desynchronized, feedback building. The water layers beginning to mix against their nature.",
+  "dna": {
+    "aggression": 0.48,
+    "brightness": 0.48,
+    "density": 0.68,
+    "movement": 0.65,
+    "space": 0.62,
+    "warmth": 0.38
+  },
   "engines": [
     "Outwit"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "Rule 30 at mid chaos \u2014 genuinely unpredictable output. Arms partially desynchronized, feedback building. The water layers beginning to mix against their nature.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Thermocline Break",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.4,
+      "owit_ampDecay": 1.2,
+      "owit_ampRelease": 3.5,
+      "owit_ampSustain": 0.58,
+      "owit_armBalance": 0.52,
+      "owit_armSpread": 0.72,
+      "owit_chaos": 0.48,
+      "owit_density": 0.55,
+      "owit_feedbackAmt": 0.28,
+      "owit_filterCutoff": 0.62,
+      "owit_filterRes": 0.45,
+      "owit_lfoDepth": 0.42,
+      "owit_lfoRate": 0.08,
+      "owit_macroChaos": 0.0,
+      "owit_macroCharacter": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0,
+      "owit_mutationRate": 0.45,
+      "owit_rule": 30,
+      "owit_sync": 0.35
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "tense",
@@ -15,54 +63,6 @@
     "thermocline",
     "break"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "CHAOS",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Outwit": {
-      "owit_rule": 30,
-      "owit_armBalance": 0.52,
-      "owit_mutationRate": 0.45,
-      "owit_armSpread": 0.72,
-      "owit_sync": 0.35,
-      "owit_feedbackAmt": 0.28,
-      "owit_chaos": 0.48,
-      "owit_density": 0.55,
-      "owit_ampAttack": 0.4,
-      "owit_ampDecay": 1.2,
-      "owit_ampSustain": 0.58,
-      "owit_ampRelease": 3.5,
-      "owit_filterCutoff": 0.62,
-      "owit_filterRes": 0.45,
-      "owit_lfoRate": 0.08,
-      "owit_lfoDepth": 0.42,
-      "owit_macroCharacter": 0.0,
-      "owit_macroChaos": 0.0,
-      "owit_macroCoupling": 0.0,
-      "owit_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.48,
-    "warmth": 0.38,
-    "movement": 0.65,
-    "density": 0.68,
-    "space": 0.62,
-    "aggression": 0.48
-  }
+  "version": "1.0.0"
 }

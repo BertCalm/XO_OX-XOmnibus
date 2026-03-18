@@ -1,52 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Sepia Cloud",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Warm tidal breathing at deep sea swell period. Vast and gentle.",
+  "dna": {
+    "aggression": 0.07,
+    "brightness": 0.5,
+    "density": 0.28,
+    "movement": 0.62,
+    "space": 0.93,
+    "warmth": 0.88
+  },
   "engines": [
     "Osprey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Warm tidal breathing at deep sea swell period. Vast and gentle.",
-  "tags": [
-    "warm-deep-space",
-    "extreme",
-    "aether",
-    "ambient"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Aether",
+  "name": "Sepia Cloud",
   "parameters": {
     "Osprey": {
-      "osprey_shore": 0.42,
-      "osprey_seaState": 0.25,
-      "osprey_swellPeriod": 0.65,
       "osprey_brightness": 0.52,
-      "osprey_foam": 0.3,
       "osprey_depth": 0.62,
+      "osprey_foam": 0.3,
+      "osprey_seaState": 0.25,
+      "osprey_shore": 0.42,
+      "osprey_swellPeriod": 0.65,
       "osprey_wetMix": 0.94
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.88,
-    "movement": 0.62,
-    "density": 0.28,
-    "space": 0.93,
-    "aggression": 0.07
-  }
+  "tags": [
+    "warm-deep-space",
+    "extreme",
+    "aether",
+    "ambient"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

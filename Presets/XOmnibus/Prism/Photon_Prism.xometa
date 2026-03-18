@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Photon Prism",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.9403,
-    "warmth": 0.1331,
-    "movement": 0.3268,
-    "density": 0.3525,
-    "space": 0.7058,
-    "aggression": 0.2008
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "SPC700 era at full brightness, wide spectral air",
   "dna": {
+    "aggression": 0.2008,
     "brightness": 0.9403,
-    "warmth": 0.1331,
-    "movement": 0.3268,
     "density": 0.3525,
+    "movement": 0.3268,
     "space": 0.7058,
-    "aggression": 0.2008
+    "warmth": 0.1331
   },
   "engines": [
-    "OVERWORLD"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "SPC700 era at full brightness, wide spectral air",
-  "tags": [
-    "prism",
-    "bright",
-    "ultra",
-    "spectral",
-    "anchor"
+    "Overworld"
   ],
   "macroLabels": [
     "ERA",
@@ -38,24 +23,39 @@
     "SPACE"
   ],
   "macros": {
-    "ERA": 0.6883,
     "CHAOS": 0.483,
     "COUPLE": 0.3155,
+    "ERA": 0.6883,
     "SPACE": 0.5272
   },
-  "couplingIntensity": "None",
+  "mood": "Prism",
+  "name": "Photon Prism",
   "parameters": {
-    "OVERWORLD": {
-      "ow_macro_era": 0.6883,
+    "Overworld": {
+      "ow_couplingBus": 0,
+      "ow_couplingLevel": 0.5,
       "ow_macro_chaos": 0.483,
       "ow_macro_couple": 0.3155,
+      "ow_macro_era": 0.6883,
       "ow_macro_space": 0.5272,
-      "ow_outputLevel": 0.85,
-      "ow_couplingLevel": 0.5,
-      "ow_couplingBus": 0
+      "ow_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2008,
+    "brightness": 0.9403,
+    "density": 0.3525,
+    "movement": 0.3268,
+    "space": 0.7058,
+    "warmth": 0.1331
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "ultra",
+    "spectral",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

@@ -1,50 +1,58 @@
 {
-  "name": "CLAMPED HAZE",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OVERLAP",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "OVERLAP": {
-      "macro_character": 0.491,
-      "macro_movement": 0.318,
-      "macro_coupling": 0.489,
-      "macro_space": 0.081
-    },
-    "ODYSSEY": {
-      "macro_character": 0.635,
-      "macro_movement": 0.739,
-      "macro_coupling": 0.679,
-      "macro_space": 0.051
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OVERLAP",
-    "target": "ODYSSEY",
-    "amount": 0.788
+    "amount": 0.788,
+    "source": "Overlap",
+    "target": "Odyssey",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.678,
     "brightness": 0.482,
-    "warmth": 0.854,
-    "movement": 0.339,
     "density": 0.134,
+    "movement": 0.339,
     "space": 0.081,
-    "aggression": 0.678
+    "warmth": 0.854
   },
+  "engines": [
+    "Overlap",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.836,
-    "MOVEMENT": 0.885,
     "COUPLING": 0.527,
+    "MOVEMENT": 0.885,
     "SPACE": 0.081
   },
+  "mood": "Atmosphere",
+  "name": "CLAMPED HAZE",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.635,
+      "macro_coupling": 0.679,
+      "macro_movement": 0.739,
+      "macro_space": 0.051
+    },
+    "Overlap": {
+      "macro_character": 0.491,
+      "macro_coupling": 0.489,
+      "macro_movement": 0.318,
+      "macro_space": 0.081
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-  ]
+  ],
+  "version": "1.0"
 }

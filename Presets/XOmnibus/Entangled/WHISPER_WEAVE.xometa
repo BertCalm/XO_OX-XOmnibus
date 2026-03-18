@@ -1,49 +1,57 @@
 {
-  "name": "WHISPER WEAVE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.703,
+    "source": "Organon",
+    "target": "Overworld",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.058,
+    "density": 0.233,
+    "movement": 0.674,
+    "space": 0.455,
+    "warmth": 0.457
+  },
   "engines": [
-    "ORGANON",
-    "OVERWORLD"
+    "Organon",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.425,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.51,
+    "SPACE": 0.228
+  },
+  "mood": "Entangled",
+  "name": "WHISPER WEAVE",
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.458,
-      "macro_movement": 0.681,
       "macro_coupling": 0.829,
+      "macro_movement": 0.681,
       "macro_space": 0.592
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.448,
-      "macro_movement": 0.612,
       "macro_coupling": 0.733,
+      "macro_movement": 0.612,
       "macro_space": 0.146
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ORGANON",
-    "target": "OVERWORLD",
-    "amount": 0.703
-  },
-  "dna": {
-    "brightness": 0.058,
-    "warmth": 0.457,
-    "movement": 0.674,
-    "density": 0.233,
-    "space": 0.455,
-    "aggression": 0.1
-  },
-  "macros": {
-    "CHARACTER": 0.425,
-    "MOVEMENT": 0.51,
-    "COUPLING": 0.7,
-    "SPACE": 0.228
-  },
+  "schema_version": 1,
   "tags": [
     "tender",
     "soft",
     "calm",
     "delicate"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,77 +1,77 @@
 {
-  "schema_version": 1,
-  "name": "Chew Catalyst",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.68,
+        "engineA": "Overbite",
+        "engineB": "Organon",
+        "type": "rhythm_sync"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "OVERBITE gnaw feeds ORGANON metabolic enzyme. Living bite, organic density.",
+  "dna": {
+    "aggression": 0.558,
+    "brightness": 0.5,
+    "density": 0.711,
+    "movement": 0.616,
+    "space": 0.485,
+    "warmth": 0.54
+  },
   "engines": [
     "Overbite",
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE gnaw feeds ORGANON metabolic enzyme. Living bite, organic density.",
-  "tags": [
-    "overbite",
-    "organon",
-    "coupling",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
-  "tempo": 115,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Chew Catalyst",
   "parameters": {
-    "Overbite": {
-      "poss_macro1": 0.667,
-      "poss_macro2": 0.546,
-      "poss_macro3": 0.676,
-      "poss_macro4": 0.363,
-      "poss_couplingOut": 0.467,
-      "poss_couplingIn": 0.646,
-      "poss_outputLevel": 0.832,
-      "poss_outputPan": 0.03,
-      "poss_biteDepth": 0.655,
-      "poss_fangAttack": 0.16,
-      "poss_gnashAmt": 0.484,
-      "poss_snapRelease": 0.653
-    },
     "Organon": {
+      "organon_couplingIn": 0.521,
+      "organon_couplingOut": 0.657,
       "organon_macro1": 0.614,
       "organon_macro2": 0.369,
       "organon_macro3": 0.336,
       "organon_macro4": 0.689,
-      "organon_couplingOut": 0.657,
-      "organon_couplingIn": 0.521,
       "organon_outputLevel": 0.817,
       "organon_outputPan": -0.037
+    },
+    "Overbite": {
+      "poss_biteDepth": 0.655,
+      "poss_couplingIn": 0.646,
+      "poss_couplingOut": 0.467,
+      "poss_fangAttack": 0.16,
+      "poss_gnashAmt": 0.484,
+      "poss_macro1": 0.667,
+      "poss_macro2": 0.546,
+      "poss_macro3": 0.676,
+      "poss_macro4": 0.363,
+      "poss_outputLevel": 0.832,
+      "poss_outputPan": 0.03,
+      "poss_snapRelease": 0.653
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Organon",
-        "type": "rhythm_sync",
-        "amount": 0.68
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.54,
-    "movement": 0.616,
-    "density": 0.711,
-    "space": 0.485,
-    "aggression": 0.558
-  }
+  "tags": [
+    "overbite",
+    "organon",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 115,
+  "version": "1.0.0"
 }

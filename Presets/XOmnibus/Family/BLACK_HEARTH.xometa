@@ -1,49 +1,57 @@
 {
-  "name": "BLACK HEARTH",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OSPREY",
-    "ORCA"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.516,
-      "macro_movement": 0.328,
-      "macro_coupling": 0.613,
-      "macro_space": 0.163
-    },
-    "ORCA": {
-      "macro_character": 0.991,
-      "macro_movement": 0.739,
-      "macro_coupling": 0.299,
-      "macro_space": 0.336
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OSPREY",
-    "target": "ORCA",
-    "amount": 0.664
+    "amount": 0.664,
+    "source": "Osprey",
+    "target": "Orca",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.474,
     "brightness": 0.084,
-    "warmth": 0.5,
-    "movement": 0.227,
     "density": 0.282,
+    "movement": 0.227,
     "space": 0.076,
-    "aggression": 0.474
+    "warmth": 0.5
   },
+  "engines": [
+    "Osprey",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.754,
-    "MOVEMENT": 0.533,
     "COUPLING": 0.456,
+    "MOVEMENT": 0.533,
     "SPACE": 0.249
   },
+  "mood": "Family",
+  "name": "BLACK HEARTH",
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.991,
+      "macro_coupling": 0.299,
+      "macro_movement": 0.739,
+      "macro_space": 0.336
+    },
+    "Osprey": {
+      "macro_character": 0.516,
+      "macro_coupling": 0.613,
+      "macro_movement": 0.328,
+      "macro_space": 0.163
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
     "extreme",
     "low-space"
-  ]
+  ],
+  "version": "1.0"
 }

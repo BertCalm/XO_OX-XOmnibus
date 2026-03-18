@@ -1,86 +1,103 @@
 {
-  "schema_version": 1,
-  "name": "Grain Memory",
-  "mood": "Entangled",
-  "engines": ["Ombre", "Opal"],
-  "author": "Guru Bin — Coupling Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Opal's granular scatter position modulates Ombre's memory/forgetting blend point. Sparse grains pull Ombre toward forgetting — dissolving, fragmenting. Dense grain clouds push toward memory — coherent, present. The texture of granular space writes the narrative. Remembering and forgetting are not choices; they are densities.",
-  "tags": ["entangled", "granular", "memory", "texture", "narrative", "ombre", "opal", "scatter"],
-  "macroLabels": ["CHARACTER", "SCATTER", "COUPLING", "SPACE"],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.6,
-    "movement": 0.7,
-    "density": 0.65,
-    "space": 0.7,
-    "aggression": 0.3
-  },
-  "parameters": {
-    "Ombre": {
-      "ombre_blend": 0.45,
-      "ombre_memoryDecay": 0.55,
-      "ombre_perceptionShift": 0.5,
-      "ombre_shadowDepth": 0.4,
-      "ombre_narrativeAxis": 0.5,
-      "ombre_driftRate": 0.05,
-      "ombre_driftDepth": 0.2,
-      "ombre_ampAttack": 0.2,
-      "ombre_ampDecay": 0.8,
-      "ombre_ampSustain": 0.6,
-      "ombre_ampRelease": 3.0,
-      "ombre_filterCutoff": 0.5,
-      "ombre_filterRes": 0.25,
-      "ombre_lfo1Rate": 0.03,
-      "ombre_lfo1Depth": 0.2,
-      "ombre_lfo2Rate": 0.05,
-      "ombre_lfo2Depth": 0.15,
-      "ombre_macroCharacter": 0.0,
-      "ombre_macroScatter": 0.0,
-      "ombre_macroCoupling": 0.0,
-      "ombre_macroSpace": 0.0
-    },
-    "Opal": {
-      "opal_grainSize": 0.35,
-      "opal_grainDensity": 0.55,
-      "opal_scatter": 0.65,
-      "opal_pitch": 0.0,
-      "opal_pitchRand": 0.2,
-      "opal_positionRand": 0.5,
-      "opal_freeze": 0.0,
-      "opal_ampAttack": 0.1,
-      "opal_ampDecay": 0.4,
-      "opal_ampSustain": 0.7,
-      "opal_ampRelease": 2.0,
-      "opal_filterCutoff": 0.6,
-      "opal_filterRes": 0.2,
-      "opal_lfo1Rate": 0.04,
-      "opal_lfo1Depth": 0.2,
-      "opal_macroCharacter": 0.0,
-      "opal_macroScatter": 0.0,
-      "opal_macroCoupling": 0.0,
-      "opal_macroSpace": 0.0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
       {
+        "amount": 0.65,
+        "description": "Opal grain scatter density modulates Ombre blend point — sparse grains shift toward forgetting, dense clouds toward memory",
         "source": "Opal",
         "target": "Ombre",
-        "type": "VelToGrain",
-        "amount": 0.65,
-        "description": "Opal grain scatter density modulates Ombre blend point — sparse grains shift toward forgetting, dense clouds toward memory"
+        "type": "VelToGrain"
       },
       {
+        "amount": 0.35,
+        "description": "Opal granular output softly FM-modulates Ombre oscillator — the texture of memory carries a granular timbre",
         "source": "Opal",
         "target": "Ombre",
-        "type": "AudioToFM",
-        "amount": 0.35,
-        "description": "Opal granular output softly FM-modulates Ombre oscillator — the texture of memory carries a granular timbre"
+        "type": "AudioToFM"
       }
     ]
   },
-  "sequencer": null
+  "couplingIntensity": "Moderate",
+  "description": "Opal's granular scatter position modulates Ombre's memory/forgetting blend point. Sparse grains pull Ombre toward forgetting — dissolving, fragmenting. Dense grain clouds push toward memory — coherent, present. The texture of granular space writes the narrative. Remembering and forgetting are not choices; they are densities.",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.45,
+    "density": 0.65,
+    "movement": 0.7,
+    "space": 0.7,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Ombre",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SCATTER",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Grain Memory",
+  "parameters": {
+    "Ombre": {
+      "ombre_ampAttack": 0.2,
+      "ombre_ampDecay": 0.8,
+      "ombre_ampRelease": 3.0,
+      "ombre_ampSustain": 0.6,
+      "ombre_blend": 0.45,
+      "ombre_driftDepth": 0.2,
+      "ombre_driftRate": 0.05,
+      "ombre_filterCutoff": 0.5,
+      "ombre_filterRes": 0.25,
+      "ombre_lfo1Depth": 0.2,
+      "ombre_lfo1Rate": 0.03,
+      "ombre_lfo2Depth": 0.15,
+      "ombre_lfo2Rate": 0.05,
+      "ombre_macroCharacter": 0.0,
+      "ombre_macroCoupling": 0.0,
+      "ombre_macroScatter": 0.0,
+      "ombre_macroSpace": 0.0,
+      "ombre_memoryDecay": 0.55,
+      "ombre_narrativeAxis": 0.5,
+      "ombre_perceptionShift": 0.5,
+      "ombre_shadowDepth": 0.4
+    },
+    "Opal": {
+      "opal_ampAttack": 0.1,
+      "opal_ampDecay": 0.4,
+      "opal_ampRelease": 2.0,
+      "opal_ampSustain": 0.7,
+      "opal_filterCutoff": 0.6,
+      "opal_filterRes": 0.2,
+      "opal_freeze": 0.0,
+      "opal_grainDensity": 0.55,
+      "opal_grainSize": 0.35,
+      "opal_lfo1Depth": 0.2,
+      "opal_lfo1Rate": 0.04,
+      "opal_macroCharacter": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_macroScatter": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitch": 0.0,
+      "opal_pitchRand": 0.2,
+      "opal_positionRand": 0.5,
+      "opal_scatter": 0.65
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "granular",
+    "memory",
+    "texture",
+    "narrative",
+    "ombre",
+    "opal",
+    "scatter"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Premise Zero",
-  "mood": "Aether",
-  "sonic_dna": {
-    "brightness": 0.05,
-    "warmth": 0.65,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "First premise: silence. Conclusion: sub-bass only.",
+  "dna": {
     "aggression": 0.15,
-    "movement": 0.08,
+    "brightness": 0.05,
     "density": 0.6,
-    "space": 0.65
+    "movement": 0.08,
+    "space": 0.65,
+    "warmth": 0.65
   },
   "engines": [
-    "ORGANON"
+    "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "First premise: silence. Conclusion: sub-bass only.",
+  "macroLabels": [
+    "LOGIC",
+    "ARGUMENT",
+    "COUPLING",
+    "FORM"
+  ],
+  "mood": "Aether",
+  "name": "Premise Zero",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.15,
+    "brightness": 0.05,
+    "density": 0.6,
+    "movement": 0.08,
+    "space": 0.65,
+    "warmth": 0.65
+  },
   "tags": [
     "aether",
     "dark",
@@ -24,23 +42,5 @@
     "formal",
     "minimal"
   ],
-  "macroLabels": [
-    "LOGIC",
-    "ARGUMENT",
-    "COUPLING",
-    "FORM"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.05,
-    "warmth": 0.65,
-    "movement": 0.08,
-    "density": 0.6,
-    "space": 0.65,
-    "aggression": 0.15
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

@@ -1,48 +1,56 @@
 {
-  "name": "SPARSE TRIBE",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ORPHICA",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.833,
-      "macro_movement": 0.903,
-      "macro_coupling": 0.776,
-      "macro_space": 0.23
-    },
-    "ORBITAL": {
-      "macro_character": 0.802,
-      "macro_movement": 0.219,
-      "macro_coupling": 0.19,
-      "macro_space": 0.251
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_GATE",
-    "source": "ORPHICA",
-    "target": "ORBITAL",
-    "amount": 0.753
+    "amount": 0.753,
+    "source": "Orphica",
+    "target": "Orbital",
+    "type": "SPECTRAL_GATE"
   },
   "dna": {
+    "aggression": 0.778,
     "brightness": 0.962,
-    "warmth": 0.83,
-    "movement": 0.396,
     "density": 0.021,
+    "movement": 0.396,
     "space": 0.865,
-    "aggression": 0.778
+    "warmth": 0.83
   },
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.767,
-    "MOVEMENT": 0.681,
     "COUPLING": 0.137,
+    "MOVEMENT": 0.681,
     "SPACE": 0.097
   },
+  "mood": "Family",
+  "name": "SPARSE TRIBE",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.802,
+      "macro_coupling": 0.19,
+      "macro_movement": 0.219,
+      "macro_space": 0.251
+    },
+    "Orphica": {
+      "macro_character": 0.833,
+      "macro_coupling": 0.776,
+      "macro_movement": 0.903,
+      "macro_space": 0.23
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "sparse",
     "xlow-density"
-  ]
+  ],
+  "version": "1.0"
 }

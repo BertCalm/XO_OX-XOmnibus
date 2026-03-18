@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_COLD_FROZEN_VAST_GENTLE_ENT3_1",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9779,
+    "source": "Outwit",
+    "target": "Oracle",
+    "type": "HARMONIC_FOLD"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_COLD_FROZEN_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.0647,
+    "brightness": 0.9222,
+    "density": 0.3229,
+    "movement": 0.0891,
+    "space": 0.9505,
+    "warmth": 0.0903
+  },
   "engines": [
-    "OUTWIT",
-    "ORACLE"
+    "Outwit",
+    "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_COLD_FROZEN_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.742,
+    "COUPLING": 0.7752,
+    "MOVEMENT": 0.0921,
+    "SPACE": 0.689
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT_COLD_FROZEN_VAST_GENTLE_ENT3_1",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.5171,
+      "macro_coupling": 0.7661,
+      "macro_movement": 0.0838,
+      "macro_space": 0.7617
+    },
+    "Outwit": {
+      "macro_character": 0.9669,
+      "macro_coupling": 0.7843,
+      "macro_movement": 0.1004,
+      "macro_space": 0.6164
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +66,6 @@
     "gentle",
     "vast"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.9669,
-      "macro_movement": 0.1004,
-      "macro_coupling": 0.7843,
-      "macro_space": 0.6164
-    },
-    "ORACLE": {
-      "macro_character": 0.5171,
-      "macro_movement": 0.0838,
-      "macro_coupling": 0.7661,
-      "macro_space": 0.7617
-    }
-  },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OUTWIT",
-    "target": "ORACLE",
-    "amount": 0.9779
-  },
-  "macros": {
-    "CHARACTER": 0.742,
-    "MOVEMENT": 0.0921,
-    "COUPLING": 0.7752,
-    "SPACE": 0.689
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.9222,
-    "warmth": 0.0903,
-    "movement": 0.0891,
-    "density": 0.3229,
-    "space": 0.9505,
-    "aggression": 0.0647
-  }
+  "version": "1.0.0"
 }

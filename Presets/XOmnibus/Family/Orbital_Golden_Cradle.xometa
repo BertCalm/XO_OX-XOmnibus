@@ -1,45 +1,62 @@
 {
-  "schema_version": 1,
-  "name": "Golden Cradle",
-  "mood": "Family",
-  "engines": ["Orbital"],
-  "author": "Guru Bin — Family Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Four voices in gentle unison, the group envelope barely moving — a slow tide, not a storm. Release tuned to 1.618 seconds, the golden ratio, so each note fades in perfect proportion to the one before. Hold any chord and let it rock. This is what orbit feels like from the inside.",
-  "tags": ["family", "gentle", "pad", "warm", "lullaby", "golden", "beginner"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-16",
+  "description": "Four voices in gentle unison, the group envelope barely moving — a slow tide, not a storm. Release tuned to 1.618 seconds, the golden ratio, so each note fades in perfect proportion to the one before. Hold any chord and let it rock. This is what orbit feels like from the inside.",
+  "dna": {
+    "aggression": 0.04,
+    "brightness": 0.32,
+    "density": 0.38,
+    "movement": 0.18,
+    "space": 0.65,
+    "warmth": 0.75
+  },
+  "engines": [
+    "Orbital"
+  ],
   "legacy": {
-    "sourceInstrument": null,
     "sourceCategory": null,
+    "sourceInstrument": null,
     "sourcePresetName": null
   },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Golden Cradle",
   "parameters": {
     "Orbital": {
+      "orb_ampAttack": 0.55,
+      "orb_ampDecay": 0.8,
+      "orb_ampRelease": 1.618,
+      "orb_ampSustain": 0.72,
       "orb_brightness": 0.35,
-      "orb_groupEnvRate": 0.04,
-      "orb_groupEnvDepth": 0.28,
-      "orb_oscCount": 4,
-      "orb_spread": 0.18,
       "orb_detune": 0.08,
       "orb_filterCutoff": 0.42,
       "orb_filterReso": 0.12,
-      "orb_ampAttack": 0.55,
-      "orb_ampDecay": 0.8,
-      "orb_ampSustain": 0.72,
-      "orb_ampRelease": 1.618
+      "orb_groupEnvDepth": 0.28,
+      "orb_groupEnvRate": 0.04,
+      "orb_oscCount": 4,
+      "orb_spread": 0.18
     }
   },
-  "coupling": { "pairs": [] },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.32,
-    "warmth": 0.75,
-    "movement": 0.18,
-    "density": 0.38,
-    "space": 0.65,
-    "aggression": 0.04
-  }
+  "tags": [
+    "family",
+    "gentle",
+    "pad",
+    "warm",
+    "lullaby",
+    "golden",
+    "beginner"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

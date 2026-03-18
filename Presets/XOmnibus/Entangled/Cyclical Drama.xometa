@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Cyclical Drama",
-  "mood": "Entangled",
-  "engines": [
-    "OUROBOROS",
-    "OLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Ouroboros cyclic pitch syncs OLE intervals \u2014 drama returns to the beginning.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Ouroboros",
+        "engineB": "Ole",
+        "type": "PITCH_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Ouroboros cyclic pitch syncs OLE intervals — drama returns to the beginning.",
+  "dna": {
+    "aggression": 0.68,
+    "brightness": 0.55,
+    "density": 0.413,
+    "movement": 0.935,
+    "space": 0.213,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Ouroboros",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.67,
+    "SPACE": 0.4
+  },
+  "mood": "Entangled",
+  "name": "Cyclical Drama",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.7,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.62,
+      "macro_space": 0.36
+    },
+    "Ouroboros": {
+      "macro_character": 0.6,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.72,
+      "macro_space": 0.44
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "pitch",
     "drama"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.7,
-    "movement": 0.935,
-    "density": 0.413,
-    "space": 0.213,
-    "aggression": 0.68
-  },
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.6,
-      "macro_movement": 0.72,
-      "macro_coupling": 0.65,
-      "macro_space": 0.44
-    },
-    "OLE": {
-      "macro_character": 0.7,
-      "macro_movement": 0.62,
-      "macro_coupling": 0.65,
-      "macro_space": 0.36
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OUROBOROS",
-        "engineB": "OLE",
-        "type": "PITCH_SYNC",
-        "amount": 0.65
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.65,
-    "MOVEMENT": 0.67,
-    "COUPLING": 0.65,
-    "SPACE": 0.4
-  },
-  "sequencer": null
+  "version": "1.0"
 }

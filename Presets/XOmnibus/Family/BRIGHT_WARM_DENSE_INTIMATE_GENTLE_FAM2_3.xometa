@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT WARM DENSE INTIMATE GENTLE FAM2 3",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OTTONI",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.901,
-      "macro_movement": 0.37,
-      "macro_coupling": 0.511,
-      "macro_space": 0.141
-    },
-    "ODYSSEY": {
-      "macro_character": 0.891,
-      "macro_movement": 0.329,
-      "macro_coupling": 0.53,
-      "macro_space": 0.2
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OTTONI",
-    "target": "ODYSSEY",
-    "amount": 0.511
+    "amount": 0.511,
+    "source": "Ottoni",
+    "target": "Odyssey",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.085,
     "brightness": 0.859,
-    "warmth": 0.944,
-    "movement": 0.37,
     "density": 0.937,
+    "movement": 0.37,
     "space": 0.141,
-    "aggression": 0.085
+    "warmth": 0.944
   },
+  "engines": [
+    "Ottoni",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.901,
-    "MOVEMENT": 0.37,
     "COUPLING": 0.511,
+    "MOVEMENT": 0.37,
     "SPACE": 0.141
   },
+  "mood": "Family",
+  "name": "BRIGHT WARM DENSE INTIMATE GENTLE FAM2 3",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.891,
+      "macro_coupling": 0.53,
+      "macro_movement": 0.329,
+      "macro_space": 0.2
+    },
+    "Ottoni": {
+      "macro_character": 0.901,
+      "macro_coupling": 0.511,
+      "macro_movement": 0.37,
+      "macro_space": 0.141
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
@@ -47,5 +54,6 @@
     "dense",
     "intimate",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,58 @@
 {
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FAM_AGG_4",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.719,
+    "source": "Ole",
+    "target": "Osprey",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.92,
+    "brightness": 0.651,
+    "density": 0.922,
+    "movement": 0.974,
+    "space": 0.655,
+    "warmth": 0.936
+  },
   "engines": [
-    "OLE",
-    "OSPREY"
+    "Ole",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.846,
+    "COUPLING": 0.788,
+    "MOVEMENT": 0.589,
+    "SPACE": 0.538
+  },
+  "mood": "Family",
+  "name": "HOT_KINETIC_DENSE_VIOLENT_FAM_AGG_4",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.846,
-      "macro_movement": 0.589,
       "macro_coupling": 0.788,
+      "macro_movement": 0.589,
       "macro_space": 0.538
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.827,
-      "macro_movement": 0.564,
       "macro_coupling": 0.833,
+      "macro_movement": 0.564,
       "macro_space": 0.557
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OLE",
-    "target": "OSPREY",
-    "amount": 0.719
-  },
-  "dna": {
-    "brightness": 0.651,
-    "warmth": 0.936,
-    "movement": 0.974,
-    "density": 0.922,
-    "space": 0.655,
-    "aggression": 0.92
-  },
-  "macros": {
-    "CHARACTER": 0.846,
-    "MOVEMENT": 0.589,
-    "COUPLING": 0.788,
-    "SPACE": 0.538
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "hot",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

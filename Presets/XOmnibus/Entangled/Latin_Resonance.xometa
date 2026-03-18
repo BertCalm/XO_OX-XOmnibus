@@ -1,54 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Latin Resonance",
-  "mood": "Entangled",
-  "engines": [
-    "OLE",
-    "OBSCURA"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Resonance shared between clave transient and OBSCURA's plate nodes \u2014 rhythmically focused.",
-  "parameters": {
-    "OLE": {
-      "macro_character": 0.74,
-      "macro_movement": 0.66,
-      "macro_coupling": 0.74,
-      "macro_space": 0.42
-    },
-    "OBSCURA": {
-      "macro_character": 0.6,
-      "macro_movement": 0.52,
-      "macro_coupling": 0.62,
-      "macro_space": 0.54
-    }
-  },
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OLE",
-    "target": "OBSCURA",
     "amount": 0.74,
-    "intensity": "Deep"
+    "intensity": "Deep",
+    "source": "Ole",
+    "target": "Obscura",
+    "type": "RESONANCE_SHARE"
   },
+  "description": "Resonance shared between clave transient and OBSCURA's plate nodes — rhythmically focused.",
   "dna": {
+    "aggression": 0.597,
     "brightness": 0.58,
-    "warmth": 0.7,
-    "movement": 0.859,
     "density": 0.834,
+    "movement": 0.859,
     "space": 0.4,
-    "aggression": 0.597
+    "warmth": 0.7
   },
+  "engines": [
+    "Ole",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.74,
-    "MOVEMENT": 0.66,
     "COUPLING": 0.74,
+    "MOVEMENT": 0.66,
     "SPACE": 0.42
   },
+  "mood": "Entangled",
+  "name": "Latin Resonance",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.6,
+      "macro_coupling": 0.62,
+      "macro_movement": 0.52,
+      "macro_space": 0.54
+    },
+    "Ole": {
+      "macro_character": 0.74,
+      "macro_coupling": 0.74,
+      "macro_movement": 0.66,
+      "macro_space": 0.42
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "ole",
     "obscura",
     "resonance",
     "latin"
-  ]
+  ],
+  "version": "1.0"
 }

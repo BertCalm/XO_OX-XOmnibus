@@ -1,51 +1,58 @@
 {
-  "name": "Tail Devourer",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9,
+    "source": "Odyssey",
+    "target": "Ouroboros",
+    "type": "CHAOS_INJECT"
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.8,
+    "brightness": 0.2,
+    "density": 0.9,
+    "movement": 0.6,
+    "space": 0.2,
+    "warmth": 0.6
+  },
   "engines": [
-    "ODYSSEY",
-    "OUROBOROS"
+    "Odyssey",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.9,
+    "MOVEMENT": 0.6,
+    "SPACE": 0.2
+  },
+  "mood": "Entangled",
+  "name": "Tail Devourer",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.3,
-      "macro_movement": 0.6,
       "macro_coupling": 0.9,
+      "macro_movement": 0.6,
       "macro_space": 0.2
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.7,
-      "macro_movement": 0.6,
       "macro_coupling": 0.9,
+      "macro_movement": 0.6,
       "macro_space": 0.2
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ODYSSEY",
-    "target": "OUROBOROS",
-    "amount": 0.9
-  },
-  "dna": {
-    "brightness": 0.2,
-    "warmth": 0.6,
-    "movement": 0.6,
-    "density": 0.9,
-    "space": 0.2,
-    "aggression": 0.8
-  },
-  "macros": {
-    "CHARACTER": 0.5,
-    "MOVEMENT": 0.6,
-    "COUPLING": 0.9,
-    "SPACE": 0.2
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "odyssey",
     "ouroboros"
   ],
-  "author": "XO_OX Coverage Pack 2026-03-16",
-  "created": "2026-03-16"
+  "version": "1.0"
 }

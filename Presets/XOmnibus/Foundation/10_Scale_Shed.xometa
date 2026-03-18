@@ -1,26 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Scale Shed",
-  "mood": "Foundation",
-  "sonic_dna": {
-    "brightness": 0.3,
-    "warmth": 0.75,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Low armor threshold with dramatic ducking — explosive fragments scatter on every note",
+  "dna": {
     "aggression": 0.3,
-    "movement": 0.65,
+    "brightness": 0.3,
     "density": 0.4,
-    "space": 0.7
+    "movement": 0.65,
+    "space": 0.7,
+    "warmth": 0.75
   },
   "engines": [
-    "XOwlfish"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Low armor threshold with dramatic ducking — explosive fragments scatter on every note",
-  "tags": [
-    "percussive",
-    "armor",
-    "explosive",
-    "dynamic"
+    "Owlfish"
   ],
   "macroLabels": [
     "DEPTH",
@@ -28,21 +22,50 @@
     "DEFENSE",
     "PRESSURE"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.3,
-    "warmth": 0.75,
-    "movement": 0.65,
-    "density": 0.4,
-    "space": 0.7,
-    "aggression": 0.3
-  },
+  "mood": "Foundation",
+  "name": "Scale Shed",
   "parameters": {
-    "XOwlfish": {
-      "owl_portamento": 0.0,
+    "Owlfish": {
+      "owl_ampAttack": 2,
+      "owl_ampDecay": 120,
+      "owl_ampRelease": 250,
+      "owl_ampSustain": 0.7,
+      "owl_armorDecay": 0.45,
+      "owl_armorDelay": 0.5,
+      "owl_armorDuck": 0.8,
+      "owl_armorScatter": 0.6,
+      "owl_armorThreshold": 0.25,
+      "owl_bodyFreq": 40,
+      "owl_bodyLevel": 0.4,
+      "owl_compAttack": 0.1,
+      "owl_compRatio": 0.5,
+      "owl_compRelease": 0.3,
+      "owl_compThreshold": 0.4,
+      "owl_couplingBus": 0,
+      "owl_couplingLevel": 0.5,
+      "owl_defense": 0.8,
+      "owl_depth": 0.45,
+      "owl_feedRate": 0.5,
+      "owl_feeding": 0.25,
+      "owl_filterCutoff": 0.5,
+      "owl_filterReso": 0.3,
+      "owl_filterTrack": 0.5,
+      "owl_fundWave": 0.25,
+      "owl_grainDensity": 0.2,
+      "owl_grainMix": 0.15,
+      "owl_grainPitch": 0.15,
+      "owl_grainSize": 0.25,
       "owl_legatoMode": 0,
+      "owl_mixtur": 0.4,
       "owl_morphGlide": 0.15,
-      "owl_subMix": 0.5,
+      "owl_outputLevel": 0.82,
+      "owl_outputPan": 0.0,
+      "owl_portamento": 0.0,
+      "owl_pressure": 0.5,
+      "owl_reverbDamp": 0.5,
+      "owl_reverbMix": 0.25,
+      "owl_reverbPreDelay": 0.2,
+      "owl_reverbSize": 0.35,
       "owl_subDiv1": 1,
       "owl_subDiv2": 2,
       "owl_subDiv3": 0,
@@ -51,47 +74,24 @@
       "owl_subLevel2": 0.5,
       "owl_subLevel3": 0.0,
       "owl_subLevel4": 0.0,
-      "owl_mixtur": 0.4,
-      "owl_fundWave": 0.25,
-      "owl_subWave": 0.4,
-      "owl_bodyFreq": 40,
-      "owl_bodyLevel": 0.4,
-      "owl_compRatio": 0.5,
-      "owl_compThreshold": 0.4,
-      "owl_compAttack": 0.1,
-      "owl_compRelease": 0.3,
-      "owl_filterCutoff": 0.5,
-      "owl_filterReso": 0.3,
-      "owl_filterTrack": 0.5,
-      "owl_grainSize": 0.25,
-      "owl_grainDensity": 0.2,
-      "owl_grainPitch": 0.15,
-      "owl_grainMix": 0.15,
-      "owl_feedRate": 0.5,
-      "owl_armorThreshold": 0.25,
-      "owl_armorDecay": 0.45,
-      "owl_armorScatter": 0.6,
-      "owl_armorDuck": 0.8,
-      "owl_armorDelay": 0.5,
-      "owl_reverbSize": 0.35,
-      "owl_reverbDamp": 0.5,
-      "owl_reverbPreDelay": 0.2,
-      "owl_reverbMix": 0.25,
-      "owl_ampAttack": 2,
-      "owl_ampDecay": 120,
-      "owl_ampSustain": 0.7,
-      "owl_ampRelease": 250,
-      "owl_depth": 0.45,
-      "owl_feeding": 0.25,
-      "owl_defense": 0.8,
-      "owl_pressure": 0.5,
-      "owl_outputLevel": 0.82,
-      "owl_outputPan": 0.0,
-      "owl_couplingLevel": 0.5,
-      "owl_couplingBus": 0
+      "owl_subMix": 0.5,
+      "owl_subWave": 0.4
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.3,
+    "brightness": 0.3,
+    "density": 0.4,
+    "movement": 0.65,
+    "space": 0.7,
+    "warmth": 0.75
+  },
+  "tags": [
+    "percussive",
+    "armor",
+    "explosive",
+    "dynamic"
+  ],
+  "version": "1.0.0"
 }

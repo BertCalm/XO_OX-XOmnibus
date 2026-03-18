@@ -1,45 +1,52 @@
 {
-  "name": "DARK WARM TIGHT VIOLENT ATM AGG 4",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ODDFELIX",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "ODDFELIX": {
-      "macro_character": 0.027,
-      "macro_movement": 0.302,
-      "macro_coupling": 0.862,
-      "macro_space": 0.069
-    },
-    "OBLIQUE": {
-      "macro_character": 0.026,
-      "macro_movement": 0.293,
-      "macro_coupling": 0.883,
-      "macro_space": 0.072
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ODDFELIX",
-    "target": "OBLIQUE",
-    "amount": 0.925
+    "amount": 0.925,
+    "source": "OddfeliX",
+    "target": "Oblique",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
+    "aggression": 0.922,
     "brightness": 0.028,
-    "warmth": 0.948,
-    "movement": 0.305,
     "density": 0.468,
+    "movement": 0.305,
     "space": 0.074,
-    "aggression": 0.922
+    "warmth": 0.948
   },
+  "engines": [
+    "OddfeliX",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.026,
-    "MOVEMENT": 0.297,
     "COUPLING": 0.873,
+    "MOVEMENT": 0.297,
     "SPACE": 0.071
   },
+  "mood": "Atmosphere",
+  "name": "DARK WARM TIGHT VIOLENT ATM AGG 4",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.026,
+      "macro_coupling": 0.883,
+      "macro_movement": 0.293,
+      "macro_space": 0.072
+    },
+    "OddfeliX": {
+      "macro_character": 0.027,
+      "macro_coupling": 0.862,
+      "macro_movement": 0.302,
+      "macro_space": 0.069
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -47,5 +54,6 @@
     "violent",
     "dark",
     "tight"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "DARK WEAVE",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OMBRE",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "OMBRE": {
-      "macro_character": 0.0187,
-      "macro_movement": 0.9212,
-      "macro_coupling": 0.9448,
-      "macro_space": 0.5758
-    },
-    "ODDFELIX": {
-      "macro_character": 0.5734,
-      "macro_movement": 0.7095,
-      "macro_coupling": 0.7671,
-      "macro_space": 0.1152
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OMBRE",
-    "target": "ODDFELIX",
-    "amount": 0.7063
+    "amount": 0.7063,
+    "source": "Ombre",
+    "target": "OddfeliX",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.9198,
     "brightness": 0.3248,
-    "warmth": 0.8013,
-    "movement": 0.6181,
     "density": 0.9504,
+    "movement": 0.6181,
     "space": 0.832,
-    "aggression": 0.9198
+    "warmth": 0.8013
   },
+  "engines": [
+    "Ombre",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.0881,
-    "MOVEMENT": 0.8445,
     "COUPLING": 0.773,
+    "MOVEMENT": 0.8445,
     "SPACE": 0.5889
   },
+  "mood": "Entangled",
+  "name": "DARK WEAVE",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.5734,
+      "macro_coupling": 0.7671,
+      "macro_movement": 0.7095,
+      "macro_space": 0.1152
+    },
+    "Ombre": {
+      "macro_character": 0.0187,
+      "macro_coupling": 0.9448,
+      "macro_movement": 0.9212,
+      "macro_space": 0.5758
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "massive",
@@ -47,5 +54,6 @@
     "compressed",
     "dense",
     "extreme-density"
-  ]
+  ],
+  "version": "1.0"
 }

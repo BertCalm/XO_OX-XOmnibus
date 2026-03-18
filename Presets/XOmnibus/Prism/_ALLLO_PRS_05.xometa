@@ -1,49 +1,57 @@
 {
-  "name": "ALLLO PRS 05",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.108,
+    "source": "Osteria",
+    "target": "Optic",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.075,
+    "brightness": 0.095,
+    "density": 0.042,
+    "movement": 0.099,
+    "space": 0.489,
+    "warmth": 0.028
+  },
   "engines": [
-    "OSTERIA",
-    "OPTIC"
+    "Osteria",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.061,
+    "COUPLING": 0.282,
+    "MOVEMENT": 0.071,
+    "SPACE": 0.489
+  },
+  "mood": "Prism",
+  "name": "ALLLO PRS 05",
   "parameters": {
-    "OSTERIA": {
+    "Optic": {
       "macro_character": 0.061,
-      "macro_movement": 0.071,
       "macro_coupling": 0.282,
+      "macro_movement": 0.071,
       "macro_space": 0.489
     },
-    "OPTIC": {
+    "Osteria": {
       "macro_character": 0.061,
-      "macro_movement": 0.071,
       "macro_coupling": 0.282,
+      "macro_movement": 0.071,
       "macro_space": 0.489
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OSTERIA",
-    "target": "OPTIC",
-    "amount": 0.108
-  },
-  "dna": {
-    "brightness": 0.095,
-    "warmth": 0.028,
-    "movement": 0.099,
-    "density": 0.042,
-    "space": 0.489,
-    "aggression": 0.075
-  },
-  "macros": {
-    "CHARACTER": 0.061,
-    "MOVEMENT": 0.071,
-    "COUPLING": 0.282,
-    "SPACE": 0.489
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

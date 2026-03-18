@@ -1,33 +1,41 @@
 {
-  "name": "Prismatic Seer",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6,
+    "source": "Optic",
+    "target": "Oracle",
+    "type": "PHASE_LOCK"
+  },
+  "description": "Optic's prismatic scatter drives Oracle's prophecy into spectral motion.",
   "engines": [
-    "OPTIC",
-    "ORACLE"
+    "Optic",
+    "Oracle"
   ],
-  "mood": "Entangled",
-  "strategy": "Bright Dark",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.85,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.7,
+    "MOVEMENT": 0.55,
     "SPACE": 0.65
   },
-  "sonic_dna": {
-    "brightness": 0.96,
-    "warmth": 0.09,
-    "movement": 0.58,
-    "density": 0.5,
-    "space": 0.65,
-    "aggression": 0.35
-  },
+  "mood": "Entangled",
+  "name": "Prismatic Seer",
   "parameters": {},
-  "coupling": {
-    "type": "PHASE_LOCK",
-    "source": "OPTIC",
-    "target": "ORACLE",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.35,
+    "brightness": 0.96,
+    "density": 0.5,
+    "movement": 0.58,
+    "space": 0.65,
+    "warmth": 0.09
   },
+  "strategy": "Bright Dark",
   "tags": [
     "entangled",
     "bright",
@@ -35,5 +43,5 @@
     "movement",
     "visionary"
   ],
-  "description": "Optic's prismatic scatter drives Oracle's prophecy into spectral motion."
+  "version": "1.0"
 }

@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_INTIMATE_GENTLE_FAM_VOL_31",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.562,
+    "source": "Overdub",
+    "target": "Ole",
+    "type": "FILTER_LINK"
+  },
+  "dna": {
+    "aggression": 0.126,
+    "brightness": 0.886,
+    "density": 0.65,
+    "movement": 0.328,
+    "space": 0.095,
+    "warmth": 0.934
+  },
   "engines": [
-    "OLE",
-    "OVERDUB"
+    "Ole",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.899,
+    "COUPLING": 0.398,
+    "MOVEMENT": 0.34,
+    "SPACE": 0.079
+  },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_INTIMATE_GENTLE_FAM_VOL_31",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.887,
-      "macro_movement": 0.325,
       "macro_coupling": 0.413,
+      "macro_movement": 0.325,
       "macro_space": 0.069
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.91,
-      "macro_movement": 0.354,
       "macro_coupling": 0.384,
+      "macro_movement": 0.354,
       "macro_space": 0.089
     }
   },
-  "coupling": {
-    "type": "FILTER_LINK",
-    "source": "OVERDUB",
-    "target": "OLE",
-    "amount": 0.562
-  },
-  "dna": {
-    "brightness": 0.886,
-    "warmth": 0.934,
-    "movement": 0.328,
-    "density": 0.65,
-    "space": 0.095,
-    "aggression": 0.126
-  },
-  "macros": {
-    "CHARACTER": 0.899,
-    "MOVEMENT": 0.34,
-    "COUPLING": 0.398,
-    "SPACE": 0.079
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "intimate",
     "gentle",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

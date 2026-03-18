@@ -1,31 +1,39 @@
 {
-  "name": "Rotating Hearth",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6,
+    "source": "Ohm",
+    "target": "Orbital",
+    "type": "ORBITAL_RING"
+  },
+  "description": "Orbital group envelope cycles through ohm commune — the fire rotates, always warm",
   "engines": [
-    "OHM",
-    "ORBITAL"
+    "Ohm",
+    "Orbital"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.6,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.55,
     "SPACE": 0.65
   },
-  "sonic_dna": {
-    "brightness": 0.54,
-    "warmth": 0.67,
-    "movement": 0.6,
-    "density": 0.52,
-    "space": 0.66,
-    "aggression": 0.3
-  },
+  "mood": "Entangled",
+  "name": "Rotating Hearth",
   "parameters": {},
-  "coupling": {
-    "type": "ORBITAL_RING",
-    "source": "OHM",
-    "target": "ORBITAL",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.3,
+    "brightness": 0.54,
+    "density": 0.52,
+    "movement": 0.6,
+    "space": 0.66,
+    "warmth": 0.67
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "orbital",
     "hippy"
   ],
-  "description": "Orbital group envelope cycles through ohm commune \u2014 the fire rotates, always warm"
+  "version": "1.0"
 }

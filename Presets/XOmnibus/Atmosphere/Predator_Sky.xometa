@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Predator Sky",
-  "mood": "Atmosphere",
-  "engines": [
-    "OBLONG"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. OBLONG aggressive register.",
+  "dna": {
+    "aggression": 0.751,
+    "brightness": 0.351,
+    "density": 0.532,
+    "movement": 0.679,
+    "space": 0.375,
+    "warmth": 0.508
+  },
+  "engines": [
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.816,
+    "COUPLING": 0.106,
+    "MOVEMENT": 0.585,
+    "SPACE": 0.433
+  },
+  "mood": "Atmosphere",
+  "name": "Predator Sky",
+  "parameters": {
+    "Oblong": {
+      "character": 0.816,
+      "coupling": 0.106,
+      "movement": 0.585,
+      "space": 0.433
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -16,36 +47,5 @@
     "pressure",
     "fierce"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.351,
-    "warmth": 0.508,
-    "movement": 0.679,
-    "density": 0.532,
-    "space": 0.375,
-    "aggression": 0.751
-  },
-  "parameters": {
-    "OBLONG": {
-      "character": 0.816,
-      "movement": 0.585,
-      "coupling": 0.106,
-      "space": 0.433
-    }
-  },
-  "macros": {
-    "CHARACTER": 0.816,
-    "MOVEMENT": 0.585,
-    "COUPLING": 0.106,
-    "SPACE": 0.433
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

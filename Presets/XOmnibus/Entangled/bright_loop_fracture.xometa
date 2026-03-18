@@ -1,51 +1,58 @@
 {
-  "name": "Bright Loop Fracture",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6,
+    "source": "Odyssey",
+    "target": "Ouroboros",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.9,
+    "density": 0.3,
+    "movement": 0.7,
+    "space": 0.8,
+    "warmth": 0.2
+  },
   "engines": [
-    "ODYSSEY",
-    "OUROBOROS"
+    "Odyssey",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.6,
+    "MOVEMENT": 0.75,
+    "SPACE": 0.75
+  },
+  "mood": "Entangled",
+  "name": "Bright Loop Fracture",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.8,
-      "macro_movement": 0.7,
       "macro_coupling": 0.6,
+      "macro_movement": 0.7,
       "macro_space": 0.8
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.3,
-      "macro_movement": 0.8,
       "macro_coupling": 0.7,
+      "macro_movement": 0.8,
       "macro_space": 0.7
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ODYSSEY",
-    "target": "OUROBOROS",
-    "amount": 0.6
-  },
-  "dna": {
-    "brightness": 0.9,
-    "warmth": 0.2,
-    "movement": 0.7,
-    "density": 0.3,
-    "space": 0.8,
-    "aggression": 0.4
-  },
-  "macros": {
-    "CHARACTER": 0.55,
-    "MOVEMENT": 0.75,
-    "COUPLING": 0.6,
-    "SPACE": 0.75
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "odyssey",
     "ouroboros"
   ],
-  "author": "XO_OX Coverage Pack 2026-03-16",
-  "created": "2026-03-16"
+  "version": "1.0"
 }

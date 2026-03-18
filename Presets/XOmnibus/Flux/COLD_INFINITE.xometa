@@ -1,50 +1,58 @@
 {
-  "name": "COLD INFINITE",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OUTWIT",
-    "OCELOT"
-  ],
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.395,
-      "macro_movement": 0.432,
-      "macro_coupling": 0.775,
-      "macro_space": 0.698
-    },
-    "OCELOT": {
-      "macro_character": 0.324,
-      "macro_movement": 0.306,
-      "macro_coupling": 0.697,
-      "macro_space": 0.714
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OUTWIT",
-    "target": "OCELOT",
-    "amount": 0.578
+    "amount": 0.578,
+    "source": "Outwit",
+    "target": "Ocelot",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.605,
     "brightness": 0.081,
-    "warmth": 0.098,
-    "movement": 0.324,
     "density": 0.684,
+    "movement": 0.324,
     "space": 0.862,
-    "aggression": 0.605
+    "warmth": 0.098
   },
+  "engines": [
+    "Outwit",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.395,
-    "MOVEMENT": 0.432,
     "COUPLING": 0.775,
+    "MOVEMENT": 0.432,
     "SPACE": 0.698
   },
+  "mood": "Flux",
+  "name": "COLD INFINITE",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.324,
+      "macro_coupling": 0.697,
+      "macro_movement": 0.306,
+      "macro_space": 0.714
+    },
+    "Outwit": {
+      "macro_character": 0.395,
+      "macro_coupling": 0.775,
+      "macro_movement": 0.432,
+      "macro_space": 0.698
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "cold",
     "vast",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

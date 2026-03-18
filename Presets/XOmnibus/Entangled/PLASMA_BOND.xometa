@@ -1,49 +1,57 @@
 {
-  "name": "PLASMA BOND",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.388,
+    "source": "Ocelot",
+    "target": "Overworld",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.798,
+    "brightness": 0.964,
+    "density": 0.26,
+    "movement": 0.23,
+    "space": 0.584,
+    "warmth": 0.93
+  },
   "engines": [
-    "OCELOT",
-    "OVERWORLD"
+    "Ocelot",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.437,
+    "COUPLING": 0.222,
+    "MOVEMENT": 0.946,
+    "SPACE": 0.451
+  },
+  "mood": "Entangled",
+  "name": "PLASMA BOND",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.555,
-      "macro_movement": 0.103,
       "macro_coupling": 0.846,
+      "macro_movement": 0.103,
       "macro_space": 0.851
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.285,
-      "macro_movement": 0.763,
       "macro_coupling": 0.273,
+      "macro_movement": 0.763,
       "macro_space": 0.905
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OCELOT",
-    "target": "OVERWORLD",
-    "amount": 0.388
-  },
-  "dna": {
-    "brightness": 0.964,
-    "warmth": 0.93,
-    "movement": 0.23,
-    "density": 0.26,
-    "space": 0.584,
-    "aggression": 0.798
-  },
-  "macros": {
-    "CHARACTER": 0.437,
-    "MOVEMENT": 0.946,
-    "COUPLING": 0.222,
-    "SPACE": 0.451
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-  ]
+  ],
+  "version": "1.0"
 }

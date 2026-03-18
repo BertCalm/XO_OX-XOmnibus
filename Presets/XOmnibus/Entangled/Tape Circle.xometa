@@ -1,31 +1,39 @@
 {
-  "name": "Tape Circle",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6,
+    "source": "Ohm",
+    "target": "Overdub",
+    "type": "TAPE_ECHO_LOCK"
+  },
+  "description": "Warm commune recorded to tape — ohm groove preserved in saturated analogue warmth",
   "engines": [
-    "OHM",
-    "OVERDUB"
+    "Ohm",
+    "Overdub"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.6,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.55,
     "SPACE": 0.65
   },
-  "sonic_dna": {
-    "brightness": 0.44,
-    "warmth": 0.75,
-    "movement": 0.6,
-    "density": 0.52,
-    "space": 0.7,
-    "aggression": 0.22
-  },
+  "mood": "Entangled",
+  "name": "Tape Circle",
   "parameters": {},
-  "coupling": {
-    "type": "TAPE_ECHO_LOCK",
-    "source": "OHM",
-    "target": "OVERDUB",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.22,
+    "brightness": 0.44,
+    "density": 0.52,
+    "movement": 0.6,
+    "space": 0.7,
+    "warmth": 0.75
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "overdub",
     "hippy"
   ],
-  "description": "Warm commune recorded to tape \u2014 ohm groove preserved in saturated analogue warmth"
+  "version": "1.0"
 }

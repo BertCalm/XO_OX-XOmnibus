@@ -1,49 +1,57 @@
 {
-  "name": "WRATHFUL VOID TEAR",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.344,
+    "source": "Organon",
+    "target": "Outwit",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.886,
+    "brightness": 0.524,
+    "density": 0.775,
+    "movement": 0.48,
+    "space": 0.38,
+    "warmth": 0.142
+  },
   "engines": [
-    "ORGANON",
-    "OUTWIT"
+    "Organon",
+    "Outwit"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.138,
+    "COUPLING": 0.207,
+    "MOVEMENT": 0.48,
+    "SPACE": 0.38
+  },
+  "mood": "Aether",
+  "name": "WRATHFUL VOID TEAR",
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.314,
-      "macro_movement": 0.445,
       "macro_coupling": 0.691,
+      "macro_movement": 0.445,
       "macro_space": 0.375
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.775,
-      "macro_movement": 0.522,
       "macro_coupling": 0.873,
+      "macro_movement": 0.522,
       "macro_space": 0.394
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORGANON",
-    "target": "OUTWIT",
-    "amount": 0.344
-  },
-  "dna": {
-    "brightness": 0.524,
-    "warmth": 0.142,
-    "movement": 0.48,
-    "density": 0.775,
-    "space": 0.38,
-    "aggression": 0.886
-  },
-  "macros": {
-    "CHARACTER": 0.138,
-    "MOVEMENT": 0.48,
-    "COUPLING": 0.207,
-    "SPACE": 0.38
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

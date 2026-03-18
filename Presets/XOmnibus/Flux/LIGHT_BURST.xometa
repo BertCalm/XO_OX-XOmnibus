@@ -1,49 +1,57 @@
 {
-  "name": "LIGHT BURST",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OPAL",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.84,
-      "macro_movement": 0.277,
-      "macro_coupling": 0.778,
-      "macro_space": 0.485
-    },
-    "ODYSSEY": {
-      "macro_character": 0.239,
-      "macro_movement": 0.44,
-      "macro_coupling": 0.714,
-      "macro_space": 0.234
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RHYTHM_SYNC",
-    "source": "OPAL",
-    "target": "ODYSSEY",
-    "amount": 0.751
+    "amount": 0.751,
+    "source": "Opal",
+    "target": "Odyssey",
+    "type": "RHYTHM_SYNC"
   },
   "dna": {
+    "aggression": 0.913,
     "brightness": 0.962,
-    "warmth": 0.456,
-    "movement": 0.744,
     "density": 0.468,
+    "movement": 0.744,
     "space": 0.295,
-    "aggression": 0.913
+    "warmth": 0.456
   },
+  "engines": [
+    "Opal",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.539,
-    "MOVEMENT": 0.359,
     "COUPLING": 0.746,
+    "MOVEMENT": 0.359,
     "SPACE": 0.359
   },
+  "mood": "Flux",
+  "name": "LIGHT BURST",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.239,
+      "macro_coupling": 0.714,
+      "macro_movement": 0.44,
+      "macro_space": 0.234
+    },
+    "Opal": {
+      "macro_character": 0.84,
+      "macro_coupling": 0.778,
+      "macro_movement": 0.277,
+      "macro_space": 0.485
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "extreme",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,48 +1,56 @@
 {
-  "name": "Thick Odd Grid",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.66,
+    "source": "OddOscar",
+    "target": "Oblong",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.58,
+    "brightness": 0.36,
+    "density": 0.92,
+    "movement": 0.25,
+    "space": 0.49,
+    "warmth": 0.96
+  },
   "engines": [
-    "ODDOSCAR",
-    "OBLONG"
+    "OddOscar",
+    "Oblong"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.86,
+    "COUPLING": 0.58,
+    "MOVEMENT": 0.27,
+    "SPACE": 0.4
+  },
+  "mood": "Entangled",
+  "name": "Thick Odd Grid",
   "parameters": {
-    "ODDOSCAR": {
-      "macro_character": 0.92,
-      "macro_movement": 0.23,
-      "macro_coupling": 0.67,
+    "Oblong": {
+      "macro_character": 0.81,
+      "macro_coupling": 0.5,
+      "macro_movement": 0.3,
       "macro_space": 0.4
     },
-    "OBLONG": {
-      "macro_character": 0.81,
-      "macro_movement": 0.3,
-      "macro_coupling": 0.5,
+    "OddOscar": {
+      "macro_character": 0.92,
+      "macro_coupling": 0.67,
+      "macro_movement": 0.23,
       "macro_space": 0.4
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ODDOSCAR",
-    "target": "OBLONG",
-    "amount": 0.66
-  },
-  "dna": {
-    "brightness": 0.36,
-    "warmth": 0.96,
-    "movement": 0.25,
-    "density": 0.92,
-    "space": 0.49,
-    "aggression": 0.58
-  },
-  "macros": {
-    "CHARACTER": 0.86,
-    "MOVEMENT": 0.27,
-    "COUPLING": 0.58,
-    "SPACE": 0.4
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-  ]
+  ],
+  "version": "1.0"
 }

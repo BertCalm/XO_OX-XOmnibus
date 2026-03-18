@@ -1,48 +1,56 @@
 {
-  "name": "FILTER MELTDOWN",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.531,
+    "source": "Odyssey",
+    "target": "Onset",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.763,
+    "brightness": 0.138,
+    "density": 0.325,
+    "movement": 0.903,
+    "space": 0.662,
+    "warmth": 0.207
+  },
   "engines": [
-    "ODYSSEY",
-    "ONSET"
+    "Odyssey",
+    "Onset"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.314,
+    "COUPLING": 0.173,
+    "MOVEMENT": 0.903,
+    "SPACE": 0.912
+  },
+  "mood": "Entangled",
+  "name": "FILTER MELTDOWN",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.691,
-      "macro_movement": 0.911,
       "macro_coupling": 0.41,
+      "macro_movement": 0.911,
       "macro_space": 0.775
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.921,
-      "macro_movement": 0.895,
       "macro_coupling": 0.873,
+      "macro_movement": 0.895,
       "macro_space": 0.736
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ODYSSEY",
-    "target": "ONSET",
-    "amount": 0.531
-  },
-  "dna": {
-    "brightness": 0.138,
-    "warmth": 0.207,
-    "movement": 0.903,
-    "density": 0.325,
-    "space": 0.662,
-    "aggression": 0.763
-  },
-  "macros": {
-    "CHARACTER": 0.314,
-    "MOVEMENT": 0.903,
-    "COUPLING": 0.173,
-    "SPACE": 0.912
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "wild",
     "movement"
-  ]
+  ],
+  "version": "1.0"
 }

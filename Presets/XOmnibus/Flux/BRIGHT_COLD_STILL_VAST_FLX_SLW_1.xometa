@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_COLD_STILL_VAST_FLX_SLW_1",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.83,
+    "source": "Oblong",
+    "target": "Odyssey",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.567,
+    "brightness": 0.966,
+    "density": 0.484,
+    "movement": 0.046,
+    "space": 0.898,
+    "warmth": 0.074
+  },
   "engines": [
-    "OBLONG",
-    "ODYSSEY"
+    "Oblong",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.525,
+    "COUPLING": 0.839,
+    "MOVEMENT": 0.046,
+    "SPACE": 0.898
+  },
+  "mood": "Flux",
+  "name": "BRIGHT_COLD_STILL_VAST_FLX_SLW_1",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.387,
-      "macro_movement": 0.045,
       "macro_coupling": 0.715,
+      "macro_movement": 0.045,
       "macro_space": 0.89
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.574,
-      "macro_movement": 0.053,
       "macro_coupling": 0.662,
+      "macro_movement": 0.053,
       "macro_space": 0.863
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OBLONG",
-    "target": "ODYSSEY",
-    "amount": 0.83
-  },
-  "dna": {
-    "brightness": 0.966,
-    "warmth": 0.074,
-    "movement": 0.046,
-    "density": 0.484,
-    "space": 0.898,
-    "aggression": 0.567
-  },
-  "macros": {
-    "CHARACTER": 0.525,
-    "MOVEMENT": 0.046,
-    "COUPLING": 0.839,
-    "SPACE": 0.898
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +54,6 @@
     "cold",
     "vast",
     "imperceptible-morph"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "HOT STILL DENSE INTIMATE GENTLE FAM2 4",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OTTONI",
-    "OSPREY"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.735,
-      "macro_movement": 0.047,
-      "macro_coupling": 0.534,
-      "macro_space": 0.045
-    },
-    "OSPREY": {
-      "macro_character": 0.744,
-      "macro_movement": 0.04,
-      "macro_coupling": 0.543,
-      "macro_space": 0.037
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OTTONI",
-    "target": "OSPREY",
-    "amount": 0.534
+    "amount": 0.534,
+    "source": "Ottoni",
+    "target": "Osprey",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.078,
     "brightness": 0.533,
-    "warmth": 0.936,
-    "movement": 0.047,
     "density": 0.99,
+    "movement": 0.047,
     "space": 0.045,
-    "aggression": 0.078
+    "warmth": 0.936
   },
+  "engines": [
+    "Ottoni",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.735,
-    "MOVEMENT": 0.047,
     "COUPLING": 0.534,
+    "MOVEMENT": 0.047,
     "SPACE": 0.045
   },
+  "mood": "Family",
+  "name": "HOT STILL DENSE INTIMATE GENTLE FAM2 4",
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.744,
+      "macro_coupling": 0.543,
+      "macro_movement": 0.04,
+      "macro_space": 0.037
+    },
+    "Ottoni": {
+      "macro_character": 0.735,
+      "macro_coupling": 0.534,
+      "macro_movement": 0.047,
+      "macro_space": 0.045
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
@@ -47,5 +54,6 @@
     "dense",
     "intimate",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_WARM_FROZEN_CLOSE_HARSH_ENT4_3",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.851,
+    "source": "Obscura",
+    "target": "Oceanic",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.96,
+    "brightness": 0.923,
+    "density": 0.336,
+    "movement": 0.076,
+    "space": 0.052,
+    "warmth": 0.94
+  },
   "engines": [
-    "OBSCURA",
-    "OCEANIC"
+    "Obscura",
+    "Oceanic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.939,
+    "COUPLING": 0.851,
+    "MOVEMENT": 0.08,
+    "SPACE": 0.071
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT_WARM_FROZEN_CLOSE_HARSH_ENT4_3",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.96,
-      "macro_movement": 0.077,
       "macro_coupling": 0.361,
+      "macro_movement": 0.077,
       "macro_space": 0.072
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.917,
-      "macro_movement": 0.082,
       "macro_coupling": 0.335,
+      "macro_movement": 0.082,
       "macro_space": 0.07
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBSCURA",
-    "target": "OCEANIC",
-    "amount": 0.851
-  },
-  "dna": {
-    "brightness": 0.923,
-    "warmth": 0.94,
-    "movement": 0.076,
-    "density": 0.336,
-    "space": 0.052,
-    "aggression": 0.96
-  },
-  "macros": {
-    "CHARACTER": 0.939,
-    "MOVEMENT": 0.08,
-    "COUPLING": 0.851,
-    "SPACE": 0.071
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +55,6 @@
     "warm",
     "close",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

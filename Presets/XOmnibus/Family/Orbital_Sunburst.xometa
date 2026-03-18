@@ -1,13 +1,36 @@
 {
-  "schema_version": 1,
-  "name": "Orbital Sunburst",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "ORBITAL resonance at maximum — the orbit closest to the star, pure radiant spin.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.87,
+    "density": 0.25,
+    "movement": 0.82,
+    "space": 0.8,
+    "warmth": 0.55
+  },
   "engines": [
-    "ORBITAL"
+    "Orbital"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ORBITAL resonance at maximum \u2014 the orbit closest to the star, pure radiant spin.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "SPIN",
+    "RESONANCE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Orbital Sunburst",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "portrait",
@@ -16,29 +39,6 @@
     "resonant",
     "orbital"
   ],
-  "macroLabels": [
-    "SPIN",
-    "RESONANCE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.87,
-    "warmth": 0.55,
-    "movement": 0.82,
-    "density": 0.25,
-    "space": 0.8,
-    "aggression": 0.2
-  }
+  "version": "1.0.0"
 }

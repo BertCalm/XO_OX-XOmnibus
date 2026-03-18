@@ -1,59 +1,79 @@
 {
-  "schema_version": "1.0",
-  "name": "Chain Fury",
-  "mood": "Flux",
-  "engines": ["Obscura"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "High-stiffness chain driven into nonlinear territory. Impulse excitation at the center, fast scanner sweep, free boundary mode — the mantle of the giant squid thrashing at depth. High movement, high density. Physics pushed to the edge of stability.",
-  "tags": ["aggressive", "physical", "complex", "chaotic", "metallic", "dense"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "High-stiffness chain driven into nonlinear territory. Impulse excitation at the center, fast scanner sweep, free boundary mode — the mantle of the giant squid thrashing at depth. High movement, high density. Physics pushed to the edge of stability.",
+  "dna": {
+    "aggression": 0.85,
+    "brightness": 0.78,
+    "density": 0.82,
+    "movement": 0.88,
+    "space": 0.22,
+    "warmth": 0.12
+  },
+  "engines": [
+    "Obscura"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Chain Fury",
   "parameters": {
     "Obscura": {
-      "obscura_stiffness": 0.88,
-      "obscura_damping": 0.05,
-      "obscura_nonlinear": 0.75,
-      "obscura_excitePos": 0.5,
-      "obscura_exciteWidth": 0.08,
-      "obscura_scanWidth": 0.95,
-      "obscura_boundary": 1,
-      "obscura_sustain": 0.0,
-      "obscura_level": 0.88,
       "obscura_ampAttack": 0.002,
       "obscura_ampDecay": 0.6,
-      "obscura_ampSustain": 0.55,
       "obscura_ampRelease": 0.8,
-      "obscura_physEnvAttack": 0.005,
-      "obscura_physEnvDecay": 0.8,
-      "obscura_physEnvSustain": 0.6,
-      "obscura_physEnvRelease": 1.0,
-      "obscura_lfo1Rate": 4.5,
-      "obscura_lfo1Depth": 0.22,
-      "obscura_lfo1Shape": 2,
-      "obscura_lfo2Rate": 7.2,
-      "obscura_lfo2Depth": 0.15,
-      "obscura_lfo2Shape": 3,
-      "obscura_voiceMode": 0,
+      "obscura_ampSustain": 0.55,
+      "obscura_boundary": 1,
+      "obscura_damping": 0.05,
+      "obscura_excitePos": 0.5,
+      "obscura_exciteWidth": 0.08,
       "obscura_glide": 0.0,
       "obscura_initShape": 1,
+      "obscura_level": 0.88,
+      "obscura_lfo1Depth": 0.22,
+      "obscura_lfo1Rate": 4.5,
+      "obscura_lfo1Shape": 2,
+      "obscura_lfo2Depth": 0.15,
+      "obscura_lfo2Rate": 7.2,
+      "obscura_lfo2Shape": 3,
       "obscura_macroCharacter": 0.85,
-      "obscura_macroMovement": 0.75,
       "obscura_macroCoupling": 0.0,
-      "obscura_macroSpace": 0.2
+      "obscura_macroMovement": 0.75,
+      "obscura_macroSpace": 0.2,
+      "obscura_nonlinear": 0.75,
+      "obscura_physEnvAttack": 0.005,
+      "obscura_physEnvDecay": 0.8,
+      "obscura_physEnvRelease": 1.0,
+      "obscura_physEnvSustain": 0.6,
+      "obscura_scanWidth": 0.95,
+      "obscura_stiffness": 0.88,
+      "obscura_sustain": 0.0,
+      "obscura_voiceMode": 0
     }
   },
-  "coupling": {"pairs": []},
+  "schema_version": "1.0",
   "sequencer": null,
-  "dna": {
-    "brightness": 0.78,
-    "warmth": 0.12,
-    "movement": 0.88,
-    "density": 0.82,
-    "space": 0.22,
-    "aggression": 0.85
-  }
+  "tags": [
+    "aggressive",
+    "physical",
+    "complex",
+    "chaotic",
+    "metallic",
+    "dense"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

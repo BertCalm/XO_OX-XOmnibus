@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Clench Table",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.54,
+    "pairs": [
+      {
+        "amount": 0.54,
+        "engineA": "Overbite",
+        "engineB": "Osteria",
+        "type": "Audio->Wavetable"
+      }
+    ],
+    "type": "Audio->Wavetable"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OVERBITE bite at the OSTERIA table. Slow feast, fat bass. [Audio->Wavetable]",
+  "dna": {
+    "aggression": 0.517,
     "brightness": 0.461,
-    "warmth": 0.677,
-    "movement": 0.472,
     "density": 0.688,
+    "movement": 0.472,
     "space": 0.511,
-    "aggression": 0.517
+    "warmth": 0.677
   },
   "engines": [
-    "XOverbite",
-    "XOsteria"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE bite at the OSTERIA table. Slow feast, fat bass. [Audio->Wavetable]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "overbite",
-    "osteria",
-    "bite"
+    "Overbite",
+    "Osteria"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.461,
-    "warmth": 0.677,
-    "movement": 0.472,
-    "density": 0.688,
-    "space": 0.511,
-    "aggression": 0.517
-  },
+  "mood": "Entangled",
+  "name": "Clench Table",
   "parameters": {
-    "XOverbite": {
-      "poss_outputLevel": 0.85,
-      "poss_outputPan": -0.04,
-      "poss_couplingLevel": 0.73,
-      "poss_couplingBus": 0,
-      "poss_brightness": 0.454,
-      "poss_warmth": 0.638,
-      "poss_aggression": 0.638
-    },
-    "XOsteria": {
+    "Osteria": {
+      "ost_aggression": 0.5,
+      "ost_brightness": 0.448,
+      "ost_couplingBus": 0,
+      "ost_couplingLevel": 0.57,
       "ost_outputLevel": 0.82,
       "ost_outputPan": -0.05,
-      "ost_couplingLevel": 0.57,
-      "ost_couplingBus": 0,
-      "ost_brightness": 0.448,
-      "ost_warmth": 0.736,
-      "ost_aggression": 0.5
+      "ost_warmth": 0.736
+    },
+    "Overbite": {
+      "poss_aggression": 0.638,
+      "poss_brightness": 0.454,
+      "poss_couplingBus": 0,
+      "poss_couplingLevel": 0.73,
+      "poss_outputLevel": 0.85,
+      "poss_outputPan": -0.04,
+      "poss_warmth": 0.638
     }
   },
-  "coupling": {
-    "type": "Audio->Wavetable",
-    "amount": 0.54,
-    "pairs": [
-      {
-        "engineA": "XOverbite",
-        "engineB": "XOsteria",
-        "type": "Audio->Wavetable",
-        "amount": 0.54
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.517,
+    "brightness": 0.461,
+    "density": 0.688,
+    "movement": 0.472,
+    "space": 0.511,
+    "warmth": 0.677
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "overbite",
+    "osteria",
+    "bite"
+  ],
+  "version": "1.0.0"
 }

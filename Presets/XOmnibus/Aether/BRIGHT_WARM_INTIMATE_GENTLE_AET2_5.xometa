@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_WARM_INTIMATE_GENTLE_AET2_5",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.678,
+    "source": "Oceanic",
+    "target": "Osprey",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.1204,
+    "brightness": 0.9666,
+    "density": 0.5872,
+    "movement": 0.5269,
+    "space": 0.0253,
+    "warmth": 0.9181
+  },
   "engines": [
-    "OCEANIC",
-    "OSPREY"
+    "Oceanic",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9813,
+    "COUPLING": 0.678,
+    "MOVEMENT": 0.5138,
+    "SPACE": 0.0253
+  },
+  "mood": "Aether",
+  "name": "BRIGHT_WARM_INTIMATE_GENTLE_AET2_5",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.99,
-      "macro_movement": 0.5244,
       "macro_coupling": 0.5731,
+      "macro_movement": 0.5244,
       "macro_space": 0.0101
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.9727,
-      "macro_movement": 0.5032,
       "macro_coupling": 0.5957,
+      "macro_movement": 0.5032,
       "macro_space": 0.0651
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OCEANIC",
-    "target": "OSPREY",
-    "amount": 0.678
-  },
-  "dna": {
-    "brightness": 0.9666,
-    "warmth": 0.9181,
-    "space": 0.0253,
-    "aggression": 0.1204,
-    "movement": 0.5269,
-    "density": 0.5872
-  },
-  "macros": {
-    "CHARACTER": 0.9813,
-    "MOVEMENT": 0.5138,
-    "COUPLING": 0.678,
-    "SPACE": 0.0253
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +56,6 @@
     "intimate",
     "gentle",
     "celestial"
-  ]
+  ],
+  "version": "1.0"
 }

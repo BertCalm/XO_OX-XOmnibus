@@ -1,48 +1,56 @@
 {
-  "name": "ZERO LATTICE",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OMBRE",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "OMBRE": {
-      "macro_character": 0.964,
-      "macro_movement": 0.718,
-      "macro_coupling": 0.778,
-      "macro_space": 0.164
-    },
-    "OBSCURA": {
-      "macro_character": 0.311,
-      "macro_movement": 0.579,
-      "macro_coupling": 0.929,
-      "macro_space": 0.576
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OMBRE",
-    "target": "OBSCURA",
-    "amount": 0.826
+    "amount": 0.826,
+    "source": "Ombre",
+    "target": "Obscura",
+    "type": "VELOCITY_COUPLE"
   },
   "dna": {
+    "aggression": 0.831,
     "brightness": 0.375,
-    "warmth": 0.941,
-    "movement": 0.198,
     "density": 0.097,
+    "movement": 0.198,
     "space": 0.592,
-    "aggression": 0.831
+    "warmth": 0.941
   },
+  "engines": [
+    "Ombre",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.243,
-    "MOVEMENT": 0.697,
     "COUPLING": 0.302,
+    "MOVEMENT": 0.697,
     "SPACE": 0.684
   },
+  "mood": "Entangled",
+  "name": "ZERO LATTICE",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.311,
+      "macro_coupling": 0.929,
+      "macro_movement": 0.579,
+      "macro_space": 0.576
+    },
+    "Ombre": {
+      "macro_character": 0.964,
+      "macro_coupling": 0.778,
+      "macro_movement": 0.718,
+      "macro_space": 0.164
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "hollow",
     "void"
-  ]
+  ],
+  "version": "1.0"
 }

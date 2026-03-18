@@ -1,49 +1,57 @@
 {
-  "name": "PYRETIC FLOW",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERWORLD",
-    "OLE"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.577,
-      "macro_movement": 0.757,
-      "macro_coupling": 0.723,
-      "macro_space": 0.623
-    },
-    "OLE": {
-      "macro_character": 0.647,
-      "macro_movement": 0.847,
-      "macro_coupling": 0.842,
-      "macro_space": 0.619
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OVERWORLD",
-    "target": "OLE",
-    "amount": 0.636
+    "amount": 0.636,
+    "source": "Overworld",
+    "target": "Ole",
+    "type": "FREQUENCY_SHIFT"
   },
   "dna": {
+    "aggression": 0.634,
     "brightness": 0.491,
-    "warmth": 0.963,
-    "movement": 0.886,
     "density": 0.456,
+    "movement": 0.886,
     "space": 0.657,
-    "aggression": 0.634
+    "warmth": 0.963
   },
+  "engines": [
+    "Overworld",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.577,
-    "MOVEMENT": 0.757,
     "COUPLING": 0.723,
+    "MOVEMENT": 0.757,
     "SPACE": 0.623
   },
+  "mood": "Flux",
+  "name": "PYRETIC FLOW",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.647,
+      "macro_coupling": 0.842,
+      "macro_movement": 0.847,
+      "macro_space": 0.619
+    },
+    "Overworld": {
+      "macro_character": 0.577,
+      "macro_coupling": 0.723,
+      "macro_movement": 0.757,
+      "macro_space": 0.623
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "warm",
     "kinetic",
     "movement"
-  ]
+  ],
+  "version": "1.0"
 }

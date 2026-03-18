@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Pressure Pulse Slow",
-  "mood": "Foundation",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Tar-slow attack into a saturated, immovable bed of sound.",
+  "dna": {
+    "aggression": 0.635,
     "brightness": 0.339,
-    "warmth": 0.896,
-    "movement": 0.439,
     "density": 0.885,
+    "movement": 0.439,
     "space": 0.246,
-    "aggression": 0.635
+    "warmth": 0.896
   },
   "engines": [
-    "OHM"
+    "Ohm"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Tar-slow attack into a saturated, immovable bed of sound.",
+  "macroLabels": [
+    "CHARACTER",
+    "DRIVE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Pressure Pulse Slow",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.635,
+    "brightness": 0.339,
+    "density": 0.885,
+    "movement": 0.439,
+    "space": 0.246,
+    "warmth": 0.896
+  },
   "tags": [
     "foundation",
     "warm",
@@ -24,23 +42,5 @@
     "thick",
     "aggressive"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "DRIVE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.339,
-    "warmth": 0.896,
-    "movement": 0.439,
-    "density": 0.885,
-    "space": 0.246,
-    "aggression": 0.635
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

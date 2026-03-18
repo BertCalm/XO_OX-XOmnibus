@@ -1,49 +1,57 @@
 {
-  "name": "Tidal Exposure",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.747,
+    "source": "Obscura",
+    "target": "Oceanic",
+    "type": "ENVELOPE_MIRROR"
+  },
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.35,
+    "density": 0.5,
+    "movement": 0.75,
+    "space": 0.85,
+    "warmth": 0.28
+  },
   "engines": [
-    "OBSCURA",
-    "OCEANIC"
+    "Obscura",
+    "Oceanic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.325,
+    "COUPLING": 0.747,
+    "MOVEMENT": 0.3,
+    "SPACE": 0.7
+  },
+  "mood": "Entangled",
+  "name": "Tidal Exposure",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.335,
-      "macro_movement": 0.235,
       "macro_coupling": 0.535,
+      "macro_movement": 0.235,
       "macro_space": 0.585
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.315,
-      "macro_movement": 0.365,
       "macro_coupling": 0.465,
+      "macro_movement": 0.365,
       "macro_space": 0.815
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_MIRROR",
-    "source": "OBSCURA",
-    "target": "OCEANIC",
-    "amount": 0.747
-  },
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.28,
-    "movement": 0.75,
-    "density": 0.5,
-    "space": 0.85,
-    "aggression": 0.2
-  },
-  "macros": {
-    "CHARACTER": 0.325,
-    "MOVEMENT": 0.3,
-    "COUPLING": 0.747,
-    "SPACE": 0.7
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "tidal"
-  ]
+  ],
+  "version": "1.0"
 }

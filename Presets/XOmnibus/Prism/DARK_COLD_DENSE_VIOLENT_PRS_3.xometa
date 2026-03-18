@@ -1,50 +1,58 @@
 {
-  "name": "DARK_COLD_DENSE_VIOLENT_PRS_3",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.708,
+    "source": "Overworld",
+    "target": "Ohm",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.93,
+    "brightness": 0.038,
+    "density": 0.925,
+    "movement": 0.662,
+    "space": 0.634,
+    "warmth": 0.127
+  },
   "engines": [
-    "OVERWORLD",
-    "OHM"
+    "Overworld",
+    "Ohm"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.484,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.662,
+    "SPACE": 0.634
+  },
+  "mood": "Prism",
+  "name": "DARK_COLD_DENSE_VIOLENT_PRS_3",
   "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.484,
+    "Ohm": {
+      "macro_character": 0.946,
+      "macro_coupling": 0.512,
       "macro_movement": 0.662,
-      "macro_coupling": 0.7,
       "macro_space": 0.634
     },
-    "OHM": {
-      "macro_character": 0.946,
+    "Overworld": {
+      "macro_character": 0.484,
+      "macro_coupling": 0.7,
       "macro_movement": 0.662,
-      "macro_coupling": 0.512,
       "macro_space": 0.634
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERWORLD",
-    "target": "OHM",
-    "amount": 0.708
-  },
-  "dna": {
-    "brightness": 0.038,
-    "warmth": 0.127,
-    "movement": 0.662,
-    "density": 0.925,
-    "space": 0.634,
-    "aggression": 0.93
-  },
-  "macros": {
-    "CHARACTER": 0.484,
-    "MOVEMENT": 0.662,
-    "COUPLING": 0.7,
-    "SPACE": 0.634
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "cold",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

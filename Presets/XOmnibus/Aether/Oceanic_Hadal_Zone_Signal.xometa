@@ -1,13 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "Hadal Zone Signal",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Signal from the deepest trench. The water column above is eleven kilometers of weight. Only the lowest frequencies survive the journey — everything else was crushed ascending.",
+  "dna": {
+    "aggression": 0.04,
+    "brightness": 0.04,
+    "density": 0.55,
+    "movement": 0.15,
+    "space": 0.88,
+    "warmth": 0.25
+  },
   "engines": [
     "Oceanic"
   ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "Signal from the deepest trench. The water column above is eleven kilometers of weight. Only the lowest frequencies survive the journey \u2014 everything else was crushed ascending.",
+  "macroLabels": [
+    "DEPTH",
+    "CURRENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Hadal Zone Signal",
+  "parameters": {
+    "Oceanic": {
+      "ocean_ampAttack": 6.0,
+      "ocean_ampRelease": 10.0,
+      "ocean_delayFeedback": 0.55,
+      "ocean_filterCutoff": 0.03,
+      "ocean_filterReso": 0.3,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroCurrent": 0.0,
+      "ocean_macroDepth": 0.0,
+      "ocean_macroSpace": 0.0,
+      "ocean_reverbMix": 0.9,
+      "ocean_separation": 0.7,
+      "ocean_wavefolderAmt": 0.15
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "dark-aether",
@@ -16,39 +50,5 @@
     "oceanic",
     "vast"
   ],
-  "macroLabels": [
-    "DEPTH",
-    "CURRENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.04,
-    "warmth": 0.25,
-    "movement": 0.15,
-    "density": 0.55,
-    "space": 0.88,
-    "aggression": 0.04
-  },
-  "parameters": {
-    "Oceanic": {
-      "ocean_filterCutoff": 0.03,
-      "ocean_filterReso": 0.3,
-      "ocean_separation": 0.7,
-      "ocean_wavefolderAmt": 0.15,
-      "ocean_ampAttack": 6.0,
-      "ocean_ampRelease": 10.0,
-      "ocean_reverbMix": 0.9,
-      "ocean_delayFeedback": 0.55,
-      "ocean_macroDepth": 0.0,
-      "ocean_macroCurrent": 0.0,
-      "ocean_macroCoupling": 0.0,
-      "ocean_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

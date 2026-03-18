@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "HOT_FROZEN_SPARSE_VAST_GENTLE_ENT3_1",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9312,
+    "source": "Orbital",
+    "target": "Obese",
+    "type": "SPECTRAL_MORPH"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: HOT_FROZEN_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.0824,
+    "brightness": 0.4679,
+    "density": 0.0994,
+    "movement": 0.047,
+    "space": 0.9632,
+    "warmth": 0.9109
+  },
   "engines": [
-    "ORBITAL",
-    "OBESE"
+    "Orbital",
+    "Obese"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: HOT_FROZEN_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6466,
+    "COUPLING": 0.8915,
+    "MOVEMENT": 0.0369,
+    "SPACE": 0.3791
+  },
+  "mood": "Entangled",
+  "name": "HOT_FROZEN_SPARSE_VAST_GENTLE_ENT3_1",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.7171,
+      "macro_coupling": 0.8518,
+      "macro_movement": 0.0436,
+      "macro_space": 0.616
+    },
+    "Orbital": {
+      "macro_character": 0.5762,
+      "macro_coupling": 0.9311,
+      "macro_movement": 0.0303,
+      "macro_space": 0.1423
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +66,6 @@
     "sparse",
     "vast"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.5762,
-      "macro_movement": 0.0303,
-      "macro_coupling": 0.9311,
-      "macro_space": 0.1423
-    },
-    "OBESE": {
-      "macro_character": 0.7171,
-      "macro_movement": 0.0436,
-      "macro_coupling": 0.8518,
-      "macro_space": 0.616
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORBITAL",
-    "target": "OBESE",
-    "amount": 0.9312
-  },
-  "macros": {
-    "CHARACTER": 0.6466,
-    "MOVEMENT": 0.0369,
-    "COUPLING": 0.8915,
-    "SPACE": 0.3791
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.4679,
-    "warmth": 0.9109,
-    "movement": 0.047,
-    "density": 0.0994,
-    "space": 0.9632,
-    "aggression": 0.0824
-  }
+  "version": "1.0.0"
 }

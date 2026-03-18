@@ -1,52 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Rössler Deep",
-  "mood": "Foundation",
-  "engines": ["Ouroboros"],
-  "author": "Guru Bin — OUROBOROS Deepening 2026-03-16",
-  "version": "1.0.0",
-  "description": "Topology 1: the Rössler attractor, single-lobed orbit. More predictable than Lorenz — the Rössler spirals outward from a fixed center before snapping back, producing a quasi-periodic signature closer to a bass oscillator than Lorenz's dual-wing butterfly. chaosIndex 0.12, leash 0.88. Damping high. The result is tonal bass-range chaos: pitched, grounded, with just enough attractor irregularity in the overtones to sound alive. The system that chooses the simplest loop.",
-  "tags": ["rossler", "bass", "tonal", "foundation", "single-lobe", "ouroboros", "deep"],
-  "macroLabels": ["CHARACTER", "CHAOS", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-16",
+  "description": "Topology 1: the Rössler attractor, single-lobed orbit. More predictable than Lorenz — the Rössler spirals outward from a fixed center before snapping back, producing a quasi-periodic signature closer to a bass oscillator than Lorenz's dual-wing butterfly. chaosIndex 0.12, leash 0.88. Damping high. The result is tonal bass-range chaos: pitched, grounded, with just enough attractor irregularity in the overtones to sound alive. The system that chooses the simplest loop.",
+  "dna": {
+    "aggression": 0.22,
+    "brightness": 0.2,
+    "density": 0.7,
+    "movement": 0.18,
+    "space": 0.3,
+    "warmth": 0.8
+  },
+  "engines": [
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Rössler Deep",
   "parameters": {
     "Ouroboros": {
-      "ouro_topology": 1,
-      "ouro_rate": 80.0,
-      "ouro_chaosIndex": 0.12,
-      "ouro_leash": 0.88,
-      "ouro_theta": 1.2,
-      "ouro_phi": 0.35,
-      "ouro_damping": 0.75,
-      "ouro_injection": 0.0,
       "ouro_ampAttack": 0.04,
       "ouro_ampDecay": 0.25,
-      "ouro_ampSustain": 0.88,
       "ouro_ampRelease": 1.8,
-      "ouro_lfo1Rate": 0.04,
-      "ouro_lfo1Depth": 0.04,
-      "ouro_lfo1Shape": 0,
-      "ouro_lfo2Rate": 0.015,
-      "ouro_lfo2Depth": 0.03,
-      "ouro_lfo2Shape": 0,
-      "ouro_voiceMode": 0,
+      "ouro_ampSustain": 0.88,
+      "ouro_chaosIndex": 0.12,
+      "ouro_damping": 0.75,
       "ouro_glide": 0.0,
-      "ouro_macroCharacter": 0.0,
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.88,
+      "ouro_lfo1Depth": 0.04,
+      "ouro_lfo1Rate": 0.04,
+      "ouro_lfo1Shape": 0,
+      "ouro_lfo2Depth": 0.03,
+      "ouro_lfo2Rate": 0.015,
+      "ouro_lfo2Shape": 0,
       "ouro_macroChaos": 0.0,
+      "ouro_macroCharacter": 0.0,
       "ouro_macroCoupling": 0.0,
-      "ouro_macroSpace": 0.0
+      "ouro_macroSpace": 0.0,
+      "ouro_phi": 0.35,
+      "ouro_rate": 80.0,
+      "ouro_theta": 1.2,
+      "ouro_topology": 1,
+      "ouro_voiceMode": 0
     }
   },
-  "coupling": { "pairs": [] },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.2,
-    "warmth": 0.8,
-    "movement": 0.18,
-    "density": 0.7,
-    "space": 0.3,
-    "aggression": 0.22
-  }
+  "tags": [
+    "rossler",
+    "bass",
+    "tonal",
+    "foundation",
+    "single-lobe",
+    "ouroboros",
+    "deep"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

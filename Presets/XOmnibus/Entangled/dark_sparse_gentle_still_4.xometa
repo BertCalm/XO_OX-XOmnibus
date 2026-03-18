@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK SPARSE GENTLE STILL 4",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.0411,
-    "density": 0.0586,
-    "aggression": 0.0489,
-    "movement": 0.0695,
-    "warmth": 0.4227,
-    "space": 0.4127
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Extreme",
+  "couplingType": "FLOW",
+  "description": "Ultra-diverse Entangled preset — dark sparse gentle still. Designed for FLOW coupling with XOrphica.",
   "dna": {
+    "aggression": 0.0489,
     "brightness": 0.0411,
     "density": 0.0586,
-    "aggression": 0.0489,
     "movement": 0.0695,
-    "warmth": 0.4227,
-    "space": 0.4127
+    "space": 0.4127,
+    "warmth": 0.4227
   },
   "engines": [
-    "XOrphica"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark sparse gentle still. Designed for FLOW coupling with XOrphica.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "flow",
-    "orphica"
+    "Orphica"
   ],
   "macroLabels": [
     "RADIANCE",
@@ -36,15 +23,28 @@
     "PRESS",
     "FLOW"
   ],
-  "couplingType": "FLOW",
-  "couplingIntensity": "Extreme",
+  "mood": "Entangled",
+  "name": "DARK SPARSE GENTLE STILL 4",
   "parameters": {
-    "XOrphica": {
-      "couplingLevel": 0.726,
-      "couplingBus": 2
+    "Orphica": {
+      "couplingBus": 2,
+      "couplingLevel": 0.726
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.0489,
+    "brightness": 0.0411,
+    "density": 0.0586,
+    "movement": 0.0695,
+    "space": 0.4127,
+    "warmth": 0.4227
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "flow",
+    "orphica"
+  ],
+  "version": "1.0.0"
 }

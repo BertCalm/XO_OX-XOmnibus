@@ -1,45 +1,52 @@
 {
-  "name": "DARK_HOT_SPARSE_VAST_FND_1",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.443,
+    "source": "Obese",
+    "target": "Oblong",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.687,
+    "brightness": 0.105,
+    "density": 0.065,
+    "movement": 0.524,
+    "space": 0.872,
+    "warmth": 0.893
+  },
   "engines": [
-    "OBESE",
-    "OBLONG"
+    "Obese",
+    "Oblong"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.134,
+    "COUPLING": 0.265,
+    "MOVEMENT": 0.81,
+    "SPACE": 0.364
+  },
+  "mood": "Foundation",
+  "name": "DARK_HOT_SPARSE_VAST_FND_1",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.246,
-      "macro_movement": 0.437,
       "macro_coupling": 0.503,
+      "macro_movement": 0.437,
       "macro_space": 0.611
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.622,
-      "macro_movement": 0.264,
       "macro_coupling": 0.148,
+      "macro_movement": 0.264,
       "macro_space": 0.653
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBESE",
-    "target": "OBLONG",
-    "amount": 0.443
-  },
-  "dna": {
-    "brightness": 0.105,
-    "warmth": 0.893,
-    "movement": 0.524,
-    "density": 0.065,
-    "space": 0.872,
-    "aggression": 0.687
-  },
-  "macros": {
-    "CHARACTER": 0.134,
-    "MOVEMENT": 0.81,
-    "COUPLING": 0.265,
-    "SPACE": 0.364
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -48,5 +55,6 @@
     "sparse",
     "vast",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

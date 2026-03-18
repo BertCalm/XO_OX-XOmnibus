@@ -1,45 +1,52 @@
 {
-  "name": "DARK_HOT_DENSE_VIOLENT_FLX_4",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORGANON",
-    "OPTIC"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.1159,
-      "macro_movement": 0.4655,
-      "macro_coupling": 0.8879,
-      "macro_space": 0.5514
-    },
-    "OPTIC": {
-      "macro_character": 0.2372,
-      "macro_movement": 0.3647,
-      "macro_coupling": 0.8523,
-      "macro_space": 0.6905
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORGANON",
-    "target": "OPTIC",
-    "amount": 0.8967
+    "amount": 0.8967,
+    "source": "Organon",
+    "target": "Optic",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.9791,
     "brightness": 0.1083,
-    "warmth": 0.9684,
-    "movement": 0.4135,
     "density": 0.9076,
+    "movement": 0.4135,
     "space": 0.6612,
-    "aggression": 0.9791
+    "warmth": 0.9684
   },
+  "engines": [
+    "Organon",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.1159,
-    "MOVEMENT": 0.4655,
     "COUPLING": 0.8879,
+    "MOVEMENT": 0.4655,
     "SPACE": 0.5514
   },
+  "mood": "Flux",
+  "name": "DARK_HOT_DENSE_VIOLENT_FLX_4",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.2372,
+      "macro_coupling": 0.8523,
+      "macro_movement": 0.3647,
+      "macro_space": 0.6905
+    },
+    "Organon": {
+      "macro_character": 0.1159,
+      "macro_coupling": 0.8879,
+      "macro_movement": 0.4655,
+      "macro_space": 0.5514
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "high-warmth",
     "high-density",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

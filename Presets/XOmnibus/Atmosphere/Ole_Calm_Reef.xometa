@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Calm Reef",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Tropical space with light DRAMA. Charango shimmer hangs in ISLA's reverb.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.21,
+    "density": 0.35,
+    "movement": 0.37,
+    "space": 0.76,
+    "warmth": 0.6
+  },
   "engines": [
     "Ole"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "latin",
-    "strummed",
-    "atmosphere",
-    "pad",
-    "atmosphere"
   ],
   "macroLabels": [
     "FUEGO",
@@ -20,42 +21,41 @@
     "SIDES",
     "ISLA"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.21,
-    "warmth": 0.6,
-    "movement": 0.37,
-    "density": 0.35,
-    "space": 0.76,
-    "aggression": 0.08
-  },
+  "mood": "Atmosphere",
+  "name": "Calm Reef",
   "parameters": {
     "Ole": {
+      "ole_allianceBlend": 0.334,
+      "ole_allianceConfig": 1,
+      "ole_aunt1Brightness": 0.463,
       "ole_aunt1Level": 0.743,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.463,
-      "ole_aunt2Level": 0.686,
       "ole_aunt2CoinPress": 0.0,
       "ole_aunt2GourdSize": 0.442,
+      "ole_aunt2Level": 0.686,
+      "ole_aunt3Brightness": 0.545,
       "ole_aunt3Level": 0.846,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.545,
       "ole_damping": 0.993,
-      "ole_sympatheticAmt": 0.368,
-      "ole_driftRate": 0.138,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 1,
-      "ole_allianceBlend": 0.334,
-      "ole_husbandOudLevel": 0.0,
+      "ole_driftRate": 0.138,
       "ole_husbandBouzLevel": 0.0,
+      "ole_husbandOudLevel": 0.0,
       "ole_husbandPinLevel": 0.0,
-      "ole_macroFuego": 0.637,
       "ole_macroDrama": 0.157,
+      "ole_macroFuego": 0.637,
+      "ole_macroIsla": 0.285,
       "ole_macroSides": 0.025,
-      "ole_macroIsla": 0.285
+      "ole_sympatheticAmt": 0.368
     }
   },
-  "coupling": null,
-  "description": "Tropical space with light DRAMA. Charango shimmer hangs in ISLA's reverb."
+  "schema_version": 1,
+  "tags": [
+    "latin",
+    "strummed",
+    "atmosphere",
+    "pad",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
 }

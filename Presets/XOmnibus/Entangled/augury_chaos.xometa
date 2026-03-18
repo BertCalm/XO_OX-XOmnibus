@@ -1,21 +1,32 @@
 {
-  "schema_version": 1,
-  "name": "Augury Chaos",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "ORACLE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.76,
+    "pairs": [
+      {
+        "amount": 0.76,
+        "engineA": "Outwit",
+        "engineB": "Oracle",
+        "type": "CHAOS_INJECT"
+      }
+    ],
+    "source": "Outwit",
+    "target": "Oracle",
+    "type": "CHAOS_INJECT"
+  },
+  "couplingIntensity": "Deep",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORACLE's prophetic stochastic character (GENDY + Maqam liminal tones). Coupling: Chaos Inject.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "outwit",
-    "oracle",
-    "chaotic",
-    "generative"
+  "dna": {
+    "aggression": 0.78,
+    "brightness": 0.18,
+    "density": 0.84,
+    "movement": 0.92,
+    "space": 0.74,
+    "warmth": 0.08
+  },
+  "engines": [
+    "Outwit",
+    "Oracle"
   ],
   "macroLabels": [
     "ARMS",
@@ -25,78 +36,67 @@
   ],
   "macros": {
     "CHARACTER": 0.45,
-    "MOVEMENT": 0.61,
     "COUPLING": 0.84,
+    "MOVEMENT": 0.61,
     "SPACE": 0.85
   },
-  "couplingIntensity": "Deep",
-  "sonic_dna": {
-    "brightness": 0.18,
-    "warmth": 0.08,
-    "movement": 0.92,
-    "density": 0.84,
-    "space": 0.74,
-    "aggression": 0.78
-  },
-  "dna": {
-    "brightness": 0.18,
-    "warmth": 0.08,
-    "movement": 0.92,
-    "density": 0.84,
-    "space": 0.74,
-    "aggression": 0.78
-  },
+  "mood": "Entangled",
+  "name": "Augury Chaos",
   "parameters": {
-    "OUTWIT": {
-      "owit_rule": 150,
-      "owit_arms": 8,
-      "owit_cellSize": 0.16,
-      "owit_density": 0.39,
-      "owit_evolveRate": 0.47,
-      "owit_mutateProb": 0.24,
-      "owit_pitchSpread": 0.57,
-      "owit_filterCutoff": 0.61,
-      "owit_filterReso": 0.38,
+    "Oracle": {
+      "oracle_ampAttack": 0.22,
+      "oracle_ampRelease": 0.32,
+      "oracle_ampSustain": 0.61,
+      "oracle_character": 0.71,
+      "oracle_coupling": 0.78,
+      "oracle_couplingLevel": 0.65,
+      "oracle_filterCutoff": 0.68,
+      "oracle_filterReso": 0.21,
+      "oracle_movement": 0.31,
+      "oracle_outputLevel": 0.73,
+      "oracle_reverbMix": 0.21,
+      "oracle_space": 0.44
+    },
+    "Outwit": {
       "owit_ampAttack": 0.05,
       "owit_ampRelease": 0.16,
       "owit_armStagger": 0.38,
+      "owit_arms": 8,
       "owit_borderMode": 0,
-      "owit_inkCloudMix": 0.47,
+      "owit_cellSize": 0.16,
       "owit_chroma1": 0.79,
       "owit_chroma2": 0.43,
-      "owit_polyDepth": 0.49,
-      "owit_couplingLevel": 0.73,
       "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.73,
+      "owit_density": 0.39,
+      "owit_evolveRate": 0.47,
+      "owit_filterCutoff": 0.61,
+      "owit_filterReso": 0.38,
+      "owit_inkCloudMix": 0.47,
+      "owit_mutateProb": 0.24,
       "owit_outputLevel": 0.85,
-      "owit_outputPan": -0.06
-    },
-    "ORACLE": {
-      "oracle_character": 0.71,
-      "oracle_movement": 0.31,
-      "oracle_coupling": 0.78,
-      "oracle_space": 0.44,
-      "oracle_filterCutoff": 0.68,
-      "oracle_filterReso": 0.21,
-      "oracle_ampAttack": 0.22,
-      "oracle_ampSustain": 0.61,
-      "oracle_ampRelease": 0.32,
-      "oracle_reverbMix": 0.21,
-      "oracle_couplingLevel": 0.65,
-      "oracle_outputLevel": 0.73
+      "owit_outputPan": -0.06,
+      "owit_pitchSpread": 0.57,
+      "owit_polyDepth": 0.49,
+      "owit_rule": 150
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OUTWIT",
-    "target": "ORACLE",
-    "amount": 0.76,
-    "pairs": [
-      {
-        "engineA": "OUTWIT",
-        "engineB": "ORACLE",
-        "type": "CHAOS_INJECT",
-        "amount": 0.76
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.78,
+    "brightness": 0.18,
+    "density": 0.84,
+    "movement": 0.92,
+    "space": 0.74,
+    "warmth": 0.08
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "oracle",
+    "chaotic",
+    "generative"
+  ],
+  "version": "1.0.0"
 }

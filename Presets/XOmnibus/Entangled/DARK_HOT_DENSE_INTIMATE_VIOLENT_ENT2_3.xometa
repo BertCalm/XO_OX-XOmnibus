@@ -1,45 +1,52 @@
 {
-  "name": "DARK HOT DENSE INTIMATE VIOLENT ENT2 3",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OWLFISH",
-    "OMBRE"
-  ],
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.519,
-      "macro_movement": 0.696,
-      "macro_coupling": 0.944,
-      "macro_space": 0.024
-    },
-    "OMBRE": {
-      "macro_character": 0.51,
-      "macro_movement": 0.68,
-      "macro_coupling": 0.933,
-      "macro_space": 0.027
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OWLFISH",
-    "target": "OMBRE",
-    "amount": 0.944
+    "amount": 0.944,
+    "source": "Owlfish",
+    "target": "Ombre",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
+    "aggression": 0.933,
     "brightness": 0.077,
-    "warmth": 0.962,
-    "movement": 0.696,
     "density": 0.955,
+    "movement": 0.696,
     "space": 0.024,
-    "aggression": 0.933
+    "warmth": 0.962
   },
+  "engines": [
+    "Owlfish",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.519,
-    "MOVEMENT": 0.696,
     "COUPLING": 0.944,
+    "MOVEMENT": 0.696,
     "SPACE": 0.024
   },
+  "mood": "Entangled",
+  "name": "DARK HOT DENSE INTIMATE VIOLENT ENT2 3",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.51,
+      "macro_coupling": 0.933,
+      "macro_movement": 0.68,
+      "macro_space": 0.027
+    },
+    "Owlfish": {
+      "macro_character": 0.519,
+      "macro_coupling": 0.944,
+      "macro_movement": 0.696,
+      "macro_space": 0.024
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
@@ -47,5 +54,6 @@
     "dense",
     "intimate",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

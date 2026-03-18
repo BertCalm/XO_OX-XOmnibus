@@ -1,13 +1,36 @@
 {
-  "schema_version": 1,
-  "name": "Crystal Siphonophore",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "ORPHICA maximum scatter in full light — the harp colony at peak luminescence.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.9,
+    "density": 0.18,
+    "movement": 0.8,
+    "space": 0.85,
+    "warmth": 0.42
+  },
   "engines": [
-    "ORPHICA"
+    "Orphica"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ORPHICA maximum scatter in full light \u2014 the harp colony at peak luminescence.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "SCATTER",
+    "SHIMMER",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Crystal Siphonophore",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "portrait",
@@ -16,29 +39,6 @@
     "microsound",
     "shimmer"
   ],
-  "macroLabels": [
-    "SCATTER",
-    "SHIMMER",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.9,
-    "warmth": 0.42,
-    "movement": 0.8,
-    "density": 0.18,
-    "space": 0.85,
-    "aggression": 0.1
-  }
+  "version": "1.0.0"
 }

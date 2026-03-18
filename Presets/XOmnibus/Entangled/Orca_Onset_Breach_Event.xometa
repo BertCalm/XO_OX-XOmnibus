@@ -1,78 +1,95 @@
 {
-  "schema_version": 1,
-  "name": "Breach Event",
-  "mood": "Entangled",
-  "engines": ["Orca", "Onset"],
-  "author": "Guru Bin — Coupling Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Onset kick hits trigger Orca wavetable position snaps — each percussion strike is a breach. The orca detonates from the water at the exact moment the kick fires. Kick energy determines how far up the wavetable the breach travels. Between snaps, the wavetable drifts back like a body re-entering the ocean. Percussion as predator gesture.",
-  "tags": ["entangled", "percussion", "wavetable", "breach", "apex", "orca", "onset", "kick"],
-  "macroLabels": ["CHARACTER", "PUNCH", "COUPLING", "SPACE"],
-  "couplingIntensity": "Strong",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.35,
-    "movement": 0.8,
-    "density": 0.7,
-    "space": 0.5,
-    "aggression": 0.75
-  },
-  "parameters": {
-    "Orca": {
-      "orca_wavetablePos": 0.3,
-      "orca_wavetableScan": 0.4,
-      "orca_echoDepth": 0.5,
-      "orca_huntMacro": 0.0,
-      "orca_breachAmt": 0.7,
-      "orca_podSync": 0.3,
-      "orca_pitchRand": 0.1,
-      "orca_ampAttack": 0.01,
-      "orca_ampDecay": 0.45,
-      "orca_ampSustain": 0.6,
-      "orca_ampRelease": 1.5,
-      "orca_filterCutoff": 0.65,
-      "orca_filterRes": 0.45,
-      "orca_lfo1Rate": 0.08,
-      "orca_lfo1Depth": 0.3,
-      "orca_lfo2Rate": 0.02,
-      "orca_lfo2Depth": 0.15,
-      "orca_macroCharacter": 0.0,
-      "orca_macroPunch": 0.0,
-      "orca_macroCoupling": 0.0,
-      "orca_macroSpace": 0.0
-    },
-    "Onset": {
-      "perc_kickTune": 0.45,
-      "perc_kickDecay": 0.4,
-      "perc_kickPunch": 0.75,
-      "perc_noiseLevel": 0.3,
-      "perc_snareTone": 0.4,
-      "perc_snareSnap": 0.5,
-      "perc_hatDecay": 0.25,
-      "perc_macroMachine": 0.0,
-      "perc_macroPunch": 0.0,
-      "perc_macroSpace": 0.0,
-      "perc_macroMutate": 0.0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
       {
+        "amount": 0.8,
+        "description": "Onset kick trigger snaps Orca wavetable position — each drum hit is a breach event; kick velocity scales wavetable displacement",
         "source": "Onset",
         "target": "Orca",
-        "type": "RhythmToBlend",
-        "amount": 0.8,
-        "description": "Onset kick trigger snaps Orca wavetable position — each drum hit is a breach event; kick velocity scales wavetable displacement"
+        "type": "RhythmToBlend"
       },
       {
+        "amount": 0.5,
+        "description": "Onset percussion amplitude opens Orca filter at impact — predator breach cuts through with full spectral clarity",
         "source": "Onset",
         "target": "Orca",
-        "type": "AmpToFilter",
-        "amount": 0.5,
-        "description": "Onset percussion amplitude opens Orca filter at impact — predator breach cuts through with full spectral clarity"
+        "type": "AmpToFilter"
       }
     ]
   },
-  "sequencer": null
+  "couplingIntensity": "Strong",
+  "description": "Onset kick hits trigger Orca wavetable position snaps — each percussion strike is a breach. The orca detonates from the water at the exact moment the kick fires. Kick energy determines how far up the wavetable the breach travels. Between snaps, the wavetable drifts back like a body re-entering the ocean. Percussion as predator gesture.",
+  "dna": {
+    "aggression": 0.75,
+    "brightness": 0.6,
+    "density": 0.7,
+    "movement": 0.8,
+    "space": 0.5,
+    "warmth": 0.35
+  },
+  "engines": [
+    "Orca",
+    "Onset"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Breach Event",
+  "parameters": {
+    "Onset": {
+      "perc_hatDecay": 0.25,
+      "perc_kickDecay": 0.4,
+      "perc_kickPunch": 0.75,
+      "perc_kickTune": 0.45,
+      "perc_macroMachine": 0.0,
+      "perc_macroMutate": 0.0,
+      "perc_macroPunch": 0.0,
+      "perc_macroSpace": 0.0,
+      "perc_noiseLevel": 0.3,
+      "perc_snareSnap": 0.5,
+      "perc_snareTone": 0.4
+    },
+    "Orca": {
+      "orca_ampAttack": 0.01,
+      "orca_ampDecay": 0.45,
+      "orca_ampRelease": 1.5,
+      "orca_ampSustain": 0.6,
+      "orca_breachAmt": 0.7,
+      "orca_echoDepth": 0.5,
+      "orca_filterCutoff": 0.65,
+      "orca_filterRes": 0.45,
+      "orca_huntMacro": 0.0,
+      "orca_lfo1Depth": 0.3,
+      "orca_lfo1Rate": 0.08,
+      "orca_lfo2Depth": 0.15,
+      "orca_lfo2Rate": 0.02,
+      "orca_macroCharacter": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroPunch": 0.0,
+      "orca_macroSpace": 0.0,
+      "orca_pitchRand": 0.1,
+      "orca_podSync": 0.3,
+      "orca_wavetablePos": 0.3,
+      "orca_wavetableScan": 0.4
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "percussion",
+    "wavetable",
+    "breach",
+    "apex",
+    "orca",
+    "onset",
+    "kick"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "Collodion Prism",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OBSCURA",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "OBSCURA": {
-      "macro_character": 0.38,
-      "macro_movement": 0.28,
-      "macro_coupling": 0.58,
-      "macro_space": 0.63
-    },
-    "OBLIQUE": {
-      "macro_character": 0.77,
-      "macro_movement": 0.72,
-      "macro_coupling": 0.62,
-      "macro_space": 0.52
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPACE_BLEND",
-    "source": "OBSCURA",
-    "target": "OBLIQUE",
-    "amount": 0.486
+    "amount": 0.486,
+    "source": "Obscura",
+    "target": "Oblique",
+    "type": "SPACE_BLEND"
   },
   "dna": {
+    "aggression": 0.25,
     "brightness": 0.8,
-    "warmth": 0.28,
-    "movement": 0.45,
     "density": 0.35,
+    "movement": 0.45,
     "space": 0.87,
-    "aggression": 0.25
+    "warmth": 0.28
   },
+  "engines": [
+    "Obscura",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.575,
-    "MOVEMENT": 0.5,
     "COUPLING": 0.486,
+    "MOVEMENT": 0.5,
     "SPACE": 0.575
   },
+  "mood": "Entangled",
+  "name": "Collodion Prism",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.77,
+      "macro_coupling": 0.62,
+      "macro_movement": 0.72,
+      "macro_space": 0.52
+    },
+    "Obscura": {
+      "macro_character": 0.38,
+      "macro_coupling": 0.58,
+      "macro_movement": 0.28,
+      "macro_space": 0.63
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "spacious"
-  ]
+  ],
+  "version": "1.0"
 }

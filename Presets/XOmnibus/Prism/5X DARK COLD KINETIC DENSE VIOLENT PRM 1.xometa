@@ -1,14 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT PRM 1",
-  "mood": "Prism",
-  "engines": [
-    "ODYSSEY",
-    "OBSIDIAN"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.91,
+    "source": "Odyssey",
+    "target": "Obsidian",
+    "type": "HARMONIC_STACK"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.959,
+    "brightness": 0.069,
+    "density": 0.904,
+    "movement": 0.486,
+    "space": 0.063,
+    "warmth": 0.053
+  },
+  "engines": [
+    "Odyssey",
+    "Obsidian"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT PRM 1",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.72,
+      "macro_movement": 0.98,
+      "macro_space": 0.12
+    },
+    "Odyssey": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.8,
+      "macro_movement": 0.71,
+      "macro_space": 0.22
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +58,6 @@
     "dense",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ODYSSEY": {
-      "macro_character": 0.65,
-      "macro_movement": 0.71,
-      "macro_coupling": 0.8,
-      "macro_space": 0.22
-    },
-    "OBSIDIAN": {
-      "macro_character": 1.0,
-      "macro_movement": 0.98,
-      "macro_coupling": 0.72,
-      "macro_space": 0.12
-    }
-  },
-  "coupling": {
-    "type": "HARMONIC_STACK",
-    "source": "ODYSSEY",
-    "target": "OBSIDIAN",
-    "amount": 0.91
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.069,
-    "warmth": 0.053,
-    "movement": 0.486,
-    "density": 0.904,
-    "space": 0.063,
-    "aggression": 0.959
-  }
+  "version": "1.0.0"
 }

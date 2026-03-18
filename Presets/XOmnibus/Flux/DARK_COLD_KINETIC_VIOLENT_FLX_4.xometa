@@ -1,45 +1,52 @@
 {
-  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_4",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ODYSSEY",
-    "OBLONG"
-  ],
-  "parameters": {
-    "ODYSSEY": {
-      "macro_character": 0.2532,
-      "macro_movement": 0.9247,
-      "macro_coupling": 0.8561,
-      "macro_space": 0.379
-    },
-    "OBLONG": {
-      "macro_character": 0.1964,
-      "macro_movement": 0.9309,
-      "macro_coupling": 0.8589,
-      "macro_space": 0.4222
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ODYSSEY",
-    "target": "OBLONG",
-    "amount": 0.6549
+    "amount": 0.6549,
+    "source": "Odyssey",
+    "target": "Oblong",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
+    "aggression": 0.9457,
     "brightness": 0.1356,
-    "warmth": 0.1259,
-    "movement": 0.9478,
     "density": 0.391,
+    "movement": 0.9478,
     "space": 0.4323,
-    "aggression": 0.9457
+    "warmth": 0.1259
   },
+  "engines": [
+    "Odyssey",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.2532,
-    "MOVEMENT": 0.9247,
     "COUPLING": 0.8561,
+    "MOVEMENT": 0.9247,
     "SPACE": 0.379
   },
+  "mood": "Flux",
+  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_4",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.1964,
+      "macro_coupling": 0.8589,
+      "macro_movement": 0.9309,
+      "macro_space": 0.4222
+    },
+    "Odyssey": {
+      "macro_character": 0.2532,
+      "macro_coupling": 0.8561,
+      "macro_movement": 0.9247,
+      "macro_space": 0.379
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "low-warmth",
     "high-movement",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

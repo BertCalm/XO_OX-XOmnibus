@@ -1,49 +1,57 @@
 {
-  "name": "ALLHI PRS 03",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.773,
+    "source": "Ohm",
+    "target": "Oracle",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.928,
+    "brightness": 0.895,
+    "density": 0.923,
+    "movement": 0.413,
+    "space": 0.966,
+    "warmth": 0.928
+  },
   "engines": [
-    "OHM",
-    "ORACLE"
+    "Ohm",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.911,
+    "COUPLING": 0.947,
+    "MOVEMENT": 0.668,
+    "SPACE": 0.966
+  },
+  "mood": "Prism",
+  "name": "ALLHI PRS 03",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.911,
-      "macro_movement": 0.668,
       "macro_coupling": 0.947,
+      "macro_movement": 0.668,
       "macro_space": 0.966
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.911,
-      "macro_movement": 0.668,
       "macro_coupling": 0.947,
+      "macro_movement": 0.668,
       "macro_space": 0.966
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OHM",
-    "target": "ORACLE",
-    "amount": 0.773
-  },
-  "dna": {
-    "brightness": 0.895,
-    "warmth": 0.928,
-    "movement": 0.413,
-    "density": 0.923,
-    "space": 0.966,
-    "aggression": 0.928
-  },
-  "macros": {
-    "CHARACTER": 0.911,
-    "MOVEMENT": 0.668,
-    "COUPLING": 0.947,
-    "SPACE": 0.966
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

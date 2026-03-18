@@ -1,48 +1,56 @@
 {
-  "name": "MOVING GROUND",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ODDOSCAR",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "ODDOSCAR": {
-      "macro_character": 0.432,
-      "macro_movement": 0.961,
-      "macro_coupling": 0.322,
-      "macro_space": 0.43
-    },
-    "OBLIQUE": {
-      "macro_character": 0.362,
-      "macro_movement": 0.881,
-      "macro_coupling": 0.761,
-      "macro_space": 0.239
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ODDOSCAR",
-    "target": "OBLIQUE",
-    "amount": 0.572
+    "amount": 0.572,
+    "source": "OddOscar",
+    "target": "Oblique",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.428,
     "brightness": 0.367,
-    "warmth": 0.329,
-    "movement": 0.933,
     "density": 0.658,
+    "movement": 0.933,
     "space": 0.897,
-    "aggression": 0.428
+    "warmth": 0.329
   },
+  "engines": [
+    "OddOscar",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.447,
-    "MOVEMENT": 0.933,
     "COUPLING": 0.572,
+    "MOVEMENT": 0.933,
     "SPACE": 0.897
   },
+  "mood": "Foundation",
+  "name": "MOVING GROUND",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.362,
+      "macro_coupling": 0.761,
+      "macro_movement": 0.881,
+      "macro_space": 0.239
+    },
+    "OddOscar": {
+      "macro_character": 0.432,
+      "macro_coupling": 0.322,
+      "macro_movement": 0.961,
+      "macro_space": 0.43
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-  ]
+  ],
+  "version": "1.0"
 }

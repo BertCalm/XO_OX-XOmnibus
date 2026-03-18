@@ -1,45 +1,52 @@
 {
-  "name": "DARK HOT STILL BALANCED AET SPC 5",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.457,
+    "source": "OddfeliX",
+    "target": "Orbital",
+    "type": "SPECTRAL_MORPH"
+  },
+  "dna": {
+    "aggression": 0.093,
+    "brightness": 0.08,
+    "density": 0.623,
+    "movement": 0.128,
+    "space": 0.509,
+    "warmth": 0.906
+  },
   "engines": [
-    "ODDFELIX",
-    "ORBITAL"
+    "OddfeliX",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.493,
+    "COUPLING": 0.895,
+    "MOVEMENT": 0.128,
+    "SPACE": 0.509
+  },
+  "mood": "Aether",
+  "name": "DARK HOT STILL BALANCED AET SPC 5",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.493,
-      "macro_movement": 0.128,
       "macro_coupling": 0.895,
+      "macro_movement": 0.128,
       "macro_space": 0.509
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.479,
-      "macro_movement": 0.151,
       "macro_coupling": 0.91,
+      "macro_movement": 0.151,
       "macro_space": 0.488
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ODDFELIX",
-    "target": "ORBITAL",
-    "amount": 0.457
-  },
-  "dna": {
-    "brightness": 0.08,
-    "warmth": 0.906,
-    "movement": 0.128,
-    "density": 0.623,
-    "space": 0.509,
-    "aggression": 0.093
-  },
-  "macros": {
-    "CHARACTER": 0.493,
-    "MOVEMENT": 0.128,
-    "COUPLING": 0.895,
-    "SPACE": 0.509
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -47,5 +54,6 @@
     "space-mid",
     "gentle",
     "warm"
-  ]
+  ],
+  "version": "1.0"
 }

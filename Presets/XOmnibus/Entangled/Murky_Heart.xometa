@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Murky Heart",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.677,
+        "engineA": "Octopus",
+        "engineB": "Obbligato",
+        "type": "PHASE_LOCK"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "aggression": 0.53,
+    "brightness": 0.535,
+    "density": 0.63,
+    "movement": 1.0,
+    "space": 0.535,
+    "warmth": 0.435
+  },
   "engines": [
-    "OBBLIGATO",
-    "OCTOPUS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "obbligato",
-    "octopus"
+    "Obbligato",
+    "Octopus"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.475,
-    "MOVEMENT": 0.859,
     "COUPLING": 0.628,
+    "MOVEMENT": 0.859,
     "SPACE": 0.502
   },
-  "couplingIntensity": "Strong",
-  "dna": {
-    "brightness": 0.535,
-    "warmth": 0.435,
-    "movement": 1.0,
-    "density": 0.63,
-    "space": 0.535,
-    "aggression": 0.53
-  },
-  "sonic_dna": {
-    "brightness": 0.535,
-    "warmth": 0.435,
-    "movement": 1.0,
-    "density": 0.63,
-    "space": 0.535,
-    "aggression": 0.53
-  },
+  "mood": "Entangled",
+  "name": "Murky Heart",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.327,
-      "macro_movement": 0.522,
       "macro_coupling": 0.584,
+      "macro_movement": 0.522,
       "macro_space": 0.608
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.685,
-      "macro_movement": 0.776,
       "macro_coupling": 0.406,
+      "macro_movement": 0.776,
       "macro_space": 0.361
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OCTOPUS",
-        "engineB": "OBBLIGATO",
-        "type": "PHASE_LOCK",
-        "amount": 0.677
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.53,
+    "brightness": 0.535,
+    "density": 0.63,
+    "movement": 1.0,
+    "space": 0.535,
+    "warmth": 0.435
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "obbligato",
+    "octopus"
+  ],
+  "version": "1.0.0"
 }

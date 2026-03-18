@@ -1,21 +1,32 @@
 {
-  "schema_version": 1,
-  "name": "Crepuscular Weave",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "OBSCURA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.51,
+    "pairs": [
+      {
+        "amount": 0.51,
+        "engineA": "Overlap",
+        "engineB": "Obscura",
+        "type": "RESONANCE_SHARE"
+      }
+    ],
+    "source": "Overlap",
+    "target": "Obscura",
+    "type": "RESONANCE_SHARE"
+  },
+  "couplingIntensity": "Moderate",
   "description": "Lion's Mane knot-topology FDN entangled with OBSCURA's daguerreotype-veiled spectral character (plate physics and silver grain). Coupling: Resonance Share.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "overlap",
-    "obscura",
-    "spatial",
-    "lush"
+  "dna": {
+    "aggression": 0.28,
+    "brightness": 0.25,
+    "density": 0.73,
+    "movement": 0.99,
+    "space": 0.62,
+    "warmth": 0.42
+  },
+  "engines": [
+    "Overlap",
+    "Obscura"
   ],
   "macroLabels": [
     "TOPOLOGY",
@@ -25,77 +36,66 @@
   ],
   "macros": {
     "CHARACTER": 0.57,
-    "MOVEMENT": 0.57,
     "COUPLING": 0.89,
+    "MOVEMENT": 0.57,
     "SPACE": 0.67
   },
-  "couplingIntensity": "Moderate",
-  "sonic_dna": {
-    "brightness": 0.25,
-    "warmth": 0.42,
-    "movement": 0.99,
-    "density": 0.73,
-    "space": 0.62,
-    "aggression": 0.28
-  },
-  "dna": {
-    "brightness": 0.25,
-    "warmth": 0.42,
-    "movement": 0.99,
-    "density": 0.73,
-    "space": 0.62,
-    "aggression": 0.28
-  },
+  "mood": "Entangled",
+  "name": "Crepuscular Weave",
   "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.81,
-      "olap_decay": 0.67,
+    "Obscura": {
+      "obscura_ampAttack": 0.33,
+      "obscura_ampRelease": 0.3,
+      "obscura_ampSustain": 0.83,
+      "obscura_character": 0.47,
+      "obscura_coupling": 0.85,
+      "obscura_couplingLevel": 0.76,
+      "obscura_filterCutoff": 0.7,
+      "obscura_filterReso": 0.51,
+      "obscura_movement": 0.47,
+      "obscura_outputLevel": 0.81,
+      "obscura_reverbMix": 0.57,
+      "obscura_space": 0.66
+    },
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.66,
+      "olap_crossfeedAmt": 0.45,
       "olap_damping": 0.25,
+      "olap_decay": 0.67,
       "olap_diffusion": 0.73,
-      "olap_modDepth": 0.17,
-      "olap_modRate": 0.24,
-      "olap_preDelay": 0.27,
       "olap_earlyMix": 0.42,
-      "olap_lateMix": 0.61,
       "olap_filterCutoff": 0.73,
       "olap_filterReso": 0.18,
       "olap_frondDensity": 0.44,
+      "olap_lateMix": 0.61,
+      "olap_modDepth": 0.17,
+      "olap_modRate": 0.24,
       "olap_nodeCount": 10,
-      "olap_crossfeedAmt": 0.45,
-      "olap_spinRate": 0.13,
-      "olap_shimmerMix": 0.11,
-      "olap_couplingLevel": 0.66,
-      "olap_couplingBus": 0,
       "olap_outputLevel": 0.86,
-      "olap_outputPan": 0.08
-    },
-    "OBSCURA": {
-      "obscura_character": 0.47,
-      "obscura_movement": 0.47,
-      "obscura_coupling": 0.85,
-      "obscura_space": 0.66,
-      "obscura_filterCutoff": 0.7,
-      "obscura_filterReso": 0.51,
-      "obscura_ampAttack": 0.33,
-      "obscura_ampSustain": 0.83,
-      "obscura_ampRelease": 0.3,
-      "obscura_reverbMix": 0.57,
-      "obscura_couplingLevel": 0.76,
-      "obscura_outputLevel": 0.81
+      "olap_outputPan": 0.08,
+      "olap_preDelay": 0.27,
+      "olap_shimmerMix": 0.11,
+      "olap_size": 0.81,
+      "olap_spinRate": 0.13
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OVERLAP",
-    "target": "OBSCURA",
-    "amount": 0.51,
-    "pairs": [
-      {
-        "engineA": "OVERLAP",
-        "engineB": "OBSCURA",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.51
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.28,
+    "brightness": 0.25,
+    "density": 0.73,
+    "movement": 0.99,
+    "space": 0.62,
+    "warmth": 0.42
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "obscura",
+    "spatial",
+    "lush"
+  ],
+  "version": "1.0.0"
 }

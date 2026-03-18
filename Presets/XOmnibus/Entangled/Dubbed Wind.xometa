@@ -1,31 +1,39 @@
 {
-  "name": "Dubbed Wind",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Obbligato",
+    "target": "Overdub",
+    "type": "TAPE_ECHO_LOCK"
+  },
+  "description": "Dual wind obligated to tape echo returns — every breath echoes back a beat later",
   "engines": [
-    "OBBLIGATO",
-    "OVERDUB"
+    "Obbligato",
+    "Overdub"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.55,
     "SPACE": 0.5
   },
-  "sonic_dna": {
-    "brightness": 0.47,
-    "warmth": 0.69,
-    "movement": 0.57,
-    "density": 0.61,
-    "space": 0.58,
-    "aggression": 0.31
-  },
+  "mood": "Entangled",
+  "name": "Dubbed Wind",
   "parameters": {},
-  "coupling": {
-    "type": "TAPE_ECHO_LOCK",
-    "source": "OBBLIGATO",
-    "target": "OVERDUB",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.31,
+    "brightness": 0.47,
+    "density": 0.61,
+    "movement": 0.57,
+    "space": 0.58,
+    "warmth": 0.69
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "overdub",
     "wind"
   ],
-  "description": "Dual wind obligated to tape echo returns \u2014 every breath echoes back a beat later"
+  "version": "1.0"
 }

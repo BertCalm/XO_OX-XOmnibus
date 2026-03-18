@@ -1,50 +1,58 @@
 {
-  "name": "COLD_KINETIC_DENSE_VIOLENT_ATM_3",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORBITAL",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.416,
-      "macro_movement": 0.765,
-      "macro_coupling": 0.542,
-      "macro_space": 0.467
-    },
-    "OBLIQUE": {
-      "macro_character": 0.643,
-      "macro_movement": 0.827,
-      "macro_coupling": 0.867,
-      "macro_space": 0.559
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORBITAL",
-    "target": "OBLIQUE",
-    "amount": 0.925
+    "amount": 0.925,
+    "source": "Orbital",
+    "target": "Oblique",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.914,
     "brightness": 0.486,
-    "warmth": 0.073,
-    "movement": 0.942,
     "density": 0.888,
+    "movement": 0.942,
     "space": 0.538,
-    "aggression": 0.914
+    "warmth": 0.073
   },
+  "engines": [
+    "Orbital",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.416,
-    "MOVEMENT": 0.765,
     "COUPLING": 0.542,
+    "MOVEMENT": 0.765,
     "SPACE": 0.467
   },
+  "mood": "Atmosphere",
+  "name": "COLD_KINETIC_DENSE_VIOLENT_ATM_3",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.643,
+      "macro_coupling": 0.867,
+      "macro_movement": 0.827,
+      "macro_space": 0.559
+    },
+    "Orbital": {
+      "macro_character": 0.416,
+      "macro_coupling": 0.542,
+      "macro_movement": 0.765,
+      "macro_space": 0.467
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "cold",
     "kinetic",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

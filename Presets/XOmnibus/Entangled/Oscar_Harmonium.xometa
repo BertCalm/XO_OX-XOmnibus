@@ -1,48 +1,56 @@
 {
-  "name": "Oscar Harmonium",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.85,
+    "source": "OddOscar",
+    "target": "Organon",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.32,
+    "density": 0.77,
+    "movement": 0.45,
+    "space": 0.19,
+    "warmth": 0.92
+  },
   "engines": [
-    "ODDOSCAR",
-    "ORGANON"
+    "OddOscar",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.83,
+    "COUPLING": 0.78,
+    "MOVEMENT": 0.56,
+    "SPACE": 0.24
+  },
+  "mood": "Entangled",
+  "name": "Oscar Harmonium",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.84,
-      "macro_movement": 0.59,
       "macro_coupling": 0.79,
+      "macro_movement": 0.59,
       "macro_space": 0.33
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.83,
-      "macro_movement": 0.53,
       "macro_coupling": 0.77,
+      "macro_movement": 0.53,
       "macro_space": 0.16
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ODDOSCAR",
-    "target": "ORGANON",
-    "amount": 0.85
-  },
-  "dna": {
-    "brightness": 0.32,
-    "warmth": 0.92,
-    "movement": 0.45,
-    "density": 0.77,
-    "space": 0.19,
-    "aggression": 0.3
-  },
-  "macros": {
-    "CHARACTER": 0.83,
-    "MOVEMENT": 0.56,
-    "COUPLING": 0.78,
-    "SPACE": 0.24
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-  ]
+  ],
+  "version": "1.0"
 }

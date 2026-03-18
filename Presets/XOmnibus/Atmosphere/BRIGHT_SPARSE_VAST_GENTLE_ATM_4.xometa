@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_SPARSE_VAST_GENTLE_ATM_4",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.401,
+    "source": "OddOscar",
+    "target": "Optic",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.116,
+    "brightness": 0.932,
+    "density": 0.092,
+    "movement": 0.571,
+    "space": 0.926,
+    "warmth": 0.595
+  },
   "engines": [
-    "ODDOSCAR",
-    "OPTIC"
+    "OddOscar",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.627,
+    "COUPLING": 0.794,
+    "MOVEMENT": 0.483,
+    "SPACE": 0.928
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT_SPARSE_VAST_GENTLE_ATM_4",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.627,
-      "macro_movement": 0.483,
       "macro_coupling": 0.794,
+      "macro_movement": 0.483,
       "macro_space": 0.928
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.603,
-      "macro_movement": 0.559,
       "macro_coupling": 0.618,
+      "macro_movement": 0.559,
       "macro_space": 0.863
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ODDOSCAR",
-    "target": "OPTIC",
-    "amount": 0.401
-  },
-  "dna": {
-    "brightness": 0.932,
-    "warmth": 0.595,
-    "movement": 0.571,
-    "density": 0.092,
-    "space": 0.926,
-    "aggression": 0.116
-  },
-  "macros": {
-    "CHARACTER": 0.627,
-    "MOVEMENT": 0.483,
-    "COUPLING": 0.794,
-    "SPACE": 0.928
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "sparse",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

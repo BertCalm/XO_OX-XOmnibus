@@ -1,14 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "HOT_KINETIC_SPARSE_GENTLE_ENT_1",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8512,
+    "pairs": [
+      {
+        "amount": 0.8512,
+        "source": "Obscura",
+        "target": "Optic",
+        "type": "HARMONIC_FOLD"
+      }
+    ],
+    "source": "Obscura",
+    "target": "Optic",
+    "type": "HARMONIC_FOLD"
+  },
+  "couplingIntensity": "High",
+  "description": "Hot Kinetic Sparse Gentle character entanglement — OBSCURA × OPTIC via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.0885,
+    "brightness": 0.5212,
+    "density": 0.082,
+    "movement": 0.8941,
+    "space": 0.4216,
+    "warmth": 0.871
+  },
   "engines": [
-    "OBSCURA",
-    "OPTIC"
+    "Obscura",
+    "Optic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Hot Kinetic Sparse Gentle character entanglement \u2014 OBSCURA \u00d7 OPTIC via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "SHADOW",
+    "VEIL",
+    "BLUR",
+    "MIST"
+  ],
+  "macros": {
+    "CHARACTER": 0.6961,
+    "COUPLING": 0.8512,
+    "MOVEMENT": 0.8941,
+    "SPACE": 0.4216
+  },
+  "mood": "Entangled",
+  "name": "HOT_KINETIC_SPARSE_GENTLE_ENT_1",
+  "parameters": {
+    "Obscura": {
+      "amp_attack": 0.0852,
+      "amp_release": 0.3316,
+      "coupling_level": 0.598,
+      "density": 0.1181,
+      "drive": 0.151,
+      "filter_cutoff": 0.5444,
+      "filter_resonance": 0.1047,
+      "macro_character": 0.8266,
+      "macro_coupling": 0.663,
+      "macro_movement": 0.8697,
+      "macro_space": 0.4424,
+      "output_level": 0.6806,
+      "reverb_mix": 0.3696,
+      "reverb_size": 0.4802
+    },
+    "Optic": {
+      "amp_attack": 0.0572,
+      "amp_release": 0.3928,
+      "coupling_level": 0.6015,
+      "density": 0.1138,
+      "drive": 0.1545,
+      "filter_cutoff": 0.5439,
+      "filter_resonance": 0.1436,
+      "macro_character": 0.8327,
+      "macro_coupling": 0.5993,
+      "macro_movement": 0.9123,
+      "macro_space": 0.424,
+      "output_level": 0.7221,
+      "reverb_mix": 0.3988,
+      "reverb_size": 0.4204
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.0885,
+    "brightness": 0.5212,
+    "density": 0.082,
+    "movement": 0.8941,
+    "space": 0.4216,
+    "warmth": 0.871
+  },
   "tags": [
     "entangled",
     "warm",
@@ -17,81 +93,5 @@
     "gentle",
     "resonant"
   ],
-  "macroLabels": [
-    "SHADOW",
-    "VEIL",
-    "BLUR",
-    "MIST"
-  ],
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.5212,
-    "warmth": 0.871,
-    "movement": 0.8941,
-    "density": 0.082,
-    "space": 0.4216,
-    "aggression": 0.0885
-  },
-  "sonic_dna": {
-    "brightness": 0.5212,
-    "warmth": 0.871,
-    "movement": 0.8941,
-    "density": 0.082,
-    "space": 0.4216,
-    "aggression": 0.0885
-  },
-  "parameters": {
-    "OBSCURA": {
-      "macro_character": 0.8266,
-      "macro_movement": 0.8697,
-      "macro_coupling": 0.663,
-      "macro_space": 0.4424,
-      "filter_cutoff": 0.5444,
-      "filter_resonance": 0.1047,
-      "amp_attack": 0.0852,
-      "amp_release": 0.3316,
-      "reverb_mix": 0.3696,
-      "reverb_size": 0.4802,
-      "drive": 0.151,
-      "density": 0.1181,
-      "output_level": 0.6806,
-      "coupling_level": 0.598
-    },
-    "OPTIC": {
-      "macro_character": 0.8327,
-      "macro_movement": 0.9123,
-      "macro_coupling": 0.5993,
-      "macro_space": 0.424,
-      "filter_cutoff": 0.5439,
-      "filter_resonance": 0.1436,
-      "amp_attack": 0.0572,
-      "amp_release": 0.3928,
-      "reverb_mix": 0.3988,
-      "reverb_size": 0.4204,
-      "drive": 0.1545,
-      "density": 0.1138,
-      "output_level": 0.7221,
-      "coupling_level": 0.6015
-    }
-  },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBSCURA",
-    "target": "OPTIC",
-    "amount": 0.8512,
-    "pairs": [
-      {
-        "source": "OBSCURA",
-        "target": "OPTIC",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.8512
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.6961,
-    "MOVEMENT": 0.8941,
-    "COUPLING": 0.8512,
-    "SPACE": 0.4216
-  }
+  "version": "1.0.0"
 }

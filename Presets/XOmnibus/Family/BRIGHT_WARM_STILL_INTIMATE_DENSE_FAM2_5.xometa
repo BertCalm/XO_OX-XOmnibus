@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT WARM STILL INTIMATE DENSE FAM2 5",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ORIGAMI",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.957,
-      "macro_movement": 0.058,
-      "macro_coupling": 0.786,
-      "macro_space": 0.078
-    },
-    "ODYSSEY": {
-      "macro_character": 0.971,
-      "macro_movement": 0.041,
-      "macro_coupling": 0.822,
-      "macro_space": 0.044
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ORIGAMI",
-    "target": "ODYSSEY",
-    "amount": 0.786
+    "amount": 0.786,
+    "source": "Origami",
+    "target": "Odyssey",
+    "type": "TIMBRE_BLEND"
   },
   "dna": {
+    "aggression": 0.583,
     "brightness": 0.923,
-    "warmth": 0.99,
-    "movement": 0.058,
     "density": 0.99,
+    "movement": 0.058,
     "space": 0.078,
-    "aggression": 0.583
+    "warmth": 0.99
   },
+  "engines": [
+    "Origami",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.957,
-    "MOVEMENT": 0.058,
     "COUPLING": 0.786,
+    "MOVEMENT": 0.058,
     "SPACE": 0.078
   },
+  "mood": "Family",
+  "name": "BRIGHT WARM STILL INTIMATE DENSE FAM2 5",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.971,
+      "macro_coupling": 0.822,
+      "macro_movement": 0.041,
+      "macro_space": 0.044
+    },
+    "Origami": {
+      "macro_character": 0.957,
+      "macro_coupling": 0.786,
+      "macro_movement": 0.058,
+      "macro_space": 0.078
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
@@ -47,5 +54,6 @@
     "still",
     "dense",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

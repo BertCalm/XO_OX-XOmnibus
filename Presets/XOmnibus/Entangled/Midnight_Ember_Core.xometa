@@ -1,48 +1,56 @@
 {
-  "name": "Midnight Ember Core",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERDUB",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.37,
-      "macro_movement": 0.42,
-      "macro_coupling": 0.52,
-      "macro_space": 0.24
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.6,
-      "macro_movement": 0.87,
-      "macro_coupling": 0.58,
-      "macro_space": 0.64
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_MOD",
-    "source": "OBBLIGATO",
-    "target": "OVERDUB",
-    "amount": 0.84
+    "amount": 0.84,
+    "source": "Obbligato",
+    "target": "Overdub",
+    "type": "PITCH_MOD"
   },
   "dna": {
+    "aggression": 0.39,
     "brightness": 0.06,
-    "warmth": 0.84,
-    "movement": 0.34,
     "density": 0.61,
+    "movement": 0.34,
     "space": 0.21,
-    "aggression": 0.39
+    "warmth": 0.84
   },
+  "engines": [
+    "Overdub",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.33,
-    "MOVEMENT": 0.34,
     "COUPLING": 0.91,
+    "MOVEMENT": 0.34,
     "SPACE": 0.21
   },
+  "mood": "Entangled",
+  "name": "Midnight Ember Core",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.6,
+      "macro_coupling": 0.58,
+      "macro_movement": 0.87,
+      "macro_space": 0.64
+    },
+    "Overdub": {
+      "macro_character": 0.37,
+      "macro_coupling": 0.52,
+      "macro_movement": 0.42,
+      "macro_space": 0.24
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-  ]
+  ],
+  "version": "1.0"
 }

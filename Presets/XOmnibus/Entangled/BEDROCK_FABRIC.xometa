@@ -1,45 +1,52 @@
 {
-  "name": "BEDROCK FABRIC",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERWORLD",
-    "ORACLE"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.9116,
-      "macro_movement": 0.626,
-      "macro_coupling": 0.7709,
-      "macro_space": 0.4956
-    },
-    "ORACLE": {
-      "macro_character": 0.9723,
-      "macro_movement": 0.9416,
-      "macro_coupling": 0.8685,
-      "macro_space": 0.7858
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERWORLD",
-    "target": "ORACLE",
-    "amount": 0.7956
+    "amount": 0.7956,
+    "source": "Overworld",
+    "target": "Oracle",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.4735,
     "brightness": 0.4163,
-    "warmth": 0.1492,
-    "movement": 0.3765,
     "density": 0.9021,
+    "movement": 0.3765,
     "space": 0.7544,
-    "aggression": 0.4735
+    "warmth": 0.1492
   },
+  "engines": [
+    "Overworld",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8493,
-    "MOVEMENT": 0.3007,
     "COUPLING": 0.9123,
+    "MOVEMENT": 0.3007,
     "SPACE": 0.8058
   },
+  "mood": "Entangled",
+  "name": "BEDROCK FABRIC",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.9723,
+      "macro_coupling": 0.8685,
+      "macro_movement": 0.9416,
+      "macro_space": 0.7858
+    },
+    "Overworld": {
+      "macro_character": 0.9116,
+      "macro_coupling": 0.7709,
+      "macro_movement": 0.626,
+      "macro_space": 0.4956
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "monolithic",
@@ -47,5 +54,6 @@
     "dark",
     "deep",
     "compressed"
-  ]
+  ],
+  "version": "1.0"
 }

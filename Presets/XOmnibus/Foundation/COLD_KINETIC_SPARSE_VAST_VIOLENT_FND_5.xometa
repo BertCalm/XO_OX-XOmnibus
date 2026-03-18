@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "COLD_KINETIC_SPARSE_VAST_VIOLENT_FND_5",
-  "mood": "Foundation",
-  "engines": [
-    "OVERDUB",
-    "OBSIDIAN"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.501,
+    "source": "Overdub",
+    "target": "Obsidian",
+    "type": "SPECTRAL_MORPH"
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: COLD_KINETIC_SPARSE_VAST_VIOLENT. Variant 5.",
+  "dna": {
+    "aggression": 0.873,
+    "brightness": 0.343,
+    "density": 0.053,
+    "movement": 0.913,
+    "space": 0.954,
+    "warmth": 0.062
+  },
+  "engines": [
+    "Overdub",
+    "Obsidian"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.396,
+    "COUPLING": 0.098,
+    "MOVEMENT": 0.92,
+    "SPACE": 0.989
+  },
+  "mood": "Foundation",
+  "name": "COLD_KINETIC_SPARSE_VAST_VIOLENT_FND_5",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.429,
+      "macro_coupling": 0.101,
+      "macro_movement": 0.957,
+      "macro_space": 1.0
+    },
+    "Overdub": {
+      "macro_character": 0.364,
+      "macro_coupling": 0.094,
+      "macro_movement": 0.883,
+      "macro_space": 0.978
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "sparse",
     "extreme",
@@ -19,53 +66,6 @@
     "violent",
     "foundation"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.364,
-      "macro_movement": 0.883,
-      "macro_coupling": 0.094,
-      "macro_space": 0.978
-    },
-    "OBSIDIAN": {
-      "macro_character": 0.429,
-      "macro_movement": 0.957,
-      "macro_coupling": 0.101,
-      "macro_space": 1.0
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OVERDUB",
-    "target": "OBSIDIAN",
-    "amount": 0.501
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.343,
-    "warmth": 0.062,
-    "movement": 0.913,
-    "density": 0.053,
-    "space": 0.954,
-    "aggression": 0.873
-  },
-  "macros": {
-    "CHARACTER": 0.396,
-    "MOVEMENT": 0.92,
-    "COUPLING": 0.098,
-    "SPACE": 0.989
-  }
+  "version": "1.0.0"
 }

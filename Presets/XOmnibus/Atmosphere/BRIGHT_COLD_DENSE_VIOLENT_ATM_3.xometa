@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_COLD_DENSE_VIOLENT_ATM_3",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.543,
+    "source": "Oracle",
+    "target": "Orbital",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.876,
+    "brightness": 0.962,
+    "density": 0.926,
+    "movement": 0.522,
+    "space": 0.504,
+    "warmth": 0.089
+  },
   "engines": [
-    "ORACLE",
-    "ORBITAL"
+    "Oracle",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.695,
+    "COUPLING": 0.803,
+    "MOVEMENT": 0.47,
+    "SPACE": 0.408
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT_COLD_DENSE_VIOLENT_ATM_3",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.695,
-      "macro_movement": 0.47,
       "macro_coupling": 0.803,
+      "macro_movement": 0.47,
       "macro_space": 0.408
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.474,
-      "macro_movement": 0.451,
       "macro_coupling": 0.799,
+      "macro_movement": 0.451,
       "macro_space": 0.47
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORACLE",
-    "target": "ORBITAL",
-    "amount": 0.543
-  },
-  "dna": {
-    "brightness": 0.962,
-    "warmth": 0.089,
-    "movement": 0.522,
-    "density": 0.926,
-    "space": 0.504,
-    "aggression": 0.876
-  },
-  "macros": {
-    "CHARACTER": 0.695,
-    "MOVEMENT": 0.47,
-    "COUPLING": 0.803,
-    "SPACE": 0.408
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "cold",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

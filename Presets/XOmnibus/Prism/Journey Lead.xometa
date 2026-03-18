@@ -1,61 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Journey Lead",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Focused leads tone with prism shimmer.",
+  "dna": {
+    "aggression": 0.083,
+    "brightness": 0.547,
+    "density": 0.304,
+    "movement": 0.0,
+    "space": 0.237,
+    "warmth": 0.11
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Focused leads tone with prism shimmer.",
-  "tags": [
-    "shimmery",
-    "chorus",
-    "supersaw"
-  ],
+  "legacy": {
+    "sourceCategory": "Leads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Leads",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Journey Lead",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 2.0,
-      "drift_oscA_level": 0.75,
-      "drift_oscA_detune": 0.3,
-      "drift_oscB_mode": 0.0,
-      "drift_oscB_shape": 0.0,
-      "drift_oscB_level": 0.5,
-      "drift_oscB_tune": 7.0,
-      "drift_filterCutoff": 5000.0,
-      "drift_filterReso": 0.2,
-      "drift_shimmerAmount": 0.25,
-      "drift_shimmerTone": 0.6,
       "drift_attack": 10.0,
       "drift_decay": 400.0,
-      "drift_sustain": 0.7,
-      "drift_release": 350.0,
       "drift_driftDepth": 0.2,
-      "drift_level": -3.0
+      "drift_filterCutoff": 5000.0,
+      "drift_filterReso": 0.2,
+      "drift_level": -3.0,
+      "drift_oscA_detune": 0.3,
+      "drift_oscA_level": 0.75,
+      "drift_oscA_mode": 2.0,
+      "drift_oscB_level": 0.5,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 0.0,
+      "drift_oscB_tune": 7.0,
+      "drift_release": 350.0,
+      "drift_shimmerAmount": 0.25,
+      "drift_shimmerTone": 0.6,
+      "drift_sustain": 0.7
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.547,
-    "warmth": 0.11,
-    "movement": 0.0,
-    "density": 0.304,
-    "space": 0.237,
-    "aggression": 0.083
-  }
+  "tags": [
+    "shimmery",
+    "chorus",
+    "supersaw"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

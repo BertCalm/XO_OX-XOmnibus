@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_KINETIC_VAST_VIOLENT_ENT_AGG_3",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.946,
+    "source": "Odyssey",
+    "target": "Osteria",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.959,
+    "brightness": 0.871,
+    "density": 0.689,
+    "movement": 0.963,
+    "space": 0.979,
+    "warmth": 0.646
+  },
   "engines": [
-    "ODYSSEY",
-    "OSTERIA"
+    "Odyssey",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.697,
+    "COUPLING": 0.936,
+    "MOVEMENT": 0.963,
+    "SPACE": 0.979
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT_KINETIC_VAST_VIOLENT_ENT_AGG_3",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.683,
-      "macro_movement": 0.993,
       "macro_coupling": 0.936,
+      "macro_movement": 0.993,
       "macro_space": 0.951
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.711,
-      "macro_movement": 0.932,
       "macro_coupling": 0.916,
+      "macro_movement": 0.932,
       "macro_space": 1.0
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ODYSSEY",
-    "target": "OSTERIA",
-    "amount": 0.946
-  },
-  "dna": {
-    "brightness": 0.871,
-    "warmth": 0.646,
-    "movement": 0.963,
-    "density": 0.689,
-    "space": 0.979,
-    "aggression": 0.959
-  },
-  "macros": {
-    "CHARACTER": 0.697,
-    "MOVEMENT": 0.963,
-    "COUPLING": 0.936,
-    "SPACE": 0.979
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "bright",
     "kinetic",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT HOT DENSE ATM 17",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.728,
+    "source": "OddOscar",
+    "target": "Overworld",
+    "type": "SPATIAL_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.606,
+    "brightness": 0.947,
+    "density": 0.902,
+    "movement": 0.404,
+    "space": 0.555,
+    "warmth": 0.923
+  },
   "engines": [
-    "ODDOSCAR",
-    "OVERWORLD"
+    "OddOscar",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.935,
+    "COUPLING": 0.661,
+    "MOVEMENT": 0.404,
+    "SPACE": 0.555
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT HOT DENSE ATM 17",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.935,
-      "macro_movement": 0.404,
       "macro_coupling": 0.661,
+      "macro_movement": 0.404,
       "macro_space": 0.555
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.867,
-      "macro_movement": 0.277,
       "macro_coupling": 0.649,
+      "macro_movement": 0.277,
       "macro_space": 0.487
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ODDOSCAR",
-    "target": "OVERWORLD",
-    "amount": 0.728
-  },
-  "dna": {
-    "brightness": 0.947,
-    "warmth": 0.923,
-    "movement": 0.404,
-    "density": 0.902,
-    "space": 0.555,
-    "aggression": 0.606
-  },
-  "macros": {
-    "CHARACTER": 0.935,
-    "MOVEMENT": 0.404,
-    "COUPLING": 0.661,
-    "SPACE": 0.555
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
@@ -47,5 +54,6 @@
     "dense",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

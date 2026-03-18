@@ -1,13 +1,36 @@
 {
-  "schema_version": 1,
-  "name": "Siphonophore Harp",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "ORPHICA microsound colony — SCATTER wide, SHIMMER present. Each grain a polyp. The organism that thinks it is a single being.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.72,
+    "density": 0.35,
+    "movement": 0.6,
+    "space": 0.82,
+    "warmth": 0.45
+  },
   "engines": [
-    "ORPHICA"
+    "Orphica"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ORPHICA microsound colony \u2014 SCATTER wide, SHIMMER present. Each grain a polyp. The organism that thinks it is a single being.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "SCATTER",
+    "SHIMMER",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Siphonophore Harp",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "extended-family",
@@ -17,29 +40,6 @@
     "delicate",
     "batch2-extended"
   ],
-  "macroLabels": [
-    "SCATTER",
-    "SHIMMER",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.72,
-    "warmth": 0.45,
-    "movement": 0.6,
-    "density": 0.35,
-    "space": 0.82,
-    "aggression": 0.15
-  }
+  "version": "1.0.0"
 }

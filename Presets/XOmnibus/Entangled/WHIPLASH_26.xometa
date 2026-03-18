@@ -1,48 +1,56 @@
 {
-  "name": "WHIPLASH 26",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.853,
+    "source": "Opal",
+    "target": "Orca",
+    "type": "SPECTRAL_MORPH"
+  },
+  "dna": {
+    "aggression": 0.917,
+    "brightness": 0.449,
+    "density": 0.079,
+    "movement": 0.954,
+    "space": 0.256,
+    "warmth": 0.005
+  },
   "engines": [
-    "OPAL",
-    "ORCA"
+    "Opal",
+    "Orca"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.549,
+    "COUPLING": 0.727,
+    "MOVEMENT": 0.954,
+    "SPACE": 0.528
+  },
+  "mood": "Entangled",
+  "name": "WHIPLASH 26",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.791,
-      "macro_movement": 0.964,
       "macro_coupling": 0.138,
+      "macro_movement": 0.964,
       "macro_space": 0.287
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.83,
-      "macro_movement": 0.945,
       "macro_coupling": 0.696,
+      "macro_movement": 0.945,
       "macro_space": 0.139
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OPAL",
-    "target": "ORCA",
-    "amount": 0.853
-  },
-  "dna": {
-    "brightness": 0.449,
-    "warmth": 0.005,
-    "movement": 0.954,
-    "density": 0.079,
-    "space": 0.256,
-    "aggression": 0.917
-  },
-  "macros": {
-    "CHARACTER": 0.549,
-    "MOVEMENT": 0.954,
-    "COUPLING": 0.727,
-    "SPACE": 0.528
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frantic",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,22 +1,35 @@
 {
-  "schema_version": 1,
-  "name": "Tape Serpent",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Ouroboros",
+        "engineB": "Overdub",
+        "type": "Audio->AM"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Ouroboros feed loop recorded onto tape. Each revolution introduces vintage saturation and chaos.",
+  "dna": {
+    "aggression": 0.63,
+    "brightness": 0.696,
+    "density": 0.685,
+    "movement": 0.805,
+    "space": 0.445,
+    "warmth": 0.0
+  },
   "engines": [
     "Ouroboros",
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ouroboros feed loop recorded onto tape. Each revolution introduces vintage saturation and chaos.",
-  "tags": [
-    "tape",
-    "feedback",
-    "saturation",
-    "entangled",
-    "ouroboros",
-    "overdub"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -25,28 +38,22 @@
   ],
   "macros": {
     "CHARACTER": 0.6,
-    "MOVEMENT": 0.75,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.75,
     "SPACE": 0.5
   },
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Tape Serpent",
   "parameters": {
     "Ouroboros": {
-      "ouro_topology": 1,
-      "ouro_rate": 70.0,
       "ouro_chaosIndex": 0.5,
-      "ouro_leash": 0.5,
-      "ouro_theta": 0.0,
-      "ouro_phi": 0.35,
       "ouro_damping": 0.3,
-      "ouro_injection": 0.0
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.5,
+      "ouro_phi": 0.35,
+      "ouro_rate": 70.0,
+      "ouro_theta": 0.0,
+      "ouro_topology": 1
     },
     "Overdub": {
       "dub_oscWave": 0,
@@ -54,23 +61,16 @@
       "dub_tapeDelay": 0.5
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Overdub",
-        "type": "Audio->AM",
-        "amount": 0.6
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.696,
-    "warmth": 0.0,
-    "movement": 0.805,
-    "density": 0.685,
-    "space": 0.445,
-    "aggression": 0.63
-  }
+  "tags": [
+    "tape",
+    "feedback",
+    "saturation",
+    "entangled",
+    "ouroboros",
+    "overdub"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

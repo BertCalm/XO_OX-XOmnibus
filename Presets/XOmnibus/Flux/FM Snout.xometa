@@ -1,65 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "FM Snout",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Glitchy oddball character with bob character and curious motion.",
+  "dna": {
+    "aggression": 0.339,
+    "brightness": 0.643,
+    "density": 0.768,
+    "movement": 0.443,
+    "space": 0.0,
+    "warmth": 0.262
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Glitchy oddball character with bob character and curious motion.",
-  "tags": [
-    "fm",
-    "nasal",
-    "metallic"
-  ],
+  "legacy": {
+    "sourceCategory": "Oddball",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Oddball",
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "FM Snout",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
-      "bob_oscA_shape": 0.5,
-      "bob_oscA_drift": 0.2,
-      "bob_oscB_wave": 0.0,
-      "bob_oscB_fm": 0.85,
-      "bob_oscB_blend": 0.92,
-      "bob_oscB_detune": 12.0,
-      "bob_curMode": 1.0,
-      "bob_curAmount": 0.6,
-      "bob_fltMode": 1.0,
-      "bob_fltCutoff": 3800.0,
-      "bob_fltReso": 0.72,
-      "bob_fltChar": 0.82,
-      "bob_fltDrive": 0.28,
-      "bob_lfo1Rate": 0.4,
-      "bob_lfo1Depth": 0.38,
       "bob_ampAttack": 0.012,
       "bob_ampDecay": 0.8,
-      "bob_ampSustain": 0.42,
       "bob_ampRelease": 1.2,
-      "bob_bobMode": 0.32
+      "bob_ampSustain": 0.42,
+      "bob_bobMode": 0.32,
+      "bob_curAmount": 0.6,
+      "bob_curMode": 1.0,
+      "bob_fltChar": 0.82,
+      "bob_fltCutoff": 3800.0,
+      "bob_fltDrive": 0.28,
+      "bob_fltMode": 1.0,
+      "bob_fltReso": 0.72,
+      "bob_lfo1Depth": 0.38,
+      "bob_lfo1Rate": 0.4,
+      "bob_oscA_drift": 0.2,
+      "bob_oscA_shape": 0.5,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.92,
+      "bob_oscB_detune": 12.0,
+      "bob_oscB_fm": 0.85,
+      "bob_oscB_wave": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.643,
-    "warmth": 0.262,
-    "movement": 0.443,
-    "density": 0.768,
-    "space": 0.0,
-    "aggression": 0.339
-  }
+  "tags": [
+    "fm",
+    "nasal",
+    "metallic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

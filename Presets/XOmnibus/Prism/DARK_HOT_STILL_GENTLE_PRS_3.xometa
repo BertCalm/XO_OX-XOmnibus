@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_STILL_GENTLE_PRS_3",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.888,
+    "source": "Ole",
+    "target": "Ohm",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.046,
+    "brightness": 0.041,
+    "density": 0.664,
+    "movement": 0.041,
+    "space": 0.306,
+    "warmth": 0.961
+  },
   "engines": [
-    "OLE",
-    "OHM"
+    "Ole",
+    "Ohm"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.043,
+    "COUPLING": 0.872,
+    "MOVEMENT": 0.041,
+    "SPACE": 0.306
+  },
+  "mood": "Prism",
+  "name": "DARK_HOT_STILL_GENTLE_PRS_3",
   "parameters": {
-    "OLE": {
-      "macro_character": 0.043,
+    "Ohm": {
+      "macro_character": 0.502,
+      "macro_coupling": 0.676,
       "macro_movement": 0.041,
-      "macro_coupling": 0.872,
       "macro_space": 0.306
     },
-    "OHM": {
-      "macro_character": 0.502,
+    "Ole": {
+      "macro_character": 0.043,
+      "macro_coupling": 0.872,
       "macro_movement": 0.041,
-      "macro_coupling": 0.676,
       "macro_space": 0.306
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OLE",
-    "target": "OHM",
-    "amount": 0.888
-  },
-  "dna": {
-    "brightness": 0.041,
-    "warmth": 0.961,
-    "movement": 0.041,
-    "density": 0.664,
-    "space": 0.306,
-    "aggression": 0.046
-  },
-  "macros": {
-    "CHARACTER": 0.043,
-    "MOVEMENT": 0.041,
-    "COUPLING": 0.872,
-    "SPACE": 0.306
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "hot",
     "still",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

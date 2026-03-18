@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_COLD_DENSE_INTIMATE_FLX_3",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORACLE",
-    "OPAL"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.8541,
-      "macro_movement": 0.3023,
-      "macro_coupling": 0.3708,
-      "macro_space": 0.1654
-    },
-    "OPAL": {
-      "macro_character": 0.9321,
-      "macro_movement": 0.4425,
-      "macro_coupling": 0.4559,
-      "macro_space": 0.1156
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ORACLE",
-    "target": "OPAL",
-    "amount": 0.6486
+    "amount": 0.6486,
+    "source": "Oracle",
+    "target": "Opal",
+    "type": "FREQUENCY_SHIFT"
   },
   "dna": {
+    "aggression": 0.4035,
     "brightness": 0.8638,
-    "warmth": 0.1366,
-    "movement": 0.378,
     "density": 0.9793,
+    "movement": 0.378,
     "space": 0.1341,
-    "aggression": 0.4035
+    "warmth": 0.1366
   },
+  "engines": [
+    "Oracle",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8541,
-    "MOVEMENT": 0.3023,
     "COUPLING": 0.3708,
+    "MOVEMENT": 0.3023,
     "SPACE": 0.1654
   },
+  "mood": "Flux",
+  "name": "BRIGHT_COLD_DENSE_INTIMATE_FLX_3",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.9321,
+      "macro_coupling": 0.4559,
+      "macro_movement": 0.4425,
+      "macro_space": 0.1156
+    },
+    "Oracle": {
+      "macro_character": 0.8541,
+      "macro_coupling": 0.3708,
+      "macro_movement": 0.3023,
+      "macro_space": 0.1654
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "low-warmth",
     "high-density",
     "low-space"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "WRATH FIELD",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORBITAL",
-    "OPAL"
-  ],
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.259,
-      "macro_movement": 0.507,
-      "macro_coupling": 0.5,
-      "macro_space": 0.136
-    },
-    "OPAL": {
-      "macro_character": 0.21,
-      "macro_movement": 0.366,
-      "macro_coupling": 0.479,
-      "macro_space": 0.466
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORBITAL",
-    "target": "OPAL",
-    "amount": 0.655
+    "amount": 0.655,
+    "source": "Orbital",
+    "target": "Opal",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
+    "aggression": 0.941,
     "brightness": 0.88,
-    "warmth": 0.123,
-    "movement": 0.371,
     "density": 0.851,
+    "movement": 0.371,
     "space": 0.704,
-    "aggression": 0.941
+    "warmth": 0.123
   },
+  "engines": [
+    "Orbital",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.512,
-    "MOVEMENT": 0.362,
     "COUPLING": 0.59,
+    "MOVEMENT": 0.362,
     "SPACE": 0.23
   },
+  "mood": "Entangled",
+  "name": "WRATH FIELD",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.21,
+      "macro_coupling": 0.479,
+      "macro_movement": 0.366,
+      "macro_space": 0.466
+    },
+    "Orbital": {
+      "macro_character": 0.259,
+      "macro_coupling": 0.5,
+      "macro_movement": 0.507,
+      "macro_space": 0.136
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "violent",
     "fury",
     "chaos",
     "obliterating"
-  ]
+  ],
+  "version": "1.0"
 }

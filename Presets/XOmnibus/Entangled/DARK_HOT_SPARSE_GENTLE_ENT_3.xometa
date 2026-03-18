@@ -1,14 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "DARK_HOT_SPARSE_GENTLE_ENT_3",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7538,
+    "pairs": [
+      {
+        "amount": 0.7538,
+        "source": "OddOscar",
+        "target": "Obbligato",
+        "type": "PITCH_ENTANGLE"
+      }
+    ],
+    "source": "OddOscar",
+    "target": "Obbligato",
+    "type": "PITCH_ENTANGLE"
+  },
+  "couplingIntensity": "High",
+  "description": "Dark Hot Sparse Gentle character entanglement — OBBLIGATO × ODDOSCAR via Pitch Entangle. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.1146,
+    "brightness": 0.107,
+    "density": 0.0696,
+    "movement": 0.509,
+    "space": 0.4771,
+    "warmth": 0.8971
+  },
   "engines": [
-    "OBBLIGATO",
-    "ODDOSCAR"
+    "Obbligato",
+    "OddOscar"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dark Hot Sparse Gentle character entanglement \u2014 OBBLIGATO \u00d7 ODDOSCAR via Pitch Entangle. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "WIND",
+    "BOND",
+    "FLOW",
+    "AIR"
+  ],
+  "macros": {
+    "CHARACTER": 0.502,
+    "COUPLING": 0.7538,
+    "MOVEMENT": 0.509,
+    "SPACE": 0.4771
+  },
+  "mood": "Entangled",
+  "name": "DARK_HOT_SPARSE_GENTLE_ENT_3",
+  "parameters": {
+    "Obbligato": {
+      "amp_attack": 0.219,
+      "amp_release": 0.3602,
+      "coupling_level": 0.5743,
+      "density": 0.0771,
+      "drive": 0.1377,
+      "filter_cutoff": 0.2518,
+      "filter_resonance": 0.1701,
+      "macro_character": 0.6997,
+      "macro_coupling": 0.6759,
+      "macro_movement": 0.5282,
+      "macro_space": 0.4537,
+      "output_level": 0.7007,
+      "reverb_mix": 0.3784,
+      "reverb_size": 0.4465
+    },
+    "OddOscar": {
+      "amp_attack": 0.2564,
+      "amp_release": 0.3992,
+      "coupling_level": 0.6219,
+      "density": 0.0814,
+      "drive": 0.1453,
+      "filter_cutoff": 0.3088,
+      "filter_resonance": 0.1803,
+      "macro_character": 0.7075,
+      "macro_coupling": 0.6364,
+      "macro_movement": 0.5252,
+      "macro_space": 0.4921,
+      "output_level": 0.7501,
+      "reverb_mix": 0.4471,
+      "reverb_size": 0.4803
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.1146,
+    "brightness": 0.107,
+    "density": 0.0696,
+    "movement": 0.509,
+    "space": 0.4771,
+    "warmth": 0.8971
+  },
   "tags": [
     "entangled",
     "dark",
@@ -17,81 +93,5 @@
     "gentle",
     "resonant"
   ],
-  "macroLabels": [
-    "WIND",
-    "BOND",
-    "FLOW",
-    "AIR"
-  ],
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.107,
-    "warmth": 0.8971,
-    "movement": 0.509,
-    "density": 0.0696,
-    "space": 0.4771,
-    "aggression": 0.1146
-  },
-  "sonic_dna": {
-    "brightness": 0.107,
-    "warmth": 0.8971,
-    "movement": 0.509,
-    "density": 0.0696,
-    "space": 0.4771,
-    "aggression": 0.1146
-  },
-  "parameters": {
-    "OBBLIGATO": {
-      "macro_character": 0.6997,
-      "macro_movement": 0.5282,
-      "macro_coupling": 0.6759,
-      "macro_space": 0.4537,
-      "filter_cutoff": 0.2518,
-      "filter_resonance": 0.1701,
-      "amp_attack": 0.219,
-      "amp_release": 0.3602,
-      "reverb_mix": 0.3784,
-      "reverb_size": 0.4465,
-      "drive": 0.1377,
-      "density": 0.0771,
-      "output_level": 0.7007,
-      "coupling_level": 0.5743
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.7075,
-      "macro_movement": 0.5252,
-      "macro_coupling": 0.6364,
-      "macro_space": 0.4921,
-      "filter_cutoff": 0.3088,
-      "filter_resonance": 0.1803,
-      "amp_attack": 0.2564,
-      "amp_release": 0.3992,
-      "reverb_mix": 0.4471,
-      "reverb_size": 0.4803,
-      "drive": 0.1453,
-      "density": 0.0814,
-      "output_level": 0.7501,
-      "coupling_level": 0.6219
-    }
-  },
-  "coupling": {
-    "type": "PITCH_ENTANGLE",
-    "source": "ODDOSCAR",
-    "target": "OBBLIGATO",
-    "amount": 0.7538,
-    "pairs": [
-      {
-        "source": "ODDOSCAR",
-        "target": "OBBLIGATO",
-        "type": "PITCH_ENTANGLE",
-        "amount": 0.7538
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.502,
-    "MOVEMENT": 0.509,
-    "COUPLING": 0.7538,
-    "SPACE": 0.4771
-  }
+  "version": "1.0.0"
 }

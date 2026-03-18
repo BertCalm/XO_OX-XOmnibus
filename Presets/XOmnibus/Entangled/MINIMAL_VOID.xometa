@@ -1,48 +1,56 @@
 {
-  "name": "MINIMAL VOID",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORBITAL",
-    "OBLONG"
-  ],
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.585,
-      "macro_movement": 0.712,
-      "macro_coupling": 0.381,
-      "macro_space": 0.597
-    },
-    "OBLONG": {
-      "macro_character": 0.295,
-      "macro_movement": 0.506,
-      "macro_coupling": 0.43,
-      "macro_space": 0.793
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORBITAL",
-    "target": "OBLONG",
-    "amount": 0.192
+    "amount": 0.192,
+    "source": "Orbital",
+    "target": "Oblong",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.43,
     "brightness": 0.655,
-    "warmth": 0.878,
-    "movement": 0.551,
     "density": 0.099,
+    "movement": 0.551,
     "space": 0.865,
-    "aggression": 0.43
+    "warmth": 0.878
   },
+  "engines": [
+    "Orbital",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.888,
-    "MOVEMENT": 0.414,
     "COUPLING": 0.827,
+    "MOVEMENT": 0.414,
     "SPACE": 0.399
   },
+  "mood": "Entangled",
+  "name": "MINIMAL VOID",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.295,
+      "macro_coupling": 0.43,
+      "macro_movement": 0.506,
+      "macro_space": 0.793
+    },
+    "Orbital": {
+      "macro_character": 0.585,
+      "macro_coupling": 0.381,
+      "macro_movement": 0.712,
+      "macro_space": 0.597
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "hollow",
     "void"
-  ]
+  ],
+  "version": "1.0"
 }

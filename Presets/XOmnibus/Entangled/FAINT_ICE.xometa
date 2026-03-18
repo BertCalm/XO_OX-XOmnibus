@@ -1,48 +1,56 @@
 {
-  "name": "FAINT ICE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.24,
+    "source": "Opal",
+    "target": "Ouroboros",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.09,
+    "brightness": 0.594,
+    "density": 0.792,
+    "movement": 0.086,
+    "space": 0.793,
+    "warmth": 0.996
+  },
   "engines": [
-    "OPAL",
-    "OUROBOROS"
+    "Opal",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.377,
+    "COUPLING": 0.625,
+    "MOVEMENT": 0.086,
+    "SPACE": 0.934
+  },
+  "mood": "Entangled",
+  "name": "FAINT ICE",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.095,
-      "macro_movement": 0.108,
       "macro_coupling": 0.687,
+      "macro_movement": 0.108,
       "macro_space": 0.31
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.717,
-      "macro_movement": 0.065,
       "macro_coupling": 0.688,
+      "macro_movement": 0.065,
       "macro_space": 0.472
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OPAL",
-    "target": "OUROBOROS",
-    "amount": 0.24
-  },
-  "dna": {
-    "brightness": 0.594,
-    "warmth": 0.996,
-    "movement": 0.086,
-    "density": 0.792,
-    "space": 0.793,
-    "aggression": 0.09
-  },
-  "macros": {
-    "CHARACTER": 0.377,
-    "MOVEMENT": 0.086,
-    "COUPLING": 0.625,
-    "SPACE": 0.934
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "faint"
-  ]
+  ],
+  "version": "1.0"
 }

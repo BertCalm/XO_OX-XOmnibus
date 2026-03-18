@@ -1,14 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT COLD KINETIC DENSE AET 3",
-  "mood": "Aether",
-  "engines": [
-    "OVERLAP",
-    "OBESE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, bright, cold, kinetic.",
+  "coupling": [
+    {
+      "amount": 0.338,
+      "destination": "OBESE",
+      "source": "OVERLAP",
+      "type": "RESONANCE_SHARE"
+    }
+  ],
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — aether, bright, cold, kinetic.",
+  "dna": {
+    "aggression": 0.563,
+    "brightness": 0.903,
+    "density": 0.953,
+    "movement": 0.901,
+    "space": 0.59,
+    "warmth": 0.084
+  },
+  "engines": [
+    "Overlap",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "BRIGHT COLD KINETIC DENSE AET 3",
+  "parameters": {
+    "Obese": {
+      "level": 0.809,
+      "pan": 0.042
+    },
+    "Overlap": {
+      "level": 0.817,
+      "pan": 0.061
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "bright",
@@ -17,40 +51,6 @@
     "dense",
     "ultra-diverse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.903,
-    "warmth": 0.084,
-    "movement": 0.901,
-    "density": 0.953,
-    "space": 0.59,
-    "aggression": 0.563
-  },
-  "parameters": {
-    "OVERLAP": {
-      "level": 0.817,
-      "pan": 0.061
-    },
-    "OBESE": {
-      "level": 0.809,
-      "pan": 0.042
-    }
-  },
-  "coupling": [
-    {
-      "source": "OVERLAP",
-      "destination": "OBESE",
-      "type": "RESONANCE_SHARE",
-      "amount": 0.338
-    }
-  ],
-  "sequencer": null
+  "version": "1.0.0"
 }

@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "STILL GENTLE SPARSE VAST 2",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "movement": 0.0718,
-    "aggression": 0.0636,
-    "density": 0.1016,
-    "space": 0.9095,
-    "brightness": 0.5902,
-    "warmth": 0.4843
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Low",
+  "couplingType": "SPARK",
+  "description": "Ultra-diverse Entangled preset — still gentle sparse vast. Designed for SPARK coupling with XObsidian.",
   "dna": {
-    "movement": 0.0718,
     "aggression": 0.0636,
-    "density": 0.1016,
-    "space": 0.9095,
     "brightness": 0.5902,
+    "density": 0.1016,
+    "movement": 0.0718,
+    "space": 0.9095,
     "warmth": 0.4843
   },
   "engines": [
-    "XObsidian"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 still gentle sparse vast. Designed for SPARK coupling with XObsidian.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "spark",
-    "obsidian"
+    "Obsidian"
   ],
   "macroLabels": [
     "CRUSH",
@@ -36,15 +23,28 @@
     "EXPANSE",
     "MASS"
   ],
-  "couplingType": "SPARK",
-  "couplingIntensity": "Low",
+  "mood": "Entangled",
+  "name": "STILL GENTLE SPARSE VAST 2",
   "parameters": {
-    "XObsidian": {
-      "couplingLevel": 1.0,
-      "couplingBus": 1
+    "Obsidian": {
+      "couplingBus": 1,
+      "couplingLevel": 1.0
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.0636,
+    "brightness": 0.5902,
+    "density": 0.1016,
+    "movement": 0.0718,
+    "space": 0.9095,
+    "warmth": 0.4843
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "spark",
+    "obsidian"
+  ],
+  "version": "1.0.0"
 }

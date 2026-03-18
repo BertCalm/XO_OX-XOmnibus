@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT WARM KINETIC DENSE GENTLE FAM2 5",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OTTONI",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.911,
-      "macro_movement": 0.941,
-      "macro_coupling": 0.458,
-      "macro_space": 0.573
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.901,
-      "macro_movement": 0.942,
-      "macro_coupling": 0.438,
-      "macro_space": 0.542
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OTTONI",
-    "target": "OBBLIGATO",
-    "amount": 0.458
+    "amount": 0.458,
+    "source": "Ottoni",
+    "target": "Obbligato",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.044,
     "brightness": 0.903,
-    "warmth": 0.919,
-    "movement": 0.941,
     "density": 0.872,
+    "movement": 0.941,
     "space": 0.573,
-    "aggression": 0.044
+    "warmth": 0.919
   },
+  "engines": [
+    "Ottoni",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.911,
-    "MOVEMENT": 0.941,
     "COUPLING": 0.458,
+    "MOVEMENT": 0.941,
     "SPACE": 0.573
   },
+  "mood": "Family",
+  "name": "BRIGHT WARM KINETIC DENSE GENTLE FAM2 5",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.901,
+      "macro_coupling": 0.438,
+      "macro_movement": 0.942,
+      "macro_space": 0.542
+    },
+    "Ottoni": {
+      "macro_character": 0.911,
+      "macro_coupling": 0.458,
+      "macro_movement": 0.941,
+      "macro_space": 0.573
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
@@ -47,5 +54,6 @@
     "kinetic",
     "dense",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

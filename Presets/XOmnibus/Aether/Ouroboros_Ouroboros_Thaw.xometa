@@ -1,13 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Ouroboros Thaw",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The serpent warming after winter stasis. The cycle resumes at half speed — luminous, spacious, the feedback loop re-establishing its ancient rhythm.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.7,
+    "density": 0.3,
+    "movement": 0.62,
+    "space": 0.93,
+    "warmth": 0.62
+  },
   "engines": [
     "Ouroboros"
   ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "The serpent warming after winter stasis. The cycle resumes at half speed \u2014 luminous, spacious, the feedback loop re-establishing its ancient rhythm.",
+  "macroLabels": [
+    "CYCLE",
+    "DEVOUR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Ouroboros Thaw",
+  "parameters": {
+    "Ouroboros": {
+      "ouro_ampAttack": 0.5,
+      "ouro_ampRelease": 5.0,
+      "ouro_feedbackAmt": 0.5,
+      "ouro_filterCutoff": 0.68,
+      "ouro_filterReso": 0.22,
+      "ouro_lfoDepth": 0.58,
+      "ouro_lfoRate": 0.28,
+      "ouro_loopLength": 0.5,
+      "ouro_macroCoupling": 0.0,
+      "ouro_macroCycle": 0.0,
+      "ouro_macroDevour": 0.0,
+      "ouro_macroSpace": 0.0,
+      "ouro_reverbMix": 0.88,
+      "ouro_topology": 0.5
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "shifting-aether",
@@ -16,41 +52,5 @@
     "bright",
     "vast"
   ],
-  "macroLabels": [
-    "CYCLE",
-    "DEVOUR",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.7,
-    "warmth": 0.62,
-    "movement": 0.62,
-    "density": 0.3,
-    "space": 0.93,
-    "aggression": 0.05
-  },
-  "parameters": {
-    "Ouroboros": {
-      "ouro_topology": 0.5,
-      "ouro_loopLength": 0.5,
-      "ouro_feedbackAmt": 0.5,
-      "ouro_filterCutoff": 0.68,
-      "ouro_filterReso": 0.22,
-      "ouro_lfoRate": 0.28,
-      "ouro_lfoDepth": 0.58,
-      "ouro_ampAttack": 0.5,
-      "ouro_ampRelease": 5.0,
-      "ouro_reverbMix": 0.88,
-      "ouro_macroCycle": 0.0,
-      "ouro_macroDevour": 0.0,
-      "ouro_macroCoupling": 0.0,
-      "ouro_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

@@ -1,48 +1,56 @@
 {
-  "name": "BARE FLUX",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6432,
+    "source": "Ocelot",
+    "target": "Optic",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.4417,
+    "brightness": 0.8046,
+    "density": 0.0209,
+    "movement": 0.0964,
+    "space": 0.158,
+    "warmth": 0.9012
+  },
   "engines": [
-    "OCELOT",
-    "OPTIC"
+    "Ocelot",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5748,
+    "COUPLING": 0.2952,
+    "MOVEMENT": 0.9927,
+    "SPACE": 0.9779
+  },
+  "mood": "Flux",
+  "name": "BARE FLUX",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.6389,
-      "macro_movement": 0.4243,
       "macro_coupling": 0.2501,
+      "macro_movement": 0.4243,
       "macro_space": 0.8453
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.1992,
-      "macro_movement": 0.3847,
       "macro_coupling": 0.4832,
+      "macro_movement": 0.3847,
       "macro_space": 0.2372
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OCELOT",
-    "target": "OPTIC",
-    "amount": 0.6432
-  },
-  "dna": {
-    "brightness": 0.8046,
-    "warmth": 0.9012,
-    "movement": 0.0964,
-    "density": 0.0209,
-    "space": 0.158,
-    "aggression": 0.4417
-  },
-  "macros": {
-    "CHARACTER": 0.5748,
-    "MOVEMENT": 0.9927,
-    "COUPLING": 0.2952,
-    "SPACE": 0.9779
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "sparse",
     "minimal"
-  ]
+  ],
+  "version": "1.0"
 }

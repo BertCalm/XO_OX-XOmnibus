@@ -1,13 +1,66 @@
 {
-  "schema_version": 1,
-  "name": "Beryl Resonance",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Beryl struck at resonant frequency — gemstone singing its one pure crystalline note.",
+  "dna": {
+    "aggression": 0.11,
+    "brightness": 0.93,
+    "density": 0.32,
+    "movement": 0.17,
+    "space": 0.76,
+    "warmth": 0.09
+  },
   "engines": [
     "Obsidian"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Beryl struck at resonant frequency — gemstone singing its one pure crystalline note.",
+  "legacy": {
+    "sourceCategory": "Prism",
+    "sourceInstrument": "Obsidian",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Beryl Resonance",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_ampAttack": 0.0058,
+      "obsidian_ampDecay": 1.108,
+      "obsidian_ampRelease": 1.964,
+      "obsidian_ampSustain": 0.759,
+      "obsidian_cascadeBlend": 0.059,
+      "obsidian_crossModDepth": 0.033,
+      "obsidian_densityX": 0.765,
+      "obsidian_depth": 0.872,
+      "obsidian_filterCutoff": 17090.0,
+      "obsidian_filterReso": 0.102,
+      "obsidian_formantIntensity": 0.419,
+      "obsidian_glide": 0.0,
+      "obsidian_level": 0.78,
+      "obsidian_lfo1Depth": 0.043,
+      "obsidian_lfo1Rate": 1.35,
+      "obsidian_lfo1Shape": 2,
+      "obsidian_lfo2Depth": 0.026,
+      "obsidian_lfo2Rate": 0.81,
+      "obsidian_lfo2Shape": 0,
+      "obsidian_macroCharacter": 0.744,
+      "obsidian_macroCoupling": 0.0,
+      "obsidian_macroMovement": 0.17,
+      "obsidian_macroSpace": 0.76,
+      "obsidian_polyphony": 4,
+      "obsidian_stereoWidth": 0.819,
+      "obsidian_stiffness": 0.255,
+      "obsidian_tiltY": 0.698
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "crystal",
     "beryl",
@@ -15,59 +68,6 @@
     "gem",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": "Obsidian",
-    "sourceCategory": "Prism",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Obsidian": {
-      "obsidian_densityX": 0.765,
-      "obsidian_tiltY": 0.698,
-      "obsidian_depth": 0.872,
-      "obsidian_stiffness": 0.255,
-      "obsidian_cascadeBlend": 0.059,
-      "obsidian_crossModDepth": 0.033,
-      "obsidian_formantIntensity": 0.419,
-      "obsidian_stereoWidth": 0.819,
-      "obsidian_filterCutoff": 17090.0,
-      "obsidian_filterReso": 0.102,
-      "obsidian_level": 0.78,
-      "obsidian_ampAttack": 0.0058,
-      "obsidian_ampDecay": 1.108,
-      "obsidian_ampSustain": 0.759,
-      "obsidian_ampRelease": 1.964,
-      "obsidian_lfo1Rate": 1.35,
-      "obsidian_lfo1Depth": 0.043,
-      "obsidian_lfo1Shape": 2,
-      "obsidian_lfo2Rate": 0.81,
-      "obsidian_lfo2Depth": 0.026,
-      "obsidian_lfo2Shape": 0,
-      "obsidian_polyphony": 4,
-      "obsidian_glide": 0.0,
-      "obsidian_macroCharacter": 0.744,
-      "obsidian_macroMovement": 0.17,
-      "obsidian_macroCoupling": 0.0,
-      "obsidian_macroSpace": 0.76
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.93,
-    "warmth": 0.09,
-    "movement": 0.17,
-    "density": 0.32,
-    "space": 0.76,
-    "aggression": 0.11
-  }
+  "version": "1.0.0"
 }

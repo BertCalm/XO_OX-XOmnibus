@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Pressure Core",
-  "mood": "Foundation",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Wool-thick pad with heavy body resonance and amber warmth.",
+  "dna": {
+    "aggression": 0.549,
     "brightness": 0.424,
-    "warmth": 0.903,
-    "movement": 0.396,
     "density": 0.809,
+    "movement": 0.396,
     "space": 0.326,
-    "aggression": 0.549
+    "warmth": 0.903
   },
   "engines": [
-    "OVERDUB"
+    "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Wool-thick pad with heavy body resonance and amber warmth.",
+  "macroLabels": [
+    "MELT",
+    "COMPRESS",
+    "COUPLING",
+    "TAIL"
+  ],
+  "mood": "Foundation",
+  "name": "Pressure Core",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.549,
+    "brightness": 0.424,
+    "density": 0.809,
+    "movement": 0.396,
+    "space": 0.326,
+    "warmth": 0.903
+  },
   "tags": [
     "foundation",
     "warm",
@@ -24,23 +42,5 @@
     "thick",
     "aggressive"
   ],
-  "macroLabels": [
-    "MELT",
-    "COMPRESS",
-    "COUPLING",
-    "TAIL"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.424,
-    "warmth": 0.903,
-    "movement": 0.396,
-    "density": 0.809,
-    "space": 0.326,
-    "aggression": 0.549
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

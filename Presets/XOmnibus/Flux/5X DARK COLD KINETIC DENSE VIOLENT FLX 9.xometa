@@ -1,14 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FLX 9",
-  "mood": "Flux",
-  "engines": [
-    "OBBLIGATO",
-    "ORBITAL"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.74,
+    "source": "Obbligato",
+    "target": "Orbital",
+    "type": "LFO_SYNC"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.553,
+    "brightness": 0.909,
+    "density": 0.099,
+    "movement": 0.092,
+    "space": 0.949,
+    "warmth": 0.956
+  },
+  "engines": [
+    "Obbligato",
+    "Orbital"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT FLX 9",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.93,
+      "macro_coupling": 0.88,
+      "macro_movement": 0.67,
+      "macro_space": 0.15
+    },
+    "Orbital": {
+      "macro_character": 0.69,
+      "macro_coupling": 0.53,
+      "macro_movement": 0.7,
+      "macro_space": 0.25
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +58,6 @@
     "dense",
     "flux"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OBBLIGATO": {
-      "macro_character": 0.93,
-      "macro_movement": 0.67,
-      "macro_coupling": 0.88,
-      "macro_space": 0.15
-    },
-    "ORBITAL": {
-      "macro_character": 0.69,
-      "macro_movement": 0.7,
-      "macro_coupling": 0.53,
-      "macro_space": 0.25
-    }
-  },
-  "coupling": {
-    "type": "LFO_SYNC",
-    "source": "OBBLIGATO",
-    "target": "ORBITAL",
-    "amount": 0.74
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.909,
-    "warmth": 0.956,
-    "movement": 0.092,
-    "density": 0.099,
-    "space": 0.949,
-    "aggression": 0.553
-  }
+  "version": "1.0.0"
 }

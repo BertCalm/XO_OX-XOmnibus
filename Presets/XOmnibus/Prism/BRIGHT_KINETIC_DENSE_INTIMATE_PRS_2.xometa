@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_PRS_2",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.705,
+    "source": "Overworld",
+    "target": "Ocelot",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.446,
+    "brightness": 0.971,
+    "density": 0.949,
+    "movement": 0.946,
+    "space": 0.104,
+    "warmth": 0.515
+  },
   "engines": [
-    "OVERWORLD",
-    "OCELOT"
+    "Overworld",
+    "Ocelot"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.709,
+    "COUPLING": 0.496,
+    "MOVEMENT": 0.946,
+    "SPACE": 0.104
+  },
+  "mood": "Prism",
+  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_PRS_2",
   "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.709,
+    "Ocelot": {
+      "macro_character": 0.238,
+      "macro_coupling": 0.718,
       "macro_movement": 0.946,
-      "macro_coupling": 0.496,
       "macro_space": 0.104
     },
-    "OCELOT": {
-      "macro_character": 0.238,
+    "Overworld": {
+      "macro_character": 0.709,
+      "macro_coupling": 0.496,
       "macro_movement": 0.946,
-      "macro_coupling": 0.718,
       "macro_space": 0.104
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OVERWORLD",
-    "target": "OCELOT",
-    "amount": 0.705
-  },
-  "dna": {
-    "brightness": 0.971,
-    "warmth": 0.515,
-    "movement": 0.946,
-    "density": 0.949,
-    "space": 0.104,
-    "aggression": 0.446
-  },
-  "macros": {
-    "CHARACTER": 0.709,
-    "MOVEMENT": 0.946,
-    "COUPLING": 0.496,
-    "SPACE": 0.104
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "bright",
     "kinetic",
     "dense",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

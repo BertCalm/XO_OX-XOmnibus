@@ -1,14 +1,64 @@
 {
-  "schema_version": 1,
-  "name": "Frond Spread",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.744,
+        "engineA": "Overlap",
+        "engineB": "Opal",
+        "type": "PITCH_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "OPAL grain density drives OVERLAP diffusion rate — the more fragments, the wider the web",
+  "dna": {
+    "aggression": 0.225,
+    "brightness": 0.675,
+    "density": 0.927,
+    "movement": 0.625,
+    "space": 0.517,
+    "warmth": 0.525
+  },
   "engines": [
-    "OVERLAP",
-    "OPAL"
+    "Overlap",
+    "Opal"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OPAL grain density drives OVERLAP diffusion rate \u2014 the more fragments, the wider the web",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Frond Spread",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.645,
+      "olap_damping": 0.635,
+      "olap_decay": 0.562,
+      "olap_diffusion": 0.618,
+      "olap_earlyMix": 0.381,
+      "olap_filterCutoff": 0.692,
+      "olap_filterReso": 0.261,
+      "olap_lateMix": 0.723,
+      "olap_modDepth": 0.132,
+      "olap_modRate": 0.079,
+      "olap_outputLevel": 0.845,
+      "olap_preDelay": 0.212,
+      "olap_size": 0.686
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.225,
+    "brightness": 0.675,
+    "density": 0.625,
+    "movement": 0.625,
+    "space": 0.825,
+    "warmth": 0.525
+  },
   "tags": [
     "coupling",
     "entangled",
@@ -19,55 +69,5 @@
     "fdn",
     "reverb"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
-  "dna": {
-    "aggression": 0.225,
-    "space": 0.517,
-    "warmth": 0.525,
-    "brightness": 0.675,
-    "density": 0.927,
-    "movement": 0.625
-  },
-  "sonic_dna": {
-    "aggression": 0.225,
-    "space": 0.825,
-    "warmth": 0.525,
-    "brightness": 0.675,
-    "density": 0.625,
-    "movement": 0.625
-  },
-  "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.686,
-      "olap_decay": 0.562,
-      "olap_damping": 0.635,
-      "olap_diffusion": 0.618,
-      "olap_modDepth": 0.132,
-      "olap_modRate": 0.079,
-      "olap_preDelay": 0.212,
-      "olap_earlyMix": 0.381,
-      "olap_lateMix": 0.723,
-      "olap_filterCutoff": 0.692,
-      "olap_filterReso": 0.261,
-      "olap_outputLevel": 0.845,
-      "olap_couplingLevel": 0.645,
-      "olap_couplingBus": 0
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERLAP",
-        "engineB": "OPAL",
-        "type": "PITCH_MOD",
-        "amount": 0.744
-      }
-    ]
-  }
+  "version": "1.0.0"
 }

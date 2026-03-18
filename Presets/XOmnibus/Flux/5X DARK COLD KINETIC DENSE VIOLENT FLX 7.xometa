@@ -1,14 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FLX 7",
-  "mood": "Flux",
-  "engines": [
-    "OBLIQUE",
-    "OMBRE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.89,
+    "source": "Oblique",
+    "target": "Ombre",
+    "type": "FM_CROSS"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.053,
+    "brightness": 0.918,
+    "density": 0.55,
+    "movement": 0.088,
+    "space": 0.954,
+    "warmth": 0.954
+  },
+  "engines": [
+    "Oblique",
+    "Ombre"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT FLX 7",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.63,
+      "macro_coupling": 0.59,
+      "macro_movement": 0.74,
+      "macro_space": 0.42
+    },
+    "Ombre": {
+      "macro_character": 0.84,
+      "macro_coupling": 0.69,
+      "macro_movement": 0.67,
+      "macro_space": 0.13
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +58,6 @@
     "dense",
     "flux"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OBLIQUE": {
-      "macro_character": 0.63,
-      "macro_movement": 0.74,
-      "macro_coupling": 0.59,
-      "macro_space": 0.42
-    },
-    "OMBRE": {
-      "macro_character": 0.84,
-      "macro_movement": 0.67,
-      "macro_coupling": 0.69,
-      "macro_space": 0.13
-    }
-  },
-  "coupling": {
-    "type": "FM_CROSS",
-    "source": "OBLIQUE",
-    "target": "OMBRE",
-    "amount": 0.89
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.918,
-    "warmth": 0.954,
-    "movement": 0.088,
-    "density": 0.55,
-    "space": 0.954,
-    "aggression": 0.053
-  }
+  "version": "1.0.0"
 }

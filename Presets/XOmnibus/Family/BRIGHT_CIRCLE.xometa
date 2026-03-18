@@ -1,49 +1,57 @@
 {
-  "name": "BRIGHT CIRCLE",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.44,
+    "source": "Onset",
+    "target": "Oracle",
+    "type": "PITCH_TRACK"
+  },
+  "dna": {
+    "aggression": 0.335,
+    "brightness": 0.95,
+    "density": 0.23,
+    "movement": 0.883,
+    "space": 0.743,
+    "warmth": 0.266
+  },
   "engines": [
-    "ONSET",
-    "ORACLE"
+    "Onset",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.119,
+    "COUPLING": 0.725,
+    "MOVEMENT": 0.647,
+    "SPACE": 0.42
+  },
+  "mood": "Family",
+  "name": "BRIGHT CIRCLE",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.1,
-      "macro_movement": 0.33,
       "macro_coupling": 0.472,
+      "macro_movement": 0.33,
       "macro_space": 0.681
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.137,
-      "macro_movement": 0.965,
       "macro_coupling": 0.978,
+      "macro_movement": 0.965,
       "macro_space": 0.158
     }
   },
-  "coupling": {
-    "type": "PITCH_TRACK",
-    "source": "ONSET",
-    "target": "ORACLE",
-    "amount": 0.44
-  },
-  "dna": {
-    "brightness": 0.95,
-    "warmth": 0.266,
-    "movement": 0.883,
-    "density": 0.23,
-    "space": 0.743,
-    "aggression": 0.335
-  },
-  "macros": {
-    "CHARACTER": 0.119,
-    "MOVEMENT": 0.647,
-    "COUPLING": 0.725,
-    "SPACE": 0.42
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "extreme",
     "high-movement"
-  ]
+  ],
+  "version": "1.0"
 }

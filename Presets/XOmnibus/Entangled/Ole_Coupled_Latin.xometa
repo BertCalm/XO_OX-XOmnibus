@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Coupled Latin",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Cubano and Charango pair, leaving Berimbau out. Then the triangle rotates.",
+  "dna": {
+    "aggression": 0.21,
+    "brightness": 0.51,
+    "density": 0.64,
+    "movement": 0.43,
+    "space": 0.33,
+    "warmth": 0.39
+  },
   "engines": [
     "Ole"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "latin",
-    "strummed",
-    "entangled",
-    "coupled",
-    "entangled"
   ],
   "macroLabels": [
     "FUEGO",
@@ -20,42 +21,41 @@
     "SIDES",
     "ISLA"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.51,
-    "warmth": 0.39,
-    "movement": 0.43,
-    "density": 0.64,
-    "space": 0.33,
-    "aggression": 0.21
-  },
+  "mood": "Entangled",
+  "name": "Coupled Latin",
   "parameters": {
     "Ole": {
+      "ole_allianceBlend": 0.509,
+      "ole_allianceConfig": 2,
+      "ole_aunt1Brightness": 0.71,
       "ole_aunt1Level": 0.745,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.71,
-      "ole_aunt2Level": 0.739,
       "ole_aunt2CoinPress": 0.0,
       "ole_aunt2GourdSize": 0.387,
+      "ole_aunt2Level": 0.739,
+      "ole_aunt3Brightness": 0.637,
       "ole_aunt3Level": 0.762,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.637,
       "ole_damping": 0.996,
-      "ole_sympatheticAmt": 0.302,
-      "ole_driftRate": 0.139,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 2,
-      "ole_allianceBlend": 0.509,
-      "ole_husbandOudLevel": 0.0,
+      "ole_driftRate": 0.139,
       "ole_husbandBouzLevel": 0.0,
+      "ole_husbandOudLevel": 0.0,
       "ole_husbandPinLevel": 0.0,
-      "ole_macroFuego": 0.409,
       "ole_macroDrama": 0.277,
+      "ole_macroFuego": 0.409,
+      "ole_macroIsla": 0.106,
       "ole_macroSides": 0.111,
-      "ole_macroIsla": 0.106
+      "ole_sympatheticAmt": 0.302
     }
   },
-  "coupling": null,
-  "description": "Cubano and Charango pair, leaving Berimbau out. Then the triangle rotates."
+  "schema_version": 1,
+  "tags": [
+    "latin",
+    "strummed",
+    "entangled",
+    "coupled",
+    "entangled"
+  ],
+  "version": "1.0.0"
 }

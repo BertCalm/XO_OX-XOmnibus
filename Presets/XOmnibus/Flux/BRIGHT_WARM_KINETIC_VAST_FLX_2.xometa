@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_VAST_FLX_2",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERDUB",
-    "ORGANON"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.8723,
-      "macro_movement": 0.8819,
-      "macro_coupling": 0.7613,
-      "macro_space": 0.9227
-    },
-    "ORGANON": {
-      "macro_character": 0.8991,
-      "macro_movement": 0.8984,
-      "macro_coupling": 0.7636,
-      "macro_space": 0.8622
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OVERDUB",
-    "target": "ORGANON",
-    "amount": 0.6665
+    "amount": 0.6665,
+    "source": "Overdub",
+    "target": "Organon",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.6877,
     "brightness": 0.9517,
-    "warmth": 0.9374,
-    "movement": 0.9091,
     "density": 0.3792,
+    "movement": 0.9091,
     "space": 0.9412,
-    "aggression": 0.6877
+    "warmth": 0.9374
   },
+  "engines": [
+    "Overdub",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8723,
-    "MOVEMENT": 0.8819,
     "COUPLING": 0.7613,
+    "MOVEMENT": 0.8819,
     "SPACE": 0.9227
   },
+  "mood": "Flux",
+  "name": "BRIGHT_WARM_KINETIC_VAST_FLX_2",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.8991,
+      "macro_coupling": 0.7636,
+      "macro_movement": 0.8984,
+      "macro_space": 0.8622
+    },
+    "Overdub": {
+      "macro_character": 0.8723,
+      "macro_coupling": 0.7613,
+      "macro_movement": 0.8819,
+      "macro_space": 0.9227
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "high-warmth",
     "high-movement",
     "high-space"
-  ]
+  ],
+  "version": "1.0"
 }

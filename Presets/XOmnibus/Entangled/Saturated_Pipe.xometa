@@ -1,48 +1,56 @@
 {
-  "name": "Saturated Pipe",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERDUB",
-    "ORGANON"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.89,
-      "macro_movement": 0.27,
-      "macro_coupling": 0.58,
-      "macro_space": 0.23
-    },
-    "ORGANON": {
-      "macro_character": 0.66,
-      "macro_movement": 0.22,
-      "macro_coupling": 0.56,
-      "macro_space": 0.3
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERDUB",
-    "target": "ORGANON",
-    "amount": 0.69
+    "amount": 0.69,
+    "source": "Overdub",
+    "target": "Organon",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.71,
     "brightness": 0.43,
-    "warmth": 0.88,
-    "movement": 0.34,
     "density": 0.79,
+    "movement": 0.34,
     "space": 0.3,
-    "aggression": 0.71
+    "warmth": 0.88
   },
+  "engines": [
+    "Overdub",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.78,
-    "MOVEMENT": 0.24,
     "COUPLING": 0.57,
+    "MOVEMENT": 0.24,
     "SPACE": 0.27
   },
+  "mood": "Entangled",
+  "name": "Saturated Pipe",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.66,
+      "macro_coupling": 0.56,
+      "macro_movement": 0.22,
+      "macro_space": 0.3
+    },
+    "Overdub": {
+      "macro_character": 0.89,
+      "macro_coupling": 0.58,
+      "macro_movement": 0.27,
+      "macro_space": 0.23
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-  ]
+  ],
+  "version": "1.0"
 }

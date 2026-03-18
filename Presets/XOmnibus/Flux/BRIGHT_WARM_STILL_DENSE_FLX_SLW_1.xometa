@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_WARM_STILL_DENSE_FLX_SLW_1",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OPAL",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.953,
-      "macro_movement": 0.062,
-      "macro_coupling": 0.776,
-      "macro_space": 0.524
-    },
-    "OBLONG": {
-      "macro_character": 0.958,
-      "macro_movement": 0.058,
-      "macro_coupling": 0.882,
-      "macro_space": 0.45
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OPAL",
-    "target": "OBLONG",
-    "amount": 0.852
+    "amount": 0.852,
+    "source": "Opal",
+    "target": "Oblong",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
+    "aggression": 0.565,
     "brightness": 0.893,
-    "warmth": 0.986,
-    "movement": 0.062,
     "density": 0.981,
+    "movement": 0.062,
     "space": 0.487,
-    "aggression": 0.565
+    "warmth": 0.986
   },
+  "engines": [
+    "Opal",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.773,
-    "MOVEMENT": 0.062,
     "COUPLING": 0.752,
+    "MOVEMENT": 0.062,
     "SPACE": 0.487
   },
+  "mood": "Flux",
+  "name": "BRIGHT_WARM_STILL_DENSE_FLX_SLW_1",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.958,
+      "macro_coupling": 0.882,
+      "macro_movement": 0.058,
+      "macro_space": 0.45
+    },
+    "Opal": {
+      "macro_character": 0.953,
+      "macro_coupling": 0.776,
+      "macro_movement": 0.062,
+      "macro_space": 0.524
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +54,6 @@
     "warm",
     "dense",
     "suspended-chaos"
-  ]
+  ],
+  "version": "1.0"
 }

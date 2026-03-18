@@ -1,14 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "DARK_HOT_VAST_VIOLENT_ENT_2",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.717,
+    "pairs": [
+      {
+        "amount": 0.717,
+        "source": "Outwit",
+        "target": "Origami",
+        "type": "HARMONIC_FOLD"
+      }
+    ],
+    "source": "Outwit",
+    "target": "Origami",
+    "type": "HARMONIC_FOLD"
+  },
+  "couplingIntensity": "Medium",
+  "description": "Dark Hot Vast Violent character entanglement — OUTWIT × ORIGAMI via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.9344,
+    "brightness": 0.0506,
+    "density": 0.5309,
+    "movement": 0.6184,
+    "space": 0.9659,
+    "warmth": 0.9545
+  },
   "engines": [
-    "OUTWIT",
-    "ORIGAMI"
+    "Outwit",
+    "Origami"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dark Hot Vast Violent character entanglement \u2014 OUTWIT \u00d7 ORIGAMI via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "CELL",
+    "MUTATE",
+    "EVOLVE",
+    "CHAOS"
+  ],
+  "macros": {
+    "CHARACTER": 0.5026,
+    "COUPLING": 0.717,
+    "MOVEMENT": 0.6184,
+    "SPACE": 0.9659
+  },
+  "mood": "Entangled",
+  "name": "DARK_HOT_VAST_VIOLENT_ENT_2",
+  "parameters": {
+    "Origami": {
+      "amp_attack": 0.1937,
+      "amp_release": 0.6872,
+      "coupling_level": 0.9583,
+      "density": 0.5339,
+      "drive": 0.7964,
+      "filter_cutoff": 0.2253,
+      "filter_resonance": 0.5385,
+      "macro_character": 0.7108,
+      "macro_coupling": 0.9061,
+      "macro_movement": 0.6035,
+      "macro_space": 0.9353,
+      "output_level": 0.8662,
+      "reverb_mix": 0.6872,
+      "reverb_size": 0.7733
+    },
+    "Outwit": {
+      "amp_attack": 0.1717,
+      "amp_release": 0.6677,
+      "coupling_level": 0.931,
+      "density": 0.5549,
+      "drive": 0.8114,
+      "filter_cutoff": 0.2265,
+      "filter_resonance": 0.5586,
+      "macro_character": 0.7107,
+      "macro_coupling": 0.9643,
+      "macro_movement": 0.6176,
+      "macro_space": 0.951,
+      "output_level": 0.8662,
+      "reverb_mix": 0.6778,
+      "reverb_size": 0.7533
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9344,
+    "brightness": 0.0506,
+    "density": 0.5309,
+    "movement": 0.6184,
+    "space": 0.9659,
+    "warmth": 0.9545
+  },
   "tags": [
     "entangled",
     "dark",
@@ -17,81 +93,5 @@
     "violent",
     "resonant"
   ],
-  "macroLabels": [
-    "CELL",
-    "MUTATE",
-    "EVOLVE",
-    "CHAOS"
-  ],
-  "couplingIntensity": "Medium",
-  "dna": {
-    "brightness": 0.0506,
-    "warmth": 0.9545,
-    "movement": 0.6184,
-    "density": 0.5309,
-    "space": 0.9659,
-    "aggression": 0.9344
-  },
-  "sonic_dna": {
-    "brightness": 0.0506,
-    "warmth": 0.9545,
-    "movement": 0.6184,
-    "density": 0.5309,
-    "space": 0.9659,
-    "aggression": 0.9344
-  },
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.7107,
-      "macro_movement": 0.6176,
-      "macro_coupling": 0.9643,
-      "macro_space": 0.951,
-      "filter_cutoff": 0.2265,
-      "filter_resonance": 0.5586,
-      "amp_attack": 0.1717,
-      "amp_release": 0.6677,
-      "reverb_mix": 0.6778,
-      "reverb_size": 0.7533,
-      "drive": 0.8114,
-      "density": 0.5549,
-      "output_level": 0.8662,
-      "coupling_level": 0.931
-    },
-    "ORIGAMI": {
-      "macro_character": 0.7108,
-      "macro_movement": 0.6035,
-      "macro_coupling": 0.9061,
-      "macro_space": 0.9353,
-      "filter_cutoff": 0.2253,
-      "filter_resonance": 0.5385,
-      "amp_attack": 0.1937,
-      "amp_release": 0.6872,
-      "reverb_mix": 0.6872,
-      "reverb_size": 0.7733,
-      "drive": 0.7964,
-      "density": 0.5339,
-      "output_level": 0.8662,
-      "coupling_level": 0.9583
-    }
-  },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OUTWIT",
-    "target": "ORIGAMI",
-    "amount": 0.717,
-    "pairs": [
-      {
-        "source": "OUTWIT",
-        "target": "ORIGAMI",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.717
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.5026,
-    "MOVEMENT": 0.6184,
-    "COUPLING": 0.717,
-    "SPACE": 0.9659
-  }
+  "version": "1.0.0"
 }

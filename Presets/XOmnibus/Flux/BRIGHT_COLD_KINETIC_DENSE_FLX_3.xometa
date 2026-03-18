@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_COLD_KINETIC_DENSE_FLX_3",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OCEANIC",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OCEANIC": {
-      "macro_character": 0.8257,
-      "macro_movement": 0.9528,
-      "macro_coupling": 0.6636,
-      "macro_space": 0.6151
-    },
-    "OBLONG": {
-      "macro_character": 0.8977,
-      "macro_movement": 0.9188,
-      "macro_coupling": 0.6498,
-      "macro_space": 0.4155
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OCEANIC",
-    "target": "OBLONG",
-    "amount": 0.7554
+    "amount": 0.7554,
+    "source": "Oceanic",
+    "target": "Oblong",
+    "type": "SPECTRAL_MORPH"
   },
   "dna": {
+    "aggression": 0.6145,
     "brightness": 0.922,
-    "warmth": 0.0359,
-    "movement": 0.9733,
     "density": 0.8602,
+    "movement": 0.9733,
     "space": 0.5344,
-    "aggression": 0.6145
+    "warmth": 0.0359
   },
+  "engines": [
+    "Oceanic",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8257,
-    "MOVEMENT": 0.9528,
     "COUPLING": 0.6636,
+    "MOVEMENT": 0.9528,
     "SPACE": 0.6151
   },
+  "mood": "Flux",
+  "name": "BRIGHT_COLD_KINETIC_DENSE_FLX_3",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.8977,
+      "macro_coupling": 0.6498,
+      "macro_movement": 0.9188,
+      "macro_space": 0.4155
+    },
+    "Oceanic": {
+      "macro_character": 0.8257,
+      "macro_coupling": 0.6636,
+      "macro_movement": 0.9528,
+      "macro_space": 0.6151
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "low-warmth",
     "high-movement",
     "high-density"
-  ]
+  ],
+  "version": "1.0"
 }

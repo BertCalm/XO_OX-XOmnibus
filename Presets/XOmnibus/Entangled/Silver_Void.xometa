@@ -1,50 +1,58 @@
 {
-  "name": "Silver Void",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORACLE",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.08,
-      "macro_movement": 0.18,
-      "macro_coupling": 0.85,
-      "macro_space": 0.96
-    },
-    "OBSCURA": {
-      "macro_character": 0.05,
-      "macro_movement": 0.13,
-      "macro_coupling": 0.9,
-      "macro_space": 0.99
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OBSCURA",
-    "target": "ORACLE",
-    "amount": 0.85
+    "amount": 0.85,
+    "source": "Obscura",
+    "target": "Oracle",
+    "type": "ENVELOPE_LINK"
   },
+  "description": "Obscura's decay envelope silences Oracle — what the oracle foretold was silence.",
   "dna": {
+    "aggression": 0.03,
     "brightness": 0.05,
-    "warmth": 0.03,
-    "movement": 0.0,
     "density": 0.0,
+    "movement": 0.0,
     "space": 0.688,
-    "aggression": 0.03
+    "warmth": 0.03
   },
+  "engines": [
+    "Oracle",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.08,
-    "MOVEMENT": 0.18,
     "COUPLING": 0.85,
+    "MOVEMENT": 0.18,
     "SPACE": 0.96
   },
+  "mood": "Entangled",
+  "name": "Silver Void",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.05,
+      "macro_coupling": 0.9,
+      "macro_movement": 0.13,
+      "macro_space": 0.99
+    },
+    "Oracle": {
+      "macro_character": 0.08,
+      "macro_coupling": 0.85,
+      "macro_movement": 0.18,
+      "macro_space": 0.96
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "silver",
     "void"
   ],
-  "description": "Obscura's decay envelope silences Oracle \u2014 what the oracle foretold was silence."
+  "version": "1.0"
 }

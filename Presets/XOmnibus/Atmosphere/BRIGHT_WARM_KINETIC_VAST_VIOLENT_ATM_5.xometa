@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_VAST_VIOLENT_ATM_5",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.619,
+    "source": "Oblique",
+    "target": "Origami",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.9863,
+    "brightness": 0.9567,
+    "density": 0.3617,
+    "movement": 0.9486,
+    "space": 0.9263,
+    "warmth": 0.9192
+  },
   "engines": [
-    "OBLIQUE",
-    "ORIGAMI"
+    "Oblique",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.939,
+    "COUPLING": 0.3785,
+    "MOVEMENT": 0.9473,
+    "SPACE": 0.9269
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT_WARM_KINETIC_VAST_VIOLENT_ATM_5",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.9128,
-      "macro_movement": 0.9383,
       "macro_coupling": 0.3722,
+      "macro_movement": 0.9383,
       "macro_space": 0.9283
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.9652,
-      "macro_movement": 0.9562,
       "macro_coupling": 0.3849,
+      "macro_movement": 0.9562,
       "macro_space": 0.9256
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OBLIQUE",
-    "target": "ORIGAMI",
-    "amount": 0.619
-  },
-  "dna": {
-    "brightness": 0.9567,
-    "warmth": 0.9192,
-    "movement": 0.9486,
-    "density": 0.3617,
-    "space": 0.9263,
-    "aggression": 0.9863
-  },
-  "macros": {
-    "CHARACTER": 0.939,
-    "MOVEMENT": 0.9473,
-    "COUPLING": 0.3785,
-    "SPACE": 0.9269
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
@@ -47,5 +54,6 @@
     "kinetic",
     "vast",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

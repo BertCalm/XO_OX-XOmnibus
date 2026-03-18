@@ -1,50 +1,58 @@
 {
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FAM_AGG_1",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OTTONI",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.87,
-      "macro_movement": 0.429,
-      "macro_coupling": 0.565,
-      "macro_space": 0.823
-    },
-    "ODDFELIX": {
-      "macro_character": 0.879,
-      "macro_movement": 0.381,
-      "macro_coupling": 0.542,
-      "macro_space": 0.786
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OTTONI",
-    "target": "ODDFELIX",
-    "amount": 0.853
+    "amount": 0.853,
+    "source": "Ottoni",
+    "target": "OddfeliX",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.883,
     "brightness": 0.411,
-    "warmth": 0.988,
-    "movement": 0.989,
     "density": 0.935,
+    "movement": 0.989,
     "space": 0.619,
-    "aggression": 0.883
+    "warmth": 0.988
   },
+  "engines": [
+    "Ottoni",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.87,
-    "MOVEMENT": 0.429,
     "COUPLING": 0.565,
+    "MOVEMENT": 0.429,
     "SPACE": 0.823
   },
+  "mood": "Family",
+  "name": "HOT_KINETIC_DENSE_VIOLENT_FAM_AGG_1",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.879,
+      "macro_coupling": 0.542,
+      "macro_movement": 0.381,
+      "macro_space": 0.786
+    },
+    "Ottoni": {
+      "macro_character": 0.87,
+      "macro_coupling": 0.565,
+      "macro_movement": 0.429,
+      "macro_space": 0.823
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "hot",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

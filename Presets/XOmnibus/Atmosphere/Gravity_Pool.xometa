@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Gravity Pool",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORCA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Thick, heavy environment. Maximum density, warm compression. ORCA dense register.",
+  "dna": {
+    "aggression": 0.306,
+    "brightness": 0.336,
+    "density": 0.854,
+    "movement": 0.206,
+    "space": 0.477,
+    "warmth": 0.653
+  },
+  "engines": [
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.396,
+    "COUPLING": 0.32,
+    "MOVEMENT": 0.157,
+    "SPACE": 0.563
+  },
+  "mood": "Atmosphere",
+  "name": "Gravity Pool",
+  "parameters": {
+    "Orca": {
+      "character": 0.396,
+      "coupling": 0.32,
+      "movement": 0.157,
+      "space": 0.563
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dense",
@@ -16,36 +47,5 @@
     "warm",
     "thick"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.336,
-    "warmth": 0.653,
-    "movement": 0.206,
-    "density": 0.854,
-    "space": 0.477,
-    "aggression": 0.306
-  },
-  "parameters": {
-    "ORCA": {
-      "character": 0.396,
-      "movement": 0.157,
-      "coupling": 0.32,
-      "space": 0.563
-    }
-  },
-  "macros": {
-    "CHARACTER": 0.396,
-    "MOVEMENT": 0.157,
-    "COUPLING": 0.32,
-    "SPACE": 0.563
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

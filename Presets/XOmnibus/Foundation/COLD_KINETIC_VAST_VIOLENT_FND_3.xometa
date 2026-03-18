@@ -1,45 +1,52 @@
 {
-  "name": "COLD_KINETIC_VAST_VIOLENT_FND_3",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.652,
+    "source": "Obsidian",
+    "target": "Origami",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.958,
+    "brightness": 0.344,
+    "density": 0.584,
+    "movement": 0.947,
+    "space": 0.967,
+    "warmth": 0.114
+  },
   "engines": [
-    "OBSIDIAN",
-    "ORIGAMI"
+    "Obsidian",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.142,
+    "COUPLING": 0.619,
+    "MOVEMENT": 0.333,
+    "SPACE": 0.706
+  },
+  "mood": "Foundation",
+  "name": "COLD_KINETIC_VAST_VIOLENT_FND_3",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.845,
-      "macro_movement": 0.713,
       "macro_coupling": 0.781,
+      "macro_movement": 0.713,
       "macro_space": 0.874
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.543,
-      "macro_movement": 0.521,
       "macro_coupling": 0.246,
+      "macro_movement": 0.521,
       "macro_space": 0.413
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OBSIDIAN",
-    "target": "ORIGAMI",
-    "amount": 0.652
-  },
-  "dna": {
-    "brightness": 0.344,
-    "warmth": 0.114,
-    "movement": 0.947,
-    "density": 0.584,
-    "space": 0.967,
-    "aggression": 0.958
-  },
-  "macros": {
-    "CHARACTER": 0.142,
-    "MOVEMENT": 0.333,
-    "COUPLING": 0.619,
-    "SPACE": 0.706
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -49,5 +56,6 @@
     "violent",
     "aggressive",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

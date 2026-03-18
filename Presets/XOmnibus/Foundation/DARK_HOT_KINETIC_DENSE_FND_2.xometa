@@ -1,45 +1,52 @@
 {
-  "name": "DARK_HOT_KINETIC_DENSE_FND_2",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.59,
+    "source": "Ouroboros",
+    "target": "Overworld",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.579,
+    "brightness": 0.116,
+    "density": 0.944,
+    "movement": 0.979,
+    "space": 0.68,
+    "warmth": 0.913
+  },
   "engines": [
-    "OUROBOROS",
-    "OVERWORLD"
+    "Ouroboros",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.329,
+    "COUPLING": 0.731,
+    "MOVEMENT": 0.486,
+    "SPACE": 0.37
+  },
+  "mood": "Foundation",
+  "name": "DARK_HOT_KINETIC_DENSE_FND_2",
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.104,
-      "macro_movement": 0.403,
       "macro_coupling": 0.68,
+      "macro_movement": 0.403,
       "macro_space": 0.317
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.438,
-      "macro_movement": 0.395,
       "macro_coupling": 0.891,
+      "macro_movement": 0.395,
       "macro_space": 0.776
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OUROBOROS",
-    "target": "OVERWORLD",
-    "amount": 0.59
-  },
-  "dna": {
-    "brightness": 0.116,
-    "warmth": 0.913,
-    "movement": 0.979,
-    "density": 0.944,
-    "space": 0.68,
-    "aggression": 0.579
-  },
-  "macros": {
-    "CHARACTER": 0.329,
-    "MOVEMENT": 0.486,
-    "COUPLING": 0.731,
-    "SPACE": 0.37
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -47,5 +54,6 @@
     "hot",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

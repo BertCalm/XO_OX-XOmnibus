@@ -1,13 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Commune Refraction",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Communal resonance bending through shared medium — ohmic refraction, warm and wide.",
+  "dna": {
+    "aggression": 0.18,
+    "brightness": 0.72,
+    "density": 0.45,
+    "movement": 0.76,
+    "space": 0.78,
+    "warmth": 0.42
+  },
   "engines": [
     "Ohm"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Communal resonance bending through shared medium — ohmic refraction, warm and wide.",
+  "legacy": {
+    "sourceCategory": "Prism",
+    "sourceInstrument": "Ohm",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Commune Refraction",
+  "parameters": {
+    "Ohm": {
+      "ohm_ampAttack": 0.019,
+      "ohm_ampDecay": 1.124,
+      "ohm_ampRelease": 2.17,
+      "ohm_ampSustain": 0.716,
+      "ohm_communeDepth": 0.418,
+      "ohm_filterCutoff": 13800.0,
+      "ohm_filterReso": 0.125,
+      "ohm_harmonicContent": 0.468,
+      "ohm_level": 0.78,
+      "ohm_macroCharacter": 0.562,
+      "ohm_macroCoupling": 0.0,
+      "ohm_macroMovement": 0.76,
+      "ohm_macroSpace": 0.78,
+      "ohm_meddlingRate": 3.72,
+      "ohm_resonantPeak": 0.54,
+      "ohm_reverbMix": 0.562,
+      "ohm_stereoWidth": 0.812
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "refraction",
     "commune",
@@ -15,49 +58,6 @@
     "warm",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": "Ohm",
-    "sourceCategory": "Prism",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Ohm": {
-      "ohm_resonantPeak": 0.54,
-      "ohm_harmonicContent": 0.468,
-      "ohm_communeDepth": 0.418,
-      "ohm_meddlingRate": 3.72,
-      "ohm_filterCutoff": 13800.0,
-      "ohm_filterReso": 0.125,
-      "ohm_reverbMix": 0.562,
-      "ohm_ampAttack": 0.019,
-      "ohm_ampDecay": 1.124,
-      "ohm_ampSustain": 0.716,
-      "ohm_ampRelease": 2.17,
-      "ohm_stereoWidth": 0.812,
-      "ohm_level": 0.78,
-      "ohm_macroCharacter": 0.562,
-      "ohm_macroMovement": 0.76,
-      "ohm_macroCoupling": 0.0,
-      "ohm_macroSpace": 0.78
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.72,
-    "warmth": 0.42,
-    "movement": 0.76,
-    "density": 0.45,
-    "space": 0.78,
-    "aggression": 0.18
-  }
+  "version": "1.0.0"
 }

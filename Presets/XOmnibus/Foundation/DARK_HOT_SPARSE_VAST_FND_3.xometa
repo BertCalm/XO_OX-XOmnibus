@@ -1,45 +1,52 @@
 {
-  "name": "DARK_HOT_SPARSE_VAST_FND_3",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ORACLE",
-    "OBESE"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.152,
-      "macro_movement": 0.478,
-      "macro_coupling": 0.477,
-      "macro_space": 0.107
-    },
-    "OBESE": {
-      "macro_character": 0.494,
-      "macro_movement": 0.468,
-      "macro_coupling": 0.743,
-      "macro_space": 0.472
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORACLE",
-    "target": "OBESE",
-    "amount": 0.622
+    "amount": 0.622,
+    "source": "Oracle",
+    "target": "Obese",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.568,
     "brightness": 0.102,
-    "warmth": 0.886,
-    "movement": 0.664,
     "density": 0.05,
+    "movement": 0.664,
     "space": 0.902,
-    "aggression": 0.568
+    "warmth": 0.886
   },
+  "engines": [
+    "Oracle",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.834,
-    "MOVEMENT": 0.349,
     "COUPLING": 0.525,
+    "MOVEMENT": 0.349,
     "SPACE": 0.363
   },
+  "mood": "Foundation",
+  "name": "DARK_HOT_SPARSE_VAST_FND_3",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.494,
+      "macro_coupling": 0.743,
+      "macro_movement": 0.468,
+      "macro_space": 0.472
+    },
+    "Oracle": {
+      "macro_character": 0.152,
+      "macro_coupling": 0.477,
+      "macro_movement": 0.478,
+      "macro_space": 0.107
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -48,5 +55,6 @@
     "sparse",
     "vast",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Prophecy Pod",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.79,
+        "engineA": "Oracle",
+        "engineB": "Orca",
+        "type": "CHAOS_INJECTION"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Oracle predicts the breach. Prophetic sonar couples with ORCA deep strike.",
+  "dna": {
+    "aggression": 0.537,
+    "brightness": 0.412,
+    "density": 0.718,
+    "movement": 0.7,
+    "space": 0.577,
+    "warmth": 0.49
+  },
   "engines": [
     "Oracle",
     "Orca"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Oracle predicts the breach. Prophetic sonar couples with ORCA deep strike.",
-  "tags": [
-    "oracle",
-    "orca",
-    "prophecy",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Prophecy Pod",
   "parameters": {
     "Oracle": {
-      "oracle_brightness": 0.356,
-      "oracle_warmth": 0.485,
-      "oracle_movement": 0.775,
-      "oracle_density": 0.703,
-      "oracle_space": 0.629,
       "oracle_aggression": 0.335,
-      "oracle_level": 0.78
+      "oracle_brightness": 0.356,
+      "oracle_density": 0.703,
+      "oracle_level": 0.78,
+      "oracle_movement": 0.775,
+      "oracle_space": 0.629,
+      "oracle_warmth": 0.485
     },
     "Orca": {
-      "orca_brightness": 0.453,
-      "orca_warmth": 0.381,
-      "orca_movement": 0.59,
-      "orca_density": 0.71,
-      "orca_space": 0.536,
       "orca_aggression": 0.764,
-      "orca_level": 0.708
+      "orca_brightness": 0.453,
+      "orca_density": 0.71,
+      "orca_level": 0.708,
+      "orca_movement": 0.59,
+      "orca_space": 0.536,
+      "orca_warmth": 0.381
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Orca",
-        "type": "CHAOS_INJECTION",
-        "amount": 0.79
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.412,
-    "warmth": 0.49,
-    "movement": 0.7,
-    "density": 0.718,
-    "space": 0.577,
-    "aggression": 0.537
-  }
+  "tags": [
+    "oracle",
+    "orca",
+    "prophecy",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

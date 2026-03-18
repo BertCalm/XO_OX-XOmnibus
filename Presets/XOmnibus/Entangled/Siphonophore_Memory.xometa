@@ -1,54 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Siphonophore Memory",
-  "mood": "Entangled",
-  "engines": [
-    "ORPHICA",
-    "ORGANON"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Envelope linking: ORPHICA's long decay imprints on ORGANON's long-term cellular pattern.",
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.66,
-      "macro_movement": 0.52,
-      "macro_coupling": 0.66,
-      "macro_space": 0.73
-    },
-    "ORGANON": {
-      "macro_character": 0.5,
-      "macro_movement": 0.6,
-      "macro_coupling": 0.56,
-      "macro_space": 0.6
-    }
-  },
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ORPHICA",
-    "target": "ORGANON",
     "amount": 0.66,
-    "intensity": "Moderate"
+    "intensity": "Moderate",
+    "source": "Orphica",
+    "target": "Organon",
+    "type": "ENVELOPE_LINK"
   },
+  "description": "Envelope linking: ORPHICA's long decay imprints on ORGANON's long-term cellular pattern.",
   "dna": {
+    "aggression": 0.07,
     "brightness": 1.0,
-    "warmth": 0.4,
-    "movement": 0.52,
     "density": 0.233,
+    "movement": 0.52,
     "space": 1.0,
-    "aggression": 0.07
+    "warmth": 0.4
   },
+  "engines": [
+    "Orphica",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.66,
-    "MOVEMENT": 0.52,
     "COUPLING": 0.66,
+    "MOVEMENT": 0.52,
     "SPACE": 0.73
   },
+  "mood": "Entangled",
+  "name": "Siphonophore Memory",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.5,
+      "macro_coupling": 0.56,
+      "macro_movement": 0.6,
+      "macro_space": 0.6
+    },
+    "Orphica": {
+      "macro_character": 0.66,
+      "macro_coupling": 0.66,
+      "macro_movement": 0.52,
+      "macro_space": 0.73
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "orphica",
     "organon",
     "envelope",
     "siphonophore"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT HOT KINETIC DENSE 2",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.9181,
-    "warmth": 0.8946,
-    "movement": 0.9539,
-    "density": 0.9297,
-    "aggression": 0.5436,
-    "space": 0.4425
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Extreme",
+  "couplingType": "SURGE",
+  "description": "Ultra-diverse Entangled preset — bright hot kinetic dense. Designed for SURGE coupling with XOnset.",
   "dna": {
-    "brightness": 0.9181,
-    "warmth": 0.8946,
-    "movement": 0.9539,
-    "density": 0.9297,
     "aggression": 0.5436,
-    "space": 0.4425
+    "brightness": 0.9181,
+    "density": 0.9297,
+    "movement": 0.9539,
+    "space": 0.4425,
+    "warmth": 0.8946
   },
   "engines": [
-    "XOnset"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 bright hot kinetic dense. Designed for SURGE coupling with XOnset.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "surge",
-    "onset"
+    "Onset"
   ],
   "macroLabels": [
     "DRIFT",
@@ -36,15 +23,28 @@
     "SHIMMER",
     "BURN"
   ],
-  "couplingType": "SURGE",
-  "couplingIntensity": "Extreme",
+  "mood": "Entangled",
+  "name": "BRIGHT HOT KINETIC DENSE 2",
   "parameters": {
-    "XOnset": {
-      "couplingLevel": 0.57,
-      "couplingBus": 1
+    "Onset": {
+      "couplingBus": 1,
+      "couplingLevel": 0.57
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.5436,
+    "brightness": 0.9181,
+    "density": 0.9297,
+    "movement": 0.9539,
+    "space": 0.4425,
+    "warmth": 0.8946
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "surge",
+    "onset"
+  ],
+  "version": "1.0.0"
 }

@@ -1,33 +1,41 @@
 {
-  "name": "Resonant Brass Void",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.82,
+    "source": "Ottoni",
+    "target": "Organon",
+    "type": "PHASE_LOCK"
+  },
+  "description": "Three brass voices locked into Organon's vast resonant void — warm and almost empty.",
   "engines": [
-    "OTTONI",
-    "ORGANON"
+    "Ottoni",
+    "Organon"
   ],
-  "mood": "Entangled",
-  "strategy": "Warm Sparse",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.6,
-    "MOVEMENT": 0.3,
     "COUPLING": 0.88,
+    "MOVEMENT": 0.3,
     "SPACE": 0.9
   },
-  "sonic_dna": {
-    "brightness": 0.38,
-    "warmth": 0.95,
-    "movement": 0.28,
-    "density": 0.07,
-    "space": 0.88,
-    "aggression": 0.08
-  },
+  "mood": "Entangled",
+  "name": "Resonant Brass Void",
   "parameters": {},
-  "coupling": {
-    "type": "PHASE_LOCK",
-    "source": "OTTONI",
-    "target": "ORGANON",
-    "amount": 0.82
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.08,
+    "brightness": 0.38,
+    "density": 0.07,
+    "movement": 0.28,
+    "space": 0.88,
+    "warmth": 0.95
   },
+  "strategy": "Warm Sparse",
   "tags": [
     "entangled",
     "warm",
@@ -35,5 +43,5 @@
     "meditative",
     "brass"
   ],
-  "description": "Three brass voices locked into Organon's vast resonant void \u2014 warm and almost empty."
+  "version": "1.0"
 }

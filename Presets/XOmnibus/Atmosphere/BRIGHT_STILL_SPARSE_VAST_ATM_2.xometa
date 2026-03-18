@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_STILL_SPARSE_VAST_ATM_2",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.829,
+    "source": "Oblique",
+    "target": "Organon",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.331,
+    "brightness": 0.956,
+    "density": 0.031,
+    "movement": 0.103,
+    "space": 0.94,
+    "warmth": 0.484
+  },
   "engines": [
-    "OBLIQUE",
-    "ORGANON"
+    "Oblique",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.517,
+    "COUPLING": 0.629,
+    "MOVEMENT": 0.193,
+    "SPACE": 0.887
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT_STILL_SPARSE_VAST_ATM_2",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.517,
-      "macro_movement": 0.193,
       "macro_coupling": 0.629,
+      "macro_movement": 0.193,
       "macro_space": 0.887
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.777,
-      "macro_movement": 0.089,
       "macro_coupling": 0.833,
+      "macro_movement": 0.089,
       "macro_space": 0.861
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBLIQUE",
-    "target": "ORGANON",
-    "amount": 0.829
-  },
-  "dna": {
-    "brightness": 0.956,
-    "warmth": 0.484,
-    "movement": 0.103,
-    "density": 0.031,
-    "space": 0.94,
-    "aggression": 0.331
-  },
-  "macros": {
-    "CHARACTER": 0.517,
-    "MOVEMENT": 0.193,
-    "COUPLING": 0.629,
-    "SPACE": 0.887
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "still",
     "sparse",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

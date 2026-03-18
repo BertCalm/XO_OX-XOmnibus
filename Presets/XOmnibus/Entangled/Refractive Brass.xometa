@@ -1,31 +1,39 @@
 {
-  "name": "Refractive Brass",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6,
+    "source": "Ottoni",
+    "target": "Optic",
+    "type": "SPECTRAL_REFRACTION"
+  },
+  "description": "Dense brass chord refracted through optical prism — harmonic partials separated",
   "engines": [
-    "OTTONI",
-    "OPTIC"
+    "Ottoni",
+    "Optic"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.65,
-    "MOVEMENT": 0.45,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.45,
     "SPACE": 0.55
   },
-  "sonic_dna": {
-    "brightness": 0.73,
-    "warmth": 0.5,
-    "movement": 0.56,
-    "density": 0.6,
-    "space": 0.52,
-    "aggression": 0.52
-  },
+  "mood": "Entangled",
+  "name": "Refractive Brass",
   "parameters": {},
-  "coupling": {
-    "type": "SPECTRAL_REFRACTION",
-    "source": "OTTONI",
-    "target": "OPTIC",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.52,
+    "brightness": 0.73,
+    "density": 0.6,
+    "movement": 0.56,
+    "space": 0.52,
+    "warmth": 0.5
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "optic",
     "triple"
   ],
-  "description": "Dense brass chord refracted through optical prism \u2014 harmonic partials separated"
+  "version": "1.0"
 }

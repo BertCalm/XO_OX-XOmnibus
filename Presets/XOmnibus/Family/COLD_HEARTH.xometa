@@ -1,48 +1,56 @@
 {
-  "name": "COLD HEARTH",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ORPHICA",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.067,
-      "macro_movement": 0.031,
-      "macro_coupling": 0.33,
-      "macro_space": 0.514
-    },
-    "ORBITAL": {
-      "macro_character": 0.278,
-      "macro_movement": 0.485,
-      "macro_coupling": 0.539,
-      "macro_space": 0.723
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_COUPLE",
-    "source": "ORPHICA",
-    "target": "ORBITAL",
-    "amount": 0.829
+    "amount": 0.829,
+    "source": "Orphica",
+    "target": "Orbital",
+    "type": "FILTER_COUPLE"
   },
   "dna": {
+    "aggression": 0.22,
     "brightness": 0.859,
-    "warmth": 0.042,
-    "movement": 0.338,
     "density": 0.588,
+    "movement": 0.338,
     "space": 0.23,
-    "aggression": 0.22
+    "warmth": 0.042
   },
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.576,
-    "MOVEMENT": 0.243,
     "COUPLING": 0.473,
+    "MOVEMENT": 0.243,
     "SPACE": 0.407
   },
+  "mood": "Family",
+  "name": "COLD HEARTH",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.278,
+      "macro_coupling": 0.539,
+      "macro_movement": 0.485,
+      "macro_space": 0.723
+    },
+    "Orphica": {
+      "macro_character": 0.067,
+      "macro_coupling": 0.33,
+      "macro_movement": 0.031,
+      "macro_space": 0.514
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "cold",
     "xlow-warmth"
-  ]
+  ],
+  "version": "1.0"
 }

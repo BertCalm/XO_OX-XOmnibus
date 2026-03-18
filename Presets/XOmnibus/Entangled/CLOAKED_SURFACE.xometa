@@ -1,48 +1,56 @@
 {
-  "name": "CLOAKED SURFACE",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OTTONI",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.057,
-      "macro_movement": 0.104,
-      "macro_coupling": 0.795,
-      "macro_space": 0.776
-    },
-    "OBLONG": {
-      "macro_character": 0.908,
-      "macro_movement": 0.11,
-      "macro_coupling": 0.68,
-      "macro_space": 0.844
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OTTONI",
-    "target": "OBLONG",
-    "amount": 0.393
+    "amount": 0.393,
+    "source": "Ottoni",
+    "target": "Oblong",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.062,
     "brightness": 0.328,
-    "warmth": 0.611,
-    "movement": 0.107,
     "density": 0.471,
+    "movement": 0.107,
     "space": 0.578,
-    "aggression": 0.062
+    "warmth": 0.611
   },
+  "engines": [
+    "Ottoni",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.621,
-    "MOVEMENT": 0.107,
     "COUPLING": 0.672,
+    "MOVEMENT": 0.107,
     "SPACE": 0.155
   },
+  "mood": "Entangled",
+  "name": "CLOAKED SURFACE",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.908,
+      "macro_coupling": 0.68,
+      "macro_movement": 0.11,
+      "macro_space": 0.844
+    },
+    "Ottoni": {
+      "macro_character": 0.057,
+      "macro_coupling": 0.795,
+      "macro_movement": 0.104,
+      "macro_space": 0.776
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "cloaked"
-  ]
+  ],
+  "version": "1.0"
 }

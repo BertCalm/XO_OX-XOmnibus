@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Arctic Current",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.829,
+        "engineA": "Owlfish",
+        "engineB": "Orphica",
+        "type": "CHAOS_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "aggression": 0.265,
+    "brightness": 0.505,
+    "density": 0.495,
+    "movement": 0.605,
+    "space": 1.0,
+    "warmth": 0.5
+  },
   "engines": [
-    "ORPHICA",
-    "OWLFISH"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "orphica",
-    "owlfish"
+    "Orphica",
+    "Owlfish"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.502,
-    "MOVEMENT": 0.503,
     "COUPLING": 0.565,
+    "MOVEMENT": 0.503,
     "SPACE": 0.901
   },
-  "couplingIntensity": "Strong",
-  "dna": {
-    "brightness": 0.505,
-    "warmth": 0.5,
-    "movement": 0.605,
-    "density": 0.495,
-    "space": 1.0,
-    "aggression": 0.265
-  },
-  "sonic_dna": {
-    "brightness": 0.505,
-    "warmth": 0.5,
-    "movement": 0.605,
-    "density": 0.495,
-    "space": 1.0,
-    "aggression": 0.265
-  },
+  "mood": "Entangled",
+  "name": "Arctic Current",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.378,
-      "macro_movement": 0.731,
       "macro_coupling": 0.543,
+      "macro_movement": 0.731,
       "macro_space": 0.437
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.305,
-      "macro_movement": 0.676,
       "macro_coupling": 0.665,
+      "macro_movement": 0.676,
       "macro_space": 0.374
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OWLFISH",
-        "engineB": "ORPHICA",
-        "type": "CHAOS_SYNC",
-        "amount": 0.829
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.265,
+    "brightness": 0.505,
+    "density": 0.495,
+    "movement": 0.605,
+    "space": 1.0,
+    "warmth": 0.5
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "orphica",
+    "owlfish"
+  ],
+  "version": "1.0.0"
 }

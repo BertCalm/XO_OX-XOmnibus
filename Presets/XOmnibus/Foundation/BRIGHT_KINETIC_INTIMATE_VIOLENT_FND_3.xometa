@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_FND_3",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.479,
+    "source": "Origami",
+    "target": "Overdub",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.932,
+    "brightness": 0.958,
+    "density": 0.537,
+    "movement": 0.902,
+    "space": 0.042,
+    "warmth": 0.616
+  },
   "engines": [
-    "ORIGAMI",
-    "OVERDUB"
+    "Origami",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.712,
+    "COUPLING": 0.826,
+    "MOVEMENT": 0.525,
+    "SPACE": 0.114
+  },
+  "mood": "Foundation",
+  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_FND_3",
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.491,
-      "macro_movement": 0.632,
       "macro_coupling": 0.748,
+      "macro_movement": 0.632,
       "macro_space": 0.243
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.15,
-      "macro_movement": 0.495,
       "macro_coupling": 0.851,
+      "macro_movement": 0.495,
       "macro_space": 0.275
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ORIGAMI",
-    "target": "OVERDUB",
-    "amount": 0.479
-  },
-  "dna": {
-    "brightness": 0.958,
-    "warmth": 0.616,
-    "movement": 0.902,
-    "density": 0.537,
-    "space": 0.042,
-    "aggression": 0.932
-  },
-  "macros": {
-    "CHARACTER": 0.712,
-    "MOVEMENT": 0.525,
-    "COUPLING": 0.826,
-    "SPACE": 0.114
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -48,5 +55,6 @@
     "intimate",
     "violent",
     "aggressive"
-  ]
+  ],
+  "version": "1.0"
 }

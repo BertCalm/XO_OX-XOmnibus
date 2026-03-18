@@ -1,14 +1,37 @@
 {
-  "schema_version": 1,
-  "name": "Paper and Neon",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Light",
+  "created": "2026-03-16",
+  "description": "ORIGAMI paper precision + OddfeliX neon shimmer — the fold that catches the light. Geometric quiet beneath digital sparkle.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.65,
+    "density": 0.4,
+    "movement": 0.48,
+    "space": 0.65,
+    "warmth": 0.55
+  },
   "engines": [
-    "ORIGAMI",
+    "Origami",
     "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ORIGAMI paper precision + OddfeliX neon shimmer \u2014 the fold that catches the light. Geometric quiet beneath digital sparkle.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "FOLD",
+    "TENSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Paper and Neon",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "reunion",
@@ -19,29 +42,6 @@
     "contrast",
     "batch3-reunion"
   ],
-  "macroLabels": [
-    "FOLD",
-    "TENSION",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Light",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.65,
-    "warmth": 0.55,
-    "movement": 0.48,
-    "density": 0.4,
-    "space": 0.65,
-    "aggression": 0.15
-  }
+  "version": "1.0.0"
 }

@@ -1,34 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Obsidian Pad",
-  "mood": "Foundation",
-  "sonic_dna": {
-    "brightness": 0.0879,
-    "warmth": 0.7156,
-    "movement": 0.3988,
-    "density": 0.7546,
-    "space": 0.5585,
-    "aggression": 0.2443
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Dense granular darkness, no brightness artifacts",
   "dna": {
+    "aggression": 0.2443,
     "brightness": 0.0879,
-    "warmth": 0.7156,
-    "movement": 0.3988,
     "density": 0.7546,
+    "movement": 0.3988,
     "space": 0.5585,
-    "aggression": 0.2443
+    "warmth": 0.7156
   },
   "engines": [
-    "OPAL"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dense granular darkness, no brightness artifacts",
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme",
-    "anchor"
+    "Opal"
   ],
   "macroLabels": [
     "GRAIN",
@@ -37,24 +23,38 @@
     "SPACE"
   ],
   "macros": {
+    "DENSITY": 0.3595,
     "GRAIN": 0.1199,
     "SCATTER": 0.2321,
-    "DENSITY": 0.3595,
     "SPACE": 0.6582
   },
-  "couplingIntensity": "None",
+  "mood": "Foundation",
+  "name": "Obsidian Pad",
   "parameters": {
-    "OPAL": {
+    "Opal": {
+      "opal_couplingBus": 0,
+      "opal_couplingLevel": 0.5,
+      "opal_macro_density": 0.3595,
       "opal_macro_grain": 0.1199,
       "opal_macro_scatter": 0.2321,
-      "opal_macro_density": 0.3595,
       "opal_macro_space": 0.6582,
-      "opal_outputLevel": 0.85,
-      "opal_couplingLevel": 0.5,
-      "opal_couplingBus": 0
+      "opal_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2443,
+    "brightness": 0.0879,
+    "density": 0.7546,
+    "movement": 0.3988,
+    "space": 0.5585,
+    "warmth": 0.7156
+  },
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

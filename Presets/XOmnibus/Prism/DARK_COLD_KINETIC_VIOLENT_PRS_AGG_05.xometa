@@ -1,45 +1,52 @@
 {
-  "name": "DARK COLD KINETIC VIOLENT PRS AGG 5",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OHM",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "OHM": {
-      "macro_character": 0.049,
-      "macro_movement": 0.878,
-      "macro_coupling": 0.921,
-      "macro_space": 0.588
-    },
-    "OBLIQUE": {
-      "macro_character": 0.049,
-      "macro_movement": 0.821,
-      "macro_coupling": 0.982,
-      "macro_space": 0.586
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OHM",
-    "target": "OBLIQUE",
-    "amount": 0.89
+    "amount": 0.89,
+    "source": "Ohm",
+    "target": "Oblique",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.986,
     "brightness": 0.052,
-    "warmth": 0.04,
-    "movement": 0.886,
     "density": 0.557,
+    "movement": 0.886,
     "space": 0.592,
-    "aggression": 0.986
+    "warmth": 0.04
   },
+  "engines": [
+    "Ohm",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.049,
-    "MOVEMENT": 0.849,
     "COUPLING": 0.952,
+    "MOVEMENT": 0.849,
     "SPACE": 0.587
   },
+  "mood": "Prism",
+  "name": "DARK COLD KINETIC VIOLENT PRS AGG 5",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.049,
+      "macro_coupling": 0.982,
+      "macro_movement": 0.821,
+      "macro_space": 0.586
+    },
+    "Ohm": {
+      "macro_character": 0.049,
+      "macro_coupling": 0.921,
+      "macro_movement": 0.878,
+      "macro_space": 0.588
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "aggressive",
@@ -47,5 +54,6 @@
     "violent",
     "dark",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

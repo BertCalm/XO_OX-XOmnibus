@@ -1,48 +1,56 @@
 {
-  "name": "FROZEN ROOTS",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OPAL",
-    "OMBRE"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.013,
-      "macro_movement": 0.42,
-      "macro_coupling": 0.49,
-      "macro_space": 0.434
-    },
-    "OMBRE": {
-      "macro_character": 0.362,
-      "macro_movement": 0.892,
-      "macro_coupling": 0.46,
-      "macro_space": 0.153
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OPAL",
-    "target": "OMBRE",
-    "amount": 0.406
+    "amount": 0.406,
+    "source": "Opal",
+    "target": "Ombre",
+    "type": "TIMBRE_BLEND"
   },
   "dna": {
+    "aggression": 0.533,
     "brightness": 0.684,
-    "warmth": 0.101,
-    "movement": 0.796,
     "density": 0.566,
+    "movement": 0.796,
     "space": 0.097,
-    "aggression": 0.533
+    "warmth": 0.101
   },
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.522,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.616,
+    "MOVEMENT": 0.65,
     "SPACE": 0.92
   },
+  "mood": "Family",
+  "name": "FROZEN ROOTS",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.362,
+      "macro_coupling": 0.46,
+      "macro_movement": 0.892,
+      "macro_space": 0.153
+    },
+    "Opal": {
+      "macro_character": 0.013,
+      "macro_coupling": 0.49,
+      "macro_movement": 0.42,
+      "macro_space": 0.434
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "cold",
     "xlow-warmth"
-  ]
+  ],
+  "version": "1.0"
 }

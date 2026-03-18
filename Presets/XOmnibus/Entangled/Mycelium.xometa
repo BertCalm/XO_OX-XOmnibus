@@ -1,69 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Mycelium",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Reactive living motion with analog drift and reverb depth.",
+  "dna": {
+    "aggression": 0.13,
+    "brightness": 0.384,
+    "density": 0.237,
+    "movement": 0.762,
+    "space": 0.22,
+    "warmth": 0.289
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Reactive living motion with analog drift and reverb depth.",
-  "tags": [
-    "moving",
-    "network",
-    "slow",
-    "organic"
-  ],
+  "legacy": {
+    "sourceCategory": "Living",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Living",
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Mycelium",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 1.0,
-      "bob_oscA_shape": 0.5,
-      "bob_oscA_drift": 0.38,
-      "bob_oscB_wave": 1.0,
-      "bob_oscB_blend": 0.5,
-      "bob_oscB_detune": 6.0,
-      "bob_fltMode": 0.0,
-      "bob_fltCutoff": 2500.0,
-      "bob_fltReso": 0.4,
-      "bob_fltEnvAmt": 0.65,
-      "bob_lfo1Rate": 0.08,
-      "bob_lfo1Depth": 0.45,
-      "bob_curMode": 2.0,
-      "bob_curAmount": 0.68,
-      "bob_motAttack": 1.5,
-      "bob_motDecay": 2.0,
-      "bob_motSustain": 0.65,
-      "bob_motRelease": 3.0,
-      "bob_motDepth": 0.78,
       "bob_ampAttack": 0.8,
       "bob_ampDecay": 1.5,
-      "bob_ampSustain": 0.88,
       "bob_ampRelease": 4.0,
-      "bob_glide": 0.18
+      "bob_ampSustain": 0.88,
+      "bob_curAmount": 0.68,
+      "bob_curMode": 2.0,
+      "bob_fltCutoff": 2500.0,
+      "bob_fltEnvAmt": 0.65,
+      "bob_fltMode": 0.0,
+      "bob_fltReso": 0.4,
+      "bob_glide": 0.18,
+      "bob_lfo1Depth": 0.45,
+      "bob_lfo1Rate": 0.08,
+      "bob_motAttack": 1.5,
+      "bob_motDecay": 2.0,
+      "bob_motDepth": 0.78,
+      "bob_motRelease": 3.0,
+      "bob_motSustain": 0.65,
+      "bob_oscA_drift": 0.38,
+      "bob_oscA_shape": 0.5,
+      "bob_oscA_wave": 1.0,
+      "bob_oscB_blend": 0.5,
+      "bob_oscB_detune": 6.0,
+      "bob_oscB_wave": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.384,
-    "warmth": 0.289,
-    "movement": 0.762,
-    "density": 0.237,
-    "space": 0.22,
-    "aggression": 0.13
-  }
+  "tags": [
+    "moving",
+    "network",
+    "slow",
+    "organic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

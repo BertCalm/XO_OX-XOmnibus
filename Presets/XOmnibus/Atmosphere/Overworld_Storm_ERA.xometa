@@ -1,13 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Overworld Storm ERA",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Near-maximum Genesis ERA, twelve voices, glitch rate creating constant corruption field. Not static — a glitch storm: the atmosphere of a world where digital law breaks down.",
+  "dna": {
+    "aggression": 0.85,
+    "brightness": 0.88,
+    "density": 0.85,
+    "movement": 0.88,
+    "space": 0.55,
+    "warmth": 0.12
+  },
   "engines": [
     "Overworld"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "Near-maximum Genesis ERA, twelve voices, glitch rate creating constant corruption field. Not static \u2014 a glitch storm: the atmosphere of a world where digital law breaks down.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Overworld Storm ERA",
+  "parameters": {
+    "Overworld": {
+      "ow_ampAttack": 0.08,
+      "ow_ampDecay": 0.4,
+      "ow_ampRelease": 2.5,
+      "ow_ampSustain": 0.48,
+      "ow_detune": 0.72,
+      "ow_eraBalance": 0.95,
+      "ow_filterCutoff": 0.92,
+      "ow_filterReso": 0.78,
+      "ow_glitchDepth": 0.88,
+      "ow_glitchRate": 0.75,
+      "ow_glitchType": 4,
+      "ow_macroCharacter": 0.0,
+      "ow_macroCoupling": 0.0,
+      "ow_macroMovement": 0.0,
+      "ow_macroSpace": 0.0,
+      "ow_reverbMix": 0.55,
+      "ow_spread": 0.88,
+      "ow_voiceCount": 12
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "storm",
@@ -15,52 +61,6 @@
     "genesis",
     "glitch-storm"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Overworld": {
-      "ow_eraBalance": 0.95,
-      "ow_voiceCount": 12,
-      "ow_spread": 0.88,
-      "ow_detune": 0.72,
-      "ow_filterCutoff": 0.92,
-      "ow_filterReso": 0.78,
-      "ow_glitchRate": 0.75,
-      "ow_glitchDepth": 0.88,
-      "ow_glitchType": 4,
-      "ow_ampAttack": 0.08,
-      "ow_ampDecay": 0.4,
-      "ow_ampSustain": 0.48,
-      "ow_ampRelease": 2.5,
-      "ow_reverbMix": 0.55,
-      "ow_macroCharacter": 0.0,
-      "ow_macroMovement": 0.0,
-      "ow_macroCoupling": 0.0,
-      "ow_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.88,
-    "warmth": 0.12,
-    "movement": 0.88,
-    "density": 0.85,
-    "space": 0.55,
-    "aggression": 0.85
-  }
+  "version": "1.0.0"
 }

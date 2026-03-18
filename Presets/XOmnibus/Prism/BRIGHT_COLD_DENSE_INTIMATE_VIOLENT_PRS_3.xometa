@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_COLD_DENSE_INTIMATE_VIOLENT_PRS_3",
-  "mood": "Prism",
-  "engines": [
-    "ORIGAMI",
-    "OWLFISH"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.489,
+    "source": "Origami",
+    "target": "Owlfish",
+    "type": "SPECTRAL_MORPH"
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_DENSE_INTIMATE_VIOLENT. Variant 3.",
+  "dna": {
+    "aggression": 0.917,
+    "brightness": 0.881,
+    "density": 0.941,
+    "movement": 0.397,
+    "space": 0.078,
+    "warmth": 0.113
+  },
+  "engines": [
+    "Origami",
+    "Owlfish"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.893,
+    "COUPLING": 0.986,
+    "MOVEMENT": 0.399,
+    "SPACE": 0.077
+  },
+  "mood": "Prism",
+  "name": "BRIGHT_COLD_DENSE_INTIMATE_VIOLENT_PRS_3",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.926,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.461,
+      "macro_space": 0.025
+    },
+    "Owlfish": {
+      "macro_character": 0.86,
+      "macro_coupling": 0.972,
+      "macro_movement": 0.336,
+      "macro_space": 0.13
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "cold",
@@ -19,53 +66,6 @@
     "prism",
     "dense"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.926,
-      "macro_movement": 0.461,
-      "macro_coupling": 1.0,
-      "macro_space": 0.025
-    },
-    "OWLFISH": {
-      "macro_character": 0.86,
-      "macro_movement": 0.336,
-      "macro_coupling": 0.972,
-      "macro_space": 0.13
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORIGAMI",
-    "target": "OWLFISH",
-    "amount": 0.489
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.881,
-    "warmth": 0.113,
-    "movement": 0.397,
-    "density": 0.941,
-    "space": 0.078,
-    "aggression": 0.917
-  },
-  "macros": {
-    "CHARACTER": 0.893,
-    "MOVEMENT": 0.399,
-    "COUPLING": 0.986,
-    "SPACE": 0.077
-  }
+  "version": "1.0.0"
 }

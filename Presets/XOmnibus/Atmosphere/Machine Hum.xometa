@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Machine Hum",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Ethereal textures wash with warm haze.",
+  "dna": {
+    "aggression": 0.219,
+    "brightness": 0.344,
+    "density": 0.095,
+    "movement": 0.0,
+    "space": 0.267,
+    "warmth": 0.144
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ethereal textures wash with warm haze.",
-  "tags": [
-    "saturated",
-    "slow-attack",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Textures",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Textures",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Machine Hum",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 0.0,
-      "drift_oscA_level": 0.5,
-      "drift_oscB_mode": 0.0,
-      "drift_oscB_shape": 1.0,
-      "drift_oscB_level": 0.4,
-      "drift_oscB_pw": 0.5,
-      "drift_noiseLevel": 0.1,
-      "drift_hazeAmount": 0.35,
+      "drift_attack": 500.0,
       "drift_filterCutoff": 1500.0,
       "drift_filterReso": 0.25,
       "drift_filterSlope": 1.0,
-      "drift_attack": 500.0,
-      "drift_sustain": 0.6,
+      "drift_hazeAmount": 0.35,
+      "drift_level": -4.0,
+      "drift_noiseLevel": 0.1,
+      "drift_oscA_level": 0.5,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_shape": 1.0,
       "drift_release": 1500.0,
-      "drift_level": -4.0
+      "drift_sustain": 0.6
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.344,
-    "warmth": 0.144,
-    "movement": 0.0,
-    "density": 0.095,
-    "space": 0.267,
-    "aggression": 0.219
-  }
+  "tags": [
+    "saturated",
+    "slow-attack",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

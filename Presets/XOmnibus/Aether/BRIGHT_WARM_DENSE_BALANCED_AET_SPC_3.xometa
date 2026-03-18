@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT WARM DENSE BALANCED AET SPC 3",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OVERWORLD",
-    "ORIGAMI"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.923,
-      "macro_movement": 0.353,
-      "macro_coupling": 0.544,
-      "macro_space": 0.521
-    },
-    "ORIGAMI": {
-      "macro_character": 0.919,
-      "macro_movement": 0.348,
-      "macro_coupling": 0.542,
-      "macro_space": 0.535
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OVERWORLD",
-    "target": "ORIGAMI",
-    "amount": 0.505
+    "amount": 0.505,
+    "source": "Overworld",
+    "target": "Origami",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.072,
     "brightness": 0.95,
-    "warmth": 0.896,
-    "movement": 0.353,
     "density": 0.982,
+    "movement": 0.353,
     "space": 0.521,
-    "aggression": 0.072
+    "warmth": 0.896
   },
+  "engines": [
+    "Overworld",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.923,
-    "MOVEMENT": 0.353,
     "COUPLING": 0.544,
+    "MOVEMENT": 0.353,
     "SPACE": 0.521
   },
+  "mood": "Aether",
+  "name": "BRIGHT WARM DENSE BALANCED AET SPC 3",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.919,
+      "macro_coupling": 0.542,
+      "macro_movement": 0.348,
+      "macro_space": 0.535
+    },
+    "Overworld": {
+      "macro_character": 0.923,
+      "macro_coupling": 0.544,
+      "macro_movement": 0.353,
+      "macro_space": 0.521
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -49,5 +56,6 @@
     "bright",
     "warm",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

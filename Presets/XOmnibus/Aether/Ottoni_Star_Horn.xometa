@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Star Horn",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Alien overtones from the cold current. FOREIGN stretched past Earth-standard brass ratios.",
+  "dna": {
+    "aggression": 0.28,
+    "brightness": 0.52,
+    "density": 0.64,
+    "movement": 0.5,
+    "space": 0.81,
+    "warmth": 0.57
+  },
   "engines": [
     "Ottoni"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "brass",
-    "sax",
-    "aether",
-    "experimental",
-    "aether"
   ],
   "macroLabels": [
     "EMBOUCHURE",
@@ -20,48 +21,47 @@
     "FOREIGN",
     "LAKE"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.52,
-    "warmth": 0.57,
-    "movement": 0.5,
-    "density": 0.64,
-    "space": 0.81,
-    "aggression": 0.28
-  },
+  "mood": "Aether",
+  "name": "Star Horn",
   "parameters": {
     "Ottoni": {
+      "otto_chorusRate": 1.0,
+      "otto_damping": 0.996,
+      "otto_delayMix": 0.129,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.069,
+      "otto_driveAmount": 0.158,
+      "otto_foreignCold": 0.223,
+      "otto_foreignDrift": 0.29,
+      "otto_foreignStretch": 0.172,
+      "otto_macroEmbouchure": 0.626,
+      "otto_macroForeign": 0.212,
+      "otto_macroGrow": 0.214,
+      "otto_macroLake": 0.286,
+      "otto_reverbSize": 0.372,
+      "otto_sympatheticAmt": 0.301,
+      "otto_teenBore": 0.658,
+      "otto_teenEmbouchure": 0.8,
+      "otto_teenInst": 3,
+      "otto_teenLevel": 0.481,
+      "otto_teenVibratoDepth": 0.15,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 3,
       "otto_toddlerLevel": 0.44,
       "otto_toddlerPressure": 0.272,
-      "otto_toddlerInst": 3,
-      "otto_tweenLevel": 0.601,
       "otto_tweenEmbouchure": 0.343,
-      "otto_tweenValve": 0.556,
       "otto_tweenInst": 3,
-      "otto_teenLevel": 0.481,
-      "otto_teenEmbouchure": 0.8,
-      "otto_teenBore": 0.658,
-      "otto_teenInst": 3,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.15,
-      "otto_damping": 0.996,
-      "otto_sympatheticAmt": 0.301,
-      "otto_driftRate": 0.069,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.172,
-      "otto_foreignDrift": 0.29,
-      "otto_foreignCold": 0.223,
-      "otto_reverbSize": 0.372,
-      "otto_chorusRate": 1.0,
-      "otto_driveAmount": 0.158,
-      "otto_delayMix": 0.129,
-      "otto_macroEmbouchure": 0.626,
-      "otto_macroGrow": 0.214,
-      "otto_macroForeign": 0.212,
-      "otto_macroLake": 0.286
+      "otto_tweenLevel": 0.601,
+      "otto_tweenValve": 0.556
     }
   },
-  "coupling": null,
-  "description": "Alien overtones from the cold current. FOREIGN stretched past Earth-standard brass ratios."
+  "schema_version": 1,
+  "tags": [
+    "brass",
+    "sax",
+    "aether",
+    "experimental",
+    "aether"
+  ],
+  "version": "1.0.0"
 }

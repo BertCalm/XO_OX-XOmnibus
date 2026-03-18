@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_SPARSE_VIOLENT_FAM_VOL_124",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.891,
+    "source": "Opal",
+    "target": "Origami",
+    "type": "HARMONIC_MESH"
+  },
+  "dna": {
+    "aggression": 0.964,
+    "brightness": 0.979,
+    "density": 0.066,
+    "movement": 0.597,
+    "space": 0.481,
+    "warmth": 0.927
+  },
   "engines": [
-    "OPAL",
-    "ORIGAMI"
+    "Opal",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.944,
+    "COUPLING": 0.524,
+    "MOVEMENT": 0.601,
+    "SPACE": 0.474
+  },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_SPARSE_VIOLENT_FAM_VOL_124",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.963,
-      "macro_movement": 0.596,
       "macro_coupling": 0.53,
+      "macro_movement": 0.596,
       "macro_space": 0.461
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.924,
-      "macro_movement": 0.606,
       "macro_coupling": 0.518,
+      "macro_movement": 0.606,
       "macro_space": 0.486
     }
   },
-  "coupling": {
-    "type": "HARMONIC_MESH",
-    "source": "OPAL",
-    "target": "ORIGAMI",
-    "amount": 0.891
-  },
-  "dna": {
-    "brightness": 0.979,
-    "warmth": 0.927,
-    "movement": 0.597,
-    "density": 0.066,
-    "space": 0.481,
-    "aggression": 0.964
-  },
-  "macros": {
-    "CHARACTER": 0.944,
-    "MOVEMENT": 0.601,
-    "COUPLING": 0.524,
-    "SPACE": 0.474
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "sparse",
     "aggressive",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

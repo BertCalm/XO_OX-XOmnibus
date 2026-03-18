@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Mass Accumulation",
-  "mood": "Atmosphere",
-  "engines": [
-    "OBLONG"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Thick, heavy environment. Maximum density, warm compression. OBLONG dense register.",
+  "dna": {
+    "aggression": 0.327,
+    "brightness": 0.201,
+    "density": 0.844,
+    "movement": 0.328,
+    "space": 0.319,
+    "warmth": 0.663
+  },
+  "engines": [
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.403,
+    "COUPLING": 0.375,
+    "MOVEMENT": 0.342,
+    "SPACE": 0.404
+  },
+  "mood": "Atmosphere",
+  "name": "Mass Accumulation",
+  "parameters": {
+    "Oblong": {
+      "character": 0.403,
+      "coupling": 0.375,
+      "movement": 0.342,
+      "space": 0.404
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dense",
@@ -16,36 +47,5 @@
     "warm",
     "thick"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.201,
-    "warmth": 0.663,
-    "movement": 0.328,
-    "density": 0.844,
-    "space": 0.319,
-    "aggression": 0.327
-  },
-  "parameters": {
-    "OBLONG": {
-      "character": 0.403,
-      "movement": 0.342,
-      "coupling": 0.375,
-      "space": 0.404
-    }
-  },
-  "macros": {
-    "CHARACTER": 0.403,
-    "MOVEMENT": 0.342,
-    "COUPLING": 0.375,
-    "SPACE": 0.404
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

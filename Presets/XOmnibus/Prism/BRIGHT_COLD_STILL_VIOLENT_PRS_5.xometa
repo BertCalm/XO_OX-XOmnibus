@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_COLD_STILL_VIOLENT_PRS_5",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.915,
+    "source": "Overworld",
+    "target": "Ottoni",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.869,
+    "brightness": 0.887,
+    "density": 0.392,
+    "movement": 0.095,
+    "space": 0.388,
+    "warmth": 0.067
+  },
   "engines": [
-    "OVERWORLD",
-    "OTTONI"
+    "Overworld",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.878,
+    "COUPLING": 0.429,
+    "MOVEMENT": 0.095,
+    "SPACE": 0.388
+  },
+  "mood": "Prism",
+  "name": "BRIGHT_COLD_STILL_VIOLENT_PRS_5",
   "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.878,
+    "Ottoni": {
+      "macro_character": 0.491,
+      "macro_coupling": 0.379,
       "macro_movement": 0.095,
-      "macro_coupling": 0.429,
       "macro_space": 0.388
     },
-    "OTTONI": {
-      "macro_character": 0.491,
+    "Overworld": {
+      "macro_character": 0.878,
+      "macro_coupling": 0.429,
       "macro_movement": 0.095,
-      "macro_coupling": 0.379,
       "macro_space": 0.388
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OVERWORLD",
-    "target": "OTTONI",
-    "amount": 0.915
-  },
-  "dna": {
-    "brightness": 0.887,
-    "warmth": 0.067,
-    "movement": 0.095,
-    "density": 0.392,
-    "space": 0.388,
-    "aggression": 0.869
-  },
-  "macros": {
-    "CHARACTER": 0.878,
-    "MOVEMENT": 0.095,
-    "COUPLING": 0.429,
-    "SPACE": 0.388
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "bright",
     "cold",
     "still",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

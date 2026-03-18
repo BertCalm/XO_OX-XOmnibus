@@ -1,21 +1,32 @@
 {
-  "schema_version": 1,
-  "name": "Benthic Chaos",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "OCEANIC"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.73,
+    "pairs": [
+      {
+        "amount": 0.73,
+        "engineA": "Outwit",
+        "engineB": "Oceanic",
+        "type": "SPECTRAL_MORPH"
+      }
+    ],
+    "source": "Outwit",
+    "target": "Oceanic",
+    "type": "SPECTRAL_MORPH"
+  },
+  "couplingIntensity": "Deep",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OCEANIC's deep-current tidal character (phosphorescent abyssal pressure). Coupling: Spectral Morph.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "outwit",
-    "oceanic",
-    "chaotic",
-    "generative"
+  "dna": {
+    "aggression": 0.03,
+    "brightness": 0.36,
+    "density": 0.67,
+    "movement": 0.62,
+    "space": 0.13,
+    "warmth": 0.9
+  },
+  "engines": [
+    "Outwit",
+    "Oceanic"
   ],
   "macroLabels": [
     "ARMS",
@@ -25,78 +36,67 @@
   ],
   "macros": {
     "CHARACTER": 0.63,
-    "MOVEMENT": 0.57,
     "COUPLING": 0.69,
+    "MOVEMENT": 0.57,
     "SPACE": 0.45
   },
-  "couplingIntensity": "Deep",
-  "sonic_dna": {
-    "brightness": 0.36,
-    "warmth": 0.9,
-    "movement": 0.62,
-    "density": 0.67,
-    "space": 0.13,
-    "aggression": 0.03
-  },
-  "dna": {
-    "brightness": 0.36,
-    "warmth": 0.9,
-    "movement": 0.62,
-    "density": 0.67,
-    "space": 0.13,
-    "aggression": 0.03
-  },
+  "mood": "Entangled",
+  "name": "Benthic Chaos",
   "parameters": {
-    "OUTWIT": {
-      "owit_rule": 182,
-      "owit_arms": 8,
-      "owit_cellSize": 0.32,
-      "owit_density": 0.57,
-      "owit_evolveRate": 0.7,
-      "owit_mutateProb": 0.2,
-      "owit_pitchSpread": 0.67,
-      "owit_filterCutoff": 0.58,
-      "owit_filterReso": 0.29,
+    "Oceanic": {
+      "ocean_ampAttack": 0.28,
+      "ocean_ampRelease": 0.32,
+      "ocean_ampSustain": 0.6,
+      "ocean_character": 0.47,
+      "ocean_coupling": 0.55,
+      "ocean_couplingLevel": 0.52,
+      "ocean_filterCutoff": 0.71,
+      "ocean_filterReso": 0.29,
+      "ocean_movement": 0.62,
+      "ocean_outputLevel": 0.7,
+      "ocean_reverbMix": 0.17,
+      "ocean_space": 0.24
+    },
+    "Outwit": {
       "owit_ampAttack": 0.13,
       "owit_ampRelease": 0.84,
       "owit_armStagger": 0.15,
+      "owit_arms": 8,
       "owit_borderMode": 2,
-      "owit_inkCloudMix": 0.17,
+      "owit_cellSize": 0.32,
       "owit_chroma1": 0.81,
       "owit_chroma2": 0.34,
-      "owit_polyDepth": 0.45,
-      "owit_couplingLevel": 0.68,
       "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.68,
+      "owit_density": 0.57,
+      "owit_evolveRate": 0.7,
+      "owit_filterCutoff": 0.58,
+      "owit_filterReso": 0.29,
+      "owit_inkCloudMix": 0.17,
+      "owit_mutateProb": 0.2,
       "owit_outputLevel": 0.76,
-      "owit_outputPan": -0.03
-    },
-    "OCEANIC": {
-      "ocean_character": 0.47,
-      "ocean_movement": 0.62,
-      "ocean_coupling": 0.55,
-      "ocean_space": 0.24,
-      "ocean_filterCutoff": 0.71,
-      "ocean_filterReso": 0.29,
-      "ocean_ampAttack": 0.28,
-      "ocean_ampSustain": 0.6,
-      "ocean_ampRelease": 0.32,
-      "ocean_reverbMix": 0.17,
-      "ocean_couplingLevel": 0.52,
-      "ocean_outputLevel": 0.7
+      "owit_outputPan": -0.03,
+      "owit_pitchSpread": 0.67,
+      "owit_polyDepth": 0.45,
+      "owit_rule": 182
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OUTWIT",
-    "target": "OCEANIC",
-    "amount": 0.73,
-    "pairs": [
-      {
-        "engineA": "OUTWIT",
-        "engineB": "OCEANIC",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.73
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.03,
+    "brightness": 0.36,
+    "density": 0.67,
+    "movement": 0.62,
+    "space": 0.13,
+    "warmth": 0.9
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "oceanic",
+    "chaotic",
+    "generative"
+  ],
+  "version": "1.0.0"
 }

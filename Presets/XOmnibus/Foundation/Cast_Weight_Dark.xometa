@@ -1,27 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Cast Weight Dark",
-  "mood": "Foundation",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Molten core tone. Filter barely open, heat radiating outward.",
+  "dna": {
+    "aggression": 0.452,
     "brightness": 0.508,
-    "warmth": 0.826,
-    "movement": 0.526,
     "density": 0.922,
+    "movement": 0.526,
     "space": 0.372,
-    "aggression": 0.452
+    "warmth": 0.826
   },
   "engines": [
-    "OBESE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Molten core tone. Filter barely open, heat radiating outward.",
-  "tags": [
-    "foundation",
-    "warm",
-    "dense",
-    "analog",
-    "thick"
+    "Obese"
   ],
   "macroLabels": [
     "MELT",
@@ -29,17 +22,24 @@
     "COUPLING",
     "TAIL"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.508,
-    "warmth": 0.826,
-    "movement": 0.526,
-    "density": 0.922,
-    "space": 0.372,
-    "aggression": 0.452
-  },
+  "mood": "Foundation",
+  "name": "Cast Weight Dark",
   "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.452,
+    "brightness": 0.508,
+    "density": 0.922,
+    "movement": 0.526,
+    "space": 0.372,
+    "warmth": 0.826
+  },
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick"
+  ],
+  "version": "1.0.0"
 }

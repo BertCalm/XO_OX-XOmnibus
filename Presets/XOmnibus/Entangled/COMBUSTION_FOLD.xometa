@@ -1,49 +1,57 @@
 {
-  "name": "COMBUSTION FOLD",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.341,
+    "source": "Odyssey",
+    "target": "Osteria",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.602,
+    "brightness": 0.222,
+    "density": 0.16,
+    "movement": 0.707,
+    "space": 0.949,
+    "warmth": 0.897
+  },
   "engines": [
-    "ODYSSEY",
-    "OSTERIA"
+    "Odyssey",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.442,
+    "COUPLING": 0.275,
+    "MOVEMENT": 0.303,
+    "SPACE": 0.056
+  },
+  "mood": "Entangled",
+  "name": "COMBUSTION FOLD",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.449,
-      "macro_movement": 0.924,
       "macro_coupling": 0.564,
+      "macro_movement": 0.924,
       "macro_space": 0.635
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.625,
-      "macro_movement": 0.864,
       "macro_coupling": 0.627,
+      "macro_movement": 0.864,
       "macro_space": 0.151
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ODYSSEY",
-    "target": "OSTERIA",
-    "amount": 0.341
-  },
-  "dna": {
-    "brightness": 0.222,
-    "warmth": 0.897,
-    "movement": 0.707,
-    "density": 0.16,
-    "space": 0.949,
-    "aggression": 0.602
-  },
-  "macros": {
-    "CHARACTER": 0.442,
-    "MOVEMENT": 0.303,
-    "COUPLING": 0.275,
-    "SPACE": 0.056
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-  ]
+  ],
+  "version": "1.0"
 }

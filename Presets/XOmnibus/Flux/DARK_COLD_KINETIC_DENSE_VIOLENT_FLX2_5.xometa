@@ -1,45 +1,52 @@
 {
-  "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FLX2_5",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OPTIC",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "OPTIC": {
-      "macro_character": 0.1098,
-      "macro_movement": 0.946,
-      "macro_coupling": 0.9331,
-      "macro_space": 0.6762
-    },
-    "ODYSSEY": {
-      "macro_character": 0.0764,
-      "macro_movement": 0.9485,
-      "macro_coupling": 0.9478,
-      "macro_space": 0.6897
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OPTIC",
-    "target": "ODYSSEY",
-    "amount": 0.719
+    "amount": 0.719,
+    "source": "Optic",
+    "target": "Odyssey",
+    "type": "FREQUENCY_SHIFT"
   },
   "dna": {
+    "aggression": 0.9476,
     "brightness": 0.0993,
-    "warmth": 0.0925,
-    "movement": 0.9706,
     "density": 0.9454,
+    "movement": 0.9706,
     "space": 0.6614,
-    "aggression": 0.9476
+    "warmth": 0.0925
   },
+  "engines": [
+    "Optic",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.0931,
-    "MOVEMENT": 0.9472,
     "COUPLING": 0.9405,
+    "MOVEMENT": 0.9472,
     "SPACE": 0.6829
   },
+  "mood": "Flux",
+  "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FLX2_5",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.0764,
+      "macro_coupling": 0.9478,
+      "macro_movement": 0.9485,
+      "macro_space": 0.6897
+    },
+    "Optic": {
+      "macro_character": 0.1098,
+      "macro_coupling": 0.9331,
+      "macro_movement": 0.946,
+      "macro_space": 0.6762
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -47,5 +54,6 @@
     "kinetic",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

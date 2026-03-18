@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Pangaea",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "All harmonics unified in one supercontinent of sound.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.35,
+    "density": 0.6,
+    "movement": 0.12,
+    "space": 0.4,
+    "warmth": 0.65
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "All harmonics unified in one supercontinent of sound.",
-  "tags": [
-    "unified",
-    "massive",
-    "ancient",
-    "whole"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Aether",
+  "name": "Pangaea",
   "parameters": {
     "Organon": {
-      "organon_metabolicRate": 0.15,
-      "organon_enzymeSelect": 800.0,
       "organon_catalystDrive": 0.6,
       "organon_dampingCoeff": 0.04,
-      "organon_signalFlux": 0.7,
-      "organon_phasonShift": 0.05,
+      "organon_enzymeSelect": 800.0,
       "organon_isotopeBalance": 0.4,
       "organon_lockIn": 0.0,
       "organon_membrane": 0.4,
-      "organon_noiseColor": 0.4
+      "organon_metabolicRate": 0.15,
+      "organon_noiseColor": 0.4,
+      "organon_phasonShift": 0.05,
+      "organon_signalFlux": 0.7
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.65,
-    "movement": 0.12,
-    "density": 0.6,
-    "space": 0.4,
-    "aggression": 0.1
-  }
+  "tags": [
+    "unified",
+    "massive",
+    "ancient",
+    "whole"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

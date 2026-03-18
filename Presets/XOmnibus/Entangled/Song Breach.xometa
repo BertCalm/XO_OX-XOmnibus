@@ -1,31 +1,39 @@
 {
-  "name": "Song Breach",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Orphica",
+    "target": "Orca",
+    "type": "ECHOLOCATION_SYNC"
+  },
+  "description": "Orphica microsong and orca click-train merge — two ancient sonic languages",
   "engines": [
-    "ORPHICA",
-    "ORCA"
+    "Orphica",
+    "Orca"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.8,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.8,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.66,
-    "warmth": 0.48,
-    "movement": 0.76,
-    "density": 0.5,
-    "space": 0.6,
-    "aggression": 0.39
-  },
+  "mood": "Entangled",
+  "name": "Song Breach",
   "parameters": {},
-  "coupling": {
-    "type": "ECHOLOCATION_SYNC",
-    "source": "ORPHICA",
-    "target": "ORCA",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.39,
+    "brightness": 0.66,
+    "density": 0.5,
+    "movement": 0.76,
+    "space": 0.6,
+    "warmth": 0.48
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "orca",
     "microsound"
   ],
-  "description": "Orphica microsong and orca click-train merge \u2014 two ancient sonic languages"
+  "version": "1.0"
 }

@@ -1,13 +1,36 @@
 {
-  "schema_version": 1,
-  "name": "Lorenz Portrait",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OUROBOROS tail-biting — Lorenz attractor spiraling at medium chaos. The self-devouring pattern at its most hypnotic.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.48,
+    "density": 0.6,
+    "movement": 0.88,
+    "space": 0.55,
+    "warmth": 0.5
+  },
   "engines": [
-    "OUROBOROS"
+    "Ouroboros"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OUROBOROS tail-biting \u2014 Lorenz attractor spiraling at medium chaos. The self-devouring pattern at its most hypnotic.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHAOS",
+    "DECAY",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Lorenz Portrait",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "signature",
@@ -18,29 +41,6 @@
     "spiral",
     "batch1-signatures"
   ],
-  "macroLabels": [
-    "CHAOS",
-    "DECAY",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.48,
-    "warmth": 0.5,
-    "movement": 0.88,
-    "density": 0.6,
-    "space": 0.55,
-    "aggression": 0.45
-  }
+  "version": "1.0.0"
 }

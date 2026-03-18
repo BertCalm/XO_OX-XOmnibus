@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Chromatic Rupture",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Between hot-dense and aggressive-sparse. The boundary where heat meets void.",
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.85,
+    "density": 0.45,
+    "movement": 0.82,
+    "space": 0.35,
+    "warmth": 0.75
+  },
   "engines": [
     "Oblique"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Between hot-dense and aggressive-sparse. The boundary where heat meets void.",
-  "tags": [
-    "flux",
-    "extreme",
-    "hybrid",
-    "aggressive"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Chromatic Rupture",
   "parameters": {
     "Oblique": {
-      "oblq_oscWave": 3.0,
-      "oblq_oscFold": 0.88,
-      "oblq_oscDetune": 12.0,
-      "oblq_filterCutoff": 3500.0,
-      "oblq_filterReso": 0.82,
-      "oblq_filterDrive": 0.88,
-      "oblq_envAmt": 0.78,
       "oblq_attack": 3.0,
       "oblq_decay": 120.0,
+      "oblq_envAmt": 0.78,
+      "oblq_filterCutoff": 3500.0,
+      "oblq_filterDrive": 0.88,
+      "oblq_filterReso": 0.82,
+      "oblq_oscDetune": 12.0,
+      "oblq_oscFold": 0.88,
+      "oblq_oscWave": 3.0,
       "oblq_sustain": 0.72
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.85,
-    "warmth": 0.75,
-    "movement": 0.82,
-    "density": 0.45,
-    "space": 0.35,
-    "aggression": 0.88
-  }
+  "tags": [
+    "flux",
+    "extreme",
+    "hybrid",
+    "aggressive"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

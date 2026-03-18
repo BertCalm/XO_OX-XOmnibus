@@ -1,50 +1,58 @@
 {
-  "name": "Lattice Grain",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.84,
+    "source": "Obsidian",
+    "target": "Opal",
+    "type": "ENVELOPE_LINK"
+  },
+  "description": "Obsidian's crystal envelope gates grain emergence — grains born from lattice vacancies.",
+  "dna": {
+    "aggression": 0.03,
+    "brightness": 0.0,
+    "density": 0.05,
+    "movement": 0.16,
+    "space": 0.97,
+    "warmth": 0.0
+  },
   "engines": [
-    "OBSIDIAN",
-    "OPAL"
+    "Obsidian",
+    "Opal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.08,
+    "COUPLING": 0.84,
+    "MOVEMENT": 0.16,
+    "SPACE": 0.97
+  },
+  "mood": "Entangled",
+  "name": "Lattice Grain",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.08,
-      "macro_movement": 0.16,
       "macro_coupling": 0.84,
+      "macro_movement": 0.16,
       "macro_space": 0.97
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.05,
-      "macro_movement": 0.11,
       "macro_coupling": 0.89,
+      "macro_movement": 0.11,
       "macro_space": 1.0
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OBSIDIAN",
-    "target": "OPAL",
-    "amount": 0.84
-  },
-  "dna": {
-    "brightness": 0.0,
-    "warmth": 0.0,
-    "movement": 0.16,
-    "density": 0.05,
-    "space": 0.97,
-    "aggression": 0.03
-  },
-  "macros": {
-    "CHARACTER": 0.08,
-    "MOVEMENT": 0.16,
-    "COUPLING": 0.84,
-    "SPACE": 0.97
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "lattice",
     "grain"
   ],
-  "description": "Obsidian's crystal envelope gates grain emergence \u2014 grains born from lattice vacancies."
+  "version": "1.0"
 }

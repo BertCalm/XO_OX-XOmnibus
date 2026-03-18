@@ -1,45 +1,52 @@
 {
-  "name": "Fat Stretch",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8,
+    "source": "Obese",
+    "target": "Oblong",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.83,
+    "brightness": 0.2,
+    "density": 0.93,
+    "movement": 0.5,
+    "space": 0.25,
+    "warmth": 0.82
+  },
   "engines": [
-    "OBESE",
-    "OBLONG"
+    "Obese",
+    "Oblong"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "COUPLING": 0.78,
+    "MOVEMENT": 0.5,
+    "SPACE": 0.2
+  },
+  "mood": "Entangled",
+  "name": "Fat Stretch",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.88,
-      "macro_movement": 0.5,
       "macro_coupling": 0.78,
+      "macro_movement": 0.5,
       "macro_space": 0.2
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.7,
-      "macro_movement": 0.6,
       "macro_coupling": 0.65,
+      "macro_movement": 0.6,
       "macro_space": 0.35
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBESE",
-    "target": "OBLONG",
-    "amount": 0.8
-  },
-  "dna": {
-    "brightness": 0.2,
-    "warmth": 0.82,
-    "movement": 0.5,
-    "density": 0.93,
-    "space": 0.25,
-    "aggression": 0.83
-  },
-  "macros": {
-    "CHARACTER": 0.88,
-    "MOVEMENT": 0.5,
-    "COUPLING": 0.78,
-    "SPACE": 0.2
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "obese",
@@ -47,5 +54,6 @@
     "bass",
     "stretch",
     "fat"
-  ]
+  ],
+  "version": "1.0"
 }

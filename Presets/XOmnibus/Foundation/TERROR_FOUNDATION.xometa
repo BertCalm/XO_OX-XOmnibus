@@ -1,48 +1,56 @@
 {
-  "name": "TERROR FOUNDATION",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.568,
+    "source": "Ottoni",
+    "target": "Overlap",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.902,
+    "brightness": 0.855,
+    "density": 0.701,
+    "movement": 0.663,
+    "space": 0.73,
+    "warmth": 0.261
+  },
   "engines": [
-    "OTTONI",
-    "OVERLAP"
+    "Ottoni",
+    "Overlap"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.519,
+    "COUPLING": 0.568,
+    "MOVEMENT": 0.663,
+    "SPACE": 0.73
+  },
+  "mood": "Foundation",
+  "name": "TERROR FOUNDATION",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.683,
-      "macro_movement": 0.352,
       "macro_coupling": 0.488,
+      "macro_movement": 0.352,
       "macro_space": 0.281
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.716,
-      "macro_movement": 0.608,
       "macro_coupling": 0.705,
+      "macro_movement": 0.608,
       "macro_space": 0.283
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OTTONI",
-    "target": "OVERLAP",
-    "amount": 0.568
-  },
-  "dna": {
-    "brightness": 0.855,
-    "warmth": 0.261,
-    "movement": 0.663,
-    "density": 0.701,
-    "space": 0.73,
-    "aggression": 0.902
-  },
-  "macros": {
-    "CHARACTER": 0.519,
-    "MOVEMENT": 0.663,
-    "COUPLING": 0.568,
-    "SPACE": 0.73
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

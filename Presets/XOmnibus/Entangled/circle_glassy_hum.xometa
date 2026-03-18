@@ -1,14 +1,54 @@
 {
-  "schema_version": 1,
-  "name": "Circle Glassy Hum",
-  "mood": "Entangled",
-  "engines": [
-    "OHM",
-    "OBSIDIAN"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.63,
+        "engineA": "Ohm",
+        "engineB": "Obsidian",
+        "type": "Spectral->Harmonic"
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Sage smoke drifts through crystal fractures — OHM's communal hum resonates inside OBSIDIAN's glassy depth.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.28,
+    "density": 0.68,
+    "movement": 0.42,
+    "space": 0.88,
+    "warmth": 0.48
+  },
+  "engines": [
+    "Ohm",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.38,
+    "COUPLING": 0.754,
+    "MOVEMENT": 0.42,
+    "SPACE": 0.88
+  },
+  "mood": "Entangled",
+  "name": "Circle Glassy Hum",
+  "parameters": {
+    "obsidian_crystalResonance": 0.44,
+    "obsidian_depth": 0.852,
+    "ohm_droneFund": 0.572,
+    "ohm_macroCommune": 0.644,
+    "ohm_macroMeddling": 0.568,
+    "ohm_orgHarmonics": 0.324
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -21,46 +61,6 @@
     "crystal",
     "glassy"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "ohm_macroMeddling": 0.568,
-    "ohm_macroCommune": 0.644,
-    "ohm_orgHarmonics": 0.324,
-    "ohm_droneFund": 0.572,
-    "obsidian_depth": 0.852,
-    "obsidian_crystalResonance": 0.44
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OHM",
-        "engineB": "OBSIDIAN",
-        "type": "Spectral->Harmonic",
-        "amount": 0.63
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.38,
-    "MOVEMENT": 0.42,
-    "COUPLING": 0.754,
-    "SPACE": 0.88
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.28,
-    "warmth": 0.48,
-    "movement": 0.42,
-    "density": 0.68,
-    "space": 0.88,
-    "aggression": 0.15
-  }
+  "version": "1.0.0"
 }

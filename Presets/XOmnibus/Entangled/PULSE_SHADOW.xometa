@@ -1,48 +1,56 @@
 {
-  "name": "PULSE SHADOW",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.767,
+    "source": "OddfeliX",
+    "target": "Ombre",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.008,
+    "brightness": 0.704,
+    "density": 0.14,
+    "movement": 0.987,
+    "space": 0.654,
+    "warmth": 0.612
+  },
   "engines": [
-    "ODDFELIX",
-    "OMBRE"
+    "OddfeliX",
+    "Ombre"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.817,
+    "COUPLING": 0.663,
+    "MOVEMENT": 0.299,
+    "SPACE": 0.939
+  },
+  "mood": "Entangled",
+  "name": "PULSE SHADOW",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.073,
-      "macro_movement": 0.213,
       "macro_coupling": 0.265,
+      "macro_movement": 0.213,
       "macro_space": 0.933
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.881,
-      "macro_movement": 0.879,
       "macro_coupling": 0.37,
+      "macro_movement": 0.879,
       "macro_space": 0.158
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ODDFELIX",
-    "target": "OMBRE",
-    "amount": 0.767
-  },
-  "dna": {
-    "brightness": 0.704,
-    "warmth": 0.612,
-    "movement": 0.987,
-    "density": 0.14,
-    "space": 0.654,
-    "aggression": 0.008
-  },
-  "macros": {
-    "CHARACTER": 0.817,
-    "MOVEMENT": 0.299,
-    "COUPLING": 0.663,
-    "SPACE": 0.939
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "bare",
     "skeletal"
-  ]
+  ],
+  "version": "1.0"
 }

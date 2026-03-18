@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_STILL_INTIMATE_VIOLENT_FLX_SLW_2",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.864,
+    "source": "Optic",
+    "target": "Overdub",
+    "type": "SPECTRAL_MORPH"
+  },
+  "dna": {
+    "aggression": 0.92,
+    "brightness": 0.886,
+    "density": 0.656,
+    "movement": 0.076,
+    "space": 0.105,
+    "warmth": 0.576
+  },
   "engines": [
-    "OPTIC",
-    "OVERDUB"
+    "Optic",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.788,
+    "COUPLING": 0.703,
+    "MOVEMENT": 0.076,
+    "SPACE": 0.105
+  },
+  "mood": "Flux",
+  "name": "BRIGHT_STILL_INTIMATE_VIOLENT_FLX_SLW_2",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.563,
-      "macro_movement": 0.065,
       "macro_coupling": 0.803,
+      "macro_movement": 0.065,
       "macro_space": 0.113
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.336,
-      "macro_movement": 0.079,
       "macro_coupling": 0.857,
+      "macro_movement": 0.079,
       "macro_space": 0.096
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OPTIC",
-    "target": "OVERDUB",
-    "amount": 0.864
-  },
-  "dna": {
-    "brightness": 0.886,
-    "warmth": 0.576,
-    "movement": 0.076,
-    "density": 0.656,
-    "space": 0.105,
-    "aggression": 0.92
-  },
-  "macros": {
-    "CHARACTER": 0.788,
-    "MOVEMENT": 0.076,
-    "COUPLING": 0.703,
-    "SPACE": 0.105
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +54,6 @@
     "intimate",
     "violent",
     "frozen-instability"
-  ]
+  ],
+  "version": "1.0"
 }

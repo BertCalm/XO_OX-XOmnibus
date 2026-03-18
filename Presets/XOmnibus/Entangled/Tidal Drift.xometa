@@ -1,31 +1,39 @@
 {
-  "name": "Tidal Drift",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Odyssey",
+    "target": "Oceanic",
+    "type": "TIDAL_MODULATION"
+  },
+  "description": "Wavetable odyssey carried on oceanic current — FM harmonics reshaped by tide pressure",
   "engines": [
-    "ODYSSEY",
-    "OCEANIC"
+    "Odyssey",
+    "Oceanic"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.75,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.75,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.55,
-    "warmth": 0.5,
-    "movement": 0.69,
-    "density": 0.57,
-    "space": 0.64,
-    "aggression": 0.37
-  },
+  "mood": "Entangled",
+  "name": "Tidal Drift",
   "parameters": {},
-  "coupling": {
-    "type": "TIDAL_MODULATION",
-    "source": "ODYSSEY",
-    "target": "OCEANIC",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.37,
+    "brightness": 0.55,
+    "density": 0.57,
+    "movement": 0.69,
+    "space": 0.64,
+    "warmth": 0.5
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "oceanic",
     "wavetable"
   ],
-  "description": "Wavetable odyssey carried on oceanic current \u2014 FM harmonics reshaped by tide pressure"
+  "version": "1.0"
 }

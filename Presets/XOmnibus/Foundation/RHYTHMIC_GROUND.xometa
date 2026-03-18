@@ -1,48 +1,56 @@
 {
-  "name": "RHYTHMIC GROUND",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ORBITAL",
-    "OPAL"
-  ],
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.732,
-      "macro_movement": 0.908,
-      "macro_coupling": 0.327,
-      "macro_space": 0.527
-    },
-    "OPAL": {
-      "macro_character": 0.623,
-      "macro_movement": 0.929,
-      "macro_coupling": 0.33,
-      "macro_space": 0.564
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORBITAL",
-    "target": "OPAL",
-    "amount": 0.606
+    "amount": 0.606,
+    "source": "Orbital",
+    "target": "Opal",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.896,
     "brightness": 0.346,
-    "warmth": 0.484,
-    "movement": 0.92,
     "density": 0.444,
+    "movement": 0.92,
     "space": 0.257,
-    "aggression": 0.896
+    "warmth": 0.484
   },
+  "engines": [
+    "Orbital",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7,
-    "MOVEMENT": 0.92,
     "COUPLING": 0.606,
+    "MOVEMENT": 0.92,
     "SPACE": 0.257
   },
+  "mood": "Foundation",
+  "name": "RHYTHMIC GROUND",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.623,
+      "macro_coupling": 0.33,
+      "macro_movement": 0.929,
+      "macro_space": 0.564
+    },
+    "Orbital": {
+      "macro_character": 0.732,
+      "macro_coupling": 0.327,
+      "macro_movement": 0.908,
+      "macro_space": 0.527
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,13 +1,36 @@
 {
-  "schema_version": 1,
-  "name": "Organon Extended",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "ORGANON extended metabolism — logic processing more pathways. The biological instrument in a longer conversation with itself.",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.5,
+    "density": 0.72,
+    "movement": 0.48,
+    "space": 0.5,
+    "warmth": 0.65
+  },
   "engines": [
-    "ORGANON"
+    "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ORGANON extended metabolism \u2014 logic processing more pathways. The biological instrument in a longer conversation with itself.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "LOGIC",
+    "METABOLISM",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Organon Extended",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "extended-family",
@@ -17,29 +40,6 @@
     "complex",
     "batch2-extended"
   ],
-  "macroLabels": [
-    "LOGIC",
-    "METABOLISM",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.65,
-    "movement": 0.48,
-    "density": 0.72,
-    "space": 0.5,
-    "aggression": 0.25
-  }
+  "version": "1.0.0"
 }

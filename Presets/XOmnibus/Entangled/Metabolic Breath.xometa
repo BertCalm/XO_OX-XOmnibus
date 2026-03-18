@@ -1,31 +1,39 @@
 {
-  "name": "Metabolic Breath",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.55,
+    "source": "Obbligato",
+    "target": "Organon",
+    "type": "METABOLIC_SYNC"
+  },
+  "description": "Organon metabolic rate obligated to OBBLIGATO breath tempo — biology must keep pace with the reed",
   "engines": [
-    "OBBLIGATO",
-    "ORGANON"
+    "Obbligato",
+    "Organon"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.6,
     "COUPLING": 0.55,
+    "MOVEMENT": 0.6,
     "SPACE": 0.5
   },
-  "sonic_dna": {
-    "brightness": 0.53,
-    "warmth": 0.63,
-    "movement": 0.63,
-    "density": 0.65,
-    "space": 0.52,
-    "aggression": 0.35
-  },
+  "mood": "Entangled",
+  "name": "Metabolic Breath",
   "parameters": {},
-  "coupling": {
-    "type": "METABOLIC_SYNC",
-    "source": "OBBLIGATO",
-    "target": "ORGANON",
-    "amount": 0.55
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.35,
+    "brightness": 0.53,
+    "density": 0.65,
+    "movement": 0.63,
+    "space": 0.52,
+    "warmth": 0.63
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "organon",
     "wind"
   ],
-  "description": "Organon metabolic rate obligated to OBBLIGATO breath tempo \u2014 biology must keep pace with the reed"
+  "version": "1.0"
 }

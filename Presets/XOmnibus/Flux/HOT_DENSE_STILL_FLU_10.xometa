@@ -1,45 +1,52 @@
 {
-  "name": "HOT DENSE STILL FLU 10",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.916,
+    "source": "OddfeliX",
+    "target": "Overlap",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.358,
+    "brightness": 0.431,
+    "density": 0.88,
+    "movement": 0.111,
+    "space": 0.643,
+    "warmth": 0.893
+  },
   "engines": [
-    "ODDFELIX",
-    "OVERLAP"
+    "OddfeliX",
+    "Overlap"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.662,
+    "COUPLING": 0.465,
+    "MOVEMENT": 0.111,
+    "SPACE": 0.643
+  },
+  "mood": "Flux",
+  "name": "HOT DENSE STILL FLU 10",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.662,
-      "macro_movement": 0.111,
       "macro_coupling": 0.465,
+      "macro_movement": 0.111,
       "macro_space": 0.643
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.564,
-      "macro_movement": 0.159,
       "macro_coupling": 0.383,
+      "macro_movement": 0.159,
       "macro_space": 0.497
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ODDFELIX",
-    "target": "OVERLAP",
-    "amount": 0.916
-  },
-  "dna": {
-    "brightness": 0.431,
-    "warmth": 0.893,
-    "movement": 0.111,
-    "density": 0.88,
-    "space": 0.643,
-    "aggression": 0.358
-  },
-  "macros": {
-    "CHARACTER": 0.662,
-    "MOVEMENT": 0.111,
-    "COUPLING": 0.465,
-    "SPACE": 0.643
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "warm",
@@ -47,5 +54,6 @@
     "static",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

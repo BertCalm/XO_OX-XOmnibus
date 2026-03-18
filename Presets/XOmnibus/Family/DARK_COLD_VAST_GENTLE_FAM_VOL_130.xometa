@@ -1,50 +1,58 @@
 {
-  "name": "DARK_COLD_VAST_GENTLE_FAM_VOL_130",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.908,
+    "source": "OddOscar",
+    "target": "Obbligato",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.064,
+    "brightness": 0.064,
+    "density": 0.535,
+    "movement": 0.386,
+    "space": 0.898,
+    "warmth": 0.119
+  },
   "engines": [
-    "OBBLIGATO",
-    "ODDOSCAR"
+    "Obbligato",
+    "OddOscar"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.087,
+    "COUPLING": 0.303,
+    "MOVEMENT": 0.374,
+    "SPACE": 0.905
+  },
+  "mood": "Family",
+  "name": "DARK_COLD_VAST_GENTLE_FAM_VOL_130",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.074,
-      "macro_movement": 0.376,
       "macro_coupling": 0.305,
+      "macro_movement": 0.376,
       "macro_space": 0.898
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.101,
-      "macro_movement": 0.373,
       "macro_coupling": 0.302,
+      "macro_movement": 0.373,
       "macro_space": 0.911
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ODDOSCAR",
-    "target": "OBBLIGATO",
-    "amount": 0.908
-  },
-  "dna": {
-    "brightness": 0.064,
-    "warmth": 0.119,
-    "movement": 0.386,
-    "density": 0.535,
-    "space": 0.898,
-    "aggression": 0.064
-  },
-  "macros": {
-    "CHARACTER": 0.087,
-    "MOVEMENT": 0.374,
-    "COUPLING": 0.303,
-    "SPACE": 0.905
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
     "cold",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

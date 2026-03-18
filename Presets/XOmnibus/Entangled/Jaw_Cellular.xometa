@@ -1,77 +1,77 @@
 {
-  "schema_version": 1,
-  "name": "Jaw Cellular",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.571,
+        "engineA": "Overbite",
+        "engineB": "Outwit",
+        "type": "spectral_cross"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "OVERBITE snap triggers OUTWIT cellular rule-change. Strategy via reflex.",
+  "dna": {
+    "aggression": 0.656,
+    "brightness": 0.482,
+    "density": 0.707,
+    "movement": 0.675,
+    "space": 0.401,
+    "warmth": 0.505
+  },
   "engines": [
     "Overbite",
     "Outwit"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE snap triggers OUTWIT cellular rule-change. Strategy via reflex.",
-  "tags": [
-    "overbite",
-    "outwit",
-    "coupling",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
-  "tempo": 130,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Jaw Cellular",
   "parameters": {
-    "Overbite": {
-      "poss_macro1": 0.496,
-      "poss_macro2": 0.356,
-      "poss_macro3": 0.525,
-      "poss_macro4": 0.489,
-      "poss_couplingOut": 0.687,
-      "poss_couplingIn": 0.417,
-      "poss_outputLevel": 0.807,
-      "poss_outputPan": -0.01,
-      "poss_biteDepth": 0.816,
-      "poss_fangAttack": 0.1,
-      "poss_gnashAmt": 0.357,
-      "poss_snapRelease": 0.434
-    },
     "Outwit": {
+      "owit_couplingIn": 0.565,
+      "owit_couplingOut": 0.501,
       "owit_macro1": 0.637,
       "owit_macro2": 0.452,
       "owit_macro3": 0.533,
       "owit_macro4": 0.442,
-      "owit_couplingOut": 0.501,
-      "owit_couplingIn": 0.565,
       "owit_outputLevel": 0.822,
       "owit_outputPan": -0.007
+    },
+    "Overbite": {
+      "poss_biteDepth": 0.816,
+      "poss_couplingIn": 0.417,
+      "poss_couplingOut": 0.687,
+      "poss_fangAttack": 0.1,
+      "poss_gnashAmt": 0.357,
+      "poss_macro1": 0.496,
+      "poss_macro2": 0.356,
+      "poss_macro3": 0.525,
+      "poss_macro4": 0.489,
+      "poss_outputLevel": 0.807,
+      "poss_outputPan": -0.01,
+      "poss_snapRelease": 0.434
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Outwit",
-        "type": "spectral_cross",
-        "amount": 0.571
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.482,
-    "warmth": 0.505,
-    "movement": 0.675,
-    "density": 0.707,
-    "space": 0.401,
-    "aggression": 0.656
-  }
+  "tags": [
+    "overbite",
+    "outwit",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 130,
+  "version": "1.0.0"
 }

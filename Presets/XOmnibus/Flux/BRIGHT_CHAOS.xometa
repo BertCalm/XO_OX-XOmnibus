@@ -1,49 +1,57 @@
 {
-  "name": "BRIGHT CHAOS",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.749,
+    "source": "Ombre",
+    "target": "Ottoni",
+    "type": "ENVELOPE_FOLLOW"
+  },
+  "dna": {
+    "aggression": 0.451,
+    "brightness": 0.938,
+    "density": 0.652,
+    "movement": 0.411,
+    "space": 0.983,
+    "warmth": 0.204
+  },
   "engines": [
-    "OMBRE",
-    "OTTONI"
+    "Ombre",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.491,
+    "COUPLING": 0.279,
+    "MOVEMENT": 0.316,
+    "SPACE": 0.449
+  },
+  "mood": "Flux",
+  "name": "BRIGHT CHAOS",
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.546,
-      "macro_movement": 0.603,
       "macro_coupling": 0.221,
+      "macro_movement": 0.603,
       "macro_space": 0.219
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.436,
-      "macro_movement": 0.029,
       "macro_coupling": 0.336,
+      "macro_movement": 0.029,
       "macro_space": 0.679
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_FOLLOW",
-    "source": "OMBRE",
-    "target": "OTTONI",
-    "amount": 0.749
-  },
-  "dna": {
-    "brightness": 0.938,
-    "warmth": 0.204,
-    "movement": 0.411,
-    "density": 0.652,
-    "space": 0.983,
-    "aggression": 0.451
-  },
-  "macros": {
-    "CHARACTER": 0.491,
-    "MOVEMENT": 0.316,
-    "COUPLING": 0.279,
-    "SPACE": 0.449
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "extreme",
     "high-space"
-  ]
+  ],
+  "version": "1.0"
 }

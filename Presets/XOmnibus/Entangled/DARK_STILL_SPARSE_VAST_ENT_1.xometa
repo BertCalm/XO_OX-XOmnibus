@@ -1,14 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "DARK_STILL_SPARSE_VAST_ENT_1",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7925,
+    "pairs": [
+      {
+        "amount": 0.7925,
+        "source": "Orca",
+        "target": "Opal",
+        "type": "TIMBRAL_BLEED"
+      }
+    ],
+    "source": "Orca",
+    "target": "Opal",
+    "type": "TIMBRAL_BLEED"
+  },
+  "couplingIntensity": "High",
+  "description": "Dark Still Sparse Vast character entanglement — OPAL × ORCA via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.5973,
+    "brightness": 0.0307,
+    "density": 0.0699,
+    "movement": 0.0349,
+    "space": 0.9505,
+    "warmth": 0.6549
+  },
   "engines": [
-    "OPAL",
-    "ORCA"
+    "Opal",
+    "Orca"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dark Still Sparse Vast character entanglement \u2014 OPAL \u00d7 ORCA via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "GRAIN",
+    "SCATTER",
+    "FUSE",
+    "CLOUD"
+  ],
+  "macros": {
+    "CHARACTER": 0.3428,
+    "COUPLING": 0.7925,
+    "MOVEMENT": 0.0349,
+    "SPACE": 0.9505
+  },
+  "mood": "Entangled",
+  "name": "DARK_STILL_SPARSE_VAST_ENT_1",
+  "parameters": {
+    "Opal": {
+      "amp_attack": 0.3986,
+      "amp_release": 0.6599,
+      "coupling_level": 0.7925,
+      "density": 0.0378,
+      "drive": 0.5562,
+      "filter_cutoff": 0.2141,
+      "filter_resonance": 0.4348,
+      "macro_character": 0.5436,
+      "macro_coupling": 0.777,
+      "macro_movement": 0.0281,
+      "macro_space": 0.9496,
+      "output_level": 0.7324,
+      "reverb_mix": 0.6683,
+      "reverb_size": 0.8063
+    },
+    "Orca": {
+      "amp_attack": 0.4324,
+      "amp_release": 0.6833,
+      "coupling_level": 0.759,
+      "density": 0.0928,
+      "drive": 0.4895,
+      "filter_cutoff": 0.1913,
+      "filter_resonance": 0.4265,
+      "macro_character": 0.6094,
+      "macro_coupling": 0.801,
+      "macro_movement": 0.0236,
+      "macro_space": 0.9257,
+      "output_level": 0.697,
+      "reverb_mix": 0.6841,
+      "reverb_size": 0.7781
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.5973,
+    "brightness": 0.0307,
+    "density": 0.0699,
+    "movement": 0.0349,
+    "space": 0.9505,
+    "warmth": 0.6549
+  },
   "tags": [
     "entangled",
     "dark",
@@ -17,81 +93,5 @@
     "vast",
     "resonant"
   ],
-  "macroLabels": [
-    "GRAIN",
-    "SCATTER",
-    "FUSE",
-    "CLOUD"
-  ],
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.0307,
-    "warmth": 0.6549,
-    "movement": 0.0349,
-    "density": 0.0699,
-    "space": 0.9505,
-    "aggression": 0.5973
-  },
-  "sonic_dna": {
-    "brightness": 0.0307,
-    "warmth": 0.6549,
-    "movement": 0.0349,
-    "density": 0.0699,
-    "space": 0.9505,
-    "aggression": 0.5973
-  },
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.5436,
-      "macro_movement": 0.0281,
-      "macro_coupling": 0.777,
-      "macro_space": 0.9496,
-      "filter_cutoff": 0.2141,
-      "filter_resonance": 0.4348,
-      "amp_attack": 0.3986,
-      "amp_release": 0.6599,
-      "reverb_mix": 0.6683,
-      "reverb_size": 0.8063,
-      "drive": 0.5562,
-      "density": 0.0378,
-      "output_level": 0.7324,
-      "coupling_level": 0.7925
-    },
-    "ORCA": {
-      "macro_character": 0.6094,
-      "macro_movement": 0.0236,
-      "macro_coupling": 0.801,
-      "macro_space": 0.9257,
-      "filter_cutoff": 0.1913,
-      "filter_resonance": 0.4265,
-      "amp_attack": 0.4324,
-      "amp_release": 0.6833,
-      "reverb_mix": 0.6841,
-      "reverb_size": 0.7781,
-      "drive": 0.4895,
-      "density": 0.0928,
-      "output_level": 0.697,
-      "coupling_level": 0.759
-    }
-  },
-  "coupling": {
-    "type": "TIMBRAL_BLEED",
-    "source": "ORCA",
-    "target": "OPAL",
-    "amount": 0.7925,
-    "pairs": [
-      {
-        "source": "ORCA",
-        "target": "OPAL",
-        "type": "TIMBRAL_BLEED",
-        "amount": 0.7925
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.3428,
-    "MOVEMENT": 0.0349,
-    "COUPLING": 0.7925,
-    "SPACE": 0.9505
-  }
+  "version": "1.0.0"
 }

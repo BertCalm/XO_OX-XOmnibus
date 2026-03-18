@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_COLD_STILL_INTIMATE_AET2_1",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7107,
+    "source": "Orbital",
+    "target": "Organon",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.4927,
+    "brightness": 0.9337,
+    "density": 0.6299,
+    "movement": 0.1205,
+    "space": 0.0864,
+    "warmth": 0.0483
+  },
   "engines": [
-    "ORBITAL",
-    "ORGANON"
+    "Orbital",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9296,
+    "COUPLING": 0.7107,
+    "MOVEMENT": 0.123,
+    "SPACE": 0.0864
+  },
+  "mood": "Aether",
+  "name": "BRIGHT_COLD_STILL_INTIMATE_AET2_1",
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.9082,
-      "macro_movement": 0.1357,
       "macro_coupling": 0.6134,
+      "macro_movement": 0.1357,
       "macro_space": 0.097
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.9511,
-      "macro_movement": 0.1102,
       "macro_coupling": 0.6645,
+      "macro_movement": 0.1102,
       "macro_space": 0.0921
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORBITAL",
-    "target": "ORGANON",
-    "amount": 0.7107
-  },
-  "dna": {
-    "brightness": 0.9337,
-    "movement": 0.1205,
-    "space": 0.0864,
-    "warmth": 0.0483,
-    "density": 0.6299,
-    "aggression": 0.4927
-  },
-  "macros": {
-    "CHARACTER": 0.9296,
-    "MOVEMENT": 0.123,
-    "COUPLING": 0.7107,
-    "SPACE": 0.0864
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +56,6 @@
     "still",
     "intimate",
     "frozen"
-  ]
+  ],
+  "version": "1.0"
 }

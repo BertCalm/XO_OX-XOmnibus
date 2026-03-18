@@ -1,50 +1,58 @@
 {
-  "name": "DARK_COLD_STILL_INTIMATE_ATM_3",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORIGAMI",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.631,
-      "macro_movement": 0.177,
-      "macro_coupling": 0.411,
-      "macro_space": 0.184
-    },
-    "OBLIQUE": {
-      "macro_character": 0.522,
-      "macro_movement": 0.126,
-      "macro_coupling": 0.622,
-      "macro_space": 0.291
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORIGAMI",
-    "target": "OBLIQUE",
-    "amount": 0.611
+    "amount": 0.611,
+    "source": "Origami",
+    "target": "Oblique",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.501,
     "brightness": 0.112,
-    "warmth": 0.056,
-    "movement": 0.059,
     "density": 0.57,
+    "movement": 0.059,
     "space": 0.133,
-    "aggression": 0.501
+    "warmth": 0.056
   },
+  "engines": [
+    "Origami",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.631,
-    "MOVEMENT": 0.177,
     "COUPLING": 0.411,
+    "MOVEMENT": 0.177,
     "SPACE": 0.184
   },
+  "mood": "Atmosphere",
+  "name": "DARK_COLD_STILL_INTIMATE_ATM_3",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.522,
+      "macro_coupling": 0.622,
+      "macro_movement": 0.126,
+      "macro_space": 0.291
+    },
+    "Origami": {
+      "macro_character": 0.631,
+      "macro_coupling": 0.411,
+      "macro_movement": 0.177,
+      "macro_space": 0.184
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "cold",
     "still",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

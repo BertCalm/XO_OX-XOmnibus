@@ -1,14 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "DARK_COLD_DENSE_INTIMATE_ENT_5",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6618,
+    "pairs": [
+      {
+        "amount": 0.6618,
+        "source": "Oceanic",
+        "target": "Obbligato",
+        "type": "FORMANT_BRIDGE"
+      }
+    ],
+    "source": "Oceanic",
+    "target": "Obbligato",
+    "type": "FORMANT_BRIDGE"
+  },
+  "couplingIntensity": "Medium",
+  "description": "Dark Cold Dense Intimate character entanglement — OBBLIGATO × OCEANIC via Formant Bridge. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.4579,
+    "brightness": 0.0956,
+    "density": 0.8983,
+    "movement": 0.5291,
+    "space": 0.0529,
+    "warmth": 0.123
+  },
   "engines": [
-    "OBBLIGATO",
-    "OCEANIC"
+    "Obbligato",
+    "Oceanic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dark Cold Dense Intimate character entanglement \u2014 OBBLIGATO \u00d7 OCEANIC via Formant Bridge. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "WIND",
+    "BOND",
+    "FLOW",
+    "AIR"
+  ],
+  "macros": {
+    "CHARACTER": 0.1093,
+    "COUPLING": 0.6618,
+    "MOVEMENT": 0.5291,
+    "SPACE": 0.0529
+  },
+  "mood": "Entangled",
+  "name": "DARK_COLD_DENSE_INTIMATE_ENT_5",
+  "parameters": {
+    "Obbligato": {
+      "amp_attack": 0.2743,
+      "amp_release": 0.1051,
+      "coupling_level": 0.7094,
+      "density": 0.8646,
+      "drive": 0.3797,
+      "filter_cutoff": 0.3028,
+      "filter_resonance": 0.3248,
+      "macro_character": 0.3792,
+      "macro_coupling": 0.7989,
+      "macro_movement": 0.5348,
+      "macro_space": 0.0247,
+      "output_level": 0.9393,
+      "reverb_mix": 0.1561,
+      "reverb_size": 0.2071
+    },
+    "Oceanic": {
+      "amp_attack": 0.2054,
+      "amp_release": 0.1362,
+      "coupling_level": 0.7492,
+      "density": 0.9317,
+      "drive": 0.4179,
+      "filter_cutoff": 0.2851,
+      "filter_resonance": 0.3535,
+      "macro_character": 0.4037,
+      "macro_coupling": 0.7679,
+      "macro_movement": 0.5009,
+      "macro_space": 0.0385,
+      "output_level": 0.8856,
+      "reverb_mix": 0.1833,
+      "reverb_size": 0.2602
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4579,
+    "brightness": 0.0956,
+    "density": 0.8983,
+    "movement": 0.5291,
+    "space": 0.0529,
+    "warmth": 0.123
+  },
   "tags": [
     "entangled",
     "dark",
@@ -17,81 +93,5 @@
     "intimate",
     "resonant"
   ],
-  "macroLabels": [
-    "WIND",
-    "BOND",
-    "FLOW",
-    "AIR"
-  ],
-  "couplingIntensity": "Medium",
-  "dna": {
-    "brightness": 0.0956,
-    "warmth": 0.123,
-    "movement": 0.5291,
-    "density": 0.8983,
-    "space": 0.0529,
-    "aggression": 0.4579
-  },
-  "sonic_dna": {
-    "brightness": 0.0956,
-    "warmth": 0.123,
-    "movement": 0.5291,
-    "density": 0.8983,
-    "space": 0.0529,
-    "aggression": 0.4579
-  },
-  "parameters": {
-    "OBBLIGATO": {
-      "macro_character": 0.3792,
-      "macro_movement": 0.5348,
-      "macro_coupling": 0.7989,
-      "macro_space": 0.0247,
-      "filter_cutoff": 0.3028,
-      "filter_resonance": 0.3248,
-      "amp_attack": 0.2743,
-      "amp_release": 0.1051,
-      "reverb_mix": 0.1561,
-      "reverb_size": 0.2071,
-      "drive": 0.3797,
-      "density": 0.8646,
-      "output_level": 0.9393,
-      "coupling_level": 0.7094
-    },
-    "OCEANIC": {
-      "macro_character": 0.4037,
-      "macro_movement": 0.5009,
-      "macro_coupling": 0.7679,
-      "macro_space": 0.0385,
-      "filter_cutoff": 0.2851,
-      "filter_resonance": 0.3535,
-      "amp_attack": 0.2054,
-      "amp_release": 0.1362,
-      "reverb_mix": 0.1833,
-      "reverb_size": 0.2602,
-      "drive": 0.4179,
-      "density": 0.9317,
-      "output_level": 0.8856,
-      "coupling_level": 0.7492
-    }
-  },
-  "coupling": {
-    "type": "FORMANT_BRIDGE",
-    "source": "OCEANIC",
-    "target": "OBBLIGATO",
-    "amount": 0.6618,
-    "pairs": [
-      {
-        "source": "OCEANIC",
-        "target": "OBBLIGATO",
-        "type": "FORMANT_BRIDGE",
-        "amount": 0.6618
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.1093,
-    "MOVEMENT": 0.5291,
-    "COUPLING": 0.6618,
-    "SPACE": 0.0529
-  }
+  "version": "1.0.0"
 }

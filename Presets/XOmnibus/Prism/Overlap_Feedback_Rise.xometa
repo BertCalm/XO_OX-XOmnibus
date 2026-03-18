@@ -1,53 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Feedback Rise",
-  "mood": "Prism",
-  "engines": ["Overlap"],
-  "author": "Guru Bin — OVERLAP Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Mod wheel sweeps feedback from clean space to the edge of self-oscillation. The figure-8 topology means feedback builds symmetrically — left and right loops reinforce each other at peak. A controlled swell that can be ridden expressively or pushed into glorious disarray. Aftertouch controls damping to prevent runaway.",
-  "tags": ["feedback", "swell", "expressive", "edge", "prism", "dangerous"],
-  "macroLabels": ["CHARACTER", "SPACE", "COUPLING", "DECAY"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
+  "description": "Mod wheel sweeps feedback from clean space to the edge of self-oscillation. The figure-8 topology means feedback builds symmetrically — left and right loops reinforce each other at peak. A controlled swell that can be ridden expressively or pushed into glorious disarray. Aftertouch controls damping to prevent runaway.",
   "dna": {
+    "aggression": 0.45,
     "brightness": 0.6,
-    "warmth": 0.45,
-    "movement": 0.55,
     "density": 0.65,
+    "movement": 0.55,
     "space": 0.72,
-    "aggression": 0.45
+    "warmth": 0.45
   },
-  "parameters": {
-    "Overlap": {
-      "olap_knotType": 1,
-      "olap_delayFeedback": 0.35,
-      "olap_diffusion": 0.6,
-      "olap_spread": 0.8,
-      "olap_decay": 2.0,
-      "olap_modDepth": 0.18,
-      "olap_modRate": 0.14,
-      "olap_damping": 0.38,
-      "olap_macroCharacter": 0.0,
-      "olap_macroSpace": 0.0,
-      "olap_macroCoupling": 0.0,
-      "olap_macroDecay": 0.0
-    }
-  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
   "modMatrix": [
     {
-      "source": "ModWheel",
-      "target": "olap_delayFeedback",
       "amount": 0.55,
-      "curve": "Exponential"
+      "curve": "Exponential",
+      "source": "ModWheel",
+      "target": "olap_delayFeedback"
     },
     {
-      "source": "Aftertouch",
-      "target": "olap_damping",
       "amount": 0.4,
-      "curve": "Linear"
+      "curve": "Linear",
+      "source": "Aftertouch",
+      "target": "olap_damping"
     }
   ],
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "mood": "Prism",
+  "name": "Feedback Rise",
+  "parameters": {
+    "Overlap": {
+      "olap_damping": 0.38,
+      "olap_decay": 2.0,
+      "olap_delayFeedback": 0.35,
+      "olap_diffusion": 0.6,
+      "olap_knotType": 1,
+      "olap_macroCharacter": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_modDepth": 0.18,
+      "olap_modRate": 0.14,
+      "olap_spread": 0.8
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "feedback",
+    "swell",
+    "expressive",
+    "edge",
+    "prism",
+    "dangerous"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

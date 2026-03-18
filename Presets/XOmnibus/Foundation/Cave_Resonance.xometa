@@ -1,34 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Cave Resonance",
-  "mood": "Foundation",
-  "sonic_dna": {
-    "brightness": 0.0655,
-    "warmth": 0.8372,
-    "movement": 0.251,
-    "density": 0.6232,
-    "space": 0.329,
-    "aggression": 0.3119
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Cavernous dub tone, heavy tape saturation",
   "dna": {
+    "aggression": 0.3119,
     "brightness": 0.0655,
-    "warmth": 0.8372,
-    "movement": 0.251,
     "density": 0.6232,
+    "movement": 0.251,
     "space": 0.329,
-    "aggression": 0.3119
+    "warmth": 0.8372
   },
   "engines": [
-    "OVERDUB"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Cavernous dub tone, heavy tape saturation",
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme",
-    "anchor"
+    "Overdub"
   ],
   "macroLabels": [
     "VOICE",
@@ -37,24 +23,38 @@
     "PANIC"
   ],
   "macros": {
-    "VOICE": 0.3433,
-    "SEND": 0.765,
     "ECHO": 0.7108,
-    "PANIC": 0.5754
+    "PANIC": 0.5754,
+    "SEND": 0.765,
+    "VOICE": 0.3433
   },
-  "couplingIntensity": "None",
+  "mood": "Foundation",
+  "name": "Cave Resonance",
   "parameters": {
-    "OVERDUB": {
-      "dub_macro_voice": 0.3433,
-      "dub_macro_send": 0.765,
+    "Overdub": {
+      "dub_couplingBus": 0,
+      "dub_couplingLevel": 0.5,
       "dub_macro_echo": 0.7108,
       "dub_macro_panic": 0.5754,
-      "dub_outputLevel": 0.85,
-      "dub_couplingLevel": 0.5,
-      "dub_couplingBus": 0
+      "dub_macro_send": 0.765,
+      "dub_macro_voice": 0.3433,
+      "dub_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.3119,
+    "brightness": 0.0655,
+    "density": 0.6232,
+    "movement": 0.251,
+    "space": 0.329,
+    "warmth": 0.8372
+  },
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_DENSE_FAM_VOL_8",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.633,
+    "source": "Osteria",
+    "target": "Ohm",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.54,
+    "brightness": 0.916,
+    "density": 0.881,
+    "movement": 0.882,
+    "space": 0.672,
+    "warmth": 0.958
+  },
   "engines": [
-    "OHM",
-    "OSTERIA"
+    "Ohm",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.929,
+    "COUPLING": 0.698,
+    "MOVEMENT": 0.895,
+    "SPACE": 0.694
+  },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_KINETIC_DENSE_FAM_VOL_8",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.919,
-      "macro_movement": 0.897,
       "macro_coupling": 0.685,
+      "macro_movement": 0.897,
       "macro_space": 0.701
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.939,
-      "macro_movement": 0.892,
       "macro_coupling": 0.711,
+      "macro_movement": 0.892,
       "macro_space": 0.686
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OSTERIA",
-    "target": "OHM",
-    "amount": 0.633
-  },
-  "dna": {
-    "brightness": 0.916,
-    "warmth": 0.958,
-    "movement": 0.882,
-    "density": 0.881,
-    "space": 0.672,
-    "aggression": 0.54
-  },
-  "macros": {
-    "CHARACTER": 0.929,
-    "MOVEMENT": 0.895,
-    "COUPLING": 0.698,
-    "SPACE": 0.694
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "dense",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

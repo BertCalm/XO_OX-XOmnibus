@@ -1,45 +1,52 @@
 {
-  "name": "DARK COLD FURY FAM 16",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OUTWIT",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.057,
-      "macro_movement": 0.657,
-      "macro_coupling": 0.719,
-      "macro_space": 0.585
-    },
-    "OCEANIC": {
-      "macro_character": 0.06,
-      "macro_movement": 0.543,
-      "macro_coupling": 0.707,
-      "macro_space": 0.477
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OUTWIT",
-    "target": "OCEANIC",
-    "amount": 0.916
+    "amount": 0.916,
+    "source": "Outwit",
+    "target": "Oceanic",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.963,
     "brightness": 0.036,
-    "warmth": 0.079,
-    "movement": 0.657,
     "density": 0.641,
+    "movement": 0.657,
     "space": 0.585,
-    "aggression": 0.963
+    "warmth": 0.079
   },
+  "engines": [
+    "Outwit",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.057,
-    "MOVEMENT": 0.657,
     "COUPLING": 0.719,
+    "MOVEMENT": 0.657,
     "SPACE": 0.585
   },
+  "mood": "Family",
+  "name": "DARK COLD FURY FAM 16",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.06,
+      "macro_coupling": 0.707,
+      "macro_movement": 0.543,
+      "macro_space": 0.477
+    },
+    "Outwit": {
+      "macro_character": 0.057,
+      "macro_coupling": 0.719,
+      "macro_movement": 0.657,
+      "macro_space": 0.585
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
@@ -47,5 +54,6 @@
     "aggressive",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

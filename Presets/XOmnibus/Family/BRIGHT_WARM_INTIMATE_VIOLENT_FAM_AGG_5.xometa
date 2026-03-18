@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_FAM_AGG_5",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OLE",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "OLE": {
-      "macro_character": 0.798,
-      "macro_movement": 0.455,
-      "macro_coupling": 0.429,
-      "macro_space": 0.674
-    },
-    "ODDFELIX": {
-      "macro_character": 0.845,
-      "macro_movement": 0.458,
-      "macro_coupling": 0.47,
-      "macro_space": 0.707
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OLE",
-    "target": "ODDFELIX",
-    "amount": 0.965
+    "amount": 0.965,
+    "source": "Ole",
+    "target": "OddfeliX",
+    "type": "TIMBRE_BLEND"
   },
   "dna": {
+    "aggression": 0.905,
     "brightness": 0.907,
-    "warmth": 0.923,
-    "movement": 0.532,
     "density": 0.593,
+    "movement": 0.532,
     "space": 0.03,
-    "aggression": 0.905
+    "warmth": 0.923
   },
+  "engines": [
+    "Ole",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.798,
-    "MOVEMENT": 0.455,
     "COUPLING": 0.429,
+    "MOVEMENT": 0.455,
     "SPACE": 0.674
   },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_FAM_AGG_5",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.845,
+      "macro_coupling": 0.47,
+      "macro_movement": 0.458,
+      "macro_space": 0.707
+    },
+    "Ole": {
+      "macro_character": 0.798,
+      "macro_coupling": 0.429,
+      "macro_movement": 0.455,
+      "macro_space": 0.674
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "bright",
     "warm",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

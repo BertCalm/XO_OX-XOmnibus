@@ -1,45 +1,52 @@
 {
-  "name": "HOT KINETIC DENSE BALANCED AET SPC 3",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "ORIGAMI",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.789,
-      "macro_movement": 0.979,
-      "macro_coupling": 0.625,
-      "macro_space": 0.398
-    },
-    "ORBITAL": {
-      "macro_character": 0.806,
-      "macro_movement": 0.978,
-      "macro_coupling": 0.609,
-      "macro_space": 0.394
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORIGAMI",
-    "target": "ORBITAL",
-    "amount": 0.862
+    "amount": 0.862,
+    "source": "Origami",
+    "target": "Orbital",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.973,
     "brightness": 0.657,
-    "warmth": 0.921,
-    "movement": 0.979,
     "density": 0.924,
+    "movement": 0.979,
     "space": 0.398,
-    "aggression": 0.973
+    "warmth": 0.921
   },
+  "engines": [
+    "Origami",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.789,
-    "MOVEMENT": 0.979,
     "COUPLING": 0.625,
+    "MOVEMENT": 0.979,
     "SPACE": 0.398
   },
+  "mood": "Aether",
+  "name": "HOT KINETIC DENSE BALANCED AET SPC 3",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.806,
+      "macro_coupling": 0.609,
+      "macro_movement": 0.978,
+      "macro_space": 0.394
+    },
+    "Origami": {
+      "macro_character": 0.789,
+      "macro_coupling": 0.625,
+      "macro_movement": 0.979,
+      "macro_space": 0.398
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -49,5 +56,6 @@
     "warm",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

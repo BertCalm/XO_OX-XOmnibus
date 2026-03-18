@@ -1,50 +1,58 @@
 {
-  "name": "Grain Solitude",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OPAL",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.15,
-      "macro_movement": 0.55,
-      "macro_coupling": 0.68,
-      "macro_space": 0.92
-    },
-    "OBSCURA": {
-      "macro_character": 0.12,
-      "macro_movement": 0.5,
-      "macro_coupling": 0.73,
-      "macro_space": 0.95
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OPAL",
-    "target": "OBSCURA",
-    "amount": 0.68
+    "amount": 0.68,
+    "source": "Opal",
+    "target": "Obscura",
+    "type": "SPECTRAL_MORPH"
   },
+  "description": "A single grain drifts through Obscura's daguerreotype haze — spectral loneliness.",
   "dna": {
+    "aggression": 0.07,
     "brightness": 0.08,
-    "warmth": 0.12,
-    "movement": 0.55,
     "density": 0.09,
+    "movement": 0.55,
     "space": 0.92,
-    "aggression": 0.07
+    "warmth": 0.12
   },
+  "engines": [
+    "Opal",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.15,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.68,
+    "MOVEMENT": 0.55,
     "SPACE": 0.92
   },
+  "mood": "Entangled",
+  "name": "Grain Solitude",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.12,
+      "macro_coupling": 0.73,
+      "macro_movement": 0.5,
+      "macro_space": 0.95
+    },
+    "Opal": {
+      "macro_character": 0.15,
+      "macro_coupling": 0.68,
+      "macro_movement": 0.55,
+      "macro_space": 0.92
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "granular",
     "spectral"
   ],
-  "description": "A single grain drifts through Obscura's daguerreotype haze \u2014 spectral loneliness."
+  "version": "1.0"
 }

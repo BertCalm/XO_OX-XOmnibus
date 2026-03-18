@@ -1,43 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Glacial Scatter",
-  "mood": "Aether",
-  "engines": ["Opal"],
-  "author": "Guru Bin — Engine Deepening 2026-03-16",
-  "version": "1.0.0",
-  "description": "Large grains (0.75) at low density — you hear the silence between. Position scatter is 0.2 so the grains drift slowly across the source material. Pitch scatter nearly zero. Six-second attack, four-second release. The texture coalesces from nothing and returns to nothing. This is granular erosion, not synthesis.",
-  "tags": ["aether", "granular", "slow", "ambient", "space", "sparse", "glacial"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.4,
-    "movement": 0.15,
-    "density": 0.3,
-    "space": 0.9,
-    "aggression": 0.03
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Large grains (0.75) at low density — you hear the silence between. Position scatter is 0.2 so the grains drift slowly across the source material. Pitch scatter nearly zero. Six-second attack, four-second release. The texture coalesces from nothing and returns to nothing. This is granular erosion, not synthesis.",
+  "dna": {
+    "aggression": 0.03,
+    "brightness": 0.55,
+    "density": 0.3,
+    "movement": 0.15,
+    "space": 0.9,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Glacial Scatter",
   "parameters": {
     "Opal": {
-      "opal_grainSize": 0.75,
-      "opal_density": 0.28,
-      "opal_posScatter": 0.2,
-      "opal_pitchScatter": 0.04,
-      "opal_filterCutoff": 0.68,
-      "opal_filterReso": 0.1,
       "opal_ampAttack": 6.0,
       "opal_ampDecay": 1.5,
-      "opal_ampSustain": 0.85,
       "opal_ampRelease": 4.0,
-      "opal_speed": 0.35,
-      "opal_reverse": 0.0,
+      "opal_ampSustain": 0.85,
+      "opal_density": 0.28,
+      "opal_filterCutoff": 0.68,
+      "opal_filterReso": 0.1,
+      "opal_grainSize": 0.75,
       "opal_macroCharacter": 0.0,
-      "opal_macroMovement": 0.0,
       "opal_macroCoupling": 0.0,
-      "opal_macroSpace": 0.0
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitchScatter": 0.04,
+      "opal_posScatter": 0.2,
+      "opal_reverse": 0.0,
+      "opal_speed": 0.35
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "granular",
+    "slow",
+    "ambient",
+    "space",
+    "sparse",
+    "glacial"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

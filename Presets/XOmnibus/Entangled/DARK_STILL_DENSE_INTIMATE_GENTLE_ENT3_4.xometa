@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "DARK_STILL_DENSE_INTIMATE_GENTLE_ENT3_4",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.94,
+    "source": "Orbital",
+    "target": "Origami",
+    "type": "PITCH_SYNC"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_STILL_DENSE_INTIMATE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.0365,
+    "brightness": 0.0625,
+    "density": 0.9857,
+    "movement": 0.0952,
+    "space": 0.0863,
+    "warmth": 0.4008
+  },
   "engines": [
-    "ORBITAL",
-    "ORIGAMI"
+    "Orbital",
+    "Origami"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_STILL_DENSE_INTIMATE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7562,
+    "COUPLING": 0.8723,
+    "MOVEMENT": 0.0997,
+    "SPACE": 0.4148
+  },
+  "mood": "Entangled",
+  "name": "DARK_STILL_DENSE_INTIMATE_GENTLE_ENT3_4",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.9492,
+      "macro_coupling": 0.8245,
+      "macro_movement": 0.1017,
+      "macro_space": 0.6576
+    },
+    "Origami": {
+      "macro_character": 0.5632,
+      "macro_coupling": 0.9201,
+      "macro_movement": 0.0976,
+      "macro_space": 0.172
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +66,6 @@
     "dense",
     "intimate"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.9492,
-      "macro_movement": 0.1017,
-      "macro_coupling": 0.8245,
-      "macro_space": 0.6576
-    },
-    "ORIGAMI": {
-      "macro_character": 0.5632,
-      "macro_movement": 0.0976,
-      "macro_coupling": 0.9201,
-      "macro_space": 0.172
-    }
-  },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORBITAL",
-    "target": "ORIGAMI",
-    "amount": 0.94
-  },
-  "macros": {
-    "CHARACTER": 0.7562,
-    "MOVEMENT": 0.0997,
-    "COUPLING": 0.8723,
-    "SPACE": 0.4148
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.0625,
-    "warmth": 0.4008,
-    "movement": 0.0952,
-    "density": 0.9857,
-    "space": 0.0863,
-    "aggression": 0.0365
-  }
+  "version": "1.0.0"
 }

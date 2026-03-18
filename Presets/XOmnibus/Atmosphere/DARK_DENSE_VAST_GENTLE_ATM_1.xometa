@@ -1,50 +1,58 @@
 {
-  "name": "DARK_DENSE_VAST_GENTLE_ATM_1",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.606,
+    "source": "OddOscar",
+    "target": "Orbital",
+    "type": "SPATIAL_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.129,
+    "brightness": 0.075,
+    "density": 0.865,
+    "movement": 0.636,
+    "space": 0.967,
+    "warmth": 0.41
+  },
   "engines": [
-    "ODDOSCAR",
-    "ORBITAL"
+    "OddOscar",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.586,
+    "COUPLING": 0.735,
+    "MOVEMENT": 0.641,
+    "SPACE": 0.919
+  },
+  "mood": "Atmosphere",
+  "name": "DARK_DENSE_VAST_GENTLE_ATM_1",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.586,
-      "macro_movement": 0.641,
       "macro_coupling": 0.735,
+      "macro_movement": 0.641,
       "macro_space": 0.919
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.493,
-      "macro_movement": 0.68,
       "macro_coupling": 0.761,
+      "macro_movement": 0.68,
       "macro_space": 0.81
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ODDOSCAR",
-    "target": "ORBITAL",
-    "amount": 0.606
-  },
-  "dna": {
-    "brightness": 0.075,
-    "warmth": 0.41,
-    "movement": 0.636,
-    "density": 0.865,
-    "space": 0.967,
-    "aggression": 0.129
-  },
-  "macros": {
-    "CHARACTER": 0.586,
-    "MOVEMENT": 0.641,
-    "COUPLING": 0.735,
-    "SPACE": 0.919
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "dense",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

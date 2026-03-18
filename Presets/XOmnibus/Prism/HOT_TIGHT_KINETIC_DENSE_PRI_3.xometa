@@ -1,47 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "HOT TIGHT KINETIC DENSE PRI 3",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "High",
+    "sourceEngine": "Overlap",
+    "targetEngine": null,
+    "type": "Envelope"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Prism preset: HOT TIGHT KINETIC DENSE PRI 3.",
+  "dna": {
+    "aggression": 0.589,
+    "brightness": 0.578,
+    "density": 0.905,
+    "movement": 0.897,
+    "space": 0.101,
+    "warmth": 0.942
+  },
   "engines": [
     "Overlap"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Prism preset: HOT TIGHT KINETIC DENSE PRI 3.",
-  "tags": [
-    "x-high-warmth",
-    "x-high-density",
-    "x-high-movement",
-    "x-low-space"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "High",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "HOT TIGHT KINETIC DENSE PRI 3",
   "parameters": {},
-  "coupling": {
-    "type": "Envelope",
-    "intensity": "High",
-    "sourceEngine": "Overlap",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.578,
-    "warmth": 0.942,
-    "aggression": 0.589,
-    "density": 0.905,
-    "movement": 0.897,
-    "space": 0.101
-  }
+  "tags": [
+    "x-high-warmth",
+    "x-high-density",
+    "x-high-movement",
+    "x-low-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

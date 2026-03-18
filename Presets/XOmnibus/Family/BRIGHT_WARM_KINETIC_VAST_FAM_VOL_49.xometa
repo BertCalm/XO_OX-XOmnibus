@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_VAST_FAM_VOL_49",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.638,
+    "source": "Organon",
+    "target": "Origami",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.446,
+    "brightness": 0.877,
+    "density": 0.576,
+    "movement": 0.889,
+    "space": 0.876,
+    "warmth": 0.952
+  },
   "engines": [
-    "ORGANON",
-    "ORIGAMI"
+    "Organon",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.898,
+    "COUPLING": 0.514,
+    "MOVEMENT": 0.884,
+    "SPACE": 0.867
+  },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_KINETIC_VAST_FAM_VOL_49",
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.9,
-      "macro_movement": 0.86,
       "macro_coupling": 0.493,
+      "macro_movement": 0.86,
       "macro_space": 0.863
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.896,
-      "macro_movement": 0.908,
       "macro_coupling": 0.534,
+      "macro_movement": 0.908,
       "macro_space": 0.87
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORGANON",
-    "target": "ORIGAMI",
-    "amount": 0.638
-  },
-  "dna": {
-    "brightness": 0.877,
-    "warmth": 0.952,
-    "movement": 0.889,
-    "density": 0.576,
-    "space": 0.876,
-    "aggression": 0.446
-  },
-  "macros": {
-    "CHARACTER": 0.898,
-    "MOVEMENT": 0.884,
-    "COUPLING": 0.514,
-    "SPACE": 0.867
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "vast",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

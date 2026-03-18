@@ -1,48 +1,94 @@
 {
-  "schema_version": 1,
-  "name": "Color Storm",
-  "mood": "Prism",
-  "engines": ["Octopus"],
-  "author": "Guru Bin — Prism Expression 2026-03-16",
-  "version": "1.0.0",
-  "description": "Maximum cephalopod expression — the full alien display. chromaDepth holds at 0.6, colours already shifting across the skin. Mod wheel drives chromaDepth to 0.95 and armSpread to 0.88 simultaneously — a bilateral escalation into total display, the chromatophores firing at full bandwidth, arms flung wide, the signal overwhelming. Aftertouch triggers the ink cloud — a dense pulse of armour that darkens the texture suddenly before dissipating. Velocity controls armDepth: the quietest notes are still, precise, individual arm movements; hard strikes activate the full 8-arm gesture. The octopus at maximum declaration.",
-  "tags": ["octopus", "chromatophore", "display", "expression", "mod-wheel", "aftertouch", "prism", "alien"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-16",
-  "modMatrix": [
-    {"source": "modWheel", "destination": "octo_chromaDepth", "amount": 0.35},
-    {"source": "modWheel", "destination": "octo_armSpread", "amount": 0.48},
-    {"source": "modWheel", "destination": "octo_filterCutoff", "amount": 0.4},
-    {"source": "aftertouch", "destination": "octo_inkCloud", "amount": 0.8},
-    {"source": "aftertouch", "destination": "octo_filterReso", "amount": 0.45},
-    {"source": "velocity", "destination": "octo_armDepth", "amount": 0.7},
-    {"source": "velocity", "destination": "octo_chromaDepth", "amount": 0.3}
+  "description": "Maximum cephalopod expression — the full alien display. chromaDepth holds at 0.6, colours already shifting across the skin. Mod wheel drives chromaDepth to 0.95 and armSpread to 0.88 simultaneously — a bilateral escalation into total display, the chromatophores firing at full bandwidth, arms flung wide, the signal overwhelming. Aftertouch triggers the ink cloud — a dense pulse of armour that darkens the texture suddenly before dissipating. Velocity controls armDepth: the quietest notes are still, precise, individual arm movements; hard strikes activate the full 8-arm gesture. The octopus at maximum declaration.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.65,
+    "density": 0.65,
+    "movement": 0.78,
+    "space": 0.5,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Octopus"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "modMatrix": [
+    {
+      "amount": 0.35,
+      "destination": "octo_chromaDepth",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.48,
+      "destination": "octo_armSpread",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.4,
+      "destination": "octo_filterCutoff",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.8,
+      "destination": "octo_inkCloud",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.45,
+      "destination": "octo_filterReso",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.7,
+      "destination": "octo_armDepth",
+      "source": "velocity"
+    },
+    {
+      "amount": 0.3,
+      "destination": "octo_chromaDepth",
+      "source": "velocity"
+    }
+  ],
+  "mood": "Prism",
+  "name": "Color Storm",
   "parameters": {
     "Octopus": {
       "octo_armDepth": 0.45,
-      "octo_chromaDepth": 0.6,
-      "octo_inkCloud": 0.05,
       "octo_armSpread": 0.4,
+      "octo_attack": 0.06,
+      "octo_chromaDepth": 0.6,
+      "octo_decay": 0.55,
       "octo_filterCutoff": 2600.0,
       "octo_filterReso": 0.18,
-      "octo_attack": 0.06,
-      "octo_decay": 0.55,
-      "octo_sustain": 0.6,
+      "octo_inkCloud": 0.05,
+      "octo_level": 0.78,
       "octo_release": 2.5,
-      "octo_level": 0.78
+      "octo_sustain": 0.6
     }
   },
-  "coupling": { "pairs": [] },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.65,
-    "warmth": 0.55,
-    "movement": 0.78,
-    "density": 0.65,
-    "space": 0.5,
-    "aggression": 0.55
-  }
+  "tags": [
+    "octopus",
+    "chromatophore",
+    "display",
+    "expression",
+    "mod-wheel",
+    "aftertouch",
+    "prism",
+    "alien"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

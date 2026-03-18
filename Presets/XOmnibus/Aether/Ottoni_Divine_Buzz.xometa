@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Divine Buzz",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Lake depth and spectral shifting push these brass tones beyond the physical. Something vast.",
+  "dna": {
+    "aggression": 0.31,
+    "brightness": 0.49,
+    "density": 0.8,
+    "movement": 0.6,
+    "space": 0.69,
+    "warmth": 0.39
+  },
   "engines": [
     "Ottoni"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "brass",
-    "sax",
-    "aether",
-    "experimental",
-    "aether"
   ],
   "macroLabels": [
     "EMBOUCHURE",
@@ -20,48 +21,47 @@
     "FOREIGN",
     "LAKE"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.49,
-    "warmth": 0.39,
-    "movement": 0.6,
-    "density": 0.8,
-    "space": 0.69,
-    "aggression": 0.31
-  },
+  "mood": "Aether",
+  "name": "Divine Buzz",
   "parameters": {
     "Ottoni": {
+      "otto_chorusRate": 1.0,
+      "otto_damping": 0.991,
+      "otto_delayMix": 0.307,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.063,
+      "otto_driveAmount": 0.07,
+      "otto_foreignCold": 0.408,
+      "otto_foreignDrift": 0.24,
+      "otto_foreignStretch": 0.159,
+      "otto_macroEmbouchure": 0.548,
+      "otto_macroForeign": 0.589,
+      "otto_macroGrow": 0.411,
+      "otto_macroLake": 0.397,
+      "otto_reverbSize": 0.365,
+      "otto_sympatheticAmt": 0.298,
+      "otto_teenBore": 0.536,
+      "otto_teenEmbouchure": 0.679,
+      "otto_teenInst": 4,
+      "otto_teenLevel": 0.383,
+      "otto_teenVibratoDepth": 0.334,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 4,
       "otto_toddlerLevel": 0.443,
       "otto_toddlerPressure": 0.271,
-      "otto_toddlerInst": 4,
-      "otto_tweenLevel": 0.579,
       "otto_tweenEmbouchure": 0.42,
-      "otto_tweenValve": 0.455,
       "otto_tweenInst": 4,
-      "otto_teenLevel": 0.383,
-      "otto_teenEmbouchure": 0.679,
-      "otto_teenBore": 0.536,
-      "otto_teenInst": 4,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.334,
-      "otto_damping": 0.991,
-      "otto_sympatheticAmt": 0.298,
-      "otto_driftRate": 0.063,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.159,
-      "otto_foreignDrift": 0.24,
-      "otto_foreignCold": 0.408,
-      "otto_reverbSize": 0.365,
-      "otto_chorusRate": 1.0,
-      "otto_driveAmount": 0.07,
-      "otto_delayMix": 0.307,
-      "otto_macroEmbouchure": 0.548,
-      "otto_macroGrow": 0.411,
-      "otto_macroForeign": 0.589,
-      "otto_macroLake": 0.397
+      "otto_tweenLevel": 0.579,
+      "otto_tweenValve": 0.455
     }
   },
-  "coupling": null,
-  "description": "Lake depth and spectral shifting push these brass tones beyond the physical. Something vast."
+  "schema_version": 1,
+  "tags": [
+    "brass",
+    "sax",
+    "aether",
+    "experimental",
+    "aether"
+  ],
+  "version": "1.0.0"
 }

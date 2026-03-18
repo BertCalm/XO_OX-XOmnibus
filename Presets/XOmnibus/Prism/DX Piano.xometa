@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "DX Piano",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expressive keys voice with warm character.",
+  "dna": {
+    "aggression": 0.021,
+    "brightness": 0.495,
+    "density": 0.12,
+    "movement": 0.0,
+    "space": 0.154,
+    "warmth": 0.0
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expressive keys voice with warm character.",
-  "tags": [
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Keys",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Keys",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "DX Piano",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 3.0,
-      "drift_oscA_level": 0.8,
-      "drift_oscA_fmDepth": 0.35,
-      "drift_oscB_mode": 3.0,
-      "drift_oscB_level": 0.4,
-      "drift_oscB_fmDepth": 0.1,
-      "drift_filterCutoff": 10000.0,
-      "drift_filterReso": 0.05,
       "drift_attack": 1.0,
       "drift_decay": 1000.0,
-      "drift_sustain": 0.2,
+      "drift_filterCutoff": 10000.0,
+      "drift_filterReso": 0.05,
+      "drift_level": -3.0,
+      "drift_oscA_fmDepth": 0.35,
+      "drift_oscA_level": 0.8,
+      "drift_oscA_mode": 3.0,
+      "drift_oscB_fmDepth": 0.1,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_mode": 3.0,
       "drift_release": 500.0,
-      "drift_level": -3.0
+      "drift_sustain": 0.2
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.495,
-    "warmth": 0.0,
-    "movement": 0.0,
-    "density": 0.12,
-    "space": 0.154,
-    "aggression": 0.021
-  }
+  "tags": [
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

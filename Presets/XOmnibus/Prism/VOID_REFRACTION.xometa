@@ -1,48 +1,56 @@
 {
-  "name": "VOID REFRACTION",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.574,
+    "source": "Overdub",
+    "target": "Overlap",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.271,
+    "brightness": 0.106,
+    "density": 0.658,
+    "movement": 0.869,
+    "space": 0.875,
+    "warmth": 0.679
+  },
   "engines": [
-    "OVERDUB",
-    "OVERLAP"
+    "Overdub",
+    "Overlap"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.515,
+    "COUPLING": 0.503,
+    "MOVEMENT": 0.556,
+    "SPACE": 0.287
+  },
+  "mood": "Prism",
+  "name": "VOID REFRACTION",
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.844,
-      "macro_movement": 0.638,
       "macro_coupling": 0.001,
+      "macro_movement": 0.638,
       "macro_space": 0.069
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.046,
-      "macro_movement": 0.759,
       "macro_coupling": 0.088,
+      "macro_movement": 0.759,
       "macro_space": 0.223
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OVERDUB",
-    "target": "OVERLAP",
-    "amount": 0.574
-  },
-  "dna": {
-    "brightness": 0.106,
-    "warmth": 0.679,
-    "movement": 0.869,
-    "density": 0.658,
-    "space": 0.875,
-    "aggression": 0.271
-  },
-  "macros": {
-    "CHARACTER": 0.515,
-    "MOVEMENT": 0.556,
-    "COUPLING": 0.503,
-    "SPACE": 0.287
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-  ]
+  ],
+  "version": "1.0"
 }

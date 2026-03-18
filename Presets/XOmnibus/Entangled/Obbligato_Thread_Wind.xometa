@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Thread Wind",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Flute and clarinet interlock in close conversation. Their phrasing overlaps by design.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.61,
+    "density": 0.66,
+    "movement": 0.5,
+    "space": 0.4,
+    "warmth": 0.48
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "entangled",
-    "coupled",
-    "entangled"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.61,
-    "warmth": 0.48,
-    "movement": 0.5,
-    "density": 0.66,
-    "space": 0.4,
-    "aggression": 0.2
-  },
+  "mood": "Entangled",
+  "name": "Thread Wind",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.625,
-      "obbl_embouchureA": 0.543,
       "obbl_airFlutterA": 0.241,
-      "obbl_instrumentA": 2,
       "obbl_bodySizeA": 0.373,
-      "obbl_breathB": 0.846,
-      "obbl_reedStiffness": 0.619,
-      "obbl_reedBite": 0.301,
-      "obbl_instrumentB": 2,
       "obbl_bodySizeB": 0.41,
-      "obbl_voiceRouting": 2,
-      "obbl_damping": 0.994,
-      "obbl_sympatheticAmt": 0.438,
-      "obbl_driftRate": 0.131,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.0,
       "obbl_bondIntensity": 0.643,
       "obbl_bondRate": 0.289,
-      "obbl_fxAChorus": 0.272,
+      "obbl_bondStage": 0.0,
+      "obbl_breathA": 0.625,
+      "obbl_breathB": 0.846,
+      "obbl_damping": 0.994,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.131,
+      "obbl_embouchureA": 0.543,
       "obbl_fxABrightDelay": 0.163,
-      "obbl_fxAPlate": 0.068,
+      "obbl_fxAChorus": 0.272,
       "obbl_fxAExciter": 0.033,
-      "obbl_fxBPhaser": 0.246,
+      "obbl_fxAPlate": 0.068,
       "obbl_fxBDarkDelay": 0.433,
+      "obbl_fxBPhaser": 0.246,
       "obbl_fxBSpring": 0.133,
       "obbl_fxBTapeSat": 0.029,
-      "obbl_macroBreath": 0.597,
+      "obbl_instrumentA": 2,
+      "obbl_instrumentB": 2,
       "obbl_macroBond": 0.132,
+      "obbl_macroBreath": 0.597,
       "obbl_macroMischief": 0.0,
-      "obbl_macroWind": 0.312
+      "obbl_macroWind": 0.312,
+      "obbl_reedBite": 0.301,
+      "obbl_reedStiffness": 0.619,
+      "obbl_sympatheticAmt": 0.438,
+      "obbl_voiceRouting": 2
     }
   },
-  "coupling": null,
-  "description": "Flute and clarinet interlock in close conversation. Their phrasing overlaps by design."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "entangled",
+    "coupled",
+    "entangled"
+  ],
+  "version": "1.0.0"
 }

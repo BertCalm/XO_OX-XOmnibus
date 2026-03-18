@@ -1,49 +1,57 @@
 {
-  "name": "Iron Hunger",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.78,
+    "source": "Oblong",
+    "target": "Ouroboros",
+    "type": "DYNAMICS_SHARE"
+  },
+  "dna": {
+    "aggression": 0.71,
+    "brightness": 0.39,
+    "density": 0.67,
+    "movement": 0.64,
+    "space": 0.48,
+    "warmth": 0.96
+  },
   "engines": [
-    "OBLONG",
-    "OUROBOROS"
+    "Oblong",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.85,
+    "COUPLING": 0.8,
+    "MOVEMENT": 0.71,
+    "SPACE": 0.49
+  },
+  "mood": "Entangled",
+  "name": "Iron Hunger",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.96,
-      "macro_movement": 0.75,
       "macro_coupling": 0.84,
+      "macro_movement": 0.75,
       "macro_space": 0.44
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.74,
-      "macro_movement": 0.66,
       "macro_coupling": 0.77,
+      "macro_movement": 0.66,
       "macro_space": 0.54
     }
   },
-  "coupling": {
-    "type": "DYNAMICS_SHARE",
-    "source": "OBLONG",
-    "target": "OUROBOROS",
-    "amount": 0.78
-  },
-  "dna": {
-    "brightness": 0.39,
-    "warmth": 0.96,
-    "movement": 0.64,
-    "density": 0.67,
-    "space": 0.48,
-    "aggression": 0.71
-  },
-  "macros": {
-    "CHARACTER": 0.85,
-    "MOVEMENT": 0.71,
-    "COUPLING": 0.8,
-    "SPACE": 0.49
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "aggressive"
-  ]
+  ],
+  "version": "1.0"
 }

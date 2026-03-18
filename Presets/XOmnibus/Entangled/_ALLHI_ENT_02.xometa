@@ -1,49 +1,57 @@
 {
-  "name": "ALLHI ENT 02",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.765,
+    "source": "Onset",
+    "target": "Orphica",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.921,
+    "brightness": 0.977,
+    "density": 0.972,
+    "movement": 0.912,
+    "space": 0.936,
+    "warmth": 0.608
+  },
   "engines": [
-    "ONSET",
-    "ORPHICA"
+    "Onset",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.792,
+    "COUPLING": 0.929,
+    "MOVEMENT": 0.942,
+    "SPACE": 0.936
+  },
+  "mood": "Entangled",
+  "name": "ALLHI ENT 02",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.792,
-      "macro_movement": 0.942,
       "macro_coupling": 0.929,
+      "macro_movement": 0.942,
       "macro_space": 0.936
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.792,
-      "macro_movement": 0.942,
       "macro_coupling": 0.929,
+      "macro_movement": 0.942,
       "macro_space": 0.936
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ONSET",
-    "target": "ORPHICA",
-    "amount": 0.765
-  },
-  "dna": {
-    "brightness": 0.977,
-    "warmth": 0.608,
-    "movement": 0.912,
-    "density": 0.972,
-    "space": 0.936,
-    "aggression": 0.921
-  },
-  "macros": {
-    "CHARACTER": 0.792,
-    "MOVEMENT": 0.942,
-    "COUPLING": 0.929,
-    "SPACE": 0.936
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

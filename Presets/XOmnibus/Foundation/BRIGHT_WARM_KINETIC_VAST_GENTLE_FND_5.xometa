@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_WARM_KINETIC_VAST_GENTLE_FND_5",
-  "mood": "Foundation",
-  "engines": [
-    "ORIGAMI",
-    "ODDOSCAR"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.486,
+    "source": "Origami",
+    "target": "OddOscar",
+    "type": "FILTER_MOD"
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_WARM_KINETIC_VAST_GENTLE. Variant 5.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.917,
+    "density": 0.414,
+    "movement": 0.964,
+    "space": 0.954,
+    "warmth": 0.981
+  },
+  "engines": [
+    "Origami",
+    "OddOscar"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.984,
+    "COUPLING": 0.496,
+    "MOVEMENT": 0.885,
+    "SPACE": 0.912
+  },
+  "mood": "Foundation",
+  "name": "BRIGHT_WARM_KINETIC_VAST_GENTLE_FND_5",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.552,
+      "macro_movement": 0.895,
+      "macro_space": 0.87
+    },
+    "Origami": {
+      "macro_character": 0.967,
+      "macro_coupling": 0.439,
+      "macro_movement": 0.875,
+      "macro_space": 0.955
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "kinetic",
@@ -19,53 +66,6 @@
     "foundation",
     "gentle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.967,
-      "macro_movement": 0.875,
-      "macro_coupling": 0.439,
-      "macro_space": 0.955
-    },
-    "ODDOSCAR": {
-      "macro_character": 1.0,
-      "macro_movement": 0.895,
-      "macro_coupling": 0.552,
-      "macro_space": 0.87
-    }
-  },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ORIGAMI",
-    "target": "ODDOSCAR",
-    "amount": 0.486
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.917,
-    "warmth": 0.981,
-    "movement": 0.964,
-    "density": 0.414,
-    "space": 0.954,
-    "aggression": 0.1
-  },
-  "macros": {
-    "CHARACTER": 0.984,
-    "MOVEMENT": 0.885,
-    "COUPLING": 0.496,
-    "SPACE": 0.912
-  }
+  "version": "1.0.0"
 }

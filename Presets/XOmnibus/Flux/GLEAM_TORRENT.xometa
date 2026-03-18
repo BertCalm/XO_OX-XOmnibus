@@ -1,49 +1,57 @@
 {
-  "name": "GLEAM TORRENT",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.676,
+    "source": "Oblong",
+    "target": "Ottoni",
+    "type": "SPATIAL_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.389,
+    "brightness": 0.874,
+    "density": 0.948,
+    "movement": 0.44,
+    "space": 0.649,
+    "warmth": 0.667
+  },
   "engines": [
-    "OBLONG",
-    "OTTONI"
+    "Oblong",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.583,
+    "COUPLING": 0.796,
+    "MOVEMENT": 0.592,
+    "SPACE": 0.47
+  },
+  "mood": "Flux",
+  "name": "GLEAM TORRENT",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.583,
-      "macro_movement": 0.592,
       "macro_coupling": 0.796,
+      "macro_movement": 0.592,
       "macro_space": 0.47
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.553,
-      "macro_movement": 0.526,
       "macro_coupling": 0.667,
+      "macro_movement": 0.526,
       "macro_space": 0.552
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OBLONG",
-    "target": "OTTONI",
-    "amount": 0.676
-  },
-  "dna": {
-    "brightness": 0.874,
-    "warmth": 0.667,
-    "movement": 0.44,
-    "density": 0.948,
-    "space": 0.649,
-    "aggression": 0.389
-  },
-  "macros": {
-    "CHARACTER": 0.583,
-    "MOVEMENT": 0.592,
-    "COUPLING": 0.796,
-    "SPACE": 0.47
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "dense",
     "saturated"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "PRESSURE PLATE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7793,
+    "source": "Opal",
+    "target": "Orca",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.9415,
+    "brightness": 0.4842,
+    "density": 0.9319,
+    "movement": 0.279,
+    "space": 0.2985,
+    "warmth": 0.9573
+  },
   "engines": [
-    "OPAL",
-    "ORCA"
+    "Opal",
+    "Orca"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9823,
+    "COUPLING": 0.9115,
+    "MOVEMENT": 0.7712,
+    "SPACE": 0.6902
+  },
+  "mood": "Entangled",
+  "name": "PRESSURE PLATE",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.9567,
-      "macro_movement": 0.4597,
       "macro_coupling": 0.8133,
+      "macro_movement": 0.4597,
       "macro_space": 0.5463
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.6759,
-      "macro_movement": 0.8677,
       "macro_coupling": 0.8723,
+      "macro_movement": 0.8677,
       "macro_space": 0.8037
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OPAL",
-    "target": "ORCA",
-    "amount": 0.7793
-  },
-  "dna": {
-    "brightness": 0.4842,
-    "warmth": 0.9573,
-    "movement": 0.279,
-    "density": 0.9319,
-    "space": 0.2985,
-    "aggression": 0.9415
-  },
-  "macros": {
-    "CHARACTER": 0.9823,
-    "MOVEMENT": 0.7712,
-    "COUPLING": 0.9115,
-    "SPACE": 0.6902
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -48,5 +55,6 @@
     "industrial",
     "iron",
     "packed"
-  ]
+  ],
+  "version": "1.0"
 }

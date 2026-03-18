@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Tidal Pulse Organon",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "Ocean-like rhythmic swell tied to tempo.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.35,
+    "density": 0.4,
+    "movement": 0.55,
+    "space": 0.3,
+    "warmth": 0.6
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ocean-like rhythmic swell tied to tempo.",
-  "tags": [
-    "tidal",
-    "ocean",
-    "swell",
-    "rhythmic"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Tidal Pulse Organon",
   "parameters": {
     "Organon": {
-      "organon_metabolicRate": 0.8,
-      "organon_enzymeSelect": 800.0,
       "organon_catalystDrive": 0.5,
       "organon_dampingCoeff": 0.12,
-      "organon_signalFlux": 0.6,
-      "organon_phasonShift": 0.5,
+      "organon_enzymeSelect": 800.0,
       "organon_isotopeBalance": 0.4,
       "organon_lockIn": 0.6,
       "organon_membrane": 0.3,
-      "organon_noiseColor": 0.4
+      "organon_metabolicRate": 0.8,
+      "organon_noiseColor": 0.4,
+      "organon_phasonShift": 0.5,
+      "organon_signalFlux": 0.6
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.6,
-    "movement": 0.55,
-    "density": 0.4,
-    "space": 0.3,
-    "aggression": 0.1
-  }
+  "tags": [
+    "tidal",
+    "ocean",
+    "swell",
+    "rhythmic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

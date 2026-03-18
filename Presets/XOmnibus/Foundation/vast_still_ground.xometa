@@ -1,49 +1,57 @@
 {
-  "name": "VAST STILL GROUND",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.684,
+    "source": "Ombre",
+    "target": "Optic",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.456,
+    "brightness": 0.05,
+    "density": 0.848,
+    "movement": 0.518,
+    "space": 0.986,
+    "warmth": 0.249
+  },
   "engines": [
-    "OMBRE",
-    "OPTIC"
+    "Ombre",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.897,
+    "COUPLING": 0.744,
+    "MOVEMENT": 0.518,
+    "SPACE": 0.986
+  },
+  "mood": "Foundation",
+  "name": "VAST STILL GROUND",
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.988,
-      "macro_movement": 0.528,
       "macro_coupling": 0.95,
+      "macro_movement": 0.528,
       "macro_space": 1.009
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.613,
-      "macro_movement": 0.54,
       "macro_coupling": 0.505,
+      "macro_movement": 0.54,
       "macro_space": 1.006
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OMBRE",
-    "target": "OPTIC",
-    "amount": 0.684
-  },
-  "dna": {
-    "brightness": 0.05,
-    "warmth": 0.249,
-    "movement": 0.518,
-    "density": 0.848,
-    "space": 0.986,
-    "aggression": 0.456
-  },
-  "macros": {
-    "CHARACTER": 0.897,
-    "MOVEMENT": 0.518,
-    "COUPLING": 0.744,
-    "SPACE": 0.986
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

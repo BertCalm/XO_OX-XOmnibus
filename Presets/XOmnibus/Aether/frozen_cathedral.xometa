@@ -1,35 +1,43 @@
 {
-  "name": "Frozen Cathedral",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.85,
+    "density": 0.1,
+    "movement": 0.5,
+    "space": 1.0,
+    "warmth": 0.314
+  },
   "engines": [
-    "OPTIC"
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2,
+    "COUPLING": 0.1,
+    "MOVEMENT": 0.5,
+    "SPACE": 0.95
+  },
+  "mood": "Aether",
+  "name": "Frozen Cathedral",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.2,
-      "macro_movement": 0.5,
       "macro_coupling": 0.1,
+      "macro_movement": 0.5,
       "macro_space": 0.95
     }
   },
-  "dna": {
-    "brightness": 0.85,
-    "warmth": 0.314,
-    "movement": 0.5,
-    "density": 0.1,
-    "space": 1.0,
-    "aggression": 0.0
-  },
-  "macros": {
-    "CHARACTER": 0.2,
-    "MOVEMENT": 0.5,
-    "COUPLING": 0.1,
-    "SPACE": 0.95
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "crystalline",
     "ambient"
-  ]
+  ],
+  "version": "1.0"
 }

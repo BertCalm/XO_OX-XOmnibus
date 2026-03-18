@@ -1,14 +1,87 @@
 {
-  "schema_version": 1,
-  "name": "Neon Arms Abroad",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "source": "Octopus",
+        "target": "OddfeliX",
+        "type": "ENVELOPE_SHARING"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Eight arms hunting neon tetras through spectral light — a cascade of alien reflexes and schooling panic.",
+  "dna": {
+    "aggression": 0.637,
+    "brightness": 0.74,
+    "density": 0.754,
+    "movement": 0.795,
+    "space": 0.558,
+    "warmth": 0.539
+  },
   "engines": [
     "Octopus",
     "OddfeliX"
   ],
-  "author": "XO_OX Deep Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "Eight arms hunting neon tetras through spectral light — a cascade of alien reflexes and schooling panic.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Neon Arms Abroad",
+  "parameters": {
+    "Octopus": {
+      "octo_ampAttack": 0.0262,
+      "octo_ampDecay": 0.586,
+      "octo_ampRelease": 1.024,
+      "octo_ampSustain": 0.52,
+      "octo_armBaseRate": 0.777,
+      "octo_armCount": 4.0,
+      "octo_armDepth": 0.84,
+      "octo_armSpread": 0.503,
+      "octo_chromaDepth": 0.783,
+      "octo_chromaFreq": 2490.3,
+      "octo_chromaMorph": 0.521,
+      "octo_chromaSens": 0.702,
+      "octo_chromaSpeed": 0.556,
+      "octo_filterCutoff": 6681.2,
+      "octo_filterReso": 0.646,
+      "octo_inkDecay": 0.756,
+      "octo_inkDensity": 0.765,
+      "octo_inkMix": 0.393,
+      "octo_inkThreshold": 0.679,
+      "octo_level": 0.814,
+      "octo_lfo1Depth": 0.298,
+      "octo_lfo1Rate": 1.009,
+      "octo_lfo1Shape": 0.0,
+      "octo_lfo2Depth": 0.114,
+      "octo_lfo2Rate": 1.871,
+      "octo_lfo2Shape": 0.25,
+      "octo_modAttack": 0.0052,
+      "octo_modDecay": 0.147,
+      "octo_modRelease": 0.609,
+      "octo_modSustain": 0.343,
+      "octo_shiftDrift": 0.694,
+      "octo_shiftGlide": 0.233,
+      "octo_shiftMicro": 0.741,
+      "octo_suckerDecay": 0.141,
+      "octo_suckerFreq": 1666.0,
+      "octo_suckerMix": 0.226,
+      "octo_suckerReso": 0.41,
+      "octo_wtPosition": 0.51,
+      "octo_wtScanRate": 0.238
+    },
+    "OddfeliX": {
+      "snap_filterCutoff": 5100.0,
+      "snap_level": 0.719
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,79 +90,6 @@
     "alien",
     "decentralized"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "Octopus": {
-      "octo_armCount": 4.0,
-      "octo_armSpread": 0.503,
-      "octo_armBaseRate": 0.777,
-      "octo_armDepth": 0.84,
-      "octo_chromaSens": 0.702,
-      "octo_chromaSpeed": 0.556,
-      "octo_chromaMorph": 0.521,
-      "octo_chromaDepth": 0.783,
-      "octo_chromaFreq": 2490.3,
-      "octo_inkThreshold": 0.679,
-      "octo_inkDensity": 0.765,
-      "octo_inkDecay": 0.756,
-      "octo_inkMix": 0.393,
-      "octo_shiftMicro": 0.741,
-      "octo_shiftGlide": 0.233,
-      "octo_shiftDrift": 0.694,
-      "octo_suckerReso": 0.41,
-      "octo_suckerFreq": 1666.0,
-      "octo_suckerDecay": 0.141,
-      "octo_suckerMix": 0.226,
-      "octo_wtPosition": 0.51,
-      "octo_wtScanRate": 0.238,
-      "octo_filterCutoff": 6681.2,
-      "octo_filterReso": 0.646,
-      "octo_level": 0.814,
-      "octo_ampAttack": 0.0262,
-      "octo_ampDecay": 0.586,
-      "octo_ampSustain": 0.52,
-      "octo_ampRelease": 1.024,
-      "octo_modAttack": 0.0052,
-      "octo_modDecay": 0.147,
-      "octo_modSustain": 0.343,
-      "octo_modRelease": 0.609,
-      "octo_lfo1Rate": 1.009,
-      "octo_lfo1Depth": 0.298,
-      "octo_lfo1Shape": 0.0,
-      "octo_lfo2Rate": 1.871,
-      "octo_lfo2Depth": 0.114,
-      "octo_lfo2Shape": 0.25
-    },
-    "OddfeliX": {
-      "snap_level": 0.719,
-      "snap_filterCutoff": 5100.0
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "ENVELOPE_SHARING",
-        "source": "Octopus",
-        "target": "OddfeliX",
-        "amount": 0.7
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.74,
-    "warmth": 0.539,
-    "movement": 0.795,
-    "density": 0.754,
-    "space": 0.558,
-    "aggression": 0.637
-  }
+  "version": "1.0.0"
 }

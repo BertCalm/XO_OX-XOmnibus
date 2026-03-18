@@ -1,45 +1,52 @@
 {
-  "name": "DARK_KINETIC_SPARSE_GENTLE_FND_2",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OVERBITE",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.664,
-      "macro_movement": 0.23,
-      "macro_coupling": 0.701,
-      "macro_space": 0.353
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.527,
-      "macro_movement": 0.34,
-      "macro_coupling": 0.456,
-      "macro_space": 0.788
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERBITE",
-    "target": "ODDOSCAR",
-    "amount": 0.787
+    "amount": 0.787,
+    "source": "Overbite",
+    "target": "OddOscar",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.099,
     "brightness": 0.069,
-    "warmth": 0.533,
-    "movement": 0.862,
     "density": 0.103,
+    "movement": 0.862,
     "space": 0.483,
-    "aggression": 0.099
+    "warmth": 0.533
   },
+  "engines": [
+    "Overbite",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.237,
-    "MOVEMENT": 0.297,
     "COUPLING": 0.186,
+    "MOVEMENT": 0.297,
     "SPACE": 0.773
   },
+  "mood": "Foundation",
+  "name": "DARK_KINETIC_SPARSE_GENTLE_FND_2",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.527,
+      "macro_coupling": 0.456,
+      "macro_movement": 0.34,
+      "macro_space": 0.788
+    },
+    "Overbite": {
+      "macro_character": 0.664,
+      "macro_coupling": 0.701,
+      "macro_movement": 0.23,
+      "macro_space": 0.353
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -47,5 +54,6 @@
     "kinetic",
     "sparse",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

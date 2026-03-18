@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Vortex Strike",
-  "mood": "Atmosphere",
-  "engines": [
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. ONSET aggressive register.",
+  "dna": {
+    "aggression": 0.726,
+    "brightness": 0.495,
+    "density": 0.602,
+    "movement": 0.748,
+    "space": 0.585,
+    "warmth": 0.28
+  },
+  "engines": [
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.719,
+    "MUTATE": 0.656,
+    "PUNCH": 0.759,
+    "SPACE": 0.48
+  },
+  "mood": "Atmosphere",
+  "name": "Vortex Strike",
+  "parameters": {
+    "Onset": {
+      "machine": 0.719,
+      "mutate": 0.656,
+      "punch": 0.759,
+      "space": 0.48
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -16,36 +47,5 @@
     "pressure",
     "fierce"
   ],
-  "macroLabels": [
-    "MACHINE",
-    "PUNCH",
-    "SPACE",
-    "MUTATE"
-  ],
-  "dna": {
-    "brightness": 0.495,
-    "warmth": 0.28,
-    "movement": 0.748,
-    "density": 0.602,
-    "space": 0.585,
-    "aggression": 0.726
-  },
-  "parameters": {
-    "ONSET": {
-      "machine": 0.719,
-      "punch": 0.759,
-      "space": 0.48,
-      "mutate": 0.656
-    }
-  },
-  "macros": {
-    "MACHINE": 0.719,
-    "PUNCH": 0.759,
-    "SPACE": 0.48,
-    "MUTATE": 0.656
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

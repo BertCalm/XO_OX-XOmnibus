@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_5",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERDUB",
-    "ORACLE"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.6718,
-      "macro_movement": 0.9682,
-      "macro_coupling": 0.8798,
-      "macro_space": 0.0521
-    },
-    "ORACLE": {
-      "macro_character": 0.6895,
-      "macro_movement": 0.9673,
-      "macro_coupling": 0.8512,
-      "macro_space": 0.02
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OVERDUB",
-    "target": "ORACLE",
-    "amount": 0.826
+    "amount": 0.826,
+    "source": "Overdub",
+    "target": "Oracle",
+    "type": "TIMBRE_BLEND"
   },
   "dna": {
+    "aggression": 0.9321,
     "brightness": 0.9077,
-    "warmth": 0.4115,
-    "movement": 0.9853,
     "density": 0.8731,
+    "movement": 0.9853,
     "space": 0.0405,
-    "aggression": 0.9321
+    "warmth": 0.4115
   },
+  "engines": [
+    "Overdub",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.6806,
-    "MOVEMENT": 0.9677,
     "COUPLING": 0.8655,
+    "MOVEMENT": 0.9677,
     "SPACE": 0.036
   },
+  "mood": "Flux",
+  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_5",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.6895,
+      "macro_coupling": 0.8512,
+      "macro_movement": 0.9673,
+      "macro_space": 0.02
+    },
+    "Overdub": {
+      "macro_character": 0.6718,
+      "macro_coupling": 0.8798,
+      "macro_movement": 0.9682,
+      "macro_space": 0.0521
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
@@ -47,5 +54,6 @@
     "dense",
     "intimate",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

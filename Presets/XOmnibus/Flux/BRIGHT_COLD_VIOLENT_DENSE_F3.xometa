@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT COLD VIOLENT DENSE F3",
-  "mood": "Flux",
-  "sonic_dna": {
-    "brightness": 0.919,
-    "warmth": 0.053,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Sync",
+  "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme cold warmth, extreme violent aggression, extreme dense density. Maximum contrast character design.",
+  "dna": {
     "aggression": 0.955,
-    "movement": 0.556,
+    "brightness": 0.919,
     "density": 0.919,
-    "space": 0.534
+    "movement": 0.556,
+    "space": 0.534,
+    "warmth": 0.053
   },
   "engines": [
-    "ORCA"
+    "Orca"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme bright brightness, extreme cold warmth, extreme violent aggression, extreme dense density. Maximum contrast character design.",
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "BRIGHT COLD VIOLENT DENSE F3",
+  "parameters": {
+    "Orca": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.955,
+    "brightness": 0.919,
+    "density": 0.919,
+    "movement": 0.556,
+    "space": 0.534,
+    "warmth": 0.053
+  },
   "tags": [
     "bright",
     "cold",
@@ -24,25 +44,5 @@
     "flux",
     "extreme"
   ],
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "couplingIntensity": "Sync",
-  "dna": {
-    "brightness": 0.919,
-    "warmth": 0.053,
-    "movement": 0.556,
-    "density": 0.919,
-    "space": 0.534,
-    "aggression": 0.955
-  },
-  "parameters": {
-    "ORCA": {}
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

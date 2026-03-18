@@ -1,33 +1,41 @@
 {
-  "name": "Paper Leopard Sprint",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Ocelot",
+    "target": "Origami",
+    "type": "HARMONIC_BLEND"
+  },
+  "description": "Ocelot's cold sprint unfolding Origami's paper geometry at full velocity.",
   "engines": [
-    "OCELOT",
-    "ORIGAMI"
+    "Ocelot",
+    "Origami"
   ],
-  "mood": "Entangled",
-  "strategy": "Fast Cold",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.75,
-    "MOVEMENT": 0.93,
     "COUPLING": 0.7,
+    "MOVEMENT": 0.93,
     "SPACE": 0.55
   },
-  "sonic_dna": {
-    "brightness": 0.58,
-    "warmth": 0.08,
-    "movement": 0.93,
-    "density": 0.4,
-    "space": 0.52,
-    "aggression": 0.65
-  },
+  "mood": "Entangled",
+  "name": "Paper Leopard Sprint",
   "parameters": {},
-  "coupling": {
-    "type": "HARMONIC_BLEND",
-    "source": "OCELOT",
-    "target": "ORIGAMI",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.65,
+    "brightness": 0.58,
+    "density": 0.4,
+    "movement": 0.93,
+    "space": 0.52,
+    "warmth": 0.08
   },
+  "strategy": "Fast Cold",
   "tags": [
     "entangled",
     "cold",
@@ -35,5 +43,5 @@
     "feline",
     "origami"
   ],
-  "description": "Ocelot's cold sprint unfolding Origami's paper geometry at full velocity."
+  "version": "1.0"
 }

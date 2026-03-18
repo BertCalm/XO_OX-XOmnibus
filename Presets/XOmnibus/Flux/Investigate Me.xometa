@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Investigate Me",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Unpredictable oddball motion with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.189,
+    "brightness": 0.589,
+    "density": 0.403,
+    "movement": 0.719,
+    "space": 0.181,
+    "warmth": 0.706
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Unpredictable oddball motion with bob character and analog drift.",
-  "tags": [
-    "curious",
-    "formant",
-    "morphing"
-  ],
+  "legacy": {
+    "sourceCategory": "Oddball",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Oddball",
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Investigate Me",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 3.0,
-      "bob_oscA_shape": 0.82,
+      "bob_bobMode": 0.78,
+      "bob_curAmount": 0.95,
+      "bob_curMode": 2.0,
+      "bob_fltChar": 0.78,
+      "bob_fltCutoff": 2200.0,
+      "bob_fltMode": 2.0,
+      "bob_fltReso": 0.58,
+      "bob_lfo1Depth": 0.65,
+      "bob_lfo1Rate": 2.8,
       "bob_oscA_drift": 0.65,
-      "bob_oscB_wave": 1.0,
-      "bob_oscB_fm": 0.45,
+      "bob_oscA_shape": 0.82,
+      "bob_oscA_wave": 3.0,
       "bob_oscB_blend": 0.72,
       "bob_oscB_detune": -8.0,
-      "bob_curMode": 2.0,
-      "bob_curAmount": 0.95,
-      "bob_fltMode": 2.0,
-      "bob_fltCutoff": 2200.0,
-      "bob_fltReso": 0.58,
-      "bob_fltChar": 0.78,
-      "bob_lfo1Rate": 2.8,
-      "bob_lfo1Depth": 0.65,
-      "bob_bobMode": 0.78
+      "bob_oscB_fm": 0.45,
+      "bob_oscB_wave": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.589,
-    "warmth": 0.706,
-    "movement": 0.719,
-    "density": 0.403,
-    "space": 0.181,
-    "aggression": 0.189
-  }
+  "tags": [
+    "curious",
+    "formant",
+    "morphing"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

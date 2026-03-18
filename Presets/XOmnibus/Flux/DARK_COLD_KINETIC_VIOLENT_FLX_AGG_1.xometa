@@ -1,50 +1,58 @@
 {
-  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_AGG_1",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.88,
+    "source": "Oceanic",
+    "target": "Oracle",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.977,
+    "brightness": 0.023,
+    "density": 0.595,
+    "movement": 0.897,
+    "space": 0.571,
+    "warmth": 0.05
+  },
   "engines": [
-    "OCEANIC",
-    "ORACLE"
+    "Oceanic",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.452,
+    "COUPLING": 0.757,
+    "MOVEMENT": 0.897,
+    "SPACE": 0.571
+  },
+  "mood": "Flux",
+  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_AGG_1",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.385,
-      "macro_movement": 0.87,
       "macro_coupling": 0.757,
+      "macro_movement": 0.87,
       "macro_space": 0.581
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.519,
-      "macro_movement": 0.903,
       "macro_coupling": 0.774,
+      "macro_movement": 0.903,
       "macro_space": 0.591
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OCEANIC",
-    "target": "ORACLE",
-    "amount": 0.88
-  },
-  "dna": {
-    "brightness": 0.023,
-    "warmth": 0.05,
-    "movement": 0.897,
-    "density": 0.595,
-    "space": 0.571,
-    "aggression": 0.977
-  },
-  "macros": {
-    "CHARACTER": 0.452,
-    "MOVEMENT": 0.897,
-    "COUPLING": 0.757,
-    "SPACE": 0.571
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "kinetic",
     "dark",
     "cold"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "BLAZE LATTICE",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OSPREY",
-    "ORIGAMI"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.755,
-      "macro_movement": 0.713,
-      "macro_coupling": 0.557,
-      "macro_space": 0.251
-    },
-    "ORIGAMI": {
-      "macro_character": 0.779,
-      "macro_movement": 0.858,
-      "macro_coupling": 0.418,
-      "macro_space": 0.28
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OSPREY",
-    "target": "ORIGAMI",
-    "amount": 0.673
+    "amount": 0.673,
+    "source": "Osprey",
+    "target": "Origami",
+    "type": "TIMBRE_BLEND"
   },
   "dna": {
+    "aggression": 0.651,
     "brightness": 0.911,
-    "warmth": 0.572,
-    "movement": 0.637,
     "density": 0.89,
+    "movement": 0.637,
     "space": 0.311,
-    "aggression": 0.651
+    "warmth": 0.572
   },
+  "engines": [
+    "Osprey",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.755,
-    "MOVEMENT": 0.713,
     "COUPLING": 0.557,
+    "MOVEMENT": 0.713,
     "SPACE": 0.251
   },
+  "mood": "Flux",
+  "name": "BLAZE LATTICE",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.779,
+      "macro_coupling": 0.418,
+      "macro_movement": 0.858,
+      "macro_space": 0.28
+    },
+    "Osprey": {
+      "macro_character": 0.755,
+      "macro_coupling": 0.557,
+      "macro_movement": 0.713,
+      "macro_space": 0.251
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "dense",
     "saturated"
-  ]
+  ],
+  "version": "1.0"
 }

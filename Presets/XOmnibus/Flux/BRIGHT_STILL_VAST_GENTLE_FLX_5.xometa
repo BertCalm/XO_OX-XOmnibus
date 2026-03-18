@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_STILL_VAST_GENTLE_FLX_5",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORIGAMI",
-    "OBLONG"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.8221,
-      "macro_movement": 0.0577,
-      "macro_coupling": 0.1675,
-      "macro_space": 0.8242
-    },
-    "OBLONG": {
-      "macro_character": 0.7838,
-      "macro_movement": 0.1403,
-      "macro_coupling": 0.2604,
-      "macro_space": 0.8138
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORIGAMI",
-    "target": "OBLONG",
-    "amount": 0.9335
+    "amount": 0.9335,
+    "source": "Origami",
+    "target": "Oblong",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.1394,
     "brightness": 0.918,
-    "warmth": 0.6609,
-    "movement": 0.0891,
     "density": 0.6505,
+    "movement": 0.0891,
     "space": 0.9288,
-    "aggression": 0.1394
+    "warmth": 0.6609
   },
+  "engines": [
+    "Origami",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8221,
-    "MOVEMENT": 0.0577,
     "COUPLING": 0.1675,
+    "MOVEMENT": 0.0577,
     "SPACE": 0.8242
   },
+  "mood": "Flux",
+  "name": "BRIGHT_STILL_VAST_GENTLE_FLX_5",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.7838,
+      "macro_coupling": 0.2604,
+      "macro_movement": 0.1403,
+      "macro_space": 0.8138
+    },
+    "Origami": {
+      "macro_character": 0.8221,
+      "macro_coupling": 0.1675,
+      "macro_movement": 0.0577,
+      "macro_space": 0.8242
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "low-movement",
     "high-space",
     "low-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

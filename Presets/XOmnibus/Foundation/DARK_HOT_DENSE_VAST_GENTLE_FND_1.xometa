@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "DARK_HOT_DENSE_VAST_GENTLE_FND_1",
-  "mood": "Foundation",
-  "engines": [
-    "ORIGAMI",
-    "OBSIDIAN"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.688,
+    "source": "Origami",
+    "target": "Obsidian",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_DENSE_VAST_GENTLE. Variant 1.",
+  "dna": {
+    "aggression": 0.084,
+    "brightness": 0.027,
+    "density": 0.983,
+    "movement": 0.462,
+    "space": 0.938,
+    "warmth": 0.973
+  },
+  "engines": [
+    "Origami",
+    "Obsidian"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.083,
+    "COUPLING": 0.957,
+    "MOVEMENT": 0.439,
+    "SPACE": 0.932
+  },
+  "mood": "Foundation",
+  "name": "DARK_HOT_DENSE_VAST_GENTLE_FND_1",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.106,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.453,
+      "macro_space": 1.0
+    },
+    "Origami": {
+      "macro_character": 0.061,
+      "macro_coupling": 0.913,
+      "macro_movement": 0.425,
+      "macro_space": 0.864
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "hot",
     "extreme",
@@ -19,53 +66,6 @@
     "foundation",
     "dense"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.061,
-      "macro_movement": 0.425,
-      "macro_coupling": 0.913,
-      "macro_space": 0.864
-    },
-    "OBSIDIAN": {
-      "macro_character": 0.106,
-      "macro_movement": 0.453,
-      "macro_coupling": 1.0,
-      "macro_space": 1.0
-    }
-  },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ORIGAMI",
-    "target": "OBSIDIAN",
-    "amount": 0.688
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.027,
-    "warmth": 0.973,
-    "movement": 0.462,
-    "density": 0.983,
-    "space": 0.938,
-    "aggression": 0.084
-  },
-  "macros": {
-    "CHARACTER": 0.083,
-    "MOVEMENT": 0.439,
-    "COUPLING": 0.957,
-    "SPACE": 0.932
-  }
+  "version": "1.0.0"
 }

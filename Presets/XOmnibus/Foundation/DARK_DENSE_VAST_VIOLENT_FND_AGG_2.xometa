@@ -1,50 +1,58 @@
 {
-  "name": "DARK_DENSE_VAST_VIOLENT_FND_AGG_2",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ONSET",
-    "OBSIDIAN"
-  ],
-  "parameters": {
-    "ONSET": {
-      "macro_character": 0.516,
-      "macro_movement": 0.817,
-      "macro_coupling": 0.641,
-      "macro_space": 0.494
-    },
-    "OBSIDIAN": {
-      "macro_character": 0.51,
-      "macro_movement": 0.838,
-      "macro_coupling": 0.614,
-      "macro_space": 0.478
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ONSET",
-    "target": "OBSIDIAN",
-    "amount": 0.723
+    "amount": 0.723,
+    "source": "Onset",
+    "target": "Obsidian",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
+    "aggression": 0.971,
     "brightness": 0.069,
-    "warmth": 0.364,
-    "movement": 0.645,
     "density": 0.924,
+    "movement": 0.645,
     "space": 0.96,
-    "aggression": 0.971
+    "warmth": 0.364
   },
+  "engines": [
+    "Onset",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.516,
-    "MOVEMENT": 0.817,
     "COUPLING": 0.641,
+    "MOVEMENT": 0.817,
     "SPACE": 0.494
   },
+  "mood": "Foundation",
+  "name": "DARK_DENSE_VAST_VIOLENT_FND_AGG_2",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.51,
+      "macro_coupling": 0.614,
+      "macro_movement": 0.838,
+      "macro_space": 0.478
+    },
+    "Onset": {
+      "macro_character": 0.516,
+      "macro_coupling": 0.641,
+      "macro_movement": 0.817,
+      "macro_space": 0.494
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Crystal Fold",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.9422,
-    "warmth": 0.104,
-    "movement": 0.3879,
-    "density": 0.3975,
-    "space": 0.7054,
-    "aggression": 0.2928
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Paper-light origami surface, brilliant reflections",
   "dna": {
+    "aggression": 0.2928,
     "brightness": 0.9422,
-    "warmth": 0.104,
-    "movement": 0.3879,
     "density": 0.3975,
+    "movement": 0.3879,
     "space": 0.7054,
-    "aggression": 0.2928
+    "warmth": 0.104
   },
   "engines": [
-    "ORIGAMI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Paper-light origami surface, brilliant reflections",
-  "tags": [
-    "prism",
-    "bright",
-    "ultra",
-    "spectral",
-    "anchor"
+    "Origami"
   ],
   "macroLabels": [
     "FOLD",
@@ -38,24 +23,39 @@
     "SPACE"
   ],
   "macros": {
-    "FOLD": 0.7135,
-    "TENSION": 0.5232,
     "COUPLE": 0.2352,
-    "SPACE": 0.4654
+    "FOLD": 0.7135,
+    "SPACE": 0.4654,
+    "TENSION": 0.5232
   },
-  "couplingIntensity": "None",
+  "mood": "Prism",
+  "name": "Crystal Fold",
   "parameters": {
-    "ORIGAMI": {
-      "ori_macro_fold": 0.7135,
-      "ori_macro_tension": 0.5232,
-      "ori_macro_couple": 0.2352,
-      "ori_macro_space": 0.4654,
-      "ori_outputLevel": 0.85,
+    "Origami": {
+      "ori_couplingBus": 0,
       "ori_couplingLevel": 0.5,
-      "ori_couplingBus": 0
+      "ori_macro_couple": 0.2352,
+      "ori_macro_fold": 0.7135,
+      "ori_macro_space": 0.4654,
+      "ori_macro_tension": 0.5232,
+      "ori_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2928,
+    "brightness": 0.9422,
+    "density": 0.3975,
+    "movement": 0.3879,
+    "space": 0.7054,
+    "warmth": 0.104
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "ultra",
+    "spectral",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

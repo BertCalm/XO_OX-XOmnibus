@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Cobalt Tunnel",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.637,
+        "engineA": "Owlfish",
+        "engineB": "Osprey",
+        "type": "PHASE_LOCK"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.37,
+    "brightness": 0.505,
+    "density": 0.495,
+    "movement": 0.64,
+    "space": 1.0,
+    "warmth": 0.465
+  },
   "engines": [
-    "OSPREY",
-    "OWLFISH"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "osprey",
-    "owlfish"
+    "Osprey",
+    "Owlfish"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.481,
-    "MOVEMENT": 0.559,
     "COUPLING": 0.516,
+    "MOVEMENT": 0.559,
     "SPACE": 0.901
   },
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.505,
-    "warmth": 0.465,
-    "movement": 0.64,
-    "density": 0.495,
-    "space": 1.0,
-    "aggression": 0.37
-  },
-  "sonic_dna": {
-    "brightness": 0.505,
-    "warmth": 0.465,
-    "movement": 0.64,
-    "density": 0.495,
-    "space": 1.0,
-    "aggression": 0.37
-  },
+  "mood": "Entangled",
+  "name": "Cobalt Tunnel",
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.686,
-      "macro_movement": 0.463,
       "macro_coupling": 0.897,
+      "macro_movement": 0.463,
       "macro_space": 0.486
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.605,
-      "macro_movement": 0.71,
       "macro_coupling": 0.567,
+      "macro_movement": 0.71,
       "macro_space": 0.456
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OWLFISH",
-        "engineB": "OSPREY",
-        "type": "PHASE_LOCK",
-        "amount": 0.637
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.37,
+    "brightness": 0.505,
+    "density": 0.495,
+    "movement": 0.64,
+    "space": 1.0,
+    "warmth": 0.465
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "osprey",
+    "owlfish"
+  ],
+  "version": "1.0.0"
 }

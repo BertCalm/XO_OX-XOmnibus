@@ -1,13 +1,36 @@
 {
-  "schema_version": 1,
-  "name": "Machine Groove Portrait",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "ONSET full kit — MACHINE macro engaged, PUNCH present. The rhythm architect laying down its signature groove.",
+  "dna": {
+    "aggression": 0.68,
+    "brightness": 0.58,
+    "density": 0.75,
+    "movement": 0.85,
+    "space": 0.4,
+    "warmth": 0.42
+  },
   "engines": [
-    "ONSET"
+    "Onset"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ONSET full kit \u2014 MACHINE macro engaged, PUNCH present. The rhythm architect laying down its signature groove.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "mood": "Family",
+  "name": "Machine Groove Portrait",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "signature",
@@ -18,29 +41,6 @@
     "groove",
     "batch1-signatures"
   ],
-  "macroLabels": [
-    "MACHINE",
-    "PUNCH",
-    "SPACE",
-    "MUTATE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.58,
-    "warmth": 0.42,
-    "movement": 0.85,
-    "density": 0.75,
-    "space": 0.4,
-    "aggression": 0.68
-  }
+  "version": "1.0.0"
 }

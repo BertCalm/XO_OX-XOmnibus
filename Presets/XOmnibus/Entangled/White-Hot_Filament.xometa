@@ -1,49 +1,57 @@
 {
-  "name": "White-Hot Filament",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Origami",
+    "target": "Ottoni",
+    "type": "SPECTRAL_BRAID"
+  },
+  "dna": {
+    "aggression": 0.33,
+    "brightness": 0.72,
+    "density": 0.59,
+    "movement": 0.47,
+    "space": 0.58,
+    "warmth": 0.88
+  },
   "engines": [
-    "ORIGAMI",
-    "OTTONI"
+    "Origami",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.69,
+    "COUPLING": 0.54,
+    "MOVEMENT": 0.36,
+    "SPACE": 0.56
+  },
+  "mood": "Entangled",
+  "name": "White-Hot Filament",
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.65,
-      "macro_movement": 0.41,
       "macro_coupling": 0.57,
+      "macro_movement": 0.41,
       "macro_space": 0.53
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.72,
-      "macro_movement": 0.31,
       "macro_coupling": 0.51,
+      "macro_movement": 0.31,
       "macro_space": 0.59
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_BRAID",
-    "source": "ORIGAMI",
-    "target": "OTTONI",
-    "amount": 0.65
-  },
-  "dna": {
-    "brightness": 0.72,
-    "warmth": 0.88,
-    "movement": 0.47,
-    "density": 0.59,
-    "space": 0.58,
-    "aggression": 0.33
-  },
-  "macros": {
-    "CHARACTER": 0.69,
-    "MOVEMENT": 0.36,
-    "COUPLING": 0.54,
-    "SPACE": 0.56
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

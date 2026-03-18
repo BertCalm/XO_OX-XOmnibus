@@ -1,29 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "OddOscar Regeneration",
-  "mood": "Flux",
-  "engines": ["OddOscar"],
-  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
-  "version": "1.0.0",
-  "description": "The axolotl regenerates — morph begins at 0.0 and grows toward 1.0 over the full sustain phase, encoded in a long attack and very long sustain envelope. Warmth anchors the low end while movement builds. Slow-to-fast arc: a limb regrowing in real time.",
-  "tags": ["flux", "oddoscar", "regeneration", "morph", "envelope", "growing", "warm", "axolotl"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": { "brightness": 0.45, "warmth": 0.7, "movement": 0.6, "density": 0.5, "space": 0.55, "aggression": 0.25 },
-  "parameters": {
-    "OddOscar": {
-      "morph_morph": 0.0,
-      "morph_filterCutoff": 1200,
-      "morph_filterRes": 0.3,
-      "morph_envAttack": 0.5,
-      "morph_envDecay": 0.4,
-      "morph_envSustain": 0.85,
-      "morph_envRelease": 1.8
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "couplingIntensity": "None",
+  "description": "The axolotl regenerates — morph begins at 0.0 and grows toward 1.0 over the full sustain phase, encoded in a long attack and very long sustain envelope. Warmth anchors the low end while movement builds. Slow-to-fast arc: a limb regrowing in real time.",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.45,
+    "density": 0.5,
+    "movement": 0.6,
+    "space": 0.55,
+    "warmth": 0.7
+  },
+  "engines": [
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "OddOscar Regeneration",
+  "parameters": {
+    "OddOscar": {
+      "morph_envAttack": 0.5,
+      "morph_envDecay": 0.4,
+      "morph_envRelease": 1.8,
+      "morph_envSustain": 0.85,
+      "morph_filterCutoff": 1200,
+      "morph_filterRes": 0.3,
+      "morph_morph": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "flux",
+    "oddoscar",
+    "regeneration",
+    "morph",
+    "envelope",
+    "growing",
+    "warm",
+    "axolotl"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

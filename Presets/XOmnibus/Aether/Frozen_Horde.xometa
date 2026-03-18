@@ -1,53 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Frozen Horde",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Eight arms maximally active in total darkness. Cold cellular riot.",
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.07,
+    "density": 0.92,
+    "movement": 0.78,
+    "space": 0.05,
+    "warmth": 0.07
+  },
   "engines": [
     "Outwit"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Eight arms maximally active in total darkness. Cold cellular riot.",
-  "tags": [
-    "cold-dense",
-    "extreme",
-    "aether",
-    "cellular"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Aether",
+  "name": "Frozen Horde",
   "parameters": {
     "Outwit": {
-      "owit_rule": 30.0,
+      "owit_aggression": 0.87,
       "owit_armBalance": 0.88,
-      "owit_mutationRate": 0.85,
       "owit_armSpread": 0.05,
       "owit_brightness": 0.06,
       "owit_density": 0.93,
-      "owit_aggression": 0.87,
+      "owit_mutationRate": 0.85,
+      "owit_rule": 30.0,
       "owit_warmth": 0.06
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.07,
-    "warmth": 0.07,
-    "movement": 0.78,
-    "density": 0.92,
-    "space": 0.05,
-    "aggression": 0.88
-  }
+  "tags": [
+    "cold-dense",
+    "extreme",
+    "aether",
+    "cellular"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

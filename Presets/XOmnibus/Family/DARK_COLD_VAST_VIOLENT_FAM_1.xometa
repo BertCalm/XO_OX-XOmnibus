@@ -1,14 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD VAST VIOLENT FAM 1",
-  "mood": "Family",
-  "engines": [
-    "ONSET",
-    "OVERBITE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, dark, cold, vast.",
+  "coupling": [
+    {
+      "amount": 0.61,
+      "destination": "OVERBITE",
+      "source": "ONSET",
+      "type": "TIMBRE_BLEND"
+    }
+  ],
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — family, dark, cold, vast.",
+  "dna": {
+    "aggression": 0.95,
+    "brightness": 0.063,
+    "density": 0.581,
+    "movement": 0.466,
+    "space": 0.941,
+    "warmth": 0.075
+  },
+  "engines": [
+    "Onset",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "DARK COLD VAST VIOLENT FAM 1",
+  "parameters": {
+    "Onset": {
+      "level": 0.731,
+      "pan": -0.097
+    },
+    "Overbite": {
+      "level": 0.811,
+      "pan": -0.084
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "dark",
@@ -17,40 +51,6 @@
     "violent",
     "ultra-diverse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.063,
-    "warmth": 0.075,
-    "movement": 0.466,
-    "density": 0.581,
-    "space": 0.941,
-    "aggression": 0.95
-  },
-  "parameters": {
-    "ONSET": {
-      "level": 0.731,
-      "pan": -0.097
-    },
-    "OVERBITE": {
-      "level": 0.811,
-      "pan": -0.084
-    }
-  },
-  "coupling": [
-    {
-      "source": "ONSET",
-      "destination": "OVERBITE",
-      "type": "TIMBRE_BLEND",
-      "amount": 0.61
-    }
-  ],
-  "sequencer": null
+  "version": "1.0.0"
 }

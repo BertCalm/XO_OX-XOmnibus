@@ -1,50 +1,58 @@
 {
-  "name": "SCORCH MIST",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.348,
+    "source": "Obscura",
+    "target": "Orphica",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.955,
+    "brightness": 0.891,
+    "density": 0.454,
+    "movement": 0.489,
+    "space": 0.327,
+    "warmth": 0.63
+  },
   "engines": [
-    "OBSCURA",
-    "ORPHICA"
+    "Obscura",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.21,
+    "COUPLING": 0.362,
+    "MOVEMENT": 0.304,
+    "SPACE": 0.327
+  },
+  "mood": "Atmosphere",
+  "name": "SCORCH MIST",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.489,
-      "macro_movement": 0.634,
       "macro_coupling": 0.136,
+      "macro_movement": 0.634,
       "macro_space": 0.643
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.579,
-      "macro_movement": 0.106,
       "macro_coupling": 0.341,
+      "macro_movement": 0.106,
       "macro_space": 0.416
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OBSCURA",
-    "target": "ORPHICA",
-    "amount": 0.348
-  },
-  "dna": {
-    "brightness": 0.891,
-    "warmth": 0.63,
-    "movement": 0.489,
-    "density": 0.454,
-    "space": 0.327,
-    "aggression": 0.955
-  },
-  "macros": {
-    "CHARACTER": 0.21,
-    "MOVEMENT": 0.304,
-    "COUPLING": 0.362,
-    "SPACE": 0.327
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

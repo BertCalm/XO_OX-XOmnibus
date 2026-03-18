@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FND_5",
-  "mood": "Foundation",
-  "engines": [
-    "OBSIDIAN",
-    "OBLONG"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.808,
+    "source": "Obsidian",
+    "target": "Oblong",
+    "type": "CHAOS_INJECT"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT. Variant 5.",
+  "dna": {
+    "aggression": 0.924,
+    "brightness": 0.962,
+    "density": 0.897,
+    "movement": 0.965,
+    "space": 0.077,
+    "warmth": 0.543
+  },
+  "engines": [
+    "Obsidian",
+    "Oblong"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.972,
+    "COUPLING": 0.79,
+    "MOVEMENT": 0.903,
+    "SPACE": 0.054
+  },
+  "mood": "Foundation",
+  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FND_5",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.943,
+      "macro_coupling": 0.77,
+      "macro_movement": 0.9,
+      "macro_space": 0.0
+    },
+    "Obsidian": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.81,
+      "macro_movement": 0.907,
+      "macro_space": 0.109
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "kinetic",
@@ -19,53 +66,6 @@
     "foundation",
     "dense"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OBSIDIAN": {
-      "macro_character": 1.0,
-      "macro_movement": 0.907,
-      "macro_coupling": 0.81,
-      "macro_space": 0.109
-    },
-    "OBLONG": {
-      "macro_character": 0.943,
-      "macro_movement": 0.9,
-      "macro_coupling": 0.77,
-      "macro_space": 0.0
-    }
-  },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OBSIDIAN",
-    "target": "OBLONG",
-    "amount": 0.808
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.962,
-    "warmth": 0.543,
-    "movement": 0.965,
-    "density": 0.897,
-    "space": 0.077,
-    "aggression": 0.924
-  },
-  "macros": {
-    "CHARACTER": 0.972,
-    "MOVEMENT": 0.903,
-    "COUPLING": 0.79,
-    "SPACE": 0.054
-  }
+  "version": "1.0.0"
 }

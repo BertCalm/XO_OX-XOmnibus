@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Age Bridge",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "All three ages play simultaneously. GROW at midpoint — toddler raw, teen precise.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.38,
+    "density": 0.55,
+    "movement": 0.46,
+    "space": 0.33,
+    "warmth": 0.61
+  },
   "engines": [
     "Ottoni"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "brass",
-    "sax",
-    "entangled",
-    "coupled",
-    "entangled"
   ],
   "macroLabels": [
     "EMBOUCHURE",
@@ -20,48 +21,47 @@
     "FOREIGN",
     "LAKE"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.38,
-    "warmth": 0.61,
-    "movement": 0.46,
-    "density": 0.55,
-    "space": 0.33,
-    "aggression": 0.15
-  },
+  "mood": "Entangled",
+  "name": "Age Bridge",
   "parameters": {
     "Ottoni": {
+      "otto_chorusRate": 0.874,
+      "otto_damping": 0.997,
+      "otto_delayMix": 0.246,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.109,
+      "otto_driveAmount": 0.073,
+      "otto_foreignCold": 0.106,
+      "otto_foreignDrift": 0.0,
+      "otto_foreignStretch": 0.0,
+      "otto_macroEmbouchure": 0.368,
+      "otto_macroForeign": 0.0,
+      "otto_macroGrow": 0.515,
+      "otto_macroLake": 0.319,
+      "otto_reverbSize": 0.144,
+      "otto_sympatheticAmt": 0.281,
+      "otto_teenBore": 0.404,
+      "otto_teenEmbouchure": 0.725,
+      "otto_teenInst": 3,
+      "otto_teenLevel": 0.421,
+      "otto_teenVibratoDepth": 0.374,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 3,
       "otto_toddlerLevel": 0.417,
       "otto_toddlerPressure": 0.265,
-      "otto_toddlerInst": 3,
-      "otto_tweenLevel": 0.555,
       "otto_tweenEmbouchure": 0.311,
-      "otto_tweenValve": 0.385,
       "otto_tweenInst": 3,
-      "otto_teenLevel": 0.421,
-      "otto_teenEmbouchure": 0.725,
-      "otto_teenBore": 0.404,
-      "otto_teenInst": 3,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.374,
-      "otto_damping": 0.997,
-      "otto_sympatheticAmt": 0.281,
-      "otto_driftRate": 0.109,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.0,
-      "otto_foreignDrift": 0.0,
-      "otto_foreignCold": 0.106,
-      "otto_reverbSize": 0.144,
-      "otto_chorusRate": 0.874,
-      "otto_driveAmount": 0.073,
-      "otto_delayMix": 0.246,
-      "otto_macroEmbouchure": 0.368,
-      "otto_macroGrow": 0.515,
-      "otto_macroForeign": 0.0,
-      "otto_macroLake": 0.319
+      "otto_tweenLevel": 0.555,
+      "otto_tweenValve": 0.385
     }
   },
-  "coupling": null,
-  "description": "All three ages play simultaneously. GROW at midpoint \u2014 toddler raw, teen precise."
+  "schema_version": 1,
+  "tags": [
+    "brass",
+    "sax",
+    "entangled",
+    "coupled",
+    "entangled"
+  ],
+  "version": "1.0.0"
 }

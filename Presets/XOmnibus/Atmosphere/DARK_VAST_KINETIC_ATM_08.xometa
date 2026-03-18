@@ -1,45 +1,52 @@
 {
-  "name": "DARK VAST KINETIC ATM 08",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OPAL",
-    "OMBRE"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.376,
-      "macro_movement": 0.9,
-      "macro_coupling": 0.798,
-      "macro_space": 0.921
-    },
-    "OMBRE": {
-      "macro_character": 0.233,
-      "macro_movement": 0.808,
-      "macro_coupling": 0.462,
-      "macro_space": 1.0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OPAL",
-    "target": "OMBRE",
-    "amount": 0.987
+    "amount": 0.987,
+    "source": "Opal",
+    "target": "Ombre",
+    "type": "FREQUENCY_SHIFT"
   },
   "dna": {
+    "aggression": 0.422,
     "brightness": 0.108,
-    "warmth": 0.643,
-    "movement": 0.9,
     "density": 0.627,
+    "movement": 0.9,
     "space": 0.921,
-    "aggression": 0.422
+    "warmth": 0.643
   },
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.376,
-    "MOVEMENT": 0.9,
     "COUPLING": 0.798,
+    "MOVEMENT": 0.9,
     "SPACE": 0.921
   },
+  "mood": "Atmosphere",
+  "name": "DARK VAST KINETIC ATM 08",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.233,
+      "macro_coupling": 0.462,
+      "macro_movement": 0.808,
+      "macro_space": 1.0
+    },
+    "Opal": {
+      "macro_character": 0.376,
+      "macro_coupling": 0.798,
+      "macro_movement": 0.9,
+      "macro_space": 0.921
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -47,5 +54,6 @@
     "kinetic",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "ALLLO FLX 02",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.183,
+    "source": "Optic",
+    "target": "Odyssey",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.064,
+    "brightness": 0.031,
+    "density": 0.105,
+    "movement": 0.083,
+    "space": 0.065,
+    "warmth": 0.557
+  },
   "engines": [
-    "OPTIC",
-    "ODYSSEY"
+    "Optic",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.294,
+    "COUPLING": 0.065,
+    "MOVEMENT": 0.094,
+    "SPACE": 0.065
+  },
+  "mood": "Flux",
+  "name": "ALLLO FLX 02",
   "parameters": {
-    "OPTIC": {
+    "Odyssey": {
       "macro_character": 0.294,
-      "macro_movement": 0.094,
       "macro_coupling": 0.065,
+      "macro_movement": 0.094,
       "macro_space": 0.065
     },
-    "ODYSSEY": {
+    "Optic": {
       "macro_character": 0.294,
-      "macro_movement": 0.094,
       "macro_coupling": 0.065,
+      "macro_movement": 0.094,
       "macro_space": 0.065
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OPTIC",
-    "target": "ODYSSEY",
-    "amount": 0.183
-  },
-  "dna": {
-    "brightness": 0.031,
-    "warmth": 0.557,
-    "movement": 0.083,
-    "density": 0.105,
-    "space": 0.065,
-    "aggression": 0.064
-  },
-  "macros": {
-    "CHARACTER": 0.294,
-    "MOVEMENT": 0.094,
-    "COUPLING": 0.065,
-    "SPACE": 0.065
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

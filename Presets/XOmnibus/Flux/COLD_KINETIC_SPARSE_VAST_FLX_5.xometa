@@ -1,45 +1,52 @@
 {
-  "name": "COLD_KINETIC_SPARSE_VAST_FLX_5",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OPTIC",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OPTIC": {
-      "macro_character": 0.5509,
-      "macro_movement": 0.8644,
-      "macro_coupling": 0.6064,
-      "macro_space": 0.8511
-    },
-    "OBLONG": {
-      "macro_character": 0.405,
-      "macro_movement": 0.8354,
-      "macro_coupling": 0.5382,
-      "macro_space": 0.848
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OPTIC",
-    "target": "OBLONG",
-    "amount": 0.9035
+    "amount": 0.9035,
+    "source": "Optic",
+    "target": "Oblong",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.486,
     "brightness": 0.4976,
-    "warmth": 0.1235,
-    "movement": 0.8688,
     "density": 0.0609,
+    "movement": 0.8688,
     "space": 0.9682,
-    "aggression": 0.486
+    "warmth": 0.1235
   },
+  "engines": [
+    "Optic",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5509,
-    "MOVEMENT": 0.8644,
     "COUPLING": 0.6064,
+    "MOVEMENT": 0.8644,
     "SPACE": 0.8511
   },
+  "mood": "Flux",
+  "name": "COLD_KINETIC_SPARSE_VAST_FLX_5",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.405,
+      "macro_coupling": 0.5382,
+      "macro_movement": 0.8354,
+      "macro_space": 0.848
+    },
+    "Optic": {
+      "macro_character": 0.5509,
+      "macro_coupling": 0.6064,
+      "macro_movement": 0.8644,
+      "macro_space": 0.8511
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "high-movement",
     "low-density",
     "high-space"
-  ]
+  ],
+  "version": "1.0"
 }

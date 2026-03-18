@@ -1,14 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "WARM DENSE STILL INTIMATE AET 2",
-  "mood": "Aether",
-  "engines": [
-    "OSPREY",
-    "OLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, warm, still, dense.",
+  "coupling": [
+    {
+      "amount": 0.528,
+      "destination": "OLE",
+      "source": "OSPREY",
+      "type": "SPATIAL_COUPLE"
+    }
+  ],
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — aether, warm, still, dense.",
+  "dna": {
+    "aggression": 0.537,
+    "brightness": 0.511,
+    "density": 0.957,
+    "movement": 0.058,
+    "space": 0.052,
+    "warmth": 0.897
+  },
+  "engines": [
+    "Osprey",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "WARM DENSE STILL INTIMATE AET 2",
+  "parameters": {
+    "Ole": {
+      "level": 0.687,
+      "pan": 0.039
+    },
+    "Osprey": {
+      "level": 0.802,
+      "pan": 0.067
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "warm",
@@ -17,40 +51,6 @@
     "intimate",
     "ultra-diverse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.511,
-    "warmth": 0.897,
-    "movement": 0.058,
-    "density": 0.957,
-    "space": 0.052,
-    "aggression": 0.537
-  },
-  "parameters": {
-    "OSPREY": {
-      "level": 0.802,
-      "pan": 0.067
-    },
-    "OLE": {
-      "level": 0.687,
-      "pan": 0.039
-    }
-  },
-  "coupling": [
-    {
-      "source": "OSPREY",
-      "destination": "OLE",
-      "type": "SPATIAL_COUPLE",
-      "amount": 0.528
-    }
-  ],
-  "sequencer": null
+  "version": "1.0.0"
 }

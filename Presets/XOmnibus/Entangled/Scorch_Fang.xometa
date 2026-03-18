@@ -1,49 +1,57 @@
 {
-  "name": "Scorch Fang",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERBITE",
-    "OUROBOROS"
-  ],
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.82,
-      "macro_movement": 0.5,
-      "macro_coupling": 0.74,
-      "macro_space": 0.45
-    },
-    "OUROBOROS": {
-      "macro_character": 0.77,
-      "macro_movement": 0.36,
-      "macro_coupling": 0.64,
-      "macro_space": 0.51
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_BRAID",
-    "source": "OVERBITE",
-    "target": "OUROBOROS",
-    "amount": 0.82
+    "amount": 0.82,
+    "source": "Overbite",
+    "target": "Ouroboros",
+    "type": "SPECTRAL_BRAID"
   },
   "dna": {
+    "aggression": 0.75,
     "brightness": 0.59,
-    "warmth": 0.96,
-    "movement": 0.38,
     "density": 0.71,
+    "movement": 0.38,
     "space": 0.42,
-    "aggression": 0.75
+    "warmth": 0.96
   },
+  "engines": [
+    "Overbite",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.79,
-    "MOVEMENT": 0.43,
     "COUPLING": 0.69,
+    "MOVEMENT": 0.43,
     "SPACE": 0.48
   },
+  "mood": "Entangled",
+  "name": "Scorch Fang",
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.77,
+      "macro_coupling": 0.64,
+      "macro_movement": 0.36,
+      "macro_space": 0.51
+    },
+    "Overbite": {
+      "macro_character": 0.82,
+      "macro_coupling": 0.74,
+      "macro_movement": 0.5,
+      "macro_space": 0.45
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "aggressive"
-  ]
+  ],
+  "version": "1.0"
 }

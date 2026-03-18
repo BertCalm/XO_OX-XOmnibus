@@ -1,45 +1,52 @@
 {
-  "name": "DARK HOT STILL BALANCED AET SPC 4",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.473,
+    "source": "Oceanic",
+    "target": "OddfeliX",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.028,
+    "brightness": 0.103,
+    "density": 0.699,
+    "movement": 0.07,
+    "space": 0.649,
+    "warmth": 0.879
+  },
   "engines": [
-    "OCEANIC",
-    "ODDFELIX"
+    "Oceanic",
+    "OddfeliX"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.491,
+    "COUPLING": 0.657,
+    "MOVEMENT": 0.07,
+    "SPACE": 0.649
+  },
+  "mood": "Aether",
+  "name": "DARK HOT STILL BALANCED AET SPC 4",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.491,
-      "macro_movement": 0.07,
       "macro_coupling": 0.657,
+      "macro_movement": 0.07,
       "macro_space": 0.649
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.465,
-      "macro_movement": 0.055,
       "macro_coupling": 0.644,
+      "macro_movement": 0.055,
       "macro_space": 0.645
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OCEANIC",
-    "target": "ODDFELIX",
-    "amount": 0.473
-  },
-  "dna": {
-    "brightness": 0.103,
-    "warmth": 0.879,
-    "movement": 0.07,
-    "density": 0.699,
-    "space": 0.649,
-    "aggression": 0.028
-  },
-  "macros": {
-    "CHARACTER": 0.491,
-    "MOVEMENT": 0.07,
-    "COUPLING": 0.657,
-    "SPACE": 0.649
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -47,5 +54,6 @@
     "space-mid",
     "gentle",
     "warm"
-  ]
+  ],
+  "version": "1.0"
 }

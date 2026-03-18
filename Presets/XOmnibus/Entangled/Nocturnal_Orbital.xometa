@@ -1,48 +1,56 @@
 {
-  "name": "Nocturnal Orbital",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORIGAMI",
-    "ORACLE"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.2,
-      "macro_movement": 0.78,
-      "macro_coupling": 0.69,
-      "macro_space": 0.35
-    },
-    "ORACLE": {
-      "macro_character": 0.27,
-      "macro_movement": 0.24,
-      "macro_coupling": 0.79,
-      "macro_space": 0.38
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ORIGAMI",
-    "target": "ORACLE",
-    "amount": 0.65
+    "amount": 0.65,
+    "source": "Origami",
+    "target": "Oracle",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.45,
     "brightness": 0.07,
-    "warmth": 0.41,
-    "movement": 0.53,
     "density": 0.43,
+    "movement": 0.53,
     "space": 0.85,
-    "aggression": 0.45
+    "warmth": 0.41
   },
+  "engines": [
+    "Origami",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.16,
-    "MOVEMENT": 0.53,
     "COUPLING": 0.93,
+    "MOVEMENT": 0.53,
     "SPACE": 0.85
   },
+  "mood": "Entangled",
+  "name": "Nocturnal Orbital",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.27,
+      "macro_coupling": 0.79,
+      "macro_movement": 0.24,
+      "macro_space": 0.38
+    },
+    "Origami": {
+      "macro_character": 0.2,
+      "macro_coupling": 0.69,
+      "macro_movement": 0.78,
+      "macro_space": 0.35
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Orbital Dark",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.127,
-    "warmth": 0.4266,
-    "movement": 0.4775,
-    "density": 0.8264,
-    "space": 0.4395,
-    "aggression": 0.7536
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Orbit phase locked in dense dark spectral field",
   "dna": {
+    "aggression": 0.7536,
     "brightness": 0.127,
-    "warmth": 0.4266,
-    "movement": 0.4775,
     "density": 0.8264,
+    "movement": 0.4775,
     "space": 0.4395,
-    "aggression": 0.7536
+    "warmth": 0.4266
   },
   "engines": [
-    "ORBITAL"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Orbit phase locked in dense dark spectral field",
-  "tags": [
-    "prism",
-    "dark",
-    "dense",
-    "extreme",
-    "anchor"
+    "Orbital"
   ],
   "macroLabels": [
     "ORBIT",
@@ -38,24 +23,39 @@
     "SPACE"
   ],
   "macros": {
+    "COUPLE": 0.7938,
     "ORBIT": 0.3004,
     "PHASE": 0.8669,
-    "COUPLE": 0.7938,
     "SPACE": 0.847
   },
-  "couplingIntensity": "None",
+  "mood": "Prism",
+  "name": "Orbital Dark",
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
+      "orb_couplingBus": 0,
+      "orb_couplingLevel": 0.5,
+      "orb_macro_couple": 0.7938,
       "orb_macro_orbit": 0.3004,
       "orb_macro_phase": 0.8669,
-      "orb_macro_couple": 0.7938,
       "orb_macro_space": 0.847,
-      "orb_outputLevel": 0.85,
-      "orb_couplingLevel": 0.5,
-      "orb_couplingBus": 0
+      "orb_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.7536,
+    "brightness": 0.127,
+    "density": 0.8264,
+    "movement": 0.4775,
+    "space": 0.4395,
+    "warmth": 0.4266
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "dense",
+    "extreme",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

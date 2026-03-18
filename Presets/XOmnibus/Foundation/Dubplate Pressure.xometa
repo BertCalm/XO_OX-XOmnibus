@@ -1,57 +1,57 @@
 {
-  "schema_version": 1,
-  "name": "Dubplate Pressure",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-08",
+  "description": "Rooted dub bass sound with warm character.",
+  "dna": {
+    "aggression": 0.275,
+    "brightness": 0.466,
+    "density": 0.69,
+    "movement": 0.275,
+    "space": 0.438,
+    "warmth": 0.639
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Rooted dub bass sound with warm character.",
-  "tags": [
-    "subby",
-    "sine",
-    "verdub"
-  ],
+  "legacy": {
+    "sourceCategory": "Dub Bass",
+    "sourceInstrument": "Overdub",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Overdub",
-    "sourceCategory": "Dub Bass",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Dubplate Pressure",
   "parameters": {
     "Overdub": {
-      "dub_oscWave": 0.0,
-      "dub_oscOctave": 1.0,
-      "dub_subLevel": 1.0,
-      "dub_filterCutoff": 500.0,
-      "dub_filterReso": 0.4,
-      "dub_filterEnvAmt": 0.6,
       "dub_attack": 0.005,
       "dub_decay": 0.6,
-      "dub_sustain": 0.3,
-      "dub_release": 0.3,
-      "dub_voiceMode": 1.0,
       "dub_driveAmount": 2.0,
-      "dub_sendLevel": 0.3
+      "dub_filterCutoff": 500.0,
+      "dub_filterEnvAmt": 0.6,
+      "dub_filterReso": 0.4,
+      "dub_oscOctave": 1.0,
+      "dub_oscWave": 0.0,
+      "dub_release": 0.3,
+      "dub_sendLevel": 0.3,
+      "dub_subLevel": 1.0,
+      "dub_sustain": 0.3,
+      "dub_voiceMode": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.466,
-    "warmth": 0.639,
-    "movement": 0.275,
-    "density": 0.69,
-    "space": 0.438,
-    "aggression": 0.275
-  }
+  "tags": [
+    "subby",
+    "sine",
+    "verdub"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

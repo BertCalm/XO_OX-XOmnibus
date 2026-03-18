@@ -1,37 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Bifurcation Point",
-  "mood": "Prism",
-  "engines": ["Ouroboros"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Lorenz attractor balanced exactly at the edge of chaos. Unpredictable shifts between order and turbulence.",
-  "tags": ["unstable", "shifting", "edge", "experimental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Lorenz attractor balanced exactly at the edge of chaos. Unpredictable shifts between order and turbulence.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.55,
+    "density": 0.5,
+    "movement": 0.65,
+    "space": 0.3,
+    "warmth": 0.3
+  },
+  "engines": [
+    "Ouroboros"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Bifurcation Point",
   "parameters": {
     "Ouroboros": {
-      "ouro_topology": 0,
-      "ouro_rate": 294.0,
       "ouro_chaosIndex": 0.5,
-      "ouro_leash": 0.4,
-      "ouro_theta": 0.0,
-      "ouro_phi": 0.0,
       "ouro_damping": 0.25,
-      "ouro_injection": 0.0
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.4,
+      "ouro_phi": 0.0,
+      "ouro_rate": 294.0,
+      "ouro_theta": 0.0,
+      "ouro_topology": 0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.3,
-    "movement": 0.65,
-    "density": 0.5,
-    "space": 0.3,
-    "aggression": 0.5
-  }
+  "tags": [
+    "unstable",
+    "shifting",
+    "edge",
+    "experimental"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,48 +1,56 @@
 {
-  "name": "PULSE SIGNAL",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.788,
+    "source": "Oracle",
+    "target": "Orca",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.696,
+    "brightness": 0.885,
+    "density": 0.08,
+    "movement": 0.219,
+    "space": 0.804,
+    "warmth": 0.778
+  },
   "engines": [
-    "ORACLE",
-    "ORCA"
+    "Oracle",
+    "Orca"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.465,
+    "COUPLING": 0.917,
+    "MOVEMENT": 0.557,
+    "SPACE": 0.121
+  },
+  "mood": "Entangled",
+  "name": "PULSE SIGNAL",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.886,
-      "macro_movement": 0.576,
       "macro_coupling": 0.718,
+      "macro_movement": 0.576,
       "macro_space": 0.384
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.4,
-      "macro_movement": 0.148,
       "macro_coupling": 0.688,
+      "macro_movement": 0.148,
       "macro_space": 0.893
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORACLE",
-    "target": "ORCA",
-    "amount": 0.788
-  },
-  "dna": {
-    "brightness": 0.885,
-    "warmth": 0.778,
-    "movement": 0.219,
-    "density": 0.08,
-    "space": 0.804,
-    "aggression": 0.696
-  },
-  "macros": {
-    "CHARACTER": 0.465,
-    "MOVEMENT": 0.557,
-    "COUPLING": 0.917,
-    "SPACE": 0.121
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "bare",
     "skeletal"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,78 +1,78 @@
 {
-  "schema_version": 1,
-  "name": "Clip Surge",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.514,
+        "engineA": "Obese",
+        "engineB": "Ole",
+        "type": "envelope_share"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OBESE mojo fuels OLELÉ drama surge. Fat flamencoid heat.",
+  "dna": {
+    "aggression": 0.653,
+    "brightness": 0.57,
+    "density": 0.733,
+    "movement": 0.705,
+    "space": 0.489,
+    "warmth": 0.681
+  },
   "engines": [
     "Obese",
     "Ole"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE mojo fuels OLEL\u00c9 drama surge. Fat flamencoid heat.",
-  "tags": [
-    "obese",
-    "ole",
-    "coupling",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": 120,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Clip Surge",
   "parameters": {
     "Obese": {
+      "fat_analog": 0.324,
+      "fat_compress": 0.435,
+      "fat_couplingIn": 0.504,
+      "fat_couplingOut": 0.587,
+      "fat_digital": 0.316,
       "fat_macro1": 0.359,
       "fat_macro2": 0.553,
       "fat_macro3": 0.635,
       "fat_macro4": 0.574,
-      "fat_couplingOut": 0.587,
-      "fat_couplingIn": 0.504,
+      "fat_mojoCtrl": 0.696,
       "fat_outputLevel": 0.83,
       "fat_outputPan": -0.027,
-      "fat_satDrive": 0.691,
-      "fat_mojoCtrl": 0.696,
-      "fat_analog": 0.324,
-      "fat_digital": 0.316,
-      "fat_compress": 0.435
+      "fat_satDrive": 0.691
     },
     "Ole": {
+      "ole_couplingIn": 0.652,
+      "ole_couplingOut": 0.522,
       "ole_macro1": 0.59,
       "ole_macro2": 0.301,
       "ole_macro3": 0.559,
       "ole_macro4": 0.346,
-      "ole_couplingOut": 0.522,
-      "ole_couplingIn": 0.652,
       "ole_outputLevel": 0.761,
       "ole_outputPan": -0.03
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obese",
-        "engineB": "Ole",
-        "type": "envelope_share",
-        "amount": 0.514
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.57,
-    "warmth": 0.681,
-    "movement": 0.705,
-    "density": 0.733,
-    "space": 0.489,
-    "aggression": 0.653
-  }
+  "tags": [
+    "obese",
+    "ole",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 120,
+  "version": "1.0.0"
 }

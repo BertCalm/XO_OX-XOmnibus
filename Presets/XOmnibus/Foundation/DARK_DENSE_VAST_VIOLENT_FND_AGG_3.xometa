@@ -1,50 +1,58 @@
 {
-  "name": "DARK_DENSE_VAST_VIOLENT_FND_AGG_3",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OBLONG",
-    "OBESE"
-  ],
-  "parameters": {
-    "OBLONG": {
-      "macro_character": 0.387,
-      "macro_movement": 0.85,
-      "macro_coupling": 0.584,
-      "macro_space": 0.812
-    },
-    "OBESE": {
-      "macro_character": 0.432,
-      "macro_movement": 0.802,
-      "macro_coupling": 0.622,
-      "macro_space": 0.82
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OBLONG",
-    "target": "OBESE",
-    "amount": 0.702
+    "amount": 0.702,
+    "source": "Oblong",
+    "target": "Obese",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.926,
     "brightness": 0.062,
-    "warmth": 0.361,
-    "movement": 0.386,
     "density": 0.92,
+    "movement": 0.386,
     "space": 0.91,
-    "aggression": 0.926
+    "warmth": 0.361
   },
+  "engines": [
+    "Oblong",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.387,
-    "MOVEMENT": 0.85,
     "COUPLING": 0.584,
+    "MOVEMENT": 0.85,
     "SPACE": 0.812
   },
+  "mood": "Foundation",
+  "name": "DARK_DENSE_VAST_VIOLENT_FND_AGG_3",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.432,
+      "macro_coupling": 0.622,
+      "macro_movement": 0.802,
+      "macro_space": 0.82
+    },
+    "Oblong": {
+      "macro_character": 0.387,
+      "macro_coupling": 0.584,
+      "macro_movement": 0.85,
+      "macro_space": 0.812
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

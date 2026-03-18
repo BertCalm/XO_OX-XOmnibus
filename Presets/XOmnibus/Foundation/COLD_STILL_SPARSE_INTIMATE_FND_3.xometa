@@ -1,45 +1,52 @@
 {
-  "name": "COLD_STILL_SPARSE_INTIMATE_FND_3",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.311,
+    "source": "Obsidian",
+    "target": "Overbite",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.369,
+    "brightness": 0.605,
+    "density": 0.125,
+    "movement": 0.067,
+    "space": 0.118,
+    "warmth": 0.059
+  },
   "engines": [
-    "OBSIDIAN",
-    "OVERBITE"
+    "Obsidian",
+    "Overbite"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.392,
+    "COUPLING": 0.415,
+    "MOVEMENT": 0.27,
+    "SPACE": 0.481
+  },
+  "mood": "Foundation",
+  "name": "COLD_STILL_SPARSE_INTIMATE_FND_3",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.218,
-      "macro_movement": 0.778,
       "macro_coupling": 0.463,
+      "macro_movement": 0.778,
       "macro_space": 0.244
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.151,
-      "macro_movement": 0.685,
       "macro_coupling": 0.153,
+      "macro_movement": 0.685,
       "macro_space": 0.285
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBSIDIAN",
-    "target": "OVERBITE",
-    "amount": 0.311
-  },
-  "dna": {
-    "brightness": 0.605,
-    "warmth": 0.059,
-    "movement": 0.067,
-    "density": 0.125,
-    "space": 0.118,
-    "aggression": 0.369
-  },
-  "macros": {
-    "CHARACTER": 0.392,
-    "MOVEMENT": 0.27,
-    "COUPLING": 0.415,
-    "SPACE": 0.481
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -47,5 +54,6 @@
     "still",
     "sparse",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

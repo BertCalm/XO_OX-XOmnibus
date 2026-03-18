@@ -1,45 +1,52 @@
 {
-  "name": "Murk Bite",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERBITE",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.75,
-      "macro_movement": 0.55,
-      "macro_coupling": 0.65,
-      "macro_space": 0.3
-    },
-    "OBSCURA": {
-      "macro_character": 0.6,
-      "macro_movement": 0.7,
-      "macro_coupling": 0.6,
-      "macro_space": 0.4
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBSCURA",
-    "target": "OVERBITE",
-    "amount": 0.68
+    "amount": 0.68,
+    "source": "Obscura",
+    "target": "Overbite",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.72,
     "brightness": 0.2,
-    "warmth": 0.75,
-    "movement": 0.6,
     "density": 0.88,
+    "movement": 0.6,
     "space": 0.25,
-    "aggression": 0.72
+    "warmth": 0.75
   },
+  "engines": [
+    "Overbite",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.75,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.55,
     "SPACE": 0.3
   },
+  "mood": "Entangled",
+  "name": "Murk Bite",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.6,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.7,
+      "macro_space": 0.4
+    },
+    "Overbite": {
+      "macro_character": 0.75,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.55,
+      "macro_space": 0.3
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "overbite",
@@ -47,5 +54,6 @@
     "bass",
     "harmonic",
     "murk"
-  ]
+  ],
+  "version": "1.0"
 }

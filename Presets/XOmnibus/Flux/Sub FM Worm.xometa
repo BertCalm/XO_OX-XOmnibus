@@ -1,63 +1,63 @@
 {
-  "schema_version": 1,
-  "name": "Sub FM Worm",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Unpredictable oddball motion with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.179,
+    "brightness": 0.411,
+    "density": 0.642,
+    "movement": 0.512,
+    "space": 0.0,
+    "warmth": 0.387
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Unpredictable oddball motion with bob character and analog drift.",
-  "tags": [
-    "fm",
-    "sub",
-    "worm"
-  ],
+  "legacy": {
+    "sourceCategory": "Oddball",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Oddball",
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Sub FM Worm",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
-      "bob_oscA_shape": 0.5,
-      "bob_oscA_drift": 0.35,
-      "bob_oscB_wave": 3.0,
-      "bob_oscB_fm": 0.95,
-      "bob_oscB_blend": 0.88,
-      "bob_oscB_detune": -7.0,
-      "bob_curMode": 1.0,
-      "bob_curAmount": 0.65,
-      "bob_fltMode": 0.0,
-      "bob_fltCutoff": 3500.0,
-      "bob_fltReso": 0.55,
-      "bob_lfo1Rate": 0.55,
-      "bob_lfo1Depth": 0.5,
       "bob_ampAttack": 0.02,
       "bob_ampDecay": 1.0,
-      "bob_ampSustain": 0.45,
       "bob_ampRelease": 1.5,
-      "bob_bobMode": 0.42
+      "bob_ampSustain": 0.45,
+      "bob_bobMode": 0.42,
+      "bob_curAmount": 0.65,
+      "bob_curMode": 1.0,
+      "bob_fltCutoff": 3500.0,
+      "bob_fltMode": 0.0,
+      "bob_fltReso": 0.55,
+      "bob_lfo1Depth": 0.5,
+      "bob_lfo1Rate": 0.55,
+      "bob_oscA_drift": 0.35,
+      "bob_oscA_shape": 0.5,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.88,
+      "bob_oscB_detune": -7.0,
+      "bob_oscB_fm": 0.95,
+      "bob_oscB_wave": 3.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.411,
-    "warmth": 0.387,
-    "movement": 0.512,
-    "density": 0.642,
-    "space": 0.0,
-    "aggression": 0.179
-  }
+  "tags": [
+    "fm",
+    "sub",
+    "worm"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

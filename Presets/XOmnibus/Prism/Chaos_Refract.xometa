@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Chaos Refract",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.4934,
-    "warmth": 0.3807,
-    "movement": 0.9097,
-    "density": 0.6117,
-    "space": 0.5555,
-    "aggression": 0.928
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Rapidly cycling prism scatter, maximum movement",
   "dna": {
+    "aggression": 0.928,
     "brightness": 0.4934,
-    "warmth": 0.3807,
-    "movement": 0.9097,
     "density": 0.6117,
+    "movement": 0.9097,
     "space": 0.5555,
-    "aggression": 0.928
+    "warmth": 0.3807
   },
   "engines": [
-    "OPTIC"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Rapidly cycling prism scatter, maximum movement",
-  "tags": [
-    "prism",
-    "brutal",
-    "movement",
-    "aggressive",
-    "anchor"
+    "Optic"
   ],
   "macroLabels": [
     "REFRACT",
@@ -39,23 +24,38 @@
   ],
   "macros": {
     "REFRACT": 0.2607,
-    "SPECTRUM": 0.8526,
     "SCATTER": 0.3707,
-    "SPACE": 0.5253
+    "SPACE": 0.5253,
+    "SPECTRUM": 0.8526
   },
-  "couplingIntensity": "None",
+  "mood": "Prism",
+  "name": "Chaos Refract",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
+      "optic_couplingBus": 0,
+      "optic_couplingLevel": 0.5,
       "optic_macro_refract": 0.2607,
-      "optic_macro_spectrum": 0.8526,
       "optic_macro_scatter": 0.3707,
       "optic_macro_space": 0.5253,
-      "optic_outputLevel": 0.85,
-      "optic_couplingLevel": 0.5,
-      "optic_couplingBus": 0
+      "optic_macro_spectrum": 0.8526,
+      "optic_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.928,
+    "brightness": 0.4934,
+    "density": 0.6117,
+    "movement": 0.9097,
+    "space": 0.5555,
+    "warmth": 0.3807
+  },
+  "tags": [
+    "prism",
+    "brutal",
+    "movement",
+    "aggressive",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

@@ -1,33 +1,41 @@
 {
-  "name": "Arctic Eccentric Hunt",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7,
+    "source": "Orca",
+    "target": "OddfeliX",
+    "type": "PHASE_LOCK"
+  },
+  "description": "An eccentric Arctic hunt — predator speed through feliX-cold waters.",
   "engines": [
-    "ORCA",
-    "ODDFELIX"
+    "Orca",
+    "OddfeliX"
   ],
-  "mood": "Entangled",
-  "strategy": "Fast Cold",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8,
-    "MOVEMENT": 0.91,
     "COUPLING": 0.75,
+    "MOVEMENT": 0.91,
     "SPACE": 0.55
   },
-  "sonic_dna": {
-    "brightness": 0.62,
-    "warmth": 0.09,
-    "movement": 0.91,
-    "density": 0.45,
-    "space": 0.52,
-    "aggression": 0.55
-  },
+  "mood": "Entangled",
+  "name": "Arctic Eccentric Hunt",
   "parameters": {},
-  "coupling": {
-    "type": "PHASE_LOCK",
-    "source": "ORCA",
-    "target": "ODDFELIX",
-    "amount": 0.7
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.55,
+    "brightness": 0.62,
+    "density": 0.45,
+    "movement": 0.91,
+    "space": 0.52,
+    "warmth": 0.09
   },
+  "strategy": "Fast Cold",
   "tags": [
     "entangled",
     "cold",
@@ -35,5 +43,5 @@
     "hunting",
     "arctic"
   ],
-  "description": "An eccentric Arctic hunt \u2014 predator speed through feliX-cold waters."
+  "version": "1.0"
 }

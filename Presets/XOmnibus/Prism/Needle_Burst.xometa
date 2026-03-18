@@ -1,52 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Needle Burst",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Single percussive voice. Maximum attack, instant release, pure aggression.",
+  "dna": {
+    "aggression": 1.0,
+    "brightness": 0.88,
+    "density": 0.0,
+    "movement": 0.92,
+    "space": 1.0,
+    "warmth": 0.3
+  },
   "engines": [
     "Onset"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Single percussive voice. Maximum attack, instant release, pure aggression.",
-  "tags": [
-    "aggressive-sparse",
-    "extreme",
-    "prism",
-    "percussion"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Needle Burst",
   "parameters": {
     "Onset": {
-      "perc_v1_blend": 0.95,
       "perc_v1_algoMode": 0.0,
-      "perc_v1_pitch": 420.0,
-      "perc_v1_drive": 0.95,
-      "perc_v1_punch": 0.97,
+      "perc_v1_blend": 0.95,
       "perc_v1_decay": 28.0,
+      "perc_v1_drive": 0.95,
+      "perc_v1_pitch": 420.0,
+      "perc_v1_punch": 0.97,
       "perc_v2_blend": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.88,
-    "warmth": 0.3,
-    "movement": 0.92,
-    "density": 0.0,
-    "space": 1.0,
-    "aggression": 1.0
-  }
+  "tags": [
+    "aggressive-sparse",
+    "extreme",
+    "prism",
+    "percussion"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

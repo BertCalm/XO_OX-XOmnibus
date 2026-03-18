@@ -1,49 +1,57 @@
 {
-  "name": "MASSACRE MESH",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERBITE",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.798,
-      "macro_movement": 0.603,
-      "macro_coupling": 0.578,
-      "macro_space": 0.312
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.624,
-      "macro_movement": 0.878,
-      "macro_coupling": 0.563,
-      "macro_space": 0.282
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OVERBITE",
-    "target": "ODDOSCAR",
-    "amount": 0.239
+    "amount": 0.239,
+    "source": "Overbite",
+    "target": "OddOscar",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.989,
     "brightness": 0.55,
-    "warmth": 0.48,
-    "movement": 0.063,
     "density": 0.074,
+    "movement": 0.063,
     "space": 0.137,
-    "aggression": 0.989
+    "warmth": 0.48
   },
+  "engines": [
+    "Overbite",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.484,
-    "MOVEMENT": 0.519,
     "COUPLING": 0.677,
+    "MOVEMENT": 0.519,
     "SPACE": 0.72
   },
+  "mood": "Entangled",
+  "name": "MASSACRE MESH",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.624,
+      "macro_coupling": 0.563,
+      "macro_movement": 0.878,
+      "macro_space": 0.282
+    },
+    "Overbite": {
+      "macro_character": 0.798,
+      "macro_coupling": 0.578,
+      "macro_movement": 0.603,
+      "macro_space": 0.312
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "violent",
     "chaos",
     "brutal",
     "fury"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "VOID ANCHOR",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OVERLAP",
-    "ORGANON"
-  ],
-  "parameters": {
-    "OVERLAP": {
-      "macro_character": 0.121,
-      "macro_movement": 0.193,
-      "macro_coupling": 0.12,
-      "macro_space": 0.536
-    },
-    "ORGANON": {
-      "macro_character": 0.762,
-      "macro_movement": 0.185,
-      "macro_coupling": 0.216,
-      "macro_space": 0.484
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_LINK",
-    "source": "OVERLAP",
-    "target": "ORGANON",
-    "amount": 0.451
+    "amount": 0.451,
+    "source": "Overlap",
+    "target": "Organon",
+    "type": "RESONANCE_LINK"
   },
   "dna": {
+    "aggression": 0.888,
     "brightness": 0.063,
-    "warmth": 0.519,
-    "movement": 0.455,
     "density": 0.648,
+    "movement": 0.455,
     "space": 0.398,
-    "aggression": 0.888
+    "warmth": 0.519
   },
+  "engines": [
+    "Overlap",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.442,
-    "MOVEMENT": 0.189,
     "COUPLING": 0.168,
+    "MOVEMENT": 0.189,
     "SPACE": 0.51
   },
+  "mood": "Foundation",
+  "name": "VOID ANCHOR",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.762,
+      "macro_coupling": 0.216,
+      "macro_movement": 0.185,
+      "macro_space": 0.484
+    },
+    "Overlap": {
+      "macro_character": 0.121,
+      "macro_coupling": 0.12,
+      "macro_movement": 0.193,
+      "macro_space": 0.536
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "dark",
     "extreme",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

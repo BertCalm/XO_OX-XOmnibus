@@ -1,49 +1,57 @@
 {
-  "name": "Blazing Atmosphere",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERDUB",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.9,
-      "macro_movement": 0.67,
-      "macro_coupling": 0.8,
-      "macro_space": 0.74
-    },
-    "ODYSSEY": {
-      "macro_character": 0.76,
-      "macro_movement": 0.63,
-      "macro_coupling": 0.81,
-      "macro_space": 0.75
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_BRAID",
-    "source": "OVERDUB",
-    "target": "ODYSSEY",
-    "amount": 0.76
+    "amount": 0.76,
+    "source": "Overdub",
+    "target": "Odyssey",
+    "type": "SPECTRAL_BRAID"
   },
   "dna": {
+    "aggression": 0.4,
     "brightness": 0.42,
-    "warmth": 0.91,
-    "movement": 0.75,
     "density": 0.59,
+    "movement": 0.75,
     "space": 0.65,
-    "aggression": 0.4
+    "warmth": 0.91
   },
+  "engines": [
+    "Overdub",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.83,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.81,
+    "MOVEMENT": 0.65,
     "SPACE": 0.74
   },
+  "mood": "Entangled",
+  "name": "Blazing Atmosphere",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.76,
+      "macro_coupling": 0.81,
+      "macro_movement": 0.63,
+      "macro_space": 0.75
+    },
+    "Overdub": {
+      "macro_character": 0.9,
+      "macro_coupling": 0.8,
+      "macro_movement": 0.67,
+      "macro_space": 0.74
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

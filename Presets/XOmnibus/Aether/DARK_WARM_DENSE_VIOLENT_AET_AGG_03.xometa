@@ -1,45 +1,52 @@
 {
-  "name": "DARK WARM DENSE VIOLENT AET AGG 3",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.823,
+    "source": "Opal",
+    "target": "Oracle",
+    "type": "SPECTRAL_MORPH"
+  },
+  "dna": {
+    "aggression": 0.957,
+    "brightness": 0.102,
+    "density": 0.911,
+    "movement": 0.468,
+    "space": 0.448,
+    "warmth": 0.896
+  },
   "engines": [
-    "OPAL",
-    "ORACLE"
+    "Opal",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.098,
+    "COUPLING": 0.886,
+    "MOVEMENT": 0.453,
+    "SPACE": 0.418
+  },
+  "mood": "Aether",
+  "name": "DARK WARM DENSE VIOLENT AET AGG 3",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.1,
-      "macro_movement": 0.452,
       "macro_coupling": 0.852,
+      "macro_movement": 0.452,
       "macro_space": 0.414
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.095,
-      "macro_movement": 0.454,
       "macro_coupling": 0.92,
+      "macro_movement": 0.454,
       "macro_space": 0.422
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OPAL",
-    "target": "ORACLE",
-    "amount": 0.823
-  },
-  "dna": {
-    "brightness": 0.102,
-    "warmth": 0.896,
-    "movement": 0.468,
-    "density": 0.911,
-    "space": 0.448,
-    "aggression": 0.957
-  },
-  "macros": {
-    "CHARACTER": 0.098,
-    "MOVEMENT": 0.453,
-    "COUPLING": 0.886,
-    "SPACE": 0.418
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "aggressive",
@@ -47,5 +54,6 @@
     "violent",
     "dark",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "Cave Breath",
-  "mood": "Atmosphere",
-  "engines": ["OddOscar"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "A slow, near-inaudible morph at the sine end of the wavetable — filter barely open, long bloom attack, no sub presence, drift at minimum. The sound of Oscar in suspended animation, gills moving once every few seconds. Dark as the deep cave habitat with just one thin breath of tone.",
-  "tags": ["dark", "thin", "slow", "suspended", "cave", "atmosphere"],
-  "macroLabels": ["SCAN RATE", "MORPH RANGE", "FILTER", "DENSITY"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
-  "parameters": {
-    "OddOscar": {
-      "morph_morph": 0.05,
-      "morph_bloom": 2.5,
-      "morph_decay": 1.8,
-      "morph_sustain": 0.35,
-      "morph_release": 3.0,
-      "morph_filterCutoff": 550.0,
-      "morph_filterReso": 0.08,
-      "morph_filterEnvDepth": 0.05,
-      "morph_drift": 0.02,
-      "morph_sub": 0.0,
-      "morph_detune": 0.0,
-      "morph_level": 0.62,
-      "morph_polyphony": 2,
-      "morph_voiceMode": 2,
-      "morph_glide": 0.08,
-      "morph_macroBloom": 0.0,
-      "morph_macroDrift": 0.02,
-      "morph_macroDepth": 0.0,
-      "morph_macroSpace": 0.05
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
-  "sequencer": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "A slow, near-inaudible morph at the sine end of the wavetable — filter barely open, long bloom attack, no sub presence, drift at minimum. The sound of Oscar in suspended animation, gills moving once every few seconds. Dark as the deep cave habitat with just one thin breath of tone.",
   "dna": {
+    "aggression": 0.02,
     "brightness": 0.12,
-    "warmth": 0.28,
-    "movement": 0.08,
     "density": 0.12,
-    "space": 0.30,
-    "aggression": 0.02
-  }
+    "movement": 0.08,
+    "space": 0.3,
+    "warmth": 0.28
+  },
+  "engines": [
+    "OddOscar"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "SCAN RATE",
+    "MORPH RANGE",
+    "FILTER",
+    "DENSITY"
+  ],
+  "mood": "Atmosphere",
+  "name": "Cave Breath",
+  "parameters": {
+    "OddOscar": {
+      "morph_bloom": 2.5,
+      "morph_decay": 1.8,
+      "morph_detune": 0.0,
+      "morph_drift": 0.02,
+      "morph_filterCutoff": 550.0,
+      "morph_filterEnvDepth": 0.05,
+      "morph_filterReso": 0.08,
+      "morph_glide": 0.08,
+      "morph_level": 0.62,
+      "morph_macroBloom": 0.0,
+      "morph_macroDepth": 0.0,
+      "morph_macroDrift": 0.02,
+      "morph_macroSpace": 0.05,
+      "morph_morph": 0.05,
+      "morph_polyphony": 2,
+      "morph_release": 3.0,
+      "morph_sub": 0.0,
+      "morph_sustain": 0.35,
+      "morph_voiceMode": 2
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "dark",
+    "thin",
+    "slow",
+    "suspended",
+    "cave",
+    "atmosphere"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK SPARSE GENTLE STILL 3",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.1001,
-    "density": 0.0501,
-    "aggression": 0.0491,
-    "movement": 0.0575,
-    "warmth": 0.4349,
-    "space": 0.5322
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Low",
+  "couplingType": "PHASE",
+  "description": "Ultra-diverse Entangled preset — dark sparse gentle still. Designed for PHASE coupling with XOhm.",
   "dna": {
+    "aggression": 0.0491,
     "brightness": 0.1001,
     "density": 0.0501,
-    "aggression": 0.0491,
     "movement": 0.0575,
-    "warmth": 0.4349,
-    "space": 0.5322
+    "space": 0.5322,
+    "warmth": 0.4349
   },
   "engines": [
-    "XOhm"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark sparse gentle still. Designed for PHASE coupling with XOhm.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "phase",
-    "ohm"
+    "Ohm"
   ],
   "macroLabels": [
     "FORCE",
@@ -36,15 +23,28 @@
     "PULSE",
     "SHIMMER"
   ],
-  "couplingType": "PHASE",
-  "couplingIntensity": "Low",
+  "mood": "Entangled",
+  "name": "DARK SPARSE GENTLE STILL 3",
   "parameters": {
-    "XOhm": {
-      "couplingLevel": 0.794,
-      "couplingBus": 2
+    "Ohm": {
+      "couplingBus": 2,
+      "couplingLevel": 0.794
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.0491,
+    "brightness": 0.1001,
+    "density": 0.0501,
+    "movement": 0.0575,
+    "space": 0.5322,
+    "warmth": 0.4349
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "phase",
+    "ohm"
+  ],
+  "version": "1.0.0"
 }

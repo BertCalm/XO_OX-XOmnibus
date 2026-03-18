@@ -1,14 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FLX 12",
-  "mood": "Flux",
-  "engines": [
-    "ODDOSCAR",
-    "ORCA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.69,
+    "source": "OddOscar",
+    "target": "Orca",
+    "type": "SPECTRAL_BLEND"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.914,
+    "brightness": 0.053,
+    "density": 0.918,
+    "movement": 0.494,
+    "space": 0.088,
+    "warmth": 0.089
+  },
+  "engines": [
+    "OddOscar",
+    "Orca"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT FLX 12",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.61,
+      "macro_coupling": 0.79,
+      "macro_movement": 0.95,
+      "macro_space": 0.47
+    },
+    "Orca": {
+      "macro_character": 0.64,
+      "macro_coupling": 0.63,
+      "macro_movement": 0.87,
+      "macro_space": 0.48
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +58,6 @@
     "dense",
     "flux"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ODDOSCAR": {
-      "macro_character": 0.61,
-      "macro_movement": 0.95,
-      "macro_coupling": 0.79,
-      "macro_space": 0.47
-    },
-    "ORCA": {
-      "macro_character": 0.64,
-      "macro_movement": 0.87,
-      "macro_coupling": 0.63,
-      "macro_space": 0.48
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_BLEND",
-    "source": "ODDOSCAR",
-    "target": "ORCA",
-    "amount": 0.69
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.053,
-    "warmth": 0.089,
-    "movement": 0.494,
-    "density": 0.918,
-    "space": 0.088,
-    "aggression": 0.914
-  }
+  "version": "1.0.0"
 }

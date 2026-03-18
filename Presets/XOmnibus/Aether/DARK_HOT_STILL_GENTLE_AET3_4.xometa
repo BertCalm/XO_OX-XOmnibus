@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_STILL_GENTLE_AET3_4",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.5573,
+    "source": "Ombre",
+    "target": "Orbital",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.0885,
+    "brightness": 0.0674,
+    "density": 0.5028,
+    "movement": 0.1213,
+    "space": 0.5668,
+    "warmth": 0.9839
+  },
   "engines": [
-    "OMBRE",
-    "ORBITAL"
+    "Ombre",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5256,
+    "COUPLING": 0.5573,
+    "MOVEMENT": 0.1213,
+    "SPACE": 0.5668
+  },
+  "mood": "Aether",
+  "name": "DARK_HOT_STILL_GENTLE_AET3_4",
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.5153,
-      "macro_movement": 0.9053,
       "macro_coupling": 0.708,
+      "macro_movement": 0.9053,
       "macro_space": 0.8771
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.6616,
-      "macro_movement": 0.4257,
       "macro_coupling": 0.611,
+      "macro_movement": 0.4257,
       "macro_space": 0.2003
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OMBRE",
-    "target": "ORBITAL",
-    "amount": 0.5573
-  },
-  "dna": {
-    "brightness": 0.0674,
-    "warmth": 0.9839,
-    "movement": 0.1213,
-    "density": 0.5028,
-    "space": 0.5668,
-    "aggression": 0.0885
-  },
-  "macros": {
-    "CHARACTER": 0.5256,
-    "MOVEMENT": 0.1213,
-    "COUPLING": 0.5573,
-    "SPACE": 0.5668
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "warm",
     "dark",
     "still",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

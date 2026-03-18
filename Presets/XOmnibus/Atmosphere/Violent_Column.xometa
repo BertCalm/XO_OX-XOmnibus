@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Violent Column",
-  "mood": "Atmosphere",
-  "engines": [
-    "OUTWIT"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. OUTWIT aggressive register.",
+  "dna": {
+    "aggression": 0.819,
+    "brightness": 0.378,
+    "density": 0.569,
+    "movement": 0.663,
+    "space": 0.49,
+    "warmth": 0.432
+  },
+  "engines": [
+    "Outwit"
+  ],
+  "macroLabels": [
+    "CUNNING",
+    "REFLEX",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "COUPLING": 0.312,
+    "CUNNING": 0.8,
+    "REFLEX": 0.812,
+    "SPACE": 0.481
+  },
+  "mood": "Atmosphere",
+  "name": "Violent Column",
+  "parameters": {
+    "Outwit": {
+      "coupling": 0.312,
+      "cunning": 0.8,
+      "reflex": 0.812,
+      "space": 0.481
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -16,36 +47,5 @@
     "pressure",
     "fierce"
   ],
-  "macroLabels": [
-    "CUNNING",
-    "REFLEX",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.378,
-    "warmth": 0.432,
-    "movement": 0.663,
-    "density": 0.569,
-    "space": 0.49,
-    "aggression": 0.819
-  },
-  "parameters": {
-    "OUTWIT": {
-      "cunning": 0.8,
-      "reflex": 0.812,
-      "coupling": 0.312,
-      "space": 0.481
-    }
-  },
-  "macros": {
-    "CUNNING": 0.8,
-    "REFLEX": 0.812,
-    "COUPLING": 0.312,
-    "SPACE": 0.481
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

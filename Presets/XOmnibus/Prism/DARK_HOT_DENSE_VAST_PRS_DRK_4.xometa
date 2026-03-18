@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_DENSE_VAST_PRS_DRK_4",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8329,
+    "source": "Osteria",
+    "target": "Ottoni",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.4734,
+    "brightness": 0.0262,
+    "density": 0.9204,
+    "movement": 0.3051,
+    "space": 0.9288,
+    "warmth": 0.9477
+  },
   "engines": [
-    "OSTERIA",
-    "OTTONI"
+    "Osteria",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7106,
+    "COUPLING": 0.9204,
+    "MOVEMENT": 0.3051,
+    "SPACE": 0.9288
+  },
+  "mood": "Prism",
+  "name": "DARK_HOT_DENSE_VAST_PRS_DRK_4",
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.7106,
-      "macro_movement": 0.3051,
       "macro_coupling": 0.9204,
+      "macro_movement": 0.3051,
       "macro_space": 0.9288
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.7054,
-      "macro_movement": 0.3238,
       "macro_coupling": 0.9576,
+      "macro_movement": 0.3238,
       "macro_space": 0.9104
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OSTERIA",
-    "target": "OTTONI",
-    "amount": 0.8329
-  },
-  "dna": {
-    "brightness": 0.0262,
-    "warmth": 0.9477,
-    "movement": 0.3051,
-    "density": 0.9204,
-    "space": 0.9288,
-    "aggression": 0.4734
-  },
-  "macros": {
-    "CHARACTER": 0.7106,
-    "MOVEMENT": 0.3051,
-    "COUPLING": 0.9204,
-    "SPACE": 0.9288
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "hot",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

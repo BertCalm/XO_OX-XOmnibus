@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_KINETIC_SPARSE_VIOLENT_FLX_4",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ODYSSEY",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "ODYSSEY": {
-      "macro_character": 0.8604,
-      "macro_movement": 0.8747,
-      "macro_coupling": 0.9327,
-      "macro_space": 0.3513
-    },
-    "OCEANIC": {
-      "macro_character": 0.776,
-      "macro_movement": 0.9464,
-      "macro_coupling": 0.897,
-      "macro_space": 0.2517
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ODYSSEY",
-    "target": "OCEANIC",
-    "amount": 0.8637
+    "amount": 0.8637,
+    "source": "Odyssey",
+    "target": "Oceanic",
+    "type": "SPECTRAL_MORPH"
   },
   "dna": {
+    "aggression": 0.8783,
     "brightness": 0.9156,
-    "warmth": 0.5283,
-    "movement": 0.9567,
     "density": 0.1128,
+    "movement": 0.9567,
     "space": 0.3766,
-    "aggression": 0.8783
+    "warmth": 0.5283
   },
+  "engines": [
+    "Odyssey",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8604,
-    "MOVEMENT": 0.8747,
     "COUPLING": 0.9327,
+    "MOVEMENT": 0.8747,
     "SPACE": 0.3513
   },
+  "mood": "Flux",
+  "name": "BRIGHT_KINETIC_SPARSE_VIOLENT_FLX_4",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.776,
+      "macro_coupling": 0.897,
+      "macro_movement": 0.9464,
+      "macro_space": 0.2517
+    },
+    "Odyssey": {
+      "macro_character": 0.8604,
+      "macro_coupling": 0.9327,
+      "macro_movement": 0.8747,
+      "macro_space": 0.3513
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "high-movement",
     "low-density",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "DARK COLD FURY PRI 06",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.904,
+    "source": "Obbligato",
+    "target": "Origami",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.939,
+    "brightness": 0.059,
+    "density": 0.506,
+    "movement": 0.462,
+    "space": 0.695,
+    "warmth": 0.117
+  },
   "engines": [
-    "OBBLIGATO",
-    "ORIGAMI"
+    "Obbligato",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.088,
+    "COUPLING": 0.671,
+    "MOVEMENT": 0.462,
+    "SPACE": 0.695
+  },
+  "mood": "Prism",
+  "name": "DARK COLD FURY PRI 06",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.088,
-      "macro_movement": 0.462,
       "macro_coupling": 0.671,
+      "macro_movement": 0.462,
       "macro_space": 0.695
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.0,
-      "macro_movement": 0.421,
       "macro_coupling": 0.684,
+      "macro_movement": 0.421,
       "macro_space": 0.733
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBBLIGATO",
-    "target": "ORIGAMI",
-    "amount": 0.904
-  },
-  "dna": {
-    "brightness": 0.059,
-    "warmth": 0.117,
-    "movement": 0.462,
-    "density": 0.506,
-    "space": 0.695,
-    "aggression": 0.939
-  },
-  "macros": {
-    "CHARACTER": 0.088,
-    "MOVEMENT": 0.462,
-    "COUPLING": 0.671,
-    "SPACE": 0.695
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
@@ -47,5 +54,6 @@
     "aggressive",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

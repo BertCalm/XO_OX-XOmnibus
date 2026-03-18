@@ -1,14 +1,46 @@
 {
-  "schema_version": 1,
-  "name": "Microsound Wing",
-  "mood": "Entangled",
-  "engines": [
-    "OSPREY",
-    "ORPHICA"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Orphica's grain harp scatters in osprey's wake \u2014 microsound aerodynamics.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Osprey",
+        "engineB": "Orphica",
+        "type": "LFO->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Orphica's grain harp scatters in osprey's wake — microsound aerodynamics.",
+  "dna": {
+    "aggression": 0.27,
+    "brightness": 0.65,
+    "density": 0.44,
+    "movement": 0.74,
+    "space": 0.79,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Osprey",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.85
+  },
+  "mood": "Entangled",
+  "name": "Microsound Wing",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -19,38 +51,6 @@
     "aerial",
     "delicate"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5,
-    "MOVEMENT": 0.65,
-    "COUPLING": 0.7,
-    "SPACE": 0.85
-  },
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.65,
-    "warmth": 0.55,
-    "movement": 0.74,
-    "density": 0.44,
-    "space": 0.79,
-    "aggression": 0.27
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OSPREY",
-        "engineB": "ORPHICA",
-        "type": "LFO->Filter",
-        "amount": 0.6
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

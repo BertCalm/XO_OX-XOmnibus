@@ -1,49 +1,57 @@
 {
-  "name": "ALLHI FLX 02",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.975,
+    "source": "Odyssey",
+    "target": "Oracle",
+    "type": "SPATIAL_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.905,
+    "brightness": 0.972,
+    "density": 0.953,
+    "movement": 0.897,
+    "space": 0.895,
+    "warmth": 0.47
+  },
   "engines": [
-    "ODYSSEY",
-    "ORACLE"
+    "Odyssey",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.721,
+    "COUPLING": 0.9,
+    "MOVEMENT": 0.925,
+    "SPACE": 0.895
+  },
+  "mood": "Flux",
+  "name": "ALLHI FLX 02",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.721,
-      "macro_movement": 0.925,
       "macro_coupling": 0.9,
+      "macro_movement": 0.925,
       "macro_space": 0.895
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.721,
-      "macro_movement": 0.925,
       "macro_coupling": 0.9,
+      "macro_movement": 0.925,
       "macro_space": 0.895
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ODYSSEY",
-    "target": "ORACLE",
-    "amount": 0.975
-  },
-  "dna": {
-    "brightness": 0.972,
-    "warmth": 0.47,
-    "movement": 0.897,
-    "density": 0.953,
-    "space": 0.895,
-    "aggression": 0.905
-  },
-  "macros": {
-    "CHARACTER": 0.721,
-    "MOVEMENT": 0.925,
-    "COUPLING": 0.9,
-    "SPACE": 0.895
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

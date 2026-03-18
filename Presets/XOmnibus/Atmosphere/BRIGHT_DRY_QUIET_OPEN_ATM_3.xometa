@@ -1,42 +1,42 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT DRY QUIET OPEN ATM 3",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: BRIGHT DRY QUIET OPEN ATM 3.",
+  "dna": {
+    "aggression": 0.056,
+    "brightness": 0.952,
+    "density": 0.095,
+    "movement": 0.508,
+    "space": 0.891,
+    "warmth": 0.437
+  },
   "engines": [
     "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Atmosphere preset: BRIGHT DRY QUIET OPEN ATM 3.",
-  "tags": [
-    "x-high-brightness",
-    "x-low-aggression",
-    "x-low-density",
-    "x-high-space"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT DRY QUIET OPEN ATM 3",
   "parameters": {},
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.952,
-    "warmth": 0.437,
-    "aggression": 0.056,
-    "density": 0.095,
-    "movement": 0.508,
-    "space": 0.891
-  }
+  "tags": [
+    "x-high-brightness",
+    "x-low-aggression",
+    "x-low-density",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

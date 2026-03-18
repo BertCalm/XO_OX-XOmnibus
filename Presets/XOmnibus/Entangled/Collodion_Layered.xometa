@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Collodion Layered",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.566,
+        "engineA": "Obscura",
+        "engineB": "Overdub",
+        "type": "CV->Depth"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Collodion dub. Old photographic chemistry warped by tape saturation.",
+  "dna": {
+    "aggression": 0.23,
+    "brightness": 0.4,
+    "density": 0.546,
+    "movement": 0.428,
+    "space": 0.709,
+    "warmth": 0.646
+  },
   "engines": [
     "Obscura",
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Collodion dub. Old photographic chemistry warped by tape saturation.",
-  "tags": [
-    "obscura",
-    "overdub",
-    "daguerreotype",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Collodion Layered",
   "parameters": {
     "Obscura": {
-      "obscura_brightness": 0.404,
-      "obscura_warmth": 0.569,
-      "obscura_movement": 0.305,
-      "obscura_density": 0.678,
-      "obscura_space": 0.579,
       "obscura_aggression": 0.153,
-      "obscura_level": 0.889
+      "obscura_brightness": 0.404,
+      "obscura_density": 0.678,
+      "obscura_level": 0.889,
+      "obscura_movement": 0.305,
+      "obscura_space": 0.579,
+      "obscura_warmth": 0.569
     },
     "Overdub": {
-      "dub_brightness": 0.493,
-      "dub_warmth": 0.742,
-      "dub_movement": 0.516,
-      "dub_density": 0.489,
-      "dub_space": 0.75,
       "dub_aggression": 0.239,
-      "dub_level": 0.726
+      "dub_brightness": 0.493,
+      "dub_density": 0.489,
+      "dub_level": 0.726,
+      "dub_movement": 0.516,
+      "dub_space": 0.75,
+      "dub_warmth": 0.742
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Overdub",
-        "type": "CV->Depth",
-        "amount": 0.566
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.646,
-    "movement": 0.428,
-    "density": 0.546,
-    "space": 0.709,
-    "aggression": 0.23
-  }
+  "tags": [
+    "obscura",
+    "overdub",
+    "daguerreotype",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

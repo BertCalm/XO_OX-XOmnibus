@@ -1,50 +1,58 @@
 {
-  "name": "FORGE HAZE",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORACLE",
-    "OCELOT"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.839,
-      "macro_movement": 0.625,
-      "macro_coupling": 0.698,
-      "macro_space": 0.163
-    },
-    "OCELOT": {
-      "macro_character": 0.762,
-      "macro_movement": 0.317,
-      "macro_coupling": 0.55,
-      "macro_space": 0.271
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORACLE",
-    "target": "OCELOT",
-    "amount": 0.39
+    "amount": 0.39,
+    "source": "Oracle",
+    "target": "Ocelot",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.928,
     "brightness": 0.33,
-    "warmth": 0.559,
-    "movement": 0.984,
     "density": 0.416,
+    "movement": 0.984,
     "space": 0.864,
-    "aggression": 0.928
+    "warmth": 0.559
   },
+  "engines": [
+    "Oracle",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.187,
-    "MOVEMENT": 0.693,
     "COUPLING": 0.291,
+    "MOVEMENT": 0.693,
     "SPACE": 0.864
   },
+  "mood": "Atmosphere",
+  "name": "FORGE HAZE",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.762,
+      "macro_coupling": 0.55,
+      "macro_movement": 0.317,
+      "macro_space": 0.271
+    },
+    "Oracle": {
+      "macro_character": 0.839,
+      "macro_coupling": 0.698,
+      "macro_movement": 0.625,
+      "macro_space": 0.163
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

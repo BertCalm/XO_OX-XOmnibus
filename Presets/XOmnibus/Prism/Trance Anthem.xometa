@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Trance Anthem",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Bright leads character with warm character.",
+  "dna": {
+    "aggression": 0.062,
+    "brightness": 0.454,
+    "density": 0.452,
+    "movement": 0.0,
+    "space": 0.22,
+    "warmth": 0.0
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bright leads character with warm character.",
-  "tags": [
-    "chorus",
-    "supersaw",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Leads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Leads",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Trance Anthem",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 2.0,
-      "drift_oscA_level": 0.85,
-      "drift_oscA_detune": 0.35,
-      "drift_oscB_mode": 2.0,
-      "drift_oscB_level": 0.7,
-      "drift_oscB_detune": 0.4,
-      "drift_oscB_tune": 12.0,
-      "drift_filterCutoff": 6000.0,
-      "drift_filterReso": 0.15,
-      "drift_filterSlope": 1.0,
       "drift_attack": 10.0,
       "drift_decay": 400.0,
-      "drift_sustain": 0.8,
-      "drift_release": 400.0,
+      "drift_filterCutoff": 6000.0,
       "drift_filterEnvAmt": 0.4,
-      "drift_level": -4.0
+      "drift_filterReso": 0.15,
+      "drift_filterSlope": 1.0,
+      "drift_level": -4.0,
+      "drift_oscA_detune": 0.35,
+      "drift_oscA_level": 0.85,
+      "drift_oscA_mode": 2.0,
+      "drift_oscB_detune": 0.4,
+      "drift_oscB_level": 0.7,
+      "drift_oscB_mode": 2.0,
+      "drift_oscB_tune": 12.0,
+      "drift_release": 400.0,
+      "drift_sustain": 0.8
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.454,
-    "warmth": 0.0,
-    "movement": 0.0,
-    "density": 0.452,
-    "space": 0.22,
-    "aggression": 0.062
-  }
+  "tags": [
+    "chorus",
+    "supersaw",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

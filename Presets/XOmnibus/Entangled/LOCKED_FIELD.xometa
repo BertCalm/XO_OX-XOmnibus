@@ -1,45 +1,52 @@
 {
-  "name": "LOCKED FIELD",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9441,
+    "source": "Origami",
+    "target": "Overdub",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.6317,
+    "brightness": 0.1751,
+    "density": 0.9436,
+    "movement": 0.4646,
+    "space": 0.6954,
+    "warmth": 0.7791
+  },
   "engines": [
-    "ORIGAMI",
-    "OVERDUB"
+    "Origami",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8115,
+    "COUPLING": 0.9329,
+    "MOVEMENT": 0.0631,
+    "SPACE": 0.4577
+  },
+  "mood": "Entangled",
+  "name": "LOCKED FIELD",
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.3448,
-      "macro_movement": 0.7329,
       "macro_coupling": 0.8513,
+      "macro_movement": 0.7329,
       "macro_space": 0.7715
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.7352,
-      "macro_movement": 0.3325,
       "macro_coupling": 0.6177,
+      "macro_movement": 0.3325,
       "macro_space": 0.546
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ORIGAMI",
-    "target": "OVERDUB",
-    "amount": 0.9441
-  },
-  "dna": {
-    "brightness": 0.1751,
-    "warmth": 0.7791,
-    "movement": 0.4646,
-    "density": 0.9436,
-    "space": 0.6954,
-    "aggression": 0.6317
-  },
-  "macros": {
-    "CHARACTER": 0.8115,
-    "MOVEMENT": 0.0631,
-    "COUPLING": 0.9329,
-    "SPACE": 0.4577
-  },
+  "schema_version": 1,
   "tags": [
     "monolithic",
     "dense",
@@ -47,5 +54,6 @@
     "entangled",
     "granite",
     "massive"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,31 +1,39 @@
 {
-  "name": "Ink Fanfare",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6,
+    "source": "Octopus",
+    "target": "Ottoni",
+    "type": "NEURAL_WEAVE"
+  },
+  "description": "Brass declaration shrouded in octopus ink cloud — triumph gone mysterious",
   "engines": [
-    "OTTONI",
-    "OCTOPUS"
+    "Ottoni",
+    "Octopus"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.65,
-    "MOVEMENT": 0.45,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.45,
     "SPACE": 0.45
   },
-  "sonic_dna": {
-    "brightness": 0.59,
-    "warmth": 0.58,
-    "movement": 0.62,
-    "density": 0.7,
-    "space": 0.5,
-    "aggression": 0.58
-  },
+  "mood": "Entangled",
+  "name": "Ink Fanfare",
   "parameters": {},
-  "coupling": {
-    "type": "NEURAL_WEAVE",
-    "source": "OCTOPUS",
-    "target": "OTTONI",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.58,
+    "brightness": 0.59,
+    "density": 0.7,
+    "movement": 0.62,
+    "space": 0.5,
+    "warmth": 0.58
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "octopus",
     "triple"
   ],
-  "description": "Brass declaration shrouded in octopus ink cloud \u2014 triumph gone mysterious"
+  "version": "1.0"
 }

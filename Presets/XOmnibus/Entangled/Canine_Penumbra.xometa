@@ -1,77 +1,77 @@
 {
-  "schema_version": 1,
-  "name": "Canine Penumbra",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.73,
+        "engineA": "Overbite",
+        "engineB": "Ombre",
+        "type": "spectral_cross"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OVERBITE bite fades through OMBRE shadow gradient. Penumbral gnash.",
+  "dna": {
+    "aggression": 0.512,
+    "brightness": 0.446,
+    "density": 0.642,
+    "movement": 0.536,
+    "space": 0.481,
+    "warmth": 0.576
+  },
   "engines": [
     "Overbite",
     "Ombre"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE bite fades through OMBRE shadow gradient. Penumbral gnash.",
-  "tags": [
-    "overbite",
-    "ombre",
-    "coupling",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": 115,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Canine Penumbra",
   "parameters": {
-    "Overbite": {
-      "poss_macro1": 0.409,
-      "poss_macro2": 0.459,
-      "poss_macro3": 0.676,
-      "poss_macro4": 0.675,
-      "poss_couplingOut": 0.767,
-      "poss_couplingIn": 0.587,
-      "poss_outputLevel": 0.791,
-      "poss_outputPan": -0.018,
-      "poss_biteDepth": 0.609,
-      "poss_fangAttack": 0.207,
-      "poss_gnashAmt": 0.37,
-      "poss_snapRelease": 0.412
-    },
     "Ombre": {
+      "ombre_couplingIn": 0.777,
+      "ombre_couplingOut": 0.735,
       "ombre_macro1": 0.384,
       "ombre_macro2": 0.448,
       "ombre_macro3": 0.517,
       "ombre_macro4": 0.447,
-      "ombre_couplingOut": 0.735,
-      "ombre_couplingIn": 0.777,
       "ombre_outputLevel": 0.881,
       "ombre_outputPan": 0.032
+    },
+    "Overbite": {
+      "poss_biteDepth": 0.609,
+      "poss_couplingIn": 0.587,
+      "poss_couplingOut": 0.767,
+      "poss_fangAttack": 0.207,
+      "poss_gnashAmt": 0.37,
+      "poss_macro1": 0.409,
+      "poss_macro2": 0.459,
+      "poss_macro3": 0.676,
+      "poss_macro4": 0.675,
+      "poss_outputLevel": 0.791,
+      "poss_outputPan": -0.018,
+      "poss_snapRelease": 0.412
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Ombre",
-        "type": "spectral_cross",
-        "amount": 0.73
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.446,
-    "warmth": 0.576,
-    "movement": 0.536,
-    "density": 0.642,
-    "space": 0.481,
-    "aggression": 0.512
-  }
+  "tags": [
+    "overbite",
+    "ombre",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 115,
+  "version": "1.0.0"
 }

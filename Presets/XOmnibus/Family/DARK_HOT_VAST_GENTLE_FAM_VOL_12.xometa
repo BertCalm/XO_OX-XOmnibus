@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_VAST_GENTLE_FAM_VOL_12",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OPAL",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.48,
-      "macro_movement": 0.42,
-      "macro_coupling": 0.317,
-      "macro_space": 0.936
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.454,
-      "macro_movement": 0.423,
-      "macro_coupling": 0.367,
-      "macro_space": 0.942
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "DYNAMIC_CROSS",
-    "source": "OPAL",
-    "target": "ODDOSCAR",
-    "amount": 0.713
+    "amount": 0.713,
+    "source": "Opal",
+    "target": "OddOscar",
+    "type": "DYNAMIC_CROSS"
   },
   "dna": {
+    "aggression": 0.045,
     "brightness": 0.072,
-    "warmth": 0.889,
-    "movement": 0.437,
     "density": 0.641,
+    "movement": 0.437,
     "space": 0.952,
-    "aggression": 0.045
+    "warmth": 0.889
   },
+  "engines": [
+    "Opal",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.467,
-    "MOVEMENT": 0.421,
     "COUPLING": 0.342,
+    "MOVEMENT": 0.421,
     "SPACE": 0.939
   },
+  "mood": "Family",
+  "name": "DARK_HOT_VAST_GENTLE_FAM_VOL_12",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.454,
+      "macro_coupling": 0.367,
+      "macro_movement": 0.423,
+      "macro_space": 0.942
+    },
+    "Opal": {
+      "macro_character": 0.48,
+      "macro_coupling": 0.317,
+      "macro_movement": 0.42,
+      "macro_space": 0.936
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "vast",
     "gentle",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

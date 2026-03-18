@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_STILL_INTIMATE_VIOLENT_FLX_SLW_1",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERWORLD",
-    "OPAL"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.624,
-      "macro_movement": 0.039,
-      "macro_coupling": 0.882,
-      "macro_space": 0.116
-    },
-    "OPAL": {
-      "macro_character": 0.513,
-      "macro_movement": 0.036,
-      "macro_coupling": 0.948,
-      "macro_space": 0.122
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OVERWORLD",
-    "target": "OPAL",
-    "amount": 0.931
+    "amount": 0.931,
+    "source": "Overworld",
+    "target": "Opal",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.946,
     "brightness": 0.99,
-    "warmth": 0.445,
-    "movement": 0.042,
     "density": 0.37,
+    "movement": 0.042,
     "space": 0.125,
-    "aggression": 0.946
+    "warmth": 0.445
   },
+  "engines": [
+    "Overworld",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.658,
-    "MOVEMENT": 0.042,
     "COUPLING": 0.724,
+    "MOVEMENT": 0.042,
     "SPACE": 0.125
   },
+  "mood": "Flux",
+  "name": "BRIGHT_STILL_INTIMATE_VIOLENT_FLX_SLW_1",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.513,
+      "macro_coupling": 0.948,
+      "macro_movement": 0.036,
+      "macro_space": 0.122
+    },
+    "Overworld": {
+      "macro_character": 0.624,
+      "macro_coupling": 0.882,
+      "macro_movement": 0.039,
+      "macro_space": 0.116
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +54,6 @@
     "intimate",
     "violent",
     "frozen-instability"
-  ]
+  ],
+  "version": "1.0"
 }

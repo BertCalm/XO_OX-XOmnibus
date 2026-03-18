@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "COLD SPARSE VAST BRIGHT 2",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "warmth": 0.08,
-    "density": 0.0802,
-    "space": 0.9595,
-    "brightness": 0.9107,
-    "aggression": 0.5956,
-    "movement": 0.5316
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "High",
+  "couplingType": "FLOW",
+  "description": "Ultra-diverse Entangled preset — cold sparse vast bright. Designed for FLOW coupling with XOpossum.",
   "dna": {
-    "warmth": 0.08,
-    "density": 0.0802,
-    "space": 0.9595,
-    "brightness": 0.9107,
     "aggression": 0.5956,
-    "movement": 0.5316
+    "brightness": 0.9107,
+    "density": 0.0802,
+    "movement": 0.5316,
+    "space": 0.9595,
+    "warmth": 0.08
   },
   "engines": [
-    "XOpossum"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 cold sparse vast bright. Designed for FLOW coupling with XOpossum.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "flow",
-    "overbite"
+    "Optic"
   ],
   "macroLabels": [
     "VOID",
@@ -36,15 +23,28 @@
     "MASS",
     "LUSTER"
   ],
-  "couplingType": "FLOW",
-  "couplingIntensity": "High",
+  "mood": "Entangled",
+  "name": "COLD SPARSE VAST BRIGHT 2",
   "parameters": {
-    "XOpossum": {
-      "couplingLevel": 0.873,
-      "couplingBus": 0
+    "Optic": {
+      "couplingBus": 0,
+      "couplingLevel": 0.873
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.5956,
+    "brightness": 0.9107,
+    "density": 0.0802,
+    "movement": 0.5316,
+    "space": 0.9595,
+    "warmth": 0.08
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "flow",
+    "overbite"
+  ],
+  "version": "1.0.0"
 }

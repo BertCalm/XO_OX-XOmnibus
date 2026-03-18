@@ -1,49 +1,57 @@
 {
-  "name": "Incandescent Mass",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.69,
+    "source": "OddOscar",
+    "target": "Opal",
+    "type": "SPECTRAL_BRAID"
+  },
+  "dna": {
+    "aggression": 0.41,
+    "brightness": 0.61,
+    "density": 0.77,
+    "movement": 0.54,
+    "space": 0.36,
+    "warmth": 0.9
+  },
   "engines": [
-    "ODDOSCAR",
-    "OPAL"
+    "OddOscar",
+    "Opal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.78,
+    "COUPLING": 0.66,
+    "MOVEMENT": 0.55,
+    "SPACE": 0.25
+  },
+  "mood": "Entangled",
+  "name": "Incandescent Mass",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.93,
-      "macro_movement": 0.56,
       "macro_coupling": 0.68,
+      "macro_movement": 0.56,
       "macro_space": 0.22
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.62,
-      "macro_movement": 0.54,
       "macro_coupling": 0.63,
+      "macro_movement": 0.54,
       "macro_space": 0.28
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_BRAID",
-    "source": "ODDOSCAR",
-    "target": "OPAL",
-    "amount": 0.69
-  },
-  "dna": {
-    "brightness": 0.61,
-    "warmth": 0.9,
-    "movement": 0.54,
-    "density": 0.77,
-    "space": 0.36,
-    "aggression": 0.41
-  },
-  "macros": {
-    "CHARACTER": 0.78,
-    "MOVEMENT": 0.55,
-    "COUPLING": 0.66,
-    "SPACE": 0.25
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,31 +1,39 @@
 {
-  "name": "Prismatic Drama",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Ole",
+    "target": "Optic",
+    "type": "SPECTRAL_REFRACTION"
+  },
+  "description": "Ole percussion refracts through optical array — rhythm becomes light spectrum",
   "engines": [
-    "OLE",
-    "OPTIC"
+    "Ole",
+    "Optic"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7,
-    "MOVEMENT": 0.8,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.8,
     "SPACE": 0.55
   },
-  "sonic_dna": {
-    "brightness": 0.76,
-    "warmth": 0.56,
-    "movement": 0.77,
-    "density": 0.54,
-    "space": 0.52,
-    "aggression": 0.46
-  },
+  "mood": "Entangled",
+  "name": "Prismatic Drama",
   "parameters": {},
-  "coupling": {
-    "type": "SPECTRAL_REFRACTION",
-    "source": "OLE",
-    "target": "OPTIC",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.46,
+    "brightness": 0.76,
+    "density": 0.54,
+    "movement": 0.77,
+    "space": 0.52,
+    "warmth": 0.56
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "optic",
     "afro-latin"
   ],
-  "description": "Ole percussion refracts through optical array \u2014 rhythm becomes light spectrum"
+  "version": "1.0"
 }

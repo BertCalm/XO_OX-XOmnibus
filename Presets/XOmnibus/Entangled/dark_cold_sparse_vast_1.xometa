@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD SPARSE VAST 1",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.0796,
-    "warmth": 0.0429,
-    "density": 0.0773,
-    "space": 0.9363,
-    "aggression": 0.4138,
-    "movement": 0.5295
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Low",
+  "couplingType": "ECHO",
+  "description": "Ultra-diverse Entangled preset — dark cold sparse vast. Designed for ECHO coupling with XObscura.",
   "dna": {
-    "brightness": 0.0796,
-    "warmth": 0.0429,
-    "density": 0.0773,
-    "space": 0.9363,
     "aggression": 0.4138,
-    "movement": 0.5295
+    "brightness": 0.0796,
+    "density": 0.0773,
+    "movement": 0.5295,
+    "space": 0.9363,
+    "warmth": 0.0429
   },
   "engines": [
-    "XObscura"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark cold sparse vast. Designed for ECHO coupling with XObscura.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "echo",
-    "obscura"
+    "Obscura"
   ],
   "macroLabels": [
     "EMBER",
@@ -36,15 +23,28 @@
     "MASS",
     "FLARE"
   ],
-  "couplingType": "ECHO",
-  "couplingIntensity": "Low",
+  "mood": "Entangled",
+  "name": "DARK COLD SPARSE VAST 1",
   "parameters": {
-    "XObscura": {
-      "couplingLevel": 0.98,
-      "couplingBus": 2
+    "Obscura": {
+      "couplingBus": 2,
+      "couplingLevel": 0.98
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4138,
+    "brightness": 0.0796,
+    "density": 0.0773,
+    "movement": 0.5295,
+    "space": 0.9363,
+    "warmth": 0.0429
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "echo",
+    "obscura"
+  ],
+  "version": "1.0.0"
 }

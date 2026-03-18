@@ -1,50 +1,58 @@
 {
-  "name": "HOT_KINETIC_SPARSE_GENTLE_AET4_3",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OSPREY",
-    "ORIGAMI"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.7723,
-      "macro_movement": 0.6304,
-      "macro_coupling": 0.5971,
-      "macro_space": 0.4985
-    },
-    "ORIGAMI": {
-      "macro_character": 0.6872,
-      "macro_movement": 0.3872,
-      "macro_coupling": 0.2851,
-      "macro_space": 0.7518
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OSPREY",
-    "target": "ORIGAMI",
-    "amount": 0.6674
+    "amount": 0.6674,
+    "source": "Osprey",
+    "target": "Origami",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.0238,
     "brightness": 0.3269,
-    "warmth": 0.8871,
-    "movement": 0.9429,
     "density": 0.1059,
+    "movement": 0.9429,
     "space": 0.5269,
-    "aggression": 0.0238
+    "warmth": 0.8871
   },
+  "engines": [
+    "Osprey",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.607,
-    "MOVEMENT": 0.9429,
     "COUPLING": 0.6674,
+    "MOVEMENT": 0.9429,
     "SPACE": 0.5269
   },
+  "mood": "Aether",
+  "name": "HOT_KINETIC_SPARSE_GENTLE_AET4_3",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.6872,
+      "macro_coupling": 0.2851,
+      "macro_movement": 0.3872,
+      "macro_space": 0.7518
+    },
+    "Osprey": {
+      "macro_character": 0.7723,
+      "macro_coupling": 0.5971,
+      "macro_movement": 0.6304,
+      "macro_space": 0.4985
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "kinetic",
     "warm",
     "sparse",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "DARK COLD FURY PRI 01",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.973,
+    "source": "Obese",
+    "target": "Optic",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.943,
+    "brightness": 0.071,
+    "density": 0.393,
+    "movement": 0.417,
+    "space": 0.583,
+    "warmth": 0.083
+  },
   "engines": [
-    "OBESE",
-    "OPTIC"
+    "Obese",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.077,
+    "COUPLING": 0.627,
+    "MOVEMENT": 0.417,
+    "SPACE": 0.583
+  },
+  "mood": "Prism",
+  "name": "DARK COLD FURY PRI 01",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.077,
-      "macro_movement": 0.417,
       "macro_coupling": 0.627,
+      "macro_movement": 0.417,
       "macro_space": 0.583
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.204,
-      "macro_movement": 0.503,
       "macro_coupling": 0.782,
+      "macro_movement": 0.503,
       "macro_space": 0.631
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBESE",
-    "target": "OPTIC",
-    "amount": 0.973
-  },
-  "dna": {
-    "brightness": 0.071,
-    "warmth": 0.083,
-    "movement": 0.417,
-    "density": 0.393,
-    "space": 0.583,
-    "aggression": 0.943
-  },
-  "macros": {
-    "CHARACTER": 0.077,
-    "MOVEMENT": 0.417,
-    "COUPLING": 0.627,
-    "SPACE": 0.583
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
@@ -47,5 +54,6 @@
     "aggressive",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

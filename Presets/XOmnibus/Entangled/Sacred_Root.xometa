@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Sacred Root",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.679,
+        "engineA": "Orbital",
+        "engineB": "OddOscar",
+        "type": "FORMANT_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "aggression": 0.37,
+    "brightness": 0.495,
+    "density": 0.505,
+    "movement": 0.66,
+    "space": 1.0,
+    "warmth": 0.54
+  },
   "engines": [
-    "ODDOSCAR",
-    "ORBITAL"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "oddoscar",
-    "orbital"
+    "OddOscar",
+    "Orbital"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.522,
-    "MOVEMENT": 0.573,
     "COUPLING": 0.415,
+    "MOVEMENT": 0.573,
     "SPACE": 0.899
   },
-  "couplingIntensity": "Strong",
-  "dna": {
-    "brightness": 0.495,
-    "warmth": 0.54,
-    "movement": 0.66,
-    "density": 0.505,
-    "space": 1.0,
-    "aggression": 0.37
-  },
-  "sonic_dna": {
-    "brightness": 0.495,
-    "warmth": 0.54,
-    "movement": 0.66,
-    "density": 0.505,
-    "space": 1.0,
-    "aggression": 0.37
-  },
+  "mood": "Entangled",
+  "name": "Sacred Root",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.576,
-      "macro_movement": 0.599,
       "macro_coupling": 0.55,
+      "macro_movement": 0.599,
       "macro_space": 0.387
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.343,
-      "macro_movement": 0.727,
       "macro_coupling": 0.514,
+      "macro_movement": 0.727,
       "macro_space": 0.573
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORBITAL",
-        "engineB": "ODDOSCAR",
-        "type": "FORMANT_BLEND",
-        "amount": 0.679
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.37,
+    "brightness": 0.495,
+    "density": 0.505,
+    "movement": 0.66,
+    "space": 1.0,
+    "warmth": 0.54
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "oddoscar",
+    "orbital"
+  ],
+  "version": "1.0.0"
 }

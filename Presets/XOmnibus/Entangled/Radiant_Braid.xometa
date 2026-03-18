@@ -1,49 +1,57 @@
 {
-  "name": "Radiant Braid",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OTTONI",
-    "ORACLE"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.78,
-      "macro_movement": 0.51,
-      "macro_coupling": 0.71,
-      "macro_space": 0.44
-    },
-    "ORACLE": {
-      "macro_character": 0.79,
-      "macro_movement": 0.54,
-      "macro_coupling": 0.66,
-      "macro_space": 0.61
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RHYTHM_LOCK",
-    "source": "OTTONI",
-    "target": "ORACLE",
-    "amount": 0.68
+    "amount": 0.68,
+    "source": "Ottoni",
+    "target": "Oracle",
+    "type": "RHYTHM_LOCK"
   },
   "dna": {
+    "aggression": 0.3,
     "brightness": 0.85,
-    "warmth": 0.86,
-    "movement": 0.58,
     "density": 0.5,
+    "movement": 0.58,
     "space": 0.59,
-    "aggression": 0.3
+    "warmth": 0.86
   },
+  "engines": [
+    "Ottoni",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.79,
-    "MOVEMENT": 0.53,
     "COUPLING": 0.69,
+    "MOVEMENT": 0.53,
     "SPACE": 0.53
   },
+  "mood": "Entangled",
+  "name": "Radiant Braid",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.79,
+      "macro_coupling": 0.66,
+      "macro_movement": 0.54,
+      "macro_space": 0.61
+    },
+    "Ottoni": {
+      "macro_character": 0.78,
+      "macro_coupling": 0.71,
+      "macro_movement": 0.51,
+      "macro_space": 0.44
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

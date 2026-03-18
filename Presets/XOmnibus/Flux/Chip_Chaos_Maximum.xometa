@@ -1,19 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Chip Chaos Maximum",
-  "mood": "Flux",
-  "engines": [
-    "OVERWORLD"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "OVERWORLD pushed to extreme brightness \u2014 brightness 0.96, movement 0.89, aggression 0.61. Ultra-bright Flux zone filler.",
-  "tags": [
-    "flux",
-    "ultra-bright",
-    "extreme",
-    "brightness",
-    "overworld"
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OVERWORLD pushed to extreme brightness — brightness 0.96, movement 0.89, aggression 0.61. Ultra-bright Flux zone filler.",
+  "dna": {
+    "aggression": 0.609,
+    "brightness": 0.96,
+    "density": 0.598,
+    "movement": 0.893,
+    "space": 0.599,
+    "warmth": 0.129
+  },
+  "engines": [
+    "Overworld"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,37 +22,36 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.96,
-    "warmth": 0.129,
-    "movement": 0.893,
-    "density": 0.598,
-    "space": 0.599,
-    "aggression": 0.609
-  },
-  "sonic_dna": {
-    "brightness": 0.96,
-    "warmth": 0.129,
-    "movement": 0.893,
-    "density": 0.598,
-    "space": 0.599,
-    "aggression": 0.609
-  },
+  "mood": "Flux",
+  "name": "Chip Chaos Maximum",
   "parameters": {
-    "OVERWORLD": {
-      "ow_macro_era": 0.648,
+    "Overworld": {
+      "ow_couplingBus": 0,
+      "ow_couplingLevel": 0.299,
       "ow_macro_chaos": 0.607,
       "ow_macro_couple": 0.309,
+      "ow_macro_era": 0.648,
       "ow_macro_space": 0.308,
-      "ow_outputLevel": 0.854,
-      "ow_couplingLevel": 0.299,
-      "ow_couplingBus": 0
+      "ow_outputLevel": 0.854
     }
   },
-  "coupling": {
-    "pairs": []
+  "schema_version": 1,
+  "sequencer": null,
+  "sonic_dna": {
+    "aggression": 0.609,
+    "brightness": 0.96,
+    "density": 0.598,
+    "movement": 0.893,
+    "space": 0.599,
+    "warmth": 0.129
   },
-  "sequencer": null
+  "tags": [
+    "flux",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "overworld"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

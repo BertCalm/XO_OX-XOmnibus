@@ -1,49 +1,57 @@
 {
-  "name": "Hot Aether Weave",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.57,
+    "source": "Odyssey",
+    "target": "Organon",
+    "type": "ENVELOPE_MIRROR"
+  },
+  "dna": {
+    "aggression": 0.33,
+    "brightness": 0.46,
+    "density": 0.38,
+    "movement": 0.59,
+    "space": 0.77,
+    "warmth": 0.92
+  },
   "engines": [
-    "ODYSSEY",
-    "ORGANON"
+    "Odyssey",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.73,
+    "COUPLING": 0.42,
+    "MOVEMENT": 0.53,
+    "SPACE": 0.69
+  },
+  "mood": "Entangled",
+  "name": "Hot Aether Weave",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.79,
-      "macro_movement": 0.62,
       "macro_coupling": 0.42,
+      "macro_movement": 0.62,
       "macro_space": 0.71
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.67,
-      "macro_movement": 0.43,
       "macro_coupling": 0.43,
+      "macro_movement": 0.43,
       "macro_space": 0.67
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_MIRROR",
-    "source": "ODYSSEY",
-    "target": "ORGANON",
-    "amount": 0.57
-  },
-  "dna": {
-    "brightness": 0.46,
-    "warmth": 0.92,
-    "movement": 0.59,
-    "density": 0.38,
-    "space": 0.77,
-    "aggression": 0.33
-  },
-  "macros": {
-    "CHARACTER": 0.73,
-    "MOVEMENT": 0.53,
-    "COUPLING": 0.42,
-    "SPACE": 0.69
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

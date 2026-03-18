@@ -1,48 +1,56 @@
 {
-  "name": "GRIND FLOOR",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.75,
+    "source": "Oblong",
+    "target": "Overworld",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.932,
+    "brightness": 0.626,
+    "density": 0.38,
+    "movement": 0.942,
+    "space": 0.295,
+    "warmth": 0.53
+  },
   "engines": [
-    "OBLONG",
-    "OVERWORLD"
+    "Oblong",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.586,
+    "COUPLING": 0.75,
+    "MOVEMENT": 0.942,
+    "SPACE": 0.295
+  },
+  "mood": "Foundation",
+  "name": "GRIND FLOOR",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.387,
-      "macro_movement": 0.445,
       "macro_coupling": 0.412,
+      "macro_movement": 0.445,
       "macro_space": 0.693
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.696,
-      "macro_movement": 0.395,
       "macro_coupling": 0.547,
+      "macro_movement": 0.395,
       "macro_space": 0.38
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OBLONG",
-    "target": "OVERWORLD",
-    "amount": 0.75
-  },
-  "dna": {
-    "brightness": 0.626,
-    "warmth": 0.53,
-    "movement": 0.942,
-    "density": 0.38,
-    "space": 0.295,
-    "aggression": 0.932
-  },
-  "macros": {
-    "CHARACTER": 0.586,
-    "MOVEMENT": 0.942,
-    "COUPLING": 0.75,
-    "SPACE": 0.295
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FND_5",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.505,
+    "source": "Obese",
+    "target": "Onset",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.952,
+    "brightness": 0.331,
+    "density": 0.899,
+    "movement": 0.9,
+    "space": 0.652,
+    "warmth": 0.892
+  },
   "engines": [
-    "OBESE",
-    "ONSET"
+    "Obese",
+    "Onset"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.33,
+    "COUPLING": 0.375,
+    "MOVEMENT": 0.523,
+    "SPACE": 0.279
+  },
+  "mood": "Foundation",
+  "name": "HOT_KINETIC_DENSE_VIOLENT_FND_5",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.362,
-      "macro_movement": 0.705,
       "macro_coupling": 0.115,
+      "macro_movement": 0.705,
       "macro_space": 0.351
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.227,
-      "macro_movement": 0.228,
       "macro_coupling": 0.285,
+      "macro_movement": 0.228,
       "macro_space": 0.408
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBESE",
-    "target": "ONSET",
-    "amount": 0.505
-  },
-  "dna": {
-    "brightness": 0.331,
-    "warmth": 0.892,
-    "movement": 0.9,
-    "density": 0.899,
-    "space": 0.652,
-    "aggression": 0.952
-  },
-  "macros": {
-    "CHARACTER": 0.33,
-    "MOVEMENT": 0.523,
-    "COUPLING": 0.375,
-    "SPACE": 0.279
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -48,5 +55,6 @@
     "dense",
     "violent",
     "aggressive"
-  ]
+  ],
+  "version": "1.0"
 }

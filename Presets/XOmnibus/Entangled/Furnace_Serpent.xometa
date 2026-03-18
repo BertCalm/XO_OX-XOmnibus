@@ -1,49 +1,57 @@
 {
-  "name": "Furnace Serpent",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OUROBOROS",
-    "ORCA"
-  ],
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.79,
-      "macro_movement": 0.76,
-      "macro_coupling": 0.92,
-      "macro_space": 0.31
-    },
-    "ORCA": {
-      "macro_character": 0.73,
-      "macro_movement": 0.72,
-      "macro_coupling": 0.91,
-      "macro_space": 0.22
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_LOCK",
-    "source": "OUROBOROS",
-    "target": "ORCA",
-    "amount": 0.9
+    "amount": 0.9,
+    "source": "Ouroboros",
+    "target": "Orca",
+    "type": "HARMONIC_LOCK"
   },
   "dna": {
+    "aggression": 0.75,
     "brightness": 0.35,
-    "warmth": 0.95,
-    "movement": 0.62,
     "density": 0.81,
+    "movement": 0.62,
     "space": 0.3,
-    "aggression": 0.75
+    "warmth": 0.95
   },
+  "engines": [
+    "Ouroboros",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.76,
-    "MOVEMENT": 0.74,
     "COUPLING": 0.92,
+    "MOVEMENT": 0.74,
     "SPACE": 0.27
   },
+  "mood": "Entangled",
+  "name": "Furnace Serpent",
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.73,
+      "macro_coupling": 0.91,
+      "macro_movement": 0.72,
+      "macro_space": 0.22
+    },
+    "Ouroboros": {
+      "macro_character": 0.79,
+      "macro_coupling": 0.92,
+      "macro_movement": 0.76,
+      "macro_space": 0.31
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "aggressive"
-  ]
+  ],
+  "version": "1.0"
 }

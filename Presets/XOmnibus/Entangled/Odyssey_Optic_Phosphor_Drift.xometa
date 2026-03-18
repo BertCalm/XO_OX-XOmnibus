@@ -1,19 +1,29 @@
 {
-  "schema_version": 1,
-  "name": "Phosphor Drift",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.75,
+        "source": "Odyssey",
+        "target": "Optic",
+        "type": "GRANULAR_EXCHANGE"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Phosphor-green pulse rate clocks the drift oscillator — visual timing becoming pitch timing.",
+  "dna": {
+    "aggression": 0.358,
+    "brightness": 0.689,
+    "density": 0.529,
+    "movement": 0.725,
+    "space": 0.533,
+    "warmth": 0.46
+  },
   "engines": [
     "Odyssey",
     "Optic"
-  ],
-  "author": "XO_OX Coverage Pack 2026-03-16",
-  "version": "1.0",
-  "description": "Phosphor-green pulse rate clocks the drift oscillator — visual timing becoming pitch timing.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "odyssey",
-    "optic"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,63 +31,53 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
+  "mood": "Entangled",
+  "name": "Phosphor Drift",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 1.0,
-      "drift_oscA_pitch": -0.441,
-      "drift_oscA_level": 0.792,
-      "drift_oscB_mode": 0.25,
-      "drift_oscB_pitch": -0.048,
-      "drift_oscB_level": 0.615,
-      "drift_wtPosition": 0.395,
-      "drift_wtMorph": 0.488,
-      "drift_fmRatio": 4.0,
-      "drift_fmDepth": 0.516,
-      "drift_filterCutoff": 6526.0,
-      "drift_filterReso": 0.203,
-      "drift_filterEnvAmt": 0.368,
       "drift_ampAttack": 0.1391,
       "drift_ampDecay": 0.483,
-      "drift_ampSustain": 0.374,
       "drift_ampRelease": 0.639,
+      "drift_ampSustain": 0.374,
+      "drift_chorus": 0.274,
+      "drift_filterCutoff": 6526.0,
+      "drift_filterEnvAmt": 0.368,
+      "drift_filterReso": 0.203,
+      "drift_fmDepth": 0.516,
+      "drift_fmRatio": 4.0,
+      "drift_level": 0.659,
+      "drift_lfo1Depth": 0.607,
+      "drift_lfo1Rate": 0.102,
+      "drift_lfo1Shape": 1.0,
+      "drift_lfo2Depth": 0.346,
+      "drift_lfo2Rate": 0.292,
       "drift_modAttack": 0.0299,
       "drift_modDecay": 0.424,
-      "drift_modSustain": 0.57,
       "drift_modRelease": 1.19,
-      "drift_lfo1Rate": 0.102,
-      "drift_lfo1Depth": 0.607,
-      "drift_lfo1Shape": 1.0,
-      "drift_lfo2Rate": 0.292,
-      "drift_lfo2Depth": 0.346,
-      "drift_level": 0.659,
-      "drift_chorus": 0.274,
-      "drift_reverbMix": 0.241
+      "drift_modSustain": 0.57,
+      "drift_oscA_level": 0.792,
+      "drift_oscA_mode": 1.0,
+      "drift_oscA_pitch": -0.441,
+      "drift_oscB_level": 0.615,
+      "drift_oscB_mode": 0.25,
+      "drift_oscB_pitch": -0.048,
+      "drift_reverbMix": 0.241,
+      "drift_wtMorph": 0.488,
+      "drift_wtPosition": 0.395
     },
     "Optic": {
-      "optic_level": 0.722,
-      "optic_filterCutoff": 3576.7
+      "optic_filterCutoff": 3576.7,
+      "optic_level": 0.722
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "GRANULAR_EXCHANGE",
-        "source": "Odyssey",
-        "target": "Optic",
-        "amount": 0.75
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.689,
-    "warmth": 0.46,
-    "movement": 0.725,
-    "density": 0.529,
-    "space": 0.533,
-    "aggression": 0.358
-  }
+  "tags": [
+    "entangled",
+    "coupling",
+    "odyssey",
+    "optic"
+  ],
+  "tempo": null,
+  "version": "1.0"
 }

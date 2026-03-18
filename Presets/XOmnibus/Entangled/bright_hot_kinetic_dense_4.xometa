@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT HOT KINETIC DENSE 4",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.9007,
-    "warmth": 0.9012,
-    "movement": 0.9376,
-    "density": 0.9317,
-    "aggression": 0.477,
-    "space": 0.5192
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Extreme",
+  "couplingType": "PHASE",
+  "description": "Ultra-diverse Entangled preset — bright hot kinetic dense. Designed for PHASE coupling with XOpal.",
   "dna": {
-    "brightness": 0.9007,
-    "warmth": 0.9012,
-    "movement": 0.9376,
-    "density": 0.9317,
     "aggression": 0.477,
-    "space": 0.5192
+    "brightness": 0.9007,
+    "density": 0.9317,
+    "movement": 0.9376,
+    "space": 0.5192,
+    "warmth": 0.9012
   },
   "engines": [
-    "XOpal"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 bright hot kinetic dense. Designed for PHASE coupling with XOpal.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "phase",
-    "opal"
+    "Opal"
   ],
   "macroLabels": [
     "SWEEP",
@@ -36,15 +23,28 @@
     "FORGE",
     "GLEAM"
   ],
-  "couplingType": "PHASE",
-  "couplingIntensity": "Extreme",
+  "mood": "Entangled",
+  "name": "BRIGHT HOT KINETIC DENSE 4",
   "parameters": {
-    "XOpal": {
-      "couplingLevel": 0.84,
-      "couplingBus": 1
+    "Opal": {
+      "couplingBus": 1,
+      "couplingLevel": 0.84
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.477,
+    "brightness": 0.9007,
+    "density": 0.9317,
+    "movement": 0.9376,
+    "space": 0.5192,
+    "warmth": 0.9012
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "phase",
+    "opal"
+  ],
+  "version": "1.0.0"
 }

@@ -1,55 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Boid School",
-  "mood": "Foundation",
-  "engines": ["Oceanic"],
-  "author": "Guru Bin — OCEANIC Retreat 2026-03-15",
-  "version": "1.0.0",
-  "description": "Four sub-flocks at 1×/2×/1.5×/3× MIDI frequency. 128 particles organize themselves into a self-composing chord cluster — root, octave, fifth, octave+fifth. No designer placed those pitches. The flock discovered them through physics. The chord emerges. It is always the right chord.",
-  "tags": ["swarm", "chord", "emergent", "organic", "foundation", "awakening"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.6,
-    "movement": 0.55,
-    "density": 0.65,
-    "space": 0.5,
-    "aggression": 0.2
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Four sub-flocks at 1×/2×/1.5×/3× MIDI frequency. 128 particles organize themselves into a self-composing chord cluster — root, octave, fifth, octave+fifth. No designer placed those pitches. The flock discovered them through physics. The chord emerges. It is always the right chord.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.5,
+    "density": 0.65,
+    "movement": 0.55,
+    "space": 0.5,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Boid School",
   "parameters": {
     "Oceanic": {
-      "ocean_separation": 0.4,
       "ocean_alignment": 0.5,
-      "ocean_cohesion": 0.55,
-      "ocean_tether": 0.65,
-      "ocean_scatter": 0.2,
-      "ocean_subflocks": 4,
-      "ocean_damping": 0.5,
-      "ocean_waveform": 0,
       "ocean_ampAttack": 0.08,
       "ocean_ampDecay": 0.3,
-      "ocean_ampSustain": 0.85,
       "ocean_ampRelease": 1.618,
+      "ocean_ampSustain": 0.85,
+      "ocean_cohesion": 0.55,
+      "ocean_damping": 0.5,
+      "ocean_glide": 0.0,
+      "ocean_lfo1Depth": 0.12,
+      "ocean_lfo1Rate": 0.067,
+      "ocean_lfo1Shape": 0,
+      "ocean_lfo2Depth": 0.08,
+      "ocean_lfo2Rate": 0.041,
+      "ocean_lfo2Shape": 0,
+      "ocean_macroCharacter": 0.0,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroMovement": 0.0,
+      "ocean_macroSpace": 0.0,
+      "ocean_scatter": 0.2,
+      "ocean_separation": 0.4,
+      "ocean_subflocks": 4,
       "ocean_swarmEnvAttack": 0.15,
       "ocean_swarmEnvDecay": 0.5,
-      "ocean_swarmEnvSustain": 0.8,
       "ocean_swarmEnvRelease": 0.8,
-      "ocean_lfo1Rate": 0.067,
-      "ocean_lfo1Depth": 0.12,
-      "ocean_lfo1Shape": 0,
-      "ocean_lfo2Rate": 0.041,
-      "ocean_lfo2Depth": 0.08,
-      "ocean_lfo2Shape": 0,
+      "ocean_swarmEnvSustain": 0.8,
+      "ocean_tether": 0.65,
       "ocean_voiceMode": 2,
-      "ocean_glide": 0.0,
-      "ocean_macroCharacter": 0.0,
-      "ocean_macroMovement": 0.0,
-      "ocean_macroCoupling": 0.0,
-      "ocean_macroSpace": 0.0
+      "ocean_waveform": 0
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "swarm",
+    "chord",
+    "emergent",
+    "organic",
+    "foundation",
+    "awakening"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

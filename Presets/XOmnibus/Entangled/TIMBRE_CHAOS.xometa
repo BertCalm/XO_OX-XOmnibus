@@ -1,48 +1,56 @@
 {
-  "name": "TIMBRE CHAOS",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.86,
+    "source": "Odyssey",
+    "target": "Oracle",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.617,
+    "brightness": 0.97,
+    "density": 0.752,
+    "movement": 0.897,
+    "space": 0.784,
+    "warmth": 0.611
+  },
   "engines": [
-    "ODYSSEY",
-    "ORACLE"
+    "Odyssey",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.239,
+    "COUPLING": 0.966,
+    "MOVEMENT": 0.897,
+    "SPACE": 0.784
+  },
+  "mood": "Entangled",
+  "name": "TIMBRE CHAOS",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.693,
-      "macro_movement": 0.895,
       "macro_coupling": 0.625,
+      "macro_movement": 0.895,
       "macro_space": 0.903
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.721,
-      "macro_movement": 0.898,
       "macro_coupling": 0.044,
+      "macro_movement": 0.898,
       "macro_space": 0.364
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ODYSSEY",
-    "target": "ORACLE",
-    "amount": 0.86
-  },
-  "dna": {
-    "brightness": 0.97,
-    "warmth": 0.611,
-    "movement": 0.897,
-    "density": 0.752,
-    "space": 0.784,
-    "aggression": 0.617
-  },
-  "macros": {
-    "CHARACTER": 0.239,
-    "MOVEMENT": 0.897,
-    "COUPLING": 0.966,
-    "SPACE": 0.784
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "surge"
-  ]
+  ],
+  "version": "1.0"
 }

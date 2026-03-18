@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT WARM VAST VIOLENT PRS AGG 2",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OVERWORLD",
-    "ORIGAMI"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.809,
-      "macro_movement": 0.528,
-      "macro_coupling": 0.839,
-      "macro_space": 0.951
-    },
-    "ORIGAMI": {
-      "macro_character": 0.865,
-      "macro_movement": 0.513,
-      "macro_coupling": 0.796,
-      "macro_space": 0.933
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OVERWORLD",
-    "target": "ORIGAMI",
-    "amount": 0.763
+    "amount": 0.763,
+    "source": "Overworld",
+    "target": "Origami",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
+    "aggression": 0.899,
     "brightness": 0.874,
-    "warmth": 0.949,
-    "movement": 0.546,
     "density": 0.674,
+    "movement": 0.546,
     "space": 0.977,
-    "aggression": 0.899
+    "warmth": 0.949
   },
+  "engines": [
+    "Overworld",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.837,
-    "MOVEMENT": 0.52,
     "COUPLING": 0.818,
+    "MOVEMENT": 0.52,
     "SPACE": 0.942
   },
+  "mood": "Prism",
+  "name": "BRIGHT WARM VAST VIOLENT PRS AGG 2",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.865,
+      "macro_coupling": 0.796,
+      "macro_movement": 0.513,
+      "macro_space": 0.933
+    },
+    "Overworld": {
+      "macro_character": 0.809,
+      "macro_coupling": 0.839,
+      "macro_movement": 0.528,
+      "macro_space": 0.951
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "aggressive",
@@ -47,5 +54,6 @@
     "violent",
     "bright",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

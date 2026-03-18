@@ -1,45 +1,52 @@
 {
-  "name": "DEEP THREAD",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ODDFELIX",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "ODDFELIX": {
-      "macro_character": 0.6728,
-      "macro_movement": 0.6723,
-      "macro_coupling": 0.8338,
-      "macro_space": 0.8224
-    },
-    "OBLIQUE": {
-      "macro_character": 0.9403,
-      "macro_movement": 0.1083,
-      "macro_coupling": 0.6935,
-      "macro_space": 0.025
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ODDFELIX",
-    "target": "OBLIQUE",
-    "amount": 0.9653
+    "amount": 0.9653,
+    "source": "OddfeliX",
+    "target": "Oblique",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.8239,
     "brightness": 0.5614,
-    "warmth": 0.9153,
-    "movement": 0.2214,
     "density": 0.9166,
+    "movement": 0.2214,
     "space": 0.0632,
-    "aggression": 0.8239
+    "warmth": 0.9153
   },
+  "engines": [
+    "OddfeliX",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.9094,
-    "MOVEMENT": 0.3022,
     "COUPLING": 0.8225,
+    "MOVEMENT": 0.3022,
     "SPACE": 0.1398
   },
+  "mood": "Entangled",
+  "name": "DEEP THREAD",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.9403,
+      "macro_coupling": 0.6935,
+      "macro_movement": 0.1083,
+      "macro_space": 0.025
+    },
+    "OddfeliX": {
+      "macro_character": 0.6728,
+      "macro_coupling": 0.8338,
+      "macro_movement": 0.6723,
+      "macro_space": 0.8224
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -48,5 +55,6 @@
     "thick",
     "xhigh",
     "granite"
-  ]
+  ],
+  "version": "1.0"
 }

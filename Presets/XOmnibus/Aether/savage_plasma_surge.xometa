@@ -1,49 +1,57 @@
 {
-  "name": "SAVAGE PLASMA SURGE",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.852,
+    "source": "Ouroboros",
+    "target": "Overbite",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.983,
+    "brightness": 0.377,
+    "density": 0.813,
+    "movement": 0.31,
+    "space": 0.101,
+    "warmth": 0.792
+  },
   "engines": [
-    "OUROBOROS",
-    "OVERBITE"
+    "Ouroboros",
+    "Overbite"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.508,
+    "COUPLING": 0.54,
+    "MOVEMENT": 0.31,
+    "SPACE": 0.101
+  },
+  "mood": "Aether",
+  "name": "SAVAGE PLASMA SURGE",
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.309,
-      "macro_movement": 0.355,
       "macro_coupling": 0.342,
+      "macro_movement": 0.355,
       "macro_space": 0.117
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.192,
-      "macro_movement": 0.36,
       "macro_coupling": 0.155,
+      "macro_movement": 0.36,
       "macro_space": 0.089
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OUROBOROS",
-    "target": "OVERBITE",
-    "amount": 0.852
-  },
-  "dna": {
-    "brightness": 0.377,
-    "warmth": 0.792,
-    "movement": 0.31,
-    "density": 0.813,
-    "space": 0.101,
-    "aggression": 0.983
-  },
-  "macros": {
-    "CHARACTER": 0.508,
-    "MOVEMENT": 0.31,
-    "COUPLING": 0.54,
-    "SPACE": 0.101
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

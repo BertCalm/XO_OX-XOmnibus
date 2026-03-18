@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Slow Pulse",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "Barely perceptible breathing rhythm in a warm foundation.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.35,
+    "density": 0.3,
+    "movement": 0.4,
+    "space": 0.2,
+    "warmth": 0.6
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Barely perceptible breathing rhythm in a warm foundation.",
-  "tags": [
-    "pulse",
-    "breath",
-    "slow",
-    "warm"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Slow Pulse",
   "parameters": {
     "Organon": {
-      "organon_metabolicRate": 1.2,
-      "organon_enzymeSelect": 900.0,
       "organon_catalystDrive": 0.5,
       "organon_dampingCoeff": 0.18,
-      "organon_signalFlux": 0.55,
-      "organon_phasonShift": 0.3,
+      "organon_enzymeSelect": 900.0,
       "organon_isotopeBalance": 0.4,
       "organon_lockIn": 0.0,
       "organon_membrane": 0.2,
-      "organon_noiseColor": 0.4
+      "organon_metabolicRate": 1.2,
+      "organon_noiseColor": 0.4,
+      "organon_phasonShift": 0.3,
+      "organon_signalFlux": 0.55
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.2,
-    "aggression": 0.1
-  }
+  "tags": [
+    "pulse",
+    "breath",
+    "slow",
+    "warm"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

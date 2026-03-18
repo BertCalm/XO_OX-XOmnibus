@@ -1,49 +1,57 @@
 {
-  "name": "CROSS AET 02",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.665,
+    "source": "Origami",
+    "target": "Opal",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.036,
+    "brightness": 0.948,
+    "density": 0.92,
+    "movement": 0.377,
+    "space": 0.965,
+    "warmth": 0.086
+  },
   "engines": [
-    "ORIGAMI",
-    "OPAL"
+    "Origami",
+    "Opal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.517,
+    "COUPLING": 0.5,
+    "MOVEMENT": 0.649,
+    "SPACE": 0.965
+  },
+  "mood": "Aether",
+  "name": "CROSS AET 02",
   "parameters": {
-    "ORIGAMI": {
+    "Opal": {
       "macro_character": 0.517,
-      "macro_movement": 0.649,
       "macro_coupling": 0.5,
+      "macro_movement": 0.649,
       "macro_space": 0.965
     },
-    "OPAL": {
+    "Origami": {
       "macro_character": 0.517,
-      "macro_movement": 0.649,
       "macro_coupling": 0.5,
+      "macro_movement": 0.649,
       "macro_space": 0.965
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ORIGAMI",
-    "target": "OPAL",
-    "amount": 0.665
-  },
-  "dna": {
-    "brightness": 0.948,
-    "warmth": 0.086,
-    "movement": 0.377,
-    "density": 0.92,
-    "space": 0.965,
-    "aggression": 0.036
-  },
-  "macros": {
-    "CHARACTER": 0.517,
-    "MOVEMENT": 0.649,
-    "COUPLING": 0.5,
-    "SPACE": 0.965
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-  ]
+  ],
+  "version": "1.0"
 }

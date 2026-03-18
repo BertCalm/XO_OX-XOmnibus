@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_COLD_DENSE_VAST_VIOLENT_PRS_3",
-  "mood": "Prism",
-  "engines": [
-    "OBLIQUE",
-    "ORPHICA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.883,
+    "source": "Oblique",
+    "target": "Orphica",
+    "type": "SPATIAL_COUPLE"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_DENSE_VAST_VIOLENT. Variant 3.",
+  "dna": {
+    "aggression": 0.976,
+    "brightness": 0.904,
+    "density": 0.907,
+    "movement": 0.559,
+    "space": 0.913,
+    "warmth": 0.071
+  },
+  "engines": [
+    "Oblique",
+    "Orphica"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.975,
+    "COUPLING": 0.869,
+    "MOVEMENT": 0.49,
+    "SPACE": 0.895
+  },
+  "mood": "Prism",
+  "name": "BRIGHT_COLD_DENSE_VAST_VIOLENT_PRS_3",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.952,
+      "macro_coupling": 0.923,
+      "macro_movement": 0.462,
+      "macro_space": 0.93
+    },
+    "Orphica": {
+      "macro_character": 0.998,
+      "macro_coupling": 0.816,
+      "macro_movement": 0.518,
+      "macro_space": 0.859
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "cold",
@@ -19,53 +66,6 @@
     "prism",
     "dense"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OBLIQUE": {
-      "macro_character": 0.952,
-      "macro_movement": 0.462,
-      "macro_coupling": 0.923,
-      "macro_space": 0.93
-    },
-    "ORPHICA": {
-      "macro_character": 0.998,
-      "macro_movement": 0.518,
-      "macro_coupling": 0.816,
-      "macro_space": 0.859
-    }
-  },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OBLIQUE",
-    "target": "ORPHICA",
-    "amount": 0.883
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.904,
-    "warmth": 0.071,
-    "movement": 0.559,
-    "density": 0.907,
-    "space": 0.913,
-    "aggression": 0.976
-  },
-  "macros": {
-    "CHARACTER": 0.975,
-    "MOVEMENT": 0.49,
-    "COUPLING": 0.869,
-    "SPACE": 0.895
-  }
+  "version": "1.0.0"
 }

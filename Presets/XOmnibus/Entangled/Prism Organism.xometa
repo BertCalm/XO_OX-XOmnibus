@@ -1,22 +1,35 @@
 {
-  "schema_version": 1,
-  "name": "Prism Organism",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Organon",
+        "engineB": "Oblique",
+        "type": "Audio->Ring"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Oblique prism refraction angles determined by Organon metabolic phase. Life refracts light.",
+  "dna": {
+    "aggression": 0.47,
+    "brightness": 0.535,
+    "density": 0.922,
+    "movement": 0.745,
+    "space": 0.24,
+    "warmth": 0.54
+  },
   "engines": [
     "Organon",
     "Oblique"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Oblique prism refraction angles determined by Organon metabolic phase. Life refracts light.",
-  "tags": [
-    "prism",
-    "refraction",
-    "phase",
-    "entangled",
-    "organon",
-    "oblique"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -25,54 +38,41 @@
   ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.65,
     "SPACE": 0.55
   },
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Prism Organism",
   "parameters": {
+    "Oblique": {
+      "oblq_bounce": 0.6,
+      "oblq_prismColor": 0.5,
+      "oblq_refraction": 0.45
+    },
     "Organon": {
-      "organon_metabolicRate": 3.5,
-      "organon_enzymeSelect": 600.0,
       "organon_catalystDrive": 1.2,
       "organon_dampingCoeff": 0.4,
-      "organon_signalFlux": 0.8,
-      "organon_phasonShift": 0.55,
+      "organon_enzymeSelect": 600.0,
       "organon_isotopeBalance": 0.6,
       "organon_lockIn": 0.0,
       "organon_membrane": 0.55,
-      "organon_noiseColor": 0.6
-    },
-    "Oblique": {
-      "oblq_prismColor": 0.5,
-      "oblq_bounce": 0.6,
-      "oblq_refraction": 0.45
+      "organon_metabolicRate": 3.5,
+      "organon_noiseColor": 0.6,
+      "organon_phasonShift": 0.55,
+      "organon_signalFlux": 0.8
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Oblique",
-        "type": "Audio->Ring",
-        "amount": 0.65
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.535,
-    "warmth": 0.54,
-    "movement": 0.745,
-    "density": 0.922,
-    "space": 0.24,
-    "aggression": 0.47
-  }
+  "tags": [
+    "prism",
+    "refraction",
+    "phase",
+    "entangled",
+    "organon",
+    "oblique"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

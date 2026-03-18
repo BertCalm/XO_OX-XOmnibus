@@ -1,31 +1,39 @@
 {
-  "name": "Harp Spool",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Overdub",
+    "target": "Orphica",
+    "type": "GRAIN_SCATTER"
+  },
+  "description": "Orphica grain-shimmer drawn through dub tape — each grain a loop frozen in amber",
   "engines": [
-    "OVERDUB",
-    "ORPHICA"
+    "Overdub",
+    "Orphica"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.4,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.4,
     "SPACE": 0.7
   },
-  "sonic_dna": {
-    "brightness": 0.52,
-    "warmth": 0.59,
-    "movement": 0.59,
-    "density": 0.52,
-    "space": 0.57,
-    "aggression": 0.27
-  },
+  "mood": "Entangled",
+  "name": "Harp Spool",
   "parameters": {},
-  "coupling": {
-    "type": "GRAIN_SCATTER",
-    "source": "OVERDUB",
-    "target": "ORPHICA",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.27,
+    "brightness": 0.52,
+    "density": 0.52,
+    "movement": 0.59,
+    "space": 0.57,
+    "warmth": 0.59
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "orphica",
     "dub"
   ],
-  "description": "Orphica grain-shimmer drawn through dub tape \u2014 each grain a loop frozen in amber"
+  "version": "1.0"
 }

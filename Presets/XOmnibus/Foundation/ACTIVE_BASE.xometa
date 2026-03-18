@@ -1,48 +1,56 @@
 {
-  "name": "ACTIVE BASE",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.602,
+    "source": "Obsidian",
+    "target": "Ombre",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.241,
+    "brightness": 0.234,
+    "density": 0.711,
+    "movement": 0.881,
+    "space": 0.132,
+    "warmth": 0.505
+  },
   "engines": [
-    "OBSIDIAN",
-    "OMBRE"
+    "Obsidian",
+    "Ombre"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.583,
+    "COUPLING": 0.602,
+    "MOVEMENT": 0.881,
+    "SPACE": 0.132
+  },
+  "mood": "Foundation",
+  "name": "ACTIVE BASE",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.771,
-      "macro_movement": 0.886,
       "macro_coupling": 0.585,
+      "macro_movement": 0.886,
       "macro_space": 0.489
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.32,
-      "macro_movement": 0.911,
       "macro_coupling": 0.341,
+      "macro_movement": 0.911,
       "macro_space": 0.529
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OBSIDIAN",
-    "target": "OMBRE",
-    "amount": 0.602
-  },
-  "dna": {
-    "brightness": 0.234,
-    "warmth": 0.505,
-    "movement": 0.881,
-    "density": 0.711,
-    "space": 0.132,
-    "aggression": 0.241
-  },
-  "macros": {
-    "CHARACTER": 0.583,
-    "MOVEMENT": 0.881,
-    "COUPLING": 0.602,
-    "SPACE": 0.132
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "DARK VAST KINETIC FLU 03",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.735,
+    "source": "Ohm",
+    "target": "Ole",
+    "type": "SPECTRAL_MORPH"
+  },
+  "dna": {
+    "aggression": 0.665,
+    "brightness": 0.046,
+    "density": 0.689,
+    "movement": 0.929,
+    "space": 0.928,
+    "warmth": 0.353
+  },
   "engines": [
-    "OHM",
-    "OLE"
+    "Ohm",
+    "Ole"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.199,
+    "COUPLING": 0.815,
+    "MOVEMENT": 0.929,
+    "SPACE": 0.928
+  },
+  "mood": "Flux",
+  "name": "DARK VAST KINETIC FLU 03",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.199,
-      "macro_movement": 0.929,
       "macro_coupling": 0.815,
+      "macro_movement": 0.929,
       "macro_space": 0.928
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.296,
-      "macro_movement": 0.924,
       "macro_coupling": 0.62,
+      "macro_movement": 0.924,
       "macro_space": 1.0
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OHM",
-    "target": "OLE",
-    "amount": 0.735
-  },
-  "dna": {
-    "brightness": 0.046,
-    "warmth": 0.353,
-    "movement": 0.929,
-    "density": 0.689,
-    "space": 0.928,
-    "aggression": 0.665
-  },
-  "macros": {
-    "CHARACTER": 0.199,
-    "MOVEMENT": 0.929,
-    "COUPLING": 0.815,
-    "SPACE": 0.928
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -47,5 +54,6 @@
     "kinetic",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

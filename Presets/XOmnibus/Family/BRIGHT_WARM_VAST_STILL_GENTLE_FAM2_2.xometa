@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT WARM VAST STILL GENTLE FAM2 2",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OSTERIA",
-    "OHM"
-  ],
-  "parameters": {
-    "OSTERIA": {
-      "macro_character": 0.897,
-      "macro_movement": 0.12,
-      "macro_coupling": 0.226,
-      "macro_space": 0.953
-    },
-    "OHM": {
-      "macro_character": 0.888,
-      "macro_movement": 0.156,
-      "macro_coupling": 0.245,
-      "macro_space": 0.956
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OSTERIA",
-    "target": "OHM",
-    "amount": 0.226
+    "amount": 0.226,
+    "source": "Osteria",
+    "target": "Ohm",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.035,
     "brightness": 0.902,
-    "warmth": 0.893,
-    "movement": 0.12,
     "density": 0.418,
+    "movement": 0.12,
     "space": 0.953,
-    "aggression": 0.035
+    "warmth": 0.893
   },
+  "engines": [
+    "Osteria",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.897,
-    "MOVEMENT": 0.12,
     "COUPLING": 0.226,
+    "MOVEMENT": 0.12,
     "SPACE": 0.953
   },
+  "mood": "Family",
+  "name": "BRIGHT WARM VAST STILL GENTLE FAM2 2",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.888,
+      "macro_coupling": 0.245,
+      "macro_movement": 0.156,
+      "macro_space": 0.956
+    },
+    "Osteria": {
+      "macro_character": 0.897,
+      "macro_coupling": 0.226,
+      "macro_movement": 0.12,
+      "macro_space": 0.953
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
@@ -47,5 +54,6 @@
     "still",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

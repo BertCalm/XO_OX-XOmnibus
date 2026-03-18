@@ -1,50 +1,58 @@
 {
-  "name": "WRATHFUL ASCENT",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OWLFISH",
-    "OLE"
-  ],
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.108,
-      "macro_movement": 1.022,
-      "macro_coupling": 0.368,
-      "macro_space": 0.229
-    },
-    "OLE": {
-      "macro_character": 0.574,
-      "macro_movement": 1.018,
-      "macro_coupling": 0.845,
-      "macro_space": 0.241
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OWLFISH",
-    "target": "OLE",
-    "amount": 0.873
+    "amount": 0.873,
+    "source": "Owlfish",
+    "target": "Ole",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.959,
     "brightness": 0.6,
-    "warmth": 0.352,
-    "movement": 0.987,
     "density": 0.578,
+    "movement": 0.987,
     "space": 0.213,
-    "aggression": 0.959
+    "warmth": 0.352
   },
+  "engines": [
+    "Owlfish",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.614,
-    "MOVEMENT": 0.987,
     "COUPLING": 0.643,
+    "MOVEMENT": 0.987,
     "SPACE": 0.213
   },
+  "mood": "Aether",
+  "name": "WRATHFUL ASCENT",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.574,
+      "macro_coupling": 0.845,
+      "macro_movement": 1.018,
+      "macro_space": 0.241
+    },
+    "Owlfish": {
+      "macro_character": 0.108,
+      "macro_coupling": 0.368,
+      "macro_movement": 1.022,
+      "macro_space": 0.229
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh",
     "movement-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

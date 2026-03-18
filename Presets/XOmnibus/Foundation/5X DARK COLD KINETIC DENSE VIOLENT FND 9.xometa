@@ -1,14 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FND 9",
-  "mood": "Foundation",
-  "engines": [
-    "OTTONI",
-    "ODDFELIX"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.93,
+    "source": "Ottoni",
+    "target": "OddfeliX",
+    "type": "SPECTRAL_BLEND"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.956,
+    "brightness": 0.078,
+    "density": 0.913,
+    "movement": 0.482,
+    "space": 0.056,
+    "warmth": 0.062
+  },
+  "engines": [
+    "Ottoni",
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT FND 9",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.7,
+      "macro_coupling": 0.5,
+      "macro_movement": 0.99,
+      "macro_space": 0.46
+    },
+    "Ottoni": {
+      "macro_character": 0.73,
+      "macro_coupling": 0.81,
+      "macro_movement": 0.83,
+      "macro_space": 0.27
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +58,6 @@
     "dense",
     "foundation"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.73,
-      "macro_movement": 0.83,
-      "macro_coupling": 0.81,
-      "macro_space": 0.27
-    },
-    "ODDFELIX": {
-      "macro_character": 0.7,
-      "macro_movement": 0.99,
-      "macro_coupling": 0.5,
-      "macro_space": 0.46
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_BLEND",
-    "source": "OTTONI",
-    "target": "ODDFELIX",
-    "amount": 0.93
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.078,
-    "warmth": 0.062,
-    "movement": 0.482,
-    "density": 0.913,
-    "space": 0.056,
-    "aggression": 0.956
-  }
+  "version": "1.0.0"
 }

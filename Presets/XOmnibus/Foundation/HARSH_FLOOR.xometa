@@ -1,48 +1,56 @@
 {
-  "name": "HARSH FLOOR",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.446,
+    "source": "Ocelot",
+    "target": "Odyssey",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.948,
+    "brightness": 0.309,
+    "density": 0.242,
+    "movement": 0.146,
+    "space": 0.645,
+    "warmth": 0.286
+  },
   "engines": [
-    "OCELOT",
-    "ODYSSEY"
+    "Ocelot",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.742,
+    "COUPLING": 0.446,
+    "MOVEMENT": 0.146,
+    "SPACE": 0.645
+  },
+  "mood": "Foundation",
+  "name": "HARSH FLOOR",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.565,
-      "macro_movement": 0.45,
       "macro_coupling": 0.527,
+      "macro_movement": 0.45,
       "macro_space": 0.279
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.456,
-      "macro_movement": 0.43,
       "macro_coupling": 0.771,
+      "macro_movement": 0.43,
       "macro_space": 0.498
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OCELOT",
-    "target": "ODYSSEY",
-    "amount": 0.446
-  },
-  "dna": {
-    "brightness": 0.309,
-    "warmth": 0.286,
-    "movement": 0.146,
-    "density": 0.242,
-    "space": 0.645,
-    "aggression": 0.948
-  },
-  "macros": {
-    "CHARACTER": 0.742,
-    "MOVEMENT": 0.146,
-    "COUPLING": 0.446,
-    "SPACE": 0.645
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

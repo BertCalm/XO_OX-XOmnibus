@@ -1,48 +1,56 @@
 {
-  "name": "Cave Floor Pulse",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OBLONG",
-    "OBESE"
-  ],
-  "parameters": {
-    "OBLONG": {
-      "macro_character": 0.31,
-      "macro_movement": 0.61,
-      "macro_coupling": 0.82,
-      "macro_space": 0.53
-    },
-    "OBESE": {
-      "macro_character": 0.89,
-      "macro_movement": 0.25,
-      "macro_coupling": 0.89,
-      "macro_space": 0.41
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FEEDBACK",
-    "source": "OBESE",
-    "target": "OBLONG",
-    "amount": 0.94
+    "amount": 0.94,
+    "source": "Obese",
+    "target": "Oblong",
+    "type": "FEEDBACK"
   },
   "dna": {
+    "aggression": 0.66,
     "brightness": 0.07,
-    "warmth": 0.39,
-    "movement": 0.49,
     "density": 0.76,
+    "movement": 0.49,
     "space": 0.26,
-    "aggression": 0.66
+    "warmth": 0.39
   },
+  "engines": [
+    "Oblong",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.46,
-    "MOVEMENT": 0.49,
     "COUPLING": 0.93,
+    "MOVEMENT": 0.49,
     "SPACE": 0.26
   },
+  "mood": "Entangled",
+  "name": "Cave Floor Pulse",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.89,
+      "macro_coupling": 0.89,
+      "macro_movement": 0.25,
+      "macro_space": 0.41
+    },
+    "Oblong": {
+      "macro_character": 0.31,
+      "macro_coupling": 0.82,
+      "macro_movement": 0.61,
+      "macro_space": 0.53
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-  ]
+  ],
+  "version": "1.0"
 }

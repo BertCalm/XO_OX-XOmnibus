@@ -1,13 +1,87 @@
 {
-  "schema_version": 1,
-  "name": "Glass Shard Coupling",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "slots": [
+      {
+        "amount": 0.5,
+        "note": "External audio modulates PD depth — FM-like sidebands through phase warping",
+        "sourceEngine": null,
+        "targetEngine": "Obsidian",
+        "type": "AudioToFM"
+      },
+      {
+        "amount": 0.35,
+        "note": "Amplitude drives filter cutoff for rhythmic filtering",
+        "sourceEngine": null,
+        "targetEngine": "Obsidian",
+        "type": "AmpToFilter"
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-14",
+  "description": "Designed for AudioToFM and AmpToFilter coupling. High formant presence sets up the vowel target. External audio modulates PD depth for FM-like sidebands through phase warping. Pairs perfectly with Orbital (additive partials) or Origami (spectral folding). COUPLING macro activates cascade blend.",
+  "dna": {
+    "aggression": 0.42,
+    "brightness": 0.52,
+    "density": 0.55,
+    "movement": 0.45,
+    "space": 0.38,
+    "warmth": 0.48
+  },
   "engines": [
     "Obsidian"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Designed for AudioToFM and AmpToFilter coupling. High formant presence sets up the vowel target. External audio modulates PD depth for FM-like sidebands through phase warping. Pairs perfectly with Orbital (additive partials) or Origami (spectral folding). COUPLING macro activates cascade blend.",
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "Obsidian",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Glass Shard Coupling",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_ampAttack": 0.01,
+      "obsidian_ampDecay": 0.35,
+      "obsidian_ampRelease": 1.0,
+      "obsidian_ampSustain": 0.75,
+      "obsidian_cascadeBlend": 0.1,
+      "obsidian_crossModDepth": 0.25,
+      "obsidian_densityX": 0.45,
+      "obsidian_depth": 0.6,
+      "obsidian_depthAttack": 0.01,
+      "obsidian_depthDecay": 0.3,
+      "obsidian_depthRelease": 0.8,
+      "obsidian_depthSustain": 0.55,
+      "obsidian_filterCutoff": 8000.0,
+      "obsidian_filterReso": 0.1,
+      "obsidian_formantIntensity": 0.5,
+      "obsidian_glide": 0.0,
+      "obsidian_level": 0.8,
+      "obsidian_lfo1Depth": 0.2,
+      "obsidian_lfo1Rate": 0.5,
+      "obsidian_lfo1Shape": 0,
+      "obsidian_lfo2Depth": 0.15,
+      "obsidian_lfo2Rate": 0.3,
+      "obsidian_lfo2Shape": 0,
+      "obsidian_macroCharacter": 0.3,
+      "obsidian_macroCoupling": 0.45,
+      "obsidian_macroMovement": 0.2,
+      "obsidian_macroSpace": 0.25,
+      "obsidian_polyphony": 2,
+      "obsidian_stereoWidth": 0.45,
+      "obsidian_stiffness": 0.1,
+      "obsidian_tiltY": 0.5
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "coupling",
     "entangled",
@@ -16,80 +90,6 @@
     "orbital",
     "origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-14",
-  "legacy": {
-    "sourceInstrument": "Obsidian",
-    "sourceCategory": "Entangled",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Obsidian": {
-      "obsidian_densityX": 0.45,
-      "obsidian_tiltY": 0.5,
-      "obsidian_depth": 0.6,
-      "obsidian_stiffness": 0.1,
-      "obsidian_cascadeBlend": 0.1,
-      "obsidian_crossModDepth": 0.25,
-      "obsidian_formantIntensity": 0.5,
-      "obsidian_stereoWidth": 0.45,
-      "obsidian_filterCutoff": 8000.0,
-      "obsidian_filterReso": 0.1,
-      "obsidian_level": 0.8,
-      "obsidian_ampAttack": 0.01,
-      "obsidian_ampDecay": 0.35,
-      "obsidian_ampSustain": 0.75,
-      "obsidian_ampRelease": 1.0,
-      "obsidian_depthAttack": 0.01,
-      "obsidian_depthDecay": 0.3,
-      "obsidian_depthSustain": 0.55,
-      "obsidian_depthRelease": 0.8,
-      "obsidian_lfo1Rate": 0.5,
-      "obsidian_lfo1Depth": 0.2,
-      "obsidian_lfo1Shape": 0,
-      "obsidian_lfo2Rate": 0.3,
-      "obsidian_lfo2Depth": 0.15,
-      "obsidian_lfo2Shape": 0,
-      "obsidian_polyphony": 2,
-      "obsidian_glide": 0.0,
-      "obsidian_macroCharacter": 0.3,
-      "obsidian_macroMovement": 0.2,
-      "obsidian_macroCoupling": 0.45,
-      "obsidian_macroSpace": 0.25
-    }
-  },
-  "coupling": {
-    "slots": [
-      {
-        "type": "AudioToFM",
-        "sourceEngine": null,
-        "targetEngine": "Obsidian",
-        "amount": 0.5,
-        "note": "External audio modulates PD depth — FM-like sidebands through phase warping"
-      },
-      {
-        "type": "AmpToFilter",
-        "sourceEngine": null,
-        "targetEngine": "Obsidian",
-        "amount": 0.35,
-        "note": "Amplitude drives filter cutoff for rhythmic filtering"
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.52,
-    "warmth": 0.48,
-    "movement": 0.45,
-    "density": 0.55,
-    "space": 0.38,
-    "aggression": 0.42
-  }
+  "version": "1.0.0"
 }

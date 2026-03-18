@@ -1,31 +1,39 @@
 {
-  "name": "Patina Voyage",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6,
+    "source": "Ottoni",
+    "target": "Odyssey",
+    "type": "HARMONIC_BLEND"
+  },
+  "description": "Ottoni density grounds the drift trajectory — brass weight slowing the FM journey",
   "engines": [
-    "ODYSSEY",
-    "OTTONI"
+    "Odyssey",
+    "Ottoni"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.65,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.59,
-    "warmth": 0.54,
-    "movement": 0.59,
-    "density": 0.61,
-    "space": 0.56,
-    "aggression": 0.45
-  },
+  "mood": "Entangled",
+  "name": "Patina Voyage",
   "parameters": {},
-  "coupling": {
-    "type": "HARMONIC_BLEND",
-    "source": "OTTONI",
-    "target": "ODYSSEY",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.45,
+    "brightness": 0.59,
+    "density": 0.61,
+    "movement": 0.59,
+    "space": 0.56,
+    "warmth": 0.54
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "ottoni",
     "wavetable"
   ],
-  "description": "Ottoni density grounds the drift trajectory \u2014 brass weight slowing the FM journey"
+  "version": "1.0"
 }

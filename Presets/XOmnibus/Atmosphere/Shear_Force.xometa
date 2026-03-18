@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Shear Force",
-  "mood": "Atmosphere",
-  "engines": [
-    "OCTOPUS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. OCTOPUS aggressive register.",
+  "dna": {
+    "aggression": 0.822,
+    "brightness": 0.697,
+    "density": 0.665,
+    "movement": 0.846,
+    "space": 0.382,
+    "warmth": 0.339
+  },
+  "engines": [
+    "Octopus"
+  ],
+  "macroLabels": [
+    "SPREAD",
+    "PULSE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "COUPLING": 0.12,
+    "PULSE": 0.932,
+    "SPACE": 0.403,
+    "SPREAD": 0.893
+  },
+  "mood": "Atmosphere",
+  "name": "Shear Force",
+  "parameters": {
+    "Octopus": {
+      "coupling": 0.12,
+      "pulse": 0.932,
+      "space": 0.403,
+      "spread": 0.893
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -16,36 +47,5 @@
     "pressure",
     "fierce"
   ],
-  "macroLabels": [
-    "SPREAD",
-    "PULSE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.697,
-    "warmth": 0.339,
-    "movement": 0.846,
-    "density": 0.665,
-    "space": 0.382,
-    "aggression": 0.822
-  },
-  "parameters": {
-    "OCTOPUS": {
-      "spread": 0.893,
-      "pulse": 0.932,
-      "coupling": 0.12,
-      "space": 0.403
-    }
-  },
-  "macros": {
-    "SPREAD": 0.893,
-    "PULSE": 0.932,
-    "COUPLING": 0.12,
-    "SPACE": 0.403
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

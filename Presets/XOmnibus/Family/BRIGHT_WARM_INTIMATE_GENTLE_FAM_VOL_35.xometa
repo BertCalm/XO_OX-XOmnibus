@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_INTIMATE_GENTLE_FAM_VOL_35",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.756,
+    "source": "Ottoni",
+    "target": "Ole",
+    "type": "ENVELOPE_MIRROR"
+  },
+  "dna": {
+    "aggression": 0.122,
+    "brightness": 0.988,
+    "density": 0.485,
+    "movement": 0.463,
+    "space": 0.031,
+    "warmth": 0.89
+  },
   "engines": [
-    "OLE",
-    "OTTONI"
+    "Ole",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.95,
+    "COUPLING": 0.308,
+    "MOVEMENT": 0.483,
+    "SPACE": 0.039
+  },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_INTIMATE_GENTLE_FAM_VOL_35",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.936,
-      "macro_movement": 0.485,
       "macro_coupling": 0.305,
+      "macro_movement": 0.485,
       "macro_space": 0.03
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.963,
-      "macro_movement": 0.482,
       "macro_coupling": 0.311,
+      "macro_movement": 0.482,
       "macro_space": 0.048
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_MIRROR",
-    "source": "OTTONI",
-    "target": "OLE",
-    "amount": 0.756
-  },
-  "dna": {
-    "brightness": 0.988,
-    "warmth": 0.89,
-    "movement": 0.463,
-    "density": 0.485,
-    "space": 0.031,
-    "aggression": 0.122
-  },
-  "macros": {
-    "CHARACTER": 0.95,
-    "MOVEMENT": 0.483,
-    "COUPLING": 0.308,
-    "SPACE": 0.039
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "intimate",
     "gentle",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

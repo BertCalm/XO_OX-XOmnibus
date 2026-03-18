@@ -1,48 +1,56 @@
 {
-  "name": "Harmonic Hum",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORGANON",
-    "OHM"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.85,
-      "macro_movement": 0.44,
-      "macro_coupling": 0.83,
-      "macro_space": 0.56
-    },
-    "OHM": {
-      "macro_character": 0.71,
-      "macro_movement": 0.41,
-      "macro_coupling": 0.83,
-      "macro_space": 0.42
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORGANON",
-    "target": "OHM",
-    "amount": 0.91
+    "amount": 0.91,
+    "source": "Organon",
+    "target": "Ohm",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.6,
     "brightness": 0.4,
-    "warmth": 0.97,
-    "movement": 0.55,
     "density": 0.94,
+    "movement": 0.55,
     "space": 0.56,
-    "aggression": 0.6
+    "warmth": 0.97
   },
+  "engines": [
+    "Organon",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.78,
-    "MOVEMENT": 0.42,
     "COUPLING": 0.83,
+    "MOVEMENT": 0.42,
     "SPACE": 0.49
   },
+  "mood": "Entangled",
+  "name": "Harmonic Hum",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.71,
+      "macro_coupling": 0.83,
+      "macro_movement": 0.41,
+      "macro_space": 0.42
+    },
+    "Organon": {
+      "macro_character": 0.85,
+      "macro_coupling": 0.83,
+      "macro_movement": 0.44,
+      "macro_space": 0.56
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-  ]
+  ],
+  "version": "1.0"
 }

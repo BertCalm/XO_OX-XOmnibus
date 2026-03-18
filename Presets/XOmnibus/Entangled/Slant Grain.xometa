@@ -1,31 +1,39 @@
 {
-  "name": "Slant Grain",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6,
+    "source": "Opal",
+    "target": "Oblique",
+    "type": "ANGULAR_DEFLECT"
+  },
+  "description": "Granular cloud deflected by oblique strategy — grain particles arriving from wrong angle",
   "engines": [
-    "OPAL",
-    "OBLIQUE"
+    "Opal",
+    "Oblique"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.45,
-    "MOVEMENT": 0.6,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.6,
     "SPACE": 0.7
   },
-  "sonic_dna": {
-    "brightness": 0.48,
-    "warmth": 0.53,
-    "movement": 0.58,
-    "density": 0.54,
-    "space": 0.68,
-    "aggression": 0.32
-  },
+  "mood": "Entangled",
+  "name": "Slant Grain",
   "parameters": {},
-  "coupling": {
-    "type": "ANGULAR_DEFLECT",
-    "source": "OPAL",
-    "target": "OBLIQUE",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.32,
+    "brightness": 0.48,
+    "density": 0.54,
+    "movement": 0.58,
+    "space": 0.68,
+    "warmth": 0.53
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "oblique",
     "granular"
   ],
-  "description": "Granular cloud deflected by oblique strategy \u2014 grain particles arriving from wrong angle"
+  "version": "1.0"
 }

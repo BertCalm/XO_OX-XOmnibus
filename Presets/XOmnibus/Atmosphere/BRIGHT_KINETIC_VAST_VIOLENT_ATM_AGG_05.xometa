@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT KINETIC VAST VIOLENT ATM AGG 5",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OPAL",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.881,
-      "macro_movement": 0.971,
-      "macro_coupling": 0.858,
-      "macro_space": 0.89
-    },
-    "OBLIQUE": {
-      "macro_character": 0.855,
-      "macro_movement": 0.96,
-      "macro_coupling": 0.846,
-      "macro_space": 0.937
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OPAL",
-    "target": "OBLIQUE",
-    "amount": 0.96
+    "amount": 0.96,
+    "source": "Opal",
+    "target": "Oblique",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.896,
     "brightness": 0.918,
-    "warmth": 0.326,
-    "movement": 0.98,
     "density": 0.527,
+    "movement": 0.98,
     "space": 0.956,
-    "aggression": 0.896
+    "warmth": 0.326
   },
+  "engines": [
+    "Opal",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.868,
-    "MOVEMENT": 0.966,
     "COUPLING": 0.852,
+    "MOVEMENT": 0.966,
     "SPACE": 0.913
   },
+  "mood": "Atmosphere",
+  "name": "BRIGHT KINETIC VAST VIOLENT ATM AGG 5",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.855,
+      "macro_coupling": 0.846,
+      "macro_movement": 0.96,
+      "macro_space": 0.937
+    },
+    "Opal": {
+      "macro_character": 0.881,
+      "macro_coupling": 0.858,
+      "macro_movement": 0.971,
+      "macro_space": 0.89
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -48,5 +55,6 @@
     "bright",
     "kinetic",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

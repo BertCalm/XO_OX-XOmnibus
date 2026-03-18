@@ -1,37 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Pendulum Swing",
-  "mood": "Flux",
-  "engines": ["Ouroboros"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Rössler attractor with low chaos and high leash. Predictable, rhythmic, warm swinging motion like a driven pendulum.",
-  "tags": ["rhythmic", "warm", "predictable", "swing"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Rössler attractor with low chaos and high leash. Predictable, rhythmic, warm swinging motion like a driven pendulum.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.35,
+    "density": 0.35,
+    "movement": 0.6,
+    "space": 0.3,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Ouroboros"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Pendulum Swing",
   "parameters": {
     "Ouroboros": {
-      "ouro_topology": 1,
-      "ouro_rate": 156.0,
       "ouro_chaosIndex": 0.2,
-      "ouro_leash": 0.8,
-      "ouro_theta": 0.0,
-      "ouro_phi": 0.0,
       "ouro_damping": 0.5,
-      "ouro_injection": 0.0
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.8,
+      "ouro_phi": 0.0,
+      "ouro_rate": 156.0,
+      "ouro_theta": 0.0,
+      "ouro_topology": 1
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.7,
-    "movement": 0.6,
-    "density": 0.35,
-    "space": 0.3,
-    "aggression": 0.1
-  }
+  "tags": [
+    "rhythmic",
+    "warm",
+    "predictable",
+    "swing"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

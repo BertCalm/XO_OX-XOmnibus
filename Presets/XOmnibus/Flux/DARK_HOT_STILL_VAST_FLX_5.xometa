@@ -1,45 +1,52 @@
 {
-  "name": "DARK_HOT_STILL_VAST_FLX_5",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORIGAMI",
-    "OPAL"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.1209,
-      "macro_movement": 0.1367,
-      "macro_coupling": 0.4818,
-      "macro_space": 0.8335
-    },
-    "OPAL": {
-      "macro_character": 0.1555,
-      "macro_movement": 0.1623,
-      "macro_coupling": 0.4915,
-      "macro_space": 0.8821
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORIGAMI",
-    "target": "OPAL",
-    "amount": 0.9592
+    "amount": 0.9592,
+    "source": "Origami",
+    "target": "Opal",
+    "type": "RESONANCE_SHARE"
   },
   "dna": {
+    "aggression": 0.5451,
     "brightness": 0.0348,
-    "warmth": 0.9761,
-    "movement": 0.1094,
     "density": 0.633,
+    "movement": 0.1094,
     "space": 0.9609,
-    "aggression": 0.5451
+    "warmth": 0.9761
   },
+  "engines": [
+    "Origami",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.1209,
-    "MOVEMENT": 0.1367,
     "COUPLING": 0.4818,
+    "MOVEMENT": 0.1367,
     "SPACE": 0.8335
   },
+  "mood": "Flux",
+  "name": "DARK_HOT_STILL_VAST_FLX_5",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.1555,
+      "macro_coupling": 0.4915,
+      "macro_movement": 0.1623,
+      "macro_space": 0.8821
+    },
+    "Origami": {
+      "macro_character": 0.1209,
+      "macro_coupling": 0.4818,
+      "macro_movement": 0.1367,
+      "macro_space": 0.8335
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "high-warmth",
     "low-movement",
     "high-space"
-  ]
+  ],
+  "version": "1.0"
 }

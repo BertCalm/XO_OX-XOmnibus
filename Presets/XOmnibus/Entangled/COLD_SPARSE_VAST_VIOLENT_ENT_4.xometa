@@ -1,14 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "COLD_SPARSE_VAST_VIOLENT_ENT_4",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6655,
+    "pairs": [
+      {
+        "amount": 0.6655,
+        "source": "Ottoni",
+        "target": "Obsidian",
+        "type": "SPECTRAL_MORPH"
+      }
+    ],
+    "source": "Ottoni",
+    "target": "Obsidian",
+    "type": "SPECTRAL_MORPH"
+  },
+  "couplingIntensity": "Medium",
+  "description": "Cold Sparse Vast Violent character entanglement — OBSIDIAN × OTTONI via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.8944,
+    "brightness": 0.4864,
+    "density": 0.1038,
+    "movement": 0.589,
+    "space": 0.9084,
+    "warmth": 0.1083
+  },
   "engines": [
-    "OBSIDIAN",
-    "OTTONI"
+    "Obsidian",
+    "Ottoni"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Cold Sparse Vast Violent character entanglement \u2014 OBSIDIAN \u00d7 OTTONI via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "BLADE",
+    "EDGE",
+    "SHARD",
+    "VOID"
+  ],
+  "macros": {
+    "CHARACTER": 0.2974,
+    "COUPLING": 0.6655,
+    "MOVEMENT": 0.589,
+    "SPACE": 0.9084
+  },
+  "mood": "Entangled",
+  "name": "COLD_SPARSE_VAST_VIOLENT_ENT_4",
+  "parameters": {
+    "Obsidian": {
+      "amp_attack": 0.1901,
+      "amp_release": 0.6234,
+      "coupling_level": 0.9289,
+      "density": 0.1393,
+      "drive": 0.7696,
+      "filter_cutoff": 0.5581,
+      "filter_resonance": 0.5308,
+      "macro_character": 0.5085,
+      "macro_coupling": 0.9173,
+      "macro_movement": 0.5503,
+      "macro_space": 0.9151,
+      "output_level": 0.7129,
+      "reverb_mix": 0.6552,
+      "reverb_size": 0.7247
+    },
+    "Ottoni": {
+      "amp_attack": 0.1856,
+      "amp_release": 0.6487,
+      "coupling_level": 0.9349,
+      "density": 0.1404,
+      "drive": 0.8047,
+      "filter_cutoff": 0.5591,
+      "filter_resonance": 0.5354,
+      "macro_character": 0.4883,
+      "macro_coupling": 0.9322,
+      "macro_movement": 0.6069,
+      "macro_space": 0.9053,
+      "output_level": 0.7278,
+      "reverb_mix": 0.6243,
+      "reverb_size": 0.7761
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.8944,
+    "brightness": 0.4864,
+    "density": 0.1038,
+    "movement": 0.589,
+    "space": 0.9084,
+    "warmth": 0.1083
+  },
   "tags": [
     "entangled",
     "cold",
@@ -17,81 +93,5 @@
     "violent",
     "resonant"
   ],
-  "macroLabels": [
-    "BLADE",
-    "EDGE",
-    "SHARD",
-    "VOID"
-  ],
-  "couplingIntensity": "Medium",
-  "dna": {
-    "brightness": 0.4864,
-    "warmth": 0.1083,
-    "movement": 0.589,
-    "density": 0.1038,
-    "space": 0.9084,
-    "aggression": 0.8944
-  },
-  "sonic_dna": {
-    "brightness": 0.4864,
-    "warmth": 0.1083,
-    "movement": 0.589,
-    "density": 0.1038,
-    "space": 0.9084,
-    "aggression": 0.8944
-  },
-  "parameters": {
-    "OBSIDIAN": {
-      "macro_character": 0.5085,
-      "macro_movement": 0.5503,
-      "macro_coupling": 0.9173,
-      "macro_space": 0.9151,
-      "filter_cutoff": 0.5581,
-      "filter_resonance": 0.5308,
-      "amp_attack": 0.1901,
-      "amp_release": 0.6234,
-      "reverb_mix": 0.6552,
-      "reverb_size": 0.7247,
-      "drive": 0.7696,
-      "density": 0.1393,
-      "output_level": 0.7129,
-      "coupling_level": 0.9289
-    },
-    "OTTONI": {
-      "macro_character": 0.4883,
-      "macro_movement": 0.6069,
-      "macro_coupling": 0.9322,
-      "macro_space": 0.9053,
-      "filter_cutoff": 0.5591,
-      "filter_resonance": 0.5354,
-      "amp_attack": 0.1856,
-      "amp_release": 0.6487,
-      "reverb_mix": 0.6243,
-      "reverb_size": 0.7761,
-      "drive": 0.8047,
-      "density": 0.1404,
-      "output_level": 0.7278,
-      "coupling_level": 0.9349
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OTTONI",
-    "target": "OBSIDIAN",
-    "amount": 0.6655,
-    "pairs": [
-      {
-        "source": "OTTONI",
-        "target": "OBSIDIAN",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.6655
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.2974,
-    "MOVEMENT": 0.589,
-    "COUPLING": 0.6655,
-    "SPACE": 0.9084
-  }
+  "version": "1.0.0"
 }

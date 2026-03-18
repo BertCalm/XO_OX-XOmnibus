@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Void Between Stars",
-  "mood": "Atmosphere",
-  "engines": [
-    "OBSIDIAN"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Shadowy environmental texture. Low brightness, expansive space. OBSIDIAN in void register.",
+  "dna": {
+    "aggression": 0.185,
+    "brightness": 0.114,
+    "density": 0.367,
+    "movement": 0.183,
+    "space": 0.784,
+    "warmth": 0.358
+  },
+  "engines": [
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "DARKNESS",
+    "SHIMMER",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "COUPLING": 0.269,
+    "DARKNESS": 0.308,
+    "SHIMMER": 0.105,
+    "SPACE": 0.69
+  },
+  "mood": "Atmosphere",
+  "name": "Void Between Stars",
+  "parameters": {
+    "Obsidian": {
+      "coupling": 0.269,
+      "darkness": 0.308,
+      "shimmer": 0.105,
+      "space": 0.69
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -16,36 +47,5 @@
     "environmental",
     "deep"
   ],
-  "macroLabels": [
-    "DARKNESS",
-    "SHIMMER",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.114,
-    "warmth": 0.358,
-    "movement": 0.183,
-    "density": 0.367,
-    "space": 0.784,
-    "aggression": 0.185
-  },
-  "parameters": {
-    "OBSIDIAN": {
-      "darkness": 0.308,
-      "shimmer": 0.105,
-      "coupling": 0.269,
-      "space": 0.69
-    }
-  },
-  "macros": {
-    "DARKNESS": 0.308,
-    "SHIMMER": 0.105,
-    "COUPLING": 0.269,
-    "SPACE": 0.69
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

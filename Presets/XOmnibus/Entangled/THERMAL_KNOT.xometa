@@ -1,49 +1,57 @@
 {
-  "name": "THERMAL KNOT",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORIGAMI",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.825,
-      "macro_movement": 0.623,
-      "macro_coupling": 0.611,
-      "macro_space": 0.129
-    },
-    "OCEANIC": {
-      "macro_character": 0.097,
-      "macro_movement": 0.373,
-      "macro_coupling": 0.987,
-      "macro_space": 0.558
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ORIGAMI",
-    "target": "OCEANIC",
-    "amount": 0.519
+    "amount": 0.519,
+    "source": "Origami",
+    "target": "Oceanic",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.091,
     "brightness": 0.42,
-    "warmth": 0.917,
-    "movement": 0.556,
     "density": 0.256,
+    "movement": 0.556,
     "space": 0.543,
-    "aggression": 0.091
+    "warmth": 0.917
   },
+  "engines": [
+    "Origami",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.144,
-    "MOVEMENT": 0.602,
     "COUPLING": 0.401,
+    "MOVEMENT": 0.602,
     "SPACE": 0.04
   },
+  "mood": "Entangled",
+  "name": "THERMAL KNOT",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.097,
+      "macro_coupling": 0.987,
+      "macro_movement": 0.373,
+      "macro_space": 0.558
+    },
+    "Origami": {
+      "macro_character": 0.825,
+      "macro_coupling": 0.611,
+      "macro_movement": 0.623,
+      "macro_space": 0.129
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-  ]
+  ],
+  "version": "1.0"
 }

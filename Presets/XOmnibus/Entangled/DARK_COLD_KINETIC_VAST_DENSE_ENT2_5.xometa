@@ -1,45 +1,52 @@
 {
-  "name": "DARK COLD KINETIC VAST DENSE ENT2 5",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.662,
+    "source": "Onset",
+    "target": "Orca",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.334,
+    "brightness": 0.087,
+    "density": 0.99,
+    "movement": 0.985,
+    "space": 0.983,
+    "warmth": 0.132
+  },
   "engines": [
-    "ONSET",
-    "ORCA"
+    "Onset",
+    "Orca"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.11,
+    "COUPLING": 0.662,
+    "MOVEMENT": 0.985,
+    "SPACE": 0.983
+  },
+  "mood": "Entangled",
+  "name": "DARK COLD KINETIC VAST DENSE ENT2 5",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.11,
-      "macro_movement": 0.985,
       "macro_coupling": 0.662,
+      "macro_movement": 0.985,
       "macro_space": 0.983
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.146,
-      "macro_movement": 0.955,
       "macro_coupling": 0.65,
+      "macro_movement": 0.955,
       "macro_space": 0.98
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ONSET",
-    "target": "ORCA",
-    "amount": 0.662
-  },
-  "dna": {
-    "brightness": 0.087,
-    "warmth": 0.132,
-    "movement": 0.985,
-    "density": 0.99,
-    "space": 0.983,
-    "aggression": 0.334
-  },
-  "macros": {
-    "CHARACTER": 0.11,
-    "MOVEMENT": 0.985,
-    "COUPLING": 0.662,
-    "SPACE": 0.983
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
@@ -47,5 +54,6 @@
     "kinetic",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

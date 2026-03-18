@@ -1,49 +1,57 @@
 {
-  "name": "CROSS AET 01",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.366,
+    "source": "Oceanic",
+    "target": "Orbital",
+    "type": "SPECTRAL_MORPH"
+  },
+  "dna": {
+    "aggression": 0.101,
+    "brightness": 0.958,
+    "density": 0.095,
+    "movement": 0.956,
+    "space": 0.538,
+    "warmth": 0.962
+  },
   "engines": [
-    "OCEANIC",
-    "ORBITAL"
+    "Oceanic",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.96,
+    "COUPLING": 0.32,
+    "MOVEMENT": 0.525,
+    "SPACE": 0.538
+  },
+  "mood": "Aether",
+  "name": "CROSS AET 01",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.96,
-      "macro_movement": 0.525,
       "macro_coupling": 0.32,
+      "macro_movement": 0.525,
       "macro_space": 0.538
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.96,
-      "macro_movement": 0.525,
       "macro_coupling": 0.32,
+      "macro_movement": 0.525,
       "macro_space": 0.538
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OCEANIC",
-    "target": "ORBITAL",
-    "amount": 0.366
-  },
-  "dna": {
-    "brightness": 0.958,
-    "warmth": 0.962,
-    "movement": 0.956,
-    "density": 0.095,
-    "space": 0.538,
-    "aggression": 0.101
-  },
-  "macros": {
-    "CHARACTER": 0.96,
-    "MOVEMENT": 0.525,
-    "COUPLING": 0.32,
-    "SPACE": 0.538
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-  ]
+  ],
+  "version": "1.0"
 }

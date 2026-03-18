@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Init Cousins",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Sturdy embouchure, no wobble. The three cousins at their steadiest.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.47,
+    "density": 0.38,
+    "movement": 0.16,
+    "space": 0.16,
+    "warmth": 0.74
+  },
   "engines": [
     "Ottoni"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "brass",
-    "sax",
-    "foundation",
-    "clean",
-    "foundation"
   ],
   "macroLabels": [
     "EMBOUCHURE",
@@ -20,48 +21,47 @@
     "FOREIGN",
     "LAKE"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.47,
-    "warmth": 0.74,
-    "movement": 0.16,
-    "density": 0.38,
-    "space": 0.16,
-    "aggression": 0.0
-  },
+  "mood": "Foundation",
+  "name": "Init Cousins",
   "parameters": {
     "Ottoni": {
+      "otto_chorusRate": 1.0,
+      "otto_damping": 0.993,
+      "otto_delayMix": 0.35,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.098,
+      "otto_driveAmount": 0.089,
+      "otto_foreignCold": 0.115,
+      "otto_foreignDrift": 0.006,
+      "otto_foreignStretch": 0.007,
+      "otto_macroEmbouchure": 0.585,
+      "otto_macroForeign": 0.024,
+      "otto_macroGrow": 0.704,
+      "otto_macroLake": 0.197,
+      "otto_reverbSize": 0.303,
+      "otto_sympatheticAmt": 0.277,
+      "otto_teenBore": 0.5,
+      "otto_teenEmbouchure": 0.648,
+      "otto_teenInst": 3,
+      "otto_teenLevel": 0.566,
+      "otto_teenVibratoDepth": 0.318,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 1,
       "otto_toddlerLevel": 0.429,
       "otto_toddlerPressure": 0.419,
-      "otto_toddlerInst": 1,
-      "otto_tweenLevel": 0.321,
       "otto_tweenEmbouchure": 0.505,
-      "otto_tweenValve": 0.476,
       "otto_tweenInst": 1,
-      "otto_teenLevel": 0.566,
-      "otto_teenEmbouchure": 0.648,
-      "otto_teenBore": 0.5,
-      "otto_teenInst": 3,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.318,
-      "otto_damping": 0.993,
-      "otto_sympatheticAmt": 0.277,
-      "otto_driftRate": 0.098,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.007,
-      "otto_foreignDrift": 0.006,
-      "otto_foreignCold": 0.115,
-      "otto_reverbSize": 0.303,
-      "otto_chorusRate": 1.0,
-      "otto_driveAmount": 0.089,
-      "otto_delayMix": 0.35,
-      "otto_macroEmbouchure": 0.585,
-      "otto_macroGrow": 0.704,
-      "otto_macroForeign": 0.024,
-      "otto_macroLake": 0.197
+      "otto_tweenLevel": 0.321,
+      "otto_tweenValve": 0.476
     }
   },
-  "coupling": null,
-  "description": "Sturdy embouchure, no wobble. The three cousins at their steadiest."
+  "schema_version": 1,
+  "tags": [
+    "brass",
+    "sax",
+    "foundation",
+    "clean",
+    "foundation"
+  ],
+  "version": "1.0.0"
 }

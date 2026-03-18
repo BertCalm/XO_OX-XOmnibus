@@ -1,49 +1,57 @@
 {
-  "name": "GENTLE SPIRAL",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.701,
+    "source": "Obbligato",
+    "target": "Opal",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.078,
+    "brightness": 0.103,
+    "density": 0.769,
+    "movement": 0.15,
+    "space": 0.09,
+    "warmth": 0.598
+  },
   "engines": [
-    "OBBLIGATO",
-    "OPAL"
+    "Obbligato",
+    "Opal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.519,
+    "COUPLING": 0.863,
+    "MOVEMENT": 0.388,
+    "SPACE": 0.535
+  },
+  "mood": "Entangled",
+  "name": "GENTLE SPIRAL",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.606,
-      "macro_movement": 0.56,
       "macro_coupling": 0.675,
+      "macro_movement": 0.56,
       "macro_space": 0.333
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.101,
-      "macro_movement": 0.382,
       "macro_coupling": 0.557,
+      "macro_movement": 0.382,
       "macro_space": 0.25
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OBBLIGATO",
-    "target": "OPAL",
-    "amount": 0.701
-  },
-  "dna": {
-    "brightness": 0.103,
-    "warmth": 0.598,
-    "movement": 0.15,
-    "density": 0.769,
-    "space": 0.09,
-    "aggression": 0.078
-  },
-  "macros": {
-    "CHARACTER": 0.519,
-    "MOVEMENT": 0.388,
-    "COUPLING": 0.863,
-    "SPACE": 0.535
-  },
+  "schema_version": 1,
   "tags": [
     "quiet",
     "entangled",
     "tender",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,52 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Interstellar Medium",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Shore receded to a theoretical point. Only cold swell remains.",
+  "dna": {
+    "aggression": 0.04,
+    "brightness": 0.0,
+    "density": 0.252,
+    "movement": 0.0,
+    "space": 0.94,
+    "warmth": 0.05
+  },
   "engines": [
     "Osprey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Shore receded to a theoretical point. Only cold swell remains.",
-  "tags": [
-    "cold-sparse",
-    "extreme",
-    "aether",
-    "ambient"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Aether",
+  "name": "Interstellar Medium",
   "parameters": {
     "Osprey": {
-      "osprey_shore": 0.04,
-      "osprey_seaState": 0.03,
-      "osprey_swellPeriod": 0.96,
       "osprey_brightness": 0.06,
-      "osprey_foam": 0.03,
       "osprey_depth": 0.97,
+      "osprey_foam": 0.03,
+      "osprey_seaState": 0.03,
+      "osprey_shore": 0.04,
+      "osprey_swellPeriod": 0.96,
       "osprey_wetMix": 0.9
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.0,
-    "warmth": 0.05,
-    "movement": 0.0,
-    "density": 0.252,
-    "space": 0.94,
-    "aggression": 0.04
-  }
+  "tags": [
+    "cold-sparse",
+    "extreme",
+    "aether",
+    "ambient"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

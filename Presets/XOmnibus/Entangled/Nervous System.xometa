@@ -1,69 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Nervous System",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Cross-modulated living energy with analog drift and curious motion.",
+  "dna": {
+    "aggression": 0.156,
+    "brightness": 0.404,
+    "density": 0.186,
+    "movement": 0.801,
+    "space": 0.0,
+    "warmth": 0.242
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Cross-modulated living energy with analog drift and curious motion.",
-  "tags": [
-    "moving",
-    "fast",
-    "jittery",
-    "lead"
-  ],
+  "legacy": {
+    "sourceCategory": "Living",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Living",
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Nervous System",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 3.0,
-      "bob_oscA_shape": 0.55,
-      "bob_oscA_drift": 0.4,
-      "bob_oscB_wave": 2.0,
-      "bob_oscB_blend": 0.42,
-      "bob_oscB_detune": 4.0,
-      "bob_fltMode": 1.0,
-      "bob_fltCutoff": 3200.0,
-      "bob_fltReso": 0.48,
-      "bob_fltEnvAmt": 0.5,
-      "bob_lfo1Rate": 7.5,
-      "bob_lfo1Depth": 0.45,
-      "bob_curMode": 0.0,
-      "bob_curAmount": 0.65,
-      "bob_motAttack": 0.05,
-      "bob_motDecay": 0.5,
-      "bob_motSustain": 0.6,
-      "bob_motRelease": 0.9,
-      "bob_motDepth": 0.6,
       "bob_ampAttack": 0.01,
       "bob_ampDecay": 0.4,
-      "bob_ampSustain": 0.8,
       "bob_ampRelease": 0.8,
-      "bob_glide": 0.08
+      "bob_ampSustain": 0.8,
+      "bob_curAmount": 0.65,
+      "bob_curMode": 0.0,
+      "bob_fltCutoff": 3200.0,
+      "bob_fltEnvAmt": 0.5,
+      "bob_fltMode": 1.0,
+      "bob_fltReso": 0.48,
+      "bob_glide": 0.08,
+      "bob_lfo1Depth": 0.45,
+      "bob_lfo1Rate": 7.5,
+      "bob_motAttack": 0.05,
+      "bob_motDecay": 0.5,
+      "bob_motDepth": 0.6,
+      "bob_motRelease": 0.9,
+      "bob_motSustain": 0.6,
+      "bob_oscA_drift": 0.4,
+      "bob_oscA_shape": 0.55,
+      "bob_oscA_wave": 3.0,
+      "bob_oscB_blend": 0.42,
+      "bob_oscB_detune": 4.0,
+      "bob_oscB_wave": 2.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.404,
-    "warmth": 0.242,
-    "movement": 0.801,
-    "density": 0.186,
-    "space": 0.0,
-    "aggression": 0.156
-  }
+  "tags": [
+    "moving",
+    "fast",
+    "jittery",
+    "lead"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

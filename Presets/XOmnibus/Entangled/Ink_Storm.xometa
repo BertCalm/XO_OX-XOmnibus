@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Ink Storm",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.88,
+        "engineA": "Octopus",
+        "engineB": "Ouroboros",
+        "type": "TIMBRAL_WARP"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Ouroboros timbral warping Octopus ink cloud mix — chromatophore explosion in topological space.",
+  "dna": {
+    "aggression": 0.91,
+    "brightness": 0.6,
+    "density": 0.73,
+    "movement": 0.9,
+    "space": 0.17,
+    "warmth": 0.2
+  },
   "engines": [
-    "OCTOPUS",
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ouroboros timbral warping Octopus ink cloud mix \u2014 chromatophore explosion in topological space.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "movement",
-    "octopus",
-    "ouroboros",
-    "ink"
+    "Octopus",
+    "Ouroboros"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,29 @@
   ],
   "macros": {
     "CHARACTER": 0.78,
-    "MOVEMENT": 0.9,
     "COUPLING": 0.88,
+    "MOVEMENT": 0.9,
     "SPACE": 0.17
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.2,
-    "movement": 0.9,
-    "density": 0.73,
-    "space": 0.17,
-    "aggression": 0.91
-  },
-  "sonic_dna": {
-    "brightness": 0.6,
-    "warmth": 0.2,
-    "movement": 0.9,
-    "density": 0.73,
-    "space": 0.17,
-    "aggression": 0.91
-  },
+  "mood": "Entangled",
+  "name": "Ink Storm",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OCTOPUS",
-        "engineB": "OUROBOROS",
-        "type": "TIMBRAL_WARP",
-        "amount": 0.88
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.91,
+    "brightness": 0.6,
+    "density": 0.73,
+    "movement": 0.9,
+    "space": 0.17,
+    "warmth": 0.2
+  },
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "octopus",
+    "ouroboros",
+    "ink"
+  ],
+  "version": "1.0.0"
 }

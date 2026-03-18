@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_COLD_KINETIC_VIOLENT_FND_AGG_4",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OVERDUB",
-    "OUROBOROS"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.673,
-      "macro_movement": 0.64,
-      "macro_coupling": 0.611,
-      "macro_space": 0.789
-    },
-    "OUROBOROS": {
-      "macro_character": 0.65,
-      "macro_movement": 0.675,
-      "macro_coupling": 0.644,
-      "macro_space": 0.748
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OVERDUB",
-    "target": "OUROBOROS",
-    "amount": 0.771
+    "amount": 0.771,
+    "source": "Overdub",
+    "target": "Ouroboros",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.967,
     "brightness": 0.955,
-    "warmth": 0.068,
-    "movement": 0.958,
     "density": 0.686,
+    "movement": 0.958,
     "space": 0.408,
-    "aggression": 0.967
+    "warmth": 0.068
   },
+  "engines": [
+    "Overdub",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.673,
-    "MOVEMENT": 0.64,
     "COUPLING": 0.611,
+    "MOVEMENT": 0.64,
     "SPACE": 0.789
   },
+  "mood": "Foundation",
+  "name": "BRIGHT_COLD_KINETIC_VIOLENT_FND_AGG_4",
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.644,
+      "macro_movement": 0.675,
+      "macro_space": 0.748
+    },
+    "Overdub": {
+      "macro_character": 0.673,
+      "macro_coupling": 0.611,
+      "macro_movement": 0.64,
+      "macro_space": 0.789
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "bright",
     "cold",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

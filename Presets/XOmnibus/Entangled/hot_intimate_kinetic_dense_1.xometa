@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "HOT INTIMATE KINETIC DENSE 1",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "warmth": 0.9243,
-    "space": 0.1037,
-    "movement": 0.8951,
-    "density": 0.8957,
-    "brightness": 0.5217,
-    "aggression": 0.4131
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "High",
+  "couplingType": "BIND",
+  "description": "Ultra-diverse Entangled preset — hot intimate kinetic dense. Designed for BIND coupling with XOttoni.",
   "dna": {
-    "warmth": 0.9243,
-    "space": 0.1037,
-    "movement": 0.8951,
-    "density": 0.8957,
+    "aggression": 0.4131,
     "brightness": 0.5217,
-    "aggression": 0.4131
+    "density": 0.8957,
+    "movement": 0.8951,
+    "space": 0.1037,
+    "warmth": 0.9243
   },
   "engines": [
-    "XOttoni"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 hot intimate kinetic dense. Designed for BIND coupling with XOttoni.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "bind",
-    "ottoni"
+    "Ottoni"
   ],
   "macroLabels": [
     "FORGE",
@@ -36,15 +23,28 @@
     "PRESS",
     "PULSE"
   ],
-  "couplingType": "BIND",
-  "couplingIntensity": "High",
+  "mood": "Entangled",
+  "name": "HOT INTIMATE KINETIC DENSE 1",
   "parameters": {
-    "XOttoni": {
-      "couplingLevel": 0.69,
-      "couplingBus": 3
+    "Ottoni": {
+      "couplingBus": 3,
+      "couplingLevel": 0.69
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4131,
+    "brightness": 0.5217,
+    "density": 0.8957,
+    "movement": 0.8951,
+    "space": 0.1037,
+    "warmth": 0.9243
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "bind",
+    "ottoni"
+  ],
+  "version": "1.0.0"
 }

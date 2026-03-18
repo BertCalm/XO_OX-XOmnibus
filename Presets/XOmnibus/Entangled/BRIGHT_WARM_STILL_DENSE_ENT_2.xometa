@@ -1,14 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_WARM_STILL_DENSE_ENT_2",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9685,
+    "pairs": [
+      {
+        "amount": 0.9685,
+        "source": "Oblique",
+        "target": "Osteria",
+        "type": "SPECTRAL_MORPH"
+      }
+    ],
+    "source": "Oblique",
+    "target": "Osteria",
+    "type": "SPECTRAL_MORPH"
+  },
+  "couplingIntensity": "High",
+  "description": "Bright Warm Still Dense character entanglement — OSTERIA × OBLIQUE via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.3838,
+    "brightness": 0.8821,
+    "density": 0.9138,
+    "movement": 0.0899,
+    "space": 0.4481,
+    "warmth": 0.9034
+  },
   "engines": [
-    "OSTERIA",
-    "OBLIQUE"
+    "Osteria",
+    "Oblique"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bright Warm Still Dense character entanglement \u2014 OSTERIA \u00d7 OBLIQUE via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "FERMENT",
+    "SEASON",
+    "SPICE",
+    "CELLAR"
+  ],
+  "macros": {
+    "CHARACTER": 0.8927,
+    "COUPLING": 0.9685,
+    "MOVEMENT": 0.0899,
+    "SPACE": 0.4481
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT_WARM_STILL_DENSE_ENT_2",
+  "parameters": {
+    "Oblique": {
+      "amp_attack": 0.4057,
+      "amp_release": 0.4021,
+      "coupling_level": 0.7103,
+      "density": 0.9187,
+      "drive": 0.3367,
+      "filter_cutoff": 0.8027,
+      "filter_resonance": 0.3043,
+      "macro_character": 0.9074,
+      "macro_coupling": 0.7697,
+      "macro_movement": 0.0668,
+      "macro_space": 0.4782,
+      "output_level": 0.9094,
+      "reverb_mix": 0.3932,
+      "reverb_size": 0.4501
+    },
+    "Osteria": {
+      "amp_attack": 0.4252,
+      "amp_release": 0.3735,
+      "coupling_level": 0.6887,
+      "density": 0.8921,
+      "drive": 0.3791,
+      "filter_cutoff": 0.8079,
+      "filter_resonance": 0.3311,
+      "macro_character": 0.9347,
+      "macro_coupling": 0.7526,
+      "macro_movement": 0.0636,
+      "macro_space": 0.4212,
+      "output_level": 0.891,
+      "reverb_mix": 0.4113,
+      "reverb_size": 0.4963
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.3838,
+    "brightness": 0.8821,
+    "density": 0.9138,
+    "movement": 0.0899,
+    "space": 0.4481,
+    "warmth": 0.9034
+  },
   "tags": [
     "entangled",
     "bright",
@@ -17,81 +93,5 @@
     "dense",
     "resonant"
   ],
-  "macroLabels": [
-    "FERMENT",
-    "SEASON",
-    "SPICE",
-    "CELLAR"
-  ],
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.8821,
-    "warmth": 0.9034,
-    "movement": 0.0899,
-    "density": 0.9138,
-    "space": 0.4481,
-    "aggression": 0.3838
-  },
-  "sonic_dna": {
-    "brightness": 0.8821,
-    "warmth": 0.9034,
-    "movement": 0.0899,
-    "density": 0.9138,
-    "space": 0.4481,
-    "aggression": 0.3838
-  },
-  "parameters": {
-    "OSTERIA": {
-      "macro_character": 0.9347,
-      "macro_movement": 0.0636,
-      "macro_coupling": 0.7526,
-      "macro_space": 0.4212,
-      "filter_cutoff": 0.8079,
-      "filter_resonance": 0.3311,
-      "amp_attack": 0.4252,
-      "amp_release": 0.3735,
-      "reverb_mix": 0.4113,
-      "reverb_size": 0.4963,
-      "drive": 0.3791,
-      "density": 0.8921,
-      "output_level": 0.891,
-      "coupling_level": 0.6887
-    },
-    "OBLIQUE": {
-      "macro_character": 0.9074,
-      "macro_movement": 0.0668,
-      "macro_coupling": 0.7697,
-      "macro_space": 0.4782,
-      "filter_cutoff": 0.8027,
-      "filter_resonance": 0.3043,
-      "amp_attack": 0.4057,
-      "amp_release": 0.4021,
-      "reverb_mix": 0.3932,
-      "reverb_size": 0.4501,
-      "drive": 0.3367,
-      "density": 0.9187,
-      "output_level": 0.9094,
-      "coupling_level": 0.7103
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBLIQUE",
-    "target": "OSTERIA",
-    "amount": 0.9685,
-    "pairs": [
-      {
-        "source": "OBLIQUE",
-        "target": "OSTERIA",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.9685
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.8927,
-    "MOVEMENT": 0.0899,
-    "COUPLING": 0.9685,
-    "SPACE": 0.4481
-  }
+  "version": "1.0.0"
 }

@@ -1,13 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Overworld Cascade Collapse",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Maximum Genesis ERA, sixteen voices at maximum detune, glitch at near-maximum. The digital atmosphere in catastrophic failure mode — still coherent enough to be atmospheric, not noise.",
+  "dna": {
+    "aggression": 0.92,
+    "brightness": 0.92,
+    "density": 0.92,
+    "movement": 0.95,
+    "space": 0.45,
+    "warmth": 0.08
+  },
   "engines": [
     "Overworld"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "Maximum Genesis ERA, sixteen voices at maximum detune, glitch at near-maximum. The digital atmosphere in catastrophic failure mode \u2014 still coherent enough to be atmospheric, not noise.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Overworld Cascade Collapse",
+  "parameters": {
+    "Overworld": {
+      "ow_ampAttack": 0.03,
+      "ow_ampDecay": 0.25,
+      "ow_ampRelease": 2.0,
+      "ow_ampSustain": 0.38,
+      "ow_detune": 0.88,
+      "ow_eraBalance": 0.98,
+      "ow_filterCutoff": 0.98,
+      "ow_filterReso": 0.88,
+      "ow_glitchDepth": 0.95,
+      "ow_glitchRate": 0.92,
+      "ow_glitchType": 5,
+      "ow_macroCharacter": 0.0,
+      "ow_macroCoupling": 0.0,
+      "ow_macroMovement": 0.0,
+      "ow_macroSpace": 0.0,
+      "ow_reverbMix": 0.45,
+      "ow_spread": 0.95,
+      "ow_voiceCount": 16
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "storm",
@@ -16,52 +62,6 @@
     "collapse",
     "maximum"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Overworld": {
-      "ow_eraBalance": 0.98,
-      "ow_voiceCount": 16,
-      "ow_spread": 0.95,
-      "ow_detune": 0.88,
-      "ow_filterCutoff": 0.98,
-      "ow_filterReso": 0.88,
-      "ow_glitchRate": 0.92,
-      "ow_glitchDepth": 0.95,
-      "ow_glitchType": 5,
-      "ow_ampAttack": 0.03,
-      "ow_ampDecay": 0.25,
-      "ow_ampSustain": 0.38,
-      "ow_ampRelease": 2.0,
-      "ow_reverbMix": 0.45,
-      "ow_macroCharacter": 0.0,
-      "ow_macroMovement": 0.0,
-      "ow_macroCoupling": 0.0,
-      "ow_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.92,
-    "warmth": 0.08,
-    "movement": 0.95,
-    "density": 0.92,
-    "space": 0.45,
-    "aggression": 0.92
-  }
+  "version": "1.0.0"
 }

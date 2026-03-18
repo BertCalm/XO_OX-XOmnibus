@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_STILL_INTIMATE_FAM_VOL_3",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.459,
+    "source": "Origami",
+    "target": "Obbligato",
+    "type": "RHYTHM_LOCK"
+  },
+  "dna": {
+    "aggression": 0.403,
+    "brightness": 0.905,
+    "density": 0.572,
+    "movement": 0.028,
+    "space": 0.025,
+    "warmth": 0.938
+  },
   "engines": [
-    "OBBLIGATO",
-    "ORIGAMI"
+    "Obbligato",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.907,
+    "COUPLING": 0.47,
+    "MOVEMENT": 0.046,
+    "SPACE": 0.01
+  },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_STILL_INTIMATE_FAM_VOL_3",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.904,
-      "macro_movement": 0.045,
       "macro_coupling": 0.466,
+      "macro_movement": 0.045,
       "macro_space": 0.01
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.91,
-      "macro_movement": 0.047,
       "macro_coupling": 0.473,
+      "macro_movement": 0.047,
       "macro_space": 0.01
     }
   },
-  "coupling": {
-    "type": "RHYTHM_LOCK",
-    "source": "ORIGAMI",
-    "target": "OBBLIGATO",
-    "amount": 0.459
-  },
-  "dna": {
-    "brightness": 0.905,
-    "warmth": 0.938,
-    "movement": 0.028,
-    "density": 0.572,
-    "space": 0.025,
-    "aggression": 0.403
-  },
-  "macros": {
-    "CHARACTER": 0.907,
-    "MOVEMENT": 0.046,
-    "COUPLING": 0.47,
-    "SPACE": 0.01
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "intimate",
     "bright",
     "still"
-  ]
+  ],
+  "version": "1.0"
 }

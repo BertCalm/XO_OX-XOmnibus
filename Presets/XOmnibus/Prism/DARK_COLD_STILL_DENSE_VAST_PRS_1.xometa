@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "DARK_COLD_STILL_DENSE_VAST_PRS_1",
-  "mood": "Prism",
-  "engines": [
-    "OSTERIA",
-    "ORACLE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.621,
+    "source": "Osteria",
+    "target": "Oracle",
+    "type": "FILTER_MOD"
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_COLD_STILL_DENSE_VAST. Variant 1.",
+  "dna": {
+    "aggression": 0.449,
+    "brightness": 0.044,
+    "density": 0.925,
+    "movement": 0.073,
+    "space": 0.989,
+    "warmth": 0.125
+  },
+  "engines": [
+    "Osteria",
+    "Oracle"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.105,
+    "COUPLING": 0.918,
+    "MOVEMENT": 0.1,
+    "SPACE": 0.954
+  },
+  "mood": "Prism",
+  "name": "DARK_COLD_STILL_DENSE_VAST_PRS_1",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.16,
+      "macro_coupling": 0.836,
+      "macro_movement": 0.154,
+      "macro_space": 0.996
+    },
+    "Osteria": {
+      "macro_character": 0.05,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.045,
+      "macro_space": 0.911
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "cold",
@@ -19,53 +66,6 @@
     "still",
     "dense"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OSTERIA": {
-      "macro_character": 0.05,
-      "macro_movement": 0.045,
-      "macro_coupling": 1.0,
-      "macro_space": 0.911
-    },
-    "ORACLE": {
-      "macro_character": 0.16,
-      "macro_movement": 0.154,
-      "macro_coupling": 0.836,
-      "macro_space": 0.996
-    }
-  },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OSTERIA",
-    "target": "ORACLE",
-    "amount": 0.621
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.044,
-    "warmth": 0.125,
-    "movement": 0.073,
-    "density": 0.925,
-    "space": 0.989,
-    "aggression": 0.449
-  },
-  "macros": {
-    "CHARACTER": 0.105,
-    "MOVEMENT": 0.1,
-    "COUPLING": 0.918,
-    "SPACE": 0.954
-  }
+  "version": "1.0.0"
 }

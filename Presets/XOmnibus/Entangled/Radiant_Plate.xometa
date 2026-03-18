@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Radiant Plate",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.652,
+        "engineA": "Owlfish",
+        "engineB": "Ohm",
+        "type": "PHASE_LOCK"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.365,
+    "density": 0.635,
+    "movement": 0.43,
+    "space": 0.665,
+    "warmth": 0.605
+  },
   "engines": [
-    "OHM",
-    "OWLFISH"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "ohm",
-    "owlfish"
+    "Ohm",
+    "Owlfish"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.509,
-    "MOVEMENT": 0.301,
     "COUPLING": 0.605,
+    "MOVEMENT": 0.301,
     "SPACE": 0.605
   },
-  "couplingIntensity": "Strong",
-  "dna": {
-    "brightness": 0.365,
-    "warmth": 0.605,
-    "movement": 0.43,
-    "density": 0.635,
-    "space": 0.665,
-    "aggression": 0.0
-  },
-  "sonic_dna": {
-    "brightness": 0.365,
-    "warmth": 0.605,
-    "movement": 0.43,
-    "density": 0.635,
-    "space": 0.665,
-    "aggression": 0.0
-  },
+  "mood": "Entangled",
+  "name": "Radiant Plate",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.628,
-      "macro_movement": 0.308,
       "macro_coupling": 0.741,
+      "macro_movement": 0.308,
       "macro_space": 0.582
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.484,
-      "macro_movement": 0.622,
       "macro_coupling": 0.742,
+      "macro_movement": 0.622,
       "macro_space": 0.636
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OWLFISH",
-        "engineB": "OHM",
-        "type": "PHASE_LOCK",
-        "amount": 0.652
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.0,
+    "brightness": 0.365,
+    "density": 0.635,
+    "movement": 0.43,
+    "space": 0.665,
+    "warmth": 0.605
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "ohm",
+    "owlfish"
+  ],
+  "version": "1.0.0"
 }

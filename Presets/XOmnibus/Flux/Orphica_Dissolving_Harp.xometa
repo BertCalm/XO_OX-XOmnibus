@@ -1,42 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Orphica Dissolving Harp",
-  "mood": "Flux",
-  "engines": ["ORPHICA"],
-  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
-  "version": "1.0.0",
-  "description": "A harp strike fades into a drifting microsound cloud — the note is a doorway, not a destination. High grain density extends each pluck into a dissolving shimmer.",
-  "tags": ["harp", "granular", "dissolve", "cloud", "shimmer", "flux"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.55,
-    "movement": 0.7,
-    "density": 0.72,
-    "space": 0.85,
-    "aggression": 0.2
-  },
-  "parameters": {
-    "ORPHICA": {
-      "orph_pluckBrightness": 0.55,
-      "orph_grainDensity": 0.85,
-      "orph_grainSize": 0.3,
-      "orph_grainScatter": 0.6,
-      "orph_attackTime": 0.02,
-      "orph_releaseTime": 3.5,
-      "orph_colonyDepth": 0.7,
-      "orph_reverbSend": 0.8,
-      "orph_velocitySensitivity": 0.6,
-      "macro_character": 0.55,
-      "macro_movement": 0.7,
-      "macro_coupling": 0.0,
-      "macro_space": 0.85
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "couplingIntensity": "None",
+  "description": "A harp strike fades into a drifting microsound cloud — the note is a doorway, not a destination. High grain density extends each pluck into a dissolving shimmer.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.6,
+    "density": 0.72,
+    "movement": 0.7,
+    "space": 0.85,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Orphica Dissolving Harp",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.55,
+      "macro_coupling": 0.0,
+      "macro_movement": 0.7,
+      "macro_space": 0.85,
+      "orph_attackTime": 0.02,
+      "orph_colonyDepth": 0.7,
+      "orph_grainDensity": 0.85,
+      "orph_grainScatter": 0.6,
+      "orph_grainSize": 0.3,
+      "orph_pluckBrightness": 0.55,
+      "orph_releaseTime": 3.5,
+      "orph_reverbSend": 0.8,
+      "orph_velocitySensitivity": 0.6
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "harp",
+    "granular",
+    "dissolve",
+    "cloud",
+    "shimmer",
+    "flux"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

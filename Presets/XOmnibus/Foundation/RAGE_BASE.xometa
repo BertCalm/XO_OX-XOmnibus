@@ -1,48 +1,56 @@
 {
-  "name": "RAGE BASE",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.679,
+    "source": "Oblique",
+    "target": "Oceanic",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.977,
+    "brightness": 0.272,
+    "density": 0.278,
+    "movement": 0.88,
+    "space": 0.52,
+    "warmth": 0.498
+  },
   "engines": [
-    "OBLIQUE",
-    "OCEANIC"
+    "Oblique",
+    "Oceanic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.515,
+    "COUPLING": 0.679,
+    "MOVEMENT": 0.88,
+    "SPACE": 0.52
+  },
+  "mood": "Foundation",
+  "name": "RAGE BASE",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.634,
-      "macro_movement": 0.442,
       "macro_coupling": 0.499,
+      "macro_movement": 0.442,
       "macro_space": 0.571
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.518,
-      "macro_movement": 0.484,
       "macro_coupling": 0.339,
+      "macro_movement": 0.484,
       "macro_space": 0.357
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBLIQUE",
-    "target": "OCEANIC",
-    "amount": 0.679
-  },
-  "dna": {
-    "brightness": 0.272,
-    "warmth": 0.498,
-    "movement": 0.88,
-    "density": 0.278,
-    "space": 0.52,
-    "aggression": 0.977
-  },
-  "macros": {
-    "CHARACTER": 0.515,
-    "MOVEMENT": 0.88,
-    "COUPLING": 0.679,
-    "SPACE": 0.52
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

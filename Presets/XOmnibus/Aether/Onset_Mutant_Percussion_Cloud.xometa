@@ -1,13 +1,46 @@
 {
-  "schema_version": 1,
-  "name": "Mutant Percussion Cloud",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Mutation at maximum — the kit voices have drifted from their physical origins into tonal clouds. What was a kick is now a bass shimmer. What was a hat is now crystalline mist.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.45,
+    "density": 0.42,
+    "movement": 0.78,
+    "space": 0.88,
+    "warmth": 0.55
+  },
   "engines": [
     "Onset"
   ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "Mutation at maximum \u2014 the kit voices have drifted from their physical origins into tonal clouds. What was a kick is now a bass shimmer. What was a hat is now crystalline mist.",
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "mood": "Aether",
+  "name": "Mutant Percussion Cloud",
+  "parameters": {
+    "Onset": {
+      "perc_delayFeedback": 0.55,
+      "perc_filterCutoff": 0.52,
+      "perc_hihatDecay": 0.9,
+      "perc_kickTune": 0.5,
+      "perc_macroMachine": 0.0,
+      "perc_macroMutate": 0.0,
+      "perc_macroPunch": 0.0,
+      "perc_macroSpace": 0.0,
+      "perc_noiseLevel": 0.4,
+      "perc_reverbMix": 0.88,
+      "perc_snareTone": 0.4
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "shifting-aether",
@@ -16,38 +49,5 @@
     "cloud",
     "evolved"
   ],
-  "macroLabels": [
-    "MACHINE",
-    "PUNCH",
-    "SPACE",
-    "MUTATE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.55,
-    "movement": 0.78,
-    "density": 0.42,
-    "space": 0.88,
-    "aggression": 0.1
-  },
-  "parameters": {
-    "Onset": {
-      "perc_noiseLevel": 0.4,
-      "perc_kickTune": 0.5,
-      "perc_snareTone": 0.4,
-      "perc_hihatDecay": 0.9,
-      "perc_reverbMix": 0.88,
-      "perc_delayFeedback": 0.55,
-      "perc_filterCutoff": 0.52,
-      "perc_macroMachine": 0.0,
-      "perc_macroPunch": 0.0,
-      "perc_macroSpace": 0.0,
-      "perc_macroMutate": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

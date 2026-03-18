@@ -1,49 +1,57 @@
 {
-  "name": "TENDER LACE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.275,
+    "source": "Organon",
+    "target": "Osprey",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.048,
+    "brightness": 0.908,
+    "density": 0.148,
+    "movement": 0.831,
+    "space": 0.734,
+    "warmth": 0.081
+  },
   "engines": [
-    "ORGANON",
-    "OSPREY"
+    "Organon",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.828,
+    "COUPLING": 0.215,
+    "MOVEMENT": 0.112,
+    "SPACE": 0.797
+  },
+  "mood": "Entangled",
+  "name": "TENDER LACE",
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.622,
-      "macro_movement": 0.222,
       "macro_coupling": 0.872,
+      "macro_movement": 0.222,
       "macro_space": 0.201
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.872,
-      "macro_movement": 0.366,
       "macro_coupling": 0.18,
+      "macro_movement": 0.366,
       "macro_space": 0.776
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORGANON",
-    "target": "OSPREY",
-    "amount": 0.275
-  },
-  "dna": {
-    "brightness": 0.908,
-    "warmth": 0.081,
-    "movement": 0.831,
-    "density": 0.148,
-    "space": 0.734,
-    "aggression": 0.048
-  },
-  "macros": {
-    "CHARACTER": 0.828,
-    "MOVEMENT": 0.112,
-    "COUPLING": 0.215,
-    "SPACE": 0.797
-  },
+  "schema_version": 1,
   "tags": [
     "quiet",
     "yielding",
     "tender",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

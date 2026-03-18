@@ -1,19 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Neon Tavern",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.501,
+        "description": "Osteria drives OddfeliX via TimbreShare",
+        "source": "Osteria",
+        "target": "OddfeliX",
+        "type": "TimbreShare"
+      }
+    ]
+  },
+  "couplingIntensity": "Light",
+  "created": "2026-03-16",
+  "description": "The electric tetra schools through OSTERIA's warm session — neon scatter in candlelit stone, OddfeliX's brightness lifting the tavern ceiling.",
+  "dna": {
+    "aggression": 0.36,
+    "brightness": 0.678,
+    "density": 0.604,
+    "movement": 0.481,
+    "space": 0.453,
+    "warmth": 0.537
+  },
   "engines": [
     "Osteria",
     "OddfeliX"
-  ],
-  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "The electric tetra schools through OSTERIA's warm session — neon scatter in candlelit stone, OddfeliX's brightness lifting the tavern ceiling.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "osteria",
-    "oddfelix"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,76 +32,65 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Light",
-  "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.678,
-    "warmth": 0.537,
-    "movement": 0.481,
-    "density": 0.604,
-    "space": 0.453,
-    "aggression": 0.36
-  },
+  "mood": "Entangled",
+  "name": "Neon Tavern",
   "parameters": {
+    "OddfeliX": {
+      "snap_attack": 0.098,
+      "snap_filterCutoff": 0.595,
+      "snap_filterRes": 0.41,
+      "snap_lfoDepth": 0.26,
+      "snap_lfoRate": 0.082,
+      "snap_macroCharacter": 0.0,
+      "snap_macroCoupling": 0.031,
+      "snap_release": 1.0
+    },
     "Osteria": {
-      "osteria_qBassShore": 0.519,
-      "osteria_qHarmShore": 0.356,
-      "osteria_qMelShore": 0.34,
-      "osteria_qRhythmShore": 0.359,
-      "osteria_qElastic": 0.37,
-      "osteria_qStretch": 0.47,
-      "osteria_qMemory": 0.599,
-      "osteria_qSympathy": 0.41,
+      "osteria_attack": 0.099,
       "osteria_bassLevel": 0.691,
-      "osteria_harmLevel": 0.486,
-      "osteria_melLevel": 0.435,
-      "osteria_rhythmLevel": 0.442,
-      "osteria_ensWidth": 0.673,
       "osteria_blendMode": 0.288,
-      "osteria_tavernMix": 0.548,
-      "osteria_tavernShore": 0.37,
+      "osteria_chorus": 0.03,
+      "osteria_decay": 0.762,
+      "osteria_ensWidth": 0.673,
+      "osteria_filterEnvDepth": 0.282,
+      "osteria_hall": 0.254,
+      "osteria_harmLevel": 0.486,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroSpace": 0.0,
+      "osteria_melLevel": 0.435,
       "osteria_murmur": 0.214,
-      "osteria_warmth": 0.817,
       "osteria_oceanBleed": 0.188,
       "osteria_patina": 0.598,
       "osteria_porto": 0.188,
-      "osteria_smoke": 0.396,
-      "osteria_filterEnvDepth": 0.282,
-      "osteria_attack": 0.099,
-      "osteria_decay": 0.762,
-      "osteria_sustain": 0.666,
+      "osteria_qBassShore": 0.519,
+      "osteria_qElastic": 0.37,
+      "osteria_qHarmShore": 0.356,
+      "osteria_qMelShore": 0.34,
+      "osteria_qMemory": 0.599,
+      "osteria_qRhythmShore": 0.359,
+      "osteria_qStretch": 0.47,
+      "osteria_qSympathy": 0.41,
       "osteria_release": 2.17,
+      "osteria_rhythmLevel": 0.442,
       "osteria_sessionDelay": 0.389,
-      "osteria_hall": 0.254,
-      "osteria_chorus": 0.03,
+      "osteria_smoke": 0.396,
+      "osteria_sustain": 0.666,
       "osteria_tape": 0.254,
-      "osteria_macroCharacter": 0.0,
-      "osteria_macroMovement": 0.0,
-      "osteria_macroCoupling": 0.0,
-      "osteria_macroSpace": 0.0
-    },
-    "OddfeliX": {
-      "snap_filterCutoff": 0.595,
-      "snap_filterRes": 0.41,
-      "snap_lfoRate": 0.082,
-      "snap_lfoDepth": 0.26,
-      "snap_attack": 0.098,
-      "snap_release": 1.0,
-      "snap_macroCharacter": 0.0,
-      "snap_macroCoupling": 0.031
+      "osteria_tavernMix": 0.548,
+      "osteria_tavernShore": 0.37,
+      "osteria_warmth": 0.817
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "source": "Osteria",
-        "target": "OddfeliX",
-        "type": "TimbreShare",
-        "amount": 0.501,
-        "description": "Osteria drives OddfeliX via TimbreShare"
-      }
-    ]
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "oddfelix"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

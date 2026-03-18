@@ -1,45 +1,52 @@
 {
-  "name": "LEADEN TIDE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8698,
+    "source": "Oblong",
+    "target": "Odyssey",
+    "type": "SPATIAL_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.6197,
+    "brightness": 0.7925,
+    "density": 0.9547,
+    "movement": 0.079,
+    "space": 0.8708,
+    "warmth": 0.17
+  },
   "engines": [
-    "OBLONG",
-    "ODYSSEY"
+    "Oblong",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2408,
+    "COUPLING": 0.7429,
+    "MOVEMENT": 0.9128,
+    "SPACE": 0.4611
+  },
+  "mood": "Entangled",
+  "name": "LEADEN TIDE",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.694,
-      "macro_movement": 0.9034,
       "macro_coupling": 0.6184,
+      "macro_movement": 0.9034,
       "macro_space": 0.7961
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.2934,
-      "macro_movement": 0.3748,
       "macro_coupling": 0.6582,
+      "macro_movement": 0.3748,
       "macro_space": 0.5312
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OBLONG",
-    "target": "ODYSSEY",
-    "amount": 0.8698
-  },
-  "dna": {
-    "brightness": 0.7925,
-    "warmth": 0.17,
-    "movement": 0.079,
-    "density": 0.9547,
-    "space": 0.8708,
-    "aggression": 0.6197
-  },
-  "macros": {
-    "CHARACTER": 0.2408,
-    "MOVEMENT": 0.9128,
-    "COUPLING": 0.7429,
-    "SPACE": 0.4611
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -49,5 +56,6 @@
     "bound",
     "xhigh",
     "crushing"
-  ]
+  ],
+  "version": "1.0"
 }

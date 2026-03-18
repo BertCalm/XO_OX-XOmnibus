@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Transcend Bond",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "BOND is the whole story here. Sweep it and hear Peter and Wolf grow up together.",
+  "dna": {
+    "aggression": 0.27,
+    "brightness": 0.53,
+    "density": 0.63,
+    "movement": 0.5,
+    "space": 0.69,
+    "warmth": 0.52
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "aether",
-    "experimental",
-    "aether"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.53,
-    "warmth": 0.52,
-    "movement": 0.5,
-    "density": 0.63,
-    "space": 0.69,
-    "aggression": 0.27
-  },
+  "mood": "Aether",
+  "name": "Transcend Bond",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.69,
-      "obbl_embouchureA": 0.36,
       "obbl_airFlutterA": 0.293,
-      "obbl_instrumentA": 1,
       "obbl_bodySizeA": 0.55,
-      "obbl_breathB": 0.749,
-      "obbl_reedStiffness": 0.421,
-      "obbl_reedBite": 0.236,
-      "obbl_instrumentB": 1,
       "obbl_bodySizeB": 0.62,
-      "obbl_voiceRouting": 1,
-      "obbl_damping": 0.991,
-      "obbl_sympatheticAmt": 0.258,
-      "obbl_driftRate": 0.083,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.232,
       "obbl_bondIntensity": 0.422,
       "obbl_bondRate": 0.186,
-      "obbl_fxAChorus": 0.348,
+      "obbl_bondStage": 0.232,
+      "obbl_breathA": 0.69,
+      "obbl_breathB": 0.749,
+      "obbl_damping": 0.991,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.083,
+      "obbl_embouchureA": 0.36,
       "obbl_fxABrightDelay": 0.1,
-      "obbl_fxAPlate": 0.25,
+      "obbl_fxAChorus": 0.348,
       "obbl_fxAExciter": 0.076,
-      "obbl_fxBPhaser": 0.157,
+      "obbl_fxAPlate": 0.25,
       "obbl_fxBDarkDelay": 0.408,
+      "obbl_fxBPhaser": 0.157,
       "obbl_fxBSpring": 0.233,
       "obbl_fxBTapeSat": 0.143,
-      "obbl_macroBreath": 0.362,
+      "obbl_instrumentA": 1,
+      "obbl_instrumentB": 1,
       "obbl_macroBond": 0.252,
+      "obbl_macroBreath": 0.362,
       "obbl_macroMischief": 0.231,
-      "obbl_macroWind": 0.549
+      "obbl_macroWind": 0.549,
+      "obbl_reedBite": 0.236,
+      "obbl_reedStiffness": 0.421,
+      "obbl_sympatheticAmt": 0.258,
+      "obbl_voiceRouting": 1
     }
   },
-  "coupling": null,
-  "description": "BOND is the whole story here. Sweep it and hear Peter and Wolf grow up together."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "aether",
+    "experimental",
+    "aether"
+  ],
+  "version": "1.0.0"
 }

@@ -1,54 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Indigo Forge",
-  "mood": "Entangled",
-  "engines": [
-    "OTTONI",
-    "ORACLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Filter coupling bridges OTTONI's warm resonance with ORACLE's GENDY stochastic body.",
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.74,
-      "macro_movement": 0.56,
-      "macro_coupling": 0.76,
-      "macro_space": 0.44
-    },
-    "ORACLE": {
-      "macro_character": 0.62,
-      "macro_movement": 0.6,
-      "macro_coupling": 0.68,
-      "macro_space": 0.5
-    }
-  },
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OTTONI",
-    "target": "ORACLE",
     "amount": 0.76,
-    "intensity": "Deep"
+    "intensity": "Deep",
+    "source": "Ottoni",
+    "target": "Oracle",
+    "type": "FILTER_MOD"
   },
+  "description": "Filter coupling bridges OTTONI's warm resonance with ORACLE's GENDY stochastic body.",
   "dna": {
+    "aggression": 0.09,
     "brightness": 0.6,
-    "warmth": 0.82,
-    "movement": 0.56,
     "density": 0.65,
+    "movement": 0.56,
     "space": 0.46,
-    "aggression": 0.09
+    "warmth": 0.82
   },
+  "engines": [
+    "Ottoni",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.74,
-    "MOVEMENT": 0.56,
     "COUPLING": 0.76,
+    "MOVEMENT": 0.56,
     "SPACE": 0.44
   },
+  "mood": "Entangled",
+  "name": "Indigo Forge",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.62,
+      "macro_coupling": 0.68,
+      "macro_movement": 0.6,
+      "macro_space": 0.5
+    },
+    "Ottoni": {
+      "macro_character": 0.74,
+      "macro_coupling": 0.76,
+      "macro_movement": 0.56,
+      "macro_space": 0.44
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "ottoni",
     "oracle",
     "filter",
     "indigo"
-  ]
+  ],
+  "version": "1.0"
 }

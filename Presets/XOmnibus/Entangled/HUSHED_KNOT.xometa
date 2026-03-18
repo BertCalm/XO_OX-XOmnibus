@@ -1,48 +1,56 @@
 {
-  "name": "HUSHED KNOT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.356,
+    "source": "Orphica",
+    "target": "Ottoni",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.629,
+    "brightness": 0.183,
+    "density": 0.007,
+    "movement": 0.089,
+    "space": 0.508,
+    "warmth": 0.357
+  },
   "engines": [
-    "ORPHICA",
-    "OTTONI"
+    "Orphica",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.78,
+    "COUPLING": 0.976,
+    "MOVEMENT": 0.089,
+    "SPACE": 0.585
+  },
+  "mood": "Entangled",
+  "name": "HUSHED KNOT",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.04,
-      "macro_movement": 0.1,
       "macro_coupling": 0.411,
+      "macro_movement": 0.1,
       "macro_space": 0.209
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.931,
-      "macro_movement": 0.078,
       "macro_coupling": 0.523,
+      "macro_movement": 0.078,
       "macro_space": 0.161
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORPHICA",
-    "target": "OTTONI",
-    "amount": 0.356
-  },
-  "dna": {
-    "brightness": 0.183,
-    "warmth": 0.357,
-    "movement": 0.089,
-    "density": 0.007,
-    "space": 0.508,
-    "aggression": 0.629
-  },
-  "macros": {
-    "CHARACTER": 0.78,
-    "MOVEMENT": 0.089,
-    "COUPLING": 0.976,
-    "SPACE": 0.585
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "hushed"
-  ]
+  ],
+  "version": "1.0"
 }

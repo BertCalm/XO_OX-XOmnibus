@@ -1,14 +1,54 @@
 {
-  "schema_version": 1,
-  "name": "Sage Geometric Bond",
-  "mood": "Entangled",
-  "engines": [
-    "OHM",
-    "ORIGAMI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.71,
+        "engineA": "Ohm",
+        "engineB": "Origami",
+        "type": "Macro->Param"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
   "description": "The commune folds itself into geometric patience — OHM's organ harmonics crease through ORIGAMI's folded architecture.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.85,
+    "density": 0.85,
+    "movement": 0.52,
+    "space": 0.44,
+    "warmth": 0.62
+  },
+  "engines": [
+    "Ohm",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.735,
+    "COUPLING": 0.805,
+    "MOVEMENT": 0.52,
+    "SPACE": 0.44
+  },
+  "mood": "Entangled",
+  "name": "Sage Geometric Bond",
+  "parameters": {
+    "ohm_droneFund": 0.64,
+    "ohm_macroCommune": 0.686,
+    "ohm_macroMeddling": 0.608,
+    "ohm_orgHarmonics": 0.78,
+    "origami_creaseDensity": 0.74,
+    "origami_foldPoint": 0.71
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -21,46 +61,6 @@
     "folded",
     "geometric"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "ohm_macroMeddling": 0.608,
-    "ohm_macroCommune": 0.686,
-    "ohm_orgHarmonics": 0.78,
-    "ohm_droneFund": 0.64,
-    "origami_foldPoint": 0.71,
-    "origami_creaseDensity": 0.74
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OHM",
-        "engineB": "ORIGAMI",
-        "type": "Macro->Param",
-        "amount": 0.71
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.735,
-    "MOVEMENT": 0.52,
-    "COUPLING": 0.805,
-    "SPACE": 0.44
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.85,
-    "warmth": 0.62,
-    "movement": 0.52,
-    "density": 0.85,
-    "space": 0.44,
-    "aggression": 0.1
-  }
+  "version": "1.0.0"
 }

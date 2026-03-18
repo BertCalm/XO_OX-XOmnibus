@@ -1,19 +1,29 @@
 {
-  "schema_version": 1,
-  "name": "Fat Phosphor",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.8,
+        "source": "Obese",
+        "target": "Oceanic",
+        "type": "SPATIAL_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Bioluminescent teal brightness shapes MOJO harmonic content — ocean light through hot pink.",
+  "dna": {
+    "aggression": 0.544,
+    "brightness": 0.506,
+    "density": 0.762,
+    "movement": 0.655,
+    "space": 0.624,
+    "warmth": 0.702
+  },
   "engines": [
     "Obese",
     "Oceanic"
-  ],
-  "author": "XO_OX Coverage Pack 2026-03-16",
-  "version": "1.0",
-  "description": "Bioluminescent teal brightness shapes MOJO harmonic content — ocean light through hot pink.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "obese",
-    "oceanic"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,58 +31,48 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
+  "mood": "Entangled",
+  "name": "Fat Phosphor",
   "parameters": {
     "Obese": {
-      "fat_satDrive": 0.633,
-      "fat_satMix": 0.501,
-      "fat_mojoControl": 0.569,
-      "fat_analogDigital": 0.457,
-      "fat_filterCutoff": 3174.0,
-      "fat_filterReso": 0.346,
-      "fat_filterEnvAmt": 0.721,
-      "fat_oscWave": 0.33,
-      "fat_oscDetune": -0.141,
-      "fat_subOscLevel": 0.323,
-      "fat_distType": 0.75,
       "fat_ampAttack": 0.0341,
       "fat_ampDecay": 0.598,
-      "fat_ampSustain": 0.659,
       "fat_ampRelease": 0.634,
+      "fat_ampSustain": 0.659,
+      "fat_analogDigital": 0.457,
+      "fat_distType": 0.75,
+      "fat_filterCutoff": 3174.0,
+      "fat_filterEnvAmt": 0.721,
+      "fat_filterReso": 0.346,
+      "fat_level": 0.687,
+      "fat_lfo1Depth": 0.568,
+      "fat_lfo1Rate": 5.969,
+      "fat_lfo1Shape": 0.5,
       "fat_modAttack": 0.0256,
       "fat_modDecay": 0.078,
-      "fat_modSustain": 0.486,
       "fat_modRelease": 0.291,
-      "fat_lfo1Rate": 5.969,
-      "fat_lfo1Depth": 0.568,
-      "fat_lfo1Shape": 0.5,
-      "fat_level": 0.687,
-      "fat_reverbMix": 0.169
+      "fat_modSustain": 0.486,
+      "fat_mojoControl": 0.569,
+      "fat_oscDetune": -0.141,
+      "fat_oscWave": 0.33,
+      "fat_reverbMix": 0.169,
+      "fat_satDrive": 0.633,
+      "fat_satMix": 0.501,
+      "fat_subOscLevel": 0.323
     },
     "Oceanic": {
-      "ocean_level": 0.703,
-      "ocean_filterCutoff": 6534.1
+      "ocean_filterCutoff": 6534.1,
+      "ocean_level": 0.703
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "SPATIAL_BLEND",
-        "source": "Obese",
-        "target": "Oceanic",
-        "amount": 0.8
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.506,
-    "warmth": 0.702,
-    "movement": 0.655,
-    "density": 0.762,
-    "space": 0.624,
-    "aggression": 0.544
-  }
+  "tags": [
+    "entangled",
+    "coupling",
+    "obese",
+    "oceanic"
+  ],
+  "tempo": null,
+  "version": "1.0"
 }

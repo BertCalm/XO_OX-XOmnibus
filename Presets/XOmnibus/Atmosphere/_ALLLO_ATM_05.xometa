@@ -1,49 +1,57 @@
 {
-  "name": "ALLLO ATM 05",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.214,
+    "source": "Organon",
+    "target": "Optic",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.059,
+    "brightness": 0.032,
+    "density": 0.042,
+    "movement": 0.026,
+    "space": 0.435,
+    "warmth": 0.051
+  },
   "engines": [
-    "ORGANON",
-    "OPTIC"
+    "Organon",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.041,
+    "COUPLING": 0.247,
+    "MOVEMENT": 0.034,
+    "SPACE": 0.435
+  },
+  "mood": "Atmosphere",
+  "name": "ALLLO ATM 05",
   "parameters": {
-    "ORGANON": {
+    "Optic": {
       "macro_character": 0.041,
-      "macro_movement": 0.034,
       "macro_coupling": 0.247,
+      "macro_movement": 0.034,
       "macro_space": 0.435
     },
-    "OPTIC": {
+    "Organon": {
       "macro_character": 0.041,
-      "macro_movement": 0.034,
       "macro_coupling": 0.247,
+      "macro_movement": 0.034,
       "macro_space": 0.435
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORGANON",
-    "target": "OPTIC",
-    "amount": 0.214
-  },
-  "dna": {
-    "brightness": 0.032,
-    "warmth": 0.051,
-    "movement": 0.026,
-    "density": 0.042,
-    "space": 0.435,
-    "aggression": 0.059
-  },
-  "macros": {
-    "CHARACTER": 0.041,
-    "MOVEMENT": 0.034,
-    "COUPLING": 0.247,
-    "SPACE": 0.435
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

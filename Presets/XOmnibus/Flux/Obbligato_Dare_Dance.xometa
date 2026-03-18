@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Dare Dance",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Brothers harmonize, fight, cry, return. The full emotional arc in one preset.",
+  "dna": {
+    "aggression": 0.31,
+    "brightness": 0.43,
+    "density": 0.57,
+    "movement": 0.88,
+    "space": 0.32,
+    "warmth": 0.43
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "flux",
-    "movement",
-    "flux"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.43,
-    "warmth": 0.43,
-    "movement": 0.88,
-    "density": 0.57,
-    "space": 0.32,
-    "aggression": 0.31
-  },
+  "mood": "Flux",
+  "name": "Dare Dance",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.674,
-      "obbl_embouchureA": 0.628,
       "obbl_airFlutterA": 0.241,
-      "obbl_instrumentA": 3,
       "obbl_bodySizeA": 0.596,
-      "obbl_breathB": 0.552,
-      "obbl_reedStiffness": 0.45,
-      "obbl_reedBite": 0.217,
-      "obbl_instrumentB": 3,
       "obbl_bodySizeB": 0.413,
-      "obbl_voiceRouting": 2,
-      "obbl_damping": 0.996,
-      "obbl_sympatheticAmt": 0.303,
-      "obbl_driftRate": 0.127,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.449,
       "obbl_bondIntensity": 0.397,
       "obbl_bondRate": 0.28,
-      "obbl_fxAChorus": 0.274,
+      "obbl_bondStage": 0.449,
+      "obbl_breathA": 0.674,
+      "obbl_breathB": 0.552,
+      "obbl_damping": 0.996,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.127,
+      "obbl_embouchureA": 0.628,
       "obbl_fxABrightDelay": 0.103,
-      "obbl_fxAPlate": 0.081,
+      "obbl_fxAChorus": 0.274,
       "obbl_fxAExciter": 0.08,
-      "obbl_fxBPhaser": 0.263,
+      "obbl_fxAPlate": 0.081,
       "obbl_fxBDarkDelay": 0.396,
+      "obbl_fxBPhaser": 0.263,
       "obbl_fxBSpring": 0.22,
       "obbl_fxBTapeSat": 0.074,
-      "obbl_macroBreath": 0.684,
+      "obbl_instrumentA": 3,
+      "obbl_instrumentB": 3,
       "obbl_macroBond": 0.796,
+      "obbl_macroBreath": 0.684,
       "obbl_macroMischief": 0.223,
-      "obbl_macroWind": 0.342
+      "obbl_macroWind": 0.342,
+      "obbl_reedBite": 0.217,
+      "obbl_reedStiffness": 0.45,
+      "obbl_sympatheticAmt": 0.303,
+      "obbl_voiceRouting": 2
     }
   },
-  "coupling": null,
-  "description": "Brothers harmonize, fight, cry, return. The full emotional arc in one preset."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "flux",
+    "movement",
+    "flux"
+  ],
+  "version": "1.0.0"
 }

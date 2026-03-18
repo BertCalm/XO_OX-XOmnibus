@@ -1,49 +1,57 @@
 {
-  "name": "NIGHT STONE",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.437,
+    "source": "Ole",
+    "target": "Overworld",
+    "type": "PITCH_TRACK"
+  },
+  "dna": {
+    "aggression": 0.216,
+    "brightness": 0.075,
+    "density": 0.734,
+    "movement": 0.559,
+    "space": 0.935,
+    "warmth": 0.463
+  },
   "engines": [
-    "OLE",
-    "OVERWORLD"
+    "Ole",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.72,
+    "COUPLING": 0.581,
+    "MOVEMENT": 0.841,
+    "SPACE": 0.392
+  },
+  "mood": "Foundation",
+  "name": "NIGHT STONE",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.674,
-      "macro_movement": 0.861,
       "macro_coupling": 0.587,
+      "macro_movement": 0.861,
       "macro_space": 0.021
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.765,
-      "macro_movement": 0.821,
       "macro_coupling": 0.576,
+      "macro_movement": 0.821,
       "macro_space": 0.763
     }
   },
-  "coupling": {
-    "type": "PITCH_TRACK",
-    "source": "OLE",
-    "target": "OVERWORLD",
-    "amount": 0.437
-  },
-  "dna": {
-    "brightness": 0.075,
-    "warmth": 0.463,
-    "movement": 0.559,
-    "density": 0.734,
-    "space": 0.935,
-    "aggression": 0.216
-  },
-  "macros": {
-    "CHARACTER": 0.72,
-    "MOVEMENT": 0.841,
-    "COUPLING": 0.581,
-    "SPACE": 0.392
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "dark",
     "extreme",
     "high-space"
-  ]
+  ],
+  "version": "1.0"
 }

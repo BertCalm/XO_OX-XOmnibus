@@ -1,31 +1,39 @@
 {
-  "name": "Serpent Reed",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6,
+    "source": "Ouroboros",
+    "target": "Obbligato",
+    "type": "CHAOS_LEASH"
+  },
+  "description": "OBBLIGATO dual wind tone obligated to ouroboros topology — the reed bends to the serpent's geometry",
   "engines": [
-    "OBBLIGATO",
-    "OUROBOROS"
+    "Obbligato",
+    "Ouroboros"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.65,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.55,
     "SPACE": 0.5
   },
-  "sonic_dna": {
-    "brightness": 0.55,
-    "warmth": 0.57,
-    "movement": 0.65,
-    "density": 0.65,
-    "space": 0.5,
-    "aggression": 0.51
-  },
+  "mood": "Entangled",
+  "name": "Serpent Reed",
   "parameters": {},
-  "coupling": {
-    "type": "CHAOS_LEASH",
-    "source": "OUROBOROS",
-    "target": "OBBLIGATO",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.51,
+    "brightness": 0.55,
+    "density": 0.65,
+    "movement": 0.65,
+    "space": 0.5,
+    "warmth": 0.57
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "ouroboros",
     "wind"
   ],
-  "description": "OBBLIGATO dual wind tone obligated to ouroboros topology \u2014 the reed bends to the serpent's geometry"
+  "version": "1.0"
 }

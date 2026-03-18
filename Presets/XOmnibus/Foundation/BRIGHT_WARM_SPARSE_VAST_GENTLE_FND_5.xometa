@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_FND_5",
-  "mood": "Foundation",
-  "engines": [
-    "ODDOSCAR",
-    "OBLONG"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.618,
+    "source": "OddOscar",
+    "target": "Oblong",
+    "type": "SPATIAL_COUPLE"
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_WARM_SPARSE_VAST_GENTLE. Variant 5.",
+  "dna": {
+    "aggression": 0.081,
+    "brightness": 0.91,
+    "density": 0.043,
+    "movement": 0.615,
+    "space": 0.97,
+    "warmth": 0.989
+  },
+  "engines": [
+    "OddOscar",
+    "Oblong"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 1.0,
+    "COUPLING": 0.067,
+    "MOVEMENT": 0.582,
+    "SPACE": 0.946
+  },
+  "mood": "Foundation",
+  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_FND_5",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.0,
+      "macro_movement": 0.541,
+      "macro_space": 1.0
+    },
+    "OddOscar": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.133,
+      "macro_movement": 0.623,
+      "macro_space": 0.892
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "sparse",
     "extreme",
@@ -19,53 +66,6 @@
     "foundation",
     "gentle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ODDOSCAR": {
-      "macro_character": 1.0,
-      "macro_movement": 0.623,
-      "macro_coupling": 0.133,
-      "macro_space": 0.892
-    },
-    "OBLONG": {
-      "macro_character": 1.0,
-      "macro_movement": 0.541,
-      "macro_coupling": 0.0,
-      "macro_space": 1.0
-    }
-  },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ODDOSCAR",
-    "target": "OBLONG",
-    "amount": 0.618
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.91,
-    "warmth": 0.989,
-    "movement": 0.615,
-    "density": 0.043,
-    "space": 0.97,
-    "aggression": 0.081
-  },
-  "macros": {
-    "CHARACTER": 1.0,
-    "MOVEMENT": 0.582,
-    "COUPLING": 0.067,
-    "SPACE": 0.946
-  }
+  "version": "1.0.0"
 }

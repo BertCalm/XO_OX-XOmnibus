@@ -1,31 +1,39 @@
 {
-  "name": "Carnival Delay",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Ole",
+    "target": "Overdub",
+    "type": "RHYTHMIC_LOCK"
+  },
+  "description": "Ole drama macro feeds dub delay — festival percussion echoing through the night",
   "engines": [
-    "OVERDUB",
-    "OLE"
+    "Overdub",
+    "Ole"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.5,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.5,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.52,
-    "warmth": 0.67,
-    "movement": 0.61,
-    "density": 0.6,
-    "space": 0.53,
-    "aggression": 0.41
-  },
+  "mood": "Entangled",
+  "name": "Carnival Delay",
   "parameters": {},
-  "coupling": {
-    "type": "RHYTHMIC_LOCK",
-    "source": "OLE",
-    "target": "OVERDUB",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.41,
+    "brightness": 0.52,
+    "density": 0.6,
+    "movement": 0.61,
+    "space": 0.53,
+    "warmth": 0.67
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "ole",
     "dub"
   ],
-  "description": "Ole drama macro feeds dub delay \u2014 festival percussion echoing through the night"
+  "version": "1.0"
 }

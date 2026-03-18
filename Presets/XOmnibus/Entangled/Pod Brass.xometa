@@ -1,31 +1,39 @@
 {
-  "name": "Pod Brass",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7,
+    "source": "Ottoni",
+    "target": "Orca",
+    "type": "ECHOLOCATION_SYNC"
+  },
+  "description": "Orca pod vocalizations harmonized by triple brass — cetacean choir with horns",
   "engines": [
-    "OTTONI",
-    "ORCA"
+    "Ottoni",
+    "Orca"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.65,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.7,
+    "MOVEMENT": 0.55,
     "SPACE": 0.45
   },
-  "sonic_dna": {
-    "brightness": 0.63,
-    "warmth": 0.54,
-    "movement": 0.58,
-    "density": 0.68,
-    "space": 0.54,
-    "aggression": 0.66
-  },
+  "mood": "Entangled",
+  "name": "Pod Brass",
   "parameters": {},
-  "coupling": {
-    "type": "ECHOLOCATION_SYNC",
-    "source": "OTTONI",
-    "target": "ORCA",
-    "amount": 0.7
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.66,
+    "brightness": 0.63,
+    "density": 0.68,
+    "movement": 0.58,
+    "space": 0.54,
+    "warmth": 0.54
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "orca",
     "triple"
   ],
-  "description": "Orca pod vocalizations harmonized by triple brass \u2014 cetacean choir with horns"
+  "version": "1.0"
 }

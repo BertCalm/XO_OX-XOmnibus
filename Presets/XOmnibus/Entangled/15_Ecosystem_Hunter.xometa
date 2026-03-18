@@ -1,26 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Ecosystem Hunter",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.4,
-    "warmth": 0.75,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Heavy",
+  "description": "Designed for multi-engine coupling — aggressive subharmonics with high coupling level for ecosystem entanglement",
+  "dna": {
     "aggression": 0.65,
-    "movement": 0.7,
+    "brightness": 0.4,
     "density": 1.0,
-    "space": 0.6
+    "movement": 0.7,
+    "space": 0.6,
+    "warmth": 0.75
   },
   "engines": [
-    "XOwlfish"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Designed for multi-engine coupling — aggressive subharmonics with high coupling level for ecosystem entanglement",
-  "tags": [
-    "coupling",
-    "entangled",
-    "ecosystem",
-    "predator"
+    "Owlfish"
   ],
   "macroLabels": [
     "DEPTH",
@@ -28,21 +22,50 @@
     "DEFENSE",
     "PRESSURE"
   ],
-  "couplingIntensity": "Heavy",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.75,
-    "movement": 0.7,
-    "density": 1.0,
-    "space": 0.6,
-    "aggression": 0.65
-  },
+  "mood": "Entangled",
+  "name": "Ecosystem Hunter",
   "parameters": {
-    "XOwlfish": {
-      "owl_portamento": 0.15,
+    "Owlfish": {
+      "owl_ampAttack": 8,
+      "owl_ampDecay": 250,
+      "owl_ampRelease": 500,
+      "owl_ampSustain": 0.8,
+      "owl_armorDecay": 0.4,
+      "owl_armorDelay": 0.4,
+      "owl_armorDuck": 0.5,
+      "owl_armorScatter": 0.45,
+      "owl_armorThreshold": 0.55,
+      "owl_bodyFreq": 42,
+      "owl_bodyLevel": 0.4,
+      "owl_compAttack": 0.2,
+      "owl_compRatio": 0.5,
+      "owl_compRelease": 0.35,
+      "owl_compThreshold": 0.4,
+      "owl_couplingBus": 1,
+      "owl_couplingLevel": 0.8,
+      "owl_defense": 0.5,
+      "owl_depth": 0.5,
+      "owl_feedRate": 0.55,
+      "owl_feeding": 0.5,
+      "owl_filterCutoff": 0.5,
+      "owl_filterReso": 0.35,
+      "owl_filterTrack": 0.5,
+      "owl_fundWave": 0.3,
+      "owl_grainDensity": 0.25,
+      "owl_grainMix": 0.2,
+      "owl_grainPitch": 0.2,
+      "owl_grainSize": 0.25,
       "owl_legatoMode": 1,
+      "owl_mixtur": 0.45,
       "owl_morphGlide": 0.45,
-      "owl_subMix": 0.5,
+      "owl_outputLevel": 0.8,
+      "owl_outputPan": 0.0,
+      "owl_portamento": 0.15,
+      "owl_pressure": 0.5,
+      "owl_reverbDamp": 0.5,
+      "owl_reverbMix": 0.25,
+      "owl_reverbPreDelay": 0.2,
+      "owl_reverbSize": 0.4,
       "owl_subDiv1": 1,
       "owl_subDiv2": 2,
       "owl_subDiv3": 4,
@@ -51,47 +74,24 @@
       "owl_subLevel2": 0.55,
       "owl_subLevel3": 0.4,
       "owl_subLevel4": 0.25,
-      "owl_mixtur": 0.45,
-      "owl_fundWave": 0.3,
-      "owl_subWave": 0.5,
-      "owl_bodyFreq": 42,
-      "owl_bodyLevel": 0.4,
-      "owl_compRatio": 0.5,
-      "owl_compThreshold": 0.4,
-      "owl_compAttack": 0.2,
-      "owl_compRelease": 0.35,
-      "owl_filterCutoff": 0.5,
-      "owl_filterReso": 0.35,
-      "owl_filterTrack": 0.5,
-      "owl_grainSize": 0.25,
-      "owl_grainDensity": 0.25,
-      "owl_grainPitch": 0.2,
-      "owl_grainMix": 0.2,
-      "owl_feedRate": 0.55,
-      "owl_armorThreshold": 0.55,
-      "owl_armorDecay": 0.4,
-      "owl_armorScatter": 0.45,
-      "owl_armorDuck": 0.5,
-      "owl_armorDelay": 0.4,
-      "owl_reverbSize": 0.4,
-      "owl_reverbDamp": 0.5,
-      "owl_reverbPreDelay": 0.2,
-      "owl_reverbMix": 0.25,
-      "owl_ampAttack": 8,
-      "owl_ampDecay": 250,
-      "owl_ampSustain": 0.8,
-      "owl_ampRelease": 500,
-      "owl_depth": 0.5,
-      "owl_feeding": 0.5,
-      "owl_defense": 0.5,
-      "owl_pressure": 0.5,
-      "owl_outputLevel": 0.8,
-      "owl_outputPan": 0.0,
-      "owl_couplingLevel": 0.8,
-      "owl_couplingBus": 1
+      "owl_subMix": 0.5,
+      "owl_subWave": 0.5
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.65,
+    "brightness": 0.4,
+    "density": 1.0,
+    "movement": 0.7,
+    "space": 0.6,
+    "warmth": 0.75
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "ecosystem",
+    "predator"
+  ],
+  "version": "1.0.0"
 }

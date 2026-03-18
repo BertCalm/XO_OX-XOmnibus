@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_DENSE_VIOLENT_FAM_AGG_2",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OPAL",
-    "OLE"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.633,
-      "macro_movement": 0.722,
-      "macro_coupling": 0.916,
-      "macro_space": 0.547
-    },
-    "OLE": {
-      "macro_character": 0.644,
-      "macro_movement": 0.737,
-      "macro_coupling": 0.93,
-      "macro_space": 0.543
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OPAL",
-    "target": "OLE",
-    "amount": 0.788
+    "amount": 0.788,
+    "source": "Opal",
+    "target": "Ole",
+    "type": "VELOCITY_COUPLE"
   },
   "dna": {
+    "aggression": 0.951,
     "brightness": 0.102,
-    "warmth": 0.901,
-    "movement": 0.452,
     "density": 0.947,
+    "movement": 0.452,
     "space": 0.449,
-    "aggression": 0.951
+    "warmth": 0.901
   },
+  "engines": [
+    "Opal",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.633,
-    "MOVEMENT": 0.722,
     "COUPLING": 0.916,
+    "MOVEMENT": 0.722,
     "SPACE": 0.547
   },
+  "mood": "Family",
+  "name": "DARK_HOT_DENSE_VIOLENT_FAM_AGG_2",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.644,
+      "macro_coupling": 0.93,
+      "macro_movement": 0.737,
+      "macro_space": 0.543
+    },
+    "Opal": {
+      "macro_character": 0.633,
+      "macro_coupling": 0.916,
+      "macro_movement": 0.722,
+      "macro_space": 0.547
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "dark",
     "hot",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

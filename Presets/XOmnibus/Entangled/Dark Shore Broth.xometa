@@ -1,14 +1,46 @@
 {
-  "schema_version": 1,
-  "name": "Dark Shore Broth",
-  "mood": "Entangled",
-  "engines": [
-    "OSTERIA",
-    "OBSIDIAN"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Obsidian shadow thickens the broth \u2014 dark tones enrich the shore feast.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Osteria",
+        "engineB": "Obsidian",
+        "type": "Env->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Obsidian shadow thickens the broth — dark tones enrich the shore feast.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.47,
+    "density": 0.64,
+    "movement": 0.42,
+    "space": 0.52,
+    "warmth": 0.64
+  },
+  "engines": [
+    "Osteria",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.35,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Dark Shore Broth",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -19,38 +51,6 @@
     "deep",
     "dense"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5,
-    "MOVEMENT": 0.35,
-    "COUPLING": 0.7,
-    "SPACE": 0.5
-  },
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.47,
-    "warmth": 0.64,
-    "movement": 0.42,
-    "density": 0.64,
-    "space": 0.52,
-    "aggression": 0.4
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OSTERIA",
-        "engineB": "OBSIDIAN",
-        "type": "Env->Filter",
-        "amount": 0.65
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_3",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9202,
+    "source": "Oceanic",
+    "target": "Organon",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.8694,
+    "brightness": 0.1377,
+    "density": 0.594,
+    "movement": 0.9463,
+    "space": 0.386,
+    "warmth": 0.0802
+  },
   "engines": [
-    "OCEANIC",
-    "ORGANON"
+    "Oceanic",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1029,
+    "COUPLING": 0.7251,
+    "MOVEMENT": 0.957,
+    "SPACE": 0.3036
+  },
+  "mood": "Flux",
+  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_3",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.1029,
-      "macro_movement": 0.957,
       "macro_coupling": 0.7251,
+      "macro_movement": 0.957,
       "macro_space": 0.3036
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.0755,
-      "macro_movement": 0.8634,
       "macro_coupling": 0.8401,
+      "macro_movement": 0.8634,
       "macro_space": 0.291
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OCEANIC",
-    "target": "ORGANON",
-    "amount": 0.9202
-  },
-  "dna": {
-    "brightness": 0.1377,
-    "warmth": 0.0802,
-    "movement": 0.9463,
-    "density": 0.594,
-    "space": 0.386,
-    "aggression": 0.8694
-  },
-  "macros": {
-    "CHARACTER": 0.1029,
-    "MOVEMENT": 0.957,
-    "COUPLING": 0.7251,
-    "SPACE": 0.3036
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "low-warmth",
     "high-movement",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

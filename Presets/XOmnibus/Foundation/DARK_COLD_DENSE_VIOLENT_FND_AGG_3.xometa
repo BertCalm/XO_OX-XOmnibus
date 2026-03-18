@@ -1,50 +1,58 @@
 {
-  "name": "DARK_COLD_DENSE_VIOLENT_FND_AGG_3",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ONSET",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "ONSET": {
-      "macro_character": 0.377,
-      "macro_movement": 0.487,
-      "macro_coupling": 0.524,
-      "macro_space": 0.398
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.35,
-      "macro_movement": 0.447,
-      "macro_coupling": 0.502,
-      "macro_space": 0.412
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ONSET",
-    "target": "ODDOSCAR",
-    "amount": 0.747
+    "amount": 0.747,
+    "source": "Onset",
+    "target": "OddOscar",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.955,
     "brightness": 0.081,
-    "warmth": 0.111,
-    "movement": 0.547,
     "density": 0.973,
+    "movement": 0.547,
     "space": 0.531,
-    "aggression": 0.955
+    "warmth": 0.111
   },
+  "engines": [
+    "Onset",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.377,
-    "MOVEMENT": 0.487,
     "COUPLING": 0.524,
+    "MOVEMENT": 0.487,
     "SPACE": 0.398
   },
+  "mood": "Foundation",
+  "name": "DARK_COLD_DENSE_VIOLENT_FND_AGG_3",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.35,
+      "macro_coupling": 0.502,
+      "macro_movement": 0.447,
+      "macro_space": 0.412
+    },
+    "Onset": {
+      "macro_character": 0.377,
+      "macro_coupling": 0.524,
+      "macro_movement": 0.487,
+      "macro_space": 0.398
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "cold",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

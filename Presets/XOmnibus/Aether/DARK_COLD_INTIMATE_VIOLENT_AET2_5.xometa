@@ -1,45 +1,52 @@
 {
-  "name": "DARK_COLD_INTIMATE_VIOLENT_AET2_5",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7648,
+    "source": "OddOscar",
+    "target": "OddfeliX",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.8845,
+    "brightness": 0.0915,
+    "density": 0.4352,
+    "movement": 0.3899,
+    "space": 0.0614,
+    "warmth": 0.0682
+  },
   "engines": [
-    "ODDOSCAR",
-    "ODDFELIX"
+    "OddOscar",
+    "OddfeliX"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0532,
+    "COUPLING": 0.7648,
+    "MOVEMENT": 0.3876,
+    "SPACE": 0.0614
+  },
+  "mood": "Aether",
+  "name": "DARK_COLD_INTIMATE_VIOLENT_AET2_5",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.0619,
-      "macro_movement": 0.4024,
       "macro_coupling": 0.4087,
+      "macro_movement": 0.4024,
       "macro_space": 0.0354
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.0446,
-      "macro_movement": 0.3729,
       "macro_coupling": 0.4366,
+      "macro_movement": 0.3729,
       "macro_space": 0.0392
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ODDOSCAR",
-    "target": "ODDFELIX",
-    "amount": 0.7648
-  },
-  "dna": {
-    "brightness": 0.0915,
-    "warmth": 0.0682,
-    "space": 0.0614,
-    "aggression": 0.8845,
-    "movement": 0.3899,
-    "density": 0.4352
-  },
-  "macros": {
-    "CHARACTER": 0.0532,
-    "MOVEMENT": 0.3876,
-    "COUPLING": 0.7648,
-    "SPACE": 0.0614
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +56,6 @@
     "intimate",
     "violent",
     "compressed"
-  ]
+  ],
+  "version": "1.0"
 }

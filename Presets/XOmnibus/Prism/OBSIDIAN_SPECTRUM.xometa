@@ -1,48 +1,56 @@
 {
-  "name": "OBSIDIAN SPECTRUM",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OHM",
-    "OBESE"
-  ],
-  "parameters": {
-    "OHM": {
-      "macro_character": 0.972,
-      "macro_movement": 0.098,
-      "macro_coupling": 0.728,
-      "macro_space": 0.344
-    },
-    "OBESE": {
-      "macro_character": 0.364,
-      "macro_movement": 0.69,
-      "macro_coupling": 0.5,
-      "macro_space": 0.136
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OHM",
-    "target": "OBESE",
-    "amount": 0.355
+    "amount": 0.355,
+    "source": "Ohm",
+    "target": "Obese",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.929,
     "brightness": 0.042,
-    "warmth": 0.217,
-    "movement": 0.874,
     "density": 0.95,
+    "movement": 0.874,
     "space": 0.646,
-    "aggression": 0.929
+    "warmth": 0.217
   },
+  "engines": [
+    "Ohm",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.095,
-    "MOVEMENT": 0.399,
     "COUPLING": 0.23,
+    "MOVEMENT": 0.399,
     "SPACE": 0.039
   },
+  "mood": "Prism",
+  "name": "OBSIDIAN SPECTRUM",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.364,
+      "macro_coupling": 0.5,
+      "macro_movement": 0.69,
+      "macro_space": 0.136
+    },
+    "Ohm": {
+      "macro_character": 0.972,
+      "macro_coupling": 0.728,
+      "macro_movement": 0.098,
+      "macro_space": 0.344
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-  ]
+  ],
+  "version": "1.0"
 }

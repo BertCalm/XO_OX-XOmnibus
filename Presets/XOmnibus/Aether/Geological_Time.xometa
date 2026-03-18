@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Geological Time",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "Harmonics that shift over continental timescales.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.15,
+    "density": 0.5,
+    "movement": 0.08,
+    "space": 0.45,
+    "warmth": 0.75
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Harmonics that shift over continental timescales.",
-  "tags": [
-    "geological",
-    "slow",
-    "continental",
-    "massive"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Aether",
+  "name": "Geological Time",
   "parameters": {
     "Organon": {
-      "organon_metabolicRate": 0.1,
-      "organon_enzymeSelect": 400.0,
       "organon_catalystDrive": 0.5,
       "organon_dampingCoeff": 0.03,
-      "organon_signalFlux": 0.6,
-      "organon_phasonShift": 0.02,
+      "organon_enzymeSelect": 400.0,
       "organon_isotopeBalance": 0.2,
       "organon_lockIn": 0.0,
       "organon_membrane": 0.45,
-      "organon_noiseColor": 0.25
+      "organon_metabolicRate": 0.1,
+      "organon_noiseColor": 0.25,
+      "organon_phasonShift": 0.02,
+      "organon_signalFlux": 0.6
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.15,
-    "warmth": 0.75,
-    "movement": 0.08,
-    "density": 0.5,
-    "space": 0.45,
-    "aggression": 0.1
-  }
+  "tags": [
+    "geological",
+    "slow",
+    "continental",
+    "massive"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

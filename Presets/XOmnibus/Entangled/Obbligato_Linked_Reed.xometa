@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Linked Reed",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Peter interrupts Wolf; Wolf answers back. BOND mid — playful, not yet a fight.",
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.4,
+    "density": 0.51,
+    "movement": 0.42,
+    "space": 0.4,
+    "warmth": 0.5
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "entangled",
-    "coupled",
-    "entangled"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.5,
-    "movement": 0.42,
-    "density": 0.51,
-    "space": 0.4,
-    "aggression": 0.12
-  },
+  "mood": "Entangled",
+  "name": "Linked Reed",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.712,
-      "obbl_embouchureA": 0.607,
       "obbl_airFlutterA": 0.124,
-      "obbl_instrumentA": 4,
       "obbl_bodySizeA": 0.42,
-      "obbl_breathB": 0.638,
-      "obbl_reedStiffness": 0.385,
-      "obbl_reedBite": 0.371,
-      "obbl_instrumentB": 4,
       "obbl_bodySizeB": 0.528,
-      "obbl_voiceRouting": 4,
-      "obbl_damping": 0.992,
-      "obbl_sympatheticAmt": 0.311,
-      "obbl_driftRate": 0.135,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.295,
       "obbl_bondIntensity": 0.314,
       "obbl_bondRate": 0.193,
-      "obbl_fxAChorus": 0.335,
+      "obbl_bondStage": 0.295,
+      "obbl_breathA": 0.712,
+      "obbl_breathB": 0.638,
+      "obbl_damping": 0.992,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.135,
+      "obbl_embouchureA": 0.607,
       "obbl_fxABrightDelay": 0.198,
-      "obbl_fxAPlate": 0.121,
+      "obbl_fxAChorus": 0.335,
       "obbl_fxAExciter": 0.118,
-      "obbl_fxBPhaser": 0.166,
+      "obbl_fxAPlate": 0.121,
       "obbl_fxBDarkDelay": 0.256,
+      "obbl_fxBPhaser": 0.166,
       "obbl_fxBSpring": 0.101,
       "obbl_fxBTapeSat": 0.162,
-      "obbl_macroBreath": 0.374,
+      "obbl_instrumentA": 4,
+      "obbl_instrumentB": 4,
       "obbl_macroBond": 0.013,
+      "obbl_macroBreath": 0.374,
       "obbl_macroMischief": 0.0,
-      "obbl_macroWind": 0.198
+      "obbl_macroWind": 0.198,
+      "obbl_reedBite": 0.371,
+      "obbl_reedStiffness": 0.385,
+      "obbl_sympatheticAmt": 0.311,
+      "obbl_voiceRouting": 4
     }
   },
-  "coupling": null,
-  "description": "Peter interrupts Wolf; Wolf answers back. BOND mid \u2014 playful, not yet a fight."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "entangled",
+    "coupled",
+    "entangled"
+  ],
+  "version": "1.0.0"
 }

@@ -1,50 +1,58 @@
 {
-  "name": "DARK_COLD_DENSE_VIOLENT_FND_AGG_2",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OUROBOROS",
-    "ORIGAMI"
-  ],
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.479,
-      "macro_movement": 0.808,
-      "macro_coupling": 0.411,
-      "macro_space": 0.578
-    },
-    "ORIGAMI": {
-      "macro_character": 0.465,
-      "macro_movement": 0.792,
-      "macro_coupling": 0.387,
-      "macro_space": 0.532
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OUROBOROS",
-    "target": "ORIGAMI",
-    "amount": 0.856
+    "amount": 0.856,
+    "source": "Ouroboros",
+    "target": "Origami",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.903,
     "brightness": 0.051,
-    "warmth": 0.116,
-    "movement": 0.604,
     "density": 0.889,
+    "movement": 0.604,
     "space": 0.469,
-    "aggression": 0.903
+    "warmth": 0.116
   },
+  "engines": [
+    "Ouroboros",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.479,
-    "MOVEMENT": 0.808,
     "COUPLING": 0.411,
+    "MOVEMENT": 0.808,
     "SPACE": 0.578
   },
+  "mood": "Foundation",
+  "name": "DARK_COLD_DENSE_VIOLENT_FND_AGG_2",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.465,
+      "macro_coupling": 0.387,
+      "macro_movement": 0.792,
+      "macro_space": 0.532
+    },
+    "Ouroboros": {
+      "macro_character": 0.479,
+      "macro_coupling": 0.411,
+      "macro_movement": 0.808,
+      "macro_space": 0.578
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "cold",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

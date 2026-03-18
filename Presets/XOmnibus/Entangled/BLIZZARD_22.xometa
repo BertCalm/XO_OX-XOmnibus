@@ -1,48 +1,56 @@
 {
-  "name": "BLIZZARD 22",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.874,
+    "source": "Obscura",
+    "target": "Ottoni",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.765,
+    "brightness": 0.176,
+    "density": 0.539,
+    "movement": 0.958,
+    "space": 0.971,
+    "warmth": 0.132
+  },
   "engines": [
-    "OBSCURA",
-    "OTTONI"
+    "Obscura",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.913,
+    "COUPLING": 0.83,
+    "MOVEMENT": 0.958,
+    "SPACE": 0.257
+  },
+  "mood": "Entangled",
+  "name": "BLIZZARD 22",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.309,
-      "macro_movement": 0.97,
       "macro_coupling": 0.441,
+      "macro_movement": 0.97,
       "macro_space": 0.58
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.732,
-      "macro_movement": 0.945,
       "macro_coupling": 0.09,
+      "macro_movement": 0.945,
       "macro_space": 0.295
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBSCURA",
-    "target": "OTTONI",
-    "amount": 0.874
-  },
-  "dna": {
-    "brightness": 0.176,
-    "warmth": 0.132,
-    "movement": 0.958,
-    "density": 0.539,
-    "space": 0.971,
-    "aggression": 0.765
-  },
-  "macros": {
-    "CHARACTER": 0.913,
-    "MOVEMENT": 0.958,
-    "COUPLING": 0.83,
-    "SPACE": 0.257
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "rupture",
     "intensity"
-  ]
+  ],
+  "version": "1.0"
 }

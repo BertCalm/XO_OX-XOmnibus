@@ -1,69 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Bob Cross-Tide",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Cross-modulated living energy with analog drift and reverb depth.",
+  "dna": {
+    "aggression": 0.124,
+    "brightness": 0.393,
+    "density": 0.205,
+    "movement": 0.903,
+    "space": 0.695,
+    "warmth": 0.305
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Cross-modulated living energy with analog drift and reverb depth.",
-  "tags": [
-    "moving",
-    "underwater",
-    "slow",
-    "ambient"
-  ],
+  "legacy": {
+    "sourceCategory": "Living",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Living",
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Bob Cross-Tide",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
-      "bob_oscA_shape": 0.45,
-      "bob_oscA_drift": 0.4,
-      "bob_oscB_wave": 1.0,
-      "bob_oscB_blend": 0.4,
-      "bob_oscB_detune": 6.0,
-      "bob_fltMode": 2.0,
-      "bob_fltCutoff": 2800.0,
-      "bob_fltReso": 0.38,
-      "bob_fltEnvAmt": 0.55,
-      "bob_lfo1Rate": 0.06,
-      "bob_lfo1Depth": 0.5,
-      "bob_curMode": 1.0,
-      "bob_curAmount": 0.75,
-      "bob_motAttack": 0.8,
-      "bob_motDecay": 1.5,
-      "bob_motSustain": 0.6,
-      "bob_motRelease": 2.0,
-      "bob_motDepth": 0.7,
       "bob_ampAttack": 0.6,
       "bob_ampDecay": 1.5,
-      "bob_ampSustain": 0.85,
       "bob_ampRelease": 3.5,
-      "bob_glide": 0.2
+      "bob_ampSustain": 0.85,
+      "bob_curAmount": 0.75,
+      "bob_curMode": 1.0,
+      "bob_fltCutoff": 2800.0,
+      "bob_fltEnvAmt": 0.55,
+      "bob_fltMode": 2.0,
+      "bob_fltReso": 0.38,
+      "bob_glide": 0.2,
+      "bob_lfo1Depth": 0.5,
+      "bob_lfo1Rate": 0.06,
+      "bob_motAttack": 0.8,
+      "bob_motDecay": 1.5,
+      "bob_motDepth": 0.7,
+      "bob_motRelease": 2.0,
+      "bob_motSustain": 0.6,
+      "bob_oscA_drift": 0.4,
+      "bob_oscA_shape": 0.45,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.4,
+      "bob_oscB_detune": 6.0,
+      "bob_oscB_wave": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.393,
-    "warmth": 0.305,
-    "movement": 0.903,
-    "density": 0.205,
-    "space": 0.695,
-    "aggression": 0.124
-  }
+  "tags": [
+    "moving",
+    "underwater",
+    "slow",
+    "ambient"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,48 +1,56 @@
 {
-  "name": "EMPTY FLUX 5",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERDUB",
-    "OUTWIT"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.9663,
-      "macro_movement": 0.8169,
-      "macro_coupling": 0.8013,
-      "macro_space": 0.1384
-    },
-    "OUTWIT": {
-      "macro_character": 0.25,
-      "macro_movement": 0.6412,
-      "macro_coupling": 0.8741,
-      "macro_space": 0.5545
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OVERDUB",
-    "target": "OUTWIT",
-    "amount": 0.3616
+    "amount": 0.3616,
+    "source": "Overdub",
+    "target": "Outwit",
+    "type": "FREQUENCY_SHIFT"
   },
   "dna": {
+    "aggression": 0.0886,
     "brightness": 0.3678,
-    "warmth": 0.9471,
-    "movement": 0.9844,
     "density": 0.1035,
+    "movement": 0.9844,
     "space": 0.4617,
-    "aggression": 0.0886
+    "warmth": 0.9471
   },
+  "engines": [
+    "Overdub",
+    "Outwit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8459,
-    "MOVEMENT": 0.8512,
     "COUPLING": 0.2851,
+    "MOVEMENT": 0.8512,
     "SPACE": 0.7631
   },
+  "mood": "Flux",
+  "name": "EMPTY FLUX 5",
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.25,
+      "macro_coupling": 0.8741,
+      "macro_movement": 0.6412,
+      "macro_space": 0.5545
+    },
+    "Overdub": {
+      "macro_character": 0.9663,
+      "macro_coupling": 0.8013,
+      "macro_movement": 0.8169,
+      "macro_space": 0.1384
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "sparse",
     "minimal"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,21 +1,32 @@
 {
-  "schema_version": 1,
-  "name": "Tactical Syllogism",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "ORGANON"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.64,
+    "pairs": [
+      {
+        "amount": 0.64,
+        "engineA": "Outwit",
+        "engineB": "Organon",
+        "type": "HARMONIC_FOLD"
+      }
+    ],
+    "source": "Outwit",
+    "target": "Organon",
+    "type": "HARMONIC_FOLD"
+  },
+  "couplingIntensity": "Moderate",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORGANON's logical-metabolic character (Aristotelian organ-pipe variational synthesis). Coupling: Harmonic Fold.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "outwit",
-    "organon",
-    "chaotic",
-    "generative"
+  "dna": {
+    "aggression": 0.31,
+    "brightness": 0.68,
+    "density": 0.08,
+    "movement": 0.81,
+    "space": 0.81,
+    "warmth": 0.71
+  },
+  "engines": [
+    "Outwit",
+    "Organon"
   ],
   "macroLabels": [
     "ARMS",
@@ -25,78 +36,67 @@
   ],
   "macros": {
     "CHARACTER": 0.66,
-    "MOVEMENT": 0.44,
     "COUPLING": 0.66,
+    "MOVEMENT": 0.44,
     "SPACE": 0.52
   },
-  "couplingIntensity": "Moderate",
-  "sonic_dna": {
-    "brightness": 0.68,
-    "warmth": 0.71,
-    "movement": 0.81,
-    "density": 0.08,
-    "space": 0.81,
-    "aggression": 0.31
-  },
-  "dna": {
-    "brightness": 0.68,
-    "warmth": 0.71,
-    "movement": 0.81,
-    "density": 0.08,
-    "space": 0.81,
-    "aggression": 0.31
-  },
+  "mood": "Entangled",
+  "name": "Tactical Syllogism",
   "parameters": {
-    "OUTWIT": {
-      "owit_rule": 30,
-      "owit_arms": 8,
-      "owit_cellSize": 0.32,
-      "owit_density": 0.7,
-      "owit_evolveRate": 0.45,
-      "owit_mutateProb": 0.24,
-      "owit_pitchSpread": 0.53,
-      "owit_filterCutoff": 0.64,
-      "owit_filterReso": 0.14,
+    "Organon": {
+      "organon_ampAttack": 0.27,
+      "organon_ampRelease": 0.42,
+      "organon_ampSustain": 0.42,
+      "organon_character": 0.7,
+      "organon_coupling": 0.65,
+      "organon_couplingLevel": 0.7,
+      "organon_filterCutoff": 0.51,
+      "organon_filterReso": 0.18,
+      "organon_movement": 0.66,
+      "organon_outputLevel": 0.75,
+      "organon_reverbMix": 0.28,
+      "organon_space": 0.42
+    },
+    "Outwit": {
       "owit_ampAttack": 0.02,
       "owit_ampRelease": 0.29,
       "owit_armStagger": 0.25,
+      "owit_arms": 8,
       "owit_borderMode": 2,
-      "owit_inkCloudMix": 0.4,
+      "owit_cellSize": 0.32,
       "owit_chroma1": 0.78,
       "owit_chroma2": 0.54,
-      "owit_polyDepth": 0.77,
-      "owit_couplingLevel": 0.82,
       "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.82,
+      "owit_density": 0.7,
+      "owit_evolveRate": 0.45,
+      "owit_filterCutoff": 0.64,
+      "owit_filterReso": 0.14,
+      "owit_inkCloudMix": 0.4,
+      "owit_mutateProb": 0.24,
       "owit_outputLevel": 0.73,
-      "owit_outputPan": 0.11
-    },
-    "ORGANON": {
-      "organon_character": 0.7,
-      "organon_movement": 0.66,
-      "organon_coupling": 0.65,
-      "organon_space": 0.42,
-      "organon_filterCutoff": 0.51,
-      "organon_filterReso": 0.18,
-      "organon_ampAttack": 0.27,
-      "organon_ampSustain": 0.42,
-      "organon_ampRelease": 0.42,
-      "organon_reverbMix": 0.28,
-      "organon_couplingLevel": 0.7,
-      "organon_outputLevel": 0.75
+      "owit_outputPan": 0.11,
+      "owit_pitchSpread": 0.53,
+      "owit_polyDepth": 0.77,
+      "owit_rule": 30
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OUTWIT",
-    "target": "ORGANON",
-    "amount": 0.64,
-    "pairs": [
-      {
-        "engineA": "OUTWIT",
-        "engineB": "ORGANON",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.64
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.31,
+    "brightness": 0.68,
+    "density": 0.08,
+    "movement": 0.81,
+    "space": 0.81,
+    "warmth": 0.71
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "organon",
+    "chaotic",
+    "generative"
+  ],
+  "version": "1.0.0"
 }

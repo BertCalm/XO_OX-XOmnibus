@@ -1,31 +1,39 @@
 {
-  "name": "Porto Voyage",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6,
+    "source": "Odyssey",
+    "target": "Osteria",
+    "type": "HARMONIC_BLEND"
+  },
+  "description": "Drift odyssey docks at a wine-dark tavern — FM warmth soaked in osteria resonance",
   "engines": [
-    "ODYSSEY",
-    "OSTERIA"
+    "Odyssey",
+    "Osteria"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.65,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.49,
-    "warmth": 0.6,
-    "movement": 0.57,
-    "density": 0.59,
-    "space": 0.56,
-    "aggression": 0.39
-  },
+  "mood": "Entangled",
+  "name": "Porto Voyage",
   "parameters": {},
-  "coupling": {
-    "type": "HARMONIC_BLEND",
-    "source": "ODYSSEY",
-    "target": "OSTERIA",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.39,
+    "brightness": 0.49,
+    "density": 0.59,
+    "movement": 0.57,
+    "space": 0.56,
+    "warmth": 0.6
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "osteria",
     "wavetable"
   ],
-  "description": "Drift odyssey docks at a wine-dark tavern \u2014 FM warmth soaked in osteria resonance"
+  "version": "1.0"
 }

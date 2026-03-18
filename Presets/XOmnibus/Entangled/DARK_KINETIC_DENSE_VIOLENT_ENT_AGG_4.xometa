@@ -1,50 +1,58 @@
 {
-  "name": "DARK_KINETIC_DENSE_VIOLENT_ENT_AGG_4",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.909,
+    "source": "Orphica",
+    "target": "Ottoni",
+    "type": "CHAOS_INJECT"
+  },
+  "dna": {
+    "aggression": 0.955,
+    "brightness": 0.098,
+    "density": 0.906,
+    "movement": 0.905,
+    "space": 0.363,
+    "warmth": 0.52
+  },
   "engines": [
-    "ORPHICA",
-    "OTTONI"
+    "Orphica",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.525,
+    "COUPLING": 0.837,
+    "MOVEMENT": 0.905,
+    "SPACE": 0.363
+  },
+  "mood": "Entangled",
+  "name": "DARK_KINETIC_DENSE_VIOLENT_ENT_AGG_4",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.63,
-      "macro_movement": 0.954,
       "macro_coupling": 0.837,
+      "macro_movement": 0.954,
       "macro_space": 0.392
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.42,
-      "macro_movement": 0.879,
       "macro_coupling": 0.837,
+      "macro_movement": 0.879,
       "macro_space": 0.349
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ORPHICA",
-    "target": "OTTONI",
-    "amount": 0.909
-  },
-  "dna": {
-    "brightness": 0.098,
-    "warmth": 0.52,
-    "movement": 0.905,
-    "density": 0.906,
-    "space": 0.363,
-    "aggression": 0.955
-  },
-  "macros": {
-    "CHARACTER": 0.525,
-    "MOVEMENT": 0.905,
-    "COUPLING": 0.837,
-    "SPACE": 0.363
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "dark",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

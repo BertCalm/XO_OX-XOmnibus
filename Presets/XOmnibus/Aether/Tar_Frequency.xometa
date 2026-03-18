@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Tar Frequency",
-  "mood": "Aether",
-  "sonic_dna": {
-    "brightness": 0.03,
-    "warmth": 0.85,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Maximum Oscar density — thick sub matter",
+  "dna": {
     "aggression": 0.4,
-    "movement": 0.2,
+    "brightness": 0.03,
     "density": 0.8,
-    "space": 0.3
+    "movement": 0.2,
+    "space": 0.3,
+    "warmth": 0.85
   },
   "engines": [
-    "ODDOSCAR"
+    "OddOscar"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Maximum Oscar density \u2014 thick sub matter",
+  "macroLabels": [
+    "WEIGHT",
+    "GRIND",
+    "COUPLING",
+    "CAVE"
+  ],
+  "mood": "Aether",
+  "name": "Tar Frequency",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4,
+    "brightness": 0.03,
+    "density": 0.8,
+    "movement": 0.2,
+    "space": 0.3,
+    "warmth": 0.85
+  },
   "tags": [
     "aether",
     "dark",
@@ -24,23 +42,5 @@
     "dense",
     "heavy"
   ],
-  "macroLabels": [
-    "WEIGHT",
-    "GRIND",
-    "COUPLING",
-    "CAVE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.03,
-    "warmth": 0.85,
-    "movement": 0.2,
-    "density": 0.8,
-    "space": 0.3,
-    "aggression": 0.4
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Fixed Image Deep Filament",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.541,
+        "engineA": "Obscura",
+        "engineB": "Owlfish",
+        "type": "Mod->Cutoff"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Daguerreotype and abyssal filament — stiffness meets deep bioluminescence.",
+  "dna": {
+    "aggression": 0.228,
+    "brightness": 0.406,
+    "density": 0.6,
+    "movement": 0.385,
+    "space": 0.686,
+    "warmth": 0.577
+  },
   "engines": [
     "Obscura",
     "Owlfish"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Daguerreotype and abyssal filament \u2014 stiffness meets deep bioluminescence.",
-  "tags": [
-    "obscura",
-    "owlfish",
-    "daguerreotype",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Fixed Image Deep Filament",
   "parameters": {
     "Obscura": {
-      "obscura_brightness": 0.379,
-      "obscura_warmth": 0.642,
-      "obscura_movement": 0.362,
-      "obscura_density": 0.649,
-      "obscura_space": 0.705,
       "obscura_aggression": 0.276,
-      "obscura_level": 0.864
+      "obscura_brightness": 0.379,
+      "obscura_density": 0.649,
+      "obscura_level": 0.864,
+      "obscura_movement": 0.362,
+      "obscura_space": 0.705,
+      "obscura_warmth": 0.642
     },
     "Owlfish": {
-      "owl_brightness": 0.418,
-      "owl_warmth": 0.623,
-      "owl_movement": 0.324,
-      "owl_density": 0.719,
-      "owl_space": 0.853,
       "owl_aggression": 0.163,
-      "owl_level": 0.736
+      "owl_brightness": 0.418,
+      "owl_density": 0.719,
+      "owl_level": 0.736,
+      "owl_movement": 0.324,
+      "owl_space": 0.853,
+      "owl_warmth": 0.623
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Owlfish",
-        "type": "Mod->Cutoff",
-        "amount": 0.541
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.406,
-    "warmth": 0.577,
-    "movement": 0.385,
-    "density": 0.6,
-    "space": 0.686,
-    "aggression": 0.228
-  }
+  "tags": [
+    "obscura",
+    "owlfish",
+    "daguerreotype",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,47 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT STILL WIDE TIGHT PRI 3",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Extreme",
+    "sourceEngine": "Overdub",
+    "targetEngine": null,
+    "type": "Harmonic"
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Prism preset: BRIGHT STILL WIDE TIGHT PRI 3.",
+  "dna": {
+    "aggression": 0.438,
+    "brightness": 0.927,
+    "density": 0.091,
+    "movement": 0.075,
+    "space": 0.905,
+    "warmth": 0.437
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Prism preset: BRIGHT STILL WIDE TIGHT PRI 3.",
-  "tags": [
-    "x-high-brightness",
-    "x-low-density",
-    "x-low-movement",
-    "x-high-space"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "BRIGHT STILL WIDE TIGHT PRI 3",
   "parameters": {},
-  "coupling": {
-    "type": "Harmonic",
-    "intensity": "Extreme",
-    "sourceEngine": "Overdub",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.927,
-    "warmth": 0.437,
-    "aggression": 0.438,
-    "density": 0.091,
-    "movement": 0.075,
-    "space": 0.905
-  }
+  "tags": [
+    "x-high-brightness",
+    "x-low-density",
+    "x-low-movement",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

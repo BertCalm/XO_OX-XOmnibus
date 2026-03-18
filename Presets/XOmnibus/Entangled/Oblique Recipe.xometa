@@ -1,14 +1,46 @@
 {
-  "schema_version": 1,
-  "name": "Oblique Recipe",
-  "mood": "Entangled",
-  "engines": [
-    "OSTERIA",
-    "OBLIQUE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "The unexpected ingredient \u2014 OBLIQUE introduces an angle the kitchen didn't plan for.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.55,
+        "engineA": "Osteria",
+        "engineB": "Oblique",
+        "type": "Audio->Wavetable"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "The unexpected ingredient — OBLIQUE introduces an angle the kitchen didn't plan for.",
+  "dna": {
+    "aggression": 0.34,
+    "brightness": 0.55,
+    "density": 0.56,
+    "movement": 0.5,
+    "space": 0.54,
+    "warmth": 0.68
+  },
+  "engines": [
+    "Osteria",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.75,
+    "MOVEMENT": 0.5,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Oblique Recipe",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -19,38 +51,6 @@
     "surprising",
     "warmth"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5,
-    "MOVEMENT": 0.5,
-    "COUPLING": 0.75,
-    "SPACE": 0.5
-  },
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.68,
-    "movement": 0.5,
-    "density": 0.56,
-    "space": 0.54,
-    "aggression": 0.34
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OSTERIA",
-        "engineB": "OBLIQUE",
-        "type": "Audio->Wavetable",
-        "amount": 0.55
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

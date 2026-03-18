@@ -1,48 +1,56 @@
 {
-  "name": "Oxide Scatter",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.64,
+    "source": "Overdub",
+    "target": "Opal",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.72,
+    "brightness": 0.2,
+    "density": 0.79,
+    "movement": 0.5,
+    "space": 0.32,
+    "warmth": 0.94
+  },
   "engines": [
-    "OVERDUB",
-    "OPAL"
+    "Overdub",
+    "Opal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "COUPLING": 0.57,
+    "MOVEMENT": 0.43,
+    "SPACE": 0.18
+  },
+  "mood": "Entangled",
+  "name": "Oxide Scatter",
   "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.94,
-      "macro_movement": 0.4,
-      "macro_coupling": 0.6,
+    "Opal": {
+      "macro_character": 0.81,
+      "macro_coupling": 0.54,
+      "macro_movement": 0.45,
       "macro_space": 0.18
     },
-    "OPAL": {
-      "macro_character": 0.81,
-      "macro_movement": 0.45,
-      "macro_coupling": 0.54,
+    "Overdub": {
+      "macro_character": 0.94,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.4,
       "macro_space": 0.18
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERDUB",
-    "target": "OPAL",
-    "amount": 0.64
-  },
-  "dna": {
-    "brightness": 0.2,
-    "warmth": 0.94,
-    "movement": 0.5,
-    "density": 0.79,
-    "space": 0.32,
-    "aggression": 0.72
-  },
-  "macros": {
-    "CHARACTER": 0.88,
-    "MOVEMENT": 0.43,
-    "COUPLING": 0.57,
-    "SPACE": 0.18
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-  ]
+  ],
+  "version": "1.0"
 }

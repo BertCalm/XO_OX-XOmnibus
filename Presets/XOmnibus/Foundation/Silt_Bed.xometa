@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Silt Bed",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "Low, grainy foundation texture with organic movement.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.2,
+    "density": 0.45,
+    "movement": 0.3,
+    "space": 0.15,
+    "warmth": 0.65
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Low, grainy foundation texture with organic movement.",
-  "tags": [
-    "grainy",
-    "low",
-    "texture",
-    "organic"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Silt Bed",
   "parameters": {
     "Organon": {
-      "organon_metabolicRate": 0.4,
-      "organon_enzymeSelect": 400.0,
       "organon_catalystDrive": 0.5,
       "organon_dampingCoeff": 0.2,
-      "organon_signalFlux": 0.65,
-      "organon_phasonShift": 0.15,
+      "organon_enzymeSelect": 400.0,
       "organon_isotopeBalance": 0.2,
       "organon_lockIn": 0.0,
       "organon_membrane": 0.15,
-      "organon_noiseColor": 0.35
+      "organon_metabolicRate": 0.4,
+      "organon_noiseColor": 0.35,
+      "organon_phasonShift": 0.15,
+      "organon_signalFlux": 0.65
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.2,
-    "warmth": 0.65,
-    "movement": 0.3,
-    "density": 0.45,
-    "space": 0.15,
-    "aggression": 0.2
-  }
+  "tags": [
+    "grainy",
+    "low",
+    "texture",
+    "organic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

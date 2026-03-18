@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "White Strike",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.9,
+        "engineA": "Overbite",
+        "engineB": "Optic",
+        "type": "TIMBRAL_WARP"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Fang White meets Phosphor Green — BITE macro timbral-warped by Optic luminance.",
+  "dna": {
+    "aggression": 0.96,
+    "brightness": 0.91,
+    "density": 0.72,
+    "movement": 0.82,
+    "space": 0.2,
+    "warmth": 0.1
+  },
   "engines": [
-    "OVERBITE",
-    "OPTIC"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Fang White meets Phosphor Green \u2014 BITE macro timbral-warped by Optic luminance.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "bright",
-    "overbite",
-    "optic",
-    "white-strike"
+    "Overbite",
+    "Optic"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,29 @@
   ],
   "macros": {
     "CHARACTER": 0.88,
-    "MOVEMENT": 0.82,
     "COUPLING": 0.9,
+    "MOVEMENT": 0.82,
     "SPACE": 0.2
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.91,
-    "warmth": 0.1,
-    "movement": 0.82,
-    "density": 0.72,
-    "space": 0.2,
-    "aggression": 0.96
-  },
-  "sonic_dna": {
-    "brightness": 0.91,
-    "warmth": 0.1,
-    "movement": 0.82,
-    "density": 0.72,
-    "space": 0.2,
-    "aggression": 0.96
-  },
+  "mood": "Entangled",
+  "name": "White Strike",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERBITE",
-        "engineB": "OPTIC",
-        "type": "TIMBRAL_WARP",
-        "amount": 0.9
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.96,
+    "brightness": 0.91,
+    "density": 0.72,
+    "movement": 0.82,
+    "space": 0.2,
+    "warmth": 0.1
+  },
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "overbite",
+    "optic",
+    "white-strike"
+  ],
+  "version": "1.0.0"
 }

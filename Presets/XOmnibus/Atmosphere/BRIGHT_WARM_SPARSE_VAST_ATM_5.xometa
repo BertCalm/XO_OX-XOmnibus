@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_SPARSE_VAST_ATM_5",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORACLE",
-    "OPAL"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.756,
-      "macro_movement": 0.557,
-      "macro_coupling": 0.484,
-      "macro_space": 0.824
-    },
-    "OPAL": {
-      "macro_character": 0.365,
-      "macro_movement": 0.481,
-      "macro_coupling": 0.742,
-      "macro_space": 0.858
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ORACLE",
-    "target": "OPAL",
-    "amount": 0.828
+    "amount": 0.828,
+    "source": "Oracle",
+    "target": "Opal",
+    "type": "VELOCITY_COUPLE"
   },
   "dna": {
+    "aggression": 0.399,
     "brightness": 0.929,
-    "warmth": 0.917,
-    "movement": 0.494,
     "density": 0.057,
+    "movement": 0.494,
     "space": 0.871,
-    "aggression": 0.399
+    "warmth": 0.917
   },
+  "engines": [
+    "Oracle",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.756,
-    "MOVEMENT": 0.557,
     "COUPLING": 0.484,
+    "MOVEMENT": 0.557,
     "SPACE": 0.824
   },
+  "mood": "Atmosphere",
+  "name": "BRIGHT_WARM_SPARSE_VAST_ATM_5",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.365,
+      "macro_coupling": 0.742,
+      "macro_movement": 0.481,
+      "macro_space": 0.858
+    },
+    "Oracle": {
+      "macro_character": 0.756,
+      "macro_coupling": 0.484,
+      "macro_movement": 0.557,
+      "macro_space": 0.824
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "warm",
     "sparse",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

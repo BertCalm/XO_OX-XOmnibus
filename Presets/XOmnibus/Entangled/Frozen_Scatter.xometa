@@ -1,50 +1,58 @@
 {
-  "name": "Frozen Scatter",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OPAL",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.11,
-      "macro_movement": 0.27,
-      "macro_coupling": 0.76,
-      "macro_space": 0.95
-    },
-    "ODYSSEY": {
-      "macro_character": 0.08,
-      "macro_movement": 0.22,
-      "macro_coupling": 0.81,
-      "macro_space": 0.98
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OPAL",
-    "target": "ODYSSEY",
-    "amount": 0.76
+    "amount": 0.76,
+    "source": "Opal",
+    "target": "Odyssey",
+    "type": "SPATIAL_COUPLE"
   },
+  "description": "Spatially coupled grains and wavetable — each lives at its own frozen coordinate.",
   "dna": {
+    "aggression": 0.05,
     "brightness": 0.408,
-    "warmth": 0.02,
-    "movement": 0.528,
     "density": 0.0,
+    "movement": 0.528,
     "space": 0.95,
-    "aggression": 0.05
+    "warmth": 0.02
   },
+  "engines": [
+    "Opal",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.11,
-    "MOVEMENT": 0.27,
     "COUPLING": 0.76,
+    "MOVEMENT": 0.27,
     "SPACE": 0.95
   },
+  "mood": "Entangled",
+  "name": "Frozen Scatter",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.08,
+      "macro_coupling": 0.81,
+      "macro_movement": 0.22,
+      "macro_space": 0.98
+    },
+    "Opal": {
+      "macro_character": 0.11,
+      "macro_coupling": 0.76,
+      "macro_movement": 0.27,
+      "macro_space": 0.95
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "frozen",
     "scatter"
   ],
-  "description": "Spatially coupled grains and wavetable \u2014 each lives at its own frozen coordinate."
+  "version": "1.0"
 }

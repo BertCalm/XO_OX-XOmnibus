@@ -1,49 +1,57 @@
 {
-  "name": "DAWN CLAN",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OSTERIA",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "OSTERIA": {
-      "macro_character": 0.574,
-      "macro_movement": 0.535,
-      "macro_coupling": 0.723,
-      "macro_space": 0.937
-    },
-    "ODYSSEY": {
-      "macro_character": 0.913,
-      "macro_movement": 0.175,
-      "macro_coupling": 0.882,
-      "macro_space": 0.176
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PHASE_COUPLE",
-    "source": "OSTERIA",
-    "target": "ODYSSEY",
-    "amount": 0.354
+    "amount": 0.354,
+    "source": "Osteria",
+    "target": "Odyssey",
+    "type": "PHASE_COUPLE"
   },
   "dna": {
+    "aggression": 0.745,
     "brightness": 0.945,
-    "warmth": 0.486,
-    "movement": 0.32,
     "density": 0.778,
+    "movement": 0.32,
     "space": 0.1,
-    "aggression": 0.745
+    "warmth": 0.486
   },
+  "engines": [
+    "Osteria",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.744,
-    "MOVEMENT": 0.355,
     "COUPLING": 0.802,
+    "MOVEMENT": 0.355,
     "SPACE": 0.556
   },
+  "mood": "Family",
+  "name": "DAWN CLAN",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.913,
+      "macro_coupling": 0.882,
+      "macro_movement": 0.175,
+      "macro_space": 0.176
+    },
+    "Osteria": {
+      "macro_character": 0.574,
+      "macro_coupling": 0.723,
+      "macro_movement": 0.535,
+      "macro_space": 0.937
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "extreme",
     "low-space"
-  ]
+  ],
+  "version": "1.0"
 }

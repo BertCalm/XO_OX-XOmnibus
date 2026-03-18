@@ -1,45 +1,52 @@
 {
-  "name": "HOT_DENSE_INTIMATE_VIOLENT_AET2_3",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6392,
+    "source": "Oracle",
+    "target": "Orbital",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.9805,
+    "brightness": 0.5493,
+    "density": 0.9218,
+    "movement": 0.5654,
+    "space": 0.0959,
+    "warmth": 0.8936
+  },
   "engines": [
-    "ORACLE",
-    "ORBITAL"
+    "Oracle",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5425,
+    "COUPLING": 0.6392,
+    "MOVEMENT": 0.5845,
+    "SPACE": 0.0959
+  },
+  "mood": "Aether",
+  "name": "HOT_DENSE_INTIMATE_VIOLENT_AET2_3",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.5438,
-      "macro_movement": 0.5595,
       "macro_coupling": 0.9095,
+      "macro_movement": 0.5595,
       "macro_space": 0.0735
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.5413,
-      "macro_movement": 0.6094,
       "macro_coupling": 0.9395,
+      "macro_movement": 0.6094,
       "macro_space": 0.1362
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORACLE",
-    "target": "ORBITAL",
-    "amount": 0.6392
-  },
-  "dna": {
-    "warmth": 0.8936,
-    "density": 0.9218,
-    "space": 0.0959,
-    "aggression": 0.9805,
-    "brightness": 0.5493,
-    "movement": 0.5654
-  },
-  "macros": {
-    "CHARACTER": 0.5425,
-    "MOVEMENT": 0.5845,
-    "COUPLING": 0.6392,
-    "SPACE": 0.0959
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +56,6 @@
     "intimate",
     "violent",
     "compressed"
-  ]
+  ],
+  "version": "1.0"
 }

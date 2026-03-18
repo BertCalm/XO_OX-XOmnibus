@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Cyclone Interior",
-  "mood": "Atmosphere",
-  "engines": [
-    "OUTWIT"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Weather system in motion. High movement, active aggression. OUTWIT kinetic register.",
+  "dna": {
+    "aggression": 0.429,
+    "brightness": 0.586,
+    "density": 0.685,
+    "movement": 0.9,
+    "space": 0.44,
+    "warmth": 0.34
+  },
+  "engines": [
+    "Outwit"
+  ],
+  "macroLabels": [
+    "CUNNING",
+    "REFLEX",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "COUPLING": 0.209,
+    "CUNNING": 0.356,
+    "REFLEX": 0.911,
+    "SPACE": 0.461
+  },
+  "mood": "Atmosphere",
+  "name": "Cyclone Interior",
+  "parameters": {
+    "Outwit": {
+      "coupling": 0.209,
+      "cunning": 0.356,
+      "reflex": 0.911,
+      "space": 0.461
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "kinetic",
@@ -16,36 +47,5 @@
     "weather",
     "dynamic"
   ],
-  "macroLabels": [
-    "CUNNING",
-    "REFLEX",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.586,
-    "warmth": 0.34,
-    "movement": 0.9,
-    "density": 0.685,
-    "space": 0.44,
-    "aggression": 0.429
-  },
-  "parameters": {
-    "OUTWIT": {
-      "cunning": 0.356,
-      "reflex": 0.911,
-      "coupling": 0.209,
-      "space": 0.461
-    }
-  },
-  "macros": {
-    "CUNNING": 0.356,
-    "REFLEX": 0.911,
-    "COUPLING": 0.209,
-    "SPACE": 0.461
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

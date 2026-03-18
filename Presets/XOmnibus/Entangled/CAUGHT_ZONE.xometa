@@ -1,48 +1,56 @@
 {
-  "name": "CAUGHT ZONE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.528,
+    "source": "Oblong",
+    "target": "Oceanic",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.837,
+    "brightness": 0.037,
+    "density": 0.642,
+    "movement": 0.093,
+    "space": 0.379,
+    "warmth": 0.178
+  },
   "engines": [
-    "OBLONG",
-    "OCEANIC"
+    "Oblong",
+    "Oceanic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.366,
+    "COUPLING": 0.973,
+    "MOVEMENT": 0.093,
+    "SPACE": 0.68
+  },
+  "mood": "Entangled",
+  "name": "CAUGHT ZONE",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.943,
-      "macro_movement": 0.094,
       "macro_coupling": 0.42,
+      "macro_movement": 0.094,
       "macro_space": 0.554
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.992,
-      "macro_movement": 0.092,
       "macro_coupling": 0.304,
+      "macro_movement": 0.092,
       "macro_space": 0.316
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OBLONG",
-    "target": "OCEANIC",
-    "amount": 0.528
-  },
-  "dna": {
-    "brightness": 0.037,
-    "warmth": 0.178,
-    "movement": 0.093,
-    "density": 0.642,
-    "space": 0.379,
-    "aggression": 0.837
-  },
-  "macros": {
-    "CHARACTER": 0.366,
-    "MOVEMENT": 0.093,
-    "COUPLING": 0.973,
-    "SPACE": 0.68
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "caught"
-  ]
+  ],
+  "version": "1.0"
 }

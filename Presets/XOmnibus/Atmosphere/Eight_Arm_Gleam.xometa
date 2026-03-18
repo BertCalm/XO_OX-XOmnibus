@@ -1,17 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Eight Arm Gleam",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OCTOPUS — bright extreme brightness preset for Atmosphere.",
+  "dna": {
+    "aggression": 0.47,
+    "brightness": 0.95,
+    "density": 0.75,
+    "movement": 0.19,
+    "space": 0.58,
+    "warmth": 0.37
+  },
   "engines": [
-    "OCTOPUS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "OCTOPUS \u2014 bright extreme brightness preset for Atmosphere.",
-  "tags": [
-    "atmosphere",
-    "bright",
-    "extreme-brightness"
+    "Octopus"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -19,44 +22,41 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "sonic_dna": {
-    "brightness": 0.95,
-    "warmth": 0.37,
-    "movement": 0.19,
-    "density": 0.75,
-    "space": 0.58,
-    "aggression": 0.47
-  },
-  "dna": {
-    "brightness": 0.95,
-    "warmth": 0.37,
-    "movement": 0.19,
-    "density": 0.75,
-    "space": 0.58,
-    "aggression": 0.47
-  },
+  "mood": "Atmosphere",
+  "name": "Eight Arm Gleam",
   "parameters": {
-    "OCTOPUS": {
-      "oct_armCount": 0.39,
-      "oct_inkCloud": 0.56,
-      "oct_filterCutoff": 0.26,
-      "oct_filterReso": 0.26,
+    "Octopus": {
       "oct_ampAttack": 359.8,
       "oct_ampDecay": 797.1,
-      "oct_ampSustain": 0.5,
       "oct_ampRelease": 733.6,
-      "oct_lfoRate": 0.49,
-      "oct_lfoDepth": 0.12,
-      "oct_reverbMix": 0.85,
-      "oct_delayMix": 0.45,
+      "oct_ampSustain": 0.5,
+      "oct_armCount": 0.39,
       "oct_character": 0.9,
+      "oct_coupling": 0.68,
+      "oct_delayMix": 0.45,
+      "oct_filterCutoff": 0.26,
+      "oct_filterReso": 0.26,
+      "oct_inkCloud": 0.56,
+      "oct_lfoDepth": 0.12,
+      "oct_lfoRate": 0.49,
       "oct_movement": 0.45,
-      "oct_space": 0.09,
-      "oct_coupling": 0.68
+      "oct_reverbMix": 0.85,
+      "oct_space": 0.09
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.47,
+    "brightness": 0.95,
+    "density": 0.75,
+    "movement": 0.19,
+    "space": 0.58,
+    "warmth": 0.37
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+  ],
+  "version": "1.0"
 }

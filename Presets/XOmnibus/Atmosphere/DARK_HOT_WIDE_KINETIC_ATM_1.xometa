@@ -1,47 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "DARK HOT WIDE KINETIC ATM 1",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Medium",
+    "sourceEngine": "Organon",
+    "targetEngine": null,
+    "type": "Spectral"
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: DARK HOT WIDE KINETIC ATM 1.",
+  "dna": {
+    "aggression": 0.444,
+    "brightness": 0.041,
+    "density": 0.424,
+    "movement": 0.909,
+    "space": 0.922,
+    "warmth": 0.905
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Atmosphere preset: DARK HOT WIDE KINETIC ATM 1.",
-  "tags": [
-    "x-low-brightness",
-    "x-high-warmth",
-    "x-high-movement",
-    "x-high-space"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "DARK HOT WIDE KINETIC ATM 1",
   "parameters": {},
-  "coupling": {
-    "type": "Spectral",
-    "intensity": "Medium",
-    "sourceEngine": "Organon",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.041,
-    "warmth": 0.905,
-    "aggression": 0.444,
-    "density": 0.424,
-    "movement": 0.909,
-    "space": 0.922
-  }
+  "tags": [
+    "x-low-brightness",
+    "x-high-warmth",
+    "x-high-movement",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

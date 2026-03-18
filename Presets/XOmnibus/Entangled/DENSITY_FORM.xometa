@@ -1,50 +1,58 @@
 {
-  "name": "DENSITY FORM",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "OCTOPUS"
-  ],
-  "parameters": {
-    "OVERLAP": {
-      "macro_character": 0.1357,
-      "macro_movement": 0.4536,
-      "macro_coupling": 0.8682,
-      "macro_space": 0.7431
-    },
-    "OCTOPUS": {
-      "macro_character": 0.946,
-      "macro_movement": 0.4191,
-      "macro_coupling": 0.8969,
-      "macro_space": 0.1545
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERLAP",
-    "target": "OCTOPUS",
-    "amount": 0.8245
+    "amount": 0.8245,
+    "source": "Overlap",
+    "target": "Octopus",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.0327,
     "brightness": 0.099,
-    "warmth": 0.4893,
-    "movement": 0.4081,
     "density": 0.9796,
+    "movement": 0.4081,
     "space": 0.9515,
-    "aggression": 0.0327
+    "warmth": 0.4893
   },
+  "engines": [
+    "Overlap",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.3705,
-    "MOVEMENT": 0.4434,
     "COUPLING": 0.9852,
+    "MOVEMENT": 0.4434,
     "SPACE": 0.8555
   },
+  "mood": "Entangled",
+  "name": "DENSITY FORM",
+  "parameters": {
+    "Octopus": {
+      "macro_character": 0.946,
+      "macro_coupling": 0.8969,
+      "macro_movement": 0.4191,
+      "macro_space": 0.1545
+    },
+    "Overlap": {
+      "macro_character": 0.1357,
+      "macro_coupling": 0.8682,
+      "macro_movement": 0.4536,
+      "macro_space": 0.7431
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
     "thick",
     "tectonic",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

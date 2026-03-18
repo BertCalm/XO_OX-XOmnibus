@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Drive Commune",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.59,
+    "pairs": [
+      {
+        "amount": 0.59,
+        "engineA": "Obese",
+        "engineB": "Ohm",
+        "type": "Env->Morph"
+      }
+    ],
+    "type": "Env->Morph"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OBESE drive softened by OHM commune warmth. Hot hippie. [Env->Morph]",
+  "dna": {
+    "aggression": 0.518,
     "brightness": 0.478,
-    "warmth": 0.704,
-    "movement": 0.519,
     "density": 0.715,
+    "movement": 0.519,
     "space": 0.534,
-    "aggression": 0.518
+    "warmth": 0.704
   },
   "engines": [
-    "XObese",
-    "XOhm"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE drive softened by OHM commune warmth. Hot hippie. [Env->Morph]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "obese",
-    "ohm",
-    "fat"
+    "Obese",
+    "Ohm"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.478,
-    "warmth": 0.704,
-    "movement": 0.519,
-    "density": 0.715,
-    "space": 0.534,
-    "aggression": 0.518
-  },
+  "mood": "Entangled",
+  "name": "Drive Commune",
   "parameters": {
-    "XObese": {
+    "Obese": {
+      "fat_aggression": 0.631,
+      "fat_brightness": 0.512,
+      "fat_couplingBus": 0,
+      "fat_couplingLevel": 0.58,
       "fat_outputLevel": 0.85,
       "fat_outputPan": 0.01,
-      "fat_couplingLevel": 0.58,
-      "fat_couplingBus": 0,
-      "fat_brightness": 0.512,
-      "fat_warmth": 0.671,
-      "fat_aggression": 0.631
+      "fat_warmth": 0.671
     },
-    "XOhm": {
+    "Ohm": {
+      "ohm_aggression": 0.342,
+      "ohm_brightness": 0.445,
+      "ohm_couplingBus": 0,
+      "ohm_couplingLevel": 0.7,
       "ohm_outputLevel": 0.87,
       "ohm_outputPan": 0.04,
-      "ohm_couplingLevel": 0.7,
-      "ohm_couplingBus": 0,
-      "ohm_brightness": 0.445,
-      "ohm_warmth": 0.748,
-      "ohm_aggression": 0.342
+      "ohm_warmth": 0.748
     }
   },
-  "coupling": {
-    "type": "Env->Morph",
-    "amount": 0.59,
-    "pairs": [
-      {
-        "engineA": "XObese",
-        "engineB": "XOhm",
-        "type": "Env->Morph",
-        "amount": 0.59
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.518,
+    "brightness": 0.478,
+    "density": 0.715,
+    "movement": 0.519,
+    "space": 0.534,
+    "warmth": 0.704
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "ohm",
+    "fat"
+  ],
+  "version": "1.0.0"
 }

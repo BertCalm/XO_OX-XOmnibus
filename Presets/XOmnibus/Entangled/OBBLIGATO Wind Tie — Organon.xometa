@@ -1,14 +1,45 @@
 {
-  "schema_version": 1,
-  "name": "OBBLIGATO Wind Tie \u2014 Organon",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.75,
+        "engineA": "Obbligato",
+        "engineB": "Organon",
+        "type": "Amp->Drive"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Bioluminescent cyan and rascal coral in BOND union — ORGANON's variational metabolism breathes through both reeds.",
+  "dna": {
+    "aggression": 0.43,
+    "brightness": 0.794,
+    "density": 0.691,
+    "movement": 0.621,
+    "space": 1.0,
+    "warmth": 0.369
+  },
   "engines": [
-    "OBBLIGATO",
-    "ORGANON"
+    "Obbligato",
+    "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bioluminescent cyan and rascal coral in BOND union \u2014 ORGANON's variational metabolism breathes through both reeds.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "OBBLIGATO Wind Tie — Organon",
+  "parameters": {
+    "obbl_breathA": 0.466,
+    "obbl_breathB": 0.419,
+    "obbl_macroBond": 0.669
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -17,37 +48,6 @@
     "metabolic",
     "bioluminescent"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "obbl_breathA": 0.466,
-    "obbl_breathB": 0.419,
-    "obbl_macroBond": 0.669
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBBLIGATO",
-        "engineB": "ORGANON",
-        "type": "Amp->Drive",
-        "amount": 0.75
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.794,
-    "warmth": 0.369,
-    "movement": 0.621,
-    "density": 0.691,
-    "space": 1.0,
-    "aggression": 0.43
-  }
+  "version": "1.0.0"
 }

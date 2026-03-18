@@ -1,14 +1,64 @@
 {
-  "schema_version": 1,
-  "name": "Tangle Dissolve",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.593,
+        "engineA": "Overlap",
+        "engineB": "Orbital",
+        "type": "SYNC_LFO"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "ORBITAL partial balance modulates OVERLAP early/late mix — spectral bloom control",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.65,
+    "density": 0.6,
+    "movement": 0.55,
+    "space": 0.508,
+    "warmth": 0.974
+  },
   "engines": [
-    "OVERLAP",
-    "ORBITAL"
+    "Overlap",
+    "Orbital"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ORBITAL partial balance modulates OVERLAP early/late mix \u2014 spectral bloom control",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Tangle Dissolve",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.632,
+      "olap_damping": 0.605,
+      "olap_decay": 0.543,
+      "olap_diffusion": 0.801,
+      "olap_earlyMix": 0.292,
+      "olap_filterCutoff": 0.491,
+      "olap_filterReso": 0.107,
+      "olap_lateMix": 0.718,
+      "olap_modDepth": 0.178,
+      "olap_modRate": 0.295,
+      "olap_outputLevel": 0.689,
+      "olap_preDelay": 0.115,
+      "olap_size": 0.865
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.3,
+    "brightness": 0.65,
+    "density": 0.6,
+    "movement": 0.55,
+    "space": 0.75,
+    "warmth": 0.475
+  },
   "tags": [
     "coupling",
     "entangled",
@@ -19,55 +69,5 @@
     "fdn",
     "reverb"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "aggression": 0.3,
-    "space": 0.508,
-    "warmth": 0.974,
-    "brightness": 0.65,
-    "density": 0.6,
-    "movement": 0.55
-  },
-  "sonic_dna": {
-    "aggression": 0.3,
-    "space": 0.75,
-    "warmth": 0.475,
-    "brightness": 0.65,
-    "density": 0.6,
-    "movement": 0.55
-  },
-  "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.865,
-      "olap_decay": 0.543,
-      "olap_damping": 0.605,
-      "olap_diffusion": 0.801,
-      "olap_modDepth": 0.178,
-      "olap_modRate": 0.295,
-      "olap_preDelay": 0.115,
-      "olap_earlyMix": 0.292,
-      "olap_lateMix": 0.718,
-      "olap_filterCutoff": 0.491,
-      "olap_filterReso": 0.107,
-      "olap_outputLevel": 0.689,
-      "olap_couplingLevel": 0.632,
-      "olap_couplingBus": 0
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERLAP",
-        "engineB": "ORBITAL",
-        "type": "SYNC_LFO",
-        "amount": 0.593
-      }
-    ]
-  }
+  "version": "1.0.0"
 }

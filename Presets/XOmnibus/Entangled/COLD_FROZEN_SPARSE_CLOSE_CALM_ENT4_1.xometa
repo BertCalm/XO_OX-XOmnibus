@@ -1,45 +1,52 @@
 {
-  "name": "COLD_FROZEN_SPARSE_CLOSE_CALM_ENT4_1",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OWLFISH",
-    "ORGANON"
-  ],
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.3,
-      "macro_movement": 0.072,
-      "macro_coupling": 0.062,
-      "macro_space": 0.063
-    },
-    "ORGANON": {
-      "macro_character": 0.281,
-      "macro_movement": 0.067,
-      "macro_coupling": 0.038,
-      "macro_space": 0.112
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OWLFISH",
-    "target": "ORGANON",
-    "amount": 0.783
+    "amount": 0.783,
+    "source": "Owlfish",
+    "target": "Organon",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.104,
     "brightness": 0.576,
-    "warmth": 0.041,
-    "movement": 0.076,
     "density": 0.05,
+    "movement": 0.076,
     "space": 0.085,
-    "aggression": 0.104
+    "warmth": 0.041
   },
+  "engines": [
+    "Owlfish",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.29,
-    "MOVEMENT": 0.07,
     "COUPLING": 0.783,
+    "MOVEMENT": 0.07,
     "SPACE": 0.087
   },
+  "mood": "Entangled",
+  "name": "COLD_FROZEN_SPARSE_CLOSE_CALM_ENT4_1",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.281,
+      "macro_coupling": 0.038,
+      "macro_movement": 0.067,
+      "macro_space": 0.112
+    },
+    "Owlfish": {
+      "macro_character": 0.3,
+      "macro_coupling": 0.062,
+      "macro_movement": 0.072,
+      "macro_space": 0.063
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +55,6 @@
     "sparse",
     "close",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

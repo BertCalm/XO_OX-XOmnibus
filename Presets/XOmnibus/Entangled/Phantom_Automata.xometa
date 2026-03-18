@@ -1,48 +1,56 @@
 {
-  "name": "Phantom Automata",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.83,
+    "source": "Oblong",
+    "target": "Outwit",
+    "type": "FEEDBACK"
+  },
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.07,
+    "density": 0.46,
+    "movement": 0.81,
+    "space": 0.52,
+    "warmth": 0.6
+  },
   "engines": [
-    "OBLONG",
-    "OUTWIT"
+    "Oblong",
+    "Outwit"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.72,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.81,
+    "SPACE": 0.52
+  },
+  "mood": "Entangled",
+  "name": "Phantom Automata",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.22,
-      "macro_movement": 0.5,
       "macro_coupling": 0.79,
+      "macro_movement": 0.5,
       "macro_space": 0.82
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.65,
-      "macro_movement": 0.48,
       "macro_coupling": 0.66,
+      "macro_movement": 0.48,
       "macro_space": 0.68
     }
   },
-  "coupling": {
-    "type": "FEEDBACK",
-    "source": "OBLONG",
-    "target": "OUTWIT",
-    "amount": 0.83
-  },
-  "dna": {
-    "brightness": 0.07,
-    "warmth": 0.6,
-    "movement": 0.81,
-    "density": 0.46,
-    "space": 0.52,
-    "aggression": 0.5
-  },
-  "macros": {
-    "CHARACTER": 0.72,
-    "MOVEMENT": 0.81,
-    "COUPLING": 0.7,
-    "SPACE": 0.52
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-  ]
+  ],
+  "version": "1.0"
 }

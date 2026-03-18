@@ -1,31 +1,39 @@
 {
-  "name": "Chaos Commune",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7,
+    "source": "Ohm",
+    "target": "Ouroboros",
+    "type": "CHAOS_LEASH"
+  },
+  "description": "Ouroboros strange attractor leashed to ohm's warm gravitational centre — chaos with a hearth",
   "engines": [
-    "OHM",
-    "OUROBOROS"
+    "Ohm",
+    "Ouroboros"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.7,
+    "MOVEMENT": 0.55,
     "SPACE": 0.65
   },
-  "sonic_dna": {
-    "brightness": 0.52,
-    "warmth": 0.63,
-    "movement": 0.68,
-    "density": 0.56,
-    "space": 0.62,
-    "aggression": 0.42
-  },
+  "mood": "Entangled",
+  "name": "Chaos Commune",
   "parameters": {},
-  "coupling": {
-    "type": "CHAOS_LEASH",
-    "source": "OHM",
-    "target": "OUROBOROS",
-    "amount": 0.7
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.42,
+    "brightness": 0.52,
+    "density": 0.56,
+    "movement": 0.68,
+    "space": 0.62,
+    "warmth": 0.63
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "ouroboros",
     "hippy"
   ],
-  "description": "Ouroboros strange attractor leashed to ohm's warm gravitational centre \u2014 chaos with a hearth"
+  "version": "1.0"
 }

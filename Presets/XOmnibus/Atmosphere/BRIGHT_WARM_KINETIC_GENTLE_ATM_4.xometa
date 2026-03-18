@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_GENTLE_ATM_4",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORGANON",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.552,
-      "macro_movement": 0.791,
-      "macro_coupling": 0.572,
-      "macro_space": 0.523
-    },
-    "ORBITAL": {
-      "macro_character": 0.47,
-      "macro_movement": 0.845,
-      "macro_coupling": 0.642,
-      "macro_space": 0.624
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORGANON",
-    "target": "ORBITAL",
-    "amount": 0.62
+    "amount": 0.62,
+    "source": "Organon",
+    "target": "Orbital",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.06,
     "brightness": 0.869,
-    "warmth": 0.974,
-    "movement": 0.908,
     "density": 0.682,
+    "movement": 0.908,
     "space": 0.625,
-    "aggression": 0.06
+    "warmth": 0.974
   },
+  "engines": [
+    "Organon",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.552,
-    "MOVEMENT": 0.791,
     "COUPLING": 0.572,
+    "MOVEMENT": 0.791,
     "SPACE": 0.523
   },
+  "mood": "Atmosphere",
+  "name": "BRIGHT_WARM_KINETIC_GENTLE_ATM_4",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.47,
+      "macro_coupling": 0.642,
+      "macro_movement": 0.845,
+      "macro_space": 0.624
+    },
+    "Organon": {
+      "macro_character": 0.552,
+      "macro_coupling": 0.572,
+      "macro_movement": 0.791,
+      "macro_space": 0.523
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "warm",
     "kinetic",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

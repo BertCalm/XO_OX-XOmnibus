@@ -1,14 +1,37 @@
 {
-  "schema_version": 1,
-  "name": "Felix and Oscar Together",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "feliX and Oscar — the original couple. Neon shimmer meets axolotl warmth. The tank contains both. Neither dominates. This is why the suite exists.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.58,
+    "density": 0.5,
+    "movement": 0.42,
+    "space": 0.6,
+    "warmth": 0.65
+  },
   "engines": [
     "OddfeliX",
     "OddOscar"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "feliX and Oscar \u2014 the original couple. Neon shimmer meets axolotl warmth. The tank contains both. Neither dominates. This is why the suite exists.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Family",
+  "name": "Felix and Oscar Together",
+  "parameters": {},
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "reunion",
@@ -19,29 +42,6 @@
     "polarity",
     "batch3-reunion"
   ],
-  "macroLabels": [
-    "Snap+Morph",
-    "Bloom",
-    "Coupling",
-    "Space"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.58,
-    "warmth": 0.65,
-    "movement": 0.42,
-    "density": 0.5,
-    "space": 0.6,
-    "aggression": 0.2
-  }
+  "version": "1.0.0"
 }

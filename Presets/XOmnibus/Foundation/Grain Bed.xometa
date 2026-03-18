@@ -1,46 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Grain Bed",
-  "mood": "Foundation",
-  "engines": ["Opal"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Stable granular pad. Tight grains, minimal scatter, warm filtered bed for layering.",
-  "tags": ["stable", "warm", "pad", "foundation"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-11",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Stable granular pad. Tight grains, minimal scatter, warm filtered bed for layering.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.25,
+    "density": 0.5,
+    "movement": 0.05,
+    "space": 0.2,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Opal"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Grain Bed",
   "parameters": {
     "Opal": {
-      "opal_source": 0,
-      "opal_grainSize": 200.0,
-      "opal_density": 35.0,
-      "opal_position": 0.5,
-      "opal_posScatter": 0.03,
-      "opal_pitchScatter": 0.0,
-      "opal_panScatter": 0.15,
-      "opal_window": 0,
-      "opal_freeze": 0.0,
-      "opal_couplingLevel": 0.0,
-      "opal_pulseWidth": 0.5,
-      "opal_detuneCents": 3.0,
-      "opal_filterCutoff": 2500.0,
-      "opal_filterReso": 0.15,
-      "opal_filterMode": 0,
-      "opal_shimmer": 0.0,
-      "opal_frost": 0.0,
-      "opal_smear": 0.1,
-      "opal_reverbMix": 0.15,
       "opal_ampAttack": 0.5,
       "opal_ampDecay": 0.4,
-      "opal_ampSustain": 0.9,
       "opal_ampRelease": 1.0,
-      "opal_masterVolume": 0.8
+      "opal_ampSustain": 0.9,
+      "opal_couplingLevel": 0.0,
+      "opal_density": 35.0,
+      "opal_detuneCents": 3.0,
+      "opal_filterCutoff": 2500.0,
+      "opal_filterMode": 0,
+      "opal_filterReso": 0.15,
+      "opal_freeze": 0.0,
+      "opal_frost": 0.0,
+      "opal_grainSize": 200.0,
+      "opal_masterVolume": 0.8,
+      "opal_panScatter": 0.15,
+      "opal_pitchScatter": 0.0,
+      "opal_posScatter": 0.03,
+      "opal_position": 0.5,
+      "opal_pulseWidth": 0.5,
+      "opal_reverbMix": 0.15,
+      "opal_shimmer": 0.0,
+      "opal_smear": 0.1,
+      "opal_source": 0,
+      "opal_window": 0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {"brightness": 0.25, "warmth": 0.65, "movement": 0.05, "density": 0.5, "space": 0.2, "aggression": 0.0}
+  "tags": [
+    "stable",
+    "warm",
+    "pad",
+    "foundation"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

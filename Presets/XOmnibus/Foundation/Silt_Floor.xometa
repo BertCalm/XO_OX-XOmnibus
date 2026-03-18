@@ -1,34 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Silt Floor",
-  "mood": "Foundation",
-  "sonic_dna": {
-    "brightness": 0.0601,
-    "warmth": 0.6334,
-    "movement": 0.3407,
-    "density": 0.6912,
-    "space": 0.4111,
-    "aggression": 0.1524
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Sub-kick foundation with felt-tip attack",
   "dna": {
+    "aggression": 0.1524,
     "brightness": 0.0601,
-    "warmth": 0.6334,
-    "movement": 0.3407,
     "density": 0.6912,
+    "movement": 0.3407,
     "space": 0.4111,
-    "aggression": 0.1524
+    "warmth": 0.6334
   },
   "engines": [
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Sub-kick foundation with felt-tip attack",
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme",
-    "anchor"
+    "Onset"
   ],
   "macroLabels": [
     "MACHINE",
@@ -38,23 +24,37 @@
   ],
   "macros": {
     "MACHINE": 0.1428,
+    "MUTATE": 0.6264,
     "PUNCH": 0.8557,
-    "SPACE": 0.6536,
-    "MUTATE": 0.6264
+    "SPACE": 0.6536
   },
-  "couplingIntensity": "None",
+  "mood": "Foundation",
+  "name": "Silt Floor",
   "parameters": {
-    "ONSET": {
+    "Onset": {
+      "onset_couplingBus": 0,
+      "onset_couplingLevel": 0.5,
       "onset_macro_machine": 0.1428,
+      "onset_macro_mutate": 0.6264,
       "onset_macro_punch": 0.8557,
       "onset_macro_space": 0.6536,
-      "onset_macro_mutate": 0.6264,
-      "onset_outputLevel": 0.85,
-      "onset_couplingLevel": 0.5,
-      "onset_couplingBus": 0
+      "onset_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.1524,
+    "brightness": 0.0601,
+    "density": 0.6912,
+    "movement": 0.3407,
+    "space": 0.4111,
+    "warmth": 0.6334
+  },
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

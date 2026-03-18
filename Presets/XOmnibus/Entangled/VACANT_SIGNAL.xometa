@@ -1,48 +1,56 @@
 {
-  "name": "VACANT SIGNAL",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORBITAL",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.793,
-      "macro_movement": 0.595,
-      "macro_coupling": 0.824,
-      "macro_space": 0.921
-    },
-    "OCEANIC": {
-      "macro_character": 0.439,
-      "macro_movement": 0.469,
-      "macro_coupling": 0.304,
-      "macro_space": 0.403
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORBITAL",
-    "target": "OCEANIC",
-    "amount": 0.318
+    "amount": 0.318,
+    "source": "Orbital",
+    "target": "Oceanic",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.735,
     "brightness": 0.54,
-    "warmth": 0.438,
-    "movement": 0.598,
     "density": 0.037,
+    "movement": 0.598,
     "space": 0.889,
-    "aggression": 0.735
+    "warmth": 0.438
   },
+  "engines": [
+    "Orbital",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.604,
-    "MOVEMENT": 0.026,
     "COUPLING": 0.229,
+    "MOVEMENT": 0.026,
     "SPACE": 0.674
   },
+  "mood": "Entangled",
+  "name": "VACANT SIGNAL",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.439,
+      "macro_coupling": 0.304,
+      "macro_movement": 0.469,
+      "macro_space": 0.403
+    },
+    "Orbital": {
+      "macro_character": 0.793,
+      "macro_coupling": 0.824,
+      "macro_movement": 0.595,
+      "macro_space": 0.921
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "sparse",
     "minimal"
-  ]
+  ],
+  "version": "1.0"
 }

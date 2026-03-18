@@ -1,48 +1,56 @@
 {
-  "name": "DARK CRYSTAL",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.567,
+    "source": "Obbligato",
+    "target": "Outwit",
+    "type": "SPATIAL_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.855,
+    "brightness": 0.037,
+    "density": 0.817,
+    "movement": 0.297,
+    "space": 0.246,
+    "warmth": 0.497
+  },
   "engines": [
-    "OBBLIGATO",
-    "OUTWIT"
+    "Obbligato",
+    "Outwit"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.377,
+    "COUPLING": 0.615,
+    "MOVEMENT": 0.652,
+    "SPACE": 0.059
+  },
+  "mood": "Prism",
+  "name": "DARK CRYSTAL",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.133,
-      "macro_movement": 0.318,
       "macro_coupling": 0.076,
+      "macro_movement": 0.318,
       "macro_space": 0.852
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.69,
-      "macro_movement": 0.41,
       "macro_coupling": 0.923,
+      "macro_movement": 0.41,
       "macro_space": 0.144
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OBBLIGATO",
-    "target": "OUTWIT",
-    "amount": 0.567
-  },
-  "dna": {
-    "brightness": 0.037,
-    "warmth": 0.497,
-    "movement": 0.297,
-    "density": 0.817,
-    "space": 0.246,
-    "aggression": 0.855
-  },
-  "macros": {
-    "CHARACTER": 0.377,
-    "MOVEMENT": 0.652,
-    "COUPLING": 0.615,
-    "SPACE": 0.059
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-  ]
+  ],
+  "version": "1.0"
 }

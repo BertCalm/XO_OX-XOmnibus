@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Bioluminescent Harp",
-  "mood": "Entangled",
-  "engines": [
-    "ORPHICA",
-    "ORGANON"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "ORPHICA resonance peaks shared with Organon's metabolic nodes \u2014 underwater glow.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.72,
+        "engineA": "Orphica",
+        "engineB": "Organon",
+        "type": "RESONANCE_SHARE"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "ORPHICA resonance peaks shared with Organon's metabolic nodes — underwater glow.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.85,
+    "density": 0.4,
+    "movement": 0.55,
+    "space": 0.78,
+    "warmth": 0.42
+  },
+  "engines": [
+    "Orphica",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.72,
+    "MOVEMENT": 0.6,
+    "SPACE": 0.625
+  },
+  "mood": "Entangled",
+  "name": "Bioluminescent Harp",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.55,
+      "macro_coupling": 0.72,
+      "macro_movement": 0.68,
+      "macro_space": 0.5
+    },
+    "Orphica": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.72,
+      "macro_movement": 0.52,
+      "macro_space": 0.75
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "resonance",
     "harp"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {
-    "brightness": 0.85,
-    "warmth": 0.42,
-    "movement": 0.55,
-    "density": 0.4,
-    "space": 0.78,
-    "aggression": 0.05
-  },
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.65,
-      "macro_movement": 0.52,
-      "macro_coupling": 0.72,
-      "macro_space": 0.75
-    },
-    "ORGANON": {
-      "macro_character": 0.55,
-      "macro_movement": 0.68,
-      "macro_coupling": 0.72,
-      "macro_space": 0.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORPHICA",
-        "engineB": "ORGANON",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.72
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.6,
-    "MOVEMENT": 0.6,
-    "COUPLING": 0.72,
-    "SPACE": 0.625
-  },
-  "sequencer": null
+  "version": "1.0"
 }

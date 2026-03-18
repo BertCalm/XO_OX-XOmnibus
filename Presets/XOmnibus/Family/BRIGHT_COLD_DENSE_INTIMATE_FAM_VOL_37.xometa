@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_COLD_DENSE_INTIMATE_FAM_VOL_37",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OSPREY",
-    "OHM"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.474,
-      "macro_movement": 0.375,
-      "macro_coupling": 0.682,
-      "macro_space": 0.066
-    },
-    "OHM": {
-      "macro_character": 0.47,
-      "macro_movement": 0.355,
-      "macro_coupling": 0.635,
-      "macro_space": 0.072
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_LINK",
-    "source": "OSPREY",
-    "target": "OHM",
-    "amount": 0.739
+    "amount": 0.739,
+    "source": "Osprey",
+    "target": "Ohm",
+    "type": "FILTER_LINK"
   },
   "dna": {
+    "aggression": 0.331,
     "brightness": 0.898,
-    "warmth": 0.04,
-    "movement": 0.358,
     "density": 0.978,
+    "movement": 0.358,
     "space": 0.076,
-    "aggression": 0.331
+    "warmth": 0.04
   },
+  "engines": [
+    "Osprey",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.472,
-    "MOVEMENT": 0.365,
     "COUPLING": 0.659,
+    "MOVEMENT": 0.365,
     "SPACE": 0.069
   },
+  "mood": "Family",
+  "name": "BRIGHT_COLD_DENSE_INTIMATE_FAM_VOL_37",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.47,
+      "macro_coupling": 0.635,
+      "macro_movement": 0.355,
+      "macro_space": 0.072
+    },
+    "Osprey": {
+      "macro_character": 0.474,
+      "macro_coupling": 0.682,
+      "macro_movement": 0.375,
+      "macro_space": 0.066
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "dense",
     "intimate",
     "cool"
-  ]
+  ],
+  "version": "1.0"
 }

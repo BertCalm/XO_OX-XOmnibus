@@ -1,50 +1,58 @@
 {
-  "name": "HOT_STILL_DENSE_VIOLENT_PRS_2",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.928,
+    "source": "Ottoni",
+    "target": "Orphica",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.932,
+    "brightness": 0.576,
+    "density": 0.953,
+    "movement": 0.041,
+    "space": 0.64,
+    "warmth": 0.935
+  },
   "engines": [
-    "OTTONI",
-    "ORPHICA"
+    "Ottoni",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.754,
+    "COUPLING": 0.793,
+    "MOVEMENT": 0.041,
+    "SPACE": 0.64
+  },
+  "mood": "Prism",
+  "name": "HOT_STILL_DENSE_VIOLENT_PRS_2",
   "parameters": {
-    "OTTONI": {
-      "macro_character": 0.754,
+    "Orphica": {
+      "macro_character": 0.678,
+      "macro_coupling": 0.363,
       "macro_movement": 0.041,
-      "macro_coupling": 0.793,
       "macro_space": 0.64
     },
-    "ORPHICA": {
-      "macro_character": 0.678,
+    "Ottoni": {
+      "macro_character": 0.754,
+      "macro_coupling": 0.793,
       "macro_movement": 0.041,
-      "macro_coupling": 0.363,
       "macro_space": 0.64
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OTTONI",
-    "target": "ORPHICA",
-    "amount": 0.928
-  },
-  "dna": {
-    "brightness": 0.576,
-    "warmth": 0.935,
-    "movement": 0.041,
-    "density": 0.953,
-    "space": 0.64,
-    "aggression": 0.932
-  },
-  "macros": {
-    "CHARACTER": 0.754,
-    "MOVEMENT": 0.041,
-    "COUPLING": 0.793,
-    "SPACE": 0.64
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "hot",
     "still",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

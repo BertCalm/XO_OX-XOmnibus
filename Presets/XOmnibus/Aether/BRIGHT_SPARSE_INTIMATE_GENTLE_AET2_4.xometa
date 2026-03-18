@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_SPARSE_INTIMATE_GENTLE_AET2_4",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "ORIGAMI",
-    "ORACLE"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.9491,
-      "macro_movement": 0.3284,
-      "macro_coupling": 0.0563,
-      "macro_space": 0.0366
-    },
-    "ORACLE": {
-      "macro_character": 0.981,
-      "macro_movement": 0.301,
-      "macro_coupling": 0.1325,
-      "macro_space": 0.0194
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORIGAMI",
-    "target": "ORACLE",
-    "amount": 0.6803
+    "amount": 0.6803,
+    "source": "Origami",
+    "target": "Oracle",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.0685,
     "brightness": 0.9747,
     "density": 0.0831,
+    "movement": 0.3206,
     "space": 0.0576,
-    "aggression": 0.0685,
-    "warmth": 0.3737,
-    "movement": 0.3206
+    "warmth": 0.3737
   },
+  "engines": [
+    "Origami",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.965,
-    "MOVEMENT": 0.3147,
     "COUPLING": 0.6803,
+    "MOVEMENT": 0.3147,
     "SPACE": 0.0576
   },
+  "mood": "Aether",
+  "name": "BRIGHT_SPARSE_INTIMATE_GENTLE_AET2_4",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.981,
+      "macro_coupling": 0.1325,
+      "macro_movement": 0.301,
+      "macro_space": 0.0194
+    },
+    "Origami": {
+      "macro_character": 0.9491,
+      "macro_coupling": 0.0563,
+      "macro_movement": 0.3284,
+      "macro_space": 0.0366
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +56,6 @@
     "intimate",
     "gentle",
     "airy"
-  ]
+  ],
+  "version": "1.0"
 }

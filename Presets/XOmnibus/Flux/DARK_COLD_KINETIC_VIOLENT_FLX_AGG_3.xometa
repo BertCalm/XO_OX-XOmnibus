@@ -1,50 +1,58 @@
 {
-  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_AGG_3",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.831,
+    "source": "Oblong",
+    "target": "Oracle",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.955,
+    "brightness": 0.081,
+    "density": 0.645,
+    "movement": 0.944,
+    "space": 0.531,
+    "warmth": 0.111
+  },
   "engines": [
-    "OBLONG",
-    "ORACLE"
+    "Oblong",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.404,
+    "COUPLING": 0.819,
+    "MOVEMENT": 0.944,
+    "SPACE": 0.531
+  },
+  "mood": "Flux",
+  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_AGG_3",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.368,
-      "macro_movement": 0.98,
       "macro_coupling": 0.819,
+      "macro_movement": 0.98,
       "macro_space": 0.568
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.441,
-      "macro_movement": 0.932,
       "macro_coupling": 0.815,
+      "macro_movement": 0.932,
       "macro_space": 0.564
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBLONG",
-    "target": "ORACLE",
-    "amount": 0.831
-  },
-  "dna": {
-    "brightness": 0.081,
-    "warmth": 0.111,
-    "movement": 0.944,
-    "density": 0.645,
-    "space": 0.531,
-    "aggression": 0.955
-  },
-  "macros": {
-    "CHARACTER": 0.404,
-    "MOVEMENT": 0.944,
-    "COUPLING": 0.819,
-    "SPACE": 0.531
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "kinetic",
     "dark",
     "cold"
-  ]
+  ],
+  "version": "1.0"
 }

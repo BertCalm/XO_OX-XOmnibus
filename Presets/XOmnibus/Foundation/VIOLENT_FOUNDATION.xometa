@@ -1,48 +1,56 @@
 {
-  "name": "VIOLENT FOUNDATION",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.573,
+    "source": "Optic",
+    "target": "Organon",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.907,
+    "brightness": 0.917,
+    "density": 0.449,
+    "movement": 0.564,
+    "space": 0.329,
+    "warmth": 0.454
+  },
   "engines": [
-    "OPTIC",
-    "ORGANON"
+    "Optic",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.402,
+    "COUPLING": 0.573,
+    "MOVEMENT": 0.564,
+    "SPACE": 0.329
+  },
+  "mood": "Foundation",
+  "name": "VIOLENT FOUNDATION",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.355,
-      "macro_movement": 0.571,
       "macro_coupling": 0.597,
+      "macro_movement": 0.571,
       "macro_space": 0.463
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.454,
-      "macro_movement": 0.388,
       "macro_coupling": 0.792,
+      "macro_movement": 0.388,
       "macro_space": 0.227
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OPTIC",
-    "target": "ORGANON",
-    "amount": 0.573
-  },
-  "dna": {
-    "brightness": 0.917,
-    "warmth": 0.454,
-    "movement": 0.564,
-    "density": 0.449,
-    "space": 0.329,
-    "aggression": 0.907
-  },
-  "macros": {
-    "CHARACTER": 0.402,
-    "MOVEMENT": 0.564,
-    "COUPLING": 0.573,
-    "SPACE": 0.329
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

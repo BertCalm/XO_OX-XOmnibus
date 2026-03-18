@@ -1,14 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 9",
-  "mood": "Entangled",
-  "engines": [
-    "ORPHICA",
-    "OCELOT"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.95,
+    "source": "Orphica",
+    "target": "Ocelot",
+    "type": "CHAOS_INJECT"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.92,
+    "brightness": 0.084,
+    "density": 0.906,
+    "movement": 0.568,
+    "space": 0.064,
+    "warmth": 0.08
+  },
+  "engines": [
+    "Orphica",
+    "Ocelot"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 9",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.93,
+      "macro_coupling": 0.74,
+      "macro_movement": 0.91,
+      "macro_space": 0.21
+    },
+    "Orphica": {
+      "macro_character": 0.72,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.96,
+      "macro_space": 0.13
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +58,6 @@
     "dense",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.72,
-      "macro_movement": 0.96,
-      "macro_coupling": 0.6,
-      "macro_space": 0.13
-    },
-    "OCELOT": {
-      "macro_character": 0.93,
-      "macro_movement": 0.91,
-      "macro_coupling": 0.74,
-      "macro_space": 0.21
-    }
-  },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ORPHICA",
-    "target": "OCELOT",
-    "amount": 0.95
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.084,
-    "warmth": 0.08,
-    "movement": 0.568,
-    "density": 0.906,
-    "space": 0.064,
-    "aggression": 0.92
-  }
+  "version": "1.0.0"
 }

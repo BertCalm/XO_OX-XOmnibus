@@ -1,14 +1,45 @@
 {
-  "schema_version": 1,
-  "name": "OBBLIGATO Necessary \u2014 Orphica",
-  "mood": "Entangled",
-  "engines": [
-    "OBBLIGATO",
-    "ORPHICA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.668,
+        "engineA": "Obbligato",
+        "engineB": "Orphica",
+        "type": "LFO->Pan"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
   "description": "Bright harp threads weave through OBBLIGATO's breath pair; BOND knots them into coral lace.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.685,
+    "density": 0.542,
+    "movement": 0.654,
+    "space": 0.911,
+    "warmth": 0.569
+  },
+  "engines": [
+    "Obbligato",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "OBBLIGATO Necessary — Orphica",
+  "parameters": {
+    "obbl_breathA": 0.47,
+    "obbl_breathB": 0.651,
+    "obbl_macroBond": 0.966
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -17,37 +48,6 @@
     "granular",
     "shimmer"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "obbl_breathA": 0.47,
-    "obbl_breathB": 0.651,
-    "obbl_macroBond": 0.966
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBBLIGATO",
-        "engineB": "ORPHICA",
-        "type": "LFO->Pan",
-        "amount": 0.668
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.685,
-    "warmth": 0.569,
-    "movement": 0.654,
-    "density": 0.542,
-    "space": 0.911,
-    "aggression": 0.5
-  }
+  "version": "1.0.0"
 }

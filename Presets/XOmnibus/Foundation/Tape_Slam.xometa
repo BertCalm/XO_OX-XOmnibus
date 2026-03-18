@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Tape Slam",
-  "mood": "Foundation",
-  "sonic_dna": {
-    "brightness": 0.468,
-    "warmth": 0.4385,
-    "movement": 0.5426,
-    "density": 0.81,
-    "space": 0.2795,
-    "aggression": 0.8983
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Saturated tape overdrive at maximum send",
   "dna": {
+    "aggression": 0.8983,
     "brightness": 0.468,
-    "warmth": 0.4385,
-    "movement": 0.5426,
     "density": 0.81,
+    "movement": 0.5426,
     "space": 0.2795,
-    "aggression": 0.8983
+    "warmth": 0.4385
   },
   "engines": [
-    "OVERDUB"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Saturated tape overdrive at maximum send",
-  "tags": [
-    "foundation",
-    "aggressive",
-    "extreme",
-    "anchor",
-    "drive"
+    "Overdub"
   ],
   "macroLabels": [
     "VOICE",
@@ -38,24 +23,39 @@
     "PANIC"
   ],
   "macros": {
-    "VOICE": 0.4962,
-    "SEND": 0.7503,
     "ECHO": 0.5775,
-    "PANIC": 0.6779
+    "PANIC": 0.6779,
+    "SEND": 0.7503,
+    "VOICE": 0.4962
   },
-  "couplingIntensity": "None",
+  "mood": "Foundation",
+  "name": "Tape Slam",
   "parameters": {
-    "OVERDUB": {
-      "dub_macro_voice": 0.4962,
-      "dub_macro_send": 0.7503,
+    "Overdub": {
+      "dub_couplingBus": 0,
+      "dub_couplingLevel": 0.5,
       "dub_macro_echo": 0.5775,
       "dub_macro_panic": 0.6779,
-      "dub_outputLevel": 0.85,
-      "dub_couplingLevel": 0.5,
-      "dub_couplingBus": 0
+      "dub_macro_send": 0.7503,
+      "dub_macro_voice": 0.4962,
+      "dub_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.8983,
+    "brightness": 0.468,
+    "density": 0.81,
+    "movement": 0.5426,
+    "space": 0.2795,
+    "warmth": 0.4385
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "extreme",
+    "anchor",
+    "drive"
+  ],
+  "version": "1.0.0"
 }

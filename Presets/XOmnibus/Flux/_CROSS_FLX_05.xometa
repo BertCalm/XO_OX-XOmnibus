@@ -1,49 +1,57 @@
 {
-  "name": "CROSS FLX 05",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.463,
+    "source": "Overdub",
+    "target": "Organon",
+    "type": "FREQUENCY_SHIFT"
+  },
+  "dna": {
+    "aggression": 0.941,
+    "brightness": 0.976,
+    "density": 0.474,
+    "movement": 0.969,
+    "space": 0.104,
+    "warmth": 0.045
+  },
   "engines": [
-    "OVERDUB",
-    "ORGANON"
+    "Overdub",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.51,
+    "COUPLING": 0.522,
+    "MOVEMENT": 0.722,
+    "SPACE": 0.104
+  },
+  "mood": "Flux",
+  "name": "CROSS FLX 05",
   "parameters": {
-    "OVERDUB": {
+    "Organon": {
       "macro_character": 0.51,
-      "macro_movement": 0.722,
       "macro_coupling": 0.522,
+      "macro_movement": 0.722,
       "macro_space": 0.104
     },
-    "ORGANON": {
+    "Overdub": {
       "macro_character": 0.51,
-      "macro_movement": 0.722,
       "macro_coupling": 0.522,
+      "macro_movement": 0.722,
       "macro_space": 0.104
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OVERDUB",
-    "target": "ORGANON",
-    "amount": 0.463
-  },
-  "dna": {
-    "brightness": 0.976,
-    "warmth": 0.045,
-    "movement": 0.969,
-    "density": 0.474,
-    "space": 0.104,
-    "aggression": 0.941
-  },
-  "macros": {
-    "CHARACTER": 0.51,
-    "MOVEMENT": 0.722,
-    "COUPLING": 0.522,
-    "SPACE": 0.104
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "DARK_DENSE_VAST_GENTLE_FLX_4",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7476,
+    "source": "Oceanic",
+    "target": "Opal",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.093,
+    "brightness": 0.0371,
+    "density": 0.904,
+    "movement": 0.6079,
+    "space": 0.9424,
+    "warmth": 0.6645
+  },
   "engines": [
-    "OCEANIC",
-    "OPAL"
+    "Oceanic",
+    "Opal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1412,
+    "COUPLING": 0.2226,
+    "MOVEMENT": 0.6661,
+    "SPACE": 0.8944
+  },
+  "mood": "Flux",
+  "name": "DARK_DENSE_VAST_GENTLE_FLX_4",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.1412,
-      "macro_movement": 0.6661,
       "macro_coupling": 0.2226,
+      "macro_movement": 0.6661,
       "macro_space": 0.8944
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.181,
-      "macro_movement": 0.5175,
       "macro_coupling": 0.188,
+      "macro_movement": 0.5175,
       "macro_space": 0.9171
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OCEANIC",
-    "target": "OPAL",
-    "amount": 0.7476
-  },
-  "dna": {
-    "brightness": 0.0371,
-    "warmth": 0.6645,
-    "movement": 0.6079,
-    "density": 0.904,
-    "space": 0.9424,
-    "aggression": 0.093
-  },
-  "macros": {
-    "CHARACTER": 0.1412,
-    "MOVEMENT": 0.6661,
-    "COUPLING": 0.2226,
-    "SPACE": 0.8944
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "high-density",
     "high-space",
     "low-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

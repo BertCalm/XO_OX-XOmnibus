@@ -1,14 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "HOT_DENSE_VAST_VIOLENT_ENT_4",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9617,
+    "pairs": [
+      {
+        "amount": 0.9617,
+        "source": "Ohm",
+        "target": "Ocelot",
+        "type": "VELOCITY_COUPLE"
+      }
+    ],
+    "source": "Ohm",
+    "target": "Ocelot",
+    "type": "VELOCITY_COUPLE"
+  },
+  "couplingIntensity": "High",
+  "description": "Hot Dense Vast Violent character entanglement — OHM × OCELOT via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.8798,
+    "brightness": 0.4008,
+    "density": 0.9423,
+    "movement": 0.6858,
+    "space": 0.888,
+    "warmth": 0.9722
+  },
   "engines": [
-    "OHM",
-    "OCELOT"
+    "Ohm",
+    "Ocelot"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Hot Dense Vast Violent character entanglement \u2014 OHM \u00d7 OCELOT via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "COMMUNE",
+    "MEDDLING",
+    "RESONANCE",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6865,
+    "COUPLING": 0.9617,
+    "MOVEMENT": 0.6858,
+    "SPACE": 0.888
+  },
+  "mood": "Entangled",
+  "name": "HOT_DENSE_VAST_VIOLENT_ENT_4",
+  "parameters": {
+    "Ocelot": {
+      "amp_attack": 0.197,
+      "amp_release": 0.6082,
+      "coupling_level": 0.9051,
+      "density": 0.9653,
+      "drive": 0.7375,
+      "filter_cutoff": 0.5167,
+      "filter_resonance": 0.5272,
+      "macro_character": 0.8227,
+      "macro_coupling": 0.8694,
+      "macro_movement": 0.6865,
+      "macro_space": 0.8727,
+      "output_level": 0.9362,
+      "reverb_mix": 0.6784,
+      "reverb_size": 0.7052
+    },
+    "Ohm": {
+      "amp_attack": 0.1872,
+      "amp_release": 0.6191,
+      "coupling_level": 0.8694,
+      "density": 0.9821,
+      "drive": 0.7896,
+      "filter_cutoff": 0.4474,
+      "filter_resonance": 0.5446,
+      "macro_character": 0.8216,
+      "macro_coupling": 0.8782,
+      "macro_movement": 0.6988,
+      "macro_space": 0.9047,
+      "output_level": 0.9686,
+      "reverb_mix": 0.6086,
+      "reverb_size": 0.749
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.8798,
+    "brightness": 0.4008,
+    "density": 0.9423,
+    "movement": 0.6858,
+    "space": 0.888,
+    "warmth": 0.9722
+  },
   "tags": [
     "entangled",
     "warm",
@@ -17,81 +93,5 @@
     "violent",
     "resonant"
   ],
-  "macroLabels": [
-    "COMMUNE",
-    "MEDDLING",
-    "RESONANCE",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.4008,
-    "warmth": 0.9722,
-    "movement": 0.6858,
-    "density": 0.9423,
-    "space": 0.888,
-    "aggression": 0.8798
-  },
-  "sonic_dna": {
-    "brightness": 0.4008,
-    "warmth": 0.9722,
-    "movement": 0.6858,
-    "density": 0.9423,
-    "space": 0.888,
-    "aggression": 0.8798
-  },
-  "parameters": {
-    "OHM": {
-      "macro_character": 0.8216,
-      "macro_movement": 0.6988,
-      "macro_coupling": 0.8782,
-      "macro_space": 0.9047,
-      "filter_cutoff": 0.4474,
-      "filter_resonance": 0.5446,
-      "amp_attack": 0.1872,
-      "amp_release": 0.6191,
-      "reverb_mix": 0.6086,
-      "reverb_size": 0.749,
-      "drive": 0.7896,
-      "density": 0.9821,
-      "output_level": 0.9686,
-      "coupling_level": 0.8694
-    },
-    "OCELOT": {
-      "macro_character": 0.8227,
-      "macro_movement": 0.6865,
-      "macro_coupling": 0.8694,
-      "macro_space": 0.8727,
-      "filter_cutoff": 0.5167,
-      "filter_resonance": 0.5272,
-      "amp_attack": 0.197,
-      "amp_release": 0.6082,
-      "reverb_mix": 0.6784,
-      "reverb_size": 0.7052,
-      "drive": 0.7375,
-      "density": 0.9653,
-      "output_level": 0.9362,
-      "coupling_level": 0.9051
-    }
-  },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OHM",
-    "target": "OCELOT",
-    "amount": 0.9617,
-    "pairs": [
-      {
-        "source": "OHM",
-        "target": "OCELOT",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.9617
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.6865,
-    "MOVEMENT": 0.6858,
-    "COUPLING": 0.9617,
-    "SPACE": 0.888
-  }
+  "version": "1.0.0"
 }

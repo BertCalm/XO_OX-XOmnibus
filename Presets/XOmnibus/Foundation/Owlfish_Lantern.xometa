@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Owlfish Lantern",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "The owlfish's photophore lit steady. A guiding warmth.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.55,
+    "density": 0.6,
+    "movement": 0.25,
+    "space": 0.35,
+    "warmth": 0.8
+  },
   "engines": [
     "Owlfish"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "The owlfish's photophore lit steady. A guiding warmth.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Owlfish Lantern",
+  "parameters": {
+    "Owlfish": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "owlfish",
     "tone",
@@ -16,31 +41,6 @@
     "anchor",
     "foundation"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Owlfish": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.8,
-    "movement": 0.25,
-    "density": 0.6,
-    "space": 0.35,
-    "aggression": 0.15
-  }
+  "version": "1.0.0"
 }

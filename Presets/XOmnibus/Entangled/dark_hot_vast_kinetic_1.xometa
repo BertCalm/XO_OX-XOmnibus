@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK HOT VAST KINETIC 1",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.0665,
-    "warmth": 0.9424,
-    "space": 0.9022,
-    "movement": 0.9298,
-    "aggression": 0.4812,
-    "density": 0.5667
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "High",
+  "couplingType": "BIND",
+  "description": "Ultra-diverse Entangled preset — dark hot vast kinetic. Designed for BIND coupling with XOddOscar.",
   "dna": {
-    "brightness": 0.0665,
-    "warmth": 0.9424,
-    "space": 0.9022,
-    "movement": 0.9298,
     "aggression": 0.4812,
-    "density": 0.5667
+    "brightness": 0.0665,
+    "density": 0.5667,
+    "movement": 0.9298,
+    "space": 0.9022,
+    "warmth": 0.9424
   },
   "engines": [
-    "XOddOscar"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark hot vast kinetic. Designed for BIND coupling with XOddOscar.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "bind",
-    "oddoscar"
+    "OddOscar"
   ],
   "macroLabels": [
     "BURN",
@@ -36,15 +23,28 @@
     "DRIFT",
     "EXPANSE"
   ],
-  "couplingType": "BIND",
-  "couplingIntensity": "High",
+  "mood": "Entangled",
+  "name": "DARK HOT VAST KINETIC 1",
   "parameters": {
-    "XOddOscar": {
-      "couplingLevel": 0.803,
-      "couplingBus": 3
+    "OddOscar": {
+      "couplingBus": 3,
+      "couplingLevel": 0.803
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4812,
+    "brightness": 0.0665,
+    "density": 0.5667,
+    "movement": 0.9298,
+    "space": 0.9022,
+    "warmth": 0.9424
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "bind",
+    "oddoscar"
+  ],
+  "version": "1.0.0"
 }

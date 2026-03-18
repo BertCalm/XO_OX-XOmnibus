@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_INTIMATE_GENTLE_FAM_VOL_34",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.554,
+    "source": "Organon",
+    "target": "Odyssey",
+    "type": "MODULATION_FLOW"
+  },
+  "dna": {
+    "aggression": 0.113,
+    "brightness": 0.883,
+    "density": 0.319,
+    "movement": 0.576,
+    "space": 0.13,
+    "warmth": 0.977
+  },
   "engines": [
-    "ODYSSEY",
-    "ORGANON"
+    "Odyssey",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.926,
+    "COUPLING": 0.207,
+    "MOVEMENT": 0.571,
+    "SPACE": 0.145
+  },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_INTIMATE_GENTLE_FAM_VOL_34",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.914,
-      "macro_movement": 0.565,
       "macro_coupling": 0.195,
+      "macro_movement": 0.565,
       "macro_space": 0.156
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.939,
-      "macro_movement": 0.578,
       "macro_coupling": 0.218,
+      "macro_movement": 0.578,
       "macro_space": 0.133
     }
   },
-  "coupling": {
-    "type": "MODULATION_FLOW",
-    "source": "ORGANON",
-    "target": "ODYSSEY",
-    "amount": 0.554
-  },
-  "dna": {
-    "brightness": 0.883,
-    "warmth": 0.977,
-    "movement": 0.576,
-    "density": 0.319,
-    "space": 0.13,
-    "aggression": 0.113
-  },
-  "macros": {
-    "CHARACTER": 0.926,
-    "MOVEMENT": 0.571,
-    "COUPLING": 0.207,
-    "SPACE": 0.145
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "intimate",
     "gentle",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

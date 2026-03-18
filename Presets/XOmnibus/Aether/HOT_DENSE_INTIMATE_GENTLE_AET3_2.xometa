@@ -1,50 +1,58 @@
 {
-  "name": "HOT_DENSE_INTIMATE_GENTLE_AET3_2",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OMBRE",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "OMBRE": {
-      "macro_character": 0.6109,
-      "macro_movement": 0.8729,
-      "macro_coupling": 0.7577,
-      "macro_space": 0.556
-    },
-    "ODDFELIX": {
-      "macro_character": 0.3944,
-      "macro_movement": 0.3854,
-      "macro_coupling": 0.6782,
-      "macro_space": 0.7744
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OMBRE",
-    "target": "ODDFELIX",
-    "amount": 0.8738
+    "amount": 0.8738,
+    "source": "Ombre",
+    "target": "OddfeliX",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.1082,
     "brightness": 0.567,
-    "warmth": 0.8999,
-    "movement": 0.5382,
     "density": 0.9718,
+    "movement": 0.5382,
     "space": 0.0702,
-    "aggression": 0.1082
+    "warmth": 0.8999
   },
+  "engines": [
+    "Ombre",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7334,
-    "MOVEMENT": 0.5382,
     "COUPLING": 0.8738,
+    "MOVEMENT": 0.5382,
     "SPACE": 0.0702
   },
+  "mood": "Aether",
+  "name": "HOT_DENSE_INTIMATE_GENTLE_AET3_2",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.3944,
+      "macro_coupling": 0.6782,
+      "macro_movement": 0.3854,
+      "macro_space": 0.7744
+    },
+    "Ombre": {
+      "macro_character": 0.6109,
+      "macro_coupling": 0.7577,
+      "macro_movement": 0.8729,
+      "macro_space": 0.556
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "warm",
     "dense",
     "intimate",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

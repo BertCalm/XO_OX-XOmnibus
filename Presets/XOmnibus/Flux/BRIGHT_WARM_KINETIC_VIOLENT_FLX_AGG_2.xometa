@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FLX_AGG_2",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.912,
+    "source": "Odyssey",
+    "target": "Optic",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.968,
+    "brightness": 0.962,
+    "density": 0.599,
+    "movement": 0.943,
+    "space": 0.346,
+    "warmth": 0.89
+  },
   "engines": [
-    "ODYSSEY",
-    "OPTIC"
+    "Odyssey",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.565,
+    "COUPLING": 0.756,
+    "MOVEMENT": 0.943,
+    "SPACE": 0.346
+  },
+  "mood": "Flux",
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FLX_AGG_2",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.736,
-      "macro_movement": 0.951,
       "macro_coupling": 0.756,
+      "macro_movement": 0.951,
       "macro_space": 0.387
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.393,
-      "macro_movement": 0.931,
       "macro_coupling": 0.791,
+      "macro_movement": 0.931,
       "macro_space": 0.316
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ODYSSEY",
-    "target": "OPTIC",
-    "amount": 0.912
-  },
-  "dna": {
-    "brightness": 0.962,
-    "warmth": 0.89,
-    "movement": 0.943,
-    "density": 0.599,
-    "space": 0.346,
-    "aggression": 0.968
-  },
-  "macros": {
-    "CHARACTER": 0.565,
-    "MOVEMENT": 0.943,
-    "COUPLING": 0.756,
-    "SPACE": 0.346
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "bright",
     "warm",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

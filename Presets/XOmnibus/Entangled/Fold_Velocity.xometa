@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Fold Velocity",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.87,
+        "engineA": "Origami",
+        "engineB": "Onset",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Origami fold velocity coupled into Onset percussion — paper crane at drumstick speed.",
+  "dna": {
+    "aggression": 0.91,
+    "brightness": 0.7,
+    "density": 0.69,
+    "movement": 0.9,
+    "space": 0.18,
+    "warmth": 0.26
+  },
   "engines": [
-    "ORIGAMI",
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Origami fold velocity coupled into Onset percussion \u2014 paper crane at drumstick speed.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "movement",
-    "origami",
-    "onset",
-    "fold"
+    "Origami",
+    "Onset"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,29 @@
   ],
   "macros": {
     "CHARACTER": 0.83,
-    "MOVEMENT": 0.9,
     "COUPLING": 0.87,
+    "MOVEMENT": 0.9,
     "SPACE": 0.18
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.7,
-    "warmth": 0.26,
-    "movement": 0.9,
-    "density": 0.69,
-    "space": 0.18,
-    "aggression": 0.91
-  },
-  "sonic_dna": {
-    "brightness": 0.7,
-    "warmth": 0.26,
-    "movement": 0.9,
-    "density": 0.69,
-    "space": 0.18,
-    "aggression": 0.91
-  },
+  "mood": "Entangled",
+  "name": "Fold Velocity",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORIGAMI",
-        "engineB": "ONSET",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.87
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.91,
+    "brightness": 0.7,
+    "density": 0.69,
+    "movement": 0.9,
+    "space": 0.18,
+    "warmth": 0.26
+  },
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "origami",
+    "onset",
+    "fold"
+  ],
+  "version": "1.0.0"
 }

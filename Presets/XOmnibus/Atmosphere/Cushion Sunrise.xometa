@@ -1,58 +1,58 @@
 {
-  "schema_version": 1,
-  "name": "Cushion Sunrise",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Ethereal warm pads wash with bob character and reverb depth.",
+  "dna": {
+    "aggression": 0.049,
+    "brightness": 0.477,
+    "density": 0.316,
+    "movement": 0.0,
+    "space": 0.319,
+    "warmth": 0.292
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ethereal warm pads wash with bob character and reverb depth.",
-  "tags": [
-    "warm",
-    "wide",
-    "soft"
-  ],
+  "legacy": {
+    "sourceCategory": "Warm Pads",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Warm Pads",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Cushion Sunrise",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 3.0,
-      "bob_oscA_shape": 0.45,
-      "bob_oscA_drift": 0.18,
-      "bob_oscB_wave": 1.0,
-      "bob_oscB_blend": 0.55,
-      "bob_oscB_detune": 11.0,
-      "bob_fltCutoff": 2400.0,
-      "bob_fltReso": 0.15,
-      "bob_fltChar": 0.35,
       "bob_ampAttack": 0.6,
       "bob_ampDecay": 1.2,
-      "bob_ampSustain": 0.88,
       "bob_ampRelease": 1.6,
-      "bob_bobMode": 0.3
+      "bob_ampSustain": 0.88,
+      "bob_bobMode": 0.3,
+      "bob_fltChar": 0.35,
+      "bob_fltCutoff": 2400.0,
+      "bob_fltReso": 0.15,
+      "bob_oscA_drift": 0.18,
+      "bob_oscA_shape": 0.45,
+      "bob_oscA_wave": 3.0,
+      "bob_oscB_blend": 0.55,
+      "bob_oscB_detune": 11.0,
+      "bob_oscB_wave": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.477,
-    "warmth": 0.292,
-    "movement": 0.0,
-    "density": 0.316,
-    "space": 0.319,
-    "aggression": 0.049
-  }
+  "tags": [
+    "warm",
+    "wide",
+    "soft"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

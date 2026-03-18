@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Bridge Brass",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "The cousins argue across generations. Toddler rawness tangled with teen control.",
+  "dna": {
+    "aggression": 0.19,
+    "brightness": 0.41,
+    "density": 0.63,
+    "movement": 0.47,
+    "space": 0.45,
+    "warmth": 0.54
+  },
   "engines": [
     "Ottoni"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "brass",
-    "sax",
-    "entangled",
-    "coupled",
-    "entangled"
   ],
   "macroLabels": [
     "EMBOUCHURE",
@@ -20,48 +21,47 @@
     "FOREIGN",
     "LAKE"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.41,
-    "warmth": 0.54,
-    "movement": 0.47,
-    "density": 0.63,
-    "space": 0.45,
-    "aggression": 0.19
-  },
+  "mood": "Entangled",
+  "name": "Bridge Brass",
   "parameters": {
     "Ottoni": {
+      "otto_chorusRate": 1.0,
+      "otto_damping": 0.991,
+      "otto_delayMix": 0.281,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.067,
+      "otto_driveAmount": 0.0,
+      "otto_foreignCold": 0.145,
+      "otto_foreignDrift": 0.0,
+      "otto_foreignStretch": 0.0,
+      "otto_macroEmbouchure": 0.555,
+      "otto_macroForeign": 0.0,
+      "otto_macroGrow": 0.387,
+      "otto_macroLake": 0.321,
+      "otto_reverbSize": 0.307,
+      "otto_sympatheticAmt": 0.379,
+      "otto_teenBore": 0.539,
+      "otto_teenEmbouchure": 0.663,
+      "otto_teenInst": 6,
+      "otto_teenLevel": 0.319,
+      "otto_teenVibratoDepth": 0.197,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 4,
       "otto_toddlerLevel": 0.433,
       "otto_toddlerPressure": 0.417,
-      "otto_toddlerInst": 4,
-      "otto_tweenLevel": 0.314,
       "otto_tweenEmbouchure": 0.649,
-      "otto_tweenValve": 0.665,
       "otto_tweenInst": 4,
-      "otto_teenLevel": 0.319,
-      "otto_teenEmbouchure": 0.663,
-      "otto_teenBore": 0.539,
-      "otto_teenInst": 6,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.197,
-      "otto_damping": 0.991,
-      "otto_sympatheticAmt": 0.379,
-      "otto_driftRate": 0.067,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.0,
-      "otto_foreignDrift": 0.0,
-      "otto_foreignCold": 0.145,
-      "otto_reverbSize": 0.307,
-      "otto_chorusRate": 1.0,
-      "otto_driveAmount": 0.0,
-      "otto_delayMix": 0.281,
-      "otto_macroEmbouchure": 0.555,
-      "otto_macroGrow": 0.387,
-      "otto_macroForeign": 0.0,
-      "otto_macroLake": 0.321
+      "otto_tweenLevel": 0.314,
+      "otto_tweenValve": 0.665
     }
   },
-  "coupling": null,
-  "description": "The cousins argue across generations. Toddler rawness tangled with teen control."
+  "schema_version": 1,
+  "tags": [
+    "brass",
+    "sax",
+    "entangled",
+    "coupled",
+    "entangled"
+  ],
+  "version": "1.0.0"
 }

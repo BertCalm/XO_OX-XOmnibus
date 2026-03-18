@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Lattice Signal",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.843,
+        "engineA": "Orbital",
+        "engineB": "OddfeliX",
+        "type": "RHYTHM_LOCK"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.67,
+    "density": 0.435,
+    "movement": 0.765,
+    "space": 1.0,
+    "warmth": 0.4
+  },
   "engines": [
-    "ODDFELIX",
-    "ORBITAL"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "oddfelix",
-    "orbital"
+    "OddfeliX",
+    "Orbital"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.508,
-    "MOVEMENT": 0.625,
     "COUPLING": 0.487,
+    "MOVEMENT": 0.625,
     "SPACE": 0.913
   },
-  "couplingIntensity": "Strong",
-  "dna": {
-    "brightness": 0.67,
-    "warmth": 0.4,
-    "movement": 0.765,
-    "density": 0.435,
-    "space": 1.0,
-    "aggression": 0.3
-  },
-  "sonic_dna": {
-    "brightness": 0.67,
-    "warmth": 0.4,
-    "movement": 0.765,
-    "density": 0.435,
-    "space": 1.0,
-    "aggression": 0.3
-  },
+  "mood": "Entangled",
+  "name": "Lattice Signal",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.648,
-      "macro_movement": 0.369,
       "macro_coupling": 0.772,
+      "macro_movement": 0.369,
       "macro_space": 0.219
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.734,
-      "macro_movement": 0.325,
       "macro_coupling": 0.561,
+      "macro_movement": 0.325,
       "macro_space": 0.681
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORBITAL",
-        "engineB": "ODDFELIX",
-        "type": "RHYTHM_LOCK",
-        "amount": 0.843
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.3,
+    "brightness": 0.67,
+    "density": 0.435,
+    "movement": 0.765,
+    "space": 1.0,
+    "warmth": 0.4
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "oddfelix",
+    "orbital"
+  ],
+  "version": "1.0.0"
 }

@@ -1,14 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "HOT KINETIC DENSE VIOLENT FAM 5",
-  "mood": "Family",
-  "engines": [
-    "ORCA",
-    "ODYSSEY"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, warm, kinetic, dense.",
+  "coupling": [
+    {
+      "amount": 0.341,
+      "destination": "ODYSSEY",
+      "source": "ORCA",
+      "type": "TIMBRE_BLEND"
+    }
+  ],
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — family, warm, kinetic, dense.",
+  "dna": {
+    "aggression": 0.924,
+    "brightness": 0.513,
+    "density": 0.93,
+    "movement": 0.935,
+    "space": 0.491,
+    "warmth": 0.917
+  },
+  "engines": [
+    "Orca",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "HOT KINETIC DENSE VIOLENT FAM 5",
+  "parameters": {
+    "Odyssey": {
+      "level": 0.677,
+      "pan": -0.118
+    },
+    "Orca": {
+      "level": 0.654,
+      "pan": 0.119
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "warm",
@@ -17,40 +51,6 @@
     "violent",
     "ultra-diverse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.513,
-    "warmth": 0.917,
-    "movement": 0.935,
-    "density": 0.93,
-    "space": 0.491,
-    "aggression": 0.924
-  },
-  "parameters": {
-    "ORCA": {
-      "level": 0.654,
-      "pan": 0.119
-    },
-    "ODYSSEY": {
-      "level": 0.677,
-      "pan": -0.118
-    }
-  },
-  "coupling": [
-    {
-      "source": "ORCA",
-      "destination": "ODYSSEY",
-      "type": "TIMBRE_BLEND",
-      "amount": 0.341
-    }
-  ],
-  "sequencer": null
+  "version": "1.0.0"
 }

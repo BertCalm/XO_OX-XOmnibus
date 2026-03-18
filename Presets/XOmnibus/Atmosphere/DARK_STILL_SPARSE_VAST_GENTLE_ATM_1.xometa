@@ -1,45 +1,52 @@
 {
-  "name": "DARK_STILL_SPARSE_VAST_GENTLE_ATM_1",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OPTIC",
-    "OPAL"
-  ],
-  "parameters": {
-    "OPTIC": {
-      "macro_character": 0.1904,
-      "macro_movement": 0.0499,
-      "macro_coupling": 0.02,
-      "macro_space": 0.9081
-    },
-    "OPAL": {
-      "macro_character": 0.1893,
-      "macro_movement": 0.0458,
-      "macro_coupling": 0.0257,
-      "macro_space": 0.9423
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OPTIC",
-    "target": "OPAL",
-    "amount": 0.558
+    "amount": 0.558,
+    "source": "Optic",
+    "target": "Opal",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.0853,
     "brightness": 0.0373,
-    "warmth": 0.3695,
-    "movement": 0.0283,
     "density": 0.0203,
+    "movement": 0.0283,
     "space": 0.9241,
-    "aggression": 0.0853
+    "warmth": 0.3695
   },
+  "engines": [
+    "Optic",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.1899,
-    "MOVEMENT": 0.0479,
     "COUPLING": 0.0229,
+    "MOVEMENT": 0.0479,
     "SPACE": 0.9252
   },
+  "mood": "Atmosphere",
+  "name": "DARK_STILL_SPARSE_VAST_GENTLE_ATM_1",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.1893,
+      "macro_coupling": 0.0257,
+      "macro_movement": 0.0458,
+      "macro_space": 0.9423
+    },
+    "Optic": {
+      "macro_character": 0.1904,
+      "macro_coupling": 0.02,
+      "macro_movement": 0.0499,
+      "macro_space": 0.9081
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -47,5 +54,6 @@
     "sparse",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,58 @@
 {
-  "name": "DARK_HOT_DENSE_VIOLENT_AET3_2",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7802,
+    "source": "Oceanic",
+    "target": "OddfeliX",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.9864,
+    "brightness": 0.07,
+    "density": 0.9088,
+    "movement": 0.6952,
+    "space": 0.517,
+    "warmth": 0.9077
+  },
   "engines": [
-    "OCEANIC",
-    "ODDFELIX"
+    "Oceanic",
+    "OddfeliX"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4889,
+    "COUPLING": 0.7802,
+    "MOVEMENT": 0.6952,
+    "SPACE": 0.517
+  },
+  "mood": "Aether",
+  "name": "DARK_HOT_DENSE_VIOLENT_AET3_2",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.5739,
-      "macro_movement": 0.5315,
       "macro_coupling": 0.2387,
+      "macro_movement": 0.5315,
       "macro_space": 0.4003
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.2983,
-      "macro_movement": 0.416,
       "macro_coupling": 0.8606,
+      "macro_movement": 0.416,
       "macro_space": 0.5635
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OCEANIC",
-    "target": "ODDFELIX",
-    "amount": 0.7802
-  },
-  "dna": {
-    "brightness": 0.07,
-    "warmth": 0.9077,
-    "movement": 0.6952,
-    "density": 0.9088,
-    "space": 0.517,
-    "aggression": 0.9864
-  },
-  "macros": {
-    "CHARACTER": 0.4889,
-    "MOVEMENT": 0.6952,
-    "COUPLING": 0.7802,
-    "SPACE": 0.517
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "warm",
     "dark",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

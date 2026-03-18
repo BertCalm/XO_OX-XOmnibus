@@ -1,49 +1,57 @@
 {
-  "name": "Searing Coil",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERBITE",
-    "OBESE"
-  ],
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.86,
-      "macro_movement": 0.6,
-      "macro_coupling": 0.76,
-      "macro_space": 0.41
-    },
-    "OBESE": {
-      "macro_character": 0.88,
-      "macro_movement": 0.53,
-      "macro_coupling": 0.76,
-      "macro_space": 0.56
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "DYNAMICS_SHARE",
-    "source": "OVERBITE",
-    "target": "OBESE",
-    "amount": 0.83
+    "amount": 0.83,
+    "source": "Overbite",
+    "target": "Obese",
+    "type": "DYNAMICS_SHARE"
   },
   "dna": {
+    "aggression": 0.72,
     "brightness": 0.45,
-    "warmth": 0.94,
-    "movement": 0.61,
     "density": 0.73,
+    "movement": 0.61,
     "space": 0.46,
-    "aggression": 0.72
+    "warmth": 0.94
   },
+  "engines": [
+    "Overbite",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.87,
-    "MOVEMENT": 0.56,
     "COUPLING": 0.76,
+    "MOVEMENT": 0.56,
     "SPACE": 0.48
   },
+  "mood": "Entangled",
+  "name": "Searing Coil",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.88,
+      "macro_coupling": 0.76,
+      "macro_movement": 0.53,
+      "macro_space": 0.56
+    },
+    "Overbite": {
+      "macro_character": 0.86,
+      "macro_coupling": 0.76,
+      "macro_movement": 0.6,
+      "macro_space": 0.41
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "aggressive"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "Scorched Orbit",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.57,
+    "source": "Odyssey",
+    "target": "Organon",
+    "type": "HARMONIC_LOCK"
+  },
+  "dna": {
+    "aggression": 0.26,
+    "brightness": 0.47,
+    "density": 0.46,
+    "movement": 0.56,
+    "space": 0.85,
+    "warmth": 0.92
+  },
   "engines": [
-    "ODYSSEY",
-    "ORGANON"
+    "Odyssey",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "COUPLING": 0.59,
+    "MOVEMENT": 0.56,
+    "SPACE": 0.94
+  },
+  "mood": "Entangled",
+  "name": "Scorched Orbit",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.75,
-      "macro_movement": 0.7,
       "macro_coupling": 0.66,
+      "macro_movement": 0.7,
       "macro_space": 0.95
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.64,
-      "macro_movement": 0.42,
       "macro_coupling": 0.53,
+      "macro_movement": 0.42,
       "macro_space": 0.94
     }
   },
-  "coupling": {
-    "type": "HARMONIC_LOCK",
-    "source": "ODYSSEY",
-    "target": "ORGANON",
-    "amount": 0.57
-  },
-  "dna": {
-    "brightness": 0.47,
-    "warmth": 0.92,
-    "movement": 0.56,
-    "density": 0.46,
-    "space": 0.85,
-    "aggression": 0.26
-  },
-  "macros": {
-    "CHARACTER": 0.7,
-    "MOVEMENT": 0.56,
-    "COUPLING": 0.59,
-    "SPACE": 0.94
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

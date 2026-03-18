@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_FAM_AGG_2",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.986,
+    "source": "OddOscar",
+    "target": "Ottoni",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.925,
+    "brightness": 0.975,
+    "density": 0.665,
+    "movement": 0.396,
+    "space": 0.036,
+    "warmth": 0.944
+  },
   "engines": [
-    "ODDOSCAR",
-    "OTTONI"
+    "OddOscar",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.502,
+    "COUPLING": 0.356,
+    "MOVEMENT": 0.503,
+    "SPACE": 0.833
+  },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_FAM_AGG_2",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.502,
-      "macro_movement": 0.503,
       "macro_coupling": 0.356,
+      "macro_movement": 0.503,
       "macro_space": 0.833
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.542,
-      "macro_movement": 0.521,
       "macro_coupling": 0.322,
+      "macro_movement": 0.521,
       "macro_space": 0.827
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ODDOSCAR",
-    "target": "OTTONI",
-    "amount": 0.986
-  },
-  "dna": {
-    "brightness": 0.975,
-    "warmth": 0.944,
-    "movement": 0.396,
-    "density": 0.665,
-    "space": 0.036,
-    "aggression": 0.925
-  },
-  "macros": {
-    "CHARACTER": 0.502,
-    "MOVEMENT": 0.503,
-    "COUPLING": 0.356,
-    "SPACE": 0.833
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "bright",
     "warm",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

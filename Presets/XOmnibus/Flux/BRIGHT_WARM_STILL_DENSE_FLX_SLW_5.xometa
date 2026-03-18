@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_WARM_STILL_DENSE_FLX_SLW_5",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OUROBOROS",
-    "ORACLE"
-  ],
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.901,
-      "macro_movement": 0.073,
-      "macro_coupling": 0.699,
-      "macro_space": 0.455
-    },
-    "ORACLE": {
-      "macro_character": 0.909,
-      "macro_movement": 0.104,
-      "macro_coupling": 0.692,
-      "macro_space": 0.414
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OUROBOROS",
-    "target": "ORACLE",
-    "amount": 0.821
+    "amount": 0.821,
+    "source": "Ouroboros",
+    "target": "Oracle",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.607,
     "brightness": 0.912,
-    "warmth": 0.965,
-    "movement": 0.089,
     "density": 0.984,
+    "movement": 0.089,
     "space": 0.425,
-    "aggression": 0.607
+    "warmth": 0.965
   },
+  "engines": [
+    "Ouroboros",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.795,
-    "MOVEMENT": 0.089,
     "COUPLING": 0.673,
+    "MOVEMENT": 0.089,
     "SPACE": 0.425
   },
+  "mood": "Flux",
+  "name": "BRIGHT_WARM_STILL_DENSE_FLX_SLW_5",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.909,
+      "macro_coupling": 0.692,
+      "macro_movement": 0.104,
+      "macro_space": 0.414
+    },
+    "Ouroboros": {
+      "macro_character": 0.901,
+      "macro_coupling": 0.699,
+      "macro_movement": 0.073,
+      "macro_space": 0.455
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +54,6 @@
     "warm",
     "dense",
     "suspended-chaos"
-  ]
+  ],
+  "version": "1.0"
 }

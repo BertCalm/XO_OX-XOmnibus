@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT WARM SPARSE BALANCED AET SPC 5",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "ORGANON",
-    "OMBRE"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.932,
-      "macro_movement": 0.521,
-      "macro_coupling": 0.613,
-      "macro_space": 0.649
-    },
-    "OMBRE": {
-      "macro_character": 0.909,
-      "macro_movement": 0.503,
-      "macro_coupling": 0.59,
-      "macro_space": 0.651
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ORGANON",
-    "target": "OMBRE",
-    "amount": 0.549
+    "amount": 0.549,
+    "source": "Organon",
+    "target": "Ombre",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.936,
     "brightness": 0.95,
-    "warmth": 0.914,
-    "movement": 0.521,
     "density": 0.058,
+    "movement": 0.521,
     "space": 0.649,
-    "aggression": 0.936
+    "warmth": 0.914
   },
+  "engines": [
+    "Organon",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.932,
-    "MOVEMENT": 0.521,
     "COUPLING": 0.613,
+    "MOVEMENT": 0.521,
     "SPACE": 0.649
   },
+  "mood": "Aether",
+  "name": "BRIGHT WARM SPARSE BALANCED AET SPC 5",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.909,
+      "macro_coupling": 0.59,
+      "macro_movement": 0.503,
+      "macro_space": 0.651
+    },
+    "Organon": {
+      "macro_character": 0.932,
+      "macro_coupling": 0.613,
+      "macro_movement": 0.521,
+      "macro_space": 0.649
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -48,5 +55,6 @@
     "aggressive",
     "bright",
     "warm"
-  ]
+  ],
+  "version": "1.0"
 }

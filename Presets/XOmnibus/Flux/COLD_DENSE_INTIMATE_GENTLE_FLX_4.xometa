@@ -1,45 +1,52 @@
 {
-  "name": "COLD_DENSE_INTIMATE_GENTLE_FLX_4",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORIGAMI",
-    "ORGANON"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.2836,
-      "macro_movement": 0.259,
-      "macro_coupling": 0.1366,
-      "macro_space": 0.0955
-    },
-    "ORGANON": {
-      "macro_character": 0.3849,
-      "macro_movement": 0.3856,
-      "macro_coupling": 0.072,
-      "macro_space": 0.0948
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ORIGAMI",
-    "target": "ORGANON",
-    "amount": 0.5708
+    "amount": 0.5708,
+    "source": "Origami",
+    "target": "Organon",
+    "type": "FILTER_MOD"
   },
   "dna": {
+    "aggression": 0.1365,
     "brightness": 0.4016,
-    "warmth": 0.1339,
-    "movement": 0.3417,
     "density": 0.9591,
+    "movement": 0.3417,
     "space": 0.065,
-    "aggression": 0.1365
+    "warmth": 0.1339
   },
+  "engines": [
+    "Origami",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.2836,
-    "MOVEMENT": 0.259,
     "COUPLING": 0.1366,
+    "MOVEMENT": 0.259,
     "SPACE": 0.0955
   },
+  "mood": "Flux",
+  "name": "COLD_DENSE_INTIMATE_GENTLE_FLX_4",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.3849,
+      "macro_coupling": 0.072,
+      "macro_movement": 0.3856,
+      "macro_space": 0.0948
+    },
+    "Origami": {
+      "macro_character": 0.2836,
+      "macro_coupling": 0.1366,
+      "macro_movement": 0.259,
+      "macro_space": 0.0955
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "high-density",
     "low-space",
     "low-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

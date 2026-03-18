@@ -1,45 +1,52 @@
 {
-  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 2",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OSTERIA",
-    "ORPHICA"
-  ],
-  "parameters": {
-    "OSTERIA": {
-      "macro_character": 0.525,
-      "macro_movement": 0.606,
-      "macro_coupling": 0.536,
-      "macro_space": 0.088
-    },
-    "ORPHICA": {
-      "macro_character": 0.569,
-      "macro_movement": 0.65,
-      "macro_coupling": 0.514,
-      "macro_space": 0.112
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OSTERIA",
-    "target": "ORPHICA",
-    "amount": 0.536
+    "amount": 0.536,
+    "source": "Osteria",
+    "target": "Orphica",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.088,
     "brightness": 0.145,
-    "warmth": 0.905,
-    "movement": 0.606,
     "density": 0.985,
+    "movement": 0.606,
     "space": 0.088,
-    "aggression": 0.088
+    "warmth": 0.905
   },
+  "engines": [
+    "Osteria",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.525,
-    "MOVEMENT": 0.606,
     "COUPLING": 0.536,
+    "MOVEMENT": 0.606,
     "SPACE": 0.088
   },
+  "mood": "Family",
+  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 2",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.569,
+      "macro_coupling": 0.514,
+      "macro_movement": 0.65,
+      "macro_space": 0.112
+    },
+    "Osteria": {
+      "macro_character": 0.525,
+      "macro_coupling": 0.536,
+      "macro_movement": 0.606,
+      "macro_space": 0.088
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
@@ -47,5 +54,6 @@
     "dense",
     "intimate",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

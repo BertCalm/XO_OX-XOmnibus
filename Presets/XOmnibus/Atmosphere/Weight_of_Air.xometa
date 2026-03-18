@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Weight of Air",
-  "mood": "Atmosphere",
-  "engines": [
-    "OBESE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Thick, heavy environment. Maximum density, warm compression. OBESE dense register.",
+  "dna": {
+    "aggression": 0.292,
+    "brightness": 0.407,
+    "density": 0.846,
+    "movement": 0.2,
+    "space": 0.475,
+    "warmth": 0.568
+  },
+  "engines": [
+    "Obese"
+  ],
+  "macroLabels": [
+    "MASS",
+    "DENSITY",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "COUPLING": 0.375,
+    "DENSITY": 0.131,
+    "MASS": 0.264,
+    "SPACE": 0.515
+  },
+  "mood": "Atmosphere",
+  "name": "Weight of Air",
+  "parameters": {
+    "Obese": {
+      "coupling": 0.375,
+      "density": 0.131,
+      "mass": 0.264,
+      "space": 0.515
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dense",
@@ -16,36 +47,5 @@
     "warm",
     "thick"
   ],
-  "macroLabels": [
-    "MASS",
-    "DENSITY",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.407,
-    "warmth": 0.568,
-    "movement": 0.2,
-    "density": 0.846,
-    "space": 0.475,
-    "aggression": 0.292
-  },
-  "parameters": {
-    "OBESE": {
-      "mass": 0.264,
-      "density": 0.131,
-      "coupling": 0.375,
-      "space": 0.515
-    }
-  },
-  "macros": {
-    "MASS": 0.264,
-    "DENSITY": 0.131,
-    "COUPLING": 0.375,
-    "SPACE": 0.515
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

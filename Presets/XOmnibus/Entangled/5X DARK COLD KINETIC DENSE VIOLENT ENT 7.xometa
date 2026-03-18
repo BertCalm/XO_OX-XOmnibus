@@ -1,14 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 7",
-  "mood": "Entangled",
-  "engines": [
-    "OPTIC",
-    "OBLONG"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.94,
+    "source": "Optic",
+    "target": "Oblong",
+    "type": "ENVELOPE_SLAVE"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.947,
+    "brightness": 0.46,
+    "density": 0.934,
+    "movement": 0.956,
+    "space": 0.068,
+    "warmth": 0.048
+  },
+  "engines": [
+    "Optic",
+    "Oblong"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 7",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.67,
+      "macro_coupling": 0.68,
+      "macro_movement": 0.91,
+      "macro_space": 0.1
+    },
+    "Optic": {
+      "macro_character": 0.69,
+      "macro_coupling": 0.63,
+      "macro_movement": 0.81,
+      "macro_space": 0.41
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +58,6 @@
     "dense",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OPTIC": {
-      "macro_character": 0.69,
-      "macro_movement": 0.81,
-      "macro_coupling": 0.63,
-      "macro_space": 0.41
-    },
-    "OBLONG": {
-      "macro_character": 0.67,
-      "macro_movement": 0.91,
-      "macro_coupling": 0.68,
-      "macro_space": 0.1
-    }
-  },
-  "coupling": {
-    "type": "ENVELOPE_SLAVE",
-    "source": "OPTIC",
-    "target": "OBLONG",
-    "amount": 0.94
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.46,
-    "warmth": 0.048,
-    "movement": 0.956,
-    "density": 0.934,
-    "space": 0.068,
-    "aggression": 0.947
-  }
+  "version": "1.0.0"
 }

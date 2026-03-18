@@ -1,21 +1,39 @@
 {
-  "schema_version": 1,
-  "name": "Dark Syllogism",
-  "mood": "Aether",
-  "sonic_dna": {
-    "brightness": 0.08,
-    "warmth": 0.6,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Logical form in darkness — argument without light",
+  "dna": {
     "aggression": 0.2,
-    "movement": 0.12,
+    "brightness": 0.08,
     "density": 0.55,
-    "space": 0.7
+    "movement": 0.12,
+    "space": 0.7,
+    "warmth": 0.6
   },
   "engines": [
-    "ORGANON"
+    "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Logical form in darkness \u2014 argument without light",
+  "macroLabels": [
+    "LOGIC",
+    "ARGUMENT",
+    "COUPLING",
+    "FORM"
+  ],
+  "mood": "Aether",
+  "name": "Dark Syllogism",
+  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2,
+    "brightness": 0.08,
+    "density": 0.55,
+    "movement": 0.12,
+    "space": 0.7,
+    "warmth": 0.6
+  },
   "tags": [
     "aether",
     "dark",
@@ -24,23 +42,5 @@
     "formal",
     "dark"
   ],
-  "macroLabels": [
-    "LOGIC",
-    "ARGUMENT",
-    "COUPLING",
-    "FORM"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.08,
-    "warmth": 0.6,
-    "movement": 0.12,
-    "density": 0.55,
-    "space": 0.7,
-    "aggression": 0.2
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

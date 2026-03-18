@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_ATM_5",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORIGAMI",
-    "ORGANON"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.9057,
-      "macro_movement": 0.5195,
-      "macro_coupling": 0.02,
-      "macro_space": 0.871
-    },
-    "ORGANON": {
-      "macro_character": 0.9072,
-      "macro_movement": 0.4968,
-      "macro_coupling": 0.0341,
-      "macro_space": 0.8837
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORIGAMI",
-    "target": "ORGANON",
-    "amount": 0.724
+    "amount": 0.724,
+    "source": "Origami",
+    "target": "Organon",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.0572,
     "brightness": 0.948,
-    "warmth": 0.9226,
-    "movement": 0.507,
     "density": 0.0333,
+    "movement": 0.507,
     "space": 0.897,
-    "aggression": 0.0572
+    "warmth": 0.9226
   },
+  "engines": [
+    "Origami",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.9064,
-    "MOVEMENT": 0.5081,
     "COUPLING": 0.027,
+    "MOVEMENT": 0.5081,
     "SPACE": 0.8774
   },
+  "mood": "Atmosphere",
+  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_ATM_5",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.9072,
+      "macro_coupling": 0.0341,
+      "macro_movement": 0.4968,
+      "macro_space": 0.8837
+    },
+    "Origami": {
+      "macro_character": 0.9057,
+      "macro_coupling": 0.02,
+      "macro_movement": 0.5195,
+      "macro_space": 0.871
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
@@ -47,5 +54,6 @@
     "sparse",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

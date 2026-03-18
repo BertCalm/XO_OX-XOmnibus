@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_COLD_KINETIC_VAST_FAM_VOL_70",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OSTERIA",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OSTERIA": {
-      "macro_character": 0.525,
-      "macro_movement": 0.91,
-      "macro_coupling": 0.361,
-      "macro_space": 0.874
-    },
-    "OBLONG": {
-      "macro_character": 0.53,
-      "macro_movement": 0.863,
-      "macro_coupling": 0.358,
-      "macro_space": 0.882
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_MIRROR",
-    "source": "OBLONG",
-    "target": "OSTERIA",
-    "amount": 0.855
+    "amount": 0.855,
+    "source": "Oblong",
+    "target": "Osteria",
+    "type": "ENVELOPE_MIRROR"
   },
   "dna": {
+    "aggression": 0.316,
     "brightness": 0.977,
-    "warmth": 0.064,
-    "movement": 0.882,
     "density": 0.434,
+    "movement": 0.882,
     "space": 0.872,
-    "aggression": 0.316
+    "warmth": 0.064
   },
+  "engines": [
+    "Osteria",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.528,
-    "MOVEMENT": 0.887,
     "COUPLING": 0.359,
+    "MOVEMENT": 0.887,
     "SPACE": 0.878
   },
+  "mood": "Family",
+  "name": "BRIGHT_COLD_KINETIC_VAST_FAM_VOL_70",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.53,
+      "macro_coupling": 0.358,
+      "macro_movement": 0.863,
+      "macro_space": 0.882
+    },
+    "Osteria": {
+      "macro_character": 0.525,
+      "macro_coupling": 0.361,
+      "macro_movement": 0.91,
+      "macro_space": 0.874
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "cold",
     "kinetic",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

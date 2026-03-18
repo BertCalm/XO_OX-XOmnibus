@@ -1,14 +1,76 @@
 {
-  "schema_version": 1,
-  "name": "Loop Into Dark",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.75,
+        "source": "Ombre",
+        "target": "Ouroboros",
+        "type": "CHAOS_INJECTION"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "The ouroboros biting its own tail marks the day-night junction — chaos at the tipping point.",
+  "dna": {
+    "aggression": 0.471,
+    "brightness": 0.45,
+    "density": 0.678,
+    "movement": 0.704,
+    "space": 0.646,
+    "warmth": 0.526
+  },
   "engines": [
     "Ombre",
     "Ouroboros"
   ],
-  "author": "XO_OX Deep Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "The ouroboros biting its own tail marks the day-night junction — chaos at the tipping point.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Loop Into Dark",
+  "parameters": {
+    "Ombre": {
+      "ombre_ampAttack": 0.1157,
+      "ombre_ampDecay": 0.769,
+      "ombre_ampRelease": 0.822,
+      "ombre_ampSustain": 0.501,
+      "ombre_blend": 0.527,
+      "ombre_crossfadeRate": 0.263,
+      "ombre_duskPosition": 0.687,
+      "ombre_filterCutoff": 2335.5,
+      "ombre_filterReso": 0.385,
+      "ombre_forgetRate": 0.513,
+      "ombre_level": 0.691,
+      "ombre_lfo1Depth": 0.581,
+      "ombre_lfo1Rate": 0.671,
+      "ombre_lfo2Depth": 0.468,
+      "ombre_lfo2Rate": 0.544,
+      "ombre_memoryDepth": 0.557,
+      "ombre_modAttack": 0.0528,
+      "ombre_modDecay": 0.3,
+      "ombre_modRelease": 0.804,
+      "ombre_modSustain": 0.661,
+      "ombre_narrativeA": 0.768,
+      "ombre_narrativeB": 0.307,
+      "ombre_reverbDamp": 0.581,
+      "ombre_reverbSize": 0.845,
+      "ombre_shadowAmount": 0.508,
+      "ombre_spaceMix": 0.742,
+      "ombre_toneA": 6617.8,
+      "ombre_toneB": 2377.4
+    },
+    "Ouroboros": {
+      "ouro_filterCutoff": 7569.6,
+      "ouro_level": 0.843
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -18,68 +80,6 @@
     "twilight",
     "liminal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "Ombre": {
-      "ombre_blend": 0.527,
-      "ombre_memoryDepth": 0.557,
-      "ombre_forgetRate": 0.513,
-      "ombre_shadowAmount": 0.508,
-      "ombre_duskPosition": 0.687,
-      "ombre_narrativeA": 0.768,
-      "ombre_narrativeB": 0.307,
-      "ombre_crossfadeRate": 0.263,
-      "ombre_toneA": 6617.8,
-      "ombre_toneB": 2377.4,
-      "ombre_filterCutoff": 2335.5,
-      "ombre_filterReso": 0.385,
-      "ombre_level": 0.691,
-      "ombre_ampAttack": 0.1157,
-      "ombre_ampDecay": 0.769,
-      "ombre_ampSustain": 0.501,
-      "ombre_ampRelease": 0.822,
-      "ombre_modAttack": 0.0528,
-      "ombre_modDecay": 0.3,
-      "ombre_modSustain": 0.661,
-      "ombre_modRelease": 0.804,
-      "ombre_lfo1Rate": 0.671,
-      "ombre_lfo1Depth": 0.581,
-      "ombre_lfo2Rate": 0.544,
-      "ombre_lfo2Depth": 0.468,
-      "ombre_spaceMix": 0.742,
-      "ombre_reverbSize": 0.845,
-      "ombre_reverbDamp": 0.581
-    },
-    "Ouroboros": {
-      "ouro_level": 0.843,
-      "ouro_filterCutoff": 7569.6
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "CHAOS_INJECTION",
-        "source": "Ombre",
-        "target": "Ouroboros",
-        "amount": 0.75
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.526,
-    "movement": 0.704,
-    "density": 0.678,
-    "space": 0.646,
-    "aggression": 0.471
-  }
+  "version": "1.0.0"
 }

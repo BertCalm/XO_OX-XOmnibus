@@ -1,47 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT HOT KINETIC DENSE PRI 3",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "High",
+    "sourceEngine": "Ole",
+    "targetEngine": null,
+    "type": "Spectral"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Prism preset: BRIGHT HOT KINETIC DENSE PRI 3.",
+  "dna": {
+    "aggression": 0.517,
+    "brightness": 0.943,
+    "density": 0.947,
+    "movement": 0.903,
+    "space": 0.451,
+    "warmth": 0.901
+  },
   "engines": [
     "Ole"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Prism preset: BRIGHT HOT KINETIC DENSE PRI 3.",
-  "tags": [
-    "x-high-brightness",
-    "x-high-warmth",
-    "x-high-density",
-    "x-high-movement"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "High",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "BRIGHT HOT KINETIC DENSE PRI 3",
   "parameters": {},
-  "coupling": {
-    "type": "Spectral",
-    "intensity": "High",
-    "sourceEngine": "Ole",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.943,
-    "warmth": 0.901,
-    "aggression": 0.517,
-    "density": 0.947,
-    "movement": 0.903,
-    "space": 0.451
-  }
+  "tags": [
+    "x-high-brightness",
+    "x-high-warmth",
+    "x-high-density",
+    "x-high-movement"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

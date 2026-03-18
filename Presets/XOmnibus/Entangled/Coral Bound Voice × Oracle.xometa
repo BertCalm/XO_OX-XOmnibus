@@ -1,14 +1,45 @@
 {
-  "schema_version": 1,
-  "name": "Coral Bound Voice \u00d7 Oracle",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.557,
+        "engineA": "Obbligato",
+        "engineB": "Oracle",
+        "type": "Env->LFO Rate"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "GENDY maqam lattice meets dual wind BOND — OBBLIGATO's voices are bound to ORACLE's spectral decree.",
+  "dna": {
+    "aggression": 0.431,
+    "brightness": 0.532,
+    "density": 1.0,
+    "movement": 0.6,
+    "space": 0.481,
+    "warmth": 0.377
+  },
   "engines": [
-    "OBBLIGATO",
-    "ORACLE"
+    "Obbligato",
+    "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "GENDY maqam lattice meets dual wind BOND \u2014 OBBLIGATO's voices are bound to ORACLE's spectral decree.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Coral Bound Voice × Oracle",
+  "parameters": {
+    "obbl_breathA": 0.659,
+    "obbl_breathB": 0.654,
+    "obbl_macroBond": 0.857
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -17,37 +48,6 @@
     "stochastic",
     "maqam"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "obbl_breathA": 0.659,
-    "obbl_breathB": 0.654,
-    "obbl_macroBond": 0.857
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBBLIGATO",
-        "engineB": "ORACLE",
-        "type": "Env->LFO Rate",
-        "amount": 0.557
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.532,
-    "warmth": 0.377,
-    "movement": 0.6,
-    "density": 1.0,
-    "space": 0.481,
-    "aggression": 0.431
-  }
+  "version": "1.0.0"
 }

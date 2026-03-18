@@ -1,17 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Endless Descent",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OUROBOROS — dark extreme brightness preset for Foundation.",
+  "dna": {
+    "aggression": 0.38,
+    "brightness": 0.09,
+    "density": 0.42,
+    "movement": 0.85,
+    "space": 0.33,
+    "warmth": 0.53
+  },
   "engines": [
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "OUROBOROS \u2014 dark extreme brightness preset for Foundation.",
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme-brightness"
+    "Ouroboros"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -19,44 +22,41 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "sonic_dna": {
-    "brightness": 0.09,
-    "warmth": 0.53,
-    "movement": 0.85,
-    "density": 0.42,
-    "space": 0.33,
-    "aggression": 0.38
-  },
-  "dna": {
-    "brightness": 0.09,
-    "warmth": 0.53,
-    "movement": 0.85,
-    "density": 0.42,
-    "space": 0.33,
-    "aggression": 0.38
-  },
+  "mood": "Foundation",
+  "name": "Endless Descent",
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
+      "uro_ampAttack": 589.0,
+      "uro_ampDecay": 640.9,
+      "uro_ampRelease": 393.1,
+      "uro_ampSustain": 0.93,
+      "uro_character": 0.8,
+      "uro_coupling": 0.92,
+      "uro_cycle": 0.98,
+      "uro_delayMix": 0.67,
       "uro_feedbackLoop": 0.89,
       "uro_filterCutoff": 0.84,
       "uro_filterReso": 0.54,
-      "uro_ampAttack": 589.0,
-      "uro_ampDecay": 640.9,
-      "uro_ampSustain": 0.93,
-      "uro_ampRelease": 393.1,
-      "uro_lfoRate": 0.27,
       "uro_lfoDepth": 0.49,
-      "uro_reverbMix": 0.39,
-      "uro_delayMix": 0.67,
-      "uro_character": 0.8,
+      "uro_lfoRate": 0.27,
       "uro_movement": 0.72,
-      "uro_space": 0.84,
-      "uro_coupling": 0.92,
-      "uro_cycle": 0.98
+      "uro_reverbMix": 0.39,
+      "uro_space": 0.84
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.38,
+    "brightness": 0.09,
+    "density": 0.42,
+    "movement": 0.85,
+    "space": 0.33,
+    "warmth": 0.53
+  },
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+  ],
+  "version": "1.0"
 }

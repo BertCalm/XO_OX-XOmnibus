@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Gnash Prophecy",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.61,
+    "pairs": [
+      {
+        "amount": 0.61,
+        "engineA": "Overbite",
+        "engineB": "Oracle",
+        "type": "Amp->Filter"
+      }
+    ],
+    "type": "Amp->Filter"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OVERBITE gnash decodes ORACLE vision. Bass prophecy. [Amp->Filter]",
+  "dna": {
+    "aggression": 0.48,
     "brightness": 0.485,
-    "warmth": 0.472,
-    "movement": 0.537,
     "density": 0.67,
+    "movement": 0.537,
     "space": 0.605,
-    "aggression": 0.48
+    "warmth": 0.472
   },
   "engines": [
-    "XOverbite",
-    "XOracle"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE gnash decodes ORACLE vision. Bass prophecy. [Amp->Filter]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "overbite",
-    "oracle",
-    "bite"
+    "Overbite",
+    "Oracle"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.485,
-    "warmth": 0.472,
-    "movement": 0.537,
-    "density": 0.67,
-    "space": 0.605,
-    "aggression": 0.48
-  },
+  "mood": "Entangled",
+  "name": "Gnash Prophecy",
   "parameters": {
-    "XOverbite": {
-      "poss_outputLevel": 0.75,
-      "poss_outputPan": 0.05,
-      "poss_couplingLevel": 0.76,
-      "poss_couplingBus": 0,
-      "poss_brightness": 0.427,
-      "poss_warmth": 0.584,
-      "poss_aggression": 0.568
-    },
-    "XOracle": {
+    "Oracle": {
+      "orc_aggression": 0.439,
+      "orc_brightness": 0.504,
+      "orc_couplingBus": 0,
+      "orc_couplingLevel": 0.73,
       "orc_outputLevel": 0.81,
       "orc_outputPan": -0.04,
-      "orc_couplingLevel": 0.73,
-      "orc_couplingBus": 0,
-      "orc_brightness": 0.504,
-      "orc_warmth": 0.443,
-      "orc_aggression": 0.439
+      "orc_warmth": 0.443
+    },
+    "Overbite": {
+      "poss_aggression": 0.568,
+      "poss_brightness": 0.427,
+      "poss_couplingBus": 0,
+      "poss_couplingLevel": 0.76,
+      "poss_outputLevel": 0.75,
+      "poss_outputPan": 0.05,
+      "poss_warmth": 0.584
     }
   },
-  "coupling": {
-    "type": "Amp->Filter",
-    "amount": 0.61,
-    "pairs": [
-      {
-        "engineA": "XOverbite",
-        "engineB": "XOracle",
-        "type": "Amp->Filter",
-        "amount": 0.61
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.48,
+    "brightness": 0.485,
+    "density": 0.67,
+    "movement": 0.537,
+    "space": 0.605,
+    "warmth": 0.472
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "overbite",
+    "oracle",
+    "bite"
+  ],
+  "version": "1.0.0"
 }

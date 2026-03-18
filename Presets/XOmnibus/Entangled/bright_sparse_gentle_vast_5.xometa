@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT SPARSE GENTLE VAST 5",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.9388,
-    "density": 0.0911,
-    "aggression": 0.0948,
-    "space": 0.9363,
-    "warmth": 0.4973,
-    "movement": 0.438
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Medium",
+  "couplingType": "TANGLE",
+  "description": "Ultra-diverse Entangled preset — bright sparse gentle vast. Designed for TANGLE coupling with XOptic.",
   "dna": {
+    "aggression": 0.0948,
     "brightness": 0.9388,
     "density": 0.0911,
-    "aggression": 0.0948,
+    "movement": 0.438,
     "space": 0.9363,
-    "warmth": 0.4973,
-    "movement": 0.438
+    "warmth": 0.4973
   },
   "engines": [
-    "XOptic"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 bright sparse gentle vast. Designed for TANGLE coupling with XOptic.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "tangle",
-    "optic"
+    "Optic"
   ],
   "macroLabels": [
     "GLEAM",
@@ -36,15 +23,28 @@
     "PRESS",
     "IMPACT"
   ],
-  "couplingType": "TANGLE",
-  "couplingIntensity": "Medium",
+  "mood": "Entangled",
+  "name": "BRIGHT SPARSE GENTLE VAST 5",
   "parameters": {
-    "XOptic": {
-      "couplingLevel": 0.874,
-      "couplingBus": 3
+    "Optic": {
+      "couplingBus": 3,
+      "couplingLevel": 0.874
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.0948,
+    "brightness": 0.9388,
+    "density": 0.0911,
+    "movement": 0.438,
+    "space": 0.9363,
+    "warmth": 0.4973
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "tangle",
+    "optic"
+  ],
+  "version": "1.0.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "WHISPER LINK",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORGANON",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.365,
-      "macro_movement": 0.662,
-      "macro_coupling": 0.317,
-      "macro_space": 0.301
-    },
-    "ORBITAL": {
-      "macro_character": 0.197,
-      "macro_movement": 0.254,
-      "macro_coupling": 0.196,
-      "macro_space": 0.529
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ORGANON",
-    "target": "ORBITAL",
-    "amount": 0.772
+    "amount": 0.772,
+    "source": "Organon",
+    "target": "Orbital",
+    "type": "TIMBRE_BLEND"
   },
   "dna": {
+    "aggression": 0.077,
     "brightness": 0.653,
-    "warmth": 0.096,
-    "movement": 0.479,
     "density": 0.91,
+    "movement": 0.479,
     "space": 0.697,
-    "aggression": 0.077
+    "warmth": 0.096
   },
+  "engines": [
+    "Organon",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.248,
-    "MOVEMENT": 0.273,
     "COUPLING": 0.487,
+    "MOVEMENT": 0.273,
     "SPACE": 0.68
   },
+  "mood": "Entangled",
+  "name": "WHISPER LINK",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.197,
+      "macro_coupling": 0.196,
+      "macro_movement": 0.254,
+      "macro_space": 0.529
+    },
+    "Organon": {
+      "macro_character": 0.365,
+      "macro_coupling": 0.317,
+      "macro_movement": 0.662,
+      "macro_space": 0.301
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "calm",
     "quiet",
     "entangled",
     "delicate"
-  ]
+  ],
+  "version": "1.0"
 }

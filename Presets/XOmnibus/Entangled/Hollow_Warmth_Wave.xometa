@@ -1,48 +1,56 @@
 {
-  "name": "Hollow Warmth Wave",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9,
+    "source": "Obbligato",
+    "target": "Organon",
+    "type": "AMP_MOD"
+  },
+  "dna": {
+    "aggression": 0.47,
+    "brightness": 0.06,
+    "density": 0.72,
+    "movement": 0.5,
+    "space": 0.19,
+    "warmth": 0.86
+  },
   "engines": [
-    "OBBLIGATO",
-    "ORGANON"
+    "Obbligato",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.67,
+    "COUPLING": 0.83,
+    "MOVEMENT": 0.5,
+    "SPACE": 0.19
+  },
+  "mood": "Entangled",
+  "name": "Hollow Warmth Wave",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.44,
-      "macro_movement": 0.58,
       "macro_coupling": 0.79,
+      "macro_movement": 0.58,
       "macro_space": 0.68
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.18,
-      "macro_movement": 0.11,
       "macro_coupling": 0.81,
+      "macro_movement": 0.11,
       "macro_space": 0.41
     }
   },
-  "coupling": {
-    "type": "AMP_MOD",
-    "source": "OBBLIGATO",
-    "target": "ORGANON",
-    "amount": 0.9
-  },
-  "dna": {
-    "brightness": 0.06,
-    "warmth": 0.86,
-    "movement": 0.5,
-    "density": 0.72,
-    "space": 0.19,
-    "aggression": 0.47
-  },
-  "macros": {
-    "CHARACTER": 0.67,
-    "MOVEMENT": 0.5,
-    "COUPLING": 0.83,
-    "SPACE": 0.19
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-  ]
+  ],
+  "version": "1.0"
 }

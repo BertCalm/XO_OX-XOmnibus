@@ -1,45 +1,52 @@
 {
-  "name": "DARK_HOT_KINETIC_INTIMATE_VIOLENT_FLX2_3",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORACLE",
-    "OPAL"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.5283,
-      "macro_movement": 0.9287,
-      "macro_coupling": 0.3483,
-      "macro_space": 0.1111
-    },
-    "OPAL": {
-      "macro_character": 0.5436,
-      "macro_movement": 0.927,
-      "macro_coupling": 0.3309,
-      "macro_space": 0.0987
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORACLE",
-    "target": "OPAL",
-    "amount": 0.482
+    "amount": 0.482,
+    "source": "Oracle",
+    "target": "Opal",
+    "type": "SPATIAL_COUPLE"
   },
   "dna": {
+    "aggression": 0.9232,
     "brightness": 0.1298,
-    "warmth": 0.9717,
-    "movement": 0.9212,
     "density": 0.3432,
+    "movement": 0.9212,
     "space": 0.0984,
-    "aggression": 0.9232
+    "warmth": 0.9717
   },
+  "engines": [
+    "Oracle",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5359,
-    "MOVEMENT": 0.9279,
     "COUPLING": 0.3396,
+    "MOVEMENT": 0.9279,
     "SPACE": 0.1049
   },
+  "mood": "Flux",
+  "name": "DARK_HOT_KINETIC_INTIMATE_VIOLENT_FLX2_3",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.5436,
+      "macro_coupling": 0.3309,
+      "macro_movement": 0.927,
+      "macro_space": 0.0987
+    },
+    "Oracle": {
+      "macro_character": 0.5283,
+      "macro_coupling": 0.3483,
+      "macro_movement": 0.9287,
+      "macro_space": 0.1111
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -47,5 +54,6 @@
     "kinetic",
     "intimate",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

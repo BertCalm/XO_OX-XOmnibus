@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_ENT_AGG_4",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.864,
+    "source": "Ohm",
+    "target": "Outwit",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.904,
+    "brightness": 0.918,
+    "density": 0.874,
+    "movement": 0.489,
+    "space": 0.091,
+    "warmth": 0.626
+  },
   "engines": [
-    "OHM",
-    "OUTWIT"
+    "Ohm",
+    "Outwit"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.532,
+    "COUPLING": 0.907,
+    "MOVEMENT": 0.489,
+    "SPACE": 0.091
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_ENT_AGG_4",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.695,
-      "macro_movement": 0.519,
       "macro_coupling": 0.907,
+      "macro_movement": 0.519,
       "macro_space": 0.085
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.369,
-      "macro_movement": 0.479,
       "macro_coupling": 0.902,
+      "macro_movement": 0.479,
       "macro_space": 0.137
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OHM",
-    "target": "OUTWIT",
-    "amount": 0.864
-  },
-  "dna": {
-    "brightness": 0.918,
-    "warmth": 0.626,
-    "movement": 0.489,
-    "density": 0.874,
-    "space": 0.091,
-    "aggression": 0.904
-  },
-  "macros": {
-    "CHARACTER": 0.532,
-    "MOVEMENT": 0.489,
-    "COUPLING": 0.907,
-    "SPACE": 0.091
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "bright",
     "dense",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

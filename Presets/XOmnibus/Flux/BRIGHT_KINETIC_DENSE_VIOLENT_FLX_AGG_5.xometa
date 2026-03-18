@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FLX_AGG_5",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.978,
+    "source": "Origami",
+    "target": "Overworld",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.955,
+    "brightness": 0.878,
+    "density": 0.941,
+    "movement": 0.936,
+    "space": 0.303,
+    "warmth": 0.308
+  },
   "engines": [
-    "ORIGAMI",
-    "OVERWORLD"
+    "Origami",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.376,
+    "COUPLING": 0.758,
+    "MOVEMENT": 0.936,
+    "SPACE": 0.303
+  },
+  "mood": "Flux",
+  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FLX_AGG_5",
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.374,
-      "macro_movement": 0.893,
       "macro_coupling": 0.758,
+      "macro_movement": 0.893,
       "macro_space": 0.277
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.377,
-      "macro_movement": 0.953,
       "macro_coupling": 0.735,
+      "macro_movement": 0.953,
       "macro_space": 0.266
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORIGAMI",
-    "target": "OVERWORLD",
-    "amount": 0.978
-  },
-  "dna": {
-    "brightness": 0.878,
-    "warmth": 0.308,
-    "movement": 0.936,
-    "density": 0.941,
-    "space": 0.303,
-    "aggression": 0.955
-  },
-  "macros": {
-    "CHARACTER": 0.376,
-    "MOVEMENT": 0.936,
-    "COUPLING": 0.758,
-    "SPACE": 0.303
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "kinetic",
     "bright",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

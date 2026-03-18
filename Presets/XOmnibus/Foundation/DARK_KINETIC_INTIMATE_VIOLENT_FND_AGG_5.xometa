@@ -1,50 +1,58 @@
 {
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FND_AGG_5",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ORIGAMI",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.78,
-      "macro_movement": 0.493,
-      "macro_coupling": 0.587,
-      "macro_space": 0.753
-    },
-    "ODDFELIX": {
-      "macro_character": 0.76,
-      "macro_movement": 0.475,
-      "macro_coupling": 0.612,
-      "macro_space": 0.71
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ORIGAMI",
-    "target": "ODDFELIX",
-    "amount": 0.88
+    "amount": 0.88,
+    "source": "Origami",
+    "target": "OddfeliX",
+    "type": "CHAOS_INJECT"
   },
   "dna": {
+    "aggression": 0.895,
     "brightness": 0.088,
-    "warmth": 0.468,
-    "movement": 0.94,
     "density": 0.509,
+    "movement": 0.94,
     "space": 0.123,
-    "aggression": 0.895
+    "warmth": 0.468
   },
+  "engines": [
+    "Origami",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.78,
-    "MOVEMENT": 0.493,
     "COUPLING": 0.587,
+    "MOVEMENT": 0.493,
     "SPACE": 0.753
   },
+  "mood": "Foundation",
+  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FND_AGG_5",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.76,
+      "macro_coupling": 0.612,
+      "macro_movement": 0.475,
+      "macro_space": 0.71
+    },
+    "Origami": {
+      "macro_character": 0.78,
+      "macro_coupling": 0.587,
+      "macro_movement": 0.493,
+      "macro_space": 0.753
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "kinetic",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

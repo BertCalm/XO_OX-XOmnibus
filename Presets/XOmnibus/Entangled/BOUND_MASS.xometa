@@ -1,45 +1,52 @@
 {
-  "name": "BOUND MASS",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7443,
+    "source": "Overworld",
+    "target": "Owlfish",
+    "type": "ENVELOPE_LINK"
+  },
+  "dna": {
+    "aggression": 0.7592,
+    "brightness": 0.1028,
+    "density": 0.9196,
+    "movement": 0.1735,
+    "space": 0.1529,
+    "warmth": 0.256
+  },
   "engines": [
-    "OVERWORLD",
-    "OWLFISH"
+    "Overworld",
+    "Owlfish"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0754,
+    "COUPLING": 0.8884,
+    "MOVEMENT": 0.9513,
+    "SPACE": 0.464
+  },
+  "mood": "Entangled",
+  "name": "BOUND MASS",
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.0764,
-      "macro_movement": 0.6332,
       "macro_coupling": 0.8122,
+      "macro_movement": 0.6332,
       "macro_space": 0.1939
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.7762,
-      "macro_movement": 0.3511,
       "macro_coupling": 0.9833,
+      "macro_movement": 0.3511,
       "macro_space": 0.6454
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OVERWORLD",
-    "target": "OWLFISH",
-    "amount": 0.7443
-  },
-  "dna": {
-    "brightness": 0.1028,
-    "warmth": 0.256,
-    "movement": 0.1735,
-    "density": 0.9196,
-    "space": 0.1529,
-    "aggression": 0.7592
-  },
-  "macros": {
-    "CHARACTER": 0.0754,
-    "MOVEMENT": 0.9513,
-    "COUPLING": 0.8884,
-    "SPACE": 0.464
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -48,5 +55,6 @@
     "tectonic",
     "bound",
     "crushing"
-  ]
+  ],
+  "version": "1.0"
 }

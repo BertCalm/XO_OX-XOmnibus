@@ -1,25 +1,33 @@
 {
-  "name": "Lavender Gate",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "The world before it fully wakes. Gilded texture, low movement, enormous space.",
   "engines": [
-    "OSPREY"
+    "Osprey"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.699,
-    "MOVEMENT": 0.224,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.224,
     "SPACE": 0.745
   },
-  "sonic_dna": {
-    "brightness": 0.777,
-    "warmth": 0.621,
-    "movement": 0.224,
-    "density": 0.441,
-    "space": 0.745,
-    "aggression": 0.034
-  },
+  "mood": "Atmosphere",
+  "name": "Lavender Gate",
   "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.034,
+    "brightness": 0.777,
+    "density": 0.441,
+    "movement": 0.224,
+    "space": 0.745,
+    "warmth": 0.621
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +35,5 @@
     "dawn",
     "gentle"
   ],
-  "description": "The world before it fully wakes. Gilded texture, low movement, enormous space."
+  "version": "1.0"
 }

@@ -1,54 +1,54 @@
 {
-  "schema_version": 1,
-  "name": "Amber Nebula",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Warm grain clouds drifting through stellar distance. Unhurried and vast.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.52,
+    "density": 0.42,
+    "movement": 0.65,
+    "space": 0.94,
+    "warmth": 0.88
+  },
   "engines": [
     "Opal"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Warm grain clouds drifting through stellar distance. Unhurried and vast.",
-  "tags": [
-    "warm-deep-space",
-    "extreme",
-    "aether",
-    "granular"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Aether",
+  "name": "Amber Nebula",
   "parameters": {
     "Opal": {
-      "opal_grainSize": 0.55,
+      "opal_attack": 400.0,
       "opal_density": 0.62,
-      "opal_posScatter": 0.88,
-      "opal_pitchScatter": 0.3,
+      "opal_dryWet": 0.95,
       "opal_filterCutoff": 1800.0,
       "opal_filterReso": 0.12,
-      "opal_attack": 400.0,
-      "opal_release": 800.0,
-      "opal_dryWet": 0.95
+      "opal_grainSize": 0.55,
+      "opal_pitchScatter": 0.3,
+      "opal_posScatter": 0.88,
+      "opal_release": 800.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.52,
-    "warmth": 0.88,
-    "movement": 0.65,
-    "density": 0.42,
-    "space": 0.94,
-    "aggression": 0.08
-  }
+  "tags": [
+    "warm-deep-space",
+    "extreme",
+    "aether",
+    "granular"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -70,6 +70,36 @@ public:
             return { juce::Colour(0xFF00FF41), juce::Colour(0xFF000A00), "particle_scatter", "OPTIC" };
         if (id == "OBLIQUE"  || id == "XOBLIQUE")
             return { juce::Colour(0xFFBF40FF), juce::Colour(0xFF0A0014), "prism_fractal", "OBLIQUE" };
+        if (id == "ORBITAL"   || id == "XORBITAL")
+            return { juce::Colour(0xFFFF6B6B), juce::Colour(0xFF140404), "lissajous", "ORBITAL" };
+        if (id == "OCELOT"   || id == "XOCELOT")
+            return { juce::Colour(0xFFC5832B), juce::Colour(0xFF0C0800), "freq_bands", "OCELOT" };
+        if (id == "OSPREY"   || id == "XOSPREY")
+            return { juce::Colour(0xFF1B4F8A), juce::Colour(0xFF000810), "wave_morph", "OSPREY" };
+        if (id == "OSTERIA"  || id == "XOSTERIA")
+            return { juce::Colour(0xFF722F37), juce::Colour(0xFF0A0404), "tape_streaks", "OSTERIA" };
+        if (id == "OWLFISH"  || id == "XOWLFISH")
+            return { juce::Colour(0xFFB8860B), juce::Colour(0xFF0C0A02), "freq_bands", "OWLFISH" };
+        if (id == "OHM"      || id == "XOHM")
+            return { juce::Colour(0xFF87AE73), juce::Colour(0xFF060A04), "wave_morph", "OHM" };
+        if (id == "ORPHICA"  || id == "XORPHICA")
+            return { juce::Colour(0xFF7FDBCA), juce::Colour(0xFF000C0A), "particle_scatter", "ORPHICA" };
+        if (id == "OBBLIGATO" || id == "XOBBLIGATO")
+            return { juce::Colour(0xFFFF8A7A), juce::Colour(0xFF100604), "angular_cuts", "OBBLIGATO" };
+        if (id == "OTTONI"   || id == "XOTTONI")
+            return { juce::Colour(0xFF5B8A72), juce::Colour(0xFF040A06), "dense_blocks", "OTTONI" };
+        if (id == "OLE"      || id == "XOLE")
+            return { juce::Colour(0xFFC9377A), juce::Colour(0xFF0C0208), "transient_spikes", "OLE" };
+        if (id == "OVERLAP"  || id == "XOVERLAP")
+            return { juce::Colour(0xFF00FFB4), juce::Colour(0xFF000C08), "wave_morph", "OVERLAP" };
+        if (id == "OUTWIT"   || id == "XOUTWIT")
+            return { juce::Colour(0xFFCC6600), juce::Colour(0xFF0C0800), "angular_cuts", "OUTWIT" };
+        if (id == "OMBRE"    || id == "XOMBRE")
+            return { juce::Colour(0xFF7B6B8A), juce::Colour(0xFF080610), "lissajous", "OMBRE" };
+        if (id == "ORCA"     || id == "XORCA")
+            return { juce::Colour(0xFF1B2838), juce::Colour(0xFF040608), "dense_blocks", "ORCA" };
+        if (id == "OCTOPUS"  || id == "XOCTOPUS")
+            return { juce::Colour(0xFFE040FB), juce::Colour(0xFF0C0010), "particle_scatter", "OCTOPUS" };
 
         // Default: XO Gold
         return { juce::Colour(0xFFE9C46A), juce::Colour(0xFF0C0A08), "freq_bands", "XO_OX" };

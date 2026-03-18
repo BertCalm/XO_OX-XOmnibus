@@ -1,25 +1,33 @@
 {
-  "name": "Ember Still",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "The warmest possible pad. Density without aggression. Complete stillness.",
   "engines": [
-    "OBLONG"
+    "Oblong"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.696,
-    "MOVEMENT": 0.04,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.04,
     "SPACE": 0.626
   },
-  "sonic_dna": {
-    "brightness": 0.488,
-    "warmth": 0.903,
-    "movement": 0.04,
-    "density": 0.79,
-    "space": 0.626,
-    "aggression": 0.032
-  },
+  "mood": "Atmosphere",
+  "name": "Ember Still",
   "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.032,
+    "brightness": 0.488,
+    "density": 0.79,
+    "movement": 0.04,
+    "space": 0.626,
+    "warmth": 0.903
+  },
   "tags": [
     "atmosphere",
     "drone",
@@ -27,5 +35,5 @@
     "warm",
     "thick"
   ],
-  "description": "The warmest possible pad. Density without aggression. Complete stillness."
+  "version": "1.0"
 }

@@ -1,14 +1,67 @@
 {
-  "schema_version": 1,
-  "name": "Tessellate Bounce",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.473,
+        "engineA": "Origami",
+        "engineB": "Oblique",
+        "type": "spectral_cross"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "created": "2026-03-16",
+  "description": "Origami × Oblique coupling (pitch follow). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.508,
+    "brightness": 0.719,
+    "density": 0.541,
+    "movement": 0.7,
+    "space": 0.538,
+    "warmth": 0.511
+  },
   "engines": [
     "Origami",
     "Oblique"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Origami \u00d7 Oblique coupling (pitch follow). Stub preset \u2014 sound-design pass pending.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Tessellate Bounce",
+  "parameters": {
+    "Oblique": {
+      "oblq_couplingIn": 0.691,
+      "oblq_couplingOut": 0.773,
+      "oblq_macro1": 0.416,
+      "oblq_macro2": 0.595,
+      "oblq_macro3": 0.648,
+      "oblq_macro4": 0.383
+    },
+    "Origami": {
+      "origami_couplingOut": 0.611,
+      "origami_crease": 0.82,
+      "origami_foldPoint": 0.715,
+      "origami_macro1": 0.373,
+      "origami_macro2": 0.468,
+      "origami_macro3": 0.314,
+      "origami_macro4": 0.544,
+      "origami_pleatRate": 0.645,
+      "origami_tessellate": 0.542,
+      "origami_valleyDepth": 0.386
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "origami",
     "oblique",
@@ -16,59 +69,6 @@
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Strong",
   "tempo": 125,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Origami": {
-      "origami_foldPoint": 0.715,
-      "origami_crease": 0.82,
-      "origami_valleyDepth": 0.386,
-      "origami_pleatRate": 0.645,
-      "origami_tessellate": 0.542,
-      "origami_macro1": 0.373,
-      "origami_macro2": 0.468,
-      "origami_macro3": 0.314,
-      "origami_macro4": 0.544,
-      "origami_couplingOut": 0.611
-    },
-    "Oblique": {
-      "oblq_macro1": 0.416,
-      "oblq_macro2": 0.595,
-      "oblq_macro3": 0.648,
-      "oblq_macro4": 0.383,
-      "oblq_couplingOut": 0.773,
-      "oblq_couplingIn": 0.691
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Oblique",
-        "type": "spectral_cross",
-        "amount": 0.473
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.719,
-    "warmth": 0.511,
-    "movement": 0.7,
-    "density": 0.541,
-    "space": 0.538,
-    "aggression": 0.508
-  }
+  "version": "1.0.0"
 }

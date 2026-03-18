@@ -1,48 +1,56 @@
 {
-  "name": "ETHER FIELD",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.797,
+    "source": "Ohm",
+    "target": "Orbital",
+    "type": "VELOCITY_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.623,
+    "brightness": 0.97,
+    "density": 0.044,
+    "movement": 0.782,
+    "space": 0.265,
+    "warmth": 0.075
+  },
   "engines": [
-    "OHM",
-    "ORBITAL"
+    "Ohm",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.397,
+    "COUPLING": 0.329,
+    "MOVEMENT": 0.08,
+    "SPACE": 0.674
+  },
+  "mood": "Entangled",
+  "name": "ETHER FIELD",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.965,
-      "macro_movement": 0.332,
       "macro_coupling": 0.1,
+      "macro_movement": 0.332,
       "macro_space": 0.845
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.1,
-      "macro_movement": 0.91,
       "macro_coupling": 0.015,
+      "macro_movement": 0.91,
       "macro_space": 0.144
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OHM",
-    "target": "ORBITAL",
-    "amount": 0.797
-  },
-  "dna": {
-    "brightness": 0.97,
-    "warmth": 0.075,
-    "movement": 0.782,
-    "density": 0.044,
-    "space": 0.265,
-    "aggression": 0.623
-  },
-  "macros": {
-    "CHARACTER": 0.397,
-    "MOVEMENT": 0.08,
-    "COUPLING": 0.329,
-    "SPACE": 0.674
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "drift",
     "filament"
-  ]
+  ],
+  "version": "1.0"
 }

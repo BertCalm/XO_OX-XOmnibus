@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "DARK_HOT_KINETIC_VAST_VIOLENT_PRS_2",
-  "mood": "Prism",
-  "engines": [
-    "OCELOT",
-    "OTTONI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.488,
+    "source": "Ocelot",
+    "target": "Ottoni",
+    "type": "HARMONIC_FOLD"
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_KINETIC_VAST_VIOLENT. Variant 2.",
+  "dna": {
+    "aggression": 0.894,
+    "brightness": 0.056,
+    "density": 0.446,
+    "movement": 0.964,
+    "space": 0.982,
+    "warmth": 0.904
+  },
+  "engines": [
+    "Ocelot",
+    "Ottoni"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.127,
+    "COUPLING": 0.457,
+    "MOVEMENT": 0.956,
+    "SPACE": 0.991
+  },
+  "mood": "Prism",
+  "name": "DARK_HOT_KINETIC_VAST_VIOLENT_PRS_2",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.12,
+      "macro_coupling": 0.419,
+      "macro_movement": 1.0,
+      "macro_space": 0.982
+    },
+    "Ottoni": {
+      "macro_character": 0.133,
+      "macro_coupling": 0.494,
+      "macro_movement": 0.912,
+      "macro_space": 1.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "hot",
     "extreme",
@@ -19,53 +66,6 @@
     "violent",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OCELOT": {
-      "macro_character": 0.12,
-      "macro_movement": 1.0,
-      "macro_coupling": 0.419,
-      "macro_space": 0.982
-    },
-    "OTTONI": {
-      "macro_character": 0.133,
-      "macro_movement": 0.912,
-      "macro_coupling": 0.494,
-      "macro_space": 1.0
-    }
-  },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OCELOT",
-    "target": "OTTONI",
-    "amount": 0.488
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.056,
-    "warmth": 0.904,
-    "movement": 0.964,
-    "density": 0.446,
-    "space": 0.982,
-    "aggression": 0.894
-  },
-  "macros": {
-    "CHARACTER": 0.127,
-    "MOVEMENT": 0.956,
-    "COUPLING": 0.457,
-    "SPACE": 0.991
-  }
+  "version": "1.0.0"
 }

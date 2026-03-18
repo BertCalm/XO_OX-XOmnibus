@@ -1,27 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Dense Iron Slow",
-  "mood": "Foundation",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Tar-slow attack into a saturated, immovable bed of sound.",
+  "dna": {
+    "aggression": 0.437,
     "brightness": 0.481,
-    "warmth": 0.947,
-    "movement": 0.434,
     "density": 0.916,
+    "movement": 0.434,
     "space": 0.259,
-    "aggression": 0.437
+    "warmth": 0.947
   },
   "engines": [
-    "OVERDUB"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Tar-slow attack into a saturated, immovable bed of sound.",
-  "tags": [
-    "foundation",
-    "warm",
-    "dense",
-    "analog",
-    "thick"
+    "Overdub"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -29,17 +22,24 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.481,
-    "warmth": 0.947,
-    "movement": 0.434,
-    "density": 0.916,
-    "space": 0.259,
-    "aggression": 0.437
-  },
+  "mood": "Foundation",
+  "name": "Dense Iron Slow",
   "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.437,
+    "brightness": 0.481,
+    "density": 0.916,
+    "movement": 0.434,
+    "space": 0.259,
+    "warmth": 0.947
+  },
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick"
+  ],
+  "version": "1.0.0"
 }

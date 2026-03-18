@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FLX_AGG_1",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORIGAMI",
-    "ORGANON"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.519,
-      "macro_movement": 0.879,
-      "macro_coupling": 0.842,
-      "macro_space": 0.598
-    },
-    "ORGANON": {
-      "macro_character": 0.375,
-      "macro_movement": 0.912,
-      "macro_coupling": 0.803,
-      "macro_space": 0.573
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORIGAMI",
-    "target": "ORGANON",
-    "amount": 0.93
+    "amount": 0.93,
+    "source": "Origami",
+    "target": "Organon",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.965,
     "brightness": 0.931,
-    "warmth": 0.336,
-    "movement": 0.876,
     "density": 0.883,
+    "movement": 0.876,
     "space": 0.551,
-    "aggression": 0.965
+    "warmth": 0.336
   },
+  "engines": [
+    "Origami",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.447,
-    "MOVEMENT": 0.876,
     "COUPLING": 0.842,
+    "MOVEMENT": 0.876,
     "SPACE": 0.551
   },
+  "mood": "Flux",
+  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FLX_AGG_1",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.375,
+      "macro_coupling": 0.803,
+      "macro_movement": 0.912,
+      "macro_space": 0.573
+    },
+    "Origami": {
+      "macro_character": 0.519,
+      "macro_coupling": 0.842,
+      "macro_movement": 0.879,
+      "macro_space": 0.598
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "kinetic",
     "bright",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

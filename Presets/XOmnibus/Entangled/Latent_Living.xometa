@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Latent Living",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.524,
+        "engineA": "Obscura",
+        "engineB": "Organon",
+        "type": "Audio->FM"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Silver plate metabolism — photochemical reaction feeds enzymatic life.",
+  "dna": {
+    "aggression": 0.326,
+    "brightness": 0.451,
+    "density": 0.695,
+    "movement": 0.463,
+    "space": 0.619,
+    "warmth": 0.593
+  },
   "engines": [
     "Obscura",
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Silver plate metabolism \u2014 photochemical reaction feeds enzymatic life.",
-  "tags": [
-    "obscura",
-    "organon",
-    "daguerreotype",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Latent Living",
   "parameters": {
     "Obscura": {
-      "obscura_brightness": 0.424,
-      "obscura_warmth": 0.545,
-      "obscura_movement": 0.419,
-      "obscura_density": 0.567,
-      "obscura_space": 0.683,
       "obscura_aggression": 0.186,
-      "obscura_level": 0.796
+      "obscura_brightness": 0.424,
+      "obscura_density": 0.567,
+      "obscura_level": 0.796,
+      "obscura_movement": 0.419,
+      "obscura_space": 0.683,
+      "obscura_warmth": 0.545
     },
     "Organon": {
-      "organon_brightness": 0.596,
-      "organon_warmth": 0.593,
-      "organon_movement": 0.593,
-      "organon_density": 0.7,
-      "organon_space": 0.666,
       "organon_aggression": 0.439,
-      "organon_level": 0.727
+      "organon_brightness": 0.596,
+      "organon_density": 0.7,
+      "organon_level": 0.727,
+      "organon_movement": 0.593,
+      "organon_space": 0.666,
+      "organon_warmth": 0.593
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Organon",
-        "type": "Audio->FM",
-        "amount": 0.524
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.451,
-    "warmth": 0.593,
-    "movement": 0.463,
-    "density": 0.695,
-    "space": 0.619,
-    "aggression": 0.326
-  }
+  "tags": [
+    "obscura",
+    "organon",
+    "daguerreotype",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

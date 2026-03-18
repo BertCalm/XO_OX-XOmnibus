@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "HOT INTIMATE KINETIC DENSE 2",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "warmth": 0.9318,
-    "space": 0.0606,
-    "movement": 0.9254,
-    "density": 0.9201,
-    "brightness": 0.5586,
-    "aggression": 0.4229
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Medium",
+  "couplingType": "DRIFT",
+  "description": "Ultra-diverse Entangled preset — hot intimate kinetic dense. Designed for DRIFT coupling with XOle.",
   "dna": {
-    "warmth": 0.9318,
-    "space": 0.0606,
-    "movement": 0.9254,
-    "density": 0.9201,
+    "aggression": 0.4229,
     "brightness": 0.5586,
-    "aggression": 0.4229
+    "density": 0.9201,
+    "movement": 0.9254,
+    "space": 0.0606,
+    "warmth": 0.9318
   },
   "engines": [
-    "XOle"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 hot intimate kinetic dense. Designed for DRIFT coupling with XOle.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "drift",
-    "ole"
+    "Ole"
   ],
   "macroLabels": [
     "DEPTH",
@@ -36,15 +23,28 @@
     "SURGE",
     "LAYER"
   ],
-  "couplingType": "DRIFT",
-  "couplingIntensity": "Medium",
+  "mood": "Entangled",
+  "name": "HOT INTIMATE KINETIC DENSE 2",
   "parameters": {
-    "XOle": {
-      "couplingLevel": 0.669,
-      "couplingBus": 3
+    "Ole": {
+      "couplingBus": 3,
+      "couplingLevel": 0.669
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4229,
+    "brightness": 0.5586,
+    "density": 0.9201,
+    "movement": 0.9254,
+    "space": 0.0606,
+    "warmth": 0.9318
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "drift",
+    "ole"
+  ],
+  "version": "1.0.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "DARK COLD FURY FLU 06",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.781,
+    "source": "Obbligato",
+    "target": "Origami",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.893,
+    "brightness": 0.036,
+    "density": 0.421,
+    "movement": 0.664,
+    "space": 0.463,
+    "warmth": 0.104
+  },
   "engines": [
-    "OBBLIGATO",
-    "ORIGAMI"
+    "Obbligato",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.07,
+    "COUPLING": 0.873,
+    "MOVEMENT": 0.664,
+    "SPACE": 0.463
+  },
+  "mood": "Flux",
+  "name": "DARK COLD FURY FLU 06",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.07,
-      "macro_movement": 0.664,
       "macro_coupling": 0.873,
+      "macro_movement": 0.664,
       "macro_space": 0.463
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.068,
-      "macro_movement": 0.543,
       "macro_coupling": 0.668,
+      "macro_movement": 0.543,
       "macro_space": 0.354
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBBLIGATO",
-    "target": "ORIGAMI",
-    "amount": 0.781
-  },
-  "dna": {
-    "brightness": 0.036,
-    "warmth": 0.104,
-    "movement": 0.664,
-    "density": 0.421,
-    "space": 0.463,
-    "aggression": 0.893
-  },
-  "macros": {
-    "CHARACTER": 0.07,
-    "MOVEMENT": 0.664,
-    "COUPLING": 0.873,
-    "SPACE": 0.463
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -47,5 +54,6 @@
     "aggressive",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

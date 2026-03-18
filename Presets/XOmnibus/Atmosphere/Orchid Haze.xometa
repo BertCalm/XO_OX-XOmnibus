@@ -1,25 +1,33 @@
 {
-  "name": "Orchid Haze",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Rose light on stone. Ancient and gentle. A pad with geological patience.",
   "engines": [
-    "OLE"
+    "Ole"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.71,
-    "MOVEMENT": 0.234,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.234,
     "SPACE": 0.84
   },
-  "sonic_dna": {
-    "brightness": 0.709,
-    "warmth": 0.712,
-    "movement": 0.234,
-    "density": 0.392,
-    "space": 0.84,
-    "aggression": 0.075
-  },
+  "mood": "Atmosphere",
+  "name": "Orchid Haze",
   "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.075,
+    "brightness": 0.709,
+    "density": 0.392,
+    "movement": 0.234,
+    "space": 0.84,
+    "warmth": 0.712
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +35,5 @@
     "dawn",
     "gentle"
   ],
-  "description": "Rose light on stone. Ancient and gentle. A pad with geological patience."
+  "version": "1.0"
 }

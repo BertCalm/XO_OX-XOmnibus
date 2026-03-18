@@ -1,49 +1,57 @@
 {
-  "name": "LUMINOUS SHIFT",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.698,
+    "source": "Obscura",
+    "target": "Orbital",
+    "type": "TIMBRAL_BLEND"
+  },
+  "dna": {
+    "aggression": 0.555,
+    "brightness": 0.92,
+    "density": 0.52,
+    "movement": 0.987,
+    "space": 0.744,
+    "warmth": 0.704
+  },
   "engines": [
-    "OBSCURA",
-    "ORBITAL"
+    "Obscura",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.172,
+    "COUPLING": 0.661,
+    "MOVEMENT": 0.378,
+    "SPACE": 0.26
+  },
+  "mood": "Flux",
+  "name": "LUMINOUS SHIFT",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.084,
-      "macro_movement": 0.429,
       "macro_coupling": 0.867,
+      "macro_movement": 0.429,
       "macro_space": 0.182
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.26,
-      "macro_movement": 0.327,
       "macro_coupling": 0.455,
+      "macro_movement": 0.327,
       "macro_space": 0.338
     }
   },
-  "coupling": {
-    "type": "TIMBRAL_BLEND",
-    "source": "OBSCURA",
-    "target": "ORBITAL",
-    "amount": 0.698
-  },
-  "dna": {
-    "brightness": 0.92,
-    "warmth": 0.704,
-    "movement": 0.987,
-    "density": 0.52,
-    "space": 0.744,
-    "aggression": 0.555
-  },
-  "macros": {
-    "CHARACTER": 0.172,
-    "MOVEMENT": 0.378,
-    "COUPLING": 0.661,
-    "SPACE": 0.26
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "extreme",
     "high-movement"
-  ]
+  ],
+  "version": "1.0"
 }

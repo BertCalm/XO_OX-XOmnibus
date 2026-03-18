@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "HOT_KINETIC_DENSE_INTIMATE_GENTLE_PRS_4",
-  "mood": "Prism",
-  "engines": [
-    "OTTONI",
-    "OLE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.658,
+    "source": "Ottoni",
+    "target": "Ole",
+    "type": "AMPLITUDE_MOD"
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: HOT_KINETIC_DENSE_INTIMATE_GENTLE. Variant 4.",
+  "dna": {
+    "aggression": 0.071,
+    "brightness": 0.696,
+    "density": 0.983,
+    "movement": 0.929,
+    "space": 0.114,
+    "warmth": 0.935
+  },
+  "engines": [
+    "Ottoni",
+    "Ole"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.785,
+    "COUPLING": 1.0,
+    "MOVEMENT": 0.972,
+    "SPACE": 0.083
+  },
+  "mood": "Prism",
+  "name": "HOT_KINETIC_DENSE_INTIMATE_GENTLE_PRS_4",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.817,
+      "macro_coupling": 1.0,
+      "macro_movement": 1.0,
+      "macro_space": 0.117
+    },
+    "Ottoni": {
+      "macro_character": 0.754,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.943,
+      "macro_space": 0.049
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "hot",
     "extreme",
@@ -19,53 +66,6 @@
     "gentle",
     "dense"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.754,
-      "macro_movement": 0.943,
-      "macro_coupling": 1.0,
-      "macro_space": 0.049
-    },
-    "OLE": {
-      "macro_character": 0.817,
-      "macro_movement": 1.0,
-      "macro_coupling": 1.0,
-      "macro_space": 0.117
-    }
-  },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OTTONI",
-    "target": "OLE",
-    "amount": 0.658
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.696,
-    "warmth": 0.935,
-    "movement": 0.929,
-    "density": 0.983,
-    "space": 0.114,
-    "aggression": 0.071
-  },
-  "macros": {
-    "CHARACTER": 0.785,
-    "MOVEMENT": 0.972,
-    "COUPLING": 1.0,
-    "SPACE": 0.083
-  }
+  "version": "1.0.0"
 }

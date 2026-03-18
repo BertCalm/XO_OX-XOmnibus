@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_STILL_INTIMATE_VIOLENT_FLX_SLW_5",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORGANON",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.51,
-      "macro_movement": 0.092,
-      "macro_coupling": 0.692,
-      "macro_space": 0.036
-    },
-    "OBLIQUE": {
-      "macro_character": 0.676,
-      "macro_movement": 0.082,
-      "macro_coupling": 0.84,
-      "macro_space": 0.038
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORGANON",
-    "target": "OBLIQUE",
-    "amount": 0.642
+    "amount": 0.642,
+    "source": "Organon",
+    "target": "Oblique",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.896,
     "brightness": 0.881,
-    "warmth": 0.512,
-    "movement": 0.079,
     "density": 0.348,
+    "movement": 0.079,
     "space": 0.037,
-    "aggression": 0.896
+    "warmth": 0.512
   },
+  "engines": [
+    "Organon",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.622,
-    "MOVEMENT": 0.079,
     "COUPLING": 0.778,
+    "MOVEMENT": 0.079,
     "SPACE": 0.037
   },
+  "mood": "Flux",
+  "name": "BRIGHT_STILL_INTIMATE_VIOLENT_FLX_SLW_5",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.676,
+      "macro_coupling": 0.84,
+      "macro_movement": 0.082,
+      "macro_space": 0.038
+    },
+    "Organon": {
+      "macro_character": 0.51,
+      "macro_coupling": 0.692,
+      "macro_movement": 0.092,
+      "macro_space": 0.036
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +54,6 @@
     "intimate",
     "violent",
     "frozen-instability"
-  ]
+  ],
+  "version": "1.0"
 }

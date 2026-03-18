@@ -1,25 +1,33 @@
 {
-  "name": "Fathom Pulse",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Pressure at depth makes everything resonant. The hull groans beautifully.",
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.42,
-    "MOVEMENT": 0.111,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.111,
     "SPACE": 0.962
   },
-  "sonic_dna": {
-    "brightness": 0.257,
-    "warmth": 0.583,
-    "movement": 0.111,
-    "density": 0.624,
-    "space": 0.962,
-    "aggression": 0.052
-  },
+  "mood": "Atmosphere",
+  "name": "Fathom Pulse",
   "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.052,
+    "brightness": 0.257,
+    "density": 0.624,
+    "movement": 0.111,
+    "space": 0.962,
+    "warmth": 0.583
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +35,5 @@
     "deep",
     "vast"
   ],
-  "description": "Pressure at depth makes everything resonant. The hull groans beautifully."
+  "version": "1.0"
 }

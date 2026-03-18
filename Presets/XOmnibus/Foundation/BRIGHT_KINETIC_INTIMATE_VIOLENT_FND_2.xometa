@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_FND_2",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.809,
+    "source": "Onset",
+    "target": "Overbite",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.972,
+    "brightness": 0.92,
+    "density": 0.468,
+    "movement": 0.933,
+    "space": 0.121,
+    "warmth": 0.348
+  },
   "engines": [
-    "ONSET",
-    "OVERBITE"
+    "Onset",
+    "Overbite"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.146,
+    "COUPLING": 0.338,
+    "MOVEMENT": 0.209,
+    "SPACE": 0.675
+  },
+  "mood": "Foundation",
+  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_FND_2",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.616,
-      "macro_movement": 0.528,
       "macro_coupling": 0.495,
+      "macro_movement": 0.528,
       "macro_space": 0.233
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.561,
-      "macro_movement": 0.285,
       "macro_coupling": 0.309,
+      "macro_movement": 0.285,
       "macro_space": 0.552
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ONSET",
-    "target": "OVERBITE",
-    "amount": 0.809
-  },
-  "dna": {
-    "brightness": 0.92,
-    "warmth": 0.348,
-    "movement": 0.933,
-    "density": 0.468,
-    "space": 0.121,
-    "aggression": 0.972
-  },
-  "macros": {
-    "CHARACTER": 0.146,
-    "MOVEMENT": 0.209,
-    "COUPLING": 0.338,
-    "SPACE": 0.675
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -48,5 +55,6 @@
     "intimate",
     "violent",
     "aggressive"
-  ]
+  ],
+  "version": "1.0"
 }

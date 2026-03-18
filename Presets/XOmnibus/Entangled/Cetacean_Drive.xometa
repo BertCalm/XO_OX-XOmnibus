@@ -1,14 +1,96 @@
 {
-  "schema_version": 1,
-  "name": "Cetacean Drive",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.5,
+        "engineA": "Osprey",
+        "engineB": "Odyssey",
+        "type": "Amp->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-14",
+  "description": "OSPREY's deep creature (humpback vocal profile) locked to an Odyssey pad via Amp->Filter coupling. The whale signal modulates the pad's filter — oceanic biology driving an interstellar texture. B012 ShoreSystem + Odyssey voyage.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.3,
+    "density": 0.45,
+    "movement": 0.4,
+    "space": 0.8,
+    "warmth": 0.45
+  },
   "engines": [
     "Osprey",
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OSPREY's deep creature (humpback vocal profile) locked to an Odyssey pad via Amp->Filter coupling. The whale signal modulates the pad's filter \u2014 oceanic biology driving an interstellar texture. B012 ShoreSystem + Odyssey voyage.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "OCEAN",
+    "VOYAGE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Cetacean Drive",
+  "parameters": {
+    "Odyssey": {
+      "odyssey_ampAttack": 1.5,
+      "odyssey_ampDecay": 2.0,
+      "odyssey_ampRelease": 4.0,
+      "odyssey_ampSustain": 0.7,
+      "odyssey_delayMix": 0.15,
+      "odyssey_filterACutoff": 800.0,
+      "odyssey_filterAResonance": 0.3,
+      "odyssey_filterAType": 0,
+      "odyssey_macroBloom": 0.0,
+      "odyssey_macroBreathe": 0.2,
+      "odyssey_macroFracture": 0.0,
+      "odyssey_macroJourney": 0.3,
+      "odyssey_oscADetune": 0.02,
+      "odyssey_oscALevel": 0.7,
+      "odyssey_oscAMode": 0,
+      "odyssey_oscBDetune": -0.02,
+      "odyssey_oscBLevel": 0.65,
+      "odyssey_oscBMode": 0,
+      "odyssey_reverbMix": 0.4
+    },
+    "Osprey": {
+      "osprey_ampAttack": 1.2,
+      "osprey_ampDecay": 2.0,
+      "osprey_ampRelease": 6.0,
+      "osprey_ampSustain": 0.6,
+      "osprey_brine": 0.05,
+      "osprey_coherence": 0.55,
+      "osprey_creatureDepth": 0.65,
+      "osprey_creatureRate": 0.35,
+      "osprey_depth": 0.8,
+      "osprey_filterEnvDepth": 0.2,
+      "osprey_filterTilt": 0.3,
+      "osprey_foam": 0.0,
+      "osprey_fog": 0.3,
+      "osprey_harborVerb": 0.45,
+      "osprey_hull": 0.35,
+      "osprey_macroCharacter": 0.0,
+      "osprey_macroCoupling": 0.5,
+      "osprey_macroMovement": 0.0,
+      "osprey_macroSpace": 0.4,
+      "osprey_resonatorBright": 0.3,
+      "osprey_resonatorDecay": 5.0,
+      "osprey_seaState": 0.2,
+      "osprey_shore": 3.0,
+      "osprey_swellPeriod": 25.0,
+      "osprey_sympathyAmount": 0.6,
+      "osprey_windDir": 0.5
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "osprey",
     "odyssey",
@@ -17,88 +99,6 @@
     "deep",
     "biology"
   ],
-  "macroLabels": [
-    "OCEAN",
-    "VOYAGE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-14",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Osprey": {
-      "osprey_shore": 3.0,
-      "osprey_seaState": 0.2,
-      "osprey_swellPeriod": 25.0,
-      "osprey_windDir": 0.5,
-      "osprey_depth": 0.8,
-      "osprey_resonatorBright": 0.3,
-      "osprey_resonatorDecay": 5.0,
-      "osprey_sympathyAmount": 0.6,
-      "osprey_creatureRate": 0.35,
-      "osprey_creatureDepth": 0.65,
-      "osprey_coherence": 0.55,
-      "osprey_foam": 0.0,
-      "osprey_brine": 0.05,
-      "osprey_hull": 0.35,
-      "osprey_filterTilt": 0.3,
-      "osprey_filterEnvDepth": 0.2,
-      "osprey_harborVerb": 0.45,
-      "osprey_fog": 0.3,
-      "osprey_ampAttack": 1.2,
-      "osprey_ampDecay": 2.0,
-      "osprey_ampSustain": 0.6,
-      "osprey_ampRelease": 6.0,
-      "osprey_macroCharacter": 0.0,
-      "osprey_macroMovement": 0.0,
-      "osprey_macroCoupling": 0.5,
-      "osprey_macroSpace": 0.4
-    },
-    "Odyssey": {
-      "odyssey_oscAMode": 0,
-      "odyssey_oscADetune": 0.02,
-      "odyssey_oscALevel": 0.7,
-      "odyssey_oscBMode": 0,
-      "odyssey_oscBDetune": -0.02,
-      "odyssey_oscBLevel": 0.65,
-      "odyssey_filterACutoff": 800.0,
-      "odyssey_filterAResonance": 0.3,
-      "odyssey_filterAType": 0,
-      "odyssey_ampAttack": 1.5,
-      "odyssey_ampDecay": 2.0,
-      "odyssey_ampSustain": 0.7,
-      "odyssey_ampRelease": 4.0,
-      "odyssey_reverbMix": 0.4,
-      "odyssey_delayMix": 0.15,
-      "odyssey_macroJourney": 0.3,
-      "odyssey_macroBreathe": 0.2,
-      "odyssey_macroBloom": 0.0,
-      "odyssey_macroFracture": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Odyssey",
-        "type": "Amp->Filter",
-        "amount": 0.5
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.3,
-    "warmth": 0.45,
-    "movement": 0.4,
-    "density": 0.45,
-    "space": 0.8,
-    "aggression": 0.1
-  }
+  "version": "1.0.0"
 }

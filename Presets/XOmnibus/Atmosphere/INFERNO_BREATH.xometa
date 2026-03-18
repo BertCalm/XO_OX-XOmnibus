@@ -1,50 +1,58 @@
 {
-  "name": "INFERNO BREATH",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OSTERIA",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OSTERIA": {
-      "macro_character": 0.19,
-      "macro_movement": 0.763,
-      "macro_coupling": 0.822,
-      "macro_space": 0.834
-    },
-    "OBLONG": {
-      "macro_character": 0.529,
-      "macro_movement": 0.232,
-      "macro_coupling": 0.784,
-      "macro_space": 0.262
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OSTERIA",
-    "target": "OBLONG",
-    "amount": 0.509
+    "amount": 0.509,
+    "source": "Osteria",
+    "target": "Oblong",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.95,
     "brightness": 0.706,
-    "warmth": 0.742,
-    "movement": 0.76,
     "density": 0.952,
+    "movement": 0.76,
     "space": 0.389,
-    "aggression": 0.95
+    "warmth": 0.742
   },
+  "engines": [
+    "Osteria",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.644,
-    "MOVEMENT": 0.674,
     "COUPLING": 0.491,
+    "MOVEMENT": 0.674,
     "SPACE": 0.389
   },
+  "mood": "Atmosphere",
+  "name": "INFERNO BREATH",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.529,
+      "macro_coupling": 0.784,
+      "macro_movement": 0.232,
+      "macro_space": 0.262
+    },
+    "Osteria": {
+      "macro_character": 0.19,
+      "macro_coupling": 0.822,
+      "macro_movement": 0.763,
+      "macro_space": 0.834
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

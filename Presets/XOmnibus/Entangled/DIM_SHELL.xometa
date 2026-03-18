@@ -1,48 +1,56 @@
 {
-  "name": "DIM SHELL",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORPHICA",
-    "ORCA"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.875,
-      "macro_movement": 0.119,
-      "macro_coupling": 0.302,
-      "macro_space": 0.736
-    },
-    "ORCA": {
-      "macro_character": 0.532,
-      "macro_movement": 0.101,
-      "macro_coupling": 0.846,
-      "macro_space": 0.243
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ORPHICA",
-    "target": "ORCA",
-    "amount": 0.304
+    "amount": 0.304,
+    "source": "Orphica",
+    "target": "Orca",
+    "type": "VELOCITY_COUPLE"
   },
   "dna": {
+    "aggression": 0.91,
     "brightness": 0.621,
-    "warmth": 0.291,
-    "movement": 0.11,
     "density": 0.474,
+    "movement": 0.11,
     "space": 0.868,
-    "aggression": 0.91
+    "warmth": 0.291
   },
+  "engines": [
+    "Orphica",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.281,
-    "MOVEMENT": 0.11,
     "COUPLING": 0.022,
+    "MOVEMENT": 0.11,
     "SPACE": 0.927
   },
+  "mood": "Entangled",
+  "name": "DIM SHELL",
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.532,
+      "macro_coupling": 0.846,
+      "macro_movement": 0.101,
+      "macro_space": 0.243
+    },
+    "Orphica": {
+      "macro_character": 0.875,
+      "macro_coupling": 0.302,
+      "macro_movement": 0.119,
+      "macro_space": 0.736
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "dim"
-  ]
+  ],
+  "version": "1.0"
 }

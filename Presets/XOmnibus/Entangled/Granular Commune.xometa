@@ -1,31 +1,39 @@
 {
-  "name": "Granular Commune",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.65,
+    "source": "Ohm",
+    "target": "Opal",
+    "type": "GRANULAR_WEAVE"
+  },
+  "description": "Opal grain clouds dispersed through ohm's sage warmth — microsound made communal",
   "engines": [
-    "OHM",
-    "OPAL"
+    "Ohm",
+    "Opal"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.6,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.55,
     "SPACE": 0.75
   },
-  "sonic_dna": {
-    "brightness": 0.6,
-    "warmth": 0.65,
-    "movement": 0.64,
-    "density": 0.48,
-    "space": 0.74,
-    "aggression": 0.2
-  },
+  "mood": "Entangled",
+  "name": "Granular Commune",
   "parameters": {},
-  "coupling": {
-    "type": "GRANULAR_WEAVE",
-    "source": "OHM",
-    "target": "OPAL",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2,
+    "brightness": 0.6,
+    "density": 0.48,
+    "movement": 0.64,
+    "space": 0.74,
+    "warmth": 0.65
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "opal",
     "hippy"
   ],
-  "description": "Opal grain clouds dispersed through ohm's sage warmth \u2014 microsound made communal"
+  "version": "1.0"
 }

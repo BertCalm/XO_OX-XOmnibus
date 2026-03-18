@@ -1,49 +1,57 @@
 {
-  "name": "THERMAL FLUX",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.605,
+    "source": "Oceanic",
+    "target": "Optic",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.599,
+    "brightness": 0.579,
+    "density": 0.566,
+    "movement": 0.873,
+    "space": 0.452,
+    "warmth": 0.917
+  },
   "engines": [
-    "OCEANIC",
-    "OPTIC"
+    "Oceanic",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.591,
+    "COUPLING": 0.504,
+    "MOVEMENT": 0.781,
+    "SPACE": 0.447
+  },
+  "mood": "Flux",
+  "name": "THERMAL FLUX",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.591,
-      "macro_movement": 0.781,
       "macro_coupling": 0.504,
+      "macro_movement": 0.781,
       "macro_space": 0.447
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.612,
-      "macro_movement": 0.753,
       "macro_coupling": 0.604,
+      "macro_movement": 0.753,
       "macro_space": 0.388
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OCEANIC",
-    "target": "OPTIC",
-    "amount": 0.605
-  },
-  "dna": {
-    "brightness": 0.579,
-    "warmth": 0.917,
-    "movement": 0.873,
-    "density": 0.566,
-    "space": 0.452,
-    "aggression": 0.599
-  },
-  "macros": {
-    "CHARACTER": 0.591,
-    "MOVEMENT": 0.781,
-    "COUPLING": 0.504,
-    "SPACE": 0.447
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "warm",
     "kinetic",
     "movement"
-  ]
+  ],
+  "version": "1.0"
 }

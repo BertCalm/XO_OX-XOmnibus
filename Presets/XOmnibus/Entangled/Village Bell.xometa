@@ -1,19 +1,29 @@
 {
-  "schema_version": 1,
-  "name": "Village Bell",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.811,
+        "engineA": "Ohm",
+        "engineB": "Ottoni",
+        "type": "LFO->Pitch"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "OHM and OTTONI coupled via LFO->Pitch. Blended Constellation DNA — stub seeded for expansion.",
+  "dna": {
+    "aggression": 0.398,
+    "brightness": 0.519,
+    "density": 0.651,
+    "movement": 0.51,
+    "space": 0.681,
+    "warmth": 0.603
+  },
   "engines": [
-    "OHM",
-    "OTTONI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OHM and OTTONI coupled via LFO->Pitch. Blended Constellation DNA \u2014 stub seeded for expansion.",
-  "tags": [
-    "coupling",
-    "constellation",
-    "ohm",
-    "ottoni"
+    "Ohm",
+    "Ottoni"
   ],
   "macroLabels": [
     "WARMTH",
@@ -21,27 +31,17 @@
     "ENTANGLE",
     "AIR"
   ],
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-16",
+  "mood": "Entangled",
+  "name": "Village Bell",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OHM",
-        "engineB": "OTTONI",
-        "type": "LFO->Pitch",
-        "amount": 0.811
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.519,
-    "warmth": 0.603,
-    "movement": 0.51,
-    "density": 0.651,
-    "space": 0.681,
-    "aggression": 0.398
-  }
+  "tags": [
+    "coupling",
+    "constellation",
+    "ohm",
+    "ottoni"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

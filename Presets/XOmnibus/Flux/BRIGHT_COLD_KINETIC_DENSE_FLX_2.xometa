@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_COLD_KINETIC_DENSE_FLX_2",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OUROBOROS",
-    "ORIGAMI"
-  ],
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.8545,
-      "macro_movement": 0.8782,
-      "macro_coupling": 0.5372,
-      "macro_space": 0.594
-    },
-    "ORIGAMI": {
-      "macro_character": 0.8147,
-      "macro_movement": 0.9489,
-      "macro_coupling": 0.6594,
-      "macro_space": 0.3766
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OUROBOROS",
-    "target": "ORIGAMI",
-    "amount": 0.7159
+    "amount": 0.7159,
+    "source": "Ouroboros",
+    "target": "Origami",
+    "type": "ENVELOPE_LINK"
   },
   "dna": {
+    "aggression": 0.5458,
     "brightness": 0.9569,
-    "warmth": 0.064,
-    "movement": 0.9385,
     "density": 0.8657,
+    "movement": 0.9385,
     "space": 0.4634,
-    "aggression": 0.5458
+    "warmth": 0.064
   },
+  "engines": [
+    "Ouroboros",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8545,
-    "MOVEMENT": 0.8782,
     "COUPLING": 0.5372,
+    "MOVEMENT": 0.8782,
     "SPACE": 0.594
   },
+  "mood": "Flux",
+  "name": "BRIGHT_COLD_KINETIC_DENSE_FLX_2",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.8147,
+      "macro_coupling": 0.6594,
+      "macro_movement": 0.9489,
+      "macro_space": 0.3766
+    },
+    "Ouroboros": {
+      "macro_character": 0.8545,
+      "macro_coupling": 0.5372,
+      "macro_movement": 0.8782,
+      "macro_space": 0.594
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "low-warmth",
     "high-movement",
     "high-density"
-  ]
+  ],
+  "version": "1.0"
 }

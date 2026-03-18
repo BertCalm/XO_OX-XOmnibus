@@ -1,61 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Drift Warmth",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expansive pads atmosphere with voyager drift.",
+  "dna": {
+    "aggression": 0.144,
+    "brightness": 0.384,
+    "density": 0.103,
+    "movement": 0.0,
+    "space": 0.275,
+    "warmth": 0.289
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expansive pads atmosphere with voyager drift.",
-  "tags": [
-    "drifty",
-    "saturated",
-    "chorus",
-    "slow-attack"
-  ],
+  "legacy": {
+    "sourceCategory": "Pads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Pads",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Drift Warmth",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 1.0,
-      "drift_oscA_level": 0.6,
-      "drift_oscA_pw": 0.6,
-      "drift_oscB_mode": 0.0,
-      "drift_oscB_shape": 0.0,
-      "drift_oscB_level": 0.4,
-      "drift_oscB_tune": 7.0,
-      "drift_hazeAmount": 0.3,
+      "drift_attack": 250.0,
+      "drift_driftDepth": 0.3,
       "drift_filterCutoff": 2500.0,
       "drift_filterReso": 0.2,
-      "drift_attack": 250.0,
-      "drift_sustain": 0.7,
+      "drift_hazeAmount": 0.3,
+      "drift_level": -3.0,
+      "drift_oscA_level": 0.6,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_pw": 0.6,
+      "drift_oscA_shape": 1.0,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 0.0,
+      "drift_oscB_tune": 7.0,
       "drift_release": 1500.0,
-      "drift_driftDepth": 0.3,
-      "drift_level": -3.0
+      "drift_sustain": 0.7
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.384,
-    "warmth": 0.289,
-    "movement": 0.0,
-    "density": 0.103,
-    "space": 0.275,
-    "aggression": 0.144
-  }
+  "tags": [
+    "drifty",
+    "saturated",
+    "chorus",
+    "slow-attack"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

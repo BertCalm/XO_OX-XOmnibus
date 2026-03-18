@@ -1,14 +1,45 @@
 {
-  "schema_version": 1,
-  "name": "Dual Voice with Oblong",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.742,
+        "engineA": "Obbligato",
+        "engineB": "Oblong",
+        "type": "Amp->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Amber warmth from OBLONG holds OBBLIGATO's BOND — coral reed and amber filter in necessary harmony.",
+  "dna": {
+    "aggression": 0.633,
+    "brightness": 0.578,
+    "density": 0.65,
+    "movement": 0.544,
+    "space": 0.911,
+    "warmth": 0.65
+  },
   "engines": [
-    "OBBLIGATO",
-    "OBLONG"
+    "Obbligato",
+    "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Amber warmth from OBLONG holds OBBLIGATO's BOND \u2014 coral reed and amber filter in necessary harmony.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Dual Voice with Oblong",
+  "parameters": {
+    "obbl_breathA": 0.521,
+    "obbl_breathB": 0.564,
+    "obbl_macroBond": 0.625
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -17,37 +48,6 @@
     "amber",
     "warm"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "obbl_breathA": 0.521,
-    "obbl_breathB": 0.564,
-    "obbl_macroBond": 0.625
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBBLIGATO",
-        "engineB": "OBLONG",
-        "type": "Amp->Filter",
-        "amount": 0.742
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.578,
-    "warmth": 0.65,
-    "movement": 0.544,
-    "density": 0.65,
-    "space": 0.911,
-    "aggression": 0.633
-  }
+  "version": "1.0.0"
 }

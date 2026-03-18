@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Latin Enzyme",
-  "mood": "Entangled",
-  "engines": [
-    "OLE",
-    "ORGANON"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Organon enzyme kinetics filter-modulate OLE's brightness \u2014 bio-rhythmic drama.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.75,
+        "engineA": "Ole",
+        "engineB": "Organon",
+        "type": "FILTER_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Organon enzyme kinetics filter-modulate OLE's brightness — bio-rhythmic drama.",
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.58,
+    "density": 0.65,
+    "movement": 0.75,
+    "space": 0.35,
+    "warmth": 0.68
+  },
+  "engines": [
+    "Ole",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.625,
+    "COUPLING": 0.75,
+    "MOVEMENT": 0.7,
+    "SPACE": 0.425
+  },
+  "mood": "Entangled",
+  "name": "Latin Enzyme",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.7,
+      "macro_coupling": 0.75,
+      "macro_movement": 0.68,
+      "macro_space": 0.35
+    },
+    "Organon": {
+      "macro_character": 0.55,
+      "macro_coupling": 0.75,
+      "macro_movement": 0.72,
+      "macro_space": 0.5
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "enzyme",
     "drive"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {
-    "brightness": 0.58,
-    "warmth": 0.68,
-    "movement": 0.75,
-    "density": 0.65,
-    "space": 0.35,
-    "aggression": 0.7
-  },
-  "parameters": {
-    "OLE": {
-      "macro_character": 0.7,
-      "macro_movement": 0.68,
-      "macro_coupling": 0.75,
-      "macro_space": 0.35
-    },
-    "ORGANON": {
-      "macro_character": 0.55,
-      "macro_movement": 0.72,
-      "macro_coupling": 0.75,
-      "macro_space": 0.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OLE",
-        "engineB": "ORGANON",
-        "type": "FILTER_MOD",
-        "amount": 0.75
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.625,
-    "MOVEMENT": 0.7,
-    "COUPLING": 0.75,
-    "SPACE": 0.425
-  },
-  "sequencer": null
+  "version": "1.0"
 }

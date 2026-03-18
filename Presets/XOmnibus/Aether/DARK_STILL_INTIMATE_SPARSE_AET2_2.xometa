@@ -1,45 +1,52 @@
 {
-  "name": "DARK_STILL_INTIMATE_SPARSE_AET2_2",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.9004,
+    "source": "Obscura",
+    "target": "Orbital",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.5654,
+    "brightness": 0.1286,
+    "density": 0.1099,
+    "movement": 0.0919,
+    "space": 0.0206,
+    "warmth": 0.4198
+  },
   "engines": [
-    "OBSCURA",
-    "ORBITAL"
+    "Obscura",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.128,
+    "COUPLING": 0.9004,
+    "MOVEMENT": 0.0909,
+    "SPACE": 0.0206
+  },
+  "mood": "Aether",
+  "name": "DARK_STILL_INTIMATE_SPARSE_AET2_2",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.1431,
-      "macro_movement": 0.0712,
       "macro_coupling": 0.0968,
+      "macro_movement": 0.0712,
       "macro_space": 0.01
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.1129,
-      "macro_movement": 0.1106,
       "macro_coupling": 0.1452,
+      "macro_movement": 0.1106,
       "macro_space": 0.0211
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBSCURA",
-    "target": "ORBITAL",
-    "amount": 0.9004
-  },
-  "dna": {
-    "brightness": 0.1286,
-    "movement": 0.0919,
-    "space": 0.0206,
-    "density": 0.1099,
-    "warmth": 0.4198,
-    "aggression": 0.5654
-  },
-  "macros": {
-    "CHARACTER": 0.128,
-    "MOVEMENT": 0.0909,
-    "COUPLING": 0.9004,
-    "SPACE": 0.0206
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +56,6 @@
     "intimate",
     "sparse",
     "void"
-  ]
+  ],
+  "version": "1.0"
 }

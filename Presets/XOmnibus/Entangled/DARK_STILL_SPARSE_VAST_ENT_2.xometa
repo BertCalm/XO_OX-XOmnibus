@@ -1,14 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "DARK_STILL_SPARSE_VAST_ENT_2",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7002,
+    "pairs": [
+      {
+        "amount": 0.7002,
+        "source": "Overworld",
+        "target": "Ohm",
+        "type": "HARMONIC_FOLD"
+      }
+    ],
+    "source": "Overworld",
+    "target": "Ohm",
+    "type": "HARMONIC_FOLD"
+  },
+  "couplingIntensity": "Medium",
+  "description": "Dark Still Sparse Vast character entanglement — OHM × OVERWORLD via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.6479,
+    "brightness": 0.0821,
+    "density": 0.0428,
+    "movement": 0.1042,
+    "space": 0.8959,
+    "warmth": 0.3274
+  },
   "engines": [
-    "OHM",
-    "OVERWORLD"
+    "Ohm",
+    "Overworld"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dark Still Sparse Vast character entanglement \u2014 OHM \u00d7 OVERWORLD via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "COMMUNE",
+    "MEDDLING",
+    "RESONANCE",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2048,
+    "COUPLING": 0.7002,
+    "MOVEMENT": 0.1042,
+    "SPACE": 0.8959
+  },
+  "mood": "Entangled",
+  "name": "DARK_STILL_SPARSE_VAST_ENT_2",
+  "parameters": {
+    "Ohm": {
+      "amp_attack": 0.4212,
+      "amp_release": 0.5996,
+      "coupling_level": 0.7734,
+      "density": 0.0287,
+      "drive": 0.5473,
+      "filter_cutoff": 0.2376,
+      "filter_resonance": 0.398,
+      "macro_character": 0.4158,
+      "macro_coupling": 0.7984,
+      "macro_movement": 0.1329,
+      "macro_space": 0.8663,
+      "output_level": 0.6846,
+      "reverb_mix": 0.6039,
+      "reverb_size": 0.7607
+    },
+    "Overworld": {
+      "amp_attack": 0.377,
+      "amp_release": 0.6378,
+      "coupling_level": 0.8058,
+      "density": 0.0722,
+      "drive": 0.591,
+      "filter_cutoff": 0.2797,
+      "filter_resonance": 0.4251,
+      "macro_character": 0.4749,
+      "macro_coupling": 0.8465,
+      "macro_movement": 0.1063,
+      "macro_space": 0.894,
+      "output_level": 0.7124,
+      "reverb_mix": 0.6783,
+      "reverb_size": 0.701
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.6479,
+    "brightness": 0.0821,
+    "density": 0.0428,
+    "movement": 0.1042,
+    "space": 0.8959,
+    "warmth": 0.3274
+  },
   "tags": [
     "entangled",
     "dark",
@@ -17,81 +93,5 @@
     "vast",
     "resonant"
   ],
-  "macroLabels": [
-    "COMMUNE",
-    "MEDDLING",
-    "RESONANCE",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
-  "dna": {
-    "brightness": 0.0821,
-    "warmth": 0.3274,
-    "movement": 0.1042,
-    "density": 0.0428,
-    "space": 0.8959,
-    "aggression": 0.6479
-  },
-  "sonic_dna": {
-    "brightness": 0.0821,
-    "warmth": 0.3274,
-    "movement": 0.1042,
-    "density": 0.0428,
-    "space": 0.8959,
-    "aggression": 0.6479
-  },
-  "parameters": {
-    "OHM": {
-      "macro_character": 0.4158,
-      "macro_movement": 0.1329,
-      "macro_coupling": 0.7984,
-      "macro_space": 0.8663,
-      "filter_cutoff": 0.2376,
-      "filter_resonance": 0.398,
-      "amp_attack": 0.4212,
-      "amp_release": 0.5996,
-      "reverb_mix": 0.6039,
-      "reverb_size": 0.7607,
-      "drive": 0.5473,
-      "density": 0.0287,
-      "output_level": 0.6846,
-      "coupling_level": 0.7734
-    },
-    "OVERWORLD": {
-      "macro_character": 0.4749,
-      "macro_movement": 0.1063,
-      "macro_coupling": 0.8465,
-      "macro_space": 0.894,
-      "filter_cutoff": 0.2797,
-      "filter_resonance": 0.4251,
-      "amp_attack": 0.377,
-      "amp_release": 0.6378,
-      "reverb_mix": 0.6783,
-      "reverb_size": 0.701,
-      "drive": 0.591,
-      "density": 0.0722,
-      "output_level": 0.7124,
-      "coupling_level": 0.8058
-    }
-  },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OVERWORLD",
-    "target": "OHM",
-    "amount": 0.7002,
-    "pairs": [
-      {
-        "source": "OVERWORLD",
-        "target": "OHM",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.7002
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.2048,
-    "MOVEMENT": 0.1042,
-    "COUPLING": 0.7002,
-    "SPACE": 0.8959
-  }
+  "version": "1.0.0"
 }

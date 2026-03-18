@@ -1,13 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Oracle Spectrum",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Prophetic overtones shimmer in crystalline suspension — the oracle speaks light.",
+  "dna": {
+    "aggression": 0.14,
+    "brightness": 0.91,
+    "density": 0.45,
+    "movement": 0.28,
+    "space": 0.65,
+    "warmth": 0.17
+  },
   "engines": [
     "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Prophetic overtones shimmer in crystalline suspension — the oracle speaks light.",
+  "legacy": {
+    "sourceCategory": "Prism",
+    "sourceInstrument": "Oracle",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Oracle Spectrum",
+  "parameters": {
+    "Oracle": {
+      "oracle_ampAttack": 0.0085,
+      "oracle_ampDecay": 1.052,
+      "oracle_ampRelease": 1.975,
+      "oracle_ampSustain": 0.791,
+      "oracle_filterCutoff": 16330.0,
+      "oracle_filterReso": 0.131,
+      "oracle_level": 0.78,
+      "oracle_macroCharacter": 0.71,
+      "oracle_macroCoupling": 0.0,
+      "oracle_macroMovement": 0.28,
+      "oracle_macroSpace": 0.65,
+      "oracle_propheticShimmer": 0.154,
+      "oracle_reverbMix": 0.507,
+      "oracle_stereoWidth": 0.793,
+      "oracle_temporalRate": 1.62,
+      "oracle_visionDepth": 0.728
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "spectral",
     "oracle",
@@ -15,48 +57,6 @@
     "prismatic",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": "Oracle",
-    "sourceCategory": "Prism",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oracle": {
-      "oracle_visionDepth": 0.728,
-      "oracle_propheticShimmer": 0.154,
-      "oracle_temporalRate": 1.62,
-      "oracle_filterCutoff": 16330.0,
-      "oracle_filterReso": 0.131,
-      "oracle_reverbMix": 0.507,
-      "oracle_ampAttack": 0.0085,
-      "oracle_ampDecay": 1.052,
-      "oracle_ampSustain": 0.791,
-      "oracle_ampRelease": 1.975,
-      "oracle_stereoWidth": 0.793,
-      "oracle_level": 0.78,
-      "oracle_macroCharacter": 0.71,
-      "oracle_macroMovement": 0.28,
-      "oracle_macroCoupling": 0.0,
-      "oracle_macroSpace": 0.65
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.91,
-    "warmth": 0.17,
-    "movement": 0.28,
-    "density": 0.45,
-    "space": 0.65,
-    "aggression": 0.14
-  }
+  "version": "1.0.0"
 }

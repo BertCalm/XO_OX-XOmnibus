@@ -1,49 +1,57 @@
 {
-  "name": "CHAR BOND",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.869,
+    "source": "Ohm",
+    "target": "Onset",
+    "type": "RESONANCE_SHARE"
+  },
+  "dna": {
+    "aggression": 0.944,
+    "brightness": 0.737,
+    "density": 0.65,
+    "movement": 0.68,
+    "space": 0.121,
+    "warmth": 0.938
+  },
   "engines": [
-    "OHM",
-    "ONSET"
+    "Ohm",
+    "Onset"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.11,
+    "COUPLING": 0.314,
+    "MOVEMENT": 0.019,
+    "SPACE": 0.151
+  },
+  "mood": "Entangled",
+  "name": "CHAR BOND",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.584,
-      "macro_movement": 0.171,
       "macro_coupling": 0.629,
+      "macro_movement": 0.171,
       "macro_space": 0.62
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.841,
-      "macro_movement": 0.148,
       "macro_coupling": 0.681,
+      "macro_movement": 0.148,
       "macro_space": 0.032
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OHM",
-    "target": "ONSET",
-    "amount": 0.869
-  },
-  "dna": {
-    "brightness": 0.737,
-    "warmth": 0.938,
-    "movement": 0.68,
-    "density": 0.65,
-    "space": 0.121,
-    "aggression": 0.944
-  },
-  "macros": {
-    "CHARACTER": 0.11,
-    "MOVEMENT": 0.019,
-    "COUPLING": 0.314,
-    "SPACE": 0.151
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-  ]
+  ],
+  "version": "1.0"
 }

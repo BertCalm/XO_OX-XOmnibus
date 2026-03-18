@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_HOT_STILL_INTIMATE_GENTLE_PRS_2",
-  "mood": "Prism",
-  "engines": [
-    "OPTIC",
-    "OLE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.884,
+    "source": "Optic",
+    "target": "Ole",
+    "type": "SPATIAL_COUPLE"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_HOT_STILL_INTIMATE_GENTLE. Variant 2.",
+  "dna": {
+    "aggression": 0.096,
+    "brightness": 0.987,
+    "density": 0.392,
+    "movement": 0.121,
+    "space": 0.119,
+    "warmth": 0.977
+  },
+  "engines": [
+    "Optic",
+    "Ole"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.945,
+    "COUPLING": 0.308,
+    "MOVEMENT": 0.135,
+    "SPACE": 0.158
+  },
+  "mood": "Prism",
+  "name": "BRIGHT_HOT_STILL_INTIMATE_GENTLE_PRS_2",
+  "parameters": {
+    "Ole": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.332,
+      "macro_movement": 0.207,
+      "macro_space": 0.132
+    },
+    "Optic": {
+      "macro_character": 0.89,
+      "macro_coupling": 0.285,
+      "macro_movement": 0.062,
+      "macro_space": 0.183
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "hot",
     "extreme",
@@ -19,53 +66,6 @@
     "still",
     "gentle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OPTIC": {
-      "macro_character": 0.89,
-      "macro_movement": 0.062,
-      "macro_coupling": 0.285,
-      "macro_space": 0.183
-    },
-    "OLE": {
-      "macro_character": 1.0,
-      "macro_movement": 0.207,
-      "macro_coupling": 0.332,
-      "macro_space": 0.132
-    }
-  },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OPTIC",
-    "target": "OLE",
-    "amount": 0.884
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.987,
-    "warmth": 0.977,
-    "movement": 0.121,
-    "density": 0.392,
-    "space": 0.119,
-    "aggression": 0.096
-  },
-  "macros": {
-    "CHARACTER": 0.945,
-    "MOVEMENT": 0.135,
-    "COUPLING": 0.308,
-    "SPACE": 0.158
-  }
+  "version": "1.0.0"
 }

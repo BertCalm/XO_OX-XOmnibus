@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_DENSE_INTIMATE_FAM_VOL_55",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.932,
+    "source": "Odyssey",
+    "target": "Obbligato",
+    "type": "HARMONIC_MESH"
+  },
+  "dna": {
+    "aggression": 0.59,
+    "brightness": 0.959,
+    "density": 0.951,
+    "movement": 0.331,
+    "space": 0.034,
+    "warmth": 0.971
+  },
   "engines": [
-    "OBBLIGATO",
-    "ODYSSEY"
+    "Obbligato",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.969,
+    "COUPLING": 0.775,
+    "MOVEMENT": 0.331,
+    "SPACE": 0.053
+  },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_DENSE_INTIMATE_FAM_VOL_55",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.956,
-      "macro_movement": 0.356,
       "macro_coupling": 0.793,
+      "macro_movement": 0.356,
       "macro_space": 0.043
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.982,
-      "macro_movement": 0.306,
       "macro_coupling": 0.757,
+      "macro_movement": 0.306,
       "macro_space": 0.063
     }
   },
-  "coupling": {
-    "type": "HARMONIC_MESH",
-    "source": "ODYSSEY",
-    "target": "OBBLIGATO",
-    "amount": 0.932
-  },
-  "dna": {
-    "brightness": 0.959,
-    "warmth": 0.971,
-    "movement": 0.331,
-    "density": 0.951,
-    "space": 0.034,
-    "aggression": 0.59
-  },
-  "macros": {
-    "CHARACTER": 0.969,
-    "MOVEMENT": 0.331,
-    "COUPLING": 0.775,
-    "SPACE": 0.053
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "dense",
     "intimate",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,58 @@
 {
-  "name": "Drift Plate",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ODYSSEY",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "ODYSSEY": {
-      "macro_character": 0.16,
-      "macro_movement": 0.4,
-      "macro_coupling": 0.7,
-      "macro_space": 0.92
-    },
-    "OBSCURA": {
-      "macro_character": 0.13,
-      "macro_movement": 0.35,
-      "macro_coupling": 0.75,
-      "macro_space": 0.95
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ODYSSEY",
-    "target": "OBSCURA",
-    "amount": 0.7
+    "amount": 0.7,
+    "source": "Odyssey",
+    "target": "Obscura",
+    "type": "SPECTRAL_MORPH"
   },
+  "description": "Odyssey drift morphs through Obscura's silver resonance — a memory of motion on glass.",
   "dna": {
+    "aggression": 0.0,
     "brightness": 0.07,
-    "warmth": 0.11,
-    "movement": 0.089,
     "density": 0.11,
+    "movement": 0.089,
     "space": 0.751,
-    "aggression": 0.0
+    "warmth": 0.11
   },
+  "engines": [
+    "Odyssey",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.16,
-    "MOVEMENT": 0.4,
     "COUPLING": 0.7,
+    "MOVEMENT": 0.4,
     "SPACE": 0.92
   },
+  "mood": "Entangled",
+  "name": "Drift Plate",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.13,
+      "macro_coupling": 0.75,
+      "macro_movement": 0.35,
+      "macro_space": 0.95
+    },
+    "Odyssey": {
+      "macro_character": 0.16,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.4,
+      "macro_space": 0.92
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "drift",
     "plate"
   ],
-  "description": "Odyssey drift morphs through Obscura's silver resonance \u2014 a memory of motion on glass."
+  "version": "1.0"
 }

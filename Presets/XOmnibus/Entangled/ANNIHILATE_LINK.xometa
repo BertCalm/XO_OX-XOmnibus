@@ -1,49 +1,57 @@
 {
-  "name": "ANNIHILATE LINK",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.615,
+    "source": "Ole",
+    "target": "Orca",
+    "type": "PITCH_SYNC"
+  },
+  "dna": {
+    "aggression": 0.913,
+    "brightness": 0.602,
+    "density": 0.169,
+    "movement": 0.97,
+    "space": 0.18,
+    "warmth": 0.074
+  },
   "engines": [
-    "OLE",
-    "ORCA"
+    "Ole",
+    "Orca"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.58,
+    "COUPLING": 0.723,
+    "MOVEMENT": 0.586,
+    "SPACE": 0.652
+  },
+  "mood": "Entangled",
+  "name": "ANNIHILATE LINK",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.702,
-      "macro_movement": 0.572,
       "macro_coupling": 0.407,
+      "macro_movement": 0.572,
       "macro_space": 0.871
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.352,
-      "macro_movement": 0.212,
       "macro_coupling": 0.322,
+      "macro_movement": 0.212,
       "macro_space": 0.167
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OLE",
-    "target": "ORCA",
-    "amount": 0.615
-  },
-  "dna": {
-    "brightness": 0.602,
-    "warmth": 0.074,
-    "movement": 0.97,
-    "density": 0.169,
-    "space": 0.18,
-    "aggression": 0.913
-  },
-  "macros": {
-    "CHARACTER": 0.58,
-    "MOVEMENT": 0.586,
-    "COUPLING": 0.723,
-    "SPACE": 0.652
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "obliterating",
     "savage"
-  ]
+  ],
+  "version": "1.0"
 }

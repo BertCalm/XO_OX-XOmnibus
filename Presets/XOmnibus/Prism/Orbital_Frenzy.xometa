@@ -1,52 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Orbital Frenzy",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Every grouped resonance spinning at maximum rate. No stillness survives.",
+  "dna": {
+    "aggression": 0.72,
+    "brightness": 0.9,
+    "density": 0.83,
+    "movement": 0.735,
+    "space": 0.1,
+    "warmth": 0.771
+  },
   "engines": [
     "Orbital"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Every grouped resonance spinning at maximum rate. No stillness survives.",
-  "tags": [
-    "kinetic-bright",
-    "extreme",
-    "prism",
-    "fast"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Orbital Frenzy",
   "parameters": {
     "Orbital": {
-      "orb_brightness": 0.91,
-      "orb_groupEnvRate": 0.95,
-      "orb_groupEnvDepth": 0.88,
-      "orb_spread": 0.85,
-      "orb_density": 0.82,
       "orb_attack": 2.0,
-      "orb_release": 50.0
+      "orb_brightness": 0.91,
+      "orb_density": 0.82,
+      "orb_groupEnvDepth": 0.88,
+      "orb_groupEnvRate": 0.95,
+      "orb_release": 50.0,
+      "orb_spread": 0.85
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.9,
-    "warmth": 0.771,
-    "movement": 0.735,
-    "density": 0.83,
-    "space": 0.1,
-    "aggression": 0.72
-  }
+  "tags": [
+    "kinetic-bright",
+    "extreme",
+    "prism",
+    "fast"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

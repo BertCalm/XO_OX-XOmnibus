@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT WARM DENSE VIOLENT ATM AGG 1",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.772,
+    "source": "Obscura",
+    "target": "Origami",
+    "type": "AMPLITUDE_MOD"
+  },
+  "dna": {
+    "aggression": 0.949,
+    "brightness": 0.939,
+    "density": 0.919,
+    "movement": 0.489,
+    "space": 0.338,
+    "warmth": 0.899
+  },
   "engines": [
-    "OBSCURA",
-    "ORIGAMI"
+    "Obscura",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.901,
+    "COUPLING": 0.887,
+    "MOVEMENT": 0.471,
+    "SPACE": 0.322
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT WARM DENSE VIOLENT ATM AGG 1",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.89,
-      "macro_movement": 0.466,
       "macro_coupling": 0.933,
+      "macro_movement": 0.466,
       "macro_space": 0.312
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.913,
-      "macro_movement": 0.475,
       "macro_coupling": 0.842,
+      "macro_movement": 0.475,
       "macro_space": 0.331
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBSCURA",
-    "target": "ORIGAMI",
-    "amount": 0.772
-  },
-  "dna": {
-    "brightness": 0.939,
-    "warmth": 0.899,
-    "movement": 0.489,
-    "density": 0.919,
-    "space": 0.338,
-    "aggression": 0.949
-  },
-  "macros": {
-    "CHARACTER": 0.901,
-    "MOVEMENT": 0.471,
-    "COUPLING": 0.887,
-    "SPACE": 0.322
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -47,5 +54,6 @@
     "violent",
     "bright",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

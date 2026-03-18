@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_WARM_STILL_INTIMATE_VIOLENT_PRS_5",
-  "mood": "Prism",
-  "engines": [
-    "OCELOT",
-    "OWLFISH"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.847,
+    "source": "Ocelot",
+    "target": "Owlfish",
+    "type": "CHAOS_INJECT"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_WARM_STILL_INTIMATE_VIOLENT. Variant 5.",
+  "dna": {
+    "aggression": 0.919,
+    "brightness": 0.922,
+    "density": 0.323,
+    "movement": 0.107,
+    "space": 0.094,
+    "warmth": 0.947
+  },
+  "engines": [
+    "Ocelot",
+    "Owlfish"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.873,
+    "COUPLING": 0.295,
+    "MOVEMENT": 0.087,
+    "SPACE": 0.126
+  },
+  "mood": "Prism",
+  "name": "BRIGHT_WARM_STILL_INTIMATE_VIOLENT_PRS_5",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.869,
+      "macro_coupling": 0.282,
+      "macro_movement": 0.136,
+      "macro_space": 0.184
+    },
+    "Owlfish": {
+      "macro_character": 0.878,
+      "macro_coupling": 0.308,
+      "macro_movement": 0.038,
+      "macro_space": 0.068
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "still",
@@ -19,53 +66,6 @@
     "prism",
     "warm"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OCELOT": {
-      "macro_character": 0.869,
-      "macro_movement": 0.136,
-      "macro_coupling": 0.282,
-      "macro_space": 0.184
-    },
-    "OWLFISH": {
-      "macro_character": 0.878,
-      "macro_movement": 0.038,
-      "macro_coupling": 0.308,
-      "macro_space": 0.068
-    }
-  },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OCELOT",
-    "target": "OWLFISH",
-    "amount": 0.847
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.922,
-    "warmth": 0.947,
-    "movement": 0.107,
-    "density": 0.323,
-    "space": 0.094,
-    "aggression": 0.919
-  },
-  "macros": {
-    "CHARACTER": 0.873,
-    "MOVEMENT": 0.087,
-    "COUPLING": 0.295,
-    "SPACE": 0.126
-  }
+  "version": "1.0.0"
 }

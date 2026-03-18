@@ -1,50 +1,58 @@
 {
-  "name": "COLD_KINETIC_INTIMATE_VIOLENT_FLX_AGG_3",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.983,
+    "source": "Optic",
+    "target": "Origami",
+    "type": "HARMONIC_FOLD"
+  },
+  "dna": {
+    "aggression": 0.877,
+    "brightness": 0.444,
+    "density": 0.351,
+    "movement": 0.955,
+    "space": 0.025,
+    "warmth": 0.053
+  },
   "engines": [
-    "OPTIC",
-    "ORIGAMI"
+    "Optic",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.598,
+    "COUPLING": 0.903,
+    "MOVEMENT": 0.955,
+    "SPACE": 0.025
+  },
+  "mood": "Flux",
+  "name": "COLD_KINETIC_INTIMATE_VIOLENT_FLX_AGG_3",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.467,
-      "macro_movement": 0.915,
       "macro_coupling": 0.903,
+      "macro_movement": 0.915,
       "macro_space": 0.0
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.728,
-      "macro_movement": 0.933,
       "macro_coupling": 0.901,
+      "macro_movement": 0.933,
       "macro_space": 0.009
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OPTIC",
-    "target": "ORIGAMI",
-    "amount": 0.983
-  },
-  "dna": {
-    "brightness": 0.444,
-    "warmth": 0.053,
-    "movement": 0.955,
-    "density": 0.351,
-    "space": 0.025,
-    "aggression": 0.877
-  },
-  "macros": {
-    "CHARACTER": 0.598,
-    "MOVEMENT": 0.955,
-    "COUPLING": 0.903,
-    "SPACE": 0.025
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "cold",
     "kinetic",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

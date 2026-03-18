@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Quiet Brass",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Cold water ambience around warm brass. FOREIGN low, LAKE dominant. 'Quiet Brass' finds the quietest expression of this voice.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.36,
+    "density": 0.28,
+    "movement": 0.17,
+    "space": 0.76,
+    "warmth": 0.51
+  },
   "engines": [
     "Ottoni"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "brass",
-    "sax",
-    "atmosphere",
-    "pad",
-    "atmosphere"
   ],
   "macroLabels": [
     "EMBOUCHURE",
@@ -20,48 +21,47 @@
     "FOREIGN",
     "LAKE"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.36,
-    "warmth": 0.51,
-    "movement": 0.17,
-    "density": 0.28,
-    "space": 0.76,
-    "aggression": 0.15
-  },
+  "mood": "Atmosphere",
+  "name": "Quiet Brass",
   "parameters": {
     "Ottoni": {
+      "otto_chorusRate": 1.0,
+      "otto_damping": 0.994,
+      "otto_delayMix": 0.229,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.083,
+      "otto_driveAmount": 0.03,
+      "otto_foreignCold": 0.0,
+      "otto_foreignDrift": 0.054,
+      "otto_foreignStretch": 0.097,
+      "otto_macroEmbouchure": 0.35,
+      "otto_macroForeign": 0.0,
+      "otto_macroGrow": 0.288,
+      "otto_macroLake": 0.498,
+      "otto_reverbSize": 0.465,
+      "otto_sympatheticAmt": 0.345,
+      "otto_teenBore": 0.559,
+      "otto_teenEmbouchure": 0.783,
+      "otto_teenInst": 1,
+      "otto_teenLevel": 0.348,
+      "otto_teenVibratoDepth": 0.157,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 1,
       "otto_toddlerLevel": 0.645,
       "otto_toddlerPressure": 0.171,
-      "otto_toddlerInst": 1,
-      "otto_tweenLevel": 0.467,
       "otto_tweenEmbouchure": 0.404,
-      "otto_tweenValve": 0.586,
       "otto_tweenInst": 1,
-      "otto_teenLevel": 0.348,
-      "otto_teenEmbouchure": 0.783,
-      "otto_teenBore": 0.559,
-      "otto_teenInst": 1,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.157,
-      "otto_damping": 0.994,
-      "otto_sympatheticAmt": 0.345,
-      "otto_driftRate": 0.083,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.097,
-      "otto_foreignDrift": 0.054,
-      "otto_foreignCold": 0.0,
-      "otto_reverbSize": 0.465,
-      "otto_chorusRate": 1.0,
-      "otto_driveAmount": 0.03,
-      "otto_delayMix": 0.229,
-      "otto_macroEmbouchure": 0.35,
-      "otto_macroGrow": 0.288,
-      "otto_macroForeign": 0.0,
-      "otto_macroLake": 0.498
+      "otto_tweenLevel": 0.467,
+      "otto_tweenValve": 0.586
     }
   },
-  "coupling": null,
-  "description": "Cold water ambience around warm brass. FOREIGN low, LAKE dominant. 'Quiet Brass' finds the quietest expression of this voice."
+  "schema_version": 1,
+  "tags": [
+    "brass",
+    "sax",
+    "atmosphere",
+    "pad",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
 }

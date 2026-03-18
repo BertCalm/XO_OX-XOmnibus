@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD VIOLENT DENSE 3",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.0638,
-    "warmth": 0.0509,
-    "aggression": 0.957,
-    "density": 0.9136,
-    "movement": 0.4185,
-    "space": 0.4193
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "High",
+  "couplingType": "ECHO",
+  "description": "Ultra-diverse Entangled preset — dark cold violent dense. Designed for ECHO coupling with XOverdub.",
   "dna": {
-    "brightness": 0.0638,
-    "warmth": 0.0509,
     "aggression": 0.957,
+    "brightness": 0.0638,
     "density": 0.9136,
     "movement": 0.4185,
-    "space": 0.4193
+    "space": 0.4193,
+    "warmth": 0.0509
   },
   "engines": [
-    "XOverdub"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark cold violent dense. Designed for ECHO coupling with XOverdub.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "echo",
-    "overdub"
+    "Overdub"
   ],
   "macroLabels": [
     "SHRED",
@@ -36,15 +23,28 @@
     "GLEAM",
     "LAYER"
   ],
-  "couplingType": "ECHO",
-  "couplingIntensity": "High",
+  "mood": "Entangled",
+  "name": "DARK COLD VIOLENT DENSE 3",
   "parameters": {
-    "XOverdub": {
-      "couplingLevel": 0.768,
-      "couplingBus": 0
+    "Overdub": {
+      "couplingBus": 0,
+      "couplingLevel": 0.768
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.957,
+    "brightness": 0.0638,
+    "density": 0.9136,
+    "movement": 0.4185,
+    "space": 0.4193,
+    "warmth": 0.0509
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "echo",
+    "overdub"
+  ],
+  "version": "1.0.0"
 }

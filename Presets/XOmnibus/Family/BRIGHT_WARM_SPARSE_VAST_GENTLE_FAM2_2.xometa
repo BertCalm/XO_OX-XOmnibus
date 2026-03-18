@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT WARM SPARSE VAST GENTLE FAM2 2",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.067,
+    "source": "Ole",
+    "target": "Osprey",
+    "type": "FILTER_MOD"
+  },
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.947,
+    "density": 0.033,
+    "movement": 0.314,
+    "space": 0.947,
+    "warmth": 0.885
+  },
   "engines": [
-    "OLE",
-    "OSPREY"
+    "Ole",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.916,
+    "COUPLING": 0.067,
+    "MOVEMENT": 0.314,
+    "SPACE": 0.947
+  },
+  "mood": "Family",
+  "name": "BRIGHT WARM SPARSE VAST GENTLE FAM2 2",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.916,
-      "macro_movement": 0.314,
       "macro_coupling": 0.067,
+      "macro_movement": 0.314,
       "macro_space": 0.947
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.926,
-      "macro_movement": 0.238,
       "macro_coupling": 0.074,
+      "macro_movement": 0.238,
       "macro_space": 0.973
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OLE",
-    "target": "OSPREY",
-    "amount": 0.067
-  },
-  "dna": {
-    "brightness": 0.947,
-    "warmth": 0.885,
-    "movement": 0.314,
-    "density": 0.033,
-    "space": 0.947,
-    "aggression": 0.1
-  },
-  "macros": {
-    "CHARACTER": 0.916,
-    "MOVEMENT": 0.314,
-    "COUPLING": 0.067,
-    "SPACE": 0.947
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
@@ -47,5 +54,6 @@
     "sparse",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

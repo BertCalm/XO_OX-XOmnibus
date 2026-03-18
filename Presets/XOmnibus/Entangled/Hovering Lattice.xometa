@@ -1,68 +1,74 @@
 {
-  "schema_version": 1,
-  "name": "Hovering Lattice",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "OUTWIT"
-  ],
-  "author": "XO_OX",
-  "macros": {
-    "CHARACTER": 0.63,
-    "MOVEMENT": 0.43,
-    "COUPLING": 0.79,
-    "SPACE": 0.71
-  },
-  "sonic_dna": {
-    "movement": 0.56,
-    "aggression": 0.35,
-    "brightness": 0.59,
-    "space": 0.71,
-    "warmth": 0.53,
-    "density": 0.62
-  },
-  "parameters": {
-    "OUTWIT": {
-      "owit_rule": 22,
-      "owit_arms": 8,
-      "owit_cellSize": 0.423,
-      "owit_density": 0.588,
-      "owit_evolveRate": 0.493,
-      "owit_mutateProb": 0.159,
-      "owit_pitchSpread": 0.492,
-      "owit_filterCutoff": 0.457,
-      "owit_filterReso": 0.398,
-      "owit_ampAttack": 0.126,
-      "owit_ampRelease": 0.252,
-      "owit_outputLevel": 0.826,
-      "owit_couplingLevel": 0.573,
-      "owit_couplingBus": 0
-    },
-    "OVERLAP": {
-      "olap_size": 0.736,
-      "olap_decay": 0.744,
-      "olap_damping": 0.402,
-      "olap_diffusion": 0.511,
-      "olap_modDepth": 0.398,
-      "olap_modRate": 0.105,
-      "olap_preDelay": 0.053,
-      "olap_earlyMix": 0.479,
-      "olap_lateMix": 0.536,
-      "olap_filterCutoff": 0.752,
-      "olap_filterReso": 0.31,
-      "olap_outputLevel": 0.705,
-      "olap_couplingLevel": 0.553,
-      "olap_couplingBus": 0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECTION",
-    "source": "OVERLAP",
-    "target": "OUTWIT",
-    "amount": 0.792
+    "amount": 0.792,
+    "source": "Overlap",
+    "target": "Outwit",
+    "type": "CHAOS_INJECTION"
   },
   "couplingIntensity": "Deep",
+  "description": "OVERLAP frond-spread traces OUTWIT Wolfram frontier — the jellyfish maps the octopus's thought in reverb",
+  "engines": [
+    "Overlap",
+    "Outwit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.63,
+    "COUPLING": 0.79,
+    "MOVEMENT": 0.43,
+    "SPACE": 0.71
+  },
+  "mood": "Entangled",
+  "name": "Hovering Lattice",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.126,
+      "owit_ampRelease": 0.252,
+      "owit_arms": 8,
+      "owit_cellSize": 0.423,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.573,
+      "owit_density": 0.588,
+      "owit_evolveRate": 0.493,
+      "owit_filterCutoff": 0.457,
+      "owit_filterReso": 0.398,
+      "owit_mutateProb": 0.159,
+      "owit_outputLevel": 0.826,
+      "owit_pitchSpread": 0.492,
+      "owit_rule": 22
+    },
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.553,
+      "olap_damping": 0.402,
+      "olap_decay": 0.744,
+      "olap_diffusion": 0.511,
+      "olap_earlyMix": 0.479,
+      "olap_filterCutoff": 0.752,
+      "olap_filterReso": 0.31,
+      "olap_lateMix": 0.536,
+      "olap_modDepth": 0.398,
+      "olap_modRate": 0.105,
+      "olap_outputLevel": 0.705,
+      "olap_preDelay": 0.053,
+      "olap_size": 0.736
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.35,
+    "brightness": 0.59,
+    "density": 0.62,
+    "movement": 0.56,
+    "space": 0.71,
+    "warmth": 0.53
+  },
   "tags": [
     "entangled",
     "coupling",
@@ -72,5 +78,5 @@
     "fdn",
     "reverb"
   ],
-  "description": "OVERLAP frond-spread traces OUTWIT Wolfram frontier \u2014 the jellyfish maps the octopus's thought in reverb"
+  "version": "1.0"
 }

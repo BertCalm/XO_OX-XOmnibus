@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Orca Mass Strike",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.93,
+        "engineA": "Orca",
+        "engineB": "Ouroboros",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Orca echolocation pulse shattered by Ouroboros topology — predator meets singularity.",
+  "dna": {
+    "aggression": 0.98,
+    "brightness": 0.42,
+    "density": 0.91,
+    "movement": 0.74,
+    "space": 0.08,
+    "warmth": 0.18
+  },
   "engines": [
-    "ORCA",
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Orca echolocation pulse shattered by Ouroboros topology \u2014 predator meets singularity.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "dense",
-    "orca",
-    "ouroboros",
-    "predator"
+    "Orca",
+    "Ouroboros"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,29 @@
   ],
   "macros": {
     "CHARACTER": 0.92,
-    "MOVEMENT": 0.74,
     "COUPLING": 0.93,
+    "MOVEMENT": 0.74,
     "SPACE": 0.08
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.42,
-    "warmth": 0.18,
-    "movement": 0.74,
-    "density": 0.91,
-    "space": 0.08,
-    "aggression": 0.98
-  },
-  "sonic_dna": {
-    "brightness": 0.42,
-    "warmth": 0.18,
-    "movement": 0.74,
-    "density": 0.91,
-    "space": 0.08,
-    "aggression": 0.98
-  },
+  "mood": "Entangled",
+  "name": "Orca Mass Strike",
   "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORCA",
-        "engineB": "OUROBOROS",
-        "type": "CHAOS_INJECT",
-        "amount": 0.93
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.98,
+    "brightness": 0.42,
+    "density": 0.91,
+    "movement": 0.74,
+    "space": 0.08,
+    "warmth": 0.18
+  },
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "orca",
+    "ouroboros",
+    "predator"
+  ],
+  "version": "1.0.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT_FROZEN_DENSE_CLOSE_HARSH_ENT4_3",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OMBRE",
-    "OCELOT"
-  ],
-  "parameters": {
-    "OMBRE": {
-      "macro_character": 0.67,
-      "macro_movement": 0.054,
-      "macro_coupling": 0.95,
-      "macro_space": 0.079
-    },
-    "OCELOT": {
-      "macro_character": 0.652,
-      "macro_movement": 0.051,
-      "macro_coupling": 0.916,
-      "macro_space": 0.119
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OMBRE",
-    "target": "OCELOT",
-    "amount": 0.922
+    "amount": 0.922,
+    "source": "Ombre",
+    "target": "Ocelot",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.926,
     "brightness": 0.87,
-    "warmth": 0.415,
-    "movement": 0.049,
     "density": 0.94,
+    "movement": 0.049,
     "space": 0.092,
-    "aggression": 0.926
+    "warmth": 0.415
   },
+  "engines": [
+    "Ombre",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.661,
-    "MOVEMENT": 0.052,
     "COUPLING": 0.922,
+    "MOVEMENT": 0.052,
     "SPACE": 0.099
   },
+  "mood": "Entangled",
+  "name": "BRIGHT_FROZEN_DENSE_CLOSE_HARSH_ENT4_3",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.652,
+      "macro_coupling": 0.916,
+      "macro_movement": 0.051,
+      "macro_space": 0.119
+    },
+    "Ombre": {
+      "macro_character": 0.67,
+      "macro_coupling": 0.95,
+      "macro_movement": 0.054,
+      "macro_space": 0.079
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +55,6 @@
     "dense",
     "close",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

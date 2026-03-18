@@ -1,31 +1,39 @@
 {
-  "name": "Reed Delay",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.6,
+    "source": "Overdub",
+    "target": "Obbligato",
+    "type": "BREATH_COUPLING"
+  },
+  "description": "Dual wind phrase caught in dub loop — breath suspended in tape saturation",
   "engines": [
-    "OVERDUB",
-    "OBBLIGATO"
+    "Overdub",
+    "Obbligato"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.4,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.4,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.46,
-    "warmth": 0.65,
-    "movement": 0.51,
-    "density": 0.62,
-    "space": 0.57,
-    "aggression": 0.39
-  },
+  "mood": "Entangled",
+  "name": "Reed Delay",
   "parameters": {},
-  "coupling": {
-    "type": "BREATH_COUPLING",
-    "source": "OVERDUB",
-    "target": "OBBLIGATO",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.39,
+    "brightness": 0.46,
+    "density": 0.62,
+    "movement": 0.51,
+    "space": 0.57,
+    "warmth": 0.65
   },
   "tags": [
     "entangled",
@@ -35,5 +43,5 @@
     "obbligato",
     "dub"
   ],
-  "description": "Dual wind phrase caught in dub loop \u2014 breath suspended in tape saturation"
+  "version": "1.0"
 }

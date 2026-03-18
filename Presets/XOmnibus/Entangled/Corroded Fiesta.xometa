@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Corroded Fiesta",
-  "mood": "Entangled",
-  "engines": [
-    "OBSCURA",
-    "OLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Obscura string corrosion frequency-shifts OLE tones \u2014 weathered celebration.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.62,
+        "engineA": "Obscura",
+        "engineB": "Ole",
+        "type": "FREQUENCY_SHIFT"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Obscura string corrosion frequency-shifts OLE tones — weathered celebration.",
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.48,
+    "density": 0.58,
+    "movement": 0.65,
+    "space": 0.58,
+    "warmth": 0.68
+  },
+  "engines": [
+    "Obscura",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.62,
+    "MOVEMENT": 0.635,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Corroded Fiesta",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.5,
+      "macro_coupling": 0.62,
+      "macro_movement": 0.62,
+      "macro_space": 0.65
+    },
+    "Ole": {
+      "macro_character": 0.7,
+      "macro_coupling": 0.62,
+      "macro_movement": 0.65,
+      "macro_space": 0.35
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "frequency",
     "fiesta"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.48,
-    "warmth": 0.68,
-    "movement": 0.65,
-    "density": 0.58,
-    "space": 0.58,
-    "aggression": 0.6
-  },
-  "parameters": {
-    "OBSCURA": {
-      "macro_character": 0.5,
-      "macro_movement": 0.62,
-      "macro_coupling": 0.62,
-      "macro_space": 0.65
-    },
-    "OLE": {
-      "macro_character": 0.7,
-      "macro_movement": 0.65,
-      "macro_coupling": 0.62,
-      "macro_space": 0.35
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBSCURA",
-        "engineB": "OLE",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.62
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.6,
-    "MOVEMENT": 0.635,
-    "COUPLING": 0.62,
-    "SPACE": 0.5
-  },
-  "sequencer": null
+  "version": "1.0"
 }

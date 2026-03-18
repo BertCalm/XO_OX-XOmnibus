@@ -1,91 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "Parasitic Bass",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Deep",
+  "created": "2026-03-05",
+  "description": "O's sub bass feeds parasitically off X's transient energy — harder hits produce deeper, longer sub tails.",
+  "dna": {
+    "aggression": 0.276,
+    "brightness": 0.431,
+    "density": 0.257,
+    "movement": 0.209,
+    "space": 0.343,
+    "warmth": 0.406
+  },
   "engines": [
     "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "O's sub bass feeds parasitically off X's transient energy — harder hits produce deeper, longer sub tails.",
-  "tags": [
-    "bass",
-    "parasitic",
-    "sub",
-    "transient-driven",
-    "heavy"
-  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "Snap+Morph",
     "Bloom",
     "Coupling",
     "Space"
   ],
-  "couplingIntensity": "Deep",
-  "tempo": 140,
-  "created": "2026-03-05",
-  "legacy": {
-    "sourceInstrument": "OddfeliX",
-    "sourceCategory": "Entangled",
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Parasitic Bass",
   "parameters": {
     "OddfeliX": {
+      "compAttack": 1.435,
+      "compRatio": 6.935,
+      "compRelease": 68.702,
+      "compThreshold": -25.935,
+      "compressorEnabled": 1,
       "couplingAmount": 0.739,
-      "masterBalance": -0.081,
-      "xOscMode": 0,
-      "xSnap": 0.337,
-      "xDecay": 0.581,
-      "xFilterCutoff": 340.267,
-      "xFilterReso": 0.237,
-      "xDetune": 6.87,
-      "xLevel": 0.628,
-      "xPitchLock": 0,
-      "xUnison": 0,
-      "xPolyphony": 0,
-      "oMorph": 0.281,
-      "oBloom": 0.781,
-      "oDecay": 1.374,
-      "oSustain": 0.356,
-      "oRelease": 0.781,
-      "oFilterCutoff": 262.213,
-      "oFilterReso": 0.379,
-      "oDrift": 0.137,
-      "oSub": 0.547,
-      "oDetune": 6.87,
-      "oLevel": 0.628,
-      "oPolyphony": 1,
+      "delayEnabled": 1,
+      "delayFeedback": 0.337,
+      "delayMix": 0.228,
+      "delayTime": 0.321,
+      "delayWobble": 0.073,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
       "macro1": 0.278,
       "macro2": 0.443,
       "macro3": 0.461,
       "macro4": 0.419,
-      "delayEnabled": 1,
-      "delayTime": 0.321,
-      "delayFeedback": 0.337,
-      "delayMix": 0.228,
-      "delayWobble": 0.073,
-      "reverbEnabled": 1,
-      "reverbDecay": 0.533,
-      "reverbSize": 0.675,
-      "reverbMix": 0.228,
-      "reverbDamping": 0.237,
-      "phaserEnabled": 0,
-      "phaserRate": 0.5,
+      "masterBalance": -0.081,
+      "oBloom": 0.781,
+      "oDecay": 1.374,
+      "oDetune": 6.87,
+      "oDrift": 0.137,
+      "oFilterCutoff": 262.213,
+      "oFilterReso": 0.379,
+      "oLevel": 0.628,
+      "oMorph": 0.281,
+      "oPolyphony": 1,
+      "oRelease": 0.781,
+      "oSub": 0.547,
+      "oSustain": 0.356,
       "phaserDepth": 0.5,
+      "phaserEnabled": 0,
       "phaserMix": 0.3,
-      "lofiEnabled": 0,
-      "lofiBitDepth": 12.0,
-      "lofiRateReduce": 1.0,
-      "lofiWowFlutter": 0.0,
-      "lofiMix": 0.3,
-      "compressorEnabled": 1,
-      "compThreshold": -25.935,
-      "compRatio": 6.935,
-      "compAttack": 1.435,
-      "compRelease": 68.702
+      "phaserRate": 0.5,
+      "reverbDamping": 0.237,
+      "reverbDecay": 0.533,
+      "reverbEnabled": 1,
+      "reverbMix": 0.228,
+      "reverbSize": 0.675,
+      "xDecay": 0.581,
+      "xDetune": 6.87,
+      "xFilterCutoff": 340.267,
+      "xFilterReso": 0.237,
+      "xLevel": 0.628,
+      "xOscMode": 0,
+      "xPitchLock": 0,
+      "xPolyphony": 0,
+      "xSnap": 0.337,
+      "xUnison": 0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": {
     "bpm": 140.0,
     "swing": 0.019,
@@ -96,32 +95,32 @@
         "muted": false,
         "steps": [
           {
+            "active": false,
             "index": 0,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
+            "active": false,
             "index": 4,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
+            "active": false,
             "index": 8,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
-            "index": 12,
             "active": false,
+            "index": 12,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           }
         ]
       },
@@ -131,18 +130,18 @@
         "muted": false,
         "steps": [
           {
-            "index": 4,
             "active": false,
+            "index": 4,
             "note": 38,
-            "velocity": 0.8,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8
           },
           {
-            "index": 12,
             "active": false,
+            "index": 12,
             "note": 38,
-            "velocity": 0.8,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8
           }
         ]
       },
@@ -158,43 +157,44 @@
         "muted": false,
         "steps": [
           {
+            "active": false,
             "index": 3,
-            "active": false,
             "note": 78,
-            "velocity": 0.6068394609044399,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.6068394609044399
           },
           {
+            "active": false,
             "index": 4,
-            "active": false,
             "note": 71,
-            "velocity": 0.5178243399639205,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.5178243399639205
           },
           {
+            "active": false,
             "index": 7,
-            "active": false,
             "note": 71,
-            "velocity": 0.5327788082027759,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.5327788082027759
           },
           {
-            "index": 10,
             "active": false,
+            "index": 10,
             "note": 73,
-            "velocity": 0.6175277875078674,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.6175277875078674
           }
         ]
       }
     ]
   },
-  "dna": {
-    "brightness": 0.431,
-    "warmth": 0.406,
-    "movement": 0.209,
-    "density": 0.257,
-    "space": 0.343,
-    "aggression": 0.276
-  }
+  "tags": [
+    "bass",
+    "parasitic",
+    "sub",
+    "transient-driven",
+    "heavy"
+  ],
+  "tempo": 140,
+  "version": "1.0.0"
 }

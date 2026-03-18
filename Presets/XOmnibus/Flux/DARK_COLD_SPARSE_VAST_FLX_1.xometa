@@ -1,45 +1,52 @@
 {
-  "name": "DARK_COLD_SPARSE_VAST_FLX_1",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERWORLD",
-    "OVERDUB"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.0568,
-      "macro_movement": 0.3851,
-      "macro_coupling": 0.555,
-      "macro_space": 0.8464
-    },
-    "OVERDUB": {
-      "macro_character": 0.0698,
-      "macro_movement": 0.2669,
-      "macro_coupling": 0.6207,
-      "macro_space": 0.8443
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OVERWORLD",
-    "target": "OVERDUB",
-    "amount": 0.6919
+    "amount": 0.6919,
+    "source": "Overworld",
+    "target": "Overdub",
+    "type": "FREQUENCY_SHIFT"
   },
   "dna": {
+    "aggression": 0.5962,
     "brightness": 0.1003,
-    "warmth": 0.0768,
-    "movement": 0.322,
     "density": 0.0976,
+    "movement": 0.322,
     "space": 0.9673,
-    "aggression": 0.5962
+    "warmth": 0.0768
   },
+  "engines": [
+    "Overworld",
+    "Overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.0568,
-    "MOVEMENT": 0.3851,
     "COUPLING": 0.555,
+    "MOVEMENT": 0.3851,
     "SPACE": 0.8464
   },
+  "mood": "Flux",
+  "name": "DARK_COLD_SPARSE_VAST_FLX_1",
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.0698,
+      "macro_coupling": 0.6207,
+      "macro_movement": 0.2669,
+      "macro_space": 0.8443
+    },
+    "Overworld": {
+      "macro_character": 0.0568,
+      "macro_coupling": 0.555,
+      "macro_movement": 0.3851,
+      "macro_space": 0.8464
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +55,6 @@
     "low-warmth",
     "low-density",
     "high-space"
-  ]
+  ],
+  "version": "1.0"
 }

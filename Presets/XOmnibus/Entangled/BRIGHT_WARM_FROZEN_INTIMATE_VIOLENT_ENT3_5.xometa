@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT_ENT3_5",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.961,
+    "source": "Owlfish",
+    "target": "Outwit",
+    "type": "PITCH_SYNC"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.9298,
+    "brightness": 0.9891,
+    "density": 0.347,
+    "movement": 0.0561,
+    "space": 0.1115,
+    "warmth": 0.9796
+  },
   "engines": [
-    "OWLFISH",
-    "OUTWIT"
+    "Owlfish",
+    "Outwit"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7848,
+    "COUPLING": 0.8172,
+    "MOVEMENT": 0.0576,
+    "SPACE": 0.3861
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT_ENT3_5",
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.7238,
+      "macro_coupling": 0.7847,
+      "macro_movement": 0.0601,
+      "macro_space": 0.262
+    },
+    "Owlfish": {
+      "macro_character": 0.8457,
+      "macro_coupling": 0.8497,
+      "macro_movement": 0.055,
+      "macro_space": 0.5101
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +66,6 @@
     "violent",
     "intimate"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.8457,
-      "macro_movement": 0.055,
-      "macro_coupling": 0.8497,
-      "macro_space": 0.5101
-    },
-    "OUTWIT": {
-      "macro_character": 0.7238,
-      "macro_movement": 0.0601,
-      "macro_coupling": 0.7847,
-      "macro_space": 0.262
-    }
-  },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OWLFISH",
-    "target": "OUTWIT",
-    "amount": 0.961
-  },
-  "macros": {
-    "CHARACTER": 0.7848,
-    "MOVEMENT": 0.0576,
-    "COUPLING": 0.8172,
-    "SPACE": 0.3861
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.9891,
-    "warmth": 0.9796,
-    "movement": 0.0561,
-    "density": 0.347,
-    "space": 0.1115,
-    "aggression": 0.9298
-  }
+  "version": "1.0.0"
 }

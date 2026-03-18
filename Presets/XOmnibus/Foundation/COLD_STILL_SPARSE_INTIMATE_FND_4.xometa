@@ -1,45 +1,52 @@
 {
-  "name": "COLD_STILL_SPARSE_INTIMATE_FND_4",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OVERDUB",
-    "OUROBOROS"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.443,
-      "macro_movement": 0.251,
-      "macro_coupling": 0.616,
-      "macro_space": 0.402
-    },
-    "OUROBOROS": {
-      "macro_character": 0.138,
-      "macro_movement": 0.879,
-      "macro_coupling": 0.302,
-      "macro_space": 0.599
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OVERDUB",
-    "target": "OUROBOROS",
-    "amount": 0.565
+    "amount": 0.565,
+    "source": "Overdub",
+    "target": "Ouroboros",
+    "type": "HARMONIC_FOLD"
   },
   "dna": {
+    "aggression": 0.597,
     "brightness": 0.46,
-    "warmth": 0.089,
-    "movement": 0.135,
     "density": 0.036,
+    "movement": 0.135,
     "space": 0.041,
-    "aggression": 0.597
+    "warmth": 0.089
   },
+  "engines": [
+    "Overdub",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.672,
-    "MOVEMENT": 0.632,
     "COUPLING": 0.263,
+    "MOVEMENT": 0.632,
     "SPACE": 0.619
   },
+  "mood": "Foundation",
+  "name": "COLD_STILL_SPARSE_INTIMATE_FND_4",
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.138,
+      "macro_coupling": 0.302,
+      "macro_movement": 0.879,
+      "macro_space": 0.599
+    },
+    "Overdub": {
+      "macro_character": 0.443,
+      "macro_coupling": 0.616,
+      "macro_movement": 0.251,
+      "macro_space": 0.402
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -47,5 +54,6 @@
     "still",
     "sparse",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

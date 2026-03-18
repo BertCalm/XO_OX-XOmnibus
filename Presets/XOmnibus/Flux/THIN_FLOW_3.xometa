@@ -1,48 +1,56 @@
 {
-  "name": "THIN FLOW 3",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERBITE",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.215,
-      "macro_movement": 0.4516,
-      "macro_coupling": 0.2285,
-      "macro_space": 0.3389
-    },
-    "ODDFELIX": {
-      "macro_character": 0.4535,
-      "macro_movement": 0.416,
-      "macro_coupling": 0.0951,
-      "macro_space": 0.4268
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OVERBITE",
-    "target": "ODDFELIX",
-    "amount": 0.6991
+    "amount": 0.6991,
+    "source": "Overbite",
+    "target": "OddfeliX",
+    "type": "VELOCITY_COUPLE"
   },
   "dna": {
+    "aggression": 0.6509,
     "brightness": 0.6054,
-    "warmth": 0.9509,
-    "movement": 0.7018,
     "density": 0.0654,
+    "movement": 0.7018,
     "space": 0.8528,
-    "aggression": 0.6509
+    "warmth": 0.9509
   },
+  "engines": [
+    "Overbite",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.3743,
-    "MOVEMENT": 0.1526,
     "COUPLING": 0.923,
+    "MOVEMENT": 0.1526,
     "SPACE": 0.0671
   },
+  "mood": "Flux",
+  "name": "THIN FLOW 3",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.4535,
+      "macro_coupling": 0.0951,
+      "macro_movement": 0.416,
+      "macro_space": 0.4268
+    },
+    "Overbite": {
+      "macro_character": 0.215,
+      "macro_coupling": 0.2285,
+      "macro_movement": 0.4516,
+      "macro_space": 0.3389
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "sparse",
     "minimal"
-  ]
+  ],
+  "version": "1.0"
 }

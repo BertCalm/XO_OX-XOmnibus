@@ -1,91 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "Glass Marimba",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-05",
+  "description": "Crystalline pitched percussion using FM synthesis to emulate glass marimba bars with bright, clear attack.",
+  "dna": {
+    "aggression": 0.482,
+    "brightness": 0.951,
+    "density": 0.556,
+    "movement": 0.607,
+    "space": 0.475,
+    "warmth": 0.533
+  },
   "engines": [
     "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Crystalline pitched percussion using FM synthesis to emulate glass marimba bars with bright, clear attack.",
-  "tags": [
-    "marimba",
-    "glass",
-    "pitched",
-    "FM",
-    "crystalline"
-  ],
+  "legacy": {
+    "sourceCategory": "Grounded",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "Snap+Morph",
     "Bloom",
     "Coupling",
     "Space"
   ],
-  "couplingIntensity": "None",
-  "tempo": 120,
-  "created": "2026-03-05",
-  "legacy": {
-    "sourceInstrument": "OddfeliX",
-    "sourceCategory": "Grounded",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Glass Marimba",
   "parameters": {
     "OddfeliX": {
+      "compAttack": 24.494,
+      "compRatio": 6.874,
+      "compRelease": 226.206,
+      "compThreshold": -19.747,
+      "compressorEnabled": 1,
       "couplingAmount": 0.071,
-      "masterBalance": -0.592,
-      "xOscMode": 1,
-      "xSnap": 0.79,
-      "xDecay": 1.562,
-      "xFilterCutoff": 9297.675,
-      "xFilterReso": 0.59,
-      "xDetune": 24.494,
-      "xLevel": 0.994,
-      "xPitchLock": 1,
-      "xUnison": 1,
-      "xPolyphony": 2,
-      "oMorph": 2.924,
-      "oBloom": 1.562,
-      "oDecay": 2.937,
-      "oSustain": 0.587,
-      "oRelease": 1.562,
-      "oFilterCutoff": 6648.256,
-      "oFilterReso": 0.49,
-      "oDrift": 0.49,
-      "oSub": 0.687,
-      "oDetune": 24.494,
-      "oLevel": 0.492,
-      "oPolyphony": 2,
+      "delayEnabled": 1,
+      "delayFeedback": 0.492,
+      "delayMix": 0.344,
+      "delayTime": 0.75,
+      "delayWobble": 0.294,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
       "macro1": 0.542,
       "macro2": 0.532,
       "macro3": 0.604,
       "macro4": 0.595,
-      "delayEnabled": 1,
-      "delayTime": 0.75,
-      "delayFeedback": 0.492,
-      "delayMix": 0.344,
-      "delayWobble": 0.294,
-      "reverbEnabled": 1,
-      "reverbDecay": 0.641,
-      "reverbSize": 0.885,
-      "reverbMix": 0.295,
-      "reverbDamping": 0.59,
-      "phaserEnabled": 0,
-      "phaserRate": 0.5,
+      "masterBalance": -0.592,
+      "oBloom": 1.562,
+      "oDecay": 2.937,
+      "oDetune": 24.494,
+      "oDrift": 0.49,
+      "oFilterCutoff": 6648.256,
+      "oFilterReso": 0.49,
+      "oLevel": 0.492,
+      "oMorph": 2.924,
+      "oPolyphony": 2,
+      "oRelease": 1.562,
+      "oSub": 0.687,
+      "oSustain": 0.587,
       "phaserDepth": 0.5,
+      "phaserEnabled": 0,
       "phaserMix": 0.3,
-      "lofiEnabled": 0,
-      "lofiBitDepth": 12.0,
-      "lofiRateReduce": 1.0,
-      "lofiWowFlutter": 0.0,
-      "lofiMix": 0.3,
-      "compressorEnabled": 1,
-      "compThreshold": -19.747,
-      "compRatio": 6.874,
-      "compAttack": 24.494,
-      "compRelease": 226.206
+      "phaserRate": 0.5,
+      "reverbDamping": 0.59,
+      "reverbDecay": 0.641,
+      "reverbEnabled": 1,
+      "reverbMix": 0.295,
+      "reverbSize": 0.885,
+      "xDecay": 1.562,
+      "xDetune": 24.494,
+      "xFilterCutoff": 9297.675,
+      "xFilterReso": 0.59,
+      "xLevel": 0.994,
+      "xOscMode": 1,
+      "xPitchLock": 1,
+      "xPolyphony": 2,
+      "xSnap": 0.79,
+      "xUnison": 1
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": {
     "bpm": 120.0,
     "swing": 0.195,
@@ -96,32 +95,32 @@
         "muted": false,
         "steps": [
           {
+            "active": false,
             "index": 0,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
+            "active": false,
             "index": 4,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
+            "active": false,
             "index": 8,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
-            "index": 12,
             "active": false,
+            "index": 12,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           }
         ]
       },
@@ -131,18 +130,18 @@
         "muted": false,
         "steps": [
           {
-            "index": 4,
             "active": false,
+            "index": 4,
             "note": 38,
-            "velocity": 0.8,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8
           },
           {
-            "index": 12,
             "active": false,
+            "index": 12,
             "note": 38,
-            "velocity": 0.8,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8
           }
         ]
       },
@@ -158,50 +157,51 @@
         "muted": false,
         "steps": [
           {
+            "active": false,
             "index": 1,
-            "active": false,
             "note": 72,
-            "velocity": 0.8740254735513651,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8740254735513651
           },
           {
+            "active": false,
             "index": 6,
-            "active": false,
             "note": 60,
-            "velocity": 0.8759793888721568,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8759793888721568
           },
           {
+            "active": false,
             "index": 7,
-            "active": false,
             "note": 62,
-            "velocity": 0.8519031102657093,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8519031102657093
           },
           {
+            "active": false,
             "index": 10,
-            "active": false,
             "note": 70,
-            "velocity": 0.596773887448193,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.596773887448193
           },
           {
-            "index": 12,
             "active": false,
+            "index": 12,
             "note": 67,
-            "velocity": 0.8721066299760962,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8721066299760962
           }
         ]
       }
     ]
   },
-  "dna": {
-    "brightness": 0.951,
-    "warmth": 0.533,
-    "movement": 0.607,
-    "density": 0.556,
-    "space": 0.475,
-    "aggression": 0.482
-  }
+  "tags": [
+    "marimba",
+    "glass",
+    "pitched",
+    "FM",
+    "crystalline"
+  ],
+  "tempo": 120,
+  "version": "1.0.0"
 }

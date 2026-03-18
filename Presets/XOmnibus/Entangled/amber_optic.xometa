@@ -1,50 +1,58 @@
 {
-  "name": "Amber Optic",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.675,
+    "source": "Ocelot",
+    "target": "Optic",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.75,
+    "density": 0.45,
+    "movement": 0.55,
+    "space": 0.5,
+    "warmth": 0.85
+  },
   "engines": [
-    "OCELOT",
-    "OPTIC"
+    "Ocelot",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.575,
+    "COUPLING": 0.675,
+    "MOVEMENT": 0.575,
+    "SPACE": 0.475
+  },
+  "mood": "Entangled",
+  "name": "Amber Optic",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.675,
-      "macro_movement": 0.725,
       "macro_coupling": 0.575,
+      "macro_movement": 0.725,
       "macro_space": 0.475
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.475,
-      "macro_movement": 0.425,
       "macro_coupling": 0.575,
+      "macro_movement": 0.425,
       "macro_space": 0.475
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OCELOT",
-    "target": "OPTIC",
-    "amount": 0.675
-  },
-  "dna": {
-    "brightness": 0.75,
-    "warmth": 0.85,
-    "movement": 0.55,
-    "density": 0.45,
-    "space": 0.5,
-    "aggression": 0.4
-  },
-  "macros": {
-    "CHARACTER": 0.575,
-    "MOVEMENT": 0.575,
-    "COUPLING": 0.675,
-    "SPACE": 0.475
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "warm",
     "optical"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK KINETIC VIOLENT VAST 3",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.0755,
-    "movement": 0.9474,
-    "aggression": 0.9098,
-    "space": 0.9109,
-    "warmth": 0.5174,
-    "density": 0.5998
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Extreme",
+  "couplingType": "DRIFT",
+  "description": "Ultra-diverse Entangled preset — dark kinetic violent vast. Designed for DRIFT coupling with XOblongBob.",
   "dna": {
-    "brightness": 0.0755,
-    "movement": 0.9474,
     "aggression": 0.9098,
+    "brightness": 0.0755,
+    "density": 0.5998,
+    "movement": 0.9474,
     "space": 0.9109,
-    "warmth": 0.5174,
-    "density": 0.5998
+    "warmth": 0.5174
   },
   "engines": [
-    "XOblongBob"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark kinetic violent vast. Designed for DRIFT coupling with XOblongBob.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "drift",
-    "oblong"
+    "Oblong"
   ],
   "macroLabels": [
     "SURGE",
@@ -36,15 +23,28 @@
     "EXPANSE",
     "CRUSH"
   ],
-  "couplingType": "DRIFT",
-  "couplingIntensity": "Extreme",
+  "mood": "Entangled",
+  "name": "DARK KINETIC VIOLENT VAST 3",
   "parameters": {
-    "XOblongBob": {
-      "couplingLevel": 0.673,
-      "couplingBus": 2
+    "Oblong": {
+      "couplingBus": 2,
+      "couplingLevel": 0.673
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9098,
+    "brightness": 0.0755,
+    "density": 0.5998,
+    "movement": 0.9474,
+    "space": 0.9109,
+    "warmth": 0.5174
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "drift",
+    "oblong"
+  ],
+  "version": "1.0.0"
 }

@@ -1,49 +1,57 @@
 {
-  "name": "STELLAR FLUX",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORPHICA",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.35,
-      "macro_movement": 0.65,
-      "macro_coupling": 0.781,
-      "macro_space": 0.652
-    },
-    "ORBITAL": {
-      "macro_character": 0.754,
-      "macro_movement": 0.95,
-      "macro_coupling": 0.199,
-      "macro_space": 0.02
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_LOCK",
-    "source": "ORPHICA",
-    "target": "ORBITAL",
-    "amount": 0.9
+    "amount": 0.9,
+    "source": "Orphica",
+    "target": "Orbital",
+    "type": "HARMONIC_LOCK"
   },
   "dna": {
+    "aggression": 0.524,
     "brightness": 0.968,
-    "warmth": 0.651,
-    "movement": 0.699,
     "density": 0.021,
+    "movement": 0.699,
     "space": 0.212,
-    "aggression": 0.524
+    "warmth": 0.651
   },
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.552,
-    "MOVEMENT": 0.8,
     "COUPLING": 0.49,
+    "MOVEMENT": 0.8,
     "SPACE": 0.336
   },
+  "mood": "Flux",
+  "name": "STELLAR FLUX",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.754,
+      "macro_coupling": 0.199,
+      "macro_movement": 0.95,
+      "macro_space": 0.02
+    },
+    "Orphica": {
+      "macro_character": 0.35,
+      "macro_coupling": 0.781,
+      "macro_movement": 0.65,
+      "macro_space": 0.652
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "extreme",
     "low-density"
-  ]
+  ],
+  "version": "1.0"
 }

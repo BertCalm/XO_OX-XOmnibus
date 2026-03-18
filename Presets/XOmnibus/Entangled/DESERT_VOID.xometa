@@ -1,48 +1,56 @@
 {
-  "name": "DESERT VOID",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORCA",
-    "OBSIDIAN"
-  ],
-  "parameters": {
-    "ORCA": {
-      "macro_character": 0.225,
-      "macro_movement": 0.973,
-      "macro_coupling": 0.298,
-      "macro_space": 0.289
-    },
-    "OBSIDIAN": {
-      "macro_character": 0.207,
-      "macro_movement": 0.705,
-      "macro_coupling": 0.317,
-      "macro_space": 0.349
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORCA",
-    "target": "OBSIDIAN",
-    "amount": 0.847
+    "amount": 0.847,
+    "source": "Orca",
+    "target": "Obsidian",
+    "type": "PITCH_SYNC"
   },
   "dna": {
+    "aggression": 0.38,
     "brightness": 0.795,
-    "warmth": 0.273,
-    "movement": 0.122,
     "density": 0.091,
+    "movement": 0.122,
     "space": 0.677,
-    "aggression": 0.38
+    "warmth": 0.273
   },
+  "engines": [
+    "Orca",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.98,
-    "MOVEMENT": 0.818,
     "COUPLING": 0.955,
+    "MOVEMENT": 0.818,
     "SPACE": 0.805
   },
+  "mood": "Entangled",
+  "name": "DESERT VOID",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.207,
+      "macro_coupling": 0.317,
+      "macro_movement": 0.705,
+      "macro_space": 0.349
+    },
+    "Orca": {
+      "macro_character": 0.225,
+      "macro_coupling": 0.298,
+      "macro_movement": 0.973,
+      "macro_space": 0.289
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "minimal",
     "negative-space"
-  ]
+  ],
+  "version": "1.0"
 }

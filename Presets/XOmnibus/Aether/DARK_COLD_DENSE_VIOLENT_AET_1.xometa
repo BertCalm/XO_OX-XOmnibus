@@ -1,14 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD DENSE VIOLENT AET 1",
-  "mood": "Aether",
-  "engines": [
-    "ODDFELIX",
-    "OVERWORLD"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, cold, dense.",
+  "coupling": [
+    {
+      "amount": 0.629,
+      "destination": "OVERWORLD",
+      "source": "ODDFELIX",
+      "type": "FREQUENCY_SHIFT"
+    }
+  ],
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — aether, dark, cold, dense.",
+  "dna": {
+    "aggression": 0.906,
+    "brightness": 0.048,
+    "density": 0.95,
+    "movement": 0.502,
+    "space": 0.421,
+    "warmth": 0.075
+  },
+  "engines": [
+    "OddfeliX",
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "DARK COLD DENSE VIOLENT AET 1",
+  "parameters": {
+    "OddfeliX": {
+      "level": 0.77,
+      "pan": 0.017
+    },
+    "Overworld": {
+      "level": 0.807,
+      "pan": 0.014
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "dark",
@@ -17,40 +51,6 @@
     "violent",
     "ultra-diverse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.048,
-    "warmth": 0.075,
-    "movement": 0.502,
-    "density": 0.95,
-    "space": 0.421,
-    "aggression": 0.906
-  },
-  "parameters": {
-    "ODDFELIX": {
-      "level": 0.77,
-      "pan": 0.017
-    },
-    "OVERWORLD": {
-      "level": 0.807,
-      "pan": 0.014
-    }
-  },
-  "coupling": [
-    {
-      "source": "ODDFELIX",
-      "destination": "OVERWORLD",
-      "type": "FREQUENCY_SHIFT",
-      "amount": 0.629
-    }
-  ],
-  "sequencer": null
+  "version": "1.0.0"
 }

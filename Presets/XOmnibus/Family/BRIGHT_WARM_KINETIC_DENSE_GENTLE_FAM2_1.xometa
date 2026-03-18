@@ -1,45 +1,52 @@
 {
-  "name": "BRIGHT WARM KINETIC DENSE GENTLE FAM2 1",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.457,
+    "source": "Osprey",
+    "target": "Osteria",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.028,
+    "brightness": 0.936,
+    "density": 0.886,
+    "movement": 0.93,
+    "space": 0.633,
+    "warmth": 0.914
+  },
   "engines": [
-    "OSPREY",
-    "OSTERIA"
+    "Osprey",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.925,
+    "COUPLING": 0.457,
+    "MOVEMENT": 0.93,
+    "SPACE": 0.633
+  },
+  "mood": "Family",
+  "name": "BRIGHT WARM KINETIC DENSE GENTLE FAM2 1",
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.925,
-      "macro_movement": 0.93,
       "macro_coupling": 0.457,
+      "macro_movement": 0.93,
       "macro_space": 0.633
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.93,
-      "macro_movement": 0.927,
       "macro_coupling": 0.475,
+      "macro_movement": 0.927,
       "macro_space": 0.68
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OSPREY",
-    "target": "OSTERIA",
-    "amount": 0.457
-  },
-  "dna": {
-    "brightness": 0.936,
-    "warmth": 0.914,
-    "movement": 0.93,
-    "density": 0.886,
-    "space": 0.633,
-    "aggression": 0.028
-  },
-  "macros": {
-    "CHARACTER": 0.925,
-    "MOVEMENT": 0.93,
-    "COUPLING": 0.457,
-    "SPACE": 0.633
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
@@ -47,5 +54,6 @@
     "kinetic",
     "dense",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

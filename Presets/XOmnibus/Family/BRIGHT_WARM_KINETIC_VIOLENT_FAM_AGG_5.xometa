@@ -1,50 +1,58 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_5",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OHM",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OHM": {
-      "macro_character": 0.588,
-      "macro_movement": 0.795,
-      "macro_coupling": 0.612,
-      "macro_space": 0.626
-    },
-    "OBLONG": {
-      "macro_character": 0.546,
-      "macro_movement": 0.776,
-      "macro_coupling": 0.605,
-      "macro_space": 0.616
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OHM",
-    "target": "OBLONG",
-    "amount": 0.821
+    "amount": 0.821,
+    "source": "Ohm",
+    "target": "Oblong",
+    "type": "SPECTRAL_MORPH"
   },
   "dna": {
+    "aggression": 0.913,
     "brightness": 0.886,
-    "warmth": 0.934,
-    "movement": 0.898,
     "density": 0.523,
+    "movement": 0.898,
     "space": 0.567,
-    "aggression": 0.913
+    "warmth": 0.934
   },
+  "engines": [
+    "Ohm",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.588,
-    "MOVEMENT": 0.795,
     "COUPLING": 0.612,
+    "MOVEMENT": 0.795,
     "SPACE": 0.626
   },
+  "mood": "Family",
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_5",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.546,
+      "macro_coupling": 0.605,
+      "macro_movement": 0.776,
+      "macro_space": 0.616
+    },
+    "Ohm": {
+      "macro_character": 0.588,
+      "macro_coupling": 0.612,
+      "macro_movement": 0.795,
+      "macro_space": 0.626
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "bright",
     "warm",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

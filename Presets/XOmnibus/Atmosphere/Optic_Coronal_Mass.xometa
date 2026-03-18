@@ -1,13 +1,57 @@
 {
-  "schema_version": 1,
-  "name": "Optic Coronal Mass",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Near-maximum everything. The pulse is no longer a pulse — it is a continuous charged ejection. The atmosphere of a coronal mass event: light as storm.",
+  "dna": {
+    "aggression": 0.75,
+    "brightness": 0.95,
+    "density": 0.88,
+    "movement": 0.95,
+    "space": 0.58,
+    "warmth": 0.08
+  },
   "engines": [
     "Optic"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "Near-maximum everything. The pulse is no longer a pulse \u2014 it is a continuous charged ejection. The atmosphere of a coronal mass event: light as storm.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Optic Coronal Mass",
+  "parameters": {
+    "Optic": {
+      "optic_autoPulse": 1,
+      "optic_inputGain": 1.0,
+      "optic_modDepth": 0.95,
+      "optic_modMixPulse": 0.92,
+      "optic_modMixSpec": 0.88,
+      "optic_pulseAccent": 0.98,
+      "optic_pulseEvolve": 0.95,
+      "optic_pulseRate": 0.92,
+      "optic_pulseShape": 0.88,
+      "optic_pulseSubdiv": 0.92,
+      "optic_pulseSwing": 0.55,
+      "optic_reactivity": 0.95,
+      "optic_vizFeedback": 0.95,
+      "optic_vizIntensity": 0.88,
+      "optic_vizMode": 3,
+      "optic_vizSpeed": 0.98
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "storm",
@@ -15,50 +59,6 @@
     "coronal-mass",
     "solar"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Optic": {
-      "optic_reactivity": 0.95,
-      "optic_inputGain": 1.0,
-      "optic_autoPulse": 1,
-      "optic_pulseRate": 0.92,
-      "optic_pulseShape": 0.88,
-      "optic_pulseSwing": 0.55,
-      "optic_pulseEvolve": 0.95,
-      "optic_pulseSubdiv": 0.92,
-      "optic_pulseAccent": 0.98,
-      "optic_modDepth": 0.95,
-      "optic_modMixPulse": 0.92,
-      "optic_modMixSpec": 0.88,
-      "optic_vizMode": 3,
-      "optic_vizFeedback": 0.95,
-      "optic_vizSpeed": 0.98,
-      "optic_vizIntensity": 0.88
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.95,
-    "warmth": 0.08,
-    "movement": 0.95,
-    "density": 0.88,
-    "space": 0.58,
-    "aggression": 0.75
-  }
+  "version": "1.0.0"
 }

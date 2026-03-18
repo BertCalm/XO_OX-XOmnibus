@@ -1,49 +1,57 @@
 {
-  "name": "BLIZZARD NET",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.743,
+    "source": "Ocelot",
+    "target": "Overdub",
+    "type": "SPATIAL_COUPLE"
+  },
+  "dna": {
+    "aggression": 0.697,
+    "brightness": 0.565,
+    "density": 0.079,
+    "movement": 0.479,
+    "space": 0.44,
+    "warmth": 0.051
+  },
   "engines": [
-    "OCELOT",
-    "OVERDUB"
+    "Ocelot",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.276,
+    "COUPLING": 0.76,
+    "MOVEMENT": 0.59,
+    "SPACE": 0.597
+  },
+  "mood": "Entangled",
+  "name": "BLIZZARD NET",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.307,
-      "macro_movement": 0.231,
       "macro_coupling": 0.721,
+      "macro_movement": 0.231,
       "macro_space": 0.316
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.743,
-      "macro_movement": 0.951,
       "macro_coupling": 0.69,
+      "macro_movement": 0.951,
       "macro_space": 0.192
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OCELOT",
-    "target": "OVERDUB",
-    "amount": 0.743
-  },
-  "dna": {
-    "brightness": 0.565,
-    "warmth": 0.051,
-    "movement": 0.479,
-    "density": 0.079,
-    "space": 0.44,
-    "aggression": 0.697
-  },
-  "macros": {
-    "CHARACTER": 0.276,
-    "MOVEMENT": 0.59,
-    "COUPLING": 0.76,
-    "SPACE": 0.597
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-  ]
+  ],
+  "version": "1.0"
 }

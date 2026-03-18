@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Skewed Automata",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "OBLIQUE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.529,
+        "engineA": "Outwit",
+        "engineB": "Oblique",
+        "type": "TIMBRAL_WARP"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
   "description": "OBLIQUE prism skew modulates OUTWIT arm stagger phase — diagonal time in cellular space",
-  "tags": [
-    "coupling",
-    "entangled",
-    "outwit",
-    "oblique",
-    "prism",
-    "skewed"
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.55,
+    "density": 0.65,
+    "movement": 0.75,
+    "space": 0.525,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Outwit",
+    "Oblique"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,59 +32,52 @@
   ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.623,
     "COUPLING": 0.782,
+    "MOVEMENT": 0.623,
     "SPACE": 0.643
   },
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.55,
-    "space": 0.525,
-    "aggression": 0.55,
-    "movement": 0.75,
-    "warmth": 0.45,
-    "density": 0.65
-  },
-  "sonic_dna": {
-    "brightness": 0.55,
-    "space": 0.525,
-    "aggression": 0.55,
-    "movement": 0.75,
-    "warmth": 0.45,
-    "density": 0.65
-  },
+  "mood": "Entangled",
+  "name": "Skewed Automata",
   "parameters": {
-    "OUTWIT": {
-      "owit_rule": 22,
-      "owit_arms": 6,
-      "owit_cellSize": 0.415,
-      "owit_density": 0.594,
-      "owit_evolveRate": 0.28,
-      "owit_mutateProb": 0.317,
-      "owit_pitchSpread": 0.644,
-      "owit_filterCutoff": 0.536,
-      "owit_filterReso": 0.215,
+    "Outwit": {
       "owit_ampAttack": 0.044,
       "owit_ampRelease": 0.245,
-      "owit_outputLevel": 0.798,
-      "owit_couplingLevel": 0.755,
-      "owit_couplingBus": 0,
       "owit_armStagger": 0.482,
+      "owit_arms": 6,
       "owit_borderMode": 1,
-      "owit_inkCloudMix": 0.447,
+      "owit_cellSize": 0.415,
       "owit_chroma1": 0.529,
       "owit_chroma2": 0.822,
-      "owit_polyDepth": 0.753
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.755,
+      "owit_density": 0.594,
+      "owit_evolveRate": 0.28,
+      "owit_filterCutoff": 0.536,
+      "owit_filterReso": 0.215,
+      "owit_inkCloudMix": 0.447,
+      "owit_mutateProb": 0.317,
+      "owit_outputLevel": 0.798,
+      "owit_pitchSpread": 0.644,
+      "owit_polyDepth": 0.753,
+      "owit_rule": 22
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OUTWIT",
-        "engineB": "OBLIQUE",
-        "type": "TIMBRAL_WARP",
-        "amount": 0.529
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.55,
+    "brightness": 0.55,
+    "density": 0.65,
+    "movement": 0.75,
+    "space": 0.525,
+    "warmth": 0.45
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "oblique",
+    "prism",
+    "skewed"
+  ],
+  "version": "1.0.0"
 }

@@ -1,45 +1,52 @@
 {
-  "name": "COLD_KINETIC_INTIMATE_DENSE_AET2_2",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OPAL",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.4258,
-      "macro_movement": 0.9091,
-      "macro_coupling": 0.8842,
-      "macro_space": 0.0361
-    },
-    "OBSCURA": {
-      "macro_character": 0.3867,
-      "macro_movement": 0.8741,
-      "macro_coupling": 0.8651,
-      "macro_space": 0.042
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OPAL",
-    "target": "OBSCURA",
-    "amount": 0.7678
+    "amount": 0.7678,
+    "source": "Opal",
+    "target": "Obscura",
+    "type": "TIMBRE_BLEND"
   },
   "dna": {
-    "warmth": 0.0418,
+    "aggression": 0.3569,
+    "brightness": 0.4063,
+    "density": 0.8879,
     "movement": 0.8838,
     "space": 0.038,
-    "density": 0.8879,
-    "brightness": 0.4063,
-    "aggression": 0.3569
+    "warmth": 0.0418
   },
+  "engines": [
+    "Opal",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.4062,
-    "MOVEMENT": 0.8916,
     "COUPLING": 0.7678,
+    "MOVEMENT": 0.8916,
     "SPACE": 0.038
   },
+  "mood": "Aether",
+  "name": "COLD_KINETIC_INTIMATE_DENSE_AET2_2",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.3867,
+      "macro_coupling": 0.8651,
+      "macro_movement": 0.8741,
+      "macro_space": 0.042
+    },
+    "Opal": {
+      "macro_character": 0.4258,
+      "macro_coupling": 0.8842,
+      "macro_movement": 0.9091,
+      "macro_space": 0.0361
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +56,6 @@
     "intimate",
     "dense",
     "mechanical"
-  ]
+  ],
+  "version": "1.0"
 }

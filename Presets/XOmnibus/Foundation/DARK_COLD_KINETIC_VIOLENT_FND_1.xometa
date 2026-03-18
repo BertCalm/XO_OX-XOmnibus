@@ -1,45 +1,52 @@
 {
-  "name": "DARK_COLD_KINETIC_VIOLENT_FND_1",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.515,
+    "source": "OddfeliX",
+    "target": "Ouroboros",
+    "type": "TIMBRE_BLEND"
+  },
+  "dna": {
+    "aggression": 0.886,
+    "brightness": 0.052,
+    "density": 0.517,
+    "movement": 0.915,
+    "space": 0.389,
+    "warmth": 0.107
+  },
   "engines": [
-    "ODDFELIX",
-    "OUROBOROS"
+    "OddfeliX",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.296,
+    "COUPLING": 0.9,
+    "MOVEMENT": 0.877,
+    "SPACE": 0.347
+  },
+  "mood": "Foundation",
+  "name": "DARK_COLD_KINETIC_VIOLENT_FND_1",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.63,
-      "macro_movement": 0.228,
       "macro_coupling": 0.225,
+      "macro_movement": 0.228,
       "macro_space": 0.565
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.345,
-      "macro_movement": 0.159,
       "macro_coupling": 0.719,
+      "macro_movement": 0.159,
       "macro_space": 0.596
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ODDFELIX",
-    "target": "OUROBOROS",
-    "amount": 0.515
-  },
-  "dna": {
-    "brightness": 0.052,
-    "warmth": 0.107,
-    "movement": 0.915,
-    "density": 0.517,
-    "space": 0.389,
-    "aggression": 0.886
-  },
-  "macros": {
-    "CHARACTER": 0.296,
-    "MOVEMENT": 0.877,
-    "COUPLING": 0.9,
-    "SPACE": 0.347
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -48,5 +55,6 @@
     "kinetic",
     "violent",
     "aggressive"
-  ]
+  ],
+  "version": "1.0"
 }

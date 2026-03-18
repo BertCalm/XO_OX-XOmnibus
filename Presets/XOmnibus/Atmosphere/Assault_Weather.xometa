@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Assault Weather",
-  "mood": "Atmosphere",
-  "engines": [
-    "OVERWORLD"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. OVERWORLD aggressive register.",
+  "dna": {
+    "aggression": 0.816,
+    "brightness": 0.366,
+    "density": 0.594,
+    "movement": 0.709,
+    "space": 0.344,
+    "warmth": 0.489
+  },
+  "engines": [
+    "Overworld"
+  ],
+  "macroLabels": [
+    "ERA",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "COUPLING": 0.168,
+    "ERA": 0.857,
+    "GLITCH": 0.807,
+    "SPACE": 0.26
+  },
+  "mood": "Atmosphere",
+  "name": "Assault Weather",
+  "parameters": {
+    "Overworld": {
+      "coupling": 0.168,
+      "era": 0.857,
+      "glitch": 0.807,
+      "space": 0.26
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -16,36 +47,5 @@
     "pressure",
     "fierce"
   ],
-  "macroLabels": [
-    "ERA",
-    "GLITCH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.366,
-    "warmth": 0.489,
-    "movement": 0.709,
-    "density": 0.594,
-    "space": 0.344,
-    "aggression": 0.816
-  },
-  "parameters": {
-    "OVERWORLD": {
-      "era": 0.857,
-      "glitch": 0.807,
-      "coupling": 0.168,
-      "space": 0.26
-    }
-  },
-  "macros": {
-    "ERA": 0.857,
-    "GLITCH": 0.807,
-    "COUPLING": 0.168,
-    "SPACE": 0.26
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

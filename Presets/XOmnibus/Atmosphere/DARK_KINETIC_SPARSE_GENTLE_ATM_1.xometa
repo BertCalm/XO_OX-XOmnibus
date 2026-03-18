@@ -1,50 +1,58 @@
 {
-  "name": "DARK_KINETIC_SPARSE_GENTLE_ATM_1",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ODDFELIX",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "ODDFELIX": {
-      "macro_character": 0.64,
-      "macro_movement": 0.885,
-      "macro_coupling": 0.461,
-      "macro_space": 0.434
-    },
-    "OCEANIC": {
-      "macro_character": 0.698,
-      "macro_movement": 0.87,
-      "macro_coupling": 0.742,
-      "macro_space": 0.444
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ODDFELIX",
-    "target": "OCEANIC",
-    "amount": 0.752
+    "amount": 0.752,
+    "source": "OddfeliX",
+    "target": "Oceanic",
+    "type": "AMPLITUDE_MOD"
   },
   "dna": {
+    "aggression": 0.062,
     "brightness": 0.074,
-    "warmth": 0.49,
-    "movement": 0.968,
     "density": 0.059,
+    "movement": 0.968,
     "space": 0.46,
-    "aggression": 0.062
+    "warmth": 0.49
   },
+  "engines": [
+    "OddfeliX",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.64,
-    "MOVEMENT": 0.885,
     "COUPLING": 0.461,
+    "MOVEMENT": 0.885,
     "SPACE": 0.434
   },
+  "mood": "Atmosphere",
+  "name": "DARK_KINETIC_SPARSE_GENTLE_ATM_1",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.698,
+      "macro_coupling": 0.742,
+      "macro_movement": 0.87,
+      "macro_space": 0.444
+    },
+    "OddfeliX": {
+      "macro_character": 0.64,
+      "macro_coupling": 0.461,
+      "macro_movement": 0.885,
+      "macro_space": 0.434
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "kinetic",
     "sparse",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,14 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "DARK_STILL_DENSE_INTIMATE_GENTLE_ENT3_3",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8839,
+    "source": "Oracle",
+    "target": "Ole",
+    "type": "RESONANCE_SHARE"
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_STILL_DENSE_INTIMATE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.0776,
+    "brightness": 0.0293,
+    "density": 0.9549,
+    "movement": 0.0139,
+    "space": 0.129,
+    "warmth": 0.5585
+  },
   "engines": [
-    "ORACLE",
-    "OLE"
+    "Oracle",
+    "Ole"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_STILL_DENSE_INTIMATE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7379,
+    "COUPLING": 0.8786,
+    "MOVEMENT": 0.01,
+    "SPACE": 0.5489
+  },
+  "mood": "Entangled",
+  "name": "DARK_STILL_DENSE_INTIMATE_GENTLE_ENT3_3",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.793,
+      "macro_coupling": 0.9394,
+      "macro_movement": 0.01,
+      "macro_space": 0.6502
+    },
+    "Oracle": {
+      "macro_character": 0.6827,
+      "macro_coupling": 0.8179,
+      "macro_movement": 0.01,
+      "macro_space": 0.4475
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +66,6 @@
     "dense",
     "intimate"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.6827,
-      "macro_movement": 0.01,
-      "macro_coupling": 0.8179,
-      "macro_space": 0.4475
-    },
-    "OLE": {
-      "macro_character": 0.793,
-      "macro_movement": 0.01,
-      "macro_coupling": 0.9394,
-      "macro_space": 0.6502
-    }
-  },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORACLE",
-    "target": "OLE",
-    "amount": 0.8839
-  },
-  "macros": {
-    "CHARACTER": 0.7379,
-    "MOVEMENT": 0.01,
-    "COUPLING": 0.8786,
-    "SPACE": 0.5489
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.0293,
-    "warmth": 0.5585,
-    "movement": 0.0139,
-    "density": 0.9549,
-    "space": 0.129,
-    "aggression": 0.0776
-  }
+  "version": "1.0.0"
 }
