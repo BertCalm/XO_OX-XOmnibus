@@ -1,0 +1,104 @@
+{
+  "pack_name": "MACHINE GUN REEF",
+  "subtitle": "Four Engines. Percussion and Predators.",
+  "tagline": "Where the reef fights back.",
+  "version": "1.0.0",
+  "release_date": "TBD",
+  "format": "Akai MPC Expansion (.xpn)",
+  "price": "$15",
+  "license": "Free for personal and commercial use",
+  "tier": "Signal",
+  "engines": [
+    "ONSET",
+    "OCEANIC",
+    "ORCA",
+    "OBESE"
+  ],
+  "engine_colors": {
+    "ONSET": "#0066FF",
+    "OCEANIC": "#00B4A0",
+    "ORCA": "#1B2838",
+    "OBESE": "#FF1493"
+  },
+  "design_philosophy": "TIDE TABLES showed the gentle side of XO_OX — arrival at shore, open water, surface shimmer. MACHINE GUN REEF goes deeper and more aggressive. This is the reef at night, in current, alive with violence and beauty. Percussion-forward with massive low-end architecture and swarm chaos.",
+  "programs": [
+    {
+      "program_name": "Incoming",
+      "engine": "ONSET",
+      "description": "ONSET's full synthesis drum kit — 8 voices: kick, snare, closed hat, open hat, clap, tom, perc, FX. Heavy, punchy, and fast. The Machine Gun.",
+      "pads": 16,
+      "notes": "Pads 1-8: primary kit voices. Pads 9-16: velocity variations and FX variants. XVC cross-voice coupling active."
+    },
+    {
+      "program_name": "The Reef",
+      "engine": "OCEANIC",
+      "description": "OCEANIC's bioluminescent swarm — bass pads, atmospheric motion, and chromatophore modulation. 16 zones across 4 octaves of reef sounds.",
+      "pads": 16,
+      "notes": "Low octave: sub and bass swarm tones. Mid: harmonic swarm clusters. High: shimmer and scatter. COUPLING macro routes to ONSET for cross-engine rhythm."
+    },
+    {
+      "program_name": "Apex",
+      "engine": "ORCA",
+      "description": "ORCA's predator engine — wavetable bass and leads with breach dynamics, echolocation echo, and deep ocean filtering. The hunter.",
+      "pads": 16,
+      "notes": "Velocity-sensitive filter sweep (D001 active). Breach threshold creates dynamic transient bursts. Echo routes to reverb tail."
+    },
+    {
+      "program_name": "Pressure",
+      "engine": "OBESE",
+      "description": "OBESE's fat bass architecture — sub-heavy, saturated, with Mojo axis from warm analog to digital precision. The weight.",
+      "pads": 16,
+      "notes": "Pads 1-8: foundation bass voices. Pads 9-12: arpeggiator patterns. Pads 13-16: character extremes (full analog to digital crush)."
+    },
+    {
+      "program_name": "Full Reef",
+      "engine": "ONSET + OCEANIC + ORCA + OBESE",
+      "description": "16 curated pads drawing the best from all 4 engines — a complete production toolkit in one program.",
+      "pads": 16,
+      "notes": "Designed for immediate use in a session. Kick, bass, reef texture, swarm, orca lead, pressure pad — 16 pads = full palette."
+    }
+  ],
+  "total_programs": 5,
+  "total_pads": 80,
+  "qa_requirements": {
+    "min_qa_score": 80,
+    "must_pass": [
+      "xpn_full_qa_runner.py",
+      "xpn_pack_format_validator.py",
+      "xpn_validator.py"
+    ],
+    "hardware_test_required": true,
+    "notes": "Paid product — higher bar than TIDE TABLES"
+  },
+  "differentiation_from_tide_tables": {
+    "tide_tables": "Gentle, accessible. ONSET + ODYSSEY + OPAL. Drums + leads + granular. Gateway pack.",
+    "machine_gun_reef": "Aggressive, deep. ONSET + OCEANIC + ORCA + OBESE. Percussion + swarm + predator + fat bass. Premium experience."
+  },
+  "marketing_hooks": [
+    "ONSET at its most aggressive — the Machine Gun mode",
+    "OCEANIC's chromatophore modulation explored for bass players",
+    "ORCA breach dynamics: velocity-triggered transient attacks",
+    "OBESE's Mojo axis: analog warmth to digital edge in one knob",
+    "80 pads across 5 programs — full production toolkit",
+    "$15 shows the depth of XOmnibus beyond the free pack"
+  ],
+  "naming_origin": {
+    "machine_gun": "Anti-machine-gun effect in XPN format — round-robin velocity layers preventing identical sample triggering. Also: the relentless, rapid percussion energy.",
+    "reef": "Coral reef ecosystem — alive, complex, interdependent. The four engines function like reef organisms: ONSET (the rhythmic heartbeat), OCEANIC (the swarm), ORCA (the apex predator), OBESE (the weight that holds everything down)."
+  },
+  "release_checklist": [
+    "All 5 programs designed and fully specified",
+    "All pad names written",
+    "XPM files generated via xpn_drum_export.py and xpn_keygroup_export.py",
+    "Pack validated: xpn_full_qa_runner.py score >= 80",
+    "Pack validated: xpn_pack_format_validator.py PASS",
+    "MPCE_SETUP.md present and accurate",
+    "Cover art created (4 engine colors + reef visual)",
+    "Hardware test on MPC Live II — full load test",
+    "Gumroad listing created with correct price and assets",
+    "Signal post written announcing paid pack",
+    "Pack marketing copy finalized"
+  ],
+  "status": "DESIGN_COMPLETE — awaiting XPM assembly",
+  "next_step": "Use xpn_drum_export.py (ONSET program) + xpn_keygroup_export.py (OCEANIC/ORCA/OBESE programs) to generate XPM files. Then assemble with xpn_bundle_builder.py."
+}
