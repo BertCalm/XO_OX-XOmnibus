@@ -31,11 +31,11 @@
 
 ## Overall Verdict
 
-**CONDITIONAL PASS**
+**PASS ✓**
 
 OVERTONE is one of the most mathematically rigorous engines in the fleet. The continued fraction convergent tables are not decorative — they are the synthesis mechanism, and every layer from the Pi/E/Phi/Sqrt2 constant selection through depth interpolation through partial frequency assignment reflects genuine mathematical thinking. The D003 citations are exemplary and set a standard for the fleet. Doctrines D001, D002, D003, D004, D005, and D006 all pass inspection with real evidence in the DSP loop.
 
-The sole conditional flag is `over_macroCoupling`: the parameter is attached and stored but lacks explicit DSP wiring within `renderBlock()`. In a standalone context (no coupling partner present) this macro does nothing audible. For a fleet where "every declared parameter must affect audio" (D004), this is a narrow but real gap. The fix is straightforward — either apply `macroCoupling` as an output gain scalar on `lastOutputSample`, or add it as a coupling send-amount multiplier in `applyCouplingInput()` and document that its effect is only audible when an Entangled patch is active.
+**Resolution (commit 87ae235):** `over_macroCoupling` standalone effect implemented — at non-zero values, partials 4–7 receive a shimmer flutter via per-partial `lfo1Phase` offset (±0.1 amplitude), creating a physically plausible "harmonic shimmer" that's audible without any coupling partner. The macro also scales coupling receive sensitivity in `applyCouplingInput()` via `recvScale = 0.5f + macroCoupling * 0.5f`. All 24 `over_` parameters confirmed live. Conditional lifted.
 
 ---
 

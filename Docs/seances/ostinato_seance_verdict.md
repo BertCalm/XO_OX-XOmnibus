@@ -25,11 +25,11 @@
 
 ## Overall Verdict
 
-CONDITIONAL PASS
+PASS ✓
 
 OSTINATO has a strong conceptual and physical foundation. The noise-exciter-through-resonant-filter drum model is well-suited to world percussion, the 12 drum character presets are tuned with care, and the CIRCLE cross-voice modulation genuinely differentiates this engine from a simple drum machine. The FIRE macro, mod wheel routing, and velocity-to-cutoff path all satisfy doctrine.
 
-The engine carries two significant D004 failures: eight pattern step parameters (`osti_patternStep0`–`osti_patternStep7`) registered in the parameter layout but with zero DSP implementation in `renderBlock`, and three ADSR parameters (`osti_ampAtk`, `osti_ampSus`, `osti_ampRel`) that are snapshot-read but never applied because `OstiDecayEnv` is a single-stage decay-only envelope. Both groups must be resolved before this engine enters the fleet.
+**Resolution (commits 87ae235 + c902f3a):** Both D004 failures resolved — the 8-step gate sequencer is implemented in `renderBlock()` (advancing `stepIndex` on note-on, skipping notes when gate is closed); `OstiDecayEnv` expanded from single-stage decay to a full 5-argument `trigger(peak, atkSec, susAmp, holdSec, decSec)` ADS+Hold+Decay envelope, with all four env parameters now consumed per voice at note-on time. Per-note parameters (`drumType`, `cutoff`, `res`, envelope) now correctly snapshotted at note-on rather than per-block. Conditional lifted.
 
 ## Required Actions
 

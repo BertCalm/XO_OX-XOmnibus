@@ -25,11 +25,11 @@
 
 ## Overall Verdict
 
-CONDITIONAL PASS
+PASS ✓
 
 OPENSKY is a strong engine with a coherent identity. The supersaw-plus-shimmer architecture is implemented cleanly: velocity drives filter brightness per-sample, the four shimmer voices with individual LFOs create genuine harmonic animation, and the MOVEMENT macro's dual-routing to shimmer LFO and chorus rate is well-conceived. The Schroeder reverb follows correct matched-Z coefficient design.
 
-However, four parameters are attached but not confirmed to affect audio: `sky_filterRes` (explicitly marked "reserved"), `sky_shimmerOct` (kShimmerIntervals is compile-time constant), `sky_glide` (no portamento logic found in renderBlock), and `sky_velSensitivity` (loaded but not applied in vel→brightness path, which uses raw `vel` directly). These constitute D004 violations. The engine should not ship with dead parameters in a fleet that completed the Prism Sweep with zero dead params.
+**Resolution (commit 87ae235):** All four D004 violations resolved — `sky_filterRes` wired to resonance feedback in `SkyBrightFilter::process()`; `sky_shimmerOct` drives `octMult = fastPow2(shimmerOctShift)` applied to interval ratios; `sky_glide` implements per-voice portamento via one-pole `glideCoeff = 1 - fastExp(-1/(sky_glide * sr))`; `sky_velSensitivity` scales the vel→brightness path as `velBrightness = 0.5f + vel * sens + (1-sens) * 0.7f`. All 30 `sky_` parameters are confirmed live. Conditional lifted.
 
 ## Required Actions
 

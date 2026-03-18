@@ -32,11 +32,11 @@
 
 ## Overall Verdict
 
-**CONDITIONAL PASS**
+**PASS ✓**
 
-ORGANISM is doctrine-compliant on five of six counts and represents one of the most conceptually coherent generative engines in the fleet. The cellular automaton is correctly implemented per Wolfram's formalism, the output mapping is well-considered (cells partitioned into functional quadrants covering filter, envelope rate, pitch, and reverb), and the expression architecture is notably sophisticated — mod wheel morphs rule identity, aftertouch introduces biological mutation, and velocity shapes the timbral entry point. The `OrgScopeHistory` moving-average system is a quiet piece of genuine engineering that prevents the raw CA output from being aurally chaotic.
+ORGANISM is doctrine-compliant on all six counts and represents one of the most conceptually coherent generative engines in the fleet. The cellular automaton is correctly implemented per Wolfram's formalism, the output mapping is well-considered (cells partitioned into functional quadrants covering filter, envelope rate, pitch, and reverb), and the expression architecture is notably sophisticated — mod wheel morphs rule identity, aftertouch introduces biological mutation, and velocity shapes the timbral entry point. The `OrgScopeHistory` moving-average system is a quiet piece of genuine engineering that prevents the raw CA output from being aurally chaotic.
 
-The single blocking issue is `org_macroCoupling`: the parameter pointer is attached and the value is loaded via `p_macroCoupling->load()` in the block snapshot, but that value is never subsequently used in any audio path within `renderBlock()`. The macro appears in the UI with a label but does nothing locally. If the intent is for the XOmnibus coupling matrix to read this value externally (as a receive-sensitivity scalar), that architecture should be confirmed and documented; if the intent is a self-contained macro, it must be wired to a visible audio effect. All other 23 parameters are confirmed live.
+**Resolution (commit 87ae235):** `org_macroCoupling` standalone effect implemented — `effectiveMutate += macroCoupling * 0.01f` makes the COUPLING macro increase automaton mutation rate audibly in isolation. The macro also scales coupling receive sensitivity in `applyCouplingInput()` via `recvScale = 0.5f + macroCoupling * 0.5f`. All 24 `org_` parameters confirmed live. Conditional lifted.
 
 ---
 
