@@ -726,6 +726,11 @@ public:
                 // --- Main filter ---
                 voiceSignal = voice.mainFilter.processSample (voiceSignal);
 
+                // --- AudioToRing coupling: ring-modulate voice signal ---
+                // couplingRingModSrc is accumulated in applyCouplingInput() and
+                // zeroed each block before the sample loop (line ~487).
+                voiceSignal *= (1.0f + couplingRingModSrc);
+
                 // --- Apply amplitude envelope, velocity, crossfade ---
                 float gain = ampLevel * voice.velocity * voice.fadeGain;
                 float outL = voiceSignal * gain;

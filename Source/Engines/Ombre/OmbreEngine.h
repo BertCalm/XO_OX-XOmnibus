@@ -325,7 +325,7 @@ public:
             lfoControlCounter = 0;
 
             // LFO1: blend modulation — rate floored at 0.01 Hz for D005 compliance
-            float effectiveLfo1Rate = std::max (lfo1Rate, 0.01f);
+            float effectiveLfo1Rate = juce::jmax (lfo1Rate, 0.01f);
             lfo1Phase += effectiveLfo1Rate * static_cast<float> (kControlRate) / srf;
             if (lfo1Phase > 1.0f) lfo1Phase -= 1.0f;
             // CHARACTER macro maps 0→shimmer (high blend, Opsis biased)
@@ -335,7 +335,7 @@ public:
                         * lfo1Depth * macroMovement;
 
             // LFO2: filter cutoff modulation — slower, dreamy
-            float effectiveLfo2Rate = std::max (lfo2Rate, 0.01f);
+            float effectiveLfo2Rate = juce::jmax (lfo2Rate, 0.01f);
             lfo2Phase += effectiveLfo2Rate * static_cast<float> (kControlRate) / srf;
             if (lfo2Phase > 1.0f) lfo2Phase -= 1.0f;
             lfo2Value = fastSin (lfo2Phase * 6.2831853f)
@@ -560,7 +560,7 @@ public:
                 mixL += outL;
                 mixR += outR;
 
-                peakEnv = std::max (peakEnv, voice.envLevel);
+                peakEnv = juce::jmax (peakEnv, voice.envLevel);
             }
 
             // Write to output buffer
