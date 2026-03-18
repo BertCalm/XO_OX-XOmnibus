@@ -1000,6 +1000,280 @@ The toggle is worded carefully:
 
 Not "cheat mode." Not "skip tutorial." Just a preference.
 
+### Boss Mode — The Climax of Each Level
+
+Each level ends with a **Boss** — a synthesis challenge that tests everything
+you learned in that level. Not a quiz. Not a puzzle with one answer. A creative
+challenge with a target *quality* and Oscar as the judge.
+
+**How Boss Mode works:**
+
+1. **Oscar announces the Boss.** When you hit the final tier of a level, Oscar
+   doesn't just unlock the next bricks — he issues a challenge:
+
+   > *"You've explored every corner of the shallows. Before we go deeper,*
+   > *I want to hear something from you. Build me a sound that breathes —*
+   > *something that changes on its own, without you touching anything.*
+   > *Use what you've learned. I'll be listening."*
+   > — Professor Oscar (Level 1 Boss)
+
+2. **The constraint.** Each Boss has a creative constraint — not "use exactly
+   these bricks" but a *sonic quality* to achieve:
+
+   | Level | Boss Name | Challenge |
+   |-------|-----------|-----------|
+   | 1 | **THE TIDE** | *"Build a sound that breathes."* — Must use at least one LFO modulating a timbral parameter. The sound must evolve audibly without user input. Tests: modulation fundamentals. |
+   | 2 | **THE STORM** | *"Build a sound that responds to how hard you play."* — Must use velocity and/or aftertouch meaningfully. Gentle playing and aggressive playing must sound distinctly different. Tests: expression and dynamics. |
+   | 3 | **THE ABYSS** | *"Build a sound using two OBRIX instances that couldn't exist with one."* — Must use cross-instance coupling. The two instances must depend on each other. Tests: coupling and interaction. |
+   | 4 | **THE KRAKEN** | *"Build something I've never heard before."* — Open-ended. Oscar evaluates originality based on how different your configuration is from all known Easter eggs and Brix Pack presets. Tests: creative synthesis mastery. |
+
+3. **Oscar evaluates.** This is parameter-based analysis, not audio AI.
+   Oscar checks whether the sonic quality is present:
+   - THE TIDE: Is an LFO routed to filter/pitch/wavefold? Is rate > 0? ✓
+   - THE STORM: Is velocity mapped to a timbral param? Does the mapping
+     range exceed a threshold? ✓
+   - THE ABYSS: Are two OBRIX slots active? Is cross-instance modulation
+     non-zero? ✓
+   - THE KRAKEN: Is the brick configuration hash dissimilar (>70% different)
+     from all known combos in the Easter egg + pack database? ✓
+
+4. **Victory.** When you pass, Oscar reacts big:
+   - Gills flash rapidly (celebration animation)
+   - The entire OBRIX canvas does a ripple wave effect
+   - A unique **Boss Trophy** appears in your BrixBox (distinct from Easter eggs)
+   - Oscar delivers a personalized victory line referencing your specific patch
+   - **The next level unlocks.**
+
+5. **No failure state.** You can't "lose" a Boss fight. Oscar gives hints if
+   you're stuck. You can leave and come back. The Boss challenge stays active
+   until you beat it — no timer, no penalty. But you can't advance to the next
+   level without completing it.
+
+   > *"Not quite breathing yet — your LFO is connected, but it's modulating*
+   > *volume, not timbre. Try routing it to the filter cutoff instead.*
+   > *That's where the life is."*
+   > — Professor Oscar (Boss hint)
+
+**Boss Mode visual treatment:**
+
+When a Boss is active, the OBRIX canvas gets a subtle environmental shift:
+- THE TIDE: Gentle wave animation at canvas edges
+- THE STORM: Distant lightning flickers in the background
+- THE ABYSS: Canvas darkens, bioluminescent particles drift upward
+- THE KRAKEN: Tentacle silhouettes at canvas edges, ink wisps in the scope
+
+These are ambient — atmospheric, not distracting. They set the mood without
+cluttering the workspace.
+
+### Levels — The Long Game
+
+Levels are the macro structure. Each level is a complete progression arc
+(tiers + boss), and new levels ship over the lifetime of OBRIX. This is the
+long-tail engagement model.
+
+**Level structure:**
+
+```
+LEVEL 1: "THE REEF" (ships with OBRIX v1.3)
+├── Tier 0: Washed Ashore — basic bricks
+├── Tier 1: Shallow Reef — +waveforms, +effects
+├── Tier 2: Open Water — +FM, +ring mod, +expression, 2 slots
+├── Tier 3: The Deep — full toolkit, 4 slots
+├── Tier 4: Abyssal — secret skins, deep science cards
+├── BOSS: THE TIDE — "build a sound that breathes"
+└── Reward: Level 2 unlocks + "Reef Master" BrixBox badge
+
+LEVEL 2: "THE TRENCH" (ships ~6 months post-launch)
+├── New brick types: Granular source, Spectral filter, Probability gate
+├── New modulator: Euclidean rhythm generator
+├── New effect: Convolution (impulse responses from real ocean spaces)
+├── New Easter eggs: 5 Trench-exclusive combos
+├── Tiers 0–4 with Trench-specific unlock thresholds
+├── BOSS: THE STORM — "build a sound that responds to how hard you play"
+└── Reward: Level 3 unlocks + "Trench Diver" badge + Oscar outfit change
+
+LEVEL 3: "THE RIFT" (ships ~12 months post-launch)
+├── New brick types: Physical modeling string/membrane, Formant source
+├── New modulator: Chaos/Lorenz attractor, Markov chain sequencer
+├── New effect: Shimmer reverb, Spectral morph
+├── Cross-engine bricks: bricks that reference other XOmnibus engines
+│   (e.g., an "Orbital Resonator" brick that uses Orbital's group envelope)
+├── New Easter eggs: 5 Rift-exclusive combos
+├── BOSS: THE ABYSS — "build a sound using two instances that couldn't exist with one"
+└── Reward: Level 4 unlocks + "Rift Walker" badge + Oscar deep-sea form
+
+LEVEL 4: "THE LEVIATHAN" (ships ~18 months post-launch)
+├── New brick types: Machine learning source (neural audio synthesis),
+│   Feedback network (multiple bricks in a loop), Meta-brick (brick that
+│   controls other bricks)
+├── New modulator: Audio-rate modulation (FM/AM between any bricks)
+├── Cross-engine bricks: expanded — any engine's signature DSP as a brick
+├── New Easter eggs: 5 Leviathan-exclusive combos
+├── BOSS: THE KRAKEN — "build something I've never heard before"
+└── Reward: "Leviathan" title + Oscar final form + secret ending sequence
+```
+
+**Level release cadence:**
+
+| Level | Ships | Theme | New Content |
+|-------|-------|-------|------------|
+| 1: The Reef | V1.3 (OBRIX launch) | Fundamentals | ~25 brick types, 10 Easter eggs |
+| 2: The Trench | V1.3 + ~6 months | Texture & rhythm | +5 brick types, +5 Easter eggs, granular/spectral |
+| 3: The Rift | V1.3 + ~12 months | Interaction & cross-engine | +6 brick types, +5 Easter eggs, cross-engine bricks |
+| 4: The Leviathan | V1.3 + ~18 months | Mastery & the unknown | +4 brick types, +5 Easter eggs, meta-bricks, neural audio |
+
+**Each level is free.** Levels are app updates, not DLC. The progressive
+release model keeps OBRIX fresh without charging for content.
+
+**Cross-level BrixBox:**
+
+```
+┌─────────────────────────────────────────────┐
+│  🧱 YOUR BRIXBOX                    67/142  │
+│                                             │
+│  ── LEVEL 1: THE REEF ──────────── ★ CLEAR  │
+│  ✦ Easter eggs: 8/10                        │
+│  ◆ Boss trophy: THE TIDE                    │
+│  ◆ Badge: Reef Master                       │
+│                                             │
+│  ── LEVEL 2: THE TRENCH ────────── ◉ ACTIVE │
+│  ✦ Easter eggs: 3/5                         │
+│  ○ Boss: THE STORM (not yet attempted)      │
+│  Tier: 2/4 — Open Water                     │
+│                                             │
+│  ── LEVEL 3: THE RIFT ──────────── 🔒 LOCKED│
+│  (Complete Level 2 Boss to unlock)          │
+│                                             │
+│  ── LEVEL 4: THE LEVIATHAN ─────── 🔒 LOCKED│
+│  (Complete Level 3 Boss to unlock)          │
+│                                             │
+│  ── BRIX PACKS ──────────────────────────── │
+│  ◆ Tide Pool Machines      12/12            │
+│  ◆ Abyssal Drones           8/10            │
+│  ◆ Trench Echoes (L2)       4/10            │
+│                                             │
+│  ── CHAMPION COMBOS ─────────────────────── │
+│  ★ "Thermal Vent" by @synthwitch  Q1 2027  │
+│  ★ "Glass Jellyfish" by @deepcurrent Q2    │
+│                                             │
+│  ── LIFETIME STATS ──────────────────────── │
+│  Bricks placed: 3,891                       │
+│  Combos tried: 847                          │
+│  Easter eggs found: 11/15 (L1+L2)          │
+│  Bosses defeated: 1/4                       │
+│  Levels cleared: 1                          │
+│  Time in OBRIX: 48 hours                    │
+└─────────────────────────────────────────────┘
+```
+
+**Oscar evolves across levels:**
+
+Oscar isn't just a static guide — he grows with you.
+
+| Level | Oscar's Form | Personality Shift |
+|-------|-------------|-------------------|
+| 1: The Reef | Baby axolotl (current) | Warm, encouraging, analogies-first |
+| 2: The Trench | Adolescent — gills more elaborate, eyes brighter | More conversational, shares opinions, references your history |
+| 3: The Rift | Adult — bioluminescent markings appear | Speaks as a peer, asks questions back, philosophical |
+| 4: The Leviathan | Elder — translucent, glowing, almost mythical | Sparse, poetic. Lets you lead. Only speaks when it matters. |
+
+By Level 4, Oscar has grown from teacher to companion to elder. His final
+Boss reaction (THE KRAKEN victory) is the emotional payoff of the entire
+OBRIX arc. We write that line last, when we know what it needs to be.
+
+**The secret ending:**
+
+After defeating THE KRAKEN, a final sequence plays:
+
+> *"When you arrived, you had a sine wave and a dream.*
+> *Now you have... this. Something no one has ever built.*
+> *I have nothing left to teach you.*
+> *But I think you have something to teach me."*
+>
+> *[Oscar swims off screen. The canvas goes quiet.]*
+> *[After 3 seconds, a new brick type appears: "OSCAR"]*
+> *[It's a brick that generates Oscar's voice as a wavetable source.]*
+> *[Professor Oscar IS the instrument now.]*
+
+The OSCAR brick is the ultimate collectible. A wavetable set derived from
+axolotl vocalizations (yes, axolotls make sounds — soft clicks and squeaks).
+It's a real, usable, weird, wonderful brick. The final gift.
+
+**Why levels work as a release strategy:**
+
+- **Solves the "shipped and forgotten" problem.** Most synth plugins ship,
+  get reviewed, and fade. Levels give OBRIX a reason to be in the news every
+  6 months — "OBRIX Level 3 just dropped."
+- **Community stays active.** Each level brings new Easter eggs, new Brix Pack
+  potential, new Boss challenges for the community to discuss.
+- **Development is sustainable.** Each level is 4-6 new brick types + 5 Easter
+  eggs + 1 Boss. Scoped, predictable, shippable.
+- **Cross-engine bricks (Level 3+) deepen the XOmnibus ecosystem.** Once OBRIX
+  can reference other engines' DSP, it becomes the gateway drug for the entire
+  platform. "I love this Orbital Resonator brick — what's the full Orbital
+  engine like?"
+
+### Levels, Packs, and Champions — How They Interleave
+
+```
+Timeline:
+─────────────────────────────────────────────────────────────────
+V1.3    Q1        Q2        Q3        V1.3+6mo  Q5        Q6
+OBRIX   Pack 1    Pack 2    Pack 3    LEVEL 2   Pack 4    Pack 5
+launch  Shallow   Oscar's   Brix      The       Trench    ...
+L1      Waters    Faves     Champ     Trench    Echoes
+        +Champ Q1           Q1 winner +new eggs  +Champ Q4
+─────────────────────────────────────────────────────────────────
+
+Brix Packs ship quarterly regardless of level releases.
+Levels ship ~every 6 months.
+Packs can be level-specific (Trench Echoes uses Level 2 bricks)
+or cross-level (Oscar's Favorites spans all available bricks).
+Champions are always from the current highest available level.
+```
+
+### Technical: Level Data Structure
+
+```json
+// brixbox.json — expanded for levels
+{
+  "currentLevel": 2,
+  "levels": {
+    "1": {
+      "status": "cleared",
+      "tier": 4,
+      "bossDefeated": true,
+      "bossDate": "2027-04-15T20:00:00Z",
+      "discoveredEggs": ["CHAIN_SAW_MAN", "DEEP_SEA_DIVER", ...],
+      "badge": "reef_master"
+    },
+    "2": {
+      "status": "active",
+      "tier": 2,
+      "bossDefeated": false,
+      "discoveredEggs": ["ANGLERFISH", "PRESSURE_DROP", "VENT_WHISTLE"],
+      "badge": null
+    },
+    "3": { "status": "locked" },
+    "4": { "status": "locked" }
+  },
+  "bossTrophies": ["THE_TIDE"],
+  "oscarForm": "adolescent",
+  "oscarBrick": false,
+  "lifetimeStats": {
+    "bricksPlaced": 3891,
+    "combosTried": 847,
+    "totalEggs": 11,
+    "bossesDefeated": 1,
+    "timeInObrix": 172800
+  }
+}
+```
+
+Level definitions ship as JSON manifests alongside the brick type definitions.
+When a new level is available (via app update), OBRIX checks the player's
+Boss state to determine if it should be unlocked or shown as locked.
+
 ### BrixBox on iPhone Pocket
 
 On Pocket, the BrixBox is accessed via a dedicated tab (swipe left from the
@@ -1092,7 +1366,7 @@ combos become packs → packs bring users back → more combos → repeat.
 - **Dynamic engine loading** — scan user engine directory, load `.dylib`/`.so` at startup
 - **Parameter namespace registry** — prevent collisions
 
-### V1.3 (OBRIX)
+### V1.3 (OBRIX — Level 1: The Reef)
 - **XObrix** — the ocean brick synthesis toy box
 - Ships as engine "Obrix" with param prefix `obrix_`, accent color Reef Teal `#2CB5A0`
 - Starter kit presets + snap challenges
@@ -1101,24 +1375,50 @@ combos become packs → packs bring users back → more combos → repeat.
 - Full coupling compatibility with all existing engines
 - Professor Oscar training mode (tooltips, connection insights, science cards, waveform visualizer)
 - Easter egg brick combos (CHAIN SAW MAN, DEEP SEA DIVER, PURE THOUGHT, etc.)
-- **Progressive unlock system** — roguelite-inspired tiered brick discovery
-  (Tiers 0–4, capability expands with play, "Unlock All" bypass toggle)
+- **Progressive unlock system** — roguelite Tiers 0–4 + Boss Mode (THE TIDE)
+- **BrixBox** — personal trophy case with level progress, eggs, boss trophies
 - **OBRIX Pocket** — iPhone-optimized Pocket Operator-inspired single-screen interface
 - Aquatic visual identity (ocean gradient, shell/coral/current/tide pool brick types)
 
-### V1.4 (BrixBox + Packs)
-- **BrixBox** — personal discovery collection with iCloud sync
+### V1.4 (Packs + Community)
 - **Brix Pack infrastructure** — downloadable preset packs (or bundled in updates)
 - **First Brix Pack ships** — "Shallow Waters" (beginner-friendly) + "Oscar's Favorites"
 - **Community submission portal** on xoox.design/brix
+- **First Quarterly Brix Champion** selected
 
-### V1.5 (Community Engines + Quarterly Cycle)
+### V1.5 (Level 2: The Trench — ~6 months post-OBRIX)
+- **New brick types:** Granular source, Spectral filter, Probability gate,
+  Euclidean rhythm generator, Convolution effect (ocean impulse responses)
+- **5 new Easter eggs** (Trench-exclusive)
+- **Boss: THE STORM** — "build a sound that responds to how hard you play"
+- **Oscar evolves** to adolescent form (more elaborate gills, conversational)
+- Ongoing quarterly Brix Packs + Champions (level-specific packs begin)
+
+### V1.6 (Level 3: The Rift — ~12 months post-OBRIX)
+- **New brick types:** Physical modeling string/membrane, Formant source,
+  Chaos/Lorenz attractor, Markov chain sequencer, Shimmer reverb, Spectral morph
+- **Cross-engine bricks** — bricks that use other XOmnibus engines' DSP
+  (Orbital Resonator, Ouroboros Feedback, etc.)
+- **5 new Easter eggs** (Rift-exclusive)
+- **Boss: THE ABYSS** — "build a sound using two instances that couldn't exist with one"
+- **Oscar evolves** to adult form (bioluminescent markings, speaks as peer)
+
+### V1.7 (Level 4: The Leviathan — ~18 months post-OBRIX)
+- **New brick types:** Neural audio synthesis, Feedback network (brick loops),
+  Meta-brick (brick that controls other bricks), Audio-rate modulation
+- **Expanded cross-engine bricks** — any engine's signature DSP as a brick
+- **5 new Easter eggs** (Leviathan-exclusive)
+- **Boss: THE KRAKEN** — "build something I've never heard before"
+- **Oscar final form** — elder, translucent, glowing
+- **Secret ending sequence** — OSCAR brick unlocks (axolotl vocalization wavetable)
+
+### V1.8+ (Community Engines + OBRIX-to-SDK)
 - **Community engine gallery** on xoox.design
 - **In-app engine browser** — discover and install community engines
-- **First Quarterly Brix Champion** selected
 - **OBRIX-to-SDK bridge** — export an OBRIX patch as an SDK project scaffold
   (the brick graph becomes starter code in a real engine template)
 - Ongoing quarterly cadence: submissions → voting → winner → Brix Pack
+- Potential Level 5+ based on community demand and new DSP research
 
 ---
 
