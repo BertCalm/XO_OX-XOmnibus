@@ -766,11 +766,13 @@ def _load_preset_dna(preset_name: str) -> dict:
 
 def generate_xpm(preset_name: str, wav_map: dict,
                  kit_mode: str = "velocity",
-                 dna: dict = None) -> str:
+                 dna: dict = None,
+                 engine: str = None) -> str:
     """Generate complete drum program XPM XML string.
 
     If dna is None, attempts to load it from the preset's .xometa file.
     DNA shapes velocity curves and voice sensitivity per preset.
+    If engine is provided, pad colors are set from the engine's accent color.
     """
     preset_slug = preset_name.replace(" ", "_")
     prog_name   = xml_escape(f"XO_OX-{preset_name}")
@@ -827,6 +829,24 @@ def generate_xpm(preset_name: str, wav_map: dict,
             )
     pad_group_xml = "\n".join(pad_group_entries)
 
+    # Pad colors — derived from engine accent color
+    pad_color_xml = ""
+    if engine:
+        hex_color = ENGINE_PAD_COLORS.get(engine, "")
+        if hex_color:
+            pad_color_entries = []
+            for pad_idx in range(len(PAD_MAP)):
+                pad_color_entries.append(
+                    f'        <Pad number="{pad_idx + 1}">'
+                    f'<PadColor>{hex_color}</PadColor>'
+                    f'</Pad>'
+                )
+            pad_color_xml = (
+                '    <PadColors>\n'
+                + "\n".join(pad_color_entries) + "\n"
+                + '    </PadColors>\n'
+            )
+
     # Q-Link assignments — 4 knobs per program for macro control
     qlink_xml = _generate_qlink_xml()
 
@@ -859,6 +879,7 @@ def generate_xpm(preset_name: str, wav_map: dict,
         '    <PadGroupMap>\n'
         f'{pad_group_xml}\n'
         '    </PadGroupMap>\n'
+        f'{pad_color_xml}'
         f'{expression_xml}'
         f'{qlink_xml}'
         '    <Instruments>\n'
