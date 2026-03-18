@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Ancient Knot",
+  "mood": "Aether",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A trefoil knot that sounds older than the ocean. Thick, dark, heavily damped \u2014 the tail barely rises above the noise floor before sustaining infinitely. A fossil preserved in delay topology.",
+  "tags": [
+    "ancient",
+    "dark",
+    "trefoil",
+    "fossil",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.78,
+    "movement": 0.28,
+    "density": 0.88,
+    "space": 0.97,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.9,
+      "olap_diffusion": 0.8,
+      "olap_spread": 0.88,
+      "olap_decay": 45.0,
+      "olap_modDepth": 0.1,
+      "olap_modRate": 0.018,
+      "olap_damping": 0.72,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

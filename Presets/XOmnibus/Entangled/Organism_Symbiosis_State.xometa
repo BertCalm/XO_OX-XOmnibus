@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Symbiosis State",
+  "mood": "Entangled",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Two colonies in mutualistic symbiosis, their mutations phase-locked through coupling.",
+  "tags": ["entangled", "symbiotic", "phase-locked", "mutualistic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.6,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Organism": {
+      "org_oscWave": 2,
+      "org_rule": 156,
+      "org_mutate": 0.15,
+      "org_freeze": 0.15,
+      "org_scope": 0.65,
+      "org_filterCutoff": 3500,
+      "org_filterRes": 0.25,
+      "org_ampAtk": 0.07,
+      "org_ampDec": 0.45,
+      "org_ampSus": 0.72,
+      "org_ampRel": 1.0,
+      "org_lfo1Rate": 0.7,
+      "org_lfo1Depth": 0.2,
+      "org_lfo2Rate": 0.18,
+      "org_lfo2Depth": 0.12,
+      "org_reverbMix": 0.42,
+      "org_macroRule": 0.55,
+      "org_macroMutate": 0.15,
+      "org_macroSeed": 0.5,
+      "org_macroCoupling": 0.8
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.8,
+    "SPACE": 0.42
+  },
+  "coupling": {"pairs": []}
+}

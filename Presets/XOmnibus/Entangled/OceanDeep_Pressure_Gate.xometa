@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Gate",
+  "mood": "Entangled",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "gate",
+    "deep",
+    "punch"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.82,
+    "movement": 0.18,
+    "density": 0.95,
+    "space": 0.55,
+    "aggression": 0.82
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 3,
+      "deep_subOctave": -2,
+      "deep_harmonicLevel": 0.15,
+      "deep_pressure": 0.92,
+      "deep_bodyType": 2,
+      "deep_bodySize": 0.72,
+      "deep_bodyDamp": 0.85,
+      "deep_flashRate": 0.08,
+      "deep_flashBright": 0.18,
+      "deep_creatureSpeed": 0.18,
+      "deep_creatureDepth": 0.15,
+      "deep_darkness": 0.92,
+      "deep_filterReso": 0.22,
+      "deep_reverbMix": 0.32,
+      "deep_reverbSize": 0.68,
+      "deep_delayMix": 0.15,
+      "deep_rumble": 0.92,
+      "deep_attack": 0.001,
+      "deep_decay": 0.3,
+      "deep_sustain": 0.88,
+      "deep_release": 0.6
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.92,
+    "CREATURE": 0.18,
+    "WRECK": 0.45,
+    "ABYSS": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

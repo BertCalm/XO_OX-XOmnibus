@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Kin Drift",
+  "mood": "Family",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "pad",
+    "evolving",
+    "shimmer",
+    "drift"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.6,
+    "movement": 0.5,
+    "density": 0.52,
+    "space": 0.62,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_sawDetune": 0.4,
+      "sky_sawLevel": 0.88,
+      "sky_filterFc": 8200.0,
+      "sky_filterRes": 0.1,
+      "sky_ampAttack": 0.32,
+      "sky_ampDecay": 0.45,
+      "sky_ampSustain": 0.8,
+      "sky_ampRelease": 2.0,
+      "sky_shimmerMix": 0.48,
+      "sky_shimmerDecay": 2.8,
+      "sky_shimmerOct": 0.88,
+      "sky_shimmerBright": 0.65,
+      "sky_lfoRate": 0.16,
+      "sky_lfoDepth": 8.5,
+      "sky_lfoShape": 0.4,
+      "sky_chorusMix": 0.35,
+      "sky_chorusRate": 0.35,
+      "sky_chorusDepth": 9.5,
+      "sky_reverbMix": 0.44,
+      "sky_reverbSize": 0.65,
+      "sky_outputGain": 0.8,
+      "sky_couplingAmt": 0.0,
+      "sky_macroCharacter": 0.58,
+      "sky_macroMovement": 0.5,
+      "sky_macroCoupling": 0.0,
+      "sky_macroSpace": 0.62,
+      "sky_shimmerSpread": 0.55,
+      "sky_shimmerPhase": 0.12,
+      "sky_velSensitivity": 0.74,
+      "sky_glide": 0.04
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.62
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

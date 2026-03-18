@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Ancestral Voice",
+  "mood": "Aether",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Deep memory — like a voice from the deep past. Maximum decay, minimal present. The grain reads heads find traces of notes played long before, reconstructing them as ancestors.",
+  "tags": ["aether", "ancestral", "deep", "past", "voice", "ancient"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.68,
+    "movement": 0.38,
+    "density": 0.75,
+    "space": 0.95,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.05,
+      "ombre_interference": 0.32,
+      "ombre_memoryDecay": 28.0,
+      "ombre_memoryGrain": 460.0,
+      "ombre_memoryDrift": 0.55,
+      "ombre_oscShape": 0,
+      "ombre_reactivity": 0.32,
+      "ombre_subLevel": 0.5,
+      "ombre_filterCutoff": 1800.0,
+      "ombre_filterReso": 0.16,
+      "ombre_attack": 2.5,
+      "ombre_decay": 4.0,
+      "ombre_sustain": 0.82,
+      "ombre_release": 9.0,
+      "ombre_level": 0.62,
+      "ombre_velCutoffScale": 0.2,
+      "ombre_lfo1Rate": 0.04,
+      "ombre_lfo1Depth": 0.4,
+      "ombre_lfo2Rate": 0.02,
+      "ombre_lfo2Depth": 0.32,
+      "ombre_macroCharacter": 0.95,
+      "ombre_macroMovement": 0.38,
+      "ombre_macroCoupling": 0.4,
+      "ombre_macroSpace": 0.98
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Gill Bond",
+  "mood": "Family",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Axolotls sheltering together — shared drift and bloom creating a warm communal pad.",
+  "tags": ["bond", "gill", "family", "communal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.4, "warmth": 0.72, "movement": 0.42, "density": 0.7, "space": 0.62, "aggression": 0.1},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.45,
+      "morph_bloom": 0.82,
+      "morph_detune": 0.22,
+      "morph_drift": 0.35,
+      "morph_filterCutoff": 4000.0,
+      "morph_filterReso": 0.38,
+      "morph_filterEnvDepth": 0.35,
+      "morph_sub": 0.5,
+      "morph_decay": 1.5,
+      "morph_sustain": 0.85,
+      "morph_release": 2.8,
+      "morph_glide": 0.25,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 8,
+      "morph_level": 0.7,
+      "morph_macroBloom": 0.82,
+      "morph_macroDepth": 0.55,
+      "morph_macroDrift": 0.35,
+      "morph_macroSpace": 0.62
+    }
+  },
+  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.42, "COUPLING": 0.0, "SPACE": 0.62},
+  "coupling": {"pairs": []}
+}

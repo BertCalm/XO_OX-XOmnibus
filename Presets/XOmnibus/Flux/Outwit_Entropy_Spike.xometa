@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Entropy Spike",
+  "mood": "Flux",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 30 at maximum feedback \u2014 information entropy spikes as the deterministic chaos begins generating genuinely new patterns every cycle. Each second is unprecedented.",
+  "tags": [
+    "flux",
+    "entropy",
+    "feedback",
+    "chaotic",
+    "unprecedented"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.38,
+    "movement": 0.88,
+    "density": 0.62,
+    "space": 0.48,
+    "aggression": 0.68
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 30,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.78,
+      "owit_armSpread": 0.58,
+      "owit_sync": 0.18,
+      "owit_feedbackAmt": 0.72,
+      "owit_chaos": 0.75,
+      "owit_density": 0.62,
+      "owit_ampAttack": 0.04,
+      "owit_ampDecay": 0.2,
+      "owit_ampSustain": 0.7,
+      "owit_ampRelease": 0.7,
+      "owit_filterCutoff": 0.6,
+      "owit_filterRes": 0.45,
+      "owit_lfoRate": 0.28,
+      "owit_lfoDepth": 0.32,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

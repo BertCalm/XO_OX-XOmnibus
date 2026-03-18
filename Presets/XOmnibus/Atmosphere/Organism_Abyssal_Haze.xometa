@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Haze",
+  "mood": "Atmosphere",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Deep-sea pressure atmosphere, low-filtered saw colony nearly frozen in time.",
+  "tags": ["atmosphere", "deep", "low", "drone"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.45,
+    "movement": 0.25,
+    "density": 0.65,
+    "space": 0.7,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Organism": {
+      "org_oscWave": 2,
+      "org_rule": 73,
+      "org_mutate": 0.03,
+      "org_freeze": 0.55,
+      "org_scope": 0.4,
+      "org_filterCutoff": 680,
+      "org_filterRes": 0.22,
+      "org_ampAtk": 0.4,
+      "org_ampDec": 1.2,
+      "org_ampSus": 0.6,
+      "org_ampRel": 3.0,
+      "org_lfo1Rate": 0.06,
+      "org_lfo1Depth": 0.06,
+      "org_lfo2Rate": 0.03,
+      "org_lfo2Depth": 0.05,
+      "org_reverbMix": 0.7,
+      "org_macroRule": 0.38,
+      "org_macroMutate": 0.03,
+      "org_macroSeed": 0.5,
+      "org_macroCoupling": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  },
+  "coupling": {"pairs": []}
+}

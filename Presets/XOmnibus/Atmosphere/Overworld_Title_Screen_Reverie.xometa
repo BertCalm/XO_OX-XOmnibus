@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "name": "Title Screen Reverie",
+  "mood": "Atmosphere",
+  "engines": ["OVERWORLD"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The cartridge loads, the copyright screen fades, and then — this. The title screen music before you've pressed start, before the game has begun, before anything has been demanded of you. Pure anticipation rendered in chip. ERA blended softly toward SNES warmth, space fully open.",
+  "tags": ["title-screen", "SNES", "atmosphere", "anticipation", "ambient", "intro", "warm", "space"],
+  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.62,
+    "movement": 0.22,
+    "density": 0.38,
+    "space": 0.78,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "ow_macro_era": 0.78,
+      "ow_macro_chaos": 0.06,
+      "ow_macro_couple": 0.18,
+      "ow_macro_space": 0.78,
+      "ow_outputLevel": 0.78,
+      "ow_couplingLevel": 0.12,
+      "ow_couplingBus": 0
+    }
+  },
+  "macros": {"ERA": 0.78, "CHAOS": 0.06, "COUPLE": 0.18, "SPACE": 0.78},
+  "coupling": {"pairs": []}
+}

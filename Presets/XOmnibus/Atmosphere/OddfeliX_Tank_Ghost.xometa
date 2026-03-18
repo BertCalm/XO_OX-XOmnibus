@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "Tank Ghost",
+  "mood": "Atmosphere",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sparse, faint unison snap — the ghost of a school that has moved on.",
+  "tags": ["ghost", "sparse", "atmosphere", "faint"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.65, "warmth": 0.25, "movement": 0.28, "density": 0.3, "space": 0.88, "aggression": 0.06},
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.18,
+      "snap_decay": 1.1,
+      "snap_detune": 0.25,
+      "snap_filterCutoff": 6500.0,
+      "snap_filterReso": 0.55,
+      "snap_filterEnvDepth": 0.18,
+      "snap_unison": 3,
+      "snap_sweepDirection": 1,
+      "snap_pitchLock": 0.3,
+      "snap_polyphony": 6,
+      "snap_level": 0.48,
+      "snap_macroDart": 0.08,
+      "snap_macroDepth": 0.58,
+      "snap_macroSchool": 0.5,
+      "snap_macroSurface": 0.7
+    }
+  },
+  "macros": {"CHARACTER": 0.2, "MOVEMENT": 0.28, "COUPLING": 0.0, "SPACE": 0.88},
+  "coupling": {"pairs": []}
+}

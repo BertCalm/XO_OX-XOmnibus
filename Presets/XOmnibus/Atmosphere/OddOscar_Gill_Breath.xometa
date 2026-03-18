@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Gill Breath",
+  "mood": "Atmosphere",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Breathing atmospheric pad — morph swells in and out like water through gill filaments.",
+  "tags": ["breath", "gill", "swell", "atmospheric"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.35, "warmth": 0.68, "movement": 0.5, "density": 0.62, "space": 0.78, "aggression": 0.1},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.52,
+      "morph_bloom": 0.65,
+      "morph_detune": 0.22,
+      "morph_drift": 0.5,
+      "morph_filterCutoff": 4000.0,
+      "morph_filterReso": 0.38,
+      "morph_filterEnvDepth": 0.35,
+      "morph_sub": 0.4,
+      "morph_decay": 2.5,
+      "morph_sustain": 0.8,
+      "morph_release": 4.5,
+      "morph_glide": 0.28,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 6,
+      "morph_level": 0.65,
+      "morph_macroBloom": 0.65,
+      "morph_macroDepth": 0.55,
+      "morph_macroDrift": 0.5,
+      "morph_macroSpace": 0.78
+    }
+  },
+  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.5, "COUPLING": 0.0, "SPACE": 0.78},
+  "coupling": {"pairs": []}
+}

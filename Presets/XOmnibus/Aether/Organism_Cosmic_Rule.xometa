@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Cosmic Rule",
+  "mood": "Aether",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": ["generative", "cellular", "ambient", "vast"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.54,
+    "movement": 0.12,
+    "density": 0.5,
+    "space": 0.94,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 11500,
+      "org_stepRate": 0.5,
+      "org_scope": 16,
+      "org_mutate": 0.001,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.54,
+      "org_filterCutoff": 1000.0,
+      "org_filterRes": 0.12,
+      "org_velCutoff": 0.24,
+      "org_ampAtk": 0.25,
+      "org_ampDec": 1.6,
+      "org_ampSus": 0.94,
+      "org_ampRel": 4.8,
+      "org_lfo1Rate": 0.05,
+      "org_lfo1Depth": 0.28,
+      "org_lfo2Rate": 0.035,
+      "org_lfo2Depth": 0.24,
+      "org_reverbMix": 0.94,
+      "org_macroRule": 0.02,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.002
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.0,
+    "SPACE": 0.92
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

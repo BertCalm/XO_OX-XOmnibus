@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "name": "16-Bit Dusk",
+  "mood": "Atmosphere",
+  "engines": ["OVERWORLD"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Genesis FM settling into dusk — warm operator decay filling the air as the level map fades.",
+  "tags": ["16bit", "dusk", "atmosphere", "genesis", "fm", "overworld"],
+  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.45, "warmth": 0.62, "movement": 0.25, "density": 0.45, "space": 0.72, "aggression": 0.15},
+  "parameters": {
+    "OVERWORLD": {
+      "ow_era": 1,
+      "ow_macro_era": 0.52,
+      "ow_macro_chaos": 0.06,
+      "ow_macro_couple": 0.0,
+      "ow_macro_space": 0.68,
+      "ow_outputLevel": 0.72,
+      "ow_couplingLevel": 0.0,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Rule 73 Symmetry",
+  "mood": "Foundation",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 73 \u2014 one of the symmetric Class II rules with high periodicity. Eight arms cycle through the same few states in a slow breathing pattern.",
+  "tags": [
+    "foundation",
+    "symmetric",
+    "periodic",
+    "breathing",
+    "rule73"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.52,
+    "movement": 0.35,
+    "density": 0.6,
+    "space": 0.48,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 73,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.03,
+      "owit_armSpread": 0.44,
+      "owit_sync": 0.68,
+      "owit_feedbackAmt": 0.25,
+      "owit_chaos": 0.15,
+      "owit_density": 0.6,
+      "owit_ampAttack": 0.09,
+      "owit_ampDecay": 0.28,
+      "owit_ampSustain": 0.9,
+      "owit_ampRelease": 1.0,
+      "owit_filterCutoff": 0.52,
+      "owit_filterRes": 0.22,
+      "owit_lfoRate": 0.06,
+      "owit_lfoDepth": 0.09,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

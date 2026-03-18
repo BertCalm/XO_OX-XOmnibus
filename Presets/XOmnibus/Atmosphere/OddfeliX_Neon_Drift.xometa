@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "Neon Drift",
+  "mood": "Atmosphere",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Slowly drifting bright unison with very low pitch lock — neon traces dissolving into mist.",
+  "tags": ["drift", "neon", "atmosphere", "slow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.82, "warmth": 0.22, "movement": 0.28, "density": 0.5, "space": 0.78, "aggression": 0.07},
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.2,
+      "snap_decay": 1.5,
+      "snap_detune": 0.45,
+      "snap_filterCutoff": 9000.0,
+      "snap_filterReso": 0.55,
+      "snap_filterEnvDepth": 0.2,
+      "snap_unison": 6,
+      "snap_sweepDirection": 2,
+      "snap_pitchLock": 0.2,
+      "snap_polyphony": 8,
+      "snap_level": 0.58,
+      "snap_macroDart": 0.1,
+      "snap_macroDepth": 0.65,
+      "snap_macroSchool": 0.72,
+      "snap_macroSurface": 0.75
+    }
+  },
+  "macros": {"CHARACTER": 0.2, "MOVEMENT": 0.28, "COUPLING": 0.0, "SPACE": 0.78},
+  "coupling": {"pairs": []}
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Vast Colony",
+  "mood": "Aether",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": ["generative", "cellular", "ambient", "vast"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.55,
+    "movement": 0.15,
+    "density": 0.48,
+    "space": 0.92,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 90.0,
+      "org_seed": 32000,
+      "org_stepRate": 0.6,
+      "org_scope": 16,
+      "org_mutate": 0.001,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.52,
+      "org_filterCutoff": 1200.0,
+      "org_filterRes": 0.15,
+      "org_velCutoff": 0.28,
+      "org_ampAtk": 0.18,
+      "org_ampDec": 1.2,
+      "org_ampSus": 0.92,
+      "org_ampRel": 4.0,
+      "org_lfo1Rate": 0.08,
+      "org_lfo1Depth": 0.32,
+      "org_lfo2Rate": 0.05,
+      "org_lfo2Depth": 0.28,
+      "org_reverbMix": 0.92,
+      "org_macroRule": 0.04,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.004
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

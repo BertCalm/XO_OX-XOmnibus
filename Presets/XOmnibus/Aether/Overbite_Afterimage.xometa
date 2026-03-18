@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Afterimage",
+  "mood": "Aether",
+  "engines": ["Overbite"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ghostly echo-trail bass where the reverb tail is the instrument — presence through absence.",
+  "tags": ["ambient", "echo", "ghost", "reverb"],
+  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.3, "warmth": 0.65, "movement": 0.3, "density": 0.3, "space": 0.9, "aggression": 0.05},
+  "parameters": {
+    "Overbite": {
+      "poss_oscAWaveform": 0,
+      "poss_subLevel": 0.25,
+      "poss_filterCutoff": 1500,
+      "poss_filterReso": 0.2,
+      "poss_ampAttack": 0.01,
+      "poss_ampDecay": 0.6,
+      "poss_ampSustain": 0.0,
+      "poss_ampRelease": 2.0,
+      "poss_fxEchoTime": 0.6,
+      "poss_fxEchoFeedback": 0.5,
+      "poss_fxEchoType": 1,
+      "poss_fxEchoMix": 0.4,
+      "poss_fxSpaceSize": 0.9,
+      "poss_fxSpaceDecay": 0.85,
+      "poss_fxSpaceType": 1,
+      "poss_fxSpaceMix": 0.55,
+      "poss_macroBelly": 0.3,
+      "poss_macroBite": 0.05,
+      "poss_macroScurry": 0.3,
+      "poss_macroTrash": 0.0,
+      "poss_macroPlayDead": 0.9
+    }
+  },
+  "macros": {"BELLY": 0.3, "BITE": 0.05, "SCURRY": 0.3, "TRASH": 0.0, "PLAY DEAD": 0.9},
+  "coupling": {"pairs": []}
+}

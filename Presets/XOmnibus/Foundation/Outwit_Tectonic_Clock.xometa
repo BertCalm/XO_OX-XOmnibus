@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Tectonic Clock",
+  "mood": "Foundation",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 51 \u2014 a complementary oscillator that flips between two states like a clock. Eight arms tick in offset time signatures, creating a mechanical polyrhythm.",
+  "tags": [
+    "foundation",
+    "oscillating",
+    "polyrhythm",
+    "mechanical",
+    "clock"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.45,
+    "movement": 0.55,
+    "density": 0.58,
+    "space": 0.4,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 51,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.03,
+      "owit_armSpread": 0.48,
+      "owit_sync": 0.65,
+      "owit_feedbackAmt": 0.25,
+      "owit_chaos": 0.22,
+      "owit_density": 0.58,
+      "owit_ampAttack": 0.05,
+      "owit_ampDecay": 0.2,
+      "owit_ampSustain": 0.88,
+      "owit_ampRelease": 0.8,
+      "owit_filterCutoff": 0.55,
+      "owit_filterRes": 0.28,
+      "owit_lfoRate": 0.12,
+      "owit_lfoDepth": 0.12,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

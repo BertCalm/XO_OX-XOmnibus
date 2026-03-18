@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Erosion",
+  "mood": "Flux",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Slow wearing-down of Opsis by Oubli. High interference and moderate decay — each note slightly erodes the previous one's character, replacing it with its own ghost.",
+  "tags": ["flux", "erosion", "wearing", "gradual", "transformation"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.62,
+    "movement": 0.48,
+    "density": 0.65,
+    "space": 0.65,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.45,
+      "ombre_interference": 0.75,
+      "ombre_memoryDecay": 6.0,
+      "ombre_memoryGrain": 110.0,
+      "ombre_memoryDrift": 0.38,
+      "ombre_oscShape": 1,
+      "ombre_reactivity": 0.58,
+      "ombre_subLevel": 0.28,
+      "ombre_filterCutoff": 3800.0,
+      "ombre_filterReso": 0.32,
+      "ombre_attack": 0.03,
+      "ombre_decay": 0.6,
+      "ombre_sustain": 0.65,
+      "ombre_release": 2.0,
+      "ombre_level": 0.72,
+      "ombre_velCutoffScale": 0.4,
+      "ombre_lfo1Rate": 0.6,
+      "ombre_lfo1Depth": 0.55,
+      "ombre_lfo2Rate": 0.38,
+      "ombre_lfo2Depth": 0.45,
+      "ombre_macroCharacter": 0.62,
+      "ombre_macroMovement": 0.48,
+      "ombre_macroCoupling": 0.48,
+      "ombre_macroSpace": 0.68
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

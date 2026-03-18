@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Unknot Forever",
+  "mood": "Aether",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "The simplest topology held at maximum duration \u2014 no crossings, no complexity, just six lines in a near-infinite circle. Pure, unadorned reverb held at the edge of feedback. Monastic.",
+  "tags": [
+    "unknot",
+    "pure",
+    "infinite",
+    "monastic",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.6,
+    "movement": 0.25,
+    "density": 0.88,
+    "space": 0.98,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 0,
+      "olap_delayFeedback": 0.94,
+      "olap_diffusion": 0.9,
+      "olap_spread": 0.88,
+      "olap_decay": 50.0,
+      "olap_modDepth": 0.08,
+      "olap_modRate": 0.02,
+      "olap_damping": 0.28,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

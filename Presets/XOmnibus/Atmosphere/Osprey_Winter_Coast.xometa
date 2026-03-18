@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "Winter Coast",
+  "mood": "Atmosphere",
+  "engines": ["Osprey"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Atlantic winter coast — cold brine, heavy fog, hull groaning in the swell.",
+  "tags": ["atmosphere", "winter", "cold", "atlantic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.3, "warmth": 0.4, "movement": 0.4, "density": 0.6, "space": 0.7, "aggression": 0.25},
+  "parameters": {
+    "Osprey": {
+      "osprey_brine": 0.7,
+      "osprey_foam": 0.4,
+      "osprey_fog": 0.8,
+      "osprey_hull": 0.65,
+      "osprey_depth": 0.6,
+      "osprey_coherence": 0.5,
+      "osprey_filterTilt": 0.38,
+      "osprey_filterEnvDepth": 0.15,
+      "osprey_harborVerb": 0.7,
+      "osprey_creatureRate": 0.2,
+      "osprey_creatureDepth": 0.2,
+      "osprey_glide": 0.3,
+      "osprey_ampAttack": 0.5,
+      "osprey_ampDecay": 0.5,
+      "osprey_ampSustain": 0.62,
+      "osprey_ampRelease": 2.2,
+      "osprey_macroCharacter": 0.6,
+      "osprey_macroMovement": 0.4,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroSpace": 0.7
+    }
+  },
+  "macros": {"CHARACTER": 0.6, "MOVEMENT": 0.4, "COUPLING": 0.0, "SPACE": 0.7},
+  "coupling": {"pairs": []}
+}

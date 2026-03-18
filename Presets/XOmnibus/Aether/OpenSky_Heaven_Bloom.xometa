@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Heaven Bloom",
+  "mood": "Aether",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "pad",
+    "ethereal",
+    "shimmer",
+    "transcendent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.58,
+    "movement": 0.38,
+    "density": 0.45,
+    "space": 0.88,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_sawDetune": 0.4,
+      "sky_sawLevel": 0.85,
+      "sky_filterFc": 10000.0,
+      "sky_filterRes": 0.1,
+      "sky_ampAttack": 0.55,
+      "sky_ampDecay": 0.62,
+      "sky_ampSustain": 0.88,
+      "sky_ampRelease": 4.0,
+      "sky_shimmerMix": 0.7,
+      "sky_shimmerDecay": 5.0,
+      "sky_shimmerOct": 0.92,
+      "sky_shimmerBright": 0.72,
+      "sky_lfoRate": 0.05,
+      "sky_lfoDepth": 6.0,
+      "sky_lfoShape": 0.14,
+      "sky_chorusMix": 0.32,
+      "sky_chorusRate": 0.22,
+      "sky_chorusDepth": 8.5,
+      "sky_reverbMix": 0.68,
+      "sky_reverbSize": 0.9,
+      "sky_outputGain": 0.76,
+      "sky_couplingAmt": 0.0,
+      "sky_macroCharacter": 0.65,
+      "sky_macroMovement": 0.38,
+      "sky_macroCoupling": 0.0,
+      "sky_macroSpace": 0.88,
+      "sky_shimmerSpread": 0.65,
+      "sky_shimmerPhase": 0.1,
+      "sky_velSensitivity": 0.7,
+      "sky_glide": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.0,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Double Exposure",
+  "mood": "Prism",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Two images on the same film. High interference creates a ghostly double of each note from the memory buffer that overlays the new note. Photographic, melancholy, bright.",
+  "tags": ["prism", "double-exposure", "photography", "overlay", "ghostly", "melancholy"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.48,
+    "movement": 0.55,
+    "density": 0.62,
+    "space": 0.7,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.55,
+      "ombre_interference": 0.85,
+      "ombre_memoryDecay": 6.0,
+      "ombre_memoryGrain": 90.0,
+      "ombre_memoryDrift": 0.42,
+      "ombre_oscShape": 1,
+      "ombre_reactivity": 0.62,
+      "ombre_subLevel": 0.15,
+      "ombre_filterCutoff": 5000.0,
+      "ombre_filterReso": 0.38,
+      "ombre_attack": 0.03,
+      "ombre_decay": 0.5,
+      "ombre_sustain": 0.65,
+      "ombre_release": 2.0,
+      "ombre_level": 0.7,
+      "ombre_velCutoffScale": 0.45,
+      "ombre_lfo1Rate": 0.8,
+      "ombre_lfo1Depth": 0.42,
+      "ombre_lfo2Rate": 0.5,
+      "ombre_lfo2Depth": 0.38,
+      "ombre_macroCharacter": 0.42,
+      "ombre_macroMovement": 0.55,
+      "ombre_macroCoupling": 0.45,
+      "ombre_macroSpace": 0.72
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

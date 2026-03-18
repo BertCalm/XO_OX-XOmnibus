@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Deep Void Pattern",
+  "mood": "Aether",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 225 in maximum reverb \u2014 the sparse symmetric rule echoes across a virtual space kilometers in dimension. Between events, pure silence. Then a signature.",
+  "tags": [
+    "aether",
+    "void",
+    "sparse",
+    "echoing",
+    "deep-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.25,
+    "movement": 0.35,
+    "density": 0.25,
+    "space": 0.95,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 225,
+      "owit_armBalance": 0.48,
+      "owit_mutationRate": 0.15,
+      "owit_armSpread": 0.7,
+      "owit_sync": 0.08,
+      "owit_feedbackAmt": 0.55,
+      "owit_chaos": 0.25,
+      "owit_density": 0.25,
+      "owit_ampAttack": 0.6,
+      "owit_ampDecay": 1.0,
+      "owit_ampSustain": 0.4,
+      "owit_ampRelease": 5.5,
+      "owit_filterCutoff": 0.42,
+      "owit_filterRes": 0.22,
+      "owit_lfoRate": 0.03,
+      "owit_lfoDepth": 0.1,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

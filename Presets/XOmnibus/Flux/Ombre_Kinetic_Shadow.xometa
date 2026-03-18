@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Kinetic Shadow",
+  "mood": "Flux",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A shadow in motion — dark Oubli character but fast LFOs that keep it kinetic. The memory grain chases the note, never quite catching up. Dark, alive, pursuing.",
+  "tags": ["flux", "kinetic", "shadow", "chase", "dark", "motion"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.62,
+    "movement": 0.78,
+    "density": 0.65,
+    "space": 0.6,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.25,
+      "ombre_interference": 0.6,
+      "ombre_memoryDecay": 4.0,
+      "ombre_memoryGrain": 80.0,
+      "ombre_memoryDrift": 0.65,
+      "ombre_oscShape": 2,
+      "ombre_reactivity": 0.72,
+      "ombre_subLevel": 0.32,
+      "ombre_filterCutoff": 3500.0,
+      "ombre_filterReso": 0.45,
+      "ombre_attack": 0.01,
+      "ombre_decay": 0.35,
+      "ombre_sustain": 0.62,
+      "ombre_release": 1.2,
+      "ombre_level": 0.75,
+      "ombre_velCutoffScale": 0.52,
+      "ombre_lfo1Rate": 2.8,
+      "ombre_lfo1Depth": 0.65,
+      "ombre_lfo2Rate": 1.6,
+      "ombre_lfo2Depth": 0.65,
+      "ombre_macroCharacter": 0.72,
+      "ombre_macroMovement": 0.78,
+      "ombre_macroCoupling": 0.5,
+      "ombre_macroSpace": 0.6
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

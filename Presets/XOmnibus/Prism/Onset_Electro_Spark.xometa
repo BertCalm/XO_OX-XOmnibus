@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Electro Spark",
+  "mood": "Prism",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Electro-style drum sparks. Digital sheen on every element.",
+  "tags": [
+    "electro",
+    "spark",
+    "digital",
+    "sheen",
+    "prism"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.18,
+    "movement": 0.5,
+    "density": 0.62,
+    "space": 0.22,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macro_machine": 0.65,
+      "perc_macro_punch": 0.55,
+      "perc_macro_space": 0.22,
+      "perc_macro_mutate": 0.28,
+      "perc_drive": 0.4,
+      "perc_level": 0.8,
+      "perc_masterTone": 0.8,
+      "perc_char_grit": 0.3,
+      "perc_char_warmth": 0.18,
+      "perc_fx_reverb_size": 0.22,
+      "perc_fx_reverb_decay": 0.3,
+      "perc_fx_reverb_mix": 0.15,
+      "perc_fx_delay_time": 0.22,
+      "perc_fx_delay_feedback": 0.1,
+      "perc_fx_delay_mix": 0.05,
+      "perc_fx_lofi_bits": 15,
+      "perc_fx_lofi_mix": 0.05,
+      "perc_xvc_global_amount": 0.2,
+      "perc_xvc_kick_to_snare_filter": 0.28,
+      "perc_xvc_kick_to_tom_pitch": 0.08,
+      "perc_xvc_snare_to_hat_decay": 0.05,
+      "perc_xvc_snare_to_perc_blend": 0.18,
+      "perc_xvc_hat_choke": 0.22
+    }
+  },
+  "macros": {
+    "MACHINE": 0.65,
+    "PUNCH": 0.55,
+    "SPACE": 0.22,
+    "MUTATE": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

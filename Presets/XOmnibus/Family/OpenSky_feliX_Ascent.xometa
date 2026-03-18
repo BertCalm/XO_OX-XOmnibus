@@ -1,47 +1,28 @@
 {
+  "schema_version": 1,
   "name": "feliX Ascent",
-  "engine": "OpenSky",
-  "version": "1.0",
   "mood": "Family",
-  "macros": {
-    "CHARACTER": 0.75,
-    "MOVEMENT": 0.5,
-    "COUPLING": 0.0,
-    "SPACE": 0.65
-  },
-  "parameters": {
-    "sky_sawDetune": 0.62,
-    "sky_sawLevel": 1.0,
-    "sky_filterFc": 13000.0,
-    "sky_filterRes": 0.18,
-    "sky_ampAttack": 0.12,
-    "sky_ampDecay": 0.28,
-    "sky_ampSustain": 0.88,
-    "sky_ampRelease": 1.5,
-    "sky_shimmerMix": 0.7,
-    "sky_shimmerDecay": 2.5,
-    "sky_shimmerOct": 1.0,
-    "sky_shimmerBright": 0.9,
-    "sky_lfoRate": 0.13,
-    "sky_lfoDepth": 12.0,
-    "sky_lfoShape": 0.4,
-    "sky_chorusMix": 0.42,
-    "sky_chorusRate": 0.38,
-    "sky_chorusDepth": 12.0,
-    "sky_reverbMix": 0.46,
-    "sky_reverbSize": 0.72,
-    "sky_outputGain": 0.82,
-    "sky_couplingAmt": 0.0,
-    "sky_macroCharacter": 0.75,
-    "sky_macroMovement": 0.5,
-    "sky_macroCoupling": 0.0,
-    "sky_macroSpace": 0.65,
-    "sky_shimmerSpread": 0.74,
-    "sky_shimmerPhase": 0.35,
-    "sky_velSensitivity": 0.88,
-    "sky_glide": 0.0
-  },
-  "sonicDNA": {
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "shimmer",
+    "soaring",
+    "euphoric",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
     "brightness": 0.84,
     "warmth": 0.42,
     "movement": 0.52,
@@ -49,5 +30,47 @@
     "space": 0.67,
     "aggression": 0.2
   },
-  "tags": ["shimmer", "soaring", "euphoric", "bright"]
+  "parameters": {
+    "OpenSky": {
+      "sky_sawDetune": 0.62,
+      "sky_sawLevel": 1.0,
+      "sky_filterFc": 13000.0,
+      "sky_filterRes": 0.18,
+      "sky_ampAttack": 0.12,
+      "sky_ampDecay": 0.28,
+      "sky_ampSustain": 0.88,
+      "sky_ampRelease": 1.5,
+      "sky_shimmerMix": 0.7,
+      "sky_shimmerDecay": 2.5,
+      "sky_shimmerOct": 1.0,
+      "sky_shimmerBright": 0.9,
+      "sky_lfoRate": 0.13,
+      "sky_lfoDepth": 12.0,
+      "sky_lfoShape": 0.4,
+      "sky_chorusMix": 0.42,
+      "sky_chorusRate": 0.38,
+      "sky_chorusDepth": 12.0,
+      "sky_reverbMix": 0.46,
+      "sky_reverbSize": 0.72,
+      "sky_outputGain": 0.82,
+      "sky_couplingAmt": 0.0,
+      "sky_macroCharacter": 0.75,
+      "sky_macroMovement": 0.5,
+      "sky_macroCoupling": 0.0,
+      "sky_macroSpace": 0.65,
+      "sky_shimmerSpread": 0.74,
+      "sky_shimmerPhase": 0.35,
+      "sky_velSensitivity": 0.88,
+      "sky_glide": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

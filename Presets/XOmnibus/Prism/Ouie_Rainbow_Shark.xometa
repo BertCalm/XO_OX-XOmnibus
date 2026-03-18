@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Rainbow Shark",
+  "mood": "Prism",
+  "engines": ["Ouie"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Hammer sweeping across high-bright filters, iridescent colors on the cephalofoil.",
+  "tags": ["prism", "iridescent", "sweeping", "bright"],
+  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.4,
+    "movement": 0.65,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_ampAtk": 0.02,
+      "ouie_ampDec": 0.3,
+      "ouie_ampSus": 0.7,
+      "ouie_ampRel": 0.7,
+      "ouie_filterACutoff": 9000,
+      "ouie_filterARes": 0.55,
+      "ouie_filterBCutoff": 12000,
+      "ouie_filterBRes": 0.5,
+      "ouie_hammerDepth": 0.8,
+      "ouie_hammerPos": 0.75,
+      "ouie_lfo1Rate": 1.0,
+      "ouie_lfo1Depth": 0.28,
+      "ouie_lfo1Target": 0,
+      "ouie_lfo2Rate": 0.7,
+      "ouie_lfo2Depth": 0.22,
+      "ouie_portaAuto": 0.08,
+      "ouie_macroHammer": 0.8,
+      "ouie_macroCartilage": 0.65,
+      "ouie_macroAmpullae": 0.7,
+      "ouie_macroCurrent": 0.5
+    }
+  },
+  "macros": {
+    "HAMMER": 0.8,
+    "CARTILAGE": 0.65,
+    "AMPULLAE": 0.7,
+    "CURRENT": 0.5
+  },
+  "coupling": {"pairs": []}
+}

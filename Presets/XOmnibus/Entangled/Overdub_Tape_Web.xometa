@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Tape Web",
+  "mood": "Entangled",
+  "engines": ["Overdub"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bidirectional delay feedback web — two engines sharing time-space through tape circuits.",
+  "tags": ["entangled", "tape", "web", "bidirectional", "delay", "circuit"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-17",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "Overdub": {
+      "dub_oscWave": 2,
+      "dub_oscOctave": 0,
+      "dub_oscTune": 0,
+      "dub_oscPwm": 0.5,
+      "dub_subLevel": 0.35,
+      "dub_noiseLevel": 0.03,
+      "dub_drift": 0.35,
+      "dub_level": 0.75,
+      "dub_filterMode": 0,
+      "dub_filterCutoff": 2500,
+      "dub_filterReso": 0.4,
+      "dub_filterEnvAmt": 0.35,
+      "dub_attack": 0.015,
+      "dub_decay": 0.6,
+      "dub_sustain": 0.58,
+      "dub_release": 1.1,
+      "dub_pitchEnvDepth": 0.0,
+      "dub_pitchEnvDecay": 0.3,
+      "dub_lfoRate": 0.35,
+      "dub_lfoDepth": 0.14,
+      "dub_lfoDest": 0,
+      "dub_sendLevel": 0.68,
+      "dub_returnLevel": 0.62,
+      "dub_dryLevel": 0.6,
+      "dub_driveAmount": 0.22,
+      "dub_delayTime": 0.55,
+      "dub_delayFeedback": 0.58,
+      "dub_delayWear": 0.68,
+      "dub_delayWow": 0.35,
+      "dub_delayMix": 0.5,
+      "dub_reverbSize": 0.5,
+      "dub_reverbDamp": 0.48,
+      "dub_reverbMix": 0.38,
+      "dub_voiceMode": 1,
+      "dub_glide": 0.2,
+      "dub_polyphony": 1
+    }
+  },
+  "macros": {"CHARACTER": 0.3, "MOVEMENT": 0.2, "COUPLING": 0.68, "SPACE": 0.6},
+  "coupling": {
+    "pairs": [
+      {"source": "Overdub", "target": "Oceanic", "type": "ReverbShare", "intensity": 0.55},
+      {"source": "Oceanic", "target": "Overdub", "type": "FilterMod", "intensity": 0.45}
+    ]
+  },
+  "dna": {"brightness": 0.35, "warmth": 0.82, "movement": 0.28, "density": 0.52, "space": 0.65, "aggression": 0.22}
+}

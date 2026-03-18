@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "name": "Boss Fight",
+  "mood": "Foundation",
+  "engines": ["OVERWORLD"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Aggressive NES pulse with maximum duty cycle — the sound of something large and dangerous.",
+  "tags": ["nes", "boss", "aggressive", "pulse", "chip", "foundation"],
+  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.75, "warmth": 0.3, "movement": 0.5, "density": 0.7, "space": 0.2, "aggression": 0.8},
+  "parameters": {
+    "OVERWORLD": {
+      "ow_era": 0,
+      "ow_macro_era": 0.15,
+      "ow_macro_chaos": 0.25,
+      "ow_macro_couple": 0.0,
+      "ow_macro_space": 0.18,
+      "ow_outputLevel": 0.9,
+      "ow_couplingLevel": 0.0,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

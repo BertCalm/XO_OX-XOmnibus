@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Benthic Kelp",
+  "mood": "Foundation",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 182 \u2014 undulating fronds in a slow current. Arms pan slowly across the stereo field like kelp waving in Pacific swells. Stable but alive.",
+  "tags": [
+    "foundation",
+    "kelp",
+    "undulating",
+    "organic",
+    "pacific"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.62,
+    "movement": 0.38,
+    "density": 0.55,
+    "space": 0.5,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 182,
+      "owit_armBalance": 0.48,
+      "owit_mutationRate": 0.05,
+      "owit_armSpread": 0.55,
+      "owit_sync": 0.6,
+      "owit_feedbackAmt": 0.28,
+      "owit_chaos": 0.18,
+      "owit_density": 0.58,
+      "owit_ampAttack": 0.1,
+      "owit_ampDecay": 0.32,
+      "owit_ampSustain": 0.88,
+      "owit_ampRelease": 1.3,
+      "owit_filterCutoff": 0.48,
+      "owit_filterRes": 0.22,
+      "owit_lfoRate": 0.06,
+      "owit_lfoDepth": 0.12,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

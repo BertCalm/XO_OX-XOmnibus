@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Figure Infinity",
+  "mood": "Aether",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A figure-eight at near-infinite time \u2014 the two loops sustain separately, each on its own timeline. The crossing point becomes a meeting of two eternities. Time signature: infinity over infinity.",
+  "tags": [
+    "infinity",
+    "eternal",
+    "figure-eight",
+    "dual",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.62,
+    "movement": 0.38,
+    "density": 0.9,
+    "space": 0.98,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 2,
+      "olap_delayFeedback": 0.93,
+      "olap_diffusion": 0.87,
+      "olap_spread": 0.92,
+      "olap_decay": 55.0,
+      "olap_modDepth": 0.14,
+      "olap_modRate": 0.018,
+      "olap_damping": 0.22,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

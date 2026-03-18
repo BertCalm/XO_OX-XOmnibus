@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Trench Resonance",
+  "mood": "Submerged",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "The resonant modes of a submarine trench \u2014 a long, narrow reverberant space creating reinforced frequencies at specific harmonics. The torus topology captures the trench geometry's acoustic amplification.",
+  "tags": [
+    "trench",
+    "resonant",
+    "torus",
+    "submerged",
+    "narrow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.72,
+    "movement": 0.38,
+    "density": 0.8,
+    "space": 0.88,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 3,
+      "olap_delayFeedback": 0.75,
+      "olap_diffusion": 0.72,
+      "olap_spread": 0.75,
+      "olap_decay": 15.0,
+      "olap_modDepth": 0.15,
+      "olap_modRate": 0.04,
+      "olap_damping": 0.72,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

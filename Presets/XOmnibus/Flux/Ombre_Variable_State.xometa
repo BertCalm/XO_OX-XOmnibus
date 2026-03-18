@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Variable State",
+  "mood": "Flux",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "The engine's state is never the same twice. Moderate all parameters but all LFOs active. Each held note morphs through different combinations of memory and perception.",
+  "tags": ["flux", "variable", "morphing", "evolving", "unpredictable"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.58,
+    "movement": 0.65,
+    "density": 0.55,
+    "space": 0.62,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.55,
+      "ombre_interference": 0.45,
+      "ombre_memoryDecay": 5.5,
+      "ombre_memoryGrain": 95.0,
+      "ombre_memoryDrift": 0.55,
+      "ombre_oscShape": 1,
+      "ombre_reactivity": 0.58,
+      "ombre_subLevel": 0.22,
+      "ombre_filterCutoff": 4800.0,
+      "ombre_filterReso": 0.38,
+      "ombre_attack": 0.04,
+      "ombre_decay": 0.48,
+      "ombre_sustain": 0.67,
+      "ombre_release": 1.8,
+      "ombre_level": 0.74,
+      "ombre_velCutoffScale": 0.42,
+      "ombre_lfo1Rate": 0.9,
+      "ombre_lfo1Depth": 0.6,
+      "ombre_lfo2Rate": 0.55,
+      "ombre_lfo2Depth": 0.55,
+      "ombre_macroCharacter": 0.52,
+      "ombre_macroMovement": 0.65,
+      "ombre_macroCoupling": 0.45,
+      "ombre_macroSpace": 0.62
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

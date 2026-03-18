@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Hydrothermal Root",
+  "mood": "Foundation",
+  "engines": ["OceanDeep"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Warm, pressurized bass tone rising from a hydrothermal vent field.",
+  "tags": ["bass", "warm", "deep", "pressure"],
+  "macroLabels": ["PRESSURE", "CREATURE", "DEPTH", "LIGHT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.82,
+    "movement": 0.22,
+    "density": 0.87,
+    "space": 0.35,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_attack": 0.08,
+      "deep_decay": 0.6,
+      "deep_sustain": 0.85,
+      "deep_release": 0.8,
+      "deep_bodyType": 2,
+      "deep_bodySize": 0.8,
+      "deep_bodyDamp": 0.55,
+      "deep_subOctave": 1,
+      "deep_subShape": 1,
+      "deep_harmonicLevel": 0.35,
+      "deep_pressure": 0.7,
+      "deep_darkness": 0.75,
+      "deep_filterReso": 0.18,
+      "deep_rumble": 0.45,
+      "deep_creatureDepth": 0.15,
+      "deep_creatureSpeed": 0.08,
+      "deep_flashBright": 0.1,
+      "deep_flashRate": 0.2,
+      "deep_reverbSize": 0.5,
+      "deep_reverbMix": 0.25,
+      "deep_delayMix": 0.05,
+      "deep_macroPressure": 0.7,
+      "deep_macroCreature": 0.15,
+      "deep_macroDepth": 0.8,
+      "deep_macroLight": 0.1
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.7,
+    "CREATURE": 0.15,
+    "DEPTH": 0.8,
+    "LIGHT": 0.1
+  },
+  "coupling": {"pairs": []}
+}

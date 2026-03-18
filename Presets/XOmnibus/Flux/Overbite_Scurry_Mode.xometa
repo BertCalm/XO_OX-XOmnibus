@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Scurry Mode",
+  "mood": "Flux",
+  "engines": ["Overbite"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Fast-moving bass with rapid LFO tremolo and quick filter bursts — opossum at full scurry speed.",
+  "tags": ["bass", "tremolo", "fast", "movement"],
+  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.55, "warmth": 0.6, "movement": 0.85, "density": 0.55, "space": 0.2, "aggression": 0.55},
+  "parameters": {
+    "Overbite": {
+      "poss_oscAWaveform": 2,
+      "poss_subLevel": 0.45,
+      "poss_filterCutoff": 1800,
+      "poss_filterReso": 0.3,
+      "poss_filterEnvAmount": 0.5,
+      "poss_filterDecay": 0.15,
+      "poss_ampAttack": 0.003,
+      "poss_ampDecay": 0.3,
+      "poss_ampSustain": 0.6,
+      "poss_ampRelease": 0.15,
+      "poss_lfo1Rate": 8.0,
+      "poss_lfo1Depth": 0.5,
+      "poss_lfo1Shape": 3,
+      "poss_lfo1Retrigger": 1,
+      "poss_modSlot1Src": 1,
+      "poss_modSlot1Dst": 3,
+      "poss_modSlot1Amt": 0.4,
+      "poss_macroBelly": 0.5,
+      "poss_macroBite": 0.55,
+      "poss_macroScurry": 0.85,
+      "poss_macroTrash": 0.2,
+      "poss_macroPlayDead": 0.05
+    }
+  },
+  "macros": {"BELLY": 0.5, "BITE": 0.55, "SCURRY": 0.85, "TRASH": 0.2, "PLAY DEAD": 0.05},
+  "coupling": {"pairs": []}
+}

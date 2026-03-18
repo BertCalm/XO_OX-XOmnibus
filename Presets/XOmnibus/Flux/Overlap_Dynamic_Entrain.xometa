@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Dynamic Entrain",
+  "mood": "Flux",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A torus knot with dynamically-ramping entrainment \u2014 as you play more notes, the coupling increases. A velocity-sensitive topology that becomes more coherent under pressure. A knot that rises to meet you.",
+  "tags": [
+    "dynamic",
+    "torus",
+    "velocity-sensitive",
+    "adaptive",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.55,
+    "movement": 0.78,
+    "density": 0.68,
+    "space": 0.8,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 3,
+      "olap_delayFeedback": 0.6,
+      "olap_diffusion": 0.75,
+      "olap_spread": 0.85,
+      "olap_decay": 6.0,
+      "olap_modDepth": 0.38,
+      "olap_modRate": 0.12,
+      "olap_damping": 0.4,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

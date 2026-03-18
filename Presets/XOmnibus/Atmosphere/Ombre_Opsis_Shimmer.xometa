@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Opsis Shimmer",
+  "mood": "Atmosphere",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Perception-side shimmer with fast LFO1 oscillating blend between 0.7-1.0. The notes feel like sunlight on water — present and scintillating, never still.",
+  "tags": ["atmosphere", "shimmer", "opsis", "perception", "sunlight", "bright"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.45,
+    "movement": 0.68,
+    "density": 0.42,
+    "space": 0.62,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.82,
+      "ombre_interference": 0.15,
+      "ombre_memoryDecay": 2.5,
+      "ombre_memoryGrain": 40.0,
+      "ombre_memoryDrift": 0.35,
+      "ombre_oscShape": 1,
+      "ombre_reactivity": 0.72,
+      "ombre_subLevel": 0.12,
+      "ombre_filterCutoff": 6000.0,
+      "ombre_filterReso": 0.32,
+      "ombre_attack": 0.08,
+      "ombre_decay": 0.4,
+      "ombre_sustain": 0.68,
+      "ombre_release": 1.5,
+      "ombre_level": 0.75,
+      "ombre_velCutoffScale": 0.45,
+      "ombre_lfo1Rate": 3.0,
+      "ombre_lfo1Depth": 0.65,
+      "ombre_lfo2Rate": 1.5,
+      "ombre_lfo2Depth": 0.4,
+      "ombre_macroCharacter": 0.18,
+      "ombre_macroMovement": 0.68,
+      "ombre_macroCoupling": 0.3,
+      "ombre_macroSpace": 0.62
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

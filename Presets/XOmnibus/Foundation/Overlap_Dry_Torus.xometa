@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Dry Torus",
+  "mood": "Foundation",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Torus knot with aggressive damping \u2014 the high-end bleeds away quickly, leaving a warm, woody resonance at the tail. Each note deposits a low moan. Pairs beautifully with bright sources.",
+  "tags": [
+    "torus",
+    "warm",
+    "damped",
+    "woody",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.75,
+    "movement": 0.25,
+    "density": 0.5,
+    "space": 0.6,
+    "aggression": 0.09
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 3,
+      "olap_delayFeedback": 0.6,
+      "olap_diffusion": 0.55,
+      "olap_spread": 0.72,
+      "olap_decay": 3.0,
+      "olap_modDepth": 0.08,
+      "olap_modRate": 0.09,
+      "olap_damping": 0.72,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "name": "Cytoplasm Drift",
+  "mood": "Atmosphere",
+  "engines": ["Organon"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Organelles drifting through cytoplasm — slow Brownian motion as ambient texture.",
+  "tags": ["cytoplasm", "drift", "atmosphere", "slow", "brownian", "organic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.35, "warmth": 0.65, "movement": 0.22, "density": 0.4, "space": 0.8, "aggression": 0.1},
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.2,
+      "organon_membrane": 0.68,
+      "organon_enzymeSelect": 1,
+      "organon_catalystDrive": 0.18,
+      "organon_isotopeBalance": 0.58,
+      "organon_phasonShift": 0.12,
+      "organon_dampingCoeff": 0.75,
+      "organon_signalFlux": 0.18,
+      "organon_noiseColor": 2,
+      "organon_lockIn": 0.15
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

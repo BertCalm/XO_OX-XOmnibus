@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Knot Pulse Cycle",
+  "mood": "Flux",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "An unknot at high pulse rate \u2014 the six voices pulse at distinct but coupled rates, creating a polyrhythmic pattern from the Kuramoto dynamics. A six-voice rhythm section with no drummer.",
+  "tags": [
+    "pulse",
+    "polyrhythmic",
+    "unknot",
+    "kuramoto",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.5,
+    "movement": 0.88,
+    "density": 0.65,
+    "space": 0.72,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 0,
+      "olap_delayFeedback": 0.58,
+      "olap_diffusion": 0.65,
+      "olap_spread": 0.78,
+      "olap_decay": 4.5,
+      "olap_modDepth": 0.45,
+      "olap_modRate": 0.2,
+      "olap_damping": 0.38,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

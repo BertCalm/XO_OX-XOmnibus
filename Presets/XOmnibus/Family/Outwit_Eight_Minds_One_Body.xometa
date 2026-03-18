@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Eight Minds One Body",
+  "mood": "Family",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 110 with maximum synapse \u2014 the octopus as it truly is. Eight separate nervous system centers, fully coupled, operating as a single distributed consciousness.",
+  "tags": [
+    "family",
+    "consciousness",
+    "coupled",
+    "distributed",
+    "unified"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.62,
+    "movement": 0.55,
+    "density": 0.7,
+    "space": 0.55,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 110,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.1,
+      "owit_armSpread": 0.5,
+      "owit_sync": 0.72,
+      "owit_feedbackAmt": 0.3,
+      "owit_chaos": 0.28,
+      "owit_density": 0.7,
+      "owit_ampAttack": 0.07,
+      "owit_ampDecay": 0.28,
+      "owit_ampSustain": 0.88,
+      "owit_ampRelease": 1.2,
+      "owit_filterCutoff": 0.6,
+      "owit_filterRes": 0.25,
+      "owit_lfoRate": 0.08,
+      "owit_lfoDepth": 0.12,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

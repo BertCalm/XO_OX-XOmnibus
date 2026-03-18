@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Penumbra",
+  "mood": "Atmosphere",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "The partial shadow. Blend at 0.35 — between the dark center and the full light. Penumbra is softer than umbra, and this patch reflects that ambiguity.",
+  "tags": ["atmosphere", "penumbra", "shadow", "partial", "soft"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.65,
+    "movement": 0.32,
+    "density": 0.58,
+    "space": 0.72,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.35,
+      "ombre_interference": 0.28,
+      "ombre_memoryDecay": 9.0,
+      "ombre_memoryGrain": 140.0,
+      "ombre_memoryDrift": 0.28,
+      "ombre_oscShape": 3,
+      "ombre_reactivity": 0.45,
+      "ombre_subLevel": 0.35,
+      "ombre_filterCutoff": 3200.0,
+      "ombre_filterReso": 0.2,
+      "ombre_attack": 0.5,
+      "ombre_decay": 1.0,
+      "ombre_sustain": 0.72,
+      "ombre_release": 3.0,
+      "ombre_level": 0.72,
+      "ombre_velCutoffScale": 0.3,
+      "ombre_lfo1Rate": 0.2,
+      "ombre_lfo1Depth": 0.32,
+      "ombre_lfo2Rate": 0.14,
+      "ombre_lfo2Depth": 0.25,
+      "ombre_macroCharacter": 0.65,
+      "ombre_macroMovement": 0.32,
+      "ombre_macroCoupling": 0.4,
+      "ombre_macroSpace": 0.75
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

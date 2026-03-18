@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Square Colony",
+  "mood": "Foundation",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Square-wave colony with rule 110, moderate mutation and bright presence.",
+  "tags": ["lead", "cellular", "bright", "rhythmic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.4,
+    "movement": 0.65,
+    "density": 0.5,
+    "space": 0.35,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Organism": {
+      "org_oscWave": 1,
+      "org_rule": 110,
+      "org_mutate": 0.25,
+      "org_freeze": 0.0,
+      "org_scope": 0.6,
+      "org_filterCutoff": 5500,
+      "org_filterRes": 0.35,
+      "org_ampAtk": 0.01,
+      "org_ampDec": 0.3,
+      "org_ampSus": 0.65,
+      "org_ampRel": 0.5,
+      "org_lfo1Rate": 0.7,
+      "org_lfo1Depth": 0.2,
+      "org_lfo2Rate": 0.15,
+      "org_lfo2Depth": 0.12,
+      "org_reverbMix": 0.2,
+      "org_macroRule": 0.55,
+      "org_macroMutate": 0.25,
+      "org_macroSeed": 0.5,
+      "org_macroCoupling": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.0,
+    "SPACE": 0.2
+  },
+  "coupling": {"pairs": []}
+}

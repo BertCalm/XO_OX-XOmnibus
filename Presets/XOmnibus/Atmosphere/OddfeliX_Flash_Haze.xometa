@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "Flash Haze",
+  "mood": "Atmosphere",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Long downward sweep with many voices creating a haze of fading neon traces.",
+  "tags": ["haze", "sweep", "atmospheric", "fade"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.72, "warmth": 0.38, "movement": 0.35, "density": 0.65, "space": 0.82, "aggression": 0.12},
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.4,
+      "snap_decay": 1.0,
+      "snap_detune": 0.32,
+      "snap_filterCutoff": 7000.0,
+      "snap_filterReso": 0.48,
+      "snap_filterEnvDepth": -0.25,
+      "snap_unison": 5,
+      "snap_sweepDirection": 1,
+      "snap_pitchLock": 0.5,
+      "snap_polyphony": 6,
+      "snap_level": 0.63,
+      "snap_macroDart": 0.18,
+      "snap_macroDepth": 0.62,
+      "snap_macroSchool": 0.68,
+      "snap_macroSurface": 0.6
+    }
+  },
+  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.82},
+  "coupling": {"pairs": []}
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Regeneration Arc",
+  "mood": "Prism",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Prismatic regeneration sweep — filter arc upward as new tissue emerges in color.",
+  "tags": ["regeneration", "arc", "prism", "sweep"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.58, "warmth": 0.52, "movement": 0.55, "density": 0.55, "space": 0.6, "aggression": 0.22},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.7,
+      "morph_bloom": 0.72,
+      "morph_detune": 0.18,
+      "morph_drift": 0.45,
+      "morph_filterCutoff": 9500.0,
+      "morph_filterReso": 0.62,
+      "morph_filterEnvDepth": 0.72,
+      "morph_sub": 0.28,
+      "morph_decay": 1.0,
+      "morph_sustain": 0.72,
+      "morph_release": 2.0,
+      "morph_glide": 0.15,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 6,
+      "morph_level": 0.73,
+      "morph_macroBloom": 0.72,
+      "morph_macroDepth": 0.62,
+      "morph_macroDrift": 0.45,
+      "morph_macroSpace": 0.6
+    }
+  },
+  "macros": {"CHARACTER": 0.62, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.6},
+  "coupling": {"pairs": []}
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Volatile Rule",
+  "mood": "Flux",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": ["cellular", "generative", "chaotic", "mutating"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.26,
+    "movement": 0.9,
+    "density": 0.44,
+    "space": 0.26,
+    "aggression": 0.75
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 18.0,
+      "org_seed": 8900,
+      "org_stepRate": 26.0,
+      "org_scope": 2,
+      "org_mutate": 0.18,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.1,
+      "org_filterCutoff": 6200.0,
+      "org_filterRes": 0.68,
+      "org_velCutoff": 0.84,
+      "org_ampAtk": 0.002,
+      "org_ampDec": 0.07,
+      "org_ampSus": 0.42,
+      "org_ampRel": 0.18,
+      "org_lfo1Rate": 7.0,
+      "org_lfo1Depth": 0.58,
+      "org_lfo2Rate": 4.5,
+      "org_lfo2Depth": 0.52,
+      "org_reverbMix": 0.12,
+      "org_macroRule": 0.78,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.22
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.0,
+    "SPACE": 0.18
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

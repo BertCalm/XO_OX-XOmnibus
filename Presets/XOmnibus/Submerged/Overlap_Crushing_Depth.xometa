@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Crushing Depth",
+  "mood": "Submerged",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Maximum depth configuration \u2014 the pressure is so extreme that frequencies compress and shift. The torus topology feels physically heavy. Notes don't just decay; they compress under the weight of water.",
+  "tags": [
+    "crushing",
+    "depth",
+    "torus",
+    "pressure",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.82,
+    "movement": 0.25,
+    "density": 0.85,
+    "space": 0.9,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 3,
+      "olap_delayFeedback": 0.8,
+      "olap_diffusion": 0.65,
+      "olap_spread": 0.78,
+      "olap_decay": 22.0,
+      "olap_modDepth": 0.12,
+      "olap_modRate": 0.02,
+      "olap_damping": 0.9,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

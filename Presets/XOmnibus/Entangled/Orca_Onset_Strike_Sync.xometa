@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "name": "Onset Strike Sync",
+  "mood": "Entangled",
+  "engines": ["ONSET", "ORCA"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Onset drum hit triggering Orca breach displacement — every percussive event from the drum engine creating the massive sub-bass slam. The rhythm machine controlling the predator's physical impact.",
+  "tags": ["entangled", "onset", "orca", "percussion", "sync"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.62, "COUPLING": 0.82, "SPACE": 0.32},
+  "couplingIntensity": "High",
+  "dna": {"brightness": 0.55, "warmth": 0.42, "movement": 0.75, "density": 0.78, "space": 0.3, "aggression": 0.82},
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {"engineA": "ONSET", "engineB": "ORCA", "type": "AmpToChoke", "amount": 0.88}
+    ]
+  }
+}

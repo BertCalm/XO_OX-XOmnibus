@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Half Life",
+  "mood": "Atmosphere",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Radioactive metaphor: memory decay set to 5 seconds — the half-life of this sound. After 5 seconds, half the memory remains. After 10, a quarter. The tail never truly ends.",
+  "tags": ["atmosphere", "half-life", "decay", "mathematical", "slow-release"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.6,
+    "movement": 0.35,
+    "density": 0.6,
+    "space": 0.78,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.25,
+      "ombre_interference": 0.32,
+      "ombre_memoryDecay": 5.0,
+      "ombre_memoryGrain": 140.0,
+      "ombre_memoryDrift": 0.32,
+      "ombre_oscShape": 0,
+      "ombre_reactivity": 0.42,
+      "ombre_subLevel": 0.35,
+      "ombre_filterCutoff": 3400.0,
+      "ombre_filterReso": 0.2,
+      "ombre_attack": 0.4,
+      "ombre_decay": 1.2,
+      "ombre_sustain": 0.75,
+      "ombre_release": 4.0,
+      "ombre_level": 0.7,
+      "ombre_velCutoffScale": 0.28,
+      "ombre_lfo1Rate": 0.18,
+      "ombre_lfo1Depth": 0.35,
+      "ombre_lfo2Rate": 0.12,
+      "ombre_lfo2Depth": 0.28,
+      "ombre_macroCharacter": 0.75,
+      "ombre_macroMovement": 0.35,
+      "ombre_macroCoupling": 0.42,
+      "ombre_macroSpace": 0.82
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

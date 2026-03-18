@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "name": "Triangle Channel",
+  "mood": "Foundation",
+  "engines": ["OVERWORLD"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The NES triangle wave channel — the bass voice, the sub-melody, the warmest thing in the 2A03 arsenal. Super Mario's bassline. Mega Man's walking bass. No pulse, no noise, just the pure geometry of a triangle moving through silence.",
+  "tags": ["nes", "triangle", "bass", "foundation", "2A03", "mario", "sub-bass", "pure"],
+  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.72,
+    "movement": 0.12,
+    "density": 0.58,
+    "space": 0.18,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "ow_macro_era": 0.08,
+      "ow_macro_chaos": 0.02,
+      "ow_macro_couple": 0.0,
+      "ow_macro_space": 0.15,
+      "ow_outputLevel": 0.9,
+      "ow_couplingLevel": 0.0,
+      "ow_couplingBus": 0
+    }
+  },
+  "macros": {"ERA": 0.08, "CHAOS": 0.02, "COUPLE": 0.0, "SPACE": 0.15},
+  "coupling": {"pairs": []}
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Biolum Deep",
+  "mood": "Atmosphere",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 193 at low mutation \u2014 neural firing in the midnight zone. Occasional bright flashes from arm 4 and 5 against a near-black background. You feel watched.",
+  "tags": [
+    "atmosphere",
+    "bioluminescent",
+    "deep",
+    "flashes",
+    "midnight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.3,
+    "movement": 0.55,
+    "density": 0.35,
+    "space": 0.8,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 193,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.2,
+      "owit_armSpread": 0.7,
+      "owit_sync": 0.15,
+      "owit_feedbackAmt": 0.55,
+      "owit_chaos": 0.45,
+      "owit_density": 0.35,
+      "owit_ampAttack": 0.05,
+      "owit_ampDecay": 0.2,
+      "owit_ampSustain": 0.55,
+      "owit_ampRelease": 1.8,
+      "owit_filterCutoff": 0.6,
+      "owit_filterRes": 0.45,
+      "owit_lfoRate": 0.12,
+      "owit_lfoDepth": 0.22,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

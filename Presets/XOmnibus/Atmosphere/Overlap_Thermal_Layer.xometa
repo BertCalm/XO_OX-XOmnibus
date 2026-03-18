@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Thermal Layer",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A warm, dense layer sitting below the surface \u2014 trefoil routing at low feedback creates a bed of warmth that supports anything placed on top. Not visible but felt. The heat that makes the cold meaningful.",
+  "tags": [
+    "warm",
+    "dense",
+    "trefoil",
+    "bed",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.78,
+    "movement": 0.4,
+    "density": 0.72,
+    "space": 0.78,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.58,
+      "olap_diffusion": 0.72,
+      "olap_spread": 0.82,
+      "olap_decay": 7.5,
+      "olap_modDepth": 0.15,
+      "olap_modRate": 0.05,
+      "olap_damping": 0.6,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

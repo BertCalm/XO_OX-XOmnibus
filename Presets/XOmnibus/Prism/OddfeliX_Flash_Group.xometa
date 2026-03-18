@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "Flash Group",
+  "mood": "Prism",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Six-voice chord cluster flash — a whole group catching light simultaneously.",
+  "tags": ["group", "chord", "flash", "cluster"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.88, "warmth": 0.28, "movement": 0.52, "density": 0.75, "space": 0.5, "aggression": 0.25},
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1,
+      "snap_snap": 0.82,
+      "snap_decay": 0.35,
+      "snap_detune": 0.15,
+      "snap_filterCutoff": 13500.0,
+      "snap_filterReso": 0.52,
+      "snap_filterEnvDepth": 0.65,
+      "snap_unison": 4,
+      "snap_sweepDirection": 0,
+      "snap_pitchLock": 0.78,
+      "snap_polyphony": 8,
+      "snap_level": 0.8,
+      "snap_macroDart": 0.52,
+      "snap_macroDepth": 0.55,
+      "snap_macroSchool": 0.7,
+      "snap_macroSurface": 0.65
+    }
+  },
+  "macros": {"CHARACTER": 0.62, "MOVEMENT": 0.52, "COUPLING": 0.0, "SPACE": 0.5},
+  "coupling": {"pairs": []}
+}

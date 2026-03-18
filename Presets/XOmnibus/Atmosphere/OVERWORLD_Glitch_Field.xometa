@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "name": "Glitch Field",
+  "mood": "Atmosphere",
+  "engines": ["OVERWORLD"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Low-level glitch events distributed across a wide space — the sound of a corrupted save file.",
+  "tags": ["glitch", "field", "atmosphere", "corrupt", "space", "overworld"],
+  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.55, "warmth": 0.2, "movement": 0.42, "density": 0.38, "space": 0.78, "aggression": 0.35},
+  "parameters": {
+    "OVERWORLD": {
+      "ow_era": 1,
+      "ow_macro_era": 0.45,
+      "ow_macro_chaos": 0.38,
+      "ow_macro_couple": 0.0,
+      "ow_macro_space": 0.75,
+      "ow_outputLevel": 0.7,
+      "ow_couplingLevel": 0.0,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

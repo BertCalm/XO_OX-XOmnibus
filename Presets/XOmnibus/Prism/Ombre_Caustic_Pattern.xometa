@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Caustic Pattern",
+  "mood": "Prism",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Caustics: light patterns created when light passes through water. Fast LFOs, mid-drift grain, resonant filter. Notes create watery light patterns on the sonic surface.",
+  "tags": ["prism", "caustic", "water", "pattern", "light", "watery"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.52,
+    "movement": 0.7,
+    "density": 0.52,
+    "space": 0.7,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.58,
+      "ombre_interference": 0.45,
+      "ombre_memoryDecay": 4.0,
+      "ombre_memoryGrain": 45.0,
+      "ombre_memoryDrift": 0.7,
+      "ombre_oscShape": 3,
+      "ombre_reactivity": 0.65,
+      "ombre_subLevel": 0.1,
+      "ombre_filterCutoff": 6000.0,
+      "ombre_filterReso": 0.6,
+      "ombre_attack": 0.02,
+      "ombre_decay": 0.3,
+      "ombre_sustain": 0.6,
+      "ombre_release": 1.8,
+      "ombre_level": 0.72,
+      "ombre_velCutoffScale": 0.52,
+      "ombre_lfo1Rate": 3.5,
+      "ombre_lfo1Depth": 0.5,
+      "ombre_lfo2Rate": 2.0,
+      "ombre_lfo2Depth": 0.65,
+      "ombre_macroCharacter": 0.32,
+      "ombre_macroMovement": 0.7,
+      "ombre_macroCoupling": 0.45,
+      "ombre_macroSpace": 0.72
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

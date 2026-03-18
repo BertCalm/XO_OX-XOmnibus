@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Breath End",
+  "mood": "Aether",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Final exhalation — the last bloom breath released into pure reverberant aether.",
+  "tags": ["breath", "final", "aether", "exhalation"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.32, "warmth": 0.62, "movement": 0.28, "density": 0.25, "space": 0.95, "aggression": 0.04},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.32,
+      "morph_bloom": 0.55,
+      "morph_detune": 0.15,
+      "morph_drift": 0.28,
+      "morph_filterCutoff": 3800.0,
+      "morph_filterReso": 0.42,
+      "morph_filterEnvDepth": 0.18,
+      "morph_sub": 0.18,
+      "morph_decay": 5.0,
+      "morph_sustain": 0.68,
+      "morph_release": 8.0,
+      "morph_glide": 0.5,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 4,
+      "morph_level": 0.28,
+      "morph_macroBloom": 0.55,
+      "morph_macroDepth": 0.32,
+      "morph_macroDrift": 0.28,
+      "morph_macroSpace": 0.95
+    }
+  },
+  "macros": {"CHARACTER": 0.3, "MOVEMENT": 0.28, "COUPLING": 0.0, "SPACE": 0.95},
+  "coupling": {"pairs": []}
+}

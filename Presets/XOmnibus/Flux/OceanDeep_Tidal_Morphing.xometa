@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Tidal Morphing",
+  "mood": "Flux",
+  "engines": ["OceanDeep"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Shifting pressure and body shape as tidal forces reshape the deep-water column over time.",
+  "tags": ["flux", "morphing", "pressure", "evolving"],
+  "macroLabels": ["PRESSURE", "CREATURE", "DEPTH", "LIGHT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.55,
+    "movement": 0.72,
+    "density": 0.75,
+    "space": 0.58,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_attack": 0.18,
+      "deep_decay": 0.65,
+      "deep_sustain": 0.72,
+      "deep_release": 1.1,
+      "deep_bodyType": 1,
+      "deep_bodySize": 0.72,
+      "deep_bodyDamp": 0.5,
+      "deep_subOctave": 1,
+      "deep_subShape": 1,
+      "deep_harmonicLevel": 0.4,
+      "deep_pressure": 0.65,
+      "deep_darkness": 0.7,
+      "deep_filterReso": 0.38,
+      "deep_rumble": 0.55,
+      "deep_creatureDepth": 0.5,
+      "deep_creatureSpeed": 0.6,
+      "deep_flashBright": 0.35,
+      "deep_flashRate": 4.0,
+      "deep_reverbSize": 0.65,
+      "deep_reverbMix": 0.42,
+      "deep_delayMix": 0.18,
+      "deep_macroPressure": 0.65,
+      "deep_macroCreature": 0.5,
+      "deep_macroDepth": 0.7,
+      "deep_macroLight": 0.35
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.65,
+    "CREATURE": 0.5,
+    "DEPTH": 0.7,
+    "LIGHT": 0.35
+  },
+  "coupling": {"pairs": []}
+}

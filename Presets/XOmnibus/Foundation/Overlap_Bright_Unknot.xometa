@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Bright Unknot",
+  "mood": "Foundation",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "The unknot topology with minimal damping \u2014 clean, open, bright. A forward-facing reverb tail that complements acoustic instruments without coloring them. The OVERLAP for people who don't want to hear the OVERLAP.",
+  "tags": [
+    "unknot",
+    "bright",
+    "clean",
+    "open",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.38,
+    "movement": 0.18,
+    "density": 0.35,
+    "space": 0.65,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 0,
+      "olap_delayFeedback": 0.42,
+      "olap_diffusion": 0.48,
+      "olap_spread": 0.65,
+      "olap_decay": 2.5,
+      "olap_modDepth": 0.04,
+      "olap_modRate": 0.14,
+      "olap_damping": 0.25,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Bloom Veil",
+  "mood": "Atmosphere",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": ["generative", "cellular", "ambient", "emergent"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.62,
+    "movement": 0.32,
+    "density": 0.6,
+    "space": 0.75,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 30.0,
+      "org_seed": 39000,
+      "org_stepRate": 2.0,
+      "org_scope": 11,
+      "org_mutate": 0.005,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.44,
+      "org_filterCutoff": 2000.0,
+      "org_filterRes": 0.24,
+      "org_velCutoff": 0.4,
+      "org_ampAtk": 0.055,
+      "org_ampDec": 0.55,
+      "org_ampSus": 0.83,
+      "org_ampRel": 1.9,
+      "org_lfo1Rate": 0.25,
+      "org_lfo1Depth": 0.27,
+      "org_lfo2Rate": 0.15,
+      "org_lfo2Depth": 0.24,
+      "org_reverbMix": 0.7,
+      "org_macroRule": 0.1,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.015
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

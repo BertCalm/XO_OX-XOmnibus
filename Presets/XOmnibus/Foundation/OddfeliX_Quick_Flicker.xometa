@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "Quick Flicker",
+  "mood": "Foundation",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-short decay snap — a momentary glint like light catching a fin.",
+  "tags": ["snap", "short", "bright", "transient"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.92, "warmth": 0.12, "movement": 0.7, "density": 0.25, "space": 0.3, "aggression": 0.35},
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.95,
+      "snap_decay": 0.05,
+      "snap_detune": 0.04,
+      "snap_filterCutoff": 16000.0,
+      "snap_filterReso": 0.2,
+      "snap_filterEnvDepth": 0.8,
+      "snap_unison": 1,
+      "snap_sweepDirection": 0,
+      "snap_pitchLock": 0.98,
+      "snap_polyphony": 8,
+      "snap_level": 0.82,
+      "snap_macroDart": 0.85,
+      "snap_macroDepth": 0.25,
+      "snap_macroSchool": 0.15,
+      "snap_macroSurface": 0.6
+    }
+  },
+  "macros": {"CHARACTER": 0.8, "MOVEMENT": 0.7, "COUPLING": 0.0, "SPACE": 0.3},
+  "coupling": {"pairs": []}
+}

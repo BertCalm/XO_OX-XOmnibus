@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Feint",
+  "mood": "Aether",
+  "engines": ["Overbite"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Deceptive quiet bass that fades in slowly — the feint before the real attack lands.",
+  "tags": ["bass", "fade", "deceptive", "build"],
+  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.35, "warmth": 0.65, "movement": 0.2, "density": 0.35, "space": 0.65, "aggression": 0.15},
+  "parameters": {
+    "Overbite": {
+      "poss_oscAWaveform": 1,
+      "poss_oscBWaveform": 0,
+      "poss_oscMix": 0.4,
+      "poss_subLevel": 0.4,
+      "poss_filterCutoff": 1000,
+      "poss_filterReso": 0.15,
+      "poss_filterEnvAmount": 0.3,
+      "poss_filterAttack": 0.8,
+      "poss_filterDecay": 0.5,
+      "poss_ampAttack": 1.0,
+      "poss_ampDecay": 0.5,
+      "poss_ampSustain": 0.55,
+      "poss_ampRelease": 1.5,
+      "poss_fxSpaceSize": 0.65,
+      "poss_fxSpaceDecay": 0.55,
+      "poss_fxSpaceMix": 0.3,
+      "poss_macroBelly": 0.45,
+      "poss_macroBite": 0.1,
+      "poss_macroScurry": 0.2,
+      "poss_macroTrash": 0.05,
+      "poss_macroPlayDead": 0.75
+    }
+  },
+  "macros": {"BELLY": 0.45, "BITE": 0.1, "SCURRY": 0.2, "TRASH": 0.05, "PLAY DEAD": 0.75},
+  "coupling": {"pairs": []}
+}

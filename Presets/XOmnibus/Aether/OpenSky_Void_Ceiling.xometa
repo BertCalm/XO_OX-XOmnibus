@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Void Ceiling",
+  "mood": "Aether",
+  "engines": ["OpenSky"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Looking straight up into a sky that becomes pure void — brightness dissolving into open space.",
+  "tags": ["aether", "void", "open", "dissolve"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.25,
+    "movement": 0.28,
+    "density": 0.12,
+    "space": 0.98,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_ampAttack": 2.0,
+      "sky_ampDecay": 2.5,
+      "sky_ampSustain": 0.45,
+      "sky_ampRelease": 5.0,
+      "sky_filterFc": 16000,
+      "sky_filterRes": 0.08,
+      "sky_glide": 0.3,
+      "sky_lfoRate": 0.04,
+      "sky_lfoDepth": 0.35,
+      "sky_lfoShape": 0,
+      "sky_chorusRate": 0.08,
+      "sky_chorusDepth": 0.7,
+      "sky_chorusMix": 0.72,
+      "sky_reverbMix": 0.98,
+      "sky_outputGain": 0.5,
+      "sky_couplingAmt": 0.0,
+      "sky_shimmerOct": 2,
+      "sky_shimmerMix": 0.78,
+      "sky_velSensitivity": 0.2,
+      "sky_macroCharacter": 0.2,
+      "sky_macroMovement": 0.28,
+      "sky_macroCoupling": 0.0,
+      "sky_macroSpace": 0.98
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.2,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.0,
+    "SPACE": 0.98
+  },
+  "coupling": {"pairs": []}
+}

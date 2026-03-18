@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Perc Blend Web",
+  "mood": "Entangled",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "XVC snare-to-perc coupling creates dense blended network.",
+  "tags": [
+    "perc",
+    "blend",
+    "web",
+    "network",
+    "entangled"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.54,
+    "warmth": 0.48,
+    "movement": 0.5,
+    "density": 0.55,
+    "space": 0.32,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macro_machine": 0.45,
+      "perc_macro_punch": 0.52,
+      "perc_macro_space": 0.32,
+      "perc_macro_mutate": 0.32,
+      "perc_drive": 0.4,
+      "perc_level": 0.78,
+      "perc_masterTone": 0.52,
+      "perc_char_grit": 0.3,
+      "perc_char_warmth": 0.48,
+      "perc_fx_reverb_size": 0.32,
+      "perc_fx_reverb_decay": 0.44,
+      "perc_fx_reverb_mix": 0.22,
+      "perc_fx_delay_time": 0.26,
+      "perc_fx_delay_feedback": 0.15,
+      "perc_fx_delay_mix": 0.08,
+      "perc_fx_lofi_bits": 14,
+      "perc_fx_lofi_mix": 0.04,
+      "perc_xvc_global_amount": 0.5,
+      "perc_xvc_kick_to_snare_filter": 0.45,
+      "perc_xvc_kick_to_tom_pitch": 0.5,
+      "perc_xvc_snare_to_hat_decay": 0.88,
+      "perc_xvc_snare_to_perc_blend": 0.42,
+      "perc_xvc_hat_choke": 0.45
+    }
+  },
+  "macros": {
+    "MACHINE": 0.45,
+    "PUNCH": 0.52,
+    "SPACE": 0.32,
+    "MUTATE": 0.32
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

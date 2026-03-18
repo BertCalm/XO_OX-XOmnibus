@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "Den Breath",
+  "mood": "Atmosphere",
+  "engines": ["Overbite"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Hollow resonant breathiness as if recorded inside a den — spring reverb and gentle noise decay.",
+  "tags": ["texture", "hollow", "breath", "ambient"],
+  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.35, "warmth": 0.65, "movement": 0.2, "density": 0.4, "space": 0.7, "aggression": 0.1},
+  "parameters": {
+    "Overbite": {
+      "poss_oscAWaveform": 0,
+      "poss_noiseLevel": 0.35,
+      "poss_noiseType": 1,
+      "poss_noiseDecay": 0.8,
+      "poss_noiseRouting": 0,
+      "poss_filterCutoff": 1500,
+      "poss_filterReso": 0.35,
+      "poss_ampAttack": 0.8,
+      "poss_ampDecay": 0.5,
+      "poss_ampSustain": 0.6,
+      "poss_ampRelease": 1.5,
+      "poss_fxSpaceSize": 0.6,
+      "poss_fxSpaceDecay": 0.5,
+      "poss_fxSpaceType": 3,
+      "poss_fxSpaceMix": 0.4,
+      "poss_macroBelly": 0.4,
+      "poss_macroBite": 0.1,
+      "poss_macroScurry": 0.2,
+      "poss_macroTrash": 0.1,
+      "poss_macroPlayDead": 0.65
+    }
+  },
+  "macros": {"BELLY": 0.4, "BITE": 0.1, "SCURRY": 0.2, "TRASH": 0.1, "PLAY DEAD": 0.65},
+  "coupling": {"pairs": []}
+}

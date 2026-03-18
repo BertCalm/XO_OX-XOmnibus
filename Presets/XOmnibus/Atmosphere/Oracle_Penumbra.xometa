@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Penumbra",
+  "mood": "Atmosphere",
+  "engines": ["Oracle"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The half-shadow zone — stochastic tone hovering between light and darkness.",
+  "tags": ["atmosphere", "shadow", "liminal", "penumbra"],
+  "macroLabels": ["DRIFT", "EVOLUTION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.35, "warmth": 0.45, "movement": 0.45, "density": 0.5, "space": 0.7, "aggression": 0.25},
+  "parameters": {
+    "Oracle": {
+      "oracle_breakpoints": 0.5,
+      "oracle_distribution": 3,
+      "oracle_drift": 0.5,
+      "oracle_gravity": 0.55,
+      "oracle_barrierElasticity": 0.6,
+      "oracle_ampStep": 0.4,
+      "oracle_glide": 0.35,
+      "oracle_level": 0.68,
+      "oracle_lfo1Rate": 0.11,
+      "oracle_lfo1Depth": 0.4,
+      "oracle_lfo1Shape": 0,
+      "oracle_lfo2Rate": 0.07,
+      "oracle_lfo2Depth": 0.25,
+      "oracle_lfo2Shape": 1,
+      "oracle_ampAttack": 0.5,
+      "oracle_ampDecay": 0.4,
+      "oracle_ampSustain": 0.6,
+      "oracle_ampRelease": 2.0,
+      "oracle_macroDrift": 0.5,
+      "oracle_macroEvolution": 0.45,
+      "oracle_macroCoupling": 0.0,
+      "oracle_macroSpace": 0.7
+    }
+  },
+  "macros": {"DRIFT": 0.5, "EVOLUTION": 0.45, "COUPLING": 0.0, "SPACE": 0.7},
+  "coupling": {"pairs": []}
+}

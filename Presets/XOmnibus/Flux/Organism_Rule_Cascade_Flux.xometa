@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Rule Cascade Flux",
+  "mood": "Flux",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Rule macro sweeping mid-cascade, cellular wave tumbling through mid-range.",
+  "tags": ["flux", "cascading", "sweeping", "dynamic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.8,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Organism": {
+      "org_oscWave": 1,
+      "org_rule": 105,
+      "org_mutate": 0.3,
+      "org_freeze": 0.0,
+      "org_scope": 0.6,
+      "org_filterCutoff": 4200,
+      "org_filterRes": 0.38,
+      "org_ampAtk": 0.02,
+      "org_ampDec": 0.3,
+      "org_ampSus": 0.65,
+      "org_ampRel": 0.6,
+      "org_lfo1Rate": 2.0,
+      "org_lfo1Depth": 0.3,
+      "org_lfo2Rate": 0.5,
+      "org_lfo2Depth": 0.2,
+      "org_reverbMix": 0.3,
+      "org_macroRule": 0.6,
+      "org_macroMutate": 0.3,
+      "org_macroSeed": 0.5,
+      "org_macroCoupling": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.0,
+    "SPACE": 0.3
+  },
+  "coupling": {"pairs": []}
+}

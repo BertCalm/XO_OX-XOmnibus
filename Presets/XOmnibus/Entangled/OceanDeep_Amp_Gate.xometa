@@ -1,38 +1,28 @@
 {
+  "schema_version": 1,
   "name": "Amp Gate",
-  "engine": "OceanDeep",
-  "version": "1.0",
   "mood": "Entangled",
-  "macros": {
-    "PRESSURE": 0.76,
-    "CREATURE": 0.32,
-    "WRECK": 0.3,
-    "ABYSS": 0.68
-  },
-  "parameters": {
-    "deep_subShape": 3,
-    "deep_subOctave": -1,
-    "deep_harmonicLevel": 0.3,
-    "deep_pressure": 0.76,
-    "deep_bodyType": 2,
-    "deep_bodySize": 0.78,
-    "deep_bodyDamp": 0.62,
-    "deep_flashRate": 0.28,
-    "deep_flashBright": 0.38,
-    "deep_creatureSpeed": 0.32,
-    "deep_creatureDepth": 0.3,
-    "deep_darkness": 0.86,
-    "deep_filterReso": 0.38,
-    "deep_reverbMix": 0.52,
-    "deep_reverbSize": 0.82,
-    "deep_delayMix": 0.18,
-    "deep_rumble": 0.72,
-    "deep_attack": 0.003,
-    "deep_decay": 0.7,
-    "deep_sustain": 0.76,
-    "deep_release": 2.0
-  },
-  "sonicDNA": {
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "dark",
+    "deep",
+    "low-end"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
     "brightness": 0.16,
     "warmth": 0.76,
     "movement": 0.36,
@@ -40,5 +30,38 @@
     "space": 0.75,
     "aggression": 0.55
   },
-  "tags": ["bass", "dark", "deep", "low-end"]
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 3,
+      "deep_subOctave": -1,
+      "deep_harmonicLevel": 0.3,
+      "deep_pressure": 0.76,
+      "deep_bodyType": 2,
+      "deep_bodySize": 0.78,
+      "deep_bodyDamp": 0.62,
+      "deep_flashRate": 0.28,
+      "deep_flashBright": 0.38,
+      "deep_creatureSpeed": 0.32,
+      "deep_creatureDepth": 0.3,
+      "deep_darkness": 0.86,
+      "deep_filterReso": 0.38,
+      "deep_reverbMix": 0.52,
+      "deep_reverbSize": 0.82,
+      "deep_delayMix": 0.18,
+      "deep_rumble": 0.72,
+      "deep_attack": 0.003,
+      "deep_decay": 0.7,
+      "deep_sustain": 0.76,
+      "deep_release": 2.0
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.76,
+    "CREATURE": 0.32,
+    "WRECK": 0.3,
+    "ABYSS": 0.68
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

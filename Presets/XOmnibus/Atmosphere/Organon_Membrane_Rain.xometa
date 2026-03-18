@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "name": "Membrane Rain",
+  "mood": "Atmosphere",
+  "engines": ["Organon"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Molecules impacting the membrane surface — stochastic rain on a biological boundary.",
+  "tags": ["membrane", "rain", "atmosphere", "stochastic", "impact", "organic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.4, "warmth": 0.58, "movement": 0.38, "density": 0.42, "space": 0.72, "aggression": 0.22},
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.32,
+      "organon_membrane": 0.75,
+      "organon_enzymeSelect": 0,
+      "organon_catalystDrive": 0.25,
+      "organon_isotopeBalance": 0.48,
+      "organon_phasonShift": 0.22,
+      "organon_dampingCoeff": 0.65,
+      "organon_signalFlux": 0.38,
+      "organon_noiseColor": 0,
+      "organon_lockIn": 0.22
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

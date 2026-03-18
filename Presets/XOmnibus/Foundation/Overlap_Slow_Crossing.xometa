@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Slow Crossing",
+  "mood": "Foundation",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A figure-eight with deliberate, slow modulation \u2014 each traversal of the crossing point takes its time, creating a gentle phasing effect that never becomes distracting. Background texture for long sessions.",
+  "tags": [
+    "slow",
+    "figure-eight",
+    "phasing",
+    "gentle",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.6,
+    "movement": 0.35,
+    "density": 0.45,
+    "space": 0.68,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 2,
+      "olap_delayFeedback": 0.5,
+      "olap_diffusion": 0.6,
+      "olap_spread": 0.75,
+      "olap_decay": 4.5,
+      "olap_modDepth": 0.12,
+      "olap_modRate": 0.04,
+      "olap_damping": 0.46,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

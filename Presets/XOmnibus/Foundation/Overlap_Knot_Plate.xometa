@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Knot Plate",
+  "mood": "Foundation",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Trefoil topology tuned to emulate a plate reverb \u2014 medium decay, moderate diffusion, broad but not infinite. The crossing points add a metallic shimmer at the tail. Classic texture in a topological frame.",
+  "tags": [
+    "plate",
+    "trefoil",
+    "metallic",
+    "classic",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.5,
+    "movement": 0.28,
+    "density": 0.52,
+    "space": 0.65,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.58,
+      "olap_diffusion": 0.7,
+      "olap_spread": 0.82,
+      "olap_decay": 2.8,
+      "olap_modDepth": 0.1,
+      "olap_modRate": 0.13,
+      "olap_damping": 0.38,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

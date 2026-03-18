@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "name": "Ending Credits",
+  "mood": "Atmosphere",
+  "engines": ["OVERWORLD"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Slow ERA morph with high space — the emotional resolution of a long game, finally done.",
+  "tags": ["ending", "credits", "atmosphere", "slow", "space", "overworld"],
+  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.52, "warmth": 0.65, "movement": 0.2, "density": 0.4, "space": 0.85, "aggression": 0.08},
+  "parameters": {
+    "OVERWORLD": {
+      "ow_era": 2,
+      "ow_macro_era": 0.78,
+      "ow_macro_chaos": 0.04,
+      "ow_macro_couple": 0.0,
+      "ow_macro_space": 0.82,
+      "ow_outputLevel": 0.7,
+      "ow_couplingLevel": 0.0,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

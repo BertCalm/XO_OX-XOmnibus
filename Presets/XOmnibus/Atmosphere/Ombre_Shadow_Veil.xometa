@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Shadow Veil",
+  "mood": "Atmosphere",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Oubli dominant with high filter reso that makes the veil seem textured. Memory grains resonate. The character of the past is felt as much as heard.",
+  "tags": ["atmosphere", "veil", "shadow", "textured", "resonant"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.62,
+    "movement": 0.35,
+    "density": 0.68,
+    "space": 0.78,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.2,
+      "ombre_interference": 0.38,
+      "ombre_memoryDecay": 11.0,
+      "ombre_memoryGrain": 180.0,
+      "ombre_memoryDrift": 0.45,
+      "ombre_oscShape": 1,
+      "ombre_reactivity": 0.45,
+      "ombre_subLevel": 0.32,
+      "ombre_filterCutoff": 3000.0,
+      "ombre_filterReso": 0.55,
+      "ombre_attack": 0.8,
+      "ombre_decay": 1.5,
+      "ombre_sustain": 0.75,
+      "ombre_release": 4.0,
+      "ombre_level": 0.68,
+      "ombre_velCutoffScale": 0.32,
+      "ombre_lfo1Rate": 0.2,
+      "ombre_lfo1Depth": 0.42,
+      "ombre_lfo2Rate": 0.14,
+      "ombre_lfo2Depth": 0.35,
+      "ombre_macroCharacter": 0.78,
+      "ombre_macroMovement": 0.35,
+      "ombre_macroCoupling": 0.42,
+      "ombre_macroSpace": 0.82
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

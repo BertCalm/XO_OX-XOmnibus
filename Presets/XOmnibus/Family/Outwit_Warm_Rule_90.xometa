@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Warm Rule 90",
+  "mood": "Family",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 90 Sierpinski \u2014 the classic fractal rule, warmed. Lower filter cutoff than the Prism versions, high sustain, high warmth. The family version of a famous name.",
+  "tags": [
+    "family",
+    "sierpinski",
+    "warm",
+    "classic",
+    "soft"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.68,
+    "movement": 0.45,
+    "density": 0.62,
+    "space": 0.58,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 90,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.08,
+      "owit_armSpread": 0.45,
+      "owit_sync": 0.62,
+      "owit_feedbackAmt": 0.25,
+      "owit_chaos": 0.18,
+      "owit_density": 0.62,
+      "owit_ampAttack": 0.08,
+      "owit_ampDecay": 0.3,
+      "owit_ampSustain": 0.9,
+      "owit_ampRelease": 1.3,
+      "owit_filterCutoff": 0.52,
+      "owit_filterRes": 0.2,
+      "owit_lfoRate": 0.06,
+      "owit_lfoDepth": 0.1,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

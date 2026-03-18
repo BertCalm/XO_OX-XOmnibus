@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Slow Helix",
+  "mood": "Aether",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "The torus knot as a helix moving through time \u2014 each traversal is slightly displaced in phase, creating a slow-motion spiral through the reverb space. Notes leave helical trails.",
+  "tags": [
+    "helix",
+    "spiral",
+    "torus",
+    "temporal",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.6,
+    "movement": 0.42,
+    "density": 0.88,
+    "space": 0.97,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 3,
+      "olap_delayFeedback": 0.9,
+      "olap_diffusion": 0.85,
+      "olap_spread": 0.9,
+      "olap_decay": 45.0,
+      "olap_modDepth": 0.18,
+      "olap_modRate": 0.02,
+      "olap_damping": 0.28,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

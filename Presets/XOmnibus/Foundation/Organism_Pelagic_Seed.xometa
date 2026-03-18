@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Pelagic Seed",
+  "mood": "Foundation",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Wide-scope rule-150 colony drifting through open-water frequency space.",
+  "tags": ["drone", "wide", "open", "foundational"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.5,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Organism": {
+      "org_oscWave": 0,
+      "org_rule": 150,
+      "org_mutate": 0.12,
+      "org_freeze": 0.15,
+      "org_scope": 0.85,
+      "org_filterCutoff": 2600,
+      "org_filterRes": 0.18,
+      "org_ampAtk": 0.1,
+      "org_ampDec": 0.5,
+      "org_ampSus": 0.72,
+      "org_ampRel": 1.2,
+      "org_lfo1Rate": 0.25,
+      "org_lfo1Depth": 0.14,
+      "org_lfo2Rate": 0.07,
+      "org_lfo2Depth": 0.1,
+      "org_reverbMix": 0.35,
+      "org_macroRule": 0.5,
+      "org_macroMutate": 0.12,
+      "org_macroSeed": 0.5,
+      "org_macroCoupling": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.35
+  },
+  "coupling": {"pairs": []}
+}

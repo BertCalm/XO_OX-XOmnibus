@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Amphibian Air",
+  "mood": "Atmosphere",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Amphibious dual-medium atmosphere — warm water bloom with cool air-side brightness.",
+  "tags": ["amphibian", "air", "dual", "atmosphere"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.48, "warmth": 0.62, "movement": 0.48, "density": 0.62, "space": 0.82, "aggression": 0.1},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.55,
+      "morph_bloom": 0.65,
+      "morph_detune": 0.28,
+      "morph_drift": 0.42,
+      "morph_filterCutoff": 6000.0,
+      "morph_filterReso": 0.4,
+      "morph_filterEnvDepth": 0.4,
+      "morph_sub": 0.32,
+      "morph_decay": 2.2,
+      "morph_sustain": 0.8,
+      "morph_release": 4.5,
+      "morph_glide": 0.25,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 8,
+      "morph_level": 0.64,
+      "morph_macroBloom": 0.65,
+      "morph_macroDepth": 0.55,
+      "morph_macroDrift": 0.42,
+      "morph_macroSpace": 0.82
+    }
+  },
+  "macros": {"CHARACTER": 0.48, "MOVEMENT": 0.48, "COUPLING": 0.0, "SPACE": 0.82},
+  "coupling": {"pairs": []}
+}

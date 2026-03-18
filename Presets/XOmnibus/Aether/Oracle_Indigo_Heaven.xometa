@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Indigo Heaven",
+  "mood": "Aether",
+  "engines": ["Oracle"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Indigo ascends into heaven — maximum space, near-zero aggression, pure drift.",
+  "tags": ["aether", "indigo", "ascend", "pure"],
+  "macroLabels": ["DRIFT", "EVOLUTION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.65, "warmth": 0.3, "movement": 0.4, "density": 0.3, "space": 0.95, "aggression": 0.05},
+  "parameters": {
+    "Oracle": {
+      "oracle_breakpoints": 0.35,
+      "oracle_distribution": 1,
+      "oracle_drift": 0.5,
+      "oracle_gravity": 0.25,
+      "oracle_barrierElasticity": 0.7,
+      "oracle_ampStep": 0.3,
+      "oracle_glide": 0.75,
+      "oracle_level": 0.6,
+      "oracle_lfo1Rate": 0.04,
+      "oracle_lfo1Depth": 0.65,
+      "oracle_lfo1Shape": 0,
+      "oracle_lfo2Rate": 0.02,
+      "oracle_lfo2Depth": 0.5,
+      "oracle_lfo2Shape": 1,
+      "oracle_ampAttack": 1.5,
+      "oracle_ampDecay": 0.7,
+      "oracle_ampSustain": 0.5,
+      "oracle_ampRelease": 5.0,
+      "oracle_macroDrift": 0.5,
+      "oracle_macroEvolution": 0.55,
+      "oracle_macroCoupling": 0.0,
+      "oracle_macroSpace": 0.95
+    }
+  },
+  "macros": {"DRIFT": 0.5, "EVOLUTION": 0.55, "COUPLING": 0.0, "SPACE": 0.95},
+  "coupling": {"pairs": []}
+}

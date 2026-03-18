@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Kuramoto Lock",
+  "mood": "Flux",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "High Kuramoto entrainment forcing all six voices to synchronize \u2014 a sudden, dramatic locking where the reverb tail drops in density as voices align. The topological crossings fire in unison. Explosive synchrony.",
+  "tags": [
+    "kuramoto",
+    "sync",
+    "explosive",
+    "trefoil",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.85,
+    "density": 0.72,
+    "space": 0.72,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.62,
+      "olap_diffusion": 0.68,
+      "olap_spread": 0.78,
+      "olap_decay": 5.0,
+      "olap_modDepth": 0.35,
+      "olap_modRate": 0.15,
+      "olap_damping": 0.38,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

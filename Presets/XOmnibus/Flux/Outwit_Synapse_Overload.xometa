@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Synapse Overload",
+  "mood": "Flux",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Maximum synapse coupling between arms \u2014 each arm's state instantly propagates to the next, creating a feedback cascade. The arms stop being independent; they become one recursive loop.",
+  "tags": [
+    "flux",
+    "synapse",
+    "coupling",
+    "feedback",
+    "recursive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.42,
+    "movement": 0.88,
+    "density": 0.7,
+    "space": 0.45,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 193,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.65,
+      "owit_armSpread": 0.55,
+      "owit_sync": 0.15,
+      "owit_feedbackAmt": 0.7,
+      "owit_chaos": 0.7,
+      "owit_density": 0.7,
+      "owit_ampAttack": 0.03,
+      "owit_ampDecay": 0.15,
+      "owit_ampSustain": 0.68,
+      "owit_ampRelease": 0.6,
+      "owit_filterCutoff": 0.6,
+      "owit_filterRes": 0.5,
+      "owit_lfoRate": 0.28,
+      "owit_lfoDepth": 0.32,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

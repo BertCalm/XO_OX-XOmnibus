@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Still Surface",
+  "mood": "Aether",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A near-frozen surface \u2014 unknot topology with ultralow modulation and very long decay. The surface of the ocean at 4 AM, with no wind, no current. Perfect stillness that amplifies every disturbance.",
+  "tags": [
+    "still",
+    "frozen",
+    "unknot",
+    "surface",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.58,
+    "movement": 0.15,
+    "density": 0.82,
+    "space": 0.96,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 0,
+      "olap_delayFeedback": 0.88,
+      "olap_diffusion": 0.82,
+      "olap_spread": 0.88,
+      "olap_decay": 35.0,
+      "olap_modDepth": 0.05,
+      "olap_modRate": 0.01,
+      "olap_damping": 0.35,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

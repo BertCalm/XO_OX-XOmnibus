@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Tide Turn",
+  "mood": "Flux",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "The moment the tide reverses. LFO1 paused at its turning point — blend at center, then swept in the new direction. A pivot between memory and presence.",
+  "tags": ["flux", "tide", "turning", "pivot", "reversal", "transition"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.6,
+    "movement": 0.6,
+    "density": 0.58,
+    "space": 0.65,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.5,
+      "ombre_interference": 0.42,
+      "ombre_memoryDecay": 6.5,
+      "ombre_memoryGrain": 110.0,
+      "ombre_memoryDrift": 0.42,
+      "ombre_oscShape": 1,
+      "ombre_reactivity": 0.58,
+      "ombre_subLevel": 0.24,
+      "ombre_filterCutoff": 4400.0,
+      "ombre_filterReso": 0.32,
+      "ombre_attack": 0.04,
+      "ombre_decay": 0.5,
+      "ombre_sustain": 0.66,
+      "ombre_release": 1.8,
+      "ombre_level": 0.74,
+      "ombre_velCutoffScale": 0.4,
+      "ombre_lfo1Rate": 0.22,
+      "ombre_lfo1Depth": 0.78,
+      "ombre_lfo2Rate": 0.14,
+      "ombre_lfo2Depth": 0.5,
+      "ombre_macroCharacter": 0.5,
+      "ombre_macroMovement": 0.6,
+      "ombre_macroCoupling": 0.42,
+      "ombre_macroSpace": 0.68
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

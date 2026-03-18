@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "name": "Konami Code Unlocked",
+  "mood": "Prism",
+  "engines": ["OVERWORLD"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "↑↑↓↓←→←→BA — the secret menu opens and the palette explodes. ERA crossfade at full mid-SNES, chaos elevated for that cheat-code euphoria, coupling unleashed so it bounces off itself. The sound of 30 lives.",
+  "tags": ["konami", "SNES", "secret", "prism", "bright", "euphoric", "cheat-code", "unlocked"],
+  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.91,
+    "warmth": 0.56,
+    "movement": 0.62,
+    "density": 0.75,
+    "space": 0.48,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "ow_macro_era": 0.72,
+      "ow_macro_chaos": 0.42,
+      "ow_macro_couple": 0.55,
+      "ow_macro_space": 0.48,
+      "ow_outputLevel": 0.85,
+      "ow_couplingLevel": 0.45,
+      "ow_couplingBus": 0
+    }
+  },
+  "macros": {"ERA": 0.72, "CHAOS": 0.42, "COUPLE": 0.55, "SPACE": 0.48},
+  "coupling": {"pairs": []}
+}

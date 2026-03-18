@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "Air Snap",
+  "mood": "Aether",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The snap of a tetra breaking the surface into air — pure transient dissolving instantly.",
+  "tags": ["air", "snap", "aether", "surface"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.92, "warmth": 0.1, "movement": 0.62, "density": 0.1, "space": 0.88, "aggression": 0.15},
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.88,
+      "snap_decay": 0.06,
+      "snap_detune": 0.02,
+      "snap_filterCutoff": 17500.0,
+      "snap_filterReso": 0.45,
+      "snap_filterEnvDepth": 0.88,
+      "snap_unison": 1,
+      "snap_sweepDirection": 0,
+      "snap_pitchLock": 0.98,
+      "snap_polyphony": 4,
+      "snap_level": 0.4,
+      "snap_macroDart": 0.65,
+      "snap_macroDepth": 0.12,
+      "snap_macroSchool": 0.05,
+      "snap_macroSurface": 0.96
+    }
+  },
+  "macros": {"CHARACTER": 0.75, "MOVEMENT": 0.62, "COUPLING": 0.0, "SPACE": 0.88},
+  "coupling": {"pairs": []}
+}

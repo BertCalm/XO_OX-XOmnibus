@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Tectonic Shift",
+  "mood": "Flux",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "tectonic",
+    "deep",
+    "massive"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.78,
+    "movement": 0.48,
+    "density": 0.9,
+    "space": 0.75,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 3,
+      "deep_subOctave": -2,
+      "deep_harmonicLevel": 0.35,
+      "deep_pressure": 0.82,
+      "deep_bodyType": 2,
+      "deep_bodySize": 0.78,
+      "deep_bodyDamp": 0.55,
+      "deep_flashRate": 0.38,
+      "deep_flashBright": 0.45,
+      "deep_creatureSpeed": 0.35,
+      "deep_creatureDepth": 0.32,
+      "deep_darkness": 0.88,
+      "deep_filterReso": 0.48,
+      "deep_reverbMix": 0.52,
+      "deep_reverbSize": 0.82,
+      "deep_delayMix": 0.22,
+      "deep_rumble": 0.88,
+      "deep_attack": 0.05,
+      "deep_decay": 1.2,
+      "deep_sustain": 0.78,
+      "deep_release": 2.5
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.82,
+    "CREATURE": 0.35,
+    "WRECK": 0.62,
+    "ABYSS": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

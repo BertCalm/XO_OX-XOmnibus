@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Lion Pack",
+  "mood": "Family",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A pride-like grouping of voices \u2014 dominant lead voice (voice 1) with five supporting voices in an unknot arrangement. The family structure emerges from the acoustic relationships, not from programming.",
+  "tags": [
+    "pride",
+    "lead",
+    "unknot",
+    "hierarchical",
+    "family"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.62,
+    "movement": 0.5,
+    "density": 0.65,
+    "space": 0.82,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 0,
+      "olap_delayFeedback": 0.58,
+      "olap_diffusion": 0.72,
+      "olap_spread": 0.85,
+      "olap_decay": 6.0,
+      "olap_modDepth": 0.22,
+      "olap_modRate": 0.1,
+      "olap_damping": 0.42,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "LFO Storm",
+  "mood": "Flux",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dual fast LFOs whipping through a square colony in turbulent motion.",
+  "tags": ["flux", "turbulent", "fast", "LFO"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.35,
+    "movement": 0.9,
+    "density": 0.65,
+    "space": 0.35,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Organism": {
+      "org_oscWave": 1,
+      "org_rule": 86,
+      "org_mutate": 0.5,
+      "org_freeze": 0.0,
+      "org_scope": 0.7,
+      "org_filterCutoff": 7000,
+      "org_filterRes": 0.5,
+      "org_ampAtk": 0.01,
+      "org_ampDec": 0.15,
+      "org_ampSus": 0.75,
+      "org_ampRel": 0.35,
+      "org_lfo1Rate": 6.0,
+      "org_lfo1Depth": 0.5,
+      "org_lfo2Rate": 2.5,
+      "org_lfo2Depth": 0.35,
+      "org_reverbMix": 0.2,
+      "org_macroRule": 0.5,
+      "org_macroMutate": 0.5,
+      "org_macroSeed": 0.5,
+      "org_macroCoupling": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.0,
+    "SPACE": 0.2
+  },
+  "coupling": {"pairs": []}
+}

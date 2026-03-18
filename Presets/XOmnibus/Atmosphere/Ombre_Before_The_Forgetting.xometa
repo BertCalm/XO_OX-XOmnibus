@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Before the Forgetting",
+  "mood": "Atmosphere",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Memory decay set to 3 seconds — the exact moment before a memory fades below the threshold of recall. Each note is vivid then gone. The beauty is in the brevity.",
+  "tags": ["atmosphere", "memory", "ephemeral", "brief", "forgetting"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.68,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.42,
+      "ombre_interference": 0.3,
+      "ombre_memoryDecay": 3.0,
+      "ombre_memoryGrain": 75.0,
+      "ombre_memoryDrift": 0.22,
+      "ombre_oscShape": 1,
+      "ombre_reactivity": 0.5,
+      "ombre_subLevel": 0.25,
+      "ombre_filterCutoff": 4000.0,
+      "ombre_filterReso": 0.22,
+      "ombre_attack": 0.15,
+      "ombre_decay": 0.7,
+      "ombre_sustain": 0.68,
+      "ombre_release": 2.0,
+      "ombre_level": 0.74,
+      "ombre_velCutoffScale": 0.35,
+      "ombre_lfo1Rate": 0.35,
+      "ombre_lfo1Depth": 0.28,
+      "ombre_lfo2Rate": 0.22,
+      "ombre_lfo2Depth": 0.22,
+      "ombre_macroCharacter": 0.55,
+      "ombre_macroMovement": 0.4,
+      "ombre_macroCoupling": 0.38,
+      "ombre_macroSpace": 0.68
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

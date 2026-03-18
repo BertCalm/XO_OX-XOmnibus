@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Morph Cascade",
+  "mood": "Flux",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cascading morph sequence — one shape melts into another in a continuous waterfall.",
+  "tags": ["cascade", "morph", "waterfall", "sequence"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.45, "warmth": 0.62, "movement": 0.78, "density": 0.62, "space": 0.55, "aggression": 0.25},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.82,
+      "morph_bloom": 0.68,
+      "morph_detune": 0.25,
+      "morph_drift": 0.78,
+      "morph_filterCutoff": 5500.0,
+      "morph_filterReso": 0.5,
+      "morph_filterEnvDepth": 0.65,
+      "morph_sub": 0.35,
+      "morph_decay": 0.8,
+      "morph_sustain": 0.72,
+      "morph_release": 1.5,
+      "morph_glide": 0.2,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 4,
+      "morph_level": 0.72,
+      "morph_macroBloom": 0.68,
+      "morph_macroDepth": 0.6,
+      "morph_macroDrift": 0.78,
+      "morph_macroSpace": 0.55
+    }
+  },
+  "macros": {"CHARACTER": 0.6, "MOVEMENT": 0.78, "COUPLING": 0.0, "SPACE": 0.55},
+  "coupling": {"pairs": []}
+}

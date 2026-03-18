@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Possum Fog",
+  "mood": "Atmosphere",
+  "engines": ["Overbite"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Drifting low-end haze built from slowly modulated sine waves and phaser motion — foggy and disorienting.",
+  "tags": ["pad", "phaser", "motion", "haze"],
+  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.3, "warmth": 0.7, "movement": 0.45, "density": 0.5, "space": 0.7, "aggression": 0.1},
+  "parameters": {
+    "Overbite": {
+      "poss_oscAWaveform": 0,
+      "poss_oscBWaveform": 0,
+      "poss_oscBInstability": 0.3,
+      "poss_oscMix": 0.5,
+      "poss_subLevel": 0.35,
+      "poss_filterCutoff": 1800,
+      "poss_filterReso": 0.2,
+      "poss_ampAttack": 1.0,
+      "poss_ampSustain": 0.7,
+      "poss_ampRelease": 2.0,
+      "poss_fxMotionType": 2,
+      "poss_fxMotionRate": 0.2,
+      "poss_fxMotionDepth": 0.6,
+      "poss_fxMotionMix": 0.5,
+      "poss_fxSpaceSize": 0.7,
+      "poss_fxSpaceDecay": 0.6,
+      "poss_fxSpaceMix": 0.35,
+      "poss_macroBelly": 0.4,
+      "poss_macroBite": 0.05,
+      "poss_macroScurry": 0.5,
+      "poss_macroTrash": 0.05,
+      "poss_macroPlayDead": 0.75
+    }
+  },
+  "macros": {"BELLY": 0.4, "BITE": 0.05, "SCURRY": 0.5, "TRASH": 0.05, "PLAY DEAD": 0.75},
+  "coupling": {"pairs": []}
+}

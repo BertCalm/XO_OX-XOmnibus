@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "Snap Root",
+  "mood": "Foundation",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Root-position snap with minimal detune and downward filter decay — grounding energy.",
+  "tags": ["root", "snap", "grounded", "foundation"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.72, "warmth": 0.3, "movement": 0.38, "density": 0.28, "space": 0.38, "aggression": 0.22},
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.75,
+      "snap_decay": 0.14,
+      "snap_detune": 0.03,
+      "snap_filterCutoff": 10000.0,
+      "snap_filterReso": 0.28,
+      "snap_filterEnvDepth": 0.5,
+      "snap_unison": 1,
+      "snap_sweepDirection": 1,
+      "snap_pitchLock": 0.95,
+      "snap_polyphony": 4,
+      "snap_level": 0.78,
+      "snap_macroDart": 0.35,
+      "snap_macroDepth": 0.38,
+      "snap_macroSchool": 0.12,
+      "snap_macroSurface": 0.4
+    }
+  },
+  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.38, "COUPLING": 0.0, "SPACE": 0.38},
+  "coupling": {"pairs": []}
+}

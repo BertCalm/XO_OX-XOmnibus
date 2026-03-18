@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Rule 184 Road",
+  "mood": "Foundation",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Rule 184 traffic-flow automaton rendered as a rolling rhythmic sine pulse.",
+  "tags": ["rhythmic", "cellular", "pulse", "driving"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.7,
+    "density": 0.6,
+    "space": 0.35,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Organism": {
+      "org_oscWave": 0,
+      "org_rule": 184,
+      "org_mutate": 0.05,
+      "org_freeze": 0.05,
+      "org_scope": 0.65,
+      "org_filterCutoff": 3400,
+      "org_filterRes": 0.3,
+      "org_ampAtk": 0.02,
+      "org_ampDec": 0.25,
+      "org_ampSus": 0.7,
+      "org_ampRel": 0.6,
+      "org_lfo1Rate": 1.2,
+      "org_lfo1Depth": 0.25,
+      "org_lfo2Rate": 0.3,
+      "org_lfo2Depth": 0.1,
+      "org_reverbMix": 0.2,
+      "org_macroRule": 0.65,
+      "org_macroMutate": 0.05,
+      "org_macroSeed": 0.5,
+      "org_macroCoupling": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.0,
+    "SPACE": 0.2
+  },
+  "coupling": {"pairs": []}
+}
