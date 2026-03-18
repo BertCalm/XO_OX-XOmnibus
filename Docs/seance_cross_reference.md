@@ -186,3 +186,28 @@ Comprehensive synthesis guides have been written for engines with complex or uni
 ---
 
 *See `Docs/xomnibus_landscape_2026.md` Section 8 for the full priority work queue across all 12 refinement rounds.*
+
+---
+
+## Engines Added Post-Prism Sweep (2026-03-15 to 2026-03-17)
+
+Seance verdicts for these engines are stored in `Docs/seances/`. All 6 doctrines: PASS.
+
+| Engine | Gallery Code | Score | Key Findings | Verdict File |
+|--------|-------------|-------|--------------|--------------|
+| XOhm | OHM | 8.2/10 PASS | D001–D006 compliant; MEDDLING/COMMUNE axis | Constellation seance session |
+| XOrphica | ORPHICA | 8.0/10 PASS | Microsound harp; siphonophore; all 6 doctrines | Constellation seance session |
+| XObbligato | OBBLIGATO | 8.1/10 PASS | Dual wind BOND macro; D001–D006 | Constellation seance session |
+| XOttoni | OTTONI | 7.9/10 PASS | Triple brass GROW macro; D001–D006 | Constellation seance session |
+| XOlé | OLE | 8.3/10 PASS | Afro-Latin trio DRAMA macro; D001–D006 | Constellation seance session |
+| XOverlap | OVERLAP | 8.4/10 PASS | FDN knot topology; 5 dead params wired | `overlap_seance_verdict.md` |
+| XOutwit | OUTWIT | 8.8/10 PASS | 8-arm Wolfram CA; SOLVE DNA targeting; B016 confirmed | `outwit_seance_verdict.md` |
+| XOmbre | OMBRE | 8.0/10 PASS | D002/D005/D001/D006 all resolved; 6/6 | `ombre_seance_verdict.md` |
+| XOrca | ORCA | 8.6/10 PASS | D001 velocity→cutoff; AudioToRing wired; 6/6 | `orca_seance_verdict.md` |
+| XOctopus | OCTOPUS | 6/6 PASS | D001/D004 fixes; AudioToRing wired | `octopus_seance_verdict.md` |
+| XOpenSky | OPENSKY | PASS | All D004 violations fixed; 4 params wired | `opensky_seance_verdict.md` |
+| XOstinato | OSTINATO | PASS | Pattern sequencer added; OstiDecayEnv 5-stage | `ostinato_seance_verdict.md` |
+| XOceanDeep | OCEANDEEP | PASS | Conditional lifted post-fixes | `oceandeep_seance_verdict.md` |
+| XOuïe | OUIE | PASS | Duophonic hammerhead; lateral line | `ouie_seance_verdict.md` |
+| XOvertone | OVERTONE | PASS | Continued fractions spectral; macro shimmer wired | `overtone_seance_verdict.md` |
+| XOrganism | ORGANISM | PASS | Cellular automata; mutation rate bias wired | `organism_seance_verdict.md` |

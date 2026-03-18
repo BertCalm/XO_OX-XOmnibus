@@ -4,8 +4,8 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **44 engines** are registered in XOmnibus
-(34 original; +5 Constellation 2026-03-14; +OVERLAP+OUTWIT 2026-03-15; +OMBRE+ORCA+OCTOPUS 2026-03-15;
+and mutate into sounds impossible with any single synth. **40 engines** are registered in XOmnibus
+(26 original; +5 Constellation 2026-03-14; +OVERLAP+OUTWIT 2026-03-15; +OMBRE+ORCA+OCTOPUS 2026-03-15;
 +OPENSKY+OSTINATO+OCEANDEEP+OUIE V1 concept engines 2026-03-17; +OVERTONE+ORGANISM V2 Theorem engines 2026-03-17)
 — see engine table below.
 
@@ -156,7 +156,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Orca/OrcaEngine.h` | Apex predator engine (wavetable + echolocation + breach) |
 | `Source/Engines/Octopus/OctopusEngine.h` | Decentralized alien intelligence engine (arms + chromatophores + ink cloud) |
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
-| `Docs/xomnibus_sound_design_guides.md` | Sound design guide (34/34 engines — complete fleet coverage) |
+| `Docs/xomnibus_sound_design_guides.md` | Sound design guide (40/40 engines — complete fleet coverage) |
 | `Source/DSP/` | Shared DSP library |
 | `Source/DSP/SRO/` | SRO framework (SilenceGate, ControlRateReducer, LookupTable, SROAuditor) |
 | `Source/UI/` | Gallery Model UI components |
@@ -221,7 +221,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ## Seance Findings
 
-29 seances complete (2026-03-14) — all 29 registered engines covered (24 original + 5 Constellation). Constellation seances (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) completed same day; findings committed 836e85a. Full data in:
+40 seances complete (2026-03-17) — all 40 registered engines covered. Constellation (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) + OVERLAP/OUTWIT/OMBRE/ORCA/OCTOPUS + OPENSKY/OSTINATO/OCEANDEEP/OUIE/OVERTONE/ORGANISM seances committed across multiple sessions. Full data in:
 - Grand Survey: `Docs/xomnibus_landscape_2026.md`
 - Knowledge tree: `~/.claude/skills/synth-seance/knowledge/index.md`
 - Cross-reference: `Docs/seance_cross_reference.md`
