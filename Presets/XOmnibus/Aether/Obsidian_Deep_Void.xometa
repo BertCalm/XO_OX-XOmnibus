@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Deep Void",
+  "mood": "Aether",
+  "engines": ["Obsidian"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Pure obsidian void — dark aether, absolute depth, long release into nothing.",
+  "tags": ["void", "dark", "aether", "deep"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.15, "warmth": 0.35, "movement": 0.06, "density": 0.2, "space": 0.98, "aggression": 0.02},
+  "parameters": {
+    "Obsidian": {
+      "obsidian_depth": 0.18,
+      "obsidian_character": 0.15,
+      "obsidian_brightness": 0.15,
+      "obsidian_warmth": 0.35,
+      "obsidian_attack": 1.8,
+      "obsidian_decay": 2.0,
+      "obsidian_sustain": 0.6,
+      "obsidian_release": 6.0,
+      "obsidian_filterCutoff": 2800,
+      "obsidian_filterReso": 0.08,
+      "obsidian_filterEnvAmt": 0.05,
+      "obsidian_lfoRate": 0.02,
+      "obsidian_lfoDepth": 0.08,
+      "obsidian_lfoDest": 0,
+      "obsidian_reverbSize": 0.98,
+      "obsidian_reverbMix": 0.7,
+      "obsidian_stereoWidth": 0.92,
+      "obsidian_voiceMode": 0,
+      "obsidian_glide": 0.0,
+      "obsidian_polyphony": 4,
+      "obsidian_level": 0.6
+    }
+  },
+  "macros": {"CHARACTER": 0.15, "MOVEMENT": 0.06, "COUPLING": 0.0, "SPACE": 0.98},
+  "coupling": {"pairs": []}
+}
