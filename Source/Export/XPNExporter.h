@@ -7,6 +7,7 @@
 
 #include <atomic>
 #include <cmath>
+#include <random>
 #include <thread>
 #include <mutex>
 #include <future>
@@ -121,9 +122,10 @@ public:
         float  renderSeconds = 4.0f;           // note hold time
         float  tailSeconds   = 2.0f;           // after noteOff
         float  normCeiling   = -0.3f;          // dBFS normalization target
-        int    velocityLayers = 1;             // 1-3
+        int    velocityLayers = 4;             // 1-4 (default 4: ghost/light/mid/hard)
         bool   useSoundShapes = false;         // auto-adjust per preset via SoundShapeClassifier
         bool   generatePreviews = false;       // generate low-quality .mp3 preview per WAV
+        bool   dnaAdaptiveVelocity = true;     // shift velocity splits based on preset DNA aggression
 
         // Note sampling strategy
         enum class NoteStrategy { EveryMinor3rd, Chromatic, EveryFifth, OctavesOnly };
@@ -565,7 +567,8 @@ private:
     // Normalization — peak-scan + gain to target ceiling
     //==========================================================================
 
-    static void normalizeBuffer(juce::AudioBuffer<float>& buffer, float ceilingDb)
+    // Find peak across a single buffer
+    static float findBufferPeak(const juce::AudioBuffer<float>& buffer)
     {
         float peak = 0.0f;
         for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
@@ -574,87 +577,214 @@ private:
             float chPeak = juce::jmax(std::abs(range.getStart()), std::abs(range.getEnd()));
             if (chPeak > peak) peak = chPeak;
         }
+        return peak;
+    }
 
-        if (peak < 1e-8f) return; // silence, nothing to normalize
+    // Normalize a single buffer using a pre-computed global peak (for group normalization).
+    // The loudest layer in the group hits the ceiling; softer layers stay proportionally quieter.
+    static void normalizeBufferWithGlobalPeak(juce::AudioBuffer<float>& buffer,
+                                               float globalPeak, float ceilingDb)
+    {
+        if (globalPeak < 1e-8f) return; // silence, nothing to normalize
 
         float targetGain = std::pow(10.0f, ceilingDb / 20.0f);
-        float gain = targetGain / peak;
+        float gain = targetGain / globalPeak;
 
-        // Only attenuate or boost to ceiling — never amplify silence
         for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
             buffer.applyGain(ch, 0, buffer.getNumSamples(), gain);
+    }
+
+    // Legacy single-buffer normalization (used when only 1 velocity layer)
+    static void normalizeBuffer(juce::AudioBuffer<float>& buffer, float ceilingDb)
+    {
+        normalizeBufferWithGlobalPeak(buffer, findBufferPeak(buffer), ceilingDb);
+    }
+
+    //==========================================================================
+    // DC offset removal
+    //==========================================================================
+
+    static void removeDCOffset(juce::AudioBuffer<float>& buffer)
+    {
+        int numChannels = buffer.getNumChannels();
+        int numSamples = buffer.getNumSamples();
+
+        for (int ch = 0; ch < numChannels; ++ch)
+        {
+            auto* data = buffer.getWritePointer(ch);
+            float sum = 0.0f;
+            for (int i = 0; i < numSamples; ++i)
+                sum += data[i];
+            float dcOffset = sum / (float)numSamples;
+            for (int i = 0; i < numSamples; ++i)
+                data[i] -= dcOffset;
+        }
+    }
+
+    //==========================================================================
+    // Fade guards — raised-cosine fade-in/out to prevent clicks
+    //==========================================================================
+
+    static void applyFadeGuards(juce::AudioBuffer<float>& buffer, double sampleRate)
+    {
+        int numChannels = buffer.getNumChannels();
+        int numSamples = buffer.getNumSamples();
+
+        // Fade-in (2ms)
+        const int fadeInSamples = static_cast<int>(sampleRate * 0.002);
+        for (int i = 0; i < fadeInSamples && i < numSamples; ++i)
+        {
+            float gain = 0.5f * (1.0f - std::cos(juce::MathConstants<float>::pi * i / fadeInSamples));
+            for (int ch = 0; ch < numChannels; ++ch)
+                buffer.getWritePointer(ch)[i] *= gain;
+        }
+
+        // Fade-out (10ms)
+        const int fadeOutSamples = static_cast<int>(sampleRate * 0.01);
+        for (int i = 0; i < fadeOutSamples && i < numSamples; ++i)
+        {
+            float gain = 0.5f * (1.0f + std::cos(juce::MathConstants<float>::pi * i / fadeOutSamples));
+            int idx = numSamples - 1 - i;
+            for (int ch = 0; ch < numChannels; ++ch)
+                buffer.getWritePointer(ch)[idx] *= gain;
+        }
     }
 
     //==========================================================================
     // WAV rendering (offline, worker thread)
     //==========================================================================
 
-    IOResult renderNoteToWav(const PresetData& preset, int note, float velocity,
-                             const RenderSettings& settings, const juce::File& outputFile)
+    //==========================================================================
+    // Render a single note to an audio buffer using a real engine instance.
+    // Does NOT normalize or write — caller handles group normalization.
+    //==========================================================================
+
+    IOResult renderNoteToBuffer(const PresetData& preset, int note, float velocity,
+                                const RenderSettings& settings,
+                                juce::AudioBuffer<float>& buffer)
     {
         int totalSamples = (int)((settings.renderSeconds + settings.tailSeconds) * settings.sampleRate);
         int holdSamples  = (int)(settings.renderSeconds * settings.sampleRate);
+        int blockSize    = 512;
 
-        juce::AudioBuffer<float> buffer(2, totalSamples);
+        buffer.setSize(2, totalSamples);
         buffer.clear();
 
-        // Synthesis stub: generate test tone shaped by preset DNA.
-        // Real engine integration will replace this — but at least we output
-        // actual audio instead of silence.
+        // Create engine instance for this render job
+        juce::String engineId = preset.engines.isEmpty() ? juce::String("OddfeliX") : preset.engines[0];
+        auto engine = EngineRegistry::instance().createEngine(engineId.toStdString());
+        if (!engine)
+            return { false, "Failed to create engine: " + engineId };
 
-        // Frequency from MIDI note
-        double freq = 440.0 * std::pow(2.0, (note - 69) / 12.0);
-        double phase = 0.0;
-        double phaseInc = freq / settings.sampleRate * juce::MathConstants<double>::twoPi;
+        // Prepare engine for offline rendering
+        engine->prepare(settings.sampleRate, blockSize);
 
-        // ADSR from DNA
-        float attackTime  = 0.01f + preset.dna.density * 0.5f;   // 10ms to 510ms
-        float releaseTime = 0.1f  + preset.dna.space   * 2.0f;   // 100ms to 2.1s
-        int attackSamples  = (int)(attackTime  * (float)settings.sampleRate);
-        int releaseSamples = (int)(releaseTime * (float)settings.sampleRate);
-        int releaseStart   = holdSamples;
+        // Apply preset parameters from the PresetData
+        // Create a temporary APVTS to host the engine's parameters
+        juce::AudioProcessorValueTreeState::ParameterLayout layout;
+        auto engineLayout = engine->createParameterLayout();
 
-        // Harmonic content from brightness
-        int numHarmonics = 1 + (int)(preset.dna.brightness * 7);  // 1-8 harmonics
-        float warmth = preset.dna.warmth;
+        // We need a minimal AudioProcessor to host the APVTS
+        struct MinimalProcessor : juce::AudioProcessor {
+            MinimalProcessor() : AudioProcessor(BusesProperties()
+                .withOutput("Output", juce::AudioChannelSet::stereo())) {}
+            const juce::String getName() const override { return "XPNRenderer"; }
+            void prepareToPlay(double, int) override {}
+            void releaseResources() override {}
+            void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override {}
+            double getTailLengthSeconds() const override { return 0; }
+            bool acceptsMidi() const override { return true; }
+            bool producesMidi() const override { return false; }
+            juce::AudioProcessorEditor* createEditor() override { return nullptr; }
+            bool hasEditor() const override { return false; }
+            int getNumPrograms() override { return 1; }
+            int getCurrentProgram() override { return 0; }
+            void setCurrentProgram(int) override {}
+            const juce::String getProgramName(int) override { return {}; }
+            void changeProgramName(int, const juce::String&) override {}
+            void getStateInformation(juce::MemoryBlock&) override {}
+            void setStateInformation(const void*, int) override {}
+        };
 
-        for (int i = 0; i < totalSamples; ++i)
+        MinimalProcessor tempProcessor;
+        juce::AudioProcessorValueTreeState apvts(tempProcessor, nullptr, "XPNParams",
+                                                  engine->createParameterLayout());
+        engine->attachParameters(apvts);
+
+        // Apply preset parameters for this engine
+        for (const auto& [engName, params] : preset.parametersByEngine)
         {
-            // Envelope
-            float env = 0.0f;
-            if (i < attackSamples)
-                env = (float)i / (float)attackSamples;
-            else if (i < releaseStart)
-                env = 1.0f;
-            else
+            if (auto* obj = params.getDynamicObject())
             {
-                int releasePos = i - releaseStart;
-                if (releasePos < releaseSamples)
-                    env = 1.0f - (float)releasePos / (float)releaseSamples;
+                for (const auto& prop : obj->getProperties())
+                {
+                    if (auto* param = apvts.getParameter(prop.name.toString()))
+                    {
+                        float normValue = param->convertTo0to1((float)prop.value);
+                        param->setValueNotifyingHost(normValue);
+                    }
+                }
             }
-
-            // Additive synthesis
-            float sample = 0.0f;
-            for (int h = 1; h <= numHarmonics; ++h)
-            {
-                float harmonicAmp = 1.0f / (float)(h * h) * (1.0f - warmth * 0.5f * (h > 1 ? 1.0f : 0.0f));
-                sample += harmonicAmp * (float)std::sin(phase * h);
-            }
-
-            // Normalize and apply envelope + velocity
-            sample *= env * velocity * 0.5f;
-
-            // Stereo with slight spread from movement
-            float spread = preset.dna.movement * 0.3f;
-            float left  = sample * (1.0f + spread * (float)std::sin(phase * 0.1));
-            float right = sample * (1.0f - spread * (float)std::sin(phase * 0.1));
-
-            buffer.setSample(0, i, left);
-            buffer.setSample(1, i, right);
-
-            phase += phaseInc;
         }
 
+        engine->reset();
+
+        // Send MIDI noteOn
+        juce::MidiBuffer midiBuffer;
+        int midiVelocity = juce::jlimit(1, 127, (int)(velocity * 127.0f));
+        midiBuffer.addEvent(juce::MidiMessage::noteOn(1, note, (juce::uint8)midiVelocity), 0);
+
+        // Render blocks for the sustain phase
+        int samplesRendered = 0;
+        while (samplesRendered < holdSamples)
+        {
+            int samplesThisBlock = juce::jmin(blockSize, totalSamples - samplesRendered);
+            juce::AudioBuffer<float> blockBuffer(buffer.getArrayOfWritePointers(),
+                                                  2, samplesRendered, samplesThisBlock);
+
+            // Only pass MIDI on the first block (noteOn already queued)
+            engine->renderBlock(blockBuffer, midiBuffer, samplesThisBlock);
+            midiBuffer.clear();
+            samplesRendered += samplesThisBlock;
+        }
+
+        // Send MIDI noteOff at the start of the tail phase
+        midiBuffer.addEvent(juce::MidiMessage::noteOff(1, note), 0);
+
+        // Render tail (release) blocks
+        while (samplesRendered < totalSamples)
+        {
+            int samplesThisBlock = juce::jmin(blockSize, totalSamples - samplesRendered);
+            juce::AudioBuffer<float> blockBuffer(buffer.getArrayOfWritePointers(),
+                                                  2, samplesRendered, samplesThisBlock);
+
+            engine->renderBlock(blockBuffer, midiBuffer, samplesThisBlock);
+            midiBuffer.clear();
+            samplesRendered += samplesThisBlock;
+        }
+
+        // Apply fade guards (before DC removal and normalization)
+        applyFadeGuards(buffer, settings.sampleRate);
+
+        // Remove DC offset
+        removeDCOffset(buffer);
+
+        return { true, {} };
+    }
+
+    //==========================================================================
+    // Render a note + write WAV (single velocity layer, legacy path)
+    //==========================================================================
+
+    IOResult renderNoteToWav(const PresetData& preset, int note, float velocity,
+                             const RenderSettings& settings, const juce::File& outputFile)
+    {
+        juce::AudioBuffer<float> buffer;
+        auto renderResult = renderNoteToBuffer(preset, note, velocity, settings, buffer);
+        if (!renderResult.success)
+            return renderResult;
+
+        // Single-layer normalization (old path — only used when velocityLayers == 1)
         normalizeBuffer(buffer, settings.normCeiling);
 
         // Optional preview generation
@@ -666,6 +796,63 @@ private:
         }
 
         return writeWav(outputFile, buffer, settings.sampleRate, settings.bitDepth);
+    }
+
+    //==========================================================================
+    // Render all velocity layers for a note, group-normalize, then write WAVs.
+    // This preserves dynamic relationships between velocity layers.
+    //==========================================================================
+
+    struct VelocityGroupJob {
+        int velLayer;
+        float velocity;
+        juce::File wavFile;
+    };
+
+    IOResult renderNoteGroupToWav(const PresetData& preset, int note,
+                                   const std::vector<VelocityGroupJob>& velJobs,
+                                   const RenderSettings& settings)
+    {
+        // Phase 1: Render all velocity layers into buffers
+        std::vector<juce::AudioBuffer<float>> buffers(velJobs.size());
+
+        for (size_t v = 0; v < velJobs.size(); ++v)
+        {
+            auto renderResult = renderNoteToBuffer(preset, note, velJobs[v].velocity,
+                                                    settings, buffers[v]);
+            if (!renderResult.success)
+                return renderResult;
+        }
+
+        // Phase 2: Find global peak across ALL velocity layers for this note
+        float globalPeak = 0.0f;
+        for (const auto& buf : buffers)
+        {
+            float p = findBufferPeak(buf);
+            if (p > globalPeak) globalPeak = p;
+        }
+
+        // Phase 3: Normalize each layer relative to the global peak
+        for (auto& buf : buffers)
+            normalizeBufferWithGlobalPeak(buf, globalPeak, settings.normCeiling);
+
+        // Phase 4: Generate previews and write WAVs
+        for (size_t v = 0; v < velJobs.size(); ++v)
+        {
+            if (settings.generatePreviews)
+            {
+                auto previewFile = velJobs[v].wavFile.getParentDirectory().getChildFile(
+                    velJobs[v].wavFile.getFileNameWithoutExtension() + ".mp3");
+                generatePreview(buffers[v], settings.sampleRate, previewFile);
+            }
+
+            auto writeResult = writeWav(velJobs[v].wavFile, buffers[v],
+                                         settings.sampleRate, settings.bitDepth);
+            if (!writeResult.success)
+                return writeResult;
+        }
+
+        return { true, {} };
     }
 
     static IOResult writeWav(const juce::File& file, const juce::AudioBuffer<float>& buffer,

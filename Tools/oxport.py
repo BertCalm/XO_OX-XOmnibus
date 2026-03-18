@@ -8,10 +8,11 @@ Pipeline stages:
   2. categorize        — Classify WAV samples into voice categories
   3. expand            — Expand flat kits into velocity/cycle/smart WAV sets
   4. qa                — Perceptual QA check on rendered WAV files
-  5. export            — Generate .xpm programs (drum or keygroup, per engine)
-  6. cover_art         — Generate branded procedural cover art
-  7. complement_chain  — Generate primary+complement XPM variant pairs (Artwork collection)
-  8. package           — Package everything into a .xpn archive
+  5. smart_trim        — Auto-trim silence tails and add fade-out on rendered WAVs
+  6. export            — Generate .xpm programs (drum or keygroup, per engine)
+  7. cover_art         — Generate branded procedural cover art
+  8. complement_chain  — Generate primary+complement XPM variant pairs (Artwork collection)
+  9. package           — Package everything into a .xpn archive
 
 Usage:
     # Full pipeline for an engine
@@ -80,6 +81,7 @@ STAGES = [
     "categorize",
     "expand",
     "qa",
+    "smart_trim",
     "export",
     "cover_art",
     "complement_chain",
@@ -91,6 +93,7 @@ STAGE_DESCRIPTIONS = {
     "categorize":       "Classify WAV samples into voice categories",
     "expand":           "Expand flat kits into velocity/cycle/smart WAV sets",
     "qa":               "Perceptual QA check on rendered WAV files",
+    "smart_trim":       "Auto-trim silence tails and add fade-out on rendered WAVs",
     "export":           "Generate .xpm programs (drum or keygroup)",
     "cover_art":        "Generate branded procedural cover art",
     "complement_chain": "Generate primary+complement variant XPM pairs (Artwork/Color collection)",
@@ -385,6 +388,67 @@ def _stage_qa(ctx: PipelineContext) -> None:
               + ", ".join(blocking_found[:3]))
 
 
+def _stage_smart_trim(ctx: PipelineContext) -> None:
+    """Stage: Auto-trim silence tails and add fade-out on rendered WAVs."""
+    try:
+        from xpn_smart_trim import process as smart_trim_process
+    except ImportError:
+        print("    [SKIP] xpn_smart_trim not available")
+        return
+
+    # Collect WAV files from samples dir and wavs_dir
+    search_dirs: list[Path] = []
+    if ctx.samples_dir.exists():
+        search_dirs.append(ctx.samples_dir)
+    if ctx.wavs_dir and ctx.wavs_dir.exists():
+        search_dirs.append(ctx.wavs_dir)
+
+    if not search_dirs:
+        print("    [SKIP] No WAV directories available for smart trim")
+        return
+
+    seen: set[str] = set()
+    wav_paths: list[Path] = []
+    for d in search_dirs:
+        for wav in sorted(d.rglob("*.wav")) + sorted(d.rglob("*.WAV")):
+            key = str(wav).lower()
+            if key not in seen:
+                seen.add(key)
+                wav_paths.append(wav)
+
+    if not wav_paths:
+        print("    [SKIP] No WAV files found for smart trim")
+        return
+
+    if ctx.dry_run:
+        print(f"    [DRY] Would smart-trim {len(wav_paths)} WAV file(s)")
+        return
+
+    print(f"    Trimming {len(wav_paths)} WAV file(s)...")
+    n_trimmed = 0
+    n_skipped = 0
+
+    for wav_path in wav_paths:
+        try:
+            # Trim in-place: write trimmed output to a temp file, then replace
+            trimmed_path = wav_path.with_suffix(".trimmed.wav")
+            result = smart_trim_process(
+                str(wav_path), str(trimmed_path), mode='auto', verbose=False
+            )
+            # Replace original with trimmed version
+            trimmed_path.replace(wav_path)
+            n_trimmed += 1
+        except Exception as e:
+            print(f"      [WARN] {wav_path.name}: {e}")
+            n_skipped += 1
+            # Clean up temp file if it exists
+            trimmed_tmp = wav_path.with_suffix(".trimmed.wav")
+            if trimmed_tmp.exists():
+                trimmed_tmp.unlink()
+
+    print(f"    Trimmed: {n_trimmed}, Skipped: {n_skipped}")
+
+
 def _stage_export(ctx: PipelineContext) -> None:
     """Stage 4: Generate .xpm programs."""
     if ctx.is_drum_engine:
@@ -659,6 +723,7 @@ STAGE_FUNCS = {
     "categorize":       _stage_categorize,
     "expand":           _stage_expand,
     "qa":               _stage_qa,
+    "smart_trim":       _stage_smart_trim,
     "export":           _stage_export,
     "cover_art":        _stage_cover_art,
     "complement_chain": _stage_complement_chain,

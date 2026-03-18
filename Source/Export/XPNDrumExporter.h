@@ -40,6 +40,18 @@ public:
         int         midiNote;
         int         muteGroup;   // 0 = none
         int         muteTarget;  // MIDI note this pad mutes (-1 = none)
+        bool        oneShot;     // true = play to end regardless of note-off
+    };
+
+    //==========================================================================
+    // Choke/mute group definitions — configurable beyond just hi-hat
+    //==========================================================================
+    enum ChokeGroup {
+        kChokeNone    = 0,
+        kChokeHiHat   = 1,  // closed hat <-> open hat
+        kChokeKick    = 2,  // kick choke group (layered kicks)
+        kChokeSnare   = 3,  // snare choke group (snare + clap mutual exclusion)
+        kChokeTom     = 4,  // tom choke group (multiple toms)
     };
 
     static constexpr int kNumPads = 8;
@@ -47,15 +59,16 @@ public:
 
     static const PadVoice* getPadLayout()
     {
+        //                  name           note  muteGrp        muteTarget  oneShot
         static constexpr PadVoice pads[kNumPads] = {
-            { "kick",       36, 0, -1 },
-            { "snare",      38, 0, -1 },
-            { "closed_hat", 42, 1, 46 },  // closed hat mutes open hat
-            { "open_hat",   46, 1, -1 },  // open hat does NOT mute closed hat
-            { "clap",       39, 0, -1 },
-            { "tom",        41, 0, -1 },
-            { "perc",       43, 0, -1 },
-            { "fx",         49, 0, -1 },
+            { "kick",       36, kChokeKick,    -1, true  },
+            { "snare",      38, kChokeSnare,   -1, true  },
+            { "closed_hat", 42, kChokeHiHat,   46, true  },  // closed hat mutes open hat
+            { "open_hat",   46, kChokeHiHat,   -1, true  },  // open hat does NOT mute closed hat
+            { "clap",       39, kChokeSnare,   -1, true  },  // clap chokes with snare
+            { "tom",        41, kChokeTom,     -1, true  },
+            { "perc",       43, kChokeNone,    -1, true  },
+            { "fx",         49, kChokeNone,    -1, true  },
         };
         return pads;
     }
@@ -496,6 +509,64 @@ private:
     // Drum program XPM generation (MPCVObject format)
     //==========================================================================
 
+    //==========================================================================
+    // Pad color from engine accent — converts engine ID to MPC RGB hex string
+    //==========================================================================
+
+    static juce::String padColorForEngine(const juce::String& engineId)
+    {
+        // Engine accent color lookup (mirrors GalleryColors::accentForEngine)
+        struct EngineColor { const char* id; uint32_t rgb; };
+        static constexpr EngineColor colors[] = {
+            { "Onset",     0x0066FF },
+            { "OddfeliX",  0x00A6D6 },
+            { "OddOscar",  0xE8839B },
+            { "Overdub",   0x6B7B3A },
+            { "Odyssey",   0x7B2D8B },
+            { "Oblong",    0xE9A84A },
+            { "Obese",     0xFF1493 },
+            { "Overworld", 0x39FF14 },
+            { "Opal",      0xA78BFA },
+            { "Orbital",   0xFF6B6B },
+            { "Organon",   0x00CED1 },
+            { "Ouroboros",  0xFF2D2D },
+            { "Obsidian",  0xE8E0D8 },
+            { "Overbite",  0xF0EDE8 },
+            { "Origami",   0xE63946 },
+            { "Oracle",    0x4B0082 },
+            { "Obscura",   0x8A9BA8 },
+            { "Oceanic",   0x00B4A0 },
+            { "Optic",     0x00FF41 },
+            { "Oblique",   0xBF40FF },
+            { "Ocelot",    0xC5832B },
+            { "Osprey",    0x1B4F8A },
+            { "Osteria",   0x722F37 },
+            { "Owlfish",   0xB8860B },
+            { "Ohm",       0x87AE73 },
+            { "Orphica",   0x7FDBCA },
+            { "Obbligato", 0xFF8A7A },
+            { "Ottoni",    0x5B8A72 },
+            { "Ole",       0xC9377A },
+            { "Ombre",     0x7B6B8A },
+            { "Orca",      0x1B2838 },
+            { "Octopus",   0xE040FB },
+            { "Overlap",   0x00FFB4 },
+            { "Outwit",    0xCC6600 },
+        };
+
+        auto upper = engineId.toUpperCase();
+        for (const auto& c : colors)
+        {
+            if (juce::String(c.id).toUpperCase() == upper)
+            {
+                return juce::String::toHexString((int)c.rgb).paddedLeft('0', 6).toUpperCase();
+            }
+        }
+
+        // Default: Electric Blue (ONSET accent)
+        return "0066FF";
+    }
+
     IOResult writeDrumXPM(const juce::File& file, const PresetData& preset,
                           const juce::String& presetSlug)
     {
@@ -507,9 +578,20 @@ private:
         auto* program = root.createNewChildElement("Program");
         program->createNewChildElement("ProgramName")->addTextElement(preset.name);
 
+        // Expression mapping for drum programs — aftertouch controls filter
+        auto* afterTouch = program->createNewChildElement("AfterTouch");
+        afterTouch->createNewChildElement("Destination")->addTextElement("FilterCutoff");
+        afterTouch->createNewChildElement("Amount")->addTextElement("30");
+
         auto* instruments = program->createNewChildElement("Instruments");
 
         const auto* pads = getPadLayout();
+
+        // Determine engine ID for pad color
+        juce::String engineId = "Onset"; // default for drum programs
+        if (!preset.engines.isEmpty())
+            engineId = preset.engines[0];
+        auto padColor = padColorForEngine(engineId);
 
         // Only emit active pad instruments (not all 128 MIDI notes)
         for (int padIdx = 0; padIdx < kNumPads; ++padIdx)
@@ -522,6 +604,10 @@ private:
             instrument->createNewChildElement("InstrumentName")
                 ->addTextElement(juce::String(pad.name).toUpperCase());
 
+            // One-shot mode: drum hits play to end regardless of note-off
+            instrument->createNewChildElement("TriggerMode")
+                ->addTextElement(pad.oneShot ? "OneShot" : "Note");
+
             instrument->createNewChildElement("MuteGroup")
                 ->addTextElement(juce::String(pad.muteGroup));
 
@@ -531,6 +617,10 @@ private:
                 instrument->createNewChildElement("MuteTarget")
                     ->addTextElement(juce::String(pad.muteTarget));
             }
+
+            // Pad color from engine accent
+            instrument->createNewChildElement("PadColor")
+                ->addTextElement(padColor);
 
             auto* layers = instrument->createNewChildElement("Layers");
 
