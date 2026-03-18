@@ -100,6 +100,9 @@ namespace GalleryColors {
         if (id == "XOutwit")   return juce::Colour(0xFFCC6600); // Chromatophore Amber
         // V1 Concept Engines
         if (id == "OpenSky")   return juce::Colour(0xFFFF8C00); // Sunburst
+        if (id == "Ostinato")  return juce::Colour(0xFFE8701A); // Firelight Orange
+        if (id == "Oceandeep") return juce::Colour(0xFF2D0A4E); // Trench Violet
+        if (id == "Ouie")      return juce::Colour(0xFF708090); // Hammerhead Steel
         return get(borderGray());
     }
 

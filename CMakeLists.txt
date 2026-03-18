@@ -167,6 +167,12 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Ostinato/OstinatoEngine.h
     Source/Engines/Ostinato/OstinatoEngine.cpp
 
+    Source/Engines/OceanDeep/OceandeepEngine.h
+    Source/Engines/OceanDeep/OceandeepEngine.cpp
+
+    Source/Engines/Ouie/OuieEngine.h
+    Source/Engines/Ouie/OuieEngine.cpp
+
     Source/Engines/Osprey/OspreyEngine.h
     Source/Engines/Osprey/OspreyEngine.cpp
 
