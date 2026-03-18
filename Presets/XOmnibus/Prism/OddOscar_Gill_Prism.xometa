@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Gill Prism",
+  "mood": "Prism",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Prismatic gill frill — each gill frond diffracts into a different harmonic color.",
+  "tags": ["gill", "prism", "diffract", "frill"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.62, "warmth": 0.62, "movement": 0.58, "density": 0.62, "space": 0.5, "aggression": 0.2},
+  "parameters": {
+    "OddOscar": {"morph_morph": 0.7, "morph_bloom": 0.72, "morph_detune": 0.22, "morph_drift": 0.45, "morph_filterCutoff": 5500.0, "morph_filterReso": 0.55, "morph_filterEnvDepth": 0.62, "morph_sub": 0.35, "morph_decay": 0.7, "morph_sustain": 0.72, "morph_release": 1.8, "morph_glide": 0.08, "morph_voiceMode": 0, "morph_polyphony": 6, "morph_level": 0.74, "morph_macroBloom": 0.72, "morph_macroDepth": 0.68, "morph_macroDrift": 0.45, "morph_macroSpace": 0.5}
+  },
+  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.58, "COUPLING": 0.0, "SPACE": 0.5},
+  "coupling": {"pairs": []}
+}

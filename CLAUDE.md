@@ -12,7 +12,7 @@ and mutate into sounds impossible with any single synth. **40 engines** are regi
 - **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OPENSKY, OSTINATO, OCEANDEEP, OUIE, OVERTONE, ORGANISM
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (13 coupling types: 12 original + KnotTopology)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
-- **Presets:** 19,578+ factory presets in `.xometa` format, 8 mood categories (incl. Family, Submerged), 6D Sonic DNA
+- **Presets:** 19,559+ factory presets in `.xometa` format, 8 mood categories (incl. Family, Submerged), 6D Sonic DNA
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
 - **Design:** Gallery Model — warm white shell frames engine accent colors. Light mode default.
 
@@ -282,7 +282,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 - All 6 doctrines resolved fleet-wide (D001–D006)
 - 22/22 engines with mod wheel | 23/23 engines with aftertouch (Optic intentionally exempt — visual engine)
-- 19,578+ presets (as of 2026-03-17), 0 duplicates, 100% DNA coverage, health score ~92/100
+- 19,559+ presets (as of 2026-03-17), 0 duplicates, 100% DNA coverage, health score ~92/100
 - Build PASS + auval PASS
 - **Full history**: `Docs/prism_sweep_final_report.md` | Master index: `Docs/prism_sweep_index.md`
 

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Subdivision Chaos",
+  "mood": "Flux",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Random subdivision counts changing unpredictably.",
+  "tags": [
+    "subdivision",
+    "random",
+    "unpredictable",
+    "chaos",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.28,
+    "movement": 0.92,
+    "density": 0.68,
+    "space": 0.38,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 5.0,
+      "optic_pulseShape": 4,
+      "optic_pulseAccent": 0.82,
+      "optic_pulseSwing": 0.4,
+      "optic_pulseSubdiv": 7,
+      "optic_pulseEvolve": 0.95,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.85,
+      "optic_inputGain": 0.85,
+      "optic_modDepth": 0.88,
+      "optic_modMixPulse": 0.72,
+      "optic_modMixSpec": 0.28,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.98,
+      "optic_vizSpeed": 0.92,
+      "optic_vizFeedback": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

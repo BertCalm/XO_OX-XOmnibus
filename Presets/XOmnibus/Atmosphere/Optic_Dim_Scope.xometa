@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Dim Scope",
+  "mood": "Atmosphere",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oscilloscope at very low intensity. Barely visible signal.",
+  "tags": [
+    "dim",
+    "oscilloscope",
+    "low",
+    "barely",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.45,
+    "movement": 0.25,
+    "density": 0.35,
+    "space": 0.72,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 0.4,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.3,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 1,
+      "optic_pulseEvolve": 0.04,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.45,
+      "optic_inputGain": 0.58,
+      "optic_modDepth": 0.35,
+      "optic_modMixPulse": 0.78,
+      "optic_modMixSpec": 0.22,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.55,
+      "optic_vizSpeed": 0.25,
+      "optic_vizFeedback": 0.22
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Neo Flux",
+  "mood": "Flux",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Neotenic flux morph — rapid cycling through larval morph states in constant flux.",
+  "tags": ["neotenic", "flux", "cycling", "larval"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.48, "warmth": 0.6, "movement": 0.82, "density": 0.52, "space": 0.45, "aggression": 0.38},
+  "parameters": {
+    "OddOscar": {"morph_morph": 0.72, "morph_bloom": 0.75, "morph_detune": 0.2, "morph_drift": 0.78, "morph_filterCutoff": 4500.0, "morph_filterReso": 0.48, "morph_filterEnvDepth": 0.68, "morph_sub": 0.32, "morph_decay": 0.3, "morph_sustain": 0.6, "morph_release": 0.8, "morph_glide": 0.06, "morph_voiceMode": 0, "morph_polyphony": 5, "morph_level": 0.74, "morph_macroBloom": 0.75, "morph_macroDepth": 0.7, "morph_macroDrift": 0.78, "morph_macroSpace": 0.45}
+  },
+  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.82, "COUPLING": 0.0, "SPACE": 0.45},
+  "coupling": {"pairs": []}
+}
