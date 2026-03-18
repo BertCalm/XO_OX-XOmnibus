@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """
-XOsmosis — Sample Pack Upgrade Pipeline
+XOutshine — Sample Pack Upgrade Pipeline
 XO_OX Designs
 
-Quality that seeps in.
+Outshine the original.
 
 Takes any sample pack (XPN archive, WAV folder, or loose samples) and
-transforms it into a production-quality, expressive, dynamic MPC instrument.
+transforms it into a production-quality, expressive, dynamic MPC instrument
+that outshines the source material.
 
-The XO standard permeates through:
+The XO standard elevates everything it touches:
   - Classifies every sample (kick, snare, hat, bass, pad, lead, fx, etc.)
   - Adds velocity layers via amplitude + filter shaping
   - Generates round-robin variations via micro-variation (pitch, saturation, time)
@@ -24,16 +25,16 @@ The XO standard permeates through:
 
 Usage:
     # Upgrade an existing XPN
-    python xosmosis.py --input pack.xpn --output upgraded_pack.xpn
+    python xoutshine.py --input pack.xpn --output upgraded_pack.xpn
 
     # Upgrade a WAV folder
-    python xosmosis.py --input ./my_samples/ --output ./my_pack.xpn
+    python xoutshine.py --input ./my_samples/ --output ./my_pack.xpn
 
     # Upgrade a WAV folder → organized folder (not zipped)
-    python xosmosis.py --input ./my_samples/ --output ./my_pack/ --format folder
+    python xoutshine.py --input ./my_samples/ --output ./my_pack/ --format folder
 
     # Upgrade with specific options
-    python xosmosis.py --input pack.xpn --output upgraded.xpn \
+    python xoutshine.py --input pack.xpn --output upgraded.xpn \
         --velocity-layers 5 \
         --round-robin 4 \
         --velocity-curve "boom-bap" \
@@ -49,7 +50,7 @@ Pipeline stages:
     7. PACKAGE   — Assemble XPN archive or organized folder
     8. VALIDATE  — Run full QA suite on output
 
-XO_OX Designs — Quality that seeps in.
+XO_OX Designs — Outshine the original.
 """
 
 import argparse
@@ -77,14 +78,14 @@ VERSION = "1.0.0"
 BANNER = """
 ╔═══════════════════════════════════════════════════════════════╗
 ║                                                               ║
-║    ██╗  ██╗ ██████╗ ███████╗███╗   ███╗ ██████╗ ███████╗    ║
-║    ╚██╗██╔╝██╔═══██╗██╔════╝████╗ ████║██╔═══██╗██╔════╝    ║
-║     ╚███╔╝ ██║   ██║███████╗██╔████╔██║██║   ██║███████╗    ║
-║     ██╔██╗ ██║   ██║╚════██║██║╚██╔╝██║██║   ██║╚════██║    ║
-║    ██╔╝ ██╗╚██████╔╝███████║██║ ╚═╝ ██║╚██████╔╝███████║    ║
-║    ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝     ╚═╝ ╚═════╝ ╚══════╝    ║
+║  ██╗  ██╗ ██████╗ ██╗   ██╗████████╗███████╗██╗  ██╗██╗███╗  ██║
+║  ╚██╗██╔╝██╔═══██╗██║   ██║╚══██╔══╝██╔════╝██║  ██║██║████╗ ██║
+║   ╚███╔╝ ██║   ██║██║   ██║   ██║   ███████╗███████║██║██╔██╗██║
+║   ██╔██╗ ██║   ██║██║   ██║   ██║   ╚════██║██╔══██║██║██║╚████║
+║  ██╔╝ ██╗╚██████╔╝╚██████╔╝   ██║   ███████║██║  ██║██║██║ ╚███║
+║  ╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═║
 ║                                                               ║
-║              Quality that seeps in.  v{ver}                ║
+║              Outshine the original.  v{ver}                ║
 ║              XO_OX Designs                                    ║
 ║                                                               ║
 ╚═══════════════════════════════════════════════════════════════╝
@@ -880,9 +881,9 @@ def write_manifest(work_dir: str, pack_name: str, num_programs: int) -> str:
     manifest_path = os.path.join(work_dir, "Manifest.xml")
     root = ET.Element("Expansion")
     ET.SubElement(root, "Name").text = pack_name
-    ET.SubElement(root, "Author").text = "XOsmosis by XO_OX Designs"
+    ET.SubElement(root, "Author").text = "XOutshine by XO_OX Designs"
     ET.SubElement(root, "Version").text = "1.0"
-    ET.SubElement(root, "Description").text = f"Upgraded by XOsmosis — {num_programs} programs"
+    ET.SubElement(root, "Description").text = f"Upgraded by XOutshine — {num_programs} programs"
     ET.SubElement(root, "ProgramCount").text = str(num_programs)
     ET.indent(root, space="  ")
     content = ET.tostring(root, encoding="unicode", xml_declaration=True)
@@ -986,13 +987,13 @@ def validate(programs: Dict[str, dict], output_path: str) -> int:
 # ─────────────────────────────────────────────────────────────────────────────
 
 def run_pipeline(args):
-    """Run the full XOsmosis pipeline."""
+    """Run the full XOutshine pipeline."""
     print(BANNER)
 
     pack_name = args.name or os.path.splitext(os.path.basename(args.input))[0]
     output_format = args.format or ("xpn" if args.output.lower().endswith(".xpn") else "folder")
 
-    with tempfile.TemporaryDirectory(prefix="xosmosis_") as work_dir:
+    with tempfile.TemporaryDirectory(prefix="xoutshine_") as work_dir:
         # Stage 1: INGEST
         print("[1/8] INGEST")
         samples = ingest(args.input, work_dir)
@@ -1033,21 +1034,21 @@ def run_pipeline(args):
         print("[8/8] VALIDATE")
         issues = validate(programs, args.output)
 
-    print(f"\nXOsmosis complete. {len(programs)} programs upgraded.")
-    print("Quality that seeps in. ✧")
+    print(f"\nXOutshine complete. {len(programs)} programs upgraded.")
+    print("Outshine the original. ✧")
     return 0 if issues == 0 else 1
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="XOsmosis — Sample Pack Upgrade Pipeline. Quality that seeps in.",
+        description="XOutshine — Sample Pack Upgrade Pipeline. Outshine the original.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python xosmosis.py --input pack.xpn --output upgraded.xpn
-  python xosmosis.py --input ./samples/ --output ./upgraded/ --format folder
-  python xosmosis.py --input pack.xpn --output upgraded.xpn --velocity-curve boom-bap
-  python xosmosis.py --input ./drums/ --output drums.xpn --round-robin 4 --velocity-layers 5
+  python xoutshine.py --input pack.xpn --output upgraded.xpn
+  python xoutshine.py --input ./samples/ --output ./upgraded/ --format folder
+  python xoutshine.py --input pack.xpn --output upgraded.xpn --velocity-curve boom-bap
+  python xoutshine.py --input ./drums/ --output drums.xpn --round-robin 4 --velocity-layers 5
 
 Velocity curves: musical (default), boom-bap, neo-soul, trap-hard, linear
         """)
@@ -1071,7 +1072,7 @@ Velocity curves: musical (default), boom-bap, neo-soul, trap-hard, linear
                         help="Target LUFS level (default: -14)")
     parser.add_argument("--no-round-robin", action="store_true",
                         help="Disable round-robin generation")
-    parser.add_argument("--version", action="version", version=f"XOsmosis {VERSION}")
+    parser.add_argument("--version", action="version", version=f"XOutshine {VERSION}")
 
     args = parser.parse_args()
 
