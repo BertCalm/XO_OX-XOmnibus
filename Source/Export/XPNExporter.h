@@ -99,8 +99,9 @@ private:
 };
 
 //==============================================================================
-// XPNExporter — Renders XOmnibus presets to WAV samples and packages them
+// XOriginate — Renders XOmnibus presets to WAV samples and packages them
 // as MPC-compatible .xpn expansion packs.
+// (Formerly XPNExporter — renamed to XOriginate: XO + O-word convention)
 //
 // IMPORTANT: All rendering runs on a worker thread (never the audio thread).
 // The exporter creates a temporary processor instance for offline rendering.
@@ -110,7 +111,7 @@ private:
 //   2. RootNote = 0         — MPC auto-detect convention
 //   3. Empty VelStart = 0   — prevents ghost triggering
 //
-class XPNExporter {
+class XOriginate {
 public:
 
     //==========================================================================

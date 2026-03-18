@@ -1,7 +1,7 @@
 /*
     XOmnibus XPN Export Tests
     ==========================
-    Tests for XPNExporter: XPM rule enforcement, WAV format, filename
+    Tests for XOriginate: XPM rule enforcement, WAV format, filename
     sanitization, note strategies, velocity layers, batch validation,
     bundle structure, cancellation, cover art regression, fade guard,
     group normalization, one-shot mode, and expression mapping.
@@ -9,7 +9,7 @@
 
 #include "XPNExportTests.h"
 
-#include "Export/XPNExporter.h"
+#include "Export/XOriginate.h"
 #include "Export/XPNDrumExporter.h"
 #include "Export/XPNCoverArt.h"
 #include "Core/PresetManager.h"
@@ -118,14 +118,14 @@ static void testXPMRuleEnforcement()
 {
     std::cout << "\n--- XPM Rule Enforcement ---\n";
 
-    XPNExporter exporter;
-    XPNExporter::BundleConfig config;
+    XOriginate exporter;
+    XOriginate::BundleConfig config;
     config.name = "RuleTest";
     config.bundleId = "com.xo-ox.test.rules";
     config.outputDir = getTestOutputDir("xpm_rules");
 
-    XPNExporter::RenderSettings settings;
-    settings.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::OctavesOnly;
+    XOriginate::RenderSettings settings;
+    settings.noteStrategy = XOriginate::RenderSettings::NoteStrategy::OctavesOnly;
     settings.velocityLayers = 2;
 
     std::vector<PresetData> presets = { makeTestPreset("TestPad") };
@@ -210,18 +210,18 @@ static void testWAVFormat()
 {
     std::cout << "\n--- WAV Format Validation ---\n";
 
-    XPNExporter exporter;
-    XPNExporter::BundleConfig config;
+    XOriginate exporter;
+    XOriginate::BundleConfig config;
     config.name = "WAVTest";
     config.bundleId = "com.xo-ox.test.wav";
     config.outputDir = getTestOutputDir("wav_format");
 
-    XPNExporter::RenderSettings settings;
+    XOriginate::RenderSettings settings;
     settings.sampleRate = 48000.0;
     settings.bitDepth = 24;
     settings.renderSeconds = 1.0f;
     settings.tailSeconds = 0.5f;
-    settings.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::OctavesOnly;
+    settings.noteStrategy = XOriginate::RenderSettings::NoteStrategy::OctavesOnly;
     settings.velocityLayers = 1;
 
     std::vector<PresetData> presets = { makeTestPreset("WAVCheck") };
@@ -274,14 +274,14 @@ static void testFilenameSanitization()
 {
     std::cout << "\n--- Filename Sanitization ---\n";
 
-    XPNExporter exporter;
-    XPNExporter::BundleConfig config;
+    XOriginate exporter;
+    XOriginate::BundleConfig config;
     config.name = "SanitizeTest";
     config.bundleId = "com.xo-ox.test.sanitize";
     config.outputDir = getTestOutputDir("sanitize");
 
-    XPNExporter::RenderSettings settings;
-    settings.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::OctavesOnly;
+    XOriginate::RenderSettings settings;
+    settings.noteStrategy = XOriginate::RenderSettings::NoteStrategy::OctavesOnly;
     settings.velocityLayers = 1;
     settings.renderSeconds = 0.1f;
     settings.tailSeconds = 0.1f;
@@ -324,31 +324,31 @@ static void testNoteStrategies()
 {
     std::cout << "\n--- Note Strategy Coverage ---\n";
 
-    XPNExporter exporter;
-    XPNExporter::RenderSettings settings;
+    XOriginate exporter;
+    XOriginate::RenderSettings settings;
     settings.velocityLayers = 1;
     settings.renderSeconds = 0.1f;
     settings.tailSeconds = 0.1f;
 
     // Test each strategy produces expected note counts
     struct StrategyTest {
-        XPNExporter::RenderSettings::NoteStrategy strategy;
+        XOriginate::RenderSettings::NoteStrategy strategy;
         const char* name;
         int expectedMin;   // minimum expected notes
         int expectedMax;   // maximum expected notes
     };
 
     StrategyTest tests[] = {
-        { XPNExporter::RenderSettings::NoteStrategy::OctavesOnly,   "OctavesOnly",   6, 7 },
-        { XPNExporter::RenderSettings::NoteStrategy::EveryFifth,    "EveryFifth",    10, 12 },
-        { XPNExporter::RenderSettings::NoteStrategy::EveryMinor3rd, "EveryMinor3rd", 24, 26 },
-        { XPNExporter::RenderSettings::NoteStrategy::Chromatic,     "Chromatic",     72, 74 },
+        { XOriginate::RenderSettings::NoteStrategy::OctavesOnly,   "OctavesOnly",   6, 7 },
+        { XOriginate::RenderSettings::NoteStrategy::EveryFifth,    "EveryFifth",    10, 12 },
+        { XOriginate::RenderSettings::NoteStrategy::EveryMinor3rd, "EveryMinor3rd", 24, 26 },
+        { XOriginate::RenderSettings::NoteStrategy::Chromatic,     "Chromatic",     72, 74 },
     };
 
     for (auto& t : tests)
     {
         settings.noteStrategy = t.strategy;
-        XPNExporter::BundleConfig config;
+        XOriginate::BundleConfig config;
         config.name = juce::String("Strategy_") + t.name;
         config.bundleId = juce::String("com.xo-ox.test.") + t.name;
         config.outputDir = getTestOutputDir(t.name);
@@ -374,17 +374,17 @@ static void testVelocityLayerRanges()
 {
     std::cout << "\n--- Velocity Layer Ranges ---\n";
 
-    XPNExporter exporter;
+    XOriginate exporter;
 
     for (int layers = 1; layers <= 4; ++layers)
     {
-        XPNExporter::BundleConfig config;
+        XOriginate::BundleConfig config;
         config.name = juce::String("VelTest_") + juce::String(layers);
         config.bundleId = "com.xo-ox.test.vel";
         config.outputDir = getTestOutputDir(("vel_" + std::to_string(layers)).c_str());
 
-        XPNExporter::RenderSettings settings;
-        settings.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::OctavesOnly;
+        XOriginate::RenderSettings settings;
+        settings.noteStrategy = XOriginate::RenderSettings::NoteStrategy::OctavesOnly;
         settings.velocityLayers = layers;
         settings.renderSeconds = 0.1f;
         settings.tailSeconds = 0.1f;
@@ -474,7 +474,7 @@ static void testBatchValidation()
             makeTestPreset("SameName"),
             makeTestPreset("SameName"),
         };
-        auto result = XPNExporter::validateBatch(dupes);
+        auto result = XOriginate::validateBatch(dupes);
         reportTest("Batch: duplicate names detected", !result.valid);
         bool hasDupeError = false;
         for (const auto& e : result.errors)
@@ -486,7 +486,7 @@ static void testBatchValidation()
     {
         auto p = makeTestPreset("");
         std::vector<PresetData> batch = { p };
-        auto result = XPNExporter::validateBatch(batch);
+        auto result = XOriginate::validateBatch(batch);
         reportTest("Batch: empty name is error", !result.valid);
     }
 
@@ -495,7 +495,7 @@ static void testBatchValidation()
         auto p = makeTestPreset("BadDNA");
         p.dna.brightness = 1.5f;
         std::vector<PresetData> batch = { p };
-        auto result = XPNExporter::validateBatch(batch);
+        auto result = XOriginate::validateBatch(batch);
         reportTest("Batch: out-of-range DNA is error", !result.valid);
     }
 
@@ -503,7 +503,7 @@ static void testBatchValidation()
     {
         auto p = makeTestPreset("ThisNameIsDefinitelyLongerThan30Characters");
         std::vector<PresetData> batch = { p };
-        auto result = XPNExporter::validateBatch(batch);
+        auto result = XOriginate::validateBatch(batch);
         reportTest("Batch: long name is warning not error", result.valid);
         reportTest("Batch: has warning for long name", result.warnings.size() > 0);
     }
@@ -515,7 +515,7 @@ static void testBatchValidation()
             makeTestPreset("Beta"),
             makeTestPreset("Gamma"),
         };
-        auto result = XPNExporter::validateBatch(good);
+        auto result = XOriginate::validateBatch(good);
         reportTest("Batch: valid batch passes", result.valid);
         reportTest("Batch: no errors on valid batch", result.errors.isEmpty());
     }
@@ -529,8 +529,8 @@ static void testBundleStructure()
 {
     std::cout << "\n--- Bundle Structure ---\n";
 
-    XPNExporter exporter;
-    XPNExporter::BundleConfig config;
+    XOriginate exporter;
+    XOriginate::BundleConfig config;
     config.name = "StructureTest";
     config.bundleId = "com.xo-ox.test.structure";
     config.manufacturer = "XO_OX Designs";
@@ -539,8 +539,8 @@ static void testBundleStructure()
     config.coverEngine = "ONSET";
     config.outputDir = getTestOutputDir("structure");
 
-    XPNExporter::RenderSettings settings;
-    settings.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::OctavesOnly;
+    XOriginate::RenderSettings settings;
+    settings.noteStrategy = XOriginate::RenderSettings::NoteStrategy::OctavesOnly;
     settings.velocityLayers = 1;
     settings.renderSeconds = 0.1f;
     settings.tailSeconds = 0.1f;
@@ -601,14 +601,14 @@ static void testCancelMidExport()
 {
     std::cout << "\n--- Cancel Mid-Export ---\n";
 
-    XPNExporter exporter;
-    XPNExporter::BundleConfig config;
+    XOriginate exporter;
+    XOriginate::BundleConfig config;
     config.name = "CancelTest";
     config.bundleId = "com.xo-ox.test.cancel";
     config.outputDir = getTestOutputDir("cancel");
 
-    XPNExporter::RenderSettings settings;
-    settings.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::OctavesOnly;
+    XOriginate::RenderSettings settings;
+    settings.noteStrategy = XOriginate::RenderSettings::NoteStrategy::OctavesOnly;
     settings.velocityLayers = 1;
     settings.renderSeconds = 0.1f;
     settings.tailSeconds = 0.1f;
@@ -620,7 +620,7 @@ static void testCancelMidExport()
 
     int cancelAfter = 2;
     auto result = exporter.exportBundle(config, settings, presets,
-        [&](XPNExporter::Progress& p)
+        [&](XOriginate::Progress& p)
         {
             if (p.currentPreset >= cancelAfter)
                 p.cancelled = true;
@@ -639,13 +639,13 @@ static void testEmptyPresetList()
 {
     std::cout << "\n--- Empty Preset List ---\n";
 
-    XPNExporter exporter;
-    XPNExporter::BundleConfig config;
+    XOriginate exporter;
+    XOriginate::BundleConfig config;
     config.name = "EmptyTest";
     config.bundleId = "com.xo-ox.test.empty";
     config.outputDir = getTestOutputDir("empty");
 
-    XPNExporter::RenderSettings settings;
+    XOriginate::RenderSettings settings;
     std::vector<PresetData> empty;
 
     auto result = exporter.exportBundle(config, settings, empty);
@@ -758,14 +758,14 @@ static void testXPMKeygroupCoverage()
 {
     std::cout << "\n--- XPM Keygroup Coverage ---\n";
 
-    XPNExporter exporter;
-    XPNExporter::BundleConfig config;
+    XOriginate exporter;
+    XOriginate::BundleConfig config;
     config.name = "KeygroupCoverage";
     config.bundleId = "com.xo-ox.test.keygroups";
     config.outputDir = getTestOutputDir("keygroups");
 
-    XPNExporter::RenderSettings settings;
-    settings.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::EveryMinor3rd;
+    XOriginate::RenderSettings settings;
+    settings.noteStrategy = XOriginate::RenderSettings::NoteStrategy::EveryMinor3rd;
     settings.velocityLayers = 3;
     settings.renderSeconds = 0.1f;
     settings.tailSeconds = 0.1f;
@@ -859,14 +859,14 @@ static void testFadeGuard()
 {
     std::cout << "\n--- Fade Guard Verification ---\n";
 
-    XPNExporter exporter;
-    XPNExporter::BundleConfig config;
+    XOriginate exporter;
+    XOriginate::BundleConfig config;
     config.name = "FadeGuard";
     config.bundleId = "com.xo-ox.test.fadeguard";
     config.outputDir = getTestOutputDir("fadeguard");
 
-    XPNExporter::RenderSettings settings;
-    settings.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::OctavesOnly;
+    XOriginate::RenderSettings settings;
+    settings.noteStrategy = XOriginate::RenderSettings::NoteStrategy::OctavesOnly;
     settings.velocityLayers = 1;
     settings.renderSeconds = 0.5f;
     settings.tailSeconds = 1.0f; // generous tail so release decays to near-zero
@@ -945,14 +945,14 @@ static void testGroupNormalization()
 {
     std::cout << "\n--- Group Normalization ---\n";
 
-    XPNExporter exporter;
-    XPNExporter::BundleConfig config;
+    XOriginate exporter;
+    XOriginate::BundleConfig config;
     config.name = "NormTest";
     config.bundleId = "com.xo-ox.test.norm";
     config.outputDir = getTestOutputDir("norm");
 
-    XPNExporter::RenderSettings settings;
-    settings.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::OctavesOnly;
+    XOriginate::RenderSettings settings;
+    settings.noteStrategy = XOriginate::RenderSettings::NoteStrategy::OctavesOnly;
     settings.velocityLayers = 4;
     settings.renderSeconds = 0.5f;
     settings.tailSeconds = 0.5f;
@@ -1090,14 +1090,14 @@ static void testExpressionMappingKeygroup()
 {
     std::cout << "\n--- Expression Mapping (Keygroup) ---\n";
 
-    XPNExporter exporter;
-    XPNExporter::BundleConfig config;
+    XOriginate exporter;
+    XOriginate::BundleConfig config;
     config.name = "ExprTest";
     config.bundleId = "com.xo-ox.test.expression";
     config.outputDir = getTestOutputDir("expression");
 
-    XPNExporter::RenderSettings settings;
-    settings.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::OctavesOnly;
+    XOriginate::RenderSettings settings;
+    settings.noteStrategy = XOriginate::RenderSettings::NoteStrategy::OctavesOnly;
     settings.velocityLayers = 1;
     settings.renderSeconds = 0.1f;
     settings.tailSeconds = 0.1f;
