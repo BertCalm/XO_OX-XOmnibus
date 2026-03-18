@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Deep Drift",
+  "mood": "Atmosphere",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Deep atmospheric drift — the lowest registers of the morph engine diffuse into open space.",
+  "tags": ["deep", "atmospheric", "diffuse", "open"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.22, "warmth": 0.7, "movement": 0.52, "density": 0.55, "space": 0.72, "aggression": 0.08},
+  "parameters": {
+    "OddOscar": {"morph_morph": 0.52, "morph_bloom": 0.52, "morph_detune": 0.16, "morph_drift": 0.62, "morph_filterCutoff": 2000.0, "morph_filterReso": 0.35, "morph_filterEnvDepth": 0.28, "morph_sub": 0.62, "morph_decay": 2.8, "morph_sustain": 0.88, "morph_release": 4.8, "morph_glide": 0.2, "morph_voiceMode": 0, "morph_polyphony": 5, "morph_level": 0.64, "morph_macroBloom": 0.52, "morph_macroDepth": 0.45, "morph_macroDrift": 0.62, "morph_macroSpace": 0.72}
+  },
+  "macros": {"CHARACTER": 0.44, "MOVEMENT": 0.52, "COUPLING": 0.0, "SPACE": 0.72},
+  "coupling": {"pairs": []}
+}
