@@ -83,10 +83,11 @@ XOmnibus enforces constraints:
 - Network access
 - Spawn threads
 
-### Channel C: The Engine Forge (Baby's First Engine — see Part 3)
+### Channel C: OBRIX — The Synthesis Toy Box (see Part 3)
 
-A built-in engine that IS the toolkit. Not an external SDK but a playable
-synthesis sandbox inside XOmnibus itself. Details in Part 3.
+**XObrix** — synthesis building blocks you snap together like toy bricks.
+Not an external SDK but a playable synthesis sandbox inside XOmnibus itself.
+A toy you learn from. Details in Part 3.
 
 ---
 
@@ -163,41 +164,66 @@ xomnibus-engine-sdk/
 
 ---
 
-## Part 3: The Engine Forge — A Playable Synthesis Playground
+## Part 3: OBRIX — The Synthesis Toy Box
 
 ### Concept
 
-**FORGE** (working name, follows XO + O-word if we go with something like FOUNDRY
-or FORGE — or we break convention intentionally because this isn't really an
-instrument, it's a tool). An engine slot in XOmnibus that isn't a fixed synthesizer —
-it's a modular patching environment with a curated set of building blocks.
+**OBRIX** — toy bricks for synthesis. The name says it all: snap pieces together,
+hear what happens, learn by building. It's a LEGO set where every brick makes sound.
 
-The goal: **anyone can drag blocks together, hear what happens, and learn what
+XObrix is a registered engine in XOmnibus — it occupies a slot just like ODDFELIX
+or ORBITAL. But instead of a fixed signal path, its graph is runtime-configurable
+from a curated set of building blocks. Because it's a standard engine, you can run
+up to 4 OBRIX instances simultaneously in the 4 engine slots — each with a completely
+different configuration. Couple them together via the MegaCouplingMatrix and you've
+got a user-designed multi-engine instrument built entirely from toy bricks.
+
+The goal: **anyone can snap blocks together, hear what happens, and learn what
 oscillators, filters, envelopes, and modulation actually do.** No code. No SDK.
 Just play.
 
 ### Architecture
 
 ```
-┌─────────────────────────────────────────────┐
-│                ENGINE FORGE                  │
-│                                             │
-│  ┌─────┐   ┌──────┐   ┌──────┐   ┌─────┐  │
-│  │ OSC │──▶│FILTER│──▶│ AMP  │──▶│ OUT │  │
-│  └─────┘   └──────┘   └──────┘   └─────┘  │
-│     ▲          ▲          ▲                 │
-│  ┌─────┐   ┌──────┐   ┌──────┐             │
-│  │ LFO │   │ ENV  │   │ ENV  │             │
-│  └─────┘   └──────┘   └──────┘             │
-│                                             │
-│  Signal path: drag to connect               │
-│  Mod path: drag to modulate                 │
-└─────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────┐
+│  SLOT 1: OBRIX              SLOT 2: OBRIX                          │
+│  ┌─────┐  ┌──────┐  ┌───┐  ┌─────┐  ┌──────┐  ┌───┐              │
+│  │ SAW │─▶│ LP   │─▶│OUT│  │NOISE│─▶│ BP   │─▶│OUT│              │
+│  └─────┘  └──────┘  └───┘  └─────┘  └──────┘  └───┘              │
+│     ▲        ▲                 ▲        ▲                          │
+│  ┌─────┐  ┌─────┐          ┌─────┐  ┌─────┐                       │
+│  │ LFO │  │ ENV │          │ VEL │  │ ENV │                       │
+│  └─────┘  └─────┘          └─────┘  └─────┘                       │
+│           ║ coupling ║                                             │
+│           ╚══════════╝                                             │
+│  Each OBRIX is independent — different blocks, different patch.    │
+│  Couple them together for cross-engine modulation.                 │
+└─────────────────────────────────────────────────────────────────────┘
 ```
+
+### Multi-Slot OBRIX
+
+Because OBRIX is a standard `SynthEngine`, you can load it into any or all 4
+engine slots. Each instance maintains its own block configuration and patch state
+independently. This means:
+
+- **Slot 1:** Subtractive bass (Saw → LP Filter → Amp)
+- **Slot 2:** Noise percussion (Noise → BP Filter → fast Env)
+- **Slot 3:** FM texture (Sine × Sine → Wavefolder → Chorus)
+- **Slot 4:** ORBITAL (or any other "real" engine)
+
+All 4 slots participate in the MegaCouplingMatrix as usual. Route the amplitude
+of your OBRIX bass into the filter cutoff of your OBRIX percussion. Couple your
+FM texture into ORBITAL's wavetable position. The user has effectively designed
+a custom multi-engine synthesizer from toy bricks — no code, no SDK, just play.
+
+Each slot's OBRIX configuration saves independently in `.xometa` presets. A
+4-slot preset with 3 OBRIX instances and 1 ORBITAL is a perfectly valid XOmnibus
+preset file.
 
 ### Building Blocks (Curated, Not Infinite)
 
-The key insight: **don't give people Eurorack.** Give them LEGO. Constrained
+The key insight: **don't give people Eurorack.** Give them LEGO bricks. Constrained
 choices that always sound good and always teach something.
 
 **Sources (pick 1-2):**
@@ -236,13 +262,14 @@ choices that always sound good and always teach something.
 
 ### How It Works
 
-1. **Start with a template.** Not a blank canvas. Templates like:
+1. **Start with a starter kit.** Not a blank canvas. Starter kits like:
    - "Classic Subtractive" (Saw → LP Filter → Amp, with Env on filter + amp)
    - "FM Bell" (Sine → Sine FM, with Env on modulation depth)
    - "Noise Percussion" (Noise → BP Filter → Amp, fast env)
    - "Wavetable Pad" (Wavetable → LP Filter → Chorus, LFO on morph)
+   - "Multi-Slot Jam" (loads 3 OBRIX slots with complementary configs + coupling)
 
-2. **Swap blocks.** Tap a block, see alternatives. Swap Saw for Square — hear the
+2. **Swap bricks.** Tap a block, see alternatives. Swap Saw for Square — hear the
    difference immediately. Swap LP for Wavefolder — hear what distortion does.
 
 3. **Drag modulation.** Drag from LFO to filter cutoff — see the line, hear the wobble.
@@ -251,31 +278,32 @@ choices that always sound good and always teach something.
 4. **Every connection is visible and audible.** No hidden routing. When you drag a
    mod connection, the target parameter visually wobbles to show modulation depth.
 
-5. **"What Changed?" mode.** Toggle A/B between your current patch and the template
-   you started from. Hear exactly what your modifications did.
+5. **"What Changed?" mode.** Toggle A/B between your current patch and the starter
+   kit you began with. Hear exactly what your modifications did.
 
-6. **Guided challenges.** Optional prompts:
+6. **Snap challenges.** Optional build prompts:
    - "Make a bass sound using only a square wave and a filter"
    - "Create a pluck by making the filter envelope very short"
    - "Add movement to a pad using an LFO on the filter"
    - "Make a percussion sound without using any oscillators"
+   - "Load 2 OBRIX slots and couple them — make them interact"
 
 ### Technical Implementation
 
-The Forge is an engine like any other — it implements `SynthEngine`. The difference
+OBRIX is an engine like any other — it implements `SynthEngine`. The difference
 is that its signal graph is runtime-configurable:
 
 ```cpp
-class ForgeEngine : public SynthEngine {
-    // Fixed pool of DSP blocks (no runtime allocation)
-    std::array<ForgeOscillator, 2> oscillators;
-    std::array<ForgeFilter, 3> filters;
-    std::array<ForgeModulator, 4> modulators;
-    std::array<ForgeEffect, 3> effects;
+class ObrixEngine : public SynthEngine {
+    // Fixed pool of DSP bricks (no runtime allocation)
+    std::array<ObrixOscillator, 2> oscillators;
+    std::array<ObrixFilter, 3> filters;
+    std::array<ObrixModulator, 4> modulators;
+    std::array<ObrixEffect, 3> effects;
 
-    // Patching matrix (which block connects to which)
+    // Patching matrix (which brick connects to which)
     // Stored as parameter state — survives preset save/load
-    ForgePatchMatrix patchMatrix;
+    ObrixPatchMatrix patchMatrix;
 
     void renderBlock(...) override {
         // 1. Read patch matrix from parameters
@@ -290,40 +318,49 @@ class ForgeEngine : public SynthEngine {
 
 **Critical design decisions:**
 
-- **Fixed block pool, not dynamic.** 2 sources + 3 processors + 4 modulators + 3 effects
-  = 12 blocks max. Pre-allocated in `prepare()`. Inactive blocks cost zero CPU.
-  This avoids audio-thread allocation entirely.
+- **Fixed brick pool, not dynamic.** 2 sources + 3 processors + 4 modulators + 3 effects
+  = 12 bricks max per instance. Pre-allocated in `prepare()`. Inactive bricks cost
+  zero CPU. This avoids audio-thread allocation entirely.
 - **Patch state is parameters.** The routing matrix is stored as integer parameters
-  (source1_target, mod1_target, mod1_depth, etc.). This means patches are
-  standard `.xometa` presets and participate in the full preset system.
-- **Coupling-compatible.** Forge outputs coupling signals just like any engine.
-  You can couple your hand-built Forge patch with ORBITAL or OUROBOROS.
-- **No code generation.** Forge doesn't "export" to a real engine. It IS a real
-  engine. Your Forge patch can be a preset alongside ODDFELIX presets.
+  (`obrix_source1_type`, `obrix_mod1_target`, `obrix_mod1_depth`, etc.). This means
+  patches are standard `.xometa` presets and participate in the full preset system.
+- **Multi-instance safe.** Each OBRIX instance in a different slot gets its own
+  independent brick pool and patch matrix. The parameter prefix handles namespacing
+  per slot automatically (same as any other engine in multi-slot configs).
+- **Coupling-compatible.** OBRIX outputs coupling signals just like any engine.
+  Couple your hand-built OBRIX patch with ORBITAL, OUROBOROS — or another OBRIX.
+- **No code generation.** OBRIX doesn't "export" to a real engine. It IS a real
+  engine. Your OBRIX patch sits alongside ODDFELIX presets in the browser.
 
-### Forge Presets as Learning Curriculum
+### OBRIX Presets as Learning Curriculum
 
-The preset library for Forge IS the learning path:
+The preset library for OBRIX IS the learning path:
 
 ```
 Presets/XOmnibus/Foundation/
-    FORGE - Bare Sine.xometa          ← just a sine wave, nothing else
-    FORGE - First Filter.xometa       ← sine + LP filter
-    FORGE - Envelope Shapes.xometa    ← sine + filter + env (try changing ADSR)
-    FORGE - Add Movement.xometa       ← above + LFO on cutoff
-    FORGE - Two Oscillators.xometa    ← saw + square, detuned
+    OBRIX - Bare Sine.xometa          ← just a sine wave, nothing else
+    OBRIX - First Filter.xometa       ← sine + LP filter
+    OBRIX - Envelope Shapes.xometa    ← sine + filter + env (try changing ADSR)
+    OBRIX - Add Movement.xometa       ← above + LFO on cutoff
+    OBRIX - Two Oscillators.xometa    ← saw + square, detuned
 
 Presets/XOmnibus/Atmosphere/
-    FORGE - Pad From Scratch.xometa   ← wavetable + filter + chorus + slow LFO
-    FORGE - Evolving Texture.xometa   ← two sources, cross-modulated
+    OBRIX - Pad From Scratch.xometa   ← wavetable + filter + chorus + slow LFO
+    OBRIX - Evolving Texture.xometa   ← two sources, cross-modulated
+
+Presets/XOmnibus/Entangled/
+    OBRIX - Coupled Pair.xometa       ← 2 OBRIX slots, coupled via AmpToFilter
+    OBRIX - Brick Orchestra.xometa    ← 3 OBRIX slots, each with different role
+    OBRIX - Meets Orbital.xometa      ← OBRIX slot 1 + ORBITAL slot 2, coupled
 
 Presets/XOmnibus/Flux/
-    FORGE - Pluck Lab.xometa          ← fast env experiments
-    FORGE - Noise Drum.xometa         ← noise + BP filter + fast amp env
+    OBRIX - Pluck Lab.xometa          ← fast env experiments
+    OBRIX - Noise Drum.xometa         ← noise + BP filter + fast amp env
 ```
 
 Each preset has `"notes"` in the xometa that explain what's happening and
-suggest what to change.
+suggest what to change. Multi-slot presets include notes about the coupling
+routes and why they produce the interaction they do.
 
 ---
 
@@ -331,7 +368,7 @@ suggest what to change.
 
 ### V1 (Ship)
 - 34 engines, current architecture, no expansion API yet
-- Forge is NOT in V1 — it's a significant UI + DSP effort
+- OBRIX is NOT in V1 — it's a significant UI + DSP effort
 
 ### V1.1 (Foundation)
 - **Engine version metadata** — `sinceVersion` in registry, graceful missing-engine handling
@@ -343,28 +380,27 @@ suggest what to change.
 - **Dynamic engine loading** — scan user engine directory, load `.dylib`/`.so` at startup
 - **Parameter namespace registry** — prevent collisions
 
-### V1.3 (Forge)
-- **Engine Forge** — the playable synthesis playground
-- Ships as engine "FORGE" with param prefix `forge_`
-- Template presets + guided challenges
-- Full coupling compatibility
+### V1.3 (OBRIX)
+- **XObrix** — the synthesis toy box
+- Ships as engine "Obrix" with param prefix `obrix_`
+- Starter kit presets + snap challenges
+- Multi-slot support (up to 4 OBRIX instances, each independently configured)
+- Cross-instance coupling via MegaCouplingMatrix
+- Full coupling compatibility with all existing engines
 
 ### V1.4+ (Community)
 - **Community engine gallery** on xoox.design
 - **In-app engine browser** — discover and install community engines
-- **Forge-to-SDK bridge** — export a Forge patch as an SDK project scaffold
-  (the signal graph becomes starter code in a real engine template)
+- **OBRIX-to-SDK bridge** — export an OBRIX patch as an SDK project scaffold
+  (the brick graph becomes starter code in a real engine template)
 
 ---
 
 ## Open Questions
 
-1. **Forge naming.** FORGE doesn't follow XO + O-word. Options:
-   - OSCILLARY ("oscillation laboratory")
-   - OPUS ("your opus")
-   - ORIGINERY ("origin of engines")
-   - OBSERVATORY ("observe synthesis")
-   - Or break convention — Forge is a tool, not an instrument
+1. **OBRIX accent color.** Needs to be distinct from existing 34 engines.
+   Candidates: Construction Yellow `#FFD700`? Brick Red `#CB4154`? Something
+   that says "toy" and "build."
 
 2. **Sample loading in community engines.** V1 community engines can't load files
    (security boundary). Do we add a sandboxed sample API in V1.3+?
@@ -372,8 +408,13 @@ suggest what to change.
 3. **Community engine code signing.** Do we require notarized/signed binaries?
    Or trust-on-first-use with a warning dialog?
 
-4. **Forge complexity ceiling.** 12 blocks is the proposed limit. Is that enough
-   to be interesting? Too much to be approachable? Needs user testing.
+4. **OBRIX complexity ceiling.** 12 bricks per instance is the proposed limit.
+   With 4 slots that's 48 bricks total — probably plenty. But does a single
+   instance need more than 12? Needs user testing.
 
 5. **Revenue model for community.** Free marketplace? Paid tier for premium
    community engines? Donation model? This affects incentives.
+
+6. **OBRIX multi-slot presets.** When a preset uses 3 OBRIX slots + 1 ORBITAL,
+   should the preset browser show it as an OBRIX preset, an ORBITAL preset,
+   or a new "Multi" category? Current preset system is per-engine.
