@@ -165,7 +165,8 @@ protected:
     // Call silenceGate.analyzeBlock(L, R, numSamples) at end of renderBlock().
     SilenceGate silenceGate;
 
-    /// Helper: call at the end of renderBlock() to feed the silence gate.
+public:
+    /// Helper: call from XOmnibusProcessor to feed the silence gate after renderBlock().
     void analyzeForSilenceGate(const juce::AudioBuffer<float>& buffer, int numSamples)
     {
         const float* L = buffer.getReadPointer(0);

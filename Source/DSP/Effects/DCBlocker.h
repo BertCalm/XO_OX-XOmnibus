@@ -45,14 +45,14 @@ public:
         {
             // Left channel
             float xL = L[i];
-            float yL = xL - prevInL + R * prevOutL;
+            float yL = xL - prevInL + coeff * prevOutL;
             prevInL  = xL;
             prevOutL = flushDenormal (yL);
             L[i] = yL;
 
             // Right channel
             float xR = R[i];
-            float yR = xR - prevInR + R * prevOutR;
+            float yR = xR - prevInR + coeff * prevOutR;
             prevInR  = xR;
             prevOutR = flushDenormal (yR);
             R[i] = yR;
@@ -69,15 +69,15 @@ public:
 private:
     void updateCoefficient()
     {
-        // R = 1 - (2π × cutoffHz / sampleRate)
+        // coeff = 1 - (2π × cutoffHz / sampleRate)
         // ~10 Hz cutoff: inaudible, catches all DC
         constexpr float cutoffHz = 10.0f;
-        R = 1.0f - (6.2831853f * cutoffHz / static_cast<float> (sr));
-        R = clamp (R, 0.9f, 0.9999f);
+        coeff = 1.0f - (6.2831853f * cutoffHz / static_cast<float> (sr));
+        coeff = clamp (coeff, 0.9f, 0.9999f);
     }
 
     double sr = 44100.0;
-    float R = 0.9986f;
+    float coeff = 0.9986f;
 
     // State
     float prevInL  = 0.0f, prevInR  = 0.0f;
