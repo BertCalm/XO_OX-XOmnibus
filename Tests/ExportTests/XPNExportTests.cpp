@@ -3,12 +3,14 @@
     ==========================
     Tests for XPNExporter: XPM rule enforcement, WAV format, filename
     sanitization, note strategies, velocity layers, batch validation,
-    bundle structure, cancellation, and cover art regression.
+    bundle structure, cancellation, cover art regression, fade guard,
+    group normalization, one-shot mode, and expression mapping.
 */
 
 #include "XPNExportTests.h"
 
 #include "Export/XPNExporter.h"
+#include "Export/XPNDrumExporter.h"
 #include "Export/XPNCoverArt.h"
 #include "Core/PresetManager.h"
 
@@ -86,6 +88,29 @@ static std::unique_ptr<juce::XmlElement> parseXmlFile(const juce::File& f)
 }
 
 //==============================================================================
+// Helper: get text content of a child element by tag name
+//
+// The actual XPM format uses child text elements like:
+//   <RootNote>0</RootNote>
+// NOT attributes like: <Keygroup RootNote="0">
+//==============================================================================
+
+static juce::String getChildText(const juce::XmlElement* parent, const juce::String& tagName)
+{
+    if (parent == nullptr) return {};
+    auto* child = parent->getChildByName(tagName);
+    if (child == nullptr) return {};
+    return child->getAllSubText().trim();
+}
+
+static int getChildInt(const juce::XmlElement* parent, const juce::String& tagName, int defaultVal = -1)
+{
+    auto text = getChildText(parent, tagName);
+    if (text.isEmpty()) return defaultVal;
+    return text.getIntValue();
+}
+
+//==============================================================================
 // 1. XPM Rule Enforcement Tests
 //==============================================================================
 
@@ -119,42 +144,60 @@ static void testXPMRuleEnforcement()
 
         if (xml != nullptr)
         {
-            // Rule 1: KeyTrack = True
-            reportTest("XPM Rule 1: KeyTrack = True",
-                       xml->getStringAttribute("KeyTrack") == "True");
+            // Navigate to Program element (MPCVObject > Program)
+            auto* program = xml->getChildByName("Program");
+            reportTest("XPM rules: Program element exists", program != nullptr);
 
-            // Check all zones
-            bool allRootNote0 = true;
-            bool allEmptyVelStart0 = true;
-            int zoneCount = 0;
-
-            for (auto* zone = xml->getFirstChildElement(); zone; zone = zone->getNextElement())
+            if (program != nullptr)
             {
-                if (zone->getTagName() != "Zone") continue;
-                zoneCount++;
+                // Rule 1: KeyTrack = True (child text element)
+                reportTest("XPM Rule 1: KeyTrack = True",
+                           getChildText(program, "KeyTrack") == "True");
 
-                // Rule 2: RootNote = 0
-                if (zone->getIntAttribute("RootNote", -1) != 0)
-                    allRootNote0 = false;
+                // Navigate to Keygroups
+                auto* keygroups = program->getChildByName("Keygroups");
+                reportTest("XPM rules: Keygroups element exists", keygroups != nullptr);
 
-                // Rule 3: Empty layers have VelStart = 0
-                int layerIdx = 0;
-                for (auto* layer = zone->getFirstChildElement(); layer; layer = layer->getNextElement())
+                if (keygroups != nullptr)
                 {
-                    if (layer->getTagName() != "Layer") continue;
-                    layerIdx++;
-                    if (layerIdx > settings.velocityLayers)
+                    bool allRootNote0 = true;
+                    bool allEmptyVelStart0 = true;
+                    int keygroupCount = 0;
+
+                    for (auto* kg = keygroups->getFirstChildElement(); kg; kg = kg->getNextElement())
                     {
-                        // This is an empty/padding layer
-                        if (layer->getIntAttribute("VelStart", -1) != 0)
-                            allEmptyVelStart0 = false;
+                        if (kg->getTagName() != "Keygroup") continue;
+                        keygroupCount++;
+
+                        // Rule 2: RootNote = 0 (child text element)
+                        if (getChildInt(kg, "RootNote", -1) != 0)
+                            allRootNote0 = false;
+
+                        // Rule 3: Empty layers have VelStart = 0
+                        auto* layers = kg->getChildByName("Layers");
+                        if (layers != nullptr)
+                        {
+                            int layerIdx = 0;
+                            for (auto* layer = layers->getFirstChildElement();
+                                 layer; layer = layer->getNextElement())
+                            {
+                                if (layer->getTagName() != "Layer") continue;
+                                layerIdx++;
+                                if (layerIdx > settings.velocityLayers)
+                                {
+                                    // This is an empty/padding layer — VelStart must be 0
+                                    if (getChildInt(layer, "VelStart", -1) != 0)
+                                        allEmptyVelStart0 = false;
+                                }
+                            }
+                        }
                     }
+
+                    reportTest("XPM Rule 2: all keygroups have RootNote = 0", allRootNote0);
+                    reportTest("XPM Rule 3: empty layers have VelStart = 0", allEmptyVelStart0);
+                    reportTest("XPM rules: keygroups created", keygroupCount > 0);
                 }
             }
-
-            reportTest("XPM Rule 2: all zones have RootNote = 0", allRootNote0);
-            reportTest("XPM Rule 3: empty layers have VelStart = 0", allEmptyVelStart0);
-            reportTest("XPM rules: zones created", zoneCount > 0);
         }
     }
 }
@@ -322,6 +365,9 @@ static void testNoteStrategies()
 
 //==============================================================================
 // 5. Velocity Layer Range Tests
+//
+// Fixed: parse actual MPCVObject > Program > Keygroups > Keygroup > Layers > Layer
+// structure with child text elements (not Zone attributes).
 //==============================================================================
 
 static void testVelocityLayerRanges()
@@ -330,7 +376,7 @@ static void testVelocityLayerRanges()
 
     XPNExporter exporter;
 
-    for (int layers = 1; layers <= 3; ++layers)
+    for (int layers = 1; layers <= 4; ++layers)
     {
         XPNExporter::BundleConfig config;
         config.name = juce::String("VelTest_") + juce::String(layers);
@@ -342,6 +388,7 @@ static void testVelocityLayerRanges()
         settings.velocityLayers = layers;
         settings.renderSeconds = 0.1f;
         settings.tailSeconds = 0.1f;
+        settings.dnaAdaptiveVelocity = false; // deterministic splits for testing
 
         std::vector<PresetData> presets = { makeTestPreset("VelCheck") };
         auto result = exporter.exportBundle(config, settings, presets);
@@ -355,43 +402,58 @@ static void testVelocityLayerRanges()
             auto xml = parseXmlFile(xpmFiles[0]);
             if (xml != nullptr)
             {
-                // Check first zone's velocity coverage
-                auto* firstZone = xml->getChildByName("Zone");
-                if (firstZone != nullptr)
+                // Navigate: MPCVObject > Program > Keygroups > first Keygroup
+                auto* program = xml->getChildByName("Program");
+                auto* keygroups = program ? program->getChildByName("Keygroups") : nullptr;
+                const juce::XmlElement* firstKg = nullptr;
+
+                if (keygroups != nullptr)
                 {
-                    bool noGaps = true;
-                    bool coversFullRange = false;
-                    int prevEnd = -1;
-                    int minVelStart = 128;
-                    int maxVelEnd = -1;
-
-                    int activeLayerCount = 0;
-                    for (auto* layer = firstZone->getFirstChildElement();
-                         layer; layer = layer->getNextElement())
+                    for (auto* kg = keygroups->getFirstChildElement(); kg; kg = kg->getNextElement())
                     {
-                        if (layer->getTagName() != "Layer") continue;
-                        int velStart = layer->getIntAttribute("VelStart");
-                        int velEnd = layer->getIntAttribute("VelEnd");
-
-                        // Skip empty/padding layers (VelEnd == 0)
-                        if (velEnd == 0 && activeLayerCount >= layers)
-                            continue;
-
-                        activeLayerCount++;
-                        if (velStart < minVelStart) minVelStart = velStart;
-                        if (velEnd > maxVelEnd) maxVelEnd = velEnd;
-
-                        // Check contiguity
-                        if (prevEnd >= 0 && velStart != prevEnd + 1)
-                            noGaps = false;
-                        prevEnd = velEnd;
+                        if (kg->getTagName() == "Keygroup") { firstKg = kg; break; }
                     }
+                }
 
-                    coversFullRange = (minVelStart == 0 && maxVelEnd == 127);
+                if (firstKg != nullptr)
+                {
+                    auto* layersElem = firstKg->getChildByName("Layers");
+                    if (layersElem != nullptr)
+                    {
+                        bool noGaps = true;
+                        int prevEnd = -1;
+                        int minVelStart = 128;
+                        int maxVelEnd = -1;
 
-                    juce::String label = juce::String(layers) + " layers: ";
-                    reportTest((label + "no velocity gaps").toRawUTF8(), noGaps);
-                    reportTest((label + "covers 0-127").toRawUTF8(), coversFullRange);
+                        int activeLayerCount = 0;
+                        for (auto* layer = layersElem->getFirstChildElement();
+                             layer; layer = layer->getNextElement())
+                        {
+                            if (layer->getTagName() != "Layer") continue;
+
+                            int velStart = getChildInt(layer, "VelStart");
+                            int velEnd   = getChildInt(layer, "VelEnd");
+
+                            // Skip empty/padding layers (VelEnd == 0)
+                            if (velEnd == 0 && activeLayerCount >= layers)
+                                continue;
+
+                            activeLayerCount++;
+                            if (velStart < minVelStart) minVelStart = velStart;
+                            if (velEnd > maxVelEnd) maxVelEnd = velEnd;
+
+                            // Check contiguity
+                            if (prevEnd >= 0 && velStart != prevEnd + 1)
+                                noGaps = false;
+                            prevEnd = velEnd;
+                        }
+
+                        bool coversFullRange = (minVelStart == 0 && maxVelEnd == 127);
+
+                        juce::String label = juce::String(layers) + " layers: ";
+                        reportTest((label + "no velocity gaps").toRawUTF8(), noGaps);
+                        reportTest((label + "covers 0-127").toRawUTF8(), coversFullRange);
+                    }
                 }
             }
         }
@@ -686,18 +748,21 @@ static void testCoverArtRegression()
 }
 
 //==============================================================================
-// 11. XPM Zone Coverage Tests
+// 11. XPM Keygroup Coverage Tests
+//
+// Fixed: parse actual Keygroup structure with child text elements,
+// not Zone attributes.
 //==============================================================================
 
-static void testXPMZoneCoverage()
+static void testXPMKeygroupCoverage()
 {
-    std::cout << "\n--- XPM Zone Coverage ---\n";
+    std::cout << "\n--- XPM Keygroup Coverage ---\n";
 
     XPNExporter exporter;
     XPNExporter::BundleConfig config;
-    config.name = "ZoneCoverage";
-    config.bundleId = "com.xo-ox.test.zones";
-    config.outputDir = getTestOutputDir("zones");
+    config.name = "KeygroupCoverage";
+    config.bundleId = "com.xo-ox.test.keygroups";
+    config.outputDir = getTestOutputDir("keygroups");
 
     XPNExporter::RenderSettings settings;
     settings.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::EveryMinor3rd;
@@ -705,10 +770,10 @@ static void testXPMZoneCoverage()
     settings.renderSeconds = 0.1f;
     settings.tailSeconds = 0.1f;
 
-    std::vector<PresetData> presets = { makeTestPreset("ZoneCheck") };
+    std::vector<PresetData> presets = { makeTestPreset("KeygroupCheck") };
     exporter.exportBundle(config, settings, presets);
 
-    auto bundleDir = config.outputDir.getChildFile("ZoneCoverage");
+    auto bundleDir = config.outputDir.getChildFile("KeygroupCoverage");
     auto xpmFiles = bundleDir.findChildFiles(juce::File::findFiles, true, "*.xpm");
 
     if (xpmFiles.size() == 1)
@@ -716,58 +781,559 @@ static void testXPMZoneCoverage()
         auto xml = parseXmlFile(xpmFiles[0]);
         if (xml != nullptr)
         {
-            // Collect all key ranges
-            std::set<int> coveredKeys;
-            bool noOverlap = true;
-            int prevHighKey = -1;
+            auto* program = xml->getChildByName("Program");
+            auto* keygroups = program ? program->getChildByName("Keygroups") : nullptr;
 
-            for (auto* zone = xml->getFirstChildElement(); zone; zone = zone->getNextElement())
+            if (keygroups != nullptr)
             {
-                if (zone->getTagName() != "Zone") continue;
+                // Collect all key ranges from Keygroup child text elements
+                std::set<int> coveredKeys;
+                bool noOverlap = true;
+                int prevHighKey = -1;
 
-                int lowKey = zone->getIntAttribute("LowKey");
-                int highKey = zone->getIntAttribute("HighKey");
-
-                // Check no overlap with previous zone
-                if (prevHighKey >= 0 && lowKey <= prevHighKey)
-                    noOverlap = false;
-
-                for (int k = lowKey; k <= highKey; ++k)
-                    coveredKeys.insert(k);
-
-                prevHighKey = highKey;
-
-                // Check sample file references exist
-                for (auto* layer = zone->getFirstChildElement();
-                     layer; layer = layer->getNextElement())
+                for (auto* kg = keygroups->getFirstChildElement(); kg; kg = kg->getNextElement())
                 {
-                    if (layer->getTagName() != "Layer") continue;
-                    auto samplePath = layer->getStringAttribute("SampleFile");
-                    if (samplePath.isNotEmpty() && layer->getIntAttribute("VelEnd") > 0)
+                    if (kg->getTagName() != "Keygroup") continue;
+
+                    int lowKey  = getChildInt(kg, "LowNote");
+                    int highKey = getChildInt(kg, "HighNote");
+
+                    // Check no overlap with previous keygroup
+                    if (prevHighKey >= 0 && lowKey <= prevHighKey)
+                        noOverlap = false;
+
+                    for (int k = lowKey; k <= highKey; ++k)
+                        coveredKeys.insert(k);
+
+                    prevHighKey = highKey;
+
+                    // Check sample file references in layers
+                    auto* layersElem = kg->getChildByName("Layers");
+                    if (layersElem != nullptr)
                     {
-                        auto fullPath = bundleDir.getChildFile("Keygroups")
-                                            .getChildFile(samplePath);
-                        // Just check the format is valid (file should exist)
+                        for (auto* layer = layersElem->getFirstChildElement();
+                             layer; layer = layer->getNextElement())
+                        {
+                            if (layer->getTagName() != "Layer") continue;
+                            auto sampleName = getChildText(layer, "SampleName");
+                            int velEnd = getChildInt(layer, "VelEnd");
+                            if (sampleName.isNotEmpty() && velEnd > 0)
+                            {
+                                auto fullPath = bundleDir.getChildFile("Keygroups")
+                                                    .getChildFile(sampleName);
+                                // Format is valid (file existence checked separately)
+                            }
+                        }
                     }
                 }
-            }
 
-            // Key 0 and 127 should be covered
-            reportTest("Zone coverage: key 0 covered", coveredKeys.count(0) > 0);
-            reportTest("Zone coverage: key 127 covered", coveredKeys.count(127) > 0);
-            reportTest("Zone coverage: no zone overlaps", noOverlap);
+                // Key 0 and 127 should be covered
+                reportTest("Keygroup coverage: key 0 covered", coveredKeys.count(0) > 0);
+                reportTest("Keygroup coverage: key 127 covered", coveredKeys.count(127) > 0);
+                reportTest("Keygroup coverage: no keygroup overlaps", noOverlap);
 
-            // Check contiguity (no gaps in key range)
-            bool contiguous = true;
-            for (int k = 0; k <= 127; ++k)
-            {
-                if (coveredKeys.count(k) == 0)
+                // Check contiguity (no gaps in key range)
+                bool contiguous = true;
+                for (int k = 0; k <= 127; ++k)
                 {
-                    contiguous = false;
-                    break;
+                    if (coveredKeys.count(k) == 0)
+                    {
+                        contiguous = false;
+                        break;
+                    }
+                }
+                reportTest("Keygroup coverage: all 128 keys covered", contiguous);
+            }
+        }
+    }
+}
+
+//==============================================================================
+// 12. Fade Guard Verification
+//
+// Checks that the first and last N samples of rendered WAVs are near zero
+// to prevent clicks at loop boundaries.
+//==============================================================================
+
+static void testFadeGuard()
+{
+    std::cout << "\n--- Fade Guard Verification ---\n";
+
+    XPNExporter exporter;
+    XPNExporter::BundleConfig config;
+    config.name = "FadeGuard";
+    config.bundleId = "com.xo-ox.test.fadeguard";
+    config.outputDir = getTestOutputDir("fadeguard");
+
+    XPNExporter::RenderSettings settings;
+    settings.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::OctavesOnly;
+    settings.velocityLayers = 1;
+    settings.renderSeconds = 0.5f;
+    settings.tailSeconds = 1.0f; // generous tail so release decays to near-zero
+
+    std::vector<PresetData> presets = { makeTestPreset("FadeCheck") };
+    auto result = exporter.exportBundle(config, settings, presets);
+    reportTest("Fade guard: export succeeds", result.success);
+
+    auto bundleDir = config.outputDir.getChildFile("FadeGuard");
+    auto wavFiles = bundleDir.findChildFiles(juce::File::findFiles, true, "*.WAV");
+    reportTest("Fade guard: WAV files exist", wavFiles.size() > 0);
+
+    if (wavFiles.size() > 0)
+    {
+        juce::WavAudioFormat wav;
+        auto stream = wavFiles[0].createInputStream();
+
+        if (stream != nullptr)
+        {
+            auto reader = std::unique_ptr<juce::AudioFormatReader>(
+                wav.createReaderFor(stream.release(), true));
+
+            if (reader != nullptr && reader->lengthInSamples > 0)
+            {
+                // Check first 64 samples are near zero (attack hasn't peaked yet)
+                constexpr int guardSamples = 64;
+                constexpr float threshold = 0.1f; // generous threshold for attack ramp
+
+                juce::AudioBuffer<float> startBuf(
+                    (int)reader->numChannels, guardSamples);
+                reader->read(&startBuf, 0, guardSamples, 0, true, true);
+
+                float startPeak = 0.0f;
+                for (int ch = 0; ch < startBuf.getNumChannels(); ++ch)
+                {
+                    auto range = startBuf.findMinMax(ch, 0, guardSamples);
+                    float chPeak = juce::jmax(
+                        std::abs(range.getStart()), std::abs(range.getEnd()));
+                    if (chPeak > startPeak) startPeak = chPeak;
+                }
+                reportTest("Fade guard: first 64 samples near zero",
+                           startPeak < threshold);
+
+                // Check last 64 samples are near zero (tail has decayed)
+                int64_t tailStart = reader->lengthInSamples - guardSamples;
+                if (tailStart > 0)
+                {
+                    juce::AudioBuffer<float> endBuf(
+                        (int)reader->numChannels, guardSamples);
+                    reader->read(&endBuf, 0, guardSamples, tailStart, true, true);
+
+                    float endPeak = 0.0f;
+                    for (int ch = 0; ch < endBuf.getNumChannels(); ++ch)
+                    {
+                        auto range = endBuf.findMinMax(ch, 0, guardSamples);
+                        float chPeak = juce::jmax(
+                            std::abs(range.getStart()), std::abs(range.getEnd()));
+                        if (chPeak > endPeak) endPeak = chPeak;
+                    }
+                    reportTest("Fade guard: last 64 samples near zero",
+                               endPeak < threshold);
                 }
             }
-            reportTest("Zone coverage: all 128 keys covered", contiguous);
+        }
+    }
+}
+
+//==============================================================================
+// 13. Group Normalization
+//
+// Verifies that when multiple velocity layers are rendered, the loudest layer
+// (hard) is at the ceiling and softer layers are proportionally quieter.
+//==============================================================================
+
+static void testGroupNormalization()
+{
+    std::cout << "\n--- Group Normalization ---\n";
+
+    XPNExporter exporter;
+    XPNExporter::BundleConfig config;
+    config.name = "NormTest";
+    config.bundleId = "com.xo-ox.test.norm";
+    config.outputDir = getTestOutputDir("norm");
+
+    XPNExporter::RenderSettings settings;
+    settings.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::OctavesOnly;
+    settings.velocityLayers = 4;
+    settings.renderSeconds = 0.5f;
+    settings.tailSeconds = 0.5f;
+
+    std::vector<PresetData> presets = { makeTestPreset("NormCheck") };
+    auto result = exporter.exportBundle(config, settings, presets);
+    reportTest("Group norm: export succeeds", result.success);
+
+    // Find WAV files for one note across all 4 velocity layers
+    auto bundleDir = config.outputDir.getChildFile("NormTest");
+    auto allWavs = bundleDir.findChildFiles(juce::File::findFiles, true, "*.WAV");
+
+    // Group WAVs by note (they share the note name, differ by __v1..v4)
+    // Just check that v4 (hard) has higher peak than v1 (ghost)
+    juce::File v1File, v4File;
+    for (const auto& f : allWavs)
+    {
+        auto name = f.getFileName();
+        if (name.contains("__v1.WAV") && v1File == juce::File{})
+            v1File = f;
+        if (name.contains("__v4.WAV") && v4File == juce::File{})
+            v4File = f;
+    }
+
+    reportTest("Group norm: found v1 (ghost) file", v1File.existsAsFile());
+    reportTest("Group norm: found v4 (hard) file", v4File.existsAsFile());
+
+    if (v1File.existsAsFile() && v4File.existsAsFile())
+    {
+        juce::WavAudioFormat wav;
+
+        auto readPeak = [&](const juce::File& f) -> float
+        {
+            auto s = f.createInputStream();
+            if (!s) return 0.0f;
+            auto r = std::unique_ptr<juce::AudioFormatReader>(
+                wav.createReaderFor(s.release(), true));
+            if (!r || r->lengthInSamples == 0) return 0.0f;
+
+            juce::AudioBuffer<float> buf((int)r->numChannels,
+                                          (int)r->lengthInSamples);
+            r->read(&buf, 0, (int)r->lengthInSamples, 0, true, true);
+
+            float peak = 0.0f;
+            for (int ch = 0; ch < buf.getNumChannels(); ++ch)
+            {
+                auto range = buf.findMinMax(ch, 0, buf.getNumSamples());
+                float chPeak = juce::jmax(
+                    std::abs(range.getStart()), std::abs(range.getEnd()));
+                if (chPeak > peak) peak = chPeak;
+            }
+            return peak;
+        };
+
+        float peakV1 = readPeak(v1File);
+        float peakV4 = readPeak(v4File);
+
+        reportTest("Group norm: hard layer louder than ghost",
+                   peakV4 > peakV1);
+        reportTest("Group norm: hard layer near ceiling (> 0.8)",
+                   peakV4 > 0.8f);
+        reportTest("Group norm: ghost layer quieter (< hard)",
+                   peakV1 < peakV4);
+    }
+}
+
+//==============================================================================
+// 14. One-Shot Mode in Drum XPM
+//
+// Verifies that every drum instrument has <TriggerMode>OneShot</TriggerMode>.
+//==============================================================================
+
+static void testOneShotModeDrum()
+{
+    std::cout << "\n--- One-Shot Mode (Drum) ---\n";
+
+    XPNDrumExporter drumExporter;
+    XPNDrumExporter::DrumExportConfig config;
+    config.name = "OneShotTest";
+    config.bundleId = "com.xo-ox.test.oneshot";
+    config.outputDir = getTestOutputDir("oneshot");
+
+    auto preset = makeTestPreset("DrumOneShot", "Onset");
+    std::vector<PresetData> presets = { preset };
+
+    auto result = drumExporter.exportDrumBundle(config, presets);
+    reportTest("One-shot: drum export succeeds", result.success);
+
+    auto bundleDir = config.outputDir.getChildFile("OneShotTest");
+    auto xpmFiles = bundleDir.findChildFiles(juce::File::findFiles, true, "*.xpm");
+    reportTest("One-shot: XPM file created", xpmFiles.size() == 1);
+
+    if (xpmFiles.size() == 1)
+    {
+        auto xml = parseXmlFile(xpmFiles[0]);
+        reportTest("One-shot: valid XML", xml != nullptr);
+
+        if (xml != nullptr)
+        {
+            auto* program = xml->getChildByName("Program");
+            auto* instruments = program ? program->getChildByName("Instruments") : nullptr;
+
+            if (instruments != nullptr)
+            {
+                bool allOneShot = true;
+                int instrumentCount = 0;
+
+                for (auto* inst = instruments->getFirstChildElement();
+                     inst; inst = inst->getNextElement())
+                {
+                    if (inst->getTagName() != "Instrument") continue;
+                    instrumentCount++;
+
+                    auto triggerMode = getChildText(inst, "TriggerMode");
+                    if (triggerMode != "OneShot")
+                        allOneShot = false;
+                }
+
+                reportTest("One-shot: instruments found",
+                           instrumentCount == XPNDrumExporter::kNumPads);
+                reportTest("One-shot: all pads have TriggerMode=OneShot",
+                           allOneShot);
+            }
+        }
+    }
+}
+
+//==============================================================================
+// 15. Expression Mapping in Keygroup XPM
+//
+// Verifies AfterTouch, ModWheel, and PitchBendRange in keygroup programs.
+//==============================================================================
+
+static void testExpressionMappingKeygroup()
+{
+    std::cout << "\n--- Expression Mapping (Keygroup) ---\n";
+
+    XPNExporter exporter;
+    XPNExporter::BundleConfig config;
+    config.name = "ExprTest";
+    config.bundleId = "com.xo-ox.test.expression";
+    config.outputDir = getTestOutputDir("expression");
+
+    XPNExporter::RenderSettings settings;
+    settings.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::OctavesOnly;
+    settings.velocityLayers = 1;
+    settings.renderSeconds = 0.1f;
+    settings.tailSeconds = 0.1f;
+
+    std::vector<PresetData> presets = { makeTestPreset("ExprCheck") };
+    auto result = exporter.exportBundle(config, settings, presets);
+    reportTest("Expression (keygroup): export succeeds", result.success);
+
+    auto bundleDir = config.outputDir.getChildFile("ExprTest");
+    auto xpmFiles = bundleDir.findChildFiles(juce::File::findFiles, true, "*.xpm");
+
+    if (xpmFiles.size() == 1)
+    {
+        auto xml = parseXmlFile(xpmFiles[0]);
+        if (xml != nullptr)
+        {
+            auto* program = xml->getChildByName("Program");
+            reportTest("Expression (keygroup): Program exists", program != nullptr);
+
+            if (program != nullptr)
+            {
+                // AfterTouch
+                auto* afterTouch = program->getChildByName("AfterTouch");
+                reportTest("Expression: AfterTouch element exists",
+                           afterTouch != nullptr);
+                if (afterTouch != nullptr)
+                {
+                    reportTest("Expression: AfterTouch destination = FilterCutoff",
+                               getChildText(afterTouch, "Destination") == "FilterCutoff");
+                    reportTest("Expression: AfterTouch amount = 50",
+                               getChildText(afterTouch, "Amount") == "50");
+                }
+
+                // ModWheel
+                auto* modWheel = program->getChildByName("ModWheel");
+                reportTest("Expression: ModWheel element exists",
+                           modWheel != nullptr);
+                if (modWheel != nullptr)
+                {
+                    reportTest("Expression: ModWheel destination = FilterCutoff",
+                               getChildText(modWheel, "Destination") == "FilterCutoff");
+                    reportTest("Expression: ModWheel amount = 70",
+                               getChildText(modWheel, "Amount") == "70");
+                }
+
+                // PitchBendRange
+                reportTest("Expression: PitchBendRange = 12",
+                           getChildText(program, "PitchBendRange") == "12");
+            }
+        }
+    }
+}
+
+//==============================================================================
+// 16. Expression Mapping in Drum XPM
+//
+// Verifies AfterTouch in drum programs (simpler than keygroup).
+//==============================================================================
+
+static void testExpressionMappingDrum()
+{
+    std::cout << "\n--- Expression Mapping (Drum) ---\n";
+
+    XPNDrumExporter drumExporter;
+    XPNDrumExporter::DrumExportConfig config;
+    config.name = "DrumExprTest";
+    config.bundleId = "com.xo-ox.test.drumexpr";
+    config.outputDir = getTestOutputDir("drumexpr");
+
+    auto preset = makeTestPreset("DrumExprCheck", "Onset");
+    std::vector<PresetData> presets = { preset };
+
+    auto result = drumExporter.exportDrumBundle(config, presets);
+    reportTest("Expression (drum): export succeeds", result.success);
+
+    auto bundleDir = config.outputDir.getChildFile("DrumExprTest");
+    auto xpmFiles = bundleDir.findChildFiles(juce::File::findFiles, true, "*.xpm");
+
+    if (xpmFiles.size() == 1)
+    {
+        auto xml = parseXmlFile(xpmFiles[0]);
+        if (xml != nullptr)
+        {
+            auto* program = xml->getChildByName("Program");
+            if (program != nullptr)
+            {
+                auto* afterTouch = program->getChildByName("AfterTouch");
+                reportTest("Expression (drum): AfterTouch exists",
+                           afterTouch != nullptr);
+                if (afterTouch != nullptr)
+                {
+                    reportTest("Expression (drum): AfterTouch dest = FilterCutoff",
+                               getChildText(afterTouch, "Destination") == "FilterCutoff");
+                    reportTest("Expression (drum): AfterTouch amount = 30",
+                               getChildText(afterTouch, "Amount") == "30");
+                }
+            }
+        }
+    }
+}
+
+//==============================================================================
+// 17. Pad Color in Drum XPM
+//
+// Verifies that PadColor elements are present and contain valid hex strings.
+//==============================================================================
+
+static void testPadColorDrum()
+{
+    std::cout << "\n--- Pad Color (Drum) ---\n";
+
+    XPNDrumExporter drumExporter;
+    XPNDrumExporter::DrumExportConfig config;
+    config.name = "PadColorTest";
+    config.bundleId = "com.xo-ox.test.padcolor";
+    config.outputDir = getTestOutputDir("padcolor");
+
+    auto preset = makeTestPreset("PadColorCheck", "Onset");
+    std::vector<PresetData> presets = { preset };
+
+    auto result = drumExporter.exportDrumBundle(config, presets);
+    reportTest("Pad color: drum export succeeds", result.success);
+
+    auto bundleDir = config.outputDir.getChildFile("PadColorTest");
+    auto xpmFiles = bundleDir.findChildFiles(juce::File::findFiles, true, "*.xpm");
+
+    if (xpmFiles.size() == 1)
+    {
+        auto xml = parseXmlFile(xpmFiles[0]);
+        if (xml != nullptr)
+        {
+            auto* program = xml->getChildByName("Program");
+            auto* instruments = program ? program->getChildByName("Instruments") : nullptr;
+
+            if (instruments != nullptr)
+            {
+                bool allHaveColor = true;
+                bool allValidHex = true;
+                int instrumentCount = 0;
+
+                for (auto* inst = instruments->getFirstChildElement();
+                     inst; inst = inst->getNextElement())
+                {
+                    if (inst->getTagName() != "Instrument") continue;
+                    instrumentCount++;
+
+                    auto color = getChildText(inst, "PadColor");
+                    if (color.isEmpty())
+                        allHaveColor = false;
+                    else if (color.length() != 6 ||
+                             !color.containsOnly("0123456789ABCDEFabcdef"))
+                        allValidHex = false;
+                }
+
+                reportTest("Pad color: all instruments have PadColor",
+                           allHaveColor && instrumentCount > 0);
+                reportTest("Pad color: all colors are valid 6-digit hex",
+                           allValidHex && instrumentCount > 0);
+            }
+        }
+    }
+}
+
+//==============================================================================
+// 18. Mute Group Configuration
+//
+// Verifies that configurable mute groups are present beyond just hi-hat.
+//==============================================================================
+
+static void testMuteGroups()
+{
+    std::cout << "\n--- Mute Group Configuration ---\n";
+
+    XPNDrumExporter drumExporter;
+    XPNDrumExporter::DrumExportConfig config;
+    config.name = "MuteGroupTest";
+    config.bundleId = "com.xo-ox.test.mutegroups";
+    config.outputDir = getTestOutputDir("mutegroups");
+
+    auto preset = makeTestPreset("MuteCheck", "Onset");
+    std::vector<PresetData> presets = { preset };
+
+    auto result = drumExporter.exportDrumBundle(config, presets);
+    reportTest("Mute groups: drum export succeeds", result.success);
+
+    auto bundleDir = config.outputDir.getChildFile("MuteGroupTest");
+    auto xpmFiles = bundleDir.findChildFiles(juce::File::findFiles, true, "*.xpm");
+
+    if (xpmFiles.size() == 1)
+    {
+        auto xml = parseXmlFile(xpmFiles[0]);
+        if (xml != nullptr)
+        {
+            auto* program = xml->getChildByName("Program");
+            auto* instruments = program ? program->getChildByName("Instruments") : nullptr;
+
+            if (instruments != nullptr)
+            {
+                std::set<int> muteGroupsSeen;
+                bool hiHatGroupFound = false;
+                bool kickGroupFound = false;
+                bool snareGroupFound = false;
+
+                for (auto* inst = instruments->getFirstChildElement();
+                     inst; inst = inst->getNextElement())
+                {
+                    if (inst->getTagName() != "Instrument") continue;
+
+                    int mg = getChildInt(inst, "MuteGroup", 0);
+                    muteGroupsSeen.insert(mg);
+
+                    auto name = getChildText(inst, "InstrumentName");
+
+                    if (mg == XPNDrumExporter::kChokeHiHat &&
+                        (name.containsIgnoreCase("HAT")))
+                        hiHatGroupFound = true;
+
+                    if (mg == XPNDrumExporter::kChokeKick &&
+                        name.containsIgnoreCase("KICK"))
+                        kickGroupFound = true;
+
+                    if (mg == XPNDrumExporter::kChokeSnare &&
+                        (name.containsIgnoreCase("SNARE") ||
+                         name.containsIgnoreCase("CLAP")))
+                        snareGroupFound = true;
+                }
+
+                reportTest("Mute groups: hi-hat choke group present",
+                           hiHatGroupFound);
+                reportTest("Mute groups: kick choke group present",
+                           kickGroupFound);
+                reportTest("Mute groups: snare/clap choke group present",
+                           snareGroupFound);
+                reportTest("Mute groups: multiple distinct groups used",
+                           muteGroupsSeen.size() >= 3);
+            }
         }
     }
 }
@@ -797,7 +1363,14 @@ int runAll()
     testCancelMidExport();
     testEmptyPresetList();
     testCoverArtRegression();
-    testXPMZoneCoverage();
+    testXPMKeygroupCoverage();
+    testFadeGuard();
+    testGroupNormalization();
+    testOneShotModeDrum();
+    testExpressionMappingKeygroup();
+    testExpressionMappingDrum();
+    testPadColorDrum();
+    testMuteGroups();
 
     std::cout << "\n  Export Tests: " << g_exportTestsPassed << " passed, "
               << g_exportTestsFailed << " failed\n";

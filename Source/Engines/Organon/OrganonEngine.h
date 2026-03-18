@@ -1305,6 +1305,10 @@ public:
         paramLockIn           = apvts.getRawParameterValue ("organon_lockIn");
         paramMembrane         = apvts.getRawParameterValue ("organon_membrane");
         paramNoiseColor       = apvts.getRawParameterValue ("organon_noiseColor");
+        paramMacroCharacter   = apvts.getRawParameterValue ("organon_macroCharacter");
+        paramMacroMovement    = apvts.getRawParameterValue ("organon_macroMovement");
+        paramMacroCoupling    = apvts.getRawParameterValue ("organon_macroCoupling");
+        paramMacroSpace       = apvts.getRawParameterValue ("organon_macroSpace");
     }
 
 private:
@@ -1391,6 +1395,20 @@ private:
         //     Only affects the self-feeding noise; coupling input bypasses this.
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID ("organon_noiseColor", 1), "Noise Color",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+
+        // D002: 4 macros
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID ("organon_macroCharacter", 1), "CHARACTER",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID ("organon_macroMovement", 1), "MOVEMENT",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID ("organon_macroCoupling", 1), "COUPLING",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID ("organon_macroSpace", 1), "SPACE",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
     }
 
@@ -1500,6 +1518,10 @@ private:
     std::atomic<float>* paramLockIn           = nullptr;
     std::atomic<float>* paramMembrane         = nullptr;
     std::atomic<float>* paramNoiseColor       = nullptr;
+    std::atomic<float>* paramMacroCharacter   = nullptr;
+    std::atomic<float>* paramMacroMovement    = nullptr;
+    std::atomic<float>* paramMacroCoupling    = nullptr;
+    std::atomic<float>* paramMacroSpace       = nullptr;
 };
 
 } // namespace xomnibus
