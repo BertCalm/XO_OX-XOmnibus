@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.403,
-    "source": "Ole",
-    "target": "Oblong",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Oblong",
+        "type": "FILTER_MOD",
+        "amount": 0.403
+      }
+    ]
   },
   "dna": {
     "aggression": 0.075,

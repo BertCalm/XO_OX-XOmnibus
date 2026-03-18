@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.726,
-    "source": "Odyssey",
-    "target": "OddfeliX",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "OddfeliX",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.726
+      }
+    ]
   },
   "dna": {
     "aggression": 0.936,

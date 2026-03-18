@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.869,
-    "source": "Origami",
-    "target": "Oblong",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oblong",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.869
+      }
+    ]
   },
   "dna": {
     "aggression": 0.52,
@@ -31,7 +35,7 @@
     "SPACE": 0.076
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_INTIMATE_FAM_VOL_115",
+  "name": "Sunrise Swirl",
   "parameters": {
     "Oblong": {
       "macro_character": 0.902,

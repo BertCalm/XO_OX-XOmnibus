@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.841,
-    "source": "Outwit",
-    "target": "Orca",
-    "type": "SPECTRAL_TRANSFER"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Orca",
+        "type": "SPECTRAL_TRANSFER",
+        "amount": 0.841
+      }
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Orca echolocation data seeds OUTWIT initial row — sonar clicks become Wolfram seed patterns",
@@ -62,5 +66,13 @@
     "wolfram",
     "cellular-automata"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.673,
+    "warmth": 0.5,
+    "movement": 0.517,
+    "density": 0.553,
+    "space": 0.5,
+    "aggression": 0.104
+  }
 }

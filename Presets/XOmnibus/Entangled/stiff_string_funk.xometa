@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.684,
-    "source": "Obscura",
-    "target": "Oblique",
-    "type": "MODULATION_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oblique",
+        "type": "MODULATION_SHARE",
+        "amount": 0.684
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8,

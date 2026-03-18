@@ -138,10 +138,10 @@
     }
   },
   "coupling": {
-    "routes": [
+    "pairs": [
       {
-        "source": "Onset",
-        "dest": "Overdub",
+        "engineA": "Onset",
+        "engineB": "Overdub",
         "type": "AmpToFilter",
         "amount": 0.35
       }

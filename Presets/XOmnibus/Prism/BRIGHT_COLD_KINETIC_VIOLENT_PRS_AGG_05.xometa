@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.777,
-    "source": "Ocelot",
-    "target": "Orphica",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Orphica",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.777
+      }
+    ]
   },
   "dna": {
     "aggression": 0.949,
@@ -31,7 +35,7 @@
     "SPACE": 0.35
   },
   "mood": "Prism",
-  "name": "BRIGHT COLD KINETIC VIOLENT PRS AGG 5",
+  "name": "BRIGHT COLD KINETIC VIOLENT...",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.913,

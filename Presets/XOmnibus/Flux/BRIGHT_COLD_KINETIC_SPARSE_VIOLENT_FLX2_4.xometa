@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.617,
-    "source": "Optic",
-    "target": "Ouroboros",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Ouroboros",
+        "type": "PITCH_SYNC",
+        "amount": 0.617
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9332,
@@ -31,7 +35,7 @@
     "SPACE": 0.5139
   },
   "mood": "Flux",
-  "name": "BRIGHT_COLD_KINETIC_SPARSE_VIOLENT_FLX2_4",
+  "name": "Mirror Rage",
   "parameters": {
     "Optic": {
       "macro_character": 0.5007,

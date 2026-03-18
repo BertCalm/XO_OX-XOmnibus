@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7099,
-    "source": "Oracle",
-    "target": "Organon",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.7099
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9734,
@@ -31,7 +35,7 @@
     "SPACE": 0.6043
   },
   "mood": "Aether",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_AET4_4",
+  "name": "Copper Blade",
   "parameters": {
     "Oracle": {
       "macro_character": 0.4006,

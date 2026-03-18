@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.63,
-    "source": "Opal",
-    "target": "Obsidian",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obsidian",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.63
+      }
+    ]
   },
   "description": "Opal frequency-shifts Obsidian's crystal facets — each facet refracts a different grain.",
   "dna": {

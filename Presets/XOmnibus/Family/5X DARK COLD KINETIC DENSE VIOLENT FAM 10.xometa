@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.83,
-    "source": "Orca",
-    "target": "Overworld",
-    "type": "LFO_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Overworld",
+        "type": "LFO_SYNC",
+        "amount": 0.83
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Family",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FAM 10",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Orca": {
       "macro_character": 0.9,

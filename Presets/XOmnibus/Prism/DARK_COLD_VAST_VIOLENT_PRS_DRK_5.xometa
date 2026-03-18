@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5947,
-    "source": "Osteria",
-    "target": "Ohm",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Ohm",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.5947
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8701,
@@ -31,7 +35,7 @@
     "SPACE": 0.9336
   },
   "mood": "Prism",
-  "name": "DARK_COLD_VAST_VIOLENT_PRS_DRK_5",
+  "name": "Wave Horizon",
   "parameters": {
     "Ohm": {
       "macro_character": 0.476,

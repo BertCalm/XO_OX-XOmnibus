@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.968,
-    "source": "Organon",
-    "target": "Ocelot",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Ocelot",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.968
+      }
+    ]
   },
   "dna": {
     "aggression": 0.948,
@@ -31,7 +35,7 @@
     "SPACE": 0.051
   },
   "mood": "Entangled",
-  "name": "DARK HOT DENSE INTIMATE VIOLENT ENT2 1",
+  "name": "DARK HOT DENSE INTIMATE VIO...",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.471,

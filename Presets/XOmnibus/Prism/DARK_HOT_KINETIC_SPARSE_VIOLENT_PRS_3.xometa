@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.943,
-    "source": "Owlfish",
-    "target": "Origami",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.943
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.395
   },
   "mood": "Prism",
-  "name": "DARK_HOT_KINETIC_SPARSE_VIOLENT_PRS_3",
+  "name": "Rust Surge",
   "parameters": {
     "Origami": {
       "macro_character": 0.167,

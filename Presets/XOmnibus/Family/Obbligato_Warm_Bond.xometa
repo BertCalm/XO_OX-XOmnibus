@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Obbligato Warm Bond",
-  "parameters": {},
+  "parameters": {
+    "Obbligato": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

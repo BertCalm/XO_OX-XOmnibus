@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.841,
-    "source": "Oblong",
-    "target": "Organon",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.841
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9303,
@@ -31,7 +35,7 @@
     "SPACE": 0.1274
   },
   "mood": "Flux",
-  "name": "COLD_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_5",
+  "name": "Node Heavy",
   "parameters": {
     "Oblong": {
       "macro_character": 0.3053,

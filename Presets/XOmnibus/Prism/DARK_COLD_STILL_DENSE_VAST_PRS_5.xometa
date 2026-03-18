@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.94,
-    "source": "Origami",
-    "target": "Oracle",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.94
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.939
   },
   "mood": "Prism",
-  "name": "DARK_COLD_STILL_DENSE_VAST_PRS_5",
+  "name": "Fragment Vast",
   "parameters": {
     "Oracle": {
       "macro_character": 0.1,

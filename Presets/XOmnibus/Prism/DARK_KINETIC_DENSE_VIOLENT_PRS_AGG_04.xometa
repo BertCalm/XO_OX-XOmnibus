@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.806,
-    "source": "Owlfish",
-    "target": "Ocelot",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ocelot",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.806
+      }
+    ]
   },
   "dna": {
     "aggression": 0.932,
@@ -31,7 +35,7 @@
     "SPACE": 0.445
   },
   "mood": "Prism",
-  "name": "DARK KINETIC DENSE VIOLENT PRS AGG 4",
+  "name": "DARK KINETIC DENSE VIOLENT ...",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.088,

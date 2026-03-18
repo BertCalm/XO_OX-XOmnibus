@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6667,
-    "source": "Orbital",
-    "target": "Opal",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Opal",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.6667
+      }
+    ]
   },
   "dna": {
     "aggression": 0.6756,
@@ -31,7 +35,7 @@
     "SPACE": 0.0724
   },
   "mood": "Aether",
-  "name": "BRIGHT_COLD_STILL_INTIMATE_AET2_4",
+  "name": "Silver Rage",
   "parameters": {
     "Opal": {
       "macro_character": 0.9758,

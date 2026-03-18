@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.85,
-    "source": "Osprey",
-    "target": "Octopus",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Octopus",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.85
+      }
+    ]
   },
   "dna": {
     "aggression": 0.879,
@@ -31,7 +35,7 @@
     "SPACE": 0.926
   },
   "mood": "Entangled",
-  "name": "BRIGHT_KINETIC_VAST_VIOLENT_ENT_AGG_5",
+  "name": "Tone Surge 3",
   "parameters": {
     "Octopus": {
       "macro_character": 0.44,

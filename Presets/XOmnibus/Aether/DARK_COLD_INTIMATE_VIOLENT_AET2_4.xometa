@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6193,
-    "source": "Origami",
-    "target": "OddfeliX",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "OddfeliX",
+        "type": "FILTER_MOD",
+        "amount": 0.6193
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9613,
@@ -31,7 +35,7 @@
     "SPACE": 0.0255
   },
   "mood": "Aether",
-  "name": "DARK_COLD_INTIMATE_VIOLENT_AET2_4",
+  "name": "Flux Crush",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.0524,

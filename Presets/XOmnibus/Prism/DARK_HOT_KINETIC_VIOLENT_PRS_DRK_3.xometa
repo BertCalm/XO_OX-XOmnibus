@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8131,
-    "source": "Owlfish",
-    "target": "Ole",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ole",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.8131
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9088,
@@ -31,7 +35,7 @@
     "SPACE": 0.4258
   },
   "mood": "Prism",
-  "name": "DARK_HOT_KINETIC_VIOLENT_PRS_DRK_3",
+  "name": "Rust Current",
   "parameters": {
     "Ole": {
       "macro_character": 0.9416,

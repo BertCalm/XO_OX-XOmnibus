@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.884,
-    "source": "Optic",
-    "target": "Ole",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Ole",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.884
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.158
   },
   "mood": "Prism",
-  "name": "BRIGHT_HOT_STILL_INTIMATE_GENTLE_PRS_2",
+  "name": "Honey Flux",
   "parameters": {
     "Ole": {
       "macro_character": 1.0,

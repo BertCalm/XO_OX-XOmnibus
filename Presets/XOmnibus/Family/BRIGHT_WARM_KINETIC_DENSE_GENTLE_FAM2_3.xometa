@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.478,
-    "source": "Organon",
-    "target": "Osteria",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Osteria",
+        "type": "PITCH_SYNC",
+        "amount": 0.478
+      }
+    ]
   },
   "dna": {
     "aggression": 0.061,
@@ -31,7 +35,7 @@
     "SPACE": 0.611
   },
   "mood": "Family",
-  "name": "BRIGHT WARM KINETIC DENSE GENTLE FAM2 3",
+  "name": "BRIGHT WARM KINETIC DENSE G...",
   "parameters": {
     "Organon": {
       "macro_character": 0.953,

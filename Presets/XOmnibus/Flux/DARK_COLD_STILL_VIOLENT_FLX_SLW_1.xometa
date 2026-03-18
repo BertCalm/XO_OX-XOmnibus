@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.807,
-    "source": "Origami",
-    "target": "Organon",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Organon",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.807
+      }
+    ]
   },
   "dna": {
     "aggression": 0.953,
@@ -31,7 +35,7 @@
     "SPACE": 0.601
   },
   "mood": "Flux",
-  "name": "DARK_COLD_STILL_VIOLENT_FLX_SLW_1",
+  "name": "Node Blade 2",
   "parameters": {
     "Organon": {
       "macro_character": 0.496,

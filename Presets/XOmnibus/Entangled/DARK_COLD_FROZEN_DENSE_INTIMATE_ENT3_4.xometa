@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8052,
-    "source": "Oceanic",
-    "target": "Ohm",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Ohm",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.8052
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.2859
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_FROZEN_DENSE_INTIMATE_ENT3_4",
+  "name": "Node Thick 2",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.6955,

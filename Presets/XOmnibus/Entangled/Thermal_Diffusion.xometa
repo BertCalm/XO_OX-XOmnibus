@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.89,
-    "source": "Opal",
-    "target": "Osprey",
-    "type": "HARMONIC_LOCK"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Osprey",
+        "type": "HARMONIC_LOCK",
+        "amount": 0.89
+      }
+    ]
   },
   "dna": {
     "aggression": 0.42,

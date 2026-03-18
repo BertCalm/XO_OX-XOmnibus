@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Eight Arms Working",
-  "parameters": {},
+  "parameters": {
+    "Octopus": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

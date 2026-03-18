@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.959,
-    "source": "Obese",
-    "target": "Overbite",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Overbite",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.959
+      }
+    ]
   },
   "dna": {
     "aggression": 0.972,
@@ -31,7 +35,7 @@
     "SPACE": 0.467
   },
   "mood": "Foundation",
-  "name": "COLD_DENSE_INTIMATE_VIOLENT_FND_AGG_5",
+  "name": "Flux Grit",
   "parameters": {
     "Obese": {
       "macro_character": 0.394,

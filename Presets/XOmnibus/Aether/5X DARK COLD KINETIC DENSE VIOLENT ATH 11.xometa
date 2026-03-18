@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.64,
-    "source": "OddfeliX",
-    "target": "Obese",
-    "type": "PHASE_LOCK"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
+        "type": "PHASE_LOCK",
+        "amount": 0.64
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Aether",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 11",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Obese": {
       "macro_character": 0.64,

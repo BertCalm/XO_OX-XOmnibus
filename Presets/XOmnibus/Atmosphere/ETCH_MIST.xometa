@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.341,
-    "source": "Ottoni",
-    "target": "Orbital",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Orbital",
+        "type": "PITCH_SYNC",
+        "amount": 0.341
+      }
+    ]
   },
   "dna": {
     "aggression": 0.892,

@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.76,
-    "intensity": "Deep",
-    "source": "Orphica",
-    "target": "Obscura",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Obscura",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.76
+      }
+    ]
   },
   "description": "Resonance shared between glass-harmonic and OBSCURA's plate — spacious and luminous.",
   "dna": {

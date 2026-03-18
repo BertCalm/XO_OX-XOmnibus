@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9789,
-    "source": "Ocelot",
-    "target": "Overbite",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Overbite",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.9789
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.4254
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_FROZEN_DENSE_GENTLE_ENT3_2",
+  "name": "Quartz Deep",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.7213,

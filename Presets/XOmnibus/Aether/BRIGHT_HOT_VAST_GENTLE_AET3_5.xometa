@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5286,
-    "source": "Osprey",
-    "target": "Oblique",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Oblique",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.5286
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1297,

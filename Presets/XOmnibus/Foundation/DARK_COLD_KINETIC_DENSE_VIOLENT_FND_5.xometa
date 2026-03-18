@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.903,
-    "source": "OddfeliX",
-    "target": "Obsidian",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obsidian",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.903
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.483
   },
   "mood": "Foundation",
-  "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FND_5",
+  "name": "Phase Solid",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.15,

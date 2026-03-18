@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.543,
-    "source": "Origami",
-    "target": "Obscura",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Obscura",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.543
+      }
+    ]
   },
   "dna": {
     "aggression": 0.035,
@@ -31,7 +35,7 @@
     "SPACE": 0.543
   },
   "mood": "Aether",
-  "name": "COLD STILL SPARSE BALANCED AET SPC 2",
+  "name": "COLD STILL SPARSE BALANCED ...",
   "parameters": {
     "Obscura": {
       "macro_character": 0.184,

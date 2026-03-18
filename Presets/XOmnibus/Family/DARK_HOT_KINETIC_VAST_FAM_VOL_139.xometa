@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.713,
-    "source": "OddOscar",
-    "target": "Odyssey",
-    "type": "HARMONIC_MESH"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
+        "type": "HARMONIC_MESH",
+        "amount": 0.713
+      }
+    ]
   },
   "dna": {
     "aggression": 0.327,
@@ -31,7 +35,7 @@
     "SPACE": 0.99
   },
   "mood": "Family",
-  "name": "DARK_HOT_KINETIC_VAST_FAM_VOL_139",
+  "name": "Shadow Cavern",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.517,

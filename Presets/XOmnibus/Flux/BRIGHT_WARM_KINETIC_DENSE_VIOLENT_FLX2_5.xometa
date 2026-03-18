@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.934,
-    "source": "Oceanic",
-    "target": "Overworld",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Overworld",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.934
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9495,
@@ -31,7 +35,7 @@
     "SPACE": 0.4931
   },
   "mood": "Flux",
-  "name": "BRIGHT_WARM_KINETIC_DENSE_VIOLENT_FLX2_5",
+  "name": "Halo Saturated",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.8783,

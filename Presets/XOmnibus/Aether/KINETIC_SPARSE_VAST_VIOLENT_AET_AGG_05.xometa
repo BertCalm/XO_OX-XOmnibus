@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.877,
-    "source": "Origami",
-    "target": "OddOscar",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "OddOscar",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.877
+      }
+    ]
   },
   "dna": {
     "aggression": 0.882,
@@ -31,7 +35,7 @@
     "SPACE": 0.84
   },
   "mood": "Aether",
-  "name": "KINETIC SPARSE VAST VIOLENT AET AGG 5",
+  "name": "KINETIC SPARSE VAST VIOLENT...",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.524,

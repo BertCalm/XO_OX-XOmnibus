@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5742,
-    "source": "Optic",
-    "target": "Ouroboros",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Ouroboros",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.5742
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0514,
@@ -31,7 +35,7 @@
     "SPACE": 0.1142
   },
   "mood": "Flux",
-  "name": "COLD_DENSE_INTIMATE_GENTLE_FLX_3",
+  "name": "Fragment Saturated",
   "parameters": {
     "Optic": {
       "macro_character": 0.5138,

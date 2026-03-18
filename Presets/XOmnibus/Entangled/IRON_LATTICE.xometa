@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9966,
-    "source": "Overbite",
-    "target": "Oblique",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Oblique",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.9966
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5864,

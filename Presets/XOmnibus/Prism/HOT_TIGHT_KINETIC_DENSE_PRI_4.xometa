@@ -28,7 +28,9 @@
   ],
   "mood": "Prism",
   "name": "HOT TIGHT KINETIC DENSE PRI 4",
-  "parameters": {},
+  "parameters": {
+    "Organon": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

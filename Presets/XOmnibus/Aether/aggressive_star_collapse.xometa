@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.789,
-    "source": "Owlfish",
-    "target": "Osteria",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Osteria",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.789
+      }
+    ]
   },
   "dna": {
     "aggression": 0.946,

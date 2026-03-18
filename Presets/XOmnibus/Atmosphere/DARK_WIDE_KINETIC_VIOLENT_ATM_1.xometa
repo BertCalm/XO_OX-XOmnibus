@@ -32,8 +32,10 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "DARK WIDE KINETIC VIOLENT ATM 1",
-  "parameters": {},
+  "name": "DARK WIDE KINETIC VIOLENT A...",
+  "parameters": {
+    "Osteria": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

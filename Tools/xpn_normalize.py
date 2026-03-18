@@ -235,6 +235,213 @@ def normalize_file(input_path: str, output_path: str, mode: str, target_db: floa
 
 
 # ---------------------------------------------------------------------------
+# LUFS normalization (simplified ITU-R BS.1770 approximation)
+# ---------------------------------------------------------------------------
+
+def _k_weight_filter(frames: list, sample_rate: int) -> list:
+    """Apply simplified K-weighting to audio frames.
+
+    K-weighting consists of two stages:
+      1. High-shelf boost of +4 dB at 1500 Hz (models head acoustics)
+      2. High-pass filter at 38 Hz (removes sub-bass energy)
+
+    This is a simplified first-order approximation suitable for
+    integrated loudness estimation.
+    """
+    # Stage 1: High-shelf +4 dB at 1500 Hz (first-order shelving filter)
+    # Gain = 10^(4/20) ~ 1.585
+    fc_shelf = 1500.0
+    gain_linear = 1.5849  # +4 dB
+    w0 = 2.0 * math.pi * fc_shelf / sample_rate
+    cos_w0 = math.cos(w0)
+    alpha = math.sin(w0) / 2.0 * 0.7071  # Q = 0.7071 (Butterworth)
+
+    A = math.sqrt(gain_linear)
+    # Shelf coefficients (peaking approximation for simplicity)
+    b0 = 1.0 + alpha * A
+    b1 = -2.0 * cos_w0
+    b2 = 1.0 - alpha * A
+    a0 = 1.0 + alpha / A
+    a1 = -2.0 * cos_w0
+    a2 = 1.0 - alpha / A
+
+    # Normalize
+    b0 /= a0; b1 /= a0; b2 /= a0; a1 /= a0; a2 /= a0
+
+    # Apply biquad filter (stage 1)
+    filtered = [0.0] * len(frames)
+    x1 = x2 = y1 = y2 = 0.0
+    for i, x0 in enumerate(frames):
+        y0 = b0 * x0 + b1 * x1 + b2 * x2 - a1 * y1 - a2 * y2
+        filtered[i] = y0
+        x2, x1 = x1, x0
+        y2, y1 = y1, y0
+
+    # Stage 2: High-pass at 38 Hz (first-order)
+    fc_hp = 38.0
+    rc = 1.0 / (2.0 * math.pi * fc_hp)
+    dt = 1.0 / sample_rate
+    hp_alpha = rc / (rc + dt)
+
+    output = [0.0] * len(filtered)
+    prev_x = 0.0
+    prev_y = 0.0
+    for i, x0 in enumerate(filtered):
+        y0 = hp_alpha * (prev_y + x0 - prev_x)
+        output[i] = y0
+        prev_x = x0
+        prev_y = y0
+
+    return output
+
+
+def compute_lufs(frames: list, sample_rate: int, n_channels: int) -> float:
+    """Compute integrated LUFS using simplified BS.1770 algorithm.
+
+    Steps:
+      1. K-weight the signal
+      2. Compute mean-square power in 400ms overlapping windows
+      3. Absolute gate at -70 LUFS
+      4. Relative gate at -10 LUFS below ungated mean
+      5. Return gated integrated loudness in LUFS
+    """
+    # Mix to mono if stereo (simplified — full spec sums per-channel power)
+    if n_channels > 1:
+        mono = []
+        for i in range(0, len(frames) - n_channels + 1, n_channels):
+            mono.append(sum(frames[i:i + n_channels]) / n_channels)
+    else:
+        mono = list(frames)
+
+    if not mono:
+        return -70.0
+
+    # K-weight
+    weighted = _k_weight_filter(mono, sample_rate)
+
+    # 400ms window, 75% overlap (step = 100ms)
+    window_samples = int(sample_rate * 0.4)
+    step_samples = int(sample_rate * 0.1)
+
+    if window_samples < 1 or len(weighted) < window_samples:
+        # Too short for windowed analysis — compute single-window
+        ms = sum(s * s for s in weighted) / len(weighted)
+        if ms < 1e-20:
+            return -70.0
+        return -0.691 + 10.0 * math.log10(ms)
+
+    # Compute mean-square per window
+    window_powers = []
+    for start in range(0, len(weighted) - window_samples + 1, step_samples):
+        chunk = weighted[start:start + window_samples]
+        ms = sum(s * s for s in chunk) / window_samples
+        window_powers.append(ms)
+
+    if not window_powers:
+        return -70.0
+
+    # Absolute gate: -70 LUFS
+    abs_gate_power = 10.0 ** ((-70.0 + 0.691) / 10.0)
+    gated_abs = [p for p in window_powers if p > abs_gate_power]
+
+    if not gated_abs:
+        return -70.0
+
+    # Ungated mean power
+    mean_abs = sum(gated_abs) / len(gated_abs)
+    ungated_lufs = -0.691 + 10.0 * math.log10(mean_abs) if mean_abs > 0 else -70.0
+
+    # Relative gate: -10 LUFS below ungated mean
+    rel_gate_lufs = ungated_lufs - 10.0
+    rel_gate_power = 10.0 ** ((rel_gate_lufs + 0.691) / 10.0)
+    gated_rel = [p for p in gated_abs if p > rel_gate_power]
+
+    if not gated_rel:
+        return -70.0
+
+    mean_rel = sum(gated_rel) / len(gated_rel)
+    if mean_rel <= 0:
+        return -70.0
+
+    integrated_lufs = -0.691 + 10.0 * math.log10(mean_rel)
+    return integrated_lufs
+
+
+def normalize_file_lufs(input_path: str, output_path: str,
+                        target_lufs: float = -14.0) -> dict:
+    """Normalize a single WAV file to a target LUFS level.
+
+    Returns a result dict with per-file stats.
+    """
+    result = {
+        "input": input_path,
+        "output": output_path,
+        "mode": "lufs",
+        "target_db": target_lufs,
+        "input_peak_db": None,
+        "input_rms_db": None,
+        "input_lufs": None,
+        "gain_db": None,
+        "output_peak_db": None,
+        "skipped": False,
+        "skip_reason": None,
+        "error": None,
+    }
+
+    try:
+        frames, sample_rate, n_channels, bit_depth, n_frames = read_wav(input_path)
+    except Exception as e:
+        result["error"] = str(e)
+        result["skipped"] = True
+        result["skip_reason"] = f"read error: {e}"
+        return result
+
+    peak = compute_peak(frames)
+    rms = compute_rms(frames)
+    result["input_peak_db"] = linear_to_db(peak)
+    result["input_rms_db"] = linear_to_db(rms)
+
+    if peak == 0.0:
+        result["skipped"] = True
+        result["skip_reason"] = "silent file (skipped)"
+        result["gain_db"] = 0.0
+        return result
+
+    current_lufs = compute_lufs(frames, sample_rate, n_channels)
+    result["input_lufs"] = round(current_lufs, 2)
+
+    if current_lufs <= -70.0:
+        result["skipped"] = True
+        result["skip_reason"] = "below noise floor (skipped)"
+        result["gain_db"] = 0.0
+        return result
+
+    gain_db = target_lufs - current_lufs
+    if gain_db > MAX_GAIN_DB:
+        result["skipped"] = True
+        result["skip_reason"] = (f"gain needed ({gain_db:.1f} dB) exceeds "
+                                 f"+{MAX_GAIN_DB:.0f} dB limit (skipped)")
+        result["gain_db"] = 0.0
+        return result
+
+    gain_linear = db_to_linear(gain_db)
+    result["gain_db"] = round(gain_db, 2)
+
+    normalized = [s * gain_linear for s in frames]
+    out_peak = compute_peak(normalized)
+    result["output_peak_db"] = linear_to_db(out_peak)
+
+    try:
+        write_wav(output_path, normalized, sample_rate, n_channels, bit_depth)
+    except Exception as e:
+        result["error"] = str(e)
+        result["skipped"] = True
+        result["skip_reason"] = f"write error: {e}"
+
+    return result
+
+
+# ---------------------------------------------------------------------------
 # Auto mode: try to import classifier, fall back to peak
 # ---------------------------------------------------------------------------
 
@@ -334,15 +541,17 @@ def main():
     parser.add_argument("--output", required=True, help="Output directory for normalized WAV files.")
     parser.add_argument(
         "--mode",
-        choices=["peak", "rms", "auto"],
+        choices=["peak", "rms", "lufs", "auto"],
         default="peak",
-        help="Normalization mode: peak (default -3 dBFS), rms (default -18 dBFS), auto (classify per file).",
+        help="Normalization mode: peak (default -3 dBFS), rms (default -18 dBFS), "
+             "lufs (default -14 LUFS integrated), auto (classify per file).",
     )
     parser.add_argument(
         "--target",
         type=float,
         default=None,
-        help="Target level in dBFS (negative number). Defaults: peak=-3, rms=-18, auto=per-instrument.",
+        help="Target level in dBFS/LUFS (negative number). "
+             "Defaults: peak=-3, rms=-18, lufs=-14, auto=per-instrument.",
     )
     parser.add_argument(
         "--recursive",
@@ -356,6 +565,8 @@ def main():
         default_target = args.target
     elif args.mode == "rms":
         default_target = -18.0
+    elif args.mode == "lufs":
+        default_target = -14.0
     else:
         default_target = -3.0  # peak and auto fallback
 
@@ -379,11 +590,13 @@ def main():
         input_str = str(wav_path)
         output_str = build_output_path(wav_path, args.input, args.output)
 
-        # Resolve effective mode/target (handles auto classification)
-        effective_mode, auto_target = resolve_mode_for_file(input_str, args.mode)
-        effective_target = auto_target if auto_target is not None else default_target
-
-        result = normalize_file(input_str, output_str, effective_mode, effective_target)
+        if args.mode == "lufs":
+            result = normalize_file_lufs(input_str, output_str, target_lufs=default_target)
+        else:
+            # Resolve effective mode/target (handles auto classification)
+            effective_mode, auto_target = resolve_mode_for_file(input_str, args.mode)
+            effective_target = auto_target if auto_target is not None else default_target
+            result = normalize_file(input_str, output_str, effective_mode, effective_target)
         results.append(result)
 
     print_summary(results)

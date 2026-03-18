@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.55,
-    "source": "OddfeliX",
-    "target": "Obbligato",
-    "type": "HARMONIC_BLEND"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obbligato",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.55
+      }
+    ]
   },
   "description": "OddfeliX sharp modulation obligated to OBBLIGATO's breath pattern — neon must follow the reed",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Tetra Wind Bond",
-  "parameters": {},
+  "parameters": {
+    "Obbligato": {},
+    "OddfeliX": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.39,
@@ -43,5 +50,13 @@
     "oddfelix",
     "wind"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

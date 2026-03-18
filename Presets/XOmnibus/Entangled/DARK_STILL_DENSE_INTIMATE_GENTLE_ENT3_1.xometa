@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7637,
-    "source": "Orphica",
-    "target": "Origami",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.7637
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.3999
   },
   "mood": "Entangled",
-  "name": "DARK_STILL_DENSE_INTIMATE_GENTLE_ENT3_1",
+  "name": "Tone Saturated 3",
   "parameters": {
     "Origami": {
       "macro_character": 0.7898,

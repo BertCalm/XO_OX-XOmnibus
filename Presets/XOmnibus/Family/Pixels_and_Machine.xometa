@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Pixels and Machine",
-  "parameters": {},
+  "parameters": {
+    "Overworld": {},
+    "Onset": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.717,
     "pairs": [
       {
         "amount": 0.717,
@@ -9,10 +8,7 @@
         "target": "Origami",
         "type": "HARMONIC_FOLD"
       }
-    ],
-    "source": "Outwit",
-    "target": "Origami",
-    "type": "HARMONIC_FOLD"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Dark Hot Vast Violent character entanglement — OUTWIT × ORIGAMI via Harmonic Fold. Extreme DNA zones push sound design to the edges.",

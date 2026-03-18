@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.897,
-    "source": "Onset",
-    "target": "Osteria",
-    "type": "RING_MOD"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Osteria",
+        "type": "RING_MOD",
+        "amount": 0.897
+      }
+    ]
   },
   "dna": {
     "aggression": 0.06,

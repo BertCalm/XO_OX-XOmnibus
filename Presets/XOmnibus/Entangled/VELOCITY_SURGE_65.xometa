@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.822,
-    "source": "Overworld",
-    "target": "Owlfish",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Owlfish",
+        "type": "FILTER_MOD",
+        "amount": 0.822
+      }
+    ]
   },
   "dna": {
     "aggression": 0.999,

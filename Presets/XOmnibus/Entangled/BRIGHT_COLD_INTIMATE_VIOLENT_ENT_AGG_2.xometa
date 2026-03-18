@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.954,
-    "source": "Obese",
-    "target": "Ottoni",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Ottoni",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.954
+      }
+    ]
   },
   "dna": {
     "aggression": 0.879,
@@ -31,7 +35,7 @@
     "SPACE": 0.111
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_ENT_AGG_2",
+  "name": "Frost Edge",
   "parameters": {
     "Obese": {
       "macro_character": 0.696,

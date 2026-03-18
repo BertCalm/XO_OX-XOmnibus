@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.515,
-    "source": "OddfeliX",
-    "target": "Ouroboros",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Ouroboros",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.515
+      }
+    ]
   },
   "dna": {
     "aggression": 0.886,
@@ -31,7 +35,7 @@
     "SPACE": 0.347
   },
   "mood": "Foundation",
-  "name": "DARK_COLD_KINETIC_VIOLENT_FND_1",
+  "name": "Wave Pulse",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.63,

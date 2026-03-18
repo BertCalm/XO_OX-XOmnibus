@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.723,
-    "source": "Oceanic",
-    "target": "OddfeliX",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "OddfeliX",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.723
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0228,
@@ -31,7 +35,7 @@
     "SPACE": 0.9429
   },
   "mood": "Atmosphere",
-  "name": "DARK_STILL_SPARSE_VAST_GENTLE_ATM_3",
+  "name": "Thread Horizon 3",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.2749,

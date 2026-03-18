@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.739,
-    "source": "Onset",
-    "target": "Octopus",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Octopus",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.739
+      }
+    ]
   },
   "dna": {
     "aggression": 0.491,

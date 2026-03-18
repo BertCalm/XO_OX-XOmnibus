@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7937,
-    "source": "Overworld",
-    "target": "Opal",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Opal",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.7937
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.4839
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_FROZEN_VAST_GENTLE_ENT3_5",
+  "name": "Glass Horizon 3",
   "parameters": {
     "Opal": {
       "macro_character": 0.7535,

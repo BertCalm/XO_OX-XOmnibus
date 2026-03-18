@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.773,
-    "source": "Opal",
-    "target": "Oblong",
-    "type": "SPATIAL_BIND"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oblong",
+        "type": "SPATIAL_BIND",
+        "amount": 0.773
+      }
+    ]
   },
   "dna": {
     "aggression": 0.026,
@@ -31,7 +35,7 @@
     "SPACE": 0.488
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_DENSE_GENTLE_FAM_VOL_84",
+  "name": "Halo Solid",
   "parameters": {
     "Oblong": {
       "macro_character": 0.907,

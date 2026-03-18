@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Oracle",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.74
+      }
+    ]
   },
   "description": "Envelope linking: OLE's sustain bloom triggers ORACLE's GENDY glissando arc.",
   "dna": {

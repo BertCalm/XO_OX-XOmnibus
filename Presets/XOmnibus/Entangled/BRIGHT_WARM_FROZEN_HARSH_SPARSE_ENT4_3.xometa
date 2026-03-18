@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.753,
-    "source": "OddfeliX",
-    "target": "Orca",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Orca",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.753
+      }
+    ]
   },
   "dna": {
     "aggression": 0.974,
@@ -31,7 +35,7 @@
     "SPACE": 0.615
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_HARSH_SPARSE_ENT4_3",
+  "name": "Bloom Storm",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.869,

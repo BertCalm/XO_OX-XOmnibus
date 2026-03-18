@@ -33,7 +33,10 @@
   ],
   "mood": "Entangled",
   "name": "OVERDRIVE Constellation",
-  "parameters": {},
+  "parameters": {
+    "Ole": {},
+    "Overdub": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

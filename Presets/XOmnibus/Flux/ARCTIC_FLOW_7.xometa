@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.3746,
-    "source": "Ottoni",
-    "target": "Obbligato",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Obbligato",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.3746
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4251,

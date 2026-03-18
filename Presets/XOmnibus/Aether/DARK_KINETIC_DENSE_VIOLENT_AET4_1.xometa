@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7645,
-    "source": "Overworld",
-    "target": "OddfeliX",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "OddfeliX",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.7645
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9688,
@@ -31,7 +35,7 @@
     "SPACE": 0.572
   },
   "mood": "Aether",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_AET4_1",
+  "name": "Dusk Wrath",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.8235,

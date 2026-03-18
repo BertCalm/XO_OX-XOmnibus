@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.82,
-    "source": "Onset",
-    "target": "Obese",
-    "type": "SIDECHAIN_DUCK"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Obese",
+        "type": "SIDECHAIN_DUCK",
+        "amount": 0.82
+      }
+    ]
   },
   "dna": {
     "aggression": 0.85,

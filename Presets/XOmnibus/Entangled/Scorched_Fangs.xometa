@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.84,
-    "source": "Orca",
-    "target": "Ouroboros",
-    "type": "ENVELOPE_MIRROR"
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Ouroboros",
+        "type": "ENVELOPE_MIRROR",
+        "amount": 0.84
+      }
+    ]
   },
   "dna": {
     "aggression": 0.77,

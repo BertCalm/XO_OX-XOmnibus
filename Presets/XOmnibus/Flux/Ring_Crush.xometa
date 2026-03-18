@@ -33,7 +33,9 @@
     "space": 0.05,
     "aggression": 0.87
   },
-  "parameters": {},
+  "parameters": {
+    "Orbital": {}
+  },
   "tags": [
     "flux",
     "dense-flux",
@@ -41,5 +43,5 @@
     "ring",
     "crush"
   ],
-  "description": "Orbital ring crush \u2014 circumference shrinking, density increasing to critical."
+  "description": "Orbital ring crush — circumference shrinking, density increasing to critical."
 }

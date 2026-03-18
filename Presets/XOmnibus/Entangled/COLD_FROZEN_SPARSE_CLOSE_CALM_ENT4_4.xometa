@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.832,
-    "source": "Overworld",
-    "target": "Ombre",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Ombre",
+        "type": "PITCH_SYNC",
+        "amount": 0.832
+      }
+    ]
   },
   "dna": {
     "aggression": 0.037,
@@ -31,7 +35,7 @@
     "SPACE": 0.101
   },
   "mood": "Entangled",
-  "name": "COLD_FROZEN_SPARSE_CLOSE_CALM_ENT4_4",
+  "name": "Signal Flux",
   "parameters": {
     "Ombre": {
       "macro_character": 0.274,

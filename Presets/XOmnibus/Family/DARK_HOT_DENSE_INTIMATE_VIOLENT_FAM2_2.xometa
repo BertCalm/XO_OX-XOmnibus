@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.964,
-    "source": "Oblong",
-    "target": "Ottoni",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Ottoni",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.964
+      }
+    ]
   },
   "dna": {
     "aggression": 0.938,
@@ -31,7 +35,7 @@
     "SPACE": 0.057
   },
   "mood": "Family",
-  "name": "DARK HOT DENSE INTIMATE VIOLENT FAM2 2",
+  "name": "DARK HOT DENSE INTIMATE VIO...",
   "parameters": {
     "Oblong": {
       "macro_character": 0.489,

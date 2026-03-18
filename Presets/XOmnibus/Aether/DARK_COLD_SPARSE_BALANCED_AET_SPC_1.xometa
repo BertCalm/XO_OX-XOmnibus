@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.728,
-    "source": "Orbital",
-    "target": "Opal",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Opal",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.728
+      }
+    ]
   },
   "dna": {
     "aggression": 0.084,
@@ -31,7 +35,7 @@
     "SPACE": 0.428
   },
   "mood": "Aether",
-  "name": "DARK COLD SPARSE BALANCED AET SPC 1",
+  "name": "DARK COLD SPARSE BALANCED A...",
   "parameters": {
     "Opal": {
       "macro_character": 0.102,

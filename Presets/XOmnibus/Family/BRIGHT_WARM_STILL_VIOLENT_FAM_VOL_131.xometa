@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.45,
-    "source": "Ole",
-    "target": "Odyssey",
-    "type": "PHASE_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Odyssey",
+        "type": "PHASE_COUPLE",
+        "amount": 0.45
+      }
+    ]
   },
   "dna": {
     "aggression": 0.919,
@@ -31,7 +35,7 @@
     "SPACE": 0.414
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_STILL_VIOLENT_FAM_VOL_131",
+  "name": "Honey Strike 2",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.94,

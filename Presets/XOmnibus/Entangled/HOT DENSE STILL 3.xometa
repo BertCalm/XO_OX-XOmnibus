@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Overworld \u00d7 Oblong \u2014 Amplitude Mod coupling at extreme DNA corner.",
+  "description": "Overworld × Oblong — Amplitude Mod coupling at extreme DNA corner.",
   "tags": [
     "hot",
     "overworld",
@@ -33,7 +33,10 @@
     "space": 0.461,
     "aggression": 0.516
   },
-  "parameters": {},
+  "parameters": {
+    "Overworld": {},
+    "Oblong": {}
+  },
   "coupling": {
     "pairs": [
       {

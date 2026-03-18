@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.832,
-    "source": "Overdub",
-    "target": "Oceanic",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Oceanic",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.832
+      }
+    ]
   },
   "dna": {
     "aggression": 0.977,
@@ -31,7 +35,7 @@
     "SPACE": 0.453
   },
   "mood": "Flux",
-  "name": "HOT_STILL_DENSE_VIOLENT_FLX_SLW_4",
+  "name": "Tone Rage",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.931,

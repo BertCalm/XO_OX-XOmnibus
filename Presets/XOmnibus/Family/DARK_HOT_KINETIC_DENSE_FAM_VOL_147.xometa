@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.582,
-    "source": "Ottoni",
-    "target": "Ohm",
-    "type": "ENVELOPE_MIRROR"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Ohm",
+        "type": "ENVELOPE_MIRROR",
+        "amount": 0.582
+      }
+    ]
   },
   "dna": {
     "aggression": 0.537,
@@ -31,7 +35,7 @@
     "SPACE": 0.459
   },
   "mood": "Family",
-  "name": "DARK_HOT_KINETIC_DENSE_FAM_VOL_147",
+  "name": "Velvet Packed 2",
   "parameters": {
     "Ohm": {
       "macro_character": 0.488,

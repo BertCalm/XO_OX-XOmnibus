@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.514,
-    "source": "Ombre",
-    "target": "Orphica",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Orphica",
+        "type": "PITCH_SYNC",
+        "amount": 0.514
+      }
+    ]
   },
   "dna": {
     "aggression": 0.952,

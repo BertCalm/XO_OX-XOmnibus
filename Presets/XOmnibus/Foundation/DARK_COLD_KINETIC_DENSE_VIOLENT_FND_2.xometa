@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.962,
-    "source": "OddOscar",
-    "target": "Ouroboros",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ouroboros",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.962
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.346
   },
   "mood": "Foundation",
-  "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FND_2",
+  "name": "Node Cascade",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.067,

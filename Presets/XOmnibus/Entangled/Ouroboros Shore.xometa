@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Ouroboros Shore",
-  "parameters": {},
+  "parameters": {
+    "Osprey": {},
+    "Ouroboros": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "The Dub Machine",
-  "parameters": {},
+  "parameters": {
+    "Overdub": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

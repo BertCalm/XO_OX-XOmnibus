@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.84,
-    "source": "Overdub",
-    "target": "Organon",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Organon",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.84
+      }
+    ]
   },
   "dna": {
     "aggression": 0.65,

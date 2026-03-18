@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.68,
-    "intensity": "Moderate",
-    "source": "Ottoni",
-    "target": "Oracle",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Oracle",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.68
+      }
+    ]
   },
   "description": "Brass frequency shifts seed ORACLE's stochastic breakpoint predictions.",
   "dna": {

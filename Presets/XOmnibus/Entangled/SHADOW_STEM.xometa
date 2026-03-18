@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.789,
-    "source": "Ombre",
-    "target": "Outwit",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Outwit",
+        "type": "CHAOS_INJECT",
+        "amount": 0.789
+      }
+    ]
   },
   "dna": {
     "aggression": 0.778,

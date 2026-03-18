@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.473,
-    "source": "Ocelot",
-    "target": "Owlfish",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Owlfish",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.473
+      }
+    ]
   },
   "dna": {
     "aggression": 0.46,
@@ -31,7 +35,7 @@
     "SPACE": 0.072
   },
   "mood": "Prism",
-  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_PRS_5",
+  "name": "Solar Thick",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.688,

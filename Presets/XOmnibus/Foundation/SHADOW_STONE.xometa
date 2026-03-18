@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.444,
-    "source": "Obscura",
-    "target": "OddfeliX",
-    "type": "FREQUENCY_LOCK"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "OddfeliX",
+        "type": "FREQUENCY_LOCK",
+        "amount": 0.444
+      }
+    ]
   },
   "dna": {
     "aggression": 0.533,

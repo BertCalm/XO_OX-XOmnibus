@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.876,
-    "source": "Obbligato",
-    "target": "Overdub",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Overdub",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.876
+      }
+    ]
   },
   "dna": {
     "aggression": 0.88,
@@ -31,7 +35,7 @@
     "SPACE": 0.913
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_FROZEN_VAST_HARSH_ENT4_3",
+  "name": "Thread Dome",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.09,

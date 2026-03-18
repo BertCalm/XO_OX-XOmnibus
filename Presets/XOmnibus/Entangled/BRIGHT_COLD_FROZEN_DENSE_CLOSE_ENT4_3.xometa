@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.803,
-    "source": "Organon",
-    "target": "Ottoni",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Ottoni",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.803
+      }
+    ]
   },
   "dna": {
     "aggression": 0.39,
@@ -31,7 +35,7 @@
     "SPACE": 0.107
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_FROZEN_DENSE_CLOSE_ENT4_3",
+  "name": "Prism Heavy",
   "parameters": {
     "Organon": {
       "macro_character": 0.516,

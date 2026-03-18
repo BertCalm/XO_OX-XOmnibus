@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.777,
-    "source": "Oblong",
-    "target": "Opal",
-    "type": "SPATIAL_BIND"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Opal",
+        "type": "SPATIAL_BIND",
+        "amount": 0.777
+      }
+    ]
   },
   "dna": {
     "aggression": 0.111,
@@ -31,7 +35,7 @@
     "SPACE": 0.976
   },
   "mood": "Family",
-  "name": "DARK_COLD_VAST_GENTLE_FAM_VOL_127",
+  "name": "Grain Canyon 3",
   "parameters": {
     "Oblong": {
       "macro_character": 0.031,

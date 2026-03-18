@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.645,
-    "source": "OddfeliX",
-    "target": "Overbite",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Overbite",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.645
+      }
+    ]
   },
   "dna": {
     "aggression": 0.133,

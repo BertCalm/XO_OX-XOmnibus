@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.537,
-    "source": "Oblong",
-    "target": "Oblique",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Oblique",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.537
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8761,
@@ -31,7 +35,7 @@
     "SPACE": 0.8897
   },
   "mood": "Flux",
-  "name": "DARK_HOT_DENSE_VAST_VIOLENT_FLX2_2",
+  "name": "Mahogany Heavy",
   "parameters": {
     "Oblique": {
       "macro_character": 0.4541,

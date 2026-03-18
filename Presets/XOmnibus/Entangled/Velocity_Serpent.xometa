@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.82,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Ouroboros",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Ouroboros",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.82
+      }
+    ]
   },
   "description": "Velocity coupling: OLE's attack energy winds OUROBOROS's recursion rate tighter.",
   "dna": {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8833,
-    "source": "Oblique",
-    "target": "Osprey",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Osprey",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.8833
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0359,
@@ -31,7 +35,7 @@
     "SPACE": 0.8718
   },
   "mood": "Aether",
-  "name": "BRIGHT_KINETIC_VAST_GENTLE_AET4_1",
+  "name": "Solar Stream",
   "parameters": {
     "Oblique": {
       "macro_character": 0.8393,

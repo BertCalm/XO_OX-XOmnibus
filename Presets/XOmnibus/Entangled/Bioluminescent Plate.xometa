@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.535,
-    "source": "Obscura",
-    "target": "Oceanic",
-    "type": "SPECTRAL_TRANSFER"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oceanic",
+        "type": "SPECTRAL_TRANSFER",
+        "amount": 0.535
+      }
+    ]
   },
   "description": "Phosphorescent teal pressed into silver — an ocean creature leaving its light-signature on the collodion surface.",
   "engines": [
@@ -76,5 +80,13 @@
     "coupling",
     "daguerreotype"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

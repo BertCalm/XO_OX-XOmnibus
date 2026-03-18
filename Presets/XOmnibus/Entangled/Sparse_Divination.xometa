@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
-    "source": "Oracle",
-    "target": "Opal",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Opal",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.78
+      }
+    ]
   },
   "description": "Oracle frequency-shifts grain positions — divination through spectral scarcity.",
   "dna": {

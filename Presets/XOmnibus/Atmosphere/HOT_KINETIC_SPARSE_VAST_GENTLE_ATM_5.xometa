@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.736,
-    "source": "Oceanic",
-    "target": "Orbital",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Orbital",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.736
+      }
+    ]
   },
   "dna": {
     "aggression": 0.117,
@@ -31,7 +35,7 @@
     "SPACE": 0.8822
   },
   "mood": "Atmosphere",
-  "name": "HOT_KINETIC_SPARSE_VAST_GENTLE_ATM_5",
+  "name": "Phase Surge",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.74,

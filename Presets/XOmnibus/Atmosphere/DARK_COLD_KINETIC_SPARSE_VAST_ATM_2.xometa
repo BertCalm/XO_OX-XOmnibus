@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.895,
-    "source": "Organon",
-    "target": "Oracle",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oracle",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.895
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5425,
@@ -31,7 +35,7 @@
     "SPACE": 0.9153
   },
   "mood": "Atmosphere",
-  "name": "DARK_COLD_KINETIC_SPARSE_VAST_ATM_2",
+  "name": "Tone Shimmer 3",
   "parameters": {
     "Oracle": {
       "macro_character": 0.0589,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.875,
-    "source": "Orphica",
-    "target": "Overbite",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Overbite",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.875
+      }
+    ]
   },
   "dna": {
     "aggression": 0.909,
@@ -31,7 +35,7 @@
     "SPACE": 0.308
   },
   "mood": "Entangled",
-  "name": "COLD_KINETIC_DENSE_VIOLENT_ENT_AGG_4",
+  "name": "Grain Stream 3",
   "parameters": {
     "Orphica": {
       "macro_character": 0.671,

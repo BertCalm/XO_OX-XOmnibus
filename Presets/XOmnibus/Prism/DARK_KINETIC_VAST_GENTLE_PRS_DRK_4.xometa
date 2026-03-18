@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6399,
-    "source": "Owlfish",
-    "target": "Origami",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.6399
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1227,
@@ -31,7 +35,7 @@
     "SPACE": 0.9493
   },
   "mood": "Prism",
-  "name": "DARK_KINETIC_VAST_GENTLE_PRS_DRK_4",
+  "name": "Dusk Surge",
   "parameters": {
     "Origami": {
       "macro_character": 0.3681,

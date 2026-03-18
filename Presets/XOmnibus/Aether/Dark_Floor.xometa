@@ -24,7 +24,9 @@
   ],
   "mood": "Aether",
   "name": "Dark Floor",
-  "parameters": {},
+  "parameters": {
+    "Obsidian": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.454,

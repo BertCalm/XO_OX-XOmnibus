@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.924,
-    "source": "Oblique",
-    "target": "Ouroboros",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ouroboros",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.924
+      }
+    ]
   },
   "dna": {
     "aggression": 0.876,
@@ -31,7 +35,7 @@
     "SPACE": 0.09
   },
   "mood": "Entangled",
-  "name": "BRIGHT_FROZEN_DENSE_CLOSE_HARSH_ENT4_5",
+  "name": "Flux Thick",
   "parameters": {
     "Oblique": {
       "macro_character": 0.687,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.896,
-    "source": "Oceanic",
-    "target": "Oblique",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oblique",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.896
+      }
+    ]
   },
   "dna": {
     "aggression": 0.902,
@@ -31,7 +35,7 @@
     "SPACE": 0.426
   },
   "mood": "Flux",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_FLX_AGG_5",
+  "name": "Grain Deep",
   "parameters": {
     "Oblique": {
       "macro_character": 0.608,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9876,
-    "source": "Oblique",
-    "target": "Ouroboros",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ouroboros",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.9876
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.7394
   },
   "mood": "Entangled",
-  "name": "COLD_FROZEN_SPARSE_INTIMATE_GENTLE_ENT3_3",
+  "name": "Node Shard",
   "parameters": {
     "Oblique": {
       "macro_character": 0.7735,

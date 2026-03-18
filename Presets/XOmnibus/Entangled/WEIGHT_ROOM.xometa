@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.929,
-    "source": "Ole",
-    "target": "Origami",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Origami",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.929
+      }
+    ]
   },
   "dna": {
     "aggression": 0.24,

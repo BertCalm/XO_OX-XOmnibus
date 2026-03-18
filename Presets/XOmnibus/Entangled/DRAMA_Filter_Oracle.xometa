@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.82,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Oracle",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.82
+      }
+    ]
   },
   "description": "Filter coupling — DRAMA macro sweeps forward into ORACLE's GENDY resonant body — aggression 0.86.",
   "dna": {

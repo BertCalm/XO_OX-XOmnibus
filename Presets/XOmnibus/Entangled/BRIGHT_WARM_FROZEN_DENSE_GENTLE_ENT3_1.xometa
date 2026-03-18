@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9133,
-    "source": "Odyssey",
-    "target": "Ole",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Ole",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.9133
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.5302
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_DENSE_GENTLE_ENT3_1",
+  "name": "Candlelight Thick",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.5222,

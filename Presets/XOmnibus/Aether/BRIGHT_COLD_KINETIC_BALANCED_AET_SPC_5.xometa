@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.553,
-    "source": "Oceanic",
-    "target": "Oblique",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oblique",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.553
+      }
+    ]
   },
   "dna": {
     "aggression": 0.873,
@@ -31,7 +35,7 @@
     "SPACE": 0.418
   },
   "mood": "Aether",
-  "name": "BRIGHT COLD KINETIC BALANCED AET SPC 5",
+  "name": "BRIGHT COLD KINETIC BALANCE...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.535,

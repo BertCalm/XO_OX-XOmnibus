@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.562,
-    "source": "Overdub",
-    "target": "Ole",
-    "type": "FILTER_LINK"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Ole",
+        "type": "FILTER_LINK",
+        "amount": 0.562
+      }
+    ]
   },
   "dna": {
     "aggression": 0.126,
@@ -31,7 +35,7 @@
     "SPACE": 0.079
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_INTIMATE_GENTLE_FAM_VOL_31",
+  "name": "Radiant Molten",
   "parameters": {
     "Ole": {
       "macro_character": 0.887,

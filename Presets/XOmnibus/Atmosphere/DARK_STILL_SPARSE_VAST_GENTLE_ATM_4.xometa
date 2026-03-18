@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.769,
-    "source": "Osprey",
-    "target": "Oblique",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Oblique",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.769
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0717,
@@ -31,7 +35,7 @@
     "SPACE": 0.9786
   },
   "mood": "Atmosphere",
-  "name": "DARK_STILL_SPARSE_VAST_GENTLE_ATM_4",
+  "name": "Mahogany Horizon 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.4014,

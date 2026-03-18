@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6,
-    "source": "Ole",
-    "target": "Overdub",
-    "type": "SPECTRAL_FOLD"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Overdub",
+        "type": "SPECTRAL_FOLD",
+        "amount": 0.6
+      }
+    ]
   },
   "description": "Latin rhythm warmth evaporating into wide reverb space — presence without clutter.",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Latin Reverb Soul",
-  "parameters": {},
+  "parameters": {
+    "Ole": {},
+    "Overdub": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.1,
@@ -43,5 +50,13 @@
     "movement",
     "soulful"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

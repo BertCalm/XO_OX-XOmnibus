@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9723,
     "pairs": [
       {
         "amount": 0.9723,
@@ -9,10 +8,7 @@
         "target": "Oblique",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Ombre",
-    "target": "Oblique",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Hot Sparse Gentle character entanglement — OMBRE × OBLIQUE via Resonance Share. Extreme DNA zones push sound design to the edges.",

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.795,
-    "source": "Overworld",
-    "target": "OddfeliX",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "OddfeliX",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.795
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1,
@@ -31,7 +35,7 @@
     "SPACE": 0.559
   },
   "mood": "Aether",
-  "name": "DARK HOT STILL BALANCED AET SPC 1",
+  "name": "DARK HOT STILL BALANCED AET...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.51,

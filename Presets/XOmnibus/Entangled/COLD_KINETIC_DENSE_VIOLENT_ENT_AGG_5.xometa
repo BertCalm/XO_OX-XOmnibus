@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.944,
-    "source": "Ohm",
-    "target": "Obbligato",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Obbligato",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.944
+      }
+    ]
   },
   "dna": {
     "aggression": 0.893,
@@ -31,7 +35,7 @@
     "SPACE": 0.512
   },
   "mood": "Entangled",
-  "name": "COLD_KINETIC_DENSE_VIOLENT_ENT_AGG_5",
+  "name": "Wave Saturated",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.49,

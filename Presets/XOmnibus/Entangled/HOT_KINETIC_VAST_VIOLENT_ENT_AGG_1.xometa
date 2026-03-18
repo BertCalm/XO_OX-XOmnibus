@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.824,
-    "source": "Obscura",
-    "target": "Obsidian",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Obsidian",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.824
+      }
+    ]
   },
   "dna": {
     "aggression": 0.89,
@@ -31,7 +35,7 @@
     "SPACE": 0.888
   },
   "mood": "Entangled",
-  "name": "HOT_KINETIC_VAST_VIOLENT_ENT_AGG_1",
+  "name": "Wave Grit 3",
   "parameters": {
     "Obscura": {
       "macro_character": 0.479,

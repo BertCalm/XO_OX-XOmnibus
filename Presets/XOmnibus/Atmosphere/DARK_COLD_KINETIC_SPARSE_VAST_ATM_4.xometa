@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.577,
-    "source": "Origami",
-    "target": "OddOscar",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "OddOscar",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.577
+      }
+    ]
   },
   "dna": {
     "aggression": 0.472,
@@ -31,7 +35,7 @@
     "SPACE": 0.9067
   },
   "mood": "Atmosphere",
-  "name": "DARK_COLD_KINETIC_SPARSE_VAST_ATM_4",
+  "name": "Node Cascade 3",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.098,

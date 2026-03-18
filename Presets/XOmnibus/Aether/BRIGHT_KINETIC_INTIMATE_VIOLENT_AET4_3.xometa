@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5074,
-    "source": "Origami",
-    "target": "OddOscar",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "OddOscar",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.5074
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9046,
@@ -31,7 +35,7 @@
     "SPACE": 0.0322
   },
   "mood": "Aether",
-  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_AET4_3",
+  "name": "Quartz Drift 2",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.6611,

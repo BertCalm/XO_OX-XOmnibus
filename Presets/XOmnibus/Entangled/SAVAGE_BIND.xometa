@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.262,
-    "source": "Oracle",
-    "target": "Obscura",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Obscura",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.262
+      }
+    ]
   },
   "dna": {
     "aggression": 0.926,

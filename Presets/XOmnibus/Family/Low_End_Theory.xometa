@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Low End Theory",
-  "parameters": {},
+  "parameters": {
+    "Obese": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.831,
-    "source": "Oblong",
-    "target": "Oracle",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.831
+      }
+    ]
   },
   "dna": {
     "aggression": 0.955,
@@ -31,7 +35,7 @@
     "SPACE": 0.531
   },
   "mood": "Flux",
-  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_AGG_3",
+  "name": "Thread Rage 2",
   "parameters": {
     "Oblong": {
       "macro_character": 0.368,

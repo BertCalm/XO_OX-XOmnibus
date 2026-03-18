@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7689,
-    "source": "Obbligato",
-    "target": "Organon",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Organon",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.7689
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.6881
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_DENSE_VAST_ENT3_2",
+  "name": "Sunrise Saturated 2",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.5454,

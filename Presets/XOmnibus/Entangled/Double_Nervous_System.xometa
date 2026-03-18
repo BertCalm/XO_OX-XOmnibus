@@ -1,12 +1,12 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "routes": [
+    "pairs": [
       {
-        "amount": 0.4,
-        "dest": "Overdub",
-        "source": "Onset",
-        "type": "AmpToFilter"
+        "engineA": "Onset",
+        "engineB": "Overdub",
+        "type": "AmpToFilter",
+        "amount": 0.4
       }
     ]
   },

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.857,
-    "source": "Osteria",
-    "target": "Ombre",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Ombre",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.857
+      }
+    ]
   },
   "dna": {
     "aggression": 0.884,
@@ -31,7 +35,7 @@
     "SPACE": 0.602
   },
   "mood": "Entangled",
-  "name": "COLD_KINETIC_DENSE_VIOLENT_ENT_AGG_2",
+  "name": "Tone Surge 2",
   "parameters": {
     "Ombre": {
       "macro_character": 0.463,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.61,
-    "source": "Obese",
-    "target": "Ole",
-    "type": "FILTER_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Ole",
+        "type": "FILTER_SHARE",
+        "amount": 0.61
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 2",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Obese": {
       "macro_character": 0.83,

@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Oblique Noon Sun",
-  "parameters": {},
+  "parameters": {
+    "Oblique": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

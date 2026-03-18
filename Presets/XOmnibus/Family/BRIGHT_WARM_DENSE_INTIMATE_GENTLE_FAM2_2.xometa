@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.524,
-    "source": "Orphica",
-    "target": "Ole",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ole",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.524
+      }
+    ]
   },
   "dna": {
     "aggression": 0.101,
@@ -31,7 +35,7 @@
     "SPACE": 0.136
   },
   "mood": "Family",
-  "name": "BRIGHT WARM DENSE INTIMATE GENTLE FAM2 2",
+  "name": "BRIGHT WARM DENSE INTIMATE ...",
   "parameters": {
     "Ole": {
       "macro_character": 0.837,

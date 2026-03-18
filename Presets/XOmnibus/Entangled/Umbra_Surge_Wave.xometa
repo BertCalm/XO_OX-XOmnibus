@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.71,
-    "source": "Onset",
-    "target": "Optic",
-    "type": "AMP_MOD"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Optic",
+        "type": "AMP_MOD",
+        "amount": 0.71
+      }
+    ]
   },
   "dna": {
     "aggression": 0.36,

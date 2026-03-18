@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.652,
-    "source": "Origami",
-    "target": "Ocelot",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ocelot",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.652
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.981
   },
   "mood": "Prism",
-  "name": "DARK_HOT_KINETIC_VAST_VIOLENT_PRS_5",
+  "name": "Rust Abyss",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.084,

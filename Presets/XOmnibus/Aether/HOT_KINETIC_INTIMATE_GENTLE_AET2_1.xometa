@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6128,
-    "source": "Obscura",
-    "target": "Ombre",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Ombre",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.6128
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1068,
@@ -31,7 +35,7 @@
     "SPACE": 0.0819
   },
   "mood": "Aether",
-  "name": "HOT_KINETIC_INTIMATE_GENTLE_AET2_1",
+  "name": "Node Ripple",
   "parameters": {
     "Obscura": {
       "macro_character": 0.5189,

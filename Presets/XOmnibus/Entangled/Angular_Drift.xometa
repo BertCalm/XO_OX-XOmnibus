@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.72,
-    "source": "Odyssey",
-    "target": "Origami",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Origami",
+        "type": "PITCH_SYNC",
+        "amount": 0.72
+      }
+    ]
   },
   "description": "Odyssey pitch-syncs Origami's fold angles — geometry and frequency align in cold space.",
   "dna": {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.449,
-    "source": "Organon",
-    "target": "Oracle",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oracle",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.449
+      }
+    ]
   },
   "dna": {
     "aggression": 0.685,

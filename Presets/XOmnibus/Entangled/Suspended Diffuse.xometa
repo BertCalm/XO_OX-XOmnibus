@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.779,
-    "source": "Overlap",
-    "target": "Obbligato",
-    "type": "SPECTRAL_TRANSFER"
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Obbligato",
+        "type": "SPECTRAL_TRANSFER",
+        "amount": 0.779
+      }
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Obbligato breath pressure drives OVERLAP pre-delay — each exhalation opens the room wider",
@@ -62,5 +66,13 @@
     "fdn",
     "reverb"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.414,
+    "warmth": 0.5,
+    "movement": 0.145,
+    "density": 0.5,
+    "space": 0.18,
+    "aggression": 0.3
+  }
 }

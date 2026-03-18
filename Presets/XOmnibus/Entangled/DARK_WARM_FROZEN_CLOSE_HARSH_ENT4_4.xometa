@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.844,
-    "source": "Octopus",
-    "target": "Ombre",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Ombre",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.844
+      }
+    ]
   },
   "dna": {
     "aggression": 0.959,
@@ -31,7 +35,7 @@
     "SPACE": 0.063
   },
   "mood": "Entangled",
-  "name": "DARK_WARM_FROZEN_CLOSE_HARSH_ENT4_4",
+  "name": "Copper Rage 2",
   "parameters": {
     "Octopus": {
       "macro_character": 0.45,

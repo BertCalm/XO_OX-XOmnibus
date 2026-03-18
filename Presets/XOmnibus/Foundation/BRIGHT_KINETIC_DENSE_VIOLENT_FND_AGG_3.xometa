@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.912,
-    "source": "Oblong",
-    "target": "Overdub",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overdub",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.912
+      }
+    ]
   },
   "dna": {
     "aggression": 0.909,
@@ -31,7 +35,7 @@
     "SPACE": 0.849
   },
   "mood": "Foundation",
-  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FND_AGG_3",
+  "name": "Flux Current",
   "parameters": {
     "Oblong": {
       "macro_character": 0.362,

@@ -33,7 +33,9 @@
     "space": 0.38,
     "aggression": 0.75
   },
-  "parameters": {},
+  "parameters": {
+    "Overdub": {}
+  },
   "tags": [
     "flux",
     "tension",
@@ -41,5 +43,5 @@
     "spring",
     "threat"
   ],
-  "description": "Tape delay held at loop boundary \u2014 the moment before the spring snaps back."
+  "description": "Tape delay held at loop boundary — the moment before the spring snaps back."
 }

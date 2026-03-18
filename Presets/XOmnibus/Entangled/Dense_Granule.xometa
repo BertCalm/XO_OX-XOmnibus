@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.68,
-    "source": "Oblong",
-    "target": "Opal",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Opal",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.68
+      }
+    ]
   },
   "dna": {
     "aggression": 0.48,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9239,
-    "source": "Orphica",
-    "target": "Ole",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ole",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.9239
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0923,
@@ -31,7 +35,7 @@
     "SPACE": 0.3328
   },
   "mood": "Prism",
-  "name": "DARK_COLD_DENSE_GENTLE_PRS_DRK_4",
+  "name": "Grain Massive 2",
   "parameters": {
     "Ole": {
       "macro_character": 0.0638,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.869,
-    "source": "Origami",
-    "target": "Osprey",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Osprey",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.869
+      }
+    ]
   },
   "dna": {
     "aggression": 0.046,
@@ -31,7 +35,7 @@
     "SPACE": 0.974
   },
   "mood": "Entangled",
-  "name": "WARM_FROZEN_SPARSE_VAST_GENTLE_ENT4_4",
+  "name": "Peach Cathedral",
   "parameters": {
     "Origami": {
       "macro_character": 0.803,

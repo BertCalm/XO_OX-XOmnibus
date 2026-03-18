@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Oblique Approach",
-  "parameters": {},
+  "parameters": {
+    "Osprey": {},
+    "Oblique": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

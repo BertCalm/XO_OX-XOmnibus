@@ -24,7 +24,9 @@
   ],
   "mood": "Foundation",
   "name": "Sinter Clay III",
-  "parameters": {},
+  "parameters": {
+    "OddOscar": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.472,

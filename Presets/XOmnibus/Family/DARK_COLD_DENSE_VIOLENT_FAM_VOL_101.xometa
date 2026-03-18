@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.927,
-    "source": "Oblong",
-    "target": "Overdub",
-    "type": "SPATIAL_BIND"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overdub",
+        "type": "SPATIAL_BIND",
+        "amount": 0.927
+      }
+    ]
   },
   "dna": {
     "aggression": 0.884,
@@ -31,7 +35,7 @@
     "SPACE": 0.427
   },
   "mood": "Family",
-  "name": "DARK_COLD_DENSE_VIOLENT_FAM_VOL_101",
+  "name": "Flux Titan 4",
   "parameters": {
     "Oblong": {
       "macro_character": 0.046,

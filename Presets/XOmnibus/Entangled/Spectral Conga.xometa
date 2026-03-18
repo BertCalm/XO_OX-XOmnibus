@@ -33,7 +33,10 @@
   ],
   "mood": "Entangled",
   "name": "Spectral Conga",
-  "parameters": {},
+  "parameters": {
+    "Orphica": {},
+    "Ole": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

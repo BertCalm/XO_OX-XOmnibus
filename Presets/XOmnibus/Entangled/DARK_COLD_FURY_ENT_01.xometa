@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.834,
-    "source": "Obese",
-    "target": "Optic",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Optic",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.834
+      }
+    ]
   },
   "dna": {
     "aggression": 0.886,

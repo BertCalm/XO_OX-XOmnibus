@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.877,
-    "source": "OddOscar",
-    "target": "Obsidian",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Obsidian",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.877
+      }
+    ]
   },
   "dna": {
     "aggression": 0.87,
@@ -31,7 +35,7 @@
     "SPACE": 0.807
   },
   "mood": "Foundation",
-  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FND_AGG_2",
+  "name": "Sunrise Current",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.784,

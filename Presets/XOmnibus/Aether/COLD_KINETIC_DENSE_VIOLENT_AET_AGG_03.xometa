@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.832,
-    "source": "OddOscar",
-    "target": "OddfeliX",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "OddfeliX",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.832
+      }
+    ]
   },
   "dna": {
     "aggression": 0.954,
@@ -31,7 +35,7 @@
     "SPACE": 0.459
   },
   "mood": "Aether",
-  "name": "COLD KINETIC DENSE VIOLENT AET AGG 3",
+  "name": "COLD KINETIC DENSE VIOLENT ...",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.419,

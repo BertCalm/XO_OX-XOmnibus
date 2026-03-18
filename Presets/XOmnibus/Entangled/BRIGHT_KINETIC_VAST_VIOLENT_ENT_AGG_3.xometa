@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.946,
-    "source": "Odyssey",
-    "target": "Osteria",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Osteria",
+        "type": "CHAOS_INJECT",
+        "amount": 0.946
+      }
+    ]
   },
   "dna": {
     "aggression": 0.959,
@@ -31,7 +35,7 @@
     "SPACE": 0.979
   },
   "mood": "Entangled",
-  "name": "BRIGHT_KINETIC_VAST_VIOLENT_ENT_AGG_3",
+  "name": "Honey Horizon",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.683,

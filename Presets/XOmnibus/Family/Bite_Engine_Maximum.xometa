@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Bite Engine Maximum",
-  "parameters": {},
+  "parameters": {
+    "Overbite": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

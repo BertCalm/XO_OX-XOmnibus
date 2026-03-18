@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.86,
-    "source": "Outwit",
-    "target": "Organon",
-    "type": "ENVELOPE_SHARING"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Organon",
+        "type": "ENVELOPE_SHARING",
+        "amount": 0.86
+      }
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Organon metabolic rate drives OUTWIT evolve speed — biological rhythm as cellular engine",
@@ -62,5 +66,13 @@
     "wolfram",
     "cellular-automata"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.5,
+    "movement": 0.668,
+    "density": 0.732,
+    "space": 0.5,
+    "aggression": 0.081
+  }
 }

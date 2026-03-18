@@ -33,7 +33,9 @@
   ],
   "mood": "Atmosphere",
   "name": "COLD TIGHT KINETIC DARK ATM 1",
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

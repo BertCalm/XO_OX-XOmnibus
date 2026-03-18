@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Fold Under Pressure",
-  "parameters": {},
+  "parameters": {
+    "Origami": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

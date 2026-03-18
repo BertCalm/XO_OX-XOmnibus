@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.405,
-    "source": "Orbital",
-    "target": "Outwit",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Outwit",
+        "type": "PITCH_SYNC",
+        "amount": 0.405
+      }
+    ]
   },
   "dna": {
     "aggression": 0.714,

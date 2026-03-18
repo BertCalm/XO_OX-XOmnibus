@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Oblong",
-    "target": "Origami",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Origami",
+        "type": "FILTER_MOD",
+        "amount": 0.7
+      }
+    ]
   },
   "created": "2026-03-16",
   "dna": {

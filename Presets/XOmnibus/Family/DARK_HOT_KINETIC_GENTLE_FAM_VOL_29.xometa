@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.69,
-    "source": "Osteria",
-    "target": "Odyssey",
-    "type": "PHASE_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Odyssey",
+        "type": "PHASE_COUPLE",
+        "amount": 0.69
+      }
+    ]
   },
   "dna": {
     "aggression": 0.101,
@@ -31,7 +35,7 @@
     "SPACE": 0.546
   },
   "mood": "Family",
-  "name": "DARK_HOT_KINETIC_GENTLE_FAM_VOL_29",
+  "name": "Cocoa Pulse 2",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.487,

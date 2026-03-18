@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "intensity": "Moderate",
-    "source": "Orphica",
-    "target": "Organon",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Organon",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.65
+      }
+    ]
   },
   "description": "ORPHICA's siphonophore amplitude pulse breathes into ORGANON's cellular rhythm.",
   "dna": {

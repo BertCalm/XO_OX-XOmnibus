@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.382,
-    "source": "Obsidian",
-    "target": "Octopus",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Octopus",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.382
+      }
+    ]
   },
   "dna": {
     "aggression": 0.878,

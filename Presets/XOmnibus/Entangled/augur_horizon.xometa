@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Odyssey",
-    "target": "Oracle",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Oracle",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.7
+      }
+    ]
   },
   "created": "2026-03-16",
   "dna": {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7933,
-    "source": "Overdub",
-    "target": "Optic",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Optic",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.7933
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5861,

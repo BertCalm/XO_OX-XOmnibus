@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.535,
-    "source": "Ole",
-    "target": "Obbligato",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Obbligato",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.535
+      }
+    ]
   },
   "dna": {
     "aggression": 0.648,
@@ -31,7 +35,7 @@
     "SPACE": 0.907
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_VAST_FAM_VOL_47",
+  "name": "Solar Drift",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.901,

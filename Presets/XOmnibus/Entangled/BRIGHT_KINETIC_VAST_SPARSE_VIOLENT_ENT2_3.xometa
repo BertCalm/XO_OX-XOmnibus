@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.548,
-    "source": "Organon",
-    "target": "Overdub",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Overdub",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.548
+      }
+    ]
   },
   "dna": {
     "aggression": 0.963,
@@ -31,7 +35,7 @@
     "SPACE": 0.96
   },
   "mood": "Entangled",
-  "name": "BRIGHT KINETIC VAST SPARSE VIOLENT ENT2 3",
+  "name": "BRIGHT KINETIC VAST SPARSE ...",
   "parameters": {
     "Organon": {
       "macro_character": 0.656,

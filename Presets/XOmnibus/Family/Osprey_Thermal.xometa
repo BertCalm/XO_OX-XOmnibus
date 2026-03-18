@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Osprey Thermal",
-  "parameters": {},
+  "parameters": {
+    "Osprey": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

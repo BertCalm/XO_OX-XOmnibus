@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.438,
-    "source": "OddfeliX",
-    "target": "Oracle",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.438
+      }
+    ]
   },
   "dna": {
     "aggression": 0.037,
@@ -31,7 +35,7 @@
     "SPACE": 0.606
   },
   "mood": "Aether",
-  "name": "DARK HOT STILL BALANCED AET SPC 2",
+  "name": "DARK HOT STILL BALANCED AET...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.489,

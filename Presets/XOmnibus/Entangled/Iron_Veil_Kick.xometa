@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.93,
-    "source": "Obese",
-    "target": "Ouroboros",
-    "type": "RING_MOD"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Ouroboros",
+        "type": "RING_MOD",
+        "amount": 0.93
+      }
+    ]
   },
   "dna": {
     "aggression": 0.61,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.775,
-    "source": "Orphica",
-    "target": "Osteria",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Osteria",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.775
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.088
   },
   "mood": "Prism",
-  "name": "BRIGHT_HOT_STILL_INTIMATE_GENTLE_PRS_5",
+  "name": "Peach Wave",
   "parameters": {
     "Orphica": {
       "macro_character": 0.896,

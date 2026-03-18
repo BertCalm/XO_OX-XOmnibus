@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.66,
-    "source": "Oracle",
-    "target": "Odyssey",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Odyssey",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.66
+      }
+    ]
   },
   "description": "Oracle's prophecy indigo bleeds into Odyssey violet — two cold purples dissolving together.",
   "dna": {

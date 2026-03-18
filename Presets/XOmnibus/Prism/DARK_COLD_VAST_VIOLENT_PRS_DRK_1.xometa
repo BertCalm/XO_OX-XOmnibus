@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8122,
-    "source": "Orphica",
-    "target": "Osteria",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Osteria",
+        "type": "PITCH_SYNC",
+        "amount": 0.8122
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8953,
@@ -31,7 +35,7 @@
     "SPACE": 0.9021
   },
   "mood": "Prism",
-  "name": "DARK_COLD_VAST_VIOLENT_PRS_DRK_1",
+  "name": "Grain Canyon 2",
   "parameters": {
     "Orphica": {
       "macro_character": 0.4703,

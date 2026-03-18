@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.994,
-    "source": "OddOscar",
-    "target": "Overworld",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Overworld",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.994
+      }
+    ]
   },
   "dna": {
     "aggression": 0.514,

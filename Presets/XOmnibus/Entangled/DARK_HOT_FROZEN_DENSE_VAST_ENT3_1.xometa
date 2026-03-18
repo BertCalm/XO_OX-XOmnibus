@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8437,
-    "source": "Oblique",
-    "target": "Overworld",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overworld",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.8437
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.6567
   },
   "mood": "Entangled",
-  "name": "DARK_HOT_FROZEN_DENSE_VAST_ENT3_1",
+  "name": "Velvet Cavern",
   "parameters": {
     "Oblique": {
       "macro_character": 0.5918,

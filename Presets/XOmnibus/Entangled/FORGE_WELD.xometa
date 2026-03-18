@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.808,
-    "source": "Oblique",
-    "target": "Origami",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.808
+      }
+    ]
   },
   "dna": {
     "aggression": 0.172,

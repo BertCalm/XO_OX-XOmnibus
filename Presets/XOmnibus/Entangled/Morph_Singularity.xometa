@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Morph Singularity",
-  "parameters": {},
+  "parameters": {
+    "OddOscar": {},
+    "Ouroboros": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.98,

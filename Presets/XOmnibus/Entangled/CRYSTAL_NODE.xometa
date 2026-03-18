@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.501,
-    "source": "Origami",
-    "target": "Orphica",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Orphica",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.501
+      }
+    ]
   },
   "dna": {
     "aggression": 0.585,

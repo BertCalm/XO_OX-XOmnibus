@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.88,
     "pairs": [
       {
         "amount": 0.88,
@@ -9,10 +8,7 @@
         "engineB": "Oceanic",
         "type": "SPATIAL_COUPLE"
       }
-    ],
-    "source": "Outwit",
-    "target": "Oceanic",
-    "type": "SPATIAL_COUPLE"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OCEANIC's deep-current tidal character (phosphorescent abyssal pressure). Coupling: Spatial Couple.",

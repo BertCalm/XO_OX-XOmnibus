@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.768,
-    "source": "Obscura",
-    "target": "Ole",
-    "type": "GRANULAR_EXCHANGE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Ole",
+        "type": "GRANULAR_EXCHANGE",
+        "amount": 0.768
+      }
+    ]
   },
   "description": "Hibiscus pigment as red-channel developer; the flamenco stomp determines the exposure time — drama measured in silver.",
   "engines": [
@@ -76,5 +80,13 @@
     "coupling",
     "daguerreotype"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

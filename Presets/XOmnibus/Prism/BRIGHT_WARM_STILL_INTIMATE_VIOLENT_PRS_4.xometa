@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.77,
-    "source": "Ohm",
-    "target": "Ottoni",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Ottoni",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.77
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.048
   },
   "mood": "Prism",
-  "name": "BRIGHT_WARM_STILL_INTIMATE_VIOLENT_PRS_4",
+  "name": "Candlelight Storm",
   "parameters": {
     "Ohm": {
       "macro_character": 0.893,

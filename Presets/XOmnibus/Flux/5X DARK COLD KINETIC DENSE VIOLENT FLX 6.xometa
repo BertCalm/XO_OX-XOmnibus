@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "source": "Oceanic",
-    "target": "Osteria",
-    "type": "RING_MOD"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Osteria",
+        "type": "RING_MOD",
+        "amount": 0.74
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Flux",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FLX 6",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.98,

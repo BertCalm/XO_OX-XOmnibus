@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9083,
-    "source": "Ohm",
-    "target": "Oblique",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Oblique",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.9083
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.8257
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_FROZEN_DENSE_INTIMATE_ENT3_3",
+  "name": "Node Thick 3",
   "parameters": {
     "Oblique": {
       "macro_character": 0.7381,

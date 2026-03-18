@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.638,
-    "source": "Organon",
-    "target": "Origami",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.638
+      }
+    ]
   },
   "dna": {
     "aggression": 0.446,
@@ -31,7 +35,7 @@
     "SPACE": 0.867
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_VAST_FAM_VOL_49",
+  "name": "Candlelight Shimmer 2",
   "parameters": {
     "Organon": {
       "macro_character": 0.9,

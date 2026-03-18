@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.822,
-    "source": "OddfeliX",
-    "target": "Oracle",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oracle",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.822
+      }
+    ]
   },
   "dna": {
     "aggression": 0.977,
@@ -31,7 +35,7 @@
     "SPACE": 0.908
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT KINETIC VAST VIOLENT ATM AGG 1",
+  "name": "BRIGHT KINETIC VAST VIOLENT...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.809,

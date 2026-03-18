@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.408,
-    "source": "Optic",
-    "target": "Orbital",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Orbital",
+        "type": "PITCH_SYNC",
+        "amount": 0.408
+      }
+    ]
   },
   "dna": {
     "aggression": 0.924,
@@ -31,7 +35,7 @@
     "SPACE": 0.494
   },
   "mood": "Atmosphere",
-  "name": "COLD_KINETIC_DENSE_VIOLENT_ATM_5",
+  "name": "Node Deep 4",
   "parameters": {
     "Optic": {
       "macro_character": 0.449,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7746,
-    "source": "Oceanic",
-    "target": "Origami",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Origami",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.7746
+      }
+    ]
   },
   "dna": {
     "aggression": 0.6527,
@@ -31,7 +35,7 @@
     "SPACE": 0.0881
   },
   "mood": "Aether",
-  "name": "DARK_HOT_KINETIC_INTIMATE_AET2_5",
+  "name": "Cocoa Drift",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.0931,

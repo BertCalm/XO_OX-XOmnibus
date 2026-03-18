@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.96,
-    "source": "Overworld",
-    "target": "Orbital",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Orbital",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.96
+      }
+    ]
   },
   "dna": {
     "aggression": 0.914,
@@ -31,7 +35,7 @@
     "SPACE": 0.842
   },
   "mood": "Aether",
-  "name": "KINETIC SPARSE VAST VIOLENT AET AGG 4",
+  "name": "KINETIC SPARSE VAST VIOLENT...",
   "parameters": {
     "Orbital": {
       "macro_character": 0.52,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.943,
-    "source": "Overdub",
-    "target": "Orca",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Orca",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.943
+      }
+    ]
   },
   "dna": {
     "aggression": 0.936,
@@ -31,7 +35,7 @@
     "SPACE": 0.934
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_FROZEN_VAST_HARSH_ENT4_1",
+  "name": "Grain Storm 2",
   "parameters": {
     "Orca": {
       "macro_character": 0.097,

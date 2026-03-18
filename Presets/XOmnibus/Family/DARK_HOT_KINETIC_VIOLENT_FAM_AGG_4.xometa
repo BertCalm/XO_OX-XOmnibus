@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.927,
-    "source": "Ole",
-    "target": "Osprey",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Osprey",
+        "type": "CHAOS_INJECT",
+        "amount": 0.927
+      }
+    ]
   },
   "dna": {
     "aggression": 0.974,
@@ -31,7 +35,7 @@
     "SPACE": 0.624
   },
   "mood": "Family",
-  "name": "DARK_HOT_KINETIC_VIOLENT_FAM_AGG_4",
+  "name": "Amber Fang",
   "parameters": {
     "Ole": {
       "macro_character": 0.875,

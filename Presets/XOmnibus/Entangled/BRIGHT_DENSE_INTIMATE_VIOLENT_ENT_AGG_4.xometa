@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.864,
-    "source": "Ohm",
-    "target": "Outwit",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Outwit",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.864
+      }
+    ]
   },
   "dna": {
     "aggression": 0.904,
@@ -31,7 +35,7 @@
     "SPACE": 0.091
   },
   "mood": "Entangled",
-  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_ENT_AGG_4",
+  "name": "Sunrise Storm",
   "parameters": {
     "Ohm": {
       "macro_character": 0.695,

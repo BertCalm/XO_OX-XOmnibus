@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.47,
-    "source": "Overworld",
-    "target": "OddOscar",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "OddOscar",
+        "type": "FILTER_MOD",
+        "amount": 0.47
+      }
+    ]
   },
   "dna": {
     "aggression": 0.927,
@@ -31,7 +35,7 @@
     "SPACE": 0.819
   },
   "mood": "Foundation",
-  "name": "COLD_KINETIC_VAST_VIOLENT_FND_4",
+  "name": "Flux Force",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.25,

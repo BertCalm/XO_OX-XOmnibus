@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8183,
-    "source": "Organon",
-    "target": "Osprey",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Osprey",
+        "type": "CHAOS_INJECT",
+        "amount": 0.8183
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3422,
@@ -31,7 +35,7 @@
     "SPACE": 0.0473
   },
   "mood": "Aether",
-  "name": "DARK_HOT_KINETIC_INTIMATE_AET2_4",
+  "name": "Rust Drift",
   "parameters": {
     "Organon": {
       "macro_character": 0.0569,

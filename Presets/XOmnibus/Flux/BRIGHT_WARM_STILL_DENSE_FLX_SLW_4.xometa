@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.729,
-    "source": "Optic",
-    "target": "Overworld",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Overworld",
+        "type": "CHAOS_INJECT",
+        "amount": 0.729
+      }
+    ]
   },
   "dna": {
     "aggression": 0.586,
@@ -31,7 +35,7 @@
     "SPACE": 0.432
   },
   "mood": "Flux",
-  "name": "BRIGHT_WARM_STILL_DENSE_FLX_SLW_4",
+  "name": "Sunrise Packed",
   "parameters": {
     "Optic": {
       "macro_character": 0.839,

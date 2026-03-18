@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.522,
-    "source": "Osprey",
-    "target": "Ohm",
-    "type": "HARMONIC_MESH"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Ohm",
+        "type": "HARMONIC_MESH",
+        "amount": 0.522
+      }
+    ]
   },
   "dna": {
     "aggression": 0.353,
@@ -31,7 +35,7 @@
     "SPACE": 0.56
   },
   "mood": "Family",
-  "name": "DARK_HOT_STILL_SPARSE_FAM_VOL_72",
+  "name": "Shadow Cavern 2",
   "parameters": {
     "Ohm": {
       "macro_character": 0.498,

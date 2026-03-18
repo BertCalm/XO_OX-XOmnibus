@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
-    "source": "Oceanic",
-    "target": "Oracle",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oracle",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.78
+      }
+    ]
   },
   "dna": {
     "aggression": 0.124,
@@ -31,7 +35,7 @@
     "SPACE": 0.463
   },
   "mood": "Aether",
-  "name": "COLD STILL SPARSE BALANCED AET SPC 5",
+  "name": "COLD STILL SPARSE BALANCED ...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.327,

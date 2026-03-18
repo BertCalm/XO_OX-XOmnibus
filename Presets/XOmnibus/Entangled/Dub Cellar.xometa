@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Dub Cellar",
-  "parameters": {},
+  "parameters": {
+    "Osteria": {},
+    "Overdub": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

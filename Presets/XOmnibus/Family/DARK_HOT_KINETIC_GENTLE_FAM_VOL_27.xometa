@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.871,
-    "source": "OddfeliX",
-    "target": "Odyssey",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Odyssey",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.871
+      }
+    ]
   },
   "dna": {
     "aggression": 0.037,
@@ -31,7 +35,7 @@
     "SPACE": 0.711
   },
   "mood": "Family",
-  "name": "DARK_HOT_KINETIC_GENTLE_FAM_VOL_27",
+  "name": "Smoke Surge",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.522,

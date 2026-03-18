@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "name": "Rossler Fold",
-  "mood": "Entangled",
+  "mood": "Foundation",
   "engines": [
     "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "R\u00f6ssler period-doubling cascade. Rich evolving harmonics.",
+  "description": "Rössler period-doubling cascade. Rich evolving harmonics.",
   "tags": [
     "chaos",
     "rossler",

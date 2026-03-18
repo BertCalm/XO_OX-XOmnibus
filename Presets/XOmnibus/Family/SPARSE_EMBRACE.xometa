@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.387,
-    "source": "Overdub",
-    "target": "Octopus",
-    "type": "FM_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Octopus",
+        "type": "FM_COUPLE",
+        "amount": 0.387
+      }
+    ]
   },
   "dna": {
     "aggression": 0.787,

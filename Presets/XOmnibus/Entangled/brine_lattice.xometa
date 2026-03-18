@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
     "pairs": [
       {
         "amount": 0.78,
@@ -9,10 +8,7 @@
         "engineB": "Oceanic",
         "type": "ENVELOPE_LINK"
       }
-    ],
-    "source": "Overlap",
-    "target": "Oceanic",
-    "type": "ENVELOPE_LINK"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Lion's Mane knot-topology FDN entangled with OCEANIC's deep-current tidal character (phosphorescent abyssal pressure). Coupling: Envelope Link.",

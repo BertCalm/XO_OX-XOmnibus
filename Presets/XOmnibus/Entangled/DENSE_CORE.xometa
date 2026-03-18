@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.311,
-    "source": "Osprey",
-    "target": "Oblong",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Oblong",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.311
+      }
+    ]
   },
   "dna": {
     "aggression": 0.576,

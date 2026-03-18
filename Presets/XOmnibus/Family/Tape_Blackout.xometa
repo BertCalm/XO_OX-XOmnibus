@@ -3,7 +3,7 @@
   "coupling": null,
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "OVERDUB saturated to extinction \u2014 tape eaten alive, signal buried in dark.",
+  "description": "OVERDUB saturated to extinction — tape eaten alive, signal buried in dark.",
   "dna": {
     "aggression": 0.68,
     "brightness": 0.05,
@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Tape Blackout II",
-  "parameters": {},
+  "parameters": {
+    "Overdub": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
-    "source": "Outwit",
-    "target": "Overlap",
-    "type": "FREQUENCY_MODULATION"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Overlap",
+        "type": "FREQUENCY_MODULATION",
+        "amount": 0.78
+      }
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "OUTWIT emergence events scatter OVERLAP diffusion coefficients — unpredictable bloom in infinite space, each cellular birth rewrites the room",
@@ -80,5 +84,13 @@
     "scatter",
     "fm"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.394,
+    "warmth": 0.5,
+    "movement": 0.504,
+    "density": 0.749,
+    "space": 0.17,
+    "aggression": 0.121
+  }
 }

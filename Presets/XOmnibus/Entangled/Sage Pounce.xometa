@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Ohm",
-    "target": "Ocelot",
-    "type": "PREDATOR_STALK"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Ocelot",
+        "type": "PREDATOR_STALK",
+        "amount": 0.65
+      }
+    ]
   },
   "description": "Warm folk groove ambushed by a sudden feline leap — tension coils then releases",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Sage Pounce",
-  "parameters": {},
+  "parameters": {
+    "Ohm": {},
+    "Ocelot": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.4,
@@ -43,5 +50,13 @@
     "ocelot",
     "hippy"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

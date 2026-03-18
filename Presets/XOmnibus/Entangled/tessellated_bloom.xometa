@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
     "pairs": [
       {
         "amount": 0.65,
@@ -9,10 +8,7 @@
         "engineB": "Origami",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Overlap",
-    "target": "Origami",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Lion's Mane knot-topology FDN entangled with ORIGAMI's folded geometric character (Vermillion fold-based synthesis). Coupling: Resonance Share.",

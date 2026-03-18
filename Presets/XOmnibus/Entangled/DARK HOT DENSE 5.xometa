@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oceanic \u00d7 Outwit \u2014 Amplitude Mod coupling at extreme DNA corner.",
+  "description": "Oceanic × Outwit — Amplitude Mod coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "oceanic",
@@ -33,7 +33,10 @@
     "space": 0.42,
     "aggression": 0.451
   },
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {},
+    "Outwit": {}
+  },
   "coupling": {
     "pairs": [
       {

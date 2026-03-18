@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.778,
-    "source": "Obscura",
-    "target": "Orbital",
-    "type": "SPACE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orbital",
+        "type": "SPACE_BLEND",
+        "amount": 0.778
+      }
+    ]
   },
   "dna": {
     "aggression": 0.15,

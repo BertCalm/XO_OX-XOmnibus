@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.585,
-    "source": "Orbital",
-    "target": "Opal",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Opal",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.585
+      }
+    ]
   },
   "dna": {
     "aggression": 0.974,

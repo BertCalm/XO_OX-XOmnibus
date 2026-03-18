@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Odyssey",
-    "target": "Osprey",
-    "type": "DYNAMICS_SHARE"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Osprey",
+        "type": "DYNAMICS_SHARE",
+        "amount": 0.7
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4,

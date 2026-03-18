@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.592,
-    "source": "Orphica",
-    "target": "Ohm",
-    "type": "MODULATION_FLOW"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ohm",
+        "type": "MODULATION_FLOW",
+        "amount": 0.592
+      }
+    ]
   },
   "dna": {
     "aggression": 0.901,
@@ -31,7 +35,7 @@
     "SPACE": 0.661
   },
   "mood": "Family",
-  "name": "DARK_COLD_DENSE_VIOLENT_FAM_VOL_104",
+  "name": "Signal Heavy 3",
   "parameters": {
     "Ohm": {
       "macro_character": 0.114,

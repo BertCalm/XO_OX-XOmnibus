@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.869,
-    "source": "Ohm",
-    "target": "Onset",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Onset",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.869
+      }
+    ]
   },
   "dna": {
     "aggression": 0.944,

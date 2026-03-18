@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.607,
-    "source": "OddOscar",
-    "target": "OddfeliX",
-    "type": "DYNAMIC_CROSS"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "OddfeliX",
+        "type": "DYNAMIC_CROSS",
+        "amount": 0.607
+      }
+    ]
   },
   "dna": {
     "aggression": 0.555,
@@ -31,7 +35,7 @@
     "SPACE": 0.96
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_SPARSE_VAST_FAM_VOL_17",
+  "name": "Peach Abyss",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.9,

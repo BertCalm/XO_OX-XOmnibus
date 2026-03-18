@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Obscura",
-    "target": "Overdub",
-    "type": "LFO_SYNC"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Overdub",
+        "type": "LFO_SYNC",
+        "amount": 0.65
+      }
+    ]
   },
   "dna": {
     "aggression": 0.33,

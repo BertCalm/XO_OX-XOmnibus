@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.746,
-    "source": "Osteria",
-    "target": "Origami",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.746
+      }
+    ]
   },
   "dna": {
     "aggression": 0.036,
@@ -31,7 +35,7 @@
     "SPACE": 0.052
   },
   "mood": "Entangled",
-  "name": "COLD_FROZEN_SPARSE_CLOSE_CALM_ENT4_5",
+  "name": "Fragment Flux",
   "parameters": {
     "Origami": {
       "macro_character": 0.299,

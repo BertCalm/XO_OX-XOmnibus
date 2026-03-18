@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9151,
-    "source": "Ole",
-    "target": "Oracle",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Oracle",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.9151
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9016,
@@ -31,7 +35,7 @@
     "SPACE": 0.9751
   },
   "mood": "Prism",
-  "name": "DARK_COLD_VAST_VIOLENT_PRS_DRK_4",
+  "name": "Node Void",
   "parameters": {
     "Ole": {
       "macro_character": 0.4847,

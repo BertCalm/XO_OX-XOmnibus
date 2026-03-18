@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.864,
-    "source": "Outwit",
-    "target": "Origami",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.864
+      }
+    ]
   },
   "dna": {
     "aggression": 0.982,
@@ -31,7 +35,7 @@
     "SPACE": 0.654
   },
   "mood": "Entangled",
-  "name": "DARK_HOT_KINETIC_VIOLENT_ENT_AGG_4",
+  "name": "Velvet Rage",
   "parameters": {
     "Origami": {
       "macro_character": 0.509,

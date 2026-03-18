@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.964,
-    "source": "Optic",
-    "target": "Ouroboros",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Ouroboros",
+        "type": "CHAOS_INJECT",
+        "amount": 0.964
+      }
+    ]
   },
   "dna": {
     "aggression": 0.931,
@@ -31,7 +35,7 @@
     "SPACE": 0.587
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_DENSE_VIOLENT_ENT_AGG_1",
+  "name": "Thread Crush",
   "parameters": {
     "Optic": {
       "macro_character": 0.459,

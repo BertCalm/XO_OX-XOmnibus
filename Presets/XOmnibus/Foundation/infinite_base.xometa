@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.341,
-    "source": "Onset",
-    "target": "Optic",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Optic",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.341
+      }
+    ]
   },
   "dna": {
     "aggression": 0.672,

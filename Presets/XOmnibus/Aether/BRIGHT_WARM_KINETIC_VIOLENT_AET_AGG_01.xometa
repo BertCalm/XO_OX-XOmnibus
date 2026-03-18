@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.797,
-    "source": "Organon",
-    "target": "Overworld",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Overworld",
+        "type": "FILTER_MOD",
+        "amount": 0.797
+      }
+    ]
   },
   "dna": {
     "aggression": 0.946,
@@ -31,7 +35,7 @@
     "SPACE": 0.308
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM KINETIC VIOLENT AET AGG 1",
+  "name": "BRIGHT WARM KINETIC VIOLENT...",
   "parameters": {
     "Organon": {
       "macro_character": 0.928,

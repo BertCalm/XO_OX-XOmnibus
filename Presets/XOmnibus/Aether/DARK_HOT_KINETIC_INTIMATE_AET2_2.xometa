@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6153,
-    "source": "Oceanic",
-    "target": "Origami",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Origami",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.6153
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5256,
@@ -31,7 +35,7 @@
     "SPACE": 0.0322
   },
   "mood": "Aether",
-  "name": "DARK_HOT_KINETIC_INTIMATE_AET2_2",
+  "name": "Ember Flutter",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.034,

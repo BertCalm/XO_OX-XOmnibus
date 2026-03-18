@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.77,
-    "source": "Odyssey",
-    "target": "Osprey",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Osprey",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.77
+      }
+    ]
   },
   "dna": {
     "aggression": 0.41,

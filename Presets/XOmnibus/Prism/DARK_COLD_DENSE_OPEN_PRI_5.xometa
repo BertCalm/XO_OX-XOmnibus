@@ -33,7 +33,9 @@
   ],
   "mood": "Prism",
   "name": "DARK COLD DENSE OPEN PRI 5",
-  "parameters": {},
+  "parameters": {
+    "Organon": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.888,
-    "source": "Origami",
-    "target": "Oblong",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oblong",
+        "type": "CHAOS_INJECT",
+        "amount": 0.888
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9362,
@@ -31,7 +35,7 @@
     "SPACE": 0.137
   },
   "mood": "Flux",
-  "name": "DARK_HOT_KINETIC_INTIMATE_VIOLENT_FLX2_4",
+  "name": "Cocoa Fang",
   "parameters": {
     "Oblong": {
       "macro_character": 0.505,

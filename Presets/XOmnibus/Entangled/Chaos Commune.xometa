@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Ohm",
-    "target": "Ouroboros",
-    "type": "CHAOS_LEASH"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Ouroboros",
+        "type": "CHAOS_LEASH",
+        "amount": 0.7
+      }
+    ]
   },
   "description": "Ouroboros strange attractor leashed to ohm's warm gravitational centre — chaos with a hearth",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Chaos Commune",
-  "parameters": {},
+  "parameters": {
+    "Ohm": {},
+    "Ouroboros": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.42,
@@ -43,5 +50,13 @@
     "ouroboros",
     "hippy"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

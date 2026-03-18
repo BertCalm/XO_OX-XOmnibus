@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7233,
-    "source": "Oblique",
-    "target": "Organon",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Organon",
+        "type": "FILTER_MOD",
+        "amount": 0.7233
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0253,
@@ -31,7 +35,7 @@
     "SPACE": 0.46
   },
   "mood": "Aether",
-  "name": "HOT_KINETIC_SPARSE_GENTLE_AET4_1",
+  "name": "Signal Stream",
   "parameters": {
     "Oblique": {
       "macro_character": 0.5731,

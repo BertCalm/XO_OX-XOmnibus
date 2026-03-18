@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.479,
-    "source": "Orca",
-    "target": "Odyssey",
-    "type": "ENVELOPE_FOLLOW"
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Odyssey",
+        "type": "ENVELOPE_FOLLOW",
+        "amount": 0.479
+      }
+    ]
   },
   "dna": {
     "aggression": 0.222,

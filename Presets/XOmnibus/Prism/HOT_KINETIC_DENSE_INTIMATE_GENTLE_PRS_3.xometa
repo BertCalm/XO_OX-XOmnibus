@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.598,
-    "source": "Ohm",
-    "target": "Owlfish",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Owlfish",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.598
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.074
   },
   "mood": "Prism",
-  "name": "HOT_KINETIC_DENSE_INTIMATE_GENTLE_PRS_3",
+  "name": "Solar Molten",
   "parameters": {
     "Ohm": {
       "macro_character": 0.589,

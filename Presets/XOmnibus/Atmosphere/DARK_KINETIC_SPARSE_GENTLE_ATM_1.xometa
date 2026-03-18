@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.752,
-    "source": "OddfeliX",
-    "target": "Oceanic",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oceanic",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.752
+      }
+    ]
   },
   "dna": {
     "aggression": 0.062,
@@ -31,7 +35,7 @@
     "SPACE": 0.434
   },
   "mood": "Atmosphere",
-  "name": "DARK_KINETIC_SPARSE_GENTLE_ATM_1",
+  "name": "Node Current 2",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.698,

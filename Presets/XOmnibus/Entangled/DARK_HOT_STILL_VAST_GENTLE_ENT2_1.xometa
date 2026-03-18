@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.196,
-    "source": "Obscura",
-    "target": "Opal",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Opal",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.196
+      }
+    ]
   },
   "dna": {
     "aggression": 0.028,
@@ -31,7 +35,7 @@
     "SPACE": 0.986
   },
   "mood": "Entangled",
-  "name": "DARK HOT STILL VAST GENTLE ENT2 1",
+  "name": "DARK HOT STILL VAST GENTLE ...",
   "parameters": {
     "Obscura": {
       "macro_character": 0.507,

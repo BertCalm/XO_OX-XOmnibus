@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.44,
-    "source": "Onset",
-    "target": "Oracle",
-    "type": "PITCH_TRACK"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Oracle",
+        "type": "PITCH_TRACK",
+        "amount": 0.44
+      }
+    ]
   },
   "dna": {
     "aggression": 0.335,

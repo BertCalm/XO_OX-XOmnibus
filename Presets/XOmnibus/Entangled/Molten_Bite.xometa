@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "source": "Orca",
-    "target": "Oblong",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Oblong",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.74
+      }
+    ]
   },
   "dna": {
     "aggression": 0.7,

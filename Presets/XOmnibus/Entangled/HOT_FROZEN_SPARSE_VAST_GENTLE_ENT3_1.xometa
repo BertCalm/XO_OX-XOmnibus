@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9312,
-    "source": "Orbital",
-    "target": "Obese",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Obese",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.9312
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.3791
   },
   "mood": "Entangled",
-  "name": "HOT_FROZEN_SPARSE_VAST_GENTLE_ENT3_1",
+  "name": "Shard Orbit",
   "parameters": {
     "Obese": {
       "macro_character": 0.7171,

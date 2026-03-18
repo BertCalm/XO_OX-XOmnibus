@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Impact Geometry",
-  "parameters": {},
+  "parameters": {
+    "Oblong": {},
+    "Onset": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.89,

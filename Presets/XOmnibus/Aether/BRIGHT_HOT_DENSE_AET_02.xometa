@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.87,
-    "source": "Oblique",
-    "target": "Obsidian",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Obsidian",
+        "type": "FILTER_MOD",
+        "amount": 0.87
+      }
+    ]
   },
   "dna": {
     "aggression": 0.589,

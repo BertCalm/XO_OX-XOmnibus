@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Prism on the Table",
-  "parameters": {},
+  "parameters": {
+    "Osteria": {},
+    "Optic": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

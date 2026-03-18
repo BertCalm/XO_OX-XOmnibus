@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Oceanic",
-    "target": "Odyssey",
-    "type": "TIDAL_MODULATION"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Odyssey",
+        "type": "TIDAL_MODULATION",
+        "amount": 0.7
+      }
+    ]
   },
   "description": "Drift trajectory lit by bioluminescent wake — oceanic phosphorescence marking the path",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Phosphor Voyage",
-  "parameters": {},
+  "parameters": {
+    "Odyssey": {},
+    "Oceanic": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.37,
@@ -43,5 +50,13 @@
     "oceanic",
     "wavetable"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

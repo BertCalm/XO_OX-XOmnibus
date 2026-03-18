@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.546,
-    "source": "Obscura",
-    "target": "Oceanic",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oceanic",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.546
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1086,
@@ -31,7 +35,7 @@
     "SPACE": 0.0205
   },
   "mood": "Aether",
-  "name": "BRIGHT_WARM_INTIMATE_GENTLE_AET2_2",
+  "name": "Candlelight Drift",
   "parameters": {
     "Obscura": {
       "macro_character": 0.9335,

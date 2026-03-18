@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.729,
-    "source": "Ottoni",
-    "target": "Oblique",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Oblique",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.729
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.897
   },
   "mood": "Prism",
-  "name": "BRIGHT_COLD_DENSE_VAST_VIOLENT_PRS_1",
+  "name": "Chrome Massive",
   "parameters": {
     "Oblique": {
       "macro_character": 0.942,

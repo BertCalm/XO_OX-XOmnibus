@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.61,
     "pairs": [
       {
         "amount": 0.61,
@@ -9,10 +8,7 @@
         "engineB": "Organon",
         "type": "VELOCITY_COUPLE"
       }
-    ],
-    "source": "Outwit",
-    "target": "Organon",
-    "type": "VELOCITY_COUPLE"
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORGANON's logical-metabolic character (Aristotelian organ-pipe variational synthesis). Coupling: Velocity Couple.",

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.652,
-    "source": "Obbligato",
-    "target": "Odyssey",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Odyssey",
+        "type": "PITCH_SYNC",
+        "amount": 0.652
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9,
@@ -31,7 +35,7 @@
     "SPACE": 0.061
   },
   "mood": "Family",
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FAM_VOL_145",
+  "name": "Ice Rage 2",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.535,

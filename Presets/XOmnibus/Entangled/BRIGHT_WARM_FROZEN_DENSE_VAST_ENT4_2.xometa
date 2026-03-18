@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.727,
-    "source": "Obbligato",
-    "target": "Organon",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Organon",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.727
+      }
+    ]
   },
   "dna": {
     "aggression": 0.386,
@@ -31,7 +35,7 @@
     "SPACE": 0.911
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_DENSE_VAST_ENT4_2",
+  "name": "Bloom Thick",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.988,

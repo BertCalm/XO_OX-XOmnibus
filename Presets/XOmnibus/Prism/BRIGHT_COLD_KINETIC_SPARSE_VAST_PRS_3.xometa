@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.834,
-    "source": "Ohm",
-    "target": "Osteria",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Osteria",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.834
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.94
   },
   "mood": "Prism",
-  "name": "BRIGHT_COLD_KINETIC_SPARSE_VAST_PRS_3",
+  "name": "Chrome Pulse",
   "parameters": {
     "Ohm": {
       "macro_character": 0.945,

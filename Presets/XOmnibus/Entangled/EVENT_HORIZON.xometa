@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.337,
-    "source": "Ocelot",
-    "target": "Oracle",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.337
+      }
+    ]
   },
   "dna": {
     "aggression": 0.895,
@@ -31,7 +35,7 @@
     "SPACE": 0.971
   },
   "mood": "Entangled",
-  "name": "EVENT HORIZON",
+  "name": "Event Horizon",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.505,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Optic",
-    "target": "Ole",
-    "type": "SPECTRAL_REFRACTION"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Ole",
+        "type": "SPECTRAL_REFRACTION",
+        "amount": 0.7
+      }
+    ]
   },
   "description": "Afro-Latin festival illuminated by prism beams — each drum hit a color event",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Festival Light",
-  "parameters": {},
+  "parameters": {
+    "Ole": {},
+    "Optic": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.46,
@@ -43,5 +50,13 @@
     "optic",
     "afro-latin"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

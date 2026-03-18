@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.562,
-    "source": "Ohm",
-    "target": "Origami",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Origami",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.562
+      }
+    ]
   },
   "dna": {
     "aggression": 0.975,
@@ -31,7 +35,7 @@
     "SPACE": 0.063
   },
   "mood": "Prism",
-  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_PRS_1",
+  "name": "Quartz Solid",
   "parameters": {
     "Ohm": {
       "macro_character": 0.951,

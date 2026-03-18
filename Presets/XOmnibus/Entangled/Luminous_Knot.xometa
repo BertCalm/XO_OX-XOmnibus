@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8,
-    "source": "Orbital",
-    "target": "Obbligato",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Obbligato",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.8
+      }
+    ]
   },
   "dna": {
     "aggression": 0.26,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.632,
-    "source": "Orphica",
-    "target": "Organon",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Organon",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.632
+      }
+    ]
   },
   "dna": {
     "aggression": 0.627,
@@ -31,7 +35,7 @@
     "SPACE": 0.082
   },
   "mood": "Family",
-  "name": "DARK_HOT_DENSE_INTIMATE_FAM_VOL_59",
+  "name": "Ember Titan",
   "parameters": {
     "Organon": {
       "macro_character": 0.541,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.585,
-    "source": "Osteria",
-    "target": "Organon",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Organon",
+        "type": "FILTER_MOD",
+        "amount": 0.585
+      }
+    ]
   },
   "dna": {
     "aggression": 0.161,

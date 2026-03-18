@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.465,
-    "source": "OddOscar",
-    "target": "Obbligato",
-    "type": "PHASE_COUPLE"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Obbligato",
+        "type": "PHASE_COUPLE",
+        "amount": 0.465
+      }
+    ]
   },
   "dna": {
     "aggression": 0.501,
@@ -31,7 +35,7 @@
     "SPACE": 0.643
   },
   "mood": "Family",
-  "name": "DARK_HOT_KINETIC_DENSE_FAM_VOL_148",
+  "name": "Copper Thick",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.524,

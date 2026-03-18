@@ -33,7 +33,9 @@
     "space": 0.07,
     "aggression": 1.0
   },
-  "parameters": {},
+  "parameters": {
+    "Orca": {}
+  },
   "tags": [
     "flux",
     "maximum",
@@ -41,5 +43,5 @@
     "predator",
     "frequency"
   ],
-  "description": "Echolocation locked on target \u2014 subsonic pulse before the kill."
+  "description": "Echolocation locked on target — subsonic pulse before the kill."
 }

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.62,
     "pairs": [
       {
         "amount": 0.62,
@@ -9,10 +8,7 @@
         "engineB": "Oceanic",
         "type": "CHAOS_INJECT"
       }
-    ],
-    "source": "Outwit",
-    "target": "Oceanic",
-    "type": "CHAOS_INJECT"
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OCEANIC's deep-current tidal character (phosphorescent abyssal pressure). Coupling: Chaos Inject.",

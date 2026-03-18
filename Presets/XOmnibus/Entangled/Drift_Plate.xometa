@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Odyssey",
-    "target": "Obscura",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.7
+      }
+    ]
   },
   "description": "Odyssey drift morphs through Obscura's silver resonance — a memory of motion on glass.",
   "dna": {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.64,
-    "source": "Osteria",
-    "target": "Origami",
-    "type": "HARMONIC_MESH"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Origami",
+        "type": "HARMONIC_MESH",
+        "amount": 0.64
+      }
+    ]
   },
   "dna": {
     "aggression": 0.126,
@@ -31,7 +35,7 @@
     "SPACE": 0.026
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_INTIMATE_GENTLE_FAM_VOL_33",
+  "name": "Honey Drift",
   "parameters": {
     "Origami": {
       "macro_character": 0.862,

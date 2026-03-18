@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Microsound Wing",
-  "parameters": {},
+  "parameters": {
+    "Osprey": {},
+    "Orphica": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

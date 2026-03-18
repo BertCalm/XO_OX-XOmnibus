@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.81,
-    "source": "Ouroboros",
-    "target": "OddOscar",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "OddOscar",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.81
+      }
+    ]
   },
   "dna": {
     "aggression": 0.888,
@@ -31,7 +35,7 @@
     "SPACE": 0.421
   },
   "mood": "Foundation",
-  "name": "DARK_HOT_KINETIC_VIOLENT_FND_AGG_4",
+  "name": "Mahogany Blade",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.714,

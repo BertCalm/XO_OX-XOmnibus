@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.91,
-    "source": "Overworld",
-    "target": "Orphica",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Orphica",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.91
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.623
   },
   "mood": "Prism",
-  "name": "DARK_HOT_KINETIC_SPARSE_VIOLENT_PRS_2",
+  "name": "Dusk Stream",
   "parameters": {
     "Orphica": {
       "macro_character": 0.026,

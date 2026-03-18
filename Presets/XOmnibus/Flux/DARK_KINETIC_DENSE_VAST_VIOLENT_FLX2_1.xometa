@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.864,
-    "source": "Opal",
-    "target": "Oracle",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oracle",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.864
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9698,
@@ -31,7 +35,7 @@
     "SPACE": 0.9311
   },
   "mood": "Flux",
-  "name": "DARK_KINETIC_DENSE_VAST_VIOLENT_FLX2_1",
+  "name": "Tone Blade",
   "parameters": {
     "Opal": {
       "macro_character": 0.1551,

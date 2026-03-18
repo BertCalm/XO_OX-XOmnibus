@@ -1,12 +1,16 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.85,
-    "source": "Obsidian",
-    "target": "Oracle",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.85
+      }
+    ]
   },
-  "description": "Obsidian's envelope freezes Oracle's timing \u2014 the prophecy delivered once, then silent.",
+  "description": "Obsidian's envelope freezes Oracle's timing — the prophecy delivered once, then silent.",
   "dna": {
     "aggression": 0.03,
     "brightness": 0.05,

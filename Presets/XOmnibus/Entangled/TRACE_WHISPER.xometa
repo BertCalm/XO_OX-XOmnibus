@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.535,
-    "source": "Osprey",
-    "target": "Overlap",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Overlap",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.535
+      }
+    ]
   },
   "dna": {
     "aggression": 0.572,

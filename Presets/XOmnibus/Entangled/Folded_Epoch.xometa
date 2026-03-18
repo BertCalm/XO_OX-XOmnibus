@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.66,
-    "source": "Odyssey",
-    "target": "Origami",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Origami",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.66
+      }
+    ]
   },
   "description": "Odyssey's drift envelope controls Origami fold rate — geological paper folding.",
   "dna": {

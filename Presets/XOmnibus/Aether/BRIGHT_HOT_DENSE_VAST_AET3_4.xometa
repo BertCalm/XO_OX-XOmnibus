@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5948,
-    "source": "Orbital",
-    "target": "Overworld",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Overworld",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.5948
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5213,

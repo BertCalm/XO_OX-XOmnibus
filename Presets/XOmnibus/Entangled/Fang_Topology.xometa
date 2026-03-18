@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Fang Topology",
-  "parameters": {},
+  "parameters": {
+    "Overbite": {},
+    "Ouroboros": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.93,

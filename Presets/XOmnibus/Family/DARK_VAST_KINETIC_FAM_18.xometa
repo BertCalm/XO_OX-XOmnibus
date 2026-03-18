@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.964,
-    "source": "Obese",
-    "target": "Optic",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Optic",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.964
+      }
+    ]
   },
   "dna": {
     "aggression": 0.438,

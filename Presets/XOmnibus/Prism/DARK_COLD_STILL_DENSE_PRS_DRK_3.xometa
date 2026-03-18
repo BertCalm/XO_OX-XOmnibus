@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5978,
-    "source": "Overworld",
-    "target": "Optic",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Optic",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.5978
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3922,
@@ -31,7 +35,7 @@
     "SPACE": 0.4226
   },
   "mood": "Prism",
-  "name": "DARK_COLD_STILL_DENSE_PRS_DRK_3",
+  "name": "Phase Deep 2",
   "parameters": {
     "Optic": {
       "macro_character": 0.2393,

@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Warm String Tavern",
-  "parameters": {},
+  "parameters": {
+    "Osteria": {},
+    "Oblong": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

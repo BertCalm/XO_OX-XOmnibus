@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.958,
-    "source": "OddOscar",
-    "target": "Osteria",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Osteria",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.958
+      }
+    ]
   },
   "dna": {
     "aggression": 0.926,
@@ -31,7 +35,7 @@
     "SPACE": 0.02
   },
   "mood": "Entangled",
-  "name": "DARK HOT DENSE INTIMATE VIOLENT ENT2 4",
+  "name": "DARK HOT DENSE INTIMATE VIO...",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.516,

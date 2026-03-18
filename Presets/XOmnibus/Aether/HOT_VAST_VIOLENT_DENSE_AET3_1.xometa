@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6333,
-    "source": "Orbital",
-    "target": "Oracle",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Oracle",
+        "type": "PITCH_SYNC",
+        "amount": 0.6333
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9343,

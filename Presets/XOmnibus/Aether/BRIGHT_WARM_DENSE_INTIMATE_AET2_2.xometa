@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5463,
-    "source": "Osprey",
-    "target": "Obscura",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Obscura",
+        "type": "PITCH_SYNC",
+        "amount": 0.5463
+      }
+    ]
   },
   "dna": {
     "aggression": 0.591,
@@ -31,7 +35,7 @@
     "SPACE": 0.0608
   },
   "mood": "Aether",
-  "name": "BRIGHT_WARM_DENSE_INTIMATE_AET2_2",
+  "name": "Halo Packed",
   "parameters": {
     "Obscura": {
       "macro_character": 0.8888,

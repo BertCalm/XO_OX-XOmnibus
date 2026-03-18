@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.486,
-    "source": "Oblique",
-    "target": "Oracle",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Oracle",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.486
+      }
+    ]
   },
   "dna": {
     "aggression": 0.983,
@@ -31,7 +35,7 @@
     "SPACE": 0.4195
   },
   "mood": "Flux",
-  "name": "BRIGHT_COLD_KINETIC_SPARSE_VIOLENT_FLX2_3",
+  "name": "Silver Crush",
   "parameters": {
     "Oblique": {
       "macro_character": 0.5078,

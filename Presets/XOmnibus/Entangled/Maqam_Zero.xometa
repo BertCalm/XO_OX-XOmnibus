@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Oracle",
-    "target": "Odyssey",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Odyssey",
+        "type": "PITCH_SYNC",
+        "amount": 0.7
+      }
+    ]
   },
   "description": "A single maqam interval floats in void — Oracle pitch-syncs Odyssey to ancient cold.",
   "dna": {

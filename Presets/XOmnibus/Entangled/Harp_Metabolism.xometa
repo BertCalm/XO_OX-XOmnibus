@@ -1,13 +1,16 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.68,
-    "intensity": "Moderate",
-    "source": "Orphica",
-    "target": "Organon",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Organon",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.68
+      }
+    ]
   },
-  "description": "Microsound harp frequency shifts trigger ORGANON's metabolic cascade \u2014 brightness 0.88.",
+  "description": "Microsound harp frequency shifts trigger ORGANON's metabolic cascade — brightness 0.88.",
   "dna": {
     "aggression": 0.08,
     "brightness": 0.88,

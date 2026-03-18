@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.721,
-    "source": "Overlap",
-    "target": "Osprey",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Osprey",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.721
+      }
+    ]
   },
   "dna": {
     "aggression": 0.606,

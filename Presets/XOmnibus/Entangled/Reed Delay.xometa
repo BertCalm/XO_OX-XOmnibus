@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6,
-    "source": "Overdub",
-    "target": "Obbligato",
-    "type": "BREATH_COUPLING"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Obbligato",
+        "type": "BREATH_COUPLING",
+        "amount": 0.6
+      }
+    ]
   },
   "description": "Dual wind phrase caught in dub loop — breath suspended in tape saturation",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Reed Delay",
-  "parameters": {},
+  "parameters": {
+    "Overdub": {},
+    "Obbligato": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.39,
@@ -43,5 +50,13 @@
     "obbligato",
     "dub"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

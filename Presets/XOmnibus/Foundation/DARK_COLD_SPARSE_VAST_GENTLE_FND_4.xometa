@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.553,
-    "source": "Onset",
-    "target": "Oblong",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Oblong",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.553
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.881
   },
   "mood": "Foundation",
-  "name": "DARK_COLD_SPARSE_VAST_GENTLE_FND_4",
+  "name": "Thread Orbit",
   "parameters": {
     "Oblong": {
       "macro_character": 0.26,

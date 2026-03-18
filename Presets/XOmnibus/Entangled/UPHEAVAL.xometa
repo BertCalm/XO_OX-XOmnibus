@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.665,
-    "source": "Octopus",
-    "target": "OddOscar",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "OddOscar",
+        "type": "PITCH_SYNC",
+        "amount": 0.665
+      }
+    ]
   },
   "dna": {
     "aggression": 0.982,

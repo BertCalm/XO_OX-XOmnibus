@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8462,
-    "source": "Overlap",
-    "target": "Organon",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Organon",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.8462
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.6995
   },
   "mood": "Entangled",
-  "name": "COLD_FROZEN_SPARSE_INTIMATE_GENTLE_ENT3_2",
+  "name": "Signal Node",
   "parameters": {
     "Organon": {
       "macro_character": 0.5903,

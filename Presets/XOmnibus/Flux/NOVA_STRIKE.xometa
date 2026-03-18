@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.983,
-    "source": "Optic",
-    "target": "OddOscar",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "OddOscar",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.983
+      }
+    ]
   },
   "dna": {
     "aggression": 0.969,

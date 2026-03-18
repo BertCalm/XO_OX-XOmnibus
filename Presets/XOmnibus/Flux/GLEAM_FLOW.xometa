@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.763,
-    "source": "Outwit",
-    "target": "Obscura",
-    "type": "RHYTHM_SYNC"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Obscura",
+        "type": "RHYTHM_SYNC",
+        "amount": 0.763
+      }
+    ]
   },
   "dna": {
     "aggression": 0.261,

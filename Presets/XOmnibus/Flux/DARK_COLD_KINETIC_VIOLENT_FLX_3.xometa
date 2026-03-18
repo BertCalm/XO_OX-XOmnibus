@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9202,
-    "source": "Oceanic",
-    "target": "Organon",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Organon",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.9202
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8694,
@@ -31,7 +35,7 @@
     "SPACE": 0.3036
   },
   "mood": "Flux",
-  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_3",
+  "name": "Signal Flutter",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.1029,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.586,
-    "source": "Obsidian",
-    "target": "Oceanic",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Oceanic",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.586
+      }
+    ]
   },
   "dna": {
     "aggression": 0.935,

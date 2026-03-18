@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.89,
-    "source": "Oblique",
-    "target": "Ombre",
-    "type": "LFO_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ombre",
+        "type": "LFO_SYNC",
+        "amount": 0.89
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 7",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.82,

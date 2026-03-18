@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.459,
-    "source": "Ohm",
-    "target": "Ole",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Ole",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.459
+      }
+    ]
   },
   "dna": {
     "aggression": 0.312,

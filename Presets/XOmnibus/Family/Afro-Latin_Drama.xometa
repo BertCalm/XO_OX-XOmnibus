@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Afro-Latin Drama",
-  "parameters": {},
+  "parameters": {
+    "Ole": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

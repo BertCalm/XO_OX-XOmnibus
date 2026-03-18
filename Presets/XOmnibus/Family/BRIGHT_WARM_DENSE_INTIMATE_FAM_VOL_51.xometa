@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.712,
-    "source": "Orphica",
-    "target": "Oblong",
-    "type": "MODULATION_FLOW"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Oblong",
+        "type": "MODULATION_FLOW",
+        "amount": 0.712
+      }
+    ]
   },
   "dna": {
     "aggression": 0.594,
@@ -31,7 +35,7 @@
     "SPACE": 0.096
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_DENSE_INTIMATE_FAM_VOL_51",
+  "name": "Honey Dense 2",
   "parameters": {
     "Oblong": {
       "macro_character": 0.862,

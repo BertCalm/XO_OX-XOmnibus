@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.663,
-    "source": "Ole",
-    "target": "Osprey",
-    "type": "HARMONIC_MESH"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Osprey",
+        "type": "HARMONIC_MESH",
+        "amount": 0.663
+      }
+    ]
   },
   "dna": {
     "aggression": 0.511,
@@ -31,7 +35,7 @@
     "SPACE": 0.49
   },
   "mood": "Family",
-  "name": "DARK_HOT_STILL_SPARSE_FAM_VOL_74",
+  "name": "Cocoa Edge",
   "parameters": {
     "Ole": {
       "macro_character": 0.473,

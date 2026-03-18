@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.675,
-    "source": "Ouroboros",
-    "target": "Optic",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Optic",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.675
+      }
+    ]
   },
   "dna": {
     "aggression": 0.083,
@@ -31,7 +35,7 @@
     "SPACE": 0.952
   },
   "mood": "Flux",
-  "name": "DARK_STILL_VAST_GENTLE_FLX_SLW_4",
+  "name": "Smoke Cathedral",
   "parameters": {
     "Optic": {
       "macro_character": 0.316,

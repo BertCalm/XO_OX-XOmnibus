@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.975,
-    "source": "OddOscar",
-    "target": "Ouroboros",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ouroboros",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.975
+      }
+    ]
   },
   "dna": {
     "aggression": 0.964,
@@ -31,7 +35,7 @@
     "SPACE": 0.47
   },
   "mood": "Foundation",
-  "name": "BRIGHT_COLD_KINETIC_VIOLENT_FND_AGG_1",
+  "name": "Silver Cascade",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.741,

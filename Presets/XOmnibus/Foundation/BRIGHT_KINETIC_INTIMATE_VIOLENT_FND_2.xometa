@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.809,
-    "source": "Onset",
-    "target": "Overbite",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Overbite",
+        "type": "PITCH_SYNC",
+        "amount": 0.809
+      }
+    ]
   },
   "dna": {
     "aggression": 0.972,
@@ -31,7 +35,7 @@
     "SPACE": 0.675
   },
   "mood": "Foundation",
-  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_FND_2",
+  "name": "Crystal Strike",
   "parameters": {
     "Onset": {
       "macro_character": 0.616,

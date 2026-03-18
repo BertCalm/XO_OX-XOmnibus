@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.715,
-    "source": "Obese",
-    "target": "Obsidian",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Obsidian",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.715
+      }
+    ]
   },
   "dna": {
     "aggression": 0.525,
@@ -31,7 +35,7 @@
     "SPACE": 0.598
   },
   "mood": "Foundation",
-  "name": "COLD_STILL_SPARSE_INTIMATE_FND_5",
+  "name": "Wave Storm",
   "parameters": {
     "Obese": {
       "macro_character": 0.267,

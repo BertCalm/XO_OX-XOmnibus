@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.91,
-    "source": "Ottoni",
-    "target": "Overworld",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Overworld",
+        "type": "CHAOS_INJECT",
+        "amount": 0.91
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.523
   },
   "mood": "Prism",
-  "name": "DARK_HOT_KINETIC_SPARSE_VIOLENT_PRS_4",
+  "name": "Copper Wrath",
   "parameters": {
     "Ottoni": {
       "macro_character": 0.085,

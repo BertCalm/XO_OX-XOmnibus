@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Origami Light Sheet",
-  "parameters": {},
+  "parameters": {
+    "Origami": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

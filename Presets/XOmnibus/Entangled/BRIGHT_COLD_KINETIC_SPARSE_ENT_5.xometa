@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8129,
     "pairs": [
       {
         "amount": 0.8129,
@@ -9,10 +8,7 @@
         "target": "Octopus",
         "type": "PITCH_ENTANGLE"
       }
-    ],
-    "source": "Overdub",
-    "target": "Octopus",
-    "type": "PITCH_ENTANGLE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Cold Kinetic Sparse character entanglement — OVERDUB × OCTOPUS via Pitch Entangle. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.6156
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_KINETIC_SPARSE_ENT_5",
+  "name": "Mirror Cascade",
   "parameters": {
     "Octopus": {
       "amp_attack": 0.0648,

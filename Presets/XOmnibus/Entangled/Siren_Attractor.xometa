@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.82,
-    "intensity": "Deep",
-    "source": "Orphica",
-    "target": "Ouroboros",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ouroboros",
+        "type": "CHAOS_INJECT",
+        "amount": 0.82
+      }
+    ]
   },
   "description": "Chaos injection from OUROBOROS disrupts ORPHICA's crystalline lattice — brightness 0.92.",
   "dna": {

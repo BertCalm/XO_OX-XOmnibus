@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5812,
-    "source": "Overdub",
-    "target": "Oceanic",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Oceanic",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.5812
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8674,
@@ -31,7 +35,7 @@
     "SPACE": 0.5642
   },
   "mood": "Flux",
-  "name": "BRIGHT_WARM_SPARSE_VIOLENT_FLX_2",
+  "name": "Golden Blade",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.888,

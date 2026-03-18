@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.536,
-    "source": "Orphica",
-    "target": "Ohm",
-    "type": "HARMONIC_MESH"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ohm",
+        "type": "HARMONIC_MESH",
+        "amount": 0.536
+      }
+    ]
   },
   "dna": {
     "aggression": 0.313,
@@ -31,7 +35,7 @@
     "SPACE": 0.35
   },
   "mood": "Family",
-  "name": "DARK_COLD_STILL_DENSE_FAM_VOL_44",
+  "name": "Grain Saturated",
   "parameters": {
     "Ohm": {
       "macro_character": 0.068,

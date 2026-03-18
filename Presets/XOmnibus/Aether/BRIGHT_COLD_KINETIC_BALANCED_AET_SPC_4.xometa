@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.547,
-    "source": "Osprey",
-    "target": "Ombre",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Ombre",
+        "type": "PITCH_SYNC",
+        "amount": 0.547
+      }
+    ]
   },
   "dna": {
     "aggression": 0.919,
@@ -31,7 +35,7 @@
     "SPACE": 0.585
   },
   "mood": "Aether",
-  "name": "BRIGHT COLD KINETIC BALANCED AET SPC 4",
+  "name": "BRIGHT COLD KINETIC BALANCE...",
   "parameters": {
     "Ombre": {
       "macro_character": 0.454,

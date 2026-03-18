@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.527,
-    "source": "Obese",
-    "target": "Overbite",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Overbite",
+        "type": "PITCH_SYNC",
+        "amount": 0.527
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.077
   },
   "mood": "Foundation",
-  "name": "BRIGHT_COLD_STILL_SPARSE_INTIMATE_FND_3",
+  "name": "Prism Crush",
   "parameters": {
     "Obese": {
       "macro_character": 0.968,

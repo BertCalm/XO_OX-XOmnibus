@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.79,
-    "source": "Overdub",
-    "target": "Organon",
-    "type": "SPECTRAL_BRAID"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Organon",
+        "type": "SPECTRAL_BRAID",
+        "amount": 0.79
+      }
+    ]
   },
   "dna": {
     "aggression": 0.45,

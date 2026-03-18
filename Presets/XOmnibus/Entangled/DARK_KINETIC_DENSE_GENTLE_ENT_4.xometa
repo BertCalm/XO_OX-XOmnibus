@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7722,
     "pairs": [
       {
         "amount": 0.7722,
@@ -9,10 +8,7 @@
         "target": "Orca",
         "type": "SPECTRAL_MORPH"
       }
-    ],
-    "source": "Obscura",
-    "target": "Orca",
-    "type": "SPECTRAL_MORPH"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Kinetic Dense Gentle character entanglement — OBSCURA × ORCA via Spectral Morph. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.533
   },
   "mood": "Entangled",
-  "name": "DARK_KINETIC_DENSE_GENTLE_ENT_4",
+  "name": "Phase Packed",
   "parameters": {
     "Obscura": {
       "amp_attack": 0.1108,

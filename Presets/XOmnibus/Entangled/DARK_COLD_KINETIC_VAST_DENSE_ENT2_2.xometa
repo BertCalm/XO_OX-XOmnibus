@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.659,
-    "source": "Obscura",
-    "target": "Ohm",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Ohm",
+        "type": "CHAOS_INJECT",
+        "amount": 0.659
+      }
+    ]
   },
   "dna": {
     "aggression": 0.36,
@@ -31,7 +35,7 @@
     "SPACE": 0.974
   },
   "mood": "Entangled",
-  "name": "DARK COLD KINETIC VAST DENSE ENT2 2",
+  "name": "DARK COLD KINETIC VAST DENS...",
   "parameters": {
     "Obscura": {
       "macro_character": 0.088,

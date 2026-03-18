@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.762,
-    "source": "Orbital",
-    "target": "Organon",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Organon",
+        "type": "CHAOS_INJECT",
+        "amount": 0.762
+      }
+    ]
   },
   "dna": {
     "aggression": 0.941,
@@ -31,7 +35,7 @@
     "SPACE": 0.487
   },
   "mood": "Atmosphere",
-  "name": "DARK COLD KINETIC VIOLENT ATM AGG 5",
+  "name": "DARK COLD KINETIC VIOLENT A...",
   "parameters": {
     "Orbital": {
       "macro_character": 0.064,

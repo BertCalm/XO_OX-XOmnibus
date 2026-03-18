@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.592,
-    "source": "Overbite",
-    "target": "Onset",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Onset",
+        "type": "FILTER_MOD",
+        "amount": 0.592
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.886
   },
   "mood": "Foundation",
-  "name": "DARK_HOT_DENSE_VAST_GENTLE_FND_2",
+  "name": "Rust Cavern",
   "parameters": {
     "Onset": {
       "macro_character": 0.256,

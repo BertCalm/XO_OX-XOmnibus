@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ole \u00d7 Origami \u2014 Harmonic Fold coupling at extreme DNA corner.",
+  "description": "Ole × Origami — Harmonic Fold coupling at extreme DNA corner.",
   "tags": [
     "intimate",
     "ole",
@@ -33,7 +33,10 @@
     "space": 0.116,
     "aggression": 0.959
   },
-  "parameters": {},
+  "parameters": {
+    "Ole": {},
+    "Origami": {}
+  },
   "coupling": {
     "pairs": [
       {

@@ -24,7 +24,9 @@
   ],
   "mood": "Atmosphere",
   "name": "Radiant Drift Near",
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.223,

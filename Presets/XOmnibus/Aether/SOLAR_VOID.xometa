@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.73,
-    "source": "Ohm",
-    "target": "Overworld",
-    "type": "TIMBRAL_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Overworld",
+        "type": "TIMBRAL_BLEND",
+        "amount": 0.73
+      }
+    ]
   },
   "dna": {
     "aggression": 0.281,

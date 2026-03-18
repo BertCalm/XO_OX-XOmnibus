@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7678,
-    "source": "Opal",
-    "target": "Obscura",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obscura",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7678
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3569,
@@ -31,7 +35,7 @@
     "SPACE": 0.038
   },
   "mood": "Aether",
-  "name": "COLD_KINETIC_INTIMATE_DENSE_AET2_2",
+  "name": "Signal Heavy 2",
   "parameters": {
     "Obscura": {
       "macro_character": 0.3867,

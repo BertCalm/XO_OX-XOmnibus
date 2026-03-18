@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6508,
-    "source": "Oceanic",
-    "target": "Odyssey",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Odyssey",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.6508
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8724,
@@ -31,7 +35,7 @@
     "SPACE": 0.1065
   },
   "mood": "Flux",
-  "name": "HOT_DENSE_INTIMATE_VIOLENT_FLX_3",
+  "name": "Mahogany Deep",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.4048,

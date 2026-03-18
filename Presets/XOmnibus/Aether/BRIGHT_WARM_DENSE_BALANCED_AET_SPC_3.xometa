@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.505,
-    "source": "Overworld",
-    "target": "Origami",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Origami",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.505
+      }
+    ]
   },
   "dna": {
     "aggression": 0.072,
@@ -31,7 +35,7 @@
     "SPACE": 0.521
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM DENSE BALANCED AET SPC 3",
+  "name": "BRIGHT WARM DENSE BALANCED ...",
   "parameters": {
     "Origami": {
       "macro_character": 0.919,

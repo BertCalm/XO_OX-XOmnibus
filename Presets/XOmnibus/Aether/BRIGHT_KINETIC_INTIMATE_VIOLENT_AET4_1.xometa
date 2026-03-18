@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7022,
-    "source": "Overworld",
-    "target": "Obscura",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Obscura",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7022
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9469,
@@ -31,7 +35,7 @@
     "SPACE": 0.0475
   },
   "mood": "Aether",
-  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_AET4_1",
+  "name": "Node Crush",
   "parameters": {
     "Obscura": {
       "macro_character": 0.8125,

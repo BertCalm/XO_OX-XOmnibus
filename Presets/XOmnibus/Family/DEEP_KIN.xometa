@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.55,
-    "source": "Obscura",
-    "target": "Overworld",
-    "type": "FREQUENCY_LOCK"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Overworld",
+        "type": "FREQUENCY_LOCK",
+        "amount": 0.55
+      }
+    ]
   },
   "dna": {
     "aggression": 0.025,

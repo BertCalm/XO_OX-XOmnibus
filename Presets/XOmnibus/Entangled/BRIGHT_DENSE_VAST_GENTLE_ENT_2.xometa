@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9876,
     "pairs": [
       {
         "amount": 0.9876,
@@ -9,10 +8,7 @@
         "target": "Overlap",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Obsidian",
-    "target": "Overlap",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Dense Vast Gentle character entanglement — OBSIDIAN × OVERLAP via Resonance Share. Extreme DNA zones push sound design to the edges.",

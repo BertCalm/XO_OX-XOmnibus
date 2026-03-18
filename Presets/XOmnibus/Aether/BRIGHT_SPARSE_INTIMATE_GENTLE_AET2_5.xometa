@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9455,
-    "source": "Origami",
-    "target": "Orbital",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Orbital",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.9455
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0448,
@@ -31,7 +35,7 @@
     "SPACE": 0.0833
   },
   "mood": "Aether",
-  "name": "BRIGHT_SPARSE_INTIMATE_GENTLE_AET2_5",
+  "name": "Phase Grain",
   "parameters": {
     "Orbital": {
       "macro_character": 0.99,

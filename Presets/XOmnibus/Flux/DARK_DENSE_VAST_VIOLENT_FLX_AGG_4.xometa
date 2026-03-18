@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.975,
-    "source": "Optic",
-    "target": "Oblong",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oblong",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.975
+      }
+    ]
   },
   "dna": {
     "aggression": 0.942,
@@ -31,7 +35,7 @@
     "SPACE": 0.936
   },
   "mood": "Flux",
-  "name": "DARK_DENSE_VAST_VIOLENT_FLX_AGG_4",
+  "name": "Smoke Dense",
   "parameters": {
     "Oblong": {
       "macro_character": 0.438,

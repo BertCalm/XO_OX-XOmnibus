@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Ole",
-    "target": "Opal",
-    "type": "RHYTHMIC_LOCK"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Opal",
+        "type": "RHYTHMIC_LOCK",
+        "amount": 0.65
+      }
+    ]
   },
   "description": "Ole drama macro erupts inside opal cloud — the carnival explosion granularized",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Festival Shimmer",
-  "parameters": {},
+  "parameters": {
+    "Opal": {},
+    "Ole": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.32,
@@ -43,5 +50,13 @@
     "ole",
     "granular"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

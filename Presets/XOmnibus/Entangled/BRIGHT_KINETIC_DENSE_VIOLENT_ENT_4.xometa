@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7433,
     "pairs": [
       {
         "amount": 0.7433,
@@ -9,10 +8,7 @@
         "target": "Outwit",
         "type": "VELOCITY_COUPLE"
       }
-    ],
-    "source": "Osteria",
-    "target": "Outwit",
-    "type": "VELOCITY_COUPLE"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Bright Kinetic Dense Violent character entanglement — OUTWIT × OSTERIA via Velocity Couple. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.4181
   },
   "mood": "Entangled",
-  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_ENT_4",
+  "name": "Fragment Molten",
   "parameters": {
     "Osteria": {
       "amp_attack": 0.0697,

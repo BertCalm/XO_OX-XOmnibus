@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.824,
-    "source": "Orbital",
-    "target": "OddfeliX",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "OddfeliX",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.824
+      }
+    ]
   },
   "dna": {
     "aggression": 0.045,
@@ -31,7 +35,7 @@
     "SPACE": 0.687
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_WARM_KINETIC_GENTLE_ATM_1",
+  "name": "Candlelight Drift 2",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.713,

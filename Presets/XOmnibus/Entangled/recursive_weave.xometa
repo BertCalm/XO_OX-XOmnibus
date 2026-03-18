@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.59,
     "pairs": [
       {
         "amount": 0.59,
@@ -9,10 +8,7 @@
         "engineB": "Ouroboros",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Overlap",
-    "target": "Ouroboros",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Lion's Mane knot-topology FDN entangled with OUROBOROS's recursive self-feeding character (strange-attractor topology). Coupling: Resonance Share.",

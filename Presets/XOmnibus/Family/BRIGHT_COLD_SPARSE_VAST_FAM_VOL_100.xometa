@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.451,
-    "source": "Opal",
-    "target": "Ole",
-    "type": "FILTER_LINK"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ole",
+        "type": "FILTER_LINK",
+        "amount": 0.451
+      }
+    ]
   },
   "dna": {
     "aggression": 0.646,
@@ -31,7 +35,7 @@
     "SPACE": 0.974
   },
   "mood": "Family",
-  "name": "BRIGHT_COLD_SPARSE_VAST_FAM_VOL_100",
+  "name": "Prism Orbit",
   "parameters": {
     "Ole": {
       "macro_character": 0.489,

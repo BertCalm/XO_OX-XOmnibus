@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.761,
-    "source": "Ocelot",
-    "target": "Obbligato",
-    "type": "SPATIAL_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Obbligato",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.761
+      }
+    ]
   },
   "description": "Wind-instrument breath pacing the ocelot's stalking rhythm — inhale on approach, exhale on strike.",
   "engines": [
@@ -76,5 +80,13 @@
     "coupling",
     "biome-shifting"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.816,
-    "source": "Ouroboros",
-    "target": "Optic",
-    "type": "HARMONIC_LOCK"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Optic",
+        "type": "HARMONIC_LOCK",
+        "amount": 0.816
+      }
+    ]
   },
   "dna": {
     "aggression": 0.466,

@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Prismatic Water Column",
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {},
+    "Optic": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

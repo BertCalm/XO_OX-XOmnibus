@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.85,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Ouroboros",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Ouroboros",
+        "type": "CHAOS_INJECT",
+        "amount": 0.85
+      }
+    ]
   },
   "description": "Chaos injection from OUROBOROS dismantles OLE's Afro-Latin phrase structure, rebuilding it recursively.",
   "dna": {

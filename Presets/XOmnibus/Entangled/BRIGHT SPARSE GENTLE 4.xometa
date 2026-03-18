@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oblique \u00d7 Oracle \u2014 Velocity Couple coupling at extreme DNA corner.",
+  "description": "Oblique × Oracle — Velocity Couple coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "oblique",
@@ -33,7 +33,10 @@
     "space": 0.629,
     "aggression": 0.085
   },
-  "parameters": {},
+  "parameters": {
+    "Oblique": {},
+    "Oracle": {}
+  },
   "coupling": {
     "pairs": [
       {

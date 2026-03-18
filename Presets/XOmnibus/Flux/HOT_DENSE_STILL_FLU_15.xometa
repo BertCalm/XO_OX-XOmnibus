@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.732,
-    "source": "Oblong",
-    "target": "Orca",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Orca",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.732
+      }
+    ]
   },
   "dna": {
     "aggression": 0.337,

@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Ancient Resonance",
-  "parameters": {},
+  "parameters": {
+    "Oracle": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

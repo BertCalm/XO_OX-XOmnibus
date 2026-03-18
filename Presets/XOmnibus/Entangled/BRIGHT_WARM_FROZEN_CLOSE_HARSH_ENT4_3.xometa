@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.851,
-    "source": "Obscura",
-    "target": "Oceanic",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oceanic",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.851
+      }
+    ]
   },
   "dna": {
     "aggression": 0.96,
@@ -31,7 +35,7 @@
     "SPACE": 0.071
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_CLOSE_HARSH_ENT4_3",
+  "name": "Golden Fang",
   "parameters": {
     "Obscura": {
       "macro_character": 0.96,

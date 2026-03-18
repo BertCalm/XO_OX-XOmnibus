@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.452,
-    "source": "Orbital",
-    "target": "Osprey",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Osprey",
+        "type": "PITCH_SYNC",
+        "amount": 0.452
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0467,
@@ -31,7 +35,7 @@
     "SPACE": 0.9368
   },
   "mood": "Atmosphere",
-  "name": "DARK_HOT_KINETIC_VAST_GENTLE_ATM_1",
+  "name": "Ember Drift",
   "parameters": {
     "Orbital": {
       "macro_character": 0.5136,

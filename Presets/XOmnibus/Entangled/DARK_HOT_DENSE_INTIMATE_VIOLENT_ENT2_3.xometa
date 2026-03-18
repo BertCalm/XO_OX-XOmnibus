@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.944,
-    "source": "Owlfish",
-    "target": "Ombre",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ombre",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.944
+      }
+    ]
   },
   "dna": {
     "aggression": 0.933,
@@ -31,7 +35,7 @@
     "SPACE": 0.024
   },
   "mood": "Entangled",
-  "name": "DARK HOT DENSE INTIMATE VIOLENT ENT2 3",
+  "name": "DARK HOT DENSE INTIMATE VIO...",
   "parameters": {
     "Ombre": {
       "macro_character": 0.51,

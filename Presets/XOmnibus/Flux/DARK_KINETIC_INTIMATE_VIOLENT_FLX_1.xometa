@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7417,
-    "source": "Oblique",
-    "target": "Organon",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.7417
+      }
+    ]
   },
   "dna": {
     "aggression": 0.891,
@@ -31,7 +35,7 @@
     "SPACE": 0.172
   },
   "mood": "Flux",
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FLX_1",
+  "name": "Grain Stream 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.1468,

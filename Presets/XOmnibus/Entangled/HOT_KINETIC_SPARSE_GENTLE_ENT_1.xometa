@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8512,
     "pairs": [
       {
         "amount": 0.8512,
@@ -9,10 +8,7 @@
         "target": "Optic",
         "type": "HARMONIC_FOLD"
       }
-    ],
-    "source": "Obscura",
-    "target": "Optic",
-    "type": "HARMONIC_FOLD"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Hot Kinetic Sparse Gentle character entanglement — OBSCURA × OPTIC via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.4216
   },
   "mood": "Entangled",
-  "name": "HOT_KINETIC_SPARSE_GENTLE_ENT_1",
+  "name": "Wave Shimmer",
   "parameters": {
     "Obscura": {
       "amp_attack": 0.0852,

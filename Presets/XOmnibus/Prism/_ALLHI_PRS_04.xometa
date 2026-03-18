@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.712,
-    "source": "Origami",
-    "target": "Ohm",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ohm",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.712
+      }
+    ]
   },
   "dna": {
     "aggression": 0.968,

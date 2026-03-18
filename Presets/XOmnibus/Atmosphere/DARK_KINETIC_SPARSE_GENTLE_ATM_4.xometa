@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.943,
-    "source": "Organon",
-    "target": "Opal",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Opal",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.943
+      }
+    ]
   },
   "dna": {
     "aggression": 0.106,
@@ -31,7 +35,7 @@
     "SPACE": 0.516
   },
   "mood": "Atmosphere",
-  "name": "DARK_KINETIC_SPARSE_GENTLE_ATM_4",
+  "name": "Thread Flutter",
   "parameters": {
     "Opal": {
       "macro_character": 0.585,

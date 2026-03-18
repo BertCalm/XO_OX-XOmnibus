@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
   "name": "Ink Escape",
-  "mood": "Entangled",
-  "engines": ["Octopus"],
+  "mood": "Flux",
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Velocity-triggered ink clouds with arm-modulated bursts. Dramatic and evasive.",
-  "tags": ["ink", "velocity", "dramatic", "burst", "entangled"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "ink",
+    "velocity",
+    "dramatic",
+    "burst",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-13",
@@ -67,5 +80,7 @@
       "octo_macroSpace": 0.5
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

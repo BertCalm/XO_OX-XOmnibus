@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.926,
-    "source": "OddOscar",
-    "target": "Ohm",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ohm",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.926
+      }
+    ]
   },
   "dna": {
     "aggression": 0.98,
@@ -31,7 +35,7 @@
     "SPACE": 0.703
   },
   "mood": "Family",
-  "name": "DARK_DENSE_INTIMATE_VIOLENT_FAM_AGG_1",
+  "name": "Wave Crush 3",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.403,

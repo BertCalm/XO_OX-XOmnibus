@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.91,
-    "source": "Odyssey",
-    "target": "Obsidian",
-    "type": "HARMONIC_STACK"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Obsidian",
+        "type": "HARMONIC_STACK",
+        "amount": 0.91
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Prism",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT PRM 1",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Obsidian": {
       "macro_character": 1.0,

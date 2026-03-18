@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.969,
-    "source": "Overbite",
-    "target": "OddOscar",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "OddOscar",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.969
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 1.0
   },
   "mood": "Foundation",
-  "name": "HOT_STILL_DENSE_VAST_VIOLENT_FND_5",
+  "name": "Grain Canyon",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.59,

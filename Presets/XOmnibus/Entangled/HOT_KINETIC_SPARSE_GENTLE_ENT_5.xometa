@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9899,
     "pairs": [
       {
         "amount": 0.9899,
@@ -9,10 +8,7 @@
         "target": "Orphica",
         "type": "VELOCITY_COUPLE"
       }
-    ],
-    "source": "Orbital",
-    "target": "Orphica",
-    "type": "VELOCITY_COUPLE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Hot Kinetic Sparse Gentle character entanglement — ORPHICA × ORBITAL via Velocity Couple. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.6966
   },
   "mood": "Entangled",
-  "name": "HOT_KINETIC_SPARSE_GENTLE_ENT_5",
+  "name": "Ember Drift 2",
   "parameters": {
     "Orbital": {
       "amp_attack": 0.1004,

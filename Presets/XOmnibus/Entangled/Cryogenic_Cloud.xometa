@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.62,
-    "source": "Obscura",
-    "target": "Opal",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Opal",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.62
+      }
+    ]
   },
   "description": "Obscura frequency-shifts Opal's grain cloud into subzero spectral territory.",
   "dna": {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.69,
-    "source": "Overdub",
-    "target": "Ottoni",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Ottoni",
+        "type": "CHAOS_INJECT",
+        "amount": 0.69
+      }
+    ]
   },
   "dna": {
     "aggression": 0.964,

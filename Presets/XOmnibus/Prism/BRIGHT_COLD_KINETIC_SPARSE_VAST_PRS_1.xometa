@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.753,
-    "source": "Ole",
-    "target": "Oblique",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Oblique",
+        "type": "PITCH_SYNC",
+        "amount": 0.753
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.914
   },
   "mood": "Prism",
-  "name": "BRIGHT_COLD_KINETIC_SPARSE_VAST_PRS_1",
+  "name": "Chrome Dome",
   "parameters": {
     "Oblique": {
       "macro_character": 0.838,

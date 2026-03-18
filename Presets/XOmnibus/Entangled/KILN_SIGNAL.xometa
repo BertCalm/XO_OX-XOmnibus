@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.755,
-    "source": "Overworld",
-    "target": "Octopus",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Octopus",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.755
+      }
+    ]
   },
   "dna": {
     "aggression": 0.896,

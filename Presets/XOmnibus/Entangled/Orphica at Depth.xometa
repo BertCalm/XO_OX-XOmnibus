@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Orphica at Depth",
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {},
+    "Orphica": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

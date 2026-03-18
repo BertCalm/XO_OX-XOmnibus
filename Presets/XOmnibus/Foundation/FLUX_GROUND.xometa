@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.786,
-    "source": "Ombre",
-    "target": "Obsidian",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Obsidian",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.786
+      }
+    ]
   },
   "dna": {
     "aggression": 0.576,

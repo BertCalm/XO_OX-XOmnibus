@@ -33,7 +33,10 @@
   ],
   "mood": "Entangled",
   "name": "Obbligato Meets OddfeliX",
-  "parameters": {},
+  "parameters": {
+    "Obbligato": {},
+    "OddfeliX": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

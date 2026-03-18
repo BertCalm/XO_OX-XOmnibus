@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5,
-    "source": "Odyssey",
-    "target": "Obsidian",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Obsidian",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.5
+      }
+    ]
   },
   "created": "2026-03-16",
   "dna": {

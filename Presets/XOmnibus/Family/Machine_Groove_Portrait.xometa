@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Machine Groove Portrait",
-  "parameters": {},
+  "parameters": {
+    "Onset": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.806,
-    "source": "Origami",
-    "target": "Osprey",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Osprey",
+        "type": "PITCH_SYNC",
+        "amount": 0.806
+      }
+    ]
   },
   "dna": {
     "aggression": 0.978,
@@ -31,7 +35,7 @@
     "SPACE": 0.857
   },
   "mood": "Atmosphere",
-  "name": "WARM KINETIC VAST VIOLENT ATM AGG 2",
+  "name": "WARM KINETIC VAST VIOLENT A...",
   "parameters": {
     "Origami": {
       "macro_character": 0.41,

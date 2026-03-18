@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9068,
     "pairs": [
       {
         "amount": 0.9068,
@@ -9,10 +8,7 @@
         "target": "OddfeliX",
         "type": "SPECTRAL_MORPH"
       }
-    ],
-    "source": "Odyssey",
-    "target": "OddfeliX",
-    "type": "SPECTRAL_MORPH"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Cold Vast Violent character entanglement — ODYSSEY × ODDFELIX via Spectral Morph. Extreme DNA zones push sound design to the edges.",

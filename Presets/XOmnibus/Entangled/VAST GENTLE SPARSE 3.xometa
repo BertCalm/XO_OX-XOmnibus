@@ -32,7 +32,10 @@
   ],
   "mood": "Entangled",
   "name": "VAST GENTLE SPARSE 3",
-  "parameters": {},
+  "parameters": {
+    "OddfeliX": {},
+    "Osteria": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

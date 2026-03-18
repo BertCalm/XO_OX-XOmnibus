@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8099,
     "pairs": [
       {
         "amount": 0.8099,
@@ -9,10 +8,7 @@
         "target": "Ocelot",
         "type": "PHASE_LOCK"
       }
-    ],
-    "source": "Overbite",
-    "target": "Ocelot",
-    "type": "PHASE_LOCK"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Cold Vast Violent character entanglement — OCELOT × OVERBITE via Phase Lock. Extreme DNA zones push sound design to the edges.",

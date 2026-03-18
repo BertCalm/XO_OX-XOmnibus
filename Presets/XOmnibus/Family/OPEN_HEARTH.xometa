@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.614,
-    "source": "Obbligato",
-    "target": "Origami",
-    "type": "RING_MOD"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Origami",
+        "type": "RING_MOD",
+        "amount": 0.614
+      }
+    ]
   },
   "dna": {
     "aggression": 0.605,

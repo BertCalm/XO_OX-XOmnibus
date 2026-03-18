@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8181,
-    "source": "Owlfish",
-    "target": "Osteria",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Osteria",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.8181
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9264,
@@ -31,7 +35,7 @@
     "SPACE": 0.6876
   },
   "mood": "Prism",
-  "name": "DARK_HOT_KINETIC_VIOLENT_PRS_DRK_2",
+  "name": "Ember Edge",
   "parameters": {
     "Osteria": {
       "macro_character": 0.9866,

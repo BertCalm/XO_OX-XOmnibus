@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8047,
     "pairs": [
       {
         "amount": 0.8047,
@@ -9,10 +8,7 @@
         "target": "Organon",
         "type": "VELOCITY_COUPLE"
       }
-    ],
-    "source": "Ombre",
-    "target": "Organon",
-    "type": "VELOCITY_COUPLE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Cold Kinetic Intimate character entanglement — OMBRE × ORGANON via Velocity Couple. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.1284
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_KINETIC_INTIMATE_ENT_1",
+  "name": "Fragment Surge",
   "parameters": {
     "Ombre": {
       "amp_attack": 0.1367,

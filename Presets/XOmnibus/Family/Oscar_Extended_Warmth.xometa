@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Oscar Extended Warmth",
-  "parameters": {},
+  "parameters": {
+    "OddOscar": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

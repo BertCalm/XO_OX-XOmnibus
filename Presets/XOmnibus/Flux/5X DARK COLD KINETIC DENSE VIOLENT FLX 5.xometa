@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9,
-    "source": "Origami",
-    "target": "Oracle",
-    "type": "AMPLITUDE_SYNC"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oracle",
+        "type": "AMPLITUDE_SYNC",
+        "amount": 0.9
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Flux",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FLX 5",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Oracle": {
       "macro_character": 0.72,

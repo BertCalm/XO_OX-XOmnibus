@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.485,
-    "source": "Oblong",
-    "target": "OddOscar",
-    "type": "DYNAMIC_CROSS"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "OddOscar",
+        "type": "DYNAMIC_CROSS",
+        "amount": 0.485
+      }
+    ]
   },
   "dna": {
     "aggression": 0.659,
@@ -31,7 +35,7 @@
     "SPACE": 0.967
   },
   "mood": "Family",
-  "name": "BRIGHT_COLD_SPARSE_VAST_FAM_VOL_99",
+  "name": "Chrome Void",
   "parameters": {
     "Oblong": {
       "macro_character": 0.51,

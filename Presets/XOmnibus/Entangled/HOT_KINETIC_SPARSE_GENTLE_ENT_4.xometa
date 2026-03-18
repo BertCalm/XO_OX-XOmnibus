@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7088,
     "pairs": [
       {
         "amount": 0.7088,
@@ -9,10 +8,7 @@
         "target": "Ohm",
         "type": "VELOCITY_COUPLE"
       }
-    ],
-    "source": "Owlfish",
-    "target": "Ohm",
-    "type": "VELOCITY_COUPLE"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Hot Kinetic Sparse Gentle character entanglement — OWLFISH × OHM via Velocity Couple. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.458
   },
   "mood": "Entangled",
-  "name": "HOT_KINETIC_SPARSE_GENTLE_ENT_4",
+  "name": "Grain Stream 4",
   "parameters": {
     "Ohm": {
       "amp_attack": 0.0631,

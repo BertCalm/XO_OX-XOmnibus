@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7068,
-    "source": "OddfeliX",
-    "target": "Overworld",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Overworld",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.7068
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8234,

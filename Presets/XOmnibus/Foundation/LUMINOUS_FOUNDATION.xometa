@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.345,
-    "source": "Organon",
-    "target": "Orbital",
-    "type": "FREQUENCY_LOCK"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Orbital",
+        "type": "FREQUENCY_LOCK",
+        "amount": 0.345
+      }
+    ]
   },
   "dna": {
     "aggression": 0.782,

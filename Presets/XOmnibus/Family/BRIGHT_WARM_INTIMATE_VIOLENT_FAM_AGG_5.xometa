@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.965,
-    "source": "Ole",
-    "target": "OddfeliX",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "OddfeliX",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.965
+      }
+    ]
   },
   "dna": {
     "aggression": 0.905,
@@ -31,7 +35,7 @@
     "SPACE": 0.674
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_FAM_AGG_5",
+  "name": "Peach Force 2",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.845,

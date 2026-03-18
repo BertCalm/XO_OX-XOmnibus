@@ -33,7 +33,9 @@
   ],
   "mood": "Prism",
   "name": "COLD DRY WIDE VIOLENT PRI 5",
-  "parameters": {},
+  "parameters": {
+    "Octopus": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

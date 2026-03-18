@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.786,
-    "source": "Origami",
-    "target": "Orbital",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Orbital",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.786
+      }
+    ]
   },
   "dna": {
     "aggression": 0.947,
@@ -31,7 +35,7 @@
     "SPACE": 0.895
   },
   "mood": "Aether",
-  "name": "BRIGHT DENSE VAST VIOLENT AET AGG 3",
+  "name": "BRIGHT DENSE VAST VIOLENT A...",
   "parameters": {
     "Orbital": {
       "macro_character": 0.904,

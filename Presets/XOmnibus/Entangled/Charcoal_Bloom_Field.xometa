@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.94,
-    "source": "Oracle",
-    "target": "Organon",
-    "type": "LFO_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "LFO_SYNC",
+        "amount": 0.94
+      }
+    ]
   },
   "dna": {
     "aggression": 0.36,

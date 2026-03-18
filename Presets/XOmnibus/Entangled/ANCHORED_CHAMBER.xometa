@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.25,
-    "source": "Ottoni",
-    "target": "Overlap",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Overlap",
+        "type": "PITCH_SYNC",
+        "amount": 0.25
+      }
+    ]
   },
   "dna": {
     "aggression": 0.501,

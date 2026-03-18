@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.781,
-    "source": "Ombre",
-    "target": "Outwit",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Outwit",
+        "type": "FILTER_MOD",
+        "amount": 0.781
+      }
+    ]
   },
   "dna": {
     "aggression": 0.346,

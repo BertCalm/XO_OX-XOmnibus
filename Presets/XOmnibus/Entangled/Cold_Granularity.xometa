@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.82,
-    "source": "Odyssey",
-    "target": "Opal",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Opal",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.82
+      }
+    ]
   },
   "description": "Odyssey envelope gates grain density — few grains emerge; most remain frozen.",
   "dna": {

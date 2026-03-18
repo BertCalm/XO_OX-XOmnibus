@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.738,
-    "source": "Ohm",
-    "target": "Oblique",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Oblique",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.738
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.019
   },
   "mood": "Prism",
-  "name": "BRIGHT_HOT_STILL_INTIMATE_GENTLE_PRS_4",
+  "name": "Golden Thick",
   "parameters": {
     "Oblique": {
       "macro_character": 0.989,

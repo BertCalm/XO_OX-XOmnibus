@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.422,
-    "source": "Obbligato",
-    "target": "Organon",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Organon",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.422
+      }
+    ]
   },
   "dna": {
     "aggression": 0.074,
@@ -31,7 +35,7 @@
     "SPACE": 0.454
   },
   "mood": "Family",
-  "name": "DARK_HOT_KINETIC_GENTLE_FAM_VOL_28",
+  "name": "Smoke Swirl 2",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.491,

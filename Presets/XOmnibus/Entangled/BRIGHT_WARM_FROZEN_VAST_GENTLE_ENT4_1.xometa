@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.965,
-    "source": "Octopus",
-    "target": "Oceanic",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Oceanic",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.965
+      }
+    ]
   },
   "dna": {
     "aggression": 0.126,
@@ -31,7 +35,7 @@
     "SPACE": 0.905
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_VAST_GENTLE_ENT4_1",
+  "name": "Honey Horizon 2",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.953,

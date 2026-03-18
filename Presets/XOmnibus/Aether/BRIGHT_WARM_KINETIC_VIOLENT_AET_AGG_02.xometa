@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.965,
-    "source": "OddOscar",
-    "target": "Osprey",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Osprey",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.965
+      }
+    ]
   },
   "dna": {
     "aggression": 0.941,
@@ -31,7 +35,7 @@
     "SPACE": 0.448
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM KINETIC VIOLENT AET AGG 2",
+  "name": "BRIGHT WARM KINETIC VIOLENT...",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.883,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8502,
-    "source": "Ottoni",
-    "target": "Opal",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Opal",
+        "type": "PITCH_SYNC",
+        "amount": 0.8502
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.4678
   },
   "mood": "Entangled",
-  "name": "HOT_FROZEN_SPARSE_VAST_GENTLE_ENT3_3",
+  "name": "Flux Horizon 2",
   "parameters": {
     "Opal": {
       "macro_character": 0.5382,

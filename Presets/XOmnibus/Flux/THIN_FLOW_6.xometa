@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5519,
-    "source": "Obscura",
-    "target": "Orphica",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orphica",
+        "type": "FILTER_MOD",
+        "amount": 0.5519
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0053,

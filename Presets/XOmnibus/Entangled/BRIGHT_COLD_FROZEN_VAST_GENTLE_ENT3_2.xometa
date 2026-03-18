@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8128,
-    "source": "Obsidian",
-    "target": "Onset",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Onset",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.8128
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.4385
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_FROZEN_VAST_GENTLE_ENT3_2",
+  "name": "Ice Cavern",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.6798,

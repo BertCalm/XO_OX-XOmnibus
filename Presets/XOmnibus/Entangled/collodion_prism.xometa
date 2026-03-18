@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.486,
-    "source": "Obscura",
-    "target": "Oblique",
-    "type": "SPACE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oblique",
+        "type": "SPACE_BLEND",
+        "amount": 0.486
+      }
+    ]
   },
   "dna": {
     "aggression": 0.25,

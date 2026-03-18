@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Osteria Golden Hour",
-  "parameters": {},
+  "parameters": {
+    "Osteria": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

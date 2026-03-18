@@ -33,7 +33,9 @@
     "space": 0.12,
     "aggression": 0.88
   },
-  "parameters": {},
+  "parameters": {
+    "Optic": {}
+  },
   "tags": [
     "flux",
     "high-flux",
@@ -41,5 +43,5 @@
     "strobe",
     "seizure"
   ],
-  "description": "Optic visual synth \u2014 stroboscopic brightness at seizure threshold."
+  "description": "Optic visual synth — stroboscopic brightness at seizure threshold."
 }

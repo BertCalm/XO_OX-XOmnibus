@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.955,
-    "source": "OddOscar",
-    "target": "Overdub",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Overdub",
+        "type": "CHAOS_INJECT",
+        "amount": 0.955
+      }
+    ]
   },
   "dna": {
     "aggression": 0.99,
@@ -31,7 +35,7 @@
     "SPACE": 0.99
   },
   "mood": "Entangled",
-  "name": "HOT KINETIC DENSE VAST VIOLENT ENT2 3",
+  "name": "HOT KINETIC DENSE VAST VIOL...",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.7,

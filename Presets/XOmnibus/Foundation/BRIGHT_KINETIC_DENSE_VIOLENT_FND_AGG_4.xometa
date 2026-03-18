@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.961,
-    "source": "OddOscar",
-    "target": "Obsidian",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Obsidian",
+        "type": "CHAOS_INJECT",
+        "amount": 0.961
+      }
+    ]
   },
   "dna": {
     "aggression": 0.975,
@@ -31,7 +35,7 @@
     "SPACE": 0.788
   },
   "mood": "Foundation",
-  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FND_AGG_4",
+  "name": "Silver Strike",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.574,

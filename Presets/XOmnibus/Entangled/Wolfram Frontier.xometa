@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.625,
-    "source": "Outwit",
-    "target": "Odyssey",
-    "type": "FILTER_COUPLING"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Odyssey",
+        "type": "FILTER_COUPLING",
+        "amount": 0.625
+      }
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Odyssey tidal phase clocks OUTWIT generation — the tide turns, the automata evolves",
@@ -62,5 +66,13 @@
     "wolfram",
     "cellular-automata"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.554,
+    "warmth": 0.5,
+    "movement": 0.328,
+    "density": 0.498,
+    "space": 0.5,
+    "aggression": 0.128
+  }
 }

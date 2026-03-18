@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.724,
-    "source": "Oblique",
-    "target": "Obbligato",
-    "type": "CHAOS_INJECTION"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Obbligato",
+        "type": "CHAOS_INJECTION",
+        "amount": 0.724
+      }
+    ]
   },
   "description": "Wind-instrument breath as the light source for the prism — the angle of attack determining the spread of overtones.",
   "engines": [
@@ -77,5 +81,13 @@
     "coupling",
     "prismatic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

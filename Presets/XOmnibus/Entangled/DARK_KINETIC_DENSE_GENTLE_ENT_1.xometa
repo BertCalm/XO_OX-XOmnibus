@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7449,
     "pairs": [
       {
         "amount": 0.7449,
@@ -9,10 +8,7 @@
         "target": "Ocelot",
         "type": "TIMBRAL_BLEED"
       }
-    ],
-    "source": "Obsidian",
-    "target": "Ocelot",
-    "type": "TIMBRAL_BLEED"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Dark Kinetic Dense Gentle character entanglement — OBSIDIAN × OCELOT via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.4057
   },
   "mood": "Entangled",
-  "name": "DARK_KINETIC_DENSE_GENTLE_ENT_1",
+  "name": "Shadow Thick",
   "parameters": {
     "Obsidian": {
       "amp_attack": 0.0677,

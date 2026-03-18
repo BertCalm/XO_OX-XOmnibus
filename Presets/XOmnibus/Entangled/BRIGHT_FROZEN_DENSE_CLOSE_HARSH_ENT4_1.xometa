@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.822,
-    "source": "Oceanic",
-    "target": "Osprey",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Osprey",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.822
+      }
+    ]
   },
   "dna": {
     "aggression": 0.916,
@@ -31,7 +35,7 @@
     "SPACE": 0.102
   },
   "mood": "Entangled",
-  "name": "BRIGHT_FROZEN_DENSE_CLOSE_HARSH_ENT4_1",
+  "name": "Phase Thick",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.758,

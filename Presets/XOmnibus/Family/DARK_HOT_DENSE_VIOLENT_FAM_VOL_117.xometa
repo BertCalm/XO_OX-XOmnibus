@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.632,
-    "source": "Organon",
-    "target": "Osteria",
-    "type": "PHASE_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Osteria",
+        "type": "PHASE_COUPLE",
+        "amount": 0.632
+      }
+    ]
   },
   "dna": {
     "aggression": 0.965,
@@ -31,7 +35,7 @@
     "SPACE": 0.491
   },
   "mood": "Family",
-  "name": "DARK_HOT_DENSE_VIOLENT_FAM_VOL_117",
+  "name": "Dusk Rage",
   "parameters": {
     "Organon": {
       "macro_character": 0.479,

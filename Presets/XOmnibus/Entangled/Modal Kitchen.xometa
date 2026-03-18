@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Modal Kitchen",
-  "parameters": {},
+  "parameters": {
+    "Osteria": {},
+    "Organon": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

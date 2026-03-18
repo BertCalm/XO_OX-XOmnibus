@@ -24,7 +24,9 @@
   ],
   "mood": "Aether",
   "name": "Trench Signal",
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.3,

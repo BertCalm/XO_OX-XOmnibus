@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Organon",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Organon",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.74
+      }
+    ]
   },
   "description": "Amplitude modulation stamps Afro-Latin rhythm into ORGANON's cellular texture.",
   "dna": {

@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Oracle",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Oracle",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.78
+      }
+    ]
   },
   "description": "Afro-Latin frequency bursts seed ORACLE's prophetic stochastic sequences.",
   "dna": {

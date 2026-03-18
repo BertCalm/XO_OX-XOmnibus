@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.368,
-    "source": "Overlap",
-    "target": "Overbite",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Overbite",
+        "type": "FILTER_MOD",
+        "amount": 0.368
+      }
+    ]
   },
   "dna": {
     "aggression": 0.098,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.908,
-    "source": "Oblique",
-    "target": "Ocelot",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ocelot",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.908
+      }
+    ]
   },
   "dna": {
     "aggression": 0.935,
@@ -31,7 +35,7 @@
     "SPACE": 0.946
   },
   "mood": "Prism",
-  "name": "COLD DENSE VAST VIOLENT PRS AGG 4",
+  "name": "COLD DENSE VAST VIOLENT PRS...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.506,

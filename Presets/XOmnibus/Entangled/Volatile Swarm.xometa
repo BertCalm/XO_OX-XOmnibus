@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.593,
-    "source": "Outwit",
-    "target": "Ombre",
-    "type": "SPATIAL_BLEND"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Ombre",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.593
+      }
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Ombre memory/forgetting gradient sets OUTWIT mutation probability — what fades reshapes the pattern",
@@ -62,5 +66,13 @@
     "wolfram",
     "cellular-automata"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.703,
+    "warmth": 0.5,
+    "movement": 0.471,
+    "density": 0.593,
+    "space": 0.5,
+    "aggression": 0.086
+  }
 }

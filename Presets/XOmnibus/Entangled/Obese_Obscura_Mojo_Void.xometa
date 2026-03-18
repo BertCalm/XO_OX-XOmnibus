@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.68,
-    "source": "Obscura",
-    "target": "Obese",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Obese",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.68
+      }
+    ]
   },
   "dna": {
     "aggression": 0.88,

@@ -24,7 +24,9 @@
   ],
   "mood": "Atmosphere",
   "name": "Glow Horizon",
-  "parameters": {},
+  "parameters": {
+    "Osprey": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.306,

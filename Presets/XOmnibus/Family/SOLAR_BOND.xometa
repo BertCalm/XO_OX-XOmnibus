@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.473,
-    "source": "Overworld",
-    "target": "Opal",
-    "type": "ENVELOPE_FOLLOW"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Opal",
+        "type": "ENVELOPE_FOLLOW",
+        "amount": 0.473
+      }
+    ]
   },
   "dna": {
     "aggression": 0.891,

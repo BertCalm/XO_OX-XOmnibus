@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.623,
-    "source": "Oblique",
-    "target": "Orbital",
-    "type": "HARMONIC_LOCK"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Orbital",
+        "type": "HARMONIC_LOCK",
+        "amount": 0.623
+      }
+    ]
   },
   "dna": {
     "aggression": 0.86,

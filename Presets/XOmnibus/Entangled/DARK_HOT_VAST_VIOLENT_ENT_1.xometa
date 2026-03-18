@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8272,
     "pairs": [
       {
         "amount": 0.8272,
@@ -9,10 +8,7 @@
         "target": "Orca",
         "type": "VELOCITY_COUPLE"
       }
-    ],
-    "source": "Odyssey",
-    "target": "Orca",
-    "type": "VELOCITY_COUPLE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Hot Vast Violent character entanglement — ODYSSEY × ORCA via Velocity Couple. Extreme DNA zones push sound design to the edges.",

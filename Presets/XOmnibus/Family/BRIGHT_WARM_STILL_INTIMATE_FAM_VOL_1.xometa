@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.627,
-    "source": "Odyssey",
-    "target": "Obbligato",
-    "type": "FILTER_LINK"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Obbligato",
+        "type": "FILTER_LINK",
+        "amount": 0.627
+      }
+    ]
   },
   "dna": {
     "aggression": 0.601,
@@ -31,7 +35,7 @@
     "SPACE": 0.034
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_STILL_INTIMATE_FAM_VOL_1",
+  "name": "Sunrise Rage",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.884,

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.75,
     "pairs": [
       {
         "amount": 0.75,
@@ -9,10 +8,7 @@
         "engineB": "Ouroboros",
         "type": "AMPLITUDE_MOD"
       }
-    ],
-    "source": "Outwit",
-    "target": "Ouroboros",
-    "type": "AMPLITUDE_MOD"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OUROBOROS's recursive self-feeding character (strange-attractor topology). Coupling: Amplitude Mod.",

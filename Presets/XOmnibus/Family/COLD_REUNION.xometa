@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.646,
-    "source": "Obese",
-    "target": "Optic",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Optic",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.646
+      }
+    ]
   },
   "dna": {
     "aggression": 0.097,

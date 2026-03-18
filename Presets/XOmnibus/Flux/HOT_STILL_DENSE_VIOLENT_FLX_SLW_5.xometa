@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.776,
-    "source": "Overworld",
-    "target": "Oblique",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Oblique",
+        "type": "FILTER_MOD",
+        "amount": 0.776
+      }
+    ]
   },
   "dna": {
     "aggression": 0.987,
@@ -31,7 +35,7 @@
     "SPACE": 0.42
   },
   "mood": "Flux",
-  "name": "HOT_STILL_DENSE_VIOLENT_FLX_SLW_5",
+  "name": "Shadow Strike 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.92,

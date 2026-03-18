@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.744,
-    "source": "OddfeliX",
-    "target": "Oracle",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oracle",
+        "type": "CHAOS_INJECT",
+        "amount": 0.744
+      }
+    ]
   },
   "dna": {
     "aggression": 0.116,
@@ -31,7 +35,7 @@
     "SPACE": 0.688
   },
   "mood": "Foundation",
-  "name": "DARK_KINETIC_SPARSE_GENTLE_FND_1",
+  "name": "Wave Pulse 2",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.756,

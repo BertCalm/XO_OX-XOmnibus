@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Oracle and Odyssey",
-  "parameters": {},
+  "parameters": {
+    "Oracle": {},
+    "Odyssey": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

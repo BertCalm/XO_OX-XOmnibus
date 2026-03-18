@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.787,
-    "source": "Origami",
-    "target": "Oracle",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oracle",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.787
+      }
+    ]
   },
   "dna": {
     "aggression": 0.976,
@@ -31,7 +35,7 @@
     "SPACE": 0.619
   },
   "mood": "Atmosphere",
-  "name": "DARK KINETIC DENSE VIOLENT ATM AGG 1",
+  "name": "DARK KINETIC DENSE VIOLENT ...",
   "parameters": {
     "Oracle": {
       "macro_character": 0.027,

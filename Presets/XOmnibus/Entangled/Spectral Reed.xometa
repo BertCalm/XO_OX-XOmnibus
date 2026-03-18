@@ -33,7 +33,10 @@
   ],
   "mood": "Entangled",
   "name": "Spectral Reed",
-  "parameters": {},
+  "parameters": {
+    "Orphica": {},
+    "Obbligato": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

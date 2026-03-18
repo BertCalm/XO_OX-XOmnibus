@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.795,
-    "source": "Origami",
-    "target": "Osteria",
-    "type": "HARMONIC_MESH"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Osteria",
+        "type": "HARMONIC_MESH",
+        "amount": 0.795
+      }
+    ]
   },
   "dna": {
     "aggression": 0.504,
@@ -31,7 +35,7 @@
     "SPACE": 0.495
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_STILL_DENSE_FAM_VOL_23",
+  "name": "Candlelight Packed 2",
   "parameters": {
     "Origami": {
       "macro_character": 0.986,

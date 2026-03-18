@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.681,
-    "source": "Overbite",
-    "target": "Opal",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Opal",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.681
+      }
+    ]
   },
   "dna": {
     "aggression": 0.379,
@@ -31,7 +35,7 @@
     "SPACE": 0.961
   },
   "mood": "Entangled",
-  "name": "DARK COLD KINETIC VAST DENSE ENT2 1",
+  "name": "DARK COLD KINETIC VAST DENS...",
   "parameters": {
     "Opal": {
       "macro_character": 0.098,

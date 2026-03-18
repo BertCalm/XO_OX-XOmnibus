@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Ouroboros",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Ouroboros",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.8
+      }
+    ]
   },
   "description": "Resonance shared between OLE's clave hit and OUROBOROS's infinite cycle — a drum inside the snake.",
   "dna": {

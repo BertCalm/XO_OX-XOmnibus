@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.67,
-    "source": "Opal",
-    "target": "Obsidian",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obsidian",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.67
+      }
+    ]
   },
   "description": "Opal lavender blends into Obsidian white — two pale cold timbres unite in vast space.",
   "dna": {

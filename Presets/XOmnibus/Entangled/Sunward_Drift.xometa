@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.76,
-    "source": "Organon",
-    "target": "Osprey",
-    "type": "SPECTRAL_BRAID"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Osprey",
+        "type": "SPECTRAL_BRAID",
+        "amount": 0.76
+      }
+    ]
   },
   "dna": {
     "aggression": 0.26,

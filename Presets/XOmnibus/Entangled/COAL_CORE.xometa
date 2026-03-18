@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.807,
-    "source": "Outwit",
-    "target": "Orphica",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Orphica",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.807
+      }
+    ]
   },
   "dna": {
     "aggression": 0.139,

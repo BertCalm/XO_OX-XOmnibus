@@ -24,7 +24,9 @@
   ],
   "mood": "Aether",
   "name": "Pressure Floor Deep",
-  "parameters": {},
+  "parameters": {
+    "Obbligato": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.516,

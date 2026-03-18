@@ -1,12 +1,12 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "routes": [
+    "pairs": [
       {
-        "amount": 0.3,
-        "dest": "Oceanic",
-        "source": "Orbital",
-        "type": "LFOToPitch"
+        "engineA": "Orbital",
+        "engineB": "Oceanic",
+        "type": "LFOToPitch",
+        "amount": 0.3
       }
     ]
   },

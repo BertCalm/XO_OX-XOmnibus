@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6152,
-    "source": "Oceanic",
-    "target": "Oracle",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.6152
+      }
+    ]
   },
   "dna": {
     "aggression": 0.626,

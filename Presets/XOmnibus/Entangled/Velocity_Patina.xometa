@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.66,
-    "intensity": "Moderate",
-    "source": "Ottoni",
-    "target": "Obscura",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Obscura",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.66
+      }
+    ]
   },
   "description": "Velocity coupling: harder strikes age the patina faster, bowing OBSCURA's plate inward.",
   "dna": {

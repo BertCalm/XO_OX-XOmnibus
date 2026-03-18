@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.982,
-    "source": "Ombre",
-    "target": "Oblong",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Oblong",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.982
+      }
+    ]
   },
   "dna": {
     "aggression": 0.874,
@@ -31,7 +35,7 @@
     "SPACE": 0.68
   },
   "mood": "Entangled",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_ENT_AGG_2",
+  "name": "Node Stream 2",
   "parameters": {
     "Oblong": {
       "macro_character": 0.53,

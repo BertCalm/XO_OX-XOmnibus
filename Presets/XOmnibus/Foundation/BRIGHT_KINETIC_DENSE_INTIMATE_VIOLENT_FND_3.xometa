@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.738,
-    "source": "Origami",
-    "target": "Ouroboros",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ouroboros",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.738
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.006
   },
   "mood": "Foundation",
-  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FND_3",
+  "name": "Thread Swirl",
   "parameters": {
     "Origami": {
       "macro_character": 1.0,

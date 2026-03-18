@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9262,
-    "source": "Odyssey",
-    "target": "Ohm",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Ohm",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.9262
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.2283
   },
   "mood": "Entangled",
-  "name": "COLD_FROZEN_DENSE_VAST_VIOLENT_ENT3_3",
+  "name": "Ice Crush",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.7222,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.927,
-    "source": "Orphica",
-    "target": "Orbital",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Orbital",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.927
+      }
+    ]
   },
   "dna": {
     "aggression": 0.96,
@@ -31,7 +35,7 @@
     "SPACE": 0.953
   },
   "mood": "Entangled",
-  "name": "HOT KINETIC DENSE VAST VIOLENT ENT2 2",
+  "name": "HOT KINETIC DENSE VAST VIOL...",
   "parameters": {
     "Orbital": {
       "macro_character": 0.694,

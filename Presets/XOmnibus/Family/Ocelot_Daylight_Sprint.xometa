@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Ocelot Daylight Sprint",
-  "parameters": {},
+  "parameters": {
+    "Ocelot": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

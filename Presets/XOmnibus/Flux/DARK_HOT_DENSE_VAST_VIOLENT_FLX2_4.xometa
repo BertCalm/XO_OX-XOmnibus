@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.44,
-    "source": "Opal",
-    "target": "Overdub",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Overdub",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.44
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9374,
@@ -31,7 +35,7 @@
     "SPACE": 0.8876
   },
   "mood": "Flux",
-  "name": "DARK_HOT_DENSE_VAST_VIOLENT_FLX2_4",
+  "name": "Velvet Edge 2",
   "parameters": {
     "Opal": {
       "macro_character": 0.4818,

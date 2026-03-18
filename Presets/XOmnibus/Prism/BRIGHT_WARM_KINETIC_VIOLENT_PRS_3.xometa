@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.724,
-    "source": "Ole",
-    "target": "Ocelot",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Ocelot",
+        "type": "FILTER_MOD",
+        "amount": 0.724
+      }
+    ]
   },
   "dna": {
     "aggression": 0.91,
@@ -31,7 +35,7 @@
     "SPACE": 0.584
   },
   "mood": "Prism",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_PRS_3",
+  "name": "Sunrise Drift 2",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.47,

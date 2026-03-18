@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.882,
-    "source": "Overworld",
-    "target": "Optic",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Optic",
+        "type": "CHAOS_INJECT",
+        "amount": 0.882
+      }
+    ]
   },
   "dna": {
     "aggression": 0.893,
@@ -31,7 +35,7 @@
     "SPACE": 0.522
   },
   "mood": "Flux",
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FLX_AGG_3",
+  "name": "Flux Titan 3",
   "parameters": {
     "Optic": {
       "macro_character": 0.502,

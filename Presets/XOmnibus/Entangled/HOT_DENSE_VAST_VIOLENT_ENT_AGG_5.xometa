@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.965,
-    "source": "Osteria",
-    "target": "Optic",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Optic",
+        "type": "CHAOS_INJECT",
+        "amount": 0.965
+      }
+    ]
   },
   "dna": {
     "aggression": 0.947,
@@ -31,7 +35,7 @@
     "SPACE": 0.944
   },
   "mood": "Entangled",
-  "name": "HOT_DENSE_VAST_VIOLENT_ENT_AGG_5",
+  "name": "Honey Dense",
   "parameters": {
     "Optic": {
       "macro_character": 0.722,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "source": "OddfeliX",
-    "target": "Obese",
-    "type": "RHYTHM_GATE"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
+        "type": "RHYTHM_GATE",
+        "amount": 0.74
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Entangled",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 12",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Obese": {
       "macro_character": 0.94,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.933,
-    "source": "Origami",
-    "target": "Overworld",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Overworld",
+        "type": "PITCH_SYNC",
+        "amount": 0.933
+      }
+    ]
   },
   "dna": {
     "aggression": 0.959,
@@ -31,7 +35,7 @@
     "SPACE": 0.068
   },
   "mood": "Entangled",
-  "name": "DARK_WARM_FROZEN_CLOSE_HARSH_ENT4_1",
+  "name": "Amber Storm",
   "parameters": {
     "Origami": {
       "macro_character": 0.517,

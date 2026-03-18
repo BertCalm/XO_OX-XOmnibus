@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.401,
-    "source": "Opal",
-    "target": "Obscura",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obscura",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.401
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0641,
@@ -31,7 +35,7 @@
     "SPACE": 0.894
   },
   "mood": "Atmosphere",
-  "name": "DARK_HOT_KINETIC_VAST_GENTLE_ATM_3",
+  "name": "Dusk Cavern",
   "parameters": {
     "Obscura": {
       "macro_character": 0.5586,

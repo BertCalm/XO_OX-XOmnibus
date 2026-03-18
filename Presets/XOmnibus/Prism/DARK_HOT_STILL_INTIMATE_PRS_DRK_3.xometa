@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8646,
-    "source": "Owlfish",
-    "target": "Osteria",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Osteria",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.8646
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3434,
@@ -31,7 +35,7 @@
     "SPACE": 0.0492
   },
   "mood": "Prism",
-  "name": "DARK_HOT_STILL_INTIMATE_PRS_DRK_3",
+  "name": "Copper Saturated",
   "parameters": {
     "Osteria": {
       "macro_character": 0.6598,

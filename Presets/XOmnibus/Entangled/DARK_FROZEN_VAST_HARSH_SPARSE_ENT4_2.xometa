@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.818,
-    "source": "Overworld",
-    "target": "Obese",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Obese",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.818
+      }
+    ]
   },
   "dna": {
     "aggression": 0.935,
@@ -31,7 +35,7 @@
     "SPACE": 0.925
   },
   "mood": "Entangled",
-  "name": "DARK_FROZEN_VAST_HARSH_SPARSE_ENT4_2",
+  "name": "Flux Rage 3",
   "parameters": {
     "Obese": {
       "macro_character": 0.327,

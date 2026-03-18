@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.556,
-    "source": "Ocelot",
-    "target": "Optic",
-    "type": "SPECTRAL_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Optic",
+        "type": "SPECTRAL_SHIFT",
+        "amount": 0.556
+      }
+    ]
   },
   "dna": {
     "aggression": 0.13,

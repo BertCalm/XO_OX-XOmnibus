@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.76,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Oracle",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.76
+      }
+    ]
   },
   "description": "Timbre blend: ORACLE's stochastic tone emerges from OLE's ritual drumming.",
   "dna": {

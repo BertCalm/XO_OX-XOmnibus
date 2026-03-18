@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Oracle",
-    "target": "Ohm",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Ohm",
+        "type": "PITCH_SYNC",
+        "amount": 0.65
+      }
+    ]
   },
   "dna": {
     "aggression": 0.976,
@@ -31,7 +35,7 @@
     "SPACE": 0.134
   },
   "mood": "Prism",
-  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_PRS_4",
+  "name": "Wave Storm 2",
   "parameters": {
     "Ohm": {
       "macro_character": 0.528,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5679,
-    "source": "Organon",
-    "target": "Osprey",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Osprey",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.5679
+      }
+    ]
   },
   "dna": {
     "aggression": 0.6946,
@@ -31,7 +35,7 @@
     "SPACE": 0.0745
   },
   "mood": "Aether",
-  "name": "BRIGHT_WARM_DENSE_INTIMATE_AET2_3",
+  "name": "Peach Massive 2",
   "parameters": {
     "Organon": {
       "macro_character": 0.9117,

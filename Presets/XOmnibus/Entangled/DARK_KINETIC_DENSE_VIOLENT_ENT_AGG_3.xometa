@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.817,
-    "source": "OddOscar",
-    "target": "Obscura",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Obscura",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.817
+      }
+    ]
   },
   "dna": {
     "aggression": 0.924,
@@ -31,7 +35,7 @@
     "SPACE": 0.404
   },
   "mood": "Entangled",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_ENT_AGG_3",
+  "name": "Flux Pulse",
   "parameters": {
     "Obscura": {
       "macro_character": 0.464,

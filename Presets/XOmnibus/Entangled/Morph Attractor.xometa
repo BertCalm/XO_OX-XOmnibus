@@ -31,7 +31,10 @@
     "space": 0.15,
     "aggression": 0.25
   },
-  "parameters": {},
+  "parameters": {
+    "OddOscar": {},
+    "Ouroboros": {}
+  },
   "coupling": {
     "pairs": [
       {

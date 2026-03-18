@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.674,
-    "source": "Oceanic",
-    "target": "Organon",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Organon",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.674
+      }
+    ]
   },
   "dna": {
     "aggression": 0.034,
@@ -31,7 +35,7 @@
     "SPACE": 0.487
   },
   "mood": "Atmosphere",
-  "name": "DARK_KINETIC_SPARSE_GENTLE_ATM_3",
+  "name": "Grain Ripple 3",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.513,

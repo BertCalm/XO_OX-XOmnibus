@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.79,
-    "source": "Orphica",
-    "target": "Owlfish",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Owlfish",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.79
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.114
   },
   "mood": "Prism",
-  "name": "HOT_KINETIC_DENSE_INTIMATE_GENTLE_PRS_2",
+  "name": "Solar Current",
   "parameters": {
     "Orphica": {
       "macro_character": 0.58,

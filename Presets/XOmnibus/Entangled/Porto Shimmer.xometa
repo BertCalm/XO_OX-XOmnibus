@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Osteria",
-    "target": "Opal",
-    "type": "HARMONIC_BLEND"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Opal",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.65
+      }
+    ]
   },
   "description": "Porto wine-dark warmth diffuses through opal grain field — granular tavern texture",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Porto Shimmer",
-  "parameters": {},
+  "parameters": {
+    "Opal": {},
+    "Osteria": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.3,
@@ -43,5 +50,13 @@
     "osteria",
     "granular"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

@@ -33,7 +33,9 @@
   ],
   "mood": "Prism",
   "name": "COLD DRY WIDE VIOLENT PRI 4",
-  "parameters": {},
+  "parameters": {
+    "Orca": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.756,
-    "source": "Overlap",
-    "target": "Ouroboros",
-    "type": "WAVETABLE_MORPH"
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Ouroboros",
+        "type": "WAVETABLE_MORPH",
+        "amount": 0.756
+      }
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Ouroboros loop phase modulates OVERLAP decay length — the coil's rotation is the reverb's clock",
@@ -62,5 +66,13 @@
     "fdn",
     "reverb"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.496,
+    "warmth": 0.5,
+    "movement": 0.259,
+    "density": 0.5,
+    "space": 0.03,
+    "aggression": 0.3
+  }
 }

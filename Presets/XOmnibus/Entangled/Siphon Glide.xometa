@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.72,
-    "source": "Osprey",
-    "target": "Orphica",
-    "type": "PHASE_LOCK"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Orphica",
+        "type": "PHASE_LOCK",
+        "amount": 0.72
+      }
+    ]
   },
   "description": "Siphonophore warmth gliding through Osprey's open skies — weightless and amber.",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Siphon Glide",
-  "parameters": {},
+  "parameters": {
+    "Orphica": {},
+    "Osprey": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.07,
@@ -43,5 +50,13 @@
     "gliding",
     "delicate"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

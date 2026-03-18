@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7502,
-    "source": "Ocelot",
-    "target": "Owlfish",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Owlfish",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7502
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0716,
@@ -31,7 +35,7 @@
     "SPACE": 0.9227
   },
   "mood": "Prism",
-  "name": "DARK_KINETIC_VAST_GENTLE_PRS_DRK_5",
+  "name": "Flux Swirl",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.3048,

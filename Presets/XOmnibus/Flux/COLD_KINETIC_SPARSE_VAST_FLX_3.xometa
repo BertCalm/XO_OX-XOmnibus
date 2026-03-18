@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6549,
-    "source": "Oceanic",
-    "target": "Oblong",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oblong",
+        "type": "CHAOS_INJECT",
+        "amount": 0.6549
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3961,

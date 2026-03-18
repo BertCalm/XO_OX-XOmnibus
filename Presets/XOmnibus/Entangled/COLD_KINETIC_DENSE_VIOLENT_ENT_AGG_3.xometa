@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.815,
-    "source": "Ocelot",
-    "target": "Obsidian",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Obsidian",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.815
+      }
+    ]
   },
   "dna": {
     "aggression": 0.886,
@@ -31,7 +35,7 @@
     "SPACE": 0.472
   },
   "mood": "Entangled",
-  "name": "COLD_KINETIC_DENSE_VIOLENT_ENT_AGG_3",
+  "name": "Frost Titan",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.442,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.893,
-    "source": "Optic",
-    "target": "Osprey",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Osprey",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.893
+      }
+    ]
   },
   "dna": {
     "aggression": 0.949,
@@ -31,7 +35,7 @@
     "SPACE": 0.885
   },
   "mood": "Atmosphere",
-  "name": "WARM KINETIC VAST VIOLENT ATM AGG 4",
+  "name": "WARM KINETIC VAST VIOLENT A...",
   "parameters": {
     "Optic": {
       "macro_character": 0.497,

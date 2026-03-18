@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.426,
-    "source": "Obbligato",
-    "target": "OddfeliX",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "OddfeliX",
+        "type": "PITCH_SYNC",
+        "amount": 0.426
+      }
+    ]
   },
   "dna": {
     "aggression": 0.376,
@@ -31,7 +35,7 @@
     "SPACE": 0.669
   },
   "mood": "Family",
-  "name": "DARK_COLD_STILL_DENSE_FAM_VOL_41",
+  "name": "Fragment Solid",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.077,

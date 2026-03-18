@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.931,
-    "source": "Overworld",
-    "target": "Opal",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Opal",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.931
+      }
+    ]
   },
   "dna": {
     "aggression": 0.946,
@@ -31,7 +35,7 @@
     "SPACE": 0.125
   },
   "mood": "Flux",
-  "name": "BRIGHT_STILL_INTIMATE_VIOLENT_FLX_SLW_1",
+  "name": "Thread Force",
   "parameters": {
     "Opal": {
       "macro_character": 0.513,

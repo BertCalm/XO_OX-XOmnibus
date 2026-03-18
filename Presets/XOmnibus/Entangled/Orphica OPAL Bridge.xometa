@@ -33,7 +33,10 @@
   ],
   "mood": "Entangled",
   "name": "Orphica OPAL Bridge",
-  "parameters": {},
+  "parameters": {
+    "Orphica": {},
+    "Opal": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

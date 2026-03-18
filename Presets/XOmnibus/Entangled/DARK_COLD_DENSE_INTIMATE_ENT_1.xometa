@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8896,
     "pairs": [
       {
         "amount": 0.8896,
@@ -9,10 +8,7 @@
         "target": "Oblong",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Overlap",
-    "target": "Oblong",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Cold Dense Intimate character entanglement — OVERLAP × OBLONG via Resonance Share. Extreme DNA zones push sound design to the edges.",

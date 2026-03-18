@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.523,
-    "source": "Origami",
-    "target": "Obese",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Obese",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.523
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.873
   },
   "mood": "Foundation",
-  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_FND_1",
+  "name": "Peach Canyon",
   "parameters": {
     "Obese": {
       "macro_character": 1.0,

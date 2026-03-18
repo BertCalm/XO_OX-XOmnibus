@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oblique \u00d7 Obsidian \u2014 Envelope Link coupling at extreme DNA corner.",
+  "description": "Oblique × Obsidian — Envelope Link coupling at extreme DNA corner.",
   "tags": [
     "kinetic",
     "oblique",
@@ -33,7 +33,10 @@
     "space": 0.953,
     "aggression": 0.445
   },
-  "parameters": {},
+  "parameters": {
+    "Oblique": {},
+    "Obsidian": {}
+  },
   "coupling": {
     "pairs": [
       {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.804,
-    "source": "Overworld",
-    "target": "Orphica",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Orphica",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.804
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.955
   },
   "mood": "Prism",
-  "name": "BRIGHT_COLD_KINETIC_SPARSE_VAST_PRS_2",
+  "name": "Silver Horizon",
   "parameters": {
     "Orphica": {
       "macro_character": 0.903,

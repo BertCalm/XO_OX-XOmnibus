@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.71,
-    "source": "Obscura",
-    "target": "Origami",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.71
+      }
+    ]
   },
   "description": "Silver plate resonance morphs into paper harmonics — photography and origami fuse cold.",
   "dna": {

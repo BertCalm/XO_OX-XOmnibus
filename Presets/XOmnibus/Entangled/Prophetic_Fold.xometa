@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "source": "Oracle",
-    "target": "Origami",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.74
+      }
+    ]
   },
   "description": "A prophecy folded into paper — GENDY breakpoints and paper harmonics share one cold voice.",
   "dna": {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.554,
-    "source": "Organon",
-    "target": "Odyssey",
-    "type": "MODULATION_FLOW"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Odyssey",
+        "type": "MODULATION_FLOW",
+        "amount": 0.554
+      }
+    ]
   },
   "dna": {
     "aggression": 0.113,
@@ -31,7 +35,7 @@
     "SPACE": 0.145
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_INTIMATE_GENTLE_FAM_VOL_34",
+  "name": "Sunrise Flutter",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.914,

@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Harp in the Rafters",
-  "parameters": {},
+  "parameters": {
+    "Osteria": {},
+    "Orphica": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

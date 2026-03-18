@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.609,
-    "source": "Ohm",
-    "target": "Owlfish",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Owlfish",
+        "type": "PITCH_SYNC",
+        "amount": 0.609
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5785,
@@ -31,7 +35,7 @@
     "SPACE": 0.8933
   },
   "mood": "Prism",
-  "name": "DARK_COLD_KINETIC_VAST_PRS_DRK_3",
+  "name": "Grain Shimmer 2",
   "parameters": {
     "Ohm": {
       "macro_character": 0.3033,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.409,
-    "source": "Ocelot",
-    "target": "OddfeliX",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "OddfeliX",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.409
+      }
+    ]
   },
   "dna": {
     "aggression": 0.611,

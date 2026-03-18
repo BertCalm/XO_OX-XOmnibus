@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8049,
-    "source": "Overworld",
-    "target": "Origami",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Origami",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.8049
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0465,
@@ -31,7 +35,7 @@
     "SPACE": 0.9444
   },
   "mood": "Aether",
-  "name": "BRIGHT_KINETIC_VAST_GENTLE_AET4_3",
+  "name": "Silver Swirl",
   "parameters": {
     "Origami": {
       "macro_character": 0.6792,

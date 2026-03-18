@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.959,
-    "source": "Outwit",
-    "target": "Oceanic",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Oceanic",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.959
+      }
+    ]
   },
   "dna": {
     "aggression": 0.966,

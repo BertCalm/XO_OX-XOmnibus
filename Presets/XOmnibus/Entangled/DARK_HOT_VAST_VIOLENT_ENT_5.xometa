@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7342,
     "pairs": [
       {
         "amount": 0.7342,
@@ -9,10 +8,7 @@
         "target": "Owlfish",
         "type": "HARMONIC_FOLD"
       }
-    ],
-    "source": "Overworld",
-    "target": "Owlfish",
-    "type": "HARMONIC_FOLD"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Dark Hot Vast Violent character entanglement — OWLFISH × OVERWORLD via Harmonic Fold. Extreme DNA zones push sound design to the edges.",

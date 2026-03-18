@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.821,
-    "source": "OddfeliX",
-    "target": "Oblong",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oblong",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.821
+      }
+    ]
   },
   "dna": {
     "aggression": 0.871,
@@ -31,7 +35,7 @@
     "SPACE": 0.296
   },
   "mood": "Family",
-  "name": "DARK_COLD_DENSE_VIOLENT_FAM_VOL_103",
+  "name": "Tone Dense 2",
   "parameters": {
     "Oblong": {
       "macro_character": 0.057,

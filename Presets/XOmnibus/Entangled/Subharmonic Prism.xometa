@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.586,
-    "source": "Oblique",
-    "target": "Owlfish",
-    "type": "WAVETABLE_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Owlfish",
+        "type": "WAVETABLE_MORPH",
+        "amount": 0.586
+      }
+    ]
   },
   "description": "Mixtur-Trautonium subharmonics as the prism's optical medium — the lower the frequency, the greater the refraction index.",
   "engines": [
@@ -77,5 +81,13 @@
     "coupling",
     "prismatic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

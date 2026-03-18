@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.885,
-    "source": "Overdub",
-    "target": "Overworld",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Overworld",
+        "type": "PITCH_SYNC",
+        "amount": 0.885
+      }
+    ]
   },
   "dna": {
     "aggression": 0.104,
@@ -31,7 +35,7 @@
     "SPACE": 0.928
   },
   "mood": "Flux",
-  "name": "HOT_STILL_VAST_GENTLE_FLX_SLW_3",
+  "name": "Ember Dome",
   "parameters": {
     "Overdub": {
       "macro_character": 0.645,

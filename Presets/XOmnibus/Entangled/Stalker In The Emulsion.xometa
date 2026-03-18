@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.632,
-    "source": "Obscura",
-    "target": "Oblique",
-    "type": "WAVETABLE_MORPH"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oblique",
+        "type": "WAVETABLE_MORPH",
+        "amount": 0.632
+      }
+    ]
   },
   "description": "Latent image of a cat mid-leap, mid-refraction, mid-disappearance — three half-visible things asserting themselves into a single vanishing point.",
   "engines": [
@@ -123,5 +127,13 @@
     "biome-shifting",
     "prismatic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

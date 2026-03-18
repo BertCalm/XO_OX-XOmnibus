@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.868,
-    "source": "Origami",
-    "target": "Ocelot",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ocelot",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.868
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.982
   },
   "mood": "Prism",
-  "name": "BRIGHT_COLD_KINETIC_SPARSE_VAST_PRS_5",
+  "name": "Mirror Swirl",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.972,

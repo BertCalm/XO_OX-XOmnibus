@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.489,
-    "source": "Overworld",
-    "target": "Overlap",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Overlap",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.489
+      }
+    ]
   },
   "dna": {
     "aggression": 0.907,
@@ -31,7 +35,7 @@
     "SPACE": 0.376
   },
   "mood": "Entangled",
-  "name": "BRIGHT WARM KINETIC SPARSE VIOLENT ENT2 1",
+  "name": "BRIGHT WARM KINETIC SPARSE ...",
   "parameters": {
     "Overlap": {
       "macro_character": 0.978,

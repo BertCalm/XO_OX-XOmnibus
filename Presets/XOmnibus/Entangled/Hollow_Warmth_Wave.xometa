@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9,
-    "source": "Obbligato",
-    "target": "Organon",
-    "type": "AMP_MOD"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Organon",
+        "type": "AMP_MOD",
+        "amount": 0.9
+      }
+    ]
   },
   "dna": {
     "aggression": 0.47,

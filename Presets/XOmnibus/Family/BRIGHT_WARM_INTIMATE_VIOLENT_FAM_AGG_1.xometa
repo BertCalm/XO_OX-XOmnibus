@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.749,
-    "source": "Osprey",
-    "target": "OddOscar",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "OddOscar",
+        "type": "FILTER_MOD",
+        "amount": 0.749
+      }
+    ]
   },
   "dna": {
     "aggression": 0.953,
@@ -31,7 +35,7 @@
     "SPACE": 0.526
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_FAM_AGG_1",
+  "name": "Sunrise Blade",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.879,

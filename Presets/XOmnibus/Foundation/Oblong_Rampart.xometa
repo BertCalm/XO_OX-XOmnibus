@@ -33,7 +33,9 @@
     "space": 0.25,
     "aggression": 0.92
   },
-  "parameters": {},
+  "parameters": {
+    "Oblong": {}
+  },
   "tags": [
     "siege",
     "oblong",

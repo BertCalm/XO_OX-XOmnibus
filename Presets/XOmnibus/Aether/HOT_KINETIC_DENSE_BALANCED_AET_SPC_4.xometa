@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.789,
-    "source": "Oblique",
-    "target": "Ombre",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ombre",
+        "type": "FILTER_MOD",
+        "amount": 0.789
+      }
+    ]
   },
   "dna": {
     "aggression": 0.888,
@@ -31,7 +35,7 @@
     "SPACE": 0.374
   },
   "mood": "Aether",
-  "name": "HOT KINETIC DENSE BALANCED AET SPC 4",
+  "name": "HOT KINETIC DENSE BALANCED ...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.742,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.588,
-    "source": "Obbligato",
-    "target": "OddfeliX",
-    "type": "HARMONIC_MESH"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "OddfeliX",
+        "type": "HARMONIC_MESH",
+        "amount": 0.588
+      }
+    ]
   },
   "dna": {
     "aggression": 0.036,
@@ -31,7 +35,7 @@
     "SPACE": 0.111
   },
   "mood": "Family",
-  "name": "DARK_HOT_INTIMATE_GENTLE_FAM_VOL_86",
+  "name": "Velvet Cascade",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.522,

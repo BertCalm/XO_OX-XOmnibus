@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.82,
-    "source": "Obsidian",
-    "target": "Odyssey",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Odyssey",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.82
+      }
+    ]
   },
   "description": "Temperature floor: Obsidian envelope controls Odyssey's emergence into near-silence.",
   "dna": {

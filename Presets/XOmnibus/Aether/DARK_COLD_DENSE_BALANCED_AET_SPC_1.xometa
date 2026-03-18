@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.479,
-    "source": "Oblique",
-    "target": "Osprey",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Osprey",
+        "type": "CHAOS_INJECT",
+        "amount": 0.479
+      }
+    ]
   },
   "dna": {
     "aggression": 0.949,
@@ -31,7 +35,7 @@
     "SPACE": 0.444
   },
   "mood": "Aether",
-  "name": "DARK COLD DENSE BALANCED AET SPC 1",
+  "name": "DARK COLD DENSE BALANCED AE...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.046,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.561,
-    "source": "Oblique",
-    "target": "Oracle",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Oracle",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.561
+      }
+    ]
   },
   "dna": {
     "aggression": 0.034,
@@ -31,7 +35,7 @@
     "SPACE": 0.488
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM KINETIC BALANCED AET SPC 3",
+  "name": "BRIGHT WARM KINETIC BALANCE...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.912,

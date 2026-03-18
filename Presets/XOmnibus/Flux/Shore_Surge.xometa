@@ -33,7 +33,9 @@
     "space": 0.27,
     "aggression": 0.67
   },
-  "parameters": {},
+  "parameters": {
+    "Osprey": {}
+  },
   "tags": [
     "flux",
     "controlled",
@@ -41,5 +43,5 @@
     "shore",
     "surge"
   ],
-  "description": "ShoreSystem at high tide \u2014 coastal wind against structured rhythm."
+  "description": "ShoreSystem at high tide — coastal wind against structured rhythm."
 }

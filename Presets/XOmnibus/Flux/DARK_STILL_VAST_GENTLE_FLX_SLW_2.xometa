@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.657,
-    "source": "Optic",
-    "target": "Overworld",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Overworld",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.657
+      }
+    ]
   },
   "dna": {
     "aggression": 0.062,
@@ -31,7 +35,7 @@
     "SPACE": 0.942
   },
   "mood": "Flux",
-  "name": "DARK_STILL_VAST_GENTLE_FLX_SLW_2",
+  "name": "Flux Cathedral",
   "parameters": {
     "Optic": {
       "macro_character": 0.383,

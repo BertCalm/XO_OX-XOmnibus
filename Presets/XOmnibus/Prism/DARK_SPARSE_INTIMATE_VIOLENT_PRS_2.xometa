@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.581,
-    "source": "Osteria",
-    "target": "Owlfish",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Owlfish",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.581
+      }
+    ]
   },
   "dna": {
     "aggression": 0.974,
@@ -31,7 +35,7 @@
     "SPACE": 0.058
   },
   "mood": "Prism",
-  "name": "DARK_SPARSE_INTIMATE_VIOLENT_PRS_2",
+  "name": "Thread Grit",
   "parameters": {
     "Osteria": {
       "macro_character": 0.524,

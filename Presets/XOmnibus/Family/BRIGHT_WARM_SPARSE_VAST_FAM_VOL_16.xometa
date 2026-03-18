@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.609,
-    "source": "Ole",
-    "target": "Ohm",
-    "type": "MODULATION_FLOW"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Ohm",
+        "type": "MODULATION_FLOW",
+        "amount": 0.609
+      }
+    ]
   },
   "dna": {
     "aggression": 0.647,
@@ -31,7 +35,7 @@
     "SPACE": 0.948
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_SPARSE_VAST_FAM_VOL_16",
+  "name": "Bloom Void",
   "parameters": {
     "Ohm": {
       "macro_character": 0.968,

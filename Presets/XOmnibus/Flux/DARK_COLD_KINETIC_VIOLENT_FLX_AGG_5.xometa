@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.876,
-    "source": "Oblong",
-    "target": "Optic",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Optic",
+        "type": "CHAOS_INJECT",
+        "amount": 0.876
+      }
+    ]
   },
   "dna": {
     "aggression": 0.93,
@@ -31,7 +35,7 @@
     "SPACE": 0.385
   },
   "mood": "Flux",
-  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_AGG_5",
+  "name": "Grain Stream",
   "parameters": {
     "Oblong": {
       "macro_character": 0.704,

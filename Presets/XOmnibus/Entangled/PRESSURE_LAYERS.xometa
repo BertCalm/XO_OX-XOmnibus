@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7097,
-    "source": "Opal",
-    "target": "Oracle",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oracle",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.7097
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0769,

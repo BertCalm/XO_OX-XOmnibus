@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.747,
-    "source": "Opal",
-    "target": "Oracle",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oracle",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.747
+      }
+    ]
   },
   "dna": {
     "aggression": 0.085,
@@ -31,7 +35,7 @@
     "SPACE": 0.516
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM DENSE BALANCED AET SPC 2",
+  "name": "BRIGHT WARM DENSE BALANCED ...",
   "parameters": {
     "Opal": {
       "macro_character": 0.912,

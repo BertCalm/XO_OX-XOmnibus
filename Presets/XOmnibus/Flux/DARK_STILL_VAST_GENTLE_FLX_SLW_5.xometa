@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.946,
-    "source": "Organon",
-    "target": "Oracle",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oracle",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.946
+      }
+    ]
   },
   "dna": {
     "aggression": 0.046,
@@ -31,7 +35,7 @@
     "SPACE": 0.877
   },
   "mood": "Flux",
-  "name": "DARK_STILL_VAST_GENTLE_FLX_SLW_5",
+  "name": "Thread Horizon 2",
   "parameters": {
     "Oracle": {
       "macro_character": 0.52,

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.61,
     "pairs": [
       {
         "amount": 0.61,
@@ -9,10 +8,7 @@
         "engineB": "Organon",
         "type": "TIMBRE_BLEND"
       }
-    ],
-    "source": "Overlap",
-    "target": "Organon",
-    "type": "TIMBRE_BLEND"
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Lion's Mane knot-topology FDN entangled with ORGANON's logical-metabolic character (Aristotelian organ-pipe variational synthesis). Coupling: Timbre Blend.",

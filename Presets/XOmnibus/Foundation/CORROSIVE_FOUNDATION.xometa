@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.431,
-    "source": "Octopus",
-    "target": "Obbligato",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Obbligato",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.431
+      }
+    ]
   },
   "dna": {
     "aggression": 0.939,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.616,
-    "source": "Obscura",
-    "target": "Oceanic",
-    "type": "TEXTURE_MORPH"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oceanic",
+        "type": "TEXTURE_MORPH",
+        "amount": 0.616
+      }
+    ]
   },
   "dna": {
     "aggression": 0.12,

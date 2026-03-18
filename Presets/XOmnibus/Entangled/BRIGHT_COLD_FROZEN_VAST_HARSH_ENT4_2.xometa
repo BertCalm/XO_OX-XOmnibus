@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.701,
-    "source": "Odyssey",
-    "target": "Obese",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Obese",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.701
+      }
+    ]
   },
   "dna": {
     "aggression": 0.896,
@@ -31,7 +35,7 @@
     "SPACE": 0.926
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_FROZEN_VAST_HARSH_ENT4_2",
+  "name": "Glass Expanse",
   "parameters": {
     "Obese": {
       "macro_character": 0.566,

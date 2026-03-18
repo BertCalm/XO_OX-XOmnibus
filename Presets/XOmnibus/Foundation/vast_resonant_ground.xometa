@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.695,
-    "source": "Osprey",
-    "target": "Obbligato",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Obbligato",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.695
+      }
+    ]
   },
   "dna": {
     "aggression": 0.35,

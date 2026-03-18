@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.493,
-    "source": "Obbligato",
-    "target": "Ottoni",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Ottoni",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.493
+      }
+    ]
   },
   "dna": {
     "aggression": 0.496,
@@ -31,7 +35,7 @@
     "SPACE": 0.919
   },
   "mood": "Family",
-  "name": "BRIGHT_COLD_SPARSE_VAST_FAM_VOL_98",
+  "name": "Frost Horizon",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.535,

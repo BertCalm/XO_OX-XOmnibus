@@ -33,7 +33,9 @@
     "space": 0.82,
     "aggression": 0.11
   },
-  "parameters": {},
+  "parameters": {
+    "Origami": {}
+  },
   "tags": [
     "tidal",
     "origami",

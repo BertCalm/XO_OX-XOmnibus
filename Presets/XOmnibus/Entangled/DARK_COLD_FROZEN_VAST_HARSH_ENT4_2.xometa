@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.793,
-    "source": "Obsidian",
-    "target": "Outwit",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Outwit",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.793
+      }
+    ]
   },
   "dna": {
     "aggression": 0.986,
@@ -31,7 +35,7 @@
     "SPACE": 0.915
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_FROZEN_VAST_HARSH_ENT4_2",
+  "name": "Grain Grit 2",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.072,

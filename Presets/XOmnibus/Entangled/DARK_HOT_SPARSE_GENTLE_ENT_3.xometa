@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7538,
     "pairs": [
       {
         "amount": 0.7538,
@@ -9,10 +8,7 @@
         "target": "Obbligato",
         "type": "PITCH_ENTANGLE"
       }
-    ],
-    "source": "OddOscar",
-    "target": "Obbligato",
-    "type": "PITCH_ENTANGLE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Hot Sparse Gentle character entanglement — OBBLIGATO × ODDOSCAR via Pitch Entangle. Extreme DNA zones push sound design to the edges.",

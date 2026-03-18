@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7292,
     "pairs": [
       {
         "amount": 0.7292,
@@ -9,10 +8,7 @@
         "target": "Octopus",
         "type": "SPECTRAL_MORPH"
       }
-    ],
-    "source": "Orphica",
-    "target": "Octopus",
-    "type": "SPECTRAL_MORPH"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Dark Kinetic Dense Gentle character entanglement — ORPHICA × OCTOPUS via Spectral Morph. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.3203
   },
   "mood": "Entangled",
-  "name": "DARK_KINETIC_DENSE_GENTLE_ENT_2",
+  "name": "Signal Cascade",
   "parameters": {
     "Octopus": {
       "amp_attack": 0.0294,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.66,
-    "source": "Ouroboros",
-    "target": "Opal",
-    "type": "FILTER_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Opal",
+        "type": "FILTER_SHARE",
+        "amount": 0.66
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Flux",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FLX 4",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Opal": {
       "macro_character": 0.94,

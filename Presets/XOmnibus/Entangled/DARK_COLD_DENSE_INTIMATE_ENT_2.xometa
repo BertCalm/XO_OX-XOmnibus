@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8579,
     "pairs": [
       {
         "amount": 0.8579,
@@ -9,10 +8,7 @@
         "target": "Orbital",
         "type": "PHASE_LOCK"
       }
-    ],
-    "source": "Obese",
-    "target": "Orbital",
-    "type": "PHASE_LOCK"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Cold Dense Intimate character entanglement — ORBITAL × OBESE via Phase Lock. Extreme DNA zones push sound design to the edges.",

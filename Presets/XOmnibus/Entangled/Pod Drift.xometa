@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Odyssey",
-    "target": "Orca",
-    "type": "ECHOLOCATION_SYNC"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Orca",
+        "type": "ECHOLOCATION_SYNC",
+        "amount": 0.7
+      }
+    ]
   },
   "description": "Orca pod navigates by drift FM — wavetable odyssey mapped as echolocation terrain",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Pod Drift",
-  "parameters": {},
+  "parameters": {
+    "Odyssey": {},
+    "Orca": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.51,
@@ -43,5 +50,13 @@
     "orca",
     "wavetable"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

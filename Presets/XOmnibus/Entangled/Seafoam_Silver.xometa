@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
-    "intensity": "Deep",
-    "source": "Orphica",
-    "target": "Obscura",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.78
+      }
+    ]
   },
   "description": "Spectral morphing: OBSCURA's silver plate becomes ORPHICA's resonant canvas — brightness 0.92.",
   "dna": {

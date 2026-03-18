@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Focal Point White",
-  "parameters": {},
+  "parameters": {
+    "Optic": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

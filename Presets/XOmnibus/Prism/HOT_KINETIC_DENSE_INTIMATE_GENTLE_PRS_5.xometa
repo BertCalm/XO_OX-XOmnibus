@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.641,
-    "source": "Orphica",
-    "target": "Oracle",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.641
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.077
   },
   "mood": "Prism",
-  "name": "HOT_KINETIC_DENSE_INTIMATE_GENTLE_PRS_5",
+  "name": "Dusk Molten",
   "parameters": {
     "Oracle": {
       "macro_character": 0.466,

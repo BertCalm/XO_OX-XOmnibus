@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7267,
-    "source": "Ocelot",
-    "target": "Oracle",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Oracle",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.7267
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9465,
@@ -31,7 +35,7 @@
     "SPACE": 0.6084
   },
   "mood": "Prism",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_PRS_DRK_3",
+  "name": "Tone Edge",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.7079,

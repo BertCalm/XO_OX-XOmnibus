@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.775,
-    "source": "Oblong",
-    "target": "Origami",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Origami",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.775
+      }
+    ]
   },
   "dna": {
     "aggression": 0.561,
@@ -31,7 +35,7 @@
     "SPACE": 0.099
   },
   "mood": "Family",
-  "name": "BRIGHT WARM STILL INTIMATE DENSE FAM2 1",
+  "name": "BRIGHT WARM STILL INTIMATE ...",
   "parameters": {
     "Oblong": {
       "macro_character": 0.956,

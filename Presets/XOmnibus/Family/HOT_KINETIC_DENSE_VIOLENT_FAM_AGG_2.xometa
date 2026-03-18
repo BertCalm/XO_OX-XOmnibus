@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.824,
-    "source": "Osprey",
-    "target": "OddOscar",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "OddOscar",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.824
+      }
+    ]
   },
   "dna": {
     "aggression": 0.983,
@@ -31,7 +35,7 @@
     "SPACE": 0.663
   },
   "mood": "Family",
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FAM_AGG_2",
+  "name": "Thread Storm 5",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.372,

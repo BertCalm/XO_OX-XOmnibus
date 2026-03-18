@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.649,
-    "source": "Overdub",
-    "target": "Oblique",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Oblique",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.649
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9634,
@@ -31,7 +35,7 @@
     "SPACE": 0.0706
   },
   "mood": "Flux",
-  "name": "DARK_HOT_KINETIC_INTIMATE_VIOLENT_FLX2_2",
+  "name": "Amber Crush",
   "parameters": {
     "Oblique": {
       "macro_character": 0.5019,

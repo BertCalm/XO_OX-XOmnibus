@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.484,
-    "source": "Ottoni",
-    "target": "Odyssey",
-    "type": "MODULATION_FLOW"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Odyssey",
+        "type": "MODULATION_FLOW",
+        "amount": 0.484
+      }
+    ]
   },
   "dna": {
     "aggression": 0.944,
@@ -31,7 +35,7 @@
     "SPACE": 0.655
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_STILL_VIOLENT_FAM_VOL_133",
+  "name": "Sunrise Fang 2",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.883,

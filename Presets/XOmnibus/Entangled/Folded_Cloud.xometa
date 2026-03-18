@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.85,
-    "source": "Origami",
-    "target": "Opal",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Opal",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.85
+      }
+    ]
   },
   "description": "Origami envelope shapes grain cloud density — the cloud folds into almost nothing.",
   "dna": {

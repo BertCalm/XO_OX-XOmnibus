@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.829,
-    "source": "Organon",
-    "target": "Obbligato",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Obbligato",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.829
+      }
+    ]
   },
   "dna": {
     "aggression": 0.671,
@@ -31,7 +35,7 @@
     "SPACE": 0.968
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_SPARSE_VAST_FAM_VOL_18",
+  "name": "Golden Expanse 2",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.894,

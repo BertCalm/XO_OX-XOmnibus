@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7608,
-    "source": "Orbital",
-    "target": "Origami",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Origami",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.7608
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9454,
@@ -31,7 +35,7 @@
     "SPACE": 0.0871
   },
   "mood": "Aether",
-  "name": "DARK_DENSE_INTIMATE_VIOLENT_AET2_5",
+  "name": "Amber Heavy",
   "parameters": {
     "Orbital": {
       "macro_character": 0.1132,

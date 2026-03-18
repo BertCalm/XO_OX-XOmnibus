@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.73,
-    "source": "Oblique",
-    "target": "Optic",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Optic",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.73
+      }
+    ]
   },
   "dna": {
     "aggression": 0.951,
@@ -31,7 +35,7 @@
     "SPACE": 0.409
   },
   "mood": "Prism",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_PRS_1",
+  "name": "Radiant Edge 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.922,

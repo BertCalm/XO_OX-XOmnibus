@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.58,
-    "source": "Outwit",
-    "target": "Optic",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Optic",
+        "type": "FILTER_MOD",
+        "amount": 0.58
+      }
+    ]
   },
   "dna": {
     "aggression": 0.54,

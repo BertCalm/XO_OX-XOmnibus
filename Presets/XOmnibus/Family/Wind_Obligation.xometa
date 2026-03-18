@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Wind Obligation",
-  "parameters": {},
+  "parameters": {
+    "Obbligato": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.371,
-    "source": "Overdub",
-    "target": "Obsidian",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Obsidian",
+        "type": "FILTER_MOD",
+        "amount": 0.371
+      }
+    ]
   },
   "dna": {
     "aggression": 0.267,

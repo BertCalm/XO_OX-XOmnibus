@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.755,
-    "source": "OddOscar",
-    "target": "Oceanic",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Oceanic",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.755
+      }
+    ]
   },
   "dna": {
     "aggression": 0.905,
@@ -31,7 +35,7 @@
     "SPACE": 0.237
   },
   "mood": "Atmosphere",
-  "name": "COLD_DENSE_INTIMATE_VIOLENT_ATM_2",
+  "name": "Tone Edge 3",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.597,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.826,
-    "source": "Oracle",
-    "target": "Obese",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Obese",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.826
+      }
+    ]
   },
   "dna": {
     "aggression": 0.988,
@@ -31,7 +35,7 @@
     "SPACE": 0.572
   },
   "mood": "Foundation",
-  "name": "BRIGHT_COLD_KINETIC_VIOLENT_FND_AGG_3",
+  "name": "Arctic Edge",
   "parameters": {
     "Obese": {
       "macro_character": 0.821,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.554,
-    "source": "Oblique",
-    "target": "Orbital",
-    "type": "RESONANCE_CHAIN"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Orbital",
+        "type": "RESONANCE_CHAIN",
+        "amount": 0.554
+      }
+    ]
   },
   "dna": {
     "aggression": 0.14,

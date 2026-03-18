@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6267,
-    "source": "Ocelot",
-    "target": "Ole",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Ole",
+        "type": "FILTER_MOD",
+        "amount": 0.6267
+      }
+    ]
   },
   "dna": {
     "aggression": 0.461,
@@ -31,7 +35,7 @@
     "SPACE": 0.0649
   },
   "mood": "Prism",
-  "name": "DARK_HOT_STILL_INTIMATE_PRS_DRK_5",
+  "name": "Velvet Grain",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.7087,

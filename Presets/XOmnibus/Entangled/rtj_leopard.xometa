@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.776,
-    "source": "Ocelot",
-    "target": "Oblique",
-    "type": "PITCH_WARP"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Oblique",
+        "type": "PITCH_WARP",
+        "amount": 0.776
+      }
+    ]
   },
   "dna": {
     "aggression": 0.85,

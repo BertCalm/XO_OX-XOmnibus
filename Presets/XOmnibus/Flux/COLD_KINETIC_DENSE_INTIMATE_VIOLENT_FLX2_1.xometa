@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.868,
-    "source": "Optic",
-    "target": "Overworld",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Overworld",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.868
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9514,
@@ -31,7 +35,7 @@
     "SPACE": 0.0299
   },
   "mood": "Flux",
-  "name": "COLD_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_1",
+  "name": "Flux Fang",
   "parameters": {
     "Optic": {
       "macro_character": 0.3509,

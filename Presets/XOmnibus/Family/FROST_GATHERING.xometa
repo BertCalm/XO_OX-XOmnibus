@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Ohm",
-    "target": "Ole",
-    "type": "RHYTHM_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Ole",
+        "type": "RHYTHM_SYNC",
+        "amount": 0.65
+      }
+    ]
   },
   "dna": {
     "aggression": 0.913,

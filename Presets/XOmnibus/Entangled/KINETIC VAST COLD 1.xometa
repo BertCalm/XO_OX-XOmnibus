@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Overlap \u00d7 Oceanic \u2014 Chaos Inject coupling at extreme DNA corner.",
+  "description": "Overlap × Oceanic — Chaos Inject coupling at extreme DNA corner.",
   "tags": [
     "kinetic",
     "overlap",
@@ -33,7 +33,10 @@
     "space": 0.923,
     "aggression": 0.497
   },
-  "parameters": {},
+  "parameters": {
+    "Overlap": {},
+    "Oceanic": {}
+  },
   "coupling": {
     "pairs": [
       {

@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Logic and Chaos",
-  "parameters": {},
+  "parameters": {
+    "Organon": {},
+    "Ouroboros": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

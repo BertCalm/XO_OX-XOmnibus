@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6618,
     "pairs": [
       {
         "amount": 0.6618,
@@ -9,10 +8,7 @@
         "target": "Obbligato",
         "type": "FORMANT_BRIDGE"
       }
-    ],
-    "source": "Oceanic",
-    "target": "Obbligato",
-    "type": "FORMANT_BRIDGE"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Dark Cold Dense Intimate character entanglement — OBBLIGATO × OCEANIC via Formant Bridge. Extreme DNA zones push sound design to the edges.",

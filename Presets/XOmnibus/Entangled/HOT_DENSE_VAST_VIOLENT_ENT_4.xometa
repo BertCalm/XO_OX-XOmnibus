@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9617,
     "pairs": [
       {
         "amount": 0.9617,
@@ -9,10 +8,7 @@
         "target": "Ocelot",
         "type": "VELOCITY_COUPLE"
       }
-    ],
-    "source": "Ohm",
-    "target": "Ocelot",
-    "type": "VELOCITY_COUPLE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Hot Dense Vast Violent character entanglement — OHM × OCELOT via Velocity Couple. Extreme DNA zones push sound design to the edges.",

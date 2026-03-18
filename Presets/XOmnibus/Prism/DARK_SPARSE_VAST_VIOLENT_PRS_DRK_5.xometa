@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5578,
-    "source": "Ocelot",
-    "target": "Origami",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Origami",
+        "type": "CHAOS_INJECT",
+        "amount": 0.5578
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9698,
@@ -31,7 +35,7 @@
     "SPACE": 0.9602
   },
   "mood": "Prism",
-  "name": "DARK_SPARSE_VAST_VIOLENT_PRS_DRK_5",
+  "name": "Wave Grit",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.7003,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5087,
-    "source": "Orbital",
-    "target": "Oracle",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Oracle",
+        "type": "CHAOS_INJECT",
+        "amount": 0.5087
+      }
+    ]
   },
   "dna": {
     "aggression": 0.6328,
@@ -31,7 +35,7 @@
     "SPACE": 0.0809
   },
   "mood": "Aether",
-  "name": "DARK_HOT_KINETIC_INTIMATE_AET2_1",
+  "name": "Cocoa Stream",
   "parameters": {
     "Oracle": {
       "macro_character": 0.0714,

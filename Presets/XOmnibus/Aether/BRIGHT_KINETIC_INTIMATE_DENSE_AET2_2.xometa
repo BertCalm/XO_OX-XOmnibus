@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6124,
-    "source": "Obscura",
-    "target": "Orbital",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orbital",
+        "type": "CHAOS_INJECT",
+        "amount": 0.6124
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3561,
@@ -31,7 +35,7 @@
     "SPACE": 0.0287
   },
   "mood": "Aether",
-  "name": "BRIGHT_KINETIC_INTIMATE_DENSE_AET2_2",
+  "name": "Tone Shimmer 2",
   "parameters": {
     "Obscura": {
       "macro_character": 0.9828,

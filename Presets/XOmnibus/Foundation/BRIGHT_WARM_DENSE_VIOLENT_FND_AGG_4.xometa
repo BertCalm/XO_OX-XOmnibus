@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.983,
-    "source": "OddfeliX",
-    "target": "Overbite",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Overbite",
+        "type": "FILTER_MOD",
+        "amount": 0.983
+      }
+    ]
   },
   "dna": {
     "aggression": 0.952,
@@ -31,7 +35,7 @@
     "SPACE": 0.875
   },
   "mood": "Foundation",
-  "name": "BRIGHT_WARM_DENSE_VIOLENT_FND_AGG_4",
+  "name": "Radiant Edge",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.75,

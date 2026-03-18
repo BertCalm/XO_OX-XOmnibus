@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.823,
-    "source": "OddfeliX",
-    "target": "Organon",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Organon",
+        "type": "CHAOS_INJECT",
+        "amount": 0.823
+      }
+    ]
   },
   "dna": {
     "aggression": 0.918,
@@ -31,7 +35,7 @@
     "SPACE": 0.446
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_ENT_AGG_1",
+  "name": "Honey Stream 2",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.578,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.662,
-    "source": "Onset",
-    "target": "Orca",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Orca",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.662
+      }
+    ]
   },
   "dna": {
     "aggression": 0.334,
@@ -31,7 +35,7 @@
     "SPACE": 0.983
   },
   "mood": "Entangled",
-  "name": "DARK COLD KINETIC VAST DENSE ENT2 5",
+  "name": "DARK COLD KINETIC VAST DENS...",
   "parameters": {
     "Onset": {
       "macro_character": 0.11,

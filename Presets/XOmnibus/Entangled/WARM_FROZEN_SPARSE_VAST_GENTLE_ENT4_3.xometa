@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.847,
-    "source": "Oblique",
-    "target": "Overbite",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overbite",
+        "type": "PITCH_SYNC",
+        "amount": 0.847
+      }
+    ]
   },
   "dna": {
     "aggression": 0.113,
@@ -31,7 +35,7 @@
     "SPACE": 0.877
   },
   "mood": "Entangled",
-  "name": "WARM_FROZEN_SPARSE_VAST_GENTLE_ENT4_3",
+  "name": "Radiant Dome",
   "parameters": {
     "Oblique": {
       "macro_character": 0.776,

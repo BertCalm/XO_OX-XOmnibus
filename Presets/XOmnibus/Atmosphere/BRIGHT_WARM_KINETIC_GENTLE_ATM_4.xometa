@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.62,
-    "source": "Organon",
-    "target": "Orbital",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Orbital",
+        "type": "PITCH_SYNC",
+        "amount": 0.62
+      }
+    ]
   },
   "dna": {
     "aggression": 0.06,
@@ -31,7 +35,7 @@
     "SPACE": 0.523
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_WARM_KINETIC_GENTLE_ATM_4",
+  "name": "Glow Shimmer",
   "parameters": {
     "Orbital": {
       "macro_character": 0.47,

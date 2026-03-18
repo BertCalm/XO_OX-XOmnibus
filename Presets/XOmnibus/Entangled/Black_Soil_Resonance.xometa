@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.67,
-    "source": "Overworld",
-    "target": "Obsidian",
-    "type": "AMP_MOD"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Obsidian",
+        "type": "AMP_MOD",
+        "amount": 0.67
+      }
+    ]
   },
   "dna": {
     "aggression": 0.72,

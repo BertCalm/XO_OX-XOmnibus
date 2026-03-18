@@ -32,7 +32,10 @@
   ],
   "mood": "Entangled",
   "name": "HOT FURY KINETIC 5",
-  "parameters": {},
+  "parameters": {
+    "OddfeliX": {},
+    "Octopus": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

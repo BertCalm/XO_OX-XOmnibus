@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.108,
-    "source": "Osteria",
-    "target": "Optic",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Optic",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.108
+      }
+    ]
   },
   "dna": {
     "aggression": 0.075,

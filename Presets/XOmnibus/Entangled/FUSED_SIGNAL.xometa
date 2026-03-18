@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.374,
-    "source": "Ottoni",
-    "target": "Obese",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Obese",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.374
+      }
+    ]
   },
   "dna": {
     "aggression": 0.159,

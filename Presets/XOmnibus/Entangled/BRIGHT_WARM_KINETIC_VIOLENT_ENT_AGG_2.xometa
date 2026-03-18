@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.977,
-    "source": "Organon",
-    "target": "Odyssey",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Odyssey",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.977
+      }
+    ]
   },
   "dna": {
     "aggression": 0.942,
@@ -31,7 +35,7 @@
     "SPACE": 0.358
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_ENT_AGG_2",
+  "name": "Sunrise Crush",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.366,

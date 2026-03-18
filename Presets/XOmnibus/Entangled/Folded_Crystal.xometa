@@ -1,12 +1,16 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.73,
-    "source": "Origami",
-    "target": "Obsidian",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Obsidian",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.73
+      }
+    ]
   },
-  "description": "A paper fold frozen mid-crease \u2014 Origami's vermillion edge meets Obsidian's white silence.",
+  "description": "A paper fold frozen mid-crease — Origami's vermillion edge meets Obsidian's white silence.",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.07,

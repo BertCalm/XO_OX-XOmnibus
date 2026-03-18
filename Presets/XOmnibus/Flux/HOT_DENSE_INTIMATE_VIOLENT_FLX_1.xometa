@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7822,
-    "source": "Opal",
-    "target": "Origami",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Origami",
+        "type": "FILTER_MOD",
+        "amount": 0.7822
+      }
+    ]
   },
   "dna": {
     "aggression": 0.924,
@@ -31,7 +35,7 @@
     "SPACE": 0.1017
   },
   "mood": "Flux",
-  "name": "HOT_DENSE_INTIMATE_VIOLENT_FLX_1",
+  "name": "Node Heavy 2",
   "parameters": {
     "Opal": {
       "macro_character": 0.7475,

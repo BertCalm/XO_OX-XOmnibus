@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5952,
-    "source": "Orbital",
-    "target": "Oblique",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Oblique",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.5952
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1198,
@@ -31,7 +35,7 @@
     "SPACE": 0.0788
   },
   "mood": "Aether",
-  "name": "HOT_DENSE_INTIMATE_GENTLE_AET3_5",
+  "name": "Grain Thick",
   "parameters": {
     "Oblique": {
       "macro_character": 0.8239,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.815,
-    "source": "Overdub",
-    "target": "Odyssey",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Odyssey",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.815
+      }
+    ]
   },
   "dna": {
     "aggression": 0.947,
@@ -31,7 +35,7 @@
     "SPACE": 0.9
   },
   "mood": "Flux",
-  "name": "DARK_DENSE_VAST_VIOLENT_FLX_AGG_2",
+  "name": "Thread Storm 4",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.559,

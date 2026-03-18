@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.64,
-    "source": "Oracle",
-    "target": "Obscura",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Obscura",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.64
+      }
+    ]
   },
   "description": "Oracle shifts Obscura's resonant frequencies into cold augury — reading the stiffness of ice.",
   "dna": {

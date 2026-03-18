@@ -1,12 +1,16 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Ohm",
-    "target": "Orca",
-    "type": "ECHOLOCATION_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Orca",
+        "type": "ECHOLOCATION_SYNC",
+        "amount": 0.7
+      }
+    ]
   },
-  "description": "Sage groove carried on deep tidal current \u2014 orca pod navigates by ohm resonance",
+  "description": "Sage groove carried on deep tidal current — orca pod navigates by ohm resonance",
   "engines": [
     "Ohm",
     "Orca"
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Pod Migration II",
-  "parameters": {},
+  "parameters": {
+    "Ohm": {},
+    "Orca": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.42,
@@ -43,5 +50,13 @@
     "orca",
     "hippy"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

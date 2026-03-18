@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "source": "Oblong",
-    "target": "Organon",
-    "type": "SPATIAL_BIND"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Organon",
+        "type": "SPATIAL_BIND",
+        "amount": 0.74
+      }
+    ]
   },
   "dna": {
     "aggression": 0.072,
@@ -31,7 +35,7 @@
     "SPACE": 0.085
   },
   "mood": "Family",
-  "name": "DARK_HOT_INTIMATE_GENTLE_FAM_VOL_89",
+  "name": "Smoke Flux",
   "parameters": {
     "Oblong": {
       "macro_character": 0.492,

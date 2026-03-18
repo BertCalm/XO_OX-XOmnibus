@@ -33,7 +33,9 @@
     "space": 0.09,
     "aggression": 0.73
   },
-  "parameters": {},
+  "parameters": {
+    "Organon": {}
+  },
   "tags": [
     "flux",
     "dense-flux",
@@ -41,5 +43,5 @@
     "argument",
     "crush"
   ],
-  "description": "Organon argument crush \u2014 logical structure compressed beyond recognition."
+  "description": "Organon argument crush — logical structure compressed beyond recognition."
 }

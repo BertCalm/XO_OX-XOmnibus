@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.791,
-    "source": "Ocelot",
-    "target": "OddOscar",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "OddOscar",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.791
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8,

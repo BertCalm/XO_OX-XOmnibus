@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.716,
-    "source": "Opal",
-    "target": "OddfeliX",
-    "type": "FILTER_LINK"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "OddfeliX",
+        "type": "FILTER_LINK",
+        "amount": 0.716
+      }
+    ]
   },
   "dna": {
     "aggression": 0.024,
@@ -31,7 +35,7 @@
     "SPACE": 0.03
   },
   "mood": "Family",
-  "name": "DARK_HOT_INTIMATE_GENTLE_FAM_VOL_88",
+  "name": "Rust Fragment",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.497,

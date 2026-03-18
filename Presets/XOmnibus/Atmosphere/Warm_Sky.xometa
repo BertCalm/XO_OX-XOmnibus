@@ -24,7 +24,9 @@
   ],
   "mood": "Atmosphere",
   "name": "Warm Sky",
-  "parameters": {},
+  "parameters": {
+    "Opal": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.192,

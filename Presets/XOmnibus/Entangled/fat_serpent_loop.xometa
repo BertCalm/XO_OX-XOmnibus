@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9,
-    "source": "Obese",
-    "target": "Ouroboros",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Ouroboros",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.9
+      }
+    ]
   },
   "created": "2026-03-16",
   "dna": {

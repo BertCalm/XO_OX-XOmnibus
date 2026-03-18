@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.881,
-    "source": "Oracle",
-    "target": "Oceanic",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Oceanic",
+        "type": "PITCH_SYNC",
+        "amount": 0.881
+      }
+    ]
   },
   "dna": {
     "aggression": 0.933,
@@ -31,7 +35,7 @@
     "SPACE": 0.044
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT KINETIC TIGHT VIOLENT ATM AGG 5",
+  "name": "BRIGHT KINETIC TIGHT VIOLEN...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.835,

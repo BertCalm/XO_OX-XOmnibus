@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.799,
-    "source": "Oblique",
-    "target": "Owlfish",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Owlfish",
+        "type": "CHAOS_INJECT",
+        "amount": 0.799
+      }
+    ]
   },
   "dna": {
     "aggression": 0.958,

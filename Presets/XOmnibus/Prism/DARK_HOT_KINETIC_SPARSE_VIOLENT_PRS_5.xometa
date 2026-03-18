@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.939,
-    "source": "Ole",
-    "target": "Owlfish",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Owlfish",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.939
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.483
   },
   "mood": "Prism",
-  "name": "DARK_HOT_KINETIC_SPARSE_VIOLENT_PRS_5",
+  "name": "Copper Shimmer",
   "parameters": {
     "Ole": {
       "macro_character": 0.161,

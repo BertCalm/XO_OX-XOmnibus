@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8383,
-    "source": "Ole",
-    "target": "Oblique",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Oblique",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8383
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9002,
@@ -31,7 +35,7 @@
     "SPACE": 0.9262
   },
   "mood": "Prism",
-  "name": "DARK_COLD_VAST_VIOLENT_PRS_DRK_3",
+  "name": "Fragment Orbit",
   "parameters": {
     "Oblique": {
       "macro_character": 0.5074,

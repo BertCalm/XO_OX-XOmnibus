@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.564,
-    "source": "Orphica",
-    "target": "Origami",
-    "type": "PHASE_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Origami",
+        "type": "PHASE_COUPLE",
+        "amount": 0.564
+      }
+    ]
   },
   "dna": {
     "aggression": 0.542,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.429,
-    "source": "OddOscar",
-    "target": "Osprey",
-    "type": "DYNAMIC_CROSS"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Osprey",
+        "type": "DYNAMIC_CROSS",
+        "amount": 0.429
+      }
+    ]
   },
   "dna": {
     "aggression": 0.023,
@@ -31,7 +35,7 @@
     "SPACE": 0.059
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_INTIMATE_GENTLE_FAM_VOL_32",
+  "name": "Halo Surge 3",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.928,

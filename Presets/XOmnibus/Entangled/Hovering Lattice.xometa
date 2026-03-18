@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.792,
-    "source": "Overlap",
-    "target": "Outwit",
-    "type": "CHAOS_INJECTION"
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Outwit",
+        "type": "CHAOS_INJECTION",
+        "amount": 0.792
+      }
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "OVERLAP frond-spread traces OUTWIT Wolfram frontier — the jellyfish maps the octopus's thought in reverb",
@@ -78,5 +82,13 @@
     "fdn",
     "reverb"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.457,
+    "warmth": 0.5,
+    "movement": 0.493,
+    "density": 0.588,
+    "space": 0.053,
+    "aggression": 0.126
+  }
 }

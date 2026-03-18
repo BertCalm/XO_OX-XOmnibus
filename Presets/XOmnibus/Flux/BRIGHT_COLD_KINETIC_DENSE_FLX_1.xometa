@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.682,
-    "source": "Oblique",
-    "target": "Oracle",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Oracle",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.682
+      }
+    ]
   },
   "dna": {
     "aggression": 0.6339,
@@ -31,7 +35,7 @@
     "SPACE": 0.5103
   },
   "mood": "Flux",
-  "name": "BRIGHT_COLD_KINETIC_DENSE_FLX_1",
+  "name": "Frost Pulse",
   "parameters": {
     "Oblique": {
       "macro_character": 0.9377,

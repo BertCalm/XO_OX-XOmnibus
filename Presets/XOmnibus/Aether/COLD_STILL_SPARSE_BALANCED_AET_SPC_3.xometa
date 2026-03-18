@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.438,
-    "source": "Organon",
-    "target": "Oceanic",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oceanic",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.438
+      }
+    ]
   },
   "dna": {
     "aggression": 0.026,
@@ -31,7 +35,7 @@
     "SPACE": 0.575
   },
   "mood": "Aether",
-  "name": "COLD STILL SPARSE BALANCED AET SPC 3",
+  "name": "COLD STILL SPARSE BALANCED ...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.345,

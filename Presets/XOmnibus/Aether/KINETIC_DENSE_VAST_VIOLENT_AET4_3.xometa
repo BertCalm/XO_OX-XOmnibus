@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8163,
-    "source": "Organon",
-    "target": "Obscura",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8163
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9487,
@@ -31,7 +35,7 @@
     "SPACE": 0.9072
   },
   "mood": "Aether",
-  "name": "KINETIC_DENSE_VAST_VIOLENT_AET4_3",
+  "name": "Flux Packed 2",
   "parameters": {
     "Obscura": {
       "macro_character": 0.7028,

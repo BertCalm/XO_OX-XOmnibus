@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.546,
-    "source": "Overbite",
-    "target": "Overlap",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Overlap",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.546
+      }
+    ]
   },
   "dna": {
     "aggression": 0.014,
@@ -31,7 +35,7 @@
     "SPACE": 0.67
   },
   "mood": "Prism",
-  "name": "BLACK PRISM",
+  "name": "Black Prism",
   "parameters": {
     "Overbite": {
       "macro_character": 0.771,

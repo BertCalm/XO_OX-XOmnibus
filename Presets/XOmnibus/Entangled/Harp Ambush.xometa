@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.696,
-    "source": "Ocelot",
-    "target": "Orphica",
-    "type": "GRANULAR_EXCHANGE"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Orphica",
+        "type": "GRANULAR_EXCHANGE",
+        "amount": 0.696
+      }
+    ]
   },
   "description": "Orphica pluck triggering ocelot ambush macro — the microsound harp's high partials as small-prey frequency signature.",
   "engines": [
@@ -76,5 +80,13 @@
     "coupling",
     "biome-shifting"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

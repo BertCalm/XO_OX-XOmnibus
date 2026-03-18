@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.79,
-    "source": "Odyssey",
-    "target": "Obscura",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Obscura",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.79
+      }
+    ]
   },
   "description": "Spatially coupled wavetable and plate resonance — two planes in frozen co-existence.",
   "dna": {

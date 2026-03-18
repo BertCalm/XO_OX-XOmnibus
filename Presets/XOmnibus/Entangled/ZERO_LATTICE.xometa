@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.826,
-    "source": "Ombre",
-    "target": "Obscura",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Obscura",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.826
+      }
+    ]
   },
   "dna": {
     "aggression": 0.831,

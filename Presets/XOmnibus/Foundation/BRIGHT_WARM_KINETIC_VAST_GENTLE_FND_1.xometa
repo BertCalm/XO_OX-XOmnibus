@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.793,
-    "source": "Overbite",
-    "target": "OddOscar",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "OddOscar",
+        "type": "FILTER_MOD",
+        "amount": 0.793
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.94
   },
   "mood": "Foundation",
-  "name": "BRIGHT_WARM_KINETIC_VAST_GENTLE_FND_1",
+  "name": "Sunrise Canyon",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.953,

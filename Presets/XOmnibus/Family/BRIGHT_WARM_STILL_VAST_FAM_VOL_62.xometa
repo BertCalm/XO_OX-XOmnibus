@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.467,
-    "source": "Organon",
-    "target": "Osprey",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Osprey",
+        "type": "PITCH_SYNC",
+        "amount": 0.467
+      }
+    ]
   },
   "dna": {
     "aggression": 0.333,
@@ -31,7 +35,7 @@
     "SPACE": 0.954
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_STILL_VAST_FAM_VOL_62",
+  "name": "Sunrise Canyon 2",
   "parameters": {
     "Organon": {
       "macro_character": 0.957,

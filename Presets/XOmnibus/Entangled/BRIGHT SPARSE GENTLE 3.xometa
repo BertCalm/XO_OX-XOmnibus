@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oblong \u00d7 Oracle \u2014 Harmonic Fold coupling at extreme DNA corner.",
+  "description": "Oblong × Oracle — Harmonic Fold coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "oblong",
@@ -33,7 +33,10 @@
     "space": 0.362,
     "aggression": 0.065
   },
-  "parameters": {},
+  "parameters": {
+    "Oblong": {},
+    "Oracle": {}
+  },
   "coupling": {
     "pairs": [
       {

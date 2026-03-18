@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.896,
-    "source": "Oblong",
-    "target": "Origami",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.896
+      }
+    ]
   },
   "dna": {
     "aggression": 0.972,
@@ -31,7 +35,7 @@
     "SPACE": 0.9
   },
   "mood": "Flux",
-  "name": "DARK_DENSE_VAST_VIOLENT_FLX_AGG_1",
+  "name": "Rust Fang",
   "parameters": {
     "Oblong": {
       "macro_character": 0.533,

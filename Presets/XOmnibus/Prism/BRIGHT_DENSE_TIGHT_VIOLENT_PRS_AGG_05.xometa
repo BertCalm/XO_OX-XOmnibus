@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.784,
-    "source": "Ocelot",
-    "target": "Overworld",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Overworld",
+        "type": "FILTER_MOD",
+        "amount": 0.784
+      }
+    ]
   },
   "dna": {
     "aggression": 0.982,
@@ -31,7 +35,7 @@
     "SPACE": 0.08
   },
   "mood": "Prism",
-  "name": "BRIGHT DENSE TIGHT VIOLENT PRS AGG 5",
+  "name": "BRIGHT DENSE TIGHT VIOLENT ...",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.934,

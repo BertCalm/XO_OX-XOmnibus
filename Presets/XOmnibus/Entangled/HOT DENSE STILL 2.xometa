@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Obscura \u00d7 Odyssey \u2014 Frequency Shift coupling at extreme DNA corner.",
+  "description": "Obscura × Odyssey — Frequency Shift coupling at extreme DNA corner.",
   "tags": [
     "hot",
     "obscura",
@@ -33,7 +33,10 @@
     "space": 0.581,
     "aggression": 0.541
   },
-  "parameters": {},
+  "parameters": {
+    "Obscura": {},
+    "Odyssey": {}
+  },
   "coupling": {
     "pairs": [
       {

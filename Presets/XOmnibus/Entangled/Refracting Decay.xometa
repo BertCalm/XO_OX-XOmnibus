@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.576,
-    "source": "Overlap",
-    "target": "Ottoni",
-    "type": "GRANULAR_EXCHANGE"
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Ottoni",
+        "type": "GRANULAR_EXCHANGE",
+        "amount": 0.576
+      }
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Ottoni bell sustain feeds OVERLAP decay time — brass ring and FDN tail merge into one shimmer",
@@ -62,5 +66,13 @@
     "fdn",
     "reverb"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.722,
+    "warmth": 0.5,
+    "movement": 0.188,
+    "density": 0.5,
+    "space": 0.063,
+    "aggression": 0.3
+  }
 }

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.408,
-    "source": "OddOscar",
-    "target": "Overdub",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Overdub",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.408
+      }
+    ]
   },
   "dna": {
     "aggression": 0.353,

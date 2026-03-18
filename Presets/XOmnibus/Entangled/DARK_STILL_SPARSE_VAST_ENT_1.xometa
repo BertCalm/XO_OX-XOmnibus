@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7925,
     "pairs": [
       {
         "amount": 0.7925,
@@ -9,10 +8,7 @@
         "target": "Opal",
         "type": "TIMBRAL_BLEED"
       }
-    ],
-    "source": "Orca",
-    "target": "Opal",
-    "type": "TIMBRAL_BLEED"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Still Sparse Vast character entanglement — OPAL × ORCA via Timbral Bleed. Extreme DNA zones push sound design to the edges.",

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.506,
-    "source": "Oblique",
-    "target": "Ole",
-    "type": "ENVELOPE_FOLLOW"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ole",
+        "type": "ENVELOPE_FOLLOW",
+        "amount": 0.506
+      }
+    ]
   },
   "dna": {
     "aggression": 0.326,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8701,
-    "source": "Orbital",
-    "target": "OddOscar",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "OddOscar",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8701
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5996,
@@ -31,7 +35,7 @@
     "SPACE": 0.0412
   },
   "mood": "Aether",
-  "name": "BRIGHT_COLD_STILL_INTIMATE_AET2_2",
+  "name": "Silver Edge",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.9192,

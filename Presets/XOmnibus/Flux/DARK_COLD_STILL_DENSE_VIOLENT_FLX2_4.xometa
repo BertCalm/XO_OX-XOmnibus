@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.88,
-    "source": "Overdub",
-    "target": "Ouroboros",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Ouroboros",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.88
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9886,
@@ -31,7 +35,7 @@
     "SPACE": 0.515
   },
   "mood": "Flux",
-  "name": "DARK_COLD_STILL_DENSE_VIOLENT_FLX2_4",
+  "name": "Wave Rage 2",
   "parameters": {
     "Ouroboros": {
       "macro_character": 0.0697,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.981,
-    "source": "Orbital",
-    "target": "Oceanic",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Oceanic",
+        "type": "PITCH_SYNC",
+        "amount": 0.981
+      }
+    ]
   },
   "dna": {
     "aggression": 0.981,
@@ -31,7 +35,7 @@
     "SPACE": 0.436
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT WARM DENSE VIOLENT ATM AGG 3",
+  "name": "BRIGHT WARM DENSE VIOLENT A...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.957,

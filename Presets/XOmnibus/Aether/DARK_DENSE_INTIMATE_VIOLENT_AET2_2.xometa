@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8074,
-    "source": "OddOscar",
-    "target": "Oblique",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Oblique",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.8074
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9518,
@@ -31,7 +35,7 @@
     "SPACE": 0.053
   },
   "mood": "Aether",
-  "name": "DARK_DENSE_INTIMATE_VIOLENT_AET2_2",
+  "name": "Fragment Grit",
   "parameters": {
     "Oblique": {
       "macro_character": 0.0634,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6459,
-    "source": "OddfeliX",
-    "target": "Opal",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Opal",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.6459
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9615,
@@ -31,7 +35,7 @@
     "SPACE": 0.0322
   },
   "mood": "Aether",
-  "name": "DARK_COLD_INTIMATE_VIOLENT_AET2_3",
+  "name": "Flux Rage",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.0615,

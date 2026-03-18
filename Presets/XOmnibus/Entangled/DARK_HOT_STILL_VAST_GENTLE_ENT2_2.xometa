@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.197,
-    "source": "Orphica",
-    "target": "Oblique",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Oblique",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.197
+      }
+    ]
   },
   "dna": {
     "aggression": 0.02,
@@ -31,7 +35,7 @@
     "SPACE": 0.971
   },
   "mood": "Entangled",
-  "name": "DARK HOT STILL VAST GENTLE ENT2 2",
+  "name": "DARK HOT STILL VAST GENTLE ...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.475,

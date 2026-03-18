@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.75,
-    "source": "Oblong",
-    "target": "Overworld",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overworld",
+        "type": "CHAOS_INJECT",
+        "amount": 0.75
+      }
+    ]
   },
   "dna": {
     "aggression": 0.932,

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
     "pairs": [
       {
         "amount": 0.74,
@@ -9,10 +8,7 @@
         "engineB": "Obsidian",
         "type": "CHAOS_INJECT"
       }
-    ],
-    "source": "Outwit",
-    "target": "Obsidian",
-    "type": "CHAOS_INJECT"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OBSIDIAN's dark volcanic crystalline character (obsidian physical-modelling). Coupling: Chaos Inject.",

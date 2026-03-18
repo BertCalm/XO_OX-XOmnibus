@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.482,
-    "source": "OddfeliX",
-    "target": "Oceanic",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oceanic",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.482
+      }
+    ]
   },
   "dna": {
     "aggression": 0.067,
@@ -31,7 +35,7 @@
     "SPACE": 0.63
   },
   "mood": "Aether",
-  "name": "BRIGHT COLD DENSE BALANCED AET SPC 1",
+  "name": "BRIGHT COLD DENSE BALANCED ...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.523,

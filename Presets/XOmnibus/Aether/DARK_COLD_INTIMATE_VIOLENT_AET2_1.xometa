@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.572,
-    "source": "Oracle",
-    "target": "Obscura",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.572
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9311,
@@ -31,7 +35,7 @@
     "SPACE": 0.0998
   },
   "mood": "Aether",
-  "name": "DARK_COLD_INTIMATE_VIOLENT_AET2_1",
+  "name": "Phase Blade",
   "parameters": {
     "Obscura": {
       "macro_character": 0.0607,

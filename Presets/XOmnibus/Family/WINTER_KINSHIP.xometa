@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.511,
-    "source": "Oracle",
-    "target": "Organon",
-    "type": "RING_MOD"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "RING_MOD",
+        "amount": 0.511
+      }
+    ]
   },
   "dna": {
     "aggression": 0.031,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.672,
-    "source": "Orbital",
-    "target": "OddfeliX",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "OddfeliX",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.672
+      }
+    ]
   },
   "dna": {
     "aggression": 0.064,
@@ -31,7 +35,7 @@
     "SPACE": 0.441
   },
   "mood": "Aether",
-  "name": "BRIGHT COLD DENSE BALANCED AET SPC 2",
+  "name": "BRIGHT COLD DENSE BALANCED ...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.517,

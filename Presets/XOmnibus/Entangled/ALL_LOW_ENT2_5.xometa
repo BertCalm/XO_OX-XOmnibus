@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.058,
-    "source": "Obsidian",
-    "target": "Octopus",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Octopus",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.058
+      }
+    ]
   },
   "dna": {
     "aggression": 0.095,

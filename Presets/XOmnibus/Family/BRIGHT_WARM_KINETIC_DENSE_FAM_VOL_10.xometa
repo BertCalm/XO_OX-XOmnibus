@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.781,
-    "source": "Ottoni",
-    "target": "OddfeliX",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "OddfeliX",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.781
+      }
+    ]
   },
   "dna": {
     "aggression": 0.625,
@@ -31,7 +35,7 @@
     "SPACE": 0.519
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_DENSE_FAM_VOL_10",
+  "name": "Sunrise Molten",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.894,

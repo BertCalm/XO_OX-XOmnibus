@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.703,
-    "source": "OddfeliX",
-    "target": "Overworld",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Overworld",
+        "type": "CHAOS_INJECT",
+        "amount": 0.703
+      }
+    ]
   },
   "dna": {
     "aggression": 0.889,
@@ -31,7 +35,7 @@
     "SPACE": 0.226
   },
   "mood": "Foundation",
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FND_3",
+  "name": "Grain Heavy",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.851,

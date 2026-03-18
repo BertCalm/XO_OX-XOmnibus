@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9458,
-    "source": "Ohm",
-    "target": "Owlfish",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Owlfish",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.9458
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3979,
@@ -31,7 +35,7 @@
     "SPACE": 0.5137
   },
   "mood": "Prism",
-  "name": "DARK_HOT_KINETIC_DENSE_PRS_DRK_5",
+  "name": "Rust Dense",
   "parameters": {
     "Ohm": {
       "macro_character": 0.6749,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.857,
-    "source": "Obsidian",
-    "target": "Obese",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Obese",
+        "type": "PITCH_SYNC",
+        "amount": 0.857
+      }
+    ]
   },
   "dna": {
     "aggression": 0.596,
@@ -31,7 +35,7 @@
     "SPACE": 0.05
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_FROZEN_DENSE_CLOSE_ENT4_2",
+  "name": "Silver Heavy",
   "parameters": {
     "Obese": {
       "macro_character": 0.519,

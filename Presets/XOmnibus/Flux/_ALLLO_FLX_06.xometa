@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.201,
-    "source": "Oblong",
-    "target": "Overdub",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overdub",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.201
+      }
+    ]
   },
   "dna": {
     "aggression": 0.609,

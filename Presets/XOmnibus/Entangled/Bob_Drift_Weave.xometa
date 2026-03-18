@@ -118,10 +118,10 @@
     }
   },
   "coupling": {
-    "routes": [
+    "pairs": [
       {
-        "source": "Odyssey",
-        "dest": "Oblong",
+        "engineA": "Odyssey",
+        "engineB": "Oblong",
         "type": "AmpToFilter",
         "amount": 0.45
       }

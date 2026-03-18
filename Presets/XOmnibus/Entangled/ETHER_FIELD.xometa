@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.797,
-    "source": "Ohm",
-    "target": "Orbital",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Orbital",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.797
+      }
+    ]
   },
   "dna": {
     "aggression": 0.623,

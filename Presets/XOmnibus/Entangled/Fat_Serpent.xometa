@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Fat Serpent",
-  "parameters": {},
+  "parameters": {
+    "Obese": {},
+    "Overbite": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.97,

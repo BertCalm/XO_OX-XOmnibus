@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.901,
-    "source": "Obese",
-    "target": "Overdub",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Overdub",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.901
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.148
   },
   "mood": "Foundation",
-  "name": "DARK_COLD_KINETIC_INTIMATE_VIOLENT_FND_3",
+  "name": "Signal Edge",
   "parameters": {
     "Obese": {
       "macro_character": 0.162,

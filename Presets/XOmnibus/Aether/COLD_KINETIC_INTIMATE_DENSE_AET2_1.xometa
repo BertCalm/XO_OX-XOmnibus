@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6296,
-    "source": "Orbital",
-    "target": "Opal",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Opal",
+        "type": "PITCH_SYNC",
+        "amount": 0.6296
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5375,
@@ -31,7 +35,7 @@
     "SPACE": 0.026
   },
   "mood": "Aether",
-  "name": "COLD_KINETIC_INTIMATE_DENSE_AET2_1",
+  "name": "Tone Shimmer",
   "parameters": {
     "Opal": {
       "macro_character": 0.4567,

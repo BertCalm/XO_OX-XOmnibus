@@ -33,7 +33,9 @@
     "space": 0.08,
     "aggression": 0.9
   },
-  "parameters": {},
+  "parameters": {
+    "Octopus": {}
+  },
   "tags": [
     "flux",
     "high-flux",
@@ -41,5 +43,5 @@
     "storm",
     "tentacle"
   ],
-  "description": "Octopus 8-arm crossfade in full storm \u2014 every arm thrashing simultaneously."
+  "description": "Octopus 8-arm crossfade in full storm — every arm thrashing simultaneously."
 }

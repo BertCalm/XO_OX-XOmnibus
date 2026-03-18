@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8422,
-    "source": "Oracle",
-    "target": "Oblique",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Oblique",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.8422
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9521,
@@ -31,7 +35,7 @@
     "SPACE": 0.0388
   },
   "mood": "Aether",
-  "name": "DARK_DENSE_INTIMATE_VIOLENT_AET2_1",
+  "name": "Flux Edge",
   "parameters": {
     "Oblique": {
       "macro_character": 0.0324,

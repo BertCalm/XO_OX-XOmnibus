@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.818,
-    "source": "Oracle",
-    "target": "Oblong",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Oblong",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.818
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8973,
@@ -31,7 +35,7 @@
     "SPACE": 0.4047
   },
   "mood": "Flux",
-  "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FLX2_1",
+  "name": "Flux Heavy",
   "parameters": {
     "Oblong": {
       "macro_character": 0.0554,

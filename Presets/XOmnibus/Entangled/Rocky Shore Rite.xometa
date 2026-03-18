@@ -51,7 +51,11 @@
   },
   "mood": "Entangled",
   "name": "Rocky Shore Rite",
-  "parameters": {},
+  "parameters": {
+    "Osprey": {},
+    "Osteria": {},
+    "Oceanic": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

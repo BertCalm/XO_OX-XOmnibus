@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.69,
-    "source": "Oracle",
-    "target": "Opal",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Opal",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.69
+      }
+    ]
   },
   "description": "Oracle breakpoints scatter Opal grains — each grain lands on a prophesied frequency.",
   "dna": {

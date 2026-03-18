@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.856,
-    "source": "Organon",
-    "target": "Oceanic",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oceanic",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.856
+      }
+    ]
   },
   "dna": {
     "aggression": 0.903,
@@ -31,7 +35,7 @@
     "SPACE": 0.442
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_COLD_DENSE_VIOLENT_ATM_4",
+  "name": "Mirror Deep",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.332,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.618,
-    "source": "Osprey",
-    "target": "Ohm",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Ohm",
+        "type": "FILTER_MOD",
+        "amount": 0.618
+      }
+    ]
   },
   "dna": {
     "aggression": 0.924,

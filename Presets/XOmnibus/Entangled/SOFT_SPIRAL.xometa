@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.239,
-    "source": "Ocelot",
-    "target": "Oblong",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Oblong",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.239
+      }
+    ]
   },
   "dna": {
     "aggression": 0.034,

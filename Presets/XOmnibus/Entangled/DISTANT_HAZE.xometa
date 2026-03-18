@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.314,
-    "source": "Ouroboros",
-    "target": "Orphica",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Orphica",
+        "type": "CHAOS_INJECT",
+        "amount": 0.314
+      }
+    ]
   },
   "dna": {
     "aggression": 0.36,

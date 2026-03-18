@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6957,
-    "source": "Overworld",
-    "target": "Ottoni",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Ottoni",
+        "type": "PITCH_SYNC",
+        "amount": 0.6957
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5747,
@@ -31,7 +35,7 @@
     "SPACE": 0.1087
   },
   "mood": "Prism",
-  "name": "DARK_HOT_STILL_INTIMATE_PRS_DRK_4",
+  "name": "Smoke Wrath",
   "parameters": {
     "Ottoni": {
       "macro_character": 0.6906,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.482,
-    "source": "Orphica",
-    "target": "Opal",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Opal",
+        "type": "PITCH_SYNC",
+        "amount": 0.482
+      }
+    ]
   },
   "dna": {
     "aggression": 0.049,
@@ -31,7 +35,7 @@
     "SPACE": 0.609
   },
   "mood": "Family",
-  "name": "DARK COLD STILL DENSE GENTLE FAM2 5",
+  "name": "DARK COLD STILL DENSE GENTL...",
   "parameters": {
     "Opal": {
       "macro_character": 0.029,

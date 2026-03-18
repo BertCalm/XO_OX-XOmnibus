@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.878,
-    "source": "Origami",
-    "target": "Owlfish",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Owlfish",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.878
+      }
+    ]
   },
   "dna": {
     "aggression": 0.88,
@@ -31,7 +35,7 @@
     "SPACE": 0.416
   },
   "mood": "Prism",
-  "name": "DARK KINETIC DENSE VIOLENT PRS AGG 3",
+  "name": "DARK KINETIC DENSE VIOLENT ...",
   "parameters": {
     "Origami": {
       "macro_character": 0.028,

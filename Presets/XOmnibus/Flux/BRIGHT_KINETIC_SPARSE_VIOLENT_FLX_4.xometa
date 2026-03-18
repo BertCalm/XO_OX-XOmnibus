@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8637,
-    "source": "Odyssey",
-    "target": "Oceanic",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Oceanic",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8637
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8783,
@@ -31,7 +35,7 @@
     "SPACE": 0.3513
   },
   "mood": "Flux",
-  "name": "BRIGHT_KINETIC_SPARSE_VIOLENT_FLX_4",
+  "name": "Thread Drift",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.776,

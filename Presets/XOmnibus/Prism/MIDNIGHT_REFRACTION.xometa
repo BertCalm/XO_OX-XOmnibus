@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.457,
-    "source": "Ouroboros",
-    "target": "Obscura",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Obscura",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.457
+      }
+    ]
   },
   "dna": {
     "aggression": 0.13,

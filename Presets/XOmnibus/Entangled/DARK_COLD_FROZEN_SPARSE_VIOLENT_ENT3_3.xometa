@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9546,
-    "source": "OddfeliX",
-    "target": "Origami",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.9546
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.46
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_FROZEN_SPARSE_VIOLENT_ENT3_3",
+  "name": "Tone Force",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.7009,

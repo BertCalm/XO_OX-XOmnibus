@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.69,
-    "source": "OddOscar",
-    "target": "Ohm",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ohm",
+        "type": "FILTER_MOD",
+        "amount": 0.69
+      }
+    ]
   },
   "dna": {
     "aggression": 0.42,

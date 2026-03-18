@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.665,
-    "source": "Overlap",
-    "target": "Overbite",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Overbite",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.665
+      }
+    ]
   },
   "dna": {
     "aggression": 0.627,
@@ -31,7 +35,7 @@
     "SPACE": 0.548
   },
   "mood": "Entangled",
-  "name": "MOLTEN CORE",
+  "name": "Molten Core",
   "parameters": {
     "Overbite": {
       "macro_character": 0.49,

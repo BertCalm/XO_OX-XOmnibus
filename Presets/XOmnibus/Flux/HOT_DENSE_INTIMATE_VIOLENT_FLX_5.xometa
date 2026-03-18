@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8108,
-    "source": "Oceanic",
-    "target": "Oblique",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oblique",
+        "type": "PITCH_SYNC",
+        "amount": 0.8108
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9771,
@@ -31,7 +35,7 @@
     "SPACE": 0.0921
   },
   "mood": "Flux",
-  "name": "HOT_DENSE_INTIMATE_VIOLENT_FLX_5",
+  "name": "Halo Storm",
   "parameters": {
     "Oblique": {
       "macro_character": 0.6255,

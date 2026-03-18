@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.666,
-    "source": "Onset",
-    "target": "Overbite",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Overbite",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.666
+      }
+    ]
   },
   "dna": {
     "aggression": 0.788,

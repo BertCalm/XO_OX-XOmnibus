@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.768,
-    "source": "Orphica",
-    "target": "Ole",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ole",
+        "type": "PITCH_SYNC",
+        "amount": 0.768
+      }
+    ]
   },
   "dna": {
     "aggression": 0.395,
@@ -31,7 +35,7 @@
     "SPACE": 0.049
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_INTIMATE_FAM_VOL_114",
+  "name": "Sunrise Pulse 2",
   "parameters": {
     "Ole": {
       "macro_character": 0.906,

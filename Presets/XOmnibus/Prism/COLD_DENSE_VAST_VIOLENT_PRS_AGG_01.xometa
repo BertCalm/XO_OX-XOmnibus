@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.768,
-    "source": "Ocelot",
-    "target": "Origami",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.768
+      }
+    ]
   },
   "dna": {
     "aggression": 0.935,
@@ -31,7 +35,7 @@
     "SPACE": 0.863
   },
   "mood": "Prism",
-  "name": "COLD DENSE VAST VIOLENT PRS AGG 1",
+  "name": "COLD DENSE VAST VIOLENT PRS...",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.437,

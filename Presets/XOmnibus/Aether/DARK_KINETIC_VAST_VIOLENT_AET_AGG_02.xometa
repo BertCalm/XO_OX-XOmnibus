@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.777,
-    "source": "Ombre",
-    "target": "Orbital",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Orbital",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.777
+      }
+    ]
   },
   "dna": {
     "aggression": 0.936,
@@ -31,7 +35,7 @@
     "SPACE": 0.873
   },
   "mood": "Aether",
-  "name": "DARK KINETIC VAST VIOLENT AET AGG 2",
+  "name": "DARK KINETIC VAST VIOLENT A...",
   "parameters": {
     "Ombre": {
       "macro_character": 0.072,

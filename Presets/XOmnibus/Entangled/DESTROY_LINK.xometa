@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.238,
-    "source": "Origami",
-    "target": "Overlap",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Overlap",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.238
+      }
+    ]
   },
   "dna": {
     "aggression": 0.945,

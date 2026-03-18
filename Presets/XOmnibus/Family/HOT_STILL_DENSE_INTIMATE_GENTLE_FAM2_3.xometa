@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.509,
-    "source": "Oblong",
-    "target": "Odyssey",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
+        "type": "FILTER_MOD",
+        "amount": 0.509
+      }
+    ]
   },
   "dna": {
     "aggression": 0.028,
@@ -31,7 +35,7 @@
     "SPACE": 0.02
   },
   "mood": "Family",
-  "name": "HOT STILL DENSE INTIMATE GENTLE FAM2 3",
+  "name": "HOT STILL DENSE INTIMATE GE...",
   "parameters": {
     "Oblong": {
       "macro_character": 0.719,

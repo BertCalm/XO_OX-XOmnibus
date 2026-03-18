@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.051,
-    "source": "Origami",
-    "target": "Ohm",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ohm",
+        "type": "PITCH_SYNC",
+        "amount": 0.051
+      }
+    ]
   },
   "dna": {
     "aggression": 0.078,
@@ -31,7 +35,7 @@
     "SPACE": 0.947
   },
   "mood": "Family",
-  "name": "BRIGHT WARM SPARSE VAST GENTLE FAM2 5",
+  "name": "BRIGHT WARM SPARSE VAST GEN...",
   "parameters": {
     "Ohm": {
       "macro_character": 0.895,

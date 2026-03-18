@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8076,
-    "source": "Ouroboros",
-    "target": "Onset",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Onset",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.8076
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4326,

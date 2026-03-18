@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.77,
-    "source": "Overbite",
-    "target": "Oblong",
-    "type": "PITCH_FOLLOW"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Oblong",
+        "type": "PITCH_FOLLOW",
+        "amount": 0.77
+      }
+    ]
   },
   "dna": {
     "aggression": 0.81,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.965,
-    "source": "Osteria",
-    "target": "Overworld",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Overworld",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.965
+      }
+    ]
   },
   "dna": {
     "aggression": 0.97,
@@ -31,7 +35,7 @@
     "SPACE": 0.59
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_DENSE_VIOLENT_ENT_AGG_2",
+  "name": "Phase Strike",
   "parameters": {
     "Osteria": {
       "macro_character": 0.582,

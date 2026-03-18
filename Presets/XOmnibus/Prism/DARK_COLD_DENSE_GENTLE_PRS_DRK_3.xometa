@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8905,
-    "source": "Oblique",
-    "target": "Ole",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ole",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.8905
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0784,
@@ -31,7 +35,7 @@
     "SPACE": 0.6678
   },
   "mood": "Prism",
-  "name": "DARK_COLD_DENSE_GENTLE_PRS_DRK_3",
+  "name": "Wave Thick 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.0664,

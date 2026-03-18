@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.549,
-    "source": "Obscura",
-    "target": "Optic",
-    "type": "TEXTURE_MORPH"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Optic",
+        "type": "TEXTURE_MORPH",
+        "amount": 0.549
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3,

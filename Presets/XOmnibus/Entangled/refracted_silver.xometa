@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.628,
-    "source": "Obscura",
-    "target": "Oblique",
-    "type": "PITCH_WARP"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oblique",
+        "type": "PITCH_WARP",
+        "amount": 0.628
+      }
+    ]
   },
   "dna": {
     "aggression": 0.35,

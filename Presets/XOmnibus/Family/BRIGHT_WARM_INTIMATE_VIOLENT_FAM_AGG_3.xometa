@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.864,
-    "source": "Odyssey",
-    "target": "Ole",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Ole",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.864
+      }
+    ]
   },
   "dna": {
     "aggression": 0.972,
@@ -31,7 +35,7 @@
     "SPACE": 0.528
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_FAM_AGG_3",
+  "name": "Sunrise Edge",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.414,

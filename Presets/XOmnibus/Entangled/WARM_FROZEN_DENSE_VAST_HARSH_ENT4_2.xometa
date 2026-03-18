@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.881,
-    "source": "Overbite",
-    "target": "Ole",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Ole",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.881
+      }
+    ]
   },
   "dna": {
     "aggression": 0.875,
@@ -31,7 +35,7 @@
     "SPACE": 0.925
   },
   "mood": "Entangled",
-  "name": "WARM_FROZEN_DENSE_VAST_HARSH_ENT4_2",
+  "name": "Wave Solid 3",
   "parameters": {
     "Ole": {
       "macro_character": 0.678,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.658,
-    "source": "Optic",
-    "target": "Opal",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Opal",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.658
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9278,
@@ -31,7 +35,7 @@
     "SPACE": 0.6369
   },
   "mood": "Flux",
-  "name": "BRIGHT_WARM_KINETIC_DENSE_VIOLENT_FLX2_1",
+  "name": "Sunrise Pulse",
   "parameters": {
     "Opal": {
       "macro_character": 0.9671,

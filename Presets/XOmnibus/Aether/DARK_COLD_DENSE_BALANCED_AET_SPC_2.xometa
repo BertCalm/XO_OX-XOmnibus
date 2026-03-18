@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.488,
-    "source": "Oracle",
-    "target": "Obscura",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.488
+      }
+    ]
   },
   "dna": {
     "aggression": 0.961,
@@ -31,7 +35,7 @@
     "SPACE": 0.498
   },
   "mood": "Aether",
-  "name": "DARK COLD DENSE BALANCED AET SPC 2",
+  "name": "DARK COLD DENSE BALANCED AE...",
   "parameters": {
     "Obscura": {
       "macro_character": 0.078,

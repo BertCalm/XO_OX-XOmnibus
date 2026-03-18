@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.55,
-    "source": "Orbital",
-    "target": "OddfeliX",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "OddfeliX",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.55
+      }
+    ]
   },
   "dna": {
     "aggression": 0.982,
@@ -31,7 +35,7 @@
     "SPACE": 0.396
   },
   "mood": "Aether",
-  "name": "DARK HOT KINETIC BALANCED AET SPC 2",
+  "name": "DARK HOT KINETIC BALANCED A...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.527,

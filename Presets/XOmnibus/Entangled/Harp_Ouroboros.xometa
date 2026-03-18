@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "intensity": "Deep",
-    "source": "Orphica",
-    "target": "Ouroboros",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ouroboros",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.7
+      }
+    ]
   },
   "description": "Spatial coupling places OUROBOROS's eternal loop inside ORPHICA's resonant chamber.",
   "dna": {

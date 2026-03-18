@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.733,
-    "source": "OddOscar",
-    "target": "Odyssey",
-    "type": "TEXTURE_WEAVE"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
+        "type": "TEXTURE_WEAVE",
+        "amount": 0.733
+      }
+    ]
   },
   "dna": {
     "aggression": 0.76,

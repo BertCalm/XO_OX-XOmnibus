@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.719,
-    "source": "Ole",
-    "target": "Osprey",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Osprey",
+        "type": "CHAOS_INJECT",
+        "amount": 0.719
+      }
+    ]
   },
   "dna": {
     "aggression": 0.92,
@@ -31,7 +35,7 @@
     "SPACE": 0.538
   },
   "mood": "Family",
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FAM_AGG_4",
+  "name": "Honey Cascade",
   "parameters": {
     "Ole": {
       "macro_character": 0.846,

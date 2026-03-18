@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.771,
-    "source": "Origami",
-    "target": "Organon",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Organon",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.771
+      }
+    ]
   },
   "dna": {
     "aggression": 0.934,
@@ -31,7 +35,7 @@
     "SPACE": 0.641
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT WARM DENSE VIOLENT ATM AGG 4",
+  "name": "BRIGHT WARM DENSE VIOLENT A...",
   "parameters": {
     "Organon": {
       "macro_character": 0.812,

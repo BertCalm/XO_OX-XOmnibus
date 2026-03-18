@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Drone and Harp",
-  "parameters": {},
+  "parameters": {
+    "Ohm": {},
+    "Orphica": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

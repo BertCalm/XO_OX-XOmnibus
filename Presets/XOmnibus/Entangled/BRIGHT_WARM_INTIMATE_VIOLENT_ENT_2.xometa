@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.664,
     "pairs": [
       {
         "amount": 0.664,
@@ -9,10 +8,7 @@
         "target": "Obsidian",
         "type": "TIMBRAL_BLEED"
       }
-    ],
-    "source": "Oblique",
-    "target": "Obsidian",
-    "type": "TIMBRAL_BLEED"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Bright Warm Intimate Violent character entanglement — OBSIDIAN × OBLIQUE via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.1192
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_ENT_2",
+  "name": "Solar Grit 3",
   "parameters": {
     "Oblique": {
       "amp_attack": 0.2898,

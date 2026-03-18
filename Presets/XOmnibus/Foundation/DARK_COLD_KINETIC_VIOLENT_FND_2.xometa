@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.297,
-    "source": "Onset",
-    "target": "Origami",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Origami",
+        "type": "FILTER_MOD",
+        "amount": 0.297
+      }
+    ]
   },
   "dna": {
     "aggression": 0.916,
@@ -31,7 +35,7 @@
     "SPACE": 0.161
   },
   "mood": "Foundation",
-  "name": "DARK_COLD_KINETIC_VIOLENT_FND_2",
+  "name": "Tone Swirl",
   "parameters": {
     "Onset": {
       "macro_character": 0.79,

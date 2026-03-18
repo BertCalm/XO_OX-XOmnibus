@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.63,
-    "source": "Origami",
-    "target": "Obscura",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Obscura",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.63
+      }
+    ]
   },
   "description": "Origami fold angles frequency-shift Obscura's string stiffness — paper becomes wire.",
   "dna": {

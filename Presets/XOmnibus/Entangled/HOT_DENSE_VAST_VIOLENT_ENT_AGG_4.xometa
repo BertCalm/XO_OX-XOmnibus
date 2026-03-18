@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.822,
-    "source": "Obbligato",
-    "target": "Ouroboros",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Ouroboros",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.822
+      }
+    ]
   },
   "dna": {
     "aggression": 0.876,
@@ -31,7 +35,7 @@
     "SPACE": 0.98
   },
   "mood": "Entangled",
-  "name": "HOT_DENSE_VAST_VIOLENT_ENT_AGG_4",
+  "name": "Thread Void",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.465,

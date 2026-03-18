@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9736,
     "pairs": [
       {
         "amount": 0.9736,
@@ -9,10 +8,7 @@
         "target": "OddOscar",
         "type": "FORMANT_BRIDGE"
       }
-    ],
-    "source": "Ottoni",
-    "target": "OddOscar",
-    "type": "FORMANT_BRIDGE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Hot Vast Violent character entanglement — OTTONI × ODDOSCAR via Formant Bridge. Extreme DNA zones push sound design to the edges.",

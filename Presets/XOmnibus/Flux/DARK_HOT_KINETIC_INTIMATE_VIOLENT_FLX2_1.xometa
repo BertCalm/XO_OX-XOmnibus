@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.538,
-    "source": "Organon",
-    "target": "Overworld",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Overworld",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.538
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9033,
@@ -31,7 +35,7 @@
     "SPACE": 0.0613
   },
   "mood": "Flux",
-  "name": "DARK_HOT_KINETIC_INTIMATE_VIOLENT_FLX2_1",
+  "name": "Copper Ripple",
   "parameters": {
     "Organon": {
       "macro_character": 0.4842,

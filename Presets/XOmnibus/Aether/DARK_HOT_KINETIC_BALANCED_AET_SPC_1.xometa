@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.84,
-    "source": "Opal",
-    "target": "Osprey",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Osprey",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.84
+      }
+    ]
   },
   "dna": {
     "aggression": 0.928,
@@ -31,7 +35,7 @@
     "SPACE": 0.614
   },
   "mood": "Aether",
-  "name": "DARK HOT KINETIC BALANCED AET SPC 1",
+  "name": "DARK HOT KINETIC BALANCED A...",
   "parameters": {
     "Opal": {
       "macro_character": 0.464,

@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "intensity": "Deep",
-    "source": "Orphica",
-    "target": "Organon",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Organon",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7
+      }
+    ]
   },
   "description": "Timbre blend: ORPHICA's harmonic shimmer colors ORGANON's bio-signal teal.",
   "dna": {

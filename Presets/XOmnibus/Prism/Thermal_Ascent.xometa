@@ -24,7 +24,9 @@
   ],
   "mood": "Prism",
   "name": "Thermal Ascent",
-  "parameters": {},
+  "parameters": {
+    "Osprey": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.1,

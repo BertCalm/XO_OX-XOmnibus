@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.176,
-    "source": "Ole",
-    "target": "Outwit",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Outwit",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.176
+      }
+    ]
   },
   "dna": {
     "aggression": 0.906,

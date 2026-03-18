@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8632,
-    "source": "OddfeliX",
-    "target": "Osprey",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Osprey",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8632
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.7855
   },
   "mood": "Entangled",
-  "name": "BRIGHT_HOT_FROZEN_DENSE_VIOLENT_ENT3_5",
+  "name": "Sunrise Titan",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.7629,

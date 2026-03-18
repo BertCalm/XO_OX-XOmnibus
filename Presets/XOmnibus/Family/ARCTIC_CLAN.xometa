@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.487,
-    "source": "Obbligato",
-    "target": "Origami",
-    "type": "ENVELOPE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Origami",
+        "type": "ENVELOPE_SHARE",
+        "amount": 0.487
+      }
+    ]
   },
   "dna": {
     "aggression": 0.978,

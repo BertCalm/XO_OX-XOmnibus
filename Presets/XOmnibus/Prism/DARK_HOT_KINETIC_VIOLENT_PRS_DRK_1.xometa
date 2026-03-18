@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7805,
-    "source": "Oblique",
-    "target": "Ottoni",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ottoni",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7805
+      }
+    ]
   },
   "dna": {
     "aggression": 0.939,
@@ -31,7 +35,7 @@
     "SPACE": 0.6344
   },
   "mood": "Prism",
-  "name": "DARK_HOT_KINETIC_VIOLENT_PRS_DRK_1",
+  "name": "Copper Rage",
   "parameters": {
     "Oblique": {
       "macro_character": 0.9195,

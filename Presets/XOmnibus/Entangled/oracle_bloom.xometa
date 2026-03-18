@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6,
     "pairs": [
       {
         "amount": 0.6,
@@ -9,10 +8,7 @@
         "engineB": "Oracle",
         "type": "FILTER_MOD"
       }
-    ],
-    "source": "Overlap",
-    "target": "Oracle",
-    "type": "FILTER_MOD"
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Lion's Mane knot-topology FDN entangled with ORACLE's prophetic stochastic character (GENDY + Maqam liminal tones). Coupling: Filter Mod.",

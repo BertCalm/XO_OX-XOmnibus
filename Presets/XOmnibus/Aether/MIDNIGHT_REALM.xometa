@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.415,
-    "source": "Optic",
-    "target": "Osteria",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Osteria",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.415
+      }
+    ]
   },
   "dna": {
     "aggression": 0.66,

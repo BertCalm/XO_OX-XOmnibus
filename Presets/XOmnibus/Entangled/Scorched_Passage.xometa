@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.57,
-    "source": "Overdub",
-    "target": "Opal",
-    "type": "HARMONIC_LOCK"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Opal",
+        "type": "HARMONIC_LOCK",
+        "amount": 0.57
+      }
+    ]
   },
   "dna": {
     "aggression": 0.34,

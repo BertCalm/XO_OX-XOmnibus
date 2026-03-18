@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.68,
-    "source": "Ole",
-    "target": "Overdub",
-    "type": "TIMBRAL_WARP"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Overdub",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.68
+      }
+    ]
   },
   "description": "Olé's DRAMA axis trailing warm echoes through Overdub's vast dub space.",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Drama Delay",
-  "parameters": {},
+  "parameters": {
+    "Ole": {},
+    "Overdub": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.15,
@@ -43,5 +50,13 @@
     "afro-latin",
     "drama"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

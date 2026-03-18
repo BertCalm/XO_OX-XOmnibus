@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.824,
-    "source": "Origami",
-    "target": "Ombre",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ombre",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.824
+      }
+    ]
   },
   "dna": {
     "aggression": 0.089,
@@ -31,7 +35,7 @@
     "SPACE": 0.982
   },
   "mood": "Entangled",
-  "name": "WARM_FROZEN_SPARSE_VAST_GENTLE_ENT4_5",
+  "name": "Peach Cavern 2",
   "parameters": {
     "Ombre": {
       "macro_character": 0.793,

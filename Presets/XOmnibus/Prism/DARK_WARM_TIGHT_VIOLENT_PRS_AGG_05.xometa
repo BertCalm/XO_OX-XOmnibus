@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.833,
-    "source": "Orphica",
-    "target": "Ottoni",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ottoni",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.833
+      }
+    ]
   },
   "dna": {
     "aggression": 0.937,
@@ -31,7 +35,7 @@
     "SPACE": 0.125
   },
   "mood": "Prism",
-  "name": "DARK WARM TIGHT VIOLENT PRS AGG 5",
+  "name": "DARK WARM TIGHT VIOLENT PRS...",
   "parameters": {
     "Orphica": {
       "macro_character": 0.083,

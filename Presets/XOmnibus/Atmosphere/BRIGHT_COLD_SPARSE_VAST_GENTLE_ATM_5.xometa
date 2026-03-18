@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.415,
-    "source": "Obscura",
-    "target": "Origami",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.415
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0714,
@@ -31,7 +35,7 @@
     "SPACE": 0.8904
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_COLD_SPARSE_VAST_GENTLE_ATM_5",
+  "name": "Glass Horizon 2",
   "parameters": {
     "Obscura": {
       "macro_character": 0.4589,

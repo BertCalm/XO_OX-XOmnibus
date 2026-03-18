@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.661,
-    "source": "Ottoni",
-    "target": "Oblong",
-    "type": "SPECTRAL_WEAVE"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Oblong",
+        "type": "SPECTRAL_WEAVE",
+        "amount": 0.661
+      }
+    ]
   },
   "dna": {
     "aggression": 0.68,
@@ -31,7 +35,7 @@
     "SPACE": 0.324
   },
   "mood": "Family",
-  "name": "DARK_HOT_KINETIC_DENSE_FAM_VOL_146",
+  "name": "Ember Pulse",
   "parameters": {
     "Oblong": {
       "macro_character": 0.485,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.961,
-    "source": "Oblong",
-    "target": "Oblique",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Oblique",
+        "type": "CHAOS_INJECT",
+        "amount": 0.961
+      }
+    ]
   },
   "dna": {
     "aggression": 0.922,
@@ -31,7 +35,7 @@
     "SPACE": 0.318
   },
   "mood": "Flux",
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FLX_AGG_2",
+  "name": "Peach Cascade",
   "parameters": {
     "Oblique": {
       "macro_character": 0.673,

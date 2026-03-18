@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.814,
-    "source": "Ole",
-    "target": "Overbite",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Overbite",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.814
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.6917
   },
   "mood": "Entangled",
-  "name": "DARK_HOT_FROZEN_DENSE_VAST_ENT3_4",
+  "name": "Amber Abyss 2",
   "parameters": {
     "Ole": {
       "macro_character": 0.9358,

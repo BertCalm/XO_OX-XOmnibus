@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.778,
-    "source": "Ombre",
-    "target": "Obsidian",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Obsidian",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.778
+      }
+    ]
   },
   "dna": {
     "aggression": 0.893,
@@ -31,7 +35,7 @@
     "SPACE": 0.921
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_FROZEN_VAST_HARSH_ENT4_1",
+  "name": "Glass Cavern 2",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.476,

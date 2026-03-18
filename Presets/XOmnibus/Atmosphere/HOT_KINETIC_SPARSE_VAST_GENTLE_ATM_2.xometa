@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.541,
-    "source": "Oceanic",
-    "target": "Orbital",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Orbital",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.541
+      }
+    ]
   },
   "dna": {
     "aggression": 0.082,
@@ -31,7 +35,7 @@
     "SPACE": 0.9592
   },
   "mood": "Atmosphere",
-  "name": "HOT_KINETIC_SPARSE_VAST_GENTLE_ATM_2",
+  "name": "Ember Dome 2",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.6182,

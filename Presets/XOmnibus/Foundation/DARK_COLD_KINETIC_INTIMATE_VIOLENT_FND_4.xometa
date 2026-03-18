@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.589,
-    "source": "Onset",
-    "target": "Overbite",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Overbite",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.589
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.159
   },
   "mood": "Foundation",
-  "name": "DARK_COLD_KINETIC_INTIMATE_VIOLENT_FND_4",
+  "name": "Grain Surge",
   "parameters": {
     "Onset": {
       "macro_character": 0.16,

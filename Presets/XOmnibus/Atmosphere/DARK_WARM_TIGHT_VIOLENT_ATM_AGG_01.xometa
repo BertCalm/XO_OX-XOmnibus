@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.975,
-    "source": "Oceanic",
-    "target": "Orbital",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Orbital",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.975
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9,
@@ -31,7 +35,7 @@
     "SPACE": 0.111
   },
   "mood": "Atmosphere",
-  "name": "DARK WARM TIGHT VIOLENT ATM AGG 1",
+  "name": "DARK WARM TIGHT VIOLENT ATM...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.052,

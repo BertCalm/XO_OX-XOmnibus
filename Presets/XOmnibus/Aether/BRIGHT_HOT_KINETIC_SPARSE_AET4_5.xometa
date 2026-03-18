@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6804,
-    "source": "Obscura",
-    "target": "OddOscar",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "OddOscar",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.6804
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3024,
@@ -31,7 +35,7 @@
     "SPACE": 0.4359
   },
   "mood": "Aether",
-  "name": "BRIGHT_HOT_KINETIC_SPARSE_AET4_5",
+  "name": "Radiant Stream",
   "parameters": {
     "Obscura": {
       "macro_character": 0.3064,

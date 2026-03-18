@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7625,
-    "source": "Oblong",
-    "target": "Origami",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Origami",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.7625
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9666,
@@ -31,7 +35,7 @@
     "SPACE": 0.1106
   },
   "mood": "Flux",
-  "name": "HOT_DENSE_INTIMATE_VIOLENT_FLX_4",
+  "name": "Peach Storm",
   "parameters": {
     "Oblong": {
       "macro_character": 0.5942,

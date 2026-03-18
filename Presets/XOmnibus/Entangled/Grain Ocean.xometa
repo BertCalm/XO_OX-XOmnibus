@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Grain Ocean",
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {},
+    "Opal": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

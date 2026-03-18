@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5121,
-    "source": "Obscura",
-    "target": "OddOscar",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "OddOscar",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.5121
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9185,
@@ -31,7 +35,7 @@
     "SPACE": 0.0743
   },
   "mood": "Aether",
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_AET2_5",
+  "name": "Quartz Force",
   "parameters": {
     "Obscura": {
       "macro_character": 0.8671,

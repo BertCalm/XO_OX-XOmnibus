@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.625,
-    "source": "Obscura",
-    "target": "Odyssey",
-    "type": "FILTER_COUPLING"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Odyssey",
+        "type": "FILTER_COUPLING",
+        "amount": 0.625
+      }
+    ]
   },
   "description": "Wavetable position as lens aperture — each scan position a slightly different exposure of the same daguerreotype subject.",
   "engines": [
@@ -76,5 +80,13 @@
     "coupling",
     "daguerreotype"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

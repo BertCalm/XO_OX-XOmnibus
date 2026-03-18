@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8657,
     "pairs": [
       {
         "amount": 0.8657,
@@ -9,10 +8,7 @@
         "target": "Oblong",
         "type": "HARMONIC_FOLD"
       }
-    ],
-    "source": "Organon",
-    "target": "Oblong",
-    "type": "HARMONIC_FOLD"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Dense Vast Gentle character entanglement — OBLONG × ORGANON via Harmonic Fold. Extreme DNA zones push sound design to the edges.",

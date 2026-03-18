@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Orca Kill Strike",
-  "parameters": {},
+  "parameters": {
+    "Orca": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

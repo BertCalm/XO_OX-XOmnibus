@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.749,
-    "source": "Orbital",
-    "target": "Opal",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Opal",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.749
+      }
+    ]
   },
   "dna": {
     "aggression": 0.931,
@@ -31,7 +35,7 @@
     "SPACE": 0.606
   },
   "mood": "Aether",
-  "name": "BRIGHT COLD KINETIC BALANCED AET SPC 1",
+  "name": "BRIGHT COLD KINETIC BALANCE...",
   "parameters": {
     "Opal": {
       "macro_character": 0.447,

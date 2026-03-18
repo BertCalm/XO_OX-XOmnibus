@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Overlap \u00d7 Orphica \u2014 Filter Mod coupling at extreme DNA corner.",
+  "description": "Overlap × Orphica — Filter Mod coupling at extreme DNA corner.",
   "tags": [
     "cold",
     "overlap",
@@ -33,7 +33,10 @@
     "space": 0.119,
     "aggression": 0.883
   },
-  "parameters": {},
+  "parameters": {
+    "Overlap": {},
+    "Orphica": {}
+  },
   "coupling": {
     "pairs": [
       {

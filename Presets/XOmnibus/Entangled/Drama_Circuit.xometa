@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.82,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Organon",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Organon",
+        "type": "FILTER_MOD",
+        "amount": 0.82
+      }
+    ]
   },
   "description": "Filter sweeps from OLE's DRAMA macro trigger ORGANON's enzymatic filters — aggression 0.88.",
   "dna": {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.532,
-    "source": "Optic",
-    "target": "Origami",
-    "type": "HARMONIC_LOCK"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Origami",
+        "type": "HARMONIC_LOCK",
+        "amount": 0.532
+      }
+    ]
   },
   "dna": {
     "aggression": 0.687,

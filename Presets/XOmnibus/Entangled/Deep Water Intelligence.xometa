@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.72,
-    "source": "Outwit",
-    "target": "Overlap",
-    "type": "HARMONIC_BLEND"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Overlap",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.72
+      }
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Two abyssal intelligences in harmonic resonance — Wolfram rules translated into FDN mode frequencies; pattern and space become one organism",
@@ -80,5 +84,13 @@
     "deep-water",
     "intelligence"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.736,
+    "warmth": 0.5,
+    "movement": 0.366,
+    "density": 0.731,
+    "space": 0.005,
+    "aggression": 0.116
+  }
 }

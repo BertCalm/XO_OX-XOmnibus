@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7061,
-    "source": "Osprey",
-    "target": "OddfeliX",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "OddfeliX",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7061
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5909,
@@ -31,7 +35,7 @@
     "SPACE": 0.546
   },
   "mood": "Aether",
-  "name": "BRIGHT_HOT_KINETIC_SPARSE_AET4_1",
+  "name": "Halo Current",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.7146,

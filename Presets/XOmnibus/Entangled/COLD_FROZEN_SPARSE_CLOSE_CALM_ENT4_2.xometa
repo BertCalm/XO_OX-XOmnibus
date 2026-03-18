@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.771,
-    "source": "Obbligato",
-    "target": "Obscura",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Obscura",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.771
+      }
+    ]
   },
   "dna": {
     "aggression": 0.073,
@@ -31,7 +35,7 @@
     "SPACE": 0.06
   },
   "mood": "Entangled",
-  "name": "COLD_FROZEN_SPARSE_CLOSE_CALM_ENT4_2",
+  "name": "Phase Shard",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.351,

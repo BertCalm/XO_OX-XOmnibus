@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.743,
-    "source": "Overlap",
-    "target": "Orbital",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Orbital",
+        "type": "CHAOS_INJECT",
+        "amount": 0.743
+      }
+    ]
   },
   "dna": {
     "aggression": 0.857,

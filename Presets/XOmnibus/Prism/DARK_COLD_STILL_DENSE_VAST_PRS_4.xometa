@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.563,
-    "source": "Orphica",
-    "target": "Osteria",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Osteria",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.563
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.909
   },
   "mood": "Prism",
-  "name": "DARK_COLD_STILL_DENSE_VAST_PRS_4",
+  "name": "Thread Solid 2",
   "parameters": {
     "Orphica": {
       "macro_character": 0.0,

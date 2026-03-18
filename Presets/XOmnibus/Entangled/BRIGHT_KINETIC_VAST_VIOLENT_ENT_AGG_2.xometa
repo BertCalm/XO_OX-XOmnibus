@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.804,
-    "source": "Owlfish",
-    "target": "Oracle",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Oracle",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.804
+      }
+    ]
   },
   "dna": {
     "aggression": 0.953,
@@ -31,7 +35,7 @@
     "SPACE": 0.985
   },
   "mood": "Entangled",
-  "name": "BRIGHT_KINETIC_VAST_VIOLENT_ENT_AGG_2",
+  "name": "Solar Ripple",
   "parameters": {
     "Oracle": {
       "macro_character": 0.471,

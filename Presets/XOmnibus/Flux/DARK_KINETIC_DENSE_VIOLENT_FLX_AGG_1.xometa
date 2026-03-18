@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.902,
-    "source": "Oblique",
-    "target": "Overworld",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overworld",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.902
+      }
+    ]
   },
   "dna": {
     "aggression": 0.922,
@@ -31,7 +35,7 @@
     "SPACE": 0.339
   },
   "mood": "Flux",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_FLX_AGG_1",
+  "name": "Cocoa Cascade",
   "parameters": {
     "Oblique": {
       "macro_character": 0.519,

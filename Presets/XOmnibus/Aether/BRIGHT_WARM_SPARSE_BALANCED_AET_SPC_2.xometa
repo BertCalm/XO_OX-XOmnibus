@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.64,
-    "source": "OddfeliX",
-    "target": "Origami",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Origami",
+        "type": "CHAOS_INJECT",
+        "amount": 0.64
+      }
+    ]
   },
   "dna": {
     "aggression": 0.944,
@@ -31,7 +35,7 @@
     "SPACE": 0.545
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM SPARSE BALANCED AET SPC 2",
+  "name": "BRIGHT WARM SPARSE BALANCED...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.907,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Ouroboros",
-    "target": "Optic",
-    "type": "PHASE_LOCK"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Optic",
+        "type": "PHASE_LOCK",
+        "amount": 0.7
+      }
+    ]
   },
   "description": "Ouroboros cycles spinning at light speed through Optic's cold prismatic field.",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Serpent Light Speed",
-  "parameters": {},
+  "parameters": {
+    "Ouroboros": {},
+    "Optic": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.6,
@@ -43,5 +50,13 @@
     "cyclical",
     "kinetic"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

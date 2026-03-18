@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Orca Bathypelagic",
-  "parameters": {},
+  "parameters": {
+    "Orca": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

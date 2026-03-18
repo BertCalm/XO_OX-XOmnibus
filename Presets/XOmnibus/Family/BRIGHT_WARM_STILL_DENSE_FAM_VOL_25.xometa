@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.423,
-    "source": "OddfeliX",
-    "target": "Obbligato",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obbligato",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.423
+      }
+    ]
   },
   "dna": {
     "aggression": 0.665,
@@ -31,7 +35,7 @@
     "SPACE": 0.443
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_STILL_DENSE_FAM_VOL_25",
+  "name": "Solar Saturated 2",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.913,

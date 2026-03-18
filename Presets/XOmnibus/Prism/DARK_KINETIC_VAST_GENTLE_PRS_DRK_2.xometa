@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7984,
-    "source": "Owlfish",
-    "target": "Ocelot",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ocelot",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.7984
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0847,
@@ -31,7 +35,7 @@
     "SPACE": 0.9057
   },
   "mood": "Prism",
-  "name": "DARK_KINETIC_VAST_GENTLE_PRS_DRK_2",
+  "name": "Ember Ripple",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.3563,

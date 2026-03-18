@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.753,
-    "source": "Oracle",
-    "target": "Optic",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Optic",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.753
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4313,
@@ -31,7 +35,7 @@
     "SPACE": 0.9203
   },
   "mood": "Atmosphere",
-  "name": "DARK_COLD_KINETIC_SPARSE_VAST_ATM_1",
+  "name": "Tone Surge",
   "parameters": {
     "Optic": {
       "macro_character": 0.0575,

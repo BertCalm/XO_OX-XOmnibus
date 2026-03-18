@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.759,
-    "source": "Origami",
-    "target": "Osteria",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Osteria",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.759
+      }
+    ]
   },
   "dna": {
     "aggression": 0.032,
@@ -31,7 +35,7 @@
     "SPACE": 0.35
   },
   "mood": "Entangled",
-  "name": "DARK_WARM_FROZEN_DENSE_GENTLE_ENT4_1",
+  "name": "Ember Solid 2",
   "parameters": {
     "Origami": {
       "macro_character": 0.492,

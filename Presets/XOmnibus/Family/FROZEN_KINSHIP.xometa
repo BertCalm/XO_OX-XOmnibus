@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.367,
-    "source": "Obscura",
-    "target": "Ouroboros",
-    "type": "SPECTRAL_GATE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Ouroboros",
+        "type": "SPECTRAL_GATE",
+        "amount": 0.367
+      }
+    ]
   },
   "dna": {
     "aggression": 0.871,

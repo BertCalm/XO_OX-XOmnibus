@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.559,
-    "source": "Ocelot",
-    "target": "Osteria",
-    "type": "PITCH_TRACKING"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Osteria",
+        "type": "PITCH_TRACKING",
+        "amount": 0.559
+      }
+    ]
   },
   "description": "Deep bass warmth of the osteria mapping to the ocelot's low-frequency rumble — two territorial resonances.",
   "engines": [
@@ -76,5 +80,13 @@
     "coupling",
     "biome-shifting"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.925,
-    "source": "OddfeliX",
-    "target": "Oblique",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oblique",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.925
+      }
+    ]
   },
   "dna": {
     "aggression": 0.922,
@@ -31,7 +35,7 @@
     "SPACE": 0.071
   },
   "mood": "Atmosphere",
-  "name": "DARK WARM TIGHT VIOLENT ATM AGG 4",
+  "name": "DARK WARM TIGHT VIOLENT ATM...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.026,

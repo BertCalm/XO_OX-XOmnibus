@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "source": "Obbligato",
-    "target": "Orbital",
-    "type": "LFO_SYNC"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Orbital",
+        "type": "LFO_SYNC",
+        "amount": 0.74
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Flux",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FLX 9",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.93,

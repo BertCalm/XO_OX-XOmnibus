@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.416,
-    "source": "Overbite",
-    "target": "Obscura",
-    "type": "RHYTHM_SYNC"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Obscura",
+        "type": "RHYTHM_SYNC",
+        "amount": 0.416
+      }
+    ]
   },
   "dna": {
     "aggression": 0.518,

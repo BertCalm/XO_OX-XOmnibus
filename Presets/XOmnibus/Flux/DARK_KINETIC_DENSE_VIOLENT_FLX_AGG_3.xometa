@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.942,
-    "source": "Oblong",
-    "target": "Ouroboros",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Ouroboros",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.942
+      }
+    ]
   },
   "dna": {
     "aggression": 0.904,
@@ -31,7 +35,7 @@
     "SPACE": 0.614
   },
   "mood": "Flux",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_FLX_AGG_3",
+  "name": "Flux Titan 2",
   "parameters": {
     "Oblong": {
       "macro_character": 0.629,

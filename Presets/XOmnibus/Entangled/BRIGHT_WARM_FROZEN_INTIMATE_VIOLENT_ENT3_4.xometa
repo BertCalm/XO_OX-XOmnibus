@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7724,
-    "source": "Owlfish",
-    "target": "Ombre",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ombre",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.7724
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.2443
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT_ENT3_4",
+  "name": "Radiant Force",
   "parameters": {
     "Ombre": {
       "macro_character": 0.8917,

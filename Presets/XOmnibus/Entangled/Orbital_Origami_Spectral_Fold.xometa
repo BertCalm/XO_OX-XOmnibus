@@ -1,12 +1,12 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "routes": [
+    "pairs": [
       {
-        "amount": 0.35,
-        "dest": "Origami",
-        "source": "Orbital",
-        "type": "AudioToFM"
+        "engineA": "Orbital",
+        "engineB": "Origami",
+        "type": "AudioToFM",
+        "amount": 0.35
       }
     ]
   },

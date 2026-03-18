@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5936,
-    "source": "Overdub",
-    "target": "Overworld",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Overworld",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.5936
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5674,
@@ -31,7 +35,7 @@
     "SPACE": 0.1083
   },
   "mood": "Flux",
-  "name": "BRIGHT_COLD_DENSE_INTIMATE_FLX_4",
+  "name": "Mirror Heavy",
   "parameters": {
     "Overdub": {
       "macro_character": 0.7574,

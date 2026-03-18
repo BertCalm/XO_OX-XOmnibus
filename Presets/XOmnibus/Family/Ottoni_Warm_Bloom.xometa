@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Ottoni Warm Bloom",
-  "parameters": {},
+  "parameters": {
+    "Ottoni": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

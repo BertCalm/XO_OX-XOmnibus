@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.86,
-    "source": "Overdub",
-    "target": "Osprey",
-    "type": "PHASE_LOCK"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Osprey",
+        "type": "PHASE_LOCK",
+        "amount": 0.86
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Family",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FAM 12",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Osprey": {
       "macro_character": 0.72,

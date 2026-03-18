@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.802,
-    "source": "Obscura",
-    "target": "Ocelot",
-    "type": "TEXTURE_MORPH"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Ocelot",
+        "type": "TEXTURE_MORPH",
+        "amount": 0.802
+      }
+    ]
   },
   "dna": {
     "aggression": 0.75,

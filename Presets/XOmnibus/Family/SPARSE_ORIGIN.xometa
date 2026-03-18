@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.883,
-    "source": "OddOscar",
-    "target": "Overworld",
-    "type": "RHYTHM_SYNC"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Overworld",
+        "type": "RHYTHM_SYNC",
+        "amount": 0.883
+      }
+    ]
   },
   "dna": {
     "aggression": 0.026,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.918,
-    "source": "Opal",
-    "target": "Osprey",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Osprey",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.918
+      }
+    ]
   },
   "dna": {
     "aggression": 0.97,
@@ -31,7 +35,7 @@
     "SPACE": 0.349
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM KINETIC VIOLENT AET AGG 4",
+  "name": "BRIGHT WARM KINETIC VIOLENT...",
   "parameters": {
     "Opal": {
       "macro_character": 0.893,

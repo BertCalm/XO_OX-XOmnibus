@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.359,
-    "source": "Orphica",
-    "target": "Overbite",
-    "type": "CHAOS_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Overbite",
+        "type": "CHAOS_SYNC",
+        "amount": 0.359
+      }
+    ]
   },
   "dna": {
     "aggression": 0.391,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.599,
-    "source": "Overbite",
-    "target": "Origami",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Origami",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.599
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.101
   },
   "mood": "Foundation",
-  "name": "BRIGHT_COLD_STILL_SPARSE_INTIMATE_FND_5",
+  "name": "Prism Edge",
   "parameters": {
     "Origami": {
       "macro_character": 1.0,

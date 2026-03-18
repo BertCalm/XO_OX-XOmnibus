@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6724,
-    "source": "Obscura",
-    "target": "Ombre",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Ombre",
+        "type": "PITCH_SYNC",
+        "amount": 0.6724
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9026,
@@ -31,7 +35,7 @@
     "SPACE": 0.0429
   },
   "mood": "Aether",
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_AET2_3",
+  "name": "Ice Fang",
   "parameters": {
     "Obscura": {
       "macro_character": 0.8822,

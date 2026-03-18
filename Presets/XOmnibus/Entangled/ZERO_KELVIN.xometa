@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.354,
-    "source": "Outwit",
-    "target": "Odyssey",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Odyssey",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.354
+      }
+    ]
   },
   "dna": {
     "aggression": 0.745,
@@ -31,7 +35,7 @@
     "SPACE": 0.369
   },
   "mood": "Entangled",
-  "name": "ZERO KELVIN",
+  "name": "Zero Kelvin",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.674,

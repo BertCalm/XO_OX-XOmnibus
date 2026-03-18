@@ -33,7 +33,10 @@
   ],
   "mood": "Entangled",
   "name": "Ohm Legacy Weave",
-  "parameters": {},
+  "parameters": {
+    "Ohm": {},
+    "Overdub": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

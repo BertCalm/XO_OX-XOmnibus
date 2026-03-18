@@ -32,8 +32,10 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "DARK WIDE KINETIC VIOLENT ATM 2",
-  "parameters": {},
+  "name": "DARK WIDE KINETIC VIOLENT A...",
+  "parameters": {
+    "Overlap": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

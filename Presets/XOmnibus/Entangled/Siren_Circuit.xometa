@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.72,
-    "intensity": "Deep",
-    "source": "Orphica",
-    "target": "Organon",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Organon",
+        "type": "FILTER_MOD",
+        "amount": 0.72
+      }
+    ]
   },
   "description": "Filter coupling — ORPHICA's glass-harmonic filter feeds ORGANON's enzymatic sweep — brightness 0.90.",
   "dna": {

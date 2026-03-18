@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.64,
-    "source": "Obscura",
-    "target": "Odyssey",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Odyssey",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.64
+      }
+    ]
   },
   "description": "Obscura silver chemistry shifts Odyssey's violet frequencies — cold tonal distortion.",
   "dna": {

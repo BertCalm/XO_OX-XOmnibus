@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.68,
-    "intensity": "Moderate",
-    "source": "Orphica",
-    "target": "Oracle",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Oracle",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.68
+      }
+    ]
   },
   "description": "ORPHICA's high-frequency shimmer seeds ORACLE's stochastic breakpoint mapping.",
   "dna": {

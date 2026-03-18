@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Era Saturation",
-  "parameters": {},
+  "parameters": {
+    "Overworld": {},
+    "Obese": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.9,

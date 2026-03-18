@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Light Singularity",
-  "parameters": {},
+  "parameters": {
+    "Optic": {},
+    "Ouroboros": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.92,

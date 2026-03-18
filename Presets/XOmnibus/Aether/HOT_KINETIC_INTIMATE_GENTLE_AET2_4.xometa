@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8996,
-    "source": "Oceanic",
-    "target": "Oblique",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oblique",
+        "type": "CHAOS_INJECT",
+        "amount": 0.8996
+      }
+    ]
   },
   "dna": {
     "aggression": 0.092,
@@ -31,7 +35,7 @@
     "SPACE": 0.0292
   },
   "mood": "Aether",
-  "name": "HOT_KINETIC_INTIMATE_GENTLE_AET2_4",
+  "name": "Honey Pulse",
   "parameters": {
     "Oblique": {
       "macro_character": 0.6324,

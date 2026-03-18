@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Obscura",
-    "target": "Oracle",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7
+      }
+    ]
   },
   "description": "Obscura string stiffness timbres blend with Oracle's GENDY voice — prophecy in metal strings.",
   "dna": {

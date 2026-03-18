@@ -33,7 +33,9 @@
     "space": 0.6,
     "aggression": 0.5
   },
-  "parameters": {},
+  "parameters": {
+    "Obscura": {}
+  },
   "tags": [
     "flux",
     "cold-flux",
@@ -41,5 +43,5 @@
     "cryo",
     "cascade"
   ],
-  "description": "Obscura granular cryo cascade \u2014 frozen particles streaming in cold flux."
+  "description": "Obscura granular cryo cascade — frozen particles streaming in cold flux."
 }

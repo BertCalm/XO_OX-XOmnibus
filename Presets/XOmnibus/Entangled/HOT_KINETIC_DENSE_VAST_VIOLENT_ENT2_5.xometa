@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.958,
-    "source": "Orphica",
-    "target": "Ocelot",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ocelot",
+        "type": "CHAOS_INJECT",
+        "amount": 0.958
+      }
+    ]
   },
   "dna": {
     "aggression": 0.959,
@@ -31,7 +35,7 @@
     "SPACE": 0.945
   },
   "mood": "Entangled",
-  "name": "HOT KINETIC DENSE VAST VIOLENT ENT2 5",
+  "name": "HOT KINETIC DENSE VAST VIOL...",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.713,

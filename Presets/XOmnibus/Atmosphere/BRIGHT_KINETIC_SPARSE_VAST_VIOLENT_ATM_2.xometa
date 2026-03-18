@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.889,
-    "source": "Obscura",
-    "target": "Optic",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Optic",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.889
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9496,
@@ -31,7 +35,7 @@
     "SPACE": 0.8973
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_KINETIC_SPARSE_VAST_VIOLENT_ATM_2",
+  "name": "Shard Edge",
   "parameters": {
     "Obscura": {
       "macro_character": 0.7896,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8191,
-    "source": "Ocelot",
-    "target": "Osprey",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Osprey",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8191
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.4262
   },
   "mood": "Entangled",
-  "name": "COLD_FROZEN_SPARSE_INTIMATE_GENTLE_ENT3_4",
+  "name": "Grain Node",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.8236,

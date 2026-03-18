@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.81,
-    "source": "Obbligato",
-    "target": "Orbital",
-    "type": "PHASE_LOCK"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Orbital",
+        "type": "PHASE_LOCK",
+        "amount": 0.81
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 9",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.92,

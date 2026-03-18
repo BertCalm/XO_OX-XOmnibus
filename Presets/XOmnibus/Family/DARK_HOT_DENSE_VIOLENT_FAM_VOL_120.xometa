@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.753,
-    "source": "Osprey",
-    "target": "Overdub",
-    "type": "HARMONIC_MESH"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Overdub",
+        "type": "HARMONIC_MESH",
+        "amount": 0.753
+      }
+    ]
   },
   "dna": {
     "aggression": 0.898,
@@ -31,7 +35,7 @@
     "SPACE": 0.364
   },
   "mood": "Family",
-  "name": "DARK_HOT_DENSE_VIOLENT_FAM_VOL_120",
+  "name": "Cocoa Massive",
   "parameters": {
     "Osprey": {
       "macro_character": 0.547,

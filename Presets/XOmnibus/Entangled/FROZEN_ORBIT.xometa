@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.906,
-    "source": "Ombre",
-    "target": "Orbital",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Orbital",
+        "type": "FILTER_MOD",
+        "amount": 0.906
+      }
+    ]
   },
   "dna": {
     "aggression": 0.282,
@@ -31,7 +35,7 @@
     "SPACE": 0.95
   },
   "mood": "Entangled",
-  "name": "FROZEN ORBIT",
+  "name": "Frozen Orbit",
   "parameters": {
     "Ombre": {
       "macro_character": 0.802,

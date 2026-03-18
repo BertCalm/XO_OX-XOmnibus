@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.448,
-    "source": "Osprey",
-    "target": "Odyssey",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Odyssey",
+        "type": "PITCH_SYNC",
+        "amount": 0.448
+      }
+    ]
   },
   "dna": {
     "aggression": 0.02,
@@ -31,7 +35,7 @@
     "SPACE": 0.583
   },
   "mood": "Family",
-  "name": "DARK COLD STILL DENSE GENTLE FAM2 3",
+  "name": "DARK COLD STILL DENSE GENTL...",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.042,

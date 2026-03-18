@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.773,
-    "source": "Oceanic",
-    "target": "Oracle",
-    "type": "TEXTURE_WEAVE"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oracle",
+        "type": "TEXTURE_WEAVE",
+        "amount": 0.773
+      }
+    ]
   },
   "dna": {
     "aggression": 0.21,

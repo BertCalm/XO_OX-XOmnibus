@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.62,
-    "source": "Oceanic",
-    "target": "Organon",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.62
+      }
+    ]
   },
   "dna": {
     "aggression": 0.068,
@@ -31,7 +35,7 @@
     "SPACE": 0.366
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_WARM_KINETIC_GENTLE_ATM_5",
+  "name": "Honey Swirl",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.381,

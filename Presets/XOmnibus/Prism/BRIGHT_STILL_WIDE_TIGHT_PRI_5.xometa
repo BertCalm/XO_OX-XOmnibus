@@ -28,7 +28,9 @@
   ],
   "mood": "Prism",
   "name": "BRIGHT STILL WIDE TIGHT PRI 5",
-  "parameters": {},
+  "parameters": {
+    "Ombre": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

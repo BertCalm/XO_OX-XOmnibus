@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.54,
-    "source": "Odyssey",
-    "target": "Overdub",
-    "type": "LFO_SYNC"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Overdub",
+        "type": "LFO_SYNC",
+        "amount": 0.54
+      }
+    ]
   },
   "dna": {
     "aggression": 0.34,

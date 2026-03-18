@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.732,
-    "source": "Origami",
-    "target": "Orbital",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Orbital",
+        "type": "FILTER_MOD",
+        "amount": 0.732
+      }
+    ]
   },
   "dna": {
     "aggression": 0.69,

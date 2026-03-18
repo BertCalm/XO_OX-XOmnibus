@@ -33,7 +33,10 @@
   ],
   "mood": "Entangled",
   "name": "Ottoni OVERBITE Bridge",
-  "parameters": {},
+  "parameters": {
+    "Ottoni": {},
+    "Overbite": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

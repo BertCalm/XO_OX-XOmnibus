@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.844,
-    "source": "OddOscar",
-    "target": "Opal",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Opal",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.844
+      }
+    ]
   },
   "dna": {
     "aggression": 0.875,
@@ -31,7 +35,7 @@
     "SPACE": 0.531
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_4",
+  "name": "Bloom Ripple",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.587,

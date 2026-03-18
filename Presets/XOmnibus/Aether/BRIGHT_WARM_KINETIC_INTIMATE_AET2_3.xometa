@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.718,
-    "source": "Obscura",
-    "target": "Origami",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.718
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4959,
@@ -31,7 +35,7 @@
     "SPACE": 0.0439
   },
   "mood": "Aether",
-  "name": "BRIGHT_WARM_KINETIC_INTIMATE_AET2_3",
+  "name": "Halo Drift",
   "parameters": {
     "Obscura": {
       "macro_character": 0.9584,

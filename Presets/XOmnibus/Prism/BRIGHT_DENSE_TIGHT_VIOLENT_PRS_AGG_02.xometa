@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.743,
-    "source": "Orphica",
-    "target": "Ocelot",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ocelot",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.743
+      }
+    ]
   },
   "dna": {
     "aggression": 0.986,
@@ -31,7 +35,7 @@
     "SPACE": 0.07
   },
   "mood": "Prism",
-  "name": "BRIGHT DENSE TIGHT VIOLENT PRS AGG 2",
+  "name": "BRIGHT DENSE TIGHT VIOLENT ...",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.934,

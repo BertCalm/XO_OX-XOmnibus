@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.825,
-    "source": "Osprey",
-    "target": "Ole",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Ole",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.825
+      }
+    ]
   },
   "dna": {
     "aggression": 0.357,
@@ -31,7 +35,7 @@
     "SPACE": 0.409
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_STILL_DENSE_FAM_VOL_22",
+  "name": "Halo Molten 2",
   "parameters": {
     "Ole": {
       "macro_character": 0.932,

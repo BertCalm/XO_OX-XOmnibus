@@ -11,7 +11,7 @@
     ]
   },
   "couplingIntensity": "High",
-  "description": "Optic AutoPulse velocity triggering Onset percussion at maximum kinetic rate \u2014 light percussion.",
+  "description": "Optic AutoPulse velocity triggering Onset percussion at maximum kinetic rate — light percussion.",
   "dna": {
     "aggression": 0.95,
     "brightness": 0.9,
@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Photon Cascade III",
-  "parameters": {},
+  "parameters": {
+    "Optic": {},
+    "Onset": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.95,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.983,
-    "source": "Optic",
-    "target": "Origami",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Origami",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.983
+      }
+    ]
   },
   "dna": {
     "aggression": 0.877,
@@ -31,7 +35,7 @@
     "SPACE": 0.025
   },
   "mood": "Flux",
-  "name": "COLD_KINETIC_INTIMATE_VIOLENT_FLX_AGG_3",
+  "name": "Node Stream",
   "parameters": {
     "Optic": {
       "macro_character": 0.467,

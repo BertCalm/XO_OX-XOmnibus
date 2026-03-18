@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.958,
-    "source": "Origami",
-    "target": "Oblong",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oblong",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.958
+      }
+    ]
   },
   "dna": {
     "aggression": 0.949,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.486,
-    "source": "Obese",
-    "target": "Orbital",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Orbital",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.486
+      }
+    ]
   },
   "dna": {
     "aggression": 0.08,

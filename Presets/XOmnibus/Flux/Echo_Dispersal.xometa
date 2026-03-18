@@ -33,7 +33,9 @@
     "space": 0.93,
     "aggression": 0.1
   },
-  "parameters": {},
+  "parameters": {
+    "Overdub": {}
+  },
   "tags": [
     "flux",
     "sparse-flux",
@@ -41,5 +43,5 @@
     "echo",
     "dispersal"
   ],
-  "description": "Overdub echo dispersal \u2014 sound dissolving into space, barely traceable."
+  "description": "Overdub echo dispersal — sound dissolving into space, barely traceable."
 }

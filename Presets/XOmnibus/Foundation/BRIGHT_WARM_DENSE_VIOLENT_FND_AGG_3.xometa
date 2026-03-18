@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.825,
-    "source": "Overbite",
-    "target": "OddfeliX",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "OddfeliX",
+        "type": "FILTER_MOD",
+        "amount": 0.825
+      }
+    ]
   },
   "dna": {
     "aggression": 0.936,
@@ -31,7 +35,7 @@
     "SPACE": 0.88
   },
   "mood": "Foundation",
-  "name": "BRIGHT_WARM_DENSE_VIOLENT_FND_AGG_3",
+  "name": "Bloom Blade",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.647,

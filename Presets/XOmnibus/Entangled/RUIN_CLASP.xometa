@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.586,
-    "source": "Origami",
-    "target": "Orbital",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Orbital",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.586
+      }
+    ]
   },
   "dna": {
     "aggression": 0.951,

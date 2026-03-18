@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.72,
-    "source": "Optic",
-    "target": "Oracle",
-    "type": "SPECTRAL_FOLD"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oracle",
+        "type": "SPECTRAL_FOLD",
+        "amount": 0.72
+      }
+    ]
   },
   "description": "Optic's icy prism splits Oracle's visions into cold glass harmonics.",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Glass Prophecy",
-  "parameters": {},
+  "parameters": {
+    "Optic": {},
+    "Oracle": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.25,
@@ -43,5 +50,13 @@
     "crystalline",
     "prophetic"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

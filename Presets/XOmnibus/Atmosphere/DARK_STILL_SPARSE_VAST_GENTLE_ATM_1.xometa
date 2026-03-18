@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.558,
-    "source": "Optic",
-    "target": "Opal",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Opal",
+        "type": "PITCH_SYNC",
+        "amount": 0.558
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0853,
@@ -31,7 +35,7 @@
     "SPACE": 0.9252
   },
   "mood": "Atmosphere",
-  "name": "DARK_STILL_SPARSE_VAST_GENTLE_ATM_1",
+  "name": "Node Expanse 2",
   "parameters": {
     "Opal": {
       "macro_character": 0.1893,

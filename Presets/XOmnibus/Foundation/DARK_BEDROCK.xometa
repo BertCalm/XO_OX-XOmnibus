@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.579,
-    "source": "Oceanic",
-    "target": "Orca",
-    "type": "HARMONIC_LOCK"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Orca",
+        "type": "HARMONIC_LOCK",
+        "amount": 0.579
+      }
+    ]
   },
   "dna": {
     "aggression": 0.884,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.88,
-    "source": "Oblique",
-    "target": "Overdub",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overdub",
+        "type": "CHAOS_INJECT",
+        "amount": 0.88
+      }
+    ]
   },
   "dna": {
     "aggression": 0.886,
@@ -31,7 +35,7 @@
     "SPACE": 0.947
   },
   "mood": "Flux",
-  "name": "DARK_DENSE_VAST_VIOLENT_FLX_AGG_5",
+  "name": "Flux Expanse 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.535,

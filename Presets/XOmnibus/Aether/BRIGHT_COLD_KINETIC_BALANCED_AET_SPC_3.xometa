@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.936,
-    "source": "Organon",
-    "target": "OddfeliX",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "OddfeliX",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.936
+      }
+    ]
   },
   "dna": {
     "aggression": 0.95,
@@ -31,7 +35,7 @@
     "SPACE": 0.555
   },
   "mood": "Aether",
-  "name": "BRIGHT COLD KINETIC BALANCED AET SPC 3",
+  "name": "BRIGHT COLD KINETIC BALANCE...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.58,

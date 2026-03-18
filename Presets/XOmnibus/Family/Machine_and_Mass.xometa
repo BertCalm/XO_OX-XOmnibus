@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Machine and Mass",
-  "parameters": {},
+  "parameters": {
+    "Onset": {},
+    "Oblong": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

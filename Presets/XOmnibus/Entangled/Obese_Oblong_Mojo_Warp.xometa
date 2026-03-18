@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.62,
-    "source": "Oblong",
-    "target": "Obese",
-    "type": "PITCH_ENTANGLE"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Obese",
+        "type": "PITCH_ENTANGLE",
+        "amount": 0.62
+      }
+    ]
   },
   "dna": {
     "aggression": 0.72,

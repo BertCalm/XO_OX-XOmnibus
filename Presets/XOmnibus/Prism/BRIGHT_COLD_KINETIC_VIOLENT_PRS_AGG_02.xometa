@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.738,
-    "source": "Ole",
-    "target": "Ocelot",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Ocelot",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.738
+      }
+    ]
   },
   "dna": {
     "aggression": 0.965,
@@ -31,7 +35,7 @@
     "SPACE": 0.522
   },
   "mood": "Prism",
-  "name": "BRIGHT COLD KINETIC VIOLENT PRS AGG 2",
+  "name": "BRIGHT COLD KINETIC VIOLENT...",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.961,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.893,
-    "source": "Osprey",
-    "target": "Organon",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Organon",
+        "type": "CHAOS_INJECT",
+        "amount": 0.893
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1181,
@@ -31,7 +35,7 @@
     "SPACE": 0.964
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_COLD_SPARSE_VAST_GENTLE_ATM_2",
+  "name": "Mirror Abyss",
   "parameters": {
     "Organon": {
       "macro_character": 0.5043,

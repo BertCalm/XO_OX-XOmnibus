@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6484,
-    "source": "Osprey",
-    "target": "Organon",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Organon",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.6484
+      }
+    ]
   },
   "dna": {
     "aggression": 0.889,
@@ -31,7 +35,7 @@
     "SPACE": 0.9327
   },
   "mood": "Aether",
-  "name": "KINETIC_DENSE_VAST_VIOLENT_AET4_2",
+  "name": "Node Expanse",
   "parameters": {
     "Organon": {
       "macro_character": 0.9233,

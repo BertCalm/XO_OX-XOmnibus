@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.927,
-    "source": "Ouroboros",
-    "target": "Obese",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Obese",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.927
+      }
+    ]
   },
   "dna": {
     "aggression": 0.93,
@@ -31,7 +35,7 @@
     "SPACE": 0.112
   },
   "mood": "Entangled",
-  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_ENT_AGG_1",
+  "name": "Tone Crush 2",
   "parameters": {
     "Obese": {
       "macro_character": 0.603,

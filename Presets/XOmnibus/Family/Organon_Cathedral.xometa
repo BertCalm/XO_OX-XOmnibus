@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Organon Cathedral",
-  "parameters": {},
+  "parameters": {
+    "Organon": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

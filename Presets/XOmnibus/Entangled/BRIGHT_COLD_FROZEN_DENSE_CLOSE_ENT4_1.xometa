@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.764,
-    "source": "Ocelot",
-    "target": "Overbite",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Overbite",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.764
+      }
+    ]
   },
   "dna": {
     "aggression": 0.651,
@@ -31,7 +35,7 @@
     "SPACE": 0.07
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_FROZEN_DENSE_CLOSE_ENT4_1",
+  "name": "Mirror Saturated",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.489,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5073,
-    "source": "Organon",
-    "target": "Orbital",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Orbital",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.5073
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9331,
@@ -31,7 +35,7 @@
     "SPACE": 0.0274
   },
   "mood": "Aether",
-  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_AET4_4",
+  "name": "Bloom Stream",
   "parameters": {
     "Orbital": {
       "macro_character": 0.7786,

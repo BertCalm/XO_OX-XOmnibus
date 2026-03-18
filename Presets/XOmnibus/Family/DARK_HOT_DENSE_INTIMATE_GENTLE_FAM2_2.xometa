@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.536,
-    "source": "Osteria",
-    "target": "Orphica",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Orphica",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.536
+      }
+    ]
   },
   "dna": {
     "aggression": 0.088,
@@ -31,7 +35,7 @@
     "SPACE": 0.088
   },
   "mood": "Family",
-  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 2",
+  "name": "DARK HOT DENSE INTIMATE GEN...",
   "parameters": {
     "Orphica": {
       "macro_character": 0.569,

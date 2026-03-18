@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Obligatory Starter",
-  "parameters": {},
+  "parameters": {
+    "Osteria": {},
+    "Obbligato": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

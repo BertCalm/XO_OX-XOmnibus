@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8989,
-    "source": "Overworld",
-    "target": "Origami",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Origami",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8989
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4067,
@@ -31,7 +35,7 @@
     "SPACE": 0.1092
   },
   "mood": "Prism",
-  "name": "DARK_HOT_STILL_INTIMATE_PRS_DRK_1",
+  "name": "Dusk Molten 2",
   "parameters": {
     "Origami": {
       "macro_character": 0.7229,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5,
-    "source": "Oblong",
-    "target": "Ohm",
-    "type": "RESONANT_BRIDGE"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Ohm",
+        "type": "RESONANT_BRIDGE",
+        "amount": 0.5
+      }
+    ]
   },
   "description": "Oblong teaches ohm a few bar-chord tricks — character synth meets hippy jam session",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Bob's Folk Lesson",
-  "parameters": {},
+  "parameters": {
+    "Ohm": {},
+    "Oblong": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.32,
@@ -43,5 +50,13 @@
     "oblong",
     "hippy"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

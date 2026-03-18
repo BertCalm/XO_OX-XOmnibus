@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.411,
-    "source": "Optic",
-    "target": "Oracle",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oracle",
+        "type": "CHAOS_INJECT",
+        "amount": 0.411
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1115,
@@ -31,7 +35,7 @@
     "SPACE": 0.9782
   },
   "mood": "Atmosphere",
-  "name": "HOT_KINETIC_SPARSE_VAST_GENTLE_ATM_1",
+  "name": "Ember Surge 2",
   "parameters": {
     "Optic": {
       "macro_character": 0.6493,

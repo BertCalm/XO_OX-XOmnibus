@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.831,
-    "source": "Ole",
-    "target": "Osteria",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Osteria",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.831
+      }
+    ]
   },
   "dna": {
     "aggression": 0.939,
@@ -31,7 +35,7 @@
     "SPACE": 0.475
   },
   "mood": "Prism",
-  "name": "DARK COLD KINETIC VIOLENT PRS AGG 3",
+  "name": "DARK COLD KINETIC VIOLENT P...",
   "parameters": {
     "Ole": {
       "macro_character": 0.027,

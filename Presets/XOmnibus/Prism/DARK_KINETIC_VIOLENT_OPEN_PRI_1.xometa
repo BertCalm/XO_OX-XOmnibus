@@ -32,8 +32,10 @@
     "SPACE"
   ],
   "mood": "Prism",
-  "name": "DARK KINETIC VIOLENT OPEN PRI 1",
-  "parameters": {},
+  "name": "DARK KINETIC VIOLENT OPEN P...",
+  "parameters": {
+    "Owlfish": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

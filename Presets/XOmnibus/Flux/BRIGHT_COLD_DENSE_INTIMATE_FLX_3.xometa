@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6486,
-    "source": "Oracle",
-    "target": "Opal",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Opal",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.6486
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4035,
@@ -31,7 +35,7 @@
     "SPACE": 0.1654
   },
   "mood": "Flux",
-  "name": "BRIGHT_COLD_DENSE_INTIMATE_FLX_3",
+  "name": "Ice Saturated",
   "parameters": {
     "Opal": {
       "macro_character": 0.9321,

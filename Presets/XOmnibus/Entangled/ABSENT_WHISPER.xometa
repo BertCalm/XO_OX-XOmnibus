@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.463,
-    "source": "Optic",
-    "target": "Osprey",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Osprey",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.463
+      }
+    ]
   },
   "dna": {
     "aggression": 0.596,

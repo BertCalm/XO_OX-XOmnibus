@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Orca \u00d7 Overdub \u2014 Chaos Inject coupling at extreme DNA corner.",
+  "description": "Orca × Overdub — Chaos Inject coupling at extreme DNA corner.",
   "tags": [
     "vast",
     "orca",
@@ -33,7 +33,10 @@
     "space": 0.939,
     "aggression": 0.09
   },
-  "parameters": {},
+  "parameters": {
+    "Orca": {},
+    "Overdub": {}
+  },
   "coupling": {
     "pairs": [
       {

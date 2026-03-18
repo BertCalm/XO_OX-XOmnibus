@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.776,
-    "source": "Osteria",
-    "target": "Organon",
-    "type": "SPECTRAL_WEAVE"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Organon",
+        "type": "SPECTRAL_WEAVE",
+        "amount": 0.776
+      }
+    ]
   },
   "dna": {
     "aggression": 0.523,
@@ -31,7 +35,7 @@
     "SPACE": 0.112
   },
   "mood": "Family",
-  "name": "BRIGHT_COLD_DENSE_INTIMATE_FAM_VOL_38",
+  "name": "Prism Packed 2",
   "parameters": {
     "Organon": {
       "macro_character": 0.477,

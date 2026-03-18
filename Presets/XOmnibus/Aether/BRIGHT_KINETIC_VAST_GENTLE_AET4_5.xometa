@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.515,
-    "source": "Opal",
-    "target": "Orbital",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Orbital",
+        "type": "CHAOS_INJECT",
+        "amount": 0.515
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0476,
@@ -31,7 +35,7 @@
     "SPACE": 0.8928
   },
   "mood": "Aether",
-  "name": "BRIGHT_KINETIC_VAST_GENTLE_AET4_5",
+  "name": "Sunrise Surge 2",
   "parameters": {
     "Opal": {
       "macro_character": 0.4736,

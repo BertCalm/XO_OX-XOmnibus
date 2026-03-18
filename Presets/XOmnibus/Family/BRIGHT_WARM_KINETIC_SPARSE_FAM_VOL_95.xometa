@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.691,
-    "source": "Osteria",
-    "target": "Overdub",
-    "type": "PHASE_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Overdub",
+        "type": "PHASE_COUPLE",
+        "amount": 0.691
+      }
+    ]
   },
   "dna": {
     "aggression": 0.529,
@@ -31,7 +35,7 @@
     "SPACE": 0.452
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_SPARSE_FAM_VOL_95",
+  "name": "Candlelight Stream 2",
   "parameters": {
     "Osteria": {
       "macro_character": 0.931,

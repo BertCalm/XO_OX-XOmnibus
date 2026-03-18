@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.759,
     "pairs": [
       {
         "amount": 0.759,
@@ -9,10 +8,7 @@
         "target": "Odyssey",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Overdub",
-    "target": "Odyssey",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Cold Kinetic Sparse character entanglement — ODYSSEY × OVERDUB via Resonance Share. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.6438
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_KINETIC_SPARSE_ENT_4",
+  "name": "Quartz Swirl",
   "parameters": {
     "Odyssey": {
       "amp_attack": 0.0852,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.785,
-    "source": "Ole",
-    "target": "Opal",
-    "type": "FILTER_LINK"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Opal",
+        "type": "FILTER_LINK",
+        "amount": 0.785
+      }
+    ]
   },
   "dna": {
     "aggression": 0.952,
@@ -31,7 +35,7 @@
     "SPACE": 0.693
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_VOL_80",
+  "name": "Halo Flutter",
   "parameters": {
     "Ole": {
       "macro_character": 0.984,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.535,
-    "source": "Opal",
-    "target": "Osprey",
-    "type": "MODULATION_FLOW"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Osprey",
+        "type": "MODULATION_FLOW",
+        "amount": 0.535
+      }
+    ]
   },
   "dna": {
     "aggression": 0.694,
@@ -31,7 +35,7 @@
     "SPACE": 0.639
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_SPARSE_FAM_VOL_91",
+  "name": "Glow Swirl 2",
   "parameters": {
     "Opal": {
       "macro_character": 0.909,

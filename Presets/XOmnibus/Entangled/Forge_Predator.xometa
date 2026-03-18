@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Orca",
-    "target": "Obese",
-    "type": "PHASE_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Obese",
+        "type": "PHASE_SYNC",
+        "amount": 0.7
+      }
+    ]
   },
   "dna": {
     "aggression": 0.77,

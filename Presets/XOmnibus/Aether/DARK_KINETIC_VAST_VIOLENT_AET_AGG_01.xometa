@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.845,
-    "source": "Orbital",
-    "target": "Origami",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Origami",
+        "type": "FILTER_MOD",
+        "amount": 0.845
+      }
+    ]
   },
   "dna": {
     "aggression": 0.955,
@@ -31,7 +35,7 @@
     "SPACE": 0.922
   },
   "mood": "Aether",
-  "name": "DARK KINETIC VAST VIOLENT AET AGG 1",
+  "name": "DARK KINETIC VAST VIOLENT A...",
   "parameters": {
     "Orbital": {
       "macro_character": 0.111,

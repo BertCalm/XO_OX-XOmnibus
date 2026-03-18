@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.91,
-    "source": "Ottoni",
-    "target": "Odyssey",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Odyssey",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.91
+      }
+    ]
   },
   "dna": {
     "aggression": 0.902,
@@ -31,7 +35,7 @@
     "SPACE": 0.926
   },
   "mood": "Entangled",
-  "name": "HOT_KINETIC_VAST_VIOLENT_ENT_AGG_4",
+  "name": "Cocoa Drift 2",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.389,

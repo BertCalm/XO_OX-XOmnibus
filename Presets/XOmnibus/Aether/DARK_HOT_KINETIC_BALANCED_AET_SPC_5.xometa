@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.931,
-    "source": "Opal",
-    "target": "Obscura",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obscura",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.931
+      }
+    ]
   },
   "dna": {
     "aggression": 0.888,
@@ -31,7 +35,7 @@
     "SPACE": 0.546
   },
   "mood": "Aether",
-  "name": "DARK HOT KINETIC BALANCED AET SPC 5",
+  "name": "DARK HOT KINETIC BALANCED A...",
   "parameters": {
     "Obscura": {
       "macro_character": 0.494,

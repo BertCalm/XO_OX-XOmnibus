@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5679,
-    "source": "OddOscar",
-    "target": "Origami",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.5679
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9396,
@@ -31,7 +35,7 @@
     "SPACE": 0.9161
   },
   "mood": "Aether",
-  "name": "KINETIC_DENSE_VAST_VIOLENT_AET4_1",
+  "name": "Flux Solid",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.2464,

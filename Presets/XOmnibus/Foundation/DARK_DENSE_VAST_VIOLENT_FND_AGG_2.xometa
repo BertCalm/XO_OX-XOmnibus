@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.723,
-    "source": "Onset",
-    "target": "Obsidian",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Obsidian",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.723
+      }
+    ]
   },
   "dna": {
     "aggression": 0.971,
@@ -31,7 +35,7 @@
     "SPACE": 0.494
   },
   "mood": "Foundation",
-  "name": "DARK_DENSE_VAST_VIOLENT_FND_AGG_2",
+  "name": "Phase Wrath",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.51,

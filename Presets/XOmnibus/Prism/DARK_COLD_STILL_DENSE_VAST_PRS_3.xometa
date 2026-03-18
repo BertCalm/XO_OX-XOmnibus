@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.959,
-    "source": "Oblique",
-    "target": "Ole",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ole",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.959
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.916
   },
   "mood": "Prism",
-  "name": "DARK_COLD_STILL_DENSE_VAST_PRS_3",
+  "name": "Grain Orbit",
   "parameters": {
     "Oblique": {
       "macro_character": 0.059,

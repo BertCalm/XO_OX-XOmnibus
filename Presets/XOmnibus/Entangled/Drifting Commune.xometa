@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.55,
-    "source": "Ohm",
-    "target": "Odyssey",
-    "type": "DRIFT_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Odyssey",
+        "type": "DRIFT_SYNC",
+        "amount": 0.55
+      }
+    ]
   },
   "description": "Ohm family gathered then scattered across tonal drift — warmth persists as everything shifts",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Drifting Commune",
-  "parameters": {},
+  "parameters": {
+    "Ohm": {},
+    "Odyssey": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.24,
@@ -43,5 +50,13 @@
     "odyssey",
     "hippy"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

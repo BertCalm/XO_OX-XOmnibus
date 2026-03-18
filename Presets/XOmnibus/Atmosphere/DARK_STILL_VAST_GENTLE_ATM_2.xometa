@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.525,
-    "source": "Opal",
-    "target": "Organon",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Organon",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.525
+      }
+    ]
   },
   "dna": {
     "aggression": 0.103,

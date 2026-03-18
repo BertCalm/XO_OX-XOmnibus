@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.912,
-    "source": "Optic",
-    "target": "Odyssey",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Odyssey",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.912
+      }
+    ]
   },
   "dna": {
     "aggression": 0.986,
@@ -31,7 +35,7 @@
     "SPACE": 0.571
   },
   "mood": "Flux",
-  "name": "DARK_COLD_STILL_VIOLENT_FLX_SLW_2",
+  "name": "Signal Edge 3",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.567,

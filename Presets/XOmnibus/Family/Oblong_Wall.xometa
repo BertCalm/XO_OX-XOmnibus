@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Oblong Wall",
-  "parameters": {},
+  "parameters": {
+    "Oblong": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

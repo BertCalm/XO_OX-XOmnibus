@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.757,
-    "source": "Onset",
-    "target": "Orphica",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Orphica",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.757
+      }
+    ]
   },
   "dna": {
     "aggression": 0.88,
@@ -31,7 +35,7 @@
     "SPACE": 0.867
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_FROZEN_VAST_HARSH_ENT4_4",
+  "name": "Arctic Fang",
   "parameters": {
     "Onset": {
       "macro_character": 0.534,

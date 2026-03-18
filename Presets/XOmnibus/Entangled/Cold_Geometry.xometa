@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.73,
-    "source": "Origami",
-    "target": "Odyssey",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Odyssey",
+        "type": "PITCH_SYNC",
+        "amount": 0.73
+      }
+    ]
   },
   "description": "Origami locks Odyssey's pitch to fold angles — synth geometry becomes paper geometry.",
   "dna": {

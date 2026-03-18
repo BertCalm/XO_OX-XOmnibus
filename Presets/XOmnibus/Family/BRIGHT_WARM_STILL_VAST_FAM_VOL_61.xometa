@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.94,
-    "source": "OddOscar",
-    "target": "Odyssey",
-    "type": "SPECTRAL_WEAVE"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
+        "type": "SPECTRAL_WEAVE",
+        "amount": 0.94
+      }
+    ]
   },
   "dna": {
     "aggression": 0.687,
@@ -31,7 +35,7 @@
     "SPACE": 0.875
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_STILL_VAST_FAM_VOL_61",
+  "name": "Bloom Orbit 2",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.965,

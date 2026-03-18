@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9858,
-    "source": "Orca",
-    "target": "Oblong",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Oblong",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.9858
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.4033
   },
   "mood": "Entangled",
-  "name": "DARK_STILL_DENSE_INTIMATE_GENTLE_ENT3_2",
+  "name": "Tone Thick",
   "parameters": {
     "Oblong": {
       "macro_character": 0.7331,

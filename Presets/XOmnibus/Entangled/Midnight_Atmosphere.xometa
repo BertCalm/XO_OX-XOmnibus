@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.67,
-    "source": "Ombre",
-    "target": "Oracle",
-    "type": "FEEDBACK"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Oracle",
+        "type": "FEEDBACK",
+        "amount": 0.67
+      }
+    ]
   },
   "dna": {
     "aggression": 0.42,

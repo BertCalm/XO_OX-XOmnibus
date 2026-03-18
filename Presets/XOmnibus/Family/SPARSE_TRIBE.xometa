@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.753,
-    "source": "Orphica",
-    "target": "Orbital",
-    "type": "SPECTRAL_GATE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Orbital",
+        "type": "SPECTRAL_GATE",
+        "amount": 0.753
+      }
+    ]
   },
   "dna": {
     "aggression": 0.778,

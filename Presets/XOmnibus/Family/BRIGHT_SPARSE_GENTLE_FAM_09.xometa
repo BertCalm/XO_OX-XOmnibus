@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Onset",
-    "target": "Osteria",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Osteria",
+        "type": "FILTER_MOD",
+        "amount": 0.65
+      }
+    ]
   },
   "dna": {
     "aggression": 0.053,

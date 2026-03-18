@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Gradient and Pod",
-  "parameters": {},
+  "parameters": {
+    "Ombre": {},
+    "Orca": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

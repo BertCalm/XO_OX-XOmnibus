@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.953,
-    "source": "Oblong",
-    "target": "Orca",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Orca",
+        "type": "PITCH_SYNC",
+        "amount": 0.953
+      }
+    ]
   },
   "dna": {
     "aggression": 0.391,

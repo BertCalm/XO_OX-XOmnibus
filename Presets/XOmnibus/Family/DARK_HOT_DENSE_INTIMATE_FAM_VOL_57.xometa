@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.523,
-    "source": "Oblong",
-    "target": "Organon",
-    "type": "PHASE_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Organon",
+        "type": "PHASE_COUPLE",
+        "amount": 0.523
+      }
+    ]
   },
   "dna": {
     "aggression": 0.373,
@@ -31,7 +35,7 @@
     "SPACE": 0.035
   },
   "mood": "Family",
-  "name": "DARK_HOT_DENSE_INTIMATE_FAM_VOL_57",
+  "name": "Amber Massive",
   "parameters": {
     "Oblong": {
       "macro_character": 0.541,

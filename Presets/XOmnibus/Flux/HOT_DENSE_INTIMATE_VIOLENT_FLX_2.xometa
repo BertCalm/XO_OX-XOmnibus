@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7061,
-    "source": "Overdub",
-    "target": "Ouroboros",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Ouroboros",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.7061
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9594,
@@ -31,7 +35,7 @@
     "SPACE": 0.1435
   },
   "mood": "Flux",
-  "name": "HOT_DENSE_INTIMATE_VIOLENT_FLX_2",
+  "name": "Solar Deep",
   "parameters": {
     "Ouroboros": {
       "macro_character": 0.7045,

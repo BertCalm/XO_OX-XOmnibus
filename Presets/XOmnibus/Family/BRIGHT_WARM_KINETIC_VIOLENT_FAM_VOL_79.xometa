@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.826,
-    "source": "Organon",
-    "target": "OddfeliX",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "OddfeliX",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.826
+      }
+    ]
   },
   "dna": {
     "aggression": 0.924,
@@ -31,7 +35,7 @@
     "SPACE": 0.515
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_VOL_79",
+  "name": "Solar Fang 2",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.894,

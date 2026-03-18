@@ -33,7 +33,9 @@
   ],
   "mood": "Atmosphere",
   "name": "HOT DENSE STILL VIOLENT ATM 1",
-  "parameters": {},
+  "parameters": {
+    "Owlfish": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

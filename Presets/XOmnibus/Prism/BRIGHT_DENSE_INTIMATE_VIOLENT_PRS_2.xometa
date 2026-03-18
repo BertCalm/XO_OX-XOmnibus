@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.763,
-    "source": "Orphica",
-    "target": "Origami",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.763
+      }
+    ]
   },
   "dna": {
     "aggression": 0.949,
@@ -31,7 +35,7 @@
     "SPACE": 0.105
   },
   "mood": "Prism",
-  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_PRS_2",
+  "name": "Thread Storm 2",
   "parameters": {
     "Origami": {
       "macro_character": 0.486,

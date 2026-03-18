@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6779,
-    "source": "Orbital",
-    "target": "Opal",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Opal",
+        "type": "PITCH_SYNC",
+        "amount": 0.6779
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5108,
@@ -31,7 +35,7 @@
     "SPACE": 0.0289
   },
   "mood": "Aether",
-  "name": "DARK_COLD_DENSE_INTIMATE_AET2_4",
+  "name": "Tone Heavy",
   "parameters": {
     "Opal": {
       "macro_character": 0.0401,

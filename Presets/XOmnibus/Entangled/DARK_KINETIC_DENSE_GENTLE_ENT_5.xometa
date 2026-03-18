@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7059,
     "pairs": [
       {
         "amount": 0.7059,
@@ -9,10 +8,7 @@
         "target": "Obbligato",
         "type": "CHAOS_INJECT"
       }
-    ],
-    "source": "Ottoni",
-    "target": "Obbligato",
-    "type": "CHAOS_INJECT"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Dark Kinetic Dense Gentle character entanglement — OBBLIGATO × OTTONI via Chaos Inject. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.6612
   },
   "mood": "Entangled",
-  "name": "DARK_KINETIC_DENSE_GENTLE_ENT_5",
+  "name": "Cocoa Packed",
   "parameters": {
     "Obbligato": {
       "amp_attack": 0.0611,

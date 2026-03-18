@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.61,
-    "source": "Opal",
-    "target": "OddOscar",
-    "type": "PITCH_FOLLOW"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "OddOscar",
+        "type": "PITCH_FOLLOW",
+        "amount": 0.61
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Flux",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FLX 3",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.91,

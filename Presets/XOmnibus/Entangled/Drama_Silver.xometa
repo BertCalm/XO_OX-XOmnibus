@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.84,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Obscura",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.84
+      }
+    ]
   },
   "description": "Spectral morphing: DRAMA's harmonic spray exposed on OBSCURA's silver surface — aggression 0.88.",
   "dna": {

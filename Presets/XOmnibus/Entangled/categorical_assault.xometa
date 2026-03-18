@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9,
     "pairs": [
       {
         "amount": 0.9,
@@ -9,10 +8,7 @@
         "engineB": "Organon",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Outwit",
-    "target": "Organon",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORGANON's logical-metabolic character (Aristotelian organ-pipe variational synthesis). Coupling: Resonance Share.",

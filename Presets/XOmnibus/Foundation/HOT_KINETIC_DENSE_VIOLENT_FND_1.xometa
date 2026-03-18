@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.405,
-    "source": "Oracle",
-    "target": "Obsidian",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Obsidian",
+        "type": "PITCH_SYNC",
+        "amount": 0.405
+      }
+    ]
   },
   "dna": {
     "aggression": 0.884,
@@ -31,7 +35,7 @@
     "SPACE": 0.533
   },
   "mood": "Foundation",
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FND_1",
+  "name": "Wave Current",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.45,

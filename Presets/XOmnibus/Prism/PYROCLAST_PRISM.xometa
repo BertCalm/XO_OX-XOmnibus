@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.528,
-    "source": "Ocelot",
-    "target": "Orbital",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Orbital",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.528
+      }
+    ]
   },
   "dna": {
     "aggression": 0.768,

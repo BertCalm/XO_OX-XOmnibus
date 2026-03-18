@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.515,
-    "source": "Orphica",
-    "target": "Osteria",
-    "type": "HARMONIC_MESH"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Osteria",
+        "type": "HARMONIC_MESH",
+        "amount": 0.515
+      }
+    ]
   },
   "dna": {
     "aggression": 0.106,
@@ -31,7 +35,7 @@
     "SPACE": 0.926
   },
   "mood": "Family",
-  "name": "DARK_COLD_VAST_GENTLE_FAM_VOL_128",
+  "name": "Shard Dome",
   "parameters": {
     "Orphica": {
       "macro_character": 0.068,

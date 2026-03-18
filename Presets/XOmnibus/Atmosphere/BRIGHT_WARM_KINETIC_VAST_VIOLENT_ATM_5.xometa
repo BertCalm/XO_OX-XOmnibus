@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.619,
-    "source": "Oblique",
-    "target": "Origami",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Origami",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.619
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9863,
@@ -31,7 +35,7 @@
     "SPACE": 0.9269
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_WARM_KINETIC_VAST_VIOLENT_ATM_5",
+  "name": "Peach Edge",
   "parameters": {
     "Oblique": {
       "macro_character": 0.9128,

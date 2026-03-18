@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.922,
-    "source": "Ombre",
-    "target": "Ocelot",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Ocelot",
+        "type": "PITCH_SYNC",
+        "amount": 0.922
+      }
+    ]
   },
   "dna": {
     "aggression": 0.926,
@@ -31,7 +35,7 @@
     "SPACE": 0.099
   },
   "mood": "Entangled",
-  "name": "BRIGHT_FROZEN_DENSE_CLOSE_HARSH_ENT4_3",
+  "name": "Wave Solid 2",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.652,

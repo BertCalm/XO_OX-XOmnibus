@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9048,
-    "source": "OddfeliX",
-    "target": "Oracle",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oracle",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.9048
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9574,
@@ -31,7 +35,7 @@
     "SPACE": 0.0548
   },
   "mood": "Aether",
-  "name": "HOT_DENSE_INTIMATE_VIOLENT_AET2_2",
+  "name": "Thread Rage",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.4069,

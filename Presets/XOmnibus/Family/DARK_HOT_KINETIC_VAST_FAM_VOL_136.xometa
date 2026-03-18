@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.745,
-    "source": "OddfeliX",
-    "target": "Orphica",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Orphica",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.745
+      }
+    ]
   },
   "dna": {
     "aggression": 0.622,
@@ -31,7 +35,7 @@
     "SPACE": 0.929
   },
   "mood": "Family",
-  "name": "DARK_HOT_KINETIC_VAST_FAM_VOL_136",
+  "name": "Rust Cascade",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.489,

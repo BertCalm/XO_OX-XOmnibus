@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.57,
-    "source": "Odyssey",
-    "target": "Organon",
-    "type": "ENVELOPE_MIRROR"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Organon",
+        "type": "ENVELOPE_MIRROR",
+        "amount": 0.57
+      }
+    ]
   },
   "dna": {
     "aggression": 0.33,

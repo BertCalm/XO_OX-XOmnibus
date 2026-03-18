@@ -33,7 +33,9 @@
   ],
   "mood": "Prism",
   "name": "COLD DRY WIDE VIOLENT PRI 3",
-  "parameters": {},
+  "parameters": {
+    "OddfeliX": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

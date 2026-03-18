@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Commune Drone",
-  "parameters": {},
+  "parameters": {
+    "Ohm": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

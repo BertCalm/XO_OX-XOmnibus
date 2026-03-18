@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8,
-    "source": "OddfeliX",
-    "target": "Orphica",
-    "type": "PHASE_COUPLE"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Orphica",
+        "type": "PHASE_COUPLE",
+        "amount": 0.8
+      }
+    ]
   },
   "dna": {
     "aggression": 0.57,
@@ -31,7 +35,7 @@
     "SPACE": 0.105
   },
   "mood": "Family",
-  "name": "DARK_HOT_DENSE_INTIMATE_FAM_VOL_58",
+  "name": "Amber Packed",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.492,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.846,
-    "source": "Opal",
-    "target": "Obscura",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obscura",
+        "type": "FILTER_MOD",
+        "amount": 0.846
+      }
+    ]
   },
   "dna": {
     "aggression": 0.089,
@@ -31,7 +35,7 @@
     "SPACE": 0.372
   },
   "mood": "Aether",
-  "name": "DARK KINETIC DENSE BALANCED AET SPC 3",
+  "name": "DARK KINETIC DENSE BALANCED...",
   "parameters": {
     "Obscura": {
       "macro_character": 0.282,

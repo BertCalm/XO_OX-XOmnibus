@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.967,
-    "source": "Oblong",
-    "target": "Odyssey",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.967
+      }
+    ]
   },
   "dna": {
     "aggression": 0.539,

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.73,
     "pairs": [
       {
         "amount": 0.73,
@@ -9,10 +8,7 @@
         "engineB": "Organon",
         "type": "FREQUENCY_SHIFT"
       }
-    ],
-    "source": "Overlap",
-    "target": "Organon",
-    "type": "FREQUENCY_SHIFT"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Lion's Mane knot-topology FDN entangled with ORGANON's logical-metabolic character (Aristotelian organ-pipe variational synthesis). Coupling: Frequency Shift.",

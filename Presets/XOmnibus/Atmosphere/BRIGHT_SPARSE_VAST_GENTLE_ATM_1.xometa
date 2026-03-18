@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.532,
-    "source": "Origami",
-    "target": "Organon",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Organon",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.532
+      }
+    ]
   },
   "dna": {
     "aggression": 0.139,
@@ -31,7 +35,7 @@
     "SPACE": 0.825
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_SPARSE_VAST_GENTLE_ATM_1",
+  "name": "Node Horizon 2",
   "parameters": {
     "Organon": {
       "macro_character": 0.636,

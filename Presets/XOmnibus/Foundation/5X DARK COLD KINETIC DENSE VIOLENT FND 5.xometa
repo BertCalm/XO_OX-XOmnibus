@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8,
-    "source": "Oracle",
-    "target": "Onset",
-    "type": "ENVELOPE_SLAVE"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Onset",
+        "type": "ENVELOPE_SLAVE",
+        "amount": 0.8
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Foundation",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FND 5",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Onset": {
       "macro_character": 0.89,

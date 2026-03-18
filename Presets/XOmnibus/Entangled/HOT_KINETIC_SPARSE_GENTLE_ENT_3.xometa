@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7385,
     "pairs": [
       {
         "amount": 0.7385,
@@ -9,10 +8,7 @@
         "target": "Opal",
         "type": "VELOCITY_COUPLE"
       }
-    ],
-    "source": "Orca",
-    "target": "Opal",
-    "type": "VELOCITY_COUPLE"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Hot Kinetic Sparse Gentle character entanglement — OPAL × ORCA via Velocity Couple. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.4423
   },
   "mood": "Entangled",
-  "name": "HOT_KINETIC_SPARSE_GENTLE_ENT_3",
+  "name": "Bloom Surge 2",
   "parameters": {
     "Opal": {
       "amp_attack": 0.1219,

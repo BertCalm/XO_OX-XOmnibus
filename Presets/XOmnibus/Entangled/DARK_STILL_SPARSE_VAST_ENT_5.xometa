@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8425,
     "pairs": [
       {
         "amount": 0.8425,
@@ -9,10 +8,7 @@
         "target": "Ouroboros",
         "type": "FORMANT_BRIDGE"
       }
-    ],
-    "source": "Overlap",
-    "target": "Ouroboros",
-    "type": "FORMANT_BRIDGE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Still Sparse Vast character entanglement — OVERLAP × OUROBOROS via Formant Bridge. Extreme DNA zones push sound design to the edges.",

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.447,
-    "source": "Owlfish",
-    "target": "Oracle",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.447
+      }
+    ]
   },
   "dna": {
     "aggression": 0.924,
@@ -31,7 +35,7 @@
     "SPACE": 0.611
   },
   "mood": "Prism",
-  "name": "BRIGHT_COLD_STILL_VIOLENT_PRS_3",
+  "name": "Chrome Fang",
   "parameters": {
     "Oracle": {
       "macro_character": 0.495,

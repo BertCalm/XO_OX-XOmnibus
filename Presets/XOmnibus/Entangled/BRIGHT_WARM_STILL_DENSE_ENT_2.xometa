@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9685,
     "pairs": [
       {
         "amount": 0.9685,
@@ -9,10 +8,7 @@
         "target": "Osteria",
         "type": "SPECTRAL_MORPH"
       }
-    ],
-    "source": "Oblique",
-    "target": "Osteria",
-    "type": "SPECTRAL_MORPH"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Warm Still Dense character entanglement — OSTERIA × OBLIQUE via Spectral Morph. Extreme DNA zones push sound design to the edges.",

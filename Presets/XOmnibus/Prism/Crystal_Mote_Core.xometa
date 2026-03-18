@@ -24,7 +24,9 @@
   ],
   "mood": "Prism",
   "name": "Crystal Mote Core",
-  "parameters": {},
+  "parameters": {
+    "Origami": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.079,

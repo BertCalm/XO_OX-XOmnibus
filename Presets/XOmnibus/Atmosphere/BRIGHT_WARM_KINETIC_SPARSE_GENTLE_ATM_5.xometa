@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.945,
-    "source": "Orbital",
-    "target": "Optic",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Optic",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.945
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0696,
@@ -31,7 +35,7 @@
     "SPACE": 0.521
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_WARM_KINETIC_SPARSE_GENTLE_ATM_5",
+  "name": "Radiant Stream 2",
   "parameters": {
     "Optic": {
       "macro_character": 0.9791,

@@ -33,7 +33,10 @@
   ],
   "mood": "Entangled",
   "name": "Brass Wind Circle",
-  "parameters": {},
+  "parameters": {
+    "Obbligato": {},
+    "Ottoni": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

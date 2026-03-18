@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.557,
-    "source": "Orbital",
-    "target": "Optic",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Optic",
+        "type": "PITCH_SYNC",
+        "amount": 0.557
+      }
+    ]
   },
   "dna": {
     "aggression": 0.03,
@@ -31,7 +35,7 @@
     "SPACE": 0.528
   },
   "mood": "Atmosphere",
-  "name": "DARK_KINETIC_SPARSE_GENTLE_ATM_5",
+  "name": "Grain Drift 2",
   "parameters": {
     "Optic": {
       "macro_character": 0.681,

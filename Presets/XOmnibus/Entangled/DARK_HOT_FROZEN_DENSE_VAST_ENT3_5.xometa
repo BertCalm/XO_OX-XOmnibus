@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8976,
-    "source": "Organon",
-    "target": "Orbital",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Orbital",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8976
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.4796
   },
   "mood": "Entangled",
-  "name": "DARK_HOT_FROZEN_DENSE_VAST_ENT3_5",
+  "name": "Amber Deep 2",
   "parameters": {
     "Orbital": {
       "macro_character": 0.5817,

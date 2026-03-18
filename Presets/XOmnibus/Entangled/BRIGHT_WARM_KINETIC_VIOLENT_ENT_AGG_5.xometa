@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.887,
-    "source": "Ombre",
-    "target": "Orphica",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Orphica",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.887
+      }
+    ]
   },
   "dna": {
     "aggression": 0.927,
@@ -31,7 +35,7 @@
     "SPACE": 0.545
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_ENT_AGG_5",
+  "name": "Candlelight Storm 2",
   "parameters": {
     "Ombre": {
       "macro_character": 0.689,

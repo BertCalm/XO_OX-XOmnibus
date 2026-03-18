@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.698,
-    "source": "Origami",
-    "target": "Overdub",
-    "type": "SPECTRAL_WEAVE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Overdub",
+        "type": "SPECTRAL_WEAVE",
+        "amount": 0.698
+      }
+    ]
   },
   "dna": {
     "aggression": 0.497,
@@ -31,7 +35,7 @@
     "SPACE": 0.673
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_STILL_DENSE_FAM_VOL_21",
+  "name": "Candlelight Saturated",
   "parameters": {
     "Origami": {
       "macro_character": 0.9,

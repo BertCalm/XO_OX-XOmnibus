@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.445,
-    "source": "Ole",
-    "target": "Overdub",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Overdub",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.445
+      }
+    ]
   },
   "dna": {
     "aggression": 0.916,

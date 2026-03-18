@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.461,
-    "source": "Organon",
-    "target": "Origami",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.461
+      }
+    ]
   },
   "dna": {
     "aggression": 0.101,
@@ -31,7 +35,7 @@
     "SPACE": 0.743
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_SPARSE_VAST_GENTLE_ATM_3",
+  "name": "Node Canyon 2",
   "parameters": {
     "Organon": {
       "macro_character": 0.754,

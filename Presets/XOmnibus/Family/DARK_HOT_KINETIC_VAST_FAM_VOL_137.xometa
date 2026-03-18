@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.925,
-    "source": "Opal",
-    "target": "Odyssey",
-    "type": "ENVELOPE_MIRROR"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Odyssey",
+        "type": "ENVELOPE_MIRROR",
+        "amount": 0.925
+      }
+    ]
   },
   "dna": {
     "aggression": 0.477,
@@ -31,7 +35,7 @@
     "SPACE": 0.921
   },
   "mood": "Family",
-  "name": "DARK_HOT_KINETIC_VAST_FAM_VOL_137",
+  "name": "Velvet Stream",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.523,

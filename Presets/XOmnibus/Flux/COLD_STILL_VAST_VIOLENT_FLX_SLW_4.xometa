@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.643,
-    "source": "Oceanic",
-    "target": "Optic",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Optic",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.643
+      }
+    ]
   },
   "dna": {
     "aggression": 0.97,
@@ -31,7 +35,7 @@
     "SPACE": 0.878
   },
   "mood": "Flux",
-  "name": "COLD_STILL_VAST_VIOLENT_FLX_SLW_4",
+  "name": "Thread Strike",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.684,

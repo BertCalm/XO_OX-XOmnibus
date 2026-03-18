@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.88,
-    "source": "Origami",
-    "target": "OddfeliX",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "OddfeliX",
+        "type": "CHAOS_INJECT",
+        "amount": 0.88
+      }
+    ]
   },
   "dna": {
     "aggression": 0.895,
@@ -31,7 +35,7 @@
     "SPACE": 0.753
   },
   "mood": "Foundation",
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FND_AGG_5",
+  "name": "Wave Stream",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.76,

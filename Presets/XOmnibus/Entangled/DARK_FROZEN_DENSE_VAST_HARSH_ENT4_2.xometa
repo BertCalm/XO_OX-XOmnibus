@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.779,
-    "source": "Oracle",
-    "target": "Ole",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Ole",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.779
+      }
+    ]
   },
   "dna": {
     "aggression": 0.933,
@@ -31,7 +35,7 @@
     "SPACE": 0.99
   },
   "mood": "Entangled",
-  "name": "DARK_FROZEN_DENSE_VAST_HARSH_ENT4_2",
+  "name": "Tone Expanse 2",
   "parameters": {
     "Ole": {
       "macro_character": 0.302,

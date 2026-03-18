@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.924,
-    "source": "OddfeliX",
-    "target": "Overlap",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Overlap",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.924
+      }
+    ]
   },
   "dna": {
     "aggression": 0.546,

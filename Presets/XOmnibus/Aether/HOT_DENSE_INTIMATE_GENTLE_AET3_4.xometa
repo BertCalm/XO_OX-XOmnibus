@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.904,
-    "source": "Ombre",
-    "target": "OddfeliX",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "OddfeliX",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.904
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0725,
@@ -31,7 +35,7 @@
     "SPACE": 0.0833
   },
   "mood": "Aether",
-  "name": "HOT_DENSE_INTIMATE_GENTLE_AET3_4",
+  "name": "Radiant Titan",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.7017,

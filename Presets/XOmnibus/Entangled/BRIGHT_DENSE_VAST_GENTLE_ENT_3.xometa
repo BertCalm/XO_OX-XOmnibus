@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8183,
     "pairs": [
       {
         "amount": 0.8183,
@@ -9,10 +8,7 @@
         "target": "Obese",
         "type": "TIMBRAL_BLEED"
       }
-    ],
-    "source": "Obbligato",
-    "target": "Obese",
-    "type": "TIMBRAL_BLEED"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Dense Vast Gentle character entanglement — OBBLIGATO × OBESE via Timbral Bleed. Extreme DNA zones push sound design to the edges.",

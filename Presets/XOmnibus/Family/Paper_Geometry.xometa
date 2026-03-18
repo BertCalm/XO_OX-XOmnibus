@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Paper Geometry",
-  "parameters": {},
+  "parameters": {
+    "Origami": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.671,
-    "source": "Ocelot",
-    "target": "OddfeliX",
-    "type": "SPATIAL_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "OddfeliX",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.671
+      }
+    ]
   },
   "description": "Neon tetra schooling pattern as prey-movement data — the ocelot reading spectral light as motion signature.",
   "engines": [
@@ -76,5 +80,13 @@
     "coupling",
     "biome-shifting"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

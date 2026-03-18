@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.665,
-    "source": "Ottoni",
-    "target": "Oceanic",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Oceanic",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.665
+      }
+    ]
   },
   "dna": {
     "aggression": 0.218,

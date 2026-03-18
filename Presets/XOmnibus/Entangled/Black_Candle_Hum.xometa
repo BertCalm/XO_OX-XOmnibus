@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.55,
-    "source": "Opal",
-    "target": "Obscura",
-    "type": "AMP_MOD"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obscura",
+        "type": "AMP_MOD",
+        "amount": 0.55
+      }
+    ]
   },
   "dna": {
     "aggression": 0.18,

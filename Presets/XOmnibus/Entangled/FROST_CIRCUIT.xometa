@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.497,
-    "source": "Obscura",
-    "target": "Ouroboros",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Ouroboros",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.497
+      }
+    ]
   },
   "dna": {
     "aggression": 0.661,

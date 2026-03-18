@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Opal Bloom",
-  "parameters": {},
+  "parameters": {
+    "Opal": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

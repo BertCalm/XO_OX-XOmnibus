@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.56,
-    "source": "Ombre",
-    "target": "OddOscar",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "OddOscar",
+        "type": "CHAOS_INJECT",
+        "amount": 0.56
+      }
+    ]
   },
   "dna": {
     "aggression": 0.065,
@@ -31,7 +35,7 @@
     "SPACE": 0.397
   },
   "mood": "Aether",
-  "name": "DARK KINETIC DENSE BALANCED AET SPC 5",
+  "name": "DARK KINETIC DENSE BALANCED...",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.203,

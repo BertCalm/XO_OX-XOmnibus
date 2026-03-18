@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.742,
-    "source": "Ole",
-    "target": "Odyssey",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Odyssey",
+        "type": "PITCH_SYNC",
+        "amount": 0.742
+      }
+    ]
   },
   "dna": {
     "aggression": 0.493,
@@ -31,7 +35,7 @@
     "SPACE": 0.137
   },
   "mood": "Family",
-  "name": "BRIGHT WARM STILL INTIMATE DENSE FAM2 2",
+  "name": "BRIGHT WARM STILL INTIMATE ...",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.954,

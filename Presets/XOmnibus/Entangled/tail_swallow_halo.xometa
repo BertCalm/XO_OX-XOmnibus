@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6,
     "pairs": [
       {
         "amount": 0.6,
@@ -9,10 +8,7 @@
         "engineB": "Ouroboros",
         "type": "CHAOS_INJECT"
       }
-    ],
-    "source": "Overlap",
-    "target": "Ouroboros",
-    "type": "CHAOS_INJECT"
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Lion's Mane knot-topology FDN entangled with OUROBOROS's recursive self-feeding character (strange-attractor topology). Coupling: Chaos Inject.",

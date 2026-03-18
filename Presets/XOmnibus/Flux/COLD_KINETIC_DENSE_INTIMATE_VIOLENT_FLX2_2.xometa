@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.787,
-    "source": "Opal",
-    "target": "Organon",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Organon",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.787
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9472,
@@ -31,7 +35,7 @@
     "SPACE": 0.0635
   },
   "mood": "Flux",
-  "name": "COLD_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_2",
+  "name": "Signal Stream 2",
   "parameters": {
     "Opal": {
       "macro_character": 0.3264,

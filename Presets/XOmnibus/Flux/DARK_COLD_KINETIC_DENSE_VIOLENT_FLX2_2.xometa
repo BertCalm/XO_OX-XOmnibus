@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.776,
-    "source": "Oblique",
-    "target": "Oblong",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Oblong",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.776
+      }
+    ]
   },
   "dna": {
     "aggression": 0.891,
@@ -31,7 +35,7 @@
     "SPACE": 0.3751
   },
   "mood": "Flux",
-  "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FLX2_2",
+  "name": "Phase Molten 4",
   "parameters": {
     "Oblique": {
       "macro_character": 0.057,

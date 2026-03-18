@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.952,
-    "source": "OddOscar",
-    "target": "Oblique",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Oblique",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.952
+      }
+    ]
   },
   "dna": {
     "aggression": 0.966,
@@ -31,7 +35,7 @@
     "SPACE": 0.859
   },
   "mood": "Aether",
-  "name": "KINETIC SPARSE VAST VIOLENT AET AGG 1",
+  "name": "KINETIC SPARSE VAST VIOLENT...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.577,

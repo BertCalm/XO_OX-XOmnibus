@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.678,
-    "source": "Ouroboros",
-    "target": "Oracle",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oracle",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.678
+      }
+    ]
   },
   "dna": {
     "aggression": 0.063,
@@ -31,7 +35,7 @@
     "SPACE": 0.883
   },
   "mood": "Flux",
-  "name": "HOT_STILL_VAST_GENTLE_FLX_SLW_4",
+  "name": "Node Canyon",
   "parameters": {
     "Oracle": {
       "macro_character": 0.344,

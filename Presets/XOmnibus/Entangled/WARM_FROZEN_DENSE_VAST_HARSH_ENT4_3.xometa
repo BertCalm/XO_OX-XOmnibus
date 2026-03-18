@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.866,
-    "source": "Orca",
-    "target": "Overbite",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Overbite",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.866
+      }
+    ]
   },
   "dna": {
     "aggression": 0.963,
@@ -31,7 +35,7 @@
     "SPACE": 0.978
   },
   "mood": "Entangled",
-  "name": "WARM_FROZEN_DENSE_VAST_HARSH_ENT4_3",
+  "name": "Dusk Vast",
   "parameters": {
     "Orca": {
       "macro_character": 0.641,

@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Obscura",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Obscura",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.74
+      }
+    ]
   },
   "description": "Resonance shared between clave transient and OBSCURA's plate nodes — rhythmically focused.",
   "dna": {

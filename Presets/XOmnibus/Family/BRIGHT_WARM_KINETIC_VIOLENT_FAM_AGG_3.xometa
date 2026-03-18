@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.919,
-    "source": "Orphica",
-    "target": "Opal",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Opal",
+        "type": "PITCH_SYNC",
+        "amount": 0.919
+      }
+    ]
   },
   "dna": {
     "aggression": 0.976,
@@ -31,7 +35,7 @@
     "SPACE": 0.399
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_3",
+  "name": "Golden Rage",
   "parameters": {
     "Opal": {
       "macro_character": 0.437,

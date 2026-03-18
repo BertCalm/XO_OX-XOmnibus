@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8414,
-    "source": "Oceanic",
-    "target": "Odyssey",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Odyssey",
+        "type": "FILTER_MOD",
+        "amount": 0.8414
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0564,

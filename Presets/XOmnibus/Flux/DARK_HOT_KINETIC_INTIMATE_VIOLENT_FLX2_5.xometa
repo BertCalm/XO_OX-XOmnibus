@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.433,
-    "source": "Opal",
-    "target": "Organon",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Organon",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.433
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9594,
@@ -31,7 +35,7 @@
     "SPACE": 0.0773
   },
   "mood": "Flux",
-  "name": "DARK_HOT_KINETIC_INTIMATE_VIOLENT_FLX2_5",
+  "name": "Cocoa Rage 2",
   "parameters": {
     "Opal": {
       "macro_character": 0.5386,

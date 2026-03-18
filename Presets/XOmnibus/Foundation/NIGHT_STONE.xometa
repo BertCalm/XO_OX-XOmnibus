@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.437,
-    "source": "Ole",
-    "target": "Overworld",
-    "type": "PITCH_TRACK"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Overworld",
+        "type": "PITCH_TRACK",
+        "amount": 0.437
+      }
+    ]
   },
   "dna": {
     "aggression": 0.216,

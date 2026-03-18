@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.577,
-    "source": "Overdub",
-    "target": "Oblong",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Oblong",
+        "type": "PITCH_SYNC",
+        "amount": 0.577
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9396,
@@ -31,7 +35,7 @@
     "SPACE": 0.4469
   },
   "mood": "Flux",
-  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_1",
+  "name": "Node Cascade 2",
   "parameters": {
     "Oblong": {
       "macro_character": 0.1415,

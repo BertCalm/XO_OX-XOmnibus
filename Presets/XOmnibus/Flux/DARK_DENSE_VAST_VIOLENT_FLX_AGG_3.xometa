@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.979,
-    "source": "Organon",
-    "target": "Origami",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.979
+      }
+    ]
   },
   "dna": {
     "aggression": 0.926,
@@ -31,7 +35,7 @@
     "SPACE": 0.91
   },
   "mood": "Flux",
-  "name": "DARK_DENSE_VAST_VIOLENT_FLX_AGG_3",
+  "name": "Signal Grit",
   "parameters": {
     "Organon": {
       "macro_character": 0.375,

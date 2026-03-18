@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.615,
-    "source": "Optic",
-    "target": "Onset",
-    "type": "PITCH_TRACK"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Onset",
+        "type": "PITCH_TRACK",
+        "amount": 0.615
+      }
+    ]
   },
   "dna": {
     "aggression": 0.96,

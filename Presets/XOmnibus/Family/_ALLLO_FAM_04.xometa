@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.197,
-    "source": "OddOscar",
-    "target": "Orphica",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Orphica",
+        "type": "CHAOS_INJECT",
+        "amount": 0.197
+      }
+    ]
   },
   "dna": {
     "aggression": 0.067,

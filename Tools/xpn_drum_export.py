@@ -92,6 +92,48 @@ PRESETS_DIR = REPO_ROOT / "Presets" / "XOmnibus"
 
 
 # =============================================================================
+# ENGINE PAD COLORS — accent color per engine for MPC pad display
+# =============================================================================
+
+ENGINE_PAD_COLORS = {
+    "OddfeliX":  "#00A6D6",  # Neon Tetra Blue
+    "OddOscar":  "#E8839B",  # Axolotl Gill Pink
+    "Overdub":   "#6B7B3A",  # Olive
+    "Odyssey":   "#7B2D8B",  # Violet
+    "Oblong":    "#E9A84A",  # Amber
+    "Obese":     "#FF1493",  # Hot Pink
+    "Onset":     "#0066FF",  # Electric Blue
+    "Overworld": "#39FF14",  # Neon Green
+    "Opal":      "#A78BFA",  # Lavender
+    "Orbital":   "#FF6B6B",  # Warm Red
+    "Organon":   "#00CED1",  # Bioluminescent Cyan
+    "Ouroboros":  "#FF2D2D",  # Strange Attractor Red
+    "Obsidian":  "#E8E0D8",  # Crystal White
+    "Overbite":  "#F0EDE8",  # Fang White
+    "Origami":   "#E63946",  # Vermillion Fold
+    "Oracle":    "#4B0082",  # Prophecy Indigo
+    "Obscura":   "#8A9BA8",  # Daguerreotype Silver
+    "Oceanic":   "#00B4A0",  # Phosphorescent Teal
+    "Ocelot":    "#C5832B",  # Ocelot Tawny
+    "Optic":     "#00FF41",  # Phosphor Green
+    "Oblique":   "#BF40FF",  # Prism Violet
+    "Osprey":    "#1B4F8A",  # Azulejo Blue
+    "Osteria":   "#722F37",  # Porto Wine
+    "Owlfish":   "#B8860B",  # Abyssal Gold
+    "Ohm":       "#87AE73",  # Sage
+    "Orphica":   "#7FDBCA",  # Siren Seafoam
+    "Obbligato": "#FF8A7A",  # Rascal Coral
+    "Ottoni":    "#5B8A72",  # Patina
+    "Ole":       "#C9377A",  # Hibiscus
+    "Overlap":   "#4A90D9",  # (FDN Reverb)
+    "Outwit":    "#8B5CF6",  # (Wolfram CA)
+    "Ombre":     "#7B6B8A",  # Shadow Mauve
+    "Orca":      "#1B2838",  # Deep Ocean
+    "Octopus":   "#E040FB",  # Chromatophore Magenta
+}
+
+
+# =============================================================================
 # KIT MODES
 # =============================================================================
 

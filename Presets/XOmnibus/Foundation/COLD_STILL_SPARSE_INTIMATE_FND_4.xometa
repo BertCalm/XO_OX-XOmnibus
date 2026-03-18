@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.565,
-    "source": "Overdub",
-    "target": "Ouroboros",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Ouroboros",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.565
+      }
+    ]
   },
   "dna": {
     "aggression": 0.597,
@@ -31,7 +35,7 @@
     "SPACE": 0.619
   },
   "mood": "Foundation",
-  "name": "COLD_STILL_SPARSE_INTIMATE_FND_4",
+  "name": "Shard Force",
   "parameters": {
     "Ouroboros": {
       "macro_character": 0.138,

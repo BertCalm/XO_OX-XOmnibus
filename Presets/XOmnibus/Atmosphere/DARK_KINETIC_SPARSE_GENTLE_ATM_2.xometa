@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.817,
-    "source": "Obscura",
-    "target": "Oracle",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oracle",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.817
+      }
+    ]
   },
   "dna": {
     "aggression": 0.058,
@@ -31,7 +35,7 @@
     "SPACE": 0.349
   },
   "mood": "Atmosphere",
-  "name": "DARK_KINETIC_SPARSE_GENTLE_ATM_2",
+  "name": "Tone Ripple 2",
   "parameters": {
     "Obscura": {
       "macro_character": 0.591,

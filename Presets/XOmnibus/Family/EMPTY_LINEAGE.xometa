@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.346,
-    "source": "Opal",
-    "target": "Ombre",
-    "type": "GRANULAR_SYNC"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ombre",
+        "type": "GRANULAR_SYNC",
+        "amount": 0.346
+      }
+    ]
   },
   "dna": {
     "aggression": 0.739,

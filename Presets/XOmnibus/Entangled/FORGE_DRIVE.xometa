@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9313,
-    "source": "Organon",
-    "target": "Obscura",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Obscura",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.9313
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0303,

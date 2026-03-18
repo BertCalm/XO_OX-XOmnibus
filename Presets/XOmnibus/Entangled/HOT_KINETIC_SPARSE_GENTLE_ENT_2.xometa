@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8431,
     "pairs": [
       {
         "amount": 0.8431,
@@ -9,10 +8,7 @@
         "target": "Odyssey",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Oblong",
-    "target": "Odyssey",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Hot Kinetic Sparse Gentle character entanglement — OBLONG × ODYSSEY via Resonance Share. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.3534
   },
   "mood": "Entangled",
-  "name": "HOT_KINETIC_SPARSE_GENTLE_ENT_2",
+  "name": "Phase Cascade 2",
   "parameters": {
     "Oblong": {
       "amp_attack": 0.1167,

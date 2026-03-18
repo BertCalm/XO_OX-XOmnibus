@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.817,
-    "source": "Oblique",
-    "target": "Optic",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Optic",
+        "type": "PITCH_SYNC",
+        "amount": 0.817
+      }
+    ]
   },
   "dna": {
     "aggression": 0.88,
@@ -31,7 +35,7 @@
     "SPACE": 0.118
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT KINETIC TIGHT VIOLENT ATM AGG 1",
+  "name": "BRIGHT KINETIC TIGHT VIOLEN...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.954,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.907,
-    "source": "Obscura",
-    "target": "Osprey",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Osprey",
+        "type": "PITCH_SYNC",
+        "amount": 0.907
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9248,
@@ -31,7 +35,7 @@
     "SPACE": 0.9203
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_WARM_KINETIC_VAST_VIOLENT_ATM_2",
+  "name": "Golden Dome",
   "parameters": {
     "Obscura": {
       "macro_character": 0.9303,

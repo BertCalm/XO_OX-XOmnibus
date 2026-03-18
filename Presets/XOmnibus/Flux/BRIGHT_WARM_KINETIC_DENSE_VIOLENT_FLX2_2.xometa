@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.852,
-    "source": "Optic",
-    "target": "Oblique",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oblique",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.852
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9599,
@@ -31,7 +35,7 @@
     "SPACE": 0.4248
   },
   "mood": "Flux",
-  "name": "BRIGHT_WARM_KINETIC_DENSE_VIOLENT_FLX2_2",
+  "name": "Bloom Edge",
   "parameters": {
     "Oblique": {
       "macro_character": 0.9221,

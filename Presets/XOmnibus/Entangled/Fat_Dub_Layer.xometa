@@ -86,10 +86,10 @@
     }
   },
   "coupling": {
-    "routes": [
+    "pairs": [
       {
-        "source": "Overdub",
-        "dest": "Obese",
+        "engineA": "Overdub",
+        "engineB": "Obese",
         "type": "AmpToFilter",
         "amount": 0.35
       }

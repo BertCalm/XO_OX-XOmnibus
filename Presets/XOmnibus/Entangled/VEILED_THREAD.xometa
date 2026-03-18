@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.858,
-    "source": "Ouroboros",
-    "target": "Ole",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Ole",
+        "type": "CHAOS_INJECT",
+        "amount": 0.858
+      }
+    ]
   },
   "dna": {
     "aggression": 0.249,

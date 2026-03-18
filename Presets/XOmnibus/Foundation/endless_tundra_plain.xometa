@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.639,
-    "source": "Orbital",
-    "target": "OddfeliX",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "OddfeliX",
+        "type": "FILTER_MOD",
+        "amount": 0.639
+      }
+    ]
   },
   "dna": {
     "aggression": 0.854,

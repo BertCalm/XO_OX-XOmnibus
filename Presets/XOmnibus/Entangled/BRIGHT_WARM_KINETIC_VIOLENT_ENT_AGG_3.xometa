@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.966,
-    "source": "Orphica",
-    "target": "Oracle",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Oracle",
+        "type": "CHAOS_INJECT",
+        "amount": 0.966
+      }
+    ]
   },
   "dna": {
     "aggression": 0.931,
@@ -31,7 +35,7 @@
     "SPACE": 0.503
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_ENT_AGG_3",
+  "name": "Honey Flutter",
   "parameters": {
     "Oracle": {
       "macro_character": 0.575,

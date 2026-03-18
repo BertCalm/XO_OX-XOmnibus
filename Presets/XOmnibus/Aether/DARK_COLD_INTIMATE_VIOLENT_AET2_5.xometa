@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7648,
-    "source": "OddOscar",
-    "target": "OddfeliX",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "OddfeliX",
+        "type": "PITCH_SYNC",
+        "amount": 0.7648
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8845,
@@ -31,7 +35,7 @@
     "SPACE": 0.0614
   },
   "mood": "Aether",
-  "name": "DARK_COLD_INTIMATE_VIOLENT_AET2_5",
+  "name": "Fragment Rage",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.0619,

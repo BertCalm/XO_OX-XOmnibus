@@ -33,7 +33,9 @@
     "space": 0.1,
     "aggression": 0.89
   },
-  "parameters": {},
+  "parameters": {
+    "Oblong": {}
+  },
   "tags": [
     "flux",
     "high-flux",
@@ -41,5 +43,5 @@
     "chainsaw",
     "harsh"
   ],
-  "description": "Oblong chord engine razor-edged \u2014 bright lattice of stacked aggression."
+  "description": "Oblong chord engine razor-edged — bright lattice of stacked aggression."
 }

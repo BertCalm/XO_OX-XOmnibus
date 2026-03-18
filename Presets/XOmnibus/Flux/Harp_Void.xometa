@@ -33,7 +33,9 @@
     "space": 0.93,
     "aggression": 0.15
   },
-  "parameters": {},
+  "parameters": {
+    "Orphica": {}
+  },
   "tags": [
     "flux",
     "sparse-flux",
@@ -41,5 +43,5 @@
     "harp",
     "void"
   ],
-  "description": "Orphica microsound harp in void \u2014 single pluck resonating through absolute space."
+  "description": "Orphica microsound harp in void — single pluck resonating through absolute space."
 }

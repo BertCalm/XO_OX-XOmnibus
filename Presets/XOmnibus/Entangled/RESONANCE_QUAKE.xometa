@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.975,
-    "source": "Overlap",
-    "target": "Octopus",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Octopus",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.975
+      }
+    ]
   },
   "dna": {
     "aggression": 0.943,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.622,
-    "source": "Octopus",
-    "target": "Osprey",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Osprey",
+        "type": "FILTER_MOD",
+        "amount": 0.622
+      }
+    ]
   },
   "dna": {
     "aggression": 0.984,

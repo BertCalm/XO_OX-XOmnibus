@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.3766,
-    "source": "Orphica",
-    "target": "Overlap",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Overlap",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.3766
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5461,

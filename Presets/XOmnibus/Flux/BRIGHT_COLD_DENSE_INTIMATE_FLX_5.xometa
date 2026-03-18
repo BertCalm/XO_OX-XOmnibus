@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7019,
-    "source": "Origami",
-    "target": "Overdub",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Overdub",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.7019
+      }
+    ]
   },
   "dna": {
     "aggression": 0.6104,
@@ -31,7 +35,7 @@
     "SPACE": 0.1878
   },
   "mood": "Flux",
-  "name": "BRIGHT_COLD_DENSE_INTIMATE_FLX_5",
+  "name": "Frost Molten",
   "parameters": {
     "Origami": {
       "macro_character": 0.9444,

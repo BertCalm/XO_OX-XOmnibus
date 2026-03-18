@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6,
-    "source": "Outwit",
-    "target": "Obbligato",
-    "type": "HARMONIC_BLEND"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Obbligato",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.6
+      }
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Obbligato dual wind BOND macro sets OUTWIT cell birth/death balance — the bond between winds is cellular life",
@@ -62,5 +66,13 @@
     "wolfram",
     "cellular-automata"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.506,
+    "warmth": 0.5,
+    "movement": 0.486,
+    "density": 0.516,
+    "space": 0.5,
+    "aggression": 0.142
+  }
 }

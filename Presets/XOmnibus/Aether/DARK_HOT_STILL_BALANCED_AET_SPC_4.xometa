@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.473,
-    "source": "Oceanic",
-    "target": "OddfeliX",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "OddfeliX",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.473
+      }
+    ]
   },
   "dna": {
     "aggression": 0.028,
@@ -31,7 +35,7 @@
     "SPACE": 0.649
   },
   "mood": "Aether",
-  "name": "DARK HOT STILL BALANCED AET SPC 4",
+  "name": "DARK HOT STILL BALANCED AET...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.491,

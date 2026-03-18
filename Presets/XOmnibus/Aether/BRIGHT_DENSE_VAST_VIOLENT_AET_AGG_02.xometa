@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.961,
-    "source": "Organon",
-    "target": "Oblique",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oblique",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.961
+      }
+    ]
   },
   "dna": {
     "aggression": 0.879,
@@ -31,7 +35,7 @@
     "SPACE": 0.861
   },
   "mood": "Aether",
-  "name": "BRIGHT DENSE VAST VIOLENT AET AGG 2",
+  "name": "BRIGHT DENSE VAST VIOLENT A...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.826,

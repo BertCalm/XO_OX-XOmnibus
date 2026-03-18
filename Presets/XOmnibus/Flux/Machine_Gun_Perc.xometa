@@ -33,7 +33,9 @@
     "space": 0.05,
     "aggression": 0.99
   },
-  "parameters": {},
+  "parameters": {
+    "Onset": {}
+  },
   "tags": [
     "flux",
     "maximum",
@@ -41,5 +43,5 @@
     "percussion",
     "machine"
   ],
-  "description": "XVC at maximum cross-voice density \u2014 drum machine as weapon."
+  "description": "XVC at maximum cross-voice density — drum machine as weapon."
 }

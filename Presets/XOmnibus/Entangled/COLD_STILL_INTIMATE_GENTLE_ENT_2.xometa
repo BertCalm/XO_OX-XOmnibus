@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6988,
     "pairs": [
       {
         "amount": 0.6988,
@@ -9,10 +8,7 @@
         "target": "Ouroboros",
         "type": "SPECTRAL_MORPH"
       }
-    ],
-    "source": "Organon",
-    "target": "Ouroboros",
-    "type": "SPECTRAL_MORPH"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Cold Still Intimate Gentle character entanglement — ORGANON × OUROBOROS via Spectral Morph. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.0218
   },
   "mood": "Entangled",
-  "name": "COLD_STILL_INTIMATE_GENTLE_ENT_2",
+  "name": "Fragment Massive",
   "parameters": {
     "Organon": {
       "amp_attack": 0.3676,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.97,
-    "source": "Overlap",
-    "target": "Origami",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.97
+      }
+    ]
   },
   "dna": {
     "aggression": 0.99,
@@ -31,7 +35,7 @@
     "SPACE": 0.437
   },
   "mood": "Entangled",
-  "name": "BRIGHT COLD KINETIC DENSE VIOLENT ENT2 5",
+  "name": "BRIGHT COLD KINETIC DENSE V...",
   "parameters": {
     "Origami": {
       "macro_character": 0.541,

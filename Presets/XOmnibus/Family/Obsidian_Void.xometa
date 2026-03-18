@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Obsidian Void",
-  "parameters": {},
+  "parameters": {
+    "Obsidian": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6665,
-    "source": "Ohm",
-    "target": "Orphica",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Orphica",
+        "type": "CHAOS_INJECT",
+        "amount": 0.6665
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0203,
@@ -31,7 +35,7 @@
     "SPACE": 0.879
   },
   "mood": "Prism",
-  "name": "DARK_KINETIC_VAST_GENTLE_PRS_DRK_3",
+  "name": "Shard Drift",
   "parameters": {
     "Ohm": {
       "macro_character": 0.2923,

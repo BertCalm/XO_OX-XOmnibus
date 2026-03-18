@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.738,
-    "source": "Ole",
-    "target": "OddOscar",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "OddOscar",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.738
+      }
+    ]
   },
   "dna": {
     "aggression": 0.366,
@@ -31,7 +35,7 @@
     "SPACE": 0.908
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_VAST_FAM_VOL_48",
+  "name": "Bloom Swirl",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.952,

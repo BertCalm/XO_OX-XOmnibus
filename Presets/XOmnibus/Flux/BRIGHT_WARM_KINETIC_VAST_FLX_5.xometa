@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8391,
-    "source": "Optic",
-    "target": "Ouroboros",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Ouroboros",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.8391
+      }
+    ]
   },
   "dna": {
     "aggression": 0.39,

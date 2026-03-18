@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.62,
-    "source": "Organon",
-    "target": "Oceanic",
-    "type": "AMPLITUDE_SYNC"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oceanic",
+        "type": "AMPLITUDE_SYNC",
+        "amount": 0.62
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Entangled",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 4",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.77,

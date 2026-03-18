@@ -33,7 +33,9 @@
     "space": 0.89,
     "aggression": 0.12
   },
-  "parameters": {},
+  "parameters": {
+    "Opal": {}
+  },
   "tags": [
     "flux",
     "sparse-flux",
@@ -41,5 +43,5 @@
     "crystal",
     "scatter"
   ],
-  "description": "Opal crystal grains scattered bright \u2014 high-frequency particles in open field."
+  "description": "Opal crystal grains scattered bright — high-frequency particles in open field."
 }

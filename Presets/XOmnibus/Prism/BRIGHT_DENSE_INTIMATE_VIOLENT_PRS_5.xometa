@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.425,
-    "source": "Ole",
-    "target": "Osteria",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Osteria",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.425
+      }
+    ]
   },
   "dna": {
     "aggression": 0.873,
@@ -31,7 +35,7 @@
     "SPACE": 0.133
   },
   "mood": "Prism",
-  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_PRS_5",
+  "name": "Signal Dense",
   "parameters": {
     "Ole": {
       "macro_character": 0.907,

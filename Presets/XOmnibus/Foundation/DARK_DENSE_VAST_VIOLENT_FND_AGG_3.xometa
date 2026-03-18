@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.702,
-    "source": "Oblong",
-    "target": "Obese",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Obese",
+        "type": "CHAOS_INJECT",
+        "amount": 0.702
+      }
+    ]
   },
   "dna": {
     "aggression": 0.926,
@@ -31,7 +35,7 @@
     "SPACE": 0.812
   },
   "mood": "Foundation",
-  "name": "DARK_DENSE_VAST_VIOLENT_FND_AGG_3",
+  "name": "Flux Storm",
   "parameters": {
     "Obese": {
       "macro_character": 0.432,

@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Ouroboros",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Ouroboros",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.9
+      }
+    ]
   },
   "description": "DRAMA × CHAOS: OLE's harmonic folds ignite OUROBOROS's strange attractor — aggression 0.90.",
   "dna": {

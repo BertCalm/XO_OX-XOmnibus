@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.798,
-    "source": "Ouroboros",
-    "target": "Obbligato",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Obbligato",
+        "type": "FILTER_MOD",
+        "amount": 0.798
+      }
+    ]
   },
   "dna": {
     "aggression": 0.305,

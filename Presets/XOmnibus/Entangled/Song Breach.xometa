@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Orphica",
-    "target": "Orca",
-    "type": "ECHOLOCATION_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Orca",
+        "type": "ECHOLOCATION_SYNC",
+        "amount": 0.65
+      }
+    ]
   },
   "description": "Orphica microsong and orca click-train merge — two ancient sonic languages",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Song Breach",
-  "parameters": {},
+  "parameters": {
+    "Orphica": {},
+    "Orca": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.39,
@@ -43,5 +50,13 @@
     "orca",
     "microsound"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

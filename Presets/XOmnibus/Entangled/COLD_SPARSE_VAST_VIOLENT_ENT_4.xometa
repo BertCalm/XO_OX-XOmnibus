@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6655,
     "pairs": [
       {
         "amount": 0.6655,
@@ -9,10 +8,7 @@
         "target": "Obsidian",
         "type": "SPECTRAL_MORPH"
       }
-    ],
-    "source": "Ottoni",
-    "target": "Obsidian",
-    "type": "SPECTRAL_MORPH"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Cold Sparse Vast Violent character entanglement — OBSIDIAN × OTTONI via Spectral Morph. Extreme DNA zones push sound design to the edges.",

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.809,
-    "source": "Owlfish",
-    "target": "Orphica",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Orphica",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.809
+      }
+    ]
   },
   "dna": {
     "aggression": 0.914,

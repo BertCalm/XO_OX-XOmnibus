@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.799,
-    "source": "Organon",
-    "target": "Ohm",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Ohm",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.799
+      }
+    ]
   },
   "dna": {
     "aggression": 0.587,
@@ -31,7 +35,7 @@
     "SPACE": 0.926
   },
   "mood": "Family",
-  "name": "BRIGHT_COLD_KINETIC_VAST_FAM_VOL_69",
+  "name": "Chrome Shimmer",
   "parameters": {
     "Ohm": {
       "macro_character": 0.515,

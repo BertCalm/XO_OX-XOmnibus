@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.958,
-    "source": "Opal",
-    "target": "Odyssey",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Odyssey",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.958
+      }
+    ]
   },
   "dna": {
     "aggression": 0.934,
@@ -31,7 +35,7 @@
     "SPACE": 0.033
   },
   "mood": "Flux",
-  "name": "COLD_KINETIC_INTIMATE_VIOLENT_FLX_AGG_2",
+  "name": "Signal Wrath",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.424,

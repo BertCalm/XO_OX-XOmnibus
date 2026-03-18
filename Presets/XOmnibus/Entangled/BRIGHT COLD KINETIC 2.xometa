@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Organon \u00d7 Owlfish \u2014 Chaos Inject coupling at extreme DNA corner.",
+  "description": "Organon × Owlfish — Chaos Inject coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "organon",
@@ -33,7 +33,10 @@
     "space": 0.529,
     "aggression": 0.587
   },
-  "parameters": {},
+  "parameters": {
+    "Organon": {},
+    "Owlfish": {}
+  },
   "coupling": {
     "pairs": [
       {

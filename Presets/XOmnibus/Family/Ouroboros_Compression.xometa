@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Ouroboros Compression",
-  "parameters": {},
+  "parameters": {
+    "Ouroboros": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

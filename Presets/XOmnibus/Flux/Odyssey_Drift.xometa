@@ -33,7 +33,9 @@
     "space": 0.92,
     "aggression": 0.15
   },
-  "parameters": {},
+  "parameters": {
+    "Odyssey": {}
+  },
   "tags": [
     "flux",
     "sparse-flux",
@@ -41,5 +43,5 @@
     "drift",
     "sparse"
   ],
-  "description": "Odyssey wavetable adrift in open space \u2014 minimal presence, maximum journey."
+  "description": "Odyssey wavetable adrift in open space — minimal presence, maximum journey."
 }

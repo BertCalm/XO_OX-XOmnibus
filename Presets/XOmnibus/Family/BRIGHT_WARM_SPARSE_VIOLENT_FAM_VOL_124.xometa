@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.891,
-    "source": "Opal",
-    "target": "Origami",
-    "type": "HARMONIC_MESH"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Origami",
+        "type": "HARMONIC_MESH",
+        "amount": 0.891
+      }
+    ]
   },
   "dna": {
     "aggression": 0.964,
@@ -31,7 +35,7 @@
     "SPACE": 0.474
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_SPARSE_VIOLENT_FAM_VOL_124",
+  "name": "Candlelight Rage 3",
   "parameters": {
     "Opal": {
       "macro_character": 0.963,

@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Silver Topology",
-  "parameters": {},
+  "parameters": {
+    "Obscura": {},
+    "Ouroboros": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.93,

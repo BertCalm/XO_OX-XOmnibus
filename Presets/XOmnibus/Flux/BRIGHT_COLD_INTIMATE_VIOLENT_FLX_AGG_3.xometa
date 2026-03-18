@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.985,
-    "source": "Optic",
-    "target": "Organon",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Organon",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.985
+      }
+    ]
   },
   "dna": {
     "aggression": 0.976,
@@ -31,7 +35,7 @@
     "SPACE": 0.028
   },
   "mood": "Flux",
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FLX_AGG_3",
+  "name": "Ice Wrath",
   "parameters": {
     "Optic": {
       "macro_character": 0.712,

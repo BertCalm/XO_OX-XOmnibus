@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.781,
-    "source": "Ottoni",
-    "target": "Overworld",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Overworld",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.781
+      }
+    ]
   },
   "dna": {
     "aggression": 0.957,
@@ -31,7 +35,7 @@
     "SPACE": 0.113
   },
   "mood": "Prism",
-  "name": "DARK WARM TIGHT VIOLENT PRS AGG 4",
+  "name": "DARK WARM TIGHT VIOLENT PRS...",
   "parameters": {
     "Ottoni": {
       "macro_character": 0.071,

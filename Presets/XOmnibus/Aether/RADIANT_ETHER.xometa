@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.512,
-    "source": "Ohm",
-    "target": "Oblique",
-    "type": "PHASE_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Oblique",
+        "type": "PHASE_COUPLE",
+        "amount": 0.512
+      }
+    ]
   },
   "dna": {
     "aggression": 0.01,

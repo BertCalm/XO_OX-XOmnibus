@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.572,
-    "source": "Osprey",
-    "target": "Opal",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Opal",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.572
+      }
+    ]
   },
   "dna": {
     "aggression": 0.47,
@@ -31,7 +35,7 @@
     "SPACE": 0.968
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_VAST_FAM_VOL_46",
+  "name": "Candlelight Cavern 2",
   "parameters": {
     "Opal": {
       "macro_character": 0.909,

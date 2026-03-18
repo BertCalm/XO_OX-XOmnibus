@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.303,
-    "source": "Obsidian",
-    "target": "Odyssey",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Odyssey",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.303
+      }
+    ]
   },
   "dna": {
     "aggression": 0.965,

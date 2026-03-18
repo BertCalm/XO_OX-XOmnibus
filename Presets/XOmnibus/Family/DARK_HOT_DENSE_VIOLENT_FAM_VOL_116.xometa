@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.939,
-    "source": "Oblong",
-    "target": "Orphica",
-    "type": "SPECTRAL_WEAVE"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Orphica",
+        "type": "SPECTRAL_WEAVE",
+        "amount": 0.939
+      }
+    ]
   },
   "dna": {
     "aggression": 0.967,
@@ -31,7 +35,7 @@
     "SPACE": 0.685
   },
   "mood": "Family",
-  "name": "DARK_HOT_DENSE_VIOLENT_FAM_VOL_116",
+  "name": "Copper Rage 3",
   "parameters": {
     "Oblong": {
       "macro_character": 0.531,

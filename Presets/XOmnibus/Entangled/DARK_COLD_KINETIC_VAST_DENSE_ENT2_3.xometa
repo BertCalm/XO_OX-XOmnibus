@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.704,
-    "source": "Oracle",
-    "target": "Orbital",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Orbital",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.704
+      }
+    ]
   },
   "dna": {
     "aggression": 0.426,
@@ -31,7 +35,7 @@
     "SPACE": 0.99
   },
   "mood": "Entangled",
-  "name": "DARK COLD KINETIC VAST DENSE ENT2 3",
+  "name": "DARK COLD KINETIC VAST DENS...",
   "parameters": {
     "Oracle": {
       "macro_character": 0.083,

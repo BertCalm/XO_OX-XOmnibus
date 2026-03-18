@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.83,
-    "source": "Ohm",
-    "target": "Oracle",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Oracle",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.83
+      }
+    ]
   },
   "dna": {
     "aggression": 0.26,

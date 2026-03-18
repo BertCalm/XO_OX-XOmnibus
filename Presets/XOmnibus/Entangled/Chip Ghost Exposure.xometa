@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.812,
-    "source": "Obscura",
-    "target": "Overworld",
-    "type": "PITCH_TRACKING"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Overworld",
+        "type": "PITCH_TRACKING",
+        "amount": 0.812
+      }
+    ]
   },
   "description": "NES palette quantized to daguerreotype silver tones — four shades of phosphorescent memory on a pixel grid.",
   "engines": [
@@ -76,5 +80,13 @@
     "coupling",
     "daguerreotype"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

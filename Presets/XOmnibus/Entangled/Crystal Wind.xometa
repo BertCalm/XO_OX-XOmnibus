@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6,
-    "source": "Obbligato",
-    "target": "Obsidian",
-    "type": "CRYSTAL_RESONANCE"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Obsidian",
+        "type": "CRYSTAL_RESONANCE",
+        "amount": 0.6
+      }
+    ]
   },
   "description": "Dual wind breath filtered through obsidian crystal depth — warm coral turned cold clarity",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Crystal Wind",
-  "parameters": {},
+  "parameters": {
+    "Obbligato": {},
+    "Obsidian": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.45,
@@ -43,5 +50,13 @@
     "obsidian",
     "wind"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oblong \u00d7 Overbite \u2014 Harmonic Fold coupling at extreme DNA corner.",
+  "description": "Oblong × Overbite — Harmonic Fold coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "oblong",
@@ -33,7 +33,10 @@
     "space": 0.5,
     "aggression": 0.615
   },
-  "parameters": {},
+  "parameters": {
+    "Oblong": {},
+    "Overbite": {}
+  },
   "coupling": {
     "pairs": [
       {

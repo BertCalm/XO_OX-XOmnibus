@@ -24,7 +24,9 @@
   ],
   "mood": "Prism",
   "name": "Piccolo Trumpet",
-  "parameters": {},
+  "parameters": {
+    "Ottoni": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.28,

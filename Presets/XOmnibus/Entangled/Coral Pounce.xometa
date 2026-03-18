@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Ocelot",
-    "target": "Obbligato",
-    "type": "PREDATOR_STALK"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Obbligato",
+        "type": "PREDATOR_STALK",
+        "amount": 0.7
+      }
+    ]
   },
   "description": "OBBLIGATO BOND macro triggers ocelot pounce envelope — breath obligates the ambush",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Coral Pounce",
-  "parameters": {},
+  "parameters": {
+    "Obbligato": {},
+    "Ocelot": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.49,
@@ -43,5 +50,13 @@
     "ocelot",
     "wind"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Oblique and Ocelot",
-  "parameters": {},
+  "parameters": {
+    "Oblique": {},
+    "Ocelot": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

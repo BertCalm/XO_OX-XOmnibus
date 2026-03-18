@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.779,
-    "source": "Oceanic",
-    "target": "OddfeliX",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "OddfeliX",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.779
+      }
+    ]
   },
   "dna": {
     "aggression": 0.067,
@@ -31,7 +35,7 @@
     "SPACE": 0.612
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM DENSE BALANCED AET SPC 1",
+  "name": "BRIGHT WARM DENSE BALANCED ...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.906,

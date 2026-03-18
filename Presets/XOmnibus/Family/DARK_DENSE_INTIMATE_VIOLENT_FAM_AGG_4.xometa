@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.838,
-    "source": "OddfeliX",
-    "target": "Osprey",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Osprey",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.838
+      }
+    ]
   },
   "dna": {
     "aggression": 0.941,
@@ -31,7 +35,7 @@
     "SPACE": 0.793
   },
   "mood": "Family",
-  "name": "DARK_DENSE_INTIMATE_VIOLENT_FAM_AGG_4",
+  "name": "Grain Heavy 2",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.581,

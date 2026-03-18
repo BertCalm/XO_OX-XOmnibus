@@ -3,7 +3,7 @@
   "coupling": null,
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "OCTOPUS full bioluminescence \u2014 8 arms glowing, chaos engine in pure light.",
+  "description": "OCTOPUS full bioluminescence — 8 arms glowing, chaos engine in pure light.",
   "dna": {
     "aggression": 0.32,
     "brightness": 0.91,
@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Octopus Bioluminescent II",
-  "parameters": {},
+  "parameters": {
+    "Octopus": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

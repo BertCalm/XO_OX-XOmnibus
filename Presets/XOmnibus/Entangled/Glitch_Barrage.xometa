@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Glitch Barrage",
-  "parameters": {},
+  "parameters": {
+    "Overworld": {},
+    "Onset": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.93,

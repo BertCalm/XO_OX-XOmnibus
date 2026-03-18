@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8497,
-    "source": "Obsidian",
-    "target": "Organon",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.8497
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.2696
   },
   "mood": "Entangled",
-  "name": "BRIGHT_HOT_FROZEN_DENSE_VIOLENT_ENT3_3",
+  "name": "Sunrise Titan 2",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.9427,

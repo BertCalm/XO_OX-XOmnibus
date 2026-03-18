@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "source": "Oblique",
-    "target": "Octopus",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Octopus",
+        "type": "CHAOS_INJECT",
+        "amount": 0.74
+      }
+    ]
   },
   "dna": {
     "aggression": 0.341,

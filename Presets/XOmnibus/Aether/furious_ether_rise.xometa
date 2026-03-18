@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.474,
-    "source": "Overbite",
-    "target": "Orbital",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Orbital",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.474
+      }
+    ]
   },
   "dna": {
     "aggression": 0.928,

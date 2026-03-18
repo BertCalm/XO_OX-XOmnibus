@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.628,
-    "source": "Ohm",
-    "target": "Origami",
-    "type": "HARMONIC_MESH"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Origami",
+        "type": "HARMONIC_MESH",
+        "amount": 0.628
+      }
+    ]
   },
   "dna": {
     "aggression": 0.675,
@@ -31,7 +35,7 @@
     "SPACE": 0.477
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_DENSE_FAM_VOL_9",
+  "name": "Solar Deep 2",
   "parameters": {
     "Ohm": {
       "macro_character": 0.99,

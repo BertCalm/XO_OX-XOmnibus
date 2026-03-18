@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.335,
-    "source": "Outwit",
-    "target": "Oblong",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Oblong",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.335
+      }
+    ]
   },
   "dna": {
     "aggression": 0.951,

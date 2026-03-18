@@ -33,7 +33,9 @@
   ],
   "mood": "Prism",
   "name": "BRIGHT HOT KINETIC DENSE PRI 5",
-  "parameters": {},
+  "parameters": {
+    "Overworld": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

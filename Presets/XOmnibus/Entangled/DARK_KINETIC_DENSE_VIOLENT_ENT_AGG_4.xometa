@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.909,
-    "source": "Orphica",
-    "target": "Ottoni",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ottoni",
+        "type": "CHAOS_INJECT",
+        "amount": 0.909
+      }
+    ]
   },
   "dna": {
     "aggression": 0.955,
@@ -31,7 +35,7 @@
     "SPACE": 0.363
   },
   "mood": "Entangled",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_ENT_AGG_4",
+  "name": "Tone Force 2",
   "parameters": {
     "Orphica": {
       "macro_character": 0.63,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.889,
-    "source": "Orphica",
-    "target": "Oceanic",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Oceanic",
+        "type": "CHAOS_INJECT",
+        "amount": 0.889
+      }
+    ]
   },
   "dna": {
     "aggression": 0.873,
@@ -31,7 +35,7 @@
     "SPACE": 0.907
   },
   "mood": "Entangled",
-  "name": "HOT_KINETIC_VAST_VIOLENT_ENT_AGG_5",
+  "name": "Radiant Swirl",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.552,

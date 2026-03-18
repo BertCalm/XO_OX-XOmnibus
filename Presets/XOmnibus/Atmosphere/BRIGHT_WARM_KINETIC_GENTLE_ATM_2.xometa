@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.551,
-    "source": "Orbital",
-    "target": "Oblique",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Oblique",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.551
+      }
+    ]
   },
   "dna": {
     "aggression": 0.077,
@@ -31,7 +35,7 @@
     "SPACE": 0.396
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_WARM_KINETIC_GENTLE_ATM_2",
+  "name": "Golden Shimmer",
   "parameters": {
     "Oblique": {
       "macro_character": 0.441,

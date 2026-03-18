@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.752,
     "pairs": [
       {
         "amount": 0.752,
@@ -9,10 +8,7 @@
         "target": "OddfeliX",
         "type": "VELOCITY_COUPLE"
       }
-    ],
-    "source": "Obese",
-    "target": "OddfeliX",
-    "type": "VELOCITY_COUPLE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Cold Kinetic Intimate character entanglement — OBESE × ODDFELIX via Velocity Couple. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.0463
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_KINETIC_INTIMATE_ENT_2",
+  "name": "Shard Flutter",
   "parameters": {
     "Obese": {
       "amp_attack": 0.0693,

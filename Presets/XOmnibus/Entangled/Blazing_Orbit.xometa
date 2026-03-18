@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6,
-    "source": "Origami",
-    "target": "Ohm",
-    "type": "DYNAMICS_SHARE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ohm",
+        "type": "DYNAMICS_SHARE",
+        "amount": 0.6
+      }
+    ]
   },
   "dna": {
     "aggression": 0.18,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.963,
-    "source": "Origami",
-    "target": "Owlfish",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Owlfish",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.963
+      }
+    ]
   },
   "dna": {
     "aggression": 0.987,
@@ -31,7 +35,7 @@
     "SPACE": 0.938
   },
   "mood": "Prism",
-  "name": "COLD DENSE VAST VIOLENT PRS AGG 2",
+  "name": "COLD DENSE VAST VIOLENT PRS...",
   "parameters": {
     "Origami": {
       "macro_character": 0.403,

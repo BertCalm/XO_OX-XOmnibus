@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Overdub \u00d7 OddOscar \u2014 Chaos Inject coupling at extreme DNA corner.",
+  "description": "Overdub × OddOscar — Chaos Inject coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "overdub",
@@ -33,7 +33,10 @@
     "space": 0.565,
     "aggression": 0.902
   },
-  "parameters": {},
+  "parameters": {
+    "Overdub": {},
+    "OddOscar": {}
+  },
   "coupling": {
     "pairs": [
       {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9096,
-    "source": "Oblique",
-    "target": "Ocelot",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ocelot",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.9096
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9216,
@@ -31,7 +35,7 @@
     "SPACE": 0.521
   },
   "mood": "Prism",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_PRS_DRK_4",
+  "name": "Signal Crush",
   "parameters": {
     "Oblique": {
       "macro_character": 0.6406,

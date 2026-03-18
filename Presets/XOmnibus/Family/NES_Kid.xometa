@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "NES Kid",
-  "parameters": {},
+  "parameters": {
+    "Overworld": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

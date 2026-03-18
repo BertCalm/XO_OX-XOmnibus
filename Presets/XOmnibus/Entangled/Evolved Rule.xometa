@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.707,
-    "source": "Outwit",
-    "target": "Overworld",
-    "type": "SPECTRAL_TRANSFER"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Overworld",
+        "type": "SPECTRAL_TRANSFER",
+        "amount": 0.707
+      }
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Overworld ERA state selects OUTWIT rule set — each chip era carries a different cellular DNA",
@@ -62,5 +66,13 @@
     "wolfram",
     "cellular-automata"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.526,
+    "warmth": 0.5,
+    "movement": 0.611,
+    "density": 0.497,
+    "space": 0.5,
+    "aggression": 0.043
+  }
 }

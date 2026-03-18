@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8713,
-    "source": "Organon",
-    "target": "Obsidian",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Obsidian",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8713
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.5613
   },
   "mood": "Entangled",
-  "name": "DARK_HOT_FROZEN_SPARSE_GENTLE_ENT3_1",
+  "name": "Shadow Abyss 2",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.6381,

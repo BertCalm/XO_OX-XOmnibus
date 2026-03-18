@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7658,
     "pairs": [
       {
         "amount": 0.7658,
@@ -9,10 +8,7 @@
         "target": "Ohm",
         "type": "PHASE_LOCK"
       }
-    ],
-    "source": "Orbital",
-    "target": "Ohm",
-    "type": "PHASE_LOCK"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Cold Kinetic Sparse character entanglement — OHM × ORBITAL via Phase Lock. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.3215
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_KINETIC_SPARSE_ENT_2",
+  "name": "Prism Drift 2",
   "parameters": {
     "Ohm": {
       "amp_attack": 0.0772,

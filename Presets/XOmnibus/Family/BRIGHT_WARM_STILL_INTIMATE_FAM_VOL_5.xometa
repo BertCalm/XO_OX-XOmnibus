@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.433,
-    "source": "Ole",
-    "target": "OddOscar",
-    "type": "MODULATION_FLOW"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "OddOscar",
+        "type": "MODULATION_FLOW",
+        "amount": 0.433
+      }
+    ]
   },
   "dna": {
     "aggression": 0.361,
@@ -31,7 +35,7 @@
     "SPACE": 0.072
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_STILL_INTIMATE_FAM_VOL_5",
+  "name": "Golden Titan 2",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.88,

@@ -33,7 +33,9 @@
   ],
   "mood": "Prism",
   "name": "HOT TIGHT KINETIC DENSE PRI 2",
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

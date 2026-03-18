@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.627,
-    "source": "OddfeliX",
-    "target": "Organon",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Organon",
+        "type": "CHAOS_INJECT",
+        "amount": 0.627
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1287,
@@ -31,7 +35,7 @@
     "SPACE": 0.9484
   },
   "mood": "Atmosphere",
-  "name": "DARK_STILL_SPARSE_VAST_GENTLE_ATM_5",
+  "name": "Node Horizon 3",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.2232,

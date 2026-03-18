@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.488,
-    "source": "Ocelot",
-    "target": "Ottoni",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Ottoni",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.488
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.991
   },
   "mood": "Prism",
-  "name": "DARK_HOT_KINETIC_VAST_VIOLENT_PRS_2",
+  "name": "Shadow Void 2",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.12,

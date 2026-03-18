@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.69,
-    "source": "Oracle",
-    "target": "Obsidian",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Obsidian",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.69
+      }
+    ]
   },
   "description": "Oracle indigo bleeds into Obsidian white — the prophecy crystallises as it speaks.",
   "dna": {

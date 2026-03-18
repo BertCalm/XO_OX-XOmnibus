@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.81,
-    "source": "Ohm",
-    "target": "Opal",
-    "type": "ENVELOPE_MIRROR"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Opal",
+        "type": "ENVELOPE_MIRROR",
+        "amount": 0.81
+      }
+    ]
   },
   "dna": {
     "aggression": 0.127,
@@ -31,7 +35,7 @@
     "SPACE": 0.938
   },
   "mood": "Family",
-  "name": "DARK_HOT_VAST_GENTLE_FAM_VOL_11",
+  "name": "Cocoa Orbit 2",
   "parameters": {
     "Ohm": {
       "macro_character": 0.523,

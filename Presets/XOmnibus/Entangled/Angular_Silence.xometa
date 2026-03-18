@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
-    "source": "Origami",
-    "target": "Obsidian",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Obsidian",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.78
+      }
+    ]
   },
   "description": "Geometric silence — Origami fold angles couple spatially with Obsidian's empty room.",
   "dna": {

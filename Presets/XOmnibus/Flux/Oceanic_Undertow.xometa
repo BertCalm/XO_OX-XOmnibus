@@ -33,7 +33,9 @@
     "space": 0.35,
     "aggression": 0.58
   },
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {}
+  },
   "tags": [
     "flux",
     "controlled",
@@ -41,5 +43,5 @@
     "undertow",
     "teal"
   ],
-  "description": "Chromatophore modulator cycling fast \u2014 tidal pull with predictable return."
+  "description": "Chromatophore modulator cycling fast — tidal pull with predictable return."
 }

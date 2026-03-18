@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.915,
-    "source": "Overworld",
-    "target": "Ottoni",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Ottoni",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.915
+      }
+    ]
   },
   "dna": {
     "aggression": 0.869,
@@ -31,7 +35,7 @@
     "SPACE": 0.388
   },
   "mood": "Prism",
-  "name": "BRIGHT_COLD_STILL_VIOLENT_PRS_5",
+  "name": "Silver Fang",
   "parameters": {
     "Ottoni": {
       "macro_character": 0.491,

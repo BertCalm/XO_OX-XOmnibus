@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.63,
-    "source": "Oblong",
-    "target": "Odyssey",
-    "type": "RHYTHM_GATE"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
+        "type": "RHYTHM_GATE",
+        "amount": 0.63
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Aether",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 1",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Oblong": {
       "macro_character": 0.9,

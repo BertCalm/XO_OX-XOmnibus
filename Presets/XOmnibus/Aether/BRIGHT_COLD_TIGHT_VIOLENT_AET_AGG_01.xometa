@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.738,
-    "source": "Oceanic",
-    "target": "Oracle",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oracle",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.738
+      }
+    ]
   },
   "dna": {
     "aggression": 0.963,
@@ -31,7 +35,7 @@
     "SPACE": 0.044
   },
   "mood": "Aether",
-  "name": "BRIGHT COLD TIGHT VIOLENT AET AGG 1",
+  "name": "BRIGHT COLD TIGHT VIOLENT A...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.954,

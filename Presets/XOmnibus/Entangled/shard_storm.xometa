@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.76,
     "pairs": [
       {
         "amount": 0.76,
@@ -9,10 +8,7 @@
         "engineB": "Obsidian",
         "type": "SPATIAL_COUPLE"
       }
-    ],
-    "source": "Outwit",
-    "target": "Obsidian",
-    "type": "SPATIAL_COUPLE"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OBSIDIAN's dark volcanic crystalline character (obsidian physical-modelling). Coupling: Spatial Couple.",

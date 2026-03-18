@@ -33,7 +33,9 @@
     "space": 0.2,
     "aggression": 0.72
   },
-  "parameters": {},
+  "parameters": {
+    "Ottoni": {}
+  },
   "tags": [
     "flux",
     "controlled",
@@ -41,5 +43,5 @@
     "brass",
     "march"
   ],
-  "description": "GROW macro building \u2014 triple brass advancing in disciplined formation."
+  "description": "GROW macro building — triple brass advancing in disciplined formation."
 }

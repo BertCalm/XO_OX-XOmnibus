@@ -33,7 +33,9 @@
   ],
   "mood": "Atmosphere",
   "name": "HOT DENSE STILL VIOLENT ATM 4",
-  "parameters": {},
+  "parameters": {
+    "Ocelot": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.936,
-    "source": "Orphica",
-    "target": "Ottoni",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ottoni",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.936
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.862
   },
   "mood": "Prism",
-  "name": "DARK_COLD_STILL_DENSE_VAST_PRS_2",
+  "name": "Thread Thick",
   "parameters": {
     "Orphica": {
       "macro_character": 0.122,

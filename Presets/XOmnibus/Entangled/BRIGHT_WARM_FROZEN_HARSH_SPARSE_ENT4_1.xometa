@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.969,
-    "source": "Osprey",
-    "target": "OddOscar",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "OddOscar",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.969
+      }
+    ]
   },
   "dna": {
     "aggression": 0.909,
@@ -31,7 +35,7 @@
     "SPACE": 0.495
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_HARSH_SPARSE_ENT4_1",
+  "name": "Candlelight Grit 2",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.94,

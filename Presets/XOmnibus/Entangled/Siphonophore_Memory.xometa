@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.66,
-    "intensity": "Moderate",
-    "source": "Orphica",
-    "target": "Organon",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Organon",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.66
+      }
+    ]
   },
   "description": "Envelope linking: ORPHICA's long decay imprints on ORGANON's long-term cellular pattern.",
   "dna": {

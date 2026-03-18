@@ -33,7 +33,9 @@
     "space": 0.12,
     "aggression": 0.96
   },
-  "parameters": {},
+  "parameters": {
+    "Orca": {}
+  },
   "tags": [
     "flux",
     "maximum",
@@ -41,5 +43,5 @@
     "predator",
     "strike"
   ],
-  "description": "Orca breach at full velocity \u2014 echolocation burst into direct impact."
+  "description": "Orca breach at full velocity — echolocation burst into direct impact."
 }

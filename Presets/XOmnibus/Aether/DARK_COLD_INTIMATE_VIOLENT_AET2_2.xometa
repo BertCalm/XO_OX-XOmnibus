@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7042,
-    "source": "Orbital",
-    "target": "Oblique",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Oblique",
+        "type": "FILTER_MOD",
+        "amount": 0.7042
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9601,
@@ -31,7 +35,7 @@
     "SPACE": 0.0908
   },
   "mood": "Aether",
-  "name": "DARK_COLD_INTIMATE_VIOLENT_AET2_2",
+  "name": "Wave Strike",
   "parameters": {
     "Oblique": {
       "macro_character": 0.0627,

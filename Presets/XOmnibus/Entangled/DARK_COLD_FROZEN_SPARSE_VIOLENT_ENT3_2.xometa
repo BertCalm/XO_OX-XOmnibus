@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7803,
-    "source": "Overworld",
-    "target": "Oblong",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Oblong",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.7803
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.7653
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_FROZEN_SPARSE_VIOLENT_ENT3_2",
+  "name": "Thread Edge 2",
   "parameters": {
     "Oblong": {
       "macro_character": 0.9843,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8236,
-    "source": "Onset",
-    "target": "Osprey",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Osprey",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8236
+      }
+    ]
   },
   "dna": {
     "aggression": 0.2275,

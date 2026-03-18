@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.457,
-    "source": "Ohm",
-    "target": "Odyssey",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Odyssey",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.457
+      }
+    ]
   },
   "dna": {
     "aggression": 0.916,

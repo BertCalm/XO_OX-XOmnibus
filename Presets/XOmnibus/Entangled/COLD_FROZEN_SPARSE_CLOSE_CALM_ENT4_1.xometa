@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.783,
-    "source": "Owlfish",
-    "target": "Organon",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Organon",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.783
+      }
+    ]
   },
   "dna": {
     "aggression": 0.104,
@@ -31,7 +35,7 @@
     "SPACE": 0.087
   },
   "mood": "Entangled",
-  "name": "COLD_FROZEN_SPARSE_CLOSE_CALM_ENT4_1",
+  "name": "Shard Flux",
   "parameters": {
     "Organon": {
       "macro_character": 0.281,

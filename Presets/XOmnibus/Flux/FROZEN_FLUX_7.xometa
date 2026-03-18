@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5823,
-    "source": "OddfeliX",
-    "target": "Obese",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.5823
+      }
+    ]
   },
   "dna": {
     "aggression": 0.145,

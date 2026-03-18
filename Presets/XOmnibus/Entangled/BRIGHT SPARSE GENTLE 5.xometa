@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Overbite \u00d7 Overlap \u2014 Pitch Sync coupling at extreme DNA corner.",
+  "description": "Overbite × Overlap — Pitch Sync coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "overbite",
@@ -33,7 +33,10 @@
     "space": 0.461,
     "aggression": 0.089
   },
-  "parameters": {},
+  "parameters": {
+    "Overbite": {},
+    "Overlap": {}
+  },
   "coupling": {
     "pairs": [
       {

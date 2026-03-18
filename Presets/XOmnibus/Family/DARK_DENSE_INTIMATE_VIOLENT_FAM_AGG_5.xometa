@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.897,
-    "source": "Oblong",
-    "target": "OddfeliX",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "OddfeliX",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.897
+      }
+    ]
   },
   "dna": {
     "aggression": 0.948,
@@ -31,7 +35,7 @@
     "SPACE": 0.664
   },
   "mood": "Family",
-  "name": "DARK_DENSE_INTIMATE_VIOLENT_FAM_AGG_5",
+  "name": "Velvet Dense",
   "parameters": {
     "Oblong": {
       "macro_character": 0.373,

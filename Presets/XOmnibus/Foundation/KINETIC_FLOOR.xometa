@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.668,
-    "source": "Obese",
-    "target": "Origami",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Origami",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.668
+      }
+    ]
   },
   "dna": {
     "aggression": 0.632,

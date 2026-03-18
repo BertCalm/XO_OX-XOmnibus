@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.724,
-    "source": "Origami",
-    "target": "Organon",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.724
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0572,
@@ -31,7 +35,7 @@
     "SPACE": 0.8774
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_ATM_5",
+  "name": "Peach Orbit",
   "parameters": {
     "Organon": {
       "macro_character": 0.9072,

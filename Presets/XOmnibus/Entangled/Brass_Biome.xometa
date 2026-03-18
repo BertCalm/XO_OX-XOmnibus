@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "intensity": "Deep",
-    "source": "Ottoni",
-    "target": "Organon",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Organon",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.74
+      }
+    ]
   },
   "description": "Timbre blend merges triple brass with metabolic granularity — a living brass biome.",
   "dna": {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8086,
-    "source": "Oblong",
-    "target": "Oblique",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Oblique",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8086
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.7319
   },
   "mood": "Entangled",
-  "name": "BRIGHT_STILL_SPARSE_VAST_GENTLE_ENT3_4",
+  "name": "Golden Orbit 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.9342,

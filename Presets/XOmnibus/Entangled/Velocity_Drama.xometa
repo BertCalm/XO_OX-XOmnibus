@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Obscura",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Obscura",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.78
+      }
+    ]
   },
   "description": "Velocity coupling: harder OLE hits expose deeper grain in OBSCURA's surface.",
   "dna": {

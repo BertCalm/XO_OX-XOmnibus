@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.56,
     "pairs": [
       {
         "amount": 0.56,
@@ -9,10 +8,7 @@
         "engineB": "Origami",
         "type": "CHAOS_INJECT"
       }
-    ],
-    "source": "Overlap",
-    "target": "Origami",
-    "type": "CHAOS_INJECT"
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Lion's Mane knot-topology FDN entangled with ORIGAMI's folded geometric character (Vermillion fold-based synthesis). Coupling: Chaos Inject.",

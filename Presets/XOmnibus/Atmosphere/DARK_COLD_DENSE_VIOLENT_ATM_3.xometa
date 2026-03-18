@@ -33,7 +33,9 @@
   ],
   "mood": "Atmosphere",
   "name": "DARK COLD DENSE VIOLENT ATM 3",
-  "parameters": {},
+  "parameters": {
+    "Obsidian": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

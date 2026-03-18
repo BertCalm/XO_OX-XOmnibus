@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.635,
-    "source": "Obbligato",
-    "target": "OddfeliX",
-    "type": "MODULATION_FLOW"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "OddfeliX",
+        "type": "MODULATION_FLOW",
+        "amount": 0.635
+      }
+    ]
   },
   "dna": {
     "aggression": 0.579,
@@ -31,7 +35,7 @@
     "SPACE": 0.351
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_DENSE_FAM_VOL_7",
+  "name": "Solar Surge 3",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.935,

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9497,
     "pairs": [
       {
         "amount": 0.9497,
@@ -9,10 +8,7 @@
         "target": "Overworld",
         "type": "PHASE_LOCK"
       }
-    ],
-    "source": "Oracle",
-    "target": "Overworld",
-    "type": "PHASE_LOCK"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Cold Kinetic Intimate character entanglement — ORACLE × OVERWORLD via Phase Lock. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.1151
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_KINETIC_INTIMATE_ENT_4",
+  "name": "Flux Drift",
   "parameters": {
     "Oracle": {
       "amp_attack": 0.0759,

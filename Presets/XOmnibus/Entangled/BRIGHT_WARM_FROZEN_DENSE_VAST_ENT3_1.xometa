@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8914,
-    "source": "Orbital",
-    "target": "Overbite",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Overbite",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8914
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.497
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_DENSE_VAST_ENT3_1",
+  "name": "Candlelight Cavern",
   "parameters": {
     "Orbital": {
       "macro_character": 0.5156,

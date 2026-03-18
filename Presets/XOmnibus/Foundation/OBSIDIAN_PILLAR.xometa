@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.576,
-    "source": "Obese",
-    "target": "Organon",
-    "type": "TIMBRAL_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Organon",
+        "type": "TIMBRAL_BLEND",
+        "amount": 0.576
+      }
+    ]
   },
   "dna": {
     "aggression": 0.735,

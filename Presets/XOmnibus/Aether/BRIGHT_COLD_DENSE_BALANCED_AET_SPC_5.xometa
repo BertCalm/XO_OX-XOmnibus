@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.654,
-    "source": "Opal",
-    "target": "Osprey",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Osprey",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.654
+      }
+    ]
   },
   "dna": {
     "aggression": 0.077,
@@ -31,7 +35,7 @@
     "SPACE": 0.471
   },
   "mood": "Aether",
-  "name": "BRIGHT COLD DENSE BALANCED AET SPC 5",
+  "name": "BRIGHT COLD DENSE BALANCED ...",
   "parameters": {
     "Opal": {
       "macro_character": 0.49,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.82,
-    "source": "Oblique",
-    "target": "Osprey",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Osprey",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.82
+      }
+    ]
   },
   "dna": {
     "aggression": 0.406,
@@ -31,7 +35,7 @@
     "SPACE": 0.903
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_DENSE_VAST_ENT4_5",
+  "name": "Golden Titan",
   "parameters": {
     "Oblique": {
       "macro_character": 0.934,

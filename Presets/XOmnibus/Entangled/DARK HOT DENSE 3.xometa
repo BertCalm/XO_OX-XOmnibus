@@ -32,7 +32,10 @@
   ],
   "mood": "Entangled",
   "name": "DARK HOT DENSE 3",
-  "parameters": {},
+  "parameters": {
+    "OddfeliX": {},
+    "Onset": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

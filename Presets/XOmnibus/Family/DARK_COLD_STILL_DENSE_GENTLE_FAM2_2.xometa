@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.471,
-    "source": "Organon",
-    "target": "Odyssey",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Odyssey",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.471
+      }
+    ]
   },
   "dna": {
     "aggression": 0.055,
@@ -31,7 +35,7 @@
     "SPACE": 0.611
   },
   "mood": "Family",
-  "name": "DARK COLD STILL DENSE GENTLE FAM2 2",
+  "name": "DARK COLD STILL DENSE GENTL...",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.069,

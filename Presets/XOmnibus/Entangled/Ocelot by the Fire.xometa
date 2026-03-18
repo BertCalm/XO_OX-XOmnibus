@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Ocelot by the Fire",
-  "parameters": {},
+  "parameters": {
+    "Osteria": {},
+    "Ocelot": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

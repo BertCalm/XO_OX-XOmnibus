@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.85,
-    "source": "Organon",
-    "target": "Opal",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Opal",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.85
+      }
+    ]
   },
   "dna": {
     "aggression": 0.954,
@@ -31,7 +35,7 @@
     "SPACE": 0.112
   },
   "mood": "Flux",
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FLX_AGG_1",
+  "name": "Frost Force",
   "parameters": {
     "Opal": {
       "macro_character": 0.745,

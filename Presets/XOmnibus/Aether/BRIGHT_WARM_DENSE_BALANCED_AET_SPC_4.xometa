@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.695,
-    "source": "Oceanic",
-    "target": "Overworld",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Overworld",
+        "type": "PITCH_SYNC",
+        "amount": 0.695
+      }
+    ]
   },
   "dna": {
     "aggression": 0.115,
@@ -31,7 +35,7 @@
     "SPACE": 0.452
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM DENSE BALANCED AET SPC 4",
+  "name": "BRIGHT WARM DENSE BALANCED ...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.97,

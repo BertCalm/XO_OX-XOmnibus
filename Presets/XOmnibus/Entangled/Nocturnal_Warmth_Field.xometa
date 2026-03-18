@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8,
-    "source": "Opal",
-    "target": "Ohm",
-    "type": "LFO_SYNC"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ohm",
+        "type": "LFO_SYNC",
+        "amount": 0.8
+      }
+    ]
   },
   "dna": {
     "aggression": 0.47,

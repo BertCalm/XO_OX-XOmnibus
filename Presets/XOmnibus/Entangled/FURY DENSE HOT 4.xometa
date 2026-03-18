@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Orphica \u00d7 Oceanic \u2014 Timbre Blend coupling at extreme DNA corner.",
+  "description": "Orphica × Oceanic — Timbre Blend coupling at extreme DNA corner.",
   "tags": [
     "fury",
     "orphica",
@@ -33,7 +33,10 @@
     "space": 0.623,
     "aggression": 0.947
   },
-  "parameters": {},
+  "parameters": {
+    "Orphica": {},
+    "Oceanic": {}
+  },
   "coupling": {
     "pairs": [
       {

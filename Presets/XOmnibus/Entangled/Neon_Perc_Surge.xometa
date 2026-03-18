@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Neon Perc Surge",
-  "parameters": {},
+  "parameters": {
+    "Overworld": {},
+    "Oblique": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.91,

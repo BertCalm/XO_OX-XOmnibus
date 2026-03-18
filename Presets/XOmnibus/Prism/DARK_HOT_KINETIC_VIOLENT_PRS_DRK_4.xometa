@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5615,
-    "source": "Ohm",
-    "target": "Overworld",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Overworld",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.5615
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9813,
@@ -31,7 +35,7 @@
     "SPACE": 0.5197
   },
   "mood": "Prism",
-  "name": "DARK_HOT_KINETIC_VIOLENT_PRS_DRK_4",
+  "name": "Smoke Edge",
   "parameters": {
     "Ohm": {
       "macro_character": 0.9631,

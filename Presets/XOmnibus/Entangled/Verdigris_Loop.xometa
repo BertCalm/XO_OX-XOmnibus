@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.84,
-    "intensity": "Deep",
-    "source": "Ottoni",
-    "target": "Ouroboros",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Ouroboros",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.84
+      }
+    ]
   },
   "description": "Spectral morphing between brass formants and attractor-state noise — warmth 0.84 locks the loop.",
   "dna": {

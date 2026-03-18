@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.522,
-    "source": "OddOscar",
-    "target": "Osprey",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Osprey",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.522
+      }
+    ]
   },
   "dna": {
     "aggression": 0.054,
@@ -31,7 +35,7 @@
     "SPACE": 0.048
   },
   "mood": "Family",
-  "name": "HOT STILL DENSE INTIMATE GENTLE FAM2 5",
+  "name": "HOT STILL DENSE INTIMATE GE...",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.72,

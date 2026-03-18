@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.843,
-    "source": "Oblique",
-    "target": "Overlap",
-    "type": "FREQUENCY_MODULATION"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overlap",
+        "type": "FREQUENCY_MODULATION",
+        "amount": 0.843
+      }
+    ]
   },
   "description": "FDN feedback paths as prism facets — each delay tap a separate refractive surface bending the signal further.",
   "engines": [
@@ -77,5 +81,13 @@
     "coupling",
     "prismatic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

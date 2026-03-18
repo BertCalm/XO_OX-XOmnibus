@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.725,
-    "source": "Oceanic",
-    "target": "Obscura",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Obscura",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.725
+      }
+    ]
   },
   "dna": {
     "aggression": 0.942,
@@ -31,7 +35,7 @@
     "SPACE": 0.655
   },
   "mood": "Atmosphere",
-  "name": "DARK COLD KINETIC VIOLENT ATM AGG 3",
+  "name": "DARK COLD KINETIC VIOLENT A...",
   "parameters": {
     "Obscura": {
       "macro_character": 0.06,

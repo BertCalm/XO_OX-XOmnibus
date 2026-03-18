@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.884,
-    "source": "Overbite",
-    "target": "Overdub",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Overdub",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.884
+      }
+    ]
   },
   "dna": {
     "aggression": 0.096,
@@ -31,7 +35,7 @@
     "SPACE": 0.247
   },
   "mood": "Foundation",
-  "name": "BRIGHT_DENSE_INTIMATE_GENTLE_FND_1",
+  "name": "Mirror Packed",
   "parameters": {
     "Overbite": {
       "macro_character": 0.672,

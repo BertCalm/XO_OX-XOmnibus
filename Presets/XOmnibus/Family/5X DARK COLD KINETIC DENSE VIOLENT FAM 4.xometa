@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Obsidian",
-    "target": "Outwit",
-    "type": "PITCH_FOLLOW"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Outwit",
+        "type": "PITCH_FOLLOW",
+        "amount": 0.65
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Family",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FAM 4",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.85,

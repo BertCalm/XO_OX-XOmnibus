@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.657,
-    "source": "OddfeliX",
-    "target": "Origami",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Origami",
+        "type": "CHAOS_INJECT",
+        "amount": 0.657
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.09
   },
   "mood": "Foundation",
-  "name": "DARK_COLD_KINETIC_INTIMATE_VIOLENT_FND_2",
+  "name": "Wave Crush",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.126,

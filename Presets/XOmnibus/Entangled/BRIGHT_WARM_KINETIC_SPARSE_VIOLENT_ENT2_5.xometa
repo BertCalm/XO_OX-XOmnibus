@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.51,
-    "source": "Ohm",
-    "target": "Orbital",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Orbital",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.51
+      }
+    ]
   },
   "dna": {
     "aggression": 0.932,
@@ -31,7 +35,7 @@
     "SPACE": 0.32
   },
   "mood": "Entangled",
-  "name": "BRIGHT WARM KINETIC SPARSE VIOLENT ENT2 5",
+  "name": "BRIGHT WARM KINETIC SPARSE ...",
   "parameters": {
     "Ohm": {
       "macro_character": 0.944,

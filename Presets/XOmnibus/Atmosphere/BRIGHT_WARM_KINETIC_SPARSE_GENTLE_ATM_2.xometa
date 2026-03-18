@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.527,
-    "source": "Optic",
-    "target": "OddOscar",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "OddOscar",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.527
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0973,
@@ -31,7 +35,7 @@
     "SPACE": 0.4391
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_WARM_KINETIC_SPARSE_GENTLE_ATM_2",
+  "name": "Halo Surge 2",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.9417,

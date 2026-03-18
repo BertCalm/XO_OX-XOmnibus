@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.67,
-    "source": "Odyssey",
-    "target": "Opal",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Opal",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.67
+      }
+    ]
   },
   "description": "Violet and lavender bleed into each other across a vast empty spectrum.",
   "dna": {

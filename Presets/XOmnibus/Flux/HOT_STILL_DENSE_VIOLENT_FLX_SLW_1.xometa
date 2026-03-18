@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.828,
-    "source": "Odyssey",
-    "target": "Oblong",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Oblong",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.828
+      }
+    ]
   },
   "dna": {
     "aggression": 0.934,
@@ -31,7 +35,7 @@
     "SPACE": 0.397
   },
   "mood": "Flux",
-  "name": "HOT_STILL_DENSE_VIOLENT_FLX_SLW_1",
+  "name": "Thread Heavy",
   "parameters": {
     "Oblong": {
       "macro_character": 0.888,

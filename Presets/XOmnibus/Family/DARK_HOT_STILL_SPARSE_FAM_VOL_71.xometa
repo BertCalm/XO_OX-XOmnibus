@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.455,
-    "source": "OddOscar",
-    "target": "Organon",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.455
+      }
+    ]
   },
   "dna": {
     "aggression": 0.48,
@@ -31,7 +35,7 @@
     "SPACE": 0.518
   },
   "mood": "Family",
-  "name": "DARK_HOT_STILL_SPARSE_FAM_VOL_71",
+  "name": "Rust Cavern 2",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.519,

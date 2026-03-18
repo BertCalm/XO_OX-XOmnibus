@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9109,
-    "source": "Odyssey",
-    "target": "Oracle",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Oracle",
+        "type": "CHAOS_INJECT",
+        "amount": 0.9109
+      }
+    ]
   },
   "dna": {
     "aggression": 0.873,
@@ -31,7 +35,7 @@
     "SPACE": 0.2065
   },
   "mood": "Flux",
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FLX_3",
+  "name": "Smoke Swirl",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.1885,

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6949,
     "pairs": [
       {
         "amount": 0.6949,
@@ -9,10 +8,7 @@
         "target": "Owlfish",
         "type": "VELOCITY_COUPLE"
       }
-    ],
-    "source": "Obbligato",
-    "target": "Owlfish",
-    "type": "VELOCITY_COUPLE"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Bright Dense Vast Gentle character entanglement — OWLFISH × OBBLIGATO via Velocity Couple. Extreme DNA zones push sound design to the edges.",

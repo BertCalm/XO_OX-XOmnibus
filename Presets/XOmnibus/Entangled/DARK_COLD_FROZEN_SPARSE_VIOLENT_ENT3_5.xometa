@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7843,
-    "source": "Origami",
-    "target": "Oblique",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oblique",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.7843
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.7002
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_FROZEN_SPARSE_VIOLENT_ENT3_5",
+  "name": "Fragment Storm 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.5387,

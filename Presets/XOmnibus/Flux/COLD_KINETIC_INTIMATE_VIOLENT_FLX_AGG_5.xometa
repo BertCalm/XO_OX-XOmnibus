@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.886,
-    "source": "Odyssey",
-    "target": "Overworld",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Overworld",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.886
+      }
+    ]
   },
   "dna": {
     "aggression": 0.985,
@@ -31,7 +35,7 @@
     "SPACE": 0.027
   },
   "mood": "Flux",
-  "name": "COLD_KINETIC_INTIMATE_VIOLENT_FLX_AGG_5",
+  "name": "Flux Blade",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.39,

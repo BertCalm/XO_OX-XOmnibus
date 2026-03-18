@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.527,
-    "source": "Owlfish",
-    "target": "Ocelot",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ocelot",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.527
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.995
   },
   "mood": "Prism",
-  "name": "BRIGHT_COLD_DENSE_VAST_VIOLENT_PRS_5",
+  "name": "Glass Orbit",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.907,

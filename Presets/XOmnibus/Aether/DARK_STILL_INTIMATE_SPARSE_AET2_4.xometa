@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8069,
-    "source": "Opal",
-    "target": "Organon",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.8069
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4459,
@@ -31,7 +35,7 @@
     "SPACE": 0.0642
   },
   "mood": "Aether",
-  "name": "DARK_STILL_INTIMATE_SPARSE_AET2_4",
+  "name": "Fragment Shard",
   "parameters": {
     "Opal": {
       "macro_character": 0.034,

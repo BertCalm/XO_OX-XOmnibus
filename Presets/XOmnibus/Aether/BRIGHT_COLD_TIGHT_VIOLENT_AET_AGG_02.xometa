@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.851,
-    "source": "Organon",
-    "target": "Oceanic",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oceanic",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.851
+      }
+    ]
   },
   "dna": {
     "aggression": 0.884,
@@ -31,7 +35,7 @@
     "SPACE": 0.065
   },
   "mood": "Aether",
-  "name": "BRIGHT COLD TIGHT VIOLENT AET AGG 2",
+  "name": "BRIGHT COLD TIGHT VIOLENT A...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.9,

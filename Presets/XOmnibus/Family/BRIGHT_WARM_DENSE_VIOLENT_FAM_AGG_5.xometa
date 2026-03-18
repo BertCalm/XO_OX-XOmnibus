@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.877,
-    "source": "OddfeliX",
-    "target": "Ole",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Ole",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.877
+      }
+    ]
   },
   "dna": {
     "aggression": 0.93,
@@ -31,7 +35,7 @@
     "SPACE": 0.429
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_DENSE_VIOLENT_FAM_AGG_5",
+  "name": "Candlelight Packed",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.615,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7683,
-    "source": "Ole",
-    "target": "Orbital",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Orbital",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.7683
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.6021
   },
   "mood": "Entangled",
-  "name": "HOT_FROZEN_SPARSE_VAST_GENTLE_ENT3_4",
+  "name": "Rust Void",
   "parameters": {
     "Ole": {
       "macro_character": 0.714,

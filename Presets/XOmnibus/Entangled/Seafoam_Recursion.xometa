@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "intensity": "Deep",
-    "source": "Orphica",
-    "target": "Ouroboros",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ouroboros",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.74
+      }
+    ]
   },
   "description": "Resonance shared between ORPHICA's glass harmonic and OUROBOROS's recursive loop.",
   "dna": {

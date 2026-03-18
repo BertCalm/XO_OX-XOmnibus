@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.768,
-    "source": "Opal",
-    "target": "Orbital",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Orbital",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.768
+      }
+    ]
   },
   "dna": {
     "aggression": 0.924,
@@ -31,7 +35,7 @@
     "SPACE": 0.92
   },
   "mood": "Aether",
-  "name": "DARK KINETIC VAST VIOLENT AET AGG 3",
+  "name": "DARK KINETIC VAST VIOLENT A...",
   "parameters": {
     "Opal": {
       "macro_character": 0.096,

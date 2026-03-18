@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
-    "intensity": "Deep",
-    "source": "Ottoni",
-    "target": "Ouroboros",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Ouroboros",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.78
+      }
+    ]
   },
   "description": "Velocity coupling ties OTTONI's attack to OUROBOROS's cycle speed — serpent swallows brass.",
   "dna": {

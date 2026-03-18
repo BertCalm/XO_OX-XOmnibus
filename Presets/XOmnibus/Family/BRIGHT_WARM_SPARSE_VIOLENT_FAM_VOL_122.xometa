@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.492,
-    "source": "Opal",
-    "target": "Odyssey",
-    "type": "ENVELOPE_MIRROR"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Odyssey",
+        "type": "ENVELOPE_MIRROR",
+        "amount": 0.492
+      }
+    ]
   },
   "dna": {
     "aggression": 0.898,
@@ -31,7 +35,7 @@
     "SPACE": 0.617
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_SPARSE_VIOLENT_FAM_VOL_122",
+  "name": "Glow Wrath",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.912,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.841,
-    "source": "Overdub",
-    "target": "Orphica",
-    "type": "FILTER_LINK"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Orphica",
+        "type": "FILTER_LINK",
+        "amount": 0.841
+      }
+    ]
   },
   "dna": {
     "aggression": 0.36,
@@ -31,7 +35,7 @@
     "SPACE": 0.887
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_STILL_VAST_FAM_VOL_64",
+  "name": "Halo Void",
   "parameters": {
     "Orphica": {
       "macro_character": 0.885,

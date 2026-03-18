@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.525,
-    "source": "Oracle",
-    "target": "Opal",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Opal",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.525
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0412,
@@ -31,7 +35,7 @@
     "SPACE": 0.8975
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_COLD_KINETIC_VAST_GENTLE_ATM_3",
+  "name": "Silver Swirl 2",
   "parameters": {
     "Opal": {
       "macro_character": 0.4525,

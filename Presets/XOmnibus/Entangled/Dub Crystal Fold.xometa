@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6,
-    "source": "Overdub",
-    "target": "Origami",
-    "type": "SPECTRAL_FOLD"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Origami",
+        "type": "SPECTRAL_FOLD",
+        "amount": 0.6
+      }
+    ]
   },
   "description": "Geometric folds shimmering in cavernous dub space — sharp cold light.",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Dub Crystal Fold",
-  "parameters": {},
+  "parameters": {
+    "Origami": {},
+    "Overdub": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.2,
@@ -43,5 +50,13 @@
     "sparse",
     "spacious"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.82,
     "pairs": [
       {
         "amount": 0.82,
@@ -9,10 +8,7 @@
         "engineB": "Obscura",
         "type": "CHAOS_INJECT"
       }
-    ],
-    "source": "Overlap",
-    "target": "Obscura",
-    "type": "CHAOS_INJECT"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Lion's Mane knot-topology FDN entangled with OBSCURA's daguerreotype-veiled spectral character (plate physics and silver grain). Coupling: Chaos Inject.",

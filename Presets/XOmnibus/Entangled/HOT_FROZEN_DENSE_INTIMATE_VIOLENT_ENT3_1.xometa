@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8083,
-    "source": "Ohm",
-    "target": "Organon",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.8083
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.429
   },
   "mood": "Entangled",
-  "name": "HOT_FROZEN_DENSE_INTIMATE_VIOLENT_ENT3_1",
+  "name": "Tone Packed",
   "parameters": {
     "Ohm": {
       "macro_character": 0.7836,

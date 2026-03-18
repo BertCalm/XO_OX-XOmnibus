@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Orbital \u00d7 Organon \u2014 Resonance Share coupling at extreme DNA corner.",
+  "description": "Orbital × Organon — Resonance Share coupling at extreme DNA corner.",
   "tags": [
     "hot",
     "orbital",
@@ -33,7 +33,10 @@
     "space": 0.477,
     "aggression": 0.897
   },
-  "parameters": {},
+  "parameters": {
+    "Orbital": {},
+    "Organon": {}
+  },
   "coupling": {
     "pairs": [
       {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.932,
-    "source": "Odyssey",
-    "target": "Obbligato",
-    "type": "HARMONIC_MESH"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Obbligato",
+        "type": "HARMONIC_MESH",
+        "amount": 0.932
+      }
+    ]
   },
   "dna": {
     "aggression": 0.59,
@@ -31,7 +35,7 @@
     "SPACE": 0.053
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_DENSE_INTIMATE_FAM_VOL_55",
+  "name": "Honey Molten",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.956,

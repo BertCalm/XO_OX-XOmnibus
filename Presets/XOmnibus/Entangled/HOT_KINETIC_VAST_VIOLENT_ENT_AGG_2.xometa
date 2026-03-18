@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.946,
-    "source": "Ohm",
-    "target": "Orbital",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Orbital",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.946
+      }
+    ]
   },
   "dna": {
     "aggression": 0.956,
@@ -31,7 +35,7 @@
     "SPACE": 0.949
   },
   "mood": "Entangled",
-  "name": "HOT_KINETIC_VAST_VIOLENT_ENT_AGG_2",
+  "name": "Signal Flutter 2",
   "parameters": {
     "Ohm": {
       "macro_character": 0.592,

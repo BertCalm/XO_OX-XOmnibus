@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Knot and Rule",
-  "parameters": {},
+  "parameters": {
+    "Overlap": {},
+    "Outwit": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -33,7 +33,9 @@
   ],
   "mood": "Atmosphere",
   "name": "HOT DENSE STILL VIOLENT ATM 2",
-  "parameters": {},
+  "parameters": {
+    "Oracle": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.688,
-    "source": "Obsidian",
-    "target": "Osprey",
-    "type": "RESONANCE_LINK"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Osprey",
+        "type": "RESONANCE_LINK",
+        "amount": 0.688
+      }
+    ]
   },
   "dna": {
     "aggression": 0.742,

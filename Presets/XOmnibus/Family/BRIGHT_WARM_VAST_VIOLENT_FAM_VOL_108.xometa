@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.67,
-    "source": "Obbligato",
-    "target": "OddfeliX",
-    "type": "SPATIAL_BIND"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "OddfeliX",
+        "type": "SPATIAL_BIND",
+        "amount": 0.67
+      }
+    ]
   },
   "dna": {
     "aggression": 0.921,
@@ -31,7 +35,7 @@
     "SPACE": 0.907
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_VAST_VIOLENT_FAM_VOL_108",
+  "name": "Glow Fang",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.953,

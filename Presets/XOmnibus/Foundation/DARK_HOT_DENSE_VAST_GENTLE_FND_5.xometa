@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.633,
-    "source": "Obese",
-    "target": "Obsidian",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Obsidian",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.633
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.936
   },
   "mood": "Foundation",
-  "name": "DARK_HOT_DENSE_VAST_GENTLE_FND_5",
+  "name": "Dusk Heavy",
   "parameters": {
     "Obese": {
       "macro_character": 0.018,

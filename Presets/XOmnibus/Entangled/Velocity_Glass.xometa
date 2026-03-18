@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.66,
-    "intensity": "Moderate",
-    "source": "Orphica",
-    "target": "Obscura",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Obscura",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.66
+      }
+    ]
   },
   "description": "Velocity coupling: soft ORPHICA touch reflects; hard strike refracts through OBSCURA.",
   "dna": {

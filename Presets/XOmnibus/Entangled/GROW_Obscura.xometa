@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
-    "intensity": "Deep",
-    "source": "Ottoni",
-    "target": "Obscura",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Obscura",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.78
+      }
+    ]
   },
   "description": "Resonance shared through OBSCURA's plate — warmth 0.84 floods the system.",
   "dna": {

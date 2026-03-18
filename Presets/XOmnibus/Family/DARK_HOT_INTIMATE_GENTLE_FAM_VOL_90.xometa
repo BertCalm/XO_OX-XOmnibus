@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.579,
-    "source": "Ohm",
-    "target": "Ole",
-    "type": "MODULATION_FLOW"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Ole",
+        "type": "MODULATION_FLOW",
+        "amount": 0.579
+      }
+    ]
   },
   "dna": {
     "aggression": 0.087,
@@ -31,7 +35,7 @@
     "SPACE": 0.046
   },
   "mood": "Family",
-  "name": "DARK_HOT_INTIMATE_GENTLE_FAM_VOL_90",
+  "name": "Amber Surge",
   "parameters": {
     "Ohm": {
       "macro_character": 0.51,

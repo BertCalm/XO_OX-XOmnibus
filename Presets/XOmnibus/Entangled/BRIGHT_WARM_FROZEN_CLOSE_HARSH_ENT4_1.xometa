@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.861,
-    "source": "Oblique",
-    "target": "Overdub",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overdub",
+        "type": "PITCH_SYNC",
+        "amount": 0.861
+      }
+    ]
   },
   "dna": {
     "aggression": 0.928,
@@ -31,7 +35,7 @@
     "SPACE": 0.074
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_CLOSE_HARSH_ENT4_1",
+  "name": "Peach Rage",
   "parameters": {
     "Oblique": {
       "macro_character": 0.94,

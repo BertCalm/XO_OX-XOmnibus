@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.735,
-    "source": "Ombre",
-    "target": "Onset",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Onset",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.735
+      }
+    ]
   },
   "dna": {
     "aggression": 0.412,
@@ -31,7 +35,7 @@
     "SPACE": 0.534
   },
   "mood": "Entangled",
-  "name": "PERMAFROST",
+  "name": "Permafrost",
   "parameters": {
     "Ombre": {
       "macro_character": 0.8,

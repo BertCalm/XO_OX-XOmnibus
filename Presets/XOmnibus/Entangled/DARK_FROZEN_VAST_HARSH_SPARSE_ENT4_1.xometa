@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.846,
-    "source": "Oblique",
-    "target": "Osteria",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Osteria",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.846
+      }
+    ]
   },
   "dna": {
     "aggression": 0.901,
@@ -31,7 +35,7 @@
     "SPACE": 0.909
   },
   "mood": "Entangled",
-  "name": "DARK_FROZEN_VAST_HARSH_SPARSE_ENT4_1",
+  "name": "Tone Vast",
   "parameters": {
     "Oblique": {
       "macro_character": 0.323,

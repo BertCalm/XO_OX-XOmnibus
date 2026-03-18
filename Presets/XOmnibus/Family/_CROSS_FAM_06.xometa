@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.62,
-    "source": "Opal",
-    "target": "OddOscar",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "OddOscar",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.62
+      }
+    ]
   },
   "dna": {
     "aggression": 0.596,

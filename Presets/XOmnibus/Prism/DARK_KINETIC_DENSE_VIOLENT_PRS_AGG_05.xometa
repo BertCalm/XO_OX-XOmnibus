@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.734,
-    "source": "Owlfish",
-    "target": "Orphica",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Orphica",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.734
+      }
+    ]
   },
   "dna": {
     "aggression": 0.879,
@@ -31,7 +35,7 @@
     "SPACE": 0.455
   },
   "mood": "Prism",
-  "name": "DARK KINETIC DENSE VIOLENT PRS AGG 5",
+  "name": "DARK KINETIC DENSE VIOLENT ...",
   "parameters": {
     "Orphica": {
       "macro_character": 0.024,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.81,
-    "source": "Obsidian",
-    "target": "Onset",
-    "type": "FEEDBACK"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Onset",
+        "type": "FEEDBACK",
+        "amount": 0.81
+      }
+    ]
   },
   "dna": {
     "aggression": 0.6,

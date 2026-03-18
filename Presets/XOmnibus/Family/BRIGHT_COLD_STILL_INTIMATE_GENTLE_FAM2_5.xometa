@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.164,
-    "source": "Ottoni",
-    "target": "Origami",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Origami",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.164
+      }
+    ]
   },
   "dna": {
     "aggression": 0.064,
@@ -31,7 +35,7 @@
     "SPACE": 0.134
   },
   "mood": "Family",
-  "name": "BRIGHT COLD STILL INTIMATE GENTLE FAM2 5",
+  "name": "BRIGHT COLD STILL INTIMATE ...",
   "parameters": {
     "Origami": {
       "macro_character": 0.485,

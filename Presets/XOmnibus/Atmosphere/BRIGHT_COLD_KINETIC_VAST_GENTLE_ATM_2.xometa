@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.456,
-    "source": "Obscura",
-    "target": "Oceanic",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oceanic",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.456
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0574,
@@ -31,7 +35,7 @@
     "SPACE": 0.9594
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_COLD_KINETIC_VAST_GENTLE_ATM_2",
+  "name": "Crystal Cavern 2",
   "parameters": {
     "Obscura": {
       "macro_character": 0.5176,

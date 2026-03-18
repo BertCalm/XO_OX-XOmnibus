@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.936,
-    "source": "Overworld",
-    "target": "OddOscar",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "OddOscar",
+        "type": "CHAOS_INJECT",
+        "amount": 0.936
+      }
+    ]
   },
   "dna": {
     "aggression": 0.967,
@@ -31,7 +35,7 @@
     "SPACE": 0.928
   },
   "mood": "Entangled",
-  "name": "HOT_KINETIC_VAST_VIOLENT_ENT_AGG_3",
+  "name": "Thread Grit 2",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.469,

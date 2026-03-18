@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.632,
-    "source": "Organon",
-    "target": "Oracle",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oracle",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.632
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0944,
@@ -31,7 +35,7 @@
     "SPACE": 0.9358
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_COLD_KINETIC_VAST_GENTLE_ATM_1",
+  "name": "Prism Horizon 2",
   "parameters": {
     "Oracle": {
       "macro_character": 0.4667,

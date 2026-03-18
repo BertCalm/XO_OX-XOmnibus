@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "source": "Obscura",
-    "target": "Opal",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Opal",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.74
+      }
+    ]
   },
   "description": "Obscura silver plate blends into Opal granular spray — both vanish into the mix.",
   "dna": {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.273,
-    "source": "OddOscar",
-    "target": "Overdub",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Overdub",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.273
+      }
+    ]
   },
   "dna": {
     "aggression": 0.915,

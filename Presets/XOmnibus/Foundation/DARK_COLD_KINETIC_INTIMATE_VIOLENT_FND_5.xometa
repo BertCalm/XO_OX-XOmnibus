@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.532,
-    "source": "Overdub",
-    "target": "Ouroboros",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Ouroboros",
+        "type": "FILTER_MOD",
+        "amount": 0.532
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.049
   },
   "mood": "Foundation",
-  "name": "DARK_COLD_KINETIC_INTIMATE_VIOLENT_FND_5",
+  "name": "Thread Edge",
   "parameters": {
     "Ouroboros": {
       "macro_character": 0.055,

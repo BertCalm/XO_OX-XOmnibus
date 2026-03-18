@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.688,
-    "source": "Odyssey",
-    "target": "Ottoni",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Ottoni",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.688
+      }
+    ]
   },
   "dna": {
     "aggression": 0.975,

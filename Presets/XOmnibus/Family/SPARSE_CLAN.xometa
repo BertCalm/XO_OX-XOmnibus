@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.459,
-    "source": "Odyssey",
-    "target": "Owlfish",
-    "type": "FILTER_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Owlfish",
+        "type": "FILTER_COUPLE",
+        "amount": 0.459
+      }
+    ]
   },
   "dna": {
     "aggression": 0.035,

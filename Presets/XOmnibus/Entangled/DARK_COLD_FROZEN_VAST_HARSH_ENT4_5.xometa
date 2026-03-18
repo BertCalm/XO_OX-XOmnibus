@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.703,
-    "source": "Osprey",
-    "target": "Orca",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Orca",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.703
+      }
+    ]
   },
   "dna": {
     "aggression": 0.925,
@@ -31,7 +35,7 @@
     "SPACE": 0.881
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_FROZEN_VAST_HARSH_ENT4_5",
+  "name": "Wave Rage 3",
   "parameters": {
     "Orca": {
       "macro_character": 0.099,

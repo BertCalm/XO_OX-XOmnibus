@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Bound for Shore",
-  "parameters": {},
+  "parameters": {
+    "Osprey": {},
+    "Obbligato": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

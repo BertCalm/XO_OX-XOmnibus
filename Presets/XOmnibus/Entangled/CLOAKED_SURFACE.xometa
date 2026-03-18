@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.393,
-    "source": "Ottoni",
-    "target": "Oblong",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Oblong",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.393
+      }
+    ]
   },
   "dna": {
     "aggression": 0.062,

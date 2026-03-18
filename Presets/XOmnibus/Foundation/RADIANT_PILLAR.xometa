@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.355,
-    "source": "Ouroboros",
-    "target": "Orphica",
-    "type": "HARMONIC_LOCK"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Orphica",
+        "type": "HARMONIC_LOCK",
+        "amount": 0.355
+      }
+    ]
   },
   "dna": {
     "aggression": 0.919,

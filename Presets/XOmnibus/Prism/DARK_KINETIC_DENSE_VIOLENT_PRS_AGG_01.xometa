@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.773,
-    "source": "Ottoni",
-    "target": "Ohm",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Ohm",
+        "type": "CHAOS_INJECT",
+        "amount": 0.773
+      }
+    ]
   },
   "dna": {
     "aggression": 0.983,
@@ -31,7 +35,7 @@
     "SPACE": 0.579
   },
   "mood": "Prism",
-  "name": "DARK KINETIC DENSE VIOLENT PRS AGG 1",
+  "name": "DARK KINETIC DENSE VIOLENT ...",
   "parameters": {
     "Ohm": {
       "macro_character": 0.121,

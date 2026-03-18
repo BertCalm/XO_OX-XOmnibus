@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.573,
-    "source": "Onset",
-    "target": "Octopus",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Octopus",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.573
+      }
+    ]
   },
   "dna": {
     "aggression": 0.073,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.712,
-    "source": "Overdub",
-    "target": "Octopus",
-    "type": "CHAOS_LOCK"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Octopus",
+        "type": "CHAOS_LOCK",
+        "amount": 0.712
+      }
+    ]
   },
   "dna": {
     "aggression": 0.817,

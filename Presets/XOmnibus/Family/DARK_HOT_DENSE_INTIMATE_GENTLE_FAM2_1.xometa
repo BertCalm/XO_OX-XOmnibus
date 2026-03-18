@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.503,
-    "source": "Organon",
-    "target": "Osprey",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Osprey",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.503
+      }
+    ]
   },
   "dna": {
     "aggression": 0.05,
@@ -31,7 +35,7 @@
     "SPACE": 0.066
   },
   "mood": "Family",
-  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 1",
+  "name": "DARK HOT DENSE INTIMATE GEN...",
   "parameters": {
     "Organon": {
       "macro_character": 0.516,

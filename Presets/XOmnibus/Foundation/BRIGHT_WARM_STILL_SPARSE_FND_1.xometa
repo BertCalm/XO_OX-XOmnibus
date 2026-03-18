@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.588,
-    "source": "Overdub",
-    "target": "Oracle",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.588
+      }
+    ]
   },
   "dna": {
     "aggression": 0.525,

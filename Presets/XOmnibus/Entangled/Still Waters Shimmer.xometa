@@ -33,7 +33,10 @@
   ],
   "mood": "Entangled",
   "name": "Still Waters Shimmer",
-  "parameters": {},
+  "parameters": {
+    "Ohm": {},
+    "Orphica": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

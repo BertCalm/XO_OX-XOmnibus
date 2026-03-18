@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.859,
-    "source": "Oblique",
-    "target": "Overworld",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overworld",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.859
+      }
+    ]
   },
   "dna": {
     "aggression": 0.978,
@@ -31,7 +35,7 @@
     "SPACE": 0.489
   },
   "mood": "Flux",
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FLX_AGG_4",
+  "name": "Phase Grit 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.668,

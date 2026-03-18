@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.75,
-    "source": "Orca",
-    "target": "Ole",
-    "type": "ECHOLOCATION_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Ole",
+        "type": "ECHOLOCATION_SYNC",
+        "amount": 0.75
+      }
+    ]
   },
   "description": "Orca breach timed to carnival rhythm — sea and celebration merge explosively",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Ocean Carnival",
-  "parameters": {},
+  "parameters": {
+    "Ole": {},
+    "Orca": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.6,
@@ -43,5 +50,13 @@
     "orca",
     "afro-latin"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.951,
-    "source": "Opal",
-    "target": "Obscura",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obscura",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.951
+      }
+    ]
   },
   "dna": {
     "aggression": 0.952,
@@ -31,7 +35,7 @@
     "SPACE": 0.084
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_ENT_AGG_1",
+  "name": "Crystal Fang",
   "parameters": {
     "Obscura": {
       "macro_character": 0.607,

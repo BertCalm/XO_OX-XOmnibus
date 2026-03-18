@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.92,
-    "source": "Obscura",
-    "target": "Octopus",
-    "type": "FM_CROSS"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Octopus",
+        "type": "FM_CROSS",
+        "amount": 0.92
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Entangled",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 6",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Obscura": {
       "macro_character": 0.66,

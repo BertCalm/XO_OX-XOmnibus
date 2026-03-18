@@ -28,7 +28,9 @@
   ],
   "mood": "Atmosphere",
   "name": "DARK HOT WIDE KINETIC ATM 5",
-  "parameters": {},
+  "parameters": {
+    "Obscura": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.837,
     "pairs": [
       {
         "amount": 0.837,
@@ -9,10 +8,7 @@
         "target": "Overlap",
         "type": "PHASE_LOCK"
       }
-    ],
-    "source": "Obscura",
-    "target": "Overlap",
-    "type": "PHASE_LOCK"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Hot Sparse Gentle character entanglement — OBSCURA × OVERLAP via Phase Lock. Extreme DNA zones push sound design to the edges.",

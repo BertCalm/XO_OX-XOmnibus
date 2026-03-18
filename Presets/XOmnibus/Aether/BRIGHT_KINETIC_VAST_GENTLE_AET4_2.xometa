@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5207,
-    "source": "Ombre",
-    "target": "Orbital",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Orbital",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.5207
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1297,
@@ -31,7 +35,7 @@
     "SPACE": 0.9805
   },
   "mood": "Aether",
-  "name": "BRIGHT_KINETIC_VAST_GENTLE_AET4_2",
+  "name": "Grain Vast 2",
   "parameters": {
     "Ombre": {
       "macro_character": 0.7971,

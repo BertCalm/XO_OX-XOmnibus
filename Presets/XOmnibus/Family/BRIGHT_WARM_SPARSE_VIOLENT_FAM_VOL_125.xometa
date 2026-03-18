@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.901,
-    "source": "OddfeliX",
-    "target": "Obbligato",
-    "type": "HARMONIC_MESH"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obbligato",
+        "type": "HARMONIC_MESH",
+        "amount": 0.901
+      }
+    ]
   },
   "dna": {
     "aggression": 0.947,
@@ -31,7 +35,7 @@
     "SPACE": 0.587
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_SPARSE_VIOLENT_FAM_VOL_125",
+  "name": "Golden Strike 2",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.922,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.87,
-    "source": "Origami",
-    "target": "Overworld",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Overworld",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.87
+      }
+    ]
   },
   "dna": {
     "aggression": 0.969,
@@ -31,7 +35,7 @@
     "SPACE": 0.589
   },
   "mood": "Prism",
-  "name": "BRIGHT COLD KINETIC VIOLENT PRS AGG 3",
+  "name": "BRIGHT COLD KINETIC VIOLENT...",
   "parameters": {
     "Origami": {
       "macro_character": 0.84,

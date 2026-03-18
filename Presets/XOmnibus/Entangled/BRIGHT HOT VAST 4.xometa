@@ -32,7 +32,10 @@
   ],
   "mood": "Entangled",
   "name": "BRIGHT HOT VAST 4",
-  "parameters": {},
+  "parameters": {
+    "Optic": {},
+    "OddfeliX": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

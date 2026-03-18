@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Chunky Chord Bob",
-  "parameters": {},
+  "parameters": {
+    "Oblong": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

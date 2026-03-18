@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.483,
-    "source": "Opal",
-    "target": "Oceanic",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oceanic",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.483
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9884,
@@ -31,7 +35,7 @@
     "SPACE": 0.939
   },
   "mood": "Flux",
-  "name": "DARK_KINETIC_DENSE_VAST_VIOLENT_FLX2_3",
+  "name": "Tone Edge 2",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.2803,

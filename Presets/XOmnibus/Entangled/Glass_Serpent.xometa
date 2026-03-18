@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.76,
-    "intensity": "Deep",
-    "source": "Orphica",
-    "target": "Ouroboros",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ouroboros",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.76
+      }
+    ]
   },
   "description": "ORPHICA's harmonic folding braids with OUROBOROS's self-consuming loop — brightness 0.90.",
   "dna": {

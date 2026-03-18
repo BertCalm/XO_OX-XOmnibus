@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.784,
-    "source": "Odyssey",
-    "target": "Obese",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Obese",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.784
+      }
+    ]
   },
   "dna": {
     "aggression": 0.025,
@@ -31,7 +35,7 @@
     "SPACE": 0.942
   },
   "mood": "Entangled",
-  "name": "WARM_FROZEN_SPARSE_VAST_GENTLE_ENT4_1",
+  "name": "Fragment Abyss",
   "parameters": {
     "Obese": {
       "macro_character": 0.658,

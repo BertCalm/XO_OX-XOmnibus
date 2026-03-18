@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.468,
-    "source": "Obbligato",
-    "target": "Oblong",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Oblong",
+        "type": "PITCH_SYNC",
+        "amount": 0.468
+      }
+    ]
   },
   "dna": {
     "aggression": 0.024,
@@ -31,7 +35,7 @@
     "SPACE": 0.913
   },
   "mood": "Family",
-  "name": "DARK_HOT_VAST_GENTLE_FAM_VOL_15",
+  "name": "Amber Void 2",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.492,

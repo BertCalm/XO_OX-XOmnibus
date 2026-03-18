@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.668,
-    "source": "Opal",
-    "target": "Oblique",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oblique",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.668
+      }
+    ]
   },
   "dna": {
     "aggression": 0.926,
@@ -31,7 +35,7 @@
     "SPACE": 0.978
   },
   "mood": "Flux",
-  "name": "COLD_STILL_VAST_VIOLENT_FLX_SLW_5",
+  "name": "Frost Void",
   "parameters": {
     "Oblique": {
       "macro_character": 0.346,

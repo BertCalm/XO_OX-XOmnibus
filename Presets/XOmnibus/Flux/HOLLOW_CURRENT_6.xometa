@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.679,
-    "source": "Orca",
-    "target": "Oceanic",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Oceanic",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.679
+      }
+    ]
   },
   "dna": {
     "aggression": 0.6283,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.601,
-    "source": "Oblique",
-    "target": "Orphica",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Orphica",
+        "type": "FILTER_MOD",
+        "amount": 0.601
+      }
+    ]
   },
   "dna": {
     "aggression": 0.913,
@@ -31,7 +35,7 @@
     "SPACE": 0.064
   },
   "mood": "Prism",
-  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_PRS_3",
+  "name": "Tone Saturated 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.937,

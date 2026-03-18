@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.725,
-    "source": "Oblique",
-    "target": "Optic",
-    "type": "GRANULAR_EXCHANGE"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Optic",
+        "type": "GRANULAR_EXCHANGE",
+        "amount": 0.725
+      }
+    ]
   },
   "description": "Optic pulse entering the prism from an oblique angle — the refraction angle determining which harmonic exits.",
   "engines": [
@@ -77,5 +81,13 @@
     "coupling",
     "prismatic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

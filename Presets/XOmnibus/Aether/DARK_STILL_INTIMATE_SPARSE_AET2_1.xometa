@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6193,
-    "source": "OddfeliX",
-    "target": "Oceanic",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oceanic",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.6193
+      }
+    ]
   },
   "dna": {
     "aggression": 0.34,
@@ -31,7 +35,7 @@
     "SPACE": 0.0207
   },
   "mood": "Aether",
-  "name": "DARK_STILL_INTIMATE_SPARSE_AET2_1",
+  "name": "Wave Fragment",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.088,

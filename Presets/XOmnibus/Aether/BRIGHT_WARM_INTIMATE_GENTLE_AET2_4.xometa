@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.708,
-    "source": "Ombre",
-    "target": "Oceanic",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Oceanic",
+        "type": "FILTER_MOD",
+        "amount": 0.708
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0913,
@@ -31,7 +35,7 @@
     "SPACE": 0.0949
   },
   "mood": "Aether",
-  "name": "BRIGHT_WARM_INTIMATE_GENTLE_AET2_4",
+  "name": "Halo Surge",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.8775,

@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Felix and Oscar Together",
-  "parameters": {},
+  "parameters": {
+    "OddfeliX": {},
+    "OddOscar": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

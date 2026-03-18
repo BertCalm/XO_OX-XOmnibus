@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.744,
-    "source": "Obscura",
-    "target": "Oblique",
-    "type": "SPATIAL_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oblique",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.744
+      }
+    ]
   },
   "description": "An expedition conducted entirely at non-orthogonal angles: the daguerreotype tilts, the ocelot sidesteps, the prism refracts what neither can name.",
   "engines": [
@@ -123,5 +127,13 @@
     "biome-shifting",
     "prismatic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

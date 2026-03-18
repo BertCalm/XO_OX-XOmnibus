@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Orphica Warm Colony",
-  "parameters": {},
+  "parameters": {
+    "Orphica": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

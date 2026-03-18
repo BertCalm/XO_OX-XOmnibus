@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.72,
-    "intensity": "Deep",
-    "source": "Ottoni",
-    "target": "Oracle",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Oracle",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.72
+      }
+    ]
   },
   "description": "OTTONI's amplitude envelope modulates ORACLE's maqam scale selection in real time.",
   "dna": {

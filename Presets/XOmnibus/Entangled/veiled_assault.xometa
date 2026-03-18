@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.77,
     "pairs": [
       {
         "amount": 0.77,
@@ -9,10 +8,7 @@
         "engineB": "Obscura",
         "type": "PITCH_SYNC"
       }
-    ],
-    "source": "Outwit",
-    "target": "Obscura",
-    "type": "PITCH_SYNC"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OBSCURA's daguerreotype-veiled spectral character (plate physics and silver grain). Coupling: Pitch Sync.",

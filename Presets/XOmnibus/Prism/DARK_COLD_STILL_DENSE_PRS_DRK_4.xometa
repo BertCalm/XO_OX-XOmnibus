@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6944,
-    "source": "Optic",
-    "target": "Ocelot",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Ocelot",
+        "type": "PITCH_SYNC",
+        "amount": 0.6944
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3402,
@@ -31,7 +35,7 @@
     "SPACE": 0.4132
   },
   "mood": "Prism",
-  "name": "DARK_COLD_STILL_DENSE_PRS_DRK_4",
+  "name": "Node Solid",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.2042,

@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Eight Arms and Prism",
-  "parameters": {},
+  "parameters": {
+    "Octopus": {},
+    "Optic": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

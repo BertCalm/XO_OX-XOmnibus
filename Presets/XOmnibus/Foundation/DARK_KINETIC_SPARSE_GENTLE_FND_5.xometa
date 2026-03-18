@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.337,
-    "source": "Oracle",
-    "target": "Overworld",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Overworld",
+        "type": "FILTER_MOD",
+        "amount": 0.337
+      }
+    ]
   },
   "dna": {
     "aggression": 0.123,
@@ -31,7 +35,7 @@
     "SPACE": 0.512
   },
   "mood": "Foundation",
-  "name": "DARK_KINETIC_SPARSE_GENTLE_FND_5",
+  "name": "Shard Shimmer 2",
   "parameters": {
     "Oracle": {
       "macro_character": 0.751,

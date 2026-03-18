@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Prism Shatter Storm",
-  "parameters": {},
+  "parameters": {
+    "Oblique": {},
+    "Onset": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.93,

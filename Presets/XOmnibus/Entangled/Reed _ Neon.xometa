@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Obbligato",
-    "target": "OddfeliX",
-    "type": "HARMONIC_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "OddfeliX",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.65
+      }
+    ]
   },
   "description": "Dual wind breath intertwined with neon tetra arc — obligate weave of air and electricity",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Reed & Neon",
-  "parameters": {},
+  "parameters": {
+    "Obbligato": {},
+    "OddfeliX": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.39,
@@ -43,5 +50,13 @@
     "oddfelix",
     "wind"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

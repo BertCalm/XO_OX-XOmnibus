@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Ombre Machine",
-  "parameters": {},
+  "parameters": {
+    "Ombre": {},
+    "Orca": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.94,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.748,
-    "source": "Orphica",
-    "target": "Optic",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Optic",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.748
+      }
+    ]
   },
   "dna": {
     "aggression": 0.97,

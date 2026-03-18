@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.484,
-    "source": "Ole",
-    "target": "Osteria",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Osteria",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.484
+      }
+    ]
   },
   "dna": {
     "aggression": 0.634,

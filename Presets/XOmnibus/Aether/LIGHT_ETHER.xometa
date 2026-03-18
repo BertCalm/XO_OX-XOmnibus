@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.731,
-    "source": "Ombre",
-    "target": "Oracle",
-    "type": "PHASE_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Oracle",
+        "type": "PHASE_COUPLE",
+        "amount": 0.731
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8,

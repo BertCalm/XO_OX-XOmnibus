@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.566,
-    "source": "Ouroboros",
-    "target": "Outwit",
-    "type": "FREQUENCY_LOCK"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Outwit",
+        "type": "FREQUENCY_LOCK",
+        "amount": 0.566
+      }
+    ]
   },
   "dna": {
     "aggression": 0.423,

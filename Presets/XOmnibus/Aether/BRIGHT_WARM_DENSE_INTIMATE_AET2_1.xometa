@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.88,
-    "source": "Organon",
-    "target": "Oracle",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oracle",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.88
+      }
+    ]
   },
   "dna": {
     "aggression": 0.6328,
@@ -31,7 +35,7 @@
     "SPACE": 0.046
   },
   "mood": "Aether",
-  "name": "BRIGHT_WARM_DENSE_INTIMATE_AET2_1",
+  "name": "Halo Heavy",
   "parameters": {
     "Oracle": {
       "macro_character": 0.8648,

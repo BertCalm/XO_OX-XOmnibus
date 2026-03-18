@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.622,
-    "source": "OddfeliX",
-    "target": "Overbite",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Overbite",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.622
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.19
   },
   "mood": "Foundation",
-  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FND_2",
+  "name": "Grain Shimmer",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.935,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.841,
-    "source": "Obbligato",
-    "target": "Oblique",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Oblique",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.841
+      }
+    ]
   },
   "dna": {
     "aggression": 0.051,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.83,
-    "source": "Oblong",
-    "target": "Odyssey",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
+        "type": "CHAOS_INJECT",
+        "amount": 0.83
+      }
+    ]
   },
   "dna": {
     "aggression": 0.567,
@@ -31,7 +35,7 @@
     "SPACE": 0.898
   },
   "mood": "Flux",
-  "name": "BRIGHT_COLD_STILL_VAST_FLX_SLW_1",
+  "name": "Glass Horizon",
   "parameters": {
     "Oblong": {
       "macro_character": 0.387,

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6873,
     "pairs": [
       {
         "amount": 0.6873,
@@ -9,10 +8,7 @@
         "target": "Optic",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Obsidian",
-    "target": "Optic",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Bright Warm Still Dense character entanglement — OPTIC × OBSIDIAN via Resonance Share. Extreme DNA zones push sound design to the edges.",

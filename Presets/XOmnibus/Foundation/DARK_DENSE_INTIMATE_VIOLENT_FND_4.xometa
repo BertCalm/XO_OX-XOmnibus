@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.834,
-    "source": "Onset",
-    "target": "Oracle",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Oracle",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.834
+      }
+    ]
   },
   "dna": {
     "aggression": 0.964,
@@ -31,7 +35,7 @@
     "SPACE": 0.396
   },
   "mood": "Foundation",
-  "name": "DARK_DENSE_INTIMATE_VIOLENT_FND_4",
+  "name": "Ember Molten",
   "parameters": {
     "Onset": {
       "macro_character": 0.618,

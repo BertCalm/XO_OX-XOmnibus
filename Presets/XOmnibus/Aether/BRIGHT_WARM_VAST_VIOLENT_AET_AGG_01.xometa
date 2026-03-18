@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.871,
-    "source": "Orbital",
-    "target": "Osprey",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Osprey",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.871
+      }
+    ]
   },
   "dna": {
     "aggression": 0.953,
@@ -31,7 +35,7 @@
     "SPACE": 0.865
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM VAST VIOLENT AET AGG 1",
+  "name": "BRIGHT WARM VAST VIOLENT AE...",
   "parameters": {
     "Orbital": {
       "macro_character": 0.843,

@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Brass Announcement",
-  "parameters": {},
+  "parameters": {
+    "Osteria": {},
+    "Ottoni": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.895,
-    "source": "Onset",
-    "target": "Obese",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Obese",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.895
+      }
+    ]
   },
   "dna": {
     "aggression": 0.753,

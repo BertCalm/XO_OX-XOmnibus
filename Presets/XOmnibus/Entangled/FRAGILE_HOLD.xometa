@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.626,
-    "source": "Osteria",
-    "target": "Owlfish",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Owlfish",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.626
+      }
+    ]
   },
   "dna": {
     "aggression": 0.052,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.42,
-    "source": "Ombre",
-    "target": "Obscura",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Obscura",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.42
+      }
+    ]
   },
   "dna": {
     "aggression": 0.983,
@@ -31,7 +35,7 @@
     "SPACE": 0.384
   },
   "mood": "Aether",
-  "name": "BRIGHT COLD KINETIC BALANCED AET SPC 2",
+  "name": "BRIGHT COLD KINETIC BALANCE...",
   "parameters": {
     "Obscura": {
       "macro_character": 0.482,

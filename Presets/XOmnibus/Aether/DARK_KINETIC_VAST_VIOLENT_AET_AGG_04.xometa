@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.729,
-    "source": "Overworld",
-    "target": "Oblique",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Oblique",
+        "type": "CHAOS_INJECT",
+        "amount": 0.729
+      }
+    ]
   },
   "dna": {
     "aggression": 0.95,
@@ -31,7 +35,7 @@
     "SPACE": 0.876
   },
   "mood": "Aether",
-  "name": "DARK KINETIC VAST VIOLENT AET AGG 4",
+  "name": "DARK KINETIC VAST VIOLENT A...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.024,

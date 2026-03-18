@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.704,
-    "source": "Overbite",
-    "target": "Orca",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Orca",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.704
+      }
+    ]
   },
   "dna": {
     "aggression": 0.776,

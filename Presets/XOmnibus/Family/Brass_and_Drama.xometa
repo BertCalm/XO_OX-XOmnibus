@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Brass and Drama",
-  "parameters": {},
+  "parameters": {
+    "Ottoni": {},
+    "Ole": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

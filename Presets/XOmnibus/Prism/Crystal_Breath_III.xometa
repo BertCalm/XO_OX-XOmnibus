@@ -24,7 +24,9 @@
   ],
   "mood": "Prism",
   "name": "Crystal Breath III",
-  "parameters": {},
+  "parameters": {
+    "Origami": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.182,

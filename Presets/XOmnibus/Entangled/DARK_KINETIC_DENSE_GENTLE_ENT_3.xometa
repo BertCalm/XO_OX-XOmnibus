@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9657,
     "pairs": [
       {
         "amount": 0.9657,
@@ -9,10 +8,7 @@
         "target": "Orphica",
         "type": "CHAOS_INJECT"
       }
-    ],
-    "source": "Overdub",
-    "target": "Orphica",
-    "type": "CHAOS_INJECT"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Kinetic Dense Gentle character entanglement — OVERDUB × ORPHICA via Chaos Inject. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.315
   },
   "mood": "Entangled",
-  "name": "DARK_KINETIC_DENSE_GENTLE_ENT_3",
+  "name": "Fragment Flutter",
   "parameters": {
     "Orphica": {
       "amp_attack": 0.0543,

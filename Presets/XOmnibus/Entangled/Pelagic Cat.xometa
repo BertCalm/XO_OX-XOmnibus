@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Pelagic Cat",
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {},
+    "Ocelot": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

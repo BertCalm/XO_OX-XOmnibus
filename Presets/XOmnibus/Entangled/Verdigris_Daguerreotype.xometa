@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8,
-    "intensity": "Deep",
-    "source": "Ottoni",
-    "target": "Obscura",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8
+      }
+    ]
   },
   "description": "Spectral morphing captures brass formants in OBSCURA's photographic resonance — warmth 0.86.",
   "dna": {

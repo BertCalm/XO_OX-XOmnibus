@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9001,
     "pairs": [
       {
         "amount": 0.9001,
@@ -9,10 +8,7 @@
         "target": "Outwit",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Ombre",
-    "target": "Outwit",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Cold Still Intimate Gentle character entanglement — OMBRE × OUTWIT via Resonance Share. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.0915
   },
   "mood": "Entangled",
-  "name": "COLD_STILL_INTIMATE_GENTLE_ENT_5",
+  "name": "Quartz Flux",
   "parameters": {
     "Ombre": {
       "amp_attack": 0.4015,

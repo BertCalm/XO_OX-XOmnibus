@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.068,
-    "source": "Obscura",
-    "target": "Oracle",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.068
+      }
+    ]
   },
   "dna": {
     "aggression": 0.043,

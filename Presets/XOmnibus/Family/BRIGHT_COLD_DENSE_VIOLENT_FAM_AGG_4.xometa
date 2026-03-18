@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.807,
-    "source": "Oblong",
-    "target": "Ottoni",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Ottoni",
+        "type": "PITCH_SYNC",
+        "amount": 0.807
+      }
+    ]
   },
   "dna": {
     "aggression": 0.899,
@@ -31,7 +35,7 @@
     "SPACE": 0.619
   },
   "mood": "Family",
-  "name": "BRIGHT_COLD_DENSE_VIOLENT_FAM_AGG_4",
+  "name": "Crystal Titan",
   "parameters": {
     "Oblong": {
       "macro_character": 0.617,

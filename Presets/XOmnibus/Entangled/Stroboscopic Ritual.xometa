@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.58,
-    "source": "Onset",
-    "target": "Obscura",
-    "type": "PHASE_LOCK"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Obscura",
+        "type": "PHASE_LOCK",
+        "amount": 0.58
+      }
+    ]
   },
   "description": "Percussion strobes carving cold light into darkness — mechanized and relentless.",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Stroboscopic Ritual",
-  "parameters": {},
+  "parameters": {
+    "Onset": {},
+    "Obscura": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.65,
@@ -43,5 +50,13 @@
     "aggressive",
     "ritual"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

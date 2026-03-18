@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.936,
-    "source": "Osteria",
-    "target": "Optic",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Optic",
+        "type": "PITCH_SYNC",
+        "amount": 0.936
+      }
+    ]
   },
   "dna": {
     "aggression": 0.485,
@@ -31,7 +35,7 @@
     "SPACE": 0.905
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_DENSE_VAST_ENT4_4",
+  "name": "Peach Titan",
   "parameters": {
     "Optic": {
       "macro_character": 0.902,

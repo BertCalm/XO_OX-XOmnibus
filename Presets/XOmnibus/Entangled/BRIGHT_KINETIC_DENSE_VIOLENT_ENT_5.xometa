@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8138,
     "pairs": [
       {
         "amount": 0.8138,
@@ -9,10 +8,7 @@
         "target": "Overworld",
         "type": "PHASE_LOCK"
       }
-    ],
-    "source": "Octopus",
-    "target": "Overworld",
-    "type": "PHASE_LOCK"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Kinetic Dense Violent character entanglement — OVERWORLD × OCTOPUS via Phase Lock. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.6322
   },
   "mood": "Entangled",
-  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_ENT_5",
+  "name": "Glow Deep",
   "parameters": {
     "Octopus": {
       "amp_attack": 0.1117,

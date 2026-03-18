@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7724,
     "pairs": [
       {
         "amount": 0.7724,
@@ -9,10 +8,7 @@
         "target": "OddOscar",
         "type": "HARMONIC_FOLD"
       }
-    ],
-    "source": "Orca",
-    "target": "OddOscar",
-    "type": "HARMONIC_FOLD"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Dense Vast Gentle character entanglement — ORCA × ODDOSCAR via Harmonic Fold. Extreme DNA zones push sound design to the edges.",

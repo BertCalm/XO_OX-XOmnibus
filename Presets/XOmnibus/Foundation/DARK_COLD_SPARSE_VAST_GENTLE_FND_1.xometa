@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.94,
-    "source": "OddfeliX",
-    "target": "Obsidian",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obsidian",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.94
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.895
   },
   "mood": "Foundation",
-  "name": "DARK_COLD_SPARSE_VAST_GENTLE_FND_1",
+  "name": "Node Cathedral",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.139,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.883,
-    "source": "Osprey",
-    "target": "Oracle",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Oracle",
+        "type": "CHAOS_INJECT",
+        "amount": 0.883
+      }
+    ]
   },
   "dna": {
     "aggression": 0.924,
@@ -31,7 +35,7 @@
     "SPACE": 0.911
   },
   "mood": "Aether",
-  "name": "KINETIC SPARSE VAST VIOLENT AET AGG 3",
+  "name": "KINETIC SPARSE VAST VIOLENT...",
   "parameters": {
     "Oracle": {
       "macro_character": 0.367,

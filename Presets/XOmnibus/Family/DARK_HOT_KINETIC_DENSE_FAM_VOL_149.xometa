@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.616,
-    "source": "Overdub",
-    "target": "Ole",
-    "type": "DYNAMIC_CROSS"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Ole",
+        "type": "DYNAMIC_CROSS",
+        "amount": 0.616
+      }
+    ]
   },
   "dna": {
     "aggression": 0.452,
@@ -31,7 +35,7 @@
     "SPACE": 0.562
   },
   "mood": "Family",
-  "name": "DARK_HOT_KINETIC_DENSE_FAM_VOL_149",
+  "name": "Smoke Swirl 3",
   "parameters": {
     "Ole": {
       "macro_character": 0.519,

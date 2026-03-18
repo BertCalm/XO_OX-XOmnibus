@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.818,
-    "source": "Ouroboros",
-    "target": "Origami",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Origami",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.818
+      }
+    ]
   },
   "dna": {
     "aggression": 0.895,
@@ -31,7 +35,7 @@
     "SPACE": 0.771
   },
   "mood": "Foundation",
-  "name": "BRIGHT_COLD_KINETIC_VIOLENT_FND_AGG_5",
+  "name": "Arctic Storm",
   "parameters": {
     "Origami": {
       "macro_character": 0.807,

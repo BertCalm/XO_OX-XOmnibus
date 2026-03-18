@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.84,
-    "source": "Obscura",
-    "target": "Orca",
-    "type": "CHAOS_INJECTION"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orca",
+        "type": "CHAOS_INJECTION",
+        "amount": 0.84
+      }
+    ]
   },
   "description": "Echolocation click mapped to shutter speed — the orca's hunting pulse determining how long the silver is exposed to light.",
   "engines": [
@@ -76,5 +80,13 @@
     "coupling",
     "daguerreotype"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

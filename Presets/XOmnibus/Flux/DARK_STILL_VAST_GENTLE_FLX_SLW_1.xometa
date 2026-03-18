@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.801,
-    "source": "Oblong",
-    "target": "Odyssey",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
+        "type": "PITCH_SYNC",
+        "amount": 0.801
+      }
+    ]
   },
   "dna": {
     "aggression": 0.075,
@@ -31,7 +35,7 @@
     "SPACE": 0.958
   },
   "mood": "Flux",
-  "name": "DARK_STILL_VAST_GENTLE_FLX_SLW_1",
+  "name": "Grain Cathedral 2",
   "parameters": {
     "Oblong": {
       "macro_character": 0.342,

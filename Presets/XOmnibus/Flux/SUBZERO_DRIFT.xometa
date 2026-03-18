@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.513,
-    "source": "Osteria",
-    "target": "Overbite",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Overbite",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.513
+      }
+    ]
   },
   "dna": {
     "aggression": 0.516,

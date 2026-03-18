@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6,
-    "source": "Origami",
-    "target": "Overdub",
-    "type": "FEEDBACK"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Overdub",
+        "type": "FEEDBACK",
+        "amount": 0.6
+      }
+    ]
   },
   "dna": {
     "aggression": 0.33,

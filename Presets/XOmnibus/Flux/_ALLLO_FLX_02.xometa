@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.183,
-    "source": "Optic",
-    "target": "Odyssey",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Odyssey",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.183
+      }
+    ]
   },
   "dna": {
     "aggression": 0.064,

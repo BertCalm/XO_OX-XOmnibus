@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.711,
-    "source": "Osprey",
-    "target": "OddfeliX",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "OddfeliX",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.711
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0881,
@@ -31,7 +35,7 @@
     "SPACE": 0.9345
   },
   "mood": "Atmosphere",
-  "name": "DARK_HOT_KINETIC_VAST_GENTLE_ATM_5",
+  "name": "Dusk Ripple",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.4511,

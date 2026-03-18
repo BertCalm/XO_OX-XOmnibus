@@ -28,7 +28,9 @@
   ],
   "mood": "Prism",
   "name": "BRIGHT HOT KINETIC DENSE PRI 1",
-  "parameters": {},
+  "parameters": {
+    "Odyssey": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

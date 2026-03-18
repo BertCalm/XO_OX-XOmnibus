@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.76,
-    "intensity": "Deep",
-    "source": "Ottoni",
-    "target": "Oracle",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.76
+      }
+    ]
   },
   "description": "Filter coupling bridges OTTONI's warm resonance with ORACLE's GENDY stochastic body.",
   "dna": {

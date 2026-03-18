@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.453,
-    "source": "Owlfish",
-    "target": "Orca",
-    "type": "PITCH_TRACK"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Orca",
+        "type": "PITCH_TRACK",
+        "amount": 0.453
+      }
+    ]
   },
   "dna": {
     "aggression": 0.546,

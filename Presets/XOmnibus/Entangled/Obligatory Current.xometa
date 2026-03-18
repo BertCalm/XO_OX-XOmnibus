@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Obligatory Current",
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {},
+    "Obbligato": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

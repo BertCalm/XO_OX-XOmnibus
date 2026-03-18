@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.75,
-    "source": "Ombre",
-    "target": "Obscura",
-    "type": "SPECTRAL_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_BLEND",
+        "amount": 0.75
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 10",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Obscura": {
       "macro_character": 0.87,

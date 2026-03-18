@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.87,
-    "source": "OddfeliX",
-    "target": "Overlap",
-    "type": "AMP_COUPLE"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Overlap",
+        "type": "AMP_COUPLE",
+        "amount": 0.87
+      }
+    ]
   },
   "dna": {
     "aggression": 0.824,

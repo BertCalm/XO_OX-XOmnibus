@@ -24,7 +24,9 @@
   ],
   "mood": "Prism",
   "name": "Glacial Scatter II",
-  "parameters": {},
+  "parameters": {
+    "Onset": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.148,

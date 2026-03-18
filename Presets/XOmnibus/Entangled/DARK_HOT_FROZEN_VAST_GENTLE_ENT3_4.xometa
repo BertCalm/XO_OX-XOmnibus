@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8913,
-    "source": "OddfeliX",
-    "target": "Osteria",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Osteria",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8913
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.1662
   },
   "mood": "Entangled",
-  "name": "DARK_HOT_FROZEN_VAST_GENTLE_ENT3_4",
+  "name": "Velvet Void",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.9206,

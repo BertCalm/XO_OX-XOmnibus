@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.62,
-    "source": "Ohm",
-    "target": "Oracle",
-    "type": "ENVELOPE_MIRROR"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_MIRROR",
+        "amount": 0.62
+      }
+    ]
   },
   "dna": {
     "aggression": 0.15,

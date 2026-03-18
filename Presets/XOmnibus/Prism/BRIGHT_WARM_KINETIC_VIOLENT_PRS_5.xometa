@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.594,
-    "source": "Oblique",
-    "target": "Ohm",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ohm",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.594
+      }
+    ]
   },
   "dna": {
     "aggression": 0.951,
@@ -31,7 +35,7 @@
     "SPACE": 0.498
   },
   "mood": "Prism",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_PRS_5",
+  "name": "Solar Strike",
   "parameters": {
     "Oblique": {
       "macro_character": 0.951,

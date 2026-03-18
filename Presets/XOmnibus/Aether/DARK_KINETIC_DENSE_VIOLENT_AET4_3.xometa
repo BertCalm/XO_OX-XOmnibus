@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7889,
-    "source": "Osprey",
-    "target": "OddfeliX",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "OddfeliX",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7889
+      }
+    ]
   },
   "dna": {
     "aggression": 0.947,
@@ -31,7 +35,7 @@
     "SPACE": 0.5556
   },
   "mood": "Aether",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_AET4_3",
+  "name": "Signal Rage",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.5402,

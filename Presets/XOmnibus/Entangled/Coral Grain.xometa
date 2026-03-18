@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Opal",
-    "target": "Obbligato",
-    "type": "GRANULAR_WEAVE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obbligato",
+        "type": "GRANULAR_WEAVE",
+        "amount": 0.7
+      }
+    ]
   },
   "description": "OBBLIGATO BOND macro tied to opal grain size — the tighter the bond, the smaller the grain",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Coral Grain",
-  "parameters": {},
+  "parameters": {
+    "Obbligato": {},
+    "Opal": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.29,
@@ -43,5 +50,13 @@
     "opal",
     "wind"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

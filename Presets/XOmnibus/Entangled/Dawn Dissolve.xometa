@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6,
-    "source": "Ombre",
-    "target": "Orphica",
-    "type": "GRADIENT_DISSOLVE"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Orphica",
+        "type": "GRADIENT_DISSOLVE",
+        "amount": 0.6
+      }
+    ]
   },
   "description": "Microsound dawn slowly dissolves into dusk palette — time-lapse of a day",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Dawn Dissolve",
-  "parameters": {},
+  "parameters": {
+    "Orphica": {},
+    "Ombre": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.19,
@@ -43,5 +50,13 @@
     "ombre",
     "microsound"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

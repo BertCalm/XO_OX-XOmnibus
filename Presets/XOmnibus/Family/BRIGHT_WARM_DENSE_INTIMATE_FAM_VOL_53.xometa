@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.787,
-    "source": "Ohm",
-    "target": "Ottoni",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Ottoni",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.787
+      }
+    ]
   },
   "dna": {
     "aggression": 0.545,
@@ -31,7 +35,7 @@
     "SPACE": 0.106
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_DENSE_INTIMATE_FAM_VOL_53",
+  "name": "Golden Molten 2",
   "parameters": {
     "Ohm": {
       "macro_character": 0.924,

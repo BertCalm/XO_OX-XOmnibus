@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "source": "Optic",
-    "target": "Origami",
-    "type": "PITCH_MOD"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Origami",
+        "type": "PITCH_MOD",
+        "amount": 0.74
+      }
+    ]
   },
   "dna": {
     "aggression": 0.63,

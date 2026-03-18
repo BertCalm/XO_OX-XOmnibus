@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ombre \u00d7 Optic \u2014 Velocity Couple coupling at extreme DNA corner.",
+  "description": "Ombre × Optic — Velocity Couple coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "ombre",
@@ -33,7 +33,10 @@
     "space": 0.374,
     "aggression": 0.362
   },
-  "parameters": {},
+  "parameters": {
+    "Ombre": {},
+    "Optic": {}
+  },
   "coupling": {
     "pairs": [
       {

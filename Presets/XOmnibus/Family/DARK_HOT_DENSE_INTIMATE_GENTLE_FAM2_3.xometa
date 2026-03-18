@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.499,
-    "source": "OddOscar",
-    "target": "Obbligato",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Obbligato",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.499
+      }
+    ]
   },
   "dna": {
     "aggression": 0.021,
@@ -31,7 +35,7 @@
     "SPACE": 0.08
   },
   "mood": "Family",
-  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 3",
+  "name": "DARK HOT DENSE INTIMATE GEN...",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.483,

@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Osprey Before Dawn",
-  "parameters": {},
+  "parameters": {
+    "Osprey": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

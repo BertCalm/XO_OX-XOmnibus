@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.536,
-    "source": "Oceanic",
-    "target": "Organon",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Organon",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.536
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8801,
@@ -31,7 +35,7 @@
     "SPACE": 0.9728
   },
   "mood": "Flux",
-  "name": "DARK_KINETIC_DENSE_VAST_VIOLENT_FLX2_5",
+  "name": "Node Dome",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.299,

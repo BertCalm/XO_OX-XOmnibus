@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.474,
-    "source": "Odyssey",
-    "target": "Obbligato",
-    "type": "DYNAMIC_CROSS"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Obbligato",
+        "type": "DYNAMIC_CROSS",
+        "amount": 0.474
+      }
+    ]
   },
   "dna": {
     "aggression": 0.03,
@@ -31,7 +35,7 @@
     "SPACE": 0.01
   },
   "mood": "Family",
-  "name": "DARK_HOT_INTIMATE_GENTLE_FAM_VOL_87",
+  "name": "Mahogany Stream",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.53,

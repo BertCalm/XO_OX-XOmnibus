@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Outwit",
-    "target": "Overlap",
-    "type": "SPATIAL_BLEND"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Overlap",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.7
+      }
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "OUTWIT's 8-arm pattern shapes OVERLAP's FDN node routing — cellular intelligence selects the reflection path through the jellyfish's tangled fronds",
@@ -80,5 +84,13 @@
     "routing",
     "fdn"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.501,
+    "warmth": 0.5,
+    "movement": 0.592,
+    "density": 0.682,
+    "space": 0.025,
+    "aggression": 0.126
+  }
 }

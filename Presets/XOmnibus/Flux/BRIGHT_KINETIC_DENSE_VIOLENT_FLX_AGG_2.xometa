@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.829,
-    "source": "Overdub",
-    "target": "Optic",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Optic",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.829
+      }
+    ]
   },
   "dna": {
     "aggression": 0.957,
@@ -31,7 +35,7 @@
     "SPACE": 0.301
   },
   "mood": "Flux",
-  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FLX_AGG_2",
+  "name": "Tone Strike",
   "parameters": {
     "Optic": {
       "macro_character": 0.739,

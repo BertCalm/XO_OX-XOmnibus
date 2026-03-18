@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.861,
-    "source": "Organon",
-    "target": "OddOscar",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "OddOscar",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.861
+      }
+    ]
   },
   "dna": {
     "aggression": 0.986,
@@ -31,7 +35,7 @@
     "SPACE": 0.965
   },
   "mood": "Entangled",
-  "name": "WARM_FROZEN_DENSE_VAST_HARSH_ENT4_1",
+  "name": "Velvet Fang",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.661,

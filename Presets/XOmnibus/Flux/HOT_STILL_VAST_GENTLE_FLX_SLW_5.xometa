@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.831,
-    "source": "Oblique",
-    "target": "Oracle",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.831
+      }
+    ]
   },
   "dna": {
     "aggression": 0.07,
@@ -31,7 +35,7 @@
     "SPACE": 0.945
   },
   "mood": "Flux",
-  "name": "HOT_STILL_VAST_GENTLE_FLX_SLW_5",
+  "name": "Peach Dome",
   "parameters": {
     "Oblique": {
       "macro_character": 0.601,

@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
-    "intensity": "Deep",
-    "source": "Ottoni",
-    "target": "Organon",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Organon",
+        "type": "FILTER_MOD",
+        "amount": 0.78
+      }
+    ]
   },
   "description": "Brass filter sweeps cultivate ORGANON's bio-signal — warmth at 0.86 anchors the growth arc.",
   "dna": {

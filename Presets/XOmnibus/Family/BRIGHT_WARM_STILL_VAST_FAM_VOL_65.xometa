@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.653,
-    "source": "Ohm",
-    "target": "Oblong",
-    "type": "ENVELOPE_MIRROR"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Oblong",
+        "type": "ENVELOPE_MIRROR",
+        "amount": 0.653
+      }
+    ]
   },
   "dna": {
     "aggression": 0.398,
@@ -31,7 +35,7 @@
     "SPACE": 0.867
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_STILL_VAST_FAM_VOL_65",
+  "name": "Solar Canyon",
   "parameters": {
     "Oblong": {
       "macro_character": 0.896,

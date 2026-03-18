@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7022,
-    "source": "Overworld",
-    "target": "Oblique",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Oblique",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.7022
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9624,
@@ -31,7 +35,7 @@
     "SPACE": 0.9167
   },
   "mood": "Prism",
-  "name": "DARK_SPARSE_VAST_VIOLENT_PRS_DRK_2",
+  "name": "Shard Storm 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.6849,

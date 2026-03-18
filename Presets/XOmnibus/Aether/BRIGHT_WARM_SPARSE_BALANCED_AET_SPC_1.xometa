@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.407,
-    "source": "OddfeliX",
-    "target": "Osprey",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Osprey",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.407
+      }
+    ]
   },
   "dna": {
     "aggression": 0.914,
@@ -31,7 +35,7 @@
     "SPACE": 0.479
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM SPARSE BALANCED AET SPC 1",
+  "name": "BRIGHT WARM SPARSE BALANCED...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.936,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.645,
-    "source": "OddOscar",
-    "target": "Ombre",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ombre",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.645
+      }
+    ]
   },
   "dna": {
     "aggression": 0.87,
@@ -31,7 +35,7 @@
     "SPACE": 0.0638
   },
   "mood": "Aether",
-  "name": "HOT_DENSE_INTIMATE_VIOLENT_AET2_4",
+  "name": "Thread Solid",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.4113,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.874,
-    "source": "Ottoni",
-    "target": "Optic",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Optic",
+        "type": "PITCH_SYNC",
+        "amount": 0.874
+      }
+    ]
   },
   "dna": {
     "aggression": 0.966,
@@ -31,7 +35,7 @@
     "SPACE": 0.055
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_CLOSE_HARSH_ENT4_2",
+  "name": "Solar Grit 2",
   "parameters": {
     "Optic": {
       "macro_character": 0.917,

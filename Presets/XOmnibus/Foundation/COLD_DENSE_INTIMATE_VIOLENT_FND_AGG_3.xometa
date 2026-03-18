@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.787,
-    "source": "OddOscar",
-    "target": "Overdub",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Overdub",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.787
+      }
+    ]
   },
   "dna": {
     "aggression": 0.95,
@@ -31,7 +35,7 @@
     "SPACE": 0.465
   },
   "mood": "Foundation",
-  "name": "COLD_DENSE_INTIMATE_VIOLENT_FND_AGG_3",
+  "name": "Node Deep",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.546,

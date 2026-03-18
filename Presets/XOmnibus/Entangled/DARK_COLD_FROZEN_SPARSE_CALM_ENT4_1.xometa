@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.732,
-    "source": "Osprey",
-    "target": "OddfeliX",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "OddfeliX",
+        "type": "PITCH_SYNC",
+        "amount": 0.732
+      }
+    ]
   },
   "dna": {
     "aggression": 0.071,
@@ -31,7 +35,7 @@
     "SPACE": 0.54
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_FROZEN_SPARSE_CALM_ENT4_1",
+  "name": "Node Vast 2",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.054,

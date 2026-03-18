@@ -33,7 +33,9 @@
   ],
   "mood": "Atmosphere",
   "name": "HOT DENSE STILL VIOLENT ATM 5",
-  "parameters": {},
+  "parameters": {
+    "Overbite": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

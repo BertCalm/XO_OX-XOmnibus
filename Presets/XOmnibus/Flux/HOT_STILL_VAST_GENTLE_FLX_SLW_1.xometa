@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.893,
-    "source": "Organon",
-    "target": "Oblong",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oblong",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.893
+      }
+    ]
   },
   "dna": {
     "aggression": 0.033,
@@ -31,7 +35,7 @@
     "SPACE": 0.982
   },
   "mood": "Flux",
-  "name": "HOT_STILL_VAST_GENTLE_FLX_SLW_1",
+  "name": "Thread Orbit 2",
   "parameters": {
     "Oblong": {
       "macro_character": 0.4,

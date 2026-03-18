@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.986,
-    "source": "Ole",
-    "target": "Owlfish",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Owlfish",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.986
+      }
+    ]
   },
   "dna": {
     "aggression": 0.918,
@@ -31,7 +35,7 @@
     "SPACE": 0.565
   },
   "mood": "Prism",
-  "name": "DARK COLD KINETIC VIOLENT PRS AGG 4",
+  "name": "DARK COLD KINETIC VIOLENT P...",
   "parameters": {
     "Ole": {
       "macro_character": 0.069,

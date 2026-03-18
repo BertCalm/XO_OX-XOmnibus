@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9504,
-    "source": "Orca",
-    "target": "Obscura",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.9504
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.5095
   },
   "mood": "Entangled",
-  "name": "DARK_STILL_DENSE_VAST_VIOLENT_ENT3_4",
+  "name": "Ember Deep",
   "parameters": {
     "Obscura": {
       "macro_character": 0.873,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5118,
-    "source": "Obscura",
-    "target": "Oceanic",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oceanic",
+        "type": "CHAOS_INJECT",
+        "amount": 0.5118
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0983,
@@ -31,7 +35,7 @@
     "SPACE": 0.3485
   },
   "mood": "Aether",
-  "name": "HOT_KINETIC_SPARSE_GENTLE_AET4_5",
+  "name": "Sunrise Current 2",
   "parameters": {
     "Obscura": {
       "macro_character": 0.6155,

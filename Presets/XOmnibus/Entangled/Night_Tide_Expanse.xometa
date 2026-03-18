@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
-    "source": "Oceanic",
-    "target": "Obsidian",
-    "type": "PITCH_MOD"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Obsidian",
+        "type": "PITCH_MOD",
+        "amount": 0.78
+      }
+    ]
   },
   "dna": {
     "aggression": 0.34,

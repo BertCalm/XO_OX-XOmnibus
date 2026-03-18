@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.974,
-    "source": "Oceanic",
-    "target": "Orphica",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Orphica",
+        "type": "CHAOS_INJECT",
+        "amount": 0.974
+      }
+    ]
   },
   "dna": {
     "aggression": 0.97,
@@ -31,7 +35,7 @@
     "SPACE": 0.109
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_ENT_AGG_3",
+  "name": "Silver Edge 2",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.743,

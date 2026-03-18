@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8432,
-    "source": "Origami",
-    "target": "Ouroboros",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ouroboros",
+        "type": "PITCH_SYNC",
+        "amount": 0.8432
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8881,
@@ -31,7 +35,7 @@
     "SPACE": 0.1596
   },
   "mood": "Flux",
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FLX_2",
+  "name": "Thread Stream 2",
   "parameters": {
     "Origami": {
       "macro_character": 0.1395,

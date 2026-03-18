@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.711,
     "pairs": [
       {
         "amount": 0.711,
@@ -9,10 +8,7 @@
         "target": "Overdub",
         "type": "SPECTRAL_MORPH"
       }
-    ],
-    "source": "Orca",
-    "target": "Overdub",
-    "type": "SPECTRAL_MORPH"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Dark Hot Sparse Gentle character entanglement — ORCA × OVERDUB via Spectral Morph. Extreme DNA zones push sound design to the edges.",

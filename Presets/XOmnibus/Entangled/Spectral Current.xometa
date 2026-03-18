@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Spectral Current",
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {},
+    "Orbital": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

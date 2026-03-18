@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.949,
-    "source": "Overworld",
-    "target": "OddfeliX",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "OddfeliX",
+        "type": "PITCH_SYNC",
+        "amount": 0.949
+      }
+    ]
   },
   "dna": {
     "aggression": 0.98,
@@ -31,7 +35,7 @@
     "SPACE": 0.36
   },
   "mood": "Aether",
-  "name": "COLD KINETIC DENSE VIOLENT AET AGG 1",
+  "name": "COLD KINETIC DENSE VIOLENT ...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.641,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9037,
-    "source": "Oblique",
-    "target": "OddfeliX",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "OddfeliX",
+        "type": "CHAOS_INJECT",
+        "amount": 0.9037
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9231,
@@ -31,7 +35,7 @@
     "SPACE": 0.0804
   },
   "mood": "Aether",
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_AET2_2",
+  "name": "Arctic Edge 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.9517,

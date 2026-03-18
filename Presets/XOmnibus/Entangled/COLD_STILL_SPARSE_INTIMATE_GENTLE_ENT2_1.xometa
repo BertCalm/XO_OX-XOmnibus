@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.103,
-    "source": "Oblong",
-    "target": "OddOscar",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "OddOscar",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.103
+      }
+    ]
   },
   "dna": {
     "aggression": 0.085,
@@ -31,7 +35,7 @@
     "SPACE": 0.055
   },
   "mood": "Entangled",
-  "name": "COLD STILL SPARSE INTIMATE GENTLE ENT2 1",
+  "name": "COLD STILL SPARSE INTIMATE ...",
   "parameters": {
     "Oblong": {
       "macro_character": 0.178,

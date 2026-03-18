@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.935,
-    "source": "Oblique",
-    "target": "OddfeliX",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "OddfeliX",
+        "type": "CHAOS_INJECT",
+        "amount": 0.935
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9075,
@@ -31,7 +35,7 @@
     "SPACE": 0.4234
   },
   "mood": "Aether",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_AET4_5",
+  "name": "Flux Molten",
   "parameters": {
     "Oblique": {
       "macro_character": 0.3614,

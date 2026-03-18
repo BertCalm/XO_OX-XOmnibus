@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.715,
-    "source": "Overlap",
-    "target": "Odyssey",
-    "type": "RHYTHMIC_SYNC"
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Odyssey",
+        "type": "RHYTHMIC_SYNC",
+        "amount": 0.715
+      }
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Odyssey tidal swell expands OVERLAP room size — tide and tail rise together toward the horizon",
@@ -62,5 +66,13 @@
     "fdn",
     "reverb"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.63,
+    "warmth": 0.5,
+    "movement": 0.125,
+    "density": 0.5,
+    "space": 0.023,
+    "aggression": 0.3
+  }
 }

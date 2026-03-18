@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.479,
-    "source": "Origami",
-    "target": "Overdub",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Overdub",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.479
+      }
+    ]
   },
   "dna": {
     "aggression": 0.932,
@@ -31,7 +35,7 @@
     "SPACE": 0.114
   },
   "mood": "Foundation",
-  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_FND_3",
+  "name": "Honey Wrath",
   "parameters": {
     "Origami": {
       "macro_character": 0.491,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.949,
-    "source": "Optic",
-    "target": "Oracle",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oracle",
+        "type": "CHAOS_INJECT",
+        "amount": 0.949
+      }
+    ]
   },
   "dna": {
     "aggression": 0.934,
@@ -31,7 +35,7 @@
     "SPACE": 0.692
   },
   "mood": "Flux",
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FLX_AGG_1",
+  "name": "Bloom Surge",
   "parameters": {
     "Optic": {
       "macro_character": 0.726,

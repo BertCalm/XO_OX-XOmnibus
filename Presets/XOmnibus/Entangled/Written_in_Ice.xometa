@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.86,
-    "source": "Oracle",
-    "target": "Origami",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Origami",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.86
+      }
+    ]
   },
   "description": "Oracle controls Origami's envelope — the prophecy is written in ice that melts slowly.",
   "dna": {

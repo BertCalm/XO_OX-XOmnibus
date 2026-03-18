@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Overlap \u00d7 Orca \u2014 Velocity Couple coupling at extreme DNA corner.",
+  "description": "Overlap × Orca — Velocity Couple coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "overlap",
@@ -33,7 +33,10 @@
     "space": 0.435,
     "aggression": 0.549
   },
-  "parameters": {},
+  "parameters": {
+    "Overlap": {},
+    "Orca": {}
+  },
   "coupling": {
     "pairs": [
       {

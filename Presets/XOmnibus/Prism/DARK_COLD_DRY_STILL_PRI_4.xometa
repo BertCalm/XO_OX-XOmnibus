@@ -28,7 +28,9 @@
   ],
   "mood": "Prism",
   "name": "DARK COLD DRY STILL PRI 4",
-  "parameters": {},
+  "parameters": {
+    "Osprey": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

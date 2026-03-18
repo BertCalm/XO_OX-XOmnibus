@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Serpent Current",
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {},
+    "Ouroboros": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

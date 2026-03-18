@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.546,
-    "source": "Organon",
-    "target": "Oceanic",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oceanic",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.546
+      }
+    ]
   },
   "dna": {
     "aggression": 0.882,
@@ -31,7 +35,7 @@
     "SPACE": 0.937
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_KINETIC_SPARSE_VAST_VIOLENT_ATM_1",
+  "name": "Golden Orbit",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.8074,

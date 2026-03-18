@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8171,
-    "source": "Optic",
-    "target": "Overdub",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Overdub",
+        "type": "CHAOS_INJECT",
+        "amount": 0.8171
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9061,
@@ -31,7 +35,7 @@
     "SPACE": 0.5657
   },
   "mood": "Flux",
-  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_2",
+  "name": "Grain Rage",
   "parameters": {
     "Optic": {
       "macro_character": 0.0624,

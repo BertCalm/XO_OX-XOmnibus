@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Pinhole Dark",
-  "parameters": {},
+  "parameters": {
+    "Obscura": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

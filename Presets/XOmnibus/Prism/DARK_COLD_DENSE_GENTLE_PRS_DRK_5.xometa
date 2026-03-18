@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7651,
-    "source": "Orphica",
-    "target": "Origami",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.7651
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0704,
@@ -31,7 +35,7 @@
     "SPACE": 0.329
   },
   "mood": "Prism",
-  "name": "DARK_COLD_DENSE_GENTLE_PRS_DRK_5",
+  "name": "Node Molten 2",
   "parameters": {
     "Origami": {
       "macro_character": 0.0622,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.94,
-    "source": "Orbital",
-    "target": "Origami",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Origami",
+        "type": "PITCH_SYNC",
+        "amount": 0.94
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.4148
   },
   "mood": "Entangled",
-  "name": "DARK_STILL_DENSE_INTIMATE_GENTLE_ENT3_4",
+  "name": "Wave Heavy",
   "parameters": {
     "Orbital": {
       "macro_character": 0.9492,

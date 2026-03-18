@@ -1,12 +1,12 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "routes": [
+    "pairs": [
       {
-        "amount": 0.6,
-        "dest": "Onset",
-        "source": "Outwit",
-        "type": "RhythmToBlend"
+        "engineA": "Outwit",
+        "engineB": "Onset",
+        "type": "RhythmToBlend",
+        "amount": 0.6
       }
     ]
   },

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.072,
-    "source": "Osteria",
-    "target": "OddfeliX",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "OddfeliX",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.072
+      }
+    ]
   },
   "dna": {
     "aggression": 0.103,
@@ -31,7 +35,7 @@
     "SPACE": 0.988
   },
   "mood": "Family",
-  "name": "BRIGHT WARM SPARSE VAST GENTLE FAM2 4",
+  "name": "BRIGHT WARM SPARSE VAST GEN...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.905,

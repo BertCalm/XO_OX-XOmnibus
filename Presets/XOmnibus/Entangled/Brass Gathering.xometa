@@ -33,7 +33,10 @@
   ],
   "mood": "Entangled",
   "name": "Brass Gathering",
-  "parameters": {},
+  "parameters": {
+    "Ohm": {},
+    "Ottoni": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

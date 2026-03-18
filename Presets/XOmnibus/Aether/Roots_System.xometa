@@ -24,7 +24,9 @@
   ],
   "mood": "Aether",
   "name": "Roots System",
-  "parameters": {},
+  "parameters": {
+    "Ouroboros": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.28,

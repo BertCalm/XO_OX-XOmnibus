@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.885,
-    "source": "Ombre",
-    "target": "Orbital",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Orbital",
+        "type": "PITCH_SYNC",
+        "amount": 0.885
+      }
+    ]
   },
   "dna": {
     "aggression": 0.963,
@@ -31,7 +35,7 @@
     "SPACE": 0.96
   },
   "mood": "Aether",
-  "name": "BRIGHT DENSE VAST VIOLENT AET AGG 4",
+  "name": "BRIGHT DENSE VAST VIOLENT A...",
   "parameters": {
     "Ombre": {
       "macro_character": 0.871,

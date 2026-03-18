@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.885,
-    "source": "Owlfish",
-    "target": "Overdub",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Overdub",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.885
+      }
+    ]
   },
   "dna": {
     "aggression": 0.975,
@@ -31,7 +35,7 @@
     "SPACE": 0.542
   },
   "mood": "Entangled",
-  "name": "DARK_HOT_KINETIC_VIOLENT_ENT_AGG_3",
+  "name": "Velvet Wrath 2",
   "parameters": {
     "Overdub": {
       "macro_character": 0.542,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.677,
-    "source": "Ouroboros",
-    "target": "Overworld",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overworld",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.677
+      }
+    ]
   },
   "dna": {
     "aggression": 0.572,
@@ -31,7 +35,7 @@
     "SPACE": 0.981
   },
   "mood": "Flux",
-  "name": "BRIGHT_WARM_STILL_VAST_FLX_SLW_2",
+  "name": "Solar Horizon 2",
   "parameters": {
     "Ouroboros": {
       "macro_character": 0.494,

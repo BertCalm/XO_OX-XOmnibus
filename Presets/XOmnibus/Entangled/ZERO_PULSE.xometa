@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.699,
-    "source": "Obbligato",
-    "target": "Origami",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Origami",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.699
+      }
+    ]
   },
   "dna": {
     "aggression": 0.859,

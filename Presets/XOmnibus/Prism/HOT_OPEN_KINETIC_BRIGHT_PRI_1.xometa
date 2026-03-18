@@ -33,7 +33,9 @@
   ],
   "mood": "Prism",
   "name": "HOT OPEN KINETIC BRIGHT PRI 1",
-  "parameters": {},
+  "parameters": {
+    "Obbligato": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

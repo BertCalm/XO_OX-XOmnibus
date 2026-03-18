@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.3823,
-    "source": "Overworld",
-    "target": "Ocelot",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Ocelot",
+        "type": "PITCH_SYNC",
+        "amount": 0.3823
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4299,

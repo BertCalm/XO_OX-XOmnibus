@@ -30,7 +30,9 @@
   },
   "mood": "Flux",
   "name": "Oscar Suppress",
-  "parameters": {},
+  "parameters": {
+    "OddOscar": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

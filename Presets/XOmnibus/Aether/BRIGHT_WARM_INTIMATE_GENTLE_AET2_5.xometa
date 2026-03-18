@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.678,
-    "source": "Oceanic",
-    "target": "Osprey",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Osprey",
+        "type": "CHAOS_INJECT",
+        "amount": 0.678
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1204,
@@ -31,7 +35,7 @@
     "SPACE": 0.0253
   },
   "mood": "Aether",
-  "name": "BRIGHT_WARM_INTIMATE_GENTLE_AET2_5",
+  "name": "Glow Dense",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.99,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.788,
-    "source": "Origami",
-    "target": "Ole",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ole",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.788
+      }
+    ]
   },
   "dna": {
     "aggression": 0.527,
@@ -31,7 +35,7 @@
     "SPACE": 0.885
   },
   "mood": "Family",
-  "name": "BRIGHT_COLD_SPARSE_VAST_FAM_VOL_97",
+  "name": "Ice Cathedral 2",
   "parameters": {
     "Ole": {
       "macro_character": 0.457,

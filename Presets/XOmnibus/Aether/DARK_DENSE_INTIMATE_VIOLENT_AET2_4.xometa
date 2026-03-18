@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7235,
-    "source": "Opal",
-    "target": "OddOscar",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "OddOscar",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.7235
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9379,
@@ -31,7 +35,7 @@
     "SPACE": 0.042
   },
   "mood": "Aether",
-  "name": "DARK_DENSE_INTIMATE_VIOLENT_AET2_4",
+  "name": "Wave Solid",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.1128,

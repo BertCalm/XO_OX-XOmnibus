@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.801,
-    "source": "Orbital",
-    "target": "Ocelot",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Ocelot",
+        "type": "CHAOS_INJECT",
+        "amount": 0.801
+      }
+    ]
   },
   "dna": {
     "aggression": 0.885,
@@ -31,7 +35,7 @@
     "SPACE": 0.047
   },
   "mood": "Entangled",
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_ENT_AGG_4",
+  "name": "Shard Rage",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.377,

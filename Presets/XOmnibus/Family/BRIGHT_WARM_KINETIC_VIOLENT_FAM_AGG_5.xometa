@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.821,
-    "source": "Ohm",
-    "target": "Oblong",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Oblong",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.821
+      }
+    ]
   },
   "dna": {
     "aggression": 0.913,
@@ -31,7 +35,7 @@
     "SPACE": 0.626
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_5",
+  "name": "Sunrise Strike 3",
   "parameters": {
     "Oblong": {
       "macro_character": 0.546,

@@ -33,7 +33,9 @@
   ],
   "mood": "Prism",
   "name": "BRIGHT STILL WIDE TIGHT PRI 4",
-  "parameters": {},
+  "parameters": {
+    "Overbite": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

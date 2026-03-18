@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5963,
-    "source": "Ombre",
-    "target": "Obscura",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Obscura",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.5963
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0285,
@@ -31,7 +35,7 @@
     "SPACE": 0.0502
   },
   "mood": "Aether",
-  "name": "HOT_DENSE_INTIMATE_GENTLE_AET3_3",
+  "name": "Thread Deep",
   "parameters": {
     "Obscura": {
       "macro_character": 0.8247,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.89,
-    "source": "Overdub",
-    "target": "Ohm",
-    "type": "PITCH_MOD"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Ohm",
+        "type": "PITCH_MOD",
+        "amount": 0.89
+      }
+    ]
   },
   "dna": {
     "aggression": 0.24,

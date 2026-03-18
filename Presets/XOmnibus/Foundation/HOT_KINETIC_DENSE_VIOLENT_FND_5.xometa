@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.505,
-    "source": "Obese",
-    "target": "Onset",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Onset",
+        "type": "PITCH_SYNC",
+        "amount": 0.505
+      }
+    ]
   },
   "dna": {
     "aggression": 0.952,
@@ -31,7 +35,7 @@
     "SPACE": 0.279
   },
   "mood": "Foundation",
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FND_5",
+  "name": "Velvet Wrath",
   "parameters": {
     "Obese": {
       "macro_character": 0.362,

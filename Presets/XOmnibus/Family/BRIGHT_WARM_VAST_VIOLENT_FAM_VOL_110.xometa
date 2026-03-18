@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.594,
-    "source": "Orphica",
-    "target": "Ohm",
-    "type": "HARMONIC_MESH"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ohm",
+        "type": "HARMONIC_MESH",
+        "amount": 0.594
+      }
+    ]
   },
   "dna": {
     "aggression": 0.981,
@@ -31,7 +35,7 @@
     "SPACE": 0.933
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_VAST_VIOLENT_FAM_VOL_110",
+  "name": "Solar Edge",
   "parameters": {
     "Ohm": {
       "macro_character": 0.953,

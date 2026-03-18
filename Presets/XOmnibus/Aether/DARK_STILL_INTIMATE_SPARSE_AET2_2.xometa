@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9004,
-    "source": "Obscura",
-    "target": "Orbital",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orbital",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.9004
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5654,
@@ -31,7 +35,7 @@
     "SPACE": 0.0206
   },
   "mood": "Aether",
-  "name": "DARK_STILL_INTIMATE_SPARSE_AET2_2",
+  "name": "Node Strike 2",
   "parameters": {
     "Obscura": {
       "macro_character": 0.1431,

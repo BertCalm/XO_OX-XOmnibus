@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.861,
-    "source": "Opal",
-    "target": "OddOscar",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "OddOscar",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.861
+      }
+    ]
   },
   "dna": {
     "aggression": 0.971,
@@ -31,7 +35,7 @@
     "SPACE": 0.834
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_1",
+  "name": "Honey Crush",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.606,

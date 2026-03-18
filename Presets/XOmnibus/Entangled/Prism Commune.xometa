@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6,
-    "source": "Ohm",
-    "target": "Optic",
-    "type": "SPECTRAL_REFRACTION"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Optic",
+        "type": "SPECTRAL_REFRACTION",
+        "amount": 0.6
+      }
+    ]
   },
   "description": "Sage warmth refracts through a prismatic lens — folk harmonics split to spectral rays",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Prism Commune",
-  "parameters": {},
+  "parameters": {
+    "Ohm": {},
+    "Optic": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.28,
@@ -43,5 +50,13 @@
     "optic",
     "hippy"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

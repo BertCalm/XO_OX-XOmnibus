@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.509,
-    "source": "Oblong",
-    "target": "Overbite",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overbite",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.509
+      }
+    ]
   },
   "dna": {
     "aggression": 0.067,
@@ -31,7 +35,7 @@
     "SPACE": 0.314
   },
   "mood": "Foundation",
-  "name": "BRIGHT_DENSE_INTIMATE_GENTLE_FND_4",
+  "name": "Quartz Titan",
   "parameters": {
     "Oblong": {
       "macro_character": 0.413,

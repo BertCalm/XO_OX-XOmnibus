@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.823,
-    "source": "Opal",
-    "target": "Oracle",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oracle",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.823
+      }
+    ]
   },
   "dna": {
     "aggression": 0.957,
@@ -31,7 +35,7 @@
     "SPACE": 0.418
   },
   "mood": "Aether",
-  "name": "DARK WARM DENSE VIOLENT AET AGG 3",
+  "name": "DARK WARM DENSE VIOLENT AET...",
   "parameters": {
     "Opal": {
       "macro_character": 0.1,

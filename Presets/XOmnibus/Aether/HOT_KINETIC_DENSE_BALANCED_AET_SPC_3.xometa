@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.862,
-    "source": "Origami",
-    "target": "Orbital",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Orbital",
+        "type": "PITCH_SYNC",
+        "amount": 0.862
+      }
+    ]
   },
   "dna": {
     "aggression": 0.973,
@@ -31,7 +35,7 @@
     "SPACE": 0.398
   },
   "mood": "Aether",
-  "name": "HOT KINETIC DENSE BALANCED AET SPC 3",
+  "name": "HOT KINETIC DENSE BALANCED ...",
   "parameters": {
     "Orbital": {
       "macro_character": 0.806,

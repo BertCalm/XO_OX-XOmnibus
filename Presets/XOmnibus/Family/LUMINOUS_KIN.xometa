@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.479,
-    "source": "Osprey",
-    "target": "Owlfish",
-    "type": "RHYTHM_SYNC"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Owlfish",
+        "type": "RHYTHM_SYNC",
+        "amount": 0.479
+      }
+    ]
   },
   "dna": {
     "aggression": 0.784,

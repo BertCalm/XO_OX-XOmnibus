@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.419,
-    "source": "Orca",
-    "target": "Optic",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Optic",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.419
+      }
+    ]
   },
   "dna": {
     "aggression": 0.897,

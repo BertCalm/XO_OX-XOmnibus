@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oblique \u00d7 Onset \u2014 Timbre Blend coupling at extreme DNA corner.",
+  "description": "Oblique × Onset — Timbre Blend coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "oblique",
@@ -33,7 +33,10 @@
     "space": 0.905,
     "aggression": 0.594
   },
-  "parameters": {},
+  "parameters": {
+    "Oblique": {},
+    "Onset": {}
+  },
   "coupling": {
     "pairs": [
       {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.743,
-    "source": "Ocelot",
-    "target": "Overdub",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Overdub",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.743
+      }
+    ]
   },
   "dna": {
     "aggression": 0.697,

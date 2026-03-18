@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Weight and Bite",
-  "parameters": {},
+  "parameters": {
+    "Obese": {},
+    "Overbite": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

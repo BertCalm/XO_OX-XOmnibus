@@ -33,7 +33,9 @@
   ],
   "mood": "Prism",
   "name": "HOT OPEN KINETIC BRIGHT PRI 2",
-  "parameters": {},
+  "parameters": {
+    "Osteria": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.651,
-    "source": "Oceanic",
-    "target": "Overdub",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Overdub",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.651
+      }
+    ]
   },
   "dna": {
     "aggression": 0.978,
@@ -31,7 +35,7 @@
     "SPACE": 0.892
   },
   "mood": "Flux",
-  "name": "COLD_STILL_VAST_VIOLENT_FLX_SLW_2",
+  "name": "Shard Blade",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.546,

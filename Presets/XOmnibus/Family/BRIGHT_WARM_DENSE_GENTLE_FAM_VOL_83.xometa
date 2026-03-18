@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.496,
-    "source": "OddfeliX",
-    "target": "Odyssey",
-    "type": "DYNAMIC_CROSS"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Odyssey",
+        "type": "DYNAMIC_CROSS",
+        "amount": 0.496
+      }
+    ]
   },
   "dna": {
     "aggression": 0.118,
@@ -31,7 +35,7 @@
     "SPACE": 0.511
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_DENSE_GENTLE_FAM_VOL_83",
+  "name": "Solar Packed",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.935,

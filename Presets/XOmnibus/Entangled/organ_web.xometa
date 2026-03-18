@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
     "pairs": [
       {
         "amount": 0.78,
@@ -9,10 +8,7 @@
         "engineB": "Organon",
         "type": "FILTER_MOD"
       }
-    ],
-    "source": "Overlap",
-    "target": "Organon",
-    "type": "FILTER_MOD"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Lion's Mane knot-topology FDN entangled with ORGANON's logical-metabolic character (Aristotelian organ-pipe variational synthesis). Coupling: Filter Mod.",

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.908,
-    "source": "OddOscar",
-    "target": "Obbligato",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Obbligato",
+        "type": "PITCH_SYNC",
+        "amount": 0.908
+      }
+    ]
   },
   "dna": {
     "aggression": 0.064,
@@ -31,7 +35,7 @@
     "SPACE": 0.905
   },
   "mood": "Family",
-  "name": "DARK_COLD_VAST_GENTLE_FAM_VOL_130",
+  "name": "Phase Cathedral",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.074,

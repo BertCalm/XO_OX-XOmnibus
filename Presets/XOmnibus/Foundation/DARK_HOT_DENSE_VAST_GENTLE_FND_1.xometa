@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.688,
-    "source": "Origami",
-    "target": "Obsidian",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Obsidian",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.688
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.932
   },
   "mood": "Foundation",
-  "name": "DARK_HOT_DENSE_VAST_GENTLE_FND_1",
+  "name": "Mahogany Molten",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.106,

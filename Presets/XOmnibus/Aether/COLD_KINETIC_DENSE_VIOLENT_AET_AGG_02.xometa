@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.837,
-    "source": "Ombre",
-    "target": "Osprey",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Osprey",
+        "type": "PITCH_SYNC",
+        "amount": 0.837
+      }
+    ]
   },
   "dna": {
     "aggression": 0.872,
@@ -31,7 +35,7 @@
     "SPACE": 0.586
   },
   "mood": "Aether",
-  "name": "COLD KINETIC DENSE VIOLENT AET AGG 2",
+  "name": "COLD KINETIC DENSE VIOLENT ...",
   "parameters": {
     "Ombre": {
       "macro_character": 0.666,

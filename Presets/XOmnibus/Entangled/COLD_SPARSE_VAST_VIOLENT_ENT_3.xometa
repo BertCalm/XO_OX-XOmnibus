@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6675,
     "pairs": [
       {
         "amount": 0.6675,
@@ -9,10 +8,7 @@
         "target": "Orbital",
         "type": "PHASE_LOCK"
       }
-    ],
-    "source": "Overdub",
-    "target": "Orbital",
-    "type": "PHASE_LOCK"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Cold Sparse Vast Violent character entanglement — OVERDUB × ORBITAL via Phase Lock. Extreme DNA zones push sound design to the edges.",

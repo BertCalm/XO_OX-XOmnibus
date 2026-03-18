@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5523,
-    "source": "Opal",
-    "target": "Orbital",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Orbital",
+        "type": "CHAOS_INJECT",
+        "amount": 0.5523
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3559,
@@ -31,7 +35,7 @@
     "SPACE": 0.0928
   },
   "mood": "Aether",
-  "name": "BRIGHT_COLD_STILL_INTIMATE_AET2_3",
+  "name": "Silver Grain",
   "parameters": {
     "Opal": {
       "macro_character": 0.8617,

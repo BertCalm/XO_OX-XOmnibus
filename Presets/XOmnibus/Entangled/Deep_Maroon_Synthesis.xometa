@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.57,
-    "source": "Obbligato",
-    "target": "Opal",
-    "type": "PITCH_MOD"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Opal",
+        "type": "PITCH_MOD",
+        "amount": 0.57
+      }
+    ]
   },
   "dna": {
     "aggression": 0.39,

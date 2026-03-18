@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.522,
-    "source": "Osteria",
-    "target": "Opal",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Opal",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.522
+      }
+    ]
   },
   "dna": {
     "aggression": 0.092,
@@ -31,7 +35,7 @@
     "SPACE": 0.127
   },
   "mood": "Family",
-  "name": "BRIGHT WARM DENSE INTIMATE GENTLE FAM2 5",
+  "name": "BRIGHT WARM DENSE INTIMATE ...",
   "parameters": {
     "Opal": {
       "macro_character": 0.92,

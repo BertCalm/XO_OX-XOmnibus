@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.975,
-    "source": "Opal",
-    "target": "OddOscar",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "OddOscar",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.975
+      }
+    ]
   },
   "dna": {
     "aggression": 0.918,

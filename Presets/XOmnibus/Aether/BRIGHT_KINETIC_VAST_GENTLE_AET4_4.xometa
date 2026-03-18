@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8893,
-    "source": "Orbital",
-    "target": "Opal",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Opal",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.8893
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0461,
@@ -31,7 +35,7 @@
     "SPACE": 0.928
   },
   "mood": "Aether",
-  "name": "BRIGHT_KINETIC_VAST_GENTLE_AET4_4",
+  "name": "Node Vast",
   "parameters": {
     "Opal": {
       "macro_character": 0.8246,

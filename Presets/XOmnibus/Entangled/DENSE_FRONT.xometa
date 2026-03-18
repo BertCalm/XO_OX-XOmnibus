@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.865,
-    "source": "Origami",
-    "target": "OddOscar",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "OddOscar",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.865
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4042,

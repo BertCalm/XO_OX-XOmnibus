@@ -33,7 +33,9 @@
   ],
   "mood": "Prism",
   "name": "HOT OPEN KINETIC BRIGHT PRI 4",
-  "parameters": {},
+  "parameters": {
+    "Oblong": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

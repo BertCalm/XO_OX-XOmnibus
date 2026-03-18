@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.974,
-    "source": "Opal",
-    "target": "Optic",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Optic",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.974
+      }
+    ]
   },
   "dna": {
     "aggression": 0.977,
@@ -31,7 +35,7 @@
     "SPACE": 0.034
   },
   "mood": "Entangled",
-  "name": "DARK HOT DENSE INTIMATE VIOLENT ENT2 2",
+  "name": "DARK HOT DENSE INTIMATE VIO...",
   "parameters": {
     "Opal": {
       "macro_character": 0.504,

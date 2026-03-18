@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7671,
-    "source": "Oceanic",
-    "target": "Osteria",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Osteria",
+        "type": "CHAOS_INJECT",
+        "amount": 0.7671
+      }
+    ]
   },
   "dna": {
     "aggression": 0.075,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.719,
-    "source": "Overdub",
-    "target": "Oblong",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Oblong",
+        "type": "CHAOS_INJECT",
+        "amount": 0.719
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9438,
@@ -31,7 +35,7 @@
     "SPACE": 0.9813
   },
   "mood": "Flux",
-  "name": "DARK_KINETIC_DENSE_VAST_VIOLENT_FLX2_4",
+  "name": "Copper Solid",
   "parameters": {
     "Oblong": {
       "macro_character": 0.3338,

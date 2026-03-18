@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7474,
-    "source": "Optic",
-    "target": "Oracle",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oracle",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.7474
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9179,
@@ -31,7 +35,7 @@
     "SPACE": 0.9777
   },
   "mood": "Prism",
-  "name": "DARK_COLD_VAST_VIOLENT_PRS_DRK_2",
+  "name": "Wave Orbit",
   "parameters": {
     "Optic": {
       "macro_character": 0.4999,

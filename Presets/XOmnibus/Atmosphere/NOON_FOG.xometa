@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.707,
-    "source": "Orca",
-    "target": "Obese",
-    "type": "RESONANCE_LINK"
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Obese",
+        "type": "RESONANCE_LINK",
+        "amount": 0.707
+      }
+    ]
   },
   "dna": {
     "aggression": 0.05,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.72,
-    "source": "Overdub",
-    "target": "Osprey",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Osprey",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.72
+      }
+    ]
   },
   "dna": {
     "aggression": 0.25,

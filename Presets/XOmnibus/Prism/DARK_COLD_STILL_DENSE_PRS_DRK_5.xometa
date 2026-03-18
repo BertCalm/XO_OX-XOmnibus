@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7378,
-    "source": "Oblique",
-    "target": "Orphica",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Orphica",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7378
+      }
+    ]
   },
   "dna": {
     "aggression": 0.341,
@@ -31,7 +35,7 @@
     "SPACE": 0.6011
   },
   "mood": "Prism",
-  "name": "DARK_COLD_STILL_DENSE_PRS_DRK_5",
+  "name": "Node Thick",
   "parameters": {
     "Oblique": {
       "macro_character": 0.1966,

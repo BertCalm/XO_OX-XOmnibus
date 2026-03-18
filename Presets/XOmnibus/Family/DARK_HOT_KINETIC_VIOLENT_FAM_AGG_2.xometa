@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.842,
-    "source": "Obbligato",
-    "target": "Oblong",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Oblong",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.842
+      }
+    ]
   },
   "dna": {
     "aggression": 0.903,
@@ -31,7 +35,7 @@
     "SPACE": 0.655
   },
   "mood": "Family",
-  "name": "DARK_HOT_KINETIC_VIOLENT_FAM_AGG_2",
+  "name": "Smoke Swirl 4",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.824,

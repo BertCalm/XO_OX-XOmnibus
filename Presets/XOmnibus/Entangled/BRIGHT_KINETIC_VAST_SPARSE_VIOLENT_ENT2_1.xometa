@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.524,
-    "source": "Ole",
-    "target": "Origami",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Origami",
+        "type": "CHAOS_INJECT",
+        "amount": 0.524
+      }
+    ]
   },
   "dna": {
     "aggression": 0.94,
@@ -31,7 +35,7 @@
     "SPACE": 0.979
   },
   "mood": "Entangled",
-  "name": "BRIGHT KINETIC VAST SPARSE VIOLENT ENT2 1",
+  "name": "BRIGHT KINETIC VAST SPARSE ...",
   "parameters": {
     "Ole": {
       "macro_character": 0.616,

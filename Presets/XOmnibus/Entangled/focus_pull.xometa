@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.823,
-    "source": "Obscura",
-    "target": "Optic",
-    "type": "MODULATION_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Optic",
+        "type": "MODULATION_SHARE",
+        "amount": 0.823
+      }
+    ]
   },
   "dna": {
     "aggression": 0.88,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.939,
-    "source": "OddfeliX",
-    "target": "OddOscar",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.939
+      }
+    ]
   },
   "dna": {
     "aggression": 0.127,
@@ -31,7 +35,7 @@
     "SPACE": 0.567
   },
   "mood": "Aether",
-  "name": "DARK KINETIC DENSE BALANCED AET SPC 1",
+  "name": "DARK KINETIC DENSE BALANCED...",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.227,

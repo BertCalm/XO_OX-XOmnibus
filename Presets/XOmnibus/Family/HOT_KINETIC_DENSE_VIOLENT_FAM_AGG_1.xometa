@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.853,
-    "source": "Ottoni",
-    "target": "OddfeliX",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "OddfeliX",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.853
+      }
+    ]
   },
   "dna": {
     "aggression": 0.883,
@@ -31,7 +35,7 @@
     "SPACE": 0.823
   },
   "mood": "Family",
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FAM_AGG_1",
+  "name": "Fragment Stream 2",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.879,

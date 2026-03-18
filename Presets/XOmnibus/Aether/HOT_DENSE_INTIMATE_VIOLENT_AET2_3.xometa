@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6392,
-    "source": "Oracle",
-    "target": "Orbital",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Orbital",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.6392
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9805,
@@ -31,7 +35,7 @@
     "SPACE": 0.0959
   },
   "mood": "Aether",
-  "name": "HOT_DENSE_INTIMATE_VIOLENT_AET2_3",
+  "name": "Node Rage",
   "parameters": {
     "Oracle": {
       "macro_character": 0.5438,

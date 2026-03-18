@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9302,
-    "source": "Opal",
-    "target": "Overdub",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Overdub",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.9302
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.6311
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_FROZEN_DENSE_INTIMATE_ENT3_1",
+  "name": "Shard Deep",
   "parameters": {
     "Opal": {
       "macro_character": 0.687,

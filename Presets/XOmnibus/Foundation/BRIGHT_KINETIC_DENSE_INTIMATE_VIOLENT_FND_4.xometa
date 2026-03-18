@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.512,
-    "source": "OddfeliX",
-    "target": "OddOscar",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
+        "type": "PITCH_SYNC",
+        "amount": 0.512
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.109
   },
   "mood": "Foundation",
-  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FND_4",
+  "name": "Glass Ripple",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.915,

@@ -24,7 +24,9 @@
   ],
   "mood": "Prism",
   "name": "Crystal Mote III",
-  "parameters": {},
+  "parameters": {
+    "OddfeliX": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.167,

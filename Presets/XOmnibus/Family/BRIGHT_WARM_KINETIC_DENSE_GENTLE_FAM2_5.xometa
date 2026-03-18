@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.458,
-    "source": "Ottoni",
-    "target": "Obbligato",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Obbligato",
+        "type": "FILTER_MOD",
+        "amount": 0.458
+      }
+    ]
   },
   "dna": {
     "aggression": 0.044,
@@ -31,7 +35,7 @@
     "SPACE": 0.573
   },
   "mood": "Family",
-  "name": "BRIGHT WARM KINETIC DENSE GENTLE FAM2 5",
+  "name": "BRIGHT WARM KINETIC DENSE G...",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.901,

@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Obscura",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Obscura",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8
+      }
+    ]
   },
   "description": "Harmonic folds from DRAMA's percussive attack are preserved in OBSCURA's silver plate.",
   "dna": {

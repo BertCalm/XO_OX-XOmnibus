@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.957,
-    "source": "Oracle",
-    "target": "Ocelot",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Ocelot",
+        "type": "CHAOS_INJECT",
+        "amount": 0.957
+      }
+    ]
   },
   "dna": {
     "aggression": 0.932,
@@ -31,7 +35,7 @@
     "SPACE": 0.57
   },
   "mood": "Prism",
-  "name": "BRIGHT WARM DENSE VIOLENT PRS AGG 1",
+  "name": "BRIGHT WARM DENSE VIOLENT P...",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.842,

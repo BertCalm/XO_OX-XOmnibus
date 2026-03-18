@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.877,
-    "source": "OddOscar",
-    "target": "OddfeliX",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "OddfeliX",
+        "type": "PITCH_SYNC",
+        "amount": 0.877
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.675
   },
   "mood": "Foundation",
-  "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FND_3",
+  "name": "Phase Molten",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.047,

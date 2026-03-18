@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.87,
-    "source": "Ole",
-    "target": "Orphica",
-    "type": "PHASE_LOCK"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Orphica",
+        "type": "PHASE_LOCK",
+        "amount": 0.87
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Entangled",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 10",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Ole": {
       "macro_character": 0.62,

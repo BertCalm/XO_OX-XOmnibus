@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.511,
-    "source": "Ottoni",
-    "target": "Odyssey",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Odyssey",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.511
+      }
+    ]
   },
   "dna": {
     "aggression": 0.085,
@@ -31,7 +35,7 @@
     "SPACE": 0.141
   },
   "mood": "Family",
-  "name": "BRIGHT WARM DENSE INTIMATE GENTLE FAM2 3",
+  "name": "BRIGHT WARM DENSE INTIMATE ...",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.891,

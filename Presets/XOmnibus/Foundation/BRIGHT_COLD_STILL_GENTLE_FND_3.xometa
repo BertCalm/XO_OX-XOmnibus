@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.809,
-    "source": "Overdub",
-    "target": "Obsidian",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Obsidian",
+        "type": "CHAOS_INJECT",
+        "amount": 0.809
+      }
+    ]
   },
   "dna": {
     "aggression": 0.058,

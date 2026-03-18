@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.83,
-    "source": "Odyssey",
-    "target": "Obsidian",
-    "type": "SPECTRAL_BLEND"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Obsidian",
+        "type": "SPECTRAL_BLEND",
+        "amount": 0.83
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Family",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FAM 1",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.94,

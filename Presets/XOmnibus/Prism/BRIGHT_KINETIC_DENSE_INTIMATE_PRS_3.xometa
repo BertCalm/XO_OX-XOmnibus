@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.66,
-    "source": "Ottoni",
-    "target": "Optic",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Optic",
+        "type": "FILTER_MOD",
+        "amount": 0.66
+      }
+    ]
   },
   "dna": {
     "aggression": 0.528,
@@ -31,7 +35,7 @@
     "SPACE": 0.049
   },
   "mood": "Prism",
-  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_PRS_3",
+  "name": "Phase Molten 3",
   "parameters": {
     "Optic": {
       "macro_character": 0.323,

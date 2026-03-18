@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.883,
-    "source": "Oblique",
-    "target": "Orphica",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Orphica",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.883
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.895
   },
   "mood": "Prism",
-  "name": "BRIGHT_COLD_DENSE_VAST_VIOLENT_PRS_3",
+  "name": "Quartz Rage",
   "parameters": {
     "Oblique": {
       "macro_character": 0.952,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.953,
-    "source": "Orphica",
-    "target": "Odyssey",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Odyssey",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.953
+      }
+    ]
   },
   "dna": {
     "aggression": 0.98,

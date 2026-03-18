@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.562,
-    "source": "Osteria",
-    "target": "Overdub",
-    "type": "FILTER_LINK"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Overdub",
+        "type": "FILTER_LINK",
+        "amount": 0.562
+      }
+    ]
   },
   "dna": {
     "aggression": 0.96,
@@ -31,7 +35,7 @@
     "SPACE": 0.536
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_SPARSE_VIOLENT_FAM_VOL_123",
+  "name": "Peach Blade 2",
   "parameters": {
     "Osteria": {
       "macro_character": 0.983,

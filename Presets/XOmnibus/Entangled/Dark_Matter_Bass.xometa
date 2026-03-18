@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.66,
-    "source": "Onset",
-    "target": "Ombre",
-    "type": "LFO_SYNC"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ombre",
+        "type": "LFO_SYNC",
+        "amount": 0.66
+      }
+    ]
   },
   "dna": {
     "aggression": 0.74,

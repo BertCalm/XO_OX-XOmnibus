@@ -33,7 +33,9 @@
     "space": 0.18,
     "aggression": 0.92
   },
-  "parameters": {},
+  "parameters": {
+    "Obsidian": {}
+  },
   "tags": [
     "flux",
     "tension",
@@ -41,5 +43,5 @@
     "still",
     "intense"
   ],
-  "description": "Crystal surface with interior rage \u2014 total stillness, maximum internal pressure."
+  "description": "Crystal surface with interior rage — total stillness, maximum internal pressure."
 }

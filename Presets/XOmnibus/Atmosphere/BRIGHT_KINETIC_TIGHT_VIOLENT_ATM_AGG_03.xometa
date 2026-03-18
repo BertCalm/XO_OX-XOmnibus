@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.885,
-    "source": "Oceanic",
-    "target": "Orbital",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Orbital",
+        "type": "FILTER_MOD",
+        "amount": 0.885
+      }
+    ]
   },
   "dna": {
     "aggression": 0.97,
@@ -31,7 +35,7 @@
     "SPACE": 0.123
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT KINETIC TIGHT VIOLENT ATM AGG 3",
+  "name": "BRIGHT KINETIC TIGHT VIOLEN...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.852,

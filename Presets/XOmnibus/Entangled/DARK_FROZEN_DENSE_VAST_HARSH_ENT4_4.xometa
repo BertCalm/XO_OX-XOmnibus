@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.786,
-    "source": "Outwit",
-    "target": "Ole",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Ole",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.786
+      }
+    ]
   },
   "dna": {
     "aggression": 0.95,
@@ -31,7 +35,7 @@
     "SPACE": 0.881
   },
   "mood": "Entangled",
-  "name": "DARK_FROZEN_DENSE_VAST_HARSH_ENT4_4",
+  "name": "Smoke Massive",
   "parameters": {
     "Ole": {
       "macro_character": 0.418,

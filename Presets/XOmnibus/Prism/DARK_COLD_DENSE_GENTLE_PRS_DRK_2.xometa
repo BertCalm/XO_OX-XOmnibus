@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7447,
-    "source": "Ole",
-    "target": "Ottoni",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Ottoni",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.7447
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1253,
@@ -31,7 +35,7 @@
     "SPACE": 0.4692
   },
   "mood": "Prism",
-  "name": "DARK_COLD_DENSE_GENTLE_PRS_DRK_2",
+  "name": "Flux Saturated",
   "parameters": {
     "Ole": {
       "macro_character": 0.0872,

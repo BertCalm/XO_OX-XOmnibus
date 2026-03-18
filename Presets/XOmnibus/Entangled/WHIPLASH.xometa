@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.747,
-    "source": "Orbital",
-    "target": "Owlfish",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Owlfish",
+        "type": "PITCH_SYNC",
+        "amount": 0.747
+      }
+    ]
   },
   "dna": {
     "aggression": 0.782,
@@ -31,7 +35,7 @@
     "SPACE": 0.864
   },
   "mood": "Entangled",
-  "name": "WHIPLASH",
+  "name": "Whiplash",
   "parameters": {
     "Orbital": {
       "macro_character": 0.197,

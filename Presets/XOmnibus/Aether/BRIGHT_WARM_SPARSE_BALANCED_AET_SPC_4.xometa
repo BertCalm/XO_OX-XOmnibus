@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.792,
-    "source": "Ombre",
-    "target": "Origami",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.792
+      }
+    ]
   },
   "dna": {
     "aggression": 0.961,
@@ -31,7 +35,7 @@
     "SPACE": 0.497
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM SPARSE BALANCED AET SPC 4",
+  "name": "BRIGHT WARM SPARSE BALANCED...",
   "parameters": {
     "Ombre": {
       "macro_character": 0.927,

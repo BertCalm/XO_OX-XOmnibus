@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.862,
-    "source": "Overdub",
-    "target": "Ouroboros",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Ouroboros",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.862
+      }
+    ]
   },
   "dna": {
     "aggression": 0.375,
@@ -31,7 +35,7 @@
     "SPACE": 0.504
   },
   "mood": "Flux",
-  "name": "DARK_COLD_STILL_SPARSE_FLX_SLW_4",
+  "name": "Grain Orbit 2",
   "parameters": {
     "Ouroboros": {
       "macro_character": 0.432,

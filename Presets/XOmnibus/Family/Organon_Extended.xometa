@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Organon Extended",
-  "parameters": {},
+  "parameters": {
+    "Organon": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

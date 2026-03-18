@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.71,
-    "source": "Opal",
-    "target": "Odyssey",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Odyssey",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.71
+      }
+    ]
   },
   "description": "Single grains drift through Odyssey wavetable space — cloud becomes singular trajectory.",
   "dna": {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Obbligato",
-    "target": "Overdub",
-    "type": "TAPE_ECHO_LOCK"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Overdub",
+        "type": "TAPE_ECHO_LOCK",
+        "amount": 0.65
+      }
+    ]
   },
   "description": "Dual wind obligated to tape echo returns — every breath echoes back a beat later",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Dubbed Wind",
-  "parameters": {},
+  "parameters": {
+    "Obbligato": {},
+    "Overdub": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.31,
@@ -43,5 +50,13 @@
     "overdub",
     "wind"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

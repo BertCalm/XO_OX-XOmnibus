@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.722,
-    "source": "Obsidian",
-    "target": "Obbligato",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Obbligato",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.722
+      }
+    ]
   },
   "dna": {
     "aggression": 0.065,

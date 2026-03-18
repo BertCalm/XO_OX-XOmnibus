@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.775,
-    "source": "Ohm",
-    "target": "Obbligato",
-    "type": "DYNAMIC_CROSS"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Obbligato",
+        "type": "DYNAMIC_CROSS",
+        "amount": 0.775
+      }
+    ]
   },
   "dna": {
     "aggression": 0.107,
@@ -31,7 +35,7 @@
     "SPACE": 0.522
   },
   "mood": "Family",
-  "name": "DARK_HOT_KINETIC_GENTLE_FAM_VOL_26",
+  "name": "Mahogany Ripple",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.49,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.89,
-    "source": "Overbite",
-    "target": "Ouroboros",
-    "type": "PHASE_SYNC"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Ouroboros",
+        "type": "PHASE_SYNC",
+        "amount": 0.89
+      }
+    ]
   },
   "dna": {
     "aggression": 0.88,

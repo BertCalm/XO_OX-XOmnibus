@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9148,
-    "source": "Obscura",
-    "target": "Oblique",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oblique",
+        "type": "PITCH_SYNC",
+        "amount": 0.9148
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4827,
@@ -31,7 +35,7 @@
     "SPACE": 0.0532
   },
   "mood": "Aether",
-  "name": "BRIGHT_WARM_KINETIC_INTIMATE_AET2_2",
+  "name": "Honey Stream",
   "parameters": {
     "Oblique": {
       "macro_character": 0.934,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.77,
-    "source": "Odyssey",
-    "target": "Origami",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Origami",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.77
+      }
+    ]
   },
   "description": "Odyssey's violet cools Origami's vermillion — two bright tones become cold grey.",
   "dna": {

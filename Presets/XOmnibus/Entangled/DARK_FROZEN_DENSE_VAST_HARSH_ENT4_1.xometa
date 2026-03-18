@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.86,
-    "source": "Oblong",
-    "target": "Ombre",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Ombre",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.86
+      }
+    ]
   },
   "dna": {
     "aggression": 0.926,
@@ -31,7 +35,7 @@
     "SPACE": 0.959
   },
   "mood": "Entangled",
-  "name": "DARK_FROZEN_DENSE_VAST_HARSH_ENT4_1",
+  "name": "Mahogany Packed",
   "parameters": {
     "Oblong": {
       "macro_character": 0.318,

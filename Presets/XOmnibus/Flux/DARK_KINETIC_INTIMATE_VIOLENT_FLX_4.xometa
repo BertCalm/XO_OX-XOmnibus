@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9484,
-    "source": "Origami",
-    "target": "Oblong",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oblong",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.9484
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8954,
@@ -31,7 +35,7 @@
     "SPACE": 0.1265
   },
   "mood": "Flux",
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FLX_4",
+  "name": "Shadow Pulse",
   "parameters": {
     "Oblong": {
       "macro_character": 0.1139,

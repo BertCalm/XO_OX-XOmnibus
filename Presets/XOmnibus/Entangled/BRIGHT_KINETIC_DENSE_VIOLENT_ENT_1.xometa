@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9438,
     "pairs": [
       {
         "amount": 0.9438,
@@ -9,10 +8,7 @@
         "target": "Orca",
         "type": "FORMANT_BRIDGE"
       }
-    ],
-    "source": "Ouroboros",
-    "target": "Orca",
-    "type": "FORMANT_BRIDGE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Kinetic Dense Violent character entanglement — OUROBOROS × ORCA via Formant Bridge. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.6687
   },
   "mood": "Entangled",
-  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_ENT_1",
+  "name": "Prism Shimmer",
   "parameters": {
     "Orca": {
       "amp_attack": 0.0542,

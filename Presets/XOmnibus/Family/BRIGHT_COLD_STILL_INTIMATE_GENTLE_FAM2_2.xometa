@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.156,
-    "source": "Organon",
-    "target": "Obbligato",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Obbligato",
+        "type": "FILTER_MOD",
+        "amount": 0.156
+      }
+    ]
   },
   "dna": {
     "aggression": 0.031,
@@ -31,7 +35,7 @@
     "SPACE": 0.096
   },
   "mood": "Family",
-  "name": "BRIGHT COLD STILL INTIMATE GENTLE FAM2 2",
+  "name": "BRIGHT COLD STILL INTIMATE ...",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.499,

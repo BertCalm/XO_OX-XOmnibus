@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.69,
     "pairs": [
       {
         "amount": 0.69,
@@ -9,10 +8,7 @@
         "engineB": "Obsidian",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Outwit",
-    "target": "Obsidian",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OBSIDIAN's dark volcanic crystalline character (obsidian physical-modelling). Coupling: Resonance Share.",

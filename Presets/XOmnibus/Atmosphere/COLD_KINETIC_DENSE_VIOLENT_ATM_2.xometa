@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.947,
-    "source": "Oblique",
-    "target": "Orbital",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Orbital",
+        "type": "CHAOS_INJECT",
+        "amount": 0.947
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9,
@@ -31,7 +35,7 @@
     "SPACE": 0.608
   },
   "mood": "Atmosphere",
-  "name": "COLD_KINETIC_DENSE_VIOLENT_ATM_2",
+  "name": "Signal Titan 3",
   "parameters": {
     "Oblique": {
       "macro_character": 0.681,

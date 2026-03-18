@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.51,
     "pairs": [
       {
         "amount": 0.51,
@@ -9,10 +8,7 @@
         "engineB": "Obsidian",
         "type": "TIMBRE_BLEND"
       }
-    ],
-    "source": "Overlap",
-    "target": "Obsidian",
-    "type": "TIMBRE_BLEND"
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Lion's Mane knot-topology FDN entangled with OBSIDIAN's dark volcanic crystalline character (obsidian physical-modelling). Coupling: Timbre Blend.",

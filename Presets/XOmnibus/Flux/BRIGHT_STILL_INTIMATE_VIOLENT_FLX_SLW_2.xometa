@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.864,
-    "source": "Optic",
-    "target": "Overdub",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Overdub",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.864
+      }
+    ]
   },
   "dna": {
     "aggression": 0.92,
@@ -31,7 +35,7 @@
     "SPACE": 0.105
   },
   "mood": "Flux",
-  "name": "BRIGHT_STILL_INTIMATE_VIOLENT_FLX_SLW_2",
+  "name": "Node Rage 2",
   "parameters": {
     "Optic": {
       "macro_character": 0.563,

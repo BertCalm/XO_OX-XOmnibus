@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8589,
-    "source": "Orca",
-    "target": "Ohm",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Ohm",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8589
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.219
   },
   "mood": "Entangled",
-  "name": "DARK_HOT_FROZEN_VAST_GENTLE_ENT3_1",
+  "name": "Velvet Canyon",
   "parameters": {
     "Ohm": {
       "macro_character": 0.988,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.718,
-    "source": "Outwit",
-    "target": "OddfeliX",
-    "type": "RHYTHMIC_SYNC"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "OddfeliX",
+        "type": "RHYTHMIC_SYNC",
+        "amount": 0.718
+      }
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Neon tetra flicker speed clocks OUTWIT generation steps — the fish's swim cycle is the cellular tick",
@@ -62,5 +66,13 @@
     "wolfram",
     "cellular-automata"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.448,
+    "warmth": 0.5,
+    "movement": 0.394,
+    "density": 0.636,
+    "space": 0.5,
+    "aggression": 0.097
+  }
 }

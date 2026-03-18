@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.753,
-    "source": "Osteria",
-    "target": "OddfeliX",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "OddfeliX",
+        "type": "PITCH_SYNC",
+        "amount": 0.753
+      }
+    ]
   },
   "dna": {
     "aggression": 0.901,
@@ -31,7 +35,7 @@
     "SPACE": 0.891
   },
   "mood": "Entangled",
-  "name": "WARM_FROZEN_DENSE_VAST_HARSH_ENT4_4",
+  "name": "Phase Molten 6",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.681,

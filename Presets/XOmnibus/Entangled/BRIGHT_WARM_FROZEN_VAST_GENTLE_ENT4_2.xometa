@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.914,
-    "source": "Onset",
-    "target": "Ouroboros",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ouroboros",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.914
+      }
+    ]
   },
   "dna": {
     "aggression": 0.031,
@@ -31,7 +35,7 @@
     "SPACE": 0.931
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_VAST_GENTLE_ENT4_2",
+  "name": "Candlelight Abyss",
   "parameters": {
     "Onset": {
       "macro_character": 0.88,

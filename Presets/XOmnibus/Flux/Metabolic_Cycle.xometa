@@ -33,7 +33,9 @@
     "space": 0.31,
     "aggression": 0.61
   },
-  "parameters": {},
+  "parameters": {
+    "Organon": {}
+  },
   "tags": [
     "flux",
     "controlled",
@@ -41,5 +43,5 @@
     "metabolic",
     "cycle"
   ],
-  "description": "Cellular coupling at medium rate \u2014 organism in aerobic flux, not anaerobic crisis."
+  "description": "Cellular coupling at medium rate — organism in aerobic flux, not anaerobic crisis."
 }

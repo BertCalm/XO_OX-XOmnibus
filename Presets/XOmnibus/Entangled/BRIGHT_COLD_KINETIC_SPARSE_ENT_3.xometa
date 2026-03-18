@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8533,
     "pairs": [
       {
         "amount": 0.8533,
@@ -9,10 +8,7 @@
         "target": "Orbital",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Oblong",
-    "target": "Orbital",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Cold Kinetic Sparse character entanglement — OBLONG × ORBITAL via Resonance Share. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.3105
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_KINETIC_SPARSE_ENT_3",
+  "name": "Arctic Current 2",
   "parameters": {
     "Oblong": {
       "amp_attack": 0.1137,

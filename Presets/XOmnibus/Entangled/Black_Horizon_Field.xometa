@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.73,
-    "source": "Opal",
-    "target": "Odyssey",
-    "type": "LFO_SYNC"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Odyssey",
+        "type": "LFO_SYNC",
+        "amount": 0.73
+      }
+    ]
   },
   "dna": {
     "aggression": 0.27,

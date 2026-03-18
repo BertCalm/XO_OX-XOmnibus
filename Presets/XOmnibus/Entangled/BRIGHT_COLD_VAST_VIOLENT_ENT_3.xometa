@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8122,
     "pairs": [
       {
         "amount": 0.8122,
@@ -9,10 +8,7 @@
         "target": "Ohm",
         "type": "CHAOS_INJECT"
       }
-    ],
-    "source": "Owlfish",
-    "target": "Ohm",
-    "type": "CHAOS_INJECT"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Cold Vast Violent character entanglement — OHM × OWLFISH via Chaos Inject. Extreme DNA zones push sound design to the edges.",

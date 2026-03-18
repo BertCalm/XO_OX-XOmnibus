@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.813,
-    "source": "Outwit",
-    "target": "Onset",
-    "type": "WAVETABLE_MORPH"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Onset",
+        "type": "WAVETABLE_MORPH",
+        "amount": 0.813
+      }
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Onset drum transients trigger OUTWIT rule mutations — every hit reshapes the cellular law",
@@ -62,5 +66,13 @@
     "wolfram",
     "cellular-automata"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.444,
+    "warmth": 0.5,
+    "movement": 0.548,
+    "density": 0.632,
+    "space": 0.5,
+    "aggression": 0.123
+  }
 }

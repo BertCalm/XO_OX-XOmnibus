@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.55,
     "pairs": [
       {
         "amount": 0.55,
@@ -9,10 +8,7 @@
         "engineB": "Obsidian",
         "type": "ENVELOPE_LINK"
       }
-    ],
-    "source": "Overlap",
-    "target": "Obsidian",
-    "type": "ENVELOPE_LINK"
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Lion's Mane knot-topology FDN entangled with OBSIDIAN's dark volcanic crystalline character (obsidian physical-modelling). Coupling: Envelope Link.",

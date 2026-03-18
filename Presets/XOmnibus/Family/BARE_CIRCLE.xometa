@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.719,
-    "source": "Orphica",
-    "target": "Orbital",
-    "type": "FM_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Orbital",
+        "type": "FM_COUPLE",
+        "amount": 0.719
+      }
+    ]
   },
   "dna": {
     "aggression": 0.109,

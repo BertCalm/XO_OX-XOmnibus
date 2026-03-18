@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8066,
-    "source": "Origami",
-    "target": "Ocelot",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ocelot",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.8066
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4313,
@@ -31,7 +35,7 @@
     "SPACE": 0.0412
   },
   "mood": "Prism",
-  "name": "DARK_HOT_STILL_INTIMATE_PRS_DRK_2",
+  "name": "Amber Wave",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.6904,

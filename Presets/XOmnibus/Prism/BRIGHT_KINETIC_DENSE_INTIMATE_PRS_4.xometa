@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.823,
-    "source": "Oblique",
-    "target": "Owlfish",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Owlfish",
+        "type": "PITCH_SYNC",
+        "amount": 0.823
+      }
+    ]
   },
   "dna": {
     "aggression": 0.553,
@@ -31,7 +35,7 @@
     "SPACE": 0.087
   },
   "mood": "Prism",
-  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_PRS_4",
+  "name": "Candlelight Current",
   "parameters": {
     "Oblique": {
       "macro_character": 0.76,

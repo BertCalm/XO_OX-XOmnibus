@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.86,
-    "source": "Oblong",
-    "target": "Overworld",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overworld",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.86
+      }
+    ]
   },
   "dna": {
     "aggression": 0.414,

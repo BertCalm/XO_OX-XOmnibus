@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.843,
-    "source": "Origami",
-    "target": "Oblique",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oblique",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.843
+      }
+    ]
   },
   "dna": {
     "aggression": 0.888,
@@ -31,7 +35,7 @@
     "SPACE": 0.947
   },
   "mood": "Atmosphere",
-  "name": "WARM KINETIC VAST VIOLENT ATM AGG 5",
+  "name": "WARM KINETIC VAST VIOLENT A...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.322,

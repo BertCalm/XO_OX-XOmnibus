@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.819,
-    "source": "Oblique",
-    "target": "Organon",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Organon",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.819
+      }
+    ]
   },
   "dna": {
     "aggression": 0.97,
@@ -31,7 +35,7 @@
     "SPACE": 0.026
   },
   "mood": "Aether",
-  "name": "BRIGHT COLD TIGHT VIOLENT AET AGG 5",
+  "name": "BRIGHT COLD TIGHT VIOLENT A...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.881,

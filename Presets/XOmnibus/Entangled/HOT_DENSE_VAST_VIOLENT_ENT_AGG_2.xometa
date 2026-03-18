@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.882,
-    "source": "Origami",
-    "target": "Opal",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Opal",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.882
+      }
+    ]
   },
   "dna": {
     "aggression": 0.942,
@@ -31,7 +35,7 @@
     "SPACE": 0.916
   },
   "mood": "Entangled",
-  "name": "HOT_DENSE_VAST_VIOLENT_ENT_AGG_2",
+  "name": "Mahogany Saturated",
   "parameters": {
     "Opal": {
       "macro_character": 0.552,

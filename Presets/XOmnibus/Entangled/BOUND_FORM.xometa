@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8873,
-    "source": "Oblique",
-    "target": "Odyssey",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Odyssey",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8873
+      }
+    ]
   },
   "dna": {
     "aggression": 0.2949,

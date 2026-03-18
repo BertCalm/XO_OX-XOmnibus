@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.52,
-    "source": "Osteria",
-    "target": "Ole",
-    "type": "SPECTRAL_WEAVE"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Ole",
+        "type": "SPECTRAL_WEAVE",
+        "amount": 0.52
+      }
+    ]
   },
   "dna": {
     "aggression": 0.934,
@@ -31,7 +35,7 @@
     "SPACE": 0.111
   },
   "mood": "Family",
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FAM_VOL_141",
+  "name": "Mirror Rage 2",
   "parameters": {
     "Ole": {
       "macro_character": 0.485,

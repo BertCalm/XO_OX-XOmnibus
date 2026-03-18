@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.578,
-    "source": "Organon",
-    "target": "Opal",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Opal",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.578
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1056,
@@ -31,7 +35,7 @@
     "SPACE": 0.9581
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_ATM_3",
+  "name": "Peach Cavern",
   "parameters": {
     "Opal": {
       "macro_character": 0.9334,

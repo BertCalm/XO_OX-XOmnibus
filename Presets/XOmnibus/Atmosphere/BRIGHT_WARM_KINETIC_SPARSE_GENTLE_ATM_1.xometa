@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
-    "source": "Orbital",
-    "target": "Organon",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.78
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0992,
@@ -31,7 +35,7 @@
     "SPACE": 0.3245
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_WARM_KINETIC_SPARSE_GENTLE_ATM_1",
+  "name": "Bloom Flutter",
   "parameters": {
     "Orbital": {
       "macro_character": 0.9374,

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
     "pairs": [
       {
         "amount": 0.78,
@@ -9,10 +8,7 @@
         "engineB": "Oracle",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Outwit",
-    "target": "Oracle",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORACLE's prophetic stochastic character (GENDY + Maqam liminal tones). Coupling: Resonance Share.",

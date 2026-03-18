@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.711,
-    "source": "Osprey",
-    "target": "Osteria",
-    "type": "HARMONIC_MESH"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Osteria",
+        "type": "HARMONIC_MESH",
+        "amount": 0.711
+      }
+    ]
   },
   "dna": {
     "aggression": 0.504,
@@ -31,7 +35,7 @@
     "SPACE": 0.915
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_VAST_FAM_VOL_50",
+  "name": "Peach Shimmer",
   "parameters": {
     "Osprey": {
       "macro_character": 0.938,

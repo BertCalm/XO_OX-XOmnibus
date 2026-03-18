@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oblong \u00d7 Osprey \u2014 Spatial Couple coupling at extreme DNA corner.",
+  "description": "Oblong × Osprey — Spatial Couple coupling at extreme DNA corner.",
   "tags": [
     "cold",
     "oblong",
@@ -33,7 +33,10 @@
     "space": 0.096,
     "aggression": 0.924
   },
-  "parameters": {},
+  "parameters": {
+    "Oblong": {},
+    "Osprey": {}
+  },
   "coupling": {
     "pairs": [
       {

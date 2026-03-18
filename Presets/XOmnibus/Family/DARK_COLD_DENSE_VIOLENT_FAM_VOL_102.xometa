@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.736,
-    "source": "Odyssey",
-    "target": "OddOscar",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "OddOscar",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.736
+      }
+    ]
   },
   "dna": {
     "aggression": 0.958,
@@ -31,7 +35,7 @@
     "SPACE": 0.376
   },
   "mood": "Family",
-  "name": "DARK_COLD_DENSE_VIOLENT_FAM_VOL_102",
+  "name": "Grain Grit 3",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.063,

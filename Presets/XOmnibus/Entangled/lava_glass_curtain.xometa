@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.73,
     "pairs": [
       {
         "amount": 0.73,
@@ -9,10 +8,7 @@
         "engineB": "Obsidian",
         "type": "AMPLITUDE_MOD"
       }
-    ],
-    "source": "Overlap",
-    "target": "Obsidian",
-    "type": "AMPLITUDE_MOD"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Lion's Mane knot-topology FDN entangled with OBSIDIAN's dark volcanic crystalline character (obsidian physical-modelling). Coupling: Amplitude Mod.",

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.856,
-    "source": "Ouroboros",
-    "target": "Origami",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Origami",
+        "type": "CHAOS_INJECT",
+        "amount": 0.856
+      }
+    ]
   },
   "dna": {
     "aggression": 0.903,
@@ -31,7 +35,7 @@
     "SPACE": 0.578
   },
   "mood": "Foundation",
-  "name": "DARK_COLD_DENSE_VIOLENT_FND_AGG_2",
+  "name": "Tone Wrath",
   "parameters": {
     "Origami": {
       "macro_character": 0.465,

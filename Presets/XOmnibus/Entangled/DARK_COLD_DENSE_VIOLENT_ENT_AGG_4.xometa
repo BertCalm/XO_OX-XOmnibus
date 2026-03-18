@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.86,
-    "source": "Ombre",
-    "target": "Organon",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Organon",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.86
+      }
+    ]
   },
   "dna": {
     "aggression": 0.889,
@@ -31,7 +35,7 @@
     "SPACE": 0.562
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_DENSE_VIOLENT_ENT_AGG_4",
+  "name": "Grain Solid",
   "parameters": {
     "Ombre": {
       "macro_character": 0.538,

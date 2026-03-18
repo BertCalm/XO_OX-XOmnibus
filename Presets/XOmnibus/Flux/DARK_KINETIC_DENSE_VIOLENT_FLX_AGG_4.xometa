@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.816,
-    "source": "Ouroboros",
-    "target": "Overworld",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overworld",
+        "type": "CHAOS_INJECT",
+        "amount": 0.816
+      }
+    ]
   },
   "dna": {
     "aggression": 0.88,
@@ -31,7 +35,7 @@
     "SPACE": 0.684
   },
   "mood": "Flux",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_FLX_AGG_4",
+  "name": "Wave Current 2",
   "parameters": {
     "Ouroboros": {
       "macro_character": 0.424,

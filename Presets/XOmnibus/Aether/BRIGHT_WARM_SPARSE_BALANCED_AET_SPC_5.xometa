@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.549,
-    "source": "Organon",
-    "target": "Ombre",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Ombre",
+        "type": "CHAOS_INJECT",
+        "amount": 0.549
+      }
+    ]
   },
   "dna": {
     "aggression": 0.936,
@@ -31,7 +35,7 @@
     "SPACE": 0.649
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM SPARSE BALANCED AET SPC 5",
+  "name": "BRIGHT WARM SPARSE BALANCED...",
   "parameters": {
     "Ombre": {
       "macro_character": 0.909,

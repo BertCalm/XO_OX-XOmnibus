@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.727,
-    "source": "Opal",
-    "target": "Obscura",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obscura",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.727
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0356,
@@ -31,7 +35,7 @@
     "SPACE": 0.9022
   },
   "mood": "Atmosphere",
-  "name": "DARK_STILL_SPARSE_VAST_GENTLE_ATM_2",
+  "name": "Wave Void 2",
   "parameters": {
     "Obscura": {
       "macro_character": 0.1821,

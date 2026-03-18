@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.83,
-    "source": "Overbite",
-    "target": "Obese",
-    "type": "DYNAMICS_SHARE"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Obese",
+        "type": "DYNAMICS_SHARE",
+        "amount": 0.83
+      }
+    ]
   },
   "dna": {
     "aggression": 0.72,

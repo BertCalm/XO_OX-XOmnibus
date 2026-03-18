@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.675,
     "pairs": [
       {
         "amount": 0.675,
@@ -9,10 +8,7 @@
         "target": "Obsidian",
         "type": "SUBHARMONIC_WEAVE"
       }
-    ],
-    "source": "Ouroboros",
-    "target": "Obsidian",
-    "type": "SUBHARMONIC_WEAVE"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Dark Still Sparse Vast character entanglement — OUROBOROS × OBSIDIAN via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",

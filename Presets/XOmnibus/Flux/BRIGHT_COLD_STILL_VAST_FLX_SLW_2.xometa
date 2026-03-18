@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.789,
-    "source": "Odyssey",
-    "target": "Oracle",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Oracle",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.789
+      }
+    ]
   },
   "dna": {
     "aggression": 0.315,
@@ -31,7 +35,7 @@
     "SPACE": 0.893
   },
   "mood": "Flux",
-  "name": "BRIGHT_COLD_STILL_VAST_FLX_SLW_2",
+  "name": "Arctic Expanse",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.326,

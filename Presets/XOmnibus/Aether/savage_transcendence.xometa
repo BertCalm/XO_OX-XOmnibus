@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.591,
-    "source": "Obscura",
-    "target": "Orphica",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orphica",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.591
+      }
+    ]
   },
   "dna": {
     "aggression": 0.916,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.582,
-    "source": "Orbital",
-    "target": "Optic",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Optic",
+        "type": "CHAOS_INJECT",
+        "amount": 0.582
+      }
+    ]
   },
   "dna": {
     "aggression": 0.973,
@@ -31,7 +35,7 @@
     "SPACE": 0.681
   },
   "mood": "Prism",
-  "name": "SHADOW PRISM",
+  "name": "Shadow Prism",
   "parameters": {
     "Optic": {
       "macro_character": 0.337,

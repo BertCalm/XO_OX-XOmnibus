@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.54,
-    "source": "Orbital",
-    "target": "Osprey",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Osprey",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.54
+      }
+    ]
   },
   "dna": {
     "aggression": 0.954,
@@ -31,7 +35,7 @@
     "SPACE": 0.29
   },
   "mood": "Atmosphere",
-  "name": "COLD_DENSE_INTIMATE_VIOLENT_ATM_1",
+  "name": "Frost Strike 2",
   "parameters": {
     "Orbital": {
       "macro_character": 0.443,

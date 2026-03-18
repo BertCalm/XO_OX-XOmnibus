@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9,
-    "source": "Orbital",
-    "target": "Obbligato",
-    "type": "FILTER_SHARE"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Obbligato",
+        "type": "FILTER_SHARE",
+        "amount": 0.9
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Prism",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT PRM 3",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.63,

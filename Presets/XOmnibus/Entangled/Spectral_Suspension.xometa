@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.63,
-    "source": "Opal",
-    "target": "Odyssey",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Odyssey",
+        "type": "PITCH_SYNC",
+        "amount": 0.63
+      }
+    ]
   },
   "description": "Grain position synced to wavetable cycle — two sparse voices locked in cold suspension.",
   "dna": {

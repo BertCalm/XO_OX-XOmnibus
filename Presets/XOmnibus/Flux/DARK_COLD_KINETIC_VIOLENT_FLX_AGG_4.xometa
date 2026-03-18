@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.953,
-    "source": "Opal",
-    "target": "Origami",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.953
+      }
+    ]
   },
   "dna": {
     "aggression": 0.934,
@@ -31,7 +35,7 @@
     "SPACE": 0.554
   },
   "mood": "Flux",
-  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_AGG_4",
+  "name": "Fragment Ripple",
   "parameters": {
     "Opal": {
       "macro_character": 0.448,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6655,
-    "source": "Overworld",
-    "target": "Origami",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Origami",
+        "type": "PITCH_SYNC",
+        "amount": 0.6655
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9564,
@@ -31,7 +35,7 @@
     "SPACE": 0.9137
   },
   "mood": "Aether",
-  "name": "KINETIC_DENSE_VAST_VIOLENT_AET4_5",
+  "name": "Fragment Current",
   "parameters": {
     "Origami": {
       "macro_character": 0.4864,

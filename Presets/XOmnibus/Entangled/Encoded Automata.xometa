@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.847,
-    "source": "Outwit",
-    "target": "Ohm",
-    "type": "PITCH_TRACKING"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Ohm",
+        "type": "PITCH_TRACKING",
+        "amount": 0.847
+      }
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "OHM commune warmth modulates OUTWIT evolve rate — the slower the jam, the slower the cellular drift",
@@ -62,5 +66,13 @@
     "wolfram",
     "cellular-automata"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.513,
+    "warmth": 0.5,
+    "movement": 0.341,
+    "density": 0.487,
+    "space": 0.5,
+    "aggression": 0.032
+  }
 }

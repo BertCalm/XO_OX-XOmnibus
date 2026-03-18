@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.497,
-    "source": "Overdub",
-    "target": "Orphica",
-    "type": "FILTER_LINK"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Orphica",
+        "type": "FILTER_LINK",
+        "amount": 0.497
+      }
+    ]
   },
   "dna": {
     "aggression": 0.662,
@@ -31,7 +35,7 @@
     "SPACE": 0.889
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_SPARSE_VAST_FAM_VOL_19",
+  "name": "Halo Expanse",
   "parameters": {
     "Orphica": {
       "macro_character": 0.929,

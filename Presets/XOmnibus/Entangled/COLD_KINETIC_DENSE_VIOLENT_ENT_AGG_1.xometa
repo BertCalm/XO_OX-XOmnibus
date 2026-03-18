@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.928,
-    "source": "Odyssey",
-    "target": "Opal",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Opal",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.928
+      }
+    ]
   },
   "dna": {
     "aggression": 0.92,
@@ -31,7 +35,7 @@
     "SPACE": 0.386
   },
   "mood": "Entangled",
-  "name": "COLD_KINETIC_DENSE_VIOLENT_ENT_AGG_1",
+  "name": "Node Titan",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.486,

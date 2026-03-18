@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.63,
-    "source": "Opal",
-    "target": "Odyssey",
-    "type": "PITCH_FOLLOW"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Odyssey",
+        "type": "PITCH_FOLLOW",
+        "amount": 0.63
+      }
+    ]
   },
   "dna": {
     "aggression": 0.25,

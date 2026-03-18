@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.502,
-    "source": "Opal",
-    "target": "Obbligato",
-    "type": "PHASE_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obbligato",
+        "type": "PHASE_COUPLE",
+        "amount": 0.502
+      }
+    ]
   },
   "dna": {
     "aggression": 0.586,
@@ -31,7 +35,7 @@
     "SPACE": 0.451
   },
   "mood": "Family",
-  "name": "DARK_COLD_STILL_DENSE_FAM_VOL_43",
+  "name": "Phase Heavy",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.031,

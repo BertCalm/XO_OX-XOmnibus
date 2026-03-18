@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.66,
-    "source": "Opal",
-    "target": "Oracle",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.66
+      }
+    ]
   },
   "description": "Lavender grain and prophecy indigo blend — a cold oracle speaking in scattered light.",
   "dna": {

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.76,
     "pairs": [
       {
         "amount": 0.76,
@@ -9,10 +8,7 @@
         "engineB": "Oracle",
         "type": "CHAOS_INJECT"
       }
-    ],
-    "source": "Outwit",
-    "target": "Oracle",
-    "type": "CHAOS_INJECT"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORACLE's prophetic stochastic character (GENDY + Maqam liminal tones). Coupling: Chaos Inject.",

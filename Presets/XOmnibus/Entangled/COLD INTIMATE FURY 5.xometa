@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ohm \u00d7 Ouroboros \u2014 Harmonic Fold coupling at extreme DNA corner.",
+  "description": "Ohm × Ouroboros — Harmonic Fold coupling at extreme DNA corner.",
   "tags": [
     "cold",
     "ohm",
@@ -33,7 +33,10 @@
     "space": 0.092,
     "aggression": 0.917
   },
-  "parameters": {},
+  "parameters": {
+    "Ohm": {},
+    "Ouroboros": {}
+  },
   "coupling": {
     "pairs": [
       {

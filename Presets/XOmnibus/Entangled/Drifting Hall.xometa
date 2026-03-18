@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.788,
-    "source": "Overlap",
-    "target": "OddfeliX",
-    "type": "AMPLITUDE_MODULATION"
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "OddfeliX",
+        "type": "AMPLITUDE_MODULATION",
+        "amount": 0.788
+      }
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Neon tetra spectral brightness modulates OVERLAP filter cutoff — fin flash tunes the reverb color",
@@ -62,5 +66,13 @@
     "fdn",
     "reverb"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.522,
+    "warmth": 0.5,
+    "movement": 0.288,
+    "density": 0.5,
+    "space": 0.023,
+    "aggression": 0.3
+  }
 }

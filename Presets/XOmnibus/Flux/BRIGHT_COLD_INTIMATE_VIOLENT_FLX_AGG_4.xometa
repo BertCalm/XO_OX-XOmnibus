@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.863,
-    "source": "Ouroboros",
-    "target": "Opal",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Opal",
+        "type": "CHAOS_INJECT",
+        "amount": 0.863
+      }
+    ]
   },
   "dna": {
     "aggression": 0.919,
@@ -31,7 +35,7 @@
     "SPACE": 0.117
   },
   "mood": "Flux",
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FLX_AGG_4",
+  "name": "Silver Wrath",
   "parameters": {
     "Opal": {
       "macro_character": 0.412,

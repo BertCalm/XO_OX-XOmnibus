@@ -31,7 +31,10 @@
     "space": 0.2,
     "aggression": 0.2
   },
-  "parameters": {},
+  "parameters": {
+    "Ouroboros": {},
+    "Organon": {}
+  },
   "coupling": {
     "pairs": [
       {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.91,
-    "source": "Orphica",
-    "target": "Osprey",
-    "type": "HARMONIC_MESH"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Osprey",
+        "type": "HARMONIC_MESH",
+        "amount": 0.91
+      }
+    ]
   },
   "dna": {
     "aggression": 0.097,
@@ -31,7 +35,7 @@
     "SPACE": 0.422
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_DENSE_GENTLE_FAM_VOL_82",
+  "name": "Sunrise Solid",
   "parameters": {
     "Orphica": {
       "macro_character": 0.937,

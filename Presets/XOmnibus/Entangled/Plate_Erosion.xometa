@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.77,
-    "source": "Opal",
-    "target": "Obscura",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obscura",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.77
+      }
+    ]
   },
   "description": "A daguerreotype plate dissolving in cold space — grains and silver both erase.",
   "dna": {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.944,
-    "source": "Overdub",
-    "target": "Overbite",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Overbite",
+        "type": "FILTER_MOD",
+        "amount": 0.944
+      }
+    ]
   },
   "dna": {
     "aggression": 0.936,
@@ -31,7 +35,7 @@
     "SPACE": 0.612
   },
   "mood": "Foundation",
-  "name": "DARK_DENSE_VAST_VIOLENT_FND_AGG_4",
+  "name": "Shadow Expanse",
   "parameters": {
     "Overbite": {
       "macro_character": 0.665,

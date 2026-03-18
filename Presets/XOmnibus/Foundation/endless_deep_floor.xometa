@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.454,
-    "source": "Overbite",
-    "target": "Orca",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Orca",
+        "type": "CHAOS_INJECT",
+        "amount": 0.454
+      }
+    ]
   },
   "dna": {
     "aggression": 0.766,

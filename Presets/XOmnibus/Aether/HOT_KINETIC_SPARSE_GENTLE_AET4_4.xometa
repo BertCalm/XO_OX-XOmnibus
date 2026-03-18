@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7034,
-    "source": "Oracle",
-    "target": "Obscura",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Obscura",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.7034
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0488,
@@ -31,7 +35,7 @@
     "SPACE": 0.6666
   },
   "mood": "Aether",
-  "name": "HOT_KINETIC_SPARSE_GENTLE_AET4_4",
+  "name": "Flux Ripple",
   "parameters": {
     "Obscura": {
       "macro_character": 0.8341,

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8031,
     "pairs": [
       {
         "amount": 0.8031,
@@ -9,10 +8,7 @@
         "target": "Ole",
         "type": "HARMONIC_FOLD"
       }
-    ],
-    "source": "Orca",
-    "target": "Ole",
-    "type": "HARMONIC_FOLD"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Warm Intimate Violent character entanglement — OLE × ORCA via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.0599
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_ENT_4",
+  "name": "Peach Storm 2",
   "parameters": {
     "Ole": {
       "amp_attack": 0.3607,

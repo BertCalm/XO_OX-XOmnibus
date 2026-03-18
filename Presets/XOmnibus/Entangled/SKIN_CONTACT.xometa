@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.689,
-    "source": "Organon",
-    "target": "Origami",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.689
+      }
+    ]
   },
   "dna": {
     "aggression": 0.912,
@@ -31,7 +35,7 @@
     "SPACE": 0.075
   },
   "mood": "Entangled",
-  "name": "SKIN CONTACT",
+  "name": "Skin Contact",
   "parameters": {
     "Organon": {
       "macro_character": 0.448,

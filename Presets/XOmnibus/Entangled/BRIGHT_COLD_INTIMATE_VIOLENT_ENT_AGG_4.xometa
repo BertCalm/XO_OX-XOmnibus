@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.974,
-    "source": "Overdub",
-    "target": "Overworld",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Overworld",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.974
+      }
+    ]
   },
   "dna": {
     "aggression": 0.91,
@@ -31,7 +35,7 @@
     "SPACE": 0.057
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_ENT_AGG_4",
+  "name": "Crystal Edge 2",
   "parameters": {
     "Overdub": {
       "macro_character": 0.573,

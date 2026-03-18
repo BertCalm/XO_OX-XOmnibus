@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.776,
-    "source": "Overdub",
-    "target": "OddfeliX",
-    "type": "ENVELOPE_MIRROR"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "OddfeliX",
+        "type": "ENVELOPE_MIRROR",
+        "amount": 0.776
+      }
+    ]
   },
   "dna": {
     "aggression": 0.426,
@@ -31,7 +35,7 @@
     "SPACE": 0.5
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_STILL_DENSE_FAM_VOL_24",
+  "name": "Peach Molten 2",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.896,

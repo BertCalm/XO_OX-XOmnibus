@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Daguerreotype Violence",
-  "parameters": {},
+  "parameters": {
+    "Obscura": {},
+    "Onset": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.91,

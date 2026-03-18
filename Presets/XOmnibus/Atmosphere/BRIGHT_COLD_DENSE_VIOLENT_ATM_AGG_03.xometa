@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.813,
-    "source": "Oceanic",
-    "target": "Optic",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Optic",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.813
+      }
+    ]
   },
   "dna": {
     "aggression": 0.88,
@@ -31,7 +35,7 @@
     "SPACE": 0.612
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT COLD DENSE VIOLENT ATM AGG 3",
+  "name": "BRIGHT COLD DENSE VIOLENT A...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.86,

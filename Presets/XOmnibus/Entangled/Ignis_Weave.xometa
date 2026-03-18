@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.67,
-    "source": "OddOscar",
-    "target": "Obese",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Obese",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.67
+      }
+    ]
   },
   "dna": {
     "aggression": 0.44,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7592,
-    "source": "Osteria",
-    "target": "Ottoni",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Ottoni",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.7592
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.9294
   },
   "mood": "Entangled",
-  "name": "DARK_HOT_FROZEN_SPARSE_GENTLE_ENT3_5",
+  "name": "Dusk Shard",
   "parameters": {
     "Osteria": {
       "macro_character": 0.8143,

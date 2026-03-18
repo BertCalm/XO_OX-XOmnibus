@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.789,
-    "source": "Oblique",
-    "target": "OddfeliX",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "OddfeliX",
+        "type": "CHAOS_INJECT",
+        "amount": 0.789
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0316,
@@ -31,7 +35,7 @@
     "SPACE": 0.9598
   },
   "mood": "Atmosphere",
-  "name": "HOT_KINETIC_SPARSE_VAST_GENTLE_ATM_4",
+  "name": "Fragment Cathedral",
   "parameters": {
     "Oblique": {
       "macro_character": 0.6856,

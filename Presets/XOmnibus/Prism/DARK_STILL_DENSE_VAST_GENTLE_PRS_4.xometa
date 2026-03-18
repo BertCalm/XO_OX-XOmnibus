@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.667,
-    "source": "Ohm",
-    "target": "Osteria",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Osteria",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.667
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.862
   },
   "mood": "Prism",
-  "name": "DARK_STILL_DENSE_VAST_GENTLE_PRS_4",
+  "name": "Wave Void",
   "parameters": {
     "Ohm": {
       "macro_character": 0.193,

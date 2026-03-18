@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.698,
-    "source": "Obscura",
-    "target": "Orbital",
-    "type": "TIMBRAL_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orbital",
+        "type": "TIMBRAL_BLEND",
+        "amount": 0.698
+      }
+    ]
   },
   "dna": {
     "aggression": 0.555,

@@ -33,7 +33,9 @@
   ],
   "mood": "Atmosphere",
   "name": "HOT DENSE STILL VIOLENT ATM 3",
-  "parameters": {},
+  "parameters": {
+    "Orphica": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7811,
-    "source": "Obscura",
-    "target": "Ole",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Ole",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.7811
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.4208
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_FROZEN_VAST_GENTLE_ENT3_4",
+  "name": "Quartz Canyon",
   "parameters": {
     "Obscura": {
       "macro_character": 0.7493,

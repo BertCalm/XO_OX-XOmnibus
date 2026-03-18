@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.929,
-    "source": "Orphica",
-    "target": "OddOscar",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "OddOscar",
+        "type": "FILTER_MOD",
+        "amount": 0.929
+      }
+    ]
   },
   "dna": {
     "aggression": 0.899,
@@ -31,7 +35,7 @@
     "SPACE": 0.809
   },
   "mood": "Family",
-  "name": "DARK_HOT_DENSE_VIOLENT_FAM_AGG_5",
+  "name": "Dusk Wrath 2",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.397,

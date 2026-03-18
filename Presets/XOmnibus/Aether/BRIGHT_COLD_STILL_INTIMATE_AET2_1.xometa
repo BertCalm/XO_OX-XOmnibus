@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7107,
-    "source": "Orbital",
-    "target": "Organon",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Organon",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.7107
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4927,
@@ -31,7 +35,7 @@
     "SPACE": 0.0864
   },
   "mood": "Aether",
-  "name": "BRIGHT_COLD_STILL_INTIMATE_AET2_1",
+  "name": "Glass Massive",
   "parameters": {
     "Orbital": {
       "macro_character": 0.9082,

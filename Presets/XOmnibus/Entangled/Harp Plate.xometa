@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.523,
-    "source": "Obscura",
-    "target": "Orphica",
-    "type": "FILTER_COUPLING"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orphica",
+        "type": "FILTER_COUPLING",
+        "amount": 0.523
+      }
+    ]
   },
   "description": "Each pluck a separate spark on the silver plate — the harp's decay curve tracing its own arc in daguerreotype time.",
   "engines": [
@@ -76,5 +80,13 @@
     "coupling",
     "daguerreotype"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

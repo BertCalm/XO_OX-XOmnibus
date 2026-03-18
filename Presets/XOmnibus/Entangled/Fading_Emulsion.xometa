@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8,
-    "source": "Opal",
-    "target": "Obscura",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obscura",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.8
+      }
+    ]
   },
   "description": "Grain envelope shapes Obscura's decay — both dissolve before the eye can fix them.",
   "dna": {

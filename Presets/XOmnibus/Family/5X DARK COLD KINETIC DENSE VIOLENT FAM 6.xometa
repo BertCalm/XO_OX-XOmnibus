@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "source": "Ocelot",
-    "target": "Overbite",
-    "type": "AMPLITUDE_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Overbite",
+        "type": "AMPLITUDE_SYNC",
+        "amount": 0.74
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Family",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FAM 6",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.62,

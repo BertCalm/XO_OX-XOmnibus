@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7002,
     "pairs": [
       {
         "amount": 0.7002,
@@ -9,10 +8,7 @@
         "target": "Obese",
         "type": "VELOCITY_COUPLE"
       }
-    ],
-    "source": "Odyssey",
-    "target": "Obese",
-    "type": "VELOCITY_COUPLE"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Hot Dense Vast Violent character entanglement — ODYSSEY × OBESE via Velocity Couple. Extreme DNA zones push sound design to the edges.",

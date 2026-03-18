@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Era Collapse",
-  "parameters": {},
+  "parameters": {
+    "Overworld": {},
+    "Ouroboros": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.92,

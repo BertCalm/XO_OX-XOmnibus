@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.878,
-    "source": "Oracle",
-    "target": "OddfeliX",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "OddfeliX",
+        "type": "FILTER_MOD",
+        "amount": 0.878
+      }
+    ]
   },
   "dna": {
     "aggression": 0.931,
@@ -31,7 +35,7 @@
     "SPACE": 0.95
   },
   "mood": "Atmosphere",
-  "name": "WARM KINETIC VAST VIOLENT ATM AGG 3",
+  "name": "WARM KINETIC VAST VIOLENT A...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.625,

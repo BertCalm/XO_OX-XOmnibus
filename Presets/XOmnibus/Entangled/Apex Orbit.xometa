@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
-    "source": "Orbital",
-    "target": "Orca",
-    "type": "HARMONIC_BLEND"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Orca",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.78
+      }
+    ]
   },
   "description": "Orbital's locked rotation containing Orca's apex predator force — still, massive, circling.",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Apex Orbit",
-  "parameters": {},
+  "parameters": {
+    "Orbital": {},
+    "Orca": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.94,
@@ -43,5 +50,13 @@
     "orbital",
     "apex"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

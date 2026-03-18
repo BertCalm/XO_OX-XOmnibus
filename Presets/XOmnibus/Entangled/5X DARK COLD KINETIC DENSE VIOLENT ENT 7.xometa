@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.94,
-    "source": "Optic",
-    "target": "Oblong",
-    "type": "ENVELOPE_SLAVE"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oblong",
+        "type": "ENVELOPE_SLAVE",
+        "amount": 0.94
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Entangled",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 7",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Oblong": {
       "macro_character": 0.67,

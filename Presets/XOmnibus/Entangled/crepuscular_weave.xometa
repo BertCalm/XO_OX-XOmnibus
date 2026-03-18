@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.51,
     "pairs": [
       {
         "amount": 0.51,
@@ -9,10 +8,7 @@
         "engineB": "Obscura",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Overlap",
-    "target": "Obscura",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Lion's Mane knot-topology FDN entangled with OBSCURA's daguerreotype-veiled spectral character (plate physics and silver grain). Coupling: Resonance Share.",

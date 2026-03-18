@@ -31,7 +31,10 @@
     "space": 0.2,
     "aggression": 0.3
   },
-  "parameters": {},
+  "parameters": {
+    "Overworld": {},
+    "Organon": {}
+  },
   "coupling": {
     "pairs": [
       {

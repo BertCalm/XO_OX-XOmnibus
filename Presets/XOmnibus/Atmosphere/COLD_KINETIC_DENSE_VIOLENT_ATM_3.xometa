@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.925,
-    "source": "Orbital",
-    "target": "Oblique",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Oblique",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.925
+      }
+    ]
   },
   "dna": {
     "aggression": 0.914,
@@ -31,7 +35,7 @@
     "SPACE": 0.467
   },
   "mood": "Atmosphere",
-  "name": "COLD_KINETIC_DENSE_VIOLENT_ATM_3",
+  "name": "Wave Cascade 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.643,

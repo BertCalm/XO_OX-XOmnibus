@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.632,
-    "source": "Overworld",
-    "target": "Obscura",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Obscura",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.632
+      }
+    ]
   },
   "dna": {
     "aggression": 0.021,
@@ -31,7 +35,7 @@
     "SPACE": 0.593
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM KINETIC BALANCED AET SPC 2",
+  "name": "BRIGHT WARM KINETIC BALANCE...",
   "parameters": {
     "Obscura": {
       "macro_character": 0.925,

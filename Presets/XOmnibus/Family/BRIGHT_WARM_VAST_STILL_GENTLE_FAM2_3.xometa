@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.302,
-    "source": "Odyssey",
-    "target": "OddfeliX",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "OddfeliX",
+        "type": "PITCH_SYNC",
+        "amount": 0.302
+      }
+    ]
   },
   "dna": {
     "aggression": 0.102,
@@ -31,7 +35,7 @@
     "SPACE": 0.963
   },
   "mood": "Family",
-  "name": "BRIGHT WARM VAST STILL GENTLE FAM2 3",
+  "name": "BRIGHT WARM VAST STILL GENT...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.926,

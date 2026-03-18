@@ -1,12 +1,16 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.839,
-    "source": "Oblique",
-    "target": "Ohm",
-    "type": "FILTER_COUPLING"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ohm",
+        "type": "FILTER_COUPLING",
+        "amount": 0.839
+      }
+    ]
   },
-  "description": "Sage commune drone entering the prism \u2014 the group's collective frequency split into its individual voice-harmonics.",
+  "description": "Sage commune drone entering the prism — the group's collective frequency split into its individual voice-harmonics.",
   "engines": [
     "Oblique",
     "Ohm"
@@ -77,5 +81,13 @@
     "coupling",
     "prismatic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

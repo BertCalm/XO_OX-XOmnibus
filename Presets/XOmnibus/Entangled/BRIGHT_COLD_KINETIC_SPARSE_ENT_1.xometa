@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9417,
     "pairs": [
       {
         "amount": 0.9417,
@@ -9,10 +8,7 @@
         "target": "Optic",
         "type": "CHAOS_INJECT"
       }
-    ],
-    "source": "Oblique",
-    "target": "Optic",
-    "type": "CHAOS_INJECT"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Cold Kinetic Sparse character entanglement — OBLIQUE × OPTIC via Chaos Inject. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.4736
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_KINETIC_SPARSE_ENT_1",
+  "name": "Quartz Surge",
   "parameters": {
     "Oblique": {
       "amp_attack": 0.0575,

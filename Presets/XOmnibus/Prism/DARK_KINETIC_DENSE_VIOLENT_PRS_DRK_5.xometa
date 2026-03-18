@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9405,
-    "source": "Oracle",
-    "target": "Optic",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Optic",
+        "type": "FILTER_MOD",
+        "amount": 0.9405
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9445,
@@ -31,7 +35,7 @@
     "SPACE": 0.4626
   },
   "mood": "Prism",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_PRS_DRK_5",
+  "name": "Shard Saturated",
   "parameters": {
     "Optic": {
       "macro_character": 0.6677,

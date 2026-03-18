@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7629,
-    "source": "Organon",
-    "target": "Opal",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Opal",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.7629
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3244,
@@ -31,7 +35,7 @@
     "SPACE": 0.0374
   },
   "mood": "Aether",
-  "name": "BRIGHT_KINETIC_INTIMATE_DENSE_AET2_4",
+  "name": "Thread Surge",
   "parameters": {
     "Opal": {
       "macro_character": 0.8864,

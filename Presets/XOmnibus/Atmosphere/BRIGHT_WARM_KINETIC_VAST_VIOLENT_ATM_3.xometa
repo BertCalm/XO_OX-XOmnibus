@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.666,
-    "source": "Obscura",
-    "target": "Orbital",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orbital",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.666
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9288,
@@ -31,7 +35,7 @@
     "SPACE": 0.9865
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_WARM_KINETIC_VAST_VIOLENT_ATM_3",
+  "name": "Candlelight Horizon",
   "parameters": {
     "Obscura": {
       "macro_character": 0.9261,

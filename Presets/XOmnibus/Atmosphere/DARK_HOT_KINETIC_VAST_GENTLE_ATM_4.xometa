@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.721,
-    "source": "Oblique",
-    "target": "Opal",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Opal",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.721
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0267,
@@ -31,7 +35,7 @@
     "SPACE": 0.9773
   },
   "mood": "Atmosphere",
-  "name": "DARK_HOT_KINETIC_VAST_GENTLE_ATM_4",
+  "name": "Mahogany Horizon",
   "parameters": {
     "Oblique": {
       "macro_character": 0.4833,

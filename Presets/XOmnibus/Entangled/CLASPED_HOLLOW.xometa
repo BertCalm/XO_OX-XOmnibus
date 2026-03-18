@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.311,
-    "source": "Overworld",
-    "target": "Ohm",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Ohm",
+        "type": "CHAOS_INJECT",
+        "amount": 0.311
+      }
+    ]
   },
   "dna": {
     "aggression": 0.058,

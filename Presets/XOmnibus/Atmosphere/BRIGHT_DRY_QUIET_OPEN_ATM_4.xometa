@@ -33,7 +33,9 @@
   ],
   "mood": "Atmosphere",
   "name": "BRIGHT DRY QUIET OPEN ATM 4",
-  "parameters": {},
+  "parameters": {
+    "Ombre": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7573,
-    "source": "Outwit",
-    "target": "Opal",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Opal",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.7573
+      }
+    ]
   },
   "dna": {
     "aggression": 0.117,

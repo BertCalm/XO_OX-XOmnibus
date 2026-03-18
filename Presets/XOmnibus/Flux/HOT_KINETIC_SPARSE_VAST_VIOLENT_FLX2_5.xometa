@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.758,
-    "source": "Oceanic",
-    "target": "Oblique",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oblique",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.758
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8755,
@@ -31,7 +35,7 @@
     "SPACE": 0.8728
   },
   "mood": "Flux",
-  "name": "HOT_KINETIC_SPARSE_VAST_VIOLENT_FLX2_5",
+  "name": "Fragment Stream",
   "parameters": {
     "Oblique": {
       "macro_character": 0.7642,

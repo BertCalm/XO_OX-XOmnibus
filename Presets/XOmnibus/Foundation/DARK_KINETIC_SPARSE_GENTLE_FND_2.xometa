@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.787,
-    "source": "Overbite",
-    "target": "OddOscar",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "OddOscar",
+        "type": "FILTER_MOD",
+        "amount": 0.787
+      }
+    ]
   },
   "dna": {
     "aggression": 0.099,
@@ -31,7 +35,7 @@
     "SPACE": 0.773
   },
   "mood": "Foundation",
-  "name": "DARK_KINETIC_SPARSE_GENTLE_FND_2",
+  "name": "Grain Ripple",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.527,

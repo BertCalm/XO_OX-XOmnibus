@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.656,
-    "source": "Oceanic",
-    "target": "Organon",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Organon",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.656
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9106,
@@ -31,7 +35,7 @@
     "SPACE": 0.4141
   },
   "mood": "Flux",
-  "name": "DARK_COLD_STILL_DENSE_VIOLENT_FLX2_5",
+  "name": "Wave Force",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.0694,

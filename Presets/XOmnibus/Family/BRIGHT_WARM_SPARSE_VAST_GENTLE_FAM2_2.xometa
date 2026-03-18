@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.067,
-    "source": "Ole",
-    "target": "Osprey",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Osprey",
+        "type": "FILTER_MOD",
+        "amount": 0.067
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1,
@@ -31,7 +35,7 @@
     "SPACE": 0.947
   },
   "mood": "Family",
-  "name": "BRIGHT WARM SPARSE VAST GENTLE FAM2 2",
+  "name": "BRIGHT WARM SPARSE VAST GEN...",
   "parameters": {
     "Ole": {
       "macro_character": 0.916,

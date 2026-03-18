@@ -33,7 +33,9 @@
     "space": 0.1,
     "aggression": 0.76
   },
-  "parameters": {},
+  "parameters": {
+    "Origami": {}
+  },
   "tags": [
     "flux",
     "dense-flux",
@@ -41,5 +43,5 @@
     "dense",
     "matter"
   ],
-  "description": "Origami folded to dense matter \u2014 paper geometry approaching neutron star density."
+  "description": "Origami folded to dense matter — paper geometry approaching neutron star density."
 }

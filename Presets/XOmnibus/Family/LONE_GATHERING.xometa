@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.807,
-    "source": "Outwit",
-    "target": "Oceanic",
-    "type": "PITCH_LOCK"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Oceanic",
+        "type": "PITCH_LOCK",
+        "amount": 0.807
+      }
+    ]
   },
   "dna": {
     "aggression": 0.958,

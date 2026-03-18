@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9423,
     "pairs": [
       {
         "amount": 0.9423,
@@ -9,10 +8,7 @@
         "target": "Oblong",
         "type": "SUBHARMONIC_WEAVE"
       }
-    ],
-    "source": "Overbite",
-    "target": "Oblong",
-    "type": "SUBHARMONIC_WEAVE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Warm Still Dense character entanglement — OVERBITE × OBLONG via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.799,
-    "source": "Optic",
-    "target": "Orphica",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Orphica",
+        "type": "PITCH_SYNC",
+        "amount": 0.799
+      }
+    ]
   },
   "dna": {
     "aggression": 0.985,
@@ -31,7 +35,7 @@
     "SPACE": 0.05
   },
   "mood": "Prism",
-  "name": "DARK WARM TIGHT VIOLENT PRS AGG 1",
+  "name": "DARK WARM TIGHT VIOLENT PRS...",
   "parameters": {
     "Optic": {
       "macro_character": 0.063,

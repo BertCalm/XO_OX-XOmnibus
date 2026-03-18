@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Dub and Grain",
-  "parameters": {},
+  "parameters": {
+    "Overdub": {},
+    "Opal": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Dark Water Hunter",
-  "parameters": {},
+  "parameters": {
+    "Osprey": {},
+    "Obsidian": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

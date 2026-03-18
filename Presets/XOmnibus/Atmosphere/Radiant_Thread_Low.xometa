@@ -24,7 +24,9 @@
   ],
   "mood": "Atmosphere",
   "name": "Radiant Thread Low",
-  "parameters": {},
+  "parameters": {
+    "Ole": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.187,

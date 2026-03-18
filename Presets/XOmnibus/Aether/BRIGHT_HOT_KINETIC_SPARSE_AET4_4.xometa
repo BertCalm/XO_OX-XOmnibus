@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8804,
-    "source": "Oceanic",
-    "target": "Oracle",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.8804
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5627,
@@ -31,7 +35,7 @@
     "SPACE": 0.3851
   },
   "mood": "Aether",
-  "name": "BRIGHT_HOT_KINETIC_SPARSE_AET4_4",
+  "name": "Glow Swirl",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.4757,

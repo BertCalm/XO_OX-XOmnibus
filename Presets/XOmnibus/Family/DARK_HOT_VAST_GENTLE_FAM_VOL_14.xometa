@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.618,
-    "source": "Overdub",
-    "target": "OddfeliX",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "OddfeliX",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.618
+      }
+    ]
   },
   "dna": {
     "aggression": 0.12,
@@ -31,7 +35,7 @@
     "SPACE": 0.892
   },
   "mood": "Family",
-  "name": "DARK_HOT_VAST_GENTLE_FAM_VOL_14",
+  "name": "Shadow Orbit",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.521,

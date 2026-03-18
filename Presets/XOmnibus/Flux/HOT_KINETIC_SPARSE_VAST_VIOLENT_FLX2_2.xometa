@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.471,
-    "source": "Opal",
-    "target": "Odyssey",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Odyssey",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.471
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9365,
@@ -31,7 +35,7 @@
     "SPACE": 0.882
   },
   "mood": "Flux",
-  "name": "HOT_KINETIC_SPARSE_VAST_VIOLENT_FLX2_2",
+  "name": "Copper Grit",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.62,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.507,
-    "source": "Overworld",
-    "target": "Obese",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Obese",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.507
+      }
+    ]
   },
   "dna": {
     "aggression": 0.08,

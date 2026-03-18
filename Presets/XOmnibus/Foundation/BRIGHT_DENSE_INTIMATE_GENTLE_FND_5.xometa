@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.873,
-    "source": "Origami",
-    "target": "Overdub",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Overdub",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.873
+      }
+    ]
   },
   "dna": {
     "aggression": 0.084,
@@ -31,7 +35,7 @@
     "SPACE": 0.604
   },
   "mood": "Foundation",
-  "name": "BRIGHT_DENSE_INTIMATE_GENTLE_FND_5",
+  "name": "Chrome Heavy",
   "parameters": {
     "Origami": {
       "macro_character": 0.185,

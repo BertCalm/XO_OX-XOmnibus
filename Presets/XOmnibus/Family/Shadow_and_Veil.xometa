@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Shadow and Veil",
-  "parameters": {},
+  "parameters": {
+    "Obsidian": {},
+    "Obscura": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9044,
-    "source": "Ombre",
-    "target": "Ole",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Ole",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.9044
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.6826
   },
   "mood": "Entangled",
-  "name": "DARK_HOT_FROZEN_VAST_GENTLE_ENT3_5",
+  "name": "Velvet Abyss",
   "parameters": {
     "Ole": {
       "macro_character": 0.5212,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.921,
-    "source": "Osprey",
-    "target": "Origami",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Origami",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.921
+      }
+    ]
   },
   "dna": {
     "aggression": 0.394,
@@ -31,7 +35,7 @@
     "SPACE": 0.077
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_DENSE_INTIMATE_FAM_VOL_54",
+  "name": "Solar Dense",
   "parameters": {
     "Origami": {
       "macro_character": 0.888,

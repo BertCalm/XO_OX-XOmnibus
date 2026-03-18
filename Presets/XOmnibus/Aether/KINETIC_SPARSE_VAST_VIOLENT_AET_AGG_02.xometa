@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.92,
-    "source": "Ombre",
-    "target": "Organon",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Organon",
+        "type": "FILTER_MOD",
+        "amount": 0.92
+      }
+    ]
   },
   "dna": {
     "aggression": 0.893,
@@ -31,7 +35,7 @@
     "SPACE": 0.89
   },
   "mood": "Aether",
-  "name": "KINETIC SPARSE VAST VIOLENT AET AGG 2",
+  "name": "KINETIC SPARSE VAST VIOLENT...",
   "parameters": {
     "Ombre": {
       "macro_character": 0.382,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.79,
-    "source": "Overworld",
-    "target": "Organon",
-    "type": "HARMONIC_STACK"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Organon",
+        "type": "HARMONIC_STACK",
+        "amount": 0.79
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Aether",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 2",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Organon": {
       "macro_character": 0.98,

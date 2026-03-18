@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.91,
-    "source": "Onset",
-    "target": "Optic",
-    "type": "PITCH_FOLLOW"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Optic",
+        "type": "PITCH_FOLLOW",
+        "amount": 0.91
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Prism",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT PRM 2",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Onset": {
       "macro_character": 0.61,

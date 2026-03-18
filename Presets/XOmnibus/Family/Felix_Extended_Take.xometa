@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Felix Extended Take",
-  "parameters": {},
+  "parameters": {
+    "OddfeliX": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

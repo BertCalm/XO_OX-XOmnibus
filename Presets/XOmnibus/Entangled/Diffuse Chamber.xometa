@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.602,
-    "source": "Overlap",
-    "target": "Ohm",
-    "type": "GRANULAR_EXCHANGE"
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Ohm",
+        "type": "GRANULAR_EXCHANGE",
+        "amount": 0.602
+      }
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "OHM commune drift rate syncs OVERLAP modulation rate — the jam's slow tempo rocks the FDN",
@@ -62,5 +66,13 @@
     "fdn",
     "reverb"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.582,
+    "warmth": 0.5,
+    "movement": 0.137,
+    "density": 0.5,
+    "space": 0.058,
+    "aggression": 0.3
+  }
 }

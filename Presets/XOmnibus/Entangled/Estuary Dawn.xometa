@@ -45,7 +45,11 @@
   },
   "mood": "Entangled",
   "name": "Estuary Dawn",
-  "parameters": {},
+  "parameters": {
+    "Osprey": {},
+    "Osteria": {},
+    "Oceanic": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

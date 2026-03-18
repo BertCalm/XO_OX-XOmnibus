@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.821,
-    "source": "Orphica",
-    "target": "Ottoni",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ottoni",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.821
+      }
+    ]
   },
   "dna": {
     "aggression": 0.68,
@@ -31,7 +35,7 @@
     "SPACE": 0.915
   },
   "mood": "Entangled",
-  "name": "ORBITAL DECAY",
+  "name": "Orbital Decay",
   "parameters": {
     "Orphica": {
       "macro_character": 0.863,

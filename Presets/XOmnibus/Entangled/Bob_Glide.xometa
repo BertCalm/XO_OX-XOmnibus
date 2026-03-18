@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.82,
-    "source": "Oblong",
-    "target": "Osprey",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Osprey",
+        "type": "FILTER_MOD",
+        "amount": 0.82
+      }
+    ]
   },
   "dna": {
     "aggression": 0.28,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.427,
-    "source": "Opal",
-    "target": "Ombre",
-    "type": "TEXTURE_WEAVE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ombre",
+        "type": "TEXTURE_WEAVE",
+        "amount": 0.427
+      }
+    ]
   },
   "dna": {
     "aggression": 0.255,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.642,
-    "source": "Organon",
-    "target": "Orphica",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Orphica",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.642
+      }
+    ]
   },
   "dna": {
     "aggression": 0.417,
@@ -31,7 +35,7 @@
     "SPACE": 0.804
   },
   "mood": "Flux",
-  "name": "FROZEN EXPANSE",
+  "name": "Frozen Expanse",
   "parameters": {
     "Organon": {
       "macro_character": 0.277,

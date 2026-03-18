@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.408,
-    "source": "Obscura",
-    "target": "Optic",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Optic",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.408
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8987,
@@ -31,7 +35,7 @@
     "SPACE": 0.9445
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_WARM_KINETIC_VAST_VIOLENT_ATM_1",
+  "name": "Glow Abyss 2",
   "parameters": {
     "Obscura": {
       "macro_character": 0.9327,

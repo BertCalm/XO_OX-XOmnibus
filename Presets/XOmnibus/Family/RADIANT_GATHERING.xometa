@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.495,
-    "source": "Ottoni",
-    "target": "Orphica",
-    "type": "TIMBRAL_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Orphica",
+        "type": "TIMBRAL_BLEND",
+        "amount": 0.495
+      }
+    ]
   },
   "dna": {
     "aggression": 0.039,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.884,
-    "source": "Origami",
-    "target": "Ottoni",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ottoni",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.884
+      }
+    ]
   },
   "dna": {
     "aggression": 0.91,
@@ -31,7 +35,7 @@
     "SPACE": 0.952
   },
   "mood": "Entangled",
-  "name": "DARK_FROZEN_DENSE_VAST_HARSH_ENT4_3",
+  "name": "Signal Massive",
   "parameters": {
     "Origami": {
       "macro_character": 0.33,

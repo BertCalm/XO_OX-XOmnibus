@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "source": "Orca",
-    "target": "Orphica",
-    "type": "ECHOLOCATION_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Orphica",
+        "type": "ECHOLOCATION_SYNC",
+        "amount": 0.7
+      }
+    ]
   },
   "description": "Siren calls bounce back as echolocation — the ocean replies in grain-shimmer",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Echoic Harp",
-  "parameters": {},
+  "parameters": {
+    "Orphica": {},
+    "Orca": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.39,
@@ -43,5 +50,13 @@
     "orca",
     "microsound"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

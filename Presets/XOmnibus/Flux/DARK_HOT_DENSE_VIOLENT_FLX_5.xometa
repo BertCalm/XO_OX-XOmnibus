@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9513,
-    "source": "Overworld",
-    "target": "Oracle",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Oracle",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.9513
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8767,

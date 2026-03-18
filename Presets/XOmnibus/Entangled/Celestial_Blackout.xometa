@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.61,
-    "source": "Ombre",
-    "target": "Overdub",
-    "type": "RING_MOD"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Overdub",
+        "type": "RING_MOD",
+        "amount": 0.61
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4,

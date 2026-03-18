@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.91,
-    "source": "Onset",
-    "target": "Obese",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Obese",
+        "type": "FILTER_MOD",
+        "amount": 0.91
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.994
   },
   "mood": "Foundation",
-  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_FND_3",
+  "name": "Halo Vast",
   "parameters": {
     "Obese": {
       "macro_character": 1.0,

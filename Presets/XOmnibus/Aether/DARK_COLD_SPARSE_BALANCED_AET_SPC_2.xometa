@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.805,
-    "source": "Osprey",
-    "target": "Ombre",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Ombre",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.805
+      }
+    ]
   },
   "dna": {
     "aggression": 0.109,
@@ -31,7 +35,7 @@
     "SPACE": 0.506
   },
   "mood": "Aether",
-  "name": "DARK COLD SPARSE BALANCED AET SPC 2",
+  "name": "DARK COLD SPARSE BALANCED A...",
   "parameters": {
     "Ombre": {
       "macro_character": 0.076,

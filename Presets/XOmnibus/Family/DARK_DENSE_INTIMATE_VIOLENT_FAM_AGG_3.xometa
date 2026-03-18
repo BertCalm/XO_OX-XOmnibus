@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.834,
-    "source": "Ottoni",
-    "target": "Osprey",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Osprey",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.834
+      }
+    ]
   },
   "dna": {
     "aggression": 0.974,
@@ -31,7 +35,7 @@
     "SPACE": 0.615
   },
   "mood": "Family",
-  "name": "DARK_DENSE_INTIMATE_VIOLENT_FAM_AGG_3",
+  "name": "Mahogany Strike 2",
   "parameters": {
     "Osprey": {
       "macro_character": 0.706,

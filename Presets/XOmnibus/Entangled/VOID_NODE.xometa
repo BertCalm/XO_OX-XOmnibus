@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9926,
-    "source": "Ouroboros",
-    "target": "Overlap",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overlap",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.9926
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4665,

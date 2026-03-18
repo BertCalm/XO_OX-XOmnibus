@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.642,
-    "source": "Organon",
-    "target": "Oblique",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oblique",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.642
+      }
+    ]
   },
   "dna": {
     "aggression": 0.896,
@@ -31,7 +35,7 @@
     "SPACE": 0.037
   },
   "mood": "Flux",
-  "name": "BRIGHT_STILL_INTIMATE_VIOLENT_FLX_SLW_5",
+  "name": "Signal Strike",
   "parameters": {
     "Oblique": {
       "macro_character": 0.676,

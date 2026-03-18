@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7249,
     "pairs": [
       {
         "amount": 0.7249,
@@ -9,10 +8,7 @@
         "target": "Ouroboros",
         "type": "CHAOS_INJECT"
       }
-    ],
-    "source": "OddOscar",
-    "target": "Ouroboros",
-    "type": "CHAOS_INJECT"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Bright Warm Still Dense character entanglement — OUROBOROS × ODDOSCAR via Chaos Inject. Extreme DNA zones push sound design to the edges.",

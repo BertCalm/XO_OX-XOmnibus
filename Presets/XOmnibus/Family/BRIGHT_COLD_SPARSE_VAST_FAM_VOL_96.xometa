@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.403,
-    "source": "OddfeliX",
-    "target": "Osprey",
-    "type": "DYNAMIC_CROSS"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Osprey",
+        "type": "DYNAMIC_CROSS",
+        "amount": 0.403
+      }
+    ]
   },
   "dna": {
     "aggression": 0.302,
@@ -31,7 +35,7 @@
     "SPACE": 0.95
   },
   "mood": "Family",
-  "name": "BRIGHT_COLD_SPARSE_VAST_FAM_VOL_96",
+  "name": "Frost Cavern",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.515,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8073,
-    "source": "Ouroboros",
-    "target": "Oblique",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oblique",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8073
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.2457
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_FROZEN_VIOLENT_VAST_ENT3_4",
+  "name": "Arctic Dome",
   "parameters": {
     "Oblique": {
       "macro_character": 0.777,

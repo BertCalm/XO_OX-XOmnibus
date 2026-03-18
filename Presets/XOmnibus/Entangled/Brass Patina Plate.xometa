@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.761,
-    "source": "Obscura",
-    "target": "Ottoni",
-    "type": "ENVELOPE_SHARING"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Ottoni",
+        "type": "ENVELOPE_SHARING",
+        "amount": 0.761
+      }
+    ]
   },
   "description": "Brass oxidation and silver chemistry meeting at the surface — the trumpet's harmonics leaving a patina watermark.",
   "engines": [
@@ -76,5 +80,13 @@
     "coupling",
     "daguerreotype"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

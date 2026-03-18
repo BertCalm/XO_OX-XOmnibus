@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6461,
-    "source": "Opal",
-    "target": "Origami",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Origami",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.6461
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0543,
@@ -31,7 +35,7 @@
     "SPACE": 0.1546
   },
   "mood": "Flux",
-  "name": "COLD_DENSE_INTIMATE_GENTLE_FLX_5",
+  "name": "Crystal Deep",
   "parameters": {
     "Opal": {
       "macro_character": 0.5746,

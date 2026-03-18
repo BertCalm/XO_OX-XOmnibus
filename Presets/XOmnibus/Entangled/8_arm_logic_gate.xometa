@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.87,
     "pairs": [
       {
         "amount": 0.87,
@@ -9,10 +8,7 @@
         "engineB": "Organon",
         "type": "CHAOS_INJECT"
       }
-    ],
-    "source": "Outwit",
-    "target": "Organon",
-    "type": "CHAOS_INJECT"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORGANON's logical-metabolic character (Aristotelian organ-pipe variational synthesis). Coupling: Chaos Inject.",

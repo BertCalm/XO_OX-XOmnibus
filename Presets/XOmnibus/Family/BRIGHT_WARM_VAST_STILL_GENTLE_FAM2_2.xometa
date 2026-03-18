@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.226,
-    "source": "Osteria",
-    "target": "Ohm",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Ohm",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.226
+      }
+    ]
   },
   "dna": {
     "aggression": 0.035,
@@ -31,7 +35,7 @@
     "SPACE": 0.953
   },
   "mood": "Family",
-  "name": "BRIGHT WARM VAST STILL GENTLE FAM2 2",
+  "name": "BRIGHT WARM VAST STILL GENT...",
   "parameters": {
     "Ohm": {
       "macro_character": 0.888,

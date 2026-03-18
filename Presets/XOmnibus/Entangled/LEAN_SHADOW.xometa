@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.318,
-    "source": "Overdub",
-    "target": "OddfeliX",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "OddfeliX",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.318
+      }
+    ]
   },
   "dna": {
     "aggression": 0.719,

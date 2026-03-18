@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.62,
-    "intensity": "Moderate",
-    "source": "Orphica",
-    "target": "Organon",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.62
+      }
+    ]
   },
   "description": "Pitch sync locks ORPHICA's microtonal glissando into ORGANON's enzymatic resonance map.",
   "dna": {

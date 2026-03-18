@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.945,
-    "source": "Orphica",
-    "target": "Opal",
-    "type": "DYNAMIC_CROSS"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Opal",
+        "type": "DYNAMIC_CROSS",
+        "amount": 0.945
+      }
+    ]
   },
   "dna": {
     "aggression": 0.958,
@@ -31,7 +35,7 @@
     "SPACE": 0.914
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_VAST_VIOLENT_FAM_VOL_107",
+  "name": "Radiant Fang",
   "parameters": {
     "Opal": {
       "macro_character": 0.921,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.83,
-    "source": "Oblong",
-    "target": "Outwit",
-    "type": "FEEDBACK"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Outwit",
+        "type": "FEEDBACK",
+        "amount": 0.83
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5,

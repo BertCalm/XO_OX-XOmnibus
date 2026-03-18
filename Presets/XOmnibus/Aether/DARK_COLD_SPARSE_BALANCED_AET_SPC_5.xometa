@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.524,
-    "source": "Oceanic",
-    "target": "Osprey",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Osprey",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.524
+      }
+    ]
   },
   "dna": {
     "aggression": 0.125,
@@ -31,7 +35,7 @@
     "SPACE": 0.378
   },
   "mood": "Aether",
-  "name": "DARK COLD SPARSE BALANCED AET SPC 5",
+  "name": "DARK COLD SPARSE BALANCED A...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.071,

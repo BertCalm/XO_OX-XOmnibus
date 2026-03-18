@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Pixels and Paper",
-  "parameters": {},
+  "parameters": {
+    "Overworld": {},
+    "Origami": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

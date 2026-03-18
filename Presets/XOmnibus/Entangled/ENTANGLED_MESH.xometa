@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.38,
-    "source": "Onset",
-    "target": "Orbital",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Orbital",
+        "type": "FILTER_MOD",
+        "amount": 0.38
+      }
+    ]
   },
   "dna": {
     "aggression": 0.034,

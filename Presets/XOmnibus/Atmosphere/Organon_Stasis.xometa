@@ -33,7 +33,9 @@
     "space": 0.8,
     "aggression": 0.04
   },
-  "parameters": {},
+  "parameters": {
+    "Organon": {}
+  },
   "tags": [
     "glacial",
     "organon",

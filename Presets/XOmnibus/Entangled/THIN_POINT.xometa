@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.744,
-    "source": "Organon",
-    "target": "Ouroboros",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Ouroboros",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.744
+      }
+    ]
   },
   "dna": {
     "aggression": 0.346,

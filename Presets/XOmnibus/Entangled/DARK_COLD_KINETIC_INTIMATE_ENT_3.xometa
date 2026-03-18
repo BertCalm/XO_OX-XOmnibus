@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9377,
     "pairs": [
       {
         "amount": 0.9377,
@@ -9,10 +8,7 @@
         "target": "Oblique",
         "type": "SUBHARMONIC_WEAVE"
       }
-    ],
-    "source": "Orbital",
-    "target": "Oblique",
-    "type": "SUBHARMONIC_WEAVE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Cold Kinetic Intimate character entanglement — ORBITAL × OBLIQUE via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.049
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_KINETIC_INTIMATE_ENT_3",
+  "name": "Shard Pulse 2",
   "parameters": {
     "Oblique": {
       "amp_attack": 0.1159,

@@ -33,7 +33,10 @@
   ],
   "mood": "Entangled",
   "name": "Clave Commune",
-  "parameters": {},
+  "parameters": {
+    "Ohm": {},
+    "Ole": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

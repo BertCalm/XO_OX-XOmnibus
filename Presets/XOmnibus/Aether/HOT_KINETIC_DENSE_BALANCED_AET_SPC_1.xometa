@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.778,
-    "source": "Oceanic",
-    "target": "Obscura",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.778
+      }
+    ]
   },
   "dna": {
     "aggression": 0.929,
@@ -31,7 +35,7 @@
     "SPACE": 0.559
   },
   "mood": "Aether",
-  "name": "HOT KINETIC DENSE BALANCED AET SPC 1",
+  "name": "HOT KINETIC DENSE BALANCED ...",
   "parameters": {
     "Obscura": {
       "macro_character": 0.647,

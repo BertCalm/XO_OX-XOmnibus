@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.759,
-    "source": "Origami",
-    "target": "Octopus",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Octopus",
+        "type": "CHAOS_INJECT",
+        "amount": 0.759
+      }
+    ]
   },
   "dna": {
     "aggression": 0.048,

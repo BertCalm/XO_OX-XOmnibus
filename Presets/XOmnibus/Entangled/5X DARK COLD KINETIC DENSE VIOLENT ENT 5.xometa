@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.61,
-    "source": "Overbite",
-    "target": "Ohm",
-    "type": "RING_MOD"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Ohm",
+        "type": "RING_MOD",
+        "amount": 0.61
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Entangled",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 5",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Ohm": {
       "macro_character": 0.77,

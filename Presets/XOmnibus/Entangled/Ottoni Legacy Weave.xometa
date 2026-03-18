@@ -33,7 +33,10 @@
   ],
   "mood": "Entangled",
   "name": "Ottoni Legacy Weave",
-  "parameters": {},
+  "parameters": {
+    "Ottoni": {},
+    "Overbite": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

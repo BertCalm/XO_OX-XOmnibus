@@ -33,7 +33,10 @@
   ],
   "mood": "Entangled",
   "name": "Glass Oboe",
-  "parameters": {},
+  "parameters": {
+    "Orphica": {},
+    "Obbligato": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

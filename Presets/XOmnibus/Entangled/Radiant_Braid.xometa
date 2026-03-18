@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.68,
-    "source": "Ottoni",
-    "target": "Oracle",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Oracle",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.68
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3,

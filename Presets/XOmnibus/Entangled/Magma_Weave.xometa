@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.73,
-    "source": "Oblong",
-    "target": "Organon",
-    "type": "PITCH_FOLLOW"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Organon",
+        "type": "PITCH_FOLLOW",
+        "amount": 0.73
+      }
+    ]
   },
   "dna": {
     "aggression": 0.33,

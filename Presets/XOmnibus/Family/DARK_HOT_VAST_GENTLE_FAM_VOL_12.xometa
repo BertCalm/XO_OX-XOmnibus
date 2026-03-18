@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.713,
-    "source": "Opal",
-    "target": "OddOscar",
-    "type": "DYNAMIC_CROSS"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "OddOscar",
+        "type": "DYNAMIC_CROSS",
+        "amount": 0.713
+      }
+    ]
   },
   "dna": {
     "aggression": 0.045,
@@ -31,7 +35,7 @@
     "SPACE": 0.939
   },
   "mood": "Family",
-  "name": "DARK_HOT_VAST_GENTLE_FAM_VOL_12",
+  "name": "Shadow Void 4",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.454,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.405,
-    "source": "Ohm",
-    "target": "Orphica",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Orphica",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.405
+      }
+    ]
   },
   "dna": {
     "aggression": 0.89,

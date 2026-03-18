@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.68,
-    "source": "Owlfish",
-    "target": "Overdub",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Overdub",
+        "type": "CHAOS_INJECT",
+        "amount": 0.68
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 8",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Overdub": {
       "macro_character": 0.95,

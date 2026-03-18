@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.812,
-    "source": "Overworld",
-    "target": "Ohm",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Ohm",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.812
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.861
   },
   "mood": "Prism",
-  "name": "DARK_HOT_KINETIC_VAST_VIOLENT_PRS_4",
+  "name": "Rust Rage",
   "parameters": {
     "Ohm": {
       "macro_character": 0.184,

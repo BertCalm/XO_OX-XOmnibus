@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.72,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Oracle",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Oracle",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.72
+      }
+    ]
   },
   "description": "Amplitude of OLE's drum kit sculpts ORACLE's microtonal landscape in real-time.",
   "dna": {

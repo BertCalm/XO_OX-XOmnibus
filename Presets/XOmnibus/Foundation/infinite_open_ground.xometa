@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.824,
-    "source": "Opal",
-    "target": "Overworld",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Overworld",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.824
+      }
+    ]
   },
   "dna": {
     "aggression": 0.663,

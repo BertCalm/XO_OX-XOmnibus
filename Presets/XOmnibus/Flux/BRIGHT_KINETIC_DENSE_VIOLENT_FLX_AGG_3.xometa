@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.813,
-    "source": "Organon",
-    "target": "Overdub",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Overdub",
+        "type": "CHAOS_INJECT",
+        "amount": 0.813
+      }
+    ]
   },
   "dna": {
     "aggression": 0.883,
@@ -31,7 +35,7 @@
     "SPACE": 0.495
   },
   "mood": "Flux",
-  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FLX_AGG_3",
+  "name": "Sunrise Current 3",
   "parameters": {
     "Organon": {
       "macro_character": 0.495,

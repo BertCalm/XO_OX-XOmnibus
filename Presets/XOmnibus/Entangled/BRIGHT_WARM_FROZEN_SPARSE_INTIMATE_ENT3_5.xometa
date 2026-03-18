@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8932,
-    "source": "Onset",
-    "target": "Overbite",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Overbite",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8932
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.4223
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_SPARSE_INTIMATE_ENT3_5",
+  "name": "Peach Shard",
   "parameters": {
     "Onset": {
       "macro_character": 0.5545,

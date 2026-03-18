@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8103,
-    "source": "Oblique",
-    "target": "Ohm",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ohm",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8103
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.4848
   },
   "mood": "Entangled",
-  "name": "HOT_FROZEN_DENSE_INTIMATE_VIOLENT_ENT3_5",
+  "name": "Fragment Deep 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.8253,

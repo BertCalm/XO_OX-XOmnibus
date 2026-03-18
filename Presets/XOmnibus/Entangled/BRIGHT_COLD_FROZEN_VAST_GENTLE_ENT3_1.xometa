@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9779,
-    "source": "Outwit",
-    "target": "Oracle",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Oracle",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.9779
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.689
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_FROZEN_VAST_GENTLE_ENT3_1",
+  "name": "Quartz Horizon 2",
   "parameters": {
     "Oracle": {
       "macro_character": 0.5171,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.73,
-    "source": "Origami",
-    "target": "Outwit",
-    "type": "PITCH_MOD"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Outwit",
+        "type": "PITCH_MOD",
+        "amount": 0.73
+      }
+    ]
   },
   "dna": {
     "aggression": 0.43,

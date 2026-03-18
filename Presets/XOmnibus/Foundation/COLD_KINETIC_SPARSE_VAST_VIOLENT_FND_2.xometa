@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.911,
-    "source": "Overbite",
-    "target": "Obsidian",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Obsidian",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.911
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.967
   },
   "mood": "Foundation",
-  "name": "COLD_KINETIC_SPARSE_VAST_VIOLENT_FND_2",
+  "name": "Flux Expanse",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.47,

@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Siphonophore Harp",
-  "parameters": {},
+  "parameters": {
+    "Orphica": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

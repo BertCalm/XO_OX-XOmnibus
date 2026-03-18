@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.809,
-    "source": "Ottoni",
-    "target": "Ole",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Ole",
+        "type": "PITCH_SYNC",
+        "amount": 0.809
+      }
+    ]
   },
   "dna": {
     "aggression": 0.911,
@@ -31,7 +35,7 @@
     "SPACE": 0.59
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_2",
+  "name": "Sunrise Crush 2",
   "parameters": {
     "Ole": {
       "macro_character": 0.318,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.573,
-    "source": "Oblique",
-    "target": "Obsidian",
-    "type": "CHAOS_LOCK"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Obsidian",
+        "type": "CHAOS_LOCK",
+        "amount": 0.573
+      }
+    ]
   },
   "dna": {
     "aggression": 0.267,

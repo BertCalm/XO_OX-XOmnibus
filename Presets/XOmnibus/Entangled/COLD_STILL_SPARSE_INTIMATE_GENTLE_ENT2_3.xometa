@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.118,
-    "source": "Ouroboros",
-    "target": "Oblong",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oblong",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.118
+      }
+    ]
   },
   "dna": {
     "aggression": 0.107,
@@ -31,7 +35,7 @@
     "SPACE": 0.023
   },
   "mood": "Entangled",
-  "name": "COLD STILL SPARSE INTIMATE GENTLE ENT2 3",
+  "name": "COLD STILL SPARSE INTIMATE ...",
   "parameters": {
     "Oblong": {
       "macro_character": 0.203,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.705,
-    "source": "Osteria",
-    "target": "OddfeliX",
-    "type": "MODULATION_FLOW"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "OddfeliX",
+        "type": "MODULATION_FLOW",
+        "amount": 0.705
+      }
+    ]
   },
   "dna": {
     "aggression": 0.924,
@@ -31,7 +35,7 @@
     "SPACE": 0.964
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_VAST_VIOLENT_FAM_VOL_106",
+  "name": "Bloom Abyss",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.896,

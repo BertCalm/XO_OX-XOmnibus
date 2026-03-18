@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9311,
-    "source": "Origami",
-    "target": "Oblique",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oblique",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.9311
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.578
   },
   "mood": "Entangled",
-  "name": "HOT_FROZEN_SPARSE_VAST_GENTLE_ENT3_5",
+  "name": "Tone Cathedral",
   "parameters": {
     "Oblique": {
       "macro_character": 0.872,

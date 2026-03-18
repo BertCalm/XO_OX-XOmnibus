@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.797,
-    "source": "Obsidian",
-    "target": "OddfeliX",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "OddfeliX",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.797
+      }
+    ]
   },
   "dna": {
     "aggression": 0.923,
@@ -31,7 +35,7 @@
     "SPACE": 0.926
   },
   "mood": "Foundation",
-  "name": "COLD_DENSE_INTIMATE_VIOLENT_FND_AGG_4",
+  "name": "Tone Saturated",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.755,

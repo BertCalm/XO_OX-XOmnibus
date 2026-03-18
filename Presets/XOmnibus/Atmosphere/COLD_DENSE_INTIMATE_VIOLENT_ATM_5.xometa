@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.872,
-    "source": "Osprey",
-    "target": "OddOscar",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "OddOscar",
+        "type": "PITCH_SYNC",
+        "amount": 0.872
+      }
+    ]
   },
   "dna": {
     "aggression": 0.865,
@@ -31,7 +35,7 @@
     "SPACE": 0.068
   },
   "mood": "Atmosphere",
-  "name": "COLD_DENSE_INTIMATE_VIOLENT_ATM_5",
+  "name": "Chrome Deep",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.612,

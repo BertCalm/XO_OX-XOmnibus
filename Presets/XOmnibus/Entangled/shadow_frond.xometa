@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
     "pairs": [
       {
         "amount": 0.65,
@@ -9,10 +8,7 @@
         "engineB": "Obscura",
         "type": "VELOCITY_COUPLE"
       }
-    ],
-    "source": "Overlap",
-    "target": "Obscura",
-    "type": "VELOCITY_COUPLE"
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Lion's Mane knot-topology FDN entangled with OBSCURA's daguerreotype-veiled spectral character (plate physics and silver grain). Coupling: Velocity Couple.",

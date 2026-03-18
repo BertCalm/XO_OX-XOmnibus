@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8163,
-    "source": "Organon",
-    "target": "Obscura",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8163
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0293,
@@ -31,7 +35,7 @@
     "SPACE": 0.0767
   },
   "mood": "Aether",
-  "name": "DARK_KINETIC_INTIMATE_GENTLE_AET2_2",
+  "name": "Phase Cascade",
   "parameters": {
     "Obscura": {
       "macro_character": 0.1098,

@@ -24,7 +24,9 @@
   ],
   "mood": "Aether",
   "name": "Cold Core",
-  "parameters": {},
+  "parameters": {
+    "Obbligato": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.493,

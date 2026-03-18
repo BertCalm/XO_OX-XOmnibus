@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9659,
     "pairs": [
       {
         "amount": 0.9659,
@@ -9,10 +8,7 @@
         "target": "Organon",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Orbital",
-    "target": "Organon",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Warm Still Dense character entanglement — ORGANON × ORBITAL via Resonance Share. Extreme DNA zones push sound design to the edges.",

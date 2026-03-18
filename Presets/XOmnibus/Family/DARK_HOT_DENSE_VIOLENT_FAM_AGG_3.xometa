@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.89,
-    "source": "Ohm",
-    "target": "OddOscar",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "OddOscar",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.89
+      }
+    ]
   },
   "dna": {
     "aggression": 0.976,
@@ -31,7 +35,7 @@
     "SPACE": 0.796
   },
   "mood": "Family",
-  "name": "DARK_HOT_DENSE_VIOLENT_FAM_AGG_3",
+  "name": "Rust Strike",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.476,

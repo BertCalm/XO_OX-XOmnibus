@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.706,
-    "source": "Odyssey",
-    "target": "Ouroboros",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Ouroboros",
+        "type": "PITCH_SYNC",
+        "amount": 0.706
+      }
+    ]
   },
   "dna": {
     "aggression": 0.698,
@@ -31,7 +35,7 @@
     "SPACE": 0.529
   },
   "mood": "Flux",
-  "name": "DARK_COLD_STILL_SPARSE_FLX_SLW_5",
+  "name": "Thread Strike 2",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.67,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.803,
-    "source": "Owlfish",
-    "target": "Ottoni",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ottoni",
+        "type": "FILTER_MOD",
+        "amount": 0.803
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.051
   },
   "mood": "Prism",
-  "name": "BRIGHT_HOT_STILL_INTIMATE_GENTLE_PRS_3",
+  "name": "Honey Massive",
   "parameters": {
     "Ottoni": {
       "macro_character": 0.957,

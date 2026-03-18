@@ -33,7 +33,9 @@
     "space": 0.05,
     "aggression": 0.88
   },
-  "parameters": {},
+  "parameters": {
+    "Obese": {}
+  },
   "tags": [
     "flux",
     "dense-flux",
@@ -41,5 +43,5 @@
     "mass",
     "collapse"
   ],
-  "description": "Obese at maximum density \u2014 gravitational collapse of all harmonic matter."
+  "description": "Obese at maximum density — gravitational collapse of all harmonic matter."
 }

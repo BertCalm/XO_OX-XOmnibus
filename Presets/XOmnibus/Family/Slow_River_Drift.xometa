@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Slow River Drift",
-  "parameters": {},
+  "parameters": {
+    "Odyssey": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

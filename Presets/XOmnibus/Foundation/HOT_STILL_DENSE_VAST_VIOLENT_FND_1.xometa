@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.694,
-    "source": "Overdub",
-    "target": "Oblong",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Oblong",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.694
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.919
   },
   "mood": "Foundation",
-  "name": "HOT_STILL_DENSE_VAST_VIOLENT_FND_1",
+  "name": "Signal Horizon",
   "parameters": {
     "Oblong": {
       "macro_character": 0.5,

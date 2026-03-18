@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.903,
-    "source": "Osprey",
-    "target": "Onset",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Onset",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.903
+      }
+    ]
   },
   "dna": {
     "aggression": 0.884,

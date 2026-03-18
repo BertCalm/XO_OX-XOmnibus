@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.67,
-    "source": "Oracle",
-    "target": "Origami",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Origami",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.67
+      }
+    ]
   },
   "description": "Oracle's timbre blends with Origami paper harmonics — prophecy written in folded sheets.",
   "dna": {

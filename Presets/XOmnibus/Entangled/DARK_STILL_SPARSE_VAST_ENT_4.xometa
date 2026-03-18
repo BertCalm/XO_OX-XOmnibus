@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8494,
     "pairs": [
       {
         "amount": 0.8494,
@@ -9,10 +8,7 @@
         "target": "Oblong",
         "type": "CHAOS_INJECT"
       }
-    ],
-    "source": "Ohm",
-    "target": "Oblong",
-    "type": "CHAOS_INJECT"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Still Sparse Vast character entanglement — OBLONG × OHM via Chaos Inject. Extreme DNA zones push sound design to the edges.",

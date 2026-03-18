@@ -33,7 +33,9 @@
     "space": 0.2,
     "aggression": 0.97
   },
-  "parameters": {},
+  "parameters": {
+    "Ouroboros": {}
+  },
   "tags": [
     "violent",
     "ouroboros",

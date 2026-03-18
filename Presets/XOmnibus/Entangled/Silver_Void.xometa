@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.85,
-    "source": "Obscura",
-    "target": "Oracle",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.85
+      }
+    ]
   },
   "description": "Obscura's decay envelope silences Oracle — what the oracle foretold was silence.",
   "dna": {

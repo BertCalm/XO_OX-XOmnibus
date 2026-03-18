@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.77,
     "pairs": [
       {
         "amount": 0.77,
@@ -9,10 +8,7 @@
         "engineB": "Origami",
         "type": "SPATIAL_COUPLE"
       }
-    ],
-    "source": "Overlap",
-    "target": "Origami",
-    "type": "SPATIAL_COUPLE"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Lion's Mane knot-topology FDN entangled with ORIGAMI's folded geometric character (Vermillion fold-based synthesis). Coupling: Spatial Couple.",

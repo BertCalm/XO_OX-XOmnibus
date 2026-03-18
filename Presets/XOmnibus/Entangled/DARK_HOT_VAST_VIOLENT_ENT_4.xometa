@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7394,
     "pairs": [
       {
         "amount": 0.7394,
@@ -9,10 +8,7 @@
         "target": "Octopus",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Organon",
-    "target": "Octopus",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Dark Hot Vast Violent character entanglement — OCTOPUS × ORGANON via Resonance Share. Extreme DNA zones push sound design to the edges.",

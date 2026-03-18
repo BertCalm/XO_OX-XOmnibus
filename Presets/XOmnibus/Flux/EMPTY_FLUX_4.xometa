@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5698,
-    "source": "OddOscar",
-    "target": "Overdub",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Overdub",
+        "type": "CHAOS_INJECT",
+        "amount": 0.5698
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8607,

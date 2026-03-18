@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9,
-    "source": "Overworld",
-    "target": "Oblong",
-    "type": "FEEDBACK"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Oblong",
+        "type": "FEEDBACK",
+        "amount": 0.9
+      }
+    ]
   },
   "dna": {
     "aggression": 0.75,

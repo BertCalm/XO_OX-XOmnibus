@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8841,
-    "source": "Organon",
-    "target": "Orbital",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Orbital",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8841
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9757,
@@ -31,7 +35,7 @@
     "SPACE": 0.0216
   },
   "mood": "Aether",
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_AET2_4",
+  "name": "Frost Fang",
   "parameters": {
     "Orbital": {
       "macro_character": 0.9727,

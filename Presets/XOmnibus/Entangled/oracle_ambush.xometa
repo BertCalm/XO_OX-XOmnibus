@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.87,
     "pairs": [
       {
         "amount": 0.87,
@@ -9,10 +8,7 @@
         "engineB": "Oracle",
         "type": "SPECTRAL_MORPH"
       }
-    ],
-    "source": "Outwit",
-    "target": "Oracle",
-    "type": "SPECTRAL_MORPH"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORACLE's prophetic stochastic character (GENDY + Maqam liminal tones). Coupling: Spectral Morph.",

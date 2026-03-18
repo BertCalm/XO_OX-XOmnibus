@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.584,
-    "source": "Ottoni",
-    "target": "Obbligato",
-    "type": "FILTER_LINK"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Obbligato",
+        "type": "FILTER_LINK",
+        "amount": 0.584
+      }
+    ]
   },
   "dna": {
     "aggression": 0.925,
@@ -31,7 +35,7 @@
     "SPACE": 0.398
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_VOL_76",
+  "name": "Bloom Blade 2",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.951,

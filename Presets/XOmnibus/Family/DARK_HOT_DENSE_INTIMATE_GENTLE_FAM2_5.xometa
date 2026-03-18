@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.529,
-    "source": "Ole",
-    "target": "Ohm",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Ohm",
+        "type": "PITCH_SYNC",
+        "amount": 0.529
+      }
+    ]
   },
   "dna": {
     "aggression": 0.068,
@@ -31,7 +35,7 @@
     "SPACE": 0.095
   },
   "mood": "Family",
-  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 5",
+  "name": "DARK HOT DENSE INTIMATE GEN...",
   "parameters": {
     "Ohm": {
       "macro_character": 0.498,

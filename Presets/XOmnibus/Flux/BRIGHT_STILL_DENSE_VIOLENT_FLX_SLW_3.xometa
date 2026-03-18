@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.604,
-    "source": "Odyssey",
-    "target": "Organon",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Organon",
+        "type": "FILTER_MOD",
+        "amount": 0.604
+      }
+    ]
   },
   "dna": {
     "aggression": 0.872,
@@ -31,7 +35,7 @@
     "SPACE": 0.658
   },
   "mood": "Flux",
-  "name": "BRIGHT_STILL_DENSE_VIOLENT_FLX_SLW_3",
+  "name": "Glass Massive 2",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.986,

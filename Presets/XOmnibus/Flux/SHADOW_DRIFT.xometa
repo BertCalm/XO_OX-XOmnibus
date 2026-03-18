@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8,
-    "source": "Odyssey",
-    "target": "Owlfish",
-    "type": "CHAOS_SYNC"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Owlfish",
+        "type": "CHAOS_SYNC",
+        "amount": 0.8
+      }
+    ]
   },
   "dna": {
     "aggression": 0.032,

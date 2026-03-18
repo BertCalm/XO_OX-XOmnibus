@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.872,
-    "source": "Ouroboros",
-    "target": "Overbite",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overbite",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.872
+      }
+    ]
   },
   "dna": {
     "aggression": 0.968,
@@ -31,7 +35,7 @@
     "SPACE": 0.537
   },
   "mood": "Foundation",
-  "name": "BRIGHT_COLD_KINETIC_VIOLENT_FND_AGG_2",
+  "name": "Quartz Crush",
   "parameters": {
     "Ouroboros": {
       "macro_character": 0.929,

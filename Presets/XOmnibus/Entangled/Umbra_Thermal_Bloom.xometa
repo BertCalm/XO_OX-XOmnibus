@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.52,
-    "source": "OddOscar",
-    "target": "Oracle",
-    "type": "ENVELOPE_SHARE"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_SHARE",
+        "amount": 0.52
+      }
+    ]
   },
   "dna": {
     "aggression": 0.41,

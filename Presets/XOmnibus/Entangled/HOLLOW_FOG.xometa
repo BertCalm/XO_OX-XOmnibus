@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.201,
-    "source": "Octopus",
-    "target": "Outwit",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Outwit",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.201
+      }
+    ]
   },
   "dna": {
     "aggression": 0.234,

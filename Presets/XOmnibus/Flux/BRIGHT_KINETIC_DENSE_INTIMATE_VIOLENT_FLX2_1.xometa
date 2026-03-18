@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.505,
-    "source": "Optic",
-    "target": "Ouroboros",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Ouroboros",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.505
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9352,
@@ -31,7 +35,7 @@
     "SPACE": 0.131
   },
   "mood": "Flux",
-  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_1",
+  "name": "Mirror Pulse",
   "parameters": {
     "Optic": {
       "macro_character": 0.5968,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.88,
-    "source": "Oceanic",
-    "target": "Oracle",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oracle",
+        "type": "CHAOS_INJECT",
+        "amount": 0.88
+      }
+    ]
   },
   "dna": {
     "aggression": 0.977,
@@ -31,7 +35,7 @@
     "SPACE": 0.571
   },
   "mood": "Flux",
-  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_AGG_1",
+  "name": "Phase Blade 2",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.385,

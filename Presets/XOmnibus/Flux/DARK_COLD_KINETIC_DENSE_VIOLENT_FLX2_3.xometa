@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.865,
-    "source": "Oblong",
-    "target": "Optic",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Optic",
+        "type": "CHAOS_INJECT",
+        "amount": 0.865
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9059,
@@ -31,7 +35,7 @@
     "SPACE": 0.681
   },
   "mood": "Flux",
-  "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FLX2_3",
+  "name": "Phase Molten 5",
   "parameters": {
     "Oblong": {
       "macro_character": 0.0478,

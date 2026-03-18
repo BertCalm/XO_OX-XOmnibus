@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Ocean and Serpent",
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {},
+    "Owlfish": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

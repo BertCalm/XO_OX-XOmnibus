@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Commune at the Water",
-  "parameters": {},
+  "parameters": {
+    "Osprey": {},
+    "Ohm": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

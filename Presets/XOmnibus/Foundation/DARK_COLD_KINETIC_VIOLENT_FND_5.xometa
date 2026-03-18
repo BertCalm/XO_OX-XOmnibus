@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.297,
-    "source": "Overdub",
-    "target": "Obese",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Obese",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.297
+      }
+    ]
   },
   "dna": {
     "aggression": 0.911,
@@ -31,7 +35,7 @@
     "SPACE": 0.41
   },
   "mood": "Foundation",
-  "name": "DARK_COLD_KINETIC_VIOLENT_FND_5",
+  "name": "Phase Ripple",
   "parameters": {
     "Obese": {
       "macro_character": 0.554,

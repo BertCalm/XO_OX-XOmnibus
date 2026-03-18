@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.197,
-    "source": "Obsidian",
-    "target": "Osprey",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Osprey",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.197
+      }
+    ]
   },
   "dna": {
     "aggression": 0.063,
@@ -31,7 +35,7 @@
     "SPACE": 0.99
   },
   "mood": "Entangled",
-  "name": "DARK HOT STILL VAST GENTLE ENT2 4",
+  "name": "DARK HOT STILL VAST GENTLE ...",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.493,

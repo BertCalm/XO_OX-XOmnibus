@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8186,
-    "source": "Oracle",
-    "target": "Octopus",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Octopus",
+        "type": "PITCH_SYNC",
+        "amount": 0.8186
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.5586
   },
   "mood": "Entangled",
-  "name": "DARK_STILL_DENSE_VAST_VIOLENT_ENT3_1",
+  "name": "Wave Vast",
   "parameters": {
     "Octopus": {
       "macro_character": 0.8811,

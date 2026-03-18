@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "intensity": "Deep",
-    "source": "Ottoni",
-    "target": "Oracle",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.7
+      }
+    ]
   },
   "description": "Envelope linking draws ORACLE's sustained glissandi through OTTONI's brass sustain arc.",
   "dna": {

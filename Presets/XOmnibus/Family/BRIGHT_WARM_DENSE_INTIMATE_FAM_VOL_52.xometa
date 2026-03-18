@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.597,
-    "source": "Osprey",
-    "target": "OddfeliX",
-    "type": "SPATIAL_BIND"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "OddfeliX",
+        "type": "SPATIAL_BIND",
+        "amount": 0.597
+      }
+    ]
   },
   "dna": {
     "aggression": 0.659,
@@ -31,7 +35,7 @@
     "SPACE": 0.124
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_DENSE_INTIMATE_FAM_VOL_52",
+  "name": "Glow Dense 2",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.915,

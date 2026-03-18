@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.379,
-    "source": "Obese",
-    "target": "Overbite",
-    "type": "FREQUENCY_LOCK"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Overbite",
+        "type": "FREQUENCY_LOCK",
+        "amount": 0.379
+      }
+    ]
   },
   "dna": {
     "aggression": 0.047,

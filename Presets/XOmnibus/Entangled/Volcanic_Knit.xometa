@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.57,
-    "source": "OddOscar",
-    "target": "Organon",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Organon",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.57
+      }
+    ]
   },
   "dna": {
     "aggression": 0.54,

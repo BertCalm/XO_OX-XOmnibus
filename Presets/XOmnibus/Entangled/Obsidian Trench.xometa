@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Obsidian Trench",
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {},
+    "Obsidian": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

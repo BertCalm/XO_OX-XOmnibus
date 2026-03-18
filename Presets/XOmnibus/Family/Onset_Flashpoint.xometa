@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Onset Flashpoint",
-  "parameters": {},
+  "parameters": {
+    "Onset": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

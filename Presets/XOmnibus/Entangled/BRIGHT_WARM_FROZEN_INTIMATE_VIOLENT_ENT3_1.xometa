@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9782,
-    "source": "Ombre",
-    "target": "Orbital",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Orbital",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.9782
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.6988
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT_ENT3_1",
+  "name": "Candlelight Rage",
   "parameters": {
     "Ombre": {
       "macro_character": 0.793,

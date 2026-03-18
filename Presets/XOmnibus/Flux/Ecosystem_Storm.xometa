@@ -93,5 +93,7 @@
     "ocelot_xf_underEmerg": 0.4,
     "ocelot_xf_underFloor": 0.5
   },
-  "schema_version": 1
+  "schema_version": 1,
+  "mood": "Flux",
+  "tags": []
 }

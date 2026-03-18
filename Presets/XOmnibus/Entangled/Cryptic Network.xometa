@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.769,
-    "source": "Outwit",
-    "target": "Ouroboros",
-    "type": "AMPLITUDE_MODULATION"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Ouroboros",
+        "type": "AMPLITUDE_MODULATION",
+        "amount": 0.769
+      }
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Ouroboros loop length sets OUTWIT rule lifespan — the serpent bites its tail inside the automata",
@@ -62,5 +66,13 @@
     "wolfram",
     "cellular-automata"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.522,
+    "warmth": 0.5,
+    "movement": 0.519,
+    "density": 0.505,
+    "space": 0.5,
+    "aggression": 0.102
+  }
 }

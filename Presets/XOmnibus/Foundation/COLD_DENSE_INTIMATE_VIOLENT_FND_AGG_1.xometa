@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.711,
-    "source": "Obese",
-    "target": "Oracle",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.711
+      }
+    ]
   },
   "dna": {
     "aggression": 0.903,
@@ -31,7 +35,7 @@
     "SPACE": 0.672
   },
   "mood": "Foundation",
-  "name": "COLD_DENSE_INTIMATE_VIOLENT_FND_AGG_1",
+  "name": "Phase Dense 2",
   "parameters": {
     "Obese": {
       "macro_character": 0.735,

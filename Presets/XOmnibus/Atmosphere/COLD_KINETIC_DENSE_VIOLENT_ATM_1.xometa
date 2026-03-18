@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.946,
-    "source": "Orbital",
-    "target": "OddOscar",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "OddOscar",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.946
+      }
+    ]
   },
   "dna": {
     "aggression": 0.977,
@@ -31,7 +35,7 @@
     "SPACE": 0.469
   },
   "mood": "Atmosphere",
-  "name": "COLD_KINETIC_DENSE_VIOLENT_ATM_1",
+  "name": "Flux Force 3",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.599,

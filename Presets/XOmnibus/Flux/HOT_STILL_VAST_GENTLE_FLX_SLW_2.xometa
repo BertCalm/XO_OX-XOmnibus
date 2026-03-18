@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.663,
-    "source": "Ouroboros",
-    "target": "Oracle",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oracle",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.663
+      }
+    ]
   },
   "dna": {
     "aggression": 0.027,
@@ -31,7 +35,7 @@
     "SPACE": 0.98
   },
   "mood": "Flux",
-  "name": "HOT_STILL_VAST_GENTLE_FLX_SLW_2",
+  "name": "Node Horizon",
   "parameters": {
     "Oracle": {
       "macro_character": 0.621,

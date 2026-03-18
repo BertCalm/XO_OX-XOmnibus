@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.941,
-    "source": "Origami",
-    "target": "Onset",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Onset",
+        "type": "PITCH_SYNC",
+        "amount": 0.941
+      }
+    ]
   },
   "dna": {
     "aggression": 0.371,

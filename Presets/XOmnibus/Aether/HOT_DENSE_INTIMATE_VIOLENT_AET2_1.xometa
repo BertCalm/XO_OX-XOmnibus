@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7887,
-    "source": "Oracle",
-    "target": "Orbital",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Orbital",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.7887
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8728,
@@ -31,7 +35,7 @@
     "SPACE": 0.0382
   },
   "mood": "Aether",
-  "name": "HOT_DENSE_INTIMATE_VIOLENT_AET2_1",
+  "name": "Rust Heavy",
   "parameters": {
     "Oracle": {
       "macro_character": 0.3713,

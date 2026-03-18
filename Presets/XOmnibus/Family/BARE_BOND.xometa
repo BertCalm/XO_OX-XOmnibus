@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.513,
-    "source": "Oblique",
-    "target": "Obsidian",
-    "type": "SPECTRAL_GATE"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Obsidian",
+        "type": "SPECTRAL_GATE",
+        "amount": 0.513
+      }
+    ]
   },
   "dna": {
     "aggression": 0.211,

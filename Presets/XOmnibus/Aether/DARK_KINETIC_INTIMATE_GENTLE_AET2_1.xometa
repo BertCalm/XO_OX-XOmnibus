@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8832,
-    "source": "Orbital",
-    "target": "Ombre",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Ombre",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.8832
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0273,
@@ -31,7 +35,7 @@
     "SPACE": 0.0718
   },
   "mood": "Aether",
-  "name": "DARK_KINETIC_INTIMATE_GENTLE_AET2_1",
+  "name": "Tone Flutter 3",
   "parameters": {
     "Ombre": {
       "macro_character": 0.1022,

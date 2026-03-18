@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.552,
-    "source": "Overdub",
-    "target": "OddfeliX",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "OddfeliX",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.552
+      }
+    ]
   },
   "dna": {
     "aggression": 0.97,
@@ -31,7 +35,7 @@
     "SPACE": 0.776
   },
   "mood": "Foundation",
-  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_FND_5",
+  "name": "Shard Grit",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.267,

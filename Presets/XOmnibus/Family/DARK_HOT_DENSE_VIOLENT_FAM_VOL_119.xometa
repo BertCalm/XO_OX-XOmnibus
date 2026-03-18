@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.743,
-    "source": "OddfeliX",
-    "target": "Ole",
-    "type": "RHYTHM_LOCK"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Ole",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.743
+      }
+    ]
   },
   "dna": {
     "aggression": 0.977,
@@ -31,7 +35,7 @@
     "SPACE": 0.514
   },
   "mood": "Family",
-  "name": "DARK_HOT_DENSE_VIOLENT_FAM_VOL_119",
+  "name": "Smoke Grit 4",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.525,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.115,
-    "source": "Ouroboros",
-    "target": "Oblong",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oblong",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.115
+      }
+    ]
   },
   "dna": {
     "aggression": 0.101,

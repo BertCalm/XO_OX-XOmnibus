@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.57,
-    "source": "Oracle",
-    "target": "Optic",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Optic",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.57
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5654,
@@ -31,7 +35,7 @@
     "SPACE": 0.9457
   },
   "mood": "Atmosphere",
-  "name": "DARK_COLD_KINETIC_SPARSE_VAST_ATM_3",
+  "name": "Thread Shimmer 2",
   "parameters": {
     "Optic": {
       "macro_character": 0.0498,

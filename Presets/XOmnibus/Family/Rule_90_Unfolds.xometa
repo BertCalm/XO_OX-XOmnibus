@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Rule 90 Unfolds",
-  "parameters": {},
+  "parameters": {
+    "Outwit": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

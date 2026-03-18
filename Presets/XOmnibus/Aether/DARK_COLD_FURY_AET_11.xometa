@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.775,
-    "source": "Overbite",
-    "target": "Ocelot",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Ocelot",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.775
+      }
+    ]
   },
   "dna": {
     "aggression": 0.889,

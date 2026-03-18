@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8171,
-    "source": "Ottoni",
-    "target": "Ole",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Ole",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.8171
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9881,
@@ -31,7 +35,7 @@
     "SPACE": 0.421
   },
   "mood": "Prism",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_PRS_DRK_1",
+  "name": "Tone Crush",
   "parameters": {
     "Ole": {
       "macro_character": 0.7054,

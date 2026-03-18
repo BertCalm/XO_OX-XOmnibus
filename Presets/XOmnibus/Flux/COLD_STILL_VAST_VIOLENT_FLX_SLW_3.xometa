@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.682,
-    "source": "Overdub",
-    "target": "Optic",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Optic",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.682
+      }
+    ]
   },
   "dna": {
     "aggression": 0.899,
@@ -31,7 +35,7 @@
     "SPACE": 0.988
   },
   "mood": "Flux",
-  "name": "COLD_STILL_VAST_VIOLENT_FLX_SLW_3",
+  "name": "Signal Canyon 2",
   "parameters": {
     "Optic": {
       "macro_character": 0.636,

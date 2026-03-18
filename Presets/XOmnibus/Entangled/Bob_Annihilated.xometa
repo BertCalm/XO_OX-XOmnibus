@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Bob Annihilated",
-  "parameters": {},
+  "parameters": {
+    "Oblong": {},
+    "Ouroboros": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.91,

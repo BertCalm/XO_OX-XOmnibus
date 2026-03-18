@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.715,
-    "source": "OddOscar",
-    "target": "Origami",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.715
+      }
+    ]
   },
   "dna": {
     "aggression": 0.481,
@@ -31,7 +35,7 @@
     "SPACE": 0.277
   },
   "mood": "Foundation",
-  "name": "COLD_STILL_SPARSE_INTIMATE_FND_1",
+  "name": "Thread Shard",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.136,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6789,
-    "source": "Organon",
-    "target": "OddOscar",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "OddOscar",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.6789
+      }
+    ]
   },
   "dna": {
     "aggression": 0.6877,
@@ -31,7 +35,7 @@
     "SPACE": 0.0724
   },
   "mood": "Aether",
-  "name": "BRIGHT_WARM_KINETIC_INTIMATE_AET2_5",
+  "name": "Sunrise Drift",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.99,

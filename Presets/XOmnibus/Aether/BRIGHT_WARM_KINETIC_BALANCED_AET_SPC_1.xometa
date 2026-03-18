@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.632,
-    "source": "OddfeliX",
-    "target": "Oracle",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oracle",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.632
+      }
+    ]
   },
   "dna": {
     "aggression": 0.094,
@@ -31,7 +35,7 @@
     "SPACE": 0.571
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM KINETIC BALANCED AET SPC 1",
+  "name": "BRIGHT WARM KINETIC BALANCE...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.91,

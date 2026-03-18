@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Origami",
-    "target": "Odyssey",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Odyssey",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.65
+      }
+    ]
   },
   "description": "Origami shifts Odyssey's frequency at each crease — partials scattered by paper logic.",
   "dna": {

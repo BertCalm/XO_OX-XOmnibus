@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.633,
-    "source": "Osteria",
-    "target": "Ohm",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Ohm",
+        "type": "PITCH_SYNC",
+        "amount": 0.633
+      }
+    ]
   },
   "dna": {
     "aggression": 0.54,
@@ -31,7 +35,7 @@
     "SPACE": 0.694
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_DENSE_FAM_VOL_8",
+  "name": "Radiant Flutter",
   "parameters": {
     "Ohm": {
       "macro_character": 0.919,

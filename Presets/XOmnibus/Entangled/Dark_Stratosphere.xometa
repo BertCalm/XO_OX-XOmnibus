@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.83,
-    "source": "Odyssey",
-    "target": "Opal",
-    "type": "FEEDBACK"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Opal",
+        "type": "FEEDBACK",
+        "amount": 0.83
+      }
+    ]
   },
   "dna": {
     "aggression": 0.21,

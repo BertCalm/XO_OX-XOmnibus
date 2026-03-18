@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.476,
-    "source": "OddfeliX",
-    "target": "Oblong",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oblong",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.476
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.963
   },
   "mood": "Foundation",
-  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_FND_4",
+  "name": "Glow Horizon 2",
   "parameters": {
     "Oblong": {
       "macro_character": 1.0,

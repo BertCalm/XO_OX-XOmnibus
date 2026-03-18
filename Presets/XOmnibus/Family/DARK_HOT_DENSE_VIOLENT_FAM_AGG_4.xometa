@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.975,
-    "source": "Orphica",
-    "target": "Ottoni",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ottoni",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.975
+      }
+    ]
   },
   "dna": {
     "aggression": 0.984,
@@ -31,7 +35,7 @@
     "SPACE": 0.677
   },
   "mood": "Family",
-  "name": "DARK_HOT_DENSE_VIOLENT_FAM_AGG_4",
+  "name": "Ember Storm",
   "parameters": {
     "Orphica": {
       "macro_character": 0.863,

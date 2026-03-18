@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6009,
-    "source": "Oblique",
-    "target": "Optic",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Optic",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.6009
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9037,
@@ -31,7 +35,7 @@
     "SPACE": 0.325
   },
   "mood": "Flux",
-  "name": "BRIGHT_KINETIC_SPARSE_VIOLENT_FLX_1",
+  "name": "Wave Grit 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.8087,

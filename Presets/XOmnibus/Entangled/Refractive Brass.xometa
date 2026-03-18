@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6,
-    "source": "Ottoni",
-    "target": "Optic",
-    "type": "SPECTRAL_REFRACTION"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Optic",
+        "type": "SPECTRAL_REFRACTION",
+        "amount": 0.6
+      }
+    ]
   },
   "description": "Dense brass chord refracted through optical prism — harmonic partials separated",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Refractive Brass",
-  "parameters": {},
+  "parameters": {
+    "Ottoni": {},
+    "Optic": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.52,
@@ -43,5 +50,13 @@
     "optic",
     "triple"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

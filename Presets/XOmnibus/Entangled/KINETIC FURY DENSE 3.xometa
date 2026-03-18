@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Optic \u00d7 Overworld \u2014 Velocity Couple coupling at extreme DNA corner.",
+  "description": "Optic × Overworld — Velocity Couple coupling at extreme DNA corner.",
   "tags": [
     "kinetic",
     "optic",
@@ -33,7 +33,10 @@
     "space": 0.548,
     "aggression": 0.881
   },
-  "parameters": {},
+  "parameters": {
+    "Optic": {},
+    "Overworld": {}
+  },
   "coupling": {
     "pairs": [
       {

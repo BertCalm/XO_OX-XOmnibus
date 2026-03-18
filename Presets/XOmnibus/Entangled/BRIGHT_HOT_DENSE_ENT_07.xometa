@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.94,
-    "source": "Orphica",
-    "target": "Orbital",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Orbital",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.94
+      }
+    ]
   },
   "dna": {
     "aggression": 0.459,

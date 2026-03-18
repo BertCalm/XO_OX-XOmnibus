@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.497,
-    "source": "OddfeliX",
-    "target": "Origami",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Origami",
+        "type": "PITCH_SYNC",
+        "amount": 0.497
+      }
+    ]
   },
   "dna": {
     "aggression": 0.966,
@@ -31,7 +35,7 @@
     "SPACE": 0.643
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_COLD_DENSE_VIOLENT_ATM_2",
+  "name": "Mirror Edge",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.495,

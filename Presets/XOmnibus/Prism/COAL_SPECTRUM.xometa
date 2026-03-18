@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.389,
-    "source": "Oceanic",
-    "target": "Overdub",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Overdub",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.389
+      }
+    ]
   },
   "dna": {
     "aggression": 0.479,

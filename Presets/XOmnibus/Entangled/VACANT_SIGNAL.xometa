@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.318,
-    "source": "Orbital",
-    "target": "Oceanic",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Oceanic",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.318
+      }
+    ]
   },
   "dna": {
     "aggression": 0.735,

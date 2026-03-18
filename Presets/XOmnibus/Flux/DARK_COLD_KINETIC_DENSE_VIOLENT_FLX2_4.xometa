@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.673,
-    "source": "Ouroboros",
-    "target": "Oblique",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oblique",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.673
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9594,
@@ -31,7 +35,7 @@
     "SPACE": 0.5828
   },
   "mood": "Flux",
-  "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FLX2_4",
+  "name": "Thread Fang",
   "parameters": {
     "Oblique": {
       "macro_character": 0.1011,

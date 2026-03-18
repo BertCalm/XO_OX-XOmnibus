@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9208,
-    "source": "Oblique",
-    "target": "Organon",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Organon",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.9208
+      }
+    ]
   },
   "dna": {
     "aggression": 0.6395,

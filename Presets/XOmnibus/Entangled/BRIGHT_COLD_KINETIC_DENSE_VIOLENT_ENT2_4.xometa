@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.955,
-    "source": "OddfeliX",
-    "target": "Orbital",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Orbital",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.955
+      }
+    ]
   },
   "dna": {
     "aggression": 0.99,
@@ -31,7 +35,7 @@
     "SPACE": 0.498
   },
   "mood": "Entangled",
-  "name": "BRIGHT COLD KINETIC DENSE VIOLENT ENT2 4",
+  "name": "BRIGHT COLD KINETIC DENSE V...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.51,

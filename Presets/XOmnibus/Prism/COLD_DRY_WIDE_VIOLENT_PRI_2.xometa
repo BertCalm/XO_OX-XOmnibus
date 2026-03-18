@@ -33,7 +33,9 @@
   ],
   "mood": "Prism",
   "name": "COLD DRY WIDE VIOLENT PRI 2",
-  "parameters": {},
+  "parameters": {
+    "Ouroboros": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

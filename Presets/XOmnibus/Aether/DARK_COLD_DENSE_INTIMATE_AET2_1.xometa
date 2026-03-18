@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6576,
-    "source": "Origami",
-    "target": "Oceanic",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oceanic",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.6576
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3619,
@@ -31,7 +35,7 @@
     "SPACE": 0.045
   },
   "mood": "Aether",
-  "name": "DARK_COLD_DENSE_INTIMATE_AET2_1",
+  "name": "Shard Thick",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.0186,

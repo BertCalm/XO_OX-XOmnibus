@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Oblique Angle",
-  "parameters": {},
+  "parameters": {
+    "Oblique": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

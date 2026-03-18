@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Optic",
-    "target": "Osprey",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Osprey",
+        "type": "FILTER_MOD",
+        "amount": 0.65
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0574,
@@ -31,7 +35,7 @@
     "SPACE": 0.9562
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_ATM_2",
+  "name": "Solar Abyss",
   "parameters": {
     "Optic": {
       "macro_character": 0.9449,

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.867,
     "pairs": [
       {
         "amount": 0.867,
@@ -9,10 +8,7 @@
         "target": "Octopus",
         "type": "SPECTRAL_MORPH"
       }
-    ],
-    "source": "OddfeliX",
-    "target": "Octopus",
-    "type": "SPECTRAL_MORPH"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Dark Cold Dense Intimate character entanglement — OCTOPUS × ODDFELIX via Spectral Morph. Extreme DNA zones push sound design to the edges.",

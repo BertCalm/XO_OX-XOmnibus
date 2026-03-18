@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.68,
-    "source": "Overworld",
-    "target": "Ombre",
-    "type": "HARMONIC_BLEND"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Ombre",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.68
+      }
+    ]
   },
   "description": "NES crystallinity meets Ombre's gradient shadow in a vast frozen nave.",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Chip Ice Cathedral",
-  "parameters": {},
+  "parameters": {
+    "Overworld": {},
+    "Ombre": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.2,
@@ -43,5 +50,13 @@
     "chiptune",
     "spacious"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.981,
-    "source": "Ouroboros",
-    "target": "Obese",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Obese",
+        "type": "PITCH_SYNC",
+        "amount": 0.981
+      }
+    ]
   },
   "dna": {
     "aggression": 0.981,
@@ -31,7 +35,7 @@
     "SPACE": 0.788
   },
   "mood": "Foundation",
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FND_AGG_3",
+  "name": "Velvet Edge",
   "parameters": {
     "Obese": {
       "macro_character": 0.849,

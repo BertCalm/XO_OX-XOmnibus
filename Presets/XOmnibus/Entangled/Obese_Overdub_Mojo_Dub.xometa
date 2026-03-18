@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.85,
-    "source": "Obese",
-    "target": "Overdub",
-    "type": "SIDECHAIN_DUCK"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Overdub",
+        "type": "SIDECHAIN_DUCK",
+        "amount": 0.85
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8,

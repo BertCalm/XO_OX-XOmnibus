@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8826,
     "pairs": [
       {
         "amount": 0.8826,
@@ -9,10 +8,7 @@
         "target": "Orphica",
         "type": "SPECTRAL_MORPH"
       }
-    ],
-    "source": "Orca",
-    "target": "Orphica",
-    "type": "SPECTRAL_MORPH"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Cold Vast Violent character entanglement — ORPHICA × ORCA via Spectral Morph. Extreme DNA zones push sound design to the edges.",

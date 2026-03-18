@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.474,
-    "source": "Organon",
-    "target": "Optic",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Optic",
+        "type": "FILTER_MOD",
+        "amount": 0.474
+      }
+    ]
   },
   "dna": {
     "aggression": 0.042,

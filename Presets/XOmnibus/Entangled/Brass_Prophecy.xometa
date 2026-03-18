@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "intensity": "Deep",
-    "source": "Ottoni",
-    "target": "Oracle",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.74
+      }
+    ]
   },
   "description": "Timbre blend weaves triple brass into ORACLE's GENDY waveform — warmth 0.84 grounds the prophecy.",
   "dna": {

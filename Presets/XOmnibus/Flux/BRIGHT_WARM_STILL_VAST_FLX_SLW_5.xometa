@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.702,
-    "source": "Oracle",
-    "target": "Oceanic",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Oceanic",
+        "type": "PITCH_SYNC",
+        "amount": 0.702
+      }
+    ]
   },
   "dna": {
     "aggression": 0.356,
@@ -31,7 +35,7 @@
     "SPACE": 0.886
   },
   "mood": "Flux",
-  "name": "BRIGHT_WARM_STILL_VAST_FLX_SLW_5",
+  "name": "Halo Horizon",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.323,

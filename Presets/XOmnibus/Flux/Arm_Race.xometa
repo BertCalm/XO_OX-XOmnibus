@@ -33,7 +33,9 @@
     "space": 0.05,
     "aggression": 0.91
   },
-  "parameters": {},
+  "parameters": {
+    "Outwit": {}
+  },
   "tags": [
     "flux",
     "high-flux",
@@ -41,5 +43,5 @@
     "arms",
     "escalation"
   ],
-  "description": "Outwit 8-arm CA in arms race \u2014 all rules escalating toward maximum complexity."
+  "description": "Outwit 8-arm CA in arms race — all rules escalating toward maximum complexity."
 }

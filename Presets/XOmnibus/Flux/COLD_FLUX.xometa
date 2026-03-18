@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.4323,
-    "source": "OddfeliX",
-    "target": "Obese",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.4323
+      }
+    ]
   },
   "dna": {
     "aggression": 0.6767,

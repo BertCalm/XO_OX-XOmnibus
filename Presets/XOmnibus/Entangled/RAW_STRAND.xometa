@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.875,
-    "source": "Overdub",
-    "target": "Owlfish",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Owlfish",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.875
+      }
+    ]
   },
   "dna": {
     "aggression": 0.639,

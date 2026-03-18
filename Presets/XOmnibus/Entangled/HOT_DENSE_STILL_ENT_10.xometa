@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.919,
-    "source": "OddfeliX",
-    "target": "Overlap",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Overlap",
+        "type": "CHAOS_INJECT",
+        "amount": 0.919
+      }
+    ]
   },
   "dna": {
     "aggression": 0.486,

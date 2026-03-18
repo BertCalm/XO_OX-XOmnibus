@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.72,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Organon",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Organon",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.72
+      }
+    ]
   },
   "description": "Envelope linking: OLE's decay triggers ORGANON's protein-synthesis envelope.",
   "dna": {

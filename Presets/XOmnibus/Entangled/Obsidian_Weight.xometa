@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.59,
-    "source": "Ouroboros",
-    "target": "Ombre",
-    "type": "AMP_MOD"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Ombre",
+        "type": "AMP_MOD",
+        "amount": 0.59
+      }
+    ]
   },
   "dna": {
     "aggression": 0.65,

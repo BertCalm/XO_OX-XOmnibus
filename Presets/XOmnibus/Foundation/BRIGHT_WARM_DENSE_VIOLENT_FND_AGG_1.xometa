@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.787,
-    "source": "Origami",
-    "target": "OddOscar",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "OddOscar",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.787
+      }
+    ]
   },
   "dna": {
     "aggression": 0.976,
@@ -31,7 +35,7 @@
     "SPACE": 0.772
   },
   "mood": "Foundation",
-  "name": "BRIGHT_WARM_DENSE_VIOLENT_FND_AGG_1",
+  "name": "Golden Massive",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.583,

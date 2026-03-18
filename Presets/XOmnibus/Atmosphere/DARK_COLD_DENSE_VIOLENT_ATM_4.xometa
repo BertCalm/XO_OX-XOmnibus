@@ -33,7 +33,9 @@
   ],
   "mood": "Atmosphere",
   "name": "DARK COLD DENSE VIOLENT ATM 4",
-  "parameters": {},
+  "parameters": {
+    "Obbligato": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

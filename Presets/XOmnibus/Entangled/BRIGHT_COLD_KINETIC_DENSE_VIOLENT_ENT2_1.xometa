@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.966,
-    "source": "Ombre",
-    "target": "Ouroboros",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Ouroboros",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.966
+      }
+    ]
   },
   "dna": {
     "aggression": 0.979,
@@ -31,7 +35,7 @@
     "SPACE": 0.449
   },
   "mood": "Entangled",
-  "name": "BRIGHT COLD KINETIC DENSE VIOLENT ENT2 1",
+  "name": "BRIGHT COLD KINETIC DENSE V...",
   "parameters": {
     "Ombre": {
       "macro_character": 0.523,

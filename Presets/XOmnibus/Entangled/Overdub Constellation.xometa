@@ -33,7 +33,10 @@
   ],
   "mood": "Entangled",
   "name": "Overdub Constellation",
-  "parameters": {},
+  "parameters": {
+    "Ohm": {},
+    "Overdub": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

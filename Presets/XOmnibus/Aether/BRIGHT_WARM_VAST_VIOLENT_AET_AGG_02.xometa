@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.845,
-    "source": "Overworld",
-    "target": "Oceanic",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Oceanic",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.845
+      }
+    ]
   },
   "dna": {
     "aggression": 0.879,
@@ -31,7 +35,7 @@
     "SPACE": 0.941
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM VAST VIOLENT AET AGG 2",
+  "name": "BRIGHT WARM VAST VIOLENT AE...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.869,

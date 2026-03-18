@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Origami \u00d7 Obsidian \u2014 Envelope Link coupling at extreme DNA corner.",
+  "description": "Origami × Obsidian — Envelope Link coupling at extreme DNA corner.",
   "tags": [
     "cold",
     "origami",
@@ -33,7 +33,10 @@
     "space": 0.066,
     "aggression": 0.949
   },
-  "parameters": {},
+  "parameters": {
+    "Origami": {},
+    "Obsidian": {}
+  },
   "coupling": {
     "pairs": [
       {

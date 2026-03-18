@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.456,
-    "source": "Origami",
-    "target": "OddfeliX",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "OddfeliX",
+        "type": "PITCH_SYNC",
+        "amount": 0.456
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0418,
@@ -31,7 +35,7 @@
     "SPACE": 0.9695
   },
   "mood": "Atmosphere",
-  "name": "HOT_KINETIC_SPARSE_VAST_GENTLE_ATM_3",
+  "name": "Radiant Canyon",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.8344,

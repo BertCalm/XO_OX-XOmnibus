@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.851,
-    "source": "Overlap",
-    "target": "Onset",
-    "type": "CHAOS_INJECTION"
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Onset",
+        "type": "CHAOS_INJECTION",
+        "amount": 0.851
+      }
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Onset rhythmic density modulates OVERLAP mod rate — drum patterns animate the FDN's internal flutter",
@@ -62,5 +66,13 @@
     "fdn",
     "reverb"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.497,
+    "warmth": 0.5,
+    "movement": 0.203,
+    "density": 0.5,
+    "space": 0.068,
+    "aggression": 0.3
+  }
 }

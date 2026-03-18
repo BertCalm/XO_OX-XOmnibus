@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.799,
-    "source": "Oblong",
-    "target": "Overdub",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overdub",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.799
+      }
+    ]
   },
   "dna": {
     "aggression": 0.894,
@@ -31,7 +35,7 @@
     "SPACE": 0.665
   },
   "mood": "Foundation",
-  "name": "DARK_DENSE_INTIMATE_VIOLENT_FND_3",
+  "name": "Wave Thick",
   "parameters": {
     "Oblong": {
       "macro_character": 0.659,

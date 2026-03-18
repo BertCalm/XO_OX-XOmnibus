@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Oracle's Menu",
-  "parameters": {},
+  "parameters": {
+    "Osteria": {},
+    "Oracle": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

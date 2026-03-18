@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.85,
-    "source": "Origami",
-    "target": "Odyssey",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Odyssey",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.85
+      }
+    ]
   },
   "description": "A fold that takes forever — envelope-linked to geological drift, near-static cold.",
   "dna": {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.3069,
-    "source": "Ole",
-    "target": "Owlfish",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Owlfish",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.3069
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1016,

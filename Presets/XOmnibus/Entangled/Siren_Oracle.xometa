@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "intensity": "Deep",
-    "source": "Orphica",
-    "target": "Oracle",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.74
+      }
+    ]
   },
   "description": "Filter coupling — ORPHICA's bright filter lattice intersects ORACLE's maqam framework — brightness 0.90.",
   "dna": {

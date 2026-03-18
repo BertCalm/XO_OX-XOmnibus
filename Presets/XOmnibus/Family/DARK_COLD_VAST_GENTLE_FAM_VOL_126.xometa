@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.537,
-    "source": "Ottoni",
-    "target": "Osteria",
-    "type": "ENVELOPE_MIRROR"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Osteria",
+        "type": "ENVELOPE_MIRROR",
+        "amount": 0.537
+      }
+    ]
   },
   "dna": {
     "aggression": 0.094,
@@ -31,7 +35,7 @@
     "SPACE": 0.916
   },
   "mood": "Family",
-  "name": "DARK_COLD_VAST_GENTLE_FAM_VOL_126",
+  "name": "Grain Dome",
   "parameters": {
     "Osteria": {
       "macro_character": 0.058,

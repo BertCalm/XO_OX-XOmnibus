@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Obscura",
-    "target": "Orbital",
-    "type": "HARMONIC_LOCK"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orbital",
+        "type": "HARMONIC_LOCK",
+        "amount": 0.65
+      }
+    ]
   },
   "dna": {
     "aggression": 0.2,

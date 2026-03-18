@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6103,
-    "source": "Ole",
-    "target": "Origami",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Origami",
+        "type": "FILTER_MOD",
+        "amount": 0.6103
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9084,
@@ -31,7 +35,7 @@
     "SPACE": 0.9026
   },
   "mood": "Prism",
-  "name": "DARK_SPARSE_VAST_VIOLENT_PRS_DRK_1",
+  "name": "Node Storm",
   "parameters": {
     "Ole": {
       "macro_character": 0.6591,

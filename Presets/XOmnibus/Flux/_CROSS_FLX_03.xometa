@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.549,
-    "source": "Ouroboros",
-    "target": "Overdub",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overdub",
+        "type": "FILTER_MOD",
+        "amount": 0.549
+      }
+    ]
   },
   "dna": {
     "aggression": 0.955,

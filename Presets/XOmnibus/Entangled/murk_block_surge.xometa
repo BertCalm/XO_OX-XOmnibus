@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9,
-    "source": "Oblong",
-    "target": "Obscura",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Obscura",
+        "type": "CHAOS_INJECT",
+        "amount": 0.9
+      }
+    ]
   },
   "created": "2026-03-16",
   "dna": {

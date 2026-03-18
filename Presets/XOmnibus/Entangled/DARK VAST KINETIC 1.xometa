@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Octopus \u00d7 Oblong \u2014 Amplitude Mod coupling at extreme DNA corner.",
+  "description": "Octopus × Oblong — Amplitude Mod coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "octopus",
@@ -33,7 +33,10 @@
     "space": 0.929,
     "aggression": 0.4
   },
-  "parameters": {},
+  "parameters": {
+    "Octopus": {},
+    "Oblong": {}
+  },
   "coupling": {
     "pairs": [
       {

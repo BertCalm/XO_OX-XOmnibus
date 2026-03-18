@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ole \u00d7 Optic \u2014 Resonance Share coupling at extreme DNA corner.",
+  "description": "Ole × Optic — Resonance Share coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "ole",
@@ -33,7 +33,10 @@
     "space": 0.533,
     "aggression": 0.572
   },
-  "parameters": {},
+  "parameters": {
+    "Ole": {},
+    "Optic": {}
+  },
   "coupling": {
     "pairs": [
       {

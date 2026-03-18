@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Pixel Bioluminescence",
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {},
+    "Overworld": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

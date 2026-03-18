@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.313,
-    "source": "OddfeliX",
-    "target": "Oracle",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oracle",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.313
+      }
+    ]
   },
   "dna": {
     "aggression": 0.383,

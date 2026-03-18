@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.88,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Ouroboros",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Ouroboros",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.88
+      }
+    ]
   },
   "description": "Spectral morphing between hibiscus harmonic burst and OUROBOROS's self-replicating noise.",
   "dna": {

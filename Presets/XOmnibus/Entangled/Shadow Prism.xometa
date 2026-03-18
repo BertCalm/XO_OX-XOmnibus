@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.746,
-    "source": "Oblique",
-    "target": "Ombre",
-    "type": "ENVELOPE_SHARING"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ombre",
+        "type": "ENVELOPE_SHARING",
+        "amount": 0.746
+      }
+    ]
   },
   "description": "Ombre gradient as the darkening medium inside the prism — light entering full-spectrum and exiting monochromatic mauve.",
   "engines": [
@@ -77,5 +81,13 @@
     "coupling",
     "prismatic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

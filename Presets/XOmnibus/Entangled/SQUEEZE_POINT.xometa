@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.395,
-    "source": "Overlap",
-    "target": "Octopus",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Octopus",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.395
+      }
+    ]
   },
   "dna": {
     "aggression": 0.077,

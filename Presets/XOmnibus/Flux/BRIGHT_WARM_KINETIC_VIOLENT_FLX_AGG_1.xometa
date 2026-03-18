@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.98,
-    "source": "Oracle",
-    "target": "Odyssey",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Odyssey",
+        "type": "CHAOS_INJECT",
+        "amount": 0.98
+      }
+    ]
   },
   "dna": {
     "aggression": 0.964,
@@ -31,7 +35,7 @@
     "SPACE": 0.56
   },
   "mood": "Flux",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FLX_AGG_1",
+  "name": "Solar Surge 2",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.652,

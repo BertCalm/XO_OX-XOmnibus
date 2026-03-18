@@ -33,7 +33,9 @@
   ],
   "mood": "Atmosphere",
   "name": "BRIGHT DRY QUIET OPEN ATM 5",
-  "parameters": {},
+  "parameters": {
+    "Origami": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

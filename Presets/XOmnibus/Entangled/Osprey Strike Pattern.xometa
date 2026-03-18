@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Osprey Strike Pattern",
-  "parameters": {},
+  "parameters": {
+    "Osprey": {},
+    "Onset": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

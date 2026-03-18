@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.89,
-    "source": "Ouroboros",
-    "target": "Overworld",
-    "type": "LFO_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overworld",
+        "type": "LFO_SYNC",
+        "amount": 0.89
+      }
+    ]
   },
   "dna": {
     "aggression": 0.32,

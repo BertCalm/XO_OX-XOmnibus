@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.76,
-    "source": "Opal",
-    "target": "Odyssey",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Odyssey",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.76
+      }
+    ]
   },
   "description": "Spatially coupled grains and wavetable — each lives at its own frozen coordinate.",
   "dna": {

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.72,
     "pairs": [
       {
         "amount": 0.72,
@@ -9,10 +8,7 @@
         "engineB": "Obsidian",
         "type": "HARMONIC_FOLD"
       }
-    ],
-    "source": "Outwit",
-    "target": "Obsidian",
-    "type": "HARMONIC_FOLD"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OBSIDIAN's dark volcanic crystalline character (obsidian physical-modelling). Coupling: Harmonic Fold.",

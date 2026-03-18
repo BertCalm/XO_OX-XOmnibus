@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.423,
-    "source": "Octopus",
-    "target": "Orca",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Orca",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.423
+      }
+    ]
   },
   "dna": {
     "aggression": 0.965,

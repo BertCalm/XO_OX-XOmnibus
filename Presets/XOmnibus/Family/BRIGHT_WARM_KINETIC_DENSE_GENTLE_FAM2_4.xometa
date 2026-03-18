@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.472,
-    "source": "OddOscar",
-    "target": "Orphica",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Orphica",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.472
+      }
+    ]
   },
   "dna": {
     "aggression": 0.02,
@@ -31,7 +35,7 @@
     "SPACE": 0.649
   },
   "mood": "Family",
-  "name": "BRIGHT WARM KINETIC DENSE GENTLE FAM2 4",
+  "name": "BRIGHT WARM KINETIC DENSE G...",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.911,

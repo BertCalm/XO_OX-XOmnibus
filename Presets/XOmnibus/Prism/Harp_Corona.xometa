@@ -24,7 +24,9 @@
   ],
   "mood": "Prism",
   "name": "Harp Corona",
-  "parameters": {},
+  "parameters": {
+    "Orphica": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.1,

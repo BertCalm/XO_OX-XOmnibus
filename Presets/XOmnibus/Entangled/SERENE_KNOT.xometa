@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.895,
-    "source": "OddfeliX",
-    "target": "Overworld",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Overworld",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.895
+      }
+    ]
   },
   "dna": {
     "aggression": 0.19,

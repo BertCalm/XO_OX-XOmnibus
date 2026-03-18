@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.138,
-    "source": "Ocelot",
-    "target": "Ottoni",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Ottoni",
+        "type": "CHAOS_INJECT",
+        "amount": 0.138
+      }
+    ]
   },
   "dna": {
     "aggression": 0.079,

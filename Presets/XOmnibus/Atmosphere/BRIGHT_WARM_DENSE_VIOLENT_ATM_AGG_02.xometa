@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.818,
-    "source": "Oceanic",
-    "target": "Organon",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Organon",
+        "type": "FILTER_MOD",
+        "amount": 0.818
+      }
+    ]
   },
   "dna": {
     "aggression": 0.923,
@@ -31,7 +35,7 @@
     "SPACE": 0.665
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT WARM DENSE VIOLENT ATM AGG 2",
+  "name": "BRIGHT WARM DENSE VIOLENT A...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.914,

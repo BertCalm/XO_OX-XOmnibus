@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.808,
-    "source": "Obbligato",
-    "target": "Obsidian",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Obsidian",
+        "type": "CHAOS_INJECT",
+        "amount": 0.808
+      }
+    ]
   },
   "dna": {
     "aggression": 0.926,
@@ -31,7 +35,7 @@
     "SPACE": 0.106
   },
   "mood": "Entangled",
-  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_ENT_AGG_3",
+  "name": "Fragment Crush",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.628,

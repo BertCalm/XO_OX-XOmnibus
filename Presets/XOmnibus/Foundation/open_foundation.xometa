@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.943,
-    "source": "Osteria",
-    "target": "Ocelot",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Ocelot",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.943
+      }
+    ]
   },
   "dna": {
     "aggression": 0.762,

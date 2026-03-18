@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.937,
-    "source": "Osprey",
-    "target": "Ombre",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Ombre",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.937
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5651,
@@ -31,7 +35,7 @@
     "SPACE": 0.0298
   },
   "mood": "Aether",
-  "name": "BRIGHT_COLD_STILL_INTIMATE_AET2_5",
+  "name": "Glass Strike",
   "parameters": {
     "Ombre": {
       "macro_character": 0.8883,

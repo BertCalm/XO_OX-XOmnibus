@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Fractal Density",
-  "parameters": {},
+  "parameters": {
+    "Ouroboros": {},
+    "Oblong": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.9,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.626,
-    "source": "Overdub",
-    "target": "Obbligato",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Obbligato",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.626
+      }
+    ]
   },
   "dna": {
     "aggression": 0.944,
@@ -31,7 +35,7 @@
     "SPACE": 0.062
   },
   "mood": "Family",
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FAM_VOL_142",
+  "name": "Ice Rage 3",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.458,

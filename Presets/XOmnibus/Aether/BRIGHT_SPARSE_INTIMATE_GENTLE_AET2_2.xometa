@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6037,
-    "source": "Orbital",
-    "target": "Ombre",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Ombre",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.6037
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1021,
@@ -31,7 +35,7 @@
     "SPACE": 0.054
   },
   "mood": "Aether",
-  "name": "BRIGHT_SPARSE_INTIMATE_GENTLE_AET2_2",
+  "name": "Node Current",
   "parameters": {
     "Ombre": {
       "macro_character": 0.9458,

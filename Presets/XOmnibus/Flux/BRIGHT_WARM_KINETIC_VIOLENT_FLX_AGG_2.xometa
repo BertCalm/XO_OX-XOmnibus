@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.912,
-    "source": "Odyssey",
-    "target": "Optic",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Optic",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.912
+      }
+    ]
   },
   "dna": {
     "aggression": 0.968,
@@ -31,7 +35,7 @@
     "SPACE": 0.346
   },
   "mood": "Flux",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FLX_AGG_2",
+  "name": "Solar Rage 3",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.736,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.758,
-    "source": "OddOscar",
-    "target": "Orbital",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Orbital",
+        "type": "FILTER_MOD",
+        "amount": 0.758
+      }
+    ]
   },
   "dna": {
     "aggression": 0.978,
@@ -31,7 +35,7 @@
     "SPACE": 0.919
   },
   "mood": "Aether",
-  "name": "BRIGHT DENSE VAST VIOLENT AET AGG 5",
+  "name": "BRIGHT DENSE VAST VIOLENT A...",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.924,

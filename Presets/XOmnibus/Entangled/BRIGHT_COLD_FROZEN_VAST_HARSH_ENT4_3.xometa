@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.834,
-    "source": "Orphica",
-    "target": "Obese",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Obese",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.834
+      }
+    ]
   },
   "dna": {
     "aggression": 0.877,
@@ -31,7 +35,7 @@
     "SPACE": 0.969
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_FROZEN_VAST_HARSH_ENT4_3",
+  "name": "Crystal Vast",
   "parameters": {
     "Obese": {
       "macro_character": 0.506,

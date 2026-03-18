@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.72,
-    "intensity": "Deep",
-    "source": "Orphica",
-    "target": "Ouroboros",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ouroboros",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.72
+      }
+    ]
   },
   "description": "Velocity coupling: delicate ORPHICA touch slows OUROBOROS's cycle; hard attacks accelerate it.",
   "dna": {

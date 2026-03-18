@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Orphica",
-    "target": "Ocelot",
-    "type": "ENVELOPE_SLAVE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ocelot",
+        "type": "ENVELOPE_SLAVE",
+        "amount": 0.65
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Aether",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 8",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.76,

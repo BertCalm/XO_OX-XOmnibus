@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Dark Shore Broth",
-  "parameters": {},
+  "parameters": {
+    "Osteria": {},
+    "Obsidian": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

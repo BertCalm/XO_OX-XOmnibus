@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.501,
-    "source": "Overdub",
-    "target": "Obsidian",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Obsidian",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.501
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.989
   },
   "mood": "Foundation",
-  "name": "COLD_KINETIC_SPARSE_VAST_VIOLENT_FND_5",
+  "name": "Thread Cavern",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.429,

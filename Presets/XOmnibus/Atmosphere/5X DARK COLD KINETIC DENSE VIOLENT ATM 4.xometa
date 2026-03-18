@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.88,
-    "source": "Ouroboros",
-    "target": "Opal",
-    "type": "RING_MOD"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Opal",
+        "type": "RING_MOD",
+        "amount": 0.88
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 4",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Opal": {
       "macro_character": 0.76,

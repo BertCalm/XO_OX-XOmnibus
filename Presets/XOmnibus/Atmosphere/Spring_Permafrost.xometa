@@ -33,7 +33,9 @@
     "space": 0.87,
     "aggression": 0.05
   },
-  "parameters": {},
+  "parameters": {
+    "Overdub": {}
+  },
   "tags": [
     "glacial",
     "overdub",

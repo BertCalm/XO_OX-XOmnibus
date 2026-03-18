@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.625,
-    "source": "Ohm",
-    "target": "Ouroboros",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Ouroboros",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.625
+      }
+    ]
   },
   "dna": {
     "aggression": 0.966,

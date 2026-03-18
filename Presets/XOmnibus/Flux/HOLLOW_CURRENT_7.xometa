@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6826,
-    "source": "Octopus",
-    "target": "Origami",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Origami",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.6826
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0878,

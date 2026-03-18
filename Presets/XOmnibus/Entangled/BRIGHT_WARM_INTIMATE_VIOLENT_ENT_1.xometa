@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6926,
     "pairs": [
       {
         "amount": 0.6926,
@@ -9,10 +8,7 @@
         "target": "Oceanic",
         "type": "CHAOS_INJECT"
       }
-    ],
-    "source": "Ouroboros",
-    "target": "Oceanic",
-    "type": "CHAOS_INJECT"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Bright Warm Intimate Violent character entanglement — OUROBOROS × OCEANIC via Chaos Inject. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.0652
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_ENT_1",
+  "name": "Peach Storm 3",
   "parameters": {
     "Oceanic": {
       "amp_attack": 0.1816,

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7014,
     "pairs": [
       {
         "amount": 0.7014,
@@ -9,10 +8,7 @@
         "target": "Obscura",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Ouroboros",
-    "target": "Obscura",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Cold Sparse Vast Violent character entanglement — OUROBOROS × OBSCURA via Resonance Share. Extreme DNA zones push sound design to the edges.",

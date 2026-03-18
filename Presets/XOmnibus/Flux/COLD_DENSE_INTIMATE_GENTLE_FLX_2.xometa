@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6356,
-    "source": "Ouroboros",
-    "target": "Oracle",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oracle",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.6356
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0756,
@@ -31,7 +35,7 @@
     "SPACE": 0.2176
   },
   "mood": "Flux",
-  "name": "COLD_DENSE_INTIMATE_GENTLE_FLX_2",
+  "name": "Signal Titan",
   "parameters": {
     "Oracle": {
       "macro_character": 0.7145,

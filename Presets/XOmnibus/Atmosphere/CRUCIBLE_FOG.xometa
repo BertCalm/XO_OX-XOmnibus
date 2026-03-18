@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.263,
-    "source": "Overbite",
-    "target": "Obscura",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Obscura",
+        "type": "FILTER_MOD",
+        "amount": 0.263
+      }
+    ]
   },
   "dna": {
     "aggression": 0.885,

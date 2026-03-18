@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.557,
-    "source": "Obscura",
-    "target": "Optic",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Optic",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.557
+      }
+    ]
   },
   "dna": {
     "aggression": 0.89,
@@ -31,7 +35,7 @@
     "SPACE": 0.491
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_COLD_DENSE_VIOLENT_ATM_5",
+  "name": "Ice Edge",
   "parameters": {
     "Obscura": {
       "macro_character": 0.344,

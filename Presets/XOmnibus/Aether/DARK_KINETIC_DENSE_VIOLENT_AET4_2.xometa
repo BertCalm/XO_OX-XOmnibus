@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7262,
-    "source": "OddOscar",
-    "target": "OddfeliX",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "OddfeliX",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.7262
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9323,
@@ -31,7 +35,7 @@
     "SPACE": 0.4098
   },
   "mood": "Aether",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_AET4_2",
+  "name": "Node Deep 3",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.3265,

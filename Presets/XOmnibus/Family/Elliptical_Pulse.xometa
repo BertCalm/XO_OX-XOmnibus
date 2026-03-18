@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Elliptical Pulse",
-  "parameters": {},
+  "parameters": {
+    "Orbital": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

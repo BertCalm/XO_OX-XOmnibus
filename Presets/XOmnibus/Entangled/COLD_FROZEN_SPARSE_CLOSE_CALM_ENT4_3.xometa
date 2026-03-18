@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.954,
-    "source": "Optic",
-    "target": "Onset",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Onset",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.954
+      }
+    ]
   },
   "dna": {
     "aggression": 0.086,
@@ -31,7 +35,7 @@
     "SPACE": 0.076
   },
   "mood": "Entangled",
-  "name": "COLD_FROZEN_SPARSE_CLOSE_CALM_ENT4_3",
+  "name": "Quartz Phase",
   "parameters": {
     "Onset": {
       "macro_character": 0.328,

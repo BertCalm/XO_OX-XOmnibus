@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.922,
-    "source": "Oracle",
-    "target": "Overdub",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Overdub",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.922
+      }
+    ]
   },
   "dna": {
     "aggression": 0.31,
@@ -31,7 +35,7 @@
     "SPACE": 0.481
   },
   "mood": "Flux",
-  "name": "DARK_COLD_STILL_SPARSE_FLX_SLW_3",
+  "name": "Fragment Wave",
   "parameters": {
     "Oracle": {
       "macro_character": 0.69,

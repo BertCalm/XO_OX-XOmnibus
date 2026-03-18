@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.815,
-    "source": "Ottoni",
-    "target": "Osprey",
-    "type": "SPATIAL_BIND"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Osprey",
+        "type": "SPATIAL_BIND",
+        "amount": 0.815
+      }
+    ]
   },
   "dna": {
     "aggression": 0.34,
@@ -31,7 +35,7 @@
     "SPACE": 0.899
   },
   "mood": "Family",
-  "name": "BRIGHT_COLD_KINETIC_VAST_FAM_VOL_68",
+  "name": "Chrome Orbit",
   "parameters": {
     "Osprey": {
       "macro_character": 0.506,

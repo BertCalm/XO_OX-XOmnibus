@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.978,
-    "source": "Obscura",
-    "target": "Onset",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Onset",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.978
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.7157
   },
   "mood": "Entangled",
-  "name": "BRIGHT_STILL_SPARSE_VAST_GENTLE_ENT3_5",
+  "name": "Silver Dome",
   "parameters": {
     "Obscura": {
       "macro_character": 0.7276,

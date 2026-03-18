@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.74,
-    "source": "Opal",
-    "target": "Organon",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Organon",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.74
+      }
+    ]
   },
   "dna": {
     "aggression": 0.528,
@@ -31,7 +35,7 @@
     "SPACE": 0.123
   },
   "mood": "Family",
-  "name": "BRIGHT WARM STILL INTIMATE DENSE FAM2 4",
+  "name": "BRIGHT WARM STILL INTIMATE ...",
   "parameters": {
     "Opal": {
       "macro_character": 0.959,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.675,
-    "source": "Ocelot",
-    "target": "Optic",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Optic",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.675
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4,

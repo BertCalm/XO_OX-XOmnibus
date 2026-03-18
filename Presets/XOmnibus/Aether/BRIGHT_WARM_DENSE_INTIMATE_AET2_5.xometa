@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6115,
-    "source": "Osprey",
-    "target": "Obscura",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Obscura",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.6115
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3337,
@@ -31,7 +35,7 @@
     "SPACE": 0.0849
   },
   "mood": "Aether",
-  "name": "BRIGHT_WARM_DENSE_INTIMATE_AET2_5",
+  "name": "Radiant Thick",
   "parameters": {
     "Obscura": {
       "macro_character": 0.9722,

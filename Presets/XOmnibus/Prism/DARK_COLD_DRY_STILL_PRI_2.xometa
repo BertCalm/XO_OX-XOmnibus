@@ -33,7 +33,9 @@
   ],
   "mood": "Prism",
   "name": "DARK COLD DRY STILL PRI 2",
-  "parameters": {},
+  "parameters": {
+    "Ocelot": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.85,
-    "source": "Obsidian",
-    "target": "Obese",
-    "type": "PHASE_LOCK"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Obese",
+        "type": "PHASE_LOCK",
+        "amount": 0.85
+      }
+    ]
   },
   "description": "Obsidian's hardness bearing down on XObese's mass — completely static, devastatingly heavy.",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Dead Weight Obsidian",
-  "parameters": {},
+  "parameters": {
+    "Obese": {},
+    "Obsidian": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.97,
@@ -43,5 +50,13 @@
     "heavy",
     "obsidian"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

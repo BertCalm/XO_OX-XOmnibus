@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.825,
-    "source": "Optic",
-    "target": "Opal",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Opal",
+        "type": "FILTER_MOD",
+        "amount": 0.825
+      }
+    ]
   },
   "dna": {
     "aggression": 0.936,
@@ -31,7 +35,7 @@
     "SPACE": 0.583
   },
   "mood": "Atmosphere",
-  "name": "DARK KINETIC DENSE VIOLENT ATM AGG 3",
+  "name": "DARK KINETIC DENSE VIOLENT ...",
   "parameters": {
     "Opal": {
       "macro_character": 0.02,

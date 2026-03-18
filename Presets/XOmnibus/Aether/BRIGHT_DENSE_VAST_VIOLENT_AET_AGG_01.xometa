@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.785,
-    "source": "Origami",
-    "target": "OddfeliX",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "OddfeliX",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.785
+      }
+    ]
   },
   "dna": {
     "aggression": 0.96,
@@ -31,7 +35,7 @@
     "SPACE": 0.947
   },
   "mood": "Aether",
-  "name": "BRIGHT DENSE VAST VIOLENT AET AGG 1",
+  "name": "BRIGHT DENSE VAST VIOLENT A...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.835,

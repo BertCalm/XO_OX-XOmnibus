@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.68,
-    "intensity": "Moderate",
-    "source": "Ole",
-    "target": "Oracle",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Oracle",
+        "type": "PITCH_SYNC",
+        "amount": 0.68
+      }
+    ]
   },
   "description": "Pitch sync aligns OLE's tumbadora tuning to ORACLE's microtonal breakpoint grid.",
   "dna": {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.811,
-    "source": "Odyssey",
-    "target": "Obese",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Obese",
+        "type": "CHAOS_INJECT",
+        "amount": 0.811
+      }
+    ]
   },
   "dna": {
     "aggression": 0.87,

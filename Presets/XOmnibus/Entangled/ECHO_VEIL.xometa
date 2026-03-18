@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.427,
-    "source": "OddfeliX",
-    "target": "Outwit",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Outwit",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.427
+      }
+    ]
   },
   "dna": {
     "aggression": 0.94,

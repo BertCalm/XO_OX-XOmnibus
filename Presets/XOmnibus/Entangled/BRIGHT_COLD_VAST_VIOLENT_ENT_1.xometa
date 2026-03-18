@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7465,
     "pairs": [
       {
         "amount": 0.7465,
@@ -9,10 +8,7 @@
         "target": "Obscura",
         "type": "VELOCITY_COUPLE"
       }
-    ],
-    "source": "Ohm",
-    "target": "Obscura",
-    "type": "VELOCITY_COUPLE"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Bright Cold Vast Violent character entanglement — OBSCURA × OHM via Velocity Couple. Extreme DNA zones push sound design to the edges.",

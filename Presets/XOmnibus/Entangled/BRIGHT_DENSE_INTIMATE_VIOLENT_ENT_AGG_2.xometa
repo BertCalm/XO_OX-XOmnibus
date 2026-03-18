@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.947,
-    "source": "Onset",
-    "target": "Ole",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ole",
+        "type": "CHAOS_INJECT",
+        "amount": 0.947
+      }
+    ]
   },
   "dna": {
     "aggression": 0.917,
@@ -31,7 +35,7 @@
     "SPACE": 0.081
   },
   "mood": "Entangled",
-  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_ENT_AGG_2",
+  "name": "Signal Solid",
   "parameters": {
     "Ole": {
       "macro_character": 0.604,

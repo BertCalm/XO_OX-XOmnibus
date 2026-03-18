@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OddOscar \u00d7 Odyssey \u2014 Timbre Blend coupling at extreme DNA corner.",
+  "description": "OddOscar × Odyssey — Timbre Blend coupling at extreme DNA corner.",
   "tags": [
     "cold",
     "oddoscar",
@@ -33,7 +33,10 @@
     "space": 0.892,
     "aggression": 0.483
   },
-  "parameters": {},
+  "parameters": {
+    "OddOscar": {},
+    "Odyssey": {}
+  },
   "coupling": {
     "pairs": [
       {

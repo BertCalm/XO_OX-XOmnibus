@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.503,
-    "source": "Overdub",
-    "target": "Orca",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Orca",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.503
+      }
+    ]
   },
   "dna": {
     "aggression": 0.079,

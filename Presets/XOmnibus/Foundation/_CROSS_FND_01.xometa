@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.717,
-    "source": "OddOscar",
-    "target": "Overbite",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Overbite",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.717
+      }
+    ]
   },
   "dna": {
     "aggression": 0.106,

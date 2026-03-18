@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.678,
-    "source": "Ocelot",
-    "target": "Oceanic",
-    "type": "RESONANCE_CHAIN"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Oceanic",
+        "type": "RESONANCE_CHAIN",
+        "amount": 0.678
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1,

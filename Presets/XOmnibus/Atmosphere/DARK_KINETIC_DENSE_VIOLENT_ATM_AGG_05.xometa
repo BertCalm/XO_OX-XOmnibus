@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.801,
-    "source": "Obscura",
-    "target": "Osprey",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Osprey",
+        "type": "CHAOS_INJECT",
+        "amount": 0.801
+      }
+    ]
   },
   "dna": {
     "aggression": 0.974,
@@ -31,7 +35,7 @@
     "SPACE": 0.595
   },
   "mood": "Atmosphere",
-  "name": "DARK KINETIC DENSE VIOLENT ATM AGG 5",
+  "name": "DARK KINETIC DENSE VIOLENT ...",
   "parameters": {
     "Obscura": {
       "macro_character": 0.023,

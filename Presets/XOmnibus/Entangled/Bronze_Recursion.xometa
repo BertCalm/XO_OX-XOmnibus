@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.76,
-    "intensity": "Deep",
-    "source": "Ottoni",
-    "target": "Ouroboros",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Ouroboros",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.76
+      }
+    ]
   },
   "description": "Resonance shared between OTTONI's bell and OUROBOROS's loop — self-devouring harmonics.",
   "dna": {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.92,
-    "source": "Onset",
-    "target": "Overworld",
-    "type": "PHASE_MOD"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Overworld",
+        "type": "PHASE_MOD",
+        "amount": 0.92
+      }
+    ]
   },
   "dna": {
     "aggression": 0.59,

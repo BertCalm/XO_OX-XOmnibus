@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.875,
-    "source": "OddOscar",
-    "target": "OddfeliX",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "OddfeliX",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.875
+      }
+    ]
   },
   "dna": {
     "aggression": 0.885,
@@ -31,7 +35,7 @@
     "SPACE": 0.65
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_DENSE_VIOLENT_FAM_AGG_2",
+  "name": "Honey Saturated",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.763,

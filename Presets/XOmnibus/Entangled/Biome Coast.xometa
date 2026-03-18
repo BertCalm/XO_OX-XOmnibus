@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.841,
-    "source": "Ocelot",
-    "target": "Oceanic",
-    "type": "FILTER_COUPLING"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Oceanic",
+        "type": "FILTER_COUPLING",
+        "amount": 0.841
+      }
+    ]
   },
   "description": "Chromatophore-teal meeting rosette-tawny at the water's edge — the ocelot drinks the ocean's chemical language.",
   "engines": [
@@ -76,5 +80,13 @@
     "coupling",
     "biome-shifting"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

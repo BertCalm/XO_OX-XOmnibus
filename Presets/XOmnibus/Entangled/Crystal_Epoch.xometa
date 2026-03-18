@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Odyssey",
-    "target": "Obsidian",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Obsidian",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.65
+      }
+    ]
   },
   "description": "Two glacial architectures — Odyssey slow-drifts through Obsidian's faceted harmonic lattice.",
   "dna": {

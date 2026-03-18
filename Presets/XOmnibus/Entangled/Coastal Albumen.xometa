@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.804,
-    "source": "Obscura",
-    "target": "Osprey",
-    "type": "GRANULAR_EXCHANGE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Osprey",
+        "type": "GRANULAR_EXCHANGE",
+        "amount": 0.804
+      }
+    ]
   },
   "description": "Shore-line salt air reacting with albumen plate — the osprey's cry develops the image from the outside in.",
   "engines": [
@@ -76,5 +80,13 @@
     "coupling",
     "daguerreotype"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

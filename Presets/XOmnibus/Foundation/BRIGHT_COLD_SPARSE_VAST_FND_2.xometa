@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.861,
-    "source": "Oracle",
-    "target": "Overbite",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Overbite",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.861
+      }
+    ]
   },
   "dna": {
     "aggression": 0.356,

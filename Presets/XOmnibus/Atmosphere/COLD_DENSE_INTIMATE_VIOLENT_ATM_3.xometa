@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.416,
-    "source": "Oblique",
-    "target": "Organon",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.416
+      }
+    ]
   },
   "dna": {
     "aggression": 0.948,
@@ -31,7 +35,7 @@
     "SPACE": 0.12
   },
   "mood": "Atmosphere",
-  "name": "COLD_DENSE_INTIMATE_VIOLENT_ATM_3",
+  "name": "Signal Fang 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.633,

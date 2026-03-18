@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.951,
-    "source": "Overbite",
-    "target": "Overdub",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Overdub",
+        "type": "PITCH_SYNC",
+        "amount": 0.951
+      }
+    ]
   },
   "dna": {
     "aggression": 0.898,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5062,
-    "source": "Obscura",
-    "target": "Orbital",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orbital",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.5062
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3957,
@@ -31,7 +35,7 @@
     "SPACE": 0.0297
   },
   "mood": "Aether",
-  "name": "BRIGHT_WARM_KINETIC_INTIMATE_AET2_1",
+  "name": "Glow Drift",
   "parameters": {
     "Obscura": {
       "macro_character": 0.9171,

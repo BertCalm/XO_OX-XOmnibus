@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.863,
-    "source": "Ottoni",
-    "target": "Optic",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Optic",
+        "type": "PITCH_SYNC",
+        "amount": 0.863
+      }
+    ]
   },
   "dna": {
     "aggression": 0.888,
@@ -31,7 +35,7 @@
     "SPACE": 0.053
   },
   "mood": "Prism",
-  "name": "BRIGHT DENSE TIGHT VIOLENT PRS AGG 3",
+  "name": "BRIGHT DENSE TIGHT VIOLENT ...",
   "parameters": {
     "Optic": {
       "macro_character": 0.865,

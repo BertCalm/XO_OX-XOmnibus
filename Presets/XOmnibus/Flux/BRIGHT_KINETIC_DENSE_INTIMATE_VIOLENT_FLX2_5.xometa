@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.826,
-    "source": "Overdub",
-    "target": "Oracle",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.826
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9321,
@@ -31,7 +35,7 @@
     "SPACE": 0.036
   },
   "mood": "Flux",
-  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_5",
+  "name": "Thread Shimmer",
   "parameters": {
     "Oracle": {
       "macro_character": 0.6895,

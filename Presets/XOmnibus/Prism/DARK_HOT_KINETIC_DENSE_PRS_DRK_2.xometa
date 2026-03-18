@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.719,
-    "source": "Oblique",
-    "target": "Oracle",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Oracle",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.719
+      }
+    ]
   },
   "dna": {
     "aggression": 0.6238,
@@ -31,7 +35,7 @@
     "SPACE": 0.5357
   },
   "mood": "Prism",
-  "name": "DARK_HOT_KINETIC_DENSE_PRS_DRK_2",
+  "name": "Mahogany Current",
   "parameters": {
     "Oblique": {
       "macro_character": 0.7859,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.491,
-    "source": "Oblique",
-    "target": "Origami",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Origami",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.491
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.016
   },
   "mood": "Prism",
-  "name": "HOT_KINETIC_DENSE_INTIMATE_GENTLE_PRS_1",
+  "name": "Grain Cascade",
   "parameters": {
     "Oblique": {
       "macro_character": 0.421,

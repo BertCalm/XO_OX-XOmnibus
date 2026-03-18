@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.82,
-    "intensity": "Deep",
-    "source": "Ottoni",
-    "target": "Ouroboros",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Ouroboros",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.82
+      }
+    ]
   },
   "description": "Harmonic folding draws the ouroboros into brass's recursive grain — dense and relentless.",
   "dna": {

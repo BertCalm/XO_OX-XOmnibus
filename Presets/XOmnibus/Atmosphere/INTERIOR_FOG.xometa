@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.486,
-    "source": "Opal",
-    "target": "Ocelot",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ocelot",
+        "type": "FILTER_MOD",
+        "amount": 0.486
+      }
+    ]
   },
   "dna": {
     "aggression": 0.099,

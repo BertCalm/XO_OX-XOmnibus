@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.832,
-    "source": "Obsidian",
-    "target": "Obese",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Obese",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.832
+      }
+    ]
   },
   "dna": {
     "aggression": 0.897,
@@ -31,7 +35,7 @@
     "SPACE": 0.634
   },
   "mood": "Foundation",
-  "name": "DARK_HOT_KINETIC_VIOLENT_FND_AGG_1",
+  "name": "Amber Shimmer",
   "parameters": {
     "Obese": {
       "macro_character": 0.768,

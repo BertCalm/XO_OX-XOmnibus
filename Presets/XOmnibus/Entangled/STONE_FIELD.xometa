@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9263,
-    "source": "Organon",
-    "target": "Outwit",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Outwit",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.9263
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9164,

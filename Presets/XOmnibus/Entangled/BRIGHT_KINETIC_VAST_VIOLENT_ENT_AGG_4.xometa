@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.958,
-    "source": "Obsidian",
-    "target": "Organon",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Organon",
+        "type": "CHAOS_INJECT",
+        "amount": 0.958
+      }
+    ]
   },
   "dna": {
     "aggression": 0.958,
@@ -31,7 +35,7 @@
     "SPACE": 0.94
   },
   "mood": "Entangled",
-  "name": "BRIGHT_KINETIC_VAST_VIOLENT_ENT_AGG_4",
+  "name": "Shard Storm 3",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.386,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.644,
-    "source": "Oblong",
-    "target": "Overdub",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overdub",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.644
+      }
+    ]
   },
   "dna": {
     "aggression": 0.888,
@@ -31,7 +35,7 @@
     "SPACE": 0.377
   },
   "mood": "Flux",
-  "name": "BRIGHT_STILL_DENSE_VIOLENT_FLX_SLW_4",
+  "name": "Halo Molten",
   "parameters": {
     "Oblong": {
       "macro_character": 0.988,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.294,
-    "source": "OddOscar",
-    "target": "Onset",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Onset",
+        "type": "PITCH_SYNC",
+        "amount": 0.294
+      }
+    ]
   },
   "dna": {
     "aggression": 0.867,
@@ -31,7 +35,7 @@
     "SPACE": 0.263
   },
   "mood": "Foundation",
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FND_2",
+  "name": "Solar Titan",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.617,

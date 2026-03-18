@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.567,
-    "source": "Obbligato",
-    "target": "Outwit",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Outwit",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.567
+      }
+    ]
   },
   "dna": {
     "aggression": 0.855,

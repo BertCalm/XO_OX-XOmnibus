@@ -33,7 +33,9 @@
   ],
   "mood": "Atmosphere",
   "name": "COLD TIGHT KINETIC DARK ATM 3",
-  "parameters": {},
+  "parameters": {
+    "Optic": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

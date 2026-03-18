@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.932,
-    "source": "Overworld",
-    "target": "Origami",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Origami",
+        "type": "PITCH_SYNC",
+        "amount": 0.932
+      }
+    ]
   },
   "dna": {
     "aggression": 0.893,
@@ -31,7 +35,7 @@
     "SPACE": 0.634
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM KINETIC VIOLENT AET AGG 5",
+  "name": "BRIGHT WARM KINETIC VIOLENT...",
   "parameters": {
     "Origami": {
       "macro_character": 0.882,

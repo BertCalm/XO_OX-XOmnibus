@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.393,
-    "source": "Overbite",
-    "target": "Obscura",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Obscura",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.393
+      }
+    ]
   },
   "dna": {
     "aggression": 0.925,

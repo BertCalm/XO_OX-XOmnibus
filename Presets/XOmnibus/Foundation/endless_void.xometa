@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.676,
-    "source": "Oracle",
-    "target": "Overlap",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Overlap",
+        "type": "PITCH_SYNC",
+        "amount": 0.676
+      }
+    ]
   },
   "dna": {
     "aggression": 0.314,

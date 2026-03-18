@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.593,
-    "source": "Odyssey",
-    "target": "Origami",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.593
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8886,
@@ -31,7 +35,7 @@
     "SPACE": 0.4984
   },
   "mood": "Flux",
-  "name": "BRIGHT_COLD_KINETIC_SPARSE_VIOLENT_FLX2_1",
+  "name": "Mirror Flutter",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.4673,

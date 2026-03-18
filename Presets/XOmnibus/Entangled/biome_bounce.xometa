@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.805,
-    "source": "Ocelot",
-    "target": "Oblique",
-    "type": "RHYTHM_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Oblique",
+        "type": "RHYTHM_SYNC",
+        "amount": 0.805
+      }
+    ]
   },
   "dna": {
     "aggression": 0.7,

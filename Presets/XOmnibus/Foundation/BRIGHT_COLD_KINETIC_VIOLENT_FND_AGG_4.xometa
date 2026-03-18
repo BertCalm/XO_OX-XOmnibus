@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.771,
-    "source": "Overdub",
-    "target": "Ouroboros",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Ouroboros",
+        "type": "CHAOS_INJECT",
+        "amount": 0.771
+      }
+    ]
   },
   "dna": {
     "aggression": 0.967,
@@ -31,7 +35,7 @@
     "SPACE": 0.789
   },
   "mood": "Foundation",
-  "name": "BRIGHT_COLD_KINETIC_VIOLENT_FND_AGG_4",
+  "name": "Arctic Strike",
   "parameters": {
     "Ouroboros": {
       "macro_character": 0.65,

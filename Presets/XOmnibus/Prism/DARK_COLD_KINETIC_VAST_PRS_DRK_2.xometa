@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6399,
-    "source": "Optic",
-    "target": "Ottoni",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Ottoni",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.6399
+      }
+    ]
   },
   "dna": {
     "aggression": 0.4341,
@@ -31,7 +35,7 @@
     "SPACE": 0.946
   },
   "mood": "Prism",
-  "name": "DARK_COLD_KINETIC_VAST_PRS_DRK_2",
+  "name": "Wave Horizon 2",
   "parameters": {
     "Optic": {
       "macro_character": 0.2364,

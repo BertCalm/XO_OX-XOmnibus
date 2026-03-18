@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.855,
-    "source": "Oblong",
-    "target": "Osteria",
-    "type": "ENVELOPE_MIRROR"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Osteria",
+        "type": "ENVELOPE_MIRROR",
+        "amount": 0.855
+      }
+    ]
   },
   "dna": {
     "aggression": 0.316,
@@ -31,7 +35,7 @@
     "SPACE": 0.878
   },
   "mood": "Family",
-  "name": "BRIGHT_COLD_KINETIC_VAST_FAM_VOL_70",
+  "name": "Quartz Shimmer",
   "parameters": {
     "Oblong": {
       "macro_character": 0.53,

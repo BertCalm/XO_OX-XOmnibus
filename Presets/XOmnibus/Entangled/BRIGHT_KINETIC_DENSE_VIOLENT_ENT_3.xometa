@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7774,
     "pairs": [
       {
         "amount": 0.7774,
@@ -9,10 +8,7 @@
         "target": "Owlfish",
         "type": "SPECTRAL_MORPH"
       }
-    ],
-    "source": "Overlap",
-    "target": "Owlfish",
-    "type": "SPECTRAL_MORPH"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Kinetic Dense Violent character entanglement — OVERLAP × OWLFISH via Spectral Morph. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.3184
   },
   "mood": "Entangled",
-  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_ENT_3",
+  "name": "Grain Molten 2",
   "parameters": {
     "Overlap": {
       "amp_attack": 0.0783,

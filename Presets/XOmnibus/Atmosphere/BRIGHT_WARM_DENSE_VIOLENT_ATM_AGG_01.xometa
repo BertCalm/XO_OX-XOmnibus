@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.772,
-    "source": "Obscura",
-    "target": "Origami",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.772
+      }
+    ]
   },
   "dna": {
     "aggression": 0.949,
@@ -31,7 +35,7 @@
     "SPACE": 0.322
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT WARM DENSE VIOLENT ATM AGG 1",
+  "name": "BRIGHT WARM DENSE VIOLENT A...",
   "parameters": {
     "Obscura": {
       "macro_character": 0.89,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.618,
-    "source": "Oceanic",
-    "target": "OddfeliX",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "OddfeliX",
+        "type": "CHAOS_INJECT",
+        "amount": 0.618
+      }
+    ]
   },
   "dna": {
     "aggression": 0.099,
@@ -31,7 +35,7 @@
     "SPACE": 0.9425
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_COLD_KINETIC_VAST_GENTLE_ATM_5",
+  "name": "Quartz Horizon",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.5402,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.603,
-    "source": "Oblong",
-    "target": "Origami",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Origami",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.603
+      }
+    ]
   },
   "dna": {
     "aggression": 0.969,
@@ -31,7 +35,7 @@
     "SPACE": 0.633
   },
   "mood": "Flux",
-  "name": "HOT_STILL_DENSE_VIOLENT_FLX_SLW_2",
+  "name": "Honey Titan",
   "parameters": {
     "Oblong": {
       "macro_character": 0.981,

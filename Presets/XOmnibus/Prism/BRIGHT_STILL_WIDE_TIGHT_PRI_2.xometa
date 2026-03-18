@@ -33,7 +33,9 @@
   ],
   "mood": "Prism",
   "name": "BRIGHT STILL WIDE TIGHT PRI 2",
-  "parameters": {},
+  "parameters": {
+    "Obsidian": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

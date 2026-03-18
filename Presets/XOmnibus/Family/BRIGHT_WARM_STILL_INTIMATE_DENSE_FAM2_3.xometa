@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.784,
-    "source": "Overdub",
-    "target": "Obbligato",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Obbligato",
+        "type": "PITCH_SYNC",
+        "amount": 0.784
+      }
+    ]
   },
   "dna": {
     "aggression": 0.58,
@@ -31,7 +35,7 @@
     "SPACE": 0.102
   },
   "mood": "Family",
-  "name": "BRIGHT WARM STILL INTIMATE DENSE FAM2 3",
+  "name": "BRIGHT WARM STILL INTIMATE ...",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.99,

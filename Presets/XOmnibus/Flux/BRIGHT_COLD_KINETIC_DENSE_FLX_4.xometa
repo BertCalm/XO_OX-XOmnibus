@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8856,
-    "source": "Oceanic",
-    "target": "Odyssey",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Odyssey",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8856
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5207,
@@ -31,7 +35,7 @@
     "SPACE": 0.3446
   },
   "mood": "Flux",
-  "name": "BRIGHT_COLD_KINETIC_DENSE_FLX_4",
+  "name": "Quartz Current",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.9405,

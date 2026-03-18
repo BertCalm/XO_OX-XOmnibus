@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.723,
-    "source": "Ole",
-    "target": "Ocelot",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Ocelot",
+        "type": "CHAOS_INJECT",
+        "amount": 0.723
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.097
   },
   "mood": "Prism",
-  "name": "BRIGHT_COLD_DENSE_INTIMATE_VIOLENT_PRS_5",
+  "name": "Ice Rage",
   "parameters": {
     "Ocelot": {
       "macro_character": 1.0,

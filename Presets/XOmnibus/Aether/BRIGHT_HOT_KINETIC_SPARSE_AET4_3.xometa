@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5435,
-    "source": "Oracle",
-    "target": "Overworld",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Overworld",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.5435
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3365,
@@ -31,7 +35,7 @@
     "SPACE": 0.4897
   },
   "mood": "Aether",
-  "name": "BRIGHT_HOT_KINETIC_SPARSE_AET4_3",
+  "name": "Peach Stream",
   "parameters": {
     "Oracle": {
       "macro_character": 0.7541,

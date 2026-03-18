@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.268,
-    "source": "Osprey",
-    "target": "Overdub",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Overdub",
+        "type": "PITCH_SYNC",
+        "amount": 0.268
+      }
+    ]
   },
   "dna": {
     "aggression": 0.044,
@@ -31,7 +35,7 @@
     "SPACE": 0.931
   },
   "mood": "Family",
-  "name": "BRIGHT WARM VAST STILL GENTLE FAM2 5",
+  "name": "BRIGHT WARM VAST STILL GENT...",
   "parameters": {
     "Osprey": {
       "macro_character": 0.903,

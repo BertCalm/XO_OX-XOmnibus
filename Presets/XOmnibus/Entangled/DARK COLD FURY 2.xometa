@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Organon \u00d7 Ottoni \u2014 Envelope Link coupling at extreme DNA corner.",
+  "description": "Organon × Ottoni — Envelope Link coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "organon",
@@ -33,7 +33,10 @@
     "space": 0.378,
     "aggression": 0.945
   },
-  "parameters": {},
+  "parameters": {
+    "Organon": {},
+    "Ottoni": {}
+  },
   "coupling": {
     "pairs": [
       {

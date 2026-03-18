@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.808,
-    "source": "Obsidian",
-    "target": "Oblong",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Oblong",
+        "type": "CHAOS_INJECT",
+        "amount": 0.808
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.054
   },
   "mood": "Foundation",
-  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FND_5",
+  "name": "Tone Flutter 2",
   "parameters": {
     "Oblong": {
       "macro_character": 0.943,

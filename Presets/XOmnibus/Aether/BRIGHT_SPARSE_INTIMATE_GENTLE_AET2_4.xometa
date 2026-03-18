@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6803,
-    "source": "Origami",
-    "target": "Oracle",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oracle",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.6803
+      }
+    ]
   },
   "dna": {
     "aggression": 0.0685,
@@ -31,7 +35,7 @@
     "SPACE": 0.0576
   },
   "mood": "Aether",
-  "name": "BRIGHT_SPARSE_INTIMATE_GENTLE_AET2_4",
+  "name": "Chrome Shard",
   "parameters": {
     "Oracle": {
       "macro_character": 0.981,

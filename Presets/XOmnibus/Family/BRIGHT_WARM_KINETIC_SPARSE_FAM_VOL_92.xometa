@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.463,
-    "source": "Ole",
-    "target": "Orphica",
-    "type": "FILTER_LINK"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Orphica",
+        "type": "FILTER_LINK",
+        "amount": 0.463
+      }
+    ]
   },
   "dna": {
     "aggression": 0.329,
@@ -31,7 +35,7 @@
     "SPACE": 0.578
   },
   "mood": "Family",
-  "name": "BRIGHT_WARM_KINETIC_SPARSE_FAM_VOL_92",
+  "name": "Bloom Stream 3",
   "parameters": {
     "Ole": {
       "macro_character": 0.909,

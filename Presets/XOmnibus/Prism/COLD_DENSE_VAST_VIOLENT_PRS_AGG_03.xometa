@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.954,
-    "source": "Origami",
-    "target": "Ottoni",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ottoni",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.954
+      }
+    ]
   },
   "dna": {
     "aggression": 0.891,
@@ -31,7 +35,7 @@
     "SPACE": 0.978
   },
   "mood": "Prism",
-  "name": "COLD DENSE VAST VIOLENT PRS AGG 3",
+  "name": "COLD DENSE VAST VIOLENT PRS...",
   "parameters": {
     "Origami": {
       "macro_character": 0.525,

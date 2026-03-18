@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.546,
-    "source": "Oblique",
-    "target": "Outwit",
-    "type": "AMPLITUDE_MODULATION"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Outwit",
+        "type": "AMPLITUDE_MODULATION",
+        "amount": 0.546
+      }
+    ]
   },
   "description": "Wolfram CA rule as the prism's internal geometry — each generation recomputing the refraction lattice.",
   "engines": [
@@ -77,5 +81,13 @@
     "coupling",
     "prismatic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

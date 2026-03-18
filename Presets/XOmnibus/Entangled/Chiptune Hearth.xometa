@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6,
-    "source": "Ohm",
-    "target": "Overworld",
-    "type": "ERA_CROSSFADE"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Overworld",
+        "type": "ERA_CROSSFADE",
+        "amount": 0.6
+      }
+    ]
   },
   "description": "ERA triangle crossfades through ohm communal warmth — retro game music finds its soul",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Chiptune Hearth",
-  "parameters": {},
+  "parameters": {
+    "Ohm": {},
+    "Overworld": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.34,
@@ -43,5 +50,13 @@
     "overworld",
     "hippy"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

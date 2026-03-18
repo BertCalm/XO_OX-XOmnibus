@@ -33,7 +33,10 @@
   ],
   "mood": "Entangled",
   "name": "OVERBITE Through Ottoni",
-  "parameters": {},
+  "parameters": {
+    "Ottoni": {},
+    "Overbite": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

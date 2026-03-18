@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.807,
-    "source": "Obsidian",
-    "target": "OddOscar",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "OddOscar",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.807
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.065
   },
   "mood": "Foundation",
-  "name": "BRIGHT_COLD_STILL_SPARSE_INTIMATE_FND_1",
+  "name": "Glass Fang",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.918,

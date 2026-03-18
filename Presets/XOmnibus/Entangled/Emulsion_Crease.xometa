@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.67,
-    "source": "Origami",
-    "target": "Obscura",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Obscura",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.67
+      }
+    ]
   },
   "description": "Origami paper timbres blend into Obscura's emulsion — both surfaces dissolve in cold light.",
   "dna": {

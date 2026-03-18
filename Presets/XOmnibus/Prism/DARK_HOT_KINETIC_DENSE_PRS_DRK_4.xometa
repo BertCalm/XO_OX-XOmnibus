@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7314,
-    "source": "Origami",
-    "target": "Owlfish",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Owlfish",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7314
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3931,
@@ -31,7 +35,7 @@
     "SPACE": 0.3319
   },
   "mood": "Prism",
-  "name": "DARK_HOT_KINETIC_DENSE_PRS_DRK_4",
+  "name": "Ember Solid",
   "parameters": {
     "Origami": {
       "macro_character": 0.6343,

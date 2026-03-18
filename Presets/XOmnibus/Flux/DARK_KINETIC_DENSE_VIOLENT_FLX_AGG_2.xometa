@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.841,
-    "source": "Organon",
-    "target": "Oblong",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oblong",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.841
+      }
+    ]
   },
   "dna": {
     "aggression": 0.973,
@@ -31,7 +35,7 @@
     "SPACE": 0.623
   },
   "mood": "Flux",
-  "name": "DARK_KINETIC_DENSE_VIOLENT_FLX_AGG_2",
+  "name": "Thread Cascade",
   "parameters": {
     "Oblong": {
       "macro_character": 0.611,

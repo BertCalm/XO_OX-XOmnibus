@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.341,
-    "source": "Odyssey",
-    "target": "Osteria",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Osteria",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.341
+      }
+    ]
   },
   "dna": {
     "aggression": 0.602,

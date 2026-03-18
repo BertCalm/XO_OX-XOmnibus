@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.815,
-    "source": "Oracle",
-    "target": "Organon",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.815
+      }
+    ]
   },
   "dna": {
     "aggression": 0.095,

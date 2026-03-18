@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8839,
-    "source": "Oracle",
-    "target": "Ole",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Ole",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.8839
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.5489
   },
   "mood": "Entangled",
-  "name": "DARK_STILL_DENSE_INTIMATE_GENTLE_ENT3_3",
+  "name": "Node Molten 3",
   "parameters": {
     "Ole": {
       "macro_character": 0.793,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.897,
-    "source": "Onset",
-    "target": "Overdub",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Overdub",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.897
+      }
+    ]
   },
   "dna": {
     "aggression": 0.883,
@@ -31,7 +35,7 @@
     "SPACE": 0.388
   },
   "mood": "Foundation",
-  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FND_AGG_1",
+  "name": "Golden Pulse",
   "parameters": {
     "Onset": {
       "macro_character": 0.726,

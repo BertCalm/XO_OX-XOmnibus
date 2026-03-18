@@ -33,7 +33,9 @@
   ],
   "mood": "Atmosphere",
   "name": "BRIGHT HOT KINETIC DENSE ATM 3",
-  "parameters": {},
+  "parameters": {
+    "Osprey": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

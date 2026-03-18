@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.748,
-    "source": "Overworld",
-    "target": "Oracle",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Oracle",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.748
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.986
   },
   "mood": "Prism",
-  "name": "BRIGHT_COLD_KINETIC_SPARSE_VAST_PRS_4",
+  "name": "Arctic Swirl",
   "parameters": {
     "Oracle": {
       "macro_character": 0.98,

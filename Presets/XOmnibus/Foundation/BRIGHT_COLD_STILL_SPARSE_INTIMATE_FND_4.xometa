@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.58,
-    "source": "OddOscar",
-    "target": "Ouroboros",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ouroboros",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.58
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.095
   },
   "mood": "Foundation",
-  "name": "BRIGHT_COLD_STILL_SPARSE_INTIMATE_FND_4",
+  "name": "Glass Storm",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.955,

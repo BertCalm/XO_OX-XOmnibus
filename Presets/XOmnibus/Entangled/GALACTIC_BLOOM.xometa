@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.668,
-    "source": "Overdub",
-    "target": "Owlfish",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Owlfish",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.668
+      }
+    ]
   },
   "dna": {
     "aggression": 0.654,

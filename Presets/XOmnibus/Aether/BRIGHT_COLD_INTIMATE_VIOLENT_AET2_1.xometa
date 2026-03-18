@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8618,
-    "source": "Oblique",
-    "target": "Oceanic",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Oceanic",
+        "type": "FILTER_MOD",
+        "amount": 0.8618
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9771,
@@ -31,7 +35,7 @@
     "SPACE": 0.075
   },
   "mood": "Aether",
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_AET2_1",
+  "name": "Glass Crush",
   "parameters": {
     "Oblique": {
       "macro_character": 0.9298,

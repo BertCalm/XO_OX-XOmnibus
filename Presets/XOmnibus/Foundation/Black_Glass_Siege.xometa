@@ -33,7 +33,9 @@
     "space": 0.18,
     "aggression": 0.91
   },
-  "parameters": {},
+  "parameters": {
+    "Obsidian": {}
+  },
   "tags": [
     "siege",
     "obsidian",

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.457,
-    "source": "Osprey",
-    "target": "Osteria",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Osteria",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.457
+      }
+    ]
   },
   "dna": {
     "aggression": 0.028,
@@ -31,7 +35,7 @@
     "SPACE": 0.633
   },
   "mood": "Family",
-  "name": "BRIGHT WARM KINETIC DENSE GENTLE FAM2 1",
+  "name": "BRIGHT WARM KINETIC DENSE G...",
   "parameters": {
     "Osprey": {
       "macro_character": 0.925,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.411,
-    "source": "Obbligato",
-    "target": "Octopus",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Octopus",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.411
+      }
+    ]
   },
   "dna": {
     "aggression": 0.883,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.719,
-    "source": "Ocelot",
-    "target": "Ohm",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Ohm",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.719
+      }
+    ]
   },
   "dna": {
     "aggression": 0.886,
@@ -31,7 +35,7 @@
     "SPACE": 0.375
   },
   "mood": "Prism",
-  "name": "BRIGHT COLD KINETIC VIOLENT PRS AGG 1",
+  "name": "BRIGHT COLD KINETIC VIOLENT...",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.83,

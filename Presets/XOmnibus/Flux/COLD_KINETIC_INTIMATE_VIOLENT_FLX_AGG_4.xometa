@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.899,
-    "source": "Optic",
-    "target": "Odyssey",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Odyssey",
+        "type": "CHAOS_INJECT",
+        "amount": 0.899
+      }
+    ]
   },
   "dna": {
     "aggression": 0.888,
@@ -31,7 +35,7 @@
     "SPACE": 0.096
   },
   "mood": "Flux",
-  "name": "COLD_KINETIC_INTIMATE_VIOLENT_FLX_AGG_4",
+  "name": "Grain Current",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.73,

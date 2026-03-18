@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Oceanic Extended Depth",
-  "parameters": {},
+  "parameters": {
+    "Oceanic": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

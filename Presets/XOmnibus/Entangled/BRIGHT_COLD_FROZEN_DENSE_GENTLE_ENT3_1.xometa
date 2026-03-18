@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8773,
-    "source": "Ombre",
-    "target": "Opal",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Opal",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.8773
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.4657
   },
   "mood": "Entangled",
-  "name": "BRIGHT_COLD_FROZEN_DENSE_GENTLE_ENT3_1",
+  "name": "Frost Titan 2",
   "parameters": {
     "Ombre": {
       "macro_character": 0.9406,

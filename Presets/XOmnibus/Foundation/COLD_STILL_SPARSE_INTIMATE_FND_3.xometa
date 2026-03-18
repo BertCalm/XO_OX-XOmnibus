@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.311,
-    "source": "Obsidian",
-    "target": "Overbite",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Overbite",
+        "type": "PITCH_SYNC",
+        "amount": 0.311
+      }
+    ]
   },
   "dna": {
     "aggression": 0.369,
@@ -31,7 +35,7 @@
     "SPACE": 0.481
   },
   "mood": "Foundation",
-  "name": "COLD_STILL_SPARSE_INTIMATE_FND_3",
+  "name": "Arctic Tone",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.218,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.687,
-    "source": "Obscura",
-    "target": "Optic",
-    "type": "SPECTRAL_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Optic",
+        "type": "SPECTRAL_SHIFT",
+        "amount": 0.687
+      }
+    ]
   },
   "dna": {
     "aggression": 0.25,

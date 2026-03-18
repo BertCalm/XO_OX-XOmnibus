@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "intensity": "Deep",
-    "source": "Ole",
-    "target": "Obscura",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Obscura",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.7
+      }
+    ]
   },
   "description": "Spatial coupling places OLE's call-and-response inside OBSCURA's reverberant chamber.",
   "dna": {

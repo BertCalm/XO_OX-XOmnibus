@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.529,
-    "source": "Ole",
-    "target": "Optic",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Optic",
+        "type": "CHAOS_INJECT",
+        "amount": 0.529
+      }
+    ]
   },
   "dna": {
     "aggression": 0.078,

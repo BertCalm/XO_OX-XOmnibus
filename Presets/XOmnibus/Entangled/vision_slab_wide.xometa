@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6,
-    "source": "Oblong",
-    "target": "Oracle",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Oracle",
+        "type": "PITCH_SYNC",
+        "amount": 0.6
+      }
+    ]
   },
   "created": "2026-03-16",
   "dna": {

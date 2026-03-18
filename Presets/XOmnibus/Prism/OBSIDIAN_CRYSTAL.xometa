@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.659,
-    "source": "Obbligato",
-    "target": "Osprey",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Osprey",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.659
+      }
+    ]
   },
   "dna": {
     "aggression": 0.287,

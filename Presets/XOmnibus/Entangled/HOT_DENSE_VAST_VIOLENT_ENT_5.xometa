@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7115,
     "pairs": [
       {
         "amount": 0.7115,
@@ -9,10 +8,7 @@
         "target": "Obsidian",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Osprey",
-    "target": "Obsidian",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Hot Dense Vast Violent character entanglement — OBSIDIAN × OSPREY via Resonance Share. Extreme DNA zones push sound design to the edges.",

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8738,
-    "source": "Ombre",
-    "target": "OddfeliX",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "OddfeliX",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8738
+      }
+    ]
   },
   "dna": {
     "aggression": 0.1082,
@@ -31,7 +35,7 @@
     "SPACE": 0.0702
   },
   "mood": "Aether",
-  "name": "HOT_DENSE_INTIMATE_GENTLE_AET3_2",
+  "name": "Node Massive",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.3944,

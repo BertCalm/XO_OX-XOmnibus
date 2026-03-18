@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Paper and Neon",
-  "parameters": {},
+  "parameters": {
+    "Origami": {},
+    "OddfeliX": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

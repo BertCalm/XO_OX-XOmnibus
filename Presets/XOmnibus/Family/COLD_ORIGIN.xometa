@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.655,
-    "source": "Orphica",
-    "target": "Orbital",
-    "type": "CHAOS_LOCK"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Orbital",
+        "type": "CHAOS_LOCK",
+        "amount": 0.655
+      }
+    ]
   },
   "dna": {
     "aggression": 0.168,

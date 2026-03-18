@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.82,
-    "source": "Overbite",
-    "target": "Ouroboros",
-    "type": "SPECTRAL_BRAID"
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Ouroboros",
+        "type": "SPECTRAL_BRAID",
+        "amount": 0.82
+      }
+    ]
   },
   "dna": {
     "aggression": 0.75,

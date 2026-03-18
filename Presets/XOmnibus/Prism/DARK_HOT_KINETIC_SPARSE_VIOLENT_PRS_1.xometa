@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.611,
-    "source": "Owlfish",
-    "target": "Ole",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ole",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.611
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.605
   },
   "mood": "Prism",
-  "name": "DARK_HOT_KINETIC_SPARSE_VIOLENT_PRS_1",
+  "name": "Shadow Cascade",
   "parameters": {
     "Ole": {
       "macro_character": 0.231,

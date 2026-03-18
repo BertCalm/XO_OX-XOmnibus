@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.873,
-    "source": "Osteria",
-    "target": "Overworld",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Overworld",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.873
+      }
+    ]
   },
   "dna": {
     "aggression": 0.919,
@@ -31,7 +35,7 @@
     "SPACE": 0.355
   },
   "mood": "Prism",
-  "name": "BRIGHT_COLD_STILL_VIOLENT_PRS_1",
+  "name": "Crystal Wrath",
   "parameters": {
     "Osteria": {
       "macro_character": 0.915,

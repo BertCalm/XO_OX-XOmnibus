@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Bob at Maximum Mass",
-  "parameters": {},
+  "parameters": {
+    "Oblong": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.94,
-    "source": "Obbligato",
-    "target": "Odyssey",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Odyssey",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.94
+      }
+    ]
   },
   "dna": {
     "aggression": 0.973,
@@ -31,7 +35,7 @@
     "SPACE": 0.948
   },
   "mood": "Entangled",
-  "name": "HOT KINETIC DENSE VAST VIOLENT ENT2 4",
+  "name": "HOT KINETIC DENSE VAST VIOL...",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.742,

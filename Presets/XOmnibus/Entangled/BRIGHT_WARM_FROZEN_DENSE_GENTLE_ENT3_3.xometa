@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9593,
-    "source": "Outwit",
-    "target": "Overlap",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Overlap",
+        "type": "PITCH_SYNC",
+        "amount": 0.9593
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.6947
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_DENSE_GENTLE_ENT3_3",
+  "name": "Bloom Dense",
   "parameters": {
     "Outwit": {
       "macro_character": 0.8473,

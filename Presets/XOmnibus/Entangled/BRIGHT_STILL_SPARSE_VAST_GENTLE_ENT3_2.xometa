@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8222,
-    "source": "Ohm",
-    "target": "Overworld",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Overworld",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.8222
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.6536
   },
   "mood": "Entangled",
-  "name": "BRIGHT_STILL_SPARSE_VAST_GENTLE_ENT3_2",
+  "name": "Signal Void",
   "parameters": {
     "Ohm": {
       "macro_character": 0.6598,

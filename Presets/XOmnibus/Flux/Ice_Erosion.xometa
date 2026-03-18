@@ -33,7 +33,9 @@
     "space": 0.85,
     "aggression": 0.28
   },
-  "parameters": {},
+  "parameters": {
+    "Ombre": {}
+  },
   "tags": [
     "flux",
     "cold-flux",
@@ -41,5 +43,5 @@
     "ice",
     "erosion"
   ],
-  "description": "Ombre gradient carved by cold \u2014 slow ice erosion over deep open time."
+  "description": "Ombre gradient carved by cold — slow ice erosion over deep open time."
 }

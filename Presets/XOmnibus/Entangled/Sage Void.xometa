@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "source": "Obsidian",
-    "target": "Ohm",
-    "type": "CRYSTAL_RESONANCE"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Ohm",
+        "type": "CRYSTAL_RESONANCE",
+        "amount": 0.65
+      }
+    ]
   },
   "description": "Ohm commune swallowed by obsidian depth — warmth persists as a memory in the crystal",
   "engines": [
@@ -25,7 +29,10 @@
   },
   "mood": "Entangled",
   "name": "Sage Void",
-  "parameters": {},
+  "parameters": {
+    "Ohm": {},
+    "Obsidian": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.36,
@@ -43,5 +50,13 @@
     "obsidian",
     "hippy"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

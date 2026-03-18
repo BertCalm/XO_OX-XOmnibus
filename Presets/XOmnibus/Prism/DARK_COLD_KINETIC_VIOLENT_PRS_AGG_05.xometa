@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.89,
-    "source": "Ohm",
-    "target": "Oblique",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Oblique",
+        "type": "FILTER_MOD",
+        "amount": 0.89
+      }
+    ]
   },
   "dna": {
     "aggression": 0.986,
@@ -31,7 +35,7 @@
     "SPACE": 0.587
   },
   "mood": "Prism",
-  "name": "DARK COLD KINETIC VIOLENT PRS AGG 5",
+  "name": "DARK COLD KINETIC VIOLENT P...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.049,

@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.51,
     "pairs": [
       {
         "amount": 0.51,
@@ -9,10 +8,7 @@
         "engineB": "Oracle",
         "type": "PITCH_SYNC"
       }
-    ],
-    "source": "Overlap",
-    "target": "Oracle",
-    "type": "PITCH_SYNC"
+    ]
   },
   "couplingIntensity": "Moderate",
   "description": "Lion's Mane knot-topology FDN entangled with ORACLE's prophetic stochastic character (GENDY + Maqam liminal tones). Coupling: Pitch Sync.",

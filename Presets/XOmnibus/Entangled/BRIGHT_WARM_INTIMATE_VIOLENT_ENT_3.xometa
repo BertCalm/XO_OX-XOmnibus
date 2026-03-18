@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9714,
     "pairs": [
       {
         "amount": 0.9714,
@@ -9,10 +8,7 @@
         "target": "Overlap",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "OddOscar",
-    "target": "Overlap",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Warm Intimate Violent character entanglement — OVERLAP × ODDOSCAR via Resonance Share. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.0695
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_ENT_3",
+  "name": "Sunrise Strike 2",
   "parameters": {
     "OddOscar": {
       "amp_attack": 0.3187,

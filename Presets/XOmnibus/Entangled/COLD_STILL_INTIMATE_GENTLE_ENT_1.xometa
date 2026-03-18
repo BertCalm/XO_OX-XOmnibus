@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.6681,
     "pairs": [
       {
         "amount": 0.6681,
@@ -9,10 +8,7 @@
         "target": "Octopus",
         "type": "RESONANCE_SHARE"
       }
-    ],
-    "source": "Ole",
-    "target": "Octopus",
-    "type": "RESONANCE_SHARE"
+    ]
   },
   "couplingIntensity": "Medium",
   "description": "Cold Still Intimate Gentle character entanglement — OCTOPUS × OLE via Resonance Share. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.0696
   },
   "mood": "Entangled",
-  "name": "COLD_STILL_INTIMATE_GENTLE_ENT_1",
+  "name": "Thread Thread",
   "parameters": {
     "Octopus": {
       "amp_attack": 0.4124,

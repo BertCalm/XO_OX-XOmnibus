@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
-    "source": "Obese",
-    "target": "Origami",
-    "type": "WAVEFOLD"
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Origami",
+        "type": "WAVEFOLD",
+        "amount": 0.78
+      }
+    ]
   },
   "dna": {
     "aggression": 0.78,

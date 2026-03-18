@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Obese Core Collapse",
-  "parameters": {},
+  "parameters": {
+    "Obese": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

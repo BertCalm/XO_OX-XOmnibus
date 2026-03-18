@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5,
-    "source": "Obscura",
-    "target": "Overworld",
-    "type": "FEEDBACK"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Overworld",
+        "type": "FEEDBACK",
+        "amount": 0.5
+      }
+    ]
   },
   "dna": {
     "aggression": 0.61,

@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Deep Sea Glow",
-  "parameters": {},
+  "parameters": {
+    "Owlfish": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

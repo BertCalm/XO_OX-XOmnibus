@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8132,
-    "source": "Opal",
-    "target": "Orbital",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Orbital",
+        "type": "CHAOS_INJECT",
+        "amount": 0.8132
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8798,
@@ -31,7 +35,7 @@
     "SPACE": 0.0625
   },
   "mood": "Aether",
-  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_AET4_2",
+  "name": "Fragment Shimmer",
   "parameters": {
     "Opal": {
       "macro_character": 0.3041,

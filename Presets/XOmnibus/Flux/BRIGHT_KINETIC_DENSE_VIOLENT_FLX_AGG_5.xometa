@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.978,
-    "source": "Origami",
-    "target": "Overworld",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Overworld",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.978
+      }
+    ]
   },
   "dna": {
     "aggression": 0.955,
@@ -31,7 +35,7 @@
     "SPACE": 0.303
   },
   "mood": "Flux",
-  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FLX_AGG_5",
+  "name": "Crystal Edge",
   "parameters": {
     "Origami": {
       "macro_character": 0.374,

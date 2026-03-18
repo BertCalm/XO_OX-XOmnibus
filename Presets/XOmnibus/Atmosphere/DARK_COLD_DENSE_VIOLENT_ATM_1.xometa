@@ -33,7 +33,9 @@
   ],
   "mood": "Atmosphere",
   "name": "DARK COLD DENSE VIOLENT ATM 1",
-  "parameters": {},
+  "parameters": {
+    "Octopus": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

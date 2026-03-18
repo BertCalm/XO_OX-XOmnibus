@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.859,
-    "source": "Oracle",
-    "target": "Organon",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.859
+      }
+    ]
   },
   "dna": {
     "aggression": 0.87,
@@ -31,7 +35,7 @@
     "SPACE": 0.913
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM VAST VIOLENT AET AGG 5",
+  "name": "BRIGHT WARM VAST VIOLENT AE...",
   "parameters": {
     "Oracle": {
       "macro_character": 0.891,

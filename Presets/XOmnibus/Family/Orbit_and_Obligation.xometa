@@ -29,7 +29,10 @@
   ],
   "mood": "Family",
   "name": "Orbit and Obligation",
-  "parameters": {},
+  "parameters": {
+    "Orbital": {},
+    "Obbligato": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

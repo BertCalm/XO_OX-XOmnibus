@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.767,
-    "source": "Odyssey",
-    "target": "Oblong",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Oblong",
+        "type": "FILTER_MOD",
+        "amount": 0.767
+      }
+    ]
   },
   "dna": {
     "aggression": 0.697,
@@ -31,7 +35,7 @@
     "SPACE": 0.978
   },
   "mood": "Flux",
-  "name": "BRIGHT_WARM_STILL_VAST_FLX_SLW_4",
+  "name": "Sunrise Void",
   "parameters": {
     "Oblong": {
       "macro_character": 0.581,

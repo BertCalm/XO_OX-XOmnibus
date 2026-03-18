@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8795,
-    "source": "Osprey",
-    "target": "Outwit",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Outwit",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.8795
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.2298
   },
   "mood": "Entangled",
-  "name": "DARK_COLD_FROZEN_DENSE_INTIMATE_ENT3_2",
+  "name": "Phase Massive",
   "parameters": {
     "Osprey": {
       "macro_character": 0.8734,

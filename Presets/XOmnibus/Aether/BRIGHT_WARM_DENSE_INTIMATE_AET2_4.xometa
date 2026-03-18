@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7611,
-    "source": "OddfeliX",
-    "target": "Oblique",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oblique",
+        "type": "CHAOS_INJECT",
+        "amount": 0.7611
+      }
+    ]
   },
   "dna": {
     "aggression": 0.546,
@@ -31,7 +35,7 @@
     "SPACE": 0.0261
   },
   "mood": "Aether",
-  "name": "BRIGHT_WARM_DENSE_INTIMATE_AET2_4",
+  "name": "Sunrise Saturated",
   "parameters": {
     "Oblique": {
       "macro_character": 0.884,

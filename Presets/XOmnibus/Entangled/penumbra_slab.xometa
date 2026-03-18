@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8,
-    "source": "Oblong",
-    "target": "Obscura",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Obscura",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.8
+      }
+    ]
   },
   "created": "2026-03-16",
   "dna": {

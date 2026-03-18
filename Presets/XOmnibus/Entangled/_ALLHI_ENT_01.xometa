@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.777,
-    "source": "Obscura",
-    "target": "Obbligato",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Obbligato",
+        "type": "PITCH_SYNC",
+        "amount": 0.777
+      }
+    ]
   },
   "dna": {
     "aggression": 0.976,

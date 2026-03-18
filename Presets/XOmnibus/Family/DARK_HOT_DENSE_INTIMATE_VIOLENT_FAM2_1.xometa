@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.952,
-    "source": "Ole",
-    "target": "OddOscar",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "OddOscar",
+        "type": "FILTER_MOD",
+        "amount": 0.952
+      }
+    ]
   },
   "dna": {
     "aggression": 0.913,
@@ -31,7 +35,7 @@
     "SPACE": 0.035
   },
   "mood": "Family",
-  "name": "DARK HOT DENSE INTIMATE VIOLENT FAM2 1",
+  "name": "DARK HOT DENSE INTIMATE VIO...",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.533,

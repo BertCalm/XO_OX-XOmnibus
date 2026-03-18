@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.77,
-    "source": "Origami",
-    "target": "Opal",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Opal",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.77
+      }
+    ]
   },
   "description": "Paper and grain cloud occupy spatially separated cold zones — neither intrudes.",
   "dna": {

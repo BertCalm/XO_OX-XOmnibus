@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.874,
-    "source": "Opal",
-    "target": "Oracle",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oracle",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.874
+      }
+    ]
   },
   "dna": {
     "aggression": 0.97,
@@ -31,7 +35,7 @@
     "SPACE": 0.5085
   },
   "mood": "Flux",
-  "name": "BRIGHT_COLD_KINETIC_SPARSE_VIOLENT_FLX2_5",
+  "name": "Chrome Wrath",
   "parameters": {
     "Opal": {
       "macro_character": 0.472,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8723,
-    "source": "Orca",
-    "target": "Origami",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.8723
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.5084
   },
   "mood": "Entangled",
-  "name": "BRIGHT_WARM_FROZEN_DENSE_VAST_ENT3_5",
+  "name": "Bloom Solid",
   "parameters": {
     "Orca": {
       "macro_character": 0.6298,

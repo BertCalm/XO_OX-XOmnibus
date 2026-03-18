@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.818,
-    "source": "Ocelot",
-    "target": "Owlfish",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Owlfish",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.818
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.998
   },
   "mood": "Prism",
-  "name": "BRIGHT_COLD_DENSE_VAST_VIOLENT_PRS_4",
+  "name": "Glass Wrath",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.935,

@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.72,
-    "intensity": "Deep",
-    "source": "Orphica",
-    "target": "Obscura",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Obscura",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.72
+      }
+    ]
   },
   "description": "ORPHICA's harmonic spectrum folded into OBSCURA's silver surface — brightness 0.90.",
   "dna": {

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.777,
-    "source": "Ombre",
-    "target": "OddfeliX",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "OddfeliX",
+        "type": "PITCH_SYNC",
+        "amount": 0.777
+      }
+    ]
   },
   "dna": {
     "aggression": 0.122,
@@ -31,7 +35,7 @@
     "SPACE": 0.431
   },
   "mood": "Aether",
-  "name": "BRIGHT WARM KINETIC BALANCED AET SPC 5",
+  "name": "BRIGHT WARM KINETIC BALANCE...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.957,

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.852,
-    "source": "Ouroboros",
-    "target": "Overbite",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overbite",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.852
+      }
+    ]
   },
   "dna": {
     "aggression": 0.983,

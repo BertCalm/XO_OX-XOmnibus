@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.85,
-    "source": "Overdub",
-    "target": "Obbligato",
-    "type": "RHYTHM_SYNC"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Obbligato",
+        "type": "RHYTHM_SYNC",
+        "amount": 0.85
+      }
+    ]
   },
   "dna": {
     "aggression": 0.534,

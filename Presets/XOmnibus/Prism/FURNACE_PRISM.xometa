@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.819,
-    "source": "Optic",
-    "target": "Opal",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Opal",
+        "type": "PITCH_SYNC",
+        "amount": 0.819
+      }
+    ]
   },
   "dna": {
     "aggression": 0.875,

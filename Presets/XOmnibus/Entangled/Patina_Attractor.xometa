@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.88,
-    "intensity": "Deep",
-    "source": "Ottoni",
-    "target": "Ouroboros",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Ouroboros",
+        "type": "CHAOS_INJECT",
+        "amount": 0.88
+      }
+    ]
   },
   "description": "Chaos injection sends OUROBOROS into strange attractor orbits seeded by warm brass.",
   "dna": {

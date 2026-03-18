@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.959,
-    "source": "OddOscar",
-    "target": "Onset",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Onset",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.959
+      }
+    ]
   },
   "dna": {
     "aggression": 0.98,
@@ -31,7 +35,7 @@
     "SPACE": 0.669
   },
   "mood": "Foundation",
-  "name": "DARK_DENSE_VAST_VIOLENT_FND_AGG_1",
+  "name": "Rust Crush",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.423,

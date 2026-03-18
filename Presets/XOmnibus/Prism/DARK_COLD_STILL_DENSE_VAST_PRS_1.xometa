@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.621,
-    "source": "Osteria",
-    "target": "Oracle",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.621
+      }
+    ]
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
@@ -39,7 +43,7 @@
     "SPACE": 0.954
   },
   "mood": "Prism",
-  "name": "DARK_COLD_STILL_DENSE_VAST_PRS_1",
+  "name": "Phase Expanse",
   "parameters": {
     "Oracle": {
       "macro_character": 0.16,

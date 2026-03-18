@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.62,
-    "source": "Obsidian",
-    "target": "Origami",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Origami",
+        "type": "PITCH_SYNC",
+        "amount": 0.62
+      }
+    ]
   },
   "description": "Obsidian locks pitch to a paper crease — white on white on white.",
   "dna": {

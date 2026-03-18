@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.678,
-    "source": "Osteria",
-    "target": "Overworld",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Overworld",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.678
+      }
+    ]
   },
   "dna": {
     "aggression": 0.794,

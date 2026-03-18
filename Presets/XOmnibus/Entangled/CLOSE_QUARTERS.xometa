@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.922,
-    "source": "Onset",
-    "target": "Obese",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Obese",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.922
+      }
+    ]
   },
   "dna": {
     "aggression": 0.225,

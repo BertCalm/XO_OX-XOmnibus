@@ -32,7 +32,10 @@
   ],
   "mood": "Entangled",
   "name": "BRIGHT HOT MASS 4",
-  "parameters": {},
+  "parameters": {
+    "Ombre": {},
+    "OddfeliX": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

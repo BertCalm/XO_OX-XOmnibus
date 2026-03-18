@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.5,
-    "source": "Overdub",
-    "target": "Oceanic",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Oceanic",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.5
+      }
+    ]
   },
   "dna": {
     "aggression": 0.8854,
@@ -31,7 +35,7 @@
     "SPACE": 0.9134
   },
   "mood": "Flux",
-  "name": "HOT_KINETIC_SPARSE_VAST_VIOLENT_FLX2_3",
+  "name": "Rust Dome",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.6065,

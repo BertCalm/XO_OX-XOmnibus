@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.836,
-    "source": "Oblong",
-    "target": "Overbite",
-    "type": "CHAOS_INJECT"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overbite",
+        "type": "CHAOS_INJECT",
+        "amount": 0.836
+      }
+    ]
   },
   "dna": {
     "aggression": 0.891,

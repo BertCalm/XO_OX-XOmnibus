@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.826,
-    "source": "Oblong",
-    "target": "Overworld",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overworld",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.826
+      }
+    ]
   },
   "dna": {
     "aggression": 0.903,

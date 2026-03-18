@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.65,
-    "intensity": "Moderate",
-    "source": "Ottoni",
-    "target": "Oracle",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Oracle",
+        "type": "PITCH_SYNC",
+        "amount": 0.65
+      }
+    ]
   },
   "description": "Pitch sync locks OTTONI's third brass voice to ORACLE's microtonal breakpoint map.",
   "dna": {

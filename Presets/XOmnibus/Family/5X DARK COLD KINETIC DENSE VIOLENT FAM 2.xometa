@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.83,
-    "source": "Onset",
-    "target": "Optic",
-    "type": "RHYTHM_GATE"
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Optic",
+        "type": "RHYTHM_GATE",
+        "amount": 0.83
+      }
+    ]
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
@@ -33,7 +37,7 @@
     "SPACE"
   ],
   "mood": "Family",
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FAM 2",
+  "name": "5X DARK COLD KINETIC DENSE ...",
   "parameters": {
     "Onset": {
       "macro_character": 0.89,

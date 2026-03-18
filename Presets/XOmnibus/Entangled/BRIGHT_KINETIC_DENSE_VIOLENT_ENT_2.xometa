@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.9472,
     "pairs": [
       {
         "amount": 0.9472,
@@ -9,10 +8,7 @@
         "target": "Origami",
         "type": "FORMANT_BRIDGE"
       }
-    ],
-    "source": "Ouroboros",
-    "target": "Origami",
-    "type": "FORMANT_BRIDGE"
+    ]
   },
   "couplingIntensity": "High",
   "description": "Bright Kinetic Dense Violent character entanglement — OUROBOROS × ORIGAMI via Formant Bridge. Extreme DNA zones push sound design to the edges.",
@@ -41,7 +37,7 @@
     "SPACE": 0.5009
   },
   "mood": "Entangled",
-  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_ENT_2",
+  "name": "Candlelight Blade",
   "parameters": {
     "Origami": {
       "amp_attack": 0.0437,

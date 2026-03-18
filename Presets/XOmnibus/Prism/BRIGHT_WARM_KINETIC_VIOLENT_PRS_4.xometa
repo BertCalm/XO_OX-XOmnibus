@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.731,
-    "source": "Ole",
-    "target": "Owlfish",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Owlfish",
+        "type": "PITCH_SYNC",
+        "amount": 0.731
+      }
+    ]
   },
   "dna": {
     "aggression": 0.88,
@@ -31,7 +35,7 @@
     "SPACE": 0.433
   },
   "mood": "Prism",
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_PRS_4",
+  "name": "Candlelight Cascade 2",
   "parameters": {
     "Ole": {
       "macro_character": 0.901,

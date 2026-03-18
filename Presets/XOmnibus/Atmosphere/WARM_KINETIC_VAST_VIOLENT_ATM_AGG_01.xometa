@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.711,
-    "source": "Oceanic",
-    "target": "OddOscar",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "OddOscar",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.711
+      }
+    ]
   },
   "dna": {
     "aggression": 0.903,
@@ -31,7 +35,7 @@
     "SPACE": 0.935
   },
   "mood": "Atmosphere",
-  "name": "WARM KINETIC VAST VIOLENT ATM AGG 1",
+  "name": "WARM KINETIC VAST VIOLENT A...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.3,

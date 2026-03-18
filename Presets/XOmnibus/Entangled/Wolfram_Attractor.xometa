@@ -38,7 +38,10 @@
   },
   "mood": "Entangled",
   "name": "Wolfram Attractor",
-  "parameters": {},
+  "parameters": {
+    "Outwit": {},
+    "Ouroboros": {}
+  },
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.95,

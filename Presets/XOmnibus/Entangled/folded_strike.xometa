@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.84,
     "pairs": [
       {
         "amount": 0.84,
@@ -9,10 +8,7 @@
         "engineB": "Origami",
         "type": "FREQUENCY_SHIFT"
       }
-    ],
-    "source": "Outwit",
-    "target": "Origami",
-    "type": "FREQUENCY_SHIFT"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORIGAMI's folded geometric character (Vermillion fold-based synthesis). Coupling: Frequency Shift.",

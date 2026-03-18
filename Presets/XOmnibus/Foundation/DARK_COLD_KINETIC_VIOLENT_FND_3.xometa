@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.858,
-    "source": "OddfeliX",
-    "target": "Obsidian",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obsidian",
+        "type": "FILTER_MOD",
+        "amount": 0.858
+      }
+    ]
   },
   "dna": {
     "aggression": 0.917,
@@ -31,7 +35,7 @@
     "SPACE": 0.771
   },
   "mood": "Foundation",
-  "name": "DARK_COLD_KINETIC_VIOLENT_FND_3",
+  "name": "Thread Storm",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.333,

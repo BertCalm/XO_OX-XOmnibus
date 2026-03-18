@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.775,
-    "source": "Opal",
-    "target": "Oblique",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oblique",
+        "type": "PITCH_SYNC",
+        "amount": 0.775
+      }
+    ]
   },
   "dna": {
     "aggression": 0.9138,
@@ -31,7 +35,7 @@
     "SPACE": 0.8783
   },
   "mood": "Atmosphere",
-  "name": "BRIGHT_KINETIC_SPARSE_VAST_VIOLENT_ATM_4",
+  "name": "Grain Swirl",
   "parameters": {
     "Oblique": {
       "macro_character": 0.6894,

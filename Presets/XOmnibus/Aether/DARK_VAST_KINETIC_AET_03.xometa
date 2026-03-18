@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.618,
-    "source": "Ohm",
-    "target": "Ole",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Ole",
+        "type": "PITCH_SYNC",
+        "amount": 0.618
+      }
+    ]
   },
   "dna": {
     "aggression": 0.602,

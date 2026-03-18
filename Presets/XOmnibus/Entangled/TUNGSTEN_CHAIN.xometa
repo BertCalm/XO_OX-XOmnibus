@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.8798,
-    "source": "Oracle",
-    "target": "Overbite",
-    "type": "SPECTRAL_MORPH"
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Overbite",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8798
+      }
+    ]
   },
   "dna": {
     "aggression": 0.2555,

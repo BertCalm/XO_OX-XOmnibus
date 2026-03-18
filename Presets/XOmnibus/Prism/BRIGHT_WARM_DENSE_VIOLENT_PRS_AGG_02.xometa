@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.92,
-    "source": "Oblique",
-    "target": "Owlfish",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Owlfish",
+        "type": "FILTER_MOD",
+        "amount": 0.92
+      }
+    ]
   },
   "dna": {
     "aggression": 0.873,
@@ -31,7 +35,7 @@
     "SPACE": 0.441
   },
   "mood": "Prism",
-  "name": "BRIGHT WARM DENSE VIOLENT PRS AGG 2",
+  "name": "BRIGHT WARM DENSE VIOLENT P...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.871,

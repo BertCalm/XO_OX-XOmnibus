@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.658,
-    "source": "Orbital",
-    "target": "Ombre",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Ombre",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.658
+      }
+    ]
   },
   "dna": {
     "aggression": 0.3116,
@@ -31,7 +35,7 @@
     "SPACE": 0.0687
   },
   "mood": "Aether",
-  "name": "DARK_COLD_DENSE_INTIMATE_AET2_2",
+  "name": "Wave Deep",
   "parameters": {
     "Ombre": {
       "macro_character": 0.1183,

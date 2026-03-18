@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.57,
-    "source": "OddOscar",
-    "target": "Oracle",
-    "type": "FREQUENCY_SHIFT"
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Oracle",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.57
+      }
+    ]
   },
   "dna": {
     "aggression": 0.6766,
@@ -31,7 +35,7 @@
     "SPACE": 0.0326
   },
   "mood": "Aether",
-  "name": "DARK_COLD_DENSE_INTIMATE_AET2_3",
+  "name": "Tone Deep",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.0767,

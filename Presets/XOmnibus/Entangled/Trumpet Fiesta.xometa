@@ -33,7 +33,10 @@
   ],
   "mood": "Entangled",
   "name": "Trumpet Fiesta",
-  "parameters": {},
+  "parameters": {
+    "Ottoni": {},
+    "Ole": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.78,
-    "source": "Obscura",
-    "target": "Origami",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Origami",
+        "type": "PITCH_SYNC",
+        "amount": 0.78
+      }
+    ]
   },
   "description": "Obscura pitch-locks Origami's crease angle — blue cold chemistry etched in paper.",
   "dna": {

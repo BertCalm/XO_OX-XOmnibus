@@ -28,7 +28,9 @@
   ],
   "mood": "Family",
   "name": "Lorenz Portrait",
-  "parameters": {},
+  "parameters": {
+    "Ouroboros": {}
+  },
   "schema_version": 1,
   "sequencer": null,
   "tags": [

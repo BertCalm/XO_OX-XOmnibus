@@ -1,11 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.7,
-    "intensity": "Deep",
-    "source": "Orphica",
-    "target": "Oracle",
-    "type": "TIMBRE_BLEND"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7
+      }
+    ]
   },
   "description": "Timbre blend: ORACLE's GENDY waveform acquires ORPHICA's glass-harmonic sheen.",
   "dna": {

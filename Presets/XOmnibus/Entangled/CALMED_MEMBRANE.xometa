@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.236,
-    "source": "Opal",
-    "target": "Orbital",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Orbital",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.236
+      }
+    ]
   },
   "dna": {
     "aggression": 0.814,

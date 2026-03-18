@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.67,
-    "source": "Opal",
-    "target": "Orphica",
-    "type": "MODULATION_FLOW"
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Orphica",
+        "type": "MODULATION_FLOW",
+        "amount": 0.67
+      }
+    ]
   },
   "dna": {
     "aggression": 0.549,
@@ -31,7 +35,7 @@
     "SPACE": 0.649
   },
   "mood": "Family",
-  "name": "DARK_HOT_STILL_SPARSE_FAM_VOL_75",
+  "name": "Ember Vast",
   "parameters": {
     "Opal": {
       "macro_character": 0.542,

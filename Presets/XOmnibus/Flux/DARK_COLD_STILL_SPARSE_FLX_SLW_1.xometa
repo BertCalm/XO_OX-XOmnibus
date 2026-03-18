@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.859,
-    "source": "Oblique",
-    "target": "Ouroboros",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ouroboros",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.859
+      }
+    ]
   },
   "dna": {
     "aggression": 0.661,
@@ -31,7 +35,7 @@
     "SPACE": 0.337
   },
   "mood": "Flux",
-  "name": "DARK_COLD_STILL_SPARSE_FLX_SLW_1",
+  "name": "Thread Storm 3",
   "parameters": {
     "Oblique": {
       "macro_character": 0.466,

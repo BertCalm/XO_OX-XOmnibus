@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.268,
-    "source": "Obscura",
-    "target": "Optic",
-    "type": "FILTER_MOD"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Optic",
+        "type": "FILTER_MOD",
+        "amount": 0.268
+      }
+    ]
   },
   "dna": {
     "aggression": 0.442,

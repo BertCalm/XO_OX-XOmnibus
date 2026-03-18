@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.88,
-    "source": "Osprey",
-    "target": "Obbligato",
-    "type": "PITCH_SYNC"
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Obbligato",
+        "type": "PITCH_SYNC",
+        "amount": 0.88
+      }
+    ]
   },
   "dna": {
     "aggression": 0.485,
@@ -31,7 +35,7 @@
     "SPACE": 0.04
   },
   "mood": "Family",
-  "name": "DARK_HOT_DENSE_INTIMATE_FAM_VOL_60",
+  "name": "Dusk Titan",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.468,

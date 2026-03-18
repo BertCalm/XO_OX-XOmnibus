@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.751,
-    "source": "Obsidian",
-    "target": "Overdub",
-    "type": "RESONANCE_SHARE"
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Overdub",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.751
+      }
+    ]
   },
   "dna": {
     "aggression": 0.975,
@@ -31,7 +35,7 @@
     "SPACE": 0.97
   },
   "mood": "Entangled",
-  "name": "DARK_FROZEN_DENSE_VAST_HARSH_ENT4_5",
+  "name": "Signal Rage 2",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.308,

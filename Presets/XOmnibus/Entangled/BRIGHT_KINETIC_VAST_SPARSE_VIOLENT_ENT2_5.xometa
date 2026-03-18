@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.517,
-    "source": "Orphica",
-    "target": "Overbite",
-    "type": "VELOCITY_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Overbite",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.517
+      }
+    ]
   },
   "dna": {
     "aggression": 0.958,
@@ -31,7 +35,7 @@
     "SPACE": 0.974
   },
   "mood": "Entangled",
-  "name": "BRIGHT KINETIC VAST SPARSE VIOLENT ENT2 5",
+  "name": "BRIGHT KINETIC VAST SPARSE ...",
   "parameters": {
     "Orphica": {
       "macro_character": 0.639,

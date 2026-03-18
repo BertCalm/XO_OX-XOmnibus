@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.767,
-    "source": "Orca",
-    "target": "Optic",
-    "type": "HARMONIC_FOLD"
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Optic",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.767
+      }
+    ]
   },
   "dna": {
     "aggression": 0.624,

@@ -33,7 +33,9 @@
     "space": 0.75,
     "aggression": 0.38
   },
-  "parameters": {},
+  "parameters": {
+    "Oracle": {}
+  },
   "tags": [
     "flux",
     "cold-flux",
@@ -41,5 +43,5 @@
     "thermal",
     "null"
   ],
-  "description": "Oracle at thermal null \u2014 movement persisting where all heat has fled."
+  "description": "Oracle at thermal null — movement persisting where all heat has fled."
 }

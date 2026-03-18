@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.82,
-    "source": "Obscura",
-    "target": "Odyssey",
-    "type": "ENVELOPE_LINK"
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Odyssey",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.82
+      }
+    ]
   },
   "description": "Obscura's decay controls Odyssey's envelope — the image fades before it can form.",
   "dna": {

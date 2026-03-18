@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.825,
-    "source": "Owlfish",
-    "target": "Ouroboros",
-    "type": "SPATIAL_COUPLE"
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ouroboros",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.825
+      }
+    ]
   },
   "dna": {
     "aggression": 0.5261,

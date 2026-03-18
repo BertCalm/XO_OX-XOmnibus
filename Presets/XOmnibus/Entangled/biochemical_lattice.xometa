@@ -1,7 +1,6 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.77,
     "pairs": [
       {
         "amount": 0.77,
@@ -9,10 +8,7 @@
         "engineB": "Organon",
         "type": "ENVELOPE_LINK"
       }
-    ],
-    "source": "Overlap",
-    "target": "Organon",
-    "type": "ENVELOPE_LINK"
+    ]
   },
   "couplingIntensity": "Deep",
   "description": "Lion's Mane knot-topology FDN entangled with ORGANON's logical-metabolic character (Aristotelian organ-pipe variational synthesis). Coupling: Envelope Link.",

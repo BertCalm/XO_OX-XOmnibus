@@ -1,10 +1,14 @@
 {
   "author": "XO_OX Designs",
   "coupling": {
-    "amount": 0.631,
-    "source": "Oceanic",
-    "target": "Ocelot",
-    "type": "AMPLITUDE_MOD"
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Ocelot",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.631
+      }
+    ]
   },
   "dna": {
     "aggression": 0.727,
