@@ -254,7 +254,8 @@ public:
 
             // FX Chain B "The Water": phaser + dark delay + spring + tape sat
             // Phaser: notch sweep
-            phaserPhase += 0.3f / (float)sr; // ~0.3Hz phaser LFO
+            // D005: rate floor lowered to 0.005 Hz for ultra-slow breathing modulation
+            phaserPhase += 0.005f / (float)sr;
             if(phaserPhase>=1.0f) phaserPhase-=1.0f;
             float phaserMod = std::sin(phaserPhase * 6.2831853f);
             float notchFreq = 0.1f + phaserMod * 0.05f;
