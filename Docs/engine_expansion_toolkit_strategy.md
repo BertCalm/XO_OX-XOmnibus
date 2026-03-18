@@ -865,6 +865,141 @@ and earned Brix Pack items live. It's not a preset browser — it's a trophy cas
 - **BrixBox syncs via iCloud / user account.** Discover an Easter egg on
   iPhone Pocket, it's in your BrixBox on desktop too.
 
+### Progressive Unlocks — The Roguelite Layer
+
+OBRIX starts simple. Not everything is available on day one. As you build,
+discover, and collect, new capabilities permanently unlock. Every session
+expands what's possible in the next one.
+
+**The principle:** Roguelites gate capability, not content. You never lose
+access to sounds you've made. But the *palette* of what you can build grows
+as you play. This keeps early sessions focused (not overwhelmed by 40 brick
+types) and gives experienced users a reason to keep exploring.
+
+**Unlock tiers:**
+
+```
+TIER 0 — WASHED ASHORE (first launch)
+├── Source bricks: Sine, Saw, Square, Noise
+├── Processor bricks: LP Filter, HP Filter
+├── Modulator bricks: Envelope, LFO
+├── Effects: none yet
+├── Max bricks per instance: 6
+├── Slots: 1 OBRIX instance
+└── Oscar says: "Welcome to the reef. Let's start with the basics."
+
+TIER 1 — SHALLOW REEF (10 combos tried)
+├── + Source: Triangle, Wavetable, Pulse
+├── + Processor: BP Filter, Wavefolder
+├── + Effects: Delay, Chorus
+├── Max bricks per instance: 8
+└── Oscar says: "You're getting comfortable. Here — more building material."
+
+TIER 2 — OPEN WATER (3 Easter eggs discovered)
+├── + Source: FM Pair, Sub Oscillator, Noise (colored)
+├── + Processor: Comb Filter, Ring Mod, Distortion
+├── + Modulator: Velocity, Aftertouch, Random S&H
+├── + Effects: Reverb, Phaser
+├── Max bricks per instance: 10
+├── Slots: 2 OBRIX instances (coupling unlocked)
+└── Oscar says: "Three discoveries. You've earned deeper water."
+
+TIER 3 — THE DEEP (1 Brix Pack completed)
+├── + All remaining brick types
+├── + Effects: Granular Delay, Spectral Freeze
+├── + Modulator: Macro mapping, Cross-instance mod
+├── Max bricks per instance: 12
+├── Slots: 4 OBRIX instances
+└── Oscar says: "Full toolkit. Every brick. Every connection. Build anything."
+
+TIER 4 — ABYSSAL (all base Easter eggs discovered + 2 packs completed)
+├── + Secret brick variants (visual-only — alternate skins for each type)
+├── + Oscar's "Deep Cuts" — hidden science cards with advanced synthesis theory
+├── + BrixBox gets an alternate deep-ocean theme
+├── + Unlocks "Architect Mode" — save custom brick kits as starter templates
+└── Oscar says: "You've seen everything. Now you can reshape it."
+```
+
+**Unlock philosophy — what we DON'T do:**
+
+- **No timer gates.** Never "wait 24 hours to unlock." Progress is always
+  earned by doing, never by waiting.
+- **No paywalls.** Every tier is free. Brix Packs accelerate progression
+  (completing a pack jumps you to Tier 3) but aren't required.
+- **No loss.** This is roguelite, not roguelike. You never lose progress.
+  No "prestige reset." No "start over for a bonus." What you earn, you keep.
+- **No artificial scarcity.** We don't hide brick types behind random drops
+  or loot boxes. The unlock path is deterministic — play more, get more.
+- **No grind.** Tier thresholds are tuned so natural exploration hits them.
+  10 combos is maybe 30 minutes of curious building. 3 Easter eggs is a few
+  sessions of "what happens if I try this?" No one should feel stuck.
+
+**Why this works for OBRIX specifically:**
+
+The real problem with modular synthesis for beginners isn't that it's hard —
+it's that it's *overwhelming*. 40 brick types on a blank canvas is paralyzing.
+The roguelite unlock system solves this by design:
+
+- **Session 1:** Four oscillators, two filters, an envelope, an LFO. That's
+  already enough to build a synth. The constraint is the teacher.
+- **Session 3:** You've tried 10 things, you're comfortable. Now here's
+  wavetables and effects. The expansion feels earned and exciting.
+- **Session 8:** You found CHAIN SAW MAN and DEEP SEA DIVER. You're thinking
+  in combinations now. Here's ring mod and comb filters — you're ready.
+- **Session 15:** Full toolkit. You don't need guardrails anymore.
+
+The progression *is* the tutorial. No separate "learn mode" needed — the
+unlock gates naturally teach you synthesis in the right order.
+
+**Oscar adapts to your tier:**
+
+At each unlock, Oscar doesn't just announce new bricks — he contextualizes them
+based on what you've already built:
+
+> *"You just unlocked the Wavefolder. Remember that buzzy saw patch you made?*
+> *Try running it through this. It'll fold the waveform back on itself —*
+> *more harmonics, more edge. Like crumpling paper."*
+> — Professor Oscar (Tier 1 unlock, personalized)
+
+Oscar tracks your most-used brick types and tailors unlock messages to reference
+your actual patches. Generic fallbacks exist for edge cases, but the personal
+touch makes each unlock feel like a gift, not a gate.
+
+**Persistent unlock state:**
+
+```json
+// brixbox.json additions
+{
+  "tier": 2,
+  "combosTried": 47,
+  "discoveredEggs": ["CHAIN_SAW_MAN", "DEEP_SEA_DIVER", "BELL_BOY"],
+  "packsCompleted": 0,
+  "unlockedBricks": ["sine", "saw", "square", "noise", "triangle",
+                      "wavetable", "pulse", "lp_filter", "hp_filter",
+                      "bp_filter", "wavefolder", "envelope", "lfo",
+                      "delay", "chorus", "fm_pair", "sub_osc", ...],
+  "tierUnlockDates": {
+    "1": "2027-01-20T14:32:00Z",
+    "2": "2027-02-08T19:15:00Z"
+  }
+}
+```
+
+**Bypass for power users:**
+
+An "Unlock All" toggle exists in OBRIX settings. Flipping it immediately
+grants Tier 3 access (all bricks, all slots). Tier 4 still requires
+discovery — you can't skip the Easter egg hunt. No judgment, no penalty.
+Some people want the full canvas from minute one, and that's fine.
+
+The toggle is worded carefully:
+
+> **Unlock all bricks immediately**
+> *Skip progressive discovery. All brick types and 4 slots available now.*
+> *Easter egg discoveries and BrixBox collection still work normally.*
+
+Not "cheat mode." Not "skip tutorial." Just a preference.
+
 ### BrixBox on iPhone Pocket
 
 On Pocket, the BrixBox is accessed via a dedicated tab (swipe left from the
@@ -966,6 +1101,8 @@ combos become packs → packs bring users back → more combos → repeat.
 - Full coupling compatibility with all existing engines
 - Professor Oscar training mode (tooltips, connection insights, science cards, waveform visualizer)
 - Easter egg brick combos (CHAIN SAW MAN, DEEP SEA DIVER, PURE THOUGHT, etc.)
+- **Progressive unlock system** — roguelite-inspired tiered brick discovery
+  (Tiers 0–4, capability expands with play, "Unlock All" bypass toggle)
 - **OBRIX Pocket** — iPhone-optimized Pocket Operator-inspired single-screen interface
 - Aquatic visual identity (ocean gradient, shell/coral/current/tide pool brick types)
 
