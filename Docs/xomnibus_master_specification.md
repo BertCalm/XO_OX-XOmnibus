@@ -144,46 +144,52 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 
 ## 3. Engine Modules
 
-### 3.1 The 34 Registered Engines
+### 3.1 The 44 Registered Engines
 
-*As of 2026-03-15. All engines installed, auval PASS.*
+*As of 2026-03-17. All engines installed, auval PASS. Seance coverage: 44/44.*
 
-| Short Name | Source | Accent Color |
-|-----------|--------|-------------|
-| **ODDFELIX** | OddfeliX | Neon Tetra Blue `#00A6D6` |
-| **ODDOSCAR** | OddOscar | Axolotl Gill Pink `#E8839B` |
-| **OVERDUB** | XOverdub | Olive `#6B7B3A` |
-| **ODYSSEY** | XOdyssey | Violet `#7B2D8B` |
-| **OBLONG** | XOblong | Amber `#E9A84A` |
-| **OBESE** | XObese | Hot Pink `#FF1493` |
-| **ONSET** | XOnset | Electric Blue `#0066FF` |
-| **OVERWORLD** | XOverworld | Neon Green `#39FF14` |
-| **OPAL** | XOpal | Lavender `#A78BFA` |
-| **ORBITAL** | XOrbital | Warm Red `#FF6B6B` |
-| **ORGANON** | XOrganon | Bioluminescent Cyan `#00CED1` |
-| **OUROBOROS** | XOuroboros | Strange Attractor Red `#FF2D2D` |
-| **OBSIDIAN** | XObsidian | Crystal White `#E8E0D8` |
-| **ORIGAMI** | XOrigami | Vermillion Fold `#E63946` |
-| **ORACLE** | XOracle | Prophecy Indigo `#4B0082` |
-| **OBSCURA** | XObscura | Daguerreotype Silver `#8A9BA8` |
-| **OCEANIC** | XOceanic | Phosphorescent Teal `#00B4A0` |
-| **OCELOT** | XOcelot | Ocelot Tawny `#C5832B` |
-| **OVERBITE** | XOverbite | Fang White `#F0EDE8` |
-| **OPTIC** | XOptic | Phosphor Green `#00FF41` |
-| **OBLIQUE** | XOblique | Prism Violet `#BF40FF` |
-| **OSPREY** | XOsprey | Azulejo Blue `#1B4F8A` |
-| **OSTERIA** | XOsteria | Porto Wine `#722F37` |
-| **OWLFISH** | XOwlfish | Abyssal Gold `#B8860B` |
-| **OHM** | XOhm | Sage `#87AE73` |
-| **ORPHICA** | XOrphica | Siren Seafoam `#7FDBCA` |
-| **OBBLIGATO** | XObbligato | Rascal Coral `#FF8A7A` |
-| **OTTONI** | XOttoni | Patina `#5B8A72` |
-| **OLE** | XOlé | Hibiscus `#C9377A` |
-| **OVERLAP** | XOverlap | Lion's Mane Green `#00FFB4` |
-| **OUTWIT** | XOutwit | Octopus Orange `#CC6600` |
-| **OMBRE** | XOmbre | Shadow Mauve `#7B6B8A` |
-| **ORCA** | XOrca | Deep Ocean `#1B2838` |
-| **OCTOPUS** | XOctopus | Chromatophore Magenta `#E040FB` |
+| Short Name | Source | Accent Color | Generation |
+|-----------|--------|-------------|------------|
+| **ODDFELIX** | OddfeliX | Neon Tetra Blue `#00A6D6` | Original |
+| **ODDOSCAR** | OddOscar | Axolotl Gill Pink `#E8839B` | Original |
+| **OVERDUB** | XOverdub | Olive `#6B7B3A` | Original |
+| **ODYSSEY** | XOdyssey | Violet `#7B2D8B` | Original |
+| **OBLONG** | XOblong | Amber `#E9A84A` | Original |
+| **OBESE** | XObese | Hot Pink `#FF1493` | Original |
+| **ONSET** | XOnset | Electric Blue `#0066FF` | Original |
+| **OVERWORLD** | XOverworld | Neon Green `#39FF14` | Original |
+| **OPAL** | XOpal | Lavender `#A78BFA` | Original |
+| **ORBITAL** | XOrbital | Warm Red `#FF6B6B` | Original |
+| **ORGANON** | XOrganon | Bioluminescent Cyan `#00CED1` | Original |
+| **OUROBOROS** | XOuroboros | Strange Attractor Red `#FF2D2D` | Original |
+| **OBSIDIAN** | XObsidian | Crystal White `#E8E0D8` | Original |
+| **ORIGAMI** | XOrigami | Vermillion Fold `#E63946` | Original |
+| **ORACLE** | XOracle | Prophecy Indigo `#4B0082` | Original |
+| **OBSCURA** | XObscura | Daguerreotype Silver `#8A9BA8` | Original |
+| **OCEANIC** | XOceanic | Phosphorescent Teal `#00B4A0` | Original |
+| **OCELOT** | XOcelot | Ocelot Tawny `#C5832B` | Original |
+| **OVERBITE** | XOverbite | Fang White `#F0EDE8` | Original |
+| **OPTIC** | XOptic | Phosphor Green `#00FF41` | Original |
+| **OBLIQUE** | XOblique | Prism Violet `#BF40FF` | Original |
+| **OSPREY** | XOsprey | Azulejo Blue `#1B4F8A` | Original |
+| **OSTERIA** | XOsteria | Porto Wine `#722F37` | Original |
+| **OWLFISH** | XOwlfish | Abyssal Gold `#B8860B` | Original |
+| **OHM** | XOhm | Sage `#87AE73` | Constellation |
+| **ORPHICA** | XOrphica | Siren Seafoam `#7FDBCA` | Constellation |
+| **OBBLIGATO** | XObbligato | Rascal Coral `#FF8A7A` | Constellation |
+| **OTTONI** | XOttoni | Patina `#5B8A72` | Constellation |
+| **OLE** | XOlé | Hibiscus `#C9377A` | Constellation |
+| **OVERLAP** | XOverlap | Lion's Mane Green `#00FFB4` | Phase 4 |
+| **OUTWIT** | XOutwit | Octopus Orange `#CC6600` | Phase 4 |
+| **OMBRE** | XOmbre | Shadow Mauve `#7B6B8A` | Phase 3 |
+| **ORCA** | XOrca | Deep Ocean `#1B2838` | Phase 3 |
+| **OCTOPUS** | XOctopus | Chromatophore Magenta `#E040FB` | Phase 3 |
+| **OPENSKY** | XOpenSky | Sunburst `#FF8C00` | V1 Concept |
+| **OSTINATO** | XOstinato | Firelight Orange `#E8701A` | V1 Concept |
+| **OCEANDEEP** | XOceanDeep | Trench Violet `#2D0A4E` | V1 Concept |
+| **OUIE** | XOuïe | Hammerhead Steel `#708090` | V1 Concept |
+| **OVERTONE** | XOvertone | Spectral Ice `#A8D8EA` | V2 Theorem |
+| **ORGANISM** | XOrganism | Emergence Lime `#C6E377` | V2 Theorem |
 
 ### 3.2 Engine Visual Identity
 
@@ -266,7 +272,7 @@ octo_armDepth          // OCTOPUS
 
 ## 4. Coupling Matrix
 
-### 4.1 Coupling Types (12)
+### 4.1 Coupling Types (13)
 
 ```cpp
 enum class CouplingType {
@@ -281,7 +287,11 @@ enum class CouplingType {
     RhythmToBlend,    // Engine A rhythm pattern → Engine B blend parameter
     EnvToDecay,       // Engine A envelope → Engine B decay time
     PitchToPitch,     // Engine A pitch → Engine B pitch (harmony)
-    AudioToWavetable  // Engine A audio → Engine B wavetable source
+    AudioToWavetable, // Engine A audio → Engine B wavetable source
+    AudioToBuffer,    // Engine A audio → Engine B ring buffer (continuous stereo streaming)
+    KnotTopology      // Bidirectional irreducible coupling (V2 Theorem — KNOT feature)
+                      // Both engines act as source and destination simultaneously.
+                      // Linking number 1-5 encoded in route.amount (0.0→1.0 → integer 1→5).
 };
 ```
 
@@ -1050,10 +1060,10 @@ The MVP ships with:
 
 ### 12.2 v1.0 Target
 
-- All 34 engines (+ 4 V1 concept engines: OSTINATO, OPENSKY, OCEANDEEP, OUIE) wrapped and integrated
+- All 44 engines wrapped and integrated (34 original + 5 Constellation + 2 Phase 4 + 3 Phase 3 + 4 V1 Concept + 2 V2 Theorem)
 - Full coupling matrix (12 types)
 - PlaySurface (all 3 modes)
-- 11,247 factory presets with DNA fingerprints (8 moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged)
+- 12,147+ factory presets with DNA fingerprints (8 moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged) — 11,247 original + 900 new from 6 engines × 150 each
 - Preset morphing and breeding
 - XPN export
 - macOS + iOS (AUv3)
