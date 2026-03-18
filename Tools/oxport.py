@@ -44,6 +44,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
+if sys.version_info < (3, 9):
+    sys.exit("Error: XOmnibus tools require Python 3.9+")
+
 # ---------------------------------------------------------------------------
 # Resolve Tools/ directory so sibling imports work when invoked from anywhere
 # ---------------------------------------------------------------------------
@@ -876,68 +879,44 @@ def cmd_status(args) -> int:
 
 
 def cmd_validate(args) -> int:
-    """Validate a pipeline output (placeholder)."""
+    """Validate a pipeline output using xpn_validator.py."""
     print(BANNER)
     output_dir = Path(args.output_dir)
     print(f"  Validate: {output_dir}")
     print()
 
-    # Basic structural checks
-    checks_passed = 0
-    checks_failed = 0
-
-    # Check for .xpm files
-    xpms = list(output_dir.rglob("*.xpm"))
-    if xpms:
-        print(f"    [OK] Found {len(xpms)} .xpm program(s)")
-        checks_passed += 1
-    else:
-        print(f"    [FAIL] No .xpm programs found")
-        checks_failed += 1
-
-    # Check for .xpn files
+    # Find .xpn files to validate
     xpns = list(output_dir.glob("*.xpn"))
-    if xpns:
-        for xpn in xpns:
-            size_kb = xpn.stat().st_size / 1024
-            print(f"    [OK] {xpn.name} ({size_kb:.1f} KB)")
-            checks_passed += 1
-    else:
-        print(f"    [INFO] No .xpn archives found (run full pipeline to generate)")
+    if not xpns:
+        # Also search one level deep (e.g. output_dir/EngineName/Pack.xpn)
+        xpns = list(output_dir.glob("**/*.xpn"))
+    if not xpns:
+        print(f"  [ERROR] No .xpn files found in {output_dir}")
+        print("  Run `oxport.py run` first to generate a .xpn archive.")
+        return 1
 
-    # Check for artwork
-    artwork = list(output_dir.rglob("artwork.png"))
-    if artwork:
-        print(f"    [OK] Cover art found ({len(artwork)} file(s))")
-        checks_passed += 1
-    else:
-        print(f"    [INFO] No cover art found")
+    try:
+        from xpn_validator import validate_xpn, CRITICAL
+    except ImportError:
+        print("  [ERROR] xpn_validator.py not found in Tools directory")
+        return 1
 
-    # Check for WAV samples
-    wavs = list(output_dir.rglob("*.wav")) + list(output_dir.rglob("*.WAV"))
-    if wavs:
-        print(f"    [OK] {len(wavs)} WAV sample(s)")
-        checks_passed += 1
-    else:
-        print(f"    [INFO] No WAV samples found")
-
-    # Check XPM validity (basic XML check)
-    for xpm in xpms[:5]:  # spot-check first 5
-        try:
-            content = xpm.read_text(encoding="utf-8")
-            if "<MPCVObject>" in content and "</MPCVObject>" in content:
-                print(f"    [OK] {xpm.name} — valid XML structure")
-                checks_passed += 1
-            else:
-                print(f"    [FAIL] {xpm.name} — missing MPCVObject tags")
-                checks_failed += 1
-        except Exception as e:
-            print(f"    [FAIL] {xpm.name} — {e}")
-            checks_failed += 1
+    any_critical = False
+    for xpn_path in sorted(xpns):
+        print(f"  Validating: {xpn_path.name}")
+        result = validate_xpn(str(xpn_path))
+        result.print_report()
+        counts = result.counts
+        if counts[CRITICAL] > 0:
+            any_critical = True
 
     print()
-    print(f"  Passed: {checks_passed}  Failed: {checks_failed}")
-    return 1 if checks_failed > 0 else 0
+    if any_critical:
+        print("  RESULT: CRITICAL findings detected — fix before distribution.")
+        return 1
+    else:
+        print("  RESULT: No CRITICAL findings.")
+        return 0
 
 
 # ---------------------------------------------------------------------------

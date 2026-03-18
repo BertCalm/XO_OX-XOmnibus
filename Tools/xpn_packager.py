@@ -184,8 +184,7 @@ def package_xpn(
 
     programs = _collect_programs(build_dir)
     if not programs:
-        print(f"  [ERROR] No .xpm programs found in {build_dir}")
-        return output_path
+        raise ValueError(f"No .xpm programs found in {build_dir} — aborting packaging")
 
     if verbose:
         print(f"\n  Packaging: {metadata.name}")
