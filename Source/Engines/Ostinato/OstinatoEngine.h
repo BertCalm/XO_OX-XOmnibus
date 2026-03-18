@@ -223,25 +223,27 @@ struct OstiVoice {
     }
 
     // Trigger this voice.
-    // drumType: 0-11 selects character preset
+    // drumType:     0-11 selects character preset
     // cutoffOverride: parameter cutoff (blended with drum preset)
-    // resOverride: parameter resonance
-    // atkOverride: attack time seconds (osti_ampAtk)
-    // susOverride: sustain level 0-1 (osti_ampSus — mapped to hold time in env)
-    // relOverride: release/decay time seconds (osti_ampRel)
+    // resOverride:  parameter resonance
+    // atkOverride:  attack time seconds  — osti_ampAtk
+    // susOverride:  sustain amplitude 0..1 — osti_ampSus
+    // holdOverride: hold stage duration seconds — osti_ampDec
+    // relOverride:  decay time seconds  — osti_ampRel
     // velCutoffAmt: velocity → cutoff scaling (0-1)
-    // velocity: MIDI velocity 0-1
+    // velocity:     MIDI velocity 0-1
     void noteOn(int n, float velocity,
                 int drumType,
                 float cutoffOverride, float resOverride,
-                float atkOverride, float susOverride, float relOverride,
+                float atkOverride, float susOverride,
+                float holdOverride, float relOverride,
                 float velCutoffAmt) noexcept
     {
         note = n;
         vel  = velocity;
 
         // Clamp drumType to valid range
-        int dt = clamp(drumType, 0, 11);
+        int dt = juce::jlimit(0, 11, drumType);
         const OstiDrumChar& dc = kDrumChars[dt];
 
         // Blend parameter cutoff with drum character preset (50/50 mix)
@@ -255,7 +257,7 @@ struct OstiVoice {
         // D001: velocity also shapes attack transient amplitude
         float peak    = velocity * (0.7f + velocity * 0.3f); // slight curve up at high vel
         float decSec  = relOverride > 0.001f ? relOverride : dc.decaySec;
-        env.trigger(peak, atkOverride, susOverride, decSec);
+        env.trigger(peak, atkOverride, susOverride, holdOverride, decSec);
         active = true;
     }
 
@@ -436,6 +438,7 @@ public:
                 float res           = pFilterRes   ? pFilterRes->load()        : 0.3f;
                 float atk           = pAmpAtk      ? pAmpAtk->load()           : 0.003f;
                 float sus           = pAmpSus      ? pAmpSus->load()           : 0.0f;
+                float dec           = pAmpDec      ? pAmpDec->load()           : 0.5f;
                 float rel           = pAmpRel      ? pAmpRel->load()           : 0.3f;
                 float velCutoffAmt  = pVelCutoffAmt? pVelCutoffAmt->load()     : 0.5f;
 
@@ -448,7 +451,7 @@ public:
 
                 float velocity = msg.getVelocity() / 127.f;
                 voices[slot].noteOn(msg.getNoteNumber(), velocity,
-                                    drumType, cutoff, res, atk, sus, rel, velCutoffAmt);
+                                    drumType, cutoff, res, atk, sus, dec, rel, velCutoffAmt);
             }
             else if (msg.isNoteOff()) {
                 // Percussion — no note-off (envelope self-completes)
@@ -472,15 +475,9 @@ public:
             return;
         }
 
-        // --- 3. Read parameters (ParamSnapshot — all reads done once) ---------
-        int   drumType      = pDrumType     ? (int)pDrumType->load()     : 0;
-        float pCutoff       = pFilterCutoff ? pFilterCutoff->load()      : 2000.f;
-        float pRes          = pFilterRes    ? pFilterRes->load()          : 0.3f;
-        float pAtk          = pAmpAtk       ? pAmpAtk->load()             : 0.005f;
-        float pDec          = pAmpDec       ? pAmpDec->load()             : 0.5f;
-        float pSus          = pAmpSus       ? pAmpSus->load()             : 0.0f;
-        float pRel          = pAmpRel       ? pAmpRel->load()             : 0.3f;
-        float pVelCutoff    = pVelCutoffAmt ? pVelCutoffAmt->load()      : 0.5f;
+        // --- 3. Read parameters (ParamSnapshot — render-loop params only) -------
+        // Per-note params (drumType, cutoff, res, envelope, velCutoffAmt) are
+        // read fresh at note-on time inside the MIDI loop above.
         float pRevMix       = pReverbMix    ? pReverbMix->load()          : 0.2f;
         float pL1Rate       = pLfo1Rate     ? pLfo1Rate->load()           : 0.5f;
         float pL1Depth      = pLfo1Depth    ? pLfo1Depth->load()          : 0.1f;
