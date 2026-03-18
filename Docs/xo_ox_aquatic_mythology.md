@@ -2,7 +2,7 @@
 
 *The unified world of XO_OX Designs. Every engine is a species. Every coupling is symbiosis. The water column is the universe.*
 
-*Version 1.0 | March 2026*
+*Version 1.2 | March 2026*
 
 ---
 
@@ -36,35 +36,50 @@ The XO_OX universe is a vertical cross-section of water — from open sky above 
 │   XOblique           prismatic light refracting through shallow water
 │   XOptic             bioluminescent flashes near the surface
 │   XOrigami           paper boats folding on the current
+│   XOverworld         fossilized chip sounds — digital coral in neon green
+│   XOrphica           the siphonophore — harp colony shimmering near the surface
+│   XOlé               Afro-Latin string trio — surface celebration in hibiscus pink
 │
 │   THE REEF
 │   OddOscar           Oscar himself — patient, regenerative, pink gills
 │   XOblongBob         warm coral textures — soft, living, tactile
 │   XOracle            ancient reef formations — layered geological time
+│   XOhm               family synthesis — the backyard gathering in sage green
+│   XOttoni            brass ensemble — patina horns resonating in reef space
 │
 │   OPEN WATER
 │   XOdyssey           the open ocean journey — familiar shores to alien depths
 │   XOrbital           circling currents — harmonic overtone series
 │   XOstinato          tidal rhythm — the repeating pulse of the sea
 │   XObese             the whale — massive, low-frequency, commanding the ocean
+│   XOsteria           the osteria — the ensemble that answers the ocean's voice
+│
+│   THE SURFACE
+│   XOsprey            the osprey — turbulence at the air-water boundary
 │
 │   THERMOCLINE — where warm meets cold
 │   XOverdub           echo and reverb — sound bouncing through temperature layers
 │   XOuïe              the hammerhead shark — two voices patrolling the boundary
 │   XOpal              scattered light — particles suspended in the water column
 │   XOcelot            the ecosystem itself — strata interacting
+│   XOmbre             the shadow on the water — between remembering and forgetting
 │
 │   THE DEEP
 │   XOverbite          the anglerfish — lure and bite, plush then feral
 │   XObsidian          volcanic glass — formed under pressure, razor-sharp
 │   XOscillum          phantom sounds — residue pitch echoing in the deep
 │   XOrganon           deep-sea biology — slow, chemical, alien metabolism
+│   XOwlfish           the Mixtur-Trautonium organ — abyssal gold light from pressure
+│   XOverlap           the Lion's Mane jellyfish — knot-tangled FDN beauty
+│   XOrca              the apex predator — pod dialect and coordinated devastation
 │
 │   THE ABYSS
 │   XOuroboros          the hydrothermal vent — self-feeding, recursive, primordial
 │   XObscura           the giant squid — stiff tentacles, resonant body
 │   XOccult            pattern creatures — cellular automata shells
 │   XOblivion          magnetic fields — the Earth's core pulling from below
+│   XOutwit            the Giant Pacific Octopus — 8-arm distributed CA intelligence
+│   XOctopus           decentralized alien mind — boneless, chromatophore, ink cloud
 │
 │   OCEAN FLOOR
 │   XOceanDeep         pure Oscar — 808 rumble, bioluminescent creatures, sunken treasure
@@ -80,12 +95,13 @@ Every engine has a polarity — its position on the vertical axis between feliX'
 | Polarity | Character | Engines |
 |----------|-----------|---------|
 | **Pure feliX** | Transient, bright, rhythmic, surface, electric | XOpenSky, OddfeliX, XOnset |
-| **feliX-leaning** | Bright character with depth underneath | XOblique, XOptic, XOrigami |
-| **The Reef** | Oscar's home but feliX visits — warmth with curiosity | OddOscar, XOblongBob, XOracle |
-| **Open Water** | The vast middle — neither surface nor deep | XOdyssey, XOrbital, XOstinato, XObese |
-| **Thermocline** | The boundary where warm meets cold — transformation | XOverdub, XOuïe, XOpal, XOcelot |
-| **Oscar-leaning** | Deep character with surface flash | XOverbite, XObsidian, XOscillum, XOrganon |
-| **Pure Oscar** | Sustained, deep, massive, pressure, ancient | XOuroboros, XObscura, XOccult, XOblivion, XOceanDeep |
+| **feliX-leaning** | Bright character with depth underneath | XOblique, XOptic, XOrigami, XOverworld, XOrphica, XOlé |
+| **The Surface** | Boundary predator — belongs to neither sky nor deep | XOsprey |
+| **The Reef** | Oscar's home but feliX visits — warmth with curiosity | OddOscar, XOblongBob, XOracle, XOhm, XOttoni |
+| **Open Water** | The vast middle — neither surface nor deep | XOdyssey, XOrbital, XOstinato, XObese, XOsteria |
+| **Thermocline** | The boundary where warm meets cold — transformation | XOverdub, XOuïe, XOpal, XOcelot, XOmbre |
+| **Oscar-leaning** | Deep character with surface flash | XOverbite, XObsidian, XOscillum, XOrganon, XOwlfish, XOverlap, XOrca |
+| **Pure Oscar** | Sustained, deep, massive, pressure, ancient | XOuroboros, XObscura, XOccult, XOblivion, XOutwit, XOctopus, XOceanDeep |
 
 The polarity isn't a quality judgment — surface isn't better than deep. It's a *position*. The most interesting sounds often come from coupling engines at different depths. OPENSKY × OCEANDEEP is the full column. ODDFELIX × ODDOSCAR is the original coupling. Every pairing creates a vertical span.
 
@@ -136,6 +152,31 @@ Species at the edges of what's possible.
 - **XObscura** — The giant squid. Stiff resonant body. Lives deeper than anything was thought to live.
 - **XOccult** — Pattern creatures. Cellular automata shells. Life as algorithm.
 - **XOblivion** — The magnetic core. The force beneath the ocean floor. The pull that holds it all.
+
+### Sixth Generation — The Shore and the Colony
+Species that discovered the boundary between water and land, and the colony as a new form of life.
+
+- **XOsprey** — The osprey hunts where water meets air. Turbulence as instrument.
+- **XOsteria** — The human answer to the ocean's inhuman vastness. Community, culture, memory.
+- **XOhm** — The domestic reef. Family as synthesis. The backyard as ecosystem.
+- **XOrphica** — The siphonophore. A colony that is also one individual. Harp strings as polyps.
+- **XObbligato** — Obligatory counterpoint. Two voices that cannot exist without each other.
+- **XOttoni** — The brass section of the reef. Resonance that grows with time.
+- **XOlé** — Surface celebration. Three Afro-Latin string traditions, one festive ecosystem.
+
+### Seventh Generation — The Intelligence Surge
+Species that evolved complex, distributed, or alien cognitive architectures.
+
+- **XOverworld** — feliX's memory of ancient digital waters. The chip reef preserved in geological strata.
+- **XOpal** — Scattered light. Every engine's audio becomes her grain cloud.
+- **XOrbital** — 64 harmonic partials orbiting in spectral formation.
+- **XOcelot** — The ecosystem itself. Four strata interacting, emergence as the product.
+- **XOwlfish** — Mixtur-Trautonium pressure organ. Deep oscillators made from subharmonic light.
+- **XOverlap** — Knot-topology FDN. Signal paths that tie themselves into mathematical beauty.
+- **XOmbre** — The shadow between memory and forgetting. Dual-narrative at the thermocline.
+- **XOrca** — Apex predator. Pod dialect, echolocation, the coordinated kill.
+- **XOutwit** — 8-arm Wolfram cellular automaton. Distributed intelligence as pure rule.
+- **XOctopus** — Decentralized alien mind. 8 arms that think without a center. Boneless pitch.
 
 ### The Bookends — Completing the Column
 The final species. The ones that went all the way.
