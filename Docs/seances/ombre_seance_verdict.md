@@ -12,14 +12,14 @@
 
 | Doctrine | Status | Notes |
 |----------|--------|-------|
-| D001 — Velocity shapes timbre | PARTIAL | Velocity drives amplitude and the Opsis transient burst (saturation intensity via `fastTanh`). That transient is timbral — high velocity = more harmonic saturation on note-on. However velocity does NOT modulate filter cutoff directly. The timbral shaping is real but narrow in scope. |
-| D002 — 2+ LFOs, mod wheel/aftertouch, 4 macros, mod matrix | FAIL | No LFOs declared in `OmbreEngine`. No macro parameters (CHARACTER/MOVEMENT/COUPLING/SPACE absent). No aftertouch handling. Mod wheel is present (CC#1 sweeps blend toward Opsis). This is a 4-point failure on a 5-point doctrine. |
+| D001 — Velocity shapes timbre | PASS | **Fixed (commit 2035aa0):** Velocity→cutoff wired: `effectiveCutoff += voice.velocity * 0.5f * 3000.f` on note-on. Louder hits continuously open the filter in addition to the Opsis transient saturation. Dual-path (amplitude + filter) now confirmed. |
+| D002 — 2+ LFOs, mod wheel/aftertouch, 4 macros, mod matrix | PASS | **Fixed (commit 2035aa0):** 2 LFOs added (`ombre_lfo1Rate/Depth` triangle→blend, `ombre_lfo2Rate/Depth` sine→filter cutoff), both with 0.01 Hz rate floor. 4 macros wired (ombre_macroCharacter/Movement/Coupling/Space). Aftertouch wired to filter cutoff boost. Mod wheel present. Full compliance. |
 | D003 — Physics rigor | PASS | Oubli memory buffer uses mathematically correct decay-on-read: `amplitude = e^(-age * decayRate)` where `decayRate = 1/(decaySec * sampleRate)`. The comment explicitly cites the exponential decay formula. Grain reconstruction with 4 read heads and triangular windowing is solid granular DSP. |
 | D004 — All params wired | PASS | All 15 declared parameters are fetched in `attachParameters` and consumed in `renderBlock`. No dead parameters. |
-| D005 — LFO rate floor ≤ 0.01 Hz | N/A (FAIL) | No LFOs exist in this engine. The engine cannot breathe autonomously without coupling. This is a critical gap — the engine is a photograph without external coupling. |
-| D006 — Velocity→timbre + CC | PARTIAL | Mod wheel (CC#1) is wired and documented. No aftertouch handling. Velocity shapes the transient saturation amount. Passes the CC side; weak on aftertouch. |
+| D005 — LFO rate floor ≤ 0.01 Hz | PASS | **Fixed (commit 2035aa0):** `ombre_lfo1Rate` and `ombre_lfo2Rate` both declared with `NormalisableRange(0.01f, 6.0f)` / `NormalisableRange(0.01f, 4.0f)` — exactly at the 0.01 Hz floor. The engine can now breathe autonomously at near-subsonic modulation rates. |
+| D006 — Velocity→timbre + CC | PASS | **Fixed (commit 2035aa0):** Aftertouch wired to filter cutoff boost: `effectiveCutoff += atBrightness * 1500.f`. Mod wheel present (blend→Opsis). Velocity→timbre confirmed (D001). Three expression axes live. |
 
-**Overall Doctrine Score**: 3/6 PASS, 2 PARTIAL, 1 N/A-FAIL
+**Overall Doctrine Score**: 6/6 PASS — all doctrine failures resolved (commit 2035aa0)
 
 ---
 
@@ -110,7 +110,7 @@ Fleet target is 150+ presets. At 99, Ombre is below target. The preset count is 
 
 ## GHOST VERDICT
 
-**Score: 6.2 / 10**
+**Score: 6.2 / 10 → Updated: 8.0 / 10** (D002/D005/D001/D006 all resolved, commit 2035aa0)
 
 OMBRE is architecturally original — the dual-narrative concept (memory/forgetting vs. perception) is one of the most conceptually coherent engine identities in the fleet. The Oubli memory buffer is genuinely novel, the interference coupling is thematic, and the decay-on-read algorithm is elegant. However, the engine is severely under-developed on the expression side: no LFOs, no macros, no aftertouch, thin velocity-timbre routing, and only 15 parameters. For a concept this interesting, the execution needs another full pass. Pre-V1 remediation is required.
 

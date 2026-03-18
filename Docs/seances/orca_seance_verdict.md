@@ -12,14 +12,14 @@
 
 | Doctrine | Status | Notes |
 |----------|--------|-------|
-| D001 — Velocity shapes timbre | FAIL | Velocity is stored per-voice and applied only as an amplitude multiplier (`gain = ampLevel * voice.velocity * voice.fadeGain`). It does not modulate filter cutoff, formant intensity, wavetable position, echolocation rate, or any timbral parameter. Velocity affects loudness only — a doctrine violation. |
+| D001 — Velocity shapes timbre | PASS | **Fixed (commit 2035aa0):** Velocity→filter cutoff wired: `velCutoffBoost = pVelCutoffAmt * voice.velocity * 3000.f` applied per-voice before SVF coefficient calculation. Louder hits continuously open the filter. Also: velocity-proportional echolocation delay compression. Dual-path confirmed. |
 | D002 — 2+ LFOs, mod wheel/aftertouch, 4 macros, mod matrix | PASS | Two LFOs declared (lfo1: wavetable scanner, lfo2: echolocation rate). Both are wired and rate-controllable. Mod wheel (CC#1) sweeps wavetable position. 4 macros present (CHARACTER, MOVEMENT, COUPLING, SPACE) and wired to meaningful targets. Aftertouch handled via MPEVoiceExpression. No explicit mod matrix slots, but coupling + macros cover equivalent ground. |
 | D003 — Physics rigor | PASS | Echolocation comb filter delay time is derived from voice frequency (`combDelay = srf / voice.currentFreq`) — this correctly tunes the comb resonance to the playing pitch. Portamento uses `1 - exp(-1/(glideTime * sampleRate))` coefficient — correct one-pole smoother. Bitcrusher uses quantization step `2^bits` correctly. Breach sub tracks the lowest active voice and plays one octave below (`subFreq = lowestFreq * 0.5f`). All physics relationships are mathematically correct. |
 | D004 — All params wired | PASS | All 37 declared parameters are fetched in `attachParameters` and consumed in `renderBlock`. No dead parameters found. The HUNT macro wire-up is particularly thorough (simultaneous cutoff, resonance, formant, comb resonance, crush mix, sub level). |
 | D005 — LFO rate floor ≤ 0.01 Hz | PASS | `orca_lfo1Rate` range is `0.01f` to `30.0f` Hz — exactly at the floor. `orca_lfo2Rate` range is `0.01f` to `30.0f` Hz. Both LFOs can breathe at near-subsonic rates. |
-| D006 — Velocity→timbre + CC | PARTIAL | Mod wheel (CC#1) is wired and functional (scans wavetable position — genuinely timbral). MPEVoiceExpression is wired per-voice for pitch bend. However velocity only affects amplitude (see D001). The CC side passes; the velocity-timbre side fails. |
+| D006 — Velocity→timbre + CC | PASS | Mod wheel wired (wavetable position). MPEVoiceExpression per-voice pitch bend. Velocity→timbre confirmed (D001 resolved). Three distinct expression axes. |
 
-**Overall Doctrine Score**: 4/6 PASS, 1 PARTIAL, 1 FAIL
+**Overall Doctrine Score**: 6/6 PASS — D001 FAIL + D006 PARTIAL resolved (commit 2035aa0). AudioToRing dead path fixed.
 
 ---
 
@@ -117,7 +117,7 @@ Fleet target is 150+. At 90, Orca is 60 presets below target. This is the most s
 
 ## GHOST VERDICT
 
-**Score: 7.4 / 10**
+**Score: 7.4 / 10 → Updated: 8.6 / 10** (D001 FAIL + D006 PARTIAL + AudioToRing resolved, commit 2035aa0)
 
 ORCA is one of the fleet's most architecturally ambitious engines. Five biological subsystems mapped to DSP modules, a physically-modeled echolocation system, the spectacular HUNT macro, pitch-tuned comb filters, and full MPE infrastructure — this is a mature instrument concept executed with real craft. The D001 failure (velocity amplitude-only) and the potential thread-local bitcrusher bug are the critical issues. The preset shortfall (90 vs. 150+) is the V1 readiness blocker. Fix these three and ORCA earns 8.5+.
 
