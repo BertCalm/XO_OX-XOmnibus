@@ -114,6 +114,9 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Ostinato",    "osti"    },
         { "Oceandeep",   "deep"    },
         { "Ouie",        "ouie"    },
+        // V2 Theorem Engines
+        { "Overtone",    "over"    },
+        { "Organism",    "org"     },
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : engineId.toLowerCase();

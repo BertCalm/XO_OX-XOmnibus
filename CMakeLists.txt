@@ -173,6 +173,12 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Ouie/OuieEngine.h
     Source/Engines/Ouie/OuieEngine.cpp
 
+    Source/Engines/Overtone/OvertoneEngine.h
+    Source/Engines/Overtone/OvertoneEngine.cpp
+
+    Source/Engines/Organism/OrganismEngine.h
+    Source/Engines/Organism/OrganismEngine.cpp
+
     Source/Engines/Osprey/OspreyEngine.h
     Source/Engines/Osprey/OspreyEngine.cpp
 

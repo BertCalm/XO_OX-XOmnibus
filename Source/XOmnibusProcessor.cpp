@@ -38,6 +38,8 @@
 #include "Engines/Ostinato/OstinatoEngine.h"
 #include "Engines/OceanDeep/OceandeepEngine.h"
 #include "Engines/Ouie/OuieEngine.h"
+#include "Engines/Overtone/OvertoneEngine.h"
+#include "Engines/Organism/OrganismEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -197,6 +199,16 @@ static bool registered_Oceandeep = xomnibus::EngineRegistry::instance().register
 static bool registered_Ouie = xomnibus::EngineRegistry::instance().registerEngine(
     "Ouie", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OuieEngine>();
+    });
+// Theorem Engine — OVERTONE (continued fraction spectral synthesis)
+static bool registered_Overtone = xomnibus::EngineRegistry::instance().registerEngine(
+    "Overtone", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OvertoneEngine>();
+    });
+// Theorem Engine — ORGANISM (cellular automata generative synthesis)
+static bool registered_Organism = xomnibus::EngineRegistry::instance().registerEngine(
+    "Organism", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OrganismEngine>();
     });
 
 namespace xomnibus {
