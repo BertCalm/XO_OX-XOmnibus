@@ -696,8 +696,9 @@ private:
     }
 
     //==========================================================================
-    // DC offset removal
+    // Shared audio utilities — public so XOutshine can reuse them
     //==========================================================================
+public:
 
     static void removeDCOffset(juce::AudioBuffer<float>& buffer)
     {
@@ -744,6 +745,8 @@ private:
                 buffer.getWritePointer(ch)[idx] *= gain;
         }
     }
+
+private:
 
     //==========================================================================
     // WAV rendering (offline, worker thread)

@@ -3,6 +3,9 @@
 #include <juce_audio_formats/juce_audio_formats.h>
 #include <juce_core/juce_core.h>
 
+#include "../DSP/FastMath.h"
+#include "XPNExporter.h"
+
 #include <algorithm>
 #include <cmath>
 #include <functional>
@@ -151,10 +154,18 @@ struct UpgradedProgram
 };
 
 //------------------------------------------------------------------------------
-// Progress callback
+// Progress callback — structured to match XOriginate's pattern
 //------------------------------------------------------------------------------
 
-using ProgressCallback = std::function<void (float progress, const juce::String& stage)>;
+struct OutshineProgress {
+    int          currentSample = 0;
+    int          totalSamples  = 0;
+    juce::String stage;
+    float        overallProgress = 0.0f;  // 0-1
+    bool         cancelled = false;
+};
+
+using ProgressCallback = std::function<void (OutshineProgress&)>;
 
 //------------------------------------------------------------------------------
 // XOutshine configuration
@@ -205,10 +216,14 @@ public:
 
         bool ok = true;
 
+        progressState_ = OutshineProgress{};
+
         // Stage 1: INGEST
         report(0.0f, "Ingesting samples...");
         auto samples = ingest(inputPath, workDir);
         if (samples.empty()) { workDir.deleteRecursively(); return false; }
+
+        progressState_.totalSamples = (int) samples.size();
 
         // Stage 2: CLASSIFY
         report(0.15f, "Classifying " + juce::String(samples.size()) + " samples...");
@@ -245,7 +260,7 @@ public:
                " programs, " + juce::String(issues) + " issues.");
 
         workDir.deleteRecursively();
-        return ok && issues == 0;
+        return ok && issues == 0 && !progressState_.cancelled;
     }
 
     //--------------------------------------------------------------------------
@@ -257,12 +272,18 @@ public:
 private:
     OutshineSettings settings_;
     ProgressCallback progress_;
+    OutshineProgress progressState_;
     std::vector<UpgradedProgram> programs_;
     juce::StringArray errors_;
 
     void report (float p, const juce::String& msg)
     {
-        if (progress_) progress_(p, msg);
+        if (progress_)
+        {
+            progressState_.overallProgress = p;
+            progressState_.stage = msg;
+            progress_(progressState_);
+        }
     }
 
     //==========================================================================
@@ -435,12 +456,12 @@ private:
                 sum += v;
             }
             float rms = std::sqrt(sumSq / std::max(1, n));
-            s.rmsDb  = 20.0f * std::log10(std::max(rms, 1e-10f));
-            s.peakDb = 20.0f * std::log10(std::max(peak, 1e-10f));
+            s.rmsDb  = gainToDb(std::max(rms, 1e-10f));
+            s.peakDb = gainToDb(std::max(peak, 1e-10f));
             s.dcOffset = sum / std::max(1, n);
 
             // Tail length
-            float threshold = std::pow(10.0f, -60.0f / 20.0f);
+            float threshold = dbToGain(-60.0f);
             int lastActive = n - 1;
             for (int i = n - 1; i >= 0; --i)
             {
@@ -493,23 +514,13 @@ private:
             juce::AudioBuffer<float> original(nch, n);
             reader->read(&original, 0, n, 0, true, true);
 
-            // DC offset removal
+            // DC offset removal — reuse XOriginate's shared utility
             if (settings_.removeDC)
-            {
-                for (int ch = 0; ch < nch; ++ch)
-                {
-                    auto* data = original.getWritePointer(ch);
-                    float dc = 0.0f;
-                    for (int i = 0; i < n; ++i) dc += data[i];
-                    dc /= std::max(1, n);
-                    if (std::abs(dc) > 1e-6f)
-                        for (int i = 0; i < n; ++i) data[i] -= dc;
-                }
-            }
+                XOriginate::removeDCOffset(original);
 
-            // Fade guards
+            // Fade guards — reuse XOriginate's shared utility
             if (settings_.applyFadeGuards)
-                applyFadeGuards(original, reader->sampleRate);
+                XOriginate::applyFadeGuards(original, reader->sampleRate);
 
             UpgradedProgram prog;
             prog.name = s.name.substring(0, 30);
@@ -560,7 +571,7 @@ private:
 
                         // Micro-pitch (±5 cents via linear interpolation)
                         float cents = dist(rng) * 5.0f;
-                        float ratio = std::pow(2.0f, cents / 1200.0f);
+                        float ratio = fastPow2(cents / 1200.0f);
                         if (rr == 0) ratio = 1.0f; // original is untouched
 
                         for (int i = 0; i < n; ++i)
@@ -580,7 +591,7 @@ private:
                         if (rr > 0)
                         {
                             float gainDb = dist(rng) * 0.25f;
-                            float gain = std::pow(10.0f, gainDb / 20.0f);
+                            float gain = dbToGain(gainDb);
                             for (int i = 0; i < n; ++i) dst[i] *= gain;
                         }
 
@@ -590,9 +601,9 @@ private:
                             float satAmt = std::abs(dist(rng)) * 0.03f;
                             if (satAmt > 0.01f)
                             {
-                                float invTanh = 1.0f / std::tanh(1.0f + satAmt);
+                                float invTanh = 1.0f / fastTanh(1.0f + satAmt);
                                 for (int i = 0; i < n; ++i)
-                                    dst[i] = std::tanh(dst[i] * (1.0f + satAmt)) * invTanh;
+                                    dst[i] = fastTanh(dst[i] * (1.0f + satAmt)) * invTanh;
                             }
                         }
                     }
@@ -648,7 +659,7 @@ private:
             if (currentLufs < -80.0f) continue;
 
             float gainDb = juce::jlimit(-24.0f, 24.0f, settings_.lufsTarget - currentLufs);
-            float gain = std::pow(10.0f, gainDb / 20.0f);
+            float gain = dbToGain(gainDb);
 
             // Apply same gain to ALL layers (preserves velocity dynamics)
             for (auto& l : prog.layers)
@@ -740,6 +751,14 @@ private:
                 xml << "        </Layer>\n";
             }
         }
+        // Empty layers get VelStart = 0 (critical XPM rule #3)
+        for (int v = prog.numVelocityLayers; v < 4; ++v)
+        {
+            xml << "        <Layer index=\"" << layerIdx++ << "\">\n";
+            xml << "          <VelStart>0</VelStart>\n";
+            xml << "          <VelEnd>0</VelEnd>\n";
+            xml << "        </Layer>\n";
+        }
         xml << "      </Layers>\n";
         xml << "    </Instrument>\n";
         xml << "  </Instruments>\n";
@@ -803,6 +822,14 @@ private:
                 }
                 xml << "        </Layer>\n";
             }
+        }
+        // Empty layers get VelStart = 0 (critical XPM rule #3)
+        for (int v = prog.numVelocityLayers; v < 4; ++v)
+        {
+            xml << "        <Layer index=\"" << layerIdx++ << "\">\n";
+            xml << "          <VelStart>0</VelStart>\n";
+            xml << "          <VelEnd>0</VelEnd>\n";
+            xml << "        </Layer>\n";
         }
         xml << "      </Layers>\n";
         xml << "    </Keygroup>\n";
@@ -917,28 +944,6 @@ private:
     // Utility
     //==========================================================================
 
-    static void applyFadeGuards (juce::AudioBuffer<float>& buf, double sr)
-    {
-        int n = buf.getNumSamples();
-        int fadeIn  = std::min((int)(sr * 0.002), n);  // 2ms
-        int fadeOut = std::min((int)(sr * 0.010), n);   // 10ms
-
-        for (int ch = 0; ch < buf.getNumChannels(); ++ch)
-        {
-            auto* data = buf.getWritePointer(ch);
-            for (int i = 0; i < fadeIn; ++i)
-            {
-                float g = 0.5f * (1.0f - std::cos(juce::MathConstants<float>::pi * i / fadeIn));
-                data[i] *= g;
-            }
-            for (int i = 0; i < fadeOut; ++i)
-            {
-                float g = 0.5f * (1.0f + std::cos(juce::MathConstants<float>::pi * i / fadeOut));
-                data[n - 1 - i] *= g;
-            }
-        }
-    }
-
     static float measureLufs (const juce::AudioBuffer<float>& buf, double sr)
     {
         auto* ch0 = buf.getReadPointer(0);
@@ -955,7 +960,8 @@ private:
         }
         if (powers.empty()) return -100.0f;
 
-        float absGate = std::pow(10.0f, (-70.0f + 0.691f) / 10.0f);
+        // Absolute gate: 10^((-70+0.691)/10) — constant, precomputed
+        constexpr float absGate = 1.9498446e-07f;  // std::pow(10, -69.309/10)
         std::vector<float> gated;
         for (float p : powers) if (p > absGate) gated.push_back(p);
         if (gated.empty()) return -100.0f;
@@ -964,16 +970,17 @@ private:
         for (float p : gated) meanUngated += p;
         meanUngated /= gated.size();
 
-        float relGate = meanUngated * std::pow(10.0f, -10.0f / 10.0f);
-        std::vector<float> final;
-        for (float p : gated) if (p > relGate) final.push_back(p);
-        if (final.empty()) return -100.0f;
+        float relGate = meanUngated * 0.1f;  // 10^(-10/10) = 0.1
+        std::vector<float> finalGated;
+        for (float p : gated) if (p > relGate) finalGated.push_back(p);
+        if (finalGated.empty()) return -100.0f;
 
         float meanFinal = 0.0f;
-        for (float p : final) meanFinal += p;
-        meanFinal /= final.size();
+        for (float p : finalGated) meanFinal += p;
+        meanFinal /= finalGated.size();
 
-        return 10.0f * std::log10(std::max(meanFinal, 1e-10f)) - 0.691f;
+        // 10*log10(x) = 10*log2(x)/log2(10) = 10*log2(x)*0.30103 = 3.01030*log2(x)
+        return 3.01030f * fastLog2(std::max(meanFinal, 1e-10f)) - 0.691f;
     }
 
     void writeWav (const juce::File& file, const juce::AudioBuffer<float>& buf,
@@ -992,7 +999,7 @@ private:
                 juce::AudioBuffer<float> dithered(buf);
                 std::mt19937 rng((unsigned int) buf.getNumSamples());
                 std::uniform_real_distribution<float> dist(-1.0f, 1.0f);
-                float scale = 1.0f / std::pow(2.0f, (float)(bitDepth - 1));
+                float scale = 1.0f / fastPow2((float)(bitDepth - 1));
                 for (int ch = 0; ch < dithered.getNumChannels(); ++ch)
                 {
                     auto* data = dithered.getWritePointer(ch);

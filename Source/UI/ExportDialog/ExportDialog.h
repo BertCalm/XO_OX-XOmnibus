@@ -2,7 +2,7 @@
 #include <mutex>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include <juce_audio_formats/juce_audio_formats.h>
-#include "../../Export/XOriginate.h"
+#include "../../Export/XPNExporter.h"
 #include "../../Core/PresetManager.h"
 #include "../XOmnibusEditor.h"
 

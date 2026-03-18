@@ -180,6 +180,7 @@ target_sources(XOmnibus PRIVATE
     # Export pipeline
     Source/Export/XPNCoverArt.h
     Source/Export/XPNExporter.h
+    Source/Export/XOutshine.h
     Source/Export/XPNDrumExporter.h
 
     # Core (MIDI Learn — shared across platforms)
