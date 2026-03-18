@@ -59,9 +59,9 @@ public:
                 nhv=(nhv+1)%6;
                 voices[h].isHusband=true; voices[h].husbandType=(h-12)%3;
                 voices[h].noteOn(nn, vel, strumRateMs);
-            }else if(msg.isNoteOff())
-                for(auto&v:voices)if(v.active&&v.note==msg.getNoteNumber())v.noteOff();
-            else if (msg.isChannelPressure()) {
+            } else if (msg.isNoteOff()) {
+                for (auto& v : voices) if (v.active && v.note == msg.getNoteNumber()) v.noteOff();
+            } else if (msg.isChannelPressure()) {
                 float atPressure = (float)msg.getChannelPressureValue() / 127.f;
                 for (auto& v : voices)
                     if (v.active) v.vel = juce::jmax(v.vel, atPressure);

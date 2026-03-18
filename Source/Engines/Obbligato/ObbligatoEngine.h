@@ -64,9 +64,9 @@ public:
                         voices[t2].noteOn(msg.getNoteNumber(),msg.getVelocity()/127.f);
                     }
                 }
-            }else if(msg.isNoteOff())
-                for(auto&v:voices)if(v.active&&v.note==msg.getNoteNumber())v.noteOff();
-            else if (msg.isChannelPressure()) {
+            } else if (msg.isNoteOff()) {
+                for (auto& v : voices) if (v.active && v.note == msg.getNoteNumber()) v.noteOff();
+            } else if (msg.isChannelPressure()) {
                 float atPressure = (float)msg.getChannelPressureValue() / 127.f;
                 for (auto& v : voices)
                     if (v.active) v.vel = juce::jmax(v.vel, atPressure);
