@@ -309,9 +309,17 @@ public:
             case 3: waveform = PolyBLEP::Waveform::Triangle; break;
         }
 
+        // D005: breathing LFO — modulates filter cutoff
+        const float lfoRate  = (pLfoRate != nullptr) ? pLfoRate->load() : 0.08f;
+        const float lfoDepth = (pLfoDepth != nullptr) ? pLfoDepth->load() : 0.15f;
+        lfoPhase_ += lfoRate * static_cast<float> (numSamples) / srf;
+        if (lfoPhase_ >= 1.0f) lfoPhase_ -= 1.0f;
+        float lfoVal = std::sin (lfoPhase_ * 6.28318530f) * lfoDepth;
+
         // Effective filter cutoff with coupling modulation
         // D002: CHARACTER macro offsets filter cutoff (±4000 Hz from center)
-        float effectiveCutoff = clamp (cutoff + filterMod + (macroChar - 0.5f) * 8000.0f, 20.0f, 20000.0f);
+        // D005: LFO modulates cutoff (±2000 Hz at full depth)
+        float effectiveCutoff = clamp (cutoff + filterMod + (macroChar - 0.5f) * 8000.0f + lfoVal * 2000.0f, 20.0f, 20000.0f);
 
         // Hoist filter coefficient updates outside sample loop
         for (auto& voice : voices)
@@ -633,6 +641,14 @@ public:
             juce::ParameterID { "ombre_level", 1 }, "Ombre Level",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.8f));
 
+        // D005: breathing LFO for autonomous modulation
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "ombre_lfoRate", 1 }, "Ombre LFO Rate",
+            juce::NormalisableRange<float> (0.005f, 10.0f, 0.001f, 0.3f), 0.08f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "ombre_lfoDepth", 1 }, "Ombre LFO Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.15f));
+
         // D002: 4 macros
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "ombre_macroCharacter", 1 }, "CHARACTER",
@@ -666,6 +682,8 @@ public:
         pSustain      = apvts.getRawParameterValue ("ombre_sustain");
         pRelease      = apvts.getRawParameterValue ("ombre_release");
         pLevel        = apvts.getRawParameterValue ("ombre_level");
+        pLfoRate      = apvts.getRawParameterValue ("ombre_lfoRate");
+        pLfoDepth     = apvts.getRawParameterValue ("ombre_lfoDepth");
         pMacroCharacter = apvts.getRawParameterValue ("ombre_macroCharacter");
         pMacroMovement  = apvts.getRawParameterValue ("ombre_macroMovement");
         pMacroCoupling  = apvts.getRawParameterValue ("ombre_macroCoupling");
@@ -758,6 +776,9 @@ private:
     std::array<OmbreVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
 
+    // D005: breathing LFO state
+    float lfoPhase_ = 0.0f;
+
     // MIDI expression
     float modWheelAmount_ = 0.0f;   // CC#1 — sweeps blend toward Opsis (D006)
 
@@ -788,6 +809,8 @@ private:
     std::atomic<float>* pSustain = nullptr;
     std::atomic<float>* pRelease = nullptr;
     std::atomic<float>* pLevel = nullptr;
+    std::atomic<float>* pLfoRate = nullptr;
+    std::atomic<float>* pLfoDepth = nullptr;
     std::atomic<float>* pMacroCharacter = nullptr;
     std::atomic<float>* pMacroMovement  = nullptr;
     std::atomic<float>* pMacroCoupling  = nullptr;

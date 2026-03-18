@@ -878,11 +878,19 @@ public:
         const float macroCoup  = paramMacroCoupling  ? paramMacroCoupling->load()  : 0.5f;
         const float macroSpace = paramMacroSpace     ? paramMacroSpace->load()     : 0.5f;
 
+        // D005: breathing LFO — modulates metabolic rate for autonomous evolution
+        const float lfoRate_  = paramLfoRate  ? paramLfoRate->load()  : 0.07f;
+        const float lfoDepth_ = paramLfoDepth ? paramLfoDepth->load() : 0.2f;
+        lfoPhase_ += lfoRate_ * static_cast<float> (numSamples) / static_cast<float> (cachedSampleRate);
+        if (lfoPhase_ >= 1.0f) lfoPhase_ -= 1.0f;
+        float lfoVal = std::sin (lfoPhase_ * 6.28318530f) * lfoDepth_;
+
         // D002: CHARACTER → enzyme selectivity offset (tone/filter)
         //       MOVEMENT → metabolic rate multiplier (modulation speed)
         //       COUPLING → signal flux (coupling input level)
         //       SPACE → membrane porosity (reverb send)
-        metabolicRate = std::max (0.1f, metabolicRate + (macroMove - 0.5f) * 4.0f);
+        // D005: LFO modulates metabolic rate (±2 Hz at full depth)
+        metabolicRate = std::max (0.1f, metabolicRate + (macroMove - 0.5f) * 4.0f + lfoVal * 2.0f);
         signalFlux    = std::max (0.0f, std::min (1.0f, signalFlux + (macroCoup - 0.5f) * 0.6f));
         membrane      = std::max (0.0f, std::min (1.0f, membrane + (macroSpace - 0.5f) * 0.6f));
         // macroChar wired to enzymeSelectivity in voice loop below
@@ -1321,6 +1329,8 @@ public:
         paramLockIn           = apvts.getRawParameterValue ("organon_lockIn");
         paramMembrane         = apvts.getRawParameterValue ("organon_membrane");
         paramNoiseColor       = apvts.getRawParameterValue ("organon_noiseColor");
+        paramLfoRate          = apvts.getRawParameterValue ("organon_lfoRate");
+        paramLfoDepth         = apvts.getRawParameterValue ("organon_lfoDepth");
         paramMacroCharacter   = apvts.getRawParameterValue ("organon_macroCharacter");
         paramMacroMovement    = apvts.getRawParameterValue ("organon_macroMovement");
         paramMacroCoupling    = apvts.getRawParameterValue ("organon_macroCoupling");
@@ -1413,6 +1423,14 @@ private:
             juce::ParameterID ("organon_noiseColor", 1), "Noise Color",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
 
+        // D005: breathing LFO for autonomous modulation
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID ("organon_lfoRate", 1), "LFO Rate",
+            juce::NormalisableRange<float> (0.005f, 5.0f, 0.001f, 0.3f), 0.07f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID ("organon_lfoDepth", 1), "LFO Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.2f));
+
         // D002: 4 macros
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID ("organon_macroCharacter", 1), "CHARACTER",
@@ -1494,6 +1512,9 @@ private:
     std::vector<float> outputCacheL;
     std::vector<float> outputCacheR;
 
+    // D005: breathing LFO phase
+    float lfoPhase_ = 0.0f;
+
     // Phason Shift clock (0.0-1.0, advances at metabolic rate)
     float phasonClock = 0.0f;
 
@@ -1534,6 +1555,8 @@ private:
     std::atomic<float>* paramLockIn           = nullptr;
     std::atomic<float>* paramMembrane         = nullptr;
     std::atomic<float>* paramNoiseColor       = nullptr;
+    std::atomic<float>* paramLfoRate          = nullptr;
+    std::atomic<float>* paramLfoDepth         = nullptr;
     std::atomic<float>* paramMacroCharacter   = nullptr;
     std::atomic<float>* paramMacroMovement    = nullptr;
     std::atomic<float>* paramMacroCoupling    = nullptr;

@@ -909,7 +909,7 @@ public:
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "octo_armBaseRate", 1 }, "Octopus Arm Base Rate",
-            juce::NormalisableRange<float> (0.05f, 20.0f, 0.01f, 0.3f), 1.0f));
+            juce::NormalisableRange<float> (0.005f, 20.0f, 0.001f, 0.3f), 1.0f)); // D005: rate floor ≤ 0.01
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "octo_armDepth", 1 }, "Octopus Arm Depth",
