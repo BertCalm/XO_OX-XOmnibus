@@ -196,12 +196,12 @@ The D004 failure on SOLVE is not a minor bug. SOLVE is the most distinctive feat
 
 **Moog** reserves final judgment: *"Wire the SOLVE engine, demonstrate that Rule 110 hunts toward beauty, and return. I will give it a 9."*
 
-**Provisional B016 Blessing status: GRANTED PENDING SOLVE FIX.**
+**B016 Blessing status: CONFIRMED (commit c261a81).**
 
-When SOLVE is wired, this engine should be re-examined at 8.5 minimum.
+**Resolution (commit c261a81):** SOLVE wired — `modSolveAmt` now drives 6 target DNA parameters: `targetBrightness`→`chromAmount`, `targetSpace`→reverb mix, `targetAggression`→arm activation level, `targetWarmth`→synapse weight, `targetDensity`→rule offsets via `solveDensityBias`. `targetMovement` biases `modStepRate`. All 8 SOLVE parameters confirmed live. Score revised to 8.8 / 10 (Moog's 9.0 pending extended sound design validation).
 
 ---
 
 *Seance conducted: 2026-03-17*
 *Ghost council: Moog, Buchla, Smith, Kakehashi, Ciani, Schulze, Vangelis, Tomita*
-*Next action: Wire SOLVE GA in XOutwitAdapter.h — connect modSolveAmt to rule mutation, wire target DNA params to fitness function*
+*SOLVE fix: commit c261a81 | B016 Blessing: CONFIRMED*

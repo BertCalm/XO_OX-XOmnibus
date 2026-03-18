@@ -14,7 +14,7 @@
 | D001 — Velocity shapes timbre | PASS | On every NoteOn, `filterEnvVelocity = velocity` is stored and multiplies the filter envelope: `envMod = filterEnvLevel * filterEnvVelocity * params.filterEnvAmt` (Adapter.h:223). Harder hits open the filter further. Voice oscillator also scales by velocity: `oscOut * envLevel * velocity` (Voice.h:251). Dual-path — amplitude AND timbre both respond. |
 | D002 — Modulation is lifeblood | PASS | LFO1 and LFO2 both implemented with 5 shapes (Sine/Triangle/Saw/Square/S&H) and 6 destinations each (Tangle/Dampening/Pulse Rate/Delay/Filter/Spread). Mod wheel (CC1) routes to 4 destinations with depth. Aftertouch routes to 4 destinations with depth. All 4 macros confirmed active in renderBlock(): M1 KNOT (7-breakpoint topology morph, lines 148–154), M2 PULSE (pulse rate + spread, lines 156–158), M3 ENTRAIN (entrainment + feedback, lines 160–162), M4 BLOOM (bioluminescence + filter open, lines 164–166). Full compliance. |
 | D003 — Physics rigor | N/A (PASS as applicable) | Not an acoustic physical model, but the Kuramoto oscillator coupling is mathematically cited inline: `dθᵢ/dt = ωᵢ + (K/N) Σⱼ sin(θⱼ − θᵢ)` (Entrainment.h:10–11). FDN knot matrices are near-unitary circulants; `interpolate()` guarantees stability at all tangle depths. Torus knot delay ratios are derived from genuine Lissajous geometry (KnotMatrix.h:173–182). The math governs the metaphor governs the sound. |
-| D004 — Dead parameters are broken promises | FAIL | 5 parameters declared in `createParameterLayout()`, cached in `ParamSnapshot::update()`, and never read by any DSP path. Details below. |
+| D004 — Dead parameters are broken promises | PASS | **Fixed (commit c261a81):** All 5 dead parameters wired: `olap_brightness` scales bioluminescence shimmer (0.2–1.0×); `olap_current` + `olap_currentRate` drive a pitch-drift sine LFO on `targetGlideFreq`; `olap_glide` wired to `Voice.h glideCoeff`; `olap_voiceMode` implements mono voice stealing. All 5 confirmed live. |
 | D005 — Engine must breathe | PASS | LFO1 rate floor is 0.01 Hz (Adapter.h:480). LFO2 rate floor is 0.01 Hz (Adapter.h:488). Both LFOs always advance phase each sample. Bioluminescence modulators in Bioluminescence.h drift autonomously at 0.3–0.79 Hz regardless of note state. The engine breathes at rest. |
 | D006 — Expression input is not optional | PASS | Velocity→timbre confirmed (D001). CC1 mod wheel parsed per-sample in MIDI loop (Adapter.h:258–259), routes to 4 destinations with configurable depth (lines 171–178). Channel aftertouch parsed per-sample (Adapter.h:260–261), routes to 4 destinations with configurable depth (lines 180–188). Both controllers affect core synthesis parameters — topology, entrainment, bioluminescence, filter cutoff, pulse rate. |
 
@@ -76,7 +76,7 @@ OVERLAP is architecturally strong — the Kuramoto entrainment, knot-topology FD
 
 The good news: three of the five dead parameters (glide, voiceMode, brightness) have partial infrastructure in Voice.h already. The wiring work is small relative to the DSP quality already in place. Fix these issues and OVERLAP clears 8.5/10.
 
-**Score: 7.2 / 10**
+**Score: 7.2 / 10 → Updated: 8.4 / 10** (D004 FAIL resolved, commit c261a81)
 
 ---
 
