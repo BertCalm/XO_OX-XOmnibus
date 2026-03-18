@@ -110,18 +110,18 @@ public:
 
         // Apply coupling ext mods
         modStepRate    += extStepRateMod;
-        modChromAmount  = std::clamp(modChromAmount + extChromMod,  0.0f, 1.0f);
-        modSynapse      = std::clamp(modSynapse + extSynapseMod,    0.0f, 1.0f);
+        modChromAmount  = clamp(modChromAmount + extChromMod,  0.0f, 1.0f);
+        modSynapse      = clamp(modSynapse + extSynapseMod,    0.0f, 1.0f);
         modArmLevelScale *= extAmpMod;
 
         // 4. Apply LFOs
         auto applyLfo = [&](float lfoVal, float depth, int dest) {
             float mod = lfoVal * depth;
             switch (dest) {
-                case 0: modStepRate    = std::max(0.01f, modStepRate * (1.0f + mod * 0.5f)); break;
+                case 0: modStepRate    = juce::jmax(0.01f, modStepRate * (1.0f + mod * 0.5f)); break;
                 case 1: /* FilterCutoff — applied per-arm via extFilterMod */ break;
-                case 2: modChromAmount = std::clamp(modChromAmount + mod * 0.5f, 0.0f, 1.0f); break;
-                case 3: modArmLevelScale = std::clamp(modArmLevelScale + mod * 0.5f, 0.0f, 1.5f); break;
+                case 2: modChromAmount = clamp(modChromAmount + mod * 0.5f, 0.0f, 1.0f); break;
+                case 3: modArmLevelScale = clamp(modArmLevelScale + mod * 0.5f, 0.0f, 1.5f); break;
                 default: break;
             }
         };
@@ -131,23 +131,62 @@ public:
         // 5. Apply macros
         {
             float ms = snap.macroSolve;
-            float modSolveAmt = snap.solve + ms;
-            juce::ignoreUnused(modSolveAmt);
+            float modSolveAmt = clamp(snap.solve + ms, 0.0f, 1.0f);
 
-            modSynapse      = std::clamp(modSynapse      + snap.macroSynapse * 0.6f,        0.0f, 1.0f);
-            modChromAmount  = std::clamp(modChromAmount  + snap.macroChromatophore * 0.7f,  0.0f, 1.0f);
-            modDenSize      = std::clamp(modDenSize      + snap.macroDen * 0.6f,            0.0f, 1.0f);
-            modDenDecay     = std::clamp(modDenDecay     + snap.macroDen * 0.5f,            0.0f, 1.0f);
-            modDenMix       = std::clamp(modDenMix       + snap.macroDen * 0.4f,            0.0f, 1.0f);
+            // D004 FIX: SOLVE macro uses modSolveAmt to steer DSP toward target DNA.
+            // Each target dimension biases a real DSP parameter; strength scales with
+            // modSolveAmt so SOLVE=0 is a true no-op and SOLVE=1 is full target steering.
+            if (modSolveAmt > 0.001f)
+            {
+                // targetMovement → step rate (more movement = faster CA stepping)
+                // Bias up to ±16 Hz over the base step rate
+                float movementBias = (snap.targetMovement - 0.5f) * 2.0f * 16.0f;
+                modStepRate = juce::jmax(0.01f, modStepRate + movementBias * modSolveAmt);
+
+                // targetBrightness → chromatophore amount (brighter = more filter modulation)
+                float brightnessBias = (snap.targetBrightness - 0.5f) * 2.0f * 0.5f;
+                modChromAmount = clamp(modChromAmount + brightnessBias * modSolveAmt, 0.0f, 1.0f);
+
+                // targetSpace → den reverb mix (more space = more reverb)
+                float spaceBias = (snap.targetSpace - 0.5f) * 2.0f * 0.4f;
+                modDenMix   = clamp(modDenMix   + spaceBias * modSolveAmt, 0.0f, 1.0f);
+                modDenSize  = clamp(modDenSize  + spaceBias * modSolveAmt * 0.7f, 0.0f, 1.0f);
+                modDenDecay = clamp(modDenDecay + spaceBias * modSolveAmt * 0.5f, 0.0f, 1.0f);
+
+                // targetAggression → arm level scale (aggression = louder, more present arms)
+                float aggressionBias = (snap.targetAggression - 0.5f) * 2.0f * 0.4f;
+                modArmLevelScale = clamp(modArmLevelScale + aggressionBias * modSolveAmt, 0.1f, 2.0f);
+
+                // targetSynapse (warmth proxy) → synapse coupling
+                // Warmth = arms coupled more closely, creating tighter rhythmic density
+                float warmthBias = (snap.targetWarmth - 0.5f) * 2.0f * 0.4f;
+                modSynapse = clamp(modSynapse + warmthBias * modSolveAmt, 0.0f, 1.0f);
+
+                // targetDensity → CA rule bias per arm (stored for use in arm loop below)
+                // High density target nudges rules toward busier patterns; stored in member.
+                solveDensityBias = (snap.targetDensity - 0.5f) * 2.0f; // [-1, +1]
+                solveAmt         = modSolveAmt;
+            }
+            else
+            {
+                solveDensityBias = 0.0f;
+                solveAmt         = 0.0f;
+            }
+
+            modSynapse      = clamp(modSynapse      + snap.macroSynapse * 0.6f,        0.0f, 1.0f);
+            modChromAmount  = clamp(modChromAmount  + snap.macroChromatophore * 0.7f,  0.0f, 1.0f);
+            modDenSize      = clamp(modDenSize      + snap.macroDen * 0.6f,            0.0f, 1.0f);
+            modDenDecay     = clamp(modDenDecay     + snap.macroDen * 0.5f,            0.0f, 1.0f);
+            modDenMix       = clamp(modDenMix       + snap.macroDen * 0.4f,            0.0f, 1.0f);
         }
 
         // 6. Apply expression (mod wheel → SYNAPSE, aftertouch → ChromAmount)
         {
             float mwMod = modWheelValue * 0.4f;
-            modSynapse     = std::clamp(modSynapse + mwMod, 0.0f, 1.0f);
+            modSynapse     = clamp(modSynapse + mwMod, 0.0f, 1.0f);
 
             float atMod = aftertouchValue * 0.3f;
-            modChromAmount = std::clamp(modChromAmount + atMod, 0.0f, 1.0f);
+            modChromAmount = clamp(modChromAmount + atMod, 0.0f, 1.0f);
         }
 
         // 7. Update DSP module params
@@ -157,10 +196,22 @@ public:
         for (int n = 0; n < 8; ++n)
         {
             auto i = static_cast<size_t>(n);
-            float armFilterHz = std::clamp(snap.armFilter[i] + extFilterMod, 20.0f, 20000.0f);
+            float armFilterHz = clamp(snap.armFilter[i] + extFilterMod, 20.0f, 20000.0f);
             // extPitchMod: semitone offset added to arm pitch
             int   armPitchSt  = snap.armPitch[i] + static_cast<int>(std::round(extPitchMod));
-            arms[i].setParams(snap.armRule[i], snap.armLength[i],
+
+            // D004 FIX: SOLVE/targetDensity biases the CA rule toward denser or sparser
+            // patterns. solveDensityBias in [-1,+1]: positive → rule nudged toward 255
+            // (all-on), negative → rule nudged toward 0 (all-off).
+            // Max rule offset is ±64 steps, scaled by solveAmt.
+            int effectiveRule = snap.armRule[i];
+            if (solveAmt > 0.001f)
+            {
+                int ruleOffset = static_cast<int>(solveDensityBias * 64.0f * solveAmt);
+                effectiveRule  = clamp(effectiveRule + ruleOffset, 0, 255);
+            }
+
+            arms[i].setParams(effectiveRule, snap.armLength[i],
                                snap.armLevel[i] * modArmLevelScale,
                                armPitchSt, armFilterHz,
                                snap.armWave[i], snap.armPan[i]);
@@ -466,6 +517,10 @@ private:
     float extFilterMod   = 0.0f;   // AmpToFilter → arm filter
     float extPitchMod    = 0.0f;   // LFOToPitch → pitch offset (semitones)
     float extAmpMod      = 1.0f;   // AmpToChoke → arm level multiplier (1.0 = no choke)
+
+    // SOLVE macro state — computed in macro block, consumed in arm loop (same block)
+    float solveDensityBias = 0.0f; // [-1,+1] targetDensity bias for CA rule offset
+    float solveAmt         = 0.0f; // [0,1]   effective SOLVE strength this block
 
     int activeCount = 0;
     juce::AudioProcessorValueTreeState* apvts_ptr = nullptr;

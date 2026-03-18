@@ -61,10 +61,10 @@ struct VoiceEnvelope
 
     void setParams (float a, float d, float s, float r) noexcept
     {
-        attack  = std::max (0.0001f, a);
-        decay   = std::max (0.0001f, d);
-        sustain = std::max (0.0f,    s);
-        release = std::max (0.0001f, r);
+        attack  = juce::jmax(0.0001f, a);
+        decay   = juce::jmax(0.0001f, d);
+        sustain = juce::jmax(0.0f,    s);
+        release = juce::jmax(0.0001f, r);
     }
 
     void noteOn() noexcept
@@ -157,6 +157,10 @@ public:
     // Envelope — referenced directly by the adapter: v.env.setParams(...)
     VoiceEnvelope env;
 
+    // Glide coefficient — set once per block by the adapter from olap_glide.
+    // 0 = instant (no glide); values near 1 = very slow glide.
+    float glideCoeff = 0.005f;
+
     //==========================================================================
     void prepare (double sampleRate) noexcept
     {
@@ -217,8 +221,8 @@ public:
     {
         if (!env.isActive()) return 0.0f;
 
-        // Glide: one-pole smoothing toward target frequency
-        glideFreq += 0.005f * (targetGlideFreq - glideFreq);
+        // Glide: one-pole smoothing toward target frequency (coeff set per-block)
+        glideFreq += glideCoeff * (targetGlideFreq - glideFreq);
 
         // Advance oscillator phase
         float phaseInc = glideFreq * invSr;
@@ -234,7 +238,7 @@ public:
         // Pulse modulation: at high pulseRate, multiply by a raised cosine
         // window that peaks once per cycle.  Width = 1/pulseRate normalized.
         const float maxPulse = 8.0f;
-        float normalizedPulse = std::min (pulseRate / maxPulse, 1.0f);
+        float normalizedPulse = juce::jmin(pulseRate / maxPulse, 1.0f);
         float halfWidth = 0.5f * (1.0f - normalizedPulse * 0.85f);
         float distFromCenter = std::fabs (phase - 0.5f);  // 0 at cycle center
         float pulseEnv;
@@ -254,12 +258,14 @@ public:
     // phase is public — accessed by Entrainment (Kuramoto coupling)
     float phase           = 0.0f;
 
+    // targetGlideFreq is public — written by the adapter for Ocean Current drift (D004)
+    float targetGlideFreq = 440.0f;
+
 private:
     //==========================================================================
     float sr              = 44100.0f;
     float invSr           = 1.0f / 44100.0f;
     float glideFreq       = 0.0f;
-    float targetGlideFreq = 440.0f;
     float velocity        = 0.0f;
     int   voiceIdx        = 0;
 };
