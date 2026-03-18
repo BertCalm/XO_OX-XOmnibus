@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Parent Pulse",
+  "mood": "Family",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Steady parent pulse keeping time for the group.",
+  "tags": [
+    "parent",
+    "pulse",
+    "steady",
+    "keeper",
+    "family"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.52,
+    "movement": 0.52,
+    "density": 0.52,
+    "space": 0.3,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 1.0,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.75,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 1,
+      "optic_pulseEvolve": 0.0,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.6,
+      "optic_inputGain": 0.72,
+      "optic_modDepth": 0.62,
+      "optic_modMixPulse": 0.82,
+      "optic_modMixSpec": 0.18,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.75,
+      "optic_vizSpeed": 0.5,
+      "optic_vizFeedback": 0.1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

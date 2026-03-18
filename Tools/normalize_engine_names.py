@@ -95,6 +95,12 @@ def normalize_preset(path: Path) -> bool:
 
     changed = False
 
+    # Migrate singular "engine" key to plural "engines" array
+    if "engine" in data and "engines" not in data:
+        singular = data.pop("engine")
+        data["engines"] = [singular]
+        changed = True
+
     # Fix engines array
     if "engines" in data and isinstance(data["engines"], list):
         new_engines = []

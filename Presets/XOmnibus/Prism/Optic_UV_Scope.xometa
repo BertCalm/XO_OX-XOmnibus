@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "UV Scope",
+  "mood": "Prism",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultraviolet oscilloscope \u2014 bright beyond visible spectrum.",
+  "tags": [
+    "UV",
+    "ultraviolet",
+    "scope",
+    "bright",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.22,
+    "movement": 0.62,
+    "density": 0.58,
+    "space": 0.32,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 2.0,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.65,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 2,
+      "optic_pulseEvolve": 0.2,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.78,
+      "optic_inputGain": 0.8,
+      "optic_modDepth": 0.75,
+      "optic_modMixPulse": 0.78,
+      "optic_modMixSpec": 0.22,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.92,
+      "optic_vizSpeed": 0.68,
+      "optic_vizFeedback": 0.32
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

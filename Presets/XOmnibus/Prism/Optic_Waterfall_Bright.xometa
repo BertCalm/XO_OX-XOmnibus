@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Waterfall Bright",
+  "mood": "Prism",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright waterfall visualization. History of spectral content.",
+  "tags": [
+    "waterfall",
+    "bright",
+    "history",
+    "spectral",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.25,
+    "movement": 0.58,
+    "density": 0.55,
+    "space": 0.42,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 1.0,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.55,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 1,
+      "optic_pulseEvolve": 0.15,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.82,
+      "optic_inputGain": 0.8,
+      "optic_modDepth": 0.65,
+      "optic_modMixPulse": 0.38,
+      "optic_modMixSpec": 0.62,
+      "optic_vizMode": 3,
+      "optic_vizIntensity": 0.92,
+      "optic_vizSpeed": 0.68,
+      "optic_vizFeedback": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

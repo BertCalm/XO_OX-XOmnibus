@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "name": "Topological Void",
+  "mood": "Aether",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Topological surface receding into void — Klein bottle topology barely perceptible in maximum space.",
+  "tags": ["topological", "void", "klein", "receding", "aether"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.58, "warmth": 0.4, "movement": 0.08, "density": 0.38, "space": 0.98, "aggression": 0.04},
+  "parameters": {"Ouroboros": {
+    "ouro_topology": 3,
+    "ouro_rate": 0.08,
+    "ouro_chaosIndex": 0.08,
+    "ouro_leash": 0.95,
+    "ouro_theta": 0.5,
+    "ouro_phi": 0.5,
+    "ouro_damping": 0.92,
+    "ouro_injection": 0.08
+  }},
+  "macros": {"CHARACTER": 0.52, "MOVEMENT": 0.08, "COUPLING": 0.5, "SPACE": 0.96},
+  "coupling": {"pairs": []}
+}

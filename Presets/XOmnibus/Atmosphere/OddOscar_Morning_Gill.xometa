@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Morning Gill",
+  "mood": "Atmosphere",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Morning aquarium light — gentle gill movement in the soft light of early day.",
+  "tags": ["morning", "gentle", "light", "early"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.48, "warmth": 0.65, "movement": 0.42, "density": 0.45, "space": 0.62, "aggression": 0.07},
+  "parameters": {
+    "OddOscar": {"morph_morph": 0.45, "morph_bloom": 0.55, "morph_detune": 0.14, "morph_drift": 0.35, "morph_filterCutoff": 4200.0, "morph_filterReso": 0.25, "morph_filterEnvDepth": 0.28, "morph_sub": 0.32, "morph_decay": 1.8, "morph_sustain": 0.82, "morph_release": 3.0, "morph_glide": 0.12, "morph_voiceMode": 0, "morph_polyphony": 5, "morph_level": 0.66, "morph_macroBloom": 0.55, "morph_macroDepth": 0.42, "morph_macroDrift": 0.35, "morph_macroSpace": 0.62}
+  },
+  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.42, "COUPLING": 0.0, "SPACE": 0.62},
+  "coupling": {"pairs": []}
+}

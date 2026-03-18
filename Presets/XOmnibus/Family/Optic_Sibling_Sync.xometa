@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Sibling Sync",
+  "mood": "Family",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Two voices synchronized in pulse modulation.",
+  "tags": [
+    "siblings",
+    "synchronized",
+    "pulse",
+    "two",
+    "family"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.45,
+    "movement": 0.55,
+    "density": 0.52,
+    "space": 0.3,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 1.5,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.68,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 2,
+      "optic_pulseEvolve": 0.08,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.65,
+      "optic_inputGain": 0.72,
+      "optic_modDepth": 0.65,
+      "optic_modMixPulse": 0.82,
+      "optic_modMixSpec": 0.18,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.78,
+      "optic_vizSpeed": 0.55,
+      "optic_vizFeedback": 0.15
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

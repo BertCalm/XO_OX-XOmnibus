@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Old Wood",
+  "mood": "Foundation",
+  "engines": [
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Warm resonance of old tavern wood absorbing centuries of music.",
+  "tags": [
+    "old-wood",
+    "resonance",
+    "warm",
+    "centuries",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.7,
+    "movement": 0.4,
+    "density": 0.52,
+    "space": 0.18,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_porto": 0.52,
+      "osteria_patina": 0.82,
+      "osteria_murmur": 0.28,
+      "osteria_oceanBleed": 0.08,
+      "osteria_blendMode": 1,
+      "osteria_bassLevel": 0.68,
+      "osteria_melLevel": 0.62,
+      "osteria_harmLevel": 0.68,
+      "osteria_rhythmLevel": 0.52,
+      "osteria_qBassShore": 0.22,
+      "osteria_qMelShore": 0.18,
+      "osteria_qHarmShore": 0.25,
+      "osteria_qRhythmShore": 0.12,
+      "osteria_qElastic": 0.3,
+      "osteria_qMemory": 0.58,
+      "osteria_qStretch": 0.38,
+      "osteria_qSympathy": 0.48,
+      "osteria_attack": 0.03,
+      "osteria_decay": 0.38,
+      "osteria_sustain": 0.68,
+      "osteria_release": 0.95,
+      "osteria_chorus": 0.12,
+      "osteria_hall": 0.28,
+      "osteria_ensWidth": 0.62,
+      "osteria_tape": 0.1,
+      "osteria_sessionDelay": 0.2,
+      "osteria_filterEnvDepth": 0.15,
+      "osteria_warmth": 0.7,
+      "osteria_smoke": 0.14,
+      "osteria_tavernMix": 0.55,
+      "osteria_tavernShore": 0.32,
+      "osteria_macroCharacter": 0.28,
+      "osteria_macroMovement": 0.52,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

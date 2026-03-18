@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Drift Wave",
+  "mood": "Flux",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Undulating drift wave — medium-tempo morphing creates a rhythmic wave sensation.",
+  "tags": ["drift", "wave", "undulating", "rhythmic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.45, "warmth": 0.6, "movement": 0.68, "density": 0.52, "space": 0.5, "aggression": 0.25},
+  "parameters": {
+    "OddOscar": {"morph_morph": 0.55, "morph_bloom": 0.62, "morph_detune": 0.18, "morph_drift": 0.7, "morph_filterCutoff": 4200.0, "morph_filterReso": 0.42, "morph_filterEnvDepth": 0.58, "morph_sub": 0.35, "morph_decay": 0.6, "morph_sustain": 0.65, "morph_release": 1.2, "morph_glide": 0.1, "morph_voiceMode": 0, "morph_polyphony": 5, "morph_level": 0.72, "morph_macroBloom": 0.62, "morph_macroDepth": 0.6, "morph_macroDrift": 0.7, "morph_macroSpace": 0.5}
+  },
+  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.68, "COUPLING": 0.0, "SPACE": 0.5},
+  "coupling": {"pairs": []}
+}

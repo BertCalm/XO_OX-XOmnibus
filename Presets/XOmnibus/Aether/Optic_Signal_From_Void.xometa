@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Signal From Void",
+  "mood": "Aether",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Modulation signal emerging from absolute silence.",
+  "tags": [
+    "void",
+    "signal",
+    "emerging",
+    "silence",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.28,
+    "movement": 0.25,
+    "density": 0.32,
+    "space": 0.88,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 0.1,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.3,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 1,
+      "optic_pulseEvolve": 0.08,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.35,
+      "optic_inputGain": 0.5,
+      "optic_modDepth": 0.35,
+      "optic_modMixPulse": 0.78,
+      "optic_modMixSpec": 0.22,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.55,
+      "optic_vizSpeed": 0.2,
+      "optic_vizFeedback": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "name": "Phase Zero",
+  "mood": "Aether",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Both phase coordinates at zero — the origin point of the attractor, pure aethereal ground state.",
+  "tags": ["phase", "zero", "origin", "pure", "aether"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.52, "warmth": 0.5, "movement": 0.05, "density": 0.5, "space": 0.96, "aggression": 0.03},
+  "parameters": {"Ouroboros": {
+    "ouro_topology": 2,
+    "ouro_rate": 0.05,
+    "ouro_chaosIndex": 0.03,
+    "ouro_leash": 0.99,
+    "ouro_theta": 0.0,
+    "ouro_phi": 0.0,
+    "ouro_damping": 0.95,
+    "ouro_injection": 0.05
+  }},
+  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.05, "COUPLING": 0.5, "SPACE": 0.94},
+  "coupling": {"pairs": []}
+}

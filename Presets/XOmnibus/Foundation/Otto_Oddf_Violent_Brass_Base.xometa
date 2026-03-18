@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Violent Brass Base",
+  "mood": "Foundation",
+  "engines": [
+    "Ottoni",
+    "OddfeliX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.73,
+      "macro_movement": 0.83,
+      "macro_coupling": 0.81,
+      "macro_space": 0.27
+    },
+    "OddfeliX": {
+      "macro_character": 0.7,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.5,
+      "macro_space": 0.46
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_BLEND",
+    "source": "OTTONI",
+    "target": "ODDFELIX",
+    "amount": 0.93
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.078,
+    "warmth": 0.062,
+    "movement": 0.482,
+    "density": 0.913,
+    "space": 0.056,
+    "aggression": 0.956
+  }
+}

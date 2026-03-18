@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Sine Scope",
+  "mood": "Foundation",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Basic sine wave oscilloscope visualization. Clean and pure.",
+  "tags": [
+    "sine",
+    "oscilloscope",
+    "clean",
+    "pure",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.4,
+    "density": 0.4,
+    "space": 0.3,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 1.0,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.5,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 1,
+      "optic_pulseEvolve": 0.0,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.5,
+      "optic_inputGain": 0.7,
+      "optic_modDepth": 0.5,
+      "optic_modMixPulse": 0.8,
+      "optic_modMixSpec": 0.2,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.7,
+      "optic_vizSpeed": 0.4,
+      "optic_vizFeedback": 0.1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

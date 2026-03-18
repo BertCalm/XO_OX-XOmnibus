@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Violent Era Mesh",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Organon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.75,
+      "macro_movement": 0.97,
+      "macro_coupling": 0.64,
+      "macro_space": 0.1
+    },
+    "Organon": {
+      "macro_character": 0.9,
+      "macro_movement": 0.93,
+      "macro_coupling": 0.78,
+      "macro_space": 0.43
+    }
+  },
+  "coupling": {
+    "type": "FILTER_SHARE",
+    "source": "OVERWORLD",
+    "target": "ORGANON",
+    "amount": 0.94
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.065,
+    "warmth": 0.053,
+    "movement": 0.506,
+    "density": 0.944,
+    "space": 0.052,
+    "aggression": 0.919
+  }
+}

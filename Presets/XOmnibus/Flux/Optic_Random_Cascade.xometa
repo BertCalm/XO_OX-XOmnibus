@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Random Cascade",
+  "mood": "Flux",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Random pulse shape cascading through feedback.",
+  "tags": [
+    "random",
+    "cascade",
+    "feedback",
+    "pulse",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.28,
+    "movement": 0.88,
+    "density": 0.65,
+    "space": 0.38,
+    "aggression": 0.68
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 5.0,
+      "optic_pulseShape": 4,
+      "optic_pulseAccent": 0.82,
+      "optic_pulseSwing": 0.4,
+      "optic_pulseSubdiv": 5,
+      "optic_pulseEvolve": 0.92,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.85,
+      "optic_inputGain": 0.85,
+      "optic_modDepth": 0.88,
+      "optic_modMixPulse": 0.72,
+      "optic_modMixSpec": 0.28,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.98,
+      "optic_vizSpeed": 0.9,
+      "optic_vizFeedback": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

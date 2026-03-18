@@ -1,6 +1,5 @@
 {
   "name": "Harmonic Sustain",
-  "engine": "Overtone",
   "schema_version": 1,
   "version": "1.0",
   "mood": "Foundation",
@@ -57,5 +56,8 @@
   "author": "XO_OX",
   "coupling": {
     "pairs": []
-  }
+  },
+  "engines": [
+    "Overtone"
+  ]
 }

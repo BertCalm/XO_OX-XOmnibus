@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Memory",
+  "mood": "Aether",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Spectral waterfall with deep memory. Time revealed.",
+  "tags": [
+    "spectral",
+    "memory",
+    "waterfall",
+    "time",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.32,
+    "movement": 0.3,
+    "density": 0.38,
+    "space": 0.88,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 0.3,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.35,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 1,
+      "optic_pulseEvolve": 0.12,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.62,
+      "optic_inputGain": 0.68,
+      "optic_modDepth": 0.45,
+      "optic_modMixPulse": 0.3,
+      "optic_modMixSpec": 0.7,
+      "optic_vizMode": 3,
+      "optic_vizIntensity": 0.65,
+      "optic_vizSpeed": 0.22,
+      "optic_vizFeedback": 0.72
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

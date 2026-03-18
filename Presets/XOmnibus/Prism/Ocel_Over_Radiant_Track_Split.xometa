@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Radiant Track Split",
+  "mood": "Prism",
+  "engines": [
+    "Ocelot",
+    "Overbite"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.9,
+      "macro_movement": 0.74,
+      "macro_coupling": 0.89,
+      "macro_space": 0.23
+    },
+    "Overbite": {
+      "macro_character": 0.95,
+      "macro_movement": 0.69,
+      "macro_coupling": 0.9,
+      "macro_space": 0.33
+    }
+  },
+  "coupling": {
+    "type": "FM_CROSS",
+    "source": "OCELOT",
+    "target": "OVERBITE",
+    "amount": 0.7
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.914,
+    "warmth": 0.447,
+    "movement": 0.093,
+    "density": 0.055,
+    "space": 0.936,
+    "aggression": 0.077
+  }
+}

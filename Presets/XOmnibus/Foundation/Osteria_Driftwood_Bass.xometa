@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Driftwood Bass",
+  "mood": "Foundation",
+  "engines": [
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Heavy, weathered bass like old driftwood. Massive and aged.",
+  "tags": [
+    "driftwood",
+    "bass",
+    "heavy",
+    "weathered",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.68,
+    "movement": 0.4,
+    "density": 0.52,
+    "space": 0.2,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_porto": 0.45,
+      "osteria_patina": 0.72,
+      "osteria_murmur": 0.22,
+      "osteria_oceanBleed": 0.3,
+      "osteria_blendMode": 0,
+      "osteria_bassLevel": 0.88,
+      "osteria_melLevel": 0.42,
+      "osteria_harmLevel": 0.55,
+      "osteria_rhythmLevel": 0.48,
+      "osteria_qBassShore": 0.55,
+      "osteria_qMelShore": 0.15,
+      "osteria_qHarmShore": 0.25,
+      "osteria_qRhythmShore": 0.2,
+      "osteria_qElastic": 0.35,
+      "osteria_qMemory": 0.55,
+      "osteria_qStretch": 0.42,
+      "osteria_qSympathy": 0.48,
+      "osteria_attack": 0.02,
+      "osteria_decay": 0.25,
+      "osteria_sustain": 0.68,
+      "osteria_release": 0.85,
+      "osteria_chorus": 0.1,
+      "osteria_hall": 0.2,
+      "osteria_ensWidth": 0.55,
+      "osteria_tape": 0.05,
+      "osteria_sessionDelay": 0.15,
+      "osteria_filterEnvDepth": 0.12,
+      "osteria_warmth": 0.68,
+      "osteria_smoke": 0.12,
+      "osteria_tavernMix": 0.55,
+      "osteria_tavernShore": 0.32,
+      "osteria_macroCharacter": 0.28,
+      "osteria_macroMovement": 0.5,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

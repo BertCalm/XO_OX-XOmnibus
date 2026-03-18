@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Waterfall Storm",
+  "mood": "Flux",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Waterfall visualization during maximum signal storm.",
+  "tags": [
+    "waterfall",
+    "storm",
+    "signal",
+    "maximum",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.28,
+    "movement": 0.82,
+    "density": 0.65,
+    "space": 0.42,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 3.0,
+      "optic_pulseShape": 4,
+      "optic_pulseAccent": 0.75,
+      "optic_pulseSwing": 0.25,
+      "optic_pulseSubdiv": 4,
+      "optic_pulseEvolve": 0.78,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.95,
+      "optic_inputGain": 0.88,
+      "optic_modDepth": 0.82,
+      "optic_modMixPulse": 0.35,
+      "optic_modMixSpec": 0.65,
+      "optic_vizMode": 3,
+      "optic_vizIntensity": 0.98,
+      "optic_vizSpeed": 0.92,
+      "optic_vizFeedback": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

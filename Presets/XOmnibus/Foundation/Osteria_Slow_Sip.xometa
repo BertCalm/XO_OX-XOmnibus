@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Slow Sip",
+  "mood": "Foundation",
+  "engines": [
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Slow, savoring quality. Long attack, rich sustain.",
+  "tags": [
+    "slow",
+    "sip",
+    "savoring",
+    "long",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.38,
+    "density": 0.52,
+    "space": 0.2,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_porto": 0.55,
+      "osteria_patina": 0.55,
+      "osteria_murmur": 0.25,
+      "osteria_oceanBleed": 0.1,
+      "osteria_blendMode": 1,
+      "osteria_bassLevel": 0.65,
+      "osteria_melLevel": 0.65,
+      "osteria_harmLevel": 0.68,
+      "osteria_rhythmLevel": 0.48,
+      "osteria_qBassShore": 0.25,
+      "osteria_qMelShore": 0.22,
+      "osteria_qHarmShore": 0.28,
+      "osteria_qRhythmShore": 0.15,
+      "osteria_qElastic": 0.32,
+      "osteria_qMemory": 0.45,
+      "osteria_qStretch": 0.38,
+      "osteria_qSympathy": 0.45,
+      "osteria_attack": 0.08,
+      "osteria_decay": 0.45,
+      "osteria_sustain": 0.72,
+      "osteria_release": 1.5,
+      "osteria_chorus": 0.12,
+      "osteria_hall": 0.22,
+      "osteria_ensWidth": 0.62,
+      "osteria_tape": 0.06,
+      "osteria_sessionDelay": 0.2,
+      "osteria_filterEnvDepth": 0.15,
+      "osteria_warmth": 0.65,
+      "osteria_smoke": 0.12,
+      "osteria_tavernMix": 0.52,
+      "osteria_tavernShore": 0.3,
+      "osteria_macroCharacter": 0.3,
+      "osteria_macroMovement": 0.5,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

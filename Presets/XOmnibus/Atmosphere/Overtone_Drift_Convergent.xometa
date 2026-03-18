@@ -1,6 +1,5 @@
 {
   "name": "Drift Convergent",
-  "engine": "Overtone",
   "schema_version": 1,
   "version": "1.0",
   "mood": "Atmosphere",
@@ -57,5 +56,8 @@
   "author": "XO_OX",
   "coupling": {
     "pairs": []
-  }
+  },
+  "engines": [
+    "Overtone"
+  ]
 }

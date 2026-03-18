@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Thin Bloom",
+  "mood": "Aether",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-thin bloom morph — the absolute minimum presence of the axolotl, barely existing.",
+  "tags": ["thin", "minimal", "barely", "presence"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.28, "warmth": 0.45, "movement": 0.28, "density": 0.1, "space": 0.92, "aggression": 0.03},
+  "parameters": {
+    "OddOscar": {"morph_morph": 0.35, "morph_bloom": 0.28, "morph_detune": 0.06, "morph_drift": 0.18, "morph_filterCutoff": 5000.0, "morph_filterReso": 0.15, "morph_filterEnvDepth": 0.12, "morph_sub": 0.05, "morph_decay": 2.5, "morph_sustain": 0.55, "morph_release": 4.5, "morph_glide": 0.15, "morph_voiceMode": 0, "morph_polyphony": 3, "morph_level": 0.25, "morph_macroBloom": 0.28, "morph_macroDepth": 0.22, "morph_macroDrift": 0.18, "morph_macroSpace": 0.92}
+  },
+  "macros": {"CHARACTER": 0.25, "MOVEMENT": 0.28, "COUPLING": 0.0, "SPACE": 0.92},
+  "coupling": {"pairs": []}
+}
