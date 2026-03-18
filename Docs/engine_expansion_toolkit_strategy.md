@@ -479,6 +479,273 @@ description of the current patch:
   It reads the current patch matrix and parameter values and assembles a
   description from templates. Deterministic, instant, works offline.
 
+### Professor Oscar — Character Art Pipeline
+
+Oscar needs to be: simple enough to read at 24px, charming enough to feel alive,
+consistent across every context, animatable with smooth organic motion, and
+reproducible by anyone working on the project without artistic interpretation drift.
+
+**The approach: Rive (rive.app) — vector animation with state machines.**
+
+#### Why Rive
+
+| Requirement | How Rive Solves It |
+|-------------|-------------------|
+| **Simple** | Vector-based — Oscar is built from a small number of paths and shapes. Clean at any resolution. |
+| **Consistent** | One `.riv` source file = one canonical Oscar. No re-drawing per context. Every instance renders from the same file. |
+| **Repeatable** | The Rive editor is visual — any designer or developer opens the file and sees exactly how Oscar is built. No "only the original artist can draw him." |
+| **Animatable** | Rive's state machine system drives animations from code events. Gill pulse, celebration, swimming — all driven by parameters, not timeline scrubbing. |
+| **Lightweight** | `.riv` files are tiny (typically 10–50 KB). No sprite sheets, no video, no heavy runtimes. |
+| **Cross-platform** | Rive has native runtimes for C++ (works with JUCE), iOS (native), and web. Same file everywhere. |
+| **Interactive** | State machines respond to inputs — Oscar's gill speed can be driven by LFO rate, his expression can change on Easter egg discovery, his form can shift across levels. All from code, no new art needed. |
+
+#### Why Not Other Options
+
+| Option | Why Not |
+|--------|---------|
+| **Lottie (After Effects → JSON)** | Great for one-shot animations, weak for interactive state machines. Oscar isn't a loading spinner — he reacts to what you do. Lottie's interactivity is bolted on; Rive's is native. Also, Lottie requires After Effects ($$$) to author. |
+| **SVG + CSS animation** | Works for web, doesn't work in JUCE (native C++ UI). We'd need two separate animation systems for desktop and web. SVG animation also gets complex fast for organic motion like gills. |
+| **Sprite sheets** | Pixel-based = blurry at some sizes. Large file sizes for smooth animation. Can't be parameter-driven (fixed frame count). No resolution independence. |
+| **JUCE hand-coded drawing** | Could work technically (JUCE has Path, AffineTransform, etc.) but means Oscar's art lives in C++ code. No visual editor. Impossible for a designer to adjust. Maintenance nightmare. |
+| **3D (Three.js, SceneKit)** | Massive overkill for a small character icon. Heavy runtime. Wrong aesthetic — Oscar should feel 2D, illustrated, warm. |
+
+#### Oscar's Visual Construction
+
+Oscar is built from ~15 vector shapes:
+
+```
+OSCAR — Anatomical Breakdown (vector paths)
+
+Head:           Rounded rectangle with soft corners (main body)
+Eyes:           2× circles with offset inner circles (pupils)
+                Pupils track toward active bricks (subtle parallax)
+Mouth:          Simple arc — 3 states: neutral, smile, "ooh"
+Gills:          3× feathery paths on each side (6 total)
+                These are the primary animation surface
+                Each gill is a bezier curve that oscillates independently
+Body:           Tapered oval below head (only visible in larger renders)
+Legs:           4× small rounded stubs (only visible ≥ 48px)
+Tail:           Single curved path with gentle wave (only visible ≥ 48px)
+Spots:          3-5 small circles on body (OddOscar's characteristic spots)
+```
+
+**Color palette (from OddOscar accent):**
+
+| Part | Color | Hex |
+|------|-------|-----|
+| Body | Gill Pink | `#E8839B` |
+| Body shadow | Deeper pink | `#D06B83` |
+| Gills | Lighter pink (translucent) | `#F0A0B4` at 70% opacity |
+| Eyes | Near-black | `#2D2D2D` |
+| Pupils | Black | `#1A1A1A` |
+| Mouth | Dark pink | `#C05A72` |
+| Spots | Slightly different pink | `#D4778D` |
+| Belly | Warm white | `#F5E6EA` |
+
+At small sizes (16–24px), Oscar simplifies: head + eyes + gills only. No body,
+no legs, no tail. The gills are the identity — they're what moves, what
+communicates life.
+
+#### State Machine Architecture
+
+Rive state machines let Oscar's behavior be event-driven from code. No timeline
+animation — just states and transitions:
+
+```
+┌─────────────┐
+│   IDLE       │ ← Default state
+│  Gills: slow │    Gentle breathing rhythm (0.5 Hz)
+│  Eyes: center│    Pupils centered
+│  Mouth: —    │    Neutral line
+└──────┬───────┘
+       │
+       ├── onBrickChange ──────▶ ┌──────────────┐
+       │                         │   WATCHING     │
+       │                         │  Gills: medium │  Eyes track toward
+       │                         │  Eyes: track   │  the changed brick
+       │                         │  Mouth: —      │
+       │                         └──────┬─────────┘
+       │                                │ (1.5s) → back to IDLE
+       │
+       ├── onEasterEgg ────────▶ ┌──────────────┐
+       │                         │  CELEBRATION   │
+       │                         │  Gills: flash  │  Rapid pink pulse
+       │                         │  Eyes: wide    │  Pupils dilate
+       │                         │  Mouth: "ooh"  │  Open circle
+       │                         │  + body bounce │  Subtle Y-axis bounce
+       │                         └──────┬─────────┘
+       │                                │ (2.5s) → SPEAKING
+       │
+       ├── onSpeaking ─────────▶ ┌──────────────┐
+       │                         │   SPEAKING     │
+       │                         │  Gills: rhyth  │  Pulse matches speech
+       │                         │  Eyes: engaged │  Pupils toward text
+       │                         │  Mouth: open   │  Gentle open/close
+       │                         └──────┬─────────┘
+       │                                │ (text done) → IDLE
+       │
+       ├── onBossActive ───────▶ ┌──────────────┐
+       │                         │   ALERT        │
+       │                         │  Gills: tense  │  Gills held slightly out
+       │                         │  Eyes: focused │  Pupils toward canvas
+       │                         │  Mouth: —      │  Determined neutral
+       │                         └──────┬─────────┘
+       │                                │ (boss defeated) → CELEBRATION
+       │
+       └── onLevelUp ──────────▶ ┌──────────────┐
+                                 │  EVOLUTION     │
+                                 │  Gills: glow   │  Bioluminescent flash
+                                 │  Body: morph   │  Shape shifts to next form
+                                 │  Eyes: close→  │  Close, reopen with new
+                                 │        open    │  appearance
+                                 └──────┬─────────┘
+                                        │ (3s) → IDLE (new form)
+```
+
+**Driving from code (C++ / JUCE integration):**
+
+```cpp
+// Rive C++ runtime integration
+// Oscar responds to OBRIX events via state machine inputs
+
+class OscarCharacter {
+    rive::File* riveFile;
+    rive::ArtboardInstance* artboard;
+    rive::StateMachineInstance* stateMachine;
+
+    // State machine inputs (defined in Rive editor, referenced by name)
+    rive::SMIBool*   isSpeaking;
+    rive::SMIBool*   isEasterEgg;
+    rive::SMIBool*   isBossActive;
+    rive::SMINumber* gillSpeed;      // Driven by LFO rate in training mode
+    rive::SMINumber* pupilTargetX;   // Driven by active brick position
+    rive::SMINumber* pupilTargetY;
+    rive::SMINumber* evolutionStage; // 0=baby, 1=adolescent, 2=adult, 3=elder
+    rive::SMITrigger* triggerCelebration;
+    rive::SMITrigger* triggerEvolution;
+
+    void onEasterEggDiscovered() {
+        triggerCelebration->fire();
+    }
+
+    void onLFORateChanged(float rateHz) {
+        // Oscar's gills breathe with the LFO in training mode
+        gillSpeed->value(rateHz);
+    }
+
+    void onBrickFocused(float normX, float normY) {
+        // Oscar watches what you're doing
+        pupilTargetX->value(normX);
+        pupilTargetY->value(normY);
+    }
+
+    void onLevelCleared(int newLevel) {
+        evolutionStage->value(static_cast<float>(newLevel));
+        triggerEvolution->fire();
+    }
+
+    void render(juce::Graphics& g, juce::Rectangle<float> bounds) {
+        // Rive renderer draws Oscar into the JUCE graphics context
+        // Artboard scales to bounds — works at any size
+        artboard->advance(deltaTime);
+        stateMachine->advance(deltaTime);
+        renderer->draw(artboard.get());
+    }
+};
+```
+
+#### Oscar Across Levels — One File, Four Forms
+
+Oscar's evolution (baby → adolescent → adult → elder) is handled *within the
+same `.riv` file* using Rive's artboard variants or blend states:
+
+| Level | Form | What Changes in the Rive File |
+|-------|------|------------------------------|
+| 1 | Baby | Base shape. Simple gills (3 per side). Large head-to-body ratio. |
+| 2 | Adolescent | Gills more elaborate (5 per side, more bezier complexity). Body slightly longer. Eyes brighter (inner glow layer activates). |
+| 3 | Adult | Bioluminescent spots activate (new shape layer, subtle glow animation). Gills fully feathered. Body proportions more balanced. |
+| 4 | Elder | Body becomes semi-translucent (opacity drop on body fill). Internal glow (radial gradient from center). Gills ethereal (blur/glow effect). Fewer spots — simpler, more refined. |
+
+The evolution transition (`triggerEvolution`) morphs between forms over 3
+seconds using Rive's blend states — shapes interpolate smoothly from one form
+to the next. This is one of Rive's strengths: because everything is vector
+paths, you can smoothly interpolate between path shapes.
+
+#### Sizes and Contexts
+
+| Context | Size | Detail Level | Oscar Shows |
+|---------|------|-------------|-------------|
+| OBRIX corner icon | 24–32px | Minimal | Head + eyes + gills only |
+| Training mode tooltip | 40–48px | Medium | Head + eyes + gills + body |
+| BrixBox header | 64px | Full | Full body including legs + tail |
+| Boss intro screen | 128–200px | Hero | Full body, centered, dramatic lighting |
+| Secret ending | Full canvas | Cinematic | Oscar swims across screen, full detail |
+
+Rive handles this naturally — the artboard scales, and detail layers can be
+toggled based on rendered size (via state machine inputs):
+
+```
+if rendered width < 36px → hide body, legs, tail, spots
+if rendered width < 56px → hide legs, tail
+if rendered width ≥ 56px → show everything
+```
+
+#### Production Workflow
+
+**Step 1: Design Oscar in Rive Editor (rive.app)**
+- Free tier is sufficient for this complexity
+- Visual editor — drag paths, set keyframes, build state machine
+- The character lives as a single `.riv` file in the repo
+
+**Step 2: Export `.riv` binary**
+- Tiny file (~20–50 KB for a character this simple)
+- Binary format, version-controlled in `Assets/Characters/oscar.riv`
+- Source `.rev` (Rive editor format) kept alongside for editability
+
+**Step 3: Integrate via Rive C++ runtime**
+- Rive provides an open-source C++ runtime (MIT license)
+- Renders to any graphics backend (OpenGL, Metal, Skia, software)
+- JUCE integration: render into a `juce::Image` or directly to a
+  `juce::Graphics` context via a thin adapter
+- Runtime is lightweight — adds ~200 KB to binary, no heavy dependencies
+
+**Step 4: Wire state machine inputs to OBRIX events**
+- Map OBRIX parameter changes to Oscar's state machine inputs
+- All behavior is data-driven — no animation code in C++, just event firing
+- New Oscar behaviors added in Rive editor, not in code
+
+**Source files in repo:**
+
+```
+Assets/
+└── Characters/
+    ├── oscar.riv              # Compiled Rive binary (what ships)
+    ├── oscar.rev              # Rive editor source (for editing)
+    ├── oscar_design_notes.md  # Character sheet, color specs, state docs
+    └── oscar_test.html        # Standalone test page (Rive web runtime)
+```
+
+#### Oscar Design Principles (for anyone editing the `.riv`)
+
+1. **Gills are the soul.** If you can only animate one thing, animate the gills.
+   They communicate breathing, excitement, tension, evolution. Everything else
+   is secondary.
+2. **Eyes create connection.** Pupil tracking toward bricks makes Oscar feel
+   aware. The parallax is subtle (2-3px movement max at small sizes) but it
+   registers subconsciously.
+3. **Less is more at small sizes.** At 24px, Oscar is basically a pink blob with
+   eyes and feathery edges. That's enough. Don't try to cram detail into small
+   renders.
+4. **Pink is the brand.** `#E8839B` is non-negotiable. It's the OddOscar accent
+   color. All other colors derive from it. If Oscar doesn't read as "pink
+   axolotl" at a glance, something is wrong.
+5. **Organic motion only.** No snappy, mechanical transitions. Everything eases
+   in and out. Gills use sine-based oscillation. Body bounces use spring
+   physics. Oscar is a living creature, not a UI widget.
+6. **Accessibility.** Respect `prefers-reduced-motion`. When reduced motion is
+   on, gills hold still, pupils don't track, transitions are instant cuts.
+   Oscar is still present but static.
+
 ---
 
 ## Part 5: OBRIX Pocket — iPhone-Optimized Interface
