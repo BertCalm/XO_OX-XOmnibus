@@ -85,7 +85,7 @@ struct OstiOnePole {
 
     // fc: cutoff Hz  sr: sample rate
     inline float process(float in, float fc, float sr) noexcept {
-        float coeff = std::exp(-6.2831853f * fc / sr);
+        float coeff = fastExp(-6.2831853f * fc / sr);
         float out   = in * (1.f - coeff) + z1 * coeff;
         z1 = flushDenormal(out);
         return out;
@@ -93,32 +93,102 @@ struct OstiOnePole {
 };
 
 // ---------------------------------------------------------------------------
-// Exponential decay envelope — single-stage: attack is instantaneous (noise
-// burst triggers at full level), then exponential decay to zero.
-// decaySec: time to decay to ~e^-1 (~37%) of peak.
+// ADSD amplitude envelope — 4-stage shape:
+//   Stage 0 (Attack):  linear ramp 0 → peak over atkSec (osti_ampAtk)
+//   Stage 1 (Hold):    hold at susAmp * peak for holdSec (osti_ampDec)
+//   Stage 2 (Decay):   exponential decay from hold level → 0 over decSec (osti_ampRel)
+//   osti_ampSus:       sustain amplitude level (0..1) — scales the hold plateau
+//
+// All stage durations computed from params at trigger() time.
+// No heap allocation — integer sample counters only.
+// If atkSec < 0.0005f (0.5ms), attack stage is skipped (instant onset).
 // ---------------------------------------------------------------------------
 struct OstiDecayEnv {
-    float level  = 0.f;
-    float coeff  = 0.f; // per-sample multiply coefficient
-    bool  active = false;
-    float sr     = 44100.f;
+    // Envelope state
+    float level      = 0.f;
+    float decCoeff   = 0.f; // per-sample multiply for decay stage
+    float atkInc     = 0.f; // per-sample increment for linear attack
+    float peakLevel  = 0.f; // velocity-scaled peak
+    float holdLevel  = 0.f; // peak * susAmp — plateau amplitude
+    int   atkSamples = 0;   // attack stage length in samples
+    int   holdSamples= 0;   // hold stage length in samples
+    int   atkCounter = 0;   // samples remaining in attack
+    int   holdCounter= 0;   // samples remaining in hold
+    int   stage      = 0;   // 0=attack, 1=hold, 2=decay, 3=idle
+    bool  active     = false;
+    float sr         = 44100.f;
 
     void prepare(double s) { sr = (float)s; }
-    void reset() { level = 0.f; active = false; }
 
-    // trigger: set peak level (velocity-scaled by caller)
-    void trigger(float peak, float decaySec) noexcept {
-        level  = peak;
-        float t = std::max(decaySec, 0.001f);
-        coeff  = std::exp(-1.f / (sr * t));
+    void reset() {
+        level = 0.f; active = false; stage = 3;
+        atkCounter = holdCounter = 0;
+    }
+
+    // trigger: start envelope with all 4 stage parameters.
+    //   peak:     peak amplitude (velocity-scaled by caller)
+    //   atkSec:   attack ramp time — osti_ampAtk  (0.001..0.1 s)
+    //   susAmp:   sustain/hold amplitude 0..1 — osti_ampSus  (scales plateau level)
+    //   holdSec:  hold duration at plateau — osti_ampDec  (0.1..3.0 s)
+    //   decSec:   decay time from plateau to silence — osti_ampRel (0.1..2.0 s)
+    void trigger(float peak, float atkSec, float susAmp, float holdSec, float decSec) noexcept {
+        peakLevel = peak;
+        holdLevel = peak * clamp(susAmp, 0.f, 1.f);
+
+        // Attack stage — skip if below 0.5ms
+        if (atkSec >= 0.0005f) {
+            atkSamples = (int)(juce::jmax(atkSec, 0.0005f) * sr);
+            atkInc     = peak / (float)juce::jmax(atkSamples, 1);
+            level      = 0.f;
+            stage      = 0;
+        } else {
+            atkSamples = 0;
+            level      = peak;
+            stage      = 1; // instant onset — skip to hold
+        }
+        atkCounter = atkSamples;
+
+        // Hold stage duration
+        holdSamples  = (int)(juce::jmax(holdSec, 0.001f) * sr);
+        holdCounter  = holdSamples;
+
+        // Decay coefficient — exponential decay to near-zero over decSec
+        float t  = juce::jmax(decSec, 0.001f);
+        decCoeff = fastExp(-1.f / (sr * t));
+
         active = true;
     }
 
     inline float tick() noexcept {
         if (!active) return 0.f;
-        level *= coeff;
+
+        if (stage == 0) {
+            // Attack: linear ramp to peak
+            level += atkInc;
+            --atkCounter;
+            if (atkCounter <= 0 || level >= peakLevel) {
+                level       = peakLevel;
+                holdCounter = holdSamples;
+                stage       = 1;
+            }
+            return level;
+        }
+
+        if (stage == 1) {
+            // Hold: ramp from peak toward holdLevel, then hold
+            // Simple instant drop to holdLevel at start of stage
+            level = holdLevel;
+            if (holdCounter > 0) {
+                --holdCounter;
+                return level;
+            }
+            stage = 2; // fall through to decay
+        }
+
+        // Stage 2: exponential decay from holdLevel toward 0
+        level *= decCoeff;
         level  = flushDenormal(level);
-        if (level < 1e-6f) { level = 0.f; active = false; }
+        if (level < 1e-6f) { level = 0.f; active = false; stage = 3; }
         return level;
     }
 };
@@ -156,19 +226,22 @@ struct OstiVoice {
     // drumType: 0-11 selects character preset
     // cutoffOverride: parameter cutoff (blended with drum preset)
     // resOverride: parameter resonance
-    // decayOverride: parameter decay
+    // atkOverride: attack time seconds (osti_ampAtk)
+    // susOverride: sustain level 0-1 (osti_ampSus — mapped to hold time in env)
+    // relOverride: release/decay time seconds (osti_ampRel)
     // velCutoffAmt: velocity → cutoff scaling (0-1)
     // velocity: MIDI velocity 0-1
     void noteOn(int n, float velocity,
                 int drumType,
-                float cutoffOverride, float resOverride, float decayOverride,
+                float cutoffOverride, float resOverride,
+                float atkOverride, float susOverride, float relOverride,
                 float velCutoffAmt) noexcept
     {
         note = n;
         vel  = velocity;
 
         // Clamp drumType to valid range
-        int dt = std::clamp(drumType, 0, 11);
+        int dt = clamp(drumType, 0, 11);
         const OstiDrumChar& dc = kDrumChars[dt];
 
         // Blend parameter cutoff with drum character preset (50/50 mix)
@@ -180,8 +253,9 @@ struct OstiVoice {
         activeRes      = resOverride * 0.5f + dc.resonance * 0.5f;
 
         // D001: velocity also shapes attack transient amplitude
-        float peak = velocity * (0.7f + velocity * 0.3f); // slight curve up at high vel
-        env.trigger(peak, decayOverride > 0.001f ? decayOverride : dc.decaySec);
+        float peak    = velocity * (0.7f + velocity * 0.3f); // slight curve up at high vel
+        float decSec  = relOverride > 0.001f ? relOverride : dc.decaySec;
+        env.trigger(peak, atkOverride, susOverride, decSec);
         active = true;
     }
 
@@ -200,8 +274,8 @@ struct OstiVoice {
         float noise = (float)(int32_t)noiseSeed * 4.656612873e-10f; // /2^31
 
         // Apply filter with modulated cutoff
-        float fc = std::max(activeCutoff + lfo2CutoffMod + circleMod, 20.f);
-        fc = std::min(fc, 18000.f);
+        float fc = juce::jmax(activeCutoff + lfo2CutoffMod + circleMod, 20.f);
+        fc = juce::jmin(fc, 18000.f);
         float filtered = filter.process(noise, fc, sr);
 
         // Decay envelope
@@ -332,6 +406,7 @@ public:
         extAmpMod    = 1.f;
         atCircleMod  = 0.f;
         modWheelFire = 0.f;
+        stepIndex    = 0;
     }
 
     //-- MIDI + render ----------------------------------------------------------
@@ -345,11 +420,23 @@ public:
             if (msg.isNoteOn()) {
                 silenceGate.wake();
 
+                // --- Pattern gate sequencer: advance step and check mask -------
+                // stepIndex wraps 0-7; if the current step's bool param is false,
+                // the note-on is silently consumed (pattern mute mask).
+                int curStep = stepIndex % 8;
+                stepIndex   = (stepIndex + 1) % 8; // always advance
+
+                bool stepEnabled = pStep[curStep] ? (pStep[curStep]->load() >= 0.5f) : true;
+                if (!stepEnabled)
+                    continue; // step muted — skip voice trigger
+
                 // Read current param values for voice configuration
                 int   drumType      = pDrumType    ? (int)pDrumType->load()    : 0;
                 float cutoff        = pFilterCutoff? pFilterCutoff->load()     : 2000.f;
                 float res           = pFilterRes   ? pFilterRes->load()        : 0.3f;
-                float decay         = pAmpDec      ? pAmpDec->load()           : 0.5f;
+                float atk           = pAmpAtk      ? pAmpAtk->load()           : 0.003f;
+                float sus           = pAmpSus      ? pAmpSus->load()           : 0.0f;
+                float rel           = pAmpRel      ? pAmpRel->load()           : 0.3f;
                 float velCutoffAmt  = pVelCutoffAmt? pVelCutoffAmt->load()     : 0.5f;
 
                 // Voice steal: prefer inactive, else round-robin
@@ -361,7 +448,7 @@ public:
 
                 float velocity = msg.getVelocity() / 127.f;
                 voices[slot].noteOn(msg.getNoteNumber(), velocity,
-                                    drumType, cutoff, res, decay, velCutoffAmt);
+                                    drumType, cutoff, res, atk, sus, rel, velCutoffAmt);
             }
             else if (msg.isNoteOff()) {
                 // Percussion — no note-off (envelope self-completes)
@@ -407,14 +494,14 @@ public:
         float mSpace        = mMacroSpace   ? mMacroSpace->load()        : 0.4f;
 
         // Mod wheel adds to FIRE macro (D006)
-        float fireMod = std::clamp(mFire + modWheelFire * 0.5f, 0.f, 1.f);
+        float fireMod = clamp(mFire + modWheelFire * 0.5f, 0.f, 1.f);
 
         // FIRE macro: scales amplitude output and filter brightness
         float fireAmp    = 0.5f + fireMod * 1.0f;  // 0.5 → 1.5 range
         float fireBright = 1.f  + fireMod * 1.5f;  // 1.0 → 2.5x cutoff boost
 
         // CIRCLE macro: inter-voice modulation depth (aftertouch adds to it)
-        float circleDepth = std::clamp(mCircle + atCircleMod * 0.4f, 0.f, 1.f);
+        float circleDepth = clamp(mCircle + atCircleMod * 0.4f, 0.f, 1.f);
 
         // GATHER macro: tightens inter-voice timing jitter (applied to future
         // triggers; affects the organic looseness when low). Encoded here as
@@ -422,8 +509,8 @@ public:
         float gatherSpread = (1.f - mGather) * 400.f; // 0→400 Hz spread at gather=0
 
         // SPACE macro: reverb mix
-        float reverbMix  = std::clamp(pRevMix + mSpace * 0.5f, 0.f, 1.f);
-        float reverbSpace = std::clamp(mSpace * 0.8f, 0.f, 1.f);
+        float reverbMix  = clamp(pRevMix + mSpace * 0.5f, 0.f, 1.f);
+        float reverbSpace = clamp(mSpace * 0.8f, 0.f, 1.f);
 
         // LFO1: slow amplitude tremolo (D005 — rate floor 0.01 Hz satisfied by param range)
         float lfo1Inc = pL1Rate / (float)sr;
@@ -546,7 +633,7 @@ public:
                 break;
             case CouplingType::EnvToDecay:
                 // External envelope → scale our decay time
-                extAmpMod = std::max(0.1f, 1.f + (srcBuf ? srcBuf[0] : 0.f) * amount);
+                extAmpMod = juce::jmax(0.1f, 1.f + (srcBuf ? srcBuf[0] : 0.f) * amount);
                 break;
             default: break;
         }
@@ -696,6 +783,9 @@ private:
     int   nextVoice   = 0;
     int   activeCount = 0;
     float lastL = 0.f, lastR = 0.f;
+
+    // 8-step gate sequencer state
+    int   stepIndex   = 0; // advances each note-on; wraps 0-7
 
     // LFO states
     float lfo1Phase = 0.f;

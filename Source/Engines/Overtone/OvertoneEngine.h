@@ -556,12 +556,14 @@ public:
         // OVERTONE accepts:
         //   AmpToFilter → filter cutoff modulation (spectral colouring from coupled engine)
         //   AmpToPitch / PitchToPitch → pitch offset in semitones
+        // macroCoupling scales receive sensitivity: higher COUPLING = more responsive to partners.
+        const float recvScale = p_macroCoupling ? (0.5f + p_macroCoupling->load() * 0.5f) : 0.5f;
         if (type == CouplingType::AmpToFilter)
-            couplingFilterMod += amount * 4000.f; // ±4000 Hz range (wide spectral sweep)
+            couplingFilterMod += amount * 4000.f * recvScale; // ±4000 Hz range (wide spectral sweep)
         else if (type == CouplingType::AmpToPitch || type == CouplingType::PitchToPitch)
-            couplingPitchMod += amount;
+            couplingPitchMod += amount * recvScale;
         else if (type == CouplingType::EnvToMorph)
-            couplingDepthMod += amount * 3.f; // couple into depth sweep
+            couplingDepthMod += amount * 3.f * recvScale; // couple into depth sweep
     }
 
     float getSampleForCoupling(int /*channel*/, int /*sampleIndex*/) const override {
@@ -627,7 +629,7 @@ public:
         const float resoMix        = p_resoMix      ? p_resoMix->load()      : 0.15f;
         const float macroDepth     = p_macroDepth    ? p_macroDepth->load()    : 0.35f;
         const float macroColor     = p_macroColor    ? p_macroColor->load()    : 0.5f;
-        // macroCoupling used as output scaling for coupling chain
+        const float macroCoupling  = p_macroCoupling ? p_macroCoupling->load() : 0.0f;
         const float macroSpace     = p_macroSpace    ? p_macroSpace->load()    : 0.3f;
 
         // D006: mod wheel → DEPTH macro (additive on top of macroDepth)
@@ -755,7 +757,17 @@ public:
                 float amp = partialAmp[i];
                 if (i >= 4) {
                     // Upper partials boosted by COLOR macro and velocity (D001)
-                    amp = clamp(amp + colorUpperBoost + velUpperBoost + atColorBoost, 0.f, 1.f);
+                    // macroCoupling adds a gentle autonomous shimmer on partials 4-7:
+                    // each partial gets a slightly different phase offset so they beat
+                    // against each other, producing a living spectral iridescence even
+                    // without a coupling partner. Scale kept small (0.1) so at low
+                    // COUPLING settings the effect is nearly inaudible; at full it
+                    // adds ±0.1 amplitude flutter — noticeable but not overwhelming.
+                    float shimmerPhase = lfo1Phase * 6.2831853f
+                                       + (float)(i - 4) * 0.7853982f; // π/4 per partial
+                    float shimmer = macroCoupling * 0.1f * fastSin(shimmerPhase);
+                    amp = clamp(amp + colorUpperBoost + velUpperBoost + atColorBoost + shimmer,
+                                0.f, 1.f);
                 }
 
                 // LFO2 phase rotation: small per-partial phase offset creates shimmer/chorus

@@ -119,9 +119,13 @@ struct SkyBrightFilter {
 
     void reset() { z1 = 0.f; }
 
-    float process(float in, float fc, float sr) {
-        float coeff = std::exp(-6.2831853f * fc / sr);
-        float out = in * (1.f - coeff) + z1 * coeff;
+    // res: 0-1 resonance amount (feedback from previous output)
+    float process(float in, float fc, float sr, float res = 0.f) {
+        float coeff = fastExp(-6.2831853f * fc / sr);
+        // Resonance: feed back previous output into input (self-oscillation capped at 0.85)
+        float feedback = clamp(res * 0.85f, 0.f, 0.84f);
+        float driven = in + z1 * feedback;
+        float out = driven * (1.f - coeff) + z1 * coeff;
         z1 = flushDenormal(out);
         return out;
     }
@@ -272,6 +276,7 @@ struct OpenSkyVoice {
     bool releasing = false;
     int  note = 0;
     float vel = 0.f, freq = 440.f;
+    float glideFreq = 440.f;    // D004: smoothed frequency for portamento (sky_glide)
     float ampEnv = 0.f;         // main amplitude envelope level (attack/decay/sustain/release)
     float ampAttackCoeff = 0.f; // per-sample attack increment
     float ampReleaseCoeff = 0.f;
@@ -304,6 +309,8 @@ struct OpenSkyVoice {
         note = n;
         vel  = v;
         freq = 440.f * fastPow2((n - 69) / 12.f);
+        // D004: glideFreq starts at target freq on first note (no glide from silence)
+        if (!active) glideFreq = freq;
         releasing = false;
         inAttack  = true;
         active    = true;
@@ -322,10 +329,13 @@ struct OpenSkyVoice {
     }
 
     // Returns mono mix of supersaw + shimmer
-    // Parameters: detune, brightness filter fc, shimmerDepth, shimmerRate,
-    //             shimmerDecay (per-sample coeff), lfoDepth (semitones)
-    float tick(float detune, float filterFc, float shimmerDepth,
-               float shimmerRate, float shimmerDecay, float lfoDepth) {
+    // Parameters: detune, brightness filter fc, filterRes, shimmerDepth, shimmerRate,
+    //             shimmerDecay (per-sample coeff), lfoDepth (semitones),
+    //             shimmerOctShift (octave transpose, 0=no shift, 1=+1 oct),
+    //             glideCoeff (portamento smoothing coeff, 1.0=instant)
+    float tick(float detune, float filterFc, float filterRes, float shimmerDepth,
+               float shimmerRate, float shimmerDecay, float lfoDepth,
+               float shimmerOctShift, float glideCoeff) {
         // Amplitude envelope
         if (inAttack) {
             ampEnv += ampAttackCoeff;
@@ -338,21 +348,28 @@ struct OpenSkyVoice {
 
         if (!active && ampEnv <= 0.f) return 0.f;
 
+        // D004: glide — smooth glideFreq toward target freq each sample
+        glideFreq += (freq - glideFreq) * glideCoeff;
+        glideFreq = flushDenormal(glideFreq);
+        float playFreq = glideFreq;
+
         // D001: velocity → brightness (higher velocity = brighter filter)
         float velBrightness = 0.5f + vel * 0.5f; // 0.5→1.0
         float fc = filterFc * velBrightness;
 
         // Supersaw fundamental
-        float sawOut = supersaw.tick(freq, detune);
+        float sawOut = supersaw.tick(playFreq, detune);
 
-        // Apply brightness filter (both channels share same mono filter state;
-        // stereo spread happens in chorus on shimmer layer)
-        sawOut = filterL.process(sawOut, fc, sr);
+        // Apply brightness filter with resonance (D004: filterRes now shapes tone)
+        sawOut = filterL.process(sawOut, fc, sr, filterRes);
 
-        // Shimmer layer
+        // Shimmer layer — D004: shimmerOctShift transposes all shimmer voices
+        // (0=original intervals, 1=all intervals shifted +1 octave)
+        float octMult = fastPow2(shimmerOctShift);
         float shimOut = 0.f;
         for (int i = 0; i < 4; ++i) {
-            shimOut += shimmer[i].tick(freq, kShimmerIntervals[i],
+            float interval = kShimmerIntervals[i] * octMult;
+            shimOut += shimmer[i].tick(playFreq, interval,
                                        shimmerRate, lfoDepth, shimmerDecay);
         }
         shimOut *= 0.25f; // normalize 4 voices
@@ -405,13 +422,17 @@ public:
                 silenceGate.wake();
                 float attack  = pAmpAtk  ? pAmpAtk->load()  : 0.05f;
                 float release = pAmpRel  ? pAmpRel->load()   : 0.8f;
+                // D004: sky_velSensitivity scales velocity response
+                // sens=1.0 → full range; sens=0.0 → always 70% (flat response)
+                float sens = pVelSens ? pVelSens->load() : 0.8f;
+                float rawVel = msg.getVelocity() / 127.f;
+                float effectiveVel = rawVel * sens + (1.f - sens) * 0.7f;
                 int t = -1;
                 for (int i = 0; i < kVoices; ++i)
                     if (!voices[i].active) { t = i; break; }
                 if (t < 0) { t = nextV % kVoices; }
                 nextV = (t + 1) % kVoices;
-                voices[t].noteOn(msg.getNoteNumber(),
-                                 msg.getVelocity() / 127.f,
+                voices[t].noteOn(msg.getNoteNumber(), effectiveVel,
                                  attack, release);
             }
             else if (msg.isNoteOff()) {
@@ -437,7 +458,7 @@ public:
         float pDetune   = pSawDetune    ? pSawDetune->load()    : 0.5f;
         float pOscLvl   = pSawLevel     ? pSawLevel->load()     : 1.0f;
         float pFiltFc   = pFilterFc     ? pFilterFc->load()     : 8000.f;
-        float pFiltRes  = pFilterRes    ? pFilterRes->load()    : 0.0f; // reserved
+        float pFiltRes  = pFilterRes    ? pFilterRes->load()    : 0.0f; // D004: resonance feedback
         float pAmpA     = pAmpAtk       ? pAmpAtk->load()       : 0.05f;
         float pAmpD     = pAmpDec       ? pAmpDec->load()       : 0.3f;
         float pAmpS     = pAmpSus       ? pAmpSus->load()       : 0.8f;
@@ -462,21 +483,31 @@ public:
         float mSpace     = mSpaceM    ? mSpaceM->load()    : 0.5f;
 
         // CHARACTER macro: drives shimmer depth + mod wheel blend
-        float shimmerDepth = std::clamp(
+        float shimmerDepth = clamp(
             pShimMix + mCharacter * 0.4f + modWheelShimmer * 0.3f + atShimmer * 0.2f,
             0.f, 1.f);
 
         // MOVEMENT macro: drives LFO rate (0.01→2 Hz range)
         float lfoRate = pLfoRt * (0.5f + mMovement * 2.0f);
-        lfoRate = std::clamp(lfoRate, 0.01f, 4.f);
+        lfoRate = clamp(lfoRate, 0.01f, 4.f);
 
         // SPACE macro: drives reverb mix + reverb size
-        float revMix  = std::clamp(pRevMix  + mSpace * 0.4f, 0.f, 1.f);
-        float revSize = std::clamp(pRevSize + mSpace * 0.2f, 0.f, 1.f);
+        float revMix  = clamp(pRevMix  + mSpace * 0.4f, 0.f, 1.f);
+        float revSize = clamp(pRevSize + mSpace * 0.2f, 0.f, 1.f);
 
         // Shimmer decay coefficient (time constant → per-sample multiply)
         // At 44100 Hz, to decay to e^-1 in N seconds: coeff = exp(-1/(sr*N))
-        float shimDecay = std::exp(-1.f / (float)(sr * std::max(pShimDecT, 0.05f)));
+        float shimDecay = fastExp(-1.f / (float)(sr * juce::jmax(pShimDecT, 0.05f)));
+
+        // D004: sky_glide — portamento smoothing coefficient
+        // sky_glide is in seconds (0=instant, 2=slow). Below 0.5ms treated as instant.
+        float pGlideVal = pGlide ? pGlide->load() : 0.f;
+        float glideCoeff = (pGlideVal < 0.0005f)
+            ? 1.f
+            : clamp(1.f - fastExp(-1.f / (pGlideVal * (float)sr)), 0.f, 1.f);
+
+        // D004: sky_shimmerOct — fractional octave shift for shimmer voices (0=off, 1=+1 oct)
+        float shimmerOctShift = pShimOct;
 
         // Update active voice envelopes with current ADSR
         for (auto& v : voices)
@@ -500,8 +531,9 @@ public:
                 if (pitchModSemi != 0.f)
                     v.freq = baseFreq * fastPow2(pitchModSemi / 12.f);
 
-                float mono = v.tick(pDetune, pFiltFc, shimmerDepth,
-                                    lfoRate, shimDecay, pLfoD);
+                float mono = v.tick(pDetune, pFiltFc, pFiltRes, shimmerDepth,
+                                    lfoRate, shimDecay, pLfoD,
+                                    shimmerOctShift, glideCoeff);
 
                 // Restore frequency after pitch mod (avoid drift accumulation)
                 v.freq = baseFreq;

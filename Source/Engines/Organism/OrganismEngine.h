@@ -520,10 +520,13 @@ public:
     void applyCouplingInput(CouplingType type, float amount,
                             const float* /*sourceBuffer*/, int /*numSamples*/) override
     {
+        // macroCoupling scales receive sensitivity so the COUPLING macro always
+        // controls how strongly coupled partners influence this engine.
+        const float recvScale = p_macroCoupling ? (0.5f + p_macroCoupling->load() * 0.5f) : 0.5f;
         if (type == CouplingType::AmpToFilter)
-            couplingFilterMod += amount * 1000.f; // ±1000 Hz modulation range
+            couplingFilterMod += amount * 1000.f * recvScale; // ±1000 Hz modulation range
         else if (type == CouplingType::AmpToPitch || type == CouplingType::PitchToPitch)
-            couplingPitchMod += amount;
+            couplingPitchMod += amount * recvScale;
     }
 
     float getSampleForCoupling(int /*channel*/, int /*sampleIndex*/) const override {
@@ -604,6 +607,7 @@ public:
         const float reverbMix       = p_reverbMix->load();
         const float macroRule       = p_macroRule->load();
         const float macroSeed       = p_macroSeed->load(); // use to re-seed if >0
+        const float macroCoupling   = p_macroCoupling ? p_macroCoupling->load() : 0.0f;
         const float macroMutate     = p_macroMutate->load();
 
         // macroRule: map 0–1 across 8 curated rules (index 0–7)
@@ -641,7 +645,12 @@ public:
         }
 
         // D006: aftertouch = mutation rate override
-        const float effectiveMutate = clamp(baseMutate + macroMutate + aftertouchVal * 0.3f,
+        // macroCoupling adds a subtle autonomous mutation boost (0..0.01) so that
+        // turning COUPLING up makes the automaton slightly more unpredictable even
+        // without a partner engine. The scale is kept very small (0.01) so it never
+        // dominates the dedicated MUTATE macro but is always audible on close listening.
+        const float effectiveMutate = clamp(baseMutate + macroMutate + aftertouchVal * 0.3f
+                                            + macroCoupling * 0.01f,
                                             0.f, 1.f);
 
         // macroSeed: if > 0.01, re-seed automaton this block (only once per gesture)
