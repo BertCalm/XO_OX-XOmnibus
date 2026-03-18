@@ -28,6 +28,16 @@ PRESET_DIR = REPO_ROOT / "Presets"
 
 DIMS = ["brightness", "warmth", "movement", "density", "space", "aggression"]
 
+# All 34 registered engines in XOmnibus
+ALL_ENGINES = [
+    "OddfeliX", "OddOscar", "XOverdub", "XOdyssey", "XOblong", "XObese",
+    "XOnset", "XOverworld", "XOpal", "XOrbital", "XOrganon", "XOuroboros",
+    "XObsidian", "XOverbite", "XOrigami", "XOracle", "XObscura", "XOceanic",
+    "XOcelot", "XOptic", "XOblique", "XOsprey", "XOsteria", "XOwlfish",
+    "XOhm", "XOrphica", "XObbligato", "XOttoni", "XOle", "XOverlap",
+    "XOutwit", "XOmbre", "XOrca", "XOctopus",
+]
+
 HIGH_THRESHOLD = 0.7   # dimension max must reach this to be "covered" at high end
 LOW_THRESHOLD  = 0.3   # dimension min must reach this (or lower) to be "covered" at low end
 
@@ -220,6 +230,31 @@ def print_report(engine_dna_map, missing_dna_paths, presets, verbose=False):
         print(f"  Corner 2: Low warmth (0.05) + High complexity/density (0.90)")
         print(f"  Corner 3: High depth/space (0.95) + Low movement (0.05)")
         print(f"  Corner 4: Maximum everything (all dims 0.85+)")
+
+    # --- Fleet coverage: ensure all 34 engines have at least some DNA data ---
+    print()
+    print(sep)
+    print("FLEET DNA COVERAGE (all 34 registered engines)")
+    print(sep)
+    engines_with_data = set(engine_dna_map.keys())
+    engines_missing = [e for e in ALL_ENGINES if e not in engines_with_data]
+    engines_present = [e for e in ALL_ENGINES if e in engines_with_data]
+
+    print(f"  Engines with DNA data:  {len(engines_present)}/34")
+    print(f"  Engines missing data:   {len(engines_missing)}/34")
+    if engines_missing:
+        print(f"\n  MISSING engines (no presets with DNA found):")
+        for e in engines_missing:
+            print(f"    - {e}")
+    else:
+        print(f"\n  All 34 engines have DNA coverage.")
+
+    # Check for engines in presets that are not in the registered list
+    unknown_engines = engines_with_data - set(ALL_ENGINES)
+    if unknown_engines:
+        print(f"\n  UNKNOWN engines found in presets (not in registered list):")
+        for e in sorted(unknown_engines):
+            print(f"    - {e}")
 
     return worst_3, engine_coverages
 
