@@ -98,6 +98,8 @@ namespace GalleryColors {
         // Standalone adapters (Phase 4)
         if (id == "XOverlap")  return juce::Colour(0xFF00FFB4); // Bioluminescent Cyan-Green
         if (id == "XOutwit")   return juce::Colour(0xFFCC6600); // Chromatophore Amber
+        // V1 Concept Engines
+        if (id == "OpenSky")   return juce::Colour(0xFFFF8C00); // Sunburst
         return get(borderGray());
     }
 

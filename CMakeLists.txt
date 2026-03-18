@@ -160,6 +160,13 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Octopus/OctopusEngine.h
     Source/Engines/Octopus/OctopusEngine.cpp
 
+    # V1 Concept Engines — DSP build (OPENSKY first)
+    Source/Engines/OpenSky/OpenSkyEngine.h
+    Source/Engines/OpenSky/OpenSkyEngine.cpp
+
+    Source/Engines/Ostinato/OstinatoEngine.h
+    Source/Engines/Ostinato/OstinatoEngine.cpp
+
     Source/Engines/Osprey/OspreyEngine.h
     Source/Engines/Osprey/OspreyEngine.cpp
 

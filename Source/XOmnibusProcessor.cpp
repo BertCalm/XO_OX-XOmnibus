@@ -34,6 +34,8 @@
 #include "Engines/Ombre/OmbreEngine.h"
 #include "Engines/Orca/OrcaEngine.h"
 #include "Engines/Octopus/OctopusEngine.h"
+#include "Engines/OpenSky/OpenSkyEngine.h"
+#include "Engines/Ostinato/OstinatoEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -174,6 +176,16 @@ static bool registered_Octopus = xomnibus::EngineRegistry::instance().registerEn
     "Octopus", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OctopusEngine>();
     });
+// V1 Concept Engines — OPENSKY
+static bool registered_OpenSky = xomnibus::EngineRegistry::instance().registerEngine(
+    "OpenSky", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OpenSkyEngine>();
+    });
+// V1 Concept Engines — OSTINATO
+static bool registered_Ostinato = xomnibus::EngineRegistry::instance().registerEngine(
+    "Ostinato", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OstinatoEngine>();
+    });
 
 namespace xomnibus {
 
@@ -269,6 +281,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OmbreEngine::addParameters(params);
     OrcaEngine::addParameters(params);
     OctopusEngine::addParameters(params);
+    // V1 Concept Engines
+    OpenSkyEngine::addParameters(params);
 
     // Chord Machine parameters
     params.push_back(std::make_unique<juce::AudioParameterBool>(
