@@ -526,8 +526,9 @@ public:
         float effectiveArmRate  = clamp (pArmBaseRate + couplingArmRateMod + macroMove * 3.0f, 0.05f, 20.0f);
         // D006: mod wheel intensifies chromatophore skin-shift — adds up to +0.4
         // chroma depth, causing the filter topology to morph more aggressively.
+        // D006: aftertouch deepens chromatophore skin-shift (stress response).
         float effectiveChromaDepth = clamp (pChromaDepth + macroCoup * 0.4f + couplingChromaMod
-                                            + modWheelAmount_ * 0.4f, 0.0f, 1.0f);
+                                            + modWheelAmount_ * 0.4f + atPressure_ * 0.3f, 0.0f, 1.0f);
         float effectiveWTPos    = clamp (pWTPos + couplingWTPosMod + macroMove * 0.2f, 0.0f, 1.0f);
         float effectiveCutoff   = clamp (pCutoff + macroChar * 4000.0f, 20.0f, 20000.0f);
         float effectiveReso     = clamp (pReso + macroChar * 0.2f, 0.0f, 1.0f);
@@ -561,6 +562,11 @@ public:
                 reset();
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
+            // D006: aftertouch drives chromatophore intensity — pressure causes
+            // the skin to shift faster and deeper (biologically accurate: stress
+            // response). Full pressure adds +0.3 to chromatophore depth.
+            else if (msg.isChannelPressure())
+                atPressure_ = msg.getChannelPressureValue() / 127.0f;
         }
 
         // --- Update per-voice MPE expression from MPEManager ---
@@ -1481,7 +1487,8 @@ private:
     // pushing the filter topology morph harder on each note. Full wheel
     // adds up to +0.4 to effectiveChromaDepth — the octopus flares its
     // full chromatophore palette in response to the performer's expression.
-    float modWheelAmount_ = 0.0f;
+    float modWheelAmount_ = 0.0f;  // CC#1 — chromatophore depth (D006)
+    float atPressure_     = 0.0f;  // Channel aftertouch — chromatophore stress response (D006)
 
     // Coupling modulation accumulators
     float couplingWTPosMod = 0.0f;

@@ -888,14 +888,21 @@ public:
 
                     float sawOut = voice.unisonSaws[u].processSample() * sawMix;
 
-                    // Sub oscillator (only on first unison voice)
+                    // Sub oscillator (only on first unison voice) — D004: subWaveIdx dispatches
+                    // 0=Sine, 1=Triangle, 2=Square. All three shapes use the same phase source
+                    // (half-rate phase of the center saw) for phase-coherent sub tracking.
                     float subOut = 0.0f;
                     if (u == 0 && subLevel > 0.001f)
                     {
-                        // Use the center saw of the first supersaw as sub source
-                        // Re-pitch it one octave down with a simple phase accumulation
-                        // (The sub is already part of the supersaw; we just emphasize the fundamental)
-                        subOut = fastSin (voice.unisonSaws[0].saws[0].getPhase() * 0.5f * 6.28318530718f) * subLevel;
+                        const float subPhase = voice.unisonSaws[0].saws[0].getPhase() * 0.5f;
+                        switch (subWaveIdx)
+                        {
+                            default:
+                            case 0: subOut = fastSin (subPhase * 6.28318530718f); break;
+                            case 1: subOut = 4.0f * std::fabs (subPhase - 0.5f) - 1.0f; break;  // triangle
+                            case 2: subOut = (subPhase < 0.5f) ? 1.0f : -1.0f; break;            // square
+                        }
+                        subOut *= subLevel;
                     }
 
                     float voiceSample = sawOut + subOut;
