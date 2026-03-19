@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Furnace Choir",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Triple brass at maximum blaze, stacked in a burning unison.",
+  "dna": {
+    "aggression": 0.8,
+    "brightness": 0.92,
+    "density": 0.88,
+    "movement": 0.65,
+    "space": 0.07,
+    "warmth": 0.87
+  },
   "engines": [
     "Ottoni"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Triple brass at maximum blaze, stacked in a burning unison.",
-  "tags": [
-    "hot-dense",
-    "extreme",
-    "prism",
-    "brass"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Furnace Choir",
   "parameters": {
     "Ottoni": {
-      "otto_toddlerLevel": 0.9,
-      "otto_toddlerPressure": 0.92,
-      "otto_toddlerInst": 2.0,
-      "otto_tweenLevel": 0.88,
-      "otto_tweenPressure": 0.89,
-      "otto_tweenInst": 1.0,
+      "otto_crowdDensity": 0.9,
+      "otto_grownupInst": 3.0,
       "otto_grownupLevel": 0.85,
       "otto_grownupPressure": 0.91,
-      "otto_grownupInst": 3.0,
-      "otto_crowdDensity": 0.9
+      "otto_toddlerInst": 2.0,
+      "otto_toddlerLevel": 0.9,
+      "otto_toddlerPressure": 0.92,
+      "otto_tweenInst": 1.0,
+      "otto_tweenLevel": 0.88,
+      "otto_tweenPressure": 0.89
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.92,
-    "warmth": 0.87,
-    "movement": 0.65,
-    "density": 0.88,
-    "space": 0.07,
-    "aggression": 0.8
-  }
+  "tags": [
+    "hot-dense",
+    "extreme",
+    "prism",
+    "brass"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

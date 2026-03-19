@@ -1,0 +1,76 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.5,
+        "source": "OddOscar",
+        "target": "OddfeliX",
+        "type": "AmpToFilter"
+      },
+      {
+        "amount": 0.25,
+        "source": "OddfeliX",
+        "target": "OddOscar",
+        "type": "AmpToFilter"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "OddOscar morphs dramatically — 0.9 morph, full axolotl transformation. OddfeliX sits low and filtered, a dark companion whose amp opens Oscar's filter as they swell. The younger sibling dominates, the elder colors the space.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.4,
+    "density": 0.55,
+    "movement": 0.6,
+    "space": 0.6,
+    "warmth": 0.8
+  },
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "OddPair Oscar Leads",
+  "parameters": {
+    "OddOscar": {
+      "morph_envAttack": 0.03,
+      "morph_envDecay": 0.3,
+      "morph_envRelease": 0.7,
+      "morph_envSustain": 0.65,
+      "morph_filterCutoff": 1800,
+      "morph_filterRes": 0.4,
+      "morph_morph": 0.9
+    },
+    "OddfeliX": {
+      "snap_envAttack": 0.05,
+      "snap_envDecay": 0.35,
+      "snap_envRelease": 0.9,
+      "snap_envSustain": 0.7,
+      "snap_filterCutoff": 600,
+      "snap_filterRes": 0.3,
+      "snap_lfo1Depth": 0.2,
+      "snap_lfo1Rate": 0.12,
+      "snap_oscWave": 0.2
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "family",
+    "oddfelix",
+    "oddoscar",
+    "morph",
+    "dramatic",
+    "warm",
+    "coupling"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

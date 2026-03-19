@@ -1,14 +1,88 @@
 {
-  "schema_version": 1,
-  "name": "Tape Tentacle",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.8,
+        "source": "Octopus",
+        "target": "Overdub",
+        "type": "RHYTHMIC_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "An arm wraps itself around a tape loop and slowly squeezes the wow into the flutter — deliberate distortion.",
+  "dna": {
+    "aggression": 0.527,
+    "brightness": 0.595,
+    "density": 0.663,
+    "movement": 0.756,
+    "space": 0.676,
+    "warmth": 0.55
+  },
   "engines": [
     "Octopus",
     "Overdub"
   ],
-  "author": "XO_OX Deep Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "An arm wraps itself around a tape loop and slowly squeezes the wow into the flutter — deliberate distortion.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Tape Tentacle",
+  "parameters": {
+    "Octopus": {
+      "octo_ampAttack": 0.0197,
+      "octo_ampDecay": 0.522,
+      "octo_ampRelease": 1.075,
+      "octo_ampSustain": 0.61,
+      "octo_armBaseRate": 0.611,
+      "octo_armCount": 6.0,
+      "octo_armDepth": 0.748,
+      "octo_armSpread": 0.704,
+      "octo_chromaDepth": 0.502,
+      "octo_chromaFreq": 2552.2,
+      "octo_chromaMorph": 0.799,
+      "octo_chromaSens": 0.757,
+      "octo_chromaSpeed": 0.464,
+      "octo_filterCutoff": 6352.0,
+      "octo_filterReso": 0.672,
+      "octo_inkDecay": 0.528,
+      "octo_inkDensity": 0.84,
+      "octo_inkMix": 0.209,
+      "octo_inkThreshold": 0.521,
+      "octo_level": 0.751,
+      "octo_lfo1Depth": 0.212,
+      "octo_lfo1Rate": 2.823,
+      "octo_lfo1Shape": 0.0,
+      "octo_lfo2Depth": 0.355,
+      "octo_lfo2Rate": 0.225,
+      "octo_lfo2Shape": 0.5,
+      "octo_modAttack": 0.0178,
+      "octo_modDecay": 0.172,
+      "octo_modRelease": 0.682,
+      "octo_modSustain": 0.575,
+      "octo_shiftDrift": 0.694,
+      "octo_shiftGlide": 0.232,
+      "octo_shiftMicro": 0.769,
+      "octo_suckerDecay": 0.175,
+      "octo_suckerFreq": 2557.8,
+      "octo_suckerMix": 0.258,
+      "octo_suckerReso": 0.756,
+      "octo_wtPosition": 0.665,
+      "octo_wtScanRate": 0.388
+    },
+    "Overdub": {
+      "dub_filterCutoff": 4872.8,
+      "dub_level": 0.685,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,79 +91,6 @@
     "alien",
     "decentralized"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "Octopus": {
-      "octo_armCount": 6.0,
-      "octo_armSpread": 0.704,
-      "octo_armBaseRate": 0.611,
-      "octo_armDepth": 0.748,
-      "octo_chromaSens": 0.757,
-      "octo_chromaSpeed": 0.464,
-      "octo_chromaMorph": 0.799,
-      "octo_chromaDepth": 0.502,
-      "octo_chromaFreq": 2552.2,
-      "octo_inkThreshold": 0.521,
-      "octo_inkDensity": 0.84,
-      "octo_inkDecay": 0.528,
-      "octo_inkMix": 0.209,
-      "octo_shiftMicro": 0.769,
-      "octo_shiftGlide": 0.232,
-      "octo_shiftDrift": 0.694,
-      "octo_suckerReso": 0.756,
-      "octo_suckerFreq": 2557.8,
-      "octo_suckerDecay": 0.175,
-      "octo_suckerMix": 0.258,
-      "octo_wtPosition": 0.665,
-      "octo_wtScanRate": 0.388,
-      "octo_filterCutoff": 6352.0,
-      "octo_filterReso": 0.672,
-      "octo_level": 0.751,
-      "octo_ampAttack": 0.0197,
-      "octo_ampDecay": 0.522,
-      "octo_ampSustain": 0.61,
-      "octo_ampRelease": 1.075,
-      "octo_modAttack": 0.0178,
-      "octo_modDecay": 0.172,
-      "octo_modSustain": 0.575,
-      "octo_modRelease": 0.682,
-      "octo_lfo1Rate": 2.823,
-      "octo_lfo1Depth": 0.212,
-      "octo_lfo1Shape": 0.0,
-      "octo_lfo2Rate": 0.225,
-      "octo_lfo2Depth": 0.355,
-      "octo_lfo2Shape": 0.5
-    },
-    "Overdub": {
-      "dub_level": 0.685,
-      "dub_filterCutoff": 4872.8
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "RHYTHMIC_SYNC",
-        "source": "Octopus",
-        "target": "Overdub",
-        "amount": 0.8
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.595,
-    "warmth": 0.55,
-    "movement": 0.756,
-    "density": 0.663,
-    "space": 0.676,
-    "aggression": 0.527
-  }
+  "version": "1.0.0"
 }

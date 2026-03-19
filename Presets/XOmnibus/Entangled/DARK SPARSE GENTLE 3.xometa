@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Osteria \u00d7 Orbital \u2014 Timbre Blend coupling at extreme DNA corner.",
+  "description": "Osteria × Orbital — Timbre Blend coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "osteria",
@@ -33,7 +33,10 @@
     "space": 0.578,
     "aggression": 0.08
   },
-  "parameters": {},
+  "parameters": {
+    "Osteria": {},
+    "Orbital": {}
+  },
   "coupling": {
     "pairs": [
       {

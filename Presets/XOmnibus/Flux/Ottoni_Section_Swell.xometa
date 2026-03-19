@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "A long brass swell with natural decay variation across the three voices. Each horn fades at a slightly different rate, creating an organic disbanding of the section.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.55,
+    "density": 0.6,
+    "movement": 0.4,
+    "space": 0.65,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Ottoni"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Ottoni Section Swell",
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.55,
+      "macro_coupling": 0.0,
+      "macro_movement": 0.4,
+      "macro_space": 0.65,
+      "otto_attackTime": 0.6,
+      "otto_brassA": 0.65,
+      "otto_brassB": 0.55,
+      "otto_brassC": 0.45,
+      "otto_decayVariation": 0.35,
+      "otto_filterCutoff": 0.6,
+      "otto_grow": 0.5,
+      "otto_harmonicRich": 0.5,
+      "otto_releaseTime": 3.2
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "brass",
+    "swell",
+    "orchestral",
+    "decay",
+    "natural",
+    "flux"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

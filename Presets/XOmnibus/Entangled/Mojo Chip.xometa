@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Mojo Chip",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.56,
+    "pairs": [
+      {
+        "amount": 0.56,
+        "engineA": "Obese",
+        "engineB": "Overworld",
+        "type": "LFO->Pitch"
+      }
+    ],
+    "type": "LFO->Pitch"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OBESE analog heat warms OVERWORLD chiptune. Fat pixels. [LFO->Pitch]",
+  "dna": {
+    "aggression": 0.653,
     "brightness": 0.623,
-    "warmth": 0.578,
-    "movement": 0.489,
     "density": 0.762,
+    "movement": 0.489,
     "space": 0.492,
-    "aggression": 0.653
+    "warmth": 0.578
   },
   "engines": [
-    "XObese",
-    "XOverworld"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE analog heat warms OVERWORLD chiptune. Fat pixels. [LFO->Pitch]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "obese",
-    "overworld",
-    "fat"
+    "Obese",
+    "Overworld"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.623,
-    "warmth": 0.578,
-    "movement": 0.489,
-    "density": 0.762,
-    "space": 0.492,
-    "aggression": 0.653
-  },
+  "mood": "Entangled",
+  "name": "Mojo Chip",
   "parameters": {
-    "XObese": {
+    "Obese": {
+      "fat_aggression": 0.686,
+      "fat_brightness": 0.538,
+      "fat_couplingBus": 0,
+      "fat_couplingLevel": 0.64,
       "fat_outputLevel": 0.78,
       "fat_outputPan": 0.02,
-      "fat_couplingLevel": 0.64,
-      "fat_couplingBus": 0,
-      "fat_brightness": 0.538,
-      "fat_warmth": 0.693,
-      "fat_aggression": 0.686
+      "fat_warmth": 0.693
     },
-    "XOverworld": {
+    "Overworld": {
+      "ow_aggression": 0.623,
+      "ow_brightness": 0.738,
+      "ow_couplingBus": 0,
+      "ow_couplingLevel": 0.69,
       "ow_outputLevel": 0.86,
       "ow_outputPan": -0.03,
-      "ow_couplingLevel": 0.69,
-      "ow_couplingBus": 0,
-      "ow_brightness": 0.738,
-      "ow_warmth": 0.463,
-      "ow_aggression": 0.623
+      "ow_warmth": 0.463
     }
   },
-  "coupling": {
-    "type": "LFO->Pitch",
-    "amount": 0.56,
-    "pairs": [
-      {
-        "engineA": "XObese",
-        "engineB": "XOverworld",
-        "type": "LFO->Pitch",
-        "amount": 0.56
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.653,
+    "brightness": 0.623,
+    "density": 0.762,
+    "movement": 0.489,
+    "space": 0.492,
+    "warmth": 0.578
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "overworld",
+    "fat"
+  ],
+  "version": "1.0.0"
 }

@@ -1,37 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Steady State",
-  "mood": "Foundation",
-  "engines": ["Ouroboros"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Lorenz attractor with minimal chaos and tight leash. Clean, static wavetable-like tone with complex harmonic content.",
-  "tags": ["clean", "static", "wavetable", "digital"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Lorenz attractor with minimal chaos and tight leash. Clean, static wavetable-like tone with complex harmonic content.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.6,
+    "density": 0.3,
+    "movement": 0.1,
+    "space": 0.15,
+    "warmth": 0.35
+  },
+  "engines": [
+    "Ouroboros"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Steady State",
   "parameters": {
     "Ouroboros": {
-      "ouro_topology": 0,
-      "ouro_rate": 440.0,
       "ouro_chaosIndex": 0.1,
-      "ouro_leash": 0.9,
-      "ouro_theta": 0.0,
-      "ouro_phi": 0.0,
       "ouro_damping": 0.2,
-      "ouro_injection": 0.0
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.9,
+      "ouro_phi": 0.0,
+      "ouro_rate": 440.0,
+      "ouro_theta": 0.0,
+      "ouro_topology": 0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.35,
-    "movement": 0.1,
-    "density": 0.3,
-    "space": 0.15,
-    "aggression": 0.1
-  }
+  "tags": [
+    "clean",
+    "static",
+    "wavetable",
+    "digital"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

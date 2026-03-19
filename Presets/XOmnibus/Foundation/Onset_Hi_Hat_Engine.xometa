@@ -1,13 +1,43 @@
 {
-  "schema_version": 1,
-  "name": "Onset Hi Hat Engine",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Hat patterns dialed in. The rhythmic workhorse of the kit.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.75,
+    "density": 0.65,
+    "movement": 0.7,
+    "space": 0.25,
+    "warmth": 0.35
+  },
   "engines": [
     "Onset"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Hat patterns dialed in. The rhythmic workhorse of the kit.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Onset Hi Hat Engine",
+  "parameters": {
+    "Onset": {
+      "onset_hat_decay": 0.3,
+      "onset_hat_level": 0.8,
+      "onset_hat_tone": 0.7,
+      "onset_ohat_decay": 0.6
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "work-horse",
     "utility",
@@ -17,36 +47,6 @@
     "workhorse",
     "hats"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Onset": {
-      "onset_hat_decay": 0.3,
-      "onset_hat_tone": 0.7,
-      "onset_ohat_decay": 0.6,
-      "onset_hat_level": 0.8
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.75,
-    "warmth": 0.35,
-    "movement": 0.7,
-    "density": 0.65,
-    "space": 0.25,
-    "aggression": 0.5
-  }
+  "version": "1.0.0"
 }

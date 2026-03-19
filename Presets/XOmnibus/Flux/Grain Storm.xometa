@@ -1,46 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Grain Storm",
-  "mood": "Flux",
-  "engines": ["Opal"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Maximum density noise grains with full scatter. Chaotic granular texture storm.",
-  "tags": ["storm", "chaos", "noise", "intense"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-11",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Maximum density noise grains with full scatter. Chaotic granular texture storm.",
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.6,
+    "density": 0.9,
+    "movement": 0.95,
+    "space": 0.2,
+    "warmth": 0.15
+  },
+  "engines": [
+    "Opal"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Grain Storm",
   "parameters": {
     "Opal": {
-      "opal_source": 3,
-      "opal_grainSize": 30.0,
-      "opal_density": 120.0,
-      "opal_position": 0.5,
-      "opal_posScatter": 0.8,
-      "opal_pitchScatter": 18.0,
-      "opal_panScatter": 1.0,
-      "opal_window": 3,
-      "opal_freeze": 0.0,
-      "opal_couplingLevel": 0.0,
-      "opal_pulseWidth": 0.5,
-      "opal_detuneCents": 20.0,
-      "opal_filterCutoff": 10000.0,
-      "opal_filterReso": 0.3,
-      "opal_filterMode": 1,
-      "opal_shimmer": 0.4,
-      "opal_frost": 0.3,
-      "opal_smear": 0.0,
-      "opal_reverbMix": 0.15,
       "opal_ampAttack": 0.05,
       "opal_ampDecay": 0.15,
-      "opal_ampSustain": 0.7,
       "opal_ampRelease": 0.3,
-      "opal_masterVolume": 0.65
+      "opal_ampSustain": 0.7,
+      "opal_couplingLevel": 0.0,
+      "opal_density": 120.0,
+      "opal_detuneCents": 20.0,
+      "opal_filterCutoff": 10000.0,
+      "opal_filterMode": 1,
+      "opal_filterReso": 0.3,
+      "opal_freeze": 0.0,
+      "opal_frost": 0.3,
+      "opal_grainSize": 30.0,
+      "opal_masterVolume": 0.65,
+      "opal_panScatter": 1.0,
+      "opal_pitchScatter": 18.0,
+      "opal_posScatter": 0.8,
+      "opal_position": 0.5,
+      "opal_pulseWidth": 0.5,
+      "opal_reverbMix": 0.15,
+      "opal_shimmer": 0.4,
+      "opal_smear": 0.0,
+      "opal_source": 3,
+      "opal_window": 3
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {"brightness": 0.6, "warmth": 0.15, "movement": 0.95, "density": 0.9, "space": 0.2, "aggression": 0.6}
+  "tags": [
+    "storm",
+    "chaos",
+    "noise",
+    "intense"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

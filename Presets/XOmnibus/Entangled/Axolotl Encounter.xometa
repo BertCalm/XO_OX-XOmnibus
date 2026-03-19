@@ -1,72 +1,92 @@
 {
-  "name": "Axolotl Encounter",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "OddOscar",
+        "type": "ENVELOPE_SHARING",
+        "amount": 0.833
+      }
+    ]
+  },
+  "description": "Two biome-edge species meeting in the shallows — regeneration meeting predation in a low-aggression standoff.",
   "engines": [
     "Ocelot",
     "OddOscar"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.609,
-    "MOVEMENT": 0.506,
     "COUPLING": 0.57,
+    "MOVEMENT": 0.506,
     "SPACE": 0.579
   },
-  "sonic_dna": {
-    "brightness": 0.526,
-    "warmth": 0.748,
-    "movement": 0.597,
-    "density": 0.573,
-    "space": 0.545,
-    "aggression": 0.424
-  },
+  "mood": "Entangled",
+  "name": "Axolotl Encounter",
   "parameters": {
+    "morph_ampAttack": 0.0803,
+    "morph_ampDecay": 0.492,
+    "morph_ampRelease": 0.993,
+    "morph_ampSustain": 0.62,
+    "morph_filterCutoff": 5246.6,
+    "morph_filterReso": 0.322,
+    "morph_level": 0.778,
+    "morph_lfo1Depth": 0.12,
+    "morph_lfo1Rate": 2.115,
+    "ocelot_ambushThreshold": 0.675,
+    "ocelot_ampAttack": 0.0684,
+    "ocelot_ampDecay": 0.804,
+    "ocelot_ampRelease": 0.437,
+    "ocelot_ampSustain": 0.632,
     "ocelot_biome": 0.705,
-    "ocelot_biomeShiftRate": 0.553,
     "ocelot_biomeBlend": 0.295,
+    "ocelot_biomeShiftRate": 0.553,
+    "ocelot_filterCutoff": 4038.9,
+    "ocelot_filterReso": 0.246,
+    "ocelot_level": 0.674,
+    "ocelot_lfo1Depth": 0.259,
+    "ocelot_lfo1Rate": 0.584,
+    "ocelot_lfo1Shape": 0.5,
+    "ocelot_lfo2Depth": 0.353,
+    "ocelot_lfo2Rate": 0.647,
+    "ocelot_lfo2Shape": 0.5,
+    "ocelot_modAttack": 0.0279,
+    "ocelot_modDecay": 0.108,
+    "ocelot_modRelease": 0.586,
+    "ocelot_modSustain": 0.421,
     "ocelot_rosetteDensity": 0.878,
     "ocelot_rosetteSize": 0.206,
     "ocelot_stalkDepth": 0.772,
     "ocelot_stalkRate": 0.193,
-    "ocelot_ambushThreshold": 0.675,
-    "ocelot_territorialRange": 0.823,
-    "ocelot_filterCutoff": 4038.9,
-    "ocelot_filterReso": 0.246,
-    "ocelot_level": 0.674,
-    "ocelot_ampAttack": 0.0684,
-    "ocelot_ampDecay": 0.804,
-    "ocelot_ampSustain": 0.632,
-    "ocelot_ampRelease": 0.437,
-    "ocelot_modAttack": 0.0279,
-    "ocelot_modDecay": 0.108,
-    "ocelot_modSustain": 0.421,
-    "ocelot_modRelease": 0.586,
-    "ocelot_lfo1Rate": 0.584,
-    "ocelot_lfo1Depth": 0.259,
-    "ocelot_lfo1Shape": 0.5,
-    "ocelot_lfo2Rate": 0.647,
-    "ocelot_lfo2Depth": 0.353,
-    "ocelot_lfo2Shape": 0.5,
-    "morph_filterCutoff": 5246.6,
-    "morph_filterReso": 0.322,
-    "morph_level": 0.778,
-    "morph_ampAttack": 0.0803,
-    "morph_ampDecay": 0.492,
-    "morph_ampSustain": 0.62,
-    "morph_ampRelease": 0.993,
-    "morph_lfo1Rate": 2.115,
-    "morph_lfo1Depth": 0.12
+    "ocelot_territorialRange": 0.823
   },
-  "coupling": {
-    "type": "ENVELOPE_SHARING",
-    "source": "Ocelot",
-    "target": "OddOscar",
-    "amount": 0.833
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.424,
+    "brightness": 0.526,
+    "density": 0.573,
+    "movement": 0.597,
+    "space": 0.545,
+    "warmth": 0.748
   },
   "tags": [
     "entangled",
     "coupling",
     "biome-shifting"
   ],
-  "description": "Two biome-edge species meeting in the shallows — regeneration meeting predation in a low-aggression standoff."
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

@@ -38,7 +38,9 @@
     "Oblong": {
       "bob_density": 0.7,
       "bob_groove": 0.6,
-      "bob_curiousRate": 0.55
+      "bob_curiousRate": 0.55,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Octopus": {
       "oct_armBalance": 0.5,

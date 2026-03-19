@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Onset Concrete Kick",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Pure concrete percussion. No reverb. No mercy.",
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.15,
+    "density": 1.0,
+    "movement": 0.15,
+    "space": 0.1,
+    "warmth": 0.6
+  },
   "engines": [
     "Onset"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Pure concrete percussion. No reverb. No mercy.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Onset Concrete Kick",
+  "parameters": {
+    "Onset": {
+      "onset_kick_decay": 0.35,
+      "onset_kick_punch": 0.95,
+      "onset_kick_sub": 0.85,
+      "onset_kick_tune": 0.2,
+      "onset_sub_drive": 0.7
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "kick",
     "dry",
@@ -17,37 +48,6 @@
     "foundation",
     "bass"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Onset": {
-      "onset_kick_tune": 0.2,
-      "onset_kick_decay": 0.35,
-      "onset_kick_punch": 0.95,
-      "onset_kick_sub": 0.85,
-      "onset_sub_drive": 0.7
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.15,
-    "warmth": 0.6,
-    "movement": 0.15,
-    "density": 1.0,
-    "space": 0.1,
-    "aggression": 0.7
-  }
+  "version": "1.0.0"
 }

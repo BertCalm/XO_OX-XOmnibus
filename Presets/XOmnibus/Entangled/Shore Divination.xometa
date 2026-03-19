@@ -1,19 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Shore Divination",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.819,
+        "description": "Osteria drives Oracle via RhythmToBlend",
+        "source": "Osteria",
+        "target": "Oracle",
+        "type": "RhythmToBlend"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "ORACLE's stochastic prediction at OSTERIA's cultural table — what the sea will bring tomorrow, read in the current session's harmony.",
+  "dna": {
+    "aggression": 0.311,
+    "brightness": 0.46,
+    "density": 0.72,
+    "movement": 0.526,
+    "space": 0.611,
+    "warmth": 0.694
+  },
   "engines": [
     "Osteria",
     "Oracle"
-  ],
-  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "ORACLE's stochastic prediction at OSTERIA's cultural table — what the sea will bring tomorrow, read in the current session's harmony.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "osteria",
-    "oracle"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,75 +32,64 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.46,
-    "warmth": 0.694,
-    "movement": 0.526,
-    "density": 0.72,
-    "space": 0.611,
-    "aggression": 0.311
-  },
+  "mood": "Entangled",
+  "name": "Shore Divination",
   "parameters": {
-    "Osteria": {
-      "osteria_qBassShore": 0.286,
-      "osteria_qHarmShore": 0.624,
-      "osteria_qMelShore": 0.64,
-      "osteria_qRhythmShore": 0.44,
-      "osteria_qElastic": 0.765,
-      "osteria_qStretch": 0.321,
-      "osteria_qMemory": 0.519,
-      "osteria_qSympathy": 0.363,
-      "osteria_bassLevel": 0.561,
-      "osteria_harmLevel": 0.718,
-      "osteria_melLevel": 0.532,
-      "osteria_rhythmLevel": 0.181,
-      "osteria_ensWidth": 0.61,
-      "osteria_blendMode": 0.519,
-      "osteria_tavernMix": 0.658,
-      "osteria_tavernShore": 0.243,
-      "osteria_murmur": 0.452,
-      "osteria_warmth": 0.572,
-      "osteria_oceanBleed": 0.063,
-      "osteria_patina": 0.439,
-      "osteria_porto": 0.424,
-      "osteria_smoke": 0.106,
-      "osteria_filterEnvDepth": 0.466,
-      "osteria_attack": 0.229,
-      "osteria_decay": 0.318,
-      "osteria_sustain": 0.634,
-      "osteria_release": 1.28,
-      "osteria_sessionDelay": 0.166,
-      "osteria_hall": 0.205,
-      "osteria_chorus": 0.289,
-      "osteria_tape": 0.29,
-      "osteria_macroCharacter": 0.0,
-      "osteria_macroMovement": 0.0,
-      "osteria_macroCoupling": 0.0,
-      "osteria_macroSpace": 0.0
-    },
     "Oracle": {
+      "oracle_attack": 0.162,
       "oracle_breakpoints": 0.489,
       "oracle_filterCutoff": 0.47,
       "oracle_lfoRate": 0.0,
-      "oracle_attack": 0.162,
-      "oracle_release": 1.0,
       "oracle_macroCharacter": 0.0,
-      "oracle_macroCoupling": 0.0
+      "oracle_macroCoupling": 0.0,
+      "oracle_release": 1.0
+    },
+    "Osteria": {
+      "osteria_attack": 0.229,
+      "osteria_bassLevel": 0.561,
+      "osteria_blendMode": 0.519,
+      "osteria_chorus": 0.289,
+      "osteria_decay": 0.318,
+      "osteria_ensWidth": 0.61,
+      "osteria_filterEnvDepth": 0.466,
+      "osteria_hall": 0.205,
+      "osteria_harmLevel": 0.718,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroSpace": 0.0,
+      "osteria_melLevel": 0.532,
+      "osteria_murmur": 0.452,
+      "osteria_oceanBleed": 0.063,
+      "osteria_patina": 0.439,
+      "osteria_porto": 0.424,
+      "osteria_qBassShore": 0.286,
+      "osteria_qElastic": 0.765,
+      "osteria_qHarmShore": 0.624,
+      "osteria_qMelShore": 0.64,
+      "osteria_qMemory": 0.519,
+      "osteria_qRhythmShore": 0.44,
+      "osteria_qStretch": 0.321,
+      "osteria_qSympathy": 0.363,
+      "osteria_release": 1.28,
+      "osteria_rhythmLevel": 0.181,
+      "osteria_sessionDelay": 0.166,
+      "osteria_smoke": 0.106,
+      "osteria_sustain": 0.634,
+      "osteria_tape": 0.29,
+      "osteria_tavernMix": 0.658,
+      "osteria_tavernShore": 0.243,
+      "osteria_warmth": 0.572
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "source": "Osteria",
-        "target": "Oracle",
-        "type": "RhythmToBlend",
-        "amount": 0.819,
-        "description": "Osteria drives Oracle via RhythmToBlend"
-      }
-    ]
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "oracle"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

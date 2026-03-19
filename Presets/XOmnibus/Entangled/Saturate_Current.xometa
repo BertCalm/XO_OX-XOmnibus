@@ -1,78 +1,78 @@
 {
-  "schema_version": 1,
-  "name": "Saturate Current",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.786,
+        "engineA": "Obese",
+        "engineB": "Oceanic",
+        "type": "amplitude_sidechain"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "OBESE saturation into OCEANIC thermal bloom. Warm bioluminescent density.",
+  "dna": {
+    "aggression": 0.49,
+    "brightness": 0.54,
+    "density": 0.71,
+    "movement": 0.6,
+    "space": 0.553,
+    "warmth": 0.648
+  },
   "engines": [
     "Obese",
     "Oceanic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE saturation into OCEANIC thermal bloom. Warm bioluminescent density.",
-  "tags": [
-    "obese",
-    "oceanic",
-    "coupling",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": 125,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Saturate Current",
   "parameters": {
     "Obese": {
+      "fat_analog": 0.523,
+      "fat_compress": 0.473,
+      "fat_couplingIn": 0.58,
+      "fat_couplingOut": 0.723,
+      "fat_digital": 0.135,
       "fat_macro1": 0.517,
       "fat_macro2": 0.613,
       "fat_macro3": 0.47,
       "fat_macro4": 0.501,
-      "fat_couplingOut": 0.723,
-      "fat_couplingIn": 0.58,
+      "fat_mojoCtrl": 0.447,
       "fat_outputLevel": 0.857,
       "fat_outputPan": -0.004,
-      "fat_satDrive": 0.477,
-      "fat_mojoCtrl": 0.447,
-      "fat_analog": 0.523,
-      "fat_digital": 0.135,
-      "fat_compress": 0.473
+      "fat_satDrive": 0.477
     },
     "Oceanic": {
+      "ocean_couplingIn": 0.791,
+      "ocean_couplingOut": 0.689,
       "ocean_macro1": 0.557,
       "ocean_macro2": 0.447,
       "ocean_macro3": 0.574,
       "ocean_macro4": 0.534,
-      "ocean_couplingOut": 0.689,
-      "ocean_couplingIn": 0.791,
       "ocean_outputLevel": 0.815,
       "ocean_outputPan": 0.007
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obese",
-        "engineB": "Oceanic",
-        "type": "amplitude_sidechain",
-        "amount": 0.786
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.54,
-    "warmth": 0.648,
-    "movement": 0.6,
-    "density": 0.71,
-    "space": 0.553,
-    "aggression": 0.49
-  }
+  "tags": [
+    "obese",
+    "oceanic",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 125,
+  "version": "1.0.0"
 }

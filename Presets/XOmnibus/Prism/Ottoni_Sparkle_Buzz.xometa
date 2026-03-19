@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Sparkle Buzz",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "GROW near max — the mature cousins assert their tone. Overtone series fully resolved.",
+  "dna": {
+    "aggression": 0.22,
+    "brightness": 0.83,
+    "density": 0.41,
+    "movement": 0.46,
+    "space": 0.55,
+    "warmth": 0.39
+  },
   "engines": [
     "Ottoni"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "brass",
-    "sax",
-    "prism",
-    "bright",
-    "prism"
   ],
   "macroLabels": [
     "EMBOUCHURE",
@@ -20,48 +21,47 @@
     "FOREIGN",
     "LAKE"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.83,
-    "warmth": 0.39,
-    "movement": 0.46,
-    "density": 0.41,
-    "space": 0.55,
-    "aggression": 0.22
-  },
+  "mood": "Prism",
+  "name": "Sparkle Buzz",
   "parameters": {
     "Ottoni": {
+      "otto_chorusRate": 1.0,
+      "otto_damping": 0.992,
+      "otto_delayMix": 0.265,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.112,
+      "otto_driveAmount": 0.0,
+      "otto_foreignCold": 0.0,
+      "otto_foreignDrift": 0.0,
+      "otto_foreignStretch": 0.0,
+      "otto_macroEmbouchure": 0.527,
+      "otto_macroForeign": 0.139,
+      "otto_macroGrow": 0.447,
+      "otto_macroLake": 0.224,
+      "otto_reverbSize": 0.234,
+      "otto_sympatheticAmt": 0.245,
+      "otto_teenBore": 0.498,
+      "otto_teenEmbouchure": 0.632,
+      "otto_teenInst": 7,
+      "otto_teenLevel": 0.567,
+      "otto_teenVibratoDepth": 0.445,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 3,
       "otto_toddlerLevel": 0.333,
       "otto_toddlerPressure": 0.45,
-      "otto_toddlerInst": 3,
-      "otto_tweenLevel": 0.477,
       "otto_tweenEmbouchure": 0.316,
-      "otto_tweenValve": 0.519,
       "otto_tweenInst": 3,
-      "otto_teenLevel": 0.567,
-      "otto_teenEmbouchure": 0.632,
-      "otto_teenBore": 0.498,
-      "otto_teenInst": 7,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.445,
-      "otto_damping": 0.992,
-      "otto_sympatheticAmt": 0.245,
-      "otto_driftRate": 0.112,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.0,
-      "otto_foreignDrift": 0.0,
-      "otto_foreignCold": 0.0,
-      "otto_reverbSize": 0.234,
-      "otto_chorusRate": 1.0,
-      "otto_driveAmount": 0.0,
-      "otto_delayMix": 0.265,
-      "otto_macroEmbouchure": 0.527,
-      "otto_macroGrow": 0.447,
-      "otto_macroForeign": 0.139,
-      "otto_macroLake": 0.224
+      "otto_tweenLevel": 0.477,
+      "otto_tweenValve": 0.519
     }
   },
-  "coupling": null,
-  "description": "GROW near max \u2014 the mature cousins assert their tone. Overtone series fully resolved."
+  "schema_version": 1,
+  "tags": [
+    "brass",
+    "sax",
+    "prism",
+    "bright",
+    "prism"
+  ],
+  "version": "1.0.0"
 }

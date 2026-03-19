@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Obese \u00d7 Orca \u2014 Resonance Share coupling at extreme DNA corner.",
+  "description": "Obese × Orca — Resonance Share coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "obese",
@@ -33,7 +33,10 @@
     "space": 0.94,
     "aggression": 0.116
   },
-  "parameters": {},
+  "parameters": {
+    "Obese": {},
+    "Orca": {}
+  },
   "coupling": {
     "pairs": [
       {

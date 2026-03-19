@@ -1,13 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Oblique Entry",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Steep oblique entry through the medium — maximum bend at near-horizontal angle.",
+  "dna": {
+    "aggression": 0.27,
+    "brightness": 0.67,
+    "density": 0.5,
+    "movement": 0.9,
+    "space": 0.63,
+    "warmth": 0.42
+  },
   "engines": [
     "Oblique"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Steep oblique entry through the medium — maximum bend at near-horizontal angle.",
+  "legacy": {
+    "sourceCategory": "Prism",
+    "sourceInstrument": "Oblique",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Oblique Entry",
+  "parameters": {
+    "Oblique": {
+      "oblique_ampAttack": 0.0178,
+      "oblique_ampDecay": 0.873,
+      "oblique_ampRelease": 1.732,
+      "oblique_ampSustain": 0.688,
+      "oblique_angle": 0.469,
+      "oblique_filterCutoff": 12540.0,
+      "oblique_filterReso": 0.179,
+      "oblique_harmonicDrift": 0.45,
+      "oblique_level": 0.79,
+      "oblique_lfoDepth": 0.27,
+      "oblique_lfoRate": 4.02,
+      "oblique_macroCharacter": 0.523,
+      "oblique_macroCoupling": 0.0,
+      "oblique_macroMovement": 0.9,
+      "oblique_macroSpace": 0.63,
+      "oblique_reverbMix": 0.441,
+      "oblique_stereoWidth": 0.765
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "refraction",
     "oblique",
@@ -15,49 +58,6 @@
     "steep",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": "Oblique",
-    "sourceCategory": "Prism",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oblique": {
-      "oblique_angle": 0.469,
-      "oblique_harmonicDrift": 0.45,
-      "oblique_lfoRate": 4.02,
-      "oblique_lfoDepth": 0.27,
-      "oblique_filterCutoff": 12540.0,
-      "oblique_filterReso": 0.179,
-      "oblique_reverbMix": 0.441,
-      "oblique_ampAttack": 0.0178,
-      "oblique_ampDecay": 0.873,
-      "oblique_ampSustain": 0.688,
-      "oblique_ampRelease": 1.732,
-      "oblique_stereoWidth": 0.765,
-      "oblique_level": 0.79,
-      "oblique_macroCharacter": 0.523,
-      "oblique_macroMovement": 0.9,
-      "oblique_macroCoupling": 0.0,
-      "oblique_macroSpace": 0.63
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.67,
-    "warmth": 0.42,
-    "movement": 0.9,
-    "density": 0.5,
-    "space": 0.63,
-    "aggression": 0.27
-  }
+  "version": "1.0.0"
 }

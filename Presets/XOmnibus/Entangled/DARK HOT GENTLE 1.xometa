@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oracle \u00d7 Overworld \u2014 Pitch Sync coupling at extreme DNA corner.",
+  "description": "Oracle × Overworld — Pitch Sync coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "oracle",
@@ -33,7 +33,10 @@
     "space": 0.385,
     "aggression": 0.089
   },
-  "parameters": {},
+  "parameters": {
+    "Oracle": {},
+    "Overworld": {}
+  },
   "coupling": {
     "pairs": [
       {

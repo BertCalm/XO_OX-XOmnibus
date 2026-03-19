@@ -19,7 +19,7 @@
   "engines": [
     "Overdub"
   ],
-  "description": "Melodic line through a spring reverb \u2014 notes bloom into tonal clouds.",
+  "description": "Melodic line through a spring reverb — notes bloom into tonal clouds.",
   "tags": [
     "dub",
     "spring",
@@ -55,7 +55,7 @@
       "dub_pitchEnvDepth": 0.05,
       "dub_pitchEnvDecay": 0.02,
       "dub_lfoRate": 0.25,
-      "dub_lfoDepth": 0.02,
+      "dub_lfoDepth": 0.12,
       "dub_lfoDest": 0,
       "dub_driveAmount": 1.08,
       "dub_dryLevel": 0.78,

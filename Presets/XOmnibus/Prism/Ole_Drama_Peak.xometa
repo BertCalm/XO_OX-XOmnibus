@@ -1,0 +1,57 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "DRAMA at maximum. All three cultural voices are fully engaged — this is the climax of the ceremony, the moment the crowd erupts. Play it like you mean it.",
+  "dna": {
+    "aggression": 0.75,
+    "brightness": 0.75,
+    "density": 0.8,
+    "movement": 0.7,
+    "space": 0.45,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Ole Drama Peak",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.75,
+      "macro_coupling": 0.0,
+      "macro_movement": 0.7,
+      "macro_space": 0.45,
+      "ole_attackTime": 0.02,
+      "ole_drama": 1.0,
+      "ole_filterCutoff": 0.8,
+      "ole_releaseTime": 0.6,
+      "ole_rhythmA": 0.8,
+      "ole_rhythmB": 0.7,
+      "ole_velSensitivity": 0.75,
+      "ole_voiceA": 0.85,
+      "ole_voiceB": 0.75,
+      "ole_voiceC": 0.8
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "drama",
+    "climax",
+    "afro-latin",
+    "ceremony",
+    "high-energy",
+    "prism"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

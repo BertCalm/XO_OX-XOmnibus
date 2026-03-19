@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Drive Curious",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.84,
+    "pairs": [
+      {
+        "amount": 0.84,
+        "engineA": "Obese",
+        "engineB": "Oblong",
+        "type": "Audio->Wavetable"
+      }
+    ],
+    "type": "Audio->Wavetable"
+  },
+  "couplingIntensity": "Deep",
+  "description": "OBESE warmth coats OBLONG curiosity. Fat Bob, saturated wandering. [Audio->Wavetable]",
+  "dna": {
+    "aggression": 0.643,
     "brightness": 0.592,
-    "warmth": 0.679,
-    "movement": 0.478,
     "density": 0.681,
+    "movement": 0.478,
     "space": 0.477,
-    "aggression": 0.643
+    "warmth": 0.679
   },
   "engines": [
-    "XObese",
-    "XOblong"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE warmth coats OBLONG curiosity. Fat Bob, saturated wandering. [Audio->Wavetable]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "obese",
-    "oblong",
-    "fat"
+    "Obese",
+    "Oblong"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,45 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Deep",
-  "dna": {
-    "brightness": 0.592,
-    "warmth": 0.679,
-    "movement": 0.478,
-    "density": 0.681,
-    "space": 0.477,
-    "aggression": 0.643
-  },
+  "mood": "Entangled",
+  "name": "Drive Curious",
   "parameters": {
-    "XObese": {
+    "Obese": {
+      "fat_aggression": 0.731,
+      "fat_brightness": 0.557,
+      "fat_couplingBus": 0,
+      "fat_couplingLevel": 0.7,
       "fat_outputLevel": 0.77,
       "fat_outputPan": 0.0,
-      "fat_couplingLevel": 0.7,
-      "fat_couplingBus": 0,
-      "fat_brightness": 0.557,
-      "fat_warmth": 0.672,
-      "fat_aggression": 0.731
+      "fat_warmth": 0.672
     },
-    "XOblong": {
+    "Oblong": {
+      "bob_aggression": 0.586,
+      "bob_brightness": 0.622,
+      "bob_couplingBus": 0,
+      "bob_couplingLevel": 0.74,
       "bob_outputLevel": 0.89,
       "bob_outputPan": 0.04,
-      "bob_couplingLevel": 0.74,
-      "bob_couplingBus": 0,
-      "bob_brightness": 0.622,
       "bob_warmth": 0.698,
-      "bob_aggression": 0.586
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     }
   },
-  "coupling": {
-    "type": "Audio->Wavetable",
-    "amount": 0.84,
-    "pairs": [
-      {
-        "engineA": "XObese",
-        "engineB": "XOblong",
-        "type": "Audio->Wavetable",
-        "amount": 0.84
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.643,
+    "brightness": 0.592,
+    "density": 0.681,
+    "movement": 0.478,
+    "space": 0.477,
+    "warmth": 0.679
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "oblong",
+    "fat"
+  ],
+  "version": "1.0.0"
 }

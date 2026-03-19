@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Origami Stack Layer",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Folded harmonic stack. Layerable, unobtrusive, supportive.",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.45,
+    "density": 0.8,
+    "movement": 0.4,
+    "space": 0.35,
+    "warmth": 0.65
+  },
   "engines": [
     "Origami"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Folded harmonic stack. Layerable, unobtrusive, supportive.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Origami Stack Layer",
+  "parameters": {
+    "Origami": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "stack",
     "layer",
@@ -17,31 +42,6 @@
     "foundation",
     "workhorse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Origami": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.65,
-    "movement": 0.4,
-    "density": 0.8,
-    "space": 0.35,
-    "aggression": 0.25
-  }
+  "version": "1.0.0"
 }

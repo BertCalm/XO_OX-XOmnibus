@@ -31,7 +31,10 @@
     "space": 0.5,
     "aggression": 0.2
   },
-  "parameters": {},
+  "parameters": {
+    "Ouroboros": {},
+    "Overdub": {}
+  },
   "coupling": {
     "pairs": [
       {

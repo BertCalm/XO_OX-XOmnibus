@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "KINETIC VIOLENT SPARSE VAST 5",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "movement": 0.9282,
-    "aggression": 0.9322,
-    "density": 0.0554,
-    "space": 0.9054,
-    "brightness": 0.4872,
-    "warmth": 0.4058
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "High",
+  "couplingType": "PHASE",
+  "description": "Ultra-diverse Entangled preset — kinetic violent sparse vast. Designed for PHASE coupling with XOrganon.",
   "dna": {
-    "movement": 0.9282,
     "aggression": 0.9322,
-    "density": 0.0554,
-    "space": 0.9054,
     "brightness": 0.4872,
+    "density": 0.0554,
+    "movement": 0.9282,
+    "space": 0.9054,
     "warmth": 0.4058
   },
   "engines": [
-    "XOrganon"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 kinetic violent sparse vast. Designed for PHASE coupling with XOrganon.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "phase",
-    "organon"
+    "Organon"
   ],
   "macroLabels": [
     "LAYER",
@@ -36,15 +23,28 @@
     "DRIFT",
     "OPEN"
   ],
-  "couplingType": "PHASE",
-  "couplingIntensity": "High",
+  "mood": "Flux",
+  "name": "KINETIC VIOLENT SPARSE VAST 5",
   "parameters": {
-    "XOrganon": {
-      "couplingLevel": 0.99,
-      "couplingBus": 0
+    "Organon": {
+      "couplingBus": 0,
+      "couplingLevel": 0.99
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9322,
+    "brightness": 0.4872,
+    "density": 0.0554,
+    "movement": 0.9282,
+    "space": 0.9054,
+    "warmth": 0.4058
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "phase",
+    "organon"
+  ],
+  "version": "1.0.0"
 }

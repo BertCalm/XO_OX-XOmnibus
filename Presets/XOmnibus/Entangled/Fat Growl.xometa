@@ -16,10 +16,10 @@
     "bass"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
   ],
   "couplingIntensity": "Deep",
   "tempo": null,
@@ -31,7 +31,10 @@
     "space": 0.1,
     "aggression": 0.6
   },
-  "parameters": {},
+  "parameters": {
+    "Obese": {},
+    "Overbite": {}
+  },
   "coupling": {
     "pairs": [
       {

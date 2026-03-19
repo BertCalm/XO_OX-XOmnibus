@@ -33,7 +33,9 @@
     "space": 0.82,
     "aggression": 0.28
   },
-  "parameters": {},
+  "parameters": {
+    "Oracle": {}
+  },
   "tags": [
     "flux",
     "cold-flux",
@@ -41,5 +43,5 @@
     "zero",
     "kelvin"
   ],
-  "description": "Oracle prediction engine at absolute zero \u2014 cold motion without heat."
+  "description": "Oracle prediction engine at absolute zero — cold motion without heat."
 }

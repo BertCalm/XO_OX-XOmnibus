@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Stiff Drifting",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.506,
+        "engineA": "Obscura",
+        "engineB": "Odyssey",
+        "type": "Audio->FM"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Silver plate voyage. Albumen of a long drifting journey.",
+  "dna": {
+    "aggression": 0.234,
+    "brightness": 0.438,
+    "density": 0.52,
+    "movement": 0.477,
+    "space": 0.668,
+    "warmth": 0.549
+  },
   "engines": [
     "Obscura",
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Silver plate voyage. Albumen of a long drifting journey.",
-  "tags": [
-    "obscura",
-    "odyssey",
-    "daguerreotype",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Stiff Drifting",
   "parameters": {
     "Obscura": {
-      "obscura_brightness": 0.415,
-      "obscura_warmth": 0.592,
-      "obscura_movement": 0.305,
-      "obscura_density": 0.618,
-      "obscura_space": 0.686,
       "obscura_aggression": 0.265,
-      "obscura_level": 0.832
+      "obscura_brightness": 0.415,
+      "obscura_density": 0.618,
+      "obscura_level": 0.832,
+      "obscura_movement": 0.305,
+      "obscura_space": 0.686,
+      "obscura_warmth": 0.592
     },
     "Odyssey": {
-      "drift_brightness": 0.518,
-      "drift_warmth": 0.523,
-      "drift_movement": 0.625,
-      "drift_density": 0.58,
-      "drift_space": 0.756,
       "drift_aggression": 0.288,
-      "drift_level": 0.722
+      "drift_brightness": 0.518,
+      "drift_density": 0.58,
+      "drift_level": 0.722,
+      "drift_movement": 0.625,
+      "drift_space": 0.756,
+      "drift_warmth": 0.523
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Odyssey",
-        "type": "Audio->FM",
-        "amount": 0.506
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.438,
-    "warmth": 0.549,
-    "movement": 0.477,
-    "density": 0.52,
-    "space": 0.668,
-    "aggression": 0.234
-  }
+  "tags": [
+    "obscura",
+    "odyssey",
+    "daguerreotype",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

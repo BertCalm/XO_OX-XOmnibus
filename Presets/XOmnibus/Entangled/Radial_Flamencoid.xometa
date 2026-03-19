@@ -1,78 +1,78 @@
 {
-  "schema_version": 1,
-  "name": "Radial Flamencoid",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.658,
+        "engineA": "Orbital",
+        "engineB": "Ole",
+        "type": "envelope_share"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "ORBITAL transit sparks OLELÉ drama. Flamencoid orbit, hibiscus arc.",
+  "dna": {
+    "aggression": 0.489,
+    "brightness": 0.615,
+    "density": 0.635,
+    "movement": 0.614,
+    "space": 0.58,
+    "warmth": 0.683
+  },
   "engines": [
     "Orbital",
     "Ole"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ORBITAL transit sparks OLEL\u00c9 drama. Flamencoid orbit, hibiscus arc.",
-  "tags": [
-    "orbital",
-    "ole",
-    "coupling",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
-  "tempo": 100,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Radial Flamencoid",
   "parameters": {
-    "Orbital": {
-      "orb_macro1": 0.519,
-      "orb_macro2": 0.442,
-      "orb_macro3": 0.322,
-      "orb_macro4": 0.495,
-      "orb_couplingOut": 0.791,
-      "orb_couplingIn": 0.656,
-      "orb_outputLevel": 0.912,
-      "orb_outputPan": 0.04,
-      "orb_groupEnv": 0.795,
-      "orb_phaseSpread": 0.262,
-      "orb_arcDecay": 0.734,
-      "orb_harmonicAmt": 0.33,
-      "orb_resonantPeak": 0.329
-    },
     "Ole": {
+      "ole_couplingIn": 0.606,
+      "ole_couplingOut": 0.587,
       "ole_macro1": 0.695,
       "ole_macro2": 0.524,
       "ole_macro3": 0.36,
       "ole_macro4": 0.315,
-      "ole_couplingOut": 0.587,
-      "ole_couplingIn": 0.606,
       "ole_outputLevel": 0.862,
       "ole_outputPan": 0.033
+    },
+    "Orbital": {
+      "orb_arcDecay": 0.734,
+      "orb_couplingIn": 0.656,
+      "orb_couplingOut": 0.791,
+      "orb_groupEnv": 0.795,
+      "orb_harmonicAmt": 0.33,
+      "orb_macro1": 0.519,
+      "orb_macro2": 0.442,
+      "orb_macro3": 0.322,
+      "orb_macro4": 0.495,
+      "orb_outputLevel": 0.912,
+      "orb_outputPan": 0.04,
+      "orb_phaseSpread": 0.262,
+      "orb_resonantPeak": 0.329
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Ole",
-        "type": "envelope_share",
-        "amount": 0.658
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.615,
-    "warmth": 0.683,
-    "movement": 0.614,
-    "density": 0.635,
-    "space": 0.58,
-    "aggression": 0.489
-  }
+  "tags": [
+    "orbital",
+    "ole",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 100,
+  "version": "1.0.0"
 }

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Obscura \u00d7 Osprey \u2014 Resonance Share coupling at extreme DNA corner.",
+  "description": "Obscura × Osprey — Resonance Share coupling at extreme DNA corner.",
   "tags": [
     "kinetic",
     "obscura",
@@ -33,7 +33,10 @@
     "space": 0.93,
     "aggression": 0.51
   },
-  "parameters": {},
+  "parameters": {
+    "Obscura": {},
+    "Osprey": {}
+  },
   "coupling": {
     "pairs": [
       {

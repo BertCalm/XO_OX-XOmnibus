@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Obbligato \u00d7 Odyssey \u2014 Frequency Shift coupling at extreme DNA corner.",
+  "description": "Obbligato × Odyssey — Frequency Shift coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "obbligato",
@@ -33,7 +33,10 @@
     "space": 0.915,
     "aggression": 0.411
   },
-  "parameters": {},
+  "parameters": {
+    "Obbligato": {},
+    "Odyssey": {}
+  },
   "coupling": {
     "pairs": [
       {

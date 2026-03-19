@@ -103,7 +103,8 @@
       "dub_delayTime": 0.375,
       "dub_delayMix": 0.22,
       "dub_level": 0.65,
-      "dub_voiceMode": 1
+      "dub_voiceMode": 1,
+      "dub_lfoDepth": 0.12
     }
   }
 }

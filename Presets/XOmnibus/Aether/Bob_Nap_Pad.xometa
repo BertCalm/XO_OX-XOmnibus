@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "created": "2026-03-19",
+  "name": "Nap Pad",
+  "mood": "Aether",
+  "engines": [
+    "Oblong"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "SLUMBER",
+    "FILTER DRIFT",
+    "ATTACK",
+    "TAIL"
+  ],
+  "macros": {
+    "SLUMBER": 0.5,
+    "FILTER DRIFT": 0.3,
+    "ATTACK": 0.0,
+    "TAIL": 0.65
+  },
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.88,
+    "movement": 0.12,
+    "density": 0.55,
+    "space": 0.82,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_oscA_wave": 0,
+      "bob_oscA_shape": 0.5,
+      "bob_oscA_tune": 0.0,
+      "bob_oscA_drift": 0.05,
+      "bob_oscB_wave": 1,
+      "bob_oscB_detune": 2.0,
+      "bob_oscB_blend": 0.3,
+      "bob_oscB_sync": 0,
+      "bob_oscB_fm": 0.0,
+      "bob_texMode": 1,
+      "bob_texLevel": 0.12,
+      "bob_texTone": 0.35,
+      "bob_texWidth": 0.6,
+      "bob_fltMode": 0,
+      "bob_fltCutoff": 1800.0,
+      "bob_fltReso": 0.12,
+      "bob_fltChar": 0.55,
+      "bob_fltDrive": 0.02,
+      "bob_fltEnvAmt": 0.2,
+      "bob_ampAttack": 1.5,
+      "bob_ampDecay": 3.0,
+      "bob_ampSustain": 0.55,
+      "bob_ampRelease": 3.0,
+      "bob_motAttack": 0.5,
+      "bob_motDecay": 2.0,
+      "bob_motSustain": 0.3,
+      "bob_motRelease": 2.5,
+      "bob_motDepth": 0.3,
+      "bob_lfo1Rate": 0.05,
+      "bob_lfo1Depth": 0.08,
+      "bob_lfo1Shape": 0,
+      "bob_lfo1Target": 0,
+      "bob_curMode": 4,
+      "bob_curAmount": 0.8,
+      "bob_bobMode": 0.55,
+      "bob_dustAmount": 0.06,
+      "bob_dustTone": 0.4,
+      "bob_level": 0.72,
+      "bob_voiceMode": 0,
+      "bob_glide": 0.0,
+      "bob_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "bob",
+    "nap",
+    "slow",
+    "ambient",
+    "warm",
+    "pad",
+    "surrender"
+  ],
+  "description": "BOB in full Nap mode — the play-dead collapse of the curiosity metabolism. Maximum nap amount with glacial LFO, 1.5s attack, 3s release. Oblong Sine at the core with Blanket texture underneath. The opossum gave up and now it's beautiful."
+}

@@ -1,0 +1,118 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.4,
+        "direction": "unidirectional",
+        "sourceEngine": "Osprey",
+        "sourceParam": "osprey_shore",
+        "targetEngine": "Overdub",
+        "targetParam": "dub_tapeMix",
+        "type": "AmpToFilter"
+      },
+      {
+        "amount": 0.2,
+        "direction": "unidirectional",
+        "sourceEngine": "Osprey",
+        "sourceParam": "osprey_swellPeriod",
+        "targetEngine": "Overdub",
+        "targetParam": "dub_delayFeedback",
+        "type": "LFOToPitch"
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "description": "Osprey's ShoreSystem amplitude envelope breathes directly into Overdub's tape mix, sculpting the reverb character with each tidal surge. The coastline is the dub engine — high-water moments bloom into long echo trails; retreating tides pull the signal back to dry. An oceanic dub machine.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.4,
+    "density": 0.5,
+    "movement": 0.45,
+    "space": 0.85,
+    "warmth": 0.75
+  },
+  "engines": [
+    "Osprey",
+    "Overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Shore Echo",
+  "parameters": {
+    "Osprey": {
+      "osprey_ampAttack": 0.8,
+      "osprey_ampDecay": 1.8,
+      "osprey_ampRelease": 3.2,
+      "osprey_ampSustain": 0.6,
+      "osprey_brine": 0.15,
+      "osprey_depth": 0.5,
+      "osprey_filterTilt": 0.42,
+      "osprey_foam": 0.2,
+      "osprey_fog": 0.25,
+      "osprey_harborVerb": 0.55,
+      "osprey_macroCharacter": 0.0,
+      "osprey_macroCoupling": 0.4,
+      "osprey_macroMovement": 0.0,
+      "osprey_macroSpace": 0.0,
+      "osprey_resonatorBright": 0.38,
+      "osprey_resonatorDecay": 2.4,
+      "osprey_seaState": 0.45,
+      "osprey_shore": 0.6,
+      "osprey_swellPeriod": 8.5,
+      "osprey_sympathyAmount": 0.3,
+      "osprey_windDir": 0.35
+    },
+    "Overdub": {
+      "dub_attack": 0.02,
+      "dub_decay": 0.8,
+      "dub_delayFeedback": 0.45,
+      "dub_delayMix": 0.5,
+      "dub_delayTime": 0.5,
+      "dub_delayWear": 0.35,
+      "dub_delayWow": 0.2,
+      "dub_drift": 0.06,
+      "dub_driveAmount": 1.2,
+      "dub_dryLevel": 0.7,
+      "dub_filterCutoff": 1200.0,
+      "dub_filterEnvAmt": 0.2,
+      "dub_filterReso": 0.25,
+      "dub_glide": 0.0,
+      "dub_noiseLevel": 0.05,
+      "dub_oscOctave": -1,
+      "dub_oscTune": 0.0,
+      "dub_oscWave": 1,
+      "dub_release": 1.5,
+      "dub_returnLevel": 0.65,
+      "dub_reverbDamp": 0.4,
+      "dub_reverbMix": 0.35,
+      "dub_reverbSize": 0.7,
+      "dub_sendLevel": 0.6,
+      "dub_springMix": 0.3,
+      "dub_subLevel": 0.4,
+      "dub_sustain": 0.55,
+      "dub_tapeMix": 0.4,
+      "dub_voiceMode": 1,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "osprey",
+    "overdub",
+    "shore",
+    "echo",
+    "tidal",
+    "dub"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

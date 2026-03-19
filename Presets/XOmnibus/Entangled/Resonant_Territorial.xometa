@@ -1,14 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "Resonant Territorial",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.732,
+        "engineA": "Orbital",
+        "engineB": "Ocelot",
+        "type": "harmonic_lock"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Orbital × Ocelot coupling (envelope share). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.464,
+    "brightness": 0.597,
+    "density": 0.642,
+    "movement": 0.529,
+    "space": 0.593,
+    "warmth": 0.589
+  },
   "engines": [
     "Orbital",
     "Ocelot"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Orbital \u00d7 Ocelot coupling (envelope share). Stub preset \u2014 sound-design pass pending.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Resonant Territorial",
+  "parameters": {
+    "Ocelot": {
+      "ocelot_couplingIn": 0.796,
+      "ocelot_couplingOut": 0.725,
+      "ocelot_macro1": 0.385,
+      "ocelot_macro2": 0.346,
+      "ocelot_macro3": 0.307,
+      "ocelot_macro4": 0.511
+    },
+    "Orbital": {
+      "orb_arcDecay": 0.887,
+      "orb_brightness": 0.444,
+      "orb_couplingIn": 0.604,
+      "orb_groupEnv": 0.637,
+      "orb_harmonicAmt": 0.409,
+      "orb_macro1": 0.659,
+      "orb_macro2": 0.54,
+      "orb_macro3": 0.4,
+      "orb_macro4": 0.347,
+      "orb_phaseSpread": 0.201,
+      "orb_resonantPeak": 0.259
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "orbital",
     "ocelot",
@@ -16,60 +70,6 @@
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Subtle",
   "tempo": 105,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Orbital": {
-      "orb_brightness": 0.444,
-      "orb_groupEnv": 0.637,
-      "orb_phaseSpread": 0.201,
-      "orb_arcDecay": 0.887,
-      "orb_resonantPeak": 0.259,
-      "orb_harmonicAmt": 0.409,
-      "orb_macro1": 0.659,
-      "orb_macro2": 0.54,
-      "orb_macro3": 0.4,
-      "orb_macro4": 0.347,
-      "orb_couplingIn": 0.604
-    },
-    "Ocelot": {
-      "ocelot_macro1": 0.385,
-      "ocelot_macro2": 0.346,
-      "ocelot_macro3": 0.307,
-      "ocelot_macro4": 0.511,
-      "ocelot_couplingOut": 0.725,
-      "ocelot_couplingIn": 0.796
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Ocelot",
-        "type": "harmonic_lock",
-        "amount": 0.732
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.597,
-    "warmth": 0.589,
-    "movement": 0.529,
-    "density": 0.642,
-    "space": 0.593,
-    "aggression": 0.464
-  }
+  "version": "1.0.0"
 }

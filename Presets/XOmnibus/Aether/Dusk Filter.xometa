@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Dusk Filter",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Transcendent dream pads atmosphere with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.517,
+    "density": 0.13,
+    "movement": 0.225,
+    "space": 0.488,
+    "warmth": 0.439
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Transcendent dream pads atmosphere with bob character and analog drift.",
-  "tags": [
-    "dream",
-    "formant",
-    "curious"
-  ],
+  "legacy": {
+    "sourceCategory": "Dream Pads",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Dream Pads",
-    "sourcePresetName": null
-  },
+  "mood": "Aether",
+  "name": "Dusk Filter",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 1.0,
-      "bob_oscA_drift": 0.32,
-      "bob_oscA_shape": 0.4,
-      "bob_oscB_wave": 0.0,
-      "bob_oscB_blend": 0.4,
-      "bob_oscB_detune": -9.0,
-      "bob_fltMode": 2.0,
-      "bob_fltCutoff": 1400.0,
-      "bob_fltChar": 0.65,
-      "bob_curMode": 1.0,
-      "bob_curAmount": 0.45,
       "bob_ampAttack": 1.4,
       "bob_ampDecay": 1.8,
-      "bob_ampSustain": 0.8,
       "bob_ampRelease": 4.0,
-      "bob_bobMode": 0.42
+      "bob_ampSustain": 0.8,
+      "bob_bobMode": 0.42,
+      "bob_curAmount": 0.45,
+      "bob_curMode": 1.0,
+      "bob_fltChar": 0.65,
+      "bob_fltCutoff": 1400.0,
+      "bob_fltMode": 2.0,
+      "bob_oscA_drift": 0.32,
+      "bob_oscA_shape": 0.4,
+      "bob_oscA_wave": 1.0,
+      "bob_oscB_blend": 0.4,
+      "bob_oscB_detune": -9.0,
+      "bob_oscB_wave": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.517,
-    "warmth": 0.439,
-    "movement": 0.225,
-    "density": 0.13,
-    "space": 0.488,
-    "aggression": 0.0
-  }
+  "tags": [
+    "dream",
+    "formant",
+    "curious"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

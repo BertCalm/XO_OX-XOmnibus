@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Origami Fold Pad",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Crisp folded pad. Adaptable to any mix geometry.",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.55,
+    "density": 0.7,
+    "movement": 0.5,
+    "space": 0.4,
+    "warmth": 0.6
+  },
   "engines": [
     "Origami"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Crisp folded pad. Adaptable to any mix geometry.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Origami Fold Pad",
+  "parameters": {
+    "Origami": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "fold",
     "pad",
@@ -17,31 +42,6 @@
     "foundation",
     "workhorse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Origami": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.6,
-    "movement": 0.5,
-    "density": 0.7,
-    "space": 0.4,
-    "aggression": 0.3
-  }
+  "version": "1.0.0"
 }

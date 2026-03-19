@@ -31,7 +31,7 @@ inline const juce::StringArray validEngineNames {
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
     "XOpal", "XOpossum", "XOverbite", "XObsidian", "XOrigami",
     "XOracle", "XObscura", "XOceanic", "XOptic", "XOblique",
-    "XOverworld", "XOrca", "XOctopus",
+    "XOverworld", "XOrca", "XOctopus", "XOverlap", "XOutwit",
     "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite"
 };
 
@@ -73,6 +73,7 @@ inline juce::String resolveEngineAlias(const juce::String& name)
         // Phase 4 engine aliases
         { "XOverlap",    "Overlap"   },
         { "XOutwit",     "Outwit"    },
+        { "XOceanDeep",  "OceanDeep" },
     };
     auto it = aliases.find(name);
     return (it != aliases.end()) ? it->second : name;

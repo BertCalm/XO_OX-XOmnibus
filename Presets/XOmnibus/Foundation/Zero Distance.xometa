@@ -1,13 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Zero Distance",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Close-miked obese presence. Dry and immediate — space locked at 0.07. No reverb needed. The room is your ears.",
+  "dna": {
+    "aggression": 0.471,
+    "brightness": 0.637,
+    "density": 0.853,
+    "movement": 0.57,
+    "space": 0.066,
+    "warmth": 0.743
+  },
   "engines": [
     "Obese"
   ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "Close-miked obese presence. Dry and immediate \u2014 space locked at 0.07. No reverb needed. The room is your ears.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Zero Distance",
+  "parameters": {
+    "Obese": {
+      "fat_ampAttack": 0.0222,
+      "fat_ampDecay": 0.391,
+      "fat_ampRelease": 0.209,
+      "fat_ampSustain": 0.671,
+      "fat_crushDepth": 0,
+      "fat_detune": 10.2,
+      "fat_fltCutoff": 5296.0,
+      "fat_fltDrive": 0.383,
+      "fat_fltEnvAmt": 0.336,
+      "fat_fltKeyTrack": 0.619,
+      "fat_fltReso": 0.262,
+      "fat_glide": 0.034,
+      "fat_groupMix": 0.741,
+      "fat_level": 0.85,
+      "fat_mojo": 0.52,
+      "fat_morph": 0.336,
+      "fat_polyphony": 3,
+      "fat_satDrive": 0.188,
+      "fat_stereoWidth": 0.033,
+      "fat_subLevel": 0.697,
+      "fat_subOct": -1,
+      "fat_voiceMode": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "foundation",
     "intimate",
@@ -16,49 +59,6 @@
     "present",
     "obese"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.637,
-    "warmth": 0.743,
-    "movement": 0.57,
-    "density": 0.853,
-    "space": 0.066,
-    "aggression": 0.471
-  },
-  "parameters": {
-    "Obese": {
-      "fat_morph": 0.336,
-      "fat_mojo": 0.52,
-      "fat_subLevel": 0.697,
-      "fat_subOct": -1,
-      "fat_groupMix": 0.741,
-      "fat_detune": 10.2,
-      "fat_stereoWidth": 0.033,
-      "fat_ampAttack": 0.0222,
-      "fat_ampDecay": 0.391,
-      "fat_ampSustain": 0.671,
-      "fat_ampRelease": 0.209,
-      "fat_fltCutoff": 5296.0,
-      "fat_fltReso": 0.262,
-      "fat_fltDrive": 0.383,
-      "fat_fltKeyTrack": 0.619,
-      "fat_fltEnvAmt": 0.336,
-      "fat_satDrive": 0.188,
-      "fat_crushDepth": 0,
-      "fat_level": 0.85,
-      "fat_voiceMode": 0,
-      "fat_glide": 0.034,
-      "fat_polyphony": 3
-    }
-  },
-  "coupling": null,
-  "sequencer": null
+  "version": "1.0"
 }

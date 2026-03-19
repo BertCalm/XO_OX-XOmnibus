@@ -1,0 +1,61 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Large grains in the vocal register — 0.72 grain size — big enough that each grain contains recognizable formant shape, small enough to blur phonemes into texture. Medium posScatter means the voice is wandering through its own history without ever landing. pitchScatter 0 so every grain speaks the played note. This is the choir that forgot the words.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.45,
+    "density": 0.55,
+    "movement": 0.4,
+    "space": 0.6,
+    "warmth": 0.75
+  },
+  "engines": [
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Vocal Haze",
+  "parameters": {
+    "Opal": {
+      "opal_ampAttack": 0.55,
+      "opal_ampDecay": 0.6,
+      "opal_ampRelease": 2.8,
+      "opal_ampSustain": 0.85,
+      "opal_density": 0.5,
+      "opal_filterCutoff": 0.55,
+      "opal_filterReso": 0.12,
+      "opal_grainSize": 0.72,
+      "opal_macroCharacter": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitchScatter": 0.0,
+      "opal_posScatter": 0.38,
+      "opal_reverse": 0.0,
+      "opal_speed": 1.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "granular",
+    "vocal",
+    "texture",
+    "pad",
+    "warm",
+    "foundation",
+    "organic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

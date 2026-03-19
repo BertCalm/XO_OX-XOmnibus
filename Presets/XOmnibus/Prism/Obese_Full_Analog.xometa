@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Mojo at maximum analog. The warmest digital can become — saturated, breathing, alive. fat_morph fully analog-side, drive pushed hard, filter sitting low and thick.",
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.3,
+    "density": 0.75,
+    "movement": 0.4,
+    "space": 0.35,
+    "warmth": 0.9
+  },
+  "engines": [
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Obese Full Analog",
+  "parameters": {
+    "Obese": {
+      "fat_ampAttack": 0.008,
+      "fat_ampDecay": 0.55,
+      "fat_ampRelease": 1.2,
+      "fat_ampSustain": 0.72,
+      "fat_filterCutoff": 800,
+      "fat_filterRes": 0.35,
+      "fat_lfo1Depth": 0.18,
+      "fat_lfo1Rate": 0.6,
+      "fat_macroCharacter": 1.0,
+      "fat_macroMovement": 0.4,
+      "fat_morph": 1.0,
+      "fat_satDrive": 0.9
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obese",
+    "mojo",
+    "blessed",
+    "analog",
+    "warm",
+    "saturated"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

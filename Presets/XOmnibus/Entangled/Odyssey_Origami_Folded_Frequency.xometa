@@ -1,19 +1,29 @@
 {
-  "schema_version": 1,
-  "name": "Folded Frequency",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "source": "Odyssey",
+        "target": "Origami",
+        "type": "WAVETABLE_MORPH"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Wavetable position as a crease angle — the fold topology reshapes every harmonic at once.",
+  "dna": {
+    "aggression": 0.436,
+    "brightness": 0.698,
+    "density": 0.599,
+    "movement": 0.753,
+    "space": 0.609,
+    "warmth": 0.421
+  },
   "engines": [
     "Odyssey",
     "Origami"
-  ],
-  "author": "XO_OX Coverage Pack 2026-03-16",
-  "version": "1.0",
-  "description": "Wavetable position as a crease angle — the fold topology reshapes every harmonic at once.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "odyssey",
-    "origami"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,63 +31,53 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
+  "mood": "Entangled",
+  "name": "Folded Frequency",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 1.0,
-      "drift_oscA_pitch": 0.14,
-      "drift_oscA_level": 0.581,
-      "drift_oscB_mode": 0.75,
-      "drift_oscB_pitch": 0.405,
-      "drift_oscB_level": 0.798,
-      "drift_wtPosition": 0.684,
-      "drift_wtMorph": 0.266,
-      "drift_fmRatio": 1.5,
-      "drift_fmDepth": 0.102,
-      "drift_filterCutoff": 4670.1,
-      "drift_filterReso": 0.261,
-      "drift_filterEnvAmt": 0.439,
       "drift_ampAttack": 0.024,
       "drift_ampDecay": 0.327,
-      "drift_ampSustain": 0.631,
       "drift_ampRelease": 0.696,
+      "drift_ampSustain": 0.631,
+      "drift_chorus": 0.008,
+      "drift_filterCutoff": 4670.1,
+      "drift_filterEnvAmt": 0.439,
+      "drift_filterReso": 0.261,
+      "drift_fmDepth": 0.102,
+      "drift_fmRatio": 1.5,
+      "drift_level": 0.685,
+      "drift_lfo1Depth": 0.605,
+      "drift_lfo1Rate": 0.44,
+      "drift_lfo1Shape": 0.75,
+      "drift_lfo2Depth": 0.394,
+      "drift_lfo2Rate": 0.348,
       "drift_modAttack": 0.0358,
       "drift_modDecay": 0.42,
-      "drift_modSustain": 0.639,
       "drift_modRelease": 1.115,
-      "drift_lfo1Rate": 0.44,
-      "drift_lfo1Depth": 0.605,
-      "drift_lfo1Shape": 0.75,
-      "drift_lfo2Rate": 0.348,
-      "drift_lfo2Depth": 0.394,
-      "drift_level": 0.685,
-      "drift_chorus": 0.008,
-      "drift_reverbMix": 0.217
+      "drift_modSustain": 0.639,
+      "drift_oscA_level": 0.581,
+      "drift_oscA_mode": 1.0,
+      "drift_oscA_pitch": 0.14,
+      "drift_oscB_level": 0.798,
+      "drift_oscB_mode": 0.75,
+      "drift_oscB_pitch": 0.405,
+      "drift_reverbMix": 0.217,
+      "drift_wtMorph": 0.266,
+      "drift_wtPosition": 0.684
     },
     "Origami": {
-      "origami_level": 0.769,
-      "origami_filterCutoff": 3129.6
+      "origami_filterCutoff": 3129.6,
+      "origami_level": 0.769
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "WAVETABLE_MORPH",
-        "source": "Odyssey",
-        "target": "Origami",
-        "amount": 0.65
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.698,
-    "warmth": 0.421,
-    "movement": 0.753,
-    "density": 0.599,
-    "space": 0.609,
-    "aggression": 0.436
-  }
+  "tags": [
+    "entangled",
+    "coupling",
+    "odyssey",
+    "origami"
+  ],
+  "tempo": null,
+  "version": "1.0"
 }

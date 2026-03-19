@@ -1,0 +1,59 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Bob remembers a song \u2014 filter closed down to 200 Hz, warmth thick from the resonance, reverb nearly drowning the dry signal. Something heard through a wall in another decade. The melody is there but the words are gone.",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.2,
+    "density": 0.35,
+    "movement": 0.18,
+    "space": 0.9,
+    "warmth": 0.8
+  },
+  "engines": [
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Distant Memory",
+  "parameters": {
+    "Oblong": {
+      "bob_ampAttack": 2.5,
+      "bob_ampDecay": 1.0,
+      "bob_ampRelease": 8.0,
+      "bob_ampSustain": 0.78,
+      "bob_drive": 0.18,
+      "bob_fltCutoff": 0.12,
+      "bob_fltReso": 0.25,
+      "bob_lfo1Depth": 0.12,
+      "bob_lfo1Rate": 0.05,
+      "bob_macroCharacter": 0.0,
+      "bob_macroCoupling": 0.0,
+      "bob_macroMovement": 0.0,
+      "bob_macroSpace": 0.0,
+      "bob_oscWave": 1,
+      "bob_curAmount": 0.2
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "memory",
+    "warm",
+    "dark",
+    "reverb",
+    "distant",
+    "nostalgic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

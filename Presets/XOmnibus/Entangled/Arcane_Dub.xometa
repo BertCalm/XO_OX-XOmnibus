@@ -1,71 +1,72 @@
 {
-  "schema_version": 1,
-  "name": "Arcane Dub",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.539,
+        "engineA": "Oracle",
+        "engineB": "Overdub",
+        "type": "ENVELOPE_SHARING"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Prophecy on tape. ORACLE stochastic maqam warped through OVERDUB dub saturation.",
+  "dna": {
+    "aggression": 0.357,
+    "brightness": 0.422,
+    "density": 0.638,
+    "movement": 0.686,
+    "space": 0.744,
+    "warmth": 0.577
+  },
   "engines": [
     "Oracle",
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Prophecy on tape. ORACLE stochastic maqam warped through OVERDUB dub saturation.",
-  "tags": [
-    "oracle",
-    "overdub",
-    "prophecy",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Arcane Dub",
   "parameters": {
     "Oracle": {
-      "oracle_brightness": 0.437,
-      "oracle_warmth": 0.54,
-      "oracle_movement": 0.675,
-      "oracle_density": 0.617,
-      "oracle_space": 0.7,
       "oracle_aggression": 0.367,
-      "oracle_level": 0.773
+      "oracle_brightness": 0.437,
+      "oracle_density": 0.617,
+      "oracle_level": 0.773,
+      "oracle_movement": 0.675,
+      "oracle_space": 0.7,
+      "oracle_warmth": 0.54
     },
     "Overdub": {
-      "dub_brightness": 0.378,
-      "dub_warmth": 0.718,
-      "dub_movement": 0.568,
-      "dub_density": 0.477,
-      "dub_space": 0.679,
       "dub_aggression": 0.261,
-      "dub_level": 0.761
+      "dub_brightness": 0.378,
+      "dub_density": 0.477,
+      "dub_level": 0.761,
+      "dub_movement": 0.568,
+      "dub_space": 0.679,
+      "dub_warmth": 0.718,
+      "dub_lfoDepth": 0.12
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Overdub",
-        "type": "ENVELOPE_SHARING",
-        "amount": 0.539
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.422,
-    "warmth": 0.577,
-    "movement": 0.686,
-    "density": 0.638,
-    "space": 0.744,
-    "aggression": 0.357
-  }
+  "tags": [
+    "oracle",
+    "overdub",
+    "prophecy",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

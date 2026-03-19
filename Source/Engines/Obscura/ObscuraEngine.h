@@ -613,10 +613,8 @@ public:
         controlStepSamples = sampleRateFloat / kPhysicsControlRate;
         if (controlStepSamples < 1.0f) controlStepSamples = 1.0f;
 
-        // Normalized dt^2 for Verlet integration. Set to 1.0 because
-        // the spring constant already encodes the effective k*dt^2 product.
-        // This simplifies the Verlet update to: x_new = 2x - x_old + F.
-        normalizedDtSquared = 1.0f;
+        // NOTE: Verlet update uses dt²=1.0 directly (k already encodes k*dt² for this
+        // physics step size) so no separate normalizedDtSquared member is needed.
 
         // Parameter smoothing coefficient: 5ms time constant.
         // This prevents zipper noise when parameters change mid-block.
@@ -676,6 +674,8 @@ public:
     {
         if (numSamples <= 0) return;
 
+        juce::ScopedNoDenormals noDeNormals;
+
         //----------------------------------------------------------------------
         // ParamSnapshot: read all parameters once per block.
         // This avoids repeated atomic loads in the per-sample loop (the
@@ -689,6 +689,7 @@ public:
         const float paramExcitePosition  = loadParam (pExcitePos, 0.5f);
         const float paramExciteWidth     = loadParam (pExciteWidth, 0.3f);
         const float paramScanWidth       = loadParam (pScanWidth, 0.5f);
+        const float paramVelToFilter     = loadParam (pVelToFilter, 0.3f); // D001
         const int   paramBoundaryMode    = static_cast<int> (loadParam (pBoundary, 0.0f));
         const float paramSustainForce    = loadParam (pSustain, 0.0f);
 
@@ -896,6 +897,11 @@ public:
 
         float peakEnvelopeLevel = 0.0f;
 
+        // Clear the output buffer before accumulating samples (addSample() adds
+        // to existing content — without this we'd mix into whatever the host
+        // left in the buffer from a previous engine or previous block).
+        buffer.clear();
+
         //----------------------------------------------------------------------
         // Per-sample render loop
         //----------------------------------------------------------------------
@@ -951,10 +957,15 @@ public:
 
                 // LFO1 modulates scan width (timbral sweep)
                 // LFO2 modulates excitation position (spatial sweep along chain)
-                constexpr float kLfo1ScanWidthModDepth = 8.0f;
+                constexpr float kLfo1ScanWidthModDepth  = 8.0f;
                 constexpr float kLfo2ExcitePositionModDepth = 0.2f;
+                // D001: velocity narrows the scan window → brighter at higher velocity.
+                // Up to 10 masses of narrowing at max sensitivity + max velocity.
+                constexpr float kVelToScanWidthRange    = 10.0f;
                 float modulatedScanWidth = std::max (1.0f,
-                    smoothedScanWidth + lfo1Value * kLfo1ScanWidthModDepth);
+                    smoothedScanWidth
+                    + lfo1Value * kLfo1ScanWidthModDepth
+                    - paramVelToFilter * voice.velocity * kVelToScanWidthRange);
                 float modulatedExcitePosition = clamp (
                     paramExcitePosition + lfo2Value * kLfo2ExcitePositionModDepth,
                     0.0f, 1.0f);
@@ -1122,6 +1133,8 @@ public:
             float finalRight = mixRight * paramMasterLevel;
 
             // Write to output buffer
+            // NOTE: buffer.clear() is called once before the per-sample loop (see below).
+            // addSample() accumulates; without clear() we'd mix into stale host memory.
             if (buffer.getNumChannels() >= 2)
             {
                 buffer.addSample (0, sample, finalLeft);
@@ -1247,6 +1260,13 @@ public:
             juce::ParameterID { "obscura_scanWidth", 1 }, "Obscura Scan Width",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f));
 
+        // D001: velocity → brightness. Higher velocity narrows the scan window
+        // (fewer masses averaged) producing a brighter, sharper timbre.
+        // Range 0 = no velocity response; 1 = max brightness at ff.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "obscura_velToFilter", 1 }, "Obscura Vel > Brightness",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.3f));
+
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "obscura_boundary", 1 }, "Obscura Boundary Mode",
             juce::StringArray { "Fixed", "Free", "Periodic" }, 0));
@@ -1367,6 +1387,7 @@ public:
         pExcitePos       = apvts.getRawParameterValue ("obscura_excitePos");
         pExciteWidth     = apvts.getRawParameterValue ("obscura_exciteWidth");
         pScanWidth       = apvts.getRawParameterValue ("obscura_scanWidth");
+        pVelToFilter     = apvts.getRawParameterValue ("obscura_velToFilter");
         pBoundary        = apvts.getRawParameterValue ("obscura_boundary");
         pSustain         = apvts.getRawParameterValue ("obscura_sustain");
         pLevel           = apvts.getRawParameterValue ("obscura_level");
@@ -1747,9 +1768,13 @@ private:
         voice.noteNumber = noteNumber;
         voice.velocity = velocity;
         voice.startTime = voiceCounter++;
-        voice.currentFrequency = frequency;
+        // Poly portamento: start from the most recently played frequency when
+        // glide is set, otherwise jump immediately to target (glideCoeff = 1.0).
+        voice.currentFrequency = (lastNoteFrequency > 0.0f && glideCoefficient < 1.0f)
+                                ? lastNoteFrequency : frequency;
         voice.targetFrequency = frequency;
-        voice.glideCoefficient = 1.0f;  // no glide in poly mode
+        voice.glideCoefficient = glideCoefficient;
+        lastNoteFrequency = frequency;
         voice.scannerPhase = 0.0f;
         voice.controlPhaseAccumulator = 0.0f;
         voice.fadingOut = false;
@@ -1841,12 +1866,12 @@ private:
     float parameterSmoothingCoefficient = 0.1f;
     float voiceCrossfadeRate = 0.01f;
     float controlStepSamples = 11.025f;  // ~44100 / 4000 (audio samples per physics step)
-    float normalizedDtSquared = 1.0f;
 
     //-- Voice pool ------------------------------------------------------------
     std::array<ObscuraVoice, kMaxVoices> voices;
-    uint64_t voiceCounter = 0;     // monotonic counter for LRU voice stealing
+    uint64_t voiceCounter = 0;      // monotonic counter for LRU voice stealing
     int activeVoiceCount = 0;
+    float lastNoteFrequency = 0.0f; // glide source frequency for poly portamento
 
     //-- Smoothed control parameters -------------------------------------------
     float smoothedStiffness    = 0.5f;
@@ -1879,6 +1904,7 @@ private:
     std::atomic<float>* pExcitePos   = nullptr;
     std::atomic<float>* pExciteWidth = nullptr;
     std::atomic<float>* pScanWidth   = nullptr;
+    std::atomic<float>* pVelToFilter = nullptr;  // D001: velocity → scan brightness
     std::atomic<float>* pBoundary    = nullptr;
     std::atomic<float>* pSustain     = nullptr;
     std::atomic<float>* pLevel       = nullptr;

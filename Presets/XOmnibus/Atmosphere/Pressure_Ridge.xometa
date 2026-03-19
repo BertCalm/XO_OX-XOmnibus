@@ -1,13 +1,57 @@
 {
-  "schema_version": 1,
-  "name": "Pressure Ridge",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Whale-song pressure ridge — warmth maxed, space infinite. Aggression near zero but movement and density create a sense of immense slow force.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.15,
+    "density": 0.88,
+    "movement": 0.85,
+    "space": 0.95,
+    "warmth": 0.92
+  },
   "engines": [
     "Orca"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "Whale-song pressure ridge \u2014 warmth maxed, space infinite. Aggression near zero but movement and density create a sense of immense slow force.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Pressure Ridge",
+  "parameters": {
+    "Orca": {
+      "orca_ampAttack": 3.5,
+      "orca_ampDecay": 2.0,
+      "orca_ampRelease": 8.0,
+      "orca_ampSustain": 0.92,
+      "orca_drive": 0.05,
+      "orca_echoDelay": 0.72,
+      "orca_echoFeedback": 0.82,
+      "orca_filterCutoff": 0.22,
+      "orca_filterReso": 0.08,
+      "orca_lfoDepth": 0.65,
+      "orca_lfoRate": 0.04,
+      "orca_macroCharacter": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroMovement": 0.0,
+      "orca_macroSpace": 0.0,
+      "orca_reverbMix": 0.88
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "calm",
@@ -15,50 +59,6 @@
     "pressure",
     "vast"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Orca": {
-      "orca_filterCutoff": 0.22,
-      "orca_filterReso": 0.08,
-      "orca_drive": 0.05,
-      "orca_lfoRate": 0.04,
-      "orca_lfoDepth": 0.65,
-      "orca_echoDelay": 0.72,
-      "orca_echoFeedback": 0.82,
-      "orca_reverbMix": 0.88,
-      "orca_ampAttack": 3.5,
-      "orca_ampDecay": 2.0,
-      "orca_ampSustain": 0.92,
-      "orca_ampRelease": 8.0,
-      "orca_macroCharacter": 0.0,
-      "orca_macroMovement": 0.0,
-      "orca_macroCoupling": 0.0,
-      "orca_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.15,
-    "warmth": 0.92,
-    "movement": 0.85,
-    "density": 0.88,
-    "space": 0.95,
-    "aggression": 0.08
-  }
+  "version": "1.0.0"
 }

@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "Mineral Daguerreotype",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.597,
+        "engineA": "Obsidian",
+        "engineB": "Obscura",
+        "type": "Mod->Cutoff"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Mineral hardness and silver plate emulsion in slow mutual exposure.",
+  "dna": {
+    "aggression": 0.158,
+    "brightness": 0.687,
+    "density": 0.518,
+    "movement": 0.292,
+    "space": 0.653,
+    "warmth": 0.387
+  },
   "engines": [
     "Obsidian",
     "Obscura"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Mineral hardness and silver plate emulsion in slow mutual exposure.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Mineral Daguerreotype",
+  "parameters": {
+    "Obscura": {
+      "obscura_aggression": 0.156,
+      "obscura_brightness": 0.419,
+      "obscura_density": 0.633,
+      "obscura_level": 0.758,
+      "obscura_movement": 0.362,
+      "obscura_space": 0.577,
+      "obscura_warmth": 0.658
+    },
+    "Obsidian": {
+      "obsidian_aggression": 0.108,
+      "obsidian_brightness": 0.949,
+      "obsidian_density": 0.576,
+      "obsidian_level": 0.866,
+      "obsidian_movement": 0.306,
+      "obsidian_space": 0.581,
+      "obsidian_warmth": 0.237
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "obsidian",
     "obscura",
@@ -17,57 +68,6 @@
     "marquee",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Obsidian": {
-      "obsidian_brightness": 0.949,
-      "obsidian_warmth": 0.237,
-      "obsidian_movement": 0.306,
-      "obsidian_density": 0.576,
-      "obsidian_space": 0.581,
-      "obsidian_aggression": 0.108,
-      "obsidian_level": 0.866
-    },
-    "Obscura": {
-      "obscura_brightness": 0.419,
-      "obscura_warmth": 0.658,
-      "obscura_movement": 0.362,
-      "obscura_density": 0.633,
-      "obscura_space": 0.577,
-      "obscura_aggression": 0.156,
-      "obscura_level": 0.758
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Obscura",
-        "type": "Mod->Cutoff",
-        "amount": 0.597
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.687,
-    "warmth": 0.387,
-    "movement": 0.292,
-    "density": 0.518,
-    "space": 0.653,
-    "aggression": 0.158
-  }
+  "version": "1.0.0"
 }

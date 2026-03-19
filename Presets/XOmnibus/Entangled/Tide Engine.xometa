@@ -1,69 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Tide Engine",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Cross-modulated living energy with analog drift and reverb depth.",
+  "dna": {
+    "aggression": 0.114,
+    "brightness": 0.367,
+    "density": 0.241,
+    "movement": 0.679,
+    "space": 0.576,
+    "warmth": 0.272
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Cross-modulated living energy with analog drift and reverb depth.",
-  "tags": [
-    "moving",
-    "tidal",
-    "slow",
-    "evolving"
-  ],
+  "legacy": {
+    "sourceCategory": "Living",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Living",
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Tide Engine",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 1.0,
-      "bob_oscA_shape": 0.45,
-      "bob_oscA_drift": 0.32,
-      "bob_oscB_wave": 3.0,
-      "bob_oscB_blend": 0.55,
-      "bob_oscB_detune": 5.0,
-      "bob_fltMode": 0.0,
-      "bob_fltCutoff": 2000.0,
-      "bob_fltReso": 0.35,
-      "bob_fltEnvAmt": 0.65,
-      "bob_lfo1Rate": 0.04,
-      "bob_lfo1Depth": 0.45,
-      "bob_curMode": 1.0,
-      "bob_curAmount": 0.5,
-      "bob_motAttack": 2.5,
-      "bob_motDecay": 3.0,
-      "bob_motSustain": 0.7,
-      "bob_motRelease": 4.0,
-      "bob_motDepth": 0.8,
       "bob_ampAttack": 1.0,
       "bob_ampDecay": 2.0,
-      "bob_ampSustain": 0.88,
       "bob_ampRelease": 5.0,
-      "bob_glide": 0.2
+      "bob_ampSustain": 0.88,
+      "bob_curAmount": 0.5,
+      "bob_curMode": 1.0,
+      "bob_fltCutoff": 2000.0,
+      "bob_fltEnvAmt": 0.65,
+      "bob_fltMode": 0.0,
+      "bob_fltReso": 0.35,
+      "bob_glide": 0.2,
+      "bob_lfo1Depth": 0.45,
+      "bob_lfo1Rate": 0.04,
+      "bob_motAttack": 2.5,
+      "bob_motDecay": 3.0,
+      "bob_motDepth": 0.8,
+      "bob_motRelease": 4.0,
+      "bob_motSustain": 0.7,
+      "bob_oscA_drift": 0.32,
+      "bob_oscA_shape": 0.45,
+      "bob_oscA_wave": 1.0,
+      "bob_oscB_blend": 0.55,
+      "bob_oscB_detune": 5.0,
+      "bob_oscB_wave": 3.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.367,
-    "warmth": 0.272,
-    "movement": 0.679,
-    "density": 0.241,
-    "space": 0.576,
-    "aggression": 0.114
-  }
+  "tags": [
+    "moving",
+    "tidal",
+    "slow",
+    "evolving"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

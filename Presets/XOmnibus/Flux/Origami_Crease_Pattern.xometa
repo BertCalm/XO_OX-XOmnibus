@@ -1,0 +1,60 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "A slow LFO on the foldPoint creates a repeating rhythmic texture — the crease pattern of the finished form implied by the motion. 0.3 Hz LFO, moderate depth, enough movement to feel alive without collapsing.",
+  "dna": {
+    "aggression": 0.28,
+    "brightness": 0.58,
+    "density": 0.45,
+    "movement": 0.7,
+    "space": 0.48,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Origami"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "CREASE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Crease Pattern",
+  "parameters": {
+    "Origami": {
+      "origami_ampAttack": 0.08,
+      "origami_ampDecay": 0.4,
+      "origami_ampRelease": 1.5,
+      "origami_ampSustain": 0.78,
+      "origami_creaseDepth": 0.55,
+      "origami_filterCutoff": 0.52,
+      "origami_filterReso": 0.28,
+      "origami_foldAmt": 0.72,
+      "origami_foldPoint": 0.6,
+      "origami_lfoDepth": 0.65,
+      "origami_lfoRate": 0.3,
+      "origami_macroCoupling": 0.0,
+      "origami_macroCrease": 0.0,
+      "origami_macroFold": 0.0,
+      "origami_macroSpace": 0.0,
+      "origami_reverbMix": 0.45
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "flux",
+    "crease",
+    "rhythmic",
+    "texture",
+    "pattern",
+    "lfo",
+    "wavefold"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

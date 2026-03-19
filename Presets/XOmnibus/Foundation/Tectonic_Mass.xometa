@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Tectonic Mass",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Kick and sub locked in continental-plate solidarity.",
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.1,
+    "density": 1.0,
+    "movement": 0.15,
+    "space": 0.15,
+    "warmth": 0.8
+  },
   "engines": [
     "Onset"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Kick and sub locked in continental-plate solidarity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Tectonic Mass",
+  "parameters": {
+    "Onset": {
+      "onset_kick_decay": 0.5,
+      "onset_kick_punch": 0.85,
+      "onset_kick_sub": 0.95,
+      "onset_kick_tune": 0.25,
+      "onset_sub_drive": 0.6
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "kick",
     "bedrock",
@@ -17,37 +48,6 @@
     "foundation",
     "bass"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Onset": {
-      "onset_kick_tune": 0.25,
-      "onset_kick_decay": 0.5,
-      "onset_kick_punch": 0.85,
-      "onset_kick_sub": 0.95,
-      "onset_sub_drive": 0.6
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.1,
-    "warmth": 0.8,
-    "movement": 0.15,
-    "density": 1.0,
-    "space": 0.15,
-    "aggression": 0.6
-  }
+  "version": "1.0.0"
 }

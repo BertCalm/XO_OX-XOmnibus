@@ -1,37 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Deterministic Ghost",
-  "mood": "Aether",
-  "engines": ["Ouroboros"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Lorenz attractor with tight leash, low chaos, and high damping. Near-static complex waveform that hovers like an ethereal presence.",
-  "tags": ["ethereal", "static", "ghost", "delicate"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Lorenz attractor with tight leash, low chaos, and high damping. Near-static complex waveform that hovers like an ethereal presence.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.35,
+    "density": 0.2,
+    "movement": 0.1,
+    "space": 0.9,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Ouroboros"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Deterministic Ghost",
   "parameters": {
     "Ouroboros": {
-      "ouro_topology": 0,
-      "ouro_rate": 340.0,
       "ouro_chaosIndex": 0.2,
-      "ouro_leash": 0.95,
-      "ouro_theta": 0.1,
-      "ouro_phi": 0.1,
       "ouro_damping": 0.7,
-      "ouro_injection": 0.0
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.95,
+      "ouro_phi": 0.1,
+      "ouro_rate": 340.0,
+      "ouro_theta": 0.1,
+      "ouro_topology": 0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.55,
-    "movement": 0.1,
-    "density": 0.2,
-    "space": 0.9,
-    "aggression": 0.0
-  }
+  "tags": [
+    "ethereal",
+    "static",
+    "ghost",
+    "delicate"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

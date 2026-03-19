@@ -1,22 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "Snap Foretold",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.79,
+    "pairs": [
+      {
+        "amount": 0.79,
+        "engineA": "Overbite",
+        "engineB": "Oracle",
+        "type": "Audio->Wavetable"
+      }
+    ],
+    "type": "Audio->Wavetable"
+  },
+  "couplingIntensity": "Deep",
+  "description": "OVERBITE gnash decodes ORACLE vision. Bass prophecy. [Audio->Wavetable]",
+  "dna": {
+    "aggression": 0.505,
     "brightness": 0.475,
-    "warmth": 0.483,
-    "movement": 0.521,
     "density": 0.695,
+    "movement": 0.521,
     "space": 0.627,
-    "aggression": 0.505
+    "warmth": 0.483
   },
   "engines": [
-    "XOverbite",
-    "XOracle"
+    "Overbite",
+    "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE gnash decodes ORACLE vision. Bass prophecy. [Audio->Wavetable]",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Snap Foretold",
+  "parameters": {
+    "Oracle": {
+      "orc_aggression": 0.42,
+      "orc_brightness": 0.521,
+      "orc_couplingBus": 0,
+      "orc_couplingLevel": 0.76,
+      "orc_outputLevel": 0.77,
+      "orc_outputPan": -0.0,
+      "orc_warmth": 0.464
+    },
+    "Overbite": {
+      "poss_aggression": 0.592,
+      "poss_brightness": 0.429,
+      "poss_couplingBus": 0,
+      "poss_couplingLevel": 0.68,
+      "poss_outputLevel": 0.8,
+      "poss_outputPan": -0.04,
+      "poss_warmth": 0.556
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.505,
+    "brightness": 0.475,
+    "density": 0.695,
+    "movement": 0.521,
+    "space": 0.627,
+    "warmth": 0.483
+  },
   "tags": [
     "coupling",
     "entangled",
@@ -24,51 +70,5 @@
     "oracle",
     "bite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
-  "dna": {
-    "brightness": 0.475,
-    "warmth": 0.483,
-    "movement": 0.521,
-    "density": 0.695,
-    "space": 0.627,
-    "aggression": 0.505
-  },
-  "parameters": {
-    "XOverbite": {
-      "poss_outputLevel": 0.8,
-      "poss_outputPan": -0.04,
-      "poss_couplingLevel": 0.68,
-      "poss_couplingBus": 0,
-      "poss_brightness": 0.429,
-      "poss_warmth": 0.556,
-      "poss_aggression": 0.592
-    },
-    "XOracle": {
-      "orc_outputLevel": 0.77,
-      "orc_outputPan": -0.0,
-      "orc_couplingLevel": 0.76,
-      "orc_couplingBus": 0,
-      "orc_brightness": 0.521,
-      "orc_warmth": 0.464,
-      "orc_aggression": 0.42
-    }
-  },
-  "coupling": {
-    "type": "Audio->Wavetable",
-    "amount": 0.79,
-    "pairs": [
-      {
-        "engineA": "XOverbite",
-        "engineB": "XOracle",
-        "type": "Audio->Wavetable",
-        "amount": 0.79
-      }
-    ]
-  }
+  "version": "1.0.0"
 }

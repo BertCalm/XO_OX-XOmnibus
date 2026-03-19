@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Velocity reveals a harmonic cascade — soft touches yield a single harp tone, hard strikes unleash the full siphonophore colony. orph_pluckBrightness scales dramatically with incoming velocity.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.8,
+    "density": 0.55,
+    "movement": 0.6,
+    "space": 0.65,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Orphica Velocity Cascade",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.8,
+      "macro_coupling": 0.0,
+      "macro_movement": 0.6,
+      "macro_space": 0.65,
+      "orph_attackTime": 0.01,
+      "orph_colonyDepth": 0.55,
+      "orph_grainDensity": 0.4,
+      "orph_harmonicSpread": 0.7,
+      "orph_pluckBrightness": 0.8,
+      "orph_releaseTime": 1.2,
+      "orph_resonance": 0.65,
+      "orph_velocitySensitivity": 0.95
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "velocity-sensitive",
+    "harp",
+    "harmonic",
+    "expressive",
+    "cascade"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -1,13 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Morphing Clouds",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Floating pads texture with voyager drift.",
+  "dna": {
+    "aggression": 0.083,
+    "brightness": 0.367,
+    "density": 0.317,
+    "movement": 0.12,
+    "space": 0.341,
+    "warmth": 0.204
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Floating pads texture with voyager drift.",
+  "legacy": {
+    "sourceCategory": "Pads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Morphing Clouds",
+  "parameters": {
+    "Odyssey": {
+      "drift_attack": 500.0,
+      "drift_driftDepth": 0.25,
+      "drift_filterCutoff": 2000.0,
+      "drift_filterReso": 0.2,
+      "drift_formantMorph": 0.2,
+      "drift_level": -4.0,
+      "drift_lfoDepth": 0.6,
+      "drift_lfoRate": 0.1,
+      "drift_oscA_level": 0.6,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscB_detune": 0.4,
+      "drift_oscB_level": 0.5,
+      "drift_oscB_mode": 2.0,
+      "drift_release": 2500.0,
+      "drift_sustain": 0.6
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "drifty",
     "spacious",
@@ -15,48 +57,6 @@
     "formant",
     "slow-attack"
   ],
-  "macroLabels": [
-    "JOURNEY",
-    "BREATHE",
-    "BLOOM",
-    "FRACTURE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Pads",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 0.0,
-      "drift_oscA_level": 0.6,
-      "drift_oscB_mode": 2.0,
-      "drift_oscB_level": 0.5,
-      "drift_oscB_detune": 0.4,
-      "drift_filterCutoff": 2000.0,
-      "drift_filterReso": 0.2,
-      "drift_formantMorph": 0.2,
-      "drift_lfoRate": 0.1,
-      "drift_lfoDepth": 0.6,
-      "drift_attack": 500.0,
-      "drift_sustain": 0.6,
-      "drift_release": 2500.0,
-      "drift_driftDepth": 0.25,
-      "drift_level": -4.0
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.367,
-    "warmth": 0.204,
-    "movement": 0.12,
-    "density": 0.317,
-    "space": 0.341,
-    "aggression": 0.083
-  }
+  "version": "1.0.0"
 }

@@ -33,7 +33,9 @@
     "space": 0.62,
     "aggression": 0.38
   },
-  "parameters": {},
+  "parameters": {
+    "Obsidian": {}
+  },
   "tags": [
     "flux",
     "cold-flux",
@@ -41,5 +43,5 @@
     "permafrost",
     "shift"
   ],
-  "description": "Obsidian permafrost beginning to shift \u2014 cold slow movement under pressure."
+  "description": "Obsidian permafrost beginning to shift — cold slow movement under pressure."
 }

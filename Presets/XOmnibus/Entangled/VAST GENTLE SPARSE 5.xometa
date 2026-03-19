@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Osteria \u00d7 Osprey \u2014 Envelope Link coupling at extreme DNA corner.",
+  "description": "Osteria × Osprey — Envelope Link coupling at extreme DNA corner.",
   "tags": [
     "vast",
     "osteria",
@@ -33,7 +33,10 @@
     "space": 0.945,
     "aggression": 0.045
   },
-  "parameters": {},
+  "parameters": {
+    "Osteria": {},
+    "Osprey": {}
+  },
   "coupling": {
     "pairs": [
       {

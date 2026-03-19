@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD SPARSE VAST 5",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.0904,
-    "warmth": 0.0742,
-    "density": 0.0931,
-    "space": 0.9383,
-    "aggression": 0.5292,
-    "movement": 0.4982
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Low",
+  "couplingType": "SURGE",
+  "description": "Ultra-diverse Entangled preset — dark cold sparse vast. Designed for SURGE coupling with XOblique.",
   "dna": {
-    "brightness": 0.0904,
-    "warmth": 0.0742,
-    "density": 0.0931,
-    "space": 0.9383,
     "aggression": 0.5292,
-    "movement": 0.4982
+    "brightness": 0.0904,
+    "density": 0.0931,
+    "movement": 0.4982,
+    "space": 0.9383,
+    "warmth": 0.0742
   },
   "engines": [
-    "XOblique"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark cold sparse vast. Designed for SURGE coupling with XOblique.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "surge",
-    "oblique"
+    "Oblique"
   ],
   "macroLabels": [
     "VOID",
@@ -36,15 +23,28 @@
     "SHIMMER",
     "LAYER"
   ],
-  "couplingType": "SURGE",
-  "couplingIntensity": "Low",
+  "mood": "Foundation",
+  "name": "DARK COLD SPARSE VAST 5",
   "parameters": {
-    "XOblique": {
-      "couplingLevel": 0.846,
-      "couplingBus": 2
+    "Oblique": {
+      "couplingBus": 2,
+      "couplingLevel": 0.846
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.5292,
+    "brightness": 0.0904,
+    "density": 0.0931,
+    "movement": 0.4982,
+    "space": 0.9383,
+    "warmth": 0.0742
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "surge",
+    "oblique"
+  ],
+  "version": "1.0.0"
 }

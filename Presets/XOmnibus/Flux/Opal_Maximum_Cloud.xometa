@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Density at ceiling — 0.98. Grain size tiny at 0.04. posScatter 1.0. pitchScatter 0.6. This is the full granular fog: hundreds of simultaneous micro-grains arriving from random positions at random pitches. The played note survives as a center-of-mass tendency, a gravitational midpoint in the harmonic chaos. Filter open and resonant. This is how a synthesizer becomes weather.",
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.6,
+    "density": 0.98,
+    "movement": 0.92,
+    "space": 0.5,
+    "warmth": 0.3
+  },
+  "engines": [
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Maximum Cloud",
+  "parameters": {
+    "Opal": {
+      "opal_ampAttack": 0.15,
+      "opal_ampDecay": 0.5,
+      "opal_ampRelease": 2.0,
+      "opal_ampSustain": 0.92,
+      "opal_density": 0.98,
+      "opal_filterCutoff": 0.68,
+      "opal_filterReso": 0.32,
+      "opal_grainSize": 0.04,
+      "opal_macroCharacter": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitchScatter": 0.6,
+      "opal_posScatter": 1.0,
+      "opal_reverse": 0.0,
+      "opal_speed": 1.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "flux",
+    "granular",
+    "dense",
+    "extreme",
+    "cloud",
+    "fog",
+    "chaos",
+    "maximum",
+    "texture"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

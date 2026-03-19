@@ -1,13 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Mirage Layer",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "ERA balanced between two systems, glitch rate introduces occasional bit-corruption. Six voices \u2014 not quite enough to fill the space. Something is being concealed behind the surface.",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.58,
+    "density": 0.68,
+    "movement": 0.62,
+    "space": 0.72,
+    "warmth": 0.35
+  },
   "engines": [
     "Overworld"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "ERA balanced between two systems, glitch rate introduces occasional bit-corruption. Six voices \u2014 not quite enough to fill the space. Something is being concealed behind the surface.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Mirage Layer II",
+  "parameters": {
+    "Overworld": {
+      "ow_ampAttack": 0.8,
+      "ow_ampDecay": 1.0,
+      "ow_ampRelease": 4.0,
+      "ow_ampSustain": 0.72,
+      "ow_detune": 0.35,
+      "ow_eraBalance": 0.55,
+      "ow_filterCutoff": 0.55,
+      "ow_filterReso": 0.35,
+      "ow_glitchDepth": 0.35,
+      "ow_glitchRate": 0.18,
+      "ow_glitchType": 2,
+      "ow_macroCharacter": 0.0,
+      "ow_macroCoupling": 0.0,
+      "ow_macroMovement": 0.0,
+      "ow_macroSpace": 0.0,
+      "ow_reverbMix": 0.55,
+      "ow_spread": 0.62,
+      "ow_voiceCount": 6
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "tense",
@@ -15,52 +61,6 @@
     "mirage",
     "glitch"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Overworld": {
-      "ow_eraBalance": 0.55,
-      "ow_voiceCount": 6,
-      "ow_spread": 0.62,
-      "ow_detune": 0.35,
-      "ow_filterCutoff": 0.55,
-      "ow_filterReso": 0.35,
-      "ow_glitchRate": 0.18,
-      "ow_glitchDepth": 0.35,
-      "ow_glitchType": 2,
-      "ow_ampAttack": 0.8,
-      "ow_ampDecay": 1.0,
-      "ow_ampSustain": 0.72,
-      "ow_ampRelease": 4.0,
-      "ow_reverbMix": 0.55,
-      "ow_macroCharacter": 0.0,
-      "ow_macroMovement": 0.0,
-      "ow_macroCoupling": 0.0,
-      "ow_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.58,
-    "warmth": 0.35,
-    "movement": 0.62,
-    "density": 0.68,
-    "space": 0.72,
-    "aggression": 0.35
-  }
+  "version": "1.0.0"
 }

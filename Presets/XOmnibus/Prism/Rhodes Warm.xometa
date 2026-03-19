@@ -1,59 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Rhodes Warm",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expressive keys & bells voice with warm character.",
+  "dna": {
+    "aggression": 0.114,
+    "brightness": 0.44,
+    "density": 0.194,
+    "movement": 0.0,
+    "space": 0.207,
+    "warmth": 0.151
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expressive keys & bells voice with warm character.",
-  "tags": [
-    "keys",
-    "rhodes",
-    "warm"
-  ],
+  "legacy": {
+    "sourceCategory": "Keys & Bells",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Keys & Bells",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Rhodes Warm",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 3.0,
-      "bob_oscA_shape": 0.52,
-      "bob_oscA_drift": 0.1,
-      "bob_oscB_wave": 2.0,
-      "bob_oscB_blend": 0.48,
-      "bob_oscB_detune": 3.0,
-      "bob_fltMode": 0.0,
-      "bob_fltCutoff": 5000.0,
-      "bob_fltReso": 0.35,
-      "bob_fltEnvAmt": 0.55,
       "bob_ampAttack": 0.003,
       "bob_ampDecay": 1.2,
-      "bob_ampSustain": 0.1,
       "bob_ampRelease": 0.8,
-      "bob_bobMode": 0.12
+      "bob_ampSustain": 0.1,
+      "bob_bobMode": 0.12,
+      "bob_fltCutoff": 5000.0,
+      "bob_fltEnvAmt": 0.55,
+      "bob_fltMode": 0.0,
+      "bob_fltReso": 0.35,
+      "bob_oscA_drift": 0.1,
+      "bob_oscA_shape": 0.52,
+      "bob_oscA_wave": 3.0,
+      "bob_oscB_blend": 0.48,
+      "bob_oscB_detune": 3.0,
+      "bob_oscB_wave": 2.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.44,
-    "warmth": 0.151,
-    "movement": 0.0,
-    "density": 0.194,
-    "space": 0.207,
-    "aggression": 0.114
-  }
+  "tags": [
+    "keys",
+    "rhodes",
+    "warm"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -19,7 +19,7 @@
   "engines": [
     "Overdub"
   ],
-  "description": "Detuned oscillator choir filtered through rising envelope \u2014 vocal dub harmonics.",
+  "description": "Detuned oscillator choir filtered through rising envelope — vocal dub harmonics.",
   "tags": [
     "dub",
     "detuned",
@@ -55,7 +55,7 @@
       "dub_pitchEnvDepth": 0.03,
       "dub_pitchEnvDecay": 0.05,
       "dub_lfoRate": 0.15,
-      "dub_lfoDepth": 0.025,
+      "dub_lfoDepth": 0.12,
       "dub_lfoDest": 0,
       "dub_driveAmount": 1.1,
       "dub_dryLevel": 0.8,

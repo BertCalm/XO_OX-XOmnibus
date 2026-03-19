@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Shift Trumpet",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "The cousins' maturity rises and falls. Tween chaos edges toward teen refinement. 'Shift Trumpet' keeps nothing still.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.61,
+    "density": 0.5,
+    "movement": 0.81,
+    "space": 0.24,
+    "warmth": 0.45
+  },
   "engines": [
     "Ottoni"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "brass",
-    "sax",
-    "flux",
-    "movement",
-    "flux"
   ],
   "macroLabels": [
     "EMBOUCHURE",
@@ -20,48 +21,47 @@
     "FOREIGN",
     "LAKE"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.61,
-    "warmth": 0.45,
-    "movement": 0.81,
-    "density": 0.5,
-    "space": 0.24,
-    "aggression": 0.5
-  },
+  "mood": "Flux",
+  "name": "Shift Trumpet",
   "parameters": {
     "Ottoni": {
+      "otto_chorusRate": 1.0,
+      "otto_damping": 0.995,
+      "otto_delayMix": 0.341,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.062,
+      "otto_driveAmount": 0.117,
+      "otto_foreignCold": 0.161,
+      "otto_foreignDrift": 0.176,
+      "otto_foreignStretch": 0.421,
+      "otto_macroEmbouchure": 0.641,
+      "otto_macroForeign": 0.363,
+      "otto_macroGrow": 0.67,
+      "otto_macroLake": 0.153,
+      "otto_reverbSize": 0.252,
+      "otto_sympatheticAmt": 0.347,
+      "otto_teenBore": 0.521,
+      "otto_teenEmbouchure": 0.574,
+      "otto_teenInst": 5,
+      "otto_teenLevel": 0.483,
+      "otto_teenVibratoDepth": 0.443,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 3,
       "otto_toddlerLevel": 0.48,
       "otto_toddlerPressure": 0.28,
-      "otto_toddlerInst": 3,
-      "otto_tweenLevel": 0.316,
       "otto_tweenEmbouchure": 0.6,
-      "otto_tweenValve": 0.604,
       "otto_tweenInst": 3,
-      "otto_teenLevel": 0.483,
-      "otto_teenEmbouchure": 0.574,
-      "otto_teenBore": 0.521,
-      "otto_teenInst": 5,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.443,
-      "otto_damping": 0.995,
-      "otto_sympatheticAmt": 0.347,
-      "otto_driftRate": 0.062,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.421,
-      "otto_foreignDrift": 0.176,
-      "otto_foreignCold": 0.161,
-      "otto_reverbSize": 0.252,
-      "otto_chorusRate": 1.0,
-      "otto_driveAmount": 0.117,
-      "otto_delayMix": 0.341,
-      "otto_macroEmbouchure": 0.641,
-      "otto_macroGrow": 0.67,
-      "otto_macroForeign": 0.363,
-      "otto_macroLake": 0.153
+      "otto_tweenLevel": 0.316,
+      "otto_tweenValve": 0.604
     }
   },
-  "coupling": null,
-  "description": "The cousins' maturity rises and falls. Tween chaos edges toward teen refinement. 'Shift Trumpet' keeps nothing still."
+  "schema_version": 1,
+  "tags": [
+    "brass",
+    "sax",
+    "flux",
+    "movement",
+    "flux"
+  ],
+  "version": "1.0.0"
 }

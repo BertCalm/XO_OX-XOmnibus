@@ -33,7 +33,9 @@
     "space": 0.09,
     "aggression": 0.87
   },
-  "parameters": {},
+  "parameters": {
+    "Ouroboros": {}
+  },
   "tags": [
     "flux",
     "high-flux",
@@ -41,5 +43,5 @@
     "vortex",
     "feedback"
   ],
-  "description": "Ouroboros feedback snake consuming itself \u2014 self-modulating vortex."
+  "description": "Ouroboros feedback snake consuming itself — self-modulating vortex."
 }

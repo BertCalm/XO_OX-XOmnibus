@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Orphica \u00d7 Oblong \u2014 Filter Mod coupling at extreme DNA corner.",
+  "description": "Orphica × Oblong — Filter Mod coupling at extreme DNA corner.",
   "tags": [
     "hot",
     "orphica",
@@ -33,7 +33,10 @@
     "space": 0.415,
     "aggression": 0.91
   },
-  "parameters": {},
+  "parameters": {
+    "Orphica": {},
+    "Oblong": {}
+  },
   "coupling": {
     "pairs": [
       {

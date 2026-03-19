@@ -33,7 +33,9 @@
     "space": 0.18,
     "aggression": 0.86
   },
-  "parameters": {},
+  "parameters": {
+    "Origami": {}
+  },
   "tags": [
     "flux",
     "tension",
@@ -41,5 +43,5 @@
     "tension",
     "fold"
   ],
-  "description": "Paper creased to its limit \u2014 fold point held back from the final tear."
+  "description": "Paper creased to its limit — fold point held back from the final tear."
 }

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ohm \u00d7 Obese \u2014 Filter Mod coupling at extreme DNA corner.",
+  "description": "Ohm × Obese — Filter Mod coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "ohm",
@@ -33,7 +33,10 @@
     "space": 0.523,
     "aggression": 0.903
   },
-  "parameters": {},
+  "parameters": {
+    "Ohm": {},
+    "Obese": {}
+  },
   "coupling": {
     "pairs": [
       {

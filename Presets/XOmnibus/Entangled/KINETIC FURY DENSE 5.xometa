@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oracle \u00d7 Obese \u2014 Timbre Blend coupling at extreme DNA corner.",
+  "description": "Oracle × Obese — Timbre Blend coupling at extreme DNA corner.",
   "tags": [
     "kinetic",
     "oracle",
@@ -33,7 +33,10 @@
     "space": 0.55,
     "aggression": 0.906
   },
-  "parameters": {},
+  "parameters": {
+    "Oracle": {},
+    "Obese": {}
+  },
   "coupling": {
     "pairs": [
       {

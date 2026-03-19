@@ -33,7 +33,9 @@
     "space": 0.08,
     "aggression": 0.95
   },
-  "parameters": {},
+  "parameters": {
+    "Origami": {}
+  },
   "tags": [
     "flux",
     "maximum",
@@ -41,5 +43,5 @@
     "rage",
     "fold"
   ],
-  "description": "Fold point slammed forward \u2014 paper crane becomes shuriken."
+  "description": "Fold point slammed forward — paper crane becomes shuriken."
 }

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Orbital \u00d7 Oracle \u2014 Spatial Couple coupling at extreme DNA corner.",
+  "description": "Orbital × Oracle — Spatial Couple coupling at extreme DNA corner.",
   "tags": [
     "kinetic",
     "orbital",
@@ -33,7 +33,10 @@
     "space": 0.56,
     "aggression": 0.929
   },
-  "parameters": {},
+  "parameters": {
+    "Orbital": {},
+    "Oracle": {}
+  },
   "coupling": {
     "pairs": [
       {

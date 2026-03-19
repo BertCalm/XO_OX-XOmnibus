@@ -1,52 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Lone Predator",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Solitary apex signal. One strata, maximum brightness and violence.",
+  "dna": {
+    "aggression": 0.95,
+    "brightness": 1.0,
+    "density": 0.256,
+    "movement": 1.0,
+    "space": 0.78,
+    "warmth": 0.32
+  },
   "engines": [
     "Ocelot"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Solitary apex signal. One strata, maximum brightness and violence.",
-  "tags": [
-    "aggressive-sparse",
-    "extreme",
-    "prism",
-    "blade"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Lone Predator",
   "parameters": {
     "Ocelot": {
+      "ocelot_aggression": 0.95,
       "ocelot_biome": 0.08,
-      "ocelot_strataBalance": 0.05,
-      "ocelot_ecosystemDepth": 0.06,
       "ocelot_brightness": 0.92,
-      "ocelot_movement": 0.88,
       "ocelot_density": 0.1,
-      "ocelot_aggression": 0.95
+      "ocelot_ecosystemDepth": 0.06,
+      "ocelot_movement": 0.88,
+      "ocelot_strataBalance": 0.05
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 1.0,
-    "warmth": 0.32,
-    "movement": 1.0,
-    "density": 0.256,
-    "space": 0.78,
-    "aggression": 0.95
-  }
+  "tags": [
+    "aggressive-sparse",
+    "extreme",
+    "prism",
+    "blade"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

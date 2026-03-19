@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Basement Tape",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Evolving lo-fi atmospheres texture with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.265,
+    "brightness": 0.349,
+    "density": 0.156,
+    "movement": 0.0,
+    "space": 0.227,
+    "warmth": 0.418
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Evolving lo-fi atmospheres texture with bob character and analog drift.",
-  "tags": [
-    "lofi",
-    "tape",
-    "basement"
-  ],
+  "legacy": {
+    "sourceCategory": "Lo-Fi Atmospheres",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Lo-Fi Atmospheres",
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Basement Tape",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 1.0,
-      "bob_oscA_drift": 0.42,
-      "bob_oscA_shape": 0.3,
-      "bob_oscB_wave": 1.0,
-      "bob_oscB_blend": 0.48,
-      "bob_oscB_detune": -4.0,
-      "bob_fltMode": 0.0,
-      "bob_fltCutoff": 1600.0,
-      "bob_fltReso": 0.18,
-      "bob_dustAmount": 0.55,
-      "bob_dustTone": 0.22,
       "bob_ampAttack": 0.35,
       "bob_ampDecay": 0.9,
-      "bob_ampSustain": 0.68,
       "bob_ampRelease": 3.0,
-      "bob_bobMode": 0.32
+      "bob_ampSustain": 0.68,
+      "bob_bobMode": 0.32,
+      "bob_dustAmount": 0.55,
+      "bob_dustTone": 0.22,
+      "bob_fltCutoff": 1600.0,
+      "bob_fltMode": 0.0,
+      "bob_fltReso": 0.18,
+      "bob_oscA_drift": 0.42,
+      "bob_oscA_shape": 0.3,
+      "bob_oscA_wave": 1.0,
+      "bob_oscB_blend": 0.48,
+      "bob_oscB_detune": -4.0,
+      "bob_oscB_wave": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.349,
-    "warmth": 0.418,
-    "movement": 0.0,
-    "density": 0.156,
-    "space": 0.227,
-    "aggression": 0.265
-  }
+  "tags": [
+    "lofi",
+    "tape",
+    "basement"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

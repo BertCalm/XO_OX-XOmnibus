@@ -1,13 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Tape Hiss",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Deep",
+  "created": "2026-03-08",
+  "description": "Glitchy tape chaos character with self-oscillating delay and driven saturation.",
+  "dna": {
+    "aggression": 0.456,
+    "brightness": 0.699,
+    "density": 0.39,
+    "movement": 0.953,
+    "space": 0.585,
+    "warmth": 0.1
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Glitchy tape chaos character with self-oscillating delay and driven saturation.",
+  "legacy": {
+    "sourceCategory": "Tape Chaos",
+    "sourceInstrument": "Overdub",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Tape Hiss",
+  "parameters": {
+    "Overdub": {
+      "dub_attack": 0.2,
+      "dub_decay": 0.8,
+      "dub_delayFeedback": 0.85,
+      "dub_delayTime": 0.4,
+      "dub_delayWear": 0.8,
+      "dub_delayWow": 0.7,
+      "dub_driveAmount": 4.0,
+      "dub_filterCutoff": 2500.0,
+      "dub_filterReso": 0.3,
+      "dub_level": 0.3,
+      "dub_noiseLevel": 0.5,
+      "dub_oscWave": 0.0,
+      "dub_release": 1.5,
+      "dub_returnLevel": 0.6,
+      "dub_sendLevel": 0.7,
+      "dub_sustain": 0.3,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "self-oscillating",
     "wobbly",
@@ -16,48 +59,6 @@
     "driven",
     "sine"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Overdub",
-    "sourceCategory": "Tape Chaos",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Overdub": {
-      "dub_oscWave": 0.0,
-      "dub_noiseLevel": 0.5,
-      "dub_level": 0.3,
-      "dub_filterCutoff": 2500.0,
-      "dub_filterReso": 0.3,
-      "dub_attack": 0.2,
-      "dub_decay": 0.8,
-      "dub_sustain": 0.3,
-      "dub_release": 1.5,
-      "dub_delayTime": 0.4,
-      "dub_delayFeedback": 0.85,
-      "dub_delayWow": 0.7,
-      "dub_delayWear": 0.8,
-      "dub_driveAmount": 4.0,
-      "dub_sendLevel": 0.7,
-      "dub_returnLevel": 0.6
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.699,
-    "warmth": 0.1,
-    "movement": 0.953,
-    "density": 0.39,
-    "space": 0.585,
-    "aggression": 0.456
-  }
+  "version": "1.0.0"
 }

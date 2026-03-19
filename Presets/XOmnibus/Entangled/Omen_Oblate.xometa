@@ -1,71 +1,73 @@
 {
-  "schema_version": 1,
-  "name": "Omen Oblate",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.713,
+        "engineA": "Oracle",
+        "engineB": "Oblong",
+        "type": "AMPLITUDE_MODULATION"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Arcane character stretching. ORACLE stochastic coupled with OBLONG oblate density.",
+  "dna": {
+    "aggression": 0.401,
+    "brightness": 0.455,
+    "density": 0.665,
+    "movement": 0.6,
+    "space": 0.605,
+    "warmth": 0.583
+  },
   "engines": [
     "Oracle",
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Arcane character stretching. ORACLE stochastic coupled with OBLONG oblate density.",
-  "tags": [
-    "oracle",
-    "oblong",
-    "prophecy",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Omen Oblate",
   "parameters": {
-    "Oracle": {
-      "oracle_brightness": 0.329,
-      "oracle_warmth": 0.545,
-      "oracle_movement": 0.642,
-      "oracle_density": 0.658,
-      "oracle_space": 0.751,
-      "oracle_aggression": 0.323,
-      "oracle_level": 0.74
-    },
     "Oblong": {
-      "bob_brightness": 0.597,
-      "bob_warmth": 0.621,
-      "bob_movement": 0.543,
-      "bob_density": 0.73,
-      "bob_space": 0.468,
       "bob_aggression": 0.45,
-      "bob_level": 0.76
+      "bob_brightness": 0.597,
+      "bob_density": 0.73,
+      "bob_level": 0.76,
+      "bob_movement": 0.543,
+      "bob_space": 0.468,
+      "bob_warmth": 0.621,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Oracle": {
+      "oracle_aggression": 0.323,
+      "oracle_brightness": 0.329,
+      "oracle_density": 0.658,
+      "oracle_level": 0.74,
+      "oracle_movement": 0.642,
+      "oracle_space": 0.751,
+      "oracle_warmth": 0.545
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Oblong",
-        "type": "AMPLITUDE_MODULATION",
-        "amount": 0.713
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.455,
-    "warmth": 0.583,
-    "movement": 0.6,
-    "density": 0.665,
-    "space": 0.605,
-    "aggression": 0.401
-  }
+  "tags": [
+    "oracle",
+    "oblong",
+    "prophecy",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

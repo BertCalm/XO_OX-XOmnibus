@@ -33,7 +33,9 @@
     "space": 0.96,
     "aggression": 0.12
   },
-  "parameters": {},
+  "parameters": {
+    "Overdub": {}
+  },
   "tags": [
     "flux",
     "sparse-flux",
@@ -41,5 +43,5 @@
     "dub",
     "void"
   ],
-  "description": "Overdub tape echo in maximum space \u2014 single repeat dying across infinite room."
+  "description": "Overdub tape echo in maximum space — single repeat dying across infinite room."
 }

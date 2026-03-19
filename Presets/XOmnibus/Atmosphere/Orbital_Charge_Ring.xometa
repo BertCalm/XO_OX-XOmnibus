@@ -1,13 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Orbital Charge Ring",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Twelve oscillators at significant detune, group envelope oscillating at charged rate. Voice interference creates beating patterns. Not static anymore — the ring is energized.",
+  "dna": {
+    "aggression": 0.62,
+    "brightness": 0.72,
+    "density": 0.82,
+    "movement": 0.75,
+    "space": 0.65,
+    "warmth": 0.22
+  },
   "engines": [
     "Orbital"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "Twelve oscillators at significant detune, group envelope oscillating at charged rate. Voice interference creates beating patterns. Not static anymore \u2014 the ring is energized.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Orbital Charge Ring",
+  "parameters": {
+    "Orbital": {
+      "orb_ampAttack": 0.25,
+      "orb_ampDecay": 0.8,
+      "orb_ampRelease": 3.0,
+      "orb_ampSustain": 0.62,
+      "orb_brightness": 0.75,
+      "orb_detune": 0.52,
+      "orb_filterCutoff": 0.72,
+      "orb_filterReso": 0.52,
+      "orb_groupEnvDepth": 0.82,
+      "orb_groupEnvRate": 0.58,
+      "orb_oscCount": 12,
+      "orb_spread": 0.82
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "charged",
@@ -15,46 +55,6 @@
     "ring",
     "electric"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Orbital": {
-      "orb_brightness": 0.75,
-      "orb_groupEnvRate": 0.58,
-      "orb_groupEnvDepth": 0.82,
-      "orb_oscCount": 12,
-      "orb_spread": 0.82,
-      "orb_detune": 0.52,
-      "orb_filterCutoff": 0.72,
-      "orb_filterReso": 0.52,
-      "orb_ampAttack": 0.25,
-      "orb_ampDecay": 0.8,
-      "orb_ampSustain": 0.62,
-      "orb_ampRelease": 3.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.72,
-    "warmth": 0.22,
-    "movement": 0.75,
-    "density": 0.82,
-    "space": 0.65,
-    "aggression": 0.62
-  }
+  "version": "1.0.0"
 }

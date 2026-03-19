@@ -1,35 +1,43 @@
 {
-  "name": "Buried Light",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "dna": {
+    "aggression": 0.22,
+    "brightness": 0.22,
+    "density": 0.3,
+    "movement": 0.53,
+    "space": 0.76,
+    "warmth": 0.6
+  },
   "engines": [
     "Obese"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.4,
+    "MOVEMENT": 0.53,
+    "SPACE": 0.76
+  },
+  "mood": "Aether",
+  "name": "Buried Light",
   "parameters": {
     "Obese": {
       "macro_character": 0.6,
-      "macro_movement": 0.53,
       "macro_coupling": 0.4,
+      "macro_movement": 0.53,
       "macro_space": 0.76
     }
   },
-  "dna": {
-    "brightness": 0.22,
-    "warmth": 0.6,
-    "movement": 0.53,
-    "density": 0.3,
-    "space": 0.76,
-    "aggression": 0.22
-  },
-  "macros": {
-    "CHARACTER": 0.6,
-    "MOVEMENT": 0.53,
-    "COUPLING": 0.4,
-    "SPACE": 0.76
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "dark-aether",
     "ambient"
-  ]
+  ],
+  "version": "1.0"
 }

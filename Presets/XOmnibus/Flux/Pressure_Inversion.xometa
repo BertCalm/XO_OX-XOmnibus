@@ -1,52 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Pressure Inversion",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Chip-era sound flipping between dense and sparse at every measure.",
+  "dna": {
+    "aggression": 0.78,
+    "brightness": 0.82,
+    "density": 0.55,
+    "movement": 0.88,
+    "space": 0.45,
+    "warmth": 0.45
+  },
   "engines": [
     "Overworld"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Chip-era sound flipping between dense and sparse at every measure.",
-  "tags": [
-    "flux",
-    "extreme",
-    "chip",
-    "dynamic"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Pressure Inversion",
   "parameters": {
     "Overworld": {
+      "ow_drive": 0.82,
       "ow_era": 0.62,
       "ow_eraY": 0.72,
-      "ow_voiceMode": 1.0,
-      "ow_masterVol": 0.82,
       "ow_filterCutoff": 4500.0,
-      "ow_drive": 0.82,
-      "ow_glitchAmt": 0.88
+      "ow_glitchAmt": 0.88,
+      "ow_masterVol": 0.82,
+      "ow_voiceMode": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.82,
-    "warmth": 0.45,
-    "movement": 0.88,
-    "density": 0.55,
-    "space": 0.45,
-    "aggression": 0.78
-  }
+  "tags": [
+    "flux",
+    "extreme",
+    "chip",
+    "dynamic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

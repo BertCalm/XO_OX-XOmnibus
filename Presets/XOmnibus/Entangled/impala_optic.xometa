@@ -1,49 +1,61 @@
 {
-  "name": "Impala Optic",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Optic",
+        "type": "MODULATION_SHARE",
+        "amount": 0.858
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.88,
+    "density": 0.5,
+    "movement": 0.85,
+    "space": 0.45,
+    "warmth": 0.4
+  },
   "engines": [
     "Oblique",
     "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "COUPLING": 0.858,
+    "MOVEMENT": 0.6,
+    "SPACE": 0.525
+  },
+  "mood": "Entangled",
+  "name": "Impala Optic",
   "parameters": {
     "Oblique": {
       "macro_character": 0.838,
-      "macro_movement": 0.788,
       "macro_coupling": 0.688,
+      "macro_movement": 0.788,
       "macro_space": 0.588
     },
     "Optic": {
       "macro_character": 0.462,
-      "macro_movement": 0.412,
       "macro_coupling": 0.562,
+      "macro_movement": 0.412,
       "macro_space": 0.462
     }
   },
-  "coupling": {
-    "type": "MODULATION_SHARE",
-    "source": "OBLIQUE",
-    "target": "OPTIC",
-    "amount": 0.858
-  },
-  "dna": {
-    "brightness": 0.88,
-    "warmth": 0.4,
-    "movement": 0.85,
-    "density": 0.5,
-    "space": 0.45,
-    "aggression": 0.55
-  },
-  "macros": {
-    "CHARACTER": 0.65,
-    "MOVEMENT": 0.6,
-    "COUPLING": 0.858,
-    "SPACE": 0.525
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "tame-impala"
-  ]
+  ],
+  "version": "1.0"
 }

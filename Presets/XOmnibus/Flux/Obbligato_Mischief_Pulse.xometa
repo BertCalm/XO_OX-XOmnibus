@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Mischief Pulse",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "MISCHIEF at play — the brothers detuned just enough to cause trouble. Nobody is behaving.",
+  "dna": {
+    "aggression": 0.47,
+    "brightness": 0.4,
+    "density": 0.46,
+    "movement": 0.77,
+    "space": 0.4,
+    "warmth": 0.44
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "flux",
-    "movement",
-    "flux"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.44,
-    "movement": 0.77,
-    "density": 0.46,
-    "space": 0.4,
-    "aggression": 0.47
-  },
+  "mood": "Flux",
+  "name": "Mischief Pulse",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.639,
-      "obbl_embouchureA": 0.514,
       "obbl_airFlutterA": 0.149,
-      "obbl_instrumentA": 5,
       "obbl_bodySizeA": 0.612,
-      "obbl_breathB": 0.786,
-      "obbl_reedStiffness": 0.608,
-      "obbl_reedBite": 0.348,
-      "obbl_instrumentB": 5,
       "obbl_bodySizeB": 0.41,
-      "obbl_voiceRouting": 4,
-      "obbl_damping": 0.997,
-      "obbl_sympatheticAmt": 0.375,
-      "obbl_driftRate": 0.111,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.262,
       "obbl_bondIntensity": 0.484,
       "obbl_bondRate": 0.219,
-      "obbl_fxAChorus": 0.182,
+      "obbl_bondStage": 0.262,
+      "obbl_breathA": 0.639,
+      "obbl_breathB": 0.786,
+      "obbl_damping": 0.997,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.111,
+      "obbl_embouchureA": 0.514,
       "obbl_fxABrightDelay": 0.156,
-      "obbl_fxAPlate": 0.229,
+      "obbl_fxAChorus": 0.182,
       "obbl_fxAExciter": 0.035,
-      "obbl_fxBPhaser": 0.199,
+      "obbl_fxAPlate": 0.229,
       "obbl_fxBDarkDelay": 0.258,
+      "obbl_fxBPhaser": 0.199,
       "obbl_fxBSpring": 0.268,
       "obbl_fxBTapeSat": 0.083,
-      "obbl_macroBreath": 0.496,
+      "obbl_instrumentA": 5,
+      "obbl_instrumentB": 5,
       "obbl_macroBond": 0.213,
+      "obbl_macroBreath": 0.496,
       "obbl_macroMischief": 0.172,
-      "obbl_macroWind": 0.338
+      "obbl_macroWind": 0.338,
+      "obbl_reedBite": 0.348,
+      "obbl_reedStiffness": 0.608,
+      "obbl_sympatheticAmt": 0.375,
+      "obbl_voiceRouting": 4
     }
   },
-  "coupling": null,
-  "description": "MISCHIEF at play \u2014 the brothers detuned just enough to cause trouble. Nobody is behaving."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "flux",
+    "movement",
+    "flux"
+  ],
+  "version": "1.0.0"
 }

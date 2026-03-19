@@ -1,0 +1,69 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The existing Chip Workhorse had an empty parameter block. This is the NES 2A03 triangle lead with doctrine applied: OW-III filterEnvDepth 0.68 — velocity drives brightness, not just dynamics. OW-V eraPortamento 0.7s — every note you play is a living creature. eraDrift 0.067Hz. The foundation chip, breathing.",
+  "dna": {
+    "aggression": 0.46,
+    "brightness": 0.74,
+    "density": 0.67,
+    "movement": 0.52,
+    "space": 0.33,
+    "warmth": 0.38
+  },
+  "engines": [
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "NES Lead Alive",
+  "parameters": {
+    "Overworld": {
+      "ow_couplingBus": 0,
+      "ow_couplingLevel": 0.03,
+      "ow_era": 0.07,
+      "ow_eraDrift": 0.067,
+      "ow_eraMemory": 0.9,
+      "ow_eraPortamento": 0.7,
+      "ow_eraY": 0.06,
+      "ow_filterCutoff": 0.72,
+      "ow_filterEnvDepth": 0.68,
+      "ow_fmLfoDepth": 0.0,
+      "ow_fmLfoRate": 0.5,
+      "ow_glitch": 0.08,
+      "ow_macro_chaos": 0.08,
+      "ow_macro_couple": 0.03,
+      "ow_macro_era": 0.07,
+      "ow_macro_space": 0.34,
+      "ow_outputLevel": 0.87
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonic_dna": {
+    "aggression": 0.46,
+    "brightness": 0.74,
+    "density": 0.67,
+    "movement": 0.52,
+    "space": 0.33,
+    "warmth": 0.38
+  },
+  "tags": [
+    "nes",
+    "triangle",
+    "lead",
+    "foundation",
+    "workhorse",
+    "alive",
+    "velocity"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

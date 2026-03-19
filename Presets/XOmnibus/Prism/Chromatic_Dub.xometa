@@ -19,7 +19,7 @@
   "engines": [
     "Overdub"
   ],
-  "description": "Chromatic sub-bass walk in a filtered dub space \u2014 each note a prismatic shift.",
+  "description": "Chromatic sub-bass walk in a filtered dub space — each note a prismatic shift.",
   "tags": [
     "dub",
     "chromatic",
@@ -55,7 +55,7 @@
       "dub_pitchEnvDepth": 0.12,
       "dub_pitchEnvDecay": 0.04,
       "dub_lfoRate": 0.5,
-      "dub_lfoDepth": 0.04,
+      "dub_lfoDepth": 0.12,
       "dub_lfoDest": 1,
       "dub_driveAmount": 1.1,
       "dub_dryLevel": 0.85,

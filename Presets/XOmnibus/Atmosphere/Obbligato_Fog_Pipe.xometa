@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Fog Pipe",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Breath sustains through long phrases. WIND high — the air path reverbs into wide space.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.34,
+    "density": 0.38,
+    "movement": 0.14,
+    "space": 0.76,
+    "warmth": 0.55
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "atmosphere",
-    "pad",
-    "atmosphere"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.34,
-    "warmth": 0.55,
-    "movement": 0.14,
-    "density": 0.38,
-    "space": 0.76,
-    "aggression": 0.0
-  },
+  "mood": "Atmosphere",
+  "name": "Fog Pipe",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.742,
-      "obbl_embouchureA": 0.393,
       "obbl_airFlutterA": 0.217,
-      "obbl_instrumentA": 0,
       "obbl_bodySizeA": 0.695,
-      "obbl_breathB": 0.62,
-      "obbl_reedStiffness": 0.547,
-      "obbl_reedBite": 0.419,
-      "obbl_instrumentB": 0,
       "obbl_bodySizeB": 0.424,
-      "obbl_voiceRouting": 4,
-      "obbl_damping": 0.995,
-      "obbl_sympatheticAmt": 0.401,
-      "obbl_driftRate": 0.11,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.025,
       "obbl_bondIntensity": 0.419,
       "obbl_bondRate": 0.13,
-      "obbl_fxAChorus": 0.211,
+      "obbl_bondStage": 0.025,
+      "obbl_breathA": 0.742,
+      "obbl_breathB": 0.62,
+      "obbl_damping": 0.995,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.11,
+      "obbl_embouchureA": 0.393,
       "obbl_fxABrightDelay": 0.108,
-      "obbl_fxAPlate": 0.385,
+      "obbl_fxAChorus": 0.211,
       "obbl_fxAExciter": 0.116,
-      "obbl_fxBPhaser": 0.289,
+      "obbl_fxAPlate": 0.385,
       "obbl_fxBDarkDelay": 0.372,
+      "obbl_fxBPhaser": 0.289,
       "obbl_fxBSpring": 0.166,
       "obbl_fxBTapeSat": 0.065,
-      "obbl_macroBreath": 0.557,
+      "obbl_instrumentA": 0,
+      "obbl_instrumentB": 0,
       "obbl_macroBond": 0.256,
+      "obbl_macroBreath": 0.557,
       "obbl_macroMischief": 0.006,
-      "obbl_macroWind": 0.543
+      "obbl_macroWind": 0.543,
+      "obbl_reedBite": 0.419,
+      "obbl_reedStiffness": 0.547,
+      "obbl_sympatheticAmt": 0.401,
+      "obbl_voiceRouting": 4
     }
   },
-  "coupling": null,
-  "description": "Breath sustains through long phrases. WIND high \u2014 the air path reverbs into wide space."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "atmosphere",
+    "pad",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
 }

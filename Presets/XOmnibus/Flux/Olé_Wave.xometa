@@ -33,7 +33,9 @@
     "space": 0.65,
     "aggression": 0.12
   },
-  "parameters": {},
+  "parameters": {
+    "Ole": {}
+  },
   "tags": [
     "tidal",
     "ole",

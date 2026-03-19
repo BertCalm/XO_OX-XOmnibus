@@ -1,33 +1,33 @@
 {
-  "schema_version": 1,
-  "name": "Ohm Overdrive",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Dad's commune instrument going too fast. Maximum pluck density.",
+  "dna": {
+    "aggression": 0.65,
+    "brightness": 0.89,
+    "density": 0.8,
+    "movement": 0.92,
+    "space": 0.12,
+    "warmth": 0.55
+  },
   "engines": [
     "Ohm"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dad's commune instrument going too fast. Maximum pluck density.",
-  "tags": [
-    "kinetic-bright",
-    "extreme",
-    "prism",
-    "organic"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Ohm Overdrive",
   "parameters": {
     "Ohm": {
       "ohm_dadInstrument": 3.0,
@@ -39,14 +39,14 @@
       "ohm_warmth": 0.55
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.89,
-    "warmth": 0.55,
-    "movement": 0.92,
-    "density": 0.8,
-    "space": 0.12,
-    "aggression": 0.65
-  }
+  "tags": [
+    "kinetic-bright",
+    "extreme",
+    "prism",
+    "organic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

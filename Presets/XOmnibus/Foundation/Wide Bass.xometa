@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Shelf Extension",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Rooted bass sound with warm character.",
+  "dna": {
+    "aggression": 0.083,
+    "brightness": 0.344,
+    "density": 0.296,
+    "movement": 0.0,
+    "space": 0.0,
+    "warmth": 0.179
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Rooted bass sound with warm character.",
-  "tags": [
-    "supersaw",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Bass",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Bass",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Shelf Extension",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 2.0,
-      "drift_oscA_level": 0.8,
-      "drift_oscA_detune": 0.35,
-      "drift_subLevel": 0.5,
+      "drift_attack": 3.0,
+      "drift_decay": 350.0,
       "drift_filterCutoff": 1500.0,
       "drift_filterReso": 0.2,
       "drift_filterSlope": 1.0,
-      "drift_attack": 3.0,
-      "drift_decay": 350.0,
-      "drift_sustain": 0.55,
+      "drift_level": -3.0,
+      "drift_oscA_detune": 0.35,
+      "drift_oscA_level": 0.8,
+      "drift_oscA_mode": 2.0,
       "drift_release": 200.0,
-      "drift_level": -3.0
+      "drift_subLevel": 0.5,
+      "drift_sustain": 0.55
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.344,
-    "warmth": 0.179,
-    "movement": 0.0,
-    "density": 0.296,
-    "space": 0.0,
-    "aggression": 0.083
-  }
+  "tags": [
+    "supersaw",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

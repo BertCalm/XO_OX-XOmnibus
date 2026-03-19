@@ -19,7 +19,7 @@
   "engines": [
     "Overdub"
   ],
-  "description": "Bright open-filter dub tone \u2014 the upper register explored.",
+  "description": "Bright open-filter dub tone — the upper register explored.",
   "tags": [
     "dub",
     "bright",
@@ -55,7 +55,7 @@
       "dub_pitchEnvDepth": 0.06,
       "dub_pitchEnvDecay": 0.02,
       "dub_lfoRate": 0.6,
-      "dub_lfoDepth": 0.04,
+      "dub_lfoDepth": 0.12,
       "dub_lfoDest": 1,
       "dub_driveAmount": 1.1,
       "dub_dryLevel": 0.9,

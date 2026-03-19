@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Obscura \u00d7 Ouroboros \u2014 Velocity Couple coupling at extreme DNA corner.",
+  "description": "Obscura × Ouroboros — Velocity Couple coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "obscura",
@@ -33,7 +33,10 @@
     "space": 0.89,
     "aggression": 0.527
   },
-  "parameters": {},
+  "parameters": {
+    "Obscura": {},
+    "Ouroboros": {}
+  },
   "coupling": {
     "pairs": [
       {

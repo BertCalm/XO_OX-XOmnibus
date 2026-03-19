@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Oracle Signal Tone",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Clear predictive tone. Bright and honest, no surprises.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.65,
+    "density": 0.7,
+    "movement": 0.5,
+    "space": 0.3,
+    "warmth": 0.5
+  },
   "engines": [
     "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Clear predictive tone. Bright and honest, no surprises.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Oracle Signal Tone",
+  "parameters": {
+    "Oracle": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "clear",
     "tone",
@@ -17,31 +42,6 @@
     "workhorse",
     "signal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oracle": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.65,
-    "warmth": 0.5,
-    "movement": 0.5,
-    "density": 0.7,
-    "space": 0.3,
-    "aggression": 0.4
-  }
+  "version": "1.0.0"
 }

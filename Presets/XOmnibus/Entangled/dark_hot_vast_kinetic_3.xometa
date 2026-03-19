@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK HOT VAST KINETIC 3",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.0973,
-    "warmth": 0.9426,
-    "space": 0.9371,
-    "movement": 0.9057,
-    "aggression": 0.4398,
-    "density": 0.4049
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Medium",
+  "couplingType": "ORBIT",
+  "description": "Ultra-diverse Entangled preset — dark hot vast kinetic. Designed for ORBIT coupling with XOdyssey.",
   "dna": {
-    "brightness": 0.0973,
-    "warmth": 0.9426,
-    "space": 0.9371,
-    "movement": 0.9057,
     "aggression": 0.4398,
-    "density": 0.4049
+    "brightness": 0.0973,
+    "density": 0.4049,
+    "movement": 0.9057,
+    "space": 0.9371,
+    "warmth": 0.9426
   },
   "engines": [
-    "XOdyssey"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark hot vast kinetic. Designed for ORBIT coupling with XOdyssey.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "orbit",
-    "odyssey"
+    "Odyssey"
   ],
   "macroLabels": [
     "EMBER",
@@ -36,15 +23,28 @@
     "FLOW",
     "FLARE"
   ],
-  "couplingType": "ORBIT",
-  "couplingIntensity": "Medium",
+  "mood": "Flux",
+  "name": "DARK HOT VAST KINETIC 3",
   "parameters": {
-    "XOdyssey": {
-      "couplingLevel": 0.707,
-      "couplingBus": 3
+    "Odyssey": {
+      "couplingBus": 3,
+      "couplingLevel": 0.707
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4398,
+    "brightness": 0.0973,
+    "density": 0.4049,
+    "movement": 0.9057,
+    "space": 0.9371,
+    "warmth": 0.9426
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "orbit",
+    "odyssey"
+  ],
+  "version": "1.0.0"
 }

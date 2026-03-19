@@ -1,56 +1,57 @@
 {
-  "schema_version": 1,
-  "name": "Roots Quake",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-08",
+  "description": "Rooted dub bass sound with warm character.",
+  "dna": {
+    "aggression": 0.137,
+    "brightness": 0.366,
+    "density": 0.63,
+    "movement": 0.275,
+    "space": 0.48,
+    "warmth": 0.556
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Rooted dub bass sound with warm character.",
-  "tags": [
-    "subby",
-    "sine",
-    "verdub"
-  ],
+  "legacy": {
+    "sourceCategory": "Dub Bass",
+    "sourceInstrument": "Overdub",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Overdub",
-    "sourceCategory": "Dub Bass",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Roots Quake",
   "parameters": {
     "Overdub": {
-      "dub_oscWave": 0.0,
-      "dub_oscOctave": 0.0,
-      "dub_subLevel": 0.8,
-      "dub_noiseLevel": 0.05,
-      "dub_filterCutoff": 250.0,
-      "dub_filterReso": 0.2,
       "dub_attack": 0.05,
       "dub_decay": 1.0,
-      "dub_sustain": 0.2,
+      "dub_driveAmount": 1.5,
+      "dub_filterCutoff": 250.0,
+      "dub_filterReso": 0.2,
+      "dub_noiseLevel": 0.05,
+      "dub_oscOctave": 0.0,
+      "dub_oscWave": 0.0,
       "dub_release": 0.8,
+      "dub_subLevel": 0.8,
+      "dub_sustain": 0.2,
       "dub_voiceMode": 1.0,
-      "dub_driveAmount": 1.5
+      "dub_lfoDepth": 0.12
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.366,
-    "warmth": 0.556,
-    "movement": 0.275,
-    "density": 0.63,
-    "space": 0.48,
-    "aggression": 0.137
-  }
+  "tags": [
+    "subby",
+    "sine",
+    "verdub"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

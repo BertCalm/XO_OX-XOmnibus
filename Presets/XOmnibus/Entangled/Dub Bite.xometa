@@ -16,10 +16,10 @@
     "dub"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
   ],
   "couplingIntensity": "Moderate",
   "tempo": null,
@@ -31,7 +31,10 @@
     "space": 0.4,
     "aggression": 0.25
   },
-  "parameters": {},
+  "parameters": {
+    "Overdub": {},
+    "Overbite": {}
+  },
   "coupling": {
     "pairs": [
       {

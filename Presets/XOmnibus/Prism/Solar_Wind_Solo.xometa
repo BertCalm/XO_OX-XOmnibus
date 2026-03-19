@@ -1,52 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Solar Wind Solo",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Single chip channel at peak brilliance. Wide empty sky around it.",
+  "dna": {
+    "aggression": 0.14,
+    "brightness": 1.0,
+    "density": 0.09,
+    "movement": 0.0,
+    "space": 0.9,
+    "warmth": 0.86
+  },
   "engines": [
     "Overworld"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Single chip channel at peak brilliance. Wide empty sky around it.",
-  "tags": [
-    "hot-sparse",
-    "extreme",
-    "prism",
-    "chip"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Solar Wind Solo",
   "parameters": {
     "Overworld": {
+      "ow_drive": 0.75,
       "ow_era": 0.88,
       "ow_eraY": 0.3,
-      "ow_voiceMode": 0.0,
-      "ow_masterVol": 0.82,
       "ow_filterCutoff": 7000.0,
-      "ow_drive": 0.75,
-      "ow_glitchAmt": 0.1
+      "ow_glitchAmt": 0.1,
+      "ow_masterVol": 0.82,
+      "ow_voiceMode": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 1.0,
-    "warmth": 0.86,
-    "movement": 0.0,
-    "density": 0.09,
-    "space": 0.9,
-    "aggression": 0.14
-  }
+  "tags": [
+    "hot-sparse",
+    "extreme",
+    "prism",
+    "chip"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

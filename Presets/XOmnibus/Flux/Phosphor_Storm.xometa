@@ -33,7 +33,9 @@
     "space": 0.2,
     "aggression": 0.87
   },
-  "parameters": {},
+  "parameters": {
+    "Optic": {}
+  },
   "tags": [
     "flux",
     "maximum",
@@ -41,5 +43,5 @@
     "phosphor",
     "storm"
   ],
-  "description": "AutoPulse at maximum rate \u2014 light as pure aggression, zero silence."
+  "description": "AutoPulse at maximum rate — light as pure aggression, zero silence."
 }

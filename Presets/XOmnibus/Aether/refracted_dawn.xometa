@@ -1,35 +1,43 @@
 {
-  "name": "Refracted Dawn",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.78,
+    "density": 0.12,
+    "movement": 0.56,
+    "space": 0.88,
+    "warmth": 0.22
+  },
   "engines": [
     "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.26,
+    "COUPLING": 0.15,
+    "MOVEMENT": 0.56,
+    "SPACE": 0.88
+  },
+  "mood": "Aether",
+  "name": "Refracted Dawn",
   "parameters": {
     "Overworld": {
       "macro_character": 0.26,
-      "macro_movement": 0.56,
       "macro_coupling": 0.15,
+      "macro_movement": 0.56,
       "macro_space": 0.88
     }
   },
-  "dna": {
-    "brightness": 0.78,
-    "warmth": 0.22,
-    "movement": 0.56,
-    "density": 0.12,
-    "space": 0.88,
-    "aggression": 0.06
-  },
-  "macros": {
-    "CHARACTER": 0.26,
-    "MOVEMENT": 0.56,
-    "COUPLING": 0.15,
-    "SPACE": 0.88
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "crystalline",
     "evolving"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,33 +1,33 @@
 {
-  "schema_version": 1,
-  "name": "Sunbeam Solo",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Dad's single note philosophy: one warm tone, all the room in the world.",
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.89,
+    "density": 0.09,
+    "movement": 0.18,
+    "space": 0.9,
+    "warmth": 0.91
+  },
   "engines": [
     "Ohm"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dad's single note philosophy: one warm tone, all the room in the world.",
-  "tags": [
-    "hot-sparse",
-    "extreme",
-    "prism",
-    "organic"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Sunbeam Solo",
   "parameters": {
     "Ohm": {
       "ohm_dadInstrument": 1.0,
@@ -39,14 +39,14 @@
       "ohm_warmth": 0.89
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.89,
-    "warmth": 0.91,
-    "movement": 0.18,
-    "density": 0.09,
-    "space": 0.9,
-    "aggression": 0.12
-  }
+  "tags": [
+    "hot-sparse",
+    "extreme",
+    "prism",
+    "organic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,45 +1,64 @@
 {
-  "schema_version": 1,
-  "name": "Phosphor Persistence",
-  "mood": "Foundation",
-  "engines": ["Optic"],
-  "author": "Guru Bin — Engine Deepening 2026-03-16",
-  "version": "1.0.0",
-  "description": "P39 phosphor afterglow at the lowest usable brightness — a held note that doesn't know it should have faded. Pulse rate minimal, feedback just above the decay floor. The sound is the color of a terminal screen at 2am: green, patient, inevitable. Foundation-tier: OPTIC at its simplest and most honest.",
-  "tags": ["phosphor", "persistence", "terminal", "green", "slow", "foundation", "quiet"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-16",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "P39 phosphor afterglow at the lowest usable brightness — a held note that doesn't know it should have faded. Pulse rate minimal, feedback just above the decay floor. The sound is the color of a terminal screen at 2am: green, patient, inevitable. Foundation-tier: OPTIC at its simplest and most honest.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.42,
+    "density": 0.2,
+    "movement": 0.12,
+    "space": 0.58,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Optic"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Phosphor Persistence",
   "parameters": {
     "Optic": {
-      "optic_reactivity": 0.35,
-      "optic_inputGain": 0.7,
       "optic_autoPulse": 0,
-      "optic_pulseRate": 0.08,
-      "optic_pulseShape": 0.8,
-      "optic_pulseSwing": 0.0,
-      "optic_pulseEvolve": 0.15,
-      "optic_pulseSubdiv": 0.1,
-      "optic_pulseAccent": 0.2,
+      "optic_inputGain": 0.7,
       "optic_modDepth": 0.22,
       "optic_modMixPulse": 0.3,
       "optic_modMixSpec": 0.55,
-      "optic_vizMode": 0,
+      "optic_pulseAccent": 0.2,
+      "optic_pulseEvolve": 0.15,
+      "optic_pulseRate": 0.08,
+      "optic_pulseShape": 0.8,
+      "optic_pulseSubdiv": 0.1,
+      "optic_pulseSwing": 0.0,
+      "optic_reactivity": 0.35,
       "optic_vizFeedback": 0.55,
-      "optic_vizSpeed": 0.12,
-      "optic_vizIntensity": 0.35
+      "optic_vizIntensity": 0.35,
+      "optic_vizMode": 0,
+      "optic_vizSpeed": 0.12
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.42,
-    "warmth": 0.55,
-    "movement": 0.12,
-    "density": 0.2,
-    "space": 0.58,
-    "aggression": 0.05
-  }
+  "tags": [
+    "phosphor",
+    "persistence",
+    "terminal",
+    "green",
+    "slow",
+    "foundation",
+    "quiet"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -31,7 +31,10 @@
     "space": 0.3,
     "aggression": 0.1
   },
-  "parameters": {},
+  "parameters": {
+    "Oblong": {},
+    "Overworld": {}
+  },
   "coupling": {
     "pairs": [
       {

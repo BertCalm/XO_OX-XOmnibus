@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Phase Reed",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "BOND in motion — harmony to conflict and back. Wind voices chase each other through the changes.",
+  "dna": {
+    "aggression": 0.37,
+    "brightness": 0.56,
+    "density": 0.46,
+    "movement": 0.81,
+    "space": 0.33,
+    "warmth": 0.38
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "flux",
-    "movement",
-    "flux"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.56,
-    "warmth": 0.38,
-    "movement": 0.81,
-    "density": 0.46,
-    "space": 0.33,
-    "aggression": 0.37
-  },
+  "mood": "Flux",
+  "name": "Phase Reed",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.609,
-      "obbl_embouchureA": 0.621,
       "obbl_airFlutterA": 0.2,
-      "obbl_instrumentA": 1,
       "obbl_bodySizeA": 0.696,
-      "obbl_breathB": 0.676,
-      "obbl_reedStiffness": 0.35,
-      "obbl_reedBite": 0.201,
-      "obbl_instrumentB": 1,
       "obbl_bodySizeB": 0.431,
-      "obbl_voiceRouting": 3,
-      "obbl_damping": 0.993,
-      "obbl_sympatheticAmt": 0.365,
-      "obbl_driftRate": 0.083,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.714,
       "obbl_bondIntensity": 0.695,
       "obbl_bondRate": 0.282,
-      "obbl_fxAChorus": 0.235,
+      "obbl_bondStage": 0.714,
+      "obbl_breathA": 0.609,
+      "obbl_breathB": 0.676,
+      "obbl_damping": 0.993,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.083,
+      "obbl_embouchureA": 0.621,
       "obbl_fxABrightDelay": 0.268,
-      "obbl_fxAPlate": 0.131,
+      "obbl_fxAChorus": 0.235,
       "obbl_fxAExciter": 0.163,
-      "obbl_fxBPhaser": 0.284,
+      "obbl_fxAPlate": 0.131,
       "obbl_fxBDarkDelay": 0.162,
+      "obbl_fxBPhaser": 0.284,
       "obbl_fxBSpring": 0.229,
       "obbl_fxBTapeSat": 0.031,
-      "obbl_macroBreath": 0.338,
+      "obbl_instrumentA": 1,
+      "obbl_instrumentB": 1,
       "obbl_macroBond": 0.682,
+      "obbl_macroBreath": 0.338,
       "obbl_macroMischief": 0.367,
-      "obbl_macroWind": 0.132
+      "obbl_macroWind": 0.132,
+      "obbl_reedBite": 0.201,
+      "obbl_reedStiffness": 0.35,
+      "obbl_sympatheticAmt": 0.365,
+      "obbl_voiceRouting": 3
     }
   },
-  "coupling": null,
-  "description": "BOND in motion \u2014 harmony to conflict and back. Wind voices chase each other through the changes."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "flux",
+    "movement",
+    "flux"
+  ],
+  "version": "1.0.0"
 }

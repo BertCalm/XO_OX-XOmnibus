@@ -16,10 +16,10 @@
     "additive"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
   ],
   "couplingIntensity": "Moderate",
   "tempo": null,
@@ -31,7 +31,10 @@
     "space": 0.2,
     "aggression": 0.3
   },
-  "parameters": {},
+  "parameters": {
+    "Organon": {},
+    "Overbite": {}
+  },
   "coupling": {
     "pairs": [
       {

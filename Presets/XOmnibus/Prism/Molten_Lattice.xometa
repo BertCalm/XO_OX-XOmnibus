@@ -1,52 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Molten Lattice",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Every fold reflects heat. Stacked resonances glow at the seams.",
+  "dna": {
+    "aggression": 0.77,
+    "brightness": 0.88,
+    "density": 0.91,
+    "movement": 0.6,
+    "space": 0.06,
+    "warmth": 0.9
+  },
   "engines": [
     "Origami"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Every fold reflects heat. Stacked resonances glow at the seams.",
-  "tags": [
-    "hot-dense",
-    "extreme",
-    "prism",
-    "textured"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Molten Lattice",
   "parameters": {
     "Origami": {
-      "origami_foldPoint": 0.9,
-      "origami_foldAmt": 0.88,
-      "origami_layers": 0.92,
       "origami_brightness": 0.88,
-      "origami_tension": 0.85,
+      "origami_foldAmt": 0.88,
+      "origami_foldPoint": 0.9,
+      "origami_layers": 0.92,
+      "origami_release": 300.0,
       "origami_resonance": 0.9,
-      "origami_release": 300.0
+      "origami_tension": 0.85
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.88,
-    "warmth": 0.9,
-    "movement": 0.6,
-    "density": 0.91,
-    "space": 0.06,
-    "aggression": 0.77
-  }
+  "tags": [
+    "hot-dense",
+    "extreme",
+    "prism",
+    "textured"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

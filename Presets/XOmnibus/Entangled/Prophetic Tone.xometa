@@ -1,19 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Prophetic Tone",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.831,
+        "description": "Owlfish drives Oracle via TimbreShare",
+        "source": "Owlfish",
+        "target": "Oracle",
+        "type": "TimbreShare"
+      }
+    ]
+  },
+  "couplingIntensity": "Light",
+  "created": "2026-03-16",
+  "description": "ORACLE's stochastic breakpoints modulating OWLFISH's resonant pitch — the drone that predicts, the tone as oracle output.",
+  "dna": {
+    "aggression": 0.394,
+    "brightness": 0.535,
+    "density": 0.788,
+    "movement": 0.462,
+    "space": 0.544,
+    "warmth": 0.597
+  },
   "engines": [
     "Owlfish",
     "Oracle"
-  ],
-  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "ORACLE's stochastic breakpoints modulating OWLFISH's resonant pitch — the drone that predicts, the tone as oracle output.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "owlfish",
-    "oracle"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,64 +32,53 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Light",
-  "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.535,
-    "warmth": 0.597,
-    "movement": 0.462,
-    "density": 0.788,
-    "space": 0.544,
-    "aggression": 0.394
-  },
+  "mood": "Entangled",
+  "name": "Prophetic Tone",
   "parameters": {
-    "Owlfish": {
-      "owl_filterCutoff": 0.672,
-      "owl_filterRes": 0.666,
-      "owl_oscPitch": 0.562,
-      "owl_oscLevel": 0.875,
-      "owl_subLevel": 0.439,
-      "owl_mixturSpread": 0.434,
-      "owl_mixturBlend": 0.603,
-      "owl_resonantPitch": 0.631,
-      "owl_resonantFeedback": 0.438,
-      "owl_abyssalDrive": 0.152,
-      "owl_ampAttack": 0.397,
-      "owl_ampDecay": 0.463,
-      "owl_ampSustain": 0.772,
-      "owl_ampRelease": 1.85,
-      "owl_lfoRate": 0.213,
-      "owl_lfoDepth": 0.343,
-      "owl_lfoShape": 0.787,
-      "owl_envDepth": 0.247,
-      "owl_hall": 0.374,
-      "owl_shimmer": 0.225,
-      "owl_macroCharacter": 0.0,
-      "owl_macroMovement": 0.0,
-      "owl_macroCoupling": 0.0,
-      "owl_macroSpace": 0.0
-    },
     "Oracle": {
+      "oracle_attack": 0.227,
       "oracle_breakpoints": 0.483,
       "oracle_filterCutoff": 0.522,
       "oracle_lfoRate": 0.146,
-      "oracle_attack": 0.227,
-      "oracle_release": 1.0,
       "oracle_macroCharacter": 0.0,
-      "oracle_macroCoupling": 0.075
+      "oracle_macroCoupling": 0.075,
+      "oracle_release": 1.0
+    },
+    "Owlfish": {
+      "owl_abyssalDrive": 0.152,
+      "owl_ampAttack": 0.397,
+      "owl_ampDecay": 0.463,
+      "owl_ampRelease": 1.85,
+      "owl_ampSustain": 0.772,
+      "owl_envDepth": 0.247,
+      "owl_filterCutoff": 0.672,
+      "owl_filterRes": 0.666,
+      "owl_hall": 0.374,
+      "owl_lfoDepth": 0.343,
+      "owl_lfoRate": 0.213,
+      "owl_lfoShape": 0.787,
+      "owl_macroCharacter": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroSpace": 0.0,
+      "owl_mixturBlend": 0.603,
+      "owl_mixturSpread": 0.434,
+      "owl_oscLevel": 0.875,
+      "owl_oscPitch": 0.562,
+      "owl_resonantFeedback": 0.438,
+      "owl_resonantPitch": 0.631,
+      "owl_shimmer": 0.225,
+      "owl_subLevel": 0.439
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "source": "Owlfish",
-        "target": "Oracle",
-        "type": "TimbreShare",
-        "amount": 0.831,
-        "description": "Owlfish drives Oracle via TimbreShare"
-      }
-    ]
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "oracle"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

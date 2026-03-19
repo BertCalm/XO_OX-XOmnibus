@@ -1,39 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Deep Current",
-  "mood": "Atmosphere",
-  "engines": ["Overlap"],
-  "author": "Guru Bin — OVERLAP Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Torus topology at mesopelagic depth — extreme warmth from damping, modulation so slow it reads as pressure variation rather than tremolo. The six delay lines form a circular current that only releases sound after it has been thoroughly transformed. A spatial atmosphere that adds mineral weight.",
-  "tags": ["deep", "pressure", "torus", "slow", "atmosphere", "cinematic"],
-  "macroLabels": ["CHARACTER", "SPACE", "COUPLING", "DECAY"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.2,
-    "warmth": 0.9,
-    "movement": 0.35,
-    "density": 0.75,
-    "space": 0.8,
-    "aggression": 0.1
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Torus topology at mesopelagic depth \u2014 extreme warmth from damping, modulation so slow it reads as pressure variation rather than tremolo. The six delay lines form a circular current that only releases sound after it has been thoroughly transformed. A spatial atmosphere that adds mineral weight.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.2,
+    "density": 0.75,
+    "movement": 0.35,
+    "space": 0.8,
+    "warmth": 0.9
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "mood": "Atmosphere",
+  "name": "Deep Current III",
   "parameters": {
     "Overlap": {
-      "olap_knotType": 2,
+      "olap_damping": 0.85,
+      "olap_decay": 7.0,
       "olap_delayFeedback": 0.7,
       "olap_diffusion": 0.82,
-      "olap_spread": 0.65,
-      "olap_decay": 7.0,
+      "olap_knotType": 2,
+      "olap_macroCharacter": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0,
+      "olap_macroSpace": 0.0,
       "olap_modDepth": 0.18,
       "olap_modRate": 0.022,
-      "olap_damping": 0.85,
-      "olap_macroCharacter": 0.0,
-      "olap_macroSpace": 0.0,
-      "olap_macroCoupling": 0.0,
-      "olap_macroDecay": 0.0
+      "olap_spread": 0.65
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "deep",
+    "pressure",
+    "torus",
+    "slow",
+    "atmosphere",
+    "cinematic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

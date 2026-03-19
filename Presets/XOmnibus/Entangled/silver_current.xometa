@@ -1,49 +1,61 @@
 {
-  "name": "Silver Current",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oceanic",
+        "type": "TEXTURE_MORPH",
+        "amount": 0.616
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.3,
+    "density": 0.45,
+    "movement": 0.65,
+    "space": 0.85,
+    "warmth": 0.3
+  },
   "engines": [
     "Obscura",
     "Oceanic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.325,
+    "COUPLING": 0.616,
+    "MOVEMENT": 0.3,
+    "SPACE": 0.7
+  },
+  "mood": "Entangled",
+  "name": "Silver Current",
   "parameters": {
     "Obscura": {
       "macro_character": 0.33,
-      "macro_movement": 0.23,
       "macro_coupling": 0.53,
+      "macro_movement": 0.23,
       "macro_space": 0.58
     },
     "Oceanic": {
       "macro_character": 0.32,
-      "macro_movement": 0.37,
       "macro_coupling": 0.47,
+      "macro_movement": 0.37,
       "macro_space": 0.82
     }
   },
-  "coupling": {
-    "type": "TEXTURE_MORPH",
-    "source": "OBSCURA",
-    "target": "OCEANIC",
-    "amount": 0.616
-  },
-  "dna": {
-    "brightness": 0.3,
-    "warmth": 0.3,
-    "movement": 0.65,
-    "density": 0.45,
-    "space": 0.85,
-    "aggression": 0.12
-  },
-  "macros": {
-    "CHARACTER": 0.325,
-    "MOVEMENT": 0.3,
-    "COUPLING": 0.616,
-    "SPACE": 0.7
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "flowing"
-  ]
+  ],
+  "version": "1.0"
 }

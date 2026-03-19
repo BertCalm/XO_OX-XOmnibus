@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Crystal Gravitational",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.495,
+        "engineA": "Obsidian",
+        "engineB": "Orbital",
+        "type": "Audio->FM"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Volcanic glass rotates in gravitational loop. Crystal orbital path.",
+  "dna": {
+    "aggression": 0.27,
+    "brightness": 0.763,
+    "density": 0.542,
+    "movement": 0.448,
+    "space": 0.58,
+    "warmth": 0.372
+  },
   "engines": [
     "Obsidian",
     "Orbital"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Volcanic glass rotates in gravitational loop. Crystal orbital path.",
-  "tags": [
-    "obsidian",
-    "orbital",
-    "crystal",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Crystal Gravitational",
   "parameters": {
     "Obsidian": {
-      "obsidian_brightness": 0.917,
-      "obsidian_warmth": 0.274,
-      "obsidian_movement": 0.335,
-      "obsidian_density": 0.544,
-      "obsidian_space": 0.546,
       "obsidian_aggression": 0.07,
-      "obsidian_level": 0.816
+      "obsidian_brightness": 0.917,
+      "obsidian_density": 0.544,
+      "obsidian_level": 0.816,
+      "obsidian_movement": 0.335,
+      "obsidian_space": 0.546,
+      "obsidian_warmth": 0.274
     },
     "Orbital": {
-      "orb_brightness": 0.669,
-      "orb_warmth": 0.662,
-      "orb_movement": 0.615,
-      "orb_density": 0.58,
-      "orb_space": 0.671,
       "orb_aggression": 0.452,
-      "orb_level": 0.818
+      "orb_brightness": 0.669,
+      "orb_density": 0.58,
+      "orb_level": 0.818,
+      "orb_movement": 0.615,
+      "orb_space": 0.671,
+      "orb_warmth": 0.662
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Orbital",
-        "type": "Audio->FM",
-        "amount": 0.495
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.763,
-    "warmth": 0.372,
-    "movement": 0.448,
-    "density": 0.542,
-    "space": 0.58,
-    "aggression": 0.27
-  }
+  "tags": [
+    "obsidian",
+    "orbital",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

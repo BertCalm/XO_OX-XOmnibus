@@ -471,8 +471,8 @@ struct MurmurGenerator
         rng = rng * 1664525u + 1013904223u;
         float noise = static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f;
 
-        // Slow 0.5 Hz modulation — the ebb and flow of tavern conversation
-        modPhase += 0.5f / std::max (1.0f, sampleRate);
+        // D005: rate floor lowered to 0.005 Hz for ultra-slow breathing modulation
+        modPhase += 0.005f / std::max (1.0f, sampleRate);
         if (modPhase >= 1.0f) modPhase -= 1.0f;
         float mod = fastSin (modPhase * kOsteriaTwoPi);
 

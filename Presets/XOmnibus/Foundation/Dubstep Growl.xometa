@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Dubstep Growl",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Rooted bass sound with warm haze.",
+  "dna": {
+    "aggression": 0.495,
+    "brightness": 0.294,
+    "density": 0.189,
+    "movement": 0.16,
+    "space": 0.0,
+    "warmth": 0.314
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Rooted bass sound with warm haze.",
-  "tags": [
-    "saturated",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Bass",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Bass",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Dubstep Growl",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 0.0,
-      "drift_oscA_level": 0.85,
-      "drift_oscB_mode": 0.0,
-      "drift_oscB_shape": 0.0,
-      "drift_oscB_level": 0.7,
-      "drift_subLevel": 0.3,
-      "drift_hazeAmount": 0.5,
+      "drift_attack": 2.0,
       "drift_filterCutoff": 800.0,
       "drift_filterReso": 0.45,
       "drift_filterSlope": 1.0,
-      "drift_lfoRate": 6.0,
+      "drift_hazeAmount": 0.5,
+      "drift_level": -3.0,
       "drift_lfoDepth": 0.8,
-      "drift_attack": 2.0,
-      "drift_sustain": 0.8,
+      "drift_lfoRate": 6.0,
+      "drift_oscA_level": 0.85,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscB_level": 0.7,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 0.0,
       "drift_release": 150.0,
-      "drift_level": -3.0
+      "drift_subLevel": 0.3,
+      "drift_sustain": 0.8
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.294,
-    "warmth": 0.314,
-    "movement": 0.16,
-    "density": 0.189,
-    "space": 0.0,
-    "aggression": 0.495
-  }
+  "tags": [
+    "saturated",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

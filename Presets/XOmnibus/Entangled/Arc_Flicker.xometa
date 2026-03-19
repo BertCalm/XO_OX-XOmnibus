@@ -1,14 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "Arc Flicker",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.787,
+        "engineA": "Orbital",
+        "engineB": "Optic",
+        "type": "envelope_share"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Orbital × Optic coupling (filter modulation). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.439,
+    "brightness": 0.703,
+    "density": 0.522,
+    "movement": 0.614,
+    "space": 0.595,
+    "warmth": 0.532
+  },
   "engines": [
     "Orbital",
     "Optic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Orbital \u00d7 Optic coupling (filter modulation). Stub preset \u2014 sound-design pass pending.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Arc Flicker",
+  "parameters": {
+    "Optic": {
+      "optic_couplingIn": 0.711,
+      "optic_couplingOut": 0.596,
+      "optic_macro1": 0.457,
+      "optic_macro2": 0.661,
+      "optic_macro3": 0.382,
+      "optic_macro4": 0.389
+    },
+    "Orbital": {
+      "orb_arcDecay": 0.877,
+      "orb_brightness": 0.651,
+      "orb_couplingIn": 0.676,
+      "orb_groupEnv": 0.37,
+      "orb_harmonicAmt": 0.482,
+      "orb_macro1": 0.308,
+      "orb_macro2": 0.351,
+      "orb_macro3": 0.517,
+      "orb_macro4": 0.698,
+      "orb_phaseSpread": 0.314,
+      "orb_resonantPeak": 0.401
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "orbital",
     "optic",
@@ -16,60 +70,6 @@
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Subtle",
   "tempo": 125,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Orbital": {
-      "orb_brightness": 0.651,
-      "orb_groupEnv": 0.37,
-      "orb_phaseSpread": 0.314,
-      "orb_arcDecay": 0.877,
-      "orb_resonantPeak": 0.401,
-      "orb_harmonicAmt": 0.482,
-      "orb_macro1": 0.308,
-      "orb_macro2": 0.351,
-      "orb_macro3": 0.517,
-      "orb_macro4": 0.698,
-      "orb_couplingIn": 0.676
-    },
-    "Optic": {
-      "optic_macro1": 0.457,
-      "optic_macro2": 0.661,
-      "optic_macro3": 0.382,
-      "optic_macro4": 0.389,
-      "optic_couplingOut": 0.596,
-      "optic_couplingIn": 0.711
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Optic",
-        "type": "envelope_share",
-        "amount": 0.787
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.703,
-    "warmth": 0.532,
-    "movement": 0.614,
-    "density": 0.522,
-    "space": 0.595,
-    "aggression": 0.439
-  }
+  "version": "1.0.0"
 }

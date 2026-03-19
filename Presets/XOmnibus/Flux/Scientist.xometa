@@ -1,58 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Scientist",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Deep",
+  "created": "2026-03-08",
+  "description": "Evolving echo fx texture with self-oscillating delay.",
+  "dna": {
+    "aggression": 0.333,
+    "brightness": 0.767,
+    "density": 0.24,
+    "movement": 0.413,
+    "space": 0.732,
+    "warmth": 0.089
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Evolving echo fx texture with self-oscillating delay.",
-  "tags": [
-    "self-oscillating",
-    "wet",
-    "sine"
-  ],
+  "legacy": {
+    "sourceCategory": "Echo FX",
+    "sourceInstrument": "Overdub",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Overdub",
-    "sourceCategory": "Echo FX",
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Scientist",
   "parameters": {
     "Overdub": {
-      "dub_oscWave": 0.0,
-      "dub_filterCutoff": 4000.0,
       "dub_attack": 0.01,
       "dub_decay": 0.5,
-      "dub_sustain": 0.4,
-      "dub_release": 1.0,
       "dub_delayFeedback": 0.9,
-      "dub_delayWow": 0.3,
       "dub_delayWear": 0.35,
+      "dub_delayWow": 0.3,
       "dub_driveAmount": 3.0,
-      "dub_sendLevel": 0.7,
+      "dub_filterCutoff": 4000.0,
+      "dub_oscWave": 0.0,
+      "dub_release": 1.0,
       "dub_returnLevel": 0.85,
+      "dub_reverbMix": 0.35,
       "dub_reverbSize": 0.6,
-      "dub_reverbMix": 0.35
+      "dub_sendLevel": 0.7,
+      "dub_sustain": 0.4,
+      "dub_lfoDepth": 0.12
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.767,
-    "warmth": 0.089,
-    "movement": 0.413,
-    "density": 0.24,
-    "space": 0.732,
-    "aggression": 0.333
-  }
+  "tags": [
+    "self-oscillating",
+    "wet",
+    "sine"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "pitchScatter at maximum 1.0 — every grain ignores the played pitch and fires at a random pitch within the full range. What remains of the played note is nothing. This is a pitched instrument that has renounced pitch. Medium grain size 0.3, moderate density 0.55, low posScatter 0.2 so the randomness is purely harmonic. Low bright filter. Played quietly it sounds like a chord no one chose. Played hard it sounds like all chords simultaneously.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.5,
+    "density": 0.55,
+    "movement": 0.6,
+    "space": 0.5,
+    "warmth": 0.35
+  },
+  "engines": [
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Pitch Collapse",
+  "parameters": {
+    "Opal": {
+      "opal_ampAttack": 0.1,
+      "opal_ampDecay": 0.5,
+      "opal_ampRelease": 1.8,
+      "opal_ampSustain": 0.82,
+      "opal_density": 0.55,
+      "opal_filterCutoff": 0.45,
+      "opal_filterReso": 0.25,
+      "opal_grainSize": 0.3,
+      "opal_macroCharacter": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitchScatter": 1.0,
+      "opal_posScatter": 0.2,
+      "opal_reverse": 0.0,
+      "opal_speed": 1.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "flux",
+    "granular",
+    "pitch-scatter",
+    "atonal",
+    "extreme",
+    "chaos",
+    "harmonic",
+    "experimental"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

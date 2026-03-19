@@ -1,64 +1,78 @@
 {
-  "schema_version": 1,
-  "name": "Murmuration",
-  "mood": "Entangled",
-  "engines": ["Oceanic"],
-  "author": "Guru Bin — OCEANIC Retreat 2026-03-15",
-  "version": "1.0.0",
-  "description": "Receives RhythmToBlend from Onset. Every drum hit sends a cascade reorganization through all 128 particles — a perturbation wave from particle 0 with 0.97× decay per particle. The first particles get maximum disruption; the last barely move. The school reorganizes in sequence. Low tether means the MIDI note barely holds the cloud. Each hit reshapes a drifting colony.",
-  "tags": ["murmuration", "coupling", "onset", "swarm", "entangled", "awakening"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.4,
-    "movement": 0.8,
-    "density": 0.6,
-    "space": 0.65,
-    "aggression": 0.45
-  },
-  "parameters": {
-    "Oceanic": {
-      "ocean_separation": 0.55,
-      "ocean_alignment": 0.4,
-      "ocean_cohesion": 0.4,
-      "ocean_tether": 0.2,
-      "ocean_scatter": 0.35,
-      "ocean_subflocks": 2,
-      "ocean_damping": 0.35,
-      "ocean_waveform": 0,
-      "ocean_ampAttack": 0.05,
-      "ocean_ampDecay": 0.5,
-      "ocean_ampSustain": 0.7,
-      "ocean_ampRelease": 2.0,
-      "ocean_swarmEnvAttack": 0.1,
-      "ocean_swarmEnvDecay": 0.4,
-      "ocean_swarmEnvSustain": 0.65,
-      "ocean_swarmEnvRelease": 1.0,
-      "ocean_lfo1Rate": 0.05,
-      "ocean_lfo1Depth": 0.2,
-      "ocean_lfo1Shape": 0,
-      "ocean_lfo2Rate": 0.03,
-      "ocean_lfo2Depth": 0.1,
-      "ocean_lfo2Shape": 0,
-      "ocean_voiceMode": 1,
-      "ocean_glide": 0.0,
-      "ocean_macroCharacter": 0.0,
-      "ocean_macroMovement": 0.0,
-      "ocean_macroCoupling": 0.0,
-      "ocean_macroSpace": 0.0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
       {
+        "amount": 0.85,
         "sourceEngine": "Onset",
         "targetEngine": "Oceanic",
-        "type": "RhythmToBlend",
-        "amount": 0.85
+        "type": "RhythmToBlend"
       }
     ]
   },
-  "sequencer": null
+  "couplingIntensity": "Deep",
+  "description": "Receives RhythmToBlend from Onset. Every drum hit sends a cascade reorganization through all 128 particles — a perturbation wave from particle 0 with 0.97× decay per particle. The first particles get maximum disruption; the last barely move. The school reorganizes in sequence. Low tether means the MIDI note barely holds the cloud. Each hit reshapes a drifting colony.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.45,
+    "density": 0.6,
+    "movement": 0.8,
+    "space": 0.65,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Murmuration",
+  "parameters": {
+    "Oceanic": {
+      "ocean_alignment": 0.4,
+      "ocean_ampAttack": 0.05,
+      "ocean_ampDecay": 0.5,
+      "ocean_ampRelease": 2.0,
+      "ocean_ampSustain": 0.7,
+      "ocean_cohesion": 0.4,
+      "ocean_damping": 0.35,
+      "ocean_glide": 0.0,
+      "ocean_lfo1Depth": 0.2,
+      "ocean_lfo1Rate": 0.05,
+      "ocean_lfo1Shape": 0,
+      "ocean_lfo2Depth": 0.1,
+      "ocean_lfo2Rate": 0.03,
+      "ocean_lfo2Shape": 0,
+      "ocean_macroCharacter": 0.0,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroMovement": 0.0,
+      "ocean_macroSpace": 0.0,
+      "ocean_scatter": 0.35,
+      "ocean_separation": 0.55,
+      "ocean_subflocks": 2,
+      "ocean_swarmEnvAttack": 0.1,
+      "ocean_swarmEnvDecay": 0.4,
+      "ocean_swarmEnvRelease": 1.0,
+      "ocean_swarmEnvSustain": 0.65,
+      "ocean_tether": 0.2,
+      "ocean_voiceMode": 1,
+      "ocean_waveform": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "murmuration",
+    "coupling",
+    "onset",
+    "swarm",
+    "entangled",
+    "awakening"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

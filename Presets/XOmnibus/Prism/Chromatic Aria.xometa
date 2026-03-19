@@ -1,13 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Chromatic Aria",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Soaring chromatic melody caught on thermals of pure spectral air.",
+  "dna": {
+    "aggression": 0.13,
+    "brightness": 0.87,
+    "density": 0.4,
+    "movement": 0.3,
+    "space": 0.78,
+    "warmth": 0.2
+  },
   "engines": [
     "Osprey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Soaring chromatic melody caught on thermals of pure spectral air.",
+  "legacy": {
+    "sourceCategory": "Prism",
+    "sourceInstrument": "Osprey",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Chromatic Aria",
+  "parameters": {
+    "Osprey": {
+      "osprey_ampAttack": 0.0079,
+      "osprey_ampDecay": 1.202,
+      "osprey_ampRelease": 2.248,
+      "osprey_ampSustain": 0.781,
+      "osprey_filterCutoff": 16310.0,
+      "osprey_filterReso": 0.113,
+      "osprey_level": 0.77,
+      "osprey_macroCharacter": 0.696,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroMovement": 0.3,
+      "osprey_macroSpace": 0.78,
+      "osprey_reverbMix": 0.624,
+      "osprey_soarHeight": 0.739,
+      "osprey_stereoWidth": 0.862,
+      "osprey_thermalDrift": 1.45,
+      "osprey_wingFlutter": 0.15
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "spectral",
     "chromatic",
@@ -15,48 +57,6 @@
     "soaring",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": "Osprey",
-    "sourceCategory": "Prism",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Osprey": {
-      "osprey_soarHeight": 0.739,
-      "osprey_wingFlutter": 0.15,
-      "osprey_thermalDrift": 1.45,
-      "osprey_filterCutoff": 16310.0,
-      "osprey_filterReso": 0.113,
-      "osprey_reverbMix": 0.624,
-      "osprey_ampAttack": 0.0079,
-      "osprey_ampDecay": 1.202,
-      "osprey_ampSustain": 0.781,
-      "osprey_ampRelease": 2.248,
-      "osprey_stereoWidth": 0.862,
-      "osprey_level": 0.77,
-      "osprey_macroCharacter": 0.696,
-      "osprey_macroMovement": 0.3,
-      "osprey_macroCoupling": 0.0,
-      "osprey_macroSpace": 0.78
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.87,
-    "warmth": 0.2,
-    "movement": 0.3,
-    "density": 0.4,
-    "space": 0.78,
-    "aggression": 0.13
-  }
+  "version": "1.0.0"
 }

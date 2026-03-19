@@ -1,0 +1,94 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "pitchScatter is the primary voice here — at rest it sits at 0.25, giving each grain a slightly different pitch, producing a shimmering halo around the played note. Mod wheel sweeps pitchScatter to maximum: the played pitch becomes a suggestion and the grains scatter across the octave like a chord no one composed. Velocity controls density so a soft key produces one pitched grain at a time — individual drops — while a hard key floods the field. An instrument for playing weather.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.65,
+    "density": 0.3,
+    "movement": 0.65,
+    "space": 0.6,
+    "warmth": 0.35
+  },
+  "engines": [
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "modMatrix": [
+    {
+      "amount": 0.75,
+      "destination": "opal_pitchScatter",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.3,
+      "destination": "opal_posScatter",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.7,
+      "destination": "opal_density",
+      "source": "velocity"
+    },
+    {
+      "amount": -0.15,
+      "destination": "opal_ampAttack",
+      "source": "velocity"
+    },
+    {
+      "amount": 0.4,
+      "destination": "opal_filterCutoff",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.3,
+      "destination": "opal_filterReso",
+      "source": "aftertouch"
+    }
+  ],
+  "mood": "Prism",
+  "name": "Pitch Rain",
+  "parameters": {
+    "Opal": {
+      "opal_ampAttack": 0.08,
+      "opal_ampDecay": 0.5,
+      "opal_ampRelease": 1.8,
+      "opal_ampSustain": 0.7,
+      "opal_density": 0.2,
+      "opal_filterCutoff": 0.6,
+      "opal_filterReso": 0.12,
+      "opal_grainSize": 0.25,
+      "opal_macroCharacter": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitchScatter": 0.25,
+      "opal_posScatter": 0.25,
+      "opal_reverse": 0.0,
+      "opal_speed": 1.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "granular",
+    "prism",
+    "pitch-scatter",
+    "mod-wheel",
+    "velocity",
+    "harmonic",
+    "rain",
+    "stochastic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

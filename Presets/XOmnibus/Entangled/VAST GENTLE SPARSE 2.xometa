@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Overworld \u00d7 Odyssey \u2014 Amplitude Mod coupling at extreme DNA corner.",
+  "description": "Overworld × Odyssey — Amplitude Mod coupling at extreme DNA corner.",
   "tags": [
     "vast",
     "overworld",
@@ -33,7 +33,10 @@
     "space": 0.923,
     "aggression": 0.091
   },
-  "parameters": {},
+  "parameters": {
+    "Overworld": {},
+    "Odyssey": {}
+  },
   "coupling": {
     "pairs": [
       {

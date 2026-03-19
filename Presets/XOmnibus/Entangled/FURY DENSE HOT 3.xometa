@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Optic \u00d7 Ottoni \u2014 Pitch Sync coupling at extreme DNA corner.",
+  "description": "Optic × Ottoni — Pitch Sync coupling at extreme DNA corner.",
   "tags": [
     "fury",
     "optic",
@@ -33,7 +33,10 @@
     "space": 0.606,
     "aggression": 0.911
   },
-  "parameters": {},
+  "parameters": {
+    "Optic": {},
+    "Ottoni": {}
+  },
   "coupling": {
     "pairs": [
       {

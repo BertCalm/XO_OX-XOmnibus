@@ -19,7 +19,7 @@
   "engines": [
     "Overdub"
   ],
-  "description": "Modal bass drone \u2014 one note, many harmonic overtones, deep dub pressure.",
+  "description": "Modal bass drone — one note, many harmonic overtones, deep dub pressure.",
   "tags": [
     "dub",
     "modal",
@@ -55,7 +55,7 @@
       "dub_pitchEnvDepth": 0.06,
       "dub_pitchEnvDecay": 0.02,
       "dub_lfoRate": 0.12,
-      "dub_lfoDepth": 0.025,
+      "dub_lfoDepth": 0.12,
       "dub_lfoDest": 0,
       "dub_driveAmount": 1.3,
       "dub_dryLevel": 0.8,

@@ -33,7 +33,9 @@
     "space": 0.17,
     "aggression": 0.9
   },
-  "parameters": {},
+  "parameters": {
+    "Oblique": {}
+  },
   "tags": [
     "flux",
     "maximum",
@@ -41,5 +43,5 @@
     "cascade",
     "prism"
   ],
-  "description": "Bouncing prisms past Nyquist \u2014 harmonic cascade without ceiling."
+  "description": "Bouncing prisms past Nyquist — harmonic cascade without ceiling."
 }

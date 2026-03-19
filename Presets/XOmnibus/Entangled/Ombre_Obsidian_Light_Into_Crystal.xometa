@@ -1,14 +1,76 @@
 {
-  "schema_version": 1,
-  "name": "Light Into Crystal",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.8,
+        "source": "Ombre",
+        "target": "Obsidian",
+        "type": "PITCH_TRACKING"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Obsidian's crystalline brightness absorbed into the shadow — light becoming hardness becoming dark.",
+  "dna": {
+    "aggression": 0.317,
+    "brightness": 0.603,
+    "density": 0.538,
+    "movement": 0.389,
+    "space": 0.622,
+    "warmth": 0.559
+  },
   "engines": [
     "Ombre",
     "Obsidian"
   ],
-  "author": "XO_OX Deep Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "Obsidian's crystalline brightness absorbed into the shadow — light becoming hardness becoming dark.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Light Into Crystal",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_filterCutoff": 6535.2,
+      "obsidian_level": 0.73
+    },
+    "Ombre": {
+      "ombre_ampAttack": 0.1187,
+      "ombre_ampDecay": 0.949,
+      "ombre_ampRelease": 1.148,
+      "ombre_ampSustain": 0.788,
+      "ombre_blend": 0.716,
+      "ombre_crossfadeRate": 0.497,
+      "ombre_duskPosition": 0.391,
+      "ombre_filterCutoff": 2136.0,
+      "ombre_filterReso": 0.17,
+      "ombre_forgetRate": 0.505,
+      "ombre_level": 0.787,
+      "ombre_lfo1Depth": 0.541,
+      "ombre_lfo1Rate": 1.186,
+      "ombre_lfo2Depth": 0.477,
+      "ombre_lfo2Rate": 0.351,
+      "ombre_memoryDepth": 0.835,
+      "ombre_modAttack": 0.0488,
+      "ombre_modDecay": 0.419,
+      "ombre_modRelease": 0.776,
+      "ombre_modSustain": 0.612,
+      "ombre_narrativeA": 0.765,
+      "ombre_narrativeB": 0.476,
+      "ombre_reverbDamp": 0.377,
+      "ombre_reverbSize": 0.457,
+      "ombre_shadowAmount": 0.541,
+      "ombre_spaceMix": 0.507,
+      "ombre_toneA": 4798.4,
+      "ombre_toneB": 1173.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -18,68 +80,6 @@
     "twilight",
     "liminal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "Ombre": {
-      "ombre_blend": 0.716,
-      "ombre_memoryDepth": 0.835,
-      "ombre_forgetRate": 0.505,
-      "ombre_shadowAmount": 0.541,
-      "ombre_duskPosition": 0.391,
-      "ombre_narrativeA": 0.765,
-      "ombre_narrativeB": 0.476,
-      "ombre_crossfadeRate": 0.497,
-      "ombre_toneA": 4798.4,
-      "ombre_toneB": 1173.3,
-      "ombre_filterCutoff": 2136.0,
-      "ombre_filterReso": 0.17,
-      "ombre_level": 0.787,
-      "ombre_ampAttack": 0.1187,
-      "ombre_ampDecay": 0.949,
-      "ombre_ampSustain": 0.788,
-      "ombre_ampRelease": 1.148,
-      "ombre_modAttack": 0.0488,
-      "ombre_modDecay": 0.419,
-      "ombre_modSustain": 0.612,
-      "ombre_modRelease": 0.776,
-      "ombre_lfo1Rate": 1.186,
-      "ombre_lfo1Depth": 0.541,
-      "ombre_lfo2Rate": 0.351,
-      "ombre_lfo2Depth": 0.477,
-      "ombre_spaceMix": 0.507,
-      "ombre_reverbSize": 0.457,
-      "ombre_reverbDamp": 0.377
-    },
-    "Obsidian": {
-      "obsidian_level": 0.73,
-      "obsidian_filterCutoff": 6535.2
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "PITCH_TRACKING",
-        "source": "Ombre",
-        "target": "Obsidian",
-        "amount": 0.8
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.603,
-    "warmth": 0.559,
-    "movement": 0.389,
-    "density": 0.538,
-    "space": 0.622,
-    "aggression": 0.317
-  }
+  "version": "1.0.0"
 }

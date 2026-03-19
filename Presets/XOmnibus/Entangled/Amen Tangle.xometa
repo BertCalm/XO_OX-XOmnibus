@@ -1,91 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "Amen Tangle",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Deep",
+  "created": "2026-03-05",
+  "description": "Breakbeat-driven coupling at jungle tempo. Chopped envelope triggers from X rip through O's filter while pitch modulation adds chaos.",
+  "dna": {
+    "aggression": 0.375,
+    "brightness": 0.903,
+    "density": 0.608,
+    "movement": 0.473,
+    "space": 0.647,
+    "warmth": 0.696
+  },
   "engines": [
     "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Breakbeat-driven coupling at jungle tempo. Chopped envelope triggers from X rip through O's filter while pitch modulation adds chaos.",
-  "tags": [
-    "amen",
-    "jungle",
-    "breakbeat",
-    "chopped",
-    "chaotic"
-  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "Snap+Morph",
     "Bloom",
     "Coupling",
     "Space"
   ],
-  "couplingIntensity": "Deep",
-  "tempo": 174,
-  "created": "2026-03-05",
-  "legacy": {
-    "sourceInstrument": "OddfeliX",
-    "sourceCategory": "Entangled",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Amen Tangle",
   "parameters": {
     "OddfeliX": {
+      "compAttack": 21.038,
+      "compRatio": 6.01,
+      "compRelease": 200.287,
+      "compThreshold": -18.019,
+      "compressorEnabled": 1,
       "couplingAmount": 0.845,
-      "masterBalance": 0.06,
-      "xOscMode": 2,
-      "xSnap": 0.621,
-      "xDecay": 2.706,
-      "xFilterCutoff": 6011.465,
-      "xFilterReso": 0.521,
-      "xDetune": 21.038,
-      "xLevel": 0.841,
-      "xPitchLock": 0,
-      "xUnison": 1,
-      "xPolyphony": 3,
-      "oMorph": 2.406,
-      "oBloom": 2.906,
-      "oDecay": 4.208,
-      "oSustain": 0.781,
-      "oRelease": 2.906,
-      "oFilterCutoff": 5611.465,
-      "oFilterReso": 0.297,
-      "oDrift": 0.421,
-      "oSub": 0.601,
-      "oDetune": 21.038,
-      "oLevel": 0.841,
-      "oPolyphony": 4,
+      "delayEnabled": 1,
+      "delayFeedback": 0.621,
+      "delayMix": 0.441,
+      "delayTime": 0.517,
+      "delayWobble": 0.25,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
       "macro1": 0.491,
       "macro2": 0.378,
       "macro3": 0.387,
       "macro4": 0.56,
-      "delayEnabled": 1,
-      "delayTime": 0.517,
-      "delayFeedback": 0.621,
-      "delayMix": 0.441,
-      "delayWobble": 0.25,
-      "reverbEnabled": 1,
-      "reverbDecay": 0.781,
-      "reverbSize": 1.242,
-      "reverbMix": 0.441,
-      "reverbDamping": 0.521,
-      "phaserEnabled": 0,
-      "phaserRate": 0.5,
+      "masterBalance": 0.06,
+      "oBloom": 2.906,
+      "oDecay": 4.208,
+      "oDetune": 21.038,
+      "oDrift": 0.421,
+      "oFilterCutoff": 5611.465,
+      "oFilterReso": 0.297,
+      "oLevel": 0.841,
+      "oMorph": 2.406,
+      "oPolyphony": 4,
+      "oRelease": 2.906,
+      "oSub": 0.601,
+      "oSustain": 0.781,
       "phaserDepth": 0.5,
+      "phaserEnabled": 0,
       "phaserMix": 0.3,
-      "lofiEnabled": 0,
-      "lofiBitDepth": 12.0,
-      "lofiRateReduce": 1.0,
-      "lofiWowFlutter": 0.0,
-      "lofiMix": 0.3,
-      "compressorEnabled": 1,
-      "compThreshold": -18.019,
-      "compRatio": 6.01,
-      "compAttack": 21.038,
-      "compRelease": 200.287
+      "phaserRate": 0.5,
+      "reverbDamping": 0.521,
+      "reverbDecay": 0.781,
+      "reverbEnabled": 1,
+      "reverbMix": 0.441,
+      "reverbSize": 1.242,
+      "xDecay": 2.706,
+      "xDetune": 21.038,
+      "xFilterCutoff": 6011.465,
+      "xFilterReso": 0.521,
+      "xLevel": 0.841,
+      "xOscMode": 2,
+      "xPitchLock": 0,
+      "xPolyphony": 3,
+      "xSnap": 0.621,
+      "xUnison": 1
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": {
     "bpm": 174.0,
     "swing": 0.16,
@@ -96,32 +95,32 @@
         "muted": false,
         "steps": [
           {
-            "index": 0,
             "active": false,
+            "index": 0,
             "note": 36,
-            "velocity": 0.9,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.9
           },
           {
+            "active": false,
             "index": 6,
-            "active": false,
             "note": 36,
-            "velocity": 0.9,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.9
           },
           {
+            "active": false,
             "index": 8,
-            "active": false,
             "note": 36,
-            "velocity": 0.9,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.9
           },
           {
+            "active": false,
             "index": 14,
-            "active": false,
             "note": 36,
-            "velocity": 0.9,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.9
           }
         ]
       },
@@ -131,18 +130,18 @@
         "muted": false,
         "steps": [
           {
+            "active": false,
             "index": 4,
-            "active": false,
             "note": 38,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
-            "index": 12,
             "active": false,
+            "index": 12,
             "note": 38,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           }
         ]
       },
@@ -152,60 +151,60 @@
         "muted": false,
         "steps": [
           {
-            "index": 0,
             "active": false,
+            "index": 0,
             "note": 42,
-            "velocity": 0.7531341496745902,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.7531341496745902
           },
           {
+            "active": false,
             "index": 2,
-            "active": false,
             "note": 42,
-            "velocity": 0.6717805026964705,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.6717805026964705
           },
           {
+            "active": false,
             "index": 4,
-            "active": false,
             "note": 42,
-            "velocity": 0.5092455835568824,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.5092455835568824
           },
           {
+            "active": false,
             "index": 6,
-            "active": false,
             "note": 42,
-            "velocity": 0.6841114626461899,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.6841114626461899
           },
           {
+            "active": false,
             "index": 8,
-            "active": false,
             "note": 42,
-            "velocity": 0.6031941714704023,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.6031941714704023
           },
           {
+            "active": false,
             "index": 10,
-            "active": false,
             "note": 42,
-            "velocity": 0.5390152055162506,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.5390152055162506
           },
           {
+            "active": false,
             "index": 12,
-            "active": false,
             "note": 42,
-            "velocity": 0.5684090926704018,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.5684090926704018
           },
           {
-            "index": 14,
             "active": false,
+            "index": 14,
             "note": 42,
-            "velocity": 0.5770559497589841,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.5770559497589841
           }
         ]
       },
@@ -215,43 +214,44 @@
         "muted": false,
         "steps": [
           {
+            "active": false,
             "index": 4,
-            "active": false,
             "note": 54,
-            "velocity": 0.8146971393177977,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8146971393177977
           },
           {
+            "active": false,
             "index": 6,
-            "active": false,
             "note": 54,
-            "velocity": 0.8578467374569381,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8578467374569381
           },
           {
+            "active": false,
             "index": 14,
-            "active": false,
             "note": 55,
-            "velocity": 0.7652757581009706,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.7652757581009706
           },
           {
-            "index": 15,
             "active": false,
+            "index": 15,
             "note": 55,
-            "velocity": 0.8963916309169475,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8963916309169475
           }
         ]
       }
     ]
   },
-  "dna": {
-    "brightness": 0.903,
-    "warmth": 0.696,
-    "movement": 0.473,
-    "density": 0.608,
-    "space": 0.647,
-    "aggression": 0.375
-  }
+  "tags": [
+    "amen",
+    "jungle",
+    "breakbeat",
+    "chopped",
+    "chaotic"
+  ],
+  "tempo": 174,
+  "version": "1.0.0"
 }

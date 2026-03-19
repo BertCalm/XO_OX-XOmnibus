@@ -1,65 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "Zion Gate",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-08",
+  "description": "Expansive dub atmospheres atmosphere with deep dub echo and vast reverb space.",
+  "dna": {
+    "aggression": 0.156,
+    "brightness": 0.593,
+    "density": 0.45,
+    "movement": 0.568,
+    "space": 0.789,
+    "warmth": 0.468
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expansive dub atmospheres atmosphere with deep dub echo and vast reverb space.",
-  "tags": [
-    "spacious",
-    "saw",
-    "verdub"
-  ],
+  "legacy": {
+    "sourceCategory": "Dub Atmospheres",
+    "sourceInstrument": "Overdub",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Overdub",
-    "sourceCategory": "Dub Atmospheres",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Zion Gate",
   "parameters": {
     "Overdub": {
-      "dub_oscWave": 2.0,
-      "dub_drift": 0.2,
-      "dub_subLevel": 0.4,
-      "dub_noiseLevel": 0.05,
-      "dub_filterCutoff": 1200.0,
-      "dub_filterReso": 0.3,
-      "dub_filterEnvAmt": 0.15,
-      "dub_lfoRate": 0.12,
-      "dub_lfoDepth": 0.3,
-      "dub_lfoDest": 1.0,
       "dub_attack": 1.5,
       "dub_decay": 2.0,
-      "dub_sustain": 0.75,
-      "dub_release": 4.0,
       "dub_delayFeedback": 0.6,
-      "dub_delayWow": 0.25,
       "dub_delayWear": 0.3,
-      "dub_sendLevel": 0.5,
-      "dub_reverbSize": 0.9,
+      "dub_delayWow": 0.25,
+      "dub_drift": 0.2,
+      "dub_filterCutoff": 1200.0,
+      "dub_filterEnvAmt": 0.15,
+      "dub_filterReso": 0.3,
+      "dub_lfoDepth": 0.3,
+      "dub_lfoDest": 1.0,
+      "dub_lfoRate": 0.12,
+      "dub_noiseLevel": 0.05,
+      "dub_oscWave": 2.0,
+      "dub_release": 4.0,
       "dub_reverbDamp": 0.35,
-      "dub_reverbMix": 0.6
+      "dub_reverbMix": 0.6,
+      "dub_reverbSize": 0.9,
+      "dub_sendLevel": 0.5,
+      "dub_subLevel": 0.4,
+      "dub_sustain": 0.75
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.593,
-    "warmth": 0.468,
-    "movement": 0.568,
-    "density": 0.45,
-    "space": 0.789,
-    "aggression": 0.156
-  }
+  "tags": [
+    "spacious",
+    "saw",
+    "verdub"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

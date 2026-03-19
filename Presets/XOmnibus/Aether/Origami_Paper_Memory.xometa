@@ -1,0 +1,60 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "A fold that cannot be undone — the crease holds the shape of what was. Warm wavefold at the midpoint, glacially slow LFO, long reverb. The paper remembers the shape of every hand that touched it.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.48,
+    "density": 0.32,
+    "movement": 0.2,
+    "space": 0.88,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Origami"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "CREASE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Paper Memory",
+  "parameters": {
+    "Origami": {
+      "origami_ampAttack": 3.2,
+      "origami_ampDecay": 1.8,
+      "origami_ampRelease": 9.0,
+      "origami_ampSustain": 0.72,
+      "origami_creaseDepth": 0.45,
+      "origami_filterCutoff": 0.42,
+      "origami_filterReso": 0.18,
+      "origami_foldAmt": 0.55,
+      "origami_foldPoint": 0.5,
+      "origami_lfoDepth": 0.28,
+      "origami_lfoRate": 0.06,
+      "origami_macroCoupling": 0.0,
+      "origami_macroCrease": 0.0,
+      "origami_macroFold": 0.0,
+      "origami_macroSpace": 0.0,
+      "origami_reverbMix": 0.85
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "paper",
+    "memory",
+    "warm",
+    "slow",
+    "fold",
+    "crease"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

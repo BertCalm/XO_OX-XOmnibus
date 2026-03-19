@@ -1,0 +1,61 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Noise-forward granular voice built from tiny grains — 0.08 size — with moderate posScatter 0.5 and pitchScatter 0.15. The result is breath: not noise, not pitch, the thing between. Low filter cutoff, medium resonance, fast attack. Play softly for whisper, hard for exhale. The body before it decides to sing.",
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.35,
+    "density": 0.5,
+    "movement": 0.45,
+    "space": 0.4,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Breath Source",
+  "parameters": {
+    "Opal": {
+      "opal_ampAttack": 0.12,
+      "opal_ampDecay": 0.4,
+      "opal_ampRelease": 1.5,
+      "opal_ampSustain": 0.75,
+      "opal_density": 0.58,
+      "opal_filterCutoff": 0.38,
+      "opal_filterReso": 0.22,
+      "opal_grainSize": 0.08,
+      "opal_macroCharacter": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitchScatter": 0.15,
+      "opal_posScatter": 0.5,
+      "opal_reverse": 0.0,
+      "opal_speed": 1.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "granular",
+    "breath",
+    "noise",
+    "texture",
+    "organic",
+    "foundation",
+    "intimate"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

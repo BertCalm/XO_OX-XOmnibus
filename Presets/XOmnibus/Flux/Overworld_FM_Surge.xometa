@@ -1,0 +1,69 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OW-IV Living FM unlocked: YM2612 Genesis vertex at full weight, fmLfoDepth 22 riding at 1Hz for that DX7 vintage vibrato shimmer. ERA fully committed to Vertex 1 — no triangle softness, pure metallic surge. eraPortamento 1.2s makes the ERA position a living creature.",
+  "dna": {
+    "aggression": 0.69,
+    "brightness": 0.85,
+    "density": 0.58,
+    "movement": 0.76,
+    "space": 0.55,
+    "warmth": 0.31
+  },
+  "engines": [
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "FM Surge",
+  "parameters": {
+    "Overworld": {
+      "ow_couplingBus": 0,
+      "ow_couplingLevel": 0.06,
+      "ow_era": 0.88,
+      "ow_eraDrift": 0.067,
+      "ow_eraMemory": 0.3,
+      "ow_eraPortamento": 1.2,
+      "ow_eraY": 0.12,
+      "ow_filterCutoff": 0.82,
+      "ow_filterEnvDepth": 0.65,
+      "ow_fmLfoDepth": 22.0,
+      "ow_fmLfoRate": 1.0,
+      "ow_glitch": 0.19,
+      "ow_macro_chaos": 0.19,
+      "ow_macro_couple": 0.06,
+      "ow_macro_era": 0.88,
+      "ow_macro_space": 0.61,
+      "ow_outputLevel": 0.85
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonic_dna": {
+    "aggression": 0.69,
+    "brightness": 0.85,
+    "density": 0.58,
+    "movement": 0.76,
+    "space": 0.55,
+    "warmth": 0.31
+  },
+  "tags": [
+    "fm",
+    "genesis",
+    "vintage",
+    "vibrato",
+    "metallic",
+    "flux",
+    "surge"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

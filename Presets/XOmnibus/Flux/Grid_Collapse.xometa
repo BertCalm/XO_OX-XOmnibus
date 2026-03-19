@@ -33,7 +33,9 @@
     "space": 0.07,
     "aggression": 0.88
   },
-  "parameters": {},
+  "parameters": {
+    "Overworld": {}
+  },
   "tags": [
     "flux",
     "high-flux",
@@ -41,5 +43,5 @@
     "grid",
     "collapse"
   ],
-  "description": "Overworld era crossfade mid-collapse \u2014 all three chip eras failing together."
+  "description": "Overworld era crossfade mid-collapse — all three chip eras failing together."
 }

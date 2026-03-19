@@ -1,49 +1,62 @@
 {
-  "schema_version": 1,
-  "name": "Drama At Source",
-  "mood": "Aether",
-  "engines": ["Ole"],
-  "author": "Guru Bin — Constellation Deepening 2026-03-16",
-  "version": "1.0.0",
-  "description": "DRAMA is not a macro any longer — it is the fundamental frequency. All three aunts have gone to the origin of their instruments. The charango sounds like the tree it came from. Rhythm has become continental drift.",
-  "tags": ["aether", "drama", "extended-technique", "afro-latin", "transcendent"],
-  "macroLabels": ["DRAMA", "RHYTHM", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
   "created": "2026-03-16",
+  "description": "DRAMA is not a macro any longer — it is the fundamental frequency. All three aunts have gone to the origin of their instruments. The charango sounds like the tree it came from. Rhythm has become continental drift.",
   "dna": {
+    "aggression": 0.58,
     "brightness": 0.62,
-    "warmth": 0.44,
-    "movement": 0.87,
     "density": 0.81,
+    "movement": 0.87,
     "space": 0.76,
-    "aggression": 0.58
+    "warmth": 0.44
   },
+  "engines": [
+    "Ole"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "RHYTHM",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Drama At Source",
   "parameters": {
     "Ole": {
+      "ole_allianceBlend": 0.881,
+      "ole_allianceConfig": 2,
+      "ole_aunt1Brightness": 0.891,
       "ole_aunt1Level": 0.912,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.891,
-      "ole_aunt2Level": 0.847,
       "ole_aunt2CoinPress": 0.784,
       "ole_aunt2GourdSize": 0.918,
+      "ole_aunt2Level": 0.847,
+      "ole_aunt3Brightness": 0.814,
       "ole_aunt3Level": 0.871,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.814,
       "ole_damping": 0.978,
-      "ole_sympatheticAmt": 0.717,
-      "ole_driftRate": 0.014,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 2,
-      "ole_allianceBlend": 0.881,
-      "ole_husbandOudLevel": 0.512,
+      "ole_driftRate": 0.014,
       "ole_husbandBouzLevel": 0.341,
+      "ole_husbandOudLevel": 0.512,
       "ole_husbandPinLevel": 0.284,
+      "ole_macroCoupling": 0.0,
       "ole_macroDrama": 0.938,
       "ole_macroRhythm": 0.847,
-      "ole_macroCoupling": 0.0,
-      "ole_macroSpace": 0.714
+      "ole_macroSpace": 0.714,
+      "ole_sympatheticAmt": 0.717
     }
   },
-  "coupling": null,
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "drama",
+    "extended-technique",
+    "afro-latin",
+    "transcendent"
+  ],
+  "version": "1.0.0"
 }

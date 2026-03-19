@@ -1,61 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Rain Stain",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expansive textures atmosphere with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.151,
+    "brightness": 0.431,
+    "density": 0.188,
+    "movement": 0.0,
+    "space": 0.477,
+    "warmth": 0.52
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expansive textures atmosphere with bob character and analog drift.",
-  "tags": [
-    "texture",
-    "rain",
-    "ambient"
-  ],
+  "legacy": {
+    "sourceCategory": "Textures",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Textures",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Rain Stain",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 3.0,
+      "bob_ampAttack": 4.0,
+      "bob_ampRelease": 8.0,
+      "bob_ampSustain": 0.93,
+      "bob_bobMode": 0.55,
+      "bob_dustAmount": 0.35,
+      "bob_dustTone": 0.38,
+      "bob_fltCutoff": 4500.0,
+      "bob_fltMode": 0.0,
+      "bob_fltReso": 0.06,
       "bob_oscA_drift": 0.4,
       "bob_oscA_shape": 0.2,
+      "bob_oscA_wave": 3.0,
       "bob_oscB_blend": 0.0,
       "bob_texLevel": 0.5,
       "bob_texMode": 0.0,
       "bob_texTone": 0.45,
-      "bob_texWidth": 0.75,
-      "bob_dustAmount": 0.35,
-      "bob_dustTone": 0.38,
-      "bob_fltMode": 0.0,
-      "bob_fltCutoff": 4500.0,
-      "bob_fltReso": 0.06,
-      "bob_ampAttack": 4.0,
-      "bob_ampSustain": 0.93,
-      "bob_ampRelease": 8.0,
-      "bob_bobMode": 0.55
+      "bob_texWidth": 0.75
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.431,
-    "warmth": 0.52,
-    "movement": 0.0,
-    "density": 0.188,
-    "space": 0.477,
-    "aggression": 0.151
-  }
+  "tags": [
+    "texture",
+    "rain",
+    "ambient"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -4,6 +4,18 @@ project(XOmnibus VERSION 0.1.0 LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Security hardening flags
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
+    add_compile_options(
+        -Wall -Wextra -Wpedantic
+        -fstack-protector-strong
+        -D_FORTIFY_SOURCE=2
+    )
+    if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+        add_compile_options(-ffunction-sections -fdata-sections)
+    endif()
+endif()
+
 # Platform detection
 if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
     set(XO_MOBILE ON)
@@ -16,6 +28,29 @@ endif()
 
 # JUCE
 add_subdirectory(Libs/JUCE)
+
+# Rive C++ runtime (MIT licensed — https://github.com/rive-app/rive-cpp)
+# Clone into Libs/rive-cpp:
+#   git clone https://github.com/rive-app/rive-cpp Libs/rive-cpp
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Libs/rive-cpp/CMakeLists.txt")
+    add_subdirectory(Libs/rive-cpp)
+    set(XO_HAS_RIVE ON)
+else()
+    message(STATUS "Rive not found — Oscar animation disabled (clone Libs/rive-cpp to enable)")
+    set(XO_HAS_RIVE OFF)
+endif()
+
+# Oscar character — oscar.riv embedded as C++ binary data.
+# Place the authored .riv file at Resources/Oscar/oscar.riv before building.
+# JUCE generates BinaryData::oscar_riv and BinaryData::oscar_rivSize.
+if(XO_HAS_RIVE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Resources/Oscar/oscar.riv")
+    juce_add_binary_data(OscarRivData SOURCES
+        Resources/Oscar/oscar.riv
+    )
+    set(XO_HAS_OSCAR ON)
+else()
+    set(XO_HAS_OSCAR OFF)
+endif()
 
 juce_add_plugin(XOmnibus
     COMPANY_NAME "XO_OX Designs"
@@ -120,6 +155,11 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Ocelot/TapeWarp.h
     Source/Engines/Ocelot/WaveFolder.h
 
+    Source/Engines/Osprey/OspreyEngine.h
+    Source/Engines/Osprey/OspreyEngine.cpp
+    Source/Engines/Osteria/OsteriaEngine.h
+    Source/Engines/Osteria/OsteriaEngine.cpp
+
     Source/Engines/Owlfish/OwlfishEngine.h
     Source/Engines/Owlfish/OwlfishEngine.cpp
     Source/Engines/Owlfish/OwlfishParameters.h
@@ -159,6 +199,18 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Orca/OrcaEngine.cpp
     Source/Engines/Octopus/OctopusEngine.h
     Source/Engines/Octopus/OctopusEngine.cpp
+    Source/Engines/Obrix/ObrixEngine.h
+    Source/Engines/Obrix/ObrixEngine.cpp
+
+    # V1 Concept Engines — Full DSP Builds
+    Source/Engines/Ostinato/OstinatoEngine.h
+    Source/Engines/Ostinato/OstinatoEngine.cpp
+    Source/Engines/OpenSky/OpenSkyEngine.h
+    Source/Engines/OpenSky/OpenSkyEngine.cpp
+    Source/Engines/OceanDeep/OceanDeepEngine.h
+    Source/Engines/OceanDeep/OceanDeepEngine.cpp
+    Source/Engines/Ouie/OuieEngine.h
+    Source/Engines/Ouie/OuieEngine.cpp
 
     # V1 Concept Engines — DSP build (OPENSKY first)
     Source/Engines/OpenSky/OpenSkyEngine.h
@@ -188,6 +240,8 @@ target_sources(XOmnibus PRIVATE
     # Export pipeline
     Source/Export/XPNCoverArt.h
     Source/Export/XPNExporter.h
+    Source/Export/XOutshine.h
+    Source/Export/XPNDrumExporter.h
 
     # Core (MIDI Learn — shared across platforms)
     Source/Core/MIDILearnManager.h
@@ -197,6 +251,9 @@ target_sources(XOmnibus PRIVATE
     Source/UI/PlaySurface/PlaySurface.h
     Source/UI/CouplingStrip/CouplingStripEditor.h
     Source/UI/OpticVisualizer/OpticVisualizer.h
+    Source/UI/PresetBrowser/PresetBrowser.h
+
+    # Oscar (OddOscar animated companion) — requires Rive, added conditionally below
 
     # UI (Mobile — compiled on all platforms, gated by XO_MOBILE)
     Source/UI/Mobile/MobileTouchHandler.h
@@ -212,17 +269,29 @@ target_sources(XOmnibus PRIVATE
     Source/XOmnibusProcessor.cpp
 )
 
+# Oscar animated companion — requires Rive runtime
+if(XO_HAS_RIVE)
+    target_sources(XOmnibus PRIVATE
+        Source/UI/OddOscar/OscarAnimState.h
+        Source/UI/OddOscar/OscarJuceRenderer.h
+        Source/UI/OddOscar/OscarRiveComponent.h
+    )
+endif()
+
 # XOverworld DSP headers — self-contained under Source/Engines/Overworld/
 target_include_directories(XOmnibus PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/Source/Engines/Overworld"
 )
 
-# XOverlap and XOutwit DSP headers are resolved via relative-path symlinks:
+# XOverlap and XOutwit DSP headers — their local FastMath.h stubs forward to
+# the shared XOmnibus Source/DSP/FastMath.h via #include "DSP/FastMath.h".
+# That path requires Source/ in the search path. Engine-specific files (Voice.h,
+# FDN.h, ArmChannel.h, etc.) are resolved via symlinks:
 #   Source/Engines/Overlap/DSP/ -> ../XOverlap/Source/DSP/
 #   Source/Engines/Outwit/DSP/  -> ../XOutwit/Source/DSP/
-# The compiler resolves "DSP/Voice.h" relative to the including adapter header's
-# directory first, so each adapter finds its own DSP files without global search
-# paths and without any cross-repo name collisions.
+target_include_directories(XOmnibus PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/Source"
+)
 
 target_compile_definitions(XOmnibus PUBLIC
     JUCE_WEB_BROWSER=0
@@ -237,6 +306,14 @@ target_link_libraries(XOmnibus PRIVATE
     juce::juce_dsp
     juce::juce_gui_extra
 )
+if(XO_HAS_RIVE)
+    target_link_libraries(XOmnibus PRIVATE rive)
+    target_compile_definitions(XOmnibus PRIVATE XO_HAS_RIVE=1)
+endif()
+if(XO_HAS_OSCAR)
+    target_link_libraries(XOmnibus PRIVATE OscarRivData)
+    target_compile_definitions(XOmnibus PRIVATE XO_HAS_OSCAR=1)
+endif()
 
 if(XO_MOBILE)
     target_link_libraries(XOmnibus PRIVATE
@@ -253,6 +330,8 @@ add_executable(XOmnibusTests
     Tests/CouplingTests/CouplingMatrixTests.cpp
     Tests/PresetTests/PresetRoundTripTests.cpp
     Tests/ExportTests/XPNExportTests.cpp
+    Tests/DoctrineTests/DoctrineTests.cpp
+    Tests/FamilyWaveguideTest.cpp
 )
 
 target_include_directories(XOmnibusTests PRIVATE
@@ -274,3 +353,6 @@ target_compile_definitions(XOmnibusTests PRIVATE
     JUCE_USE_CURL=0
     JUCE_DISPLAY_SPLASH_SCREEN=0
 )
+
+enable_testing()
+add_test(NAME XOmnibusTests COMMAND XOmnibusTests)

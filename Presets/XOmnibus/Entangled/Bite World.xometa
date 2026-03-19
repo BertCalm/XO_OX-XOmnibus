@@ -16,10 +16,10 @@
     "dark"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
   ],
   "couplingIntensity": "Moderate",
   "tempo": null,
@@ -31,7 +31,10 @@
     "space": 0.15,
     "aggression": 0.45
   },
-  "parameters": {},
+  "parameters": {
+    "Overbite": {},
+    "Overworld": {}
+  },
   "coupling": {
     "pairs": [
       {

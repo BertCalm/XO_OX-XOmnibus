@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Overdub \u00d7 Owlfish \u2014 Amplitude Mod coupling at extreme DNA corner.",
+  "description": "Overdub × Owlfish — Amplitude Mod coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "overdub",
@@ -33,7 +33,10 @@
     "space": 0.403,
     "aggression": 0.922
   },
-  "parameters": {},
+  "parameters": {
+    "Overdub": {},
+    "Owlfish": {}
+  },
   "coupling": {
     "pairs": [
       {

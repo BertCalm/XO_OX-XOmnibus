@@ -1,19 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Orbital Resonance",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.706,
+        "description": "Owlfish drives Orbital via ResonanceChain",
+        "source": "Owlfish",
+        "target": "Orbital",
+        "type": "ResonanceChain"
+      }
+    ]
+  },
+  "couplingIntensity": "Light",
+  "created": "2026-03-16",
+  "description": "ORBITAL's group system phase-locks to OWLFISH's resonant frequency — all orbital voices sharing the Mixtur-Trautonium's pitch center.",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.594,
+    "density": 0.621,
+    "movement": 0.344,
+    "space": 0.581,
+    "warmth": 0.586
+  },
   "engines": [
     "Owlfish",
     "Orbital"
-  ],
-  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "ORBITAL's group system phase-locks to OWLFISH's resonant frequency — all orbital voices sharing the Mixtur-Trautonium's pitch center.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "owlfish",
-    "orbital"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,64 +32,53 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Light",
-  "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.594,
-    "warmth": 0.586,
-    "movement": 0.344,
-    "density": 0.621,
-    "space": 0.581,
-    "aggression": 0.35
-  },
+  "mood": "Entangled",
+  "name": "Orbital Resonance",
   "parameters": {
-    "Owlfish": {
-      "owl_filterCutoff": 0.626,
-      "owl_filterRes": 0.577,
-      "owl_oscPitch": 0.419,
-      "owl_oscLevel": 0.642,
-      "owl_subLevel": 0.463,
-      "owl_mixturSpread": 0.263,
-      "owl_mixturBlend": 0.348,
-      "owl_resonantPitch": 0.55,
-      "owl_resonantFeedback": 0.562,
-      "owl_abyssalDrive": 0.518,
-      "owl_ampAttack": 0.336,
-      "owl_ampDecay": 0.898,
-      "owl_ampSustain": 0.509,
-      "owl_ampRelease": 2.54,
-      "owl_lfoRate": 0.249,
-      "owl_lfoDepth": 0.093,
-      "owl_lfoShape": 0.139,
-      "owl_envDepth": 0.485,
-      "owl_hall": 0.353,
-      "owl_shimmer": 0.277,
-      "owl_macroCharacter": 0.0,
-      "owl_macroMovement": 0.0,
-      "owl_macroCoupling": 0.0,
-      "owl_macroSpace": 0.0
-    },
     "Orbital": {
+      "orb_attack": 0.087,
       "orb_brightness": 0.559,
       "orb_filterCutoff": 0.425,
       "orb_lfoRate": 0.22,
-      "orb_attack": 0.087,
-      "orb_release": 1.0,
       "orb_macroCharacter": 0.018,
-      "orb_macroCoupling": 0.026
+      "orb_macroCoupling": 0.026,
+      "orb_release": 1.0
+    },
+    "Owlfish": {
+      "owl_abyssalDrive": 0.518,
+      "owl_ampAttack": 0.336,
+      "owl_ampDecay": 0.898,
+      "owl_ampRelease": 2.54,
+      "owl_ampSustain": 0.509,
+      "owl_envDepth": 0.485,
+      "owl_filterCutoff": 0.626,
+      "owl_filterRes": 0.577,
+      "owl_hall": 0.353,
+      "owl_lfoDepth": 0.093,
+      "owl_lfoRate": 0.249,
+      "owl_lfoShape": 0.139,
+      "owl_macroCharacter": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroSpace": 0.0,
+      "owl_mixturBlend": 0.348,
+      "owl_mixturSpread": 0.263,
+      "owl_oscLevel": 0.642,
+      "owl_oscPitch": 0.419,
+      "owl_resonantFeedback": 0.562,
+      "owl_resonantPitch": 0.55,
+      "owl_shimmer": 0.277,
+      "owl_subLevel": 0.463
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "source": "Owlfish",
-        "target": "Orbital",
-        "type": "ResonanceChain",
-        "amount": 0.706,
-        "description": "Owlfish drives Orbital via ResonanceChain"
-      }
-    ]
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "orbital"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

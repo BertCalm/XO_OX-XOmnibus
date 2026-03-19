@@ -1,13 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Solar Wind",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Eight oscillators at elevated detune, group envelope fluctuating at moderate rate. Spread allows voices to interfere. Not storm \u2014 charged particle stream. The quiet danger of radiation.",
+  "dna": {
+    "aggression": 0.42,
+    "brightness": 0.62,
+    "density": 0.72,
+    "movement": 0.58,
+    "space": 0.78,
+    "warmth": 0.28
+  },
   "engines": [
     "Orbital"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "Eight oscillators at elevated detune, group envelope fluctuating at moderate rate. Spread allows voices to interfere. Not storm \u2014 charged particle stream. The quiet danger of radiation.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Solar Wind II",
+  "parameters": {
+    "Orbital": {
+      "orb_ampAttack": 0.5,
+      "orb_ampDecay": 1.2,
+      "orb_ampRelease": 4.5,
+      "orb_ampSustain": 0.65,
+      "orb_brightness": 0.65,
+      "orb_detune": 0.38,
+      "orb_filterCutoff": 0.62,
+      "orb_filterReso": 0.38,
+      "orb_groupEnvDepth": 0.72,
+      "orb_groupEnvRate": 0.35,
+      "orb_oscCount": 8,
+      "orb_spread": 0.68
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "tense",
@@ -15,46 +55,6 @@
     "solar-wind",
     "charged"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Orbital": {
-      "orb_brightness": 0.65,
-      "orb_groupEnvRate": 0.35,
-      "orb_groupEnvDepth": 0.72,
-      "orb_oscCount": 8,
-      "orb_spread": 0.68,
-      "orb_detune": 0.38,
-      "orb_filterCutoff": 0.62,
-      "orb_filterReso": 0.38,
-      "orb_ampAttack": 0.5,
-      "orb_ampDecay": 1.2,
-      "orb_ampSustain": 0.65,
-      "orb_ampRelease": 4.5
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.62,
-    "warmth": 0.28,
-    "movement": 0.58,
-    "density": 0.72,
-    "space": 0.78,
-    "aggression": 0.42
-  }
+  "version": "1.0.0"
 }

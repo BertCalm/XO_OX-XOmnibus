@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oracle \u00d7 Ottoni \u2014 Pitch Sync coupling at extreme DNA corner.",
+  "description": "Oracle × Ottoni — Pitch Sync coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "oracle",
@@ -33,7 +33,10 @@
     "space": 0.452,
     "aggression": 0.049
   },
-  "parameters": {},
+  "parameters": {
+    "Oracle": {},
+    "Ottoni": {}
+  },
   "coupling": {
     "pairs": [
       {

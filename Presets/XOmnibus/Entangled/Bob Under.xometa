@@ -1,19 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Bob Under",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.743,
+        "description": "Orca drives Oblong via EnvToMod",
+        "source": "Orca",
+        "target": "Oblong",
+        "type": "EnvToMod"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "created": "2026-03-16",
+  "description": "OBLONG's amber warmth is submerged by ORCA's deep ocean pressure \u2014 the familiar texture of Bob distorted by fathoms of cold water.",
+  "dna": {
+    "aggression": 0.529,
+    "brightness": 0.478,
+    "density": 0.678,
+    "movement": 0.606,
+    "space": 0.569,
+    "warmth": 0.496
+  },
   "engines": [
     "Orca",
     "Oblong"
-  ],
-  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "OBLONG's amber warmth is submerged by ORCA's deep ocean pressure — the familiar texture of Bob distorted by fathoms of cold water.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "orca",
-    "oblong"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,61 +32,52 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Strong",
-  "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.478,
-    "warmth": 0.496,
-    "movement": 0.606,
-    "density": 0.678,
-    "space": 0.569,
-    "aggression": 0.529
-  },
+  "mood": "Entangled",
+  "name": "Bob Under",
   "parameters": {
-    "Orca": {
-      "orca_wavetablePos": 0.814,
-      "orca_wavetableScan": 0.566,
-      "orca_echoDepth": 0.565,
-      "orca_huntMacro": 0.16,
-      "orca_breachAmt": 0.698,
-      "orca_podSync": 0.111,
-      "orca_pitchRand": 0.247,
-      "orca_ampAttack": 0.0732,
-      "orca_ampDecay": 0.516,
-      "orca_ampSustain": 0.81,
-      "orca_ampRelease": 1.92,
-      "orca_filterCutoff": 0.676,
-      "orca_filterRes": 0.463,
-      "orca_lfo1Rate": 0.349,
-      "orca_lfo1Depth": 0.378,
-      "orca_lfo2Rate": 0.0419,
-      "orca_lfo2Depth": 0.075,
-      "orca_macroCharacter": 0.0,
-      "orca_macroPunch": 0.0,
-      "orca_macroCoupling": 0.0,
-      "orca_macroSpace": 0.0
-    },
     "Oblong": {
+      "bob_attack": 0.15,
       "bob_fltCutoff": 0.663,
       "bob_fltReso": 0.313,
       "bob_lfoRate": 0.146,
-      "bob_attack": 0.15,
-      "bob_release": 1.0,
       "bob_macroCharacter": 0.0,
-      "bob_macroCoupling": 0.0
+      "bob_macroCoupling": 0.0,
+      "bob_release": 1.0,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Orca": {
+      "orca_ampAttack": 0.0732,
+      "orca_ampDecay": 0.516,
+      "orca_ampRelease": 1.92,
+      "orca_ampSustain": 0.81,
+      "orca_breachAmt": 0.698,
+      "orca_echoDepth": 0.565,
+      "orca_filterCutoff": 0.676,
+      "orca_filterRes": 0.463,
+      "orca_huntMacro": 0.16,
+      "orca_lfo1Depth": 0.378,
+      "orca_lfo1Rate": 0.349,
+      "orca_lfo2Depth": 0.075,
+      "orca_lfo2Rate": 0.0419,
+      "orca_macroCharacter": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroPunch": 0.0,
+      "orca_macroSpace": 0.0,
+      "orca_pitchRand": 0.247,
+      "orca_podSync": 0.111,
+      "orca_wavetablePos": 0.814,
+      "orca_wavetableScan": 0.566
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "source": "Orca",
-        "target": "Oblong",
-        "type": "EnvToMod",
-        "amount": 0.743,
-        "description": "Orca drives Oblong via EnvToMod"
-      }
-    ]
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "orca",
+    "oblong"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

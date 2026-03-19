@@ -1,22 +1,70 @@
 {
-  "schema_version": 1,
-  "name": "Grip Wandering",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.78,
+    "pairs": [
+      {
+        "amount": 0.78,
+        "engineA": "Overbite",
+        "engineB": "Oblong",
+        "type": "Rhythm->Blend"
+      }
+    ],
+    "type": "Rhythm->Blend"
+  },
+  "couplingIntensity": "Deep",
+  "description": "OVERBITE fang bites into OBLONG's harmonic curiosity. Bass-forward Bob. [Rhythm->Blend]",
+  "dna": {
+    "aggression": 0.549,
     "brightness": 0.575,
-    "warmth": 0.629,
-    "movement": 0.491,
     "density": 0.7,
+    "movement": 0.491,
     "space": 0.522,
-    "aggression": 0.549
+    "warmth": 0.629
   },
   "engines": [
-    "XOverbite",
-    "XOblong"
+    "Overbite",
+    "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE fang bites into OBLONG's harmonic curiosity. Bass-forward Bob. [Rhythm->Blend]",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Grip Wandering",
+  "parameters": {
+    "Oblong": {
+      "bob_aggression": 0.485,
+      "bob_brightness": 0.563,
+      "bob_couplingBus": 0,
+      "bob_couplingLevel": 0.77,
+      "bob_outputLevel": 0.75,
+      "bob_outputPan": -0.04,
+      "bob_warmth": 0.68,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Overbite": {
+      "poss_aggression": 0.627,
+      "poss_brightness": 0.492,
+      "poss_couplingBus": 0,
+      "poss_couplingLevel": 0.78,
+      "poss_outputLevel": 0.88,
+      "poss_outputPan": -0.04,
+      "poss_warmth": 0.676
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.549,
+    "brightness": 0.575,
+    "density": 0.7,
+    "movement": 0.491,
+    "space": 0.522,
+    "warmth": 0.629
+  },
   "tags": [
     "coupling",
     "entangled",
@@ -24,51 +72,5 @@
     "oblong",
     "bite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
-  "dna": {
-    "brightness": 0.575,
-    "warmth": 0.629,
-    "movement": 0.491,
-    "density": 0.7,
-    "space": 0.522,
-    "aggression": 0.549
-  },
-  "parameters": {
-    "XOverbite": {
-      "poss_outputLevel": 0.88,
-      "poss_outputPan": -0.04,
-      "poss_couplingLevel": 0.78,
-      "poss_couplingBus": 0,
-      "poss_brightness": 0.492,
-      "poss_warmth": 0.676,
-      "poss_aggression": 0.627
-    },
-    "XOblong": {
-      "bob_outputLevel": 0.75,
-      "bob_outputPan": -0.04,
-      "bob_couplingLevel": 0.77,
-      "bob_couplingBus": 0,
-      "bob_brightness": 0.563,
-      "bob_warmth": 0.68,
-      "bob_aggression": 0.485
-    }
-  },
-  "coupling": {
-    "type": "Rhythm->Blend",
-    "amount": 0.78,
-    "pairs": [
-      {
-        "engineA": "XOverbite",
-        "engineB": "XOblong",
-        "type": "Rhythm->Blend",
-        "amount": 0.78
-      }
-    ]
-  }
+  "version": "1.0.0"
 }

@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Silver Plate Hunter",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.698,
+        "engineA": "Obscura",
+        "engineB": "Ocelot",
+        "type": "Mod->Cutoff"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Fixed image of a spotted hunter. Daguerreotype predator portrait.",
+  "dna": {
+    "aggression": 0.311,
+    "brightness": 0.49,
+    "density": 0.588,
+    "movement": 0.429,
+    "space": 0.63,
+    "warmth": 0.622
+  },
   "engines": [
     "Obscura",
     "Ocelot"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Fixed image of a spotted hunter. Daguerreotype predator portrait.",
-  "tags": [
-    "obscura",
-    "ocelot",
-    "daguerreotype",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Silver Plate Hunter",
   "parameters": {
     "Obscura": {
-      "obscura_brightness": 0.444,
-      "obscura_warmth": 0.576,
-      "obscura_movement": 0.423,
-      "obscura_density": 0.623,
-      "obscura_space": 0.594,
       "obscura_aggression": 0.136,
-      "obscura_level": 0.751
+      "obscura_brightness": 0.444,
+      "obscura_density": 0.623,
+      "obscura_level": 0.751,
+      "obscura_movement": 0.423,
+      "obscura_space": 0.594,
+      "obscura_warmth": 0.576
     },
     "Ocelot": {
-      "ocelot_brightness": 0.598,
-      "ocelot_warmth": 0.544,
-      "ocelot_movement": 0.641,
-      "ocelot_density": 0.482,
-      "ocelot_space": 0.672,
       "ocelot_aggression": 0.52,
-      "ocelot_level": 0.793
+      "ocelot_brightness": 0.598,
+      "ocelot_density": 0.482,
+      "ocelot_level": 0.793,
+      "ocelot_movement": 0.641,
+      "ocelot_space": 0.672,
+      "ocelot_warmth": 0.544
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Ocelot",
-        "type": "Mod->Cutoff",
-        "amount": 0.698
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.49,
-    "warmth": 0.622,
-    "movement": 0.429,
-    "density": 0.588,
-    "space": 0.63,
-    "aggression": 0.311
-  }
+  "tags": [
+    "obscura",
+    "ocelot",
+    "daguerreotype",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

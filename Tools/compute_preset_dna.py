@@ -261,12 +261,639 @@ def dna_xoblongbob(p: dict) -> dict:
     }
 
 
+def dna_oddoscar(p: dict) -> dict:
+    """Compute DNA for OddOscar presets (morph_ prefix)."""
+    brightness = norm_freq(p.get("morph_filterCutoff", 5000))
+    warmth = softmax(p.get("morph_drift", 0.2), p.get("morph_sub", 0.3),
+                     p.get("morph_saturation", 0.1) * 1.5, scale=1.1)
+    morph = p.get("morph_morph", 0.5)
+    lfo = p.get("morph_lfoDepth", 0.3)
+    movement = softmax(morph * 1.5, lfo * 1.3, p.get("morph_modDepth", 0.2), scale=1.1)
+    density = softmax(p.get("morph_unison", 0.25), p.get("morph_detune", 0.2),
+                      p.get("morph_oscLevel", 0.8), scale=1.0)
+    space = softmax(p.get("morph_reverbMix", 0.3) * 1.5,
+                    p.get("morph_delayMix", 0.2) * 1.3,
+                    p.get("morph_reverbSize", 0.4), scale=1.1)
+    aggression = softmax(p.get("morph_filterReso", 0.3) * 1.3,
+                         p.get("morph_drive", 0.1) * 1.5,
+                         p.get("morph_noiseLevel", 0.0) * 2, scale=1.0)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_obese(p: dict) -> dict:
+    """Compute DNA for XObese presets (fat_ prefix)."""
+    brightness = norm_freq(p.get("fat_filterCutoff", 3000))
+    warmth = softmax(p.get("fat_satDrive", 0.5) * 1.3, p.get("fat_analogDrift", 0.2),
+                     (1.0 - norm_freq(p.get("fat_filterCutoff", 3000))) * 0.8, scale=1.2)
+    movement = softmax(p.get("fat_lfoRate", 0.3), p.get("fat_lfoDepth", 0.2),
+                       p.get("fat_modDepth", 0.2), scale=1.1)
+    density = softmax(p.get("fat_oscCount", 0.5), p.get("fat_unisonVoices", 0.3),
+                      p.get("fat_subLevel", 0.4) * 1.3, scale=1.0)
+    space = softmax(p.get("fat_reverbMix", 0.2) * 1.5, p.get("fat_delayMix", 0.1),
+                    p.get("fat_release", 0.3), scale=1.1)
+    aggression = softmax(p.get("fat_satDrive", 0.5) * 1.5, p.get("fat_bitcrush", 0.0) * 2,
+                         p.get("fat_filterReso", 0.3) * 1.3, scale=1.2)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_onset(p: dict) -> dict:
+    """Compute DNA for XOnset presets (perc_ prefix)."""
+    brightness = norm_freq(p.get("perc_filterCutoff", 6000))
+    warmth = softmax(p.get("perc_bodyDecay", 0.3), p.get("perc_analogDrift", 0.1),
+                     (1.0 - norm_freq(p.get("perc_filterCutoff", 6000))) * 0.5, scale=1.0)
+    movement = softmax(p.get("perc_lfoRate", 0.2), p.get("perc_lfoDepth", 0.15),
+                       p.get("perc_xvcDepth", 0.2) * 1.5, scale=1.1)
+    density = softmax(p.get("perc_noiseLevel", 0.3) * 1.5, p.get("perc_layerCount", 0.5),
+                      p.get("perc_circuitBlend", 0.5), scale=1.0)
+    space = softmax(p.get("perc_reverbMix", 0.2) * 1.5, p.get("perc_delayMix", 0.1),
+                    p.get("perc_release", 0.2), scale=1.1)
+    aggression = softmax(p.get("perc_transientSnap", 0.6) * 1.5,
+                         p.get("perc_noiseLevel", 0.3) * 1.3,
+                         p.get("perc_filterReso", 0.2), scale=1.2)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_overworld(p: dict) -> dict:
+    """Compute DNA for XOverworld presets (ow_ prefix)."""
+    brightness = softmax(p.get("ow_brightness", 0.5), p.get("ow_shimmer", 0.2), scale=1.1)
+    warmth = softmax(p.get("ow_analogWarmth", 0.4), p.get("ow_era", 0.5) * 0.8,
+                     p.get("ow_drift", 0.15), scale=1.1)
+    movement = softmax(p.get("ow_lfoRate", 0.3), p.get("ow_lfoDepth", 0.2),
+                       p.get("ow_arpRate", 0.0) * 1.5, scale=1.1)
+    density = softmax(p.get("ow_layerCount", 0.5), p.get("ow_bitDepth", 0.7),
+                      p.get("ow_chordVoices", 0.3), scale=1.0)
+    space = softmax(p.get("ow_reverbMix", 0.4) * 1.5, p.get("ow_delayMix", 0.2),
+                    p.get("ow_release", 0.4), scale=1.1)
+    aggression = softmax(p.get("ow_bitcrush", 0.0) * 2, p.get("ow_noiseLevel", 0.1),
+                         p.get("ow_filterReso", 0.2), scale=1.0)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_opal(p: dict) -> dict:
+    """Compute DNA for XOpal presets (opal_ prefix)."""
+    brightness = softmax(p.get("opal_brightness", 0.5),
+                         norm_freq(p.get("opal_filterCutoff", 5000)), scale=1.1)
+    warmth = softmax(p.get("opal_warmth", 0.4), p.get("opal_drift", 0.15),
+                     p.get("opal_saturation", 0.1), scale=1.1)
+    movement = softmax(p.get("opal_grainRate", 0.4) * 1.3, p.get("opal_lfoDepth", 0.2),
+                       p.get("opal_scatter", 0.3), scale=1.1)
+    density = softmax(p.get("opal_grainSize", 0.4), p.get("opal_grainDensity", 0.5) * 1.3,
+                      p.get("opal_layers", 0.3), scale=1.0)
+    space = softmax(p.get("opal_reverbMix", 0.4) * 1.5, p.get("opal_delayMix", 0.2),
+                    p.get("opal_shimmer", 0.2), scale=1.1)
+    aggression = softmax(p.get("opal_filterReso", 0.2), p.get("opal_crush", 0.0) * 2,
+                         p.get("opal_noiseLevel", 0.1), scale=1.0)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_orbital(p: dict) -> dict:
+    """Compute DNA for XOrbital presets (orb_ prefix)."""
+    brightness = softmax(p.get("orb_brightness", 0.5),
+                         norm_freq(p.get("orb_filterCutoff", 4000)), scale=1.1)
+    warmth = softmax(p.get("orb_analogDrift", 0.2), p.get("orb_saturation", 0.15),
+                     (1.0 - p.get("orb_brightness", 0.5)) * 0.6, scale=1.1)
+    movement = softmax(p.get("orb_lfoRate", 0.3), p.get("orb_lfoDepth", 0.2),
+                       p.get("orb_envModDepth", 0.3), scale=1.1)
+    density = softmax(p.get("orb_voiceCount", 0.5), p.get("orb_unisonDetune", 0.2),
+                      p.get("orb_groupEnvDepth", 0.4) * 1.3, scale=1.0)
+    space = softmax(p.get("orb_reverbMix", 0.3) * 1.5, p.get("orb_delayMix", 0.2),
+                    p.get("orb_release", 0.4), scale=1.1)
+    aggression = softmax(p.get("orb_filterReso", 0.3) * 1.3, p.get("orb_drive", 0.1) * 1.5,
+                         p.get("orb_noiseLevel", 0.05), scale=1.0)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_organon(p: dict) -> dict:
+    """Compute DNA for XOrganon presets (organon_ prefix)."""
+    brightness = softmax(p.get("organon_brightness", 0.5),
+                         norm_freq(p.get("organon_filterCutoff", 4000)), scale=1.1)
+    warmth = softmax(p.get("organon_metabolicRate", 0.5) * 0.8,
+                     p.get("organon_drift", 0.15), p.get("organon_saturation", 0.1), scale=1.1)
+    movement = softmax(p.get("organon_metabolicRate", 0.5) * 1.3,
+                       p.get("organon_lfoDepth", 0.2),
+                       p.get("organon_freeEnergy", 0.3) * 1.5, scale=1.1)
+    density = softmax(p.get("organon_complexity", 0.5), p.get("organon_voiceCount", 0.4),
+                      p.get("organon_layerDensity", 0.4), scale=1.0)
+    space = softmax(p.get("organon_reverbMix", 0.3) * 1.5, p.get("organon_delayMix", 0.2),
+                    p.get("organon_release", 0.3), scale=1.1)
+    aggression = softmax(p.get("organon_filterReso", 0.2), p.get("organon_entropy", 0.2) * 1.5,
+                         p.get("organon_noiseLevel", 0.1), scale=1.0)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_ouroboros(p: dict) -> dict:
+    """Compute DNA for XOuroboros presets (ouro_ prefix)."""
+    brightness = softmax(p.get("ouro_brightness", 0.4),
+                         norm_freq(p.get("ouro_filterCutoff", 3500)), scale=1.1)
+    warmth = softmax(p.get("ouro_feedback", 0.4) * 0.8, p.get("ouro_drift", 0.2),
+                     p.get("ouro_saturation", 0.2) * 1.3, scale=1.1)
+    movement = softmax(p.get("ouro_chaosRate", 0.4) * 1.5, p.get("ouro_lfoDepth", 0.2),
+                       p.get("ouro_leashLength", 0.5) * 0.8, scale=1.1)
+    density = softmax(p.get("ouro_topology", 0.5), p.get("ouro_feedback", 0.4) * 1.3,
+                      p.get("ouro_voiceCount", 0.3), scale=1.0)
+    space = softmax(p.get("ouro_reverbMix", 0.3) * 1.5, p.get("ouro_delayMix", 0.2),
+                    p.get("ouro_release", 0.3), scale=1.1)
+    aggression = softmax(p.get("ouro_chaosAmount", 0.4) * 1.5,
+                         p.get("ouro_filterReso", 0.3) * 1.3,
+                         p.get("ouro_distortion", 0.2) * 1.5, scale=1.2)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_obsidian(p: dict) -> dict:
+    """Compute DNA for XObsidian presets (obsidian_ prefix)."""
+    brightness = softmax(p.get("obsidian_brightness", 0.4),
+                         norm_freq(p.get("obsidian_filterCutoff", 3000)), scale=1.1)
+    warmth = softmax(p.get("obsidian_depth", 0.5) * 0.8, p.get("obsidian_drift", 0.15),
+                     p.get("obsidian_saturation", 0.15), scale=1.1)
+    movement = softmax(p.get("obsidian_lfoRate", 0.2), p.get("obsidian_lfoDepth", 0.15),
+                       p.get("obsidian_modDepth", 0.2), scale=1.0)
+    density = softmax(p.get("obsidian_layerCount", 0.4), p.get("obsidian_depth", 0.5) * 1.3,
+                      p.get("obsidian_voiceCount", 0.3), scale=1.0)
+    space = softmax(p.get("obsidian_reverbMix", 0.4) * 1.5, p.get("obsidian_delayMix", 0.2),
+                    p.get("obsidian_release", 0.4) * 1.3, scale=1.1)
+    aggression = softmax(p.get("obsidian_filterReso", 0.2),
+                         p.get("obsidian_noiseLevel", 0.1) * 1.5,
+                         p.get("obsidian_crush", 0.0) * 2, scale=1.0)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_overbite(p: dict) -> dict:
+    """Compute DNA for XOverbite presets (poss_ prefix)."""
+    brightness = softmax(p.get("poss_brightness", 0.5),
+                         norm_freq(p.get("poss_filterCutoff", 5000)), scale=1.1)
+    warmth = softmax(p.get("poss_drift", 0.15), p.get("poss_saturation", 0.2),
+                     p.get("poss_bellyMacro", 0.3) * 0.8, scale=1.1)
+    movement = softmax(p.get("poss_lfoRate", 0.3), p.get("poss_lfoDepth", 0.2),
+                       p.get("poss_scurryMacro", 0.3) * 1.5, scale=1.1)
+    density = softmax(p.get("poss_voiceCount", 0.4), p.get("poss_layerBlend", 0.4),
+                      p.get("poss_trashMacro", 0.2) * 0.8, scale=1.0)
+    space = softmax(p.get("poss_reverbMix", 0.3) * 1.5, p.get("poss_delayMix", 0.2),
+                    p.get("poss_release", 0.3), scale=1.1)
+    aggression = softmax(p.get("poss_biteDepth", 0.4) * 1.5,
+                         p.get("poss_filterReso", 0.3) * 1.3,
+                         p.get("poss_trashMacro", 0.2) * 1.5, scale=1.2)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_origami(p: dict) -> dict:
+    """Compute DNA for XOrigami presets (origami_ prefix)."""
+    brightness = softmax(p.get("origami_brightness", 0.5),
+                         norm_freq(p.get("origami_filterCutoff", 4500)), scale=1.1)
+    warmth = softmax(p.get("origami_paperWeight", 0.4) * 0.8, p.get("origami_drift", 0.15),
+                     p.get("origami_saturation", 0.1), scale=1.1)
+    movement = softmax(p.get("origami_foldRate", 0.3) * 1.5, p.get("origami_lfoDepth", 0.2),
+                       p.get("origami_modDepth", 0.2), scale=1.1)
+    density = softmax(p.get("origami_foldCount", 0.4) * 1.3, p.get("origami_layers", 0.3),
+                      p.get("origami_voiceCount", 0.3), scale=1.0)
+    space = softmax(p.get("origami_reverbMix", 0.3) * 1.5, p.get("origami_delayMix", 0.2),
+                    p.get("origami_release", 0.3), scale=1.1)
+    aggression = softmax(p.get("origami_foldPoint", 0.4) * 1.5,
+                         p.get("origami_filterReso", 0.2) * 1.3,
+                         p.get("origami_crease", 0.2) * 1.5, scale=1.1)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_oracle(p: dict) -> dict:
+    """Compute DNA for XOracle presets (oracle_ prefix)."""
+    brightness = softmax(p.get("oracle_brightness", 0.4),
+                         norm_freq(p.get("oracle_filterCutoff", 3500)), scale=1.1)
+    warmth = softmax(p.get("oracle_drift", 0.2), p.get("oracle_saturation", 0.15),
+                     p.get("oracle_harmonicWarmth", 0.3), scale=1.1)
+    movement = softmax(p.get("oracle_stochasticRate", 0.4) * 1.5,
+                       p.get("oracle_lfoDepth", 0.2),
+                       p.get("oracle_breakpoints", 0.3) * 1.3, scale=1.1)
+    density = softmax(p.get("oracle_breakpoints", 0.3) * 1.3,
+                      p.get("oracle_voiceCount", 0.3),
+                      p.get("oracle_complexity", 0.4), scale=1.0)
+    space = softmax(p.get("oracle_reverbMix", 0.3) * 1.5, p.get("oracle_delayMix", 0.2),
+                    p.get("oracle_release", 0.3), scale=1.1)
+    aggression = softmax(p.get("oracle_filterReso", 0.2),
+                         p.get("oracle_stochasticIntensity", 0.3) * 1.5,
+                         p.get("oracle_noiseLevel", 0.15) * 1.3, scale=1.1)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_obscura(p: dict) -> dict:
+    """Compute DNA for XObscura presets (obscura_ prefix)."""
+    brightness = softmax(p.get("obscura_brightness", 0.35),
+                         norm_freq(p.get("obscura_filterCutoff", 3000)), scale=1.0)
+    warmth = softmax(p.get("obscura_drift", 0.2), p.get("obscura_vintage", 0.4) * 1.3,
+                     p.get("obscura_saturation", 0.15), scale=1.1)
+    movement = softmax(p.get("obscura_lfoRate", 0.2), p.get("obscura_lfoDepth", 0.15),
+                       p.get("obscura_modDepth", 0.2), scale=1.0)
+    density = softmax(p.get("obscura_stiffness", 0.4) * 1.3, p.get("obscura_voiceCount", 0.3),
+                      p.get("obscura_layerCount", 0.3), scale=1.0)
+    space = softmax(p.get("obscura_reverbMix", 0.4) * 1.5, p.get("obscura_delayMix", 0.3) * 1.3,
+                    p.get("obscura_release", 0.4), scale=1.1)
+    aggression = softmax(p.get("obscura_filterReso", 0.2),
+                         p.get("obscura_noiseLevel", 0.15) * 1.3,
+                         p.get("obscura_grainCrunch", 0.1) * 1.5, scale=1.0)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_oceanic(p: dict) -> dict:
+    """Compute DNA for XOceanic presets (ocean_ prefix)."""
+    brightness = softmax(p.get("ocean_brightness", 0.5),
+                         norm_freq(p.get("ocean_filterCutoff", 4500)), scale=1.1)
+    warmth = softmax(p.get("ocean_drift", 0.2), p.get("ocean_saturation", 0.1),
+                     p.get("ocean_tidalWarmth", 0.3), scale=1.1)
+    movement = softmax(p.get("ocean_tidalRate", 0.4) * 1.5, p.get("ocean_lfoDepth", 0.2),
+                       p.get("ocean_chromatophoreRate", 0.3) * 1.3, scale=1.1)
+    density = softmax(p.get("ocean_separation", 0.4) * 1.3, p.get("ocean_voiceCount", 0.4),
+                      p.get("ocean_layerCount", 0.3), scale=1.0)
+    space = softmax(p.get("ocean_reverbMix", 0.4) * 1.5, p.get("ocean_delayMix", 0.2),
+                    p.get("ocean_release", 0.4) * 1.3, scale=1.1)
+    aggression = softmax(p.get("ocean_filterReso", 0.2),
+                         p.get("ocean_currentForce", 0.2) * 1.5,
+                         p.get("ocean_noiseLevel", 0.15), scale=1.0)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_ocelot(p: dict) -> dict:
+    """Compute DNA for XOcelot presets (ocelot_ prefix)."""
+    brightness = softmax(p.get("ocelot_brightness", 0.5),
+                         norm_freq(p.get("ocelot_filterCutoff", 4000)), scale=1.1)
+    warmth = softmax(p.get("ocelot_drift", 0.2), p.get("ocelot_saturation", 0.15),
+                     p.get("ocelot_biome", 0.5) * 0.6, scale=1.1)
+    movement = softmax(p.get("ocelot_lfoRate", 0.3), p.get("ocelot_lfoDepth", 0.2),
+                       p.get("ocelot_prowlRate", 0.3) * 1.5, scale=1.1)
+    density = softmax(p.get("ocelot_voiceCount", 0.3), p.get("ocelot_layerBlend", 0.4),
+                      p.get("ocelot_patternDensity", 0.4) * 1.3, scale=1.0)
+    space = softmax(p.get("ocelot_reverbMix", 0.3) * 1.5, p.get("ocelot_delayMix", 0.2),
+                    p.get("ocelot_release", 0.3), scale=1.1)
+    aggression = softmax(p.get("ocelot_filterReso", 0.3) * 1.3,
+                         p.get("ocelot_clawDepth", 0.2) * 1.5,
+                         p.get("ocelot_noiseLevel", 0.1), scale=1.1)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_optic(p: dict) -> dict:
+    """Compute DNA for XOptic presets (optic_ prefix)."""
+    brightness = softmax(p.get("optic_brightness", 0.6),
+                         p.get("optic_phosphorLevel", 0.5) * 1.3, scale=1.1)
+    warmth = softmax(p.get("optic_warmth", 0.3), p.get("optic_drift", 0.1),
+                     p.get("optic_saturation", 0.1), scale=1.0)
+    movement = softmax(p.get("optic_pulseRate", 0.4) * 1.5, p.get("optic_lfoDepth", 0.2),
+                       p.get("optic_autoPulseDepth", 0.3) * 1.3, scale=1.1)
+    density = softmax(p.get("optic_layerCount", 0.3), p.get("optic_complexity", 0.4),
+                      p.get("optic_voiceCount", 0.3), scale=1.0)
+    space = softmax(p.get("optic_reverbMix", 0.3) * 1.5, p.get("optic_delayMix", 0.2),
+                    p.get("optic_release", 0.3), scale=1.1)
+    aggression = softmax(p.get("optic_filterReso", 0.2),
+                         p.get("optic_strobeIntensity", 0.2) * 1.5,
+                         p.get("optic_noiseLevel", 0.05), scale=1.0)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_oblique(p: dict) -> dict:
+    """Compute DNA for XOblique presets (oblq_ prefix)."""
+    brightness = softmax(p.get("oblq_brightness", 0.5),
+                         p.get("oblq_prismColor", 0.5) * 1.3, scale=1.1)
+    warmth = softmax(p.get("oblq_drift", 0.15), p.get("oblq_saturation", 0.15),
+                     (1.0 - p.get("oblq_prismColor", 0.5)) * 0.5, scale=1.1)
+    movement = softmax(p.get("oblq_bounceRate", 0.4) * 1.5, p.get("oblq_lfoDepth", 0.2),
+                       p.get("oblq_refractDepth", 0.3) * 1.3, scale=1.1)
+    density = softmax(p.get("oblq_layerCount", 0.4), p.get("oblq_voiceCount", 0.3),
+                      p.get("oblq_prismFacets", 0.4) * 1.3, scale=1.0)
+    space = softmax(p.get("oblq_reverbMix", 0.3) * 1.5, p.get("oblq_delayMix", 0.2),
+                    p.get("oblq_release", 0.3), scale=1.1)
+    aggression = softmax(p.get("oblq_filterReso", 0.3) * 1.3,
+                         p.get("oblq_distortion", 0.2) * 1.5,
+                         p.get("oblq_noiseLevel", 0.1), scale=1.1)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_osprey(p: dict) -> dict:
+    """Compute DNA for XOsprey presets (osprey_ prefix)."""
+    brightness = softmax(p.get("osprey_brightness", 0.5),
+                         norm_freq(p.get("osprey_filterCutoff", 4000)), scale=1.1)
+    warmth = softmax(p.get("osprey_shoreBlend", 0.4) * 0.8, p.get("osprey_drift", 0.2),
+                     p.get("osprey_saturation", 0.15), scale=1.1)
+    movement = softmax(p.get("osprey_windRate", 0.3) * 1.5, p.get("osprey_lfoDepth", 0.2),
+                       p.get("osprey_tideModDepth", 0.3) * 1.3, scale=1.1)
+    density = softmax(p.get("osprey_voiceCount", 0.3), p.get("osprey_layerBlend", 0.4),
+                      p.get("osprey_shoreComplexity", 0.3), scale=1.0)
+    space = softmax(p.get("osprey_reverbMix", 0.4) * 1.5, p.get("osprey_delayMix", 0.2),
+                    p.get("osprey_release", 0.4) * 1.3, scale=1.1)
+    aggression = softmax(p.get("osprey_filterReso", 0.2),
+                         p.get("osprey_galeForce", 0.2) * 1.5,
+                         p.get("osprey_noiseLevel", 0.15), scale=1.0)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_osteria(p: dict) -> dict:
+    """Compute DNA for XOsteria presets (osteria_ prefix)."""
+    brightness = softmax(p.get("osteria_brightness", 0.4),
+                         norm_freq(p.get("osteria_filterCutoff", 3500)), scale=1.1)
+    warmth = softmax(p.get("osteria_drift", 0.2), p.get("osteria_saturation", 0.2) * 1.3,
+                     p.get("osteria_qBassShore", 0.4) * 0.8, scale=1.2)
+    movement = softmax(p.get("osteria_lfoRate", 0.25), p.get("osteria_lfoDepth", 0.2),
+                       p.get("osteria_modDepth", 0.2), scale=1.0)
+    density = softmax(p.get("osteria_voiceCount", 0.3), p.get("osteria_layerBlend", 0.4),
+                      p.get("osteria_bodyResonance", 0.3) * 1.3, scale=1.0)
+    space = softmax(p.get("osteria_reverbMix", 0.35) * 1.5, p.get("osteria_delayMix", 0.2),
+                    p.get("osteria_release", 0.35), scale=1.1)
+    aggression = softmax(p.get("osteria_filterReso", 0.25) * 1.3,
+                         p.get("osteria_drive", 0.15) * 1.5,
+                         p.get("osteria_noiseLevel", 0.1), scale=1.0)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_owlfish(p: dict) -> dict:
+    """Compute DNA for XOwlfish presets (owl_ prefix)."""
+    brightness = softmax(p.get("owl_brightness", 0.4),
+                         norm_freq(p.get("owl_filterCutoff", 3000)), scale=1.1)
+    warmth = softmax(p.get("owl_drift", 0.2), p.get("owl_saturation", 0.2) * 1.3,
+                     p.get("owl_subharmonic", 0.3), scale=1.2)
+    movement = softmax(p.get("owl_trautoniumRate", 0.3) * 1.5, p.get("owl_lfoDepth", 0.2),
+                       p.get("owl_modDepth", 0.2), scale=1.1)
+    density = softmax(p.get("owl_mixturVoices", 0.5) * 1.3, p.get("owl_voiceCount", 0.3),
+                      p.get("owl_layerBlend", 0.3), scale=1.0)
+    space = softmax(p.get("owl_reverbMix", 0.35) * 1.5, p.get("owl_delayMix", 0.2),
+                    p.get("owl_release", 0.35), scale=1.1)
+    aggression = softmax(p.get("owl_filterReso", 0.25) * 1.3,
+                         p.get("owl_distortion", 0.15) * 1.5,
+                         p.get("owl_noiseLevel", 0.15) * 1.3, scale=1.1)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_ohm(p: dict) -> dict:
+    """Compute DNA for XOhm presets (ohm_ prefix)."""
+    brightness = softmax(p.get("ohm_brightness", 0.5),
+                         norm_freq(p.get("ohm_filterCutoff", 4000)), scale=1.1)
+    warmth = softmax(p.get("ohm_analogDrift", 0.2), p.get("ohm_saturation", 0.15),
+                     p.get("ohm_macroMeddling", 0.3) * 0.5, scale=1.1)
+    movement = softmax(p.get("ohm_lfoRate", 0.3), p.get("ohm_lfoDepth", 0.2),
+                       p.get("ohm_macroMeddling", 0.3) * 1.3, scale=1.1)
+    density = softmax(p.get("ohm_voiceCount", 0.3), p.get("ohm_layerBlend", 0.4),
+                      p.get("ohm_impedance", 0.4) * 1.3, scale=1.0)
+    space = softmax(p.get("ohm_reverbMix", 0.3) * 1.5, p.get("ohm_delayMix", 0.2),
+                    p.get("ohm_release", 0.3), scale=1.1)
+    aggression = softmax(p.get("ohm_filterReso", 0.2),
+                         p.get("ohm_resistance", 0.2) * 1.5,
+                         p.get("ohm_noiseLevel", 0.1), scale=1.0)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_orphica(p: dict) -> dict:
+    """Compute DNA for XOrphica presets (orph_ prefix)."""
+    brightness = softmax(p.get("orph_pluckBrightness", 0.5) * 1.3,
+                         norm_freq(p.get("orph_filterCutoff", 5000)), scale=1.1)
+    warmth = softmax(p.get("orph_drift", 0.15), p.get("orph_bodyResonance", 0.3) * 1.3,
+                     p.get("orph_saturation", 0.1), scale=1.1)
+    movement = softmax(p.get("orph_lfoRate", 0.3), p.get("orph_lfoDepth", 0.2),
+                       p.get("orph_tremoloDepth", 0.2) * 1.5, scale=1.1)
+    density = softmax(p.get("orph_voiceCount", 0.3), p.get("orph_stringCount", 0.4) * 1.3,
+                      p.get("orph_layerBlend", 0.3), scale=1.0)
+    space = softmax(p.get("orph_reverbMix", 0.35) * 1.5, p.get("orph_delayMix", 0.2),
+                    p.get("orph_release", 0.4) * 1.3, scale=1.1)
+    aggression = softmax(p.get("orph_filterReso", 0.2),
+                         p.get("orph_pluckAttack", 0.3) * 1.3,
+                         p.get("orph_noiseLevel", 0.1), scale=1.0)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_obbligato(p: dict) -> dict:
+    """Compute DNA for XObbligato presets (obbl_ prefix)."""
+    brightness = softmax(p.get("obbl_brightness", 0.5),
+                         norm_freq(p.get("obbl_filterCutoff", 4500)), scale=1.1)
+    warmth = softmax(p.get("obbl_breathA", 0.4) * 0.8, p.get("obbl_drift", 0.15),
+                     p.get("obbl_saturation", 0.15), scale=1.1)
+    movement = softmax(p.get("obbl_lfoRate", 0.3), p.get("obbl_lfoDepth", 0.2),
+                       p.get("obbl_vibratoDepth", 0.3) * 1.5, scale=1.1)
+    density = softmax(p.get("obbl_voiceCount", 0.3), p.get("obbl_layerBlend", 0.4),
+                      p.get("obbl_breathDensity", 0.3) * 1.3, scale=1.0)
+    space = softmax(p.get("obbl_reverbMix", 0.35) * 1.5, p.get("obbl_delayMix", 0.2),
+                    p.get("obbl_release", 0.35), scale=1.1)
+    aggression = softmax(p.get("obbl_filterReso", 0.2),
+                         p.get("obbl_overblowIntensity", 0.2) * 1.5,
+                         p.get("obbl_noiseLevel", 0.15) * 1.3, scale=1.0)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_ottoni(p: dict) -> dict:
+    """Compute DNA for XOttoni presets (otto_ prefix)."""
+    brightness = softmax(p.get("otto_brightness", 0.5),
+                         norm_freq(p.get("otto_filterCutoff", 4000)), scale=1.1)
+    warmth = softmax(p.get("otto_drift", 0.2), p.get("otto_brassWarmth", 0.4) * 1.3,
+                     p.get("otto_saturation", 0.15), scale=1.2)
+    movement = softmax(p.get("otto_lfoRate", 0.25), p.get("otto_lfoDepth", 0.2),
+                       p.get("otto_macroGrow", 0.3) * 1.5, scale=1.1)
+    density = softmax(p.get("otto_voiceCount", 0.4), p.get("otto_sectionSize", 0.4) * 1.3,
+                      p.get("otto_layerBlend", 0.3), scale=1.0)
+    space = softmax(p.get("otto_reverbMix", 0.35) * 1.5, p.get("otto_delayMix", 0.2),
+                    p.get("otto_release", 0.35), scale=1.1)
+    aggression = softmax(p.get("otto_filterReso", 0.25) * 1.3,
+                         p.get("otto_brassBlare", 0.3) * 1.5,
+                         p.get("otto_noiseLevel", 0.1), scale=1.1)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_ole(p: dict) -> dict:
+    """Compute DNA for XOle presets (ole_ prefix)."""
+    brightness = softmax(p.get("ole_brightness", 0.5),
+                         norm_freq(p.get("ole_filterCutoff", 4500)), scale=1.1)
+    warmth = softmax(p.get("ole_drift", 0.2), p.get("ole_saturation", 0.2) * 1.3,
+                     p.get("ole_flamencoWarmth", 0.4) * 0.8, scale=1.2)
+    movement = softmax(p.get("ole_lfoRate", 0.3), p.get("ole_lfoDepth", 0.2),
+                       p.get("ole_macroDrama", 0.3) * 1.5, scale=1.1)
+    density = softmax(p.get("ole_voiceCount", 0.3), p.get("ole_layerBlend", 0.4),
+                      p.get("ole_rhythmDensity", 0.3) * 1.3, scale=1.0)
+    space = softmax(p.get("ole_reverbMix", 0.3) * 1.5, p.get("ole_delayMix", 0.2),
+                    p.get("ole_release", 0.3), scale=1.1)
+    aggression = softmax(p.get("ole_filterReso", 0.25) * 1.3,
+                         p.get("ole_rasgueadoIntensity", 0.3) * 1.5,
+                         p.get("ole_noiseLevel", 0.1), scale=1.1)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_overlap(p: dict) -> dict:
+    """Compute DNA for XOverlap presets (overlap_ prefix)."""
+    brightness = softmax(p.get("overlap_brightness", 0.5),
+                         norm_freq(p.get("overlap_filterCutoff", 4000)), scale=1.1)
+    warmth = softmax(p.get("overlap_drift", 0.2), p.get("overlap_saturation", 0.15),
+                     p.get("overlap_blendWarmth", 0.3), scale=1.1)
+    movement = softmax(p.get("overlap_lfoRate", 0.3), p.get("overlap_lfoDepth", 0.2),
+                       p.get("overlap_crossfadeRate", 0.3) * 1.5, scale=1.1)
+    density = softmax(p.get("overlap_voiceCount", 0.4), p.get("overlap_layerCount", 0.5) * 1.3,
+                      p.get("overlap_overlapAmount", 0.4), scale=1.0)
+    space = softmax(p.get("overlap_reverbMix", 0.35) * 1.5, p.get("overlap_delayMix", 0.2),
+                    p.get("overlap_release", 0.35), scale=1.1)
+    aggression = softmax(p.get("overlap_filterReso", 0.2),
+                         p.get("overlap_collisionForce", 0.2) * 1.5,
+                         p.get("overlap_noiseLevel", 0.1), scale=1.0)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_outwit(p: dict) -> dict:
+    """Compute DNA for XOutwit presets (outwit_ prefix)."""
+    brightness = softmax(p.get("outwit_brightness", 0.5),
+                         norm_freq(p.get("outwit_filterCutoff", 4500)), scale=1.1)
+    warmth = softmax(p.get("outwit_drift", 0.15), p.get("outwit_saturation", 0.15),
+                     p.get("outwit_analogWarmth", 0.3), scale=1.1)
+    movement = softmax(p.get("outwit_lfoRate", 0.35), p.get("outwit_lfoDepth", 0.25),
+                       p.get("outwit_trickRate", 0.3) * 1.5, scale=1.1)
+    density = softmax(p.get("outwit_voiceCount", 0.3), p.get("outwit_layerBlend", 0.4),
+                      p.get("outwit_complexity", 0.4) * 1.3, scale=1.0)
+    space = softmax(p.get("outwit_reverbMix", 0.3) * 1.5, p.get("outwit_delayMix", 0.2),
+                    p.get("outwit_release", 0.3), scale=1.1)
+    aggression = softmax(p.get("outwit_filterReso", 0.25) * 1.3,
+                         p.get("outwit_glitchIntensity", 0.2) * 1.5,
+                         p.get("outwit_noiseLevel", 0.1), scale=1.1)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_ombre(p: dict) -> dict:
+    """Compute DNA for XOmbre presets (ombre_ prefix)."""
+    brightness = softmax(p.get("ombre_brightness", 0.4),
+                         norm_freq(p.get("ombre_filterCutoff", 3500)), scale=1.1)
+    warmth = softmax(p.get("ombre_drift", 0.2), p.get("ombre_saturation", 0.2) * 1.3,
+                     p.get("ombre_memoryWarmth", 0.4) * 0.8, scale=1.2)
+    movement = softmax(p.get("ombre_blend", 0.4) * 1.5, p.get("ombre_lfoDepth", 0.2),
+                       p.get("ombre_narrativeRate", 0.3) * 1.3, scale=1.1)
+    density = softmax(p.get("ombre_voiceCount", 0.3), p.get("ombre_layerBlend", 0.4),
+                      p.get("ombre_dualNarrativeDepth", 0.4) * 1.3, scale=1.0)
+    space = softmax(p.get("ombre_reverbMix", 0.4) * 1.5, p.get("ombre_delayMix", 0.3) * 1.3,
+                    p.get("ombre_release", 0.4), scale=1.1)
+    aggression = softmax(p.get("ombre_filterReso", 0.2),
+                         p.get("ombre_forgettingRate", 0.2) * 1.5,
+                         p.get("ombre_noiseLevel", 0.15), scale=1.0)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_orca(p: dict) -> dict:
+    """Compute DNA for XOrca presets (orca_ prefix)."""
+    brightness = softmax(p.get("orca_brightness", 0.4),
+                         norm_freq(p.get("orca_filterCutoff", 3000)), scale=1.1)
+    warmth = softmax(p.get("orca_drift", 0.2), p.get("orca_saturation", 0.2) * 1.3,
+                     p.get("orca_depthWarmth", 0.3), scale=1.1)
+    movement = softmax(p.get("orca_huntMacro", 0.4) * 1.5, p.get("orca_lfoDepth", 0.2),
+                       p.get("orca_echoLocationRate", 0.3) * 1.3, scale=1.1)
+    density = softmax(p.get("orca_wavetablePosition", 0.4) * 1.3,
+                      p.get("orca_voiceCount", 0.3),
+                      p.get("orca_podSize", 0.3), scale=1.0)
+    space = softmax(p.get("orca_reverbMix", 0.35) * 1.5, p.get("orca_delayMix", 0.2),
+                    p.get("orca_release", 0.4) * 1.3, scale=1.1)
+    aggression = softmax(p.get("orca_breachIntensity", 0.4) * 1.5,
+                         p.get("orca_filterReso", 0.3) * 1.3,
+                         p.get("orca_predatorDrive", 0.3) * 1.5, scale=1.2)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
+def dna_octopus(p: dict) -> dict:
+    """Compute DNA for XOctopus presets (octo_ prefix)."""
+    brightness = softmax(p.get("octo_brightness", 0.5),
+                         norm_freq(p.get("octo_filterCutoff", 4000)), scale=1.1)
+    warmth = softmax(p.get("octo_drift", 0.15), p.get("octo_saturation", 0.15),
+                     p.get("octo_chromatophoreWarmth", 0.3), scale=1.1)
+    movement = softmax(p.get("octo_armDepth", 0.4) * 1.5, p.get("octo_lfoDepth", 0.2),
+                       p.get("octo_tentacleRate", 0.3) * 1.3, scale=1.1)
+    density = softmax(p.get("octo_armCount", 0.5) * 1.3, p.get("octo_voiceCount", 0.3),
+                      p.get("octo_inkCloudDensity", 0.3), scale=1.0)
+    space = softmax(p.get("octo_reverbMix", 0.35) * 1.5, p.get("octo_delayMix", 0.2),
+                    p.get("octo_release", 0.35), scale=1.1)
+    aggression = softmax(p.get("octo_filterReso", 0.25) * 1.3,
+                         p.get("octo_inkCloudIntensity", 0.3) * 1.5,
+                         p.get("octo_chromatophoreFlash", 0.2) * 1.3, scale=1.1)
+    return {k: round(v, 3) for k, v in zip(
+        ["brightness","warmth","movement","density","space","aggression"],
+        [brightness, warmth, movement, density, space, aggression])}
+
+
 # Engine dispatcher
 DNA_FUNCTIONS = {
-    "OddfeliX": dna_xoddcouple,
+    "OddfeliX":   dna_xoddcouple,
+    "OddOscar":   dna_oddoscar,
     "XOverdub":   dna_xoverdub,
     "XOdyssey":   dna_xodyssey,
-    "XOblong": dna_xoblongbob,
+    "XOblong":    dna_xoblongbob,
+    "XObese":     dna_obese,
+    "XOnset":     dna_onset,
+    "XOverworld": dna_overworld,
+    "XOpal":      dna_opal,
+    "XOrbital":   dna_orbital,
+    "XOrganon":   dna_organon,
+    "XOuroboros":  dna_ouroboros,
+    "XObsidian":  dna_obsidian,
+    "XOverbite":  dna_overbite,
+    "XOrigami":   dna_origami,
+    "XOracle":    dna_oracle,
+    "XObscura":   dna_obscura,
+    "XOceanic":   dna_oceanic,
+    "XOcelot":    dna_ocelot,
+    "XOptic":     dna_optic,
+    "XOblique":   dna_oblique,
+    "XOsprey":    dna_osprey,
+    "XOsteria":   dna_osteria,
+    "XOwlfish":   dna_owlfish,
+    "XOhm":       dna_ohm,
+    "XOrphica":   dna_orphica,
+    "XObbligato": dna_obbligato,
+    "XOttoni":    dna_ottoni,
+    "XOle":       dna_ole,
+    "XOverlap":   dna_overlap,
+    "XOutwit":    dna_outwit,
+    "XOmbre":     dna_ombre,
+    "XOrca":      dna_orca,
+    "XOctopus":   dna_octopus,
 }
 
 
@@ -370,7 +997,7 @@ def main():
 
         engines = xometa.get("engines", [])
         if not any(e in DNA_FUNCTIONS for e in engines):
-            # Engine not supported yet (XObese, XOnset)
+            # Engine not recognized
             stats["skipped"] += 1
             continue
 

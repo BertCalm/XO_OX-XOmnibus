@@ -736,7 +736,9 @@ public:
                 float modulatedRotate    = clamp (smoothedRotate + lfo2Value * 0.3f, -1.0f, 1.0f);
 
                 // Fold depth scaled by fold envelope (envelope controls intensity over time)
-                float modulatedFoldDepth = smoothedFoldDepth * foldEnvelopeLevel;
+                // D001: harder hits = deeper fold (velocity shapes timbre, not just amplitude)
+                float velFoldBoost = voice.velocity * 0.3f;
+                float modulatedFoldDepth = (smoothedFoldDepth + velFoldBoost) * foldEnvelopeLevel;
 
                 // ---- Generate source signal ----
                 float frequency = voice.currentFrequency;

@@ -1,14 +1,72 @@
 {
-  "schema_version": 1,
-  "name": "Wavetable Diet",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "OddOscar",
+        "engineB": "Organon",
+        "type": "Audio->FM"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-10",
+  "description": "MORPH wavetable pads become Organon's diet. Metabolized lush harmonics.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.5,
+    "density": 0.55,
+    "movement": 0.35,
+    "space": 0.3,
+    "warmth": 0.55
+  },
   "engines": [
     "OddOscar",
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "MORPH wavetable pads become Organon's diet. Metabolized lush harmonics.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "MORPH PAD",
+    "ORGANISM",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Wavetable Diet",
+  "parameters": {
+    "OddOscar": {
+      "morph_attack": 0.3,
+      "morph_decay": 1.0,
+      "morph_detune": 8.0,
+      "morph_filterCutoff": 3000.0,
+      "morph_filterReso": 0.25,
+      "morph_level": 0.6,
+      "morph_position": 0.3,
+      "morph_release": 1.5,
+      "morph_sustain": 0.7,
+      "morph_waveA": 0,
+      "morph_waveB": 2
+    },
+    "Organon": {
+      "organon_catalystDrive": 0.6,
+      "organon_dampingCoeff": 0.15,
+      "organon_enzymeSelect": 1500.0,
+      "organon_isotopeBalance": 0.55,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.3,
+      "organon_metabolicRate": 0.8,
+      "organon_noiseColor": 0.5,
+      "organon_phasonShift": 0.0,
+      "organon_signalFlux": 0.85
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "morph",
     "organon",
@@ -16,64 +74,6 @@
     "lush",
     "metabolized"
   ],
-  "macroLabels": [
-    "MORPH PAD",
-    "ORGANISM",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OddOscar": {
-      "morph_waveA": 0,
-      "morph_waveB": 2,
-      "morph_position": 0.3,
-      "morph_detune": 8.0,
-      "morph_filterCutoff": 3000.0,
-      "morph_filterReso": 0.25,
-      "morph_attack": 0.3,
-      "morph_decay": 1.0,
-      "morph_sustain": 0.7,
-      "morph_release": 1.5,
-      "morph_level": 0.6
-    },
-    "Organon": {
-      "organon_metabolicRate": 0.8,
-      "organon_enzymeSelect": 1500.0,
-      "organon_catalystDrive": 0.6,
-      "organon_dampingCoeff": 0.15,
-      "organon_signalFlux": 0.85,
-      "organon_phasonShift": 0.0,
-      "organon_isotopeBalance": 0.55,
-      "organon_lockIn": 0.0,
-      "organon_membrane": 0.3,
-      "organon_noiseColor": 0.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Organon",
-        "type": "Audio->FM",
-        "amount": 0.65
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.55,
-    "movement": 0.35,
-    "density": 0.55,
-    "space": 0.3,
-    "aggression": 0.1
-  }
+  "version": "1.0.0"
 }

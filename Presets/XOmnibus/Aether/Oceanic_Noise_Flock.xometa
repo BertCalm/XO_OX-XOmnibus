@@ -1,55 +1,70 @@
 {
-  "schema_version": 1,
-  "name": "Noise Flock",
-  "mood": "Aether",
-  "engines": ["Oceanic"],
-  "author": "Guru Bin — OCEANIC Retreat 2026-03-15",
-  "version": "1.0.0",
-  "description": "waveform=Noise. 128 per-particle PRNGs under boid cohesion force. The school stops being a pitched instrument — it becomes a self-organizing texture that coheres into white noise density clusters. High separation spreads the noise spectrally. High cohesion pulls it toward dense center masses. A flock of noise-makers that tries, collectively, to agree on a frequency they will never reach.",
-  "tags": ["noise", "swarm", "texture", "aether", "awakening"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.3,
-    "movement": 0.8,
-    "density": 0.7,
-    "space": 0.7,
-    "aggression": 0.4
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "waveform=Noise. 128 per-particle PRNGs under boid cohesion force. The school stops being a pitched instrument — it becomes a self-organizing texture that coheres into white noise density clusters. High separation spreads the noise spectrally. High cohesion pulls it toward dense center masses. A flock of noise-makers that tries, collectively, to agree on a frequency they will never reach.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.6,
+    "density": 0.7,
+    "movement": 0.8,
+    "space": 0.7,
+    "warmth": 0.3
+  },
+  "engines": [
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Noise Flock",
   "parameters": {
     "Oceanic": {
-      "ocean_separation": 0.6,
       "ocean_alignment": 0.35,
-      "ocean_cohesion": 0.45,
-      "ocean_tether": 0.3,
-      "ocean_scatter": 0.5,
-      "ocean_subflocks": 4,
-      "ocean_damping": 0.3,
-      "ocean_waveform": 3,
       "ocean_ampAttack": 0.3,
       "ocean_ampDecay": 0.6,
-      "ocean_ampSustain": 0.75,
       "ocean_ampRelease": 2.0,
+      "ocean_ampSustain": 0.75,
+      "ocean_cohesion": 0.45,
+      "ocean_damping": 0.3,
+      "ocean_glide": 0.0,
+      "ocean_lfo1Depth": 0.25,
+      "ocean_lfo1Rate": 0.067,
+      "ocean_lfo1Shape": 0,
+      "ocean_lfo2Depth": 0.15,
+      "ocean_lfo2Rate": 0.05,
+      "ocean_lfo2Shape": 0,
+      "ocean_macroCharacter": 0.0,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroMovement": 0.0,
+      "ocean_macroSpace": 0.0,
+      "ocean_scatter": 0.5,
+      "ocean_separation": 0.6,
+      "ocean_subflocks": 4,
       "ocean_swarmEnvAttack": 0.2,
       "ocean_swarmEnvDecay": 0.6,
-      "ocean_swarmEnvSustain": 0.7,
       "ocean_swarmEnvRelease": 1.0,
-      "ocean_lfo1Rate": 0.067,
-      "ocean_lfo1Depth": 0.25,
-      "ocean_lfo1Shape": 0,
-      "ocean_lfo2Rate": 0.05,
-      "ocean_lfo2Depth": 0.15,
-      "ocean_lfo2Shape": 0,
+      "ocean_swarmEnvSustain": 0.7,
+      "ocean_tether": 0.3,
       "ocean_voiceMode": 0,
-      "ocean_glide": 0.0,
-      "ocean_macroCharacter": 0.0,
-      "ocean_macroMovement": 0.0,
-      "ocean_macroCoupling": 0.0,
-      "ocean_macroSpace": 0.0
+      "ocean_waveform": 3
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "noise",
+    "swarm",
+    "texture",
+    "aether",
+    "awakening"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

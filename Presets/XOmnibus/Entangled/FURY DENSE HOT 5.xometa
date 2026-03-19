@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Osteria \u00d7 Origami \u2014 Frequency Shift coupling at extreme DNA corner.",
+  "description": "Osteria × Origami — Frequency Shift coupling at extreme DNA corner.",
   "tags": [
     "fury",
     "osteria",
@@ -33,7 +33,10 @@
     "space": 0.548,
     "aggression": 0.93
   },
-  "parameters": {},
+  "parameters": {
+    "Osteria": {},
+    "Origami": {}
+  },
   "coupling": {
     "pairs": [
       {

@@ -33,7 +33,9 @@
     "space": 0.18,
     "aggression": 0.93
   },
-  "parameters": {},
+  "parameters": {
+    "Octopus": {}
+  },
   "tags": [
     "flux",
     "maximum",
@@ -41,5 +43,5 @@
     "ink",
     "rage"
   ],
-  "description": "Eight arms firing simultaneously \u2014 ink cloud as sonic weapon."
+  "description": "Eight arms firing simultaneously — ink cloud as sonic weapon."
 }

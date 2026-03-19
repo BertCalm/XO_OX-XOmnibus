@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Sharp Edge Luminous",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.569,
+        "engineA": "Obsidian",
+        "engineB": "Owlfish",
+        "type": "Mod->Cutoff"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Mineral hardness couples with abyssal gold filament. Cold light from deep.",
+  "dna": {
+    "aggression": 0.129,
+    "brightness": 0.712,
+    "density": 0.585,
+    "movement": 0.349,
+    "space": 0.662,
+    "warmth": 0.42
+  },
   "engines": [
     "Obsidian",
     "Owlfish"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Mineral hardness couples with abyssal gold filament. Cold light from deep.",
-  "tags": [
-    "obsidian",
-    "owlfish",
-    "crystal",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Sharp Edge Luminous",
   "parameters": {
     "Obsidian": {
-      "obsidian_brightness": 0.975,
-      "obsidian_warmth": 0.213,
-      "obsidian_movement": 0.307,
-      "obsidian_density": 0.54,
-      "obsidian_space": 0.529,
       "obsidian_aggression": 0.113,
-      "obsidian_level": 0.801
+      "obsidian_brightness": 0.975,
+      "obsidian_density": 0.54,
+      "obsidian_level": 0.801,
+      "obsidian_movement": 0.307,
+      "obsidian_space": 0.529,
+      "obsidian_warmth": 0.213
     },
     "Owlfish": {
-      "owl_brightness": 0.456,
-      "owl_warmth": 0.545,
-      "owl_movement": 0.474,
-      "owl_density": 0.583,
-      "owl_space": 0.75,
       "owl_aggression": 0.215,
-      "owl_level": 0.835
+      "owl_brightness": 0.456,
+      "owl_density": 0.583,
+      "owl_level": 0.835,
+      "owl_movement": 0.474,
+      "owl_space": 0.75,
+      "owl_warmth": 0.545
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Owlfish",
-        "type": "Mod->Cutoff",
-        "amount": 0.569
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.712,
-    "warmth": 0.42,
-    "movement": 0.349,
-    "density": 0.585,
-    "space": 0.662,
-    "aggression": 0.129
-  }
+  "tags": [
+    "obsidian",
+    "owlfish",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

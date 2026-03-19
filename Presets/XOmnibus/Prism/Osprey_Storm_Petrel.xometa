@@ -1,55 +1,72 @@
 {
-  "schema_version": 1,
-  "name": "Storm Petrel",
-  "mood": "Prism",
-  "engines": ["Osprey"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Sea state maximum — the bird creature voice dominates at high depth, foam and brine stripped raw. Atlantic gale-force, resonators screaming in low coherence. This is the osprey in the plunge.",
-  "tags": ["atlantic", "storm", "prism", "aggressive", "creature"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Sea state maximum — the bird creature voice dominates at high depth, foam and brine stripped raw. Atlantic gale-force, resonators screaming in low coherence. This is the osprey in the plunge.",
+  "dna": {
+    "aggression": 0.75,
+    "brightness": 0.75,
+    "density": 0.65,
+    "movement": 0.8,
+    "space": 0.15,
+    "warmth": 0.25
+  },
+  "engines": [
+    "Osprey"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Storm Petrel",
   "parameters": {
     "Osprey": {
-      "osprey_shore": 0.0,
-      "osprey_seaState": 0.85,
-      "osprey_swellPeriod": 4.0,
-      "osprey_windDir": 0.8,
-      "osprey_depth": 0.55,
-      "osprey_resonatorBright": 0.75,
-      "osprey_resonatorDecay": 0.5,
-      "osprey_sympathyAmount": 0.35,
-      "osprey_creatureRate": 0.8,
-      "osprey_creatureDepth": 0.7,
-      "osprey_coherence": 0.3,
-      "osprey_foam": 0.6,
-      "osprey_brine": 0.55,
-      "osprey_hull": 0.1,
-      "osprey_filterTilt": 0.65,
-      "osprey_filterEnvDepth": 0.55,
-      "osprey_harborVerb": 0.1,
-      "osprey_fog": 0.0,
       "osprey_ampAttack": 0.05,
       "osprey_ampDecay": 0.6,
-      "osprey_ampSustain": 0.5,
       "osprey_ampRelease": 0.8,
+      "osprey_ampSustain": 0.5,
+      "osprey_brine": 0.55,
+      "osprey_coherence": 0.3,
+      "osprey_creatureDepth": 0.7,
+      "osprey_creatureRate": 0.8,
+      "osprey_depth": 0.55,
+      "osprey_filterEnvDepth": 0.55,
+      "osprey_filterTilt": 0.65,
+      "osprey_foam": 0.6,
+      "osprey_fog": 0.0,
+      "osprey_harborVerb": 0.1,
+      "osprey_hull": 0.1,
       "osprey_macroCharacter": 0.6,
-      "osprey_macroMovement": 0.7,
       "osprey_macroCoupling": 0.0,
-      "osprey_macroSpace": 0.0
+      "osprey_macroMovement": 0.7,
+      "osprey_macroSpace": 0.0,
+      "osprey_resonatorBright": 0.75,
+      "osprey_resonatorDecay": 0.5,
+      "osprey_seaState": 0.85,
+      "osprey_shore": 0.0,
+      "osprey_swellPeriod": 4.0,
+      "osprey_sympathyAmount": 0.35,
+      "osprey_windDir": 0.8
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.75,
-    "warmth": 0.25,
-    "movement": 0.8,
-    "density": 0.65,
-    "space": 0.15,
-    "aggression": 0.75
-  }
+  "tags": [
+    "atlantic",
+    "storm",
+    "prism",
+    "aggressive",
+    "creature"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

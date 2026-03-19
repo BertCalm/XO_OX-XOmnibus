@@ -1,52 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Arctic Signal",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Harp in permafrost. Cold sparse brightness with slow harmonic decay.",
+  "dna": {
+    "aggression": 0.42,
+    "brightness": 0.88,
+    "density": 0.12,
+    "movement": 0.35,
+    "space": 0.88,
+    "warmth": 0.08
+  },
   "engines": [
     "Orphica"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Harp in permafrost. Cold sparse brightness with slow harmonic decay.",
-  "tags": [
-    "flux",
-    "extreme",
-    "harp",
-    "cold"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Arctic Signal",
   "parameters": {
     "Orphica": {
-      "orph_stringMaterial": 0.15,
+      "orph_decay": 800.0,
       "orph_pluckBrightness": 0.88,
       "orph_pluckPosition": 0.8,
-      "orph_stringCount": 0.12,
       "orph_resonance": 0.08,
       "orph_space": 0.88,
-      "orph_decay": 800.0
+      "orph_stringCount": 0.12,
+      "orph_stringMaterial": 0.15
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.88,
-    "warmth": 0.08,
-    "movement": 0.35,
-    "density": 0.12,
-    "space": 0.88,
-    "aggression": 0.42
-  }
+  "tags": [
+    "flux",
+    "extreme",
+    "harp",
+    "cold"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

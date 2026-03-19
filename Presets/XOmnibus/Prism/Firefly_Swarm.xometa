@@ -1,53 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Firefly Swarm",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Cellular automata at max update rate. Every arm firing bright.",
+  "dna": {
+    "aggression": 0.72,
+    "brightness": 0.88,
+    "density": 0.82,
+    "movement": 0.93,
+    "space": 0.1,
+    "warmth": 0.52
+  },
   "engines": [
     "Outwit"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Cellular automata at max update rate. Every arm firing bright.",
-  "tags": [
-    "kinetic-bright",
-    "extreme",
-    "prism",
-    "cellular"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Firefly Swarm",
   "parameters": {
     "Outwit": {
-      "owit_rule": 110.0,
+      "owit_aggression": 0.72,
       "owit_armBalance": 0.88,
-      "owit_mutationRate": 0.92,
       "owit_armSpread": 0.18,
       "owit_brightness": 0.88,
       "owit_density": 0.82,
-      "owit_aggression": 0.72,
+      "owit_mutationRate": 0.92,
+      "owit_rule": 110.0,
       "owit_warmth": 0.5
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.88,
-    "warmth": 0.52,
-    "movement": 0.93,
-    "density": 0.82,
-    "space": 0.1,
-    "aggression": 0.72
-  }
+  "tags": [
+    "kinetic-bright",
+    "extreme",
+    "prism",
+    "cellular"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

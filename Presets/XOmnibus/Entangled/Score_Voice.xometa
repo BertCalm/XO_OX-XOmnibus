@@ -1,14 +1,67 @@
 {
-  "schema_version": 1,
-  "name": "Score Voice",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.491,
+        "engineA": "Origami",
+        "engineB": "Obbligato",
+        "type": "envelope_share"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Origami × Obbligato coupling (rhythm sync). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.489,
+    "brightness": 0.622,
+    "density": 0.565,
+    "movement": 0.667,
+    "space": 0.545,
+    "warmth": 0.617
+  },
   "engines": [
     "Origami",
     "Obbligato"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Origami \u00d7 Obbligato coupling (rhythm sync). Stub preset \u2014 sound-design pass pending.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Score Voice",
+  "parameters": {
+    "Obbligato": {
+      "obbl_couplingIn": 0.405,
+      "obbl_couplingOut": 0.775,
+      "obbl_macro1": 0.416,
+      "obbl_macro2": 0.474,
+      "obbl_macro3": 0.65,
+      "obbl_macro4": 0.562
+    },
+    "Origami": {
+      "origami_couplingOut": 0.77,
+      "origami_crease": 0.881,
+      "origami_foldPoint": 0.274,
+      "origami_macro1": 0.419,
+      "origami_macro2": 0.689,
+      "origami_macro3": 0.581,
+      "origami_macro4": 0.633,
+      "origami_pleatRate": 0.243,
+      "origami_tessellate": 0.426,
+      "origami_valleyDepth": 0.693
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "origami",
     "obbligato",
@@ -16,59 +69,6 @@
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": 115,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Origami": {
-      "origami_foldPoint": 0.274,
-      "origami_crease": 0.881,
-      "origami_valleyDepth": 0.693,
-      "origami_pleatRate": 0.243,
-      "origami_tessellate": 0.426,
-      "origami_macro1": 0.419,
-      "origami_macro2": 0.689,
-      "origami_macro3": 0.581,
-      "origami_macro4": 0.633,
-      "origami_couplingOut": 0.77
-    },
-    "Obbligato": {
-      "obbl_macro1": 0.416,
-      "obbl_macro2": 0.474,
-      "obbl_macro3": 0.65,
-      "obbl_macro4": 0.562,
-      "obbl_couplingOut": 0.775,
-      "obbl_couplingIn": 0.405
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Obbligato",
-        "type": "envelope_share",
-        "amount": 0.491
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.622,
-    "warmth": 0.617,
-    "movement": 0.667,
-    "density": 0.565,
-    "space": 0.545,
-    "aggression": 0.489
-  }
+  "version": "1.0.0"
 }

@@ -1,14 +1,87 @@
 {
-  "schema_version": 1,
-  "name": "Silver Ink Daguerreotype",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.8,
+        "source": "Octopus",
+        "target": "Obscura",
+        "type": "PITCH_TRACKING"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "A slow ink cloud exposed like a daguerreotype plate — the image develops over eight bars.",
+  "dna": {
+    "aggression": 0.487,
+    "brightness": 0.598,
+    "density": 0.775,
+    "movement": 0.778,
+    "space": 0.501,
+    "warmth": 0.44
+  },
   "engines": [
     "Octopus",
     "Obscura"
   ],
-  "author": "XO_OX Deep Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "A slow ink cloud exposed like a daguerreotype plate — the image develops over eight bars.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Silver Ink Daguerreotype",
+  "parameters": {
+    "Obscura": {
+      "obscura_filterCutoff": 5350.0,
+      "obscura_level": 0.684
+    },
+    "Octopus": {
+      "octo_ampAttack": 0.0416,
+      "octo_ampDecay": 0.625,
+      "octo_ampRelease": 0.812,
+      "octo_ampSustain": 0.673,
+      "octo_armBaseRate": 0.738,
+      "octo_armCount": 8.0,
+      "octo_armDepth": 0.725,
+      "octo_armSpread": 0.557,
+      "octo_chromaDepth": 0.664,
+      "octo_chromaFreq": 1516.5,
+      "octo_chromaMorph": 0.713,
+      "octo_chromaSens": 0.534,
+      "octo_chromaSpeed": 0.786,
+      "octo_filterCutoff": 2593.0,
+      "octo_filterReso": 0.681,
+      "octo_inkDecay": 0.308,
+      "octo_inkDensity": 0.613,
+      "octo_inkMix": 0.351,
+      "octo_inkThreshold": 0.652,
+      "octo_level": 0.662,
+      "octo_lfo1Depth": 0.661,
+      "octo_lfo1Rate": 0.428,
+      "octo_lfo1Shape": 0.75,
+      "octo_lfo2Depth": 0.23,
+      "octo_lfo2Rate": 1.139,
+      "octo_lfo2Shape": 1.0,
+      "octo_modAttack": 0.0334,
+      "octo_modDecay": 0.38,
+      "octo_modRelease": 0.89,
+      "octo_modSustain": 0.548,
+      "octo_shiftDrift": 0.369,
+      "octo_shiftGlide": 0.18,
+      "octo_shiftMicro": 0.451,
+      "octo_suckerDecay": 0.09,
+      "octo_suckerFreq": 2640.5,
+      "octo_suckerMix": 0.673,
+      "octo_suckerReso": 0.592,
+      "octo_wtPosition": 0.731,
+      "octo_wtScanRate": 0.262
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,79 +90,6 @@
     "alien",
     "decentralized"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "Octopus": {
-      "octo_armCount": 8.0,
-      "octo_armSpread": 0.557,
-      "octo_armBaseRate": 0.738,
-      "octo_armDepth": 0.725,
-      "octo_chromaSens": 0.534,
-      "octo_chromaSpeed": 0.786,
-      "octo_chromaMorph": 0.713,
-      "octo_chromaDepth": 0.664,
-      "octo_chromaFreq": 1516.5,
-      "octo_inkThreshold": 0.652,
-      "octo_inkDensity": 0.613,
-      "octo_inkDecay": 0.308,
-      "octo_inkMix": 0.351,
-      "octo_shiftMicro": 0.451,
-      "octo_shiftGlide": 0.18,
-      "octo_shiftDrift": 0.369,
-      "octo_suckerReso": 0.592,
-      "octo_suckerFreq": 2640.5,
-      "octo_suckerDecay": 0.09,
-      "octo_suckerMix": 0.673,
-      "octo_wtPosition": 0.731,
-      "octo_wtScanRate": 0.262,
-      "octo_filterCutoff": 2593.0,
-      "octo_filterReso": 0.681,
-      "octo_level": 0.662,
-      "octo_ampAttack": 0.0416,
-      "octo_ampDecay": 0.625,
-      "octo_ampSustain": 0.673,
-      "octo_ampRelease": 0.812,
-      "octo_modAttack": 0.0334,
-      "octo_modDecay": 0.38,
-      "octo_modSustain": 0.548,
-      "octo_modRelease": 0.89,
-      "octo_lfo1Rate": 0.428,
-      "octo_lfo1Depth": 0.661,
-      "octo_lfo1Shape": 0.75,
-      "octo_lfo2Rate": 1.139,
-      "octo_lfo2Depth": 0.23,
-      "octo_lfo2Shape": 1.0
-    },
-    "Obscura": {
-      "obscura_level": 0.684,
-      "obscura_filterCutoff": 5350.0
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "PITCH_TRACKING",
-        "source": "Octopus",
-        "target": "Obscura",
-        "amount": 0.8
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.598,
-    "warmth": 0.44,
-    "movement": 0.778,
-    "density": 0.775,
-    "space": 0.501,
-    "aggression": 0.487
-  }
+  "version": "1.0.0"
 }

@@ -1,47 +1,94 @@
 {
-  "schema_version": 1,
-  "name": "Prediction Cascade",
-  "mood": "Prism",
-  "engines": ["Organon"],
-  "author": "Guru Bin — Prism Expression Pass 2026-03-16",
-  "version": "1.0.0",
-  "description": "Metabolic rate set to mid-range — the organism active, prediction engine running, but balanced. IsotopeBalance at 0.35 favoring the reactive arm. Mod wheel introduces phasonShift and tips the isotopeBalance toward maximum reactive state: the prediction engine begins generating errors faster than it can correct them, the signal developing a characteristic anxious shimmer. Full wheel throw triggers cascade — harmonic content bifurcates, noiseColor blooms, the cell enters prediction loop. Aftertouch drives lockIn from zero: pressing into a held note pulls the organism toward synchrony, a coherence state where prediction error collapses and the organism briefly achieves metabolic lock. The contrast between freerunning cascade (mod wheel) and locked coherence (aftertouch) is the entire performance space. Velocity controls initial enzymeSelect frequency — soft keys open at warm midrange, hard strikes blast the enzyme scan to bright harmonic territory.",
-  "tags": ["organon", "prediction", "cascade", "lockIn", "aftertouch", "mod-wheel", "prism", "biological", "coherence"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-16",
-  "modMatrix": [
-    {"source": "modWheel", "destination": "organon_phasonShift", "amount": 0.8},
-    {"source": "modWheel", "destination": "organon_isotopeBalance", "amount": 0.7},
-    {"source": "modWheel", "destination": "organon_noiseColor", "amount": 0.65},
-    {"source": "aftertouch", "destination": "organon_lockIn", "amount": 0.9},
-    {"source": "aftertouch", "destination": "organon_dampingCoeff", "amount": 0.5},
-    {"source": "velocity", "destination": "organon_enzymeSelect", "amount": 0.7},
-    {"source": "velocity", "destination": "organon_signalFlux", "amount": 0.45}
+  "description": "Metabolic rate set to mid-range — the organism active, prediction engine running, but balanced. IsotopeBalance at 0.35 favoring the reactive arm. Mod wheel introduces phasonShift and tips the isotopeBalance toward maximum reactive state: the prediction engine begins generating errors faster than it can correct them, the signal developing a characteristic anxious shimmer. Full wheel throw triggers cascade — harmonic content bifurcates, noiseColor blooms, the cell enters prediction loop. Aftertouch drives lockIn from zero: pressing into a held note pulls the organism toward synchrony, a coherence state where prediction error collapses and the organism briefly achieves metabolic lock. The contrast between freerunning cascade (mod wheel) and locked coherence (aftertouch) is the entire performance space. Velocity controls initial enzymeSelect frequency — soft keys open at warm midrange, hard strikes blast the enzyme scan to bright harmonic territory.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.55,
+    "density": 0.5,
+    "movement": 0.6,
+    "space": 0.45,
+    "warmth": 0.35
+  },
+  "engines": [
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "modMatrix": [
+    {
+      "amount": 0.8,
+      "destination": "organon_phasonShift",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.7,
+      "destination": "organon_isotopeBalance",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.65,
+      "destination": "organon_noiseColor",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.9,
+      "destination": "organon_lockIn",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.5,
+      "destination": "organon_dampingCoeff",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.7,
+      "destination": "organon_enzymeSelect",
+      "source": "velocity"
+    },
+    {
+      "amount": 0.45,
+      "destination": "organon_signalFlux",
+      "source": "velocity"
+    }
+  ],
+  "mood": "Prism",
+  "name": "Prediction Cascade",
   "parameters": {
     "Organon": {
-      "organon_metabolicRate": 0.55,
-      "organon_enzymeSelect": 3500.0,
       "organon_catalystDrive": 0.45,
       "organon_dampingCoeff": 0.35,
-      "organon_signalFlux": 0.5,
-      "organon_phasonShift": 0.0,
+      "organon_enzymeSelect": 3500.0,
       "organon_isotopeBalance": 0.35,
       "organon_lockIn": 0.0,
       "organon_membrane": 0.6,
-      "organon_noiseColor": 0.25
+      "organon_metabolicRate": 0.55,
+      "organon_noiseColor": 0.25,
+      "organon_phasonShift": 0.0,
+      "organon_signalFlux": 0.5
     }
   },
-  "coupling": { "pairs": [] },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.35,
-    "movement": 0.6,
-    "density": 0.5,
-    "space": 0.45,
-    "aggression": 0.5
-  }
+  "tags": [
+    "organon",
+    "prediction",
+    "cascade",
+    "lockIn",
+    "aftertouch",
+    "mod-wheel",
+    "prism",
+    "biological",
+    "coherence"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

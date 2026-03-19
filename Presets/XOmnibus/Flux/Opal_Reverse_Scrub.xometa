@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Negative speed at -0.75, posScatter maximum 1.0, pitchScatter 0.45. Speed is not speed here — it is direction bias. With negative speed every grain plays in reverse AND fires from a random position. The result is a backwards cloud that has no source location: multiple reversed fragments playing simultaneously from unknown origins at slightly different pitches. This is what drowning in a recording sounds like from the inside.",
+  "dna": {
+    "aggression": 0.65,
+    "brightness": 0.4,
+    "density": 0.7,
+    "movement": 0.88,
+    "space": 0.5,
+    "warmth": 0.25
+  },
+  "engines": [
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Reverse Scrub",
+  "parameters": {
+    "Opal": {
+      "opal_ampAttack": 0.04,
+      "opal_ampDecay": 0.4,
+      "opal_ampRelease": 1.5,
+      "opal_ampSustain": 0.88,
+      "opal_density": 0.72,
+      "opal_filterCutoff": 0.5,
+      "opal_filterReso": 0.35,
+      "opal_grainSize": 0.22,
+      "opal_macroCharacter": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitchScatter": 0.45,
+      "opal_posScatter": 1.0,
+      "opal_reverse": 1.0,
+      "opal_speed": -0.75
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "flux",
+    "granular",
+    "reverse",
+    "extreme",
+    "backwards",
+    "chaos",
+    "scrub",
+    "experimental"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

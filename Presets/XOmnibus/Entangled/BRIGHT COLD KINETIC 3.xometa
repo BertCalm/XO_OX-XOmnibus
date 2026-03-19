@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Orbital \u00d7 Osprey \u2014 Envelope Link coupling at extreme DNA corner.",
+  "description": "Orbital × Osprey — Envelope Link coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "orbital",
@@ -33,7 +33,10 @@
     "space": 0.547,
     "aggression": 0.549
   },
-  "parameters": {},
+  "parameters": {
+    "Orbital": {},
+    "Osprey": {}
+  },
   "coupling": {
     "pairs": [
       {

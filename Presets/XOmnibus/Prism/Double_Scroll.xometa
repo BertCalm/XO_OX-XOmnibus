@@ -1,37 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Double Scroll",
-  "mood": "Prism",
-  "engines": ["Ouroboros"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Chua circuit at mid chaos with projection offsets revealing the double-scroll signature. Complex, folding timbre.",
-  "tags": ["complex", "textural", "bright", "experimental"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Chua circuit at mid chaos with projection offsets revealing the double-scroll signature. Complex, folding timbre.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.7,
+    "density": 0.65,
+    "movement": 0.6,
+    "space": 0.25,
+    "warmth": 0.2
+  },
+  "engines": [
+    "Ouroboros"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Double Scroll",
   "parameters": {
     "Ouroboros": {
-      "ouro_topology": 2,
-      "ouro_rate": 247.0,
       "ouro_chaosIndex": 0.6,
-      "ouro_leash": 0.3,
-      "ouro_theta": 1.0,
-      "ouro_phi": 0.8,
       "ouro_damping": 0.15,
-      "ouro_injection": 0.0
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.3,
+      "ouro_phi": 0.8,
+      "ouro_rate": 247.0,
+      "ouro_theta": 1.0,
+      "ouro_topology": 2
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.7,
-    "warmth": 0.2,
-    "movement": 0.6,
-    "density": 0.65,
-    "space": 0.25,
-    "aggression": 0.55
-  }
+  "tags": [
+    "complex",
+    "textural",
+    "bright",
+    "experimental"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

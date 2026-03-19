@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Outwit \u00d7 Ocelot \u2014 Chaos Inject coupling at extreme DNA corner.",
+  "description": "Outwit × Ocelot — Chaos Inject coupling at extreme DNA corner.",
   "tags": [
     "still",
     "outwit",
@@ -33,7 +33,10 @@
     "space": 0.441,
     "aggression": 0.044
   },
-  "parameters": {},
+  "parameters": {
+    "Outwit": {},
+    "Ocelot": {}
+  },
   "coupling": {
     "pairs": [
       {

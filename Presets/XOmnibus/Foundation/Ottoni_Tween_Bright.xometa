@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Tween Bright",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "The tween moment — control not yet mastered, rawness not yet gone. Trumpet finding its voice.",
+  "dna": {
+    "aggression": 0.02,
+    "brightness": 0.43,
+    "density": 0.51,
+    "movement": 0.22,
+    "space": 0.1,
+    "warmth": 0.66
+  },
   "engines": [
     "Ottoni"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "brass",
-    "sax",
-    "foundation",
-    "clean",
-    "foundation"
   ],
   "macroLabels": [
     "EMBOUCHURE",
@@ -20,48 +21,47 @@
     "FOREIGN",
     "LAKE"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.43,
-    "warmth": 0.66,
-    "movement": 0.22,
-    "density": 0.51,
-    "space": 0.1,
-    "aggression": 0.02
-  },
+  "mood": "Foundation",
+  "name": "Tween Bright",
   "parameters": {
     "Ottoni": {
+      "otto_chorusRate": 0.608,
+      "otto_damping": 0.996,
+      "otto_delayMix": 0.393,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.08,
+      "otto_driveAmount": 0.0,
+      "otto_foreignCold": 0.0,
+      "otto_foreignDrift": 0.0,
+      "otto_foreignStretch": 0.0,
+      "otto_macroEmbouchure": 0.459,
+      "otto_macroForeign": 0.0,
+      "otto_macroGrow": 0.339,
+      "otto_macroLake": 0.219,
+      "otto_reverbSize": 0.214,
+      "otto_sympatheticAmt": 0.307,
+      "otto_teenBore": 0.687,
+      "otto_teenEmbouchure": 0.578,
+      "otto_teenInst": 8,
+      "otto_teenLevel": 0.416,
+      "otto_teenVibratoDepth": 0.295,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 2,
       "otto_toddlerLevel": 0.41,
       "otto_toddlerPressure": 0.211,
-      "otto_toddlerInst": 2,
-      "otto_tweenLevel": 0.406,
       "otto_tweenEmbouchure": 0.562,
-      "otto_tweenValve": 0.489,
       "otto_tweenInst": 2,
-      "otto_teenLevel": 0.416,
-      "otto_teenEmbouchure": 0.578,
-      "otto_teenBore": 0.687,
-      "otto_teenInst": 8,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.295,
-      "otto_damping": 0.996,
-      "otto_sympatheticAmt": 0.307,
-      "otto_driftRate": 0.08,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.0,
-      "otto_foreignDrift": 0.0,
-      "otto_foreignCold": 0.0,
-      "otto_reverbSize": 0.214,
-      "otto_chorusRate": 0.608,
-      "otto_driveAmount": 0.0,
-      "otto_delayMix": 0.393,
-      "otto_macroEmbouchure": 0.459,
-      "otto_macroGrow": 0.339,
-      "otto_macroForeign": 0.0,
-      "otto_macroLake": 0.219
+      "otto_tweenLevel": 0.406,
+      "otto_tweenValve": 0.489
     }
   },
-  "coupling": null,
-  "description": "The tween moment \u2014 control not yet mastered, rawness not yet gone. Trumpet finding its voice."
+  "schema_version": 1,
+  "tags": [
+    "brass",
+    "sax",
+    "foundation",
+    "clean",
+    "foundation"
+  ],
+  "version": "1.0.0"
 }

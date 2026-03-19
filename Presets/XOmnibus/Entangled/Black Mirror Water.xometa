@@ -1,19 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Black Mirror Water",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.815,
+        "description": "Orca drives Obsidian via SpectralMorph",
+        "source": "Orca",
+        "target": "Obsidian",
+        "type": "SpectralMorph"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "created": "2026-03-16",
+  "description": "OBSIDIAN's crystal stillness meets ORCA's dark aggression — the surface before and after a breach, obsidian-calm and shattered.",
+  "dna": {
+    "aggression": 0.49,
+    "brightness": 0.291,
+    "density": 0.775,
+    "movement": 0.516,
+    "space": 0.579,
+    "warmth": 0.389
+  },
   "engines": [
     "Orca",
     "Obsidian"
-  ],
-  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "OBSIDIAN's crystal stillness meets ORCA's dark aggression — the surface before and after a breach, obsidian-calm and shattered.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "orca",
-    "obsidian"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,61 +32,50 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Strong",
-  "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.291,
-    "warmth": 0.389,
-    "movement": 0.516,
-    "density": 0.775,
-    "space": 0.579,
-    "aggression": 0.49
-  },
+  "mood": "Entangled",
+  "name": "Black Mirror Water",
   "parameters": {
-    "Orca": {
-      "orca_wavetablePos": 0.465,
-      "orca_wavetableScan": 0.547,
-      "orca_echoDepth": 0.652,
-      "orca_huntMacro": 0.375,
-      "orca_breachAmt": 0.597,
-      "orca_podSync": 0.136,
-      "orca_pitchRand": 0.063,
-      "orca_ampAttack": 0.0537,
-      "orca_ampDecay": 0.674,
-      "orca_ampSustain": 0.678,
-      "orca_ampRelease": 2.35,
-      "orca_filterCutoff": 0.566,
-      "orca_filterRes": 0.284,
-      "orca_lfo1Rate": 0.044,
-      "orca_lfo1Depth": 0.379,
-      "orca_lfo2Rate": 0.0364,
-      "orca_lfo2Depth": 0.12,
-      "orca_macroCharacter": 0.0,
-      "orca_macroPunch": 0.0,
-      "orca_macroCoupling": 0.0,
-      "orca_macroSpace": 0.0
-    },
     "Obsidian": {
+      "obsidian_attack": 0.104,
       "obsidian_depth": 0.607,
       "obsidian_filterCutoff": 0.43,
       "obsidian_lfoRate": 0.0,
-      "obsidian_attack": 0.104,
-      "obsidian_release": 1.0,
       "obsidian_macroCharacter": 0.0,
-      "obsidian_macroCoupling": 0.108
+      "obsidian_macroCoupling": 0.108,
+      "obsidian_release": 1.0
+    },
+    "Orca": {
+      "orca_ampAttack": 0.0537,
+      "orca_ampDecay": 0.674,
+      "orca_ampRelease": 2.35,
+      "orca_ampSustain": 0.678,
+      "orca_breachAmt": 0.597,
+      "orca_echoDepth": 0.652,
+      "orca_filterCutoff": 0.566,
+      "orca_filterRes": 0.284,
+      "orca_huntMacro": 0.375,
+      "orca_lfo1Depth": 0.379,
+      "orca_lfo1Rate": 0.044,
+      "orca_lfo2Depth": 0.12,
+      "orca_lfo2Rate": 0.0364,
+      "orca_macroCharacter": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroPunch": 0.0,
+      "orca_macroSpace": 0.0,
+      "orca_pitchRand": 0.063,
+      "orca_podSync": 0.136,
+      "orca_wavetablePos": 0.465,
+      "orca_wavetableScan": 0.547
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "source": "Orca",
-        "target": "Obsidian",
-        "type": "SpectralMorph",
-        "amount": 0.815,
-        "description": "Orca drives Obsidian via SpectralMorph"
-      }
-    ]
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "orca",
+    "obsidian"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

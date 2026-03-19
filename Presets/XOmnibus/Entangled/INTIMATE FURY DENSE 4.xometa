@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Organon \u00d7 Oceanic \u2014 Pitch Sync coupling at extreme DNA corner.",
+  "description": "Organon × Oceanic — Pitch Sync coupling at extreme DNA corner.",
   "tags": [
     "intimate",
     "organon",
@@ -33,7 +33,10 @@
     "space": 0.111,
     "aggression": 0.954
   },
-  "parameters": {},
+  "parameters": {
+    "Organon": {},
+    "Oceanic": {}
+  },
   "coupling": {
     "pairs": [
       {

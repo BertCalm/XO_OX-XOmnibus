@@ -1,0 +1,69 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "SPC700 at Vertex 2 — the SNES choir patch that the RPG composers reached for. OW-II full SNES FIR applied: eraMemory 4.0s for the warm stacking harmonic ghost. eraPortamento 0.9s — chord changes feel like the intro cinematic fading in. filterEnvDepth 0.64: velocity opens the pad warmly. This is the chord that starts the adventure.",
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.49,
+    "density": 0.72,
+    "movement": 0.38,
+    "space": 0.68,
+    "warmth": 0.79
+  },
+  "engines": [
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "SNES Chord Pad",
+  "parameters": {
+    "Overworld": {
+      "ow_couplingBus": 0,
+      "ow_couplingLevel": 0.05,
+      "ow_era": 0.08,
+      "ow_eraDrift": 0.067,
+      "ow_eraMemory": 4.0,
+      "ow_eraPortamento": 0.9,
+      "ow_eraY": 0.86,
+      "ow_filterCutoff": 0.55,
+      "ow_filterEnvDepth": 0.64,
+      "ow_fmLfoDepth": 0.0,
+      "ow_fmLfoRate": 0.15,
+      "ow_glitch": 0.04,
+      "ow_macro_chaos": 0.04,
+      "ow_macro_couple": 0.05,
+      "ow_macro_era": 0.08,
+      "ow_macro_space": 0.7,
+      "ow_outputLevel": 0.83
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonic_dna": {
+    "aggression": 0.12,
+    "brightness": 0.49,
+    "density": 0.72,
+    "movement": 0.38,
+    "space": 0.68,
+    "warmth": 0.79
+  },
+  "tags": [
+    "snes",
+    "spc700",
+    "pad",
+    "chord",
+    "foundation",
+    "rpg",
+    "warm"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

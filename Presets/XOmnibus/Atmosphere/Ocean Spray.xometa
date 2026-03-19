@@ -1,54 +1,54 @@
 {
-  "schema_version": 1,
-  "name": "Ocean Spray",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Floating textures texture with tidal pulse.",
+  "dna": {
+    "aggression": 0.083,
+    "brightness": 0.384,
+    "density": 0.021,
+    "movement": 0.25,
+    "space": 0.363,
+    "warmth": 0.0
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Floating textures texture with tidal pulse.",
-  "tags": [
-    "tidal",
-    "spacious",
-    "slow-attack"
-  ],
+  "legacy": {
+    "sourceCategory": "Textures",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Textures",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Ocean Spray",
   "parameters": {
     "Odyssey": {
-      "drift_noiseLevel": 0.4,
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 0.0,
-      "drift_oscA_level": 0.25,
+      "drift_attack": 1000.0,
       "drift_filterCutoff": 2500.0,
       "drift_filterReso": 0.2,
-      "drift_attack": 1000.0,
-      "drift_sustain": 0.5,
+      "drift_level": -5.0,
+      "drift_noiseLevel": 0.4,
+      "drift_oscA_level": 0.25,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
       "drift_release": 3000.0,
-      "drift_level": -5.0
+      "drift_sustain": 0.5
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.384,
-    "warmth": 0.0,
-    "movement": 0.25,
-    "density": 0.021,
-    "space": 0.363,
-    "aggression": 0.083
-  }
+  "tags": [
+    "tidal",
+    "spacious",
+    "slow-attack"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

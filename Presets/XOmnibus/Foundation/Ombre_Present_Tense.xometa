@@ -1,42 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Present Tense",
-  "mood": "Foundation",
-  "engines": ["Ombre"],
-  "author": "Guru Bin — Mood Balance Pass 2026-03-16",
-  "version": "1.0.0",
-  "description": "Blend fully in the Opsis direction — all perception, no memory grain. Fast reactivity, low interference. A clear, present-forward pad that responds instantly to velocity and dynamics. Minimal memory blur means every note is heard exactly as played: honest, stable, immediate. The instrument that listens.",
-  "tags": ["pad", "clean", "foundation", "responsive", "present", "warm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
+  "description": "Blend fully in the Opsis direction — all perception, no memory grain. Fast reactivity, low interference. A clear, present-forward pad that responds instantly to velocity and dynamics. Minimal memory blur means every note is heard exactly as played: honest, stable, immediate. The instrument that listens.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.55,
+    "density": 0.5,
+    "movement": 0.35,
+    "space": 0.45,
+    "warmth": 0.72
+  },
+  "engines": [
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Present Tense",
   "parameters": {
     "Ombre": {
+      "ombre_attack": 0.02,
       "ombre_blend": 0.9,
-      "ombre_interference": 0.1,
-      "ombre_memoryDecay": 1.5,
-      "ombre_memoryGrain": 30.0,
-      "ombre_memoryDrift": 0.05,
-      "ombre_oscShape": 0.5,
-      "ombre_reactivity": 0.85,
-      "ombre_subLevel": 0.3,
+      "ombre_decay": 0.4,
       "ombre_filterCutoff": 6500.0,
       "ombre_filterReso": 0.15,
-      "ombre_attack": 0.02,
-      "ombre_decay": 0.4,
-      "ombre_sustain": 0.8,
+      "ombre_interference": 0.1,
+      "ombre_level": 0.8,
+      "ombre_memoryDecay": 1.5,
+      "ombre_memoryDrift": 0.05,
+      "ombre_memoryGrain": 30.0,
+      "ombre_oscShape": 0.5,
+      "ombre_reactivity": 0.85,
       "ombre_release": 1.2,
-      "ombre_level": 0.8
+      "ombre_subLevel": 0.3,
+      "ombre_sustain": 0.8
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.72,
-    "movement": 0.35,
-    "density": 0.5,
-    "space": 0.45,
-    "aggression": 0.1
-  }
+  "tags": [
+    "pad",
+    "clean",
+    "foundation",
+    "responsive",
+    "present",
+    "warm"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -863,16 +863,19 @@ public:
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.7f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "optic_inputGain", 1 }, "Optic Input Gain",
+            juce::ParameterID { "optic_inputGain", 1 }, "Optic Signal Level",
             juce::NormalisableRange<float> (0.0f, 4.0f, 0.01f), 1.0f));
 
         //----------------------------------------------------------------------
         // AutoPulse section — the self-evolving rhythmic heartbeat
         //----------------------------------------------------------------------
 
+        // Default to On (index 1): OPTIC's entire identity is the autonomous heartbeat.
+        // Booting with AutoPulse off means first contact is a silent analysis engine —
+        // exactly the wrong first impression. On by default; Steady Glow preset overrides to Off.
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "optic_autoPulse", 1 }, "Optic AutoPulse",
-            juce::StringArray { "Off", "On" }, 0));
+            juce::StringArray { "Off", "On" }, 1));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "optic_pulseRate", 1 }, "Optic Pulse Rate",
@@ -907,11 +910,11 @@ public:
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "optic_modMixPulse", 1 }, "Optic Mod Mix Pulse",
+            juce::ParameterID { "optic_modMixPulse", 1 }, "Optic Pulse Blend",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "optic_modMixSpec", 1 }, "Optic Mod Mix Spectrum",
+            juce::ParameterID { "optic_modMixSpec", 1 }, "Optic Spectral Blend",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
 
         //----------------------------------------------------------------------

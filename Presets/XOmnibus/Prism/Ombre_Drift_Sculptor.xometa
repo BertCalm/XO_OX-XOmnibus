@@ -1,0 +1,94 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Sculpting the instability of memory. memoryDrift holds at 0.35 — the past version of the sound gently detuned, a barely perceptible warble beneath the main signal. Mod wheel increases drift to 0.88: the memory layer becomes increasingly detuned and unstable, the historical version of each note drifting away from pitch, the two layers diverging into a beating, wavering dissonance. At maximum drift the past sounds like a waterlogged piano in a flooding room. Aftertouch reanchors — pulls drift back down sharply, the memory version snapping back into tune, the instability resolved. Release and it begins drifting again. Velocity determines initial grainSize — soft strikes begin with large grains, long reconstruction; hard strikes begin with tight grains, the memory more precise before the drift takes it.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.45,
+    "density": 0.38,
+    "movement": 0.68,
+    "space": 0.7,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "modMatrix": [
+    {
+      "amount": 0.53,
+      "destination": "ombre_memoryDrift",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.4,
+      "destination": "ombre_interference",
+      "source": "modWheel"
+    },
+    {
+      "amount": -0.7,
+      "destination": "ombre_memoryDrift",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.35,
+      "destination": "ombre_filterReso",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.6,
+      "destination": "ombre_grainSize",
+      "source": "velocity"
+    },
+    {
+      "amount": 0.25,
+      "destination": "ombre_blend",
+      "source": "velocity"
+    }
+  ],
+  "mood": "Prism",
+  "name": "Drift Sculptor",
+  "parameters": {
+    "Ombre": {
+      "ombre_attack": 0.12,
+      "ombre_blend": 0.45,
+      "ombre_decay": 0.7,
+      "ombre_filterCutoff": 4200.0,
+      "ombre_filterReso": 0.08,
+      "ombre_grainSize": 200.0,
+      "ombre_interference": 0.12,
+      "ombre_level": 0.74,
+      "ombre_memoryDecay": 10.0,
+      "ombre_memoryDrift": 0.35,
+      "ombre_oscShape": 0.5,
+      "ombre_reactivity": 0.4,
+      "ombre_release": 2.8,
+      "ombre_subLevel": 0.12,
+      "ombre_sustain": 0.6
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "ombre",
+    "drift",
+    "memory",
+    "instability",
+    "detuned",
+    "mod-wheel",
+    "aftertouch",
+    "prism",
+    "expression"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

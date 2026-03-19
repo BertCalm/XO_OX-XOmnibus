@@ -1,68 +1,88 @@
 {
-  "schema_version": 1,
-  "name": "Dormant Spore",
-  "mood": "Entangled",
-  "engines": ["Organon", "Opal"],
-  "author": "Guru Bin — Engine Deepening 2026-03-16",
-  "version": "1.0.0",
-  "description": "Cryptobiosis — the organism suspends metabolism entirely, waiting for conditions to permit revival. ORGANON's metabolicRate at floor, lockIn maximum to prevent accidental activation. OPAL's granular synthesis models the spore coat: thousands of tiny grains encapsulating a suspended future. The coupling is one-directional: OPAL feeds ORGANON's membrane just enough information to remember it's alive.",
-  "tags": ["dormant", "cryptobiosis", "spore", "suspended", "entangled", "granular", "opal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Low",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
-  "parameters": {
-    "Organon": {
-      "organon_metabolicRate": 0.05,
-      "organon_enzymeSelect": 400.0,
-      "organon_catalystDrive": 0.02,
-      "organon_dampingCoeff": 0.95,
-      "organon_signalFlux": 0.05,
-      "organon_phasonShift": 0.0,
-      "organon_isotopeBalance": 0.98,
-      "organon_lockIn": 0.85,
-      "organon_membrane": 0.12,
-      "organon_noiseColor": 0.15
-    },
-    "Opal": {
-      "opal_grainSize": 0.85,
-      "opal_grainDensity": 0.22,
-      "opal_grainPitch": 0.5,
-      "opal_grainSpread": 0.35,
-      "opal_position": 0.3,
-      "opal_positionSpread": 0.65,
-      "opal_filterCutoff": 1200.0,
-      "opal_filterReso": 0.25,
-      "opal_ampAttack": 1.5,
-      "opal_ampDecay": 0.5,
-      "opal_ampSustain": 0.4,
-      "opal_ampRelease": 4.0,
-      "opal_reverbMix": 0.55,
-      "opal_reverbSize": 0.75,
-      "opal_macroCharacter": 0.0,
-      "opal_macroMovement": 0.0,
-      "opal_macroCoupling": 0.0,
-      "opal_macroSpace": 0.0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
       {
+        "amount": 0.28,
         "engineA": "Opal",
         "engineB": "Organon",
-        "type": "AmpToFilter",
-        "amount": 0.28
+        "type": "AmpToFilter"
       }
     ]
   },
-  "sequencer": null,
+  "couplingIntensity": "Low",
+  "created": "2026-03-16",
+  "description": "Cryptobiosis — the organism suspends metabolism entirely, waiting for conditions to permit revival. ORGANON's metabolicRate at floor, lockIn maximum to prevent accidental activation. OPAL's granular synthesis models the spore coat: thousands of tiny grains encapsulating a suspended future. The coupling is one-directional: OPAL feeds ORGANON's membrane just enough information to remember it's alive.",
   "dna": {
+    "aggression": 0.02,
     "brightness": 0.18,
-    "warmth": 0.55,
-    "movement": 0.08,
     "density": 0.25,
+    "movement": 0.08,
     "space": 0.78,
-    "aggression": 0.02
-  }
+    "warmth": 0.55
+  },
+  "engines": [
+    "Organon",
+    "Opal"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Dormant Spore",
+  "parameters": {
+    "Opal": {
+      "opal_ampAttack": 1.5,
+      "opal_ampDecay": 0.5,
+      "opal_ampRelease": 4.0,
+      "opal_ampSustain": 0.4,
+      "opal_filterCutoff": 1200.0,
+      "opal_filterReso": 0.25,
+      "opal_grainDensity": 0.22,
+      "opal_grainPitch": 0.5,
+      "opal_grainSize": 0.85,
+      "opal_grainSpread": 0.35,
+      "opal_macroCharacter": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_position": 0.3,
+      "opal_positionSpread": 0.65,
+      "opal_reverbMix": 0.55,
+      "opal_reverbSize": 0.75
+    },
+    "Organon": {
+      "organon_catalystDrive": 0.02,
+      "organon_dampingCoeff": 0.95,
+      "organon_enzymeSelect": 400.0,
+      "organon_isotopeBalance": 0.98,
+      "organon_lockIn": 0.85,
+      "organon_membrane": 0.12,
+      "organon_metabolicRate": 0.05,
+      "organon_noiseColor": 0.15,
+      "organon_phasonShift": 0.0,
+      "organon_signalFlux": 0.05
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "dormant",
+    "cryptobiosis",
+    "spore",
+    "suspended",
+    "entangled",
+    "granular",
+    "opal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Owlfish \u00d7 Ohm \u2014 Velocity Couple coupling at extreme DNA corner.",
+  "description": "Owlfish × Ohm — Velocity Couple coupling at extreme DNA corner.",
   "tags": [
     "hot",
     "owlfish",
@@ -33,7 +33,10 @@
     "space": 0.051,
     "aggression": 0.483
   },
-  "parameters": {},
+  "parameters": {
+    "Owlfish": {},
+    "Ohm": {}
+  },
   "coupling": {
     "pairs": [
       {

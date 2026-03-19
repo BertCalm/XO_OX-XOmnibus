@@ -1,47 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "DARK HOT WIDE KINETIC ATM 3",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Low",
+    "sourceEngine": "Obbligato",
+    "targetEngine": null,
+    "type": "Granular"
+  },
+  "couplingIntensity": "Low",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: DARK HOT WIDE KINETIC ATM 3.",
+  "dna": {
+    "aggression": 0.504,
+    "brightness": 0.106,
+    "density": 0.518,
+    "movement": 0.926,
+    "space": 0.929,
+    "warmth": 0.893
+  },
   "engines": [
     "Obbligato"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Atmosphere preset: DARK HOT WIDE KINETIC ATM 3.",
-  "tags": [
-    "x-low-brightness",
-    "x-high-warmth",
-    "x-high-movement",
-    "x-high-space"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Low",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
+  "mood": "Atmosphere",
+  "name": "DARK HOT WIDE KINETIC ATM 3",
+  "parameters": {
+    "Obbligato": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "Granular",
-    "intensity": "Low",
-    "sourceEngine": "Obbligato",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.106,
-    "warmth": 0.893,
-    "aggression": 0.504,
-    "density": 0.518,
-    "movement": 0.926,
-    "space": 0.929
-  }
+  "tags": [
+    "x-low-brightness",
+    "x-high-warmth",
+    "x-high-movement",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

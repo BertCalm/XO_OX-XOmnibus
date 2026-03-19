@@ -1,73 +1,93 @@
 {
-  "name": "Breath Angle",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Obbligato",
+        "type": "CHAOS_INJECTION",
+        "amount": 0.724
+      }
+    ]
+  },
+  "description": "Wind-instrument breath as the light source for the prism — the angle of attack determining the spread of overtones.",
   "engines": [
     "Oblique",
     "Obbligato"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.593,
-    "MOVEMENT": 0.696,
     "COUPLING": 0.586,
+    "MOVEMENT": 0.696,
     "SPACE": 0.557
   },
-  "sonic_dna": {
-    "brightness": 0.665,
-    "warmth": 0.426,
-    "movement": 0.609,
-    "density": 0.638,
-    "space": 0.548,
-    "aggression": 0.458
-  },
+  "mood": "Entangled",
+  "name": "Breath Angle",
   "parameters": {
-    "oblq_prismColor": 0.296,
-    "oblq_prismAngle": 0.512,
-    "oblq_refractIndex": 0.61,
-    "oblq_dispersion": 0.557,
-    "oblq_bounceDepth": 0.437,
-    "oblq_bounceDecay": 0.538,
-    "oblq_funkGroove": 0.528,
-    "oblq_rtjAggression": 0.479,
-    "oblq_psychWidth": 0.455,
-    "oblq_phaseShift": 0.656,
-    "oblq_filterCutoff": 6505.8,
-    "oblq_filterReso": 0.422,
-    "oblq_level": 0.728,
-    "oblq_ampAttack": 0.0154,
-    "oblq_ampDecay": 0.507,
-    "oblq_ampSustain": 0.795,
-    "oblq_ampRelease": 0.469,
-    "oblq_modAttack": 0.0117,
-    "oblq_modDecay": 0.493,
-    "oblq_modSustain": 0.535,
-    "oblq_modRelease": 0.903,
-    "oblq_lfo1Rate": 0.958,
-    "oblq_lfo1Depth": 0.517,
-    "oblq_lfo1Shape": 0.0,
-    "oblq_lfo2Rate": 0.281,
-    "oblq_lfo2Depth": 0.411,
-    "oblq_lfo2Shape": 1.0,
+    "obbl_ampAttack": 0.067,
+    "obbl_ampDecay": 0.238,
+    "obbl_ampRelease": 1.242,
+    "obbl_ampSustain": 0.53,
     "obbl_filterCutoff": 4840.3,
     "obbl_filterReso": 0.562,
     "obbl_level": 0.753,
-    "obbl_ampAttack": 0.067,
-    "obbl_ampDecay": 0.238,
-    "obbl_ampSustain": 0.53,
-    "obbl_ampRelease": 1.242,
+    "obbl_lfo1Depth": 0.16,
     "obbl_lfo1Rate": 0.246,
-    "obbl_lfo1Depth": 0.16
+    "oblq_ampAttack": 0.0154,
+    "oblq_ampDecay": 0.507,
+    "oblq_ampRelease": 0.469,
+    "oblq_ampSustain": 0.795,
+    "oblq_bounceDecay": 0.538,
+    "oblq_bounceDepth": 0.437,
+    "oblq_dispersion": 0.557,
+    "oblq_filterCutoff": 6505.8,
+    "oblq_filterReso": 0.422,
+    "oblq_funkGroove": 0.528,
+    "oblq_level": 0.728,
+    "oblq_lfo1Depth": 0.517,
+    "oblq_lfo1Rate": 0.958,
+    "oblq_lfo1Shape": 0.0,
+    "oblq_lfo2Depth": 0.411,
+    "oblq_lfo2Rate": 0.281,
+    "oblq_lfo2Shape": 1.0,
+    "oblq_modAttack": 0.0117,
+    "oblq_modDecay": 0.493,
+    "oblq_modRelease": 0.903,
+    "oblq_modSustain": 0.535,
+    "oblq_phaseShift": 0.656,
+    "oblq_prismAngle": 0.512,
+    "oblq_prismColor": 0.296,
+    "oblq_psychWidth": 0.455,
+    "oblq_refractIndex": 0.61,
+    "oblq_rtjAggression": 0.479
   },
-  "coupling": {
-    "type": "CHAOS_INJECTION",
-    "source": "Oblique",
-    "target": "Obbligato",
-    "amount": 0.724
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.458,
+    "brightness": 0.665,
+    "density": 0.638,
+    "movement": 0.609,
+    "space": 0.548,
+    "warmth": 0.426
   },
   "tags": [
     "entangled",
     "coupling",
     "prismatic"
   ],
-  "description": "Wind-instrument breath as the light source for the prism — the angle of attack determining the spread of overtones."
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

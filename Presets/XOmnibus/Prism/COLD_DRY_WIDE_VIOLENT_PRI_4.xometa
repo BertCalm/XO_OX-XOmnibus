@@ -1,47 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "COLD DRY WIDE VIOLENT PRI 4",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "None",
+    "sourceEngine": "Orca",
+    "targetEngine": null,
+    "type": "Rhythmic"
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Prism preset: COLD DRY WIDE VIOLENT PRI 4.",
+  "dna": {
+    "aggression": 0.434,
+    "brightness": 0.918,
+    "density": 0.078,
+    "movement": 0.517,
+    "space": 0.906,
+    "warmth": 0.097
+  },
   "engines": [
     "Orca"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Prism preset: COLD DRY WIDE VIOLENT PRI 4.",
-  "tags": [
-    "x-high-brightness",
-    "x-low-warmth",
-    "x-low-density",
-    "x-high-space"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
+  "mood": "Prism",
+  "name": "COLD DRY WIDE VIOLENT PRI 4",
+  "parameters": {
+    "Orca": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "Rhythmic",
-    "intensity": "None",
-    "sourceEngine": "Orca",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.918,
-    "warmth": 0.097,
-    "aggression": 0.434,
-    "density": 0.078,
-    "movement": 0.517,
-    "space": 0.906
-  }
+  "tags": [
+    "x-high-brightness",
+    "x-low-warmth",
+    "x-low-density",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

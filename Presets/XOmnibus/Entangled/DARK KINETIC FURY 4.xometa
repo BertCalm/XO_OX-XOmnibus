@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Orca \u00d7 OddOscar \u2014 Envelope Link coupling at extreme DNA corner.",
+  "description": "Orca × OddOscar — Envelope Link coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "orca",
@@ -33,7 +33,10 @@
     "space": 0.544,
     "aggression": 0.932
   },
-  "parameters": {},
+  "parameters": {
+    "Orca": {},
+    "OddOscar": {}
+  },
   "coupling": {
     "pairs": [
       {

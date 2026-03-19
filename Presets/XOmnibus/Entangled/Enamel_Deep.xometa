@@ -1,77 +1,77 @@
 {
-  "schema_version": 1,
-  "name": "Enamel Deep",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.642,
+        "engineA": "Overbite",
+        "engineB": "Orca",
+        "type": "timbral_blend"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "created": "2026-03-16",
+  "description": "OVERBITE jaw syncs to ORCA hunt sonar. Two apex predators, one signal.",
+  "dna": {
+    "aggression": 0.667,
+    "brightness": 0.432,
+    "density": 0.717,
+    "movement": 0.583,
+    "space": 0.442,
+    "warmth": 0.488
+  },
   "engines": [
     "Overbite",
     "Orca"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE jaw syncs to ORCA hunt sonar. Two apex predators, one signal.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Enamel Deep",
+  "parameters": {
+    "Orca": {
+      "orca_couplingIn": 0.581,
+      "orca_couplingOut": 0.686,
+      "orca_macro1": 0.336,
+      "orca_macro2": 0.636,
+      "orca_macro3": 0.52,
+      "orca_macro4": 0.309,
+      "orca_outputLevel": 0.822,
+      "orca_outputPan": 0.004
+    },
+    "Overbite": {
+      "poss_biteDepth": 0.417,
+      "poss_couplingIn": 0.553,
+      "poss_couplingOut": 0.422,
+      "poss_fangAttack": 0.249,
+      "poss_gnashAmt": 0.365,
+      "poss_macro1": 0.354,
+      "poss_macro2": 0.583,
+      "poss_macro3": 0.664,
+      "poss_macro4": 0.483,
+      "poss_outputLevel": 0.831,
+      "poss_outputPan": -0.005,
+      "poss_snapRelease": 0.23
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "overbite",
     "orca",
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Strong",
   "tempo": 90,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Overbite": {
-      "poss_macro1": 0.354,
-      "poss_macro2": 0.583,
-      "poss_macro3": 0.664,
-      "poss_macro4": 0.483,
-      "poss_couplingOut": 0.422,
-      "poss_couplingIn": 0.553,
-      "poss_outputLevel": 0.831,
-      "poss_outputPan": -0.005,
-      "poss_biteDepth": 0.417,
-      "poss_fangAttack": 0.249,
-      "poss_gnashAmt": 0.365,
-      "poss_snapRelease": 0.23
-    },
-    "Orca": {
-      "orca_macro1": 0.336,
-      "orca_macro2": 0.636,
-      "orca_macro3": 0.52,
-      "orca_macro4": 0.309,
-      "orca_couplingOut": 0.686,
-      "orca_couplingIn": 0.581,
-      "orca_outputLevel": 0.822,
-      "orca_outputPan": 0.004
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Orca",
-        "type": "timbral_blend",
-        "amount": 0.642
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.432,
-    "warmth": 0.488,
-    "movement": 0.583,
-    "density": 0.717,
-    "space": 0.442,
-    "aggression": 0.667
-  }
+  "version": "1.0.0"
 }

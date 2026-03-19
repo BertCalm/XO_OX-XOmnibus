@@ -1,22 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "Fat Bite",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8,
+    "pairs": [
+      {
+        "amount": 0.8,
+        "engineA": "Obese",
+        "engineB": "Overbite",
+        "type": "Amp->Filter"
+      }
+    ],
+    "type": "Amp->Filter"
+  },
+  "couplingIntensity": "Deep",
+  "description": "OBESE saturation drives OVERBITE filter. Maximum low-end character.",
+  "dna": {
+    "aggression": 0.714,
     "brightness": 0.486,
-    "warmth": 0.637,
-    "movement": 0.457,
-    "density": 0.728,
+    "density": 0.953,
+    "movement": 0.127,
     "space": 0.469,
-    "aggression": 0.714
+    "warmth": 0.841
   },
   "engines": [
-    "XObese",
-    "XOverbite"
+    "Obese",
+    "Overbite"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE saturation drives OVERBITE filter. Maximum low-end character.",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Fat Bite",
+  "parameters": {
+    "Obese": {
+      "fat_aggression": 0.738,
+      "fat_brightness": 0.526,
+      "fat_couplingBus": 0,
+      "fat_couplingLevel": 0.75,
+      "fat_outputLevel": 0.87,
+      "fat_outputPan": -0.05,
+      "fat_warmth": 0.645
+    },
+    "Overbite": {
+      "poss_aggression": 0.68,
+      "poss_brightness": 0.425,
+      "poss_couplingBus": 0,
+      "poss_couplingLevel": 0.59,
+      "poss_outputLevel": 0.85,
+      "poss_outputPan": -0.02,
+      "poss_warmth": 0.621
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.714,
+    "brightness": 0.486,
+    "density": 0.728,
+    "movement": 0.457,
+    "space": 0.469,
+    "warmth": 0.637
+  },
   "tags": [
     "coupling",
     "entangled",
@@ -25,51 +71,5 @@
     "fat",
     "bite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
-  "dna": {
-    "brightness": 0.486,
-    "warmth": 0.841,
-    "movement": 0.127,
-    "density": 0.953,
-    "space": 0.469,
-    "aggression": 0.714
-  },
-  "parameters": {
-    "XObese": {
-      "fat_outputLevel": 0.87,
-      "fat_outputPan": -0.05,
-      "fat_couplingLevel": 0.75,
-      "fat_couplingBus": 0,
-      "fat_brightness": 0.526,
-      "fat_warmth": 0.645,
-      "fat_aggression": 0.738
-    },
-    "XOverbite": {
-      "poss_outputLevel": 0.85,
-      "poss_outputPan": -0.02,
-      "poss_couplingLevel": 0.59,
-      "poss_couplingBus": 0,
-      "poss_brightness": 0.425,
-      "poss_warmth": 0.621,
-      "poss_aggression": 0.68
-    }
-  },
-  "coupling": {
-    "type": "Amp->Filter",
-    "amount": 0.8,
-    "pairs": [
-      {
-        "engineA": "XObese",
-        "engineB": "XOverbite",
-        "type": "Amp->Filter",
-        "amount": 0.8
-      }
-    ]
-  }
+  "version": "1.0.0"
 }

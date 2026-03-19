@@ -1,37 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Orbit Decay",
-  "mood": "Flux",
-  "engines": ["Ouroboros"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Lorenz attractor with mid chaos and offset theta projection. Spiraling harmonic descent like an orbit losing energy.",
-  "tags": ["evolving", "descending", "spiral", "movement"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Lorenz attractor with mid chaos and offset theta projection. Spiraling harmonic descent like an orbit losing energy.",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.4,
+    "density": 0.45,
+    "movement": 0.75,
+    "space": 0.5,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Ouroboros"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Orbit Decay",
   "parameters": {
     "Ouroboros": {
-      "ouro_topology": 0,
-      "ouro_rate": 200.0,
       "ouro_chaosIndex": 0.45,
-      "ouro_leash": 0.5,
-      "ouro_theta": 0.9,
-      "ouro_phi": 0.0,
       "ouro_damping": 0.4,
-      "ouro_injection": 0.0
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.5,
+      "ouro_phi": 0.0,
+      "ouro_rate": 200.0,
+      "ouro_theta": 0.9,
+      "ouro_topology": 0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.5,
-    "movement": 0.75,
-    "density": 0.45,
-    "space": 0.5,
-    "aggression": 0.25
-  }
+  "tags": [
+    "evolving",
+    "descending",
+    "spiral",
+    "movement"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

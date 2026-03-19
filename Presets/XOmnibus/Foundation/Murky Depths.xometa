@@ -1,57 +1,58 @@
 {
-  "schema_version": 1,
-  "name": "Murky Depths",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-08",
+  "description": "Deep dub bass presence with warm character.",
+  "dna": {
+    "aggression": 0.26,
+    "brightness": 0.434,
+    "density": 0.6,
+    "movement": 0.44,
+    "space": 0.468,
+    "warmth": 0.644
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Deep dub bass presence with warm character.",
-  "tags": [
-    "worn",
-    "subby",
-    "saw"
-  ],
+  "legacy": {
+    "sourceCategory": "Dub Bass",
+    "sourceInstrument": "Overdub",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Overdub",
-    "sourceCategory": "Dub Bass",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Murky Depths",
   "parameters": {
     "Overdub": {
-      "dub_oscWave": 2.0,
-      "dub_oscOctave": 1.0,
-      "dub_subLevel": 0.8,
-      "dub_drift": 0.15,
-      "dub_filterCutoff": 400.0,
-      "dub_filterReso": 0.5,
-      "dub_filterEnvAmt": 0.4,
       "dub_attack": 0.01,
       "dub_decay": 0.6,
-      "dub_sustain": 0.4,
-      "dub_delayTime": 0.75,
       "dub_delayFeedback": 0.45,
-      "dub_delayWear": 0.6
+      "dub_delayTime": 0.75,
+      "dub_delayWear": 0.6,
+      "dub_drift": 0.15,
+      "dub_filterCutoff": 400.0,
+      "dub_filterEnvAmt": 0.4,
+      "dub_filterReso": 0.5,
+      "dub_oscOctave": 1.0,
+      "dub_oscWave": 2.0,
+      "dub_subLevel": 0.8,
+      "dub_sustain": 0.4,
+      "dub_lfoDepth": 0.12
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.434,
-    "warmth": 0.644,
-    "movement": 0.44,
-    "density": 0.6,
-    "space": 0.468,
-    "aggression": 0.26
-  }
+  "tags": [
+    "worn",
+    "subby",
+    "saw"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

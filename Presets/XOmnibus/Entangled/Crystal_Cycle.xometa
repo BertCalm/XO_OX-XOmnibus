@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Crystal Cycle",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.42,
+        "engineA": "Obsidian",
+        "engineB": "Ouroboros",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Crystal clarity wraps the infinite coil. OBSIDIAN edge loops through OUROBOROS cycle.",
+  "dna": {
+    "aggression": 0.289,
+    "brightness": 0.714,
+    "density": 0.546,
+    "movement": 0.487,
+    "space": 0.642,
+    "warmth": 0.262
+  },
   "engines": [
     "Obsidian",
     "Ouroboros"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Crystal clarity wraps the infinite coil. OBSIDIAN edge loops through OUROBOROS cycle.",
-  "tags": [
-    "obsidian",
-    "ouroboros",
-    "crystal",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Crystal Cycle",
   "parameters": {
     "Obsidian": {
-      "obsidian_brightness": 0.824,
-      "obsidian_warmth": 0.14,
-      "obsidian_movement": 0.256,
-      "obsidian_density": 0.478,
-      "obsidian_space": 0.56,
       "obsidian_aggression": 0.176,
-      "obsidian_level": 0.899
+      "obsidian_brightness": 0.824,
+      "obsidian_density": 0.478,
+      "obsidian_level": 0.899,
+      "obsidian_movement": 0.256,
+      "obsidian_space": 0.56,
+      "obsidian_warmth": 0.14
     },
     "Ouroboros": {
-      "ouro_brightness": 0.545,
-      "ouro_warmth": 0.447,
-      "ouro_movement": 0.734,
-      "ouro_density": 0.636,
-      "ouro_space": 0.575,
       "ouro_aggression": 0.462,
-      "ouro_level": 0.866
+      "ouro_brightness": 0.545,
+      "ouro_density": 0.636,
+      "ouro_level": 0.866,
+      "ouro_movement": 0.734,
+      "ouro_space": 0.575,
+      "ouro_warmth": 0.447
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Ouroboros",
-        "type": "HARMONIC_BLEND",
-        "amount": 0.42
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.714,
-    "warmth": 0.262,
-    "movement": 0.487,
-    "density": 0.546,
-    "space": 0.642,
-    "aggression": 0.289
-  }
+  "tags": [
+    "obsidian",
+    "ouroboros",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

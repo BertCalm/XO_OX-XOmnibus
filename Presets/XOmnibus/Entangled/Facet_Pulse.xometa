@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Facet Pulse",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.644,
+        "engineA": "Obsidian",
+        "engineB": "Optic",
+        "type": "Envelope->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Faceted obsidian refracts phosphor pulse. Sharp visual artifact.",
+  "dna": {
+    "aggression": 0.23,
+    "brightness": 0.897,
+    "density": 0.432,
+    "movement": 0.547,
+    "space": 0.568,
+    "warmth": 0.281
+  },
   "engines": [
     "Obsidian",
     "Optic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Faceted obsidian refracts phosphor pulse. Sharp visual artifact.",
-  "tags": [
-    "obsidian",
-    "optic",
-    "crystal",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Facet Pulse",
   "parameters": {
     "Obsidian": {
-      "obsidian_brightness": 0.848,
-      "obsidian_warmth": 0.132,
-      "obsidian_movement": 0.22,
-      "obsidian_density": 0.492,
-      "obsidian_space": 0.615,
       "obsidian_aggression": 0.067,
-      "obsidian_level": 0.746
+      "obsidian_brightness": 0.848,
+      "obsidian_density": 0.492,
+      "obsidian_level": 0.746,
+      "obsidian_movement": 0.22,
+      "obsidian_space": 0.615,
+      "obsidian_warmth": 0.132
     },
     "Optic": {
-      "optic_brightness": 0.883,
-      "optic_warmth": 0.332,
-      "optic_movement": 0.893,
-      "optic_density": 0.43,
-      "optic_space": 0.568,
       "optic_aggression": 0.496,
-      "optic_level": 0.825
+      "optic_brightness": 0.883,
+      "optic_density": 0.43,
+      "optic_level": 0.825,
+      "optic_movement": 0.893,
+      "optic_space": 0.568,
+      "optic_warmth": 0.332
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Optic",
-        "type": "Envelope->Filter",
-        "amount": 0.644
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.897,
-    "warmth": 0.281,
-    "movement": 0.547,
-    "density": 0.432,
-    "space": 0.568,
-    "aggression": 0.23
-  }
+  "tags": [
+    "obsidian",
+    "optic",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

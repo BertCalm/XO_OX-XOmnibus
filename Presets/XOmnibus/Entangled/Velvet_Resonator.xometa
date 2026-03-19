@@ -1,78 +1,78 @@
 {
-  "schema_version": 1,
-  "name": "Velvet Resonator",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.526,
+        "engineA": "Obese",
+        "engineB": "Overlap",
+        "type": "amplitude_sidechain"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "OBESE saturation feeds OVERLAP FDN resonator mesh. Dense entangled bloom.",
+  "dna": {
+    "aggression": 0.607,
+    "brightness": 0.556,
+    "density": 0.766,
+    "movement": 0.613,
+    "space": 0.493,
+    "warmth": 0.596
+  },
   "engines": [
     "Obese",
     "Overlap"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE saturation feeds OVERLAP FDN resonator mesh. Dense entangled bloom.",
-  "tags": [
-    "obese",
-    "overlap",
-    "coupling",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
-  "tempo": 125,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Velvet Resonator",
   "parameters": {
     "Obese": {
+      "fat_analog": 0.211,
+      "fat_compress": 0.701,
+      "fat_couplingIn": 0.536,
+      "fat_couplingOut": 0.451,
+      "fat_digital": 0.566,
       "fat_macro1": 0.321,
       "fat_macro2": 0.46,
       "fat_macro3": 0.47,
       "fat_macro4": 0.436,
-      "fat_couplingOut": 0.451,
-      "fat_couplingIn": 0.536,
+      "fat_mojoCtrl": 0.747,
       "fat_outputLevel": 0.89,
       "fat_outputPan": 0.018,
-      "fat_satDrive": 0.639,
-      "fat_mojoCtrl": 0.747,
-      "fat_analog": 0.211,
-      "fat_digital": 0.566,
-      "fat_compress": 0.701
+      "fat_satDrive": 0.639
     },
     "Overlap": {
+      "olap_couplingIn": 0.581,
+      "olap_couplingOut": 0.781,
       "olap_macro1": 0.642,
       "olap_macro2": 0.574,
       "olap_macro3": 0.367,
       "olap_macro4": 0.327,
-      "olap_couplingOut": 0.781,
-      "olap_couplingIn": 0.581,
       "olap_outputLevel": 0.845,
       "olap_outputPan": -0.018
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obese",
-        "engineB": "Overlap",
-        "type": "amplitude_sidechain",
-        "amount": 0.526
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.556,
-    "warmth": 0.596,
-    "movement": 0.613,
-    "density": 0.766,
-    "space": 0.493,
-    "aggression": 0.607
-  }
+  "tags": [
+    "obese",
+    "overlap",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 125,
+  "version": "1.0.0"
 }

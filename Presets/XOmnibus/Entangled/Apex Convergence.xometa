@@ -1,14 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Apex Convergence",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Ocelot",
+        "engineB": "Osprey",
+        "type": "EnvToMod"
+      },
+      {
+        "amount": 0.45,
+        "engineA": "Osprey",
+        "engineB": "Ocelot",
+        "type": "GrainToMod"
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "Two apex predators in a shared biome — OCELOT marks the ground as OSPREY controls the sky above.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.645,
+    "density": 0.538,
+    "movement": 0.667,
+    "space": 0.635,
+    "warmth": 0.515
+  },
   "engines": [
     "Ocelot",
     "Osprey"
   ],
-  "author": "XPN Tool \u2014 Optic/Oblique/Ocelot Coupling Pack",
-  "version": "1.0.0",
-  "description": "Two apex predators in a shared biome \u2014 OCELOT marks the ground as OSPREY controls the sky above.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Apex Convergence",
+  "parameters": {
+    "Ocelot": {
+      "ocelot_ampAttack": 0.04,
+      "ocelot_ampRelease": 1.8,
+      "ocelot_biomeShift": 0.5,
+      "ocelot_filterCutoff": 2400.0,
+      "ocelot_filterReso": 0.3,
+      "ocelot_movement": 0.6,
+      "ocelot_predatorDepth": 0.55,
+      "ocelot_warmth": 0.65
+    },
+    "Osprey": {
+      "osp_ampAttack": 0.03,
+      "osp_ampRelease": 1.5,
+      "osp_filterCutoff": 2800.0,
+      "osp_filterReso": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "ocelot",
     "osprey",
@@ -18,61 +73,6 @@
     "entangled",
     "coupling"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Ocelot": {
-      "ocelot_biomeShift": 0.5,
-      "ocelot_warmth": 0.65,
-      "ocelot_movement": 0.6,
-      "ocelot_predatorDepth": 0.55,
-      "ocelot_filterCutoff": 2400.0,
-      "ocelot_filterReso": 0.3,
-      "ocelot_ampAttack": 0.04,
-      "ocelot_ampRelease": 1.8
-    },
-    "Osprey": {
-      "osp_filterCutoff": 2800.0,
-      "osp_filterReso": 0.3,
-      "osp_ampAttack": 0.03,
-      "osp_ampRelease": 1.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ocelot",
-        "engineB": "Osprey",
-        "type": "EnvToMod",
-        "amount": 0.6
-      },
-      {
-        "engineA": "Osprey",
-        "engineB": "Ocelot",
-        "type": "GrainToMod",
-        "amount": 0.45
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.645,
-    "warmth": 0.515,
-    "movement": 0.667,
-    "density": 0.538,
-    "space": 0.635,
-    "aggression": 0.5
-  }
+  "version": "1.0.0"
 }

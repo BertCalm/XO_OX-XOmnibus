@@ -1,13 +1,51 @@
 {
-  "schema_version": 1,
-  "name": "Glacial Cave",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Oracle dissolved into infinite space. Space dimension at 0.94 — cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "dna": {
+    "aggression": 0.301,
+    "brightness": 0.442,
+    "density": 0.392,
+    "movement": 0.714,
+    "space": 0.942,
+    "warmth": 0.485
+  },
   "engines": [
     "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "Oracle dissolved into infinite space. Space dimension at 0.94 \u2014 cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
+  "mood": "Aether",
+  "name": "Glacial Cave",
+  "parameters": {
+    "Oracle": {
+      "oracle_ampAttack": 0.804,
+      "oracle_ampDecay": 1.81,
+      "oracle_ampRelease": 4.57,
+      "oracle_ampStep": 0.396,
+      "oracle_ampSustain": 0.542,
+      "oracle_barrierElasticity": 0.759,
+      "oracle_breakpoints": 15,
+      "oracle_distribution": 0.14,
+      "oracle_drift": 0.812,
+      "oracle_gravity": 0.712,
+      "oracle_level": 0.75,
+      "oracle_macroDrift": 0.942,
+      "oracle_macroEvolution": 0.714,
+      "oracle_macroGravity": 0.301,
+      "oracle_macroProphecy": 0.442,
+      "oracle_maqam": 2,
+      "oracle_timeStep": 0.657
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "vast",
@@ -17,44 +55,6 @@
     "cosmic",
     "oracle"
   ],
-  "macroLabels": [
-    "PROPHECY",
-    "EVOLUTION",
-    "GRAVITY",
-    "DRIFT"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.442,
-    "warmth": 0.485,
-    "movement": 0.714,
-    "density": 0.392,
-    "space": 0.942,
-    "aggression": 0.301
-  },
-  "parameters": {
-    "Oracle": {
-      "oracle_breakpoints": 15,
-      "oracle_timeStep": 0.657,
-      "oracle_ampStep": 0.396,
-      "oracle_distribution": 0.14,
-      "oracle_barrierElasticity": 0.759,
-      "oracle_maqam": 2,
-      "oracle_gravity": 0.712,
-      "oracle_drift": 0.812,
-      "oracle_level": 0.75,
-      "oracle_ampAttack": 0.804,
-      "oracle_ampDecay": 1.81,
-      "oracle_ampSustain": 0.542,
-      "oracle_ampRelease": 4.57,
-      "oracle_macroProphecy": 0.442,
-      "oracle_macroEvolution": 0.714,
-      "oracle_macroGravity": 0.301,
-      "oracle_macroDrift": 0.942
-    }
-  },
-  "coupling": null,
-  "sequencer": null
+  "version": "1.0"
 }

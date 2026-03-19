@@ -1,13 +1,46 @@
 {
-  "schema_version": 1,
-  "name": "Oblong Boulder Drop",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "A boulder dropped into still water. One deep resonant hit.",
+  "dna": {
+    "aggression": 0.65,
+    "brightness": 0.1,
+    "density": 0.9,
+    "movement": 0.3,
+    "space": 0.35,
+    "warmth": 0.7
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "A boulder dropped into still water. One deep resonant hit.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Oblong Boulder Drop",
+  "parameters": {
+    "Oblong": {
+      "ob_body": 0.9,
+      "ob_decay": 0.5,
+      "ob_drive": 0.65,
+      "ob_sub": 0.9,
+      "ob_tone": 0.1,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "bedrock",
     "bedrock-bass",
@@ -16,37 +49,6 @@
     "impact",
     "boulder"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oblong": {
-      "ob_drive": 0.65,
-      "ob_body": 0.9,
-      "ob_tone": 0.1,
-      "ob_decay": 0.5,
-      "ob_sub": 0.9
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.1,
-    "warmth": 0.7,
-    "movement": 0.3,
-    "density": 0.9,
-    "space": 0.35,
-    "aggression": 0.65
-  }
+  "version": "1.0.0"
 }

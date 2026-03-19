@@ -33,7 +33,9 @@
     "space": 0.55,
     "aggression": 0.52
   },
-  "parameters": {},
+  "parameters": {
+    "Ombre": {}
+  },
   "tags": [
     "flux",
     "cold-flux",
@@ -41,5 +43,5 @@
     "nitrogen",
     "liquid"
   ],
-  "description": "Ombre gradient locked at coldest temperature \u2014 liquid nitrogen flow."
+  "description": "Ombre gradient locked at coldest temperature — liquid nitrogen flow."
 }

@@ -1,14 +1,67 @@
 {
-  "schema_version": 1,
-  "name": "Ambrotype Plunge",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.761,
+        "engineA": "Obscura",
+        "engineB": "Osprey",
+        "type": "timbral_blend"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Obscura × Osprey coupling (filter modulation). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.318,
+    "brightness": 0.513,
+    "density": 0.553,
+    "movement": 0.548,
+    "space": 0.574,
+    "warmth": 0.568
+  },
   "engines": [
     "Obscura",
     "Osprey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Obscura \u00d7 Osprey coupling (filter modulation). Stub preset \u2014 sound-design pass pending.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Ambrotype Plunge",
+  "parameters": {
+    "Obscura": {
+      "obscura_couplingOut": 0.476,
+      "obscura_exposure": 0.382,
+      "obscura_graininess": 0.558,
+      "obscura_latentDepth": 0.607,
+      "obscura_macro1": 0.445,
+      "obscura_macro2": 0.56,
+      "obscura_macro3": 0.513,
+      "obscura_macro4": 0.59,
+      "obscura_silverTone": 0.643,
+      "obscura_stiffness": 0.665
+    },
+    "Osprey": {
+      "osprey_couplingIn": 0.72,
+      "osprey_couplingOut": 0.719,
+      "osprey_macro1": 0.543,
+      "osprey_macro2": 0.582,
+      "osprey_macro3": 0.361,
+      "osprey_macro4": 0.358
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "obscura",
     "osprey",
@@ -16,59 +69,6 @@
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": 115,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Obscura": {
-      "obscura_stiffness": 0.665,
-      "obscura_graininess": 0.558,
-      "obscura_exposure": 0.382,
-      "obscura_latentDepth": 0.607,
-      "obscura_silverTone": 0.643,
-      "obscura_macro1": 0.445,
-      "obscura_macro2": 0.56,
-      "obscura_macro3": 0.513,
-      "obscura_macro4": 0.59,
-      "obscura_couplingOut": 0.476
-    },
-    "Osprey": {
-      "osprey_macro1": 0.543,
-      "osprey_macro2": 0.582,
-      "osprey_macro3": 0.361,
-      "osprey_macro4": 0.358,
-      "osprey_couplingOut": 0.719,
-      "osprey_couplingIn": 0.72
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Osprey",
-        "type": "timbral_blend",
-        "amount": 0.761
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.513,
-    "warmth": 0.568,
-    "movement": 0.548,
-    "density": 0.553,
-    "space": 0.574,
-    "aggression": 0.318
-  }
+  "version": "1.0.0"
 }

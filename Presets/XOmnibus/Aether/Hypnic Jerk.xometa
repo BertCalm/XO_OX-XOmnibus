@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Hypnic Jerk",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Transcendent dream pads atmosphere with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.526,
+    "density": 0.179,
+    "movement": 0.125,
+    "space": 0.598,
+    "warmth": 0.697
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Transcendent dream pads atmosphere with bob character and analog drift.",
-  "tags": [
-    "dream",
-    "falling",
-    "dissolve"
-  ],
+  "legacy": {
+    "sourceCategory": "Dream Pads",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Dream Pads",
-    "sourcePresetName": null
-  },
+  "mood": "Aether",
+  "name": "Hypnic Jerk",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 1.0,
-      "bob_oscA_drift": 0.68,
-      "bob_oscA_shape": 0.3,
-      "bob_oscB_wave": 0.0,
-      "bob_oscB_blend": 0.55,
-      "bob_oscB_detune": -12.0,
-      "bob_curMode": 0.0,
-      "bob_curAmount": 0.25,
-      "bob_fltMode": 2.0,
-      "bob_fltCutoff": 2000.0,
-      "bob_fltChar": 0.58,
       "bob_ampAttack": 2.0,
       "bob_ampDecay": 2.5,
-      "bob_ampSustain": 0.82,
       "bob_ampRelease": 7.0,
-      "bob_bobMode": 0.55
+      "bob_ampSustain": 0.82,
+      "bob_bobMode": 0.55,
+      "bob_curAmount": 0.25,
+      "bob_curMode": 0.0,
+      "bob_fltChar": 0.58,
+      "bob_fltCutoff": 2000.0,
+      "bob_fltMode": 2.0,
+      "bob_oscA_drift": 0.68,
+      "bob_oscA_shape": 0.3,
+      "bob_oscA_wave": 1.0,
+      "bob_oscB_blend": 0.55,
+      "bob_oscB_detune": -12.0,
+      "bob_oscB_wave": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.526,
-    "warmth": 0.697,
-    "movement": 0.125,
-    "density": 0.179,
-    "space": 0.598,
-    "aggression": 0.0
-  }
+  "tags": [
+    "dream",
+    "falling",
+    "dissolve"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

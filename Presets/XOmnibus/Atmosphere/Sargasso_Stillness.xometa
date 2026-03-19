@@ -1,13 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Sargasso Stillness",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Four fold layers at mid symmetry — balanced harmonic blend. Low fold point creates soft lower-harmonic emphasis. Movement comes from layer phase drift. Still at the centre of the gyre.",
+  "dna": {
+    "aggression": 0.14,
+    "brightness": 0.32,
+    "density": 0.65,
+    "movement": 0.88,
+    "space": 0.95,
+    "warmth": 0.75
+  },
   "engines": [
     "Origami"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "Four fold layers at mid symmetry \u2014 balanced harmonic blend. Low fold point creates soft lower-harmonic emphasis. Movement comes from layer phase drift. Still at the centre of the gyre.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "FOLD",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Sargasso Stillness",
+  "parameters": {
+    "Origami": {
+      "origami_ampAttack": 2.8,
+      "origami_ampDecay": 2.0,
+      "origami_ampRelease": 9.0,
+      "origami_ampSustain": 0.88,
+      "origami_filterCutoff": 0.42,
+      "origami_filterReso": 0.15,
+      "origami_foldAmt": 0.45,
+      "origami_foldPoint": 0.28,
+      "origami_layers": 4,
+      "origami_oscPitch": 0.0,
+      "origami_symmetry": 0.62
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "calm",
@@ -15,45 +54,6 @@
     "stillness",
     "sargasso"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "FOLD",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Origami": {
-      "origami_foldPoint": 0.28,
-      "origami_foldAmt": 0.45,
-      "origami_layers": 4,
-      "origami_symmetry": 0.62,
-      "origami_filterCutoff": 0.42,
-      "origami_filterReso": 0.15,
-      "origami_oscPitch": 0.0,
-      "origami_ampAttack": 2.8,
-      "origami_ampDecay": 2.0,
-      "origami_ampSustain": 0.88,
-      "origami_ampRelease": 9.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.32,
-    "warmth": 0.75,
-    "movement": 0.88,
-    "density": 0.65,
-    "space": 0.95,
-    "aggression": 0.14
-  }
+  "version": "1.0.0"
 }

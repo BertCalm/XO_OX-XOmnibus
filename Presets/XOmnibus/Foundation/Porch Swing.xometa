@@ -1,91 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "Porch Swing",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-05",
+  "description": "Lazy swung lo-fi beat with soft noise hats and pitched kick. Sunday afternoon feel.",
+  "dna": {
+    "aggression": 0.189,
+    "brightness": 0.658,
+    "density": 0.206,
+    "movement": 0.385,
+    "space": 0.169,
+    "warmth": 0.143
+  },
   "engines": [
     "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Lazy swung lo-fi beat with soft noise hats and pitched kick. Sunday afternoon feel.",
-  "tags": [
-    "lo-fi",
-    "hip-hop",
-    "swung",
-    "soft",
-    "relaxed"
-  ],
+  "legacy": {
+    "sourceCategory": "Grounded",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "Snap+Morph",
     "Bloom",
     "Coupling",
     "Space"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": 80,
-  "created": "2026-03-05",
-  "legacy": {
-    "sourceInstrument": "OddfeliX",
-    "sourceCategory": "Grounded",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Porch Swing",
   "parameters": {
     "OddfeliX": {
+      "compAttack": 5.433,
+      "compRatio": 2.108,
+      "compRelease": 83.249,
+      "compThreshold": -10.217,
+      "compressorEnabled": 1,
       "couplingAmount": 0.128,
-      "masterBalance": -0.306,
-      "xOscMode": 0,
-      "xSnap": 0.104,
-      "xDecay": 0.132,
-      "xFilterCutoff": 1673.283,
-      "xFilterReso": 0.209,
-      "xDetune": 5.433,
-      "xLevel": 0.755,
-      "xPitchLock": 0,
-      "xUnison": 0,
-      "xPolyphony": 0,
-      "oMorph": 0.017,
-      "oBloom": 0.132,
-      "oDecay": 0.554,
-      "oSustain": 0.111,
-      "oRelease": 0.132,
-      "oFilterCutoff": 929.962,
-      "oFilterReso": 0.422,
-      "oDrift": 0.109,
-      "oSub": 0.211,
-      "oDetune": 5.433,
-      "oLevel": 0.206,
-      "oPolyphony": 1,
+      "delayEnabled": 1,
+      "delayFeedback": 0.206,
+      "delayMix": 0.105,
+      "delayTime": 0.562,
+      "delayWobble": 0.311,
+      "lofiBitDepth": 6.13,
+      "lofiEnabled": 1,
+      "lofiMix": 0.309,
+      "lofiRateReduce": 1.325,
+      "lofiWowFlutter": 0.211,
       "macro1": 0.256,
       "macro2": 0.478,
       "macro3": 0.53,
       "macro4": 0.404,
-      "delayEnabled": 1,
-      "delayTime": 0.562,
-      "delayFeedback": 0.206,
-      "delayMix": 0.105,
-      "delayWobble": 0.311,
-      "reverbEnabled": 1,
-      "reverbDecay": 0.308,
-      "reverbSize": 0.313,
-      "reverbMix": 0.104,
-      "reverbDamping": 0.209,
-      "phaserEnabled": 0,
-      "phaserRate": 0.5,
+      "masterBalance": -0.306,
+      "oBloom": 0.132,
+      "oDecay": 0.554,
+      "oDetune": 5.433,
+      "oDrift": 0.109,
+      "oFilterCutoff": 929.962,
+      "oFilterReso": 0.422,
+      "oLevel": 0.206,
+      "oMorph": 0.017,
+      "oPolyphony": 1,
+      "oRelease": 0.132,
+      "oSub": 0.211,
+      "oSustain": 0.111,
       "phaserDepth": 0.5,
+      "phaserEnabled": 0,
       "phaserMix": 0.3,
-      "lofiEnabled": 1,
-      "lofiBitDepth": 6.13,
-      "lofiRateReduce": 1.325,
-      "lofiWowFlutter": 0.211,
-      "lofiMix": 0.309,
-      "compressorEnabled": 1,
-      "compThreshold": -10.217,
-      "compRatio": 2.108,
-      "compAttack": 5.433,
-      "compRelease": 83.249
+      "phaserRate": 0.5,
+      "reverbDamping": 0.209,
+      "reverbDecay": 0.308,
+      "reverbEnabled": 1,
+      "reverbMix": 0.104,
+      "reverbSize": 0.313,
+      "xDecay": 0.132,
+      "xDetune": 5.433,
+      "xFilterCutoff": 1673.283,
+      "xFilterReso": 0.209,
+      "xLevel": 0.755,
+      "xOscMode": 0,
+      "xPitchLock": 0,
+      "xPolyphony": 0,
+      "xSnap": 0.104,
+      "xUnison": 0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": {
     "bpm": 80.0,
     "swing": 0.004,
@@ -96,32 +95,32 @@
         "muted": false,
         "steps": [
           {
+            "active": false,
             "index": 0,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
+            "active": false,
             "index": 4,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
+            "active": false,
             "index": 8,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
-            "index": 12,
             "active": false,
+            "index": 12,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           }
         ]
       },
@@ -131,18 +130,18 @@
         "muted": false,
         "steps": [
           {
-            "index": 4,
             "active": false,
+            "index": 4,
             "note": 38,
-            "velocity": 0.8,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8
           },
           {
-            "index": 12,
             "active": false,
+            "index": 12,
             "note": 38,
-            "velocity": 0.8,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8
           }
         ]
       },
@@ -158,43 +157,44 @@
         "muted": false,
         "steps": [
           {
+            "active": false,
             "index": 0,
-            "active": false,
             "note": 76,
-            "velocity": 0.6827773062937841,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.6827773062937841
           },
           {
+            "active": false,
             "index": 3,
-            "active": false,
             "note": 72,
-            "velocity": 0.5649569677340233,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.5649569677340233
           },
           {
+            "active": false,
             "index": 5,
-            "active": false,
             "note": 74,
-            "velocity": 0.5113023547481984,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.5113023547481984
           },
           {
-            "index": 14,
             "active": false,
+            "index": 14,
             "note": 79,
-            "velocity": 0.8832555252088363,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8832555252088363
           }
         ]
       }
     ]
   },
-  "dna": {
-    "brightness": 0.658,
-    "warmth": 0.143,
-    "movement": 0.385,
-    "density": 0.206,
-    "space": 0.169,
-    "aggression": 0.189
-  }
+  "tags": [
+    "lo-fi",
+    "hip-hop",
+    "swung",
+    "soft",
+    "relaxed"
+  ],
+  "tempo": 80,
+  "version": "1.0.0"
 }

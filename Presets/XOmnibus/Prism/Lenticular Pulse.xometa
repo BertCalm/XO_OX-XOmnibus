@@ -1,13 +1,54 @@
 {
-  "schema_version": 1,
-  "name": "Lenticular Pulse",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Lens-shaped pressure wave pulsing through medium — rhythmic lenticular refraction.",
+  "dna": {
+    "aggression": 0.28,
+    "brightness": 0.7,
+    "density": 0.5,
+    "movement": 0.88,
+    "space": 0.68,
+    "warmth": 0.4
+  },
   "engines": [
     "Ocelot"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Lens-shaped pressure wave pulsing through medium — rhythmic lenticular refraction.",
+  "legacy": {
+    "sourceCategory": "Prism",
+    "sourceInstrument": "Ocelot",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Lenticular Pulse",
+  "parameters": {
+    "Ocelot": {
+      "ocelot_ampAttack": 0.017,
+      "ocelot_ampDecay": 0.91,
+      "ocelot_ampRelease": 1.718,
+      "ocelot_ampSustain": 0.696,
+      "ocelot_filterCutoff": 13300.0,
+      "ocelot_filterReso": 0.184,
+      "ocelot_huntDepth": 0.49,
+      "ocelot_level": 0.79,
+      "ocelot_macroCharacter": 0.525,
+      "ocelot_macroCoupling": 0.0,
+      "ocelot_macroMovement": 0.88,
+      "ocelot_macroSpace": 0.68,
+      "ocelot_reverbMix": 0.442,
+      "ocelot_stalkerRate": 4.096,
+      "ocelot_stereoWidth": 0.766
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "refraction",
     "lenticular",
@@ -15,47 +56,6 @@
     "rhythmic",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": "Ocelot",
-    "sourceCategory": "Prism",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Ocelot": {
-      "ocelot_huntDepth": 0.49,
-      "ocelot_stalkerRate": 4.096,
-      "ocelot_filterCutoff": 13300.0,
-      "ocelot_filterReso": 0.184,
-      "ocelot_reverbMix": 0.442,
-      "ocelot_ampAttack": 0.017,
-      "ocelot_ampDecay": 0.91,
-      "ocelot_ampSustain": 0.696,
-      "ocelot_ampRelease": 1.718,
-      "ocelot_stereoWidth": 0.766,
-      "ocelot_level": 0.79,
-      "ocelot_macroCharacter": 0.525,
-      "ocelot_macroMovement": 0.88,
-      "ocelot_macroCoupling": 0.0,
-      "ocelot_macroSpace": 0.68
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.7,
-    "warmth": 0.4,
-    "movement": 0.88,
-    "density": 0.5,
-    "space": 0.68,
-    "aggression": 0.28
-  }
+  "version": "1.0.0"
 }

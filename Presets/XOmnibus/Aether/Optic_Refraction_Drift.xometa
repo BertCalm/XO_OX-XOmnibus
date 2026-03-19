@@ -1,13 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Refraction Drift",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Light bending through atmosphere in constant flux. The prism drifts — each pass through changes the angle slightly. No two moments of refraction are identical.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.72,
+    "density": 0.3,
+    "movement": 0.68,
+    "space": 0.88,
+    "warmth": 0.35
+  },
   "engines": [
     "Optic"
   ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "Light bending through atmosphere in constant flux. The prism drifts \u2014 each pass through changes the angle slightly. No two moments of refraction are identical.",
+  "macroLabels": [
+    "REFRACTION",
+    "SCATTER",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Refraction Drift",
+  "parameters": {
+    "Optic": {
+      "optic_ampAttack": 1.0,
+      "optic_ampRelease": 5.0,
+      "optic_filterCutoff": 0.6,
+      "optic_filterReso": 0.15,
+      "optic_lfoDepth": 0.6,
+      "optic_lfoRate": 0.35,
+      "optic_macroCoupling": 0.0,
+      "optic_macroRefraction": 0.0,
+      "optic_macroScatter": 0.0,
+      "optic_macroSpace": 0.0,
+      "optic_prismAmt": 0.72,
+      "optic_pulseRate": 0.3,
+      "optic_reverbMix": 0.82,
+      "optic_scatterWidth": 0.55
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "shifting-aether",
@@ -16,41 +52,5 @@
     "movement",
     "spectral"
   ],
-  "macroLabels": [
-    "REFRACTION",
-    "SCATTER",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.72,
-    "warmth": 0.35,
-    "movement": 0.68,
-    "density": 0.3,
-    "space": 0.88,
-    "aggression": 0.05
-  },
-  "parameters": {
-    "Optic": {
-      "optic_pulseRate": 0.3,
-      "optic_prismAmt": 0.72,
-      "optic_scatterWidth": 0.55,
-      "optic_filterCutoff": 0.6,
-      "optic_filterReso": 0.15,
-      "optic_lfoRate": 0.35,
-      "optic_lfoDepth": 0.6,
-      "optic_ampAttack": 1.0,
-      "optic_ampRelease": 5.0,
-      "optic_reverbMix": 0.82,
-      "optic_macroRefraction": 0.0,
-      "optic_macroScatter": 0.0,
-      "optic_macroCoupling": 0.0,
-      "optic_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

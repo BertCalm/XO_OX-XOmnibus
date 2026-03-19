@@ -1,19 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Saturated Breach",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.781,
+        "description": "Orca drives Obese via FilterToGrain",
+        "source": "Orca",
+        "target": "Obese",
+        "type": "FilterToGrain"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "created": "2026-03-16",
+  "description": "Fat saturation meets apex aggression — ORCA drives hard through OBESE's mojo axis, each wavetable scan leaving a saturated wake.",
+  "dna": {
+    "aggression": 0.736,
+    "brightness": 0.514,
+    "density": 0.859,
+    "movement": 0.677,
+    "space": 0.451,
+    "warmth": 0.466
+  },
   "engines": [
     "Orca",
     "Obese"
-  ],
-  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "Fat saturation meets apex aggression — ORCA drives hard through OBESE's mojo axis, each wavetable scan leaving a saturated wake.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "orca",
-    "obese"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,61 +32,50 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Strong",
-  "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.514,
-    "warmth": 0.466,
-    "movement": 0.677,
-    "density": 0.859,
-    "space": 0.451,
-    "aggression": 0.736
-  },
+  "mood": "Entangled",
+  "name": "Saturated Breach",
   "parameters": {
-    "Orca": {
-      "orca_wavetablePos": 0.857,
-      "orca_wavetableScan": 0.614,
-      "orca_echoDepth": 0.617,
-      "orca_huntMacro": 0.478,
-      "orca_breachAmt": 0.589,
-      "orca_podSync": 0.19,
-      "orca_pitchRand": 0.217,
-      "orca_ampAttack": 0.0507,
-      "orca_ampDecay": 0.699,
-      "orca_ampSustain": 0.659,
-      "orca_ampRelease": 2.03,
-      "orca_filterCutoff": 0.577,
-      "orca_filterRes": 0.299,
-      "orca_lfo1Rate": 0.241,
-      "orca_lfo1Depth": 0.111,
-      "orca_lfo2Rate": 0.0463,
-      "orca_lfo2Depth": 0.279,
-      "orca_macroCharacter": 0.0,
-      "orca_macroPunch": 0.0,
-      "orca_macroCoupling": 0.0,
-      "orca_macroSpace": 0.0
-    },
     "Obese": {
-      "fat_satDrive": 0.652,
+      "fat_attack": 0.091,
       "fat_filterCutoff": 0.54,
       "fat_lfoRate": 0.224,
-      "fat_attack": 0.091,
-      "fat_release": 0.96,
+      "fat_macroCoupling": 0.0,
       "fat_macroMojo": 0.017,
-      "fat_macroCoupling": 0.0
+      "fat_release": 0.96,
+      "fat_satDrive": 0.652
+    },
+    "Orca": {
+      "orca_ampAttack": 0.0507,
+      "orca_ampDecay": 0.699,
+      "orca_ampRelease": 2.03,
+      "orca_ampSustain": 0.659,
+      "orca_breachAmt": 0.589,
+      "orca_echoDepth": 0.617,
+      "orca_filterCutoff": 0.577,
+      "orca_filterRes": 0.299,
+      "orca_huntMacro": 0.478,
+      "orca_lfo1Depth": 0.111,
+      "orca_lfo1Rate": 0.241,
+      "orca_lfo2Depth": 0.279,
+      "orca_lfo2Rate": 0.0463,
+      "orca_macroCharacter": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroPunch": 0.0,
+      "orca_macroSpace": 0.0,
+      "orca_pitchRand": 0.217,
+      "orca_podSync": 0.19,
+      "orca_wavetablePos": 0.857,
+      "orca_wavetableScan": 0.614
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "source": "Orca",
-        "target": "Obese",
-        "type": "FilterToGrain",
-        "amount": 0.781,
-        "description": "Orca drives Obese via FilterToGrain"
-      }
-    ]
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "orca",
+    "obese"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

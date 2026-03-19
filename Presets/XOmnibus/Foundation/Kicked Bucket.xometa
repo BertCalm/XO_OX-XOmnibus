@@ -1,91 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "Kicked Bucket",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-05",
+  "description": "Found-sound percussion emulating the satisfying resonance of kicking a metal bucket. Karplus-Strong with short, bright decay.",
+  "dna": {
+    "aggression": 0.567,
+    "brightness": 0.885,
+    "density": 0.452,
+    "movement": 0.391,
+    "space": 0.351,
+    "warmth": 0.361
+  },
   "engines": [
     "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Found-sound percussion emulating the satisfying resonance of kicking a metal bucket. Karplus-Strong with short, bright decay.",
-  "tags": [
-    "found-sound",
-    "metal",
-    "bucket",
-    "karplus-strong",
-    "resonant"
-  ],
+  "legacy": {
+    "sourceCategory": "Grounded",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "Snap+Morph",
     "Bloom",
     "Coupling",
     "Space"
   ],
-  "couplingIntensity": "None",
-  "tempo": 125,
-  "created": "2026-03-05",
-  "legacy": {
-    "sourceInstrument": "OddfeliX",
-    "sourceCategory": "Grounded",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Kicked Bucket",
   "parameters": {
     "OddfeliX": {
+      "compAttack": 16.792,
+      "compRatio": 4.948,
+      "compRelease": 168.441,
+      "compThreshold": -15.896,
+      "compressorEnabled": 1,
       "couplingAmount": 0.013,
-      "masterBalance": -0.477,
-      "xOscMode": 2,
-      "xSnap": 0.636,
-      "xDecay": 0.984,
-      "xFilterCutoff": 6216.874,
-      "xFilterReso": 0.806,
-      "xDetune": 16.792,
-      "xLevel": 0.897,
-      "xPitchLock": 0,
-      "xUnison": 1,
-      "xPolyphony": 1,
-      "oMorph": 1.769,
-      "oBloom": 0.984,
-      "oDecay": 1.974,
-      "oSustain": 0.395,
-      "oRelease": 0.984,
-      "oFilterCutoff": 4337.655,
-      "oFilterReso": 0.806,
-      "oDrift": 0.336,
-      "oSub": 0.495,
-      "oDetune": 16.792,
-      "oLevel": 0.377,
-      "oPolyphony": 2,
+      "delayEnabled": 1,
+      "delayFeedback": 0.377,
+      "delayMix": 0.247,
+      "delayTime": 0.48,
+      "delayWobble": 0.197,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
       "macro1": 0.427,
       "macro2": 0.395,
       "macro3": 0.399,
       "macro4": 0.518,
-      "delayEnabled": 1,
-      "delayTime": 0.48,
-      "delayFeedback": 0.377,
-      "delayMix": 0.247,
-      "delayWobble": 0.197,
-      "reverbEnabled": 1,
-      "reverbDecay": 0.506,
-      "reverbSize": 0.654,
-      "reverbMix": 0.218,
-      "reverbDamping": 0.436,
-      "phaserEnabled": 0,
-      "phaserRate": 0.5,
+      "masterBalance": -0.477,
+      "oBloom": 0.984,
+      "oDecay": 1.974,
+      "oDetune": 16.792,
+      "oDrift": 0.336,
+      "oFilterCutoff": 4337.655,
+      "oFilterReso": 0.806,
+      "oLevel": 0.377,
+      "oMorph": 1.769,
+      "oPolyphony": 2,
+      "oRelease": 0.984,
+      "oSub": 0.495,
+      "oSustain": 0.395,
       "phaserDepth": 0.5,
+      "phaserEnabled": 0,
       "phaserMix": 0.3,
-      "lofiEnabled": 0,
-      "lofiBitDepth": 12.0,
-      "lofiRateReduce": 1.0,
-      "lofiWowFlutter": 0.0,
-      "lofiMix": 0.3,
-      "compressorEnabled": 1,
-      "compThreshold": -15.896,
-      "compRatio": 4.948,
-      "compAttack": 16.792,
-      "compRelease": 168.441
+      "phaserRate": 0.5,
+      "reverbDamping": 0.436,
+      "reverbDecay": 0.506,
+      "reverbEnabled": 1,
+      "reverbMix": 0.218,
+      "reverbSize": 0.654,
+      "xDecay": 0.984,
+      "xDetune": 16.792,
+      "xFilterCutoff": 6216.874,
+      "xFilterReso": 0.806,
+      "xLevel": 0.897,
+      "xOscMode": 2,
+      "xPitchLock": 0,
+      "xPolyphony": 1,
+      "xSnap": 0.636,
+      "xUnison": 1
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": {
     "bpm": 125.0,
     "swing": 0.118,
@@ -96,32 +95,32 @@
         "muted": false,
         "steps": [
           {
+            "active": false,
             "index": 0,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
+            "active": false,
             "index": 4,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
+            "active": false,
             "index": 8,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
-            "index": 12,
             "active": false,
+            "index": 12,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           }
         ]
       },
@@ -131,18 +130,18 @@
         "muted": false,
         "steps": [
           {
-            "index": 4,
             "active": false,
+            "index": 4,
             "note": 38,
-            "velocity": 0.8,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8
           },
           {
-            "index": 12,
             "active": false,
+            "index": 12,
             "note": 38,
-            "velocity": 0.8,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8
           }
         ]
       },
@@ -158,57 +157,58 @@
         "muted": false,
         "steps": [
           {
+            "active": false,
             "index": 2,
-            "active": false,
             "note": 58,
-            "velocity": 0.8978152255522589,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8978152255522589
           },
           {
+            "active": false,
             "index": 3,
-            "active": false,
             "note": 58,
-            "velocity": 0.5361333980309156,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.5361333980309156
           },
           {
+            "active": false,
             "index": 8,
-            "active": false,
             "note": 65,
-            "velocity": 0.7159353983159957,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.7159353983159957
           },
           {
+            "active": false,
             "index": 12,
-            "active": false,
             "note": 57,
-            "velocity": 0.6019624946876342,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.6019624946876342
           },
           {
+            "active": false,
             "index": 13,
-            "active": false,
             "note": 62,
-            "velocity": 0.5738527518869034,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.5738527518869034
           },
           {
-            "index": 15,
             "active": false,
+            "index": 15,
             "note": 58,
-            "velocity": 0.8332990734682649,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8332990734682649
           }
         ]
       }
     ]
   },
-  "dna": {
-    "brightness": 0.885,
-    "warmth": 0.361,
-    "movement": 0.391,
-    "density": 0.452,
-    "space": 0.351,
-    "aggression": 0.567
-  }
+  "tags": [
+    "found-sound",
+    "metal",
+    "bucket",
+    "karplus-strong",
+    "resonant"
+  ],
+  "tempo": 125,
+  "version": "1.0.0"
 }

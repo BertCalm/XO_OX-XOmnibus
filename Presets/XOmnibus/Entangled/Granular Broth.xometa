@@ -1,19 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Granular Broth",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.841,
+        "description": "Osteria drives Opal via DriftLock",
+        "source": "Osteria",
+        "target": "Opal",
+        "type": "DriftLock"
+      }
+    ]
+  },
+  "couplingIntensity": "Light",
+  "created": "2026-03-16",
+  "description": "OPAL's grain field as OSTERIA's slow-simmered stock — granular texture as culinary patience, density as depth of flavor.",
+  "dna": {
+    "aggression": 0.207,
+    "brightness": 0.599,
+    "density": 0.549,
+    "movement": 0.479,
+    "space": 0.628,
+    "warmth": 0.645
+  },
   "engines": [
     "Osteria",
     "Opal"
-  ],
-  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "OPAL's grain field as OSTERIA's slow-simmered stock — granular texture as culinary patience, density as depth of flavor.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "osteria",
-    "opal"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,76 +32,65 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Light",
-  "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.599,
-    "warmth": 0.645,
-    "movement": 0.479,
-    "density": 0.549,
-    "space": 0.628,
-    "aggression": 0.207
-  },
+  "mood": "Entangled",
+  "name": "Granular Broth",
   "parameters": {
+    "Opal": {
+      "opal_attack": 0.102,
+      "opal_filterCutoff": 0.558,
+      "opal_grainDensity": 0.517,
+      "opal_grainPitch": 0.0,
+      "opal_grainSize": 0.411,
+      "opal_macroCharacter": 0.0,
+      "opal_macroCoupling": 0.045,
+      "opal_release": 1.0
+    },
     "Osteria": {
-      "osteria_qBassShore": 0.572,
-      "osteria_qHarmShore": 0.314,
-      "osteria_qMelShore": 0.585,
-      "osteria_qRhythmShore": 0.149,
-      "osteria_qElastic": 0.681,
-      "osteria_qStretch": 0.313,
-      "osteria_qMemory": 0.491,
-      "osteria_qSympathy": 0.707,
+      "osteria_attack": 0.091,
       "osteria_bassLevel": 0.584,
-      "osteria_harmLevel": 0.487,
-      "osteria_melLevel": 0.411,
-      "osteria_rhythmLevel": 0.467,
-      "osteria_ensWidth": 0.427,
       "osteria_blendMode": 0.107,
-      "osteria_tavernMix": 0.607,
-      "osteria_tavernShore": 0.534,
+      "osteria_chorus": 0.211,
+      "osteria_decay": 0.812,
+      "osteria_ensWidth": 0.427,
+      "osteria_filterEnvDepth": 0.307,
+      "osteria_hall": 0.552,
+      "osteria_harmLevel": 0.487,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroSpace": 0.0,
+      "osteria_melLevel": 0.411,
       "osteria_murmur": 0.109,
-      "osteria_warmth": 0.874,
       "osteria_oceanBleed": 0.116,
       "osteria_patina": 0.416,
       "osteria_porto": 0.127,
-      "osteria_smoke": 0.242,
-      "osteria_filterEnvDepth": 0.307,
-      "osteria_attack": 0.091,
-      "osteria_decay": 0.812,
-      "osteria_sustain": 0.573,
+      "osteria_qBassShore": 0.572,
+      "osteria_qElastic": 0.681,
+      "osteria_qHarmShore": 0.314,
+      "osteria_qMelShore": 0.585,
+      "osteria_qMemory": 0.491,
+      "osteria_qRhythmShore": 0.149,
+      "osteria_qStretch": 0.313,
+      "osteria_qSympathy": 0.707,
       "osteria_release": 1.83,
+      "osteria_rhythmLevel": 0.467,
       "osteria_sessionDelay": 0.013,
-      "osteria_hall": 0.552,
-      "osteria_chorus": 0.211,
+      "osteria_smoke": 0.242,
+      "osteria_sustain": 0.573,
       "osteria_tape": 0.281,
-      "osteria_macroCharacter": 0.0,
-      "osteria_macroMovement": 0.0,
-      "osteria_macroCoupling": 0.0,
-      "osteria_macroSpace": 0.0
-    },
-    "Opal": {
-      "opal_grainSize": 0.411,
-      "opal_grainDensity": 0.517,
-      "opal_grainPitch": 0.0,
-      "opal_filterCutoff": 0.558,
-      "opal_attack": 0.102,
-      "opal_release": 1.0,
-      "opal_macroCharacter": 0.0,
-      "opal_macroCoupling": 0.045
+      "osteria_tavernMix": 0.607,
+      "osteria_tavernShore": 0.534,
+      "osteria_warmth": 0.874
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "source": "Osteria",
-        "target": "Opal",
-        "type": "DriftLock",
-        "amount": 0.841,
-        "description": "Osteria drives Opal via DriftLock"
-      }
-    ]
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "opal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

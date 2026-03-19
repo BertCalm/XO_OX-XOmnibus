@@ -1,58 +1,58 @@
 {
-  "schema_version": 1,
-  "name": "Bright Stab",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expressive keys voice with warm character.",
+  "dna": {
+    "aggression": 0.041,
+    "brightness": 0.477,
+    "density": 0.158,
+    "movement": 0.0,
+    "space": 0.0,
+    "warmth": 0.0
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expressive keys voice with warm character.",
-  "tags": [
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Keys",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Keys",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Bright Stab",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 0.0,
-      "drift_oscA_level": 0.85,
-      "drift_oscB_mode": 0.0,
-      "drift_oscB_shape": 1.0,
-      "drift_oscB_level": 0.65,
-      "drift_oscB_pw": 0.5,
-      "drift_filterCutoff": 8000.0,
-      "drift_filterReso": 0.1,
-      "drift_filterSlope": 1.0,
       "drift_attack": 1.0,
       "drift_decay": 250.0,
-      "drift_sustain": 0.4,
-      "drift_release": 200.0,
+      "drift_filterCutoff": 8000.0,
       "drift_filterEnvAmt": 0.35,
-      "drift_level": -2.0
+      "drift_filterReso": 0.1,
+      "drift_filterSlope": 1.0,
+      "drift_level": -2.0,
+      "drift_oscA_level": 0.85,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscB_level": 0.65,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_shape": 1.0,
+      "drift_release": 200.0,
+      "drift_sustain": 0.4
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.477,
-    "warmth": 0.0,
-    "movement": 0.0,
-    "density": 0.158,
-    "space": 0.0,
-    "aggression": 0.041
-  }
+  "tags": [
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

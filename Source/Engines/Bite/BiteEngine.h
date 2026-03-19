@@ -1862,13 +1862,16 @@ public:
         //======================================================================
         // 16. MACROS — 5
         //======================================================================
+        // BELLY/BITE start at non-zero so first contact shows the asymmetric oscillator
+        // character (BITE) and warmth curve (BELLY) immediately — the creature is not static.
+        // SCURRY, TRASH, PLAY DEAD default to 0 — dramatic gestures, user-triggered.
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_macroBelly", 1 }, "Bite Macro Belly",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.25f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_macroBite", 1 }, "Bite Macro Bite",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.15f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_macroScurry", 1 }, "Bite Macro Scurry",

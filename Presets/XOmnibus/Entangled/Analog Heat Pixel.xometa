@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Analog Heat Pixel",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8,
+    "pairs": [
+      {
+        "amount": 0.8,
+        "engineA": "Obese",
+        "engineB": "Overworld",
+        "type": "Filter->Drive"
+      }
+    ],
+    "type": "Filter->Drive"
+  },
+  "couplingIntensity": "Deep",
+  "description": "OBESE analog heat warms OVERWORLD chiptune. Fat pixels. [Filter->Drive]",
+  "dna": {
+    "aggression": 0.695,
     "brightness": 0.592,
-    "warmth": 0.585,
-    "movement": 0.482,
     "density": 0.717,
+    "movement": 0.482,
     "space": 0.464,
-    "aggression": 0.695
+    "warmth": 0.585
   },
   "engines": [
-    "XObese",
-    "XOverworld"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE analog heat warms OVERWORLD chiptune. Fat pixels. [Filter->Drive]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "obese",
-    "overworld",
-    "fat"
+    "Obese",
+    "Overworld"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Deep",
-  "dna": {
-    "brightness": 0.592,
-    "warmth": 0.585,
-    "movement": 0.482,
-    "density": 0.717,
-    "space": 0.464,
-    "aggression": 0.695
-  },
+  "mood": "Entangled",
+  "name": "Analog Heat Pixel",
   "parameters": {
-    "XObese": {
+    "Obese": {
+      "fat_aggression": 0.713,
+      "fat_brightness": 0.533,
+      "fat_couplingBus": 0,
+      "fat_couplingLevel": 0.56,
       "fat_outputLevel": 0.87,
       "fat_outputPan": -0.04,
-      "fat_couplingLevel": 0.56,
-      "fat_couplingBus": 0,
-      "fat_brightness": 0.533,
-      "fat_warmth": 0.683,
-      "fat_aggression": 0.713
+      "fat_warmth": 0.683
     },
-    "XOverworld": {
+    "Overworld": {
+      "ow_aggression": 0.618,
+      "ow_brightness": 0.708,
+      "ow_couplingBus": 0,
+      "ow_couplingLevel": 0.74,
       "ow_outputLevel": 0.9,
       "ow_outputPan": 0.01,
-      "ow_couplingLevel": 0.74,
-      "ow_couplingBus": 0,
-      "ow_brightness": 0.708,
-      "ow_warmth": 0.474,
-      "ow_aggression": 0.618
+      "ow_warmth": 0.474
     }
   },
-  "coupling": {
-    "type": "Filter->Drive",
-    "amount": 0.8,
-    "pairs": [
-      {
-        "engineA": "XObese",
-        "engineB": "XOverworld",
-        "type": "Filter->Drive",
-        "amount": 0.8
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.695,
+    "brightness": 0.592,
+    "density": 0.717,
+    "movement": 0.482,
+    "space": 0.464,
+    "warmth": 0.585
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "overworld",
+    "fat"
+  ],
+  "version": "1.0.0"
 }

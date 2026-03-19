@@ -1,0 +1,61 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Resonance that never fully decays — the crystal keeps ringing long after the hand is lifted. Sparse attack, enormous release tail, reverb at near-unity. The obsidian remembers every frequency it has ever touched.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.62,
+    "density": 0.28,
+    "movement": 0.2,
+    "space": 0.95,
+    "warmth": 0.35
+  },
+  "engines": [
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "EDGE",
+    "DARKNESS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Crystal Infinite",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_ampAttack": 2.8,
+      "obsidian_ampDecay": 1.5,
+      "obsidian_ampRelease": 12.0,
+      "obsidian_ampSustain": 0.65,
+      "obsidian_cascadeBlend": 0.55,
+      "obsidian_crossModDepth": 0.3,
+      "obsidian_depth": 0.9,
+      "obsidian_filterCutoff": 0.7,
+      "obsidian_filterReso": 0.45,
+      "obsidian_lfo1Depth": 0.18,
+      "obsidian_lfo1Rate": 0.08,
+      "obsidian_macroCoupling": 0.0,
+      "obsidian_macroDarkness": 0.0,
+      "obsidian_macroEdge": 0.0,
+      "obsidian_macroSpace": 0.0,
+      "obsidian_reverbMix": 0.92,
+      "obsidian_stereoWidth": 0.85,
+      "obsidian_stiffness": 0.72
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "crystal",
+    "infinite",
+    "resonance",
+    "sparse",
+    "ethereal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -1,38 +1,54 @@
 {
-  "schema_version": 1,
-  "name": "Unfolding Violence",
-  "mood": "Flux",
-  "engines": ["Origami"],
-  "author": "Guru Bin — Fleet Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Maximum layers, maximum fold amount, zero symmetry, fold point at 0.18 — near the zero crossing. At this setting the waveform folds repeatedly upon itself before it can complete a single cycle. The sound is aggressive, complex, and unstable — different for each note, each velocity. Controlled destruction. Paper torn slowly.",
-  "tags": ["flux", "aggressive", "distorted", "unstable", "complex", "leads"],
-  "macroLabels": ["CHARACTER", "FOLD", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.75,
-    "warmth": 0.3,
-    "movement": 0.75,
-    "density": 0.88,
-    "space": 0.35,
-    "aggression": 0.88
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Maximum layers, maximum fold amount, zero symmetry, fold point at 0.18 — near the zero crossing. At this setting the waveform folds repeatedly upon itself before it can complete a single cycle. The sound is aggressive, complex, and unstable — different for each note, each velocity. Controlled destruction. Paper torn slowly.",
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.75,
+    "density": 0.88,
+    "movement": 0.75,
+    "space": 0.35,
+    "warmth": 0.3
+  },
+  "engines": [
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FOLD",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Unfolding Violence",
   "parameters": {
     "Origami": {
-      "origami_foldPoint": 0.18,
-      "origami_foldAmt": 1.0,
-      "origami_layers": 6,
-      "origami_symmetry": 0.0,
-      "origami_filterCutoff": 0.78,
-      "origami_filterReso": 0.52,
-      "origami_oscPitch": 0.0,
       "origami_ampAttack": 0.01,
       "origami_ampDecay": 0.35,
+      "origami_ampRelease": 0.7,
       "origami_ampSustain": 0.82,
-      "origami_ampRelease": 0.7
+      "origami_filterCutoff": 0.78,
+      "origami_filterReso": 0.52,
+      "origami_foldAmt": 1.0,
+      "origami_foldPoint": 0.18,
+      "origami_layers": 6,
+      "origami_oscPitch": 0.0,
+      "origami_symmetry": 0.0
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "flux",
+    "aggressive",
+    "distorted",
+    "unstable",
+    "complex",
+    "leads"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

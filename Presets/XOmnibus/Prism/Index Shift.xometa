@@ -1,13 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Index Shift",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Refractive index shifts mid-phrase — tonal character transforms as light bends.",
+  "dna": {
+    "aggression": 0.24,
+    "brightness": 0.7,
+    "density": 0.45,
+    "movement": 0.88,
+    "space": 0.67,
+    "warmth": 0.4
+  },
   "engines": [
     "Origami"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Refractive index shifts mid-phrase — tonal character transforms as light bends.",
+  "legacy": {
+    "sourceCategory": "Prism",
+    "sourceInstrument": "Origami",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Index Shift",
+  "parameters": {
+    "Origami": {
+      "origami_ampAttack": 0.017,
+      "origami_ampDecay": 0.986,
+      "origami_ampRelease": 1.905,
+      "origami_ampSustain": 0.69,
+      "origami_creaseScan": 0.528,
+      "origami_filterCutoff": 13450.0,
+      "origami_filterReso": 0.128,
+      "origami_foldDepth": 0.525,
+      "origami_level": 0.78,
+      "origami_macroCharacter": 0.574,
+      "origami_macroCoupling": 0.0,
+      "origami_macroMovement": 0.88,
+      "origami_macroSpace": 0.67,
+      "origami_reverbMix": 0.482,
+      "origami_stereoWidth": 0.788,
+      "origami_unfoldRate": 3.996
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "refraction",
     "index",
@@ -15,48 +57,6 @@
     "transitional",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": "Origami",
-    "sourceCategory": "Prism",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Origami": {
-      "origami_foldDepth": 0.525,
-      "origami_creaseScan": 0.528,
-      "origami_unfoldRate": 3.996,
-      "origami_filterCutoff": 13450.0,
-      "origami_filterReso": 0.128,
-      "origami_reverbMix": 0.482,
-      "origami_ampAttack": 0.017,
-      "origami_ampDecay": 0.986,
-      "origami_ampSustain": 0.69,
-      "origami_ampRelease": 1.905,
-      "origami_stereoWidth": 0.788,
-      "origami_level": 0.78,
-      "origami_macroCharacter": 0.574,
-      "origami_macroMovement": 0.88,
-      "origami_macroCoupling": 0.0,
-      "origami_macroSpace": 0.67
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.7,
-    "warmth": 0.4,
-    "movement": 0.88,
-    "density": 0.45,
-    "space": 0.67,
-    "aggression": 0.24
-  }
+  "version": "1.0.0"
 }

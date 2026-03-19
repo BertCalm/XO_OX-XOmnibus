@@ -19,7 +19,7 @@
   "engines": [
     "Overdub"
   ],
-  "description": "High-resonance self-oscillating filter \u2014 a column of pure frequency standing in space.",
+  "description": "High-resonance self-oscillating filter — a column of pure frequency standing in space.",
   "tags": [
     "dub",
     "resonance",
@@ -55,7 +55,7 @@
       "dub_pitchEnvDepth": 0.15,
       "dub_pitchEnvDecay": 0.06,
       "dub_lfoRate": 0.4,
-      "dub_lfoDepth": 0.06,
+      "dub_lfoDepth": 0.12,
       "dub_lfoDest": 1,
       "dub_driveAmount": 1.2,
       "dub_dryLevel": 0.85,

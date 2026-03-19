@@ -1,15 +1,104 @@
 {
-  "schema_version": 1,
-  "name": "Warm Red Bite Crush",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.687,
+        "engineA": "Orbital",
+        "engineB": "Overbite",
+        "type": "timbral_blend"
+      },
+      {
+        "amount": 0.502,
+        "engineA": "Orbital",
+        "engineB": "Obese",
+        "type": "amplitude_sidechain"
+      },
+      {
+        "amount": 0.64,
+        "engineA": "Overbite",
+        "engineB": "Obese",
+        "type": "timbral_blend"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "A three-body entanglement — ORBITAL's group envelope kindles OVERBITE's fang, OBESE saturates the exchange. Dense, characterful, unstoppable.",
+  "dna": {
+    "aggression": 0.615,
+    "brightness": 0.541,
+    "density": 0.742,
+    "movement": 0.529,
+    "space": 0.386,
+    "warmth": 0.603
+  },
   "engines": [
     "Orbital",
     "Overbite",
     "Obese"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "A three-body entanglement \u2014 ORBITAL's group envelope kindles OVERBITE's fang, OBESE saturates the exchange. Dense, characterful, unstoppable.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Warm Red Bite Crush",
+  "parameters": {
+    "Obese": {
+      "fat_analog": 0.106,
+      "fat_compress": 0.65,
+      "fat_couplingIn": 0.438,
+      "fat_couplingOut": 0.74,
+      "fat_digital": 0.445,
+      "fat_macro1": 0.636,
+      "fat_macro2": 0.693,
+      "fat_macro3": 0.596,
+      "fat_macro4": 0.597,
+      "fat_mojoCtrl": 0.596,
+      "fat_outputLevel": 0.828,
+      "fat_outputPan": -0.034,
+      "fat_satDrive": 0.791
+    },
+    "Orbital": {
+      "orb_arcDecay": 0.604,
+      "orb_couplingIn": 0.74,
+      "orb_couplingOut": 0.6,
+      "orb_groupEnv": 0.395,
+      "orb_harmonicAmt": 0.676,
+      "orb_macro1": 0.523,
+      "orb_macro2": 0.545,
+      "orb_macro3": 0.358,
+      "orb_macro4": 0.552,
+      "orb_outputLevel": 0.755,
+      "orb_outputPan": 0.037,
+      "orb_phaseSpread": 0.688,
+      "orb_resonantPeak": 0.291
+    },
+    "Overbite": {
+      "poss_biteDepth": 0.68,
+      "poss_couplingIn": 0.477,
+      "poss_couplingOut": 0.482,
+      "poss_fangAttack": 0.203,
+      "poss_gnashAmt": 0.652,
+      "poss_macro1": 0.429,
+      "poss_macro2": 0.335,
+      "poss_macro3": 0.611,
+      "poss_macro4": 0.514,
+      "poss_outputLevel": 0.764,
+      "poss_outputPan": -0.024,
+      "poss_snapRelease": 0.238
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "orbital",
     "overbite",
@@ -17,95 +106,6 @@
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Extreme",
   "tempo": 130,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Orbital": {
-      "orb_macro1": 0.523,
-      "orb_macro2": 0.545,
-      "orb_macro3": 0.358,
-      "orb_macro4": 0.552,
-      "orb_couplingOut": 0.6,
-      "orb_couplingIn": 0.74,
-      "orb_outputLevel": 0.755,
-      "orb_outputPan": 0.037,
-      "orb_groupEnv": 0.395,
-      "orb_phaseSpread": 0.688,
-      "orb_arcDecay": 0.604,
-      "orb_harmonicAmt": 0.676,
-      "orb_resonantPeak": 0.291
-    },
-    "Overbite": {
-      "poss_macro1": 0.429,
-      "poss_macro2": 0.335,
-      "poss_macro3": 0.611,
-      "poss_macro4": 0.514,
-      "poss_couplingOut": 0.482,
-      "poss_couplingIn": 0.477,
-      "poss_outputLevel": 0.764,
-      "poss_outputPan": -0.024,
-      "poss_biteDepth": 0.68,
-      "poss_fangAttack": 0.203,
-      "poss_gnashAmt": 0.652,
-      "poss_snapRelease": 0.238
-    },
-    "Obese": {
-      "fat_macro1": 0.636,
-      "fat_macro2": 0.693,
-      "fat_macro3": 0.596,
-      "fat_macro4": 0.597,
-      "fat_couplingOut": 0.74,
-      "fat_couplingIn": 0.438,
-      "fat_outputLevel": 0.828,
-      "fat_outputPan": -0.034,
-      "fat_satDrive": 0.791,
-      "fat_mojoCtrl": 0.596,
-      "fat_analog": 0.106,
-      "fat_digital": 0.445,
-      "fat_compress": 0.65
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Overbite",
-        "type": "timbral_blend",
-        "amount": 0.687
-      },
-      {
-        "engineA": "Orbital",
-        "engineB": "Obese",
-        "type": "amplitude_sidechain",
-        "amount": 0.502
-      },
-      {
-        "engineA": "Overbite",
-        "engineB": "Obese",
-        "type": "timbral_blend",
-        "amount": 0.64
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.541,
-    "warmth": 0.603,
-    "movement": 0.529,
-    "density": 0.742,
-    "space": 0.386,
-    "aggression": 0.615
-  }
+  "version": "1.0.0"
 }

@@ -1,14 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "Percussive Bloom",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "OddfeliX",
+        "engineB": "Organon",
+        "type": "Audio->FM"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-10",
+  "description": "SNAP percussion feeds Organon bursts of energy. Rhythmic harmonic blooms.",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.55,
+    "density": 0.5,
+    "movement": 0.6,
+    "space": 0.2,
+    "warmth": 0.35
+  },
   "engines": [
     "OddfeliX",
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "SNAP percussion feeds Organon bursts of energy. Rhythmic harmonic blooms.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "PERCUSS",
+    "BLOOM",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Percussive Bloom",
+  "parameters": {
+    "OddfeliX": {
+      "snap_decay": 0.15,
+      "snap_detune": 10.0,
+      "snap_filterCutoff": 4000.0,
+      "snap_filterReso": 0.3,
+      "snap_level": 0.8,
+      "snap_oscMode": 2,
+      "snap_snap": 0.4
+    },
+    "Organon": {
+      "organon_catalystDrive": 0.8,
+      "organon_dampingCoeff": 0.3,
+      "organon_enzymeSelect": 3000.0,
+      "organon_isotopeBalance": 0.6,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.2,
+      "organon_metabolicRate": 3.0,
+      "organon_noiseColor": 0.5,
+      "organon_phasonShift": 0.0,
+      "organon_signalFlux": 0.9
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "snap",
     "organon",
@@ -16,60 +70,6 @@
     "bloom",
     "coupled"
   ],
-  "macroLabels": [
-    "PERCUSS",
-    "BLOOM",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OddfeliX": {
-      "snap_oscMode": 2,
-      "snap_filterCutoff": 4000.0,
-      "snap_filterReso": 0.3,
-      "snap_decay": 0.15,
-      "snap_level": 0.8,
-      "snap_snap": 0.4,
-      "snap_detune": 10.0
-    },
-    "Organon": {
-      "organon_metabolicRate": 3.0,
-      "organon_enzymeSelect": 3000.0,
-      "organon_catalystDrive": 0.8,
-      "organon_dampingCoeff": 0.3,
-      "organon_signalFlux": 0.9,
-      "organon_phasonShift": 0.0,
-      "organon_isotopeBalance": 0.6,
-      "organon_lockIn": 0.0,
-      "organon_membrane": 0.2,
-      "organon_noiseColor": 0.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Organon",
-        "type": "Audio->FM",
-        "amount": 0.7
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.35,
-    "movement": 0.6,
-    "density": 0.5,
-    "space": 0.2,
-    "aggression": 0.35
-  }
+  "version": "1.0.0"
 }

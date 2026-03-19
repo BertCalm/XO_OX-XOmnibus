@@ -19,7 +19,7 @@
   "engines": [
     "Overdub"
   ],
-  "description": "Pure sine-like tone through massive reverb \u2014 a frequency becomes a place.",
+  "description": "Pure sine-like tone through massive reverb — a frequency becomes a place.",
   "tags": [
     "dub",
     "crystal",
@@ -55,7 +55,7 @@
       "dub_pitchEnvDepth": 0.02,
       "dub_pitchEnvDecay": 0.05,
       "dub_lfoRate": 0.08,
-      "dub_lfoDepth": 0.015,
+      "dub_lfoDepth": 0.12,
       "dub_lfoDest": 0,
       "dub_driveAmount": 1.0,
       "dub_dryLevel": 0.7,

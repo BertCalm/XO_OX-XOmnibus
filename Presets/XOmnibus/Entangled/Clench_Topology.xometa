@@ -1,77 +1,77 @@
 {
-  "schema_version": 1,
-  "name": "Clench Topology",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.814,
+        "engineA": "Overbite",
+        "engineB": "Overlap",
+        "type": "timbral_blend"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "OVERBITE gnash seeded into OVERLAP FDN topology. Bitten resonator knot.",
+  "dna": {
+    "aggression": 0.524,
+    "brightness": 0.504,
+    "density": 0.696,
+    "movement": 0.571,
+    "space": 0.491,
+    "warmth": 0.53
+  },
   "engines": [
     "Overbite",
     "Overlap"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE gnash seeded into OVERLAP FDN topology. Bitten resonator knot.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Clench Topology",
+  "parameters": {
+    "Overbite": {
+      "poss_biteDepth": 0.715,
+      "poss_couplingIn": 0.732,
+      "poss_couplingOut": 0.591,
+      "poss_fangAttack": 0.059,
+      "poss_gnashAmt": 0.5,
+      "poss_macro1": 0.301,
+      "poss_macro2": 0.463,
+      "poss_macro3": 0.335,
+      "poss_macro4": 0.598,
+      "poss_outputLevel": 0.847,
+      "poss_outputPan": -0.005,
+      "poss_snapRelease": 0.626
+    },
+    "Overlap": {
+      "olap_couplingIn": 0.743,
+      "olap_couplingOut": 0.563,
+      "olap_macro1": 0.528,
+      "olap_macro2": 0.47,
+      "olap_macro3": 0.67,
+      "olap_macro4": 0.585,
+      "olap_outputLevel": 0.805,
+      "olap_outputPan": 0.011
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "overbite",
     "overlap",
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Subtle",
   "tempo": 125,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Overbite": {
-      "poss_macro1": 0.301,
-      "poss_macro2": 0.463,
-      "poss_macro3": 0.335,
-      "poss_macro4": 0.598,
-      "poss_couplingOut": 0.591,
-      "poss_couplingIn": 0.732,
-      "poss_outputLevel": 0.847,
-      "poss_outputPan": -0.005,
-      "poss_biteDepth": 0.715,
-      "poss_fangAttack": 0.059,
-      "poss_gnashAmt": 0.5,
-      "poss_snapRelease": 0.626
-    },
-    "Overlap": {
-      "olap_macro1": 0.528,
-      "olap_macro2": 0.47,
-      "olap_macro3": 0.67,
-      "olap_macro4": 0.585,
-      "olap_couplingOut": 0.563,
-      "olap_couplingIn": 0.743,
-      "olap_outputLevel": 0.805,
-      "olap_outputPan": 0.011
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Overlap",
-        "type": "timbral_blend",
-        "amount": 0.814
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.504,
-    "warmth": 0.53,
-    "movement": 0.571,
-    "density": 0.696,
-    "space": 0.491,
-    "aggression": 0.524
-  }
+  "version": "1.0.0"
 }

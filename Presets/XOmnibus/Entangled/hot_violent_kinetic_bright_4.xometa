@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "HOT VIOLENT KINETIC BRIGHT 4",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "warmth": 0.9113,
-    "aggression": 0.9245,
-    "movement": 0.8968,
-    "brightness": 0.9521,
-    "density": 0.4271,
-    "space": 0.4907
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Extreme",
+  "couplingType": "WEAVE",
+  "description": "Ultra-diverse Entangled preset — hot violent kinetic bright. Designed for WEAVE coupling with XOblique.",
   "dna": {
-    "warmth": 0.9113,
     "aggression": 0.9245,
-    "movement": 0.8968,
     "brightness": 0.9521,
     "density": 0.4271,
-    "space": 0.4907
+    "movement": 0.8968,
+    "space": 0.4907,
+    "warmth": 0.9113
   },
   "engines": [
-    "XOblique"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 hot violent kinetic bright. Designed for WEAVE coupling with XOblique.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "weave",
-    "oblique"
+    "Oblique"
   ],
   "macroLabels": [
     "LUSTER",
@@ -36,15 +23,28 @@
     "EMBER",
     "FLOW"
   ],
-  "couplingType": "WEAVE",
-  "couplingIntensity": "Extreme",
+  "mood": "Flux",
+  "name": "HOT VIOLENT KINETIC BRIGHT 4",
   "parameters": {
-    "XOblique": {
-      "couplingLevel": 0.917,
-      "couplingBus": 1
+    "Oblique": {
+      "couplingBus": 1,
+      "couplingLevel": 0.917
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9245,
+    "brightness": 0.9521,
+    "density": 0.4271,
+    "movement": 0.8968,
+    "space": 0.4907,
+    "warmth": 0.9113
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "weave",
+    "oblique"
+  ],
+  "version": "1.0.0"
 }

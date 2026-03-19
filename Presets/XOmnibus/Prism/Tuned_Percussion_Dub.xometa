@@ -19,7 +19,7 @@
   "engines": [
     "Overdub"
   ],
-  "description": "Short tuned hits with enormous reverb tails \u2014 marimba meets infinite dub.",
+  "description": "Short tuned hits with enormous reverb tails — marimba meets infinite dub.",
   "tags": [
     "dub",
     "tuned",
@@ -55,7 +55,7 @@
       "dub_pitchEnvDepth": 0.18,
       "dub_pitchEnvDecay": 0.04,
       "dub_lfoRate": 0.0,
-      "dub_lfoDepth": 0.0,
+      "dub_lfoDepth": 0.12,
       "dub_lfoDest": 0,
       "dub_driveAmount": 1.05,
       "dub_dryLevel": 0.7,

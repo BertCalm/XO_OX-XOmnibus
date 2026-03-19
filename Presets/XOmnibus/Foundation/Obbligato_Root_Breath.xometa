@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Root Breath",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Both brothers holding the same note. BOND balanced — no mischief yet. 'Root Breath' holds the moment without wavering.",
+  "dna": {
+    "aggression": 0.19,
+    "brightness": 0.41,
+    "density": 0.29,
+    "movement": 0.11,
+    "space": 0.27,
+    "warmth": 0.77
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "foundation",
-    "clean",
-    "foundation"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.41,
-    "warmth": 0.77,
-    "movement": 0.11,
-    "density": 0.29,
-    "space": 0.27,
-    "aggression": 0.19
-  },
+  "mood": "Foundation",
+  "name": "Root Breath",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.753,
-      "obbl_embouchureA": 0.452,
       "obbl_airFlutterA": 0.257,
-      "obbl_instrumentA": 5,
       "obbl_bodySizeA": 0.344,
-      "obbl_breathB": 0.831,
-      "obbl_reedStiffness": 0.422,
-      "obbl_reedBite": 0.222,
-      "obbl_instrumentB": 5,
       "obbl_bodySizeB": 0.624,
-      "obbl_voiceRouting": 3,
-      "obbl_damping": 0.995,
-      "obbl_sympatheticAmt": 0.438,
-      "obbl_driftRate": 0.138,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.329,
       "obbl_bondIntensity": 0.651,
       "obbl_bondRate": 0.113,
-      "obbl_fxAChorus": 0.193,
+      "obbl_bondStage": 0.329,
+      "obbl_breathA": 0.753,
+      "obbl_breathB": 0.831,
+      "obbl_damping": 0.995,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.138,
+      "obbl_embouchureA": 0.452,
       "obbl_fxABrightDelay": 0.285,
-      "obbl_fxAPlate": 0.209,
+      "obbl_fxAChorus": 0.193,
       "obbl_fxAExciter": 0.051,
-      "obbl_fxBPhaser": 0.176,
+      "obbl_fxAPlate": 0.209,
       "obbl_fxBDarkDelay": 0.262,
+      "obbl_fxBPhaser": 0.176,
       "obbl_fxBSpring": 0.22,
       "obbl_fxBTapeSat": 0.176,
-      "obbl_macroBreath": 0.398,
+      "obbl_instrumentA": 5,
+      "obbl_instrumentB": 5,
       "obbl_macroBond": 0.0,
+      "obbl_macroBreath": 0.398,
       "obbl_macroMischief": 0.035,
-      "obbl_macroWind": 0.107
+      "obbl_macroWind": 0.107,
+      "obbl_reedBite": 0.222,
+      "obbl_reedStiffness": 0.422,
+      "obbl_sympatheticAmt": 0.438,
+      "obbl_voiceRouting": 3
     }
   },
-  "coupling": null,
-  "description": "Both brothers holding the same note. BOND balanced \u2014 no mischief yet. 'Root Breath' holds the moment without wavering."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "foundation",
+    "clean",
+    "foundation"
+  ],
+  "version": "1.0.0"
 }

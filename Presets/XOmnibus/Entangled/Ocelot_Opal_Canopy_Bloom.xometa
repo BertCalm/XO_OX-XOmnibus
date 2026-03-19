@@ -1,76 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "Canopy Bloom",
-  "mood": "Entangled",
-  "engines": ["Ocelot", "Opal"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OCELOT's canopy shimmer layer feeds OPAL's granular position scatter. The ecosystem's highest stratum — rainforest canopy high-frequency rustle — becomes the scatter source for cloud-grain texture. Organic breathing that neither engine can produce alone.",
-  "tags": ["coupling", "ecosystem", "granular", "texture", "organic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.65,
-    "warmth": 0.5,
-    "movement": 0.7,
-    "density": 0.55,
-    "space": 0.65,
-    "aggression": 0.15
-  },
-  "parameters": {
-    "Ocelot": {
-      "ocelot_biome": 1,
-      "ocelot_strataBalance": 0.4,
-      "ocelot_ecosystemDepth": 0.6,
-      "ocelot_humidity": 0.65,
-      "ocelot_swing": 0.1,
-      "ocelot_density": 0.5,
-      "ocelot_xf_canopyEmerg": 0.4,
-      "ocelot_xf_canopyUnder": 0.35,
-      "ocelot_canopyWavefold": 0.3,
-      "ocelot_canopyPartials": 0.6,
-      "ocelot_canopyDetune": 0.2,
-      "ocelot_canopySpectralFilter": 0.5,
-      "ocelot_canopyBreathe": 0.7,
-      "ocelot_floorLevel": 0.5,
-      "ocelot_understoryLevel": 0.45,
-      "ocelot_tapeWobble": 0.1,
-      "ocelot_tapeAge": 0.15
-    },
-    "Opal": {
-      "opal_source": 0,
-      "opal_oscShape": 2,
-      "opal_grainSize": 0.35,
-      "opal_density": 0.65,
-      "opal_position": 0.4,
-      "opal_posScatter": 0.55,
-      "opal_pitchShift": 0.0,
-      "opal_pitchScatter": 0.2,
-      "opal_panScatter": 0.4,
-      "opal_window": 0.5,
-      "opal_freeze": 0.0,
-      "opal_filterCutoff": 6000.0,
-      "opal_filterReso": 0.2,
-      "opal_filterMode": 0,
-      "opal_shimmer": 0.35,
-      "opal_frost": 0.2,
-      "opal_ampAttack": 0.08,
-      "opal_ampDecay": 0.4,
-      "opal_ampSustain": 0.7,
-      "opal_ampRelease": 0.8,
-      "opal_couplingLevel": 0.45
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "routes": [
+    "pairs": [
       {
-        "source": "Ocelot",
-        "dest": "Opal",
+        "engineA": "Ocelot",
+        "engineB": "Opal",
         "type": "AudioToWavetable",
         "amount": 0.4
       }
     ]
   },
-  "sequencer": null
+  "couplingIntensity": "Medium",
+  "description": "OCELOT's canopy shimmer layer feeds OPAL's granular position scatter. The ecosystem's highest stratum — rainforest canopy high-frequency rustle — becomes the scatter source for cloud-grain texture. Organic breathing that neither engine can produce alone.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.65,
+    "density": 0.55,
+    "movement": 0.7,
+    "space": 0.65,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Ocelot",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Canopy Bloom",
+  "parameters": {
+    "Ocelot": {
+      "ocelot_biome": 1,
+      "ocelot_canopyBreathe": 0.7,
+      "ocelot_canopyDetune": 0.2,
+      "ocelot_canopyPartials": 0.6,
+      "ocelot_canopySpectralFilter": 0.5,
+      "ocelot_canopyWavefold": 0.3,
+      "ocelot_density": 0.5,
+      "ocelot_ecosystemDepth": 0.6,
+      "ocelot_floorLevel": 0.5,
+      "ocelot_humidity": 0.65,
+      "ocelot_strataBalance": 0.4,
+      "ocelot_swing": 0.1,
+      "ocelot_tapeAge": 0.15,
+      "ocelot_tapeWobble": 0.1,
+      "ocelot_understoryLevel": 0.45,
+      "ocelot_xf_canopyEmerg": 0.4,
+      "ocelot_xf_canopyUnder": 0.35
+    },
+    "Opal": {
+      "opal_ampAttack": 0.08,
+      "opal_ampDecay": 0.4,
+      "opal_ampRelease": 0.8,
+      "opal_ampSustain": 0.7,
+      "opal_couplingLevel": 0.45,
+      "opal_density": 0.65,
+      "opal_filterCutoff": 6000.0,
+      "opal_filterMode": 0,
+      "opal_filterReso": 0.2,
+      "opal_freeze": 0.0,
+      "opal_frost": 0.2,
+      "opal_grainSize": 0.35,
+      "opal_oscShape": 2,
+      "opal_panScatter": 0.4,
+      "opal_pitchScatter": 0.2,
+      "opal_pitchShift": 0.0,
+      "opal_posScatter": 0.55,
+      "opal_position": 0.4,
+      "opal_shimmer": 0.35,
+      "opal_source": 0,
+      "opal_window": 0.5
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "coupling",
+    "ecosystem",
+    "granular",
+    "texture",
+    "organic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

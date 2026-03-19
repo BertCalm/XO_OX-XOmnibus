@@ -1,0 +1,69 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Topology 2: Chua's circuit. The double-scroll attractor at chaosIndex 0.65 — deep into the chaotic regime, but leash 0.70 holds the pitch center. What emerges is the Chua breathing sound from OURO-IV: a pulsing, organic quality that belongs to neither pure noise nor pure tone, the double-scroll cycling between its two wings on a timescale audible as amplitude modulation. At the edge but stable. The membrane that has found its resting breath.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.45,
+    "density": 0.6,
+    "movement": 0.55,
+    "space": 0.5,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Chua Threshold",
+  "parameters": {
+    "Ouroboros": {
+      "ouro_ampAttack": 0.06,
+      "ouro_ampDecay": 0.35,
+      "ouro_ampRelease": 2.5,
+      "ouro_ampSustain": 0.82,
+      "ouro_chaosIndex": 0.65,
+      "ouro_damping": 0.55,
+      "ouro_glide": 0.0,
+      "ouro_injection": 0.04,
+      "ouro_leash": 0.7,
+      "ouro_lfo1Depth": 0.07,
+      "ouro_lfo1Rate": 0.07,
+      "ouro_lfo1Shape": 0,
+      "ouro_lfo2Depth": 0.05,
+      "ouro_lfo2Rate": 0.03,
+      "ouro_lfo2Shape": 0,
+      "ouro_macroChaos": 0.0,
+      "ouro_macroCharacter": 0.0,
+      "ouro_macroCoupling": 0.0,
+      "ouro_macroSpace": 0.0,
+      "ouro_phi": 0.5,
+      "ouro_rate": 76.0,
+      "ouro_theta": 1.3,
+      "ouro_topology": 2,
+      "ouro_voiceMode": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "chua",
+    "double-scroll",
+    "breathing",
+    "membrane",
+    "foundation",
+    "ouroboros",
+    "organic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

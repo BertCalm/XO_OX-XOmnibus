@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "United Pipe",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "The brothers trade phrases across the stereo field. MISCHIEF adds a hint of detuning.",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.47,
+    "density": 0.65,
+    "movement": 0.39,
+    "space": 0.51,
+    "warmth": 0.56
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "entangled",
-    "coupled",
-    "entangled"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.47,
-    "warmth": 0.56,
-    "movement": 0.39,
-    "density": 0.65,
-    "space": 0.51,
-    "aggression": 0.25
-  },
+  "mood": "Foundation",
+  "name": "United Pipe",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.828,
-      "obbl_embouchureA": 0.37,
       "obbl_airFlutterA": 0.246,
-      "obbl_instrumentA": 1,
       "obbl_bodySizeA": 0.423,
-      "obbl_breathB": 0.796,
-      "obbl_reedStiffness": 0.496,
-      "obbl_reedBite": 0.309,
-      "obbl_instrumentB": 1,
       "obbl_bodySizeB": 0.58,
-      "obbl_voiceRouting": 1,
-      "obbl_damping": 0.996,
-      "obbl_sympatheticAmt": 0.36,
-      "obbl_driftRate": 0.109,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.0,
       "obbl_bondIntensity": 0.679,
       "obbl_bondRate": 0.178,
-      "obbl_fxAChorus": 0.254,
+      "obbl_bondStage": 0.0,
+      "obbl_breathA": 0.828,
+      "obbl_breathB": 0.796,
+      "obbl_damping": 0.996,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.109,
+      "obbl_embouchureA": 0.37,
       "obbl_fxABrightDelay": 0.248,
-      "obbl_fxAPlate": 0.244,
+      "obbl_fxAChorus": 0.254,
       "obbl_fxAExciter": 0.105,
-      "obbl_fxBPhaser": 0.219,
+      "obbl_fxAPlate": 0.244,
       "obbl_fxBDarkDelay": 0.405,
+      "obbl_fxBPhaser": 0.219,
       "obbl_fxBSpring": 0.195,
       "obbl_fxBTapeSat": 0.04,
-      "obbl_macroBreath": 0.304,
+      "obbl_instrumentA": 1,
+      "obbl_instrumentB": 1,
       "obbl_macroBond": 0.108,
+      "obbl_macroBreath": 0.304,
       "obbl_macroMischief": 0.0,
-      "obbl_macroWind": 0.088
+      "obbl_macroWind": 0.088,
+      "obbl_reedBite": 0.309,
+      "obbl_reedStiffness": 0.496,
+      "obbl_sympatheticAmt": 0.36,
+      "obbl_voiceRouting": 1
     }
   },
-  "coupling": null,
-  "description": "The brothers trade phrases across the stereo field. MISCHIEF adds a hint of detuning."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "entangled",
+    "coupled",
+    "entangled"
+  ],
+  "version": "1.0.0"
 }

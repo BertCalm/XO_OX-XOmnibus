@@ -1,22 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "Clench Echo",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.53,
+    "pairs": [
+      {
+        "amount": 0.53,
+        "engineA": "Overbite",
+        "engineB": "Overdub",
+        "type": "Amp->Filter"
+      }
+    ],
+    "type": "Amp->Filter"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OVERBITE grip feeds OVERDUB tape. Bass-forward echo. [Amp->Filter]",
+  "dna": {
+    "aggression": 0.413,
     "brightness": 0.421,
-    "warmth": 0.675,
-    "movement": 0.543,
     "density": 0.633,
+    "movement": 0.543,
     "space": 0.68,
-    "aggression": 0.413
+    "warmth": 0.675
   },
   "engines": [
-    "XOverbite",
-    "XOverdub"
+    "Overbite",
+    "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE grip feeds OVERDUB tape. Bass-forward echo. [Amp->Filter]",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Clench Echo",
+  "parameters": {
+    "Overbite": {
+      "poss_aggression": 0.56,
+      "poss_brightness": 0.459,
+      "poss_couplingBus": 0,
+      "poss_couplingLevel": 0.69,
+      "poss_outputLevel": 0.76,
+      "poss_outputPan": 0.02,
+      "poss_warmth": 0.631
+    },
+    "Overdub": {
+      "dub_aggression": 0.335,
+      "dub_brightness": 0.476,
+      "dub_couplingBus": 0,
+      "dub_couplingLevel": 0.65,
+      "dub_outputLevel": 0.9,
+      "dub_outputPan": -0.01,
+      "dub_warmth": 0.654
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.413,
+    "brightness": 0.421,
+    "density": 0.633,
+    "movement": 0.543,
+    "space": 0.68,
+    "warmth": 0.675
+  },
   "tags": [
     "coupling",
     "entangled",
@@ -24,51 +70,5 @@
     "overdub",
     "bite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.421,
-    "warmth": 0.675,
-    "movement": 0.543,
-    "density": 0.633,
-    "space": 0.68,
-    "aggression": 0.413
-  },
-  "parameters": {
-    "XOverbite": {
-      "poss_outputLevel": 0.76,
-      "poss_outputPan": 0.02,
-      "poss_couplingLevel": 0.69,
-      "poss_couplingBus": 0,
-      "poss_brightness": 0.459,
-      "poss_warmth": 0.631,
-      "poss_aggression": 0.56
-    },
-    "XOverdub": {
-      "dub_outputLevel": 0.9,
-      "dub_outputPan": -0.01,
-      "dub_couplingLevel": 0.65,
-      "dub_couplingBus": 0,
-      "dub_brightness": 0.476,
-      "dub_warmth": 0.654,
-      "dub_aggression": 0.335
-    }
-  },
-  "coupling": {
-    "type": "Amp->Filter",
-    "amount": 0.53,
-    "pairs": [
-      {
-        "engineA": "XOverbite",
-        "engineB": "XOverdub",
-        "type": "Amp->Filter",
-        "amount": 0.53
-      }
-    ]
-  }
+  "version": "1.0.0"
 }

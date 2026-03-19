@@ -1,13 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Tonal Prism",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Pure tones refracted through oracular prism — six colors of harmonic truth.",
+  "dna": {
+    "aggression": 0.16,
+    "brightness": 0.87,
+    "density": 0.44,
+    "movement": 0.29,
+    "space": 0.67,
+    "warmth": 0.19
+  },
   "engines": [
     "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Pure tones refracted through oracular prism — six colors of harmonic truth.",
+  "legacy": {
+    "sourceCategory": "Prism",
+    "sourceInstrument": "Oracle",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Tonal Prism",
+  "parameters": {
+    "Oracle": {
+      "oracle_ampAttack": 0.0105,
+      "oracle_ampDecay": 1.07,
+      "oracle_ampRelease": 2.005,
+      "oracle_ampSustain": 0.778,
+      "oracle_filterCutoff": 15810.0,
+      "oracle_filterReso": 0.135,
+      "oracle_level": 0.78,
+      "oracle_macroCharacter": 0.679,
+      "oracle_macroCoupling": 0.0,
+      "oracle_macroMovement": 0.29,
+      "oracle_macroSpace": 0.67,
+      "oracle_propheticShimmer": 0.16,
+      "oracle_reverbMix": 0.523,
+      "oracle_stereoWidth": 0.801,
+      "oracle_temporalRate": 1.66,
+      "oracle_visionDepth": 0.696
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "spectral",
     "tonal",
@@ -15,48 +57,6 @@
     "oracular",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": "Oracle",
-    "sourceCategory": "Prism",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oracle": {
-      "oracle_visionDepth": 0.696,
-      "oracle_propheticShimmer": 0.16,
-      "oracle_temporalRate": 1.66,
-      "oracle_filterCutoff": 15810.0,
-      "oracle_filterReso": 0.135,
-      "oracle_reverbMix": 0.523,
-      "oracle_ampAttack": 0.0105,
-      "oracle_ampDecay": 1.07,
-      "oracle_ampSustain": 0.778,
-      "oracle_ampRelease": 2.005,
-      "oracle_stereoWidth": 0.801,
-      "oracle_level": 0.78,
-      "oracle_macroCharacter": 0.679,
-      "oracle_macroMovement": 0.29,
-      "oracle_macroCoupling": 0.0,
-      "oracle_macroSpace": 0.67
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.87,
-    "warmth": 0.19,
-    "movement": 0.29,
-    "density": 0.44,
-    "space": 0.67,
-    "aggression": 0.16
-  }
+  "version": "1.0.0"
 }

@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Ocelot Quick Tone",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Fast attack, clean decay. The note that shows up on time.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.6,
+    "density": 0.7,
+    "movement": 0.65,
+    "space": 0.25,
+    "warmth": 0.5
+  },
   "engines": [
     "Ocelot"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Fast attack, clean decay. The note that shows up on time.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Ocelot Quick Tone",
+  "parameters": {
+    "Ocelot": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "fast",
     "tone",
@@ -17,31 +42,6 @@
     "foundation",
     "workhorse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Ocelot": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.5,
-    "movement": 0.65,
-    "density": 0.7,
-    "space": 0.25,
-    "aggression": 0.5
-  }
+  "version": "1.0.0"
 }

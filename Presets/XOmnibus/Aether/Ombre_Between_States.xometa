@@ -1,42 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Between States",
-  "mood": "Aether",
-  "engines": ["Ombre"],
-  "author": "Guru Bin — Mood Balance Pass 2026-03-16",
-  "version": "1.0.0",
-  "description": "Blend oscillating at mid-point with maximum interference — the engine cannot decide whether it is memory or perception. The interference modulates both channels simultaneously into a flickering identity crisis. Neither grain nor direct signal is stable. What emerges is a third thing: the moment of forgetting, sustained as music.",
-  "tags": ["aether", "abstract", "interference", "unstable", "spatial", "identity"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
+  "description": "Blend oscillating at mid-point with maximum interference — the engine cannot decide whether it is memory or perception. The interference modulates both channels simultaneously into a flickering identity crisis. Neither grain nor direct signal is stable. What emerges is a third thing: the moment of forgetting, sustained as music.",
   "dna": {
+    "aggression": 0.12,
     "brightness": 0.45,
-    "warmth": 0.4,
-    "movement": 0.75,
     "density": 0.4,
+    "movement": 0.75,
     "space": 0.88,
-    "aggression": 0.12
+    "warmth": 0.4
   },
+  "engines": [
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Between States",
   "parameters": {
     "Ombre": {
+      "ombre_attack": 0.8,
       "ombre_blend": 0.5,
-      "ombre_interference": 0.95,
-      "ombre_memoryDecay": 12.0,
-      "ombre_memoryGrain": 200.0,
-      "ombre_memoryDrift": 0.6,
-      "ombre_oscShape": 0.5,
-      "ombre_reactivity": 0.7,
-      "ombre_subLevel": 0.15,
+      "ombre_decay": 1.8,
       "ombre_filterCutoff": 5500.0,
       "ombre_filterReso": 0.3,
-      "ombre_attack": 0.8,
-      "ombre_decay": 1.8,
-      "ombre_sustain": 0.75,
+      "ombre_interference": 0.95,
+      "ombre_level": 0.7,
+      "ombre_memoryDecay": 12.0,
+      "ombre_memoryDrift": 0.6,
+      "ombre_memoryGrain": 200.0,
+      "ombre_oscShape": 0.5,
+      "ombre_reactivity": 0.7,
       "ombre_release": 4.0,
-      "ombre_level": 0.7
+      "ombre_subLevel": 0.15,
+      "ombre_sustain": 0.75
     }
   },
-  "coupling": null,
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "abstract",
+    "interference",
+    "unstable",
+    "spatial",
+    "identity"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

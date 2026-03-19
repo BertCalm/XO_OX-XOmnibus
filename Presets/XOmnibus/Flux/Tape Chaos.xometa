@@ -1,13 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Tape Chaos",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-08",
+  "description": "Evolving tape chaos texture with self-oscillating delay and driven saturation.",
+  "dna": {
+    "aggression": 1.0,
+    "brightness": 0.625,
+    "density": 0.24,
+    "movement": 0.972,
+    "space": 0.75,
+    "warmth": 0.112
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Evolving tape chaos texture with self-oscillating delay and driven saturation.",
+  "legacy": {
+    "sourceCategory": "Tape Chaos",
+    "sourceInstrument": "Overdub",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Tape Chaos",
+  "parameters": {
+    "Overdub": {
+      "dub_delayFeedback": 1.1,
+      "dub_delayTime": 0.3,
+      "dub_delayWear": 0.7,
+      "dub_delayWow": 0.8,
+      "dub_driveAmount": 5.0,
+      "dub_filterCutoff": 1500.0,
+      "dub_filterReso": 0.5,
+      "dub_oscPwm": 0.3,
+      "dub_oscWave": 3.0,
+      "dub_reverbMix": 0.4,
+      "dub_reverbSize": 0.6,
+      "dub_sendLevel": 0.6,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "self-oscillating",
     "wobbly",
@@ -16,44 +55,6 @@
     "driven",
     "square"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Overdub",
-    "sourceCategory": "Tape Chaos",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Overdub": {
-      "dub_oscWave": 3.0,
-      "dub_oscPwm": 0.3,
-      "dub_filterCutoff": 1500.0,
-      "dub_filterReso": 0.5,
-      "dub_delayTime": 0.3,
-      "dub_delayFeedback": 1.1,
-      "dub_delayWow": 0.8,
-      "dub_delayWear": 0.7,
-      "dub_driveAmount": 5.0,
-      "dub_sendLevel": 0.6,
-      "dub_reverbSize": 0.6,
-      "dub_reverbMix": 0.4
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.625,
-    "warmth": 0.112,
-    "movement": 0.972,
-    "density": 0.24,
-    "space": 0.75,
-    "aggression": 1.0
-  }
+  "version": "1.0.0"
 }

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Overlap \u00d7 Outwit \u2014 Velocity Couple coupling at extreme DNA corner.",
+  "description": "Overlap × Outwit — Velocity Couple coupling at extreme DNA corner.",
   "tags": [
     "intimate",
     "overlap",
@@ -33,7 +33,10 @@
     "space": 0.078,
     "aggression": 0.91
   },
-  "parameters": {},
+  "parameters": {
+    "Overlap": {},
+    "Outwit": {}
+  },
   "coupling": {
     "pairs": [
       {

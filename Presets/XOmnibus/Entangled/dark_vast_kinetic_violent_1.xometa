@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK VAST KINETIC VIOLENT 1",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.0755,
-    "space": 0.8974,
-    "movement": 0.9338,
-    "aggression": 0.9489,
-    "warmth": 0.5015,
-    "density": 0.4398
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "High",
+  "couplingType": "SPARK",
+  "description": "Ultra-diverse Entangled preset — dark vast kinetic violent. Designed for SPARK coupling with XOrganon.",
   "dna": {
-    "brightness": 0.0755,
-    "space": 0.8974,
-    "movement": 0.9338,
     "aggression": 0.9489,
-    "warmth": 0.5015,
-    "density": 0.4398
+    "brightness": 0.0755,
+    "density": 0.4398,
+    "movement": 0.9338,
+    "space": 0.8974,
+    "warmth": 0.5015
   },
   "engines": [
-    "XOrganon"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark vast kinetic violent. Designed for SPARK coupling with XOrganon.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "spark",
-    "organon"
+    "Organon"
   ],
   "macroLabels": [
     "FORCE",
@@ -36,15 +23,28 @@
     "LUSTER",
     "VOID"
   ],
-  "couplingType": "SPARK",
-  "couplingIntensity": "High",
+  "mood": "Flux",
+  "name": "DARK VAST KINETIC VIOLENT 1",
   "parameters": {
-    "XOrganon": {
-      "couplingLevel": 0.799,
-      "couplingBus": 2
+    "Organon": {
+      "couplingBus": 2,
+      "couplingLevel": 0.799
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9489,
+    "brightness": 0.0755,
+    "density": 0.4398,
+    "movement": 0.9338,
+    "space": 0.8974,
+    "warmth": 0.5015
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "spark",
+    "organon"
+  ],
+  "version": "1.0.0"
 }

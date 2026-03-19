@@ -1,58 +1,58 @@
 {
-  "schema_version": 1,
-  "name": "Spectral Absence",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Bright soft leads character with warm character.",
+  "dna": {
+    "aggression": 0.179,
+    "brightness": 0.431,
+    "density": 0.114,
+    "movement": 0.0,
+    "space": 0.0,
+    "warmth": 0.128
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bright soft leads character with warm character.",
-  "tags": [
-    "lead",
-    "notch",
-    "piercing"
-  ],
+  "legacy": {
+    "sourceCategory": "Soft Leads",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Soft Leads",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Spectral Absence",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 2.0,
-      "bob_oscA_shape": 0.5,
-      "bob_oscA_drift": 0.14,
-      "bob_oscB_wave": 0.0,
-      "bob_oscB_blend": 0.35,
-      "bob_oscB_detune": -4.0,
-      "bob_fltMode": 1.0,
-      "bob_fltCutoff": 4500.0,
-      "bob_fltReso": 0.55,
       "bob_ampAttack": 0.009,
       "bob_ampDecay": 0.28,
-      "bob_ampSustain": 0.6,
       "bob_ampRelease": 0.45,
-      "bob_bobMode": 0.08
+      "bob_ampSustain": 0.6,
+      "bob_bobMode": 0.08,
+      "bob_fltCutoff": 4500.0,
+      "bob_fltMode": 1.0,
+      "bob_fltReso": 0.55,
+      "bob_oscA_drift": 0.14,
+      "bob_oscA_shape": 0.5,
+      "bob_oscA_wave": 2.0,
+      "bob_oscB_blend": 0.35,
+      "bob_oscB_detune": -4.0,
+      "bob_oscB_wave": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.431,
-    "warmth": 0.128,
-    "movement": 0.0,
-    "density": 0.114,
-    "space": 0.0,
-    "aggression": 0.179
-  }
+  "tags": [
+    "lead",
+    "notch",
+    "piercing"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

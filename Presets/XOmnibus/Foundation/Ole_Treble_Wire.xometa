@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Treble Wire",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "The aunts at rest, alliance neutral. Tres Cubano leads without argument.",
+  "dna": {
+    "aggression": 0.19,
+    "brightness": 0.42,
+    "density": 0.39,
+    "movement": 0.15,
+    "space": 0.3,
+    "warmth": 0.67
+  },
   "engines": [
     "Ole"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "latin",
-    "strummed",
-    "foundation",
-    "clean",
-    "foundation"
   ],
   "macroLabels": [
     "FUEGO",
@@ -20,42 +21,41 @@
     "SIDES",
     "ISLA"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.42,
-    "warmth": 0.67,
-    "movement": 0.15,
-    "density": 0.39,
-    "space": 0.3,
-    "aggression": 0.19
-  },
+  "mood": "Foundation",
+  "name": "Treble Wire",
   "parameters": {
     "Ole": {
+      "ole_allianceBlend": 0.321,
+      "ole_allianceConfig": 1,
+      "ole_aunt1Brightness": 0.596,
       "ole_aunt1Level": 0.618,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.596,
-      "ole_aunt2Level": 0.69,
       "ole_aunt2CoinPress": 0.0,
       "ole_aunt2GourdSize": 0.653,
+      "ole_aunt2Level": 0.69,
+      "ole_aunt3Brightness": 0.365,
       "ole_aunt3Level": 0.689,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.365,
       "ole_damping": 0.997,
-      "ole_sympatheticAmt": 0.379,
-      "ole_driftRate": 0.134,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 1,
-      "ole_allianceBlend": 0.321,
-      "ole_husbandOudLevel": 0.0,
+      "ole_driftRate": 0.134,
       "ole_husbandBouzLevel": 0.0,
+      "ole_husbandOudLevel": 0.0,
       "ole_husbandPinLevel": 0.0,
-      "ole_macroFuego": 0.486,
       "ole_macroDrama": 0.032,
+      "ole_macroFuego": 0.486,
+      "ole_macroIsla": 0.18,
       "ole_macroSides": 0.061,
-      "ole_macroIsla": 0.18
+      "ole_sympatheticAmt": 0.379
     }
   },
-  "coupling": null,
-  "description": "The aunts at rest, alliance neutral. Tres Cubano leads without argument."
+  "schema_version": 1,
+  "tags": [
+    "latin",
+    "strummed",
+    "foundation",
+    "clean",
+    "foundation"
+  ],
+  "version": "1.0.0"
 }

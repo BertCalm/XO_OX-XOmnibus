@@ -1,14 +1,76 @@
 {
-  "schema_version": 1,
-  "name": "Shore At Dusk",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.55,
+        "source": "Ombre",
+        "target": "Osprey",
+        "type": "SPECTRAL_TRANSFER"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Coastal light gradients matching the ombre's memory model — the shoreline remembers its own tides.",
+  "dna": {
+    "aggression": 0.397,
+    "brightness": 0.521,
+    "density": 0.531,
+    "movement": 0.451,
+    "space": 0.606,
+    "warmth": 0.68
+  },
   "engines": [
     "Ombre",
     "Osprey"
   ],
-  "author": "XO_OX Deep Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "Coastal light gradients matching the ombre's memory model — the shoreline remembers its own tides.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Shore At Dusk",
+  "parameters": {
+    "Ombre": {
+      "ombre_ampAttack": 0.1847,
+      "ombre_ampDecay": 0.657,
+      "ombre_ampRelease": 1.886,
+      "ombre_ampSustain": 0.527,
+      "ombre_blend": 0.305,
+      "ombre_crossfadeRate": 0.225,
+      "ombre_duskPosition": 0.763,
+      "ombre_filterCutoff": 4751.6,
+      "ombre_filterReso": 0.345,
+      "ombre_forgetRate": 0.531,
+      "ombre_level": 0.692,
+      "ombre_lfo1Depth": 0.4,
+      "ombre_lfo1Rate": 1.16,
+      "ombre_lfo2Depth": 0.339,
+      "ombre_lfo2Rate": 0.237,
+      "ombre_memoryDepth": 0.657,
+      "ombre_modAttack": 0.0135,
+      "ombre_modDecay": 0.26,
+      "ombre_modRelease": 1.175,
+      "ombre_modSustain": 0.517,
+      "ombre_narrativeA": 0.707,
+      "ombre_narrativeB": 0.134,
+      "ombre_reverbDamp": 0.588,
+      "ombre_reverbSize": 0.693,
+      "ombre_shadowAmount": 0.422,
+      "ombre_spaceMix": 0.789,
+      "ombre_toneA": 2601.8,
+      "ombre_toneB": 2036.4
+    },
+    "Osprey": {
+      "osprey_filterCutoff": 2930.5,
+      "osprey_level": 0.657
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -18,68 +80,6 @@
     "twilight",
     "liminal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "Ombre": {
-      "ombre_blend": 0.305,
-      "ombre_memoryDepth": 0.657,
-      "ombre_forgetRate": 0.531,
-      "ombre_shadowAmount": 0.422,
-      "ombre_duskPosition": 0.763,
-      "ombre_narrativeA": 0.707,
-      "ombre_narrativeB": 0.134,
-      "ombre_crossfadeRate": 0.225,
-      "ombre_toneA": 2601.8,
-      "ombre_toneB": 2036.4,
-      "ombre_filterCutoff": 4751.6,
-      "ombre_filterReso": 0.345,
-      "ombre_level": 0.692,
-      "ombre_ampAttack": 0.1847,
-      "ombre_ampDecay": 0.657,
-      "ombre_ampSustain": 0.527,
-      "ombre_ampRelease": 1.886,
-      "ombre_modAttack": 0.0135,
-      "ombre_modDecay": 0.26,
-      "ombre_modSustain": 0.517,
-      "ombre_modRelease": 1.175,
-      "ombre_lfo1Rate": 1.16,
-      "ombre_lfo1Depth": 0.4,
-      "ombre_lfo2Rate": 0.237,
-      "ombre_lfo2Depth": 0.339,
-      "ombre_spaceMix": 0.789,
-      "ombre_reverbSize": 0.693,
-      "ombre_reverbDamp": 0.588
-    },
-    "Osprey": {
-      "osprey_level": 0.657,
-      "osprey_filterCutoff": 2930.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "SPECTRAL_TRANSFER",
-        "source": "Ombre",
-        "target": "Osprey",
-        "amount": 0.55
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.521,
-    "warmth": 0.68,
-    "movement": 0.451,
-    "density": 0.531,
-    "space": 0.606,
-    "aggression": 0.397
-  }
+  "version": "1.0.0"
 }

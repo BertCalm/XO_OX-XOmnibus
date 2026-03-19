@@ -33,7 +33,9 @@
     "space": 0.9,
     "aggression": 0.2
   },
-  "parameters": {},
+  "parameters": {
+    "Orbital": {}
+  },
   "tags": [
     "flux",
     "sparse-flux",
@@ -41,5 +43,5 @@
     "solitude",
     "ring"
   ],
-  "description": "Orbital single ring \u2014 one particle traversing vast empty circumference."
+  "description": "Orbital single ring — one particle traversing vast empty circumference."
 }

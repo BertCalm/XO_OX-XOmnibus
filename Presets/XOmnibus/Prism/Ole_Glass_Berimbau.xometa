@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Glass Berimbau",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Berimbau's bow sets the pulse. The other aunts orbit its percussive arc.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.69,
+    "density": 0.33,
+    "movement": 0.32,
+    "space": 0.45,
+    "warmth": 0.2
+  },
   "engines": [
     "Ole"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "latin",
-    "strummed",
-    "prism",
-    "bright",
-    "prism"
   ],
   "macroLabels": [
     "FUEGO",
@@ -20,42 +21,41 @@
     "SIDES",
     "ISLA"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.69,
-    "warmth": 0.2,
-    "movement": 0.32,
-    "density": 0.33,
-    "space": 0.45,
-    "aggression": 0.05
-  },
+  "mood": "Prism",
+  "name": "Glass Berimbau",
   "parameters": {
     "Ole": {
+      "ole_allianceBlend": 0.436,
+      "ole_allianceConfig": 0,
+      "ole_aunt1Brightness": 0.537,
       "ole_aunt1Level": 0.812,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.537,
-      "ole_aunt2Level": 0.845,
       "ole_aunt2CoinPress": 0.0,
       "ole_aunt2GourdSize": 0.442,
+      "ole_aunt2Level": 0.845,
+      "ole_aunt3Brightness": 0.61,
       "ole_aunt3Level": 0.775,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.61,
       "ole_damping": 0.991,
-      "ole_sympatheticAmt": 0.281,
-      "ole_driftRate": 0.078,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 0,
-      "ole_allianceBlend": 0.436,
-      "ole_husbandOudLevel": 0.0,
+      "ole_driftRate": 0.078,
       "ole_husbandBouzLevel": 0.0,
+      "ole_husbandOudLevel": 0.0,
       "ole_husbandPinLevel": 0.0,
-      "ole_macroFuego": 0.573,
       "ole_macroDrama": 0.0,
+      "ole_macroFuego": 0.573,
+      "ole_macroIsla": 0.323,
       "ole_macroSides": 0.184,
-      "ole_macroIsla": 0.323
+      "ole_sympatheticAmt": 0.281
     }
   },
-  "coupling": null,
-  "description": "Berimbau's bow sets the pulse. The other aunts orbit its percussive arc."
+  "schema_version": 1,
+  "tags": [
+    "latin",
+    "strummed",
+    "prism",
+    "bright",
+    "prism"
+  ],
+  "version": "1.0.0"
 }

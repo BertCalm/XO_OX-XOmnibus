@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Prism Strum",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Berimbau isolated, Cubano and Charango paired. A crisp 2-vs-1 with full BLEND.",
+  "dna": {
+    "aggression": 0.01,
+    "brightness": 0.87,
+    "density": 0.3,
+    "movement": 0.24,
+    "space": 0.4,
+    "warmth": 0.21
+  },
   "engines": [
     "Ole"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "latin",
-    "strummed",
-    "prism",
-    "bright",
-    "prism"
   ],
   "macroLabels": [
     "FUEGO",
@@ -20,42 +21,41 @@
     "SIDES",
     "ISLA"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.87,
-    "warmth": 0.21,
-    "movement": 0.24,
-    "density": 0.3,
-    "space": 0.4,
-    "aggression": 0.01
-  },
+  "mood": "Prism",
+  "name": "Prism Strum",
   "parameters": {
     "Ole": {
+      "ole_allianceBlend": 0.466,
+      "ole_allianceConfig": 1,
+      "ole_aunt1Brightness": 0.629,
       "ole_aunt1Level": 0.584,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.629,
-      "ole_aunt2Level": 0.827,
       "ole_aunt2CoinPress": 0.0,
       "ole_aunt2GourdSize": 0.451,
+      "ole_aunt2Level": 0.827,
+      "ole_aunt3Brightness": 0.429,
       "ole_aunt3Level": 0.692,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.429,
       "ole_damping": 0.993,
-      "ole_sympatheticAmt": 0.396,
-      "ole_driftRate": 0.07,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 1,
-      "ole_allianceBlend": 0.466,
-      "ole_husbandOudLevel": 0.0,
+      "ole_driftRate": 0.07,
       "ole_husbandBouzLevel": 0.0,
+      "ole_husbandOudLevel": 0.0,
       "ole_husbandPinLevel": 0.0,
-      "ole_macroFuego": 0.301,
       "ole_macroDrama": 0.173,
+      "ole_macroFuego": 0.301,
+      "ole_macroIsla": 0.16,
       "ole_macroSides": 0.0,
-      "ole_macroIsla": 0.16
+      "ole_sympatheticAmt": 0.396
     }
   },
-  "coupling": null,
-  "description": "Berimbau isolated, Cubano and Charango paired. A crisp 2-vs-1 with full BLEND."
+  "schema_version": 1,
+  "tags": [
+    "latin",
+    "strummed",
+    "prism",
+    "bright",
+    "prism"
+  ],
+  "version": "1.0.0"
 }

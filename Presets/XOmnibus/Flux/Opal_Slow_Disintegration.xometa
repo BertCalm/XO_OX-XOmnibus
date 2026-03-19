@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Low density 0.12, large grains 0.75, posScatter 0.85, pitchScatter 0.3. Speed negative at -0.3. This is a different kind of granular violence — not fast and dense, but slow and inevitable. Long reversed fragments arrive at random positions with random pitches, spaced far apart by the low density. The sound is of something coming apart one large piece at a time. Each grain is a ruin. Nothing connects to anything else.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.3,
+    "density": 0.18,
+    "movement": 0.5,
+    "space": 0.6,
+    "warmth": 0.35
+  },
+  "engines": [
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Slow Disintegration",
+  "parameters": {
+    "Opal": {
+      "opal_ampAttack": 0.0,
+      "opal_ampDecay": 0.6,
+      "opal_ampRelease": 3.0,
+      "opal_ampSustain": 0.85,
+      "opal_density": 0.12,
+      "opal_filterCutoff": 0.35,
+      "opal_filterReso": 0.2,
+      "opal_grainSize": 0.75,
+      "opal_macroCharacter": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitchScatter": 0.3,
+      "opal_posScatter": 0.85,
+      "opal_reverse": 1.0,
+      "opal_speed": -0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "flux",
+    "granular",
+    "reverse",
+    "sparse",
+    "disintegration",
+    "dark",
+    "experimental",
+    "slow"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

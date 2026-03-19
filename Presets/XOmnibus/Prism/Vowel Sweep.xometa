@@ -1,53 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Vowel Sweep",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expressive leads voice with warm character.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.422,
+    "density": 0.229,
+    "movement": 0.0,
+    "space": 0.043,
+    "warmth": 0.154
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expressive leads voice with warm character.",
-  "tags": [
-    "supersaw",
-    "formant",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Leads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Leads",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Vowel Sweep",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 2.0,
-      "drift_oscA_level": 0.8,
-      "drift_oscA_detune": 0.25,
-      "drift_formantMorph": 0.2,
       "drift_attack": 5.0,
       "drift_decay": 500.0,
-      "drift_sustain": 0.65,
+      "drift_formantMorph": 0.2,
+      "drift_level": -3.0,
+      "drift_oscA_detune": 0.25,
+      "drift_oscA_level": 0.8,
+      "drift_oscA_mode": 2.0,
       "drift_release": 300.0,
-      "drift_level": -3.0
+      "drift_sustain": 0.65
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.422,
-    "warmth": 0.154,
-    "movement": 0.0,
-    "density": 0.229,
-    "space": 0.043,
-    "aggression": 0.0
-  }
+  "tags": [
+    "supersaw",
+    "formant",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

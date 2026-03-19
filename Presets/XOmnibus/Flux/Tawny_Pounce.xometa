@@ -33,7 +33,9 @@
     "space": 0.22,
     "aggression": 0.64
   },
-  "parameters": {},
+  "parameters": {
+    "Ocelot": {}
+  },
   "tags": [
     "flux",
     "controlled",
@@ -41,5 +43,5 @@
     "pounce",
     "biome"
   ],
-  "description": "Low crouch to explosive spring \u2014 every gesture deliberate, landing exact."
+  "description": "Low crouch to explosive spring — every gesture deliberate, landing exact."
 }

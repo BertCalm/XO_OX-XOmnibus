@@ -1,61 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Plush Overtone",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Floating warm pads texture with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.058,
+    "brightness": 0.511,
+    "density": 0.174,
+    "movement": 0.075,
+    "space": 0.436,
+    "warmth": 0.363
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Floating warm pads texture with bob character and analog drift.",
-  "tags": [
-    "warm",
-    "rich",
-    "overtone"
-  ],
+  "legacy": {
+    "sourceCategory": "Warm Pads",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Warm Pads",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Plush Overtone",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 3.0,
-      "bob_oscA_shape": 0.48,
-      "bob_oscA_drift": 0.28,
-      "bob_oscB_wave": 3.0,
-      "bob_oscB_blend": 0.38,
-      "bob_oscB_detune": 4.0,
-      "bob_fltMode": 2.0,
-      "bob_fltCutoff": 2600.0,
-      "bob_fltReso": 0.18,
-      "bob_fltChar": 0.45,
-      "bob_lfo1Rate": 0.1,
-      "bob_lfo1Depth": 0.2,
       "bob_ampAttack": 1.1,
       "bob_ampDecay": 1.4,
-      "bob_ampSustain": 0.86,
       "bob_ampRelease": 2.4,
-      "bob_bobMode": 0.32
+      "bob_ampSustain": 0.86,
+      "bob_bobMode": 0.32,
+      "bob_fltChar": 0.45,
+      "bob_fltCutoff": 2600.0,
+      "bob_fltMode": 2.0,
+      "bob_fltReso": 0.18,
+      "bob_lfo1Depth": 0.2,
+      "bob_lfo1Rate": 0.1,
+      "bob_oscA_drift": 0.28,
+      "bob_oscA_shape": 0.48,
+      "bob_oscA_wave": 3.0,
+      "bob_oscB_blend": 0.38,
+      "bob_oscB_detune": 4.0,
+      "bob_oscB_wave": 3.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.511,
-    "warmth": 0.363,
-    "movement": 0.075,
-    "density": 0.174,
-    "space": 0.436,
-    "aggression": 0.058
-  }
+  "tags": [
+    "warm",
+    "rich",
+    "overtone"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

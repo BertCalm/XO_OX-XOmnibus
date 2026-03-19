@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD VIOLENT DENSE 4",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.1081,
-    "warmth": 0.0665,
-    "aggression": 0.9286,
-    "density": 0.9481,
-    "movement": 0.5237,
-    "space": 0.5723
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Medium",
+  "couplingType": "PULSE",
+  "description": "Ultra-diverse Entangled preset — dark cold violent dense. Designed for PULSE coupling with XOdyssey.",
   "dna": {
-    "brightness": 0.1081,
-    "warmth": 0.0665,
     "aggression": 0.9286,
+    "brightness": 0.1081,
     "density": 0.9481,
     "movement": 0.5237,
-    "space": 0.5723
+    "space": 0.5723,
+    "warmth": 0.0665
   },
   "engines": [
-    "XOdyssey"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark cold violent dense. Designed for PULSE coupling with XOdyssey.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "pulse",
-    "odyssey"
+    "Odyssey"
   ],
   "macroLabels": [
     "MASS",
@@ -36,15 +23,28 @@
     "FORCE",
     "RADIANCE"
   ],
-  "couplingType": "PULSE",
-  "couplingIntensity": "Medium",
+  "mood": "Prism",
+  "name": "DARK COLD VIOLENT DENSE 4",
   "parameters": {
-    "XOdyssey": {
-      "couplingLevel": 0.993,
-      "couplingBus": 0
+    "Odyssey": {
+      "couplingBus": 0,
+      "couplingLevel": 0.993
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9286,
+    "brightness": 0.1081,
+    "density": 0.9481,
+    "movement": 0.5237,
+    "space": 0.5723,
+    "warmth": 0.0665
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "pulse",
+    "odyssey"
+  ],
+  "version": "1.0.0"
 }

@@ -1,0 +1,89 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "At rest, this is a well-behaved granular pad: medium grains, low scatter, predictable. The entire performance lives in aftertouch. Pressing into any held note ramps posScatter from 0.08 toward 1.0 — the grain playhead fractures and begins firing into random positions. Press harder and pitchScatter arrives: the grains start arriving at different pitches, the chord dissolving into harmonic dust. Release pressure and the pad reassembles itself. The instrument rewards players with pressure-sensitive keyboards.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.5,
+    "density": 0.55,
+    "movement": 0.4,
+    "space": 0.6,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "modMatrix": [
+    {
+      "amount": 0.92,
+      "destination": "opal_posScatter",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.45,
+      "destination": "opal_pitchScatter",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.3,
+      "destination": "opal_density",
+      "source": "aftertouch"
+    },
+    {
+      "amount": -0.4,
+      "destination": "opal_grainSize",
+      "source": "modWheel"
+    },
+    {
+      "amount": -0.25,
+      "destination": "opal_ampAttack",
+      "source": "velocity"
+    }
+  ],
+  "mood": "Prism",
+  "name": "Aftertouch Scatter",
+  "parameters": {
+    "Opal": {
+      "opal_ampAttack": 0.5,
+      "opal_ampDecay": 0.6,
+      "opal_ampRelease": 2.2,
+      "opal_ampSustain": 0.85,
+      "opal_density": 0.55,
+      "opal_filterCutoff": 0.58,
+      "opal_filterReso": 0.14,
+      "opal_grainSize": 0.5,
+      "opal_macroCharacter": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitchScatter": 0.0,
+      "opal_posScatter": 0.08,
+      "opal_reverse": 0.0,
+      "opal_speed": 1.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "granular",
+    "prism",
+    "aftertouch",
+    "scatter",
+    "pressure",
+    "expressive",
+    "performance",
+    "dynamic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

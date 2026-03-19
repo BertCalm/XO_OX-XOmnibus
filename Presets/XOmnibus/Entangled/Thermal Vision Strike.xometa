@@ -1,14 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Thermal Vision Strike",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Optic",
+        "engineB": "Osprey",
+        "type": "EnvToMod"
+      },
+      {
+        "amount": 0.4,
+        "engineA": "Osprey",
+        "engineB": "Optic",
+        "type": "SpectralMorph"
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "OPTIC thermal-palette mode locking OSPREY's attack transient — the raptor sees in heat before it dives.",
+  "dna": {
+    "aggression": 0.335,
+    "brightness": 0.81,
+    "density": 0.4,
+    "movement": 0.722,
+    "space": 0.8,
+    "warmth": 0.323
+  },
   "engines": [
     "Optic",
     "Osprey"
   ],
-  "author": "XPN Tool \u2014 Optic/Oblique/Ocelot Coupling Pack",
-  "version": "1.0.0",
-  "description": "OPTIC thermal-palette mode locking OSPREY's attack transient \u2014 the raptor sees in heat before it dives.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Thermal Vision Strike",
+  "parameters": {
+    "Optic": {
+      "optic_autoPulse": 0,
+      "optic_inputGain": 0.85,
+      "optic_modDepth": 0.6,
+      "optic_pulseRate": 0.45,
+      "optic_pulseShape": 0.5,
+      "optic_reactivity": 0.7,
+      "optic_vizFeedback": 0.5,
+      "optic_vizIntensity": 0.65,
+      "optic_vizMode": 1,
+      "optic_vizSpeed": 0.55
+    },
+    "Osprey": {
+      "osp_ampAttack": 0.03,
+      "osp_ampRelease": 1.5,
+      "osp_filterCutoff": 2800.0,
+      "osp_filterReso": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "optic",
     "osprey",
@@ -17,63 +74,6 @@
     "entangled",
     "coupling"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Optic": {
-      "optic_reactivity": 0.7,
-      "optic_inputGain": 0.85,
-      "optic_autoPulse": 0,
-      "optic_pulseRate": 0.45,
-      "optic_pulseShape": 0.5,
-      "optic_modDepth": 0.6,
-      "optic_vizMode": 1,
-      "optic_vizFeedback": 0.5,
-      "optic_vizSpeed": 0.55,
-      "optic_vizIntensity": 0.65
-    },
-    "Osprey": {
-      "osp_filterCutoff": 2800.0,
-      "osp_filterReso": 0.3,
-      "osp_ampAttack": 0.03,
-      "osp_ampRelease": 1.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Osprey",
-        "type": "EnvToMod",
-        "amount": 0.6
-      },
-      {
-        "engineA": "Osprey",
-        "engineB": "Optic",
-        "type": "SpectralMorph",
-        "amount": 0.4
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.81,
-    "warmth": 0.323,
-    "movement": 0.722,
-    "density": 0.4,
-    "space": 0.8,
-    "aggression": 0.335
-  }
+  "version": "1.0.0"
 }

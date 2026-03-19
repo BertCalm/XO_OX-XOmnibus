@@ -1,59 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Oblong Low",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Rooted warm bass sound with warm character.",
+  "dna": {
+    "aggression": 0.033,
+    "brightness": 0.253,
+    "density": 0.322,
+    "movement": 0.0,
+    "space": 0.0,
+    "warmth": 0.124
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Rooted warm bass sound with warm character.",
-  "tags": [
-    "bass",
-    "warm",
-    "round"
-  ],
+  "legacy": {
+    "sourceCategory": "Warm Bass",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Warm Bass",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Oblong Low",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 1.0,
-      "bob_oscA_tune": -12.0,
-      "bob_oscA_shape": 0.32,
-      "bob_oscA_drift": 0.1,
-      "bob_oscB_wave": 2.0,
-      "bob_oscB_blend": 0.72,
-      "bob_oscB_detune": 7.0,
-      "bob_fltMode": 3.0,
-      "bob_fltCutoff": 480.0,
-      "bob_fltReso": 0.1,
       "bob_ampAttack": 0.01,
       "bob_ampDecay": 0.6,
-      "bob_ampSustain": 0.78,
       "bob_ampRelease": 0.55,
-      "bob_bobMode": 0.06
+      "bob_ampSustain": 0.78,
+      "bob_bobMode": 0.06,
+      "bob_fltCutoff": 480.0,
+      "bob_fltMode": 3.0,
+      "bob_fltReso": 0.1,
+      "bob_oscA_drift": 0.1,
+      "bob_oscA_shape": 0.32,
+      "bob_oscA_tune": -12.0,
+      "bob_oscA_wave": 1.0,
+      "bob_oscB_blend": 0.72,
+      "bob_oscB_detune": 7.0,
+      "bob_oscB_wave": 2.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.253,
-    "warmth": 0.124,
-    "movement": 0.0,
-    "density": 0.322,
-    "space": 0.0,
-    "aggression": 0.033
-  }
+  "tags": [
+    "bass",
+    "warm",
+    "round"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

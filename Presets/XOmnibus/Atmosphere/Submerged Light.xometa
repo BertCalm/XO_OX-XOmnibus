@@ -1,46 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Submerged Light",
-  "mood": "Atmosphere",
-  "engines": ["Opal"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Filtered grain clouds like sunlight through deep water. LP filter with slow envelope.",
-  "tags": ["underwater", "filtered", "slow", "deep"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-11",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Filtered grain clouds like sunlight through deep water. LP filter with slow envelope.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.15,
+    "density": 0.3,
+    "movement": 0.1,
+    "space": 0.85,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Opal"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Submerged Light",
   "parameters": {
     "Opal": {
-      "opal_source": 1,
-      "opal_grainSize": 500.0,
-      "opal_density": 6.0,
-      "opal_position": 0.6,
-      "opal_posScatter": 0.08,
-      "opal_pitchScatter": 0.2,
-      "opal_panScatter": 0.3,
-      "opal_window": 1,
-      "opal_freeze": 0.0,
-      "opal_couplingLevel": 0.0,
-      "opal_pulseWidth": 0.5,
-      "opal_detuneCents": 4.0,
-      "opal_filterCutoff": 1200.0,
-      "opal_filterReso": 0.3,
-      "opal_filterMode": 0,
-      "opal_shimmer": 0.0,
-      "opal_frost": 0.2,
-      "opal_smear": 0.5,
-      "opal_reverbMix": 0.55,
       "opal_ampAttack": 3.0,
       "opal_ampDecay": 2.0,
-      "opal_ampSustain": 0.7,
       "opal_ampRelease": 5.0,
-      "opal_masterVolume": 0.75
+      "opal_ampSustain": 0.7,
+      "opal_couplingLevel": 0.0,
+      "opal_density": 6.0,
+      "opal_detuneCents": 4.0,
+      "opal_filterCutoff": 1200.0,
+      "opal_filterMode": 0,
+      "opal_filterReso": 0.3,
+      "opal_freeze": 0.0,
+      "opal_frost": 0.2,
+      "opal_grainSize": 500.0,
+      "opal_masterVolume": 0.75,
+      "opal_panScatter": 0.3,
+      "opal_pitchScatter": 0.2,
+      "opal_posScatter": 0.08,
+      "opal_position": 0.6,
+      "opal_pulseWidth": 0.5,
+      "opal_reverbMix": 0.55,
+      "opal_shimmer": 0.0,
+      "opal_smear": 0.5,
+      "opal_source": 1,
+      "opal_window": 1
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {"brightness": 0.15, "warmth": 0.65, "movement": 0.1, "density": 0.3, "space": 0.85, "aggression": 0.0}
+  "tags": [
+    "underwater",
+    "filtered",
+    "slow",
+    "deep"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

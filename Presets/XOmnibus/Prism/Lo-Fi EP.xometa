@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Lo-Fi EP",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Bright keys character with warm character.",
+  "dna": {
+    "aggression": 0.124,
+    "brightness": 0.411,
+    "density": 0.058,
+    "movement": 0.0,
+    "space": 0.181,
+    "warmth": 0.124
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bright keys character with warm character.",
-  "tags": [
-    "saturated",
-    "chorus",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Keys",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Keys",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Lo-Fi EP",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 3.0,
-      "drift_oscA_level": 0.7,
-      "drift_oscA_fmDepth": 0.2,
-      "drift_hazeAmount": 0.3,
-      "drift_filterCutoff": 3500.0,
-      "drift_filterReso": 0.15,
       "drift_attack": 3.0,
       "drift_decay": 600.0,
-      "drift_sustain": 0.3,
+      "drift_filterCutoff": 3500.0,
+      "drift_filterReso": 0.15,
+      "drift_hazeAmount": 0.3,
+      "drift_level": -3.0,
+      "drift_oscA_fmDepth": 0.2,
+      "drift_oscA_level": 0.7,
+      "drift_oscA_mode": 3.0,
       "drift_release": 350.0,
-      "drift_level": -3.0
+      "drift_sustain": 0.3
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.411,
-    "warmth": 0.124,
-    "movement": 0.0,
-    "density": 0.058,
-    "space": 0.181,
-    "aggression": 0.124
-  }
+  "tags": [
+    "saturated",
+    "chorus",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

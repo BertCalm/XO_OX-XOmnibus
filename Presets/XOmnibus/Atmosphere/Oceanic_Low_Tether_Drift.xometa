@@ -1,55 +1,70 @@
 {
-  "schema_version": 1,
-  "name": "Low Tether Drift",
-  "mood": "Atmosphere",
-  "engines": ["Oceanic"],
-  "author": "Guru Bin — OCEANIC Retreat 2026-03-15",
-  "version": "1.0.0",
-  "description": "tether=0.05 — the MIDI note barely influences particle behavior. Velocity-proportional scatter at noteOn sends particles far from their attractor. The weak attractor cannot fully pull them back. The note never fully resolves to its intended pitch. Play C3 and hear a cloud that knows it is near C3 but cannot commit. A drifting, near-unpitched atmosphere that is always almost a note.",
-  "tags": ["low-tether", "drift", "near-pitched", "atmosphere", "awakening"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.55,
-    "movement": 0.65,
-    "density": 0.45,
-    "space": 0.8,
-    "aggression": 0.1
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "tether=0.05 — the MIDI note barely influences particle behavior. Velocity-proportional scatter at noteOn sends particles far from their attractor. The weak attractor cannot fully pull them back. The note never fully resolves to its intended pitch. Play C3 and hear a cloud that knows it is near C3 but cannot commit. A drifting, near-unpitched atmosphere that is always almost a note.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.35,
+    "density": 0.45,
+    "movement": 0.65,
+    "space": 0.8,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Low Tether Drift",
   "parameters": {
     "Oceanic": {
-      "ocean_separation": 0.5,
       "ocean_alignment": 0.4,
-      "ocean_cohesion": 0.45,
-      "ocean_tether": 0.05,
-      "ocean_scatter": 0.55,
-      "ocean_subflocks": 1,
-      "ocean_damping": 0.6,
-      "ocean_waveform": 0,
       "ocean_ampAttack": 0.5,
       "ocean_ampDecay": 0.8,
-      "ocean_ampSustain": 0.7,
       "ocean_ampRelease": 3.0,
+      "ocean_ampSustain": 0.7,
+      "ocean_cohesion": 0.45,
+      "ocean_damping": 0.6,
+      "ocean_glide": 0.8,
+      "ocean_lfo1Depth": 0.2,
+      "ocean_lfo1Rate": 0.04,
+      "ocean_lfo1Shape": 0,
+      "ocean_lfo2Depth": 0.12,
+      "ocean_lfo2Rate": 0.028,
+      "ocean_lfo2Shape": 0,
+      "ocean_macroCharacter": 0.0,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroMovement": 0.0,
+      "ocean_macroSpace": 0.0,
+      "ocean_scatter": 0.55,
+      "ocean_separation": 0.5,
+      "ocean_subflocks": 1,
       "ocean_swarmEnvAttack": 0.5,
       "ocean_swarmEnvDecay": 1.0,
-      "ocean_swarmEnvSustain": 0.6,
       "ocean_swarmEnvRelease": 1.618,
-      "ocean_lfo1Rate": 0.04,
-      "ocean_lfo1Depth": 0.2,
-      "ocean_lfo1Shape": 0,
-      "ocean_lfo2Rate": 0.028,
-      "ocean_lfo2Depth": 0.12,
-      "ocean_lfo2Shape": 0,
+      "ocean_swarmEnvSustain": 0.6,
+      "ocean_tether": 0.05,
       "ocean_voiceMode": 2,
-      "ocean_glide": 0.8,
-      "ocean_macroCharacter": 0.0,
-      "ocean_macroMovement": 0.0,
-      "ocean_macroCoupling": 0.0,
-      "ocean_macroSpace": 0.0
+      "ocean_waveform": 0
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "low-tether",
+    "drift",
+    "near-pitched",
+    "atmosphere",
+    "awakening"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

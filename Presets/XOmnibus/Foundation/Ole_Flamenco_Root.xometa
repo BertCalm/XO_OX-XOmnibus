@@ -1,0 +1,61 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Afro-Latin trio at rest — two rhythm voices at medium weight with DRAMA held back, ready to ignite. The quiet before the stomp.",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.52,
+    "density": 0.48,
+    "movement": 0.55,
+    "space": 0.42,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Flamenco Root",
+  "parameters": {
+    "Ole": {
+      "ole_ampAttack": 0.03,
+      "ole_ampRelease": 0.35,
+      "ole_couplingBus": 0,
+      "ole_couplingLevel": 0.5,
+      "ole_drama": 0.4,
+      "ole_filterCutoff": 0.5,
+      "ole_filterReso": 0.28,
+      "ole_outputLevel": 0.82,
+      "ole_outputPan": 0.0,
+      "ole_percussionMix": 0.55,
+      "ole_reverbMix": 0.22,
+      "ole_rhythmA": 0.5,
+      "ole_rhythmB": 0.4,
+      "ole_rhythmC": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.35,
+    "brightness": 0.52,
+    "density": 0.48,
+    "movement": 0.55,
+    "space": 0.42,
+    "warmth": 0.7
+  },
+  "tags": [
+    "afrolatin",
+    "rhythm",
+    "flamenco",
+    "foundation"
+  ],
+  "version": "1.0.0"
+}

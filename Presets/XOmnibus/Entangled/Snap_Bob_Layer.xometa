@@ -88,10 +88,10 @@
     }
   },
   "coupling": {
-    "routes": [
+    "pairs": [
       {
-        "source": "OddfeliX",
-        "dest": "Oblong",
+        "engineA": "OddfeliX",
+        "engineB": "Oblong",
         "type": "AmpToFilter",
         "amount": 0.3
       }

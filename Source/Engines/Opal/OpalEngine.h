@@ -64,6 +64,7 @@ namespace OpalParam {
     inline constexpr const char* AMP_RELEASE     = "opal_ampRelease";
     inline constexpr const char* AMP_VEL_SENS    = "opal_ampVelSens";
     // Filter Envelope (29-33)
+    inline constexpr const char* VEL_TO_FILTER   = "opal_velToFilter";
     inline constexpr const char* FILTER_ENV_AMT  = "opal_filterEnvAmt";
     inline constexpr const char* FILTER_ATTACK   = "opal_filterAttack";
     inline constexpr const char* FILTER_DECAY    = "opal_filterDecay";
@@ -1035,18 +1036,23 @@ public:
         for (auto& s : couplingBufL) s = 0.0f;
         for (auto& s : couplingBufR) s = 0.0f;
 
-        // AudioToBuffer: 4 per-slot ring buffers (~186ms each at 44.1kHz).
-        // Using kOpalExternalBufferSeconds (not kOpalBufferSeconds) so external
-        // inputs get a smaller dedicated window separate from the 4s grain buffer.
+        // AudioToBuffer: 4 per-slot ring buffers (kOpalExternalBufferSamples = 8192
+        // samples — ~186ms at 44.1 kHz, ~171ms at 48 kHz). Duration is derived from
+        // the actual runtime sampleRate so the buffer is always exactly 8192 samples,
+        // not whatever 8192/44100 seconds maps to at a different host sample rate.
+        const float extBufDuration = static_cast<float> (kOpalExternalBufferSamples)
+                                   / static_cast<float> (sampleRate);
         for (auto& rb : inputBuffers)
-            rb.prepare (static_cast<int> (sampleRate), kOpalExternalBufferSeconds);
+            rb.prepare (static_cast<int> (sampleRate), extBufDuration);
 
-        // Per-block external audio cache (blended in renderBlock grain source path)
+        // Per-block mono external audio cache (blended in renderBlock grain source path).
+        // Mono: external input is always summed to centre before grain write.
         extAudioBufL.assign (static_cast<size_t> (maxBlockSize), 0.0f);
         extAudioBufR.assign (static_cast<size_t> (maxBlockSize), 0.0f);
 
         silenceGate.prepare (sampleRate, maxBlockSize);
         silenceGate.setHoldTime (500.0f);  // Opal granular has reverb tails
+
     }
 
     void releaseResources() override
@@ -1073,7 +1079,6 @@ public:
         lastSampleL = 0.0f;
         lastSampleR = 0.0f;
         for (auto& s : extAudioBufL) s = 0.0f;
-        for (auto& s : extAudioBufR) s = 0.0f;
     }
 
     //-- Parameters ------------------------------------------------------------
@@ -1232,6 +1237,11 @@ public:
         params.push_back (std::make_unique<FloatParam> (
             PID { OpalParam::AMP_VEL_SENS, 1 }, "Opal Velocity",
             NR (0.0f, 1.0f, 0.01f), 0.4f));
+
+        // D001: Velocity → filter cutoff amount (harder hits = brighter)
+        params.push_back (std::make_unique<FloatParam> (
+            PID { OpalParam::VEL_TO_FILTER, 1 }, "Opal Vel→Filter",
+            NR (0.0f, 1.0f, 0.01f), 0.5f));
 
         //==== 7. FILTER ENVELOPE ====
         params.push_back (std::make_unique<FloatParam> (
@@ -1462,6 +1472,7 @@ public:
         pAmpSustain     = apvts.getRawParameterValue (OpalParam::AMP_SUSTAIN);
         pAmpRelease     = apvts.getRawParameterValue (OpalParam::AMP_RELEASE);
         pAmpVelSens     = apvts.getRawParameterValue (OpalParam::AMP_VEL_SENS);
+        pVelToFilter    = apvts.getRawParameterValue (OpalParam::VEL_TO_FILTER);
         // Filter Envelope
         pFilterEnvAmt   = apvts.getRawParameterValue (OpalParam::FILTER_ENV_AMT);
         pFilterAttack   = apvts.getRawParameterValue (OpalParam::FILTER_ATTACK);
@@ -1644,7 +1655,6 @@ public:
             if (static_cast<size_t>(n) < extAudioBufL.size())
             {
                 extAudioBufL[static_cast<size_t>(n)] += extMono * mix;
-                extAudioBufR[static_cast<size_t>(n)] += extMono * mix;
             }
         }
     }
@@ -1703,6 +1713,7 @@ public:
         float ampSustain    = safeLoadF (pAmpSustain, 0.8f);
         float ampRelease    = safeLoadF (pAmpRelease, 1.5f);
         float ampVelSens    = safeLoadF (pAmpVelSens, 0.4f);
+        float velToFilter   = safeLoadF (pVelToFilter, 0.5f);
         float filterEnvAmt  = safeLoadF (pFilterEnvAmt, 0.3f);
         float filterAttack  = safeLoadF (pFilterAttack, 0.5f);
         float filterDecay   = safeLoadF (pFilterDecay, 0.8f);
@@ -1878,7 +1889,6 @@ public:
         if (externalMix > 0.001f)
         {
             for (auto& s : extAudioBufL) s = 0.0f;
-            for (auto& s : extAudioBufR) s = 0.0f;
             for (int slot = 0; slot < kOpalInputSlots; ++slot)
             {
                 const auto& rb = inputBuffers[static_cast<size_t>(slot)];
@@ -1987,6 +1997,7 @@ public:
             float envSum = 0.0f;
             float filterEnvSum = 0.0f;
             float lfo1Val = 0.0f, lfo2Val = 0.0f;
+            float velFilterSum = 0.0f;  // D001: average velocity for filter modulation
             int activeCount = 0;
 
             for (auto& v : voices)
@@ -2006,6 +2017,7 @@ public:
 
                 envSum += ampLevel;
                 filterEnvSum += filterLevel;
+                velFilterSum += v.velocity;  // D001: accumulate velocity
                 lfo1Val += l1;
                 lfo2Val += l2;
                 ++activeCount;
@@ -2022,6 +2034,7 @@ public:
             {
                 float norm = 1.0f / static_cast<float> (activeCount);
                 filterEnvSum *= norm;
+                velFilterSum *= norm;  // D001: average velocity across active voices
                 lfo1Val *= norm;
                 lfo2Val *= norm;
             }
@@ -2032,7 +2045,8 @@ public:
 
             // Apply mod matrix modulation (accumulated)
             float modOffsets[12] = {}; // indexed by mod dest
-            applyModMatrix (modOffsets, lfo1Val, lfo2Val, filterEnvSum, envSum, activeCount);
+            applyModMatrix (modOffsets, lfo1Val, lfo2Val, filterEnvSum, envSum, activeCount,
+                            velFilterSum); // velAvg: normalized velocity avg (D001)
 
             // Filter with key tracking + filter envelope + drive
             // Key tracking: shift cutoff based on average active note vs middle C (60)
@@ -2046,8 +2060,10 @@ public:
                 // Each semitone above middle C shifts cutoff up proportionally
                 keyTrackOffset = filterKeyTrack * (avgNote - 60.0f) * (filterCutoff / 60.0f);
             }
+            // D001: velocity opens filter — harder hits = brighter timbre
+            float velFilterMod = velFilterSum * velToFilter;
             float effCutoff = filterCutoff + keyTrackOffset
-                            + filterEnvAmt * filterEnvSum * 10000.0f
+                            + filterEnvAmt * filterEnvSum * velFilterMod * 10000.0f
                             + modOffsets[6] * 5000.0f; // mod dest 6 = FilterCutoff
             effCutoff = clamp (effCutoff, 20.0f, 20000.0f);
 
@@ -2345,7 +2361,8 @@ private:
     }
 
     void applyModMatrix (float* offsets, float lfo1Val, float lfo2Val,
-                         float filterEnvVal, float ampEnvVal, int activeCount) noexcept
+                         float filterEnvVal, float ampEnvVal, int activeCount,
+                         float velAvg) noexcept
     {
         if (activeCount == 0) return;
 
@@ -2364,9 +2381,17 @@ private:
                 case 2: srcVal = lfo2Val;      break;
                 case 3: srcVal = filterEnvVal; break;
                 case 4: srcVal = ampEnvVal;    break;
-                case 5: srcVal = 0.5f;         break; // Velocity (avg placeholder)
-                case 6: srcVal = 0.0f;         break; // KeyTrack (placeholder)
-                case 7: srcVal = 0.0f;         break; // ModWheel (placeholder)
+                case 5: srcVal = velAvg;       break; // Velocity: avg across active voices (0–1)
+                case 6:                               // KeyTrack: avg MIDI note, middle-C = 0
+                {
+                    float avgNote = 0.0f;
+                    for (const auto& v : voices)
+                        if (v.active) avgNote += static_cast<float> (v.noteNumber);
+                    avgNote /= static_cast<float> (activeCount);
+                    srcVal = (avgNote - 60.0f) / 60.0f; // ~[-1, +1] around middle C
+                    break;
+                }
+                case 7: srcVal = modWheelAmount; break; // ModWheel CC#1 (0–1)
             }
 
             offsets[dst] += srcVal * amt;
@@ -2431,21 +2456,25 @@ private:
     //
     // 4 per-slot stereo ring buffers. MegaCouplingMatrix::processAudioRoute() holds a
     // pointer to the slot-matching buffer and calls pushBlock() before renderBlock().
-    // Each buffer is ~186ms at 44.1kHz (kOpalExternalBufferSeconds = 8192 / 44100).
+    // Each buffer is kOpalExternalBufferSamples = 8192 samples (~186ms at 44.1 kHz,
+    // ~171ms at 48 kHz). Duration is derived per-sample-rate in prepare().
     //
     // Slot assignment mirrors MegaCouplingMatrix source slot indices (0–3).
     // A source in slot 2 pushes into inputBuffers[2]; OpalEngine blends [0..3] in
     // receiveAudioBuffer(), summing contributions before writing to grainBuffer.
     //
-    static constexpr int   kOpalInputSlots          = 4;
-    static constexpr float kOpalExternalBufferSeconds = 8192.0f / 44100.0f; // ~186ms
+    static constexpr int kOpalInputSlots           = 4;
+    // Power-of-2 sample count for external audio ring buffers (~186ms at 44.1 kHz,
+    // ~171ms at 48 kHz). Stored as sample count so prepare() always allocates exactly
+    // this many samples regardless of host sample rate — no 44100 assumption baked in.
+    static constexpr int kOpalExternalBufferSamples = 8192;
 
     std::array<AudioRingBuffer, kOpalInputSlots> inputBuffers;
 
     // Per-block mono blend cache for external audio (populated in renderBlock
     // from inputBuffers[], consumed in the grain-source write loop).
+    // Stereo input is always down-mixed to mono before grain write (see receiveAudioBuffer).
     std::vector<float> extAudioBufL;
-    std::vector<float> extAudioBufR;
 
     //-- Parameter pointers (87 total, opal_externalMix added Phase 2) ----------
 
@@ -2484,6 +2513,7 @@ private:
     std::atomic<float>* pAmpSustain     = nullptr;
     std::atomic<float>* pAmpRelease     = nullptr;
     std::atomic<float>* pAmpVelSens     = nullptr;
+    std::atomic<float>* pVelToFilter    = nullptr;
     // Filter Envelope
     std::atomic<float>* pFilterEnvAmt   = nullptr;
     std::atomic<float>* pFilterAttack   = nullptr;

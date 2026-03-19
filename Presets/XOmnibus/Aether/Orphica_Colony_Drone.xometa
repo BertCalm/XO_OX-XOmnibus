@@ -1,0 +1,57 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The siphonophore colony breathes as one infinite organism. No pluck, only presence — a living drone at the threshold of hearing.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.2,
+    "density": 0.6,
+    "movement": 0.15,
+    "space": 0.95,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Orphica Colony Drone",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.2,
+      "macro_coupling": 0.0,
+      "macro_movement": 0.15,
+      "macro_space": 0.95,
+      "orph_attackTime": 2.0,
+      "orph_colonyDepth": 0.95,
+      "orph_grainDensity": 0.9,
+      "orph_grainScatter": 0.25,
+      "orph_grainSize": 0.75,
+      "orph_lfoDepth": 0.2,
+      "orph_lfoRate": 0.08,
+      "orph_pluckBrightness": 0.2,
+      "orph_releaseTime": 6.0,
+      "orph_reverbSend": 0.9
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "drone",
+    "ambient",
+    "colony",
+    "infinite",
+    "aether",
+    "slow"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

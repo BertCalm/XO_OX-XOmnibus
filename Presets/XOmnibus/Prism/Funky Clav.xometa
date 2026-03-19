@@ -1,56 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Funky Clav",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Bright keys character with warm character.",
+  "dna": {
+    "aggression": 0.103,
+    "brightness": 0.399,
+    "density": 0.071,
+    "movement": 0.0,
+    "space": 0.0,
+    "warmth": 0.083
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bright keys character with warm character.",
-  "tags": [
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Keys",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Keys",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Funky Clav",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 1.0,
-      "drift_oscA_level": 0.85,
-      "drift_oscA_pw": 0.3,
-      "drift_filterCutoff": 3000.0,
-      "drift_filterReso": 0.25,
-      "drift_filterSlope": 1.0,
       "drift_attack": 1.0,
       "drift_decay": 200.0,
-      "drift_sustain": 0.2,
-      "drift_release": 150.0,
+      "drift_filterCutoff": 3000.0,
       "drift_filterEnvAmt": 0.6,
+      "drift_filterReso": 0.25,
+      "drift_filterSlope": 1.0,
       "drift_hazeAmount": 0.2,
-      "drift_level": -2.0
+      "drift_level": -2.0,
+      "drift_oscA_level": 0.85,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_pw": 0.3,
+      "drift_oscA_shape": 1.0,
+      "drift_release": 150.0,
+      "drift_sustain": 0.2
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.399,
-    "warmth": 0.083,
-    "movement": 0.0,
-    "density": 0.071,
-    "space": 0.0,
-    "aggression": 0.103
-  }
+  "tags": [
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,0 +1,61 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Ambient refraction with glacial bounce — prism color at mid saturation floating in deep reverb. Light diffused through miles of ocean.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.6,
+    "density": 0.2,
+    "movement": 0.2,
+    "space": 0.85,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Slow Prism",
+  "parameters": {
+    "Oblique": {
+      "oblq_bounce": 0.15,
+      "oblq_bounceDecay": 0.8,
+      "oblq_couplingBus": 0,
+      "oblq_couplingLevel": 0.35,
+      "oblq_driveAmount": 0.05,
+      "oblq_filterCutoff": 0.55,
+      "oblq_filterReso": 0.2,
+      "oblq_outputLevel": 0.72,
+      "oblq_outputPan": 0.0,
+      "oblq_prismColor": 0.6,
+      "oblq_refractionAngle": 0.6,
+      "oblq_reverbDamp": 0.35,
+      "oblq_reverbMix": 0.55,
+      "oblq_reverbSize": 0.85
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.08,
+    "brightness": 0.6,
+    "density": 0.2,
+    "movement": 0.2,
+    "space": 0.85,
+    "warmth": 0.5
+  },
+  "tags": [
+    "ambient",
+    "refraction",
+    "spatial",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
+}

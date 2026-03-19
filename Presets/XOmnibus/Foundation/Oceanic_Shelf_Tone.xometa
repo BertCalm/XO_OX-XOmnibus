@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Oceanic Shelf Tone",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Continental shelf warmth. Mid-depth, wide, stable.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.3,
+    "density": 0.7,
+    "movement": 0.25,
+    "space": 0.4,
+    "warmth": 0.9
+  },
   "engines": [
     "Oceanic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Continental shelf warmth. Mid-depth, wide, stable.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Oceanic Shelf Tone",
+  "parameters": {
+    "Oceanic": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "shelf",
     "tone",
@@ -16,31 +41,6 @@
     "foundation",
     "oceanic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oceanic": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.3,
-    "warmth": 0.9,
-    "movement": 0.25,
-    "density": 0.7,
-    "space": 0.4,
-    "aggression": 0.1
-  }
+  "version": "1.0.0"
 }

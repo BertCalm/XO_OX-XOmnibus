@@ -1,91 +1,90 @@
 {
-  "schema_version": 1,
-  "name": "Voltage Bleed",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-05",
+  "description": "Modular-inspired coupling where control voltages bleed between engines like leaky patch cables on a worn synth.",
+  "dna": {
+    "aggression": 0.176,
+    "brightness": 0.64,
+    "density": 0.237,
+    "movement": 0.16,
+    "space": 0.312,
+    "warmth": 0.359
+  },
   "engines": [
     "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Modular-inspired coupling where control voltages bleed between engines like leaky patch cables on a worn synth.",
-  "tags": [
-    "modular",
-    "voltage",
-    "bleed",
-    "analog",
-    "unpredictable"
-  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "Snap+Morph",
     "Bloom",
     "Coupling",
     "Space"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": 126,
-  "created": "2026-03-05",
-  "legacy": {
-    "sourceInstrument": "OddfeliX",
-    "sourceCategory": "Entangled",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Voltage Bleed",
   "parameters": {
     "OddfeliX": {
+      "compAttack": 5.447,
+      "compRatio": 2.112,
+      "compRelease": 83.349,
+      "compThreshold": -10.223,
+      "compressorEnabled": 1,
       "couplingAmount": 0.428,
-      "masterBalance": -0.072,
-      "xOscMode": 0,
-      "xSnap": 0.309,
-      "xDecay": 0.367,
-      "xFilterCutoff": 1333.959,
-      "xFilterReso": 0.209,
-      "xDetune": 5.447,
-      "xLevel": 0.607,
-      "xPitchLock": 0,
-      "xUnison": 0,
-      "xPolyphony": 0,
-      "oMorph": 0.067,
-      "oBloom": 0.567,
-      "oDecay": 1.089,
-      "oSustain": 0.313,
-      "oRelease": 0.567,
-      "oFilterCutoff": 933.959,
-      "oFilterReso": 0.205,
-      "oDrift": 0.411,
-      "oSub": 0.211,
-      "oDetune": 5.447,
-      "oLevel": 0.607,
-      "oPolyphony": 1,
+      "delayEnabled": 1,
+      "delayFeedback": 0.309,
+      "delayMix": 0.207,
+      "delayTime": 0.357,
+      "delayWobble": 0.056,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
       "macro1": 0.257,
       "macro2": 0.304,
       "macro3": 0.388,
       "macro4": 0.404,
-      "delayEnabled": 1,
-      "delayTime": 0.357,
-      "delayFeedback": 0.309,
-      "delayMix": 0.207,
-      "delayWobble": 0.056,
-      "reverbEnabled": 1,
-      "reverbDecay": 0.508,
-      "reverbSize": 0.618,
-      "reverbMix": 0.207,
-      "reverbDamping": 0.209,
-      "phaserEnabled": 0,
-      "phaserRate": 0.5,
+      "masterBalance": -0.072,
+      "oBloom": 0.567,
+      "oDecay": 1.089,
+      "oDetune": 5.447,
+      "oDrift": 0.411,
+      "oFilterCutoff": 933.959,
+      "oFilterReso": 0.205,
+      "oLevel": 0.607,
+      "oMorph": 0.067,
+      "oPolyphony": 1,
+      "oRelease": 0.567,
+      "oSub": 0.211,
+      "oSustain": 0.313,
       "phaserDepth": 0.5,
+      "phaserEnabled": 0,
       "phaserMix": 0.3,
-      "lofiEnabled": 0,
-      "lofiBitDepth": 12.0,
-      "lofiRateReduce": 1.0,
-      "lofiWowFlutter": 0.0,
-      "lofiMix": 0.3,
-      "compressorEnabled": 1,
-      "compThreshold": -10.223,
-      "compRatio": 2.112,
-      "compAttack": 5.447,
-      "compRelease": 83.349
+      "phaserRate": 0.5,
+      "reverbDamping": 0.209,
+      "reverbDecay": 0.508,
+      "reverbEnabled": 1,
+      "reverbMix": 0.207,
+      "reverbSize": 0.618,
+      "xDecay": 0.367,
+      "xDetune": 5.447,
+      "xFilterCutoff": 1333.959,
+      "xFilterReso": 0.209,
+      "xLevel": 0.607,
+      "xOscMode": 0,
+      "xPitchLock": 0,
+      "xPolyphony": 0,
+      "xSnap": 0.309,
+      "xUnison": 0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": {
     "bpm": 126.0,
     "swing": 0.004,
@@ -96,32 +95,32 @@
         "muted": false,
         "steps": [
           {
+            "active": false,
             "index": 0,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
+            "active": false,
             "index": 4,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
+            "active": false,
             "index": 8,
-            "active": false,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           },
           {
-            "index": 12,
             "active": false,
+            "index": 12,
             "note": 36,
-            "velocity": 0.85,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.85
           }
         ]
       },
@@ -131,18 +130,18 @@
         "muted": false,
         "steps": [
           {
-            "index": 4,
             "active": false,
+            "index": 4,
             "note": 38,
-            "velocity": 0.8,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8
           },
           {
-            "index": 12,
             "active": false,
+            "index": 12,
             "note": 38,
-            "velocity": 0.8,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8
           }
         ]
       },
@@ -158,22 +157,23 @@
         "muted": false,
         "steps": [
           {
-            "index": 15,
             "active": false,
+            "index": 15,
             "note": 72,
-            "velocity": 0.8479861801369084,
-            "probability": 1.0
+            "probability": 1.0,
+            "velocity": 0.8479861801369084
           }
         ]
       }
     ]
   },
-  "dna": {
-    "brightness": 0.64,
-    "warmth": 0.359,
-    "movement": 0.16,
-    "density": 0.237,
-    "space": 0.312,
-    "aggression": 0.176
-  }
+  "tags": [
+    "modular",
+    "voltage",
+    "bleed",
+    "analog",
+    "unpredictable"
+  ],
+  "tempo": 126,
+  "version": "1.0.0"
 }

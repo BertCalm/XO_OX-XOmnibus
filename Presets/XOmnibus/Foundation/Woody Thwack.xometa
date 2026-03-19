@@ -1,54 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Woody Thwack",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-08",
+  "description": "Deep log drums presence with warm character.",
+  "dna": {
+    "aggression": 0.078,
+    "brightness": 0.748,
+    "density": 0.33,
+    "movement": 0.275,
+    "space": 0.48,
+    "warmth": 0.092
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Deep log drums presence with warm character.",
-  "tags": [
-    "pitched",
-    "triangle",
-    "verdub"
-  ],
+  "legacy": {
+    "sourceCategory": "Log Drums",
+    "sourceInstrument": "Overdub",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Overdub",
-    "sourceCategory": "Log Drums",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Woody Thwack",
   "parameters": {
     "Overdub": {
-      "dub_oscWave": 1.0,
-      "dub_pitchEnvDepth": 24.0,
-      "dub_pitchEnvDecay": 0.02,
-      "dub_filterCutoff": 3500.0,
-      "dub_filterReso": 0.15,
       "dub_attack": 0.001,
       "dub_decay": 0.15,
-      "dub_sustain": 0.0,
+      "dub_filterCutoff": 3500.0,
+      "dub_filterReso": 0.15,
+      "dub_noiseLevel": 0.15,
+      "dub_oscWave": 1.0,
+      "dub_pitchEnvDecay": 0.02,
+      "dub_pitchEnvDepth": 24.0,
       "dub_release": 0.1,
-      "dub_noiseLevel": 0.15
+      "dub_sustain": 0.0,
+      "dub_lfoDepth": 0.12
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.748,
-    "warmth": 0.092,
-    "movement": 0.275,
-    "density": 0.33,
-    "space": 0.48,
-    "aggression": 0.078
-  }
+  "tags": [
+    "pitched",
+    "triangle",
+    "verdub"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

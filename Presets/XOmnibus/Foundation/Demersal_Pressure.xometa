@@ -33,7 +33,9 @@
     "space": 0.3,
     "aggression": 0.89
   },
-  "parameters": {},
+  "parameters": {
+    "Owlfish": {}
+  },
   "tags": [
     "siege",
     "owlfish",

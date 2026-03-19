@@ -1,53 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Spread Bloom",
-  "mood": "Prism",
-  "engines": ["Overlap"],
-  "author": "Guru Bin — OVERLAP Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Mod wheel controls spread — at CC=0 the reverb is mono-focused, intimate; at CC=127 the knot topology erupts into full stereoscopic bloom. The trefoil's cross-coupling ensures the spread isn't just stereo width but genuine spatial differentiation across the six delay lines. Like opening a fist underwater.",
-  "tags": ["spread", "stereo", "bloom", "expressive", "prism", "performance"],
-  "macroLabels": ["CHARACTER", "SPACE", "COUPLING", "DECAY"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
+  "description": "Mod wheel controls spread — at CC=0 the reverb is mono-focused, intimate; at CC=127 the knot topology erupts into full stereoscopic bloom. The trefoil's cross-coupling ensures the spread isn't just stereo width but genuine spatial differentiation across the six delay lines. Like opening a fist underwater.",
   "dna": {
+    "aggression": 0.15,
     "brightness": 0.5,
-    "warmth": 0.55,
-    "movement": 0.45,
     "density": 0.6,
+    "movement": 0.45,
     "space": 0.7,
-    "aggression": 0.15
+    "warmth": 0.55
   },
-  "parameters": {
-    "Overlap": {
-      "olap_knotType": 0,
-      "olap_delayFeedback": 0.46,
-      "olap_diffusion": 0.7,
-      "olap_spread": 0.3,
-      "olap_decay": 2.6,
-      "olap_modDepth": 0.2,
-      "olap_modRate": 0.1,
-      "olap_damping": 0.4,
-      "olap_macroCharacter": 0.0,
-      "olap_macroSpace": 0.0,
-      "olap_macroCoupling": 0.0,
-      "olap_macroDecay": 0.0
-    }
-  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
   "modMatrix": [
     {
-      "source": "ModWheel",
-      "target": "olap_spread",
       "amount": 0.7,
-      "curve": "Linear"
+      "curve": "Linear",
+      "source": "ModWheel",
+      "target": "olap_spread"
     },
     {
-      "source": "ModWheel",
-      "target": "olap_modDepth",
       "amount": 0.25,
-      "curve": "Exponential"
+      "curve": "Exponential",
+      "source": "ModWheel",
+      "target": "olap_modDepth"
     }
   ],
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "mood": "Prism",
+  "name": "Spread Bloom",
+  "parameters": {
+    "Overlap": {
+      "olap_damping": 0.4,
+      "olap_decay": 2.6,
+      "olap_delayFeedback": 0.46,
+      "olap_diffusion": 0.7,
+      "olap_knotType": 0,
+      "olap_macroCharacter": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_modDepth": 0.2,
+      "olap_modRate": 0.1,
+      "olap_spread": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "spread",
+    "stereo",
+    "bloom",
+    "expressive",
+    "prism",
+    "performance"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

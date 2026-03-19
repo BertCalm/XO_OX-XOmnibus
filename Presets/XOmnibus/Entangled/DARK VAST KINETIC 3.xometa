@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Overdub \u00d7 Osprey \u2014 Chaos Inject coupling at extreme DNA corner.",
+  "description": "Overdub × Osprey — Chaos Inject coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "overdub",
@@ -33,7 +33,10 @@
     "space": 0.918,
     "aggression": 0.631
   },
-  "parameters": {},
+  "parameters": {
+    "Overdub": {},
+    "Osprey": {}
+  },
   "coupling": {
     "pairs": [
       {

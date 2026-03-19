@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Star Wire",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Husbands fully in the room, aunts no longer aligned. Six instruments, one unstoppable groove.",
+  "dna": {
+    "aggression": 0.34,
+    "brightness": 0.51,
+    "density": 0.69,
+    "movement": 0.65,
+    "space": 0.69,
+    "warmth": 0.54
+  },
   "engines": [
     "Ole"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "latin",
-    "strummed",
-    "aether",
-    "experimental",
-    "aether"
   ],
   "macroLabels": [
     "FUEGO",
@@ -20,42 +21,41 @@
     "SIDES",
     "ISLA"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.51,
-    "warmth": 0.54,
-    "movement": 0.65,
-    "density": 0.69,
-    "space": 0.69,
-    "aggression": 0.34
-  },
+  "mood": "Aether",
+  "name": "Star Wire",
   "parameters": {
     "Ole": {
+      "ole_allianceBlend": 0.537,
+      "ole_allianceConfig": 0,
+      "ole_aunt1Brightness": 0.541,
       "ole_aunt1Level": 0.654,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.541,
-      "ole_aunt2Level": 0.693,
       "ole_aunt2CoinPress": 0.246,
       "ole_aunt2GourdSize": 0.594,
+      "ole_aunt2Level": 0.693,
+      "ole_aunt3Brightness": 0.409,
       "ole_aunt3Level": 0.608,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.409,
       "ole_damping": 0.991,
-      "ole_sympatheticAmt": 0.283,
-      "ole_driftRate": 0.098,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 0,
-      "ole_allianceBlend": 0.537,
-      "ole_husbandOudLevel": 0.237,
+      "ole_driftRate": 0.098,
       "ole_husbandBouzLevel": 0.487,
+      "ole_husbandOudLevel": 0.237,
       "ole_husbandPinLevel": 0.158,
-      "ole_macroFuego": 0.319,
       "ole_macroDrama": 0.291,
+      "ole_macroFuego": 0.319,
+      "ole_macroIsla": 0.312,
       "ole_macroSides": 0.161,
-      "ole_macroIsla": 0.312
+      "ole_sympatheticAmt": 0.283
     }
   },
-  "coupling": null,
-  "description": "Husbands fully in the room, aunts no longer aligned. Six instruments, one unstoppable groove."
+  "schema_version": 1,
+  "tags": [
+    "latin",
+    "strummed",
+    "aether",
+    "experimental",
+    "aether"
+  ],
+  "version": "1.0.0"
 }

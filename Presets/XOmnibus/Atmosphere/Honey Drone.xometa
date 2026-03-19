@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Honey Drone",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Floating warm pads texture with warm character.",
+  "dna": {
+    "aggression": 0.052,
+    "brightness": 0.426,
+    "density": 0.156,
+    "movement": 0.068,
+    "space": 0.154,
+    "warmth": 0.195
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Floating warm pads texture with warm character.",
-  "tags": [
-    "warm",
-    "bass",
-    "drone"
-  ],
+  "legacy": {
+    "sourceCategory": "Warm Pads",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Warm Pads",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Honey Drone",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
-      "bob_oscA_shape": 0.28,
-      "bob_oscA_drift": 0.1,
-      "bob_oscB_wave": 0.0,
-      "bob_oscB_blend": 0.48,
-      "bob_oscB_detune": -8.0,
-      "bob_fltMode": 0.0,
-      "bob_fltCutoff": 4200.0,
-      "bob_fltReso": 0.16,
       "bob_ampAttack": 1.4,
       "bob_ampDecay": 1.5,
-      "bob_ampSustain": 0.94,
       "bob_ampRelease": 3.0,
-      "bob_lfo1Rate": 0.08,
+      "bob_ampSustain": 0.94,
+      "bob_bobMode": 0.2,
+      "bob_fltCutoff": 4200.0,
+      "bob_fltMode": 0.0,
+      "bob_fltReso": 0.16,
       "bob_lfo1Depth": 0.18,
-      "bob_bobMode": 0.2
+      "bob_lfo1Rate": 0.08,
+      "bob_oscA_drift": 0.1,
+      "bob_oscA_shape": 0.28,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.48,
+      "bob_oscB_detune": -8.0,
+      "bob_oscB_wave": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.426,
-    "warmth": 0.195,
-    "movement": 0.068,
-    "density": 0.156,
-    "space": 0.154,
-    "aggression": 0.052
-  }
+  "tags": [
+    "warm",
+    "bass",
+    "drone"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

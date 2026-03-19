@@ -1,22 +1,35 @@
 {
-  "schema_version": 1,
-  "name": "Attractor Enzyme",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.85,
+        "engineA": "Ouroboros",
+        "engineB": "Organon",
+        "type": "Audio->FM"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Strange attractor geometry mapped onto enzymatic catalysis. Each loop through phase space activates a new catalyst.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.525,
+    "density": 0.675,
+    "movement": 0.775,
+    "space": 0.475,
+    "warmth": 0.5
+  },
   "engines": [
     "Ouroboros",
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Strange attractor geometry mapped onto enzymatic catalysis. Each loop through phase space activates a new catalyst.",
-  "tags": [
-    "marquee",
-    "attractor",
-    "enzyme",
-    "fm-coupling",
-    "entangled",
-    "ouroboros-organon"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -25,59 +38,46 @@
   ],
   "macros": {
     "CHARACTER": 0.6,
-    "MOVEMENT": 0.75,
     "COUPLING": 0.9,
+    "MOVEMENT": 0.75,
     "SPACE": 0.5
   },
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Attractor Enzyme",
   "parameters": {
-    "Ouroboros": {
-      "ouro_topology": 2,
-      "ouro_rate": 80.0,
-      "ouro_chaosIndex": 0.6,
-      "ouro_leash": 0.4,
-      "ouro_theta": 0.0,
-      "ouro_phi": 0.6,
-      "ouro_damping": 0.3,
-      "ouro_injection": 0.0
-    },
     "Organon": {
-      "organon_metabolicRate": 3.5,
-      "organon_enzymeSelect": 900.0,
       "organon_catalystDrive": 1.8,
       "organon_dampingCoeff": 0.4,
-      "organon_signalFlux": 0.8,
-      "organon_phasonShift": 0.25,
+      "organon_enzymeSelect": 900.0,
       "organon_isotopeBalance": 0.65,
       "organon_lockIn": 0.0,
       "organon_membrane": 0.55,
-      "organon_noiseColor": 0.6
+      "organon_metabolicRate": 3.5,
+      "organon_noiseColor": 0.6,
+      "organon_phasonShift": 0.25,
+      "organon_signalFlux": 0.8
+    },
+    "Ouroboros": {
+      "ouro_chaosIndex": 0.6,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.4,
+      "ouro_phi": 0.6,
+      "ouro_rate": 80.0,
+      "ouro_theta": 0.0,
+      "ouro_topology": 2
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Organon",
-        "type": "Audio->FM",
-        "amount": 0.85
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.525,
-    "warmth": 0.5,
-    "movement": 0.775,
-    "density": 0.675,
-    "space": 0.475,
-    "aggression": 0.55
-  }
+  "tags": [
+    "marquee",
+    "attractor",
+    "enzyme",
+    "fm-coupling",
+    "entangled",
+    "ouroboros-organon"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

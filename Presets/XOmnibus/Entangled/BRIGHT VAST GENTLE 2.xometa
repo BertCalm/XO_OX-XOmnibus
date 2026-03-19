@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Osteria \u00d7 Optic \u2014 Chaos Inject coupling at extreme DNA corner.",
+  "description": "Osteria × Optic — Chaos Inject coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "osteria",
@@ -33,7 +33,10 @@
     "space": 0.898,
     "aggression": 0.058
   },
-  "parameters": {},
+  "parameters": {
+    "Osteria": {},
+    "Optic": {}
+  },
   "coupling": {
     "pairs": [
       {

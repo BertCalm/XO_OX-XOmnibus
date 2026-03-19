@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Veil of Silk",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Transcendent dream pads atmosphere with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.049,
+    "brightness": 0.349,
+    "density": 0.388,
+    "movement": 0.112,
+    "space": 0.79,
+    "warmth": 0.643
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Transcendent dream pads atmosphere with bob character and analog drift.",
-  "tags": [
-    "dream",
-    "silk",
-    "translucent"
-  ],
+  "legacy": {
+    "sourceCategory": "Dream Pads",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Dream Pads",
-    "sourcePresetName": null
-  },
+  "mood": "Aether",
+  "name": "Veil of Silk",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 2.0,
-      "bob_oscA_shape": 0.38,
-      "bob_oscA_drift": 0.62,
-      "bob_oscB_wave": 2.0,
-      "bob_oscB_blend": 0.5,
-      "bob_oscB_detune": 18.0,
-      "bob_lfo1Rate": 0.07,
-      "bob_lfo1Depth": 0.3,
-      "bob_fltMode": 0.0,
-      "bob_fltCutoff": 1600.0,
-      "bob_fltReso": 0.15,
       "bob_ampAttack": 1.6,
       "bob_ampDecay": 2.2,
-      "bob_ampSustain": 0.84,
       "bob_ampRelease": 6.0,
-      "bob_bobMode": 0.5
+      "bob_ampSustain": 0.84,
+      "bob_bobMode": 0.5,
+      "bob_fltCutoff": 1600.0,
+      "bob_fltMode": 0.0,
+      "bob_fltReso": 0.15,
+      "bob_lfo1Depth": 0.3,
+      "bob_lfo1Rate": 0.07,
+      "bob_oscA_drift": 0.62,
+      "bob_oscA_shape": 0.38,
+      "bob_oscA_wave": 2.0,
+      "bob_oscB_blend": 0.5,
+      "bob_oscB_detune": 18.0,
+      "bob_oscB_wave": 2.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.349,
-    "warmth": 0.643,
-    "movement": 0.112,
-    "density": 0.388,
-    "space": 0.79,
-    "aggression": 0.049
-  }
+  "tags": [
+    "dream",
+    "silk",
+    "translucent"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

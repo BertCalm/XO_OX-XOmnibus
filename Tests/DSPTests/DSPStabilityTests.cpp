@@ -10,6 +10,10 @@
 #include "DSP/FastMath.h"
 #include "DSP/CytomicSVF.h"
 #include "DSP/PolyBLEP.h"
+#include "Core/EngineRegistry.h"
+#include "Core/SynthEngine.h"
+
+// Include all engine headers so their static registrations execute in test binary
 #include "Engines/Snap/SnapEngine.h"
 #include "Engines/Morph/MorphEngine.h"
 #include "Engines/Dub/DubEngine.h"
@@ -18,6 +22,32 @@
 #include "Engines/Fat/FatEngine.h"
 #include "Engines/Onset/OnsetEngine.h"
 #include "Engines/Overworld/OverworldEngine.h"
+#include "Engines/Opal/OpalEngine.h"
+#include "Engines/Bite/BiteEngine.h"
+#include "Engines/Organon/OrganonEngine.h"
+#include "Engines/Ocelot/OcelotEngine.h"
+#include "Engines/Ouroboros/OuroborosEngine.h"
+#include "Engines/Obsidian/ObsidianEngine.h"
+#include "Engines/Origami/OrigamiEngine.h"
+#include "Engines/Oracle/OracleEngine.h"
+#include "Engines/Obscura/ObscuraEngine.h"
+#include "Engines/Oceanic/OceanicEngine.h"
+#include "Engines/Optic/OpticEngine.h"
+#include "Engines/Oblique/ObliqueEngine.h"
+#include "Engines/Orbital/OrbitalEngine.h"
+#include "Engines/Osprey/OspreyEngine.h"
+#include "Engines/Osteria/OsteriaEngine.h"
+#include "Engines/Owlfish/OwlfishEngine.h"
+#include "Engines/Ohm/OhmEngine.h"
+#include "Engines/Orphica/OrphicaEngine.h"
+#include "Engines/Obbligato/ObbligatoEngine.h"
+#include "Engines/Ottoni/OttoniEngine.h"
+#include "Engines/Ole/OleEngine.h"
+#include "Engines/Overlap/XOverlapAdapter.h"
+#include "Engines/Outwit/XOutwitAdapter.h"
+#include "Engines/Ombre/OmbreEngine.h"
+#include "Engines/Orca/OrcaEngine.h"
+#include "Engines/Octopus/OctopusEngine.h"
 
 #include <juce_audio_basics/juce_audio_basics.h>
 #include <cmath>
@@ -28,8 +58,50 @@
 #include <memory>
 #include <limits>
 #include <functional>
+#include <algorithm>
 
 using namespace xomnibus;
+
+//==============================================================================
+// Engine registration for the test binary.
+// The main plugin registers engines in XOmnibusProcessor.cpp via static init.
+// We must register them here for the standalone test executable.
+//==============================================================================
+
+static bool reg_OddfeliX   = EngineRegistry::instance().registerEngine("OddfeliX",   []() -> std::unique_ptr<SynthEngine> { return std::make_unique<SnapEngine>(); });
+static bool reg_OddOscar   = EngineRegistry::instance().registerEngine("OddOscar",   []() -> std::unique_ptr<SynthEngine> { return std::make_unique<MorphEngine>(); });
+static bool reg_Overdub     = EngineRegistry::instance().registerEngine("Overdub",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<DubEngine>(); });
+static bool reg_Odyssey     = EngineRegistry::instance().registerEngine("Odyssey",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<DriftEngine>(); });
+static bool reg_Oblong      = EngineRegistry::instance().registerEngine("Oblong",      []() -> std::unique_ptr<SynthEngine> { return std::make_unique<BobEngine>(); });
+static bool reg_Obese       = EngineRegistry::instance().registerEngine("Obese",       []() -> std::unique_ptr<SynthEngine> { return std::make_unique<FatEngine>(); });
+static bool reg_Onset       = EngineRegistry::instance().registerEngine("Onset",       []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OnsetEngine>(); });
+static bool reg_Overworld   = EngineRegistry::instance().registerEngine("Overworld",   []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OverworldEngine>(); });
+static bool reg_Opal        = EngineRegistry::instance().registerEngine("Opal",        []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OpalEngine>(); });
+static bool reg_Bite        = EngineRegistry::instance().registerEngine("Bite",        []() -> std::unique_ptr<SynthEngine> { return std::make_unique<BiteEngine>(); });
+static bool reg_Organon     = EngineRegistry::instance().registerEngine("Organon",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OrganonEngine>(); });
+static bool reg_Ocelot      = EngineRegistry::instance().registerEngine("Ocelot",      []() -> std::unique_ptr<SynthEngine> { return std::make_unique<xocelot::OcelotEngine>(); });
+static bool reg_Ouroboros   = EngineRegistry::instance().registerEngine("Ouroboros",   []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OuroborosEngine>(); });
+static bool reg_Obsidian    = EngineRegistry::instance().registerEngine("Obsidian",    []() -> std::unique_ptr<SynthEngine> { return std::make_unique<ObsidianEngine>(); });
+static bool reg_Origami     = EngineRegistry::instance().registerEngine("Origami",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OrigamiEngine>(); });
+static bool reg_Oracle      = EngineRegistry::instance().registerEngine("Oracle",      []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OracleEngine>(); });
+static bool reg_Obscura     = EngineRegistry::instance().registerEngine("Obscura",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<ObscuraEngine>(); });
+static bool reg_Oceanic     = EngineRegistry::instance().registerEngine("Oceanic",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OceanicEngine>(); });
+static bool reg_Optic       = EngineRegistry::instance().registerEngine("Optic",       []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OpticEngine>(); });
+static bool reg_Oblique     = EngineRegistry::instance().registerEngine("Oblique",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<ObliqueEngine>(); });
+static bool reg_Orbital     = EngineRegistry::instance().registerEngine("Orbital",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OrbitalEngine>(); });
+static bool reg_Osprey      = EngineRegistry::instance().registerEngine("Osprey",      []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OspreyEngine>(); });
+static bool reg_Osteria     = EngineRegistry::instance().registerEngine("Osteria",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OsteriaEngine>(); });
+static bool reg_Owlfish     = EngineRegistry::instance().registerEngine("Owlfish",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<xowlfish::OwlfishEngine>(); });
+static bool reg_Ohm         = EngineRegistry::instance().registerEngine("Ohm",         []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OhmEngine>(); });
+static bool reg_Orphica     = EngineRegistry::instance().registerEngine("Orphica",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OrphicaEngine>(); });
+static bool reg_Obbligato   = EngineRegistry::instance().registerEngine("Obbligato",   []() -> std::unique_ptr<SynthEngine> { return std::make_unique<ObbligatoEngine>(); });
+static bool reg_Ottoni      = EngineRegistry::instance().registerEngine("Ottoni",      []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OttoniEngine>(); });
+static bool reg_Ole         = EngineRegistry::instance().registerEngine("Ole",         []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OleEngine>(); });
+static bool reg_XOverlap    = EngineRegistry::instance().registerEngine("XOverlap",    []() -> std::unique_ptr<SynthEngine> { return std::make_unique<XOverlapEngine>(); });
+static bool reg_XOutwit     = EngineRegistry::instance().registerEngine("XOutwit",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<XOutwitEngine>(); });
+static bool reg_Ombre       = EngineRegistry::instance().registerEngine("Ombre",       []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OmbreEngine>(); });
+static bool reg_Orca        = EngineRegistry::instance().registerEngine("Orca",        []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OrcaEngine>(); });
+static bool reg_Octopus     = EngineRegistry::instance().registerEngine("Octopus",     []() -> std::unique_ptr<SynthEngine> { return std::make_unique<OctopusEngine>(); });
 
 //==============================================================================
 // Test infrastructure
@@ -576,19 +648,149 @@ static void testEngineStability(const char* engineName,
 
 static void testEngineRendering()
 {
-    std::cout << "\n--- Engine Rendering Stability Tests ---\n";
+    std::cout << "\n--- Engine Rendering Stability Tests (All Registered Engines) ---\n";
 
-    // Create and test each engine. All engines handle null APVTS params gracefully
-    // by using default values when parameter pointers are null.
+    // Iterate over every engine in the EngineRegistry and test each one.
+    // This guarantees coverage grows automatically as new engines are registered.
+    auto& registry = EngineRegistry::instance();
+    auto ids = registry.getRegisteredIds();
 
-    testEngineStability("OddfeliX", std::make_unique<SnapEngine>());
-    testEngineStability("OddOscar", std::make_unique<MorphEngine>());
-    testEngineStability("Overdub", std::make_unique<DubEngine>());
-    testEngineStability("Odyssey", std::make_unique<DriftEngine>());
-    testEngineStability("Oblong", std::make_unique<BobEngine>());
-    testEngineStability("Obese", std::make_unique<FatEngine>());
-    testEngineStability("Onset", std::make_unique<OnsetEngine>());
-    testEngineStability("Overworld", std::make_unique<OverworldEngine>());
+    // Sort for deterministic output order
+    std::sort(ids.begin(), ids.end());
+
+    std::cout << "  Registered engines: " << ids.size() << "\n";
+
+    // Verify we have all 34 expected engines
+    {
+        bool has34 = (ids.size() >= 34);
+        std::string msg = "Registry contains >= 34 engines (found " + std::to_string(ids.size()) + ")";
+        reportTest(msg.c_str(), has34);
+    }
+
+    // Test each registered engine for rendering stability
+    for (const auto& id : ids)
+    {
+        auto engine = registry.createEngine(id);
+        testEngineStability(id.c_str(), std::move(engine));
+    }
+}
+
+//==============================================================================
+// Registry-based creation tests — verify every engine creates successfully
+// and that createEngine returns nullptr for unknown IDs.
+//==============================================================================
+
+static void testRegistryCreation()
+{
+    std::cout << "\n--- Engine Registry Creation Tests ---\n";
+
+    auto& registry = EngineRegistry::instance();
+    auto ids = registry.getRegisteredIds();
+    std::sort(ids.begin(), ids.end());
+
+    // Each registered ID must create a non-null engine
+    for (const auto& id : ids)
+    {
+        auto engine = registry.createEngine(id);
+        std::string msg = id + ": createEngine returns non-null";
+        reportTest(msg.c_str(), engine != nullptr);
+
+        if (engine)
+        {
+            // Verify getEngineId() returns a non-empty string
+            juce::String eid = engine->getEngineId();
+            std::string msg2 = id + ": getEngineId() is non-empty";
+            reportTest(msg2.c_str(), eid.isNotEmpty());
+        }
+    }
+
+    // Unknown ID returns nullptr
+    {
+        auto engine = registry.createEngine("NonExistentEngine_XYZ");
+        reportTest("Unknown engine ID returns nullptr", engine == nullptr);
+    }
+}
+
+//==============================================================================
+// Fleet-wide denormal protection test — renders 50 blocks through each engine
+// with note-on then note-off to catch denormals in decay tails.
+//==============================================================================
+
+static void testFleetDenormalProtection()
+{
+    std::cout << "\n--- Fleet-Wide Denormal Protection ---\n";
+
+    auto& registry = EngineRegistry::instance();
+    auto ids = registry.getRegisteredIds();
+    std::sort(ids.begin(), ids.end());
+
+    constexpr double sampleRate = 44100.0;
+    constexpr int blockSize = 512;
+
+    for (const auto& id : ids)
+    {
+        auto engine = registry.createEngine(id);
+        if (!engine)
+        {
+            std::string msg = id + ": denormal test skipped (null engine)";
+            reportTest(msg.c_str(), false);
+            continue;
+        }
+
+        engine->prepare(sampleRate, blockSize);
+        engine->reset();
+
+        juce::AudioBuffer<float> buffer(2, blockSize);
+        bool noDenormals = true;
+
+        // Block 0: note-on
+        {
+            buffer.clear();
+            juce::MidiBuffer midi;
+            midi.addEvent(juce::MidiMessage::noteOn(1, 60, 0.8f), 0);
+            engine->renderBlock(buffer, midi, blockSize);
+        }
+
+        // Blocks 1-9: sustain
+        for (int block = 1; block < 10 && noDenormals; ++block)
+        {
+            buffer.clear();
+            juce::MidiBuffer emptyMidi;
+            engine->renderBlock(buffer, emptyMidi, blockSize);
+        }
+
+        // Block 10: note-off
+        {
+            buffer.clear();
+            juce::MidiBuffer midi;
+            midi.addEvent(juce::MidiMessage::noteOff(1, 60, 0.0f), 0);
+            engine->renderBlock(buffer, midi, blockSize);
+        }
+
+        // Blocks 11-49: decay tail — most likely place for denormals
+        for (int block = 11; block < 50 && noDenormals; ++block)
+        {
+            buffer.clear();
+            juce::MidiBuffer emptyMidi;
+            engine->renderBlock(buffer, emptyMidi, blockSize);
+
+            for (int ch = 0; ch < buffer.getNumChannels() && noDenormals; ++ch)
+            {
+                const float* data = buffer.getReadPointer(ch);
+                for (int i = 0; i < blockSize; ++i)
+                {
+                    if (isDenormal(data[i]))
+                    {
+                        noDenormals = false;
+                        break;
+                    }
+                }
+            }
+        }
+
+        std::string msg = id + ": no denormals in 50-block note-on/off cycle";
+        reportTest(msg.c_str(), noDenormals);
+    }
 }
 
 //==============================================================================
@@ -609,7 +811,9 @@ int runAll()
     testFastMath();
     testCytomicSVF();
     testPolyBLEP();
+    testRegistryCreation();
     testEngineRendering();
+    testFleetDenormalProtection();
 
     std::cout << "\n  DSP Tests: " << g_dspTestsPassed << " passed, "
               << g_dspTestsFailed << " failed\n";

@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Wave Wind",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "BOND in motion — harmony to conflict and back. Wind voices chase each other through the changes. 'Wave Wind' keeps nothing still.",
+  "dna": {
+    "aggression": 0.48,
+    "brightness": 0.61,
+    "density": 0.44,
+    "movement": 0.8,
+    "space": 0.21,
+    "warmth": 0.42
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "flux",
-    "movement",
-    "flux"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.61,
-    "warmth": 0.42,
-    "movement": 0.8,
-    "density": 0.44,
-    "space": 0.21,
-    "aggression": 0.48
-  },
+  "mood": "Flux",
+  "name": "Wave Wind",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.612,
-      "obbl_embouchureA": 0.614,
       "obbl_airFlutterA": 0.17,
-      "obbl_instrumentA": 6,
       "obbl_bodySizeA": 0.415,
-      "obbl_breathB": 0.729,
-      "obbl_reedStiffness": 0.594,
-      "obbl_reedBite": 0.178,
-      "obbl_instrumentB": 6,
       "obbl_bodySizeB": 0.501,
-      "obbl_voiceRouting": 3,
-      "obbl_damping": 0.995,
-      "obbl_sympatheticAmt": 0.345,
-      "obbl_driftRate": 0.084,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.343,
       "obbl_bondIntensity": 0.426,
       "obbl_bondRate": 0.114,
-      "obbl_fxAChorus": 0.206,
+      "obbl_bondStage": 0.343,
+      "obbl_breathA": 0.612,
+      "obbl_breathB": 0.729,
+      "obbl_damping": 0.995,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.084,
+      "obbl_embouchureA": 0.614,
       "obbl_fxABrightDelay": 0.28,
-      "obbl_fxAPlate": 0.078,
+      "obbl_fxAChorus": 0.206,
       "obbl_fxAExciter": 0.022,
-      "obbl_fxBPhaser": 0.195,
+      "obbl_fxAPlate": 0.078,
       "obbl_fxBDarkDelay": 0.25,
+      "obbl_fxBPhaser": 0.195,
       "obbl_fxBSpring": 0.136,
       "obbl_fxBTapeSat": 0.062,
-      "obbl_macroBreath": 0.331,
+      "obbl_instrumentA": 6,
+      "obbl_instrumentB": 6,
       "obbl_macroBond": 0.608,
+      "obbl_macroBreath": 0.331,
       "obbl_macroMischief": 0.406,
-      "obbl_macroWind": 0.228
+      "obbl_macroWind": 0.228,
+      "obbl_reedBite": 0.178,
+      "obbl_reedStiffness": 0.594,
+      "obbl_sympatheticAmt": 0.345,
+      "obbl_voiceRouting": 3
     }
   },
-  "coupling": null,
-  "description": "BOND in motion \u2014 harmony to conflict and back. Wind voices chase each other through the changes. 'Wave Wind' keeps nothing still."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "flux",
+    "movement",
+    "flux"
+  ],
+  "version": "1.0.0"
 }

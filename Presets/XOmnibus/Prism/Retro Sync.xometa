@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Retro Sync",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expressive leads voice with warm character.",
+  "dna": {
+    "aggression": 0.144,
+    "brightness": 0.431,
+    "density": 0.164,
+    "movement": 0.0,
+    "space": 0.033,
+    "warmth": 0.062
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expressive leads voice with warm character.",
-  "tags": [
-    "chorus",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Leads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Leads",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Retro Sync",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 0.0,
-      "drift_oscA_level": 0.85,
-      "drift_oscB_mode": 0.0,
-      "drift_oscB_shape": 0.0,
-      "drift_oscB_level": 0.7,
-      "drift_oscB_tune": 3.0,
+      "drift_attack": 5.0,
+      "drift_decay": 400.0,
       "drift_filterCutoff": 4500.0,
+      "drift_filterEnvAmt": 0.45,
       "drift_filterReso": 0.2,
       "drift_filterSlope": 1.0,
       "drift_hazeAmount": 0.15,
-      "drift_attack": 5.0,
-      "drift_decay": 400.0,
-      "drift_sustain": 0.65,
+      "drift_level": -3.0,
+      "drift_oscA_level": 0.85,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscB_level": 0.7,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 0.0,
+      "drift_oscB_tune": 3.0,
       "drift_release": 250.0,
-      "drift_filterEnvAmt": 0.45,
-      "drift_level": -3.0
+      "drift_sustain": 0.65
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.431,
-    "warmth": 0.062,
-    "movement": 0.0,
-    "density": 0.164,
-    "space": 0.033,
-    "aggression": 0.144
-  }
+  "tags": [
+    "chorus",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

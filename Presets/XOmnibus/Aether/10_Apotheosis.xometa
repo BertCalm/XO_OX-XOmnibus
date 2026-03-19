@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "name": "Apotheosis",
+  "mood": "Aether",
+  "engines": [
+    "Odyssey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The tenth and final Journey Demo — the one that shows everything at once. JOURNEY starts at 0.5, exactly at the midpoint: familiar and alien are in perfect balance, neither dominating. The Climax threshold sits at 0.8, the highest of the set — this is not an easy bloom. Hold a low chord, press into aftertouch past the threshold, and over 2 seconds all seven Signature Traits open simultaneously: drift accelerates, shimmer saturates, fracture begins to stutter, and the formants dissolve into a single sustained vowel that is every vowel. The name means what it says.",
+  "tags": [
+    "climax",
+    "demo",
+    "apotheosis",
+    "journey",
+    "signature",
+    "all-traits",
+    "transcendent",
+    "aether",
+    "finale",
+    "dense",
+    "complete"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "macroJourney": 0.5,
+  "climaxThreshold": 0.8,
+  "bloomTime": 2.0,
+  "modRouting": [
+    {
+      "source": "aftertouch",
+      "destination": "macroJourney",
+      "amount": 0.8,
+      "curve": "linear",
+      "note": "Maximum routing — the Apotheosis demands full physical commitment. 0.8 threshold plus 0.5 start means you need 0.375 of aftertouch travel. Not trivial. Worthy."
+    }
+  ],
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 2,
+      "drift_oscA_shape": 1,
+      "drift_oscA_tune": 0.0,
+      "drift_oscA_level": 0.7,
+      "drift_oscA_detune": 0.4,
+      "drift_oscA_pw": 0.5,
+      "drift_oscA_fmDepth": 0.0,
+      "drift_oscB_mode": 0,
+      "drift_oscB_shape": 0,
+      "drift_oscB_tune": 7.0,
+      "drift_oscB_level": 0.55,
+      "drift_oscB_detune": 0.3,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_fmDepth": 0.0,
+      "drift_subLevel": 0.35,
+      "drift_noiseLevel": 0.08,
+      "drift_hazeAmount": 0.3,
+      "drift_filterCutoff": 3800.0,
+      "drift_filterReso": 0.2,
+      "drift_filterSlope": 0,
+      "drift_filterEnvAmt": 0.1,
+      "drift_formantMorph": 0.5,
+      "drift_formantMix": 0.2,
+      "drift_shimmerAmount": 0.25,
+      "drift_shimmerTone": 0.6,
+      "drift_attack": 2.0,
+      "drift_decay": 6.0,
+      "drift_sustain": 0.75,
+      "drift_release": 5.0,
+      "drift_lfoRate": 0.1,
+      "drift_lfoDepth": 0.08,
+      "drift_lfoDest": 0,
+      "drift_driftDepth": 0.4,
+      "drift_driftRate": 0.06,
+      "drift_level": 0.75,
+      "drift_voiceMode": 0,
+      "drift_glide": 0.0,
+      "drift_polyphony": 6
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.6,
+    "movement": 0.6,
+    "density": 0.7,
+    "space": 0.75,
+    "aggression": 0.2
+  }
+}

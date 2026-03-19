@@ -1,57 +1,57 @@
 {
-  "schema_version": 1,
-  "name": "Dubstep Sub",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-08",
+  "description": "Solid, grounding dub bass tone with warm character.",
+  "dna": {
+    "aggression": 0.393,
+    "brightness": 0.392,
+    "density": 0.645,
+    "movement": 0.862,
+    "space": 0.48,
+    "warmth": 0.601
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Solid, grounding dub bass tone with warm character.",
-  "tags": [
-    "subby",
-    "saw",
-    "verdub"
-  ],
+  "legacy": {
+    "sourceCategory": "Dub Bass",
+    "sourceInstrument": "Overdub",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Overdub",
-    "sourceCategory": "Dub Bass",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Dubstep Sub",
   "parameters": {
     "Overdub": {
-      "dub_oscWave": 2.0,
-      "dub_oscOctave": 1.0,
-      "dub_subLevel": 0.9,
+      "dub_attack": 0.005,
+      "dub_driveAmount": 3.0,
       "dub_filterCutoff": 300.0,
       "dub_filterReso": 0.5,
-      "dub_lfoRate": 4.0,
       "dub_lfoDepth": 0.8,
       "dub_lfoDest": 1.0,
-      "dub_attack": 0.005,
-      "dub_sustain": 0.8,
+      "dub_lfoRate": 4.0,
+      "dub_oscOctave": 1.0,
+      "dub_oscWave": 2.0,
       "dub_release": 0.2,
-      "dub_voiceMode": 1.0,
-      "dub_driveAmount": 3.0
+      "dub_subLevel": 0.9,
+      "dub_sustain": 0.8,
+      "dub_voiceMode": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.392,
-    "warmth": 0.601,
-    "movement": 0.862,
-    "density": 0.645,
-    "space": 0.48,
-    "aggression": 0.393
-  }
+  "tags": [
+    "subby",
+    "saw",
+    "verdub"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

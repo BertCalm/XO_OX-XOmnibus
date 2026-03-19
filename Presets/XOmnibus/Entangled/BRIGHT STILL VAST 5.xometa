@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oblong \u00d7 Orca \u2014 Pitch Sync coupling at extreme DNA corner.",
+  "description": "Oblong × Orca — Pitch Sync coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "oblong",
@@ -33,7 +33,10 @@
     "space": 0.933,
     "aggression": 0.535
   },
-  "parameters": {},
+  "parameters": {
+    "Oblong": {},
+    "Orca": {}
+  },
   "coupling": {
     "pairs": [
       {

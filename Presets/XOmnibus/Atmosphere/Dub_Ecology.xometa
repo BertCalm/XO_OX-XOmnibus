@@ -1,14 +1,81 @@
 {
-  "schema_version": 1,
-  "name": "Dub Ecology",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.5,
+        "engineA": "Overdub",
+        "engineB": "Organon",
+        "type": "Audio->FM"
+      },
+      {
+        "amount": 0.3,
+        "engineA": "Organon",
+        "engineB": "Overdub",
+        "type": "Env->Morph"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-10",
+  "description": "DUB and Organon form a closed feedback loop. Self-sustaining texture.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.25,
+    "density": 0.55,
+    "movement": 0.4,
+    "space": 0.55,
+    "warmth": 0.65
+  },
   "engines": [
     "Overdub",
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "DUB and Organon form a closed feedback loop. Self-sustaining texture.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "DUB ECHO",
+    "METABOLISM",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Dub Ecology",
+  "parameters": {
+    "Organon": {
+      "organon_catalystDrive": 0.4,
+      "organon_dampingCoeff": 0.08,
+      "organon_enzymeSelect": 600.0,
+      "organon_isotopeBalance": 0.3,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.5,
+      "organon_metabolicRate": 0.3,
+      "organon_noiseColor": 0.5,
+      "organon_phasonShift": 0.1,
+      "organon_signalFlux": 0.7
+    },
+    "Overdub": {
+      "dub_attack": 0.5,
+      "dub_decay": 3.0,
+      "dub_delayFeedback": 0.65,
+      "dub_delayMix": 0.5,
+      "dub_delayTime": 0.5,
+      "dub_delayWear": 0.4,
+      "dub_filterCutoff": 800.0,
+      "dub_filterReso": 0.4,
+      "dub_level": 0.5,
+      "dub_oscWave": 2,
+      "dub_release": 2.0,
+      "dub_reverbMix": 0.5,
+      "dub_reverbSize": 0.85,
+      "dub_sustain": 0.5
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "dub",
     "organon",
@@ -16,73 +83,6 @@
     "feedback",
     "self-sustaining"
   ],
-  "macroLabels": [
-    "DUB ECHO",
-    "METABOLISM",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Overdub": {
-      "dub_oscWave": 2,
-      "dub_level": 0.5,
-      "dub_filterCutoff": 800.0,
-      "dub_filterReso": 0.4,
-      "dub_attack": 0.5,
-      "dub_decay": 3.0,
-      "dub_sustain": 0.5,
-      "dub_release": 2.0,
-      "dub_delayTime": 0.5,
-      "dub_delayFeedback": 0.65,
-      "dub_delayWear": 0.4,
-      "dub_delayMix": 0.5,
-      "dub_reverbSize": 0.85,
-      "dub_reverbMix": 0.5
-    },
-    "Organon": {
-      "organon_metabolicRate": 0.3,
-      "organon_enzymeSelect": 600.0,
-      "organon_catalystDrive": 0.4,
-      "organon_dampingCoeff": 0.08,
-      "organon_signalFlux": 0.7,
-      "organon_phasonShift": 0.1,
-      "organon_isotopeBalance": 0.3,
-      "organon_lockIn": 0.0,
-      "organon_membrane": 0.5,
-      "organon_noiseColor": 0.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Organon",
-        "type": "Audio->FM",
-        "amount": 0.5
-      },
-      {
-        "engineA": "Organon",
-        "engineB": "Overdub",
-        "type": "Env->Morph",
-        "amount": 0.3
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.25,
-    "warmth": 0.65,
-    "movement": 0.4,
-    "density": 0.55,
-    "space": 0.55,
-    "aggression": 0.08
-  }
+  "version": "1.0.0"
 }

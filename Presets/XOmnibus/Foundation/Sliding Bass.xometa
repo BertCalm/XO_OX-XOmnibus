@@ -1,59 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Sliding Bass",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-08",
+  "description": "Rooted dub bass sound with warm character.",
+  "dna": {
+    "aggression": 0.182,
+    "brightness": 0.492,
+    "density": 0.555,
+    "movement": 0.275,
+    "space": 0.414,
+    "warmth": 0.485
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Rooted dub bass sound with warm character.",
-  "tags": [
-    "subby",
-    "saw",
-    "verdub"
-  ],
+  "legacy": {
+    "sourceCategory": "Dub Bass",
+    "sourceInstrument": "Overdub",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Overdub",
-    "sourceCategory": "Dub Bass",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Sliding Bass",
   "parameters": {
     "Overdub": {
-      "dub_oscWave": 2.0,
-      "dub_oscOctave": 1.0,
-      "dub_subLevel": 0.7,
-      "dub_filterCutoff": 600.0,
-      "dub_filterReso": 0.35,
-      "dub_filterEnvAmt": 0.5,
       "dub_attack": 0.005,
       "dub_decay": 0.5,
-      "dub_sustain": 0.4,
-      "dub_release": 0.2,
-      "dub_voiceMode": 2.0,
-      "dub_glide": 0.4,
-      "dub_delayTime": 0.375,
       "dub_delayFeedback": 0.4,
-      "dub_sendLevel": 0.3
+      "dub_delayTime": 0.375,
+      "dub_filterCutoff": 600.0,
+      "dub_filterEnvAmt": 0.5,
+      "dub_filterReso": 0.35,
+      "dub_glide": 0.4,
+      "dub_oscOctave": 1.0,
+      "dub_oscWave": 2.0,
+      "dub_release": 0.2,
+      "dub_sendLevel": 0.3,
+      "dub_subLevel": 0.7,
+      "dub_sustain": 0.4,
+      "dub_voiceMode": 2.0,
+      "dub_lfoDepth": 0.12
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.492,
-    "warmth": 0.485,
-    "movement": 0.275,
-    "density": 0.555,
-    "space": 0.414,
-    "aggression": 0.182
-  }
+  "tags": [
+    "subby",
+    "saw",
+    "verdub"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

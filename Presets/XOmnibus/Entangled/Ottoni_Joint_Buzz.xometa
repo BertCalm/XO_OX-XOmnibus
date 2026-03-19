@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Joint Buzz",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Conch blat, trumpet clarity, and trombone weight overlap. All stages at once.",
+  "dna": {
+    "aggression": 0.14,
+    "brightness": 0.42,
+    "density": 0.53,
+    "movement": 0.45,
+    "space": 0.3,
+    "warmth": 0.42
+  },
   "engines": [
     "Ottoni"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "brass",
-    "sax",
-    "entangled",
-    "coupled",
-    "entangled"
   ],
   "macroLabels": [
     "EMBOUCHURE",
@@ -20,48 +21,47 @@
     "FOREIGN",
     "LAKE"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.42,
-    "warmth": 0.42,
-    "movement": 0.45,
-    "density": 0.53,
-    "space": 0.3,
-    "aggression": 0.14
-  },
+  "mood": "Foundation",
+  "name": "Joint Buzz",
   "parameters": {
     "Ottoni": {
+      "otto_chorusRate": 1.0,
+      "otto_damping": 0.994,
+      "otto_delayMix": 0.14,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.109,
+      "otto_driveAmount": 0.0,
+      "otto_foreignCold": 0.0,
+      "otto_foreignDrift": 0.028,
+      "otto_foreignStretch": 0.0,
+      "otto_macroEmbouchure": 0.6,
+      "otto_macroForeign": 0.11,
+      "otto_macroGrow": 0.395,
+      "otto_macroLake": 0.174,
+      "otto_reverbSize": 0.161,
+      "otto_sympatheticAmt": 0.256,
+      "otto_teenBore": 0.564,
+      "otto_teenEmbouchure": 0.564,
+      "otto_teenInst": 9,
+      "otto_teenLevel": 0.688,
+      "otto_teenVibratoDepth": 0.423,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 3,
       "otto_toddlerLevel": 0.397,
       "otto_toddlerPressure": 0.248,
-      "otto_toddlerInst": 3,
-      "otto_tweenLevel": 0.492,
       "otto_tweenEmbouchure": 0.589,
-      "otto_tweenValve": 0.488,
       "otto_tweenInst": 3,
-      "otto_teenLevel": 0.688,
-      "otto_teenEmbouchure": 0.564,
-      "otto_teenBore": 0.564,
-      "otto_teenInst": 9,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.423,
-      "otto_damping": 0.994,
-      "otto_sympatheticAmt": 0.256,
-      "otto_driftRate": 0.109,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.0,
-      "otto_foreignDrift": 0.028,
-      "otto_foreignCold": 0.0,
-      "otto_reverbSize": 0.161,
-      "otto_chorusRate": 1.0,
-      "otto_driveAmount": 0.0,
-      "otto_delayMix": 0.14,
-      "otto_macroEmbouchure": 0.6,
-      "otto_macroGrow": 0.395,
-      "otto_macroForeign": 0.11,
-      "otto_macroLake": 0.174
+      "otto_tweenLevel": 0.492,
+      "otto_tweenValve": 0.488
     }
   },
-  "coupling": null,
-  "description": "Conch blat, trumpet clarity, and trombone weight overlap. All stages at once."
+  "schema_version": 1,
+  "tags": [
+    "brass",
+    "sax",
+    "entangled",
+    "coupled",
+    "entangled"
+  ],
+  "version": "1.0.0"
 }

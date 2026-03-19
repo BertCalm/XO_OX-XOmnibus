@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Osteria Hearth",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "The warm center of a tavern on a cold night. Anchor harmonic.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.4,
+    "density": 0.7,
+    "movement": 0.3,
+    "space": 0.35,
+    "warmth": 0.85
+  },
   "engines": [
     "Osteria"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "The warm center of a tavern on a cold night. Anchor harmonic.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Osteria Hearth",
+  "parameters": {
+    "Osteria": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "hearth",
     "tone",
@@ -16,31 +41,6 @@
     "foundation",
     "warm"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Osteria": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.85,
-    "movement": 0.3,
-    "density": 0.7,
-    "space": 0.35,
-    "aggression": 0.2
-  }
+  "version": "1.0.0"
 }

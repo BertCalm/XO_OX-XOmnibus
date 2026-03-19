@@ -1,19 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Dad Cosmic Threshold",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The commune has reached maximum absorption. The dad's spectral freeze holds the last overtone of every instrument simultaneously. No more notes — only resonance.",
+  "dna": {
+    "aggression": 0.01,
+    "brightness": 0.82,
+    "density": 0.25,
+    "movement": 0.2,
+    "space": 0.95,
+    "warmth": 0.4
+  },
   "engines": [
     "Ohm"
-  ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "The commune has reached maximum absorption. The dad's spectral freeze holds the last overtone of every instrument simultaneously. No more notes \u2014 only resonance.",
-  "tags": [
-    "aether",
-    "transcendent",
-    "communion",
-    "spectral",
-    "frozen"
   ],
   "macroLabels": [
     "JAM",
@@ -21,41 +22,40 @@
     "COMMUNE",
     "MEADOW"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.82,
-    "warmth": 0.4,
-    "movement": 0.2,
-    "density": 0.25,
-    "space": 0.95,
-    "aggression": 0.01
-  },
+  "mood": "Aether",
+  "name": "Dad Cosmic Threshold",
   "parameters": {
     "Ohm": {
-      "ohm_dadInstrument": 2,
-      "ohm_dadLevel": 0.7,
-      "ohm_pluckBrightness": 0.5,
+      "ohm_bodyMaterial": 3,
       "ohm_bowPressure": 0.0,
       "ohm_bowSpeed": 0.5,
-      "ohm_bodyMaterial": 3,
-      "ohm_sympatheticAmt": 0.9,
-      "ohm_driftRate": 0.1,
-      "ohm_driftDepth": 0.8,
+      "ohm_dadInstrument": 2,
+      "ohm_dadLevel": 0.7,
       "ohm_damping": 0.99,
-      "ohm_spectralFreeze": 0.95,
-      "ohm_grainSize": 1.0,
+      "ohm_delayFeedback": 0.3,
+      "ohm_driftDepth": 0.8,
+      "ohm_driftRate": 0.1,
       "ohm_grainDensity": 0.15,
       "ohm_grainScatter": 0.3,
-      "ohm_reverbMix": 0.9,
-      "ohm_delayFeedback": 0.3,
-      "ohm_macroJam": 0.0,
-      "ohm_macroMeddling": 0.0,
+      "ohm_grainSize": 1.0,
       "ohm_macroCommune": 0.0,
-      "ohm_macroMeadow": 0.0
+      "ohm_macroJam": 0.0,
+      "ohm_macroMeadow": 0.0,
+      "ohm_macroMeddling": 0.0,
+      "ohm_pluckBrightness": 0.5,
+      "ohm_reverbMix": 0.9,
+      "ohm_spectralFreeze": 0.95,
+      "ohm_sympatheticAmt": 0.9
     }
   },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "transcendent",
+    "communion",
+    "spectral",
+    "frozen"
+  ],
+  "version": "1.0.0"
 }

@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Rainbow Wire",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "One aunt stands apart in prismatic clarity. The other two strum together.",
+  "dna": {
+    "aggression": 0.19,
+    "brightness": 0.76,
+    "density": 0.45,
+    "movement": 0.25,
+    "space": 0.55,
+    "warmth": 0.28
+  },
   "engines": [
     "Ole"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "latin",
-    "strummed",
-    "prism",
-    "bright",
-    "prism"
   ],
   "macroLabels": [
     "FUEGO",
@@ -20,42 +21,41 @@
     "SIDES",
     "ISLA"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.76,
-    "warmth": 0.28,
-    "movement": 0.25,
-    "density": 0.45,
-    "space": 0.55,
-    "aggression": 0.19
-  },
+  "mood": "Prism",
+  "name": "Rainbow Wire",
   "parameters": {
     "Ole": {
+      "ole_allianceBlend": 0.677,
+      "ole_allianceConfig": 2,
+      "ole_aunt1Brightness": 0.536,
       "ole_aunt1Level": 0.708,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.536,
-      "ole_aunt2Level": 0.712,
       "ole_aunt2CoinPress": 0.0,
       "ole_aunt2GourdSize": 0.459,
+      "ole_aunt2Level": 0.712,
+      "ole_aunt3Brightness": 0.526,
       "ole_aunt3Level": 0.693,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.526,
       "ole_damping": 0.996,
-      "ole_sympatheticAmt": 0.281,
-      "ole_driftRate": 0.074,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 2,
-      "ole_allianceBlend": 0.677,
-      "ole_husbandOudLevel": 0.0,
+      "ole_driftRate": 0.074,
       "ole_husbandBouzLevel": 0.0,
+      "ole_husbandOudLevel": 0.0,
       "ole_husbandPinLevel": 0.0,
-      "ole_macroFuego": 0.543,
       "ole_macroDrama": 0.104,
+      "ole_macroFuego": 0.543,
+      "ole_macroIsla": 0.185,
       "ole_macroSides": 0.0,
-      "ole_macroIsla": 0.185
+      "ole_sympatheticAmt": 0.281
     }
   },
-  "coupling": null,
-  "description": "One aunt stands apart in prismatic clarity. The other two strum together."
+  "schema_version": 1,
+  "tags": [
+    "latin",
+    "strummed",
+    "prism",
+    "bright",
+    "prism"
+  ],
+  "version": "1.0.0"
 }

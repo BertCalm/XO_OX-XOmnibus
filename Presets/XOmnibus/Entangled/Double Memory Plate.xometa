@@ -1,72 +1,92 @@
 {
-  "name": "Double Memory Plate",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Ombre",
+        "type": "CHAOS_INJECTION",
+        "amount": 0.567
+      }
+    ]
+  },
+  "description": "Two temporal states superimposed on a single plate — the obscura's latent image bleeding into the ombre's forgetting.",
   "engines": [
     "Obscura",
     "Ombre"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.318,
-    "MOVEMENT": 0.483,
     "COUPLING": 0.805,
+    "MOVEMENT": 0.483,
     "SPACE": 0.585
   },
-  "sonic_dna": {
-    "brightness": 0.511,
-    "warmth": 0.531,
-    "movement": 0.435,
-    "density": 0.489,
-    "space": 0.593,
-    "aggression": 0.249
-  },
+  "mood": "Entangled",
+  "name": "Double Memory Plate",
   "parameters": {
-    "obscura_stiffness": 0.671,
-    "obscura_dampening": 0.277,
-    "obscura_exciterType": 0.66,
-    "obscura_exciterAmount": 0.595,
-    "obscura_plateBlend": 0.535,
-    "obscura_silverTone": 0.831,
-    "obscura_exposureTime": 0.172,
-    "obscura_chemicalDepth": 0.518,
-    "obscura_grainSize": 0.291,
-    "obscura_filterCutoff": 2599.3,
-    "obscura_filterReso": 0.342,
-    "obscura_level": 0.769,
     "obscura_ampAttack": 0.0977,
     "obscura_ampDecay": 0.689,
-    "obscura_ampSustain": 0.683,
     "obscura_ampRelease": 1.657,
+    "obscura_ampSustain": 0.683,
+    "obscura_chemicalDepth": 0.518,
+    "obscura_dampening": 0.277,
+    "obscura_exciterAmount": 0.595,
+    "obscura_exciterType": 0.66,
+    "obscura_exposureTime": 0.172,
+    "obscura_filterCutoff": 2599.3,
+    "obscura_filterReso": 0.342,
+    "obscura_grainSize": 0.291,
+    "obscura_level": 0.769,
+    "obscura_lfo1Depth": 0.196,
+    "obscura_lfo1Rate": 0.11,
+    "obscura_lfo1Shape": 0.25,
+    "obscura_lfo2Depth": 0.17,
+    "obscura_lfo2Rate": 0.389,
+    "obscura_lfo2Shape": 0.25,
     "obscura_modAttack": 0.0699,
     "obscura_modDecay": 0.362,
-    "obscura_modSustain": 0.311,
     "obscura_modRelease": 0.556,
-    "obscura_lfo1Rate": 0.11,
-    "obscura_lfo1Depth": 0.196,
-    "obscura_lfo1Shape": 0.25,
-    "obscura_lfo2Rate": 0.389,
-    "obscura_lfo2Depth": 0.17,
-    "obscura_lfo2Shape": 0.25,
+    "obscura_modSustain": 0.311,
+    "obscura_plateBlend": 0.535,
+    "obscura_silverTone": 0.831,
+    "obscura_stiffness": 0.671,
+    "ombre_ampAttack": 0.0377,
+    "ombre_ampDecay": 0.731,
+    "ombre_ampRelease": 1.139,
+    "ombre_ampSustain": 0.503,
     "ombre_filterCutoff": 1472.1,
     "ombre_filterReso": 0.152,
     "ombre_level": 0.778,
-    "ombre_ampAttack": 0.0377,
-    "ombre_ampDecay": 0.731,
-    "ombre_ampSustain": 0.503,
-    "ombre_ampRelease": 1.139,
-    "ombre_lfo1Rate": 0.982,
-    "ombre_lfo1Depth": 0.562
+    "ombre_lfo1Depth": 0.562,
+    "ombre_lfo1Rate": 0.982
   },
-  "coupling": {
-    "type": "CHAOS_INJECTION",
-    "source": "Obscura",
-    "target": "Ombre",
-    "amount": 0.567
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.249,
+    "brightness": 0.511,
+    "density": 0.489,
+    "movement": 0.435,
+    "space": 0.593,
+    "warmth": 0.531
   },
   "tags": [
     "entangled",
     "coupling",
     "daguerreotype"
   ],
-  "description": "Two temporal states superimposed on a single plate — the obscura's latent image bleeding into the ombre's forgetting."
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

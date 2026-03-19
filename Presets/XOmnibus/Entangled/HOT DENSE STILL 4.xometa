@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Overbite \u00d7 Oracle \u2014 Spectral Morph coupling at extreme DNA corner.",
+  "description": "Overbite × Oracle — Spectral Morph coupling at extreme DNA corner.",
   "tags": [
     "hot",
     "overbite",
@@ -33,7 +33,10 @@
     "space": 0.642,
     "aggression": 0.575
   },
-  "parameters": {},
+  "parameters": {
+    "Overbite": {},
+    "Oracle": {}
+  },
   "coupling": {
     "pairs": [
       {

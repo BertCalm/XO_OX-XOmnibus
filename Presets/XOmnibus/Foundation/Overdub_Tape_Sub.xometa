@@ -1,13 +1,45 @@
 {
-  "schema_version": 1,
-  "name": "Overdub Tape Sub",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Tape-saturated sub. The warmth is load-bearing.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.15,
+    "density": 0.85,
+    "movement": 0.15,
+    "space": 0.2,
+    "warmth": 0.95
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Tape-saturated sub. The warmth is load-bearing.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Overdub Tape Sub",
+  "parameters": {
+    "Overdub": {
+      "dub_bass_resonance": 0.6,
+      "dub_delay_mix": 0.05,
+      "dub_send_vca": 0.3,
+      "dub_tape_drive": 0.8,
+      "dub_warmth": 0.95,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "bedrock",
     "tape",
@@ -17,37 +49,6 @@
     "bass",
     "warmth"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Overdub": {
-      "dub_delay_mix": 0.05,
-      "dub_tape_drive": 0.8,
-      "dub_bass_resonance": 0.6,
-      "dub_send_vca": 0.3,
-      "dub_warmth": 0.95
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.15,
-    "warmth": 0.95,
-    "movement": 0.15,
-    "density": 0.85,
-    "space": 0.2,
-    "aggression": 0.4
-  }
+  "version": "1.0.0"
 }

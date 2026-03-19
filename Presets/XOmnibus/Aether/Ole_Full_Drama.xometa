@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Full Drama",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "DRAMA peak — the husbands have entered. Six voices, two factions, no neutral ground.",
+  "dna": {
+    "aggression": 0.24,
+    "brightness": 0.69,
+    "density": 0.78,
+    "movement": 0.59,
+    "space": 0.71,
+    "warmth": 0.58
+  },
   "engines": [
     "Ole"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "latin",
-    "strummed",
-    "aether",
-    "experimental",
-    "aether"
   ],
   "macroLabels": [
     "FUEGO",
@@ -20,42 +21,41 @@
     "SIDES",
     "ISLA"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.69,
-    "warmth": 0.58,
-    "movement": 0.59,
-    "density": 0.78,
-    "space": 0.71,
-    "aggression": 0.24
-  },
+  "mood": "Aether",
+  "name": "Full Drama",
   "parameters": {
     "Ole": {
+      "ole_allianceBlend": 0.423,
+      "ole_allianceConfig": 0,
+      "ole_aunt1Brightness": 0.484,
       "ole_aunt1Level": 0.723,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.484,
-      "ole_aunt2Level": 0.694,
       "ole_aunt2CoinPress": 0.195,
       "ole_aunt2GourdSize": 0.319,
+      "ole_aunt2Level": 0.694,
+      "ole_aunt3Brightness": 0.525,
       "ole_aunt3Level": 0.706,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.525,
       "ole_damping": 0.993,
-      "ole_sympatheticAmt": 0.208,
-      "ole_driftRate": 0.127,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 0,
-      "ole_allianceBlend": 0.423,
-      "ole_husbandOudLevel": 0.33,
+      "ole_driftRate": 0.127,
       "ole_husbandBouzLevel": 0.281,
+      "ole_husbandOudLevel": 0.33,
       "ole_husbandPinLevel": 0.231,
-      "ole_macroFuego": 0.431,
       "ole_macroDrama": 0.264,
+      "ole_macroFuego": 0.431,
+      "ole_macroIsla": 0.36,
       "ole_macroSides": 0.392,
-      "ole_macroIsla": 0.36
+      "ole_sympatheticAmt": 0.208
     }
   },
-  "coupling": null,
-  "description": "DRAMA peak \u2014 the husbands have entered. Six voices, two factions, no neutral ground."
+  "schema_version": 1,
+  "tags": [
+    "latin",
+    "strummed",
+    "aether",
+    "experimental",
+    "aether"
+  ],
+  "version": "1.0.0"
 }

@@ -1,48 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Metamorphosis",
-  "mood": "Aether",
-  "engines": ["OddOscar"],
-  "author": "Guru Bin — Core Engine Deepening 2026-03-16",
-  "version": "1.0.0",
-  "description": "morph_morph sweeps slowly from 0.0 to 1.0 via LFO — a full transformation from one synthesis pole to the other, unfolding across 8 bars. Attack at 2.8s makes each note bloom into existence like an axolotl extending its gills. Release at 5s means the sound outlives the intention. Oscar in the act of becoming something else entirely.",
-  "tags": ["aether", "morph", "slow", "bloom", "transformation", "cinematic", "evolving"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-16",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "morph_morph sweeps slowly from 0.0 to 1.0 via LFO — a full transformation from one synthesis pole to the other, unfolding across 8 bars. Attack at 2.8s makes each note bloom into existence like an axolotl extending its gills. Release at 5s means the sound outlives the intention. Oscar in the act of becoming something else entirely.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.5,
+    "density": 0.4,
+    "movement": 0.68,
+    "space": 0.9,
+    "warmth": 0.6
+  },
+  "engines": [
+    "OddOscar"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Metamorphosis",
   "parameters": {
     "OddOscar": {
-      "morph_morph": 0.50,
       "morph_bloom": 2.8,
       "morph_decay": 3.5,
-      "morph_sustain": 0.58,
-      "morph_release": 5.0,
-      "morph_filterCutoff": 1800.0,
-      "morph_filterReso": 0.22,
-      "morph_filterEnvDepth": 0.28,
-      "morph_drift": 0.35,
-      "morph_sub": 0.12,
       "morph_detune": 12.0,
-      "morph_level": 0.70,
-      "morph_polyphony": 3,
-      "morph_voiceMode": 2,
+      "morph_drift": 0.35,
+      "morph_filterCutoff": 1800.0,
+      "morph_filterEnvDepth": 0.28,
+      "morph_filterReso": 0.22,
       "morph_glide": 0.18,
+      "morph_level": 0.7,
       "morph_macroBloom": 0.72,
-      "morph_macroDrift": 0.48,
       "morph_macroDepth": 0.55,
-      "morph_macroSpace": 0.82
+      "morph_macroDrift": 0.48,
+      "morph_macroSpace": 0.82,
+      "morph_morph": 0.5,
+      "morph_polyphony": 3,
+      "morph_release": 5.0,
+      "morph_sub": 0.12,
+      "morph_sustain": 0.58,
+      "morph_voiceMode": 2
     }
   },
-  "coupling": {"pairs": []},
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.50,
-    "warmth": 0.60,
-    "movement": 0.68,
-    "density": 0.40,
-    "space": 0.90,
-    "aggression": 0.10
-  }
+  "tags": [
+    "aether",
+    "morph",
+    "slow",
+    "bloom",
+    "transformation",
+    "cinematic",
+    "evolving"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

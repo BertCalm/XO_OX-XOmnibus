@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Strange Belly",
   "mood": "Entangled",
-  "engines": ["Ouroboros", "Overbite"],
+  "engines": [
+    "Ouroboros",
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rossler attractor feeding chaos into Overbite belly warmth. Coupling modulates morph position and filter.",
-  "tags": ["coupled", "strange", "rossler", "warm", "morphing"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "coupled",
+    "strange",
+    "rossler",
+    "warm",
+    "morphing"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {

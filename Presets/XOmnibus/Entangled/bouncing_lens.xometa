@@ -1,49 +1,61 @@
 {
-  "name": "Bouncing Lens",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Optic",
+        "type": "PITCH_WARP",
+        "amount": 0.707
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.65,
+    "brightness": 0.85,
+    "density": 0.35,
+    "movement": 0.8,
+    "space": 0.55,
+    "warmth": 0.35
+  },
   "engines": [
     "Oblique",
     "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "COUPLING": 0.707,
+    "MOVEMENT": 0.6,
+    "SPACE": 0.525
+  },
+  "mood": "Entangled",
+  "name": "Bouncing Lens",
   "parameters": {
     "Oblique": {
       "macro_character": 0.835,
-      "macro_movement": 0.785,
       "macro_coupling": 0.685,
+      "macro_movement": 0.785,
       "macro_space": 0.585
     },
     "Optic": {
       "macro_character": 0.465,
-      "macro_movement": 0.415,
       "macro_coupling": 0.565,
+      "macro_movement": 0.415,
       "macro_space": 0.465
     }
   },
-  "coupling": {
-    "type": "PITCH_WARP",
-    "source": "OBLIQUE",
-    "target": "OPTIC",
-    "amount": 0.707
-  },
-  "dna": {
-    "brightness": 0.85,
-    "warmth": 0.35,
-    "movement": 0.8,
-    "density": 0.35,
-    "space": 0.55,
-    "aggression": 0.65
-  },
-  "macros": {
-    "CHARACTER": 0.65,
-    "MOVEMENT": 0.6,
-    "COUPLING": 0.707,
-    "SPACE": 0.525
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "dynamic"
-  ]
+  ],
+  "version": "1.0"
 }

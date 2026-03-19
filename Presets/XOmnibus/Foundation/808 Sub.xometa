@@ -1,54 +1,54 @@
 {
-  "schema_version": 1,
-  "name": "808 Sub",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Rooted bass sound with warm character.",
+  "dna": {
+    "aggression": 0.041,
+    "brightness": 0.256,
+    "density": 0.142,
+    "movement": 0.0,
+    "space": 0.0,
+    "warmth": 0.286
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Rooted bass sound with warm character.",
-  "tags": [
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Bass",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Bass",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "808 Sub",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 3.0,
-      "drift_oscA_level": 0.9,
-      "drift_subLevel": 0.8,
+      "drift_attack": 2.0,
+      "drift_decay": 400.0,
       "drift_filterCutoff": 500.0,
       "drift_filterReso": 0.1,
       "drift_filterSlope": 1.0,
-      "drift_attack": 2.0,
-      "drift_decay": 400.0,
-      "drift_sustain": 0.5,
+      "drift_level": -1.0,
+      "drift_oscA_level": 0.9,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 3.0,
       "drift_release": 300.0,
-      "drift_level": -1.0
+      "drift_subLevel": 0.8,
+      "drift_sustain": 0.5
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.256,
-    "warmth": 0.286,
-    "movement": 0.0,
-    "density": 0.142,
-    "space": 0.0,
-    "aggression": 0.041
-  }
+  "tags": [
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -19,7 +19,7 @@
   "engines": [
     "Overdub"
   ],
-  "description": "Hammond-flavored dub organ \u2014 rotary cabinet through tape delay.",
+  "description": "Hammond-flavored dub organ — rotary cabinet through tape delay.",
   "tags": [
     "dub",
     "organ",
@@ -55,7 +55,7 @@
       "dub_pitchEnvDepth": 0.0,
       "dub_pitchEnvDecay": 0.01,
       "dub_lfoRate": 6.0,
-      "dub_lfoDepth": 0.06,
+      "dub_lfoDepth": 0.12,
       "dub_lfoDest": 0,
       "dub_driveAmount": 1.2,
       "dub_dryLevel": 0.85,

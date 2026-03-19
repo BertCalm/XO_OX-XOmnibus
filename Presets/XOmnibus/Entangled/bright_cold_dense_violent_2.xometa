@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT COLD DENSE VIOLENT 2",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.9505,
-    "warmth": 0.1077,
-    "density": 0.9095,
-    "aggression": 0.9349,
-    "movement": 0.4799,
-    "space": 0.5962
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "High",
+  "couplingType": "TANGLE",
+  "description": "Ultra-diverse Entangled preset — bright cold dense violent. Designed for TANGLE coupling with XOctopus.",
   "dna": {
-    "brightness": 0.9505,
-    "warmth": 0.1077,
-    "density": 0.9095,
     "aggression": 0.9349,
+    "brightness": 0.9505,
+    "density": 0.9095,
     "movement": 0.4799,
-    "space": 0.5962
+    "space": 0.5962,
+    "warmth": 0.1077
   },
   "engines": [
-    "XOctopus"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 bright cold dense violent. Designed for TANGLE coupling with XOctopus.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "tangle",
-    "octopus"
+    "Octopus"
   ],
   "macroLabels": [
     "GLEAM",
@@ -36,15 +23,28 @@
     "PACK",
     "GLOW"
   ],
-  "couplingType": "TANGLE",
-  "couplingIntensity": "High",
+  "mood": "Prism",
+  "name": "BRIGHT COLD DENSE VIOLENT 2",
   "parameters": {
-    "XOctopus": {
-      "couplingLevel": 0.79,
-      "couplingBus": 2
+    "Octopus": {
+      "couplingBus": 2,
+      "couplingLevel": 0.79
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9349,
+    "brightness": 0.9505,
+    "density": 0.9095,
+    "movement": 0.4799,
+    "space": 0.5962,
+    "warmth": 0.1077
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "tangle",
+    "octopus"
+  ],
+  "version": "1.0.0"
 }

@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Prophecy Serpent",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.433,
+        "engineA": "Oracle",
+        "engineB": "Ouroboros",
+        "type": "CHAOS_INJECTION"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Prophecy cycles through infinite coil. ORACLE stochastic vision feeds OUROBOROS loop.",
+  "dna": {
+    "aggression": 0.422,
+    "brightness": 0.48,
+    "density": 0.678,
+    "movement": 0.751,
+    "space": 0.606,
+    "warmth": 0.511
+  },
   "engines": [
     "Oracle",
     "Ouroboros"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Prophecy cycles through infinite coil. ORACLE stochastic vision feeds OUROBOROS loop.",
-  "tags": [
-    "oracle",
-    "ouroboros",
-    "prophecy",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Prophecy Serpent",
   "parameters": {
     "Oracle": {
-      "oracle_brightness": 0.468,
-      "oracle_warmth": 0.552,
-      "oracle_movement": 0.777,
-      "oracle_density": 0.726,
-      "oracle_space": 0.64,
       "oracle_aggression": 0.317,
-      "oracle_level": 0.731
+      "oracle_brightness": 0.468,
+      "oracle_density": 0.726,
+      "oracle_level": 0.731,
+      "oracle_movement": 0.777,
+      "oracle_space": 0.64,
+      "oracle_warmth": 0.552
     },
     "Ouroboros": {
-      "ouro_brightness": 0.554,
-      "ouro_warmth": 0.479,
-      "ouro_movement": 0.871,
-      "ouro_density": 0.735,
-      "ouro_space": 0.624,
       "ouro_aggression": 0.542,
-      "ouro_level": 0.791
+      "ouro_brightness": 0.554,
+      "ouro_density": 0.735,
+      "ouro_level": 0.791,
+      "ouro_movement": 0.871,
+      "ouro_space": 0.624,
+      "ouro_warmth": 0.479
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Ouroboros",
-        "type": "CHAOS_INJECTION",
-        "amount": 0.433
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.48,
-    "warmth": 0.511,
-    "movement": 0.751,
-    "density": 0.678,
-    "space": 0.606,
-    "aggression": 0.422
-  }
+  "tags": [
+    "oracle",
+    "ouroboros",
+    "prophecy",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

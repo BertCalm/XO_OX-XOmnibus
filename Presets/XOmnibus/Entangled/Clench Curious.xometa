@@ -1,22 +1,70 @@
 {
-  "schema_version": 1,
-  "name": "Clench Curious",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.59,
+    "pairs": [
+      {
+        "amount": 0.59,
+        "engineA": "Overbite",
+        "engineB": "Oblong",
+        "type": "Filter->Drive"
+      }
+    ],
+    "type": "Filter->Drive"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OVERBITE fang bites into OBLONG's harmonic curiosity. Bass-forward Bob. [Filter->Drive]",
+  "dna": {
+    "aggression": 0.544,
     "brightness": 0.524,
-    "warmth": 0.649,
-    "movement": 0.498,
     "density": 0.669,
+    "movement": 0.498,
     "space": 0.499,
-    "aggression": 0.544
+    "warmth": 0.649
   },
   "engines": [
-    "XOverbite",
-    "XOblong"
+    "Overbite",
+    "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE fang bites into OBLONG's harmonic curiosity. Bass-forward Bob. [Filter->Drive]",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Clench Curious",
+  "parameters": {
+    "Oblong": {
+      "bob_aggression": 0.542,
+      "bob_brightness": 0.561,
+      "bob_couplingBus": 0,
+      "bob_couplingLevel": 0.63,
+      "bob_outputLevel": 0.82,
+      "bob_outputPan": -0.0,
+      "bob_warmth": 0.673,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Overbite": {
+      "poss_aggression": 0.641,
+      "poss_brightness": 0.484,
+      "poss_couplingBus": 0,
+      "poss_couplingLevel": 0.77,
+      "poss_outputLevel": 0.84,
+      "poss_outputPan": 0.02,
+      "poss_warmth": 0.669
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.544,
+    "brightness": 0.524,
+    "density": 0.669,
+    "movement": 0.498,
+    "space": 0.499,
+    "warmth": 0.649
+  },
   "tags": [
     "coupling",
     "entangled",
@@ -24,51 +72,5 @@
     "oblong",
     "bite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.524,
-    "warmth": 0.649,
-    "movement": 0.498,
-    "density": 0.669,
-    "space": 0.499,
-    "aggression": 0.544
-  },
-  "parameters": {
-    "XOverbite": {
-      "poss_outputLevel": 0.84,
-      "poss_outputPan": 0.02,
-      "poss_couplingLevel": 0.77,
-      "poss_couplingBus": 0,
-      "poss_brightness": 0.484,
-      "poss_warmth": 0.669,
-      "poss_aggression": 0.641
-    },
-    "XOblong": {
-      "bob_outputLevel": 0.82,
-      "bob_outputPan": -0.0,
-      "bob_couplingLevel": 0.63,
-      "bob_couplingBus": 0,
-      "bob_brightness": 0.561,
-      "bob_warmth": 0.673,
-      "bob_aggression": 0.542
-    }
-  },
-  "coupling": {
-    "type": "Filter->Drive",
-    "amount": 0.59,
-    "pairs": [
-      {
-        "engineA": "XOverbite",
-        "engineB": "XOblong",
-        "type": "Filter->Drive",
-        "amount": 0.59
-      }
-    ]
-  }
+  "version": "1.0.0"
 }

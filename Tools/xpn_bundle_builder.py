@@ -435,6 +435,8 @@ def generate_keygroup_xpm_stub(preset_name: str, engine: str,
         '      <Instrument number="0">\n'
         '        <LowNote>0</LowNote>\n'
         '        <HighNote>127</HighNote>\n'
+        '        <RootNote>0</RootNote>\n'
+        '        <KeyTrack>True</KeyTrack>\n'
         '        <Layers>\n'
         '          <Layer number="1">\n'
         '            <SampleName></SampleName>\n'

@@ -1,0 +1,69 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The ERA Triangle centroid — equidistant from NES, Genesis, and SNES. No vertex dominates. eraPortamento 1.3s makes transitions between chip characters feel geological. eraDrift breathes the position slowly. OW-IV vibrato at depth 15 — the midpoint hums with FM shimmer but never commits. filterEnvDepth 0.61, velocity expresses as a subtle brightening.",
+  "dna": {
+    "aggression": 0.14,
+    "brightness": 0.55,
+    "density": 0.51,
+    "movement": 0.47,
+    "space": 0.79,
+    "warmth": 0.58
+  },
+  "engines": [
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "ERA Midpoint Drift",
+  "parameters": {
+    "Overworld": {
+      "ow_couplingBus": 0,
+      "ow_couplingLevel": 0.07,
+      "ow_era": 0.5,
+      "ow_eraDrift": 0.067,
+      "ow_eraMemory": 3.5,
+      "ow_eraPortamento": 1.3,
+      "ow_eraY": 0.5,
+      "ow_filterCutoff": 0.61,
+      "ow_filterEnvDepth": 0.61,
+      "ow_fmLfoDepth": 15.0,
+      "ow_fmLfoRate": 1.0,
+      "ow_glitch": 0.06,
+      "ow_macro_chaos": 0.06,
+      "ow_macro_couple": 0.07,
+      "ow_macro_era": 0.5,
+      "ow_macro_space": 0.81,
+      "ow_outputLevel": 0.78
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonic_dna": {
+    "aggression": 0.14,
+    "brightness": 0.55,
+    "density": 0.51,
+    "movement": 0.47,
+    "space": 0.79,
+    "warmth": 0.58
+  },
+  "tags": [
+    "era",
+    "midpoint",
+    "drift",
+    "atmosphere",
+    "ambient",
+    "centroid",
+    "fm-vibrato"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

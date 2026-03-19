@@ -33,7 +33,9 @@
     "space": 0.95,
     "aggression": 0.18
   },
-  "parameters": {},
+  "parameters": {
+    "Odyssey": {}
+  },
   "tags": [
     "flux",
     "sparse-flux",
@@ -41,5 +43,5 @@
     "distant",
     "resonance"
   ],
-  "description": "Odyssey wavetable in deep space \u2014 single resonance moving through void."
+  "description": "Odyssey wavetable in deep space — single resonance moving through void."
 }

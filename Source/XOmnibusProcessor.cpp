@@ -40,6 +40,7 @@
 #include "Engines/Ouie/OuieEngine.h"
 #include "Engines/Overtone/OvertoneEngine.h"
 #include "Engines/Organism/OrganismEngine.h"
+#include "Engines/Obrix/ObrixEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -80,8 +81,8 @@ static bool registered_Opal = xomnibus::EngineRegistry::instance().registerEngin
     "Opal", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OpalEngine>();
     });
-static bool registered_Bite = xomnibus::EngineRegistry::instance().registerEngine(
-    "Bite", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_Overbite = xomnibus::EngineRegistry::instance().registerEngine(
+    "Overbite", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::BiteEngine>();
     });
 static bool registered_Organon = xomnibus::EngineRegistry::instance().registerEngine(
@@ -185,6 +186,10 @@ static bool registered_OpenSky = xomnibus::EngineRegistry::instance().registerEn
     "OpenSky", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OpenSkyEngine>();
     });
+static bool registered_Obrix = xomnibus::EngineRegistry::instance().registerEngine(
+    "Obrix", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::ObrixEngine>();
+    });
 // V1 Concept Engines — OSTINATO
 static bool registered_Ostinato = xomnibus::EngineRegistry::instance().registerEngine(
     "Ostinato", []() -> std::unique_ptr<xomnibus::SynthEngine> {
@@ -242,6 +247,48 @@ void XOmnibusProcessor::cacheParameterPointers()
     cachedParams.ohmCommune      = apvts.getRawParameterValue("ohm_macroCommune");
     cachedParams.obblBond        = apvts.getRawParameterValue("obbl_macroBond");
     cachedParams.oleDrama        = apvts.getRawParameterValue("ole_macroDrama");
+
+    // Aquatic FX Suite
+    cachedParams.aquaFathomDepth    = apvts.getRawParameterValue("aqua_fathomDepth");
+    cachedParams.aquaFathomPressure = apvts.getRawParameterValue("aqua_fathomPressure");
+    cachedParams.aquaFathomMix      = apvts.getRawParameterValue("aqua_fathomMix");
+    cachedParams.aquaDriftRate      = apvts.getRawParameterValue("aqua_driftRate");
+    cachedParams.aquaDriftWidth     = apvts.getRawParameterValue("aqua_driftWidth");
+    cachedParams.aquaDriftDepth     = apvts.getRawParameterValue("aqua_driftDepth");
+    cachedParams.aquaDriftMix       = apvts.getRawParameterValue("aqua_driftMix");
+    cachedParams.aquaTideRate       = apvts.getRawParameterValue("aqua_tideRate");
+    cachedParams.aquaTideShape      = apvts.getRawParameterValue("aqua_tideShape");
+    cachedParams.aquaTideTarget     = apvts.getRawParameterValue("aqua_tideTarget");
+    cachedParams.aquaTideMix        = apvts.getRawParameterValue("aqua_tideMix");
+    cachedParams.aquaReefSize       = apvts.getRawParameterValue("aqua_reefSize");
+    cachedParams.aquaReefDamping    = apvts.getRawParameterValue("aqua_reefDamping");
+    cachedParams.aquaReefDensity    = apvts.getRawParameterValue("aqua_reefDensity");
+    cachedParams.aquaReefMix        = apvts.getRawParameterValue("aqua_reefMix");
+    cachedParams.aquaSurfaceLevel   = apvts.getRawParameterValue("aqua_surfaceLevel");
+    cachedParams.aquaSurfaceTension = apvts.getRawParameterValue("aqua_surfaceTension");
+    cachedParams.aquaSurfaceMix     = apvts.getRawParameterValue("aqua_surfaceMix");
+    cachedParams.aquaBiolumeGlow    = apvts.getRawParameterValue("aqua_biolumeGlow");
+    cachedParams.aquaBiolumeSpectrum = apvts.getRawParameterValue("aqua_biolumeSpectrum");
+    cachedParams.aquaBiolumeDecay   = apvts.getRawParameterValue("aqua_biolumeDecay");
+    cachedParams.aquaBiolumeMix     = apvts.getRawParameterValue("aqua_biolumeMix");
+
+    // Mathematical FX Chain
+    cachedParams.mfxEcStability   = apvts.getRawParameterValue("mfx_ecStability");
+    cachedParams.mfxEcCoolRate    = apvts.getRawParameterValue("mfx_ecCoolRate");
+    cachedParams.mfxEcThreshold   = apvts.getRawParameterValue("mfx_ecThreshold");
+    cachedParams.mfxEcMix         = apvts.getRawParameterValue("mfx_ecMix");
+    cachedParams.mfxVsCrystallize = apvts.getRawParameterValue("mfx_vsCrystallize");
+    cachedParams.mfxVsTension     = apvts.getRawParameterValue("mfx_vsTension");
+    cachedParams.mfxVsGrainSize   = apvts.getRawParameterValue("mfx_vsGrainSize");
+    cachedParams.mfxVsMix         = apvts.getRawParameterValue("mfx_vsMix");
+    cachedParams.mfxQsObservation = apvts.getRawParameterValue("mfx_qsObservation");
+    cachedParams.mfxQsFeedback    = apvts.getRawParameterValue("mfx_qsFeedback");
+    cachedParams.mfxQsDelayCenter = apvts.getRawParameterValue("mfx_qsDelayCenter");
+    cachedParams.mfxQsMix         = apvts.getRawParameterValue("mfx_qsMix");
+    cachedParams.mfxAdBifurcation = apvts.getRawParameterValue("mfx_adBifurcation");
+    cachedParams.mfxAdDriveBase   = apvts.getRawParameterValue("mfx_adDriveBase");
+    cachedParams.mfxAdSpeed       = apvts.getRawParameterValue("mfx_adSpeed");
+    cachedParams.mfxAdMix         = apvts.getRawParameterValue("mfx_adMix");
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout
@@ -308,6 +355,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     // V1 Concept Engines
     OpenSkyEngine::addParameters(params);
     OceandeepEngine::addParameters(params);
+    ObrixEngine::addParameters(params);
+    OstinatoEngine::addParameters(params);
+    OuieEngine::addParameters(params);
 
     // Chord Machine parameters
     params.push_back(std::make_unique<juce::AudioParameterBool>(
@@ -666,6 +716,15 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::ParameterID("master_onMix", 1), "Master Oneiric Mix",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
+    // Aquatic FX Suite (22 params)
+    AquaticFXSuite::addParameters(params);
+
+    // Mathematical FX Chain (16 params)
+    MathFXChain::addParameters(params);
+
+    // Boutique FX Chain (25 params)
+    BoutiqueFXChain::addParameters(params);
+
     return { params.begin(), params.end() };
 }
 
@@ -709,6 +768,9 @@ void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 
     couplingMatrix.prepare(samplesPerBlock);
     chordMachine.prepare(sampleRate, samplesPerBlock);
+    aquaticFX.prepare(sampleRate);
+    mathFX.prepare(sampleRate);
+    boutiqueFX.prepare(sampleRate);
     masterFX.prepare(sampleRate, samplesPerBlock, apvts);
 
     // SRO: Prepare profilers and auditor
@@ -741,6 +803,9 @@ void XOmnibusProcessor::releaseResources()
         if (eng)
             eng->releaseResources();
     }
+    aquaticFX.reset();
+    mathFX.reset();
+    boutiqueFX.reset();
     masterFX.reset();
 }
 
@@ -907,6 +972,37 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         }
     }
 
+    // Aquatic FX Suite: brand-defining water phenomena (post engines, pre master FX)
+    if (buffer.getNumChannels() >= 2)
+    {
+        auto load = [](std::atomic<float>* p, float def) { return p ? p->load() : def; };
+        float* aqL = buffer.getWritePointer(0);
+        float* aqR = buffer.getWritePointer(1);
+        aquaticFX.processBlock(aqL, aqR, numSamples,
+            load(cachedParams.aquaFathomDepth, 0.0f),
+            load(cachedParams.aquaFathomPressure, 0.0f),
+            load(cachedParams.aquaFathomMix, 0.0f),
+            load(cachedParams.aquaDriftRate, 0.5f),
+            load(cachedParams.aquaDriftWidth, 0.5f),
+            load(cachedParams.aquaDriftDepth, 0.3f),
+            load(cachedParams.aquaDriftMix, 0.0f),
+            load(cachedParams.aquaTideRate, 0.5f),
+            static_cast<int>(load(cachedParams.aquaTideShape, 0.0f)),
+            static_cast<int>(load(cachedParams.aquaTideTarget, 0.0f)),
+            load(cachedParams.aquaTideMix, 0.0f),
+            load(cachedParams.aquaReefSize, 0.4f),
+            load(cachedParams.aquaReefDamping, 0.5f),
+            load(cachedParams.aquaReefDensity, 0.5f),
+            load(cachedParams.aquaReefMix, 0.0f),
+            load(cachedParams.aquaSurfaceLevel, 0.0f),
+            load(cachedParams.aquaSurfaceTension, 0.0f),
+            load(cachedParams.aquaSurfaceMix, 0.0f),
+            load(cachedParams.aquaBiolumeGlow, 0.0f),
+            load(cachedParams.aquaBiolumeSpectrum, 0.5f),
+            load(cachedParams.aquaBiolumeDecay, 0.3f),
+            load(cachedParams.aquaBiolumeMix, 0.0f));
+    }
+
     // Master FX chain: sat → delay → reverb → mod → comp + sequencer (post all engines)
     double ppqPos = -1.0;
     double bpm = 0.0;
@@ -921,6 +1017,69 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         }
     }
     masterFX.processBlock(buffer, numSamples, ppqPos, bpm);
+
+    // Mathematical FX Chain: entropy cooler → voronoi shatter → quantum smear → attractor drive
+    if (buffer.getNumChannels() >= 2)
+    {
+        auto load = [](std::atomic<float>* p, float def) { return p ? p->load() : def; };
+        float* mfxL = buffer.getWritePointer(0);
+        float* mfxR = buffer.getWritePointer(1);
+        mathFX.processBlock(mfxL, mfxR, numSamples,
+            load(cachedParams.mfxEcStability, 0.5f),
+            load(cachedParams.mfxEcCoolRate, 0.3f),
+            load(cachedParams.mfxEcThreshold, 0.5f),
+            load(cachedParams.mfxEcMix, 0.0f),
+            load(cachedParams.mfxVsCrystallize, 0.0f),
+            load(cachedParams.mfxVsTension, 0.5f),
+            load(cachedParams.mfxVsGrainSize, 30.0f),
+            load(cachedParams.mfxVsMix, 0.0f),
+            load(cachedParams.mfxQsObservation, 0.3f),
+            load(cachedParams.mfxQsFeedback, 0.4f),
+            load(cachedParams.mfxQsDelayCenter, 150.0f),
+            load(cachedParams.mfxQsMix, 0.0f),
+            load(cachedParams.mfxAdBifurcation, 0.3f),
+            load(cachedParams.mfxAdDriveBase, 0.3f),
+            load(cachedParams.mfxAdSpeed, 0.3f),
+            load(cachedParams.mfxAdMix, 0.0f));
+    }
+
+    // Boutique FX Chain: anomaly → dissolving archive → artifact cathedral → submersion
+    if (buffer.getNumChannels() >= 2)
+    {
+        auto load = [](std::atomic<float>* p, float def) { return p ? p->load() : def; };
+        float* bfxL = buffer.getWritePointer(0);
+        float* bfxR = buffer.getWritePointer(1);
+        boutiqueFX.processBlock(bfxL, bfxR, numSamples,
+            // Anomaly
+            load(apvts.getRawParameterValue("bfx_anTextureBlend"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_anReverbSize"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_anTremoloRate"), 2.0f),
+            load(apvts.getRawParameterValue("bfx_anTimeSlip"), 0.0f) > 0.5f,
+            load(apvts.getRawParameterValue("bfx_anSlipSpeed"), 0.0f),
+            load(apvts.getRawParameterValue("bfx_anMix"), 0.0f),
+            // Dissolving Archive
+            load(apvts.getRawParameterValue("bfx_daChance"), 0.0f),
+            load(apvts.getRawParameterValue("bfx_daDissolve"), 0.0f),
+            load(apvts.getRawParameterValue("bfx_daGrainMix"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_daReverbMix"), 0.3f),
+            load(apvts.getRawParameterValue("bfx_daMix"), 0.0f),
+            // Artifact Cathedral
+            load(apvts.getRawParameterValue("bfx_acPacketLoss"), 0.0f),
+            load(apvts.getRawParameterValue("bfx_acBitCrush"), 0.0f),
+            load(apvts.getRawParameterValue("bfx_acDarkMix"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_acSunMix"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_acModDepth"), 0.3f),
+            load(apvts.getRawParameterValue("bfx_acDecay"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_acFreeze"), 0.0f) > 0.5f,
+            load(apvts.getRawParameterValue("bfx_acMix"), 0.0f),
+            // Submersion
+            static_cast<int>(load(apvts.getRawParameterValue("bfx_smStages"), 4.0f)),
+            load(apvts.getRawParameterValue("bfx_smLFORate"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_smLFODepth"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_smLoopFB"), 0.3f),
+            load(apvts.getRawParameterValue("bfx_smClock"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_smMix"), 0.0f));
+    }
 }
 
 void XOmnibusProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs)

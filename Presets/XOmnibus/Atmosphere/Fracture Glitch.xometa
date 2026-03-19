@@ -1,56 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Fracture Glitch",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Floating textures texture with warm haze and glitch fracture.",
+  "dna": {
+    "aggression": 0.411,
+    "brightness": 0.454,
+    "density": 0.058,
+    "movement": 0.15,
+    "space": 0.072,
+    "warmth": 0.144
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Floating textures texture with warm haze and glitch fracture.",
-  "tags": [
-    "saturated",
-    "fractured",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Textures",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Textures",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Fracture Glitch",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 1.0,
-      "drift_oscA_level": 0.7,
-      "drift_oscA_pw": 0.35,
+      "drift_attack": 10.0,
+      "drift_decay": 400.0,
       "drift_filterCutoff": 6000.0,
       "drift_filterReso": 0.25,
       "drift_hazeAmount": 0.35,
-      "drift_attack": 10.0,
-      "drift_decay": 400.0,
-      "drift_sustain": 0.6,
+      "drift_level": -3.0,
+      "drift_oscA_level": 0.7,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_pw": 0.35,
+      "drift_oscA_shape": 1.0,
       "drift_release": 500.0,
-      "drift_level": -3.0
+      "drift_sustain": 0.6
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.454,
-    "warmth": 0.144,
-    "movement": 0.15,
-    "density": 0.058,
-    "space": 0.072,
-    "aggression": 0.411
-  }
+  "tags": [
+    "saturated",
+    "fractured",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

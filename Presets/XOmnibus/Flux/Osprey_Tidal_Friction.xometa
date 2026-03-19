@@ -1,55 +1,72 @@
 {
-  "schema_version": 1,
-  "name": "Tidal Friction",
-  "mood": "Flux",
-  "engines": ["Osprey"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Mediterranean shore with active sea state — short swell period, variable wind direction, creature voices in rhythmic chatter. The energy of the sea neither calm nor storm: tidal flux.",
-  "tags": ["mediterranean", "flux", "tidal", "rhythmic", "creature"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Mediterranean shore with active sea state — short swell period, variable wind direction, creature voices in rhythmic chatter. The energy of the sea neither calm nor storm: tidal flux.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.6,
+    "density": 0.55,
+    "movement": 0.7,
+    "space": 0.3,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Osprey"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Tidal Friction",
   "parameters": {
     "Osprey": {
-      "osprey_shore": 2.0,
-      "osprey_seaState": 0.55,
-      "osprey_swellPeriod": 6.0,
-      "osprey_windDir": 0.55,
-      "osprey_depth": 0.45,
-      "osprey_resonatorBright": 0.6,
-      "osprey_resonatorDecay": 0.8,
-      "osprey_sympathyAmount": 0.45,
-      "osprey_creatureRate": 0.6,
-      "osprey_creatureDepth": 0.45,
-      "osprey_coherence": 0.5,
-      "osprey_foam": 0.35,
-      "osprey_brine": 0.2,
-      "osprey_hull": 0.2,
-      "osprey_filterTilt": 0.55,
-      "osprey_filterEnvDepth": 0.4,
-      "osprey_harborVerb": 0.2,
-      "osprey_fog": 0.05,
       "osprey_ampAttack": 0.1,
       "osprey_ampDecay": 0.8,
-      "osprey_ampSustain": 0.55,
       "osprey_ampRelease": 1.2,
+      "osprey_ampSustain": 0.55,
+      "osprey_brine": 0.2,
+      "osprey_coherence": 0.5,
+      "osprey_creatureDepth": 0.45,
+      "osprey_creatureRate": 0.6,
+      "osprey_depth": 0.45,
+      "osprey_filterEnvDepth": 0.4,
+      "osprey_filterTilt": 0.55,
+      "osprey_foam": 0.35,
+      "osprey_fog": 0.05,
+      "osprey_harborVerb": 0.2,
+      "osprey_hull": 0.2,
       "osprey_macroCharacter": 0.35,
-      "osprey_macroMovement": 0.55,
       "osprey_macroCoupling": 0.0,
-      "osprey_macroSpace": 0.1
+      "osprey_macroMovement": 0.55,
+      "osprey_macroSpace": 0.1,
+      "osprey_resonatorBright": 0.6,
+      "osprey_resonatorDecay": 0.8,
+      "osprey_seaState": 0.55,
+      "osprey_shore": 2.0,
+      "osprey_swellPeriod": 6.0,
+      "osprey_sympathyAmount": 0.45,
+      "osprey_windDir": 0.55
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.45,
-    "movement": 0.7,
-    "density": 0.55,
-    "space": 0.3,
-    "aggression": 0.45
-  }
+  "tags": [
+    "mediterranean",
+    "flux",
+    "tidal",
+    "rhythmic",
+    "creature"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

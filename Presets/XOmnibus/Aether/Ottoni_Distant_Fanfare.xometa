@@ -1,0 +1,57 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Brass heard across a valley — the fanfare already happened. What remains is the memory of it, softened by distance and reverb into something closer to ache than triumph.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.4,
+    "density": 0.4,
+    "movement": 0.2,
+    "space": 0.95,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Ottoni"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Ottoni Distant Fanfare",
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.4,
+      "macro_coupling": 0.0,
+      "macro_movement": 0.2,
+      "macro_space": 0.95,
+      "otto_attackTime": 0.4,
+      "otto_brassA": 0.4,
+      "otto_brassB": 0.35,
+      "otto_brassC": 0.3,
+      "otto_filterCutoff": 0.45,
+      "otto_grow": 0.3,
+      "otto_harmonicRich": 0.35,
+      "otto_releaseTime": 4.0,
+      "otto_reverbDecay": 0.85,
+      "otto_reverbSend": 0.92
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "brass",
+    "distant",
+    "space",
+    "reverb",
+    "melancholy",
+    "aether"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

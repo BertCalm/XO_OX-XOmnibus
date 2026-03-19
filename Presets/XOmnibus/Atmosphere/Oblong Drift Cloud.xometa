@@ -1,62 +1,62 @@
 {
-  "schema_version": 1,
-  "name": "Oblong Drift Cloud",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Ethereal textures wash with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.309,
+    "brightness": 0.411,
+    "density": 0.481,
+    "movement": 0.0,
+    "space": 0.557,
+    "warmth": 0.67
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ethereal textures wash with bob character and analog drift.",
-  "tags": [
-    "texture",
-    "dust",
-    "stormy"
-  ],
+  "legacy": {
+    "sourceCategory": "Textures",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Textures",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Oblong Drift Cloud",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
+      "bob_ampAttack": 5.0,
+      "bob_ampRelease": 10.0,
+      "bob_ampSustain": 0.96,
+      "bob_bobMode": 0.68,
+      "bob_dustAmount": 0.72,
+      "bob_dustTone": 0.45,
+      "bob_fltCutoff": 3500.0,
+      "bob_fltMode": 1.0,
+      "bob_fltReso": 0.12,
       "bob_oscA_drift": 0.55,
       "bob_oscA_shape": 0.15,
-      "bob_oscB_wave": 3.0,
+      "bob_oscA_wave": 0.0,
       "bob_oscB_blend": 0.5,
+      "bob_oscB_wave": 3.0,
       "bob_texLevel": 0.85,
       "bob_texMode": 0.0,
       "bob_texTone": 0.7,
-      "bob_texWidth": 0.92,
-      "bob_dustAmount": 0.72,
-      "bob_dustTone": 0.45,
-      "bob_fltMode": 1.0,
-      "bob_fltCutoff": 3500.0,
-      "bob_fltReso": 0.12,
-      "bob_ampAttack": 5.0,
-      "bob_ampSustain": 0.96,
-      "bob_ampRelease": 10.0,
-      "bob_bobMode": 0.68
+      "bob_texWidth": 0.92
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.411,
-    "warmth": 0.67,
-    "movement": 0.0,
-    "density": 0.481,
-    "space": 0.557,
-    "aggression": 0.309
-  }
+  "tags": [
+    "texture",
+    "dust",
+    "stormy"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,14 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Micro-Prism Harp",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Oblique",
+        "engineB": "Orphica",
+        "type": "GrainToMod"
+      },
+      {
+        "amount": 0.45,
+        "engineA": "Orphica",
+        "engineB": "Oblique",
+        "type": "AmpToFilter"
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "ORPHICA's microsound plucks refracted through OBLIQUE — each particle emerges at a different spectral angle.",
+  "dna": {
+    "aggression": 0.415,
+    "brightness": 0.75,
+    "density": 0.532,
+    "movement": 0.8,
+    "space": 0.712,
+    "warmth": 0.427
+  },
   "engines": [
     "Oblique",
     "Orphica"
   ],
-  "author": "XPN Tool \u2014 Optic/Oblique/Ocelot Coupling Pack",
-  "version": "1.0.0",
-  "description": "ORPHICA's microsound plucks refracted through OBLIQUE \u2014 each particle emerges at a different spectral angle.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Micro-Prism Harp",
+  "parameters": {
+    "Oblique": {
+      "oblq_ampAttack": 0.02,
+      "oblq_ampRelease": 1.2,
+      "oblq_bounce": 0.65,
+      "oblq_filterCutoff": 3200.0,
+      "oblq_filterReso": 0.35,
+      "oblq_funkDepth": 0.7,
+      "oblq_modDepth": 0.6,
+      "oblq_modRate": 0.5,
+      "oblq_prismAngle": 0.55,
+      "oblq_refraction": 0.6
+    },
+    "Orphica": {
+      "orph_ampAttack": 0.03,
+      "orph_ampRelease": 1.5,
+      "orph_filterCutoff": 2800.0,
+      "orph_filterReso": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "oblique",
     "orphica",
@@ -19,63 +76,6 @@
     "entangled",
     "coupling"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oblique": {
-      "oblq_prismAngle": 0.55,
-      "oblq_bounce": 0.65,
-      "oblq_refraction": 0.6,
-      "oblq_funkDepth": 0.7,
-      "oblq_modRate": 0.5,
-      "oblq_modDepth": 0.6,
-      "oblq_filterCutoff": 3200.0,
-      "oblq_filterReso": 0.35,
-      "oblq_ampAttack": 0.02,
-      "oblq_ampRelease": 1.2
-    },
-    "Orphica": {
-      "orph_filterCutoff": 2800.0,
-      "orph_filterReso": 0.3,
-      "orph_ampAttack": 0.03,
-      "orph_ampRelease": 1.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Orphica",
-        "type": "GrainToMod",
-        "amount": 0.65
-      },
-      {
-        "engineA": "Orphica",
-        "engineB": "Oblique",
-        "type": "AmpToFilter",
-        "amount": 0.45
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.75,
-    "warmth": 0.427,
-    "movement": 0.8,
-    "density": 0.532,
-    "space": 0.712,
-    "aggression": 0.415
-  }
+  "version": "1.0.0"
 }

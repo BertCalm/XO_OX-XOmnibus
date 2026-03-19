@@ -33,7 +33,9 @@
     "space": 0.07,
     "aggression": 0.82
   },
-  "parameters": {},
+  "parameters": {
+    "Overworld": {}
+  },
   "tags": [
     "flux",
     "high-flux",
@@ -41,5 +43,5 @@
     "chiptune",
     "avalanche"
   ],
-  "description": "Overworld chip engine cascading \u2014 NES/Genesis layers pile into avalanche."
+  "description": "Overworld chip engine cascading — NES/Genesis layers pile into avalanche."
 }

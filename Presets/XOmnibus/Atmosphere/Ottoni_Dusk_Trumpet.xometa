@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Dusk Trumpet",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Brass tones diffuse into lake reverb. The cousins play from the far shore.",
+  "dna": {
+    "aggression": 0.04,
+    "brightness": 0.37,
+    "density": 0.32,
+    "movement": 0.21,
+    "space": 0.77,
+    "warmth": 0.48
+  },
   "engines": [
     "Ottoni"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "brass",
-    "sax",
-    "atmosphere",
-    "pad",
-    "atmosphere"
   ],
   "macroLabels": [
     "EMBOUCHURE",
@@ -20,48 +21,47 @@
     "FOREIGN",
     "LAKE"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.37,
-    "warmth": 0.48,
-    "movement": 0.21,
-    "density": 0.32,
-    "space": 0.77,
-    "aggression": 0.04
-  },
+  "mood": "Atmosphere",
+  "name": "Dusk Trumpet",
   "parameters": {
     "Ottoni": {
+      "otto_chorusRate": 1.0,
+      "otto_damping": 0.994,
+      "otto_delayMix": 0.239,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.091,
+      "otto_driveAmount": 0.067,
+      "otto_foreignCold": 0.0,
+      "otto_foreignDrift": 0.092,
+      "otto_foreignStretch": 0.0,
+      "otto_macroEmbouchure": 0.333,
+      "otto_macroForeign": 0.0,
+      "otto_macroGrow": 0.612,
+      "otto_macroLake": 0.509,
+      "otto_reverbSize": 0.299,
+      "otto_sympatheticAmt": 0.257,
+      "otto_teenBore": 0.474,
+      "otto_teenEmbouchure": 0.613,
+      "otto_teenInst": 2,
+      "otto_teenLevel": 0.375,
+      "otto_teenVibratoDepth": 0.346,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 4,
       "otto_toddlerLevel": 0.544,
       "otto_toddlerPressure": 0.376,
-      "otto_toddlerInst": 4,
-      "otto_tweenLevel": 0.666,
       "otto_tweenEmbouchure": 0.558,
-      "otto_tweenValve": 0.355,
       "otto_tweenInst": 4,
-      "otto_teenLevel": 0.375,
-      "otto_teenEmbouchure": 0.613,
-      "otto_teenBore": 0.474,
-      "otto_teenInst": 2,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.346,
-      "otto_damping": 0.994,
-      "otto_sympatheticAmt": 0.257,
-      "otto_driftRate": 0.091,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.0,
-      "otto_foreignDrift": 0.092,
-      "otto_foreignCold": 0.0,
-      "otto_reverbSize": 0.299,
-      "otto_chorusRate": 1.0,
-      "otto_driveAmount": 0.067,
-      "otto_delayMix": 0.239,
-      "otto_macroEmbouchure": 0.333,
-      "otto_macroGrow": 0.612,
-      "otto_macroForeign": 0.0,
-      "otto_macroLake": 0.509
+      "otto_tweenLevel": 0.666,
+      "otto_tweenValve": 0.355
     }
   },
-  "coupling": null,
-  "description": "Brass tones diffuse into lake reverb. The cousins play from the far shore."
+  "schema_version": 1,
+  "tags": [
+    "brass",
+    "sax",
+    "atmosphere",
+    "pad",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
 }

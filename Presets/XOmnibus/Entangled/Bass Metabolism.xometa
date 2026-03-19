@@ -1,22 +1,35 @@
 {
-  "schema_version": 1,
-  "name": "Bass Metabolism",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Organon",
+        "engineB": "Oblong",
+        "type": "Audio->FM"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Oblong sub frequencies shaped by Organon metabolic envelope. The organism breathes bass.",
+  "dna": {
+    "aggression": 0.775,
+    "brightness": 0.535,
+    "density": 0.665,
+    "movement": 1.0,
+    "space": 0.505,
+    "warmth": 0.54
+  },
   "engines": [
     "Organon",
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Oblong sub frequencies shaped by Organon metabolic envelope. The organism breathes bass.",
-  "tags": [
-    "bass",
-    "breath",
-    "membrane",
-    "entangled",
-    "organon",
-    "oblong"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -25,54 +38,43 @@
   ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.65,
     "SPACE": 0.55
   },
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Bass Metabolism",
   "parameters": {
+    "Oblong": {
+      "bob_drive": 0.45,
+      "bob_fltCutoff": 0.6,
+      "bob_lfoRate": 0.4,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
     "Organon": {
-      "organon_metabolicRate": 2.5,
-      "organon_enzymeSelect": 600.0,
       "organon_catalystDrive": 1.2,
       "organon_dampingCoeff": 0.4,
-      "organon_signalFlux": 0.8,
-      "organon_phasonShift": 0.25,
+      "organon_enzymeSelect": 600.0,
       "organon_isotopeBalance": 0.5,
       "organon_lockIn": 0.0,
       "organon_membrane": 0.7,
-      "organon_noiseColor": 0.6
-    },
-    "Oblong": {
-      "bob_fltCutoff": 0.6,
-      "bob_drive": 0.45,
-      "bob_lfoRate": 0.4
+      "organon_metabolicRate": 2.5,
+      "organon_noiseColor": 0.6,
+      "organon_phasonShift": 0.25,
+      "organon_signalFlux": 0.8
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Oblong",
-        "type": "Audio->FM",
-        "amount": 0.65
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.535,
-    "warmth": 0.54,
-    "movement": 1.0,
-    "density": 0.665,
-    "space": 0.505,
-    "aggression": 0.775
-  }
+  "tags": [
+    "bass",
+    "breath",
+    "membrane",
+    "entangled",
+    "organon",
+    "oblong"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

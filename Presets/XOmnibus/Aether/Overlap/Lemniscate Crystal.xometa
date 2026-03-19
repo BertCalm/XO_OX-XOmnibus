@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-18",
+  "description": "Pure crystal lemniscate: diffusion 0.70, brightness 0.25, near-zero tangle.",
+  "dna": {
+    "aggression": 0.01,
+    "brightness": 0.27,
+    "density": 0.12,
+    "movement": 0.03,
+    "space": 0.95,
+    "warmth": 0.38
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
+  "mood": "Aether",
+  "name": "Lemniscate Crystal",
+  "parameters": {
+    "Overlap": {
+      "olap_knot": 2,
+      "olap_tangleDepth": 0.06,
+      "olap_torusP": 3,
+      "olap_torusQ": 2,
+      "olap_pulseRate": 0.06,
+      "olap_entrain": 0.05,
+      "olap_spread": 0.92,
+      "olap_voiceMode": 0,
+      "olap_glide": 0.0,
+      "olap_delayBase": 42.0,
+      "olap_dampening": 0.68,
+      "olap_feedback": 0.95,
+      "olap_brightness": 0.25,
+      "olap_bioluminescence": 0.02,
+      "olap_current": 0.04,
+      "olap_currentRate": 0.02,
+      "olap_attack": 2.0,
+      "olap_decay": 2.0,
+      "olap_sustain": 0.85,
+      "olap_release": 9.0,
+      "olap_filterCutoff": 10000.0,
+      "olap_filterRes": 0.15,
+      "olap_filterEnvAmt": 0.15,
+      "olap_filterEnvDecay": 1.5,
+      "olap_lfo1Rate": 0.15,
+      "olap_lfo1Shape": 0,
+      "olap_lfo1Depth": 0.07,
+      "olap_lfo1Dest": 4,
+      "olap_lfo2Rate": 0.08,
+      "olap_lfo2Shape": 0,
+      "olap_lfo2Depth": 0.05,
+      "olap_lfo2Dest": 2,
+      "olap_chorusMix": 0.1,
+      "olap_chorusRate": 0.04,
+      "olap_diffusion": 0.7,
+      "olap_macroKnot": 0.15,
+      "olap_macroPulse": 0.1,
+      "olap_macroEntrain": 0.08,
+      "olap_macroBloom": 0.1,
+      "olap_modWheelDest": 0,
+      "olap_modWheelDepth": 0.3,
+      "olap_atPressureDest": 1,
+      "olap_atPressureDepth": 0.2
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "figure-eight",
+    "crystal",
+    "pure",
+    "diffuse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

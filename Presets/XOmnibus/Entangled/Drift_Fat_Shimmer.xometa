@@ -108,10 +108,10 @@
     }
   },
   "coupling": {
-    "routes": [
+    "pairs": [
       {
-        "source": "Odyssey",
-        "dest": "Obese",
+        "engineA": "Odyssey",
+        "engineB": "Obese",
         "type": "AmpToFilter",
         "amount": 0.2
       }

@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Prism Split",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "White noise split into spectral rainbow components.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.9,
+    "density": 0.3,
+    "movement": 0.3,
+    "space": 0.3,
+    "warmth": 0.2
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "White noise split into spectral rainbow components.",
-  "tags": [
-    "prism",
-    "spectral",
-    "rainbow",
-    "split"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Prism Split",
   "parameters": {
     "Organon": {
-      "organon_metabolicRate": 2.5,
-      "organon_enzymeSelect": 8000.0,
       "organon_catalystDrive": 0.45,
       "organon_dampingCoeff": 0.15,
-      "organon_signalFlux": 0.5,
-      "organon_phasonShift": 0.0,
+      "organon_enzymeSelect": 8000.0,
       "organon_isotopeBalance": 0.9,
       "organon_lockIn": 0.0,
       "organon_membrane": 0.3,
-      "organon_noiseColor": 0.9
+      "organon_metabolicRate": 2.5,
+      "organon_noiseColor": 0.9,
+      "organon_phasonShift": 0.0,
+      "organon_signalFlux": 0.5
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.9,
-    "warmth": 0.2,
-    "movement": 0.3,
-    "density": 0.3,
-    "space": 0.3,
-    "aggression": 0.1
-  }
+  "tags": [
+    "prism",
+    "spectral",
+    "rainbow",
+    "split"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Cascade Eruption",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Eight voices firing at light speed. Saturated, dense, relentless.",
+  "dna": {
+    "aggression": 0.75,
+    "brightness": 0.88,
+    "density": 0.85,
+    "movement": 0.93,
+    "space": 0.09,
+    "warmth": 0.5
+  },
   "engines": [
     "Octopus"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Eight voices firing at light speed. Saturated, dense, relentless.",
-  "tags": [
-    "kinetic-bright",
-    "extreme",
-    "prism",
-    "dense"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Cascade Eruption",
   "parameters": {
     "Octopus": {
-      "octo_wtPosition": 0.85,
-      "octo_wtScanRate": 0.95,
-      "octo_filterCutoff": 7000.0,
-      "octo_filterReso": 0.55,
-      "octo_drive": 0.82,
-      "octo_spread": 0.75,
       "octo_attack": 1.0,
       "octo_decay": 80.0,
+      "octo_drive": 0.82,
+      "octo_filterCutoff": 7000.0,
+      "octo_filterReso": 0.55,
+      "octo_release": 60.0,
+      "octo_spread": 0.75,
       "octo_sustain": 0.85,
-      "octo_release": 60.0
+      "octo_wtPosition": 0.85,
+      "octo_wtScanRate": 0.95
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.88,
-    "warmth": 0.5,
-    "movement": 0.93,
-    "density": 0.85,
-    "space": 0.09,
-    "aggression": 0.75
-  }
+  "tags": [
+    "kinetic-bright",
+    "extreme",
+    "prism",
+    "dense"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

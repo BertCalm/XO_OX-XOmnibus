@@ -1,13 +1,50 @@
 {
-  "schema_version": 1,
-  "name": "Nebula Sustain",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Orphica dissolved into infinite space. Space dimension at 0.91 — cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "dna": {
+    "aggression": 0.273,
+    "brightness": 0.362,
+    "density": 0.647,
+    "movement": 0.202,
+    "space": 0.909,
+    "warmth": 0.375
+  },
   "engines": [
     "Orphica"
   ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "Orphica dissolved into infinite space. Space dimension at 0.91 \u2014 cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
+  "mood": "Aether",
+  "name": "Nebula Sustain",
+  "parameters": {
+    "Orphica": {
+      "orph_bodySize": 0.845,
+      "orph_damping": 0.725,
+      "orph_driftDepth": 0.845,
+      "orph_driftRate": 0.04,
+      "orph_macroDivine": 0.909,
+      "orph_macroFracture": 0.273,
+      "orph_macroPluck": 0.362,
+      "orph_macroSurface": 0.375,
+      "orph_microMode": 2,
+      "orph_microRate": 0.66,
+      "orph_microSize": 0.891,
+      "orph_pluckBrightness": 0.326,
+      "orph_pluckPosition": 0.417,
+      "orph_stringCount": 5,
+      "orph_stringMaterial": 2,
+      "orph_sympatheticAmt": 0.686
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "vast",
@@ -17,43 +54,6 @@
     "cosmic",
     "orphica"
   ],
-  "macroLabels": [
-    "PLUCK",
-    "FRACTURE",
-    "SURFACE",
-    "DIVINE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.362,
-    "warmth": 0.375,
-    "movement": 0.202,
-    "density": 0.647,
-    "space": 0.909,
-    "aggression": 0.273
-  },
-  "parameters": {
-    "Orphica": {
-      "orph_stringMaterial": 2,
-      "orph_pluckBrightness": 0.326,
-      "orph_pluckPosition": 0.417,
-      "orph_stringCount": 5,
-      "orph_bodySize": 0.845,
-      "orph_sympatheticAmt": 0.686,
-      "orph_damping": 0.725,
-      "orph_driftRate": 0.04,
-      "orph_driftDepth": 0.845,
-      "orph_microMode": 2,
-      "orph_microRate": 0.66,
-      "orph_microSize": 0.891,
-      "orph_macroPluck": 0.362,
-      "orph_macroFracture": 0.273,
-      "orph_macroSurface": 0.375,
-      "orph_macroDivine": 0.909
-    }
-  },
-  "coupling": null,
-  "sequencer": null
+  "version": "1.0"
 }

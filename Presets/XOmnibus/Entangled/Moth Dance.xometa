@@ -1,68 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "Moth Dance",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Cross-modulated living energy with analog drift and curious motion.",
+  "dna": {
+    "aggression": 0.156,
+    "brightness": 0.426,
+    "density": 0.234,
+    "movement": 0.675,
+    "space": 0.154,
+    "warmth": 0.211
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Cross-modulated living energy with analog drift and curious motion.",
-  "tags": [
-    "moving",
-    "flutter",
-    "delicate"
-  ],
+  "legacy": {
+    "sourceCategory": "Living",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Living",
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Moth Dance",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
-      "bob_oscA_shape": 0.55,
-      "bob_oscA_drift": 0.28,
-      "bob_oscB_wave": 1.0,
-      "bob_oscB_blend": 0.45,
-      "bob_oscB_detune": 7.0,
-      "bob_fltMode": 1.0,
-      "bob_fltCutoff": 4200.0,
-      "bob_fltReso": 0.48,
-      "bob_fltEnvAmt": 0.55,
-      "bob_lfo1Rate": 3.8,
-      "bob_lfo1Depth": 0.55,
-      "bob_curMode": 2.0,
-      "bob_curAmount": 0.58,
-      "bob_motAttack": 0.08,
-      "bob_motDecay": 0.6,
-      "bob_motSustain": 0.5,
-      "bob_motRelease": 1.0,
-      "bob_motDepth": 0.55,
       "bob_ampAttack": 0.025,
       "bob_ampDecay": 0.5,
-      "bob_ampSustain": 0.68,
       "bob_ampRelease": 1.0,
-      "bob_glide": 0.04
+      "bob_ampSustain": 0.68,
+      "bob_curAmount": 0.58,
+      "bob_curMode": 2.0,
+      "bob_fltCutoff": 4200.0,
+      "bob_fltEnvAmt": 0.55,
+      "bob_fltMode": 1.0,
+      "bob_fltReso": 0.48,
+      "bob_glide": 0.04,
+      "bob_lfo1Depth": 0.55,
+      "bob_lfo1Rate": 3.8,
+      "bob_motAttack": 0.08,
+      "bob_motDecay": 0.6,
+      "bob_motDepth": 0.55,
+      "bob_motRelease": 1.0,
+      "bob_motSustain": 0.5,
+      "bob_oscA_drift": 0.28,
+      "bob_oscA_shape": 0.55,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.45,
+      "bob_oscB_detune": 7.0,
+      "bob_oscB_wave": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.426,
-    "warmth": 0.211,
-    "movement": 0.675,
-    "density": 0.234,
-    "space": 0.154,
-    "aggression": 0.156
-  }
+  "tags": [
+    "moving",
+    "flutter",
+    "delicate"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,13 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Obsidian Waters",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The volcanic lake. Black water over black stone. A stillness that contains enormous potential — the obsidian surface holds reflections of stars that no longer exist.",
+  "dna": {
+    "aggression": 0.04,
+    "brightness": 0.17,
+    "density": 0.42,
+    "movement": 0.18,
+    "space": 0.86,
+    "warmth": 0.3
+  },
   "engines": [
     "Obsidian"
   ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "The volcanic lake. Black water over black stone. A stillness that contains enormous potential \u2014 the obsidian surface holds reflections of stars that no longer exist.",
+  "macroLabels": [
+    "EDGE",
+    "DARKNESS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Obsidian Waters",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_ampAttack": 4.0,
+      "obsidian_ampDecay": 1.0,
+      "obsidian_ampRelease": 7.5,
+      "obsidian_ampSustain": 0.85,
+      "obsidian_delayFeedback": 0.35,
+      "obsidian_filterCutoff": 0.14,
+      "obsidian_filterReso": 0.2,
+      "obsidian_macroCoupling": 0.0,
+      "obsidian_macroDarkness": 0.0,
+      "obsidian_macroEdge": 0.0,
+      "obsidian_macroSpace": 0.0,
+      "obsidian_oscShape": 0.5,
+      "obsidian_reverbMix": 0.87,
+      "obsidian_subLevel": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "dark-aether",
@@ -16,41 +52,5 @@
     "volcanic",
     "reflective"
   ],
-  "macroLabels": [
-    "EDGE",
-    "DARKNESS",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.17,
-    "warmth": 0.3,
-    "movement": 0.18,
-    "density": 0.42,
-    "space": 0.86,
-    "aggression": 0.04
-  },
-  "parameters": {
-    "Obsidian": {
-      "obsidian_filterCutoff": 0.14,
-      "obsidian_filterReso": 0.2,
-      "obsidian_oscShape": 0.5,
-      "obsidian_subLevel": 0.3,
-      "obsidian_ampAttack": 4.0,
-      "obsidian_ampDecay": 1.0,
-      "obsidian_ampSustain": 0.85,
-      "obsidian_ampRelease": 7.5,
-      "obsidian_reverbMix": 0.87,
-      "obsidian_delayFeedback": 0.35,
-      "obsidian_macroEdge": 0.0,
-      "obsidian_macroDarkness": 0.0,
-      "obsidian_macroCoupling": 0.0,
-      "obsidian_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

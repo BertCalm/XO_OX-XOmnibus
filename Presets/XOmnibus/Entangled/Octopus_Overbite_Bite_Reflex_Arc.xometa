@@ -1,14 +1,87 @@
 {
-  "schema_version": 1,
-  "name": "Bite Reflex Arc",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "source": "Octopus",
+        "target": "Overbite",
+        "type": "SPECTRAL_TRANSFER"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Arm touches prey → beak reflex fires → bite macro triggers → ink fires as adrenalin.",
+  "dna": {
+    "aggression": 0.628,
+    "brightness": 0.585,
+    "density": 0.83,
+    "movement": 0.73,
+    "space": 0.501,
+    "warmth": 0.36
+  },
   "engines": [
     "Octopus",
     "Overbite"
   ],
-  "author": "XO_OX Deep Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "Arm touches prey → beak reflex fires → bite macro triggers → ink fires as adrenalin.",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Bite Reflex Arc",
+  "parameters": {
+    "Octopus": {
+      "octo_ampAttack": 0.011,
+      "octo_ampDecay": 0.729,
+      "octo_ampRelease": 1.405,
+      "octo_ampSustain": 0.477,
+      "octo_armBaseRate": 0.564,
+      "octo_armCount": 8.0,
+      "octo_armDepth": 0.623,
+      "octo_armSpread": 0.554,
+      "octo_chromaDepth": 0.517,
+      "octo_chromaFreq": 2216.5,
+      "octo_chromaMorph": 0.705,
+      "octo_chromaSens": 0.747,
+      "octo_chromaSpeed": 0.244,
+      "octo_filterCutoff": 3830.9,
+      "octo_filterReso": 0.611,
+      "octo_inkDecay": 0.58,
+      "octo_inkDensity": 0.696,
+      "octo_inkMix": 0.387,
+      "octo_inkThreshold": 0.348,
+      "octo_level": 0.782,
+      "octo_lfo1Depth": 0.348,
+      "octo_lfo1Rate": 3.313,
+      "octo_lfo1Shape": 0.0,
+      "octo_lfo2Depth": 0.387,
+      "octo_lfo2Rate": 1.41,
+      "octo_lfo2Shape": 0.75,
+      "octo_modAttack": 0.0467,
+      "octo_modDecay": 0.267,
+      "octo_modRelease": 0.849,
+      "octo_modSustain": 0.505,
+      "octo_shiftDrift": 0.442,
+      "octo_shiftGlide": 0.251,
+      "octo_shiftMicro": 0.469,
+      "octo_suckerDecay": 0.188,
+      "octo_suckerFreq": 3951.0,
+      "octo_suckerMix": 0.665,
+      "octo_suckerReso": 0.492,
+      "octo_wtPosition": 0.557,
+      "octo_wtScanRate": 0.458
+    },
+    "Overbite": {
+      "poss_filterCutoff": 6240.0,
+      "poss_level": 0.79
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,79 +90,6 @@
     "alien",
     "decentralized"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "Octopus": {
-      "octo_armCount": 8.0,
-      "octo_armSpread": 0.554,
-      "octo_armBaseRate": 0.564,
-      "octo_armDepth": 0.623,
-      "octo_chromaSens": 0.747,
-      "octo_chromaSpeed": 0.244,
-      "octo_chromaMorph": 0.705,
-      "octo_chromaDepth": 0.517,
-      "octo_chromaFreq": 2216.5,
-      "octo_inkThreshold": 0.348,
-      "octo_inkDensity": 0.696,
-      "octo_inkDecay": 0.58,
-      "octo_inkMix": 0.387,
-      "octo_shiftMicro": 0.469,
-      "octo_shiftGlide": 0.251,
-      "octo_shiftDrift": 0.442,
-      "octo_suckerReso": 0.492,
-      "octo_suckerFreq": 3951.0,
-      "octo_suckerDecay": 0.188,
-      "octo_suckerMix": 0.665,
-      "octo_wtPosition": 0.557,
-      "octo_wtScanRate": 0.458,
-      "octo_filterCutoff": 3830.9,
-      "octo_filterReso": 0.611,
-      "octo_level": 0.782,
-      "octo_ampAttack": 0.011,
-      "octo_ampDecay": 0.729,
-      "octo_ampSustain": 0.477,
-      "octo_ampRelease": 1.405,
-      "octo_modAttack": 0.0467,
-      "octo_modDecay": 0.267,
-      "octo_modSustain": 0.505,
-      "octo_modRelease": 0.849,
-      "octo_lfo1Rate": 3.313,
-      "octo_lfo1Depth": 0.348,
-      "octo_lfo1Shape": 0.0,
-      "octo_lfo2Rate": 1.41,
-      "octo_lfo2Depth": 0.387,
-      "octo_lfo2Shape": 0.75
-    },
-    "Overbite": {
-      "poss_level": 0.79,
-      "poss_filterCutoff": 6240.0
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "SPECTRAL_TRANSFER",
-        "source": "Octopus",
-        "target": "Overbite",
-        "amount": 0.65
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.585,
-    "warmth": 0.36,
-    "movement": 0.73,
-    "density": 0.83,
-    "space": 0.501,
-    "aggression": 0.628
-  }
+  "version": "1.0.0"
 }

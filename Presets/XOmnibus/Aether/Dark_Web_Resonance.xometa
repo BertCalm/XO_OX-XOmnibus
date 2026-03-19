@@ -1,53 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Dark Web Resonance",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Feedback loop locked in the sub-bass. Cold, self-amplifying density.",
+  "dna": {
+    "aggression": 0.87,
+    "brightness": 0.05,
+    "density": 0.94,
+    "movement": 0.72,
+    "space": 0.04,
+    "warmth": 0.07
+  },
   "engines": [
     "Ouroboros"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Feedback loop locked in the sub-bass. Cold, self-amplifying density.",
-  "tags": [
-    "cold-dense",
-    "extreme",
-    "aether",
-    "feedback"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Aether",
+  "name": "Dark Web Resonance",
   "parameters": {
     "Ouroboros": {
-      "ouro_topology": 2.0,
-      "ouro_rate": 0.88,
-      "ouro_chaosIndex": 0.82,
-      "ouro_leash": 0.06,
-      "ouro_feedback": 0.95,
       "ouro_brightness": 0.05,
+      "ouro_chaosIndex": 0.82,
+      "ouro_decay": 0.5,
       "ouro_density": 0.93,
-      "ouro_decay": 0.5
+      "ouro_feedback": 0.95,
+      "ouro_leash": 0.06,
+      "ouro_rate": 0.88,
+      "ouro_topology": 2.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.05,
-    "warmth": 0.07,
-    "movement": 0.72,
-    "density": 0.94,
-    "space": 0.04,
-    "aggression": 0.87
-  }
+  "tags": [
+    "cold-dense",
+    "extreme",
+    "aether",
+    "feedback"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

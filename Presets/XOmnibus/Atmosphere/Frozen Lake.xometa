@@ -1,58 +1,58 @@
 {
-  "schema_version": 1,
-  "name": "Frozen Lake",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Ethereal pads wash with prism shimmer.",
+  "dna": {
+    "aggression": 0.033,
+    "brightness": 0.597,
+    "density": 0.103,
+    "movement": 0.0,
+    "space": 0.42,
+    "warmth": 0.0
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ethereal pads wash with prism shimmer.",
-  "tags": [
-    "shimmery",
-    "spacious",
-    "slow-attack"
-  ],
+  "legacy": {
+    "sourceCategory": "Pads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Pads",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Frozen Lake",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 3.0,
-      "drift_oscA_level": 0.6,
-      "drift_oscB_mode": 0.0,
-      "drift_oscB_shape": 2.0,
-      "drift_oscB_level": 0.4,
+      "drift_attack": 800.0,
       "drift_filterCutoff": 6000.0,
       "drift_filterReso": 0.08,
+      "drift_level": -5.0,
+      "drift_oscA_level": 0.6,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 3.0,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 2.0,
+      "drift_release": 3500.0,
       "drift_shimmerAmount": 0.5,
       "drift_shimmerTone": 0.4,
-      "drift_attack": 800.0,
-      "drift_sustain": 0.5,
-      "drift_release": 3500.0,
-      "drift_level": -5.0
+      "drift_sustain": 0.5
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.597,
-    "warmth": 0.0,
-    "movement": 0.0,
-    "density": 0.103,
-    "space": 0.42,
-    "aggression": 0.033
-  }
+  "tags": [
+    "shimmery",
+    "spacious",
+    "slow-attack"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Vitreous Prophet",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.779,
+        "engineA": "Obsidian",
+        "engineB": "Oracle",
+        "type": "CV->Depth"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Crystal clarity channels prophecy — obsidian edge meets broken oracle timbre.",
+  "dna": {
+    "aggression": 0.255,
+    "brightness": 0.693,
+    "density": 0.627,
+    "movement": 0.444,
+    "space": 0.679,
+    "warmth": 0.292
+  },
   "engines": [
     "Obsidian",
     "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Crystal clarity channels prophecy \u2014 obsidian edge meets broken oracle timbre.",
-  "tags": [
-    "obsidian",
-    "oracle",
-    "crystal",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Vitreous Prophet",
   "parameters": {
     "Obsidian": {
-      "obsidian_brightness": 0.93,
-      "obsidian_warmth": 0.234,
-      "obsidian_movement": 0.284,
-      "obsidian_density": 0.527,
-      "obsidian_space": 0.58,
       "obsidian_aggression": 0.164,
-      "obsidian_level": 0.79
+      "obsidian_brightness": 0.93,
+      "obsidian_density": 0.527,
+      "obsidian_level": 0.79,
+      "obsidian_movement": 0.284,
+      "obsidian_space": 0.58,
+      "obsidian_warmth": 0.234
     },
     "Oracle": {
-      "oracle_brightness": 0.46,
-      "oracle_warmth": 0.33,
-      "oracle_movement": 0.523,
-      "oracle_density": 0.709,
-      "oracle_space": 0.714,
       "oracle_aggression": 0.321,
-      "oracle_level": 0.842
+      "oracle_brightness": 0.46,
+      "oracle_density": 0.709,
+      "oracle_level": 0.842,
+      "oracle_movement": 0.523,
+      "oracle_space": 0.714,
+      "oracle_warmth": 0.33
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Oracle",
-        "type": "CV->Depth",
-        "amount": 0.779
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.693,
-    "warmth": 0.292,
-    "movement": 0.444,
-    "density": 0.627,
-    "space": 0.679,
-    "aggression": 0.255
-  }
+  "tags": [
+    "obsidian",
+    "oracle",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

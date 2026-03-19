@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Mojo Prophecy",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.58,
+    "pairs": [
+      {
+        "amount": 0.58,
+        "engineA": "Obese",
+        "engineB": "Oracle",
+        "type": "Rhythm->Blend"
+      }
+    ],
+    "type": "Rhythm->Blend"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OBESE mojo reveals ORACLE vision. Saturated prophecy. [Rhythm->Blend]",
+  "dna": {
+    "aggression": 0.602,
     "brightness": 0.472,
-    "warmth": 0.548,
-    "movement": 0.488,
     "density": 0.72,
+    "movement": 0.488,
     "space": 0.557,
-    "aggression": 0.602
+    "warmth": 0.548
   },
   "engines": [
-    "XObese",
-    "XOracle"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE mojo reveals ORACLE vision. Saturated prophecy. [Rhythm->Blend]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "obese",
-    "oracle",
-    "fat"
+    "Obese",
+    "Oracle"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.472,
-    "warmth": 0.548,
-    "movement": 0.488,
-    "density": 0.72,
-    "space": 0.557,
-    "aggression": 0.602
-  },
+  "mood": "Entangled",
+  "name": "Mojo Prophecy",
   "parameters": {
-    "XObese": {
+    "Obese": {
+      "fat_aggression": 0.69,
+      "fat_brightness": 0.516,
+      "fat_couplingBus": 0,
+      "fat_couplingLevel": 0.61,
       "fat_outputLevel": 0.84,
       "fat_outputPan": -0.05,
-      "fat_couplingLevel": 0.61,
-      "fat_couplingBus": 0,
-      "fat_brightness": 0.516,
-      "fat_warmth": 0.68,
-      "fat_aggression": 0.69
+      "fat_warmth": 0.68
     },
-    "XOracle": {
+    "Oracle": {
+      "orc_aggression": 0.489,
+      "orc_brightness": 0.472,
+      "orc_couplingBus": 0,
+      "orc_couplingLevel": 0.7,
       "orc_outputLevel": 0.85,
       "orc_outputPan": 0.04,
-      "orc_couplingLevel": 0.7,
-      "orc_couplingBus": 0,
-      "orc_brightness": 0.472,
-      "orc_warmth": 0.455,
-      "orc_aggression": 0.489
+      "orc_warmth": 0.455
     }
   },
-  "coupling": {
-    "type": "Rhythm->Blend",
-    "amount": 0.58,
-    "pairs": [
-      {
-        "engineA": "XObese",
-        "engineB": "XOracle",
-        "type": "Rhythm->Blend",
-        "amount": 0.58
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.602,
+    "brightness": 0.472,
+    "density": 0.72,
+    "movement": 0.488,
+    "space": 0.557,
+    "warmth": 0.548
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "oracle",
+    "fat"
+  ],
+  "version": "1.0.0"
 }

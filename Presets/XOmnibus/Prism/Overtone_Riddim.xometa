@@ -19,7 +19,7 @@
   "engines": [
     "Overdub"
   ],
-  "description": "Riddim bassline with rich overtone content \u2014 roots rock meet synthesis.",
+  "description": "Riddim bassline with rich overtone content — roots rock meet synthesis.",
   "tags": [
     "dub",
     "riddim",
@@ -55,7 +55,7 @@
       "dub_pitchEnvDepth": 0.1,
       "dub_pitchEnvDecay": 0.03,
       "dub_lfoRate": 1.0,
-      "dub_lfoDepth": 0.05,
+      "dub_lfoDepth": 0.12,
       "dub_lfoDest": 1,
       "dub_driveAmount": 1.25,
       "dub_dryLevel": 0.87,

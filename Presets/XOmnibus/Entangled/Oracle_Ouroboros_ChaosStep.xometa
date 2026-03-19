@@ -1,0 +1,81 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.55,
+        "direction": "A->B",
+        "engineA": "Ouroboros",
+        "engineB": "Oracle",
+        "notes": "Ouroboros chaos index output drives oracle_timeStep — attractor divergence directly scales GENDY step magnitude, making chaos the prophecy's pace-setter",
+        "type": "ModToMod"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "The Ouroboros strange attractor determines how far Oracle's GENDY waveform steps each synthesis cycle — high chaos index drives large stochastic leaps; low chaos (attractor collapsed near a fixed point) produces tiny trembling steps that hover around a single frequency. The prophecy's pace is dictated by the geometry of chaos. At low ouro_leash the attractor roams freely and Oracle stutters and leaps across maqam intervals unpredictably. Tighten the leash to restrain both systems simultaneously: the attractor converges and the GENDY waveform settles into a narrow timbral band. The oracle speaks more slowly when the strange attractor is caged.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.55,
+    "density": 0.52,
+    "movement": 0.78,
+    "space": 0.62,
+    "warmth": 0.28
+  },
+  "engines": [
+    "Oracle",
+    "Ouroboros"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Chaos Step",
+  "parameters": {
+    "Oracle": {
+      "oracle_ampAttack": 0.12,
+      "oracle_ampRelease": 0.45,
+      "oracle_barrierElasticity": 0.68,
+      "oracle_breakpoints": 7,
+      "oracle_filterCutoff": 0.58,
+      "oracle_gravity": 0.52,
+      "oracle_maqam": 2,
+      "oracle_masterLevel": 0.78,
+      "oracle_timeStep": 0.44
+    },
+    "Ouroboros": {
+      "ouro_chaosIndex": 0.58,
+      "ouro_damping": 0.32,
+      "ouro_injection": 0.18,
+      "ouro_leash": 0.45,
+      "ouro_phi": 0.4,
+      "ouro_rate": 42.0,
+      "ouro_theta": 0.28,
+      "ouro_topology": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "oracle",
+    "ouroboros",
+    "chaos",
+    "gendy",
+    "stochastic",
+    "attractor",
+    "maqam",
+    "entangled",
+    "coupled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

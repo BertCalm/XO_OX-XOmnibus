@@ -1,58 +1,58 @@
 {
-  "schema_version": 1,
-  "name": "Wide Horizon",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expressive leads voice with warm character.",
+  "dna": {
+    "aggression": 0.041,
+    "brightness": 0.538,
+    "density": 0.451,
+    "movement": 0.0,
+    "space": 0.209,
+    "warmth": 0.0
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expressive leads voice with warm character.",
-  "tags": [
-    "chorus",
-    "supersaw",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Leads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Leads",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Wide Horizon",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 2.0,
-      "drift_oscA_level": 0.7,
-      "drift_oscA_detune": 0.4,
-      "drift_oscB_mode": 2.0,
-      "drift_oscB_level": 0.6,
-      "drift_oscB_detune": 0.45,
-      "drift_filterCutoff": 7000.0,
-      "drift_filterReso": 0.1,
-      "drift_shimmerAmount": 0.2,
       "drift_attack": 10.0,
       "drift_decay": 400.0,
-      "drift_sustain": 0.75,
+      "drift_filterCutoff": 7000.0,
+      "drift_filterReso": 0.1,
+      "drift_level": -4.0,
+      "drift_oscA_detune": 0.4,
+      "drift_oscA_level": 0.7,
+      "drift_oscA_mode": 2.0,
+      "drift_oscB_detune": 0.45,
+      "drift_oscB_level": 0.6,
+      "drift_oscB_mode": 2.0,
       "drift_release": 350.0,
-      "drift_level": -4.0
+      "drift_shimmerAmount": 0.2,
+      "drift_sustain": 0.75
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.538,
-    "warmth": 0.0,
-    "movement": 0.0,
-    "density": 0.451,
-    "space": 0.209,
-    "aggression": 0.041
-  }
+  "tags": [
+    "chorus",
+    "supersaw",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,103 +1,103 @@
 {
-  "schema_version": 1,
-  "name": "Manifold Drift",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.5,
+        "engineA": "Odyssey",
+        "engineB": "Ouroboros",
+        "type": "Env->Morph"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-10",
+  "description": "DRIFT's long envelopes slowly rotate the Ouroboros projection angle. Evolving harmonic architecture over glacial timescales.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.35,
+    "density": 0.45,
+    "movement": 0.6,
+    "space": 0.7,
+    "warmth": 0.65
+  },
   "engines": [
     "Odyssey",
     "Ouroboros"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "DRIFT's long envelopes slowly rotate the Ouroboros projection angle. Evolving harmonic architecture over glacial timescales.",
-  "tags": [
-    "coupled",
-    "evolving",
-    "pad",
-    "ethereal"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "DRIFT HAZE",
     "ROTATION",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Manifold Drift",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0,
-      "drift_oscA_shape": 0,
-      "drift_oscA_tune": 0.0,
-      "drift_oscA_level": 0.6,
-      "drift_oscA_detune": 0.25,
-      "drift_oscA_pw": 0.5,
-      "drift_oscA_fmDepth": 0.0,
-      "drift_oscB_mode": 0,
-      "drift_oscB_shape": 1,
-      "drift_oscB_tune": 7.0,
-      "drift_oscB_level": 0.3,
-      "drift_oscB_detune": 0.2,
-      "drift_oscB_pw": 0.5,
-      "drift_oscB_fmDepth": 0.0,
-      "drift_subLevel": 0.0,
-      "drift_noiseLevel": 0.0,
-      "drift_hazeAmount": 0.3,
-      "drift_filterCutoff": 5000.0,
-      "drift_filterReso": 0.1,
-      "drift_filterSlope": 0,
-      "drift_filterEnvAmt": 0.2,
-      "drift_formantMorph": 0.5,
-      "drift_formantMix": 0.0,
-      "drift_shimmerAmount": 0.6,
-      "drift_shimmerTone": 0.7,
       "drift_attack": 1.5,
       "drift_decay": 6.0,
-      "drift_sustain": 0.65,
-      "drift_release": 5.0,
-      "drift_lfoRate": 0.05,
-      "drift_lfoDepth": 0.04,
-      "drift_lfoDest": 0,
       "drift_driftDepth": 0.45,
       "drift_driftRate": 0.03,
-      "drift_level": 0.55,
-      "drift_voiceMode": 0,
+      "drift_filterCutoff": 5000.0,
+      "drift_filterEnvAmt": 0.2,
+      "drift_filterReso": 0.1,
+      "drift_filterSlope": 0,
+      "drift_formantMix": 0.0,
+      "drift_formantMorph": 0.5,
       "drift_glide": 0.0,
-      "drift_polyphony": 4
+      "drift_hazeAmount": 0.3,
+      "drift_level": 0.55,
+      "drift_lfoDepth": 0.04,
+      "drift_lfoDest": 0,
+      "drift_lfoRate": 0.05,
+      "drift_noiseLevel": 0.0,
+      "drift_oscA_detune": 0.25,
+      "drift_oscA_fmDepth": 0.0,
+      "drift_oscA_level": 0.6,
+      "drift_oscA_mode": 0,
+      "drift_oscA_pw": 0.5,
+      "drift_oscA_shape": 0,
+      "drift_oscA_tune": 0.0,
+      "drift_oscB_detune": 0.2,
+      "drift_oscB_fmDepth": 0.0,
+      "drift_oscB_level": 0.3,
+      "drift_oscB_mode": 0,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_shape": 1,
+      "drift_oscB_tune": 7.0,
+      "drift_polyphony": 4,
+      "drift_release": 5.0,
+      "drift_shimmerAmount": 0.6,
+      "drift_shimmerTone": 0.7,
+      "drift_subLevel": 0.0,
+      "drift_sustain": 0.65,
+      "drift_voiceMode": 0
     },
     "Ouroboros": {
-      "ouro_topology": 3,
-      "ouro_rate": 110.0,
       "ouro_chaosIndex": 0.35,
-      "ouro_leash": 0.6,
-      "ouro_theta": 0.0,
-      "ouro_phi": 0.0,
       "ouro_damping": 0.5,
-      "ouro_injection": 0.0
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.6,
+      "ouro_phi": 0.0,
+      "ouro_rate": 110.0,
+      "ouro_theta": 0.0,
+      "ouro_topology": 3
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "Ouroboros",
-        "type": "Env->Morph",
-        "amount": 0.5
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.65,
-    "movement": 0.6,
-    "density": 0.45,
-    "space": 0.7,
-    "aggression": 0.15
-  }
+  "tags": [
+    "coupled",
+    "evolving",
+    "pad",
+    "ethereal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

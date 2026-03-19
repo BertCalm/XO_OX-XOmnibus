@@ -1096,7 +1096,7 @@ public:
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "ocean_lfo1Depth", 1 }, "Oceanic LFO1 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.15f)); // default 0.15 — audible out of the box
 
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "ocean_lfo1Shape", 1 }, "Oceanic LFO1 Shape",
@@ -1109,7 +1109,7 @@ public:
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "ocean_lfo2Depth", 1 }, "Oceanic LFO2 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.10f)); // default 0.10 — gentle cohesion breathing
 
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "ocean_lfo2Shape", 1 }, "Oceanic LFO2 Shape",

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Orphica \u00d7 Owlfish \u2014 Spectral Morph coupling at extreme DNA corner.",
+  "description": "Orphica × Owlfish — Spectral Morph coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "orphica",
@@ -33,7 +33,10 @@
     "space": 0.898,
     "aggression": 0.526
   },
-  "parameters": {},
+  "parameters": {
+    "Orphica": {},
+    "Owlfish": {}
+  },
   "coupling": {
     "pairs": [
       {

@@ -1,14 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Black Prism",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Oblique",
+        "engineB": "Obsidian",
+        "type": "AmpToFilter"
+      },
+      {
+        "amount": 0.45,
+        "engineA": "Obsidian",
+        "engineB": "Oblique",
+        "type": "EnvToMod"
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "OBLIQUE's violet prism refracting light that OBSIDIAN's mass refuses to emit — dark matter diffraction.",
+  "dna": {
+    "aggression": 0.595,
+    "brightness": 0.57,
+    "density": 0.69,
+    "movement": 0.665,
+    "space": 0.532,
+    "warmth": 0.495
+  },
   "engines": [
     "Oblique",
     "Obsidian"
   ],
-  "author": "XPN Tool \u2014 Optic/Oblique/Ocelot Coupling Pack",
-  "version": "1.0.0",
-  "description": "OBLIQUE's violet prism refracting light that OBSIDIAN's mass refuses to emit \u2014 dark matter diffraction.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Black Prism",
+  "parameters": {
+    "Oblique": {
+      "oblq_ampAttack": 0.02,
+      "oblq_ampRelease": 1.2,
+      "oblq_bounce": 0.65,
+      "oblq_filterCutoff": 3200.0,
+      "oblq_filterReso": 0.35,
+      "oblq_funkDepth": 0.7,
+      "oblq_modDepth": 0.6,
+      "oblq_modRate": 0.5,
+      "oblq_prismAngle": 0.55,
+      "oblq_refraction": 0.6
+    },
+    "Obsidian": {
+      "obs_ampAttack": 0.03,
+      "obs_ampRelease": 1.5,
+      "obs_filterCutoff": 2800.0,
+      "obs_filterReso": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "oblique",
     "obsidian",
@@ -19,63 +76,6 @@
     "entangled",
     "coupling"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oblique": {
-      "oblq_prismAngle": 0.55,
-      "oblq_bounce": 0.65,
-      "oblq_refraction": 0.6,
-      "oblq_funkDepth": 0.7,
-      "oblq_modRate": 0.5,
-      "oblq_modDepth": 0.6,
-      "oblq_filterCutoff": 3200.0,
-      "oblq_filterReso": 0.35,
-      "oblq_ampAttack": 0.02,
-      "oblq_ampRelease": 1.2
-    },
-    "Obsidian": {
-      "obs_filterCutoff": 2800.0,
-      "obs_filterReso": 0.3,
-      "obs_ampAttack": 0.03,
-      "obs_ampRelease": 1.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Obsidian",
-        "type": "AmpToFilter",
-        "amount": 0.65
-      },
-      {
-        "engineA": "Obsidian",
-        "engineB": "Oblique",
-        "type": "EnvToMod",
-        "amount": 0.45
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.57,
-    "warmth": 0.495,
-    "movement": 0.665,
-    "density": 0.69,
-    "space": 0.532,
-    "aggression": 0.595
-  }
+  "version": "1.0.0"
 }

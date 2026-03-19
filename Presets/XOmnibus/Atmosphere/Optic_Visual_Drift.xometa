@@ -1,0 +1,61 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Slow drifting luminescence — barely-there pulse that breathes across vast space. Bioluminescence in still water.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.55,
+    "density": 0.15,
+    "movement": 0.3,
+    "space": 0.9,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Visual Drift",
+  "parameters": {
+    "Optic": {
+      "optic_brightness": 0.55,
+      "optic_couplingBus": 0,
+      "optic_couplingLevel": 0.3,
+      "optic_emissionLevel": 0.5,
+      "optic_filterCutoff": 0.4,
+      "optic_filterReso": 0.15,
+      "optic_outputLevel": 0.7,
+      "optic_outputPan": 0.0,
+      "optic_pulseDepth": 0.5,
+      "optic_pulseRate": 0.02,
+      "optic_pulseShape": 0.7,
+      "optic_reverbDamp": 0.4,
+      "optic_reverbMix": 0.6,
+      "optic_reverbSize": 0.85
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.05,
+    "brightness": 0.55,
+    "density": 0.15,
+    "movement": 0.3,
+    "space": 0.9,
+    "warmth": 0.6
+  },
+  "tags": [
+    "drift",
+    "ambient",
+    "glow",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
+}

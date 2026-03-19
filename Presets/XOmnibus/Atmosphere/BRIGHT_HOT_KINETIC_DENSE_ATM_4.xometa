@@ -1,42 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT HOT KINETIC DENSE ATM 4",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Low",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: BRIGHT HOT KINETIC DENSE ATM 4.",
+  "dna": {
+    "aggression": 0.563,
+    "brightness": 0.952,
+    "density": 0.57,
+    "movement": 0.919,
+    "space": 0.945,
+    "warmth": 0.935
+  },
   "engines": [
     "Obese"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Atmosphere preset: BRIGHT HOT KINETIC DENSE ATM 4.",
-  "tags": [
-    "x-high-brightness",
-    "x-high-warmth",
-    "x-high-movement",
-    "x-high-space"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Low",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
+  "mood": "Atmosphere",
+  "name": "BRIGHT HOT KINETIC DENSE ATM 4",
+  "parameters": {
+    "Obese": {}
   },
-  "parameters": {},
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.952,
-    "warmth": 0.935,
-    "aggression": 0.563,
-    "density": 0.57,
-    "movement": 0.919,
-    "space": 0.945
-  }
+  "tags": [
+    "x-high-brightness",
+    "x-high-warmth",
+    "x-high-movement",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

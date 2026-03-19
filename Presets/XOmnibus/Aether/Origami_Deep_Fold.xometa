@@ -1,0 +1,60 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Recursive wavefold pushed toward its limit — fold point near maximum, fold amount at depth, brightness reduced by the self-cancellation. The signal approaches silence the further it folds. A sonic Möbius strip.",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.55,
+    "density": 0.38,
+    "movement": 0.15,
+    "space": 0.92,
+    "warmth": 0.42
+  },
+  "engines": [
+    "Origami"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "CREASE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Deep Fold",
+  "parameters": {
+    "Origami": {
+      "origami_ampAttack": 5.0,
+      "origami_ampDecay": 2.5,
+      "origami_ampRelease": 11.0,
+      "origami_ampSustain": 0.55,
+      "origami_creaseDepth": 0.72,
+      "origami_filterCutoff": 0.38,
+      "origami_filterReso": 0.22,
+      "origami_foldAmt": 0.9,
+      "origami_foldPoint": 0.95,
+      "origami_lfoDepth": 0.15,
+      "origami_lfoRate": 0.03,
+      "origami_macroCoupling": 0.0,
+      "origami_macroCrease": 0.0,
+      "origami_macroFold": 0.0,
+      "origami_macroSpace": 0.0,
+      "origami_reverbMix": 0.9
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "fold",
+    "recursive",
+    "deep",
+    "silence",
+    "wavefold",
+    "minimal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

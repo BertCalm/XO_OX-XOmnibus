@@ -1,35 +1,43 @@
 {
-  "name": "Tide of Becoming",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.42,
+    "density": 0.2,
+    "movement": 0.85,
+    "space": 0.88,
+    "warmth": 0.48
+  },
   "engines": [
     "Oceanic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.35,
+    "COUPLING": 0.22,
+    "MOVEMENT": 0.85,
+    "SPACE": 0.88
+  },
+  "mood": "Aether",
+  "name": "Tide of Becoming",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.35,
-      "macro_movement": 0.85,
       "macro_coupling": 0.22,
+      "macro_movement": 0.85,
       "macro_space": 0.88
     }
   },
-  "dna": {
-    "brightness": 0.42,
-    "warmth": 0.48,
-    "movement": 0.85,
-    "density": 0.2,
-    "space": 0.88,
-    "aggression": 0.1
-  },
-  "macros": {
-    "CHARACTER": 0.35,
-    "MOVEMENT": 0.85,
-    "COUPLING": 0.22,
-    "SPACE": 0.88
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "shifting-aether",
     "ambient"
-  ]
+  ],
+  "version": "1.0"
 }

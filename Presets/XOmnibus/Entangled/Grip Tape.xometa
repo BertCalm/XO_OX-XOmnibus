@@ -1,22 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "Grip Tape",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.74,
+    "pairs": [
+      {
+        "amount": 0.74,
+        "engineA": "Overbite",
+        "engineB": "Overdub",
+        "type": "Amp->Amp"
+      }
+    ],
+    "type": "Amp->Amp"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OVERBITE grip feeds OVERDUB tape. Bass-forward echo. [Amp->Amp]",
+  "dna": {
+    "aggression": 0.475,
     "brightness": 0.473,
-    "warmth": 0.635,
-    "movement": 0.527,
     "density": 0.625,
+    "movement": 0.527,
     "space": 0.632,
-    "aggression": 0.475
+    "warmth": 0.635
   },
   "engines": [
-    "XOverbite",
-    "XOverdub"
+    "Overbite",
+    "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE grip feeds OVERDUB tape. Bass-forward echo. [Amp->Amp]",
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "mood": "Entangled",
+  "name": "Grip Tape",
+  "parameters": {
+    "Overbite": {
+      "poss_aggression": 0.551,
+      "poss_brightness": 0.465,
+      "poss_couplingBus": 0,
+      "poss_couplingLevel": 0.65,
+      "poss_outputLevel": 0.89,
+      "poss_outputPan": -0.02,
+      "poss_warmth": 0.671
+    },
+    "Overdub": {
+      "dub_aggression": 0.355,
+      "dub_brightness": 0.489,
+      "dub_couplingBus": 0,
+      "dub_couplingLevel": 0.63,
+      "dub_outputLevel": 0.77,
+      "dub_outputPan": 0.04,
+      "dub_warmth": 0.682
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.475,
+    "brightness": 0.473,
+    "density": 0.625,
+    "movement": 0.527,
+    "space": 0.632,
+    "warmth": 0.635
+  },
   "tags": [
     "coupling",
     "entangled",
@@ -24,51 +70,5 @@
     "overdub",
     "bite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.473,
-    "warmth": 0.635,
-    "movement": 0.527,
-    "density": 0.625,
-    "space": 0.632,
-    "aggression": 0.475
-  },
-  "parameters": {
-    "XOverbite": {
-      "poss_outputLevel": 0.89,
-      "poss_outputPan": -0.02,
-      "poss_couplingLevel": 0.65,
-      "poss_couplingBus": 0,
-      "poss_brightness": 0.465,
-      "poss_warmth": 0.671,
-      "poss_aggression": 0.551
-    },
-    "XOverdub": {
-      "dub_outputLevel": 0.77,
-      "dub_outputPan": 0.04,
-      "dub_couplingLevel": 0.63,
-      "dub_couplingBus": 0,
-      "dub_brightness": 0.489,
-      "dub_warmth": 0.682,
-      "dub_aggression": 0.355
-    }
-  },
-  "coupling": {
-    "type": "Amp->Amp",
-    "amount": 0.74,
-    "pairs": [
-      {
-        "engineA": "XOverbite",
-        "engineB": "XOverdub",
-        "type": "Amp->Amp",
-        "amount": 0.74
-      }
-    ]
-  }
+  "version": "1.0.0"
 }

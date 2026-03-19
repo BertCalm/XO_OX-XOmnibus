@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Optic \u00d7 Orphica \u2014 Amplitude Mod coupling at extreme DNA corner.",
+  "description": "Optic × Orphica — Amplitude Mod coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "optic",
@@ -33,7 +33,10 @@
     "space": 0.597,
     "aggression": 0.076
   },
-  "parameters": {},
+  "parameters": {
+    "Optic": {},
+    "Orphica": {}
+  },
   "coupling": {
     "pairs": [
       {

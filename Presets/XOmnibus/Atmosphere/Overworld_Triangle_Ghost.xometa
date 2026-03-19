@@ -1,0 +1,69 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "NES 2A03 pure triangle held long — the ghost note after the note ends. eraMemory 5.0s at maximum, the harmonic echo of a chip song played in an empty room. Low filterCutoff softens the square edges into atmosphere. eraDrift breathes at 0.067Hz so it never fully settles. Velocity barely reaches through (filterEnvDepth 0.63) — light touches only.",
+  "dna": {
+    "aggression": 0.09,
+    "brightness": 0.34,
+    "density": 0.42,
+    "movement": 0.28,
+    "space": 0.86,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Triangle Ghost",
+  "parameters": {
+    "Overworld": {
+      "ow_couplingBus": 0,
+      "ow_couplingLevel": 0.06,
+      "ow_era": 0.05,
+      "ow_eraDrift": 0.067,
+      "ow_eraMemory": 5.0,
+      "ow_eraPortamento": 0.8,
+      "ow_eraY": 0.03,
+      "ow_filterCutoff": 0.38,
+      "ow_filterEnvDepth": 0.63,
+      "ow_fmLfoDepth": 0.0,
+      "ow_fmLfoRate": 0.067,
+      "ow_glitch": 0.03,
+      "ow_macro_chaos": 0.03,
+      "ow_macro_couple": 0.06,
+      "ow_macro_era": 0.05,
+      "ow_macro_space": 0.88,
+      "ow_outputLevel": 0.72
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonic_dna": {
+    "aggression": 0.09,
+    "brightness": 0.34,
+    "density": 0.42,
+    "movement": 0.28,
+    "space": 0.86,
+    "warmth": 0.65
+  },
+  "tags": [
+    "triangle",
+    "ghost",
+    "nes",
+    "atmosphere",
+    "ambient",
+    "long",
+    "memory"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

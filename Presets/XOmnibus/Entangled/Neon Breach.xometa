@@ -1,19 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Neon Breach",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.47,
+        "description": "Orca drives OddfeliX via SpectralMorph",
+        "source": "Orca",
+        "target": "OddfeliX",
+        "type": "SpectralMorph"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "The orca snaps through the neon scatter — ORCA's dark wavetable inverts OddfeliX's electric sheen, each breach a flash in the current.",
+  "dna": {
+    "aggression": 0.687,
+    "brightness": 0.465,
+    "density": 0.729,
+    "movement": 0.67,
+    "space": 0.633,
+    "warmth": 0.414
+  },
   "engines": [
     "Orca",
     "OddfeliX"
-  ],
-  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "The orca snaps through the neon scatter — ORCA's dark wavetable inverts OddfeliX's electric sheen, each breach a flash in the current.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "orca",
-    "oddfelix"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,62 +32,51 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.465,
-    "warmth": 0.414,
-    "movement": 0.67,
-    "density": 0.729,
-    "space": 0.633,
-    "aggression": 0.687
-  },
+  "mood": "Entangled",
+  "name": "Neon Breach",
   "parameters": {
-    "Orca": {
-      "orca_wavetablePos": 0.459,
-      "orca_wavetableScan": 0.674,
-      "orca_echoDepth": 0.537,
-      "orca_huntMacro": 0.461,
-      "orca_breachAmt": 0.795,
-      "orca_podSync": 0.567,
-      "orca_pitchRand": 0.064,
-      "orca_ampAttack": 0.0806,
-      "orca_ampDecay": 0.545,
-      "orca_ampSustain": 0.463,
-      "orca_ampRelease": 2.46,
-      "orca_filterCutoff": 0.535,
-      "orca_filterRes": 0.61,
-      "orca_lfo1Rate": 0.084,
-      "orca_lfo1Depth": 0.363,
-      "orca_lfo2Rate": 0.0585,
-      "orca_lfo2Depth": 0.136,
-      "orca_macroCharacter": 0.0,
-      "orca_macroPunch": 0.0,
-      "orca_macroCoupling": 0.0,
-      "orca_macroSpace": 0.0
-    },
     "OddfeliX": {
+      "snap_attack": 0.0,
       "snap_filterCutoff": 0.679,
       "snap_filterRes": 0.332,
-      "snap_lfoRate": 0.131,
       "snap_lfoDepth": 0.171,
-      "snap_attack": 0.0,
-      "snap_release": 1.0,
+      "snap_lfoRate": 0.131,
       "snap_macroCharacter": 0.028,
-      "snap_macroCoupling": 0.0
+      "snap_macroCoupling": 0.0,
+      "snap_release": 1.0
+    },
+    "Orca": {
+      "orca_ampAttack": 0.0806,
+      "orca_ampDecay": 0.545,
+      "orca_ampRelease": 2.46,
+      "orca_ampSustain": 0.463,
+      "orca_breachAmt": 0.795,
+      "orca_echoDepth": 0.537,
+      "orca_filterCutoff": 0.535,
+      "orca_filterRes": 0.61,
+      "orca_huntMacro": 0.461,
+      "orca_lfo1Depth": 0.363,
+      "orca_lfo1Rate": 0.084,
+      "orca_lfo2Depth": 0.136,
+      "orca_lfo2Rate": 0.0585,
+      "orca_macroCharacter": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroPunch": 0.0,
+      "orca_macroSpace": 0.0,
+      "orca_pitchRand": 0.064,
+      "orca_podSync": 0.567,
+      "orca_wavetablePos": 0.459,
+      "orca_wavetableScan": 0.674
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "source": "Orca",
-        "target": "OddfeliX",
-        "type": "SpectralMorph",
-        "amount": 0.47,
-        "description": "Orca drives OddfeliX via SpectralMorph"
-      }
-    ]
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "orca",
+    "oddfelix"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

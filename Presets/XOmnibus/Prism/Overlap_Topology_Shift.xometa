@@ -1,53 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Topology Shift",
-  "mood": "Prism",
-  "engines": ["Overlap"],
-  "author": "Guru Bin — OVERLAP Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "The mod wheel directly sweeps knot character from torus smoothness through figure-8 regularity into trefoil complexity. At CC=0 the reverb is glassy and uniform; at CC=127 the cross-coupling creates audible interference patterns. A single performance gesture reshapes the entire spatial architecture.",
-  "tags": ["performance", "mod-wheel", "expressive", "topology", "prism", "morphing"],
-  "macroLabels": ["CHARACTER", "SPACE", "COUPLING", "DECAY"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
+  "description": "The mod wheel directly sweeps knot character from torus smoothness through figure-8 regularity into trefoil complexity. At CC=0 the reverb is glassy and uniform; at CC=127 the cross-coupling creates audible interference patterns. A single performance gesture reshapes the entire spatial architecture.",
   "dna": {
+    "aggression": 0.25,
     "brightness": 0.55,
-    "warmth": 0.5,
-    "movement": 0.6,
     "density": 0.55,
+    "movement": 0.6,
     "space": 0.75,
-    "aggression": 0.25
+    "warmth": 0.5
   },
-  "parameters": {
-    "Overlap": {
-      "olap_knotType": 2,
-      "olap_delayFeedback": 0.5,
-      "olap_diffusion": 0.65,
-      "olap_spread": 0.75,
-      "olap_decay": 3.2,
-      "olap_modDepth": 0.15,
-      "olap_modRate": 0.12,
-      "olap_damping": 0.42,
-      "olap_macroCharacter": 0.0,
-      "olap_macroSpace": 0.0,
-      "olap_macroCoupling": 0.0,
-      "olap_macroDecay": 0.0
-    }
-  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
   "modMatrix": [
     {
-      "source": "ModWheel",
-      "target": "olap_knotType",
       "amount": 1.0,
-      "curve": "Linear"
+      "curve": "Linear",
+      "source": "ModWheel",
+      "target": "olap_knotType"
     },
     {
-      "source": "ModWheel",
-      "target": "olap_diffusion",
       "amount": 0.3,
-      "curve": "Linear"
+      "curve": "Linear",
+      "source": "ModWheel",
+      "target": "olap_diffusion"
     }
   ],
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "mood": "Prism",
+  "name": "Topology Shift",
+  "parameters": {
+    "Overlap": {
+      "olap_damping": 0.42,
+      "olap_decay": 3.2,
+      "olap_delayFeedback": 0.5,
+      "olap_diffusion": 0.65,
+      "olap_knotType": 2,
+      "olap_macroCharacter": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_modDepth": 0.15,
+      "olap_modRate": 0.12,
+      "olap_spread": 0.75
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "performance",
+    "mod-wheel",
+    "expressive",
+    "topology",
+    "prism",
+    "morphing"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

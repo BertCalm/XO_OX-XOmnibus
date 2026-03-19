@@ -1,19 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Spring at Depth",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.556,
+        "description": "Orca drives Overdub via TimbreShare",
+        "source": "Orca",
+        "target": "Overdub",
+        "type": "TimbreShare"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "created": "2026-03-16",
+  "description": "Overdub's spring reverb meets ORCA in the submarine canyon — the metallic splash of the spring is what the ocean floor hears when something breaches above.",
+  "dna": {
+    "aggression": 0.569,
+    "brightness": 0.331,
+    "density": 0.669,
+    "movement": 0.583,
+    "space": 0.711,
+    "warmth": 0.424
+  },
   "engines": [
     "Orca",
     "Overdub"
-  ],
-  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "Overdub's spring reverb meets ORCA in the submarine canyon — the metallic splash of the spring is what the ocean floor hears when something breaches above.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "orca",
-    "overdub"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,61 +32,51 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Strong",
-  "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.331,
-    "warmth": 0.424,
-    "movement": 0.583,
-    "density": 0.669,
-    "space": 0.711,
-    "aggression": 0.569
-  },
+  "mood": "Entangled",
+  "name": "Spring at Depth",
   "parameters": {
     "Orca": {
-      "orca_wavetablePos": 0.624,
-      "orca_wavetableScan": 0.322,
-      "orca_echoDepth": 0.694,
-      "orca_huntMacro": 0.133,
-      "orca_breachAmt": 0.741,
-      "orca_podSync": 0.397,
-      "orca_pitchRand": 0.087,
       "orca_ampAttack": 0.0072,
       "orca_ampDecay": 0.276,
-      "orca_ampSustain": 0.675,
       "orca_ampRelease": 1.8,
+      "orca_ampSustain": 0.675,
+      "orca_breachAmt": 0.741,
+      "orca_echoDepth": 0.694,
       "orca_filterCutoff": 0.491,
       "orca_filterRes": 0.471,
-      "orca_lfo1Rate": 0.133,
+      "orca_huntMacro": 0.133,
       "orca_lfo1Depth": 0.35,
-      "orca_lfo2Rate": 0.0212,
+      "orca_lfo1Rate": 0.133,
       "orca_lfo2Depth": 0.089,
+      "orca_lfo2Rate": 0.0212,
       "orca_macroCharacter": 0.0,
-      "orca_macroPunch": 0.0,
       "orca_macroCoupling": 0.0,
-      "orca_macroSpace": 0.0
+      "orca_macroPunch": 0.0,
+      "orca_macroSpace": 0.0,
+      "orca_pitchRand": 0.087,
+      "orca_podSync": 0.397,
+      "orca_wavetablePos": 0.624,
+      "orca_wavetableScan": 0.322
     },
     "Overdub": {
-      "dub_oscWave": 0.297,
-      "dub_sendAmount": 0.481,
-      "dub_tapeDelay": 0.636,
-      "dub_spring": 0.366,
       "dub_filterCutoff": 0.59,
       "dub_macroCharacter": 0.0,
-      "dub_macroCoupling": 0.02
+      "dub_macroCoupling": 0.02,
+      "dub_oscWave": 0.297,
+      "dub_sendAmount": 0.481,
+      "dub_spring": 0.366,
+      "dub_tapeDelay": 0.636,
+      "dub_lfoDepth": 0.12
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "source": "Orca",
-        "target": "Overdub",
-        "type": "TimbreShare",
-        "amount": 0.556,
-        "description": "Orca drives Overdub via TimbreShare"
-      }
-    ]
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "orca",
+    "overdub"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

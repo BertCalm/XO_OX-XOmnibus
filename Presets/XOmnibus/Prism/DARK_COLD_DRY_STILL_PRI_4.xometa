@@ -1,42 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD DRY STILL PRI 4",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Prism preset: DARK COLD DRY STILL PRI 4.",
+  "dna": {
+    "aggression": 0.066,
+    "brightness": 0.104,
+    "density": 0.078,
+    "movement": 0.058,
+    "space": 0.51,
+    "warmth": 0.426
+  },
   "engines": [
     "Osprey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Prism preset: DARK COLD DRY STILL PRI 4.",
-  "tags": [
-    "x-low-brightness",
-    "x-low-aggression",
-    "x-low-density",
-    "x-low-movement"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "High",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
+  "mood": "Prism",
+  "name": "DARK COLD DRY STILL PRI 4",
+  "parameters": {
+    "Osprey": {}
   },
-  "parameters": {},
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.104,
-    "warmth": 0.426,
-    "aggression": 0.066,
-    "density": 0.078,
-    "movement": 0.058,
-    "space": 0.51
-  }
+  "tags": [
+    "x-low-brightness",
+    "x-low-aggression",
+    "x-low-density",
+    "x-low-movement"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

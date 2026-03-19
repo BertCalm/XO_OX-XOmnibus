@@ -1,19 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Meadow At Elevation",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The dad's jam at 4,000 meters. In-laws cannot follow. The theremin traces mountain air with no gravity in its signal path.",
+  "dna": {
+    "aggression": 0.02,
+    "brightness": 0.78,
+    "density": 0.28,
+    "movement": 0.22,
+    "space": 0.91,
+    "warmth": 0.5
+  },
   "engines": [
     "Ohm"
-  ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "The dad's jam at 4,000 meters. In-laws cannot follow. The theremin traces mountain air with no gravity in its signal path.",
-  "tags": [
-    "aether",
-    "transcendent",
-    "folk",
-    "elevation",
-    "pastoral"
   ],
   "macroLabels": [
     "JAM",
@@ -21,41 +22,40 @@
     "COMMUNE",
     "MEADOW"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.78,
-    "warmth": 0.5,
-    "movement": 0.22,
-    "density": 0.28,
-    "space": 0.91,
-    "aggression": 0.02
-  },
+  "mood": "Aether",
+  "name": "Meadow At Elevation",
   "parameters": {
     "Ohm": {
-      "ohm_dadInstrument": 2,
-      "ohm_dadLevel": 0.7,
-      "ohm_pluckBrightness": 0.5,
+      "ohm_bodyMaterial": 3,
       "ohm_bowPressure": 0.0,
       "ohm_bowSpeed": 0.5,
-      "ohm_bodyMaterial": 3,
-      "ohm_sympatheticAmt": 0.7,
-      "ohm_driftRate": 0.1,
-      "ohm_driftDepth": 0.8,
+      "ohm_dadInstrument": 2,
+      "ohm_dadLevel": 0.7,
       "ohm_damping": 0.99,
-      "ohm_spectralFreeze": 0.75,
-      "ohm_grainSize": 0.95,
+      "ohm_delayFeedback": 0.3,
+      "ohm_driftDepth": 0.8,
+      "ohm_driftRate": 0.1,
       "ohm_grainDensity": 0.3,
       "ohm_grainScatter": 0.3,
-      "ohm_reverbMix": 0.82,
-      "ohm_delayFeedback": 0.3,
-      "ohm_macroJam": 0.0,
-      "ohm_macroMeddling": 0.0,
+      "ohm_grainSize": 0.95,
       "ohm_macroCommune": 0.0,
-      "ohm_macroMeadow": 0.0
+      "ohm_macroJam": 0.0,
+      "ohm_macroMeadow": 0.0,
+      "ohm_macroMeddling": 0.0,
+      "ohm_pluckBrightness": 0.5,
+      "ohm_reverbMix": 0.82,
+      "ohm_spectralFreeze": 0.75,
+      "ohm_sympatheticAmt": 0.7
     }
   },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "transcendent",
+    "folk",
+    "elevation",
+    "pastoral"
+  ],
+  "version": "1.0.0"
 }

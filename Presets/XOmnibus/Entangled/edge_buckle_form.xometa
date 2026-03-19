@@ -1,51 +1,64 @@
 {
-  "name": "Edge Buckle Form",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.7
+      }
+    ]
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.7,
+    "density": 0.5,
+    "movement": 0.6,
+    "space": 0.5,
+    "warmth": 0.5
+  },
   "engines": [
     "Oblong",
     "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.6,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Edge Buckle Form",
   "parameters": {
     "Oblong": {
       "macro_character": 0.7,
-      "macro_movement": 0.6,
       "macro_coupling": 0.7,
-      "macro_space": 0.5
+      "macro_movement": 0.6,
+      "macro_space": 0.5,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Origami": {
       "macro_character": 0.5,
-      "macro_movement": 0.6,
       "macro_coupling": 0.7,
+      "macro_movement": 0.6,
       "macro_space": 0.5
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBLONG",
-    "target": "ORIGAMI",
-    "amount": 0.7
-  },
-  "dna": {
-    "brightness": 0.7,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.5,
-    "space": 0.5,
-    "aggression": 0.4
-  },
-  "macros": {
-    "CHARACTER": 0.6,
-    "MOVEMENT": 0.6,
-    "COUPLING": 0.7,
-    "SPACE": 0.5
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "oblong",
     "origami"
   ],
-  "author": "XO_OX Coverage Pack 2026-03-16",
-  "created": "2026-03-16"
+  "version": "1.0"
 }

@@ -1,56 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "White Noise Sweep",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Ethereal textures wash with warm character.",
+  "dna": {
+    "aggression": 0.124,
+    "brightness": 0.311,
+    "density": 0.017,
+    "movement": 0.0,
+    "space": 0.308,
+    "warmth": 0.0
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ethereal textures wash with warm character.",
-  "tags": [
-    "spacious",
-    "slow-attack",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Textures",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Textures",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "White Noise Sweep",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 3.0,
-      "drift_oscA_level": 0.2,
-      "drift_noiseLevel": 0.6,
+      "drift_attack": 800.0,
       "drift_filterCutoff": 1000.0,
+      "drift_filterEnvAmt": 0.5,
       "drift_filterReso": 0.3,
       "drift_filterSlope": 1.0,
-      "drift_attack": 800.0,
-      "drift_sustain": 0.5,
+      "drift_level": -5.0,
+      "drift_noiseLevel": 0.6,
+      "drift_oscA_level": 0.2,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 3.0,
       "drift_release": 3000.0,
-      "drift_filterEnvAmt": 0.5,
-      "drift_level": -5.0
+      "drift_sustain": 0.5
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.311,
-    "warmth": 0.0,
-    "movement": 0.0,
-    "density": 0.017,
-    "space": 0.308,
-    "aggression": 0.124
-  }
+  "tags": [
+    "spacious",
+    "slow-attack",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

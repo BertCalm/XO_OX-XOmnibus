@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Sparkle Reed",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Peter's bright flute cuts through Wolf's reed warmth. BOND mid — tension without conflict.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.7,
+    "density": 0.45,
+    "movement": 0.39,
+    "space": 0.57,
+    "warmth": 0.4
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "prism",
-    "bright",
-    "prism"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.7,
-    "warmth": 0.4,
-    "movement": 0.39,
-    "density": 0.45,
-    "space": 0.57,
-    "aggression": 0.15
-  },
+  "mood": "Prism",
+  "name": "Sparkle Reed",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.747,
-      "obbl_embouchureA": 0.39,
       "obbl_airFlutterA": 0.276,
-      "obbl_instrumentA": 6,
       "obbl_bodySizeA": 0.454,
-      "obbl_breathB": 0.815,
-      "obbl_reedStiffness": 0.629,
-      "obbl_reedBite": 0.184,
-      "obbl_instrumentB": 6,
       "obbl_bodySizeB": 0.368,
-      "obbl_voiceRouting": 4,
-      "obbl_damping": 0.992,
-      "obbl_sympatheticAmt": 0.27,
-      "obbl_driftRate": 0.136,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.169,
       "obbl_bondIntensity": 0.347,
       "obbl_bondRate": 0.285,
-      "obbl_fxAChorus": 0.426,
+      "obbl_bondStage": 0.169,
+      "obbl_breathA": 0.747,
+      "obbl_breathB": 0.815,
+      "obbl_damping": 0.992,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.136,
+      "obbl_embouchureA": 0.39,
       "obbl_fxABrightDelay": 0.279,
-      "obbl_fxAPlate": 0.171,
+      "obbl_fxAChorus": 0.426,
       "obbl_fxAExciter": 0.048,
-      "obbl_fxBPhaser": 0.206,
+      "obbl_fxAPlate": 0.171,
       "obbl_fxBDarkDelay": 0.33,
+      "obbl_fxBPhaser": 0.206,
       "obbl_fxBSpring": 0.236,
       "obbl_fxBTapeSat": 0.044,
-      "obbl_macroBreath": 0.567,
+      "obbl_instrumentA": 6,
+      "obbl_instrumentB": 6,
       "obbl_macroBond": 0.0,
+      "obbl_macroBreath": 0.567,
       "obbl_macroMischief": 0.095,
-      "obbl_macroWind": 0.155
+      "obbl_macroWind": 0.155,
+      "obbl_reedBite": 0.184,
+      "obbl_reedStiffness": 0.629,
+      "obbl_sympatheticAmt": 0.27,
+      "obbl_voiceRouting": 4
     }
   },
-  "coupling": null,
-  "description": "Peter's bright flute cuts through Wolf's reed warmth. BOND mid \u2014 tension without conflict."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "prism",
+    "bright",
+    "prism"
+  ],
+  "version": "1.0.0"
 }

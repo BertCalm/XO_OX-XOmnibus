@@ -1,0 +1,97 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "The complete predator arc under one hand. Starts at patrol — huntMacro 0.2, wavetable scanning slowly, the orca cruising at depth. Mod wheel escalates: huntMacro rises toward 0.9, scan rate accelerates, the animal locking onto prey. Aftertouch triggers the breach — threshold drops, the sub impact fires, the full predator reveals itself. Velocity drives formant shift, lighter touches keeping the call ambiguous, hard strikes resolving it into full vocal aggression. Return the wheel and the hunt retreats. The sound remembers being dangerous.",
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.45,
+    "density": 0.5,
+    "movement": 0.72,
+    "space": 0.65,
+    "warmth": 0.3
+  },
+  "engines": [
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "modMatrix": [
+    {
+      "amount": 0.7,
+      "destination": "orca_huntMacro",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.65,
+      "destination": "orca_wtScanRate",
+      "source": "modWheel"
+    },
+    {
+      "amount": 0.45,
+      "destination": "orca_filterCutoff",
+      "source": "modWheel"
+    },
+    {
+      "amount": -0.6,
+      "destination": "orca_breachThreshold",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.5,
+      "destination": "orca_breachSub",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.75,
+      "destination": "orca_formantIntensity",
+      "source": "velocity"
+    },
+    {
+      "amount": 0.35,
+      "destination": "orca_filterReso",
+      "source": "velocity"
+    }
+  ],
+  "mood": "Prism",
+  "name": "Hunt Escalation",
+  "parameters": {
+    "Orca": {
+      "orca_attack": 0.08,
+      "orca_breachSub": 0.3,
+      "orca_breachThreshold": 0.75,
+      "orca_decay": 0.6,
+      "orca_echoReso": 0.45,
+      "orca_filterCutoff": 1800.0,
+      "orca_filterReso": 0.12,
+      "orca_formantIntensity": 0.25,
+      "orca_huntMacro": 0.2,
+      "orca_level": 0.75,
+      "orca_release": 2.2,
+      "orca_sustain": 0.65,
+      "orca_wtScanRate": 0.15
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "orca",
+    "hunt",
+    "escalation",
+    "predator",
+    "mod-wheel",
+    "aftertouch",
+    "prism",
+    "expression",
+    "cinematic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

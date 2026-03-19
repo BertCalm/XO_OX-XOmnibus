@@ -1,0 +1,93 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OURO-IV made playable. Topology 2 (Chua) at chaosIndex 0.7, leash 0.65 — the organic membrane that can hold indefinitely, the double-scroll attractor breathing at its own frequency. Mod wheel sweeps chaos from 0.7 to 0.9: the membrane thins, oscillates harder, begins approaching the boundary where the double-scroll collapses into pure stochastic motion. Aftertouch reduces damping from 0.5 toward 0.2 — press into a note and the system destabilizes slightly more with each pound of pressure. The membrane that can hold. The question is whether you will let it.",
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.5,
+    "density": 0.6,
+    "movement": 0.75,
+    "space": 0.55,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "modMatrix": [
+    {
+      "amount": 0.2,
+      "destination": "ouro_chaosIndex",
+      "source": "modWheel"
+    },
+    {
+      "amount": -0.3,
+      "destination": "ouro_damping",
+      "source": "aftertouch"
+    },
+    {
+      "amount": 0.25,
+      "destination": "ouro_injection",
+      "source": "velocity"
+    },
+    {
+      "amount": 0.1,
+      "destination": "ouro_leash",
+      "source": "velocity"
+    }
+  ],
+  "mood": "Prism",
+  "name": "Chua Edge",
+  "parameters": {
+    "Ouroboros": {
+      "ouro_ampAttack": 0.08,
+      "ouro_ampDecay": 0.5,
+      "ouro_ampRelease": 2.8,
+      "ouro_ampSustain": 0.78,
+      "ouro_chaosIndex": 0.7,
+      "ouro_damping": 0.5,
+      "ouro_glide": 0.0,
+      "ouro_injection": 0.06,
+      "ouro_leash": 0.65,
+      "ouro_lfo1Depth": 0.08,
+      "ouro_lfo1Rate": 0.06,
+      "ouro_lfo1Shape": 0,
+      "ouro_lfo2Depth": 0.06,
+      "ouro_lfo2Rate": 0.025,
+      "ouro_lfo2Shape": 0,
+      "ouro_macroChaos": 0.0,
+      "ouro_macroCharacter": 0.0,
+      "ouro_macroCoupling": 0.0,
+      "ouro_macroSpace": 0.0,
+      "ouro_phi": 0.5,
+      "ouro_rate": 76.0,
+      "ouro_theta": 1.1,
+      "ouro_topology": 2,
+      "ouro_voiceMode": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "chua",
+    "double-scroll",
+    "membrane",
+    "edge",
+    "aftertouch",
+    "modwheel",
+    "ouroboros",
+    "prism",
+    "b003"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

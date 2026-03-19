@@ -2,16 +2,36 @@
   "schema_version": 1,
   "name": "Coral Chorus",
   "mood": "Entangled",
-  "engines": ["Oracle", "Oblong"],
+  "engines": [
+    "Oracle",
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oracle's GENDY stochastic output feeds into Oblong's modulation chain — the reef organism's prophecy drives Bob's filter breath. Quarter-tone voice from the ancient, warmth from the familiar.",
-  "tags": ["gendy", "maqam", "coupling", "Oracle-pair", "organic", "warmth", "filter-mod"],
-  "macroLabels": ["PROPHECY", "BOB WARMTH", "COUPLING", "SPACE"],
+  "description": "Oracle's GENDY stochastic output feeds into Oblong's modulation chain \u2014 the reef organism's prophecy drives Bob's filter breath. Quarter-tone voice from the ancient, warmth from the familiar.",
+  "tags": [
+    "gendy",
+    "maqam",
+    "coupling",
+    "Oracle-pair",
+    "organic",
+    "warmth",
+    "filter-mod"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "BOB WARMTH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 18,
@@ -54,13 +74,25 @@
       "bob_attack": 0.12,
       "bob_decay": 0.9,
       "bob_sustain": 0.6,
-      "bob_release": 1.5
+      "bob_release": 1.5,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     }
   },
   "coupling": {
     "pairs": [
-      { "engineA": "Oracle", "engineB": "Oblong", "type": "Audio->FM", "amount": 0.4 },
-      { "engineA": "Oracle", "engineB": "Oblong", "type": "Amp->Filter", "amount": 0.3 }
+      {
+        "engineA": "Oracle",
+        "engineB": "Oblong",
+        "type": "Audio->FM",
+        "amount": 0.4
+      },
+      {
+        "engineA": "Oracle",
+        "engineB": "Oblong",
+        "type": "Amp->Filter",
+        "amount": 0.3
+      }
     ]
   },
   "sequencer": null,

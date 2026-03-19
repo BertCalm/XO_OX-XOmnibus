@@ -1,19 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Silver and Gold",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.716,
+        "description": "Owlfish drives Obscura via HARMONIC_BLEND",
+        "source": "Owlfish",
+        "target": "Obscura",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Light",
+  "created": "2026-03-16",
+  "description": "OBSCURA's daguerreotype silver meets OWLFISH's abyssal gold — two metallic tones at different temperatures, the image and the oscillator.",
+  "dna": {
+    "aggression": 0.407,
+    "brightness": 0.502,
+    "density": 0.592,
+    "movement": 0.266,
+    "space": 0.549,
+    "warmth": 0.608
+  },
   "engines": [
     "Owlfish",
     "Obscura"
-  ],
-  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "OBSCURA's daguerreotype silver meets OWLFISH's abyssal gold — two metallic tones at different temperatures, the image and the oscillator.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "owlfish",
-    "obscura"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,64 +32,53 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Light",
-  "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.502,
-    "warmth": 0.608,
-    "movement": 0.266,
-    "density": 0.592,
-    "space": 0.549,
-    "aggression": 0.407
-  },
+  "mood": "Entangled",
+  "name": "Silver and Gold",
   "parameters": {
+    "Obscura": {
+      "obscura_attack": 0.068,
+      "obscura_filterCutoff": 0.507,
+      "obscura_lfoRate": 0.082,
+      "obscura_macroCharacter": 0.025,
+      "obscura_macroCoupling": 0.003,
+      "obscura_release": 1.0,
+      "obscura_stiffness": 0.511
+    },
     "Owlfish": {
-      "owl_filterCutoff": 0.786,
-      "owl_filterRes": 0.633,
-      "owl_oscPitch": 0.441,
-      "owl_oscLevel": 0.533,
-      "owl_subLevel": 0.398,
-      "owl_mixturSpread": 0.591,
-      "owl_mixturBlend": 0.532,
-      "owl_resonantPitch": 0.306,
-      "owl_resonantFeedback": 0.437,
       "owl_abyssalDrive": 0.497,
       "owl_ampAttack": 0.253,
       "owl_ampDecay": 0.39,
-      "owl_ampSustain": 0.817,
       "owl_ampRelease": 1.45,
-      "owl_lfoRate": 0.125,
-      "owl_lfoDepth": 0.226,
-      "owl_lfoShape": 0.251,
+      "owl_ampSustain": 0.817,
       "owl_envDepth": 0.391,
+      "owl_filterCutoff": 0.786,
+      "owl_filterRes": 0.633,
       "owl_hall": 0.51,
-      "owl_shimmer": 0.186,
+      "owl_lfoDepth": 0.226,
+      "owl_lfoRate": 0.125,
+      "owl_lfoShape": 0.251,
       "owl_macroCharacter": 0.0,
-      "owl_macroMovement": 0.0,
       "owl_macroCoupling": 0.0,
-      "owl_macroSpace": 0.0
-    },
-    "Obscura": {
-      "obscura_stiffness": 0.511,
-      "obscura_filterCutoff": 0.507,
-      "obscura_lfoRate": 0.082,
-      "obscura_attack": 0.068,
-      "obscura_release": 1.0,
-      "obscura_macroCharacter": 0.025,
-      "obscura_macroCoupling": 0.003
+      "owl_macroMovement": 0.0,
+      "owl_macroSpace": 0.0,
+      "owl_mixturBlend": 0.532,
+      "owl_mixturSpread": 0.591,
+      "owl_oscLevel": 0.533,
+      "owl_oscPitch": 0.441,
+      "owl_resonantFeedback": 0.437,
+      "owl_resonantPitch": 0.306,
+      "owl_shimmer": 0.186,
+      "owl_subLevel": 0.398
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "source": "Owlfish",
-        "target": "Obscura",
-        "type": "HARMONIC_BLEND",
-        "amount": 0.716,
-        "description": "Owlfish drives Obscura via HARMONIC_BLEND"
-      }
-    ]
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "obscura"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

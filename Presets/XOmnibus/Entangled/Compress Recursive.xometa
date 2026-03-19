@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Compress Recursive",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.63,
+    "pairs": [
+      {
+        "amount": 0.63,
+        "engineA": "Obese",
+        "engineB": "Ouroboros",
+        "type": "Rhythm->Blend"
+      }
+    ],
+    "type": "Rhythm->Blend"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OBESE feedback loop entangles with OUROBOROS recursion. Infinite saturation. [Rhythm->Blend]",
+  "dna": {
+    "aggression": 0.75,
     "brightness": 0.464,
-    "warmth": 0.536,
-    "movement": 0.709,
     "density": 0.734,
+    "movement": 0.709,
     "space": 0.445,
-    "aggression": 0.75
+    "warmth": 0.536
   },
   "engines": [
-    "XObese",
-    "XOuroboros"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE feedback loop entangles with OUROBOROS recursion. Infinite saturation. [Rhythm->Blend]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "obese",
-    "ouroboros",
-    "fat"
+    "Obese",
+    "Ouroboros"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.464,
-    "warmth": 0.536,
-    "movement": 0.709,
-    "density": 0.734,
-    "space": 0.445,
-    "aggression": 0.75
-  },
+  "mood": "Entangled",
+  "name": "Compress Recursive",
   "parameters": {
-    "XObese": {
+    "Obese": {
+      "fat_aggression": 0.719,
+      "fat_brightness": 0.526,
+      "fat_couplingBus": 0,
+      "fat_couplingLevel": 0.64,
       "fat_outputLevel": 0.81,
       "fat_outputPan": -0.05,
-      "fat_couplingLevel": 0.64,
-      "fat_couplingBus": 0,
-      "fat_brightness": 0.526,
-      "fat_warmth": 0.616,
-      "fat_aggression": 0.719
+      "fat_warmth": 0.616
     },
-    "XOuroboros": {
+    "Ouroboros": {
+      "ouro_aggression": 0.787,
+      "ouro_brightness": 0.523,
+      "ouro_couplingBus": 0,
+      "ouro_couplingLevel": 0.56,
       "ouro_outputLevel": 0.89,
       "ouro_outputPan": 0.05,
-      "ouro_couplingLevel": 0.56,
-      "ouro_couplingBus": 0,
-      "ouro_brightness": 0.523,
-      "ouro_warmth": 0.463,
-      "ouro_aggression": 0.787
+      "ouro_warmth": 0.463
     }
   },
-  "coupling": {
-    "type": "Rhythm->Blend",
-    "amount": 0.63,
-    "pairs": [
-      {
-        "engineA": "XObese",
-        "engineB": "XOuroboros",
-        "type": "Rhythm->Blend",
-        "amount": 0.63
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.75,
+    "brightness": 0.464,
+    "density": 0.734,
+    "movement": 0.709,
+    "space": 0.445,
+    "warmth": 0.536
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "ouroboros",
+    "fat"
+  ],
+  "version": "1.0.0"
 }

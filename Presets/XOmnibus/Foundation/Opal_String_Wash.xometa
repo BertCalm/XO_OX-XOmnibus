@@ -1,0 +1,61 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Slow string texture from large grains — 0.65 size — with low posScatter 0.12 so the grain playhead moves predictably across a string ensemble source. This is not a sample playback. It is granular silk: the illusion of sustain from a thousand short bows. Bright filter, low resonance, long release.",
+  "dna": {
+    "aggression": 0.04,
+    "brightness": 0.6,
+    "density": 0.6,
+    "movement": 0.25,
+    "space": 0.65,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "String Wash",
+  "parameters": {
+    "Opal": {
+      "opal_ampAttack": 0.7,
+      "opal_ampDecay": 0.8,
+      "opal_ampRelease": 3.5,
+      "opal_ampSustain": 0.9,
+      "opal_density": 0.62,
+      "opal_filterCutoff": 0.7,
+      "opal_filterReso": 0.08,
+      "opal_grainSize": 0.65,
+      "opal_macroCharacter": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitchScatter": 0.0,
+      "opal_posScatter": 0.12,
+      "opal_reverse": 0.0,
+      "opal_speed": 1.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "granular",
+    "strings",
+    "pad",
+    "warm",
+    "smooth",
+    "foundation",
+    "lush"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

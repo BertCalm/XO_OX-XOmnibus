@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ombre \u00d7 Outwit \u2014 Pitch Sync coupling at extreme DNA corner.",
+  "description": "Ombre × Outwit — Pitch Sync coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "ombre",
@@ -33,7 +33,10 @@
     "space": 0.384,
     "aggression": 0.615
   },
-  "parameters": {},
+  "parameters": {
+    "Ombre": {},
+    "Outwit": {}
+  },
   "coupling": {
     "pairs": [
       {

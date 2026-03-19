@@ -1,13 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Mantle Convection",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Sixteen oscillators at near-zero group envelope rate — vast geological time. Movement is real but takes minutes to perceive. The deep interior in motion.",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.22,
+    "density": 0.72,
+    "movement": 0.78,
+    "space": 0.96,
+    "warmth": 0.88
+  },
   "engines": [
     "Orbital"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "Sixteen oscillators at near-zero group envelope rate \u2014 vast geological time. Movement is real but takes minutes to perceive. The deep interior in motion.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Mantle Convection",
+  "parameters": {
+    "Orbital": {
+      "orb_ampAttack": 4.0,
+      "orb_ampDecay": 2.0,
+      "orb_ampRelease": 10.0,
+      "orb_ampSustain": 0.88,
+      "orb_brightness": 0.25,
+      "orb_detune": 0.18,
+      "orb_filterCutoff": 0.35,
+      "orb_filterReso": 0.05,
+      "orb_groupEnvDepth": 0.85,
+      "orb_groupEnvRate": 0.03,
+      "orb_oscCount": 16,
+      "orb_spread": 0.92
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "calm",
@@ -15,46 +55,6 @@
     "mantle",
     "geological"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Orbital": {
-      "orb_brightness": 0.25,
-      "orb_groupEnvRate": 0.03,
-      "orb_groupEnvDepth": 0.85,
-      "orb_oscCount": 16,
-      "orb_spread": 0.92,
-      "orb_detune": 0.18,
-      "orb_filterCutoff": 0.35,
-      "orb_filterReso": 0.05,
-      "orb_ampAttack": 4.0,
-      "orb_ampDecay": 2.0,
-      "orb_ampSustain": 0.88,
-      "orb_ampRelease": 10.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.22,
-    "warmth": 0.88,
-    "movement": 0.78,
-    "density": 0.72,
-    "space": 0.96,
-    "aggression": 0.06
-  }
+  "version": "1.0.0"
 }

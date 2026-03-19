@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Infinite Feedback",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Ethereal textures wash with prism shimmer.",
+  "dna": {
+    "aggression": 0.041,
+    "brightness": 0.529,
+    "density": 0.042,
+    "movement": 0.0,
+    "space": 0.45,
+    "warmth": 0.0
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ethereal textures wash with prism shimmer.",
-  "tags": [
-    "shimmery",
-    "spacious",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Textures",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Textures",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Infinite Feedback",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 2.0,
-      "drift_oscA_level": 0.5,
-      "drift_shimmerAmount": 0.3,
-      "drift_filterCutoff": 4000.0,
-      "drift_filterReso": 0.1,
       "drift_attack": 50.0,
       "drift_decay": 800.0,
-      "drift_sustain": 0.2,
+      "drift_filterCutoff": 4000.0,
+      "drift_filterReso": 0.1,
+      "drift_level": -5.0,
+      "drift_oscA_level": 0.5,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 2.0,
       "drift_release": 1000.0,
-      "drift_level": -5.0
+      "drift_shimmerAmount": 0.3,
+      "drift_sustain": 0.2
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.529,
-    "warmth": 0.0,
-    "movement": 0.0,
-    "density": 0.042,
-    "space": 0.45,
-    "aggression": 0.041
-  }
+  "tags": [
+    "shimmery",
+    "spacious",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

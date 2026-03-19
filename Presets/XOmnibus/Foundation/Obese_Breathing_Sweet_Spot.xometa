@@ -1,0 +1,69 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "mojo 0.85 — the Blessed Sweet Spot. FAT-I scripture was explicit: 0.85 is breathing. Half biological routing, no bit crush, filter open and warm. 13 oscillators with just enough drift to feel alive. The whale found its best resting state. Not hedging at 0.4. Not wandering at 1.0. Breathing.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.42,
+    "density": 0.82,
+    "movement": 0.22,
+    "space": 0.18,
+    "warmth": 0.78
+  },
+  "engines": [
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Breathing Sweet Spot",
+  "parameters": {
+    "Obese": {
+      "fat_ampAttack": 0.008,
+      "fat_ampDecay": 0.35,
+      "fat_ampRelease": 0.25,
+      "fat_ampSustain": 0.78,
+      "fat_bitDepth": 1.0,
+      "fat_detune": 6.5,
+      "fat_filterCutoff": 0.62,
+      "fat_filterReso": 0.3,
+      "fat_fltEnvAmt": 0.45,
+      "fat_fltEnvAttack": 0.004,
+      "fat_fltEnvDecay": 0.22,
+      "fat_glide": 0.0,
+      "fat_groupMix": 0.75,
+      "fat_macroCharacter": 0.0,
+      "fat_macroCoupling": 0.0,
+      "fat_macroMovement": 0.0,
+      "fat_macroSpace": 0.0,
+      "fat_mojo": 0.85,
+      "fat_morph": 0.5,
+      "fat_noiseAmount": 0.04,
+      "fat_satDrive": 0.28,
+      "fat_stereoWidth": 0.28,
+      "fat_subLevel": 0.65,
+      "fat_voiceMode": 1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "foundation",
+    "obese",
+    "breathing",
+    "warm",
+    "mojo-085",
+    "sweet-spot",
+    "b015",
+    "fat-scripture"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

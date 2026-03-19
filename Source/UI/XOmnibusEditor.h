@@ -2,6 +2,8 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../XOmnibusProcessor.h"
 #include "../Core/EngineRegistry.h"
+#include "../Engines/Morph/MorphEngine.h"
+#include "OddOscar/OscarRiveComponent.h"
 
 namespace xomnibus {
 
@@ -10,10 +12,31 @@ namespace xomnibus {
 // Light mode is the primary presentation (brand rule). Dark mode is a toggle.
 namespace GalleryColors {
 
-    // Theme state — light by default (brand rule)
+    // Theme state — light by default (brand rule), persisted to disk.
+    inline bool loadDarkModePref()
+    {
+        juce::PropertiesFile::Options opts;
+        opts.applicationName = "XOmnibus";
+        opts.folderName = "XO_OX";
+        opts.filenameSuffix = ".settings";
+        juce::PropertiesFile props(opts);
+        return props.getBoolValue("darkMode", false);
+    }
+
+    inline void saveDarkModePref(bool dark)
+    {
+        juce::PropertiesFile::Options opts;
+        opts.applicationName = "XOmnibus";
+        opts.folderName = "XO_OX";
+        opts.filenameSuffix = ".settings";
+        juce::PropertiesFile props(opts);
+        props.setValue("darkMode", dark);
+        props.saveIfNeeded();
+    }
+
     inline bool& darkMode()
     {
-        static bool dark = false;
+        static bool dark = loadDarkModePref();
         return dark;
     }
 
@@ -95,13 +118,17 @@ namespace GalleryColors {
         if (id == "Obbligato") return juce::Colour(0xFFFF8A7A); // Rascal Coral
         if (id == "Ottoni")    return juce::Colour(0xFF5B8A72); // Patina
         if (id == "Ole")       return juce::Colour(0xFFC9377A); // Hibiscus
+        // Newest engines (2026-03-15)
+        if (id == "Ombre")     return juce::Colour(0xFF7B6B8A); // Shadow Mauve
+        if (id == "Orca")      return juce::Colour(0xFF1B2838); // Deep Ocean
+        if (id == "Octopus")   return juce::Colour(0xFFE040FB); // Chromatophore Magenta
         // Standalone adapters (Phase 4)
-        if (id == "XOverlap")  return juce::Colour(0xFF00FFB4); // Bioluminescent Cyan-Green
-        if (id == "XOutwit")   return juce::Colour(0xFFCC6600); // Chromatophore Amber
+        if (id == "Overlap" || id == "XOverlap")  return juce::Colour(0xFF00FFB4); // Bioluminescent Cyan-Green
+        if (id == "Outwit"  || id == "XOutwit")   return juce::Colour(0xFFCC6600); // Chromatophore Amber
         // V1 Concept Engines
         if (id == "OpenSky")   return juce::Colour(0xFFFF8C00); // Sunburst
         if (id == "Ostinato")  return juce::Colour(0xFFE8701A); // Firelight Orange
-        if (id == "Oceandeep") return juce::Colour(0xFF2D0A4E); // Trench Violet
+        if (id == "OceanDeep" || id == "Oceandeep") return juce::Colour(0xFF2D0A4E); // Trench Violet
         if (id == "Ouie")      return juce::Colour(0xFF708090); // Hammerhead Steel
         // V2 Theorem Engines
         if (id == "Overtone")  return juce::Colour(0xFFA8D8EA); // Spectral Ice
@@ -285,8 +312,7 @@ public:
         // Focus ring (WCAG 2.4.7) — use focus colour instead of border when focused
         if (btn.hasKeyboardFocus (true))
         {
-            g.setColour (A11y::focusRingColour());
-            g.drawRoundedRectangle (b, 5.0f, 2.0f);
+            A11y::drawFocusRing (g, b, 5.0f);
         }
         else
         {
@@ -2052,6 +2078,20 @@ public:
         addAndMakeVisible(masterFXStrip);
         addAndMakeVisible(presetBrowser);
 
+        // Oscar — transparent until OddOscar engine is loaded in a slot
+        addAndMakeVisible(oscarComponent);
+        oscarComponent.setAlpha(0.0f);
+        oscarComponent.setInterceptsMouseClicks(false, false);
+
+        // Load oscar.riv from embedded binary data (requires Rive runtime)
+#if XO_HAS_OSCAR
+        {
+            int rivDataSize = 0;
+            if (const void* rivData = BinaryData::getNamedResource("oscar_riv", rivDataSize))
+                oscarComponent.loadRiv(rivData, static_cast<size_t>(rivDataSize));
+        }
+#endif
+
         detail.setVisible(false);
         detail.setAlpha(0.0f);
         chordPanel.setVisible(false);
@@ -2080,6 +2120,7 @@ public:
         themeToggleBtn.onClick = [this]
         {
             GalleryColors::darkMode() = themeToggleBtn.getToggleState();
+            GalleryColors::saveDarkModePref(themeToggleBtn.getToggleState());
             laf->applyTheme();
             repaint();
             for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
@@ -2106,7 +2147,11 @@ public:
             if (slot >= 0 && slot < XOmnibusProcessor::MaxSlots)
                 tiles[slot]->refresh();
             overview.refresh();
+            refreshOscar();
         };
+
+        // Wire Oscar to any OddOscar engine that may already be loaded
+        refreshOscar();
 
         setSize(880, 562);
         setResizable(true, true);
@@ -2122,6 +2167,15 @@ public:
     {
         stopTimer();
         processor.onEngineChanged = nullptr; // prevent callback after editor is destroyed
+
+        // Detach Oscar from any MorphEngine before the component is destroyed.
+        // Without this, a live renderBlock() could write to the now-dead oscarAnimState.
+        oscarComponent.stop();
+        oscarComponent.setAnimState(nullptr);
+        for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+            if (auto* eng = dynamic_cast<MorphEngine*>(processor.getEngine(i)))
+                eng->setOscarAnimState(nullptr);
+
         setLookAndFeel(nullptr);
     }
 
@@ -2144,6 +2198,18 @@ public:
             return true;
         }
         return false;
+    }
+
+    std::unique_ptr<juce::AccessibilityHandler> createAccessibilityHandler() override
+    {
+        return std::make_unique<juce::AccessibilityHandler> (
+            *this,
+            juce::AccessibilityRole::group,
+            juce::AccessibilityActions{}
+                .addAction (juce::AccessibilityActionType::showMenu, [this] {
+                    // Focus the preset browser when accessibility requests a menu
+                    presetBrowser.grabKeyboardFocus();
+                }));
     }
 
     void paint(juce::Graphics& g) override
@@ -2205,6 +2271,12 @@ public:
         themeToggleBtn.setBounds(header.removeFromRight(32).reduced(2, 12));
         cmToggleBtn.setBounds(header.removeFromRight(42).reduced(4, 12));
 
+        // Oscar — lives in the header gap between title and coupling text.
+        // Title occupies x=16..176; Oscar sits immediately right at x=185.
+        // Square: kHeaderH minus vertical padding on each side.
+        const int oscarSize = kHeaderH - 8;
+        oscarComponent.setBounds(185, 4, oscarSize, oscarSize);
+
         // Bottom strips (from bottom up)
         masterFXStrip.setBounds(area.removeFromBottom(kMasterFXH).reduced(6, 3));
         macros.setBounds(area.removeFromBottom(kMacroH).reduced(6, 4));
@@ -2222,6 +2294,31 @@ public:
     }
 
 private:
+    // Scan all engine slots for a MorphEngine (OddOscar). If found, wire the
+    // animState so the engine writes to it and Oscar's component reads from it.
+    // Called on construction and every time onEngineChanged fires.
+    void refreshOscar()
+    {
+        MorphEngine* found = nullptr;
+        for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+            if (auto* eng = dynamic_cast<MorphEngine*>(processor.getEngine(i)))
+                { found = eng; break; }
+
+        if (found != nullptr)
+        {
+            found->setOscarAnimState(&oscarAnimState);
+            oscarComponent.setAnimState(&oscarAnimState);
+            oscarComponent.start();
+            oscarComponent.setAlpha(1.0f);
+        }
+        else
+        {
+            oscarComponent.stop();
+            oscarComponent.setAnimState(nullptr);
+            oscarComponent.setAlpha(0.0f);
+        }
+    }
+
     void selectSlot(int slot)
     {
         // Deselect all tiles
@@ -2375,6 +2472,10 @@ private:
     juce::TextButton   themeToggleBtn;
 
     int selectedSlot = -1;
+
+    // Oscar animation — state bridge (owned here, engine holds raw pointer)
+    OscarAnimState     oscarAnimState;
+    OscarRiveComponent oscarComponent;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOmnibusEditor)
 };

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oracle \u00d7 Organon \u2014 Spatial Couple coupling at extreme DNA corner.",
+  "description": "Oracle × Organon — Spatial Couple coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "oracle",
@@ -33,7 +33,10 @@
     "space": 0.416,
     "aggression": 0.946
   },
-  "parameters": {},
+  "parameters": {
+    "Oracle": {},
+    "Organon": {}
+  },
   "coupling": {
     "pairs": [
       {

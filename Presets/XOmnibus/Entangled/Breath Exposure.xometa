@@ -1,72 +1,92 @@
 {
-  "name": "Breath Exposure",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Obbligato",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.695
+      }
+    ]
+  },
+  "description": "Wind-instrument breath as bellows for the camera — pneumatic pressure determining the depth of the latent image.",
   "engines": [
     "Obscura",
     "Obbligato"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.53,
-    "MOVEMENT": 0.267,
     "COUPLING": 0.775,
+    "MOVEMENT": 0.267,
     "SPACE": 0.521
   },
-  "sonic_dna": {
-    "brightness": 0.502,
-    "warmth": 0.468,
-    "movement": 0.542,
-    "density": 0.712,
-    "space": 0.575,
-    "aggression": 0.347
-  },
+  "mood": "Entangled",
+  "name": "Breath Exposure",
   "parameters": {
-    "obscura_stiffness": 0.444,
-    "obscura_dampening": 0.371,
-    "obscura_exciterType": 0.0,
-    "obscura_exciterAmount": 0.513,
-    "obscura_plateBlend": 0.666,
-    "obscura_silverTone": 0.436,
-    "obscura_exposureTime": 0.118,
-    "obscura_chemicalDepth": 0.201,
-    "obscura_grainSize": 0.545,
-    "obscura_filterCutoff": 6091.4,
-    "obscura_filterReso": 0.541,
-    "obscura_level": 0.786,
-    "obscura_ampAttack": 0.0671,
-    "obscura_ampDecay": 0.823,
-    "obscura_ampSustain": 0.441,
-    "obscura_ampRelease": 1.239,
-    "obscura_modAttack": 0.0074,
-    "obscura_modDecay": 0.347,
-    "obscura_modSustain": 0.454,
-    "obscura_modRelease": 0.767,
-    "obscura_lfo1Rate": 0.583,
-    "obscura_lfo1Depth": 0.216,
-    "obscura_lfo1Shape": 0.5,
-    "obscura_lfo2Rate": 0.368,
-    "obscura_lfo2Depth": 0.367,
-    "obscura_lfo2Shape": 0.25,
+    "obbl_ampAttack": 0.0297,
+    "obbl_ampDecay": 0.766,
+    "obbl_ampRelease": 0.856,
+    "obbl_ampSustain": 0.61,
     "obbl_filterCutoff": 4892.7,
     "obbl_filterReso": 0.245,
     "obbl_level": 0.744,
-    "obbl_ampAttack": 0.0297,
-    "obbl_ampDecay": 0.766,
-    "obbl_ampSustain": 0.61,
-    "obbl_ampRelease": 0.856,
+    "obbl_lfo1Depth": 0.221,
     "obbl_lfo1Rate": 2.184,
-    "obbl_lfo1Depth": 0.221
+    "obscura_ampAttack": 0.0671,
+    "obscura_ampDecay": 0.823,
+    "obscura_ampRelease": 1.239,
+    "obscura_ampSustain": 0.441,
+    "obscura_chemicalDepth": 0.201,
+    "obscura_dampening": 0.371,
+    "obscura_exciterAmount": 0.513,
+    "obscura_exciterType": 0.0,
+    "obscura_exposureTime": 0.118,
+    "obscura_filterCutoff": 6091.4,
+    "obscura_filterReso": 0.541,
+    "obscura_grainSize": 0.545,
+    "obscura_level": 0.786,
+    "obscura_lfo1Depth": 0.216,
+    "obscura_lfo1Rate": 0.583,
+    "obscura_lfo1Shape": 0.5,
+    "obscura_lfo2Depth": 0.367,
+    "obscura_lfo2Rate": 0.368,
+    "obscura_lfo2Shape": 0.25,
+    "obscura_modAttack": 0.0074,
+    "obscura_modDecay": 0.347,
+    "obscura_modRelease": 0.767,
+    "obscura_modSustain": 0.454,
+    "obscura_plateBlend": 0.666,
+    "obscura_silverTone": 0.436,
+    "obscura_stiffness": 0.444
   },
-  "coupling": {
-    "type": "SPATIAL_BLEND",
-    "source": "Obscura",
-    "target": "Obbligato",
-    "amount": 0.695
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.347,
+    "brightness": 0.502,
+    "density": 0.712,
+    "movement": 0.542,
+    "space": 0.575,
+    "warmth": 0.468
   },
   "tags": [
     "entangled",
     "coupling",
     "daguerreotype"
   ],
-  "description": "Wind-instrument breath as bellows for the camera — pneumatic pressure determining the depth of the latent image."
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

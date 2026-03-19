@@ -1,37 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Feral Oscillator",
-  "mood": "Prism",
-  "engines": ["Ouroboros"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Chua circuit at near-maximum chaos with no leash and no damping. Raw, aggressive, screaming chaos unleashed.",
-  "tags": ["aggressive", "raw", "chaotic", "lead"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Chua circuit at near-maximum chaos with no leash and no damping. Raw, aggressive, screaming chaos unleashed.",
+  "dna": {
+    "aggression": 0.95,
+    "brightness": 0.9,
+    "density": 0.8,
+    "movement": 0.85,
+    "space": 0.1,
+    "warmth": 0.1
+  },
+  "engines": [
+    "Ouroboros"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Feral Oscillator",
   "parameters": {
     "Ouroboros": {
-      "ouro_topology": 2,
-      "ouro_rate": 330.0,
       "ouro_chaosIndex": 0.9,
-      "ouro_leash": 0.1,
-      "ouro_theta": 1.2,
-      "ouro_phi": -0.8,
       "ouro_damping": 0.0,
-      "ouro_injection": 0.0
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.1,
+      "ouro_phi": -0.8,
+      "ouro_rate": 330.0,
+      "ouro_theta": 1.2,
+      "ouro_topology": 2
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.9,
-    "warmth": 0.1,
-    "movement": 0.85,
-    "density": 0.8,
-    "space": 0.1,
-    "aggression": 0.95
-  }
+  "tags": [
+    "aggressive",
+    "raw",
+    "chaotic",
+    "lead"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

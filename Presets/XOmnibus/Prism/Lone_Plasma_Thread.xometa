@@ -1,54 +1,54 @@
 {
-  "schema_version": 1,
-  "name": "Lone Plasma Thread",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "One spectral tone in vast harmonic emptiness. Radiant and solitary.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.91,
+    "density": 0.0,
+    "movement": 0.2,
+    "space": 0.91,
+    "warmth": 0.695
+  },
   "engines": [
     "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "One spectral tone in vast harmonic emptiness. Radiant and solitary.",
-  "tags": [
-    "hot-sparse",
-    "extreme",
-    "prism",
-    "spectral"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Lone Plasma Thread",
   "parameters": {
     "OddfeliX": {
-      "snap_oscMode": 2.0,
-      "snap_filterCutoff": 6000.0,
-      "snap_filterReso": 0.1,
-      "snap_filterEnvDepth": 0.2,
-      "snap_drive": 0.85,
       "snap_attack": 120.0,
       "snap_decay": 800.0,
-      "snap_sustain": 0.9,
-      "snap_release": 1000.0
+      "snap_drive": 0.85,
+      "snap_filterCutoff": 6000.0,
+      "snap_filterEnvDepth": 0.2,
+      "snap_filterReso": 0.1,
+      "snap_oscMode": 2.0,
+      "snap_release": 1000.0,
+      "snap_sustain": 0.9
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.91,
-    "warmth": 0.695,
-    "movement": 0.2,
-    "density": 0.0,
-    "space": 0.91,
-    "aggression": 0.15
-  }
+  "tags": [
+    "hot-sparse",
+    "extreme",
+    "prism",
+    "spectral"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,13 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "Contact Mic",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Close-miked overworld presence. Dry and immediate — space locked at 0.09. No reverb needed. The room is your ears.",
+  "dna": {
+    "aggression": 0.48,
+    "brightness": 0.674,
+    "density": 0.625,
+    "movement": 0.367,
+    "space": 0.093,
+    "warmth": 0.375
+  },
   "engines": [
     "Overworld"
   ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "Close-miked overworld presence. Dry and immediate \u2014 space locked at 0.09. No reverb needed. The room is your ears.",
+  "macroLabels": [
+    "ERA",
+    "CIRCUIT",
+    "GLITCH",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Contact Mic",
+  "parameters": {
+    "Overworld": {
+      "ow_dpcmEnable": 0,
+      "ow_era": 0.472,
+      "ow_eraY": 0.525,
+      "ow_macroCrush": 0.24,
+      "ow_macroEra": 0.674,
+      "ow_macroGlitch": 0.0,
+      "ow_macroSpace": 0.093,
+      "ow_masterVol": 0.8,
+      "ow_noiseMode": 0,
+      "ow_noisePeriod": 2,
+      "ow_pulseDuty": 1,
+      "ow_pulseSweep": 0.11,
+      "ow_triEnable": 1,
+      "ow_voiceMode": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "foundation",
     "intimate",
@@ -16,41 +51,6 @@
     "present",
     "overworld"
   ],
-  "macroLabels": [
-    "ERA",
-    "CIRCUIT",
-    "GLITCH",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.674,
-    "warmth": 0.375,
-    "movement": 0.367,
-    "density": 0.625,
-    "space": 0.093,
-    "aggression": 0.48
-  },
-  "parameters": {
-    "Overworld": {
-      "ow_era": 0.472,
-      "ow_eraY": 0.525,
-      "ow_voiceMode": 0,
-      "ow_masterVol": 0.8,
-      "ow_pulseDuty": 1,
-      "ow_pulseSweep": 0.11,
-      "ow_triEnable": 1,
-      "ow_noiseMode": 0,
-      "ow_noisePeriod": 2,
-      "ow_dpcmEnable": 0,
-      "ow_macroEra": 0.674,
-      "ow_macroCrush": 0.24,
-      "ow_macroGlitch": 0.0,
-      "ow_macroSpace": 0.093
-    }
-  },
-  "coupling": null,
-  "sequencer": null
+  "version": "1.0"
 }

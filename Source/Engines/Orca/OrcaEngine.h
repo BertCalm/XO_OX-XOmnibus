@@ -278,6 +278,10 @@ struct OrcaVoice
     CytomicSVF bandSplitLP;   // belly (low, clean)
     CytomicSVF bandSplitHP;   // dorsal (high, crushed)
 
+    // Countershading sample-rate reduction state (per-voice, Sisters S-006 fix)
+    float crushHold = 0.0f;
+    float crushCounter = 0.0f;
+
     // Voice stealing crossfade
     float fadeGain = 1.0f;
     bool fadingOut = false;
@@ -305,6 +309,8 @@ struct OrcaVoice
         mainFilter.reset();
         bandSplitLP.reset();
         bandSplitHP.reset();
+        crushHold = 0.0f;
+        crushCounter = 0.0f;
     }
 };
 
@@ -470,9 +476,12 @@ public:
         float effectiveCutoff  = clamp (pCutoff + huntAmount * 8000.0f + couplingFormantMod * 4000.0f, 20.0f, 20000.0f);
         float effectiveReso    = clamp (pReso + huntAmount * 0.4f, 0.0f, 1.0f);
         float effectiveFormant = clamp (pFormantInt + huntAmount * 0.5f + macroMove * 0.3f, 0.0f, 1.0f);
-        float effectiveEchoRes = clamp (pEchoReso + huntAmount * 0.1f, 0.0f, 0.995f);
+        // SPACE macro expands the underwater acoustic chamber:
+        // more echolocation resonance = longer ringing comb = bigger space
+        float effectiveEchoRes = clamp (pEchoReso + huntAmount * 0.1f + macroSpace * 0.15f, 0.0f, 0.95f);
         float effectiveCrush   = clamp (pCrushMix + huntAmount * 0.6f, 0.0f, 1.0f);
-        float effectiveBreachSub = clamp (pBreachSub + huntAmount * 0.3f, 0.0f, 1.0f);
+        // SPACE also deepens sub-bass presence (more space = more physical weight)
+        float effectiveBreachSub = clamp (pBreachSub + huntAmount * 0.3f + macroSpace * 0.3f, 0.0f, 1.0f);
         // Mod wheel (CC#1) scans the wavetable position — sweeps from sine/whale-call
         // through metallic partials to complex vocal textures (D006 compliance)
         float effectiveWTPos   = clamp (pWTPos + couplingWTPosMod + macroMove * 0.3f + modWheelAmount_ * 0.5f, 0.0f, 1.0f);
@@ -650,14 +659,17 @@ public:
                 float wtSample = voice.wtOsc.processSample();
 
                 // Formant filter network — gives the wavetable a "speaking" quality
+                // D001: velocity boosts formant intensity — harder hits = more vocal character
+                float velFilterBoost = voice.velocity * 0.35f;
+                float velFormant = clamp (smoothedFormant + velFilterBoost, 0.0f, 1.0f);
                 float formantOut = 0.0f;
-                if (smoothedFormant > 0.001f)
+                if (velFormant > 0.001f)
                 {
                     for (int f = 0; f < 5; ++f)
                         formantOut += voice.formant[f].processSample (wtSample);
                     formantOut *= 0.2f;  // normalize 5-band sum
 
-                    wtSample = wtSample * (1.0f - smoothedFormant) + formantOut * smoothedFormant;
+                    wtSample = wtSample * (1.0f - velFormant) + formantOut * velFormant;
                 }
 
                 // =====================================================
@@ -706,18 +718,16 @@ public:
                     // Quantize to reduced bit depth
                     float crushed = std::round (dorsal * crushStep) / crushStep;
 
-                    // Sample-rate reduction on dorsal
-                    static thread_local float crushHold = 0.0f;
-                    static thread_local float crushCounter = 0.0f;
-                    crushCounter += 1.0f;
-                    if (crushCounter >= crushDownsample)
+                    // Sample-rate reduction on dorsal (per-voice state, Sisters S-006 fix)
+                    voice.crushCounter += 1.0f;
+                    if (voice.crushCounter >= crushDownsample)
                     {
-                        crushHold = crushed;
-                        crushCounter = 0.0f;
+                        voice.crushHold = crushed;
+                        voice.crushCounter = 0.0f;
                     }
 
                     // Recombine: clean belly + crushed dorsal
-                    float countershaded = belly + crushHold;
+                    float countershaded = belly + voice.crushHold;
 
                     // Mix with dry signal
                     voiceSignal = voiceSignal * (1.0f - smoothedCrushMix) + countershaded * smoothedCrushMix;

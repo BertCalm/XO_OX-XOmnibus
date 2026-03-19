@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Onset \u00d7 Octopus \u2014 Resonance Share coupling at extreme DNA corner.",
+  "description": "Onset × Octopus — Resonance Share coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "onset",
@@ -33,7 +33,10 @@
     "space": 0.958,
     "aggression": 0.483
   },
-  "parameters": {},
+  "parameters": {
+    "Onset": {},
+    "Octopus": {}
+  },
   "coupling": {
     "pairs": [
       {

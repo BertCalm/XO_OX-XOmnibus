@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Crystal Mote III",
-  "mood": "Prism",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Sparse prism scatter — each partial isolated in cold space.",
+  "dna": {
+    "aggression": 0.167,
     "brightness": 0.771,
-    "warmth": 0.155,
-    "movement": 0.289,
     "density": 0.066,
+    "movement": 0.289,
     "space": 0.645,
-    "aggression": 0.167
+    "warmth": 0.155
   },
   "engines": [
     "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Sparse prism scatter \u2014 each partial isolated in cold space.",
+  "macroLabels": [
+    "FREEZE",
+    "GLINT",
+    "COUPLING",
+    "VOID"
+  ],
+  "mood": "Prism",
+  "name": "Crystal Mote III",
+  "parameters": {
+    "OddfeliX": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.167,
+    "brightness": 0.771,
+    "density": 0.066,
+    "movement": 0.289,
+    "space": 0.645,
+    "warmth": 0.155
+  },
   "tags": [
     "prism",
     "cold",
@@ -24,23 +44,5 @@
     "airy",
     "bright"
   ],
-  "macroLabels": [
-    "FREEZE",
-    "GLINT",
-    "COUPLING",
-    "VOID"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.771,
-    "warmth": 0.155,
-    "movement": 0.289,
-    "density": 0.066,
-    "space": 0.645,
-    "aggression": 0.167
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }
