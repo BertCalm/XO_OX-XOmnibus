@@ -1,14 +1,16 @@
 #pragma once
 
+#include <juce_gui_basics/juce_gui_basics.h>
+#include "OscarAnimState.h"
+
+#if XO_HAS_RIVE
+
 // Rive C++ runtime
 #include <rive/file.hpp>
 #include <rive/artboard.hpp>
 #include <rive/animation/state_machine_instance.hpp>
 #include <rive/animation/state_machine_input_instance.hpp>
 
-#include <juce_gui_basics/juce_gui_basics.h>
-
-#include "OscarAnimState.h"
 #include "OscarJuceRenderer.h"
 
 #include <memory>
@@ -506,3 +508,21 @@ private:
 };
 
 } // namespace xomnibus
+
+#else // !XO_HAS_RIVE — stub component (no animation, no Rive dependency)
+
+namespace xomnibus {
+
+class OscarRiveComponent : public juce::Component
+{
+public:
+    OscarRiveComponent() { setOpaque (false); }
+    bool loadRiv (const void*, size_t) { return false; }
+    void setAnimState (OscarAnimState*) {}
+    void start() {}
+    void stop() {}
+};
+
+} // namespace xomnibus
+
+#endif // XO_HAS_RIVE

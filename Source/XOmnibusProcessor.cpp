@@ -206,6 +206,30 @@ void XOmnibusProcessor::cacheParameterPointers()
     cachedParams.ohmCommune      = apvts.getRawParameterValue("ohm_macroCommune");
     cachedParams.obblBond        = apvts.getRawParameterValue("obbl_macroBond");
     cachedParams.oleDrama        = apvts.getRawParameterValue("ole_macroDrama");
+
+    // Aquatic FX Suite
+    cachedParams.aquaFathomDepth    = apvts.getRawParameterValue("aqua_fathomDepth");
+    cachedParams.aquaFathomPressure = apvts.getRawParameterValue("aqua_fathomPressure");
+    cachedParams.aquaFathomMix      = apvts.getRawParameterValue("aqua_fathomMix");
+    cachedParams.aquaDriftRate      = apvts.getRawParameterValue("aqua_driftRate");
+    cachedParams.aquaDriftWidth     = apvts.getRawParameterValue("aqua_driftWidth");
+    cachedParams.aquaDriftDepth     = apvts.getRawParameterValue("aqua_driftDepth");
+    cachedParams.aquaDriftMix       = apvts.getRawParameterValue("aqua_driftMix");
+    cachedParams.aquaTideRate       = apvts.getRawParameterValue("aqua_tideRate");
+    cachedParams.aquaTideShape      = apvts.getRawParameterValue("aqua_tideShape");
+    cachedParams.aquaTideTarget     = apvts.getRawParameterValue("aqua_tideTarget");
+    cachedParams.aquaTideMix        = apvts.getRawParameterValue("aqua_tideMix");
+    cachedParams.aquaReefSize       = apvts.getRawParameterValue("aqua_reefSize");
+    cachedParams.aquaReefDamping    = apvts.getRawParameterValue("aqua_reefDamping");
+    cachedParams.aquaReefDensity    = apvts.getRawParameterValue("aqua_reefDensity");
+    cachedParams.aquaReefMix        = apvts.getRawParameterValue("aqua_reefMix");
+    cachedParams.aquaSurfaceLevel   = apvts.getRawParameterValue("aqua_surfaceLevel");
+    cachedParams.aquaSurfaceTension = apvts.getRawParameterValue("aqua_surfaceTension");
+    cachedParams.aquaSurfaceMix     = apvts.getRawParameterValue("aqua_surfaceMix");
+    cachedParams.aquaBiolumeGlow    = apvts.getRawParameterValue("aqua_biolumeGlow");
+    cachedParams.aquaBiolumeSpectrum = apvts.getRawParameterValue("aqua_biolumeSpectrum");
+    cachedParams.aquaBiolumeDecay   = apvts.getRawParameterValue("aqua_biolumeDecay");
+    cachedParams.aquaBiolumeMix     = apvts.getRawParameterValue("aqua_biolumeMix");
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout
@@ -582,6 +606,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::ParameterID("master_pwidthMix", 1), "Master PWidth Mix",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
+    // Aquatic FX Suite (22 params)
+    AquaticFXSuite::addParameters(params);
+
     return { params.begin(), params.end() };
 }
 
@@ -592,6 +619,7 @@ void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 
     couplingMatrix.prepare(samplesPerBlock);
     chordMachine.prepare(sampleRate, samplesPerBlock);
+    aquaticFX.prepare(sampleRate);
     masterFX.prepare(sampleRate, samplesPerBlock, apvts);
 
     for (auto& buf : engineBuffers)
@@ -615,6 +643,7 @@ void XOmnibusProcessor::releaseResources()
         if (eng)
             eng->releaseResources();
     }
+    aquaticFX.reset();
     masterFX.reset();
 }
 
@@ -751,6 +780,37 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             cf.outgoing.reset();
             cf.fadeGain = 0.0f;
         }
+    }
+
+    // Aquatic FX Suite: brand-defining water phenomena (post engines, pre master FX)
+    if (buffer.getNumChannels() >= 2)
+    {
+        auto load = [](std::atomic<float>* p, float def) { return p ? p->load() : def; };
+        float* aqL = buffer.getWritePointer(0);
+        float* aqR = buffer.getWritePointer(1);
+        aquaticFX.processBlock(aqL, aqR, numSamples,
+            load(cachedParams.aquaFathomDepth, 0.0f),
+            load(cachedParams.aquaFathomPressure, 0.0f),
+            load(cachedParams.aquaFathomMix, 0.0f),
+            load(cachedParams.aquaDriftRate, 0.5f),
+            load(cachedParams.aquaDriftWidth, 0.5f),
+            load(cachedParams.aquaDriftDepth, 0.3f),
+            load(cachedParams.aquaDriftMix, 0.0f),
+            load(cachedParams.aquaTideRate, 0.5f),
+            static_cast<int>(load(cachedParams.aquaTideShape, 0.0f)),
+            static_cast<int>(load(cachedParams.aquaTideTarget, 0.0f)),
+            load(cachedParams.aquaTideMix, 0.0f),
+            load(cachedParams.aquaReefSize, 0.4f),
+            load(cachedParams.aquaReefDamping, 0.5f),
+            load(cachedParams.aquaReefDensity, 0.5f),
+            load(cachedParams.aquaReefMix, 0.0f),
+            load(cachedParams.aquaSurfaceLevel, 0.0f),
+            load(cachedParams.aquaSurfaceTension, 0.0f),
+            load(cachedParams.aquaSurfaceMix, 0.0f),
+            load(cachedParams.aquaBiolumeGlow, 0.0f),
+            load(cachedParams.aquaBiolumeSpectrum, 0.5f),
+            load(cachedParams.aquaBiolumeDecay, 0.3f),
+            load(cachedParams.aquaBiolumeMix, 0.0f));
     }
 
     // Master FX chain: sat → delay → reverb → mod → comp + sequencer (post all engines)

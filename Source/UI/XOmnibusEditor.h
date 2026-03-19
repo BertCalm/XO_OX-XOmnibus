@@ -2075,12 +2075,14 @@ public:
         oscarComponent.setAlpha(0.0f);
         oscarComponent.setInterceptsMouseClicks(false, false);
 
-        // Load oscar.riv from embedded binary data
+        // Load oscar.riv from embedded binary data (requires Rive runtime)
+#if XO_HAS_OSCAR
         {
             int rivDataSize = 0;
             if (const void* rivData = BinaryData::getNamedResource("oscar_riv", rivDataSize))
                 oscarComponent.loadRiv(rivData, static_cast<size_t>(rivDataSize));
         }
+#endif
 
         detail.setVisible(false);
         detail.setAlpha(0.0f);

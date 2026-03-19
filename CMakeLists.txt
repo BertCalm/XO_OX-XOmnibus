@@ -32,14 +32,25 @@ add_subdirectory(Libs/JUCE)
 # Rive C++ runtime (MIT licensed — https://github.com/rive-app/rive-cpp)
 # Clone into Libs/rive-cpp:
 #   git clone https://github.com/rive-app/rive-cpp Libs/rive-cpp
-add_subdirectory(Libs/rive-cpp)
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Libs/rive-cpp/CMakeLists.txt")
+    add_subdirectory(Libs/rive-cpp)
+    set(XO_HAS_RIVE ON)
+else()
+    message(STATUS "Rive not found — Oscar animation disabled (clone Libs/rive-cpp to enable)")
+    set(XO_HAS_RIVE OFF)
+endif()
 
 # Oscar character — oscar.riv embedded as C++ binary data.
 # Place the authored .riv file at Resources/Oscar/oscar.riv before building.
 # JUCE generates BinaryData::oscar_riv and BinaryData::oscar_rivSize.
-juce_add_binary_data(OscarRivData SOURCES
-    Resources/Oscar/oscar.riv
-)
+if(XO_HAS_RIVE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Resources/Oscar/oscar.riv")
+    juce_add_binary_data(OscarRivData SOURCES
+        Resources/Oscar/oscar.riv
+    )
+    set(XO_HAS_OSCAR ON)
+else()
+    set(XO_HAS_OSCAR OFF)
+endif()
 
 juce_add_plugin(XOmnibus
     COMPANY_NAME "XO_OX Designs"
@@ -205,10 +216,7 @@ target_sources(XOmnibus PRIVATE
     Source/UI/OpticVisualizer/OpticVisualizer.h
     Source/UI/PresetBrowser/PresetBrowser.h
 
-    # Oscar (OddOscar animated companion)
-    Source/UI/OddOscar/OscarAnimState.h
-    Source/UI/OddOscar/OscarJuceRenderer.h
-    Source/UI/OddOscar/OscarRiveComponent.h
+    # Oscar (OddOscar animated companion) — requires Rive, added conditionally below
 
     # UI (Mobile — compiled on all platforms, gated by XO_MOBILE)
     Source/UI/Mobile/MobileTouchHandler.h
@@ -223,6 +231,15 @@ target_sources(XOmnibus PRIVATE
     Source/XOmnibusProcessor.h
     Source/XOmnibusProcessor.cpp
 )
+
+# Oscar animated companion — requires Rive runtime
+if(XO_HAS_RIVE)
+    target_sources(XOmnibus PRIVATE
+        Source/UI/OddOscar/OscarAnimState.h
+        Source/UI/OddOscar/OscarJuceRenderer.h
+        Source/UI/OddOscar/OscarRiveComponent.h
+    )
+endif()
 
 # XOverworld DSP headers — included by OverworldEngine adapter
 target_include_directories(XOmnibus PRIVATE
@@ -251,9 +268,15 @@ target_link_libraries(XOmnibus PRIVATE
     juce::juce_audio_processors
     juce::juce_dsp
     juce::juce_gui_extra
-    rive          # Rive C++ runtime
-    OscarRivData  # Embedded oscar.riv binary data
 )
+if(XO_HAS_RIVE)
+    target_link_libraries(XOmnibus PRIVATE rive)
+    target_compile_definitions(XOmnibus PRIVATE XO_HAS_RIVE=1)
+endif()
+if(XO_HAS_OSCAR)
+    target_link_libraries(XOmnibus PRIVATE OscarRivData)
+    target_compile_definitions(XOmnibus PRIVATE XO_HAS_OSCAR=1)
+endif()
 
 if(XO_MOBILE)
     target_link_libraries(XOmnibus PRIVATE

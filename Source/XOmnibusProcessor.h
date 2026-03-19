@@ -4,6 +4,7 @@
 #include "Core/EngineRegistry.h"
 #include "Core/MegaCouplingMatrix.h"
 #include "Core/MasterFXChain.h"
+#include "DSP/Effects/AquaticFXSuite.h"
 #include "Core/ChordMachine.h"
 #include "Core/MPEManager.h"
 #include "Core/PresetManager.h"
@@ -72,6 +73,7 @@ private:
 
     juce::AudioProcessorValueTreeState apvts;
     MegaCouplingMatrix couplingMatrix;
+    AquaticFXSuite aquaticFX;
     MasterFXChain masterFX;
     ChordMachine chordMachine;
     MPEManager mpeManager;
@@ -120,6 +122,30 @@ private:
         std::atomic<float>* ohmCommune  = nullptr;
         std::atomic<float>* obblBond    = nullptr;
         std::atomic<float>* oleDrama    = nullptr;
+
+        // Aquatic FX Suite
+        std::atomic<float>* aquaFathomDepth = nullptr;
+        std::atomic<float>* aquaFathomPressure = nullptr;
+        std::atomic<float>* aquaFathomMix = nullptr;
+        std::atomic<float>* aquaDriftRate = nullptr;
+        std::atomic<float>* aquaDriftWidth = nullptr;
+        std::atomic<float>* aquaDriftDepth = nullptr;
+        std::atomic<float>* aquaDriftMix = nullptr;
+        std::atomic<float>* aquaTideRate = nullptr;
+        std::atomic<float>* aquaTideShape = nullptr;
+        std::atomic<float>* aquaTideTarget = nullptr;
+        std::atomic<float>* aquaTideMix = nullptr;
+        std::atomic<float>* aquaReefSize = nullptr;
+        std::atomic<float>* aquaReefDamping = nullptr;
+        std::atomic<float>* aquaReefDensity = nullptr;
+        std::atomic<float>* aquaReefMix = nullptr;
+        std::atomic<float>* aquaSurfaceLevel = nullptr;
+        std::atomic<float>* aquaSurfaceTension = nullptr;
+        std::atomic<float>* aquaSurfaceMix = nullptr;
+        std::atomic<float>* aquaBiolumeGlow = nullptr;
+        std::atomic<float>* aquaBiolumeSpectrum = nullptr;
+        std::atomic<float>* aquaBiolumeDecay = nullptr;
+        std::atomic<float>* aquaBiolumeMix = nullptr;
 
         // MPE parameters
         std::atomic<float>* mpeEnabled = nullptr;
