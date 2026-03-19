@@ -4,11 +4,11 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **35 engines** are registered in XOmnibus
-(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18)
+and mutate into sounds impossible with any single synth. **38 engines** are registered in XOmnibus
+(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18)
 — see engine table below.
 
-- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO
+- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** 10,028 factory presets in `.xometa` format, 7 mood categories (incl. Family), 6D Sonic DNA
@@ -72,15 +72,6 @@ and mutate into sounds impossible with any single synth. **35 engines** are regi
 | ORCA | XOrca | Deep Ocean `#1B2838` |
 | OCTOPUS | XOctopus | Chromatophore Magenta `#E040FB` |
 | OSTINATO | XOstinato | Firelight Orange `#E8701A` |
-
-### V1 Concept Engines — DSP Build Pending (approved concepts, no source code yet)
-
-These engines have identity cards and design specs but zero source code. They are not yet registered
-in XOmnibus. They ARE V1 scope (decision 2026-03-14) — do not defer to V2. Scaffold and DSP build
-are next up after current Opus sessions resume.
-
-| Short Name | Source Instrument | Accent Color |
-|-----------|------------------|-------------|
 | OPENSKY | XOpenSky | Sunburst `#FF8C00` |
 | OCEANDEEP | XOceanDeep | Trench Violet `#2D0A4E` |
 | OUIE | XOuïe | Hammerhead Steel `#708090` |
@@ -125,6 +116,9 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Orca | `orca_` | `orca_huntMacro` |
 | Octopus | `octo_` | `octo_armDepth` |
 | Ostinato | `osti_` | `osti_macroGather` |
+| OpenSky | `sky_` | `sky_macroRise` |
+| OceanDeep | `deep_` | `deep_macroPressure` |
+| Ouie | `ouie_` | `ouie_macroHammer` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -146,6 +140,8 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Ombre/OmbreEngine.h` | Dual-narrative engine (memory/forgetting + perception) |
 | `Source/Engines/Orca/OrcaEngine.h` | Apex predator engine (wavetable + echolocation + breach) |
 | `Source/Engines/Octopus/OctopusEngine.h` | Decentralized alien intelligence engine (arms + chromatophores + ink cloud) |
+| `Source/Engines/OpenSky/OpenSkyEngine.h` | Euphoric shimmer synth (supersaw + shimmer reverb + chorus + unison) |
+| `Source/Engines/Ouie/OuieEngine.h` | Duophonic hammerhead synth (2 voices x 8 algorithms + STRIFE/LOVE interaction) |
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
 | `Docs/xomnibus_sound_design_guides.md` | Sound design guide (30 of 34 engines in unified guide; 4 Constellation engines have dedicated guides in Docs/) |
 | `Source/DSP/` | Shared DSP library |

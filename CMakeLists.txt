@@ -205,6 +205,12 @@ target_sources(XOmnibus PRIVATE
     # V1 Concept Engines — Full DSP Builds
     Source/Engines/Ostinato/OstinatoEngine.h
     Source/Engines/Ostinato/OstinatoEngine.cpp
+    Source/Engines/OpenSky/OpenSkyEngine.h
+    Source/Engines/OpenSky/OpenSkyEngine.cpp
+    Source/Engines/OceanDeep/OceanDeepEngine.h
+    Source/Engines/OceanDeep/OceanDeepEngine.cpp
+    Source/Engines/Ouie/OuieEngine.h
+    Source/Engines/Ouie/OuieEngine.cpp
 
     # Export pipeline
     Source/Export/XPNCoverArt.h

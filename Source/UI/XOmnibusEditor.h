@@ -125,6 +125,8 @@ namespace GalleryColors {
         // Standalone adapters (Phase 4)
         if (id == "Overlap" || id == "XOverlap")  return juce::Colour(0xFF00FFB4); // Bioluminescent Cyan-Green
         if (id == "Outwit"  || id == "XOutwit")   return juce::Colour(0xFFCC6600); // Chromatophore Amber
+        if (id == "OceanDeep") return juce::Colour(0xFF2D0A4E); // Trench Violet
+        if (id == "Ouie")      return juce::Colour(0xFF708090); // Hammerhead Steel
         return get(borderGray());
     }
 

@@ -20,7 +20,7 @@ inline const juce::StringArray validEngineNames {
     "Ocelot", "Osprey", "Osteria", "Owlfish",
     "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole",
     "Optic", "Oblique", "Ombre", "Orca", "Octopus",
-    "Overlap", "Outwit",
+    "Overlap", "Outwit", "OceanDeep",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
@@ -67,6 +67,7 @@ inline juce::String resolveEngineAlias(const juce::String& name)
         { "XOctopus",    "Octopus"   },
         { "XOverlap",    "Overlap"   },
         { "XOutwit",     "Outwit"    },
+        { "XOceanDeep",  "OceanDeep" },
     };
     auto it = aliases.find(name);
     return (it != aliases.end()) ? it->second : name;
@@ -112,6 +113,7 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Octopus",     "octo"    },
         { "XOverlap",    "olap"    },
         { "XOutwit",     "owit"    },
+        { "OceanDeep",   "deep"    },
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : engineId.toLowerCase();
