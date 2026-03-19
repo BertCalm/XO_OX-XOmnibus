@@ -41,7 +41,9 @@
       "macro_character": 0.037,
       "macro_coupling": 0.043,
       "macro_movement": 0.253,
-      "macro_space": 0.026
+      "macro_space": 0.026,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "OddfeliX": {
       "macro_character": 0.037,

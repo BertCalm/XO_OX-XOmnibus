@@ -41,7 +41,9 @@
       "macro_character": 0.33,
       "macro_coupling": 0.042,
       "macro_movement": 0.064,
-      "macro_space": 0.032
+      "macro_space": 0.032,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Ole": {
       "macro_character": 0.33,

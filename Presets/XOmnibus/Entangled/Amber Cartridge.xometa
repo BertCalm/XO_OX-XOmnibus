@@ -43,7 +43,9 @@
       "bob_warmth": 0.8,
       "bob_swing": 0.4,
       "bob_amberMix": 0.75,
-      "bob_density": 0.5
+      "bob_density": 0.5,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Onset": {
       "perc_v1_level": 0.75,

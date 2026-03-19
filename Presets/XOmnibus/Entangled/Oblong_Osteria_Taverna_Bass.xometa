@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Porto wine resonance meets Bob's bass warmth — deep tavern frequency.",
+  "description": "Porto wine resonance meets Bob's bass warmth \u2014 deep tavern frequency.",
   "dna": {
     "aggression": 0.328,
     "brightness": 0.509,
@@ -57,7 +57,8 @@
       "bob_oscWave": 0.33,
       "bob_reverbMix": 0.164,
       "bob_scaleMode": 1.0,
-      "bob_subOscLevel": 0.591
+      "bob_subOscLevel": 0.591,
+      "bob_curAmount": 0.2
     },
     "Osteria": {
       "osteria_filterCutoff": 7387.1,

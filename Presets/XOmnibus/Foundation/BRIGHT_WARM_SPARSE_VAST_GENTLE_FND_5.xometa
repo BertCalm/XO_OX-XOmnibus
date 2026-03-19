@@ -49,7 +49,9 @@
       "macro_character": 1.0,
       "macro_coupling": 0.0,
       "macro_movement": 0.541,
-      "macro_space": 1.0
+      "macro_space": 1.0,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "OddOscar": {
       "macro_character": 1.0,

@@ -65,7 +65,8 @@
       "dub_oscWave": 0.297,
       "dub_sendAmount": 0.481,
       "dub_spring": 0.366,
-      "dub_tapeDelay": 0.636
+      "dub_tapeDelay": 0.636,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

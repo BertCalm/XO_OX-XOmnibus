@@ -168,7 +168,8 @@
       "dub_reverbMix": 0.4,
       "dub_sendLevel": 0.5,
       "dub_subLevel": 0.4,
-      "dub_sustain": 0.45
+      "dub_sustain": 0.45,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

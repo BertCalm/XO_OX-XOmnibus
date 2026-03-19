@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Classic Dub Bass",
   "mood": "Foundation",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm, round dub bass with sub octave and gentle filter envelope. The foundation of any dub track.",
-  "tags": ["bass", "dub", "warm", "sub", "classic"],
-  "macroLabels": ["WEIGHT", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "bass",
+    "dub",
+    "warm",
+    "sub",
+    "classic"
+  ],
+  "macroLabels": [
+    "WEIGHT",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -39,7 +52,7 @@
       "dub_pitchEnvDepth": 0.0,
       "dub_pitchEnvDecay": 0.015,
       "dub_lfoRate": 2.0,
-      "dub_lfoDepth": 0.0,
+      "dub_lfoDepth": 0.12,
       "dub_lfoDest": 0,
       "dub_sendLevel": 0.0,
       "dub_returnLevel": 0.0,

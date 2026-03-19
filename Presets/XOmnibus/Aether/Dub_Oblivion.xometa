@@ -30,7 +30,8 @@
       "dub_macro_character": 0.31,
       "dub_macro_coupling": 0.21,
       "dub_macro_movement": 0.41,
-      "dub_macro_space": 0.89
+      "dub_macro_space": 0.89,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

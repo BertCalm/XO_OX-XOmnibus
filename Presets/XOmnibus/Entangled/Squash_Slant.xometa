@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Extreme",
   "created": "2026-03-16",
-  "description": "Origami × Oblong coupling (rhythm sync). Stub preset — sound-design pass pending.",
+  "description": "Origami \u00d7 Oblong coupling (rhythm sync). Stub preset \u2014 sound-design pass pending.",
   "dna": {
     "aggression": 0.455,
     "brightness": 0.583,
@@ -45,7 +45,9 @@
       "bob_macro1": 0.56,
       "bob_macro2": 0.493,
       "bob_macro3": 0.417,
-      "bob_macro4": 0.367
+      "bob_macro4": 0.367,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Origami": {
       "origami_couplingOut": 0.476,

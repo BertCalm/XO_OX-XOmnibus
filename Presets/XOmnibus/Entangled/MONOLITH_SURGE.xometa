@@ -41,7 +41,9 @@
       "macro_character": 0.8512,
       "macro_coupling": 0.9052,
       "macro_movement": 0.2851,
-      "macro_space": 0.2728
+      "macro_space": 0.2728,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Oceanic": {
       "macro_character": 0.8741,

@@ -18,7 +18,7 @@
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
-  "description": "RTJ energy smearing OBLONG's detuned warmth through a violet prism — big bass with angular attitude.",
+  "description": "RTJ energy smearing OBLONG's detuned warmth through a violet prism \u2014 big bass with angular attitude.",
   "dna": {
     "aggression": 0.483,
     "brightness": 0.637,
@@ -61,7 +61,9 @@
       "bob_ampAttack": 0.03,
       "bob_ampRelease": 1.5,
       "bob_filterCutoff": 2800.0,
-      "bob_filterReso": 0.3
+      "bob_filterReso": 0.3,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     }
   },
   "schema_version": 1,

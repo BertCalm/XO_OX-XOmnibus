@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBLONG, ONSET, and OBESE — the rhythm section. Bob lays the harmonic foundation, Onset drives the pulse, Obese saturates everything with hot-pink character. The trio that holds the whole XOmnibus together. A cooler, more clinical foundation — Onset precise, Obese restrained, Oblong spectral.",
+  "description": "OBLONG, ONSET, and OBESE \u2014 the rhythm section. Bob lays the harmonic foundation, Onset drives the pulse, Obese saturates everything with hot-pink character. The trio that holds the whole XOmnibus together. A cooler, more clinical foundation \u2014 Onset precise, Obese restrained, Oblong spectral.",
   "tags": [
     "family",
     "multi-engine",
@@ -37,7 +37,9 @@
     "Oblong": {
       "bob_character": 0.484,
       "bob_movement": 0.407,
-      "bob_space": 0.775
+      "bob_space": 0.775,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Onset": {},
     "Obese": {}

@@ -53,7 +53,9 @@
       "bob_oscA_wave": 0,
       "bob_oscB_blend": 0.4,
       "bob_oscB_detune": 6.0,
-      "bob_oscB_wave": 1
+      "bob_oscB_wave": 1,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Organon": {
       "organon_catalystDrive": 0.55,

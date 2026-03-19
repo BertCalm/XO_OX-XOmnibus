@@ -39,7 +39,8 @@
       "dub_sendAmount": 1.0,
       "dub_springReverb": 0.95,
       "dub_tapeDelay": 0.5,
-      "dub_wowFlutter": 0.45
+      "dub_wowFlutter": 0.45,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

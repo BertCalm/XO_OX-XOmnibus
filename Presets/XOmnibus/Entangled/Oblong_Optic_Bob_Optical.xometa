@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "AutoPulse geometry modulates Bob's filter cutoff — light patterns shaping the low end.",
+  "description": "AutoPulse geometry modulates Bob's filter cutoff \u2014 light patterns shaping the low end.",
   "dna": {
     "aggression": 0.476,
     "brightness": 0.841,
@@ -57,7 +57,8 @@
       "bob_oscWave": 0.67,
       "bob_reverbMix": 0.124,
       "bob_scaleMode": 0.4,
-      "bob_subOscLevel": 0.289
+      "bob_subOscLevel": 0.289,
+      "bob_curAmount": 0.2
     },
     "Optic": {
       "optic_filterCutoff": 5522.6,

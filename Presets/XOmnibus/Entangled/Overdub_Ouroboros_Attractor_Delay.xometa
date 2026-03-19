@@ -91,7 +91,8 @@
       "dub_sendAmount": 0.62,
       "dub_springAmount": 0.45,
       "dub_tapeFlutter": 0.22,
-      "dub_tapeWow": 0.28
+      "dub_tapeWow": 0.28,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

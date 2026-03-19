@@ -13,7 +13,7 @@
   },
   "couplingIntensity": "Light",
   "created": "2026-03-16",
-  "description": "OBLONG's amber warmth matches OSTERIA's porto tone — two warm-spectrum engines in sympathy, the session lit from both sides.",
+  "description": "OBLONG's amber warmth matches OSTERIA's porto tone \u2014 two warm-spectrum engines in sympathy, the session lit from both sides.",
   "dna": {
     "aggression": 0.339,
     "brightness": 0.639,
@@ -42,7 +42,9 @@
       "bob_lfoRate": 0.212,
       "bob_macroCharacter": 0.001,
       "bob_macroCoupling": 0.107,
-      "bob_release": 1.0
+      "bob_release": 1.0,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Osteria": {
       "osteria_attack": 0.244,

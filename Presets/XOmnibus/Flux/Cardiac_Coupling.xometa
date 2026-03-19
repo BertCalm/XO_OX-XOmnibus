@@ -57,7 +57,8 @@
       "bob_lfo1Rate": 1.0,
       "bob_oscA_drift": 0.1,
       "bob_oscA_shape": 0.4,
-      "bob_oscA_wave": 0
+      "bob_oscA_wave": 0,
+      "bob_curAmount": 0.2
     },
     "Organon": {
       "organon_catalystDrive": 0.5,

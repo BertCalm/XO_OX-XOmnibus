@@ -41,7 +41,9 @@
       "macro_character": 0.908,
       "macro_coupling": 0.68,
       "macro_movement": 0.11,
-      "macro_space": 0.844
+      "macro_space": 0.844,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Ottoni": {
       "macro_character": 0.057,

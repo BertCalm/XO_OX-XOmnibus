@@ -34,7 +34,8 @@
       "dub_delay_mix": 0.05,
       "dub_send_vca": 0.3,
       "dub_tape_drive": 0.8,
-      "dub_warmth": 0.95
+      "dub_warmth": 0.95,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

@@ -41,7 +41,9 @@
       "macro_character": 0.82,
       "macro_coupling": 0.68,
       "macro_movement": 0.47,
-      "macro_space": 0.2
+      "macro_space": 0.2,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Osprey": {
       "macro_character": 0.76,

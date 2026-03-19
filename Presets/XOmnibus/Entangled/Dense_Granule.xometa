@@ -41,7 +41,9 @@
       "macro_character": 0.88,
       "macro_coupling": 0.72,
       "macro_movement": 0.31,
-      "macro_space": 0.37
+      "macro_space": 0.37,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Opal": {
       "macro_character": 0.72,

@@ -41,7 +41,9 @@
     "Oblong": {
       "bob_groove": 0.55,
       "bob_density": 0.75,
-      "bob_curiousRate": 0.8
+      "bob_curiousRate": 0.8,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Onset": {
       "perc_v1_level": 0.85,

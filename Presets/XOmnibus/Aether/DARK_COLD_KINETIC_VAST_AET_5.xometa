@@ -38,7 +38,8 @@
     },
     "Overdub": {
       "level": 0.777,
-      "pan": 0.076
+      "pan": 0.076,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

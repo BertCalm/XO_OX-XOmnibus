@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Two oscillators detuned past warmth into open warfare. The beating frequency is audible, rhythmic, wrong. LFO slams the filter at rates fast enough to alias. Bob at maximum drive — the square wave is eating the sine. Identity crisis through arithmetic.",
+  "description": "Two oscillators detuned past warmth into open warfare. The beating frequency is audible, rhythmic, wrong. LFO slams the filter at rates fast enough to alias. Bob at maximum drive \u2014 the square wave is eating the sine. Identity crisis through arithmetic.",
   "dna": {
     "aggression": 0.75,
     "brightness": 0.7,
@@ -40,7 +40,8 @@
       "bob_macroMovement": 0.0,
       "bob_macroSpace": 0.0,
       "bob_oscDetune": 0.82,
-      "bob_oscWave": 2
+      "bob_oscWave": 2,
+      "bob_curAmount": 0.2
     }
   },
   "schema_version": 1,

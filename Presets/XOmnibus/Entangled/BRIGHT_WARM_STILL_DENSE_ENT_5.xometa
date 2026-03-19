@@ -11,7 +11,7 @@
     ]
   },
   "couplingIntensity": "High",
-  "description": "Bright Warm Still Dense character entanglement — OVERBITE × OBLONG via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Warm Still Dense character entanglement \u2014 OVERBITE \u00d7 OBLONG via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
   "dna": {
     "aggression": 0.3916,
     "brightness": 0.9406,
@@ -53,7 +53,9 @@
       "macro_space": 0.5203,
       "output_level": 0.8996,
       "reverb_mix": 0.429,
-      "reverb_size": 0.5273
+      "reverb_size": 0.5273,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Overbite": {
       "amp_attack": 0.4301,

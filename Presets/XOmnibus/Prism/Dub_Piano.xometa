@@ -19,7 +19,7 @@
   "engines": [
     "Overdub"
   ],
-  "description": "Plucked decay with tape echo \u2014 a roots dub piano tone.",
+  "description": "Plucked decay with tape echo — a roots dub piano tone.",
   "tags": [
     "dub",
     "piano",
@@ -55,7 +55,7 @@
       "dub_pitchEnvDepth": 0.08,
       "dub_pitchEnvDecay": 0.025,
       "dub_lfoRate": 0.0,
-      "dub_lfoDepth": 0.0,
+      "dub_lfoDepth": 0.12,
       "dub_lfoDest": 0,
       "dub_driveAmount": 1.05,
       "dub_dryLevel": 0.92,

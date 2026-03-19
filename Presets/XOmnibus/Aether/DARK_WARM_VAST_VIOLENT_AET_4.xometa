@@ -10,7 +10,7 @@
   ],
   "couplingIntensity": "High",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners — aether, dark, warm, vast.",
+  "description": "Extreme DNA corners \u2014 aether, dark, warm, vast.",
   "dna": {
     "aggression": 0.933,
     "brightness": 0.109,
@@ -34,7 +34,9 @@
   "parameters": {
     "Oblong": {
       "level": 0.78,
-      "pan": -0.046
+      "pan": -0.046,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Ouroboros": {
       "level": 0.832,

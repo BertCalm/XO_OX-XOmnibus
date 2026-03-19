@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Orca breach events reset Bob's LFO — each leap a new bass rhythm.",
+  "description": "Orca breach events reset Bob's LFO \u2014 each leap a new bass rhythm.",
   "dna": {
     "aggression": 0.646,
     "brightness": 0.617,
@@ -57,7 +57,8 @@
       "bob_oscWave": 0.67,
       "bob_reverbMix": 0.275,
       "bob_scaleMode": 0.6,
-      "bob_subOscLevel": 0.179
+      "bob_subOscLevel": 0.179,
+      "bob_curAmount": 0.2
     },
     "Orca": {
       "orca_filterCutoff": 5770.5,

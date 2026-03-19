@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Maximum character — Bob at full expression. Filter open and resonant, drive into saturation, dual LFOs creating compound motion. This is the engine unguarded: all warmth, all movement, all presence. Bob at full flux is an event.",
+  "description": "Maximum character \u2014 Bob at full expression. Filter open and resonant, drive into saturation, dual LFOs creating compound motion. This is the engine unguarded: all warmth, all movement, all presence. Bob at full flux is an event.",
   "dna": {
     "aggression": 0.5,
     "brightness": 0.68,
@@ -40,7 +40,8 @@
       "bob_macroMovement": 0.0,
       "bob_macroSpace": 0.0,
       "bob_oscDetune": 0.35,
-      "bob_oscWave": 2
+      "bob_oscWave": 2,
+      "bob_curAmount": 0.2
     }
   },
   "schema_version": 1,

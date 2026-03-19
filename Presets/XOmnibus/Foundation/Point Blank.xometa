@@ -34,7 +34,8 @@
       "dub_filterReso": 0.188,
       "dub_oscWave": 0,
       "dub_returnLevel": 0.01,
-      "dub_sendLevel": 0.01
+      "dub_sendLevel": 0.01,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

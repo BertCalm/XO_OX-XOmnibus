@@ -55,7 +55,7 @@
       "dub_pitchEnvDepth": 0.04,
       "dub_pitchEnvDecay": 0.03,
       "dub_lfoRate": 0.3,
-      "dub_lfoDepth": 0.03,
+      "dub_lfoDepth": 0.12,
       "dub_lfoDest": 0,
       "dub_driveAmount": 1.5,
       "dub_dryLevel": 0.9,

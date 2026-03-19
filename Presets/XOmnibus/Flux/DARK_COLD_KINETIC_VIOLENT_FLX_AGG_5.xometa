@@ -41,7 +41,9 @@
       "macro_character": 0.704,
       "macro_coupling": 0.784,
       "macro_movement": 0.913,
-      "macro_space": 0.391
+      "macro_space": 0.391,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Optic": {
       "macro_character": 0.607,

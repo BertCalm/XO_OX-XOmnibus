@@ -134,7 +134,8 @@
       "dub_delayFeedback": 0.4,
       "dub_reverbMix": 0.35,
       "dub_driveAmount": 0.1,
-      "dub_level": 0.45
+      "dub_level": 0.45,
+      "dub_lfoDepth": 0.12
     }
   },
   "coupling": {

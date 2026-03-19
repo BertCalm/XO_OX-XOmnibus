@@ -39,7 +39,8 @@
       "dub_pitchEnvDepth": 36.0,
       "dub_release": 0.2,
       "dub_subLevel": 0.4,
-      "dub_sustain": 0.0
+      "dub_sustain": 0.0,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

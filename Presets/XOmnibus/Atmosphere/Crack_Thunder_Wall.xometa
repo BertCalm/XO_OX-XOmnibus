@@ -35,7 +35,9 @@
       "character": 0.786,
       "coupling": 0.356,
       "movement": 0.877,
-      "space": 0.332
+      "space": 0.332,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     }
   },
   "schema_version": 1,

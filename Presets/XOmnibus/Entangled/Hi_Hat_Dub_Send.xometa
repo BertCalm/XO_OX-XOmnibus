@@ -27,7 +27,7 @@
     "Onset",
     "Overdub"
   ],
-  "description": "Hi-hats from ONSET control DUB's send amount \u2014 cymbals mix into echo.",
+  "description": "Hi-hats from ONSET control DUB's send amount — cymbals mix into echo.",
   "tags": [
     "onset",
     "dub",
@@ -75,7 +75,8 @@
       "dub_reverbSize": 0.55,
       "dub_reverbMix": 0.22,
       "dub_level": 0.7,
-      "dub_voiceMode": 1
+      "dub_voiceMode": 1,
+      "dub_lfoDepth": 0.12
     }
   }
 }

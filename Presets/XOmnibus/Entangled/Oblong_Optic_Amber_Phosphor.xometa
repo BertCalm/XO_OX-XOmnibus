@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Phosphor-green pulse rate clocks Bob's envelope — visual timing becoming bass attack timing.",
+  "description": "Phosphor-green pulse rate clocks Bob's envelope \u2014 visual timing becoming bass attack timing.",
   "dna": {
     "aggression": 0.528,
     "brightness": 0.723,
@@ -57,7 +57,8 @@
       "bob_oscWave": 1.0,
       "bob_reverbMix": 0.267,
       "bob_scaleMode": 1.0,
-      "bob_subOscLevel": 0.424
+      "bob_subOscLevel": 0.424,
+      "bob_curAmount": 0.2
     },
     "Optic": {
       "optic_filterCutoff": 3856.6,

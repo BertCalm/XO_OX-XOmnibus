@@ -42,7 +42,9 @@
       "bob_couplingLevel": 0.63,
       "bob_outputLevel": 0.82,
       "bob_outputPan": -0.0,
-      "bob_warmth": 0.673
+      "bob_warmth": 0.673,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Overbite": {
       "poss_aggression": 0.641,

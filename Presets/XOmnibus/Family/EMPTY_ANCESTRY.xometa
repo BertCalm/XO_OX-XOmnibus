@@ -41,7 +41,9 @@
       "macro_character": 0.73,
       "macro_coupling": 0.313,
       "macro_movement": 0.313,
-      "macro_space": 0.255
+      "macro_space": 0.255,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Orca": {
       "macro_character": 0.954,

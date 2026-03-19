@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Orca hunt macro triggers Bob's attack transient — apex-predator bass strike.",
+  "description": "Orca hunt macro triggers Bob's attack transient \u2014 apex-predator bass strike.",
   "dna": {
     "aggression": 0.632,
     "brightness": 0.58,
@@ -57,7 +57,8 @@
       "bob_oscWave": 0.0,
       "bob_reverbMix": 0.107,
       "bob_scaleMode": 0.0,
-      "bob_subOscLevel": 0.555
+      "bob_subOscLevel": 0.555,
+      "bob_curAmount": 0.2
     },
     "Orca": {
       "orca_filterCutoff": 6895.4,

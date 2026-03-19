@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "Extreme",
   "couplingType": "DRIFT",
-  "description": "Ultra-diverse Entangled preset — dark kinetic violent vast. Designed for DRIFT coupling with XOblongBob.",
+  "description": "Ultra-diverse Entangled preset \u2014 dark kinetic violent vast. Designed for DRIFT coupling with XOblongBob.",
   "dna": {
     "aggression": 0.9098,
     "brightness": 0.0755,
@@ -28,7 +28,9 @@
   "parameters": {
     "Oblong": {
       "couplingBus": 2,
-      "couplingLevel": 0.673
+      "couplingLevel": 0.673,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     }
   },
   "schema_version": 1,

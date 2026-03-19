@@ -51,7 +51,9 @@
       "bob_couplingLevel": 0.74,
       "bob_outputLevel": 0.89,
       "bob_outputPan": 0.04,
-      "bob_warmth": 0.698
+      "bob_warmth": 0.698,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     }
   },
   "schema_version": 1,

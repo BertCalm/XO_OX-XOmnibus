@@ -55,7 +55,8 @@
       "dub_level": 0.726,
       "dub_movement": 0.516,
       "dub_space": 0.75,
-      "dub_warmth": 0.742
+      "dub_warmth": 0.742,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

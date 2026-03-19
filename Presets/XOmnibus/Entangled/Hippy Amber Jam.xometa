@@ -38,7 +38,9 @@
     "Oblong": {
       "bob_swing": 0.45,
       "bob_groove": 0.5,
-      "bob_warmth": 0.65
+      "bob_warmth": 0.65,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Ohm": {
       "ohm_commune": 0.55,

@@ -57,7 +57,8 @@
       "dub_macro1": 0.305,
       "dub_macro2": 0.691,
       "dub_macro3": 0.488,
-      "dub_macro4": 0.688
+      "dub_macro4": 0.688,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

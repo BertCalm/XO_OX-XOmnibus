@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Strong",
   "created": "2026-03-16",
-  "description": "Orbital × Oblong coupling (spectral cross). Stub preset — sound-design pass pending.",
+  "description": "Orbital \u00d7 Oblong coupling (spectral cross). Stub preset \u2014 sound-design pass pending.",
   "dna": {
     "aggression": 0.461,
     "brightness": 0.581,
@@ -45,7 +45,9 @@
       "bob_macro1": 0.609,
       "bob_macro2": 0.672,
       "bob_macro3": 0.549,
-      "bob_macro4": 0.487
+      "bob_macro4": 0.487,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Orbital": {
       "orb_arcDecay": 0.744,

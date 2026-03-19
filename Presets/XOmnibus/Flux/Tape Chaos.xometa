@@ -41,7 +41,8 @@
       "dub_oscWave": 3.0,
       "dub_reverbMix": 0.4,
       "dub_reverbSize": 0.6,
-      "dub_sendLevel": 0.6
+      "dub_sendLevel": 0.6,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

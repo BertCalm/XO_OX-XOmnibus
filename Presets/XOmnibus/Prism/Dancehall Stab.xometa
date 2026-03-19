@@ -40,7 +40,8 @@
       "dub_oscWave": 2.0,
       "dub_release": 0.08,
       "dub_sendLevel": 0.3,
-      "dub_sustain": 0.0
+      "dub_sustain": 0.0,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

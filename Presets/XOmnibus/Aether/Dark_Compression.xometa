@@ -42,7 +42,9 @@
       "bob_oscB_tune": -0.01,
       "bob_oscB_wave": 2.0,
       "bob_release": 80.0,
-      "bob_sustain": 0.95
+      "bob_sustain": 0.95,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     }
   },
   "schema_version": 1,

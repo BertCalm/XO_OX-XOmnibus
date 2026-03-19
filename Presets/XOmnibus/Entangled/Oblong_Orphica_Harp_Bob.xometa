@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Microsound harp plucks Bob's upper partials — siphonophore colony meets character bass.",
+  "description": "Microsound harp plucks Bob's upper partials \u2014 siphonophore colony meets character bass.",
   "dna": {
     "aggression": 0.395,
     "brightness": 0.603,
@@ -57,7 +57,8 @@
       "bob_oscWave": 0.0,
       "bob_reverbMix": 0.082,
       "bob_scaleMode": 0.4,
-      "bob_subOscLevel": 0.399
+      "bob_subOscLevel": 0.399,
+      "bob_curAmount": 0.2
     },
     "Orphica": {
       "orph_filterCutoff": 9079.7,

@@ -41,7 +41,9 @@
       "macro_character": 0.261,
       "macro_coupling": 0.984,
       "macro_movement": 0.581,
-      "macro_space": 0.038
+      "macro_space": 0.038,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Ouroboros": {
       "macro_character": 0.844,

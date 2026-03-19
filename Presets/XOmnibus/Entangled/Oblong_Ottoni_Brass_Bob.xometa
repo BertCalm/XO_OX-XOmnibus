@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Ottoni GROW macro swells Bob's harmonic density — bass section expanding.",
+  "description": "Ottoni GROW macro swells Bob's harmonic density \u2014 bass section expanding.",
   "dna": {
     "aggression": 0.418,
     "brightness": 0.593,
@@ -57,7 +57,8 @@
       "bob_oscWave": 1.0,
       "bob_reverbMix": 0.368,
       "bob_scaleMode": 0.2,
-      "bob_subOscLevel": 0.29
+      "bob_subOscLevel": 0.29,
+      "bob_curAmount": 0.2
     },
     "Ottoni": {
       "otto_filterCutoff": 9674.1,

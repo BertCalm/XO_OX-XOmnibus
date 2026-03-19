@@ -42,7 +42,8 @@
       "dub_sendLevel": 0.3,
       "dub_subLevel": 1.0,
       "dub_sustain": 0.3,
-      "dub_voiceMode": 1.0
+      "dub_voiceMode": 1.0,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

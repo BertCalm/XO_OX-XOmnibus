@@ -10,7 +10,7 @@
   ],
   "couplingIntensity": "High",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners — aether, bright, cold, kinetic.",
+  "description": "Extreme DNA corners \u2014 aether, bright, cold, kinetic.",
   "dna": {
     "aggression": 0.472,
     "brightness": 0.957,
@@ -34,7 +34,9 @@
   "parameters": {
     "Oblong": {
       "level": 0.745,
-      "pan": 0.087
+      "pan": 0.087,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Octopus": {
       "level": 0.777,

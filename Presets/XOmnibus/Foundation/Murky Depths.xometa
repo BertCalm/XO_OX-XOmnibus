@@ -42,7 +42,8 @@
       "dub_oscOctave": 1.0,
       "dub_oscWave": 2.0,
       "dub_subLevel": 0.8,
-      "dub_sustain": 0.4
+      "dub_sustain": 0.4,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

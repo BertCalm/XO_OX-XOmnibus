@@ -41,7 +41,9 @@
       "macro_character": 0.342,
       "macro_coupling": 0.937,
       "macro_movement": 0.025,
-      "macro_space": 0.882
+      "macro_space": 0.882,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Odyssey": {
       "macro_character": 0.366,

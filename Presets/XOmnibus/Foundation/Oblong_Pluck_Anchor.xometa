@@ -34,7 +34,9 @@
       "ob_decay": 0.25,
       "ob_drive": 0.4,
       "ob_sub": 0.65,
-      "ob_tone": 0.4
+      "ob_tone": 0.4,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     }
   },
   "schema_version": 1,

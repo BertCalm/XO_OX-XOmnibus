@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OBLONG — dark extreme brightness preset for Foundation.",
+  "description": "OBLONG \u2014 dark extreme brightness preset for Foundation.",
   "dna": {
     "aggression": 0.88,
     "brightness": 0.04,
@@ -35,13 +35,13 @@
       "bob_delayMix": 0.0,
       "bob_filterCutoff": 0.87,
       "bob_filterReso": 0.3,
-      "bob_lfoDepth": 0.78,
       "bob_lfoRate": 0.54,
       "bob_movement": 0.02,
       "bob_osc1wave": 0,
       "bob_osc2wave": 0,
       "bob_reverbMix": 0.53,
-      "bob_space": 0.93
+      "bob_space": 0.93,
+      "bob_lfo1Depth": 0.78
     }
   },
   "schema_version": 1,

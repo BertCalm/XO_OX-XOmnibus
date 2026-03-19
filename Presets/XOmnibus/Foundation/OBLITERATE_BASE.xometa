@@ -47,7 +47,8 @@
       "macro_character": 0.491,
       "macro_coupling": 0.603,
       "macro_movement": 0.527,
-      "macro_space": 0.54
+      "macro_space": 0.54,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

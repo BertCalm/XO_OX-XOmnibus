@@ -49,7 +49,9 @@
       "macro_character": 0.943,
       "macro_coupling": 0.77,
       "macro_movement": 0.9,
-      "macro_space": 0.0
+      "macro_space": 0.0,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Obsidian": {
       "macro_character": 1.0,

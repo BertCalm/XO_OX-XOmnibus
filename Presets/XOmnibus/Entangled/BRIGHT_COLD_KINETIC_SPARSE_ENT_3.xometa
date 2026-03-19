@@ -11,7 +11,7 @@
     ]
   },
   "couplingIntensity": "High",
-  "description": "Bright Cold Kinetic Sparse character entanglement — OBLONG × ORBITAL via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Cold Kinetic Sparse character entanglement \u2014 OBLONG \u00d7 ORBITAL via Resonance Share. Extreme DNA zones push sound design to the edges.",
   "dna": {
     "aggression": 0.4416,
     "brightness": 0.8925,
@@ -53,7 +53,9 @@
       "macro_space": 0.2773,
       "output_level": 0.7156,
       "reverb_mix": 0.2944,
-      "reverb_size": 0.3768
+      "reverb_size": 0.3768,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Orbital": {
       "amp_attack": 0.0854,

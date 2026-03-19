@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "OLE rhythm patterns clock Bob's arpeggiator — polyrhythm in the low end.",
+  "description": "OLE rhythm patterns clock Bob's arpeggiator \u2014 polyrhythm in the low end.",
   "dna": {
     "aggression": 0.541,
     "brightness": 0.621,
@@ -57,7 +57,8 @@
       "bob_oscWave": 0.0,
       "bob_reverbMix": 0.259,
       "bob_scaleMode": 0.8,
-      "bob_subOscLevel": 0.309
+      "bob_subOscLevel": 0.309,
+      "bob_curAmount": 0.2
     },
     "Ole": {
       "ole_filterCutoff": 4199.1,

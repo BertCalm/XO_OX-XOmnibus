@@ -59,7 +59,8 @@
       "dub_ampAttack": 0.03,
       "dub_ampRelease": 1.5,
       "dub_filterCutoff": 2800.0,
-      "dub_filterReso": 0.3
+      "dub_filterReso": 0.3,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

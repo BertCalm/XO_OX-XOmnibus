@@ -41,13 +41,16 @@
       "macro_character": 0.937,
       "macro_coupling": 0.769,
       "macro_movement": 0.016,
-      "macro_space": 0.354
+      "macro_space": 0.354,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Overdub": {
       "macro_character": 0.834,
       "macro_coupling": 0.751,
       "macro_movement": 0.012,
-      "macro_space": 0.327
+      "macro_space": 0.327,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

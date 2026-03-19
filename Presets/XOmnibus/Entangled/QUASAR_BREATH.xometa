@@ -41,7 +41,9 @@
       "macro_character": 0.135,
       "macro_coupling": 0.06,
       "macro_movement": 0.392,
-      "macro_space": 0.941
+      "macro_space": 0.941,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Owlfish": {
       "macro_character": 0.275,

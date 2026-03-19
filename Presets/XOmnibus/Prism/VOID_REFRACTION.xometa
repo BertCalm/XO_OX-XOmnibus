@@ -41,7 +41,8 @@
       "macro_character": 0.844,
       "macro_coupling": 0.001,
       "macro_movement": 0.638,
-      "macro_space": 0.069
+      "macro_space": 0.069,
+      "dub_lfoDepth": 0.12
     },
     "Overlap": {
       "macro_character": 0.046,

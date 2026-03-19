@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Mixtur-Trautonium subharmonics lock Bob's oscillator register — abyssal bass depth.",
+  "description": "Mixtur-Trautonium subharmonics lock Bob's oscillator register \u2014 abyssal bass depth.",
   "dna": {
     "aggression": 0.407,
     "brightness": 0.578,
@@ -57,7 +57,8 @@
       "bob_oscWave": 0.33,
       "bob_reverbMix": 0.243,
       "bob_scaleMode": 0.6,
-      "bob_subOscLevel": 0.095
+      "bob_subOscLevel": 0.095,
+      "bob_curAmount": 0.2
     },
     "Owlfish": {
       "owl_filterCutoff": 9524.8,

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Filter resonance at the edge of self-oscillation — the resonant peak becomes a pitched tone fighting the oscillator for dominance. Drive pushes the filter into feedback. The boundary between filter and oscillator blurs. Bob discovering what happens when the tool becomes the instrument.",
+  "description": "Filter resonance at the edge of self-oscillation \u2014 the resonant peak becomes a pitched tone fighting the oscillator for dominance. Drive pushes the filter into feedback. The boundary between filter and oscillator blurs. Bob discovering what happens when the tool becomes the instrument.",
   "dna": {
     "aggression": 0.85,
     "brightness": 0.55,
@@ -40,7 +40,8 @@
       "bob_macroMovement": 0.0,
       "bob_macroSpace": 0.0,
       "bob_oscDetune": 0.15,
-      "bob_oscWave": 1
+      "bob_oscWave": 1,
+      "bob_curAmount": 0.2
     }
   },
   "schema_version": 1,

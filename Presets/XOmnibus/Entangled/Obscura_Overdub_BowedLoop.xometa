@@ -70,7 +70,8 @@
       "dub_reverbMix": 0.3,
       "dub_sendAmount": 0.7,
       "dub_tapeFlutter": 0.18,
-      "dub_tapeWow": 0.22
+      "dub_tapeWow": 0.22,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

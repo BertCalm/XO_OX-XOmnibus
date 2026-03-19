@@ -41,7 +41,8 @@
       "macro_character": 0.645,
       "macro_coupling": 0.887,
       "macro_movement": 0.074,
-      "macro_space": 0.988
+      "macro_space": 0.988,
+      "dub_lfoDepth": 0.12
     },
     "Overworld": {
       "macro_character": 0.587,

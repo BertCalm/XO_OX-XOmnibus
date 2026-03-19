@@ -11,7 +11,7 @@
     ]
   },
   "couplingIntensity": "High",
-  "description": "Dark Cold Dense Intimate character entanglement — OVERLAP × OBLONG via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Cold Dense Intimate character entanglement \u2014 OVERLAP \u00d7 OBLONG via Resonance Share. Extreme DNA zones push sound design to the edges.",
   "dna": {
     "aggression": 0.3238,
     "brightness": 0.1087,
@@ -53,7 +53,9 @@
       "macro_space": 0.1467,
       "output_level": 0.9017,
       "reverb_mix": 0.2038,
-      "reverb_size": 0.288
+      "reverb_size": 0.288,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Overlap": {
       "amp_attack": 0.3085,

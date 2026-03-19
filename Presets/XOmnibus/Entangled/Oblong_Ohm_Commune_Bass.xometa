@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "OHM community warmth amplifies Bob's amber glow — hippy-dad bass council.",
+  "description": "OHM community warmth amplifies Bob's amber glow \u2014 hippy-dad bass council.",
   "dna": {
     "aggression": 0.287,
     "brightness": 0.618,
@@ -57,7 +57,8 @@
       "bob_oscWave": 0.0,
       "bob_reverbMix": 0.382,
       "bob_scaleMode": 0.8,
-      "bob_subOscLevel": 0.114
+      "bob_subOscLevel": 0.114,
+      "bob_curAmount": 0.2
     },
     "Ohm": {
       "ohm_filterCutoff": 9489.9,

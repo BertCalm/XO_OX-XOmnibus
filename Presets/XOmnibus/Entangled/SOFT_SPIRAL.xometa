@@ -41,7 +41,9 @@
       "macro_character": 0.677,
       "macro_coupling": 0.554,
       "macro_movement": 0.721,
-      "macro_space": 0.168
+      "macro_space": 0.168,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Ocelot": {
       "macro_character": 0.272,

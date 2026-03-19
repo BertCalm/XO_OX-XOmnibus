@@ -19,7 +19,7 @@
   "engines": [
     "Overdub"
   ],
-  "description": "Pitch envelope plummet into bass territory \u2014 the classic falling dub note.",
+  "description": "Pitch envelope plummet into bass territory — the classic falling dub note.",
   "tags": [
     "dub",
     "pitch-fall",
@@ -55,7 +55,7 @@
       "dub_pitchEnvDepth": -0.5,
       "dub_pitchEnvDecay": 0.12,
       "dub_lfoRate": 0.0,
-      "dub_lfoDepth": 0.0,
+      "dub_lfoDepth": 0.12,
       "dub_lfoDest": 0,
       "dub_driveAmount": 1.2,
       "dub_dryLevel": 0.88,

@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Bob's amber warmth pooling at the low end of the shadow gradient — heat settling into night.",
+  "description": "Bob's amber warmth pooling at the low end of the shadow gradient \u2014 heat settling into night.",
   "dna": {
     "aggression": 0.343,
     "brightness": 0.499,
@@ -36,7 +36,9 @@
   "parameters": {
     "Oblong": {
       "bob_filterCutoff": 9386.7,
-      "bob_level": 0.653
+      "bob_level": 0.653,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Ombre": {
       "ombre_ampAttack": 0.0204,

@@ -42,7 +42,8 @@
       "dub_oscWave": 0.365,
       "dub_sendAmount": 0.532,
       "dub_spring": 0.514,
-      "dub_tapeDelay": 0.574
+      "dub_tapeDelay": 0.574,
+      "dub_lfoDepth": 0.12
     },
     "Owlfish": {
       "owl_abyssalDrive": 0.407,

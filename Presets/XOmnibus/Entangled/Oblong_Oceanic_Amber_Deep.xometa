@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Phosphorescent teal filters through amber warmth — bioluminescent low end.",
+  "description": "Phosphorescent teal filters through amber warmth \u2014 bioluminescent low end.",
   "dna": {
     "aggression": 0.325,
     "brightness": 0.618,
@@ -57,7 +57,8 @@
       "bob_oscWave": 0.67,
       "bob_reverbMix": 0.276,
       "bob_scaleMode": 0.0,
-      "bob_subOscLevel": 0.528
+      "bob_subOscLevel": 0.528,
+      "bob_curAmount": 0.2
     },
     "Oceanic": {
       "ocean_filterCutoff": 6523.3,

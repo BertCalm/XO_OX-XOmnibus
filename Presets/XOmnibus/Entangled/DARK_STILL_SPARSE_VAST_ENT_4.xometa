@@ -11,7 +11,7 @@
     ]
   },
   "couplingIntensity": "High",
-  "description": "Dark Still Sparse Vast character entanglement — OBLONG × OHM via Chaos Inject. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Still Sparse Vast character entanglement \u2014 OBLONG \u00d7 OHM via Chaos Inject. Extreme DNA zones push sound design to the edges.",
   "dna": {
     "aggression": 0.6247,
     "brightness": 0.0274,
@@ -53,7 +53,9 @@
       "macro_space": 0.9719,
       "output_level": 0.7202,
       "reverb_mix": 0.6853,
-      "reverb_size": 0.7633
+      "reverb_size": 0.7633,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Ohm": {
       "amp_attack": 0.4655,

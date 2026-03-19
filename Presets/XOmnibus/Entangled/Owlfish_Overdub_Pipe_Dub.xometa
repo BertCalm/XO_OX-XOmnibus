@@ -49,7 +49,8 @@
       "dub_reverbMix": 0.4,
       "dub_sendLevel": 0.5,
       "dub_subLevel": 0.25,
-      "dub_sustain": 0.55
+      "dub_sustain": 0.55,
+      "dub_lfoDepth": 0.12
     },
     "Owlfish": {
       "owl_bodyFreq": 80.0,

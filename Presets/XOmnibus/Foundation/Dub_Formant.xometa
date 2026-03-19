@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "created": "2026-03-19",
+  "name": "Dub Formant",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.4
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.65,
+    "space": 0.4,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Overdub": {
+      "dub_oscWave": 2,
+      "dub_oscOctave": 0,
+      "dub_filterMode": 2,
+      "dub_filterCutoff": 480.0,
+      "dub_filterReso": 0.5,
+      "dub_filterEnvAmt": 0.45,
+      "dub_lfoRate": 0.6,
+      "dub_lfoDepth": 0.14,
+      "dub_lfoDest": 1,
+      "dub_sendLevel": 0.6,
+      "dub_returnLevel": 0.55,
+      "dub_driveAmount": 2.5,
+      "dub_delayTime": 0.25,
+      "dub_delayFeedback": 0.35,
+      "dub_delayWear": 0.35,
+      "dub_delayWow": 0.2,
+      "dub_delayMix": 0.25,
+      "dub_reverbSize": 0.45,
+      "dub_reverbDamp": 0.5,
+      "dub_reverbMix": 0.4,
+      "dub_pitchEnvDepth": 0.0,
+      "dub_pitchEnvDecay": 0.08,
+      "dub_subLevel": 0.45,
+      "dub_noiseLevel": 0.0,
+      "dub_voiceMode": 0,
+      "dub_glide": 0.0,
+      "dub_level": 0.8
+    }
+  },
+  "tags": [
+    "foundation",
+    "dub",
+    "formant",
+    "bpf",
+    "vocal",
+    "mid",
+    "organic"
+  ],
+  "description": "Band-pass resonance centred on the throat frequency. The mid-peak gives the dub bass a vowel character — something between a talking and a throb. Sub reinforces the body while the BPF peak shifts the speaking tube upward."
+}

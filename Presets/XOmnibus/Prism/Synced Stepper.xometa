@@ -43,7 +43,8 @@
       "dub_reverbMix": 0.15,
       "dub_reverbSize": 0.3,
       "dub_sendLevel": 0.5,
-      "dub_sustain": 0.0
+      "dub_sustain": 0.0,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

@@ -41,7 +41,9 @@
       "macro_character": 0.116,
       "macro_coupling": 0.075,
       "macro_movement": 0.096,
-      "macro_space": 0.1
+      "macro_space": 0.1,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Outwit": {
       "macro_character": 0.79,

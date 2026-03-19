@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Rapid LFO sweeping the filter cutoff through its full range — brightness in constant flux, resonance high enough to self-oscillate at the peaks. Bob's analog character makes each sweep slightly different. A weather system compressed into a single note.",
+  "description": "Rapid LFO sweeping the filter cutoff through its full range \u2014 brightness in constant flux, resonance high enough to self-oscillate at the peaks. Bob's analog character makes each sweep slightly different. A weather system compressed into a single note.",
   "dna": {
     "aggression": 0.55,
     "brightness": 0.55,
@@ -40,7 +40,8 @@
       "bob_macroMovement": 0.0,
       "bob_macroSpace": 0.0,
       "bob_oscDetune": 0.22,
-      "bob_oscWave": 2
+      "bob_oscWave": 2,
+      "bob_curAmount": 0.2
     }
   },
   "schema_version": 1,

@@ -41,7 +41,9 @@
       "macro_character": 0.265,
       "macro_coupling": 0.791,
       "macro_movement": 0.887,
-      "macro_space": 0.59
+      "macro_space": 0.59,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Organon": {
       "macro_character": 0.804,

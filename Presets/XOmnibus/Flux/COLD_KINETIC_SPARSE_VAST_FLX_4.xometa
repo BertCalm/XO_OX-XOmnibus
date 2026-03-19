@@ -41,7 +41,9 @@
       "macro_character": 0.5144,
       "macro_coupling": 0.5058,
       "macro_movement": 0.8896,
-      "macro_space": 0.8672
+      "macro_space": 0.8672,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Origami": {
       "macro_character": 0.6019,

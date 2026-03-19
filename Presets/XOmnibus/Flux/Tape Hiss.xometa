@@ -45,7 +45,8 @@
       "dub_release": 1.5,
       "dub_returnLevel": 0.6,
       "dub_sendLevel": 0.7,
-      "dub_sustain": 0.3
+      "dub_sustain": 0.3,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

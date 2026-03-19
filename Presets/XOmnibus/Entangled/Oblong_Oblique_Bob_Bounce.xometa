@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Bass line follows the oblique bounce axis — each reflection a syncopated groove.",
+  "description": "Bass line follows the oblique bounce axis \u2014 each reflection a syncopated groove.",
   "dna": {
     "aggression": 0.519,
     "brightness": 0.638,
@@ -61,7 +61,8 @@
       "bob_oscWave": 0.33,
       "bob_reverbMix": 0.351,
       "bob_scaleMode": 0.4,
-      "bob_subOscLevel": 0.078
+      "bob_subOscLevel": 0.078,
+      "bob_curAmount": 0.2
     }
   },
   "schema_version": 1,

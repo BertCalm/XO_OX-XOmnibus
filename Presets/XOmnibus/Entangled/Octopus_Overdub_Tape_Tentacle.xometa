@@ -77,7 +77,8 @@
     },
     "Overdub": {
       "dub_filterCutoff": 4872.8,
-      "dub_level": 0.685
+      "dub_level": 0.685,
+      "dub_lfoDepth": 0.12
     }
   },
   "schema_version": 1,

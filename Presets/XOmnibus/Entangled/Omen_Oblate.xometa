@@ -46,7 +46,9 @@
       "bob_level": 0.76,
       "bob_movement": 0.543,
       "bob_space": 0.468,
-      "bob_warmth": 0.621
+      "bob_warmth": 0.621,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
     },
     "Oracle": {
       "oracle_aggression": 0.323,
