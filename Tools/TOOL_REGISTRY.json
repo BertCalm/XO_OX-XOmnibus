@@ -1,0 +1,990 @@
+{
+  "version": "1.0",
+  "tools": [
+    {
+      "file": "add_missing_dna.py",
+      "category": "dna-health",
+      "status": "active"
+    },
+    {
+      "file": "audit_sonic_dna.py",
+      "category": "dna-health",
+      "status": "active"
+    },
+    {
+      "file": "breed_presets.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "compute_preset_dna.py",
+      "category": "dna-health",
+      "status": "active"
+    },
+    {
+      "file": "extract_cpp_presets.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "find_missing_dna.py",
+      "category": "dna-health",
+      "status": "active"
+    },
+    {
+      "file": "generate_preset_params.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "oxport.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "preset_audit.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "site_audio_export.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "validate_presets.py",
+      "category": "validation",
+      "status": "active"
+    },
+    {
+      "file": "xoutshine.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_adaptive_velocity.py",
+      "category": "velocity-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_articulation_builder.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_auto_dna.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_auto_root_detect.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_batch_export.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_bulk_metadata_editor.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_bundle_builder.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_changelog_generator.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_choke_group_assigner.py",
+      "category": "pad-layout",
+      "status": "active"
+    },
+    {
+      "file": "xpn_choke_group_designer.py",
+      "category": "pad-layout",
+      "status": "active"
+    },
+    {
+      "file": "xpn_classify_instrument.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_clone_cluster_repair.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_collection_arc_validator.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_collection_sequencer.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_community_qa.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_coupling_coverage_tracker_v2.py",
+      "category": "coupling",
+      "status": "active"
+    },
+    {
+      "file": "xpn_coupling_density_heatmap.py",
+      "category": "coupling",
+      "status": "active"
+    },
+    {
+      "file": "xpn_coupling_docs_generator.py",
+      "category": "coupling",
+      "status": "active"
+    },
+    {
+      "file": "xpn_coupling_pair_recommender.py",
+      "category": "coupling",
+      "status": "active"
+    },
+    {
+      "file": "xpn_coupling_preset_auditor.py",
+      "category": "coupling",
+      "status": "active"
+    },
+    {
+      "file": "xpn_coupling_recipe_expander.py",
+      "category": "coupling",
+      "status": "active"
+    },
+    {
+      "file": "xpn_coupling_recipes.py",
+      "category": "coupling",
+      "status": "active"
+    },
+    {
+      "file": "xpn_cover_art.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_cover_art_audit.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_cover_art_batch.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_cover_art_generator_v2.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_dedup_checker.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_diversity_threshold_crosser.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_dna_diversity_analyzer.py",
+      "category": "dna-health",
+      "status": "active"
+    },
+    {
+      "file": "xpn_dna_gap_finder.py",
+      "category": "dna-health",
+      "status": "active"
+    },
+    {
+      "file": "xpn_dna_interpolator.py",
+      "category": "dna-health",
+      "status": "active"
+    },
+    {
+      "file": "xpn_drum_export.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_engine_coverage_mapper.py",
+      "category": "fleet-analytics",
+      "status": "active"
+    },
+    {
+      "file": "xpn_engine_dna_profile_builder.py",
+      "category": "fleet-analytics",
+      "status": "active"
+    },
+    {
+      "file": "xpn_engine_intro_preset_builder.py",
+      "category": "fleet-analytics",
+      "status": "active"
+    },
+    {
+      "file": "xpn_engine_preset_gap_reporter.py",
+      "category": "fleet-analytics",
+      "status": "active"
+    },
+    {
+      "file": "xpn_engine_tag_cloud_builder.py",
+      "category": "fleet-analytics",
+      "status": "active"
+    },
+    {
+      "file": "xpn_expansion_bundle_profiler.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_expansion_json_builder.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_expansion_json_lint.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_export_report_generator.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_fleet_coupling_coverage_updater.py",
+      "category": "coupling",
+      "status": "active"
+    },
+    {
+      "file": "xpn_fleet_diversity_score_v2.py",
+      "category": "fleet-analytics",
+      "status": "active"
+    },
+    {
+      "file": "xpn_fleet_dna_diversity_report.py",
+      "category": "fleet-analytics",
+      "status": "active"
+    },
+    {
+      "file": "xpn_fleet_health_dashboard.py",
+      "category": "fleet-analytics",
+      "status": "active"
+    },
+    {
+      "file": "xpn_fleet_health_summary.py",
+      "category": "fleet-analytics",
+      "status": "active"
+    },
+    {
+      "file": "xpn_fleet_mood_balancer.py",
+      "category": "fleet-analytics",
+      "status": "active"
+    },
+    {
+      "file": "xpn_free_pack_pipeline.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_full_qa_runner.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_keygroup_export.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_kit_builder_assistant.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_kit_completeness.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_kit_expander.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_kit_layering_advisor.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_kit_theme_analyzer.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_kit_validator.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_layer_balance_checker.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_liner_notes.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_macro_assignment_suggester.py",
+      "category": "macro-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_macro_coverage_checker.py",
+      "category": "macro-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_macro_curve_designer.py",
+      "category": "macro-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_macro_label_normalizer.py",
+      "category": "macro-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_macro_performance_recorder.py",
+      "category": "macro-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_manifest_generator.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_manifest_validator.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_mood_arc_designer.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_mpce_quad_builder.py",
+      "category": "mpce",
+      "status": "active"
+    },
+    {
+      "file": "xpn_normalize.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_optic_fingerprint.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_oxport_pack_yml_template.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_ab_tester.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_analytics.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_bundle_sizer.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_catalog_generator.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_changelog_tracker.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_ci_config_generator.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_compare_report.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_diet_analyzer.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_diff.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_discovery_optimizer.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_format_validator.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_health_dashboard.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_index_generator.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_integrity_check.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_license_generator.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_localization_guide.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_marketing_copy.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_naming_validator.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_qa_ci_runner.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_qa_report.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_readme_generator.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_readme_updater.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_registry.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_release_checklist.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_revenue_estimator.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_score.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_series_planner.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_size_optimizer.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_story_arc.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_thumbnail_generator.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_thumbnail_spec.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pack_version_bumper.py",
+      "category": "pack-management",
+      "status": "active"
+    },
+    {
+      "file": "xpn_packager.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pad_label_optimizer.py",
+      "category": "pad-layout",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pad_layout_visualizer.py",
+      "category": "pad-layout",
+      "status": "active"
+    },
+    {
+      "file": "xpn_pad_note_mapper.py",
+      "category": "pad-layout",
+      "status": "active"
+    },
+    {
+      "file": "xpn_params_sidecar_spec.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_per_mood_gap_report.py",
+      "category": "fleet-analytics",
+      "status": "active"
+    },
+    {
+      "file": "xpn_performance_map_builder.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_aging_simulator.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_batch_generator.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_browser.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_clustering_report.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_crossfade_designer.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_dedup_finder.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_dna_extreme_filler.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_dna_fixer.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_dna_recalibrator.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_duplicate_detector.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_emotion_wheel.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_evolution_tracker.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_fleet_snapshot.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_mood_classifier.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_mood_rebalancer.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_movement_expander.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_name_dedup_fixer.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_name_generator.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_rebalancer.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_recipe_book.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_search_engine.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_similarity_matrix.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_tag_normalizer.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_tag_recommender.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_variation_generator.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preset_variety_scorer.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_preview_generator.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_program_renamer.py",
+      "category": "pad-layout",
+      "status": "active"
+    },
+    {
+      "file": "xpn_program_type_classifier.py",
+      "category": "pad-layout",
+      "status": "active"
+    },
+    {
+      "file": "xpn_qa_checker.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_quick_preview_generator.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_release_notes_generator.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_render_spec.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_render_spec_generator.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_sample_audit.py",
+      "category": "sample-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_sample_categorizer.py",
+      "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "xpn_sample_category_report.py",
+      "category": "sample-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_sample_fingerprinter.py",
+      "category": "sample-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_sample_loop_checker.py",
+      "category": "sample-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_sample_loop_optimizer.py",
+      "category": "sample-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_sample_metadata_embedder.py",
+      "category": "sample-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_sample_pool_builder.py",
+      "category": "sample-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_sample_rate_auditor.py",
+      "category": "sample-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_sample_rename_batch.py",
+      "category": "sample-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_session_handoff.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_session_summary_generator.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_setlist_builder.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_smart_trim.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_sonic_dna_interpolator_v2.py",
+      "category": "dna-health",
+      "status": "active"
+    },
+    {
+      "file": "xpn_stem_pack_designer.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_stems_checker.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_submission_packager.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_tide_tables_build_validator.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_tide_tables_builder.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_tide_tables_pack_builder.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_to_sfz.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_tuning_coverage_checker.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_tuning_systems.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_tutorial_builder.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_validator.py",
+      "category": "validation",
+      "status": "active"
+    },
+    {
+      "file": "xpn_variation_generator.py",
+      "category": "preset-design",
+      "status": "active"
+    },
+    {
+      "file": "xpn_velocity_curve_designer.py",
+      "category": "velocity-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_velocity_curve_tester.py",
+      "category": "velocity-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_velocity_map_visualizer.py",
+      "category": "velocity-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_velocity_zone_visualizer.py",
+      "category": "velocity-tools",
+      "status": "active"
+    },
+    {
+      "file": "xpn_xometa_batch_validator.py",
+      "category": "validation",
+      "status": "active"
+    },
+    {
+      "file": "xpn_xometa_completeness_auditor.py",
+      "category": "validation",
+      "status": "active"
+    },
+    {
+      "file": "xpn_xometa_dna_bulk_export.py",
+      "category": "validation",
+      "status": "active"
+    },
+    {
+      "file": "xpn_xometa_export_pipeline.py",
+      "category": "validation",
+      "status": "active"
+    },
+    {
+      "file": "xpn_xometa_schema_version_migrator.py",
+      "category": "validation",
+      "status": "active"
+    },
+    {
+      "file": "xpn_xometa_to_pack_bridge.py",
+      "category": "validation",
+      "status": "active"
+    },
+    {
+      "file": "xpn_xometa_to_xpm_exporter.py",
+      "category": "validation",
+      "status": "active"
+    },
+    {
+      "file": "xpn_xpm_batch_builder.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_xpm_diff_tool.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_xpm_template_library.py",
+      "category": "general",
+      "status": "active"
+    },
+    {
+      "file": "xpn_xpm_validator_strict.py",
+      "category": "general",
+      "status": "active"
+    }
+  ]
+}

@@ -1055,8 +1055,37 @@ def cmd_validate(args) -> int:
             print(f"    [ERROR] Preset validation failed: {e}")
             exit_code = 2
 
-    if not args.output_dir and not args.presets:
-        print("  Nothing to validate. Use --output-dir and/or --presets.")
+
+    # --- Mode 3: Validate .xpn archive(s) via xpn_validator.py ---
+    if getattr(args, "xpn", None):
+        print()
+        print(f"  Validate .xpn archive(s): {args.xpn}")
+        print()
+        try:
+            import xpn_validator as xv
+            import sys as _sys
+            old_argv = _sys.argv
+            xv_argv = ["xpn_validator.py", args.xpn]
+            if args.strict:
+                xv_argv.append("--strict")
+            _sys.argv = xv_argv
+            try:
+                xv_rc = xv.main() if hasattr(xv, "main") else 0
+            except SystemExit as e:
+                xv_rc = e.code if e.code is not None else 0
+            finally:
+                _sys.argv = old_argv
+            if xv_rc != 0:
+                exit_code = max(exit_code, xv_rc)
+        except ImportError:
+            print("    [ERROR] xpn_validator.py not found in Tools/")
+            exit_code = 2
+        except Exception as e:
+            print(f"    [ERROR] .xpn validation failed: {e}")
+            exit_code = 2
+
+    if not args.output_dir and not args.presets and not getattr(args, "xpn", None):
+        print("  Nothing to validate. Use --output-dir, --presets, and/or --xpn.")
         print()
         return 1
 
@@ -1204,6 +1233,9 @@ def main():
                             help="Auto-fix trivially correctable preset issues")
     p_validate.add_argument("--strict",     action="store_true",
                             help="Treat warnings as errors (for CI)")
+    p_validate.add_argument("--xpn",        default=None, metavar="FILE_OR_DIR",
+                            help="Validate .xpn archive(s) against Rex's XPN Bible "
+                                 "(CRITICAL/WARNING/INFO severity levels)")
 
     # --- batch ---
     p_batch = sub.add_parser("batch",
