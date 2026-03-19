@@ -576,34 +576,36 @@ def _generate_qlink_xml() -> str:
     """
     Generate Q-Link knob assignments for the program level.
 
-    XOmnibus macro mapping (Atlas bridge §9):
-      Q1 → CHARACTER (Filter Cutoff / Tone)
-      Q2 → MOVEMENT  (Pitch / LFO Rate)
-      Q3 → COUPLING  (Resonance / Drive)
-      Q4 → SPACE     (Send 1 / Reverb)
+    Standardized XOmnibus macro → MPC Q-Link mapping:
+      Q1 → CHARACTER  (FilterCutoff — timbral character)
+      Q2 → MOVEMENT   (LFO Rate — motion/modulation depth)
+      Q3 → COUPLING   (Send2/AuxSend — cross-feed, closest MPC analog to coupling)
+      Q4 → SPACE      (Send1/Reverb — spatial depth)
+
+    Label names are ≤10 chars for MPC XL OLED display compatibility.
     """
     return (
         '    <QLinks>\n'
         '      <QLink number="1">\n'
-        '        <Name>TONE</Name>\n'
+        '        <Name>CHARACTER</Name>\n'            # ≤10 chars — XOmnibus macro 1
         '        <Parameter>FilterCutoff</Parameter>\n'
         '        <Min>0.200000</Min>\n'
         '        <Max>1.000000</Max>\n'
         '      </QLink>\n'
         '      <QLink number="2">\n'
-        '        <Name>PITCH</Name>\n'
-        '        <Parameter>TuneCoarse</Parameter>\n'
-        '        <Min>-12</Min>\n'
-        '        <Max>12</Max>\n'
+        '        <Name>MOVEMENT</Name>\n'             # ≤10 chars — XOmnibus macro 2
+        '        <Parameter>LFORate</Parameter>\n'
+        '        <Min>0.000000</Min>\n'
+        '        <Max>1.000000</Max>\n'
         '      </QLink>\n'
         '      <QLink number="3">\n'
-        '        <Name>BITE</Name>\n'
-        '        <Parameter>Resonance</Parameter>\n'
+        '        <Name>COUPLING</Name>\n'             # ≤10 chars — XOmnibus macro 3
+        '        <Parameter>Send2</Parameter>\n'
         '        <Min>0.000000</Min>\n'
-        '        <Max>0.600000</Max>\n'
+        '        <Max>0.700000</Max>\n'
         '      </QLink>\n'
         '      <QLink number="4">\n'
-        '        <Name>SPACE</Name>\n'
+        '        <Name>SPACE</Name>\n'                # ≤10 chars — XOmnibus macro 4
         '        <Parameter>Send1</Parameter>\n'
         '        <Min>0.000000</Min>\n'
         '        <Max>0.700000</Max>\n'
@@ -1015,16 +1017,19 @@ def build_drum_pack(preset_name: str, wavs_dir: Path, output_dir: Path,
             print(f"  [WARN] Cover art: {e}")
 
     if wavs_dir and not dry_run:
+        import shutil
+        # Rex audit fix: WAVs must go into Samples/{slug}/ to match XPM <File> paths
+        samples_subdir = pack_dir / "Samples" / preset_slug
+        samples_subdir.mkdir(parents=True, exist_ok=True)
         copied = 0
         for wav_name in wav_map.values():
             src = wavs_dir / wav_name
-            dst = pack_dir / wav_name
+            dst = samples_subdir / wav_name
             if src.exists() and not dst.exists():
-                import shutil
                 shutil.copy2(src, dst)
                 copied += 1
         if copied:
-            print(f"  WAVs: {copied} copied")
+            print(f"  WAVs: {copied} copied to Samples/{preset_slug}/")
 
     if missing:
         print(f"  [MISSING] {len(missing)} WAVs — run --checklist to see full list")
