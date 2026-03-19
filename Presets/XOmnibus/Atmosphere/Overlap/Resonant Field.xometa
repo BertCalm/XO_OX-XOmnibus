@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-18",
+  "description": "Pure self-resonance at moderate pulse rate 0.2 Hz. The field breathes slowly, undisturbed by topology.",
+  "dna": {
+    "aggression": 0.03,
+    "brightness": 0.32,
+    "density": 0.22,
+    "movement": 0.07,
+    "space": 0.9,
+    "warmth": 0.48
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
+  "mood": "Atmosphere",
+  "name": "Resonant Field",
+  "parameters": {
+    "Overlap": {
+      "olap_knot": 0,
+      "olap_tangleDepth": 0.05,
+      "olap_torusP": 3,
+      "olap_torusQ": 2,
+      "olap_pulseRate": 0.2,
+      "olap_entrain": 0.1,
+      "olap_spread": 0.87,
+      "olap_voiceMode": 0,
+      "olap_glide": 0.0,
+      "olap_delayBase": 38.0,
+      "olap_dampening": 0.62,
+      "olap_feedback": 0.92,
+      "olap_brightness": 0.35,
+      "olap_bioluminescence": 0.08,
+      "olap_current": 0.08,
+      "olap_currentRate": 0.04,
+      "olap_attack": 1.5,
+      "olap_decay": 2.0,
+      "olap_sustain": 0.85,
+      "olap_release": 7.0,
+      "olap_filterCutoff": 8000.0,
+      "olap_filterRes": 0.15,
+      "olap_filterEnvAmt": 0.15,
+      "olap_filterEnvDecay": 1.5,
+      "olap_lfo1Rate": 0.15,
+      "olap_lfo1Shape": 0,
+      "olap_lfo1Depth": 0.12,
+      "olap_lfo1Dest": 4,
+      "olap_lfo2Rate": 0.08,
+      "olap_lfo2Shape": 0,
+      "olap_lfo2Depth": 0.08,
+      "olap_lfo2Dest": 2,
+      "olap_chorusMix": 0.12,
+      "olap_chorusRate": 0.04,
+      "olap_diffusion": 0.6,
+      "olap_macroKnot": 0.3,
+      "olap_macroPulse": 0.25,
+      "olap_macroEntrain": 0.2,
+      "olap_macroBloom": 0.2,
+      "olap_modWheelDest": 0,
+      "olap_modWheelDepth": 0.3,
+      "olap_atPressureDest": 1,
+      "olap_atPressureDepth": 0.2
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "atmosphere",
+    "unknot",
+    "pad",
+    "open",
+    "resonant"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

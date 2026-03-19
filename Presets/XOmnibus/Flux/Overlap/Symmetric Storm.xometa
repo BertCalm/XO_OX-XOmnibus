@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-18",
+  "description": "Maximum figure-eight chaos while preserving amphichiral symmetry. Both sides equally destroyed.",
+  "dna": {
+    "aggression": 0.85,
+    "brightness": 0.82,
+    "density": 0.46,
+    "movement": 0.9,
+    "space": 0.27,
+    "warmth": 0.18
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
+  "mood": "Flux",
+  "name": "Symmetric Storm",
+  "parameters": {
+    "Overlap": {
+      "olap_knot": 2,
+      "olap_tangleDepth": 0.85,
+      "olap_torusP": 3,
+      "olap_torusQ": 2,
+      "olap_pulseRate": 4.5,
+      "olap_entrain": 0.1,
+      "olap_spread": 0.58,
+      "olap_voiceMode": 0,
+      "olap_glide": 0.0,
+      "olap_delayBase": 8.0,
+      "olap_dampening": 0.28,
+      "olap_feedback": 0.93,
+      "olap_brightness": 0.75,
+      "olap_bioluminescence": 0.65,
+      "olap_current": 0.08,
+      "olap_currentRate": 0.04,
+      "olap_attack": 0.02,
+      "olap_decay": 2.0,
+      "olap_sustain": 0.85,
+      "olap_release": 0.8,
+      "olap_filterCutoff": 14000.0,
+      "olap_filterRes": 0.58,
+      "olap_filterEnvAmt": 0.78,
+      "olap_filterEnvDecay": 0.16,
+      "olap_lfo1Rate": 2.5,
+      "olap_lfo1Shape": 4,
+      "olap_lfo1Depth": 0.6,
+      "olap_lfo1Dest": 4,
+      "olap_lfo2Rate": 1.2,
+      "olap_lfo2Shape": 3,
+      "olap_lfo2Depth": 0.48,
+      "olap_lfo2Dest": 0,
+      "olap_chorusMix": 0.1,
+      "olap_chorusRate": 0.04,
+      "olap_diffusion": 0.12,
+      "olap_macroKnot": 0.65,
+      "olap_macroPulse": 0.72,
+      "olap_macroEntrain": 0.22,
+      "olap_macroBloom": 0.65,
+      "olap_modWheelDest": 0,
+      "olap_modWheelDepth": 0.3,
+      "olap_atPressureDest": 1,
+      "olap_atPressureDepth": 0.2
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "flux",
+    "figure-eight",
+    "symmetric",
+    "extreme",
+    "storm"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}
