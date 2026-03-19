@@ -6,6 +6,7 @@
 #include "Core/MasterFXChain.h"
 #include "DSP/Effects/AquaticFXSuite.h"
 #include "DSP/Effects/MathFXChain.h"
+#include "DSP/Effects/BoutiqueFXChain.h"
 #include "Core/ChordMachine.h"
 #include "Core/MPEManager.h"
 #include "Core/PresetManager.h"
@@ -76,6 +77,7 @@ private:
     MegaCouplingMatrix couplingMatrix;
     AquaticFXSuite aquaticFX;
     MathFXChain mathFX;
+    BoutiqueFXChain boutiqueFX;
     MasterFXChain masterFX;
     ChordMachine chordMachine;
     MPEManager mpeManager;
