@@ -3,6 +3,8 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/PolyBLEP.h"
+#include "../../DSP/LCG.h"
+#include "../../DSP/FDNReverb.h"
 #include <array>
 #include <cmath>
 #include <algorithm>
@@ -115,7 +117,7 @@ struct ObrixLFO
     float phaseInc = 0.0f;
     int shape = 0; // 0=sine 1=tri 2=saw 3=square 4=s&h
     float holdVal = 0.0f;
-    uint32_t rng = 12345u;
+    LCG rng { 12345u };
 
     void setRate (float hz, float sr) noexcept { phaseInc = hz / sr; }
     void reset() noexcept { phase = 0.0f; holdVal = 0.0f; }
@@ -129,14 +131,11 @@ struct ObrixLFO
             case 1: out = 4.0f * std::fabs (phase - 0.5f) - 1.0f; break;
             case 2: out = 2.0f * phase - 1.0f; break;
             case 3: out = (phase < 0.5f) ? 1.0f : -1.0f; break;
-            case 4: // S&H
+            case 4: // S&H — new sample when phase wraps
             {
                 float prev = phase - phaseInc;
                 if (prev < 0.0f || phase < prev)
-                {
-                    rng = rng * 1664525u + 1013904223u;
-                    holdVal = static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f;
-                }
+                    holdVal = rng.nextFloat();
                 out = holdVal;
                 break;
             }
@@ -158,10 +157,10 @@ struct ObrixVoice
     float aftertouch = 0.0f;
     uint64_t startTime = 0;
 
-    // 2 source oscillators
-    float srcPhase[2] {};
+    // 2 source oscillators — band-limited via PolyBLEP
+    PolyBLEP srcOsc[2];
     float srcFreq[2] {};
-    uint32_t noiseRng = 54321u;
+    LCG noiseRng { 54321u };
 
     // Amplitude envelope (always present)
     ObrixADSR ampEnv;
@@ -182,7 +181,7 @@ struct ObrixVoice
         note = -1;
         velocity = 0.0f;
         aftertouch = 0.0f;
-        for (auto& p : srcPhase) p = 0.0f;
+        for (auto& o : srcOsc) o.reset();
         for (auto& f : srcFreq) f = 440.0f;
         ampEnv.reset();
         for (auto& e : modEnvs) e.reset();
@@ -222,16 +221,8 @@ public:
         chorusWritePos = 0;
         chorusLFOPhase = 0.0f;
 
-        // Reverb (simple 4-tap FDN)
-        float srScale = sr / 44100.0f;
-        static constexpr int kRevLens[4] = { 1087, 1283, 1511, 1789 };
-        for (int i = 0; i < 4; ++i)
-        {
-            int len = static_cast<int> (static_cast<float> (kRevLens[i]) * srScale) + 1;
-            reverbBuf[i].assign (static_cast<size_t> (len), 0.0f);
-            reverbPos[i] = 0;
-            reverbFilt[i] = 0.0f;
-        }
+        // Reverb — shared FDNReverb
+        reverb.prepare (sampleRate);
     }
 
     void releaseResources() override {}
@@ -243,11 +234,7 @@ public:
         std::fill (delayBufR.begin(), delayBufR.end(), 0.0f);
         std::fill (chorusBufL.begin(), chorusBufL.end(), 0.0f);
         std::fill (chorusBufR.begin(), chorusBufR.end(), 0.0f);
-        for (int i = 0; i < 4; ++i)
-        {
-            std::fill (reverbBuf[i].begin(), reverbBuf[i].end(), 0.0f);
-            reverbFilt[i] = 0.0f;
-        }
+        reverb.reset();
         activeVoices = 0;
     }
 
@@ -388,16 +375,10 @@ public:
                 float freq1 = voice.srcFreq[0] * fastPow2 (pitchMod / 1200.0f);
                 float freq2 = voice.srcFreq[1] * fastPow2 (pitchMod / 1200.0f);
 
-                src1 = renderSource (src1Type, voice.srcPhase[0], freq1, src1PW, voice.noiseRng);
-                voice.srcPhase[0] += freq1 / sr;
-                if (voice.srcPhase[0] >= 1.0f) voice.srcPhase[0] -= 1.0f;
+                src1 = renderSource (src1Type, voice.srcOsc[0], freq1, src1PW, voice.noiseRng);
 
                 if (src2Type > 0)
-                {
-                    src2 = renderSource (src2Type, voice.srcPhase[1], freq2, src2PW, voice.noiseRng);
-                    voice.srcPhase[1] += freq2 / sr;
-                    if (voice.srcPhase[1] >= 1.0f) voice.srcPhase[1] -= 1.0f;
-                }
+                    src2 = renderSource (src2Type, voice.srcOsc[1], freq2, src2PW, voice.noiseRng);
 
                 float signal = src1 * srcMix + src2 * (1.0f - srcMix);
                 if (src2Type == 0) signal = src1;
@@ -407,15 +388,15 @@ public:
                 {
                     setFilterMode (voice.procFilters[0], proc1Type);
                     float cut = clamp (proc1Cut + cutoffMod + voice.velocity * 2000.0f, 20.0f, 20000.0f);
-                    voice.procFilters[0].setCoefficients (cut, proc1Res, sr);
+                    voice.procFilters[0].setCoefficients_fast (cut, proc1Res, sr);
                     signal = voice.procFilters[0].processSample (signal);
                 }
 
-                if (proc2Type > 0 && proc2Type <= 3) // only filter types
+                if (proc2Type > 0 && proc2Type <= 3) // filter types only
                 {
                     setFilterMode (voice.procFilters[1], proc2Type);
                     float cut = clamp (proc2Cut + cutoffMod * 0.5f + voice.velocity * 2000.0f, 20.0f, 20000.0f);
-                    voice.procFilters[1].setCoefficients (cut, proc2Res, sr);
+                    voice.procFilters[1].setCoefficients_fast (cut, proc2Res, sr);
                     signal = voice.procFilters[1].processSample (signal);
                 }
 
@@ -619,26 +600,45 @@ private:
     static float loadP (std::atomic<float>* p, float fb) noexcept { return p ? p->load() : fb; }
 
     //==========================================================================
-    // Source rendering
+    // Source rendering — band-limited waveforms via PolyBLEP
     //==========================================================================
-    float renderSource (int type, float phase, float /*freq*/, float pw, uint32_t& rng) noexcept
+    float renderSource (int type, PolyBLEP& osc, float freq, float pw, LCG& rng) noexcept
     {
         switch (type)
         {
-            case 1: return fastSin (phase * 6.28318f); // Sine
-            case 2: return 2.0f * phase - 1.0f; // Saw (naive — TODO: PolyBLEP)
-            case 3: return (phase < pw) ? 1.0f : -1.0f; // Square/Pulse
-            case 4: return 4.0f * std::fabs (phase - 0.5f) - 1.0f; // Triangle
-            case 5: // Noise
-                rng = rng * 1664525u + 1013904223u;
-                return static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f;
-            case 6: // Wavetable (simple morphing sine→saw)
+            case 1: // Sine — no discontinuities, no BLEP needed
+                osc.setFrequency (freq, sr);
+                osc.setWaveform (PolyBLEP::Waveform::Sine);
+                return osc.processSample();
+            case 2: // Saw — band-limited
+                osc.setFrequency (freq, sr);
+                osc.setWaveform (PolyBLEP::Waveform::Saw);
+                return osc.processSample();
+            case 3: // Square — fixed 50% duty (band-limited)
+                osc.setFrequency (freq, sr);
+                osc.setWaveform (PolyBLEP::Waveform::Square);
+                return osc.processSample();
+            case 4: // Triangle — band-limited (integrated square)
+                osc.setFrequency (freq, sr);
+                osc.setWaveform (PolyBLEP::Waveform::Triangle);
+                return osc.processSample();
+            case 5: // Noise — white noise via shared LCG
+                return rng.nextFloat();
+            case 6: // Wavetable — morphs sine → saw (pw = morph position)
             {
-                float sine = fastSin (phase * 6.28318f);
-                float saw = 2.0f * phase - 1.0f;
-                return sine * (1.0f - pw) + saw * pw; // pw = morph position
+                // Use two PolyBLEP calls would require a second osc; approximate with
+                // direct math for the morph blend (sine has no discontinuities)
+                float sine = fastSin (osc.getPhase() * 6.28318f);
+                osc.setFrequency (freq, sr);
+                osc.setWaveform (PolyBLEP::Waveform::Saw);
+                float saw = osc.processSample();
+                return sine * (1.0f - pw) + saw * pw;
             }
-            case 7: return (phase < pw) ? 1.0f : -1.0f; // Pulse (same as square with width)
+            case 7: // Pulse — variable width (band-limited)
+                osc.setFrequency (freq, sr);
+                osc.setWaveform (PolyBLEP::Waveform::Pulse);
+                osc.setPulseWidth (pw);
+                return osc.processSample();
             default: return 0.0f;
         }
     }
@@ -704,32 +704,11 @@ private:
                 R = dryR * (1.0f - mix) + wR * mix;
                 break;
             }
-            case 3: // Reverb (simple FDN)
+            case 3: // Reverb — shared FDNReverb
             {
                 float input = (L + R) * 0.5f * (0.5f + space * 0.5f);
-                float tap[4];
-                for (int i = 0; i < 4; ++i)
-                {
-                    int len = static_cast<int> (reverbBuf[i].size());
-                    if (len == 0) { tap[i] = 0.0f; continue; }
-                    int readOff = static_cast<int> ((0.3f + param * 0.7f) * static_cast<float> (len));
-                    readOff = std::max (1, std::min (readOff, len - 1));
-                    int rp = (reverbPos[i] - readOff + len) % len;
-                    tap[i] = reverbBuf[i][static_cast<size_t> (rp)];
-                    reverbFilt[i] = flushDenormal (reverbFilt[i] + (tap[i] - reverbFilt[i]) * 0.3f);
-                    tap[i] = reverbFilt[i];
-                }
-                float tapSum = tap[0] + tap[1] + tap[2] + tap[3];
-                float fb = 0.3f + param * 0.5f;
-                for (int i = 0; i < 4; ++i)
-                {
-                    float fbSample = fastTanh ((tap[i] - 0.5f * tapSum) * fb + input);
-                    int len = static_cast<int> (reverbBuf[i].size());
-                    if (len > 0) reverbBuf[i][static_cast<size_t> (reverbPos[i])] = flushDenormal (fbSample);
-                    reverbPos[i] = (reverbPos[i] + 1) % std::max (1, len);
-                }
-                float rvL = tap[0] * 0.6f + tap[1] * 0.4f - tap[2] * 0.3f;
-                float rvR = -tap[1] * 0.3f + tap[2] * 0.4f + tap[3] * 0.6f;
+                float rvL, rvR;
+                reverb.processSample (input, param, 0.35f, param, rvL, rvR);
                 L = dryL * (1.0f - mix) + rvL * mix;
                 R = dryR * (1.0f - mix) + rvR * mix;
                 break;
@@ -761,11 +740,14 @@ private:
         v.note = noteNum;
         v.velocity = vel;
         v.startTime = ++voiceCounter;
-        v.noiseRng = static_cast<uint32_t> (slot * 777 + noteNum * 31 + voiceCounter);
+        v.noiseRng = LCG { static_cast<uint32_t> (slot * 777 + noteNum * 31 + voiceCounter) };
 
         float freq = 440.0f * fastPow2 ((static_cast<float> (noteNum) - 69.0f + tune1) / 12.0f);
         v.srcFreq[0] = freq;
         v.srcFreq[1] = 440.0f * fastPow2 ((static_cast<float> (noteNum) - 69.0f + tune2) / 12.0f);
+        // Pre-seed oscillator frequencies so PolyBLEP phase increment is ready
+        v.srcOsc[0].setFrequency (v.srcFreq[0], sr);
+        v.srcOsc[1].setFrequency (v.srcFreq[1], sr);
 
         v.ampEnv.setParams (ampA, ampD, ampS, ampR, sr);
         v.ampEnv.noteOn();
@@ -804,9 +786,7 @@ private:
     std::vector<float> chorusBufL, chorusBufR;
     int chorusWritePos = 0;
     float chorusLFOPhase = 0.0f;
-    std::vector<float> reverbBuf[4];
-    int reverbPos[4] {};
-    float reverbFilt[4] {};
+    FDNReverb reverb;
 
     // Parameter pointers
     std::atomic<float>* pSrc1Type = nullptr, *pSrc2Type = nullptr;
