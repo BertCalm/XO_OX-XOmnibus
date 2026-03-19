@@ -1673,11 +1673,9 @@ combos become packs → packs bring users back → more combos → repeat.
 
 ## Part 9: Sequencing & Priority
 
-> **Board Resolution (2026-03-18):** Version numbering below is PROVISIONAL.
-> The ratified V1 tiered release plan (2026-03-17) specifies V1.1 = Aquatic FX
-> suite, V1.2 = preset expansion + XPN #2. **Owner decision required:** do these
-> strategy phases supersede the ratified plan, or do they begin at V1.3+?
-> Do NOT make public commitments on version numbers until this is resolved.
+> **Owner Decision (2026-03-18):** The ratified V1 tiered release plan HOLDS.
+> V1.1 = Aquatic FX suite, V1.2 = preset expansion + XPN #2. SDK and OBRIX
+> work begins post-V1.2. Version numbers for those phases are TBD.
 
 > **Board D9 resolution:** SDK and OBRIX develop on **parallel tracks**, not
 > sequentially. OBRIX ships when consumer value is ready. SDK ships when
@@ -1799,10 +1797,9 @@ combos become packs → packs bring users back → more combos → repeat.
    personality needs to survive localization — casual analogies don't always
    translate well. Consider hiring writers per language, not just translators.
 
-12. **Sustainability model (Board P0-5).** Everything is currently promised free.
-    Finalize funding model before V1 ship: Patreon tiers? B2B SDK licensing?
-    Premium boutique engines? "Core content free; curated premium packs optional"?
-    The promise of "free forever" creates obligations that must be backed by revenue.
+12. **Sustainability model (Owner decision 2026-03-18).** No "free forever" claims.
+    Core content is free at launch. Long-term sustainability model under development.
+    See `Docs/funding_plan_draft.md` for the funding plan under review.
 
 13. **Accessibility (Board P0-3).** Screen reader support for brick canvas,
     colorblind mode (icon + pattern + color), motor accessibility (button
@@ -1831,7 +1828,7 @@ identified and resolved inline above. Key resolutions:
 | SDK→OBRIX sequential | Parallel tracks; neither blocks the other | D9 |
 | Reef Teal proximity | Shifted to Reef Jade `#1E8B7E` | D3 |
 
-**Owner decisions still pending:**
-1. Version numbering: V1.1 = Aquatic FX (ratified) or SDK extraction (strategy)?
-2. Sustainability model: Patreon / B2B licensing / hybrid?
-3. XObrix naming: rename to XO+O-word or formally ratify neologism exception?
+**Owner decisions resolved (2026-03-18):**
+1. ✅ Version numbering: V1.1 = Aquatic FX HOLDS. SDK/OBRIX is post-V1.2.
+2. ✅ Sustainability: No "free forever" claims. Funding plan under review.
+3. ✅ XObrix naming: RATIFIED EXCEPTION — neologism is intentional (ocean building blocks as toy). Future engines must still use real O-words; XObrix does not set precedent.
