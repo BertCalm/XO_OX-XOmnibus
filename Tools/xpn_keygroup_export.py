@@ -723,8 +723,13 @@ def generate_keygroup_xpm(
         dna:               Sonic DNA dict (loaded from .xometa if None + dna_adaptive)
         vel_curve:         "musical" (Vibe curve) or "even" (equal splits)
         vel_crossfade:     velocity units to overlap between adjacent layers (default 3).
-                           Set to 0 for hard splits. Only applied for timbral families
-                           (piano, strings, brass, pads, etc.) — drums always use hard splits.
+                           Set to 0 for hard splits (--vel-crossfade 0). Only applied for
+                           timbral families (piano, strings, brass, pads, etc.) — drums
+                           always use hard splits.
+                           MIGRATION NOTE (2026-03-18, C-KAI-001): Default changed from 0
+                           to 3. Existing scripts that relied on hard velocity splits will
+                           now produce overlapping layers for timbral instruments. Pass
+                           --vel-crossfade 0 to restore previous behavior.
 
     If wav_map is empty, returns a single-instrument program with no layers
     that MPC can load (though it will be silent until WAVs are present).
