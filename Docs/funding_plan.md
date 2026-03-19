@@ -1,6 +1,7 @@
-# XO_OX Funding Plan — DRAFT FOR OWNER REVIEW
+# XO_OX Funding Plan
 
-> Status: Draft | Date: 2026-03-18 | Author: Board D7 + Khan Sultan synthesis
+> Status: **APPROVED** | Date: 2026-03-18 | Owner approved: 2026-03-18
+> Author: Board D7 + Khan Sultan synthesis
 
 ## Principles
 
