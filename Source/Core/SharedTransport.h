@@ -76,13 +76,13 @@ public:
     // Transport state — read by engines during their renderBlock().
     // All getters are real-time safe (atomic loads only).
 
-    bool   isPlaying()            const { return playing.load (std::memory_order_acquire); }
-    double getBPM()               const { return bpm.load (std::memory_order_acquire); }
-    double getBeatPosition()      const { return beatPosition.load (std::memory_order_acquire); }
-    double getBarPosition()       const { return barPosition.load (std::memory_order_acquire); }
-    int    getTimeSigNumerator()  const { return timeSigNumerator.load (std::memory_order_acquire); }
-    int    getTimeSigDenominator() const { return timeSigDenominator.load (std::memory_order_acquire); }
-    double getSamplesPerBeat()    const { return samplesPerBeat.load (std::memory_order_acquire); }
+    [[nodiscard]] bool   isPlaying()            const { return playing.load (std::memory_order_acquire); }
+    [[nodiscard]] double getBPM()               const { return bpm.load (std::memory_order_acquire); }
+    [[nodiscard]] double getBeatPosition()      const { return beatPosition.load (std::memory_order_acquire); }
+    [[nodiscard]] double getBarPosition()       const { return barPosition.load (std::memory_order_acquire); }
+    [[nodiscard]] int    getTimeSigNumerator()  const { return timeSigNumerator.load (std::memory_order_acquire); }
+    [[nodiscard]] int    getTimeSigDenominator() const { return timeSigDenominator.load (std::memory_order_acquire); }
+    [[nodiscard]] double getSamplesPerBeat()    const { return samplesPerBeat.load (std::memory_order_acquire); }
 
     //--------------------------------------------------------------------------
     // Returns a 0.0–1.0 phase for a given note division relative to the
@@ -93,7 +93,7 @@ public:
     //   2.0   = half note  (cycle every 2 beats)
     //   4.0   = whole note (cycle every 4 beats)
     //
-    double getPhaseForDivision (double division) const
+    [[nodiscard]] double getPhaseForDivision (double division) const
     {
         if (division <= 0.0)
             return 0.0;

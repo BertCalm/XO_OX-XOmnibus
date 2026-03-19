@@ -169,7 +169,7 @@ public:
         }
     }
 
-    std::vector<CouplingRoute> getRoutes() const
+    [[nodiscard]] std::vector<CouplingRoute> getRoutes() const
     {
         auto routes = std::atomic_load(&routeList);
         return routes ? *routes : std::vector<CouplingRoute>{};
