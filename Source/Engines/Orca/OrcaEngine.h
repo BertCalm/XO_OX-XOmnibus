@@ -473,9 +473,12 @@ public:
         float effectiveCutoff  = clamp (pCutoff + huntAmount * 8000.0f + couplingFormantMod * 4000.0f, 20.0f, 20000.0f);
         float effectiveReso    = clamp (pReso + huntAmount * 0.4f, 0.0f, 1.0f);
         float effectiveFormant = clamp (pFormantInt + huntAmount * 0.5f + macroMove * 0.3f, 0.0f, 1.0f);
-        float effectiveEchoRes = clamp (pEchoReso + huntAmount * 0.1f, 0.0f, 0.995f);
+        // SPACE macro expands the underwater acoustic chamber:
+        // more echolocation resonance = longer ringing comb = bigger space
+        float effectiveEchoRes = clamp (pEchoReso + huntAmount * 0.1f + macroSpace * 0.15f, 0.0f, 0.95f);
         float effectiveCrush   = clamp (pCrushMix + huntAmount * 0.6f, 0.0f, 1.0f);
-        float effectiveBreachSub = clamp (pBreachSub + huntAmount * 0.3f, 0.0f, 1.0f);
+        // SPACE also deepens sub-bass presence (more space = more physical weight)
+        float effectiveBreachSub = clamp (pBreachSub + huntAmount * 0.3f + macroSpace * 0.3f, 0.0f, 1.0f);
         // Mod wheel (CC#1) scans the wavetable position — sweeps from sine/whale-call
         // through metallic partials to complex vocal textures (D006 compliance)
         float effectiveWTPos   = clamp (pWTPos + couplingWTPosMod + macroMove * 0.3f + modWheelAmount_ * 0.5f, 0.0f, 1.0f);

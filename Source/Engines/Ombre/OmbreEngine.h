@@ -262,7 +262,8 @@ public:
         const float macroMove  = (pMacroMovement != nullptr)  ? pMacroMovement->load()  : 0.5f;
         const float macroCoup  = (pMacroCoupling != nullptr)  ? pMacroCoupling->load()  : 0.5f;
         const float macroSpace = (pMacroSpace != nullptr)     ? pMacroSpace->load()     : 0.5f;
-        juce::ignoreUnused (macroCoup, macroSpace);
+        // macroCoup: scales coupling receive gain | macroSpace: expands ghost stereo field
+        // (applied below in memory feed and stereo spread sections)
 
         // --- Process MIDI events ---
         for (const auto metadata : midi)
@@ -276,12 +277,17 @@ public:
                 reset();
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
+            else if (msg.isChannelPressure())
+                aftertouch_ = msg.getChannelPressureValue() / 127.0f; // D006: deepens interference haunting
         }
 
         // Mod wheel: sweeps blend toward pure Opsis (perception) at full throw.
         // At modWheel=0: blend unchanged. At modWheel=1: blend pushed fully to 1.0.
         // This lets the player shift live between ghost-memory and sharp-present.
         const float effectiveBlend = clamp (blend + modWheelAmount_ * (1.0f - blend), 0.0f, 1.0f);
+
+        // Aftertouch: deepens Oubli haunting — pressure deepens memory interference. (D006)
+        const float effectiveInterference = clamp (interference + aftertouch_ * (1.0f - interference), 0.0f, 1.0f);
 
         // Consume coupling accumulators
         float pitchMod = externalPitchMod;
@@ -437,11 +443,12 @@ public:
                 // ============================================================
                 float oubliOut = 0.0f;
                 {
-                    // Feed Opsis output into memory (modulated by interference)
-                    float feedSample = opsisOut * interference;
+                    // Feed Opsis output into memory (modulated by aftertouch-deepened interference)
+                    float feedSample = opsisOut * effectiveInterference;
 
-                    // Also feed external coupling audio into memory
-                    feedSample += memFeed * 0.3f;
+                    // Also feed external coupling audio into memory.
+                    // COUPLING macro scales receive gain — more coupling = more porous to incoming signals.
+                    feedSample += memFeed * (0.3f + (macroCoup - 0.5f) * 0.4f);
 
                     voice.memory.writeSample (feedSample);
 
@@ -457,9 +464,9 @@ public:
 
                 // Interference: Oubli output modulates Opsis pitch slightly
                 // (memories haunt the present)
-                if (interference > 0.01f)
+                if (effectiveInterference > 0.01f)
                 {
-                    float hauntMod = oubliOut * interference * 0.02f;
+                    float hauntMod = oubliOut * effectiveInterference * 0.02f;
                     float hauntedFreq = freq * (1.0f + hauntMod);
                     if (hauntedFreq > 1.0f)
                         voice.oscPrimary.setFrequency (hauntedFreq, srf);
@@ -475,8 +482,9 @@ public:
                 // Apply envelope and velocity
                 float out = filtered * voice.envLevel * voice.velocity * stealFade;
 
-                // Stereo spread — Oubli wider, Opsis centered
-                float stereoWidth = (1.0f - effectiveBlend) * 0.3f;
+                // Stereo spread — Oubli wider, Opsis centered.
+                // SPACE macro expands the ghost stereo field (up to +0.5 additional width).
+                float stereoWidth = (1.0f - effectiveBlend) * (0.3f + macroSpace * 0.5f);
                 float panMod = oubliOut * stereoWidth;
                 float outL = out * (1.0f - panMod * 0.5f);
                 float outR = out * (1.0f + panMod * 0.5f);
@@ -781,6 +789,7 @@ private:
 
     // MIDI expression
     float modWheelAmount_ = 0.0f;   // CC#1 — sweeps blend toward Opsis (D006)
+    float aftertouch_     = 0.0f;   // channel pressure — deepens Oubli interference haunting (D006)
 
     // Coupling state
     float envelopeOutput = 0.0f;
