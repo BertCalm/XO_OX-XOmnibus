@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Fierce Squall",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORCA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. ORCA aggressive register.",
+  "dna": {
+    "aggression": 0.841,
+    "brightness": 0.478,
+    "density": 0.634,
+    "movement": 0.653,
+    "space": 0.436,
+    "warmth": 0.487
+  },
+  "engines": [
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.909,
+    "COUPLING": 0.429,
+    "MOVEMENT": 0.699,
+    "SPACE": 0.524
+  },
+  "mood": "Atmosphere",
+  "name": "Fierce Squall",
+  "parameters": {
+    "Orca": {
+      "character": 0.909,
+      "coupling": 0.429,
+      "movement": 0.699,
+      "space": 0.524
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -16,36 +47,5 @@
     "pressure",
     "fierce"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.478,
-    "warmth": 0.487,
-    "movement": 0.653,
-    "density": 0.634,
-    "space": 0.436,
-    "aggression": 0.841
-  },
-  "parameters": {
-    "ORCA": {
-      "character": 0.909,
-      "movement": 0.699,
-      "coupling": 0.429,
-      "space": 0.524
-    }
-  },
-  "macros": {
-    "CHARACTER": 0.909,
-    "MOVEMENT": 0.699,
-    "COUPLING": 0.429,
-    "SPACE": 0.524
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

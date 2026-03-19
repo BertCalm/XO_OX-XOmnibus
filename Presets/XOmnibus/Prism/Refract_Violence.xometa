@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Refract Violence",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.3505,
-    "warmth": 0.5105,
-    "movement": 0.8736,
-    "density": 0.7507,
-    "space": 0.4722,
-    "aggression": 0.881
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Spectral decomposition under maximum aggression",
   "dna": {
+    "aggression": 0.881,
     "brightness": 0.3505,
-    "warmth": 0.5105,
-    "movement": 0.8736,
     "density": 0.7507,
+    "movement": 0.8736,
     "space": 0.4722,
-    "aggression": 0.881
+    "warmth": 0.5105
   },
   "engines": [
-    "OPTIC"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Spectral decomposition under maximum aggression",
-  "tags": [
-    "prism",
-    "brutal",
-    "movement",
-    "aggressive",
-    "anchor"
+    "Optic"
   ],
   "macroLabels": [
     "REFRACT",
@@ -39,23 +24,38 @@
   ],
   "macros": {
     "REFRACT": 0.5083,
-    "SPECTRUM": 0.8194,
     "SCATTER": 0.236,
-    "SPACE": 0.8055
+    "SPACE": 0.8055,
+    "SPECTRUM": 0.8194
   },
-  "couplingIntensity": "None",
+  "mood": "Prism",
+  "name": "Refract Violence",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
+      "optic_couplingBus": 0,
+      "optic_couplingLevel": 0.5,
       "optic_macro_refract": 0.5083,
-      "optic_macro_spectrum": 0.8194,
       "optic_macro_scatter": 0.236,
       "optic_macro_space": 0.8055,
-      "optic_outputLevel": 0.85,
-      "optic_couplingLevel": 0.5,
-      "optic_couplingBus": 0
+      "optic_macro_spectrum": 0.8194,
+      "optic_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.881,
+    "brightness": 0.3505,
+    "density": 0.7507,
+    "movement": 0.8736,
+    "space": 0.4722,
+    "warmth": 0.5105
+  },
+  "tags": [
+    "prism",
+    "brutal",
+    "movement",
+    "aggressive",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

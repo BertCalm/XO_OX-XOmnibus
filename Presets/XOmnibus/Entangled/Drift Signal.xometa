@@ -1,31 +1,46 @@
 {
-  "name": "Drift Signal",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Optic",
+        "type": "SPECTRAL_REFRACTION",
+        "amount": 0.7
+      }
+    ]
+  },
+  "description": "Wavetable odyssey caught in optical scan — FM harmonics refracted to phosphor columns",
   "engines": [
-    "ODYSSEY",
-    "OPTIC"
+    "Odyssey",
+    "Optic"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.7,
+    "MOVEMENT": 0.65,
     "SPACE": 0.7
   },
-  "sonic_dna": {
-    "brightness": 0.67,
-    "warmth": 0.44,
-    "movement": 0.65,
-    "density": 0.51,
-    "space": 0.58,
-    "aggression": 0.37
+  "mood": "Entangled",
+  "name": "Drift Signal",
+  "parameters": {
+    "Odyssey": {},
+    "Optic": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "SPECTRAL_REFRACTION",
-    "source": "ODYSSEY",
-    "target": "OPTIC",
-    "amount": 0.7
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.37,
+    "brightness": 0.67,
+    "density": 0.51,
+    "movement": 0.65,
+    "space": 0.58,
+    "warmth": 0.44
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "optic",
     "wavetable"
   ],
-  "description": "Wavetable odyssey caught in optical scan \u2014 FM harmonics refracted to phosphor columns"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

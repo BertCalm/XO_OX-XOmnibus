@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Penumbra Tone",
-  "mood": "Aether",
-  "sonic_dna": {
-    "brightness": 0.08,
-    "warmth": 0.68,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Half-shadow region — almost dark, never light",
+  "dna": {
     "aggression": 0.18,
-    "movement": 0.22,
+    "brightness": 0.08,
     "density": 0.58,
-    "space": 0.68
+    "movement": 0.22,
+    "space": 0.68,
+    "warmth": 0.68
   },
   "engines": [
-    "OBSCURA"
+    "Obscura"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Half-shadow region \u2014 almost dark, never light",
+  "macroLabels": [
+    "SHADOW",
+    "BLUR",
+    "COUPLING",
+    "VEIL"
+  ],
+  "mood": "Aether",
+  "name": "Penumbra Tone",
+  "parameters": {
+    "Obscura": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.18,
+    "brightness": 0.08,
+    "density": 0.58,
+    "movement": 0.22,
+    "space": 0.68,
+    "warmth": 0.68
+  },
   "tags": [
     "aether",
     "dark",
@@ -24,23 +44,5 @@
     "shadow",
     "half"
   ],
-  "macroLabels": [
-    "SHADOW",
-    "BLUR",
-    "COUPLING",
-    "VEIL"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.08,
-    "warmth": 0.68,
-    "movement": 0.22,
-    "density": 0.58,
-    "space": 0.68,
-    "aggression": 0.18
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Pace of Life",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "Metabolic rate locked to host tempo. Living groove.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.42,
+    "density": 0.45,
+    "movement": 0.7,
+    "space": 0.2,
+    "warmth": 0.5
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Metabolic rate locked to host tempo. Living groove.",
-  "tags": [
-    "groove",
-    "tempo",
-    "living",
-    "locked"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Pace of Life",
   "parameters": {
     "Organon": {
-      "organon_metabolicRate": 2.0,
-      "organon_enzymeSelect": 1200.0,
       "organon_catalystDrive": 0.6,
       "organon_dampingCoeff": 0.2,
-      "organon_signalFlux": 0.65,
-      "organon_phasonShift": 0.4,
+      "organon_enzymeSelect": 1200.0,
       "organon_isotopeBalance": 0.48,
       "organon_lockIn": 0.7,
       "organon_membrane": 0.2,
-      "organon_noiseColor": 0.48
+      "organon_metabolicRate": 2.0,
+      "organon_noiseColor": 0.48,
+      "organon_phasonShift": 0.4,
+      "organon_signalFlux": 0.65
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.42,
-    "warmth": 0.5,
-    "movement": 0.7,
-    "density": 0.45,
-    "space": 0.2,
-    "aggression": 0.2
-  }
+  "tags": [
+    "groove",
+    "tempo",
+    "living",
+    "locked"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

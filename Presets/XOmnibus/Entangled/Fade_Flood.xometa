@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Fade Flood",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.464,
+        "engineA": "Orbital",
+        "engineB": "Odyssey",
+        "type": "CHAOS_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.335,
+    "brightness": 0.6,
+    "density": 0.4,
+    "movement": 0.8,
+    "space": 1.0,
+    "warmth": 0.435
+  },
   "engines": [
-    "ODYSSEY",
-    "ORBITAL"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "odyssey",
-    "orbital"
+    "Odyssey",
+    "Orbital"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.501,
-    "MOVEMENT": 0.66,
     "COUPLING": 0.365,
+    "MOVEMENT": 0.66,
     "SPACE": 0.92
   },
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.435,
-    "movement": 0.8,
-    "density": 0.4,
-    "space": 1.0,
-    "aggression": 0.335
-  },
-  "sonic_dna": {
-    "brightness": 0.6,
-    "warmth": 0.435,
-    "movement": 0.8,
-    "density": 0.4,
-    "space": 1.0,
-    "aggression": 0.335
-  },
+  "mood": "Entangled",
+  "name": "Fade Flood",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.715,
-      "macro_movement": 0.707,
       "macro_coupling": 0.584,
+      "macro_movement": 0.707,
       "macro_space": 0.316
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.386,
-      "macro_movement": 0.498,
       "macro_coupling": 0.658,
+      "macro_movement": 0.498,
       "macro_space": 0.203
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORBITAL",
-        "engineB": "ODYSSEY",
-        "type": "CHAOS_SYNC",
-        "amount": 0.464
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.335,
+    "brightness": 0.6,
+    "density": 0.4,
+    "movement": 0.8,
+    "space": 1.0,
+    "warmth": 0.435
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "odyssey",
+    "orbital"
+  ],
+  "version": "1.0.0"
 }

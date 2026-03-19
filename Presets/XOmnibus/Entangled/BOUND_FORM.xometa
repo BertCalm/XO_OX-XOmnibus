@@ -1,49 +1,61 @@
 {
-  "name": "BOUND FORM",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Odyssey",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8873
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.2949,
+    "brightness": 0.5854,
+    "density": 0.9258,
+    "movement": 0.3809,
+    "space": 0.5974,
+    "warmth": 0.7122
+  },
   "engines": [
-    "OBLIQUE",
-    "ODYSSEY"
+    "Oblique",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5056,
+    "COUPLING": 0.9379,
+    "MOVEMENT": 0.4302,
+    "SPACE": 0.1144
+  },
+  "mood": "Entangled",
+  "name": "BOUND FORM",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.4263,
-      "macro_movement": 0.108,
       "macro_coupling": 0.885,
+      "macro_movement": 0.108,
       "macro_space": 0.4436
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.8993,
-      "macro_movement": 0.3221,
       "macro_coupling": 0.6593,
+      "macro_movement": 0.3221,
       "macro_space": 0.1262
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBLIQUE",
-    "target": "ODYSSEY",
-    "amount": 0.8873
-  },
-  "dna": {
-    "brightness": 0.5854,
-    "warmth": 0.7122,
-    "movement": 0.3809,
-    "density": 0.9258,
-    "space": 0.5974,
-    "aggression": 0.2949
-  },
-  "macros": {
-    "CHARACTER": 0.5056,
-    "MOVEMENT": 0.4302,
-    "COUPLING": 0.9379,
-    "SPACE": 0.1144
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
     "solid",
     "iron"
-  ]
+  ],
+  "version": "1.0"
 }

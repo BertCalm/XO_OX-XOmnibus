@@ -1,14 +1,40 @@
 {
-  "schema_version": 1,
-  "name": "Shore and Sky",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Light",
+  "created": "2026-03-16",
+  "description": "OSPREY clean air + OSTERIA table warmth — the Mediterranean reunion. Sea hawk diving toward the harbor where dinner is ready.",
+  "dna": {
+    "aggression": 0.38,
+    "brightness": 0.62,
+    "density": 0.38,
+    "movement": 0.72,
+    "space": 0.65,
+    "warmth": 0.72
+  },
   "engines": [
-    "OSPREY",
-    "OSTERIA"
+    "Osprey",
+    "Osteria"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OSPREY clean air + OSTERIA table warmth \u2014 the Mediterranean reunion. Sea hawk diving toward the harbor where dinner is ready.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "DIVE",
+    "CLARITY",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Shore and Sky",
+  "parameters": {
+    "Osprey": {},
+    "Osteria": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "reunion",
@@ -19,29 +45,6 @@
     "outdoor",
     "batch3-reunion"
   ],
-  "macroLabels": [
-    "DIVE",
-    "CLARITY",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Light",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.62,
-    "warmth": 0.72,
-    "movement": 0.72,
-    "density": 0.38,
-    "space": 0.65,
-    "aggression": 0.38
-  }
+  "version": "1.0.0"
 }

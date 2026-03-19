@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Updraft Engine",
-  "mood": "Atmosphere",
-  "engines": [
-    "OVERWORLD"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Weather system in motion. High movement, active aggression. OVERWORLD kinetic register.",
+  "dna": {
+    "aggression": 0.452,
+    "brightness": 0.547,
+    "density": 0.586,
+    "movement": 0.861,
+    "space": 0.525,
+    "warmth": 0.269
+  },
+  "engines": [
+    "Overworld"
+  ],
+  "macroLabels": [
+    "ERA",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "COUPLING": 0.334,
+    "ERA": 0.457,
+    "GLITCH": 0.977,
+    "SPACE": 0.564
+  },
+  "mood": "Atmosphere",
+  "name": "Updraft Engine",
+  "parameters": {
+    "Overworld": {
+      "coupling": 0.334,
+      "era": 0.457,
+      "glitch": 0.977,
+      "space": 0.564
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "kinetic",
@@ -16,36 +47,5 @@
     "weather",
     "dynamic"
   ],
-  "macroLabels": [
-    "ERA",
-    "GLITCH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.547,
-    "warmth": 0.269,
-    "movement": 0.861,
-    "density": 0.586,
-    "space": 0.525,
-    "aggression": 0.452
-  },
-  "parameters": {
-    "OVERWORLD": {
-      "era": 0.457,
-      "glitch": 0.977,
-      "coupling": 0.334,
-      "space": 0.564
-    }
-  },
-  "macros": {
-    "ERA": 0.457,
-    "GLITCH": 0.977,
-    "COUPLING": 0.334,
-    "SPACE": 0.564
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

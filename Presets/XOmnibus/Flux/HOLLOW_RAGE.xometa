@@ -1,49 +1,61 @@
 {
-  "name": "HOLLOW RAGE",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORBITAL",
-    "OCTOPUS"
-  ],
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.576,
-      "macro_movement": 0.42,
-      "macro_coupling": 0.559,
-      "macro_space": 0.576
-    },
-    "OCTOPUS": {
-      "macro_character": 0.465,
-      "macro_movement": 0.464,
-      "macro_coupling": 0.546,
-      "macro_space": 0.705
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORBITAL",
-    "target": "OCTOPUS",
-    "amount": 0.968
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Octopus",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.968
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.888,
     "brightness": 0.109,
-    "warmth": 0.526,
-    "movement": 0.427,
     "density": 0.404,
+    "movement": 0.427,
     "space": 0.568,
-    "aggression": 0.888
+    "warmth": 0.526
   },
+  "engines": [
+    "Orbital",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.576,
-    "MOVEMENT": 0.42,
     "COUPLING": 0.559,
+    "MOVEMENT": 0.42,
     "SPACE": 0.576
   },
+  "mood": "Flux",
+  "name": "HOLLOW RAGE",
+  "parameters": {
+    "Octopus": {
+      "macro_character": 0.465,
+      "macro_coupling": 0.546,
+      "macro_movement": 0.464,
+      "macro_space": 0.705
+    },
+    "Orbital": {
+      "macro_character": 0.576,
+      "macro_coupling": 0.559,
+      "macro_movement": 0.42,
+      "macro_space": 0.576
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "violent",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

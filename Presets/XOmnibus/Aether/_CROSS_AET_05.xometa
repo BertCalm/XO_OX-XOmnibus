@@ -1,49 +1,61 @@
 {
-  "name": "CROSS AET 05",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Organon",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.584
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.965,
+    "brightness": 0.899,
+    "density": 0.387,
+    "movement": 0.916,
+    "space": 0.053,
+    "warmth": 0.056
+  },
   "engines": [
-    "ODDFELIX",
-    "ORGANON"
+    "OddfeliX",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.478,
+    "COUPLING": 0.509,
+    "MOVEMENT": 0.651,
+    "SPACE": 0.053
+  },
+  "mood": "Aether",
+  "name": "CROSS AET 05",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.478,
-      "macro_movement": 0.651,
       "macro_coupling": 0.509,
+      "macro_movement": 0.651,
       "macro_space": 0.053
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.478,
-      "macro_movement": 0.651,
       "macro_coupling": 0.509,
+      "macro_movement": 0.651,
       "macro_space": 0.053
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ODDFELIX",
-    "target": "ORGANON",
-    "amount": 0.584
-  },
-  "dna": {
-    "brightness": 0.899,
-    "warmth": 0.056,
-    "movement": 0.916,
-    "density": 0.387,
-    "space": 0.053,
-    "aggression": 0.965
-  },
-  "macros": {
-    "CHARACTER": 0.478,
-    "MOVEMENT": 0.651,
-    "COUPLING": 0.509,
-    "SPACE": 0.053
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-  ]
+  ],
+  "version": "1.0"
 }

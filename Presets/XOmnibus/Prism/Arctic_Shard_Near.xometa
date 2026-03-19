@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Arctic Shard Near",
-  "mood": "Prism",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Sub-zero shimmer. The silence between notes is the sound.",
+  "dna": {
+    "aggression": 0.008,
     "brightness": 0.822,
-    "warmth": 0.092,
-    "movement": 0.129,
     "density": 0.029,
+    "movement": 0.129,
     "space": 0.724,
-    "aggression": 0.008
+    "warmth": 0.092
   },
   "engines": [
-    "OPTIC"
+    "Optic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Sub-zero shimmer. The silence between notes is the sound.",
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Arctic Shard Near",
+  "parameters": {
+    "Optic": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.008,
+    "brightness": 0.822,
+    "density": 0.029,
+    "movement": 0.129,
+    "space": 0.724,
+    "warmth": 0.092
+  },
   "tags": [
     "prism",
     "cold",
@@ -25,23 +45,5 @@
     "spacious",
     "bright"
   ],
-  "macroLabels": [
-    "SCATTER",
-    "DRIFT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.822,
-    "warmth": 0.092,
-    "movement": 0.129,
-    "density": 0.029,
-    "space": 0.724,
-    "aggression": 0.008
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

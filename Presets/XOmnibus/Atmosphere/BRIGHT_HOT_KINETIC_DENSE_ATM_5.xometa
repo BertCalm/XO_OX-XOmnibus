@@ -1,47 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT HOT KINETIC DENSE ATM 5",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Low",
+    "sourceEngine": "Ouroboros",
+    "targetEngine": null,
+    "type": "Rhythmic"
+  },
+  "couplingIntensity": "Low",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: BRIGHT HOT KINETIC DENSE ATM 5.",
+  "dna": {
+    "aggression": 0.431,
+    "brightness": 0.898,
+    "density": 0.512,
+    "movement": 0.929,
+    "space": 0.93,
+    "warmth": 0.94
+  },
   "engines": [
     "Ouroboros"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Atmosphere preset: BRIGHT HOT KINETIC DENSE ATM 5.",
-  "tags": [
-    "x-high-brightness",
-    "x-high-warmth",
-    "x-high-movement",
-    "x-high-space"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Low",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
+  "mood": "Atmosphere",
+  "name": "BRIGHT HOT KINETIC DENSE ATM 5",
+  "parameters": {
+    "Ouroboros": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "Rhythmic",
-    "intensity": "Low",
-    "sourceEngine": "Ouroboros",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.898,
-    "warmth": 0.94,
-    "aggression": 0.431,
-    "density": 0.512,
-    "movement": 0.929,
-    "space": 0.93
-  }
+  "tags": [
+    "x-high-brightness",
+    "x-high-warmth",
+    "x-high-movement",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

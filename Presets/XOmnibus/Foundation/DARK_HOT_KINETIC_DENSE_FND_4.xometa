@@ -1,45 +1,56 @@
 {
-  "name": "DARK_HOT_KINETIC_DENSE_FND_4",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ORACLE",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.653,
-      "macro_movement": 0.685,
-      "macro_coupling": 0.389,
-      "macro_space": 0.699
-    },
-    "ODDFELIX": {
-      "macro_character": 0.794,
-      "macro_movement": 0.116,
-      "macro_coupling": 0.793,
-      "macro_space": 0.685
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORACLE",
-    "target": "ODDFELIX",
-    "amount": 0.412
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "OddfeliX",
+        "type": "PITCH_SYNC",
+        "amount": 0.412
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.623,
     "brightness": 0.083,
-    "warmth": 0.967,
-    "movement": 0.932,
     "density": 0.954,
+    "movement": 0.932,
     "space": 0.611,
-    "aggression": 0.623
+    "warmth": 0.967
   },
+  "engines": [
+    "Oracle",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.133,
-    "MOVEMENT": 0.625,
     "COUPLING": 0.789,
+    "MOVEMENT": 0.625,
     "SPACE": 0.126
   },
+  "mood": "Foundation",
+  "name": "DARK_HOT_KINETIC_DENSE_FND_4",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.794,
+      "macro_coupling": 0.793,
+      "macro_movement": 0.116,
+      "macro_space": 0.685
+    },
+    "Oracle": {
+      "macro_character": 0.653,
+      "macro_coupling": 0.389,
+      "macro_movement": 0.685,
+      "macro_space": 0.699
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -47,5 +58,6 @@
     "hot",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

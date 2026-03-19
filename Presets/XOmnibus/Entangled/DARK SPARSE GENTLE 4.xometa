@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oblique \u00d7 Orbital \u2014 Frequency Shift coupling at extreme DNA corner.",
+  "description": "Oblique × Orbital — Frequency Shift coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "oblique",
@@ -33,7 +33,10 @@
     "space": 0.527,
     "aggression": 0.043
   },
-  "parameters": {},
+  "parameters": {
+    "Oblique": {},
+    "Orbital": {}
+  },
   "coupling": {
     "pairs": [
       {

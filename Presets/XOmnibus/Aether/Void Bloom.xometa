@@ -1,13 +1,50 @@
 {
-  "schema_version": 1,
-  "name": "Void Bloom",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Opal dissolved into infinite space. Space dimension at 0.97 \u2014 cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "dna": {
+    "aggression": 0.258,
+    "brightness": 0.268,
+    "density": 0.411,
+    "movement": 0.69,
+    "space": 0.968,
+    "warmth": 0.304
+  },
   "engines": [
     "Opal"
   ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "Opal dissolved into infinite space. Space dimension at 0.97 \u2014 cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Void Bloom II",
+  "parameters": {
+    "Opal": {
+      "opal_ampAttack": 0.437,
+      "opal_ampDecay": 0.974,
+      "opal_ampRelease": 3.89,
+      "opal_ampSustain": 0.452,
+      "opal_density": 0.626,
+      "opal_filterCutoff": 0.447,
+      "opal_filterReso": 0.166,
+      "opal_grainSize": 0.0807,
+      "opal_macroCharacter": 0.304,
+      "opal_macroCoupling": 0.0,
+      "opal_macroMovement": 0.69,
+      "opal_macroSpace": 0.968,
+      "opal_pitchScatter": 0.514,
+      "opal_posScatter": 0.929,
+      "opal_reverse": 0.0,
+      "opal_speed": 0.207
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "vast",
@@ -17,43 +54,6 @@
     "cosmic",
     "opal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.268,
-    "warmth": 0.304,
-    "movement": 0.69,
-    "density": 0.411,
-    "space": 0.968,
-    "aggression": 0.258
-  },
-  "parameters": {
-    "Opal": {
-      "opal_grainSize": 0.0807,
-      "opal_density": 0.626,
-      "opal_posScatter": 0.929,
-      "opal_pitchScatter": 0.514,
-      "opal_filterCutoff": 0.447,
-      "opal_filterReso": 0.166,
-      "opal_ampAttack": 0.437,
-      "opal_ampDecay": 0.974,
-      "opal_ampSustain": 0.452,
-      "opal_ampRelease": 3.89,
-      "opal_speed": 0.207,
-      "opal_reverse": 0.0,
-      "opal_macroCharacter": 0.304,
-      "opal_macroMovement": 0.69,
-      "opal_macroCoupling": 0.0,
-      "opal_macroSpace": 0.968
-    }
-  },
-  "coupling": null,
-  "sequencer": null
+  "version": "1.0"
 }

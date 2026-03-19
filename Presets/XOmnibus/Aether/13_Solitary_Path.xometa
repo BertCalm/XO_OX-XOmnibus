@@ -1,26 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Solitary Path",
-  "mood": "Aether",
-  "sonic_dna": {
-    "brightness": 0.1,
-    "warmth": 0.35,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Extreme portamento and reverb — a lone organism gliding through the vast empty deep",
+  "dna": {
     "aggression": 0.05,
-    "movement": 0.3,
+    "brightness": 0.1,
     "density": 0.5,
-    "space": 1.0
+    "movement": 0.3,
+    "space": 1.0,
+    "warmth": 0.35
   },
   "engines": [
-    "XOwlfish"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Extreme portamento and reverb — a lone organism gliding through the vast empty deep",
-  "tags": [
-    "glide",
-    "solo",
-    "reverb",
-    "meditative"
+    "Owlfish"
   ],
   "macroLabels": [
     "DEPTH",
@@ -28,21 +22,50 @@
     "DEFENSE",
     "PRESSURE"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.1,
-    "warmth": 0.35,
-    "movement": 0.3,
-    "density": 0.5,
-    "space": 1.0,
-    "aggression": 0.05
-  },
+  "mood": "Aether",
+  "name": "Solitary Path",
   "parameters": {
-    "XOwlfish": {
-      "owl_portamento": 0.9,
+    "Owlfish": {
+      "owl_ampAttack": 600,
+      "owl_ampDecay": 2000,
+      "owl_ampRelease": 6000,
+      "owl_ampSustain": 0.9,
+      "owl_armorDecay": 0.5,
+      "owl_armorDelay": 0.15,
+      "owl_armorDuck": 0.15,
+      "owl_armorScatter": 0.2,
+      "owl_armorThreshold": 0.9,
+      "owl_bodyFreq": 35,
+      "owl_bodyLevel": 0.5,
+      "owl_compAttack": 0.4,
+      "owl_compRatio": 0.3,
+      "owl_compRelease": 0.6,
+      "owl_compThreshold": 0.5,
+      "owl_couplingBus": 0,
+      "owl_couplingLevel": 0.5,
+      "owl_defense": 0.1,
+      "owl_depth": 0.75,
+      "owl_feedRate": 0.3,
+      "owl_feeding": 0.1,
+      "owl_filterCutoff": 0.42,
+      "owl_filterReso": 0.15,
+      "owl_filterTrack": 0.4,
+      "owl_fundWave": 0.05,
+      "owl_grainDensity": 0.08,
+      "owl_grainMix": 0.06,
+      "owl_grainPitch": 0.05,
+      "owl_grainSize": 0.4,
       "owl_legatoMode": 1,
+      "owl_mixtur": 0.1,
       "owl_morphGlide": 0.95,
-      "owl_subMix": 0.55,
+      "owl_outputLevel": 0.72,
+      "owl_outputPan": 0.0,
+      "owl_portamento": 0.9,
+      "owl_pressure": 0.55,
+      "owl_reverbDamp": 0.6,
+      "owl_reverbMix": 0.7,
+      "owl_reverbPreDelay": 0.45,
+      "owl_reverbSize": 0.9,
       "owl_subDiv1": 1,
       "owl_subDiv2": 3,
       "owl_subDiv3": 0,
@@ -51,47 +74,24 @@
       "owl_subLevel2": 0.35,
       "owl_subLevel3": 0.0,
       "owl_subLevel4": 0.0,
-      "owl_mixtur": 0.1,
-      "owl_fundWave": 0.05,
-      "owl_subWave": 0.15,
-      "owl_bodyFreq": 35,
-      "owl_bodyLevel": 0.5,
-      "owl_compRatio": 0.3,
-      "owl_compThreshold": 0.5,
-      "owl_compAttack": 0.4,
-      "owl_compRelease": 0.6,
-      "owl_filterCutoff": 0.42,
-      "owl_filterReso": 0.15,
-      "owl_filterTrack": 0.4,
-      "owl_grainSize": 0.4,
-      "owl_grainDensity": 0.08,
-      "owl_grainPitch": 0.05,
-      "owl_grainMix": 0.06,
-      "owl_feedRate": 0.3,
-      "owl_armorThreshold": 0.9,
-      "owl_armorDecay": 0.5,
-      "owl_armorScatter": 0.2,
-      "owl_armorDuck": 0.15,
-      "owl_armorDelay": 0.15,
-      "owl_reverbSize": 0.9,
-      "owl_reverbDamp": 0.6,
-      "owl_reverbPreDelay": 0.45,
-      "owl_reverbMix": 0.7,
-      "owl_ampAttack": 600,
-      "owl_ampDecay": 2000,
-      "owl_ampSustain": 0.9,
-      "owl_ampRelease": 6000,
-      "owl_depth": 0.75,
-      "owl_feeding": 0.1,
-      "owl_defense": 0.1,
-      "owl_pressure": 0.55,
-      "owl_outputLevel": 0.72,
-      "owl_outputPan": 0.0,
-      "owl_couplingLevel": 0.5,
-      "owl_couplingBus": 0
+      "owl_subMix": 0.55,
+      "owl_subWave": 0.15
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.05,
+    "brightness": 0.1,
+    "density": 0.5,
+    "movement": 0.3,
+    "space": 1.0,
+    "warmth": 0.35
+  },
+  "tags": [
+    "glide",
+    "solo",
+    "reverb",
+    "meditative"
+  ],
+  "version": "1.0.0"
 }

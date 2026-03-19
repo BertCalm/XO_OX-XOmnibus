@@ -1,14 +1,86 @@
 {
-  "schema_version": 1,
-  "name": "COLD_SPARSE_VAST_VIOLENT_ENT_1",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.8074,
+        "source": "Ole",
+        "target": "Overworld",
+        "type": "PITCH_ENTANGLE"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Cold Sparse Vast Violent character entanglement — OVERWORLD × OLE via Pitch Entangle. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.9607,
+    "brightness": 0.6971,
+    "density": 0.1277,
+    "movement": 0.3509,
+    "space": 0.9702,
+    "warmth": 0.0632
+  },
   "engines": [
-    "OVERWORLD",
-    "OLE"
+    "Overworld",
+    "Ole"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Cold Sparse Vast Violent character entanglement \u2014 OVERWORLD \u00d7 OLE via Pitch Entangle. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "ERA",
+    "GLITCH",
+    "CHIP",
+    "CRT"
+  ],
+  "macros": {
+    "CHARACTER": 0.3802,
+    "COUPLING": 0.8074,
+    "MOVEMENT": 0.3509,
+    "SPACE": 0.9702
+  },
+  "mood": "Entangled",
+  "name": "COLD_SPARSE_VAST_VIOLENT_ENT_1",
+  "parameters": {
+    "Ole": {
+      "amp_attack": 0.2731,
+      "amp_release": 0.6772,
+      "coupling_level": 0.913,
+      "density": 0.0989,
+      "drive": 0.8407,
+      "filter_cutoff": 0.7178,
+      "filter_resonance": 0.56,
+      "macro_character": 0.4998,
+      "macro_coupling": 0.9319,
+      "macro_movement": 0.3584,
+      "macro_space": 0.984,
+      "output_level": 0.7714,
+      "reverb_mix": 0.6868,
+      "reverb_size": 0.8025
+    },
+    "Overworld": {
+      "amp_attack": 0.3396,
+      "amp_release": 0.7033,
+      "coupling_level": 0.9136,
+      "density": 0.1626,
+      "drive": 0.8278,
+      "filter_cutoff": 0.6604,
+      "filter_resonance": 0.5555,
+      "macro_character": 0.5283,
+      "macro_coupling": 0.9146,
+      "macro_movement": 0.3412,
+      "macro_space": 0.9671,
+      "output_level": 0.763,
+      "reverb_mix": 0.6462,
+      "reverb_size": 0.7949
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9607,
+    "brightness": 0.6971,
+    "density": 0.1277,
+    "movement": 0.3509,
+    "space": 0.9702,
+    "warmth": 0.0632
+  },
   "tags": [
     "entangled",
     "cold",
@@ -17,81 +89,5 @@
     "violent",
     "resonant"
   ],
-  "macroLabels": [
-    "ERA",
-    "GLITCH",
-    "CHIP",
-    "CRT"
-  ],
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.6971,
-    "warmth": 0.0632,
-    "movement": 0.3509,
-    "density": 0.1277,
-    "space": 0.9702,
-    "aggression": 0.9607
-  },
-  "sonic_dna": {
-    "brightness": 0.6971,
-    "warmth": 0.0632,
-    "movement": 0.3509,
-    "density": 0.1277,
-    "space": 0.9702,
-    "aggression": 0.9607
-  },
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.5283,
-      "macro_movement": 0.3412,
-      "macro_coupling": 0.9146,
-      "macro_space": 0.9671,
-      "filter_cutoff": 0.6604,
-      "filter_resonance": 0.5555,
-      "amp_attack": 0.3396,
-      "amp_release": 0.7033,
-      "reverb_mix": 0.6462,
-      "reverb_size": 0.7949,
-      "drive": 0.8278,
-      "density": 0.1626,
-      "output_level": 0.763,
-      "coupling_level": 0.9136
-    },
-    "OLE": {
-      "macro_character": 0.4998,
-      "macro_movement": 0.3584,
-      "macro_coupling": 0.9319,
-      "macro_space": 0.984,
-      "filter_cutoff": 0.7178,
-      "filter_resonance": 0.56,
-      "amp_attack": 0.2731,
-      "amp_release": 0.6772,
-      "reverb_mix": 0.6868,
-      "reverb_size": 0.8025,
-      "drive": 0.8407,
-      "density": 0.0989,
-      "output_level": 0.7714,
-      "coupling_level": 0.913
-    }
-  },
-  "coupling": {
-    "type": "PITCH_ENTANGLE",
-    "source": "OLE",
-    "target": "OVERWORLD",
-    "amount": 0.8074,
-    "pairs": [
-      {
-        "source": "OLE",
-        "target": "OVERWORLD",
-        "type": "PITCH_ENTANGLE",
-        "amount": 0.8074
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.3802,
-    "MOVEMENT": 0.3509,
-    "COUPLING": 0.8074,
-    "SPACE": 0.9702
-  }
+  "version": "1.0.0"
 }

@@ -1,13 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Octopus Color Shift",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Chromatophores in rapid state change — the octopus's signature color shift as sound. Eight simultaneous tonal colors cycling at different rates.",
+  "dna": {
+    "aggression": 0.09,
+    "brightness": 0.62,
+    "density": 0.4,
+    "movement": 0.85,
+    "space": 0.78,
+    "warmth": 0.55
+  },
   "engines": [
     "Octopus"
   ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "Chromatophores in rapid state change \u2014 the octopus's signature color shift as sound. Eight simultaneous tonal colors cycling at different rates.",
+  "macroLabels": [
+    "STRETCH",
+    "INK",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Octopus Color Shift",
+  "parameters": {
+    "Octopus": {
+      "octo_ampAttack": 0.3,
+      "octo_ampRelease": 4.0,
+      "octo_armDepth": 0.5,
+      "octo_filterCutoff": 0.5,
+      "octo_filterReso": 0.2,
+      "octo_inkDepth": 0.4,
+      "octo_lfoDepth": 0.8,
+      "octo_lfoRate": 0.5,
+      "octo_macroCoupling": 0.0,
+      "octo_macroInk": 0.0,
+      "octo_macroSpace": 0.0,
+      "octo_macroStretch": 0.0,
+      "octo_reverbMix": 0.72,
+      "octo_stretchAmt": 0.88
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "shifting-aether",
@@ -16,41 +52,5 @@
     "shift",
     "rapid"
   ],
-  "macroLabels": [
-    "STRETCH",
-    "INK",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.62,
-    "warmth": 0.55,
-    "movement": 0.85,
-    "density": 0.4,
-    "space": 0.78,
-    "aggression": 0.09
-  },
-  "parameters": {
-    "Octopus": {
-      "octo_armDepth": 0.5,
-      "octo_stretchAmt": 0.88,
-      "octo_inkDepth": 0.4,
-      "octo_filterCutoff": 0.5,
-      "octo_filterReso": 0.2,
-      "octo_lfoRate": 0.5,
-      "octo_lfoDepth": 0.8,
-      "octo_ampAttack": 0.3,
-      "octo_ampRelease": 4.0,
-      "octo_reverbMix": 0.72,
-      "octo_macroStretch": 0.0,
-      "octo_macroInk": 0.0,
-      "octo_macroCoupling": 0.0,
-      "octo_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

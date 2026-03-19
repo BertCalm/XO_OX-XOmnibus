@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_VAST_VIOLENT_ATM_3",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orbital",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.666
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9288,
+    "brightness": 0.9685,
+    "density": 0.5348,
+    "movement": 0.9058,
+    "space": 0.9899,
+    "warmth": 0.9039
+  },
   "engines": [
-    "OBSCURA",
-    "ORBITAL"
+    "Obscura",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9423,
+    "COUPLING": 0.5232,
+    "MOVEMENT": 0.9281,
+    "SPACE": 0.9865
+  },
+  "mood": "Atmosphere",
+  "name": "Candlelight Horizon",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.9261,
-      "macro_movement": 0.9216,
       "macro_coupling": 0.5274,
+      "macro_movement": 0.9216,
       "macro_space": 0.99
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.9584,
-      "macro_movement": 0.9346,
       "macro_coupling": 0.5191,
+      "macro_movement": 0.9346,
       "macro_space": 0.9829
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBSCURA",
-    "target": "ORBITAL",
-    "amount": 0.666
-  },
-  "dna": {
-    "brightness": 0.9685,
-    "warmth": 0.9039,
-    "movement": 0.9058,
-    "density": 0.5348,
-    "space": 0.9899,
-    "aggression": 0.9288
-  },
-  "macros": {
-    "CHARACTER": 0.9423,
-    "MOVEMENT": 0.9281,
-    "COUPLING": 0.5232,
-    "SPACE": 0.9865
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
@@ -47,5 +58,6 @@
     "kinetic",
     "vast",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD SPARSE VAST 2",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.0845,
-    "warmth": 0.098,
-    "density": 0.0895,
-    "space": 0.9205,
-    "aggression": 0.5468,
-    "movement": 0.5931
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "High",
+  "couplingType": "PULSE",
+  "description": "Ultra-diverse Entangled preset — dark cold sparse vast. Designed for PULSE coupling with XOceanic.",
   "dna": {
-    "brightness": 0.0845,
-    "warmth": 0.098,
-    "density": 0.0895,
-    "space": 0.9205,
     "aggression": 0.5468,
-    "movement": 0.5931
+    "brightness": 0.0845,
+    "density": 0.0895,
+    "movement": 0.5931,
+    "space": 0.9205,
+    "warmth": 0.098
   },
   "engines": [
-    "XOceanic"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark cold sparse vast. Designed for PULSE coupling with XOceanic.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "pulse",
-    "oceanic"
+    "Oceanic"
   ],
   "macroLabels": [
     "EXPANSE",
@@ -36,15 +23,28 @@
     "LAYER",
     "EMBER"
   ],
-  "couplingType": "PULSE",
-  "couplingIntensity": "High",
+  "mood": "Foundation",
+  "name": "DARK COLD SPARSE VAST 2",
   "parameters": {
-    "XOceanic": {
-      "couplingLevel": 0.718,
-      "couplingBus": 2
+    "Oceanic": {
+      "couplingBus": 2,
+      "couplingLevel": 0.718
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.5468,
+    "brightness": 0.0845,
+    "density": 0.0895,
+    "movement": 0.5931,
+    "space": 0.9205,
+    "warmth": 0.098
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "pulse",
+    "oceanic"
+  ],
+  "version": "1.0.0"
 }

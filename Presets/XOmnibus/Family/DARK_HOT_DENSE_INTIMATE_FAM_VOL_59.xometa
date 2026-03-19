@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_DENSE_INTIMATE_FAM_VOL_59",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Organon",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.632
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.627,
+    "brightness": 0.113,
+    "density": 0.894,
+    "movement": 0.44,
+    "space": 0.068,
+    "warmth": 0.978
+  },
   "engines": [
-    "ORGANON",
-    "ORPHICA"
+    "Organon",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.544,
+    "COUPLING": 0.772,
+    "MOVEMENT": 0.42,
+    "SPACE": 0.082
+  },
+  "mood": "Family",
+  "name": "Ember Titan",
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.541,
-      "macro_movement": 0.416,
       "macro_coupling": 0.765,
+      "macro_movement": 0.416,
       "macro_space": 0.097
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.548,
-      "macro_movement": 0.424,
       "macro_coupling": 0.78,
+      "macro_movement": 0.424,
       "macro_space": 0.067
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORPHICA",
-    "target": "ORGANON",
-    "amount": 0.632
-  },
-  "dna": {
-    "brightness": 0.113,
-    "warmth": 0.978,
-    "movement": 0.44,
-    "density": 0.894,
-    "space": 0.068,
-    "aggression": 0.627
-  },
-  "macros": {
-    "CHARACTER": 0.544,
-    "MOVEMENT": 0.42,
-    "COUPLING": 0.772,
-    "SPACE": 0.082
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "dense",
     "intimate",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

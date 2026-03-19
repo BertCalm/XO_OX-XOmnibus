@@ -1,59 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Dust Flute",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Focused soft leads tone with warm character.",
+  "dna": {
+    "aggression": 0.058,
+    "brightness": 0.466,
+    "density": 0.065,
+    "movement": 0.0,
+    "space": 0.083,
+    "warmth": 0.19
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Focused soft leads tone with warm character.",
-  "tags": [
-    "lead",
-    "flute",
-    "airy"
-  ],
+  "legacy": {
+    "sourceCategory": "Soft Leads",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Soft Leads",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Dust Flute",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
-      "bob_oscA_shape": 0.8,
-      "bob_oscA_drift": 0.18,
-      "bob_oscB_wave": 2.0,
-      "bob_oscB_blend": 0.2,
-      "bob_oscB_detune": -2.0,
-      "bob_fltMode": 3.0,
-      "bob_fltCutoff": 7000.0,
-      "bob_fltReso": 0.18,
-      "bob_fltEnvAmt": 0.55,
       "bob_ampAttack": 0.02,
       "bob_ampDecay": 0.35,
-      "bob_ampSustain": 0.6,
       "bob_ampRelease": 0.5,
-      "bob_bobMode": 0.14
+      "bob_ampSustain": 0.6,
+      "bob_bobMode": 0.14,
+      "bob_fltCutoff": 7000.0,
+      "bob_fltEnvAmt": 0.55,
+      "bob_fltMode": 3.0,
+      "bob_fltReso": 0.18,
+      "bob_oscA_drift": 0.18,
+      "bob_oscA_shape": 0.8,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.2,
+      "bob_oscB_detune": -2.0,
+      "bob_oscB_wave": 2.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.466,
-    "warmth": 0.19,
-    "movement": 0.0,
-    "density": 0.065,
-    "space": 0.083,
-    "aggression": 0.058
-  }
+  "tags": [
+    "lead",
+    "flute",
+    "airy"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

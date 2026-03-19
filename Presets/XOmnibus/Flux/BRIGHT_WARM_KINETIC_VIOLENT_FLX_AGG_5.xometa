@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FLX_AGG_5",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.816
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.909,
+    "brightness": 0.96,
+    "density": 0.435,
+    "movement": 0.95,
+    "space": 0.498,
+    "warmth": 0.938
+  },
   "engines": [
-    "ODYSSEY",
-    "ORIGAMI"
+    "Odyssey",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.518,
+    "COUPLING": 0.812,
+    "MOVEMENT": 0.95,
+    "SPACE": 0.498
+  },
+  "mood": "Flux",
+  "name": "Halo Drift 2",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.545,
-      "macro_movement": 0.988,
       "macro_coupling": 0.812,
+      "macro_movement": 0.988,
       "macro_space": 0.518
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.492,
-      "macro_movement": 0.928,
       "macro_coupling": 0.773,
+      "macro_movement": 0.928,
       "macro_space": 0.543
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ODYSSEY",
-    "target": "ORIGAMI",
-    "amount": 0.816
-  },
-  "dna": {
-    "brightness": 0.96,
-    "warmth": 0.938,
-    "movement": 0.95,
-    "density": 0.435,
-    "space": 0.498,
-    "aggression": 0.909
-  },
-  "macros": {
-    "CHARACTER": 0.518,
-    "MOVEMENT": 0.95,
-    "COUPLING": 0.812,
-    "SPACE": 0.498
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "bright",
     "warm",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

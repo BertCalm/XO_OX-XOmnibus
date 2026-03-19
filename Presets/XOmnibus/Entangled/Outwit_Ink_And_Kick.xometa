@@ -1,68 +1,83 @@
 {
-  "schema_version": 1,
-  "name": "Ink and Kick",
-  "mood": "Entangled",
-  "engines": ["Outwit", "Onset"],
-  "author": "Guru Bin — OUTWIT Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Outwit's Rule 30 chaos drives Onset's percussion parameters — the octopus's ink cloud tells the drum machine when to fire. Cellular automaton becomes a generative rhythm oracle. Chaos decides the beat.",
-  "tags": ["entangled", "percussion", "generative", "rhythm", "chaos", "cellular"],
-  "macroLabels": ["CHARACTER", "CHAOS", "COUPLING", "SPACE"],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.4,
-    "movement": 0.75,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.55
-  },
-  "parameters": {
-    "Outwit": {
-      "owit_rule": 30,
-      "owit_armBalance": 0.6,
-      "owit_mutationRate": 0.5,
-      "owit_armSpread": 0.55,
-      "owit_sync": 0.7,
-      "owit_feedbackAmt": 0.3,
-      "owit_chaos": 0.55,
-      "owit_density": 0.55,
-      "owit_ampAttack": 0.01,
-      "owit_ampDecay": 0.2,
-      "owit_ampSustain": 0.6,
-      "owit_ampRelease": 0.5,
-      "owit_filterCutoff": 0.6,
-      "owit_filterRes": 0.35,
-      "owit_lfoRate": 0.15,
-      "owit_lfoDepth": 0.2,
-      "owit_macroCharacter": 0.0,
-      "owit_macroChaos": 0.0,
-      "owit_macroCoupling": 0.0,
-      "owit_macroSpace": 0.0
-    },
-    "Onset": {
-      "perc_noiseLevel": 0.5,
-      "perc_kickTune": 0.4,
-      "perc_kickDecay": 0.35,
-      "perc_snareTone": 0.5,
-      "perc_snareSnap": 0.6,
-      "perc_macroMachine": 0.0,
-      "perc_macroPunch": 0.0,
-      "perc_macroSpace": 0.0,
-      "perc_macroMutate": 0.0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
       {
+        "amount": 0.55,
+        "description": "Outwit CA density modulates Onset trigger probability",
         "source": "Outwit",
         "target": "Onset",
-        "type": "ChaosToTrigger",
-        "amount": 0.55,
-        "description": "Outwit CA density modulates Onset trigger probability"
+        "type": "ChaosToTrigger"
       }
     ]
   },
-  "sequencer": null
+  "couplingIntensity": "Moderate",
+  "description": "Outwit's Rule 30 chaos drives Onset's percussion parameters — the octopus's ink cloud tells the drum machine when to fire. Cellular automaton becomes a generative rhythm oracle. Chaos decides the beat.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.55,
+    "density": 0.6,
+    "movement": 0.75,
+    "space": 0.5,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Outwit",
+    "Onset"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Ink and Kick",
+  "parameters": {
+    "Onset": {
+      "perc_kickDecay": 0.35,
+      "perc_kickTune": 0.4,
+      "perc_macroMachine": 0.0,
+      "perc_macroMutate": 0.0,
+      "perc_macroPunch": 0.0,
+      "perc_macroSpace": 0.0,
+      "perc_noiseLevel": 0.5,
+      "perc_snareSnap": 0.6,
+      "perc_snareTone": 0.5
+    },
+    "Outwit": {
+      "owit_ampAttack": 0.01,
+      "owit_ampDecay": 0.2,
+      "owit_ampRelease": 0.5,
+      "owit_ampSustain": 0.6,
+      "owit_armBalance": 0.6,
+      "owit_armSpread": 0.55,
+      "owit_chaos": 0.55,
+      "owit_density": 0.55,
+      "owit_feedbackAmt": 0.3,
+      "owit_filterCutoff": 0.6,
+      "owit_filterRes": 0.35,
+      "owit_lfoDepth": 0.2,
+      "owit_lfoRate": 0.15,
+      "owit_macroChaos": 0.0,
+      "owit_macroCharacter": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0,
+      "owit_mutationRate": 0.5,
+      "owit_rule": 30,
+      "owit_sync": 0.7
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "percussion",
+    "generative",
+    "rhythm",
+    "chaos",
+    "cellular"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

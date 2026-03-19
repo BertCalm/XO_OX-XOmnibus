@@ -1,45 +1,56 @@
 {
-  "name": "DARK COLD FURY ATM 11",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OVERBITE",
-    "OCELOT"
-  ],
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.076,
-      "macro_movement": 0.328,
-      "macro_coupling": 0.824,
-      "macro_space": 0.432
-    },
-    "OCELOT": {
-      "macro_character": 0.016,
-      "macro_movement": 0.271,
-      "macro_coupling": 0.733,
-      "macro_space": 0.403
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OVERBITE",
-    "target": "OCELOT",
-    "amount": 0.718
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Ocelot",
+        "type": "PITCH_SYNC",
+        "amount": 0.718
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.908,
     "brightness": 0.09,
-    "warmth": 0.063,
-    "movement": 0.328,
     "density": 0.566,
+    "movement": 0.328,
     "space": 0.432,
-    "aggression": 0.908
+    "warmth": 0.063
   },
+  "engines": [
+    "Overbite",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.076,
-    "MOVEMENT": 0.328,
     "COUPLING": 0.824,
+    "MOVEMENT": 0.328,
     "SPACE": 0.432
   },
+  "mood": "Atmosphere",
+  "name": "DARK COLD FURY ATM 11",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.016,
+      "macro_coupling": 0.733,
+      "macro_movement": 0.271,
+      "macro_space": 0.403
+    },
+    "Overbite": {
+      "macro_character": 0.076,
+      "macro_coupling": 0.824,
+      "macro_movement": 0.328,
+      "macro_space": 0.432
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -47,5 +58,6 @@
     "aggressive",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

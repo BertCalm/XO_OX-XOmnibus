@@ -1,0 +1,82 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Torus with near-zero movement \u2014 time stands still in the deep.",
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.65,
+    "movement": 0.05,
+    "density": 0.5,
+    "space": 0.92,
+    "aggression": 0.01
+  },
+  "engines": [
+    "XOverlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
+  "mood": "Aether",
+  "name": "Frozen Current",
+  "parameters": {
+    "XOverlap": {
+      "olap_knot": 1,
+      "olap_tangleDepth": 0.35,
+      "olap_torusP": 4,
+      "olap_torusQ": 3,
+      "olap_pulseRate": 0.05,
+      "olap_entrain": 0.03,
+      "olap_spread": 0.92,
+      "olap_voiceMode": 0,
+      "olap_glide": 0.0,
+      "olap_delayBase": 22.0,
+      "olap_dampening": 0.7,
+      "olap_feedback": 0.97,
+      "olap_brightness": 0.22,
+      "olap_bioluminescence": 0.55,
+      "olap_current": 0.02,
+      "olap_currentRate": 0.003,
+      "olap_attack": 0.35,
+      "olap_decay": 6.0,
+      "olap_sustain": 0.95,
+      "olap_release": 10.0,
+      "olap_filterCutoff": 3500.0,
+      "olap_filterRes": 0.04,
+      "olap_filterEnvAmt": 0.02,
+      "olap_filterEnvDecay": 3.0,
+      "olap_lfo1Rate": 0.008,
+      "olap_lfo1Shape": 0,
+      "olap_lfo1Depth": 0.05,
+      "olap_lfo1Dest": 0,
+      "olap_lfo2Rate": 0.005,
+      "olap_lfo2Shape": 1,
+      "olap_lfo2Depth": 0.04,
+      "olap_lfo2Dest": 2,
+      "olap_chorusMix": 0.3,
+      "olap_chorusRate": 0.015,
+      "olap_diffusion": 0.88,
+      "olap_macroKnot": 0.0,
+      "olap_macroPulse": 0.0,
+      "olap_macroEntrain": 0.0,
+      "olap_macroBloom": 0.0,
+      "olap_modWheelDest": 0,
+      "olap_modWheelDepth": 0.5,
+      "olap_atPressureDest": 1,
+      "olap_atPressureDepth": 0.4
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "frozen",
+    "still",
+    "suspended",
+    "deep"
+  ],
+  "version": "1.0.0"
+}

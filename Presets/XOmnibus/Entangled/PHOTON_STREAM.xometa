@@ -1,49 +1,61 @@
 {
-  "name": "PHOTON STREAM",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Overworld",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.312
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.218,
+    "brightness": 0.726,
+    "density": 0.085,
+    "movement": 0.647,
+    "space": 0.958,
+    "warmth": 0.857
+  },
   "engines": [
-    "OBESE",
-    "OVERWORLD"
+    "Obese",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.527,
+    "COUPLING": 0.597,
+    "MOVEMENT": 0.079,
+    "SPACE": 0.958
+  },
+  "mood": "Entangled",
+  "name": "PHOTON STREAM",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.182,
-      "macro_movement": 0.556,
       "macro_coupling": 0.297,
+      "macro_movement": 0.556,
       "macro_space": 0.945
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.883,
-      "macro_movement": 0.122,
       "macro_coupling": 0.121,
+      "macro_movement": 0.122,
       "macro_space": 0.95
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBESE",
-    "target": "OVERWORLD",
-    "amount": 0.312
-  },
-  "dna": {
-    "brightness": 0.726,
-    "warmth": 0.857,
-    "movement": 0.647,
-    "density": 0.085,
-    "space": 0.958,
-    "aggression": 0.218
-  },
-  "macros": {
-    "CHARACTER": 0.527,
-    "MOVEMENT": 0.079,
-    "COUPLING": 0.597,
-    "SPACE": 0.958
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "vast",
     "cosmic",
     "xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

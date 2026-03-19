@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_KINETIC_DENSE_PRS_DRK_1",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Origami",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.7188
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5707,
+    "brightness": 0.0775,
+    "density": 0.8968,
+    "movement": 0.903,
+    "space": 0.5946,
+    "warmth": 0.873
+  },
   "engines": [
-    "OLE",
-    "ORIGAMI"
+    "Ole",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7218,
+    "COUPLING": 0.8968,
+    "MOVEMENT": 0.903,
+    "SPACE": 0.5946
+  },
+  "mood": "Prism",
+  "name": "Amber Ripple",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.7218,
-      "macro_movement": 0.903,
       "macro_coupling": 0.8968,
+      "macro_movement": 0.903,
       "macro_space": 0.5946
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.6842,
-      "macro_movement": 0.8805,
       "macro_coupling": 0.8972,
+      "macro_movement": 0.8805,
       "macro_space": 0.5567
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OLE",
-    "target": "ORIGAMI",
-    "amount": 0.7188
-  },
-  "dna": {
-    "brightness": 0.0775,
-    "warmth": 0.873,
-    "movement": 0.903,
-    "density": 0.8968,
-    "space": 0.5946,
-    "aggression": 0.5707
-  },
-  "macros": {
-    "CHARACTER": 0.7218,
-    "MOVEMENT": 0.903,
-    "COUPLING": 0.8968,
-    "SPACE": 0.5946
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "hot",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

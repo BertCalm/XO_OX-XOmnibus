@@ -1,45 +1,56 @@
 {
-  "name": "DARK_FROZEN_VAST_HARSH_SPARSE_ENT4_2",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERWORLD",
-    "OBESE"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.336,
-      "macro_movement": 0.076,
-      "macro_coupling": 0.039,
-      "macro_space": 0.94
-    },
-    "OBESE": {
-      "macro_character": 0.327,
-      "macro_movement": 0.072,
-      "macro_coupling": 0.01,
-      "macro_space": 0.91
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OVERWORLD",
-    "target": "OBESE",
-    "amount": 0.818
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Obese",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.818
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.935,
     "brightness": 0.045,
-    "warmth": 0.578,
-    "movement": 0.074,
     "density": 0.027,
+    "movement": 0.074,
     "space": 0.919,
-    "aggression": 0.935
+    "warmth": 0.578
   },
+  "engines": [
+    "Overworld",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.332,
-    "MOVEMENT": 0.074,
     "COUPLING": 0.818,
+    "MOVEMENT": 0.074,
     "SPACE": 0.925
   },
+  "mood": "Entangled",
+  "name": "Flux Rage 3",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.327,
+      "macro_coupling": 0.01,
+      "macro_movement": 0.072,
+      "macro_space": 0.91
+    },
+    "Overworld": {
+      "macro_character": 0.336,
+      "macro_coupling": 0.039,
+      "macro_movement": 0.076,
+      "macro_space": 0.94
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +59,6 @@
     "sparse",
     "vast",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

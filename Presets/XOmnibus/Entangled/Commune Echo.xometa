@@ -1,31 +1,46 @@
 {
-  "name": "Commune Echo",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Ohm",
+        "type": "SYMPATHETIC_RESONANCE",
+        "amount": 0.55
+      }
+    ]
+  },
+  "description": "Folk warmth held inside a dub delay loop — communal presence echoing forward in time",
   "engines": [
-    "OVERDUB",
-    "OHM"
+    "Overdub",
+    "Ohm"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.4,
     "COUPLING": 0.55,
+    "MOVEMENT": 0.4,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.44,
-    "warmth": 0.69,
-    "movement": 0.51,
-    "density": 0.56,
-    "space": 0.61,
-    "aggression": 0.29
+  "mood": "Entangled",
+  "name": "Commune Echo",
+  "parameters": {
+    "Overdub": {},
+    "Ohm": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "SYMPATHETIC_RESONANCE",
-    "source": "OVERDUB",
-    "target": "OHM",
-    "amount": 0.55
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.29,
+    "brightness": 0.44,
+    "density": 0.56,
+    "movement": 0.51,
+    "space": 0.61,
+    "warmth": 0.69
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "ohm",
     "dub"
   ],
-  "description": "Folk warmth held inside a dub delay loop \u2014 communal presence echoing forward in time"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

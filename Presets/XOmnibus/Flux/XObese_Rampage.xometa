@@ -33,7 +33,9 @@
     "space": 0.1,
     "aggression": 0.99
   },
-  "parameters": {},
+  "parameters": {
+    "Obese": {}
+  },
   "tags": [
     "violent",
     "obese",

@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_COLD_KINETIC_DENSE_FLX_5",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OUROBOROS",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.8332,
-      "macro_movement": 0.9771,
-      "macro_coupling": 0.7466,
-      "macro_space": 0.4959
-    },
-    "OCEANIC": {
-      "macro_character": 0.8725,
-      "macro_movement": 0.7874,
-      "macro_coupling": 0.7744,
-      "macro_space": 0.6293
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OUROBOROS",
-    "target": "OCEANIC",
-    "amount": 0.7905
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oceanic",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.7905
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.6701,
     "brightness": 0.8762,
-    "warmth": 0.0751,
-    "movement": 0.8873,
     "density": 0.9675,
+    "movement": 0.8873,
     "space": 0.5351,
-    "aggression": 0.6701
+    "warmth": 0.0751
   },
+  "engines": [
+    "Ouroboros",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8332,
-    "MOVEMENT": 0.9771,
     "COUPLING": 0.7466,
+    "MOVEMENT": 0.9771,
     "SPACE": 0.4959
   },
+  "mood": "Flux",
+  "name": "Crystal Molten",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.8725,
+      "macro_coupling": 0.7744,
+      "macro_movement": 0.7874,
+      "macro_space": 0.6293
+    },
+    "Ouroboros": {
+      "macro_character": 0.8332,
+      "macro_coupling": 0.7466,
+      "macro_movement": 0.9771,
+      "macro_space": 0.4959
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +59,6 @@
     "low-warmth",
     "high-movement",
     "high-density"
-  ]
+  ],
+  "version": "1.0"
 }

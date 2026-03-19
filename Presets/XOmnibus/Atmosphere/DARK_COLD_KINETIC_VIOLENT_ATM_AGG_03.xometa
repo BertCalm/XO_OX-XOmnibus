@@ -1,45 +1,56 @@
 {
-  "name": "DARK COLD KINETIC VIOLENT ATM AGG 3",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OCEANIC",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "OCEANIC": {
-      "macro_character": 0.059,
-      "macro_movement": 0.914,
-      "macro_coupling": 0.87,
-      "macro_space": 0.666
-    },
-    "OBSCURA": {
-      "macro_character": 0.06,
-      "macro_movement": 0.924,
-      "macro_coupling": 0.856,
-      "macro_space": 0.644
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OCEANIC",
-    "target": "OBSCURA",
-    "amount": 0.725
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Obscura",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.725
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.942,
     "brightness": 0.061,
-    "warmth": 0.038,
-    "movement": 0.984,
     "density": 0.669,
+    "movement": 0.984,
     "space": 0.667,
-    "aggression": 0.942
+    "warmth": 0.038
   },
+  "engines": [
+    "Oceanic",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.059,
-    "MOVEMENT": 0.919,
     "COUPLING": 0.863,
+    "MOVEMENT": 0.919,
     "SPACE": 0.655
   },
+  "mood": "Atmosphere",
+  "name": "DARK COLD KINETIC VIOLENT A...",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.06,
+      "macro_coupling": 0.856,
+      "macro_movement": 0.924,
+      "macro_space": 0.644
+    },
+    "Oceanic": {
+      "macro_character": 0.059,
+      "macro_coupling": 0.87,
+      "macro_movement": 0.914,
+      "macro_space": 0.666
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -47,5 +58,6 @@
     "violent",
     "dark",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

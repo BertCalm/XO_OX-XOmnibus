@@ -1,14 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Granular Coastline",
-  "mood": "Entangled",
-  "engines": [
-    "OSPREY",
-    "OPAL"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "Osprey",
+        "engineB": "Opal",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
   "description": "Grain clouds scatter like sea spray over osprey's watchful glide.",
+  "dna": {
+    "aggression": 0.29,
+    "brightness": 0.65,
+    "density": 0.48,
+    "movement": 0.72,
+    "space": 0.77,
+    "warmth": 0.53
+  },
+  "engines": [
+    "Osprey",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.8,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.8
+  },
+  "mood": "Entangled",
+  "name": "Granular Coastline",
+  "parameters": {
+    "Osprey": {},
+    "Opal": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -19,38 +54,6 @@
     "texture",
     "spray"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5,
-    "MOVEMENT": 0.65,
-    "COUPLING": 0.8,
-    "SPACE": 0.8
-  },
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {
-    "brightness": 0.65,
-    "warmth": 0.53,
-    "movement": 0.72,
-    "density": 0.48,
-    "space": 0.77,
-    "aggression": 0.29
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OSPREY",
-        "engineB": "OPAL",
-        "type": "HARMONIC_BLEND",
-        "amount": 0.7
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

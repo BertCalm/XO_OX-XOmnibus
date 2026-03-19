@@ -1,50 +1,62 @@
 {
-  "name": "DARK_COLD_DENSE_VIOLENT_FAM_VOL_101",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overdub",
+        "type": "SPATIAL_BIND",
+        "amount": 0.927
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.884,
+    "brightness": 0.049,
+    "density": 0.978,
+    "movement": 0.665,
+    "space": 0.418,
+    "warmth": 0.027
+  },
   "engines": [
-    "OBLONG",
-    "OVERDUB"
+    "Oblong",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.038,
+    "COUPLING": 0.939,
+    "MOVEMENT": 0.665,
+    "SPACE": 0.427
+  },
+  "mood": "Family",
+  "name": "Flux Titan 4",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.046,
-      "macro_movement": 0.664,
       "macro_coupling": 0.954,
+      "macro_movement": 0.664,
       "macro_space": 0.419
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.031,
-      "macro_movement": 0.667,
       "macro_coupling": 0.924,
+      "macro_movement": 0.667,
       "macro_space": 0.436
     }
   },
-  "coupling": {
-    "type": "SPATIAL_BIND",
-    "source": "OBLONG",
-    "target": "OVERDUB",
-    "amount": 0.927
-  },
-  "dna": {
-    "brightness": 0.049,
-    "warmth": 0.027,
-    "movement": 0.665,
-    "density": 0.978,
-    "space": 0.418,
-    "aggression": 0.884
-  },
-  "macros": {
-    "CHARACTER": 0.038,
-    "MOVEMENT": 0.665,
-    "COUPLING": 0.939,
-    "SPACE": 0.427
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
     "cold",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

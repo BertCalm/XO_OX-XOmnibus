@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_VAST_SPARSE_AET3_3",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Overworld",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.6521
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.4806,
+    "brightness": 0.1261,
+    "density": 0.0959,
+    "movement": 0.5687,
+    "space": 0.9606,
+    "warmth": 0.9815
+  },
   "engines": [
-    "OCEANIC",
-    "OVERWORLD"
+    "Oceanic",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5538,
+    "COUPLING": 0.6521,
+    "MOVEMENT": 0.5687,
+    "SPACE": 0.9606
+  },
+  "mood": "Aether",
+  "name": "DARK_HOT_VAST_SPARSE_AET3_3",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.6412,
-      "macro_movement": 0.3726,
       "macro_coupling": 0.3652,
+      "macro_movement": 0.3726,
       "macro_space": 0.2532
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.6733,
-      "macro_movement": 0.3717,
       "macro_coupling": 0.8791,
+      "macro_movement": 0.3717,
       "macro_space": 0.8447
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OCEANIC",
-    "target": "OVERWORLD",
-    "amount": 0.6521
-  },
-  "dna": {
-    "brightness": 0.1261,
-    "warmth": 0.9815,
-    "movement": 0.5687,
-    "density": 0.0959,
-    "space": 0.9606,
-    "aggression": 0.4806
-  },
-  "macros": {
-    "CHARACTER": 0.5538,
-    "MOVEMENT": 0.5687,
-    "COUPLING": 0.6521,
-    "SPACE": 0.9606
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "warm",
     "dark",
     "vast",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

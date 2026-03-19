@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Mirror Void",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.833,
+        "engineA": "Ombre",
+        "engineB": "Orca",
+        "type": "SPECTRAL_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "aggression": 0.44,
+    "brightness": 0.365,
+    "density": 0.97,
+    "movement": 0.57,
+    "space": 0.665,
+    "warmth": 0.565
+  },
   "engines": [
-    "OMBRE",
-    "ORCA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "ombre",
-    "orca"
+    "Ombre",
+    "Orca"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.485,
-    "MOVEMENT": 0.531,
     "COUPLING": 0.609,
+    "MOVEMENT": 0.531,
     "SPACE": 0.538
   },
-  "couplingIntensity": "Strong",
-  "dna": {
-    "brightness": 0.365,
-    "warmth": 0.565,
-    "movement": 0.57,
-    "density": 0.97,
-    "space": 0.665,
-    "aggression": 0.44
-  },
-  "sonic_dna": {
-    "brightness": 0.365,
-    "warmth": 0.565,
-    "movement": 0.57,
-    "density": 0.97,
-    "space": 0.665,
-    "aggression": 0.44
-  },
+  "mood": "Entangled",
+  "name": "Mirror Void",
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.544,
-      "macro_movement": 0.692,
       "macro_coupling": 0.639,
+      "macro_movement": 0.692,
       "macro_space": 0.575
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.649,
-      "macro_movement": 0.554,
       "macro_coupling": 0.788,
+      "macro_movement": 0.554,
       "macro_space": 0.463
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OMBRE",
-        "engineB": "ORCA",
-        "type": "SPECTRAL_BLEND",
-        "amount": 0.833
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.44,
+    "brightness": 0.365,
+    "density": 0.97,
+    "movement": 0.57,
+    "space": 0.665,
+    "warmth": 0.565
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "ombre",
+    "orca"
+  ],
+  "version": "1.0.0"
 }

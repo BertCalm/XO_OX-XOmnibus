@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Cryogenic Stampede",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Maximum sub density with all warmth frozen out. Clinical aggression.",
+  "dna": {
+    "aggression": 0.85,
+    "brightness": 0.07,
+    "density": 1.0,
+    "movement": 0.58,
+    "space": 0.283,
+    "warmth": 0.0
+  },
   "engines": [
     "Obese"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Maximum sub density with all warmth frozen out. Clinical aggression.",
-  "tags": [
-    "cold-dense",
-    "extreme",
-    "aether",
-    "bass"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Aether",
+  "name": "Cryogenic Stampede",
   "parameters": {
     "Obese": {
-      "fat_morph": 0.06,
-      "fat_mojo": 0.05,
-      "fat_subLevel": 0.95,
-      "fat_filterCutoff": 75.0,
-      "fat_drive": 0.92,
-      "fat_crush": 0.88,
       "fat_attack": 2.0,
+      "fat_crush": 0.88,
       "fat_decay": 160.0,
-      "fat_sustain": 0.94,
-      "fat_release": 100.0
+      "fat_drive": 0.92,
+      "fat_filterCutoff": 75.0,
+      "fat_mojo": 0.05,
+      "fat_morph": 0.06,
+      "fat_release": 100.0,
+      "fat_subLevel": 0.95,
+      "fat_sustain": 0.94
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.07,
-    "warmth": 0.0,
-    "movement": 0.58,
-    "density": 1.0,
-    "space": 0.283,
-    "aggression": 0.85
-  }
+  "tags": [
+    "cold-dense",
+    "extreme",
+    "aether",
+    "bass"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

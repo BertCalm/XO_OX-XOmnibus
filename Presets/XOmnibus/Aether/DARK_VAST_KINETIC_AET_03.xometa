@@ -1,45 +1,56 @@
 {
-  "name": "DARK VAST KINETIC AET 03",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Ole",
+        "type": "PITCH_SYNC",
+        "amount": 0.618
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.602,
+    "brightness": 0.054,
+    "density": 0.477,
+    "movement": 0.924,
+    "space": 0.905,
+    "warmth": 0.565
+  },
   "engines": [
-    "OHM",
-    "OLE"
+    "Ohm",
+    "Ole"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.309,
+    "COUPLING": 0.457,
+    "MOVEMENT": 0.924,
+    "SPACE": 0.905
+  },
+  "mood": "Aether",
+  "name": "DARK VAST KINETIC AET 03",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.309,
-      "macro_movement": 0.924,
       "macro_coupling": 0.457,
+      "macro_movement": 0.924,
       "macro_space": 0.905
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.244,
-      "macro_movement": 0.978,
       "macro_coupling": 0.611,
+      "macro_movement": 0.978,
       "macro_space": 0.955
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OHM",
-    "target": "OLE",
-    "amount": 0.618
-  },
-  "dna": {
-    "brightness": 0.054,
-    "warmth": 0.565,
-    "movement": 0.924,
-    "density": 0.477,
-    "space": 0.905,
-    "aggression": 0.602
-  },
-  "macros": {
-    "CHARACTER": 0.309,
-    "MOVEMENT": 0.924,
-    "COUPLING": 0.457,
-    "SPACE": 0.905
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "dark",
@@ -47,5 +58,6 @@
     "kinetic",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

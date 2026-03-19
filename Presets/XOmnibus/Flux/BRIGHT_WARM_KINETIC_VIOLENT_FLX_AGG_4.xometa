@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FLX_AGG_4",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OPAL",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.596,
-      "macro_movement": 0.882,
-      "macro_coupling": 0.936,
-      "macro_space": 0.532
-    },
-    "OCEANIC": {
-      "macro_character": 0.718,
-      "macro_movement": 0.865,
-      "macro_coupling": 0.964,
-      "macro_space": 0.542
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OPAL",
-    "target": "OCEANIC",
-    "amount": 0.816
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oceanic",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.816
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.948,
     "brightness": 0.977,
-    "warmth": 0.925,
-    "movement": 0.888,
     "density": 0.37,
+    "movement": 0.888,
     "space": 0.509,
-    "aggression": 0.948
+    "warmth": 0.925
   },
+  "engines": [
+    "Opal",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.657,
-    "MOVEMENT": 0.888,
     "COUPLING": 0.936,
+    "MOVEMENT": 0.888,
     "SPACE": 0.509
   },
+  "mood": "Flux",
+  "name": "Glow Rage",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.718,
+      "macro_coupling": 0.964,
+      "macro_movement": 0.865,
+      "macro_space": 0.542
+    },
+    "Opal": {
+      "macro_character": 0.596,
+      "macro_coupling": 0.936,
+      "macro_movement": 0.882,
+      "macro_space": 0.532
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "bright",
     "warm",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

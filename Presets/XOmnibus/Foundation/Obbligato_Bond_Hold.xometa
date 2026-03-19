@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Obbligato Bond Hold",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "The obligatory note that cannot be omitted. Structural warmth.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.4,
+    "density": 0.75,
+    "movement": 0.2,
+    "space": 0.3,
+    "warmth": 0.8
+  },
   "engines": [
     "Obbligato"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "The obligatory note that cannot be omitted. Structural warmth.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Obbligato Bond Hold",
+  "parameters": {
+    "Obbligato": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "tone",
     "anchor-tone",
@@ -16,31 +41,6 @@
     "foundation",
     "warmth"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Obbligato": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.8,
-    "movement": 0.2,
-    "density": 0.75,
-    "space": 0.3,
-    "aggression": 0.2
-  }
+  "version": "1.0.0"
 }

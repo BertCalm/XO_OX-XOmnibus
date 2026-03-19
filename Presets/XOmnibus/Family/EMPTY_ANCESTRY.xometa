@@ -1,48 +1,60 @@
 {
-  "name": "EMPTY ANCESTRY",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Orca",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.351
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.228,
+    "brightness": 0.651,
+    "density": 0.042,
+    "movement": 0.721,
+    "space": 0.91,
+    "warmth": 0.769
+  },
   "engines": [
-    "OBLONG",
-    "ORCA"
+    "Oblong",
+    "Orca"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.432,
+    "COUPLING": 0.373,
+    "MOVEMENT": 0.745,
+    "SPACE": 0.13
+  },
+  "mood": "Family",
+  "name": "EMPTY ANCESTRY",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.73,
-      "macro_movement": 0.313,
       "macro_coupling": 0.313,
+      "macro_movement": 0.313,
       "macro_space": 0.255
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.954,
-      "macro_movement": 0.687,
       "macro_coupling": 0.474,
+      "macro_movement": 0.687,
       "macro_space": 0.091
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBLONG",
-    "target": "ORCA",
-    "amount": 0.351
-  },
-  "dna": {
-    "brightness": 0.651,
-    "warmth": 0.769,
-    "movement": 0.721,
-    "density": 0.042,
-    "space": 0.91,
-    "aggression": 0.228
-  },
-  "macros": {
-    "CHARACTER": 0.432,
-    "MOVEMENT": 0.745,
-    "COUPLING": 0.373,
-    "SPACE": 0.13
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "sparse",
     "xlow-density"
-  ]
+  ],
+  "version": "1.0"
 }

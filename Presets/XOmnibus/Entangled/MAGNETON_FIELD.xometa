@@ -1,49 +1,61 @@
 {
-  "name": "MAGNETON FIELD",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OSPREY",
-    "OBESE"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.516,
-      "macro_movement": 0.205,
-      "macro_coupling": 0.756,
-      "macro_space": 0.99
-    },
-    "OBESE": {
-      "macro_character": 0.351,
-      "macro_movement": 0.361,
-      "macro_coupling": 0.311,
-      "macro_space": 0.987
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBESE",
-    "target": "OSPREY",
-    "amount": 0.63
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Osprey",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.63
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.351,
     "brightness": 0.137,
-    "warmth": 0.346,
-    "movement": 0.786,
     "density": 0.052,
+    "movement": 0.786,
     "space": 0.986,
-    "aggression": 0.351
+    "warmth": 0.346
   },
+  "engines": [
+    "Osprey",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.567,
-    "MOVEMENT": 0.406,
     "COUPLING": 0.818,
+    "MOVEMENT": 0.406,
     "SPACE": 0.986
   },
+  "mood": "Entangled",
+  "name": "MAGNETON FIELD",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.351,
+      "macro_coupling": 0.311,
+      "macro_movement": 0.361,
+      "macro_space": 0.987
+    },
+    "Osprey": {
+      "macro_character": 0.516,
+      "macro_coupling": 0.756,
+      "macro_movement": 0.205,
+      "macro_space": 0.99
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "vast",
     "cosmic",
     "xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

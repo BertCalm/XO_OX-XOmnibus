@@ -1,48 +1,60 @@
 {
-  "name": "SHRED BASE",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OVERLAP",
-    "OUTWIT"
-  ],
-  "parameters": {
-    "OVERLAP": {
-      "macro_character": 0.618,
-      "macro_movement": 0.692,
-      "macro_coupling": 0.427,
-      "macro_space": 0.208
-    },
-    "OUTWIT": {
-      "macro_character": 0.694,
-      "macro_movement": 0.438,
-      "macro_coupling": 0.666,
-      "macro_space": 0.514
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OVERLAP",
-    "target": "OUTWIT",
-    "amount": 0.635
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Outwit",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.635
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.925,
     "brightness": 0.241,
-    "warmth": 0.516,
-    "movement": 0.504,
     "density": 0.793,
+    "movement": 0.504,
     "space": 0.901,
-    "aggression": 0.925
+    "warmth": 0.516
   },
+  "engines": [
+    "Overlap",
+    "Outwit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.686,
-    "MOVEMENT": 0.504,
     "COUPLING": 0.635,
+    "MOVEMENT": 0.504,
     "SPACE": 0.901
   },
+  "mood": "Foundation",
+  "name": "SHRED BASE",
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.694,
+      "macro_coupling": 0.666,
+      "macro_movement": 0.438,
+      "macro_space": 0.514
+    },
+    "Overlap": {
+      "macro_character": 0.618,
+      "macro_coupling": 0.427,
+      "macro_movement": 0.692,
+      "macro_space": 0.208
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

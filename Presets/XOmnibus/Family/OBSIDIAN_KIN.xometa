@@ -1,49 +1,61 @@
 {
-  "name": "OBSIDIAN KIN",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OHM",
-    "OCELOT"
-  ],
-  "parameters": {
-    "OHM": {
-      "macro_character": 0.153,
-      "macro_movement": 0.165,
-      "macro_coupling": 0.323,
-      "macro_space": 0.709
-    },
-    "OCELOT": {
-      "macro_character": 0.346,
-      "macro_movement": 0.941,
-      "macro_coupling": 0.895,
-      "macro_space": 0.846
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TEXTURE_WEAVE",
-    "source": "OHM",
-    "target": "OCELOT",
-    "amount": 0.374
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Ocelot",
+        "type": "TEXTURE_WEAVE",
+        "amount": 0.374
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.858,
     "brightness": 0.061,
-    "warmth": 0.584,
-    "movement": 0.309,
     "density": 0.78,
+    "movement": 0.309,
     "space": 0.46,
-    "aggression": 0.858
+    "warmth": 0.584
   },
+  "engines": [
+    "Ohm",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.249,
-    "MOVEMENT": 0.553,
     "COUPLING": 0.609,
+    "MOVEMENT": 0.553,
     "SPACE": 0.777
   },
+  "mood": "Family",
+  "name": "OBSIDIAN KIN",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.346,
+      "macro_coupling": 0.895,
+      "macro_movement": 0.941,
+      "macro_space": 0.846
+    },
+    "Ohm": {
+      "macro_character": 0.153,
+      "macro_coupling": 0.323,
+      "macro_movement": 0.165,
+      "macro_space": 0.709
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
     "extreme",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

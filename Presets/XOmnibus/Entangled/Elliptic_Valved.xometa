@@ -1,78 +1,78 @@
 {
-  "schema_version": 1,
-  "name": "Elliptic Valved",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.784,
+        "engineA": "Orbital",
+        "engineB": "Ottoni",
+        "type": "rhythm_sync"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "ORBITAL resonant peak excites OTTONI brass flare. Fanfare from elliptic focus.",
+  "dna": {
+    "aggression": 0.519,
+    "brightness": 0.579,
+    "density": 0.67,
+    "movement": 0.509,
+    "space": 0.52,
+    "warmth": 0.639
+  },
   "engines": [
     "Orbital",
     "Ottoni"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ORBITAL resonant peak excites OTTONI brass flare. Fanfare from elliptic focus.",
-  "tags": [
-    "orbital",
-    "ottoni",
-    "coupling",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": 115,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Elliptic Valved",
   "parameters": {
     "Orbital": {
+      "orb_arcDecay": 0.419,
+      "orb_couplingIn": 0.6,
+      "orb_couplingOut": 0.453,
+      "orb_groupEnv": 0.828,
+      "orb_harmonicAmt": 0.447,
       "orb_macro1": 0.664,
       "orb_macro2": 0.598,
       "orb_macro3": 0.361,
       "orb_macro4": 0.374,
-      "orb_couplingOut": 0.453,
-      "orb_couplingIn": 0.6,
       "orb_outputLevel": 0.865,
       "orb_outputPan": 0.005,
-      "orb_groupEnv": 0.828,
       "orb_phaseSpread": 0.723,
-      "orb_arcDecay": 0.419,
-      "orb_harmonicAmt": 0.447,
       "orb_resonantPeak": 0.501
     },
     "Ottoni": {
+      "otto_couplingIn": 0.773,
+      "otto_couplingOut": 0.441,
       "otto_macro1": 0.322,
       "otto_macro2": 0.314,
       "otto_macro3": 0.447,
       "otto_macro4": 0.687,
-      "otto_couplingOut": 0.441,
-      "otto_couplingIn": 0.773,
       "otto_outputLevel": 0.85,
       "otto_outputPan": 0.005
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Ottoni",
-        "type": "rhythm_sync",
-        "amount": 0.784
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.579,
-    "warmth": 0.639,
-    "movement": 0.509,
-    "density": 0.67,
-    "space": 0.52,
-    "aggression": 0.519
-  }
+  "tags": [
+    "orbital",
+    "ottoni",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 115,
+  "version": "1.0.0"
 }

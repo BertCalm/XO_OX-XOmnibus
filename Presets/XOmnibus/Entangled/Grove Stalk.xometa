@@ -1,31 +1,46 @@
 {
-  "name": "Grove Stalk",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Ohm",
+        "type": "PREDATOR_STALK",
+        "amount": 0.5
+      }
+    ]
+  },
+  "description": "Patient ohm drone held in readiness while ocelot circles at the forest edge",
   "engines": [
-    "OHM",
-    "OCELOT"
+    "Ohm",
+    "Ocelot"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.5,
+    "MOVEMENT": 0.55,
     "SPACE": 0.65
   },
-  "sonic_dna": {
-    "brightness": 0.56,
-    "warmth": 0.67,
-    "movement": 0.66,
-    "density": 0.52,
-    "space": 0.6,
-    "aggression": 0.4
+  "mood": "Entangled",
+  "name": "Grove Stalk",
+  "parameters": {
+    "Ohm": {},
+    "Ocelot": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "PREDATOR_STALK",
-    "source": "OCELOT",
-    "target": "OHM",
-    "amount": 0.5
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4,
+    "brightness": 0.56,
+    "density": 0.52,
+    "movement": 0.66,
+    "space": 0.6,
+    "warmth": 0.67
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "ocelot",
     "hippy"
   ],
-  "description": "Patient ohm drone held in readiness while ocelot circles at the forest edge"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

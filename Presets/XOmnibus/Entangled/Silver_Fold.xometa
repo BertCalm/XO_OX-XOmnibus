@@ -1,50 +1,62 @@
 {
-  "name": "Silver Fold",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.71
+      }
+    ]
+  },
+  "description": "Silver plate resonance morphs into paper harmonics — photography and origami fuse cold.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.0,
+    "density": 0.11,
+    "movement": 0.36,
+    "space": 0.92,
+    "warmth": 0.0
+  },
   "engines": [
-    "OBSCURA",
-    "ORIGAMI"
+    "Obscura",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.16,
+    "COUPLING": 0.71,
+    "MOVEMENT": 0.36,
+    "SPACE": 0.92
+  },
+  "mood": "Entangled",
+  "name": "Silver Fold",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.16,
-      "macro_movement": 0.36,
       "macro_coupling": 0.71,
+      "macro_movement": 0.36,
       "macro_space": 0.92
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.13,
-      "macro_movement": 0.31,
       "macro_coupling": 0.76,
+      "macro_movement": 0.31,
       "macro_space": 0.95
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBSCURA",
-    "target": "ORIGAMI",
-    "amount": 0.71
-  },
-  "dna": {
-    "brightness": 0.0,
-    "warmth": 0.0,
-    "movement": 0.36,
-    "density": 0.11,
-    "space": 0.92,
-    "aggression": 0.0
-  },
-  "macros": {
-    "CHARACTER": 0.16,
-    "MOVEMENT": 0.36,
-    "COUPLING": 0.71,
-    "SPACE": 0.92
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "silver",
     "fold"
   ],
-  "description": "Silver plate resonance morphs into paper harmonics \u2014 photography and origami fuse cold."
+  "version": "1.0"
 }

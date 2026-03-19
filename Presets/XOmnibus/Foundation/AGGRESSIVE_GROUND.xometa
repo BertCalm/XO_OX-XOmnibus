@@ -1,48 +1,60 @@
 {
-  "name": "AGGRESSIVE GROUND",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ODDOSCAR",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "ODDOSCAR": {
-      "macro_character": 0.658,
-      "macro_movement": 0.504,
-      "macro_coupling": 0.437,
-      "macro_space": 0.617
-    },
-    "OBLIQUE": {
-      "macro_character": 0.79,
-      "macro_movement": 0.397,
-      "macro_coupling": 0.576,
-      "macro_space": 0.392
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ODDOSCAR",
-    "target": "OBLIQUE",
-    "amount": 0.649
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Oblique",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.649
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.902,
     "brightness": 0.256,
-    "warmth": 0.795,
-    "movement": 0.748,
     "density": 0.477,
+    "movement": 0.748,
     "space": 0.958,
-    "aggression": 0.902
+    "warmth": 0.795
   },
+  "engines": [
+    "OddOscar",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.761,
-    "MOVEMENT": 0.748,
     "COUPLING": 0.649,
+    "MOVEMENT": 0.748,
     "SPACE": 0.958
   },
+  "mood": "Foundation",
+  "name": "AGGRESSIVE GROUND",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.79,
+      "macro_coupling": 0.576,
+      "macro_movement": 0.397,
+      "macro_space": 0.392
+    },
+    "OddOscar": {
+      "macro_character": 0.658,
+      "macro_coupling": 0.437,
+      "macro_movement": 0.504,
+      "macro_space": 0.617
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

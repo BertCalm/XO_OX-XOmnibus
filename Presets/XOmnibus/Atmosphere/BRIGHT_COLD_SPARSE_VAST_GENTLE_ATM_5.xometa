@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_COLD_SPARSE_VAST_GENTLE_ATM_5",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.415
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.0714,
+    "brightness": 0.8735,
+    "density": 0.0645,
+    "movement": 0.5717,
+    "space": 0.8898,
+    "warmth": 0.057
+  },
   "engines": [
-    "OBSCURA",
-    "ORIGAMI"
+    "Obscura",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4511,
+    "COUPLING": 0.0368,
+    "MOVEMENT": 0.5725,
+    "SPACE": 0.8904
+  },
+  "mood": "Atmosphere",
+  "name": "Glass Horizon 2",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.4589,
-      "macro_movement": 0.5756,
       "macro_coupling": 0.0361,
+      "macro_movement": 0.5756,
       "macro_space": 0.8984
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.4434,
-      "macro_movement": 0.5694,
       "macro_coupling": 0.0375,
+      "macro_movement": 0.5694,
       "macro_space": 0.8825
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBSCURA",
-    "target": "ORIGAMI",
-    "amount": 0.415
-  },
-  "dna": {
-    "brightness": 0.8735,
-    "warmth": 0.057,
-    "movement": 0.5717,
-    "density": 0.0645,
-    "space": 0.8898,
-    "aggression": 0.0714
-  },
-  "macros": {
-    "CHARACTER": 0.4511,
-    "MOVEMENT": 0.5725,
-    "COUPLING": 0.0368,
-    "SPACE": 0.8904
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
@@ -47,5 +58,6 @@
     "sparse",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

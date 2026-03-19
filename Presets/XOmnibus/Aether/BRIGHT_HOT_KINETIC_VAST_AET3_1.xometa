@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_HOT_KINETIC_VAST_AET3_1",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oceanic",
+        "type": "FILTER_MOD",
+        "amount": 0.7131
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.3082,
+    "brightness": 0.9347,
+    "density": 0.6798,
+    "movement": 0.912,
+    "space": 0.948,
+    "warmth": 0.99
+  },
   "engines": [
-    "OBSCURA",
-    "OCEANIC"
+    "Obscura",
+    "Oceanic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9624,
+    "COUPLING": 0.7131,
+    "MOVEMENT": 0.912,
+    "SPACE": 0.948
+  },
+  "mood": "Aether",
+  "name": "BRIGHT_HOT_KINETIC_VAST_AET3_1",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.2858,
-      "macro_movement": 0.9108,
       "macro_coupling": 0.5488,
+      "macro_movement": 0.9108,
       "macro_space": 0.3922
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.4767,
-      "macro_movement": 0.6544,
       "macro_coupling": 0.9228,
+      "macro_movement": 0.6544,
       "macro_space": 0.7388
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OBSCURA",
-    "target": "OCEANIC",
-    "amount": 0.7131
-  },
-  "dna": {
-    "brightness": 0.9347,
-    "warmth": 0.99,
-    "movement": 0.912,
-    "density": 0.6798,
-    "space": 0.948,
-    "aggression": 0.3082
-  },
-  "macros": {
-    "CHARACTER": 0.9624,
-    "MOVEMENT": 0.912,
-    "COUPLING": 0.7131,
-    "SPACE": 0.948
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "warm",
     "bright",
     "kinetic",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

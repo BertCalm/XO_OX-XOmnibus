@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Steam Hammer",
-  "mood": "Foundation",
-  "sonic_dna": {
-    "brightness": 0.3038,
-    "warmth": 0.6906,
-    "movement": 0.5738,
-    "density": 0.8084,
-    "space": 0.4244,
-    "aggression": 0.7597
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Industrial machine beat, maximum punch and density",
   "dna": {
+    "aggression": 0.7597,
     "brightness": 0.3038,
-    "warmth": 0.6906,
-    "movement": 0.5738,
     "density": 0.8084,
+    "movement": 0.5738,
     "space": 0.4244,
-    "aggression": 0.7597
+    "warmth": 0.6906
   },
   "engines": [
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Industrial machine beat, maximum punch and density",
-  "tags": [
-    "foundation",
-    "aggressive",
-    "extreme",
-    "anchor",
-    "drive"
+    "Onset"
   ],
   "macroLabels": [
     "MACHINE",
@@ -39,23 +24,38 @@
   ],
   "macros": {
     "MACHINE": 0.6089,
+    "MUTATE": 0.62,
     "PUNCH": 0.9402,
-    "SPACE": 0.7969,
-    "MUTATE": 0.62
+    "SPACE": 0.7969
   },
-  "couplingIntensity": "None",
+  "mood": "Foundation",
+  "name": "Steam Hammer",
   "parameters": {
-    "ONSET": {
+    "Onset": {
+      "onset_couplingBus": 0,
+      "onset_couplingLevel": 0.5,
       "onset_macro_machine": 0.6089,
+      "onset_macro_mutate": 0.62,
       "onset_macro_punch": 0.9402,
       "onset_macro_space": 0.7969,
-      "onset_macro_mutate": 0.62,
-      "onset_outputLevel": 0.85,
-      "onset_couplingLevel": 0.5,
-      "onset_couplingBus": 0
+      "onset_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.7597,
+    "brightness": 0.3038,
+    "density": 0.8084,
+    "movement": 0.5738,
+    "space": 0.4244,
+    "warmth": 0.6906
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "extreme",
+    "anchor",
+    "drive"
+  ],
+  "version": "1.0.0"
 }

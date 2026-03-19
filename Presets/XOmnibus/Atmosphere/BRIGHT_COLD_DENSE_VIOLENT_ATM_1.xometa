@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_COLD_DENSE_VIOLENT_ATM_1",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORACLE",
-    "OPAL"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.706,
-      "macro_movement": 0.388,
-      "macro_coupling": 0.707,
-      "macro_space": 0.582
-    },
-    "OPAL": {
-      "macro_character": 0.372,
-      "macro_movement": 0.346,
-      "macro_coupling": 0.543,
-      "macro_space": 0.532
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORACLE",
-    "target": "OPAL",
-    "amount": 0.487
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Opal",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.487
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.935,
     "brightness": 0.9,
-    "warmth": 0.109,
-    "movement": 0.4,
     "density": 0.959,
+    "movement": 0.4,
     "space": 0.5,
-    "aggression": 0.935
+    "warmth": 0.109
   },
+  "engines": [
+    "Oracle",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.706,
-    "MOVEMENT": 0.388,
     "COUPLING": 0.707,
+    "MOVEMENT": 0.388,
     "SPACE": 0.582
   },
+  "mood": "Atmosphere",
+  "name": "Frost Saturated",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.372,
+      "macro_coupling": 0.543,
+      "macro_movement": 0.346,
+      "macro_space": 0.532
+    },
+    "Oracle": {
+      "macro_character": 0.706,
+      "macro_coupling": 0.707,
+      "macro_movement": 0.388,
+      "macro_space": 0.582
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "cold",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

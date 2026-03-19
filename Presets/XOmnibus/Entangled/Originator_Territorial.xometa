@@ -1,14 +1,67 @@
 {
-  "schema_version": 1,
-  "name": "Originator Territorial",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.752,
+        "engineA": "Origami",
+        "engineB": "Ocelot",
+        "type": "pitch_follow"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "created": "2026-03-16",
+  "description": "Origami × Ocelot coupling (envelope share). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.485,
+    "brightness": 0.72,
+    "density": 0.525,
+    "movement": 0.662,
+    "space": 0.592,
+    "warmth": 0.531
+  },
   "engines": [
     "Origami",
     "Ocelot"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Origami \u00d7 Ocelot coupling (envelope share). Stub preset \u2014 sound-design pass pending.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Originator Territorial",
+  "parameters": {
+    "Ocelot": {
+      "ocelot_couplingIn": 0.54,
+      "ocelot_couplingOut": 0.555,
+      "ocelot_macro1": 0.534,
+      "ocelot_macro2": 0.528,
+      "ocelot_macro3": 0.443,
+      "ocelot_macro4": 0.604
+    },
+    "Origami": {
+      "origami_couplingOut": 0.672,
+      "origami_crease": 0.544,
+      "origami_foldPoint": 0.597,
+      "origami_macro1": 0.343,
+      "origami_macro2": 0.449,
+      "origami_macro3": 0.629,
+      "origami_macro4": 0.472,
+      "origami_pleatRate": 0.477,
+      "origami_tessellate": 0.451,
+      "origami_valleyDepth": 0.455
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "origami",
     "ocelot",
@@ -16,59 +69,6 @@
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Strong",
   "tempo": 100,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Origami": {
-      "origami_foldPoint": 0.597,
-      "origami_crease": 0.544,
-      "origami_valleyDepth": 0.455,
-      "origami_pleatRate": 0.477,
-      "origami_tessellate": 0.451,
-      "origami_macro1": 0.343,
-      "origami_macro2": 0.449,
-      "origami_macro3": 0.629,
-      "origami_macro4": 0.472,
-      "origami_couplingOut": 0.672
-    },
-    "Ocelot": {
-      "ocelot_macro1": 0.534,
-      "ocelot_macro2": 0.528,
-      "ocelot_macro3": 0.443,
-      "ocelot_macro4": 0.604,
-      "ocelot_couplingOut": 0.555,
-      "ocelot_couplingIn": 0.54
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Ocelot",
-        "type": "pitch_follow",
-        "amount": 0.752
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.72,
-    "warmth": 0.531,
-    "movement": 0.662,
-    "density": 0.525,
-    "space": 0.592,
-    "aggression": 0.485
-  }
+  "version": "1.0.0"
 }

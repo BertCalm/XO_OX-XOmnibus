@@ -1,77 +1,77 @@
 {
-  "schema_version": 1,
-  "name": "Chomp Beam",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.604,
+        "engineA": "Overbite",
+        "engineB": "Optic",
+        "type": "timbral_blend"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "created": "2026-03-16",
+  "description": "OVERBITE fang attack gates OPTIC phosphor scan. Bite-timed light pulse.",
+  "dna": {
+    "aggression": 0.465,
+    "brightness": 0.656,
+    "density": 0.542,
+    "movement": 0.626,
+    "space": 0.49,
+    "warmth": 0.413
+  },
   "engines": [
     "Overbite",
     "Optic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE fang attack gates OPTIC phosphor scan. Bite-timed light pulse.",
-  "tags": [
-    "overbite",
-    "optic",
-    "coupling",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Strong",
-  "tempo": 130,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Chomp Beam",
   "parameters": {
-    "Overbite": {
-      "poss_macro1": 0.416,
-      "poss_macro2": 0.348,
-      "poss_macro3": 0.402,
-      "poss_macro4": 0.603,
-      "poss_couplingOut": 0.506,
-      "poss_couplingIn": 0.738,
-      "poss_outputLevel": 0.814,
-      "poss_outputPan": 0.039,
-      "poss_biteDepth": 0.46,
-      "poss_fangAttack": 0.242,
-      "poss_gnashAmt": 0.362,
-      "poss_snapRelease": 0.551
-    },
     "Optic": {
+      "optic_couplingIn": 0.448,
+      "optic_couplingOut": 0.561,
       "optic_macro1": 0.366,
       "optic_macro2": 0.448,
       "optic_macro3": 0.651,
       "optic_macro4": 0.401,
-      "optic_couplingOut": 0.561,
-      "optic_couplingIn": 0.448,
       "optic_outputLevel": 0.871,
       "optic_outputPan": 0.004
+    },
+    "Overbite": {
+      "poss_biteDepth": 0.46,
+      "poss_couplingIn": 0.738,
+      "poss_couplingOut": 0.506,
+      "poss_fangAttack": 0.242,
+      "poss_gnashAmt": 0.362,
+      "poss_macro1": 0.416,
+      "poss_macro2": 0.348,
+      "poss_macro3": 0.402,
+      "poss_macro4": 0.603,
+      "poss_outputLevel": 0.814,
+      "poss_outputPan": 0.039,
+      "poss_snapRelease": 0.551
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Optic",
-        "type": "timbral_blend",
-        "amount": 0.604
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.656,
-    "warmth": 0.413,
-    "movement": 0.626,
-    "density": 0.542,
-    "space": 0.49,
-    "aggression": 0.465
-  }
+  "tags": [
+    "overbite",
+    "optic",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 130,
+  "version": "1.0.0"
 }

@@ -1,49 +1,61 @@
 {
-  "name": "STELLAR DENSE",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERDUB",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.705,
-      "macro_movement": 0.62,
-      "macro_coupling": 0.798,
-      "macro_space": 0.478
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.592,
-      "macro_movement": 0.74,
-      "macro_coupling": 0.8,
-      "macro_space": 0.528
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OVERDUB",
-    "target": "OBBLIGATO",
-    "amount": 0.663
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Obbligato",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.663
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.549,
     "brightness": 0.938,
-    "warmth": 0.379,
-    "movement": 0.473,
     "density": 0.964,
+    "movement": 0.473,
     "space": 0.668,
-    "aggression": 0.549
+    "warmth": 0.379
   },
+  "engines": [
+    "Overdub",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.705,
-    "MOVEMENT": 0.62,
     "COUPLING": 0.798,
+    "MOVEMENT": 0.62,
     "SPACE": 0.478
   },
+  "mood": "Flux",
+  "name": "STELLAR DENSE",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.592,
+      "macro_coupling": 0.8,
+      "macro_movement": 0.74,
+      "macro_space": 0.528
+    },
+    "Overdub": {
+      "macro_character": 0.705,
+      "macro_coupling": 0.798,
+      "macro_movement": 0.62,
+      "macro_space": 0.478
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "dense",
     "saturated"
-  ]
+  ],
+  "version": "1.0"
 }

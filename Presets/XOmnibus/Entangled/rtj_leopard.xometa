@@ -1,50 +1,62 @@
 {
-  "name": "RTJ Leopard",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OCELOT",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "OCELOT": {
-      "macro_character": 0.678,
-      "macro_movement": 0.728,
-      "macro_coupling": 0.578,
-      "macro_space": 0.478
-    },
-    "OBLIQUE": {
-      "macro_character": 0.772,
-      "macro_movement": 0.722,
-      "macro_coupling": 0.622,
-      "macro_space": 0.522
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_WARP",
-    "source": "OCELOT",
-    "target": "OBLIQUE",
-    "amount": 0.776
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Oblique",
+        "type": "PITCH_WARP",
+        "amount": 0.776
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.85,
     "brightness": 0.78,
-    "warmth": 0.5,
-    "movement": 0.88,
     "density": 0.65,
+    "movement": 0.88,
     "space": 0.35,
-    "aggression": 0.85
+    "warmth": 0.5
   },
+  "engines": [
+    "Ocelot",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.725,
-    "MOVEMENT": 0.725,
     "COUPLING": 0.776,
+    "MOVEMENT": 0.725,
     "SPACE": 0.5
   },
+  "mood": "Entangled",
+  "name": "RTJ Leopard",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.772,
+      "macro_coupling": 0.622,
+      "macro_movement": 0.722,
+      "macro_space": 0.522
+    },
+    "Ocelot": {
+      "macro_character": 0.678,
+      "macro_coupling": 0.578,
+      "macro_movement": 0.728,
+      "macro_space": 0.478
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "rtj",
     "aggressive"
-  ]
+  ],
+  "version": "1.0"
 }

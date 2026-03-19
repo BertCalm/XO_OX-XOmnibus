@@ -33,7 +33,9 @@
     "space": 0.08,
     "aggression": 0.89
   },
-  "parameters": {},
+  "parameters": {
+    "Overbite": {}
+  },
   "tags": [
     "flux",
     "dense-flux",
@@ -41,5 +43,5 @@
     "compression",
     "event"
   ],
-  "description": "Overbite compression event \u2014 all bass frequencies collapsing inward."
+  "description": "Overbite compression event — all bass frequencies collapsing inward."
 }

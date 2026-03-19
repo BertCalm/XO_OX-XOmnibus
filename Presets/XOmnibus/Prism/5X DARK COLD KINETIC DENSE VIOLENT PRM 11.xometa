@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT PRM 11",
-  "mood": "Prism",
-  "engines": [
-    "OUTWIT",
-    "ORIGAMI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Origami",
+        "type": "SPECTRAL_BLEND",
+        "amount": 0.6
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.9,
+    "brightness": 0.547,
+    "density": 0.959,
+    "movement": 0.937,
+    "space": 0.079,
+    "warmth": 0.082
+  },
+  "engines": [
+    "Outwit",
+    "Origami"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.92,
+      "macro_coupling": 0.63,
+      "macro_movement": 0.65,
+      "macro_space": 0.28
+    },
+    "Outwit": {
+      "macro_character": 0.85,
+      "macro_coupling": 0.64,
+      "macro_movement": 0.76,
+      "macro_space": 0.41
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +62,6 @@
     "dense",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.85,
-      "macro_movement": 0.76,
-      "macro_coupling": 0.64,
-      "macro_space": 0.41
-    },
-    "ORIGAMI": {
-      "macro_character": 0.92,
-      "macro_movement": 0.65,
-      "macro_coupling": 0.63,
-      "macro_space": 0.28
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_BLEND",
-    "source": "OUTWIT",
-    "target": "ORIGAMI",
-    "amount": 0.6
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.547,
-    "warmth": 0.082,
-    "movement": 0.937,
-    "density": 0.959,
-    "space": 0.079,
-    "aggression": 0.9
-  }
+  "version": "1.0.0"
 }

@@ -33,7 +33,9 @@
     "space": 0.06,
     "aggression": 0.93
   },
-  "parameters": {},
+  "parameters": {
+    "Oblong": {}
+  },
   "tags": [
     "flux",
     "high-flux",
@@ -41,5 +43,5 @@
     "crunch",
     "wall"
   ],
-  "description": "Oblong chord stacks compressed into a crunch wall \u2014 harmonic saturation peak."
+  "description": "Oblong chord stacks compressed into a crunch wall — harmonic saturation peak."
 }

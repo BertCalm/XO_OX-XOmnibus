@@ -1,50 +1,62 @@
 {
-  "name": "DARK_COLD_DENSE_VIOLENT_ENT_AGG_1",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Ouroboros",
+        "type": "CHAOS_INJECT",
+        "amount": 0.964
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.931,
+    "brightness": 0.071,
+    "density": 0.93,
+    "movement": 0.633,
+    "space": 0.587,
+    "warmth": 0.033
+  },
   "engines": [
-    "OPTIC",
-    "OUROBOROS"
+    "Optic",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.572,
+    "COUPLING": 0.985,
+    "MOVEMENT": 0.633,
+    "SPACE": 0.587
+  },
+  "mood": "Entangled",
+  "name": "Thread Crush",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.459,
-      "macro_movement": 0.638,
       "macro_coupling": 0.985,
+      "macro_movement": 0.638,
       "macro_space": 0.575
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.684,
-      "macro_movement": 0.675,
       "macro_coupling": 0.986,
+      "macro_movement": 0.675,
       "macro_space": 0.625
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OPTIC",
-    "target": "OUROBOROS",
-    "amount": 0.964
-  },
-  "dna": {
-    "brightness": 0.071,
-    "warmth": 0.033,
-    "movement": 0.633,
-    "density": 0.93,
-    "space": 0.587,
-    "aggression": 0.931
-  },
-  "macros": {
-    "CHARACTER": 0.572,
-    "MOVEMENT": 0.633,
-    "COUPLING": 0.985,
-    "SPACE": 0.587
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "dark",
     "cold",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

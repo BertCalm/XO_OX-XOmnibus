@@ -1,45 +1,56 @@
 {
-  "name": "DARK_HOT_KINETIC_INTIMATE_AET2_3",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Osprey",
+        "type": "PITCH_SYNC",
+        "amount": 0.5459
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.3793,
+    "brightness": 0.1222,
+    "density": 0.6766,
+    "movement": 0.915,
+    "space": 0.0926,
+    "warmth": 0.9391
+  },
   "engines": [
-    "ODDOSCAR",
-    "OSPREY"
+    "OddOscar",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1546,
+    "COUPLING": 0.5459,
+    "MOVEMENT": 0.9397,
+    "SPACE": 0.0926
+  },
+  "mood": "Aether",
+  "name": "Velvet Shimmer",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.1385,
-      "macro_movement": 0.936,
       "macro_coupling": 0.6826,
+      "macro_movement": 0.936,
       "macro_space": 0.0699
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.1706,
-      "macro_movement": 0.9433,
       "macro_coupling": 0.6613,
+      "macro_movement": 0.9433,
       "macro_space": 0.0854
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ODDOSCAR",
-    "target": "OSPREY",
-    "amount": 0.5459
-  },
-  "dna": {
-    "brightness": 0.1222,
-    "warmth": 0.9391,
-    "space": 0.0926,
-    "movement": 0.915,
-    "density": 0.6766,
-    "aggression": 0.3793
-  },
-  "macros": {
-    "CHARACTER": 0.1546,
-    "MOVEMENT": 0.9397,
-    "COUPLING": 0.5459,
-    "SPACE": 0.0926
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +60,6 @@
     "kinetic",
     "intimate",
     "smoldering"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Night Stalk",
-  "mood": "Aether",
-  "sonic_dna": {
-    "brightness": 0.04,
-    "warmth": 0.72,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Jungle darkness — ocelot movement before the strike",
+  "dna": {
     "aggression": 0.6,
-    "movement": 0.5,
+    "brightness": 0.04,
     "density": 0.65,
-    "space": 0.4
+    "movement": 0.5,
+    "space": 0.4,
+    "warmth": 0.72
   },
   "engines": [
-    "OCELOT"
+    "Ocelot"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Jungle darkness \u2014 ocelot movement before the strike",
+  "macroLabels": [
+    "STALK",
+    "STRIKE",
+    "COUPLING",
+    "JUNGLE"
+  ],
+  "mood": "Aether",
+  "name": "Night Stalk",
+  "parameters": {
+    "Ocelot": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.6,
+    "brightness": 0.04,
+    "density": 0.65,
+    "movement": 0.5,
+    "space": 0.4,
+    "warmth": 0.72
+  },
   "tags": [
     "aether",
     "dark",
@@ -24,23 +44,5 @@
     "stalk",
     "predator"
   ],
-  "macroLabels": [
-    "STALK",
-    "STRIKE",
-    "COUPLING",
-    "JUNGLE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.04,
-    "warmth": 0.72,
-    "movement": 0.5,
-    "density": 0.65,
-    "space": 0.4,
-    "aggression": 0.6
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

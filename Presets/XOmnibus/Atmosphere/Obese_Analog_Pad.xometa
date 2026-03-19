@@ -1,32 +1,57 @@
 {
-  "schema_version": 1,
-  "name": "Obese Analog Pad",
-  "mood": "Atmosphere",
-  "engines": ["Obese"],
-  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
-  "version": "1.0.0",
-  "description": "Mojo deep into analog territory. A hot-pink warm pad — saturated, slow to bloom, long to linger. The Obese at its most expansive and organic.",
-  "tags": ["obese", "mojo", "blessed", "pad", "warm", "atmosphere", "analog", "lush"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
-  "dna": { "brightness": 0.3, "warmth": 0.85, "movement": 0.25, "density": 0.7, "space": 0.8, "aggression": 0.2 },
+  "description": "Mojo deep into analog territory. A hot-pink warm pad — saturated, slow to bloom, long to linger. The Obese at its most expansive and organic.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.3,
+    "density": 0.7,
+    "movement": 0.25,
+    "space": 0.8,
+    "warmth": 0.85
+  },
+  "engines": [
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Obese Analog Pad",
   "parameters": {
     "Obese": {
-      "fat_morph": 0.85,
-      "fat_satDrive": 0.72,
-      "fat_filterCutoff": 900,
-      "fat_filterRes": 0.2,
       "fat_ampAttack": 0.45,
       "fat_ampDecay": 0.8,
-      "fat_ampSustain": 0.8,
       "fat_ampRelease": 4.0,
-      "fat_lfo1Rate": 0.18,
+      "fat_ampSustain": 0.8,
+      "fat_filterCutoff": 900,
+      "fat_filterRes": 0.2,
       "fat_lfo1Depth": 0.22,
+      "fat_lfo1Rate": 0.18,
       "fat_macroCharacter": 0.85,
-      "fat_macroMovement": 0.25
+      "fat_macroMovement": 0.25,
+      "fat_morph": 0.85,
+      "fat_satDrive": 0.72
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "obese",
+    "mojo",
+    "blessed",
+    "pad",
+    "warm",
+    "atmosphere",
+    "analog",
+    "lush"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

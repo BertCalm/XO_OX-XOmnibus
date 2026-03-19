@@ -1,27 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Cold Void Near",
-  "mood": "Aether",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Permafrost texture — dense and cold as geological strata.",
+  "dna": {
+    "aggression": 0.371,
     "brightness": 0.449,
-    "warmth": 0.028,
-    "movement": 0.43,
     "density": 0.859,
+    "movement": 0.43,
     "space": 0.421,
-    "aggression": 0.371
+    "warmth": 0.028
   },
   "engines": [
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Permafrost texture \u2014 dense and cold as geological strata.",
-  "tags": [
-    "aether",
-    "cold",
-    "dense",
-    "dark",
-    "pressure"
+    "Ouroboros"
   ],
   "macroLabels": [
     "CYCLE",
@@ -29,17 +22,26 @@
     "COUPLING",
     "VOID"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.449,
-    "warmth": 0.028,
-    "movement": 0.43,
-    "density": 0.859,
-    "space": 0.421,
-    "aggression": 0.371
+  "mood": "Aether",
+  "name": "Cold Void Near",
+  "parameters": {
+    "Ouroboros": {}
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.371,
+    "brightness": 0.449,
+    "density": 0.859,
+    "movement": 0.43,
+    "space": 0.421,
+    "warmth": 0.028
+  },
+  "tags": [
+    "aether",
+    "cold",
+    "dense",
+    "dark",
+    "pressure"
+  ],
+  "version": "1.0.0"
 }

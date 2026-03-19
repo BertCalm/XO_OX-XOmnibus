@@ -1,19 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Osprey Above Clouds",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The cloud layer is now below. Up here the sky darkens toward blue-black and the osprey's silhouette is visible against the void.",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.79,
+    "density": 0.22,
+    "movement": 0.3,
+    "space": 0.87,
+    "warmth": 0.38
+  },
   "engines": [
     "Osprey"
-  ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "The cloud layer is now below. Up here the sky darkens toward blue-black and the osprey's silhouette is visible against the void.",
-  "tags": [
-    "aether",
-    "transcendent",
-    "elevation",
-    "above",
-    "vast"
   ],
   "macroLabels": [
     "DIVE",
@@ -21,33 +22,32 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.79,
-    "warmth": 0.38,
-    "movement": 0.3,
-    "density": 0.22,
-    "space": 0.87,
-    "aggression": 0.06
-  },
+  "mood": "Aether",
+  "name": "Osprey Above Clouds",
   "parameters": {
     "Osprey": {
-      "osprey_filterCutoff": 0.78,
-      "osprey_filterReso": 0.1,
-      "osprey_wingSpan": 0.75,
       "osprey_altitude": 0.88,
       "osprey_ampAttack": 1.5,
       "osprey_ampRelease": 6.5,
-      "osprey_reverbMix": 0.85,
       "osprey_delayFeedback": 0.25,
+      "osprey_filterCutoff": 0.78,
+      "osprey_filterReso": 0.1,
+      "osprey_macroCoupling": 0.0,
       "osprey_macroDive": 0.0,
       "osprey_macroLift": 0.0,
-      "osprey_macroCoupling": 0.0,
-      "osprey_macroSpace": 0.0
+      "osprey_macroSpace": 0.0,
+      "osprey_reverbMix": 0.85,
+      "osprey_wingSpan": 0.75
     }
   },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "transcendent",
+    "elevation",
+    "above",
+    "vast"
+  ],
+  "version": "1.0.0"
 }

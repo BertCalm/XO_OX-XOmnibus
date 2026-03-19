@@ -1,45 +1,56 @@
 {
-  "name": "ALL HIGH ENT2 3",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ole",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.926
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.944,
+    "brightness": 0.958,
+    "density": 0.908,
+    "movement": 0.447,
+    "space": 0.99,
+    "warmth": 0.908
+  },
   "engines": [
-    "OWLFISH",
-    "OLE"
+    "Owlfish",
+    "Ole"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.933,
+    "COUPLING": 0.926,
+    "MOVEMENT": 0.447,
+    "SPACE": 0.99
+  },
+  "mood": "Entangled",
+  "name": "ALL HIGH ENT2 3",
   "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.933,
-      "macro_movement": 0.447,
-      "macro_coupling": 0.926,
+    "Ole": {
+      "macro_character": 0.903,
+      "macro_coupling": 0.951,
+      "macro_movement": 0.473,
       "macro_space": 0.99
     },
-    "OLE": {
-      "macro_character": 0.903,
-      "macro_movement": 0.473,
-      "macro_coupling": 0.951,
+    "Owlfish": {
+      "macro_character": 0.933,
+      "macro_coupling": 0.926,
+      "macro_movement": 0.447,
       "macro_space": 0.99
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OWLFISH",
-    "target": "OLE",
-    "amount": 0.926
-  },
-  "dna": {
-    "brightness": 0.958,
-    "warmth": 0.908,
-    "movement": 0.447,
-    "density": 0.908,
-    "space": 0.99,
-    "aggression": 0.944
-  },
-  "macros": {
-    "CHARACTER": 0.933,
-    "MOVEMENT": 0.447,
-    "COUPLING": 0.926,
-    "SPACE": 0.99
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "bright",
@@ -47,5 +58,6 @@
     "dense",
     "vast",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_DENSE_INTIMATE_FAM_VOL_51",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Oblong",
+        "type": "MODULATION_FLOW",
+        "amount": 0.712
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.594,
+    "brightness": 0.884,
+    "density": 0.976,
+    "movement": 0.573,
+    "space": 0.082,
+    "warmth": 0.888
+  },
   "engines": [
-    "OBLONG",
-    "ORPHICA"
+    "Oblong",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "COUPLING": 0.804,
+    "MOVEMENT": 0.579,
+    "SPACE": 0.096
+  },
+  "mood": "Family",
+  "name": "Honey Dense 2",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.862,
-      "macro_movement": 0.579,
       "macro_coupling": 0.799,
+      "macro_movement": 0.579,
       "macro_space": 0.081
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.898,
-      "macro_movement": 0.579,
       "macro_coupling": 0.81,
+      "macro_movement": 0.579,
       "macro_space": 0.11
     }
   },
-  "coupling": {
-    "type": "MODULATION_FLOW",
-    "source": "ORPHICA",
-    "target": "OBLONG",
-    "amount": 0.712
-  },
-  "dna": {
-    "brightness": 0.884,
-    "warmth": 0.888,
-    "movement": 0.573,
-    "density": 0.976,
-    "space": 0.082,
-    "aggression": 0.594
-  },
-  "macros": {
-    "CHARACTER": 0.88,
-    "MOVEMENT": 0.579,
-    "COUPLING": 0.804,
-    "SPACE": 0.096
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "dense",
     "intimate",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

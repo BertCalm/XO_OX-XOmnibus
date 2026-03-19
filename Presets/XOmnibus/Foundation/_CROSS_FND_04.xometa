@@ -1,49 +1,61 @@
 {
-  "name": "CROSS FND 04",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Obese",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.525
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.957,
+    "brightness": 0.629,
+    "density": 0.084,
+    "movement": 0.082,
+    "space": 0.93,
+    "warmth": 0.966
+  },
   "engines": [
-    "ONSET",
-    "OBESE"
+    "Onset",
+    "Obese"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.797,
+    "COUPLING": 0.944,
+    "MOVEMENT": 0.083,
+    "SPACE": 0.93
+  },
+  "mood": "Foundation",
+  "name": "CROSS FND 04",
   "parameters": {
-    "ONSET": {
+    "Obese": {
       "macro_character": 0.797,
-      "macro_movement": 0.083,
       "macro_coupling": 0.944,
+      "macro_movement": 0.083,
       "macro_space": 0.93
     },
-    "OBESE": {
+    "Onset": {
       "macro_character": 0.797,
-      "macro_movement": 0.083,
       "macro_coupling": 0.944,
+      "macro_movement": 0.083,
       "macro_space": 0.93
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ONSET",
-    "target": "OBESE",
-    "amount": 0.525
-  },
-  "dna": {
-    "brightness": 0.629,
-    "warmth": 0.966,
-    "movement": 0.082,
-    "density": 0.084,
-    "space": 0.93,
-    "aggression": 0.957
-  },
-  "macros": {
-    "CHARACTER": 0.797,
-    "MOVEMENT": 0.083,
-    "COUPLING": 0.944,
-    "SPACE": 0.93
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-  ]
+  ],
+  "version": "1.0"
 }

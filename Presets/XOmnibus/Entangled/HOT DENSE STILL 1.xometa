@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Optic \u00d7 Onset \u2014 Timbre Blend coupling at extreme DNA corner.",
+  "description": "Optic × Onset — Timbre Blend coupling at extreme DNA corner.",
   "tags": [
     "hot",
     "optic",
@@ -33,7 +33,10 @@
     "space": 0.516,
     "aggression": 0.432
   },
-  "parameters": {},
+  "parameters": {
+    "Optic": {},
+    "Onset": {}
+  },
   "coupling": {
     "pairs": [
       {

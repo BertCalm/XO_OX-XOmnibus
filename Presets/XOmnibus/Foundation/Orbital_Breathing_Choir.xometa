@@ -1,39 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Breathing Choir",
-  "mood": "Foundation",
-  "engines": ["Orbital"],
-  "author": "Guru Bin — Fleet Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Eight voices grouped into two clusters of four, each breathing at offset phase. The group envelope system turns a simple chord hold into a living organism — no two voices peak simultaneously. Press and hold. The choir inhales.",
-  "tags": ["choir", "pads", "polyphonic", "breathing", "warm", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.75,
-    "movement": 0.55,
-    "density": 0.7,
-    "space": 0.6,
-    "aggression": 0.1
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Eight voices grouped into two clusters of four, each breathing at offset phase. The group envelope system turns a simple chord hold into a living organism — no two voices peak simultaneously. Press and hold. The choir inhales.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.4,
+    "density": 0.7,
+    "movement": 0.55,
+    "space": 0.6,
+    "warmth": 0.75
+  },
+  "engines": [
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Breathing Choir",
   "parameters": {
     "Orbital": {
+      "orb_ampAttack": 0.35,
+      "orb_ampDecay": 0.5,
+      "orb_ampRelease": 2.1,
+      "orb_ampSustain": 0.82,
       "orb_brightness": 0.38,
-      "orb_groupEnvRate": 0.12,
-      "orb_groupEnvDepth": 0.68,
-      "orb_oscCount": 8,
-      "orb_spread": 0.45,
       "orb_detune": 0.18,
       "orb_filterCutoff": 0.52,
       "orb_filterReso": 0.22,
-      "orb_ampAttack": 0.35,
-      "orb_ampDecay": 0.5,
-      "orb_ampSustain": 0.82,
-      "orb_ampRelease": 2.1
+      "orb_groupEnvDepth": 0.68,
+      "orb_groupEnvRate": 0.12,
+      "orb_oscCount": 8,
+      "orb_spread": 0.45
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "choir",
+    "pads",
+    "polyphonic",
+    "breathing",
+    "warm",
+    "foundation"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

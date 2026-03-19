@@ -1,14 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT WARM VAST GENTLE FAM 1",
-  "mood": "Family",
-  "engines": [
-    "OSPREY",
-    "OLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, bright, warm, vast.",
+  "coupling": [
+    {
+      "amount": 0.589,
+      "destination": "OLE",
+      "source": "OSPREY",
+      "type": "CHAOS_INJECT"
+    }
+  ],
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — family, bright, warm, vast.",
+  "dna": {
+    "aggression": 0.072,
+    "brightness": 0.956,
+    "density": 0.508,
+    "movement": 0.454,
+    "space": 0.915,
+    "warmth": 0.903
+  },
+  "engines": [
+    "Osprey",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "BRIGHT WARM VAST GENTLE FAM 1",
+  "parameters": {
+    "Ole": {
+      "level": 0.687,
+      "pan": -0.104
+    },
+    "Osprey": {
+      "level": 0.687,
+      "pan": -0.134
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "bright",
@@ -17,40 +51,6 @@
     "gentle",
     "ultra-diverse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.956,
-    "warmth": 0.903,
-    "movement": 0.454,
-    "density": 0.508,
-    "space": 0.915,
-    "aggression": 0.072
-  },
-  "parameters": {
-    "OSPREY": {
-      "level": 0.687,
-      "pan": -0.134
-    },
-    "OLE": {
-      "level": 0.687,
-      "pan": -0.104
-    }
-  },
-  "coupling": [
-    {
-      "source": "OSPREY",
-      "destination": "OLE",
-      "type": "CHAOS_INJECT",
-      "amount": 0.589
-    }
-  ],
-  "sequencer": null
+  "version": "1.0.0"
 }

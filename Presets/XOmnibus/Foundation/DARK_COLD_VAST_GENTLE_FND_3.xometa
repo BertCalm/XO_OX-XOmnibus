@@ -1,45 +1,56 @@
 {
-  "name": "DARK_COLD_VAST_GENTLE_FND_3",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ODDOSCAR",
-    "OBESE"
-  ],
-  "parameters": {
-    "ODDOSCAR": {
-      "macro_character": 0.352,
-      "macro_movement": 0.136,
-      "macro_coupling": 0.166,
-      "macro_space": 0.547
-    },
-    "OBESE": {
-      "macro_character": 0.885,
-      "macro_movement": 0.655,
-      "macro_coupling": 0.612,
-      "macro_space": 0.255
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ODDOSCAR",
-    "target": "OBESE",
-    "amount": 0.401
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Obese",
+        "type": "PITCH_SYNC",
+        "amount": 0.401
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.112,
     "brightness": 0.043,
-    "warmth": 0.062,
-    "movement": 0.573,
     "density": 0.348,
+    "movement": 0.573,
     "space": 0.914,
-    "aggression": 0.112
+    "warmth": 0.062
   },
+  "engines": [
+    "OddOscar",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.256,
-    "MOVEMENT": 0.472,
     "COUPLING": 0.809,
+    "MOVEMENT": 0.472,
     "SPACE": 0.177
   },
+  "mood": "Foundation",
+  "name": "DARK_COLD_VAST_GENTLE_FND_3",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.885,
+      "macro_coupling": 0.612,
+      "macro_movement": 0.655,
+      "macro_space": 0.255
+    },
+    "OddOscar": {
+      "macro_character": 0.352,
+      "macro_coupling": 0.166,
+      "macro_movement": 0.136,
+      "macro_space": 0.547
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -48,5 +59,6 @@
     "vast",
     "gentle",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

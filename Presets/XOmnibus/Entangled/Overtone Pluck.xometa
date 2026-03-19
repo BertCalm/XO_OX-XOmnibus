@@ -1,19 +1,29 @@
 {
-  "schema_version": 1,
-  "name": "Overtone Pluck",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.477,
+        "engineA": "Ohm",
+        "engineB": "Orphica",
+        "type": "Gate->Env"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OHM and ORPHICA coupled via Gate->Env. Blended Constellation DNA — stub seeded for expansion.",
+  "dna": {
+    "aggression": 0.231,
+    "brightness": 0.693,
+    "density": 0.557,
+    "movement": 0.692,
+    "space": 0.735,
+    "warmth": 0.601
+  },
   "engines": [
-    "OHM",
-    "ORPHICA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OHM and ORPHICA coupled via Gate->Env. Blended Constellation DNA \u2014 stub seeded for expansion.",
-  "tags": [
-    "coupling",
-    "constellation",
-    "ohm",
-    "orphica"
+    "Ohm",
+    "Orphica"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,27 +31,20 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OHM",
-        "engineB": "ORPHICA",
-        "type": "Gate->Env",
-        "amount": 0.477
-      }
-    ]
+  "mood": "Entangled",
+  "name": "Overtone Pluck",
+  "parameters": {
+    "Ohm": {},
+    "Orphica": {}
   },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.693,
-    "warmth": 0.601,
-    "movement": 0.692,
-    "density": 0.557,
-    "space": 0.735,
-    "aggression": 0.231
-  }
+  "tags": [
+    "coupling",
+    "constellation",
+    "ohm",
+    "orphica"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

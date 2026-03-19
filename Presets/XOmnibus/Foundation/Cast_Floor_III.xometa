@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Cast Floor III",
-  "mood": "Foundation",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Molten core tone. Filter barely open, heat radiating outward.",
+  "dna": {
+    "aggression": 0.581,
     "brightness": 0.512,
-    "warmth": 0.885,
-    "movement": 0.341,
     "density": 0.882,
+    "movement": 0.341,
     "space": 0.272,
-    "aggression": 0.581
+    "warmth": 0.885
   },
   "engines": [
-    "OSTERIA"
+    "Osteria"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Molten core tone. Filter barely open, heat radiating outward.",
+  "macroLabels": [
+    "WARMTH",
+    "WEIGHT",
+    "COUPLING",
+    "DEPTH"
+  ],
+  "mood": "Foundation",
+  "name": "Cast Floor III",
+  "parameters": {
+    "Osteria": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.581,
+    "brightness": 0.512,
+    "density": 0.882,
+    "movement": 0.341,
+    "space": 0.272,
+    "warmth": 0.885
+  },
   "tags": [
     "foundation",
     "warm",
@@ -24,23 +44,5 @@
     "thick",
     "aggressive"
   ],
-  "macroLabels": [
-    "WARMTH",
-    "WEIGHT",
-    "COUPLING",
-    "DEPTH"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.512,
-    "warmth": 0.885,
-    "movement": 0.341,
-    "density": 0.882,
-    "space": 0.272,
-    "aggression": 0.581
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

@@ -1,13 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Overworld Static Layer",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "ERA pushed near Genesis maximum, glitch rate creating dense corruption field. Ten voices in the mix — not clean, not broken. The atmosphere of a failing system that still functions.",
+  "dna": {
+    "aggression": 0.72,
+    "brightness": 0.82,
+    "density": 0.72,
+    "movement": 0.75,
+    "space": 0.68,
+    "warmth": 0.15
+  },
   "engines": [
     "Overworld"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "ERA pushed near Genesis maximum, glitch rate creating dense corruption field. Ten voices in the mix \u2014 not clean, not broken. The atmosphere of a failing system that still functions.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Overworld Static Layer",
+  "parameters": {
+    "Overworld": {
+      "ow_ampAttack": 0.2,
+      "ow_ampDecay": 0.6,
+      "ow_ampRelease": 3.0,
+      "ow_ampSustain": 0.58,
+      "ow_detune": 0.58,
+      "ow_eraBalance": 0.88,
+      "ow_filterCutoff": 0.82,
+      "ow_filterReso": 0.65,
+      "ow_glitchDepth": 0.72,
+      "ow_glitchRate": 0.55,
+      "ow_glitchType": 3,
+      "ow_macroCharacter": 0.0,
+      "ow_macroCoupling": 0.0,
+      "ow_macroMovement": 0.0,
+      "ow_macroSpace": 0.0,
+      "ow_reverbMix": 0.55,
+      "ow_spread": 0.78,
+      "ow_voiceCount": 10
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "charged",
@@ -15,52 +61,6 @@
     "static",
     "glitch-field"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Overworld": {
-      "ow_eraBalance": 0.88,
-      "ow_voiceCount": 10,
-      "ow_spread": 0.78,
-      "ow_detune": 0.58,
-      "ow_filterCutoff": 0.82,
-      "ow_filterReso": 0.65,
-      "ow_glitchRate": 0.55,
-      "ow_glitchDepth": 0.72,
-      "ow_glitchType": 3,
-      "ow_ampAttack": 0.2,
-      "ow_ampDecay": 0.6,
-      "ow_ampSustain": 0.58,
-      "ow_ampRelease": 3.0,
-      "ow_reverbMix": 0.55,
-      "ow_macroCharacter": 0.0,
-      "ow_macroMovement": 0.0,
-      "ow_macroCoupling": 0.0,
-      "ow_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.82,
-    "warmth": 0.15,
-    "movement": 0.75,
-    "density": 0.72,
-    "space": 0.68,
-    "aggression": 0.72
-  }
+  "version": "1.0.0"
 }

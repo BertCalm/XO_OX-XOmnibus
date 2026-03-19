@@ -1,49 +1,61 @@
 {
-  "name": "DESTROY LINK",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Overlap",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.238
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.945,
+    "brightness": 0.567,
+    "density": 0.774,
+    "movement": 0.578,
+    "space": 0.638,
+    "warmth": 0.057
+  },
   "engines": [
-    "ORIGAMI",
-    "OVERLAP"
+    "Origami",
+    "Overlap"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.549,
+    "COUPLING": 0.331,
+    "MOVEMENT": 0.39,
+    "SPACE": 0.409
+  },
+  "mood": "Entangled",
+  "name": "DESTROY LINK",
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.329,
-      "macro_movement": 0.107,
       "macro_coupling": 0.186,
+      "macro_movement": 0.107,
       "macro_space": 0.207
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.312,
-      "macro_movement": 0.393,
       "macro_coupling": 0.423,
+      "macro_movement": 0.393,
       "macro_space": 0.136
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORIGAMI",
-    "target": "OVERLAP",
-    "amount": 0.238
-  },
-  "dna": {
-    "brightness": 0.567,
-    "warmth": 0.057,
-    "movement": 0.578,
-    "density": 0.774,
-    "space": 0.638,
-    "aggression": 0.945
-  },
-  "macros": {
-    "CHARACTER": 0.549,
-    "MOVEMENT": 0.39,
-    "COUPLING": 0.331,
-    "SPACE": 0.409
-  },
+  "schema_version": 1,
   "tags": [
     "savage",
     "aggressive",
     "violent",
     "fury"
-  ]
+  ],
+  "version": "1.0"
 }

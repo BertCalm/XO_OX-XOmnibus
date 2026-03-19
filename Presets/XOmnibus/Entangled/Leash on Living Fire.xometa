@@ -1,22 +1,35 @@
 {
-  "schema_version": 1,
-  "name": "Leash on Living Fire",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Ouroboros",
+        "engineB": "Organon",
+        "type": "CV->Pitch"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "B003 Leash Mechanism restrains chaos just enough for Organon to sustain coherent metabolic patterns.",
+  "dna": {
+    "aggression": 0.57,
+    "brightness": 1.0,
+    "density": 0.505,
+    "movement": 0.782,
+    "space": 0.468,
+    "warmth": 0.49
+  },
   "engines": [
     "Ouroboros",
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "B003 Leash Mechanism restrains chaos just enough for Organon to sustain coherent metabolic patterns.",
-  "tags": [
-    "marquee",
-    "leash",
-    "controlled-chaos",
-    "B003",
-    "entangled",
-    "ouroboros-organon"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -25,59 +38,46 @@
   ],
   "macros": {
     "CHARACTER": 0.65,
-    "MOVEMENT": 0.7,
     "COUPLING": 0.75,
+    "MOVEMENT": 0.7,
     "SPACE": 0.5
   },
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Leash on Living Fire",
   "parameters": {
-    "Ouroboros": {
-      "ouro_topology": 1,
-      "ouro_rate": 80.0,
-      "ouro_chaosIndex": 0.7,
-      "ouro_leash": 0.6,
-      "ouro_theta": 0.0,
-      "ouro_phi": 0.35,
-      "ouro_damping": 0.3,
-      "ouro_injection": 0.3
-    },
     "Organon": {
-      "organon_metabolicRate": 3.5,
-      "organon_enzymeSelect": 600.0,
       "organon_catalystDrive": 1.2,
       "organon_dampingCoeff": 0.4,
-      "organon_signalFlux": 0.8,
-      "organon_phasonShift": 0.25,
+      "organon_enzymeSelect": 600.0,
       "organon_isotopeBalance": 0.4,
       "organon_lockIn": 0.6,
       "organon_membrane": 0.65,
-      "organon_noiseColor": 0.6
+      "organon_metabolicRate": 3.5,
+      "organon_noiseColor": 0.6,
+      "organon_phasonShift": 0.25,
+      "organon_signalFlux": 0.8
+    },
+    "Ouroboros": {
+      "ouro_chaosIndex": 0.7,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.3,
+      "ouro_leash": 0.6,
+      "ouro_phi": 0.35,
+      "ouro_rate": 80.0,
+      "ouro_theta": 0.0,
+      "ouro_topology": 1
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Organon",
-        "type": "CV->Pitch",
-        "amount": 0.6
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 1.0,
-    "warmth": 0.49,
-    "movement": 0.782,
-    "density": 0.505,
-    "space": 0.468,
-    "aggression": 0.57
-  }
+  "tags": [
+    "marquee",
+    "leash",
+    "controlled-chaos",
+    "B003",
+    "entangled",
+    "ouroboros-organon"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

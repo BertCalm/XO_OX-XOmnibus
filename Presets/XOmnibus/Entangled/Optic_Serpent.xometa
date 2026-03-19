@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Optic Serpent",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.91,
+        "engineA": "Optic",
+        "engineB": "Ouroboros",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Ouroboros topology channeled through Optic luminance — the strange attractor made of light.",
+  "dna": {
+    "aggression": 0.95,
+    "brightness": 0.9,
+    "density": 0.66,
+    "movement": 0.86,
+    "space": 0.24,
+    "warmth": 0.05
+  },
   "engines": [
-    "OPTIC",
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ouroboros topology channeled through Optic luminance \u2014 the strange attractor made of light.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "bright",
-    "optic",
-    "ouroboros",
-    "serpent"
+    "Optic",
+    "Ouroboros"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,32 @@
   ],
   "macros": {
     "CHARACTER": 0.7,
-    "MOVEMENT": 0.86,
     "COUPLING": 0.91,
+    "MOVEMENT": 0.86,
     "SPACE": 0.24
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.9,
-    "warmth": 0.05,
-    "movement": 0.86,
-    "density": 0.66,
-    "space": 0.24,
-    "aggression": 0.95
+  "mood": "Entangled",
+  "name": "Optic Serpent",
+  "parameters": {
+    "Optic": {},
+    "Ouroboros": {}
   },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.95,
     "brightness": 0.9,
-    "warmth": 0.05,
-    "movement": 0.86,
     "density": 0.66,
+    "movement": 0.86,
     "space": 0.24,
-    "aggression": 0.95
+    "warmth": 0.05
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OPTIC",
-        "engineB": "OUROBOROS",
-        "type": "CHAOS_INJECT",
-        "amount": 0.91
-      }
-    ]
-  }
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "optic",
+    "ouroboros",
+    "serpent"
+  ],
+  "version": "1.0.0"
 }

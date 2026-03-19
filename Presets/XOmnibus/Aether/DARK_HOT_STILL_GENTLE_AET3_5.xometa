@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_STILL_GENTLE_AET3_5",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Osprey",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.6277
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.092,
+    "brightness": 0.0516,
+    "density": 0.4893,
+    "movement": 0.0838,
+    "space": 0.6605,
+    "warmth": 0.9216
+  },
   "engines": [
-    "OBSCURA",
-    "OSPREY"
+    "Obscura",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4866,
+    "COUPLING": 0.6277,
+    "MOVEMENT": 0.0838,
+    "SPACE": 0.6605
+  },
+  "mood": "Aether",
+  "name": "DARK_HOT_STILL_GENTLE_AET3_5",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.6979,
-      "macro_movement": 0.6644,
       "macro_coupling": 0.27,
+      "macro_movement": 0.6644,
       "macro_space": 0.914
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.3762,
-      "macro_movement": 0.4328,
       "macro_coupling": 0.8049,
+      "macro_movement": 0.4328,
       "macro_space": 0.3105
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBSCURA",
-    "target": "OSPREY",
-    "amount": 0.6277
-  },
-  "dna": {
-    "brightness": 0.0516,
-    "warmth": 0.9216,
-    "movement": 0.0838,
-    "density": 0.4893,
-    "space": 0.6605,
-    "aggression": 0.092
-  },
-  "macros": {
-    "CHARACTER": 0.4866,
-    "MOVEMENT": 0.0838,
-    "COUPLING": 0.6277,
-    "SPACE": 0.6605
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "warm",
     "dark",
     "still",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

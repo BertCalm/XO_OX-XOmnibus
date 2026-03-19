@@ -1,45 +1,56 @@
 {
-  "name": "DARK HOT STILL VAST GENTLE ENT2 3",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OTTONI",
-    "OPAL"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.525,
-      "macro_movement": 0.145,
-      "macro_coupling": 0.158,
-      "macro_space": 0.963
-    },
-    "OPAL": {
-      "macro_character": 0.506,
-      "macro_movement": 0.2,
-      "macro_coupling": 0.194,
-      "macro_space": 0.972
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OTTONI",
-    "target": "OPAL",
-    "amount": 0.158
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Opal",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.158
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.02,
     "brightness": 0.075,
-    "warmth": 0.975,
-    "movement": 0.145,
     "density": 0.295,
+    "movement": 0.145,
     "space": 0.963,
-    "aggression": 0.02
+    "warmth": 0.975
   },
+  "engines": [
+    "Ottoni",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.525,
-    "MOVEMENT": 0.145,
     "COUPLING": 0.158,
+    "MOVEMENT": 0.145,
     "SPACE": 0.963
   },
+  "mood": "Entangled",
+  "name": "DARK HOT STILL VAST GENTLE ...",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.506,
+      "macro_coupling": 0.194,
+      "macro_movement": 0.2,
+      "macro_space": 0.972
+    },
+    "Ottoni": {
+      "macro_character": 0.525,
+      "macro_coupling": 0.158,
+      "macro_movement": 0.145,
+      "macro_space": 0.963
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
@@ -47,5 +58,6 @@
     "still",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,14 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD KINETIC VAST AET 3",
-  "mood": "Aether",
-  "engines": [
-    "OTTONI",
-    "ODDFELIX"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, cold, kinetic.",
+  "coupling": [
+    {
+      "amount": 0.544,
+      "destination": "ODDFELIX",
+      "source": "OTTONI",
+      "type": "PITCH_SYNC"
+    }
+  ],
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — aether, dark, cold, kinetic.",
+  "dna": {
+    "aggression": 0.477,
+    "brightness": 0.085,
+    "density": 0.516,
+    "movement": 0.892,
+    "space": 0.915,
+    "warmth": 0.086
+  },
+  "engines": [
+    "Ottoni",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "DARK COLD KINETIC VAST AET 3",
+  "parameters": {
+    "OddfeliX": {
+      "level": 0.694,
+      "pan": -0.112
+    },
+    "Ottoni": {
+      "level": 0.698,
+      "pan": -0.024
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "dark",
@@ -17,40 +51,6 @@
     "vast",
     "ultra-diverse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.085,
-    "warmth": 0.086,
-    "movement": 0.892,
-    "density": 0.516,
-    "space": 0.915,
-    "aggression": 0.477
-  },
-  "parameters": {
-    "OTTONI": {
-      "level": 0.698,
-      "pan": -0.024
-    },
-    "ODDFELIX": {
-      "level": 0.694,
-      "pan": -0.112
-    }
-  },
-  "coupling": [
-    {
-      "source": "OTTONI",
-      "destination": "ODDFELIX",
-      "type": "PITCH_SYNC",
-      "amount": 0.544
-    }
-  ],
-  "sequencer": null
+  "version": "1.0.0"
 }

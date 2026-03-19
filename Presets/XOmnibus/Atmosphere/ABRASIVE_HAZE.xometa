@@ -1,50 +1,62 @@
 {
-  "name": "ABRASIVE HAZE",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORACLE",
-    "OCELOT"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.759,
-      "macro_movement": 0.828,
-      "macro_coupling": 0.342,
-      "macro_space": 0.151
-    },
-    "OCELOT": {
-      "macro_character": 0.212,
-      "macro_movement": 0.857,
-      "macro_coupling": 0.343,
-      "macro_space": 0.427
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORACLE",
-    "target": "OCELOT",
-    "amount": 0.545
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Ocelot",
+        "type": "PITCH_SYNC",
+        "amount": 0.545
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.947,
     "brightness": 0.568,
-    "warmth": 0.758,
-    "movement": 0.866,
     "density": 0.287,
+    "movement": 0.866,
     "space": 0.277,
-    "aggression": 0.947
+    "warmth": 0.758
   },
+  "engines": [
+    "Oracle",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.178,
-    "MOVEMENT": 0.81,
     "COUPLING": 0.209,
+    "MOVEMENT": 0.81,
     "SPACE": 0.277
   },
+  "mood": "Atmosphere",
+  "name": "ABRASIVE HAZE",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.212,
+      "macro_coupling": 0.343,
+      "macro_movement": 0.857,
+      "macro_space": 0.427
+    },
+    "Oracle": {
+      "macro_character": 0.759,
+      "macro_coupling": 0.342,
+      "macro_movement": 0.828,
+      "macro_space": 0.151
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

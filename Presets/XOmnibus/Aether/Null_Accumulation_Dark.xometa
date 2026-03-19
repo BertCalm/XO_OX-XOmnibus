@@ -1,27 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Null Accumulation Dark",
-  "mood": "Aether",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Cryogenic thickness — cold partials locked together tightly.",
+  "dna": {
+    "aggression": 0.498,
     "brightness": 0.281,
-    "warmth": 0.077,
-    "movement": 0.313,
     "density": 0.94,
+    "movement": 0.313,
     "space": 0.346,
-    "aggression": 0.498
+    "warmth": 0.077
   },
   "engines": [
-    "ORBITAL"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Cryogenic thickness \u2014 cold partials locked together tightly.",
-  "tags": [
-    "aether",
-    "cold",
-    "dense",
-    "dark",
-    "pressure"
+    "Orbital"
   ],
   "macroLabels": [
     "CYCLE",
@@ -29,17 +22,26 @@
     "COUPLING",
     "VOID"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.281,
-    "warmth": 0.077,
-    "movement": 0.313,
-    "density": 0.94,
-    "space": 0.346,
-    "aggression": 0.498
+  "mood": "Aether",
+  "name": "Null Accumulation Dark",
+  "parameters": {
+    "Orbital": {}
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.498,
+    "brightness": 0.281,
+    "density": 0.94,
+    "movement": 0.313,
+    "space": 0.346,
+    "warmth": 0.077
+  },
+  "tags": [
+    "aether",
+    "cold",
+    "dense",
+    "dark",
+    "pressure"
+  ],
+  "version": "1.0.0"
 }

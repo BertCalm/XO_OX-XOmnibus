@@ -1,49 +1,61 @@
 {
-  "name": "AIRLESS VAULT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Onset",
+        "type": "PITCH_SYNC",
+        "amount": 0.609
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.663,
+    "brightness": 0.763,
+    "density": 0.905,
+    "movement": 0.15,
+    "space": 0.081,
+    "warmth": 0.191
+  },
   "engines": [
-    "OLE",
-    "ONSET"
+    "Ole",
+    "Onset"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.094,
+    "COUPLING": 0.92,
+    "MOVEMENT": 0.12,
+    "SPACE": 0.081
+  },
+  "mood": "Entangled",
+  "name": "AIRLESS VAULT",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.14,
-      "macro_movement": 0.546,
       "macro_coupling": 0.09,
+      "macro_movement": 0.546,
       "macro_space": 0.057
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.249,
-      "macro_movement": 0.866,
       "macro_coupling": 0.884,
+      "macro_movement": 0.866,
       "macro_space": 0.074
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OLE",
-    "target": "ONSET",
-    "amount": 0.609
-  },
-  "dna": {
-    "brightness": 0.763,
-    "warmth": 0.191,
-    "movement": 0.15,
-    "density": 0.905,
-    "space": 0.081,
-    "aggression": 0.663
-  },
-  "macros": {
-    "CHARACTER": 0.094,
-    "MOVEMENT": 0.12,
-    "COUPLING": 0.92,
-    "SPACE": 0.081
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-  ]
+  ],
+  "version": "1.0"
 }

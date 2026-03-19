@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Crystal Scatter",
-  "mood": "Prism",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Crystal lattice tone — intervals measured, density absent.",
+  "dna": {
+    "aggression": 0.106,
     "brightness": 0.679,
-    "warmth": 0.081,
-    "movement": 0.189,
     "density": 0.079,
+    "movement": 0.189,
     "space": 0.78,
-    "aggression": 0.106
+    "warmth": 0.081
   },
   "engines": [
-    "OBLIQUE"
+    "Oblique"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Crystal lattice tone \u2014 intervals measured, density absent.",
+  "macroLabels": [
+    "PRISM",
+    "DISTANCE",
+    "COUPLING",
+    "TAIL"
+  ],
+  "mood": "Prism",
+  "name": "Crystal Scatter",
+  "parameters": {
+    "Oblique": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.106,
+    "brightness": 0.679,
+    "density": 0.079,
+    "movement": 0.189,
+    "space": 0.78,
+    "warmth": 0.081
+  },
   "tags": [
     "prism",
     "cold",
@@ -24,23 +44,5 @@
     "airy",
     "spacious"
   ],
-  "macroLabels": [
-    "PRISM",
-    "DISTANCE",
-    "COUPLING",
-    "TAIL"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.679,
-    "warmth": 0.081,
-    "movement": 0.189,
-    "density": 0.079,
-    "space": 0.78,
-    "aggression": 0.106
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

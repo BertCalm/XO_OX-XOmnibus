@@ -1,55 +1,70 @@
 {
-  "schema_version": 1,
-  "name": "Dissolving School",
-  "mood": "Flux",
-  "engines": ["Oceanic"],
-  "author": "Guru Bin — OCEANIC Retreat 2026-03-15",
-  "version": "1.0.0",
-  "description": "swarmEnvSustain=0 — the boid forces extinguish completely during the sustain phase. The note begins with a coherent school. Then, as the swarm decays toward zero strength, the particles lose their collective intelligence. They drift freely, held only by inertia, while the note plays at full amplitude. You hold the key and the school dissolves into particles. The sound changes shape while you hold still.",
-  "tags": ["swarm-envelope", "dissolving", "flux", "drift", "awakening"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.45,
-    "movement": 0.75,
-    "density": 0.55,
-    "space": 0.6,
-    "aggression": 0.3
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "swarmEnvSustain=0 — the boid forces extinguish completely during the sustain phase. The note begins with a coherent school. Then, as the swarm decays toward zero strength, the particles lose their collective intelligence. They drift freely, held only by inertia, while the note plays at full amplitude. You hold the key and the school dissolves into particles. The sound changes shape while you hold still.",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.5,
+    "density": 0.55,
+    "movement": 0.75,
+    "space": 0.6,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Dissolving School",
   "parameters": {
     "Oceanic": {
-      "ocean_separation": 0.4,
       "ocean_alignment": 0.45,
-      "ocean_cohesion": 0.5,
-      "ocean_tether": 0.6,
-      "ocean_scatter": 0.3,
-      "ocean_subflocks": 2,
-      "ocean_damping": 0.25,
-      "ocean_waveform": 0,
       "ocean_ampAttack": 0.05,
       "ocean_ampDecay": 0.4,
-      "ocean_ampSustain": 0.85,
       "ocean_ampRelease": 1.8,
+      "ocean_ampSustain": 0.85,
+      "ocean_cohesion": 0.5,
+      "ocean_damping": 0.25,
+      "ocean_glide": 0.0,
+      "ocean_lfo1Depth": 0.0,
+      "ocean_lfo1Rate": 0.01,
+      "ocean_lfo1Shape": 0,
+      "ocean_lfo2Depth": 0.0,
+      "ocean_lfo2Rate": 0.01,
+      "ocean_lfo2Shape": 0,
+      "ocean_macroCharacter": 0.0,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroMovement": 0.0,
+      "ocean_macroSpace": 0.0,
+      "ocean_scatter": 0.3,
+      "ocean_separation": 0.4,
+      "ocean_subflocks": 2,
       "ocean_swarmEnvAttack": 0.08,
       "ocean_swarmEnvDecay": 2.0,
-      "ocean_swarmEnvSustain": 0.0,
       "ocean_swarmEnvRelease": 0.5,
-      "ocean_lfo1Rate": 0.01,
-      "ocean_lfo1Depth": 0.0,
-      "ocean_lfo1Shape": 0,
-      "ocean_lfo2Rate": 0.01,
-      "ocean_lfo2Depth": 0.0,
-      "ocean_lfo2Shape": 0,
+      "ocean_swarmEnvSustain": 0.0,
+      "ocean_tether": 0.6,
       "ocean_voiceMode": 1,
-      "ocean_glide": 0.0,
-      "ocean_macroCharacter": 0.0,
-      "ocean_macroMovement": 0.0,
-      "ocean_macroCoupling": 0.0,
-      "ocean_macroSpace": 0.0
+      "ocean_waveform": 0
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "swarm-envelope",
+    "dissolving",
+    "flux",
+    "drift",
+    "awakening"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

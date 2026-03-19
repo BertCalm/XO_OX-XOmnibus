@@ -1,49 +1,61 @@
 {
-  "name": "SOLAR SPECTRUM",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Obscura",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.745
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.802,
+    "brightness": 0.66,
+    "density": 0.761,
+    "movement": 0.877,
+    "space": 0.504,
+    "warmth": 0.913
+  },
   "engines": [
-    "OBESE",
-    "OBSCURA"
+    "Obese",
+    "Obscura"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.627,
+    "COUPLING": 0.803,
+    "MOVEMENT": 0.98,
+    "SPACE": 0.408
+  },
+  "mood": "Prism",
+  "name": "SOLAR SPECTRUM",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.151,
-      "macro_movement": 0.224,
       "macro_coupling": 0.852,
+      "macro_movement": 0.224,
       "macro_space": 0.355
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.833,
-      "macro_movement": 0.227,
       "macro_coupling": 0.026,
+      "macro_movement": 0.227,
       "macro_space": 0.002
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBESE",
-    "target": "OBSCURA",
-    "amount": 0.745
-  },
-  "dna": {
-    "brightness": 0.66,
-    "warmth": 0.913,
-    "movement": 0.877,
-    "density": 0.761,
-    "space": 0.504,
-    "aggression": 0.802
-  },
-  "macros": {
-    "CHARACTER": 0.627,
-    "MOVEMENT": 0.98,
-    "COUPLING": 0.803,
-    "SPACE": 0.408
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

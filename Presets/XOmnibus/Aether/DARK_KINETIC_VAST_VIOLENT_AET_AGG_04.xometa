@@ -1,45 +1,56 @@
 {
-  "name": "DARK KINETIC VAST VIOLENT AET AGG 4",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OVERWORLD",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.025,
-      "macro_movement": 0.954,
-      "macro_coupling": 0.892,
-      "macro_space": 0.845
-    },
-    "OBLIQUE": {
-      "macro_character": 0.024,
-      "macro_movement": 0.924,
-      "macro_coupling": 0.935,
-      "macro_space": 0.907
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OVERWORLD",
-    "target": "OBLIQUE",
-    "amount": 0.729
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Oblique",
+        "type": "CHAOS_INJECT",
+        "amount": 0.729
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.95,
     "brightness": 0.025,
-    "warmth": 0.598,
-    "movement": 0.955,
     "density": 0.625,
+    "movement": 0.955,
     "space": 0.916,
-    "aggression": 0.95
+    "warmth": 0.598
   },
+  "engines": [
+    "Overworld",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.025,
-    "MOVEMENT": 0.939,
     "COUPLING": 0.913,
+    "MOVEMENT": 0.939,
     "SPACE": 0.876
   },
+  "mood": "Aether",
+  "name": "DARK KINETIC VAST VIOLENT A...",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.024,
+      "macro_coupling": 0.935,
+      "macro_movement": 0.924,
+      "macro_space": 0.907
+    },
+    "Overworld": {
+      "macro_character": 0.025,
+      "macro_coupling": 0.892,
+      "macro_movement": 0.954,
+      "macro_space": 0.845
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "aggressive",
@@ -48,5 +59,6 @@
     "dark",
     "kinetic",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,31 +1,46 @@
 {
-  "name": "Ocean Carnival",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Ole",
+        "type": "ECHOLOCATION_SYNC",
+        "amount": 0.75
+      }
+    ]
+  },
+  "description": "Orca breach timed to carnival rhythm — sea and celebration merge explosively",
   "engines": [
-    "OLE",
-    "ORCA"
+    "Ole",
+    "Orca"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7,
-    "MOVEMENT": 0.9,
     "COUPLING": 0.75,
+    "MOVEMENT": 0.9,
     "SPACE": 0.45
   },
-  "sonic_dna": {
-    "brightness": 0.66,
-    "warmth": 0.6,
-    "movement": 0.79,
-    "density": 0.62,
-    "space": 0.54,
-    "aggression": 0.6
+  "mood": "Entangled",
+  "name": "Ocean Carnival",
+  "parameters": {
+    "Ole": {},
+    "Orca": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "ECHOLOCATION_SYNC",
-    "source": "ORCA",
-    "target": "OLE",
-    "amount": 0.75
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.6,
+    "brightness": 0.66,
+    "density": 0.62,
+    "movement": 0.79,
+    "space": 0.54,
+    "warmth": 0.6
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "orca",
     "afro-latin"
   ],
-  "description": "Orca breach timed to carnival rhythm \u2014 sea and celebration merge explosively"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT HOT VIOLENT KINETIC F1",
-  "mood": "Flux",
-  "sonic_dna": {
-    "brightness": 0.906,
-    "warmth": 0.914,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Dynamic",
+  "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme hot warmth, extreme violent aggression, extreme kinetic movement. Maximum contrast character design.",
+  "dna": {
     "aggression": 0.953,
-    "movement": 0.896,
+    "brightness": 0.906,
     "density": 0.43,
-    "space": 0.477
+    "movement": 0.896,
+    "space": 0.477,
+    "warmth": 0.914
   },
   "engines": [
-    "OCEANIC"
+    "Oceanic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme bright brightness, extreme hot warmth, extreme violent aggression, extreme kinetic movement. Maximum contrast character design.",
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "BRIGHT HOT VIOLENT KINETIC F1",
+  "parameters": {
+    "Oceanic": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.953,
+    "brightness": 0.906,
+    "density": 0.43,
+    "movement": 0.896,
+    "space": 0.477,
+    "warmth": 0.914
+  },
   "tags": [
     "bright",
     "warm",
@@ -24,25 +44,5 @@
     "flux",
     "extreme"
   ],
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "couplingIntensity": "Dynamic",
-  "dna": {
-    "brightness": 0.906,
-    "warmth": 0.914,
-    "movement": 0.896,
-    "density": 0.43,
-    "space": 0.477,
-    "aggression": 0.953
-  },
-  "parameters": {
-    "OCEANIC": {}
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

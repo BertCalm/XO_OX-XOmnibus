@@ -1,48 +1,60 @@
 {
-  "name": "DETONATION",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Obsidian",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.526
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.725,
+    "brightness": 0.562,
+    "density": 0.289,
+    "movement": 0.895,
+    "space": 0.386,
+    "warmth": 0.363
+  },
   "engines": [
-    "OBBLIGATO",
-    "OBSIDIAN"
+    "Obbligato",
+    "Obsidian"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.825,
+    "MOVEMENT": 0.895,
+    "SPACE": 0.623
+  },
+  "mood": "Entangled",
+  "name": "DETONATION",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.107,
-      "macro_movement": 0.909,
       "macro_coupling": 0.134,
+      "macro_movement": 0.909,
       "macro_space": 0.264
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.366,
-      "macro_movement": 0.881,
       "macro_coupling": 0.403,
+      "macro_movement": 0.881,
       "macro_space": 0.045
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBBLIGATO",
-    "target": "OBSIDIAN",
-    "amount": 0.526
-  },
-  "dna": {
-    "brightness": 0.562,
-    "warmth": 0.363,
-    "movement": 0.895,
-    "density": 0.289,
-    "space": 0.386,
-    "aggression": 0.725
-  },
-  "macros": {
-    "CHARACTER": 0.55,
-    "MOVEMENT": 0.895,
-    "COUPLING": 0.825,
-    "SPACE": 0.623
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frantic",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

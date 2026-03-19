@@ -1,72 +1,72 @@
 {
-  "schema_version": 1,
-  "name": "Beat Force",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "Onset",
+        "engineB": "Ouroboros",
+        "type": "Audio->FM"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-10",
+  "description": "ONSET drum patterns as physical forces — the Chua orbit dances to the beat, creating rhythmic chaotic textures.",
+  "dna": {
+    "aggression": 0.75,
+    "brightness": 0.65,
+    "density": 0.7,
+    "movement": 0.85,
+    "space": 0.2,
+    "warmth": 0.25
+  },
   "engines": [
     "Onset",
     "Ouroboros"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ONSET drum patterns as physical forces — the Chua orbit dances to the beat, creating rhythmic chaotic textures.",
-  "tags": [
-    "coupled",
-    "rhythmic",
-    "percussive",
-    "chaotic"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "DRUM CHARACTER",
     "ORBIT CHAOS",
     "FORCE",
     "SPACE"
   ],
-  "couplingIntensity": "Deep",
-  "tempo": 120,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Beat Force",
   "parameters": {
     "Onset": {
-      "perc_v1_pitch": 0.0,
-      "perc_v1_decay": 0.4,
-      "perc_v1_tone": 0.5,
-      "perc_v1_snap": 0.6,
-      "perc_v1_body": 0.5,
       "perc_drive": 0.3,
-      "perc_level": 0.7
+      "perc_level": 0.7,
+      "perc_v1_body": 0.5,
+      "perc_v1_decay": 0.4,
+      "perc_v1_pitch": 0.0,
+      "perc_v1_snap": 0.6,
+      "perc_v1_tone": 0.5
     },
     "Ouroboros": {
-      "ouro_topology": 2,
-      "ouro_rate": 200.0,
       "ouro_chaosIndex": 0.6,
-      "ouro_leash": 0.3,
-      "ouro_theta": 0.8,
-      "ouro_phi": -0.4,
       "ouro_damping": 0.15,
-      "ouro_injection": 0.85
+      "ouro_injection": 0.85,
+      "ouro_leash": 0.3,
+      "ouro_phi": -0.4,
+      "ouro_rate": 200.0,
+      "ouro_theta": 0.8,
+      "ouro_topology": 2
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Ouroboros",
-        "type": "Audio->FM",
-        "amount": 0.7
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.65,
-    "warmth": 0.25,
-    "movement": 0.85,
-    "density": 0.7,
-    "space": 0.2,
-    "aggression": 0.75
-  }
+  "tags": [
+    "coupled",
+    "rhythmic",
+    "percussive",
+    "chaotic"
+  ],
+  "tempo": 120,
+  "version": "1.0.0"
 }

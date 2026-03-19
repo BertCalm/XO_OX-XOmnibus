@@ -1,49 +1,61 @@
 {
-  "name": "OPEN ETHER",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Overbite",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.92
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.39,
+    "brightness": 0.634,
+    "density": 0.036,
+    "movement": 0.6,
+    "space": 0.964,
+    "warmth": 0.488
+  },
   "engines": [
-    "OBBLIGATO",
-    "OVERBITE"
+    "Obbligato",
+    "Overbite"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.488,
+    "COUPLING": 0.441,
+    "MOVEMENT": 0.431,
+    "SPACE": 0.964
+  },
+  "mood": "Flux",
+  "name": "OPEN ETHER",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.488,
-      "macro_movement": 0.431,
       "macro_coupling": 0.441,
+      "macro_movement": 0.431,
       "macro_space": 0.964
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.625,
-      "macro_movement": 0.293,
       "macro_coupling": 0.3,
+      "macro_movement": 0.293,
       "macro_space": 0.888
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OBBLIGATO",
-    "target": "OVERBITE",
-    "amount": 0.92
-  },
-  "dna": {
-    "brightness": 0.634,
-    "warmth": 0.488,
-    "movement": 0.6,
-    "density": 0.036,
-    "space": 0.964,
-    "aggression": 0.39
-  },
-  "macros": {
-    "CHARACTER": 0.488,
-    "MOVEMENT": 0.431,
-    "COUPLING": 0.441,
-    "SPACE": 0.964
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "spatial",
     "sparse",
     "open"
-  ]
+  ],
+  "version": "1.0"
 }

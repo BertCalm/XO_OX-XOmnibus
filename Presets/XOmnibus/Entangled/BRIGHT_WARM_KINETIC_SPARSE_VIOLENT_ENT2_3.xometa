@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT WARM KINETIC SPARSE VIOLENT ENT2 3",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OWLFISH",
-    "ORGANON"
-  ],
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.956,
-      "macro_movement": 0.96,
-      "macro_coupling": 0.491,
-      "macro_space": 0.39
-    },
-    "ORGANON": {
-      "macro_character": 0.943,
-      "macro_movement": 0.944,
-      "macro_coupling": 0.481,
-      "macro_space": 0.33
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OWLFISH",
-    "target": "ORGANON",
-    "amount": 0.491
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Organon",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.491
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.928,
     "brightness": 0.961,
-    "warmth": 0.952,
-    "movement": 0.96,
     "density": 0.054,
+    "movement": 0.96,
     "space": 0.39,
-    "aggression": 0.928
+    "warmth": 0.952
   },
+  "engines": [
+    "Owlfish",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.956,
-    "MOVEMENT": 0.96,
     "COUPLING": 0.491,
+    "MOVEMENT": 0.96,
     "SPACE": 0.39
   },
+  "mood": "Entangled",
+  "name": "BRIGHT WARM KINETIC SPARSE ...",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.943,
+      "macro_coupling": 0.481,
+      "macro_movement": 0.944,
+      "macro_space": 0.33
+    },
+    "Owlfish": {
+      "macro_character": 0.956,
+      "macro_coupling": 0.491,
+      "macro_movement": 0.96,
+      "macro_space": 0.39
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "bright",
@@ -47,5 +58,6 @@
     "kinetic",
     "sparse",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

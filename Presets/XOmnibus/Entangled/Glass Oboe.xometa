@@ -1,19 +1,29 @@
 {
-  "schema_version": 1,
-  "name": "Glass Oboe",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.574,
+        "engineA": "Orphica",
+        "engineB": "Obbligato",
+        "type": "Env->Morph"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "ORPHICA and OBBLIGATO coupled via Env->Morph. Blended Constellation DNA — stub seeded for expansion.",
+  "dna": {
+    "aggression": 0.297,
+    "brightness": 0.718,
+    "density": 0.582,
+    "movement": 0.618,
+    "space": 0.712,
+    "warmth": 0.53
+  },
   "engines": [
-    "ORPHICA",
-    "OBBLIGATO"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ORPHICA and OBBLIGATO coupled via Env->Morph. Blended Constellation DNA \u2014 stub seeded for expansion.",
-  "tags": [
-    "coupling",
-    "constellation",
-    "orphica",
-    "obbligato"
+    "Orphica",
+    "Obbligato"
   ],
   "macroLabels": [
     "VOICE",
@@ -21,27 +31,20 @@
     "WEAVE",
     "SPREAD"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORPHICA",
-        "engineB": "OBBLIGATO",
-        "type": "Env->Morph",
-        "amount": 0.574
-      }
-    ]
+  "mood": "Entangled",
+  "name": "Glass Oboe",
+  "parameters": {
+    "Orphica": {},
+    "Obbligato": {}
   },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.718,
-    "warmth": 0.53,
-    "movement": 0.618,
-    "density": 0.582,
-    "space": 0.712,
-    "aggression": 0.297
-  }
+  "tags": [
+    "coupling",
+    "constellation",
+    "orphica",
+    "obbligato"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

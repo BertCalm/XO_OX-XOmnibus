@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_DENSE_INTIMATE_FAM_VOL_56",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ole",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.791
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.552,
+    "brightness": 0.072,
+    "density": 0.94,
+    "movement": 0.629,
+    "space": 0.118,
+    "warmth": 0.931
+  },
   "engines": [
-    "OLE",
-    "ORIGAMI"
+    "Ole",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.495,
+    "COUPLING": 0.742,
+    "MOVEMENT": 0.635,
+    "SPACE": 0.106
+  },
+  "mood": "Family",
+  "name": "Copper Heavy",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.491,
-      "macro_movement": 0.658,
       "macro_coupling": 0.763,
+      "macro_movement": 0.658,
       "macro_space": 0.101
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.5,
-      "macro_movement": 0.612,
       "macro_coupling": 0.72,
+      "macro_movement": 0.612,
       "macro_space": 0.11
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORIGAMI",
-    "target": "OLE",
-    "amount": 0.791
-  },
-  "dna": {
-    "brightness": 0.072,
-    "warmth": 0.931,
-    "movement": 0.629,
-    "density": 0.94,
-    "space": 0.118,
-    "aggression": 0.552
-  },
-  "macros": {
-    "CHARACTER": 0.495,
-    "MOVEMENT": 0.635,
-    "COUPLING": 0.742,
-    "SPACE": 0.106
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "dense",
     "intimate",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

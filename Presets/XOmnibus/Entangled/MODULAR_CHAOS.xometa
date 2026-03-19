@@ -1,48 +1,60 @@
 {
-  "name": "MODULAR CHAOS",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Orca",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.545
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.524,
+    "brightness": 0.393,
+    "density": 0.241,
+    "movement": 0.962,
+    "space": 0.583,
+    "warmth": 0.457
+  },
   "engines": [
-    "ORACLE",
-    "ORCA"
+    "Oracle",
+    "Orca"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.281,
+    "COUPLING": 0.598,
+    "MOVEMENT": 0.962,
+    "SPACE": 0.843
+  },
+  "mood": "Entangled",
+  "name": "MODULAR CHAOS",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.19,
-      "macro_movement": 0.973,
       "macro_coupling": 0.159,
+      "macro_movement": 0.973,
       "macro_space": 0.996
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.467,
-      "macro_movement": 0.952,
       "macro_coupling": 0.879,
+      "macro_movement": 0.952,
       "macro_space": 0.497
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORACLE",
-    "target": "ORCA",
-    "amount": 0.545
-  },
-  "dna": {
-    "brightness": 0.393,
-    "warmth": 0.457,
-    "movement": 0.962,
-    "density": 0.241,
-    "space": 0.583,
-    "aggression": 0.524
-  },
-  "macros": {
-    "CHARACTER": 0.281,
-    "MOVEMENT": 0.962,
-    "COUPLING": 0.598,
-    "SPACE": 0.843
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "rupture",
     "intensity"
-  ]
+  ],
+  "version": "1.0"
 }

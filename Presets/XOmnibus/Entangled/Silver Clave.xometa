@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Silver Clave",
-  "mood": "Entangled",
-  "engines": [
-    "OBSCURA",
-    "OLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Obscura stiffness filter-modulates OLE's clave brightness \u2014 tarnished rhythm.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "Obscura",
+        "engineB": "Ole",
+        "type": "FILTER_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Obscura stiffness filter-modulates OLE's clave brightness — tarnished rhythm.",
+  "dna": {
+    "aggression": 0.62,
+    "brightness": 0.5,
+    "density": 0.6,
+    "movement": 0.65,
+    "space": 0.55,
+    "warmth": 0.68
+  },
+  "engines": [
+    "Obscura",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.61,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.635,
+    "SPACE": 0.49
+  },
+  "mood": "Entangled",
+  "name": "Silver Clave",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.52,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.62,
+      "macro_space": 0.62
+    },
+    "Ole": {
+      "macro_character": 0.7,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.65,
+      "macro_space": 0.36
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "clave",
     "filter"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.68,
-    "movement": 0.65,
-    "density": 0.6,
-    "space": 0.55,
-    "aggression": 0.62
-  },
-  "parameters": {
-    "OBSCURA": {
-      "macro_character": 0.52,
-      "macro_movement": 0.62,
-      "macro_coupling": 0.7,
-      "macro_space": 0.62
-    },
-    "OLE": {
-      "macro_character": 0.7,
-      "macro_movement": 0.65,
-      "macro_coupling": 0.7,
-      "macro_space": 0.36
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBSCURA",
-        "engineB": "OLE",
-        "type": "FILTER_MOD",
-        "amount": 0.7
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.61,
-    "MOVEMENT": 0.635,
-    "COUPLING": 0.7,
-    "SPACE": 0.49
-  },
-  "sequencer": null
+  "version": "1.0"
 }

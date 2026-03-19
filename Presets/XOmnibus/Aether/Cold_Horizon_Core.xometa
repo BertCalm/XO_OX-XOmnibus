@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Cold Horizon Core",
-  "mood": "Aether",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Abyssal density without warmth: dark matter in audio form.",
+  "dna": {
+    "aggression": 0.628,
     "brightness": 0.339,
-    "warmth": 0.057,
-    "movement": 0.305,
     "density": 0.892,
+    "movement": 0.305,
     "space": 0.3,
-    "aggression": 0.628
+    "warmth": 0.057
   },
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Abyssal density without warmth: dark matter in audio form.",
+  "macroLabels": [
+    "CYCLE",
+    "CONSUME",
+    "COUPLING",
+    "VOID"
+  ],
+  "mood": "Aether",
+  "name": "Cold Horizon Core",
+  "parameters": {
+    "Obsidian": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.628,
+    "brightness": 0.339,
+    "density": 0.892,
+    "movement": 0.305,
+    "space": 0.3,
+    "warmth": 0.057
+  },
   "tags": [
     "aether",
     "cold",
@@ -24,23 +44,5 @@
     "pressure",
     "aggressive"
   ],
-  "macroLabels": [
-    "CYCLE",
-    "CONSUME",
-    "COUPLING",
-    "VOID"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.339,
-    "warmth": 0.057,
-    "movement": 0.305,
-    "density": 0.892,
-    "space": 0.3,
-    "aggression": 0.628
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

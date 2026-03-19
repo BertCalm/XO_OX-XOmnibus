@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD SPARSE VAST F1",
-  "mood": "Flux",
-  "sonic_dna": {
-    "brightness": 0.055,
-    "warmth": 0.096,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Dynamic",
+  "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme cold warmth, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "dna": {
     "aggression": 0.539,
-    "movement": 0.493,
+    "brightness": 0.055,
     "density": 0.079,
-    "space": 0.954
+    "movement": 0.493,
+    "space": 0.954,
+    "warmth": 0.096
   },
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme dark brightness, extreme cold warmth, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "DARK COLD SPARSE VAST F1",
+  "parameters": {
+    "Overworld": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.539,
+    "brightness": 0.055,
+    "density": 0.079,
+    "movement": 0.493,
+    "space": 0.954,
+    "warmth": 0.096
+  },
   "tags": [
     "dark",
     "cold",
@@ -24,25 +44,5 @@
     "flux",
     "extreme"
   ],
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "couplingIntensity": "Dynamic",
-  "dna": {
-    "brightness": 0.055,
-    "warmth": 0.096,
-    "movement": 0.493,
-    "density": 0.079,
-    "space": 0.954,
-    "aggression": 0.539
-  },
-  "parameters": {
-    "OVERWORLD": {}
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

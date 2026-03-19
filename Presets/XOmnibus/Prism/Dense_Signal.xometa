@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Dense Signal",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.1138,
-    "warmth": 0.5915,
-    "movement": 0.5064,
-    "density": 0.894,
-    "space": 0.2686,
-    "aggression": 0.6655
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Oracle output at peak density, minimal brightness",
   "dna": {
+    "aggression": 0.6655,
     "brightness": 0.1138,
-    "warmth": 0.5915,
-    "movement": 0.5064,
     "density": 0.894,
+    "movement": 0.5064,
     "space": 0.2686,
-    "aggression": 0.6655
+    "warmth": 0.5915
   },
   "engines": [
-    "ORACLE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Oracle output at peak density, minimal brightness",
-  "tags": [
-    "prism",
-    "dark",
-    "dense",
-    "extreme",
-    "anchor"
+    "Oracle"
   ],
   "macroLabels": [
     "SIGNAL",
@@ -38,24 +23,39 @@
     "SPACE"
   ],
   "macros": {
-    "SIGNAL": 0.1346,
-    "DRIFT": 0.3902,
     "COUPLE": 0.4238,
+    "DRIFT": 0.3902,
+    "SIGNAL": 0.1346,
     "SPACE": 0.6578
   },
-  "couplingIntensity": "None",
+  "mood": "Prism",
+  "name": "Dense Signal",
   "parameters": {
-    "ORACLE": {
-      "orc_macro_signal": 0.1346,
-      "orc_macro_drift": 0.3902,
-      "orc_macro_couple": 0.4238,
-      "orc_macro_space": 0.6578,
-      "orc_outputLevel": 0.85,
+    "Oracle": {
+      "orc_couplingBus": 0,
       "orc_couplingLevel": 0.5,
-      "orc_couplingBus": 0
+      "orc_macro_couple": 0.4238,
+      "orc_macro_drift": 0.3902,
+      "orc_macro_signal": 0.1346,
+      "orc_macro_space": 0.6578,
+      "orc_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.6655,
+    "brightness": 0.1138,
+    "density": 0.894,
+    "movement": 0.5064,
+    "space": 0.2686,
+    "warmth": 0.5915
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "dense",
+    "extreme",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

@@ -1,14 +1,76 @@
 {
-  "schema_version": 1,
-  "name": "Dub At Twilight",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "source": "Ombre",
+        "target": "Overdub",
+        "type": "SPATIAL_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Tape echo stretched across the dusk border — the delay throws memory forward while forgetting pulls back.",
+  "dna": {
+    "aggression": 0.266,
+    "brightness": 0.339,
+    "density": 0.412,
+    "movement": 0.48,
+    "space": 0.677,
+    "warmth": 0.677
+  },
   "engines": [
     "Ombre",
     "Overdub"
   ],
-  "author": "XO_OX Deep Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "Tape echo stretched across the dusk border — the delay throws memory forward while forgetting pulls back.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Dub At Twilight",
+  "parameters": {
+    "Ombre": {
+      "ombre_ampAttack": 0.1706,
+      "ombre_ampDecay": 0.364,
+      "ombre_ampRelease": 1.214,
+      "ombre_ampSustain": 0.442,
+      "ombre_blend": 0.673,
+      "ombre_crossfadeRate": 0.237,
+      "ombre_duskPosition": 0.736,
+      "ombre_filterCutoff": 5722.8,
+      "ombre_filterReso": 0.123,
+      "ombre_forgetRate": 0.582,
+      "ombre_level": 0.66,
+      "ombre_lfo1Depth": 0.558,
+      "ombre_lfo1Rate": 1.177,
+      "ombre_lfo2Depth": 0.11,
+      "ombre_lfo2Rate": 0.69,
+      "ombre_memoryDepth": 0.787,
+      "ombre_modAttack": 0.0786,
+      "ombre_modDecay": 0.692,
+      "ombre_modRelease": 0.675,
+      "ombre_modSustain": 0.447,
+      "ombre_narrativeA": 0.434,
+      "ombre_narrativeB": 0.214,
+      "ombre_reverbDamp": 0.323,
+      "ombre_reverbSize": 0.816,
+      "ombre_shadowAmount": 0.559,
+      "ombre_spaceMix": 0.61,
+      "ombre_toneA": 2005.1,
+      "ombre_toneB": 617.8
+    },
+    "Overdub": {
+      "dub_filterCutoff": 5501.1,
+      "dub_level": 0.672
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -18,68 +80,6 @@
     "twilight",
     "liminal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "Ombre": {
-      "ombre_blend": 0.673,
-      "ombre_memoryDepth": 0.787,
-      "ombre_forgetRate": 0.582,
-      "ombre_shadowAmount": 0.559,
-      "ombre_duskPosition": 0.736,
-      "ombre_narrativeA": 0.434,
-      "ombre_narrativeB": 0.214,
-      "ombre_crossfadeRate": 0.237,
-      "ombre_toneA": 2005.1,
-      "ombre_toneB": 617.8,
-      "ombre_filterCutoff": 5722.8,
-      "ombre_filterReso": 0.123,
-      "ombre_level": 0.66,
-      "ombre_ampAttack": 0.1706,
-      "ombre_ampDecay": 0.364,
-      "ombre_ampSustain": 0.442,
-      "ombre_ampRelease": 1.214,
-      "ombre_modAttack": 0.0786,
-      "ombre_modDecay": 0.692,
-      "ombre_modSustain": 0.447,
-      "ombre_modRelease": 0.675,
-      "ombre_lfo1Rate": 1.177,
-      "ombre_lfo1Depth": 0.558,
-      "ombre_lfo2Rate": 0.69,
-      "ombre_lfo2Depth": 0.11,
-      "ombre_spaceMix": 0.61,
-      "ombre_reverbSize": 0.816,
-      "ombre_reverbDamp": 0.323
-    },
-    "Overdub": {
-      "dub_level": 0.672,
-      "dub_filterCutoff": 5501.1
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "SPATIAL_BLEND",
-        "source": "Ombre",
-        "target": "Overdub",
-        "amount": 0.65
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.339,
-    "warmth": 0.677,
-    "movement": 0.48,
-    "density": 0.412,
-    "space": 0.677,
-    "aggression": 0.266
-  }
+  "version": "1.0.0"
 }

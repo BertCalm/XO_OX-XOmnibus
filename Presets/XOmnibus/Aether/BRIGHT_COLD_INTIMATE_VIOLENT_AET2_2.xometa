@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_AET2_2",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "OddfeliX",
+        "type": "CHAOS_INJECT",
+        "amount": 0.9037
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9231,
+    "brightness": 0.9371,
+    "density": 0.6568,
+    "movement": 0.626,
+    "space": 0.0804,
+    "warmth": 0.0549
+  },
   "engines": [
-    "OBLIQUE",
-    "ODDFELIX"
+    "Oblique",
+    "OddfeliX"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9513,
+    "COUPLING": 0.9037,
+    "MOVEMENT": 0.6385,
+    "SPACE": 0.0804
+  },
+  "mood": "Aether",
+  "name": "Arctic Edge 2",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.9517,
-      "macro_movement": 0.6245,
       "macro_coupling": 0.6424,
+      "macro_movement": 0.6245,
       "macro_space": 0.0652
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.9509,
-      "macro_movement": 0.6526,
       "macro_coupling": 0.6589,
+      "macro_movement": 0.6526,
       "macro_space": 0.0931
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OBLIQUE",
-    "target": "ODDFELIX",
-    "amount": 0.9037
-  },
-  "dna": {
-    "brightness": 0.9371,
-    "warmth": 0.0549,
-    "space": 0.0804,
-    "aggression": 0.9231,
-    "movement": 0.626,
-    "density": 0.6568
-  },
-  "macros": {
-    "CHARACTER": 0.9513,
-    "MOVEMENT": 0.6385,
-    "COUPLING": 0.9037,
-    "SPACE": 0.0804
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +60,6 @@
     "intimate",
     "violent",
     "crystalline"
-  ]
+  ],
+  "version": "1.0"
 }

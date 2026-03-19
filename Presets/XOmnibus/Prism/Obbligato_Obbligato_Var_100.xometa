@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Obbligato Var 100",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Air jet and reed refract separately. The brothers in prism, each color revealed.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.78,
+    "density": 0.26,
+    "movement": 0.4,
+    "space": 0.6,
+    "warmth": 0.31
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "prism",
-    "bright",
-    "prism"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.78,
-    "warmth": 0.31,
-    "movement": 0.4,
-    "density": 0.26,
-    "space": 0.6,
-    "aggression": 0.2
-  },
+  "mood": "Prism",
+  "name": "Obbligato Var 100",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.628,
-      "obbl_embouchureA": 0.415,
       "obbl_airFlutterA": 0.163,
-      "obbl_instrumentA": 3,
       "obbl_bodySizeA": 0.333,
-      "obbl_breathB": 0.676,
-      "obbl_reedStiffness": 0.693,
-      "obbl_reedBite": 0.323,
-      "obbl_instrumentB": 3,
       "obbl_bodySizeB": 0.553,
-      "obbl_voiceRouting": 4,
-      "obbl_damping": 0.996,
-      "obbl_sympatheticAmt": 0.43,
-      "obbl_driftRate": 0.13,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.0,
       "obbl_bondIntensity": 0.405,
       "obbl_bondRate": 0.211,
-      "obbl_fxAChorus": 0.429,
+      "obbl_bondStage": 0.0,
+      "obbl_breathA": 0.628,
+      "obbl_breathB": 0.676,
+      "obbl_damping": 0.996,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.13,
+      "obbl_embouchureA": 0.415,
       "obbl_fxABrightDelay": 0.249,
-      "obbl_fxAPlate": 0.075,
+      "obbl_fxAChorus": 0.429,
       "obbl_fxAExciter": 0.025,
-      "obbl_fxBPhaser": 0.186,
+      "obbl_fxAPlate": 0.075,
       "obbl_fxBDarkDelay": 0.357,
+      "obbl_fxBPhaser": 0.186,
       "obbl_fxBSpring": 0.298,
       "obbl_fxBTapeSat": 0.041,
-      "obbl_macroBreath": 0.647,
+      "obbl_instrumentA": 3,
+      "obbl_instrumentB": 3,
       "obbl_macroBond": 0.351,
+      "obbl_macroBreath": 0.647,
       "obbl_macroMischief": 0.121,
-      "obbl_macroWind": 0.156
+      "obbl_macroWind": 0.156,
+      "obbl_reedBite": 0.323,
+      "obbl_reedStiffness": 0.693,
+      "obbl_sympatheticAmt": 0.43,
+      "obbl_voiceRouting": 4
     }
   },
-  "coupling": null,
-  "description": "Air jet and reed refract separately. The brothers in prism, each color revealed."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "prism",
+    "bright",
+    "prism"
+  ],
+  "version": "1.0.0"
 }

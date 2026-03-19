@@ -1,50 +1,62 @@
 {
-  "name": "DARK_DENSE_VAST_GENTLE_ATM_2",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OCEANIC",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "OCEANIC": {
-      "macro_character": 0.531,
-      "macro_movement": 0.507,
-      "macro_coupling": 0.738,
-      "macro_space": 0.89
-    },
-    "OBLIQUE": {
-      "macro_character": 0.624,
-      "macro_movement": 0.611,
-      "macro_coupling": 0.776,
-      "macro_space": 0.955
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OCEANIC",
-    "target": "OBLIQUE",
-    "amount": 0.832
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oblique",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.832
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.07,
     "brightness": 0.126,
-    "warmth": 0.461,
-    "movement": 0.578,
     "density": 0.868,
+    "movement": 0.578,
     "space": 0.969,
-    "aggression": 0.07
+    "warmth": 0.461
   },
+  "engines": [
+    "Oceanic",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.531,
-    "MOVEMENT": 0.507,
     "COUPLING": 0.738,
+    "MOVEMENT": 0.507,
     "SPACE": 0.89
   },
+  "mood": "Atmosphere",
+  "name": "DARK_DENSE_VAST_GENTLE_ATM_2",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.624,
+      "macro_coupling": 0.776,
+      "macro_movement": 0.611,
+      "macro_space": 0.955
+    },
+    "Oceanic": {
+      "macro_character": 0.531,
+      "macro_coupling": 0.738,
+      "macro_movement": 0.507,
+      "macro_space": 0.89
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "dense",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

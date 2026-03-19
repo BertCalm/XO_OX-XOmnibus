@@ -1,51 +1,62 @@
 {
-  "name": "Bright Girth Loop",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Ouroboros",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7
+      }
+    ]
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.9,
+    "density": 0.4,
+    "movement": 0.7,
+    "space": 0.7,
+    "warmth": 0.3
+  },
   "engines": [
-    "OBESE",
-    "OUROBOROS"
+    "Obese",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.75,
+    "SPACE": 0.65
+  },
+  "mood": "Entangled",
+  "name": "Bright Girth Loop",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.9,
-      "macro_movement": 0.7,
       "macro_coupling": 0.7,
+      "macro_movement": 0.7,
       "macro_space": 0.7
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.3,
-      "macro_movement": 0.8,
       "macro_coupling": 0.7,
+      "macro_movement": 0.8,
       "macro_space": 0.6
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBESE",
-    "target": "OUROBOROS",
-    "amount": 0.7
-  },
-  "dna": {
-    "brightness": 0.9,
-    "warmth": 0.3,
-    "movement": 0.7,
-    "density": 0.4,
-    "space": 0.7,
-    "aggression": 0.3
-  },
-  "macros": {
-    "CHARACTER": 0.6,
-    "MOVEMENT": 0.75,
-    "COUPLING": 0.7,
-    "SPACE": 0.65
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "obese",
     "ouroboros"
   ],
-  "author": "XO_OX Coverage Pack 2026-03-16",
-  "created": "2026-03-16"
+  "version": "1.0"
 }

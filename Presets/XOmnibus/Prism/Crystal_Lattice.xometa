@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Crystal Lattice",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "Precise, geometric harmonics. Mathematical beauty.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.75,
+    "density": 0.5,
+    "movement": 0.2,
+    "space": 0.2,
+    "warmth": 0.25
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Precise, geometric harmonics. Mathematical beauty.",
-  "tags": [
-    "crystal",
-    "geometric",
-    "precise",
-    "mathematical"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Crystal Lattice",
   "parameters": {
     "Organon": {
-      "organon_metabolicRate": 1.5,
-      "organon_enzymeSelect": 4000.0,
       "organon_catalystDrive": 0.6,
       "organon_dampingCoeff": 0.2,
-      "organon_signalFlux": 0.5,
-      "organon_phasonShift": 0.0,
+      "organon_enzymeSelect": 4000.0,
       "organon_isotopeBalance": 0.75,
       "organon_lockIn": 0.0,
       "organon_membrane": 0.2,
-      "organon_noiseColor": 0.75
+      "organon_metabolicRate": 1.5,
+      "organon_noiseColor": 0.75,
+      "organon_phasonShift": 0.0,
+      "organon_signalFlux": 0.5
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.75,
-    "warmth": 0.25,
-    "movement": 0.2,
-    "density": 0.5,
-    "space": 0.2,
-    "aggression": 0.2
-  }
+  "tags": [
+    "crystal",
+    "geometric",
+    "precise",
+    "mathematical"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

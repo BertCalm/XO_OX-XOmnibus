@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Drifting Kelp",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Vast dream pads space with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.058,
+    "brightness": 0.381,
+    "density": 0.358,
+    "movement": 0.21,
+    "space": 0.557,
+    "warmth": 0.553
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Vast dream pads space with bob character and analog drift.",
-  "tags": [
-    "dream",
-    "underwater",
-    "organic"
-  ],
+  "legacy": {
+    "sourceCategory": "Dream Pads",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Dream Pads",
-    "sourcePresetName": null
-  },
+  "mood": "Aether",
+  "name": "Drifting Kelp",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
-      "bob_oscA_shape": 0.35,
-      "bob_oscA_drift": 0.45,
-      "bob_oscB_wave": 2.0,
-      "bob_oscB_blend": 0.6,
-      "bob_oscB_detune": 13.0,
-      "bob_curMode": 1.0,
-      "bob_curAmount": 0.42,
-      "bob_fltMode": 0.0,
-      "bob_fltCutoff": 2400.0,
-      "bob_fltReso": 0.18,
       "bob_ampAttack": 1.6,
       "bob_ampDecay": 2.0,
-      "bob_ampSustain": 0.85,
       "bob_ampRelease": 5.5,
-      "bob_bobMode": 0.52
+      "bob_ampSustain": 0.85,
+      "bob_bobMode": 0.52,
+      "bob_curAmount": 0.42,
+      "bob_curMode": 1.0,
+      "bob_fltCutoff": 2400.0,
+      "bob_fltMode": 0.0,
+      "bob_fltReso": 0.18,
+      "bob_oscA_drift": 0.45,
+      "bob_oscA_shape": 0.35,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.6,
+      "bob_oscB_detune": 13.0,
+      "bob_oscB_wave": 2.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.381,
-    "warmth": 0.553,
-    "movement": 0.21,
-    "density": 0.358,
-    "space": 0.557,
-    "aggression": 0.058
-  }
+  "tags": [
+    "dream",
+    "underwater",
+    "organic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

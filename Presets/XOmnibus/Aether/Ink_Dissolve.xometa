@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Ink Dissolve",
-  "mood": "Aether",
-  "sonic_dna": {
-    "brightness": 0.11,
-    "warmth": 0.75,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Black ink expanding in still water",
+  "dna": {
     "aggression": 0.1,
-    "movement": 0.2,
+    "brightness": 0.11,
     "density": 0.55,
-    "space": 0.65
+    "movement": 0.2,
+    "space": 0.65,
+    "warmth": 0.75
   },
   "engines": [
-    "OMBRE"
+    "Ombre"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Black ink expanding in still water",
+  "macroLabels": [
+    "FADE",
+    "DEPTH",
+    "COUPLING",
+    "SHADE"
+  ],
+  "mood": "Aether",
+  "name": "Ink Dissolve",
+  "parameters": {
+    "Ombre": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.1,
+    "brightness": 0.11,
+    "density": 0.55,
+    "movement": 0.2,
+    "space": 0.65,
+    "warmth": 0.75
+  },
   "tags": [
     "aether",
     "dark",
@@ -24,23 +44,5 @@
     "dissolve",
     "water"
   ],
-  "macroLabels": [
-    "FADE",
-    "DEPTH",
-    "COUPLING",
-    "SHADE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.11,
-    "warmth": 0.75,
-    "movement": 0.2,
-    "density": 0.55,
-    "space": 0.65,
-    "aggression": 0.1
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Black Iris",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OBSCURA fully closed — shadow at maximum density. The pupil in total darkness.",
+  "dna": {
+    "aggression": 0.62,
+    "brightness": 0.08,
+    "density": 0.82,
+    "movement": 0.18,
+    "space": 0.3,
+    "warmth": 0.25
+  },
   "engines": [
-    "OBSCURA"
+    "Obscura"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBSCURA fully closed \u2014 shadow at maximum density. The pupil in total darkness.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "SHADOW",
+    "DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Black Iris",
+  "parameters": {
+    "Obscura": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "portrait",
@@ -16,29 +41,6 @@
     "shadow",
     "dense"
   ],
-  "macroLabels": [
-    "SHADOW",
-    "DEPTH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.08,
-    "warmth": 0.25,
-    "movement": 0.18,
-    "density": 0.82,
-    "space": 0.3,
-    "aggression": 0.62
-  }
+  "version": "1.0.0"
 }

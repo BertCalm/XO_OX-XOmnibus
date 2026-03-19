@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_WARM_DENSE_VAST_FND_2",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OBLONG",
-    "OBESE"
-  ],
-  "parameters": {
-    "OBLONG": {
-      "macro_character": 0.607,
-      "macro_movement": 0.355,
-      "macro_coupling": 0.855,
-      "macro_space": 0.158
-    },
-    "OBESE": {
-      "macro_character": 0.127,
-      "macro_movement": 0.579,
-      "macro_coupling": 0.159,
-      "macro_space": 0.81
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OBLONG",
-    "target": "OBESE",
-    "amount": 0.486
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Obese",
+        "type": "FILTER_MOD",
+        "amount": 0.486
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.538,
     "brightness": 0.895,
-    "warmth": 0.927,
-    "movement": 0.517,
     "density": 0.862,
+    "movement": 0.517,
     "space": 0.943,
-    "aggression": 0.538
+    "warmth": 0.927
   },
+  "engines": [
+    "Oblong",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.827,
-    "MOVEMENT": 0.188,
     "COUPLING": 0.14,
+    "MOVEMENT": 0.188,
     "SPACE": 0.669
   },
+  "mood": "Foundation",
+  "name": "BRIGHT_WARM_DENSE_VAST_FND_2",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.127,
+      "macro_coupling": 0.159,
+      "macro_movement": 0.579,
+      "macro_space": 0.81
+    },
+    "Oblong": {
+      "macro_character": 0.607,
+      "macro_coupling": 0.855,
+      "macro_movement": 0.355,
+      "macro_space": 0.158
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -48,5 +59,6 @@
     "dense",
     "vast",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Variational Pluck",
-  "mood": "Entangled",
-  "engines": [
-    "ORGANON",
-    "ORPHICA"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Organon variational energy velocity-couples ORPHICA pluck intensity \u2014 adaptive harp.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.62,
+        "engineA": "Organon",
+        "engineB": "Orphica",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Organon variational energy velocity-couples ORPHICA pluck intensity — adaptive harp.",
+  "dna": {
+    "aggression": 0.07,
+    "brightness": 0.75,
+    "density": 0.42,
+    "movement": 0.62,
+    "space": 0.72,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Organon",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.575,
+    "COUPLING": 0.62,
+    "MOVEMENT": 0.6,
+    "SPACE": 0.64
+  },
+  "mood": "Entangled",
+  "name": "Variational Pluck",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.5,
+      "macro_coupling": 0.62,
+      "macro_movement": 0.7,
+      "macro_space": 0.55
+    },
+    "Orphica": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.62,
+      "macro_movement": 0.5,
+      "macro_space": 0.73
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "pluck",
     "velocity"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.75,
-    "warmth": 0.45,
-    "movement": 0.62,
-    "density": 0.42,
-    "space": 0.72,
-    "aggression": 0.07
-  },
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.5,
-      "macro_movement": 0.7,
-      "macro_coupling": 0.62,
-      "macro_space": 0.55
-    },
-    "ORPHICA": {
-      "macro_character": 0.65,
-      "macro_movement": 0.5,
-      "macro_coupling": 0.62,
-      "macro_space": 0.73
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORGANON",
-        "engineB": "ORPHICA",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.62
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.575,
-    "MOVEMENT": 0.6,
-    "COUPLING": 0.62,
-    "SPACE": 0.64
-  },
-  "sequencer": null
+  "version": "1.0"
 }

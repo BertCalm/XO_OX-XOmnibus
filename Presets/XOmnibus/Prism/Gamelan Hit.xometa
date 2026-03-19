@@ -1,61 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Gamelan Hit",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Focused keys & bells tone with warm character.",
+  "dna": {
+    "aggression": 0.179,
+    "brightness": 0.64,
+    "density": 0.597,
+    "movement": 0.0,
+    "space": 0.374,
+    "warmth": 0.191
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Focused keys & bells tone with warm character.",
-  "tags": [
-    "bell",
-    "gamelan",
-    "percussive"
-  ],
+  "legacy": {
+    "sourceCategory": "Keys & Bells",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Keys & Bells",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Gamelan Hit",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 3.0,
-      "bob_oscA_shape": 0.58,
-      "bob_oscA_drift": 0.1,
-      "bob_oscB_wave": 1.0,
-      "bob_oscB_fm": 0.62,
-      "bob_oscB_blend": 0.7,
-      "bob_oscB_detune": 11.0,
-      "bob_fltMode": 2.0,
-      "bob_fltCutoff": 5500.0,
-      "bob_fltReso": 0.55,
-      "bob_fltChar": 0.7,
-      "bob_fltEnvAmt": 0.6,
       "bob_ampAttack": 0.002,
       "bob_ampDecay": 2.0,
-      "bob_ampSustain": 0.0,
       "bob_ampRelease": 1.8,
-      "bob_bobMode": 0.2
+      "bob_ampSustain": 0.0,
+      "bob_bobMode": 0.2,
+      "bob_fltChar": 0.7,
+      "bob_fltCutoff": 5500.0,
+      "bob_fltEnvAmt": 0.6,
+      "bob_fltMode": 2.0,
+      "bob_fltReso": 0.55,
+      "bob_oscA_drift": 0.1,
+      "bob_oscA_shape": 0.58,
+      "bob_oscA_wave": 3.0,
+      "bob_oscB_blend": 0.7,
+      "bob_oscB_detune": 11.0,
+      "bob_oscB_fm": 0.62,
+      "bob_oscB_wave": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.64,
-    "warmth": 0.191,
-    "movement": 0.0,
-    "density": 0.597,
-    "space": 0.374,
-    "aggression": 0.179
-  }
+  "tags": [
+    "bell",
+    "gamelan",
+    "percussive"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

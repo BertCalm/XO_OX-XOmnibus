@@ -33,7 +33,9 @@
     "space": 0.08,
     "aggression": 0.95
   },
-  "parameters": {},
+  "parameters": {
+    "Obese": {}
+  },
   "tags": [
     "flux",
     "maximum",
@@ -41,5 +43,5 @@
     "saturation",
     "riot"
   ],
-  "description": "MOJO slammed \u2014 every harmonic screaming at once, saturation absolute."
+  "description": "MOJO slammed — every harmonic screaming at once, saturation absolute."
 }

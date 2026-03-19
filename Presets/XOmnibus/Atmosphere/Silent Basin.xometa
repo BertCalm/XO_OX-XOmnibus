@@ -1,25 +1,35 @@
 {
-  "name": "Silent Basin",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Down past the mesopelagic, into true dark. A pad with gravitational mass.",
   "engines": [
-    "ORACLE"
+    "Oracle"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.294,
-    "MOVEMENT": 0.24,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.24,
     "SPACE": 0.961
   },
-  "sonic_dna": {
-    "brightness": 0.165,
-    "warmth": 0.424,
-    "movement": 0.24,
-    "density": 0.671,
-    "space": 0.961,
-    "aggression": 0.015
+  "mood": "Atmosphere",
+  "name": "Silent Basin",
+  "parameters": {
+    "Oracle": {}
   },
-  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.015,
+    "brightness": 0.165,
+    "density": 0.671,
+    "movement": 0.24,
+    "space": 0.961,
+    "warmth": 0.424
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +37,13 @@
     "deep",
     "vast"
   ],
-  "description": "Down past the mesopelagic, into true dark. A pad with gravitational mass."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.2
+  }
 }

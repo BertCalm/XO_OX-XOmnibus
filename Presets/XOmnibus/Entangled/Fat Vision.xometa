@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Fat Vision",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.8,
+    "pairs": [
+      {
+        "amount": 0.8,
+        "engineA": "Obese",
+        "engineB": "Oracle",
+        "type": "Amp->Amp"
+      }
+    ],
+    "type": "Amp->Amp"
+  },
+  "couplingIntensity": "Deep",
+  "description": "OBESE mojo reveals ORACLE vision. Saturated prophecy. [Amp->Amp]",
+  "dna": {
+    "aggression": 0.609,
     "brightness": 0.521,
-    "warmth": 0.519,
-    "movement": 0.529,
     "density": 0.744,
+    "movement": 0.529,
     "space": 0.537,
-    "aggression": 0.609
+    "warmth": 0.519
   },
   "engines": [
-    "XObese",
-    "XOracle"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE mojo reveals ORACLE vision. Saturated prophecy. [Amp->Amp]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "obese",
-    "oracle",
-    "fat"
+    "Obese",
+    "Oracle"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Deep",
-  "dna": {
-    "brightness": 0.521,
-    "warmth": 0.519,
-    "movement": 0.529,
-    "density": 0.744,
-    "space": 0.537,
-    "aggression": 0.609
-  },
+  "mood": "Entangled",
+  "name": "Fat Vision",
   "parameters": {
-    "XObese": {
+    "Obese": {
+      "fat_aggression": 0.686,
+      "fat_brightness": 0.502,
+      "fat_couplingBus": 0,
+      "fat_couplingLevel": 0.57,
       "fat_outputLevel": 0.86,
       "fat_outputPan": -0.05,
-      "fat_couplingLevel": 0.57,
-      "fat_couplingBus": 0,
-      "fat_brightness": 0.502,
-      "fat_warmth": 0.662,
-      "fat_aggression": 0.686
+      "fat_warmth": 0.662
     },
-    "XOracle": {
+    "Oracle": {
+      "orc_aggression": 0.465,
+      "orc_brightness": 0.476,
+      "orc_couplingBus": 0,
+      "orc_couplingLevel": 0.74,
       "orc_outputLevel": 0.79,
       "orc_outputPan": -0.04,
-      "orc_couplingLevel": 0.74,
-      "orc_couplingBus": 0,
-      "orc_brightness": 0.476,
-      "orc_warmth": 0.415,
-      "orc_aggression": 0.465
+      "orc_warmth": 0.415
     }
   },
-  "coupling": {
-    "type": "Amp->Amp",
-    "amount": 0.8,
-    "pairs": [
-      {
-        "engineA": "XObese",
-        "engineB": "XOracle",
-        "type": "Amp->Amp",
-        "amount": 0.8
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.609,
+    "brightness": 0.521,
+    "density": 0.744,
+    "movement": 0.529,
+    "space": 0.537,
+    "warmth": 0.519
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "oracle",
+    "fat"
+  ],
+  "version": "1.0.0"
 }

@@ -47,7 +47,7 @@ VALID_ENGINES = {
     "Oracle", "Obscura", "Oceanic", "Optic", "Oblique",
     "Ocelot", "Osprey", "Osteria", "Owlfish",
     "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole",
-    "Ombre",
+    "Ombre", "Orca", "Octopus", "Overlap", "Outwit",
     # Legacy aliases (resolved by PresetManager::resolveEngineAlias)
     "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite",
     "XOverdub", "XOdyssey", "XOblong", "XObese", "XOnset",

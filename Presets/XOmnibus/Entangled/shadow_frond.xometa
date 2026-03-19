@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Shadow Frond",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "OBSCURA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Overlap",
+        "engineB": "Obscura",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
   "description": "Lion's Mane knot-topology FDN entangled with OBSCURA's daguerreotype-veiled spectral character (plate physics and silver grain). Coupling: Velocity Couple.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "overlap",
-    "obscura",
-    "spatial",
-    "lush"
+  "dna": {
+    "aggression": 0.23,
+    "brightness": 0.2,
+    "density": 0.04,
+    "movement": 0.48,
+    "space": 0.75,
+    "warmth": 0.44
+  },
+  "engines": [
+    "Overlap",
+    "Obscura"
   ],
   "macroLabels": [
     "TOPOLOGY",
@@ -25,77 +32,66 @@
   ],
   "macros": {
     "CHARACTER": 0.57,
-    "MOVEMENT": 0.37,
     "COUPLING": 0.55,
+    "MOVEMENT": 0.37,
     "SPACE": 0.75
   },
-  "couplingIntensity": "Moderate",
-  "sonic_dna": {
-    "brightness": 0.2,
-    "warmth": 0.44,
-    "movement": 0.48,
-    "density": 0.04,
-    "space": 0.75,
-    "aggression": 0.23
-  },
-  "dna": {
-    "brightness": 0.2,
-    "warmth": 0.44,
-    "movement": 0.48,
-    "density": 0.04,
-    "space": 0.75,
-    "aggression": 0.23
-  },
+  "mood": "Entangled",
+  "name": "Shadow Frond",
   "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.75,
-      "olap_decay": 0.55,
+    "Obscura": {
+      "obscura_ampAttack": 0.06,
+      "obscura_ampRelease": 0.34,
+      "obscura_ampSustain": 0.81,
+      "obscura_character": 0.64,
+      "obscura_coupling": 0.84,
+      "obscura_couplingLevel": 0.54,
+      "obscura_filterCutoff": 0.38,
+      "obscura_filterReso": 0.14,
+      "obscura_movement": 0.71,
+      "obscura_outputLevel": 0.69,
+      "obscura_reverbMix": 0.24,
+      "obscura_space": 0.34
+    },
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.58,
+      "olap_crossfeedAmt": 0.34,
       "olap_damping": 0.34,
+      "olap_decay": 0.55,
       "olap_diffusion": 0.73,
-      "olap_modDepth": 0.38,
-      "olap_modRate": 0.04,
-      "olap_preDelay": 0.23,
       "olap_earlyMix": 0.25,
-      "olap_lateMix": 0.68,
       "olap_filterCutoff": 0.73,
       "olap_filterReso": 0.41,
       "olap_frondDensity": 0.67,
+      "olap_lateMix": 0.68,
+      "olap_modDepth": 0.38,
+      "olap_modRate": 0.04,
       "olap_nodeCount": 11,
-      "olap_crossfeedAmt": 0.34,
-      "olap_spinRate": 0.27,
-      "olap_shimmerMix": 0.06,
-      "olap_couplingLevel": 0.58,
-      "olap_couplingBus": 0,
       "olap_outputLevel": 0.73,
-      "olap_outputPan": -0.12
-    },
-    "OBSCURA": {
-      "obscura_character": 0.64,
-      "obscura_movement": 0.71,
-      "obscura_coupling": 0.84,
-      "obscura_space": 0.34,
-      "obscura_filterCutoff": 0.38,
-      "obscura_filterReso": 0.14,
-      "obscura_ampAttack": 0.06,
-      "obscura_ampSustain": 0.81,
-      "obscura_ampRelease": 0.34,
-      "obscura_reverbMix": 0.24,
-      "obscura_couplingLevel": 0.54,
-      "obscura_outputLevel": 0.69
+      "olap_outputPan": -0.12,
+      "olap_preDelay": 0.23,
+      "olap_shimmerMix": 0.06,
+      "olap_size": 0.75,
+      "olap_spinRate": 0.27
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OVERLAP",
-    "target": "OBSCURA",
-    "amount": 0.65,
-    "pairs": [
-      {
-        "engineA": "OVERLAP",
-        "engineB": "OBSCURA",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.65
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.23,
+    "brightness": 0.2,
+    "density": 0.04,
+    "movement": 0.48,
+    "space": 0.75,
+    "warmth": 0.44
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "obscura",
+    "spatial",
+    "lush"
+  ],
+  "version": "1.0.0"
 }

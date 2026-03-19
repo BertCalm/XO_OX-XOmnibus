@@ -1,43 +1,76 @@
 {
-  "schema_version": 1,
-  "name": "OddPair Siblings At Rest",
-  "mood": "Family",
-  "engines": ["OddfeliX", "OddOscar"],
-  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
-  "version": "1.0.0",
-  "description": "Both siblings at rest — a gentle conversation in still water. feliX's low filter murmurs while Oscar barely morphs. Low aggression, wide space, warm as a shared tank at dusk.",
-  "tags": ["family", "oddfelix", "oddoscar", "ambient", "rest", "gentle", "warm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
-  "tempo": null,
-  "dna": { "brightness": 0.35, "warmth": 0.7, "movement": 0.2, "density": 0.3, "space": 0.8, "aggression": 0.1 },
-  "parameters": {
-    "OddfeliX": {
-      "snap_filterCutoff": 800,
-      "snap_filterRes": 0.2,
-      "snap_oscWave": 0.15,
-      "snap_envAttack": 0.08,
-      "snap_envDecay": 0.5,
-      "snap_envSustain": 0.75,
-      "snap_envRelease": 1.2,
-      "snap_lfo1Rate": 0.05,
-      "snap_lfo1Depth": 0.12
-    },
-    "OddOscar": {
-      "morph_morph": 0.3,
-      "morph_filterCutoff": 600,
-      "morph_filterRes": 0.15,
-      "morph_envAttack": 0.1,
-      "morph_envDecay": 0.6,
-      "morph_envSustain": 0.8,
-      "morph_envRelease": 1.5
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
-      { "source": "OddfeliX", "target": "OddOscar", "type": "AmpToFilter", "amount": 0.2 },
-      { "source": "OddOscar", "target": "OddfeliX", "type": "AmpToFilter", "amount": 0.2 }
+      {
+        "amount": 0.2,
+        "source": "OddfeliX",
+        "target": "OddOscar",
+        "type": "AmpToFilter"
+      },
+      {
+        "amount": 0.2,
+        "source": "OddOscar",
+        "target": "OddfeliX",
+        "type": "AmpToFilter"
+      }
     ]
   },
-  "sequencer": null
+  "couplingIntensity": "Medium",
+  "description": "Both siblings at rest — a gentle conversation in still water. feliX's low filter murmurs while Oscar barely morphs. Low aggression, wide space, warm as a shared tank at dusk.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.35,
+    "density": 0.3,
+    "movement": 0.2,
+    "space": 0.8,
+    "warmth": 0.7
+  },
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "OddPair Siblings At Rest",
+  "parameters": {
+    "OddOscar": {
+      "morph_envAttack": 0.1,
+      "morph_envDecay": 0.6,
+      "morph_envRelease": 1.5,
+      "morph_envSustain": 0.8,
+      "morph_filterCutoff": 600,
+      "morph_filterRes": 0.15,
+      "morph_morph": 0.3
+    },
+    "OddfeliX": {
+      "snap_envAttack": 0.08,
+      "snap_envDecay": 0.5,
+      "snap_envRelease": 1.2,
+      "snap_envSustain": 0.75,
+      "snap_filterCutoff": 800,
+      "snap_filterRes": 0.2,
+      "snap_lfo1Depth": 0.12,
+      "snap_lfo1Rate": 0.05,
+      "snap_oscWave": 0.15
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "family",
+    "oddfelix",
+    "oddoscar",
+    "ambient",
+    "rest",
+    "gentle",
+    "warm"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,49 +1,61 @@
 {
-  "name": "FIBER CAGE",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ODYSSEY",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "ODYSSEY": {
-      "macro_character": 0.357,
-      "macro_movement": 0.601,
-      "macro_coupling": 0.767,
-      "macro_space": 0.042
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.661,
-      "macro_movement": 0.655,
-      "macro_coupling": 0.342,
-      "macro_space": 0.025
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBBLIGATO",
-    "target": "ODYSSEY",
-    "amount": 0.584
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Odyssey",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.584
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.445,
     "brightness": 0.852,
-    "warmth": 0.77,
-    "movement": 0.305,
     "density": 0.566,
+    "movement": 0.305,
     "space": 0.025,
-    "aggression": 0.445
+    "warmth": 0.77
   },
+  "engines": [
+    "Odyssey",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.946,
-    "MOVEMENT": 0.274,
     "COUPLING": 0.28,
+    "MOVEMENT": 0.274,
     "SPACE": 0.025
   },
+  "mood": "Entangled",
+  "name": "FIBER CAGE",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.661,
+      "macro_coupling": 0.342,
+      "macro_movement": 0.655,
+      "macro_space": 0.025
+    },
+    "Odyssey": {
+      "macro_character": 0.357,
+      "macro_coupling": 0.767,
+      "macro_movement": 0.601,
+      "macro_space": 0.042
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-  ]
+  ],
+  "version": "1.0"
 }

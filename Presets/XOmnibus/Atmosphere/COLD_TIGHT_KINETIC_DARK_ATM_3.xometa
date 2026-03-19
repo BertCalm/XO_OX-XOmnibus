@@ -1,47 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "COLD TIGHT KINETIC DARK ATM 3",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Medium",
+    "sourceEngine": "Optic",
+    "targetEngine": null,
+    "type": "Chaos"
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: COLD TIGHT KINETIC DARK ATM 3.",
+  "dna": {
+    "aggression": 0.506,
+    "brightness": 0.045,
+    "density": 0.52,
+    "movement": 0.949,
+    "space": 0.048,
+    "warmth": 0.063
+  },
   "engines": [
     "Optic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Atmosphere preset: COLD TIGHT KINETIC DARK ATM 3.",
-  "tags": [
-    "x-low-brightness",
-    "x-low-warmth",
-    "x-high-movement",
-    "x-low-space"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
+  "mood": "Atmosphere",
+  "name": "COLD TIGHT KINETIC DARK ATM 3",
+  "parameters": {
+    "Optic": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "Chaos",
-    "intensity": "Medium",
-    "sourceEngine": "Optic",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.045,
-    "warmth": 0.063,
-    "aggression": 0.506,
-    "density": 0.52,
-    "movement": 0.949,
-    "space": 0.048
-  }
+  "tags": [
+    "x-low-brightness",
+    "x-low-warmth",
+    "x-high-movement",
+    "x-low-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

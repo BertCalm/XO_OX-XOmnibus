@@ -1,33 +1,48 @@
 {
-  "name": "Glass Prophecy",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oracle",
+        "type": "SPECTRAL_FOLD",
+        "amount": 0.72
+      }
+    ]
+  },
+  "description": "Optic's icy prism splits Oracle's visions into cold glass harmonics.",
   "engines": [
-    "OPTIC",
-    "ORACLE"
+    "Optic",
+    "Oracle"
   ],
-  "mood": "Entangled",
-  "strategy": "Bright Dark",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8,
-    "MOVEMENT": 0.4,
     "COUPLING": 0.8,
+    "MOVEMENT": 0.4,
     "SPACE": 0.7
   },
+  "mood": "Entangled",
+  "name": "Glass Prophecy",
+  "parameters": {
+    "Optic": {},
+    "Oracle": {}
+  },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.25,
     "brightness": 0.93,
-    "warmth": 0.08,
-    "movement": 0.45,
     "density": 0.6,
+    "movement": 0.45,
     "space": 0.72,
-    "aggression": 0.25
+    "warmth": 0.08
   },
-  "parameters": {},
-  "coupling": {
-    "type": "SPECTRAL_FOLD",
-    "source": "OPTIC",
-    "target": "ORACLE",
-    "amount": 0.72
-  },
+  "strategy": "Bright Dark",
   "tags": [
     "entangled",
     "bright",
@@ -35,5 +50,13 @@
     "crystalline",
     "prophetic"
   ],
-  "description": "Optic's icy prism splits Oracle's visions into cold glass harmonics."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Sage Space",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "OHM"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.866,
+        "engineA": "Overlap",
+        "engineB": "Ohm",
+        "type": "FILTER_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
   "description": "OHM commune resonance breathes into OVERLAP mod rate — hippy dad jam in an infinite cave",
-  "tags": [
-    "coupling",
-    "entangled",
-    "overlap",
-    "ohm",
-    "meditative",
-    "commune"
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.5,
+    "density": 0.575,
+    "movement": 0.45,
+    "space": 0.75,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Overlap",
+    "Ohm"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,58 +32,51 @@
   ],
   "macros": {
     "CHARACTER": 0.396,
-    "MOVEMENT": 0.659,
     "COUPLING": 0.853,
+    "MOVEMENT": 0.659,
     "SPACE": 0.771
   },
-  "couplingIntensity": "Deep",
-  "dna": {
-    "brightness": 0.5,
-    "space": 0.75,
-    "aggression": 0.2,
-    "movement": 0.45,
-    "warmth": 0.6,
-    "density": 0.575
-  },
-  "sonic_dna": {
-    "brightness": 0.5,
-    "space": 0.75,
-    "aggression": 0.2,
-    "movement": 0.45,
-    "warmth": 0.6,
-    "density": 0.575
-  },
+  "mood": "Entangled",
+  "name": "Sage Space",
   "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.623,
-      "olap_decay": 0.734,
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.834,
+      "olap_crossfeedAmt": 0.215,
       "olap_damping": 0.504,
+      "olap_decay": 0.734,
       "olap_diffusion": 0.697,
-      "olap_modDepth": 0.136,
-      "olap_modRate": 0.172,
-      "olap_preDelay": 0.1,
       "olap_earlyMix": 0.435,
-      "olap_lateMix": 0.786,
       "olap_filterCutoff": 0.515,
       "olap_filterReso": 0.343,
-      "olap_outputLevel": 0.716,
-      "olap_couplingLevel": 0.834,
-      "olap_couplingBus": 0,
       "olap_frondDensity": 0.707,
+      "olap_lateMix": 0.786,
+      "olap_modDepth": 0.136,
+      "olap_modRate": 0.172,
       "olap_nodeCount": 14,
-      "olap_crossfeedAmt": 0.215,
-      "olap_spinRate": 0.04,
-      "olap_shimmerMix": 0.101
+      "olap_outputLevel": 0.716,
+      "olap_preDelay": 0.1,
+      "olap_shimmerMix": 0.101,
+      "olap_size": 0.623,
+      "olap_spinRate": 0.04
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERLAP",
-        "engineB": "OHM",
-        "type": "FILTER_MOD",
-        "amount": 0.866
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2,
+    "brightness": 0.5,
+    "density": 0.575,
+    "movement": 0.45,
+    "space": 0.75,
+    "warmth": 0.6
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "ohm",
+    "meditative",
+    "commune"
+  ],
+  "version": "1.0.0"
 }

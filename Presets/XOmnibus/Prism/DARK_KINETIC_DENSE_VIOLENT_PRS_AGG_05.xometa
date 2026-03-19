@@ -1,45 +1,56 @@
 {
-  "name": "DARK KINETIC DENSE VIOLENT PRS AGG 5",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OWLFISH",
-    "ORPHICA"
-  ],
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.022,
-      "macro_movement": 0.877,
-      "macro_coupling": 0.807,
-      "macro_space": 0.45
-    },
-    "ORPHICA": {
-      "macro_character": 0.024,
-      "macro_movement": 0.852,
-      "macro_coupling": 0.793,
-      "macro_space": 0.46
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OWLFISH",
-    "target": "ORPHICA",
-    "amount": 0.734
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Orphica",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.734
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.879,
     "brightness": 0.024,
-    "warmth": 0.361,
-    "movement": 0.924,
     "density": 0.915,
+    "movement": 0.924,
     "space": 0.478,
-    "aggression": 0.879
+    "warmth": 0.361
   },
+  "engines": [
+    "Owlfish",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.023,
-    "MOVEMENT": 0.865,
     "COUPLING": 0.8,
+    "MOVEMENT": 0.865,
     "SPACE": 0.455
   },
+  "mood": "Prism",
+  "name": "DARK KINETIC DENSE VIOLENT ...",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.024,
+      "macro_coupling": 0.793,
+      "macro_movement": 0.852,
+      "macro_space": 0.46
+    },
+    "Owlfish": {
+      "macro_character": 0.022,
+      "macro_coupling": 0.807,
+      "macro_movement": 0.877,
+      "macro_space": 0.45
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "aggressive",
@@ -48,5 +59,6 @@
     "dark",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

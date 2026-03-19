@@ -1,48 +1,60 @@
 {
-  "name": "CARBON REFRACTION",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Onset",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.504
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.154,
+    "brightness": 0.043,
+    "density": 0.17,
+    "movement": 0.175,
+    "space": 0.028,
+    "warmth": 0.481
+  },
   "engines": [
-    "OBLIQUE",
-    "ONSET"
+    "Oblique",
+    "Onset"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.511,
+    "COUPLING": 0.179,
+    "MOVEMENT": 0.443,
+    "SPACE": 0.434
+  },
+  "mood": "Prism",
+  "name": "CARBON REFRACTION",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.144,
-      "macro_movement": 0.896,
       "macro_coupling": 0.512,
+      "macro_movement": 0.896,
       "macro_space": 0.077
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.746,
-      "macro_movement": 0.586,
       "macro_coupling": 0.788,
+      "macro_movement": 0.586,
       "macro_space": 0.959
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBLIQUE",
-    "target": "ONSET",
-    "amount": 0.504
-  },
-  "dna": {
-    "brightness": 0.043,
-    "warmth": 0.481,
-    "movement": 0.175,
-    "density": 0.17,
-    "space": 0.028,
-    "aggression": 0.154
-  },
-  "macros": {
-    "CHARACTER": 0.511,
-    "MOVEMENT": 0.443,
-    "COUPLING": 0.179,
-    "SPACE": 0.434
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-  ]
+  ],
+  "version": "1.0"
 }

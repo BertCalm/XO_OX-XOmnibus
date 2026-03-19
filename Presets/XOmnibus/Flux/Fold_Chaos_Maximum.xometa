@@ -1,19 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Fold Chaos Maximum",
-  "mood": "Flux",
-  "engines": [
-    "ORIGAMI"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "ORIGAMI pushed to extreme brightness \u2014 brightness 0.97, movement 0.87, aggression 0.81. Ultra-bright Flux zone filler.",
-  "tags": [
-    "flux",
-    "ultra-bright",
-    "extreme",
-    "brightness",
-    "origami"
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "description": "ORIGAMI pushed to extreme brightness — brightness 0.97, movement 0.87, aggression 0.81. Ultra-bright Flux zone filler.",
+  "dna": {
+    "aggression": 0.805,
+    "brightness": 0.969,
+    "density": 0.326,
+    "movement": 0.872,
+    "space": 0.259,
+    "warmth": 0.083
+  },
+  "engines": [
+    "Origami"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,37 +22,36 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.969,
-    "warmth": 0.083,
-    "movement": 0.872,
-    "density": 0.326,
-    "space": 0.259,
-    "aggression": 0.805
-  },
-  "sonic_dna": {
-    "brightness": 0.969,
-    "warmth": 0.083,
-    "movement": 0.872,
-    "density": 0.326,
-    "space": 0.259,
-    "aggression": 0.805
-  },
+  "mood": "Flux",
+  "name": "Fold Chaos Maximum",
   "parameters": {
-    "ORIGAMI": {
-      "ori_macro_fold": 0.782,
-      "ori_macro_tension": 0.742,
-      "ori_macro_couple": 0.347,
-      "ori_macro_space": 0.544,
-      "ori_outputLevel": 0.812,
+    "Origami": {
+      "ori_couplingBus": 0,
       "ori_couplingLevel": 0.313,
-      "ori_couplingBus": 0
+      "ori_macro_couple": 0.347,
+      "ori_macro_fold": 0.782,
+      "ori_macro_space": 0.544,
+      "ori_macro_tension": 0.742,
+      "ori_outputLevel": 0.812
     }
   },
-  "coupling": {
-    "pairs": []
+  "schema_version": 1,
+  "sequencer": null,
+  "sonic_dna": {
+    "aggression": 0.805,
+    "brightness": 0.969,
+    "density": 0.326,
+    "movement": 0.872,
+    "space": 0.259,
+    "warmth": 0.083
   },
-  "sequencer": null
+  "tags": [
+    "flux",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "origami"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

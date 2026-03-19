@@ -1,50 +1,62 @@
 {
-  "name": "COLD_KINETIC_DENSE_VIOLENT_ENT_AGG_3",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OCELOT",
-    "OBSIDIAN"
-  ],
-  "parameters": {
-    "OCELOT": {
-      "macro_character": 0.563,
-      "macro_movement": 0.869,
-      "macro_coupling": 0.884,
-      "macro_space": 0.462
-    },
-    "OBSIDIAN": {
-      "macro_character": 0.442,
-      "macro_movement": 0.908,
-      "macro_coupling": 0.879,
-      "macro_space": 0.468
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OCELOT",
-    "target": "OBSIDIAN",
-    "amount": 0.815
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Obsidian",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.815
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.886,
     "brightness": 0.606,
-    "warmth": 0.052,
-    "movement": 0.884,
     "density": 0.93,
+    "movement": 0.884,
     "space": 0.472,
-    "aggression": 0.886
+    "warmth": 0.052
   },
+  "engines": [
+    "Ocelot",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.502,
-    "MOVEMENT": 0.884,
     "COUPLING": 0.884,
+    "MOVEMENT": 0.884,
     "SPACE": 0.472
   },
+  "mood": "Entangled",
+  "name": "Frost Titan",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.442,
+      "macro_coupling": 0.879,
+      "macro_movement": 0.908,
+      "macro_space": 0.468
+    },
+    "Ocelot": {
+      "macro_character": 0.563,
+      "macro_coupling": 0.884,
+      "macro_movement": 0.869,
+      "macro_space": 0.462
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "cold",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,56 @@
 {
-  "name": "DARK COLD FURY FAM 06",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Origami",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.788
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.968,
+    "brightness": 0.085,
+    "density": 0.566,
+    "movement": 0.467,
+    "space": 0.334,
+    "warmth": 0.052
+  },
   "engines": [
-    "OBBLIGATO",
-    "ORIGAMI"
+    "Obbligato",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.069,
+    "COUPLING": 0.434,
+    "MOVEMENT": 0.467,
+    "SPACE": 0.334
+  },
+  "mood": "Family",
+  "name": "DARK COLD FURY FAM 06",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.069,
-      "macro_movement": 0.467,
       "macro_coupling": 0.434,
+      "macro_movement": 0.467,
       "macro_space": 0.334
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.071,
-      "macro_movement": 0.613,
       "macro_coupling": 0.679,
+      "macro_movement": 0.613,
       "macro_space": 0.301
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OBBLIGATO",
-    "target": "ORIGAMI",
-    "amount": 0.788
-  },
-  "dna": {
-    "brightness": 0.085,
-    "warmth": 0.052,
-    "movement": 0.467,
-    "density": 0.566,
-    "space": 0.334,
-    "aggression": 0.968
-  },
-  "macros": {
-    "CHARACTER": 0.069,
-    "MOVEMENT": 0.467,
-    "COUPLING": 0.434,
-    "SPACE": 0.334
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
@@ -47,5 +58,6 @@
     "aggressive",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,14 +1,86 @@
 {
-  "schema_version": 1,
-  "name": "HOT_KINETIC_SPARSE_GENTLE_ENT_3",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7385,
+        "source": "Orca",
+        "target": "Opal",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "description": "Hot Kinetic Sparse Gentle character entanglement — OPAL × ORCA via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.0765,
+    "brightness": 0.6344,
+    "density": 0.0473,
+    "movement": 0.8809,
+    "space": 0.4423,
+    "warmth": 0.9093
+  },
   "engines": [
-    "OPAL",
-    "ORCA"
+    "Opal",
+    "Orca"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Hot Kinetic Sparse Gentle character entanglement \u2014 OPAL \u00d7 ORCA via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "GRAIN",
+    "SCATTER",
+    "FUSE",
+    "CLOUD"
+  ],
+  "macros": {
+    "CHARACTER": 0.7718,
+    "COUPLING": 0.7385,
+    "MOVEMENT": 0.8809,
+    "SPACE": 0.4423
+  },
+  "mood": "Entangled",
+  "name": "Bloom Surge 2",
+  "parameters": {
+    "Opal": {
+      "amp_attack": 0.1219,
+      "amp_release": 0.3366,
+      "coupling_level": 0.5704,
+      "density": 0.0178,
+      "drive": 0.1498,
+      "filter_cutoff": 0.6241,
+      "filter_resonance": 0.1353,
+      "macro_character": 0.8165,
+      "macro_coupling": 0.623,
+      "macro_movement": 0.8733,
+      "macro_space": 0.4621,
+      "output_level": 0.7377,
+      "reverb_mix": 0.3543,
+      "reverb_size": 0.4918
+    },
+    "Orca": {
+      "amp_attack": 0.0628,
+      "amp_release": 0.3976,
+      "coupling_level": 0.544,
+      "density": 0.0736,
+      "drive": 0.1436,
+      "filter_cutoff": 0.6691,
+      "filter_resonance": 0.1,
+      "macro_character": 0.8644,
+      "macro_coupling": 0.6334,
+      "macro_movement": 0.8925,
+      "macro_space": 0.423,
+      "output_level": 0.6983,
+      "reverb_mix": 0.3888,
+      "reverb_size": 0.4357
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.0765,
+    "brightness": 0.6344,
+    "density": 0.0473,
+    "movement": 0.8809,
+    "space": 0.4423,
+    "warmth": 0.9093
+  },
   "tags": [
     "entangled",
     "warm",
@@ -17,81 +89,5 @@
     "gentle",
     "resonant"
   ],
-  "macroLabels": [
-    "GRAIN",
-    "SCATTER",
-    "FUSE",
-    "CLOUD"
-  ],
-  "couplingIntensity": "Medium",
-  "dna": {
-    "brightness": 0.6344,
-    "warmth": 0.9093,
-    "movement": 0.8809,
-    "density": 0.0473,
-    "space": 0.4423,
-    "aggression": 0.0765
-  },
-  "sonic_dna": {
-    "brightness": 0.6344,
-    "warmth": 0.9093,
-    "movement": 0.8809,
-    "density": 0.0473,
-    "space": 0.4423,
-    "aggression": 0.0765
-  },
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.8165,
-      "macro_movement": 0.8733,
-      "macro_coupling": 0.623,
-      "macro_space": 0.4621,
-      "filter_cutoff": 0.6241,
-      "filter_resonance": 0.1353,
-      "amp_attack": 0.1219,
-      "amp_release": 0.3366,
-      "reverb_mix": 0.3543,
-      "reverb_size": 0.4918,
-      "drive": 0.1498,
-      "density": 0.0178,
-      "output_level": 0.7377,
-      "coupling_level": 0.5704
-    },
-    "ORCA": {
-      "macro_character": 0.8644,
-      "macro_movement": 0.8925,
-      "macro_coupling": 0.6334,
-      "macro_space": 0.423,
-      "filter_cutoff": 0.6691,
-      "filter_resonance": 0.1,
-      "amp_attack": 0.0628,
-      "amp_release": 0.3976,
-      "reverb_mix": 0.3888,
-      "reverb_size": 0.4357,
-      "drive": 0.1436,
-      "density": 0.0736,
-      "output_level": 0.6983,
-      "coupling_level": 0.544
-    }
-  },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ORCA",
-    "target": "OPAL",
-    "amount": 0.7385,
-    "pairs": [
-      {
-        "source": "ORCA",
-        "target": "OPAL",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.7385
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.7718,
-    "MOVEMENT": 0.8809,
-    "COUPLING": 0.7385,
-    "SPACE": 0.4423
-  }
+  "version": "1.0.0"
 }

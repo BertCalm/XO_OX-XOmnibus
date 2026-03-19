@@ -1,25 +1,35 @@
 {
-  "name": "CRT Haze",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "UV lattice spreading across a dark room. Electric, cool, textural.",
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.51,
-    "MOVEMENT": 0.659,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.659,
     "SPACE": 0.645
   },
-  "sonic_dna": {
-    "brightness": 0.896,
-    "warmth": 0.124,
-    "movement": 0.659,
-    "density": 0.539,
-    "space": 0.645,
-    "aggression": 0.22
+  "mood": "Atmosphere",
+  "name": "CRT Haze",
+  "parameters": {
+    "Origami": {}
   },
-  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.22,
+    "brightness": 0.896,
+    "density": 0.539,
+    "movement": 0.659,
+    "space": 0.645,
+    "warmth": 0.124
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +37,13 @@
     "electric",
     "phosphor"
   ],
-  "description": "UV lattice spreading across a dark room. Electric, cool, textural."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.2
+  }
 }

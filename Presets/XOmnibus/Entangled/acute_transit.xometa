@@ -1,51 +1,62 @@
 {
-  "name": "Acute Transit",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.7
+      }
+    ]
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.5,
+    "density": 0.4,
+    "movement": 0.9,
+    "space": 0.7,
+    "warmth": 0.4
+  },
   "engines": [
-    "ODYSSEY",
-    "ORIGAMI"
+    "Odyssey",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.9,
+    "SPACE": 0.65
+  },
+  "mood": "Entangled",
+  "name": "Acute Transit",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.5,
-      "macro_movement": 0.9,
       "macro_coupling": 0.7,
+      "macro_movement": 0.9,
       "macro_space": 0.7
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.4,
-      "macro_movement": 0.9,
       "macro_coupling": 0.8,
+      "macro_movement": 0.9,
       "macro_space": 0.6
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ODYSSEY",
-    "target": "ORIGAMI",
-    "amount": 0.7
-  },
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.4,
-    "movement": 0.9,
-    "density": 0.4,
-    "space": 0.7,
-    "aggression": 0.4
-  },
-  "macros": {
-    "CHARACTER": 0.45,
-    "MOVEMENT": 0.9,
-    "COUPLING": 0.7,
-    "SPACE": 0.65
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "odyssey",
     "origami"
   ],
-  "author": "XO_OX Coverage Pack 2026-03-16",
-  "created": "2026-03-16"
+  "version": "1.0"
 }

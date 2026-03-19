@@ -1,59 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Cosmic Static",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Floating pads texture with voyager drift and prism shimmer.",
+  "dna": {
+    "aggression": 0.083,
+    "brightness": 0.463,
+    "density": 0.033,
+    "movement": 0.0,
+    "space": 0.363,
+    "warmth": 0.248
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Floating pads texture with voyager drift and prism shimmer.",
-  "tags": [
-    "drifty",
-    "shimmery",
-    "spacious",
-    "slow-attack"
-  ],
+  "legacy": {
+    "sourceCategory": "Pads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Pads",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Cosmic Static",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 0.0,
-      "drift_oscA_level": 0.4,
-      "drift_noiseLevel": 0.3,
-      "drift_hazeAmount": 0.2,
+      "drift_attack": 1000.0,
+      "drift_driftDepth": 0.3,
       "drift_filterCutoff": 3000.0,
       "drift_filterReso": 0.2,
+      "drift_hazeAmount": 0.2,
+      "drift_level": -5.0,
+      "drift_noiseLevel": 0.3,
+      "drift_oscA_level": 0.4,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_release": 4000.0,
       "drift_shimmerAmount": 0.3,
       "drift_shimmerTone": 0.3,
-      "drift_attack": 1000.0,
-      "drift_sustain": 0.5,
-      "drift_release": 4000.0,
-      "drift_driftDepth": 0.3,
-      "drift_level": -5.0
+      "drift_sustain": 0.5
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.463,
-    "warmth": 0.248,
-    "movement": 0.0,
-    "density": 0.033,
-    "space": 0.363,
-    "aggression": 0.083
-  }
+  "tags": [
+    "drifty",
+    "shimmery",
+    "spacious",
+    "slow-attack"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

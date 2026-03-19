@@ -33,7 +33,9 @@
     "space": 0.68,
     "aggression": 0.44
   },
-  "parameters": {},
+  "parameters": {
+    "Oracle": {}
+  },
   "tags": [
     "flux",
     "cold-flux",
@@ -41,5 +43,5 @@
     "frost",
     "protocol"
   ],
-  "description": "Oracle frost protocol \u2014 prediction lattice crystallizing in cold motion."
+  "description": "Oracle frost protocol — prediction lattice crystallizing in cold motion."
 }

@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Oracle Ambush",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "ORACLE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.87,
+        "engineA": "Outwit",
+        "engineB": "Oracle",
+        "type": "SPECTRAL_MORPH"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORACLE's prophetic stochastic character (GENDY + Maqam liminal tones). Coupling: Spectral Morph.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "outwit",
-    "oracle",
-    "chaotic",
-    "generative"
+  "dna": {
+    "aggression": 0.16,
+    "brightness": 0.35,
+    "density": 0.64,
+    "movement": 0.62,
+    "space": 0.28,
+    "warmth": 0.88
+  },
+  "engines": [
+    "Outwit",
+    "Oracle"
   ],
   "macroLabels": [
     "ARMS",
@@ -25,78 +32,67 @@
   ],
   "macros": {
     "CHARACTER": 0.38,
-    "MOVEMENT": 0.48,
     "COUPLING": 0.82,
+    "MOVEMENT": 0.48,
     "SPACE": 0.69
   },
-  "couplingIntensity": "Deep",
-  "sonic_dna": {
-    "brightness": 0.35,
-    "warmth": 0.88,
-    "movement": 0.62,
-    "density": 0.64,
-    "space": 0.28,
-    "aggression": 0.16
-  },
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.88,
-    "movement": 0.62,
-    "density": 0.64,
-    "space": 0.28,
-    "aggression": 0.16
-  },
+  "mood": "Entangled",
+  "name": "Oracle Ambush",
   "parameters": {
-    "OUTWIT": {
-      "owit_rule": 150,
-      "owit_arms": 8,
-      "owit_cellSize": 0.48,
-      "owit_density": 0.73,
-      "owit_evolveRate": 0.42,
-      "owit_mutateProb": 0.35,
-      "owit_pitchSpread": 0.65,
-      "owit_filterCutoff": 0.52,
-      "owit_filterReso": 0.25,
+    "Oracle": {
+      "oracle_ampAttack": 0.35,
+      "oracle_ampRelease": 0.71,
+      "oracle_ampSustain": 0.89,
+      "oracle_character": 0.58,
+      "oracle_coupling": 0.52,
+      "oracle_couplingLevel": 0.78,
+      "oracle_filterCutoff": 0.53,
+      "oracle_filterReso": 0.24,
+      "oracle_movement": 0.66,
+      "oracle_outputLevel": 0.69,
+      "oracle_reverbMix": 0.35,
+      "oracle_space": 0.34
+    },
+    "Outwit": {
       "owit_ampAttack": 0.09,
       "owit_ampRelease": 0.39,
       "owit_armStagger": 0.15,
+      "owit_arms": 8,
       "owit_borderMode": 0,
-      "owit_inkCloudMix": 0.2,
+      "owit_cellSize": 0.48,
       "owit_chroma1": 0.63,
       "owit_chroma2": 0.78,
-      "owit_polyDepth": 0.55,
-      "owit_couplingLevel": 0.74,
       "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.74,
+      "owit_density": 0.73,
+      "owit_evolveRate": 0.42,
+      "owit_filterCutoff": 0.52,
+      "owit_filterReso": 0.25,
+      "owit_inkCloudMix": 0.2,
+      "owit_mutateProb": 0.35,
       "owit_outputLevel": 0.72,
-      "owit_outputPan": 0.14
-    },
-    "ORACLE": {
-      "oracle_character": 0.58,
-      "oracle_movement": 0.66,
-      "oracle_coupling": 0.52,
-      "oracle_space": 0.34,
-      "oracle_filterCutoff": 0.53,
-      "oracle_filterReso": 0.24,
-      "oracle_ampAttack": 0.35,
-      "oracle_ampSustain": 0.89,
-      "oracle_ampRelease": 0.71,
-      "oracle_reverbMix": 0.35,
-      "oracle_couplingLevel": 0.78,
-      "oracle_outputLevel": 0.69
+      "owit_outputPan": 0.14,
+      "owit_pitchSpread": 0.65,
+      "owit_polyDepth": 0.55,
+      "owit_rule": 150
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OUTWIT",
-    "target": "ORACLE",
-    "amount": 0.87,
-    "pairs": [
-      {
-        "engineA": "OUTWIT",
-        "engineB": "ORACLE",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.87
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.16,
+    "brightness": 0.35,
+    "density": 0.64,
+    "movement": 0.62,
+    "space": 0.28,
+    "warmth": 0.88
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "oracle",
+    "chaotic",
+    "generative"
+  ],
+  "version": "1.0.0"
 }

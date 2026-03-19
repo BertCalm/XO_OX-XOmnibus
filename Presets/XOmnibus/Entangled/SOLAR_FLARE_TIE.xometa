@@ -1,49 +1,61 @@
 {
-  "name": "SOLAR FLARE TIE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oracle",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.313
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.383,
+    "brightness": 0.526,
+    "density": 0.547,
+    "movement": 0.284,
+    "space": 0.855,
+    "warmth": 0.893
+  },
   "engines": [
-    "ODDFELIX",
-    "ORACLE"
+    "OddfeliX",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.325,
+    "COUPLING": 0.618,
+    "MOVEMENT": 0.801,
+    "SPACE": 0.832
+  },
+  "mood": "Entangled",
+  "name": "SOLAR FLARE TIE",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.019,
-      "macro_movement": 0.921,
       "macro_coupling": 0.862,
+      "macro_movement": 0.921,
       "macro_space": 0.576
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.573,
-      "macro_movement": 0.709,
       "macro_coupling": 0.418,
+      "macro_movement": 0.709,
       "macro_space": 0.115
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ODDFELIX",
-    "target": "ORACLE",
-    "amount": 0.313
-  },
-  "dna": {
-    "brightness": 0.526,
-    "warmth": 0.893,
-    "movement": 0.284,
-    "density": 0.547,
-    "space": 0.855,
-    "aggression": 0.383
-  },
-  "macros": {
-    "CHARACTER": 0.325,
-    "MOVEMENT": 0.801,
-    "COUPLING": 0.618,
-    "SPACE": 0.832
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,51 +1,62 @@
 {
-  "name": "Elongate Formula",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Organon",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.7
+      }
+    ]
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.7,
+    "density": 0.6,
+    "movement": 0.4,
+    "space": 0.5,
+    "warmth": 0.5
+  },
   "engines": [
-    "OBLONG",
-    "ORGANON"
+    "Oblong",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.4,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Elongate Formula",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.7,
-      "macro_movement": 0.4,
       "macro_coupling": 0.7,
+      "macro_movement": 0.4,
       "macro_space": 0.5
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.6,
-      "macro_movement": 0.4,
       "macro_coupling": 0.7,
+      "macro_movement": 0.4,
       "macro_space": 0.5
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBLONG",
-    "target": "ORGANON",
-    "amount": 0.7
-  },
-  "dna": {
-    "brightness": 0.7,
-    "warmth": 0.5,
-    "movement": 0.4,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.3
-  },
-  "macros": {
-    "CHARACTER": 0.65,
-    "MOVEMENT": 0.4,
-    "COUPLING": 0.7,
-    "SPACE": 0.5
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "oblong",
     "organon"
   ],
-  "author": "XO_OX Coverage Pack 2026-03-16",
-  "created": "2026-03-16"
+  "version": "1.0"
 }

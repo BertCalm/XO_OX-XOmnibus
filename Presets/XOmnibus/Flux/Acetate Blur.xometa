@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Acetate Blur",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Evolving lo-fi atmospheres texture with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.232,
+    "brightness": 0.482,
+    "density": 0.213,
+    "movement": 0.0,
+    "space": 0.321,
+    "warmth": 0.484
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Evolving lo-fi atmospheres texture with bob character and analog drift.",
-  "tags": [
-    "lofi",
-    "vinyl",
-    "blur"
-  ],
+  "legacy": {
+    "sourceCategory": "Lo-Fi Atmospheres",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Lo-Fi Atmospheres",
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Acetate Blur",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 1.0,
-      "bob_oscA_drift": 0.45,
-      "bob_oscA_shape": 0.25,
-      "bob_oscB_wave": 3.0,
-      "bob_oscB_blend": 0.5,
-      "bob_oscB_detune": 4.0,
-      "bob_fltMode": 3.0,
-      "bob_fltCutoff": 1800.0,
-      "bob_fltChar": 0.45,
-      "bob_dustAmount": 0.62,
-      "bob_dustTone": 0.25,
       "bob_ampAttack": 1.0,
       "bob_ampDecay": 1.5,
-      "bob_ampSustain": 0.78,
       "bob_ampRelease": 4.0,
-      "bob_bobMode": 0.42
+      "bob_ampSustain": 0.78,
+      "bob_bobMode": 0.42,
+      "bob_dustAmount": 0.62,
+      "bob_dustTone": 0.25,
+      "bob_fltChar": 0.45,
+      "bob_fltCutoff": 1800.0,
+      "bob_fltMode": 3.0,
+      "bob_oscA_drift": 0.45,
+      "bob_oscA_shape": 0.25,
+      "bob_oscA_wave": 1.0,
+      "bob_oscB_blend": 0.5,
+      "bob_oscB_detune": 4.0,
+      "bob_oscB_wave": 3.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.482,
-    "warmth": 0.484,
-    "movement": 0.0,
-    "density": 0.213,
-    "space": 0.321,
-    "aggression": 0.232
-  }
+  "tags": [
+    "lofi",
+    "vinyl",
+    "blur"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

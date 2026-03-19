@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Wild Lure",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.786,
+        "engineA": "Ole",
+        "engineB": "Owlfish",
+        "type": "HARMONIC_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "aggression": 0.43,
+    "brightness": 0.595,
+    "density": 0.535,
+    "movement": 0.995,
+    "space": 0.57,
+    "warmth": 0.63
+  },
   "engines": [
-    "OLE",
-    "OWLFISH"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "ole",
-    "owlfish"
+    "Ole",
+    "Owlfish"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.616,
-    "MOVEMENT": 0.826,
     "COUPLING": 0.487,
+    "MOVEMENT": 0.826,
     "SPACE": 0.549
   },
-  "couplingIntensity": "Strong",
-  "dna": {
-    "brightness": 0.595,
-    "warmth": 0.63,
-    "movement": 0.995,
-    "density": 0.535,
-    "space": 0.57,
-    "aggression": 0.43
-  },
-  "sonic_dna": {
-    "brightness": 0.595,
-    "warmth": 0.63,
-    "movement": 0.995,
-    "density": 0.535,
-    "space": 0.57,
-    "aggression": 0.43
-  },
+  "mood": "Entangled",
+  "name": "Wild Lure",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.449,
-      "macro_movement": 0.519,
       "macro_coupling": 0.764,
+      "macro_movement": 0.519,
       "macro_space": 0.693
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.33,
-      "macro_movement": 0.72,
       "macro_coupling": 0.748,
+      "macro_movement": 0.72,
       "macro_space": 0.321
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OLE",
-        "engineB": "OWLFISH",
-        "type": "HARMONIC_SYNC",
-        "amount": 0.786
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.43,
+    "brightness": 0.595,
+    "density": 0.535,
+    "movement": 0.995,
+    "space": 0.57,
+    "warmth": 0.63
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "ole",
+    "owlfish"
+  ],
+  "version": "1.0.0"
 }

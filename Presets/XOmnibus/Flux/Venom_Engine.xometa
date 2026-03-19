@@ -33,7 +33,9 @@
     "space": 0.09,
     "aggression": 0.98
   },
-  "parameters": {},
+  "parameters": {
+    "Overbite": {}
+  },
   "tags": [
     "flux",
     "maximum",
@@ -41,5 +43,5 @@
     "venom",
     "engine"
   ],
-  "description": "BITE + TRASH running together \u2014 acid filter with possum venom backing."
+  "description": "BITE + TRASH running together — acid filter with possum venom backing."
 }

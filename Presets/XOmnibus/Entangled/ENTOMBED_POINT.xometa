@@ -1,48 +1,60 @@
 {
-  "name": "ENTOMBED POINT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Origami",
+        "type": "CHAOS_INJECT",
+        "amount": 0.719
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.596,
+    "brightness": 0.182,
+    "density": 0.926,
+    "movement": 0.053,
+    "space": 0.545,
+    "warmth": 0.544
+  },
   "engines": [
-    "OCTOPUS",
-    "ORIGAMI"
+    "Octopus",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.495,
+    "COUPLING": 0.094,
+    "MOVEMENT": 0.053,
+    "SPACE": 0.164
+  },
+  "mood": "Entangled",
+  "name": "ENTOMBED POINT",
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.139,
-      "macro_movement": 0.046,
       "macro_coupling": 0.541,
+      "macro_movement": 0.046,
       "macro_space": 0.026
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.693,
-      "macro_movement": 0.06,
       "macro_coupling": 0.447,
+      "macro_movement": 0.06,
       "macro_space": 0.72
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OCTOPUS",
-    "target": "ORIGAMI",
-    "amount": 0.719
-  },
-  "dna": {
-    "brightness": 0.182,
-    "warmth": 0.544,
-    "movement": 0.053,
-    "density": 0.926,
-    "space": 0.545,
-    "aggression": 0.596
-  },
-  "macros": {
-    "CHARACTER": 0.495,
-    "MOVEMENT": 0.053,
-    "COUPLING": 0.094,
-    "SPACE": 0.164
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "entombed"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Saturate Horizon",
-  "mood": "Atmosphere",
-  "engines": [
-    "OVERDUB"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Thick, heavy environment. Maximum density, warm compression. OVERDUB dense register.",
+  "dna": {
+    "aggression": 0.365,
+    "brightness": 0.398,
+    "density": 0.868,
+    "movement": 0.307,
+    "space": 0.383,
+    "warmth": 0.606
+  },
+  "engines": [
+    "Overdub"
+  ],
+  "macroLabels": [
+    "TAPE",
+    "DRIVE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "COUPLING": 0.348,
+    "DRIVE": 0.283,
+    "SPACE": 0.405,
+    "TAPE": 0.513
+  },
+  "mood": "Atmosphere",
+  "name": "Saturate Horizon",
+  "parameters": {
+    "Overdub": {
+      "coupling": 0.348,
+      "drive": 0.283,
+      "space": 0.405,
+      "tape": 0.513
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dense",
@@ -16,36 +47,5 @@
     "warm",
     "thick"
   ],
-  "macroLabels": [
-    "TAPE",
-    "DRIVE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.398,
-    "warmth": 0.606,
-    "movement": 0.307,
-    "density": 0.868,
-    "space": 0.383,
-    "aggression": 0.365
-  },
-  "parameters": {
-    "OVERDUB": {
-      "tape": 0.513,
-      "drive": 0.283,
-      "coupling": 0.348,
-      "space": 0.405
-    }
-  },
-  "macros": {
-    "TAPE": 0.513,
-    "DRIVE": 0.283,
-    "COUPLING": 0.348,
-    "SPACE": 0.405
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

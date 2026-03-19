@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK HOT VAST KINETIC 2",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.0626,
-    "warmth": 0.9209,
-    "space": 0.9373,
-    "movement": 0.9258,
-    "aggression": 0.5587,
-    "density": 0.592
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Medium",
+  "couplingType": "DRIFT",
+  "description": "Ultra-diverse Entangled preset — dark hot vast kinetic. Designed for DRIFT coupling with XOverdub.",
   "dna": {
-    "brightness": 0.0626,
-    "warmth": 0.9209,
-    "space": 0.9373,
-    "movement": 0.9258,
     "aggression": 0.5587,
-    "density": 0.592
+    "brightness": 0.0626,
+    "density": 0.592,
+    "movement": 0.9258,
+    "space": 0.9373,
+    "warmth": 0.9209
   },
   "engines": [
-    "XOverdub"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark hot vast kinetic. Designed for DRIFT coupling with XOverdub.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "drift",
-    "overdub"
+    "Overdub"
   ],
   "macroLabels": [
     "GLEAM",
@@ -36,15 +23,28 @@
     "SWEEP",
     "FORGE"
   ],
-  "couplingType": "DRIFT",
-  "couplingIntensity": "Medium",
+  "mood": "Flux",
+  "name": "DARK HOT VAST KINETIC 2",
   "parameters": {
-    "XOverdub": {
-      "couplingLevel": 0.668,
-      "couplingBus": 3
+    "Overdub": {
+      "couplingBus": 3,
+      "couplingLevel": 0.668
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.5587,
+    "brightness": 0.0626,
+    "density": 0.592,
+    "movement": 0.9258,
+    "space": 0.9373,
+    "warmth": 0.9209
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "drift",
+    "overdub"
+  ],
+  "version": "1.0.0"
 }

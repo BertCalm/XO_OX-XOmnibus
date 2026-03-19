@@ -1,49 +1,61 @@
 {
-  "name": "ECLIPSE FOG",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Origami",
+        "type": "RHYTHM_SYNC",
+        "amount": 0.545
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.079,
+    "brightness": 0.063,
+    "density": 0.293,
+    "movement": 0.645,
+    "space": 0.449,
+    "warmth": 0.451
+  },
   "engines": [
-    "ONSET",
-    "ORIGAMI"
+    "Onset",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.952,
+    "COUPLING": 0.235,
+    "MOVEMENT": 0.444,
+    "SPACE": 0.565
+  },
+  "mood": "Atmosphere",
+  "name": "ECLIPSE FOG",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.952,
-      "macro_movement": 0.033,
       "macro_coupling": 0.371,
+      "macro_movement": 0.033,
       "macro_space": 0.443
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.951,
-      "macro_movement": 0.855,
       "macro_coupling": 0.099,
+      "macro_movement": 0.855,
       "macro_space": 0.686
     }
   },
-  "coupling": {
-    "type": "RHYTHM_SYNC",
-    "source": "ONSET",
-    "target": "ORIGAMI",
-    "amount": 0.545
-  },
-  "dna": {
-    "brightness": 0.063,
-    "warmth": 0.451,
-    "movement": 0.645,
-    "density": 0.293,
-    "space": 0.449,
-    "aggression": 0.079
-  },
-  "macros": {
-    "CHARACTER": 0.952,
-    "MOVEMENT": 0.444,
-    "COUPLING": 0.235,
-    "SPACE": 0.565
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "extreme",
     "low-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

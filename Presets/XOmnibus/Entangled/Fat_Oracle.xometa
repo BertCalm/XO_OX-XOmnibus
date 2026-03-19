@@ -1,48 +1,60 @@
 {
-  "name": "Fat Oracle",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Organon",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.83
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.37,
+    "brightness": 0.25,
+    "density": 0.78,
+    "movement": 0.21,
+    "space": 0.56,
+    "warmth": 0.95
+  },
   "engines": [
-    "OBESE",
-    "ORGANON"
+    "Obese",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9,
+    "COUPLING": 0.85,
+    "MOVEMENT": 0.25,
+    "SPACE": 0.52
+  },
+  "mood": "Entangled",
+  "name": "Fat Oracle",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.99,
-      "macro_movement": 0.27,
       "macro_coupling": 0.86,
+      "macro_movement": 0.27,
       "macro_space": 0.54
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.8,
-      "macro_movement": 0.23,
       "macro_coupling": 0.85,
+      "macro_movement": 0.23,
       "macro_space": 0.5
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBESE",
-    "target": "ORGANON",
-    "amount": 0.83
-  },
-  "dna": {
-    "brightness": 0.25,
-    "warmth": 0.95,
-    "movement": 0.21,
-    "density": 0.78,
-    "space": 0.56,
-    "aggression": 0.37
-  },
-  "macros": {
-    "CHARACTER": 0.9,
-    "MOVEMENT": 0.25,
-    "COUPLING": 0.85,
-    "SPACE": 0.52
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-  ]
+  ],
+  "version": "1.0"
 }

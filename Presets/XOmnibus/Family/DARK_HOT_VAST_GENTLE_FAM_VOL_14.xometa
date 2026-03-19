@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_VAST_GENTLE_FAM_VOL_14",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "OddfeliX",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.618
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.097,
+    "density": 0.393,
+    "movement": 0.619,
+    "space": 0.905,
+    "warmth": 0.909
+  },
   "engines": [
-    "ODDFELIX",
-    "OVERDUB"
+    "OddfeliX",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.522,
+    "COUPLING": 0.281,
+    "MOVEMENT": 0.6,
+    "SPACE": 0.892
+  },
+  "mood": "Family",
+  "name": "Shadow Orbit",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.521,
-      "macro_movement": 0.603,
       "macro_coupling": 0.282,
+      "macro_movement": 0.603,
       "macro_space": 0.881
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.522,
-      "macro_movement": 0.597,
       "macro_coupling": 0.281,
+      "macro_movement": 0.597,
       "macro_space": 0.903
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OVERDUB",
-    "target": "ODDFELIX",
-    "amount": 0.618
-  },
-  "dna": {
-    "brightness": 0.097,
-    "warmth": 0.909,
-    "movement": 0.619,
-    "density": 0.393,
-    "space": 0.905,
-    "aggression": 0.12
-  },
-  "macros": {
-    "CHARACTER": 0.522,
-    "MOVEMENT": 0.6,
-    "COUPLING": 0.281,
-    "SPACE": 0.892
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "vast",
     "gentle",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

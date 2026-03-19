@@ -1,50 +1,62 @@
 {
-  "name": "DARK_SPARSE_INTIMATE_VIOLENT_PRS_3",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Owlfish",
+        "type": "FILTER_MOD",
+        "amount": 0.865
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.947,
+    "brightness": 0.043,
+    "density": 0.113,
+    "movement": 0.566,
+    "space": 0.125,
+    "warmth": 0.441
+  },
   "engines": [
-    "ORACLE",
-    "OWLFISH"
+    "Oracle",
+    "Owlfish"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.495,
+    "COUPLING": 0.435,
+    "MOVEMENT": 0.566,
+    "SPACE": 0.125
+  },
+  "mood": "Prism",
+  "name": "Grain Crush",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.495,
-      "macro_movement": 0.566,
       "macro_coupling": 0.435,
+      "macro_movement": 0.566,
       "macro_space": 0.125
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.952,
-      "macro_movement": 0.566,
       "macro_coupling": 0.365,
+      "macro_movement": 0.566,
       "macro_space": 0.125
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ORACLE",
-    "target": "OWLFISH",
-    "amount": 0.865
-  },
-  "dna": {
-    "brightness": 0.043,
-    "warmth": 0.441,
-    "movement": 0.566,
-    "density": 0.113,
-    "space": 0.125,
-    "aggression": 0.947
-  },
-  "macros": {
-    "CHARACTER": 0.495,
-    "MOVEMENT": 0.566,
-    "COUPLING": 0.435,
-    "SPACE": 0.125
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "sparse",
     "intimate",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

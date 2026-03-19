@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_STILL_SPARSE_VAST_ATM_1",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "OddfeliX",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.918
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.568,
+    "brightness": 0.9,
+    "density": 0.106,
+    "movement": 0.13,
+    "space": 0.876,
+    "warmth": 0.586
+  },
   "engines": [
-    "OBLIQUE",
-    "ODDFELIX"
+    "Oblique",
+    "OddfeliX"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.575,
+    "COUPLING": 0.864,
+    "MOVEMENT": 0.135,
+    "SPACE": 0.708
+  },
+  "mood": "Atmosphere",
+  "name": "BRIGHT_STILL_SPARSE_VAST_ATM_1",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.575,
-      "macro_movement": 0.135,
       "macro_coupling": 0.864,
+      "macro_movement": 0.135,
       "macro_space": 0.708
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.7,
-      "macro_movement": 0.256,
       "macro_coupling": 0.406,
+      "macro_movement": 0.256,
       "macro_space": 0.768
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBLIQUE",
-    "target": "ODDFELIX",
-    "amount": 0.918
-  },
-  "dna": {
-    "brightness": 0.9,
-    "warmth": 0.586,
-    "movement": 0.13,
-    "density": 0.106,
-    "space": 0.876,
-    "aggression": 0.568
-  },
-  "macros": {
-    "CHARACTER": 0.575,
-    "MOVEMENT": 0.135,
-    "COUPLING": 0.864,
-    "SPACE": 0.708
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "still",
     "sparse",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

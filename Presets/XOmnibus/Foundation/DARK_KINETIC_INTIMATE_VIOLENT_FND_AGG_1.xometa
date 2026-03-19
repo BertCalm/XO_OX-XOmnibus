@@ -1,50 +1,62 @@
 {
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FND_AGG_1",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ORIGAMI",
-    "ORACLE"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.604,
-      "macro_movement": 0.63,
-      "macro_coupling": 0.787,
-      "macro_space": 0.754
-    },
-    "ORACLE": {
-      "macro_character": 0.652,
-      "macro_movement": 0.59,
-      "macro_coupling": 0.777,
-      "macro_space": 0.738
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORIGAMI",
-    "target": "ORACLE",
-    "amount": 0.772
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oracle",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.772
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.922,
     "brightness": 0.072,
-    "warmth": 0.614,
-    "movement": 0.967,
     "density": 0.376,
+    "movement": 0.967,
     "space": 0.031,
-    "aggression": 0.922
+    "warmth": 0.614
   },
+  "engines": [
+    "Origami",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.604,
-    "MOVEMENT": 0.63,
     "COUPLING": 0.787,
+    "MOVEMENT": 0.63,
     "SPACE": 0.754
   },
+  "mood": "Foundation",
+  "name": "Velvet Current",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.652,
+      "macro_coupling": 0.777,
+      "macro_movement": 0.59,
+      "macro_space": 0.738
+    },
+    "Origami": {
+      "macro_character": 0.604,
+      "macro_coupling": 0.787,
+      "macro_movement": 0.63,
+      "macro_space": 0.754
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "kinetic",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,48 +1,60 @@
 {
-  "name": "SWELL BASE",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OVERLAP",
-    "OUTWIT"
-  ],
-  "parameters": {
-    "OVERLAP": {
-      "macro_character": 0.502,
-      "macro_movement": 0.881,
-      "macro_coupling": 0.422,
-      "macro_space": 0.532
-    },
-    "OUTWIT": {
-      "macro_character": 0.485,
-      "macro_movement": 0.975,
-      "macro_coupling": 0.577,
-      "macro_space": 0.372
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OVERLAP",
-    "target": "OUTWIT",
-    "amount": 0.547
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Outwit",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.547
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.469,
     "brightness": 0.533,
-    "warmth": 0.344,
-    "movement": 0.911,
     "density": 0.486,
+    "movement": 0.911,
     "space": 0.852,
-    "aggression": 0.469
+    "warmth": 0.344
   },
+  "engines": [
+    "Overlap",
+    "Outwit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.798,
-    "MOVEMENT": 0.911,
     "COUPLING": 0.547,
+    "MOVEMENT": 0.911,
     "SPACE": 0.852
   },
+  "mood": "Foundation",
+  "name": "SWELL BASE",
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.485,
+      "macro_coupling": 0.577,
+      "macro_movement": 0.975,
+      "macro_space": 0.372
+    },
+    "Overlap": {
+      "macro_character": 0.502,
+      "macro_coupling": 0.422,
+      "macro_movement": 0.881,
+      "macro_space": 0.532
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-  ]
+  ],
+  "version": "1.0"
 }

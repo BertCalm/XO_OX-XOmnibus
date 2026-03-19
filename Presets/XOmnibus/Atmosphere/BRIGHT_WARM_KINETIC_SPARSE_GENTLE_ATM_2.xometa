@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_SPARSE_GENTLE_ATM_2",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OPTIC",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "OPTIC": {
-      "macro_character": 0.9435,
-      "macro_movement": 0.91,
-      "macro_coupling": 0.1167,
-      "macro_space": 0.4594
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.9417,
-      "macro_movement": 0.9026,
-      "macro_coupling": 0.1164,
-      "macro_space": 0.4189
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OPTIC",
-    "target": "ODDOSCAR",
-    "amount": 0.527
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "OddOscar",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.527
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.0973,
     "brightness": 0.9268,
-    "warmth": 0.9337,
-    "movement": 0.9211,
     "density": 0.1021,
+    "movement": 0.9211,
     "space": 0.4323,
-    "aggression": 0.0973
+    "warmth": 0.9337
   },
+  "engines": [
+    "Optic",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.9426,
-    "MOVEMENT": 0.9063,
     "COUPLING": 0.1166,
+    "MOVEMENT": 0.9063,
     "SPACE": 0.4391
   },
+  "mood": "Atmosphere",
+  "name": "Halo Surge 2",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.9417,
+      "macro_coupling": 0.1164,
+      "macro_movement": 0.9026,
+      "macro_space": 0.4189
+    },
+    "Optic": {
+      "macro_character": 0.9435,
+      "macro_coupling": 0.1167,
+      "macro_movement": 0.91,
+      "macro_space": 0.4594
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
@@ -47,5 +58,6 @@
     "kinetic",
     "sparse",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

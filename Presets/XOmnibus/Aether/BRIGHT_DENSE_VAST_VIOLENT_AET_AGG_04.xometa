@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT DENSE VAST VIOLENT AET AGG 4",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Orbital",
+        "type": "PITCH_SYNC",
+        "amount": 0.885
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.963,
+    "brightness": 0.873,
+    "density": 0.871,
+    "movement": 0.458,
+    "space": 0.974,
+    "warmth": 0.632
+  },
   "engines": [
-    "OMBRE",
-    "ORBITAL"
+    "Ombre",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.869,
+    "COUPLING": 0.904,
+    "MOVEMENT": 0.453,
+    "SPACE": 0.96
+  },
+  "mood": "Aether",
+  "name": "BRIGHT DENSE VAST VIOLENT A...",
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.871,
-      "macro_movement": 0.455,
       "macro_coupling": 0.934,
+      "macro_movement": 0.455,
       "macro_space": 0.961
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.866,
-      "macro_movement": 0.45,
       "macro_coupling": 0.874,
+      "macro_movement": 0.45,
       "macro_space": 0.959
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OMBRE",
-    "target": "ORBITAL",
-    "amount": 0.885
-  },
-  "dna": {
-    "brightness": 0.873,
-    "warmth": 0.632,
-    "movement": 0.458,
-    "density": 0.871,
-    "space": 0.974,
-    "aggression": 0.963
-  },
-  "macros": {
-    "CHARACTER": 0.869,
-    "MOVEMENT": 0.453,
-    "COUPLING": 0.904,
-    "SPACE": 0.96
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "aggressive",
@@ -48,5 +59,6 @@
     "bright",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

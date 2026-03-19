@@ -1,61 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Fuzzy Bass",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Deep warm bass presence with warm character.",
+  "dna": {
+    "aggression": 0.319,
+    "brightness": 0.47,
+    "density": 0.195,
+    "movement": 0.0,
+    "space": 0.0,
+    "warmth": 0.158
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Deep warm bass presence with warm character.",
-  "tags": [
-    "bass",
-    "fuzzy",
-    "drive"
-  ],
+  "legacy": {
+    "sourceCategory": "Warm Bass",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Warm Bass",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Fuzzy Bass",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 2.0,
-      "bob_oscA_tune": -12.0,
-      "bob_oscA_shape": 0.72,
-      "bob_oscA_drift": 0.12,
-      "bob_oscB_wave": 0.0,
-      "bob_oscB_blend": 0.6,
-      "bob_oscB_detune": -5.0,
-      "bob_fltMode": 0.0,
-      "bob_fltCutoff": 1100.0,
-      "bob_fltReso": 0.38,
-      "bob_fltDrive": 0.52,
-      "bob_fltChar": 0.55,
       "bob_ampAttack": 0.005,
       "bob_ampDecay": 0.35,
-      "bob_ampSustain": 0.68,
       "bob_ampRelease": 0.38,
-      "bob_bobMode": 0.14
+      "bob_ampSustain": 0.68,
+      "bob_bobMode": 0.14,
+      "bob_fltChar": 0.55,
+      "bob_fltCutoff": 1100.0,
+      "bob_fltDrive": 0.52,
+      "bob_fltMode": 0.0,
+      "bob_fltReso": 0.38,
+      "bob_oscA_drift": 0.12,
+      "bob_oscA_shape": 0.72,
+      "bob_oscA_tune": -12.0,
+      "bob_oscA_wave": 2.0,
+      "bob_oscB_blend": 0.6,
+      "bob_oscB_detune": -5.0,
+      "bob_oscB_wave": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.47,
-    "warmth": 0.158,
-    "movement": 0.0,
-    "density": 0.195,
-    "space": 0.0,
-    "aggression": 0.319
-  }
+  "tags": [
+    "bass",
+    "fuzzy",
+    "drive"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

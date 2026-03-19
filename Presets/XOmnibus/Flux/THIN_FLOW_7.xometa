@@ -1,48 +1,60 @@
 {
-  "name": "THIN FLOW 7",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Osteria",
+        "type": "CHAOS_INJECT",
+        "amount": 0.7671
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.075,
+    "brightness": 0.9982,
+    "density": 0.0553,
+    "movement": 0.98,
+    "space": 0.9479,
+    "warmth": 0.9009
+  },
   "engines": [
-    "OCEANIC",
-    "OSTERIA"
+    "Oceanic",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3663,
+    "COUPLING": 0.5672,
+    "MOVEMENT": 0.3829,
+    "SPACE": 0.6051
+  },
+  "mood": "Flux",
+  "name": "THIN FLOW 7",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.8011,
-      "macro_movement": 0.6794,
       "macro_coupling": 0.9528,
+      "macro_movement": 0.6794,
       "macro_space": 0.1428
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.6076,
-      "macro_movement": 0.7813,
       "macro_coupling": 0.0348,
+      "macro_movement": 0.7813,
       "macro_space": 0.0672
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OCEANIC",
-    "target": "OSTERIA",
-    "amount": 0.7671
-  },
-  "dna": {
-    "brightness": 0.9982,
-    "warmth": 0.9009,
-    "movement": 0.98,
-    "density": 0.0553,
-    "space": 0.9479,
-    "aggression": 0.075
-  },
-  "macros": {
-    "CHARACTER": 0.3663,
-    "MOVEMENT": 0.3829,
-    "COUPLING": 0.5672,
-    "SPACE": 0.6051
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "sparse",
     "minimal"
-  ]
+  ],
+  "version": "1.0"
 }

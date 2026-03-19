@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ombre \u00d7 Oceanic \u2014 Spectral Morph coupling at extreme DNA corner.",
+  "description": "Ombre × Oceanic — Spectral Morph coupling at extreme DNA corner.",
   "tags": [
     "still",
     "ombre",
@@ -33,7 +33,10 @@
     "space": 0.573,
     "aggression": 0.055
   },
-  "parameters": {},
+  "parameters": {
+    "Ombre": {},
+    "Oceanic": {}
+  },
   "coupling": {
     "pairs": [
       {

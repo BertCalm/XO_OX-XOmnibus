@@ -33,7 +33,9 @@
     "space": 0.08,
     "aggression": 0.78
   },
-  "parameters": {},
+  "parameters": {
+    "Organon": {}
+  },
   "tags": [
     "flux",
     "dense-flux",
@@ -41,5 +43,5 @@
     "harmonic",
     "compression"
   ],
-  "description": "Organon logic engine under harmonic compression \u2014 syllogism stack overflow."
+  "description": "Organon logic engine under harmonic compression — syllogism stack overflow."
 }

@@ -1,31 +1,46 @@
 {
-  "name": "Violet Dissolve",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Odyssey",
+        "type": "GRADIENT_DISSOLVE",
+        "amount": 0.6
+      }
+    ]
+  },
+  "description": "Drift violet and shadow mauve bleed together — FM journey softening at the horizon",
   "engines": [
-    "ODYSSEY",
-    "OMBRE"
+    "Odyssey",
+    "Ombre"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.65,
     "SPACE": 0.7
   },
-  "sonic_dna": {
-    "brightness": 0.51,
-    "warmth": 0.52,
-    "movement": 0.57,
-    "density": 0.53,
-    "space": 0.66,
-    "aggression": 0.29
+  "mood": "Entangled",
+  "name": "Violet Dissolve",
+  "parameters": {
+    "Odyssey": {},
+    "Ombre": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "GRADIENT_DISSOLVE",
-    "source": "OMBRE",
-    "target": "ODYSSEY",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.29,
+    "brightness": 0.51,
+    "density": 0.53,
+    "movement": 0.57,
+    "space": 0.66,
+    "warmth": 0.52
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "ombre",
     "wavetable"
   ],
-  "description": "Drift violet and shadow mauve bleed together \u2014 FM journey softening at the horizon"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

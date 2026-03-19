@@ -1,50 +1,62 @@
 {
-  "name": "TUNDRA STREAM",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Ouroboros",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.795
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.413,
+    "brightness": 0.079,
+    "density": 0.313,
+    "movement": 0.488,
+    "space": 0.885,
+    "warmth": 0.113
+  },
   "engines": [
-    "ORGANON",
-    "OUROBOROS"
+    "Organon",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.279,
+    "COUPLING": 0.916,
+    "MOVEMENT": 0.435,
+    "SPACE": 0.826
+  },
+  "mood": "Flux",
+  "name": "TUNDRA STREAM",
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.279,
-      "macro_movement": 0.435,
       "macro_coupling": 0.916,
+      "macro_movement": 0.435,
       "macro_space": 0.826
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.15,
-      "macro_movement": 0.355,
       "macro_coupling": 0.845,
+      "macro_movement": 0.355,
       "macro_space": 0.913
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORGANON",
-    "target": "OUROBOROS",
-    "amount": 0.795
-  },
-  "dna": {
-    "brightness": 0.079,
-    "warmth": 0.113,
-    "movement": 0.488,
-    "density": 0.313,
-    "space": 0.885,
-    "aggression": 0.413
-  },
-  "macros": {
-    "CHARACTER": 0.279,
-    "MOVEMENT": 0.435,
-    "COUPLING": 0.916,
-    "SPACE": 0.826
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "cold",
     "vast",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

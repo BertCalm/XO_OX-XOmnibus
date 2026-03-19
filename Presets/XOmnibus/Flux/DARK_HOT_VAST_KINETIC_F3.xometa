@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "DARK HOT VAST KINETIC F3",
-  "mood": "Flux",
-  "sonic_dna": {
-    "brightness": 0.101,
-    "warmth": 0.908,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Resonant",
+  "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme hot warmth, extreme kinetic movement, extreme vast space. Maximum contrast character design.",
+  "dna": {
     "aggression": 0.516,
-    "movement": 0.959,
+    "brightness": 0.101,
     "density": 0.408,
-    "space": 0.932
+    "movement": 0.959,
+    "space": 0.932,
+    "warmth": 0.908
   },
   "engines": [
-    "OPAL"
+    "Opal"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme dark brightness, extreme hot warmth, extreme kinetic movement, extreme vast space. Maximum contrast character design.",
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "DARK HOT VAST KINETIC F3",
+  "parameters": {
+    "Opal": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.516,
+    "brightness": 0.101,
+    "density": 0.408,
+    "movement": 0.959,
+    "space": 0.932,
+    "warmth": 0.908
+  },
   "tags": [
     "dark",
     "warm",
@@ -24,25 +44,5 @@
     "flux",
     "extreme"
   ],
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "couplingIntensity": "Resonant",
-  "dna": {
-    "brightness": 0.101,
-    "warmth": 0.908,
-    "movement": 0.959,
-    "density": 0.408,
-    "space": 0.932,
-    "aggression": 0.516
-  },
-  "parameters": {
-    "OPAL": {}
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

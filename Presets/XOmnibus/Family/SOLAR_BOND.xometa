@@ -1,49 +1,61 @@
 {
-  "name": "SOLAR BOND",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OVERWORLD",
-    "OPAL"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.714,
-      "macro_movement": 0.346,
-      "macro_coupling": 0.442,
-      "macro_space": 0.256
-    },
-    "OPAL": {
-      "macro_character": 0.479,
-      "macro_movement": 0.202,
-      "macro_coupling": 0.539,
-      "macro_space": 0.933
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_FOLLOW",
-    "source": "OVERWORLD",
-    "target": "OPAL",
-    "amount": 0.473
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Opal",
+        "type": "ENVELOPE_FOLLOW",
+        "amount": 0.473
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.891,
     "brightness": 0.892,
-    "warmth": 0.428,
-    "movement": 0.788,
     "density": 0.691,
+    "movement": 0.788,
     "space": 0.773,
-    "aggression": 0.891
+    "warmth": 0.428
   },
+  "engines": [
+    "Overworld",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.597,
-    "MOVEMENT": 0.274,
     "COUPLING": 0.491,
+    "MOVEMENT": 0.274,
     "SPACE": 0.595
   },
+  "mood": "Family",
+  "name": "SOLAR BOND",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.479,
+      "macro_coupling": 0.539,
+      "macro_movement": 0.202,
+      "macro_space": 0.933
+    },
+    "Overworld": {
+      "macro_character": 0.714,
+      "macro_coupling": 0.442,
+      "macro_movement": 0.346,
+      "macro_space": 0.256
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "extreme",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

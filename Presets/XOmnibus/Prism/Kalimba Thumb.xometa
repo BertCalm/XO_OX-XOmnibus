@@ -1,61 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Kalimba Thumb",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Bright plucks character with warm character.",
+  "dna": {
+    "aggression": 0.195,
+    "brightness": 0.599,
+    "density": 0.229,
+    "movement": 0.0,
+    "space": 0.083,
+    "warmth": 0.186
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bright plucks character with warm character.",
-  "tags": [
-    "pluck",
-    "kalimba",
-    "folk"
-  ],
+  "legacy": {
+    "sourceCategory": "Plucks",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Plucks",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Kalimba Thumb",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 3.0,
-      "bob_oscA_shape": 0.45,
-      "bob_oscA_drift": 0.18,
-      "bob_oscB_wave": 2.0,
-      "bob_oscB_fm": 0.18,
-      "bob_oscB_blend": 0.38,
-      "bob_oscB_detune": 3.0,
-      "bob_fltMode": 2.0,
-      "bob_fltCutoff": 5000.0,
-      "bob_fltReso": 0.6,
-      "bob_fltChar": 0.58,
-      "bob_fltEnvAmt": 0.58,
       "bob_ampAttack": 0.002,
       "bob_ampDecay": 0.7,
-      "bob_ampSustain": 0.1,
       "bob_ampRelease": 0.55,
-      "bob_bobMode": 0.12
+      "bob_ampSustain": 0.1,
+      "bob_bobMode": 0.12,
+      "bob_fltChar": 0.58,
+      "bob_fltCutoff": 5000.0,
+      "bob_fltEnvAmt": 0.58,
+      "bob_fltMode": 2.0,
+      "bob_fltReso": 0.6,
+      "bob_oscA_drift": 0.18,
+      "bob_oscA_shape": 0.45,
+      "bob_oscA_wave": 3.0,
+      "bob_oscB_blend": 0.38,
+      "bob_oscB_detune": 3.0,
+      "bob_oscB_fm": 0.18,
+      "bob_oscB_wave": 2.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.599,
-    "warmth": 0.186,
-    "movement": 0.0,
-    "density": 0.229,
-    "space": 0.083,
-    "aggression": 0.195
-  }
+  "tags": [
+    "pluck",
+    "kalimba",
+    "folk"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,49 +1,61 @@
 {
-  "name": "COMBUSTION DRIFT",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Onset",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.576
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.394,
+    "brightness": 0.611,
+    "density": 0.476,
+    "movement": 0.879,
+    "space": 0.585,
+    "warmth": 0.908
+  },
   "engines": [
-    "OBSCURA",
-    "ONSET"
+    "Obscura",
+    "Onset"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.481,
+    "COUPLING": 0.602,
+    "MOVEMENT": 0.758,
+    "SPACE": 0.567
+  },
+  "mood": "Flux",
+  "name": "COMBUSTION DRIFT",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.481,
-      "macro_movement": 0.758,
       "macro_coupling": 0.602,
+      "macro_movement": 0.758,
       "macro_space": 0.567
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.599,
-      "macro_movement": 0.632,
       "macro_coupling": 0.497,
+      "macro_movement": 0.632,
       "macro_space": 0.532
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OBSCURA",
-    "target": "ONSET",
-    "amount": 0.576
-  },
-  "dna": {
-    "brightness": 0.611,
-    "warmth": 0.908,
-    "movement": 0.879,
-    "density": 0.476,
-    "space": 0.585,
-    "aggression": 0.394
-  },
-  "macros": {
-    "CHARACTER": 0.481,
-    "MOVEMENT": 0.758,
-    "COUPLING": 0.602,
-    "SPACE": 0.567
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "warm",
     "kinetic",
     "movement"
-  ]
+  ],
+  "version": "1.0"
 }

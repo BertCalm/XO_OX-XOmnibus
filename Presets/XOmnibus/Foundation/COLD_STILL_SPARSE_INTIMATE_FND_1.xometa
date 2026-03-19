@@ -1,45 +1,56 @@
 {
-  "name": "COLD_STILL_SPARSE_INTIMATE_FND_1",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.715
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.481,
+    "brightness": 0.48,
+    "density": 0.058,
+    "movement": 0.084,
+    "space": 0.086,
+    "warmth": 0.108
+  },
   "engines": [
-    "ODDOSCAR",
-    "ORIGAMI"
+    "OddOscar",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.387,
+    "COUPLING": 0.118,
+    "MOVEMENT": 0.449,
+    "SPACE": 0.277
+  },
+  "mood": "Foundation",
+  "name": "Thread Shard",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.136,
-      "macro_movement": 0.221,
       "macro_coupling": 0.25,
+      "macro_movement": 0.221,
       "macro_space": 0.79
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.46,
-      "macro_movement": 0.646,
       "macro_coupling": 0.333,
+      "macro_movement": 0.646,
       "macro_space": 0.721
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ODDOSCAR",
-    "target": "ORIGAMI",
-    "amount": 0.715
-  },
-  "dna": {
-    "brightness": 0.48,
-    "warmth": 0.108,
-    "movement": 0.084,
-    "density": 0.058,
-    "space": 0.086,
-    "aggression": 0.481
-  },
-  "macros": {
-    "CHARACTER": 0.387,
-    "MOVEMENT": 0.449,
-    "COUPLING": 0.118,
-    "SPACE": 0.277
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -47,5 +58,6 @@
     "still",
     "sparse",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

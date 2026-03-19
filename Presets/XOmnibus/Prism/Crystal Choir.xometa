@@ -1,61 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Crystal Choir",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Bright keys & bells character with reverb depth.",
+  "dna": {
+    "aggression": 0.156,
+    "brightness": 0.656,
+    "density": 0.475,
+    "movement": 0.0,
+    "space": 0.513,
+    "warmth": 0.195
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bright keys & bells character with reverb depth.",
-  "tags": [
-    "bell",
-    "crystal",
-    "choir"
-  ],
+  "legacy": {
+    "sourceCategory": "Keys & Bells",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Keys & Bells",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Crystal Choir",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 2.0,
-      "bob_oscA_shape": 0.42,
-      "bob_oscA_drift": 0.1,
-      "bob_oscB_wave": 1.0,
-      "bob_oscB_fm": 0.48,
-      "bob_oscB_blend": 0.6,
-      "bob_oscB_detune": 8.0,
-      "bob_fltMode": 2.0,
-      "bob_fltCutoff": 8000.0,
-      "bob_fltReso": 0.48,
-      "bob_fltChar": 0.65,
-      "bob_fltEnvAmt": 0.52,
       "bob_ampAttack": 0.005,
       "bob_ampDecay": 2.0,
-      "bob_ampSustain": 0.0,
       "bob_ampRelease": 1.8,
-      "bob_bobMode": 0.18
+      "bob_ampSustain": 0.0,
+      "bob_bobMode": 0.18,
+      "bob_fltChar": 0.65,
+      "bob_fltCutoff": 8000.0,
+      "bob_fltEnvAmt": 0.52,
+      "bob_fltMode": 2.0,
+      "bob_fltReso": 0.48,
+      "bob_oscA_drift": 0.1,
+      "bob_oscA_shape": 0.42,
+      "bob_oscA_wave": 2.0,
+      "bob_oscB_blend": 0.6,
+      "bob_oscB_detune": 8.0,
+      "bob_oscB_fm": 0.48,
+      "bob_oscB_wave": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.656,
-    "warmth": 0.195,
-    "movement": 0.0,
-    "density": 0.475,
-    "space": 0.513,
-    "aggression": 0.156
-  }
+  "tags": [
+    "bell",
+    "crystal",
+    "choir"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

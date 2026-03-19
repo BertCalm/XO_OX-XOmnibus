@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_WARM_STILL_VAST_FLX_SLW_3",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERWORLD",
-    "ORGANON"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.651,
-      "macro_movement": 0.013,
-      "macro_coupling": 0.86,
-      "macro_space": 0.939
-    },
-    "ORGANON": {
-      "macro_character": 0.671,
-      "macro_movement": 0.011,
-      "macro_coupling": 0.891,
-      "macro_space": 0.827
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OVERWORLD",
-    "target": "ORGANON",
-    "amount": 0.632
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Organon",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.632
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.46,
     "brightness": 0.948,
-    "warmth": 0.905,
-    "movement": 0.014,
     "density": 0.374,
+    "movement": 0.014,
     "space": 0.893,
-    "aggression": 0.46
+    "warmth": 0.905
   },
+  "engines": [
+    "Overworld",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.417,
-    "MOVEMENT": 0.014,
     "COUPLING": 0.809,
+    "MOVEMENT": 0.014,
     "SPACE": 0.893
   },
+  "mood": "Flux",
+  "name": "Peach Dome 2",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.671,
+      "macro_coupling": 0.891,
+      "macro_movement": 0.011,
+      "macro_space": 0.827
+    },
+    "Overworld": {
+      "macro_character": 0.651,
+      "macro_coupling": 0.86,
+      "macro_movement": 0.013,
+      "macro_space": 0.939
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +58,6 @@
     "warm",
     "vast",
     "suspended-chaos"
-  ]
+  ],
+  "version": "1.0"
 }

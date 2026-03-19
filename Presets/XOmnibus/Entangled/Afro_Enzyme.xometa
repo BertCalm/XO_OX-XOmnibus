@@ -1,54 +1,63 @@
 {
-  "schema_version": 1,
-  "name": "Afro Enzyme",
-  "mood": "Entangled",
-  "engines": [
-    "OLE",
-    "ORGANON"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Organon",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.72
+      }
+    ]
+  },
   "description": "Envelope linking: OLE's decay triggers ORGANON's protein-synthesis envelope.",
+  "dna": {
+    "aggression": 0.86,
+    "brightness": 0.58,
+    "density": 0.66,
+    "movement": 0.68,
+    "space": 0.42,
+    "warmth": 0.72
+  },
+  "engines": [
+    "Ole",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.72,
+    "COUPLING": 0.72,
+    "MOVEMENT": 0.66,
+    "SPACE": 0.44
+  },
+  "mood": "Entangled",
+  "name": "Afro Enzyme",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.72,
-      "macro_movement": 0.66,
       "macro_coupling": 0.72,
+      "macro_movement": 0.66,
       "macro_space": 0.44
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.56,
-      "macro_movement": 0.64,
       "macro_coupling": 0.62,
+      "macro_movement": 0.64,
       "macro_space": 0.54
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OLE",
-    "target": "ORGANON",
-    "amount": 0.72,
-    "intensity": "Deep"
-  },
-  "dna": {
-    "brightness": 0.58,
-    "warmth": 0.72,
-    "movement": 0.68,
-    "density": 0.66,
-    "space": 0.42,
-    "aggression": 0.86
-  },
-  "macros": {
-    "CHARACTER": 0.72,
-    "MOVEMENT": 0.66,
-    "COUPLING": 0.72,
-    "SPACE": 0.44
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "ole",
     "organon",
     "envelope",
     "afro"
-  ]
+  ],
+  "version": "1.0"
 }

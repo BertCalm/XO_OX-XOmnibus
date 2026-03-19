@@ -1,31 +1,46 @@
 {
-  "name": "Drift Commune",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Ohm",
+        "type": "SYMPATHETIC_RESONANCE",
+        "amount": 0.55
+      }
+    ]
+  },
+  "description": "FM odyssey passes through communal fire — ohm warmth slowing the wavetable drift",
   "engines": [
-    "ODYSSEY",
-    "OHM"
+    "Odyssey",
+    "Ohm"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.55,
+    "MOVEMENT": 0.65,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.53,
-    "warmth": 0.6,
-    "movement": 0.63,
-    "density": 0.53,
-    "space": 0.64,
-    "aggression": 0.29
+  "mood": "Entangled",
+  "name": "Drift Commune",
+  "parameters": {
+    "Odyssey": {},
+    "Ohm": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "SYMPATHETIC_RESONANCE",
-    "source": "ODYSSEY",
-    "target": "OHM",
-    "amount": 0.55
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.29,
+    "brightness": 0.53,
+    "density": 0.53,
+    "movement": 0.63,
+    "space": 0.64,
+    "warmth": 0.6
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "ohm",
     "wavetable"
   ],
-  "description": "FM odyssey passes through communal fire \u2014 ohm warmth slowing the wavetable drift"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

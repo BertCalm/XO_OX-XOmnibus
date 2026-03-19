@@ -1,49 +1,61 @@
 {
-  "name": "CROSS ENT 01",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Ombre",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.695
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.101,
+    "brightness": 0.951,
+    "density": 0.095,
+    "movement": 0.94,
+    "space": 0.514,
+    "warmth": 0.962
+  },
   "engines": [
-    "OSTERIA",
-    "OMBRE"
+    "Osteria",
+    "Ombre"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.956,
+    "COUPLING": 0.307,
+    "MOVEMENT": 0.517,
+    "SPACE": 0.514
+  },
+  "mood": "Entangled",
+  "name": "CROSS ENT 01",
   "parameters": {
-    "OSTERIA": {
+    "Ombre": {
       "macro_character": 0.956,
-      "macro_movement": 0.517,
       "macro_coupling": 0.307,
+      "macro_movement": 0.517,
       "macro_space": 0.514
     },
-    "OMBRE": {
+    "Osteria": {
       "macro_character": 0.956,
-      "macro_movement": 0.517,
       "macro_coupling": 0.307,
+      "macro_movement": 0.517,
       "macro_space": 0.514
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OSTERIA",
-    "target": "OMBRE",
-    "amount": 0.695
-  },
-  "dna": {
-    "brightness": 0.951,
-    "warmth": 0.962,
-    "movement": 0.94,
-    "density": 0.095,
-    "space": 0.514,
-    "aggression": 0.101
-  },
-  "macros": {
-    "CHARACTER": 0.956,
-    "MOVEMENT": 0.517,
-    "COUPLING": 0.307,
-    "SPACE": 0.514
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-  ]
+  ],
+  "version": "1.0"
 }

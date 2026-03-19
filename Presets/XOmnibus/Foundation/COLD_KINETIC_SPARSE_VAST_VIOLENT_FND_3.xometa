@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "COLD_KINETIC_SPARSE_VAST_VIOLENT_FND_3",
-  "mood": "Foundation",
-  "engines": [
-    "ORIGAMI",
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ouroboros",
+        "type": "FILTER_MOD",
+        "amount": 0.538
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: COLD_KINETIC_SPARSE_VAST_VIOLENT. Variant 3.",
+  "dna": {
+    "aggression": 0.904,
+    "brightness": 0.495,
+    "density": 0.046,
+    "movement": 0.944,
+    "space": 0.952,
+    "warmth": 0.08
+  },
+  "engines": [
+    "Origami",
+    "Ouroboros"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.548,
+    "COUPLING": 0.095,
+    "MOVEMENT": 0.863,
+    "SPACE": 0.938
+  },
+  "mood": "Foundation",
+  "name": "Shard Abyss",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.576,
+      "macro_coupling": 0.135,
+      "macro_movement": 0.853,
+      "macro_space": 0.911
+    },
+    "Ouroboros": {
+      "macro_character": 0.52,
+      "macro_coupling": 0.055,
+      "macro_movement": 0.873,
+      "macro_space": 0.965
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "sparse",
     "extreme",
@@ -19,53 +70,6 @@
     "violent",
     "foundation"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.576,
-      "macro_movement": 0.853,
-      "macro_coupling": 0.135,
-      "macro_space": 0.911
-    },
-    "OUROBOROS": {
-      "macro_character": 0.52,
-      "macro_movement": 0.873,
-      "macro_coupling": 0.055,
-      "macro_space": 0.965
-    }
-  },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ORIGAMI",
-    "target": "OUROBOROS",
-    "amount": 0.538
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.495,
-    "warmth": 0.08,
-    "movement": 0.944,
-    "density": 0.046,
-    "space": 0.952,
-    "aggression": 0.904
-  },
-  "macros": {
-    "CHARACTER": 0.548,
-    "MOVEMENT": 0.863,
-    "COUPLING": 0.095,
-    "SPACE": 0.938
-  }
+  "version": "1.0.0"
 }

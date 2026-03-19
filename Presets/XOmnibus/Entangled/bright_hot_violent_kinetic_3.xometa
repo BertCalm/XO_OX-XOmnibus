@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT HOT VIOLENT KINETIC 3",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.9586,
-    "warmth": 0.9483,
-    "aggression": 0.9107,
-    "movement": 0.9153,
-    "density": 0.4605,
-    "space": 0.5416
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Medium",
+  "couplingType": "FLOW",
+  "description": "Ultra-diverse Entangled preset — bright hot violent kinetic. Designed for FLOW coupling with XOwlfish.",
   "dna": {
-    "brightness": 0.9586,
-    "warmth": 0.9483,
     "aggression": 0.9107,
-    "movement": 0.9153,
+    "brightness": 0.9586,
     "density": 0.4605,
-    "space": 0.5416
+    "movement": 0.9153,
+    "space": 0.5416,
+    "warmth": 0.9483
   },
   "engines": [
-    "XOwlfish"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 bright hot violent kinetic. Designed for FLOW coupling with XOwlfish.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "flow",
-    "owlfish"
+    "Owlfish"
   ],
   "macroLabels": [
     "RADIANCE",
@@ -36,15 +23,28 @@
     "FLOW",
     "SHRED"
   ],
-  "couplingType": "FLOW",
-  "couplingIntensity": "Medium",
+  "mood": "Flux",
+  "name": "BRIGHT HOT VIOLENT KINETIC 3",
   "parameters": {
-    "XOwlfish": {
-      "couplingLevel": 0.646,
-      "couplingBus": 3
+    "Owlfish": {
+      "couplingBus": 3,
+      "couplingLevel": 0.646
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9107,
+    "brightness": 0.9586,
+    "density": 0.4605,
+    "movement": 0.9153,
+    "space": 0.5416,
+    "warmth": 0.9483
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "flow",
+    "owlfish"
+  ],
+  "version": "1.0.0"
 }

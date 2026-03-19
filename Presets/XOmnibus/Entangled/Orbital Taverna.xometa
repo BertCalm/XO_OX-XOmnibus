@@ -1,14 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Orbital Taverna",
-  "mood": "Entangled",
-  "engines": [
-    "OSTERIA",
-    "ORBITAL"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.55,
+        "engineA": "Osteria",
+        "engineB": "Orbital",
+        "type": "LFO->Pitch"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
   "description": "ORBITAL's slow rotation turns the taverna ceiling into a slow-moving night sky.",
+  "dna": {
+    "aggression": 0.28,
+    "brightness": 0.57,
+    "density": 0.56,
+    "movement": 0.5,
+    "space": 0.6,
+    "warmth": 0.66
+  },
+  "engines": [
+    "Osteria",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.75,
+    "MOVEMENT": 0.5,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Orbital Taverna",
+  "parameters": {
+    "Osteria": {},
+    "Orbital": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -19,38 +54,6 @@
     "ambient",
     "circular"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5,
-    "MOVEMENT": 0.5,
-    "COUPLING": 0.75,
-    "SPACE": 0.5
-  },
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.57,
-    "warmth": 0.66,
-    "movement": 0.5,
-    "density": 0.56,
-    "space": 0.6,
-    "aggression": 0.28
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OSTERIA",
-        "engineB": "ORBITAL",
-        "type": "LFO->Pitch",
-        "amount": 0.55
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

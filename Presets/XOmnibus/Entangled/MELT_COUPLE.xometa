@@ -1,49 +1,61 @@
 {
-  "name": "MELT COUPLE",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.489,
-      "macro_movement": 0.48,
-      "macro_coupling": 0.56,
-      "macro_space": 0.934
-    },
-    "OBLIQUE": {
-      "macro_character": 0.722,
-      "macro_movement": 0.288,
-      "macro_coupling": 0.573,
-      "macro_space": 0.543
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OUTWIT",
-    "target": "OBLIQUE",
-    "amount": 0.837
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Oblique",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.837
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.886,
     "brightness": 0.866,
-    "warmth": 0.928,
-    "movement": 0.323,
     "density": 0.94,
+    "movement": 0.323,
     "space": 0.853,
-    "aggression": 0.886
+    "warmth": 0.928
   },
+  "engines": [
+    "Outwit",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.395,
-    "MOVEMENT": 0.345,
     "COUPLING": 0.773,
+    "MOVEMENT": 0.345,
     "SPACE": 0.146
   },
+  "mood": "Entangled",
+  "name": "MELT COUPLE",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.722,
+      "macro_coupling": 0.573,
+      "macro_movement": 0.288,
+      "macro_space": 0.543
+    },
+    "Outwit": {
+      "macro_character": 0.489,
+      "macro_coupling": 0.56,
+      "macro_movement": 0.48,
+      "macro_space": 0.934
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-  ]
+  ],
+  "version": "1.0"
 }

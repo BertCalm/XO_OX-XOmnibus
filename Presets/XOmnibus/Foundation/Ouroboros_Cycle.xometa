@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Ouroboros Cycle",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Serpentine bass loop that grounds itself in perpetual return.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.2,
+    "density": 0.8,
+    "movement": 0.25,
+    "space": 0.2,
+    "warmth": 0.75
+  },
   "engines": [
     "Ouroboros"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Serpentine bass loop that grounds itself in perpetual return.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Ouroboros Cycle",
+  "parameters": {
+    "Ouroboros": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "bedrock",
     "loop",
@@ -16,31 +41,6 @@
     "bass",
     "cycle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Ouroboros": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.2,
-    "warmth": 0.75,
-    "movement": 0.25,
-    "density": 0.8,
-    "space": 0.2,
-    "aggression": 0.55
-  }
+  "version": "1.0.0"
 }

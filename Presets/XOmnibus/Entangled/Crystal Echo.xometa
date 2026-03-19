@@ -1,31 +1,46 @@
 {
-  "name": "Crystal Echo",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Overdub",
+        "type": "GRAIN_SCATTER",
+        "amount": 0.7
+      }
+    ]
+  },
+  "description": "Spring reverb carries microsound particles forward — shimmer locked inside the bloom",
   "engines": [
-    "OVERDUB",
-    "ORPHICA"
+    "Overdub",
+    "Orphica"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.4,
     "COUPLING": 0.7,
+    "MOVEMENT": 0.4,
     "SPACE": 0.7
   },
-  "sonic_dna": {
-    "brightness": 0.52,
-    "warmth": 0.59,
-    "movement": 0.59,
-    "density": 0.52,
-    "space": 0.57,
-    "aggression": 0.27
+  "mood": "Entangled",
+  "name": "Crystal Echo",
+  "parameters": {
+    "Overdub": {},
+    "Orphica": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "GRAIN_SCATTER",
-    "source": "ORPHICA",
-    "target": "OVERDUB",
-    "amount": 0.7
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.27,
+    "brightness": 0.52,
+    "density": 0.52,
+    "movement": 0.59,
+    "space": 0.57,
+    "warmth": 0.59
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "orphica",
     "dub"
   ],
-  "description": "Spring reverb carries microsound particles forward \u2014 shimmer locked inside the bloom"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

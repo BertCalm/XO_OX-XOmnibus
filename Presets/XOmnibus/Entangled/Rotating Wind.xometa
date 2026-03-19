@@ -1,31 +1,46 @@
 {
-  "name": "Rotating Wind",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Obbligato",
+        "type": "ORBITAL_RING",
+        "amount": 0.55
+      }
+    ]
+  },
+  "description": "OBBLIGATO dual-channel breath mapped to orbital ring rotation — wind becomes orbit",
   "engines": [
-    "OBBLIGATO",
-    "ORBITAL"
+    "Obbligato",
+    "Orbital"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.55,
+    "MOVEMENT": 0.55,
     "SPACE": 0.5
   },
-  "sonic_dna": {
-    "brightness": 0.57,
-    "warmth": 0.61,
-    "movement": 0.57,
-    "density": 0.61,
-    "space": 0.54,
-    "aggression": 0.39
+  "mood": "Entangled",
+  "name": "Rotating Wind",
+  "parameters": {
+    "Obbligato": {},
+    "Orbital": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "ORBITAL_RING",
-    "source": "ORBITAL",
-    "target": "OBBLIGATO",
-    "amount": 0.55
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.39,
+    "brightness": 0.57,
+    "density": 0.61,
+    "movement": 0.57,
+    "space": 0.54,
+    "warmth": 0.61
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "orbital",
     "wind"
   ],
-  "description": "OBBLIGATO dual-channel breath mapped to orbital ring rotation \u2014 wind becomes orbit"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

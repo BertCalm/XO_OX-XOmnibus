@@ -1,31 +1,46 @@
 {
-  "name": "Coral Grain",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obbligato",
+        "type": "GRANULAR_WEAVE",
+        "amount": 0.7
+      }
+    ]
+  },
+  "description": "OBBLIGATO BOND macro tied to opal grain size — the tighter the bond, the smaller the grain",
   "engines": [
-    "OBBLIGATO",
-    "OPAL"
+    "Obbligato",
+    "Opal"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.7,
+    "MOVEMENT": 0.55,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.63,
-    "warmth": 0.59,
-    "movement": 0.61,
-    "density": 0.57,
-    "space": 0.62,
-    "aggression": 0.29
+  "mood": "Entangled",
+  "name": "Coral Grain",
+  "parameters": {
+    "Obbligato": {},
+    "Opal": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "GRANULAR_WEAVE",
-    "source": "OPAL",
-    "target": "OBBLIGATO",
-    "amount": 0.7
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.29,
+    "brightness": 0.63,
+    "density": 0.57,
+    "movement": 0.61,
+    "space": 0.62,
+    "warmth": 0.59
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "opal",
     "wind"
   ],
-  "description": "OBBLIGATO BOND macro tied to opal grain size \u2014 the tighter the bond, the smaller the grain"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

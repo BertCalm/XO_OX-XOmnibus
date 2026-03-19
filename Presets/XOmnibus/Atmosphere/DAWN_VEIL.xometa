@@ -1,49 +1,61 @@
 {
-  "name": "DAWN VEIL",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Octopus",
+        "type": "TIMBRAL_BLEND",
+        "amount": 0.495
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.387,
+    "brightness": 0.943,
+    "density": 0.472,
+    "movement": 0.426,
+    "space": 0.294,
+    "warmth": 0.084
+  },
   "engines": [
-    "OBSCURA",
-    "OCTOPUS"
+    "Obscura",
+    "Octopus"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.847,
+    "COUPLING": 0.482,
+    "MOVEMENT": 0.323,
+    "SPACE": 0.299
+  },
+  "mood": "Atmosphere",
+  "name": "DAWN VEIL",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.941,
-      "macro_movement": 0.596,
       "macro_coupling": 0.883,
+      "macro_movement": 0.596,
       "macro_space": 0.156
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.754,
-      "macro_movement": 0.05,
       "macro_coupling": 0.082,
+      "macro_movement": 0.05,
       "macro_space": 0.443
     }
   },
-  "coupling": {
-    "type": "TIMBRAL_BLEND",
-    "source": "OBSCURA",
-    "target": "OCTOPUS",
-    "amount": 0.495
-  },
-  "dna": {
-    "brightness": 0.943,
-    "warmth": 0.084,
-    "movement": 0.426,
-    "density": 0.472,
-    "space": 0.294,
-    "aggression": 0.387
-  },
-  "macros": {
-    "CHARACTER": 0.847,
-    "MOVEMENT": 0.323,
-    "COUPLING": 0.482,
-    "SPACE": 0.299
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "extreme",
     "low-warmth"
-  ]
+  ],
+  "version": "1.0"
 }

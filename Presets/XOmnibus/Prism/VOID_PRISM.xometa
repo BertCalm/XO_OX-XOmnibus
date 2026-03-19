@@ -1,48 +1,60 @@
 {
-  "name": "VOID PRISM",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Origami",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.587
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.026,
+    "brightness": 0.056,
+    "density": 0.181,
+    "movement": 0.801,
+    "space": 0.352,
+    "warmth": 0.58
+  },
   "engines": [
-    "ORACLE",
-    "ORIGAMI"
+    "Oracle",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "COUPLING": 0.386,
+    "MOVEMENT": 0.427,
+    "SPACE": 0.733
+  },
+  "mood": "Prism",
+  "name": "VOID PRISM",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.275,
-      "macro_movement": 0.561,
       "macro_coupling": 0.108,
+      "macro_movement": 0.561,
       "macro_space": 0.899
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.571,
-      "macro_movement": 0.914,
       "macro_coupling": 0.235,
+      "macro_movement": 0.914,
       "macro_space": 0.766
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ORACLE",
-    "target": "ORIGAMI",
-    "amount": 0.587
-  },
-  "dna": {
-    "brightness": 0.056,
-    "warmth": 0.58,
-    "movement": 0.801,
-    "density": 0.181,
-    "space": 0.352,
-    "aggression": 0.026
-  },
-  "macros": {
-    "CHARACTER": 0.88,
-    "MOVEMENT": 0.427,
-    "COUPLING": 0.386,
-    "SPACE": 0.733
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,56 @@
 {
-  "name": "DARK COLD STILL DENSE GENTLE FAM2 4",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Overdub",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.457
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.02,
+    "brightness": 0.056,
+    "density": 0.893,
+    "movement": 0.09,
+    "space": 0.543,
+    "warmth": 0.034
+  },
   "engines": [
-    "ODYSSEY",
-    "OVERDUB"
+    "Odyssey",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.045,
+    "COUPLING": 0.457,
+    "MOVEMENT": 0.09,
+    "SPACE": 0.543
+  },
+  "mood": "Family",
+  "name": "DARK COLD STILL DENSE GENTL...",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.045,
-      "macro_movement": 0.09,
       "macro_coupling": 0.457,
+      "macro_movement": 0.09,
       "macro_space": 0.543
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.059,
-      "macro_movement": 0.102,
       "macro_coupling": 0.444,
+      "macro_movement": 0.102,
       "macro_space": 0.587
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ODYSSEY",
-    "target": "OVERDUB",
-    "amount": 0.457
-  },
-  "dna": {
-    "brightness": 0.056,
-    "warmth": 0.034,
-    "movement": 0.09,
-    "density": 0.893,
-    "space": 0.543,
-    "aggression": 0.02
-  },
-  "macros": {
-    "CHARACTER": 0.045,
-    "MOVEMENT": 0.09,
-    "COUPLING": 0.457,
-    "SPACE": 0.543
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
@@ -47,5 +58,6 @@
     "still",
     "dense",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

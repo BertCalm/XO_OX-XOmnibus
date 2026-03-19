@@ -2,7 +2,7 @@
   "schema_version": 1,
   "author": "XO_OX Designs",
   "version": "1.0",
-  "name": "Ol\u00e9 Charge",
+  "name": "Olé Charge",
   "mood": "Flux",
   "engines": [
     "Ole"
@@ -33,7 +33,9 @@
     "space": 0.22,
     "aggression": 0.65
   },
-  "parameters": {},
+  "parameters": {
+    "Ole": {}
+  },
   "tags": [
     "flux",
     "controlled",
@@ -41,5 +43,5 @@
     "charge",
     "afro-latin"
   ],
-  "description": "DRAMA macro mid-throw \u2014 Afro-Latin trio locked in synchronized charge."
+  "description": "DRAMA macro mid-throw — Afro-Latin trio locked in synchronized charge."
 }

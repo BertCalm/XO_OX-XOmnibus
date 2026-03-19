@@ -1,45 +1,56 @@
 {
-  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 3",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ODDOSCAR",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "ODDOSCAR": {
-      "macro_character": 0.493,
-      "macro_movement": 0.726,
-      "macro_coupling": 0.499,
-      "macro_space": 0.08
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.483,
-      "macro_movement": 0.739,
-      "macro_coupling": 0.505,
-      "macro_space": 0.047
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ODDOSCAR",
-    "target": "OBBLIGATO",
-    "amount": 0.499
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Obbligato",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.499
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.021,
     "brightness": 0.094,
-    "warmth": 0.893,
-    "movement": 0.726,
     "density": 0.977,
+    "movement": 0.726,
     "space": 0.08,
-    "aggression": 0.021
+    "warmth": 0.893
   },
+  "engines": [
+    "OddOscar",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.493,
-    "MOVEMENT": 0.726,
     "COUPLING": 0.499,
+    "MOVEMENT": 0.726,
     "SPACE": 0.08
   },
+  "mood": "Family",
+  "name": "DARK HOT DENSE INTIMATE GEN...",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.483,
+      "macro_coupling": 0.505,
+      "macro_movement": 0.739,
+      "macro_space": 0.047
+    },
+    "OddOscar": {
+      "macro_character": 0.493,
+      "macro_coupling": 0.499,
+      "macro_movement": 0.726,
+      "macro_space": 0.08
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
@@ -47,5 +58,6 @@
     "dense",
     "intimate",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

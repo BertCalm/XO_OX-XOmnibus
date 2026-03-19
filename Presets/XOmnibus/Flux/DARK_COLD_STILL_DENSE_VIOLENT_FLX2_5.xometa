@@ -1,45 +1,56 @@
 {
-  "name": "DARK_COLD_STILL_DENSE_VIOLENT_FLX2_5",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Organon",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.656
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9106,
+    "brightness": 0.0314,
+    "density": 0.886,
+    "movement": 0.1032,
+    "space": 0.4409,
+    "warmth": 0.084
+  },
   "engines": [
-    "OCEANIC",
-    "ORGANON"
+    "Oceanic",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0718,
+    "COUPLING": 0.8891,
+    "MOVEMENT": 0.1059,
+    "SPACE": 0.4141
+  },
+  "mood": "Flux",
+  "name": "Wave Force",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.0694,
-      "macro_movement": 0.1111,
       "macro_coupling": 0.9047,
+      "macro_movement": 0.1111,
       "macro_space": 0.4147
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.0743,
-      "macro_movement": 0.1007,
       "macro_coupling": 0.8736,
+      "macro_movement": 0.1007,
       "macro_space": 0.4135
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OCEANIC",
-    "target": "ORGANON",
-    "amount": 0.656
-  },
-  "dna": {
-    "brightness": 0.0314,
-    "warmth": 0.084,
-    "movement": 0.1032,
-    "density": 0.886,
-    "space": 0.4409,
-    "aggression": 0.9106
-  },
-  "macros": {
-    "CHARACTER": 0.0718,
-    "MOVEMENT": 0.1059,
-    "COUPLING": 0.8891,
-    "SPACE": 0.4141
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -47,5 +58,6 @@
     "still",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

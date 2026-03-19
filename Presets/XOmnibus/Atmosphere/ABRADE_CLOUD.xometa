@@ -1,50 +1,62 @@
 {
-  "name": "ABRADE CLOUD",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OWLFISH",
-    "OHM"
-  ],
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.391,
-      "macro_movement": 0.741,
-      "macro_coupling": 0.644,
-      "macro_space": 0.61
-    },
-    "OHM": {
-      "macro_character": 0.214,
-      "macro_movement": 0.586,
-      "macro_coupling": 0.725,
-      "macro_space": 0.862
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OWLFISH",
-    "target": "OHM",
-    "amount": 0.224
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ohm",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.224
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.952,
     "brightness": 0.652,
-    "warmth": 0.006,
-    "movement": 0.796,
     "density": 0.382,
+    "movement": 0.796,
     "space": 0.16,
-    "aggression": 0.952
+    "warmth": 0.006
   },
+  "engines": [
+    "Owlfish",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.154,
-    "MOVEMENT": 0.723,
     "COUPLING": 0.393,
+    "MOVEMENT": 0.723,
     "SPACE": 0.16
   },
+  "mood": "Atmosphere",
+  "name": "ABRADE CLOUD",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.214,
+      "macro_coupling": 0.725,
+      "macro_movement": 0.586,
+      "macro_space": 0.862
+    },
+    "Owlfish": {
+      "macro_character": 0.391,
+      "macro_coupling": 0.644,
+      "macro_movement": 0.741,
+      "macro_space": 0.61
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

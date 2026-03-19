@@ -1,62 +1,62 @@
 {
-  "schema_version": 1,
-  "name": "Alert Rest",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Living curious motion movement with bob character and reverb depth.",
+  "dna": {
+    "aggression": 0.058,
+    "brightness": 0.404,
+    "density": 0.176,
+    "movement": 0.358,
+    "space": 0.413,
+    "warmth": 0.304
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Living curious motion movement with bob character and reverb depth.",
-  "tags": [
-    "curious",
-    "nap",
-    "alert"
-  ],
+  "legacy": {
+    "sourceCategory": "Curious Motion",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Curious Motion",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Alert Rest",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 2.0,
-      "bob_oscA_drift": 0.2,
-      "bob_oscA_shape": 0.38,
-      "bob_oscB_wave": 1.0,
-      "bob_oscB_blend": 0.35,
-      "bob_oscB_detune": 5.0,
-      "bob_curMode": 4.0,
-      "bob_curAmount": 0.55,
-      "bob_lfo1Rate": 0.12,
-      "bob_lfo1Depth": 0.22,
-      "bob_fltMode": 0.0,
-      "bob_fltCutoff": 3200.0,
-      "bob_fltReso": 0.18,
       "bob_ampAttack": 1.8,
       "bob_ampDecay": 1.5,
-      "bob_ampSustain": 0.85,
       "bob_ampRelease": 3.5,
-      "bob_bobMode": 0.3
+      "bob_ampSustain": 0.85,
+      "bob_bobMode": 0.3,
+      "bob_curAmount": 0.55,
+      "bob_curMode": 4.0,
+      "bob_fltCutoff": 3200.0,
+      "bob_fltMode": 0.0,
+      "bob_fltReso": 0.18,
+      "bob_lfo1Depth": 0.22,
+      "bob_lfo1Rate": 0.12,
+      "bob_oscA_drift": 0.2,
+      "bob_oscA_shape": 0.38,
+      "bob_oscA_wave": 2.0,
+      "bob_oscB_blend": 0.35,
+      "bob_oscB_detune": 5.0,
+      "bob_oscB_wave": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.404,
-    "warmth": 0.304,
-    "movement": 0.358,
-    "density": 0.176,
-    "space": 0.413,
-    "aggression": 0.058
-  }
+  "tags": [
+    "curious",
+    "nap",
+    "alert"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

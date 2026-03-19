@@ -1,49 +1,61 @@
 {
-  "name": "SAVAGE COIL",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Ottoni",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.433
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.929,
+    "brightness": 0.703,
+    "density": 0.852,
+    "movement": 0.342,
+    "space": 0.623,
+    "warmth": 0.863
+  },
   "engines": [
-    "ODDFELIX",
-    "OTTONI"
+    "OddfeliX",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.194,
+    "COUPLING": 0.336,
+    "MOVEMENT": 0.833,
+    "SPACE": 0.592
+  },
+  "mood": "Entangled",
+  "name": "SAVAGE COIL",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.654,
-      "macro_movement": 0.15,
       "macro_coupling": 0.195,
+      "macro_movement": 0.15,
       "macro_space": 0.345
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.424,
-      "macro_movement": 0.502,
       "macro_coupling": 0.816,
+      "macro_movement": 0.502,
       "macro_space": 0.663
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ODDFELIX",
-    "target": "OTTONI",
-    "amount": 0.433
-  },
-  "dna": {
-    "brightness": 0.703,
-    "warmth": 0.863,
-    "movement": 0.342,
-    "density": 0.852,
-    "space": 0.623,
-    "aggression": 0.929
-  },
-  "macros": {
-    "CHARACTER": 0.194,
-    "MOVEMENT": 0.833,
-    "COUPLING": 0.336,
-    "SPACE": 0.592
-  },
+  "schema_version": 1,
   "tags": [
     "aggressive",
     "entangled",
     "brutal",
     "chaos"
-  ]
+  ],
+  "version": "1.0"
 }

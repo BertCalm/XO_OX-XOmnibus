@@ -1,45 +1,56 @@
 {
-  "name": "PACKED WALL",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORBITAL",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.1099,
-      "macro_movement": 0.8664,
-      "macro_coupling": 0.6527,
-      "macro_space": 0.3582
-    },
-    "OBSCURA": {
-      "macro_character": 0.7884,
-      "macro_movement": 0.5889,
-      "macro_coupling": 0.6063,
-      "macro_space": 0.2654
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORBITAL",
-    "target": "OBSCURA",
-    "amount": 0.738
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Obscura",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.738
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.362,
     "brightness": 0.421,
-    "warmth": 0.1136,
-    "movement": 0.0636,
     "density": 0.9077,
+    "movement": 0.0636,
     "space": 0.4483,
-    "aggression": 0.362
+    "warmth": 0.1136
   },
+  "engines": [
+    "Orbital",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5937,
-    "MOVEMENT": 0.452,
     "COUPLING": 0.7665,
+    "MOVEMENT": 0.452,
     "SPACE": 0.6151
   },
+  "mood": "Entangled",
+  "name": "PACKED WALL",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.7884,
+      "macro_coupling": 0.6063,
+      "macro_movement": 0.5889,
+      "macro_space": 0.2654
+    },
+    "Orbital": {
+      "macro_character": 0.1099,
+      "macro_coupling": 0.6527,
+      "macro_movement": 0.8664,
+      "macro_space": 0.3582
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -47,5 +58,6 @@
     "dark",
     "monolithic",
     "crushing"
-  ]
+  ],
+  "version": "1.0"
 }

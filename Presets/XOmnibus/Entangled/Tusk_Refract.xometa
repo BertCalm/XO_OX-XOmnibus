@@ -1,77 +1,77 @@
 {
-  "schema_version": 1,
-  "name": "Tusk Refract",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.766,
+        "engineA": "Overbite",
+        "engineB": "Oblique",
+        "type": "timbral_blend"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "OVERBITE clench bends OBLIQUE prism color. Bitten geometry, refracted gnash.",
+  "dna": {
+    "aggression": 0.918,
+    "brightness": 0.58,
+    "density": 0.607,
+    "movement": 0.607,
+    "space": 0.329,
+    "warmth": 0.515
+  },
   "engines": [
     "Overbite",
     "Oblique"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE clench bends OBLIQUE prism color. Bitten geometry, refracted gnash.",
-  "tags": [
-    "overbite",
-    "oblique",
-    "coupling",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": 115,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Tusk Refract",
   "parameters": {
-    "Overbite": {
-      "poss_macro1": 0.418,
-      "poss_macro2": 0.486,
-      "poss_macro3": 0.567,
-      "poss_macro4": 0.39,
-      "poss_couplingOut": 0.771,
-      "poss_couplingIn": 0.439,
-      "poss_outputLevel": 0.851,
-      "poss_outputPan": 0.016,
-      "poss_biteDepth": 0.858,
-      "poss_fangAttack": 0.288,
-      "poss_gnashAmt": 0.65,
-      "poss_snapRelease": 0.427
-    },
     "Oblique": {
+      "oblq_couplingIn": 0.796,
+      "oblq_couplingOut": 0.723,
       "oblq_macro1": 0.507,
       "oblq_macro2": 0.429,
       "oblq_macro3": 0.408,
       "oblq_macro4": 0.562,
-      "oblq_couplingOut": 0.723,
-      "oblq_couplingIn": 0.796,
       "oblq_outputLevel": 0.895,
       "oblq_outputPan": 0.003
+    },
+    "Overbite": {
+      "poss_biteDepth": 0.858,
+      "poss_couplingIn": 0.439,
+      "poss_couplingOut": 0.771,
+      "poss_fangAttack": 0.288,
+      "poss_gnashAmt": 0.65,
+      "poss_macro1": 0.418,
+      "poss_macro2": 0.486,
+      "poss_macro3": 0.567,
+      "poss_macro4": 0.39,
+      "poss_outputLevel": 0.851,
+      "poss_outputPan": 0.016,
+      "poss_snapRelease": 0.427
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Oblique",
-        "type": "timbral_blend",
-        "amount": 0.766
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.58,
-    "warmth": 0.515,
-    "movement": 0.607,
-    "density": 0.607,
-    "space": 0.329,
-    "aggression": 0.918
-  }
+  "tags": [
+    "overbite",
+    "oblique",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 115,
+  "version": "1.0.0"
 }

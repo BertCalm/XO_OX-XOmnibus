@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Overdub \u00d7 Optic \u2014 Filter Mod coupling at extreme DNA corner.",
+  "description": "Overdub × Optic — Filter Mod coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "overdub",
@@ -33,7 +33,10 @@
     "space": 0.467,
     "aggression": 0.923
   },
-  "parameters": {},
+  "parameters": {
+    "Overdub": {},
+    "Optic": {}
+  },
   "coupling": {
     "pairs": [
       {

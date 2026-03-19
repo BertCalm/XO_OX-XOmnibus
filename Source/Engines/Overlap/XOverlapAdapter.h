@@ -221,6 +221,7 @@ public:
         float effectiveCutoff = modFilterCutoff * std::pow(2.0f, envMod * 4.0f);
         effectiveCutoff = std::clamp(effectiveCutoff, 20.0f,
                                      std::min(20000.0f, static_cast<float>(sr) * 0.45f));
+        modFilterCutoffCache = effectiveCutoff;  // fix: FilterToFilter coupling reads live cutoff
         float g_svf   = std::tan(3.14159265f * effectiveCutoff / static_cast<float>(sr));
         float k_svf   = 2.0f - 2.0f * params.filterRes;
         k_svf         = std::max(k_svf, 0.01f);
@@ -249,6 +250,13 @@ public:
                     modWheelValue = msg.getControllerValue() / 127.0f;
                 else if (msg.isChannelPressure())
                     aftertouchValue = msg.getChannelPressureValue() / 127.0f;
+                else if (msg.isPitchWheel())
+                {
+                    // Pitch wheel → tangle depth perturbation (+/- 12 semitone range)
+                    // PW range: -8192 to +8192; normalize to [-1, +1]
+                    float pw = msg.getPitchWheelValue() / 8192.0f;
+                    extPitchMod = pw * 0.15f;   // ±0.15 tangle depth range
+                }
                 ++midiIt;
             }
 

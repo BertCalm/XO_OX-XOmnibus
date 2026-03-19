@@ -1,50 +1,62 @@
 {
-  "name": "DARK_KINETIC_DENSE_VIOLENT_FLX_AGG_2",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORGANON",
-    "OBLONG"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.389,
-      "macro_movement": 1.0,
-      "macro_coupling": 0.88,
-      "macro_space": 0.666
-    },
-    "OBLONG": {
-      "macro_character": 0.611,
-      "macro_movement": 1.0,
-      "macro_coupling": 0.853,
-      "macro_space": 0.622
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ORGANON",
-    "target": "OBLONG",
-    "amount": 0.841
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oblong",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.841
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.973,
     "brightness": 0.04,
-    "warmth": 0.485,
-    "movement": 0.975,
     "density": 0.879,
+    "movement": 0.975,
     "space": 0.623,
-    "aggression": 0.973
+    "warmth": 0.485
   },
+  "engines": [
+    "Organon",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.975,
     "COUPLING": 0.88,
+    "MOVEMENT": 0.975,
     "SPACE": 0.623
   },
+  "mood": "Flux",
+  "name": "Thread Cascade",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.611,
+      "macro_coupling": 0.853,
+      "macro_movement": 1.0,
+      "macro_space": 0.622
+    },
+    "Organon": {
+      "macro_character": 0.389,
+      "macro_coupling": 0.88,
+      "macro_movement": 1.0,
+      "macro_space": 0.666
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "kinetic",
     "dark",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Chip Fury",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.89,
+        "engineA": "Overworld",
+        "engineB": "Ouroboros",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "NES 2A03 glitch noise at maximum chaos injection from Ouroboros — chip fury without ceiling.",
+  "dna": {
+    "aggression": 0.95,
+    "brightness": 0.9,
+    "density": 0.75,
+    "movement": 0.85,
+    "space": 0.15,
+    "warmth": 0.08
+  },
   "engines": [
-    "OVERWORLD",
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "NES 2A03 glitch noise at maximum chaos injection from Ouroboros \u2014 chip fury without ceiling.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "bright",
-    "overworld",
-    "ouroboros",
-    "chip"
+    "Overworld",
+    "Ouroboros"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,32 @@
   ],
   "macros": {
     "CHARACTER": 0.82,
-    "MOVEMENT": 0.85,
     "COUPLING": 0.89,
+    "MOVEMENT": 0.85,
     "SPACE": 0.15
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.9,
-    "warmth": 0.08,
-    "movement": 0.85,
-    "density": 0.75,
-    "space": 0.15,
-    "aggression": 0.95
+  "mood": "Entangled",
+  "name": "Chip Fury",
+  "parameters": {
+    "Overworld": {},
+    "Ouroboros": {}
   },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.95,
     "brightness": 0.9,
-    "warmth": 0.08,
-    "movement": 0.85,
     "density": 0.75,
+    "movement": 0.85,
     "space": 0.15,
-    "aggression": 0.95
+    "warmth": 0.08
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERWORLD",
-        "engineB": "OUROBOROS",
-        "type": "CHAOS_INJECT",
-        "amount": 0.89
-      }
-    ]
-  }
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "overworld",
+    "ouroboros",
+    "chip"
+  ],
+  "version": "1.0.0"
 }

@@ -1,49 +1,61 @@
 {
-  "name": "IGNITION MESH",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ottoni",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.831
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.148,
+    "brightness": 0.781,
+    "density": 0.842,
+    "movement": 0.669,
+    "space": 0.61,
+    "warmth": 0.969
+  },
   "engines": [
-    "ORPHICA",
-    "OTTONI"
+    "Orphica",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.066,
+    "COUPLING": 0.717,
+    "MOVEMENT": 0.398,
+    "SPACE": 0.479
+  },
+  "mood": "Entangled",
+  "name": "IGNITION MESH",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.792,
-      "macro_movement": 0.237,
       "macro_coupling": 0.494,
+      "macro_movement": 0.237,
       "macro_space": 0.361
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.572,
-      "macro_movement": 0.467,
       "macro_coupling": 0.983,
+      "macro_movement": 0.467,
       "macro_space": 0.13
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ORPHICA",
-    "target": "OTTONI",
-    "amount": 0.831
-  },
-  "dna": {
-    "brightness": 0.781,
-    "warmth": 0.969,
-    "movement": 0.669,
-    "density": 0.842,
-    "space": 0.61,
-    "aggression": 0.148
-  },
-  "macros": {
-    "CHARACTER": 0.066,
-    "MOVEMENT": 0.398,
-    "COUPLING": 0.717,
-    "SPACE": 0.479
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-  ]
+  ],
+  "version": "1.0"
 }

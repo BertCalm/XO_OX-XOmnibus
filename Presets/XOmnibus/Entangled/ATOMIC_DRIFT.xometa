@@ -1,48 +1,60 @@
 {
-  "name": "ATOMIC DRIFT",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORIGAMI",
-    "OCELOT"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.829,
-      "macro_movement": 0.976,
-      "macro_coupling": 0.707,
-      "macro_space": 0.435
-    },
-    "OCELOT": {
-      "macro_character": 0.734,
-      "macro_movement": 0.944,
-      "macro_coupling": 0.965,
-      "macro_space": 0.27
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORIGAMI",
-    "target": "OCELOT",
-    "amount": 0.904
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ocelot",
+        "type": "PITCH_SYNC",
+        "amount": 0.904
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.634,
     "brightness": 0.538,
-    "warmth": 0.483,
-    "movement": 0.96,
     "density": 0.436,
+    "movement": 0.96,
     "space": 0.731,
-    "aggression": 0.634
+    "warmth": 0.483
   },
+  "engines": [
+    "Origami",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.852,
-    "MOVEMENT": 0.96,
     "COUPLING": 0.831,
+    "MOVEMENT": 0.96,
     "SPACE": 0.087
   },
+  "mood": "Entangled",
+  "name": "ATOMIC DRIFT",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.734,
+      "macro_coupling": 0.965,
+      "macro_movement": 0.944,
+      "macro_space": 0.27
+    },
+    "Origami": {
+      "macro_character": 0.829,
+      "macro_coupling": 0.707,
+      "macro_movement": 0.976,
+      "macro_space": 0.435
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "rupture",
     "intensity"
-  ]
+  ],
+  "version": "1.0"
 }

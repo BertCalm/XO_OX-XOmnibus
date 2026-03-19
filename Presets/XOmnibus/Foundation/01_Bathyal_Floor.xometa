@@ -1,26 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Bathyal Floor",
-  "mood": "Foundation",
-  "sonic_dna": {
-    "brightness": 0.1,
-    "warmth": 0.95,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Pure subharmonic bass — 1:2 and 1:3 divisions with heavy body sine and clean Mixtur layering",
+  "dna": {
     "aggression": 0.15,
-    "movement": 0.2,
+    "brightness": 0.1,
     "density": 0.5,
-    "space": 0.7
+    "movement": 0.2,
+    "space": 0.7,
+    "warmth": 0.95
   },
   "engines": [
-    "XOwlfish"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Pure subharmonic bass — 1:2 and 1:3 divisions with heavy body sine and clean Mixtur layering",
-  "tags": [
-    "bass",
-    "sub",
-    "abyssal",
-    "foundation"
+    "Owlfish"
   ],
   "macroLabels": [
     "DEPTH",
@@ -28,21 +22,50 @@
     "DEFENSE",
     "PRESSURE"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.1,
-    "warmth": 0.95,
-    "movement": 0.2,
-    "density": 0.5,
-    "space": 0.7,
-    "aggression": 0.15
-  },
+  "mood": "Foundation",
+  "name": "Bathyal Floor",
   "parameters": {
-    "XOwlfish": {
-      "owl_portamento": 0.1,
+    "Owlfish": {
+      "owl_ampAttack": 5,
+      "owl_ampDecay": 250,
+      "owl_ampRelease": 400,
+      "owl_ampSustain": 0.85,
+      "owl_armorDecay": 0.4,
+      "owl_armorDelay": 0.2,
+      "owl_armorDuck": 0.3,
+      "owl_armorScatter": 0.2,
+      "owl_armorThreshold": 0.9,
+      "owl_bodyFreq": 38,
+      "owl_bodyLevel": 0.7,
+      "owl_compAttack": 0.2,
+      "owl_compRatio": 0.35,
+      "owl_compRelease": 0.5,
+      "owl_compThreshold": 0.45,
+      "owl_couplingBus": 0,
+      "owl_couplingLevel": 0.5,
+      "owl_defense": 0.2,
+      "owl_depth": 0.6,
+      "owl_feedRate": 0.5,
+      "owl_feeding": 0.1,
+      "owl_filterCutoff": 0.3,
+      "owl_filterReso": 0.15,
+      "owl_filterTrack": 0.4,
+      "owl_fundWave": 0.0,
+      "owl_grainDensity": 0.0,
+      "owl_grainMix": 0.0,
+      "owl_grainPitch": 0.0,
+      "owl_grainSize": 0.3,
       "owl_legatoMode": 1,
+      "owl_mixtur": 0.1,
       "owl_morphGlide": 0.3,
-      "owl_subMix": 0.35,
+      "owl_outputLevel": 0.85,
+      "owl_outputPan": 0.0,
+      "owl_portamento": 0.1,
+      "owl_pressure": 0.5,
+      "owl_reverbDamp": 0.7,
+      "owl_reverbMix": 0.15,
+      "owl_reverbPreDelay": 0.2,
+      "owl_reverbSize": 0.3,
       "owl_subDiv1": 1,
       "owl_subDiv2": 2,
       "owl_subDiv3": 0,
@@ -51,47 +74,24 @@
       "owl_subLevel2": 0.6,
       "owl_subLevel3": 0.0,
       "owl_subLevel4": 0.0,
-      "owl_mixtur": 0.1,
-      "owl_fundWave": 0.0,
-      "owl_subWave": 0.15,
-      "owl_bodyFreq": 38,
-      "owl_bodyLevel": 0.7,
-      "owl_compRatio": 0.35,
-      "owl_compThreshold": 0.45,
-      "owl_compAttack": 0.2,
-      "owl_compRelease": 0.5,
-      "owl_filterCutoff": 0.3,
-      "owl_filterReso": 0.15,
-      "owl_filterTrack": 0.4,
-      "owl_grainSize": 0.3,
-      "owl_grainDensity": 0.0,
-      "owl_grainPitch": 0.0,
-      "owl_grainMix": 0.0,
-      "owl_feedRate": 0.5,
-      "owl_armorThreshold": 0.9,
-      "owl_armorDecay": 0.4,
-      "owl_armorScatter": 0.2,
-      "owl_armorDuck": 0.3,
-      "owl_armorDelay": 0.2,
-      "owl_reverbSize": 0.3,
-      "owl_reverbDamp": 0.7,
-      "owl_reverbPreDelay": 0.2,
-      "owl_reverbMix": 0.15,
-      "owl_ampAttack": 5,
-      "owl_ampDecay": 250,
-      "owl_ampSustain": 0.85,
-      "owl_ampRelease": 400,
-      "owl_depth": 0.6,
-      "owl_feeding": 0.1,
-      "owl_defense": 0.2,
-      "owl_pressure": 0.5,
-      "owl_outputLevel": 0.85,
-      "owl_outputPan": 0.0,
-      "owl_couplingLevel": 0.5,
-      "owl_couplingBus": 0
+      "owl_subMix": 0.35,
+      "owl_subWave": 0.15
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.15,
+    "brightness": 0.1,
+    "density": 0.5,
+    "movement": 0.2,
+    "space": 0.7,
+    "warmth": 0.95
+  },
+  "tags": [
+    "bass",
+    "sub",
+    "abyssal",
+    "foundation"
+  ],
+  "version": "1.0.0"
 }

@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_STILL_DENSE_FAM_VOL_24",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "OddfeliX",
+        "type": "ENVELOPE_MIRROR",
+        "amount": 0.776
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.426,
+    "brightness": 0.946,
+    "density": 0.918,
+    "movement": 0.113,
+    "space": 0.509,
+    "warmth": 0.892
+  },
   "engines": [
-    "ODDFELIX",
-    "OVERDUB"
+    "OddfeliX",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.901,
+    "COUPLING": 0.67,
+    "MOVEMENT": 0.121,
+    "SPACE": 0.5
+  },
+  "mood": "Family",
+  "name": "Peach Molten 2",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.896,
-      "macro_movement": 0.126,
       "macro_coupling": 0.642,
+      "macro_movement": 0.126,
       "macro_space": 0.498
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.907,
-      "macro_movement": 0.117,
       "macro_coupling": 0.699,
+      "macro_movement": 0.117,
       "macro_space": 0.502
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_MIRROR",
-    "source": "OVERDUB",
-    "target": "ODDFELIX",
-    "amount": 0.776
-  },
-  "dna": {
-    "brightness": 0.946,
-    "warmth": 0.892,
-    "movement": 0.113,
-    "density": 0.918,
-    "space": 0.509,
-    "aggression": 0.426
-  },
-  "macros": {
-    "CHARACTER": 0.901,
-    "MOVEMENT": 0.121,
-    "COUPLING": 0.67,
-    "SPACE": 0.5
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "still",
     "dense",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

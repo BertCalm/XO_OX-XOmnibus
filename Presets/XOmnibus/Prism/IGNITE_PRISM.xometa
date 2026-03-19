@@ -1,49 +1,61 @@
 {
-  "name": "IGNITE PRISM",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.671
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.869,
+    "brightness": 0.362,
+    "density": 0.448,
+    "movement": 0.979,
+    "space": 0.671,
+    "warmth": 0.914
+  },
   "engines": [
-    "OCEANIC",
-    "ORACLE"
+    "Oceanic",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.856,
+    "COUPLING": 0.889,
+    "MOVEMENT": 0.422,
+    "SPACE": 0.172
+  },
+  "mood": "Prism",
+  "name": "IGNITE PRISM",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.83,
-      "macro_movement": 0.035,
       "macro_coupling": 0.804,
+      "macro_movement": 0.035,
       "macro_space": 0.348
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.575,
-      "macro_movement": 0.223,
       "macro_coupling": 0.324,
+      "macro_movement": 0.223,
       "macro_space": 0.936
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OCEANIC",
-    "target": "ORACLE",
-    "amount": 0.671
-  },
-  "dna": {
-    "brightness": 0.362,
-    "warmth": 0.914,
-    "movement": 0.979,
-    "density": 0.448,
-    "space": 0.671,
-    "aggression": 0.869
-  },
-  "macros": {
-    "CHARACTER": 0.856,
-    "MOVEMENT": 0.422,
-    "COUPLING": 0.889,
-    "SPACE": 0.172
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

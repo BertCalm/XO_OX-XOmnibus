@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Warm Clip Loop",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.64,
+    "pairs": [
+      {
+        "amount": 0.64,
+        "engineA": "Obese",
+        "engineB": "Ouroboros",
+        "type": "Audio->Wavetable"
+      }
+    ],
+    "type": "Audio->Wavetable"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OBESE feedback loop entangles with OUROBOROS recursion. Infinite saturation. [Audio->Wavetable]",
+  "dna": {
+    "aggression": 0.815,
     "brightness": 0.478,
-    "warmth": 0.494,
-    "movement": 0.649,
     "density": 0.758,
+    "movement": 0.649,
     "space": 0.485,
-    "aggression": 0.815
+    "warmth": 0.494
   },
   "engines": [
-    "XObese",
-    "XOuroboros"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE feedback loop entangles with OUROBOROS recursion. Infinite saturation. [Audio->Wavetable]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "obese",
-    "ouroboros",
-    "fat"
+    "Obese",
+    "Ouroboros"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.478,
-    "warmth": 0.494,
-    "movement": 0.649,
-    "density": 0.758,
-    "space": 0.485,
-    "aggression": 0.815
-  },
+  "mood": "Entangled",
+  "name": "Warm Clip Loop",
   "parameters": {
-    "XObese": {
+    "Obese": {
+      "fat_aggression": 0.808,
+      "fat_brightness": 0.475,
+      "fat_couplingBus": 0,
+      "fat_couplingLevel": 0.63,
       "fat_outputLevel": 0.82,
       "fat_outputPan": 0.02,
-      "fat_couplingLevel": 0.63,
-      "fat_couplingBus": 0,
-      "fat_brightness": 0.475,
-      "fat_warmth": 0.639,
-      "fat_aggression": 0.808
+      "fat_warmth": 0.639
     },
-    "XOuroboros": {
+    "Ouroboros": {
+      "ouro_aggression": 0.774,
+      "ouro_brightness": 0.462,
+      "ouro_couplingBus": 0,
+      "ouro_couplingLevel": 0.65,
       "ouro_outputLevel": 0.84,
       "ouro_outputPan": 0.0,
-      "ouro_couplingLevel": 0.65,
-      "ouro_couplingBus": 0,
-      "ouro_brightness": 0.462,
-      "ouro_warmth": 0.471,
-      "ouro_aggression": 0.774
+      "ouro_warmth": 0.471
     }
   },
-  "coupling": {
-    "type": "Audio->Wavetable",
-    "amount": 0.64,
-    "pairs": [
-      {
-        "engineA": "XObese",
-        "engineB": "XOuroboros",
-        "type": "Audio->Wavetable",
-        "amount": 0.64
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.815,
+    "brightness": 0.478,
+    "density": 0.758,
+    "movement": 0.649,
+    "space": 0.485,
+    "warmth": 0.494
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "ouroboros",
+    "fat"
+  ],
+  "version": "1.0.0"
 }

@@ -1,14 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT STILL INTIMATE DENSE FAM 3",
-  "mood": "Family",
-  "engines": [
-    "ORBITAL",
-    "OBSCURA"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, bright, still, dense.",
+  "coupling": [
+    {
+      "amount": 0.438,
+      "destination": "OBSCURA",
+      "source": "ORBITAL",
+      "type": "ENVELOPE_LINK"
+    }
+  ],
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — family, bright, still, dense.",
+  "dna": {
+    "aggression": 0.449,
+    "brightness": 0.942,
+    "density": 0.907,
+    "movement": 0.086,
+    "space": 0.066,
+    "warmth": 0.518
+  },
+  "engines": [
+    "Orbital",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "BRIGHT STILL INTIMATE DENSE...",
+  "parameters": {
+    "Obscura": {
+      "level": 0.786,
+      "pan": 0.02
+    },
+    "Orbital": {
+      "level": 0.711,
+      "pan": 0.053
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "bright",
@@ -17,40 +51,6 @@
     "intimate",
     "ultra-diverse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.942,
-    "warmth": 0.518,
-    "movement": 0.086,
-    "density": 0.907,
-    "space": 0.066,
-    "aggression": 0.449
-  },
-  "parameters": {
-    "ORBITAL": {
-      "level": 0.711,
-      "pan": 0.053
-    },
-    "OBSCURA": {
-      "level": 0.786,
-      "pan": 0.02
-    }
-  },
-  "coupling": [
-    {
-      "source": "ORBITAL",
-      "destination": "OBSCURA",
-      "type": "ENVELOPE_LINK",
-      "amount": 0.438
-    }
-  ],
-  "sequencer": null
+  "version": "1.0.0"
 }

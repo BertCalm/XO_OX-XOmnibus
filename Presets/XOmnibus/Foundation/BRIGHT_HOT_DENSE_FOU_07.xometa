@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT HOT DENSE FOU 07",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ORPHICA",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.913,
-      "macro_movement": 0.573,
-      "macro_coupling": 0.456,
-      "macro_space": 0.407
-    },
-    "ORBITAL": {
-      "macro_character": 0.899,
-      "macro_movement": 0.709,
-      "macro_coupling": 0.73,
-      "macro_space": 0.336
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORPHICA",
-    "target": "ORBITAL",
-    "amount": 0.8
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Orbital",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.556,
     "brightness": 0.881,
-    "warmth": 0.945,
-    "movement": 0.573,
     "density": 0.928,
+    "movement": 0.573,
     "space": 0.407,
-    "aggression": 0.556
+    "warmth": 0.945
   },
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.913,
-    "MOVEMENT": 0.573,
     "COUPLING": 0.456,
+    "MOVEMENT": 0.573,
     "SPACE": 0.407
   },
+  "mood": "Foundation",
+  "name": "BRIGHT HOT DENSE FOU 07",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.899,
+      "macro_coupling": 0.73,
+      "macro_movement": 0.709,
+      "macro_space": 0.336
+    },
+    "Orphica": {
+      "macro_character": 0.913,
+      "macro_coupling": 0.456,
+      "macro_movement": 0.573,
+      "macro_space": 0.407
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "bright",
@@ -47,5 +58,6 @@
     "dense",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,25 +1,35 @@
 {
-  "name": "Gilt Horizon",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Morning haze lifts through reeds. A rising brightness, nothing urgent.",
   "engines": [
-    "ORPHICA"
+    "Orphica"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.716,
-    "MOVEMENT": 0.257,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.257,
     "SPACE": 0.819
   },
-  "sonic_dna": {
-    "brightness": 0.72,
-    "warmth": 0.711,
-    "movement": 0.257,
-    "density": 0.464,
-    "space": 0.819,
-    "aggression": 0.115
+  "mood": "Atmosphere",
+  "name": "Gilt Horizon",
+  "parameters": {
+    "Orphica": {}
   },
-  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.115,
+    "brightness": 0.72,
+    "density": 0.464,
+    "movement": 0.257,
+    "space": 0.819,
+    "warmth": 0.711
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +37,13 @@
     "dawn",
     "gentle"
   ],
-  "description": "Morning haze lifts through reeds. A rising brightness, nothing urgent."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.2
+  }
 }

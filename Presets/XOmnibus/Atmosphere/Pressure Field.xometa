@@ -1,25 +1,35 @@
 {
-  "name": "Pressure Field",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Below the thermocline. Where sound travels differently and time slows.",
   "engines": [
-    "ODYSSEY"
+    "Odyssey"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.304,
-    "MOVEMENT": 0.103,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.103,
     "SPACE": 0.819
   },
-  "sonic_dna": {
-    "brightness": 0.196,
-    "warmth": 0.413,
-    "movement": 0.103,
-    "density": 0.65,
-    "space": 0.819,
-    "aggression": 0.075
+  "mood": "Atmosphere",
+  "name": "Pressure Field",
+  "parameters": {
+    "Odyssey": {}
   },
-  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.075,
+    "brightness": 0.196,
+    "density": 0.65,
+    "movement": 0.103,
+    "space": 0.819,
+    "warmth": 0.413
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +37,13 @@
     "deep",
     "vast"
   ],
-  "description": "Below the thermocline. Where sound travels differently and time slows."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.2
+  }
 }

@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Daguerreotype Dance",
-  "mood": "Entangled",
-  "engines": [
-    "OLE",
-    "OBSCURA"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "OLE vibrant timbre blended with Obscura's silver grain \u2014 vintage dance floor.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Ole",
+        "engineB": "Obscura",
+        "type": "TIMBRE_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OLE vibrant timbre blended with Obscura's silver grain — vintage dance floor.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.45,
+    "density": 0.55,
+    "movement": 0.62,
+    "space": 0.62,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Ole",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.6,
+    "MOVEMENT": 0.615,
+    "SPACE": 0.53
+  },
+  "mood": "Entangled",
+  "name": "Daguerreotype Dance",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.52,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.58,
+      "macro_space": 0.68
+    },
+    "Ole": {
+      "macro_character": 0.68,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.65,
+      "macro_space": 0.38
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "dance",
     "vintage"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.65,
-    "movement": 0.62,
-    "density": 0.55,
-    "space": 0.62,
-    "aggression": 0.55
-  },
-  "parameters": {
-    "OLE": {
-      "macro_character": 0.68,
-      "macro_movement": 0.65,
-      "macro_coupling": 0.6,
-      "macro_space": 0.38
-    },
-    "OBSCURA": {
-      "macro_character": 0.52,
-      "macro_movement": 0.58,
-      "macro_coupling": 0.6,
-      "macro_space": 0.68
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OLE",
-        "engineB": "OBSCURA",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.6
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.6,
-    "MOVEMENT": 0.615,
-    "COUPLING": 0.6,
-    "SPACE": 0.53
-  },
-  "sequencer": null
+  "version": "1.0"
 }

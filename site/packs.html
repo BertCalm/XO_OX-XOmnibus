@@ -4,18 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="XO_OX Sound Packs — Free preset collections for every engine. No accounts, no paywalls.">
-<meta property="og:title" content="XO_OX Designs — Character Synthesis">
-<meta property="og:description" content="Thirty-four character synth engines in one free, open-source instrument. Each engine is a creature. Together they are an ecosystem.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://xo-ox.org/packs.html">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="XO_OX Designs — Character Synthesis">
-<meta name="twitter:description" content="Thirty-four synth engines. Over twenty-four hundred presets. Free & open-source.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
 <title>Sound Packs — XO_OX Designs</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -57,7 +51,7 @@
 html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-deep); }
 
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   background: var(--bg-deep);
   background-image:
     radial-gradient(ellipse at 15% 85%, rgba(42, 161, 155, 0.03) 0%, transparent 50%),
@@ -109,7 +103,7 @@ body::before {
 }
 
 .nav-logo {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1.3rem;
   font-weight: 300;
   letter-spacing: 0.12em;
@@ -216,7 +210,7 @@ body::before {
 }
 
 .packs-hero h1 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 300;
   color: var(--cream);
@@ -312,7 +306,7 @@ body::before {
 }
 
 .pack-cover-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1.8rem;
   font-weight: 300;
   color: var(--cream);
@@ -409,7 +403,7 @@ body::before {
   align-items: center;
   gap: 0.5rem;
   padding: 0.6rem 1.3rem;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.12em;
@@ -461,7 +455,7 @@ body::before {
 }
 
 .support-section h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 300;
   color: var(--cream);
@@ -485,7 +479,7 @@ body::before {
   align-items: center;
   gap: 0.8rem;
   padding: 1rem 2.5rem;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -524,7 +518,7 @@ footer {
   gap: 1rem;
 }
 .footer-logo {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1.4rem;
   font-weight: 300;
   color: var(--text-dim);
@@ -575,7 +569,37 @@ footer {
   footer { flex-direction: column; text-align: center; }
   .footer-links { flex-wrap: wrap; justify-content: center; }
 }
+
+/* Keyboard focus rings for accessibility */
+:focus-visible {
+    outline: 2px solid #0066CC;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Remove default focus for mouse users */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
 </style>
+<meta property="og:title" content="XOmnibus — Free Multi-Engine Synthesizer">
+<meta property="og:description" content="34 engines. 10,028 presets. Free and open-source. By XO_OX Designs.">
+<meta property="og:image" content="https://xo-ox.com/assets/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="XOmnibus — Free Multi-Engine Synthesizer">
+<meta name="twitter:description" content="34 engines. 10,028 presets. Free and open-source.">
+<meta name="twitter:image" content="https://xo-ox.com/assets/og-image.png">
+<link rel="alternate" type="application/rss+xml" title="XOmnibus Signal" href="feed.xml">
 </head>
 <body>
 

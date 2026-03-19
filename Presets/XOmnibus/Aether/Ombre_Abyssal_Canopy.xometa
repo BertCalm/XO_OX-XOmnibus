@@ -1,13 +1,47 @@
 {
-  "schema_version": 1,
-  "name": "Abyssal Canopy",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The grain cloud forms a ceiling above the abyss. No light passes through. The canopy absorbs all spectra — what emerges below is pure shadow in enormous space.",
+  "dna": {
+    "aggression": 0.02,
+    "brightness": 0.08,
+    "density": 0.4,
+    "movement": 0.1,
+    "space": 0.92,
+    "warmth": 0.3
+  },
   "engines": [
     "Ombre"
   ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "The grain cloud forms a ceiling above the abyss. No light passes through. The canopy absorbs all spectra \u2014 what emerges below is pure shadow in enormous space.",
+  "macroLabels": [
+    "GRAIN",
+    "SHADE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Abyssal Canopy",
+  "parameters": {
+    "Ombre": {
+      "ombre_ampAttack": 7.0,
+      "ombre_ampRelease": 9.0,
+      "ombre_delayFeedback": 0.5,
+      "ombre_filterCutoff": 0.05,
+      "ombre_filterReso": 0.3,
+      "ombre_grainDensity": 0.45,
+      "ombre_grainSize": 0.85,
+      "ombre_macroCoupling": 0.0,
+      "ombre_macroGrain": 0.0,
+      "ombre_macroShade": 0.0,
+      "ombre_macroSpace": 0.0,
+      "ombre_reverbMix": 0.93
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "dark-aether",
@@ -16,39 +50,5 @@
     "vast",
     "dark"
   ],
-  "macroLabels": [
-    "GRAIN",
-    "SHADE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.08,
-    "warmth": 0.3,
-    "movement": 0.1,
-    "density": 0.4,
-    "space": 0.92,
-    "aggression": 0.02
-  },
-  "parameters": {
-    "Ombre": {
-      "ombre_grainSize": 0.85,
-      "ombre_grainDensity": 0.45,
-      "ombre_filterCutoff": 0.05,
-      "ombre_filterReso": 0.3,
-      "ombre_ampAttack": 7.0,
-      "ombre_ampRelease": 9.0,
-      "ombre_reverbMix": 0.93,
-      "ombre_delayFeedback": 0.5,
-      "ombre_macroGrain": 0.0,
-      "ombre_macroShade": 0.0,
-      "ombre_macroCoupling": 0.0,
-      "ombre_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

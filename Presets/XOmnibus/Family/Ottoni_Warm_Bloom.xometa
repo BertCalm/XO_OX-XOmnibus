@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Ottoni Warm Bloom",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OTTONI triple brass at full warmth — GROW maximum, ensemble fills all space.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.65,
+    "density": 0.42,
+    "movement": 0.52,
+    "space": 0.78,
+    "warmth": 0.87
+  },
   "engines": [
-    "OTTONI"
+    "Ottoni"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OTTONI triple brass at full warmth \u2014 GROW maximum, ensemble fills all space.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "GROW",
+    "BRASS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Ottoni Warm Bloom",
+  "parameters": {
+    "Ottoni": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "portrait",
@@ -16,29 +41,6 @@
     "spatial",
     "brass"
   ],
-  "macroLabels": [
-    "GROW",
-    "BRASS",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.65,
-    "warmth": 0.87,
-    "movement": 0.52,
-    "density": 0.42,
-    "space": 0.78,
-    "aggression": 0.2
-  }
+  "version": "1.0.0"
 }

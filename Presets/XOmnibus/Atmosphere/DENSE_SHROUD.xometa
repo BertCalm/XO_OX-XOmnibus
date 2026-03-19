@@ -1,50 +1,62 @@
 {
-  "name": "DENSE SHROUD",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OUROBOROS",
-    "ONSET"
-  ],
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.226,
-      "macro_movement": 0.767,
-      "macro_coupling": 0.663,
-      "macro_space": 0.095
-    },
-    "ONSET": {
-      "macro_character": 0.89,
-      "macro_movement": 0.623,
-      "macro_coupling": 0.106,
-      "macro_space": 0.069
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OUROBOROS",
-    "target": "ONSET",
-    "amount": 0.772
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Onset",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.772
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.309,
     "brightness": 0.15,
-    "warmth": 0.897,
-    "movement": 0.159,
     "density": 0.271,
+    "movement": 0.159,
     "space": 0.095,
-    "aggression": 0.309
+    "warmth": 0.897
   },
+  "engines": [
+    "Ouroboros",
+    "Onset"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.34,
-    "MOVEMENT": 0.631,
     "COUPLING": 0.851,
+    "MOVEMENT": 0.631,
     "SPACE": 0.095
   },
+  "mood": "Atmosphere",
+  "name": "DENSE SHROUD",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.89,
+      "macro_coupling": 0.106,
+      "macro_movement": 0.623,
+      "macro_space": 0.069
+    },
+    "Ouroboros": {
+      "macro_character": 0.226,
+      "macro_coupling": 0.663,
+      "macro_movement": 0.767,
+      "macro_space": 0.095
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-  ]
+  ],
+  "version": "1.0"
 }

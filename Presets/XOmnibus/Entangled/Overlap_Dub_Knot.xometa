@@ -1,59 +1,74 @@
 {
-  "schema_version": 1,
-  "name": "Dub Knot",
-  "mood": "Entangled",
-  "engines": ["Overlap", "Overdub"],
-  "author": "Guru Bin — OVERLAP Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "OVERDUB's spring reverb and tape delay feed into OVERLAP's figure-8 topology, creating a dub machine with knot-topology spatial depth. The spring metallic splash hits the figure-8 and doubles back — dub echoes folded through themselves. Classic dub technique elevated by topological recursion.",
-  "tags": ["dub", "spring", "tape", "figure-8", "entangled", "reggae"],
-  "macroLabels": ["CHARACTER", "SPACE", "COUPLING", "DECAY"],
-  "couplingIntensity": "High",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.72,
-    "movement": 0.6,
-    "density": 0.58,
-    "space": 0.78,
-    "aggression": 0.3
-  },
-  "parameters": {
-    "Overlap": {
-      "olap_knotType": 1,
-      "olap_delayFeedback": 0.52,
-      "olap_diffusion": 0.45,
-      "olap_spread": 0.82,
-      "olap_decay": 2.8,
-      "olap_modDepth": 0.12,
-      "olap_modRate": 0.2,
-      "olap_damping": 0.5,
-      "olap_macroCharacter": 0.0,
-      "olap_macroSpace": 0.0,
-      "olap_macroCoupling": 0.0,
-      "olap_macroDecay": 0.0
-    },
-    "Overdub": {
-      "dub_oscWave": 0,
-      "dub_sendAmount": 0.7,
-      "dub_springAmount": 0.65,
-      "dub_tapeDelayTime": 0.38,
-      "dub_tapeFeedback": 0.55,
-      "dub_driveAmount": 0.3,
-      "dub_macroCoupling": 0.0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
       {
+        "amount": 0.35,
         "sourceEngine": "Overdub",
         "sourceParam": "dub_sendAmount",
         "targetEngine": "Overlap",
         "targetParam": "olap_delayFeedback",
-        "amount": 0.35,
         "type": "Multiplicative"
       }
     ]
   },
-  "sequencer": null
+  "couplingIntensity": "Deep",
+  "description": "OVERDUB's spring reverb and tape delay feed into OVERLAP's figure-8 topology, creating a dub machine with knot-topology spatial depth. The spring metallic splash hits the figure-8 and doubles back — dub echoes folded through themselves. Classic dub technique elevated by topological recursion.",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.45,
+    "density": 0.58,
+    "movement": 0.6,
+    "space": 0.78,
+    "warmth": 0.72
+  },
+  "engines": [
+    "Overlap",
+    "Overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "mood": "Entangled",
+  "name": "Dub Knot",
+  "parameters": {
+    "Overdub": {
+      "dub_driveAmount": 0.3,
+      "dub_macroCoupling": 0.0,
+      "dub_oscWave": 0,
+      "dub_sendAmount": 0.7,
+      "dub_springAmount": 0.65,
+      "dub_tapeDelayTime": 0.38,
+      "dub_tapeFeedback": 0.55
+    },
+    "Overlap": {
+      "olap_damping": 0.5,
+      "olap_decay": 2.8,
+      "olap_delayFeedback": 0.52,
+      "olap_diffusion": 0.45,
+      "olap_knotType": 1,
+      "olap_macroCharacter": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_modDepth": 0.12,
+      "olap_modRate": 0.2,
+      "olap_spread": 0.82
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "dub",
+    "spring",
+    "tape",
+    "figure-8",
+    "entangled",
+    "reggae"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

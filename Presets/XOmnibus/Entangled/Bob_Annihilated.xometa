@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Bob Annihilated",
-  "mood": "Entangled",
-  "engines": [
-    "OBLONG",
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.82,
+        "engineA": "Oblong",
+        "engineB": "Ouroboros",
+        "type": "FREQUENCY_SMEAR"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
   "description": "Frequency smear from the ouroboros loop dissolves Bob's harmonic order entirely.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "dense",
-    "oblong",
-    "ouroboros",
-    "annihilation"
+  "dna": {
+    "aggression": 0.91,
+    "brightness": 0.58,
+    "density": 0.9,
+    "movement": 0.7,
+    "space": 0.09,
+    "warmth": 0.38
+  },
+  "engines": [
+    "Oblong",
+    "Ouroboros"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,32 @@
   ],
   "macros": {
     "CHARACTER": 0.88,
-    "MOVEMENT": 0.7,
     "COUPLING": 0.82,
+    "MOVEMENT": 0.7,
     "SPACE": 0.09
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.58,
-    "warmth": 0.38,
-    "movement": 0.7,
-    "density": 0.9,
-    "space": 0.09,
-    "aggression": 0.91
+  "mood": "Entangled",
+  "name": "Bob Annihilated",
+  "parameters": {
+    "Oblong": {},
+    "Ouroboros": {}
   },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.91,
     "brightness": 0.58,
-    "warmth": 0.38,
-    "movement": 0.7,
     "density": 0.9,
+    "movement": 0.7,
     "space": 0.09,
-    "aggression": 0.91
+    "warmth": 0.38
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBLONG",
-        "engineB": "OUROBOROS",
-        "type": "FREQUENCY_SMEAR",
-        "amount": 0.82
-      }
-    ]
-  }
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "oblong",
+    "ouroboros",
+    "annihilation"
+  ],
+  "version": "1.0.0"
 }

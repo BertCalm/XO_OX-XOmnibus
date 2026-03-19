@@ -1,48 +1,60 @@
 {
-  "name": "RESIDUE WAVE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Ombre",
+        "type": "CHAOS_INJECT",
+        "amount": 0.514
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.947,
+    "brightness": 0.304,
+    "density": 0.044,
+    "movement": 0.935,
+    "space": 0.225,
+    "warmth": 0.162
+  },
   "engines": [
-    "OLE",
-    "OMBRE"
+    "Ole",
+    "Ombre"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.519,
+    "COUPLING": 0.079,
+    "MOVEMENT": 0.284,
+    "SPACE": 0.196
+  },
+  "mood": "Entangled",
+  "name": "RESIDUE WAVE",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.829,
-      "macro_movement": 0.551,
       "macro_coupling": 0.588,
+      "macro_movement": 0.551,
       "macro_space": 0.768
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.129,
-      "macro_movement": 0.503,
       "macro_coupling": 0.868,
+      "macro_movement": 0.503,
       "macro_space": 0.831
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OLE",
-    "target": "OMBRE",
-    "amount": 0.514
-  },
-  "dna": {
-    "brightness": 0.304,
-    "warmth": 0.162,
-    "movement": 0.935,
-    "density": 0.044,
-    "space": 0.225,
-    "aggression": 0.947
-  },
-  "macros": {
-    "CHARACTER": 0.519,
-    "MOVEMENT": 0.284,
-    "COUPLING": 0.079,
-    "SPACE": 0.196
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "minimal",
     "negative-space"
-  ]
+  ],
+  "version": "1.0"
 }

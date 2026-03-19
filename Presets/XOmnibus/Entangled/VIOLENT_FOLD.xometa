@@ -1,49 +1,61 @@
 {
-  "name": "VIOLENT FOLD",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Orphica",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.786
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.944,
+    "brightness": 0.045,
+    "density": 0.427,
+    "movement": 0.941,
+    "space": 0.112,
+    "warmth": 0.407
+  },
   "engines": [
-    "ORACLE",
-    "ORPHICA"
+    "Oracle",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.553,
+    "COUPLING": 0.496,
+    "MOVEMENT": 0.718,
+    "SPACE": 0.509
+  },
+  "mood": "Entangled",
+  "name": "VIOLENT FOLD",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.455,
-      "macro_movement": 0.234,
       "macro_coupling": 0.552,
+      "macro_movement": 0.234,
       "macro_space": 0.737
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.276,
-      "macro_movement": 0.126,
       "macro_coupling": 0.28,
+      "macro_movement": 0.126,
       "macro_space": 0.331
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ORACLE",
-    "target": "ORPHICA",
-    "amount": 0.786
-  },
-  "dna": {
-    "brightness": 0.045,
-    "warmth": 0.407,
-    "movement": 0.941,
-    "density": 0.427,
-    "space": 0.112,
-    "aggression": 0.944
-  },
-  "macros": {
-    "CHARACTER": 0.553,
-    "MOVEMENT": 0.718,
-    "COUPLING": 0.496,
-    "SPACE": 0.509
-  },
+  "schema_version": 1,
   "tags": [
     "brutal",
     "savage",
     "chaos",
     "aggressive"
-  ]
+  ],
+  "version": "1.0"
 }

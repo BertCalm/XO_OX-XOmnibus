@@ -1,49 +1,61 @@
 {
-  "name": "DEEP ROOT",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ODDFELIX",
-    "OBLONG"
-  ],
-  "parameters": {
-    "ODDFELIX": {
-      "macro_character": 0.308,
-      "macro_movement": 0.749,
-      "macro_coupling": 0.569,
-      "macro_space": 0.289
-    },
-    "OBLONG": {
-      "macro_character": 0.124,
-      "macro_movement": 0.689,
-      "macro_coupling": 0.7,
-      "macro_space": 0.943
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ODDFELIX",
-    "target": "OBLONG",
-    "amount": 0.4
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oblong",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.4
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.243,
     "brightness": 0.102,
-    "warmth": 0.455,
-    "movement": 0.941,
     "density": 0.745,
+    "movement": 0.941,
     "space": 0.696,
-    "aggression": 0.243
+    "warmth": 0.455
   },
+  "engines": [
+    "OddfeliX",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.216,
-    "MOVEMENT": 0.719,
     "COUPLING": 0.634,
+    "MOVEMENT": 0.719,
     "SPACE": 0.616
   },
+  "mood": "Foundation",
+  "name": "DEEP ROOT",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.124,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.689,
+      "macro_space": 0.943
+    },
+    "OddfeliX": {
+      "macro_character": 0.308,
+      "macro_coupling": 0.569,
+      "macro_movement": 0.749,
+      "macro_space": 0.289
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "dark",
     "extreme",
     "high-movement"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_DENSE_INTIMATE_FAM_VOL_58",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ORPHICA",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.478,
-      "macro_movement": 0.344,
-      "macro_coupling": 0.734,
-      "macro_space": 0.115
-    },
-    "ODDFELIX": {
-      "macro_character": 0.492,
-      "macro_movement": 0.32,
-      "macro_coupling": 0.764,
-      "macro_space": 0.094
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PHASE_COUPLE",
-    "source": "ODDFELIX",
-    "target": "ORPHICA",
-    "amount": 0.8
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Orphica",
+        "type": "PHASE_COUPLE",
+        "amount": 0.8
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.57,
     "brightness": 0.07,
-    "warmth": 0.905,
-    "movement": 0.349,
     "density": 0.944,
+    "movement": 0.349,
     "space": 0.097,
-    "aggression": 0.57
+    "warmth": 0.905
   },
+  "engines": [
+    "Orphica",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.485,
-    "MOVEMENT": 0.332,
     "COUPLING": 0.749,
+    "MOVEMENT": 0.332,
     "SPACE": 0.105
   },
+  "mood": "Family",
+  "name": "Amber Packed",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.492,
+      "macro_coupling": 0.764,
+      "macro_movement": 0.32,
+      "macro_space": 0.094
+    },
+    "Orphica": {
+      "macro_character": 0.478,
+      "macro_coupling": 0.734,
+      "macro_movement": 0.344,
+      "macro_space": 0.115
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "dense",
     "intimate",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

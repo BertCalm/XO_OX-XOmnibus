@@ -1,49 +1,61 @@
 {
-  "name": "CRYSTALLINE FLOOD",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OUROBOROS",
-    "ORACLE"
-  ],
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.732,
-      "macro_movement": 0.653,
-      "macro_coupling": 0.955,
-      "macro_space": 0.496
-    },
-    "ORACLE": {
-      "macro_character": 0.653,
-      "macro_movement": 0.552,
-      "macro_coupling": 1.0,
-      "macro_space": 0.399
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OUROBOROS",
-    "target": "ORACLE",
-    "amount": 0.706
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oracle",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.706
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.6,
     "brightness": 0.93,
-    "warmth": 0.441,
-    "movement": 0.524,
     "density": 0.955,
+    "movement": 0.524,
     "space": 0.69,
-    "aggression": 0.6
+    "warmth": 0.441
   },
+  "engines": [
+    "Ouroboros",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.732,
-    "MOVEMENT": 0.653,
     "COUPLING": 0.955,
+    "MOVEMENT": 0.653,
     "SPACE": 0.496
   },
+  "mood": "Flux",
+  "name": "CRYSTALLINE FLOOD",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.653,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.552,
+      "macro_space": 0.399
+    },
+    "Ouroboros": {
+      "macro_character": 0.732,
+      "macro_coupling": 0.955,
+      "macro_movement": 0.653,
+      "macro_space": 0.496
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "dense",
     "saturated"
-  ]
+  ],
+  "version": "1.0"
 }

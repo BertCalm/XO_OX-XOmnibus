@@ -1,29 +1,67 @@
 {
-  "schema_version": 1,
-  "name": "Pipe Dub",
-  "mood": "Entangled",
-  "engines": ["XOwlfish", "Overdub"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OWLFISH's massive pipe organ sub tones drive OVERDUB's filter cutoff via amplitude coupling. When the organ swells, the dub filter opens. When the organ sustains, the delay blooms. The oldest instrument class meeting the deepest Caribbean tradition — cathedral organ as dub send.",
-  "tags": ["coupling", "organ", "dub", "filter", "sub"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.75,
-    "movement": 0.45,
-    "density": 0.6,
-    "space": 0.7,
-    "aggression": 0.2
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "XOwlfish",
+        "engineB": "Overdub",
+        "type": "AmpToFilter",
+        "amount": 0.4
+      }
+    ]
   },
+  "couplingIntensity": "Medium",
+  "description": "OWLFISH's massive pipe organ sub tones drive OVERDUB's filter cutoff via amplitude coupling. When the organ swells, the dub filter opens. When the organ sustains, the delay blooms. The oldest instrument class meeting the deepest Caribbean tradition — cathedral organ as dub send.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.35,
+    "density": 0.6,
+    "movement": 0.45,
+    "space": 0.7,
+    "warmth": 0.75
+  },
+  "engines": [
+    "Owlfish",
+    "Overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Pipe Dub",
   "parameters": {
-    "XOwlfish": {
-      "owl_portamento": 0.05,
+    "Overdub": {
+      "dub_attack": 0.15,
+      "dub_decay": 1.2,
+      "dub_delayFeedback": 0.45,
+      "dub_delayTime": 0.5,
+      "dub_driveAmount": 0.12,
+      "dub_filterCutoff": 1200.0,
+      "dub_filterEnvAmt": 0.4,
+      "dub_filterReso": 0.35,
+      "dub_level": 0.65,
+      "dub_noiseLevel": 0.05,
+      "dub_oscTune": 0.0,
+      "dub_release": 0.8,
+      "dub_reverbMix": 0.4,
+      "dub_sendLevel": 0.5,
+      "dub_subLevel": 0.25,
+      "dub_sustain": 0.55
+    },
+    "Owlfish": {
+      "owl_bodyFreq": 80.0,
+      "owl_bodyLevel": 0.6,
+      "owl_compAttack": 0.05,
+      "owl_compRatio": 2.0,
+      "owl_compThreshold": -12.0,
+      "owl_fundWave": 0,
       "owl_legatoMode": true,
+      "owl_mixtur": 0.4,
       "owl_morphGlide": 0.3,
-      "owl_subMix": 0.7,
+      "owl_portamento": 0.05,
       "owl_subDiv1": 0,
       "owl_subDiv2": 1,
       "owl_subDiv3": 2,
@@ -32,43 +70,19 @@
       "owl_subLevel2": 0.7,
       "owl_subLevel3": 0.5,
       "owl_subLevel4": 0.35,
-      "owl_mixtur": 0.4,
-      "owl_fundWave": 0,
-      "owl_subWave": 1,
-      "owl_bodyFreq": 80.0,
-      "owl_bodyLevel": 0.6,
-      "owl_compRatio": 2.0,
-      "owl_compThreshold": -12.0,
-      "owl_compAttack": 0.05
-    },
-    "Overdub": {
-      "dub_oscTune": 0.0,
-      "dub_subLevel": 0.25,
-      "dub_noiseLevel": 0.05,
-      "dub_filterCutoff": 1200.0,
-      "dub_filterReso": 0.35,
-      "dub_filterEnvAmt": 0.4,
-      "dub_attack": 0.15,
-      "dub_decay": 1.2,
-      "dub_sustain": 0.55,
-      "dub_release": 0.8,
-      "dub_sendLevel": 0.5,
-      "dub_delayTime": 0.5,
-      "dub_delayFeedback": 0.45,
-      "dub_reverbMix": 0.4,
-      "dub_driveAmount": 0.12,
-      "dub_level": 0.65
+      "owl_subMix": 0.7,
+      "owl_subWave": 1
     }
   },
-  "coupling": {
-    "routes": [
-      {
-        "source": "XOwlfish",
-        "dest": "Overdub",
-        "type": "AmpToFilter",
-        "amount": 0.4
-      }
-    ]
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "coupling",
+    "organ",
+    "dub",
+    "filter",
+    "sub"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

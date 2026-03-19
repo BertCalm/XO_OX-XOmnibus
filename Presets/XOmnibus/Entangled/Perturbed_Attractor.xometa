@@ -1,45 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Perturbed Attractor",
-  "mood": "Entangled",
-  "engines": ["Ouroboros", "Onset"],
-  "author": "Guru Bin — OUROBOROS Retreat 2026-03-15",
-  "version": "1.0.0",
-  "description": "First preset to use ouro_injection > 0. Lorenz attractor receiving external perturbation (injection=0.18). Coupling: Onset velocity outputs push the attractor's dx/dt. Every drum hit perturbs the chaos. The vent has a heartbeat.",
-  "tags": ["injection", "coupling", "onset", "entangled", "awakening"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.4,
-    "movement": 0.85,
-    "density": 0.65,
-    "space": 0.35,
-    "aggression": 0.5
-  },
-  "parameters": {
-    "Ouroboros": {
-      "ouro_topology": 0,
-      "ouro_rate": 160.0,
-      "ouro_chaosIndex": 0.55,
-      "ouro_leash": 0.45,
-      "ouro_theta": 0.4,
-      "ouro_phi": -0.8,
-      "ouro_damping": 0.25,
-      "ouro_injection": 0.18
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
       {
+        "amount": 0.18,
+        "description": "Onset velocity output perturbs Ouroboros attractor trajectory — drum hits push the chaos",
         "source": "Onset",
         "target": "Ouroboros",
-        "type": "AmpToFilter",
-        "amount": 0.18,
-        "description": "Onset velocity output perturbs Ouroboros attractor trajectory — drum hits push the chaos"
+        "type": "AmpToFilter"
       }
     ]
   },
-  "sequencer": null
+  "couplingIntensity": "Subtle",
+  "description": "First preset to use ouro_injection > 0. Lorenz attractor receiving external perturbation (injection=0.18). Coupling: Onset velocity outputs push the attractor's dx/dt. Every drum hit perturbs the chaos. The vent has a heartbeat.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.55,
+    "density": 0.65,
+    "movement": 0.85,
+    "space": 0.35,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Ouroboros",
+    "Onset"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Perturbed Attractor",
+  "parameters": {
+    "Ouroboros": {
+      "ouro_chaosIndex": 0.55,
+      "ouro_damping": 0.25,
+      "ouro_injection": 0.18,
+      "ouro_leash": 0.45,
+      "ouro_phi": -0.8,
+      "ouro_rate": 160.0,
+      "ouro_theta": 0.4,
+      "ouro_topology": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "injection",
+    "coupling",
+    "onset",
+    "entangled",
+    "awakening"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

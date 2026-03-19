@@ -1,48 +1,60 @@
 {
-  "name": "FAINT CHAMBER",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OWLFISH",
-    "ORPHICA"
-  ],
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.347,
-      "macro_movement": 0.058,
-      "macro_coupling": 0.545,
-      "macro_space": 0.597
-    },
-    "ORPHICA": {
-      "macro_character": 0.885,
-      "macro_movement": 0.115,
-      "macro_coupling": 0.324,
-      "macro_space": 0.339
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OWLFISH",
-    "target": "ORPHICA",
-    "amount": 0.252
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Orphica",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.252
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.191,
     "brightness": 0.457,
-    "warmth": 0.568,
-    "movement": 0.087,
     "density": 0.64,
+    "movement": 0.087,
     "space": 0.454,
-    "aggression": 0.191
+    "warmth": 0.568
   },
+  "engines": [
+    "Owlfish",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.926,
-    "MOVEMENT": 0.087,
     "COUPLING": 0.854,
+    "MOVEMENT": 0.087,
     "SPACE": 0.216
   },
+  "mood": "Entangled",
+  "name": "FAINT CHAMBER",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.885,
+      "macro_coupling": 0.324,
+      "macro_movement": 0.115,
+      "macro_space": 0.339
+    },
+    "Owlfish": {
+      "macro_character": 0.347,
+      "macro_coupling": 0.545,
+      "macro_movement": 0.058,
+      "macro_space": 0.597
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "faint"
-  ]
+  ],
+  "version": "1.0"
 }

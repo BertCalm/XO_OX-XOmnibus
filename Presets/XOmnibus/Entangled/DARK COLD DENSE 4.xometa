@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Obsidian \u00d7 Ottoni \u2014 Harmonic Fold coupling at extreme DNA corner.",
+  "description": "Obsidian × Ottoni — Harmonic Fold coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "obsidian",
@@ -33,7 +33,10 @@
     "space": 0.393,
     "aggression": 0.368
   },
-  "parameters": {},
+  "parameters": {
+    "Obsidian": {},
+    "Ottoni": {}
+  },
   "coupling": {
     "pairs": [
       {

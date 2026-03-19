@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "Crystal Prophecy",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.691,
+        "engineA": "Obsidian",
+        "engineB": "Oracle",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Crystal clarity prophecy — OBSIDIAN vitreous edge channels ORACLE stochastic maqam divination.",
+  "dna": {
+    "aggression": 0.215,
+    "brightness": 0.612,
+    "density": 0.578,
+    "movement": 0.466,
+    "space": 0.639,
+    "warmth": 0.352
+  },
   "engines": [
     "Obsidian",
     "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Crystal clarity prophecy \u2014 OBSIDIAN vitreous edge channels ORACLE stochastic maqam divination.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Crystal Prophecy",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_aggression": 0.108,
+      "obsidian_brightness": 0.881,
+      "obsidian_density": 0.431,
+      "obsidian_level": 0.865,
+      "obsidian_movement": 0.269,
+      "obsidian_space": 0.555,
+      "obsidian_warmth": 0.106
+    },
+    "Oracle": {
+      "oracle_aggression": 0.363,
+      "oracle_brightness": 0.34,
+      "oracle_density": 0.722,
+      "oracle_level": 0.895,
+      "oracle_movement": 0.74,
+      "oracle_space": 0.692,
+      "oracle_warmth": 0.456
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "obsidian",
     "oracle",
@@ -17,57 +68,6 @@
     "marquee",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Obsidian": {
-      "obsidian_brightness": 0.881,
-      "obsidian_warmth": 0.106,
-      "obsidian_movement": 0.269,
-      "obsidian_density": 0.431,
-      "obsidian_space": 0.555,
-      "obsidian_aggression": 0.108,
-      "obsidian_level": 0.865
-    },
-    "Oracle": {
-      "oracle_brightness": 0.34,
-      "oracle_warmth": 0.456,
-      "oracle_movement": 0.74,
-      "oracle_density": 0.722,
-      "oracle_space": 0.692,
-      "oracle_aggression": 0.363,
-      "oracle_level": 0.895
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Oracle",
-        "type": "HARMONIC_BLEND",
-        "amount": 0.691
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.612,
-    "warmth": 0.352,
-    "movement": 0.466,
-    "density": 0.578,
-    "space": 0.639,
-    "aggression": 0.215
-  }
+  "version": "1.0.0"
 }

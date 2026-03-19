@@ -1,50 +1,62 @@
 {
-  "name": "BLISTER VAPOR",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Organon",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.272
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.958,
+    "brightness": 0.319,
+    "density": 0.452,
+    "movement": 0.06,
+    "space": 0.394,
+    "warmth": 0.739
+  },
   "engines": [
-    "OPTIC",
-    "ORGANON"
+    "Optic",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.362,
+    "COUPLING": 0.457,
+    "MOVEMENT": 0.337,
+    "SPACE": 0.394
+  },
+  "mood": "Atmosphere",
+  "name": "BLISTER VAPOR",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.313,
-      "macro_movement": 0.166,
       "macro_coupling": 0.44,
+      "macro_movement": 0.166,
       "macro_space": 0.738
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.896,
-      "macro_movement": 0.244,
       "macro_coupling": 0.335,
+      "macro_movement": 0.244,
       "macro_space": 0.444
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OPTIC",
-    "target": "ORGANON",
-    "amount": 0.272
-  },
-  "dna": {
-    "brightness": 0.319,
-    "warmth": 0.739,
-    "movement": 0.06,
-    "density": 0.452,
-    "space": 0.394,
-    "aggression": 0.958
-  },
-  "macros": {
-    "CHARACTER": 0.362,
-    "MOVEMENT": 0.337,
-    "COUPLING": 0.457,
-    "SPACE": 0.394
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

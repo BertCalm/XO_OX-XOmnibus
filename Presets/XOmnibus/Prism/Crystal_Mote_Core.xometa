@@ -1,27 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Crystal Mote Core",
-  "mood": "Prism",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Ice-thin harmonic. One partial, infinite room.",
+  "dna": {
+    "aggression": 0.079,
     "brightness": 0.605,
-    "warmth": 0.077,
-    "movement": 0.359,
     "density": 0.126,
+    "movement": 0.359,
     "space": 0.626,
-    "aggression": 0.079
+    "warmth": 0.077
   },
   "engines": [
-    "ORIGAMI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ice-thin harmonic. One partial, infinite room.",
-  "tags": [
-    "prism",
-    "cold",
-    "sparse",
-    "crystalline",
-    "airy"
+    "Origami"
   ],
   "macroLabels": [
     "CRYSTAL",
@@ -29,17 +22,26 @@
     "COUPLING",
     "OPEN"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.605,
-    "warmth": 0.077,
-    "movement": 0.359,
-    "density": 0.126,
-    "space": 0.626,
-    "aggression": 0.079
+  "mood": "Prism",
+  "name": "Crystal Mote Core",
+  "parameters": {
+    "Origami": {}
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.079,
+    "brightness": 0.605,
+    "density": 0.126,
+    "movement": 0.359,
+    "space": 0.626,
+    "warmth": 0.077
+  },
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy"
+  ],
+  "version": "1.0.0"
 }

@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Metallic Ping",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Focused keys & bells tone with warm character.",
+  "dna": {
+    "aggression": 0.202,
+    "brightness": 0.495,
+    "density": 0.71,
+    "movement": 0.0,
+    "space": 0.403,
+    "warmth": 0.132
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Focused keys & bells tone with warm character.",
-  "tags": [
-    "bell",
-    "metal",
-    "ping"
-  ],
+  "legacy": {
+    "sourceCategory": "Keys & Bells",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Keys & Bells",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Metallic Ping",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
-      "bob_oscA_shape": 0.55,
-      "bob_oscA_drift": 0.06,
-      "bob_oscB_wave": 0.0,
-      "bob_oscB_fm": 0.75,
-      "bob_oscB_blend": 0.78,
-      "bob_oscB_detune": 14.0,
-      "bob_fltMode": 1.0,
-      "bob_fltCutoff": 10000.0,
-      "bob_fltReso": 0.62,
-      "bob_fltEnvAmt": 0.55,
       "bob_ampAttack": 0.001,
       "bob_ampDecay": 1.5,
-      "bob_ampSustain": 0.0,
       "bob_ampRelease": 1.2,
-      "bob_bobMode": 0.12
+      "bob_ampSustain": 0.0,
+      "bob_bobMode": 0.12,
+      "bob_fltCutoff": 10000.0,
+      "bob_fltEnvAmt": 0.55,
+      "bob_fltMode": 1.0,
+      "bob_fltReso": 0.62,
+      "bob_oscA_drift": 0.06,
+      "bob_oscA_shape": 0.55,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.78,
+      "bob_oscB_detune": 14.0,
+      "bob_oscB_fm": 0.75,
+      "bob_oscB_wave": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.495,
-    "warmth": 0.132,
-    "movement": 0.0,
-    "density": 0.71,
-    "space": 0.403,
-    "aggression": 0.202
-  }
+  "tags": [
+    "bell",
+    "metal",
+    "ping"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

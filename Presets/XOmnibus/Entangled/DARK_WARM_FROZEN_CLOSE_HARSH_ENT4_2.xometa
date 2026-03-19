@@ -1,45 +1,56 @@
 {
-  "name": "DARK_WARM_FROZEN_CLOSE_HARSH_ENT4_2",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OUROBOROS",
-    "ORCA"
-  ],
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.529,
-      "macro_movement": 0.1,
-      "macro_coupling": 0.531,
-      "macro_space": 0.017
-    },
-    "ORCA": {
-      "macro_character": 0.55,
-      "macro_movement": 0.097,
-      "macro_coupling": 0.54,
-      "macro_space": 0.047
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OUROBOROS",
-    "target": "ORCA",
-    "amount": 0.759
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Orca",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.759
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.903,
     "brightness": 0.128,
-    "warmth": 0.914,
-    "movement": 0.091,
     "density": 0.558,
+    "movement": 0.091,
     "space": 0.027,
-    "aggression": 0.903
+    "warmth": 0.914
   },
+  "engines": [
+    "Ouroboros",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.54,
-    "MOVEMENT": 0.099,
     "COUPLING": 0.759,
+    "MOVEMENT": 0.099,
     "SPACE": 0.032
   },
+  "mood": "Entangled",
+  "name": "Smoke Grit 3",
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.55,
+      "macro_coupling": 0.54,
+      "macro_movement": 0.097,
+      "macro_space": 0.047
+    },
+    "Ouroboros": {
+      "macro_character": 0.529,
+      "macro_coupling": 0.531,
+      "macro_movement": 0.1,
+      "macro_space": 0.017
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +59,6 @@
     "warm",
     "close",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

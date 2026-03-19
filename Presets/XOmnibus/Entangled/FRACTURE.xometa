@@ -1,48 +1,60 @@
 {
-  "name": "FRACTURE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.648
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.763,
+    "brightness": 0.788,
+    "density": 0.54,
+    "movement": 0.897,
+    "space": 0.739,
+    "warmth": 0.508
+  },
   "engines": [
-    "OPTIC",
-    "ORACLE"
+    "Optic",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.662,
+    "COUPLING": 0.876,
+    "MOVEMENT": 0.897,
+    "SPACE": 0.618
+  },
+  "mood": "Entangled",
+  "name": "FRACTURE",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.951,
-      "macro_movement": 0.882,
       "macro_coupling": 0.342,
+      "macro_movement": 0.882,
       "macro_space": 0.766
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.192,
-      "macro_movement": 0.911,
       "macro_coupling": 1.0,
+      "macro_movement": 0.911,
       "macro_space": 0.155
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OPTIC",
-    "target": "ORACLE",
-    "amount": 0.648
-  },
-  "dna": {
-    "brightness": 0.788,
-    "warmth": 0.508,
-    "movement": 0.897,
-    "density": 0.54,
-    "space": 0.739,
-    "aggression": 0.763
-  },
-  "macros": {
-    "CHARACTER": 0.662,
-    "MOVEMENT": 0.897,
-    "COUPLING": 0.876,
-    "SPACE": 0.618
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "storm",
     "vortex"
-  ]
+  ],
+  "version": "1.0"
 }

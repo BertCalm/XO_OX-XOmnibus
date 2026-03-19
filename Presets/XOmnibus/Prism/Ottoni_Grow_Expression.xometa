@@ -1,43 +1,57 @@
 {
-  "schema_version": 1,
-  "name": "Ottoni Grow Expression",
-  "mood": "Prism",
-  "engines": ["OTTONI"],
-  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
-  "version": "1.0.0",
-  "description": "GROW macro is the mod wheel — the brass section swells from solo horn to full tutti as you push. Density rises from 0.3 to 0.9 under your hand. Maximum expressivity, maximum reward.",
-  "tags": ["grow", "mod-wheel", "brass", "expressive", "swell", "prism"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.7,
-    "warmth": 0.6,
-    "movement": 0.5,
-    "density": 0.3,
-    "space": 0.55,
-    "aggression": 0.7
-  },
-  "parameters": {
-    "OTTONI": {
-      "otto_grow": 0.0,
-      "otto_brassA": 0.7,
-      "otto_brassB": 0.55,
-      "otto_brassC": 0.4,
-      "otto_attackTime": 0.15,
-      "otto_releaseTime": 1.4,
-      "otto_filterCutoff": 0.75,
-      "otto_filterResonance": 0.2,
-      "otto_harmonicRich": 0.65,
-      "otto_velSensitivity": 0.8,
-      "macro_character": 0.7,
-      "macro_movement": 0.5,
-      "macro_coupling": 0.0,
-      "macro_space": 0.55
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "couplingIntensity": "None",
+  "description": "GROW macro is the mod wheel — the brass section swells from solo horn to full tutti as you push. Density rises from 0.3 to 0.9 under your hand. Maximum expressivity, maximum reward.",
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.7,
+    "density": 0.3,
+    "movement": 0.5,
+    "space": 0.55,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Ottoni"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Ottoni Grow Expression",
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.7,
+      "macro_coupling": 0.0,
+      "macro_movement": 0.5,
+      "macro_space": 0.55,
+      "otto_attackTime": 0.15,
+      "otto_brassA": 0.7,
+      "otto_brassB": 0.55,
+      "otto_brassC": 0.4,
+      "otto_filterCutoff": 0.75,
+      "otto_filterResonance": 0.2,
+      "otto_grow": 0.0,
+      "otto_harmonicRich": 0.65,
+      "otto_releaseTime": 1.4,
+      "otto_velSensitivity": 0.8
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "grow",
+    "mod-wheel",
+    "brass",
+    "expressive",
+    "swell",
+    "prism"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

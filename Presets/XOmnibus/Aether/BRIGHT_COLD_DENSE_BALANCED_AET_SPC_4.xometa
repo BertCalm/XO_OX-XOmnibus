@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT COLD DENSE BALANCED AET SPC 4",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OSPREY",
-    "ORACLE"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.515,
-      "macro_movement": 0.497,
-      "macro_coupling": 0.812,
-      "macro_space": 0.454
-    },
-    "ORACLE": {
-      "macro_character": 0.502,
-      "macro_movement": 0.524,
-      "macro_coupling": 0.831,
-      "macro_space": 0.457
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OSPREY",
-    "target": "ORACLE",
-    "amount": 0.581
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.581
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.057,
     "brightness": 0.94,
-    "warmth": 0.09,
-    "movement": 0.497,
     "density": 0.881,
+    "movement": 0.497,
     "space": 0.454,
-    "aggression": 0.057
+    "warmth": 0.09
   },
+  "engines": [
+    "Osprey",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.515,
-    "MOVEMENT": 0.497,
     "COUPLING": 0.812,
+    "MOVEMENT": 0.497,
     "SPACE": 0.454
   },
+  "mood": "Aether",
+  "name": "BRIGHT COLD DENSE BALANCED ...",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.502,
+      "macro_coupling": 0.831,
+      "macro_movement": 0.524,
+      "macro_space": 0.457
+    },
+    "Osprey": {
+      "macro_character": 0.515,
+      "macro_coupling": 0.812,
+      "macro_movement": 0.497,
+      "macro_space": 0.454
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -48,5 +59,6 @@
     "gentle",
     "bright",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

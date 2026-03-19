@@ -1,49 +1,61 @@
 {
-  "name": "ANNIHILATE KNOT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Odyssey",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.663
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.926,
+    "brightness": 0.517,
+    "density": 0.315,
+    "movement": 0.236,
+    "space": 0.039,
+    "warmth": 0.648
+  },
   "engines": [
-    "OBLIQUE",
-    "ODYSSEY"
+    "Oblique",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.466,
+    "COUPLING": 0.105,
+    "MOVEMENT": 0.208,
+    "SPACE": 0.417
+  },
+  "mood": "Entangled",
+  "name": "ANNIHILATE KNOT",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.234,
-      "macro_movement": 0.321,
       "macro_coupling": 0.34,
+      "macro_movement": 0.321,
       "macro_space": 0.726
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.389,
-      "macro_movement": 0.855,
       "macro_coupling": 0.677,
+      "macro_movement": 0.855,
       "macro_space": 0.497
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OBLIQUE",
-    "target": "ODYSSEY",
-    "amount": 0.663
-  },
-  "dna": {
-    "brightness": 0.517,
-    "warmth": 0.648,
-    "movement": 0.236,
-    "density": 0.315,
-    "space": 0.039,
-    "aggression": 0.926
-  },
-  "macros": {
-    "CHARACTER": 0.466,
-    "MOVEMENT": 0.208,
-    "COUPLING": 0.105,
-    "SPACE": 0.417
-  },
+  "schema_version": 1,
   "tags": [
     "fury",
     "chaos",
     "entangled",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

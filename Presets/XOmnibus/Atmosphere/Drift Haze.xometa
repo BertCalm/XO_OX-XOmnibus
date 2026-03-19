@@ -1,64 +1,64 @@
 {
-  "schema_version": 1,
-  "name": "Drift Haze",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Floating pads texture with voyager drift and prism shimmer.",
+  "dna": {
+    "aggression": 0.062,
+    "brightness": 0.518,
+    "density": 0.108,
+    "movement": 0.145,
+    "space": 0.336,
+    "warmth": 0.22
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Floating pads texture with voyager drift and prism shimmer.",
-  "tags": [
-    "drifty",
-    "shimmery",
-    "spacious",
-    "slow-attack"
-  ],
+  "legacy": {
+    "sourceCategory": "Pads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Pads",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Drift Haze",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 0.0,
-      "drift_oscA_level": 0.5,
-      "drift_oscB_mode": 0.0,
-      "drift_oscB_shape": 2.0,
-      "drift_oscB_level": 0.5,
-      "drift_noiseLevel": 0.1,
-      "drift_filterCutoff": 3500.0,
-      "drift_filterReso": 0.15,
-      "drift_shimmerAmount": 0.3,
-      "drift_shimmerTone": 0.5,
-      "drift_lfoRate": 0.05,
-      "drift_lfoDepth": 0.5,
       "drift_attack": 600.0,
-      "drift_sustain": 0.7,
-      "drift_release": 3000.0,
       "drift_driftDepth": 0.4,
       "drift_driftRate": 0.06,
-      "drift_level": -5.0
+      "drift_filterCutoff": 3500.0,
+      "drift_filterReso": 0.15,
+      "drift_level": -5.0,
+      "drift_lfoDepth": 0.5,
+      "drift_lfoRate": 0.05,
+      "drift_noiseLevel": 0.1,
+      "drift_oscA_level": 0.5,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscB_level": 0.5,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 2.0,
+      "drift_release": 3000.0,
+      "drift_shimmerAmount": 0.3,
+      "drift_shimmerTone": 0.5,
+      "drift_sustain": 0.7
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.518,
-    "warmth": 0.22,
-    "movement": 0.145,
-    "density": 0.108,
-    "space": 0.336,
-    "aggression": 0.062
-  }
+  "tags": [
+    "drifty",
+    "shimmery",
+    "spacious",
+    "slow-attack"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

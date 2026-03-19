@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_AET2_5",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "OddOscar",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.5121
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9185,
+    "brightness": 0.8735,
+    "density": 0.487,
+    "movement": 0.366,
+    "space": 0.0743,
+    "warmth": 0.057
+  },
   "engines": [
-    "OBSCURA",
-    "ODDOSCAR"
+    "Obscura",
+    "OddOscar"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8521,
+    "COUPLING": 0.5121,
+    "MOVEMENT": 0.366,
+    "SPACE": 0.0743
+  },
+  "mood": "Aether",
+  "name": "Quartz Force",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.8671,
-      "macro_movement": 0.3699,
       "macro_coupling": 0.4586,
+      "macro_movement": 0.3699,
       "macro_space": 0.0829
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.8371,
-      "macro_movement": 0.3622,
       "macro_coupling": 0.442,
+      "macro_movement": 0.3622,
       "macro_space": 0.0622
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBSCURA",
-    "target": "ODDOSCAR",
-    "amount": 0.5121
-  },
-  "dna": {
-    "brightness": 0.8735,
-    "warmth": 0.057,
-    "space": 0.0743,
-    "aggression": 0.9185,
-    "movement": 0.366,
-    "density": 0.487
-  },
-  "macros": {
-    "CHARACTER": 0.8521,
-    "MOVEMENT": 0.366,
-    "COUPLING": 0.5121,
-    "SPACE": 0.0743
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +60,6 @@
     "intimate",
     "violent",
     "crystalline"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Fat Serpent",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.9,
+        "engineA": "Obese",
+        "engineB": "Overbite",
+        "type": "SATURATION_DRIVE"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "MOJO and BITE fused — two saturation architectures driving toward thermal collapse.",
+  "dna": {
+    "aggression": 0.97,
+    "brightness": 0.45,
+    "density": 0.98,
+    "movement": 0.6,
+    "space": 0.05,
+    "warmth": 0.45
+  },
   "engines": [
-    "OBESE",
-    "OVERBITE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "MOJO and BITE fused \u2014 two saturation architectures driving toward thermal collapse.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "dense",
-    "obese",
-    "overbite",
-    "saturation"
+    "Obese",
+    "Overbite"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,32 @@
   ],
   "macros": {
     "CHARACTER": 1.0,
-    "MOVEMENT": 0.6,
     "COUPLING": 0.9,
+    "MOVEMENT": 0.6,
     "SPACE": 0.05
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.45,
-    "movement": 0.6,
-    "density": 0.98,
-    "space": 0.05,
-    "aggression": 0.97
+  "mood": "Entangled",
+  "name": "Fat Serpent",
+  "parameters": {
+    "Obese": {},
+    "Overbite": {}
   },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.97,
     "brightness": 0.45,
-    "warmth": 0.45,
-    "movement": 0.6,
     "density": 0.98,
+    "movement": 0.6,
     "space": 0.05,
-    "aggression": 0.97
+    "warmth": 0.45
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBESE",
-        "engineB": "OVERBITE",
-        "type": "SATURATION_DRIVE",
-        "amount": 0.9
-      }
-    ]
-  }
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "obese",
+    "overbite",
+    "saturation"
+  ],
+  "version": "1.0.0"
 }

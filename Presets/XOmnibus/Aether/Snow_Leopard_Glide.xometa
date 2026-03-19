@@ -1,37 +1,45 @@
 {
-  "name": "Snow Leopard Glide",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "dna": {
+    "aggression": 0.04,
+    "brightness": 0.81,
+    "density": 0.11,
+    "movement": 0.28,
+    "space": 0.87,
+    "warmth": 0.09
+  },
   "engines": [
-    "OCELOT"
+    "Ocelot"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.21,
+    "COUPLING": 0.31,
+    "MOVEMENT": 0.28,
+    "SPACE": 0.87
+  },
+  "mood": "Aether",
+  "name": "Snow Leopard Glide",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "ocel_macro_character": 0.33,
-      "ocel_macro_movement": 0.28,
       "ocel_macro_coupling": 0.38,
+      "ocel_macro_movement": 0.28,
       "ocel_macro_space": 0.87
     }
   },
-  "dna": {
-    "brightness": 0.81,
-    "warmth": 0.09,
-    "movement": 0.28,
-    "density": 0.11,
-    "space": 0.87,
-    "aggression": 0.04
-  },
-  "macros": {
-    "CHARACTER": 0.21,
-    "MOVEMENT": 0.28,
-    "COUPLING": 0.31,
-    "SPACE": 0.87
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "frozen",
     "crystalline",
     "snow",
     "leopard"
-  ]
+  ],
+  "version": "1.0"
 }

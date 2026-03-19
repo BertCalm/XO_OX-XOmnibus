@@ -1,19 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Harp Of Stars",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The siphonophore's strings are stellar filaments. Each pluck travels light-years. The resonance outlasts the star that created it.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.95,
+    "density": 0.2,
+    "movement": 0.25,
+    "space": 0.93,
+    "warmth": 0.15
+  },
   "engines": [
     "Orphica"
-  ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "The siphonophore's strings are stellar filaments. Each pluck travels light-years. The resonance outlasts the star that created it.",
-  "tags": [
-    "aether",
-    "transcendent",
-    "stellar",
-    "harp",
-    "cosmic"
   ],
   "macroLabels": [
     "PLUCK",
@@ -21,35 +22,34 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.95,
-    "warmth": 0.15,
-    "movement": 0.25,
-    "density": 0.2,
-    "space": 0.93,
-    "aggression": 0.0
-  },
+  "mood": "Aether",
+  "name": "Harp Of Stars",
   "parameters": {
     "Orphica": {
-      "orph_microsoundDensity": 0.4,
-      "orph_pluckBrightness": 0.95,
-      "orph_filterCutoff": 0.96,
-      "orph_filterReso": 0.1,
       "orph_ampAttack": 0.01,
       "orph_ampDecay": 6.0,
-      "orph_ampSustain": 0.3,
       "orph_ampRelease": 8.0,
-      "orph_reverbMix": 0.9,
-      "orph_shimmerAmt": 0.9,
-      "orph_macroPluck": 0.0,
+      "orph_ampSustain": 0.3,
+      "orph_filterCutoff": 0.96,
+      "orph_filterReso": 0.1,
       "orph_macroBloom": 0.0,
       "orph_macroCoupling": 0.0,
-      "orph_macroSpace": 0.0
+      "orph_macroPluck": 0.0,
+      "orph_macroSpace": 0.0,
+      "orph_microsoundDensity": 0.4,
+      "orph_pluckBrightness": 0.95,
+      "orph_reverbMix": 0.9,
+      "orph_shimmerAmt": 0.9
     }
   },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "transcendent",
+    "stellar",
+    "harp",
+    "cosmic"
+  ],
+  "version": "1.0.0"
 }

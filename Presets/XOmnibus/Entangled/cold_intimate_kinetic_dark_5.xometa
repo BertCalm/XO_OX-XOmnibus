@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "COLD INTIMATE KINETIC DARK 5",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "warmth": 0.0968,
-    "space": 0.1017,
-    "movement": 0.8917,
-    "brightness": 0.0916,
-    "aggression": 0.4664,
-    "density": 0.5862
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Medium",
+  "couplingType": "MIRROR",
+  "description": "Ultra-diverse Entangled preset — cold intimate kinetic dark. Designed for MIRROR coupling with XOmbre.",
   "dna": {
-    "warmth": 0.0968,
-    "space": 0.1017,
-    "movement": 0.8917,
-    "brightness": 0.0916,
     "aggression": 0.4664,
-    "density": 0.5862
+    "brightness": 0.0916,
+    "density": 0.5862,
+    "movement": 0.8917,
+    "space": 0.1017,
+    "warmth": 0.0968
   },
   "engines": [
-    "XOmbre"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 cold intimate kinetic dark. Designed for MIRROR coupling with XOmbre.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "mirror",
-    "ombre"
+    "Ombre"
   ],
   "macroLabels": [
     "RADIANCE",
@@ -36,15 +23,28 @@
     "VOID",
     "DRIFT"
   ],
-  "couplingType": "MIRROR",
-  "couplingIntensity": "Medium",
+  "mood": "Flux",
+  "name": "COLD INTIMATE KINETIC DARK 5",
   "parameters": {
-    "XOmbre": {
-      "couplingLevel": 0.936,
-      "couplingBus": 1
+    "Ombre": {
+      "couplingBus": 1,
+      "couplingLevel": 0.936
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4664,
+    "brightness": 0.0916,
+    "density": 0.5862,
+    "movement": 0.8917,
+    "space": 0.1017,
+    "warmth": 0.0968
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "mirror",
+    "ombre"
+  ],
+  "version": "1.0.0"
 }

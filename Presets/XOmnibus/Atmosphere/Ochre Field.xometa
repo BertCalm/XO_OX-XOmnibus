@@ -1,25 +1,35 @@
 {
-  "name": "Ochre Field",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Ochre clay walls absorbing sound. A room that breathes as one drone.",
   "engines": [
-    "OSTERIA"
+    "Osteria"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.641,
-    "MOVEMENT": 0.089,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.089,
     "SPACE": 0.566
   },
-  "sonic_dna": {
-    "brightness": 0.294,
-    "warmth": 0.989,
-    "movement": 0.089,
-    "density": 0.852,
-    "space": 0.566,
-    "aggression": 0.065
+  "mood": "Atmosphere",
+  "name": "Ochre Field",
+  "parameters": {
+    "Osteria": {}
   },
-  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.065,
+    "brightness": 0.294,
+    "density": 0.852,
+    "movement": 0.089,
+    "space": 0.566,
+    "warmth": 0.989
+  },
   "tags": [
     "atmosphere",
     "drone",
@@ -27,5 +37,13 @@
     "warm",
     "thick"
   ],
-  "description": "Ochre clay walls absorbing sound. A room that breathes as one drone."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.2
+  }
 }

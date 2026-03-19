@@ -1,45 +1,56 @@
 {
-  "name": "DARK COLD STILL DENSE GENTLE FAM2 2",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ORGANON",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.05,
-      "macro_movement": 0.082,
-      "macro_coupling": 0.471,
-      "macro_space": 0.611
-    },
-    "ODYSSEY": {
-      "macro_character": 0.069,
-      "macro_movement": 0.056,
-      "macro_coupling": 0.497,
-      "macro_space": 0.605
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ORGANON",
-    "target": "ODYSSEY",
-    "amount": 0.471
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Odyssey",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.471
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.055,
     "brightness": 0.02,
-    "warmth": 0.08,
-    "movement": 0.082,
     "density": 0.887,
+    "movement": 0.082,
     "space": 0.611,
-    "aggression": 0.055
+    "warmth": 0.08
   },
+  "engines": [
+    "Organon",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.05,
-    "MOVEMENT": 0.082,
     "COUPLING": 0.471,
+    "MOVEMENT": 0.082,
     "SPACE": 0.611
   },
+  "mood": "Family",
+  "name": "DARK COLD STILL DENSE GENTL...",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.069,
+      "macro_coupling": 0.497,
+      "macro_movement": 0.056,
+      "macro_space": 0.605
+    },
+    "Organon": {
+      "macro_character": 0.05,
+      "macro_coupling": 0.471,
+      "macro_movement": 0.082,
+      "macro_space": 0.611
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
@@ -47,5 +58,6 @@
     "still",
     "dense",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

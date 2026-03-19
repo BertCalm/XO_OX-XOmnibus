@@ -1,48 +1,60 @@
 {
-  "name": "Dub Odd Bass",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERDUB",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.7,
-      "macro_movement": 0.74,
-      "macro_coupling": 0.61,
-      "macro_space": 0.5
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.87,
-      "macro_movement": 0.55,
-      "macro_coupling": 0.74,
-      "macro_space": 0.49
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OVERDUB",
-    "target": "ODDOSCAR",
-    "amount": 0.73
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "OddOscar",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.73
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.51,
     "brightness": 0.44,
-    "warmth": 0.9,
-    "movement": 0.68,
     "density": 0.84,
+    "movement": 0.68,
     "space": 0.41,
-    "aggression": 0.51
+    "warmth": 0.9
   },
+  "engines": [
+    "Overdub",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.78,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.68,
+    "MOVEMENT": 0.65,
     "SPACE": 0.49
   },
+  "mood": "Entangled",
+  "name": "Dub Odd Bass",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.87,
+      "macro_coupling": 0.74,
+      "macro_movement": 0.55,
+      "macro_space": 0.49
+    },
+    "Overdub": {
+      "macro_character": 0.7,
+      "macro_coupling": 0.61,
+      "macro_movement": 0.74,
+      "macro_space": 0.5
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-  ]
+  ],
+  "version": "1.0"
 }

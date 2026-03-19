@@ -1,31 +1,46 @@
 {
-  "name": "Folk Grains",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ohm",
+        "type": "GRANULAR_WEAVE",
+        "amount": 0.75
+      }
+    ]
+  },
+  "description": "Ohm groove granularized — each moment of warmth scattered and suspended in space",
   "engines": [
-    "OHM",
-    "OPAL"
+    "Ohm",
+    "Opal"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.6,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.75,
+    "MOVEMENT": 0.55,
     "SPACE": 0.75
   },
-  "sonic_dna": {
-    "brightness": 0.6,
-    "warmth": 0.65,
-    "movement": 0.64,
-    "density": 0.48,
-    "space": 0.74,
-    "aggression": 0.2
+  "mood": "Entangled",
+  "name": "Folk Grains",
+  "parameters": {
+    "Ohm": {},
+    "Opal": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "GRANULAR_WEAVE",
-    "source": "OPAL",
-    "target": "OHM",
-    "amount": 0.75
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2,
+    "brightness": 0.6,
+    "density": 0.48,
+    "movement": 0.64,
+    "space": 0.74,
+    "warmth": 0.65
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "opal",
     "hippy"
   ],
-  "description": "Ohm groove granularized \u2014 each moment of warmth scattered and suspended in space"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

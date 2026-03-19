@@ -1,48 +1,60 @@
 {
-  "name": "SKELETAL STRAND",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERWORLD",
-    "OBSIDIAN"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.151,
-      "macro_movement": 0.691,
-      "macro_coupling": 0.41,
-      "macro_space": 0.775
-    },
-    "OBSIDIAN": {
-      "macro_character": 0.921,
-      "macro_movement": 0.873,
-      "macro_coupling": 0.736,
-      "macro_space": 0.062
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERWORLD",
-    "target": "OBSIDIAN",
-    "amount": 0.21
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Obsidian",
+        "type": "FILTER_MOD",
+        "amount": 0.21
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.314,
     "brightness": 0.207,
-    "warmth": 0.325,
-    "movement": 0.662,
     "density": 0.065,
+    "movement": 0.662,
     "space": 0.525,
-    "aggression": 0.314
+    "warmth": 0.325
   },
+  "engines": [
+    "Overworld",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.173,
-    "MOVEMENT": 0.912,
     "COUPLING": 0.342,
+    "MOVEMENT": 0.912,
     "SPACE": 0.354
   },
+  "mood": "Entangled",
+  "name": "SKELETAL STRAND",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.921,
+      "macro_coupling": 0.736,
+      "macro_movement": 0.873,
+      "macro_space": 0.062
+    },
+    "Overworld": {
+      "macro_character": 0.151,
+      "macro_coupling": 0.41,
+      "macro_movement": 0.691,
+      "macro_space": 0.775
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "minimal",
     "negative-space"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,48 +1,60 @@
 {
-  "name": "DARK SPECTRUM",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Overworld",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.403
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.801,
+    "brightness": 0.056,
+    "density": 0.205,
+    "movement": 0.397,
+    "space": 0.051,
+    "warmth": 0.194
+  },
   "engines": [
-    "ORIGAMI",
-    "OVERWORLD"
+    "Origami",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.642,
+    "COUPLING": 0.549,
+    "MOVEMENT": 0.83,
+    "SPACE": 0.534
+  },
+  "mood": "Prism",
+  "name": "DARK SPECTRUM",
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.141,
-      "macro_movement": 0.57,
       "macro_coupling": 0.857,
+      "macro_movement": 0.57,
       "macro_space": 0.395
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.899,
-      "macro_movement": 0.495,
       "macro_coupling": 0.571,
+      "macro_movement": 0.495,
       "macro_space": 0.914
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORIGAMI",
-    "target": "OVERWORLD",
-    "amount": 0.403
-  },
-  "dna": {
-    "brightness": 0.056,
-    "warmth": 0.194,
-    "movement": 0.397,
-    "density": 0.205,
-    "space": 0.051,
-    "aggression": 0.801
-  },
-  "macros": {
-    "CHARACTER": 0.642,
-    "MOVEMENT": 0.83,
-    "COUPLING": 0.549,
-    "SPACE": 0.534
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-  ]
+  ],
+  "version": "1.0"
 }

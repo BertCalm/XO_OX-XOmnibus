@@ -1,49 +1,61 @@
 {
-  "name": "Gleaming Lattice",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oracle",
+        "type": "SPECTRAL_BRAID",
+        "amount": 0.79
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.18,
+    "brightness": 0.78,
+    "density": 0.6,
+    "movement": 0.49,
+    "space": 0.54,
+    "warmth": 0.92
+  },
   "engines": [
-    "ORIGAMI",
-    "ORACLE"
+    "Origami",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.74,
+    "COUPLING": 0.63,
+    "MOVEMENT": 0.47,
+    "SPACE": 0.46
+  },
+  "mood": "Entangled",
+  "name": "Gleaming Lattice",
   "parameters": {
-    "ORIGAMI": {
+    "Oracle": {
       "macro_character": 0.74,
-      "macro_movement": 0.4,
-      "macro_coupling": 0.65,
+      "macro_coupling": 0.61,
+      "macro_movement": 0.54,
       "macro_space": 0.46
     },
-    "ORACLE": {
+    "Origami": {
       "macro_character": 0.74,
-      "macro_movement": 0.54,
-      "macro_coupling": 0.61,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.4,
       "macro_space": 0.46
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_BRAID",
-    "source": "ORIGAMI",
-    "target": "ORACLE",
-    "amount": 0.79
-  },
-  "dna": {
-    "brightness": 0.78,
-    "warmth": 0.92,
-    "movement": 0.49,
-    "density": 0.6,
-    "space": 0.54,
-    "aggression": 0.18
-  },
-  "macros": {
-    "CHARACTER": 0.74,
-    "MOVEMENT": 0.47,
-    "COUPLING": 0.63,
-    "SPACE": 0.46
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

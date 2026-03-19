@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD VIOLENT DENSE 2",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.0563,
-    "warmth": 0.0821,
-    "aggression": 0.9293,
-    "density": 0.9401,
-    "movement": 0.5403,
-    "space": 0.4839
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Extreme",
+  "couplingType": "ORBIT",
+  "description": "Ultra-diverse Entangled preset — dark cold violent dense. Designed for ORBIT coupling with XOddOscar.",
   "dna": {
-    "brightness": 0.0563,
-    "warmth": 0.0821,
     "aggression": 0.9293,
+    "brightness": 0.0563,
     "density": 0.9401,
     "movement": 0.5403,
-    "space": 0.4839
+    "space": 0.4839,
+    "warmth": 0.0821
   },
   "engines": [
-    "XOddOscar"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark cold violent dense. Designed for ORBIT coupling with XOddOscar.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "orbit",
-    "oddoscar"
+    "OddOscar"
   ],
   "macroLabels": [
     "LUSTER",
@@ -36,15 +23,28 @@
     "IMPACT",
     "GLOW"
   ],
-  "couplingType": "ORBIT",
-  "couplingIntensity": "Extreme",
+  "mood": "Prism",
+  "name": "DARK COLD VIOLENT DENSE 2",
   "parameters": {
-    "XOddOscar": {
-      "couplingLevel": 0.849,
-      "couplingBus": 0
+    "OddOscar": {
+      "couplingBus": 0,
+      "couplingLevel": 0.849
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9293,
+    "brightness": 0.0563,
+    "density": 0.9401,
+    "movement": 0.5403,
+    "space": 0.4839,
+    "warmth": 0.0821
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "orbit",
+    "oddoscar"
+  ],
+  "version": "1.0.0"
 }

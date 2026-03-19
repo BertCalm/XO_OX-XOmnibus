@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Drift Air",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "BOND in motion — harmony to conflict and back. Wind voices chase each other through the changes. 'Drift Air' keeps nothing still.",
+  "dna": {
+    "aggression": 0.34,
+    "brightness": 0.55,
+    "density": 0.56,
+    "movement": 0.7,
+    "space": 0.39,
+    "warmth": 0.37
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "flux",
-    "movement",
-    "flux"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.37,
-    "movement": 0.7,
-    "density": 0.56,
-    "space": 0.39,
-    "aggression": 0.34
-  },
+  "mood": "Flux",
+  "name": "Drift Air",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.679,
-      "obbl_embouchureA": 0.36,
       "obbl_airFlutterA": 0.2,
-      "obbl_instrumentA": 5,
       "obbl_bodySizeA": 0.503,
-      "obbl_breathB": 0.566,
-      "obbl_reedStiffness": 0.409,
-      "obbl_reedBite": 0.179,
-      "obbl_instrumentB": 5,
       "obbl_bodySizeB": 0.559,
-      "obbl_voiceRouting": 2,
-      "obbl_damping": 0.995,
-      "obbl_sympatheticAmt": 0.335,
-      "obbl_driftRate": 0.084,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.556,
       "obbl_bondIntensity": 0.512,
       "obbl_bondRate": 0.199,
-      "obbl_fxAChorus": 0.28,
+      "obbl_bondStage": 0.556,
+      "obbl_breathA": 0.679,
+      "obbl_breathB": 0.566,
+      "obbl_damping": 0.995,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.084,
+      "obbl_embouchureA": 0.36,
       "obbl_fxABrightDelay": 0.236,
-      "obbl_fxAPlate": 0.179,
+      "obbl_fxAChorus": 0.28,
       "obbl_fxAExciter": 0.173,
-      "obbl_fxBPhaser": 0.144,
+      "obbl_fxAPlate": 0.179,
       "obbl_fxBDarkDelay": 0.166,
+      "obbl_fxBPhaser": 0.144,
       "obbl_fxBSpring": 0.107,
       "obbl_fxBTapeSat": 0.063,
-      "obbl_macroBreath": 0.326,
+      "obbl_instrumentA": 5,
+      "obbl_instrumentB": 5,
       "obbl_macroBond": 0.261,
+      "obbl_macroBreath": 0.326,
       "obbl_macroMischief": 0.218,
-      "obbl_macroWind": 0.236
+      "obbl_macroWind": 0.236,
+      "obbl_reedBite": 0.179,
+      "obbl_reedStiffness": 0.409,
+      "obbl_sympatheticAmt": 0.335,
+      "obbl_voiceRouting": 2
     }
   },
-  "coupling": null,
-  "description": "BOND in motion \u2014 harmony to conflict and back. Wind voices chase each other through the changes. 'Drift Air' keeps nothing still."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "flux",
+    "movement",
+    "flux"
+  ],
+  "version": "1.0.0"
 }

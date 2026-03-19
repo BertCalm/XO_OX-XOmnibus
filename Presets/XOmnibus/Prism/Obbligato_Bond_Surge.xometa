@@ -1,42 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Obbligato Bond Surge",
-  "mood": "Prism",
-  "engines": ["OBBLIGATO"],
-  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
-  "version": "1.0.0",
-  "description": "The BOND macro is a live weapon. At rest the two winds breathe apart; mod wheel pushes BOND to 1.0 and they fuse into a single unstoppable voice. Play the merge like an instrument.",
-  "tags": ["bond", "expressive", "mod-wheel", "wind", "fusion", "prism"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Tight",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.65,
-    "warmth": 0.55,
-    "movement": 0.55,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.6
-  },
-  "parameters": {
-    "OBBLIGATO": {
-      "obbl_bond": 0.0,
-      "obbl_breathA": 0.7,
-      "obbl_breathB": 0.65,
-      "obbl_tuningA": 0.0,
-      "obbl_tuningB": 0.07,
-      "obbl_attackTime": 0.08,
-      "obbl_releaseTime": 0.9,
-      "obbl_filterCutoff": 0.72,
-      "obbl_filterResonance": 0.3,
-      "macro_character": 0.65,
-      "macro_movement": 0.55,
-      "macro_coupling": 0.0,
-      "macro_space": 0.5
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "couplingIntensity": "Tight",
+  "description": "The BOND macro is a live weapon. At rest the two winds breathe apart; mod wheel pushes BOND to 1.0 and they fuse into a single unstoppable voice. Play the merge like an instrument.",
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.65,
+    "density": 0.6,
+    "movement": 0.55,
+    "space": 0.5,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Obbligato Bond Surge",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.0,
+      "macro_movement": 0.55,
+      "macro_space": 0.5,
+      "obbl_attackTime": 0.08,
+      "obbl_bond": 0.0,
+      "obbl_breathA": 0.7,
+      "obbl_breathB": 0.65,
+      "obbl_filterCutoff": 0.72,
+      "obbl_filterResonance": 0.3,
+      "obbl_releaseTime": 0.9,
+      "obbl_tuningA": 0.0,
+      "obbl_tuningB": 0.07
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "bond",
+    "expressive",
+    "mod-wheel",
+    "wind",
+    "fusion",
+    "prism"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

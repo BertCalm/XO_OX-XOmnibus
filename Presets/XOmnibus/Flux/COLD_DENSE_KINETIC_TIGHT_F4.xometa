@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "COLD DENSE KINETIC TIGHT F4",
-  "mood": "Flux",
-  "sonic_dna": {
-    "brightness": 0.465,
-    "warmth": 0.072,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Rhythmic",
+  "description": "Ultra-diverse Flux preset — extreme cold warmth, extreme kinetic movement, extreme dense density, extreme tight space. Maximum contrast character design.",
+  "dna": {
     "aggression": 0.468,
-    "movement": 0.952,
+    "brightness": 0.465,
     "density": 0.909,
-    "space": 0.107
+    "movement": 0.952,
+    "space": 0.107,
+    "warmth": 0.072
   },
   "engines": [
-    "OCEANIC"
+    "Oceanic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme cold warmth, extreme kinetic movement, extreme dense density, extreme tight space. Maximum contrast character design.",
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "COLD DENSE KINETIC TIGHT F4",
+  "parameters": {
+    "Oceanic": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.468,
+    "brightness": 0.465,
+    "density": 0.909,
+    "movement": 0.952,
+    "space": 0.107,
+    "warmth": 0.072
+  },
   "tags": [
     "cold",
     "kinetic",
@@ -24,25 +44,5 @@
     "flux",
     "extreme"
   ],
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "couplingIntensity": "Rhythmic",
-  "dna": {
-    "brightness": 0.465,
-    "warmth": 0.072,
-    "movement": 0.952,
-    "density": 0.909,
-    "space": 0.107,
-    "aggression": 0.468
-  },
-  "parameters": {
-    "OCEANIC": {}
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

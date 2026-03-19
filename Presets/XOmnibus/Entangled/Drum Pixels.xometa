@@ -31,7 +31,10 @@
     "space": 0.15,
     "aggression": 0.3
   },
-  "parameters": {},
+  "parameters": {
+    "Onset": {},
+    "Overworld": {}
+  },
   "coupling": {
     "pairs": [
       {

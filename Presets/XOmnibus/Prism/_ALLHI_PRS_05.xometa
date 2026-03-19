@@ -1,49 +1,61 @@
 {
-  "name": "ALLHI PRS 05",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Optic",
+        "type": "PITCH_SYNC",
+        "amount": 0.835
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.946,
+    "brightness": 0.91,
+    "density": 0.903,
+    "movement": 0.905,
+    "space": 0.551,
+    "warmth": 0.892
+  },
   "engines": [
-    "OBLIQUE",
-    "OPTIC"
+    "Oblique",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.901,
+    "COUPLING": 0.748,
+    "MOVEMENT": 0.904,
+    "SPACE": 0.551
+  },
+  "mood": "Prism",
+  "name": "ALLHI PRS 05",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.901,
-      "macro_movement": 0.904,
       "macro_coupling": 0.748,
+      "macro_movement": 0.904,
       "macro_space": 0.551
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.901,
-      "macro_movement": 0.904,
       "macro_coupling": 0.748,
+      "macro_movement": 0.904,
       "macro_space": 0.551
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBLIQUE",
-    "target": "OPTIC",
-    "amount": 0.835
-  },
-  "dna": {
-    "brightness": 0.91,
-    "warmth": 0.892,
-    "movement": 0.905,
-    "density": 0.903,
-    "space": 0.551,
-    "aggression": 0.946
-  },
-  "macros": {
-    "CHARACTER": 0.901,
-    "MOVEMENT": 0.904,
-    "COUPLING": 0.748,
-    "SPACE": 0.551
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

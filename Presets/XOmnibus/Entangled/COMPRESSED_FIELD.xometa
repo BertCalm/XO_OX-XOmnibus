@@ -1,45 +1,56 @@
 {
-  "name": "COMPRESSED FIELD",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Oracle",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.9757
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.2711,
+    "brightness": 0.2298,
+    "density": 0.8894,
+    "movement": 0.6923,
+    "space": 0.5668,
+    "warmth": 0.9013
+  },
   "engines": [
-    "ODYSSEY",
-    "ORACLE"
+    "Odyssey",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9242,
+    "COUPLING": 0.7841,
+    "MOVEMENT": 0.6844,
+    "SPACE": 0.543
+  },
+  "mood": "Entangled",
+  "name": "COMPRESSED FIELD",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.7028,
-      "macro_movement": 0.0827,
       "macro_coupling": 0.9381,
+      "macro_movement": 0.0827,
       "macro_space": 0.6449
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.3313,
-      "macro_movement": 0.9773,
       "macro_coupling": 0.9895,
+      "macro_movement": 0.9773,
       "macro_space": 0.8948
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ODYSSEY",
-    "target": "ORACLE",
-    "amount": 0.9757
-  },
-  "dna": {
-    "brightness": 0.2298,
-    "warmth": 0.9013,
-    "movement": 0.6923,
-    "density": 0.8894,
-    "space": 0.5668,
-    "aggression": 0.2711
-  },
-  "macros": {
-    "CHARACTER": 0.9242,
-    "MOVEMENT": 0.6844,
-    "COUPLING": 0.7841,
-    "SPACE": 0.543
-  },
+  "schema_version": 1,
   "tags": [
     "iron",
     "dark",
@@ -47,5 +58,6 @@
     "dense",
     "welded",
     "entangled"
-  ]
+  ],
+  "version": "1.0"
 }

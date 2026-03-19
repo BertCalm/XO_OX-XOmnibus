@@ -1,49 +1,61 @@
 {
-  "name": "ALLHI FLX 03",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Origami",
+        "type": "CHAOS_INJECT",
+        "amount": 0.963
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.942,
+    "brightness": 0.902,
+    "density": 0.969,
+    "movement": 0.532,
+    "space": 0.913,
+    "warmth": 0.966
+  },
   "engines": [
-    "ORACLE",
-    "ORIGAMI"
+    "Oracle",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.934,
+    "COUPLING": 0.927,
+    "MOVEMENT": 0.75,
+    "SPACE": 0.913
+  },
+  "mood": "Flux",
+  "name": "ALLHI FLX 03",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.934,
-      "macro_movement": 0.75,
       "macro_coupling": 0.927,
+      "macro_movement": 0.75,
       "macro_space": 0.913
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.934,
-      "macro_movement": 0.75,
       "macro_coupling": 0.927,
+      "macro_movement": 0.75,
       "macro_space": 0.913
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ORACLE",
-    "target": "ORIGAMI",
-    "amount": 0.963
-  },
-  "dna": {
-    "brightness": 0.902,
-    "warmth": 0.966,
-    "movement": 0.532,
-    "density": 0.969,
-    "space": 0.913,
-    "aggression": 0.942
-  },
-  "macros": {
-    "CHARACTER": 0.934,
-    "MOVEMENT": 0.75,
-    "COUPLING": 0.927,
-    "SPACE": 0.913
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Underbrush",
-  "mood": "Aether",
-  "sonic_dna": {
-    "brightness": 0.09,
-    "warmth": 0.8,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Dense foliage swallowing all treble light",
+  "dna": {
     "aggression": 0.45,
-    "movement": 0.35,
+    "brightness": 0.09,
     "density": 0.7,
-    "space": 0.3
+    "movement": 0.35,
+    "space": 0.3,
+    "warmth": 0.8
   },
   "engines": [
-    "OCELOT"
+    "Ocelot"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dense foliage swallowing all treble light",
+  "macroLabels": [
+    "STALK",
+    "STRIKE",
+    "COUPLING",
+    "JUNGLE"
+  ],
+  "mood": "Aether",
+  "name": "Underbrush",
+  "parameters": {
+    "Ocelot": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.45,
+    "brightness": 0.09,
+    "density": 0.7,
+    "movement": 0.35,
+    "space": 0.3,
+    "warmth": 0.8
+  },
   "tags": [
     "aether",
     "dark",
@@ -24,23 +44,5 @@
     "dense",
     "cover"
   ],
-  "macroLabels": [
-    "STALK",
-    "STRIKE",
-    "COUPLING",
-    "JUNGLE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.09,
-    "warmth": 0.8,
-    "movement": 0.35,
-    "density": 0.7,
-    "space": 0.3,
-    "aggression": 0.45
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

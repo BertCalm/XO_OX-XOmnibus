@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Era Collapse",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.86,
+        "engineA": "Overworld",
+        "engineB": "Ouroboros",
+        "type": "FREQUENCY_SMEAR"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "ERA triangle cornered in NES while Ouroboros smears frequencies — chip era collapses.",
+  "dna": {
+    "aggression": 0.92,
+    "brightness": 0.87,
+    "density": 0.78,
+    "movement": 0.8,
+    "space": 0.17,
+    "warmth": 0.1
+  },
   "engines": [
-    "OVERWORLD",
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ERA triangle cornered in NES while Ouroboros smears frequencies \u2014 chip era collapses.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "bright",
-    "overworld",
-    "ouroboros",
-    "era"
+    "Overworld",
+    "Ouroboros"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,32 @@
   ],
   "macros": {
     "CHARACTER": 0.79,
-    "MOVEMENT": 0.8,
     "COUPLING": 0.86,
+    "MOVEMENT": 0.8,
     "SPACE": 0.17
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.87,
-    "warmth": 0.1,
-    "movement": 0.8,
-    "density": 0.78,
-    "space": 0.17,
-    "aggression": 0.92
+  "mood": "Entangled",
+  "name": "Era Collapse",
+  "parameters": {
+    "Overworld": {},
+    "Ouroboros": {}
   },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.92,
     "brightness": 0.87,
-    "warmth": 0.1,
-    "movement": 0.8,
     "density": 0.78,
+    "movement": 0.8,
     "space": 0.17,
-    "aggression": 0.92
+    "warmth": 0.1
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERWORLD",
-        "engineB": "OUROBOROS",
-        "type": "FREQUENCY_SMEAR",
-        "amount": 0.86
-      }
-    ]
-  }
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "overworld",
+    "ouroboros",
+    "era"
+  ],
+  "version": "1.0.0"
 }

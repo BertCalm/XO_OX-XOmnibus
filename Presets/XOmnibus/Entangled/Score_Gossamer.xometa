@@ -1,14 +1,67 @@
 {
-  "schema_version": 1,
-  "name": "Score Gossamer",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.781,
+        "engineA": "Origami",
+        "engineB": "Orphica",
+        "type": "envelope_share"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Origami × Orphica coupling (envelope share). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.323,
+    "brightness": 0.726,
+    "density": 0.532,
+    "movement": 0.681,
+    "space": 0.582,
+    "warmth": 0.48
+  },
   "engines": [
     "Origami",
     "Orphica"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Origami \u00d7 Orphica coupling (envelope share). Stub preset \u2014 sound-design pass pending.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Score Gossamer",
+  "parameters": {
+    "Origami": {
+      "origami_couplingOut": 0.589,
+      "origami_crease": 0.631,
+      "origami_foldPoint": 0.29,
+      "origami_macro1": 0.488,
+      "origami_macro2": 0.376,
+      "origami_macro3": 0.604,
+      "origami_macro4": 0.675,
+      "origami_pleatRate": 0.434,
+      "origami_tessellate": 0.535,
+      "origami_valleyDepth": 0.61
+    },
+    "Orphica": {
+      "orph_couplingIn": 0.614,
+      "orph_couplingOut": 0.793,
+      "orph_macro1": 0.664,
+      "orph_macro2": 0.538,
+      "orph_macro3": 0.549,
+      "orph_macro4": 0.415
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "origami",
     "orphica",
@@ -16,59 +69,6 @@
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": 105,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Origami": {
-      "origami_foldPoint": 0.29,
-      "origami_crease": 0.631,
-      "origami_valleyDepth": 0.61,
-      "origami_pleatRate": 0.434,
-      "origami_tessellate": 0.535,
-      "origami_macro1": 0.488,
-      "origami_macro2": 0.376,
-      "origami_macro3": 0.604,
-      "origami_macro4": 0.675,
-      "origami_couplingOut": 0.589
-    },
-    "Orphica": {
-      "orph_macro1": 0.664,
-      "orph_macro2": 0.538,
-      "orph_macro3": 0.549,
-      "orph_macro4": 0.415,
-      "orph_couplingOut": 0.793,
-      "orph_couplingIn": 0.614
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Orphica",
-        "type": "envelope_share",
-        "amount": 0.781
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.726,
-    "warmth": 0.48,
-    "movement": 0.681,
-    "density": 0.532,
-    "space": 0.582,
-    "aggression": 0.323
-  }
+  "version": "1.0.0"
 }

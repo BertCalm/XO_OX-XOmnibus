@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ocelot \u00d7 Overbite \u2014 Spatial Couple coupling at extreme DNA corner.",
+  "description": "Ocelot × Overbite — Spatial Couple coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "ocelot",
@@ -33,7 +33,10 @@
     "space": 0.367,
     "aggression": 0.053
   },
-  "parameters": {},
+  "parameters": {
+    "Ocelot": {},
+    "Overbite": {}
+  },
   "coupling": {
     "pairs": [
       {

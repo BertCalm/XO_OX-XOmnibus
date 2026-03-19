@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_FND_3",
-  "mood": "Foundation",
-  "engines": [
-    "ONSET",
-    "OBESE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Obese",
+        "type": "FILTER_MOD",
+        "amount": 0.91
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_WARM_SPARSE_VAST_GENTLE. Variant 3.",
+  "dna": {
+    "aggression": 0.091,
+    "brightness": 0.943,
+    "density": 0.071,
+    "movement": 0.554,
+    "space": 0.954,
+    "warmth": 0.948
+  },
+  "engines": [
+    "Onset",
+    "Obese"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 1.0,
+    "COUPLING": 0.052,
+    "MOVEMENT": 0.562,
+    "SPACE": 0.994
+  },
+  "mood": "Foundation",
+  "name": "Halo Vast",
+  "parameters": {
+    "Obese": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.047,
+      "macro_movement": 0.643,
+      "macro_space": 1.0
+    },
+    "Onset": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.057,
+      "macro_movement": 0.481,
+      "macro_space": 0.988
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "sparse",
     "extreme",
@@ -19,53 +70,6 @@
     "foundation",
     "gentle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ONSET": {
-      "macro_character": 1.0,
-      "macro_movement": 0.481,
-      "macro_coupling": 0.057,
-      "macro_space": 0.988
-    },
-    "OBESE": {
-      "macro_character": 1.0,
-      "macro_movement": 0.643,
-      "macro_coupling": 0.047,
-      "macro_space": 1.0
-    }
-  },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ONSET",
-    "target": "OBESE",
-    "amount": 0.91
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.943,
-    "warmth": 0.948,
-    "movement": 0.554,
-    "density": 0.071,
-    "space": 0.954,
-    "aggression": 0.091
-  },
-  "macros": {
-    "CHARACTER": 1.0,
-    "MOVEMENT": 0.562,
-    "COUPLING": 0.052,
-    "SPACE": 0.994
-  }
+  "version": "1.0.0"
 }

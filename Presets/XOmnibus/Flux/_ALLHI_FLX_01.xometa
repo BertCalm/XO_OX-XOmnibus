@@ -1,49 +1,61 @@
 {
-  "name": "ALLHI FLX 01",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Odyssey",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.973
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.987,
+    "brightness": 0.381,
+    "density": 0.938,
+    "movement": 0.918,
+    "space": 0.924,
+    "warmth": 0.891
+  },
   "engines": [
-    "ORGANON",
-    "ODYSSEY"
+    "Organon",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.636,
+    "COUPLING": 0.956,
+    "MOVEMENT": 0.928,
+    "SPACE": 0.924
+  },
+  "mood": "Flux",
+  "name": "ALLHI FLX 01",
   "parameters": {
-    "ORGANON": {
+    "Odyssey": {
       "macro_character": 0.636,
-      "macro_movement": 0.928,
       "macro_coupling": 0.956,
+      "macro_movement": 0.928,
       "macro_space": 0.924
     },
-    "ODYSSEY": {
+    "Organon": {
       "macro_character": 0.636,
-      "macro_movement": 0.928,
       "macro_coupling": 0.956,
+      "macro_movement": 0.928,
       "macro_space": 0.924
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ORGANON",
-    "target": "ODYSSEY",
-    "amount": 0.973
-  },
-  "dna": {
-    "brightness": 0.381,
-    "warmth": 0.891,
-    "movement": 0.918,
-    "density": 0.938,
-    "space": 0.924,
-    "aggression": 0.987
-  },
-  "macros": {
-    "CHARACTER": 0.636,
-    "MOVEMENT": 0.928,
-    "COUPLING": 0.956,
-    "SPACE": 0.924
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

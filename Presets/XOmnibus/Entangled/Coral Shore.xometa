@@ -1,31 +1,46 @@
 {
-  "name": "Coral Shore",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Obbligato",
+        "type": "PHOSPHOR_PULSE",
+        "amount": 0.6
+      }
+    ]
+  },
+  "description": "OBBLIGATO dual-wind tones mapped to oceanic phosphor pulse — breath illuminates the deep",
   "engines": [
-    "OBBLIGATO",
-    "OCEANIC"
+    "Obbligato",
+    "Oceanic"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.55,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.55,
-    "warmth": 0.63,
-    "movement": 0.59,
-    "density": 0.63,
-    "space": 0.6,
-    "aggression": 0.33
+  "mood": "Entangled",
+  "name": "Coral Shore",
+  "parameters": {
+    "Obbligato": {},
+    "Oceanic": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "PHOSPHOR_PULSE",
-    "source": "OCEANIC",
-    "target": "OBBLIGATO",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.33,
+    "brightness": 0.55,
+    "density": 0.63,
+    "movement": 0.59,
+    "space": 0.6,
+    "warmth": 0.63
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "oceanic",
     "wind"
   ],
-  "description": "OBBLIGATO dual-wind tones mapped to oceanic phosphor pulse \u2014 breath illuminates the deep"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

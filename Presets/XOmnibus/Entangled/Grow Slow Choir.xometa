@@ -1,33 +1,48 @@
 {
-  "name": "Grow Slow Choir",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Ottoni",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.68
+      }
+    ]
+  },
+  "description": "GROW macro expanding Ottoni's warmth through Organon's slow choral logic.",
   "engines": [
-    "OTTONI",
-    "ORGANON"
+    "Ottoni",
+    "Organon"
   ],
-  "mood": "Entangled",
-  "strategy": "Warm Sparse",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.65,
-    "MOVEMENT": 0.45,
     "COUPLING": 0.78,
+    "MOVEMENT": 0.45,
     "SPACE": 0.82
   },
+  "mood": "Entangled",
+  "name": "Grow Slow Choir",
+  "parameters": {
+    "Ottoni": {},
+    "Organon": {}
+  },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.12,
     "brightness": 0.45,
-    "warmth": 0.91,
-    "movement": 0.45,
     "density": 0.08,
+    "movement": 0.45,
     "space": 0.8,
-    "aggression": 0.12
+    "warmth": 0.91
   },
-  "parameters": {},
-  "coupling": {
-    "type": "TIMBRAL_WARP",
-    "source": "ORGANON",
-    "target": "OTTONI",
-    "amount": 0.68
-  },
+  "strategy": "Warm Sparse",
   "tags": [
     "entangled",
     "warm",
@@ -35,5 +50,13 @@
     "choral",
     "evolving"
   ],
-  "description": "GROW macro expanding Ottoni's warmth through Organon's slow choral logic."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

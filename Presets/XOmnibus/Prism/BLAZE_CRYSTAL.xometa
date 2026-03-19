@@ -1,49 +1,61 @@
 {
-  "name": "BLAZE CRYSTAL",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Orphica",
+        "type": "PITCH_SYNC",
+        "amount": 0.688
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.751,
+    "brightness": 0.897,
+    "density": 0.045,
+    "movement": 0.455,
+    "space": 0.82,
+    "warmth": 0.948
+  },
   "engines": [
-    "OCELOT",
-    "ORPHICA"
+    "Ocelot",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.435,
+    "COUPLING": 0.045,
+    "MOVEMENT": 0.017,
+    "SPACE": 0.627
+  },
+  "mood": "Prism",
+  "name": "BLAZE CRYSTAL",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.867,
-      "macro_movement": 0.263,
       "macro_coupling": 0.501,
+      "macro_movement": 0.263,
       "macro_space": 0.564
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.481,
-      "macro_movement": 0.946,
       "macro_coupling": 0.093,
+      "macro_movement": 0.946,
       "macro_space": 0.599
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OCELOT",
-    "target": "ORPHICA",
-    "amount": 0.688
-  },
-  "dna": {
-    "brightness": 0.897,
-    "warmth": 0.948,
-    "movement": 0.455,
-    "density": 0.045,
-    "space": 0.82,
-    "aggression": 0.751
-  },
-  "macros": {
-    "CHARACTER": 0.435,
-    "MOVEMENT": 0.017,
-    "COUPLING": 0.045,
-    "SPACE": 0.627
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

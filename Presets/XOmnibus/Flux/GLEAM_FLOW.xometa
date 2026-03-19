@@ -1,49 +1,61 @@
 {
-  "name": "GLEAM FLOW",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OUTWIT",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.85,
-      "macro_movement": 0.6,
-      "macro_coupling": 0.121,
-      "macro_space": 0.984
-    },
-    "OBSCURA": {
-      "macro_character": 0.783,
-      "macro_movement": 0.347,
-      "macro_coupling": 0.428,
-      "macro_space": 0.371
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RHYTHM_SYNC",
-    "source": "OUTWIT",
-    "target": "OBSCURA",
-    "amount": 0.763
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Obscura",
+        "type": "RHYTHM_SYNC",
+        "amount": 0.763
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.261,
     "brightness": 0.971,
-    "warmth": 0.438,
-    "movement": 0.629,
     "density": 0.246,
+    "movement": 0.629,
     "space": 0.938,
-    "aggression": 0.261
+    "warmth": 0.438
   },
+  "engines": [
+    "Outwit",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.817,
-    "MOVEMENT": 0.473,
     "COUPLING": 0.274,
+    "MOVEMENT": 0.473,
     "SPACE": 0.677
   },
+  "mood": "Flux",
+  "name": "GLEAM FLOW",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.783,
+      "macro_coupling": 0.428,
+      "macro_movement": 0.347,
+      "macro_space": 0.371
+    },
+    "Outwit": {
+      "macro_character": 0.85,
+      "macro_coupling": 0.121,
+      "macro_movement": 0.6,
+      "macro_space": 0.984
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "extreme",
     "high-space"
-  ]
+  ],
+  "version": "1.0"
 }

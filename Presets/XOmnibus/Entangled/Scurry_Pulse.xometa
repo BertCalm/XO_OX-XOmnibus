@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
   "name": "Scurry Pulse",
-  "mood": "Entangled",
-  "engines": ["Overbite"],
+  "mood": "Flux",
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rhythmic pulsing texture driven by fast LFOs and cushion pulse oscillator. Scurry macro accelerates all motion.",
-  "tags": ["rhythmic", "pulse", "texture", "lfo", "scurry"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "SPACE"],
+  "tags": [
+    "rhythmic",
+    "pulse",
+    "texture",
+    "lfo",
+    "scurry"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 120,
   "dna": {

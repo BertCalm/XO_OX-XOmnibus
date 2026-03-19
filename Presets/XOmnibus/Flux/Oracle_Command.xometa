@@ -33,7 +33,9 @@
     "space": 0.3,
     "aggression": 0.74
   },
-  "parameters": {},
+  "parameters": {
+    "Oracle": {}
+  },
   "tags": [
     "flux",
     "controlled",
@@ -41,5 +43,5 @@
     "command",
     "maqam"
   ],
-  "description": "GENDY stochastic system with breakpoints tightened \u2014 prophecy that obeys a schedule."
+  "description": "GENDY stochastic system with breakpoints tightened — prophecy that obeys a schedule."
 }

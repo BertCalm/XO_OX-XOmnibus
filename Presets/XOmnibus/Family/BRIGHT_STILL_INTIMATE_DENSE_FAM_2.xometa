@@ -1,14 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT STILL INTIMATE DENSE FAM 2",
-  "mood": "Family",
-  "engines": [
-    "OPAL",
-    "ORACLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, bright, still, dense.",
+  "coupling": [
+    {
+      "amount": 0.46,
+      "destination": "ORACLE",
+      "source": "OPAL",
+      "type": "TIMBRE_BLEND"
+    }
+  ],
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — family, bright, still, dense.",
+  "dna": {
+    "aggression": 0.593,
+    "brightness": 0.913,
+    "density": 0.89,
+    "movement": 0.048,
+    "space": 0.067,
+    "warmth": 0.499
+  },
+  "engines": [
+    "Opal",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "BRIGHT STILL INTIMATE DENSE...",
+  "parameters": {
+    "Opal": {
+      "level": 0.75,
+      "pan": -0.024
+    },
+    "Oracle": {
+      "level": 0.763,
+      "pan": 0.004
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "bright",
@@ -17,40 +51,6 @@
     "intimate",
     "ultra-diverse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.913,
-    "warmth": 0.499,
-    "movement": 0.048,
-    "density": 0.89,
-    "space": 0.067,
-    "aggression": 0.593
-  },
-  "parameters": {
-    "OPAL": {
-      "level": 0.75,
-      "pan": -0.024
-    },
-    "ORACLE": {
-      "level": 0.763,
-      "pan": 0.004
-    }
-  },
-  "coupling": [
-    {
-      "source": "OPAL",
-      "destination": "ORACLE",
-      "type": "TIMBRE_BLEND",
-      "amount": 0.46
-    }
-  ],
-  "sequencer": null
+  "version": "1.0.0"
 }

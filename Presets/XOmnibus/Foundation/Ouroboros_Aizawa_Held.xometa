@@ -1,52 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Aizawa Held",
-  "mood": "Foundation",
-  "engines": ["Ouroboros"],
-  "author": "Guru Bin — OUROBOROS Deepening 2026-03-16",
-  "version": "1.0.0",
-  "description": "Topology 3: the Aizawa attractor. Unlike Lorenz (two lobes) or Rössler (one lobe), Aizawa forms a toroidal regime — the orbit wraps around a torus, producing a richer harmonic signature because multiple orbital radii are in play simultaneously. chaosIndex 0.18, leash 0.85. Low damping at 0.3 allows the toroidal structure to express itself: more overtone content, more complex phase relationships between notes. The result is a sustained, harmonically rich tone that sounds like two oscillators tuned in an irrational ratio — because that is, mathematically, what it is.",
-  "tags": ["aizawa", "toroidal", "harmonic", "foundation", "ouroboros", "rich", "sustained"],
-  "macroLabels": ["CHARACTER", "CHAOS", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-16",
+  "description": "Topology 3: the Aizawa attractor. Unlike Lorenz (two lobes) or Rössler (one lobe), Aizawa forms a toroidal regime — the orbit wraps around a torus, producing a richer harmonic signature because multiple orbital radii are in play simultaneously. chaosIndex 0.18, leash 0.85. Low damping at 0.3 allows the toroidal structure to express itself: more overtone content, more complex phase relationships between notes. The result is a sustained, harmonically rich tone that sounds like two oscillators tuned in an irrational ratio — because that is, mathematically, what it is.",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.4,
+    "density": 0.65,
+    "movement": 0.3,
+    "space": 0.55,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Aizawa Held",
   "parameters": {
     "Ouroboros": {
-      "ouro_topology": 3,
-      "ouro_rate": 84.0,
-      "ouro_chaosIndex": 0.18,
-      "ouro_leash": 0.85,
-      "ouro_theta": 1.4,
-      "ouro_phi": 0.6,
-      "ouro_damping": 0.3,
-      "ouro_injection": 0.02,
       "ouro_ampAttack": 0.05,
       "ouro_ampDecay": 0.3,
-      "ouro_ampSustain": 0.9,
       "ouro_ampRelease": 3.0,
-      "ouro_lfo1Rate": 0.06,
-      "ouro_lfo1Depth": 0.06,
-      "ouro_lfo1Shape": 0,
-      "ouro_lfo2Rate": 0.025,
-      "ouro_lfo2Depth": 0.04,
-      "ouro_lfo2Shape": 0,
-      "ouro_voiceMode": 0,
+      "ouro_ampSustain": 0.9,
+      "ouro_chaosIndex": 0.18,
+      "ouro_damping": 0.3,
       "ouro_glide": 0.0,
-      "ouro_macroCharacter": 0.0,
+      "ouro_injection": 0.02,
+      "ouro_leash": 0.85,
+      "ouro_lfo1Depth": 0.06,
+      "ouro_lfo1Rate": 0.06,
+      "ouro_lfo1Shape": 0,
+      "ouro_lfo2Depth": 0.04,
+      "ouro_lfo2Rate": 0.025,
+      "ouro_lfo2Shape": 0,
       "ouro_macroChaos": 0.0,
+      "ouro_macroCharacter": 0.0,
       "ouro_macroCoupling": 0.0,
-      "ouro_macroSpace": 0.0
+      "ouro_macroSpace": 0.0,
+      "ouro_phi": 0.6,
+      "ouro_rate": 84.0,
+      "ouro_theta": 1.4,
+      "ouro_topology": 3,
+      "ouro_voiceMode": 0
     }
   },
-  "coupling": { "pairs": [] },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.65,
-    "movement": 0.3,
-    "density": 0.65,
-    "space": 0.55,
-    "aggression": 0.3
-  }
+  "tags": [
+    "aizawa",
+    "toroidal",
+    "harmonic",
+    "foundation",
+    "ouroboros",
+    "rich",
+    "sustained"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

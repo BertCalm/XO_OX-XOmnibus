@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_COLD_SPARSE_VAST_FAM_VOL_96",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Osprey",
+        "type": "DYNAMIC_CROSS",
+        "amount": 0.403
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.302,
+    "brightness": 0.94,
+    "density": 0.081,
+    "movement": 0.451,
+    "space": 0.925,
+    "warmth": 0.049
+  },
   "engines": [
-    "ODDFELIX",
-    "OSPREY"
+    "OddfeliX",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.498,
+    "COUPLING": 0.18,
+    "MOVEMENT": 0.45,
+    "SPACE": 0.95
+  },
+  "mood": "Family",
+  "name": "Frost Cavern",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.515,
-      "macro_movement": 0.431,
       "macro_coupling": 0.174,
+      "macro_movement": 0.431,
       "macro_space": 0.946
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.482,
-      "macro_movement": 0.468,
       "macro_coupling": 0.187,
+      "macro_movement": 0.468,
       "macro_space": 0.954
     }
   },
-  "coupling": {
-    "type": "DYNAMIC_CROSS",
-    "source": "ODDFELIX",
-    "target": "OSPREY",
-    "amount": 0.403
-  },
-  "dna": {
-    "brightness": 0.94,
-    "warmth": 0.049,
-    "movement": 0.451,
-    "density": 0.081,
-    "space": 0.925,
-    "aggression": 0.302
-  },
-  "macros": {
-    "CHARACTER": 0.498,
-    "MOVEMENT": 0.45,
-    "COUPLING": 0.18,
-    "SPACE": 0.95
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "cold",
     "sparse",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

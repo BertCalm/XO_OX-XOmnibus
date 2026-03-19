@@ -1,63 +1,63 @@
 {
-  "schema_version": 1,
-  "name": "Tape Meditation",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-08",
+  "description": "Floating dub atmospheres texture with deep dub echo and vast reverb space.",
+  "dna": {
+    "aggression": 0.26,
+    "brightness": 0.625,
+    "density": 0.24,
+    "movement": 0.953,
+    "space": 0.774,
+    "warmth": 0.262
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Floating dub atmospheres texture with deep dub echo and vast reverb space.",
-  "tags": [
-    "wobbly",
-    "wet",
-    "spacious",
-    "triangle"
-  ],
+  "legacy": {
+    "sourceCategory": "Dub Atmospheres",
+    "sourceInstrument": "Overdub",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Overdub",
-    "sourceCategory": "Dub Atmospheres",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Tape Meditation",
   "parameters": {
     "Overdub": {
-      "dub_oscWave": 1.0,
+      "dub_attack": 0.8,
+      "dub_decay": 1.5,
+      "dub_delayFeedback": 0.7,
+      "dub_delayTime": 1.5,
+      "dub_delayWear": 0.4,
+      "dub_delayWow": 0.5,
       "dub_drift": 0.2,
       "dub_filterCutoff": 1500.0,
       "dub_filterReso": 0.5,
-      "dub_lfoRate": 0.15,
       "dub_lfoDepth": 0.5,
       "dub_lfoDest": 1.0,
-      "dub_attack": 0.8,
-      "dub_decay": 1.5,
-      "dub_sustain": 0.6,
+      "dub_lfoRate": 0.15,
+      "dub_oscWave": 1.0,
       "dub_release": 3.0,
-      "dub_delayTime": 1.5,
-      "dub_delayFeedback": 0.7,
-      "dub_delayWow": 0.5,
-      "dub_delayWear": 0.4,
-      "dub_sendLevel": 0.6,
+      "dub_reverbMix": 0.5,
       "dub_reverbSize": 0.85,
-      "dub_reverbMix": 0.5
+      "dub_sendLevel": 0.6,
+      "dub_sustain": 0.6
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.625,
-    "warmth": 0.262,
-    "movement": 0.953,
-    "density": 0.24,
-    "space": 0.774,
-    "aggression": 0.26
-  }
+  "tags": [
+    "wobbly",
+    "wet",
+    "spacious",
+    "triangle"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

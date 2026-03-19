@@ -1,0 +1,81 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Pure self-resonant ring from a simple loop \u2014 crystalline FDN bell tones with long decay.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.8,
+    "density": 0.2,
+    "movement": 0.1,
+    "space": 0.5,
+    "warmth": 0.3
+  },
+  "engines": [
+    "XOverlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
+  "mood": "Foundation",
+  "name": "Unknot Bell",
+  "parameters": {
+    "XOverlap": {
+      "olap_knot": 0,
+      "olap_tangleDepth": 0.15,
+      "olap_torusP": 3,
+      "olap_torusQ": 2,
+      "olap_pulseRate": 0.2,
+      "olap_entrain": 0.1,
+      "olap_spread": 0.5,
+      "olap_voiceMode": 0,
+      "olap_glide": 0.0,
+      "olap_delayBase": 5.0,
+      "olap_dampening": 0.15,
+      "olap_feedback": 0.92,
+      "olap_brightness": 0.85,
+      "olap_bioluminescence": 0.1,
+      "olap_current": 0.0,
+      "olap_currentRate": 0.03,
+      "olap_attack": 0.001,
+      "olap_decay": 3.5,
+      "olap_sustain": 0.2,
+      "olap_release": 4.0,
+      "olap_filterCutoff": 14000.0,
+      "olap_filterRes": 0.2,
+      "olap_filterEnvAmt": 0.1,
+      "olap_filterEnvDecay": 0.5,
+      "olap_lfo1Rate": 0.3,
+      "olap_lfo1Shape": 0,
+      "olap_lfo1Depth": 0.05,
+      "olap_lfo1Dest": 0,
+      "olap_lfo2Rate": 0.08,
+      "olap_lfo2Shape": 0,
+      "olap_lfo2Depth": 0.05,
+      "olap_lfo2Dest": 2,
+      "olap_chorusMix": 0.05,
+      "olap_chorusRate": 0.08,
+      "olap_diffusion": 0.1,
+      "olap_macroKnot": 0.0,
+      "olap_macroPulse": 0.0,
+      "olap_macroEntrain": 0.0,
+      "olap_macroBloom": 0.0,
+      "olap_modWheelDest": 0,
+      "olap_modWheelDepth": 0.5,
+      "olap_atPressureDest": 1,
+      "olap_atPressureDepth": 0.4
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bell",
+    "ring",
+    "metallic"
+  ],
+  "version": "1.0.0"
+}

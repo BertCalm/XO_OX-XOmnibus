@@ -1,14 +1,67 @@
 {
-  "schema_version": 1,
-  "name": "Wet Plate Luminance",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.838,
+        "engineA": "Obscura",
+        "engineB": "Optic",
+        "type": "envelope_share"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "Obscura × Optic coupling (harmonic lock). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.263,
+    "brightness": 0.581,
+    "density": 0.477,
+    "movement": 0.542,
+    "space": 0.62,
+    "warmth": 0.44
+  },
   "engines": [
     "Obscura",
     "Optic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Obscura \u00d7 Optic coupling (harmonic lock). Stub preset \u2014 sound-design pass pending.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Wet Plate Luminance",
+  "parameters": {
+    "Obscura": {
+      "obscura_couplingOut": 0.511,
+      "obscura_exposure": 0.432,
+      "obscura_graininess": 0.219,
+      "obscura_latentDepth": 0.273,
+      "obscura_macro1": 0.407,
+      "obscura_macro2": 0.307,
+      "obscura_macro3": 0.384,
+      "obscura_macro4": 0.483,
+      "obscura_silverTone": 0.641,
+      "obscura_stiffness": 0.403
+    },
+    "Optic": {
+      "optic_couplingIn": 0.438,
+      "optic_couplingOut": 0.405,
+      "optic_macro1": 0.552,
+      "optic_macro2": 0.332,
+      "optic_macro3": 0.577,
+      "optic_macro4": 0.516
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "obscura",
     "optic",
@@ -16,59 +69,6 @@
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Extreme",
   "tempo": 130,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Obscura": {
-      "obscura_stiffness": 0.403,
-      "obscura_graininess": 0.219,
-      "obscura_exposure": 0.432,
-      "obscura_latentDepth": 0.273,
-      "obscura_silverTone": 0.641,
-      "obscura_macro1": 0.407,
-      "obscura_macro2": 0.307,
-      "obscura_macro3": 0.384,
-      "obscura_macro4": 0.483,
-      "obscura_couplingOut": 0.511
-    },
-    "Optic": {
-      "optic_macro1": 0.552,
-      "optic_macro2": 0.332,
-      "optic_macro3": 0.577,
-      "optic_macro4": 0.516,
-      "optic_couplingOut": 0.405,
-      "optic_couplingIn": 0.438
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Optic",
-        "type": "envelope_share",
-        "amount": 0.838
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.581,
-    "warmth": 0.44,
-    "movement": 0.542,
-    "density": 0.477,
-    "space": 0.62,
-    "aggression": 0.263
-  }
+  "version": "1.0.0"
 }

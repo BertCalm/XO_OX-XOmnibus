@@ -1,59 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Temperate Drift",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Floating warm pads texture with analog drift.",
+  "dna": {
+    "aggression": 0.147,
+    "brightness": 0.404,
+    "density": 0.163,
+    "movement": 0.0,
+    "space": 0.133,
+    "warmth": 0.25
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Floating warm pads texture with analog drift.",
-  "tags": [
-    "warm",
-    "analog",
-    "classic"
-  ],
+  "legacy": {
+    "sourceCategory": "Warm Pads",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Warm Pads",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Temperate Drift",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 2.0,
-      "bob_oscA_shape": 0.65,
-      "bob_oscA_drift": 0.28,
-      "bob_oscB_wave": 0.0,
-      "bob_oscB_blend": 0.5,
-      "bob_oscB_detune": -7.0,
-      "bob_fltMode": 0.0,
-      "bob_fltCutoff": 3200.0,
-      "bob_fltReso": 0.28,
-      "bob_fltDrive": 0.15,
       "bob_ampAttack": 0.5,
       "bob_ampDecay": 1.0,
-      "bob_ampSustain": 0.78,
       "bob_ampRelease": 1.5,
-      "bob_bobMode": 0.18
+      "bob_ampSustain": 0.78,
+      "bob_bobMode": 0.18,
+      "bob_fltCutoff": 3200.0,
+      "bob_fltDrive": 0.15,
+      "bob_fltMode": 0.0,
+      "bob_fltReso": 0.28,
+      "bob_oscA_drift": 0.28,
+      "bob_oscA_shape": 0.65,
+      "bob_oscA_wave": 2.0,
+      "bob_oscB_blend": 0.5,
+      "bob_oscB_detune": -7.0,
+      "bob_oscB_wave": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.404,
-    "warmth": 0.25,
-    "movement": 0.0,
-    "density": 0.163,
-    "space": 0.133,
-    "aggression": 0.147
-  }
+  "tags": [
+    "warm",
+    "analog",
+    "classic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

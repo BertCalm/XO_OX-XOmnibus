@@ -1,45 +1,56 @@
 {
-  "name": "BULK KNOT",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.4061,
-      "macro_movement": 0.8337,
-      "macro_coupling": 0.7215,
-      "macro_space": 0.2102
-    },
-    "OBSCURA": {
-      "macro_character": 0.7858,
-      "macro_movement": 0.6067,
-      "macro_coupling": 0.7289,
-      "macro_space": 0.4418
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OUTWIT",
-    "target": "OBSCURA",
-    "amount": 0.9027
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Obscura",
+        "type": "CHAOS_INJECT",
+        "amount": 0.9027
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.6589,
     "brightness": 0.5112,
-    "warmth": 0.7937,
-    "movement": 0.9598,
     "density": 0.9465,
+    "movement": 0.9598,
     "space": 0.736,
-    "aggression": 0.6589
+    "warmth": 0.7937
   },
+  "engines": [
+    "Outwit",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.2838,
-    "MOVEMENT": 0.6639,
     "COUPLING": 0.8858,
+    "MOVEMENT": 0.6639,
     "SPACE": 0.0934
   },
+  "mood": "Entangled",
+  "name": "BULK KNOT",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.7858,
+      "macro_coupling": 0.7289,
+      "macro_movement": 0.6067,
+      "macro_space": 0.4418
+    },
+    "Outwit": {
+      "macro_character": 0.4061,
+      "macro_coupling": 0.7215,
+      "macro_movement": 0.8337,
+      "macro_space": 0.2102
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -49,5 +60,6 @@
     "fused",
     "deep",
     "layered"
-  ]
+  ],
+  "version": "1.0"
 }

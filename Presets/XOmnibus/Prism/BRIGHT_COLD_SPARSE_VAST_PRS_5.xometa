@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_COLD_SPARSE_VAST_PRS_5",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Owlfish",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.68
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.362,
+    "brightness": 0.887,
+    "density": 0.134,
+    "movement": 0.345,
+    "space": 0.938,
+    "warmth": 0.123
+  },
   "engines": [
-    "OSTERIA",
-    "OWLFISH"
+    "Osteria",
+    "Owlfish"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.625,
+    "COUPLING": 0.53,
+    "MOVEMENT": 0.345,
+    "SPACE": 0.938
+  },
+  "mood": "Prism",
+  "name": "BRIGHT_COLD_SPARSE_VAST_PRS_5",
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.625,
-      "macro_movement": 0.345,
       "macro_coupling": 0.53,
+      "macro_movement": 0.345,
       "macro_space": 0.938
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.237,
-      "macro_movement": 0.345,
       "macro_coupling": 0.853,
+      "macro_movement": 0.345,
       "macro_space": 0.938
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OSTERIA",
-    "target": "OWLFISH",
-    "amount": 0.68
-  },
-  "dna": {
-    "brightness": 0.887,
-    "warmth": 0.123,
-    "movement": 0.345,
-    "density": 0.134,
-    "space": 0.938,
-    "aggression": 0.362
-  },
-  "macros": {
-    "CHARACTER": 0.625,
-    "MOVEMENT": 0.345,
-    "COUPLING": 0.53,
-    "SPACE": 0.938
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "bright",
     "cold",
     "sparse",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

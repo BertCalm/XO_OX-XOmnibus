@@ -1,49 +1,61 @@
 {
-  "name": "CRYOGENIC TIE",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORBITAL",
-    "OPAL"
-  ],
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.891,
-      "macro_movement": 0.613,
-      "macro_coupling": 0.719,
-      "macro_space": 0.505
-    },
-    "OPAL": {
-      "macro_character": 0.831,
-      "macro_movement": 0.548,
-      "macro_coupling": 0.897,
-      "macro_space": 0.744
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ORBITAL",
-    "target": "OPAL",
-    "amount": 0.585
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Opal",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.585
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.974,
     "brightness": 0.834,
-    "warmth": 0.076,
-    "movement": 0.197,
     "density": 0.207,
+    "movement": 0.197,
     "space": 0.472,
-    "aggression": 0.974
+    "warmth": 0.076
   },
+  "engines": [
+    "Orbital",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.259,
-    "MOVEMENT": 0.247,
     "COUPLING": 0.638,
+    "MOVEMENT": 0.247,
     "SPACE": 0.766
   },
+  "mood": "Entangled",
+  "name": "CRYOGENIC TIE",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.831,
+      "macro_coupling": 0.897,
+      "macro_movement": 0.548,
+      "macro_space": 0.744
+    },
+    "Orbital": {
+      "macro_character": 0.891,
+      "macro_coupling": 0.719,
+      "macro_movement": 0.613,
+      "macro_space": 0.505
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-  ]
+  ],
+  "version": "1.0"
 }

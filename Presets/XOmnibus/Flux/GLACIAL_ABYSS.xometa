@@ -1,50 +1,62 @@
 {
-  "name": "GLACIAL ABYSS",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OHM",
-    "OBESE"
-  ],
-  "parameters": {
-    "OHM": {
-      "macro_character": 0.38,
-      "macro_movement": 0.436,
-      "macro_coupling": 0.771,
-      "macro_space": 0.773
-    },
-    "OBESE": {
-      "macro_character": 0.463,
-      "macro_movement": 0.4,
-      "macro_coupling": 0.894,
-      "macro_space": 0.712
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OHM",
-    "target": "OBESE",
-    "amount": 0.794
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Obese",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.794
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.538,
     "brightness": 0.144,
-    "warmth": 0.04,
-    "movement": 0.399,
     "density": 0.523,
+    "movement": 0.399,
     "space": 0.9,
-    "aggression": 0.538
+    "warmth": 0.04
   },
+  "engines": [
+    "Ohm",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.38,
-    "MOVEMENT": 0.436,
     "COUPLING": 0.771,
+    "MOVEMENT": 0.436,
     "SPACE": 0.773
   },
+  "mood": "Flux",
+  "name": "GLACIAL ABYSS",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.463,
+      "macro_coupling": 0.894,
+      "macro_movement": 0.4,
+      "macro_space": 0.712
+    },
+    "Ohm": {
+      "macro_character": 0.38,
+      "macro_coupling": 0.771,
+      "macro_movement": 0.436,
+      "macro_space": 0.773
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "cold",
     "vast",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

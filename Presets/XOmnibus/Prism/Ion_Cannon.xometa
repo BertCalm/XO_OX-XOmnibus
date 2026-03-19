@@ -1,52 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Ion Cannon",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Single chip channel at maximum aggression. One note obliterates the mix.",
+  "dna": {
+    "aggression": 1.0,
+    "brightness": 0.91,
+    "density": 0.09,
+    "movement": 0.616,
+    "space": 0.981,
+    "warmth": 0.27
+  },
   "engines": [
     "Overworld"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Single chip channel at maximum aggression. One note obliterates the mix.",
-  "tags": [
-    "aggressive-sparse",
-    "extreme",
-    "prism",
-    "chip"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Ion Cannon",
   "parameters": {
     "Overworld": {
+      "ow_drive": 0.97,
       "ow_era": 0.5,
       "ow_eraY": 0.9,
-      "ow_voiceMode": 0.0,
-      "ow_masterVol": 0.88,
       "ow_filterCutoff": 8000.0,
-      "ow_drive": 0.97,
-      "ow_glitchAmt": 0.88
+      "ow_glitchAmt": 0.88,
+      "ow_masterVol": 0.88,
+      "ow_voiceMode": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.91,
-    "warmth": 0.27,
-    "movement": 0.616,
-    "density": 0.09,
-    "space": 0.981,
-    "aggression": 1.0
-  }
+  "tags": [
+    "aggressive-sparse",
+    "extreme",
+    "prism",
+    "chip"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

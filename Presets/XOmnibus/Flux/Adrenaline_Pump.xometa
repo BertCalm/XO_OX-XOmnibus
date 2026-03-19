@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Adrenaline Pump",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "Fight-or-flight metabolic surge. Intense rhythmic drive.",
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.55,
+    "density": 0.6,
+    "movement": 0.85,
+    "space": 0.05,
+    "warmth": 0.3
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Fight-or-flight metabolic surge. Intense rhythmic drive.",
-  "tags": [
-    "adrenaline",
-    "intense",
-    "drive",
-    "surge"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Adrenaline Pump",
   "parameters": {
     "Organon": {
-      "organon_metabolicRate": 9.0,
-      "organon_enzymeSelect": 2500.0,
       "organon_catalystDrive": 1.5,
       "organon_dampingCoeff": 0.4,
-      "organon_signalFlux": 0.85,
-      "organon_phasonShift": 0.3,
+      "organon_enzymeSelect": 2500.0,
       "organon_isotopeBalance": 0.6,
       "organon_lockIn": 0.7,
       "organon_membrane": 0.05,
-      "organon_noiseColor": 0.6
+      "organon_metabolicRate": 9.0,
+      "organon_noiseColor": 0.6,
+      "organon_phasonShift": 0.3,
+      "organon_signalFlux": 0.85
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.3,
-    "movement": 0.85,
-    "density": 0.6,
-    "space": 0.05,
-    "aggression": 0.6
-  }
+  "tags": [
+    "adrenaline",
+    "intense",
+    "drive",
+    "surge"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

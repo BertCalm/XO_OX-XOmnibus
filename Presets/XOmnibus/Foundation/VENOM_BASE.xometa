@@ -1,48 +1,60 @@
 {
-  "name": "VENOM BASE",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OLE",
-    "OBESE"
-  ],
-  "parameters": {
-    "OLE": {
-      "macro_character": 0.397,
-      "macro_movement": 0.571,
-      "macro_coupling": 0.585,
-      "macro_space": 0.42
-    },
-    "OBESE": {
-      "macro_character": 0.685,
-      "macro_movement": 0.611,
-      "macro_coupling": 0.551,
-      "macro_space": 0.409
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OLE",
-    "target": "OBESE",
-    "amount": 0.852
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Obese",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.852
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.924,
     "brightness": 0.651,
-    "warmth": 0.67,
-    "movement": 0.34,
     "density": 0.952,
+    "movement": 0.34,
     "space": 0.779,
-    "aggression": 0.924
+    "warmth": 0.67
   },
+  "engines": [
+    "Ole",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.381,
-    "MOVEMENT": 0.34,
     "COUPLING": 0.852,
+    "MOVEMENT": 0.34,
     "SPACE": 0.779
   },
+  "mood": "Foundation",
+  "name": "VENOM BASE",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.685,
+      "macro_coupling": 0.551,
+      "macro_movement": 0.611,
+      "macro_space": 0.409
+    },
+    "Ole": {
+      "macro_character": 0.397,
+      "macro_coupling": 0.585,
+      "macro_movement": 0.571,
+      "macro_space": 0.42
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Ombre Machine",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.9,
+        "engineA": "Ombre",
+        "engineB": "Orca",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Orca predator chaos injected into Ombre dual narrative — the hunt as cold memory.",
+  "dna": {
+    "aggression": 0.94,
+    "brightness": 0.13,
+    "density": 0.87,
+    "movement": 0.72,
+    "space": 0.12,
+    "warmth": 0.16
+  },
   "engines": [
-    "OMBRE",
-    "ORCA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Orca predator chaos injected into Ombre dual narrative \u2014 the hunt as cold memory.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "cold",
-    "ombre",
-    "orca",
-    "machine"
+    "Ombre",
+    "Orca"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,32 @@
   ],
   "macros": {
     "CHARACTER": 0.86,
-    "MOVEMENT": 0.72,
     "COUPLING": 0.9,
+    "MOVEMENT": 0.72,
     "SPACE": 0.12
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.13,
-    "warmth": 0.16,
-    "movement": 0.72,
-    "density": 0.87,
-    "space": 0.12,
-    "aggression": 0.94
+  "mood": "Entangled",
+  "name": "Ombre Machine",
+  "parameters": {
+    "Ombre": {},
+    "Orca": {}
   },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.94,
     "brightness": 0.13,
-    "warmth": 0.16,
-    "movement": 0.72,
     "density": 0.87,
+    "movement": 0.72,
     "space": 0.12,
-    "aggression": 0.94
+    "warmth": 0.16
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OMBRE",
-        "engineB": "ORCA",
-        "type": "CHAOS_INJECT",
-        "amount": 0.9
-      }
-    ]
-  }
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "ombre",
+    "orca",
+    "machine"
+  ],
+  "version": "1.0.0"
 }

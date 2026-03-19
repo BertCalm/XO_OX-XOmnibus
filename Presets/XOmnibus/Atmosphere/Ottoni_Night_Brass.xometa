@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Night Brass",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Reverb fills the Great Lakes. LAKE high — the brass echoes off cold water.",
+  "dna": {
+    "aggression": 0.13,
+    "brightness": 0.23,
+    "density": 0.27,
+    "movement": 0.31,
+    "space": 0.76,
+    "warmth": 0.63
+  },
   "engines": [
     "Ottoni"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "brass",
-    "sax",
-    "atmosphere",
-    "pad",
-    "atmosphere"
   ],
   "macroLabels": [
     "EMBOUCHURE",
@@ -20,48 +21,47 @@
     "FOREIGN",
     "LAKE"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.23,
-    "warmth": 0.63,
-    "movement": 0.31,
-    "density": 0.27,
-    "space": 0.76,
-    "aggression": 0.13
-  },
+  "mood": "Atmosphere",
+  "name": "Night Brass",
   "parameters": {
     "Ottoni": {
+      "otto_chorusRate": 1.0,
+      "otto_damping": 0.996,
+      "otto_delayMix": 0.218,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.07,
+      "otto_driveAmount": 0.0,
+      "otto_foreignCold": 0.119,
+      "otto_foreignDrift": 0.055,
+      "otto_foreignStretch": 0.0,
+      "otto_macroEmbouchure": 0.329,
+      "otto_macroForeign": 0.096,
+      "otto_macroGrow": 0.493,
+      "otto_macroLake": 0.426,
+      "otto_reverbSize": 0.496,
+      "otto_sympatheticAmt": 0.219,
+      "otto_teenBore": 0.567,
+      "otto_teenEmbouchure": 0.824,
+      "otto_teenInst": 1,
+      "otto_teenLevel": 0.58,
+      "otto_teenVibratoDepth": 0.362,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 3,
       "otto_toddlerLevel": 0.45,
       "otto_toddlerPressure": 0.293,
-      "otto_toddlerInst": 3,
-      "otto_tweenLevel": 0.438,
       "otto_tweenEmbouchure": 0.488,
-      "otto_tweenValve": 0.575,
       "otto_tweenInst": 3,
-      "otto_teenLevel": 0.58,
-      "otto_teenEmbouchure": 0.824,
-      "otto_teenBore": 0.567,
-      "otto_teenInst": 1,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.362,
-      "otto_damping": 0.996,
-      "otto_sympatheticAmt": 0.219,
-      "otto_driftRate": 0.07,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.0,
-      "otto_foreignDrift": 0.055,
-      "otto_foreignCold": 0.119,
-      "otto_reverbSize": 0.496,
-      "otto_chorusRate": 1.0,
-      "otto_driveAmount": 0.0,
-      "otto_delayMix": 0.218,
-      "otto_macroEmbouchure": 0.329,
-      "otto_macroGrow": 0.493,
-      "otto_macroForeign": 0.096,
-      "otto_macroLake": 0.426
+      "otto_tweenLevel": 0.438,
+      "otto_tweenValve": 0.575
     }
   },
-  "coupling": null,
-  "description": "Reverb fills the Great Lakes. LAKE high \u2014 the brass echoes off cold water."
+  "schema_version": 1,
+  "tags": [
+    "brass",
+    "sax",
+    "atmosphere",
+    "pad",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
 }

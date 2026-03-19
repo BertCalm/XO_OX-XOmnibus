@@ -1,33 +1,48 @@
 {
-  "name": "Cold Ellipse",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Orca",
+        "type": "PHASE_LOCK",
+        "amount": 0.75
+      }
+    ]
+  },
+  "description": "Orca's aggression tracing a cold orbital ellipse — force in geometric stasis.",
   "engines": [
-    "ORBITAL",
-    "ORCA"
+    "Orbital",
+    "Orca"
   ],
-  "mood": "Entangled",
-  "strategy": "Still Aggressive",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.75,
-    "MOVEMENT": 0.06,
     "COUPLING": 0.82,
+    "MOVEMENT": 0.06,
     "SPACE": 0.6
   },
+  "mood": "Entangled",
+  "name": "Cold Ellipse",
+  "parameters": {
+    "Orbital": {},
+    "Orca": {}
+  },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.92,
     "brightness": 0.38,
-    "warmth": 0.28,
-    "movement": 0.06,
     "density": 0.65,
+    "movement": 0.06,
     "space": 0.58,
-    "aggression": 0.92
+    "warmth": 0.28
   },
-  "parameters": {},
-  "coupling": {
-    "type": "PHASE_LOCK",
-    "source": "ORBITAL",
-    "target": "ORCA",
-    "amount": 0.75
-  },
+  "strategy": "Still Aggressive",
   "tags": [
     "entangled",
     "aggressive",
@@ -35,5 +50,13 @@
     "cold",
     "elliptical"
   ],
-  "description": "Orca's aggression tracing a cold orbital ellipse \u2014 force in geometric stasis."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

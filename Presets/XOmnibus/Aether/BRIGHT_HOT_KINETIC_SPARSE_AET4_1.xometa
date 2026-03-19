@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_HOT_KINETIC_SPARSE_AET4_1",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OSPREY",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.923,
-      "macro_movement": 0.2456,
-      "macro_coupling": 0.5592,
-      "macro_space": 0.5012
-    },
-    "ODDFELIX": {
-      "macro_character": 0.7146,
-      "macro_movement": 0.5677,
-      "macro_coupling": 0.8823,
-      "macro_space": 0.2551
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OSPREY",
-    "target": "ODDFELIX",
-    "amount": 0.7061
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "OddfeliX",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7061
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.5909,
     "brightness": 0.9205,
-    "warmth": 0.8836,
-    "movement": 0.8776,
     "density": 0.0693,
+    "movement": 0.8776,
     "space": 0.546,
-    "aggression": 0.5909
+    "warmth": 0.8836
   },
+  "engines": [
+    "Osprey",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.9021,
-    "MOVEMENT": 0.8776,
     "COUPLING": 0.7061,
+    "MOVEMENT": 0.8776,
     "SPACE": 0.546
   },
+  "mood": "Aether",
+  "name": "Halo Current",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.7146,
+      "macro_coupling": 0.8823,
+      "macro_movement": 0.5677,
+      "macro_space": 0.2551
+    },
+    "Osprey": {
+      "macro_character": 0.923,
+      "macro_coupling": 0.5592,
+      "macro_movement": 0.2456,
+      "macro_space": 0.5012
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "kinetic",
     "bright",
     "warm",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

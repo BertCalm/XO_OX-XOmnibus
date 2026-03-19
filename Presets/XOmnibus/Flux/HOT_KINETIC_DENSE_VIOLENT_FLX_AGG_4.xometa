@@ -1,50 +1,62 @@
 {
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FLX_AGG_4",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overworld",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.859
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.978,
+    "brightness": 0.562,
+    "density": 0.896,
+    "movement": 0.923,
+    "space": 0.489,
+    "warmth": 0.926
+  },
   "engines": [
-    "OBLIQUE",
-    "OVERWORLD"
+    "Oblique",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.543,
+    "COUPLING": 0.77,
+    "MOVEMENT": 0.923,
+    "SPACE": 0.489
+  },
+  "mood": "Flux",
+  "name": "Phase Grit 2",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.668,
-      "macro_movement": 0.939,
       "macro_coupling": 0.77,
+      "macro_movement": 0.939,
       "macro_space": 0.501
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.418,
-      "macro_movement": 0.882,
       "macro_coupling": 0.806,
+      "macro_movement": 0.882,
       "macro_space": 0.462
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBLIQUE",
-    "target": "OVERWORLD",
-    "amount": 0.859
-  },
-  "dna": {
-    "brightness": 0.562,
-    "warmth": 0.926,
-    "movement": 0.923,
-    "density": 0.896,
-    "space": 0.489,
-    "aggression": 0.978
-  },
-  "macros": {
-    "CHARACTER": 0.543,
-    "MOVEMENT": 0.923,
-    "COUPLING": 0.77,
-    "SPACE": 0.489
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "kinetic",
     "hot",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

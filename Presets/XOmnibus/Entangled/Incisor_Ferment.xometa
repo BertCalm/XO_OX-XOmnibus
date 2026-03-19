@@ -1,77 +1,77 @@
 {
-  "schema_version": 1,
-  "name": "Incisor Ferment",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.743,
+        "engineA": "Overbite",
+        "engineB": "Osteria",
+        "type": "rhythm_sync"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "created": "2026-03-16",
+  "description": "OVERBITE bite at the OSTERIA table. Slow feast, fat bass, gnashed vintage.",
+  "dna": {
+    "aggression": 0.516,
+    "brightness": 0.459,
+    "density": 0.739,
+    "movement": 0.494,
+    "space": 0.464,
+    "warmth": 0.641
+  },
   "engines": [
     "Overbite",
     "Osteria"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE bite at the OSTERIA table. Slow feast, fat bass, gnashed vintage.",
-  "tags": [
-    "overbite",
-    "osteria",
-    "coupling",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Strong",
-  "tempo": 100,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Incisor Ferment",
   "parameters": {
-    "Overbite": {
-      "poss_macro1": 0.475,
-      "poss_macro2": 0.57,
-      "poss_macro3": 0.692,
-      "poss_macro4": 0.427,
-      "poss_couplingOut": 0.64,
-      "poss_couplingIn": 0.447,
-      "poss_outputLevel": 0.779,
-      "poss_outputPan": -0.022,
-      "poss_biteDepth": 0.836,
-      "poss_fangAttack": 0.167,
-      "poss_gnashAmt": 0.702,
-      "poss_snapRelease": 0.574
-    },
     "Osteria": {
+      "osteria_couplingIn": 0.77,
+      "osteria_couplingOut": 0.516,
       "osteria_macro1": 0.693,
       "osteria_macro2": 0.318,
       "osteria_macro3": 0.336,
       "osteria_macro4": 0.443,
-      "osteria_couplingOut": 0.516,
-      "osteria_couplingIn": 0.77,
       "osteria_outputLevel": 0.829,
       "osteria_outputPan": 0.033
+    },
+    "Overbite": {
+      "poss_biteDepth": 0.836,
+      "poss_couplingIn": 0.447,
+      "poss_couplingOut": 0.64,
+      "poss_fangAttack": 0.167,
+      "poss_gnashAmt": 0.702,
+      "poss_macro1": 0.475,
+      "poss_macro2": 0.57,
+      "poss_macro3": 0.692,
+      "poss_macro4": 0.427,
+      "poss_outputLevel": 0.779,
+      "poss_outputPan": -0.022,
+      "poss_snapRelease": 0.574
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Osteria",
-        "type": "rhythm_sync",
-        "amount": 0.743
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.459,
-    "warmth": 0.641,
-    "movement": 0.494,
-    "density": 0.739,
-    "space": 0.464,
-    "aggression": 0.516
-  }
+  "tags": [
+    "overbite",
+    "osteria",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 100,
+  "version": "1.0.0"
 }

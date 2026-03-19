@@ -1,49 +1,61 @@
 {
-  "name": "FURIOUS ETHER STORM",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Owlfish",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.727
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.961,
+    "brightness": 0.662,
+    "density": 0.618,
+    "movement": 0.527,
+    "space": 0.597,
+    "warmth": 0.876
+  },
   "engines": [
-    "OCTOPUS",
-    "OWLFISH"
+    "Octopus",
+    "Owlfish"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.752,
+    "COUPLING": 0.784,
+    "MOVEMENT": 0.527,
+    "SPACE": 0.597
+  },
+  "mood": "Aether",
+  "name": "FURIOUS ETHER STORM",
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.693,
-      "macro_movement": 0.539,
       "macro_coupling": 0.903,
+      "macro_movement": 0.539,
       "macro_space": 0.61
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.044,
-      "macro_movement": 0.513,
       "macro_coupling": 0.72,
+      "macro_movement": 0.513,
       "macro_space": 0.625
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OCTOPUS",
-    "target": "OWLFISH",
-    "amount": 0.727
-  },
-  "dna": {
-    "brightness": 0.662,
-    "warmth": 0.876,
-    "movement": 0.527,
-    "density": 0.618,
-    "space": 0.597,
-    "aggression": 0.961
-  },
-  "macros": {
-    "CHARACTER": 0.752,
-    "MOVEMENT": 0.527,
-    "COUPLING": 0.784,
-    "SPACE": 0.597
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

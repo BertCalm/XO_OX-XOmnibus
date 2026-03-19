@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Felix Neon Solo",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "feliX at full presence — the neon tetra in its tank. Snap crisp, bloom lit, digital shimmer riding a warm sub. This is what feliX sounds like when nobody else is in the room.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.72,
+    "density": 0.5,
+    "movement": 0.45,
+    "space": 0.55,
+    "warmth": 0.55
+  },
   "engines": [
     "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "feliX at full presence \u2014 the neon tetra in its tank. Snap crisp, bloom lit, digital shimmer riding a warm sub. This is what feliX sounds like when nobody else is in the room.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Family",
+  "name": "Felix Neon Solo",
+  "parameters": {
+    "OddfeliX": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "signature",
@@ -18,29 +43,6 @@
     "bright",
     "batch1-signatures"
   ],
-  "macroLabels": [
-    "Snap+Morph",
-    "Bloom",
-    "Coupling",
-    "Space"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.72,
-    "warmth": 0.55,
-    "movement": 0.45,
-    "density": 0.5,
-    "space": 0.55,
-    "aggression": 0.2
-  }
+  "version": "1.0.0"
 }

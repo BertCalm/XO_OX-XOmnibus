@@ -1,45 +1,56 @@
 {
-  "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FLX2_2",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Oblong",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.776
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.891,
+    "brightness": 0.0674,
+    "density": 0.9518,
+    "movement": 0.9194,
+    "space": 0.372,
+    "warmth": 0.0469
+  },
   "engines": [
-    "OBLIQUE",
-    "OBLONG"
+    "Oblique",
+    "Oblong"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0558,
+    "COUPLING": 0.9557,
+    "MOVEMENT": 0.9269,
+    "SPACE": 0.3751
+  },
+  "mood": "Flux",
+  "name": "Phase Molten 4",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.057,
-      "macro_movement": 0.9244,
       "macro_coupling": 0.9357,
+      "macro_movement": 0.9244,
       "macro_space": 0.3803
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.0547,
-      "macro_movement": 0.9294,
       "macro_coupling": 0.9757,
+      "macro_movement": 0.9294,
       "macro_space": 0.3699
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OBLIQUE",
-    "target": "OBLONG",
-    "amount": 0.776
-  },
-  "dna": {
-    "brightness": 0.0674,
-    "warmth": 0.0469,
-    "movement": 0.9194,
-    "density": 0.9518,
-    "space": 0.372,
-    "aggression": 0.891
-  },
-  "macros": {
-    "CHARACTER": 0.0558,
-    "MOVEMENT": 0.9269,
-    "COUPLING": 0.9557,
-    "SPACE": 0.3751
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -47,5 +58,6 @@
     "kinetic",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

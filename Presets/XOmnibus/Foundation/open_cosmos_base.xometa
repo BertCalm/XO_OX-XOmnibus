@@ -1,49 +1,61 @@
 {
-  "name": "OPEN COSMOS BASE",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Obscura",
+        "type": "CHAOS_INJECT",
+        "amount": 0.532
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.871,
+    "brightness": 0.918,
+    "density": 0.821,
+    "movement": 0.2,
+    "space": 0.942,
+    "warmth": 0.35
+  },
   "engines": [
-    "OBLIQUE",
-    "OBSCURA"
+    "Oblique",
+    "Obscura"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.028,
+    "COUPLING": 0.877,
+    "MOVEMENT": 0.2,
+    "SPACE": 0.942
+  },
+  "mood": "Foundation",
+  "name": "OPEN COSMOS BASE",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.398,
-      "macro_movement": 0.178,
       "macro_coupling": 0.069,
+      "macro_movement": 0.178,
       "macro_space": 0.958
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.351,
-      "macro_movement": 0.201,
       "macro_coupling": 0.68,
+      "macro_movement": 0.201,
       "macro_space": 0.963
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OBLIQUE",
-    "target": "OBSCURA",
-    "amount": 0.532
-  },
-  "dna": {
-    "brightness": 0.918,
-    "warmth": 0.35,
-    "movement": 0.2,
-    "density": 0.821,
-    "space": 0.942,
-    "aggression": 0.871
-  },
-  "macros": {
-    "CHARACTER": 0.028,
-    "MOVEMENT": 0.2,
-    "COUPLING": 0.877,
-    "SPACE": 0.942
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

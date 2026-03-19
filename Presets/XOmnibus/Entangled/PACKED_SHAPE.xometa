@@ -1,45 +1,56 @@
 {
-  "name": "PACKED SHAPE",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORIGAMI",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.4906,
-      "macro_movement": 0.3558,
-      "macro_coupling": 0.9765,
-      "macro_space": 0.4318
-    },
-    "ODDFELIX": {
-      "macro_character": 0.6797,
-      "macro_movement": 0.6607,
-      "macro_coupling": 0.6343,
-      "macro_space": 0.6186
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORIGAMI",
-    "target": "ODDFELIX",
-    "amount": 0.9394
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "OddfeliX",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.9394
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.6339,
     "brightness": 0.7131,
-    "warmth": 0.082,
-    "movement": 0.1542,
     "density": 0.9405,
+    "movement": 0.1542,
     "space": 0.7117,
-    "aggression": 0.6339
+    "warmth": 0.082
   },
+  "engines": [
+    "Origami",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7397,
-    "MOVEMENT": 0.3167,
     "COUPLING": 0.732,
+    "MOVEMENT": 0.3167,
     "SPACE": 0.0052
   },
+  "mood": "Entangled",
+  "name": "PACKED SHAPE",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.6797,
+      "macro_coupling": 0.6343,
+      "macro_movement": 0.6607,
+      "macro_space": 0.6186
+    },
+    "Origami": {
+      "macro_character": 0.4906,
+      "macro_coupling": 0.9765,
+      "macro_movement": 0.3558,
+      "macro_space": 0.4318
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "bound",
     "dense",
@@ -48,5 +59,6 @@
     "welded",
     "monolithic",
     "xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

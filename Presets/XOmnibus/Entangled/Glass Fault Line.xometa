@@ -1,33 +1,48 @@
 {
-  "name": "Glass Fault Line",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obsidian",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.65
+      }
+    ]
+  },
+  "description": "Shatter-bright motion running along the fault between light and obsidian dark.",
   "engines": [
-    "ODDFELIX",
-    "OBSIDIAN"
+    "OddfeliX",
+    "Obsidian"
   ],
-  "mood": "Entangled",
-  "strategy": "Bright Dark",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.75,
+    "MOVEMENT": 0.65,
     "SPACE": 0.55
   },
+  "mood": "Entangled",
+  "name": "Glass Fault Line",
+  "parameters": {
+    "OddfeliX": {},
+    "Obsidian": {}
+  },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.45,
     "brightness": 0.9,
-    "warmth": 0.09,
-    "movement": 0.68,
     "density": 0.6,
+    "movement": 0.68,
     "space": 0.55,
-    "aggression": 0.45
+    "warmth": 0.09
   },
-  "parameters": {},
-  "coupling": {
-    "type": "TIMBRAL_WARP",
-    "source": "ODDFELIX",
-    "target": "OBSIDIAN",
-    "amount": 0.65
-  },
+  "strategy": "Bright Dark",
   "tags": [
     "entangled",
     "bright",
@@ -35,5 +50,13 @@
     "movement",
     "tension"
   ],
-  "description": "Shatter-bright motion running along the fault between light and obsidian dark."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

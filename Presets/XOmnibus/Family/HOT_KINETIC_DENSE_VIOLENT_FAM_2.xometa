@@ -1,14 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "HOT KINETIC DENSE VIOLENT FAM 2",
-  "mood": "Family",
-  "engines": [
-    "OTTONI",
-    "ODDFELIX"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, warm, kinetic, dense.",
+  "coupling": [
+    {
+      "amount": 0.362,
+      "destination": "ODDFELIX",
+      "source": "OTTONI",
+      "type": "AMPLITUDE_MOD"
+    }
+  ],
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — family, warm, kinetic, dense.",
+  "dna": {
+    "aggression": 0.891,
+    "brightness": 0.53,
+    "density": 0.91,
+    "movement": 0.945,
+    "space": 0.473,
+    "warmth": 0.954
+  },
+  "engines": [
+    "Ottoni",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "HOT KINETIC DENSE VIOLENT F...",
+  "parameters": {
+    "OddfeliX": {
+      "level": 0.818,
+      "pan": -0.004
+    },
+    "Ottoni": {
+      "level": 0.754,
+      "pan": 0.116
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "warm",
@@ -17,40 +51,6 @@
     "violent",
     "ultra-diverse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.53,
-    "warmth": 0.954,
-    "movement": 0.945,
-    "density": 0.91,
-    "space": 0.473,
-    "aggression": 0.891
-  },
-  "parameters": {
-    "OTTONI": {
-      "level": 0.754,
-      "pan": 0.116
-    },
-    "ODDFELIX": {
-      "level": 0.818,
-      "pan": -0.004
-    }
-  },
-  "coupling": [
-    {
-      "source": "OTTONI",
-      "destination": "ODDFELIX",
-      "type": "AMPLITUDE_MOD",
-      "amount": 0.362
-    }
-  ],
-  "sequencer": null
+  "version": "1.0.0"
 }

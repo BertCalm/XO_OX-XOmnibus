@@ -1,54 +1,63 @@
 {
-  "schema_version": 1,
-  "name": "Hibiscus Pulse",
-  "mood": "Entangled",
-  "engines": [
-    "OLE",
-    "ORGANON"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Organon",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.74
+      }
+    ]
+  },
   "description": "Amplitude modulation stamps Afro-Latin rhythm into ORGANON's cellular texture.",
+  "dna": {
+    "aggression": 0.86,
+    "brightness": 0.58,
+    "density": 0.361,
+    "movement": 0.7,
+    "space": 0.42,
+    "warmth": 0.581
+  },
+  "engines": [
+    "Ole",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.74,
+    "COUPLING": 0.74,
+    "MOVEMENT": 0.68,
+    "SPACE": 0.42
+  },
+  "mood": "Entangled",
+  "name": "Hibiscus Pulse",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.74,
-      "macro_movement": 0.68,
       "macro_coupling": 0.74,
+      "macro_movement": 0.68,
       "macro_space": 0.42
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.55,
-      "macro_movement": 0.65,
       "macro_coupling": 0.62,
+      "macro_movement": 0.65,
       "macro_space": 0.55
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OLE",
-    "target": "ORGANON",
-    "amount": 0.74,
-    "intensity": "Deep"
-  },
-  "dna": {
-    "brightness": 0.58,
-    "warmth": 0.581,
-    "movement": 0.7,
-    "density": 0.361,
-    "space": 0.42,
-    "aggression": 0.86
-  },
-  "macros": {
-    "CHARACTER": 0.74,
-    "MOVEMENT": 0.68,
-    "COUPLING": 0.74,
-    "SPACE": 0.42
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "ole",
     "organon",
     "amplitude",
     "pulse"
-  ]
+  ],
+  "version": "1.0"
 }

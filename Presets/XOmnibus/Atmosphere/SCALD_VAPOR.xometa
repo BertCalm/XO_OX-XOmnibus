@@ -1,50 +1,62 @@
 {
-  "name": "SCALD VAPOR",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Octopus",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.374
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.961,
+    "brightness": 0.23,
+    "density": 0.689,
+    "movement": 0.028,
+    "space": 0.785,
+    "warmth": 0.467
+  },
   "engines": [
-    "OBBLIGATO",
-    "OCTOPUS"
+    "Obbligato",
+    "Octopus"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.309,
+    "COUPLING": 0.703,
+    "MOVEMENT": 0.288,
+    "SPACE": 0.785
+  },
+  "mood": "Atmosphere",
+  "name": "SCALD VAPOR",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.762,
-      "macro_movement": 0.512,
       "macro_coupling": 0.169,
+      "macro_movement": 0.512,
       "macro_space": 0.818
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.248,
-      "macro_movement": 0.212,
       "macro_coupling": 0.359,
+      "macro_movement": 0.212,
       "macro_space": 0.635
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBBLIGATO",
-    "target": "OCTOPUS",
-    "amount": 0.374
-  },
-  "dna": {
-    "brightness": 0.23,
-    "warmth": 0.467,
-    "movement": 0.028,
-    "density": 0.689,
-    "space": 0.785,
-    "aggression": 0.961
-  },
-  "macros": {
-    "CHARACTER": 0.309,
-    "MOVEMENT": 0.288,
-    "COUPLING": 0.703,
-    "SPACE": 0.785
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

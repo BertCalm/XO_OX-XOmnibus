@@ -1,45 +1,56 @@
 {
-  "name": "HOT_STILL_VAST_GENTLE_FLX_SLW_5",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.831
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.07,
+    "brightness": 0.605,
+    "density": 0.461,
+    "movement": 0.069,
+    "space": 0.945,
+    "warmth": 0.973
+  },
   "engines": [
-    "OBLIQUE",
-    "ORACLE"
+    "Oblique",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.266,
+    "COUPLING": 0.853,
+    "MOVEMENT": 0.069,
+    "SPACE": 0.945
+  },
+  "mood": "Flux",
+  "name": "Peach Dome",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.601,
-      "macro_movement": 0.067,
       "macro_coupling": 0.705,
+      "macro_movement": 0.067,
       "macro_space": 0.925
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.52,
-      "macro_movement": 0.077,
       "macro_coupling": 0.653,
+      "macro_movement": 0.077,
       "macro_space": 0.997
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OBLIQUE",
-    "target": "ORACLE",
-    "amount": 0.831
-  },
-  "dna": {
-    "brightness": 0.605,
-    "warmth": 0.973,
-    "movement": 0.069,
-    "density": 0.461,
-    "space": 0.945,
-    "aggression": 0.07
-  },
-  "macros": {
-    "CHARACTER": 0.266,
-    "MOVEMENT": 0.069,
-    "COUPLING": 0.853,
-    "SPACE": 0.945
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +58,6 @@
     "vast",
     "gentle",
     "suspended-chaos"
-  ]
+  ],
+  "version": "1.0"
 }

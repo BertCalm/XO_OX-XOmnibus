@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "COLD DENSE KINETIC INTIMATE 1",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "warmth": 0.0483,
-    "density": 0.9435,
-    "movement": 0.9324,
-    "space": 0.0954,
-    "brightness": 0.4451,
-    "aggression": 0.5045
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Extreme",
+  "couplingType": "DRIFT",
+  "description": "Ultra-diverse Entangled preset — cold dense kinetic intimate. Designed for DRIFT coupling with XObbligato.",
   "dna": {
-    "warmth": 0.0483,
+    "aggression": 0.5045,
+    "brightness": 0.4451,
     "density": 0.9435,
     "movement": 0.9324,
     "space": 0.0954,
-    "brightness": 0.4451,
-    "aggression": 0.5045
+    "warmth": 0.0483
   },
   "engines": [
-    "XObbligato"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 cold dense kinetic intimate. Designed for DRIFT coupling with XObbligato.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "drift",
-    "obbligato"
+    "Obbligato"
   ],
   "macroLabels": [
     "EMBER",
@@ -36,15 +23,28 @@
     "SWEEP",
     "DEPTH"
   ],
-  "couplingType": "DRIFT",
-  "couplingIntensity": "Extreme",
+  "mood": "Flux",
+  "name": "COLD DENSE KINETIC INTIMATE 1",
   "parameters": {
-    "XObbligato": {
-      "couplingLevel": 0.653,
-      "couplingBus": 0
+    "Obbligato": {
+      "couplingBus": 0,
+      "couplingLevel": 0.653
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.5045,
+    "brightness": 0.4451,
+    "density": 0.9435,
+    "movement": 0.9324,
+    "space": 0.0954,
+    "warmth": 0.0483
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "drift",
+    "obbligato"
+  ],
+  "version": "1.0.0"
 }

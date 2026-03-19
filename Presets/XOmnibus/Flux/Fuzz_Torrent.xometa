@@ -33,7 +33,9 @@
     "space": 0.08,
     "aggression": 0.95
   },
-  "parameters": {},
+  "parameters": {
+    "Overbite": {}
+  },
   "tags": [
     "flux",
     "high-flux",
@@ -41,5 +43,5 @@
     "fuzz",
     "torrent"
   ],
-  "description": "Overbite bass filter wide open \u2014 fuzz distortion torrenting through the mix."
+  "description": "Overbite bass filter wide open — fuzz distortion torrenting through the mix."
 }

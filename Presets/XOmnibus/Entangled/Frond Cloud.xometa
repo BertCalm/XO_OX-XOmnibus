@@ -1,52 +1,62 @@
 {
-  "schema_version": 1,
-  "name": "Frond Cloud",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "OBLONG"
-  ],
-  "author": "XO_OX",
-  "macros": {
-    "CHARACTER": 0.45,
-    "MOVEMENT": 0.57,
-    "COUPLING": 0.83,
-    "SPACE": 0.71
-  },
-  "sonic_dna": {
-    "movement": 0.58,
-    "brightness": 0.61,
-    "aggression": 0.33,
-    "space": 0.71,
-    "warmth": 0.59,
-    "density": 0.68
-  },
-  "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.66,
-      "olap_decay": 0.816,
-      "olap_damping": 0.416,
-      "olap_diffusion": 0.855,
-      "olap_modDepth": 0.278,
-      "olap_modRate": 0.296,
-      "olap_preDelay": 0.071,
-      "olap_earlyMix": 0.304,
-      "olap_lateMix": 0.635,
-      "olap_filterCutoff": 0.8,
-      "olap_filterReso": 0.247,
-      "olap_outputLevel": 0.68,
-      "olap_couplingLevel": 0.685,
-      "olap_couplingBus": 0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MODULATION",
-    "source": "OVERLAP",
-    "target": "OBLONG",
-    "amount": 0.835
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Oblong",
+        "type": "AMPLITUDE_MODULATION",
+        "amount": 0.835
+      }
+    ]
   },
   "couplingIntensity": "Deep",
+  "description": "Oblong instability shapes OVERLAP modulation depth — the more unstable, the more the tail wanders",
+  "engines": [
+    "Overlap",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "COUPLING": 0.83,
+    "MOVEMENT": 0.57,
+    "SPACE": 0.71
+  },
+  "mood": "Entangled",
+  "name": "Frond Cloud",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.685,
+      "olap_damping": 0.416,
+      "olap_decay": 0.816,
+      "olap_diffusion": 0.855,
+      "olap_earlyMix": 0.304,
+      "olap_filterCutoff": 0.8,
+      "olap_filterReso": 0.247,
+      "olap_lateMix": 0.635,
+      "olap_modDepth": 0.278,
+      "olap_modRate": 0.296,
+      "olap_outputLevel": 0.68,
+      "olap_preDelay": 0.071,
+      "olap_size": 0.66
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.33,
+    "brightness": 0.61,
+    "density": 0.68,
+    "movement": 0.58,
+    "space": 0.71,
+    "warmth": 0.59
+  },
   "tags": [
     "entangled",
     "coupling",
@@ -56,5 +66,13 @@
     "fdn",
     "reverb"
   ],
-  "description": "Oblong instability shapes OVERLAP modulation depth \u2014 the more unstable, the more the tail wanders"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.5,
+    "movement": 0.296,
+    "density": 0.5,
+    "space": 0.071,
+    "aggression": 0.3
+  }
 }

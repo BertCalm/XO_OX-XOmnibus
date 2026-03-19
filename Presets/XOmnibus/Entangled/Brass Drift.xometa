@@ -1,31 +1,46 @@
 {
-  "name": "Brass Drift",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Ottoni",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.65
+      }
+    ]
+  },
+  "description": "Triple brass harmonics drawn into FM wavetable — patina aged by odyssey spectral warp",
   "engines": [
-    "ODYSSEY",
-    "OTTONI"
+    "Odyssey",
+    "Ottoni"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.65,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.59,
-    "warmth": 0.54,
-    "movement": 0.59,
-    "density": 0.61,
-    "space": 0.56,
-    "aggression": 0.45
+  "mood": "Entangled",
+  "name": "Brass Drift",
+  "parameters": {
+    "Odyssey": {},
+    "Ottoni": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "HARMONIC_BLEND",
-    "source": "ODYSSEY",
-    "target": "OTTONI",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.45,
+    "brightness": 0.59,
+    "density": 0.61,
+    "movement": 0.59,
+    "space": 0.56,
+    "warmth": 0.54
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "ottoni",
     "wavetable"
   ],
-  "description": "Triple brass harmonics drawn into FM wavetable \u2014 patina aged by odyssey spectral warp"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

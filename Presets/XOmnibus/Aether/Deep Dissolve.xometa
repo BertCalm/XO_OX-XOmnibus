@@ -1,46 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Deep Dissolve",
-  "mood": "Aether",
-  "engines": ["Opal"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Maximum scatter, position wander. Sound dissolves into pure space. Generative ambient.",
-  "tags": ["dissolve", "ambient", "generative", "vast"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-11",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Maximum scatter, position wander. Sound dissolves into pure space. Generative ambient.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.2,
+    "density": 0.1,
+    "movement": 0.3,
+    "space": 0.95,
+    "warmth": 0.35
+  },
+  "engines": [
+    "Opal"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Deep Dissolve",
   "parameters": {
     "Opal": {
-      "opal_source": 4,
-      "opal_grainSize": 700.0,
-      "opal_density": 3.0,
-      "opal_position": 0.5,
-      "opal_posScatter": 0.9,
-      "opal_pitchScatter": 20.0,
-      "opal_panScatter": 1.0,
-      "opal_window": 1,
-      "opal_freeze": 0.0,
-      "opal_couplingLevel": 0.0,
-      "opal_pulseWidth": 0.5,
-      "opal_detuneCents": 25.0,
-      "opal_filterCutoff": 3500.0,
-      "opal_filterReso": 0.1,
-      "opal_filterMode": 0,
-      "opal_shimmer": 0.1,
-      "opal_frost": 0.15,
-      "opal_smear": 0.6,
-      "opal_reverbMix": 0.8,
       "opal_ampAttack": 5.0,
       "opal_ampDecay": 3.0,
-      "opal_ampSustain": 0.6,
       "opal_ampRelease": 8.0,
-      "opal_masterVolume": 0.55
+      "opal_ampSustain": 0.6,
+      "opal_couplingLevel": 0.0,
+      "opal_density": 3.0,
+      "opal_detuneCents": 25.0,
+      "opal_filterCutoff": 3500.0,
+      "opal_filterMode": 0,
+      "opal_filterReso": 0.1,
+      "opal_freeze": 0.0,
+      "opal_frost": 0.15,
+      "opal_grainSize": 700.0,
+      "opal_masterVolume": 0.55,
+      "opal_panScatter": 1.0,
+      "opal_pitchScatter": 20.0,
+      "opal_posScatter": 0.9,
+      "opal_position": 0.5,
+      "opal_pulseWidth": 0.5,
+      "opal_reverbMix": 0.8,
+      "opal_shimmer": 0.1,
+      "opal_smear": 0.6,
+      "opal_source": 4,
+      "opal_window": 1
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {"brightness": 0.2, "warmth": 0.35, "movement": 0.3, "density": 0.1, "space": 0.95, "aggression": 0.0}
+  "tags": [
+    "dissolve",
+    "ambient",
+    "generative",
+    "vast"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

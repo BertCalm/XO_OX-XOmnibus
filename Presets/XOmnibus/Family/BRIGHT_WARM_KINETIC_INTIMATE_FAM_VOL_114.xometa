@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_INTIMATE_FAM_VOL_114",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ORPHICA",
-    "OLE"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.948,
-      "macro_movement": 0.986,
-      "macro_coupling": 0.55,
-      "macro_space": 0.066
-    },
-    "OLE": {
-      "macro_character": 0.906,
-      "macro_movement": 0.99,
-      "macro_coupling": 0.548,
-      "macro_space": 0.031
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORPHICA",
-    "target": "OLE",
-    "amount": 0.768
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ole",
+        "type": "PITCH_SYNC",
+        "amount": 0.768
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.395,
     "brightness": 0.911,
-    "warmth": 0.938,
-    "movement": 0.989,
     "density": 0.652,
+    "movement": 0.989,
     "space": 0.047,
-    "aggression": 0.395
+    "warmth": 0.938
   },
+  "engines": [
+    "Orphica",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.927,
-    "MOVEMENT": 0.988,
     "COUPLING": 0.549,
+    "MOVEMENT": 0.988,
     "SPACE": 0.049
   },
+  "mood": "Family",
+  "name": "Sunrise Pulse 2",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.906,
+      "macro_coupling": 0.548,
+      "macro_movement": 0.99,
+      "macro_space": 0.031
+    },
+    "Orphica": {
+      "macro_character": 0.948,
+      "macro_coupling": 0.55,
+      "macro_movement": 0.986,
+      "macro_space": 0.066
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "intimate",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

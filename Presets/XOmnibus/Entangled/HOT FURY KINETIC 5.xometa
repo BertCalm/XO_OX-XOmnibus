@@ -1,14 +1,43 @@
 {
-  "schema_version": 1,
-  "name": "HOT FURY KINETIC 5",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.738,
+        "engineA": "OddfeliX",
+        "engineB": "Octopus",
+        "type": "HARMONIC_FOLD"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "description": "OddFelix × Octopus — Harmonic Fold coupling at extreme DNA corner.",
+  "dna": {
+    "aggression": 0.886,
+    "brightness": 0.574,
+    "density": 0.561,
+    "movement": 0.949,
+    "space": 0.5,
+    "warmth": 0.944
+  },
   "engines": [
-    "OddFelix",
+    "OddfeliX",
     "Octopus"
   ],
-  "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "OddFelix \u00d7 Octopus \u2014 Harmonic Fold coupling at extreme DNA corner.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "HOT FURY KINETIC 5",
+  "parameters": {
+    "OddfeliX": {},
+    "Octopus": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "hot",
     "oddfelix",
@@ -17,32 +46,6 @@
     "extreme-dna",
     "diversity-push"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Extreme",
   "tempo": null,
-  "dna": {
-    "brightness": 0.574,
-    "warmth": 0.944,
-    "movement": 0.949,
-    "density": 0.561,
-    "space": 0.5,
-    "aggression": 0.886
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddFelix",
-        "engineB": "Octopus",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.738
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

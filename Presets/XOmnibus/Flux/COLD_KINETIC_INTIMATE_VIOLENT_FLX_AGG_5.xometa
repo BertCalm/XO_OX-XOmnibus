@@ -1,50 +1,62 @@
 {
-  "name": "COLD_KINETIC_INTIMATE_VIOLENT_FLX_AGG_5",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Overworld",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.886
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.985,
+    "brightness": 0.419,
+    "density": 0.527,
+    "movement": 0.921,
+    "space": 0.027,
+    "warmth": 0.085
+  },
   "engines": [
-    "ODYSSEY",
-    "OVERWORLD"
+    "Odyssey",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.522,
+    "COUPLING": 0.9,
+    "MOVEMENT": 0.921,
+    "SPACE": 0.027
+  },
+  "mood": "Flux",
+  "name": "Flux Blade",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.39,
-      "macro_movement": 0.937,
       "macro_coupling": 0.9,
+      "macro_movement": 0.937,
       "macro_space": 0.0
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.655,
-      "macro_movement": 0.888,
       "macro_coupling": 0.866,
+      "macro_movement": 0.888,
       "macro_space": 0.0
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ODYSSEY",
-    "target": "OVERWORLD",
-    "amount": 0.886
-  },
-  "dna": {
-    "brightness": 0.419,
-    "warmth": 0.085,
-    "movement": 0.921,
-    "density": 0.527,
-    "space": 0.027,
-    "aggression": 0.985
-  },
-  "macros": {
-    "CHARACTER": 0.522,
-    "MOVEMENT": 0.921,
-    "COUPLING": 0.9,
-    "SPACE": 0.027
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "cold",
     "kinetic",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

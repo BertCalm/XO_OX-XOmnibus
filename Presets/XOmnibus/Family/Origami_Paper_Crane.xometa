@@ -1,44 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Paper Crane",
-  "mood": "Family",
-  "engines": ["Origami"],
-  "author": "Guru Bin — Family Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "The fold barely bends the waveform — foldAmt at its gentlest, a single layer, high symmetry. Bright but clean, like sunlight through a single sheet of white paper. Slow attack lets the tone breathe before it lands. The simplest possible origami: a single crease, a crane taking shape.",
-  "tags": ["family", "gentle", "clean", "bright", "minimal", "harmonic", "beginner"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-16",
+  "description": "The fold barely bends the waveform \u2014 foldAmt at its gentlest, a single layer, high symmetry. Bright but clean, like sunlight through a single sheet of white paper. Slow attack lets the tone breathe before it lands. The simplest possible origami: a single crease, a crane taking shape.",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.6,
+    "density": 0.25,
+    "movement": 0.2,
+    "space": 0.5,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Origami"
+  ],
   "legacy": {
-    "sourceInstrument": null,
     "sourceCategory": null,
+    "sourceInstrument": null,
     "sourcePresetName": null
   },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Paper Crane II",
   "parameters": {
     "Origami": {
-      "origami_foldPoint": 0.72,
-      "origami_foldAmt": 0.12,
-      "origami_layers": 1,
-      "origami_symmetry": 0.92,
-      "origami_filterCutoff": 0.7,
-      "origami_filterReso": 0.12,
-      "origami_oscPitch": 0.0,
       "origami_ampAttack": 0.35,
       "origami_ampDecay": 0.5,
+      "origami_ampRelease": 2.0,
       "origami_ampSustain": 0.78,
-      "origami_ampRelease": 2.0
+      "origami_filterCutoff": 0.7,
+      "origami_filterReso": 0.12,
+      "origami_foldAmt": 0.12,
+      "origami_foldPoint": 0.72,
+      "origami_layers": 1,
+      "origami_oscPitch": 0.0,
+      "origami_symmetry": 0.92
     }
   },
-  "coupling": { "pairs": [] },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.65,
-    "movement": 0.2,
-    "density": 0.25,
-    "space": 0.5,
-    "aggression": 0.06
-  }
+  "tags": [
+    "family",
+    "gentle",
+    "clean",
+    "bright",
+    "minimal",
+    "harmonic",
+    "beginner"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

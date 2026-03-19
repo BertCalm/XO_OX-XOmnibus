@@ -1,14 +1,45 @@
 {
-  "schema_version": 1,
-  "name": "Bond with Orphica",
-  "mood": "Entangled",
-  "engines": [
-    "OBBLIGATO",
-    "ORPHICA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.537,
+        "engineA": "Obbligato",
+        "engineB": "Orphica",
+        "type": "Amp->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
   "description": "ORPHICA's microsound harp plucks resonate through OBBLIGATO's BOND, doubling the coral reed shimmer.",
+  "dna": {
+    "aggression": 0.356,
+    "brightness": 0.667,
+    "density": 0.556,
+    "movement": 0.647,
+    "space": 0.67,
+    "warmth": 0.58
+  },
+  "engines": [
+    "Obbligato",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Bond with Orphica",
+  "parameters": {
+    "obbl_breathA": 0.614,
+    "obbl_breathB": 0.543,
+    "obbl_macroBond": 0.936
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -17,37 +48,6 @@
     "granular",
     "shimmer"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "obbl_breathA": 0.614,
-    "obbl_breathB": 0.543,
-    "obbl_macroBond": 0.936
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBBLIGATO",
-        "engineB": "ORPHICA",
-        "type": "Amp->Filter",
-        "amount": 0.537
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.667,
-    "warmth": 0.58,
-    "movement": 0.647,
-    "density": 0.556,
-    "space": 0.67,
-    "aggression": 0.356
-  }
+  "version": "1.0.0"
 }

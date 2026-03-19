@@ -1,47 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Prism Core",
-  "mood": "Foundation",
-  "engines": ["Oblique"],
-  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
-  "version": "1.0.0",
-  "description": "RTJ-bounce refraction at full color — prismatic attack with midrange punch and moderate aggression. The beat bounces off every surface.",
-  "tags": ["bounce", "prism", "midrange", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "sonic_dna": {
-    "brightness": 0.7,
-    "warmth": 0.45,
-    "movement": 0.65,
-    "density": 0.55,
-    "space": 0.4,
-    "aggression": 0.5
-  },
-  "dna": {
-    "brightness": 0.7,
-    "warmth": 0.45,
-    "movement": 0.65,
-    "density": 0.55,
-    "space": 0.4,
-    "aggression": 0.5
-  },
-  "parameters": {
-    "Oblique": {
-      "oblq_prismColor": 0.5,
-      "oblq_bounce": 0.6,
-      "oblq_bounceDecay": 0.45,
-      "oblq_refractionAngle": 0.5,
-      "oblq_filterCutoff": 0.65,
-      "oblq_filterReso": 0.35,
-      "oblq_driveAmount": 0.4,
-      "oblq_reverbMix": 0.25,
-      "oblq_outputLevel": 0.82,
-      "oblq_outputPan": 0.0,
-      "oblq_couplingLevel": 0.5,
-      "oblq_couplingBus": 0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
-  }
+  },
+  "couplingIntensity": "None",
+  "description": "RTJ-bounce refraction at full color — prismatic attack with midrange punch and moderate aggression. The beat bounces off every surface.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.7,
+    "density": 0.55,
+    "movement": 0.65,
+    "space": 0.4,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Prism Core",
+  "parameters": {
+    "Oblique": {
+      "oblq_bounce": 0.6,
+      "oblq_bounceDecay": 0.45,
+      "oblq_couplingBus": 0,
+      "oblq_couplingLevel": 0.5,
+      "oblq_driveAmount": 0.4,
+      "oblq_filterCutoff": 0.65,
+      "oblq_filterReso": 0.35,
+      "oblq_outputLevel": 0.82,
+      "oblq_outputPan": 0.0,
+      "oblq_prismColor": 0.5,
+      "oblq_refractionAngle": 0.5,
+      "oblq_reverbMix": 0.25
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.5,
+    "brightness": 0.7,
+    "density": 0.55,
+    "movement": 0.65,
+    "space": 0.4,
+    "warmth": 0.45
+  },
+  "tags": [
+    "bounce",
+    "prism",
+    "midrange",
+    "foundation"
+  ],
+  "version": "1.0.0"
 }

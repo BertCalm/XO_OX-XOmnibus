@@ -1,25 +1,35 @@
 {
-  "name": "Wool Blanket",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Wool blanket of low harmonics. Heavy warmth, near-zero movement.",
   "engines": [
-    "OBLONG"
+    "Oblong"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.724,
-    "MOVEMENT": 0.018,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.018,
     "SPACE": 0.496
   },
-  "sonic_dna": {
-    "brightness": 0.487,
-    "warmth": 0.96,
-    "movement": 0.018,
-    "density": 0.83,
-    "space": 0.496,
-    "aggression": 0.09
+  "mood": "Atmosphere",
+  "name": "Wool Blanket",
+  "parameters": {
+    "Oblong": {}
   },
-  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.09,
+    "brightness": 0.487,
+    "density": 0.83,
+    "movement": 0.018,
+    "space": 0.496,
+    "warmth": 0.96
+  },
   "tags": [
     "atmosphere",
     "drone",
@@ -27,5 +37,13 @@
     "warm",
     "thick"
   ],
-  "description": "Wool blanket of low harmonics. Heavy warmth, near-zero movement."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.2
+  }
 }

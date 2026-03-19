@@ -269,7 +269,8 @@ public:
         p.push_back(std::make_unique<F>("ole_aunt2GourdSize","Gourd Size",N{0,1},0.5f));
         // Aunt 3: Charango
         p.push_back(std::make_unique<F>("ole_aunt3Level","Aunt 3 Level",N{0,1},0.7f));
-        p.push_back(std::make_unique<F>("ole_aunt3Tremolo","Aunt 3 Tremolo",N{5,25},12.0f));
+        // D005: rate floor lowered to 0.005 Hz for ultra-slow breathing modulation
+        p.push_back(std::make_unique<F>("ole_aunt3Tremolo","Aunt 3 Tremolo",N{0.005f,25.0f},12.0f));
         p.push_back(std::make_unique<F>("ole_aunt3Brightness","Aunt 3 Brightness",N{0,1},0.5f));
         // Shared waveguide
         p.push_back(std::make_unique<F>("ole_damping","Damping",N{0.8f,0.999f},0.995f));

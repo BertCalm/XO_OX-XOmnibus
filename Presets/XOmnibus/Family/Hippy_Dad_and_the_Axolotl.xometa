@@ -1,14 +1,40 @@
 {
-  "schema_version": 1,
-  "name": "Hippy Dad and the Axolotl",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Light",
+  "created": "2026-03-16",
+  "description": "OHM commune warmth + OddOscar regenerative bloom — the generational reunion. Father drone holding the room; Oscar breathing slow underneath.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.42,
+    "density": 0.55,
+    "movement": 0.3,
+    "space": 0.72,
+    "warmth": 0.82
+  },
   "engines": [
-    "OHM",
+    "Ohm",
     "OddOscar"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OHM commune warmth + OddOscar regenerative bloom \u2014 the generational reunion. Father drone holding the room; Oscar breathing slow underneath.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Hippy Dad and the Axolotl",
+  "parameters": {
+    "Ohm": {},
+    "OddOscar": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "reunion",
@@ -19,29 +45,6 @@
     "generational",
     "batch3-reunion"
   ],
-  "macroLabels": [
-    "MEDDLING",
-    "COMMUNE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Light",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.42,
-    "warmth": 0.82,
-    "movement": 0.3,
-    "density": 0.55,
-    "space": 0.72,
-    "aggression": 0.1
-  }
+  "version": "1.0.0"
 }

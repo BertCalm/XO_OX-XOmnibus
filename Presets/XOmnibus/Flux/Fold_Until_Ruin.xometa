@@ -33,7 +33,9 @@
     "space": 0.1,
     "aggression": 0.92
   },
-  "parameters": {},
+  "parameters": {
+    "Origami": {}
+  },
   "tags": [
     "flux",
     "maximum",
@@ -41,5 +43,5 @@
     "fold",
     "ruin"
   ],
-  "description": "Paper folded past its limit \u2014 vermillion crease becomes a wound."
+  "description": "Paper folded past its limit — vermillion crease becomes a wound."
 }

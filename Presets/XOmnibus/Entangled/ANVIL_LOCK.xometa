@@ -1,45 +1,56 @@
 {
-  "name": "ANVIL LOCK",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Orbital",
+        "type": "CHAOS_INJECT",
+        "amount": 0.7968
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.8459,
+    "brightness": 0.7093,
+    "density": 0.8874,
+    "movement": 0.9409,
+    "space": 0.8949,
+    "warmth": 0.346
+  },
   "engines": [
-    "ONSET",
-    "ORBITAL"
+    "Onset",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2506,
+    "COUPLING": 0.8653,
+    "MOVEMENT": 0.6351,
+    "SPACE": 0.1252
+  },
+  "mood": "Entangled",
+  "name": "ANVIL LOCK",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.182,
-      "macro_movement": 0.9663,
       "macro_coupling": 0.773,
+      "macro_movement": 0.9663,
       "macro_space": 0.9107
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.0554,
-      "macro_movement": 0.1242,
       "macro_coupling": 0.6612,
+      "macro_movement": 0.1242,
       "macro_space": 0.1647
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ONSET",
-    "target": "ORBITAL",
-    "amount": 0.7968
-  },
-  "dna": {
-    "brightness": 0.7093,
-    "warmth": 0.346,
-    "movement": 0.9409,
-    "density": 0.8874,
-    "space": 0.8949,
-    "aggression": 0.8459
-  },
-  "macros": {
-    "CHARACTER": 0.2506,
-    "MOVEMENT": 0.6351,
-    "COUPLING": 0.8653,
-    "SPACE": 0.1252
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -49,5 +60,6 @@
     "heavy",
     "dark",
     "deep"
-  ]
+  ],
+  "version": "1.0"
 }

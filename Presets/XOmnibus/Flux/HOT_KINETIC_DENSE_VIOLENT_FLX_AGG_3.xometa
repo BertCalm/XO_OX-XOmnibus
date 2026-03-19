@@ -1,50 +1,62 @@
 {
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FLX_AGG_3",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERWORLD",
-    "OPTIC"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.616,
-      "macro_movement": 0.921,
-      "macro_coupling": 0.93,
-      "macro_space": 0.502
-    },
-    "OPTIC": {
-      "macro_character": 0.502,
-      "macro_movement": 0.914,
-      "macro_coupling": 0.89,
-      "macro_space": 0.501
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OVERWORLD",
-    "target": "OPTIC",
-    "amount": 0.882
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Optic",
+        "type": "CHAOS_INJECT",
+        "amount": 0.882
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.893,
     "brightness": 0.503,
-    "warmth": 0.95,
-    "movement": 0.909,
     "density": 0.954,
+    "movement": 0.909,
     "space": 0.522,
-    "aggression": 0.893
+    "warmth": 0.95
   },
+  "engines": [
+    "Overworld",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.559,
-    "MOVEMENT": 0.909,
     "COUPLING": 0.93,
+    "MOVEMENT": 0.909,
     "SPACE": 0.522
   },
+  "mood": "Flux",
+  "name": "Flux Titan 3",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.502,
+      "macro_coupling": 0.89,
+      "macro_movement": 0.914,
+      "macro_space": 0.501
+    },
+    "Overworld": {
+      "macro_character": 0.616,
+      "macro_coupling": 0.93,
+      "macro_movement": 0.921,
+      "macro_space": 0.502
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "kinetic",
     "hot",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

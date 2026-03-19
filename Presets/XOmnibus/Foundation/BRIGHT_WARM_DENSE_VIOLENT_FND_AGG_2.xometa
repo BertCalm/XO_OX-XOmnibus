@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_DENSE_VIOLENT_FND_AGG_2",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ORACLE",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.713,
-      "macro_movement": 0.781,
-      "macro_coupling": 0.472,
-      "macro_space": 0.731
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.689,
-      "macro_movement": 0.78,
-      "macro_coupling": 0.513,
-      "macro_space": 0.766
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORACLE",
-    "target": "ODDOSCAR",
-    "amount": 0.884
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "OddOscar",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.884
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.903,
     "brightness": 0.983,
-    "warmth": 0.886,
-    "movement": 0.346,
     "density": 0.883,
+    "movement": 0.346,
     "space": 0.521,
-    "aggression": 0.903
+    "warmth": 0.886
   },
+  "engines": [
+    "Oracle",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.713,
-    "MOVEMENT": 0.781,
     "COUPLING": 0.472,
+    "MOVEMENT": 0.781,
     "SPACE": 0.731
   },
+  "mood": "Foundation",
+  "name": "Solar Rage",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.689,
+      "macro_coupling": 0.513,
+      "macro_movement": 0.78,
+      "macro_space": 0.766
+    },
+    "Oracle": {
+      "macro_character": 0.713,
+      "macro_coupling": 0.472,
+      "macro_movement": 0.781,
+      "macro_space": 0.731
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "bright",
     "warm",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

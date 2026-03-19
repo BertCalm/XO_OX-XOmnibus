@@ -1,45 +1,56 @@
 {
-  "name": "DARK VAST KINETIC PRI 13",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OTTONI",
-    "OSPREY"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.326,
-      "macro_movement": 0.957,
-      "macro_coupling": 0.558,
-      "macro_space": 0.957
-    },
-    "OSPREY": {
-      "macro_character": 0.404,
-      "macro_movement": 1.0,
-      "macro_coupling": 0.62,
-      "macro_space": 0.828
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OTTONI",
-    "target": "OSPREY",
-    "amount": 0.852
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Osprey",
+        "type": "PITCH_SYNC",
+        "amount": 0.852
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.452,
     "brightness": 0.092,
-    "warmth": 0.56,
-    "movement": 0.957,
     "density": 0.641,
+    "movement": 0.957,
     "space": 0.957,
-    "aggression": 0.452
+    "warmth": 0.56
   },
+  "engines": [
+    "Ottoni",
+    "Osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.326,
-    "MOVEMENT": 0.957,
     "COUPLING": 0.558,
+    "MOVEMENT": 0.957,
     "SPACE": 0.957
   },
+  "mood": "Prism",
+  "name": "DARK VAST KINETIC PRI 13",
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.404,
+      "macro_coupling": 0.62,
+      "macro_movement": 1.0,
+      "macro_space": 0.828
+    },
+    "Ottoni": {
+      "macro_character": 0.326,
+      "macro_coupling": 0.558,
+      "macro_movement": 0.957,
+      "macro_space": 0.957
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
@@ -47,5 +58,6 @@
     "kinetic",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

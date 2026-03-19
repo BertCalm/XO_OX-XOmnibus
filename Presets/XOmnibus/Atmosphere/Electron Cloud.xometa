@@ -1,25 +1,35 @@
 {
-  "name": "Electron Cloud",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Signal burn across a dark monitor. Phosphor memory of sound already gone.",
   "engines": [
-    "OSTERIA"
+    "Osteria"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.461,
-    "MOVEMENT": 0.505,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.505,
     "SPACE": 0.606
   },
-  "sonic_dna": {
-    "brightness": 0.803,
-    "warmth": 0.119,
-    "movement": 0.505,
-    "density": 0.337,
-    "space": 0.606,
-    "aggression": 0.165
+  "mood": "Atmosphere",
+  "name": "Electron Cloud",
+  "parameters": {
+    "Osteria": {}
   },
-  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.165,
+    "brightness": 0.803,
+    "density": 0.337,
+    "movement": 0.505,
+    "space": 0.606,
+    "warmth": 0.119
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +37,13 @@
     "electric",
     "phosphor"
   ],
-  "description": "Signal burn across a dark monitor. Phosphor memory of sound already gone."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.2
+  }
 }

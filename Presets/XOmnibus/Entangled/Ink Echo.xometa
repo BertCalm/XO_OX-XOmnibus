@@ -1,31 +1,46 @@
 {
-  "name": "Ink Echo",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Overdub",
+        "type": "NEURAL_WEAVE",
+        "amount": 0.7
+      }
+    ]
+  },
+  "description": "Octopus ink cloud swallows the spring reverb — dub warmth diffusing through dark water",
   "engines": [
-    "OVERDUB",
-    "OCTOPUS"
+    "Overdub",
+    "Octopus"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.4,
     "COUPLING": 0.7,
+    "MOVEMENT": 0.4,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.44,
-    "warmth": 0.61,
-    "movement": 0.59,
-    "density": 0.64,
-    "space": 0.53,
-    "aggression": 0.43
+  "mood": "Entangled",
+  "name": "Ink Echo",
+  "parameters": {
+    "Overdub": {},
+    "Octopus": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "NEURAL_WEAVE",
-    "source": "OCTOPUS",
-    "target": "OVERDUB",
-    "amount": 0.7
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.43,
+    "brightness": 0.44,
+    "density": 0.64,
+    "movement": 0.59,
+    "space": 0.53,
+    "warmth": 0.61
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "octopus",
     "dub"
   ],
-  "description": "Octopus ink cloud swallows the spring reverb \u2014 dub warmth diffusing through dark water"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

@@ -1,31 +1,46 @@
 {
-  "name": "Patina Shimmer",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Opal",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.6
+      }
+    ]
+  },
+  "description": "Ottoni density grounds the opal grain field — brass weight settling the shimmer cloud",
   "engines": [
-    "OPAL",
-    "OTTONI"
+    "Opal",
+    "Ottoni"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.45,
-    "MOVEMENT": 0.6,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.6,
     "SPACE": 0.7
   },
-  "sonic_dna": {
-    "brightness": 0.56,
-    "warmth": 0.57,
-    "movement": 0.56,
-    "density": 0.58,
-    "space": 0.62,
-    "aggression": 0.36
+  "mood": "Entangled",
+  "name": "Patina Shimmer",
+  "parameters": {
+    "Opal": {},
+    "Ottoni": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "HARMONIC_BLEND",
-    "source": "OTTONI",
-    "target": "OPAL",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.36,
+    "brightness": 0.56,
+    "density": 0.58,
+    "movement": 0.56,
+    "space": 0.62,
+    "warmth": 0.57
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "ottoni",
     "granular"
   ],
-  "description": "Ottoni density grounds the opal grain field \u2014 brass weight settling the shimmer cloud"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

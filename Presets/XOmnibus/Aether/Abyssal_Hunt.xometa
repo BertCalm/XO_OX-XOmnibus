@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Abyssal Hunt",
-  "mood": "Aether",
-  "sonic_dna": {
-    "brightness": 0.02,
-    "warmth": 0.7,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Maximum depth pursuit — bass frequencies only",
+  "dna": {
     "aggression": 0.65,
-    "movement": 0.45,
+    "brightness": 0.02,
     "density": 0.75,
-    "space": 0.35
+    "movement": 0.45,
+    "space": 0.35,
+    "warmth": 0.7
   },
   "engines": [
-    "ORCA"
+    "Orca"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Maximum depth pursuit \u2014 bass frequencies only",
+  "macroLabels": [
+    "HUNT",
+    "DIVE",
+    "COUPLING",
+    "DEPTH"
+  ],
+  "mood": "Aether",
+  "name": "Abyssal Hunt",
+  "parameters": {
+    "Orca": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.65,
+    "brightness": 0.02,
+    "density": 0.75,
+    "movement": 0.45,
+    "space": 0.35,
+    "warmth": 0.7
+  },
   "tags": [
     "aether",
     "dark",
@@ -24,23 +44,5 @@
     "abyssal",
     "predator"
   ],
-  "macroLabels": [
-    "HUNT",
-    "DIVE",
-    "COUPLING",
-    "DEPTH"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.02,
-    "warmth": 0.7,
-    "movement": 0.45,
-    "density": 0.75,
-    "space": 0.35,
-    "aggression": 0.65
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

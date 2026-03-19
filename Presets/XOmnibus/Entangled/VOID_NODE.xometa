@@ -1,49 +1,61 @@
 {
-  "name": "VOID NODE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overlap",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.9926
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.4665,
+    "brightness": 0.1308,
+    "density": 0.9097,
+    "movement": 0.5617,
+    "space": 0.3191,
+    "warmth": 0.3705
+  },
   "engines": [
-    "OUROBOROS",
-    "OVERLAP"
+    "Ouroboros",
+    "Overlap"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2675,
+    "COUPLING": 0.729,
+    "MOVEMENT": 0.2479,
+    "SPACE": 0.2902
+  },
+  "mood": "Entangled",
+  "name": "VOID NODE",
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.4396,
-      "macro_movement": 0.4843,
       "macro_coupling": 0.6816,
+      "macro_movement": 0.4843,
       "macro_space": 0.6067
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.3126,
-      "macro_movement": 0.7184,
       "macro_coupling": 0.8937,
+      "macro_movement": 0.7184,
       "macro_space": 0.8608
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OUROBOROS",
-    "target": "OVERLAP",
-    "amount": 0.9926
-  },
-  "dna": {
-    "brightness": 0.1308,
-    "warmth": 0.3705,
-    "movement": 0.5617,
-    "density": 0.9097,
-    "space": 0.3191,
-    "aggression": 0.4665
-  },
-  "macros": {
-    "CHARACTER": 0.2675,
-    "MOVEMENT": 0.2479,
-    "COUPLING": 0.729,
-    "SPACE": 0.2902
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stacked",
     "dense",
     "crushing"
-  ]
+  ],
+  "version": "1.0"
 }

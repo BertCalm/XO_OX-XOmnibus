@@ -1,48 +1,60 @@
 {
-  "name": "ARRESTED POINT",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERBITE",
-    "ORCA"
-  ],
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.034,
-      "macro_movement": 0.088,
-      "macro_coupling": 0.98,
-      "macro_space": 0.571
-    },
-    "ORCA": {
-      "macro_character": 0.567,
-      "macro_movement": 0.112,
-      "macro_coupling": 0.395,
-      "macro_space": 0.054
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OVERBITE",
-    "target": "ORCA",
-    "amount": 0.886
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Orca",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.886
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.643,
     "brightness": 0.996,
-    "warmth": 0.335,
-    "movement": 0.1,
     "density": 0.345,
+    "movement": 0.1,
     "space": 0.392,
-    "aggression": 0.643
+    "warmth": 0.335
   },
+  "engines": [
+    "Overbite",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.343,
-    "MOVEMENT": 0.1,
     "COUPLING": 0.903,
+    "MOVEMENT": 0.1,
     "SPACE": 0.856
   },
+  "mood": "Entangled",
+  "name": "ARRESTED POINT",
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.567,
+      "macro_coupling": 0.395,
+      "macro_movement": 0.112,
+      "macro_space": 0.054
+    },
+    "Overbite": {
+      "macro_character": 0.034,
+      "macro_coupling": 0.98,
+      "macro_movement": 0.088,
+      "macro_space": 0.571
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "arrested"
-  ]
+  ],
+  "version": "1.0"
 }

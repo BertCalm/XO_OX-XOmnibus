@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_COLD_DENSE_INTIMATE_FAM_VOL_40",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OLE",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "OLE": {
-      "macro_character": 0.481,
-      "macro_movement": 0.641,
-      "macro_coupling": 0.668,
-      "macro_space": 0.136
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.534,
-      "macro_movement": 0.637,
-      "macro_coupling": 0.654,
-      "macro_space": 0.105
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ODDOSCAR",
-    "target": "OLE",
-    "amount": 0.626
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ole",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.626
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.376,
     "brightness": 0.952,
-    "warmth": 0.069,
-    "movement": 0.612,
     "density": 0.977,
+    "movement": 0.612,
     "space": 0.129,
-    "aggression": 0.376
+    "warmth": 0.069
   },
+  "engines": [
+    "Ole",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.508,
-    "MOVEMENT": 0.639,
     "COUPLING": 0.661,
+    "MOVEMENT": 0.639,
     "SPACE": 0.12
   },
+  "mood": "Family",
+  "name": "Glass Massive 3",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.534,
+      "macro_coupling": 0.654,
+      "macro_movement": 0.637,
+      "macro_space": 0.105
+    },
+    "Ole": {
+      "macro_character": 0.481,
+      "macro_coupling": 0.668,
+      "macro_movement": 0.641,
+      "macro_space": 0.136
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "dense",
     "intimate",
     "cool"
-  ]
+  ],
+  "version": "1.0"
 }

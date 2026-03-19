@@ -1,31 +1,46 @@
 {
-  "name": "Voyage Stalk",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Odyssey",
+        "type": "PREDATOR_STALK",
+        "amount": 0.7
+      }
+    ]
+  },
+  "description": "Predatory tension threads through drifting harmonics — the journey watched from the dark",
   "engines": [
-    "ODYSSEY",
-    "OCELOT"
+    "Odyssey",
+    "Ocelot"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.6,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.7,
+    "MOVEMENT": 0.65,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.59,
-    "warmth": 0.52,
-    "movement": 0.69,
-    "density": 0.55,
-    "space": 0.54,
-    "aggression": 0.49
+  "mood": "Entangled",
+  "name": "Voyage Stalk",
+  "parameters": {
+    "Odyssey": {},
+    "Ocelot": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "PREDATOR_STALK",
-    "source": "OCELOT",
-    "target": "ODYSSEY",
-    "amount": 0.7
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.49,
+    "brightness": 0.59,
+    "density": 0.55,
+    "movement": 0.69,
+    "space": 0.54,
+    "warmth": 0.52
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "ocelot",
     "wavetable"
   ],
-  "description": "Predatory tension threads through drifting harmonics \u2014 the journey watched from the dark"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

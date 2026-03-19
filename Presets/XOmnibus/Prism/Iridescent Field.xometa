@@ -1,13 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Iridescent Field",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Oblique light strikes thin film — iridescent interference patterns bloom.",
+  "dna": {
+    "aggression": 0.18,
+    "brightness": 0.85,
+    "density": 0.35,
+    "movement": 0.32,
+    "space": 0.75,
+    "warmth": 0.25
+  },
   "engines": [
     "Oblique"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Oblique light strikes thin film — iridescent interference patterns bloom.",
+  "legacy": {
+    "sourceCategory": "Prism",
+    "sourceInstrument": "Oblique",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Iridescent Field",
+  "parameters": {
+    "Oblique": {
+      "oblique_ampAttack": 0.0098,
+      "oblique_ampDecay": 0.963,
+      "oblique_ampRelease": 1.9,
+      "oblique_ampSustain": 0.738,
+      "oblique_angle": 0.595,
+      "oblique_filterCutoff": 14700.0,
+      "oblique_filterReso": 0.16,
+      "oblique_harmonicDrift": 0.16,
+      "oblique_level": 0.79,
+      "oblique_lfoDepth": 0.096,
+      "oblique_lfoRate": 1.816,
+      "oblique_macroCharacter": 0.663,
+      "oblique_macroCoupling": 0.0,
+      "oblique_macroMovement": 0.32,
+      "oblique_macroSpace": 0.75,
+      "oblique_reverbMix": 0.525,
+      "oblique_stereoWidth": 0.815
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "spectral",
     "iridescent",
@@ -15,49 +58,6 @@
     "prismatic",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": "Oblique",
-    "sourceCategory": "Prism",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oblique": {
-      "oblique_angle": 0.595,
-      "oblique_harmonicDrift": 0.16,
-      "oblique_lfoRate": 1.816,
-      "oblique_lfoDepth": 0.096,
-      "oblique_filterCutoff": 14700.0,
-      "oblique_filterReso": 0.16,
-      "oblique_reverbMix": 0.525,
-      "oblique_ampAttack": 0.0098,
-      "oblique_ampDecay": 0.963,
-      "oblique_ampSustain": 0.738,
-      "oblique_ampRelease": 1.9,
-      "oblique_stereoWidth": 0.815,
-      "oblique_level": 0.79,
-      "oblique_macroCharacter": 0.663,
-      "oblique_macroMovement": 0.32,
-      "oblique_macroCoupling": 0.0,
-      "oblique_macroSpace": 0.75
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.85,
-    "warmth": 0.25,
-    "movement": 0.32,
-    "density": 0.35,
-    "space": 0.75,
-    "aggression": 0.18
-  }
+  "version": "1.0.0"
 }

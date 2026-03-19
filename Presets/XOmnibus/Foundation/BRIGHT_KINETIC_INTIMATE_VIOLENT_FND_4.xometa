@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_FND_4",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OVERBITE",
-    "ORIGAMI"
-  ],
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.521,
-      "macro_movement": 0.142,
-      "macro_coupling": 0.829,
-      "macro_space": 0.347
-    },
-    "ORIGAMI": {
-      "macro_character": 0.576,
-      "macro_movement": 0.305,
-      "macro_coupling": 0.729,
-      "macro_space": 0.2
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OVERBITE",
-    "target": "ORIGAMI",
-    "amount": 0.817
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.817
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.862,
     "brightness": 0.917,
-    "warmth": 0.662,
-    "movement": 0.877,
     "density": 0.535,
+    "movement": 0.877,
     "space": 0.068,
-    "aggression": 0.862
+    "warmth": 0.662
   },
+  "engines": [
+    "Overbite",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.22,
-    "MOVEMENT": 0.81,
     "COUPLING": 0.776,
+    "MOVEMENT": 0.81,
     "SPACE": 0.839
   },
+  "mood": "Foundation",
+  "name": "Sunrise Surge",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.576,
+      "macro_coupling": 0.729,
+      "macro_movement": 0.305,
+      "macro_space": 0.2
+    },
+    "Overbite": {
+      "macro_character": 0.521,
+      "macro_coupling": 0.829,
+      "macro_movement": 0.142,
+      "macro_space": 0.347
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -48,5 +59,6 @@
     "intimate",
     "violent",
     "aggressive"
-  ]
+  ],
+  "version": "1.0"
 }

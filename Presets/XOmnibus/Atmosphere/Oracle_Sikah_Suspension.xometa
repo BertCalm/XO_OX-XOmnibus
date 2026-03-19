@@ -1,58 +1,80 @@
 {
-  "schema_version": 1,
-  "name": "Sikah Suspension",
-  "mood": "Atmosphere",
-  "engines": ["Oracle"],
-  "author": "Guru Bin — Atmosphere Deepening 2026-03-16",
-  "version": "1.0.0",
-  "description": "Maqam Sikah (maqam 3) — the neutral third, neither major nor minor, hovering between worlds. GENDY's random walk with very slow timeStep (0.02) means the stochastic path barely moves; each particle drifts like incense smoke. High gravity (0.8) draws notes toward the tonic but never resolves them. The prophecy hangs suspended in the air — neither spoken nor silent.",
-  "tags": ["sikah", "maqam", "neutral-third", "sustained", "prophecy", "stochastic", "hovering", "drone"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-16",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "description": "Maqam Sikah (maqam 3) — the neutral third, neither major nor minor, hovering between worlds. GENDY's random walk with very slow timeStep (0.02) means the stochastic path barely moves; each particle drifts like incense smoke. High gravity (0.8) draws notes toward the tonic but never resolves them. The prophecy hangs suspended in the air — neither spoken nor silent.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.32,
+    "density": 0.55,
+    "movement": 0.22,
+    "space": 0.85,
+    "warmth": 0.72
+  },
+  "engines": [
+    "Oracle"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
+  "mood": "Atmosphere",
+  "name": "Sikah Suspension",
   "parameters": {
     "Oracle": {
-      "oracle_breakpoints": 16,
-      "oracle_timeStep": 0.02,
-      "oracle_ampStep": 0.08,
-      "oracle_distribution": 0.62,
-      "oracle_barrierElasticity": 0.72,
-      "oracle_maqam": 3,
-      "oracle_gravity": 0.80,
-      "oracle_drift": 0.18,
-      "oracle_level": 0.78,
       "oracle_ampAttack": 1.8,
       "oracle_ampDecay": 1.2,
-      "oracle_ampSustain": 0.95,
       "oracle_ampRelease": 5.5,
-      "oracle_stochEnvAttack": 0.60,
-      "oracle_stochEnvDecay": 2.0,
-      "oracle_stochEnvSustain": 0.90,
-      "oracle_stochEnvRelease": 4.0,
-      "oracle_lfo1Rate": 0.015,
-      "oracle_lfo1Depth": 0.10,
-      "oracle_lfo1Shape": 0,
-      "oracle_lfo2Rate": 0.008,
-      "oracle_lfo2Depth": 0.06,
-      "oracle_lfo2Shape": 0,
-      "oracle_voiceMode": 2,
+      "oracle_ampStep": 0.08,
+      "oracle_ampSustain": 0.95,
+      "oracle_barrierElasticity": 0.72,
+      "oracle_breakpoints": 16,
+      "oracle_distribution": 0.62,
+      "oracle_drift": 0.18,
       "oracle_glide": 0.12,
-      "oracle_macroProphecy": 0.0,
+      "oracle_gravity": 0.8,
+      "oracle_level": 0.78,
+      "oracle_lfo1Depth": 0.1,
+      "oracle_lfo1Rate": 0.015,
+      "oracle_lfo1Shape": 0,
+      "oracle_lfo2Depth": 0.06,
+      "oracle_lfo2Rate": 0.008,
+      "oracle_lfo2Shape": 0,
+      "oracle_macroDrift": 0.0,
       "oracle_macroEvolution": 0.0,
       "oracle_macroGravity": 0.0,
-      "oracle_macroDrift": 0.0
+      "oracle_macroProphecy": 0.0,
+      "oracle_maqam": 3,
+      "oracle_stochEnvAttack": 0.6,
+      "oracle_stochEnvDecay": 2.0,
+      "oracle_stochEnvRelease": 4.0,
+      "oracle_stochEnvSustain": 0.9,
+      "oracle_timeStep": 0.02,
+      "oracle_voiceMode": 2
     }
   },
-  "coupling": { "pairs": [] },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.32,
-    "warmth": 0.72,
-    "movement": 0.22,
-    "density": 0.55,
-    "space": 0.85,
-    "aggression": 0.08
-  }
+  "tags": [
+    "sikah",
+    "maqam",
+    "neutral-third",
+    "sustained",
+    "prophecy",
+    "stochastic",
+    "hovering",
+    "drone"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

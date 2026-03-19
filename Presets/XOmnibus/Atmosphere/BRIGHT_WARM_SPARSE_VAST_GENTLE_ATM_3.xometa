@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_ATM_3",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORGANON",
-    "OPAL"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.9161,
-      "macro_movement": 0.3868,
-      "macro_coupling": 0.1266,
-      "macro_space": 0.9546
-    },
-    "OPAL": {
-      "macro_character": 0.9334,
-      "macro_movement": 0.3346,
-      "macro_coupling": 0.1266,
-      "macro_space": 0.9615
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORGANON",
-    "target": "OPAL",
-    "amount": 0.578
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Opal",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.578
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.1056,
     "brightness": 0.9467,
-    "warmth": 0.9431,
-    "movement": 0.3611,
     "density": 0.1039,
+    "movement": 0.3611,
     "space": 0.9347,
-    "aggression": 0.1056
+    "warmth": 0.9431
   },
+  "engines": [
+    "Organon",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.9247,
-    "MOVEMENT": 0.3607,
     "COUPLING": 0.1266,
+    "MOVEMENT": 0.3607,
     "SPACE": 0.9581
   },
+  "mood": "Atmosphere",
+  "name": "Peach Cavern",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.9334,
+      "macro_coupling": 0.1266,
+      "macro_movement": 0.3346,
+      "macro_space": 0.9615
+    },
+    "Organon": {
+      "macro_character": 0.9161,
+      "macro_coupling": 0.1266,
+      "macro_movement": 0.3868,
+      "macro_space": 0.9546
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
@@ -47,5 +58,6 @@
     "sparse",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

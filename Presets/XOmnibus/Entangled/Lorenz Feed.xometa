@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "name": "Lorenz Feed",
-  "mood": "Entangled",
+  "mood": "Flux",
   "engines": [
     "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Maximum injection \u2014 external audio drives the ODE completely.",
+  "description": "Maximum injection — external audio drives the ODE completely.",
   "tags": [
     "coupling",
     "feed",

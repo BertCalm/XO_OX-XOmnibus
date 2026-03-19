@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Deep Column",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OCEANIC full depth — pressure present, swell resonant. The water column in its most oceanic state: vast, dark, alive.",
+  "dna": {
+    "aggression": 0.18,
+    "brightness": 0.42,
+    "density": 0.58,
+    "movement": 0.75,
+    "space": 0.88,
+    "warmth": 0.65
+  },
   "engines": [
-    "OCEANIC"
+    "Oceanic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OCEANIC full depth \u2014 pressure present, swell resonant. The water column in its most oceanic state: vast, dark, alive.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "DEPTH",
+    "SWELL",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Deep Column",
+  "parameters": {
+    "Oceanic": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "signature",
@@ -18,29 +43,6 @@
     "vast",
     "batch1-signatures"
   ],
-  "macroLabels": [
-    "DEPTH",
-    "SWELL",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.42,
-    "warmth": 0.65,
-    "movement": 0.75,
-    "density": 0.58,
-    "space": 0.88,
-    "aggression": 0.18
-  }
+  "version": "1.0.0"
 }

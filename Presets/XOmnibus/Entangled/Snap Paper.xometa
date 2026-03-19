@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Snap Paper",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.57,
+    "pairs": [
+      {
+        "amount": 0.57,
+        "engineA": "Overbite",
+        "engineB": "Origami",
+        "type": "Filter->Drive"
+      }
+    ],
+    "type": "Filter->Drive"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OVERBITE fang creases ORIGAMI fold. Bass-crisp edge. [Filter->Drive]",
+  "dna": {
+    "aggression": 0.611,
     "brightness": 0.599,
-    "warmth": 0.583,
-    "movement": 0.599,
     "density": 0.608,
+    "movement": 0.599,
     "space": 0.537,
-    "aggression": 0.611
+    "warmth": 0.583
   },
   "engines": [
-    "XOverbite",
-    "XOrigami"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE fang creases ORIGAMI fold. Bass-crisp edge. [Filter->Drive]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "overbite",
-    "origami",
-    "bite"
+    "Overbite",
+    "Origami"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.599,
-    "warmth": 0.583,
-    "movement": 0.599,
-    "density": 0.608,
-    "space": 0.537,
-    "aggression": 0.611
-  },
+  "mood": "Entangled",
+  "name": "Snap Paper",
   "parameters": {
-    "XOverbite": {
-      "poss_outputLevel": 0.89,
-      "poss_outputPan": 0.02,
-      "poss_couplingLevel": 0.68,
-      "poss_couplingBus": 0,
-      "poss_brightness": 0.497,
-      "poss_warmth": 0.648,
-      "poss_aggression": 0.609
-    },
-    "XOrigami": {
+    "Origami": {
+      "ori_aggression": 0.561,
+      "ori_brightness": 0.641,
+      "ori_couplingBus": 0,
+      "ori_couplingLevel": 0.59,
       "ori_outputLevel": 0.77,
       "ori_outputPan": -0.04,
-      "ori_couplingLevel": 0.59,
-      "ori_couplingBus": 0,
-      "ori_brightness": 0.641,
-      "ori_warmth": 0.505,
-      "ori_aggression": 0.561
+      "ori_warmth": 0.505
+    },
+    "Overbite": {
+      "poss_aggression": 0.609,
+      "poss_brightness": 0.497,
+      "poss_couplingBus": 0,
+      "poss_couplingLevel": 0.68,
+      "poss_outputLevel": 0.89,
+      "poss_outputPan": 0.02,
+      "poss_warmth": 0.648
     }
   },
-  "coupling": {
-    "type": "Filter->Drive",
-    "amount": 0.57,
-    "pairs": [
-      {
-        "engineA": "XOverbite",
-        "engineB": "XOrigami",
-        "type": "Filter->Drive",
-        "amount": 0.57
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.611,
+    "brightness": 0.599,
+    "density": 0.608,
+    "movement": 0.599,
+    "space": 0.537,
+    "warmth": 0.583
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "overbite",
+    "origami",
+    "bite"
+  ],
+  "version": "1.0.0"
 }

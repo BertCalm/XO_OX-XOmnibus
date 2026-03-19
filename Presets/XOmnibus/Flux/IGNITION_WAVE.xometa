@@ -1,49 +1,61 @@
 {
-  "name": "IGNITION WAVE",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Overbite",
+        "type": "PITCH_SYNC",
+        "amount": 0.609
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.359,
+    "brightness": 0.654,
+    "density": 0.454,
+    "movement": 0.936,
+    "space": 0.46,
+    "warmth": 0.919
+  },
   "engines": [
-    "OPAL",
-    "OVERBITE"
+    "Opal",
+    "Overbite"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.477,
+    "COUPLING": 0.813,
+    "MOVEMENT": 0.791,
+    "SPACE": 0.486
+  },
+  "mood": "Flux",
+  "name": "IGNITION WAVE",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.477,
-      "macro_movement": 0.791,
       "macro_coupling": 0.813,
+      "macro_movement": 0.791,
       "macro_space": 0.486
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.595,
-      "macro_movement": 0.899,
       "macro_coupling": 0.929,
+      "macro_movement": 0.899,
       "macro_space": 0.57
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OPAL",
-    "target": "OVERBITE",
-    "amount": 0.609
-  },
-  "dna": {
-    "brightness": 0.654,
-    "warmth": 0.919,
-    "movement": 0.936,
-    "density": 0.454,
-    "space": 0.46,
-    "aggression": 0.359
-  },
-  "macros": {
-    "CHARACTER": 0.477,
-    "MOVEMENT": 0.791,
-    "COUPLING": 0.813,
-    "SPACE": 0.486
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "warm",
     "kinetic",
     "movement"
-  ]
+  ],
+  "version": "1.0"
 }

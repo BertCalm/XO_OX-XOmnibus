@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_COLD_SPARSE_VAST_FND_4",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OVERWORLD",
-    "ONSET"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.202,
-      "macro_movement": 0.839,
-      "macro_coupling": 0.699,
-      "macro_space": 0.159
-    },
-    "ONSET": {
-      "macro_character": 0.673,
-      "macro_movement": 0.252,
-      "macro_coupling": 0.689,
-      "macro_space": 0.8
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OVERWORLD",
-    "target": "ONSET",
-    "amount": 0.238
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Onset",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.238
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.644,
     "brightness": 0.974,
-    "warmth": 0.061,
-    "movement": 0.334,
     "density": 0.084,
+    "movement": 0.334,
     "space": 0.912,
-    "aggression": 0.644
+    "warmth": 0.061
   },
+  "engines": [
+    "Overworld",
+    "Onset"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.772,
-    "MOVEMENT": 0.156,
     "COUPLING": 0.4,
+    "MOVEMENT": 0.156,
     "SPACE": 0.32
   },
+  "mood": "Foundation",
+  "name": "BRIGHT_COLD_SPARSE_VAST_FND_4",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.673,
+      "macro_coupling": 0.689,
+      "macro_movement": 0.252,
+      "macro_space": 0.8
+    },
+    "Overworld": {
+      "macro_character": 0.202,
+      "macro_coupling": 0.699,
+      "macro_movement": 0.839,
+      "macro_space": 0.159
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -48,5 +59,6 @@
     "sparse",
     "vast",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

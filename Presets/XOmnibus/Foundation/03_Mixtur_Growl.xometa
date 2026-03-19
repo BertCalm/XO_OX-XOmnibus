@@ -1,26 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Mixtur Growl",
-  "mood": "Foundation",
-  "sonic_dna": {
-    "brightness": 0.3,
-    "warmth": 0.95,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "High Mixtur waveshaping drives aggressive sub-bass growl with saw-leaning subharmonics",
+  "dna": {
     "aggression": 0.35,
-    "movement": 0.2,
+    "brightness": 0.3,
     "density": 0.5,
-    "space": 0.7
+    "movement": 0.2,
+    "space": 0.7,
+    "warmth": 0.95
   },
   "engines": [
-    "XOwlfish"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "High Mixtur waveshaping drives aggressive sub-bass growl with saw-leaning subharmonics",
-  "tags": [
-    "bass",
-    "growl",
-    "aggressive",
-    "distorted"
+    "Owlfish"
   ],
   "macroLabels": [
     "DEPTH",
@@ -28,21 +22,50 @@
     "DEFENSE",
     "PRESSURE"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.3,
-    "warmth": 0.95,
-    "movement": 0.2,
-    "density": 0.5,
-    "space": 0.7,
-    "aggression": 0.35
-  },
+  "mood": "Foundation",
+  "name": "Mixtur Growl",
   "parameters": {
-    "XOwlfish": {
-      "owl_portamento": 0.08,
+    "Owlfish": {
+      "owl_ampAttack": 2,
+      "owl_ampDecay": 180,
+      "owl_ampRelease": 300,
+      "owl_ampSustain": 0.85,
+      "owl_armorDecay": 0.4,
+      "owl_armorDelay": 0.25,
+      "owl_armorDuck": 0.4,
+      "owl_armorScatter": 0.3,
+      "owl_armorThreshold": 0.8,
+      "owl_bodyFreq": 45,
+      "owl_bodyLevel": 0.55,
+      "owl_compAttack": 0.25,
+      "owl_compRatio": 0.5,
+      "owl_compRelease": 0.35,
+      "owl_compThreshold": 0.4,
+      "owl_couplingBus": 0,
+      "owl_couplingLevel": 0.5,
+      "owl_defense": 0.25,
+      "owl_depth": 0.55,
+      "owl_feedRate": 0.5,
+      "owl_feeding": 0.3,
+      "owl_filterCutoff": 0.35,
+      "owl_filterReso": 0.25,
+      "owl_filterTrack": 0.45,
+      "owl_fundWave": 0.3,
+      "owl_grainDensity": 0.0,
+      "owl_grainMix": 0.0,
+      "owl_grainPitch": 0.0,
+      "owl_grainSize": 0.3,
       "owl_legatoMode": 0,
+      "owl_mixtur": 0.85,
       "owl_morphGlide": 0.25,
-      "owl_subMix": 0.45,
+      "owl_outputLevel": 0.8,
+      "owl_outputPan": 0.0,
+      "owl_portamento": 0.08,
+      "owl_pressure": 0.6,
+      "owl_reverbDamp": 0.65,
+      "owl_reverbMix": 0.12,
+      "owl_reverbPreDelay": 0.1,
+      "owl_reverbSize": 0.2,
       "owl_subDiv1": 1,
       "owl_subDiv2": 2,
       "owl_subDiv3": 0,
@@ -51,47 +74,24 @@
       "owl_subLevel2": 0.7,
       "owl_subLevel3": 0.0,
       "owl_subLevel4": 0.0,
-      "owl_mixtur": 0.85,
-      "owl_fundWave": 0.3,
-      "owl_subWave": 0.8,
-      "owl_bodyFreq": 45,
-      "owl_bodyLevel": 0.55,
-      "owl_compRatio": 0.5,
-      "owl_compThreshold": 0.4,
-      "owl_compAttack": 0.25,
-      "owl_compRelease": 0.35,
-      "owl_filterCutoff": 0.35,
-      "owl_filterReso": 0.25,
-      "owl_filterTrack": 0.45,
-      "owl_grainSize": 0.3,
-      "owl_grainDensity": 0.0,
-      "owl_grainPitch": 0.0,
-      "owl_grainMix": 0.0,
-      "owl_feedRate": 0.5,
-      "owl_armorThreshold": 0.8,
-      "owl_armorDecay": 0.4,
-      "owl_armorScatter": 0.3,
-      "owl_armorDuck": 0.4,
-      "owl_armorDelay": 0.25,
-      "owl_reverbSize": 0.2,
-      "owl_reverbDamp": 0.65,
-      "owl_reverbPreDelay": 0.1,
-      "owl_reverbMix": 0.12,
-      "owl_ampAttack": 2,
-      "owl_ampDecay": 180,
-      "owl_ampSustain": 0.85,
-      "owl_ampRelease": 300,
-      "owl_depth": 0.55,
-      "owl_feeding": 0.3,
-      "owl_defense": 0.25,
-      "owl_pressure": 0.6,
-      "owl_outputLevel": 0.8,
-      "owl_outputPan": 0.0,
-      "owl_couplingLevel": 0.5,
-      "owl_couplingBus": 0
+      "owl_subMix": 0.45,
+      "owl_subWave": 0.8
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.35,
+    "brightness": 0.3,
+    "density": 0.5,
+    "movement": 0.2,
+    "space": 0.7,
+    "warmth": 0.95
+  },
+  "tags": [
+    "bass",
+    "growl",
+    "aggressive",
+    "distorted"
+  ],
+  "version": "1.0.0"
 }

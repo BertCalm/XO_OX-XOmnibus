@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Photon Burst",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "Ultra-bright staccato hits with crystalline decay.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.92,
+    "density": 0.3,
+    "movement": 0.3,
+    "space": 0.1,
+    "warmth": 0.08
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-bright staccato hits with crystalline decay.",
-  "tags": [
-    "photon",
-    "staccato",
-    "bright",
-    "crystalline"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Photon Burst",
   "parameters": {
     "Organon": {
-      "organon_metabolicRate": 10.0,
-      "organon_enzymeSelect": 8000.0,
       "organon_catalystDrive": 1.0,
       "organon_dampingCoeff": 0.55,
-      "organon_signalFlux": 0.6,
-      "organon_phasonShift": 0.0,
+      "organon_enzymeSelect": 8000.0,
       "organon_isotopeBalance": 0.92,
       "organon_lockIn": 0.0,
       "organon_membrane": 0.1,
-      "organon_noiseColor": 0.92
+      "organon_metabolicRate": 10.0,
+      "organon_noiseColor": 0.92,
+      "organon_phasonShift": 0.0,
+      "organon_signalFlux": 0.6
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.92,
-    "warmth": 0.08,
-    "movement": 0.3,
-    "density": 0.3,
-    "space": 0.1,
-    "aggression": 0.4
-  }
+  "tags": [
+    "photon",
+    "staccato",
+    "bright",
+    "crystalline"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT WARM KINETIC VIOLENT AET AGG 4",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Osprey",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.918
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.97,
+    "brightness": 0.91,
+    "density": 0.451,
+    "movement": 0.886,
+    "space": 0.365,
+    "warmth": 0.962
+  },
   "engines": [
-    "OPAL",
-    "OSPREY"
+    "Opal",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "COUPLING": 0.877,
+    "MOVEMENT": 0.867,
+    "SPACE": 0.349
+  },
+  "mood": "Aether",
+  "name": "BRIGHT WARM KINETIC VIOLENT...",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.893,
-      "macro_movement": 0.872,
       "macro_coupling": 0.873,
+      "macro_movement": 0.872,
       "macro_space": 0.349
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.867,
-      "macro_movement": 0.863,
       "macro_coupling": 0.881,
+      "macro_movement": 0.863,
       "macro_space": 0.349
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OPAL",
-    "target": "OSPREY",
-    "amount": 0.918
-  },
-  "dna": {
-    "brightness": 0.91,
-    "warmth": 0.962,
-    "movement": 0.886,
-    "density": 0.451,
-    "space": 0.365,
-    "aggression": 0.97
-  },
-  "macros": {
-    "CHARACTER": 0.88,
-    "MOVEMENT": 0.867,
-    "COUPLING": 0.877,
-    "SPACE": 0.349
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "aggressive",
@@ -47,5 +58,6 @@
     "violent",
     "bright",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

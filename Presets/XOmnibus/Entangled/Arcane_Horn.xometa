@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Arcane Horn",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.56,
+        "engineA": "Oracle",
+        "engineB": "Ottoni",
+        "type": "PITCH_TRACKING"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Prophecy brass fanfare. ORACLE maqam modal ascent through OTTONI triple horn.",
+  "dna": {
+    "aggression": 0.491,
+    "brightness": 0.447,
+    "density": 0.711,
+    "movement": 0.591,
+    "space": 0.588,
+    "warmth": 0.529
+  },
   "engines": [
     "Oracle",
     "Ottoni"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Prophecy brass fanfare. ORACLE maqam modal ascent through OTTONI triple horn.",
-  "tags": [
-    "oracle",
-    "ottoni",
-    "prophecy",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Arcane Horn",
   "parameters": {
     "Oracle": {
-      "oracle_brightness": 0.466,
-      "oracle_warmth": 0.55,
-      "oracle_movement": 0.771,
-      "oracle_density": 0.635,
-      "oracle_space": 0.659,
       "oracle_aggression": 0.399,
-      "oracle_level": 0.716
+      "oracle_brightness": 0.466,
+      "oracle_density": 0.635,
+      "oracle_level": 0.716,
+      "oracle_movement": 0.771,
+      "oracle_space": 0.659,
+      "oracle_warmth": 0.55
     },
     "Ottoni": {
-      "otto_brightness": 0.525,
-      "otto_warmth": 0.599,
-      "otto_movement": 0.497,
-      "otto_density": 0.685,
-      "otto_space": 0.597,
       "otto_aggression": 0.626,
-      "otto_level": 0.731
+      "otto_brightness": 0.525,
+      "otto_density": 0.685,
+      "otto_level": 0.731,
+      "otto_movement": 0.497,
+      "otto_space": 0.597,
+      "otto_warmth": 0.599
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Ottoni",
-        "type": "PITCH_TRACKING",
-        "amount": 0.56
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.447,
-    "warmth": 0.529,
-    "movement": 0.591,
-    "density": 0.711,
-    "space": 0.588,
-    "aggression": 0.491
-  }
+  "tags": [
+    "oracle",
+    "ottoni",
+    "prophecy",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

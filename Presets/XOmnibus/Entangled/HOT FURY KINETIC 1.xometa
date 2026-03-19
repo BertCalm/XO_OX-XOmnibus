@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ottoni \u00d7 OddOscar \u2014 Envelope Link coupling at extreme DNA corner.",
+  "description": "Ottoni × OddOscar — Envelope Link coupling at extreme DNA corner.",
   "tags": [
     "hot",
     "ottoni",
@@ -33,7 +33,10 @@
     "space": 0.432,
     "aggression": 0.908
   },
-  "parameters": {},
+  "parameters": {
+    "Ottoni": {},
+    "OddOscar": {}
+  },
   "coupling": {
     "pairs": [
       {

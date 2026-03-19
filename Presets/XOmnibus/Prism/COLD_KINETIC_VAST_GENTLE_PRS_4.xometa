@@ -1,50 +1,62 @@
 {
-  "name": "COLD_KINETIC_VAST_GENTLE_PRS_4",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overworld",
+        "type": "PITCH_SYNC",
+        "amount": 0.658
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.134,
+    "brightness": 0.696,
+    "density": 0.544,
+    "movement": 0.935,
+    "space": 0.949,
+    "warmth": 0.064
+  },
   "engines": [
-    "OBLIQUE",
-    "OVERWORLD"
+    "Oblique",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.415,
+    "COUPLING": 0.545,
+    "MOVEMENT": 0.935,
+    "SPACE": 0.949
+  },
+  "mood": "Prism",
+  "name": "COLD_KINETIC_VAST_GENTLE_PRS_4",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.415,
-      "macro_movement": 0.935,
       "macro_coupling": 0.545,
+      "macro_movement": 0.935,
       "macro_space": 0.949
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.219,
-      "macro_movement": 0.935,
       "macro_coupling": 0.714,
+      "macro_movement": 0.935,
       "macro_space": 0.949
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBLIQUE",
-    "target": "OVERWORLD",
-    "amount": 0.658
-  },
-  "dna": {
-    "brightness": 0.696,
-    "warmth": 0.064,
-    "movement": 0.935,
-    "density": 0.544,
-    "space": 0.949,
-    "aggression": 0.134
-  },
-  "macros": {
-    "CHARACTER": 0.415,
-    "MOVEMENT": 0.935,
-    "COUPLING": 0.545,
-    "SPACE": 0.949
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "cold",
     "kinetic",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

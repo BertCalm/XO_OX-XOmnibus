@@ -1,49 +1,61 @@
 {
-  "name": "PRESSURE BOX",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Optic",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.432
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.612,
+    "brightness": 0.389,
+    "density": 0.626,
+    "movement": 0.36,
+    "space": 0.029,
+    "warmth": 0.329
+  },
   "engines": [
-    "OPTIC",
-    "ORBITAL"
+    "Optic",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.344,
+    "COUPLING": 0.862,
+    "MOVEMENT": 0.093,
+    "SPACE": 0.029
+  },
+  "mood": "Entangled",
+  "name": "PRESSURE BOX",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.88,
-      "macro_movement": 0.488,
       "macro_coupling": 0.805,
+      "macro_movement": 0.488,
       "macro_space": 0.059
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.729,
-      "macro_movement": 0.766,
       "macro_coupling": 0.351,
+      "macro_movement": 0.766,
       "macro_space": 0.028
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORBITAL",
-    "target": "OPTIC",
-    "amount": 0.432
-  },
-  "dna": {
-    "brightness": 0.389,
-    "warmth": 0.329,
-    "movement": 0.36,
-    "density": 0.626,
-    "space": 0.029,
-    "aggression": 0.612
-  },
-  "macros": {
-    "CHARACTER": 0.344,
-    "MOVEMENT": 0.093,
-    "COUPLING": 0.862,
-    "SPACE": 0.029
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-  ]
+  ],
+  "version": "1.0"
 }

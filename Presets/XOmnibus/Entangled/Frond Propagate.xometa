@@ -1,14 +1,64 @@
 {
-  "schema_version": 1,
-  "name": "Frond Propagate",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.604,
+        "engineA": "Overlap",
+        "engineB": "Overworld",
+        "type": "PITCH_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OVERLAP bloom softens OVERWORLD ERA transitions — chip era changes wash through space",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.675,
+    "density": 0.575,
+    "movement": 0.6,
+    "space": 0.6,
+    "warmth": 0.425
+  },
   "engines": [
-    "OVERLAP",
-    "OVERWORLD"
+    "Overlap",
+    "Overworld"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERLAP bloom softens OVERWORLD ERA transitions \u2014 chip era changes wash through space",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Frond Propagate",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.699,
+      "olap_damping": 0.49,
+      "olap_decay": 0.732,
+      "olap_diffusion": 0.762,
+      "olap_earlyMix": 0.456,
+      "olap_filterCutoff": 0.784,
+      "olap_filterReso": 0.124,
+      "olap_lateMix": 0.463,
+      "olap_modDepth": 0.12,
+      "olap_modRate": 0.225,
+      "olap_outputLevel": 0.687,
+      "olap_preDelay": 0.126,
+      "olap_size": 0.937
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.35,
+    "brightness": 0.675,
+    "density": 0.575,
+    "movement": 0.6,
+    "space": 0.6,
+    "warmth": 0.425
+  },
   "tags": [
     "coupling",
     "entangled",
@@ -19,55 +69,5 @@
     "fdn",
     "reverb"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "aggression": 0.35,
-    "space": 0.6,
-    "warmth": 0.425,
-    "brightness": 0.675,
-    "density": 0.575,
-    "movement": 0.6
-  },
-  "sonic_dna": {
-    "aggression": 0.35,
-    "space": 0.6,
-    "warmth": 0.425,
-    "brightness": 0.675,
-    "density": 0.575,
-    "movement": 0.6
-  },
-  "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.937,
-      "olap_decay": 0.732,
-      "olap_damping": 0.49,
-      "olap_diffusion": 0.762,
-      "olap_modDepth": 0.12,
-      "olap_modRate": 0.225,
-      "olap_preDelay": 0.126,
-      "olap_earlyMix": 0.456,
-      "olap_lateMix": 0.463,
-      "olap_filterCutoff": 0.784,
-      "olap_filterReso": 0.124,
-      "olap_outputLevel": 0.687,
-      "olap_couplingLevel": 0.699,
-      "olap_couplingBus": 0
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERLAP",
-        "engineB": "OVERWORLD",
-        "type": "PITCH_MOD",
-        "amount": 0.604
-      }
-    ]
-  }
+  "version": "1.0.0"
 }

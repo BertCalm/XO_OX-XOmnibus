@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "STATIC GENTLE SPARSE VAST F4",
-  "mood": "Flux",
-  "sonic_dna": {
-    "brightness": 0.491,
-    "warmth": 0.577,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Harmonic",
+  "description": "Ultra-diverse Flux preset — extreme gentle aggression, extreme static movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "dna": {
     "aggression": 0.08,
-    "movement": 0.09,
+    "brightness": 0.491,
     "density": 0.067,
-    "space": 0.918
+    "movement": 0.09,
+    "space": 0.918,
+    "warmth": 0.577
   },
   "engines": [
-    "OBESE"
+    "Obese"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme gentle aggression, extreme static movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "STATIC GENTLE SPARSE VAST F4",
+  "parameters": {
+    "Obese": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.08,
+    "brightness": 0.491,
+    "density": 0.067,
+    "movement": 0.09,
+    "space": 0.918,
+    "warmth": 0.577
+  },
   "tags": [
     "gentle",
     "static",
@@ -24,25 +44,5 @@
     "flux",
     "extreme"
   ],
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "couplingIntensity": "Harmonic",
-  "dna": {
-    "brightness": 0.491,
-    "warmth": 0.577,
-    "movement": 0.09,
-    "density": 0.067,
-    "space": 0.918,
-    "aggression": 0.08
-  },
-  "parameters": {
-    "OBESE": {}
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

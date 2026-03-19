@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Crystal Enzymatic",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.48,
+        "engineA": "Obsidian",
+        "engineB": "Organon",
+        "type": "Env->Amp"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Pure mineral feeds enzymatic metabolism. Hardness becoming life.",
+  "dna": {
+    "aggression": 0.248,
+    "brightness": 0.798,
+    "density": 0.642,
+    "movement": 0.483,
+    "space": 0.6,
+    "warmth": 0.368
+  },
   "engines": [
     "Obsidian",
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Pure mineral feeds enzymatic metabolism. Hardness becoming life.",
-  "tags": [
-    "obsidian",
-    "organon",
-    "crystal",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Crystal Enzymatic",
   "parameters": {
     "Obsidian": {
-      "obsidian_brightness": 0.884,
-      "obsidian_warmth": 0.165,
-      "obsidian_movement": 0.231,
-      "obsidian_density": 0.544,
-      "obsidian_space": 0.576,
       "obsidian_aggression": 0.102,
-      "obsidian_level": 0.836
+      "obsidian_brightness": 0.884,
+      "obsidian_density": 0.544,
+      "obsidian_level": 0.836,
+      "obsidian_movement": 0.231,
+      "obsidian_space": 0.576,
+      "obsidian_warmth": 0.165
     },
     "Organon": {
-      "organon_brightness": 0.655,
-      "organon_warmth": 0.573,
-      "organon_movement": 0.574,
-      "organon_density": 0.81,
-      "organon_space": 0.612,
       "organon_aggression": 0.413,
-      "organon_level": 0.897
+      "organon_brightness": 0.655,
+      "organon_density": 0.81,
+      "organon_level": 0.897,
+      "organon_movement": 0.574,
+      "organon_space": 0.612,
+      "organon_warmth": 0.573
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Organon",
-        "type": "Env->Amp",
-        "amount": 0.48
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.798,
-    "warmth": 0.368,
-    "movement": 0.483,
-    "density": 0.642,
-    "space": 0.6,
-    "aggression": 0.248
-  }
+  "tags": [
+    "obsidian",
+    "organon",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

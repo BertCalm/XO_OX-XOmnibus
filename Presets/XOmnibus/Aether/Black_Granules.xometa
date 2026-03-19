@@ -1,37 +1,45 @@
 {
-  "name": "Black Granules",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.1,
+    "density": 0.22,
+    "movement": 0.38,
+    "space": 0.8,
+    "warmth": 0.15
+  },
   "engines": [
-    "OPAL"
+    "Opal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.23,
+    "COUPLING": 0.23,
+    "MOVEMENT": 0.38,
+    "SPACE": 0.8
+  },
+  "mood": "Aether",
+  "name": "Black Granules",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "opal_macro_character": 0.29,
-      "opal_macro_movement": 0.34,
       "opal_macro_coupling": 0.22,
+      "opal_macro_movement": 0.34,
       "opal_macro_space": 0.8
     }
   },
-  "dna": {
-    "brightness": 0.1,
-    "warmth": 0.15,
-    "movement": 0.38,
-    "density": 0.22,
-    "space": 0.8,
-    "aggression": 0.05
-  },
-  "macros": {
-    "CHARACTER": 0.23,
-    "MOVEMENT": 0.38,
-    "COUPLING": 0.23,
-    "SPACE": 0.8
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "dark",
     "void",
     "granular",
     "black"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Husband Entry",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Strum intensity rises with DRAMA. The husbands' oud and bouzouki approach from the hall.",
+  "dna": {
+    "aggression": 0.42,
+    "brightness": 0.39,
+    "density": 0.53,
+    "movement": 0.72,
+    "space": 0.23,
+    "warmth": 0.38
+  },
   "engines": [
     "Ole"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "latin",
-    "strummed",
-    "flux",
-    "movement",
-    "flux"
   ],
   "macroLabels": [
     "FUEGO",
@@ -20,42 +21,41 @@
     "SIDES",
     "ISLA"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.39,
-    "warmth": 0.38,
-    "movement": 0.72,
-    "density": 0.53,
-    "space": 0.23,
-    "aggression": 0.42
-  },
+  "mood": "Flux",
+  "name": "Husband Entry",
   "parameters": {
     "Ole": {
+      "ole_allianceBlend": 0.678,
+      "ole_allianceConfig": 2,
+      "ole_aunt1Brightness": 0.75,
       "ole_aunt1Level": 0.822,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.75,
-      "ole_aunt2Level": 0.585,
       "ole_aunt2CoinPress": 0.344,
       "ole_aunt2GourdSize": 0.455,
+      "ole_aunt2Level": 0.585,
+      "ole_aunt3Brightness": 0.408,
       "ole_aunt3Level": 0.611,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.408,
       "ole_damping": 0.995,
-      "ole_sympatheticAmt": 0.365,
-      "ole_driftRate": 0.126,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 2,
-      "ole_allianceBlend": 0.678,
-      "ole_husbandOudLevel": 0.35,
+      "ole_driftRate": 0.126,
       "ole_husbandBouzLevel": 0.122,
+      "ole_husbandOudLevel": 0.35,
       "ole_husbandPinLevel": 0.359,
-      "ole_macroFuego": 0.332,
       "ole_macroDrama": 0.578,
+      "ole_macroFuego": 0.332,
+      "ole_macroIsla": 0.271,
       "ole_macroSides": 0.129,
-      "ole_macroIsla": 0.271
+      "ole_sympatheticAmt": 0.365
     }
   },
-  "coupling": null,
-  "description": "Strum intensity rises with DRAMA. The husbands' oud and bouzouki approach from the hall."
+  "schema_version": 1,
+  "tags": [
+    "latin",
+    "strummed",
+    "flux",
+    "movement",
+    "flux"
+  ],
+  "version": "1.0.0"
 }

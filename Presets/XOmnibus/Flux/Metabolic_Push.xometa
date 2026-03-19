@@ -33,7 +33,9 @@
     "space": 0.29,
     "aggression": 0.63
   },
-  "parameters": {},
+  "parameters": {
+    "Organon": {}
+  },
   "tags": [
     "flux",
     "controlled",
@@ -41,5 +43,5 @@
     "metabolic",
     "push"
   ],
-  "description": "Metabolic rate elevated \u2014 variational free energy channeled into forward propulsion."
+  "description": "Metabolic rate elevated — variational free energy channeled into forward propulsion."
 }

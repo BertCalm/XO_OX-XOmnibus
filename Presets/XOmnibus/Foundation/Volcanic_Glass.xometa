@@ -1,17 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Volcanic Glass",
-  "mood": "Foundation",
-  "engines": [
-    "OBSIDIAN"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "OBSIDIAN \u2014 dark extreme brightness preset for Foundation.",
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme-brightness"
+  "dna": {
+    "aggression": 0.48,
+    "brightness": 0.04,
+    "density": 0.89,
+    "movement": 0.26,
+    "space": 0.36,
+    "warmth": 0.53
+  },
+  "engines": [
+    "Obsidian"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -19,44 +22,41 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "sonic_dna": {
-    "brightness": 0.04,
-    "warmth": 0.53,
-    "movement": 0.26,
-    "density": 0.89,
-    "space": 0.36,
-    "aggression": 0.48
-  },
-  "dna": {
-    "brightness": 0.04,
-    "warmth": 0.53,
-    "movement": 0.26,
-    "density": 0.89,
-    "space": 0.36,
-    "aggression": 0.48
-  },
+  "mood": "Foundation",
+  "name": "Volcanic Glass II",
   "parameters": {
-    "OBSIDIAN": {
-      "obs_glassResonance": 0.82,
-      "obs_filterCutoff": 0.87,
-      "obs_filterReso": 0.22,
+    "Obsidian": {
       "obs_ampAttack": 529.7,
       "obs_ampDecay": 321.8,
-      "obs_ampSustain": 0.5,
       "obs_ampRelease": 60.2,
-      "obs_lfoRate": 0.77,
-      "obs_lfoDepth": 0.35,
-      "obs_reverbMix": 0.51,
-      "obs_delayMix": 0.68,
+      "obs_ampSustain": 0.5,
       "obs_character": 0.84,
-      "obs_movement": 0.33,
-      "obs_space": 0.03,
       "obs_coupling": 0.88,
-      "obs_darkMatter": 0.26
+      "obs_darkMatter": 0.26,
+      "obs_delayMix": 0.68,
+      "obs_filterCutoff": 0.87,
+      "obs_filterReso": 0.22,
+      "obs_glassResonance": 0.82,
+      "obs_lfoDepth": 0.35,
+      "obs_lfoRate": 0.77,
+      "obs_movement": 0.33,
+      "obs_reverbMix": 0.51,
+      "obs_space": 0.03
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.48,
+    "brightness": 0.04,
+    "density": 0.89,
+    "movement": 0.26,
+    "space": 0.36,
+    "warmth": 0.53
+  },
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+  ],
+  "version": "1.0"
 }

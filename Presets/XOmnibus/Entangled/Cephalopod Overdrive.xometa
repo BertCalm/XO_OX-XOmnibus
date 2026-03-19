@@ -1,33 +1,48 @@
 {
-  "name": "Cephalopod Overdrive",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Octopus",
+        "type": "PHASE_LOCK",
+        "amount": 0.6
+      }
+    ]
+  },
+  "description": "Cephalopod intelligence at maximum overdrive — chip reality fractured by cold speed.",
   "engines": [
-    "OCTOPUS",
-    "OVERWORLD"
+    "Octopus",
+    "Overworld"
   ],
-  "mood": "Entangled",
-  "strategy": "Fast Cold",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.85,
-    "MOVEMENT": 0.98,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.98,
     "SPACE": 0.42
   },
+  "mood": "Entangled",
+  "name": "Cephalopod Overdrive",
+  "parameters": {
+    "Octopus": {},
+    "Overworld": {}
+  },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.78,
     "brightness": 0.78,
-    "warmth": 0.06,
-    "movement": 0.98,
     "density": 0.68,
+    "movement": 0.98,
     "space": 0.4,
-    "aggression": 0.78
+    "warmth": 0.06
   },
-  "parameters": {},
-  "coupling": {
-    "type": "PHASE_LOCK",
-    "source": "OVERWORLD",
-    "target": "OCTOPUS",
-    "amount": 0.6
-  },
+  "strategy": "Fast Cold",
   "tags": [
     "entangled",
     "cold",
@@ -35,5 +50,13 @@
     "aggressive",
     "overdrive"
   ],
-  "description": "Cephalopod intelligence at maximum overdrive \u2014 chip reality fractured by cold speed."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

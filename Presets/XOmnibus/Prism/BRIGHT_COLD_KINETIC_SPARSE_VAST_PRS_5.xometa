@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_COLD_KINETIC_SPARSE_VAST_PRS_5",
-  "mood": "Prism",
-  "engines": [
-    "ORIGAMI",
-    "OCELOT"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ocelot",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.868
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_KINETIC_SPARSE_VAST. Variant 5.",
+  "dna": {
+    "aggression": 0.382,
+    "brightness": 0.954,
+    "density": 0.066,
+    "movement": 0.923,
+    "space": 0.92,
+    "warmth": 0.041
+  },
+  "engines": [
+    "Origami",
+    "Ocelot"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.966,
+    "COUPLING": 0.074,
+    "MOVEMENT": 0.89,
+    "SPACE": 0.982
+  },
+  "mood": "Prism",
+  "name": "Mirror Swirl",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.972,
+      "macro_coupling": 0.148,
+      "macro_movement": 0.894,
+      "macro_space": 0.964
+    },
+    "Origami": {
+      "macro_character": 0.959,
+      "macro_coupling": 0.0,
+      "macro_movement": 0.886,
+      "macro_space": 1.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "sparse",
     "extreme",
@@ -19,53 +70,6 @@
     "vast",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.959,
-      "macro_movement": 0.886,
-      "macro_coupling": 0.0,
-      "macro_space": 1.0
-    },
-    "OCELOT": {
-      "macro_character": 0.972,
-      "macro_movement": 0.894,
-      "macro_coupling": 0.148,
-      "macro_space": 0.964
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORIGAMI",
-    "target": "OCELOT",
-    "amount": 0.868
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.954,
-    "warmth": 0.041,
-    "movement": 0.923,
-    "density": 0.066,
-    "space": 0.92,
-    "aggression": 0.382
-  },
-  "macros": {
-    "CHARACTER": 0.966,
-    "MOVEMENT": 0.89,
-    "COUPLING": 0.074,
-    "SPACE": 0.982
-  }
+  "version": "1.0.0"
 }

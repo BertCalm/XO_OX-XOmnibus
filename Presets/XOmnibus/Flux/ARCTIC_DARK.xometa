@@ -1,50 +1,62 @@
 {
-  "name": "ARCTIC DARK",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORACLE",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.242,
-      "macro_movement": 0.601,
-      "macro_coupling": 0.439,
-      "macro_space": 0.847
-    },
-    "ODDFELIX": {
-      "macro_character": 0.24,
-      "macro_movement": 0.624,
-      "macro_coupling": 0.495,
-      "macro_space": 0.743
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORACLE",
-    "target": "ODDFELIX",
-    "amount": 0.906
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "OddfeliX",
+        "type": "PITCH_SYNC",
+        "amount": 0.906
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.346,
     "brightness": 0.087,
-    "warmth": 0.071,
-    "movement": 0.686,
     "density": 0.401,
+    "movement": 0.686,
     "space": 0.953,
-    "aggression": 0.346
+    "warmth": 0.071
   },
+  "engines": [
+    "Oracle",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.242,
-    "MOVEMENT": 0.601,
     "COUPLING": 0.439,
+    "MOVEMENT": 0.601,
     "SPACE": 0.847
   },
+  "mood": "Flux",
+  "name": "ARCTIC DARK",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.24,
+      "macro_coupling": 0.495,
+      "macro_movement": 0.624,
+      "macro_space": 0.743
+    },
+    "Oracle": {
+      "macro_character": 0.242,
+      "macro_coupling": 0.439,
+      "macro_movement": 0.601,
+      "macro_space": 0.847
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "cold",
     "vast",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

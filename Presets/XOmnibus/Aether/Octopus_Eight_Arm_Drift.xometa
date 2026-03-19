@@ -1,13 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Eight Arm Drift",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Eight arms in independent motion — each one a separate oscillator drifting through the space. The CA arms never synchronize. Pure movement in warm darkness.",
+  "dna": {
+    "aggression": 0.07,
+    "brightness": 0.48,
+    "density": 0.38,
+    "movement": 0.8,
+    "space": 0.85,
+    "warmth": 0.6
+  },
   "engines": [
     "Octopus"
   ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "Eight arms in independent motion \u2014 each one a separate oscillator drifting through the space. The CA arms never synchronize. Pure movement in warm darkness.",
+  "macroLabels": [
+    "STRETCH",
+    "INK",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Eight Arm Drift",
+  "parameters": {
+    "Octopus": {
+      "octo_ampAttack": 0.3,
+      "octo_ampRelease": 4.0,
+      "octo_armDepth": 0.5,
+      "octo_filterCutoff": 0.5,
+      "octo_filterReso": 0.2,
+      "octo_inkDepth": 0.4,
+      "octo_lfoDepth": 0.7,
+      "octo_lfoRate": 0.4,
+      "octo_macroCoupling": 0.0,
+      "octo_macroInk": 0.0,
+      "octo_macroSpace": 0.0,
+      "octo_macroStretch": 0.0,
+      "octo_reverbMix": 0.78,
+      "octo_stretchAmt": 0.82
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "shifting-aether",
@@ -16,41 +52,5 @@
     "independent",
     "movement"
   ],
-  "macroLabels": [
-    "STRETCH",
-    "INK",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.48,
-    "warmth": 0.6,
-    "movement": 0.8,
-    "density": 0.38,
-    "space": 0.85,
-    "aggression": 0.07
-  },
-  "parameters": {
-    "Octopus": {
-      "octo_armDepth": 0.5,
-      "octo_stretchAmt": 0.82,
-      "octo_inkDepth": 0.4,
-      "octo_filterCutoff": 0.5,
-      "octo_filterReso": 0.2,
-      "octo_lfoRate": 0.4,
-      "octo_lfoDepth": 0.7,
-      "octo_ampAttack": 0.3,
-      "octo_ampRelease": 4.0,
-      "octo_reverbMix": 0.78,
-      "octo_macroStretch": 0.0,
-      "octo_macroInk": 0.0,
-      "octo_macroCoupling": 0.0,
-      "octo_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

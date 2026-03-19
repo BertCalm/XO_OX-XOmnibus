@@ -33,7 +33,9 @@
     "space": 0.58,
     "aggression": 0.55
   },
-  "parameters": {},
+  "parameters": {
+    "Obsidian": {}
+  },
   "tags": [
     "flux",
     "cold-flux",
@@ -41,5 +43,5 @@
     "polar",
     "vortex"
   ],
-  "description": "Obsidian in polar vortex \u2014 dark kinetic mass spinning without warmth."
+  "description": "Obsidian in polar vortex — dark kinetic mass spinning without warmth."
 }

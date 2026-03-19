@@ -1,45 +1,56 @@
 {
-  "name": "COLD_KINETIC_INTIMATE_DENSE_AET2_4",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Organon",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.8016
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.488,
+    "brightness": 0.6876,
+    "density": 0.9677,
+    "movement": 0.9896,
+    "space": 0.0549,
+    "warmth": 0.0506
+  },
   "engines": [
-    "OBLIQUE",
-    "ORGANON"
+    "Oblique",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7206,
+    "COUPLING": 0.8016,
+    "MOVEMENT": 0.9847,
+    "SPACE": 0.0549
+  },
+  "mood": "Aether",
+  "name": "Arctic Ripple",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.7091,
-      "macro_movement": 0.9794,
       "macro_coupling": 0.9793,
+      "macro_movement": 0.9794,
       "macro_space": 0.0422
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.7321,
-      "macro_movement": 0.99,
       "macro_coupling": 0.9727,
+      "macro_movement": 0.99,
       "macro_space": 0.0504
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OBLIQUE",
-    "target": "ORGANON",
-    "amount": 0.8016
-  },
-  "dna": {
-    "warmth": 0.0506,
-    "movement": 0.9896,
-    "space": 0.0549,
-    "density": 0.9677,
-    "brightness": 0.6876,
-    "aggression": 0.488
-  },
-  "macros": {
-    "CHARACTER": 0.7206,
-    "MOVEMENT": 0.9847,
-    "COUPLING": 0.8016,
-    "SPACE": 0.0549
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +60,6 @@
     "intimate",
     "dense",
     "mechanical"
-  ]
+  ],
+  "version": "1.0"
 }

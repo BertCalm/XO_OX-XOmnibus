@@ -1,49 +1,61 @@
 {
-  "name": "TUNDRA KNOT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Osteria",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.312
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.793,
+    "brightness": 0.574,
+    "density": 0.167,
+    "movement": 0.069,
+    "space": 0.443,
+    "warmth": 0.111
+  },
   "engines": [
-    "ONSET",
-    "OSTERIA"
+    "Onset",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.539,
+    "COUPLING": 0.35,
+    "MOVEMENT": 1.0,
+    "SPACE": 0.65
+  },
+  "mood": "Entangled",
+  "name": "TUNDRA KNOT",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.212,
-      "macro_movement": 0.327,
       "macro_coupling": 0.761,
+      "macro_movement": 0.327,
       "macro_space": 0.379
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.752,
-      "macro_movement": 0.832,
       "macro_coupling": 0.252,
+      "macro_movement": 0.832,
       "macro_space": 0.082
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ONSET",
-    "target": "OSTERIA",
-    "amount": 0.312
-  },
-  "dna": {
-    "brightness": 0.574,
-    "warmth": 0.111,
-    "movement": 0.069,
-    "density": 0.167,
-    "space": 0.443,
-    "aggression": 0.793
-  },
-  "macros": {
-    "CHARACTER": 0.539,
-    "MOVEMENT": 1.0,
-    "COUPLING": 0.35,
-    "SPACE": 0.65
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-  ]
+  ],
+  "version": "1.0"
 }

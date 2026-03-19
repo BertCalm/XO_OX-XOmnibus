@@ -1,19 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Void Bloom",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "A flower that blooms in vacuum. No air carries its perfume — the grain exists only as memory of itself. Maximum space, minimum presence.",
+  "dna": {
+    "aggression": 0.01,
+    "brightness": 0.76,
+    "density": 0.18,
+    "movement": 0.12,
+    "space": 0.99,
+    "warmth": 0.4
+  },
   "engines": [
     "Opal"
-  ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "A flower that blooms in vacuum. No air carries its perfume \u2014 the grain exists only as memory of itself. Maximum space, minimum presence.",
-  "tags": [
-    "aether",
-    "transcendent",
-    "granular",
-    "void",
-    "sparse"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,37 +22,36 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.76,
-    "warmth": 0.4,
-    "movement": 0.12,
-    "density": 0.18,
-    "space": 0.99,
-    "aggression": 0.01
-  },
+  "mood": "Aether",
+  "name": "Void Bloom",
   "parameters": {
     "Opal": {
-      "opal_grainSize": 0.95,
-      "opal_density": 0.08,
-      "opal_posScatter": 0.5,
-      "opal_pitchScatter": 0.03,
-      "opal_filterCutoff": 0.72,
-      "opal_filterReso": 0.08,
       "opal_ampAttack": 8.0,
       "opal_ampDecay": 1.5,
-      "opal_ampSustain": 0.9,
       "opal_ampRelease": 10.0,
-      "opal_speed": 0.4,
-      "opal_reverse": 0.0,
+      "opal_ampSustain": 0.9,
+      "opal_density": 0.08,
+      "opal_filterCutoff": 0.72,
+      "opal_filterReso": 0.08,
+      "opal_grainSize": 0.95,
       "opal_macroCharacter": 0.0,
-      "opal_macroMovement": 0.0,
       "opal_macroCoupling": 0.0,
-      "opal_macroSpace": 0.0
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitchScatter": 0.03,
+      "opal_posScatter": 0.5,
+      "opal_reverse": 0.0,
+      "opal_speed": 0.4
     }
   },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "transcendent",
+    "granular",
+    "void",
+    "sparse"
+  ],
+  "version": "1.0.0"
 }

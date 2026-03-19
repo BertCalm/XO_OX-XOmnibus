@@ -1,52 +1,62 @@
 {
-  "schema_version": 1,
-  "name": "Woven Tide",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "OVERDUB"
-  ],
-  "author": "XO_OX",
-  "macros": {
-    "CHARACTER": 0.62,
-    "MOVEMENT": 0.62,
-    "COUPLING": 0.83,
-    "SPACE": 0.61
-  },
-  "sonic_dna": {
-    "movement": 0.72,
-    "brightness": 0.5,
-    "aggression": 0.4,
-    "space": 0.61,
-    "warmth": 0.57,
-    "density": 0.61
-  },
-  "parameters": {
-    "OUTWIT": {
-      "owit_rule": 73,
-      "owit_arms": 5,
-      "owit_cellSize": 0.421,
-      "owit_density": 0.634,
-      "owit_evolveRate": 0.695,
-      "owit_mutateProb": 0.199,
-      "owit_pitchSpread": 0.58,
-      "owit_filterCutoff": 0.707,
-      "owit_filterReso": 0.314,
-      "owit_ampAttack": 0.111,
-      "owit_ampRelease": 0.503,
-      "owit_outputLevel": 0.816,
-      "owit_couplingLevel": 0.664,
-      "owit_couplingBus": 0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "GRANULAR_EXCHANGE",
-    "source": "OUTWIT",
-    "target": "OVERDUB",
-    "amount": 0.83
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Overdub",
+        "type": "GRANULAR_EXCHANGE",
+        "amount": 0.83
+      }
+    ]
   },
   "couplingIntensity": "Deep",
+  "description": "Overdub tape delay time modulates OUTWIT generation clock — temporal smear, cellular memory",
+  "engines": [
+    "Outwit",
+    "Overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.62,
+    "COUPLING": 0.83,
+    "MOVEMENT": 0.62,
+    "SPACE": 0.61
+  },
+  "mood": "Entangled",
+  "name": "Woven Tide",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.111,
+      "owit_ampRelease": 0.503,
+      "owit_arms": 5,
+      "owit_cellSize": 0.421,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.664,
+      "owit_density": 0.634,
+      "owit_evolveRate": 0.695,
+      "owit_filterCutoff": 0.707,
+      "owit_filterReso": 0.314,
+      "owit_mutateProb": 0.199,
+      "owit_outputLevel": 0.816,
+      "owit_pitchSpread": 0.58,
+      "owit_rule": 73
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4,
+    "brightness": 0.5,
+    "density": 0.61,
+    "movement": 0.72,
+    "space": 0.61,
+    "warmth": 0.57
+  },
   "tags": [
     "entangled",
     "coupling",
@@ -56,5 +66,13 @@
     "wolfram",
     "cellular-automata"
   ],
-  "description": "Overdub tape delay time modulates OUTWIT generation clock \u2014 temporal smear, cellular memory"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.707,
+    "warmth": 0.5,
+    "movement": 0.695,
+    "density": 0.634,
+    "space": 0.5,
+    "aggression": 0.111
+  }
 }

@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT HOT DENSE ENT 07",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORPHICA",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.886,
-      "macro_movement": 0.425,
-      "macro_coupling": 0.758,
-      "macro_space": 0.683
-    },
-    "ORBITAL": {
-      "macro_character": 0.943,
-      "macro_movement": 0.463,
-      "macro_coupling": 0.319,
-      "macro_space": 0.765
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ORPHICA",
-    "target": "ORBITAL",
-    "amount": 0.94
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Orbital",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.94
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.459,
     "brightness": 0.89,
-    "warmth": 0.882,
-    "movement": 0.425,
     "density": 0.941,
+    "movement": 0.425,
     "space": 0.683,
-    "aggression": 0.459
+    "warmth": 0.882
   },
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.886,
-    "MOVEMENT": 0.425,
     "COUPLING": 0.758,
+    "MOVEMENT": 0.425,
     "SPACE": 0.683
   },
+  "mood": "Entangled",
+  "name": "BRIGHT HOT DENSE ENT 07",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.943,
+      "macro_coupling": 0.319,
+      "macro_movement": 0.463,
+      "macro_space": 0.765
+    },
+    "Orphica": {
+      "macro_character": 0.886,
+      "macro_coupling": 0.758,
+      "macro_movement": 0.425,
+      "macro_space": 0.683
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "bright",
@@ -47,5 +58,6 @@
     "dense",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

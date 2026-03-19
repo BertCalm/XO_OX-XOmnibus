@@ -1,25 +1,35 @@
 {
-  "name": "Dark Meridian",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Midnight zone drift. Bioluminescence too faint to count. Enormous space.",
   "engines": [
-    "OWLFISH"
+    "Owlfish"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.381,
-    "MOVEMENT": 0.081,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.081,
     "SPACE": 0.917
   },
-  "sonic_dna": {
-    "brightness": 0.234,
-    "warmth": 0.527,
-    "movement": 0.081,
-    "density": 0.594,
-    "space": 0.917,
-    "aggression": 0.077
+  "mood": "Atmosphere",
+  "name": "Dark Meridian",
+  "parameters": {
+    "Owlfish": {}
   },
-  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.077,
+    "brightness": 0.234,
+    "density": 0.594,
+    "movement": 0.081,
+    "space": 0.917,
+    "warmth": 0.527
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +37,13 @@
     "deep",
     "vast"
   ],
-  "description": "Midnight zone drift. Bioluminescence too faint to count. Enormous space."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.2
+  }
 }

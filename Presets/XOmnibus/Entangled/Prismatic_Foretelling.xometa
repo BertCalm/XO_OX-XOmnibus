@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "Prismatic Foretelling",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.75,
+        "engineA": "Obsidian",
+        "engineB": "Oracle",
+        "type": "SPATIAL_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Vitreous oracle window — OBSIDIAN prismatic clarity transmits ORACLE maqam modal prophecy.",
+  "dna": {
+    "aggression": 0.262,
+    "brightness": 0.649,
+    "density": 0.604,
+    "movement": 0.47,
+    "space": 0.686,
+    "warmth": 0.325
+  },
   "engines": [
     "Obsidian",
     "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Vitreous oracle window \u2014 OBSIDIAN prismatic clarity transmits ORACLE maqam modal prophecy.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Prismatic Foretelling",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_aggression": 0.129,
+      "obsidian_brightness": 0.918,
+      "obsidian_density": 0.572,
+      "obsidian_level": 0.78,
+      "obsidian_movement": 0.339,
+      "obsidian_space": 0.649,
+      "obsidian_warmth": 0.173
+    },
+    "Oracle": {
+      "oracle_aggression": 0.371,
+      "oracle_brightness": 0.383,
+      "oracle_density": 0.6,
+      "oracle_level": 0.722,
+      "oracle_movement": 0.704,
+      "oracle_space": 0.758,
+      "oracle_warmth": 0.497
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "obsidian",
     "oracle",
@@ -17,57 +68,6 @@
     "marquee",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Subtle",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Obsidian": {
-      "obsidian_brightness": 0.918,
-      "obsidian_warmth": 0.173,
-      "obsidian_movement": 0.339,
-      "obsidian_density": 0.572,
-      "obsidian_space": 0.649,
-      "obsidian_aggression": 0.129,
-      "obsidian_level": 0.78
-    },
-    "Oracle": {
-      "oracle_brightness": 0.383,
-      "oracle_warmth": 0.497,
-      "oracle_movement": 0.704,
-      "oracle_density": 0.6,
-      "oracle_space": 0.758,
-      "oracle_aggression": 0.371,
-      "oracle_level": 0.722
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Oracle",
-        "type": "SPATIAL_BLEND",
-        "amount": 0.75
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.649,
-    "warmth": 0.325,
-    "movement": 0.47,
-    "density": 0.604,
-    "space": 0.686,
-    "aggression": 0.262
-  }
+  "version": "1.0.0"
 }

@@ -1,49 +1,61 @@
 {
-  "name": "Fixed Lens Hunter",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Ocelot",
+        "type": "TEXTURE_MORPH",
+        "amount": 0.802
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.75,
+    "brightness": 0.6,
+    "density": 0.45,
+    "movement": 0.7,
+    "space": 0.14,
+    "warmth": 0.55
+  },
   "engines": [
-    "OBSCURA",
-    "OCELOT"
+    "Obscura",
+    "Ocelot"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.802,
+    "MOVEMENT": 0.475,
+    "SPACE": 0.525
+  },
+  "mood": "Entangled",
+  "name": "Fixed Lens Hunter",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.36,
-      "macro_movement": 0.26,
       "macro_coupling": 0.56,
+      "macro_movement": 0.26,
       "macro_space": 0.61
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.64,
-      "macro_movement": 0.69,
       "macro_coupling": 0.54,
+      "macro_movement": 0.69,
       "macro_space": 0.44
     }
   },
-  "coupling": {
-    "type": "TEXTURE_MORPH",
-    "source": "OBSCURA",
-    "target": "OCELOT",
-    "amount": 0.802
-  },
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.55,
-    "movement": 0.7,
-    "density": 0.45,
-    "space": 0.14,
-    "aggression": 0.75
-  },
-  "macros": {
-    "CHARACTER": 0.5,
-    "MOVEMENT": 0.475,
-    "COUPLING": 0.802,
-    "SPACE": 0.525
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

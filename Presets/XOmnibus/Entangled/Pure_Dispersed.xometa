@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Pure Dispersed",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.668,
+        "engineA": "Obsidian",
+        "engineB": "Opal",
+        "type": "GRANULAR_EXCHANGE"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "OBSIDIAN cold brightness scatters through OPAL iridescent granular cloud.",
+  "dna": {
+    "aggression": 0.131,
+    "brightness": 0.796,
+    "density": 0.517,
+    "movement": 0.476,
+    "space": 0.664,
+    "warmth": 0.313
+  },
   "engines": [
     "Obsidian",
     "Opal"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBSIDIAN cold brightness scatters through OPAL iridescent granular cloud.",
-  "tags": [
-    "obsidian",
-    "opal",
-    "crystal",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Pure Dispersed",
   "parameters": {
     "Obsidian": {
-      "obsidian_brightness": 0.878,
-      "obsidian_warmth": 0.213,
-      "obsidian_movement": 0.246,
-      "obsidian_density": 0.495,
-      "obsidian_space": 0.663,
       "obsidian_aggression": 0.199,
-      "obsidian_level": 0.81
+      "obsidian_brightness": 0.878,
+      "obsidian_density": 0.495,
+      "obsidian_level": 0.81,
+      "obsidian_movement": 0.246,
+      "obsidian_space": 0.663,
+      "obsidian_warmth": 0.213
     },
     "Opal": {
-      "opal_brightness": 0.72,
-      "opal_warmth": 0.434,
-      "opal_movement": 0.746,
-      "opal_density": 0.416,
-      "opal_space": 0.732,
       "opal_aggression": 0.201,
-      "opal_level": 0.899
+      "opal_brightness": 0.72,
+      "opal_density": 0.416,
+      "opal_level": 0.899,
+      "opal_movement": 0.746,
+      "opal_space": 0.732,
+      "opal_warmth": 0.434
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Opal",
-        "type": "GRANULAR_EXCHANGE",
-        "amount": 0.668
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.796,
-    "warmth": 0.313,
-    "movement": 0.476,
-    "density": 0.517,
-    "space": 0.664,
-    "aggression": 0.131
-  }
+  "tags": [
+    "obsidian",
+    "opal",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

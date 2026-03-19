@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Pulse Surge",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.531,
+        "engineA": "OddOscar",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_LOCK"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.43,
+    "brightness": 0.44,
+    "density": 0.56,
+    "movement": 0.505,
+    "space": 0.535,
+    "warmth": 0.96
+  },
   "engines": [
-    "ODDOSCAR",
-    "ORIGAMI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "oddoscar",
-    "origami"
+    "OddOscar",
+    "Origami"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.752,
-    "MOVEMENT": 0.482,
     "COUPLING": 0.54,
+    "MOVEMENT": 0.482,
     "SPACE": 0.516
   },
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.44,
-    "warmth": 0.96,
-    "movement": 0.505,
-    "density": 0.56,
-    "space": 0.535,
-    "aggression": 0.43
-  },
-  "sonic_dna": {
-    "brightness": 0.44,
-    "warmth": 0.96,
-    "movement": 0.505,
-    "density": 0.56,
-    "space": 0.535,
-    "aggression": 0.43
-  },
+  "mood": "Entangled",
+  "name": "Pulse Surge",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.735,
-      "macro_movement": 0.568,
       "macro_coupling": 0.773,
+      "macro_movement": 0.568,
       "macro_space": 0.635
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.647,
-      "macro_movement": 0.795,
       "macro_coupling": 0.459,
+      "macro_movement": 0.795,
       "macro_space": 0.3
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ODDOSCAR",
-        "engineB": "ORIGAMI",
-        "type": "AMPLITUDE_LOCK",
-        "amount": 0.531
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.43,
+    "brightness": 0.44,
+    "density": 0.56,
+    "movement": 0.505,
+    "space": 0.535,
+    "warmth": 0.96
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "oddoscar",
+    "origami"
+  ],
+  "version": "1.0.0"
 }

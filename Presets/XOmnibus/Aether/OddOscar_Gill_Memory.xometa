@@ -1,29 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "OddOscar Gill Memory",
-  "mood": "Aether",
-  "engines": ["OddOscar"],
-  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
-  "version": "1.0.0",
-  "description": "An axolotl suspended in deep still water — barely morphed at 0.2, gills fanning at geological pace. Near-zero movement, expansive space, warm and dark. A memory encoded in gill tissue, replaying at 0.03Hz.",
-  "tags": ["aether", "oddoscar", "ambient", "deep", "still", "warm", "axolotl", "slow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": { "brightness": 0.25, "warmth": 0.85, "movement": 0.1, "density": 0.2, "space": 0.9, "aggression": 0.05 },
-  "parameters": {
-    "OddOscar": {
-      "morph_morph": 0.2,
-      "morph_filterCutoff": 500,
-      "morph_filterRes": 0.15,
-      "morph_envAttack": 0.2,
-      "morph_envDecay": 1.0,
-      "morph_envSustain": 0.9,
-      "morph_envRelease": 3.0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
-  "sequencer": null
+  "couplingIntensity": "None",
+  "description": "An axolotl suspended in deep still water — barely morphed at 0.2, gills fanning at geological pace. Near-zero movement, expansive space, warm and dark. A memory encoded in gill tissue, replaying at 0.03Hz.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.25,
+    "density": 0.2,
+    "movement": 0.1,
+    "space": 0.9,
+    "warmth": 0.85
+  },
+  "engines": [
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "OddOscar Gill Memory",
+  "parameters": {
+    "OddOscar": {
+      "morph_envAttack": 0.2,
+      "morph_envDecay": 1.0,
+      "morph_envRelease": 3.0,
+      "morph_envSustain": 0.9,
+      "morph_filterCutoff": 500,
+      "morph_filterRes": 0.15,
+      "morph_morph": 0.2
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "oddoscar",
+    "ambient",
+    "deep",
+    "still",
+    "warm",
+    "axolotl",
+    "slow"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

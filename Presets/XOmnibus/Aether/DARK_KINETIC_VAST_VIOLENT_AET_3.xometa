@@ -1,14 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "DARK KINETIC VAST VIOLENT AET 3",
-  "mood": "Aether",
-  "engines": [
-    "OBSIDIAN",
-    "OPTIC"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, kinetic, vast.",
+  "coupling": [
+    {
+      "amount": 0.601,
+      "destination": "OPTIC",
+      "source": "OBSIDIAN",
+      "type": "FREQUENCY_SHIFT"
+    }
+  ],
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — aether, dark, kinetic, vast.",
+  "dna": {
+    "aggression": 0.931,
+    "brightness": 0.106,
+    "density": 0.427,
+    "movement": 0.94,
+    "space": 0.906,
+    "warmth": 0.498
+  },
+  "engines": [
+    "Obsidian",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "DARK KINETIC VAST VIOLENT A...",
+  "parameters": {
+    "Obsidian": {
+      "level": 0.842,
+      "pan": 0.113
+    },
+    "Optic": {
+      "level": 0.751,
+      "pan": -0.125
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "dark",
@@ -17,40 +51,6 @@
     "violent",
     "ultra-diverse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.106,
-    "warmth": 0.498,
-    "movement": 0.94,
-    "density": 0.427,
-    "space": 0.906,
-    "aggression": 0.931
-  },
-  "parameters": {
-    "OBSIDIAN": {
-      "level": 0.842,
-      "pan": 0.113
-    },
-    "OPTIC": {
-      "level": 0.751,
-      "pan": -0.125
-    }
-  },
-  "coupling": [
-    {
-      "source": "OBSIDIAN",
-      "destination": "OPTIC",
-      "type": "FREQUENCY_SHIFT",
-      "amount": 0.601
-    }
-  ],
-  "sequencer": null
+  "version": "1.0.0"
 }

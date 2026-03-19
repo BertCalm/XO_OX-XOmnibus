@@ -1,50 +1,62 @@
 {
-  "name": "CRUSH CLOUD",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Overdub",
+        "type": "PITCH_SYNC",
+        "amount": 0.259
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.508,
+    "brightness": 0.642,
+    "density": 0.082,
+    "movement": 0.592,
+    "space": 0.054,
+    "warmth": 0.822
+  },
   "engines": [
-    "OMBRE",
-    "OVERDUB"
+    "Ombre",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.512,
+    "COUPLING": 0.368,
+    "MOVEMENT": 0.606,
+    "SPACE": 0.054
+  },
+  "mood": "Atmosphere",
+  "name": "CRUSH CLOUD",
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.472,
-      "macro_movement": 0.454,
       "macro_coupling": 0.271,
+      "macro_movement": 0.454,
       "macro_space": 0.054
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.821,
-      "macro_movement": 0.737,
       "macro_coupling": 0.236,
+      "macro_movement": 0.737,
       "macro_space": 0.058
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OMBRE",
-    "target": "OVERDUB",
-    "amount": 0.259
-  },
-  "dna": {
-    "brightness": 0.642,
-    "warmth": 0.822,
-    "movement": 0.592,
-    "density": 0.082,
-    "space": 0.054,
-    "aggression": 0.508
-  },
-  "macros": {
-    "CHARACTER": 0.512,
-    "MOVEMENT": 0.606,
-    "COUPLING": 0.368,
-    "SPACE": 0.054
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-  ]
+  ],
+  "version": "1.0"
 }

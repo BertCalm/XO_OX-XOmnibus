@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Wind Obligation",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "OBBLIGATO BOND macro — dual wind voices interlocked. The obligation fulfilled in harmony. Neither voice can leave.",
+  "dna": {
+    "aggression": 0.28,
+    "brightness": 0.55,
+    "density": 0.55,
+    "movement": 0.52,
+    "space": 0.6,
+    "warmth": 0.5
+  },
   "engines": [
-    "OBBLIGATO"
+    "Obbligato"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBBLIGATO BOND macro \u2014 dual wind voices interlocked. The obligation fulfilled in harmony. Neither voice can leave.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Wind Obligation",
+  "parameters": {
+    "Obbligato": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "extended-family",
@@ -17,29 +42,6 @@
     "interlocking",
     "batch2-extended"
   ],
-  "macroLabels": [
-    "BOND",
-    "BREATH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.5,
-    "movement": 0.52,
-    "density": 0.55,
-    "space": 0.6,
-    "aggression": 0.28
-  }
+  "version": "1.0.0"
 }

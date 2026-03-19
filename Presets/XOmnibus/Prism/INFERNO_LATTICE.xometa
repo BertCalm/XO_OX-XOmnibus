@@ -1,49 +1,61 @@
 {
-  "name": "INFERNO LATTICE",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "ODDOSCAR",
-    "OCELOT"
-  ],
-  "parameters": {
-    "ODDOSCAR": {
-      "macro_character": 0.801,
-      "macro_movement": 0.397,
-      "macro_coupling": 0.902,
-      "macro_space": 0.491
-    },
-    "OCELOT": {
-      "macro_character": 0.11,
-      "macro_movement": 0.296,
-      "macro_coupling": 0.94,
-      "macro_space": 0.643
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ODDOSCAR",
-    "target": "OCELOT",
-    "amount": 0.733
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ocelot",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.733
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.873,
     "brightness": 0.844,
-    "warmth": 0.903,
-    "movement": 0.676,
     "density": 0.985,
+    "movement": 0.676,
     "space": 0.05,
-    "aggression": 0.873
+    "warmth": 0.903
   },
+  "engines": [
+    "OddOscar",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.625,
-    "MOVEMENT": 0.779,
     "COUPLING": 0.935,
+    "MOVEMENT": 0.779,
     "SPACE": 0.77
   },
+  "mood": "Prism",
+  "name": "INFERNO LATTICE",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.11,
+      "macro_coupling": 0.94,
+      "macro_movement": 0.296,
+      "macro_space": 0.643
+    },
+    "OddOscar": {
+      "macro_character": 0.801,
+      "macro_coupling": 0.902,
+      "macro_movement": 0.397,
+      "macro_space": 0.491
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

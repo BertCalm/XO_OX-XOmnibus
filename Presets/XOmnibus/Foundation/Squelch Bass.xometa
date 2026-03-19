@@ -1,56 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Squelch Bass",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Deep bass presence with warm haze.",
+  "dna": {
+    "aggression": 0.569,
+    "brightness": 0.256,
+    "density": 0.071,
+    "movement": 0.0,
+    "space": 0.029,
+    "warmth": 0.144
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Deep bass presence with warm haze.",
-  "tags": [
-    "saturated",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Bass",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Bass",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Squelch Bass",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 0.0,
-      "drift_oscA_level": 0.85,
+      "drift_attack": 1.0,
+      "drift_decay": 200.0,
       "drift_filterCutoff": 500.0,
+      "drift_filterEnvAmt": 0.65,
       "drift_filterReso": 0.7,
       "drift_filterSlope": 1.0,
       "drift_hazeAmount": 0.35,
-      "drift_attack": 1.0,
-      "drift_decay": 200.0,
-      "drift_sustain": 0.4,
+      "drift_level": -2.0,
+      "drift_oscA_level": 0.85,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
       "drift_release": 120.0,
-      "drift_filterEnvAmt": 0.65,
-      "drift_level": -2.0
+      "drift_sustain": 0.4
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.256,
-    "warmth": 0.144,
-    "movement": 0.0,
-    "density": 0.071,
-    "space": 0.029,
-    "aggression": 0.569
-  }
+  "tags": [
+    "saturated",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

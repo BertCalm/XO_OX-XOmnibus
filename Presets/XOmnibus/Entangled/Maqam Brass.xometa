@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Maqam Brass",
-  "mood": "Entangled",
-  "engines": [
-    "OTTONI",
-    "ORACLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Oracle's Maqam scale system pitch-syncs OTTONI intervals \u2014 microtonal brass.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.58,
+        "engineA": "Ottoni",
+        "engineB": "Oracle",
+        "type": "PITCH_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Oracle's Maqam scale system pitch-syncs OTTONI intervals — microtonal brass.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.55,
+    "density": 0.55,
+    "movement": 0.52,
+    "space": 0.52,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Ottoni",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.58,
+    "MOVEMENT": 0.56,
+    "SPACE": 0.49
+  },
+  "mood": "Entangled",
+  "name": "Maqam Brass",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.58,
+      "macro_coupling": 0.58,
+      "macro_movement": 0.6,
+      "macro_space": 0.58
+    },
+    "Ottoni": {
+      "macro_character": 0.62,
+      "macro_coupling": 0.58,
+      "macro_movement": 0.52,
+      "macro_space": 0.4
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "tuning",
     "brass"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.65,
-    "movement": 0.52,
-    "density": 0.55,
-    "space": 0.52,
-    "aggression": 0.2
-  },
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.62,
-      "macro_movement": 0.52,
-      "macro_coupling": 0.58,
-      "macro_space": 0.4
-    },
-    "ORACLE": {
-      "macro_character": 0.58,
-      "macro_movement": 0.6,
-      "macro_coupling": 0.58,
-      "macro_space": 0.58
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OTTONI",
-        "engineB": "ORACLE",
-        "type": "PITCH_SYNC",
-        "amount": 0.58
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.6,
-    "MOVEMENT": 0.56,
-    "COUPLING": 0.58,
-    "SPACE": 0.49
-  },
-  "sequencer": null
+  "version": "1.0"
 }

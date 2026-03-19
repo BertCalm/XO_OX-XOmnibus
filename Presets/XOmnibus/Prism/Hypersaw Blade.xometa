@@ -1,58 +1,58 @@
 {
-  "schema_version": 1,
-  "name": "Hypersaw Blade",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Bright leads character with warm character.",
+  "dna": {
+    "aggression": 0.021,
+    "brightness": 0.581,
+    "density": 0.325,
+    "movement": 0.0,
+    "space": 0.043,
+    "warmth": 0.103
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bright leads character with warm character.",
-  "tags": [
-    "saturated",
-    "supersaw",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Leads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Leads",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Hypersaw Blade",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 2.0,
-      "drift_oscA_level": 0.9,
-      "drift_oscA_detune": 0.6,
+      "drift_attack": 3.0,
+      "drift_decay": 300.0,
       "drift_filterCutoff": 10000.0,
       "drift_filterReso": 0.05,
       "drift_filterSlope": 1.0,
       "drift_hazeAmount": 0.25,
-      "drift_attack": 3.0,
-      "drift_decay": 300.0,
-      "drift_sustain": 0.85,
+      "drift_level": -3.0,
+      "drift_oscA_detune": 0.6,
+      "drift_oscA_level": 0.9,
+      "drift_oscA_mode": 2.0,
       "drift_release": 250.0,
       "drift_shimmerAmount": 0.15,
       "drift_shimmerTone": 0.8,
-      "drift_level": -3.0
+      "drift_sustain": 0.85
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.581,
-    "warmth": 0.103,
-    "movement": 0.0,
-    "density": 0.325,
-    "space": 0.043,
-    "aggression": 0.021
-  }
+  "tags": [
+    "saturated",
+    "supersaw",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

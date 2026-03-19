@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_COLD_SPARSE_VAST_FAM_VOL_99",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ODDOSCAR",
-    "OBLONG"
-  ],
-  "parameters": {
-    "ODDOSCAR": {
-      "macro_character": 0.503,
-      "macro_movement": 0.303,
-      "macro_coupling": 0.385,
-      "macro_space": 0.945
-    },
-    "OBLONG": {
-      "macro_character": 0.51,
-      "macro_movement": 0.33,
-      "macro_coupling": 0.372,
-      "macro_space": 0.989
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "DYNAMIC_CROSS",
-    "source": "OBLONG",
-    "target": "ODDOSCAR",
-    "amount": 0.485
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "OddOscar",
+        "type": "DYNAMIC_CROSS",
+        "amount": 0.485
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.659,
     "brightness": 0.965,
-    "warmth": 0.042,
-    "movement": 0.318,
     "density": 0.12,
+    "movement": 0.318,
     "space": 0.974,
-    "aggression": 0.659
+    "warmth": 0.042
   },
+  "engines": [
+    "OddOscar",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.506,
-    "MOVEMENT": 0.317,
     "COUPLING": 0.379,
+    "MOVEMENT": 0.317,
     "SPACE": 0.967
   },
+  "mood": "Family",
+  "name": "Chrome Void",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.51,
+      "macro_coupling": 0.372,
+      "macro_movement": 0.33,
+      "macro_space": 0.989
+    },
+    "OddOscar": {
+      "macro_character": 0.503,
+      "macro_coupling": 0.385,
+      "macro_movement": 0.303,
+      "macro_space": 0.945
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "cold",
     "sparse",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

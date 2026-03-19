@@ -1,49 +1,61 @@
 {
-  "name": "BRUTAL SPIRAL",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Odyssey",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.303
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.965,
+    "brightness": 0.037,
+    "density": 0.11,
+    "movement": 0.644,
+    "space": 0.988,
+    "warmth": 0.281
+  },
   "engines": [
-    "OBSIDIAN",
-    "ODYSSEY"
+    "Obsidian",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.719,
+    "COUPLING": 0.207,
+    "MOVEMENT": 0.703,
+    "SPACE": 0.894
+  },
+  "mood": "Entangled",
+  "name": "BRUTAL SPIRAL",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.438,
-      "macro_movement": 0.206,
       "macro_coupling": 0.157,
+      "macro_movement": 0.206,
       "macro_space": 0.406
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.685,
-      "macro_movement": 0.182,
       "macro_coupling": 0.351,
+      "macro_movement": 0.182,
       "macro_space": 0.805
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBSIDIAN",
-    "target": "ODYSSEY",
-    "amount": 0.303
-  },
-  "dna": {
-    "brightness": 0.037,
-    "warmth": 0.281,
-    "movement": 0.644,
-    "density": 0.11,
-    "space": 0.988,
-    "aggression": 0.965
-  },
-  "macros": {
-    "CHARACTER": 0.719,
-    "MOVEMENT": 0.703,
-    "COUPLING": 0.207,
-    "SPACE": 0.894
-  },
+  "schema_version": 1,
   "tags": [
     "aggressive",
     "chaos",
     "obliterating",
     "entangled"
-  ]
+  ],
+  "version": "1.0"
 }

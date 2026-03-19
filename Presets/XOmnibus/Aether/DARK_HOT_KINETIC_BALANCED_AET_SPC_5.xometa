@@ -1,45 +1,56 @@
 {
-  "name": "DARK HOT KINETIC BALANCED AET SPC 5",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OPAL",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.518,
-      "macro_movement": 0.989,
-      "macro_coupling": 0.649,
-      "macro_space": 0.546
-    },
-    "OBSCURA": {
-      "macro_character": 0.494,
-      "macro_movement": 0.99,
-      "macro_coupling": 0.625,
-      "macro_space": 0.571
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OPAL",
-    "target": "OBSCURA",
-    "amount": 0.931
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obscura",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.931
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.888,
     "brightness": 0.12,
-    "warmth": 0.916,
-    "movement": 0.989,
     "density": 0.617,
+    "movement": 0.989,
     "space": 0.546,
-    "aggression": 0.888
+    "warmth": 0.916
   },
+  "engines": [
+    "Opal",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.518,
-    "MOVEMENT": 0.989,
     "COUPLING": 0.649,
+    "MOVEMENT": 0.989,
     "SPACE": 0.546
   },
+  "mood": "Aether",
+  "name": "DARK HOT KINETIC BALANCED A...",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.494,
+      "macro_coupling": 0.625,
+      "macro_movement": 0.99,
+      "macro_space": 0.571
+    },
+    "Opal": {
+      "macro_character": 0.518,
+      "macro_coupling": 0.649,
+      "macro_movement": 0.989,
+      "macro_space": 0.546
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -48,5 +59,6 @@
     "aggressive",
     "warm",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

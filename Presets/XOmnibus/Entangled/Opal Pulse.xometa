@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
   "name": "Opal Pulse",
-  "mood": "Entangled",
-  "engines": ["Opal"],
+  "mood": "Flux",
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rhythmic granular pulse. Medium density with S&H LFO on grain density creates organic rhythmic patterns. Band-pass filter focuses the energy. Mono with legato for bass sequences.",
-  "tags": ["rhythmic", "bass", "pulse", "sequence", "entangled"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "rhythmic",
+    "bass",
+    "pulse",
+    "sequence",
+    "entangled"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

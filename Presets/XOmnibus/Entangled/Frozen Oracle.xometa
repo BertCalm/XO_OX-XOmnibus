@@ -1,33 +1,48 @@
 {
-  "name": "Frozen Oracle",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Optic",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.65
+      }
+    ]
+  },
+  "description": "Prophecy suspended in Arctic light — future seen through a frozen lens.",
   "engines": [
-    "OPTIC",
-    "ORACLE"
+    "Optic",
+    "Oracle"
   ],
-  "mood": "Entangled",
-  "strategy": "Bright Dark",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7,
-    "MOVEMENT": 0.3,
     "COUPLING": 0.85,
+    "MOVEMENT": 0.3,
     "SPACE": 0.8
   },
+  "mood": "Entangled",
+  "name": "Frozen Oracle",
+  "parameters": {
+    "Optic": {},
+    "Oracle": {}
+  },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.15,
     "brightness": 0.91,
-    "warmth": 0.06,
-    "movement": 0.3,
     "density": 0.4,
+    "movement": 0.3,
     "space": 0.82,
-    "aggression": 0.15
+    "warmth": 0.06
   },
-  "parameters": {},
-  "coupling": {
-    "type": "HARMONIC_BLEND",
-    "source": "ORACLE",
-    "target": "OPTIC",
-    "amount": 0.65
-  },
+  "strategy": "Bright Dark",
   "tags": [
     "entangled",
     "bright",
@@ -35,5 +50,13 @@
     "sparse",
     "oracular"
   ],
-  "description": "Prophecy suspended in Arctic light \u2014 future seen through a frozen lens."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

@@ -1,50 +1,62 @@
 {
-  "name": "DARK_COLD_DENSE_VIOLENT_ENT_AGG_3",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overdub",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.966
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.967,
+    "brightness": 0.046,
+    "density": 0.959,
+    "movement": 0.317,
+    "space": 0.582,
+    "warmth": 0.105
+  },
   "engines": [
-    "OBLIQUE",
-    "OVERDUB"
+    "Oblique",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.559,
+    "COUPLING": 0.947,
+    "MOVEMENT": 0.317,
+    "SPACE": 0.582
+  },
+  "mood": "Entangled",
+  "name": "Wave Wrath",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.504,
-      "macro_movement": 0.317,
       "macro_coupling": 0.947,
+      "macro_movement": 0.317,
       "macro_space": 0.536
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.615,
-      "macro_movement": 0.317,
       "macro_coupling": 0.954,
+      "macro_movement": 0.317,
       "macro_space": 0.619
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OBLIQUE",
-    "target": "OVERDUB",
-    "amount": 0.966
-  },
-  "dna": {
-    "brightness": 0.046,
-    "warmth": 0.105,
-    "movement": 0.317,
-    "density": 0.959,
-    "space": 0.582,
-    "aggression": 0.967
-  },
-  "macros": {
-    "CHARACTER": 0.559,
-    "MOVEMENT": 0.317,
-    "COUPLING": 0.947,
-    "SPACE": 0.582
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "dark",
     "cold",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

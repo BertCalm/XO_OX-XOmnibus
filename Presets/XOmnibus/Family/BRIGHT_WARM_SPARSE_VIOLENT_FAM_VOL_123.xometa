@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_SPARSE_VIOLENT_FAM_VOL_123",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OVERDUB",
-    "OSTERIA"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.979,
-      "macro_movement": 0.711,
-      "macro_coupling": 0.512,
-      "macro_space": 0.539
-    },
-    "OSTERIA": {
-      "macro_character": 0.983,
-      "macro_movement": 0.671,
-      "macro_coupling": 0.501,
-      "macro_space": 0.534
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_LINK",
-    "source": "OSTERIA",
-    "target": "OVERDUB",
-    "amount": 0.562
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Overdub",
+        "type": "FILTER_LINK",
+        "amount": 0.562
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.96,
     "brightness": 0.969,
-    "warmth": 0.948,
-    "movement": 0.686,
     "density": 0.092,
+    "movement": 0.686,
     "space": 0.515,
-    "aggression": 0.96
+    "warmth": 0.948
   },
+  "engines": [
+    "Overdub",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.981,
-    "MOVEMENT": 0.691,
     "COUPLING": 0.506,
+    "MOVEMENT": 0.691,
     "SPACE": 0.536
   },
+  "mood": "Family",
+  "name": "Peach Blade 2",
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.983,
+      "macro_coupling": 0.501,
+      "macro_movement": 0.671,
+      "macro_space": 0.534
+    },
+    "Overdub": {
+      "macro_character": 0.979,
+      "macro_coupling": 0.512,
+      "macro_movement": 0.711,
+      "macro_space": 0.539
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "sparse",
     "aggressive",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -33,7 +33,9 @@
     "space": 0.78,
     "aggression": 0.09
   },
-  "parameters": {},
+  "parameters": {
+    "Optic": {}
+  },
   "tags": [
     "tidal",
     "optic",

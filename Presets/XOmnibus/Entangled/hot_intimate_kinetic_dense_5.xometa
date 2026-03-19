@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "HOT INTIMATE KINETIC DENSE 5",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "warmth": 0.9405,
-    "space": 0.1078,
-    "movement": 0.932,
-    "density": 0.9146,
-    "brightness": 0.5156,
-    "aggression": 0.4425
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Extreme",
+  "couplingType": "PULSE",
+  "description": "Ultra-diverse Entangled preset — hot intimate kinetic dense. Designed for PULSE coupling with XOctopus.",
   "dna": {
-    "warmth": 0.9405,
-    "space": 0.1078,
-    "movement": 0.932,
-    "density": 0.9146,
+    "aggression": 0.4425,
     "brightness": 0.5156,
-    "aggression": 0.4425
+    "density": 0.9146,
+    "movement": 0.932,
+    "space": 0.1078,
+    "warmth": 0.9405
   },
   "engines": [
-    "XOctopus"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 hot intimate kinetic dense. Designed for PULSE coupling with XOctopus.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "pulse",
-    "octopus"
+    "Octopus"
   ],
   "macroLabels": [
     "GLOW",
@@ -36,15 +23,28 @@
     "PACK",
     "EXPANSE"
   ],
-  "couplingType": "PULSE",
-  "couplingIntensity": "Extreme",
+  "mood": "Flux",
+  "name": "HOT INTIMATE KINETIC DENSE 5",
   "parameters": {
-    "XOctopus": {
-      "couplingLevel": 0.684,
-      "couplingBus": 3
+    "Octopus": {
+      "couplingBus": 3,
+      "couplingLevel": 0.684
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4425,
+    "brightness": 0.5156,
+    "density": 0.9146,
+    "movement": 0.932,
+    "space": 0.1078,
+    "warmth": 0.9405
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "pulse",
+    "octopus"
+  ],
+  "version": "1.0.0"
 }

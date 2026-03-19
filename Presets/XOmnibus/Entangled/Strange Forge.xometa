@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Strange Forge",
-  "mood": "Entangled",
-  "engines": [
-    "OTTONI",
-    "OUROBOROS"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Strange attractor filter events reshape OTTONI brass formants \u2014 chaotic timbre.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.78,
+        "engineA": "Ottoni",
+        "engineB": "Ouroboros",
+        "type": "FILTER_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Strange attractor filter events reshape OTTONI brass formants — chaotic timbre.",
+  "dna": {
+    "aggression": 0.62,
+    "brightness": 0.42,
+    "density": 0.65,
+    "movement": 0.75,
+    "space": 0.32,
+    "warmth": 0.75
+  },
+  "engines": [
+    "Ottoni",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.625,
+    "COUPLING": 0.78,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.375
+  },
+  "mood": "Entangled",
+  "name": "Strange Forge",
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.6,
+      "macro_coupling": 0.78,
+      "macro_movement": 0.55,
+      "macro_space": 0.35
+    },
+    "Ouroboros": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.78,
+      "macro_movement": 0.75,
+      "macro_space": 0.4
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "strange",
     "intense"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {
-    "brightness": 0.42,
-    "warmth": 0.75,
-    "movement": 0.75,
-    "density": 0.65,
-    "space": 0.32,
-    "aggression": 0.62
-  },
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.6,
-      "macro_movement": 0.55,
-      "macro_coupling": 0.78,
-      "macro_space": 0.35
-    },
-    "OUROBOROS": {
-      "macro_character": 0.65,
-      "macro_movement": 0.75,
-      "macro_coupling": 0.78,
-      "macro_space": 0.4
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OTTONI",
-        "engineB": "OUROBOROS",
-        "type": "FILTER_MOD",
-        "amount": 0.78
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.625,
-    "MOVEMENT": 0.65,
-    "COUPLING": 0.78,
-    "SPACE": 0.375
-  },
-  "sequencer": null
+  "version": "1.0"
 }

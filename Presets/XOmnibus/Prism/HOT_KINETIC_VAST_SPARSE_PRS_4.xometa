@@ -1,50 +1,62 @@
 {
-  "name": "HOT_KINETIC_VAST_SPARSE_PRS_4",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Osteria",
+        "type": "PITCH_SYNC",
+        "amount": 0.682
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.536,
+    "brightness": 0.344,
+    "density": 0.069,
+    "movement": 0.876,
+    "space": 0.955,
+    "warmth": 0.964
+  },
   "engines": [
-    "OHM",
-    "OSTERIA"
+    "Ohm",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.44,
+    "COUPLING": 0.586,
+    "MOVEMENT": 0.876,
+    "SPACE": 0.955
+  },
+  "mood": "Prism",
+  "name": "HOT_KINETIC_VAST_SPARSE_PRS_4",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.44,
-      "macro_movement": 0.876,
       "macro_coupling": 0.586,
+      "macro_movement": 0.876,
       "macro_space": 0.955
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.596,
-      "macro_movement": 0.876,
       "macro_coupling": 0.767,
+      "macro_movement": 0.876,
       "macro_space": 0.955
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OHM",
-    "target": "OSTERIA",
-    "amount": 0.682
-  },
-  "dna": {
-    "brightness": 0.344,
-    "warmth": 0.964,
-    "movement": 0.876,
-    "density": 0.069,
-    "space": 0.955,
-    "aggression": 0.536
-  },
-  "macros": {
-    "CHARACTER": 0.44,
-    "MOVEMENT": 0.876,
-    "COUPLING": 0.586,
-    "SPACE": 0.955
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "hot",
     "kinetic",
     "vast",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

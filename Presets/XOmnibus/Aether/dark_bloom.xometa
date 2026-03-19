@@ -1,35 +1,43 @@
 {
-  "name": "Dark Bloom",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "dna": {
+    "aggression": 0.16,
+    "brightness": 0.28,
+    "density": 0.22,
+    "movement": 0.62,
+    "space": 0.85,
+    "warmth": 0.44
+  },
   "engines": [
-    "OSPREY"
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.58,
+    "COUPLING": 0.36,
+    "MOVEMENT": 0.62,
+    "SPACE": 0.85
+  },
+  "mood": "Aether",
+  "name": "Dark Bloom",
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.58,
-      "macro_movement": 0.62,
       "macro_coupling": 0.36,
+      "macro_movement": 0.62,
       "macro_space": 0.85
     }
   },
-  "dna": {
-    "brightness": 0.28,
-    "warmth": 0.44,
-    "movement": 0.62,
-    "density": 0.22,
-    "space": 0.85,
-    "aggression": 0.16
-  },
-  "macros": {
-    "CHARACTER": 0.58,
-    "MOVEMENT": 0.62,
-    "COUPLING": 0.36,
-    "SPACE": 0.85
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "dark-aether",
     "evolving"
-  ]
+  ],
+  "version": "1.0"
 }

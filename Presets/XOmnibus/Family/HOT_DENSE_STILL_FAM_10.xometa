@@ -1,45 +1,56 @@
 {
-  "name": "HOT DENSE STILL FAM 10",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Overlap",
+        "type": "PITCH_SYNC",
+        "amount": 0.632
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.689,
+    "brightness": 0.447,
+    "density": 0.961,
+    "movement": 0.097,
+    "space": 0.455,
+    "warmth": 0.96
+  },
   "engines": [
-    "ODDFELIX",
-    "OVERLAP"
+    "OddfeliX",
+    "Overlap"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.704,
+    "COUPLING": 0.648,
+    "MOVEMENT": 0.097,
+    "SPACE": 0.455
+  },
+  "mood": "Family",
+  "name": "HOT DENSE STILL FAM 10",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.704,
-      "macro_movement": 0.097,
       "macro_coupling": 0.648,
+      "macro_movement": 0.097,
       "macro_space": 0.455
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.831,
-      "macro_movement": 0.103,
       "macro_coupling": 0.739,
+      "macro_movement": 0.103,
       "macro_space": 0.523
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ODDFELIX",
-    "target": "OVERLAP",
-    "amount": 0.632
-  },
-  "dna": {
-    "brightness": 0.447,
-    "warmth": 0.96,
-    "movement": 0.097,
-    "density": 0.961,
-    "space": 0.455,
-    "aggression": 0.689
-  },
-  "macros": {
-    "CHARACTER": 0.704,
-    "MOVEMENT": 0.097,
-    "COUPLING": 0.648,
-    "SPACE": 0.455
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
@@ -47,5 +58,6 @@
     "static",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

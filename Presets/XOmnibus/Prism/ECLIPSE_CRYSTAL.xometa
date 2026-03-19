@@ -1,48 +1,60 @@
 {
-  "name": "ECLIPSE CRYSTAL",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OUTWIT",
-    "ORPHICA"
-  ],
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.704,
-      "macro_movement": 0.274,
-      "macro_coupling": 0.375,
-      "macro_space": 0.054
-    },
-    "ORPHICA": {
-      "macro_character": 0.61,
-      "macro_movement": 0.664,
-      "macro_coupling": 0.235,
-      "macro_space": 0.748
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OUTWIT",
-    "target": "ORPHICA",
-    "amount": 0.469
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Orphica",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.469
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.432,
     "brightness": 0.025,
-    "warmth": 0.663,
-    "movement": 0.752,
     "density": 0.798,
+    "movement": 0.752,
     "space": 0.144,
-    "aggression": 0.432
+    "warmth": 0.663
   },
+  "engines": [
+    "Outwit",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.479,
-    "MOVEMENT": 0.008,
     "COUPLING": 0.373,
+    "MOVEMENT": 0.008,
     "SPACE": 0.158
   },
+  "mood": "Prism",
+  "name": "ECLIPSE CRYSTAL",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.61,
+      "macro_coupling": 0.235,
+      "macro_movement": 0.664,
+      "macro_space": 0.748
+    },
+    "Outwit": {
+      "macro_character": 0.704,
+      "macro_coupling": 0.375,
+      "macro_movement": 0.274,
+      "macro_space": 0.054
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-  ]
+  ],
+  "version": "1.0"
 }

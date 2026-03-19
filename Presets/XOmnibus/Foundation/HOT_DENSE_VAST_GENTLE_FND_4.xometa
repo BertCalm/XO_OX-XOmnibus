@@ -1,45 +1,56 @@
 {
-  "name": "HOT_DENSE_VAST_GENTLE_FND_4",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Obsidian",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.657
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.043,
+    "brightness": 0.522,
+    "density": 0.947,
+    "movement": 0.436,
+    "space": 0.956,
+    "warmth": 0.87
+  },
   "engines": [
-    "OBESE",
-    "OBSIDIAN"
+    "Obese",
+    "Obsidian"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.171,
+    "COUPLING": 0.673,
+    "MOVEMENT": 0.201,
+    "SPACE": 0.741
+  },
+  "mood": "Foundation",
+  "name": "HOT_DENSE_VAST_GENTLE_FND_4",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.349,
-      "macro_movement": 0.542,
       "macro_coupling": 0.882,
+      "macro_movement": 0.542,
       "macro_space": 0.65
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.868,
-      "macro_movement": 0.7,
       "macro_coupling": 0.302,
+      "macro_movement": 0.7,
       "macro_space": 0.677
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBESE",
-    "target": "OBSIDIAN",
-    "amount": 0.657
-  },
-  "dna": {
-    "brightness": 0.522,
-    "warmth": 0.87,
-    "movement": 0.436,
-    "density": 0.947,
-    "space": 0.956,
-    "aggression": 0.043
-  },
-  "macros": {
-    "CHARACTER": 0.171,
-    "MOVEMENT": 0.201,
-    "COUPLING": 0.673,
-    "SPACE": 0.741
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -48,5 +59,6 @@
     "vast",
     "gentle",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

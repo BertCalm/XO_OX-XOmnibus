@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_DENSE_INTIMATE_GENTLE_FND_2",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ouroboros",
+        "type": "CHAOS_INJECT",
+        "amount": 0.376
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.045,
+    "brightness": 0.953,
+    "density": 0.87,
+    "movement": 0.473,
+    "space": 0.092,
+    "warmth": 0.455
+  },
   "engines": [
-    "ODDOSCAR",
-    "OUROBOROS"
+    "OddOscar",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.177,
+    "COUPLING": 0.127,
+    "MOVEMENT": 0.58,
+    "SPACE": 0.493
+  },
+  "mood": "Foundation",
+  "name": "Wave Packed",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.429,
-      "macro_movement": 0.697,
       "macro_coupling": 0.258,
+      "macro_movement": 0.697,
       "macro_space": 0.562
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.42,
-      "macro_movement": 0.11,
       "macro_coupling": 0.799,
+      "macro_movement": 0.11,
       "macro_space": 0.119
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ODDOSCAR",
-    "target": "OUROBOROS",
-    "amount": 0.376
-  },
-  "dna": {
-    "brightness": 0.953,
-    "warmth": 0.455,
-    "movement": 0.473,
-    "density": 0.87,
-    "space": 0.092,
-    "aggression": 0.045
-  },
-  "macros": {
-    "CHARACTER": 0.177,
-    "MOVEMENT": 0.58,
-    "COUPLING": 0.127,
-    "SPACE": 0.493
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -47,5 +58,6 @@
     "dense",
     "intimate",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,61 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Sniff Around",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Reactive curious motion motion with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.124,
+    "brightness": 0.431,
+    "density": 0.185,
+    "movement": 0.445,
+    "space": 0.0,
+    "warmth": 0.434
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Reactive curious motion motion with bob character and analog drift.",
-  "tags": [
-    "curious",
-    "sniff",
-    "drift"
-  ],
+  "legacy": {
+    "sourceCategory": "Curious Motion",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Curious Motion",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Sniff Around",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
-      "bob_oscA_drift": 0.42,
-      "bob_oscA_shape": 0.3,
-      "bob_oscB_wave": 2.0,
-      "bob_oscB_blend": 0.3,
-      "bob_oscB_detune": 7.0,
-      "bob_curMode": 0.0,
-      "bob_curAmount": 0.68,
-      "bob_lfo1Rate": 0.6,
-      "bob_lfo1Depth": 0.28,
-      "bob_fltCutoff": 4500.0,
-      "bob_fltReso": 0.38,
       "bob_ampAttack": 0.08,
       "bob_ampDecay": 0.6,
-      "bob_ampSustain": 0.65,
       "bob_ampRelease": 1.2,
-      "bob_bobMode": 0.45
+      "bob_ampSustain": 0.65,
+      "bob_bobMode": 0.45,
+      "bob_curAmount": 0.68,
+      "bob_curMode": 0.0,
+      "bob_fltCutoff": 4500.0,
+      "bob_fltReso": 0.38,
+      "bob_lfo1Depth": 0.28,
+      "bob_lfo1Rate": 0.6,
+      "bob_oscA_drift": 0.42,
+      "bob_oscA_shape": 0.3,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.3,
+      "bob_oscB_detune": 7.0,
+      "bob_oscB_wave": 2.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.431,
-    "warmth": 0.434,
-    "movement": 0.445,
-    "density": 0.185,
-    "space": 0.0,
-    "aggression": 0.124
-  }
+  "tags": [
+    "curious",
+    "sniff",
+    "drift"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

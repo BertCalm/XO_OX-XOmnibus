@@ -1,48 +1,60 @@
 {
-  "name": "EMPTY FLUX 7",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Ottoni",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8834
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9357,
+    "brightness": 0.7904,
+    "density": 0.0339,
+    "movement": 0.554,
+    "space": 0.3689,
+    "warmth": 0.0263
+  },
   "engines": [
-    "OBLONG",
-    "OTTONI"
+    "Oblong",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6423,
+    "COUPLING": 0.6801,
+    "MOVEMENT": 0.45,
+    "SPACE": 0.3445
+  },
+  "mood": "Flux",
+  "name": "EMPTY FLUX 7",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.0862,
-      "macro_movement": 0.3093,
       "macro_coupling": 0.9996,
+      "macro_movement": 0.3093,
       "macro_space": 0.7189
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.5257,
-      "macro_movement": 0.7692,
       "macro_coupling": 0.8233,
+      "macro_movement": 0.7692,
       "macro_space": 0.0738
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBLONG",
-    "target": "OTTONI",
-    "amount": 0.8834
-  },
-  "dna": {
-    "brightness": 0.7904,
-    "warmth": 0.0263,
-    "movement": 0.554,
-    "density": 0.0339,
-    "space": 0.3689,
-    "aggression": 0.9357
-  },
-  "macros": {
-    "CHARACTER": 0.6423,
-    "MOVEMENT": 0.45,
-    "COUPLING": 0.6801,
-    "SPACE": 0.3445
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "sparse",
     "minimal"
-  ]
+  ],
+  "version": "1.0"
 }

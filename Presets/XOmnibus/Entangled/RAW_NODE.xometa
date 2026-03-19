@@ -1,48 +1,60 @@
 {
-  "name": "RAW NODE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Overbite",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.666
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.788,
+    "brightness": 0.703,
+    "density": 0.103,
+    "movement": 0.687,
+    "space": 0.924,
+    "warmth": 0.454
+  },
   "engines": [
-    "ONSET",
-    "OVERBITE"
+    "Onset",
+    "Overbite"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.625,
+    "COUPLING": 0.934,
+    "MOVEMENT": 0.661,
+    "SPACE": 0.425
+  },
+  "mood": "Entangled",
+  "name": "RAW NODE",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.157,
-      "macro_movement": 0.174,
       "macro_coupling": 0.075,
+      "macro_movement": 0.174,
       "macro_space": 0.003
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.451,
-      "macro_movement": 0.594,
       "macro_coupling": 0.291,
+      "macro_movement": 0.594,
       "macro_space": 0.231
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ONSET",
-    "target": "OVERBITE",
-    "amount": 0.666
-  },
-  "dna": {
-    "brightness": 0.703,
-    "warmth": 0.454,
-    "movement": 0.687,
-    "density": 0.103,
-    "space": 0.924,
-    "aggression": 0.788
-  },
-  "macros": {
-    "CHARACTER": 0.625,
-    "MOVEMENT": 0.661,
-    "COUPLING": 0.934,
-    "SPACE": 0.425
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "thin",
     "ghosted"
-  ]
+  ],
+  "version": "1.0"
 }

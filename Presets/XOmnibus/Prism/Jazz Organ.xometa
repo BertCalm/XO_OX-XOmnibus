@@ -1,57 +1,57 @@
 {
-  "schema_version": 1,
-  "name": "Jazz Organ",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Bright keys character with warm character.",
+  "dna": {
+    "aggression": 0.033,
+    "brightness": 0.454,
+    "density": 0.143,
+    "movement": 0.0,
+    "space": 0.173,
+    "warmth": 0.166
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bright keys character with warm character.",
-  "tags": [
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Keys",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Keys",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Jazz Organ",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 3.0,
-      "drift_oscA_level": 0.65,
-      "drift_oscB_mode": 0.0,
-      "drift_oscB_shape": 3.0,
-      "drift_oscB_level": 0.45,
-      "drift_oscB_tune": 7.0,
-      "drift_subLevel": 0.35,
+      "drift_attack": 5.0,
       "drift_filterCutoff": 6000.0,
       "drift_filterReso": 0.08,
       "drift_hazeAmount": 0.1,
-      "drift_attack": 5.0,
-      "drift_sustain": 0.85,
+      "drift_level": -3.0,
+      "drift_oscA_level": 0.65,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 3.0,
+      "drift_oscB_level": 0.45,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 3.0,
+      "drift_oscB_tune": 7.0,
       "drift_release": 120.0,
-      "drift_level": -3.0
+      "drift_subLevel": 0.35,
+      "drift_sustain": 0.85
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.454,
-    "warmth": 0.166,
-    "movement": 0.0,
-    "density": 0.143,
-    "space": 0.173,
-    "aggression": 0.033
-  }
+  "tags": [
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

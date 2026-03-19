@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FAM_VOL_144",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ODDOSCAR",
-    "OBLONG"
-  ],
-  "parameters": {
-    "ODDOSCAR": {
-      "macro_character": 0.562,
-      "macro_movement": 0.367,
-      "macro_coupling": 0.693,
-      "macro_space": 0.118
-    },
-    "OBLONG": {
-      "macro_character": 0.559,
-      "macro_movement": 0.38,
-      "macro_coupling": 0.668,
-      "macro_space": 0.103
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_MESH",
-    "source": "ODDOSCAR",
-    "target": "OBLONG",
-    "amount": 0.477
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Oblong",
+        "type": "HARMONIC_MESH",
+        "amount": 0.477
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.96,
     "brightness": 0.988,
-    "warmth": 0.119,
-    "movement": 0.393,
     "density": 0.412,
+    "movement": 0.393,
     "space": 0.09,
-    "aggression": 0.96
+    "warmth": 0.119
   },
+  "engines": [
+    "OddOscar",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.56,
-    "MOVEMENT": 0.373,
     "COUPLING": 0.68,
+    "MOVEMENT": 0.373,
     "SPACE": 0.11
   },
+  "mood": "Family",
+  "name": "Arctic Grit",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.559,
+      "macro_coupling": 0.668,
+      "macro_movement": 0.38,
+      "macro_space": 0.103
+    },
+    "OddOscar": {
+      "macro_character": 0.562,
+      "macro_coupling": 0.693,
+      "macro_movement": 0.367,
+      "macro_space": 0.118
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "cold",
     "intimate",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

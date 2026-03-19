@@ -1,49 +1,61 @@
 {
-  "name": "ALLLO FLX 06",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overdub",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.201
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.609,
+    "brightness": 0.023,
+    "density": 0.03,
+    "movement": 0.043,
+    "space": 0.09,
+    "warmth": 0.028
+  },
   "engines": [
-    "OBLONG",
-    "OVERDUB"
+    "Oblong",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.026,
+    "COUPLING": 0.349,
+    "MOVEMENT": 0.036,
+    "SPACE": 0.09
+  },
+  "mood": "Flux",
+  "name": "ALLLO FLX 06",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.026,
-      "macro_movement": 0.036,
       "macro_coupling": 0.349,
+      "macro_movement": 0.036,
       "macro_space": 0.09
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.026,
-      "macro_movement": 0.036,
       "macro_coupling": 0.349,
+      "macro_movement": 0.036,
       "macro_space": 0.09
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OBLONG",
-    "target": "OVERDUB",
-    "amount": 0.201
-  },
-  "dna": {
-    "brightness": 0.023,
-    "warmth": 0.028,
-    "movement": 0.043,
-    "density": 0.03,
-    "space": 0.09,
-    "aggression": 0.609
-  },
-  "macros": {
-    "CHARACTER": 0.026,
-    "MOVEMENT": 0.036,
-    "COUPLING": 0.349,
-    "SPACE": 0.09
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

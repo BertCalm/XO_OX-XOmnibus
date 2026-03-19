@@ -1,41 +1,58 @@
 {
-  "schema_version": 1,
-  "name": "Spring Sovereign",
-  "mood": "Aether",
-  "engines": ["Overdub"],
-  "author": "Guru Bin — Classic Engine Deepening 2026-03-16",
-  "version": "1.0.0",
-  "description": "The spring reverb has become the primary instrument. It resonates of its own accord — metallic, liquid, ancient. Send amount at maximum pushes every note into the spring's long sympathetic decay. The oscillator provides only the initial strike. B004 at its theological extreme: the metallic splash as entire sonic world.",
-  "tags": ["aether", "spring-reverb", "metallic", "resonance", "send", "environmental", "dub"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.75,
-    "movement": 0.72,
-    "density": 0.55,
-    "space": 0.98,
-    "aggression": 0.35
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "The spring reverb has become the primary instrument. It resonates of its own accord — metallic, liquid, ancient. Send amount at maximum pushes every note into the spring's long sympathetic decay. The oscillator provides only the initial strike. B004 at its theological extreme: the metallic splash as entire sonic world.",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.4,
+    "density": 0.55,
+    "movement": 0.72,
+    "space": 0.98,
+    "warmth": 0.75
+  },
+  "engines": [
+    "Overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Spring Sovereign",
   "parameters": {
     "Overdub": {
-      "dub_oscWave": 1,
-      "dub_sendAmount": 1.0,
-      "dub_drive": 0.55,
-      "dub_tapeDelay": 0.5,
-      "dub_springReverb": 0.95,
-      "dub_wowFlutter": 0.45,
       "dub_ampAttack": 0.08,
       "dub_ampDecay": 1.2,
-      "dub_ampSustain": 0.5,
       "dub_ampRelease": 2.5,
+      "dub_ampSustain": 0.5,
+      "dub_drive": 0.55,
       "dub_macroCharacter": 0.0,
-      "dub_macroMovement": 0.0,
       "dub_macroCoupling": 0.0,
-      "dub_macroSpace": 0.0
+      "dub_macroMovement": 0.0,
+      "dub_macroSpace": 0.0,
+      "dub_oscWave": 1,
+      "dub_sendAmount": 1.0,
+      "dub_springReverb": 0.95,
+      "dub_tapeDelay": 0.5,
+      "dub_wowFlutter": 0.45
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "spring-reverb",
+    "metallic",
+    "resonance",
+    "send",
+    "environmental",
+    "dub"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,25 +1,35 @@
 {
-  "name": "Molasses Hum",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Molasses at room temperature. Sweet, viscous, impossible to rush.",
   "engines": [
-    "OVERDUB"
+    "Overdub"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.615,
-    "MOVEMENT": 0.084,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.084,
     "SPACE": 0.434
   },
-  "sonic_dna": {
-    "brightness": 0.363,
-    "warmth": 0.868,
-    "movement": 0.084,
-    "density": 0.817,
-    "space": 0.434,
-    "aggression": 0.062
+  "mood": "Atmosphere",
+  "name": "Molasses Hum",
+  "parameters": {
+    "Overdub": {}
   },
-  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.062,
+    "brightness": 0.363,
+    "density": 0.817,
+    "movement": 0.084,
+    "space": 0.434,
+    "warmth": 0.868
+  },
   "tags": [
     "atmosphere",
     "drone",
@@ -27,5 +37,13 @@
     "warm",
     "thick"
   ],
-  "description": "Molasses at room temperature. Sweet, viscous, impossible to rush."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.2
+  }
 }

@@ -1,48 +1,60 @@
 {
-  "name": "Abyssal Wave Form",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ouroboros",
+        "type": "ENVELOPE_SHARE",
+        "amount": 0.83
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.08,
+    "density": 0.5,
+    "movement": 0.82,
+    "space": 0.27,
+    "warmth": 0.43
+  },
   "engines": [
-    "ONSET",
-    "OUROBOROS"
+    "Onset",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.79,
+    "COUPLING": 0.75,
+    "MOVEMENT": 0.82,
+    "SPACE": 0.27
+  },
+  "mood": "Entangled",
+  "name": "Abyssal Wave Form",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.21,
-      "macro_movement": 0.87,
       "macro_coupling": 0.8,
+      "macro_movement": 0.87,
       "macro_space": 0.27
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.54,
-      "macro_movement": 0.43,
       "macro_coupling": 0.53,
+      "macro_movement": 0.43,
       "macro_space": 0.71
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_SHARE",
-    "source": "ONSET",
-    "target": "OUROBOROS",
-    "amount": 0.83
-  },
-  "dna": {
-    "brightness": 0.08,
-    "warmth": 0.43,
-    "movement": 0.82,
-    "density": 0.5,
-    "space": 0.27,
-    "aggression": 0.5
-  },
-  "macros": {
-    "CHARACTER": 0.79,
-    "MOVEMENT": 0.82,
-    "COUPLING": 0.75,
-    "SPACE": 0.27
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,49 +1,61 @@
 {
-  "name": "ALLHI FND 06",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Overbite",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.888
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.561,
+    "brightness": 0.935,
+    "density": 0.926,
+    "movement": 0.906,
+    "space": 0.957,
+    "warmth": 0.973
+  },
   "engines": [
-    "ONSET",
-    "OVERBITE"
+    "Onset",
+    "Overbite"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.954,
+    "COUPLING": 0.759,
+    "MOVEMENT": 0.916,
+    "SPACE": 0.957
+  },
+  "mood": "Foundation",
+  "name": "ALLHI FND 06",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.954,
-      "macro_movement": 0.916,
       "macro_coupling": 0.759,
+      "macro_movement": 0.916,
       "macro_space": 0.957
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.954,
-      "macro_movement": 0.916,
       "macro_coupling": 0.759,
+      "macro_movement": 0.916,
       "macro_space": 0.957
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ONSET",
-    "target": "OVERBITE",
-    "amount": 0.888
-  },
-  "dna": {
-    "brightness": 0.935,
-    "warmth": 0.973,
-    "movement": 0.906,
-    "density": 0.926,
-    "space": 0.957,
-    "aggression": 0.561
-  },
-  "macros": {
-    "CHARACTER": 0.954,
-    "MOVEMENT": 0.916,
-    "COUPLING": 0.759,
-    "SPACE": 0.957
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

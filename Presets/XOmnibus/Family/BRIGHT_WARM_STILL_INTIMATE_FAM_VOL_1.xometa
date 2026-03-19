@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_STILL_INTIMATE_FAM_VOL_1",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Obbligato",
+        "type": "FILTER_LINK",
+        "amount": 0.627
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.601,
+    "brightness": 0.897,
+    "density": 0.396,
+    "movement": 0.048,
+    "space": 0.055,
+    "warmth": 0.903
+  },
   "engines": [
-    "ODYSSEY",
-    "OBBLIGATO"
+    "Odyssey",
+    "Obbligato"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.893,
+    "COUPLING": 0.494,
+    "MOVEMENT": 0.055,
+    "SPACE": 0.034
+  },
+  "mood": "Family",
+  "name": "Sunrise Rage",
   "parameters": {
-    "ODYSSEY": {
-      "macro_character": 0.902,
-      "macro_movement": 0.067,
-      "macro_coupling": 0.474,
+    "Obbligato": {
+      "macro_character": 0.884,
+      "macro_coupling": 0.514,
+      "macro_movement": 0.042,
       "macro_space": 0.034
     },
-    "OBBLIGATO": {
-      "macro_character": 0.884,
-      "macro_movement": 0.042,
-      "macro_coupling": 0.514,
+    "Odyssey": {
+      "macro_character": 0.902,
+      "macro_coupling": 0.474,
+      "macro_movement": 0.067,
       "macro_space": 0.034
     }
   },
-  "coupling": {
-    "type": "FILTER_LINK",
-    "source": "ODYSSEY",
-    "target": "OBBLIGATO",
-    "amount": 0.627
-  },
-  "dna": {
-    "brightness": 0.897,
-    "warmth": 0.903,
-    "movement": 0.048,
-    "density": 0.396,
-    "space": 0.055,
-    "aggression": 0.601
-  },
-  "macros": {
-    "CHARACTER": 0.893,
-    "MOVEMENT": 0.055,
-    "COUPLING": 0.494,
-    "SPACE": 0.034
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "intimate",
     "bright",
     "still"
-  ]
+  ],
+  "version": "1.0"
 }

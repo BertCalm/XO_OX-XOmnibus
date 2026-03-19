@@ -31,7 +31,10 @@
     "space": 0.15,
     "aggression": 0.35
   },
-  "parameters": {},
+  "parameters": {
+    "Obese": {},
+    "Overworld": {}
+  },
   "coupling": {
     "pairs": [
       {

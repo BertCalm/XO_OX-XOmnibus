@@ -1,14 +1,86 @@
 {
-  "schema_version": 1,
-  "name": "DARK_COLD_KINETIC_INTIMATE_ENT_1",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.8047,
+        "source": "Ombre",
+        "target": "Organon",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Dark Cold Kinetic Intimate character entanglement — OMBRE × ORGANON via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.4061,
+    "brightness": 0.0435,
+    "density": 0.4516,
+    "movement": 0.877,
+    "space": 0.1284,
+    "warmth": 0.0641
+  },
   "engines": [
-    "OMBRE",
-    "ORGANON"
+    "Ombre",
+    "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dark Cold Kinetic Intimate character entanglement \u2014 OMBRE \u00d7 ORGANON via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "SHADE",
+    "GRADIENT",
+    "FADE",
+    "DRIFT"
+  ],
+  "macros": {
+    "CHARACTER": 0.0538,
+    "COUPLING": 0.8047,
+    "MOVEMENT": 0.877,
+    "SPACE": 0.1284
+  },
+  "mood": "Entangled",
+  "name": "Fragment Surge",
+  "parameters": {
+    "Ombre": {
+      "amp_attack": 0.1367,
+      "amp_release": 0.1833,
+      "coupling_level": 0.7406,
+      "density": 0.4583,
+      "drive": 0.3395,
+      "filter_cutoff": 0.2029,
+      "filter_resonance": 0.2868,
+      "macro_character": 0.3753,
+      "macro_coupling": 0.7466,
+      "macro_movement": 0.9166,
+      "macro_space": 0.1459,
+      "output_level": 0.8131,
+      "reverb_mix": 0.224,
+      "reverb_size": 0.2968
+    },
+    "Organon": {
+      "amp_attack": 0.078,
+      "amp_release": 0.1466,
+      "coupling_level": 0.7191,
+      "density": 0.4612,
+      "drive": 0.3825,
+      "filter_cutoff": 0.2381,
+      "filter_resonance": 0.3171,
+      "macro_character": 0.3113,
+      "macro_coupling": 0.7085,
+      "macro_movement": 0.9139,
+      "macro_space": 0.1033,
+      "output_level": 0.8064,
+      "reverb_mix": 0.2518,
+      "reverb_size": 0.2567
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4061,
+    "brightness": 0.0435,
+    "density": 0.4516,
+    "movement": 0.877,
+    "space": 0.1284,
+    "warmth": 0.0641
+  },
   "tags": [
     "entangled",
     "dark",
@@ -17,81 +89,5 @@
     "intimate",
     "resonant"
   ],
-  "macroLabels": [
-    "SHADE",
-    "GRADIENT",
-    "FADE",
-    "DRIFT"
-  ],
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.0435,
-    "warmth": 0.0641,
-    "movement": 0.877,
-    "density": 0.4516,
-    "space": 0.1284,
-    "aggression": 0.4061
-  },
-  "sonic_dna": {
-    "brightness": 0.0435,
-    "warmth": 0.0641,
-    "movement": 0.877,
-    "density": 0.4516,
-    "space": 0.1284,
-    "aggression": 0.4061
-  },
-  "parameters": {
-    "OMBRE": {
-      "macro_character": 0.3753,
-      "macro_movement": 0.9166,
-      "macro_coupling": 0.7466,
-      "macro_space": 0.1459,
-      "filter_cutoff": 0.2029,
-      "filter_resonance": 0.2868,
-      "amp_attack": 0.1367,
-      "amp_release": 0.1833,
-      "reverb_mix": 0.224,
-      "reverb_size": 0.2968,
-      "drive": 0.3395,
-      "density": 0.4583,
-      "output_level": 0.8131,
-      "coupling_level": 0.7406
-    },
-    "ORGANON": {
-      "macro_character": 0.3113,
-      "macro_movement": 0.9139,
-      "macro_coupling": 0.7085,
-      "macro_space": 0.1033,
-      "filter_cutoff": 0.2381,
-      "filter_resonance": 0.3171,
-      "amp_attack": 0.078,
-      "amp_release": 0.1466,
-      "reverb_mix": 0.2518,
-      "reverb_size": 0.2567,
-      "drive": 0.3825,
-      "density": 0.4612,
-      "output_level": 0.8064,
-      "coupling_level": 0.7191
-    }
-  },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OMBRE",
-    "target": "ORGANON",
-    "amount": 0.8047,
-    "pairs": [
-      {
-        "source": "OMBRE",
-        "target": "ORGANON",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.8047
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.0538,
-    "MOVEMENT": 0.877,
-    "COUPLING": 0.8047,
-    "SPACE": 0.1284
-  }
+  "version": "1.0.0"
 }

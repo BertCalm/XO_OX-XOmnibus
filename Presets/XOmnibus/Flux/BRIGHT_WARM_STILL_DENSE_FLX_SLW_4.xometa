@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_WARM_STILL_DENSE_FLX_SLW_4",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Overworld",
+        "type": "CHAOS_INJECT",
+        "amount": 0.729
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.586,
+    "brightness": 0.975,
+    "density": 0.897,
+    "movement": 0.096,
+    "space": 0.432,
+    "warmth": 0.958
+  },
   "engines": [
-    "OPTIC",
-    "OVERWORLD"
+    "Optic",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.742,
+    "COUPLING": 0.804,
+    "MOVEMENT": 0.096,
+    "SPACE": 0.432
+  },
+  "mood": "Flux",
+  "name": "Sunrise Packed",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.839,
-      "macro_movement": 0.081,
       "macro_coupling": 0.798,
+      "macro_movement": 0.081,
       "macro_space": 0.421
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.939,
-      "macro_movement": 0.105,
       "macro_coupling": 0.92,
+      "macro_movement": 0.105,
       "macro_space": 0.43
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OPTIC",
-    "target": "OVERWORLD",
-    "amount": 0.729
-  },
-  "dna": {
-    "brightness": 0.975,
-    "warmth": 0.958,
-    "movement": 0.096,
-    "density": 0.897,
-    "space": 0.432,
-    "aggression": 0.586
-  },
-  "macros": {
-    "CHARACTER": 0.742,
-    "MOVEMENT": 0.096,
-    "COUPLING": 0.804,
-    "SPACE": 0.432
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +58,6 @@
     "warm",
     "dense",
     "suspended-chaos"
-  ]
+  ],
+  "version": "1.0"
 }

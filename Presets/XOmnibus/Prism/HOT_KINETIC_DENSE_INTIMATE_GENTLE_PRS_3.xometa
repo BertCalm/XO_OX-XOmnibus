@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "HOT_KINETIC_DENSE_INTIMATE_GENTLE_PRS_3",
-  "mood": "Prism",
-  "engines": [
-    "OHM",
-    "OWLFISH"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Owlfish",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.598
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: HOT_KINETIC_DENSE_INTIMATE_GENTLE. Variant 3.",
+  "dna": {
+    "aggression": 0.051,
+    "brightness": 0.652,
+    "density": 0.961,
+    "movement": 0.948,
+    "space": 0.052,
+    "warmth": 0.927
+  },
+  "engines": [
+    "Ohm",
+    "Owlfish"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.599,
+    "COUPLING": 0.996,
+    "MOVEMENT": 0.953,
+    "SPACE": 0.074
+  },
+  "mood": "Prism",
+  "name": "Solar Molten",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.589,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.998,
+      "macro_space": 0.01
+    },
+    "Owlfish": {
+      "macro_character": 0.609,
+      "macro_coupling": 0.992,
+      "macro_movement": 0.908,
+      "macro_space": 0.138
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "hot",
     "extreme",
@@ -19,53 +70,6 @@
     "gentle",
     "dense"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OHM": {
-      "macro_character": 0.589,
-      "macro_movement": 0.998,
-      "macro_coupling": 1.0,
-      "macro_space": 0.01
-    },
-    "OWLFISH": {
-      "macro_character": 0.609,
-      "macro_movement": 0.908,
-      "macro_coupling": 0.992,
-      "macro_space": 0.138
-    }
-  },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OHM",
-    "target": "OWLFISH",
-    "amount": 0.598
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.652,
-    "warmth": 0.927,
-    "movement": 0.948,
-    "density": 0.961,
-    "space": 0.052,
-    "aggression": 0.051
-  },
-  "macros": {
-    "CHARACTER": 0.599,
-    "MOVEMENT": 0.953,
-    "COUPLING": 0.996,
-    "SPACE": 0.074
-  }
+  "version": "1.0.0"
 }

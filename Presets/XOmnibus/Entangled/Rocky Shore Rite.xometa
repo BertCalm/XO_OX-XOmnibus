@@ -1,22 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Rocky Shore Rite",
-  "mood": "Entangled",
-  "engines": [
-    "OSPREY",
-    "OSTERIA",
-    "OCEANIC"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Windswept ritual on the rocks \u2014 flight, fire, and foam in deep entanglement.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "shore",
-    "ritual",
-    "wind",
-    "rocky"
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "Osprey",
+        "engineB": "Osteria",
+        "type": "Env->Morph"
+      },
+      {
+        "amount": 0.6,
+        "engineA": "Osprey",
+        "engineB": "Oceanic",
+        "type": "LFO->Filter"
+      },
+      {
+        "amount": 0.55,
+        "engineA": "Osteria",
+        "engineB": "Oceanic",
+        "type": "Env->Amp"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Windswept ritual on the rocks — flight, fire, and foam in deep entanglement.",
+  "dna": {
+    "aggression": 0.325,
+    "brightness": 0.936,
+    "density": 0.538,
+    "movement": 0.612,
+    "space": 0.675,
+    "warmth": 0.453
+  },
+  "engines": [
+    "Osprey",
+    "Osteria",
+    "Oceanic"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,42 +45,27 @@
   ],
   "macros": {
     "CHARACTER": 0.65,
-    "MOVEMENT": 0.7,
     "COUPLING": 0.85,
+    "MOVEMENT": 0.7,
     "SPACE": 0.6
   },
-  "couplingIntensity": "Deep",
+  "mood": "Entangled",
+  "name": "Rocky Shore Rite",
+  "parameters": {
+    "Osprey": {},
+    "Osteria": {},
+    "Oceanic": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "ritual",
+    "wind",
+    "rocky"
+  ],
   "tempo": null,
-  "dna": {
-    "brightness": 0.936,
-    "warmth": 0.453,
-    "movement": 0.612,
-    "density": 0.538,
-    "space": 0.675,
-    "aggression": 0.325
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OSPREY",
-        "engineB": "OSTERIA",
-        "type": "Env->Morph",
-        "amount": 0.7
-      },
-      {
-        "engineA": "OSPREY",
-        "engineB": "OCEANIC",
-        "type": "LFO->Filter",
-        "amount": 0.6
-      },
-      {
-        "engineA": "OSTERIA",
-        "engineB": "OCEANIC",
-        "type": "Env->Amp",
-        "amount": 0.55
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

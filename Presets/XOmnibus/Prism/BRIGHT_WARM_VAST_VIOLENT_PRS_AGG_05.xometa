@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT WARM VAST VIOLENT PRS AGG 5",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OHM",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "OHM": {
-      "macro_character": 0.911,
-      "macro_movement": 0.52,
-      "macro_coupling": 0.878,
-      "macro_space": 0.834
-    },
-    "OBLIQUE": {
-      "macro_character": 0.916,
-      "macro_movement": 0.489,
-      "macro_coupling": 0.816,
-      "macro_space": 0.876
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OHM",
-    "target": "OBLIQUE",
-    "amount": 0.711
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Oblique",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.711
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.894,
     "brightness": 0.937,
-    "warmth": 0.986,
-    "movement": 0.523,
     "density": 0.354,
+    "movement": 0.523,
     "space": 0.899,
-    "aggression": 0.894
+    "warmth": 0.986
   },
+  "engines": [
+    "Ohm",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.913,
-    "MOVEMENT": 0.504,
     "COUPLING": 0.847,
+    "MOVEMENT": 0.504,
     "SPACE": 0.855
   },
+  "mood": "Prism",
+  "name": "BRIGHT WARM VAST VIOLENT PR...",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.916,
+      "macro_coupling": 0.816,
+      "macro_movement": 0.489,
+      "macro_space": 0.876
+    },
+    "Ohm": {
+      "macro_character": 0.911,
+      "macro_coupling": 0.878,
+      "macro_movement": 0.52,
+      "macro_space": 0.834
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "aggressive",
@@ -47,5 +58,6 @@
     "violent",
     "bright",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

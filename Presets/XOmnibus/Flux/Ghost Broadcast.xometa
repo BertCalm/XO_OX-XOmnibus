@@ -1,63 +1,63 @@
 {
-  "schema_version": 1,
-  "name": "Ghost Broadcast",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Evolving lo-fi atmospheres texture with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.423,
+    "brightness": 0.561,
+    "density": 0.246,
+    "movement": 0.225,
+    "space": 0.192,
+    "warmth": 0.338
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Evolving lo-fi atmospheres texture with bob character and analog drift.",
-  "tags": [
-    "lofi",
-    "radio",
-    "ghost"
-  ],
+  "legacy": {
+    "sourceCategory": "Lo-Fi Atmospheres",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Lo-Fi Atmospheres",
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Ghost Broadcast",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 2.0,
-      "bob_oscA_drift": 0.32,
-      "bob_oscA_shape": 0.5,
-      "bob_oscB_wave": 0.0,
-      "bob_oscB_blend": 0.45,
-      "bob_oscB_detune": 8.0,
-      "bob_fltMode": 1.0,
-      "bob_fltCutoff": 2200.0,
-      "bob_fltReso": 0.55,
-      "bob_fltChar": 0.68,
-      "bob_dustAmount": 0.65,
-      "bob_dustTone": 0.38,
-      "bob_curMode": 0.0,
-      "bob_curAmount": 0.45,
       "bob_ampAttack": 0.02,
       "bob_ampDecay": 0.5,
-      "bob_ampSustain": 0.58,
       "bob_ampRelease": 2.0,
-      "bob_bobMode": 0.28
+      "bob_ampSustain": 0.58,
+      "bob_bobMode": 0.28,
+      "bob_curAmount": 0.45,
+      "bob_curMode": 0.0,
+      "bob_dustAmount": 0.65,
+      "bob_dustTone": 0.38,
+      "bob_fltChar": 0.68,
+      "bob_fltCutoff": 2200.0,
+      "bob_fltMode": 1.0,
+      "bob_fltReso": 0.55,
+      "bob_oscA_drift": 0.32,
+      "bob_oscA_shape": 0.5,
+      "bob_oscA_wave": 2.0,
+      "bob_oscB_blend": 0.45,
+      "bob_oscB_detune": 8.0,
+      "bob_oscB_wave": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.561,
-    "warmth": 0.338,
-    "movement": 0.225,
-    "density": 0.246,
-    "space": 0.192,
-    "aggression": 0.423
-  }
+  "tags": [
+    "lofi",
+    "radio",
+    "ghost"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

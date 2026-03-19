@@ -1,31 +1,46 @@
 {
-  "name": "Coral Blur",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Obbligato",
+        "type": "DAGUERREOTYPE_BLUR",
+        "amount": 0.6
+      }
+    ]
+  },
+  "description": "OBBLIGATO BOND macro tied to obscura blur depth — the tighter the bond, the sharper the image",
   "engines": [
-    "OBBLIGATO",
-    "OBSCURA"
+    "Obbligato",
+    "Obscura"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.55,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.47,
-    "warmth": 0.57,
-    "movement": 0.53,
-    "density": 0.63,
-    "space": 0.58,
-    "aggression": 0.39
+  "mood": "Entangled",
+  "name": "Coral Blur",
+  "parameters": {
+    "Obbligato": {},
+    "Obscura": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "DAGUERREOTYPE_BLUR",
-    "source": "OBSCURA",
-    "target": "OBBLIGATO",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.39,
+    "brightness": 0.47,
+    "density": 0.63,
+    "movement": 0.53,
+    "space": 0.58,
+    "warmth": 0.57
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "obscura",
     "wind"
   ],
-  "description": "OBBLIGATO BOND macro tied to obscura blur depth \u2014 the tighter the bond, the sharper the image"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

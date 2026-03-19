@@ -1,22 +1,35 @@
 {
-  "schema_version": 1,
-  "name": "Living Saturation",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "Organon",
+        "engineB": "Obese",
+        "type": "Audio->FM"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Organon's metabolic output drives Obese saturation curves. The organism overdrives itself into life.",
+  "dna": {
+    "aggression": 0.47,
+    "brightness": 0.535,
+    "density": 0.665,
+    "movement": 1.0,
+    "space": 0.711,
+    "warmth": 0.54
+  },
   "engines": [
     "Organon",
     "Obese"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Organon's metabolic output drives Obese saturation curves. The organism overdrives itself into life.",
-  "tags": [
-    "saturation",
-    "overdrive",
-    "organism",
-    "entangled",
-    "organon",
-    "obese"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -25,54 +38,41 @@
   ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.65,
     "SPACE": 0.55
   },
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Living Saturation",
   "parameters": {
+    "Obese": {
+      "fat_filterCutoff": 0.5,
+      "fat_mojoAnalog": 0.6,
+      "fat_satDrive": 0.55
+    },
     "Organon": {
-      "organon_metabolicRate": 3.5,
-      "organon_enzymeSelect": 600.0,
       "organon_catalystDrive": 1.8,
       "organon_dampingCoeff": 0.4,
-      "organon_signalFlux": 0.9,
-      "organon_phasonShift": 0.25,
+      "organon_enzymeSelect": 600.0,
       "organon_isotopeBalance": 0.5,
       "organon_lockIn": 0.0,
       "organon_membrane": 0.55,
-      "organon_noiseColor": 0.6
-    },
-    "Obese": {
-      "fat_satDrive": 0.55,
-      "fat_filterCutoff": 0.5,
-      "fat_mojoAnalog": 0.6
+      "organon_metabolicRate": 3.5,
+      "organon_noiseColor": 0.6,
+      "organon_phasonShift": 0.25,
+      "organon_signalFlux": 0.9
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Obese",
-        "type": "Audio->FM",
-        "amount": 0.7
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.535,
-    "warmth": 0.54,
-    "movement": 1.0,
-    "density": 0.665,
-    "space": 0.711,
-    "aggression": 0.47
-  }
+  "tags": [
+    "saturation",
+    "overdrive",
+    "organism",
+    "entangled",
+    "organon",
+    "obese"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

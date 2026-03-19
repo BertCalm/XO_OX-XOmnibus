@@ -1,31 +1,46 @@
 {
-  "name": "Prismatic Fanfare",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Ottoni",
+        "type": "SPECTRAL_REFRACTION",
+        "amount": 0.75
+      }
+    ]
+  },
+  "description": "Fanfare hits optical array and shatters into spectral components — glory dispersed",
   "engines": [
-    "OTTONI",
-    "OPTIC"
+    "Ottoni",
+    "Optic"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.65,
-    "MOVEMENT": 0.45,
     "COUPLING": 0.75,
+    "MOVEMENT": 0.45,
     "SPACE": 0.55
   },
-  "sonic_dna": {
-    "brightness": 0.73,
-    "warmth": 0.5,
-    "movement": 0.56,
-    "density": 0.6,
-    "space": 0.52,
-    "aggression": 0.52
+  "mood": "Entangled",
+  "name": "Prismatic Fanfare",
+  "parameters": {
+    "Ottoni": {},
+    "Optic": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "SPECTRAL_REFRACTION",
-    "source": "OPTIC",
-    "target": "OTTONI",
-    "amount": 0.75
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.52,
+    "brightness": 0.73,
+    "density": 0.6,
+    "movement": 0.56,
+    "space": 0.52,
+    "warmth": 0.5
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "optic",
     "triple"
   ],
-  "description": "Fanfare hits optical array and shatters into spectral components \u2014 glory dispersed"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

@@ -1,14 +1,86 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_ENT_5",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.8138,
+        "source": "Octopus",
+        "target": "Overworld",
+        "type": "PHASE_LOCK"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Bright Kinetic Dense Violent character entanglement — OVERWORLD × OCTOPUS via Phase Lock. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.9008,
+    "brightness": 0.9347,
+    "density": 0.9796,
+    "movement": 0.9337,
+    "space": 0.6322,
+    "warmth": 0.6886
+  },
   "engines": [
-    "OVERWORLD",
-    "OCTOPUS"
+    "Overworld",
+    "Octopus"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bright Kinetic Dense Violent character entanglement \u2014 OVERWORLD \u00d7 OCTOPUS via Phase Lock. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "ERA",
+    "GLITCH",
+    "CHIP",
+    "CRT"
+  ],
+  "macros": {
+    "CHARACTER": 0.8116,
+    "COUPLING": 0.8138,
+    "MOVEMENT": 0.9337,
+    "SPACE": 0.6322
+  },
+  "mood": "Entangled",
+  "name": "Glow Deep",
+  "parameters": {
+    "Octopus": {
+      "amp_attack": 0.1117,
+      "amp_release": 0.448,
+      "coupling_level": 0.888,
+      "density": 0.9845,
+      "drive": 0.8013,
+      "filter_cutoff": 0.8611,
+      "filter_resonance": 0.5762,
+      "macro_character": 0.8587,
+      "macro_coupling": 0.9291,
+      "macro_movement": 0.9301,
+      "macro_space": 0.646,
+      "output_level": 0.9781,
+      "reverb_mix": 0.4764,
+      "reverb_size": 0.5413
+    },
+    "Overworld": {
+      "amp_attack": 0.1053,
+      "amp_release": 0.4972,
+      "coupling_level": 0.8714,
+      "density": 0.9689,
+      "drive": 0.795,
+      "filter_cutoff": 0.8256,
+      "filter_resonance": 0.5877,
+      "macro_character": 0.8755,
+      "macro_coupling": 0.8845,
+      "macro_movement": 0.9208,
+      "macro_space": 0.6692,
+      "output_level": 0.9682,
+      "reverb_mix": 0.5361,
+      "reverb_size": 0.6167
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9008,
+    "brightness": 0.9347,
+    "density": 0.9796,
+    "movement": 0.9337,
+    "space": 0.6322,
+    "warmth": 0.6886
+  },
   "tags": [
     "entangled",
     "bright",
@@ -17,81 +89,5 @@
     "violent",
     "resonant"
   ],
-  "macroLabels": [
-    "ERA",
-    "GLITCH",
-    "CHIP",
-    "CRT"
-  ],
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.9347,
-    "warmth": 0.6886,
-    "movement": 0.9337,
-    "density": 0.9796,
-    "space": 0.6322,
-    "aggression": 0.9008
-  },
-  "sonic_dna": {
-    "brightness": 0.9347,
-    "warmth": 0.6886,
-    "movement": 0.9337,
-    "density": 0.9796,
-    "space": 0.6322,
-    "aggression": 0.9008
-  },
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.8755,
-      "macro_movement": 0.9208,
-      "macro_coupling": 0.8845,
-      "macro_space": 0.6692,
-      "filter_cutoff": 0.8256,
-      "filter_resonance": 0.5877,
-      "amp_attack": 0.1053,
-      "amp_release": 0.4972,
-      "reverb_mix": 0.5361,
-      "reverb_size": 0.6167,
-      "drive": 0.795,
-      "density": 0.9689,
-      "output_level": 0.9682,
-      "coupling_level": 0.8714
-    },
-    "OCTOPUS": {
-      "macro_character": 0.8587,
-      "macro_movement": 0.9301,
-      "macro_coupling": 0.9291,
-      "macro_space": 0.646,
-      "filter_cutoff": 0.8611,
-      "filter_resonance": 0.5762,
-      "amp_attack": 0.1117,
-      "amp_release": 0.448,
-      "reverb_mix": 0.4764,
-      "reverb_size": 0.5413,
-      "drive": 0.8013,
-      "density": 0.9845,
-      "output_level": 0.9781,
-      "coupling_level": 0.888
-    }
-  },
-  "coupling": {
-    "type": "PHASE_LOCK",
-    "source": "OCTOPUS",
-    "target": "OVERWORLD",
-    "amount": 0.8138,
-    "pairs": [
-      {
-        "source": "OCTOPUS",
-        "target": "OVERWORLD",
-        "type": "PHASE_LOCK",
-        "amount": 0.8138
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.8116,
-    "MOVEMENT": 0.9337,
-    "COUPLING": 0.8138,
-    "SPACE": 0.6322
-  }
+  "version": "1.0.0"
 }

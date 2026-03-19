@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FND_AGG_5",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OUROBOROS",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.775,
-      "macro_movement": 0.385,
-      "macro_coupling": 0.39,
-      "macro_space": 0.369
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.758,
-      "macro_movement": 0.386,
-      "macro_coupling": 0.368,
-      "macro_space": 0.368
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OUROBOROS",
-    "target": "ODDOSCAR",
-    "amount": 0.738
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "OddOscar",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.738
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.871,
     "brightness": 0.9,
-    "warmth": 0.326,
-    "movement": 0.873,
     "density": 0.936,
+    "movement": 0.873,
     "space": 0.535,
-    "aggression": 0.871
+    "warmth": 0.326
   },
+  "engines": [
+    "Ouroboros",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.775,
-    "MOVEMENT": 0.385,
     "COUPLING": 0.39,
+    "MOVEMENT": 0.385,
     "SPACE": 0.369
   },
+  "mood": "Foundation",
+  "name": "Ice Deep",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.758,
+      "macro_coupling": 0.368,
+      "macro_movement": 0.386,
+      "macro_space": 0.368
+    },
+    "Ouroboros": {
+      "macro_character": 0.775,
+      "macro_coupling": 0.39,
+      "macro_movement": 0.385,
+      "macro_space": 0.369
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "bright",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

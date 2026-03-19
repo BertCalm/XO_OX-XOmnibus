@@ -1,44 +1,62 @@
 {
-  "schema_version": 1,
-  "name": "One Grain",
-  "mood": "Flux",
-  "engines": ["Opal"],
-  "author": "Guru Bin — OPAL Deep Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Density at absolute minimum — 0.04. One grain at a time. Large grain size 0.85 so each single grain is a long, sustained fragment. posScatter 1.0 means every grain fires at a completely random position in the source buffer. The pattern is: silence, then a long strange fragment from somewhere unknown, then silence again. No prediction is possible. This is the anti-pad: an instrument that refuses to sustain.",
-  "tags": ["flux", "granular", "sparse", "extreme", "experimental", "density", "minimal", "strange"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.45,
-    "movement": 0.3,
-    "density": 0.08,
-    "space": 0.65,
-    "aggression": 0.4
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Density at absolute minimum — 0.04. One grain at a time. Large grain size 0.85 so each single grain is a long, sustained fragment. posScatter 1.0 means every grain fires at a completely random position in the source buffer. The pattern is: silence, then a long strange fragment from somewhere unknown, then silence again. No prediction is possible. This is the anti-pad: an instrument that refuses to sustain.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.4,
+    "density": 0.08,
+    "movement": 0.3,
+    "space": 0.65,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "One Grain",
   "parameters": {
     "Opal": {
-      "opal_grainSize": 0.85,
-      "opal_density": 0.04,
-      "opal_posScatter": 1.0,
-      "opal_pitchScatter": 0.0,
-      "opal_filterCutoff": 0.5,
-      "opal_filterReso": 0.1,
       "opal_ampAttack": 0.0,
       "opal_ampDecay": 0.3,
-      "opal_ampSustain": 1.0,
       "opal_ampRelease": 0.5,
-      "opal_speed": 1.0,
-      "opal_reverse": 0.0,
+      "opal_ampSustain": 1.0,
+      "opal_density": 0.04,
+      "opal_filterCutoff": 0.5,
+      "opal_filterReso": 0.1,
+      "opal_grainSize": 0.85,
       "opal_macroCharacter": 0.0,
-      "opal_macroMovement": 0.0,
       "opal_macroCoupling": 0.0,
-      "opal_macroSpace": 0.0
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitchScatter": 0.0,
+      "opal_posScatter": 1.0,
+      "opal_reverse": 0.0,
+      "opal_speed": 1.0
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "flux",
+    "granular",
+    "sparse",
+    "extreme",
+    "experimental",
+    "density",
+    "minimal",
+    "strange"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,13 +1,50 @@
 {
-  "schema_version": 1,
-  "name": "Spectral Voices",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expansive pads atmosphere with warm character.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.422,
+    "density": 0.292,
+    "movement": 0.15,
+    "space": 0.297,
+    "warmth": 0.154
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expansive pads atmosphere with warm character.",
+  "legacy": {
+    "sourceCategory": "Pads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Spectral Voices",
+  "parameters": {
+    "Odyssey": {
+      "drift_attack": 350.0,
+      "drift_formantMorph": 0.5,
+      "drift_level": -4.0,
+      "drift_oscA_detune": 0.3,
+      "drift_oscA_level": 0.6,
+      "drift_oscA_mode": 2.0,
+      "drift_oscB_level": 0.5,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 0.0,
+      "drift_release": 1800.0,
+      "drift_sustain": 0.7
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "tidal",
     "spacious",
@@ -15,43 +52,6 @@
     "formant",
     "slow-attack"
   ],
-  "macroLabels": [
-    "JOURNEY",
-    "BREATHE",
-    "BLOOM",
-    "FRACTURE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Pads",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Odyssey": {
-      "drift_oscA_mode": 2.0,
-      "drift_oscA_level": 0.6,
-      "drift_oscA_detune": 0.3,
-      "drift_oscB_mode": 0.0,
-      "drift_oscB_shape": 0.0,
-      "drift_oscB_level": 0.5,
-      "drift_formantMorph": 0.5,
-      "drift_attack": 350.0,
-      "drift_sustain": 0.7,
-      "drift_release": 1800.0,
-      "drift_level": -4.0
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.422,
-    "warmth": 0.154,
-    "movement": 0.15,
-    "density": 0.292,
-    "space": 0.297,
-    "aggression": 0.0
-  }
+  "version": "1.0.0"
 }

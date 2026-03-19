@@ -1,48 +1,60 @@
 {
-  "name": "Double Slab",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Oblong",
+        "type": "FILTER_MOD",
+        "amount": 0.71
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.37,
+    "brightness": 0.22,
+    "density": 0.86,
+    "movement": 0.43,
+    "space": 0.41,
+    "warmth": 0.87
+  },
   "engines": [
-    "OBESE",
-    "OBLONG"
+    "Obese",
+    "Oblong"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.71,
+    "COUPLING": 0.66,
+    "MOVEMENT": 0.3,
+    "SPACE": 0.42
+  },
+  "mood": "Entangled",
+  "name": "Double Slab",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.78,
-      "macro_movement": 0.31,
       "macro_coupling": 0.79,
+      "macro_movement": 0.31,
       "macro_space": 0.48
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.63,
-      "macro_movement": 0.29,
       "macro_coupling": 0.53,
+      "macro_movement": 0.29,
       "macro_space": 0.36
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OBESE",
-    "target": "OBLONG",
-    "amount": 0.71
-  },
-  "dna": {
-    "brightness": 0.22,
-    "warmth": 0.87,
-    "movement": 0.43,
-    "density": 0.86,
-    "space": 0.41,
-    "aggression": 0.37
-  },
-  "macros": {
-    "CHARACTER": 0.71,
-    "MOVEMENT": 0.3,
-    "COUPLING": 0.66,
-    "SPACE": 0.42
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-  ]
+  ],
+  "version": "1.0"
 }

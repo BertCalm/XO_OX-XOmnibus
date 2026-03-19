@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_DENSE_VAST_PRS_DRK_3",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OTTONI",
-    "ORPHICA"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.744,
-      "macro_movement": 0.5762,
-      "macro_coupling": 0.9453,
-      "macro_space": 0.8822
-    },
-    "ORPHICA": {
-      "macro_character": 0.7493,
-      "macro_movement": 0.5395,
-      "macro_coupling": 0.9479,
-      "macro_space": 0.8951
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OTTONI",
-    "target": "ORPHICA",
-    "amount": 0.8685
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Orphica",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.8685
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.609,
     "brightness": 0.0844,
-    "warmth": 0.8791,
-    "movement": 0.5762,
     "density": 0.9453,
+    "movement": 0.5762,
     "space": 0.8822,
-    "aggression": 0.609
+    "warmth": 0.8791
   },
+  "engines": [
+    "Ottoni",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.744,
-    "MOVEMENT": 0.5762,
     "COUPLING": 0.9453,
+    "MOVEMENT": 0.5762,
     "SPACE": 0.8822
   },
+  "mood": "Prism",
+  "name": "DARK_HOT_DENSE_VAST_PRS_DRK_3",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.7493,
+      "macro_coupling": 0.9479,
+      "macro_movement": 0.5395,
+      "macro_space": 0.8951
+    },
+    "Ottoni": {
+      "macro_character": 0.744,
+      "macro_coupling": 0.9453,
+      "macro_movement": 0.5762,
+      "macro_space": 0.8822
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "hot",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,62 @@
 {
-  "name": "DARK_COLD_KINETIC_VAST_PRS_DRK_5",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "ORACLE",
-    "OHM"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.3033,
-      "macro_movement": 0.9563,
-      "macro_coupling": 0.5019,
-      "macro_space": 0.9697
-    },
-    "OHM": {
-      "macro_character": 0.2831,
-      "macro_movement": 0.9673,
-      "macro_coupling": 0.5232,
-      "macro_space": 0.9714
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ORACLE",
-    "target": "OHM",
-    "amount": 0.6537
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Ohm",
+        "type": "CHAOS_INJECT",
+        "amount": 0.6537
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.5191,
     "brightness": 0.1002,
-    "warmth": 0.0874,
-    "movement": 0.9563,
     "density": 0.5019,
+    "movement": 0.9563,
     "space": 0.9697,
-    "aggression": 0.5191
+    "warmth": 0.0874
   },
+  "engines": [
+    "Oracle",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.3033,
-    "MOVEMENT": 0.9563,
     "COUPLING": 0.5019,
+    "MOVEMENT": 0.9563,
     "SPACE": 0.9697
   },
+  "mood": "Prism",
+  "name": "Flux Vast",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.2831,
+      "macro_coupling": 0.5232,
+      "macro_movement": 0.9673,
+      "macro_space": 0.9714
+    },
+    "Oracle": {
+      "macro_character": 0.3033,
+      "macro_coupling": 0.5019,
+      "macro_movement": 0.9563,
+      "macro_space": 0.9697
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "cold",
     "kinetic",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

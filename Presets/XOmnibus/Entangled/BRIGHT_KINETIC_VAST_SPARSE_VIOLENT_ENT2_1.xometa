@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT KINETIC VAST SPARSE VIOLENT ENT2 1",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Origami",
+        "type": "CHAOS_INJECT",
+        "amount": 0.524
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.94,
+    "brightness": 0.927,
+    "density": 0.108,
+    "movement": 0.888,
+    "space": 0.979,
+    "warmth": 0.304
+  },
   "engines": [
-    "OLE",
-    "ORIGAMI"
+    "Ole",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.616,
+    "COUPLING": 0.524,
+    "MOVEMENT": 0.888,
+    "SPACE": 0.979
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT KINETIC VAST SPARSE ...",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.616,
-      "macro_movement": 0.888,
       "macro_coupling": 0.524,
+      "macro_movement": 0.888,
       "macro_space": 0.979
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.585,
-      "macro_movement": 0.92,
       "macro_coupling": 0.552,
+      "macro_movement": 0.92,
       "macro_space": 0.99
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OLE",
-    "target": "ORIGAMI",
-    "amount": 0.524
-  },
-  "dna": {
-    "brightness": 0.927,
-    "warmth": 0.304,
-    "movement": 0.888,
-    "density": 0.108,
-    "space": 0.979,
-    "aggression": 0.94
-  },
-  "macros": {
-    "CHARACTER": 0.616,
-    "MOVEMENT": 0.888,
-    "COUPLING": 0.524,
-    "SPACE": 0.979
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "bright",
@@ -47,5 +58,6 @@
     "sparse",
     "vast",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

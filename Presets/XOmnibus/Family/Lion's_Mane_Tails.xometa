@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Lion's Mane Tails",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OVERLAP KNOT topology — FDN tails overlapping. The jellyfish whose tendrils never fully separate. Endless interweave.",
+  "dna": {
+    "aggression": 0.22,
+    "brightness": 0.48,
+    "density": 0.72,
+    "movement": 0.62,
+    "space": 0.88,
+    "warmth": 0.55
+  },
   "engines": [
-    "OVERLAP"
+    "Overlap"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERLAP KNOT topology \u2014 FDN tails overlapping. The jellyfish whose tendrils never fully separate. Endless interweave.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "KNOT",
+    "TAIL",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Lion's Mane Tails",
+  "parameters": {
+    "Overlap": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "extended-family",
@@ -17,29 +42,6 @@
     "spatial",
     "batch2-extended"
   ],
-  "macroLabels": [
-    "KNOT",
-    "TAIL",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.48,
-    "warmth": 0.55,
-    "movement": 0.62,
-    "density": 0.72,
-    "space": 0.88,
-    "aggression": 0.22
-  }
+  "version": "1.0.0"
 }

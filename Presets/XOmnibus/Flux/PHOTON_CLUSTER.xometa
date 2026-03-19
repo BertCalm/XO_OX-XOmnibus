@@ -1,49 +1,61 @@
 {
-  "name": "PHOTON CLUSTER",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERLAP",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "OVERLAP": {
-      "macro_character": 0.705,
-      "macro_movement": 0.699,
-      "macro_coupling": 0.549,
-      "macro_space": 0.428
-    },
-    "OBLIQUE": {
-      "macro_character": 0.603,
-      "macro_movement": 0.759,
-      "macro_coupling": 0.514,
-      "macro_space": 0.29
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OVERLAP",
-    "target": "OBLIQUE",
-    "amount": 0.735
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Oblique",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.735
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.594,
     "brightness": 0.872,
-    "warmth": 0.67,
-    "movement": 0.613,
     "density": 0.899,
+    "movement": 0.613,
     "space": 0.568,
-    "aggression": 0.594
+    "warmth": 0.67
   },
+  "engines": [
+    "Overlap",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.705,
-    "MOVEMENT": 0.699,
     "COUPLING": 0.549,
+    "MOVEMENT": 0.699,
     "SPACE": 0.428
   },
+  "mood": "Flux",
+  "name": "PHOTON CLUSTER",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.603,
+      "macro_coupling": 0.514,
+      "macro_movement": 0.759,
+      "macro_space": 0.29
+    },
+    "Overlap": {
+      "macro_character": 0.705,
+      "macro_coupling": 0.549,
+      "macro_movement": 0.699,
+      "macro_space": 0.428
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "dense",
     "saturated"
-  ]
+  ],
+  "version": "1.0"
 }

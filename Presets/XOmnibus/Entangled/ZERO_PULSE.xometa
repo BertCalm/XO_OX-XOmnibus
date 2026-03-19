@@ -1,49 +1,61 @@
 {
-  "name": "ZERO PULSE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Origami",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.699
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.859,
+    "brightness": 0.852,
+    "density": 0.936,
+    "movement": 0.69,
+    "space": 0.445,
+    "warmth": 0.089
+  },
   "engines": [
-    "OBBLIGATO",
-    "ORIGAMI"
+    "Obbligato",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.379,
+    "COUPLING": 0.174,
+    "MOVEMENT": 0.748,
+    "SPACE": 0.569
+  },
+  "mood": "Entangled",
+  "name": "ZERO PULSE",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.125,
-      "macro_movement": 0.9,
       "macro_coupling": 0.507,
+      "macro_movement": 0.9,
       "macro_space": 0.667
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.326,
-      "macro_movement": 0.697,
       "macro_coupling": 0.554,
+      "macro_movement": 0.697,
       "macro_space": 0.192
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OBBLIGATO",
-    "target": "ORIGAMI",
-    "amount": 0.699
-  },
-  "dna": {
-    "brightness": 0.852,
-    "warmth": 0.089,
-    "movement": 0.69,
-    "density": 0.936,
-    "space": 0.445,
-    "aggression": 0.859
-  },
-  "macros": {
-    "CHARACTER": 0.379,
-    "MOVEMENT": 0.748,
-    "COUPLING": 0.174,
-    "SPACE": 0.569
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,48 +1,60 @@
 {
-  "name": "Occulted Orbit",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OPAL",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.24,
-      "macro_movement": 0.5,
-      "macro_coupling": 0.71,
-      "macro_space": 0.86
-    },
-    "OCEANIC": {
-      "macro_character": 0.31,
-      "macro_movement": 0.69,
-      "macro_coupling": 0.63,
-      "macro_space": 0.75
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMP_MOD",
-    "source": "OCEANIC",
-    "target": "OPAL",
-    "amount": 0.71
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Opal",
+        "type": "AMP_MOD",
+        "amount": 0.71
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.22,
     "brightness": 0.09,
-    "warmth": 0.27,
-    "movement": 0.45,
     "density": 0.36,
+    "movement": 0.45,
     "space": 0.73,
-    "aggression": 0.22
+    "warmth": 0.27
   },
+  "engines": [
+    "Opal",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.75,
-    "MOVEMENT": 0.45,
     "COUPLING": 0.93,
+    "MOVEMENT": 0.45,
     "SPACE": 0.73
   },
+  "mood": "Entangled",
+  "name": "Occulted Orbit",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.31,
+      "macro_coupling": 0.63,
+      "macro_movement": 0.69,
+      "macro_space": 0.75
+    },
+    "Opal": {
+      "macro_character": 0.24,
+      "macro_coupling": 0.71,
+      "macro_movement": 0.5,
+      "macro_space": 0.86
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-  ]
+  ],
+  "version": "1.0"
 }

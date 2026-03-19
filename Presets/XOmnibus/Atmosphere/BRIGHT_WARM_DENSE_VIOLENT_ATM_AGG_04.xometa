@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT WARM DENSE VIOLENT ATM AGG 4",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORIGAMI",
-    "ORGANON"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.811,
-      "macro_movement": 0.307,
-      "macro_coupling": 0.917,
-      "macro_space": 0.618
-    },
-    "ORGANON": {
-      "macro_character": 0.812,
-      "macro_movement": 0.316,
-      "macro_coupling": 0.867,
-      "macro_space": 0.665
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORIGAMI",
-    "target": "ORGANON",
-    "amount": 0.771
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Organon",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.771
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.934,
     "brightness": 0.877,
-    "warmth": 0.908,
-    "movement": 0.32,
     "density": 0.927,
+    "movement": 0.32,
     "space": 0.668,
-    "aggression": 0.934
+    "warmth": 0.908
   },
+  "engines": [
+    "Origami",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.812,
-    "MOVEMENT": 0.311,
     "COUPLING": 0.892,
+    "MOVEMENT": 0.311,
     "SPACE": 0.641
   },
+  "mood": "Atmosphere",
+  "name": "BRIGHT WARM DENSE VIOLENT A...",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.812,
+      "macro_coupling": 0.867,
+      "macro_movement": 0.316,
+      "macro_space": 0.665
+    },
+    "Origami": {
+      "macro_character": 0.811,
+      "macro_coupling": 0.917,
+      "macro_movement": 0.307,
+      "macro_space": 0.618
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -47,5 +58,6 @@
     "violent",
     "bright",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

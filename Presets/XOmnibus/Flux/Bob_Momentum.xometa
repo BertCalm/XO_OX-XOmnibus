@@ -33,7 +33,9 @@
     "space": 0.28,
     "aggression": 0.62
   },
-  "parameters": {},
+  "parameters": {
+    "Oblong": {}
+  },
   "tags": [
     "flux",
     "controlled",
@@ -41,5 +43,5 @@
     "momentum",
     "amber"
   ],
-  "description": "Amber warmth with purposeful forward motion \u2014 Bob in full stride."
+  "description": "Amber warmth with purposeful forward motion — Bob in full stride."
 }

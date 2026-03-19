@@ -1,45 +1,56 @@
 {
-  "name": "DARK COLD FURY ATM 01",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Optic",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.998
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.94,
+    "brightness": 0.114,
+    "density": 0.395,
+    "movement": 0.586,
+    "space": 0.458,
+    "warmth": 0.048
+  },
   "engines": [
-    "OBESE",
-    "OPTIC"
+    "Obese",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.081,
+    "COUPLING": 0.55,
+    "MOVEMENT": 0.586,
+    "SPACE": 0.458
+  },
+  "mood": "Atmosphere",
+  "name": "DARK COLD FURY ATM 01",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.081,
-      "macro_movement": 0.586,
       "macro_coupling": 0.55,
+      "macro_movement": 0.586,
       "macro_space": 0.458
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.157,
-      "macro_movement": 0.458,
       "macro_coupling": 0.545,
+      "macro_movement": 0.458,
       "macro_space": 0.608
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OBESE",
-    "target": "OPTIC",
-    "amount": 0.998
-  },
-  "dna": {
-    "brightness": 0.114,
-    "warmth": 0.048,
-    "movement": 0.586,
-    "density": 0.395,
-    "space": 0.458,
-    "aggression": 0.94
-  },
-  "macros": {
-    "CHARACTER": 0.081,
-    "MOVEMENT": 0.586,
-    "COUPLING": 0.55,
-    "SPACE": 0.458
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -47,5 +58,6 @@
     "aggressive",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

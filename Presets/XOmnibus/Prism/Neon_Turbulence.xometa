@@ -1,51 +1,51 @@
 {
-  "schema_version": 1,
-  "name": "Neon Turbulence",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Maximum boid turbulence under bright lights. Dense, fast, no space.",
+  "dna": {
+    "aggression": 0.882,
+    "brightness": 0.9,
+    "density": 0.82,
+    "movement": 0.95,
+    "space": 0.1,
+    "warmth": 0.845
+  },
   "engines": [
     "Oceanic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Maximum boid turbulence under bright lights. Dense, fast, no space.",
-  "tags": [
-    "kinetic-bright",
-    "extreme",
-    "prism",
-    "swarm"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Neon Turbulence",
   "parameters": {
     "Oceanic": {
-      "ocean_separation": 0.18,
       "ocean_alignment": 0.88,
-      "ocean_cohesion": 0.85,
       "ocean_brightness": 0.9,
+      "ocean_cohesion": 0.85,
       "ocean_depth": 0.15,
+      "ocean_separation": 0.18,
       "ocean_turbulence": 0.95
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.9,
-    "warmth": 0.845,
-    "movement": 0.95,
-    "density": 0.82,
-    "space": 0.1,
-    "aggression": 0.882
-  }
+  "tags": [
+    "kinetic-bright",
+    "extreme",
+    "prism",
+    "swarm"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,14 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Oracle Tide",
-  "mood": "Entangled",
-  "engines": [
-    "OCEANIC",
-    "ORACLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Oceanic",
+        "engineB": "Oracle",
+        "type": "LFO->Pitch"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
   "description": "Oracle reads the tide table; oceanic pulse obeys the ancient prediction.",
+  "dna": {
+    "aggression": 0.28,
+    "brightness": 0.6,
+    "density": 0.53,
+    "movement": 0.61,
+    "space": 0.7,
+    "warmth": 0.57
+  },
+  "engines": [
+    "Oceanic",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.75,
+    "MOVEMENT": 0.5,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Oracle Tide",
+  "parameters": {
+    "Oceanic": {},
+    "Oracle": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -19,38 +54,6 @@
     "tidal",
     "resonant"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5,
-    "MOVEMENT": 0.5,
-    "COUPLING": 0.75,
-    "SPACE": 0.5
-  },
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.57,
-    "movement": 0.61,
-    "density": 0.53,
-    "space": 0.7,
-    "aggression": 0.28
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OCEANIC",
-        "engineB": "ORACLE",
-        "type": "LFO->Pitch",
-        "amount": 0.6
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

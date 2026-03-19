@@ -1,31 +1,46 @@
 {
-  "name": "Crystal Spectrum",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Opal",
+        "type": "SPECTRAL_REFRACTION",
+        "amount": 0.8
+      }
+    ]
+  },
+  "description": "Opal shimmer refracted through prismatic lens — grain cloud split to spectral rays",
   "engines": [
-    "OPAL",
-    "OPTIC"
+    "Opal",
+    "Optic"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.45,
-    "MOVEMENT": 0.6,
     "COUPLING": 0.8,
+    "MOVEMENT": 0.6,
     "SPACE": 0.8
   },
-  "sonic_dna": {
-    "brightness": 0.64,
-    "warmth": 0.47,
-    "movement": 0.62,
-    "density": 0.48,
-    "space": 0.64,
-    "aggression": 0.28
+  "mood": "Entangled",
+  "name": "Crystal Spectrum II",
+  "parameters": {
+    "Opal": {},
+    "Optic": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "SPECTRAL_REFRACTION",
-    "source": "OPTIC",
-    "target": "OPAL",
-    "amount": 0.8
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.28,
+    "brightness": 0.64,
+    "density": 0.48,
+    "movement": 0.62,
+    "space": 0.64,
+    "warmth": 0.47
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "optic",
     "granular"
   ],
-  "description": "Opal shimmer refracted through prismatic lens \u2014 grain cloud split to spectral rays"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

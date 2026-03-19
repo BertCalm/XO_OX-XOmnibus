@@ -1,48 +1,60 @@
 {
-  "name": "OPEN ROOTS",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Optic",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.558
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.883,
+    "brightness": 0.157,
+    "density": 0.114,
+    "movement": 0.093,
+    "space": 0.596,
+    "warmth": 0.312
+  },
   "engines": [
-    "OBESE",
-    "OPTIC"
+    "Obese",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.283,
+    "COUPLING": 0.487,
+    "MOVEMENT": 0.678,
+    "SPACE": 0.667
+  },
+  "mood": "Family",
+  "name": "OPEN ROOTS",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.674,
-      "macro_movement": 0.272,
       "macro_coupling": 0.662,
+      "macro_movement": 0.272,
       "macro_space": 0.486
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.442,
-      "macro_movement": 0.273,
       "macro_coupling": 0.755,
+      "macro_movement": 0.273,
       "macro_space": 0.114
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBESE",
-    "target": "OPTIC",
-    "amount": 0.558
-  },
-  "dna": {
-    "brightness": 0.157,
-    "warmth": 0.312,
-    "movement": 0.093,
-    "density": 0.114,
-    "space": 0.596,
-    "aggression": 0.883
-  },
-  "macros": {
-    "CHARACTER": 0.283,
-    "MOVEMENT": 0.678,
-    "COUPLING": 0.487,
-    "SPACE": 0.667
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "sparse",
     "xlow-density"
-  ]
+  ],
+  "version": "1.0"
 }

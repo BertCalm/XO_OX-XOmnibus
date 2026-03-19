@@ -1,13 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Ouroboros Bifurcation",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Near-maximum chaos, near-zero leash and damping. Rate at 1320Hz — the trajectory is making audible choices. Injection at 0.62 adds forcing. Period-doubling at the edge of full chaos.",
+  "dna": {
+    "aggression": 0.78,
+    "brightness": 0.78,
+    "density": 0.85,
+    "movement": 0.95,
+    "space": 0.58,
+    "warmth": 0.15
+  },
   "engines": [
     "Ouroboros"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "Near-maximum chaos, near-zero leash and damping. Rate at 1320Hz \u2014 the trajectory is making audible choices. Injection at 0.62 adds forcing. Period-doubling at the edge of full chaos.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Ouroboros Bifurcation",
+  "parameters": {
+    "Ouroboros": {
+      "ouro_chaosIndex": 0.92,
+      "ouro_damping": 0.05,
+      "ouro_injection": 0.62,
+      "ouro_leash": 0.08,
+      "ouro_phi": 0.05,
+      "ouro_rate": 1320.0,
+      "ouro_theta": 0.98,
+      "ouro_topology": 2
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "storm",
@@ -15,42 +51,6 @@
     "bifurcation",
     "chaos"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Ouroboros": {
-      "ouro_topology": 2,
-      "ouro_rate": 1320.0,
-      "ouro_chaosIndex": 0.92,
-      "ouro_leash": 0.08,
-      "ouro_theta": 0.98,
-      "ouro_phi": 0.05,
-      "ouro_damping": 0.05,
-      "ouro_injection": 0.62
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.78,
-    "warmth": 0.15,
-    "movement": 0.95,
-    "density": 0.85,
-    "space": 0.58,
-    "aggression": 0.78
-  }
+  "version": "1.0.0"
 }

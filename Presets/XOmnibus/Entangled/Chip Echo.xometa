@@ -31,7 +31,10 @@
     "space": 0.6,
     "aggression": 0.15
   },
-  "parameters": {},
+  "parameters": {
+    "Overworld": {},
+    "Overdub": {}
+  },
   "coupling": {
     "pairs": [
       {

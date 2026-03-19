@@ -1,73 +1,93 @@
 {
-  "name": "Subharmonic Prism",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Owlfish",
+        "type": "WAVETABLE_MORPH",
+        "amount": 0.586
+      }
+    ]
+  },
+  "description": "Mixtur-Trautonium subharmonics as the prism's optical medium — the lower the frequency, the greater the refraction index.",
   "engines": [
     "Oblique",
     "Owlfish"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.45,
-    "MOVEMENT": 0.557,
     "COUPLING": 0.693,
+    "MOVEMENT": 0.557,
     "SPACE": 0.649
   },
-  "sonic_dna": {
-    "brightness": 0.614,
-    "warmth": 0.439,
-    "movement": 0.564,
-    "density": 0.621,
-    "space": 0.64,
-    "aggression": 0.422
-  },
+  "mood": "Entangled",
+  "name": "Subharmonic Prism",
   "parameters": {
-    "oblq_prismColor": 0.54,
-    "oblq_prismAngle": 0.69,
-    "oblq_refractIndex": 0.823,
-    "oblq_dispersion": 0.326,
-    "oblq_bounceDepth": 0.528,
-    "oblq_bounceDecay": 0.428,
-    "oblq_funkGroove": 0.8,
-    "oblq_rtjAggression": 0.784,
-    "oblq_psychWidth": 0.598,
-    "oblq_phaseShift": 0.386,
-    "oblq_filterCutoff": 5325.9,
-    "oblq_filterReso": 0.285,
-    "oblq_level": 0.673,
     "oblq_ampAttack": 0.0371,
     "oblq_ampDecay": 0.67,
-    "oblq_ampSustain": 0.496,
     "oblq_ampRelease": 0.868,
+    "oblq_ampSustain": 0.496,
+    "oblq_bounceDecay": 0.428,
+    "oblq_bounceDepth": 0.528,
+    "oblq_dispersion": 0.326,
+    "oblq_filterCutoff": 5325.9,
+    "oblq_filterReso": 0.285,
+    "oblq_funkGroove": 0.8,
+    "oblq_level": 0.673,
+    "oblq_lfo1Depth": 0.321,
+    "oblq_lfo1Rate": 2.81,
+    "oblq_lfo1Shape": 0.75,
+    "oblq_lfo2Depth": 0.145,
+    "oblq_lfo2Rate": 0.276,
+    "oblq_lfo2Shape": 0.0,
     "oblq_modAttack": 0.0241,
     "oblq_modDecay": 0.348,
-    "oblq_modSustain": 0.559,
     "oblq_modRelease": 0.439,
-    "oblq_lfo1Rate": 2.81,
-    "oblq_lfo1Depth": 0.321,
-    "oblq_lfo1Shape": 0.75,
-    "oblq_lfo2Rate": 0.276,
-    "oblq_lfo2Depth": 0.145,
-    "oblq_lfo2Shape": 0.0,
+    "oblq_modSustain": 0.559,
+    "oblq_phaseShift": 0.386,
+    "oblq_prismAngle": 0.69,
+    "oblq_prismColor": 0.54,
+    "oblq_psychWidth": 0.598,
+    "oblq_refractIndex": 0.823,
+    "oblq_rtjAggression": 0.784,
+    "owl_ampAttack": 0.0504,
+    "owl_ampDecay": 0.304,
+    "owl_ampRelease": 0.784,
+    "owl_ampSustain": 0.52,
     "owl_filterCutoff": 4606.2,
     "owl_filterReso": 0.157,
     "owl_level": 0.663,
-    "owl_ampAttack": 0.0504,
-    "owl_ampDecay": 0.304,
-    "owl_ampSustain": 0.52,
-    "owl_ampRelease": 0.784,
-    "owl_lfo1Rate": 2.101,
-    "owl_lfo1Depth": 0.127
+    "owl_lfo1Depth": 0.127,
+    "owl_lfo1Rate": 2.101
   },
-  "coupling": {
-    "type": "WAVETABLE_MORPH",
-    "source": "Oblique",
-    "target": "Owlfish",
-    "amount": 0.586
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.422,
+    "brightness": 0.614,
+    "density": 0.621,
+    "movement": 0.564,
+    "space": 0.64,
+    "warmth": 0.439
   },
   "tags": [
     "entangled",
     "coupling",
     "prismatic"
   ],
-  "description": "Mixtur-Trautonium subharmonics as the prism's optical medium — the lower the frequency, the greater the refraction index."
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

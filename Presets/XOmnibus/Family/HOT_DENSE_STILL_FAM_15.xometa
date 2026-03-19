@@ -1,45 +1,56 @@
 {
-  "name": "HOT DENSE STILL FAM 15",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Orca",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.739
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.481,
+    "brightness": 0.414,
+    "density": 0.891,
+    "movement": 0.074,
+    "space": 0.641,
+    "warmth": 0.962
+  },
   "engines": [
-    "OBLONG",
-    "ORCA"
+    "Oblong",
+    "Orca"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.688,
+    "COUPLING": 0.849,
+    "MOVEMENT": 0.074,
+    "SPACE": 0.641
+  },
+  "mood": "Family",
+  "name": "HOT DENSE STILL FAM 15",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.688,
-      "macro_movement": 0.074,
       "macro_coupling": 0.849,
+      "macro_movement": 0.074,
       "macro_space": 0.641
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.564,
-      "macro_movement": 0.129,
       "macro_coupling": 0.727,
+      "macro_movement": 0.129,
       "macro_space": 0.587
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBLONG",
-    "target": "ORCA",
-    "amount": 0.739
-  },
-  "dna": {
-    "brightness": 0.414,
-    "warmth": 0.962,
-    "movement": 0.074,
-    "density": 0.891,
-    "space": 0.641,
-    "aggression": 0.481
-  },
-  "macros": {
-    "CHARACTER": 0.688,
-    "MOVEMENT": 0.074,
-    "COUPLING": 0.849,
-    "SPACE": 0.641
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
@@ -47,5 +58,6 @@
     "static",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

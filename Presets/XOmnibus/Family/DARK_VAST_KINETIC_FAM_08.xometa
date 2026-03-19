@@ -1,45 +1,56 @@
 {
-  "name": "DARK VAST KINETIC FAM 08",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OPAL",
-    "OMBRE"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.236,
-      "macro_movement": 0.95,
-      "macro_coupling": 0.806,
-      "macro_space": 0.943
-    },
-    "OMBRE": {
-      "macro_character": 0.319,
-      "macro_movement": 0.937,
-      "macro_coupling": 0.37,
-      "macro_space": 0.806
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OPAL",
-    "target": "OMBRE",
-    "amount": 0.68
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ombre",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.68
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.553,
     "brightness": 0.103,
-    "warmth": 0.37,
-    "movement": 0.95,
     "density": 0.486,
+    "movement": 0.95,
     "space": 0.943,
-    "aggression": 0.553
+    "warmth": 0.37
   },
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.236,
-    "MOVEMENT": 0.95,
     "COUPLING": 0.806,
+    "MOVEMENT": 0.95,
     "SPACE": 0.943
   },
+  "mood": "Family",
+  "name": "DARK VAST KINETIC FAM 08",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.319,
+      "macro_coupling": 0.37,
+      "macro_movement": 0.937,
+      "macro_space": 0.806
+    },
+    "Opal": {
+      "macro_character": 0.236,
+      "macro_coupling": 0.806,
+      "macro_movement": 0.95,
+      "macro_space": 0.943
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
@@ -47,5 +58,6 @@
     "kinetic",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

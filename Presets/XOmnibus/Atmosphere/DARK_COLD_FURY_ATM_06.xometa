@@ -1,45 +1,56 @@
 {
-  "name": "DARK COLD FURY ATM 06",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.946
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.889,
+    "brightness": 0.102,
+    "density": 0.384,
+    "movement": 0.66,
+    "space": 0.4,
+    "warmth": 0.107
+  },
   "engines": [
-    "OBBLIGATO",
-    "ORIGAMI"
+    "Obbligato",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.104,
+    "COUPLING": 0.79,
+    "MOVEMENT": 0.66,
+    "SPACE": 0.4
+  },
+  "mood": "Atmosphere",
+  "name": "DARK COLD FURY ATM 06",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.104,
-      "macro_movement": 0.66,
       "macro_coupling": 0.79,
+      "macro_movement": 0.66,
       "macro_space": 0.4
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.076,
-      "macro_movement": 0.696,
       "macro_coupling": 0.738,
+      "macro_movement": 0.696,
       "macro_space": 0.529
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBBLIGATO",
-    "target": "ORIGAMI",
-    "amount": 0.946
-  },
-  "dna": {
-    "brightness": 0.102,
-    "warmth": 0.107,
-    "movement": 0.66,
-    "density": 0.384,
-    "space": 0.4,
-    "aggression": 0.889
-  },
-  "macros": {
-    "CHARACTER": 0.104,
-    "MOVEMENT": 0.66,
-    "COUPLING": 0.79,
-    "SPACE": 0.4
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -47,5 +58,6 @@
     "aggressive",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

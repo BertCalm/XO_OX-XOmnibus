@@ -1,50 +1,62 @@
 {
-  "name": "DARK_STILL_VAST_GENTLE_ATM_3",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Origami",
+        "type": "FILTER_MOD",
+        "amount": 0.463
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.133,
+    "brightness": 0.03,
+    "density": 0.585,
+    "movement": 0.087,
+    "space": 0.897,
+    "warmth": 0.455
+  },
   "engines": [
-    "OBSCURA",
-    "ORIGAMI"
+    "Obscura",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.649,
+    "COUPLING": 0.884,
+    "MOVEMENT": 0.203,
+    "SPACE": 0.806
+  },
+  "mood": "Atmosphere",
+  "name": "DARK_STILL_VAST_GENTLE_ATM_3",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.649,
-      "macro_movement": 0.203,
       "macro_coupling": 0.884,
+      "macro_movement": 0.203,
       "macro_space": 0.806
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.774,
-      "macro_movement": 0.123,
       "macro_coupling": 0.434,
+      "macro_movement": 0.123,
       "macro_space": 0.842
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OBSCURA",
-    "target": "ORIGAMI",
-    "amount": 0.463
-  },
-  "dna": {
-    "brightness": 0.03,
-    "warmth": 0.455,
-    "movement": 0.087,
-    "density": 0.585,
-    "space": 0.897,
-    "aggression": 0.133
-  },
-  "macros": {
-    "CHARACTER": 0.649,
-    "MOVEMENT": 0.203,
-    "COUPLING": 0.884,
-    "SPACE": 0.806
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "still",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,62 @@
 {
-  "name": "CAUSTIC CLOUD",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OSTERIA",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OSTERIA": {
-      "macro_character": 0.168,
-      "macro_movement": 0.446,
-      "macro_coupling": 0.696,
-      "macro_space": 0.173
-    },
-    "OBLONG": {
-      "macro_character": 0.204,
-      "macro_movement": 0.148,
-      "macro_coupling": 0.865,
-      "macro_space": 0.398
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OSTERIA",
-    "target": "OBLONG",
-    "amount": 0.593
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Oblong",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.593
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.925,
     "brightness": 0.431,
-    "warmth": 0.91,
-    "movement": 0.684,
     "density": 0.35,
+    "movement": 0.684,
     "space": 0.479,
-    "aggression": 0.925
+    "warmth": 0.91
   },
+  "engines": [
+    "Osteria",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.636,
-    "MOVEMENT": 0.429,
     "COUPLING": 0.799,
+    "MOVEMENT": 0.429,
     "SPACE": 0.479
   },
+  "mood": "Atmosphere",
+  "name": "CAUSTIC CLOUD",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.204,
+      "macro_coupling": 0.865,
+      "macro_movement": 0.148,
+      "macro_space": 0.398
+    },
+    "Osteria": {
+      "macro_character": 0.168,
+      "macro_coupling": 0.696,
+      "macro_movement": 0.446,
+      "macro_space": 0.173
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

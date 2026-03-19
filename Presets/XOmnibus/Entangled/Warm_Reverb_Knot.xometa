@@ -1,49 +1,61 @@
 {
-  "name": "Warm Reverb Knot",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Organon",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.86
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.43,
+    "brightness": 0.51,
+    "density": 0.44,
+    "movement": 0.54,
+    "space": 0.68,
+    "warmth": 0.92
+  },
   "engines": [
-    "OPAL",
-    "ORGANON"
+    "Opal",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.72,
+    "COUPLING": 0.77,
+    "MOVEMENT": 0.54,
+    "SPACE": 0.57
+  },
+  "mood": "Entangled",
+  "name": "Warm Reverb Knot",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.72,
-      "macro_movement": 0.62,
       "macro_coupling": 0.72,
+      "macro_movement": 0.62,
       "macro_space": 0.55
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.73,
-      "macro_movement": 0.47,
       "macro_coupling": 0.81,
+      "macro_movement": 0.47,
       "macro_space": 0.6
     }
   },
-  "coupling": {
-    "type": "RHYTHM_LOCK",
-    "source": "OPAL",
-    "target": "ORGANON",
-    "amount": 0.86
-  },
-  "dna": {
-    "brightness": 0.51,
-    "warmth": 0.92,
-    "movement": 0.54,
-    "density": 0.44,
-    "space": 0.68,
-    "aggression": 0.43
-  },
-  "macros": {
-    "CHARACTER": 0.72,
-    "MOVEMENT": 0.54,
-    "COUPLING": 0.77,
-    "SPACE": 0.57
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

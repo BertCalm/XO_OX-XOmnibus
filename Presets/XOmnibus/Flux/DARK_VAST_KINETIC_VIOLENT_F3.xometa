@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "DARK VAST KINETIC VIOLENT F3",
-  "mood": "Flux",
-  "sonic_dna": {
-    "brightness": 0.068,
-    "warmth": 0.496,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Harmonic",
+  "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme violent aggression, extreme kinetic movement, extreme vast space. Maximum contrast character design.",
+  "dna": {
     "aggression": 0.951,
-    "movement": 0.953,
+    "brightness": 0.068,
     "density": 0.433,
-    "space": 0.89
+    "movement": 0.953,
+    "space": 0.89,
+    "warmth": 0.496
   },
   "engines": [
-    "OUROBOROS"
+    "Ouroboros"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme dark brightness, extreme violent aggression, extreme kinetic movement, extreme vast space. Maximum contrast character design.",
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "DARK VAST KINETIC VIOLENT F3",
+  "parameters": {
+    "Ouroboros": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.951,
+    "brightness": 0.068,
+    "density": 0.433,
+    "movement": 0.953,
+    "space": 0.89,
+    "warmth": 0.496
+  },
   "tags": [
     "dark",
     "aggressive",
@@ -24,25 +44,5 @@
     "flux",
     "extreme"
   ],
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "couplingIntensity": "Harmonic",
-  "dna": {
-    "brightness": 0.068,
-    "warmth": 0.496,
-    "movement": 0.953,
-    "density": 0.433,
-    "space": 0.89,
-    "aggression": 0.951
-  },
-  "parameters": {
-    "OUROBOROS": {}
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

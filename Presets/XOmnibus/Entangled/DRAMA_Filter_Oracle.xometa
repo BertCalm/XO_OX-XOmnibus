@@ -1,54 +1,63 @@
 {
-  "schema_version": 1,
-  "name": "DRAMA Filter Oracle",
-  "mood": "Entangled",
-  "engines": [
-    "OLE",
-    "ORACLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Filter coupling \u2014 DRAMA macro sweeps forward into ORACLE's GENDY resonant body \u2014 aggression 0.86.",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.82
+      }
+    ]
+  },
+  "description": "Filter coupling — DRAMA macro sweeps forward into ORACLE's GENDY resonant body — aggression 0.86.",
+  "dna": {
+    "aggression": 0.86,
+    "brightness": 0.66,
+    "density": 0.72,
+    "movement": 0.75,
+    "space": 0.36,
+    "warmth": 0.76
+  },
+  "engines": [
+    "Ole",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8,
+    "COUPLING": 0.82,
+    "MOVEMENT": 0.72,
+    "SPACE": 0.38
+  },
+  "mood": "Entangled",
+  "name": "DRAMA Filter Oracle",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.8,
-      "macro_movement": 0.72,
       "macro_coupling": 0.82,
+      "macro_movement": 0.72,
       "macro_space": 0.38
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.66,
-      "macro_movement": 0.68,
       "macro_coupling": 0.72,
+      "macro_movement": 0.68,
       "macro_space": 0.5
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OLE",
-    "target": "ORACLE",
-    "amount": 0.82,
-    "intensity": "Deep"
-  },
-  "dna": {
-    "brightness": 0.66,
-    "warmth": 0.76,
-    "movement": 0.75,
-    "density": 0.72,
-    "space": 0.36,
-    "aggression": 0.86
-  },
-  "macros": {
-    "CHARACTER": 0.8,
-    "MOVEMENT": 0.72,
-    "COUPLING": 0.82,
-    "SPACE": 0.38
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "ole",
     "oracle",
     "filter",
     "drama"
-  ]
+  ],
+  "version": "1.0"
 }

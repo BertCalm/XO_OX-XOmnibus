@@ -1,14 +1,86 @@
 {
-  "schema_version": 1,
-  "name": "DARK_HOT_SPARSE_GENTLE_ENT_4",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.8842,
+        "source": "Orphica",
+        "target": "Overlap",
+        "type": "RESONANCE_SHARE"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Dark Hot Sparse Gentle character entanglement — OVERLAP × ORPHICA via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.0517,
+    "brightness": 0.0279,
+    "density": 0.1024,
+    "movement": 0.423,
+    "space": 0.5277,
+    "warmth": 0.8899
+  },
   "engines": [
-    "OVERLAP",
-    "ORPHICA"
+    "Overlap",
+    "Orphica"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dark Hot Sparse Gentle character entanglement \u2014 OVERLAP \u00d7 ORPHICA via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "KNOT",
+    "FOLD",
+    "WEAVE",
+    "HALL"
+  ],
+  "macros": {
+    "CHARACTER": 0.4589,
+    "COUPLING": 0.8842,
+    "MOVEMENT": 0.423,
+    "SPACE": 0.5277
+  },
+  "mood": "Entangled",
+  "name": "DARK_HOT_SPARSE_GENTLE_ENT_4",
+  "parameters": {
+    "Orphica": {
+      "amp_attack": 0.3141,
+      "amp_release": 0.3911,
+      "coupling_level": 0.5574,
+      "density": 0.0697,
+      "drive": 0.0907,
+      "filter_cutoff": 0.2171,
+      "filter_resonance": 0.138,
+      "macro_character": 0.6781,
+      "macro_coupling": 0.5813,
+      "macro_movement": 0.4046,
+      "macro_space": 0.5482,
+      "output_level": 0.7134,
+      "reverb_mix": 0.447,
+      "reverb_size": 0.5274
+    },
+    "Overlap": {
+      "amp_attack": 0.2666,
+      "amp_release": 0.3966,
+      "coupling_level": 0.6107,
+      "density": 0.1084,
+      "drive": 0.1183,
+      "filter_cutoff": 0.1827,
+      "filter_resonance": 0.1205,
+      "macro_character": 0.6997,
+      "macro_coupling": 0.6176,
+      "macro_movement": 0.423,
+      "macro_space": 0.4941,
+      "output_level": 0.7617,
+      "reverb_mix": 0.4075,
+      "reverb_size": 0.5536
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.0517,
+    "brightness": 0.0279,
+    "density": 0.1024,
+    "movement": 0.423,
+    "space": 0.5277,
+    "warmth": 0.8899
+  },
   "tags": [
     "entangled",
     "dark",
@@ -17,81 +89,5 @@
     "gentle",
     "resonant"
   ],
-  "macroLabels": [
-    "KNOT",
-    "FOLD",
-    "WEAVE",
-    "HALL"
-  ],
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.0279,
-    "warmth": 0.8899,
-    "movement": 0.423,
-    "density": 0.1024,
-    "space": 0.5277,
-    "aggression": 0.0517
-  },
-  "sonic_dna": {
-    "brightness": 0.0279,
-    "warmth": 0.8899,
-    "movement": 0.423,
-    "density": 0.1024,
-    "space": 0.5277,
-    "aggression": 0.0517
-  },
-  "parameters": {
-    "OVERLAP": {
-      "macro_character": 0.6997,
-      "macro_movement": 0.423,
-      "macro_coupling": 0.6176,
-      "macro_space": 0.4941,
-      "filter_cutoff": 0.1827,
-      "filter_resonance": 0.1205,
-      "amp_attack": 0.2666,
-      "amp_release": 0.3966,
-      "reverb_mix": 0.4075,
-      "reverb_size": 0.5536,
-      "drive": 0.1183,
-      "density": 0.1084,
-      "output_level": 0.7617,
-      "coupling_level": 0.6107
-    },
-    "ORPHICA": {
-      "macro_character": 0.6781,
-      "macro_movement": 0.4046,
-      "macro_coupling": 0.5813,
-      "macro_space": 0.5482,
-      "filter_cutoff": 0.2171,
-      "filter_resonance": 0.138,
-      "amp_attack": 0.3141,
-      "amp_release": 0.3911,
-      "reverb_mix": 0.447,
-      "reverb_size": 0.5274,
-      "drive": 0.0907,
-      "density": 0.0697,
-      "output_level": 0.7134,
-      "coupling_level": 0.5574
-    }
-  },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORPHICA",
-    "target": "OVERLAP",
-    "amount": 0.8842,
-    "pairs": [
-      {
-        "source": "ORPHICA",
-        "target": "OVERLAP",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.8842
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.4589,
-    "MOVEMENT": 0.423,
-    "COUPLING": 0.8842,
-    "SPACE": 0.5277
-  }
+  "version": "1.0.0"
 }

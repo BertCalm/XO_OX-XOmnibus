@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Thermal Chaos",
-  "mood": "Atmosphere",
-  "engines": [
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Weather system in motion. High movement, active aggression. ONSET kinetic register.",
+  "dna": {
+    "aggression": 0.453,
+    "brightness": 0.408,
+    "density": 0.665,
+    "movement": 0.919,
+    "space": 0.67,
+    "warmth": 0.52
+  },
+  "engines": [
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.415,
+    "MUTATE": 0.747,
+    "PUNCH": 0.838,
+    "SPACE": 0.412
+  },
+  "mood": "Atmosphere",
+  "name": "Thermal Chaos",
+  "parameters": {
+    "Onset": {
+      "machine": 0.415,
+      "mutate": 0.747,
+      "punch": 0.838,
+      "space": 0.412
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "kinetic",
@@ -16,36 +47,5 @@
     "weather",
     "dynamic"
   ],
-  "macroLabels": [
-    "MACHINE",
-    "PUNCH",
-    "SPACE",
-    "MUTATE"
-  ],
-  "dna": {
-    "brightness": 0.408,
-    "warmth": 0.52,
-    "movement": 0.919,
-    "density": 0.665,
-    "space": 0.67,
-    "aggression": 0.453
-  },
-  "parameters": {
-    "ONSET": {
-      "machine": 0.415,
-      "punch": 0.838,
-      "space": 0.412,
-      "mutate": 0.747
-    }
-  },
-  "macros": {
-    "MACHINE": 0.415,
-    "PUNCH": 0.838,
-    "SPACE": 0.412,
-    "MUTATE": 0.747
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Oblong Slab",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Thick rectangular mass of low-end. No apology.",
+  "dna": {
+    "aggression": 0.65,
+    "brightness": 0.1,
+    "density": 1.0,
+    "movement": 0.15,
+    "space": 0.1,
+    "warmth": 0.7
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Thick rectangular mass of low-end. No apology.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Oblong Slab",
+  "parameters": {
+    "Oblong": {
+      "ob_body": 1.0,
+      "ob_decay": 0.6,
+      "ob_drive": 0.6,
+      "ob_sub": 1.0,
+      "ob_tone": 0.1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "bedrock",
     "dense",
@@ -16,37 +47,6 @@
     "bass",
     "bedrock-bass"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oblong": {
-      "ob_drive": 0.6,
-      "ob_body": 1.0,
-      "ob_tone": 0.1,
-      "ob_decay": 0.6,
-      "ob_sub": 1.0
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.1,
-    "warmth": 0.7,
-    "movement": 0.15,
-    "density": 1.0,
-    "space": 0.1,
-    "aggression": 0.65
-  }
+  "version": "1.0.0"
 }

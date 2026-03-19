@@ -1,48 +1,60 @@
 {
-  "name": "ARCTIC HEARTH",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Osteria",
+        "type": "PITCH_LOCK",
+        "amount": 0.455
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.245,
+    "brightness": 0.068,
+    "density": 0.592,
+    "movement": 0.826,
+    "space": 0.322,
+    "warmth": 0.066
+  },
   "engines": [
-    "ONSET",
-    "OSTERIA"
+    "Onset",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.28,
+    "COUPLING": 0.88,
+    "MOVEMENT": 0.596,
+    "SPACE": 0.556
+  },
+  "mood": "Family",
+  "name": "ARCTIC HEARTH",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.75,
-      "macro_movement": 0.57,
       "macro_coupling": 0.668,
+      "macro_movement": 0.57,
       "macro_space": 0.336
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.494,
-      "macro_movement": 0.325,
       "macro_coupling": 0.488,
+      "macro_movement": 0.325,
       "macro_space": 0.355
     }
   },
-  "coupling": {
-    "type": "PITCH_LOCK",
-    "source": "ONSET",
-    "target": "OSTERIA",
-    "amount": 0.455
-  },
-  "dna": {
-    "brightness": 0.068,
-    "warmth": 0.066,
-    "movement": 0.826,
-    "density": 0.592,
-    "space": 0.322,
-    "aggression": 0.245
-  },
-  "macros": {
-    "CHARACTER": 0.28,
-    "MOVEMENT": 0.596,
-    "COUPLING": 0.88,
-    "SPACE": 0.556
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "cold",
     "xlow-warmth"
-  ]
+  ],
+  "version": "1.0"
 }

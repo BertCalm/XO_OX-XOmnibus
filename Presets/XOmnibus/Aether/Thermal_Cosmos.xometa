@@ -1,52 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Thermal Cosmos",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Warm interference patterns echoing across cosmological distances.",
+  "dna": {
+    "aggression": 0.07,
+    "brightness": 0.5,
+    "density": 0.38,
+    "movement": 0.68,
+    "space": 0.93,
+    "warmth": 0.9
+  },
   "engines": [
     "Ombre"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Warm interference patterns echoing across cosmological distances.",
-  "tags": [
-    "warm-deep-space",
-    "extreme",
-    "aether",
-    "ambient"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Aether",
+  "name": "Thermal Cosmos",
   "parameters": {
     "Ombre": {
       "ombre_blend": 0.72,
-      "ombre_interference": 0.65,
-      "ombre_memoryDecay": 0.15,
       "ombre_brightness": 0.52,
+      "ombre_interference": 0.65,
+      "ombre_level": -8.0,
+      "ombre_memoryDecay": 0.15,
       "ombre_movement": 0.68,
-      "ombre_space": 0.94,
-      "ombre_level": -8.0
+      "ombre_space": 0.94
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.9,
-    "movement": 0.68,
-    "density": 0.38,
-    "space": 0.93,
-    "aggression": 0.07
-  }
+  "tags": [
+    "warm-deep-space",
+    "extreme",
+    "aether",
+    "ambient"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

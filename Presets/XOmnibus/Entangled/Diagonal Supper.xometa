@@ -1,31 +1,46 @@
 {
-  "name": "Diagonal Supper",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ohm",
+        "type": "ANGULAR_DEFLECT",
+        "amount": 0.45
+      }
+    ]
+  },
+  "description": "Ohm family table set askew — familiar warmth arriving from an oblique direction",
   "engines": [
-    "OHM",
-    "OBLIQUE"
+    "Ohm",
+    "Oblique"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.6,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.45,
+    "MOVEMENT": 0.55,
     "SPACE": 0.65
   },
-  "sonic_dna": {
-    "brightness": 0.48,
-    "warmth": 0.65,
-    "movement": 0.58,
-    "density": 0.54,
-    "space": 0.68,
-    "aggression": 0.32
+  "mood": "Entangled",
+  "name": "Diagonal Supper",
+  "parameters": {
+    "Ohm": {},
+    "Oblique": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "ANGULAR_DEFLECT",
-    "source": "OBLIQUE",
-    "target": "OHM",
-    "amount": 0.45
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.32,
+    "brightness": 0.48,
+    "density": 0.54,
+    "movement": 0.58,
+    "space": 0.68,
+    "warmth": 0.65
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "oblique",
     "hippy"
   ],
-  "description": "Ohm family table set askew \u2014 familiar warmth arriving from an oblique direction"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

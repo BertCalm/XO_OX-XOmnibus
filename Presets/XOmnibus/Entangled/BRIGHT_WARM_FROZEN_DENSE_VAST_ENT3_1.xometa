@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_WARM_FROZEN_DENSE_VAST_ENT3_1",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Overbite",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8914
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_VAST. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.5707,
+    "brightness": 0.9467,
+    "density": 0.8968,
+    "movement": 0.0375,
+    "space": 0.9584,
+    "warmth": 0.873
+  },
   "engines": [
-    "ORBITAL",
-    "OVERBITE"
+    "Orbital",
+    "Overbite"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_VAST. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6453,
+    "COUPLING": 0.8471,
+    "MOVEMENT": 0.0379,
+    "SPACE": 0.497
+  },
+  "mood": "Entangled",
+  "name": "Candlelight Cavern",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.5156,
+      "macro_coupling": 0.7725,
+      "macro_movement": 0.0416,
+      "macro_space": 0.2978
+    },
+    "Overbite": {
+      "macro_character": 0.775,
+      "macro_coupling": 0.9218,
+      "macro_movement": 0.0343,
+      "macro_space": 0.6961
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +70,6 @@
     "dense",
     "vast"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.5156,
-      "macro_movement": 0.0416,
-      "macro_coupling": 0.7725,
-      "macro_space": 0.2978
-    },
-    "OVERBITE": {
-      "macro_character": 0.775,
-      "macro_movement": 0.0343,
-      "macro_coupling": 0.9218,
-      "macro_space": 0.6961
-    }
-  },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORBITAL",
-    "target": "OVERBITE",
-    "amount": 0.8914
-  },
-  "macros": {
-    "CHARACTER": 0.6453,
-    "MOVEMENT": 0.0379,
-    "COUPLING": 0.8471,
-    "SPACE": 0.497
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.9467,
-    "warmth": 0.873,
-    "movement": 0.0375,
-    "density": 0.8968,
-    "space": 0.9584,
-    "aggression": 0.5707
-  }
+  "version": "1.0.0"
 }

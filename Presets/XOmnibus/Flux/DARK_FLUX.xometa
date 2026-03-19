@@ -1,49 +1,61 @@
 {
-  "name": "DARK FLUX",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OWLFISH",
-    "ORCA"
-  ],
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.709,
-      "macro_movement": 0.002,
-      "macro_coupling": 0.926,
-      "macro_space": 0.538
-    },
-    "ORCA": {
-      "macro_character": 0.719,
-      "macro_movement": 0.742,
-      "macro_coupling": 0.671,
-      "macro_space": 0.364
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_TRACK",
-    "source": "OWLFISH",
-    "target": "ORCA",
-    "amount": 0.453
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Orca",
+        "type": "PITCH_TRACK",
+        "amount": 0.453
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.546,
     "brightness": 0.084,
-    "warmth": 0.637,
-    "movement": 0.388,
     "density": 0.922,
+    "movement": 0.388,
     "space": 0.431,
-    "aggression": 0.546
+    "warmth": 0.637
   },
+  "engines": [
+    "Owlfish",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.714,
-    "MOVEMENT": 0.372,
     "COUPLING": 0.798,
+    "MOVEMENT": 0.372,
     "SPACE": 0.451
   },
+  "mood": "Flux",
+  "name": "DARK FLUX",
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.719,
+      "macro_coupling": 0.671,
+      "macro_movement": 0.742,
+      "macro_space": 0.364
+    },
+    "Owlfish": {
+      "macro_character": 0.709,
+      "macro_coupling": 0.926,
+      "macro_movement": 0.002,
+      "macro_space": 0.538
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "extreme",
     "high-density"
-  ]
+  ],
+  "version": "1.0"
 }

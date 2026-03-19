@@ -1,17 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Wind Bond Shine",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OBBLIGATO — bright extreme brightness preset for Atmosphere.",
+  "dna": {
+    "aggression": 0.76,
+    "brightness": 0.95,
+    "density": 0.67,
+    "movement": 0.53,
+    "space": 0.56,
+    "warmth": 0.32
+  },
   "engines": [
-    "OBBLIGATO"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "OBBLIGATO \u2014 bright extreme brightness preset for Atmosphere.",
-  "tags": [
-    "atmosphere",
-    "bright",
-    "extreme-brightness"
+    "Obbligato"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -19,44 +22,41 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "sonic_dna": {
-    "brightness": 0.95,
-    "warmth": 0.32,
-    "movement": 0.53,
-    "density": 0.67,
-    "space": 0.56,
-    "aggression": 0.76
-  },
-  "dna": {
-    "brightness": 0.95,
-    "warmth": 0.32,
-    "movement": 0.53,
-    "density": 0.67,
-    "space": 0.56,
-    "aggression": 0.76
-  },
+  "mood": "Atmosphere",
+  "name": "Wind Bond Shine",
   "parameters": {
-    "OBBLIGATO": {
-      "obbl_bond": 0.15,
-      "obbl_wind1": 0.68,
-      "obbl_wind2": 0.03,
-      "obbl_filterCutoff": 0.95,
+    "Obbligato": {
       "obbl_ampAttack": 92.4,
       "obbl_ampDecay": 20.1,
-      "obbl_ampSustain": 0.52,
       "obbl_ampRelease": 125.4,
-      "obbl_lfoRate": 0.69,
-      "obbl_lfoDepth": 0.41,
-      "obbl_reverbMix": 0.77,
-      "obbl_delayMix": 0.92,
+      "obbl_ampSustain": 0.52,
+      "obbl_bond": 0.15,
       "obbl_character": 0.87,
+      "obbl_coupling": 0.14,
+      "obbl_delayMix": 0.92,
+      "obbl_filterCutoff": 0.95,
+      "obbl_lfoDepth": 0.41,
+      "obbl_lfoRate": 0.69,
       "obbl_movement": 0.74,
+      "obbl_reverbMix": 0.77,
       "obbl_space": 0.06,
-      "obbl_coupling": 0.14
+      "obbl_wind1": 0.68,
+      "obbl_wind2": 0.03
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.76,
+    "brightness": 0.95,
+    "density": 0.67,
+    "movement": 0.53,
+    "space": 0.56,
+    "warmth": 0.32
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+  ],
+  "version": "1.0"
 }

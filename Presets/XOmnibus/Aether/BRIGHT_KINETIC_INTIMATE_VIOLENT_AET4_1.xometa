@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_AET4_1",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OVERWORLD",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.585,
-      "macro_movement": 0.8233,
-      "macro_coupling": 0.2688,
-      "macro_space": 0.8829
-    },
-    "OBSCURA": {
-      "macro_character": 0.8125,
-      "macro_movement": 0.8635,
-      "macro_coupling": 0.8979,
-      "macro_space": 0.5112
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OVERWORLD",
-    "target": "OBSCURA",
-    "amount": 0.7022
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Obscura",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7022
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.9469,
     "brightness": 0.9662,
-    "warmth": 0.5218,
-    "movement": 0.8866,
     "density": 0.6384,
+    "movement": 0.8866,
     "space": 0.0475,
-    "aggression": 0.9469
+    "warmth": 0.5218
   },
+  "engines": [
+    "Overworld",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.744,
-    "MOVEMENT": 0.8866,
     "COUPLING": 0.7022,
+    "MOVEMENT": 0.8866,
     "SPACE": 0.0475
   },
+  "mood": "Aether",
+  "name": "Node Crush",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.8125,
+      "macro_coupling": 0.8979,
+      "macro_movement": 0.8635,
+      "macro_space": 0.5112
+    },
+    "Overworld": {
+      "macro_character": 0.585,
+      "macro_coupling": 0.2688,
+      "macro_movement": 0.8233,
+      "macro_space": 0.8829
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "kinetic",
     "bright",
     "intimate",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

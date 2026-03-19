@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Memory Barrage",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.86,
+        "engineA": "Ombre",
+        "engineB": "Onset",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Ombre memory layer chaos-injected into Onset percussion — grief as machine barrage.",
+  "dna": {
+    "aggression": 0.92,
+    "brightness": 0.18,
+    "density": 0.88,
+    "movement": 0.75,
+    "space": 0.12,
+    "warmth": 0.16
+  },
   "engines": [
-    "OMBRE",
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ombre memory layer chaos-injected into Onset percussion \u2014 grief as machine barrage.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "cold",
-    "ombre",
-    "onset",
-    "memory"
+    "Ombre",
+    "Onset"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,32 @@
   ],
   "macros": {
     "CHARACTER": 0.84,
-    "MOVEMENT": 0.75,
     "COUPLING": 0.86,
+    "MOVEMENT": 0.75,
     "SPACE": 0.12
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.18,
-    "warmth": 0.16,
-    "movement": 0.75,
-    "density": 0.88,
-    "space": 0.12,
-    "aggression": 0.92
+  "mood": "Entangled",
+  "name": "Memory Barrage",
+  "parameters": {
+    "Ombre": {},
+    "Onset": {}
   },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.92,
     "brightness": 0.18,
-    "warmth": 0.16,
-    "movement": 0.75,
     "density": 0.88,
+    "movement": 0.75,
     "space": 0.12,
-    "aggression": 0.92
+    "warmth": 0.16
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OMBRE",
-        "engineB": "ONSET",
-        "type": "CHAOS_INJECT",
-        "amount": 0.86
-      }
-    ]
-  }
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "ombre",
+    "onset",
+    "memory"
+  ],
+  "version": "1.0.0"
 }

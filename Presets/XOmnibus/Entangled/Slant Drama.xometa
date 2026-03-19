@@ -1,31 +1,46 @@
 {
-  "name": "Slant Drama",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ole",
+        "type": "ANGULAR_DEFLECT",
+        "amount": 0.55
+      }
+    ]
+  },
+  "description": "DRAMA macro collides with oblique strategy — passion meets calculation",
   "engines": [
-    "OLE",
-    "OBLIQUE"
+    "Ole",
+    "Oblique"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7,
-    "MOVEMENT": 0.8,
     "COUPLING": 0.55,
+    "MOVEMENT": 0.8,
     "SPACE": 0.45
   },
-  "sonic_dna": {
-    "brightness": 0.6,
-    "warmth": 0.62,
-    "movement": 0.73,
-    "density": 0.6,
-    "space": 0.56,
-    "aggression": 0.5
+  "mood": "Entangled",
+  "name": "Slant Drama",
+  "parameters": {
+    "Ole": {},
+    "Oblique": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "ANGULAR_DEFLECT",
-    "source": "OBLIQUE",
-    "target": "OLE",
-    "amount": 0.55
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.5,
+    "brightness": 0.6,
+    "density": 0.6,
+    "movement": 0.73,
+    "space": 0.56,
+    "warmth": 0.62
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "oblique",
     "afro-latin"
   ],
-  "description": "DRAMA macro collides with oblique strategy \u2014 passion meets calculation"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

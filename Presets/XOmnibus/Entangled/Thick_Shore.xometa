@@ -1,48 +1,60 @@
 {
-  "name": "Thick Shore",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Osprey",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.62
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.28,
+    "brightness": 0.33,
+    "density": 0.78,
+    "movement": 0.52,
+    "space": 0.44,
+    "warmth": 0.93
+  },
   "engines": [
-    "OBLONG",
-    "OSPREY"
+    "Oblong",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.86,
+    "COUPLING": 0.54,
+    "MOVEMENT": 0.47,
+    "SPACE": 0.42
+  },
+  "mood": "Entangled",
+  "name": "Thick Shore",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.84,
-      "macro_movement": 0.44,
       "macro_coupling": 0.5,
+      "macro_movement": 0.44,
       "macro_space": 0.5
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.88,
-      "macro_movement": 0.51,
       "macro_coupling": 0.59,
+      "macro_movement": 0.51,
       "macro_space": 0.33
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBLONG",
-    "target": "OSPREY",
-    "amount": 0.62
-  },
-  "dna": {
-    "brightness": 0.33,
-    "warmth": 0.93,
-    "movement": 0.52,
-    "density": 0.78,
-    "space": 0.44,
-    "aggression": 0.28
-  },
-  "macros": {
-    "CHARACTER": 0.86,
-    "MOVEMENT": 0.47,
-    "COUPLING": 0.54,
-    "SPACE": 0.42
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-  ]
+  ],
+  "version": "1.0"
 }

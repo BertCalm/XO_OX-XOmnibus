@@ -1,13 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Oblique Charged Front",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Eight bounces at high gravity, low damping — the echo cascade is energetic. Fold amount creating real harmonic aggression within the prism space. Atmosphere as charged particle field.",
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.72,
+    "density": 0.78,
+    "movement": 0.68,
+    "space": 0.68,
+    "warmth": 0.25
+  },
   "engines": [
     "Oblique"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "Eight bounces at high gravity, low damping \u2014 the echo cascade is energetic. Fold amount creating real harmonic aggression within the prism space. Atmosphere as charged particle field.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "SPACE",
+    "FOLD",
+    "PRISM DEPTH",
+    "FILTER"
+  ],
+  "mood": "Atmosphere",
+  "name": "Oblique Charged Front",
+  "parameters": {
+    "Oblique": {
+      "oblq_attack": 0.2,
+      "oblq_bounceCnt": 8.0,
+      "oblq_bounceDamp": 0.78,
+      "oblq_bounceGravity": 0.62,
+      "oblq_bounceRate": 320.0,
+      "oblq_bounceSwing": 0.22,
+      "oblq_clickTone": 1800.0,
+      "oblq_decay": 0.8,
+      "oblq_filterCut": 3500.0,
+      "oblq_filterRes": 0.58,
+      "oblq_glide": 0.35,
+      "oblq_level": 0.78,
+      "oblq_oscDetune": 28.0,
+      "oblq_oscFold": 0.65,
+      "oblq_oscWave": 4,
+      "oblq_percClick": 0.12,
+      "oblq_percDecay": 0.08,
+      "oblq_phaserDepth": 0.88,
+      "oblq_phaserFeedback": 0.75,
+      "oblq_phaserMix": 0.72,
+      "oblq_phaserRate": 0.35,
+      "oblq_prismColor": 0.82,
+      "oblq_prismDamp": 0.32,
+      "oblq_prismDelay": 180.0,
+      "oblq_prismFeedback": 0.82,
+      "oblq_prismMix": 0.72,
+      "oblq_prismSpread": 0.88,
+      "oblq_prismWidth": 0.92,
+      "oblq_release": 3.5,
+      "oblq_sustain": 0.65
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "charged",
@@ -15,64 +73,6 @@
     "electric-front",
     "prism"
   ],
-  "macroLabels": [
-    "SPACE",
-    "FOLD",
-    "PRISM DEPTH",
-    "FILTER"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oblique": {
-      "oblq_oscWave": 4,
-      "oblq_oscFold": 0.65,
-      "oblq_oscDetune": 28.0,
-      "oblq_level": 0.78,
-      "oblq_glide": 0.35,
-      "oblq_percClick": 0.12,
-      "oblq_percDecay": 0.08,
-      "oblq_bounceRate": 320.0,
-      "oblq_bounceGravity": 0.62,
-      "oblq_bounceDamp": 0.78,
-      "oblq_bounceCnt": 8.0,
-      "oblq_bounceSwing": 0.22,
-      "oblq_clickTone": 1800.0,
-      "oblq_filterCut": 3500.0,
-      "oblq_filterRes": 0.58,
-      "oblq_attack": 0.2,
-      "oblq_decay": 0.8,
-      "oblq_sustain": 0.65,
-      "oblq_release": 3.5,
-      "oblq_prismDelay": 180.0,
-      "oblq_prismSpread": 0.88,
-      "oblq_prismColor": 0.82,
-      "oblq_prismWidth": 0.92,
-      "oblq_prismFeedback": 0.82,
-      "oblq_prismMix": 0.72,
-      "oblq_prismDamp": 0.32,
-      "oblq_phaserRate": 0.35,
-      "oblq_phaserDepth": 0.88,
-      "oblq_phaserFeedback": 0.75,
-      "oblq_phaserMix": 0.72
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.72,
-    "warmth": 0.25,
-    "movement": 0.68,
-    "density": 0.78,
-    "space": 0.68,
-    "aggression": 0.6
-  }
+  "version": "1.0.0"
 }

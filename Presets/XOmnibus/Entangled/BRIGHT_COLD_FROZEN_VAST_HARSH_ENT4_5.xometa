@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_COLD_FROZEN_VAST_HARSH_ENT4_5",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OTTONI",
-    "OPAL"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.507,
-      "macro_movement": 0.107,
-      "macro_coupling": 0.341,
-      "macro_space": 0.903
-    },
-    "OPAL": {
-      "macro_character": 0.557,
-      "macro_movement": 0.103,
-      "macro_coupling": 0.299,
-      "macro_space": 0.915
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OTTONI",
-    "target": "OPAL",
-    "amount": 0.803
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Opal",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.803
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.902,
     "brightness": 0.925,
-    "warmth": 0.13,
-    "movement": 0.1,
     "density": 0.329,
+    "movement": 0.1,
     "space": 0.896,
-    "aggression": 0.902
+    "warmth": 0.13
   },
+  "engines": [
+    "Ottoni",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.532,
-    "MOVEMENT": 0.105,
     "COUPLING": 0.803,
+    "MOVEMENT": 0.105,
     "SPACE": 0.909
   },
+  "mood": "Entangled",
+  "name": "Crystal Rage",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.557,
+      "macro_coupling": 0.299,
+      "macro_movement": 0.103,
+      "macro_space": 0.915
+    },
+    "Ottoni": {
+      "macro_character": 0.507,
+      "macro_coupling": 0.341,
+      "macro_movement": 0.107,
+      "macro_space": 0.903
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +59,6 @@
     "cold",
     "vast",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

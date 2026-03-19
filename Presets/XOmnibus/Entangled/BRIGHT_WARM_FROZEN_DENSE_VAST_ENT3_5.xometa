@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_WARM_FROZEN_DENSE_VAST_ENT3_5",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.8723
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_VAST. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.4997,
+    "brightness": 0.8779,
+    "density": 0.9561,
+    "movement": 0.0667,
+    "space": 0.8955,
+    "warmth": 0.9796
+  },
   "engines": [
-    "ORCA",
-    "ORIGAMI"
+    "Orca",
+    "Origami"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_VAST. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7081,
+    "COUPLING": 0.8874,
+    "MOVEMENT": 0.0563,
+    "SPACE": 0.5084
+  },
+  "mood": "Entangled",
+  "name": "Bloom Solid",
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.6298,
+      "macro_coupling": 0.8092,
+      "macro_movement": 0.0572,
+      "macro_space": 0.5772
+    },
+    "Origami": {
+      "macro_character": 0.7864,
+      "macro_coupling": 0.9655,
+      "macro_movement": 0.0555,
+      "macro_space": 0.4395
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +70,6 @@
     "dense",
     "vast"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORCA": {
-      "macro_character": 0.6298,
-      "macro_movement": 0.0572,
-      "macro_coupling": 0.8092,
-      "macro_space": 0.5772
-    },
-    "ORIGAMI": {
-      "macro_character": 0.7864,
-      "macro_movement": 0.0555,
-      "macro_coupling": 0.9655,
-      "macro_space": 0.4395
-    }
-  },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORCA",
-    "target": "ORIGAMI",
-    "amount": 0.8723
-  },
-  "macros": {
-    "CHARACTER": 0.7081,
-    "MOVEMENT": 0.0563,
-    "COUPLING": 0.8874,
-    "SPACE": 0.5084
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.8779,
-    "warmth": 0.9796,
-    "movement": 0.0667,
-    "density": 0.9561,
-    "space": 0.8955,
-    "aggression": 0.4997
-  }
+  "version": "1.0.0"
 }

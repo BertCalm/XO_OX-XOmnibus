@@ -1,48 +1,60 @@
 {
-  "name": "SPARSE DRIFT",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORIGAMI",
-    "OBLONG"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.238,
-      "macro_movement": 0.669,
-      "macro_coupling": 0.214,
-      "macro_space": 0.132
-    },
-    "OBLONG": {
-      "macro_character": 0.936,
-      "macro_movement": 0.571,
-      "macro_coupling": 0.473,
-      "macro_space": 0.785
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ORIGAMI",
-    "target": "OBLONG",
-    "amount": 0.746
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oblong",
+        "type": "CHAOS_INJECT",
+        "amount": 0.746
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.467,
     "brightness": 0.19,
-    "warmth": 0.097,
-    "movement": 0.431,
     "density": 0.038,
+    "movement": 0.431,
     "space": 0.424,
-    "aggression": 0.467
+    "warmth": 0.097
   },
+  "engines": [
+    "Origami",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.729,
-    "MOVEMENT": 0.673,
     "COUPLING": 0.984,
+    "MOVEMENT": 0.673,
     "SPACE": 0.098
   },
+  "mood": "Entangled",
+  "name": "SPARSE DRIFT",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.936,
+      "macro_coupling": 0.473,
+      "macro_movement": 0.571,
+      "macro_space": 0.785
+    },
+    "Origami": {
+      "macro_character": 0.238,
+      "macro_coupling": 0.214,
+      "macro_movement": 0.669,
+      "macro_space": 0.132
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "drift",
     "filament"
-  ]
+  ],
+  "version": "1.0"
 }

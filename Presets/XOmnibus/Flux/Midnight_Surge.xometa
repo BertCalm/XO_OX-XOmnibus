@@ -1,49 +1,61 @@
 {
-  "name": "MIDNIGHT SURGE",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ole",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.306
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.457,
+    "brightness": 0.034,
+    "density": 0.114,
+    "movement": 0.582,
+    "space": 0.531,
+    "warmth": 0.663
+  },
   "engines": [
-    "ODDOSCAR",
-    "OLE"
+    "OddOscar",
+    "Ole"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.455,
+    "COUPLING": 0.526,
+    "MOVEMENT": 0.733,
+    "SPACE": 0.337
+  },
+  "mood": "Flux",
+  "name": "MIDNIGHT SURGE",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.075,
-      "macro_movement": 0.883,
       "macro_coupling": 0.904,
+      "macro_movement": 0.883,
       "macro_space": 0.546
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.835,
-      "macro_movement": 0.583,
       "macro_coupling": 0.148,
+      "macro_movement": 0.583,
       "macro_space": 0.127
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ODDOSCAR",
-    "target": "OLE",
-    "amount": 0.306
-  },
-  "dna": {
-    "brightness": 0.034,
-    "warmth": 0.663,
-    "movement": 0.582,
-    "density": 0.114,
-    "space": 0.531,
-    "aggression": 0.457
-  },
-  "macros": {
-    "CHARACTER": 0.455,
-    "MOVEMENT": 0.733,
-    "COUPLING": 0.526,
-    "SPACE": 0.337
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "extreme",
     "low-density"
-  ]
+  ],
+  "version": "1.0"
 }

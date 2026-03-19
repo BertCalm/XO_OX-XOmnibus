@@ -1,48 +1,60 @@
 {
-  "name": "OBLITERATE BASE",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OVERDUB",
-    "OTTONI"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.491,
-      "macro_movement": 0.527,
-      "macro_coupling": 0.603,
-      "macro_space": 0.54
-    },
-    "OTTONI": {
-      "macro_character": 0.774,
-      "macro_movement": 0.449,
-      "macro_coupling": 0.682,
-      "macro_space": 0.487
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OVERDUB",
-    "target": "OTTONI",
-    "amount": 0.583
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Ottoni",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.583
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.942,
     "brightness": 0.286,
-    "warmth": 0.121,
-    "movement": 0.669,
     "density": 0.221,
+    "movement": 0.669,
     "space": 0.24,
-    "aggression": 0.942
+    "warmth": 0.121
   },
+  "engines": [
+    "Overdub",
+    "Ottoni"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.565,
-    "MOVEMENT": 0.669,
     "COUPLING": 0.583,
+    "MOVEMENT": 0.669,
     "SPACE": 0.24
   },
+  "mood": "Foundation",
+  "name": "OBLITERATE BASE",
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.774,
+      "macro_coupling": 0.682,
+      "macro_movement": 0.449,
+      "macro_space": 0.487
+    },
+    "Overdub": {
+      "macro_character": 0.491,
+      "macro_coupling": 0.603,
+      "macro_movement": 0.527,
+      "macro_space": 0.54
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

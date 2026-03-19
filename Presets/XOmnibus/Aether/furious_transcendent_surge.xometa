@@ -1,49 +1,61 @@
 {
-  "name": "FURIOUS TRANSCENDENT SURGE",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OPAL",
-    "OCTOPUS"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.063,
-      "macro_movement": 0.457,
-      "macro_coupling": 0.5,
-      "macro_space": 0.24
-    },
-    "OCTOPUS": {
-      "macro_character": 0.632,
-      "macro_movement": 0.431,
-      "macro_coupling": 0.719,
-      "macro_space": 0.225
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OPAL",
-    "target": "OCTOPUS",
-    "amount": 0.301
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Octopus",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.301
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.947,
     "brightness": 0.776,
-    "warmth": 0.238,
-    "movement": 0.423,
     "density": 0.122,
+    "movement": 0.423,
     "space": 0.238,
-    "aggression": 0.947
+    "warmth": 0.238
   },
+  "engines": [
+    "Opal",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.353,
-    "MOVEMENT": 0.423,
     "COUPLING": 0.571,
+    "MOVEMENT": 0.423,
     "SPACE": 0.238
   },
+  "mood": "Aether",
+  "name": "FURIOUS TRANSCENDENT SURGE",
+  "parameters": {
+    "Octopus": {
+      "macro_character": 0.632,
+      "macro_coupling": 0.719,
+      "macro_movement": 0.431,
+      "macro_space": 0.225
+    },
+    "Opal": {
+      "macro_character": 0.063,
+      "macro_coupling": 0.5,
+      "macro_movement": 0.457,
+      "macro_space": 0.24
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

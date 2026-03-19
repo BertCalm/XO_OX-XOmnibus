@@ -1,13 +1,51 @@
 {
-  "schema_version": 1,
-  "name": "Signal To Sky",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Obsidian dissolved into infinite space. Space dimension at 0.94 — cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "dna": {
+    "aggression": 0.075,
+    "brightness": 0.486,
+    "density": 0.638,
+    "movement": 0.374,
+    "space": 0.94,
+    "warmth": 0.385
+  },
   "engines": [
     "Obsidian"
   ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "Obsidian dissolved into infinite space. Space dimension at 0.94 \u2014 cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Signal To Sky",
+  "parameters": {
+    "Obsidian": {
+      "obsidian_ampAttack": 0.52,
+      "obsidian_ampRelease": 3.79,
+      "obsidian_cascadeBlend": 0.758,
+      "obsidian_crossModDepth": 0.037,
+      "obsidian_densityX": 0.638,
+      "obsidian_depth": 0.864,
+      "obsidian_filterCutoff": 7804.0,
+      "obsidian_filterReso": 0.084,
+      "obsidian_formantIntensity": 0.431,
+      "obsidian_level": 0.78,
+      "obsidian_macroCharacter": 0.385,
+      "obsidian_macroCoupling": 0.0,
+      "obsidian_macroMovement": 0.374,
+      "obsidian_macroSpace": 0.94,
+      "obsidian_stereoWidth": 0.911,
+      "obsidian_stiffness": 0.074,
+      "obsidian_tiltY": 0.543
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "vast",
@@ -17,44 +55,6 @@
     "cosmic",
     "obsidian"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.486,
-    "warmth": 0.385,
-    "movement": 0.374,
-    "density": 0.638,
-    "space": 0.94,
-    "aggression": 0.075
-  },
-  "parameters": {
-    "Obsidian": {
-      "obsidian_densityX": 0.638,
-      "obsidian_tiltY": 0.543,
-      "obsidian_depth": 0.864,
-      "obsidian_stiffness": 0.074,
-      "obsidian_cascadeBlend": 0.758,
-      "obsidian_crossModDepth": 0.037,
-      "obsidian_formantIntensity": 0.431,
-      "obsidian_stereoWidth": 0.911,
-      "obsidian_filterCutoff": 7804.0,
-      "obsidian_filterReso": 0.084,
-      "obsidian_level": 0.78,
-      "obsidian_ampAttack": 0.52,
-      "obsidian_ampRelease": 3.79,
-      "obsidian_macroCharacter": 0.385,
-      "obsidian_macroMovement": 0.374,
-      "obsidian_macroCoupling": 0.0,
-      "obsidian_macroSpace": 0.94
-    }
-  },
-  "coupling": null,
-  "sequencer": null
+  "version": "1.0"
 }

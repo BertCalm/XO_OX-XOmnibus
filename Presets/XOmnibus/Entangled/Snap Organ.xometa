@@ -31,7 +31,10 @@
     "space": 0.25,
     "aggression": 0.15
   },
-  "parameters": {},
+  "parameters": {
+    "OddfeliX": {},
+    "Organon": {}
+  },
   "coupling": {
     "pairs": [
       {

@@ -1,49 +1,61 @@
 {
-  "name": "Equatorial Stalk",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Orbital",
+        "type": "ENVELOPE_MIRROR",
+        "amount": 0.625
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.75,
+    "density": 0.55,
+    "movement": 0.6,
+    "space": 0.6,
+    "warmth": 0.65
+  },
   "engines": [
-    "OCELOT",
-    "ORBITAL"
+    "Ocelot",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.525,
+    "COUPLING": 0.625,
+    "MOVEMENT": 0.625,
+    "SPACE": 0.575
+  },
+  "mood": "Entangled",
+  "name": "Equatorial Stalk",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.675,
-      "macro_movement": 0.725,
       "macro_coupling": 0.575,
+      "macro_movement": 0.725,
       "macro_space": 0.475
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.375,
-      "macro_movement": 0.525,
       "macro_coupling": 0.475,
+      "macro_movement": 0.525,
       "macro_space": 0.675
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_MIRROR",
-    "source": "OCELOT",
-    "target": "ORBITAL",
-    "amount": 0.625
-  },
-  "dna": {
-    "brightness": 0.75,
-    "warmth": 0.65,
-    "movement": 0.6,
-    "density": 0.55,
-    "space": 0.6,
-    "aggression": 0.88
-  },
-  "macros": {
-    "CHARACTER": 0.525,
-    "MOVEMENT": 0.625,
-    "COUPLING": 0.625,
-    "SPACE": 0.575
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "feral"
-  ]
+  ],
+  "version": "1.0"
 }

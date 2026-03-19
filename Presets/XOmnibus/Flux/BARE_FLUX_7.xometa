@@ -1,48 +1,60 @@
 {
-  "name": "BARE FLUX 7",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OHM",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "OHM": {
-      "macro_character": 0.2496,
-      "macro_movement": 0.1134,
-      "macro_coupling": 0.7357,
-      "macro_space": 0.499
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.387,
-      "macro_movement": 0.5617,
-      "macro_coupling": 0.2618,
-      "macro_space": 0.2603
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OHM",
-    "target": "ODDOSCAR",
-    "amount": 0.5678
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "OddOscar",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.5678
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.5295,
     "brightness": 0.9488,
-    "warmth": 0.372,
-    "movement": 0.1044,
     "density": 0.0879,
+    "movement": 0.1044,
     "space": 0.5739,
-    "aggression": 0.5295
+    "warmth": 0.372
   },
+  "engines": [
+    "Ohm",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.9964,
-    "MOVEMENT": 0.2856,
     "COUPLING": 0.9165,
+    "MOVEMENT": 0.2856,
     "SPACE": 0.4912
   },
+  "mood": "Flux",
+  "name": "BARE FLUX 7",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.387,
+      "macro_coupling": 0.2618,
+      "macro_movement": 0.5617,
+      "macro_space": 0.2603
+    },
+    "Ohm": {
+      "macro_character": 0.2496,
+      "macro_coupling": 0.7357,
+      "macro_movement": 0.1134,
+      "macro_space": 0.499
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "sparse",
     "minimal"
-  ]
+  ],
+  "version": "1.0"
 }

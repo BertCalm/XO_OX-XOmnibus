@@ -1,50 +1,62 @@
 {
-  "name": "DARK_KINETIC_DENSE_VIOLENT_ENT_AGG_5",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORCA",
-    "OBSIDIAN"
-  ],
-  "parameters": {
-    "ORCA": {
-      "macro_character": 0.658,
-      "macro_movement": 0.921,
-      "macro_coupling": 0.768,
-      "macro_space": 0.583
-    },
-    "OBSIDIAN": {
-      "macro_character": 0.679,
-      "macro_movement": 0.925,
-      "macro_coupling": 0.756,
-      "macro_space": 0.626
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ORCA",
-    "target": "OBSIDIAN",
-    "amount": 0.948
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Obsidian",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.948
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.933,
     "brightness": 0.087,
-    "warmth": 0.334,
-    "movement": 0.907,
     "density": 0.99,
+    "movement": 0.907,
     "space": 0.588,
-    "aggression": 0.933
+    "warmth": 0.334
   },
+  "engines": [
+    "Orca",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.669,
-    "MOVEMENT": 0.907,
     "COUPLING": 0.768,
+    "MOVEMENT": 0.907,
     "SPACE": 0.588
   },
+  "mood": "Entangled",
+  "name": "Signal Thick",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.679,
+      "macro_coupling": 0.756,
+      "macro_movement": 0.925,
+      "macro_space": 0.626
+    },
+    "Orca": {
+      "macro_character": 0.658,
+      "macro_coupling": 0.768,
+      "macro_movement": 0.921,
+      "macro_space": 0.583
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "dark",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

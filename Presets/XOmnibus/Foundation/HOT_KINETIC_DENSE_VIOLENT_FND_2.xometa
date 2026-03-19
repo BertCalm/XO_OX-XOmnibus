@@ -1,45 +1,56 @@
 {
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FND_2",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Onset",
+        "type": "PITCH_SYNC",
+        "amount": 0.294
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.867,
+    "brightness": 0.679,
+    "density": 0.935,
+    "movement": 0.871,
+    "space": 0.644,
+    "warmth": 0.927
+  },
   "engines": [
-    "ODDOSCAR",
-    "ONSET"
+    "OddOscar",
+    "Onset"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.243,
+    "COUPLING": 0.118,
+    "MOVEMENT": 0.422,
+    "SPACE": 0.263
+  },
+  "mood": "Foundation",
+  "name": "Solar Titan",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.617,
-      "macro_movement": 0.1,
       "macro_coupling": 0.214,
+      "macro_movement": 0.1,
       "macro_space": 0.255
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.582,
-      "macro_movement": 0.686,
       "macro_coupling": 0.173,
+      "macro_movement": 0.686,
       "macro_space": 0.271
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ODDOSCAR",
-    "target": "ONSET",
-    "amount": 0.294
-  },
-  "dna": {
-    "brightness": 0.679,
-    "warmth": 0.927,
-    "movement": 0.871,
-    "density": 0.935,
-    "space": 0.644,
-    "aggression": 0.867
-  },
-  "macros": {
-    "CHARACTER": 0.243,
-    "MOVEMENT": 0.422,
-    "COUPLING": 0.118,
-    "SPACE": 0.263
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -48,5 +59,6 @@
     "dense",
     "violent",
     "aggressive"
-  ]
+  ],
+  "version": "1.0"
 }

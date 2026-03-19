@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_DENSE_VIOLENT_FAM_AGG_4",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ORPHICA",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.647,
-      "macro_movement": 0.748,
-      "macro_coupling": 0.59,
-      "macro_space": 0.806
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.601,
-      "macro_movement": 0.707,
-      "macro_coupling": 0.565,
-      "macro_space": 0.768
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORPHICA",
-    "target": "ODDOSCAR",
-    "amount": 0.951
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "OddOscar",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.951
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.919,
     "brightness": 0.926,
-    "warmth": 0.919,
-    "movement": 0.428,
     "density": 0.883,
+    "movement": 0.428,
     "space": 0.364,
-    "aggression": 0.919
+    "warmth": 0.919
   },
+  "engines": [
+    "Orphica",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.647,
-    "MOVEMENT": 0.748,
     "COUPLING": 0.59,
+    "MOVEMENT": 0.748,
     "SPACE": 0.806
   },
+  "mood": "Family",
+  "name": "Solar Strike 2",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.601,
+      "macro_coupling": 0.565,
+      "macro_movement": 0.707,
+      "macro_space": 0.768
+    },
+    "Orphica": {
+      "macro_character": 0.647,
+      "macro_coupling": 0.59,
+      "macro_movement": 0.748,
+      "macro_space": 0.806
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "bright",
     "warm",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

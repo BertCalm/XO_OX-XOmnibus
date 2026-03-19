@@ -1,31 +1,46 @@
 {
-  "name": "Coastal Drift",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Odyssey",
+        "type": "COASTAL_DIVE",
+        "amount": 0.6
+      }
+    ]
+  },
+  "description": "Wavetable tide pushes the odyssey toward shore — drift current meeting the azure dive",
   "engines": [
-    "ODYSSEY",
-    "OSPREY"
+    "Odyssey",
+    "Osprey"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.65,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.57,
-    "warmth": 0.5,
-    "movement": 0.67,
-    "density": 0.55,
-    "space": 0.6,
-    "aggression": 0.43
+  "mood": "Entangled",
+  "name": "Coastal Drift",
+  "parameters": {
+    "Odyssey": {},
+    "Osprey": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "COASTAL_DIVE",
-    "source": "OSPREY",
-    "target": "ODYSSEY",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.43,
+    "brightness": 0.57,
+    "density": 0.55,
+    "movement": 0.67,
+    "space": 0.6,
+    "warmth": 0.5
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "osprey",
     "wavetable"
   ],
-  "description": "Wavetable tide pushes the odyssey toward shore \u2014 drift current meeting the azure dive"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

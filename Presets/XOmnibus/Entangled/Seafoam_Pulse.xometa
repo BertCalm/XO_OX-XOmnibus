@@ -1,54 +1,63 @@
 {
-  "schema_version": 1,
-  "name": "Seafoam Pulse",
-  "mood": "Entangled",
-  "engines": [
-    "ORPHICA",
-    "ORGANON"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "ORPHICA's siphonophore amplitude pulse breathes into ORGANON's cellular rhythm.",
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.65,
-      "macro_movement": 0.52,
-      "macro_coupling": 0.65,
-      "macro_space": 0.75
-    },
-    "ORGANON": {
-      "macro_character": 0.48,
-      "macro_movement": 0.6,
-      "macro_coupling": 0.55,
-      "macro_space": 0.6
-    }
-  },
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORPHICA",
-    "target": "ORGANON",
-    "amount": 0.65,
-    "intensity": "Moderate"
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Organon",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.65
+      }
+    ]
   },
+  "description": "ORPHICA's siphonophore amplitude pulse breathes into ORGANON's cellular rhythm.",
   "dna": {
+    "aggression": 0.07,
     "brightness": 0.7,
-    "warmth": 0.4,
-    "movement": 0.52,
     "density": 0.657,
+    "movement": 0.52,
     "space": 0.76,
-    "aggression": 0.07
+    "warmth": 0.4
   },
+  "engines": [
+    "Orphica",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.65,
-    "MOVEMENT": 0.52,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.52,
     "SPACE": 0.75
   },
+  "mood": "Entangled",
+  "name": "Seafoam Pulse",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.48,
+      "macro_coupling": 0.55,
+      "macro_movement": 0.6,
+      "macro_space": 0.6
+    },
+    "Orphica": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.52,
+      "macro_space": 0.75
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "orphica",
     "organon",
     "amplitude",
     "seafoam"
-  ]
+  ],
+  "version": "1.0"
 }

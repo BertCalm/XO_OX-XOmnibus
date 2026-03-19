@@ -1,49 +1,61 @@
 {
-  "name": "SOLAR PRISM",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OWLFISH",
-    "OVERBITE"
-  ],
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.536,
-      "macro_movement": 0.334,
-      "macro_coupling": 0.001,
-      "macro_space": 0.39
-    },
-    "OVERBITE": {
-      "macro_character": 0.526,
-      "macro_movement": 0.083,
-      "macro_coupling": 0.723,
-      "macro_space": 0.896
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OWLFISH",
-    "target": "OVERBITE",
-    "amount": 0.766
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Overbite",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.766
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.836,
     "brightness": 0.736,
-    "warmth": 0.949,
-    "movement": 0.924,
     "density": 0.425,
+    "movement": 0.924,
     "space": 0.105,
-    "aggression": 0.836
+    "warmth": 0.949
   },
+  "engines": [
+    "Owlfish",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.839,
-    "MOVEMENT": 0.45,
     "COUPLING": 0.233,
+    "MOVEMENT": 0.45,
     "SPACE": 0.92
   },
+  "mood": "Prism",
+  "name": "SOLAR PRISM",
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.526,
+      "macro_coupling": 0.723,
+      "macro_movement": 0.083,
+      "macro_space": 0.896
+    },
+    "Owlfish": {
+      "macro_character": 0.536,
+      "macro_coupling": 0.001,
+      "macro_movement": 0.334,
+      "macro_space": 0.39
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

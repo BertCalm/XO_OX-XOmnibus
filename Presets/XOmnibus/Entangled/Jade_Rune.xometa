@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Jade Rune",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.791,
+        "engineA": "Obsidian",
+        "engineB": "OddOscar",
+        "type": "PITCH_TRACK"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "aggression": 0.695,
+    "brightness": 0.0,
+    "density": 0.765,
+    "movement": 0.4,
+    "space": 0.5,
+    "warmth": 0.475
+  },
   "engines": [
-    "OBSIDIAN",
-    "ODDOSCAR"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "obsidian",
-    "oddoscar"
+    "Obsidian",
+    "OddOscar"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.285,
-    "MOVEMENT": 0.488,
     "COUPLING": 0.704,
+    "MOVEMENT": 0.488,
     "SPACE": 0.447
   },
-  "couplingIntensity": "Strong",
-  "dna": {
-    "brightness": 0.0,
-    "warmth": 0.475,
-    "movement": 0.4,
-    "density": 0.765,
-    "space": 0.5,
-    "aggression": 0.695
-  },
-  "sonic_dna": {
-    "brightness": 0.0,
-    "warmth": 0.475,
-    "movement": 0.4,
-    "density": 0.765,
-    "space": 0.5,
-    "aggression": 0.695
-  },
+  "mood": "Entangled",
+  "name": "Jade Rune",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.622,
-      "macro_movement": 0.339,
       "macro_coupling": 0.593,
+      "macro_movement": 0.339,
       "macro_space": 0.225
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.367,
-      "macro_movement": 0.699,
       "macro_coupling": 0.653,
+      "macro_movement": 0.699,
       "macro_space": 0.497
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBSIDIAN",
-        "engineB": "ODDOSCAR",
-        "type": "PITCH_TRACK",
-        "amount": 0.791
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.695,
+    "brightness": 0.0,
+    "density": 0.765,
+    "movement": 0.4,
+    "space": 0.5,
+    "warmth": 0.475
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "obsidian",
+    "oddoscar"
+  ],
+  "version": "1.0.0"
 }

@@ -1,13 +1,57 @@
 {
-  "schema_version": 1,
-  "name": "OddLight Run",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OddFelix harmonics in fluid refractive motion — spectral run through shifting medium.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.575,
+    "density": 0.96,
+    "movement": 0.83,
+    "space": 0.69,
+    "warmth": 0.34
+  },
   "engines": [
-    "OddFelix"
+    "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OddFelix harmonics in fluid refractive motion \u2014 spectral run through shifting medium.",
+  "legacy": {
+    "sourceCategory": "Prism",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "OddLight Run",
+  "parameters": {
+    "OddfeliX": {
+      "oddfelix_ampAttack": 0.015,
+      "oddfelix_ampDecay": 0.952,
+      "oddfelix_ampRelease": 1.835,
+      "oddfelix_ampSustain": 0.728,
+      "oddfelix_filterCutoff": 14640.0,
+      "oddfelix_filterReso": 0.16,
+      "oddfelix_harmonicBlend": 0.684,
+      "oddfelix_level": 0.8,
+      "oddfelix_lfoDepth": 0.249,
+      "oddfelix_lfoRate": 4.235,
+      "oddfelix_macroCharacter": 0.608,
+      "oddfelix_macroCoupling": 0.0,
+      "oddfelix_macroMovement": 0.83,
+      "oddfelix_macroSpace": 0.69,
+      "oddfelix_pitchMod": 0.332,
+      "oddfelix_reverbMix": 0.483,
+      "oddfelix_spectralTilt": 0.532,
+      "oddfelix_stereoWidth": 0.776
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "refraction",
     "oddlight",
@@ -15,50 +59,6 @@
     "fluid",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": "OddFelix",
-    "sourceCategory": "Prism",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OddFelix": {
-      "oddfelix_harmonicBlend": 0.684,
-      "oddfelix_spectralTilt": 0.532,
-      "oddfelix_pitchMod": 0.332,
-      "oddfelix_lfoRate": 4.235,
-      "oddfelix_lfoDepth": 0.249,
-      "oddfelix_reverbMix": 0.483,
-      "oddfelix_filterCutoff": 14640.0,
-      "oddfelix_filterReso": 0.16,
-      "oddfelix_ampAttack": 0.015,
-      "oddfelix_ampDecay": 0.952,
-      "oddfelix_ampSustain": 0.728,
-      "oddfelix_ampRelease": 1.835,
-      "oddfelix_stereoWidth": 0.776,
-      "oddfelix_level": 0.8,
-      "oddfelix_macroCharacter": 0.608,
-      "oddfelix_macroMovement": 0.83,
-      "oddfelix_macroCoupling": 0.0,
-      "oddfelix_macroSpace": 0.69
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.575,
-    "warmth": 0.34,
-    "movement": 0.83,
-    "density": 0.96,
-    "space": 0.69,
-    "aggression": 0.2
-  }
+  "version": "1.0.0"
 }

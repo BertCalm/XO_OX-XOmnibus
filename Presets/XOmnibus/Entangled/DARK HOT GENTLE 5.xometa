@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ouroboros \u00d7 Opal \u2014 Spectral Morph coupling at extreme DNA corner.",
+  "description": "Ouroboros × Opal — Spectral Morph coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "ouroboros",
@@ -33,7 +33,10 @@
     "space": 0.396,
     "aggression": 0.068
   },
-  "parameters": {},
+  "parameters": {
+    "Ouroboros": {},
+    "Opal": {}
+  },
   "coupling": {
     "pairs": [
       {

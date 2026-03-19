@@ -1,50 +1,62 @@
 {
-  "name": "DARK_COLD_DENSE_VIOLENT_PRS_4",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Orphica",
+        "type": "PITCH_SYNC",
+        "amount": 0.659
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.126,
+    "density": 0.971,
+    "movement": 0.6,
+    "space": 0.395,
+    "warmth": 0.137
+  },
   "engines": [
-    "OHM",
-    "ORPHICA"
+    "Ohm",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.503,
+    "COUPLING": 0.53,
+    "MOVEMENT": 0.6,
+    "SPACE": 0.395
+  },
+  "mood": "Prism",
+  "name": "DARK_COLD_DENSE_VIOLENT_PRS_4",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.503,
-      "macro_movement": 0.6,
       "macro_coupling": 0.53,
+      "macro_movement": 0.6,
       "macro_space": 0.395
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.877,
-      "macro_movement": 0.6,
       "macro_coupling": 0.323,
+      "macro_movement": 0.6,
       "macro_space": 0.395
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OHM",
-    "target": "ORPHICA",
-    "amount": 0.659
-  },
-  "dna": {
-    "brightness": 0.126,
-    "warmth": 0.137,
-    "movement": 0.6,
-    "density": 0.971,
-    "space": 0.395,
-    "aggression": 0.88
-  },
-  "macros": {
-    "CHARACTER": 0.503,
-    "MOVEMENT": 0.6,
-    "COUPLING": 0.53,
-    "SPACE": 0.395
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "cold",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

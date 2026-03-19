@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Salt Spray",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.87,
-    "warmth": 0.35,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Coastal brightness — warmth tempered by sea air",
+  "dna": {
     "aggression": 0.15,
-    "movement": 0.5,
+    "brightness": 0.87,
     "density": 0.4,
-    "space": 0.65
+    "movement": 0.5,
+    "space": 0.65,
+    "warmth": 0.35
   },
   "engines": [
-    "OSTERIA"
+    "Osteria"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Coastal brightness \u2014 warmth tempered by sea air",
+  "macroLabels": [
+    "WARMTH",
+    "SALT",
+    "COUPLING",
+    "SMOKE"
+  ],
+  "mood": "Prism",
+  "name": "Salt Spray",
+  "parameters": {
+    "Osteria": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.15,
+    "brightness": 0.87,
+    "density": 0.4,
+    "movement": 0.5,
+    "space": 0.65,
+    "warmth": 0.35
+  },
   "tags": [
     "prism",
     "bright",
@@ -24,23 +44,5 @@
     "salt",
     "warm-bright"
   ],
-  "macroLabels": [
-    "WARMTH",
-    "SALT",
-    "COUPLING",
-    "SMOKE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.87,
-    "warmth": 0.35,
-    "movement": 0.5,
-    "density": 0.4,
-    "space": 0.65,
-    "aggression": 0.15
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

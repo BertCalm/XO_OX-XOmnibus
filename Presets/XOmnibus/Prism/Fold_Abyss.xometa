@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Fold Abyss",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.1095,
-    "warmth": 0.6375,
-    "movement": 0.6174,
-    "density": 0.8919,
-    "space": 0.3798,
-    "aggression": 0.751
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Origami fold collapsed into maximum darkness",
   "dna": {
+    "aggression": 0.751,
     "brightness": 0.1095,
-    "warmth": 0.6375,
-    "movement": 0.6174,
     "density": 0.8919,
+    "movement": 0.6174,
     "space": 0.3798,
-    "aggression": 0.751
+    "warmth": 0.6375
   },
   "engines": [
-    "ORIGAMI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Origami fold collapsed into maximum darkness",
-  "tags": [
-    "prism",
-    "dark",
-    "dense",
-    "extreme",
-    "anchor"
+    "Origami"
   ],
   "macroLabels": [
     "FOLD",
@@ -38,24 +23,39 @@
     "SPACE"
   ],
   "macros": {
-    "FOLD": 0.2187,
-    "TENSION": 0.7648,
     "COUPLE": 0.828,
-    "SPACE": 0.6618
+    "FOLD": 0.2187,
+    "SPACE": 0.6618,
+    "TENSION": 0.7648
   },
-  "couplingIntensity": "None",
+  "mood": "Prism",
+  "name": "Fold Abyss",
   "parameters": {
-    "ORIGAMI": {
-      "ori_macro_fold": 0.2187,
-      "ori_macro_tension": 0.7648,
-      "ori_macro_couple": 0.828,
-      "ori_macro_space": 0.6618,
-      "ori_outputLevel": 0.85,
+    "Origami": {
+      "ori_couplingBus": 0,
       "ori_couplingLevel": 0.5,
-      "ori_couplingBus": 0
+      "ori_macro_couple": 0.828,
+      "ori_macro_fold": 0.2187,
+      "ori_macro_space": 0.6618,
+      "ori_macro_tension": 0.7648,
+      "ori_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.751,
+    "brightness": 0.1095,
+    "density": 0.8919,
+    "movement": 0.6174,
+    "space": 0.3798,
+    "warmth": 0.6375
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "dense",
+    "extreme",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

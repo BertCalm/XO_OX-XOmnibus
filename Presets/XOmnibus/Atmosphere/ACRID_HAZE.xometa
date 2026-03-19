@@ -1,50 +1,62 @@
 {
-  "name": "ACRID HAZE",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Ouroboros",
+        "type": "CHAOS_INJECT",
+        "amount": 0.561
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.904,
+    "brightness": 0.823,
+    "density": 0.916,
+    "movement": 0.643,
+    "space": 0.23,
+    "warmth": 0.255
+  },
   "engines": [
-    "OMBRE",
-    "OUROBOROS"
+    "Ombre",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2,
+    "COUPLING": 0.228,
+    "MOVEMENT": 0.167,
+    "SPACE": 0.23
+  },
+  "mood": "Atmosphere",
+  "name": "ACRID HAZE",
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.584,
-      "macro_movement": 0.798,
       "macro_coupling": 0.142,
+      "macro_movement": 0.798,
       "macro_space": 0.26
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.397,
-      "macro_movement": 0.847,
       "macro_coupling": 0.669,
+      "macro_movement": 0.847,
       "macro_space": 0.484
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OMBRE",
-    "target": "OUROBOROS",
-    "amount": 0.561
-  },
-  "dna": {
-    "brightness": 0.823,
-    "warmth": 0.255,
-    "movement": 0.643,
-    "density": 0.916,
-    "space": 0.23,
-    "aggression": 0.904
-  },
-  "macros": {
-    "CHARACTER": 0.2,
-    "MOVEMENT": 0.167,
-    "COUPLING": 0.228,
-    "SPACE": 0.23
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

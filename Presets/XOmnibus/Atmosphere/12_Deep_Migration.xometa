@@ -1,26 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Deep Migration",
-  "mood": "Atmosphere",
-  "sonic_dna": {
-    "brightness": 0.0,
-    "warmth": 0.65,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Long portamento glides in legato mode with full morphGlide — organs morph as the creature moves",
+  "dna": {
     "aggression": 0.05,
-    "movement": 0.6,
+    "brightness": 0.0,
     "density": 0.6,
-    "space": 1.0
+    "movement": 0.6,
+    "space": 1.0,
+    "warmth": 0.65
   },
   "engines": [
-    "XOwlfish"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Long portamento glides in legato mode with full morphGlide — organs morph as the creature moves",
-  "tags": [
-    "glide",
-    "legato",
-    "organic",
-    "evolving"
+    "Owlfish"
   ],
   "macroLabels": [
     "DEPTH",
@@ -28,21 +22,50 @@
     "DEFENSE",
     "PRESSURE"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.0,
-    "warmth": 0.65,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 1.0,
-    "aggression": 0.05
-  },
+  "mood": "Atmosphere",
+  "name": "Deep Migration",
   "parameters": {
-    "XOwlfish": {
-      "owl_portamento": 0.7,
+    "Owlfish": {
+      "owl_ampAttack": 200,
+      "owl_ampDecay": 800,
+      "owl_ampRelease": 1500,
+      "owl_ampSustain": 0.85,
+      "owl_armorDecay": 0.45,
+      "owl_armorDelay": 0.25,
+      "owl_armorDuck": 0.3,
+      "owl_armorScatter": 0.3,
+      "owl_armorThreshold": 0.8,
+      "owl_bodyFreq": 38,
+      "owl_bodyLevel": 0.45,
+      "owl_compAttack": 0.3,
+      "owl_compRatio": 0.35,
+      "owl_compRelease": 0.5,
+      "owl_compThreshold": 0.5,
+      "owl_couplingBus": 0,
+      "owl_couplingLevel": 0.5,
+      "owl_defense": 0.25,
+      "owl_depth": 0.55,
+      "owl_feedRate": 0.4,
+      "owl_feeding": 0.3,
+      "owl_filterCutoff": 0.5,
+      "owl_filterReso": 0.2,
+      "owl_filterTrack": 0.5,
+      "owl_fundWave": 0.15,
+      "owl_grainDensity": 0.15,
+      "owl_grainMix": 0.12,
+      "owl_grainPitch": 0.1,
+      "owl_grainSize": 0.35,
       "owl_legatoMode": 1,
+      "owl_mixtur": 0.25,
       "owl_morphGlide": 0.85,
-      "owl_subMix": 0.5,
+      "owl_outputLevel": 0.78,
+      "owl_outputPan": 0.0,
+      "owl_portamento": 0.7,
+      "owl_pressure": 0.4,
+      "owl_reverbDamp": 0.5,
+      "owl_reverbMix": 0.4,
+      "owl_reverbPreDelay": 0.3,
+      "owl_reverbSize": 0.55,
       "owl_subDiv1": 1,
       "owl_subDiv2": 2,
       "owl_subDiv3": 3,
@@ -51,47 +74,24 @@
       "owl_subLevel2": 0.5,
       "owl_subLevel3": 0.3,
       "owl_subLevel4": 0.0,
-      "owl_mixtur": 0.25,
-      "owl_fundWave": 0.15,
-      "owl_subWave": 0.3,
-      "owl_bodyFreq": 38,
-      "owl_bodyLevel": 0.45,
-      "owl_compRatio": 0.35,
-      "owl_compThreshold": 0.5,
-      "owl_compAttack": 0.3,
-      "owl_compRelease": 0.5,
-      "owl_filterCutoff": 0.5,
-      "owl_filterReso": 0.2,
-      "owl_filterTrack": 0.5,
-      "owl_grainSize": 0.35,
-      "owl_grainDensity": 0.15,
-      "owl_grainPitch": 0.1,
-      "owl_grainMix": 0.12,
-      "owl_feedRate": 0.4,
-      "owl_armorThreshold": 0.8,
-      "owl_armorDecay": 0.45,
-      "owl_armorScatter": 0.3,
-      "owl_armorDuck": 0.3,
-      "owl_armorDelay": 0.25,
-      "owl_reverbSize": 0.55,
-      "owl_reverbDamp": 0.5,
-      "owl_reverbPreDelay": 0.3,
-      "owl_reverbMix": 0.4,
-      "owl_ampAttack": 200,
-      "owl_ampDecay": 800,
-      "owl_ampSustain": 0.85,
-      "owl_ampRelease": 1500,
-      "owl_depth": 0.55,
-      "owl_feeding": 0.3,
-      "owl_defense": 0.25,
-      "owl_pressure": 0.4,
-      "owl_outputLevel": 0.78,
-      "owl_outputPan": 0.0,
-      "owl_couplingLevel": 0.5,
-      "owl_couplingBus": 0
+      "owl_subMix": 0.5,
+      "owl_subWave": 0.3
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.05,
+    "brightness": 0.0,
+    "density": 0.6,
+    "movement": 0.6,
+    "space": 1.0,
+    "warmth": 0.65
+  },
+  "tags": [
+    "glide",
+    "legato",
+    "organic",
+    "evolving"
+  ],
+  "version": "1.0.0"
 }

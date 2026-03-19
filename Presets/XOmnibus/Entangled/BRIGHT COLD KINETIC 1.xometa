@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Overlap \u00d7 Orbital \u2014 Spectral Morph coupling at extreme DNA corner.",
+  "description": "Overlap × Orbital — Spectral Morph coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "overlap",
@@ -33,7 +33,10 @@
     "space": 0.645,
     "aggression": 0.375
   },
-  "parameters": {},
+  "parameters": {
+    "Overlap": {},
+    "Orbital": {}
+  },
   "coupling": {
     "pairs": [
       {

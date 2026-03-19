@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Serpent Swallows Sun",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OUROBOROS terminal loop — the cycle collapses inward, no light escapes.",
+  "dna": {
+    "aggression": 0.8,
+    "brightness": 0.07,
+    "density": 0.85,
+    "movement": 0.72,
+    "space": 0.25,
+    "warmth": 0.35
+  },
   "engines": [
-    "OUROBOROS"
+    "Ouroboros"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OUROBOROS terminal loop \u2014 the cycle collapses inward, no light escapes.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CYCLE",
+    "TENSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Serpent Swallows Sun",
+  "parameters": {
+    "Ouroboros": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "portrait",
@@ -16,29 +41,6 @@
     "cyclic",
     "collapse"
   ],
-  "macroLabels": [
-    "CYCLE",
-    "TENSION",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.07,
-    "warmth": 0.35,
-    "movement": 0.72,
-    "density": 0.85,
-    "space": 0.25,
-    "aggression": 0.8
-  }
+  "version": "1.0.0"
 }

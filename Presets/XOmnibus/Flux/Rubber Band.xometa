@@ -1,64 +1,64 @@
 {
-  "schema_version": 1,
-  "name": "Rubber Band",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Evolving oddball texture with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.234,
+    "brightness": 0.431,
+    "density": 0.796,
+    "movement": 0.615,
+    "space": 0.0,
+    "warmth": 0.67
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Evolving oddball texture with bob character and analog drift.",
-  "tags": [
-    "elastic",
-    "stretch",
-    "bizarre"
-  ],
+  "legacy": {
+    "sourceCategory": "Oddball",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Oddball",
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Rubber Band",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 1.0,
-      "bob_oscA_shape": 0.58,
-      "bob_oscA_drift": 0.72,
-      "bob_oscB_wave": 0.0,
-      "bob_oscB_fm": 0.72,
-      "bob_oscB_blend": 0.85,
-      "bob_oscB_detune": 45.0,
-      "bob_curMode": 2.0,
-      "bob_curAmount": 0.78,
-      "bob_fltMode": 1.0,
-      "bob_fltCutoff": 4500.0,
-      "bob_fltReso": 0.72,
-      "bob_lfo1Rate": 0.8,
-      "bob_lfo1Depth": 0.6,
       "bob_ampAttack": 0.02,
       "bob_ampDecay": 0.5,
-      "bob_ampSustain": 0.55,
       "bob_ampRelease": 1.0,
+      "bob_ampSustain": 0.55,
+      "bob_bobMode": 0.62,
+      "bob_curAmount": 0.78,
+      "bob_curMode": 2.0,
+      "bob_fltCutoff": 4500.0,
+      "bob_fltMode": 1.0,
+      "bob_fltReso": 0.72,
       "bob_glide": 0.6,
-      "bob_bobMode": 0.62
+      "bob_lfo1Depth": 0.6,
+      "bob_lfo1Rate": 0.8,
+      "bob_oscA_drift": 0.72,
+      "bob_oscA_shape": 0.58,
+      "bob_oscA_wave": 1.0,
+      "bob_oscB_blend": 0.85,
+      "bob_oscB_detune": 45.0,
+      "bob_oscB_fm": 0.72,
+      "bob_oscB_wave": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.431,
-    "warmth": 0.67,
-    "movement": 0.615,
-    "density": 0.796,
-    "space": 0.0,
-    "aggression": 0.234
-  }
+  "tags": [
+    "elastic",
+    "stretch",
+    "bizarre"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

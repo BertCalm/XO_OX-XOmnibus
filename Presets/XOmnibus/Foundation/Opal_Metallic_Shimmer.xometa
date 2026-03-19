@@ -1,44 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Metallic Shimmer",
-  "mood": "Foundation",
-  "engines": ["Opal"],
-  "author": "Guru Bin — OPAL Deep Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "High-register granular shimmer using medium grains — 0.35 size — with bright filter and low posScatter. The shimmer comes from pitchScatter 0.08: grains detune slightly around the played note, creating the beating-partial characteristic of struck metal. High density, tight envelope. A cymbal that has forgotten it was ever a cymbal.",
-  "tags": ["granular", "metallic", "shimmer", "bright", "percussive", "foundation", "harmonic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.8,
-    "warmth": 0.2,
-    "movement": 0.5,
-    "density": 0.75,
-    "space": 0.45,
-    "aggression": 0.15
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "High-register granular shimmer using medium grains — 0.35 size — with bright filter and low posScatter. The shimmer comes from pitchScatter 0.08: grains detune slightly around the played note, creating the beating-partial characteristic of struck metal. High density, tight envelope. A cymbal that has forgotten it was ever a cymbal.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.8,
+    "density": 0.75,
+    "movement": 0.5,
+    "space": 0.45,
+    "warmth": 0.2
+  },
+  "engines": [
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Metallic Shimmer",
   "parameters": {
     "Opal": {
-      "opal_grainSize": 0.35,
-      "opal_density": 0.78,
-      "opal_posScatter": 0.15,
-      "opal_pitchScatter": 0.08,
-      "opal_filterCutoff": 0.82,
-      "opal_filterReso": 0.18,
       "opal_ampAttack": 0.02,
       "opal_ampDecay": 0.8,
-      "opal_ampSustain": 0.5,
       "opal_ampRelease": 1.8,
-      "opal_speed": 1.0,
-      "opal_reverse": 0.0,
+      "opal_ampSustain": 0.5,
+      "opal_density": 0.78,
+      "opal_filterCutoff": 0.82,
+      "opal_filterReso": 0.18,
+      "opal_grainSize": 0.35,
       "opal_macroCharacter": 0.0,
-      "opal_macroMovement": 0.0,
       "opal_macroCoupling": 0.0,
-      "opal_macroSpace": 0.0
+      "opal_macroMovement": 0.0,
+      "opal_macroSpace": 0.0,
+      "opal_pitchScatter": 0.08,
+      "opal_posScatter": 0.15,
+      "opal_reverse": 0.0,
+      "opal_speed": 1.0
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "granular",
+    "metallic",
+    "shimmer",
+    "bright",
+    "percussive",
+    "foundation",
+    "harmonic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

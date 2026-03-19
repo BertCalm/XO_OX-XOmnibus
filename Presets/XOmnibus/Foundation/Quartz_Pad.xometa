@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Quartz Pad",
-  "mood": "Foundation",
-  "sonic_dna": {
-    "brightness": 0.9269,
-    "warmth": 0.1231,
-    "movement": 0.2271,
-    "density": 0.0915,
-    "space": 0.5511,
-    "aggression": 0.2042
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Sparse bob texture, crystalline upper partials",
   "dna": {
+    "aggression": 0.2042,
     "brightness": 0.9269,
-    "warmth": 0.1231,
-    "movement": 0.2271,
     "density": 0.0915,
+    "movement": 0.2271,
     "space": 0.5511,
-    "aggression": 0.2042
+    "warmth": 0.1231
   },
   "engines": [
-    "OBLONG"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Sparse bob texture, crystalline upper partials",
-  "tags": [
-    "foundation",
-    "bright",
-    "sparse",
-    "crystalline",
-    "anchor"
+    "Oblong"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -39,23 +24,38 @@
   ],
   "macros": {
     "CHARACTER": 0.7783,
-    "MOVEMENT": 0.3834,
     "COUPLING": 0.7189,
+    "MOVEMENT": 0.3834,
     "SPACE": 0.5862
   },
-  "couplingIntensity": "None",
+  "mood": "Foundation",
+  "name": "Quartz Pad",
   "parameters": {
-    "OBLONG": {
-      "bob_macro_character": 0.7783,
-      "bob_macro_movement": 0.3834,
-      "bob_macro_coupling": 0.7189,
-      "bob_macro_space": 0.5862,
-      "bob_outputLevel": 0.85,
+    "Oblong": {
+      "bob_couplingBus": 0,
       "bob_couplingLevel": 0.5,
-      "bob_couplingBus": 0
+      "bob_macro_character": 0.7783,
+      "bob_macro_coupling": 0.7189,
+      "bob_macro_movement": 0.3834,
+      "bob_macro_space": 0.5862,
+      "bob_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2042,
+    "brightness": 0.9269,
+    "density": 0.0915,
+    "movement": 0.2271,
+    "space": 0.5511,
+    "warmth": 0.1231
+  },
+  "tags": [
+    "foundation",
+    "bright",
+    "sparse",
+    "crystalline",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

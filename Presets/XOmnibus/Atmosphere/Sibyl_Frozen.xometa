@@ -33,7 +33,9 @@
     "space": 0.9,
     "aggression": 0.05
   },
-  "parameters": {},
+  "parameters": {
+    "Oracle": {}
+  },
   "tags": [
     "glacial",
     "oracle",

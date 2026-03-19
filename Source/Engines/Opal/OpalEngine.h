@@ -63,6 +63,7 @@ namespace OpalParam {
     inline constexpr const char* AMP_RELEASE     = "opal_ampRelease";
     inline constexpr const char* AMP_VEL_SENS    = "opal_ampVelSens";
     // Filter Envelope (29-33)
+    inline constexpr const char* VEL_TO_FILTER   = "opal_velToFilter";
     inline constexpr const char* FILTER_ENV_AMT  = "opal_filterEnvAmt";
     inline constexpr const char* FILTER_ATTACK   = "opal_filterAttack";
     inline constexpr const char* FILTER_DECAY    = "opal_filterDecay";
@@ -1229,6 +1230,11 @@ public:
             PID { OpalParam::AMP_VEL_SENS, 1 }, "Opal Velocity",
             NR (0.0f, 1.0f, 0.01f), 0.4f));
 
+        // D001: Velocity → filter cutoff amount (harder hits = brighter)
+        params.push_back (std::make_unique<FloatParam> (
+            PID { OpalParam::VEL_TO_FILTER, 1 }, "Opal Vel→Filter",
+            NR (0.0f, 1.0f, 0.01f), 0.5f));
+
         //==== 7. FILTER ENVELOPE ====
         params.push_back (std::make_unique<FloatParam> (
             PID { OpalParam::FILTER_ENV_AMT, 1 }, "Opal Filter Env Amt",
@@ -1458,6 +1464,7 @@ public:
         pAmpSustain     = apvts.getRawParameterValue (OpalParam::AMP_SUSTAIN);
         pAmpRelease     = apvts.getRawParameterValue (OpalParam::AMP_RELEASE);
         pAmpVelSens     = apvts.getRawParameterValue (OpalParam::AMP_VEL_SENS);
+        pVelToFilter    = apvts.getRawParameterValue (OpalParam::VEL_TO_FILTER);
         // Filter Envelope
         pFilterEnvAmt   = apvts.getRawParameterValue (OpalParam::FILTER_ENV_AMT);
         pFilterAttack   = apvts.getRawParameterValue (OpalParam::FILTER_ATTACK);
@@ -1699,6 +1706,7 @@ public:
         float ampSustain    = safeLoadF (pAmpSustain, 0.8f);
         float ampRelease    = safeLoadF (pAmpRelease, 1.5f);
         float ampVelSens    = safeLoadF (pAmpVelSens, 0.4f);
+        float velToFilter   = safeLoadF (pVelToFilter, 0.5f);
         float filterEnvAmt  = safeLoadF (pFilterEnvAmt, 0.3f);
         float filterAttack  = safeLoadF (pFilterAttack, 0.5f);
         float filterDecay   = safeLoadF (pFilterDecay, 0.8f);
@@ -1980,6 +1988,7 @@ public:
             float envSum = 0.0f;
             float filterEnvSum = 0.0f;
             float lfo1Val = 0.0f, lfo2Val = 0.0f;
+            float velFilterSum = 0.0f;  // D001: average velocity for filter modulation
             int activeCount = 0;
 
             for (auto& v : voices)
@@ -1999,6 +2008,7 @@ public:
 
                 envSum += ampLevel;
                 filterEnvSum += filterLevel;
+                velFilterSum += v.velocity;  // D001: accumulate velocity
                 lfo1Val += l1;
                 lfo2Val += l2;
                 ++activeCount;
@@ -2015,6 +2025,7 @@ public:
             {
                 float norm = 1.0f / static_cast<float> (activeCount);
                 filterEnvSum *= norm;
+                velFilterSum *= norm;  // D001: average velocity across active voices
                 lfo1Val *= norm;
                 lfo2Val *= norm;
             }
@@ -2039,8 +2050,10 @@ public:
                 // Each semitone above middle C shifts cutoff up proportionally
                 keyTrackOffset = filterKeyTrack * (avgNote - 60.0f) * (filterCutoff / 60.0f);
             }
+            // D001: velocity opens filter — harder hits = brighter timbre
+            float velFilterMod = velFilterSum * velToFilter;
             float effCutoff = filterCutoff + keyTrackOffset
-                            + filterEnvAmt * filterEnvSum * 10000.0f
+                            + filterEnvAmt * filterEnvSum * velFilterMod * 10000.0f
                             + modOffsets[6] * 5000.0f; // mod dest 6 = FilterCutoff
             effCutoff = clamp (effCutoff, 20.0f, 20000.0f);
 
@@ -2472,6 +2485,7 @@ private:
     std::atomic<float>* pAmpSustain     = nullptr;
     std::atomic<float>* pAmpRelease     = nullptr;
     std::atomic<float>* pAmpVelSens     = nullptr;
+    std::atomic<float>* pVelToFilter    = nullptr;
     // Filter Envelope
     std::atomic<float>* pFilterEnvAmt   = nullptr;
     std::atomic<float>* pFilterAttack   = nullptr;

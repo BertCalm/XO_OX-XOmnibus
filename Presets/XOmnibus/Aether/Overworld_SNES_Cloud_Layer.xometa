@@ -1,13 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "SNES Cloud Layer",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "SNES SPC700 cloud samples — the warm, slightly compressed sky of 16-bit overworlds. The echo DSP creates halos around every note. Movement is continuous and luminous.",
+  "dna": {
+    "aggression": 0.04,
+    "brightness": 0.75,
+    "density": 0.28,
+    "movement": 0.7,
+    "space": 0.92,
+    "warmth": 0.55
+  },
   "engines": [
     "Overworld"
   ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "SNES SPC700 cloud samples \u2014 the warm, slightly compressed sky of 16-bit overworlds. The echo DSP creates halos around every note. Movement is continuous and luminous.",
+  "macroLabels": [
+    "ERA",
+    "CHIP",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "SNES Cloud Layer",
+  "parameters": {
+    "Overworld": {
+      "ow_ampAttack": 0.2,
+      "ow_ampRelease": 4.0,
+      "ow_era": 0.9,
+      "ow_eraBlend": 0.9,
+      "ow_filterCutoff": 0.6,
+      "ow_filterReso": 0.1,
+      "ow_glitchAmt": 0.3,
+      "ow_lfoDepth": 0.65,
+      "ow_lfoRate": 0.32,
+      "ow_macroChip": 0.0,
+      "ow_macroCoupling": 0.0,
+      "ow_macroEra": 0.0,
+      "ow_macroSpace": 0.0,
+      "ow_reverbMix": 0.87
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "shifting-aether",
@@ -16,41 +52,5 @@
     "warm",
     "luminous"
   ],
-  "macroLabels": [
-    "ERA",
-    "CHIP",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.75,
-    "warmth": 0.55,
-    "movement": 0.7,
-    "density": 0.28,
-    "space": 0.92,
-    "aggression": 0.04
-  },
-  "parameters": {
-    "Overworld": {
-      "ow_era": 0.9,
-      "ow_eraBlend": 0.9,
-      "ow_filterCutoff": 0.6,
-      "ow_filterReso": 0.1,
-      "ow_lfoRate": 0.32,
-      "ow_lfoDepth": 0.65,
-      "ow_ampAttack": 0.2,
-      "ow_ampRelease": 4.0,
-      "ow_reverbMix": 0.87,
-      "ow_glitchAmt": 0.3,
-      "ow_macroEra": 0.0,
-      "ow_macroChip": 0.0,
-      "ow_macroCoupling": 0.0,
-      "ow_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

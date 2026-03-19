@@ -4,6 +4,18 @@ project(XOmnibus VERSION 0.1.0 LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Security hardening flags
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
+    add_compile_options(
+        -Wall -Wextra -Wpedantic
+        -fstack-protector-strong
+        -D_FORTIFY_SOURCE=2
+    )
+    if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+        add_compile_options(-ffunction-sections -fdata-sections)
+    endif()
+endif()
+
 # Platform detection
 if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
     set(XO_MOBILE ON)
@@ -120,6 +132,11 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Ocelot/TapeWarp.h
     Source/Engines/Ocelot/WaveFolder.h
 
+    Source/Engines/Osprey/OspreyEngine.h
+    Source/Engines/Osprey/OspreyEngine.cpp
+    Source/Engines/Osteria/OsteriaEngine.h
+    Source/Engines/Osteria/OsteriaEngine.cpp
+
     Source/Engines/Owlfish/OwlfishEngine.h
     Source/Engines/Owlfish/OwlfishEngine.cpp
     Source/Engines/Owlfish/OwlfishParameters.h
@@ -163,6 +180,8 @@ target_sources(XOmnibus PRIVATE
     # Export pipeline
     Source/Export/XPNCoverArt.h
     Source/Export/XPNExporter.h
+    Source/Export/XOutshine.h
+    Source/Export/XPNDrumExporter.h
 
     # Core (MIDI Learn — shared across platforms)
     Source/Core/MIDILearnManager.h
@@ -172,6 +191,7 @@ target_sources(XOmnibus PRIVATE
     Source/UI/PlaySurface/PlaySurface.h
     Source/UI/CouplingStrip/CouplingStripEditor.h
     Source/UI/OpticVisualizer/OpticVisualizer.h
+    Source/UI/PresetBrowser/PresetBrowser.h
 
     # UI (Mobile — compiled on all platforms, gated by XO_MOBILE)
     Source/UI/Mobile/MobileTouchHandler.h
@@ -228,6 +248,8 @@ add_executable(XOmnibusTests
     Tests/CouplingTests/CouplingMatrixTests.cpp
     Tests/PresetTests/PresetRoundTripTests.cpp
     Tests/ExportTests/XPNExportTests.cpp
+    Tests/DoctrineTests/DoctrineTests.cpp
+    Tests/FamilyWaveguideTest.cpp
 )
 
 target_include_directories(XOmnibusTests PRIVATE
@@ -249,3 +271,6 @@ target_compile_definitions(XOmnibusTests PRIVATE
     JUCE_USE_CURL=0
     JUCE_DISPLAY_SPLASH_SCREEN=0
 )
+
+enable_testing()
+add_test(NAME XOmnibusTests COMMAND XOmnibusTests)

@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Onset Drum Kit Core",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "All eight voices balanced. The kit that runs every session.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.5,
+    "density": 0.8,
+    "movement": 0.6,
+    "space": 0.3,
+    "warmth": 0.55
+  },
   "engines": [
     "Onset"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "All eight voices balanced. The kit that runs every session.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Onset Drum Kit Core",
+  "parameters": {
+    "Onset": {
+      "onset_clap_tone": 0.6,
+      "onset_hat_decay": 0.4,
+      "onset_kick_punch": 0.75,
+      "onset_kick_tune": 0.3,
+      "onset_snare_snap": 0.7
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "work-horse",
     "core",
@@ -17,37 +48,6 @@
     "workhorse",
     "drums"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Onset": {
-      "onset_kick_tune": 0.3,
-      "onset_kick_punch": 0.75,
-      "onset_snare_snap": 0.7,
-      "onset_hat_decay": 0.4,
-      "onset_clap_tone": 0.6
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.55,
-    "movement": 0.6,
-    "density": 0.8,
-    "space": 0.3,
-    "aggression": 0.55
-  }
+  "version": "1.0.0"
 }

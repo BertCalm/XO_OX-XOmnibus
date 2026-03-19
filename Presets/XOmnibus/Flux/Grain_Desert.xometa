@@ -33,7 +33,9 @@
     "space": 0.94,
     "aggression": 0.16
   },
-  "parameters": {},
+  "parameters": {
+    "Opal": {}
+  },
   "tags": [
     "flux",
     "sparse-flux",
@@ -41,5 +43,5 @@
     "grain",
     "desert"
   ],
-  "description": "Opal grains scattered across desert space \u2014 rare particles in fast motion."
+  "description": "Opal grains scattered across desert space — rare particles in fast motion."
 }

@@ -1,39 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Warm Perihelion",
-  "mood": "Foundation",
-  "engines": ["Orbital"],
-  "author": "Guru Bin — Fleet Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Four voices tightly grouped — minimum spread, low detune. The group envelope rate is slow enough that a sustained chord takes eight full seconds to complete one breath cycle. Warmth without complexity. The closest approach to the sun.",
-  "tags": ["pad", "warm", "slow", "minimal", "foundation", "lush"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.3,
-    "warmth": 0.85,
-    "movement": 0.25,
-    "density": 0.5,
-    "space": 0.45,
-    "aggression": 0.05
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Four voices tightly grouped — minimum spread, low detune. The group envelope rate is slow enough that a sustained chord takes eight full seconds to complete one breath cycle. Warmth without complexity. The closest approach to the sun.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.3,
+    "density": 0.5,
+    "movement": 0.25,
+    "space": 0.45,
+    "warmth": 0.85
+  },
+  "engines": [
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Warm Perihelion",
   "parameters": {
     "Orbital": {
+      "orb_ampAttack": 0.6,
+      "orb_ampDecay": 0.3,
+      "orb_ampRelease": 2.8,
+      "orb_ampSustain": 0.9,
       "orb_brightness": 0.28,
-      "orb_groupEnvRate": 0.04,
-      "orb_groupEnvDepth": 0.55,
-      "orb_oscCount": 4,
-      "orb_spread": 0.2,
       "orb_detune": 0.08,
       "orb_filterCutoff": 0.42,
       "orb_filterReso": 0.15,
-      "orb_ampAttack": 0.6,
-      "orb_ampDecay": 0.3,
-      "orb_ampSustain": 0.9,
-      "orb_ampRelease": 2.8
+      "orb_groupEnvDepth": 0.55,
+      "orb_groupEnvRate": 0.04,
+      "orb_oscCount": 4,
+      "orb_spread": 0.2
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "pad",
+    "warm",
+    "slow",
+    "minimal",
+    "foundation",
+    "lush"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

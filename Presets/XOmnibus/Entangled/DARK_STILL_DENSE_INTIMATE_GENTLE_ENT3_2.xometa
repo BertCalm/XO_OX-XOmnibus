@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "DARK_STILL_DENSE_INTIMATE_GENTLE_ENT3_2",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Oblong",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.9858
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_STILL_DENSE_INTIMATE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.0758,
+    "brightness": 0.1115,
+    "density": 0.9726,
+    "movement": 0.0964,
+    "space": 0.0877,
+    "warmth": 0.3307
+  },
   "engines": [
-    "ORCA",
-    "OBLONG"
+    "Orca",
+    "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_STILL_DENSE_INTIMATE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7268,
+    "COUPLING": 0.8653,
+    "MOVEMENT": 0.0849,
+    "SPACE": 0.4033
+  },
+  "mood": "Entangled",
+  "name": "Tone Thick",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.7331,
+      "macro_coupling": 0.7862,
+      "macro_movement": 0.0805,
+      "macro_space": 0.1526
+    },
+    "Orca": {
+      "macro_character": 0.7204,
+      "macro_coupling": 0.9444,
+      "macro_movement": 0.0893,
+      "macro_space": 0.6541
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +70,6 @@
     "dense",
     "intimate"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORCA": {
-      "macro_character": 0.7204,
-      "macro_movement": 0.0893,
-      "macro_coupling": 0.9444,
-      "macro_space": 0.6541
-    },
-    "OBLONG": {
-      "macro_character": 0.7331,
-      "macro_movement": 0.0805,
-      "macro_coupling": 0.7862,
-      "macro_space": 0.1526
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORCA",
-    "target": "OBLONG",
-    "amount": 0.9858
-  },
-  "macros": {
-    "CHARACTER": 0.7268,
-    "MOVEMENT": 0.0849,
-    "COUPLING": 0.8653,
-    "SPACE": 0.4033
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.1115,
-    "warmth": 0.3307,
-    "movement": 0.0964,
-    "density": 0.9726,
-    "space": 0.0877,
-    "aggression": 0.0758
-  }
+  "version": "1.0.0"
 }

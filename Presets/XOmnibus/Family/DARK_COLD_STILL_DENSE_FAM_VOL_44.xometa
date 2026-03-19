@@ -1,50 +1,62 @@
 {
-  "name": "DARK_COLD_STILL_DENSE_FAM_VOL_44",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ohm",
+        "type": "HARMONIC_MESH",
+        "amount": 0.536
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.313,
+    "brightness": 0.12,
+    "density": 0.959,
+    "movement": 0.104,
+    "space": 0.34,
+    "warmth": 0.074
+  },
   "engines": [
-    "OHM",
-    "ORPHICA"
+    "Ohm",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.082,
+    "COUPLING": 0.629,
+    "MOVEMENT": 0.11,
+    "SPACE": 0.35
+  },
+  "mood": "Family",
+  "name": "Grain Saturated",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.068,
-      "macro_movement": 0.095,
       "macro_coupling": 0.611,
+      "macro_movement": 0.095,
       "macro_space": 0.349
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.096,
-      "macro_movement": 0.125,
       "macro_coupling": 0.648,
+      "macro_movement": 0.125,
       "macro_space": 0.352
     }
   },
-  "coupling": {
-    "type": "HARMONIC_MESH",
-    "source": "ORPHICA",
-    "target": "OHM",
-    "amount": 0.536
-  },
-  "dna": {
-    "brightness": 0.12,
-    "warmth": 0.074,
-    "movement": 0.104,
-    "density": 0.959,
-    "space": 0.34,
-    "aggression": 0.313
-  },
-  "macros": {
-    "CHARACTER": 0.082,
-    "MOVEMENT": 0.11,
-    "COUPLING": 0.629,
-    "SPACE": 0.35
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
     "cold",
     "still",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

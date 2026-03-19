@@ -1,25 +1,35 @@
 {
-  "name": "Hearth Sustain",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "A fireplace turned to tone. Thick, radiant, absolutely still.",
   "engines": [
-    "OSTERIA"
+    "Osteria"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.627,
-    "MOVEMENT": 0.066,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.066,
     "SPACE": 0.609
   },
-  "sonic_dna": {
-    "brightness": 0.307,
-    "warmth": 0.947,
-    "movement": 0.066,
-    "density": 0.607,
-    "space": 0.609,
-    "aggression": 0.029
+  "mood": "Atmosphere",
+  "name": "Hearth Sustain",
+  "parameters": {
+    "Osteria": {}
   },
-  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.029,
+    "brightness": 0.307,
+    "density": 0.607,
+    "movement": 0.066,
+    "space": 0.609,
+    "warmth": 0.947
+  },
   "tags": [
     "atmosphere",
     "drone",
@@ -27,5 +37,13 @@
     "warm",
     "thick"
   ],
-  "description": "A fireplace turned to tone. Thick, radiant, absolutely still."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.2
+  }
 }

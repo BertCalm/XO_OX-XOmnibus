@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Metabolic Mist",
-  "mood": "Entangled",
-  "engines": [
-    "ORPHICA",
-    "ORGANON"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "ORPHICA microsound spatially coupled with Organon's diffusion \u2014 sea mist harp.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "Orphica",
+        "engineB": "Organon",
+        "type": "SPATIAL_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "ORPHICA microsound spatially coupled with Organon's diffusion — sea mist harp.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.82,
+    "density": 0.38,
+    "movement": 0.55,
+    "space": 0.82,
+    "warmth": 0.44
+  },
+  "engines": [
+    "Orphica",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.57,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.575,
+    "SPACE": 0.66
+  },
+  "mood": "Entangled",
+  "name": "Metabolic Mist",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.52,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.65,
+      "macro_space": 0.52
+    },
+    "Orphica": {
+      "macro_character": 0.62,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.5,
+      "macro_space": 0.8
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "mist",
     "ethereal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {
-    "brightness": 0.82,
-    "warmth": 0.44,
-    "movement": 0.55,
-    "density": 0.38,
-    "space": 0.82,
-    "aggression": 0.05
-  },
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.62,
-      "macro_movement": 0.5,
-      "macro_coupling": 0.7,
-      "macro_space": 0.8
-    },
-    "ORGANON": {
-      "macro_character": 0.52,
-      "macro_movement": 0.65,
-      "macro_coupling": 0.7,
-      "macro_space": 0.52
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORPHICA",
-        "engineB": "ORGANON",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.7
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.57,
-    "MOVEMENT": 0.575,
-    "COUPLING": 0.7,
-    "SPACE": 0.66
-  },
-  "sequencer": null
+  "version": "1.0"
 }

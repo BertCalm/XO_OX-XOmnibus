@@ -1,14 +1,43 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT HOT VAST 4",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.729,
+        "engineA": "Optic",
+        "engineB": "OddfeliX",
+        "type": "AMPLITUDE_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "description": "Optic × OddFelix — Amplitude Mod coupling at extreme DNA corner.",
+  "dna": {
+    "aggression": 0.385,
+    "brightness": 0.947,
+    "density": 0.624,
+    "movement": 0.648,
+    "space": 0.937,
+    "warmth": 0.92
+  },
   "engines": [
     "Optic",
-    "OddFelix"
+    "OddfeliX"
   ],
-  "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Optic \u00d7 OddFelix \u2014 Amplitude Mod coupling at extreme DNA corner.",
+  "macroLabels": [
+    "TEXTURE",
+    "DEPTH",
+    "CHAOS",
+    "MOTION"
+  ],
+  "mood": "Entangled",
+  "name": "BRIGHT HOT VAST 4",
+  "parameters": {
+    "Optic": {},
+    "OddfeliX": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "bright",
     "optic",
@@ -17,32 +46,6 @@
     "extreme-dna",
     "diversity-push"
   ],
-  "macroLabels": [
-    "TEXTURE",
-    "DEPTH",
-    "CHAOS",
-    "MOTION"
-  ],
-  "couplingIntensity": "Extreme",
   "tempo": null,
-  "dna": {
-    "brightness": 0.947,
-    "warmth": 0.92,
-    "movement": 0.648,
-    "density": 0.624,
-    "space": 0.937,
-    "aggression": 0.385
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "OddFelix",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.729
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

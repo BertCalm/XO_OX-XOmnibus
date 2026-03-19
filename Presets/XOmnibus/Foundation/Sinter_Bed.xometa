@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Sinter Bed",
-  "mood": "Foundation",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Wool-thick pad with heavy body resonance and amber warmth.",
+  "dna": {
+    "aggression": 0.62,
     "brightness": 0.365,
-    "warmth": 0.895,
-    "movement": 0.552,
     "density": 0.96,
+    "movement": 0.552,
     "space": 0.198,
-    "aggression": 0.62
+    "warmth": 0.895
   },
   "engines": [
-    "ORCA"
+    "Orca"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Wool-thick pad with heavy body resonance and amber warmth.",
+  "macroLabels": [
+    "BODY",
+    "SATURATE",
+    "COUPLING",
+    "ROOM"
+  ],
+  "mood": "Foundation",
+  "name": "Sinter Bed",
+  "parameters": {
+    "Orca": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.62,
+    "brightness": 0.365,
+    "density": 0.96,
+    "movement": 0.552,
+    "space": 0.198,
+    "warmth": 0.895
+  },
   "tags": [
     "foundation",
     "warm",
@@ -25,23 +45,5 @@
     "aggressive",
     "evolving"
   ],
-  "macroLabels": [
-    "BODY",
-    "SATURATE",
-    "COUPLING",
-    "ROOM"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.365,
-    "warmth": 0.895,
-    "movement": 0.552,
-    "density": 0.96,
-    "space": 0.198,
-    "aggression": 0.62
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

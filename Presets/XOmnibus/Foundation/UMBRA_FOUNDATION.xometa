@@ -1,49 +1,61 @@
 {
-  "name": "UMBRA FOUNDATION",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OUROBOROS",
-    "OPTIC"
-  ],
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.99,
-      "macro_movement": 0.305,
-      "macro_coupling": 0.621,
-      "macro_space": 0.61
-    },
-    "OPTIC": {
-      "macro_character": 0.74,
-      "macro_movement": 0.948,
-      "macro_coupling": 0.208,
-      "macro_space": 0.211
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_LOCK",
-    "source": "OUROBOROS",
-    "target": "OPTIC",
-    "amount": 0.816
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Optic",
+        "type": "HARMONIC_LOCK",
+        "amount": 0.816
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.466,
     "brightness": 0.041,
-    "warmth": 0.564,
-    "movement": 0.674,
     "density": 0.335,
+    "movement": 0.674,
     "space": 0.913,
-    "aggression": 0.466
+    "warmth": 0.564
   },
+  "engines": [
+    "Ouroboros",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.865,
-    "MOVEMENT": 0.626,
     "COUPLING": 0.414,
+    "MOVEMENT": 0.626,
     "SPACE": 0.41
   },
+  "mood": "Foundation",
+  "name": "UMBRA FOUNDATION",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.74,
+      "macro_coupling": 0.208,
+      "macro_movement": 0.948,
+      "macro_space": 0.211
+    },
+    "Ouroboros": {
+      "macro_character": 0.99,
+      "macro_coupling": 0.621,
+      "macro_movement": 0.305,
+      "macro_space": 0.61
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "dark",
     "extreme",
     "high-space"
-  ]
+  ],
+  "version": "1.0"
 }

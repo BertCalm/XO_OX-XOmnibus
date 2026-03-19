@@ -1,45 +1,56 @@
 {
-  "name": "DARK VAST KINETIC PRI 03",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Ole",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.83
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.316,
+    "brightness": 0.093,
+    "density": 0.498,
+    "movement": 0.925,
+    "space": 0.887,
+    "warmth": 0.677
+  },
   "engines": [
-    "OHM",
-    "OLE"
+    "Ohm",
+    "Ole"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.385,
+    "COUPLING": 0.616,
+    "MOVEMENT": 0.925,
+    "SPACE": 0.887
+  },
+  "mood": "Prism",
+  "name": "DARK VAST KINETIC PRI 03",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.385,
-      "macro_movement": 0.925,
       "macro_coupling": 0.616,
+      "macro_movement": 0.925,
       "macro_space": 0.887
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.31,
-      "macro_movement": 0.802,
       "macro_coupling": 0.7,
+      "macro_movement": 0.802,
       "macro_space": 0.988
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OHM",
-    "target": "OLE",
-    "amount": 0.83
-  },
-  "dna": {
-    "brightness": 0.093,
-    "warmth": 0.677,
-    "movement": 0.925,
-    "density": 0.498,
-    "space": 0.887,
-    "aggression": 0.316
-  },
-  "macros": {
-    "CHARACTER": 0.385,
-    "MOVEMENT": 0.925,
-    "COUPLING": 0.616,
-    "SPACE": 0.887
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
@@ -47,5 +58,6 @@
     "kinetic",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

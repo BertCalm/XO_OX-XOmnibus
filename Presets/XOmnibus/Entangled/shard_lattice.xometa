@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Shard Lattice",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "OBSIDIAN"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.51,
+        "engineA": "Overlap",
+        "engineB": "Obsidian",
+        "type": "TIMBRE_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
   "description": "Lion's Mane knot-topology FDN entangled with OBSIDIAN's dark volcanic crystalline character (obsidian physical-modelling). Coupling: Timbre Blend.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "overlap",
-    "obsidian",
-    "spatial",
-    "lush"
+  "dna": {
+    "aggression": 0.36,
+    "brightness": 0.13,
+    "density": 0.33,
+    "movement": 0.43,
+    "space": 0.9,
+    "warmth": 0.36
+  },
+  "engines": [
+    "Overlap",
+    "Obsidian"
   ],
   "macroLabels": [
     "TOPOLOGY",
@@ -25,77 +32,66 @@
   ],
   "macros": {
     "CHARACTER": 0.36,
-    "MOVEMENT": 0.75,
     "COUPLING": 0.76,
+    "MOVEMENT": 0.75,
     "SPACE": 0.82
   },
-  "couplingIntensity": "Moderate",
-  "sonic_dna": {
-    "brightness": 0.13,
-    "warmth": 0.36,
-    "movement": 0.43,
-    "density": 0.33,
-    "space": 0.9,
-    "aggression": 0.36
-  },
-  "dna": {
-    "brightness": 0.13,
-    "warmth": 0.36,
-    "movement": 0.43,
-    "density": 0.33,
-    "space": 0.9,
-    "aggression": 0.36
-  },
+  "mood": "Entangled",
+  "name": "Shard Lattice",
   "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.87,
-      "olap_decay": 0.52,
+    "Obsidian": {
+      "obsidian_ampAttack": 0.14,
+      "obsidian_ampRelease": 0.5,
+      "obsidian_ampSustain": 0.88,
+      "obsidian_character": 0.32,
+      "obsidian_coupling": 0.55,
+      "obsidian_couplingLevel": 0.77,
+      "obsidian_filterCutoff": 0.39,
+      "obsidian_filterReso": 0.25,
+      "obsidian_movement": 0.52,
+      "obsidian_outputLevel": 0.79,
+      "obsidian_reverbMix": 0.26,
+      "obsidian_space": 0.36
+    },
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.86,
+      "olap_crossfeedAmt": 0.44,
       "olap_damping": 0.52,
+      "olap_decay": 0.52,
       "olap_diffusion": 0.81,
-      "olap_modDepth": 0.33,
-      "olap_modRate": 0.16,
-      "olap_preDelay": 0.27,
       "olap_earlyMix": 0.21,
-      "olap_lateMix": 0.67,
       "olap_filterCutoff": 0.5,
       "olap_filterReso": 0.12,
       "olap_frondDensity": 0.35,
+      "olap_lateMix": 0.67,
+      "olap_modDepth": 0.33,
+      "olap_modRate": 0.16,
       "olap_nodeCount": 9,
-      "olap_crossfeedAmt": 0.44,
-      "olap_spinRate": 0.1,
-      "olap_shimmerMix": 0.02,
-      "olap_couplingLevel": 0.86,
-      "olap_couplingBus": 0,
       "olap_outputLevel": 0.75,
-      "olap_outputPan": -0.22
-    },
-    "OBSIDIAN": {
-      "obsidian_character": 0.32,
-      "obsidian_movement": 0.52,
-      "obsidian_coupling": 0.55,
-      "obsidian_space": 0.36,
-      "obsidian_filterCutoff": 0.39,
-      "obsidian_filterReso": 0.25,
-      "obsidian_ampAttack": 0.14,
-      "obsidian_ampSustain": 0.88,
-      "obsidian_ampRelease": 0.5,
-      "obsidian_reverbMix": 0.26,
-      "obsidian_couplingLevel": 0.77,
-      "obsidian_outputLevel": 0.79
+      "olap_outputPan": -0.22,
+      "olap_preDelay": 0.27,
+      "olap_shimmerMix": 0.02,
+      "olap_size": 0.87,
+      "olap_spinRate": 0.1
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OVERLAP",
-    "target": "OBSIDIAN",
-    "amount": 0.51,
-    "pairs": [
-      {
-        "engineA": "OVERLAP",
-        "engineB": "OBSIDIAN",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.51
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.36,
+    "brightness": 0.13,
+    "density": 0.33,
+    "movement": 0.43,
+    "space": 0.9,
+    "warmth": 0.36
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "obsidian",
+    "spatial",
+    "lush"
+  ],
+  "version": "1.0.0"
 }

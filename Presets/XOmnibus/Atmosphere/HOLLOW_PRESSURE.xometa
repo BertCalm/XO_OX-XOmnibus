@@ -1,50 +1,62 @@
 {
-  "name": "HOLLOW PRESSURE",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Orphica",
+        "type": "PITCH_SYNC",
+        "amount": 0.753
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.149,
+    "brightness": 0.764,
+    "density": 0.745,
+    "movement": 0.922,
+    "space": 0.06,
+    "warmth": 0.306
+  },
   "engines": [
-    "OLE",
-    "ORPHICA"
+    "Ole",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.111,
+    "COUPLING": 0.464,
+    "MOVEMENT": 0.529,
+    "SPACE": 0.06
+  },
+  "mood": "Atmosphere",
+  "name": "HOLLOW PRESSURE",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.873,
-      "macro_movement": 0.788,
       "macro_coupling": 0.679,
+      "macro_movement": 0.788,
       "macro_space": 0.06
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.874,
-      "macro_movement": 0.744,
       "macro_coupling": 0.393,
+      "macro_movement": 0.744,
       "macro_space": 0.098
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OLE",
-    "target": "ORPHICA",
-    "amount": 0.753
-  },
-  "dna": {
-    "brightness": 0.764,
-    "warmth": 0.306,
-    "movement": 0.922,
-    "density": 0.745,
-    "space": 0.06,
-    "aggression": 0.149
-  },
-  "macros": {
-    "CHARACTER": 0.111,
-    "MOVEMENT": 0.529,
-    "COUPLING": 0.464,
-    "SPACE": 0.06
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-  ]
+  ],
+  "version": "1.0"
 }

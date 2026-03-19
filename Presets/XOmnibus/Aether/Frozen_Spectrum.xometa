@@ -1,52 +1,52 @@
 {
-  "schema_version": 1,
-  "name": "Frozen Spectrum",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "The ecosystem reduced to a single cold strand of signal.",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.07,
+    "density": 0.06,
+    "movement": 0.04,
+    "space": 1.0,
+    "warmth": 0.0
+  },
   "engines": [
     "Ocelot"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "The ecosystem reduced to a single cold strand of signal.",
-  "tags": [
-    "cold-sparse",
-    "extreme",
-    "aether",
-    "minimal"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Aether",
+  "name": "Frozen Spectrum",
   "parameters": {
     "Ocelot": {
+      "ocelot_aggression": 0.04,
       "ocelot_biome": 0.05,
-      "ocelot_strataBalance": 0.04,
-      "ocelot_ecosystemDepth": 0.04,
       "ocelot_brightness": 0.06,
-      "ocelot_movement": 0.03,
       "ocelot_density": 0.05,
-      "ocelot_aggression": 0.04
+      "ocelot_ecosystemDepth": 0.04,
+      "ocelot_movement": 0.03,
+      "ocelot_strataBalance": 0.04
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.07,
-    "warmth": 0.0,
-    "movement": 0.04,
-    "density": 0.06,
-    "space": 1.0,
-    "aggression": 0.06
-  }
+  "tags": [
+    "cold-sparse",
+    "extreme",
+    "aether",
+    "minimal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

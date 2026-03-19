@@ -1,14 +1,40 @@
 {
-  "schema_version": 1,
-  "name": "Eight Arms and Prism",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "OCTOPUS distributed intelligence + OPTIC prismatic light — the problem solver and the spectrum. Eight arms catching every frequency.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.68,
+    "density": 0.58,
+    "movement": 0.82,
+    "space": 0.55,
+    "warmth": 0.48
+  },
   "engines": [
-    "OCTOPUS",
-    "OPTIC"
+    "Octopus",
+    "Optic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OCTOPUS distributed intelligence + OPTIC prismatic light \u2014 the problem solver and the spectrum. Eight arms catching every frequency.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "ARMS",
+    "ADAPT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Eight Arms and Prism",
+  "parameters": {
+    "Octopus": {},
+    "Optic": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "reunion",
@@ -19,29 +45,6 @@
     "intelligence",
     "batch3-reunion"
   ],
-  "macroLabels": [
-    "ARMS",
-    "ADAPT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.68,
-    "warmth": 0.48,
-    "movement": 0.82,
-    "density": 0.58,
-    "space": 0.55,
-    "aggression": 0.45
-  }
+  "version": "1.0.0"
 }

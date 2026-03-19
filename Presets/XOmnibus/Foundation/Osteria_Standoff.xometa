@@ -33,7 +33,9 @@
     "space": 0.32,
     "aggression": 0.9
   },
-  "parameters": {},
+  "parameters": {
+    "Osteria": {}
+  },
   "tags": [
     "siege",
     "osteria",

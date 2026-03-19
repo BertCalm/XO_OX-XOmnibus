@@ -1179,7 +1179,8 @@ private:
     //-- Internal coupling LFO (Oscar's breath) --------------------------------
     double lfoPhase = 0.0;                      // LFO phase accumulator [0, 1)
     float lfoOutput = 0.0f;                     // cached LFO value for coupling reads
-    static constexpr double kCouplingLfoRateHz = 0.3; // 0.3 Hz: one full breath every ~3.3 seconds
+    // D005: rate floor lowered to 0.01 Hz for ultra-slow modulation (100-second cycle)
+    static constexpr double kCouplingLfoRateHz = 0.01;
 
     //-- Coupling accumulators (reset each block) ------------------------------
     float filterCutoffModulation = 0.0f;        // accumulated filter mod from AmpToFilter coupling

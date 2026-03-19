@@ -1,19 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Bright Crease Burst",
-  "mood": "Prism",
-  "engines": [
-    "ORIGAMI"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "ORIGAMI pushed to extreme brightness \u2014 brightness 0.93, movement 0.81, aggression 0.44. Ultra-bright Prism zone filler.",
-  "tags": [
-    "prism",
-    "ultra-bright",
-    "extreme",
-    "brightness",
-    "origami"
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "ORIGAMI pushed to extreme brightness — brightness 0.93, movement 0.81, aggression 0.44. Ultra-bright Prism zone filler.",
+  "dna": {
+    "aggression": 0.441,
+    "brightness": 0.93,
+    "density": 0.736,
+    "movement": 0.805,
+    "space": 0.48,
+    "warmth": 0.19
+  },
+  "engines": [
+    "Origami"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,37 +22,36 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.93,
-    "warmth": 0.19,
-    "movement": 0.805,
-    "density": 0.736,
-    "space": 0.48,
-    "aggression": 0.441
-  },
-  "sonic_dna": {
-    "brightness": 0.93,
-    "warmth": 0.19,
-    "movement": 0.805,
-    "density": 0.736,
-    "space": 0.48,
-    "aggression": 0.441
-  },
+  "mood": "Prism",
+  "name": "Bright Crease Burst",
   "parameters": {
-    "ORIGAMI": {
-      "ori_macro_fold": 0.273,
-      "ori_macro_tension": 0.627,
-      "ori_macro_couple": 0.279,
-      "ori_macro_space": 0.662,
-      "ori_outputLevel": 0.848,
+    "Origami": {
+      "ori_couplingBus": 0,
       "ori_couplingLevel": 0.182,
-      "ori_couplingBus": 0
+      "ori_macro_couple": 0.279,
+      "ori_macro_fold": 0.273,
+      "ori_macro_space": 0.662,
+      "ori_macro_tension": 0.627,
+      "ori_outputLevel": 0.848
     }
   },
-  "coupling": {
-    "pairs": []
+  "schema_version": 1,
+  "sequencer": null,
+  "sonic_dna": {
+    "aggression": 0.441,
+    "brightness": 0.93,
+    "density": 0.736,
+    "movement": 0.805,
+    "space": 0.48,
+    "warmth": 0.19
   },
-  "sequencer": null
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "origami"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

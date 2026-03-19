@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_HOT_VAST_GENTLE_AET3_5",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OSPREY",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.4862,
-      "macro_movement": 0.9471,
-      "macro_coupling": 0.5968,
-      "macro_space": 0.9283
-    },
-    "OBLIQUE": {
-      "macro_character": 0.8456,
-      "macro_movement": 0.2086,
-      "macro_coupling": 0.7405,
-      "macro_space": 0.7113
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OSPREY",
-    "target": "OBLIQUE",
-    "amount": 0.5286
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Oblique",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.5286
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.1297,
     "brightness": 0.9214,
-    "warmth": 0.94,
-    "movement": 0.6023,
     "density": 0.6444,
+    "movement": 0.6023,
     "space": 0.9134,
-    "aggression": 0.1297
+    "warmth": 0.94
   },
+  "engines": [
+    "Osprey",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.9307,
-    "MOVEMENT": 0.6023,
     "COUPLING": 0.5286,
+    "MOVEMENT": 0.6023,
     "SPACE": 0.9134
   },
+  "mood": "Aether",
+  "name": "BRIGHT_HOT_VAST_GENTLE_AET3_5",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.8456,
+      "macro_coupling": 0.7405,
+      "macro_movement": 0.2086,
+      "macro_space": 0.7113
+    },
+    "Osprey": {
+      "macro_character": 0.4862,
+      "macro_coupling": 0.5968,
+      "macro_movement": 0.9471,
+      "macro_space": 0.9283
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "warm",
@@ -47,5 +58,6 @@
     "vast",
     "gentle",
     "transcendent"
-  ]
+  ],
+  "version": "1.0"
 }

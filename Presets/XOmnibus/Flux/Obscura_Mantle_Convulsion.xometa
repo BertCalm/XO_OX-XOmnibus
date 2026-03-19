@@ -1,59 +1,79 @@
 {
-  "schema_version": "1.0",
-  "name": "Mantle Convulsion",
-  "mood": "Flux",
-  "engines": ["Obscura"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Continuous bowing force at high amplitude with cubic nonlinearity engaged — energy cascades up the chain's modes. Periodic boundary creates a closed resonant loop. Fast scanner, wide excitation. The squid's mantle in seizure.",
-  "tags": ["dense", "moving", "physical", "sustained", "chaotic", "wide"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Continuous bowing force at high amplitude with cubic nonlinearity engaged — energy cascades up the chain's modes. Periodic boundary creates a closed resonant loop. Fast scanner, wide excitation. The squid's mantle in seizure.",
+  "dna": {
+    "aggression": 0.72,
+    "brightness": 0.55,
+    "density": 0.88,
+    "movement": 0.92,
+    "space": 0.28,
+    "warmth": 0.18
+  },
+  "engines": [
+    "Obscura"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Mantle Convulsion",
   "parameters": {
     "Obscura": {
-      "obscura_stiffness": 0.72,
-      "obscura_damping": 0.03,
-      "obscura_nonlinear": 0.88,
-      "obscura_excitePos": 0.25,
-      "obscura_exciteWidth": 0.45,
-      "obscura_scanWidth": 0.85,
-      "obscura_boundary": 2,
-      "obscura_sustain": 0.90,
-      "obscura_level": 0.82,
       "obscura_ampAttack": 0.05,
       "obscura_ampDecay": 0.2,
-      "obscura_ampSustain": 0.92,
       "obscura_ampRelease": 1.5,
-      "obscura_physEnvAttack": 0.12,
-      "obscura_physEnvDecay": 0.3,
-      "obscura_physEnvSustain": 0.90,
-      "obscura_physEnvRelease": 1.8,
-      "obscura_lfo1Rate": 2.8,
-      "obscura_lfo1Depth": 0.35,
-      "obscura_lfo1Shape": 1,
-      "obscura_lfo2Rate": 5.5,
-      "obscura_lfo2Depth": 0.25,
-      "obscura_lfo2Shape": 0,
-      "obscura_voiceMode": 1,
+      "obscura_ampSustain": 0.92,
+      "obscura_boundary": 2,
+      "obscura_damping": 0.03,
+      "obscura_excitePos": 0.25,
+      "obscura_exciteWidth": 0.45,
       "obscura_glide": 0.08,
       "obscura_initShape": 2,
+      "obscura_level": 0.82,
+      "obscura_lfo1Depth": 0.35,
+      "obscura_lfo1Rate": 2.8,
+      "obscura_lfo1Shape": 1,
+      "obscura_lfo2Depth": 0.25,
+      "obscura_lfo2Rate": 5.5,
+      "obscura_lfo2Shape": 0,
       "obscura_macroCharacter": 0.6,
-      "obscura_macroMovement": 0.88,
       "obscura_macroCoupling": 0.0,
-      "obscura_macroSpace": 0.3
+      "obscura_macroMovement": 0.88,
+      "obscura_macroSpace": 0.3,
+      "obscura_nonlinear": 0.88,
+      "obscura_physEnvAttack": 0.12,
+      "obscura_physEnvDecay": 0.3,
+      "obscura_physEnvRelease": 1.8,
+      "obscura_physEnvSustain": 0.9,
+      "obscura_scanWidth": 0.85,
+      "obscura_stiffness": 0.72,
+      "obscura_sustain": 0.9,
+      "obscura_voiceMode": 1
     }
   },
-  "coupling": {"pairs": []},
+  "schema_version": "1.0",
   "sequencer": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.18,
-    "movement": 0.92,
-    "density": 0.88,
-    "space": 0.28,
-    "aggression": 0.72
-  }
+  "tags": [
+    "dense",
+    "moving",
+    "physical",
+    "sustained",
+    "chaotic",
+    "wide"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

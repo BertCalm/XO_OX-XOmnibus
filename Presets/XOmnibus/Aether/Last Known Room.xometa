@@ -1,13 +1,50 @@
 {
-  "schema_version": 1,
-  "name": "Last Known Room",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Ombre dissolved into infinite space. Space dimension at 0.91 — cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "dna": {
+    "aggression": 0.104,
+    "brightness": 0.589,
+    "density": 0.634,
+    "movement": 0.689,
+    "space": 0.91,
+    "warmth": 0.369
+  },
   "engines": [
     "Ombre"
   ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "Ombre dissolved into infinite space. Space dimension at 0.91 \u2014 cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Last Known Room",
+  "parameters": {
+    "Ombre": {
+      "ombre_attack": 0.456,
+      "ombre_blend": 0.755,
+      "ombre_decay": 0.778,
+      "ombre_filterCutoff": 9246.0,
+      "ombre_filterReso": 0.097,
+      "ombre_interference": 0.846,
+      "ombre_macroCharacter": 0.589,
+      "ombre_macroCoupling": 0.0,
+      "ombre_macroMovement": 0.689,
+      "ombre_macroSpace": 0.91,
+      "ombre_memoryDecay": 0.846,
+      "ombre_memoryDrift": 0.883,
+      "ombre_memoryGrain": 27.8,
+      "ombre_oscShape": 0.471,
+      "ombre_reactivity": 0.744,
+      "ombre_subLevel": 0.248
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "vast",
@@ -17,43 +54,6 @@
     "cosmic",
     "ombre"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.589,
-    "warmth": 0.369,
-    "movement": 0.689,
-    "density": 0.634,
-    "space": 0.91,
-    "aggression": 0.104
-  },
-  "parameters": {
-    "Ombre": {
-      "ombre_blend": 0.755,
-      "ombre_interference": 0.846,
-      "ombre_memoryDecay": 0.846,
-      "ombre_memoryGrain": 27.8,
-      "ombre_memoryDrift": 0.883,
-      "ombre_oscShape": 0.471,
-      "ombre_reactivity": 0.744,
-      "ombre_subLevel": 0.248,
-      "ombre_filterCutoff": 9246.0,
-      "ombre_filterReso": 0.097,
-      "ombre_attack": 0.456,
-      "ombre_decay": 0.778,
-      "ombre_macroCharacter": 0.589,
-      "ombre_macroMovement": 0.689,
-      "ombre_macroCoupling": 0.0,
-      "ombre_macroSpace": 0.91
-    }
-  },
-  "coupling": null,
-  "sequencer": null
+  "version": "1.0"
 }

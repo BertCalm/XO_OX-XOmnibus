@@ -33,7 +33,9 @@
     "space": 0.08,
     "aggression": 0.92
   },
-  "parameters": {},
+  "parameters": {
+    "Onset": {}
+  },
   "tags": [
     "flux",
     "high-flux",
@@ -41,5 +43,5 @@
     "riot",
     "percussion"
   ],
-  "description": "Onset drums in full riot \u2014 every hit overlapping, rhythm dissolving into noise."
+  "description": "Onset drums in full riot — every hit overlapping, rhythm dissolving into noise."
 }

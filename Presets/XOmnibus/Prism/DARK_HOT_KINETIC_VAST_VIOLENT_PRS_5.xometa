@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "DARK_HOT_KINETIC_VAST_VIOLENT_PRS_5",
-  "mood": "Prism",
-  "engines": [
-    "ORIGAMI",
-    "OCELOT"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ocelot",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.652
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_KINETIC_VAST_VIOLENT. Variant 5.",
+  "dna": {
+    "aggression": 0.948,
+    "brightness": 0.055,
+    "density": 0.346,
+    "movement": 0.967,
+    "space": 0.972,
+    "warmth": 0.906
+  },
+  "engines": [
+    "Origami",
+    "Ocelot"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1,
+    "COUPLING": 0.357,
+    "MOVEMENT": 0.996,
+    "SPACE": 0.981
+  },
+  "mood": "Prism",
+  "name": "Rust Abyss",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.084,
+      "macro_coupling": 0.461,
+      "macro_movement": 1.0,
+      "macro_space": 0.962
+    },
+    "Origami": {
+      "macro_character": 0.115,
+      "macro_coupling": 0.252,
+      "macro_movement": 0.993,
+      "macro_space": 1.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "hot",
     "extreme",
@@ -19,53 +70,6 @@
     "violent",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.115,
-      "macro_movement": 0.993,
-      "macro_coupling": 0.252,
-      "macro_space": 1.0
-    },
-    "OCELOT": {
-      "macro_character": 0.084,
-      "macro_movement": 1.0,
-      "macro_coupling": 0.461,
-      "macro_space": 0.962
-    }
-  },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORIGAMI",
-    "target": "OCELOT",
-    "amount": 0.652
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.055,
-    "warmth": 0.906,
-    "movement": 0.967,
-    "density": 0.346,
-    "space": 0.972,
-    "aggression": 0.948
-  },
-  "macros": {
-    "CHARACTER": 0.1,
-    "MOVEMENT": 0.996,
-    "COUPLING": 0.357,
-    "SPACE": 0.981
-  }
+  "version": "1.0.0"
 }

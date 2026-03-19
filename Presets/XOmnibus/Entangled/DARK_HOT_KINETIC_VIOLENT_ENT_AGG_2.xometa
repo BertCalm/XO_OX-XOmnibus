@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_KINETIC_VIOLENT_ENT_AGG_2",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORACLE",
-    "OMBRE"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.664,
-      "macro_movement": 0.984,
-      "macro_coupling": 0.807,
-      "macro_space": 0.584
-    },
-    "OMBRE": {
-      "macro_character": 0.444,
-      "macro_movement": 0.925,
-      "macro_coupling": 0.821,
-      "macro_space": 0.551
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ORACLE",
-    "target": "OMBRE",
-    "amount": 0.884
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Ombre",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.884
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.96,
     "brightness": 0.025,
-    "warmth": 0.914,
-    "movement": 0.956,
     "density": 0.688,
+    "movement": 0.956,
     "space": 0.544,
-    "aggression": 0.96
+    "warmth": 0.914
   },
+  "engines": [
+    "Oracle",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.554,
-    "MOVEMENT": 0.956,
     "COUPLING": 0.807,
+    "MOVEMENT": 0.956,
     "SPACE": 0.544
   },
+  "mood": "Entangled",
+  "name": "Mahogany Strike",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.444,
+      "macro_coupling": 0.821,
+      "macro_movement": 0.925,
+      "macro_space": 0.551
+    },
+    "Oracle": {
+      "macro_character": 0.664,
+      "macro_coupling": 0.807,
+      "macro_movement": 0.984,
+      "macro_space": 0.584
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "dark",
     "hot",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

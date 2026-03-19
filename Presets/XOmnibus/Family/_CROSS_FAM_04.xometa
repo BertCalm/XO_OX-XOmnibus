@@ -1,49 +1,61 @@
 {
-  "name": "CROSS FAM 04",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Ole",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.371
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.977,
+    "brightness": 0.449,
+    "density": 0.08,
+    "movement": 0.052,
+    "space": 0.965,
+    "warmth": 0.902
+  },
   "engines": [
-    "OBBLIGATO",
-    "OLE"
+    "Obbligato",
+    "Ole"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.675,
+    "COUPLING": 0.971,
+    "MOVEMENT": 0.066,
+    "SPACE": 0.965
+  },
+  "mood": "Family",
+  "name": "CROSS FAM 04",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.675,
-      "macro_movement": 0.066,
       "macro_coupling": 0.971,
+      "macro_movement": 0.066,
       "macro_space": 0.965
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.675,
-      "macro_movement": 0.066,
       "macro_coupling": 0.971,
+      "macro_movement": 0.066,
       "macro_space": 0.965
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OBBLIGATO",
-    "target": "OLE",
-    "amount": 0.371
-  },
-  "dna": {
-    "brightness": 0.449,
-    "warmth": 0.902,
-    "movement": 0.052,
-    "density": 0.08,
-    "space": 0.965,
-    "aggression": 0.977
-  },
-  "macros": {
-    "CHARACTER": 0.675,
-    "MOVEMENT": 0.066,
-    "COUPLING": 0.971,
-    "SPACE": 0.965
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-  ]
+  ],
+  "version": "1.0"
 }

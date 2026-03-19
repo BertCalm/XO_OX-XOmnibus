@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Paper Crane",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.92,
-    "warmth": 0.28,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Fold geometry opens to a bright, thin resonance",
+  "dna": {
     "aggression": 0.12,
-    "movement": 0.45,
+    "brightness": 0.92,
     "density": 0.35,
-    "space": 0.65
+    "movement": 0.45,
+    "space": 0.65,
+    "warmth": 0.28
   },
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Fold geometry opens to a bright, thin resonance",
+  "macroLabels": [
+    "FOLD",
+    "CREASE",
+    "COUPLING",
+    "UNFOLD"
+  ],
+  "mood": "Prism",
+  "name": "Paper Crane",
+  "parameters": {
+    "Origami": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.12,
+    "brightness": 0.92,
+    "density": 0.35,
+    "movement": 0.45,
+    "space": 0.65,
+    "warmth": 0.28
+  },
   "tags": [
     "prism",
     "bright",
@@ -24,23 +44,5 @@
     "paper",
     "delicate"
   ],
-  "macroLabels": [
-    "FOLD",
-    "CREASE",
-    "COUPLING",
-    "UNFOLD"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.92,
-    "warmth": 0.28,
-    "movement": 0.45,
-    "density": 0.35,
-    "space": 0.65,
-    "aggression": 0.12
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

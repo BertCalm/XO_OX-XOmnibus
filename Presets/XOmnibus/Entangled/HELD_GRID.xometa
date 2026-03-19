@@ -1,48 +1,60 @@
 {
-  "name": "HELD GRID",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Orphica",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.728
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.419,
+    "brightness": 0.26,
+    "density": 0.892,
+    "movement": 0.073,
+    "space": 0.251,
+    "warmth": 0.867
+  },
   "engines": [
-    "OCELOT",
-    "ORPHICA"
+    "Ocelot",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.282,
+    "COUPLING": 0.984,
+    "MOVEMENT": 0.073,
+    "SPACE": 0.54
+  },
+  "mood": "Entangled",
+  "name": "HELD GRID",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.069,
-      "macro_movement": 0.066,
       "macro_coupling": 0.658,
+      "macro_movement": 0.066,
       "macro_space": 0.716
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.215,
-      "macro_movement": 0.079,
       "macro_coupling": 0.558,
+      "macro_movement": 0.079,
       "macro_space": 0.635
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OCELOT",
-    "target": "ORPHICA",
-    "amount": 0.728
-  },
-  "dna": {
-    "brightness": 0.26,
-    "warmth": 0.867,
-    "movement": 0.073,
-    "density": 0.892,
-    "space": 0.251,
-    "aggression": 0.419
-  },
-  "macros": {
-    "CHARACTER": 0.282,
-    "MOVEMENT": 0.073,
-    "COUPLING": 0.984,
-    "SPACE": 0.54
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "held"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,62 @@
 {
-  "name": "DARK_KINETIC_DENSE_VIOLENT_ENT_AGG_3",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ODDOSCAR",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "ODDOSCAR": {
-      "macro_character": 0.749,
-      "macro_movement": 0.899,
-      "macro_coupling": 0.97,
-      "macro_space": 0.439
-    },
-    "OBSCURA": {
-      "macro_character": 0.464,
-      "macro_movement": 0.932,
-      "macro_coupling": 1.0,
-      "macro_space": 0.399
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ODDOSCAR",
-    "target": "OBSCURA",
-    "amount": 0.817
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Obscura",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.817
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.924,
     "brightness": 0.075,
-    "warmth": 0.455,
-    "movement": 0.937,
     "density": 0.901,
+    "movement": 0.937,
     "space": 0.404,
-    "aggression": 0.924
+    "warmth": 0.455
   },
+  "engines": [
+    "OddOscar",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.607,
-    "MOVEMENT": 0.937,
     "COUPLING": 0.97,
+    "MOVEMENT": 0.937,
     "SPACE": 0.404
   },
+  "mood": "Entangled",
+  "name": "Flux Pulse",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.464,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.932,
+      "macro_space": 0.399
+    },
+    "OddOscar": {
+      "macro_character": 0.749,
+      "macro_coupling": 0.97,
+      "macro_movement": 0.899,
+      "macro_space": 0.439
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "dark",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

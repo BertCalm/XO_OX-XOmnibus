@@ -1,55 +1,72 @@
 {
-  "schema_version": 1,
-  "name": "Shallow Turbulence",
-  "mood": "Prism",
-  "engines": ["Osprey"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Southern shore — Gamelan-style resonators driven by turbulent shallow water. High foam, maximum sympathy, very low coherence. Each note shatters into inharmonic fragments like light through broken wave faces.",
-  "tags": ["southern", "prism", "turbulence", "inharmonic", "shallow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Southern shore — Gamelan-style resonators driven by turbulent shallow water. High foam, maximum sympathy, very low coherence. Each note shatters into inharmonic fragments like light through broken wave faces.",
+  "dna": {
+    "aggression": 0.8,
+    "brightness": 0.85,
+    "density": 0.6,
+    "movement": 0.85,
+    "space": 0.1,
+    "warmth": 0.3
+  },
+  "engines": [
+    "Osprey"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Shallow Turbulence",
   "parameters": {
     "Osprey": {
-      "osprey_shore": 4.0,
-      "osprey_seaState": 0.7,
-      "osprey_swellPeriod": 2.5,
-      "osprey_windDir": 0.7,
-      "osprey_depth": 0.15,
-      "osprey_resonatorBright": 0.8,
-      "osprey_resonatorDecay": 0.3,
-      "osprey_sympathyAmount": 0.8,
-      "osprey_creatureRate": 0.5,
-      "osprey_creatureDepth": 0.5,
-      "osprey_coherence": 0.2,
-      "osprey_foam": 0.8,
-      "osprey_brine": 0.3,
-      "osprey_hull": 0.05,
-      "osprey_filterTilt": 0.7,
-      "osprey_filterEnvDepth": 0.6,
-      "osprey_harborVerb": 0.05,
-      "osprey_fog": 0.0,
       "osprey_ampAttack": 0.02,
       "osprey_ampDecay": 0.4,
-      "osprey_ampSustain": 0.0,
       "osprey_ampRelease": 0.4,
+      "osprey_ampSustain": 0.0,
+      "osprey_brine": 0.3,
+      "osprey_coherence": 0.2,
+      "osprey_creatureDepth": 0.5,
+      "osprey_creatureRate": 0.5,
+      "osprey_depth": 0.15,
+      "osprey_filterEnvDepth": 0.6,
+      "osprey_filterTilt": 0.7,
+      "osprey_foam": 0.8,
+      "osprey_fog": 0.0,
+      "osprey_harborVerb": 0.05,
+      "osprey_hull": 0.05,
       "osprey_macroCharacter": 0.7,
-      "osprey_macroMovement": 0.6,
       "osprey_macroCoupling": 0.0,
-      "osprey_macroSpace": 0.0
+      "osprey_macroMovement": 0.6,
+      "osprey_macroSpace": 0.0,
+      "osprey_resonatorBright": 0.8,
+      "osprey_resonatorDecay": 0.3,
+      "osprey_seaState": 0.7,
+      "osprey_shore": 4.0,
+      "osprey_swellPeriod": 2.5,
+      "osprey_sympathyAmount": 0.8,
+      "osprey_windDir": 0.7
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.85,
-    "warmth": 0.3,
-    "movement": 0.85,
-    "density": 0.6,
-    "space": 0.1,
-    "aggression": 0.8
-  }
+  "tags": [
+    "southern",
+    "prism",
+    "turbulence",
+    "inharmonic",
+    "shallow"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

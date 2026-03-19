@@ -1,49 +1,61 @@
 {
-  "name": "MIDNIGHT VEIL",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OUTWIT",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.117,
-      "macro_movement": 0.045,
-      "macro_coupling": 0.037,
-      "macro_space": 0.996
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.116,
-      "macro_movement": 0.235,
-      "macro_coupling": 0.538,
-      "macro_space": 0.389
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OUTWIT",
-    "target": "OBBLIGATO",
-    "amount": 0.69
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Obbligato",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.69
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.108,
     "brightness": 0.11,
-    "warmth": 0.397,
-    "movement": 0.566,
     "density": 0.589,
+    "movement": 0.566,
     "space": 0.581,
-    "aggression": 0.108
+    "warmth": 0.397
   },
+  "engines": [
+    "Outwit",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.117,
-    "MOVEMENT": 0.14,
     "COUPLING": 0.288,
+    "MOVEMENT": 0.14,
     "SPACE": 0.693
   },
+  "mood": "Atmosphere",
+  "name": "MIDNIGHT VEIL",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.116,
+      "macro_coupling": 0.538,
+      "macro_movement": 0.235,
+      "macro_space": 0.389
+    },
+    "Outwit": {
+      "macro_character": 0.117,
+      "macro_coupling": 0.037,
+      "macro_movement": 0.045,
+      "macro_space": 0.996
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "extreme",
     "low-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

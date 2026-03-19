@@ -1,48 +1,60 @@
 {
-  "name": "COLD KINDRED",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Owlfish",
+        "type": "PITCH_LOCK",
+        "amount": 0.769
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.962,
+    "brightness": 0.972,
+    "density": 0.682,
+    "movement": 0.358,
+    "space": 0.667,
+    "warmth": 0.024
+  },
   "engines": [
-    "ODYSSEY",
-    "OWLFISH"
+    "Odyssey",
+    "Owlfish"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.412,
+    "COUPLING": 0.735,
+    "MOVEMENT": 0.67,
+    "SPACE": 0.248
+  },
+  "mood": "Family",
+  "name": "COLD KINDRED",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.926,
-      "macro_movement": 0.237,
       "macro_coupling": 0.163,
+      "macro_movement": 0.237,
       "macro_space": 0.8
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.177,
-      "macro_movement": 0.412,
       "macro_coupling": 0.179,
+      "macro_movement": 0.412,
       "macro_space": 0.924
     }
   },
-  "coupling": {
-    "type": "PITCH_LOCK",
-    "source": "ODYSSEY",
-    "target": "OWLFISH",
-    "amount": 0.769
-  },
-  "dna": {
-    "brightness": 0.972,
-    "warmth": 0.024,
-    "movement": 0.358,
-    "density": 0.682,
-    "space": 0.667,
-    "aggression": 0.962
-  },
-  "macros": {
-    "CHARACTER": 0.412,
-    "MOVEMENT": 0.67,
-    "COUPLING": 0.735,
-    "SPACE": 0.248
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "cold",
     "xlow-warmth"
-  ]
+  ],
+  "version": "1.0"
 }

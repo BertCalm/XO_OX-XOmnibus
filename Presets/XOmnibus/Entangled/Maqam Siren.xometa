@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Maqam Siren",
-  "mood": "Entangled",
-  "engines": [
-    "ORACLE",
-    "ORPHICA"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Oracle Maqam scales pitch-sync ORPHICA \u2014 siren song in ancient tuning.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Oracle",
+        "engineB": "Orphica",
+        "type": "PITCH_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Oracle Maqam scales pitch-sync ORPHICA — siren song in ancient tuning.",
+  "dna": {
+    "aggression": 0.07,
+    "brightness": 0.84,
+    "density": 0.42,
+    "movement": 0.58,
+    "space": 0.75,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Oracle",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.61,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.575,
+    "SPACE": 0.69
+  },
+  "mood": "Entangled",
+  "name": "Maqam Siren",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.54,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.65,
+      "macro_space": 0.62
+    },
+    "Orphica": {
+      "macro_character": 0.68,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.5,
+      "macro_space": 0.76
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "siren",
     "pitch"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.84,
-    "warmth": 0.4,
-    "movement": 0.58,
-    "density": 0.42,
-    "space": 0.75,
-    "aggression": 0.07
-  },
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.54,
-      "macro_movement": 0.65,
-      "macro_coupling": 0.65,
-      "macro_space": 0.62
-    },
-    "ORPHICA": {
-      "macro_character": 0.68,
-      "macro_movement": 0.5,
-      "macro_coupling": 0.65,
-      "macro_space": 0.76
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORACLE",
-        "engineB": "ORPHICA",
-        "type": "PITCH_SYNC",
-        "amount": 0.65
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.61,
-    "MOVEMENT": 0.575,
-    "COUPLING": 0.65,
-    "SPACE": 0.69
-  },
-  "sequencer": null
+  "version": "1.0"
 }

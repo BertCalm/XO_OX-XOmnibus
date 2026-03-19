@@ -1,48 +1,60 @@
 {
-  "name": "BARE ORIGIN",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "PITCH_LOCK",
+        "amount": 0.679
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.397,
+    "brightness": 0.978,
+    "density": 0.047,
+    "movement": 0.782,
+    "space": 0.623,
+    "warmth": 0.075
+  },
   "engines": [
-    "ORACLE",
-    "ORGANON"
+    "Oracle",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.921,
+    "COUPLING": 0.747,
+    "MOVEMENT": 0.997,
+    "SPACE": 0.434
+  },
+  "mood": "Family",
+  "name": "BARE ORIGIN",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.859,
-      "macro_movement": 0.38,
       "macro_coupling": 0.317,
+      "macro_movement": 0.38,
       "macro_space": 0.719
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.759,
-      "macro_movement": 0.872,
       "macro_coupling": 0.036,
+      "macro_movement": 0.872,
       "macro_space": 0.068
     }
   },
-  "coupling": {
-    "type": "PITCH_LOCK",
-    "source": "ORACLE",
-    "target": "ORGANON",
-    "amount": 0.679
-  },
-  "dna": {
-    "brightness": 0.978,
-    "warmth": 0.075,
-    "movement": 0.782,
-    "density": 0.047,
-    "space": 0.623,
-    "aggression": 0.397
-  },
-  "macros": {
-    "CHARACTER": 0.921,
-    "MOVEMENT": 0.997,
-    "COUPLING": 0.747,
-    "SPACE": 0.434
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "sparse",
     "xlow-density"
-  ]
+  ],
+  "version": "1.0"
 }

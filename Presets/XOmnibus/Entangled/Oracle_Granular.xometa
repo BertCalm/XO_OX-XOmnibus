@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Oracle Granular",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.694,
+        "engineA": "Oracle",
+        "engineB": "Opal",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Oracle vision scatters through OPAL granular iridescence. Prophecy dispersed.",
+  "dna": {
+    "aggression": 0.29,
+    "brightness": 0.565,
+    "density": 0.575,
+    "movement": 0.759,
+    "space": 0.711,
+    "warmth": 0.478
+  },
   "engines": [
     "Oracle",
     "Opal"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Oracle vision scatters through OPAL granular iridescence. Prophecy dispersed.",
-  "tags": [
-    "oracle",
-    "opal",
-    "prophecy",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Oracle Granular",
   "parameters": {
-    "Oracle": {
-      "oracle_brightness": 0.418,
-      "oracle_warmth": 0.565,
-      "oracle_movement": 0.713,
-      "oracle_density": 0.611,
-      "oracle_space": 0.754,
-      "oracle_aggression": 0.377,
-      "oracle_level": 0.818
-    },
     "Opal": {
-      "opal_brightness": 0.769,
-      "opal_warmth": 0.458,
-      "opal_movement": 0.73,
-      "opal_density": 0.402,
-      "opal_space": 0.785,
       "opal_aggression": 0.222,
-      "opal_level": 0.756
+      "opal_brightness": 0.769,
+      "opal_density": 0.402,
+      "opal_level": 0.756,
+      "opal_movement": 0.73,
+      "opal_space": 0.785,
+      "opal_warmth": 0.458
+    },
+    "Oracle": {
+      "oracle_aggression": 0.377,
+      "oracle_brightness": 0.418,
+      "oracle_density": 0.611,
+      "oracle_level": 0.818,
+      "oracle_movement": 0.713,
+      "oracle_space": 0.754,
+      "oracle_warmth": 0.565
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Opal",
-        "type": "HARMONIC_BLEND",
-        "amount": 0.694
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.565,
-    "warmth": 0.478,
-    "movement": 0.759,
-    "density": 0.575,
-    "space": 0.711,
-    "aggression": 0.29
-  }
+  "tags": [
+    "oracle",
+    "opal",
+    "prophecy",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Symbiotic Drone",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "Pure reconstruction of input. The organism becomes what it eats.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.4,
+    "density": 0.6,
+    "movement": 0.3,
+    "space": 0.3,
+    "warmth": 0.5
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Pure reconstruction of input. The organism becomes what it eats.",
-  "tags": [
-    "symbiotic",
-    "drone",
-    "reconstruction",
-    "coupled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Symbiotic Drone",
   "parameters": {
     "Organon": {
-      "organon_metabolicRate": 0.3,
-      "organon_enzymeSelect": 1000.0,
       "organon_catalystDrive": 0.3,
       "organon_dampingCoeff": 0.1,
-      "organon_signalFlux": 1.0,
-      "organon_phasonShift": 0.0,
+      "organon_enzymeSelect": 1000.0,
       "organon_isotopeBalance": 0.5,
       "organon_lockIn": 0.0,
       "organon_membrane": 0.3,
-      "organon_noiseColor": 0.5
+      "organon_metabolicRate": 0.3,
+      "organon_noiseColor": 0.5,
+      "organon_phasonShift": 0.0,
+      "organon_signalFlux": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.5,
-    "movement": 0.3,
-    "density": 0.6,
-    "space": 0.3,
-    "aggression": 0.1
-  }
+  "tags": [
+    "symbiotic",
+    "drone",
+    "reconstruction",
+    "coupled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

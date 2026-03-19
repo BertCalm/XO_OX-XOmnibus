@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Mineral Punch",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.779,
+        "engineA": "Obsidian",
+        "engineB": "Onset",
+        "type": "RHYTHMIC_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Crystal crack meets ONSET percussive attack. Pure mineral impact.",
+  "dna": {
+    "aggression": 0.391,
+    "brightness": 0.688,
+    "density": 0.624,
+    "movement": 0.476,
+    "space": 0.531,
+    "warmth": 0.337
+  },
   "engines": [
     "Obsidian",
     "Onset"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Crystal crack meets ONSET percussive attack. Pure mineral impact.",
-  "tags": [
-    "obsidian",
-    "onset",
-    "crystal",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Mineral Punch",
   "parameters": {
     "Obsidian": {
-      "obsidian_brightness": 0.838,
-      "obsidian_warmth": 0.221,
-      "obsidian_movement": 0.237,
-      "obsidian_density": 0.524,
-      "obsidian_space": 0.614,
       "obsidian_aggression": 0.175,
-      "obsidian_level": 0.715
+      "obsidian_brightness": 0.838,
+      "obsidian_density": 0.524,
+      "obsidian_level": 0.715,
+      "obsidian_movement": 0.237,
+      "obsidian_space": 0.614,
+      "obsidian_warmth": 0.221
     },
     "Onset": {
-      "onset_brightness": 0.566,
-      "onset_warmth": 0.516,
-      "onset_movement": 0.627,
-      "onset_density": 0.821,
-      "onset_space": 0.302,
       "onset_aggression": 0.716,
-      "onset_level": 0.766
+      "onset_brightness": 0.566,
+      "onset_density": 0.821,
+      "onset_level": 0.766,
+      "onset_movement": 0.627,
+      "onset_space": 0.302,
+      "onset_warmth": 0.516
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Onset",
-        "type": "RHYTHMIC_SYNC",
-        "amount": 0.779
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.688,
-    "warmth": 0.337,
-    "movement": 0.476,
-    "density": 0.624,
-    "space": 0.531,
-    "aggression": 0.391
-  }
+  "tags": [
+    "obsidian",
+    "onset",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

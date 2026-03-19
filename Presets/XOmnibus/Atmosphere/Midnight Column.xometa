@@ -1,25 +1,35 @@
 {
-  "name": "Midnight Column",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "A trench that holds its own weather system. Dark and enormously patient.",
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.38,
-    "MOVEMENT": 0.141,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.141,
     "SPACE": 0.993
   },
-  "sonic_dna": {
-    "brightness": 0.257,
-    "warmth": 0.503,
-    "movement": 0.141,
-    "density": 0.79,
-    "space": 0.993,
-    "aggression": 0.084
+  "mood": "Atmosphere",
+  "name": "Midnight Column",
+  "parameters": {
+    "Obsidian": {}
   },
-  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.084,
+    "brightness": 0.257,
+    "density": 0.79,
+    "movement": 0.141,
+    "space": 0.993,
+    "warmth": 0.503
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +37,13 @@
     "deep",
     "vast"
   ],
-  "description": "A trench that holds its own weather system. Dark and enormously patient."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.2
+  }
 }

@@ -1,27 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Dark Floor",
-  "mood": "Aether",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Permafrost texture — dense and cold as geological strata.",
+  "dna": {
+    "aggression": 0.454,
     "brightness": 0.461,
-    "warmth": 0.106,
-    "movement": 0.49,
     "density": 0.864,
+    "movement": 0.49,
     "space": 0.377,
-    "aggression": 0.454
+    "warmth": 0.106
   },
   "engines": [
-    "OBSIDIAN"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Permafrost texture \u2014 dense and cold as geological strata.",
-  "tags": [
-    "aether",
-    "cold",
-    "dense",
-    "dark",
-    "pressure"
+    "Obsidian"
   ],
   "macroLabels": [
     "CYCLE",
@@ -29,17 +22,26 @@
     "COUPLING",
     "VOID"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.461,
-    "warmth": 0.106,
-    "movement": 0.49,
-    "density": 0.864,
-    "space": 0.377,
-    "aggression": 0.454
+  "mood": "Aether",
+  "name": "Dark Floor",
+  "parameters": {
+    "Obsidian": {}
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.454,
+    "brightness": 0.461,
+    "density": 0.864,
+    "movement": 0.49,
+    "space": 0.377,
+    "warmth": 0.106
+  },
+  "tags": [
+    "aether",
+    "cold",
+    "dense",
+    "dark",
+    "pressure"
+  ],
+  "version": "1.0.0"
 }

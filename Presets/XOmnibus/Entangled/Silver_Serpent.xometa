@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Silver Serpent",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.9,
+        "engineA": "Obscura",
+        "engineB": "Orca",
+        "type": "TIMBRAL_WARP"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Orca breach timbral-warping Obscura stiffness model — cold silver with hunter's velocity.",
+  "dna": {
+    "aggression": 0.592,
+    "brightness": 0.12,
+    "density": 0.88,
+    "movement": 0.7,
+    "space": 0.0,
+    "warmth": 0.0
+  },
   "engines": [
-    "OBSCURA",
-    "ORCA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Orca breach timbral-warping Obscura stiffness model \u2014 cold silver with hunter's velocity.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "cold",
-    "obscura",
-    "orca",
-    "silver"
+    "Obscura",
+    "Orca"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,32 @@
   ],
   "macros": {
     "CHARACTER": 0.88,
-    "MOVEMENT": 0.7,
     "COUPLING": 0.9,
+    "MOVEMENT": 0.7,
     "SPACE": 0.13
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.12,
-    "warmth": 0.0,
-    "movement": 0.7,
-    "density": 0.88,
-    "space": 0.0,
-    "aggression": 0.592
+  "mood": "Entangled",
+  "name": "Silver Serpent",
+  "parameters": {
+    "Obscura": {},
+    "Orca": {}
   },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.94,
     "brightness": 0.12,
-    "warmth": 0.15,
-    "movement": 0.7,
     "density": 0.88,
+    "movement": 0.7,
     "space": 0.13,
-    "aggression": 0.94
+    "warmth": 0.15
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBSCURA",
-        "engineB": "ORCA",
-        "type": "TIMBRAL_WARP",
-        "amount": 0.9
-      }
-    ]
-  }
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obscura",
+    "orca",
+    "silver"
+  ],
+  "version": "1.0.0"
 }

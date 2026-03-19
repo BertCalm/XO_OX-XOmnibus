@@ -31,7 +31,10 @@
     "space": 0.5,
     "aggression": 0.1
   },
-  "parameters": {},
+  "parameters": {
+    "Organon": {},
+    "Overdub": {}
+  },
   "coupling": {
     "pairs": [
       {

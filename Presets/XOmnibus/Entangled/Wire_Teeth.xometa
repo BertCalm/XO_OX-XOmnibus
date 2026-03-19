@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
   "name": "Wire Teeth",
-  "mood": "Entangled",
-  "engines": ["Overbite"],
+  "mood": "Prism",
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Aggressive metallic lead with hard sync and gnash. Bite macro adds snarl; mod wheel controls filter sweep.",
-  "tags": ["lead", "aggressive", "metallic", "sync", "gnash"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "SPACE"],
+  "tags": [
+    "lead",
+    "aggressive",
+    "metallic",
+    "sync",
+    "gnash"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

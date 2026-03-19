@@ -1,45 +1,56 @@
 {
-  "name": "HOT_DENSE_INTIMATE_VIOLENT_AET2_5",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OCEANIC",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "OCEANIC": {
-      "macro_character": 0.4229,
-      "macro_movement": 0.4309,
-      "macro_coupling": 0.9604,
-      "macro_space": 0.0248
-    },
-    "OBSCURA": {
-      "macro_character": 0.4325,
-      "macro_movement": 0.4318,
-      "macro_coupling": 0.9661,
-      "macro_space": 0.0159
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OCEANIC",
-    "target": "OBSCURA",
-    "amount": 0.5208
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Obscura",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.5208
+      }
+    ]
   },
   "dna": {
-    "warmth": 0.9497,
-    "density": 0.9443,
-    "space": 0.0275,
     "aggression": 0.9842,
     "brightness": 0.3939,
-    "movement": 0.4242
+    "density": 0.9443,
+    "movement": 0.4242,
+    "space": 0.0275,
+    "warmth": 0.9497
   },
+  "engines": [
+    "Oceanic",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.4277,
-    "MOVEMENT": 0.4314,
     "COUPLING": 0.5208,
+    "MOVEMENT": 0.4314,
     "SPACE": 0.0275
   },
+  "mood": "Aether",
+  "name": "Cocoa Rage",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.4325,
+      "macro_coupling": 0.9661,
+      "macro_movement": 0.4318,
+      "macro_space": 0.0159
+    },
+    "Oceanic": {
+      "macro_character": 0.4229,
+      "macro_coupling": 0.9604,
+      "macro_movement": 0.4309,
+      "macro_space": 0.0248
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +60,6 @@
     "intimate",
     "violent",
     "compressed"
-  ]
+  ],
+  "version": "1.0"
 }

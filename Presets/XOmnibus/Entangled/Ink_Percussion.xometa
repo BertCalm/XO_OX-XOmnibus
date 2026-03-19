@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Ink Percussion",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.91,
+        "engineA": "Octopus",
+        "engineB": "Onset",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Octopus eight arms velocity coupled into Onset XVC — ink cloud as percussion weapon.",
+  "dna": {
+    "aggression": 0.96,
+    "brightness": 0.62,
+    "density": 0.75,
+    "movement": 0.94,
+    "space": 0.15,
+    "warmth": 0.22
+  },
   "engines": [
-    "OCTOPUS",
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Octopus eight arms velocity coupled into Onset XVC \u2014 ink cloud as percussion weapon.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "movement",
-    "octopus",
-    "onset",
-    "ink"
+    "Octopus",
+    "Onset"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,32 @@
   ],
   "macros": {
     "CHARACTER": 0.82,
-    "MOVEMENT": 0.94,
     "COUPLING": 0.91,
+    "MOVEMENT": 0.94,
     "SPACE": 0.15
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.62,
-    "warmth": 0.22,
-    "movement": 0.94,
-    "density": 0.75,
-    "space": 0.15,
-    "aggression": 0.96
+  "mood": "Entangled",
+  "name": "Ink Percussion",
+  "parameters": {
+    "Octopus": {},
+    "Onset": {}
   },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.96,
     "brightness": 0.62,
-    "warmth": 0.22,
-    "movement": 0.94,
     "density": 0.75,
+    "movement": 0.94,
     "space": 0.15,
-    "aggression": 0.96
+    "warmth": 0.22
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OCTOPUS",
-        "engineB": "ONSET",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.91
-      }
-    ]
-  }
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "octopus",
+    "onset",
+    "ink"
+  ],
+  "version": "1.0.0"
 }

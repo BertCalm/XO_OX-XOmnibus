@@ -1,22 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Oracle Shore",
-  "mood": "Entangled",
-  "engines": [
-    "OSPREY",
-    "ORACLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.55,
+        "engineA": "Osprey",
+        "engineB": "Oracle",
+        "type": "LFO->Pitch"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
   "description": "The oracle reads tide patterns; osprey intercepts the prophecy mid-dive.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "shore",
-    "osprey",
-    "oracle",
-    "prophetic",
-    "resonant"
+  "dna": {
+    "aggression": 0.31,
+    "brightness": 0.63,
+    "density": 0.5,
+    "movement": 0.64,
+    "space": 0.73,
+    "warmth": 0.57
+  },
+  "engines": [
+    "Osprey",
+    "Oracle"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,30 +32,27 @@
   ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.5,
     "COUPLING": 0.75,
+    "MOVEMENT": 0.5,
     "SPACE": 0.5
   },
-  "couplingIntensity": "Moderate",
+  "mood": "Entangled",
+  "name": "Oracle Shore",
+  "parameters": {
+    "Osprey": {},
+    "Oracle": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "osprey",
+    "oracle",
+    "prophetic",
+    "resonant"
+  ],
   "tempo": null,
-  "dna": {
-    "brightness": 0.63,
-    "warmth": 0.57,
-    "movement": 0.64,
-    "density": 0.5,
-    "space": 0.73,
-    "aggression": 0.31
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OSPREY",
-        "engineB": "ORACLE",
-        "type": "LFO->Pitch",
-        "amount": 0.55
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

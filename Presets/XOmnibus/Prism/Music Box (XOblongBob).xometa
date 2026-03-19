@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Music Box",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Bright keys & bells character with warm character.",
+  "dna": {
+    "aggression": 0.189,
+    "brightness": 0.466,
+    "density": 0.282,
+    "movement": 0.0,
+    "space": 0.312,
+    "warmth": 0.114
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bright keys & bells character with warm character.",
-  "tags": [
-    "bell",
-    "musicbox",
-    "delicate"
-  ],
+  "legacy": {
+    "sourceCategory": "Keys & Bells",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Keys & Bells",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Music Box",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 1.0,
-      "bob_oscA_shape": 0.5,
-      "bob_oscA_drift": 0.06,
-      "bob_oscB_wave": 3.0,
-      "bob_oscB_fm": 0.22,
-      "bob_oscB_blend": 0.42,
-      "bob_oscB_detune": 5.0,
-      "bob_fltMode": 1.0,
-      "bob_fltCutoff": 7000.0,
-      "bob_fltReso": 0.58,
-      "bob_fltEnvAmt": 0.52,
       "bob_ampAttack": 0.001,
       "bob_ampDecay": 1.0,
-      "bob_ampSustain": 0.0,
       "bob_ampRelease": 0.8,
-      "bob_bobMode": 0.1
+      "bob_ampSustain": 0.0,
+      "bob_bobMode": 0.1,
+      "bob_fltCutoff": 7000.0,
+      "bob_fltEnvAmt": 0.52,
+      "bob_fltMode": 1.0,
+      "bob_fltReso": 0.58,
+      "bob_oscA_drift": 0.06,
+      "bob_oscA_shape": 0.5,
+      "bob_oscA_wave": 1.0,
+      "bob_oscB_blend": 0.42,
+      "bob_oscB_detune": 5.0,
+      "bob_oscB_fm": 0.22,
+      "bob_oscB_wave": 3.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.466,
-    "warmth": 0.114,
-    "movement": 0.0,
-    "density": 0.282,
-    "space": 0.312,
-    "aggression": 0.189
-  }
+  "tags": [
+    "bell",
+    "musicbox",
+    "delicate"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

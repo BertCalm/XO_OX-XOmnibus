@@ -1,49 +1,61 @@
 {
-  "name": "EMPTY ORBIT",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.96
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.484,
+    "brightness": 0.468,
+    "density": 0.073,
+    "movement": 0.473,
+    "space": 0.957,
+    "warmth": 0.496
+  },
   "engines": [
-    "ODDFELIX",
-    "ORIGAMI"
+    "OddfeliX",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.478,
+    "COUPLING": 0.492,
+    "MOVEMENT": 0.353,
+    "SPACE": 0.948
+  },
+  "mood": "Flux",
+  "name": "EMPTY ORBIT",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.478,
-      "macro_movement": 0.353,
       "macro_coupling": 0.492,
+      "macro_movement": 0.353,
       "macro_space": 0.948
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.381,
-      "macro_movement": 0.36,
       "macro_coupling": 0.537,
+      "macro_movement": 0.36,
       "macro_space": 0.983
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ODDFELIX",
-    "target": "ORIGAMI",
-    "amount": 0.96
-  },
-  "dna": {
-    "brightness": 0.468,
-    "warmth": 0.496,
-    "movement": 0.473,
-    "density": 0.073,
-    "space": 0.957,
-    "aggression": 0.484
-  },
-  "macros": {
-    "CHARACTER": 0.478,
-    "MOVEMENT": 0.353,
-    "COUPLING": 0.492,
-    "SPACE": 0.948
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "spatial",
     "sparse",
     "open"
-  ]
+  ],
+  "version": "1.0"
 }

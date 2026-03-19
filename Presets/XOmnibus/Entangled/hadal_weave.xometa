@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Hadal Weave",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "OCEANIC"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.71,
+        "engineA": "Overlap",
+        "engineB": "Oceanic",
+        "type": "PITCH_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
   "description": "Lion's Mane knot-topology FDN entangled with OCEANIC's deep-current tidal character (phosphorescent abyssal pressure). Coupling: Pitch Sync.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "overlap",
-    "oceanic",
-    "spatial",
-    "lush"
+  "dna": {
+    "aggression": 0.34,
+    "brightness": 0.4,
+    "density": 0.1,
+    "movement": 0.45,
+    "space": 0.6,
+    "warmth": 0.92
+  },
+  "engines": [
+    "Overlap",
+    "Oceanic"
   ],
   "macroLabels": [
     "TOPOLOGY",
@@ -25,77 +32,66 @@
   ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.41,
     "COUPLING": 0.84,
+    "MOVEMENT": 0.41,
     "SPACE": 0.74
   },
-  "couplingIntensity": "Moderate",
-  "sonic_dna": {
-    "brightness": 0.4,
-    "warmth": 0.92,
-    "movement": 0.45,
-    "density": 0.1,
-    "space": 0.6,
-    "aggression": 0.34
-  },
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.92,
-    "movement": 0.45,
-    "density": 0.1,
-    "space": 0.6,
-    "aggression": 0.34
-  },
+  "mood": "Entangled",
+  "name": "Hadal Weave",
   "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.78,
-      "olap_decay": 0.57,
+    "Oceanic": {
+      "ocean_ampAttack": 0.25,
+      "ocean_ampRelease": 0.26,
+      "ocean_ampSustain": 0.57,
+      "ocean_character": 0.63,
+      "ocean_coupling": 0.56,
+      "ocean_couplingLevel": 0.58,
+      "ocean_filterCutoff": 0.54,
+      "ocean_filterReso": 0.31,
+      "ocean_movement": 0.46,
+      "ocean_outputLevel": 0.87,
+      "ocean_reverbMix": 0.21,
+      "ocean_space": 0.41
+    },
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.59,
+      "olap_crossfeedAmt": 0.49,
       "olap_damping": 0.52,
+      "olap_decay": 0.57,
       "olap_diffusion": 0.64,
-      "olap_modDepth": 0.38,
-      "olap_modRate": 0.21,
-      "olap_preDelay": 0.03,
       "olap_earlyMix": 0.5,
-      "olap_lateMix": 0.57,
       "olap_filterCutoff": 0.62,
       "olap_filterReso": 0.16,
       "olap_frondDensity": 0.62,
+      "olap_lateMix": 0.57,
+      "olap_modDepth": 0.38,
+      "olap_modRate": 0.21,
       "olap_nodeCount": 7,
-      "olap_crossfeedAmt": 0.49,
-      "olap_spinRate": 0.06,
-      "olap_shimmerMix": 0.06,
-      "olap_couplingLevel": 0.59,
-      "olap_couplingBus": 0,
       "olap_outputLevel": 0.77,
-      "olap_outputPan": 0.23
-    },
-    "OCEANIC": {
-      "ocean_character": 0.63,
-      "ocean_movement": 0.46,
-      "ocean_coupling": 0.56,
-      "ocean_space": 0.41,
-      "ocean_filterCutoff": 0.54,
-      "ocean_filterReso": 0.31,
-      "ocean_ampAttack": 0.25,
-      "ocean_ampSustain": 0.57,
-      "ocean_ampRelease": 0.26,
-      "ocean_reverbMix": 0.21,
-      "ocean_couplingLevel": 0.58,
-      "ocean_outputLevel": 0.87
+      "olap_outputPan": 0.23,
+      "olap_preDelay": 0.03,
+      "olap_shimmerMix": 0.06,
+      "olap_size": 0.78,
+      "olap_spinRate": 0.06
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OVERLAP",
-    "target": "OCEANIC",
-    "amount": 0.71,
-    "pairs": [
-      {
-        "engineA": "OVERLAP",
-        "engineB": "OCEANIC",
-        "type": "PITCH_SYNC",
-        "amount": 0.71
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.34,
+    "brightness": 0.4,
+    "density": 0.1,
+    "movement": 0.45,
+    "space": 0.6,
+    "warmth": 0.92
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "oceanic",
+    "spatial",
+    "lush"
+  ],
+  "version": "1.0.0"
 }

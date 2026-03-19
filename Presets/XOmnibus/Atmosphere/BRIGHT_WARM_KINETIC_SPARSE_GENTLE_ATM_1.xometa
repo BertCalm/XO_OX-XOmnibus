@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_SPARSE_GENTLE_ATM_1",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.78
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.0992,
+    "brightness": 0.9541,
+    "density": 0.1243,
+    "movement": 0.8712,
+    "space": 0.3342,
+    "warmth": 0.9032
+  },
   "engines": [
-    "ORBITAL",
-    "ORGANON"
+    "Orbital",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9246,
+    "COUPLING": 0.1273,
+    "MOVEMENT": 0.8767,
+    "SPACE": 0.3245
+  },
+  "mood": "Atmosphere",
+  "name": "Bloom Flutter",
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.9374,
-      "macro_movement": 0.8706,
       "macro_coupling": 0.1419,
+      "macro_movement": 0.8706,
       "macro_space": 0.3098
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.9119,
-      "macro_movement": 0.8827,
       "macro_coupling": 0.1127,
+      "macro_movement": 0.8827,
       "macro_space": 0.3391
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORBITAL",
-    "target": "ORGANON",
-    "amount": 0.78
-  },
-  "dna": {
-    "brightness": 0.9541,
-    "warmth": 0.9032,
-    "movement": 0.8712,
-    "density": 0.1243,
-    "space": 0.3342,
-    "aggression": 0.0992
-  },
-  "macros": {
-    "CHARACTER": 0.9246,
-    "MOVEMENT": 0.8767,
-    "COUPLING": 0.1273,
-    "SPACE": 0.3245
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
@@ -47,5 +58,6 @@
     "kinetic",
     "sparse",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

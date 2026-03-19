@@ -1,48 +1,60 @@
 {
-  "name": "MINIMAL PULSE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Orca",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.33
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.457,
+    "brightness": 0.301,
+    "density": 0.079,
+    "movement": 0.42,
+    "space": 0.794,
+    "warmth": 0.048
+  },
   "engines": [
-    "OCELOT",
-    "ORCA"
+    "Ocelot",
+    "Orca"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.111,
+    "COUPLING": 0.597,
+    "MOVEMENT": 0.905,
+    "SPACE": 0.016
+  },
+  "mood": "Entangled",
+  "name": "MINIMAL PULSE",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.005,
-      "macro_movement": 0.079,
       "macro_coupling": 0.256,
+      "macro_movement": 0.079,
       "macro_space": 0.835
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.549,
-      "macro_movement": 0.727,
       "macro_coupling": 0.528,
+      "macro_movement": 0.727,
       "macro_space": 0.111
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OCELOT",
-    "target": "ORCA",
-    "amount": 0.33
-  },
-  "dna": {
-    "brightness": 0.301,
-    "warmth": 0.048,
-    "movement": 0.42,
-    "density": 0.079,
-    "space": 0.794,
-    "aggression": 0.457
-  },
-  "macros": {
-    "CHARACTER": 0.111,
-    "MOVEMENT": 0.905,
-    "COUPLING": 0.597,
-    "SPACE": 0.016
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "thin",
     "ghosted"
-  ]
+  ],
+  "version": "1.0"
 }

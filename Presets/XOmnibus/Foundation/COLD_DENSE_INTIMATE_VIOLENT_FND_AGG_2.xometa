@@ -1,50 +1,62 @@
 {
-  "name": "COLD_DENSE_INTIMATE_VIOLENT_FND_AGG_2",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ORIGAMI",
-    "ONSET"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.464,
-      "macro_movement": 0.377,
-      "macro_coupling": 0.612,
-      "macro_space": 0.662
-    },
-    "ONSET": {
-      "macro_character": 0.495,
-      "macro_movement": 0.396,
-      "macro_coupling": 0.656,
-      "macro_space": 0.686
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORIGAMI",
-    "target": "ONSET",
-    "amount": 0.806
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Onset",
+        "type": "PITCH_SYNC",
+        "amount": 0.806
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.978,
     "brightness": 0.438,
-    "warmth": 0.107,
-    "movement": 0.475,
     "density": 0.988,
+    "movement": 0.475,
     "space": 0.033,
-    "aggression": 0.978
+    "warmth": 0.107
   },
+  "engines": [
+    "Origami",
+    "Onset"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.464,
-    "MOVEMENT": 0.377,
     "COUPLING": 0.612,
+    "MOVEMENT": 0.377,
     "SPACE": 0.662
   },
+  "mood": "Foundation",
+  "name": "Flux Deep",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.495,
+      "macro_coupling": 0.656,
+      "macro_movement": 0.396,
+      "macro_space": 0.686
+    },
+    "Origami": {
+      "macro_character": 0.464,
+      "macro_coupling": 0.612,
+      "macro_movement": 0.377,
+      "macro_space": 0.662
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "cold",
     "dense",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

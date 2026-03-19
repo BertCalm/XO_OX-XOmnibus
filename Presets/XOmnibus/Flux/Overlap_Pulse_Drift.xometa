@@ -1,0 +1,82 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Cinquefoil with drifting pulse rate \u2014 unstable rhythmic surface.",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.5,
+    "movement": 0.8,
+    "density": 0.45,
+    "space": 0.35,
+    "aggression": 0.3
+  },
+  "engines": [
+    "XOverlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
+  "mood": "Flux",
+  "name": "Pulse Drift",
+  "parameters": {
+    "XOverlap": {
+      "olap_knot": 3,
+      "olap_tangleDepth": 0.6,
+      "olap_torusP": 3,
+      "olap_torusQ": 2,
+      "olap_pulseRate": 3.0,
+      "olap_entrain": 0.5,
+      "olap_spread": 0.55,
+      "olap_voiceMode": 0,
+      "olap_glide": 0.0,
+      "olap_delayBase": 7.0,
+      "olap_dampening": 0.5,
+      "olap_feedback": 0.65,
+      "olap_brightness": 0.48,
+      "olap_bioluminescence": 0.35,
+      "olap_current": 0.45,
+      "olap_currentRate": 0.07,
+      "olap_attack": 0.008,
+      "olap_decay": 0.7,
+      "olap_sustain": 0.55,
+      "olap_release": 1.2,
+      "olap_filterCutoff": 7000.0,
+      "olap_filterRes": 0.32,
+      "olap_filterEnvAmt": 0.4,
+      "olap_filterEnvDecay": 0.45,
+      "olap_lfo1Rate": 2.5,
+      "olap_lfo1Shape": 1,
+      "olap_lfo1Depth": 0.5,
+      "olap_lfo1Dest": 1,
+      "olap_lfo2Rate": 0.6,
+      "olap_lfo2Shape": 0,
+      "olap_lfo2Depth": 0.3,
+      "olap_lfo2Dest": 0,
+      "olap_chorusMix": 0.18,
+      "olap_chorusRate": 0.08,
+      "olap_diffusion": 0.22,
+      "olap_macroKnot": 0.0,
+      "olap_macroPulse": 0.5,
+      "olap_macroEntrain": 0.0,
+      "olap_macroBloom": 0.0,
+      "olap_modWheelDest": 0,
+      "olap_modWheelDepth": 0.6,
+      "olap_atPressureDest": 1,
+      "olap_atPressureDepth": 0.5
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "pulse",
+    "drift",
+    "unstable",
+    "rhythmic"
+  ],
+  "version": "1.0.0"
+}

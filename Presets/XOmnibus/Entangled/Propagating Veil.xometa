@@ -1,52 +1,62 @@
 {
-  "schema_version": 1,
-  "name": "Propagating Veil",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "macros": {
-    "CHARACTER": 0.38,
-    "MOVEMENT": 0.7,
-    "COUPLING": 0.76,
-    "SPACE": 0.71
-  },
-  "sonic_dna": {
-    "movement": 0.66,
-    "brightness": 0.57,
-    "aggression": 0.37,
-    "space": 0.71,
-    "warmth": 0.53,
-    "density": 0.74
-  },
-  "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.854,
-      "olap_decay": 0.581,
-      "olap_damping": 0.47,
-      "olap_diffusion": 0.853,
-      "olap_modDepth": 0.253,
-      "olap_modRate": 0.259,
-      "olap_preDelay": 0.03,
-      "olap_earlyMix": 0.541,
-      "olap_lateMix": 0.644,
-      "olap_filterCutoff": 0.496,
-      "olap_filterReso": 0.148,
-      "olap_outputLevel": 0.76,
-      "olap_couplingLevel": 0.688,
-      "olap_couplingBus": 0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "WAVETABLE_MORPH",
-    "source": "OVERLAP",
-    "target": "OUROBOROS",
-    "amount": 0.756
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Ouroboros",
+        "type": "WAVETABLE_MORPH",
+        "amount": 0.756
+      }
+    ]
   },
   "couplingIntensity": "Deep",
+  "description": "Ouroboros loop phase modulates OVERLAP decay length — the coil's rotation is the reverb's clock",
+  "engines": [
+    "Overlap",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.38,
+    "COUPLING": 0.76,
+    "MOVEMENT": 0.7,
+    "SPACE": 0.71
+  },
+  "mood": "Entangled",
+  "name": "Propagating Veil",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.688,
+      "olap_damping": 0.47,
+      "olap_decay": 0.581,
+      "olap_diffusion": 0.853,
+      "olap_earlyMix": 0.541,
+      "olap_filterCutoff": 0.496,
+      "olap_filterReso": 0.148,
+      "olap_lateMix": 0.644,
+      "olap_modDepth": 0.253,
+      "olap_modRate": 0.259,
+      "olap_outputLevel": 0.76,
+      "olap_preDelay": 0.03,
+      "olap_size": 0.854
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.37,
+    "brightness": 0.57,
+    "density": 0.74,
+    "movement": 0.66,
+    "space": 0.71,
+    "warmth": 0.53
+  },
   "tags": [
     "entangled",
     "coupling",
@@ -56,5 +66,13 @@
     "fdn",
     "reverb"
   ],
-  "description": "Ouroboros loop phase modulates OVERLAP decay length \u2014 the coil's rotation is the reverb's clock"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.496,
+    "warmth": 0.5,
+    "movement": 0.259,
+    "density": 0.5,
+    "space": 0.03,
+    "aggression": 0.3
+  }
 }

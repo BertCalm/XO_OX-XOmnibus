@@ -1,49 +1,61 @@
 {
-  "name": "OPEN DEEP FOUNDATION",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Overworld",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.536
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.467,
+    "brightness": 0.679,
+    "density": 0.165,
+    "movement": 0.336,
+    "space": 0.903,
+    "warmth": 0.925
+  },
   "engines": [
-    "OUTWIT",
-    "OVERWORLD"
+    "Outwit",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "COUPLING": 0.278,
+    "MOVEMENT": 0.336,
+    "SPACE": 0.903
+  },
+  "mood": "Foundation",
+  "name": "OPEN DEEP FOUNDATION",
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.663,
-      "macro_movement": 0.294,
       "macro_coupling": 0.429,
+      "macro_movement": 0.294,
       "macro_space": 0.925
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.182,
-      "macro_movement": 0.312,
       "macro_coupling": 0.327,
+      "macro_movement": 0.312,
       "macro_space": 0.9
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OUTWIT",
-    "target": "OVERWORLD",
-    "amount": 0.536
-  },
-  "dna": {
-    "brightness": 0.679,
-    "warmth": 0.925,
-    "movement": 0.336,
-    "density": 0.165,
-    "space": 0.903,
-    "aggression": 0.467
-  },
-  "macros": {
-    "CHARACTER": 0.88,
-    "MOVEMENT": 0.336,
-    "COUPLING": 0.278,
-    "SPACE": 0.903
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

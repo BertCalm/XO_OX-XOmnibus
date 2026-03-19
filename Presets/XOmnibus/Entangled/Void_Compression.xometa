@@ -1,48 +1,60 @@
 {
-  "name": "Void Compression",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Obsidian",
+        "type": "FILTER_MOD",
+        "amount": 0.95
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.84,
+    "brightness": 0.06,
+    "density": 0.88,
+    "movement": 0.51,
+    "space": 0.22,
+    "warmth": 0.41
+  },
   "engines": [
-    "OBSIDIAN",
-    "OUROBOROS"
+    "Obsidian",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.35,
+    "COUPLING": 0.8,
+    "MOVEMENT": 0.51,
+    "SPACE": 0.22
+  },
+  "mood": "Entangled",
+  "name": "Void Compression",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.49,
-      "macro_movement": 0.75,
       "macro_coupling": 0.86,
+      "macro_movement": 0.75,
       "macro_space": 0.41
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.68,
-      "macro_movement": 0.83,
       "macro_coupling": 0.6,
+      "macro_movement": 0.83,
       "macro_space": 0.35
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OUROBOROS",
-    "target": "OBSIDIAN",
-    "amount": 0.95
-  },
-  "dna": {
-    "brightness": 0.06,
-    "warmth": 0.41,
-    "movement": 0.51,
-    "density": 0.88,
-    "space": 0.22,
-    "aggression": 0.84
-  },
-  "macros": {
-    "CHARACTER": 0.35,
-    "MOVEMENT": 0.51,
-    "COUPLING": 0.8,
-    "SPACE": 0.22
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-  ]
+  ],
+  "version": "1.0"
 }

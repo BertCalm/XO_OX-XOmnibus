@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "HOT DENSE STILL VIOLENT 1",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "warmth": 0.894,
-    "density": 0.9309,
-    "movement": 0.0752,
-    "aggression": 0.9497,
-    "brightness": 0.4315,
-    "space": 0.5922
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Low",
+  "couplingType": "PHASE",
+  "description": "Ultra-diverse Entangled preset — hot dense still violent. Designed for PHASE coupling with XOblique.",
   "dna": {
-    "warmth": 0.894,
-    "density": 0.9309,
-    "movement": 0.0752,
     "aggression": 0.9497,
     "brightness": 0.4315,
-    "space": 0.5922
+    "density": 0.9309,
+    "movement": 0.0752,
+    "space": 0.5922,
+    "warmth": 0.894
   },
   "engines": [
-    "XOblique"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 hot dense still violent. Designed for PHASE coupling with XOblique.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "phase",
-    "oblique"
+    "Oblique"
   ],
   "macroLabels": [
     "FORCE",
@@ -36,15 +23,28 @@
     "SWEEP",
     "HEAT"
   ],
-  "couplingType": "PHASE",
-  "couplingIntensity": "Low",
+  "mood": "Prism",
+  "name": "HOT DENSE STILL VIOLENT 1",
   "parameters": {
-    "XOblique": {
-      "couplingLevel": 0.838,
-      "couplingBus": 0
+    "Oblique": {
+      "couplingBus": 0,
+      "couplingLevel": 0.838
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9497,
+    "brightness": 0.4315,
+    "density": 0.9309,
+    "movement": 0.0752,
+    "space": 0.5922,
+    "warmth": 0.894
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "phase",
+    "oblique"
+  ],
+  "version": "1.0.0"
 }

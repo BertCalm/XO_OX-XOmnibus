@@ -1,49 +1,61 @@
 {
-  "name": "LUMINOUS FOUNDATION",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ORGANON",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.782,
-      "macro_movement": 0.265,
-      "macro_coupling": 0.623,
-      "macro_space": 0.397
-    },
-    "ORBITAL": {
-      "macro_character": 0.08,
-      "macro_movement": 0.329,
-      "macro_coupling": 0.674,
-      "macro_space": 0.534
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_LOCK",
-    "source": "ORGANON",
-    "target": "ORBITAL",
-    "amount": 0.345
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Orbital",
+        "type": "FREQUENCY_LOCK",
+        "amount": 0.345
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.782,
     "brightness": 0.967,
-    "warmth": 0.26,
-    "movement": 0.746,
     "density": 0.209,
+    "movement": 0.746,
     "space": 0.132,
-    "aggression": 0.782
+    "warmth": 0.26
   },
+  "engines": [
+    "Organon",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.431,
-    "MOVEMENT": 0.297,
     "COUPLING": 0.649,
+    "MOVEMENT": 0.297,
     "SPACE": 0.466
   },
+  "mood": "Foundation",
+  "name": "LUMINOUS FOUNDATION",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.08,
+      "macro_coupling": 0.674,
+      "macro_movement": 0.329,
+      "macro_space": 0.534
+    },
+    "Organon": {
+      "macro_character": 0.782,
+      "macro_coupling": 0.623,
+      "macro_movement": 0.265,
+      "macro_space": 0.397
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "bright",
     "extreme",
     "low-space"
-  ]
+  ],
+  "version": "1.0"
 }

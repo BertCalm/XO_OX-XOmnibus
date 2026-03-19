@@ -1,49 +1,61 @@
 {
-  "name": "ZERO ROOM",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Octopus",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.768
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.601,
+    "brightness": 0.821,
+    "density": 0.35,
+    "movement": 0.887,
+    "space": 0.079,
+    "warmth": 0.316
+  },
   "engines": [
-    "OBLIQUE",
-    "OCTOPUS"
+    "Oblique",
+    "Octopus"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.509,
+    "COUPLING": 0.56,
+    "MOVEMENT": 0.912,
+    "SPACE": 0.079
+  },
+  "mood": "Entangled",
+  "name": "ZERO ROOM",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.959,
-      "macro_movement": 0.653,
       "macro_coupling": 0.511,
+      "macro_movement": 0.653,
       "macro_space": 0.05
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.208,
-      "macro_movement": 0.797,
       "macro_coupling": 0.209,
+      "macro_movement": 0.797,
       "macro_space": 0.082
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OBLIQUE",
-    "target": "OCTOPUS",
-    "amount": 0.768
-  },
-  "dna": {
-    "brightness": 0.821,
-    "warmth": 0.316,
-    "movement": 0.887,
-    "density": 0.35,
-    "space": 0.079,
-    "aggression": 0.601
-  },
-  "macros": {
-    "CHARACTER": 0.509,
-    "MOVEMENT": 0.912,
-    "COUPLING": 0.56,
-    "SPACE": 0.079
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-  ]
+  ],
+  "version": "1.0"
 }

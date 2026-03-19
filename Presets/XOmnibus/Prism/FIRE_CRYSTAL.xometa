@@ -1,49 +1,61 @@
 {
-  "name": "FIRE CRYSTAL",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "ORIGAMI",
-    "OBESE"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.244,
-      "macro_movement": 0.199,
-      "macro_coupling": 0.198,
-      "macro_space": 0.947
-    },
-    "OBESE": {
-      "macro_character": 0.211,
-      "macro_movement": 0.184,
-      "macro_coupling": 0.233,
-      "macro_space": 0.544
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ORIGAMI",
-    "target": "OBESE",
-    "amount": 0.844
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Obese",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.844
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.795,
     "brightness": 0.689,
-    "warmth": 0.925,
-    "movement": 0.977,
     "density": 0.991,
+    "movement": 0.977,
     "space": 0.523,
-    "aggression": 0.795
+    "warmth": 0.925
   },
+  "engines": [
+    "Origami",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.374,
-    "MOVEMENT": 0.195,
     "COUPLING": 0.086,
+    "MOVEMENT": 0.195,
     "SPACE": 0.784
   },
+  "mood": "Prism",
+  "name": "FIRE CRYSTAL",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.211,
+      "macro_coupling": 0.233,
+      "macro_movement": 0.184,
+      "macro_space": 0.544
+    },
+    "Origami": {
+      "macro_character": 0.244,
+      "macro_coupling": 0.198,
+      "macro_movement": 0.199,
+      "macro_space": 0.947
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

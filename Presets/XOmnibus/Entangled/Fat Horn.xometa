@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Fat Horn",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.72,
+    "pairs": [
+      {
+        "amount": 0.72,
+        "engineA": "Obese",
+        "engineB": "Ottoni",
+        "type": "Amp->Filter"
+      }
+    ],
+    "type": "Amp->Filter"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OBESE saturation into OTTONI brass. Thick fanfare. [Amp->Filter]",
+  "dna": {
+    "aggression": 0.667,
     "brightness": 0.524,
-    "warmth": 0.676,
-    "movement": 0.476,
     "density": 0.776,
+    "movement": 0.476,
     "space": 0.487,
-    "aggression": 0.667
+    "warmth": 0.676
   },
   "engines": [
-    "XObese",
-    "XOttoni"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE saturation into OTTONI brass. Thick fanfare. [Amp->Filter]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "obese",
-    "ottoni",
-    "fat"
+    "Obese",
+    "Ottoni"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.524,
-    "warmth": 0.676,
-    "movement": 0.476,
-    "density": 0.776,
-    "space": 0.487,
-    "aggression": 0.667
-  },
+  "mood": "Entangled",
+  "name": "Fat Horn",
   "parameters": {
-    "XObese": {
+    "Obese": {
+      "fat_aggression": 0.747,
+      "fat_brightness": 0.504,
+      "fat_couplingBus": 0,
+      "fat_couplingLevel": 0.58,
       "fat_outputLevel": 0.8,
       "fat_outputPan": 0.05,
-      "fat_couplingLevel": 0.58,
-      "fat_couplingBus": 0,
-      "fat_brightness": 0.504,
-      "fat_warmth": 0.666,
-      "fat_aggression": 0.747
+      "fat_warmth": 0.666
     },
-    "XOttoni": {
+    "Ottoni": {
+      "ott_aggression": 0.628,
+      "ott_brightness": 0.565,
+      "ott_couplingBus": 0,
+      "ott_couplingLevel": 0.75,
       "ott_outputLevel": 0.86,
       "ott_outputPan": 0.01,
-      "ott_couplingLevel": 0.75,
-      "ott_couplingBus": 0,
-      "ott_brightness": 0.565,
-      "ott_warmth": 0.593,
-      "ott_aggression": 0.628
+      "ott_warmth": 0.593
     }
   },
-  "coupling": {
-    "type": "Amp->Filter",
-    "amount": 0.72,
-    "pairs": [
-      {
-        "engineA": "XObese",
-        "engineB": "XOttoni",
-        "type": "Amp->Filter",
-        "amount": 0.72
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.667,
+    "brightness": 0.524,
+    "density": 0.776,
+    "movement": 0.476,
+    "space": 0.487,
+    "warmth": 0.676
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "ottoni",
+    "fat"
+  ],
+  "version": "1.0.0"
 }

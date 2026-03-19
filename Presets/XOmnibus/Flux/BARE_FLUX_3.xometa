@@ -1,48 +1,60 @@
 {
-  "name": "BARE FLUX 3",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overbite",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.6602
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5564,
+    "brightness": 0.0932,
+    "density": 0.1032,
+    "movement": 0.9286,
+    "space": 0.8118,
+    "warmth": 0.0966
+  },
   "engines": [
-    "OBLIQUE",
-    "OVERBITE"
+    "Oblique",
+    "Overbite"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3516,
+    "COUPLING": 0.2127,
+    "MOVEMENT": 0.5779,
+    "SPACE": 0.6567
+  },
+  "mood": "Flux",
+  "name": "BARE FLUX 3",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.3296,
-      "macro_movement": 0.1222,
       "macro_coupling": 0.3536,
+      "macro_movement": 0.1222,
       "macro_space": 0.6653
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.7503,
-      "macro_movement": 0.8681,
       "macro_coupling": 0.7211,
+      "macro_movement": 0.8681,
       "macro_space": 0.9684
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OBLIQUE",
-    "target": "OVERBITE",
-    "amount": 0.6602
-  },
-  "dna": {
-    "brightness": 0.0932,
-    "warmth": 0.0966,
-    "movement": 0.9286,
-    "density": 0.1032,
-    "space": 0.8118,
-    "aggression": 0.5564
-  },
-  "macros": {
-    "CHARACTER": 0.3516,
-    "MOVEMENT": 0.5779,
-    "COUPLING": 0.2127,
-    "SPACE": 0.6567
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "sparse",
     "minimal"
-  ]
+  ],
+  "version": "1.0"
 }

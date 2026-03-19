@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FAM_VOL_141",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Ole",
+        "type": "SPECTRAL_WEAVE",
+        "amount": 0.52
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.934,
+    "brightness": 0.873,
+    "density": 0.37,
+    "movement": 0.487,
+    "space": 0.103,
+    "warmth": 0.13
+  },
   "engines": [
-    "OLE",
-    "OSTERIA"
+    "Ole",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.502,
+    "COUPLING": 0.655,
+    "MOVEMENT": 0.472,
+    "SPACE": 0.111
+  },
+  "mood": "Family",
+  "name": "Mirror Rage 2",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.485,
-      "macro_movement": 0.481,
       "macro_coupling": 0.66,
+      "macro_movement": 0.481,
       "macro_space": 0.116
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.52,
-      "macro_movement": 0.462,
       "macro_coupling": 0.65,
+      "macro_movement": 0.462,
       "macro_space": 0.105
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_WEAVE",
-    "source": "OSTERIA",
-    "target": "OLE",
-    "amount": 0.52
-  },
-  "dna": {
-    "brightness": 0.873,
-    "warmth": 0.13,
-    "movement": 0.487,
-    "density": 0.37,
-    "space": 0.103,
-    "aggression": 0.934
-  },
-  "macros": {
-    "CHARACTER": 0.502,
-    "MOVEMENT": 0.472,
-    "COUPLING": 0.655,
-    "SPACE": 0.111
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "cold",
     "intimate",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

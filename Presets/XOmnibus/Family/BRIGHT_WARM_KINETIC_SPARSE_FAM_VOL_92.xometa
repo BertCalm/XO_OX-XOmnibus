@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_SPARSE_FAM_VOL_92",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ORPHICA",
-    "OLE"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.89,
-      "macro_movement": 0.951,
-      "macro_coupling": 0.194,
-      "macro_space": 0.574
-    },
-    "OLE": {
-      "macro_character": 0.909,
-      "macro_movement": 0.939,
-      "macro_coupling": 0.201,
-      "macro_space": 0.582
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_LINK",
-    "source": "OLE",
-    "target": "ORPHICA",
-    "amount": 0.463
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Orphica",
+        "type": "FILTER_LINK",
+        "amount": 0.463
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.329,
     "brightness": 0.894,
-    "warmth": 0.907,
-    "movement": 0.968,
     "density": 0.054,
+    "movement": 0.968,
     "space": 0.577,
-    "aggression": 0.329
+    "warmth": 0.907
   },
+  "engines": [
+    "Orphica",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.899,
-    "MOVEMENT": 0.945,
     "COUPLING": 0.198,
+    "MOVEMENT": 0.945,
     "SPACE": 0.578
   },
+  "mood": "Family",
+  "name": "Bloom Stream 3",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.909,
+      "macro_coupling": 0.201,
+      "macro_movement": 0.939,
+      "macro_space": 0.582
+    },
+    "Orphica": {
+      "macro_character": 0.89,
+      "macro_coupling": 0.194,
+      "macro_movement": 0.951,
+      "macro_space": 0.574
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "sparse",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

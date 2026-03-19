@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Octopus All Arms",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OCTOPUS 8 arms simultaneously — maximum CA density, full aggressive Wolfram field.",
+  "dna": {
+    "aggression": 0.84,
+    "brightness": 0.45,
+    "density": 0.87,
+    "movement": 0.92,
+    "space": 0.2,
+    "warmth": 0.35
+  },
   "engines": [
-    "OCTOPUS"
+    "Octopus"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OCTOPUS 8 arms simultaneously \u2014 maximum CA density, full aggressive Wolfram field.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "ARM",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Octopus All Arms",
+  "parameters": {
+    "Octopus": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "portrait",
@@ -16,29 +41,6 @@
     "aggressive",
     "chaotic"
   ],
-  "macroLabels": [
-    "ARM",
-    "CHAOS",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.35,
-    "movement": 0.92,
-    "density": 0.87,
-    "space": 0.2,
-    "aggression": 0.84
-  }
+  "version": "1.0.0"
 }

@@ -1,45 +1,56 @@
 {
-  "name": "COLD_STILL_SPARSE_INTIMATE_FND_2",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overdub",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.703
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.664,
+    "brightness": 0.446,
+    "density": 0.041,
+    "movement": 0.071,
+    "space": 0.061,
+    "warmth": 0.134
+  },
   "engines": [
-    "OBLONG",
-    "OVERDUB"
+    "Oblong",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.188,
+    "COUPLING": 0.636,
+    "MOVEMENT": 0.609,
+    "SPACE": 0.244
+  },
+  "mood": "Foundation",
+  "name": "Fragment Wrath",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.219,
-      "macro_movement": 0.226,
       "macro_coupling": 0.716,
+      "macro_movement": 0.226,
       "macro_space": 0.186
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.687,
-      "macro_movement": 0.283,
       "macro_coupling": 0.786,
+      "macro_movement": 0.283,
       "macro_space": 0.276
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBLONG",
-    "target": "OVERDUB",
-    "amount": 0.703
-  },
-  "dna": {
-    "brightness": 0.446,
-    "warmth": 0.134,
-    "movement": 0.071,
-    "density": 0.041,
-    "space": 0.061,
-    "aggression": 0.664
-  },
-  "macros": {
-    "CHARACTER": 0.188,
-    "MOVEMENT": 0.609,
-    "COUPLING": 0.636,
-    "SPACE": 0.244
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -47,5 +58,6 @@
     "still",
     "sparse",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,56 @@
 {
-  "name": "DARK KINETIC VAST VIOLENT AET AGG 3",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Orbital",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.768
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.924,
+    "brightness": 0.1,
+    "density": 0.564,
+    "movement": 0.94,
+    "space": 0.974,
+    "warmth": 0.635
+  },
   "engines": [
-    "OPAL",
-    "ORBITAL"
+    "Opal",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.098,
+    "COUPLING": 0.91,
+    "MOVEMENT": 0.91,
+    "SPACE": 0.92
+  },
+  "mood": "Aether",
+  "name": "DARK KINETIC VAST VIOLENT A...",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.096,
-      "macro_movement": 0.89,
       "macro_coupling": 0.898,
+      "macro_movement": 0.89,
       "macro_space": 0.925
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.099,
-      "macro_movement": 0.93,
       "macro_coupling": 0.922,
+      "macro_movement": 0.93,
       "macro_space": 0.915
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OPAL",
-    "target": "ORBITAL",
-    "amount": 0.768
-  },
-  "dna": {
-    "brightness": 0.1,
-    "warmth": 0.635,
-    "movement": 0.94,
-    "density": 0.564,
-    "space": 0.974,
-    "aggression": 0.924
-  },
-  "macros": {
-    "CHARACTER": 0.098,
-    "MOVEMENT": 0.91,
-    "COUPLING": 0.91,
-    "SPACE": 0.92
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "aggressive",
@@ -48,5 +59,6 @@
     "dark",
     "kinetic",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

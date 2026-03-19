@@ -1,25 +1,35 @@
 {
-  "name": "Below Surface",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Abyssal plain stretching past comprehension. A drone built from fathoms.",
   "engines": [
-    "ORGANON"
+    "Organon"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.336,
-    "MOVEMENT": 0.053,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.053,
     "SPACE": 0.916
   },
-  "sonic_dna": {
-    "brightness": 0.182,
-    "warmth": 0.49,
-    "movement": 0.053,
-    "density": 0.5,
-    "space": 0.916,
-    "aggression": 0.093
+  "mood": "Atmosphere",
+  "name": "Below Surface",
+  "parameters": {
+    "Organon": {}
   },
-  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.093,
+    "brightness": 0.182,
+    "density": 0.5,
+    "movement": 0.053,
+    "space": 0.916,
+    "warmth": 0.49
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +37,13 @@
     "deep",
     "vast"
   ],
-  "description": "Abyssal plain stretching past comprehension. A drone built from fathoms."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.2
+  }
 }

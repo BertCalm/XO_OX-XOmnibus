@@ -1,49 +1,61 @@
 {
-  "name": "OBSIDIAN PILLAR",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Organon",
+        "type": "TIMBRAL_BLEND",
+        "amount": 0.576
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.735,
+    "brightness": 0.076,
+    "density": 0.071,
+    "movement": 0.452,
+    "space": 0.417,
+    "warmth": 0.208
+  },
   "engines": [
-    "OBESE",
-    "ORGANON"
+    "Obese",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.385,
+    "COUPLING": 0.649,
+    "MOVEMENT": 0.548,
+    "SPACE": 0.557
+  },
+  "mood": "Foundation",
+  "name": "OBSIDIAN PILLAR",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.153,
-      "macro_movement": 0.176,
       "macro_coupling": 0.522,
+      "macro_movement": 0.176,
       "macro_space": 0.65
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.616,
-      "macro_movement": 0.92,
       "macro_coupling": 0.775,
+      "macro_movement": 0.92,
       "macro_space": 0.465
     }
   },
-  "coupling": {
-    "type": "TIMBRAL_BLEND",
-    "source": "OBESE",
-    "target": "ORGANON",
-    "amount": 0.576
-  },
-  "dna": {
-    "brightness": 0.076,
-    "warmth": 0.208,
-    "movement": 0.452,
-    "density": 0.071,
-    "space": 0.417,
-    "aggression": 0.735
-  },
-  "macros": {
-    "CHARACTER": 0.385,
-    "MOVEMENT": 0.548,
-    "COUPLING": 0.649,
-    "SPACE": 0.557
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "dark",
     "extreme",
     "low-density"
-  ]
+  ],
+  "version": "1.0"
 }

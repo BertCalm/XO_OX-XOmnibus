@@ -1,49 +1,61 @@
 {
-  "name": "Charcoal Braid",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Organon",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.89
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.43,
+    "brightness": 0.61,
+    "density": 0.92,
+    "movement": 0.49,
+    "space": 0.33,
+    "warmth": 0.89
+  },
   "engines": [
-    "OBESE",
-    "ORGANON"
+    "Obese",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.78,
+    "COUPLING": 0.74,
+    "MOVEMENT": 0.5,
+    "SPACE": 0.32
+  },
+  "mood": "Entangled",
+  "name": "Charcoal Braid",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.92,
-      "macro_movement": 0.59,
       "macro_coupling": 0.78,
+      "macro_movement": 0.59,
       "macro_space": 0.34
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.64,
-      "macro_movement": 0.41,
       "macro_coupling": 0.7,
+      "macro_movement": 0.41,
       "macro_space": 0.29
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBESE",
-    "target": "ORGANON",
-    "amount": 0.89
-  },
-  "dna": {
-    "brightness": 0.61,
-    "warmth": 0.89,
-    "movement": 0.49,
-    "density": 0.92,
-    "space": 0.33,
-    "aggression": 0.43
-  },
-  "macros": {
-    "CHARACTER": 0.78,
-    "MOVEMENT": 0.5,
-    "COUPLING": 0.74,
-    "SPACE": 0.32
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

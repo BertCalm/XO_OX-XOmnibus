@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT HOT DENSE ENT 17",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Overworld",
+        "type": "FILTER_MOD",
+        "amount": 0.601
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.679,
+    "brightness": 0.969,
+    "density": 0.935,
+    "movement": 0.548,
+    "space": 0.596,
+    "warmth": 0.907
+  },
   "engines": [
-    "ODDOSCAR",
-    "OVERWORLD"
+    "OddOscar",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.938,
+    "COUPLING": 0.504,
+    "MOVEMENT": 0.548,
+    "SPACE": 0.596
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT HOT DENSE ENT 17",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.938,
-      "macro_movement": 0.548,
       "macro_coupling": 0.504,
+      "macro_movement": 0.548,
       "macro_space": 0.596
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.986,
-      "macro_movement": 0.445,
       "macro_coupling": 0.408,
+      "macro_movement": 0.445,
       "macro_space": 0.469
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ODDOSCAR",
-    "target": "OVERWORLD",
-    "amount": 0.601
-  },
-  "dna": {
-    "brightness": 0.969,
-    "warmth": 0.907,
-    "movement": 0.548,
-    "density": 0.935,
-    "space": 0.596,
-    "aggression": 0.679
-  },
-  "macros": {
-    "CHARACTER": 0.938,
-    "MOVEMENT": 0.548,
-    "COUPLING": 0.504,
-    "SPACE": 0.596
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "bright",
@@ -47,5 +58,6 @@
     "dense",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_DENSE_VIOLENT_FAM_VOL_119",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Ole",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.743
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.977,
+    "brightness": 0.122,
+    "density": 0.93,
+    "movement": 0.398,
+    "space": 0.514,
+    "warmth": 0.901
+  },
   "engines": [
-    "ODDFELIX",
-    "OLE"
+    "OddfeliX",
+    "Ole"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.513,
+    "COUPLING": 0.961,
+    "MOVEMENT": 0.395,
+    "SPACE": 0.514
+  },
+  "mood": "Family",
+  "name": "Smoke Grit 4",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.525,
-      "macro_movement": 0.373,
       "macro_coupling": 0.963,
+      "macro_movement": 0.373,
       "macro_space": 0.535
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.501,
-      "macro_movement": 0.417,
       "macro_coupling": 0.959,
+      "macro_movement": 0.417,
       "macro_space": 0.494
     }
   },
-  "coupling": {
-    "type": "RHYTHM_LOCK",
-    "source": "ODDFELIX",
-    "target": "OLE",
-    "amount": 0.743
-  },
-  "dna": {
-    "brightness": 0.122,
-    "warmth": 0.901,
-    "movement": 0.398,
-    "density": 0.93,
-    "space": 0.514,
-    "aggression": 0.977
-  },
-  "macros": {
-    "CHARACTER": 0.513,
-    "MOVEMENT": 0.395,
-    "COUPLING": 0.961,
-    "SPACE": 0.514
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "dense",
     "aggressive",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

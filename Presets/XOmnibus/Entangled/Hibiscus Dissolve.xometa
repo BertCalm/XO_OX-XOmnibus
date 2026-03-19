@@ -1,31 +1,46 @@
 {
-  "name": "Hibiscus Dissolve",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Ole",
+        "type": "GRADIENT_DISSOLVE",
+        "amount": 0.6
+      }
+    ]
+  },
+  "description": "Hibiscus color bleeds into ombre spectrum — vivid joy softening to memory",
   "engines": [
-    "OLE",
-    "OMBRE"
+    "Ole",
+    "Ombre"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7,
-    "MOVEMENT": 0.8,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.8,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.66,
-    "warmth": 0.66,
-    "movement": 0.71,
-    "density": 0.56,
-    "space": 0.6,
-    "aggression": 0.4
+  "mood": "Entangled",
+  "name": "Hibiscus Dissolve",
+  "parameters": {
+    "Ole": {},
+    "Ombre": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "GRADIENT_DISSOLVE",
-    "source": "OMBRE",
-    "target": "OLE",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4,
+    "brightness": 0.66,
+    "density": 0.56,
+    "movement": 0.71,
+    "space": 0.6,
+    "warmth": 0.66
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "ombre",
     "afro-latin"
   ],
-  "description": "Hibiscus color bleeds into ombre spectrum \u2014 vivid joy softening to memory"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

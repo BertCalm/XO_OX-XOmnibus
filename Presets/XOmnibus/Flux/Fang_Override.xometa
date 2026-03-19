@@ -33,7 +33,9 @@
     "space": 0.1,
     "aggression": 0.97
   },
-  "parameters": {},
+  "parameters": {
+    "Overbite": {}
+  },
   "tags": [
     "flux",
     "maximum",
@@ -41,5 +43,5 @@
     "fang",
     "override"
   ],
-  "description": "All five BITE macros pinned \u2014 the filter bites through bone."
+  "description": "All five BITE macros pinned — the filter bites through bone."
 }

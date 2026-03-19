@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT WARM KINETIC BALANCED AET SPC 3",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Oracle",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.561
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.034,
+    "brightness": 0.913,
+    "density": 0.317,
+    "movement": 0.902,
+    "space": 0.488,
+    "warmth": 0.911
+  },
   "engines": [
-    "OBLIQUE",
-    "ORACLE"
+    "Oblique",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.912,
+    "COUPLING": 0.783,
+    "MOVEMENT": 0.902,
+    "SPACE": 0.488
+  },
+  "mood": "Aether",
+  "name": "BRIGHT WARM KINETIC BALANCE...",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.912,
-      "macro_movement": 0.902,
       "macro_coupling": 0.783,
+      "macro_movement": 0.902,
       "macro_space": 0.488
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.935,
-      "macro_movement": 0.894,
       "macro_coupling": 0.765,
+      "macro_movement": 0.894,
       "macro_space": 0.462
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBLIQUE",
-    "target": "ORACLE",
-    "amount": 0.561
-  },
-  "dna": {
-    "brightness": 0.913,
-    "warmth": 0.911,
-    "movement": 0.902,
-    "density": 0.317,
-    "space": 0.488,
-    "aggression": 0.034
-  },
-  "macros": {
-    "CHARACTER": 0.912,
-    "MOVEMENT": 0.902,
-    "COUPLING": 0.783,
-    "SPACE": 0.488
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -49,5 +60,6 @@
     "bright",
     "warm",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

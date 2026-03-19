@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT DENSE VAST VIOLENT AET AGG 1",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "ORIGAMI",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.834,
-      "macro_movement": 0.512,
-      "macro_coupling": 0.918,
-      "macro_space": 0.98
-    },
-    "ODDFELIX": {
-      "macro_character": 0.835,
-      "macro_movement": 0.538,
-      "macro_coupling": 0.949,
-      "macro_space": 0.914
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ORIGAMI",
-    "target": "ODDFELIX",
-    "amount": 0.785
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "OddfeliX",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.785
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.96,
     "brightness": 0.874,
-    "warmth": 0.327,
-    "movement": 0.552,
     "density": 0.981,
+    "movement": 0.552,
     "space": 0.99,
-    "aggression": 0.96
+    "warmth": 0.327
   },
+  "engines": [
+    "Origami",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.835,
-    "MOVEMENT": 0.525,
     "COUPLING": 0.933,
+    "MOVEMENT": 0.525,
     "SPACE": 0.947
   },
+  "mood": "Aether",
+  "name": "BRIGHT DENSE VAST VIOLENT A...",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.835,
+      "macro_coupling": 0.949,
+      "macro_movement": 0.538,
+      "macro_space": 0.914
+    },
+    "Origami": {
+      "macro_character": 0.834,
+      "macro_coupling": 0.918,
+      "macro_movement": 0.512,
+      "macro_space": 0.98
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "aggressive",
@@ -48,5 +59,6 @@
     "bright",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

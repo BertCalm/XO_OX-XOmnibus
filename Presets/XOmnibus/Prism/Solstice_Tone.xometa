@@ -1,51 +1,51 @@
 {
-  "schema_version": 1,
-  "name": "Solstice Tone",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Single breakpoint. Warm arc in unbounded time-space.",
+  "dna": {
+    "aggression": 0.09,
+    "brightness": 0.88,
+    "density": 0.07,
+    "movement": 0.547,
+    "space": 1.0,
+    "warmth": 0.9
+  },
   "engines": [
     "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Single breakpoint. Warm arc in unbounded time-space.",
-  "tags": [
-    "hot-sparse",
-    "extreme",
-    "prism",
-    "generative"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Solstice Tone",
   "parameters": {
     "Oracle": {
-      "oracle_breakpoints": 1.0,
-      "oracle_timeStep": 0.92,
       "oracle_ampStep": 0.88,
+      "oracle_breakpoints": 1.0,
       "oracle_brightness": 0.88,
+      "oracle_density": 0.06,
       "oracle_space": 0.93,
-      "oracle_density": 0.06
+      "oracle_timeStep": 0.92
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.88,
-    "warmth": 0.9,
-    "movement": 0.547,
-    "density": 0.07,
-    "space": 1.0,
-    "aggression": 0.09
-  }
+  "tags": [
+    "hot-sparse",
+    "extreme",
+    "prism",
+    "generative"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Wave Front Rush",
-  "mood": "Atmosphere",
-  "engines": [
-    "OUTWIT"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Weather system in motion. High movement, active aggression. OUTWIT kinetic register.",
+  "dna": {
+    "aggression": 0.418,
+    "brightness": 0.37,
+    "density": 0.569,
+    "movement": 0.837,
+    "space": 0.655,
+    "warmth": 0.257
+  },
+  "engines": [
+    "Outwit"
+  ],
+  "macroLabels": [
+    "CUNNING",
+    "REFLEX",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "COUPLING": 0.178,
+    "CUNNING": 0.422,
+    "REFLEX": 0.894,
+    "SPACE": 0.694
+  },
+  "mood": "Atmosphere",
+  "name": "Wave Front Rush",
+  "parameters": {
+    "Outwit": {
+      "coupling": 0.178,
+      "cunning": 0.422,
+      "reflex": 0.894,
+      "space": 0.694
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "kinetic",
@@ -16,36 +47,5 @@
     "weather",
     "dynamic"
   ],
-  "macroLabels": [
-    "CUNNING",
-    "REFLEX",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.37,
-    "warmth": 0.257,
-    "movement": 0.837,
-    "density": 0.569,
-    "space": 0.655,
-    "aggression": 0.418
-  },
-  "parameters": {
-    "OUTWIT": {
-      "cunning": 0.422,
-      "reflex": 0.894,
-      "coupling": 0.178,
-      "space": 0.694
-    }
-  },
-  "macros": {
-    "CUNNING": 0.422,
-    "REFLEX": 0.894,
-    "COUPLING": 0.178,
-    "SPACE": 0.694
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

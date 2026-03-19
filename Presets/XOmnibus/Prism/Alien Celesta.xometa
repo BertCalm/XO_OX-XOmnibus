@@ -1,56 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Alien Celesta",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Focused keys tone with prism shimmer.",
+  "dna": {
+    "aggression": 0.021,
+    "brightness": 0.71,
+    "density": 0.058,
+    "movement": 0.0,
+    "space": 0.266,
+    "warmth": 0.11
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Focused keys tone with prism shimmer.",
-  "tags": [
-    "shimmery",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Keys",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Keys",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Alien Celesta",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 3.0,
-      "drift_oscA_level": 0.7,
-      "drift_oscA_fmDepth": 0.15,
-      "drift_shimmerAmount": 0.4,
-      "drift_shimmerTone": 0.7,
-      "drift_filterCutoff": 12000.0,
-      "drift_filterReso": 0.05,
-      "drift_driftDepth": 0.2,
       "drift_attack": 1.0,
       "drift_decay": 1000.0,
-      "drift_sustain": 0.0,
+      "drift_driftDepth": 0.2,
+      "drift_filterCutoff": 12000.0,
+      "drift_filterReso": 0.05,
+      "drift_level": -4.0,
+      "drift_oscA_fmDepth": 0.15,
+      "drift_oscA_level": 0.7,
+      "drift_oscA_mode": 3.0,
       "drift_release": 700.0,
-      "drift_level": -4.0
+      "drift_shimmerAmount": 0.4,
+      "drift_shimmerTone": 0.7,
+      "drift_sustain": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.71,
-    "warmth": 0.11,
-    "movement": 0.0,
-    "density": 0.058,
-    "space": 0.266,
-    "aggression": 0.021
-  }
+  "tags": [
+    "shimmery",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

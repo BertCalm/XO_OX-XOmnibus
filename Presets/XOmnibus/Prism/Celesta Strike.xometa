@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Celesta Strike",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expressive keys & bells voice with reverb depth.",
+  "dna": {
+    "aggression": 0.146,
+    "brightness": 0.638,
+    "density": 0.199,
+    "movement": 0.0,
+    "space": 0.484,
+    "warmth": 0.144
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expressive keys & bells voice with reverb depth.",
-  "tags": [
-    "bell",
-    "celesta",
-    "airy"
-  ],
+  "legacy": {
+    "sourceCategory": "Keys & Bells",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Keys & Bells",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Celesta Strike",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
-      "bob_oscA_shape": 0.62,
-      "bob_oscA_drift": 0.06,
-      "bob_oscB_wave": 0.0,
-      "bob_oscB_blend": 0.38,
-      "bob_oscB_detune": 6.0,
-      "bob_fltMode": 2.0,
-      "bob_fltCutoff": 9000.0,
-      "bob_fltReso": 0.45,
-      "bob_fltChar": 0.55,
-      "bob_fltEnvAmt": 0.48,
       "bob_ampAttack": 0.001,
       "bob_ampDecay": 1.5,
-      "bob_ampSustain": 0.0,
       "bob_ampRelease": 1.2,
-      "bob_bobMode": 0.12
+      "bob_ampSustain": 0.0,
+      "bob_bobMode": 0.12,
+      "bob_fltChar": 0.55,
+      "bob_fltCutoff": 9000.0,
+      "bob_fltEnvAmt": 0.48,
+      "bob_fltMode": 2.0,
+      "bob_fltReso": 0.45,
+      "bob_oscA_drift": 0.06,
+      "bob_oscA_shape": 0.62,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.38,
+      "bob_oscB_detune": 6.0,
+      "bob_oscB_wave": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.638,
-    "warmth": 0.144,
-    "movement": 0.0,
-    "density": 0.199,
-    "space": 0.484,
-    "aggression": 0.146
-  }
+  "tags": [
+    "bell",
+    "celesta",
+    "airy"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

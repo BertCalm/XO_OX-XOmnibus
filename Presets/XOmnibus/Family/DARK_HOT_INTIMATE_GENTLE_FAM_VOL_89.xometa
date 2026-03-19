@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_INTIMATE_GENTLE_FAM_VOL_89",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Organon",
+        "type": "SPATIAL_BIND",
+        "amount": 0.74
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.072,
+    "brightness": 0.056,
+    "density": 0.479,
+    "movement": 0.391,
+    "space": 0.094,
+    "warmth": 0.911
+  },
   "engines": [
-    "OBLONG",
-    "ORGANON"
+    "Oblong",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.479,
+    "COUPLING": 0.28,
+    "MOVEMENT": 0.392,
+    "SPACE": 0.085
+  },
+  "mood": "Family",
+  "name": "Smoke Flux",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.492,
-      "macro_movement": 0.383,
       "macro_coupling": 0.279,
+      "macro_movement": 0.383,
       "macro_space": 0.097
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.465,
-      "macro_movement": 0.401,
       "macro_coupling": 0.281,
+      "macro_movement": 0.401,
       "macro_space": 0.073
     }
   },
-  "coupling": {
-    "type": "SPATIAL_BIND",
-    "source": "OBLONG",
-    "target": "ORGANON",
-    "amount": 0.74
-  },
-  "dna": {
-    "brightness": 0.056,
-    "warmth": 0.911,
-    "movement": 0.391,
-    "density": 0.479,
-    "space": 0.094,
-    "aggression": 0.072
-  },
-  "macros": {
-    "CHARACTER": 0.479,
-    "MOVEMENT": 0.392,
-    "COUPLING": 0.28,
-    "SPACE": 0.085
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "intimate",
     "gentle",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

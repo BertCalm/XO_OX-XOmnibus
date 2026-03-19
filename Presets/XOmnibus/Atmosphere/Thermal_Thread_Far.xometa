@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Thermal Thread Far",
-  "mood": "Atmosphere",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Thermal drift — a sparse harmonic rising on warm air.",
+  "dna": {
+    "aggression": 0.136,
     "brightness": 0.648,
-    "warmth": 0.889,
-    "movement": 0.561,
     "density": 0.135,
+    "movement": 0.561,
     "space": 0.571,
-    "aggression": 0.136
+    "warmth": 0.889
   },
   "engines": [
-    "ORACLE"
+    "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Thermal drift \u2014 a sparse harmonic rising on warm air.",
+  "macroLabels": [
+    "WARMTH",
+    "BREATH",
+    "COUPLING",
+    "OPEN"
+  ],
+  "mood": "Atmosphere",
+  "name": "Thermal Thread Far",
+  "parameters": {
+    "Oracle": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.136,
+    "brightness": 0.648,
+    "density": 0.135,
+    "movement": 0.561,
+    "space": 0.571,
+    "warmth": 0.889
+  },
   "tags": [
     "atmosphere",
     "warm",
@@ -24,23 +44,5 @@
     "breath",
     "evolving"
   ],
-  "macroLabels": [
-    "WARMTH",
-    "BREATH",
-    "COUPLING",
-    "OPEN"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.648,
-    "warmth": 0.889,
-    "movement": 0.561,
-    "density": 0.135,
-    "space": 0.571,
-    "aggression": 0.136
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

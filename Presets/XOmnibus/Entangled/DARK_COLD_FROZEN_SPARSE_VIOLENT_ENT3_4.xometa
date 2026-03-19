@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "DARK_COLD_FROZEN_SPARSE_VIOLENT_ENT3_4",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Opal",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.8565
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_COLD_FROZEN_SPARSE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.9747,
+    "brightness": 0.1145,
+    "density": 0.0991,
+    "movement": 0.0417,
+    "space": 0.6038,
+    "warmth": 0.0618
+  },
   "engines": [
-    "OBLONG",
-    "OPAL"
+    "Oblong",
+    "Opal"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_COLD_FROZEN_SPARSE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5796,
+    "COUPLING": 0.9496,
+    "MOVEMENT": 0.0403,
+    "SPACE": 0.5453
+  },
+  "mood": "Entangled",
+  "name": "Flux Rage 4",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.615,
+      "macro_coupling": 0.9143,
+      "macro_movement": 0.0308,
+      "macro_space": 0.3443
+    },
+    "Opal": {
+      "macro_character": 0.5443,
+      "macro_coupling": 0.9848,
+      "macro_movement": 0.0499,
+      "macro_space": 0.7463
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +70,6 @@
     "violent",
     "sparse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OBLONG": {
-      "macro_character": 0.615,
-      "macro_movement": 0.0308,
-      "macro_coupling": 0.9143,
-      "macro_space": 0.3443
-    },
-    "OPAL": {
-      "macro_character": 0.5443,
-      "macro_movement": 0.0499,
-      "macro_coupling": 0.9848,
-      "macro_space": 0.7463
-    }
-  },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBLONG",
-    "target": "OPAL",
-    "amount": 0.8565
-  },
-  "macros": {
-    "CHARACTER": 0.5796,
-    "MOVEMENT": 0.0403,
-    "COUPLING": 0.9496,
-    "SPACE": 0.5453
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.1145,
-    "warmth": 0.0618,
-    "movement": 0.0417,
-    "density": 0.0991,
-    "space": 0.6038,
-    "aggression": 0.9747
-  }
+  "version": "1.0.0"
 }

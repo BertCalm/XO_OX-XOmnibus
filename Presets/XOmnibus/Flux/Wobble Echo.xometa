@@ -1,13 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Wobble Echo",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Deep",
+  "created": "2026-03-08",
+  "description": "Glitchy echo fx character with self-oscillating delay.",
+  "dna": {
+    "aggression": 0.441,
+    "brightness": 0.725,
+    "density": 0.24,
+    "movement": 0.715,
+    "space": 0.627,
+    "warmth": 0.096
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Glitchy echo fx character with self-oscillating delay.",
+  "legacy": {
+    "sourceCategory": "Echo FX",
+    "sourceInstrument": "Overdub",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Wobble Echo",
+  "parameters": {
+    "Overdub": {
+      "dub_delayFeedback": 0.85,
+      "dub_delayTime": 0.5,
+      "dub_delayWear": 0.5,
+      "dub_delayWow": 0.6,
+      "dub_driveAmount": 3.0,
+      "dub_filterCutoff": 3000.0,
+      "dub_filterReso": 0.4,
+      "dub_oscWave": 2.0,
+      "dub_returnLevel": 0.8,
+      "dub_sendLevel": 0.7
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "self-oscillating",
     "wobbly",
@@ -15,42 +51,6 @@
     "wet",
     "saw"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Overdub",
-    "sourceCategory": "Echo FX",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Overdub": {
-      "dub_oscWave": 2.0,
-      "dub_filterCutoff": 3000.0,
-      "dub_filterReso": 0.4,
-      "dub_delayTime": 0.5,
-      "dub_delayFeedback": 0.85,
-      "dub_delayWow": 0.6,
-      "dub_delayWear": 0.5,
-      "dub_sendLevel": 0.7,
-      "dub_returnLevel": 0.8,
-      "dub_driveAmount": 3.0
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.725,
-    "warmth": 0.096,
-    "movement": 0.715,
-    "density": 0.24,
-    "space": 0.627,
-    "aggression": 0.441
-  }
+  "version": "1.0.0"
 }

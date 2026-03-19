@@ -1,53 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "Ouroboros Crease",
-  "mood": "Entangled",
-  "engines": ["Origami", "Ouroboros"],
-  "author": "Guru Bin — Fleet Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "OUROBOROS's chaotic attractor output feeds ORIGAMI's fold point, continuously shifting where in the waveform the fold occurs. The harmonic content changes unpredictably but not randomly — it follows strange attractor topology. A fold whose crease moves according to the geometry of chaos.",
-  "tags": ["entangled", "coupling", "chaotic", "harmonic", "attractor", "fold"],
-  "macroLabels": ["CHARACTER", "FOLD", "COUPLING", "SPACE"],
-  "couplingIntensity": "Strong",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.58,
-    "warmth": 0.42,
-    "movement": 0.85,
-    "density": 0.68,
-    "space": 0.55,
-    "aggression": 0.55
-  },
-  "parameters": {
-    "Origami": {
-      "origami_foldPoint": 0.5,
-      "origami_foldAmt": 0.65,
-      "origami_layers": 3,
-      "origami_symmetry": 0.2,
-      "origami_filterCutoff": 0.6,
-      "origami_filterReso": 0.38,
-      "origami_oscPitch": 0.0,
-      "origami_ampAttack": 0.1,
-      "origami_ampDecay": 0.4,
-      "origami_ampSustain": 0.75,
-      "origami_ampRelease": 1.5
-    },
-    "Ouroboros": {
-      "ouro_topology": 0.65,
-      "ouro_leash": 0.45,
-      "ouro_macroCharacter": 0.6,
-      "ouro_macroMovement": 0.7
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
       {
+        "amount": 0.72,
         "source": "Ouroboros",
         "target": "Origami",
-        "type": "ChaosModulation",
-        "amount": 0.72
+        "type": "ChaosModulation"
       }
     ]
   },
-  "sequencer": null
+  "couplingIntensity": "Strong",
+  "description": "OUROBOROS's chaotic attractor output feeds ORIGAMI's fold point, continuously shifting where in the waveform the fold occurs. The harmonic content changes unpredictably but not randomly — it follows strange attractor topology. A fold whose crease moves according to the geometry of chaos.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.58,
+    "density": 0.68,
+    "movement": 0.85,
+    "space": 0.55,
+    "warmth": 0.42
+  },
+  "engines": [
+    "Origami",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FOLD",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Ouroboros Crease",
+  "parameters": {
+    "Origami": {
+      "origami_ampAttack": 0.1,
+      "origami_ampDecay": 0.4,
+      "origami_ampRelease": 1.5,
+      "origami_ampSustain": 0.75,
+      "origami_filterCutoff": 0.6,
+      "origami_filterReso": 0.38,
+      "origami_foldAmt": 0.65,
+      "origami_foldPoint": 0.5,
+      "origami_layers": 3,
+      "origami_oscPitch": 0.0,
+      "origami_symmetry": 0.2
+    },
+    "Ouroboros": {
+      "ouro_leash": 0.45,
+      "ouro_macroCharacter": 0.6,
+      "ouro_macroMovement": 0.7,
+      "ouro_topology": 0.65
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "chaotic",
+    "harmonic",
+    "attractor",
+    "fold"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

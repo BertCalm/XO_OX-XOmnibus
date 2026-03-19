@@ -1,49 +1,61 @@
 {
-  "name": "ALLHI FLX 04",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oblong",
+        "type": "PITCH_SYNC",
+        "amount": 0.777
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.911,
+    "brightness": 0.921,
+    "density": 0.572,
+    "movement": 0.951,
+    "space": 0.985,
+    "warmth": 0.952
+  },
   "engines": [
-    "OPTIC",
-    "OBLONG"
+    "Optic",
+    "Oblong"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.936,
+    "COUPLING": 0.948,
+    "MOVEMENT": 0.761,
+    "SPACE": 0.985
+  },
+  "mood": "Flux",
+  "name": "ALLHI FLX 04",
   "parameters": {
-    "OPTIC": {
+    "Oblong": {
       "macro_character": 0.936,
-      "macro_movement": 0.761,
       "macro_coupling": 0.948,
+      "macro_movement": 0.761,
       "macro_space": 0.985
     },
-    "OBLONG": {
+    "Optic": {
       "macro_character": 0.936,
-      "macro_movement": 0.761,
       "macro_coupling": 0.948,
+      "macro_movement": 0.761,
       "macro_space": 0.985
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OPTIC",
-    "target": "OBLONG",
-    "amount": 0.777
-  },
-  "dna": {
-    "brightness": 0.921,
-    "warmth": 0.952,
-    "movement": 0.951,
-    "density": 0.572,
-    "space": 0.985,
-    "aggression": 0.911
-  },
-  "macros": {
-    "CHARACTER": 0.936,
-    "MOVEMENT": 0.761,
-    "COUPLING": 0.948,
-    "SPACE": 0.985
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

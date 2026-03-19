@@ -1,49 +1,61 @@
 {
-  "name": "ENDLESS TUNDRA PLAIN",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ORBITAL",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "ORBITAL": {
-      "macro_character": 0.267,
-      "macro_movement": 0.696,
-      "macro_coupling": 0.726,
-      "macro_space": 0.974
-    },
-    "ODDFELIX": {
-      "macro_character": 0.58,
-      "macro_movement": 0.762,
-      "macro_coupling": 0.865,
-      "macro_space": 0.951
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ORBITAL",
-    "target": "ODDFELIX",
-    "amount": 0.639
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "OddfeliX",
+        "type": "FILTER_MOD",
+        "amount": 0.639
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.854,
     "brightness": 0.137,
-    "warmth": 0.07,
-    "movement": 0.746,
     "density": 0.773,
+    "movement": 0.746,
     "space": 0.954,
-    "aggression": 0.854
+    "warmth": 0.07
   },
+  "engines": [
+    "Orbital",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.332,
-    "MOVEMENT": 0.746,
     "COUPLING": 0.763,
+    "MOVEMENT": 0.746,
     "SPACE": 0.954
   },
+  "mood": "Foundation",
+  "name": "ENDLESS TUNDRA PLAIN",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.58,
+      "macro_coupling": 0.865,
+      "macro_movement": 0.762,
+      "macro_space": 0.951
+    },
+    "Orbital": {
+      "macro_character": 0.267,
+      "macro_coupling": 0.726,
+      "macro_movement": 0.696,
+      "macro_space": 0.974
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

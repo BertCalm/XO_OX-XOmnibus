@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Glass Hook",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.699,
+        "engineA": "Origami",
+        "engineB": "OddfeliX",
+        "type": "ENVELOPE_FOLLOW"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 1.0,
+    "density": 0.37,
+    "movement": 0.7,
+    "space": 0.6,
+    "warmth": 0.4
+  },
   "engines": [
-    "ODDFELIX",
-    "ORIGAMI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "oddfelix",
-    "origami"
+    "OddfeliX",
+    "Origami"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.64,
-    "MOVEMENT": 0.58,
     "COUPLING": 0.408,
+    "MOVEMENT": 0.58,
     "SPACE": 0.606
   },
-  "couplingIntensity": "Strong",
-  "dna": {
-    "brightness": 1.0,
-    "warmth": 0.4,
-    "movement": 0.7,
-    "density": 0.37,
-    "space": 0.6,
-    "aggression": 0.3
-  },
-  "sonic_dna": {
-    "brightness": 1.0,
-    "warmth": 0.4,
-    "movement": 0.7,
-    "density": 0.37,
-    "space": 0.6,
-    "aggression": 0.3
-  },
+  "mood": "Entangled",
+  "name": "Glass Hook",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.687,
-      "macro_movement": 0.33,
       "macro_coupling": 0.609,
+      "macro_movement": 0.33,
       "macro_space": 0.641
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.513,
-      "macro_movement": 0.753,
       "macro_coupling": 0.594,
+      "macro_movement": 0.753,
       "macro_space": 0.513
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORIGAMI",
-        "engineB": "ODDFELIX",
-        "type": "ENVELOPE_FOLLOW",
-        "amount": 0.699
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.3,
+    "brightness": 1.0,
+    "density": 0.37,
+    "movement": 0.7,
+    "space": 0.6,
+    "warmth": 0.4
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "oddfelix",
+    "origami"
+  ],
+  "version": "1.0.0"
 }

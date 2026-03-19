@@ -1,35 +1,43 @@
 {
-  "name": "Altar of Silence",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.55,
+    "density": 0.14,
+    "movement": 0.6,
+    "space": 0.93,
+    "warmth": 0.45
+  },
   "engines": [
-    "OBBLIGATO"
+    "Obbligato"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3,
+    "COUPLING": 0.2,
+    "MOVEMENT": 0.6,
+    "SPACE": 0.93
+  },
+  "mood": "Aether",
+  "name": "Altar of Silence",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.3,
-      "macro_movement": 0.6,
       "macro_coupling": 0.2,
+      "macro_movement": 0.6,
       "macro_space": 0.93
     }
   },
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.45,
-    "movement": 0.6,
-    "density": 0.14,
-    "space": 0.93,
-    "aggression": 0.06
-  },
-  "macros": {
-    "CHARACTER": 0.3,
-    "MOVEMENT": 0.6,
-    "COUPLING": 0.2,
-    "SPACE": 0.93
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "transcendent",
     "ambient"
-  ]
+  ],
+  "version": "1.0"
 }

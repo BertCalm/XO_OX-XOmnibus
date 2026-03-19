@@ -1,50 +1,62 @@
 {
-  "name": "INCENDIARY WAVE",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Ombre",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.824
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.852,
+    "brightness": 0.853,
+    "density": 0.584,
+    "movement": 0.62,
+    "space": 0.424,
+    "warmth": 0.926
+  },
   "engines": [
-    "OBESE",
-    "OMBRE"
+    "Obese",
+    "Ombre"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.852,
+    "COUPLING": 0.645,
+    "MOVEMENT": 0.609,
+    "SPACE": 0.422
+  },
+  "mood": "Flux",
+  "name": "INCENDIARY WAVE",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.852,
-      "macro_movement": 0.609,
       "macro_coupling": 0.645,
+      "macro_movement": 0.609,
       "macro_space": 0.422
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.769,
-      "macro_movement": 0.711,
       "macro_coupling": 0.529,
+      "macro_movement": 0.711,
       "macro_space": 0.556
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBESE",
-    "target": "OMBRE",
-    "amount": 0.824
-  },
-  "dna": {
-    "brightness": 0.853,
-    "warmth": 0.926,
-    "movement": 0.62,
-    "density": 0.584,
-    "space": 0.424,
-    "aggression": 0.852
-  },
-  "macros": {
-    "CHARACTER": 0.852,
-    "MOVEMENT": 0.609,
-    "COUPLING": 0.645,
-    "SPACE": 0.422
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "hot",
     "violent",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

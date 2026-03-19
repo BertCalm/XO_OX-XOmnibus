@@ -1,48 +1,60 @@
 {
-  "name": "FEEDBACK STORM 42",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Overworld",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.548
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.781,
+    "brightness": 0.739,
+    "density": 0.556,
+    "movement": 0.935,
+    "space": 0.586,
+    "warmth": 0.812
+  },
   "engines": [
-    "ODDFELIX",
-    "OVERWORLD"
+    "OddfeliX",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.33,
+    "COUPLING": 0.122,
+    "MOVEMENT": 0.935,
+    "SPACE": 0.354
+  },
+  "mood": "Entangled",
+  "name": "FEEDBACK STORM 42",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.374,
-      "macro_movement": 0.923,
       "macro_coupling": 0.153,
+      "macro_movement": 0.923,
       "macro_space": 0.923
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.067,
-      "macro_movement": 0.947,
       "macro_coupling": 0.832,
+      "macro_movement": 0.947,
       "macro_space": 0.093
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ODDFELIX",
-    "target": "OVERWORLD",
-    "amount": 0.548
-  },
-  "dna": {
-    "brightness": 0.739,
-    "warmth": 0.812,
-    "movement": 0.935,
-    "density": 0.556,
-    "space": 0.586,
-    "aggression": 0.781
-  },
-  "macros": {
-    "CHARACTER": 0.33,
-    "MOVEMENT": 0.935,
-    "COUPLING": 0.122,
-    "SPACE": 0.354
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "storm",
     "vortex"
-  ]
+  ],
+  "version": "1.0"
 }

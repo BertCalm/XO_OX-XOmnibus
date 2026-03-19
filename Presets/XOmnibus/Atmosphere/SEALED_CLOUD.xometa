@@ -1,50 +1,62 @@
 {
-  "name": "SEALED CLOUD",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Outwit",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.22
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.646,
+    "brightness": 0.687,
+    "density": 0.531,
+    "movement": 0.747,
+    "space": 0.032,
+    "warmth": 0.891
+  },
   "engines": [
-    "OCTOPUS",
-    "OUTWIT"
+    "Octopus",
+    "Outwit"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.781,
+    "COUPLING": 0.27,
+    "MOVEMENT": 0.245,
+    "SPACE": 0.032
+  },
+  "mood": "Atmosphere",
+  "name": "SEALED CLOUD",
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.765,
-      "macro_movement": 0.169,
       "macro_coupling": 0.805,
+      "macro_movement": 0.169,
       "macro_space": 0.032
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.472,
-      "macro_movement": 0.588,
       "macro_coupling": 0.403,
+      "macro_movement": 0.588,
       "macro_space": 0.04
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OCTOPUS",
-    "target": "OUTWIT",
-    "amount": 0.22
-  },
-  "dna": {
-    "brightness": 0.687,
-    "warmth": 0.891,
-    "movement": 0.747,
-    "density": 0.531,
-    "space": 0.032,
-    "aggression": 0.646
-  },
-  "macros": {
-    "CHARACTER": 0.781,
-    "MOVEMENT": 0.245,
-    "COUPLING": 0.27,
-    "SPACE": 0.032
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-  ]
+  ],
+  "version": "1.0"
 }

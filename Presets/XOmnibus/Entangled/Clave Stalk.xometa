@@ -1,31 +1,46 @@
 {
-  "name": "Clave Stalk",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Ole",
+        "type": "PREDATOR_STALK",
+        "amount": 0.6
+      }
+    ]
+  },
+  "description": "Ocelot moves through clave rhythm — each predatory step precisely on the pulse",
   "engines": [
-    "OLE",
-    "OCELOT"
+    "Ole",
+    "Ocelot"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8,
-    "MOVEMENT": 0.8,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.8,
     "SPACE": 0.45
   },
-  "sonic_dna": {
-    "brightness": 0.68,
-    "warmth": 0.64,
-    "movement": 0.81,
-    "density": 0.58,
-    "space": 0.48,
-    "aggression": 0.58
+  "mood": "Entangled",
+  "name": "Clave Stalk",
+  "parameters": {
+    "Ole": {},
+    "Ocelot": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "PREDATOR_STALK",
-    "source": "OCELOT",
-    "target": "OLE",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.58,
+    "brightness": 0.68,
+    "density": 0.58,
+    "movement": 0.81,
+    "space": 0.48,
+    "warmth": 0.64
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "ocelot",
     "afro-latin"
   ],
-  "description": "Ocelot moves through clave rhythm \u2014 each predatory step precisely on the pulse"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

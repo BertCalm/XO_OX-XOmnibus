@@ -1,49 +1,61 @@
 {
-  "name": "SAVAGE BIND",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORACLE",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.897,
-      "macro_movement": 0.828,
-      "macro_coupling": 0.806,
-      "macro_space": 0.341
-    },
-    "OBSCURA": {
-      "macro_character": 0.8,
-      "macro_movement": 0.801,
-      "macro_coupling": 0.175,
-      "macro_space": 0.388
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ORACLE",
-    "target": "OBSCURA",
-    "amount": 0.262
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Obscura",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.262
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.926,
     "brightness": 0.967,
-    "warmth": 0.113,
-    "movement": 0.844,
     "density": 0.079,
+    "movement": 0.844,
     "space": 0.91,
-    "aggression": 0.926
+    "warmth": 0.113
   },
+  "engines": [
+    "Oracle",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.632,
-    "MOVEMENT": 0.619,
     "COUPLING": 0.141,
+    "MOVEMENT": 0.619,
     "SPACE": 0.6
   },
+  "mood": "Entangled",
+  "name": "SAVAGE BIND",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.8,
+      "macro_coupling": 0.175,
+      "macro_movement": 0.801,
+      "macro_space": 0.388
+    },
+    "Oracle": {
+      "macro_character": 0.897,
+      "macro_coupling": 0.806,
+      "macro_movement": 0.828,
+      "macro_space": 0.341
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "brutal",
     "violent",
     "aggressive",
     "chaos"
-  ]
+  ],
+  "version": "1.0"
 }

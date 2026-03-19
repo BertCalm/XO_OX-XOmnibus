@@ -1,45 +1,56 @@
 {
-  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_2",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Overdub",
+        "type": "CHAOS_INJECT",
+        "amount": 0.8171
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9061,
+    "brightness": 0.0463,
+    "density": 0.585,
+    "movement": 0.8804,
+    "space": 0.5431,
+    "warmth": 0.0978
+  },
   "engines": [
-    "OPTIC",
-    "OVERDUB"
+    "Optic",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0624,
+    "COUPLING": 0.7917,
+    "MOVEMENT": 0.791,
+    "SPACE": 0.5657
+  },
+  "mood": "Flux",
+  "name": "Grain Rage",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.0624,
-      "macro_movement": 0.791,
       "macro_coupling": 0.7917,
+      "macro_movement": 0.791,
       "macro_space": 0.5657
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.1814,
-      "macro_movement": 0.9476,
       "macro_coupling": 0.8946,
+      "macro_movement": 0.9476,
       "macro_space": 0.5508
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OPTIC",
-    "target": "OVERDUB",
-    "amount": 0.8171
-  },
-  "dna": {
-    "brightness": 0.0463,
-    "warmth": 0.0978,
-    "movement": 0.8804,
-    "density": 0.585,
-    "space": 0.5431,
-    "aggression": 0.9061
-  },
-  "macros": {
-    "CHARACTER": 0.0624,
-    "MOVEMENT": 0.791,
-    "COUPLING": 0.7917,
-    "SPACE": 0.5657
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +59,6 @@
     "low-warmth",
     "high-movement",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

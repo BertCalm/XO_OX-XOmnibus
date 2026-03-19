@@ -1,50 +1,62 @@
 {
-  "name": "SUBZERO DRIFT",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Overbite",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.513
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.516,
+    "brightness": 0.083,
+    "density": 0.461,
+    "movement": 0.422,
+    "space": 0.883,
+    "warmth": 0.086
+  },
   "engines": [
-    "OSTERIA",
-    "OVERBITE"
+    "Osteria",
+    "Overbite"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.343,
+    "COUPLING": 0.663,
+    "MOVEMENT": 0.434,
+    "SPACE": 0.78
+  },
+  "mood": "Flux",
+  "name": "SUBZERO DRIFT",
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.343,
-      "macro_movement": 0.434,
       "macro_coupling": 0.663,
+      "macro_movement": 0.434,
       "macro_space": 0.78
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.372,
-      "macro_movement": 0.551,
       "macro_coupling": 0.733,
+      "macro_movement": 0.551,
       "macro_space": 0.811
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OSTERIA",
-    "target": "OVERBITE",
-    "amount": 0.513
-  },
-  "dna": {
-    "brightness": 0.083,
-    "warmth": 0.086,
-    "movement": 0.422,
-    "density": 0.461,
-    "space": 0.883,
-    "aggression": 0.516
-  },
-  "macros": {
-    "CHARACTER": 0.343,
-    "MOVEMENT": 0.434,
-    "COUPLING": 0.663,
-    "SPACE": 0.78
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "cold",
     "vast",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

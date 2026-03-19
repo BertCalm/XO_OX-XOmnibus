@@ -1,19 +1,29 @@
 {
-  "schema_version": 1,
-  "name": "Fat Ritual",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.75,
+        "source": "Obese",
+        "target": "Ole",
+        "type": "ENVELOPE_SHARING"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OLE polyrhythm clocks MOJO gate pattern — rhythmic drive from ceremony.",
+  "dna": {
+    "aggression": 0.616,
+    "brightness": 0.622,
+    "density": 0.651,
+    "movement": 0.635,
+    "space": 0.371,
+    "warmth": 0.674
+  },
   "engines": [
     "Obese",
     "Ole"
-  ],
-  "author": "XO_OX Coverage Pack 2026-03-16",
-  "version": "1.0",
-  "description": "OLE polyrhythm clocks MOJO gate pattern — rhythmic drive from ceremony.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "obese",
-    "ole"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,58 +31,48 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
+  "mood": "Entangled",
+  "name": "Fat Ritual",
   "parameters": {
     "Obese": {
-      "fat_satDrive": 0.677,
-      "fat_satMix": 0.567,
-      "fat_mojoControl": 0.394,
-      "fat_analogDigital": 0.261,
-      "fat_filterCutoff": 4325.1,
-      "fat_filterReso": 0.15,
-      "fat_filterEnvAmt": 0.454,
-      "fat_oscWave": 0.67,
-      "fat_oscDetune": -0.197,
-      "fat_subOscLevel": 0.57,
-      "fat_distType": 0.5,
       "fat_ampAttack": 0.0119,
       "fat_ampDecay": 0.366,
-      "fat_ampSustain": 0.633,
       "fat_ampRelease": 0.295,
+      "fat_ampSustain": 0.633,
+      "fat_analogDigital": 0.261,
+      "fat_distType": 0.5,
+      "fat_filterCutoff": 4325.1,
+      "fat_filterEnvAmt": 0.454,
+      "fat_filterReso": 0.15,
+      "fat_level": 0.624,
+      "fat_lfo1Depth": 0.223,
+      "fat_lfo1Rate": 0.934,
+      "fat_lfo1Shape": 1.0,
       "fat_modAttack": 0.004,
       "fat_modDecay": 0.072,
-      "fat_modSustain": 0.421,
       "fat_modRelease": 0.628,
-      "fat_lfo1Rate": 0.934,
-      "fat_lfo1Depth": 0.223,
-      "fat_lfo1Shape": 1.0,
-      "fat_level": 0.624,
-      "fat_reverbMix": 0.229
+      "fat_modSustain": 0.421,
+      "fat_mojoControl": 0.394,
+      "fat_oscDetune": -0.197,
+      "fat_oscWave": 0.67,
+      "fat_reverbMix": 0.229,
+      "fat_satDrive": 0.677,
+      "fat_satMix": 0.567,
+      "fat_subOscLevel": 0.57
     },
     "Ole": {
-      "ole_level": 0.651,
-      "ole_filterCutoff": 7429.5
+      "ole_filterCutoff": 7429.5,
+      "ole_level": 0.651
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "ENVELOPE_SHARING",
-        "source": "Obese",
-        "target": "Ole",
-        "amount": 0.75
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.622,
-    "warmth": 0.674,
-    "movement": 0.635,
-    "density": 0.651,
-    "space": 0.371,
-    "aggression": 0.616
-  }
+  "tags": [
+    "entangled",
+    "coupling",
+    "obese",
+    "ole"
+  ],
+  "tempo": null,
+  "version": "1.0"
 }

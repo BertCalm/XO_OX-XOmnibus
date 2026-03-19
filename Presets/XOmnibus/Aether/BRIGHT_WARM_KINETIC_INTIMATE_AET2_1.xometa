@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_INTIMATE_AET2_1",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orbital",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.5062
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.3957,
+    "brightness": 0.9226,
+    "density": 0.5435,
+    "movement": 0.9868,
+    "space": 0.0297,
+    "warmth": 0.9538
+  },
   "engines": [
-    "OBSCURA",
-    "ORBITAL"
+    "Obscura",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9422,
+    "COUPLING": 0.5062,
+    "MOVEMENT": 0.9802,
+    "SPACE": 0.0297
+  },
+  "mood": "Aether",
+  "name": "Glow Drift",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.9171,
-      "macro_movement": 0.9703,
       "macro_coupling": 0.564,
+      "macro_movement": 0.9703,
       "macro_space": 0.01
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.9673,
-      "macro_movement": 0.99,
       "macro_coupling": 0.5089,
+      "macro_movement": 0.99,
       "macro_space": 0.073
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBSCURA",
-    "target": "ORBITAL",
-    "amount": 0.5062
-  },
-  "dna": {
-    "brightness": 0.9226,
-    "warmth": 0.9538,
-    "space": 0.0297,
-    "movement": 0.9868,
-    "density": 0.5435,
-    "aggression": 0.3957
-  },
-  "macros": {
-    "CHARACTER": 0.9422,
-    "MOVEMENT": 0.9802,
-    "COUPLING": 0.5062,
-    "SPACE": 0.0297
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +60,6 @@
     "kinetic",
     "intimate",
     "celestial"
-  ]
+  ],
+  "version": "1.0"
 }

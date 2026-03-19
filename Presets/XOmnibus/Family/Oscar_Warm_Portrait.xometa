@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Oscar Warm Portrait",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Oscar alone — axolotl breathing slow. Morph at mid, bloom unhurried, every filter frequency soft as riverbed clay. This is the sound of regeneration.",
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.38,
+    "density": 0.55,
+    "movement": 0.35,
+    "space": 0.6,
+    "warmth": 0.78
+  },
   "engines": [
     "OddOscar"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Oscar alone \u2014 axolotl breathing slow. Morph at mid, bloom unhurried, every filter frequency soft as riverbed clay. This is the sound of regeneration.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Family",
+  "name": "Oscar Warm Portrait",
+  "parameters": {
+    "OddOscar": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "signature",
@@ -18,29 +43,6 @@
     "soft",
     "batch1-signatures"
   ],
-  "macroLabels": [
-    "Snap+Morph",
-    "Bloom",
-    "Coupling",
-    "Space"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.38,
-    "warmth": 0.78,
-    "movement": 0.35,
-    "density": 0.55,
-    "space": 0.6,
-    "aggression": 0.12
-  }
+  "version": "1.0.0"
 }

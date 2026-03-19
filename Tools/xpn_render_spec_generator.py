@@ -31,6 +31,12 @@ import glob
 import json
 import os
 import sys
+import warnings
+
+warnings.warn(
+    "xpn_render_spec_generator.py is deprecated. Use xpn_render_spec.py instead.",
+    DeprecationWarning, stacklevel=2
+)
 
 # ---------------------------------------------------------------------------
 # Constants

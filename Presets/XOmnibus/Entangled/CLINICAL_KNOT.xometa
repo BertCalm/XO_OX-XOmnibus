@@ -1,49 +1,61 @@
 {
-  "name": "CLINICAL KNOT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Organon",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.384
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.64,
+    "brightness": 0.31,
+    "density": 0.611,
+    "movement": 0.405,
+    "space": 0.135,
+    "warmth": 0.095
+  },
   "engines": [
-    "ODYSSEY",
-    "ORGANON"
+    "Odyssey",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.946,
+    "COUPLING": 0.493,
+    "MOVEMENT": 0.304,
+    "SPACE": 0.097
+  },
+  "mood": "Entangled",
+  "name": "CLINICAL KNOT",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.561,
-      "macro_movement": 0.915,
       "macro_coupling": 0.221,
+      "macro_movement": 0.915,
       "macro_space": 0.063
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.824,
-      "macro_movement": 0.909,
       "macro_coupling": 0.302,
+      "macro_movement": 0.909,
       "macro_space": 0.408
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ODYSSEY",
-    "target": "ORGANON",
-    "amount": 0.384
-  },
-  "dna": {
-    "brightness": 0.31,
-    "warmth": 0.095,
-    "movement": 0.405,
-    "density": 0.611,
-    "space": 0.135,
-    "aggression": 0.64
-  },
-  "macros": {
-    "CHARACTER": 0.946,
-    "MOVEMENT": 0.304,
-    "COUPLING": 0.493,
-    "SPACE": 0.097
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-  ]
+  ],
+  "version": "1.0"
 }

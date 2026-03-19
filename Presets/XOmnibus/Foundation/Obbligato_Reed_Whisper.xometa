@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Reed Whisper",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Flute and clarinet breathe in parallel. The sibling arc begins at peace. 'Reed Whisper' finds the quietest expression of this voice.",
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.49,
+    "density": 0.49,
+    "movement": 0.19,
+    "space": 0.25,
+    "warmth": 0.76
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "foundation",
-    "clean",
-    "foundation"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.49,
-    "warmth": 0.76,
-    "movement": 0.19,
-    "density": 0.49,
-    "space": 0.25,
-    "aggression": 0.12
-  },
+  "mood": "Foundation",
+  "name": "Reed Whisper",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.796,
-      "obbl_embouchureA": 0.496,
       "obbl_airFlutterA": 0.124,
-      "obbl_instrumentA": 1,
       "obbl_bodySizeA": 0.439,
-      "obbl_breathB": 0.811,
-      "obbl_reedStiffness": 0.467,
-      "obbl_reedBite": 0.322,
-      "obbl_instrumentB": 1,
       "obbl_bodySizeB": 0.526,
-      "obbl_voiceRouting": 1,
-      "obbl_damping": 0.996,
-      "obbl_sympatheticAmt": 0.406,
-      "obbl_driftRate": 0.098,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.163,
       "obbl_bondIntensity": 0.605,
       "obbl_bondRate": 0.201,
-      "obbl_fxAChorus": 0.288,
+      "obbl_bondStage": 0.163,
+      "obbl_breathA": 0.796,
+      "obbl_breathB": 0.811,
+      "obbl_damping": 0.996,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.098,
+      "obbl_embouchureA": 0.496,
       "obbl_fxABrightDelay": 0.19,
-      "obbl_fxAPlate": 0.14,
+      "obbl_fxAChorus": 0.288,
       "obbl_fxAExciter": 0.159,
-      "obbl_fxBPhaser": 0.165,
+      "obbl_fxAPlate": 0.14,
       "obbl_fxBDarkDelay": 0.39,
+      "obbl_fxBPhaser": 0.165,
       "obbl_fxBSpring": 0.233,
       "obbl_fxBTapeSat": 0.086,
-      "obbl_macroBreath": 0.393,
+      "obbl_instrumentA": 1,
+      "obbl_instrumentB": 1,
       "obbl_macroBond": 0.037,
+      "obbl_macroBreath": 0.393,
       "obbl_macroMischief": 0.012,
-      "obbl_macroWind": 0.337
+      "obbl_macroWind": 0.337,
+      "obbl_reedBite": 0.322,
+      "obbl_reedStiffness": 0.467,
+      "obbl_sympatheticAmt": 0.406,
+      "obbl_voiceRouting": 1
     }
   },
-  "coupling": null,
-  "description": "Flute and clarinet breathe in parallel. The sibling arc begins at peace. 'Reed Whisper' finds the quietest expression of this voice."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "foundation",
+    "clean",
+    "foundation"
+  ],
+  "version": "1.0.0"
 }

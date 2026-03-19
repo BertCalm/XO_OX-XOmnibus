@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Prophecy Fold",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.733,
+        "engineA": "Oracle",
+        "engineB": "Origami",
+        "type": "WAVETABLE_MORPH"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Oracle fold — prophecy geometry written in ORIGAMI crease mathematics.",
+  "dna": {
+    "aggression": 0.432,
+    "brightness": 0.505,
+    "density": 0.592,
+    "movement": 0.702,
+    "space": 0.596,
+    "warmth": 0.5
+  },
   "engines": [
     "Oracle",
     "Origami"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Oracle fold \u2014 prophecy geometry written in ORIGAMI crease mathematics.",
-  "tags": [
-    "oracle",
-    "origami",
-    "prophecy",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Prophecy Fold",
   "parameters": {
     "Oracle": {
-      "oracle_brightness": 0.422,
-      "oracle_warmth": 0.532,
-      "oracle_movement": 0.658,
-      "oracle_density": 0.581,
-      "oracle_space": 0.684,
       "oracle_aggression": 0.393,
-      "oracle_level": 0.778
+      "oracle_brightness": 0.422,
+      "oracle_density": 0.581,
+      "oracle_level": 0.778,
+      "oracle_movement": 0.658,
+      "oracle_space": 0.684,
+      "oracle_warmth": 0.532
     },
     "Origami": {
-      "origami_brightness": 0.656,
-      "origami_warmth": 0.436,
-      "origami_movement": 0.572,
-      "origami_density": 0.518,
-      "origami_space": 0.544,
       "origami_aggression": 0.623,
-      "origami_level": 0.829
+      "origami_brightness": 0.656,
+      "origami_density": 0.518,
+      "origami_level": 0.829,
+      "origami_movement": 0.572,
+      "origami_space": 0.544,
+      "origami_warmth": 0.436
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Origami",
-        "type": "WAVETABLE_MORPH",
-        "amount": 0.733
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.505,
-    "warmth": 0.5,
-    "movement": 0.702,
-    "density": 0.592,
-    "space": 0.596,
-    "aggression": 0.432
-  }
+  "tags": [
+    "oracle",
+    "origami",
+    "prophecy",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

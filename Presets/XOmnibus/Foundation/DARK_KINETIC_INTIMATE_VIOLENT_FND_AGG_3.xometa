@@ -1,50 +1,62 @@
 {
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FND_AGG_3",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OUROBOROS",
-    "OBESE"
-  ],
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.821,
-      "macro_movement": 0.521,
-      "macro_coupling": 0.768,
-      "macro_space": 0.788
-    },
-    "OBESE": {
-      "macro_character": 0.849,
-      "macro_movement": 0.537,
-      "macro_coupling": 0.767,
-      "macro_space": 0.757
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OUROBOROS",
-    "target": "OBESE",
-    "amount": 0.981
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Obese",
+        "type": "PITCH_SYNC",
+        "amount": 0.981
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.981,
     "brightness": 0.115,
-    "warmth": 0.661,
-    "movement": 0.89,
     "density": 0.301,
+    "movement": 0.89,
     "space": 0.063,
-    "aggression": 0.981
+    "warmth": 0.661
   },
+  "engines": [
+    "Ouroboros",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.821,
-    "MOVEMENT": 0.521,
     "COUPLING": 0.768,
+    "MOVEMENT": 0.521,
     "SPACE": 0.788
   },
+  "mood": "Foundation",
+  "name": "Velvet Edge",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.849,
+      "macro_coupling": 0.767,
+      "macro_movement": 0.537,
+      "macro_space": 0.757
+    },
+    "Ouroboros": {
+      "macro_character": 0.821,
+      "macro_coupling": 0.768,
+      "macro_movement": 0.521,
+      "macro_space": 0.788
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "kinetic",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

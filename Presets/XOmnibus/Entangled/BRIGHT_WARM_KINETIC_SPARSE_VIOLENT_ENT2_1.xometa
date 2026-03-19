@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT WARM KINETIC SPARSE VIOLENT ENT2 1",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERWORLD",
-    "OVERLAP"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.962,
-      "macro_movement": 0.941,
-      "macro_coupling": 0.489,
-      "macro_space": 0.376
-    },
-    "OVERLAP": {
-      "macro_character": 0.978,
-      "macro_movement": 0.953,
-      "macro_coupling": 0.472,
-      "macro_space": 0.423
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OVERWORLD",
-    "target": "OVERLAP",
-    "amount": 0.489
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Overlap",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.489
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.907,
     "brightness": 0.946,
-    "warmth": 0.977,
-    "movement": 0.941,
     "density": 0.072,
+    "movement": 0.941,
     "space": 0.376,
-    "aggression": 0.907
+    "warmth": 0.977
   },
+  "engines": [
+    "Overworld",
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.962,
-    "MOVEMENT": 0.941,
     "COUPLING": 0.489,
+    "MOVEMENT": 0.941,
     "SPACE": 0.376
   },
+  "mood": "Entangled",
+  "name": "BRIGHT WARM KINETIC SPARSE ...",
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.978,
+      "macro_coupling": 0.472,
+      "macro_movement": 0.953,
+      "macro_space": 0.423
+    },
+    "Overworld": {
+      "macro_character": 0.962,
+      "macro_coupling": 0.489,
+      "macro_movement": 0.941,
+      "macro_space": 0.376
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "bright",
@@ -47,5 +58,6 @@
     "kinetic",
     "sparse",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

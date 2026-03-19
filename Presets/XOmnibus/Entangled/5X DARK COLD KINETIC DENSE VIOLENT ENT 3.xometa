@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 3",
-  "mood": "Entangled",
-  "engines": [
-    "OVERWORLD",
-    "ORGANON"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Organon",
+        "type": "FILTER_SHARE",
+        "amount": 0.94
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.919,
+    "brightness": 0.065,
+    "density": 0.944,
+    "movement": 0.506,
+    "space": 0.052,
+    "warmth": 0.053
+  },
+  "engines": [
+    "Overworld",
+    "Organon"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.9,
+      "macro_coupling": 0.78,
+      "macro_movement": 0.93,
+      "macro_space": 0.43
+    },
+    "Overworld": {
+      "macro_character": 0.75,
+      "macro_coupling": 0.64,
+      "macro_movement": 0.97,
+      "macro_space": 0.1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +62,6 @@
     "dense",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.75,
-      "macro_movement": 0.97,
-      "macro_coupling": 0.64,
-      "macro_space": 0.1
-    },
-    "ORGANON": {
-      "macro_character": 0.9,
-      "macro_movement": 0.93,
-      "macro_coupling": 0.78,
-      "macro_space": 0.43
-    }
-  },
-  "coupling": {
-    "type": "FILTER_SHARE",
-    "source": "OVERWORLD",
-    "target": "ORGANON",
-    "amount": 0.94
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.065,
-    "warmth": 0.053,
-    "movement": 0.506,
-    "density": 0.944,
-    "space": 0.052,
-    "aggression": 0.919
-  }
+  "version": "1.0.0"
 }

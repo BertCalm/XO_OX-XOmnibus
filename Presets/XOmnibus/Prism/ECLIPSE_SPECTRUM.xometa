@@ -1,48 +1,60 @@
 {
-  "name": "ECLIPSE SPECTRUM",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "ONSET",
-    "OBESE"
-  ],
-  "parameters": {
-    "ONSET": {
-      "macro_character": 0.742,
-      "macro_movement": 0.092,
-      "macro_coupling": 0.556,
-      "macro_space": 0.575
-    },
-    "OBESE": {
-      "macro_character": 0.423,
-      "macro_movement": 0.961,
-      "macro_coupling": 0.976,
-      "macro_space": 0.075
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ONSET",
-    "target": "OBESE",
-    "amount": 0.895
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Obese",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.895
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.753,
     "brightness": 0.072,
-    "warmth": 0.601,
-    "movement": 0.971,
     "density": 0.983,
+    "movement": 0.971,
     "space": 0.198,
-    "aggression": 0.753
+    "warmth": 0.601
   },
+  "engines": [
+    "Onset",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.425,
-    "MOVEMENT": 0.937,
     "COUPLING": 0.433,
+    "MOVEMENT": 0.937,
     "SPACE": 0.83
   },
+  "mood": "Prism",
+  "name": "ECLIPSE SPECTRUM",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.423,
+      "macro_coupling": 0.976,
+      "macro_movement": 0.961,
+      "macro_space": 0.075
+    },
+    "Onset": {
+      "macro_character": 0.742,
+      "macro_coupling": 0.556,
+      "macro_movement": 0.092,
+      "macro_space": 0.575
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-  ]
+  ],
+  "version": "1.0"
 }

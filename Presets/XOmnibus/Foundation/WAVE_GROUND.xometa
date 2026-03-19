@@ -1,48 +1,60 @@
 {
-  "name": "WAVE GROUND",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ORPHICA",
-    "OCELOT"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.728,
-      "macro_movement": 0.949,
-      "macro_coupling": 0.683,
-      "macro_space": 0.39
-    },
-    "OCELOT": {
-      "macro_character": 0.303,
-      "macro_movement": 0.951,
-      "macro_coupling": 0.476,
-      "macro_space": 0.577
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORPHICA",
-    "target": "OCELOT",
-    "amount": 0.748
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ocelot",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.748
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.743,
     "brightness": 0.526,
-    "warmth": 0.449,
-    "movement": 0.933,
     "density": 0.324,
+    "movement": 0.933,
     "space": 0.926,
-    "aggression": 0.743
+    "warmth": 0.449
   },
+  "engines": [
+    "Orphica",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.727,
-    "MOVEMENT": 0.933,
     "COUPLING": 0.748,
+    "MOVEMENT": 0.933,
     "SPACE": 0.926
   },
+  "mood": "Foundation",
+  "name": "WAVE GROUND",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.303,
+      "macro_coupling": 0.476,
+      "macro_movement": 0.951,
+      "macro_space": 0.577
+    },
+    "Orphica": {
+      "macro_character": 0.728,
+      "macro_coupling": 0.683,
+      "macro_movement": 0.949,
+      "macro_space": 0.39
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "DARK_COLD_KINETIC_INTIMATE_VIOLENT_FND_5",
-  "mood": "Foundation",
-  "engines": [
-    "OVERDUB",
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Ouroboros",
+        "type": "FILTER_MOD",
+        "amount": 0.532
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_COLD_KINETIC_INTIMATE_VIOLENT. Variant 5.",
+  "dna": {
+    "aggression": 0.974,
+    "brightness": 0.04,
+    "density": 0.436,
+    "movement": 0.907,
+    "space": 0.021,
+    "warmth": 0.097
+  },
+  "engines": [
+    "Overdub",
+    "Ouroboros"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.035,
+    "COUPLING": 0.399,
+    "MOVEMENT": 0.947,
+    "SPACE": 0.049
+  },
+  "mood": "Foundation",
+  "name": "Thread Edge",
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.055,
+      "macro_coupling": 0.465,
+      "macro_movement": 0.995,
+      "macro_space": 0.098
+    },
+    "Overdub": {
+      "macro_character": 0.015,
+      "macro_coupling": 0.333,
+      "macro_movement": 0.898,
+      "macro_space": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "cold",
@@ -19,53 +70,6 @@
     "intimate",
     "foundation"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.015,
-      "macro_movement": 0.898,
-      "macro_coupling": 0.333,
-      "macro_space": 0.0
-    },
-    "OUROBOROS": {
-      "macro_character": 0.055,
-      "macro_movement": 0.995,
-      "macro_coupling": 0.465,
-      "macro_space": 0.098
-    }
-  },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERDUB",
-    "target": "OUROBOROS",
-    "amount": 0.532
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.04,
-    "warmth": 0.097,
-    "movement": 0.907,
-    "density": 0.436,
-    "space": 0.021,
-    "aggression": 0.974
-  },
-  "macros": {
-    "CHARACTER": 0.035,
-    "MOVEMENT": 0.947,
-    "COUPLING": 0.399,
-    "SPACE": 0.049
-  }
+  "version": "1.0.0"
 }

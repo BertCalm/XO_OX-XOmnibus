@@ -1,45 +1,56 @@
 {
-  "name": "SOLID BODY",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OWLFISH",
-    "OSTERIA"
-  ],
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.749,
-      "macro_movement": 0.0521,
-      "macro_coupling": 0.9808,
-      "macro_space": 0.2242
-    },
-    "OSTERIA": {
-      "macro_character": 0.0686,
-      "macro_movement": 0.9573,
-      "macro_coupling": 0.6161,
-      "macro_space": 0.031
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OWLFISH",
-    "target": "OSTERIA",
-    "amount": 0.7742
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Osteria",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.7742
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.1144,
     "brightness": 0.8392,
-    "warmth": 0.6213,
-    "movement": 0.2385,
     "density": 0.9138,
+    "movement": 0.2385,
     "space": 0.4736,
-    "aggression": 0.1144
+    "warmth": 0.6213
   },
+  "engines": [
+    "Owlfish",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.9478,
-    "MOVEMENT": 0.465,
     "COUPLING": 0.7769,
+    "MOVEMENT": 0.465,
     "SPACE": 0.3689
   },
+  "mood": "Entangled",
+  "name": "SOLID BODY",
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.0686,
+      "macro_coupling": 0.6161,
+      "macro_movement": 0.9573,
+      "macro_space": 0.031
+    },
+    "Owlfish": {
+      "macro_character": 0.749,
+      "macro_coupling": 0.9808,
+      "macro_movement": 0.0521,
+      "macro_space": 0.2242
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "monolithic",
     "dense",
@@ -48,5 +59,6 @@
     "massive",
     "solid",
     "entangled"
-  ]
+  ],
+  "version": "1.0"
 }

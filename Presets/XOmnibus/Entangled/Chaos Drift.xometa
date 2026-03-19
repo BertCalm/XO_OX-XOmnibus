@@ -31,7 +31,10 @@
     "space": 0.25,
     "aggression": 0.25
   },
-  "parameters": {},
+  "parameters": {
+    "Odyssey": {},
+    "Ouroboros": {}
+  },
   "coupling": {
     "pairs": [
       {

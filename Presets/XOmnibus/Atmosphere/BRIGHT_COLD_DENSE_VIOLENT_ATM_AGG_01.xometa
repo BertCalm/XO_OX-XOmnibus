@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT COLD DENSE VIOLENT ATM AGG 1",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OCEANIC",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "OCEANIC": {
-      "macro_character": 0.886,
-      "macro_movement": 0.598,
-      "macro_coupling": 0.868,
-      "macro_space": 0.317
-    },
-    "OBSCURA": {
-      "macro_character": 0.892,
-      "macro_movement": 0.593,
-      "macro_coupling": 0.861,
-      "macro_space": 0.338
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OCEANIC",
-    "target": "OBSCURA",
-    "amount": 0.854
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.854
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.921,
     "brightness": 0.949,
-    "warmth": 0.021,
-    "movement": 0.6,
     "density": 0.962,
+    "movement": 0.6,
     "space": 0.343,
-    "aggression": 0.921
+    "warmth": 0.021
   },
+  "engines": [
+    "Oceanic",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.889,
-    "MOVEMENT": 0.595,
     "COUPLING": 0.865,
+    "MOVEMENT": 0.595,
     "SPACE": 0.328
   },
+  "mood": "Atmosphere",
+  "name": "BRIGHT COLD DENSE VIOLENT A...",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.892,
+      "macro_coupling": 0.861,
+      "macro_movement": 0.593,
+      "macro_space": 0.338
+    },
+    "Oceanic": {
+      "macro_character": 0.886,
+      "macro_coupling": 0.868,
+      "macro_movement": 0.598,
+      "macro_space": 0.317
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -47,5 +58,6 @@
     "violent",
     "bright",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

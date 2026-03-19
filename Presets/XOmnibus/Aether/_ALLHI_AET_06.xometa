@@ -1,49 +1,61 @@
 {
-  "name": "ALLHI AET 06",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oracle",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.904
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.644,
+    "brightness": 0.913,
+    "density": 0.913,
+    "movement": 0.919,
+    "space": 0.899,
+    "warmth": 0.958
+  },
   "engines": [
-    "OPAL",
-    "ORACLE"
+    "Opal",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.935,
+    "COUPLING": 0.772,
+    "MOVEMENT": 0.916,
+    "SPACE": 0.899
+  },
+  "mood": "Aether",
+  "name": "ALLHI AET 06",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.935,
-      "macro_movement": 0.916,
       "macro_coupling": 0.772,
+      "macro_movement": 0.916,
       "macro_space": 0.899
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.935,
-      "macro_movement": 0.916,
       "macro_coupling": 0.772,
+      "macro_movement": 0.916,
       "macro_space": 0.899
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OPAL",
-    "target": "ORACLE",
-    "amount": 0.904
-  },
-  "dna": {
-    "brightness": 0.913,
-    "warmth": 0.958,
-    "movement": 0.919,
-    "density": 0.913,
-    "space": 0.899,
-    "aggression": 0.644
-  },
-  "macros": {
-    "CHARACTER": 0.935,
-    "MOVEMENT": 0.916,
-    "COUPLING": 0.772,
-    "SPACE": 0.899
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

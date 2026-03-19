@@ -33,7 +33,9 @@
     "space": 0.09,
     "aggression": 0.75
   },
-  "parameters": {},
+  "parameters": {
+    "Origami": {}
+  },
   "tags": [
     "flux",
     "dense-flux",
@@ -41,5 +43,5 @@
     "fold",
     "stack"
   ],
-  "description": "Origami fold-stack maximum \u2014 64 simultaneous fold geometries in dense lattice."
+  "description": "Origami fold-stack maximum — 64 simultaneous fold geometries in dense lattice."
 }

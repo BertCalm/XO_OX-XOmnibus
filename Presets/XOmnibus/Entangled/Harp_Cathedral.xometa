@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Harp Cathedral",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "ORPHICA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.595,
+        "engineA": "Overlap",
+        "engineB": "Orphica",
+        "type": "SPECTRAL_CROSS"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
   "description": "Orphica siphonophore microsound harp feeds OVERLAP FDN strings — tiny plucks in infinite halls",
-  "tags": [
-    "coupling",
-    "entangled",
-    "overlap",
-    "orphica",
-    "harp",
-    "microsound"
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.575,
+    "density": 0.55,
+    "movement": 0.5,
+    "space": 0.775,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Overlap",
+    "Orphica"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,58 +32,51 @@
   ],
   "macros": {
     "CHARACTER": 0.43,
-    "MOVEMENT": 0.592,
     "COUPLING": 0.856,
+    "MOVEMENT": 0.592,
     "SPACE": 0.423
   },
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.575,
-    "space": 0.775,
-    "aggression": 0.2,
-    "movement": 0.5,
-    "warmth": 0.55,
-    "density": 0.55
-  },
-  "sonic_dna": {
-    "brightness": 0.575,
-    "space": 0.775,
-    "aggression": 0.2,
-    "movement": 0.5,
-    "warmth": 0.55,
-    "density": 0.55
-  },
+  "mood": "Entangled",
+  "name": "Harp Cathedral",
   "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.728,
-      "olap_decay": 0.614,
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.689,
+      "olap_crossfeedAmt": 0.401,
       "olap_damping": 0.549,
+      "olap_decay": 0.614,
       "olap_diffusion": 0.68,
-      "olap_modDepth": 0.314,
-      "olap_modRate": 0.158,
-      "olap_preDelay": 0.243,
       "olap_earlyMix": 0.364,
-      "olap_lateMix": 0.776,
       "olap_filterCutoff": 0.534,
       "olap_filterReso": 0.431,
-      "olap_outputLevel": 0.876,
-      "olap_couplingLevel": 0.689,
-      "olap_couplingBus": 0,
       "olap_frondDensity": 0.441,
+      "olap_lateMix": 0.776,
+      "olap_modDepth": 0.314,
+      "olap_modRate": 0.158,
       "olap_nodeCount": 12,
-      "olap_crossfeedAmt": 0.401,
-      "olap_spinRate": 0.116,
-      "olap_shimmerMix": 0.065
+      "olap_outputLevel": 0.876,
+      "olap_preDelay": 0.243,
+      "olap_shimmerMix": 0.065,
+      "olap_size": 0.728,
+      "olap_spinRate": 0.116
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERLAP",
-        "engineB": "ORPHICA",
-        "type": "SPECTRAL_CROSS",
-        "amount": 0.595
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2,
+    "brightness": 0.575,
+    "density": 0.55,
+    "movement": 0.5,
+    "space": 0.775,
+    "warmth": 0.55
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "orphica",
+    "harp",
+    "microsound"
+  ],
+  "version": "1.0.0"
 }

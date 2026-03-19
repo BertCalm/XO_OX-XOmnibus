@@ -1,49 +1,61 @@
 {
-  "name": "ALLLO FLX 03",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Opal",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.3
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.073,
+    "brightness": 0.074,
+    "density": 0.081,
+    "movement": 0.419,
+    "space": 0.097,
+    "warmth": 0.022
+  },
   "engines": [
-    "OBLONG",
-    "OPAL"
+    "Oblong",
+    "Opal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.048,
+    "COUPLING": 0.085,
+    "MOVEMENT": 0.25,
+    "SPACE": 0.097
+  },
+  "mood": "Flux",
+  "name": "ALLLO FLX 03",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.048,
-      "macro_movement": 0.25,
       "macro_coupling": 0.085,
+      "macro_movement": 0.25,
       "macro_space": 0.097
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.048,
-      "macro_movement": 0.25,
       "macro_coupling": 0.085,
+      "macro_movement": 0.25,
       "macro_space": 0.097
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OBLONG",
-    "target": "OPAL",
-    "amount": 0.3
-  },
-  "dna": {
-    "brightness": 0.074,
-    "warmth": 0.022,
-    "movement": 0.419,
-    "density": 0.081,
-    "space": 0.097,
-    "aggression": 0.073
-  },
-  "macros": {
-    "CHARACTER": 0.048,
-    "MOVEMENT": 0.25,
-    "COUPLING": 0.085,
-    "SPACE": 0.097
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

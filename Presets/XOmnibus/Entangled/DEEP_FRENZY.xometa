@@ -1,48 +1,60 @@
 {
-  "name": "DEEP FRENZY",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Overbite",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.917
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.661,
+    "brightness": 0.304,
+    "density": 0.786,
+    "movement": 0.917,
+    "space": 0.607,
+    "warmth": 0.21
+  },
   "engines": [
-    "ORBITAL",
-    "OVERBITE"
+    "Orbital",
+    "Overbite"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.442,
+    "COUPLING": 0.676,
+    "MOVEMENT": 0.917,
+    "SPACE": 0.511
+  },
+  "mood": "Entangled",
+  "name": "DEEP FRENZY",
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.665,
-      "macro_movement": 0.935,
       "macro_coupling": 0.379,
+      "macro_movement": 0.935,
       "macro_space": 0.748
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.174,
-      "macro_movement": 0.899,
       "macro_coupling": 0.569,
+      "macro_movement": 0.899,
       "macro_space": 0.406
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ORBITAL",
-    "target": "OVERBITE",
-    "amount": 0.917
-  },
-  "dna": {
-    "brightness": 0.304,
-    "warmth": 0.21,
-    "movement": 0.917,
-    "density": 0.786,
-    "space": 0.607,
-    "aggression": 0.661
-  },
-  "macros": {
-    "CHARACTER": 0.442,
-    "MOVEMENT": 0.917,
-    "COUPLING": 0.676,
-    "SPACE": 0.511
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "chaotic",
     "high-energy"
-  ]
+  ],
+  "version": "1.0"
 }

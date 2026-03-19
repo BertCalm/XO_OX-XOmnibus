@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_SPARSE_INTIMATE_GENTLE_AET2_3",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "ORGANON",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.9428,
-      "macro_movement": 0.405,
-      "macro_coupling": 0.1321,
-      "macro_space": 0.0709
-    },
-    "OBSCURA": {
-      "macro_character": 0.9605,
-      "macro_movement": 0.3811,
-      "macro_coupling": 0.1404,
-      "macro_space": 0.0668
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ORGANON",
-    "target": "OBSCURA",
-    "amount": 0.5064
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Obscura",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.5064
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.1279,
     "brightness": 0.9408,
     "density": 0.1036,
+    "movement": 0.4185,
     "space": 0.0677,
-    "aggression": 0.1279,
-    "warmth": 0.6331,
-    "movement": 0.4185
+    "warmth": 0.6331
   },
+  "engines": [
+    "Organon",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.9516,
-    "MOVEMENT": 0.3931,
     "COUPLING": 0.5064,
+    "MOVEMENT": 0.3931,
     "SPACE": 0.0677
   },
+  "mood": "Aether",
+  "name": "Golden Signal",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.9605,
+      "macro_coupling": 0.1404,
+      "macro_movement": 0.3811,
+      "macro_space": 0.0668
+    },
+    "Organon": {
+      "macro_character": 0.9428,
+      "macro_coupling": 0.1321,
+      "macro_movement": 0.405,
+      "macro_space": 0.0709
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +60,6 @@
     "intimate",
     "gentle",
     "airy"
-  ]
+  ],
+  "version": "1.0"
 }

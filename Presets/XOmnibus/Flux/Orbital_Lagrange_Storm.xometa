@@ -1,39 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Lagrange Storm",
-  "mood": "Flux",
-  "engines": ["Orbital"],
-  "author": "Guru Bin — Fleet Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Group envelope rate at 0.88 — near the edge of audio-rate modulation. At this speed the group envelope becomes a rhythmic artifact rather than a smooth swell. Voices stutter and surge in irregular patterns. A Lagrange point is a gravitational equilibrium that is inherently unstable. This is that.",
-  "tags": ["flux", "unstable", "aggressive", "rhythmic", "evolving", "storm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.68,
-    "warmth": 0.38,
-    "movement": 0.95,
-    "density": 0.7,
-    "space": 0.45,
-    "aggression": 0.72
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Group envelope rate at 0.88 — near the edge of audio-rate modulation. At this speed the group envelope becomes a rhythmic artifact rather than a smooth swell. Voices stutter and surge in irregular patterns. A Lagrange point is a gravitational equilibrium that is inherently unstable. This is that.",
+  "dna": {
+    "aggression": 0.72,
+    "brightness": 0.68,
+    "density": 0.7,
+    "movement": 0.95,
+    "space": 0.45,
+    "warmth": 0.38
+  },
+  "engines": [
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Lagrange Storm",
   "parameters": {
     "Orbital": {
+      "orb_ampAttack": 0.02,
+      "orb_ampDecay": 0.4,
+      "orb_ampRelease": 1.0,
+      "orb_ampSustain": 0.72,
       "orb_brightness": 0.68,
-      "orb_groupEnvRate": 0.88,
-      "orb_groupEnvDepth": 0.85,
-      "orb_oscCount": 6,
-      "orb_spread": 0.42,
       "orb_detune": 0.28,
       "orb_filterCutoff": 0.75,
       "orb_filterReso": 0.48,
-      "orb_ampAttack": 0.02,
-      "orb_ampDecay": 0.4,
-      "orb_ampSustain": 0.72,
-      "orb_ampRelease": 1.0
+      "orb_groupEnvDepth": 0.85,
+      "orb_groupEnvRate": 0.88,
+      "orb_oscCount": 6,
+      "orb_spread": 0.42
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "flux",
+    "unstable",
+    "aggressive",
+    "rhythmic",
+    "evolving",
+    "storm"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

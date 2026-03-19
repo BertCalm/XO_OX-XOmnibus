@@ -1,31 +1,46 @@
 {
-  "name": "Crystal Signal",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Orphica",
+        "type": "SPECTRAL_REFRACTION",
+        "amount": 0.8
+      }
+    ]
+  },
+  "description": "High-frequency orphica overtones beamed through optical array — pure transmission",
   "engines": [
-    "ORPHICA",
-    "OPTIC"
+    "Orphica",
+    "Optic"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.7,
     "COUPLING": 0.8,
+    "MOVEMENT": 0.7,
     "SPACE": 0.7
   },
-  "sonic_dna": {
-    "brightness": 0.76,
-    "warmth": 0.44,
-    "movement": 0.74,
-    "density": 0.42,
-    "space": 0.58,
-    "aggression": 0.25
+  "mood": "Entangled",
+  "name": "Crystal Signal",
+  "parameters": {
+    "Orphica": {},
+    "Optic": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "SPECTRAL_REFRACTION",
-    "source": "OPTIC",
-    "target": "ORPHICA",
-    "amount": 0.8
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.25,
+    "brightness": 0.76,
+    "density": 0.42,
+    "movement": 0.74,
+    "space": 0.58,
+    "warmth": 0.44
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "optic",
     "microsound"
   ],
-  "description": "High-frequency orphica overtones beamed through optical array \u2014 pure transmission"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

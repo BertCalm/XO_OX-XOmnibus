@@ -1,45 +1,56 @@
 {
-  "name": "DARK_WARM_FROZEN_DENSE_GENTLE_ENT4_5",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Outwit",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.975
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.105,
+    "brightness": 0.045,
+    "density": 0.903,
+    "movement": 0.046,
+    "space": 0.328,
+    "warmth": 0.949
+  },
   "engines": [
-    "OTTONI",
-    "OUTWIT"
+    "Ottoni",
+    "Outwit"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.488,
+    "COUPLING": 0.975,
+    "MOVEMENT": 0.055,
+    "SPACE": 0.331
+  },
+  "mood": "Entangled",
+  "name": "Velvet Heavy",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.499,
-      "macro_movement": 0.055,
       "macro_coupling": 0.88,
+      "macro_movement": 0.055,
       "macro_space": 0.356
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.478,
-      "macro_movement": 0.055,
       "macro_coupling": 0.889,
+      "macro_movement": 0.055,
       "macro_space": 0.305
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OTTONI",
-    "target": "OUTWIT",
-    "amount": 0.975
-  },
-  "dna": {
-    "brightness": 0.045,
-    "warmth": 0.949,
-    "movement": 0.046,
-    "density": 0.903,
-    "space": 0.328,
-    "aggression": 0.105
-  },
-  "macros": {
-    "CHARACTER": 0.488,
-    "MOVEMENT": 0.055,
-    "COUPLING": 0.975,
-    "SPACE": 0.331
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +59,6 @@
     "warm",
     "dense",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

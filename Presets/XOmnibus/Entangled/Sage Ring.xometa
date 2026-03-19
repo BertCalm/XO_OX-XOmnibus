@@ -1,31 +1,46 @@
 {
-  "name": "Sage Ring",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Ohm",
+        "type": "ORBITAL_RING",
+        "amount": 0.55
+      }
+    ]
+  },
+  "description": "Ohm's COMMUNE axis imprinted on orbital ring modulation — shared breathing in orbit",
   "engines": [
-    "OHM",
-    "ORBITAL"
+    "Ohm",
+    "Orbital"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.6,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.55,
+    "MOVEMENT": 0.55,
     "SPACE": 0.65
   },
-  "sonic_dna": {
-    "brightness": 0.54,
-    "warmth": 0.67,
-    "movement": 0.6,
-    "density": 0.52,
-    "space": 0.66,
-    "aggression": 0.3
+  "mood": "Entangled",
+  "name": "Sage Ring",
+  "parameters": {
+    "Ohm": {},
+    "Orbital": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "ORBITAL_RING",
-    "source": "ORBITAL",
-    "target": "OHM",
-    "amount": 0.55
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.3,
+    "brightness": 0.54,
+    "density": 0.52,
+    "movement": 0.6,
+    "space": 0.66,
+    "warmth": 0.67
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "orbital",
     "hippy"
   ],
-  "description": "Ohm's COMMUNE axis imprinted on orbital ring modulation \u2014 shared breathing in orbit"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

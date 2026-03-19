@@ -1,45 +1,56 @@
 {
-  "name": "DARK KNOT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Orphica",
+        "type": "FILTER_MOD",
+        "amount": 0.8602
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.4286,
+    "brightness": 0.9069,
+    "density": 0.9338,
+    "movement": 0.663,
+    "space": 0.0839,
+    "warmth": 0.5919
+  },
   "engines": [
-    "OPTIC",
-    "ORPHICA"
+    "Optic",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8669,
+    "COUPLING": 0.778,
+    "MOVEMENT": 0.1817,
+    "SPACE": 0.3274
+  },
+  "mood": "Entangled",
+  "name": "DARK KNOT",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.4856,
-      "macro_movement": 0.3889,
       "macro_coupling": 0.8675,
+      "macro_movement": 0.3889,
       "macro_space": 0.7981
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.7242,
-      "macro_movement": 0.8405,
       "macro_coupling": 0.9678,
+      "macro_movement": 0.8405,
       "macro_space": 0.9807
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OPTIC",
-    "target": "ORPHICA",
-    "amount": 0.8602
-  },
-  "dna": {
-    "brightness": 0.9069,
-    "warmth": 0.5919,
-    "movement": 0.663,
-    "density": 0.9338,
-    "space": 0.0839,
-    "aggression": 0.4286
-  },
-  "macros": {
-    "CHARACTER": 0.8669,
-    "MOVEMENT": 0.1817,
-    "COUPLING": 0.778,
-    "SPACE": 0.3274
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -47,5 +58,6 @@
     "tectonic",
     "monolithic",
     "extreme-density"
-  ]
+  ],
+  "version": "1.0"
 }

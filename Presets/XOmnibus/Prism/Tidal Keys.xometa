@@ -1,57 +1,57 @@
 {
-  "schema_version": 1,
-  "name": "Tidal Keys",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expressive keys voice with warm character.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.431,
+    "density": 0.105,
+    "movement": 0.1,
+    "space": 0.165,
+    "warmth": 0.0
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expressive keys voice with warm character.",
-  "tags": [
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Keys",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Keys",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Tidal Keys",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 1.0,
-      "drift_oscA_level": 0.7,
-      "drift_oscA_pw": 0.45,
-      "drift_oscB_mode": 0.0,
-      "drift_oscB_shape": 3.0,
-      "drift_oscB_level": 0.35,
-      "drift_filterCutoff": 4500.0,
-      "drift_filterReso": 0.12,
       "drift_attack": 5.0,
       "drift_decay": 500.0,
-      "drift_sustain": 0.5,
-      "drift_release": 400.0,
+      "drift_filterCutoff": 4500.0,
       "drift_filterEnvAmt": 0.3,
-      "drift_level": -3.0
+      "drift_filterReso": 0.12,
+      "drift_level": -3.0,
+      "drift_oscA_level": 0.7,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_pw": 0.45,
+      "drift_oscA_shape": 1.0,
+      "drift_oscB_level": 0.35,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 3.0,
+      "drift_release": 400.0,
+      "drift_sustain": 0.5
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.431,
-    "warmth": 0.0,
-    "movement": 0.1,
-    "density": 0.105,
-    "space": 0.165,
-    "aggression": 0.05
-  }
+  "tags": [
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

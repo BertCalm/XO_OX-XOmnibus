@@ -1,49 +1,61 @@
 {
-  "name": "VIOLENT MESH",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Overlap",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.77
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.985,
+    "brightness": 0.254,
+    "density": 0.418,
+    "movement": 0.314,
+    "space": 0.398,
+    "warmth": 0.964
+  },
   "engines": [
-    "OBBLIGATO",
-    "OVERLAP"
+    "Obbligato",
+    "Overlap"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.175,
+    "COUPLING": 0.542,
+    "MOVEMENT": 0.403,
+    "SPACE": 0.145
+  },
+  "mood": "Entangled",
+  "name": "VIOLENT MESH",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.425,
-      "macro_movement": 0.552,
       "macro_coupling": 0.892,
+      "macro_movement": 0.552,
       "macro_space": 0.281
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.647,
-      "macro_movement": 0.778,
       "macro_coupling": 0.623,
+      "macro_movement": 0.778,
       "macro_space": 0.787
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBBLIGATO",
-    "target": "OVERLAP",
-    "amount": 0.77
-  },
-  "dna": {
-    "brightness": 0.254,
-    "warmth": 0.964,
-    "movement": 0.314,
-    "density": 0.418,
-    "space": 0.398,
-    "aggression": 0.985
-  },
-  "macros": {
-    "CHARACTER": 0.175,
-    "MOVEMENT": 0.403,
-    "COUPLING": 0.542,
-    "SPACE": 0.145
-  },
+  "schema_version": 1,
   "tags": [
     "brutal",
     "entangled",
     "fury",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

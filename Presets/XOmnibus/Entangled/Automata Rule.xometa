@@ -1,14 +1,64 @@
 {
-  "schema_version": 1,
-  "name": "Automata Rule",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.643,
+        "engineA": "Outwit",
+        "engineB": "Obbligato",
+        "type": "AMP_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OBBLIGATO BOND macro depth modulates OUTWIT mutation probability — bond tightens order",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.575,
+    "density": 0.625,
+    "movement": 0.65,
+    "space": 0.575,
+    "warmth": 0.525
+  },
   "engines": [
-    "OUTWIT",
-    "OBBLIGATO"
+    "Outwit",
+    "Obbligato"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBBLIGATO BOND macro depth modulates OUTWIT mutation probability \u2014 bond tightens order",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Automata Rule",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.127,
+      "owit_ampRelease": 0.788,
+      "owit_arms": 4,
+      "owit_cellSize": 0.285,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.665,
+      "owit_density": 0.441,
+      "owit_evolveRate": 0.633,
+      "owit_filterCutoff": 0.554,
+      "owit_filterReso": 0.196,
+      "owit_mutateProb": 0.175,
+      "owit_outputLevel": 0.699,
+      "owit_pitchSpread": 0.487,
+      "owit_rule": 90
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4,
+    "brightness": 0.575,
+    "density": 0.625,
+    "movement": 0.65,
+    "space": 0.575,
+    "warmth": 0.525
+  },
   "tags": [
     "coupling",
     "entangled",
@@ -19,55 +69,5 @@
     "cellular-automata",
     "wolfram"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "aggression": 0.4,
-    "space": 0.575,
-    "warmth": 0.525,
-    "brightness": 0.575,
-    "density": 0.625,
-    "movement": 0.65
-  },
-  "sonic_dna": {
-    "aggression": 0.4,
-    "space": 0.575,
-    "warmth": 0.525,
-    "brightness": 0.575,
-    "density": 0.625,
-    "movement": 0.65
-  },
-  "parameters": {
-    "OUTWIT": {
-      "owit_rule": 90,
-      "owit_arms": 4,
-      "owit_cellSize": 0.285,
-      "owit_density": 0.441,
-      "owit_evolveRate": 0.633,
-      "owit_mutateProb": 0.175,
-      "owit_pitchSpread": 0.487,
-      "owit_filterCutoff": 0.554,
-      "owit_filterReso": 0.196,
-      "owit_ampAttack": 0.127,
-      "owit_ampRelease": 0.788,
-      "owit_outputLevel": 0.699,
-      "owit_couplingLevel": 0.665,
-      "owit_couplingBus": 0
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OUTWIT",
-        "engineB": "OBBLIGATO",
-        "type": "AMP_MOD",
-        "amount": 0.643
-      }
-    ]
-  }
+  "version": "1.0.0"
 }

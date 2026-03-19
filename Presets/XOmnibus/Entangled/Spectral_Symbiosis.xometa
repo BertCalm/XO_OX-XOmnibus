@@ -1,14 +1,78 @@
 {
-  "schema_version": 1,
-  "name": "Spectral Symbiosis",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.5,
+        "engineA": "OddOscar",
+        "engineB": "Organon",
+        "type": "Audio->FM"
+      },
+      {
+        "amount": 0.25,
+        "engineA": "Organon",
+        "engineB": "OddOscar",
+        "type": "Env->Morph"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-10",
+  "description": "MORPH and Organon exchange spectral material. Co-evolving texture.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.55,
+    "density": 0.5,
+    "movement": 0.4,
+    "space": 0.4,
+    "warmth": 0.5
+  },
   "engines": [
     "OddOscar",
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "MORPH and Organon exchange spectral material. Co-evolving texture.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "MORPH WAVE",
+    "ORGANISM",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Spectral Symbiosis",
+  "parameters": {
+    "OddOscar": {
+      "morph_attack": 0.5,
+      "morph_decay": 2.0,
+      "morph_detune": 5.0,
+      "morph_filterCutoff": 5000.0,
+      "morph_filterReso": 0.2,
+      "morph_level": 0.55,
+      "morph_position": 0.5,
+      "morph_release": 2.0,
+      "morph_sustain": 0.8,
+      "morph_waveA": 1,
+      "morph_waveB": 3
+    },
+    "Organon": {
+      "organon_catalystDrive": 0.5,
+      "organon_dampingCoeff": 0.1,
+      "organon_enzymeSelect": 2000.0,
+      "organon_isotopeBalance": 0.6,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.4,
+      "organon_metabolicRate": 0.5,
+      "organon_noiseColor": 0.5,
+      "organon_phasonShift": 0.1,
+      "organon_signalFlux": 0.75
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "morph",
     "organon",
@@ -16,70 +80,6 @@
     "symbiosis",
     "co-evolving"
   ],
-  "macroLabels": [
-    "MORPH WAVE",
-    "ORGANISM",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OddOscar": {
-      "morph_waveA": 1,
-      "morph_waveB": 3,
-      "morph_position": 0.5,
-      "morph_detune": 5.0,
-      "morph_filterCutoff": 5000.0,
-      "morph_filterReso": 0.2,
-      "morph_attack": 0.5,
-      "morph_decay": 2.0,
-      "morph_sustain": 0.8,
-      "morph_release": 2.0,
-      "morph_level": 0.55
-    },
-    "Organon": {
-      "organon_metabolicRate": 0.5,
-      "organon_enzymeSelect": 2000.0,
-      "organon_catalystDrive": 0.5,
-      "organon_dampingCoeff": 0.1,
-      "organon_signalFlux": 0.75,
-      "organon_phasonShift": 0.1,
-      "organon_isotopeBalance": 0.6,
-      "organon_lockIn": 0.0,
-      "organon_membrane": 0.4,
-      "organon_noiseColor": 0.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Organon",
-        "type": "Audio->FM",
-        "amount": 0.5
-      },
-      {
-        "engineA": "Organon",
-        "engineB": "OddOscar",
-        "type": "Env->Morph",
-        "amount": 0.25
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.5,
-    "movement": 0.4,
-    "density": 0.5,
-    "space": 0.4,
-    "aggression": 0.08
-  }
+  "version": "1.0.0"
 }

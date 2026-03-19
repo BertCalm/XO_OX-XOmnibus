@@ -1,31 +1,46 @@
 {
-  "name": "Neural Voyage",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Odyssey",
+        "type": "NEURAL_WEAVE",
+        "amount": 0.7
+      }
+    ]
+  },
+  "description": "Octopus neural net processes FM trajectory — decentralized intelligence routing the drift",
   "engines": [
-    "ODYSSEY",
-    "OCTOPUS"
+    "Odyssey",
+    "Octopus"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.65,
     "COUPLING": 0.7,
+    "MOVEMENT": 0.65,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.53,
-    "warmth": 0.52,
-    "movement": 0.71,
-    "density": 0.61,
-    "space": 0.56,
-    "aggression": 0.43
+  "mood": "Entangled",
+  "name": "Neural Voyage",
+  "parameters": {
+    "Odyssey": {},
+    "Octopus": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "NEURAL_WEAVE",
-    "source": "OCTOPUS",
-    "target": "ODYSSEY",
-    "amount": 0.7
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.43,
+    "brightness": 0.53,
+    "density": 0.61,
+    "movement": 0.71,
+    "space": 0.56,
+    "warmth": 0.52
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "octopus",
     "wavetable"
   ],
-  "description": "Octopus neural net processes FM trajectory \u2014 decentralized intelligence routing the drift"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

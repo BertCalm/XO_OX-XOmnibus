@@ -1,49 +1,61 @@
 {
-  "name": "ENDLESS OCEAN PLAIN",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Odyssey",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.663
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.026,
+    "brightness": 0.889,
+    "density": 0.604,
+    "movement": 0.598,
+    "space": 0.939,
+    "warmth": 0.735
+  },
   "engines": [
-    "OCTOPUS",
-    "ODYSSEY"
+    "Octopus",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.442,
+    "COUPLING": 0.278,
+    "MOVEMENT": 0.598,
+    "SPACE": 0.939
+  },
+  "mood": "Foundation",
+  "name": "ENDLESS OCEAN PLAIN",
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.861,
-      "macro_movement": 0.607,
       "macro_coupling": 0.021,
+      "macro_movement": 0.607,
       "macro_space": 0.955
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.821,
-      "macro_movement": 0.606,
       "macro_coupling": 0.763,
+      "macro_movement": 0.606,
       "macro_space": 0.92
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OCTOPUS",
-    "target": "ODYSSEY",
-    "amount": 0.663
-  },
-  "dna": {
-    "brightness": 0.889,
-    "warmth": 0.735,
-    "movement": 0.598,
-    "density": 0.604,
-    "space": 0.939,
-    "aggression": 0.026
-  },
-  "macros": {
-    "CHARACTER": 0.442,
-    "MOVEMENT": 0.598,
-    "COUPLING": 0.278,
-    "SPACE": 0.939
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

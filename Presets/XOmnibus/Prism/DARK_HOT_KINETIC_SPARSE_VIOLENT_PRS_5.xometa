@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "DARK_HOT_KINETIC_SPARSE_VIOLENT_PRS_5",
-  "mood": "Prism",
-  "engines": [
-    "OLE",
-    "OWLFISH"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Owlfish",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.939
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_KINETIC_SPARSE_VIOLENT. Variant 5.",
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.122,
+    "density": 0.061,
+    "movement": 0.918,
+    "space": 0.454,
+    "warmth": 0.92
+  },
+  "engines": [
+    "Ole",
+    "Owlfish"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.117,
+    "COUPLING": 0.061,
+    "MOVEMENT": 0.84,
+    "SPACE": 0.483
+  },
+  "mood": "Prism",
+  "name": "Copper Shimmer",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.161,
+      "macro_coupling": 0.123,
+      "macro_movement": 0.846,
+      "macro_space": 0.444
+    },
+    "Owlfish": {
+      "macro_character": 0.073,
+      "macro_coupling": 0.0,
+      "macro_movement": 0.834,
+      "macro_space": 0.521
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "sparse",
     "hot",
@@ -19,53 +70,6 @@
     "violent",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OLE": {
-      "macro_character": 0.161,
-      "macro_movement": 0.846,
-      "macro_coupling": 0.123,
-      "macro_space": 0.444
-    },
-    "OWLFISH": {
-      "macro_character": 0.073,
-      "macro_movement": 0.834,
-      "macro_coupling": 0.0,
-      "macro_space": 0.521
-    }
-  },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OLE",
-    "target": "OWLFISH",
-    "amount": 0.939
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.122,
-    "warmth": 0.92,
-    "movement": 0.918,
-    "density": 0.061,
-    "space": 0.454,
-    "aggression": 0.88
-  },
-  "macros": {
-    "CHARACTER": 0.117,
-    "MOVEMENT": 0.84,
-    "COUPLING": 0.061,
-    "SPACE": 0.483
-  }
+  "version": "1.0.0"
 }

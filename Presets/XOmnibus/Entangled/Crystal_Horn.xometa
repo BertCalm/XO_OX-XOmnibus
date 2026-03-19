@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Crystal Horn",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.704,
+        "engineA": "Obsidian",
+        "engineB": "Ottoni",
+        "type": "SPECTRAL_TRANSFER"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Mineral hardness resonates through OTTONI brass. Cold crystal fanfare.",
+  "dna": {
+    "aggression": 0.332,
+    "brightness": 0.797,
+    "density": 0.558,
+    "movement": 0.353,
+    "space": 0.625,
+    "warmth": 0.394
+  },
   "engines": [
     "Obsidian",
     "Ottoni"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Mineral hardness resonates through OTTONI brass. Cold crystal fanfare.",
-  "tags": [
-    "obsidian",
-    "ottoni",
-    "crystal",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Crystal Horn II",
   "parameters": {
     "Obsidian": {
-      "obsidian_brightness": 0.885,
-      "obsidian_warmth": 0.133,
-      "obsidian_movement": 0.271,
-      "obsidian_density": 0.528,
-      "obsidian_space": 0.583,
       "obsidian_aggression": 0.169,
-      "obsidian_level": 0.899
+      "obsidian_brightness": 0.885,
+      "obsidian_density": 0.528,
+      "obsidian_level": 0.899,
+      "obsidian_movement": 0.271,
+      "obsidian_space": 0.583,
+      "obsidian_warmth": 0.133
     },
     "Ottoni": {
-      "otto_brightness": 0.526,
-      "otto_warmth": 0.523,
-      "otto_movement": 0.501,
-      "otto_density": 0.776,
-      "otto_space": 0.552,
       "otto_aggression": 0.559,
-      "otto_level": 0.789
+      "otto_brightness": 0.526,
+      "otto_density": 0.776,
+      "otto_level": 0.789,
+      "otto_movement": 0.501,
+      "otto_space": 0.552,
+      "otto_warmth": 0.523
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Ottoni",
-        "type": "SPECTRAL_TRANSFER",
-        "amount": 0.704
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.797,
-    "warmth": 0.394,
-    "movement": 0.353,
-    "density": 0.558,
-    "space": 0.625,
-    "aggression": 0.332
-  }
+  "tags": [
+    "obsidian",
+    "ottoni",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

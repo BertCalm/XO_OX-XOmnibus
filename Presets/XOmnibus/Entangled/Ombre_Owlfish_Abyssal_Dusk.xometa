@@ -1,14 +1,76 @@
 {
-  "schema_version": 1,
-  "name": "Abyssal Dusk",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "source": "Ombre",
+        "target": "Owlfish",
+        "type": "CHAOS_INJECTION"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Abyssal gold bleaching toward shadow as depth pressure increases — the ombre of water itself.",
+  "dna": {
+    "aggression": 0.375,
+    "brightness": 0.466,
+    "density": 0.545,
+    "movement": 0.547,
+    "space": 0.634,
+    "warmth": 0.584
+  },
   "engines": [
     "Ombre",
     "Owlfish"
   ],
-  "author": "XO_OX Deep Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "Abyssal gold bleaching toward shadow as depth pressure increases — the ombre of water itself.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Abyssal Dusk",
+  "parameters": {
+    "Ombre": {
+      "ombre_ampAttack": 0.026,
+      "ombre_ampDecay": 0.44,
+      "ombre_ampRelease": 1.978,
+      "ombre_ampSustain": 0.479,
+      "ombre_blend": 0.206,
+      "ombre_crossfadeRate": 0.179,
+      "ombre_duskPosition": 0.42,
+      "ombre_filterCutoff": 8748.6,
+      "ombre_filterReso": 0.286,
+      "ombre_forgetRate": 0.686,
+      "ombre_level": 0.695,
+      "ombre_lfo1Depth": 0.501,
+      "ombre_lfo1Rate": 1.245,
+      "ombre_lfo2Depth": 0.378,
+      "ombre_lfo2Rate": 0.049,
+      "ombre_memoryDepth": 0.615,
+      "ombre_modAttack": 0.024,
+      "ombre_modDecay": 0.704,
+      "ombre_modRelease": 0.675,
+      "ombre_modSustain": 0.577,
+      "ombre_narrativeA": 0.412,
+      "ombre_narrativeB": 0.43,
+      "ombre_reverbDamp": 0.316,
+      "ombre_reverbSize": 0.805,
+      "ombre_shadowAmount": 0.508,
+      "ombre_spaceMix": 0.669,
+      "ombre_toneA": 3267.7,
+      "ombre_toneB": 2514.7
+    },
+    "Owlfish": {
+      "owl_filterCutoff": 6218.2,
+      "owl_level": 0.743
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -18,68 +80,6 @@
     "twilight",
     "liminal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "Ombre": {
-      "ombre_blend": 0.206,
-      "ombre_memoryDepth": 0.615,
-      "ombre_forgetRate": 0.686,
-      "ombre_shadowAmount": 0.508,
-      "ombre_duskPosition": 0.42,
-      "ombre_narrativeA": 0.412,
-      "ombre_narrativeB": 0.43,
-      "ombre_crossfadeRate": 0.179,
-      "ombre_toneA": 3267.7,
-      "ombre_toneB": 2514.7,
-      "ombre_filterCutoff": 8748.6,
-      "ombre_filterReso": 0.286,
-      "ombre_level": 0.695,
-      "ombre_ampAttack": 0.026,
-      "ombre_ampDecay": 0.44,
-      "ombre_ampSustain": 0.479,
-      "ombre_ampRelease": 1.978,
-      "ombre_modAttack": 0.024,
-      "ombre_modDecay": 0.704,
-      "ombre_modSustain": 0.577,
-      "ombre_modRelease": 0.675,
-      "ombre_lfo1Rate": 1.245,
-      "ombre_lfo1Depth": 0.501,
-      "ombre_lfo2Rate": 0.049,
-      "ombre_lfo2Depth": 0.378,
-      "ombre_spaceMix": 0.669,
-      "ombre_reverbSize": 0.805,
-      "ombre_reverbDamp": 0.316
-    },
-    "Owlfish": {
-      "owl_level": 0.743,
-      "owl_filterCutoff": 6218.2
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "CHAOS_INJECTION",
-        "source": "Ombre",
-        "target": "Owlfish",
-        "amount": 0.65
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.466,
-    "warmth": 0.584,
-    "movement": 0.547,
-    "density": 0.545,
-    "space": 0.634,
-    "aggression": 0.375
-  }
+  "version": "1.0.0"
 }

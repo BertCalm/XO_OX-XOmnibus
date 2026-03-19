@@ -1,50 +1,62 @@
 {
-  "name": "DARK_COLD_DENSE_VIOLENT_FND_AGG_1",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "ORACLE",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.402,
-      "macro_movement": 0.603,
-      "macro_coupling": 0.368,
-      "macro_space": 0.481
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.403,
-      "macro_movement": 0.556,
-      "macro_coupling": 0.338,
-      "macro_space": 0.496
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORACLE",
-    "target": "ODDOSCAR",
-    "amount": 0.822
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "OddOscar",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.822
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.977,
     "brightness": 0.023,
-    "warmth": 0.05,
-    "movement": 0.389,
     "density": 0.958,
+    "movement": 0.389,
     "space": 0.571,
-    "aggression": 0.977
+    "warmth": 0.05
   },
+  "engines": [
+    "Oracle",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.402,
-    "MOVEMENT": 0.603,
     "COUPLING": 0.368,
+    "MOVEMENT": 0.603,
     "SPACE": 0.481
   },
+  "mood": "Foundation",
+  "name": "Signal Edge 2",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.403,
+      "macro_coupling": 0.338,
+      "macro_movement": 0.556,
+      "macro_space": 0.496
+    },
+    "Oracle": {
+      "macro_character": 0.402,
+      "macro_coupling": 0.368,
+      "macro_movement": 0.603,
+      "macro_space": 0.481
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "cold",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

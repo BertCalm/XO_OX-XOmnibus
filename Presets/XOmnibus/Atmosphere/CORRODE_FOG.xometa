@@ -1,50 +1,62 @@
 {
-  "name": "CORRODE FOG",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Oceanic",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.586
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.935,
+    "brightness": 0.474,
+    "density": 0.153,
+    "movement": 0.133,
+    "space": 0.428,
+    "warmth": 0.886
+  },
   "engines": [
-    "OBSIDIAN",
-    "OCEANIC"
+    "Obsidian",
+    "Oceanic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.57,
+    "COUPLING": 0.203,
+    "MOVEMENT": 0.714,
+    "SPACE": 0.428
+  },
+  "mood": "Atmosphere",
+  "name": "CORRODE FOG",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.2,
-      "macro_movement": 0.354,
       "macro_coupling": 0.159,
+      "macro_movement": 0.354,
       "macro_space": 0.56
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.514,
-      "macro_movement": 0.203,
       "macro_coupling": 0.763,
+      "macro_movement": 0.203,
       "macro_space": 0.473
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBSIDIAN",
-    "target": "OCEANIC",
-    "amount": 0.586
-  },
-  "dna": {
-    "brightness": 0.474,
-    "warmth": 0.886,
-    "movement": 0.133,
-    "density": 0.153,
-    "space": 0.428,
-    "aggression": 0.935
-  },
-  "macros": {
-    "CHARACTER": 0.57,
-    "MOVEMENT": 0.714,
-    "COUPLING": 0.203,
-    "SPACE": 0.428
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

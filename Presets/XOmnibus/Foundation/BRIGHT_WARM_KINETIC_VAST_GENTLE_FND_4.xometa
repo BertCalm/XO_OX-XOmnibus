@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_WARM_KINETIC_VAST_GENTLE_FND_4",
-  "mood": "Foundation",
-  "engines": [
-    "ODDFELIX",
-    "OVERBITE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Overbite",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.451
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_WARM_KINETIC_VAST_GENTLE. Variant 4.",
+  "dna": {
+    "aggression": 0.051,
+    "brightness": 0.973,
+    "density": 0.479,
+    "movement": 0.893,
+    "space": 0.921,
+    "warmth": 0.9
+  },
+  "engines": [
+    "OddfeliX",
+    "Overbite"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 1.0,
+    "COUPLING": 0.516,
+    "MOVEMENT": 0.907,
+    "SPACE": 0.843
+  },
+  "mood": "Foundation",
+  "name": "Glow Abyss",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.584,
+      "macro_movement": 0.978,
+      "macro_space": 0.854
+    },
+    "Overbite": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.449,
+      "macro_movement": 0.836,
+      "macro_space": 0.833
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "kinetic",
@@ -19,53 +70,6 @@
     "foundation",
     "gentle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ODDFELIX": {
-      "macro_character": 1.0,
-      "macro_movement": 0.978,
-      "macro_coupling": 0.584,
-      "macro_space": 0.854
-    },
-    "OVERBITE": {
-      "macro_character": 1.0,
-      "macro_movement": 0.836,
-      "macro_coupling": 0.449,
-      "macro_space": 0.833
-    }
-  },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ODDFELIX",
-    "target": "OVERBITE",
-    "amount": 0.451
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.973,
-    "warmth": 0.9,
-    "movement": 0.893,
-    "density": 0.479,
-    "space": 0.921,
-    "aggression": 0.051
-  },
-  "macros": {
-    "CHARACTER": 1.0,
-    "MOVEMENT": 0.907,
-    "COUPLING": 0.516,
-    "SPACE": 0.843
-  }
+  "version": "1.0.0"
 }

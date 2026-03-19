@@ -1,38 +1,54 @@
 {
-  "schema_version": 1,
-  "name": "Shifting Crease",
-  "mood": "Flux",
-  "engines": ["Origami"],
-  "author": "Guru Bin — Fleet Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Moderate fold amount with a fold point set deliberately between zones — as notes change across the keyboard, the fold point interacts with the harmonic series differently for each pitch. Low notes sound thick and buzzy; high notes become clean and bell-like. The crease shifts with every key press. Flux as geography.",
-  "tags": ["flux", "evolving", "pitch-dependent", "versatile", "dynamic", "harmonic"],
-  "macroLabels": ["CHARACTER", "FOLD", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.58,
-    "warmth": 0.52,
-    "movement": 0.62,
-    "density": 0.6,
-    "space": 0.48,
-    "aggression": 0.42
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Moderate fold amount with a fold point set deliberately between zones — as notes change across the keyboard, the fold point interacts with the harmonic series differently for each pitch. Low notes sound thick and buzzy; high notes become clean and bell-like. The crease shifts with every key press. Flux as geography.",
+  "dna": {
+    "aggression": 0.42,
+    "brightness": 0.58,
+    "density": 0.6,
+    "movement": 0.62,
+    "space": 0.48,
+    "warmth": 0.52
+  },
+  "engines": [
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FOLD",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Shifting Crease",
   "parameters": {
     "Origami": {
-      "origami_foldPoint": 0.48,
-      "origami_foldAmt": 0.62,
-      "origami_layers": 4,
-      "origami_symmetry": 0.35,
-      "origami_filterCutoff": 0.64,
-      "origami_filterReso": 0.38,
-      "origami_oscPitch": 0.0,
       "origami_ampAttack": 0.06,
       "origami_ampDecay": 0.45,
+      "origami_ampRelease": 1.3,
       "origami_ampSustain": 0.75,
-      "origami_ampRelease": 1.3
+      "origami_filterCutoff": 0.64,
+      "origami_filterReso": 0.38,
+      "origami_foldAmt": 0.62,
+      "origami_foldPoint": 0.48,
+      "origami_layers": 4,
+      "origami_oscPitch": 0.0,
+      "origami_symmetry": 0.35
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "flux",
+    "evolving",
+    "pitch-dependent",
+    "versatile",
+    "dynamic",
+    "harmonic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

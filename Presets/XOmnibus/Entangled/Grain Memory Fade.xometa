@@ -1,31 +1,46 @@
 {
-  "name": "Grain Memory Fade",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ombre",
+        "type": "GRADIENT_DISSOLVE",
+        "amount": 0.55
+      }
+    ]
+  },
+  "description": "Granular cloud softens through ombre gradient — each grain dimmer at the horizon",
   "engines": [
-    "OPAL",
-    "OMBRE"
+    "Opal",
+    "Ombre"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.45,
-    "MOVEMENT": 0.6,
     "COUPLING": 0.55,
+    "MOVEMENT": 0.6,
     "SPACE": 0.8
   },
-  "sonic_dna": {
-    "brightness": 0.48,
-    "warmth": 0.55,
-    "movement": 0.54,
-    "density": 0.5,
-    "space": 0.72,
-    "aggression": 0.2
+  "mood": "Entangled",
+  "name": "Grain Memory Fade",
+  "parameters": {
+    "Opal": {},
+    "Ombre": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "GRADIENT_DISSOLVE",
-    "source": "OPAL",
-    "target": "OMBRE",
-    "amount": 0.55
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2,
+    "brightness": 0.48,
+    "density": 0.5,
+    "movement": 0.54,
+    "space": 0.72,
+    "warmth": 0.55
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "ombre",
     "granular"
   ],
-  "description": "Granular cloud softens through ombre gradient \u2014 each grain dimmer at the horizon"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

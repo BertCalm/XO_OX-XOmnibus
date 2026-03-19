@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_WARM_FROZEN_SPARSE_INTIMATE_ENT3_2",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Oceanic",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.9423
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_SPARSE_INTIMATE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.4238,
+    "brightness": 0.9233,
+    "density": 0.0694,
+    "movement": 0.0849,
+    "space": 0.0787,
+    "warmth": 0.9042
+  },
   "engines": [
-    "OCTOPUS",
-    "OCEANIC"
+    "Octopus",
+    "Oceanic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_WARM_FROZEN_SPARSE_INTIMATE. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6592,
+    "COUPLING": 0.9094,
+    "MOVEMENT": 0.0935,
+    "SPACE": 0.7426
+  },
+  "mood": "Entangled",
+  "name": "Peach Flux",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.6381,
+      "macro_coupling": 0.8416,
+      "macro_movement": 0.1036,
+      "macro_space": 0.5483
+    },
+    "Octopus": {
+      "macro_character": 0.6802,
+      "macro_coupling": 0.9773,
+      "macro_movement": 0.0834,
+      "macro_space": 0.9368
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +70,6 @@
     "sparse",
     "intimate"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OCTOPUS": {
-      "macro_character": 0.6802,
-      "macro_movement": 0.0834,
-      "macro_coupling": 0.9773,
-      "macro_space": 0.9368
-    },
-    "OCEANIC": {
-      "macro_character": 0.6381,
-      "macro_movement": 0.1036,
-      "macro_coupling": 0.8416,
-      "macro_space": 0.5483
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OCTOPUS",
-    "target": "OCEANIC",
-    "amount": 0.9423
-  },
-  "macros": {
-    "CHARACTER": 0.6592,
-    "MOVEMENT": 0.0935,
-    "COUPLING": 0.9094,
-    "SPACE": 0.7426
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.9233,
-    "warmth": 0.9042,
-    "movement": 0.0849,
-    "density": 0.0694,
-    "space": 0.0787,
-    "aggression": 0.4238
-  }
+  "version": "1.0.0"
 }

@@ -1,49 +1,61 @@
 {
-  "name": "INFERNO REFRACTION",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "ODDFELIX",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "ODDFELIX": {
-      "macro_character": 0.109,
-      "macro_movement": 0.443,
-      "macro_coupling": 0.778,
-      "macro_space": 0.842
-    },
-    "OBSCURA": {
-      "macro_character": 0.37,
-      "macro_movement": 0.407,
-      "macro_coupling": 0.536,
-      "macro_space": 0.772
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ODDFELIX",
-    "target": "OBSCURA",
-    "amount": 0.899
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obscura",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.899
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.81,
     "brightness": 0.718,
-    "warmth": 0.895,
-    "movement": 0.508,
     "density": 0.143,
+    "movement": 0.508,
     "space": 0.096,
-    "aggression": 0.81
+    "warmth": 0.895
   },
+  "engines": [
+    "OddfeliX",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.573,
-    "MOVEMENT": 0.212,
     "COUPLING": 0.516,
+    "MOVEMENT": 0.212,
     "SPACE": 0.734
   },
+  "mood": "Prism",
+  "name": "INFERNO REFRACTION",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.37,
+      "macro_coupling": 0.536,
+      "macro_movement": 0.407,
+      "macro_space": 0.772
+    },
+    "OddfeliX": {
+      "macro_character": 0.109,
+      "macro_coupling": 0.778,
+      "macro_movement": 0.443,
+      "macro_space": 0.842
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

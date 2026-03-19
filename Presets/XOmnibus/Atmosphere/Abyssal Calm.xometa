@@ -1,25 +1,35 @@
 {
-  "name": "Abyssal Calm",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "Three hundred meters below. No light, only pressure and resonance.",
   "engines": [
-    "OVERDUB"
+    "Overdub"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.325,
-    "MOVEMENT": 0.152,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.152,
     "SPACE": 0.962
   },
-  "sonic_dna": {
-    "brightness": 0.152,
-    "warmth": 0.497,
-    "movement": 0.152,
-    "density": 0.748,
-    "space": 0.962,
-    "aggression": 0.056
+  "mood": "Atmosphere",
+  "name": "Abyssal Calm",
+  "parameters": {
+    "Overdub": {}
   },
-  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.056,
+    "brightness": 0.152,
+    "density": 0.748,
+    "movement": 0.152,
+    "space": 0.962,
+    "warmth": 0.497
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +37,13 @@
     "deep",
     "vast"
   ],
-  "description": "Three hundred meters below. No light, only pressure and resonance."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.2
+  }
 }

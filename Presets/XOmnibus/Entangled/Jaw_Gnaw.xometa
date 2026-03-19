@@ -1,77 +1,77 @@
 {
-  "schema_version": 1,
-  "name": "Jaw Gnaw",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.693,
+        "engineA": "Overbite",
+        "engineB": "Ouroboros",
+        "type": "timbral_blend"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "OVERBITE recursive gnaw meets OUROBOROS self-loop. Infinite bite feedback.",
+  "dna": {
+    "aggression": 0.732,
+    "brightness": 0.461,
+    "density": 0.745,
+    "movement": 0.7,
+    "space": 0.42,
+    "warmth": 0.494
+  },
   "engines": [
     "Overbite",
     "Ouroboros"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE recursive gnaw meets OUROBOROS self-loop. Infinite bite feedback.",
-  "tags": [
-    "overbite",
-    "ouroboros",
-    "coupling",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": 90,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Jaw Gnaw",
   "parameters": {
-    "Overbite": {
-      "poss_macro1": 0.359,
-      "poss_macro2": 0.445,
-      "poss_macro3": 0.578,
-      "poss_macro4": 0.387,
-      "poss_couplingOut": 0.742,
-      "poss_couplingIn": 0.417,
-      "poss_outputLevel": 0.902,
-      "poss_outputPan": -0.019,
-      "poss_biteDepth": 0.828,
-      "poss_fangAttack": 0.303,
-      "poss_gnashAmt": 0.416,
-      "poss_snapRelease": 0.266
-    },
     "Ouroboros": {
+      "ouro_couplingIn": 0.592,
+      "ouro_couplingOut": 0.656,
       "ouro_macro1": 0.328,
       "ouro_macro2": 0.367,
       "ouro_macro3": 0.546,
       "ouro_macro4": 0.458,
-      "ouro_couplingOut": 0.656,
-      "ouro_couplingIn": 0.592,
       "ouro_outputLevel": 0.895,
       "ouro_outputPan": 0.027
+    },
+    "Overbite": {
+      "poss_biteDepth": 0.828,
+      "poss_couplingIn": 0.417,
+      "poss_couplingOut": 0.742,
+      "poss_fangAttack": 0.303,
+      "poss_gnashAmt": 0.416,
+      "poss_macro1": 0.359,
+      "poss_macro2": 0.445,
+      "poss_macro3": 0.578,
+      "poss_macro4": 0.387,
+      "poss_outputLevel": 0.902,
+      "poss_outputPan": -0.019,
+      "poss_snapRelease": 0.266
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Ouroboros",
-        "type": "timbral_blend",
-        "amount": 0.693
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.461,
-    "warmth": 0.494,
-    "movement": 0.7,
-    "density": 0.745,
-    "space": 0.42,
-    "aggression": 0.732
-  }
+  "tags": [
+    "overbite",
+    "ouroboros",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 90,
+  "version": "1.0.0"
 }

@@ -1,59 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Interval Drop",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Solid, grounding bass tone with warm character.",
+  "dna": {
+    "aggression": 0.083,
+    "brightness": 0.344,
+    "density": 0.177,
+    "movement": 0.0,
+    "space": 0.0,
+    "warmth": 0.226
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Solid, grounding bass tone with warm character.",
-  "tags": [
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Bass",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Bass",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Interval Drop",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 0.0,
-      "drift_oscA_level": 0.85,
-      "drift_oscB_mode": 0.0,
-      "drift_oscB_shape": 0.0,
-      "drift_oscB_level": 0.55,
-      "drift_oscB_tune": 7.0,
-      "drift_subLevel": 0.4,
+      "drift_attack": 2.0,
+      "drift_decay": 300.0,
       "drift_filterCutoff": 1500.0,
       "drift_filterReso": 0.2,
       "drift_filterSlope": 1.0,
       "drift_hazeAmount": 0.2,
-      "drift_attack": 2.0,
-      "drift_decay": 300.0,
-      "drift_sustain": 0.55,
+      "drift_level": -2.0,
+      "drift_oscA_level": 0.85,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscB_level": 0.55,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 0.0,
+      "drift_oscB_tune": 7.0,
       "drift_release": 180.0,
-      "drift_level": -2.0
+      "drift_subLevel": 0.4,
+      "drift_sustain": 0.55
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.344,
-    "warmth": 0.226,
-    "movement": 0.0,
-    "density": 0.177,
-    "space": 0.0,
-    "aggression": 0.083
-  }
+  "tags": [
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

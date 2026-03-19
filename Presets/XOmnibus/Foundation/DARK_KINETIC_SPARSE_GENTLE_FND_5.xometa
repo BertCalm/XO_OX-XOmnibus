@@ -1,45 +1,56 @@
 {
-  "name": "DARK_KINETIC_SPARSE_GENTLE_FND_5",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Overworld",
+        "type": "FILTER_MOD",
+        "amount": 0.337
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.123,
+    "brightness": 0.072,
+    "density": 0.09,
+    "movement": 0.914,
+    "space": 0.422,
+    "warmth": 0.405
+  },
   "engines": [
-    "ORACLE",
-    "OVERWORLD"
+    "Oracle",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.805,
+    "COUPLING": 0.671,
+    "MOVEMENT": 0.244,
+    "SPACE": 0.512
+  },
+  "mood": "Foundation",
+  "name": "Shard Shimmer 2",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.751,
-      "macro_movement": 0.263,
       "macro_coupling": 0.577,
+      "macro_movement": 0.263,
       "macro_space": 0.535
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.856,
-      "macro_movement": 0.553,
       "macro_coupling": 0.134,
+      "macro_movement": 0.553,
       "macro_space": 0.628
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ORACLE",
-    "target": "OVERWORLD",
-    "amount": 0.337
-  },
-  "dna": {
-    "brightness": 0.072,
-    "warmth": 0.405,
-    "movement": 0.914,
-    "density": 0.09,
-    "space": 0.422,
-    "aggression": 0.123
-  },
-  "macros": {
-    "CHARACTER": 0.805,
-    "MOVEMENT": 0.244,
-    "COUPLING": 0.671,
-    "SPACE": 0.512
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -47,5 +58,6 @@
     "kinetic",
     "sparse",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

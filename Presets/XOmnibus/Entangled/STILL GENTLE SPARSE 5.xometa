@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Opal \u00d7 Octopus \u2014 Envelope Link coupling at extreme DNA corner.",
+  "description": "Opal × Octopus — Envelope Link coupling at extreme DNA corner.",
   "tags": [
     "still",
     "opal",
@@ -33,7 +33,10 @@
     "space": 0.452,
     "aggression": 0.109
   },
-  "parameters": {},
+  "parameters": {
+    "Opal": {},
+    "Octopus": {}
+  },
   "coupling": {
     "pairs": [
       {

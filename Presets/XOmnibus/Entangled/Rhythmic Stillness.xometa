@@ -1,19 +1,29 @@
 {
-  "schema_version": 1,
-  "name": "Rhythmic Stillness",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.571,
+        "engineA": "Ohm",
+        "engineB": "Ole",
+        "type": "Env->Morph"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OHM and OLE coupled via Env->Morph. Blended Constellation DNA — stub seeded for expansion.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.553,
+    "density": 0.62,
+    "movement": 0.715,
+    "space": 0.723,
+    "warmth": 0.696
+  },
   "engines": [
-    "OHM",
-    "OLE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OHM and OLE coupled via Env->Morph. Blended Constellation DNA \u2014 stub seeded for expansion.",
-  "tags": [
-    "coupling",
-    "constellation",
-    "ohm",
-    "ole"
+    "Ohm",
+    "Ole"
   ],
   "macroLabels": [
     "VOICE",
@@ -21,27 +31,20 @@
     "WEAVE",
     "SPREAD"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OHM",
-        "engineB": "OLE",
-        "type": "Env->Morph",
-        "amount": 0.571
-      }
-    ]
+  "mood": "Entangled",
+  "name": "Rhythmic Stillness",
+  "parameters": {
+    "Ohm": {},
+    "Ole": {}
   },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.553,
-    "warmth": 0.696,
-    "movement": 0.715,
-    "density": 0.62,
-    "space": 0.723,
-    "aggression": 0.5
-  }
+  "tags": [
+    "coupling",
+    "constellation",
+    "ohm",
+    "ole"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

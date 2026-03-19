@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Road Trip",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.27,
+      "destination": "Ottoni",
+      "source": "Ole",
+      "type": "AudioToFM"
+    }
+  ],
+  "couplingIntensity": "Medium",
+  "created": "2026-03-14",
+  "description": "Alliance and drama both in motion. The family gathering is escalating.",
+  "dna": {
+    "aggression": 0.29,
+    "brightness": 0.61,
+    "density": 0.49,
+    "movement": 0.75,
+    "space": 0.23,
+    "warmth": 0.39
+  },
   "engines": [
     "Ole",
     "Ottoni"
-  ],
-  "author": "Exo Meta \u2014 Family Dinner",
-  "version": "1.0.0",
-  "tags": [
-    "family",
-    "dinner",
-    "constellation",
-    "multi-engine",
-    "flux"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,79 +29,71 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.61,
-    "warmth": 0.39,
-    "movement": 0.75,
-    "density": 0.49,
-    "space": 0.23,
-    "aggression": 0.29
-  },
+  "mood": "Flux",
+  "name": "Road Trip",
   "parameters": {
     "Ole": {
+      "ole_allianceBlend": 0.604,
+      "ole_allianceConfig": 1,
+      "ole_aunt1Brightness": 0.7,
       "ole_aunt1Level": 0.619,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.7,
-      "ole_aunt2Level": 0.834,
       "ole_aunt2CoinPress": 0.099,
       "ole_aunt2GourdSize": 0.626,
+      "ole_aunt2Level": 0.834,
+      "ole_aunt3Brightness": 0.467,
       "ole_aunt3Level": 0.733,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.467,
       "ole_damping": 0.992,
-      "ole_sympatheticAmt": 0.35,
-      "ole_driftRate": 0.118,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 1,
-      "ole_allianceBlend": 0.604,
-      "ole_husbandOudLevel": 0.28,
+      "ole_driftRate": 0.118,
       "ole_husbandBouzLevel": 0.153,
+      "ole_husbandOudLevel": 0.28,
       "ole_husbandPinLevel": 0.498,
-      "ole_macroFuego": 0.549,
       "ole_macroDrama": 0.34,
+      "ole_macroFuego": 0.549,
+      "ole_macroIsla": 0.09,
       "ole_macroSides": 0.155,
-      "ole_macroIsla": 0.09
+      "ole_sympatheticAmt": 0.35
     },
     "Ottoni": {
+      "otto_chorusRate": 1.0,
+      "otto_damping": 0.995,
+      "otto_delayMix": 0.195,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.097,
+      "otto_driveAmount": 0.2,
+      "otto_foreignCold": 0.193,
+      "otto_foreignDrift": 0.271,
+      "otto_foreignStretch": 0.153,
+      "otto_macroEmbouchure": 0.659,
+      "otto_macroForeign": 0.311,
+      "otto_macroGrow": 0.234,
+      "otto_macroLake": 0.161,
+      "otto_reverbSize": 0.194,
+      "otto_sympatheticAmt": 0.286,
+      "otto_teenBore": 0.487,
+      "otto_teenEmbouchure": 0.626,
+      "otto_teenInst": 8,
+      "otto_teenLevel": 0.388,
+      "otto_teenVibratoDepth": 0.358,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 4,
       "otto_toddlerLevel": 0.461,
       "otto_toddlerPressure": 0.447,
-      "otto_toddlerInst": 4,
-      "otto_tweenLevel": 0.386,
       "otto_tweenEmbouchure": 0.651,
-      "otto_tweenValve": 0.392,
       "otto_tweenInst": 4,
-      "otto_teenLevel": 0.388,
-      "otto_teenEmbouchure": 0.626,
-      "otto_teenBore": 0.487,
-      "otto_teenInst": 8,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.358,
-      "otto_damping": 0.995,
-      "otto_sympatheticAmt": 0.286,
-      "otto_driftRate": 0.097,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.153,
-      "otto_foreignDrift": 0.271,
-      "otto_foreignCold": 0.193,
-      "otto_reverbSize": 0.194,
-      "otto_chorusRate": 1.0,
-      "otto_driveAmount": 0.2,
-      "otto_delayMix": 0.195,
-      "otto_macroEmbouchure": 0.659,
-      "otto_macroGrow": 0.234,
-      "otto_macroForeign": 0.311,
-      "otto_macroLake": 0.161
+      "otto_tweenLevel": 0.386,
+      "otto_tweenValve": 0.392
     }
   },
-  "coupling": [
-    {
-      "source": "Ole",
-      "destination": "Ottoni",
-      "type": "AudioToFM",
-      "amount": 0.27
-    }
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "dinner",
+    "constellation",
+    "multi-engine",
+    "flux"
   ],
-  "description": "Alliance and drama both in motion. The family gathering is escalating."
+  "version": "1.0.0"
 }

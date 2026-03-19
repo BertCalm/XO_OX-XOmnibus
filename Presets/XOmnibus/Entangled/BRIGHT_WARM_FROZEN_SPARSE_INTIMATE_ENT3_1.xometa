@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_WARM_FROZEN_SPARSE_INTIMATE_ENT3_1",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Overdub",
+        "type": "PITCH_SYNC",
+        "amount": 0.807
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_SPARSE_INTIMATE. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.5648,
+    "brightness": 0.9646,
+    "density": 0.1013,
+    "movement": 0.064,
+    "space": 0.0779,
+    "warmth": 0.9309
+  },
   "engines": [
-    "OBSIDIAN",
-    "OVERDUB"
+    "Obsidian",
+    "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_WARM_FROZEN_SPARSE_INTIMATE. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.759,
+    "COUPLING": 0.8582,
+    "MOVEMENT": 0.0638,
+    "SPACE": 0.413
+  },
+  "mood": "Entangled",
+  "name": "Peach Blade",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.5756,
+      "macro_coupling": 0.7934,
+      "macro_movement": 0.069,
+      "macro_space": 0.6889
+    },
+    "Overdub": {
+      "macro_character": 0.9423,
+      "macro_coupling": 0.9231,
+      "macro_movement": 0.0586,
+      "macro_space": 0.1371
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +70,6 @@
     "sparse",
     "intimate"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OBSIDIAN": {
-      "macro_character": 0.5756,
-      "macro_movement": 0.069,
-      "macro_coupling": 0.7934,
-      "macro_space": 0.6889
-    },
-    "OVERDUB": {
-      "macro_character": 0.9423,
-      "macro_movement": 0.0586,
-      "macro_coupling": 0.9231,
-      "macro_space": 0.1371
-    }
-  },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBSIDIAN",
-    "target": "OVERDUB",
-    "amount": 0.807
-  },
-  "macros": {
-    "CHARACTER": 0.759,
-    "MOVEMENT": 0.0638,
-    "COUPLING": 0.8582,
-    "SPACE": 0.413
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.9646,
-    "warmth": 0.9309,
-    "movement": 0.064,
-    "density": 0.1013,
-    "space": 0.0779,
-    "aggression": 0.5648
-  }
+  "version": "1.0.0"
 }

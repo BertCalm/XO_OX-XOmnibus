@@ -33,7 +33,9 @@
     "space": 0.7,
     "aggression": 0.42
   },
-  "parameters": {},
+  "parameters": {
+    "OddOscar": {}
+  },
   "tags": [
     "flux",
     "cold-flux",
@@ -41,5 +43,5 @@
     "black-ice",
     "run"
   ],
-  "description": "OddOscar oscillator pair sliding on black ice \u2014 dangerous cold velocity."
+  "description": "OddOscar oscillator pair sliding on black ice — dangerous cold velocity."
 }

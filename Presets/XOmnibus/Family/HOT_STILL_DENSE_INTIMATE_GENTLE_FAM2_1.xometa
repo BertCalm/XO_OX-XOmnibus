@@ -1,45 +1,56 @@
 {
-  "name": "HOT STILL DENSE INTIMATE GENTLE FAM2 1",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Overdub",
+        "type": "FILTER_MOD",
+        "amount": 0.515
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.056,
+    "brightness": 0.516,
+    "density": 0.975,
+    "movement": 0.031,
+    "space": 0.033,
+    "warmth": 0.968
+  },
   "engines": [
-    "OLE",
-    "OVERDUB"
+    "Ole",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.742,
+    "COUPLING": 0.515,
+    "MOVEMENT": 0.031,
+    "SPACE": 0.033
+  },
+  "mood": "Family",
+  "name": "HOT STILL DENSE INTIMATE GE...",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.742,
-      "macro_movement": 0.031,
       "macro_coupling": 0.515,
+      "macro_movement": 0.031,
       "macro_space": 0.033
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.715,
-      "macro_movement": 0.02,
       "macro_coupling": 0.533,
+      "macro_movement": 0.02,
       "macro_space": 0.035
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OLE",
-    "target": "OVERDUB",
-    "amount": 0.515
-  },
-  "dna": {
-    "brightness": 0.516,
-    "warmth": 0.968,
-    "movement": 0.031,
-    "density": 0.975,
-    "space": 0.033,
-    "aggression": 0.056
-  },
-  "macros": {
-    "CHARACTER": 0.742,
-    "MOVEMENT": 0.031,
-    "COUPLING": 0.515,
-    "SPACE": 0.033
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
@@ -47,5 +58,6 @@
     "dense",
     "intimate",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

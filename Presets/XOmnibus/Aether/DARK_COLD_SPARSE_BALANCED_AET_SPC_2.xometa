@@ -1,50 +1,62 @@
 {
-  "name": "DARK COLD SPARSE BALANCED AET SPC 2",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OSPREY",
-    "OMBRE"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.08,
-      "macro_movement": 0.318,
-      "macro_coupling": 0.589,
-      "macro_space": 0.506
-    },
-    "OMBRE": {
-      "macro_character": 0.076,
-      "macro_movement": 0.345,
-      "macro_coupling": 0.614,
-      "macro_space": 0.513
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OSPREY",
-    "target": "OMBRE",
-    "amount": 0.805
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Ombre",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.805
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.109,
     "brightness": 0.119,
-    "warmth": 0.041,
-    "movement": 0.318,
     "density": 0.068,
+    "movement": 0.318,
     "space": 0.506,
-    "aggression": 0.109
+    "warmth": 0.041
   },
+  "engines": [
+    "Osprey",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.08,
-    "MOVEMENT": 0.318,
     "COUPLING": 0.589,
+    "MOVEMENT": 0.318,
     "SPACE": 0.506
   },
+  "mood": "Aether",
+  "name": "DARK COLD SPARSE BALANCED A...",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.076,
+      "macro_coupling": 0.614,
+      "macro_movement": 0.345,
+      "macro_space": 0.513
+    },
+    "Osprey": {
+      "macro_character": 0.08,
+      "macro_coupling": 0.589,
+      "macro_movement": 0.318,
+      "macro_space": 0.506
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
     "room",
     "space-mid",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

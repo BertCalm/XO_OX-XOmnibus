@@ -1,45 +1,56 @@
 {
-  "name": "DARK WARM TIGHT VIOLENT ATM AGG 3",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Origami",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.854
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.953,
+    "brightness": 0.095,
+    "density": 0.586,
+    "movement": 0.459,
+    "space": 0.028,
+    "warmth": 0.985
+  },
   "engines": [
-    "OPTIC",
-    "ORIGAMI"
+    "Optic",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.092,
+    "COUPLING": 0.939,
+    "MOVEMENT": 0.426,
+    "SPACE": 0.028
+  },
+  "mood": "Atmosphere",
+  "name": "DARK WARM TIGHT VIOLENT ATM...",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.092,
-      "macro_movement": 0.426,
       "macro_coupling": 0.927,
+      "macro_movement": 0.426,
       "macro_space": 0.028
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.092,
-      "macro_movement": 0.427,
       "macro_coupling": 0.951,
+      "macro_movement": 0.427,
       "macro_space": 0.028
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OPTIC",
-    "target": "ORIGAMI",
-    "amount": 0.854
-  },
-  "dna": {
-    "brightness": 0.095,
-    "warmth": 0.985,
-    "movement": 0.459,
-    "density": 0.586,
-    "space": 0.028,
-    "aggression": 0.953
-  },
-  "macros": {
-    "CHARACTER": 0.092,
-    "MOVEMENT": 0.426,
-    "COUPLING": 0.939,
-    "SPACE": 0.028
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -47,5 +58,6 @@
     "violent",
     "dark",
     "tight"
-  ]
+  ],
+  "version": "1.0"
 }

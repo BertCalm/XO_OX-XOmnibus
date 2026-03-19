@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Drama Bloom",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "OLE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.683,
+        "engineA": "Overlap",
+        "engineB": "Ole",
+        "type": "AMP_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
   "description": "OLE Afro-Latin drama macro drives OVERLAP bloom intensity — DRAMA at maximum: infinite space opens",
-  "tags": [
-    "coupling",
-    "entangled",
-    "overlap",
-    "ole",
-    "latin",
-    "expressive"
+  "dna": {
+    "aggression": 0.325,
+    "brightness": 0.575,
+    "density": 0.6,
+    "movement": 0.55,
+    "space": 0.675,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Overlap",
+    "Ole"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,58 +32,51 @@
   ],
   "macros": {
     "CHARACTER": 0.553,
-    "MOVEMENT": 0.358,
     "COUPLING": 0.856,
+    "MOVEMENT": 0.358,
     "SPACE": 0.42
   },
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.575,
-    "space": 0.675,
-    "aggression": 0.325,
-    "movement": 0.55,
-    "warmth": 0.55,
-    "density": 0.6
-  },
-  "sonic_dna": {
-    "brightness": 0.575,
-    "space": 0.675,
-    "aggression": 0.325,
-    "movement": 0.55,
-    "warmth": 0.55,
-    "density": 0.6
-  },
+  "mood": "Entangled",
+  "name": "Drama Bloom",
   "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.594,
-      "olap_decay": 0.862,
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.576,
+      "olap_crossfeedAmt": 0.581,
       "olap_damping": 0.489,
+      "olap_decay": 0.862,
       "olap_diffusion": 0.507,
-      "olap_modDepth": 0.306,
-      "olap_modRate": 0.135,
-      "olap_preDelay": 0.043,
       "olap_earlyMix": 0.35,
-      "olap_lateMix": 0.677,
       "olap_filterCutoff": 0.47,
       "olap_filterReso": 0.246,
-      "olap_outputLevel": 0.803,
-      "olap_couplingLevel": 0.576,
-      "olap_couplingBus": 0,
       "olap_frondDensity": 0.787,
+      "olap_lateMix": 0.677,
+      "olap_modDepth": 0.306,
+      "olap_modRate": 0.135,
       "olap_nodeCount": 7,
-      "olap_crossfeedAmt": 0.581,
-      "olap_spinRate": 0.145,
-      "olap_shimmerMix": 0.315
+      "olap_outputLevel": 0.803,
+      "olap_preDelay": 0.043,
+      "olap_shimmerMix": 0.315,
+      "olap_size": 0.594,
+      "olap_spinRate": 0.145
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERLAP",
-        "engineB": "OLE",
-        "type": "AMP_MOD",
-        "amount": 0.683
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.325,
+    "brightness": 0.575,
+    "density": 0.6,
+    "movement": 0.55,
+    "space": 0.675,
+    "warmth": 0.55
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "ole",
+    "latin",
+    "expressive"
+  ],
+  "version": "1.0.0"
 }

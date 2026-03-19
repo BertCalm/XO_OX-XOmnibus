@@ -1,48 +1,60 @@
 {
-  "name": "MIDNIGHT SPECTRUM",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OSTERIA",
-    "OBESE"
-  ],
-  "parameters": {
-    "OSTERIA": {
-      "macro_character": 0.396,
-      "macro_movement": 0.09,
-      "macro_coupling": 0.368,
-      "macro_space": 0.387
-    },
-    "OBESE": {
-      "macro_character": 0.686,
-      "macro_movement": 0.958,
-      "macro_coupling": 0.744,
-      "macro_space": 0.933
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OSTERIA",
-    "target": "OBESE",
-    "amount": 0.615
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Obese",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.615
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.594,
     "brightness": 0.07,
-    "warmth": 0.245,
-    "movement": 0.487,
     "density": 0.027,
+    "movement": 0.487,
     "space": 0.862,
-    "aggression": 0.594
+    "warmth": 0.245
   },
+  "engines": [
+    "Osteria",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.807,
-    "MOVEMENT": 0.814,
     "COUPLING": 0.85,
+    "MOVEMENT": 0.814,
     "SPACE": 0.912
   },
+  "mood": "Prism",
+  "name": "MIDNIGHT SPECTRUM",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.686,
+      "macro_coupling": 0.744,
+      "macro_movement": 0.958,
+      "macro_space": 0.933
+    },
+    "Osteria": {
+      "macro_character": 0.396,
+      "macro_coupling": 0.368,
+      "macro_movement": 0.09,
+      "macro_space": 0.387
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-  ]
+  ],
+  "version": "1.0"
 }

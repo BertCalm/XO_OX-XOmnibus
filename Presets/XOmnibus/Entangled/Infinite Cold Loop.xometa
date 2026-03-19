@@ -1,33 +1,48 @@
 {
-  "name": "Infinite Cold Loop",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Ouroboros",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.65
+      }
+    ]
+  },
+  "description": "The ouroboros consumes itself in cold refracted light — absolute maximum velocity.",
   "engines": [
-    "OUROBOROS",
-    "OPTIC"
+    "Ouroboros",
+    "Optic"
   ],
-  "mood": "Entangled",
-  "strategy": "Fast Cold",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.65,
-    "MOVEMENT": 1.0,
     "COUPLING": 0.7,
+    "MOVEMENT": 1.0,
     "SPACE": 0.5
   },
+  "mood": "Entangled",
+  "name": "Infinite Cold Loop",
+  "parameters": {
+    "Ouroboros": {},
+    "Optic": {}
+  },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.7,
     "brightness": 0.7,
-    "warmth": 0.07,
-    "movement": 0.98,
     "density": 0.55,
+    "movement": 0.98,
     "space": 0.48,
-    "aggression": 0.7
+    "warmth": 0.07
   },
-  "parameters": {},
-  "coupling": {
-    "type": "TIMBRAL_WARP",
-    "source": "OPTIC",
-    "target": "OUROBOROS",
-    "amount": 0.65
-  },
+  "strategy": "Fast Cold",
   "tags": [
     "entangled",
     "cold",
@@ -35,5 +50,13 @@
     "infinite",
     "aggressive"
   ],
-  "description": "The ouroboros consumes itself in cold refracted light \u2014 absolute maximum velocity."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

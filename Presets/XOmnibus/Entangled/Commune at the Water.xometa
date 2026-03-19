@@ -1,14 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Commune at the Water",
-  "mood": "Entangled",
-  "engines": [
-    "OSPREY",
-    "OHM"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "OHM's meditative drone grounds osprey's altitude \u2014 sky meets sea floor.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.55,
+        "engineA": "Osprey",
+        "engineB": "Ohm",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OHM's meditative drone grounds osprey's altitude — sky meets sea floor.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.57,
+    "density": 0.52,
+    "movement": 0.56,
+    "space": 0.509,
+    "warmth": 0.61
+  },
+  "engines": [
+    "Osprey",
+    "Ohm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.45,
+    "SPACE": 0.75
+  },
+  "mood": "Entangled",
+  "name": "Commune at the Water",
+  "parameters": {
+    "Osprey": {},
+    "Ohm": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -19,38 +54,6 @@
     "drone",
     "grounding"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.45,
-    "MOVEMENT": 0.45,
-    "COUPLING": 0.65,
-    "SPACE": 0.75
-  },
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.57,
-    "warmth": 0.61,
-    "movement": 0.56,
-    "density": 0.52,
-    "space": 0.509,
-    "aggression": 0.0
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OSPREY",
-        "engineB": "OHM",
-        "type": "HARMONIC_BLEND",
-        "amount": 0.55
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

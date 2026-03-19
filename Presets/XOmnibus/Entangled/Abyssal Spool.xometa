@@ -1,31 +1,46 @@
 {
-  "name": "Abyssal Spool",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Owlfish",
+        "type": "RESONANT_PIPE",
+        "amount": 0.6
+      }
+    ]
+  },
+  "description": "Tape spool descends to abyssal depth — owlfish pipe harmonics resonate the delay",
   "engines": [
-    "OVERDUB",
-    "OWLFISH"
+    "Overdub",
+    "Owlfish"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.4,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.4,
     "SPACE": 0.7
   },
-  "sonic_dna": {
-    "brightness": 0.42,
-    "warmth": 0.63,
-    "movement": 0.43,
-    "density": 0.62,
-    "space": 0.59,
-    "aggression": 0.33
+  "mood": "Entangled",
+  "name": "Abyssal Spool",
+  "parameters": {
+    "Overdub": {},
+    "Owlfish": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "RESONANT_PIPE",
-    "source": "OVERDUB",
-    "target": "OWLFISH",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.33,
+    "brightness": 0.42,
+    "density": 0.62,
+    "movement": 0.43,
+    "space": 0.59,
+    "warmth": 0.63
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "owlfish",
     "dub"
   ],
-  "description": "Tape spool descends to abyssal depth \u2014 owlfish pipe harmonics resonate the delay"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

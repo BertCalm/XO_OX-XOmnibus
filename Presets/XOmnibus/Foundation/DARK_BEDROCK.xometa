@@ -1,49 +1,61 @@
 {
-  "name": "DARK BEDROCK",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Orca",
+        "type": "HARMONIC_LOCK",
+        "amount": 0.579
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.884,
+    "brightness": 0.104,
+    "density": 0.698,
+    "movement": 0.711,
+    "space": 0.252,
+    "warmth": 0.361
+  },
   "engines": [
-    "OCEANIC",
-    "ORCA"
+    "Oceanic",
+    "Orca"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.396,
+    "COUPLING": 0.414,
+    "MOVEMENT": 0.295,
+    "SPACE": 0.596
+  },
+  "mood": "Foundation",
+  "name": "DARK BEDROCK",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.61,
-      "macro_movement": 0.379,
       "macro_coupling": 0.029,
+      "macro_movement": 0.379,
       "macro_space": 0.851
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.182,
-      "macro_movement": 0.212,
       "macro_coupling": 0.798,
+      "macro_movement": 0.212,
       "macro_space": 0.34
     }
   },
-  "coupling": {
-    "type": "HARMONIC_LOCK",
-    "source": "OCEANIC",
-    "target": "ORCA",
-    "amount": 0.579
-  },
-  "dna": {
-    "brightness": 0.104,
-    "warmth": 0.361,
-    "movement": 0.711,
-    "density": 0.698,
-    "space": 0.252,
-    "aggression": 0.884
-  },
-  "macros": {
-    "CHARACTER": 0.396,
-    "MOVEMENT": 0.295,
-    "COUPLING": 0.414,
-    "SPACE": 0.596
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "dark",
     "extreme",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

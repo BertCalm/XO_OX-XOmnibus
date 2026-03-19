@@ -1,33 +1,48 @@
 {
-  "name": "Drum Column Freeze",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Oblong",
+        "type": "PHASE_LOCK",
+        "amount": 0.78
+      }
+    ]
+  },
+  "description": "Onset's percussion locked into Oblong's elongated mass — a frozen drum monolith.",
   "engines": [
-    "ONSET",
-    "OBLONG"
+    "Onset",
+    "Oblong"
   ],
-  "mood": "Entangled",
-  "strategy": "Still Aggressive",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.85,
-    "MOVEMENT": 0.05,
     "COUPLING": 0.82,
+    "MOVEMENT": 0.05,
     "SPACE": 0.4
   },
+  "mood": "Entangled",
+  "name": "Drum Column Freeze",
+  "parameters": {
+    "Onset": {},
+    "Oblong": {}
+  },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.95,
     "brightness": 0.3,
-    "warmth": 0.45,
-    "movement": 0.05,
     "density": 0.82,
+    "movement": 0.05,
     "space": 0.38,
-    "aggression": 0.95
+    "warmth": 0.45
   },
-  "parameters": {},
-  "coupling": {
-    "type": "PHASE_LOCK",
-    "source": "ONSET",
-    "target": "OBLONG",
-    "amount": 0.78
-  },
+  "strategy": "Still Aggressive",
   "tags": [
     "entangled",
     "aggressive",
@@ -35,5 +50,13 @@
     "percussive",
     "monolith"
   ],
-  "description": "Onset's percussion locked into Oblong's elongated mass \u2014 a frozen drum monolith."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

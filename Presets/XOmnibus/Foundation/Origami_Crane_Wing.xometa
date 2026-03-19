@@ -1,38 +1,54 @@
 {
-  "schema_version": 1,
-  "name": "Crane Wing",
-  "mood": "Foundation",
-  "engines": ["Origami"],
-  "author": "Guru Bin — Fleet Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Two fold layers with moderate fold amount. Asymmetric fold (symmetry 0.3) creates an even/odd harmonic imbalance — the tone has a hollow quality reminiscent of a flute or pan pipe. The crane wing: two planes meeting at a crease, each reflecting light differently.",
-  "tags": ["foundation", "hollow", "flute-like", "harmonic", "asymmetric", "pad"],
-  "macroLabels": ["CHARACTER", "FOLD", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.52,
-    "warmth": 0.6,
-    "movement": 0.25,
-    "density": 0.45,
-    "space": 0.5,
-    "aggression": 0.2
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Two fold layers with moderate fold amount. Asymmetric fold (symmetry 0.3) creates an even/odd harmonic imbalance — the tone has a hollow quality reminiscent of a flute or pan pipe. The crane wing: two planes meeting at a crease, each reflecting light differently.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.52,
+    "density": 0.45,
+    "movement": 0.25,
+    "space": 0.5,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FOLD",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Crane Wing",
   "parameters": {
     "Origami": {
-      "origami_foldPoint": 0.55,
-      "origami_foldAmt": 0.48,
-      "origami_layers": 2,
-      "origami_symmetry": 0.3,
-      "origami_filterCutoff": 0.65,
-      "origami_filterReso": 0.25,
-      "origami_oscPitch": 0.0,
       "origami_ampAttack": 0.08,
       "origami_ampDecay": 0.4,
+      "origami_ampRelease": 1.5,
       "origami_ampSustain": 0.78,
-      "origami_ampRelease": 1.5
+      "origami_filterCutoff": 0.65,
+      "origami_filterReso": 0.25,
+      "origami_foldAmt": 0.48,
+      "origami_foldPoint": 0.55,
+      "origami_layers": 2,
+      "origami_oscPitch": 0.0,
+      "origami_symmetry": 0.3
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "foundation",
+    "hollow",
+    "flute-like",
+    "harmonic",
+    "asymmetric",
+    "pad"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

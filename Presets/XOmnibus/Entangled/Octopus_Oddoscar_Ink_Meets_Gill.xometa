@@ -1,14 +1,87 @@
 {
-  "schema_version": 1,
-  "name": "Ink Meets Gill",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.75,
+        "source": "Octopus",
+        "target": "OddOscar",
+        "type": "SPECTRAL_TRANSFER"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Octopus ink diffuses through axolotl gill tissue; chemical speech between regeneration and camouflage.",
+  "dna": {
+    "aggression": 0.469,
+    "brightness": 0.667,
+    "density": 0.73,
+    "movement": 0.661,
+    "space": 0.64,
+    "warmth": 0.572
+  },
   "engines": [
     "Octopus",
     "OddOscar"
   ],
-  "author": "XO_OX Deep Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "Octopus ink diffuses through axolotl gill tissue; chemical speech between regeneration and camouflage.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Ink Meets Gill",
+  "parameters": {
+    "Octopus": {
+      "octo_ampAttack": 0.0505,
+      "octo_ampDecay": 0.425,
+      "octo_ampRelease": 1.45,
+      "octo_ampSustain": 0.755,
+      "octo_armBaseRate": 0.397,
+      "octo_armCount": 6.0,
+      "octo_armDepth": 0.652,
+      "octo_armSpread": 0.608,
+      "octo_chromaDepth": 0.668,
+      "octo_chromaFreq": 1939.4,
+      "octo_chromaMorph": 0.521,
+      "octo_chromaSens": 0.728,
+      "octo_chromaSpeed": 0.224,
+      "octo_filterCutoff": 10613.9,
+      "octo_filterReso": 0.542,
+      "octo_inkDecay": 0.561,
+      "octo_inkDensity": 0.523,
+      "octo_inkMix": 0.363,
+      "octo_inkThreshold": 0.655,
+      "octo_level": 0.775,
+      "octo_lfo1Depth": 0.34,
+      "octo_lfo1Rate": 0.444,
+      "octo_lfo1Shape": 1.0,
+      "octo_lfo2Depth": 0.281,
+      "octo_lfo2Rate": 1.618,
+      "octo_lfo2Shape": 0.0,
+      "octo_modAttack": 0.0496,
+      "octo_modDecay": 0.233,
+      "octo_modRelease": 0.326,
+      "octo_modSustain": 0.339,
+      "octo_shiftDrift": 0.519,
+      "octo_shiftGlide": 0.207,
+      "octo_shiftMicro": 0.368,
+      "octo_suckerDecay": 0.205,
+      "octo_suckerFreq": 4678.7,
+      "octo_suckerMix": 0.201,
+      "octo_suckerReso": 0.525,
+      "octo_wtPosition": 0.434,
+      "octo_wtScanRate": 0.215
+    },
+    "OddOscar": {
+      "morph_filterCutoff": 4504.2,
+      "morph_level": 0.782
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,79 +90,6 @@
     "alien",
     "decentralized"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "Octopus": {
-      "octo_armCount": 6.0,
-      "octo_armSpread": 0.608,
-      "octo_armBaseRate": 0.397,
-      "octo_armDepth": 0.652,
-      "octo_chromaSens": 0.728,
-      "octo_chromaSpeed": 0.224,
-      "octo_chromaMorph": 0.521,
-      "octo_chromaDepth": 0.668,
-      "octo_chromaFreq": 1939.4,
-      "octo_inkThreshold": 0.655,
-      "octo_inkDensity": 0.523,
-      "octo_inkDecay": 0.561,
-      "octo_inkMix": 0.363,
-      "octo_shiftMicro": 0.368,
-      "octo_shiftGlide": 0.207,
-      "octo_shiftDrift": 0.519,
-      "octo_suckerReso": 0.525,
-      "octo_suckerFreq": 4678.7,
-      "octo_suckerDecay": 0.205,
-      "octo_suckerMix": 0.201,
-      "octo_wtPosition": 0.434,
-      "octo_wtScanRate": 0.215,
-      "octo_filterCutoff": 10613.9,
-      "octo_filterReso": 0.542,
-      "octo_level": 0.775,
-      "octo_ampAttack": 0.0505,
-      "octo_ampDecay": 0.425,
-      "octo_ampSustain": 0.755,
-      "octo_ampRelease": 1.45,
-      "octo_modAttack": 0.0496,
-      "octo_modDecay": 0.233,
-      "octo_modSustain": 0.339,
-      "octo_modRelease": 0.326,
-      "octo_lfo1Rate": 0.444,
-      "octo_lfo1Depth": 0.34,
-      "octo_lfo1Shape": 1.0,
-      "octo_lfo2Rate": 1.618,
-      "octo_lfo2Depth": 0.281,
-      "octo_lfo2Shape": 0.0
-    },
-    "OddOscar": {
-      "morph_level": 0.782,
-      "morph_filterCutoff": 4504.2
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "SPECTRAL_TRANSFER",
-        "source": "Octopus",
-        "target": "OddOscar",
-        "amount": 0.75
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.667,
-    "warmth": 0.572,
-    "movement": 0.661,
-    "density": 0.73,
-    "space": 0.64,
-    "aggression": 0.469
-  }
+  "version": "1.0.0"
 }

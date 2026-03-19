@@ -1,45 +1,56 @@
 {
-  "name": "HOT DENSE STILL PRI 15",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Orca",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.784
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.368,
+    "brightness": 0.45,
+    "density": 0.931,
+    "movement": 0.078,
+    "space": 0.617,
+    "warmth": 0.893
+  },
   "engines": [
-    "OBLONG",
-    "ORCA"
+    "Oblong",
+    "Orca"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.671,
+    "COUPLING": 0.439,
+    "MOVEMENT": 0.078,
+    "SPACE": 0.617
+  },
+  "mood": "Prism",
+  "name": "HOT DENSE STILL PRI 15",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.671,
-      "macro_movement": 0.078,
       "macro_coupling": 0.439,
+      "macro_movement": 0.078,
       "macro_space": 0.617
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.707,
-      "macro_movement": 0.0,
       "macro_coupling": 0.959,
+      "macro_movement": 0.0,
       "macro_space": 0.51
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OBLONG",
-    "target": "ORCA",
-    "amount": 0.784
-  },
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.893,
-    "movement": 0.078,
-    "density": 0.931,
-    "space": 0.617,
-    "aggression": 0.368
-  },
-  "macros": {
-    "CHARACTER": 0.671,
-    "MOVEMENT": 0.078,
-    "COUPLING": 0.439,
-    "SPACE": 0.617
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
@@ -47,5 +58,6 @@
     "static",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

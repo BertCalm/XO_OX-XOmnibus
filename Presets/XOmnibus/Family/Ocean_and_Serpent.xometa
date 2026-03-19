@@ -1,14 +1,40 @@
 {
-  "schema_version": 1,
-  "name": "Ocean and Serpent",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "OCEANIC pressure swell + OWLFISH bioluminescence — the column and the creature. The deep ocean meeting the thing that lives in it.",
+  "dna": {
+    "aggression": 0.18,
+    "brightness": 0.42,
+    "density": 0.62,
+    "movement": 0.55,
+    "space": 0.88,
+    "warmth": 0.62
+  },
   "engines": [
-    "OCEANIC",
-    "OWLFISH"
+    "Oceanic",
+    "Owlfish"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OCEANIC pressure swell + OWLFISH bioluminescence \u2014 the column and the creature. The deep ocean meeting the thing that lives in it.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "DEPTH",
+    "SWELL",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Ocean and Serpent",
+  "parameters": {
+    "Oceanic": {},
+    "Owlfish": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "reunion",
@@ -19,29 +45,6 @@
     "luminescent",
     "batch3-reunion"
   ],
-  "macroLabels": [
-    "DEPTH",
-    "SWELL",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.42,
-    "warmth": 0.62,
-    "movement": 0.55,
-    "density": 0.62,
-    "space": 0.88,
-    "aggression": 0.18
-  }
+  "version": "1.0.0"
 }

@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Drum Automata",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.9,
+        "engineA": "Outwit",
+        "engineB": "Onset",
+        "type": "ENVELOPE_SHARE"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
   "description": "Onset transient velocity triggers OUTWIT rule mutations — each drum hit rewrites the law",
-  "tags": [
-    "coupling",
-    "entangled",
-    "outwit",
-    "onset",
-    "percussive",
-    "dynamic"
+  "dna": {
+    "aggression": 0.65,
+    "brightness": 0.6,
+    "density": 0.775,
+    "movement": 0.875,
+    "space": 0.45,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Outwit",
+    "Onset"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,59 +32,52 @@
   ],
   "macros": {
     "CHARACTER": 0.442,
-    "MOVEMENT": 0.671,
     "COUPLING": 0.627,
+    "MOVEMENT": 0.671,
     "SPACE": 0.486
   },
-  "couplingIntensity": "Deep",
-  "dna": {
-    "brightness": 0.6,
-    "space": 0.45,
-    "aggression": 0.65,
-    "movement": 0.875,
-    "warmth": 0.4,
-    "density": 0.775
-  },
-  "sonic_dna": {
-    "brightness": 0.6,
-    "space": 0.45,
-    "aggression": 0.65,
-    "movement": 0.875,
-    "warmth": 0.4,
-    "density": 0.775
-  },
+  "mood": "Entangled",
+  "name": "Drum Automata",
   "parameters": {
-    "OUTWIT": {
-      "owit_rule": 45,
-      "owit_arms": 4,
-      "owit_cellSize": 0.207,
-      "owit_density": 0.607,
-      "owit_evolveRate": 0.537,
-      "owit_mutateProb": 0.348,
-      "owit_pitchSpread": 0.333,
-      "owit_filterCutoff": 0.789,
-      "owit_filterReso": 0.363,
+    "Outwit": {
       "owit_ampAttack": 0.062,
       "owit_ampRelease": 0.546,
-      "owit_outputLevel": 0.808,
-      "owit_couplingLevel": 0.761,
-      "owit_couplingBus": 0,
       "owit_armStagger": 0.025,
+      "owit_arms": 4,
       "owit_borderMode": 2,
-      "owit_inkCloudMix": 0.335,
+      "owit_cellSize": 0.207,
       "owit_chroma1": 0.8,
       "owit_chroma2": 0.842,
-      "owit_polyDepth": 0.688
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.761,
+      "owit_density": 0.607,
+      "owit_evolveRate": 0.537,
+      "owit_filterCutoff": 0.789,
+      "owit_filterReso": 0.363,
+      "owit_inkCloudMix": 0.335,
+      "owit_mutateProb": 0.348,
+      "owit_outputLevel": 0.808,
+      "owit_pitchSpread": 0.333,
+      "owit_polyDepth": 0.688,
+      "owit_rule": 45
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OUTWIT",
-        "engineB": "ONSET",
-        "type": "ENVELOPE_SHARE",
-        "amount": 0.9
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.65,
+    "brightness": 0.6,
+    "density": 0.775,
+    "movement": 0.875,
+    "space": 0.45,
+    "warmth": 0.4
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "onset",
+    "percussive",
+    "dynamic"
+  ],
+  "version": "1.0.0"
 }

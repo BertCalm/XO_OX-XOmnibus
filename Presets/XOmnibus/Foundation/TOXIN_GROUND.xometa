@@ -1,48 +1,60 @@
 {
-  "name": "TOXIN GROUND",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OMBRE",
-    "OBSIDIAN"
-  ],
-  "parameters": {
-    "OMBRE": {
-      "macro_character": 0.436,
-      "macro_movement": 0.662,
-      "macro_coupling": 0.374,
-      "macro_space": 0.419
-    },
-    "OBSIDIAN": {
-      "macro_character": 0.773,
-      "macro_movement": 0.389,
-      "macro_coupling": 0.526,
-      "macro_space": 0.375
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OMBRE",
-    "target": "OBSIDIAN",
-    "amount": 0.782
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Obsidian",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.782
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.935,
     "brightness": 0.887,
-    "warmth": 0.533,
-    "movement": 0.262,
     "density": 0.708,
+    "movement": 0.262,
     "space": 0.711,
-    "aggression": 0.935
+    "warmth": 0.533
   },
+  "engines": [
+    "Ombre",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.313,
-    "MOVEMENT": 0.262,
     "COUPLING": 0.782,
+    "MOVEMENT": 0.262,
     "SPACE": 0.711
   },
+  "mood": "Foundation",
+  "name": "TOXIN GROUND",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.773,
+      "macro_coupling": 0.526,
+      "macro_movement": 0.389,
+      "macro_space": 0.375
+    },
+    "Ombre": {
+      "macro_character": 0.436,
+      "macro_coupling": 0.374,
+      "macro_movement": 0.662,
+      "macro_space": 0.419
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

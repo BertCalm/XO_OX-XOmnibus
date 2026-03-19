@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_KINETIC_DENSE_FAM_VOL_148",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Obbligato",
+        "type": "PHASE_COUPLE",
+        "amount": 0.465
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.501,
+    "brightness": 0.068,
+    "density": 0.933,
+    "movement": 0.907,
+    "space": 0.645,
+    "warmth": 0.942
+  },
   "engines": [
-    "OBBLIGATO",
-    "ODDOSCAR"
+    "Obbligato",
+    "OddOscar"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.527,
+    "COUPLING": 0.716,
+    "MOVEMENT": 0.899,
+    "SPACE": 0.643
+  },
+  "mood": "Family",
+  "name": "Copper Thick",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.524,
-      "macro_movement": 0.886,
       "macro_coupling": 0.736,
+      "macro_movement": 0.886,
       "macro_space": 0.651
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.53,
-      "macro_movement": 0.913,
       "macro_coupling": 0.696,
+      "macro_movement": 0.913,
       "macro_space": 0.636
     }
   },
-  "coupling": {
-    "type": "PHASE_COUPLE",
-    "source": "ODDOSCAR",
-    "target": "OBBLIGATO",
-    "amount": 0.465
-  },
-  "dna": {
-    "brightness": 0.068,
-    "warmth": 0.942,
-    "movement": 0.907,
-    "density": 0.933,
-    "space": 0.645,
-    "aggression": 0.501
-  },
-  "macros": {
-    "CHARACTER": 0.527,
-    "MOVEMENT": 0.899,
-    "COUPLING": 0.716,
-    "SPACE": 0.643
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "kinetic",
     "dense",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

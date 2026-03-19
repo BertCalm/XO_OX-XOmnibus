@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Osprey \u00d7 Oceanic \u2014 Frequency Shift coupling at extreme DNA corner.",
+  "description": "Osprey × Oceanic — Frequency Shift coupling at extreme DNA corner.",
   "tags": [
     "still",
     "osprey",
@@ -33,7 +33,10 @@
     "space": 0.634,
     "aggression": 0.079
   },
-  "parameters": {},
+  "parameters": {
+    "Osprey": {},
+    "Oceanic": {}
+  },
   "coupling": {
     "pairs": [
       {

@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Spirit Horn",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "The Great Lakes swallow the brass. FOREIGN at maximum — no longer earthly cousins.",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.55,
+    "density": 0.79,
+    "movement": 0.62,
+    "space": 0.59,
+    "warmth": 0.52
+  },
   "engines": [
     "Ottoni"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "brass",
-    "sax",
-    "aether",
-    "experimental",
-    "aether"
   ],
   "macroLabels": [
     "EMBOUCHURE",
@@ -20,48 +21,47 @@
     "FOREIGN",
     "LAKE"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.52,
-    "movement": 0.62,
-    "density": 0.79,
-    "space": 0.59,
-    "aggression": 0.35
-  },
+  "mood": "Aether",
+  "name": "Spirit Horn",
   "parameters": {
     "Ottoni": {
+      "otto_chorusRate": 1.0,
+      "otto_damping": 0.992,
+      "otto_delayMix": 0.294,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.07,
+      "otto_driveAmount": 0.176,
+      "otto_foreignCold": 0.245,
+      "otto_foreignDrift": 0.174,
+      "otto_foreignStretch": 0.316,
+      "otto_macroEmbouchure": 0.458,
+      "otto_macroForeign": 0.534,
+      "otto_macroGrow": 0.396,
+      "otto_macroLake": 0.26,
+      "otto_reverbSize": 0.466,
+      "otto_sympatheticAmt": 0.391,
+      "otto_teenBore": 0.583,
+      "otto_teenEmbouchure": 0.633,
+      "otto_teenInst": 4,
+      "otto_teenLevel": 0.409,
+      "otto_teenVibratoDepth": 0.199,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 0,
       "otto_toddlerLevel": 0.55,
       "otto_toddlerPressure": 0.317,
-      "otto_toddlerInst": 0,
-      "otto_tweenLevel": 0.538,
       "otto_tweenEmbouchure": 0.603,
-      "otto_tweenValve": 0.343,
       "otto_tweenInst": 0,
-      "otto_teenLevel": 0.409,
-      "otto_teenEmbouchure": 0.633,
-      "otto_teenBore": 0.583,
-      "otto_teenInst": 4,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.199,
-      "otto_damping": 0.992,
-      "otto_sympatheticAmt": 0.391,
-      "otto_driftRate": 0.07,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.316,
-      "otto_foreignDrift": 0.174,
-      "otto_foreignCold": 0.245,
-      "otto_reverbSize": 0.466,
-      "otto_chorusRate": 1.0,
-      "otto_driveAmount": 0.176,
-      "otto_delayMix": 0.294,
-      "otto_macroEmbouchure": 0.458,
-      "otto_macroGrow": 0.396,
-      "otto_macroForeign": 0.534,
-      "otto_macroLake": 0.26
+      "otto_tweenLevel": 0.538,
+      "otto_tweenValve": 0.343
     }
   },
-  "coupling": null,
-  "description": "The Great Lakes swallow the brass. FOREIGN at maximum \u2014 no longer earthly cousins."
+  "schema_version": 1,
+  "tags": [
+    "brass",
+    "sax",
+    "aether",
+    "experimental",
+    "aether"
+  ],
+  "version": "1.0.0"
 }

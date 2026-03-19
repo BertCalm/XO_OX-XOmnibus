@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Ocean Breeze",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Long airborne sustain from both brothers. Space fills between flute and reed.",
+  "dna": {
+    "aggression": 0.07,
+    "brightness": 0.22,
+    "density": 0.25,
+    "movement": 0.22,
+    "space": 0.76,
+    "warmth": 0.55
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "atmosphere",
-    "pad",
-    "atmosphere"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.22,
-    "warmth": 0.55,
-    "movement": 0.22,
-    "density": 0.25,
-    "space": 0.76,
-    "aggression": 0.07
-  },
+  "mood": "Atmosphere",
+  "name": "Ocean Breeze",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.642,
-      "obbl_embouchureA": 0.695,
       "obbl_airFlutterA": 0.263,
-      "obbl_instrumentA": 5,
       "obbl_bodySizeA": 0.301,
-      "obbl_breathB": 0.571,
-      "obbl_reedStiffness": 0.579,
-      "obbl_reedBite": 0.307,
-      "obbl_instrumentB": 5,
       "obbl_bodySizeB": 0.562,
-      "obbl_voiceRouting": 4,
-      "obbl_damping": 0.995,
-      "obbl_sympatheticAmt": 0.284,
-      "obbl_driftRate": 0.09,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.0,
       "obbl_bondIntensity": 0.373,
       "obbl_bondRate": 0.29,
-      "obbl_fxAChorus": 0.285,
+      "obbl_bondStage": 0.0,
+      "obbl_breathA": 0.642,
+      "obbl_breathB": 0.571,
+      "obbl_damping": 0.995,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.09,
+      "obbl_embouchureA": 0.695,
       "obbl_fxABrightDelay": 0.263,
-      "obbl_fxAPlate": 0.237,
+      "obbl_fxAChorus": 0.285,
       "obbl_fxAExciter": 0.029,
-      "obbl_fxBPhaser": 0.137,
+      "obbl_fxAPlate": 0.237,
       "obbl_fxBDarkDelay": 0.378,
+      "obbl_fxBPhaser": 0.137,
       "obbl_fxBSpring": 0.152,
       "obbl_fxBTapeSat": 0.164,
-      "obbl_macroBreath": 0.464,
+      "obbl_instrumentA": 5,
+      "obbl_instrumentB": 5,
       "obbl_macroBond": 0.176,
+      "obbl_macroBreath": 0.464,
       "obbl_macroMischief": 0.037,
-      "obbl_macroWind": 0.511
+      "obbl_macroWind": 0.511,
+      "obbl_reedBite": 0.307,
+      "obbl_reedStiffness": 0.579,
+      "obbl_sympatheticAmt": 0.284,
+      "obbl_voiceRouting": 4
     }
   },
-  "coupling": null,
-  "description": "Long airborne sustain from both brothers. Space fills between flute and reed."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "atmosphere",
+    "pad",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
 }

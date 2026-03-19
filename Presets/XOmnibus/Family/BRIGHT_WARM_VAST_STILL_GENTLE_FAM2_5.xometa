@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT WARM VAST STILL GENTLE FAM2 5",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Overdub",
+        "type": "PITCH_SYNC",
+        "amount": 0.268
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.044,
+    "brightness": 0.879,
+    "density": 0.491,
+    "movement": 0.049,
+    "space": 0.931,
+    "warmth": 0.927
+  },
   "engines": [
-    "OSPREY",
-    "OVERDUB"
+    "Osprey",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.903,
+    "COUPLING": 0.268,
+    "MOVEMENT": 0.049,
+    "SPACE": 0.931
+  },
+  "mood": "Family",
+  "name": "BRIGHT WARM VAST STILL GENT...",
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.903,
-      "macro_movement": 0.049,
       "macro_coupling": 0.268,
+      "macro_movement": 0.049,
       "macro_space": 0.931
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.875,
-      "macro_movement": 0.057,
       "macro_coupling": 0.269,
+      "macro_movement": 0.057,
       "macro_space": 0.97
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OSPREY",
-    "target": "OVERDUB",
-    "amount": 0.268
-  },
-  "dna": {
-    "brightness": 0.879,
-    "warmth": 0.927,
-    "movement": 0.049,
-    "density": 0.491,
-    "space": 0.931,
-    "aggression": 0.044
-  },
-  "macros": {
-    "CHARACTER": 0.903,
-    "MOVEMENT": 0.049,
-    "COUPLING": 0.268,
-    "SPACE": 0.931
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
@@ -47,5 +58,6 @@
     "still",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

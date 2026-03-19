@@ -1,49 +1,61 @@
 {
-  "name": "BLAZE PRISM",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OUTWIT",
-    "OMBRE"
-  ],
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.355,
-      "macro_movement": 0.907,
-      "macro_coupling": 0.629,
-      "macro_space": 0.176
-    },
-    "OMBRE": {
-      "macro_character": 0.356,
-      "macro_movement": 0.46,
-      "macro_coupling": 0.369,
-      "macro_space": 0.429
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OUTWIT",
-    "target": "OMBRE",
-    "amount": 0.822
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Ombre",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.822
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.865,
     "brightness": 0.194,
-    "warmth": 0.929,
-    "movement": 0.032,
     "density": 0.05,
+    "movement": 0.032,
     "space": 0.385,
-    "aggression": 0.865
+    "warmth": 0.929
   },
+  "engines": [
+    "Outwit",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.749,
-    "MOVEMENT": 0.252,
     "COUPLING": 0.432,
+    "MOVEMENT": 0.252,
     "SPACE": 0.784
   },
+  "mood": "Prism",
+  "name": "BLAZE PRISM",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.356,
+      "macro_coupling": 0.369,
+      "macro_movement": 0.46,
+      "macro_space": 0.429
+    },
+    "Outwit": {
+      "macro_character": 0.355,
+      "macro_coupling": 0.629,
+      "macro_movement": 0.907,
+      "macro_space": 0.176
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

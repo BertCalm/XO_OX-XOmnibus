@@ -1,49 +1,61 @@
 {
-  "name": "ALLLO ENT 04",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Osprey",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.142
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.063,
+    "brightness": 0.081,
+    "density": 0.357,
+    "movement": 0.038,
+    "space": 0.042,
+    "warmth": 0.04
+  },
   "engines": [
-    "OVERDUB",
-    "OSPREY"
+    "Overdub",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.06,
+    "COUPLING": 0.053,
+    "MOVEMENT": 0.197,
+    "SPACE": 0.042
+  },
+  "mood": "Entangled",
+  "name": "ALLLO ENT 04",
   "parameters": {
-    "OVERDUB": {
+    "Osprey": {
       "macro_character": 0.06,
-      "macro_movement": 0.197,
       "macro_coupling": 0.053,
+      "macro_movement": 0.197,
       "macro_space": 0.042
     },
-    "OSPREY": {
+    "Overdub": {
       "macro_character": 0.06,
-      "macro_movement": 0.197,
       "macro_coupling": 0.053,
+      "macro_movement": 0.197,
       "macro_space": 0.042
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OVERDUB",
-    "target": "OSPREY",
-    "amount": 0.142
-  },
-  "dna": {
-    "brightness": 0.081,
-    "warmth": 0.04,
-    "movement": 0.038,
-    "density": 0.357,
-    "space": 0.042,
-    "aggression": 0.063
-  },
-  "macros": {
-    "CHARACTER": 0.06,
-    "MOVEMENT": 0.197,
-    "COUPLING": 0.053,
-    "SPACE": 0.042
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

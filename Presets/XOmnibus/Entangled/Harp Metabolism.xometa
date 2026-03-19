@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Harp Metabolism",
-  "mood": "Entangled",
-  "engines": [
-    "ORPHICA",
-    "ORGANON"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "ORPHICA microsound harp spectrally morphs Organon's metabolic palette \u2014 bioluminescent life.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.68,
+        "engineA": "Orphica",
+        "engineB": "Organon",
+        "type": "SPECTRAL_MORPH"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "ORPHICA microsound harp spectrally morphs Organon's metabolic palette — bioluminescent life.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.78,
+    "density": 0.45,
+    "movement": 0.6,
+    "space": 0.72,
+    "warmth": 0.48
+  },
+  "engines": [
+    "Orphica",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.575,
+    "COUPLING": 0.68,
+    "MOVEMENT": 0.625,
+    "SPACE": 0.6
+  },
+  "mood": "Entangled",
+  "name": "Harp Metabolism",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.55,
+      "macro_coupling": 0.68,
+      "macro_movement": 0.7,
+      "macro_space": 0.52
+    },
+    "Orphica": {
+      "macro_character": 0.6,
+      "macro_coupling": 0.68,
+      "macro_movement": 0.55,
+      "macro_space": 0.68
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "spectral",
     "organic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.78,
-    "warmth": 0.48,
-    "movement": 0.6,
-    "density": 0.45,
-    "space": 0.72,
-    "aggression": 0.08
-  },
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.6,
-      "macro_movement": 0.55,
-      "macro_coupling": 0.68,
-      "macro_space": 0.68
-    },
-    "ORGANON": {
-      "macro_character": 0.55,
-      "macro_movement": 0.7,
-      "macro_coupling": 0.68,
-      "macro_space": 0.52
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORPHICA",
-        "engineB": "ORGANON",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.68
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.575,
-    "MOVEMENT": 0.625,
-    "COUPLING": 0.68,
-    "SPACE": 0.6
-  },
-  "sequencer": null
+  "version": "1.0"
 }

@@ -1,45 +1,56 @@
 {
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FLX_1",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.7417
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.891,
+    "brightness": 0.122,
+    "density": 0.3491,
+    "movement": 0.8985,
+    "space": 0.1167,
+    "warmth": 0.4993
+  },
   "engines": [
-    "OBLIQUE",
-    "ORGANON"
+    "Oblique",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1468,
+    "COUPLING": 0.7512,
+    "MOVEMENT": 0.8922,
+    "SPACE": 0.172
+  },
+  "mood": "Flux",
+  "name": "Grain Stream 2",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.1468,
-      "macro_movement": 0.8922,
       "macro_coupling": 0.7512,
+      "macro_movement": 0.8922,
       "macro_space": 0.172
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.1218,
-      "macro_movement": 0.9672,
       "macro_coupling": 0.8036,
+      "macro_movement": 0.9672,
       "macro_space": 0.0908
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBLIQUE",
-    "target": "ORGANON",
-    "amount": 0.7417
-  },
-  "dna": {
-    "brightness": 0.122,
-    "warmth": 0.4993,
-    "movement": 0.8985,
-    "density": 0.3491,
-    "space": 0.1167,
-    "aggression": 0.891
-  },
-  "macros": {
-    "CHARACTER": 0.1468,
-    "MOVEMENT": 0.8922,
-    "COUPLING": 0.7512,
-    "SPACE": 0.172
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +59,6 @@
     "high-movement",
     "low-space",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,22 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "Fang Saturation",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.7,
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "Obese",
+        "engineB": "Overbite",
+        "type": "Env->Morph"
+      }
+    ],
+    "type": "Env->Morph"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OVERBITE fang attack modulates OBESE drive amount. Bite shapes the heat.",
+  "dna": {
+    "aggression": 0.708,
     "brightness": 0.512,
-    "warmth": 0.662,
-    "movement": 0.442,
     "density": 0.718,
+    "movement": 0.442,
     "space": 0.478,
-    "aggression": 0.708
+    "warmth": 0.662
   },
   "engines": [
-    "XObese",
-    "XOverbite"
+    "Obese",
+    "Overbite"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERBITE fang attack modulates OBESE drive amount. Bite shapes the heat.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Fang Saturation",
+  "parameters": {
+    "Obese": {
+      "fat_aggression": 0.739,
+      "fat_brightness": 0.529,
+      "fat_couplingBus": 0,
+      "fat_couplingLevel": 0.57,
+      "fat_outputLevel": 0.78,
+      "fat_outputPan": -0.02,
+      "fat_warmth": 0.705
+    },
+    "Overbite": {
+      "poss_aggression": 0.634,
+      "poss_brightness": 0.498,
+      "poss_couplingBus": 0,
+      "poss_couplingLevel": 0.62,
+      "poss_outputLevel": 0.78,
+      "poss_outputPan": -0.04,
+      "poss_warmth": 0.664
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.708,
+    "brightness": 0.512,
+    "density": 0.718,
+    "movement": 0.442,
+    "space": 0.478,
+    "warmth": 0.662
+  },
   "tags": [
     "coupling",
     "entangled",
@@ -25,51 +71,5 @@
     "fang",
     "saturation"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.512,
-    "warmth": 0.662,
-    "movement": 0.442,
-    "density": 0.718,
-    "space": 0.478,
-    "aggression": 0.708
-  },
-  "parameters": {
-    "XObese": {
-      "fat_outputLevel": 0.78,
-      "fat_outputPan": -0.02,
-      "fat_couplingLevel": 0.57,
-      "fat_couplingBus": 0,
-      "fat_brightness": 0.529,
-      "fat_warmth": 0.705,
-      "fat_aggression": 0.739
-    },
-    "XOverbite": {
-      "poss_outputLevel": 0.78,
-      "poss_outputPan": -0.04,
-      "poss_couplingLevel": 0.62,
-      "poss_couplingBus": 0,
-      "poss_brightness": 0.498,
-      "poss_warmth": 0.664,
-      "poss_aggression": 0.634
-    }
-  },
-  "coupling": {
-    "type": "Env->Morph",
-    "amount": 0.7,
-    "pairs": [
-      {
-        "engineA": "XObese",
-        "engineB": "XOverbite",
-        "type": "Env->Morph",
-        "amount": 0.7
-      }
-    ]
-  }
+  "version": "1.0.0"
 }

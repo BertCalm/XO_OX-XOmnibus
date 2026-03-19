@@ -1,45 +1,56 @@
 {
-  "name": "COLD STILL SPARSE INTIMATE GENTLE ENT2 3",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OUROBOROS",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.194,
-      "macro_movement": 0.089,
-      "macro_coupling": 0.118,
-      "macro_space": 0.023
-    },
-    "OBLONG": {
-      "macro_character": 0.203,
-      "macro_movement": 0.055,
-      "macro_coupling": 0.151,
-      "macro_space": 0.02
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OUROBOROS",
-    "target": "OBLONG",
-    "amount": 0.118
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oblong",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.118
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.107,
     "brightness": 0.367,
-    "warmth": 0.02,
-    "movement": 0.089,
     "density": 0.13,
+    "movement": 0.089,
     "space": 0.023,
-    "aggression": 0.107
+    "warmth": 0.02
   },
+  "engines": [
+    "Ouroboros",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.194,
-    "MOVEMENT": 0.089,
     "COUPLING": 0.118,
+    "MOVEMENT": 0.089,
     "SPACE": 0.023
   },
+  "mood": "Entangled",
+  "name": "COLD STILL SPARSE INTIMATE ...",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.203,
+      "macro_coupling": 0.151,
+      "macro_movement": 0.055,
+      "macro_space": 0.02
+    },
+    "Ouroboros": {
+      "macro_character": 0.194,
+      "macro_coupling": 0.118,
+      "macro_movement": 0.089,
+      "macro_space": 0.023
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold",
@@ -47,5 +58,6 @@
     "sparse",
     "intimate",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

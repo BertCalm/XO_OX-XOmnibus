@@ -1,45 +1,56 @@
 {
-  "name": "DARK_COLD_STILL_SPARSE_FLX_SLW_3",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Overdub",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.922
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.31,
+    "brightness": 0.06,
+    "density": 0.069,
+    "movement": 0.055,
+    "space": 0.481,
+    "warmth": 0.099
+  },
   "engines": [
-    "ORACLE",
-    "OVERDUB"
+    "Oracle",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.19,
+    "COUPLING": 0.815,
+    "MOVEMENT": 0.055,
+    "SPACE": 0.481
+  },
+  "mood": "Flux",
+  "name": "Fragment Wave",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.69,
-      "macro_movement": 0.045,
       "macro_coupling": 0.722,
+      "macro_movement": 0.045,
       "macro_space": 0.455
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.364,
-      "macro_movement": 0.052,
       "macro_coupling": 0.875,
+      "macro_movement": 0.052,
       "macro_space": 0.46
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "ORACLE",
-    "target": "OVERDUB",
-    "amount": 0.922
-  },
-  "dna": {
-    "brightness": 0.06,
-    "warmth": 0.099,
-    "movement": 0.055,
-    "density": 0.069,
-    "space": 0.481,
-    "aggression": 0.31
-  },
-  "macros": {
-    "CHARACTER": 0.19,
-    "MOVEMENT": 0.055,
-    "COUPLING": 0.815,
-    "SPACE": 0.481
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +58,6 @@
     "cold",
     "sparse",
     "imperceptible-morph"
-  ]
+  ],
+  "version": "1.0"
 }

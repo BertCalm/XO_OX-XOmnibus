@@ -33,7 +33,9 @@
     "space": 0.16,
     "aggression": 0.83
   },
-  "parameters": {},
+  "parameters": {
+    "Origami": {}
+  },
   "tags": [
     "flux",
     "tension",
@@ -41,5 +43,5 @@
     "standstill",
     "vermillion"
   ],
-  "description": "The crane mid-fold \u2014 vermillion crease visible, hands arrested, paper at maximum stress."
+  "description": "The crane mid-fold — vermillion crease visible, hands arrested, paper at maximum stress."
 }

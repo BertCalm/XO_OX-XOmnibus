@@ -1,45 +1,56 @@
 {
-  "name": "WARM_FROZEN_SPARSE_VAST_GENTLE_ENT4_3",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overbite",
+        "type": "PITCH_SYNC",
+        "amount": 0.847
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.113,
+    "brightness": 0.621,
+    "density": 0.121,
+    "movement": 0.085,
+    "space": 0.881,
+    "warmth": 0.944
+  },
   "engines": [
-    "OBLIQUE",
-    "OVERBITE"
+    "Oblique",
+    "Overbite"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.77,
+    "COUPLING": 0.847,
+    "MOVEMENT": 0.083,
+    "SPACE": 0.877
+  },
+  "mood": "Entangled",
+  "name": "Radiant Dome",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.776,
-      "macro_movement": 0.081,
       "macro_coupling": 0.111,
+      "macro_movement": 0.081,
       "macro_space": 0.871
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.763,
-      "macro_movement": 0.085,
       "macro_coupling": 0.098,
+      "macro_movement": 0.085,
       "macro_space": 0.882
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBLIQUE",
-    "target": "OVERBITE",
-    "amount": 0.847
-  },
-  "dna": {
-    "brightness": 0.621,
-    "warmth": 0.944,
-    "movement": 0.085,
-    "density": 0.121,
-    "space": 0.881,
-    "aggression": 0.113
-  },
-  "macros": {
-    "CHARACTER": 0.77,
-    "MOVEMENT": 0.083,
-    "COUPLING": 0.847,
-    "SPACE": 0.877
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +59,6 @@
     "sparse",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

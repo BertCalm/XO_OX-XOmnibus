@@ -1,13 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Broken Tape",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Deep",
+  "created": "2026-03-08",
+  "description": "Evolving tape chaos texture with self-oscillating delay and driven saturation.",
+  "dna": {
+    "aggression": 1.0,
+    "brightness": 0.667,
+    "density": 0.24,
+    "movement": 1.0,
+    "space": 0.675,
+    "warmth": 0.106
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Evolving tape chaos texture with self-oscillating delay and driven saturation.",
+  "legacy": {
+    "sourceCategory": "Tape Chaos",
+    "sourceInstrument": "Overdub",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Broken Tape",
+  "parameters": {
+    "Overdub": {
+      "dub_delayFeedback": 1.15,
+      "dub_delayTime": 0.2,
+      "dub_delayWear": 0.9,
+      "dub_delayWow": 1.0,
+      "dub_driveAmount": 7.0,
+      "dub_filterCutoff": 2000.0,
+      "dub_filterReso": 0.3,
+      "dub_oscWave": 2.0,
+      "dub_returnLevel": 0.6,
+      "dub_sendLevel": 0.8
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "self-oscillating",
     "wobbly",
@@ -16,42 +52,6 @@
     "driven",
     "saw"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Overdub",
-    "sourceCategory": "Tape Chaos",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Overdub": {
-      "dub_oscWave": 2.0,
-      "dub_filterCutoff": 2000.0,
-      "dub_filterReso": 0.3,
-      "dub_delayTime": 0.2,
-      "dub_delayFeedback": 1.15,
-      "dub_delayWow": 1.0,
-      "dub_delayWear": 0.9,
-      "dub_driveAmount": 7.0,
-      "dub_sendLevel": 0.8,
-      "dub_returnLevel": 0.6
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.667,
-    "warmth": 0.106,
-    "movement": 1.0,
-    "density": 0.24,
-    "space": 0.675,
-    "aggression": 1.0
-  }
+  "version": "1.0.0"
 }

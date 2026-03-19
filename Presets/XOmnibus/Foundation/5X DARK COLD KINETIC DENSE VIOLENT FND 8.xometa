@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FND 8",
-  "mood": "Foundation",
-  "engines": [
-    "OHM",
-    "OTTONI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Ottoni",
+        "type": "PHASE_LOCK",
+        "amount": 0.9
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.057,
+    "brightness": 0.914,
+    "density": 0.054,
+    "movement": 0.045,
+    "space": 0.906,
+    "warmth": 0.471
+  },
+  "engines": [
+    "Ohm",
+    "Ottoni"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.99,
+      "macro_coupling": 0.52,
+      "macro_movement": 0.77,
+      "macro_space": 0.1
+    },
+    "Ottoni": {
+      "macro_character": 0.94,
+      "macro_coupling": 0.79,
+      "macro_movement": 0.81,
+      "macro_space": 0.24
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +62,6 @@
     "dense",
     "foundation"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OHM": {
-      "macro_character": 0.99,
-      "macro_movement": 0.77,
-      "macro_coupling": 0.52,
-      "macro_space": 0.1
-    },
-    "OTTONI": {
-      "macro_character": 0.94,
-      "macro_movement": 0.81,
-      "macro_coupling": 0.79,
-      "macro_space": 0.24
-    }
-  },
-  "coupling": {
-    "type": "PHASE_LOCK",
-    "source": "OHM",
-    "target": "OTTONI",
-    "amount": 0.9
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.914,
-    "warmth": 0.471,
-    "movement": 0.045,
-    "density": 0.054,
-    "space": 0.906,
-    "aggression": 0.057
-  }
+  "version": "1.0.0"
 }

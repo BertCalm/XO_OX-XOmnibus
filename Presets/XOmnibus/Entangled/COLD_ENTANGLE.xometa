@@ -1,49 +1,61 @@
 {
-  "name": "COLD ENTANGLE",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORPHICA",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.718,
-      "macro_movement": 0.384,
-      "macro_coupling": 0.4,
-      "macro_space": 0.148
-    },
-    "ORBITAL": {
-      "macro_character": 0.688,
-      "macro_movement": 0.893,
-      "macro_coupling": 0.86,
-      "macro_space": 0.885
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORPHICA",
-    "target": "ORBITAL",
-    "amount": 0.767
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Orbital",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.767
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.158,
     "brightness": 0.12,
-    "warmth": 0.04,
-    "movement": 0.296,
     "density": 0.48,
+    "movement": 0.296,
     "space": 0.925,
-    "aggression": 0.158
+    "warmth": 0.04
   },
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.219,
-    "MOVEMENT": 0.804,
     "COUPLING": 0.696,
+    "MOVEMENT": 0.804,
     "SPACE": 0.465
   },
+  "mood": "Entangled",
+  "name": "COLD ENTANGLE",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.688,
+      "macro_coupling": 0.86,
+      "macro_movement": 0.893,
+      "macro_space": 0.885
+    },
+    "Orphica": {
+      "macro_character": 0.718,
+      "macro_coupling": 0.4,
+      "macro_movement": 0.384,
+      "macro_space": 0.148
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-  ]
+  ],
+  "version": "1.0"
 }

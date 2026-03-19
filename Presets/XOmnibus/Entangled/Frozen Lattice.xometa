@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
   "name": "Frozen Lattice",
-  "mood": "Entangled",
-  "engines": ["Opal"],
+  "mood": "Foundation",
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Frozen pulse grains with extreme frost creating a crystalline lattice structure. High-pass filter reveals only the upper harmonics. Two LFOs create slow interference patterns in the frozen material.",
-  "tags": ["frozen", "crystal", "highpass", "texture", "entangled"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "frozen",
+    "crystal",
+    "highpass",
+    "texture",
+    "entangled"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

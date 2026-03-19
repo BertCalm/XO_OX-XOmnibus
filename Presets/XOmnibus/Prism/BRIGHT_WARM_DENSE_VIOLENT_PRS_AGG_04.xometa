@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT WARM DENSE VIOLENT PRS AGG 4",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Orphica",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.861
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.87,
+    "brightness": 0.934,
+    "density": 0.956,
+    "movement": 0.53,
+    "space": 0.417,
+    "warmth": 0.946
+  },
   "engines": [
-    "OHM",
-    "ORPHICA"
+    "Ohm",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.892,
+    "COUPLING": 0.825,
+    "MOVEMENT": 0.508,
+    "SPACE": 0.404
+  },
+  "mood": "Prism",
+  "name": "BRIGHT WARM DENSE VIOLENT P...",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.886,
-      "macro_movement": 0.512,
       "macro_coupling": 0.785,
+      "macro_movement": 0.512,
       "macro_space": 0.406
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.898,
-      "macro_movement": 0.503,
       "macro_coupling": 0.865,
+      "macro_movement": 0.503,
       "macro_space": 0.402
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OHM",
-    "target": "ORPHICA",
-    "amount": 0.861
-  },
-  "dna": {
-    "brightness": 0.934,
-    "warmth": 0.946,
-    "movement": 0.53,
-    "density": 0.956,
-    "space": 0.417,
-    "aggression": 0.87
-  },
-  "macros": {
-    "CHARACTER": 0.892,
-    "MOVEMENT": 0.508,
-    "COUPLING": 0.825,
-    "SPACE": 0.404
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "aggressive",
@@ -47,5 +58,6 @@
     "violent",
     "bright",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_VAST_VIOLENT_FAM_VOL_107",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Opal",
+        "type": "DYNAMIC_CROSS",
+        "amount": 0.945
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.958,
+    "brightness": 0.901,
+    "density": 0.414,
+    "movement": 0.667,
+    "space": 0.918,
+    "warmth": 0.967
+  },
   "engines": [
-    "OPAL",
-    "ORPHICA"
+    "Opal",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.925,
+    "COUPLING": 0.687,
+    "MOVEMENT": 0.652,
+    "SPACE": 0.914
+  },
+  "mood": "Family",
+  "name": "Radiant Fang",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.921,
-      "macro_movement": 0.649,
       "macro_coupling": 0.666,
+      "macro_movement": 0.649,
       "macro_space": 0.924
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.93,
-      "macro_movement": 0.655,
       "macro_coupling": 0.708,
+      "macro_movement": 0.655,
       "macro_space": 0.904
     }
   },
-  "coupling": {
-    "type": "DYNAMIC_CROSS",
-    "source": "ORPHICA",
-    "target": "OPAL",
-    "amount": 0.945
-  },
-  "dna": {
-    "brightness": 0.901,
-    "warmth": 0.967,
-    "movement": 0.667,
-    "density": 0.414,
-    "space": 0.918,
-    "aggression": 0.958
-  },
-  "macros": {
-    "CHARACTER": 0.925,
-    "MOVEMENT": 0.652,
-    "COUPLING": 0.687,
-    "SPACE": 0.914
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "vast",
     "aggressive",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

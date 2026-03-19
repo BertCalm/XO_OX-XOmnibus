@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Crown Glass",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.94,
-    "warmth": 0.16,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Optical crown glass fold — pure refracted luminance",
+  "dna": {
     "aggression": 0.07,
-    "movement": 0.35,
+    "brightness": 0.94,
     "density": 0.22,
-    "space": 0.82
+    "movement": 0.35,
+    "space": 0.82,
+    "warmth": 0.16
   },
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Optical crown glass fold \u2014 pure refracted luminance",
+  "macroLabels": [
+    "FOLD",
+    "CREASE",
+    "COUPLING",
+    "UNFOLD"
+  ],
+  "mood": "Prism",
+  "name": "Crown Glass",
+  "parameters": {
+    "Origami": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.07,
+    "brightness": 0.94,
+    "density": 0.22,
+    "movement": 0.35,
+    "space": 0.82,
+    "warmth": 0.16
+  },
   "tags": [
     "prism",
     "bright",
@@ -24,23 +44,5 @@
     "optical",
     "glass"
   ],
-  "macroLabels": [
-    "FOLD",
-    "CREASE",
-    "COUPLING",
-    "UNFOLD"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.94,
-    "warmth": 0.16,
-    "movement": 0.35,
-    "density": 0.22,
-    "space": 0.82,
-    "aggression": 0.07
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Combat Pressure",
-  "mood": "Atmosphere",
-  "engines": [
-    "OVERWORLD"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. OVERWORLD aggressive register.",
+  "dna": {
+    "aggression": 0.724,
+    "brightness": 0.647,
+    "density": 0.66,
+    "movement": 0.783,
+    "space": 0.479,
+    "warmth": 0.386
+  },
+  "engines": [
+    "Overworld"
+  ],
+  "macroLabels": [
+    "ERA",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "COUPLING": 0.15,
+    "ERA": 0.821,
+    "GLITCH": 0.744,
+    "SPACE": 0.492
+  },
+  "mood": "Atmosphere",
+  "name": "Combat Pressure",
+  "parameters": {
+    "Overworld": {
+      "coupling": 0.15,
+      "era": 0.821,
+      "glitch": 0.744,
+      "space": 0.492
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -16,36 +47,5 @@
     "pressure",
     "fierce"
   ],
-  "macroLabels": [
-    "ERA",
-    "GLITCH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.647,
-    "warmth": 0.386,
-    "movement": 0.783,
-    "density": 0.66,
-    "space": 0.479,
-    "aggression": 0.724
-  },
-  "parameters": {
-    "OVERWORLD": {
-      "era": 0.821,
-      "glitch": 0.744,
-      "coupling": 0.15,
-      "space": 0.492
-    }
-  },
-  "macros": {
-    "ERA": 0.821,
-    "GLITCH": 0.744,
-    "COUPLING": 0.15,
-    "SPACE": 0.492
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

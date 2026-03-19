@@ -1,52 +1,62 @@
 {
-  "schema_version": 1,
-  "name": "Patterned Matrix",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "OTTONI"
-  ],
-  "author": "XO_OX",
-  "macros": {
-    "CHARACTER": 0.43,
-    "MOVEMENT": 0.69,
-    "COUPLING": 0.87,
-    "SPACE": 0.55
-  },
-  "sonic_dna": {
-    "movement": 0.68,
-    "brightness": 0.6,
-    "aggression": 0.54,
-    "space": 0.55,
-    "warmth": 0.51,
-    "density": 0.67
-  },
-  "parameters": {
-    "OUTWIT": {
-      "owit_rule": 30,
-      "owit_arms": 7,
-      "owit_cellSize": 0.337,
-      "owit_density": 0.632,
-      "owit_evolveRate": 0.334,
-      "owit_mutateProb": 0.157,
-      "owit_pitchSpread": 0.547,
-      "owit_filterCutoff": 0.423,
-      "owit_filterReso": 0.191,
-      "owit_ampAttack": 0.056,
-      "owit_ampRelease": 0.473,
-      "owit_outputLevel": 0.718,
-      "owit_couplingLevel": 0.764,
-      "owit_couplingBus": 0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_TRACKING",
-    "source": "OUTWIT",
-    "target": "OTTONI",
-    "amount": 0.874
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Ottoni",
+        "type": "PITCH_TRACKING",
+        "amount": 0.874
+      }
+    ]
   },
   "couplingIntensity": "Deep",
+  "description": "Ottoni GROW macro drives OUTWIT branch complexity — brass growth as arm proliferation",
+  "engines": [
+    "Outwit",
+    "Ottoni"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.43,
+    "COUPLING": 0.87,
+    "MOVEMENT": 0.69,
+    "SPACE": 0.55
+  },
+  "mood": "Entangled",
+  "name": "Patterned Matrix",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.056,
+      "owit_ampRelease": 0.473,
+      "owit_arms": 7,
+      "owit_cellSize": 0.337,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.764,
+      "owit_density": 0.632,
+      "owit_evolveRate": 0.334,
+      "owit_filterCutoff": 0.423,
+      "owit_filterReso": 0.191,
+      "owit_mutateProb": 0.157,
+      "owit_outputLevel": 0.718,
+      "owit_pitchSpread": 0.547,
+      "owit_rule": 30
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.54,
+    "brightness": 0.6,
+    "density": 0.67,
+    "movement": 0.68,
+    "space": 0.55,
+    "warmth": 0.51
+  },
   "tags": [
     "entangled",
     "coupling",
@@ -56,5 +66,13 @@
     "wolfram",
     "cellular-automata"
   ],
-  "description": "Ottoni GROW macro drives OUTWIT branch complexity \u2014 brass growth as arm proliferation"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.423,
+    "warmth": 0.5,
+    "movement": 0.334,
+    "density": 0.632,
+    "space": 0.5,
+    "aggression": 0.056
+  }
 }

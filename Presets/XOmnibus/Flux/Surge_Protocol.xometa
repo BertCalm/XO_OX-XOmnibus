@@ -33,7 +33,9 @@
     "space": 0.07,
     "aggression": 0.86
   },
-  "parameters": {},
+  "parameters": {
+    "Octopus": {}
+  },
   "tags": [
     "flux",
     "high-flux",
@@ -41,5 +43,5 @@
     "surge",
     "protocol"
   ],
-  "description": "Octopus surge protocol engaged \u2014 all 8 arms firing in burst sequence."
+  "description": "Octopus surge protocol engaged — all 8 arms firing in burst sequence."
 }

@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_COLD_SPARSE_VAST_GENTLE_ATM_4",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Optic",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.869
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.0725,
+    "brightness": 0.9624,
+    "density": 0.1169,
+    "movement": 0.3078,
+    "space": 0.9391,
+    "warmth": 0.1241
+  },
   "engines": [
-    "OBLIQUE",
-    "OPTIC"
+    "Oblique",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5599,
+    "COUPLING": 0.1159,
+    "MOVEMENT": 0.2969,
+    "SPACE": 0.9386
+  },
+  "mood": "Atmosphere",
+  "name": "Ice Orbit",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.5705,
-      "macro_movement": 0.3029,
       "macro_coupling": 0.1318,
+      "macro_movement": 0.3029,
       "macro_space": 0.9419
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.5494,
-      "macro_movement": 0.291,
       "macro_coupling": 0.1001,
+      "macro_movement": 0.291,
       "macro_space": 0.9353
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBLIQUE",
-    "target": "OPTIC",
-    "amount": 0.869
-  },
-  "dna": {
-    "brightness": 0.9624,
-    "warmth": 0.1241,
-    "movement": 0.3078,
-    "density": 0.1169,
-    "space": 0.9391,
-    "aggression": 0.0725
-  },
-  "macros": {
-    "CHARACTER": 0.5599,
-    "MOVEMENT": 0.2969,
-    "COUPLING": 0.1159,
-    "SPACE": 0.9386
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
@@ -47,5 +58,6 @@
     "sparse",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

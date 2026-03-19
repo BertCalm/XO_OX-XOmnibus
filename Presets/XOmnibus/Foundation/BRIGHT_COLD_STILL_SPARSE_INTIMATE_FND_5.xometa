@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_COLD_STILL_SPARSE_INTIMATE_FND_5",
-  "mood": "Foundation",
-  "engines": [
-    "OVERBITE",
-    "ORIGAMI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Origami",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.599
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_STILL_SPARSE_INTIMATE. Variant 5.",
+  "dna": {
+    "aggression": 0.538,
+    "brightness": 0.972,
+    "density": 0.093,
+    "movement": 0.108,
+    "space": 0.129,
+    "warmth": 0.07
+  },
+  "engines": [
+    "Overbite",
+    "Origami"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.981,
+    "COUPLING": 0.105,
+    "MOVEMENT": 0.132,
+    "SPACE": 0.101
+  },
+  "mood": "Foundation",
+  "name": "Prism Edge",
+  "parameters": {
+    "Origami": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.015,
+      "macro_movement": 0.105,
+      "macro_space": 0.117
+    },
+    "Overbite": {
+      "macro_character": 0.962,
+      "macro_coupling": 0.195,
+      "macro_movement": 0.158,
+      "macro_space": 0.084
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "sparse",
     "extreme",
@@ -19,53 +70,6 @@
     "intimate",
     "foundation"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.962,
-      "macro_movement": 0.158,
-      "macro_coupling": 0.195,
-      "macro_space": 0.084
-    },
-    "ORIGAMI": {
-      "macro_character": 1.0,
-      "macro_movement": 0.105,
-      "macro_coupling": 0.015,
-      "macro_space": 0.117
-    }
-  },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OVERBITE",
-    "target": "ORIGAMI",
-    "amount": 0.599
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.972,
-    "warmth": 0.07,
-    "movement": 0.108,
-    "density": 0.093,
-    "space": 0.129,
-    "aggression": 0.538
-  },
-  "macros": {
-    "CHARACTER": 0.981,
-    "MOVEMENT": 0.132,
-    "COUPLING": 0.105,
-    "SPACE": 0.101
-  }
+  "version": "1.0.0"
 }

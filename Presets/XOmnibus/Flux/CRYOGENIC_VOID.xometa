@@ -1,50 +1,62 @@
 {
-  "name": "CRYOGENIC VOID",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ODYSSEY",
-    "OCTOPUS"
-  ],
-  "parameters": {
-    "ODYSSEY": {
-      "macro_character": 0.379,
-      "macro_movement": 0.442,
-      "macro_coupling": 0.856,
-      "macro_space": 0.74
-    },
-    "OCTOPUS": {
-      "macro_character": 0.408,
-      "macro_movement": 0.586,
-      "macro_coupling": 0.956,
-      "macro_space": 0.679
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ODYSSEY",
-    "target": "OCTOPUS",
-    "amount": 0.68
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Octopus",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.68
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.536,
     "brightness": 0.144,
-    "warmth": 0.113,
-    "movement": 0.377,
     "density": 0.595,
+    "movement": 0.377,
     "space": 0.883,
-    "aggression": 0.536
+    "warmth": 0.113
   },
+  "engines": [
+    "Odyssey",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.379,
-    "MOVEMENT": 0.442,
     "COUPLING": 0.856,
+    "MOVEMENT": 0.442,
     "SPACE": 0.74
   },
+  "mood": "Flux",
+  "name": "CRYOGENIC VOID",
+  "parameters": {
+    "Octopus": {
+      "macro_character": 0.408,
+      "macro_coupling": 0.956,
+      "macro_movement": 0.586,
+      "macro_space": 0.679
+    },
+    "Odyssey": {
+      "macro_character": 0.379,
+      "macro_coupling": 0.856,
+      "macro_movement": 0.442,
+      "macro_space": 0.74
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "cold",
     "vast",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

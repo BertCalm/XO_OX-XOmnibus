@@ -1,49 +1,61 @@
 {
-  "name": "NOON FOG",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORCA",
-    "OBESE"
-  ],
-  "parameters": {
-    "ORCA": {
-      "macro_character": 0.487,
-      "macro_movement": 0.667,
-      "macro_coupling": 0.045,
-      "macro_space": 0.395
-    },
-    "OBESE": {
-      "macro_character": 0.599,
-      "macro_movement": 0.008,
-      "macro_coupling": 0.301,
-      "macro_space": 0.211
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_LINK",
-    "source": "ORCA",
-    "target": "OBESE",
-    "amount": 0.707
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Obese",
+        "type": "RESONANCE_LINK",
+        "amount": 0.707
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.05,
     "brightness": 0.922,
-    "warmth": 0.465,
-    "movement": 0.364,
     "density": 0.653,
+    "movement": 0.364,
     "space": 0.268,
-    "aggression": 0.05
+    "warmth": 0.465
   },
+  "engines": [
+    "Orca",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.543,
-    "MOVEMENT": 0.338,
     "COUPLING": 0.173,
+    "MOVEMENT": 0.338,
     "SPACE": 0.303
   },
+  "mood": "Atmosphere",
+  "name": "NOON FOG",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.599,
+      "macro_coupling": 0.301,
+      "macro_movement": 0.008,
+      "macro_space": 0.211
+    },
+    "Orca": {
+      "macro_character": 0.487,
+      "macro_coupling": 0.045,
+      "macro_movement": 0.667,
+      "macro_space": 0.395
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "extreme",
     "low-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

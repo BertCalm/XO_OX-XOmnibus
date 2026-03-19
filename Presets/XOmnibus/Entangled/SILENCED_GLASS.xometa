@@ -1,48 +1,60 @@
 {
-  "name": "SILENCED GLASS",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ODDFELIX",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "ODDFELIX": {
-      "macro_character": 0.425,
-      "macro_movement": 0.043,
-      "macro_coupling": 0.61,
-      "macro_space": 0.754
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.929,
-      "macro_movement": 0.074,
-      "macro_coupling": 0.093,
-      "macro_space": 0.277
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ODDFELIX",
-    "target": "ODDOSCAR",
-    "amount": 0.326
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.326
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.844,
     "brightness": 0.7,
-    "warmth": 0.044,
-    "movement": 0.058,
     "density": 0.914,
+    "movement": 0.058,
     "space": 0.692,
-    "aggression": 0.844
+    "warmth": 0.044
   },
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.594,
-    "MOVEMENT": 0.058,
     "COUPLING": 0.768,
+    "MOVEMENT": 0.058,
     "SPACE": 0.188
   },
+  "mood": "Entangled",
+  "name": "SILENCED GLASS",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.929,
+      "macro_coupling": 0.093,
+      "macro_movement": 0.074,
+      "macro_space": 0.277
+    },
+    "OddfeliX": {
+      "macro_character": 0.425,
+      "macro_coupling": 0.61,
+      "macro_movement": 0.043,
+      "macro_space": 0.754
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "silenced"
-  ]
+  ],
+  "version": "1.0"
 }

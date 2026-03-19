@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_SPARSE_VAST_FAM_VOL_19",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OVERDUB",
-    "ORPHICA"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.97,
-      "macro_movement": 0.367,
-      "macro_coupling": 0.393,
-      "macro_space": 0.888
-    },
-    "ORPHICA": {
-      "macro_character": 0.929,
-      "macro_movement": 0.391,
-      "macro_coupling": 0.385,
-      "macro_space": 0.891
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_LINK",
-    "source": "OVERDUB",
-    "target": "ORPHICA",
-    "amount": 0.497
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Orphica",
+        "type": "FILTER_LINK",
+        "amount": 0.497
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.662,
     "brightness": 0.952,
-    "warmth": 0.933,
-    "movement": 0.386,
     "density": 0.094,
+    "movement": 0.386,
     "space": 0.913,
-    "aggression": 0.662
+    "warmth": 0.933
   },
+  "engines": [
+    "Overdub",
+    "Orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.95,
-    "MOVEMENT": 0.379,
     "COUPLING": 0.389,
+    "MOVEMENT": 0.379,
     "SPACE": 0.889
   },
+  "mood": "Family",
+  "name": "Halo Expanse",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.929,
+      "macro_coupling": 0.385,
+      "macro_movement": 0.391,
+      "macro_space": 0.891
+    },
+    "Overdub": {
+      "macro_character": 0.97,
+      "macro_coupling": 0.393,
+      "macro_movement": 0.367,
+      "macro_space": 0.888
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "sparse",
     "vast",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

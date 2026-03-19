@@ -1,49 +1,61 @@
 {
-  "name": "LONE DRIFT",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Octopus",
+        "type": "CHAOS_INJECT",
+        "amount": 0.621
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.663,
+    "brightness": 0.366,
+    "density": 0.141,
+    "movement": 0.531,
+    "space": 0.919,
+    "warmth": 0.424
+  },
   "engines": [
-    "OCELOT",
-    "OCTOPUS"
+    "Ocelot",
+    "Octopus"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.544,
+    "COUPLING": 0.625,
+    "MOVEMENT": 0.414,
+    "SPACE": 0.901
+  },
+  "mood": "Flux",
+  "name": "LONE DRIFT",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.544,
-      "macro_movement": 0.414,
       "macro_coupling": 0.625,
+      "macro_movement": 0.414,
       "macro_space": 0.901
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.676,
-      "macro_movement": 0.323,
       "macro_coupling": 0.653,
+      "macro_movement": 0.323,
       "macro_space": 1.0
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OCELOT",
-    "target": "OCTOPUS",
-    "amount": 0.621
-  },
-  "dna": {
-    "brightness": 0.366,
-    "warmth": 0.424,
-    "movement": 0.531,
-    "density": 0.141,
-    "space": 0.919,
-    "aggression": 0.663
-  },
-  "macros": {
-    "CHARACTER": 0.544,
-    "MOVEMENT": 0.414,
-    "COUPLING": 0.625,
-    "SPACE": 0.901
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "spatial",
     "sparse",
     "open"
-  ]
+  ],
+  "version": "1.0"
 }

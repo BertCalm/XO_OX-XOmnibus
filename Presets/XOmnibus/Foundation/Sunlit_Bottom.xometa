@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Sunlit Bottom",
-  "mood": "Foundation",
-  "sonic_dna": {
-    "brightness": 0.9216,
-    "warmth": 0.1667,
-    "movement": 0.3362,
-    "density": 0.0662,
-    "space": 0.8117,
-    "aggression": 0.2217
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Felix fundamental with extreme brightness, low density",
   "dna": {
+    "aggression": 0.2217,
     "brightness": 0.9216,
-    "warmth": 0.1667,
-    "movement": 0.3362,
     "density": 0.0662,
+    "movement": 0.3362,
     "space": 0.8117,
-    "aggression": 0.2217
+    "warmth": 0.1667
   },
   "engines": [
-    "ODDFELIX"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Felix fundamental with extreme brightness, low density",
-  "tags": [
-    "foundation",
-    "bright",
-    "sparse",
-    "crystalline",
-    "anchor"
+    "OddfeliX"
   ],
   "macroLabels": [
     "VOICE",
@@ -38,24 +23,39 @@
     "SPACE"
   ],
   "macros": {
-    "VOICE": 0.8886,
-    "MOTION": 0.7716,
     "COUPLE": 0.5222,
-    "SPACE": 0.4136
+    "MOTION": 0.7716,
+    "SPACE": 0.4136,
+    "VOICE": 0.8886
   },
-  "couplingIntensity": "None",
+  "mood": "Foundation",
+  "name": "Sunlit Bottom",
   "parameters": {
-    "ODDFELIX": {
-      "felix_macro_voice": 0.8886,
-      "felix_macro_motion": 0.7716,
-      "felix_macro_couple": 0.5222,
-      "felix_macro_space": 0.4136,
-      "felix_outputLevel": 0.85,
+    "OddfeliX": {
+      "felix_couplingBus": 0,
       "felix_couplingLevel": 0.5,
-      "felix_couplingBus": 0
+      "felix_macro_couple": 0.5222,
+      "felix_macro_motion": 0.7716,
+      "felix_macro_space": 0.4136,
+      "felix_macro_voice": 0.8886,
+      "felix_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2217,
+    "brightness": 0.9216,
+    "density": 0.0662,
+    "movement": 0.3362,
+    "space": 0.8117,
+    "warmth": 0.1667
+  },
+  "tags": [
+    "foundation",
+    "bright",
+    "sparse",
+    "crystalline",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

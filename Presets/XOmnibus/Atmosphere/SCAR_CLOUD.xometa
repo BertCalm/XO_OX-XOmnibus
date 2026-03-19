@@ -1,50 +1,62 @@
 {
-  "name": "SCAR CLOUD",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Oracle",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.242
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.914,
+    "brightness": 0.854,
+    "density": 0.561,
+    "movement": 0.613,
+    "space": 0.498,
+    "warmth": 0.136
+  },
   "engines": [
-    "ODYSSEY",
-    "ORACLE"
+    "Odyssey",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.452,
+    "COUPLING": 0.263,
+    "MOVEMENT": 0.487,
+    "SPACE": 0.498
+  },
+  "mood": "Atmosphere",
+  "name": "SCAR CLOUD",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.332,
-      "macro_movement": 0.865,
       "macro_coupling": 0.486,
+      "macro_movement": 0.865,
       "macro_space": 0.602
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.648,
-      "macro_movement": 0.338,
       "macro_coupling": 0.158,
+      "macro_movement": 0.338,
       "macro_space": 0.744
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ODYSSEY",
-    "target": "ORACLE",
-    "amount": 0.242
-  },
-  "dna": {
-    "brightness": 0.854,
-    "warmth": 0.136,
-    "movement": 0.613,
-    "density": 0.561,
-    "space": 0.498,
-    "aggression": 0.914
-  },
-  "macros": {
-    "CHARACTER": 0.452,
-    "MOVEMENT": 0.487,
-    "COUPLING": 0.263,
-    "SPACE": 0.498
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT HOT KINETIC DENSE 5",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.898,
-    "warmth": 0.9519,
-    "movement": 0.9426,
-    "density": 0.9438,
-    "aggression": 0.468,
-    "space": 0.4587
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Medium",
+  "couplingType": "FLOW",
+  "description": "Ultra-diverse Entangled preset — bright hot kinetic dense. Designed for FLOW coupling with XOrbital.",
   "dna": {
-    "brightness": 0.898,
-    "warmth": 0.9519,
-    "movement": 0.9426,
-    "density": 0.9438,
     "aggression": 0.468,
-    "space": 0.4587
+    "brightness": 0.898,
+    "density": 0.9438,
+    "movement": 0.9426,
+    "space": 0.4587,
+    "warmth": 0.9519
   },
   "engines": [
-    "XOrbital"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 bright hot kinetic dense. Designed for FLOW coupling with XOrbital.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "flow",
-    "orbital"
+    "Orbital"
   ],
   "macroLabels": [
     "EMBER",
@@ -36,15 +23,28 @@
     "PULSE",
     "LUSTER"
   ],
-  "couplingType": "FLOW",
-  "couplingIntensity": "Medium",
+  "mood": "Flux",
+  "name": "BRIGHT HOT KINETIC DENSE 5",
   "parameters": {
-    "XOrbital": {
-      "couplingLevel": 0.881,
-      "couplingBus": 1
+    "Orbital": {
+      "couplingBus": 1,
+      "couplingLevel": 0.881
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.468,
+    "brightness": 0.898,
+    "density": 0.9438,
+    "movement": 0.9426,
+    "space": 0.4587,
+    "warmth": 0.9519
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "flow",
+    "orbital"
+  ],
+  "version": "1.0.0"
 }

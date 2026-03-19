@@ -1,50 +1,62 @@
 {
-  "name": "DARK_KINETIC_DENSE_VIOLENT_AET4_4",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.7099
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9734,
+    "brightness": 0.0711,
+    "density": 0.8872,
+    "movement": 0.9108,
+    "space": 0.6043,
+    "warmth": 0.6952
+  },
   "engines": [
-    "ORACLE",
-    "ORGANON"
+    "Oracle",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3831,
+    "COUPLING": 0.7099,
+    "MOVEMENT": 0.9108,
+    "SPACE": 0.6043
+  },
+  "mood": "Aether",
+  "name": "Copper Blade",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.4006,
-      "macro_movement": 0.3859,
       "macro_coupling": 0.2726,
+      "macro_movement": 0.3859,
       "macro_space": 0.4177
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.4881,
-      "macro_movement": 0.6615,
       "macro_coupling": 0.3862,
+      "macro_movement": 0.6615,
       "macro_space": 0.849
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORACLE",
-    "target": "ORGANON",
-    "amount": 0.7099
-  },
-  "dna": {
-    "brightness": 0.0711,
-    "warmth": 0.6952,
-    "movement": 0.9108,
-    "density": 0.8872,
-    "space": 0.6043,
-    "aggression": 0.9734
-  },
-  "macros": {
-    "CHARACTER": 0.3831,
-    "MOVEMENT": 0.9108,
-    "COUPLING": 0.7099,
-    "SPACE": 0.6043
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "kinetic",
     "dark",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

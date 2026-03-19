@@ -1,31 +1,46 @@
 {
-  "name": "Spring Pounce",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Overdub",
+        "type": "PREDATOR_STALK",
+        "amount": 0.6
+      }
+    ]
+  },
+  "description": "A sudden ocelot leap interrupts the spring reverb bloom — tension released in echo",
   "engines": [
-    "OVERDUB",
-    "OCELOT"
+    "Overdub",
+    "Ocelot"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.65,
-    "MOVEMENT": 0.4,
     "COUPLING": 0.6,
+    "MOVEMENT": 0.4,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.5,
-    "warmth": 0.61,
-    "movement": 0.57,
-    "density": 0.58,
-    "space": 0.51,
-    "aggression": 0.49
+  "mood": "Entangled",
+  "name": "Spring Pounce",
+  "parameters": {
+    "Overdub": {},
+    "Ocelot": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "PREDATOR_STALK",
-    "source": "OCELOT",
-    "target": "OVERDUB",
-    "amount": 0.6
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.49,
+    "brightness": 0.5,
+    "density": 0.58,
+    "movement": 0.57,
+    "space": 0.51,
+    "warmth": 0.61
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "ocelot",
     "dub"
   ],
-  "description": "A sudden ocelot leap interrupts the spring reverb bloom \u2014 tension released in echo"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

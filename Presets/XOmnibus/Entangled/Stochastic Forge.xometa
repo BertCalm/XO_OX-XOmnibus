@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Stochastic Forge",
-  "mood": "Entangled",
-  "engines": [
-    "ORACLE",
-    "OTTONI"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Oracle's GENDY stochastic events amplitude-shape OTTONI attack \u2014 chance forging.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Oracle",
+        "engineB": "Ottoni",
+        "type": "AMPLITUDE_MOD"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Oracle's GENDY stochastic events amplitude-shape OTTONI attack — chance forging.",
+  "dna": {
+    "aggression": 0.22,
+    "brightness": 0.48,
+    "density": 0.55,
+    "movement": 0.6,
+    "space": 0.45,
+    "warmth": 0.68
+  },
+  "engines": [
+    "Oracle",
+    "Ottoni"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.6,
+    "MOVEMENT": 0.565,
+    "SPACE": 0.45
+  },
+  "mood": "Entangled",
+  "name": "Stochastic Forge",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.52,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.68,
+      "macro_space": 0.55
+    },
+    "Ottoni": {
+      "macro_character": 0.68,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.45,
+      "macro_space": 0.35
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "maqam",
     "brass"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.48,
-    "warmth": 0.68,
-    "movement": 0.6,
-    "density": 0.55,
-    "space": 0.45,
-    "aggression": 0.22
-  },
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.52,
-      "macro_movement": 0.68,
-      "macro_coupling": 0.6,
-      "macro_space": 0.55
-    },
-    "OTTONI": {
-      "macro_character": 0.68,
-      "macro_movement": 0.45,
-      "macro_coupling": 0.6,
-      "macro_space": 0.35
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORACLE",
-        "engineB": "OTTONI",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.6
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.6,
-    "MOVEMENT": 0.565,
-    "COUPLING": 0.6,
-    "SPACE": 0.45
-  },
-  "sequencer": null
+  "version": "1.0"
 }

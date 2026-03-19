@@ -1,31 +1,46 @@
 {
-  "name": "Feline Resonance",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Orphica",
+        "type": "PREDATOR_STALK",
+        "amount": 0.55
+      }
+    ]
+  },
+  "description": "Ocelot stalks through a field of ringing crystal harmonics — each step a note",
   "engines": [
-    "ORPHICA",
-    "OCELOT"
+    "Orphica",
+    "Ocelot"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.65,
-    "MOVEMENT": 0.7,
     "COUPLING": 0.55,
+    "MOVEMENT": 0.7,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.68,
-    "warmth": 0.52,
-    "movement": 0.78,
-    "density": 0.46,
-    "space": 0.54,
-    "aggression": 0.37
+  "mood": "Entangled",
+  "name": "Feline Resonance",
+  "parameters": {
+    "Orphica": {},
+    "Ocelot": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "PREDATOR_STALK",
-    "source": "OCELOT",
-    "target": "ORPHICA",
-    "amount": 0.55
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.37,
+    "brightness": 0.68,
+    "density": 0.46,
+    "movement": 0.78,
+    "space": 0.54,
+    "warmth": 0.52
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "ocelot",
     "microsound"
   ],
-  "description": "Ocelot stalks through a field of ringing crystal harmonics \u2014 each step a note"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

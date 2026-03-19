@@ -1,50 +1,62 @@
 {
-  "name": "HOT_KINETIC_DENSE_VIOLENT_FLX_AGG_2",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OBLONG",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "OBLONG": {
-      "macro_character": 0.558,
-      "macro_movement": 0.964,
-      "macro_coupling": 0.915,
-      "macro_space": 0.275
-    },
-    "OBLIQUE": {
-      "macro_character": 0.673,
-      "macro_movement": 0.994,
-      "macro_coupling": 0.901,
-      "macro_space": 0.299
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OBLONG",
-    "target": "OBLIQUE",
-    "amount": 0.961
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Oblique",
+        "type": "CHAOS_INJECT",
+        "amount": 0.961
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.922,
     "brightness": 0.694,
-    "warmth": 0.884,
-    "movement": 0.978,
     "density": 0.893,
+    "movement": 0.978,
     "space": 0.318,
-    "aggression": 0.922
+    "warmth": 0.884
   },
+  "engines": [
+    "Oblong",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.616,
-    "MOVEMENT": 0.978,
     "COUPLING": 0.915,
+    "MOVEMENT": 0.978,
     "SPACE": 0.318
   },
+  "mood": "Flux",
+  "name": "Peach Cascade",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.673,
+      "macro_coupling": 0.901,
+      "macro_movement": 0.994,
+      "macro_space": 0.299
+    },
+    "Oblong": {
+      "macro_character": 0.558,
+      "macro_coupling": 0.915,
+      "macro_movement": 0.964,
+      "macro_space": 0.275
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "kinetic",
     "hot",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

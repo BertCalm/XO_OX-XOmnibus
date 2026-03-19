@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Spectral Arms",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "ORBITAL"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.706,
+        "engineA": "Outwit",
+        "engineB": "Orbital",
+        "type": "FM_CROSS"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
   "description": "Orbital brightness macro tunes OUTWIT pitch spread — brighter partials, wider cellular frequency range",
-  "tags": [
-    "coupling",
-    "entangled",
-    "outwit",
-    "orbital",
-    "additive",
-    "spectral"
+  "dna": {
+    "aggression": 0.475,
+    "brightness": 0.625,
+    "density": 0.625,
+    "movement": 0.7,
+    "space": 0.575,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Outwit",
+    "Orbital"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,59 +32,52 @@
   ],
   "macros": {
     "CHARACTER": 0.414,
-    "MOVEMENT": 0.624,
     "COUPLING": 0.873,
+    "MOVEMENT": 0.624,
     "SPACE": 0.8
   },
-  "couplingIntensity": "Deep",
-  "dna": {
-    "brightness": 0.625,
-    "space": 0.575,
-    "aggression": 0.475,
-    "movement": 0.7,
-    "warmth": 0.4,
-    "density": 0.625
-  },
-  "sonic_dna": {
-    "brightness": 0.625,
-    "space": 0.575,
-    "aggression": 0.475,
-    "movement": 0.7,
-    "warmth": 0.4,
-    "density": 0.625
-  },
+  "mood": "Entangled",
+  "name": "Spectral Arms",
   "parameters": {
-    "OUTWIT": {
-      "owit_rule": 54,
-      "owit_arms": 7,
-      "owit_cellSize": 0.401,
-      "owit_density": 0.433,
-      "owit_evolveRate": 0.32,
-      "owit_mutateProb": 0.14,
-      "owit_pitchSpread": 0.312,
-      "owit_filterCutoff": 0.43,
-      "owit_filterReso": 0.194,
+    "Outwit": {
       "owit_ampAttack": 0.153,
       "owit_ampRelease": 0.818,
-      "owit_outputLevel": 0.719,
-      "owit_couplingLevel": 0.753,
-      "owit_couplingBus": 0,
       "owit_armStagger": 0.006,
+      "owit_arms": 7,
       "owit_borderMode": 2,
-      "owit_inkCloudMix": 0.162,
+      "owit_cellSize": 0.401,
       "owit_chroma1": 0.442,
       "owit_chroma2": 0.701,
-      "owit_polyDepth": 0.533
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.753,
+      "owit_density": 0.433,
+      "owit_evolveRate": 0.32,
+      "owit_filterCutoff": 0.43,
+      "owit_filterReso": 0.194,
+      "owit_inkCloudMix": 0.162,
+      "owit_mutateProb": 0.14,
+      "owit_outputLevel": 0.719,
+      "owit_pitchSpread": 0.312,
+      "owit_polyDepth": 0.533,
+      "owit_rule": 54
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OUTWIT",
-        "engineB": "ORBITAL",
-        "type": "FM_CROSS",
-        "amount": 0.706
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.475,
+    "brightness": 0.625,
+    "density": 0.625,
+    "movement": 0.7,
+    "space": 0.575,
+    "warmth": 0.4
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "orbital",
+    "additive",
+    "spectral"
+  ],
+  "version": "1.0.0"
 }

@@ -1,49 +1,61 @@
 {
-  "name": "SEARING REFRACTION",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OVERBITE",
-    "ORCA"
-  ],
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.608,
-      "macro_movement": 0.291,
-      "macro_coupling": 0.406,
-      "macro_space": 0.84
-    },
-    "ORCA": {
-      "macro_character": 0.405,
-      "macro_movement": 0.191,
-      "macro_coupling": 0.796,
-      "macro_space": 0.949
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OVERBITE",
-    "target": "ORCA",
-    "amount": 0.704
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Orca",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.704
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.776,
     "brightness": 0.632,
-    "warmth": 0.899,
-    "movement": 0.753,
     "density": 0.168,
+    "movement": 0.753,
     "space": 0.116,
-    "aggression": 0.776
+    "warmth": 0.899
   },
+  "engines": [
+    "Overbite",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.562,
-    "MOVEMENT": 0.132,
     "COUPLING": 0.948,
+    "MOVEMENT": 0.132,
     "SPACE": 0.049
   },
+  "mood": "Prism",
+  "name": "SEARING REFRACTION",
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.405,
+      "macro_coupling": 0.796,
+      "macro_movement": 0.191,
+      "macro_space": 0.949
+    },
+    "Overbite": {
+      "macro_character": 0.608,
+      "macro_coupling": 0.406,
+      "macro_movement": 0.291,
+      "macro_space": 0.84
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

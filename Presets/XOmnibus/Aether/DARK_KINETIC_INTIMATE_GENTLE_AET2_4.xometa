@@ -1,45 +1,56 @@
 {
-  "name": "DARK_KINETIC_INTIMATE_GENTLE_AET2_4",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OSPREY",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.1265,
-      "macro_movement": 0.9795,
-      "macro_coupling": 0.4483,
-      "macro_space": 0.0691
-    },
-    "OCEANIC": {
-      "macro_character": 0.158,
-      "macro_movement": 0.99,
-      "macro_coupling": 0.5047,
-      "macro_space": 0.0541
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OSPREY",
-    "target": "OCEANIC",
-    "amount": 0.7748
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Oceanic",
+        "type": "CHAOS_INJECT",
+        "amount": 0.7748
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.0382,
     "brightness": 0.1114,
+    "density": 0.4643,
     "movement": 0.9625,
     "space": 0.0847,
-    "aggression": 0.0382,
-    "warmth": 0.4751,
-    "density": 0.4643
+    "warmth": 0.4751
   },
+  "engines": [
+    "Osprey",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.1422,
-    "MOVEMENT": 0.9848,
     "COUPLING": 0.7748,
+    "MOVEMENT": 0.9848,
     "SPACE": 0.0847
   },
+  "mood": "Aether",
+  "name": "Shard Pulse",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.158,
+      "macro_coupling": 0.5047,
+      "macro_movement": 0.99,
+      "macro_space": 0.0541
+    },
+    "Osprey": {
+      "macro_character": 0.1265,
+      "macro_coupling": 0.4483,
+      "macro_movement": 0.9795,
+      "macro_space": 0.0691
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +60,6 @@
     "intimate",
     "gentle",
     "stirring"
-  ]
+  ],
+  "version": "1.0"
 }

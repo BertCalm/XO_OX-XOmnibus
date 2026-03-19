@@ -1,51 +1,62 @@
 {
-  "name": "Murk Block Surge",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Obscura",
+        "type": "CHAOS_INJECT",
+        "amount": 0.9
+      }
+    ]
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.8,
+    "brightness": 0.1,
+    "density": 0.9,
+    "movement": 0.7,
+    "space": 0.2,
+    "warmth": 0.8
+  },
   "engines": [
-    "OBLONG",
-    "OBSCURA"
+    "Oblong",
+    "Obscura"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.9,
+    "MOVEMENT": 0.7,
+    "SPACE": 0.2
+  },
+  "mood": "Entangled",
+  "name": "Murk Block Surge",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.2,
-      "macro_movement": 0.7,
       "macro_coupling": 0.9,
+      "macro_movement": 0.7,
       "macro_space": 0.2
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.8,
-      "macro_movement": 0.7,
       "macro_coupling": 0.9,
+      "macro_movement": 0.7,
       "macro_space": 0.2
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OBLONG",
-    "target": "OBSCURA",
-    "amount": 0.9
-  },
-  "dna": {
-    "brightness": 0.1,
-    "warmth": 0.8,
-    "movement": 0.7,
-    "density": 0.9,
-    "space": 0.2,
-    "aggression": 0.8
-  },
-  "macros": {
-    "CHARACTER": 0.5,
-    "MOVEMENT": 0.7,
-    "COUPLING": 0.9,
-    "SPACE": 0.2
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "oblong",
     "obscura"
   ],
-  "author": "XO_OX Coverage Pack 2026-03-16",
-  "created": "2026-03-16"
+  "version": "1.0"
 }

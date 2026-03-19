@@ -257,6 +257,13 @@ public:
         const float level       = (pLevel != nullptr) ? pLevel->load() : 0.8f;
         const float subLevel    = (pSubLevel != nullptr) ? pSubLevel->load() : 0.3f;
 
+        // D002: Macro reads — centered at 0.5, bipolar offset is (value - 0.5)
+        const float macroChar  = (pMacroCharacter != nullptr) ? pMacroCharacter->load() : 0.5f;
+        const float macroMove  = (pMacroMovement != nullptr)  ? pMacroMovement->load()  : 0.5f;
+        const float macroCoup  = (pMacroCoupling != nullptr)  ? pMacroCoupling->load()  : 0.5f;
+        const float macroSpace = (pMacroSpace != nullptr)     ? pMacroSpace->load()     : 0.5f;
+        juce::ignoreUnused (macroCoup, macroSpace);
+
         // --- Process MIDI events ---
         for (const auto metadata : midi)
         {
@@ -302,8 +309,17 @@ public:
             case 3: waveform = PolyBLEP::Waveform::Triangle; break;
         }
 
+        // D005: breathing LFO — modulates filter cutoff
+        const float lfoRate  = (pLfoRate != nullptr) ? pLfoRate->load() : 0.08f;
+        const float lfoDepth = (pLfoDepth != nullptr) ? pLfoDepth->load() : 0.15f;
+        lfoPhase_ += lfoRate * static_cast<float> (numSamples) / srf;
+        if (lfoPhase_ >= 1.0f) lfoPhase_ -= 1.0f;
+        float lfoVal = std::sin (lfoPhase_ * 6.28318530f) * lfoDepth;
+
         // Effective filter cutoff with coupling modulation
-        float effectiveCutoff = clamp (cutoff + filterMod, 20.0f, 20000.0f);
+        // D002: CHARACTER macro offsets filter cutoff (±4000 Hz from center)
+        // D005: LFO modulates cutoff (±2000 Hz at full depth)
+        float effectiveCutoff = clamp (cutoff + filterMod + (macroChar - 0.5f) * 8000.0f + lfoVal * 2000.0f, 20.0f, 20000.0f);
 
         // Hoist filter coefficient updates outside sample loop
         for (auto& voice : voices)
@@ -430,7 +446,9 @@ public:
                     voice.memory.writeSample (feedSample);
 
                     // Read back granular reconstruction from fading memory
-                    oubliOut = voice.memory.readGrains (memGrain, memDrift, srf, decayRate);
+                    // D002: MOVEMENT macro increases memory drift (more modulation)
+                    float effectiveMemDrift = std::max (0.0f, std::min (1.0f, memDrift + (macroMove - 0.5f) * 0.6f));
+                    oubliOut = voice.memory.readGrains (memGrain, effectiveMemDrift, srf, decayRate);
                 }
 
                 // ============================================================
@@ -622,6 +640,28 @@ public:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "ombre_level", 1 }, "Ombre Level",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.8f));
+
+        // D005: breathing LFO for autonomous modulation
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "ombre_lfoRate", 1 }, "Ombre LFO Rate",
+            juce::NormalisableRange<float> (0.005f, 10.0f, 0.001f, 0.3f), 0.08f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "ombre_lfoDepth", 1 }, "Ombre LFO Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.15f));
+
+        // D002: 4 macros
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "ombre_macroCharacter", 1 }, "CHARACTER",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "ombre_macroMovement", 1 }, "MOVEMENT",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "ombre_macroCoupling", 1 }, "COUPLING",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "ombre_macroSpace", 1 }, "SPACE",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
     }
 
 public:
@@ -642,6 +682,12 @@ public:
         pSustain      = apvts.getRawParameterValue ("ombre_sustain");
         pRelease      = apvts.getRawParameterValue ("ombre_release");
         pLevel        = apvts.getRawParameterValue ("ombre_level");
+        pLfoRate      = apvts.getRawParameterValue ("ombre_lfoRate");
+        pLfoDepth     = apvts.getRawParameterValue ("ombre_lfoDepth");
+        pMacroCharacter = apvts.getRawParameterValue ("ombre_macroCharacter");
+        pMacroMovement  = apvts.getRawParameterValue ("ombre_macroMovement");
+        pMacroCoupling  = apvts.getRawParameterValue ("ombre_macroCoupling");
+        pMacroSpace     = apvts.getRawParameterValue ("ombre_macroSpace");
     }
 
     //-- Identity --------------------------------------------------------------
@@ -730,6 +776,9 @@ private:
     std::array<OmbreVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
 
+    // D005: breathing LFO state
+    float lfoPhase_ = 0.0f;
+
     // MIDI expression
     float modWheelAmount_ = 0.0f;   // CC#1 — sweeps blend toward Opsis (D006)
 
@@ -760,6 +809,12 @@ private:
     std::atomic<float>* pSustain = nullptr;
     std::atomic<float>* pRelease = nullptr;
     std::atomic<float>* pLevel = nullptr;
+    std::atomic<float>* pLfoRate = nullptr;
+    std::atomic<float>* pLfoDepth = nullptr;
+    std::atomic<float>* pMacroCharacter = nullptr;
+    std::atomic<float>* pMacroMovement  = nullptr;
+    std::atomic<float>* pMacroCoupling  = nullptr;
+    std::atomic<float>* pMacroSpace     = nullptr;
 };
 
 } // namespace xomnibus

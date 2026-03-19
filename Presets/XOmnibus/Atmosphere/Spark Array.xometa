@@ -1,25 +1,35 @@
 {
-  "name": "Spark Array",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "description": "A rack of synthesizers nobody is playing. Electric presence without gesture.",
   "engines": [
-    "OPTIC"
+    "Optic"
   ],
-  "mood": "Atmosphere",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.574,
-    "MOVEMENT": 0.543,
     "COUPLING": 0.0,
+    "MOVEMENT": 0.543,
     "SPACE": 0.694
   },
-  "sonic_dna": {
-    "brightness": 0.985,
-    "warmth": 0.163,
-    "movement": 0.543,
-    "density": 0.439,
-    "space": 0.694,
-    "aggression": 0.226
+  "mood": "Atmosphere",
+  "name": "Spark Array",
+  "parameters": {
+    "Optic": {}
   },
-  "parameters": {},
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.226,
+    "brightness": 0.985,
+    "density": 0.439,
+    "movement": 0.543,
+    "space": 0.694,
+    "warmth": 0.163
+  },
   "tags": [
     "atmosphere",
     "pad",
@@ -27,5 +37,13 @@
     "electric",
     "phosphor"
   ],
-  "description": "A rack of synthesizers nobody is playing. Electric presence without gesture."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.2
+  }
 }

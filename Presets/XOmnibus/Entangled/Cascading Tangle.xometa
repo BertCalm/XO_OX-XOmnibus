@@ -1,52 +1,62 @@
 {
-  "schema_version": 1,
-  "name": "Cascading Tangle",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "macros": {
-    "CHARACTER": 0.5,
-    "MOVEMENT": 0.66,
-    "COUPLING": 0.85,
-    "SPACE": 0.65
-  },
-  "sonic_dna": {
-    "movement": 0.64,
-    "brightness": 0.59,
-    "aggression": 0.43,
-    "space": 0.65,
-    "warmth": 0.55,
-    "density": 0.74
-  },
-  "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.735,
-      "olap_decay": 0.547,
-      "olap_damping": 0.583,
-      "olap_diffusion": 0.689,
-      "olap_modDepth": 0.351,
-      "olap_modRate": 0.203,
-      "olap_preDelay": 0.068,
-      "olap_earlyMix": 0.492,
-      "olap_lateMix": 0.792,
-      "olap_filterCutoff": 0.497,
-      "olap_filterReso": 0.265,
-      "olap_outputLevel": 0.727,
-      "olap_couplingLevel": 0.78,
-      "olap_couplingBus": 0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECTION",
-    "source": "OVERLAP",
-    "target": "ONSET",
-    "amount": 0.851
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Onset",
+        "type": "CHAOS_INJECTION",
+        "amount": 0.851
+      }
+    ]
   },
   "couplingIntensity": "Deep",
+  "description": "Onset rhythmic density modulates OVERLAP mod rate — drum patterns animate the FDN's internal flutter",
+  "engines": [
+    "Overlap",
+    "Onset"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.85,
+    "MOVEMENT": 0.66,
+    "SPACE": 0.65
+  },
+  "mood": "Entangled",
+  "name": "Cascading Tangle",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.78,
+      "olap_damping": 0.583,
+      "olap_decay": 0.547,
+      "olap_diffusion": 0.689,
+      "olap_earlyMix": 0.492,
+      "olap_filterCutoff": 0.497,
+      "olap_filterReso": 0.265,
+      "olap_lateMix": 0.792,
+      "olap_modDepth": 0.351,
+      "olap_modRate": 0.203,
+      "olap_outputLevel": 0.727,
+      "olap_preDelay": 0.068,
+      "olap_size": 0.735
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.43,
+    "brightness": 0.59,
+    "density": 0.74,
+    "movement": 0.64,
+    "space": 0.65,
+    "warmth": 0.55
+  },
   "tags": [
     "entangled",
     "coupling",
@@ -56,5 +66,13 @@
     "fdn",
     "reverb"
   ],
-  "description": "Onset rhythmic density modulates OVERLAP mod rate \u2014 drum patterns animate the FDN's internal flutter"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.497,
+    "warmth": 0.5,
+    "movement": 0.203,
+    "density": 0.5,
+    "space": 0.068,
+    "aggression": 0.3
+  }
 }

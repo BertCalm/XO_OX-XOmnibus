@@ -1,49 +1,61 @@
 {
-  "name": "Thermal Horizon",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Organon",
+        "type": "DYNAMICS_SHARE",
+        "amount": 0.76
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.43,
+    "brightness": 0.43,
+    "density": 0.47,
+    "movement": 0.63,
+    "space": 0.69,
+    "warmth": 0.9
+  },
   "engines": [
-    "OPAL",
-    "ORGANON"
+    "Opal",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.81,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.73,
+    "SPACE": 0.74
+  },
+  "mood": "Entangled",
+  "name": "Thermal Horizon",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.87,
-      "macro_movement": 0.75,
       "macro_coupling": 0.77,
+      "macro_movement": 0.75,
       "macro_space": 0.79
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.75,
-      "macro_movement": 0.71,
       "macro_coupling": 0.63,
+      "macro_movement": 0.71,
       "macro_space": 0.7
     }
   },
-  "coupling": {
-    "type": "DYNAMICS_SHARE",
-    "source": "OPAL",
-    "target": "ORGANON",
-    "amount": 0.76
-  },
-  "dna": {
-    "brightness": 0.43,
-    "warmth": 0.9,
-    "movement": 0.63,
-    "density": 0.47,
-    "space": 0.69,
-    "aggression": 0.43
-  },
-  "macros": {
-    "CHARACTER": 0.81,
-    "MOVEMENT": 0.73,
-    "COUPLING": 0.7,
-    "SPACE": 0.74
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

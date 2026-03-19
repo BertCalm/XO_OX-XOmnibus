@@ -1,14 +1,86 @@
 {
-  "schema_version": 1,
-  "name": "DARK_KINETIC_DENSE_GENTLE_ENT_1",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7449,
+        "source": "Obsidian",
+        "target": "Ocelot",
+        "type": "TIMBRAL_BLEED"
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "description": "Dark Kinetic Dense Gentle character entanglement — OBSIDIAN × OCELOT via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.0733,
+    "brightness": 0.0943,
+    "density": 0.9664,
+    "movement": 0.9517,
+    "space": 0.4057,
+    "warmth": 0.6471
+  },
   "engines": [
-    "OBSIDIAN",
-    "OCELOT"
+    "Obsidian",
+    "Ocelot"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dark Kinetic Dense Gentle character entanglement \u2014 OBSIDIAN \u00d7 OCELOT via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "BLADE",
+    "EDGE",
+    "SHARD",
+    "VOID"
+  ],
+  "macros": {
+    "CHARACTER": 0.3707,
+    "COUPLING": 0.7449,
+    "MOVEMENT": 0.9517,
+    "SPACE": 0.4057
+  },
+  "mood": "Entangled",
+  "name": "Shadow Thick",
+  "parameters": {
+    "Obsidian": {
+      "amp_attack": 0.0677,
+      "amp_release": 0.3482,
+      "coupling_level": 0.611,
+      "density": 0.9723,
+      "drive": 0.0916,
+      "filter_cutoff": 0.2812,
+      "filter_resonance": 0.1357,
+      "macro_character": 0.6224,
+      "macro_coupling": 0.6474,
+      "macro_movement": 0.9903,
+      "macro_space": 0.4221,
+      "output_level": 0.9451,
+      "reverb_mix": 0.4079,
+      "reverb_size": 0.4611
+    },
+    "Ocelot": {
+      "amp_attack": 0.0356,
+      "amp_release": 0.3773,
+      "coupling_level": 0.5843,
+      "density": 0.9926,
+      "drive": 0.0857,
+      "filter_cutoff": 0.2294,
+      "filter_resonance": 0.173,
+      "macro_character": 0.5787,
+      "macro_coupling": 0.6475,
+      "macro_movement": 0.9393,
+      "macro_space": 0.3774,
+      "output_level": 0.9233,
+      "reverb_mix": 0.3856,
+      "reverb_size": 0.4632
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.0733,
+    "brightness": 0.0943,
+    "density": 0.9664,
+    "movement": 0.9517,
+    "space": 0.4057,
+    "warmth": 0.6471
+  },
   "tags": [
     "entangled",
     "dark",
@@ -17,81 +89,5 @@
     "gentle",
     "resonant"
   ],
-  "macroLabels": [
-    "BLADE",
-    "EDGE",
-    "SHARD",
-    "VOID"
-  ],
-  "couplingIntensity": "Medium",
-  "dna": {
-    "brightness": 0.0943,
-    "warmth": 0.6471,
-    "movement": 0.9517,
-    "density": 0.9664,
-    "space": 0.4057,
-    "aggression": 0.0733
-  },
-  "sonic_dna": {
-    "brightness": 0.0943,
-    "warmth": 0.6471,
-    "movement": 0.9517,
-    "density": 0.9664,
-    "space": 0.4057,
-    "aggression": 0.0733
-  },
-  "parameters": {
-    "OBSIDIAN": {
-      "macro_character": 0.6224,
-      "macro_movement": 0.9903,
-      "macro_coupling": 0.6474,
-      "macro_space": 0.4221,
-      "filter_cutoff": 0.2812,
-      "filter_resonance": 0.1357,
-      "amp_attack": 0.0677,
-      "amp_release": 0.3482,
-      "reverb_mix": 0.4079,
-      "reverb_size": 0.4611,
-      "drive": 0.0916,
-      "density": 0.9723,
-      "output_level": 0.9451,
-      "coupling_level": 0.611
-    },
-    "OCELOT": {
-      "macro_character": 0.5787,
-      "macro_movement": 0.9393,
-      "macro_coupling": 0.6475,
-      "macro_space": 0.3774,
-      "filter_cutoff": 0.2294,
-      "filter_resonance": 0.173,
-      "amp_attack": 0.0356,
-      "amp_release": 0.3773,
-      "reverb_mix": 0.3856,
-      "reverb_size": 0.4632,
-      "drive": 0.0857,
-      "density": 0.9926,
-      "output_level": 0.9233,
-      "coupling_level": 0.5843
-    }
-  },
-  "coupling": {
-    "type": "TIMBRAL_BLEED",
-    "source": "OBSIDIAN",
-    "target": "OCELOT",
-    "amount": 0.7449,
-    "pairs": [
-      {
-        "source": "OBSIDIAN",
-        "target": "OCELOT",
-        "type": "TIMBRAL_BLEED",
-        "amount": 0.7449
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.3707,
-    "MOVEMENT": 0.9517,
-    "COUPLING": 0.7449,
-    "SPACE": 0.4057
-  }
+  "version": "1.0.0"
 }

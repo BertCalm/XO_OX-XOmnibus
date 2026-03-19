@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_DENSE_INTIMATE_GENTLE_FND_3",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Origami",
+        "type": "FILTER_MOD",
+        "amount": 0.499
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.086,
+    "brightness": 0.926,
+    "density": 0.927,
+    "movement": 0.436,
+    "space": 0.129,
+    "warmth": 0.491
+  },
   "engines": [
-    "OBSIDIAN",
-    "ORIGAMI"
+    "Obsidian",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.75,
+    "COUPLING": 0.199,
+    "MOVEMENT": 0.777,
+    "SPACE": 0.101
+  },
+  "mood": "Foundation",
+  "name": "Node Dense",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.205,
-      "macro_movement": 0.278,
       "macro_coupling": 0.557,
+      "macro_movement": 0.278,
       "macro_space": 0.861
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.562,
-      "macro_movement": 0.873,
       "macro_coupling": 0.661,
+      "macro_movement": 0.873,
       "macro_space": 0.548
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OBSIDIAN",
-    "target": "ORIGAMI",
-    "amount": 0.499
-  },
-  "dna": {
-    "brightness": 0.926,
-    "warmth": 0.491,
-    "movement": 0.436,
-    "density": 0.927,
-    "space": 0.129,
-    "aggression": 0.086
-  },
-  "macros": {
-    "CHARACTER": 0.75,
-    "MOVEMENT": 0.777,
-    "COUPLING": 0.199,
-    "SPACE": 0.101
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -47,5 +58,6 @@
     "dense",
     "intimate",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

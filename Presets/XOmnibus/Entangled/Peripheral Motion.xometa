@@ -1,63 +1,63 @@
 {
-  "schema_version": 1,
-  "name": "Peripheral Motion",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Living curious motion movement with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.143,
+    "brightness": 0.426,
+    "density": 0.256,
+    "movement": 0.532,
+    "space": 0.0,
+    "warmth": 0.379
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Living curious motion movement with bob character and analog drift.",
-  "tags": [
-    "curious",
-    "investigate",
-    "peripheral"
-  ],
+  "legacy": {
+    "sourceCategory": "Curious Motion",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Curious Motion",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Peripheral Motion",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 2.0,
-      "bob_oscA_drift": 0.28,
-      "bob_oscA_shape": 0.55,
-      "bob_oscB_wave": 1.0,
-      "bob_oscB_fm": 0.25,
-      "bob_oscB_blend": 0.5,
-      "bob_oscB_detune": -5.0,
-      "bob_curMode": 2.0,
-      "bob_curAmount": 0.75,
-      "bob_lfo1Rate": 1.5,
-      "bob_lfo1Depth": 0.42,
-      "bob_fltMode": 1.0,
-      "bob_fltCutoff": 4200.0,
-      "bob_fltReso": 0.44,
       "bob_ampAttack": 0.08,
       "bob_ampDecay": 0.5,
-      "bob_ampSustain": 0.6,
       "bob_ampRelease": 1.1,
-      "bob_bobMode": 0.5
+      "bob_ampSustain": 0.6,
+      "bob_bobMode": 0.5,
+      "bob_curAmount": 0.75,
+      "bob_curMode": 2.0,
+      "bob_fltCutoff": 4200.0,
+      "bob_fltMode": 1.0,
+      "bob_fltReso": 0.44,
+      "bob_lfo1Depth": 0.42,
+      "bob_lfo1Rate": 1.5,
+      "bob_oscA_drift": 0.28,
+      "bob_oscA_shape": 0.55,
+      "bob_oscA_wave": 2.0,
+      "bob_oscB_blend": 0.5,
+      "bob_oscB_detune": -5.0,
+      "bob_oscB_fm": 0.25,
+      "bob_oscB_wave": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.426,
-    "warmth": 0.379,
-    "movement": 0.532,
-    "density": 0.256,
-    "space": 0.0,
-    "aggression": 0.143
-  }
+  "tags": [
+    "curious",
+    "investigate",
+    "peripheral"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

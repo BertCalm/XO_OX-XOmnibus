@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "COLD INTIMATE KINETIC DARK 2",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "warmth": 0.0697,
-    "space": 0.0594,
-    "movement": 0.8902,
-    "brightness": 0.094,
-    "aggression": 0.5274,
-    "density": 0.4524
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "Extreme",
+  "couplingType": "ECHO",
+  "description": "Ultra-diverse Entangled preset — cold intimate kinetic dark. Designed for ECHO coupling with XObbligato.",
   "dna": {
-    "warmth": 0.0697,
-    "space": 0.0594,
-    "movement": 0.8902,
-    "brightness": 0.094,
     "aggression": 0.5274,
-    "density": 0.4524
+    "brightness": 0.094,
+    "density": 0.4524,
+    "movement": 0.8902,
+    "space": 0.0594,
+    "warmth": 0.0697
   },
   "engines": [
-    "XObbligato"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 cold intimate kinetic dark. Designed for ECHO coupling with XObbligato.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "echo",
-    "obbligato"
+    "Obbligato"
   ],
   "macroLabels": [
     "EXPANSE",
@@ -36,15 +23,28 @@
     "LUSTER",
     "FLOW"
   ],
-  "couplingType": "ECHO",
-  "couplingIntensity": "Extreme",
+  "mood": "Flux",
+  "name": "COLD INTIMATE KINETIC DARK 2",
   "parameters": {
-    "XObbligato": {
-      "couplingLevel": 0.556,
-      "couplingBus": 1
+    "Obbligato": {
+      "couplingBus": 1,
+      "couplingLevel": 0.556
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.5274,
+    "brightness": 0.094,
+    "density": 0.4524,
+    "movement": 0.8902,
+    "space": 0.0594,
+    "warmth": 0.0697
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "echo",
+    "obbligato"
+  ],
+  "version": "1.0.0"
 }

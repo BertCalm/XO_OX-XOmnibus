@@ -1,22 +1,35 @@
 {
-  "schema_version": 1,
-  "name": "Visual Chaos",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.5,
+        "engineA": "Ouroboros",
+        "engineB": "Optic",
+        "type": "Audio->FM"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Optic visualiser mapped to Ouroboros attractor coordinates. Sound as geometry, geometry as light.",
+  "dna": {
+    "aggression": 1.0,
+    "brightness": 0.806,
+    "density": 0.685,
+    "movement": 0.653,
+    "space": 0.445,
+    "warmth": 0.46
+  },
   "engines": [
     "Ouroboros",
     "Optic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Optic visualiser mapped to Ouroboros attractor coordinates. Sound as geometry, geometry as light.",
-  "tags": [
-    "visual",
-    "light",
-    "geometry",
-    "entangled",
-    "ouroboros",
-    "optic"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -25,52 +38,39 @@
   ],
   "macros": {
     "CHARACTER": 0.6,
-    "MOVEMENT": 0.75,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.75,
     "SPACE": 0.5
   },
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Visual Chaos",
   "parameters": {
-    "Ouroboros": {
-      "ouro_topology": 1,
-      "ouro_rate": 65.0,
-      "ouro_chaosIndex": 0.5,
-      "ouro_leash": 0.4,
-      "ouro_theta": 0.0,
-      "ouro_phi": 0.35,
-      "ouro_damping": 0.3,
-      "ouro_injection": 0.0
-    },
     "Optic": {
-      "optic_pulseRate": 0.5,
       "optic_autoPulse": 1,
-      "optic_brightness": 0.55
+      "optic_brightness": 0.55,
+      "optic_pulseRate": 0.5
+    },
+    "Ouroboros": {
+      "ouro_chaosIndex": 0.5,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.4,
+      "ouro_phi": 0.35,
+      "ouro_rate": 65.0,
+      "ouro_theta": 0.0,
+      "ouro_topology": 1
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Optic",
-        "type": "Audio->FM",
-        "amount": 0.5
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.806,
-    "warmth": 0.46,
-    "movement": 0.653,
-    "density": 0.685,
-    "space": 0.445,
-    "aggression": 1.0
-  }
+  "tags": [
+    "visual",
+    "light",
+    "geometry",
+    "entangled",
+    "ouroboros",
+    "optic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

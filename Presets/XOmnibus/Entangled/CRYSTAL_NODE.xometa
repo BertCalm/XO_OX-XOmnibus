@@ -1,49 +1,61 @@
 {
-  "name": "CRYSTAL NODE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Orphica",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.501
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.585,
+    "brightness": 0.767,
+    "density": 0.077,
+    "movement": 0.343,
+    "space": 0.729,
+    "warmth": 0.061
+  },
   "engines": [
-    "ORIGAMI",
-    "ORPHICA"
+    "Origami",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.818,
+    "COUPLING": 0.673,
+    "MOVEMENT": 0.751,
+    "SPACE": 0.225
+  },
+  "mood": "Entangled",
+  "name": "CRYSTAL NODE",
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.214,
-      "macro_movement": 0.473,
       "macro_coupling": 0.901,
+      "macro_movement": 0.473,
       "macro_space": 0.796
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.17,
-      "macro_movement": 0.085,
       "macro_coupling": 0.515,
+      "macro_movement": 0.085,
       "macro_space": 0.633
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORIGAMI",
-    "target": "ORPHICA",
-    "amount": 0.501
-  },
-  "dna": {
-    "brightness": 0.767,
-    "warmth": 0.061,
-    "movement": 0.343,
-    "density": 0.077,
-    "space": 0.729,
-    "aggression": 0.585
-  },
-  "macros": {
-    "CHARACTER": 0.818,
-    "MOVEMENT": 0.751,
-    "COUPLING": 0.673,
-    "SPACE": 0.225
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-  ]
+  ],
+  "version": "1.0"
 }

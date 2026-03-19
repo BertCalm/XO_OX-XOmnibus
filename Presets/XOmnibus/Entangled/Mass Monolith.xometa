@@ -1,33 +1,48 @@
 {
-  "name": "Mass Monolith",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Obsidian",
+        "type": "SPECTRAL_FOLD",
+        "amount": 0.82
+      }
+    ]
+  },
+  "description": "XObese's low-end mass fused with Obsidian's volcanic density — immovable and crushing.",
   "engines": [
-    "OBESE",
-    "OBSIDIAN"
+    "Obese",
+    "Obsidian"
   ],
-  "mood": "Entangled",
-  "strategy": "Still Aggressive",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.9,
-    "MOVEMENT": 0.05,
     "COUPLING": 0.85,
+    "MOVEMENT": 0.05,
     "SPACE": 0.4
   },
+  "mood": "Entangled",
+  "name": "Mass Monolith",
+  "parameters": {
+    "Obese": {},
+    "Obsidian": {}
+  },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.95,
     "brightness": 0.2,
-    "warmth": 0.4,
-    "movement": 0.05,
     "density": 0.9,
+    "movement": 0.05,
     "space": 0.35,
-    "aggression": 0.95
+    "warmth": 0.4
   },
-  "parameters": {},
-  "coupling": {
-    "type": "SPECTRAL_FOLD",
-    "source": "OBESE",
-    "target": "OBSIDIAN",
-    "amount": 0.82
-  },
+  "strategy": "Still Aggressive",
   "tags": [
     "entangled",
     "aggressive",
@@ -35,5 +50,13 @@
     "massive",
     "monolithic"
   ],
-  "description": "XObese's low-end mass fused with Obsidian's volcanic density \u2014 immovable and crushing."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

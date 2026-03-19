@@ -1,49 +1,61 @@
 {
-  "name": "AMBER SPECTRUM",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "ORACLE",
-    "OMBRE"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.825,
-      "macro_movement": 0.898,
-      "macro_coupling": 0.335,
-      "macro_space": 0.866
-    },
-    "OMBRE": {
-      "macro_character": 0.857,
-      "macro_movement": 0.66,
-      "macro_coupling": 0.354,
-      "macro_space": 0.624
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ORACLE",
-    "target": "OMBRE",
-    "amount": 0.807
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Ombre",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.807
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.959,
     "brightness": 0.28,
-    "warmth": 0.933,
-    "movement": 0.172,
     "density": 0.113,
+    "movement": 0.172,
     "space": 0.99,
-    "aggression": 0.959
+    "warmth": 0.933
   },
+  "engines": [
+    "Oracle",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.691,
-    "MOVEMENT": 0.606,
     "COUPLING": 0.682,
+    "MOVEMENT": 0.606,
     "SPACE": 0.601
   },
+  "mood": "Prism",
+  "name": "AMBER SPECTRUM",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.857,
+      "macro_coupling": 0.354,
+      "macro_movement": 0.66,
+      "macro_space": 0.624
+    },
+    "Oracle": {
+      "macro_character": 0.825,
+      "macro_coupling": 0.335,
+      "macro_movement": 0.898,
+      "macro_space": 0.866
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

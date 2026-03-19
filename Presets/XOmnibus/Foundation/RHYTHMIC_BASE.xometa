@@ -1,48 +1,60 @@
 {
-  "name": "RHYTHMIC BASE",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overworld",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.6
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.551,
+    "brightness": 0.359,
+    "density": 0.537,
+    "movement": 0.924,
+    "space": 0.137,
+    "warmth": 0.348
+  },
   "engines": [
-    "OBLONG",
-    "OVERWORLD"
+    "Oblong",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.614,
+    "COUPLING": 0.6,
+    "MOVEMENT": 0.924,
+    "SPACE": 0.137
+  },
+  "mood": "Foundation",
+  "name": "RHYTHMIC BASE",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.41,
-      "macro_movement": 0.911,
       "macro_coupling": 0.799,
+      "macro_movement": 0.911,
       "macro_space": 0.455
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.345,
-      "macro_movement": 0.946,
       "macro_coupling": 0.324,
+      "macro_movement": 0.946,
       "macro_space": 0.255
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBLONG",
-    "target": "OVERWORLD",
-    "amount": 0.6
-  },
-  "dna": {
-    "brightness": 0.359,
-    "warmth": 0.348,
-    "movement": 0.924,
-    "density": 0.537,
-    "space": 0.137,
-    "aggression": 0.551
-  },
-  "macros": {
-    "CHARACTER": 0.614,
-    "MOVEMENT": 0.924,
-    "COUPLING": 0.6,
-    "SPACE": 0.137
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-  ]
+  ],
+  "version": "1.0"
 }

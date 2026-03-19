@@ -1,50 +1,62 @@
 {
-  "name": "Stiff Prophecy",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORACLE",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.2,
-      "macro_movement": 0.45,
-      "macro_coupling": 0.7,
-      "macro_space": 0.89
-    },
-    "OBSCURA": {
-      "macro_character": 0.17,
-      "macro_movement": 0.4,
-      "macro_coupling": 0.75,
-      "macro_space": 0.92
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBSCURA",
-    "target": "ORACLE",
-    "amount": 0.7
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oracle",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7
+      }
+    ]
   },
+  "description": "Obscura string stiffness timbres blend with Oracle's GENDY voice — prophecy in metal strings.",
   "dna": {
+    "aggression": 0.0,
     "brightness": 0.11,
-    "warmth": 0.0,
-    "movement": 0.45,
     "density": 0.13,
+    "movement": 0.45,
     "space": 0.61,
-    "aggression": 0.0
+    "warmth": 0.0
   },
+  "engines": [
+    "Oracle",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.2,
-    "MOVEMENT": 0.45,
     "COUPLING": 0.7,
+    "MOVEMENT": 0.45,
     "SPACE": 0.89
   },
+  "mood": "Entangled",
+  "name": "Stiff Prophecy",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.17,
+      "macro_coupling": 0.75,
+      "macro_movement": 0.4,
+      "macro_space": 0.92
+    },
+    "Oracle": {
+      "macro_character": 0.2,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.45,
+      "macro_space": 0.89
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "stiff",
     "prophecy"
   ],
-  "description": "Obscura string stiffness timbres blend with Oracle's GENDY voice \u2014 prophecy in metal strings."
+  "version": "1.0"
 }

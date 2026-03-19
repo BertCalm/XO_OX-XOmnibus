@@ -1,50 +1,62 @@
 {
-  "name": "MONOLITH SURGE",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OCEANIC",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OCEANIC": {
-      "macro_character": 0.8741,
-      "macro_movement": 0.5545,
-      "macro_coupling": 0.641,
-      "macro_space": 0.8459
-    },
-    "OBLONG": {
-      "macro_character": 0.8512,
-      "macro_movement": 0.2851,
-      "macro_coupling": 0.9052,
-      "macro_space": 0.2728
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OCEANIC",
-    "target": "OBLONG",
-    "amount": 0.9716
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oblong",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.9716
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.4511,
     "brightness": 0.1473,
-    "warmth": 0.4375,
-    "movement": 0.9464,
     "density": 0.9601,
+    "movement": 0.9464,
     "space": 0.222,
-    "aggression": 0.4511
+    "warmth": 0.4375
   },
+  "engines": [
+    "Oceanic",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.3496,
-    "MOVEMENT": 0.0267,
     "COUPLING": 0.716,
+    "MOVEMENT": 0.0267,
     "SPACE": 0.502
   },
+  "mood": "Entangled",
+  "name": "MONOLITH SURGE",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.8512,
+      "macro_coupling": 0.9052,
+      "macro_movement": 0.2851,
+      "macro_space": 0.2728
+    },
+    "Oceanic": {
+      "macro_character": 0.8741,
+      "macro_coupling": 0.641,
+      "macro_movement": 0.5545,
+      "macro_space": 0.8459
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "monolithic",
     "dense",
     "welded",
     "solid"
-  ]
+  ],
+  "version": "1.0"
 }

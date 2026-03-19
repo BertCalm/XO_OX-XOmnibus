@@ -1,46 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Velvet Drift",
-  "mood": "Atmosphere",
-  "engines": ["Opal"],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dense micro-grains create a smooth velvet texture that drifts across the stereo field.",
-  "tags": ["velvet", "smooth", "dense", "drift"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": null,
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-11",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "description": "Dense micro-grains create a smooth velvet texture that drifts across the stereo field.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.4,
+    "density": 0.65,
+    "movement": 0.35,
+    "space": 0.5,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Opal"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Velvet Drift",
   "parameters": {
     "Opal": {
-      "opal_source": 1,
-      "opal_grainSize": 40.0,
-      "opal_density": 90.0,
-      "opal_position": 0.5,
-      "opal_posScatter": 0.2,
-      "opal_pitchScatter": 0.8,
-      "opal_panScatter": 0.7,
-      "opal_window": 0,
-      "opal_freeze": 0.0,
-      "opal_couplingLevel": 0.0,
-      "opal_pulseWidth": 0.5,
-      "opal_detuneCents": 10.0,
-      "opal_filterCutoff": 5000.0,
-      "opal_filterReso": 0.15,
-      "opal_filterMode": 0,
-      "opal_shimmer": 0.1,
-      "opal_frost": 0.0,
-      "opal_smear": 0.2,
-      "opal_reverbMix": 0.35,
       "opal_ampAttack": 0.8,
       "opal_ampDecay": 0.6,
-      "opal_ampSustain": 0.85,
       "opal_ampRelease": 2.5,
-      "opal_masterVolume": 0.7
+      "opal_ampSustain": 0.85,
+      "opal_couplingLevel": 0.0,
+      "opal_density": 90.0,
+      "opal_detuneCents": 10.0,
+      "opal_filterCutoff": 5000.0,
+      "opal_filterMode": 0,
+      "opal_filterReso": 0.15,
+      "opal_freeze": 0.0,
+      "opal_frost": 0.0,
+      "opal_grainSize": 40.0,
+      "opal_masterVolume": 0.7,
+      "opal_panScatter": 0.7,
+      "opal_pitchScatter": 0.8,
+      "opal_posScatter": 0.2,
+      "opal_position": 0.5,
+      "opal_pulseWidth": 0.5,
+      "opal_reverbMix": 0.35,
+      "opal_shimmer": 0.1,
+      "opal_smear": 0.2,
+      "opal_source": 1,
+      "opal_window": 0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {"brightness": 0.4, "warmth": 0.55, "movement": 0.35, "density": 0.65, "space": 0.5, "aggression": 0.0}
+  "tags": [
+    "velvet",
+    "smooth",
+    "dense",
+    "drift"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

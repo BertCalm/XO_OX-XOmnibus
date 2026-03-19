@@ -1,37 +1,45 @@
 {
-  "name": "Tape Silence",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "dna": {
+    "aggression": 0.03,
+    "brightness": 0.05,
+    "density": 0.12,
+    "movement": 0.22,
+    "space": 0.95,
+    "warmth": 0.3
+  },
   "engines": [
-    "OVERDUB"
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.38,
+    "COUPLING": 0.2,
+    "MOVEMENT": 0.22,
+    "SPACE": 0.95
+  },
+  "mood": "Aether",
+  "name": "Tape Silence",
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "dub_macro_character": 0.46,
-      "dub_macro_movement": 0.2,
       "dub_macro_coupling": 0.34,
+      "dub_macro_movement": 0.2,
       "dub_macro_space": 0.95
     }
   },
-  "dna": {
-    "brightness": 0.05,
-    "warmth": 0.3,
-    "movement": 0.22,
-    "density": 0.12,
-    "space": 0.95,
-    "aggression": 0.03
-  },
-  "macros": {
-    "CHARACTER": 0.38,
-    "MOVEMENT": 0.22,
-    "COUPLING": 0.2,
-    "SPACE": 0.95
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "dark",
     "void",
     "tape",
     "silence"
-  ]
+  ],
+  "version": "1.0"
 }

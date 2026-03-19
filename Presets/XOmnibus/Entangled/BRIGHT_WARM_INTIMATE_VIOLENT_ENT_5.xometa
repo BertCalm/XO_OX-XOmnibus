@@ -1,14 +1,86 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_ENT_5",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7546,
+        "source": "Orbital",
+        "target": "Obsidian",
+        "type": "HARMONIC_FOLD"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Bright Warm Intimate Violent character entanglement — OBSIDIAN × ORBITAL via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.8832,
+    "brightness": 0.9288,
+    "density": 0.3067,
+    "movement": 0.49,
+    "space": 0.0564,
+    "warmth": 0.9376
+  },
   "engines": [
-    "OBSIDIAN",
-    "ORBITAL"
+    "Obsidian",
+    "Orbital"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bright Warm Intimate Violent character entanglement \u2014 OBSIDIAN \u00d7 ORBITAL via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "BLADE",
+    "EDGE",
+    "SHARD",
+    "VOID"
+  ],
+  "macros": {
+    "CHARACTER": 0.9332,
+    "COUPLING": 0.7546,
+    "MOVEMENT": 0.49,
+    "SPACE": 0.0564
+  },
+  "mood": "Entangled",
+  "name": "Glow Strike",
+  "parameters": {
+    "Obsidian": {
+      "amp_attack": 0.2603,
+      "amp_release": 0.112,
+      "coupling_level": 0.8937,
+      "density": 0.3244,
+      "drive": 0.7585,
+      "filter_cutoff": 0.8626,
+      "filter_resonance": 0.5794,
+      "macro_character": 0.9835,
+      "macro_coupling": 0.9169,
+      "macro_movement": 0.5003,
+      "macro_space": 0.0376,
+      "output_level": 0.7987,
+      "reverb_mix": 0.1451,
+      "reverb_size": 0.2322
+    },
+    "Orbital": {
+      "amp_attack": 0.2475,
+      "amp_release": 0.1268,
+      "coupling_level": 0.9215,
+      "density": 0.3044,
+      "drive": 0.7655,
+      "filter_cutoff": 0.8255,
+      "filter_resonance": 0.5369,
+      "macro_character": 0.9794,
+      "macro_coupling": 0.9149,
+      "macro_movement": 0.4694,
+      "macro_space": 0.0724,
+      "output_level": 0.8046,
+      "reverb_mix": 0.1573,
+      "reverb_size": 0.2339
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.8832,
+    "brightness": 0.9288,
+    "density": 0.3067,
+    "movement": 0.49,
+    "space": 0.0564,
+    "warmth": 0.9376
+  },
   "tags": [
     "entangled",
     "bright",
@@ -17,81 +89,5 @@
     "violent",
     "resonant"
   ],
-  "macroLabels": [
-    "BLADE",
-    "EDGE",
-    "SHARD",
-    "VOID"
-  ],
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.9288,
-    "warmth": 0.9376,
-    "movement": 0.49,
-    "density": 0.3067,
-    "space": 0.0564,
-    "aggression": 0.8832
-  },
-  "sonic_dna": {
-    "brightness": 0.9288,
-    "warmth": 0.9376,
-    "movement": 0.49,
-    "density": 0.3067,
-    "space": 0.0564,
-    "aggression": 0.8832
-  },
-  "parameters": {
-    "OBSIDIAN": {
-      "macro_character": 0.9835,
-      "macro_movement": 0.5003,
-      "macro_coupling": 0.9169,
-      "macro_space": 0.0376,
-      "filter_cutoff": 0.8626,
-      "filter_resonance": 0.5794,
-      "amp_attack": 0.2603,
-      "amp_release": 0.112,
-      "reverb_mix": 0.1451,
-      "reverb_size": 0.2322,
-      "drive": 0.7585,
-      "density": 0.3244,
-      "output_level": 0.7987,
-      "coupling_level": 0.8937
-    },
-    "ORBITAL": {
-      "macro_character": 0.9794,
-      "macro_movement": 0.4694,
-      "macro_coupling": 0.9149,
-      "macro_space": 0.0724,
-      "filter_cutoff": 0.8255,
-      "filter_resonance": 0.5369,
-      "amp_attack": 0.2475,
-      "amp_release": 0.1268,
-      "reverb_mix": 0.1573,
-      "reverb_size": 0.2339,
-      "drive": 0.7655,
-      "density": 0.3044,
-      "output_level": 0.8046,
-      "coupling_level": 0.9215
-    }
-  },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORBITAL",
-    "target": "OBSIDIAN",
-    "amount": 0.7546,
-    "pairs": [
-      {
-        "source": "ORBITAL",
-        "target": "OBSIDIAN",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.7546
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.9332,
-    "MOVEMENT": 0.49,
-    "COUPLING": 0.7546,
-    "SPACE": 0.0564
-  }
+  "version": "1.0.0"
 }

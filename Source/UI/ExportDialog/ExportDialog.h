@@ -59,7 +59,7 @@ public:
         g.fillRect(headerArea);
         g.setColour(juce::Colour(GalleryColors::Light::textDark));
         g.setFont(GalleryFonts::display(14.0f));
-        g.drawText("XPN EXPORT", headerArea.reduced(12, 0), juce::Justification::centredLeft);
+        g.drawText("XORIGINATE", headerArea.reduced(12, 0), juce::Justification::centredLeft);
 
         // Section dividers
         g.setColour(GalleryColors::get(GalleryColors::borderGray()));
@@ -362,16 +362,16 @@ private:
     // Size estimation
     //==========================================================================
 
-    XPNExporter::RenderSettings getCurrentSettings() const
+    XOriginate::RenderSettings getCurrentSettings() const
     {
-        XPNExporter::RenderSettings s;
+        XOriginate::RenderSettings s;
 
         switch (strategyBox.getSelectedId())
         {
-            case 1:  s.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::EveryMinor3rd; break;
-            case 2:  s.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::Chromatic; break;
-            case 3:  s.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::EveryFifth; break;
-            case 4:  s.noteStrategy = XPNExporter::RenderSettings::NoteStrategy::OctavesOnly; break;
+            case 1:  s.noteStrategy = XOriginate::RenderSettings::NoteStrategy::EveryMinor3rd; break;
+            case 2:  s.noteStrategy = XOriginate::RenderSettings::NoteStrategy::Chromatic; break;
+            case 3:  s.noteStrategy = XOriginate::RenderSettings::NoteStrategy::EveryFifth; break;
+            case 4:  s.noteStrategy = XOriginate::RenderSettings::NoteStrategy::OctavesOnly; break;
             default: break;
         }
 
@@ -387,7 +387,7 @@ private:
     {
         auto settings = getCurrentSettings();
         int presetCount = juce::jmax(1, (int)presetManager.library.size());
-        auto est = XPNExporter::estimateExportSize(settings, presetCount);
+        auto est = XOriginate::estimateExportSize(settings, presetCount);
 
         juce::String sizeStr;
         if (est.totalBytes > 1024 * 1024 * 1024)
@@ -410,7 +410,7 @@ private:
 
     void runValidation()
     {
-        auto result = XPNExporter::validateBatch(presetManager.library);
+        auto result = XOriginate::validateBatch(presetManager.library);
 
         juce::String msg;
         if (result.valid)
@@ -478,7 +478,7 @@ private:
         struct ExportThread : public juce::Thread
         {
             ExportThread(ExportDialog& d,
-                         XPNExporter::RenderSettings s,
+                         XOriginate::RenderSettings s,
                          juce::String name,
                          juce::String coverEng)
                 : juce::Thread("XPN-Export"), dialog(d),
@@ -487,9 +487,9 @@ private:
 
             void run() override
             {
-                XPNExporter exporter;
+                XOriginate exporter;
 
-                XPNExporter::BundleConfig config;
+                XOriginate::BundleConfig config;
                 config.name = bundleName;
                 config.bundleId = "com.xo-ox.xomnibus." + config.name.toLowerCase().replace(" ", "-");
                 config.outputDir = juce::File::getSpecialLocation(
@@ -502,7 +502,7 @@ private:
                 auto& presets = dialog.presetManager.library;
 
                 auto result = exporter.exportBundle(config, settings, presets,
-                    [this](XPNExporter::Progress& p)
+                    [this](XOriginate::Progress& p)
                     {
                         dialog.progressValue = (double)p.overallProgress;
 
@@ -525,7 +525,7 @@ private:
             }
 
             ExportDialog& dialog;
-            XPNExporter::RenderSettings settings;
+            XOriginate::RenderSettings settings;
             juce::String bundleName;
             juce::String coverEngine;
         };
@@ -605,7 +605,7 @@ private:
     std::mutex progressTextMutex;
     juce::String lastProgressText;
     std::atomic<bool> exportFinished { false };
-    XPNExporter::ExportResult exportResult;
+    XOriginate::ExportResult exportResult;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ExportDialog)
 };

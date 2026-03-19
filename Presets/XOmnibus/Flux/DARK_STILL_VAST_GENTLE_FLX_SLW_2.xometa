@@ -1,45 +1,56 @@
 {
-  "name": "DARK_STILL_VAST_GENTLE_FLX_SLW_2",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Overworld",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.657
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.062,
+    "brightness": 0.057,
+    "density": 0.485,
+    "movement": 0.046,
+    "space": 0.942,
+    "warmth": 0.594
+  },
   "engines": [
-    "OPTIC",
-    "OVERWORLD"
+    "Optic",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.273,
+    "COUPLING": 0.76,
+    "MOVEMENT": 0.046,
+    "SPACE": 0.942
+  },
+  "mood": "Flux",
+  "name": "Flux Cathedral",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.383,
-      "macro_movement": 0.046,
       "macro_coupling": 0.701,
+      "macro_movement": 0.046,
       "macro_space": 0.858
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.535,
-      "macro_movement": 0.047,
       "macro_coupling": 0.864,
+      "macro_movement": 0.047,
       "macro_space": 0.877
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OPTIC",
-    "target": "OVERWORLD",
-    "amount": 0.657
-  },
-  "dna": {
-    "brightness": 0.057,
-    "warmth": 0.594,
-    "movement": 0.046,
-    "density": 0.485,
-    "space": 0.942,
-    "aggression": 0.062
-  },
-  "macros": {
-    "CHARACTER": 0.273,
-    "MOVEMENT": 0.046,
-    "COUPLING": 0.76,
-    "SPACE": 0.942
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +58,6 @@
     "vast",
     "gentle",
     "suspended-chaos"
-  ]
+  ],
+  "version": "1.0"
 }

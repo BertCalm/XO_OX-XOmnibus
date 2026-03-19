@@ -1,45 +1,56 @@
 {
-  "name": "HOT KINETIC DENSE VAST VIOLENT ENT2 3",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Overdub",
+        "type": "CHAOS_INJECT",
+        "amount": 0.955
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.99,
+    "brightness": 0.519,
+    "density": 0.92,
+    "movement": 0.99,
+    "space": 0.99,
+    "warmth": 0.88
+  },
   "engines": [
-    "ODDOSCAR",
-    "OVERDUB"
+    "OddOscar",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "COUPLING": 0.955,
+    "MOVEMENT": 0.99,
+    "SPACE": 0.99
+  },
+  "mood": "Entangled",
+  "name": "HOT KINETIC DENSE VAST VIOL...",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.7,
-      "macro_movement": 0.99,
       "macro_coupling": 0.955,
+      "macro_movement": 0.99,
       "macro_space": 0.99
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.654,
-      "macro_movement": 0.99,
       "macro_coupling": 0.966,
+      "macro_movement": 0.99,
       "macro_space": 0.99
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ODDOSCAR",
-    "target": "OVERDUB",
-    "amount": 0.955
-  },
-  "dna": {
-    "brightness": 0.519,
-    "warmth": 0.88,
-    "movement": 0.99,
-    "density": 0.92,
-    "space": 0.99,
-    "aggression": 0.99
-  },
-  "macros": {
-    "CHARACTER": 0.7,
-    "MOVEMENT": 0.99,
-    "COUPLING": 0.955,
-    "SPACE": 0.99
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
@@ -47,5 +58,6 @@
     "dense",
     "vast",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

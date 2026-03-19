@@ -1,49 +1,61 @@
 {
-  "name": "UMBRA DRIFT",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OPAL",
-    "OMBRE"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.639,
-      "macro_movement": 0.971,
-      "macro_coupling": 0.051,
-      "macro_space": 0.334
-    },
-    "OMBRE": {
-      "macro_character": 0.989,
-      "macro_movement": 0.787,
-      "macro_coupling": 0.205,
-      "macro_space": 0.83
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TEXTURE_WEAVE",
-    "source": "OPAL",
-    "target": "OMBRE",
-    "amount": 0.427
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ombre",
+        "type": "TEXTURE_WEAVE",
+        "amount": 0.427
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.255,
     "brightness": 0.079,
-    "warmth": 0.236,
-    "movement": 0.366,
     "density": 0.983,
+    "movement": 0.366,
     "space": 0.695,
-    "aggression": 0.255
+    "warmth": 0.236
   },
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.814,
-    "MOVEMENT": 0.879,
     "COUPLING": 0.128,
+    "MOVEMENT": 0.879,
     "SPACE": 0.582
   },
+  "mood": "Atmosphere",
+  "name": "UMBRA DRIFT",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.989,
+      "macro_coupling": 0.205,
+      "macro_movement": 0.787,
+      "macro_space": 0.83
+    },
+    "Opal": {
+      "macro_character": 0.639,
+      "macro_coupling": 0.051,
+      "macro_movement": 0.971,
+      "macro_space": 0.334
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "extreme",
     "high-density"
-  ]
+  ],
+  "version": "1.0"
 }

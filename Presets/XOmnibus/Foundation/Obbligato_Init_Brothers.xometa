@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Init Brothers",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Peter and Wolf play together without argument. BOND centered, the brothers in harmony.",
+  "dna": {
+    "aggression": 0.07,
+    "brightness": 0.38,
+    "density": 0.42,
+    "movement": 0.24,
+    "space": 0.3,
+    "warmth": 0.65
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "foundation",
-    "clean",
-    "foundation"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.38,
-    "warmth": 0.65,
-    "movement": 0.24,
-    "density": 0.42,
-    "space": 0.3,
-    "aggression": 0.07
-  },
+  "mood": "Foundation",
+  "name": "Init Brothers",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.805,
-      "obbl_embouchureA": 0.687,
       "obbl_airFlutterA": 0.277,
-      "obbl_instrumentA": 6,
       "obbl_bodySizeA": 0.384,
-      "obbl_breathB": 0.574,
-      "obbl_reedStiffness": 0.488,
-      "obbl_reedBite": 0.349,
-      "obbl_instrumentB": 6,
       "obbl_bodySizeB": 0.326,
-      "obbl_voiceRouting": 4,
-      "obbl_damping": 0.994,
-      "obbl_sympatheticAmt": 0.4,
-      "obbl_driftRate": 0.112,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.099,
       "obbl_bondIntensity": 0.486,
       "obbl_bondRate": 0.164,
-      "obbl_fxAChorus": 0.262,
+      "obbl_bondStage": 0.099,
+      "obbl_breathA": 0.805,
+      "obbl_breathB": 0.574,
+      "obbl_damping": 0.994,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.112,
+      "obbl_embouchureA": 0.687,
       "obbl_fxABrightDelay": 0.239,
-      "obbl_fxAPlate": 0.193,
+      "obbl_fxAChorus": 0.262,
       "obbl_fxAExciter": 0.099,
-      "obbl_fxBPhaser": 0.154,
+      "obbl_fxAPlate": 0.193,
       "obbl_fxBDarkDelay": 0.27,
+      "obbl_fxBPhaser": 0.154,
       "obbl_fxBSpring": 0.284,
       "obbl_fxBTapeSat": 0.113,
-      "obbl_macroBreath": 0.315,
+      "obbl_instrumentA": 6,
+      "obbl_instrumentB": 6,
       "obbl_macroBond": 0.0,
+      "obbl_macroBreath": 0.315,
       "obbl_macroMischief": 0.0,
-      "obbl_macroWind": 0.309
+      "obbl_macroWind": 0.309,
+      "obbl_reedBite": 0.349,
+      "obbl_reedStiffness": 0.488,
+      "obbl_sympatheticAmt": 0.4,
+      "obbl_voiceRouting": 4
     }
   },
-  "coupling": null,
-  "description": "Peter and Wolf play together without argument. BOND centered, the brothers in harmony."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "foundation",
+    "clean",
+    "foundation"
+  ],
+  "version": "1.0.0"
 }

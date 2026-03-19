@@ -74,8 +74,8 @@ static bool registered_Opal = xomnibus::EngineRegistry::instance().registerEngin
     "Opal", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OpalEngine>();
     });
-static bool registered_Bite = xomnibus::EngineRegistry::instance().registerEngine(
-    "Bite", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_Overbite = xomnibus::EngineRegistry::instance().registerEngine(
+    "Overbite", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::BiteEngine>();
     });
 static bool registered_Organon = xomnibus::EngineRegistry::instance().registerEngine(

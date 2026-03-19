@@ -1,14 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "COLD SPARSE VAST BRIGHT FAM 2",
-  "mood": "Family",
-  "engines": [
-    "OVERLAP",
-    "OBESE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, bright, cold, sparse.",
+  "coupling": [
+    {
+      "amount": 0.497,
+      "destination": "OBESE",
+      "source": "OVERLAP",
+      "type": "HARMONIC_FOLD"
+    }
+  ],
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — family, bright, cold, sparse.",
+  "dna": {
+    "aggression": 0.503,
+    "brightness": 0.923,
+    "density": 0.088,
+    "movement": 0.579,
+    "space": 0.918,
+    "warmth": 0.063
+  },
+  "engines": [
+    "Overlap",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "COLD SPARSE VAST BRIGHT FAM 2",
+  "parameters": {
+    "Obese": {
+      "level": 0.748,
+      "pan": 0.029
+    },
+    "Overlap": {
+      "level": 0.82,
+      "pan": -0.024
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "bright",
@@ -17,40 +51,6 @@
     "vast",
     "ultra-diverse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.923,
-    "warmth": 0.063,
-    "movement": 0.579,
-    "density": 0.088,
-    "space": 0.918,
-    "aggression": 0.503
-  },
-  "parameters": {
-    "OVERLAP": {
-      "level": 0.82,
-      "pan": -0.024
-    },
-    "OBESE": {
-      "level": 0.748,
-      "pan": 0.029
-    }
-  },
-  "coupling": [
-    {
-      "source": "OVERLAP",
-      "destination": "OBESE",
-      "type": "HARMONIC_FOLD",
-      "amount": 0.497
-    }
-  ],
-  "sequencer": null
+  "version": "1.0.0"
 }

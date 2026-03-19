@@ -1,39 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Shimmer Knot",
-  "mood": "Atmosphere",
-  "engines": ["Overlap"],
-  "author": "Guru Bin — OVERLAP Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Figure-8 topology with modDepth pushed to shimmer territory — the pitch modulation on each delay line is offset enough that the reverb tail sparkles rather than wobbles. The feedback loop acts as a spectral multiplier. Input a piano note, output a cathedral made of glass.",
-  "tags": ["shimmer", "sparkle", "figure-8", "bright", "atmosphere", "spectral"],
-  "macroLabels": ["CHARACTER", "SPACE", "COUPLING", "DECAY"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.82,
-    "warmth": 0.3,
-    "movement": 0.7,
-    "density": 0.6,
-    "space": 0.9,
-    "aggression": 0.12
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Figure-8 topology with modDepth pushed to shimmer territory — the pitch modulation on each delay line is offset enough that the reverb tail sparkles rather than wobbles. The feedback loop acts as a spectral multiplier. Input a piano note, output a cathedral made of glass.",
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.82,
+    "density": 0.6,
+    "movement": 0.7,
+    "space": 0.9,
+    "warmth": 0.3
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "mood": "Atmosphere",
+  "name": "Shimmer Knot",
   "parameters": {
     "Overlap": {
-      "olap_knotType": 1,
+      "olap_damping": 0.2,
+      "olap_decay": 4.2,
       "olap_delayFeedback": 0.6,
       "olap_diffusion": 0.75,
-      "olap_spread": 0.95,
-      "olap_decay": 4.2,
+      "olap_knotType": 1,
+      "olap_macroCharacter": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0,
+      "olap_macroSpace": 0.0,
       "olap_modDepth": 0.48,
       "olap_modRate": 0.15,
-      "olap_damping": 0.2,
-      "olap_macroCharacter": 0.0,
-      "olap_macroSpace": 0.0,
-      "olap_macroCoupling": 0.0,
-      "olap_macroDecay": 0.0
+      "olap_spread": 0.95
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "shimmer",
+    "sparkle",
+    "figure-8",
+    "bright",
+    "atmosphere",
+    "spectral"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

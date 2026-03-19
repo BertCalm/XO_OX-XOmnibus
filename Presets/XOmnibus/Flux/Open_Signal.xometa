@@ -33,7 +33,9 @@
     "space": 0.85,
     "aggression": 0.2
   },
-  "parameters": {},
+  "parameters": {
+    "Opal": {}
+  },
   "tags": [
     "flux",
     "sparse-flux",
@@ -41,5 +43,5 @@
     "open",
     "signal"
   ],
-  "description": "Opal open signal \u2014 granular emission spreading freely through maximum space."
+  "description": "Opal open signal — granular emission spreading freely through maximum space."
 }

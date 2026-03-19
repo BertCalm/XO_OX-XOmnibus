@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Phase Trumpet",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "GROW sweeps youth to virtuosity. Automate it and hear the cousins grow up in real time.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.43,
+    "density": 0.54,
+    "movement": 0.89,
+    "space": 0.33,
+    "warmth": 0.33
+  },
   "engines": [
     "Ottoni"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "brass",
-    "sax",
-    "flux",
-    "movement",
-    "flux"
   ],
   "macroLabels": [
     "EMBOUCHURE",
@@ -20,48 +21,47 @@
     "FOREIGN",
     "LAKE"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.43,
-    "warmth": 0.33,
-    "movement": 0.89,
-    "density": 0.54,
-    "space": 0.33,
-    "aggression": 0.5
-  },
+  "mood": "Flux",
+  "name": "Phase Trumpet",
   "parameters": {
     "Ottoni": {
+      "otto_chorusRate": 0.888,
+      "otto_damping": 0.993,
+      "otto_delayMix": 0.198,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.088,
+      "otto_driveAmount": 0.123,
+      "otto_foreignCold": 0.37,
+      "otto_foreignDrift": 0.184,
+      "otto_foreignStretch": 0.276,
+      "otto_macroEmbouchure": 0.46,
+      "otto_macroForeign": 0.282,
+      "otto_macroGrow": 0.634,
+      "otto_macroLake": 0.115,
+      "otto_reverbSize": 0.183,
+      "otto_sympatheticAmt": 0.368,
+      "otto_teenBore": 0.584,
+      "otto_teenEmbouchure": 0.688,
+      "otto_teenInst": 0,
+      "otto_teenLevel": 0.358,
+      "otto_teenVibratoDepth": 0.218,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 4,
       "otto_toddlerLevel": 0.7,
       "otto_toddlerPressure": 0.415,
-      "otto_toddlerInst": 4,
-      "otto_tweenLevel": 0.447,
       "otto_tweenEmbouchure": 0.308,
-      "otto_tweenValve": 0.622,
       "otto_tweenInst": 4,
-      "otto_teenLevel": 0.358,
-      "otto_teenEmbouchure": 0.688,
-      "otto_teenBore": 0.584,
-      "otto_teenInst": 0,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.218,
-      "otto_damping": 0.993,
-      "otto_sympatheticAmt": 0.368,
-      "otto_driftRate": 0.088,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.276,
-      "otto_foreignDrift": 0.184,
-      "otto_foreignCold": 0.37,
-      "otto_reverbSize": 0.183,
-      "otto_chorusRate": 0.888,
-      "otto_driveAmount": 0.123,
-      "otto_delayMix": 0.198,
-      "otto_macroEmbouchure": 0.46,
-      "otto_macroGrow": 0.634,
-      "otto_macroForeign": 0.282,
-      "otto_macroLake": 0.115
+      "otto_tweenLevel": 0.447,
+      "otto_tweenValve": 0.622
     }
   },
-  "coupling": null,
-  "description": "GROW sweeps youth to virtuosity. Automate it and hear the cousins grow up in real time."
+  "schema_version": 1,
+  "tags": [
+    "brass",
+    "sax",
+    "flux",
+    "movement",
+    "flux"
+  ],
+  "version": "1.0.0"
 }

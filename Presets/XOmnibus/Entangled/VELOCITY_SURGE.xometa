@@ -1,48 +1,60 @@
 {
-  "name": "VELOCITY SURGE",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERWORLD",
-    "OCELOT"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.968,
-      "macro_movement": 0.967,
-      "macro_coupling": 0.6,
-      "macro_space": 0.352
-    },
-    "OCELOT": {
-      "macro_character": 0.578,
-      "macro_movement": 0.952,
-      "macro_coupling": 0.213,
-      "macro_space": 0.657
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OVERWORLD",
-    "target": "OCELOT",
-    "amount": 0.612
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Ocelot",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.612
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.787,
     "brightness": 0.108,
-    "warmth": 0.845,
-    "movement": 0.96,
     "density": 0.368,
+    "movement": 0.96,
     "space": 0.763,
-    "aggression": 0.787
+    "warmth": 0.845
   },
+  "engines": [
+    "Overworld",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.807,
-    "MOVEMENT": 0.96,
     "COUPLING": 0.845,
+    "MOVEMENT": 0.96,
     "SPACE": 0.975
   },
+  "mood": "Entangled",
+  "name": "VELOCITY SURGE",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.578,
+      "macro_coupling": 0.213,
+      "macro_movement": 0.952,
+      "macro_space": 0.657
+    },
+    "Overworld": {
+      "macro_character": 0.968,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.967,
+      "macro_space": 0.352
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "kinetic",
     "turbulent"
-  ]
+  ],
+  "version": "1.0"
 }

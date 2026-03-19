@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_HOT_STILL_INTIMATE_GENTLE_PRS_3",
-  "mood": "Prism",
-  "engines": [
-    "OWLFISH",
-    "OTTONI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ottoni",
+        "type": "FILTER_MOD",
+        "amount": 0.803
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_HOT_STILL_INTIMATE_GENTLE. Variant 3.",
+  "dna": {
+    "aggression": 0.129,
+    "brightness": 0.917,
+    "density": 0.602,
+    "movement": 0.056,
+    "space": 0.035,
+    "warmth": 0.978
+  },
+  "engines": [
+    "Owlfish",
+    "Ottoni"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.978,
+    "COUPLING": 0.63,
+    "MOVEMENT": 0.011,
+    "SPACE": 0.051
+  },
+  "mood": "Prism",
+  "name": "Honey Massive",
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.957,
+      "macro_coupling": 0.618,
+      "macro_movement": 0.002,
+      "macro_space": 0.01
+    },
+    "Owlfish": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.642,
+      "macro_movement": 0.021,
+      "macro_space": 0.092
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "hot",
     "extreme",
@@ -19,53 +70,6 @@
     "still",
     "gentle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 1.0,
-      "macro_movement": 0.021,
-      "macro_coupling": 0.642,
-      "macro_space": 0.092
-    },
-    "OTTONI": {
-      "macro_character": 0.957,
-      "macro_movement": 0.002,
-      "macro_coupling": 0.618,
-      "macro_space": 0.01
-    }
-  },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OWLFISH",
-    "target": "OTTONI",
-    "amount": 0.803
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.917,
-    "warmth": 0.978,
-    "movement": 0.056,
-    "density": 0.602,
-    "space": 0.035,
-    "aggression": 0.129
-  },
-  "macros": {
-    "CHARACTER": 0.978,
-    "MOVEMENT": 0.011,
-    "COUPLING": 0.63,
-    "SPACE": 0.051
-  }
+  "version": "1.0.0"
 }

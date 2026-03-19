@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT KINETIC TIGHT VIOLENT ATM AGG 5",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORACLE",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.845,
-      "macro_movement": 0.901,
-      "macro_coupling": 0.917,
-      "macro_space": 0.045
-    },
-    "OCEANIC": {
-      "macro_character": 0.835,
-      "macro_movement": 0.914,
-      "macro_coupling": 0.889,
-      "macro_space": 0.044
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORACLE",
-    "target": "OCEANIC",
-    "amount": 0.881
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Oceanic",
+        "type": "PITCH_SYNC",
+        "amount": 0.881
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.933,
     "brightness": 0.884,
-    "warmth": 0.606,
-    "movement": 0.943,
     "density": 0.616,
+    "movement": 0.943,
     "space": 0.045,
-    "aggression": 0.933
+    "warmth": 0.606
   },
+  "engines": [
+    "Oracle",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.84,
-    "MOVEMENT": 0.907,
     "COUPLING": 0.903,
+    "MOVEMENT": 0.907,
     "SPACE": 0.044
   },
+  "mood": "Atmosphere",
+  "name": "BRIGHT KINETIC TIGHT VIOLEN...",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.835,
+      "macro_coupling": 0.889,
+      "macro_movement": 0.914,
+      "macro_space": 0.044
+    },
+    "Oracle": {
+      "macro_character": 0.845,
+      "macro_coupling": 0.917,
+      "macro_movement": 0.901,
+      "macro_space": 0.045
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -48,5 +59,6 @@
     "bright",
     "kinetic",
     "tight"
-  ]
+  ],
+  "version": "1.0"
 }

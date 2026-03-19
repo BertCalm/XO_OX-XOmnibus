@@ -1,48 +1,60 @@
 {
-  "name": "RESIDUE POINT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Outwit",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.176
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.906,
+    "brightness": 0.678,
+    "density": 0.047,
+    "movement": 0.724,
+    "space": 0.657,
+    "warmth": 0.284
+  },
   "engines": [
-    "OLE",
-    "OUTWIT"
+    "Ole",
+    "Outwit"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.873,
+    "COUPLING": 0.583,
+    "MOVEMENT": 0.333,
+    "SPACE": 0.141
+  },
+  "mood": "Entangled",
+  "name": "RESIDUE POINT",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.373,
-      "macro_movement": 0.283,
       "macro_coupling": 0.409,
+      "macro_movement": 0.283,
       "macro_space": 0.338
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.598,
-      "macro_movement": 0.789,
       "macro_coupling": 0.647,
+      "macro_movement": 0.789,
       "macro_space": 0.066
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OLE",
-    "target": "OUTWIT",
-    "amount": 0.176
-  },
-  "dna": {
-    "brightness": 0.678,
-    "warmth": 0.284,
-    "movement": 0.724,
-    "density": 0.047,
-    "space": 0.657,
-    "aggression": 0.906
-  },
-  "macros": {
-    "CHARACTER": 0.873,
-    "MOVEMENT": 0.333,
-    "COUPLING": 0.583,
-    "SPACE": 0.141
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "sparse",
     "spectral"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Pressure Bloom",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORACLE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Thick, heavy environment. Maximum density, warm compression. ORACLE dense register.",
+  "dna": {
+    "aggression": 0.269,
+    "brightness": 0.317,
+    "density": 0.808,
+    "movement": 0.205,
+    "space": 0.532,
+    "warmth": 0.66
+  },
+  "engines": [
+    "Oracle"
+  ],
+  "macroLabels": [
+    "VISION",
+    "FLOW",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "COUPLING": 0.13,
+    "FLOW": 0.205,
+    "SPACE": 0.558,
+    "VISION": 0.375
+  },
+  "mood": "Atmosphere",
+  "name": "Pressure Bloom",
+  "parameters": {
+    "Oracle": {
+      "coupling": 0.13,
+      "flow": 0.205,
+      "space": 0.558,
+      "vision": 0.375
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dense",
@@ -16,36 +47,5 @@
     "warm",
     "thick"
   ],
-  "macroLabels": [
-    "VISION",
-    "FLOW",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.317,
-    "warmth": 0.66,
-    "movement": 0.205,
-    "density": 0.808,
-    "space": 0.532,
-    "aggression": 0.269
-  },
-  "parameters": {
-    "ORACLE": {
-      "vision": 0.375,
-      "flow": 0.205,
-      "coupling": 0.13,
-      "space": 0.558
-    }
-  },
-  "macros": {
-    "VISION": 0.375,
-    "FLOW": 0.205,
-    "COUPLING": 0.13,
-    "SPACE": 0.558
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

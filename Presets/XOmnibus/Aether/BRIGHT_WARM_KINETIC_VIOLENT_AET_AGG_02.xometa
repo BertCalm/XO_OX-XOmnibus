@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT WARM KINETIC VIOLENT AET AGG 2",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Osprey",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.965
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.941,
+    "brightness": 0.887,
+    "density": 0.579,
+    "movement": 0.986,
+    "space": 0.457,
+    "warmth": 0.912
+  },
   "engines": [
-    "ODDOSCAR",
-    "OSPREY"
+    "OddOscar",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.879,
+    "COUPLING": 0.897,
+    "MOVEMENT": 0.946,
+    "SPACE": 0.448
+  },
+  "mood": "Aether",
+  "name": "BRIGHT WARM KINETIC VIOLENT...",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.883,
-      "macro_movement": 0.932,
       "macro_coupling": 0.871,
+      "macro_movement": 0.932,
       "macro_space": 0.449
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.874,
-      "macro_movement": 0.96,
       "macro_coupling": 0.922,
+      "macro_movement": 0.96,
       "macro_space": 0.447
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ODDOSCAR",
-    "target": "OSPREY",
-    "amount": 0.965
-  },
-  "dna": {
-    "brightness": 0.887,
-    "warmth": 0.912,
-    "movement": 0.986,
-    "density": 0.579,
-    "space": 0.457,
-    "aggression": 0.941
-  },
-  "macros": {
-    "CHARACTER": 0.879,
-    "MOVEMENT": 0.946,
-    "COUPLING": 0.897,
-    "SPACE": 0.448
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "aggressive",
@@ -47,5 +58,6 @@
     "violent",
     "bright",
     "kinetic"
-  ]
+  ],
+  "version": "1.0"
 }

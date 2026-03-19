@@ -1,48 +1,60 @@
 {
-  "name": "RAW DRIFT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Orbital",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.163
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.192,
+    "brightness": 0.293,
+    "density": 0.041,
+    "movement": 0.885,
+    "space": 0.362,
+    "warmth": 0.629
+  },
   "engines": [
-    "OCEANIC",
-    "ORBITAL"
+    "Oceanic",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.07,
+    "COUPLING": 0.773,
+    "MOVEMENT": 0.661,
+    "SPACE": 0.985
+  },
+  "mood": "Entangled",
+  "name": "RAW DRIFT",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.38,
-      "macro_movement": 0.359,
       "macro_coupling": 0.344,
+      "macro_movement": 0.359,
       "macro_space": 0.265
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.043,
-      "macro_movement": 0.459,
       "macro_coupling": 0.125,
+      "macro_movement": 0.459,
       "macro_space": 0.922
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OCEANIC",
-    "target": "ORBITAL",
-    "amount": 0.163
-  },
-  "dna": {
-    "brightness": 0.293,
-    "warmth": 0.629,
-    "movement": 0.885,
-    "density": 0.041,
-    "space": 0.362,
-    "aggression": 0.192
-  },
-  "macros": {
-    "CHARACTER": 0.07,
-    "MOVEMENT": 0.661,
-    "COUPLING": 0.773,
-    "SPACE": 0.985
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "thin",
     "ghosted"
-  ]
+  ],
+  "version": "1.0"
 }

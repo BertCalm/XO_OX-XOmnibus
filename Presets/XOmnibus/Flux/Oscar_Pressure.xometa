@@ -1,14 +1,21 @@
 {
-  "schema_version": 1,
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "name": "Oscar Pressure",
-  "mood": "Flux",
-  "engines": [
-    "Oddoscar"
-  ],
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
+  "description": "Morph fully loaded but unmoved — gill pink compressed under motionless surface.",
+  "dna": {
+    "aggression": 0.86,
+    "brightness": 0.35,
+    "density": 0.86,
+    "movement": 0.26,
+    "space": 0.19,
+    "warmth": 0.52
+  },
+  "engines": [
+    "OddOscar"
+  ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -17,23 +24,17 @@
   ],
   "macros": {
     "CHARACTER": 0.86,
-    "MOVEMENT": 0.26,
     "COUPLING": 0.08,
+    "MOVEMENT": 0.26,
     "SPACE": 0.19
   },
-  "coupling": {
-    "pairs": []
+  "mood": "Flux",
+  "name": "Oscar Pressure",
+  "parameters": {
+    "OddOscar": {}
   },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.52,
-    "movement": 0.26,
-    "density": 0.86,
-    "space": 0.19,
-    "aggression": 0.86
-  },
-  "parameters": {},
   "tags": [
     "flux",
     "tension",
@@ -41,5 +42,6 @@
     "pressure",
     "morph"
   ],
-  "description": "Morph fully loaded but unmoved \u2014 gill pink compressed under motionless surface."
+  "tempo": null,
+  "version": "1.0"
 }

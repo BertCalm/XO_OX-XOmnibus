@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Fractal Apex",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.86,
-    "warmth": 0.12,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Self-similar bright structure — recursive upper harmonics",
+  "dna": {
     "aggression": 0.08,
-    "movement": 0.65,
+    "brightness": 0.86,
     "density": 0.25,
-    "space": 0.88
+    "movement": 0.65,
+    "space": 0.88,
+    "warmth": 0.12
   },
   "engines": [
-    "OPTIC"
+    "Optic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Self-similar bright structure \u2014 recursive upper harmonics",
+  "macroLabels": [
+    "FOCUS",
+    "PRISM",
+    "COUPLING",
+    "DIFFUSE"
+  ],
+  "mood": "Prism",
+  "name": "Fractal Apex",
+  "parameters": {
+    "Optic": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.08,
+    "brightness": 0.86,
+    "density": 0.25,
+    "movement": 0.65,
+    "space": 0.88,
+    "warmth": 0.12
+  },
   "tags": [
     "prism",
     "bright",
@@ -24,23 +44,5 @@
     "recursive",
     "apex"
   ],
-  "macroLabels": [
-    "FOCUS",
-    "PRISM",
-    "COUPLING",
-    "DIFFUSE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.86,
-    "warmth": 0.12,
-    "movement": 0.65,
-    "density": 0.25,
-    "space": 0.88,
-    "aggression": 0.08
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

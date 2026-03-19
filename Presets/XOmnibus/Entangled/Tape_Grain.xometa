@@ -1,48 +1,60 @@
 {
-  "name": "Tape Grain",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERDUB",
-    "OPAL"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.86,
-      "macro_movement": 0.51,
-      "macro_coupling": 0.73,
-      "macro_space": 0.26
-    },
-    "OPAL": {
-      "macro_character": 0.69,
-      "macro_movement": 0.72,
-      "macro_coupling": 0.76,
-      "macro_space": 0.36
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OVERDUB",
-    "target": "OPAL",
-    "amount": 0.73
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Opal",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.73
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.47,
     "brightness": 0.47,
-    "warmth": 0.89,
-    "movement": 0.63,
     "density": 0.79,
+    "movement": 0.63,
     "space": 0.39,
-    "aggression": 0.47
+    "warmth": 0.89
   },
+  "engines": [
+    "Overdub",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.77,
-    "MOVEMENT": 0.61,
     "COUPLING": 0.74,
+    "MOVEMENT": 0.61,
     "SPACE": 0.31
   },
+  "mood": "Entangled",
+  "name": "Tape Grain",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.69,
+      "macro_coupling": 0.76,
+      "macro_movement": 0.72,
+      "macro_space": 0.36
+    },
+    "Overdub": {
+      "macro_character": 0.86,
+      "macro_coupling": 0.73,
+      "macro_movement": 0.51,
+      "macro_space": 0.26
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oracle \u00d7 Ohm \u2014 Timbre Blend coupling at extreme DNA corner.",
+  "description": "Oracle × Ohm — Timbre Blend coupling at extreme DNA corner.",
   "tags": [
     "intimate",
     "oracle",
@@ -33,7 +33,10 @@
     "space": 0.103,
     "aggression": 0.891
   },
-  "parameters": {},
+  "parameters": {
+    "Oracle": {},
+    "Ohm": {}
+  },
   "coupling": {
     "pairs": [
       {

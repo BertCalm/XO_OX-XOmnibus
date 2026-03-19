@@ -539,12 +539,9 @@ public:
         // Chromatophore filter morph target: 0=LP, 0.33=BP, 0.66=HP, 1.0=Notch
         float chromaMorphTarget = clamp (pChromaMorph + macroMove * 0.3f, 0.0f, 1.0f);
 
-        // Reset coupling accumulators
-        couplingWTPosMod = 0.0f;
-        couplingChromaMod = 0.0f;
-        couplingArmRateMod = 0.0f;
-        couplingRingModSrc = 0.0f;
-        couplingPitchMod = 0.0f;
+        // NOTE: Coupling accumulators are reset AFTER the render loop (end of renderBlock),
+        // not before. This ensures values set by applyCouplingInput() between blocks
+        // survive into the sample loop where they are read. (Sisters S-014 fix)
 
         // --- Process MIDI events ---
         for (const auto metadata : midi)
@@ -723,10 +720,13 @@ public:
                     voice.envFollower = flushDenormal (voice.envFollower);
 
                     // Map envelope to filter frequency modulation
+                    // D001: velocity boosts chromatophore filter — harder hits = brighter skin-shift
+                    float velChromaBoost = voice.velocity * 0.3f * 3000.0f;
                     float chromaFreqMod = clamp (
                         pChromaFreq
                         + voice.envFollower * pChromaSens * 4000.0f
-                        + armMods[ArmChromaFreq] * 2000.0f,
+                        + armMods[ArmChromaFreq] * 2000.0f
+                        + velChromaBoost,
                         100.0f, 16000.0f);
 
                     // Morph filter type: LP → BP → HP → Notch
@@ -837,6 +837,14 @@ public:
         for (const auto& v : voices)
             if (v.active) ++count;
         activeVoices = count;
+
+        // Reset coupling accumulators AFTER render loop so they're consumed first
+        // (Sisters S-014: was before the loop, making couplingPitchMod always 0)
+        couplingWTPosMod = 0.0f;
+        couplingChromaMod = 0.0f;
+        couplingArmRateMod = 0.0f;
+        couplingRingModSrc = 0.0f;
+        couplingPitchMod = 0.0f;
     }
 
     //==========================================================================
@@ -906,7 +914,7 @@ public:
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "octo_armBaseRate", 1 }, "Octopus Arm Base Rate",
-            juce::NormalisableRange<float> (0.05f, 20.0f, 0.01f, 0.3f), 1.0f));
+            juce::NormalisableRange<float> (0.005f, 20.0f, 0.001f, 0.3f), 1.0f)); // D005: rate floor ≤ 0.01
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "octo_armDepth", 1 }, "Octopus Arm Depth",

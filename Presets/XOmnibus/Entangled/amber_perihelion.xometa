@@ -1,49 +1,61 @@
 {
-  "name": "Amber Perihelion",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Orbital",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.724
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.7,
+    "density": 0.4,
+    "movement": 0.65,
+    "space": 0.7,
+    "warmth": 0.85
+  },
   "engines": [
-    "OCELOT",
-    "ORBITAL"
+    "Ocelot",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.525,
+    "COUPLING": 0.724,
+    "MOVEMENT": 0.625,
+    "SPACE": 0.575
+  },
+  "mood": "Entangled",
+  "name": "Amber Perihelion",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.67,
-      "macro_movement": 0.72,
       "macro_coupling": 0.57,
+      "macro_movement": 0.72,
       "macro_space": 0.47
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.38,
-      "macro_movement": 0.53,
       "macro_coupling": 0.48,
+      "macro_movement": 0.53,
       "macro_space": 0.68
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OCELOT",
-    "target": "ORBITAL",
-    "amount": 0.724
-  },
-  "dna": {
-    "brightness": 0.7,
-    "warmth": 0.85,
-    "movement": 0.65,
-    "density": 0.4,
-    "space": 0.7,
-    "aggression": 0.25
-  },
-  "macros": {
-    "CHARACTER": 0.525,
-    "MOVEMENT": 0.625,
-    "COUPLING": 0.724,
-    "SPACE": 0.575
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "warm"
-  ]
+  ],
+  "version": "1.0"
 }

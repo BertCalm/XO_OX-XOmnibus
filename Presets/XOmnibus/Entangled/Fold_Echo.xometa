@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Fold Echo",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "ORIGAMI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.847,
+        "engineA": "Overlap",
+        "engineB": "Origami",
+        "type": "TIMBRAL_WARP"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
   "description": "Origami fold topology restructures OVERLAP early reflection pattern — geometry becomes acoustics",
-  "tags": [
-    "coupling",
-    "entangled",
-    "overlap",
-    "origami",
-    "geometric",
-    "fold"
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.55,
+    "density": 0.55,
+    "movement": 0.55,
+    "space": 0.725,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Overlap",
+    "Origami"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,58 +32,51 @@
   ],
   "macros": {
     "CHARACTER": 0.652,
-    "MOVEMENT": 0.73,
     "COUPLING": 0.62,
+    "MOVEMENT": 0.73,
     "SPACE": 0.409
   },
-  "couplingIntensity": "Deep",
-  "dna": {
-    "brightness": 0.55,
-    "space": 0.725,
-    "aggression": 0.3,
-    "movement": 0.55,
-    "warmth": 0.5,
-    "density": 0.55
-  },
-  "sonic_dna": {
-    "brightness": 0.55,
-    "space": 0.725,
-    "aggression": 0.3,
-    "movement": 0.55,
-    "warmth": 0.5,
-    "density": 0.55
-  },
+  "mood": "Entangled",
+  "name": "Fold Echo",
   "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.623,
-      "olap_decay": 0.604,
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.566,
+      "olap_crossfeedAmt": 0.46,
       "olap_damping": 0.381,
+      "olap_decay": 0.604,
       "olap_diffusion": 0.682,
-      "olap_modDepth": 0.235,
-      "olap_modRate": 0.358,
-      "olap_preDelay": 0.083,
       "olap_earlyMix": 0.533,
-      "olap_lateMix": 0.59,
       "olap_filterCutoff": 0.767,
       "olap_filterReso": 0.265,
-      "olap_outputLevel": 0.822,
-      "olap_couplingLevel": 0.566,
-      "olap_couplingBus": 0,
       "olap_frondDensity": 0.776,
+      "olap_lateMix": 0.59,
+      "olap_modDepth": 0.235,
+      "olap_modRate": 0.358,
       "olap_nodeCount": 9,
-      "olap_crossfeedAmt": 0.46,
-      "olap_spinRate": 0.2,
-      "olap_shimmerMix": 0.261
+      "olap_outputLevel": 0.822,
+      "olap_preDelay": 0.083,
+      "olap_shimmerMix": 0.261,
+      "olap_size": 0.623,
+      "olap_spinRate": 0.2
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERLAP",
-        "engineB": "ORIGAMI",
-        "type": "TIMBRAL_WARP",
-        "amount": 0.847
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.3,
+    "brightness": 0.55,
+    "density": 0.55,
+    "movement": 0.55,
+    "space": 0.725,
+    "warmth": 0.5
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "origami",
+    "geometric",
+    "fold"
+  ],
+  "version": "1.0.0"
 }

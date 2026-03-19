@@ -1,47 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT HOT KINETIC DENSE ATM 3",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Extreme",
+    "sourceEngine": "Osprey",
+    "targetEngine": null,
+    "type": "Waveshape"
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: BRIGHT HOT KINETIC DENSE ATM 3.",
+  "dna": {
+    "aggression": 0.435,
+    "brightness": 0.91,
+    "density": 0.493,
+    "movement": 0.926,
+    "space": 0.921,
+    "warmth": 0.902
+  },
   "engines": [
     "Osprey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Atmosphere preset: BRIGHT HOT KINETIC DENSE ATM 3.",
-  "tags": [
-    "x-high-brightness",
-    "x-high-warmth",
-    "x-high-movement",
-    "x-high-space"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Extreme",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
+  "mood": "Atmosphere",
+  "name": "BRIGHT HOT KINETIC DENSE ATM 3",
+  "parameters": {
+    "Osprey": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "Waveshape",
-    "intensity": "Extreme",
-    "sourceEngine": "Osprey",
-    "targetEngine": null
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.91,
-    "warmth": 0.902,
-    "aggression": 0.435,
-    "density": 0.493,
-    "movement": 0.926,
-    "space": 0.921
-  }
+  "tags": [
+    "x-high-brightness",
+    "x-high-warmth",
+    "x-high-movement",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,14 +1,40 @@
 {
-  "schema_version": 1,
-  "name": "Oracle and Odyssey",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "ORACLE ancient voice + ODYSSEY open-water drift — the prophet on the water. Resonance carried on current. Wisdom moving.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.52,
+    "density": 0.5,
+    "movement": 0.62,
+    "space": 0.78,
+    "warmth": 0.56
+  },
   "engines": [
-    "ORACLE",
-    "ODYSSEY"
+    "Oracle",
+    "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ORACLE ancient voice + ODYSSEY open-water drift \u2014 the prophet on the water. Resonance carried on current. Wisdom moving.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "VOICE",
+    "RESONANCE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Oracle and Odyssey",
+  "parameters": {
+    "Oracle": {},
+    "Odyssey": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "reunion",
@@ -19,29 +45,6 @@
     "ancient",
     "batch3-reunion"
   ],
-  "macroLabels": [
-    "VOICE",
-    "RESONANCE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.52,
-    "warmth": 0.56,
-    "movement": 0.62,
-    "density": 0.5,
-    "space": 0.78,
-    "aggression": 0.2
-  }
+  "version": "1.0.0"
 }

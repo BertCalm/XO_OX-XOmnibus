@@ -1,51 +1,62 @@
 {
-  "name": "Calculus Slab",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Organon",
+        "type": "CHAOS_INJECT",
+        "amount": 0.9
+      }
+    ]
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.2,
+    "density": 0.9,
+    "movement": 0.3,
+    "space": 0.2,
+    "warmth": 0.8
+  },
   "engines": [
-    "OBLONG",
-    "ORGANON"
+    "Oblong",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.9,
+    "MOVEMENT": 0.3,
+    "SPACE": 0.2
+  },
+  "mood": "Entangled",
+  "name": "Calculus Slab",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.3,
-      "macro_movement": 0.3,
       "macro_coupling": 0.9,
+      "macro_movement": 0.3,
       "macro_space": 0.2
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.8,
-      "macro_movement": 0.3,
       "macro_coupling": 0.9,
+      "macro_movement": 0.3,
       "macro_space": 0.2
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OBLONG",
-    "target": "ORGANON",
-    "amount": 0.9
-  },
-  "dna": {
-    "brightness": 0.2,
-    "warmth": 0.8,
-    "movement": 0.3,
-    "density": 0.9,
-    "space": 0.2,
-    "aggression": 0.7
-  },
-  "macros": {
-    "CHARACTER": 0.55,
-    "MOVEMENT": 0.3,
-    "COUPLING": 0.9,
-    "SPACE": 0.2
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "oblong",
     "organon"
   ],
-  "author": "XO_OX Coverage Pack 2026-03-16",
-  "created": "2026-03-16"
+  "version": "1.0"
 }

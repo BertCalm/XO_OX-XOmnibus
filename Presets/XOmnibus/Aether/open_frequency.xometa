@@ -1,35 +1,43 @@
 {
-  "name": "Open Frequency",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "dna": {
+    "aggression": 0.07,
+    "brightness": 0.6,
+    "density": 0.13,
+    "movement": 0.66,
+    "space": 0.92,
+    "warmth": 0.38
+  },
   "engines": [
-    "OMBRE"
+    "Ombre"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.35,
+    "COUPLING": 0.2,
+    "MOVEMENT": 0.66,
+    "SPACE": 0.92
+  },
+  "mood": "Aether",
+  "name": "Open Frequency",
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.35,
-      "macro_movement": 0.66,
       "macro_coupling": 0.2,
+      "macro_movement": 0.66,
       "macro_space": 0.92
     }
   },
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.38,
-    "movement": 0.66,
-    "density": 0.13,
-    "space": 0.92,
-    "aggression": 0.07
-  },
-  "macros": {
-    "CHARACTER": 0.35,
-    "MOVEMENT": 0.66,
-    "COUPLING": 0.2,
-    "SPACE": 0.92
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "transcendent",
     "ambient"
-  ]
+  ],
+  "version": "1.0"
 }

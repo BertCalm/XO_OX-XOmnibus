@@ -1,50 +1,62 @@
 {
-  "name": "HOT_KINETIC_SPARSE_GENTLE_AET4_2",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "ORGANON",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.935,
-      "macro_movement": 0.9109,
-      "macro_coupling": 0.2563,
-      "macro_space": 0.6781
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.4725,
-      "macro_movement": 0.8008,
-      "macro_coupling": 0.7096,
-      "macro_space": 0.9146
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORGANON",
-    "target": "ODDOSCAR",
-    "amount": 0.6235
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "OddOscar",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.6235
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.0927,
     "brightness": 0.4226,
-    "warmth": 0.9355,
-    "movement": 0.9085,
     "density": 0.0288,
+    "movement": 0.9085,
     "space": 0.4406,
-    "aggression": 0.0927
+    "warmth": 0.9355
   },
+  "engines": [
+    "Organon",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.679,
-    "MOVEMENT": 0.9085,
     "COUPLING": 0.6235,
+    "MOVEMENT": 0.9085,
     "SPACE": 0.4406
   },
+  "mood": "Aether",
+  "name": "Node Shimmer",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.4725,
+      "macro_coupling": 0.7096,
+      "macro_movement": 0.8008,
+      "macro_space": 0.9146
+    },
+    "Organon": {
+      "macro_character": 0.935,
+      "macro_coupling": 0.2563,
+      "macro_movement": 0.9109,
+      "macro_space": 0.6781
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "kinetic",
     "warm",
     "sparse",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,56 @@
 {
-  "name": "DARK_COLD_KINETIC_SPARSE_VAST_ATM_2",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORGANON",
-    "ORACLE"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.022,
-      "macro_movement": 0.8948,
-      "macro_coupling": 0.0963,
-      "macro_space": 0.9088
-    },
-    "ORACLE": {
-      "macro_character": 0.0589,
-      "macro_movement": 0.9333,
-      "macro_coupling": 0.1265,
-      "macro_space": 0.9218
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORGANON",
-    "target": "ORACLE",
-    "amount": 0.895
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oracle",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.895
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.5425,
     "brightness": 0.0492,
-    "warmth": 0.0319,
-    "movement": 0.9221,
     "density": 0.1001,
+    "movement": 0.9221,
     "space": 0.9076,
-    "aggression": 0.5425
+    "warmth": 0.0319
   },
+  "engines": [
+    "Organon",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.0404,
-    "MOVEMENT": 0.9141,
     "COUPLING": 0.1114,
+    "MOVEMENT": 0.9141,
     "SPACE": 0.9153
   },
+  "mood": "Atmosphere",
+  "name": "Tone Shimmer 3",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.0589,
+      "macro_coupling": 0.1265,
+      "macro_movement": 0.9333,
+      "macro_space": 0.9218
+    },
+    "Organon": {
+      "macro_character": 0.022,
+      "macro_coupling": 0.0963,
+      "macro_movement": 0.8948,
+      "macro_space": 0.9088
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -47,5 +58,6 @@
     "kinetic",
     "sparse",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

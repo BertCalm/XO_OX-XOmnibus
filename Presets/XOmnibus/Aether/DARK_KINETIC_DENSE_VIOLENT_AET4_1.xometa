@@ -1,50 +1,62 @@
 {
-  "name": "DARK_KINETIC_DENSE_VIOLENT_AET4_1",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OVERWORLD",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.7758,
-      "macro_movement": 0.2968,
-      "macro_coupling": 0.5771,
-      "macro_space": 0.8512
-    },
-    "ODDFELIX": {
-      "macro_character": 0.8235,
-      "macro_movement": 0.5886,
-      "macro_coupling": 0.4281,
-      "macro_space": 0.3215
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OVERWORLD",
-    "target": "ODDFELIX",
-    "amount": 0.7645
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "OddfeliX",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.7645
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.9688,
     "brightness": 0.0991,
-    "warmth": 0.689,
-    "movement": 0.9331,
     "density": 0.9623,
+    "movement": 0.9331,
     "space": 0.572,
-    "aggression": 0.9688
+    "warmth": 0.689
   },
+  "engines": [
+    "Overworld",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.394,
-    "MOVEMENT": 0.9331,
     "COUPLING": 0.7645,
+    "MOVEMENT": 0.9331,
     "SPACE": 0.572
   },
+  "mood": "Aether",
+  "name": "Dusk Wrath",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.8235,
+      "macro_coupling": 0.4281,
+      "macro_movement": 0.5886,
+      "macro_space": 0.3215
+    },
+    "Overworld": {
+      "macro_character": 0.7758,
+      "macro_coupling": 0.5771,
+      "macro_movement": 0.2968,
+      "macro_space": 0.8512
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "kinetic",
     "dark",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,13 +1,50 @@
 {
-  "schema_version": 1,
-  "name": "Dead Room Hit",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Close-miked orbital presence. Dry and immediate — space locked at 0.06. No reverb needed. The room is your ears.",
+  "dna": {
+    "aggression": 0.621,
+    "brightness": 0.732,
+    "density": 0.791,
+    "movement": 0.515,
+    "space": 0.061,
+    "warmth": 0.718
+  },
   "engines": [
     "Orbital"
   ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "Close-miked orbital presence. Dry and immediate \u2014 space locked at 0.06. No reverb needed. The room is your ears.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Dead Room Hit",
+  "parameters": {
+    "Orbital": {
+      "orb_ampAttack": 0.0162,
+      "orb_ampDecay": 0.366,
+      "orb_ampRelease": 0.164,
+      "orb_ampSustain": 0.659,
+      "orb_brightness": 0.732,
+      "orb_detune": 0.366,
+      "orb_filterCutoff": 0.686,
+      "orb_filterReso": 0.329,
+      "orb_groupEnvDepth": 0.675,
+      "orb_groupEnvRate": 0.56,
+      "orb_macroCharacter": 0.621,
+      "orb_macroCoupling": 0.0,
+      "orb_macroMovement": 0.515,
+      "orb_macroSpace": 0.061,
+      "orb_oscCount": 5,
+      "orb_spread": 0.03
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "foundation",
     "intimate",
@@ -16,43 +53,6 @@
     "present",
     "orbital"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.732,
-    "warmth": 0.718,
-    "movement": 0.515,
-    "density": 0.791,
-    "space": 0.061,
-    "aggression": 0.621
-  },
-  "parameters": {
-    "Orbital": {
-      "orb_brightness": 0.732,
-      "orb_groupEnvRate": 0.56,
-      "orb_groupEnvDepth": 0.675,
-      "orb_oscCount": 5,
-      "orb_spread": 0.03,
-      "orb_detune": 0.366,
-      "orb_filterCutoff": 0.686,
-      "orb_filterReso": 0.329,
-      "orb_ampAttack": 0.0162,
-      "orb_ampDecay": 0.366,
-      "orb_ampSustain": 0.659,
-      "orb_ampRelease": 0.164,
-      "orb_macroCharacter": 0.621,
-      "orb_macroMovement": 0.515,
-      "orb_macroCoupling": 0.0,
-      "orb_macroSpace": 0.061
-    }
-  },
-  "coupling": null,
-  "sequencer": null
+  "version": "1.0"
 }

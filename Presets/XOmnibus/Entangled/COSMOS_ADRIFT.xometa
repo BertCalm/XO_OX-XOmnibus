@@ -1,49 +1,61 @@
 {
-  "name": "COSMOS ADRIFT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "OddfeliX",
+        "type": "PITCH_SYNC",
+        "amount": 0.4
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.182,
+    "brightness": 0.123,
+    "density": 0.169,
+    "movement": 0.704,
+    "space": 0.919,
+    "warmth": 0.125
+  },
   "engines": [
-    "OBSIDIAN",
-    "ODDFELIX"
+    "Obsidian",
+    "OddfeliX"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.703,
+    "COUPLING": 0.333,
+    "MOVEMENT": 0.642,
+    "SPACE": 0.919
+  },
+  "mood": "Entangled",
+  "name": "COSMOS ADRIFT",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.069,
-      "macro_movement": 0.698,
       "macro_coupling": 0.442,
+      "macro_movement": 0.698,
       "macro_space": 0.89
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.407,
-      "macro_movement": 0.564,
       "macro_coupling": 0.496,
+      "macro_movement": 0.564,
       "macro_space": 0.919
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBSIDIAN",
-    "target": "ODDFELIX",
-    "amount": 0.4
-  },
-  "dna": {
-    "brightness": 0.123,
-    "warmth": 0.125,
-    "movement": 0.704,
-    "density": 0.169,
-    "space": 0.919,
-    "aggression": 0.182
-  },
-  "macros": {
-    "CHARACTER": 0.703,
-    "MOVEMENT": 0.642,
-    "COUPLING": 0.333,
-    "SPACE": 0.919
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "vast",
     "cosmic",
     "xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

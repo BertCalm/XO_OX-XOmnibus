@@ -1,49 +1,61 @@
 {
-  "name": "Scorched Fangs",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Ouroboros",
+        "type": "ENVELOPE_MIRROR",
+        "amount": 0.84
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.77,
+    "brightness": 0.57,
+    "density": 0.77,
+    "movement": 0.39,
+    "space": 0.54,
+    "warmth": 0.89
+  },
   "engines": [
-    "ORCA",
-    "OUROBOROS"
+    "Orca",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.75,
+    "COUPLING": 0.74,
+    "MOVEMENT": 0.4,
+    "SPACE": 0.63
+  },
+  "mood": "Entangled",
+  "name": "Scorched Fangs",
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.72,
-      "macro_movement": 0.49,
       "macro_coupling": 0.81,
+      "macro_movement": 0.49,
       "macro_space": 0.63
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.78,
-      "macro_movement": 0.3,
       "macro_coupling": 0.67,
+      "macro_movement": 0.3,
       "macro_space": 0.63
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_MIRROR",
-    "source": "ORCA",
-    "target": "OUROBOROS",
-    "amount": 0.84
-  },
-  "dna": {
-    "brightness": 0.57,
-    "warmth": 0.89,
-    "movement": 0.39,
-    "density": 0.77,
-    "space": 0.54,
-    "aggression": 0.77
-  },
-  "macros": {
-    "CHARACTER": 0.75,
-    "MOVEMENT": 0.4,
-    "COUPLING": 0.74,
-    "SPACE": 0.63
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "aggressive"
-  ]
+  ],
+  "version": "1.0"
 }

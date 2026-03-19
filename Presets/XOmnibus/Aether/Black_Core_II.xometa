@@ -1,27 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Black Core II",
-  "mood": "Aether",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Frozen harmonic pile-up. Cold, packed, unrelenting.",
+  "dna": {
+    "aggression": 0.435,
     "brightness": 0.275,
-    "warmth": 0.155,
-    "movement": 0.345,
     "density": 0.956,
+    "movement": 0.345,
     "space": 0.332,
-    "aggression": 0.435
+    "warmth": 0.155
   },
   "engines": [
-    "OCTOPUS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Frozen harmonic pile-up. Cold, packed, unrelenting.",
-  "tags": [
-    "aether",
-    "cold",
-    "dense",
-    "dark",
-    "pressure"
+    "Octopus"
   ],
   "macroLabels": [
     "CYCLE",
@@ -29,17 +22,26 @@
     "COUPLING",
     "VOID"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.275,
-    "warmth": 0.155,
-    "movement": 0.345,
-    "density": 0.956,
-    "space": 0.332,
-    "aggression": 0.435
+  "mood": "Aether",
+  "name": "Black Core II",
+  "parameters": {
+    "Octopus": {}
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.435,
+    "brightness": 0.275,
+    "density": 0.956,
+    "movement": 0.345,
+    "space": 0.332,
+    "warmth": 0.155
+  },
+  "tags": [
+    "aether",
+    "cold",
+    "dense",
+    "dark",
+    "pressure"
+  ],
+  "version": "1.0.0"
 }

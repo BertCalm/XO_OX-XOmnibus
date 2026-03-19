@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_WARM_FROZEN_HARSH_SPARSE_ENT4_2",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "OVERLAP": {
-      "macro_character": 0.926,
-      "macro_movement": 0.084,
-      "macro_coupling": 0.02,
-      "macro_space": 0.529
-    },
-    "ORBITAL": {
-      "macro_character": 0.937,
-      "macro_movement": 0.095,
-      "macro_coupling": 0.034,
-      "macro_space": 0.55
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OVERLAP",
-    "target": "ORBITAL",
-    "amount": 0.814
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Orbital",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.814
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.946,
     "brightness": 0.926,
-    "warmth": 0.948,
-    "movement": 0.092,
     "density": 0.04,
+    "movement": 0.092,
     "space": 0.534,
-    "aggression": 0.946
+    "warmth": 0.948
   },
+  "engines": [
+    "Overlap",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.931,
-    "MOVEMENT": 0.089,
     "COUPLING": 0.814,
+    "MOVEMENT": 0.089,
     "SPACE": 0.54
   },
+  "mood": "Entangled",
+  "name": "Sunrise Strike",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.937,
+      "macro_coupling": 0.034,
+      "macro_movement": 0.095,
+      "macro_space": 0.55
+    },
+    "Overlap": {
+      "macro_character": 0.926,
+      "macro_coupling": 0.02,
+      "macro_movement": 0.084,
+      "macro_space": 0.529
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +59,6 @@
     "warm",
     "sparse",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

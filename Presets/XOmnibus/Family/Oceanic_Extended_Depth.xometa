@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Oceanic Extended Depth",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OCEANIC at maximum depth — the extended family portrait taken at the bottom of the water column. Pressure, beauty, silence between waves.",
+  "dna": {
+    "aggression": 0.18,
+    "brightness": 0.42,
+    "density": 0.65,
+    "movement": 0.72,
+    "space": 0.92,
+    "warmth": 0.68
+  },
   "engines": [
-    "OCEANIC"
+    "Oceanic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OCEANIC at maximum depth \u2014 the extended family portrait taken at the bottom of the water column. Pressure, beauty, silence between waves.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "DEPTH",
+    "SWELL",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Oceanic Extended Depth",
+  "parameters": {
+    "Oceanic": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "extended-family",
@@ -17,29 +42,6 @@
     "vast",
     "batch2-extended"
   ],
-  "macroLabels": [
-    "DEPTH",
-    "SWELL",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.42,
-    "warmth": 0.68,
-    "movement": 0.72,
-    "density": 0.65,
-    "space": 0.92,
-    "aggression": 0.18
-  }
+  "version": "1.0.0"
 }

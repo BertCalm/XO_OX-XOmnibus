@@ -1,14 +1,87 @@
 {
-  "schema_version": 1,
-  "name": "Arm Eating Arm",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.55,
+        "source": "Octopus",
+        "target": "Ouroboros",
+        "type": "FILTER_COUPLING"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "One arm follows another in an ouroboros loop; the attractor makes the predation rhythm inevitable.",
+  "dna": {
+    "aggression": 0.561,
+    "brightness": 0.654,
+    "density": 0.712,
+    "movement": 0.85,
+    "space": 0.409,
+    "warmth": 0.482
+  },
   "engines": [
     "Octopus",
     "Ouroboros"
   ],
-  "author": "XO_OX Deep Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "One arm follows another in an ouroboros loop; the attractor makes the predation rhythm inevitable.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Arm Eating Arm",
+  "parameters": {
+    "Octopus": {
+      "octo_ampAttack": 0.0414,
+      "octo_ampDecay": 0.613,
+      "octo_ampRelease": 1.283,
+      "octo_ampSustain": 0.706,
+      "octo_armBaseRate": 0.799,
+      "octo_armCount": 8.0,
+      "octo_armDepth": 0.655,
+      "octo_armSpread": 0.591,
+      "octo_chromaDepth": 0.658,
+      "octo_chromaFreq": 1362.8,
+      "octo_chromaMorph": 0.563,
+      "octo_chromaSens": 0.756,
+      "octo_chromaSpeed": 0.687,
+      "octo_filterCutoff": 11439.7,
+      "octo_filterReso": 0.639,
+      "octo_inkDecay": 0.737,
+      "octo_inkDensity": 0.697,
+      "octo_inkMix": 0.219,
+      "octo_inkThreshold": 0.538,
+      "octo_level": 0.755,
+      "octo_lfo1Depth": 0.549,
+      "octo_lfo1Rate": 2.967,
+      "octo_lfo1Shape": 0.5,
+      "octo_lfo2Depth": 0.21,
+      "octo_lfo2Rate": 1.128,
+      "octo_lfo2Shape": 0.0,
+      "octo_modAttack": 0.0148,
+      "octo_modDecay": 0.342,
+      "octo_modRelease": 0.334,
+      "octo_modSustain": 0.595,
+      "octo_shiftDrift": 0.311,
+      "octo_shiftGlide": 0.349,
+      "octo_shiftMicro": 0.606,
+      "octo_suckerDecay": 0.157,
+      "octo_suckerFreq": 2957.4,
+      "octo_suckerMix": 0.403,
+      "octo_suckerReso": 0.597,
+      "octo_wtPosition": 0.673,
+      "octo_wtScanRate": 0.618
+    },
+    "Ouroboros": {
+      "ouro_filterCutoff": 3968.4,
+      "ouro_level": 0.672
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,79 +90,6 @@
     "alien",
     "decentralized"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "Octopus": {
-      "octo_armCount": 8.0,
-      "octo_armSpread": 0.591,
-      "octo_armBaseRate": 0.799,
-      "octo_armDepth": 0.655,
-      "octo_chromaSens": 0.756,
-      "octo_chromaSpeed": 0.687,
-      "octo_chromaMorph": 0.563,
-      "octo_chromaDepth": 0.658,
-      "octo_chromaFreq": 1362.8,
-      "octo_inkThreshold": 0.538,
-      "octo_inkDensity": 0.697,
-      "octo_inkDecay": 0.737,
-      "octo_inkMix": 0.219,
-      "octo_shiftMicro": 0.606,
-      "octo_shiftGlide": 0.349,
-      "octo_shiftDrift": 0.311,
-      "octo_suckerReso": 0.597,
-      "octo_suckerFreq": 2957.4,
-      "octo_suckerDecay": 0.157,
-      "octo_suckerMix": 0.403,
-      "octo_wtPosition": 0.673,
-      "octo_wtScanRate": 0.618,
-      "octo_filterCutoff": 11439.7,
-      "octo_filterReso": 0.639,
-      "octo_level": 0.755,
-      "octo_ampAttack": 0.0414,
-      "octo_ampDecay": 0.613,
-      "octo_ampSustain": 0.706,
-      "octo_ampRelease": 1.283,
-      "octo_modAttack": 0.0148,
-      "octo_modDecay": 0.342,
-      "octo_modSustain": 0.595,
-      "octo_modRelease": 0.334,
-      "octo_lfo1Rate": 2.967,
-      "octo_lfo1Depth": 0.549,
-      "octo_lfo1Shape": 0.5,
-      "octo_lfo2Rate": 1.128,
-      "octo_lfo2Depth": 0.21,
-      "octo_lfo2Shape": 0.0
-    },
-    "Ouroboros": {
-      "ouro_level": 0.672,
-      "ouro_filterCutoff": 3968.4
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "type": "FILTER_COUPLING",
-        "source": "Octopus",
-        "target": "Ouroboros",
-        "amount": 0.55
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.654,
-    "warmth": 0.482,
-    "movement": 0.85,
-    "density": 0.712,
-    "space": 0.409,
-    "aggression": 0.561
-  }
+  "version": "1.0.0"
 }

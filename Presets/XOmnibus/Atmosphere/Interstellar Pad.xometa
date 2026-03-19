@@ -1,13 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Interstellar Pad",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Expansive pads atmosphere with voyager drift and prism shimmer.",
+  "dna": {
+    "aggression": 0.083,
+    "brightness": 0.549,
+    "density": 0.345,
+    "movement": 0.15,
+    "space": 0.395,
+    "warmth": 0.359
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Expansive pads atmosphere with voyager drift and prism shimmer.",
+  "legacy": {
+    "sourceCategory": "Pads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Interstellar Pad",
+  "parameters": {
+    "Odyssey": {
+      "drift_attack": 500.0,
+      "drift_driftDepth": 0.35,
+      "drift_driftRate": 0.1,
+      "drift_filterCutoff": 3500.0,
+      "drift_filterReso": 0.2,
+      "drift_filterSlope": 1.0,
+      "drift_formantMorph": 0.4,
+      "drift_hazeAmount": 0.15,
+      "drift_level": -5.0,
+      "drift_oscA_detune": 0.5,
+      "drift_oscA_level": 0.6,
+      "drift_oscA_mode": 2.0,
+      "drift_oscB_fmDepth": 0.2,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_mode": 3.0,
+      "drift_release": 2500.0,
+      "drift_shimmerAmount": 0.35,
+      "drift_shimmerTone": 0.55,
+      "drift_subLevel": 0.2,
+      "drift_sustain": 0.65
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "drifty",
     "shimmery",
@@ -17,52 +63,6 @@
     "formant",
     "slow-attack"
   ],
-  "macroLabels": [
-    "JOURNEY",
-    "BREATHE",
-    "BLOOM",
-    "FRACTURE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Pads",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Odyssey": {
-      "drift_oscA_mode": 2.0,
-      "drift_oscA_level": 0.6,
-      "drift_oscA_detune": 0.5,
-      "drift_oscB_mode": 3.0,
-      "drift_oscB_level": 0.4,
-      "drift_oscB_fmDepth": 0.2,
-      "drift_subLevel": 0.2,
-      "drift_filterCutoff": 3500.0,
-      "drift_filterReso": 0.2,
-      "drift_filterSlope": 1.0,
-      "drift_formantMorph": 0.4,
-      "drift_shimmerAmount": 0.35,
-      "drift_shimmerTone": 0.55,
-      "drift_hazeAmount": 0.15,
-      "drift_attack": 500.0,
-      "drift_sustain": 0.65,
-      "drift_release": 2500.0,
-      "drift_driftDepth": 0.35,
-      "drift_driftRate": 0.1,
-      "drift_level": -5.0
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.549,
-    "warmth": 0.359,
-    "movement": 0.15,
-    "density": 0.345,
-    "space": 0.395,
-    "aggression": 0.083
-  }
+  "version": "1.0.0"
 }

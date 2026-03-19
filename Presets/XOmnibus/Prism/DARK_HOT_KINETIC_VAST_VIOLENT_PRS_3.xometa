@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "DARK_HOT_KINETIC_VAST_VIOLENT_PRS_3",
-  "mood": "Prism",
-  "engines": [
-    "ORPHICA",
-    "ORACLE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Oracle",
+        "type": "PITCH_SYNC",
+        "amount": 0.716
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_KINETIC_VAST_VIOLENT. Variant 3.",
+  "dna": {
+    "aggression": 0.953,
+    "brightness": 0.129,
+    "density": 0.503,
+    "movement": 0.918,
+    "space": 0.98,
+    "warmth": 0.928
+  },
+  "engines": [
+    "Orphica",
+    "Oracle"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.143,
+    "COUPLING": 0.466,
+    "MOVEMENT": 0.962,
+    "SPACE": 0.95
+  },
+  "mood": "Prism",
+  "name": "Cocoa Horizon",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.145,
+      "macro_coupling": 0.385,
+      "macro_movement": 0.977,
+      "macro_space": 0.9
+    },
+    "Orphica": {
+      "macro_character": 0.142,
+      "macro_coupling": 0.547,
+      "macro_movement": 0.947,
+      "macro_space": 1.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "hot",
     "extreme",
@@ -19,53 +70,6 @@
     "violent",
     "prism"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.142,
-      "macro_movement": 0.947,
-      "macro_coupling": 0.547,
-      "macro_space": 1.0
-    },
-    "ORACLE": {
-      "macro_character": 0.145,
-      "macro_movement": 0.977,
-      "macro_coupling": 0.385,
-      "macro_space": 0.9
-    }
-  },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORPHICA",
-    "target": "ORACLE",
-    "amount": 0.716
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.129,
-    "warmth": 0.928,
-    "movement": 0.918,
-    "density": 0.503,
-    "space": 0.98,
-    "aggression": 0.953
-  },
-  "macros": {
-    "CHARACTER": 0.143,
-    "MOVEMENT": 0.962,
-    "COUPLING": 0.466,
-    "SPACE": 0.95
-  }
+  "version": "1.0.0"
 }

@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "HOT DENSE STILL VIOLENT 5",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "warmth": 0.9392,
-    "density": 0.9328,
-    "movement": 0.1091,
-    "aggression": 0.9358,
-    "brightness": 0.4016,
-    "space": 0.5634
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "High",
+  "couplingType": "DRIFT",
+  "description": "Ultra-diverse Entangled preset — hot dense still violent. Designed for DRIFT coupling with XOhm.",
   "dna": {
-    "warmth": 0.9392,
-    "density": 0.9328,
-    "movement": 0.1091,
     "aggression": 0.9358,
     "brightness": 0.4016,
-    "space": 0.5634
+    "density": 0.9328,
+    "movement": 0.1091,
+    "space": 0.5634,
+    "warmth": 0.9392
   },
   "engines": [
-    "XOhm"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 hot dense still violent. Designed for DRIFT coupling with XOhm.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "drift",
-    "ohm"
+    "Ohm"
   ],
   "macroLabels": [
     "HEAT",
@@ -36,15 +23,28 @@
     "PACK",
     "FLOW"
   ],
-  "couplingType": "DRIFT",
-  "couplingIntensity": "High",
+  "mood": "Prism",
+  "name": "HOT DENSE STILL VIOLENT 5",
   "parameters": {
-    "XOhm": {
-      "couplingLevel": 0.945,
-      "couplingBus": 0
+    "Ohm": {
+      "couplingBus": 0,
+      "couplingLevel": 0.945
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9358,
+    "brightness": 0.4016,
+    "density": 0.9328,
+    "movement": 0.1091,
+    "space": 0.5634,
+    "warmth": 0.9392
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "drift",
+    "ohm"
+  ],
+  "version": "1.0.0"
 }

@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Magma Slow",
-  "mood": "Aether",
-  "sonic_dna": {
-    "brightness": 0.09,
-    "warmth": 0.88,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Molten rock at minimum movement — near-static dark mass",
+  "dna": {
     "aggression": 0.35,
-    "movement": 0.08,
+    "brightness": 0.09,
     "density": 0.95,
-    "space": 0.15
+    "movement": 0.08,
+    "space": 0.15,
+    "warmth": 0.88
   },
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Molten rock at minimum movement \u2014 near-static dark mass",
+  "macroLabels": [
+    "EDGE",
+    "DENSITY",
+    "COUPLING",
+    "PRESSURE"
+  ],
+  "mood": "Aether",
+  "name": "Magma Slow",
+  "parameters": {
+    "Obsidian": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.35,
+    "brightness": 0.09,
+    "density": 0.95,
+    "movement": 0.08,
+    "space": 0.15,
+    "warmth": 0.88
+  },
   "tags": [
     "aether",
     "dark",
@@ -24,23 +44,5 @@
     "slow",
     "molten"
   ],
-  "macroLabels": [
-    "EDGE",
-    "DENSITY",
-    "COUPLING",
-    "PRESSURE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.09,
-    "warmth": 0.88,
-    "movement": 0.08,
-    "density": 0.95,
-    "space": 0.15,
-    "aggression": 0.35
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

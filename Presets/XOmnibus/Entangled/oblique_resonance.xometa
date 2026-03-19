@@ -1,50 +1,62 @@
 {
-  "name": "Oblique Resonance",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Orbital",
+        "type": "RESONANCE_CHAIN",
+        "amount": 0.554
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.14,
+    "brightness": 0.72,
+    "density": 0.4,
+    "movement": 0.5,
+    "space": 0.87,
+    "warmth": 0.3
+  },
   "engines": [
-    "OBLIQUE",
-    "ORBITAL"
+    "Oblique",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.554,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.625
+  },
+  "mood": "Entangled",
+  "name": "Oblique Resonance",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.822,
-      "macro_movement": 0.772,
       "macro_coupling": 0.672,
+      "macro_movement": 0.772,
       "macro_space": 0.572
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.378,
-      "macro_movement": 0.528,
       "macro_coupling": 0.478,
+      "macro_movement": 0.528,
       "macro_space": 0.678
     }
   },
-  "coupling": {
-    "type": "RESONANCE_CHAIN",
-    "source": "OBLIQUE",
-    "target": "ORBITAL",
-    "amount": 0.554
-  },
-  "dna": {
-    "brightness": 0.72,
-    "warmth": 0.3,
-    "movement": 0.5,
-    "density": 0.4,
-    "space": 0.87,
-    "aggression": 0.14
-  },
-  "macros": {
-    "CHARACTER": 0.6,
-    "MOVEMENT": 0.65,
-    "COUPLING": 0.554,
-    "SPACE": 0.625
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "resonant",
     "spacious"
-  ]
+  ],
+  "version": "1.0"
 }

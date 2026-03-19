@@ -1,48 +1,60 @@
 {
-  "name": "MUTED LATTICE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Osteria",
+        "type": "PITCH_SYNC",
+        "amount": 0.608
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.344,
+    "brightness": 0.005,
+    "density": 0.548,
+    "movement": 0.065,
+    "space": 0.599,
+    "warmth": 0.642
+  },
   "engines": [
-    "OCEANIC",
-    "OSTERIA"
+    "Oceanic",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.089,
+    "COUPLING": 0.85,
+    "MOVEMENT": 0.065,
+    "SPACE": 0.148
+  },
+  "mood": "Entangled",
+  "name": "MUTED LATTICE",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.056,
-      "macro_movement": 0.071,
       "macro_coupling": 0.764,
+      "macro_movement": 0.071,
       "macro_space": 0.097
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.515,
-      "macro_movement": 0.059,
       "macro_coupling": 0.04,
+      "macro_movement": 0.059,
       "macro_space": 0.793
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OCEANIC",
-    "target": "OSTERIA",
-    "amount": 0.608
-  },
-  "dna": {
-    "brightness": 0.005,
-    "warmth": 0.642,
-    "movement": 0.065,
-    "density": 0.548,
-    "space": 0.599,
-    "aggression": 0.344
-  },
-  "macros": {
-    "CHARACTER": 0.089,
-    "MOVEMENT": 0.065,
-    "COUPLING": 0.85,
-    "SPACE": 0.148
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "muted"
-  ]
+  ],
+  "version": "1.0"
 }

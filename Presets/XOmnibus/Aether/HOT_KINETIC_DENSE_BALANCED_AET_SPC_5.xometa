@@ -1,45 +1,56 @@
 {
-  "name": "HOT KINETIC DENSE BALANCED AET SPC 5",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Origami",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.919
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.962,
+    "brightness": 0.468,
+    "density": 0.953,
+    "movement": 0.94,
+    "space": 0.607,
+    "warmth": 0.979
+  },
   "engines": [
-    "OBLIQUE",
-    "ORIGAMI"
+    "Oblique",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.724,
+    "COUPLING": 0.634,
+    "MOVEMENT": 0.94,
+    "SPACE": 0.607
+  },
+  "mood": "Aether",
+  "name": "HOT KINETIC DENSE BALANCED ...",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.724,
-      "macro_movement": 0.94,
       "macro_coupling": 0.634,
+      "macro_movement": 0.94,
       "macro_space": 0.607
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.717,
-      "macro_movement": 0.963,
       "macro_coupling": 0.654,
+      "macro_movement": 0.963,
       "macro_space": 0.609
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OBLIQUE",
-    "target": "ORIGAMI",
-    "amount": 0.919
-  },
-  "dna": {
-    "brightness": 0.468,
-    "warmth": 0.979,
-    "movement": 0.94,
-    "density": 0.953,
-    "space": 0.607,
-    "aggression": 0.962
-  },
-  "macros": {
-    "CHARACTER": 0.724,
-    "MOVEMENT": 0.94,
-    "COUPLING": 0.634,
-    "SPACE": 0.607
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -49,5 +60,6 @@
     "warm",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

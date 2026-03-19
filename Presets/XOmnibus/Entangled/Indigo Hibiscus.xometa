@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Indigo Hibiscus",
-  "mood": "Entangled",
-  "engines": [
-    "OLE",
-    "ORACLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "OLE hibiscus harmonics fold into Oracle's indigo depth \u2014 mystic tropics.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "Ole",
+        "engineB": "Oracle",
+        "type": "HARMONIC_FOLD"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "OLE hibiscus harmonics fold into Oracle's indigo depth — mystic tropics.",
+  "dna": {
+    "aggression": 0.62,
+    "brightness": 0.6,
+    "density": 0.65,
+    "movement": 0.65,
+    "space": 0.55,
+    "warmth": 0.68
+  },
+  "engines": [
+    "Ole",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.635,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.64,
+    "SPACE": 0.49
+  },
+  "mood": "Entangled",
+  "name": "Indigo Hibiscus",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.72,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.6,
+      "macro_space": 0.36
+    },
+    "Oracle": {
+      "macro_character": 0.55,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.68,
+      "macro_space": 0.62
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "hibiscus",
     "deep"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.68,
-    "movement": 0.65,
-    "density": 0.65,
-    "space": 0.55,
-    "aggression": 0.62
-  },
-  "parameters": {
-    "OLE": {
-      "macro_character": 0.72,
-      "macro_movement": 0.6,
-      "macro_coupling": 0.7,
-      "macro_space": 0.36
-    },
-    "ORACLE": {
-      "macro_character": 0.55,
-      "macro_movement": 0.68,
-      "macro_coupling": 0.7,
-      "macro_space": 0.62
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OLE",
-        "engineB": "ORACLE",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.7
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.635,
-    "MOVEMENT": 0.64,
-    "COUPLING": 0.7,
-    "SPACE": 0.49
-  },
-  "sequencer": null
+  "version": "1.0"
 }

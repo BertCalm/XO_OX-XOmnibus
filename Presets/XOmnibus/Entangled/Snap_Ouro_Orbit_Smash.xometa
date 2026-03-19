@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Orbit Smash",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "OddfeliX",
+        "engineB": "Ouroboros",
+        "type": "Audio->FM"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-10",
+  "description": "SNAP percussive hits knock the Lorenz orbit into new trajectories. Each strike is a gravitational event.",
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.6,
+    "density": 0.65,
+    "movement": 0.8,
+    "space": 0.3,
+    "warmth": 0.3
+  },
   "engines": [
     "OddfeliX",
     "Ouroboros"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "SNAP percussive hits knock the Lorenz orbit into new trajectories. Each strike is a gravitational event.",
-  "tags": [
-    "coupled",
-    "percussive",
-    "chaotic",
-    "rhythmic"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "SNAP BITE",
     "ORBIT CHAOS",
     "IMPACT",
     "SPACE"
   ],
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Orbit Smash",
   "parameters": {
     "OddfeliX": {
-      "snap_oscMode": 0,
       "snap_filterCutoff": 6000.0,
-      "snap_filterReso": 0.35,
       "snap_filterEnvDepth": 0.6,
-      "snap_snap": 0.7,
-      "snap_level": 0.75
+      "snap_filterReso": 0.35,
+      "snap_level": 0.75,
+      "snap_oscMode": 0,
+      "snap_snap": 0.7
     },
     "Ouroboros": {
-      "ouro_topology": 0,
-      "ouro_rate": 130.0,
       "ouro_chaosIndex": 0.45,
-      "ouro_leash": 0.5,
-      "ouro_theta": 0.3,
-      "ouro_phi": -0.2,
       "ouro_damping": 0.25,
-      "ouro_injection": 0.7
+      "ouro_injection": 0.7,
+      "ouro_leash": 0.5,
+      "ouro_phi": -0.2,
+      "ouro_rate": 130.0,
+      "ouro_theta": 0.3,
+      "ouro_topology": 0
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Ouroboros",
-        "type": "Audio->FM",
-        "amount": 0.65
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.3,
-    "movement": 0.8,
-    "density": 0.65,
-    "space": 0.3,
-    "aggression": 0.7
-  }
+  "tags": [
+    "coupled",
+    "percussive",
+    "chaotic",
+    "rhythmic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

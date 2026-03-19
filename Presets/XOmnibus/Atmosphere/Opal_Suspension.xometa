@@ -33,7 +33,9 @@
     "space": 0.9,
     "aggression": 0.01
   },
-  "parameters": {},
+  "parameters": {
+    "Opal": {}
+  },
   "tags": [
     "glacial",
     "opal",

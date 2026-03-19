@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT WARM SPARSE BALANCED AET SPC 2",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Origami",
+        "type": "CHAOS_INJECT",
+        "amount": 0.64
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.944,
+    "brightness": 0.925,
+    "density": 0.077,
+    "movement": 0.37,
+    "space": 0.545,
+    "warmth": 0.888
+  },
   "engines": [
-    "ODDFELIX",
-    "ORIGAMI"
+    "OddfeliX",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.907,
+    "COUPLING": 0.829,
+    "MOVEMENT": 0.37,
+    "SPACE": 0.545
+  },
+  "mood": "Aether",
+  "name": "BRIGHT WARM SPARSE BALANCED...",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.907,
-      "macro_movement": 0.37,
       "macro_coupling": 0.829,
+      "macro_movement": 0.37,
       "macro_space": 0.545
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.893,
-      "macro_movement": 0.391,
       "macro_coupling": 0.849,
+      "macro_movement": 0.391,
       "macro_space": 0.52
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ODDFELIX",
-    "target": "ORIGAMI",
-    "amount": 0.64
-  },
-  "dna": {
-    "brightness": 0.925,
-    "warmth": 0.888,
-    "movement": 0.37,
-    "density": 0.077,
-    "space": 0.545,
-    "aggression": 0.944
-  },
-  "macros": {
-    "CHARACTER": 0.907,
-    "MOVEMENT": 0.37,
-    "COUPLING": 0.829,
-    "SPACE": 0.545
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -48,5 +59,6 @@
     "aggressive",
     "bright",
     "warm"
-  ]
+  ],
+  "version": "1.0"
 }

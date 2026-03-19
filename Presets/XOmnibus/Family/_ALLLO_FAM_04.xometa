@@ -1,49 +1,61 @@
 {
-  "name": "ALLLO FAM 04",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Orphica",
+        "type": "CHAOS_INJECT",
+        "amount": 0.197
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.067,
+    "brightness": 0.065,
+    "density": 0.585,
+    "movement": 0.024,
+    "space": 0.098,
+    "warmth": 0.105
+  },
   "engines": [
-    "ODDOSCAR",
-    "ORPHICA"
+    "OddOscar",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.085,
+    "COUPLING": 0.083,
+    "MOVEMENT": 0.304,
+    "SPACE": 0.098
+  },
+  "mood": "Family",
+  "name": "ALLLO FAM 04",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.085,
-      "macro_movement": 0.304,
       "macro_coupling": 0.083,
+      "macro_movement": 0.304,
       "macro_space": 0.098
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.085,
-      "macro_movement": 0.304,
       "macro_coupling": 0.083,
+      "macro_movement": 0.304,
       "macro_space": 0.098
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "ODDOSCAR",
-    "target": "ORPHICA",
-    "amount": 0.197
-  },
-  "dna": {
-    "brightness": 0.065,
-    "warmth": 0.105,
-    "movement": 0.024,
-    "density": 0.585,
-    "space": 0.098,
-    "aggression": 0.067
-  },
-  "macros": {
-    "CHARACTER": 0.085,
-    "MOVEMENT": 0.304,
-    "COUPLING": 0.083,
-    "SPACE": 0.098
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_COLD_SPARSE_VAST_FAM_VOL_97",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ole",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.788
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.527,
+    "brightness": 0.911,
+    "density": 0.025,
+    "movement": 0.415,
+    "space": 0.897,
+    "warmth": 0.046
+  },
   "engines": [
-    "OLE",
-    "ORIGAMI"
+    "Ole",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.482,
+    "COUPLING": 0.26,
+    "MOVEMENT": 0.404,
+    "SPACE": 0.885
+  },
+  "mood": "Family",
+  "name": "Ice Cathedral 2",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.457,
-      "macro_movement": 0.394,
       "macro_coupling": 0.253,
+      "macro_movement": 0.394,
       "macro_space": 0.894
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.506,
-      "macro_movement": 0.414,
       "macro_coupling": 0.267,
+      "macro_movement": 0.414,
       "macro_space": 0.876
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORIGAMI",
-    "target": "OLE",
-    "amount": 0.788
-  },
-  "dna": {
-    "brightness": 0.911,
-    "warmth": 0.046,
-    "movement": 0.415,
-    "density": 0.025,
-    "space": 0.897,
-    "aggression": 0.527
-  },
-  "macros": {
-    "CHARACTER": 0.482,
-    "MOVEMENT": 0.404,
-    "COUPLING": 0.26,
-    "SPACE": 0.885
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "cold",
     "sparse",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

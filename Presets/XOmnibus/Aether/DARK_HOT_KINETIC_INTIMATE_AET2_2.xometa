@@ -1,45 +1,56 @@
 {
-  "name": "DARK_HOT_KINETIC_INTIMATE_AET2_2",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Origami",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.6153
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5256,
+    "brightness": 0.0419,
+    "density": 0.5678,
+    "movement": 0.8851,
+    "space": 0.0322,
+    "warmth": 0.8724
+  },
   "engines": [
-    "OCEANIC",
-    "ORIGAMI"
+    "Oceanic",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0519,
+    "COUPLING": 0.6153,
+    "MOVEMENT": 0.8715,
+    "SPACE": 0.0322
+  },
+  "mood": "Aether",
+  "name": "Ember Flutter",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.034,
-      "macro_movement": 0.8915,
       "macro_coupling": 0.5956,
+      "macro_movement": 0.8915,
       "macro_space": 0.0453
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.0697,
-      "macro_movement": 0.8515,
       "macro_coupling": 0.5489,
+      "macro_movement": 0.8515,
       "macro_space": 0.0401
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OCEANIC",
-    "target": "ORIGAMI",
-    "amount": 0.6153
-  },
-  "dna": {
-    "brightness": 0.0419,
-    "warmth": 0.8724,
-    "space": 0.0322,
-    "movement": 0.8851,
-    "density": 0.5678,
-    "aggression": 0.5256
-  },
-  "macros": {
-    "CHARACTER": 0.0519,
-    "MOVEMENT": 0.8715,
-    "COUPLING": 0.6153,
-    "SPACE": 0.0322
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +60,6 @@
     "kinetic",
     "intimate",
     "smoldering"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,49 +1,61 @@
 {
-  "name": "ABYSS STRIKE",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OCELOT",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "OCELOT": {
-      "macro_character": 0.559,
-      "macro_movement": 0.47,
-      "macro_coupling": 0.479,
-      "macro_space": 0.558
-    },
-    "OBSCURA": {
-      "macro_character": 0.514,
-      "macro_movement": 0.341,
-      "macro_coupling": 0.402,
-      "macro_space": 0.493
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OCELOT",
-    "target": "OBSCURA",
-    "amount": 0.719
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Obscura",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.719
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.911,
     "brightness": 0.031,
-    "warmth": 0.548,
-    "movement": 0.525,
     "density": 0.34,
+    "movement": 0.525,
     "space": 0.515,
-    "aggression": 0.911
+    "warmth": 0.548
   },
+  "engines": [
+    "Ocelot",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.559,
-    "MOVEMENT": 0.47,
     "COUPLING": 0.479,
+    "MOVEMENT": 0.47,
     "SPACE": 0.558
   },
+  "mood": "Flux",
+  "name": "ABYSS STRIKE",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.514,
+      "macro_coupling": 0.402,
+      "macro_movement": 0.341,
+      "macro_space": 0.493
+    },
+    "Ocelot": {
+      "macro_character": 0.559,
+      "macro_coupling": 0.479,
+      "macro_movement": 0.47,
+      "macro_space": 0.558
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "violent",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

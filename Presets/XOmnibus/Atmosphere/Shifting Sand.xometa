@@ -1,59 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Shifting Sand",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Ethereal textures wash with voyager drift and tidal pulse.",
+  "dna": {
+    "aggression": 0.083,
+    "brightness": 0.367,
+    "density": 0.073,
+    "movement": 0.2,
+    "space": 0.308,
+    "warmth": 0.22
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ethereal textures wash with voyager drift and tidal pulse.",
-  "tags": [
-    "drifty",
-    "tidal",
-    "spacious",
-    "slow-attack"
-  ],
+  "legacy": {
+    "sourceCategory": "Textures",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Textures",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Shifting Sand",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 0.0,
-      "drift_oscA_level": 0.4,
-      "drift_oscB_mode": 0.0,
-      "drift_oscB_shape": 2.0,
-      "drift_oscB_level": 0.3,
-      "drift_noiseLevel": 0.25,
+      "drift_attack": 600.0,
+      "drift_driftDepth": 0.4,
       "drift_filterCutoff": 2000.0,
       "drift_filterReso": 0.2,
-      "drift_driftDepth": 0.4,
-      "drift_attack": 600.0,
-      "drift_sustain": 0.5,
+      "drift_level": -5.0,
+      "drift_noiseLevel": 0.25,
+      "drift_oscA_level": 0.4,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscB_level": 0.3,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 2.0,
       "drift_release": 2500.0,
-      "drift_level": -5.0
+      "drift_sustain": 0.5
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.367,
-    "warmth": 0.22,
-    "movement": 0.2,
-    "density": 0.073,
-    "space": 0.308,
-    "aggression": 0.083
-  }
+  "tags": [
+    "drifty",
+    "tidal",
+    "spacious",
+    "slow-attack"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

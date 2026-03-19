@@ -1,14 +1,86 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_WARM_STILL_DENSE_ENT_4",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.9659,
+        "source": "Orbital",
+        "target": "Organon",
+        "type": "RESONANCE_SHARE"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Bright Warm Still Dense character entanglement — ORGANON × ORBITAL via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.4297,
+    "brightness": 0.9615,
+    "density": 0.9336,
+    "movement": 0.1056,
+    "space": 0.3002,
+    "warmth": 0.9347
+  },
   "engines": [
-    "ORGANON",
-    "ORBITAL"
+    "Organon",
+    "Orbital"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bright Warm Still Dense character entanglement \u2014 ORGANON \u00d7 ORBITAL via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "VOICE",
+    "BREATH",
+    "CHOIR",
+    "NAVE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9481,
+    "COUPLING": 0.9659,
+    "MOVEMENT": 0.1056,
+    "SPACE": 0.3002
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT_WARM_STILL_DENSE_ENT_4",
+  "parameters": {
+    "Orbital": {
+      "amp_attack": 0.3927,
+      "amp_release": 0.3197,
+      "coupling_level": 0.7089,
+      "density": 0.9033,
+      "drive": 0.3952,
+      "filter_cutoff": 0.8914,
+      "filter_resonance": 0.291,
+      "macro_character": 0.9921,
+      "macro_coupling": 0.7273,
+      "macro_movement": 0.0995,
+      "macro_space": 0.3033,
+      "output_level": 0.9114,
+      "reverb_mix": 0.3271,
+      "reverb_size": 0.3751
+    },
+    "Organon": {
+      "amp_attack": 0.4067,
+      "amp_release": 0.2456,
+      "coupling_level": 0.7031,
+      "density": 0.9316,
+      "drive": 0.3641,
+      "filter_cutoff": 0.9088,
+      "filter_resonance": 0.2818,
+      "macro_character": 0.9888,
+      "macro_coupling": 0.715,
+      "macro_movement": 0.0902,
+      "macro_space": 0.3304,
+      "output_level": 0.9374,
+      "reverb_mix": 0.3359,
+      "reverb_size": 0.4014
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4297,
+    "brightness": 0.9615,
+    "density": 0.9336,
+    "movement": 0.1056,
+    "space": 0.3002,
+    "warmth": 0.9347
+  },
   "tags": [
     "entangled",
     "bright",
@@ -17,81 +89,5 @@
     "dense",
     "resonant"
   ],
-  "macroLabels": [
-    "VOICE",
-    "BREATH",
-    "CHOIR",
-    "NAVE"
-  ],
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.9615,
-    "warmth": 0.9347,
-    "movement": 0.1056,
-    "density": 0.9336,
-    "space": 0.3002,
-    "aggression": 0.4297
-  },
-  "sonic_dna": {
-    "brightness": 0.9615,
-    "warmth": 0.9347,
-    "movement": 0.1056,
-    "density": 0.9336,
-    "space": 0.3002,
-    "aggression": 0.4297
-  },
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.9888,
-      "macro_movement": 0.0902,
-      "macro_coupling": 0.715,
-      "macro_space": 0.3304,
-      "filter_cutoff": 0.9088,
-      "filter_resonance": 0.2818,
-      "amp_attack": 0.4067,
-      "amp_release": 0.2456,
-      "reverb_mix": 0.3359,
-      "reverb_size": 0.4014,
-      "drive": 0.3641,
-      "density": 0.9316,
-      "output_level": 0.9374,
-      "coupling_level": 0.7031
-    },
-    "ORBITAL": {
-      "macro_character": 0.9921,
-      "macro_movement": 0.0995,
-      "macro_coupling": 0.7273,
-      "macro_space": 0.3033,
-      "filter_cutoff": 0.8914,
-      "filter_resonance": 0.291,
-      "amp_attack": 0.3927,
-      "amp_release": 0.3197,
-      "reverb_mix": 0.3271,
-      "reverb_size": 0.3751,
-      "drive": 0.3952,
-      "density": 0.9033,
-      "output_level": 0.9114,
-      "coupling_level": 0.7089
-    }
-  },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ORBITAL",
-    "target": "ORGANON",
-    "amount": 0.9659,
-    "pairs": [
-      {
-        "source": "ORBITAL",
-        "target": "ORGANON",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.9659
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.9481,
-    "MOVEMENT": 0.1056,
-    "COUPLING": 0.9659,
-    "SPACE": 0.3002
-  }
+  "version": "1.0.0"
 }

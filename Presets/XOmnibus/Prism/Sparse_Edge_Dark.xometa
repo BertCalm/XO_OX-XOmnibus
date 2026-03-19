@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Sparse Edge Dark",
-  "mood": "Prism",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Refracted spectrum: one cold sine per octave, wide open.",
+  "dna": {
+    "aggression": 0.14,
     "brightness": 0.851,
-    "warmth": 0.043,
-    "movement": 0.348,
     "density": 0.063,
+    "movement": 0.348,
     "space": 0.765,
-    "aggression": 0.14
+    "warmth": 0.043
   },
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Refracted spectrum: one cold sine per octave, wide open.",
+  "macroLabels": [
+    "FREEZE",
+    "GLINT",
+    "COUPLING",
+    "VOID"
+  ],
+  "mood": "Prism",
+  "name": "Sparse Edge Dark",
+  "parameters": {
+    "Origami": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.14,
+    "brightness": 0.851,
+    "density": 0.063,
+    "movement": 0.348,
+    "space": 0.765,
+    "warmth": 0.043
+  },
   "tags": [
     "prism",
     "cold",
@@ -25,23 +45,5 @@
     "spacious",
     "bright"
   ],
-  "macroLabels": [
-    "FREEZE",
-    "GLINT",
-    "COUPLING",
-    "VOID"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.851,
-    "warmth": 0.043,
-    "movement": 0.348,
-    "density": 0.063,
-    "space": 0.765,
-    "aggression": 0.14
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

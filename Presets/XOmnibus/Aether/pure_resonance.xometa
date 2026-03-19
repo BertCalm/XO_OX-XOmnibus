@@ -1,35 +1,43 @@
 {
-  "name": "Pure Resonance",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "dna": {
+    "aggression": 0.04,
+    "brightness": 0.74,
+    "density": 0.1,
+    "movement": 0.5,
+    "space": 0.93,
+    "warmth": 0.26
+  },
   "engines": [
-    "OBBLIGATO"
+    "Obbligato"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2,
+    "COUPLING": 0.1,
+    "MOVEMENT": 0.5,
+    "SPACE": 0.93
+  },
+  "mood": "Aether",
+  "name": "Pure Resonance",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.2,
-      "macro_movement": 0.5,
       "macro_coupling": 0.1,
+      "macro_movement": 0.5,
       "macro_space": 0.93
     }
   },
-  "dna": {
-    "brightness": 0.74,
-    "warmth": 0.26,
-    "movement": 0.5,
-    "density": 0.1,
-    "space": 0.93,
-    "aggression": 0.04
-  },
-  "macros": {
-    "CHARACTER": 0.2,
-    "MOVEMENT": 0.5,
-    "COUPLING": 0.1,
-    "SPACE": 0.93
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "crystalline",
     "ambient"
-  ]
+  ],
+  "version": "1.0"
 }

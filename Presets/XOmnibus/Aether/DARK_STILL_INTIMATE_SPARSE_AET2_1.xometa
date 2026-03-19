@@ -1,45 +1,56 @@
 {
-  "name": "DARK_STILL_INTIMATE_SPARSE_AET2_1",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "ODDFELIX",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "ODDFELIX": {
-      "macro_character": 0.1482,
-      "macro_movement": 0.1458,
-      "macro_coupling": 0.1111,
-      "macro_space": 0.0129
-    },
-    "OCEANIC": {
-      "macro_character": 0.088,
-      "macro_movement": 0.1563,
-      "macro_coupling": 0.1087,
-      "macro_space": 0.0319
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ODDFELIX",
-    "target": "OCEANIC",
-    "amount": 0.6193
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oceanic",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.6193
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.34,
     "brightness": 0.1222,
+    "density": 0.0883,
     "movement": 0.1229,
     "space": 0.0207,
-    "density": 0.0883,
-    "warmth": 0.5252,
-    "aggression": 0.34
+    "warmth": 0.5252
   },
+  "engines": [
+    "OddfeliX",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.1181,
-    "MOVEMENT": 0.1511,
     "COUPLING": 0.6193,
+    "MOVEMENT": 0.1511,
     "SPACE": 0.0207
   },
+  "mood": "Aether",
+  "name": "Wave Fragment",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.088,
+      "macro_coupling": 0.1087,
+      "macro_movement": 0.1563,
+      "macro_space": 0.0319
+    },
+    "OddfeliX": {
+      "macro_character": 0.1482,
+      "macro_coupling": 0.1111,
+      "macro_movement": 0.1458,
+      "macro_space": 0.0129
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +60,6 @@
     "intimate",
     "sparse",
     "void"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oblique \u00d7 Odyssey \u2014 Harmonic Fold coupling at extreme DNA corner.",
+  "description": "Oblique × Odyssey — Harmonic Fold coupling at extreme DNA corner.",
   "tags": [
     "fury",
     "oblique",
@@ -33,7 +33,10 @@
     "space": 0.52,
     "aggression": 0.894
   },
-  "parameters": {},
+  "parameters": {
+    "Oblique": {},
+    "Odyssey": {}
+  },
   "coupling": {
     "pairs": [
       {

@@ -1,68 +1,78 @@
 {
-  "schema_version": 1,
-  "name": "Decay Feeds Evolution",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "OVERLAP"
-  ],
-  "author": "XO_OX",
-  "macros": {
-    "CHARACTER": 0.43,
-    "MOVEMENT": 0.58,
-    "COUPLING": 0.75,
-    "SPACE": 0.8
-  },
-  "sonic_dna": {
-    "brightness": 0.6,
-    "warmth": 0.48,
-    "movement": 0.72,
-    "density": 0.66,
-    "space": 0.8,
-    "aggression": 0.32
-  },
-  "parameters": {
-    "OUTWIT": {
-      "owit_rule": 110,
-      "owit_arms": 8,
-      "owit_cellSize": 0.392,
-      "owit_density": 0.457,
-      "owit_evolveRate": 0.452,
-      "owit_mutateProb": 0.297,
-      "owit_pitchSpread": 0.456,
-      "owit_filterCutoff": 0.573,
-      "owit_filterReso": 0.34,
-      "owit_ampAttack": 0.128,
-      "owit_ampRelease": 0.666,
-      "owit_outputLevel": 0.696,
-      "owit_couplingLevel": 0.51,
-      "owit_couplingBus": 0
-    },
-    "OVERLAP": {
-      "olap_size": 0.676,
-      "olap_decay": 0.607,
-      "olap_damping": 0.334,
-      "olap_diffusion": 0.858,
-      "olap_modDepth": 0.407,
-      "olap_modRate": 0.144,
-      "olap_preDelay": 0.164,
-      "olap_earlyMix": 0.338,
-      "olap_lateMix": 0.766,
-      "olap_filterCutoff": 0.584,
-      "olap_filterReso": 0.179,
-      "olap_outputLevel": 0.699,
-      "olap_couplingLevel": 0.69,
-      "olap_couplingBus": 0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_SHARING",
-    "source": "OUTWIT",
-    "target": "OVERLAP",
-    "amount": 0.75
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Overlap",
+        "type": "ENVELOPE_SHARING",
+        "amount": 0.75
+      }
+    ]
   },
   "couplingIntensity": "Deep",
+  "description": "OVERLAP decay length modulates OUTWIT generation rate — the longer the tail, the faster the evolution; reverb time as a cellular clock",
+  "engines": [
+    "Outwit",
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.43,
+    "COUPLING": 0.75,
+    "MOVEMENT": 0.58,
+    "SPACE": 0.8
+  },
+  "mood": "Entangled",
+  "name": "Decay Feeds Evolution",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.128,
+      "owit_ampRelease": 0.666,
+      "owit_arms": 8,
+      "owit_cellSize": 0.392,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.51,
+      "owit_density": 0.457,
+      "owit_evolveRate": 0.452,
+      "owit_filterCutoff": 0.573,
+      "owit_filterReso": 0.34,
+      "owit_mutateProb": 0.297,
+      "owit_outputLevel": 0.696,
+      "owit_pitchSpread": 0.456,
+      "owit_rule": 110
+    },
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.69,
+      "olap_damping": 0.334,
+      "olap_decay": 0.607,
+      "olap_diffusion": 0.858,
+      "olap_earlyMix": 0.338,
+      "olap_filterCutoff": 0.584,
+      "olap_filterReso": 0.179,
+      "olap_lateMix": 0.766,
+      "olap_modDepth": 0.407,
+      "olap_modRate": 0.144,
+      "olap_outputLevel": 0.699,
+      "olap_preDelay": 0.164,
+      "olap_size": 0.676
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.32,
+    "brightness": 0.6,
+    "density": 0.66,
+    "movement": 0.72,
+    "space": 0.8,
+    "warmth": 0.48
+  },
   "tags": [
     "entangled",
     "coupling",
@@ -74,5 +84,13 @@
     "generation",
     "clock"
   ],
-  "description": "OVERLAP decay length modulates OUTWIT generation rate \u2014 the longer the tail, the faster the evolution; reverb time as a cellular clock"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.573,
+    "warmth": 0.5,
+    "movement": 0.452,
+    "density": 0.457,
+    "space": 0.164,
+    "aggression": 0.128
+  }
 }

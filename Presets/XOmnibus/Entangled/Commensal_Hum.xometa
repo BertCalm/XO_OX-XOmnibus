@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Commensal Hum",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "Organism that lives alongside. Present but not intrusive.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.3,
+    "density": 0.3,
+    "movement": 0.2,
+    "space": 0.25,
+    "warmth": 0.6
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Organism that lives alongside. Present but not intrusive.",
-  "tags": [
-    "commensal",
-    "alongside",
-    "subtle",
-    "hum"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Commensal Hum",
   "parameters": {
     "Organon": {
-      "organon_metabolicRate": 0.4,
-      "organon_enzymeSelect": 700.0,
       "organon_catalystDrive": 0.3,
       "organon_dampingCoeff": 0.1,
-      "organon_signalFlux": 0.45,
-      "organon_phasonShift": 0.0,
+      "organon_enzymeSelect": 700.0,
       "organon_isotopeBalance": 0.35,
       "organon_lockIn": 0.1,
       "organon_membrane": 0.25,
-      "organon_noiseColor": 0.4
+      "organon_metabolicRate": 0.4,
+      "organon_noiseColor": 0.4,
+      "organon_phasonShift": 0.0,
+      "organon_signalFlux": 0.45
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.3,
-    "warmth": 0.6,
-    "movement": 0.2,
-    "density": 0.3,
-    "space": 0.25,
-    "aggression": 0.05
-  }
+  "tags": [
+    "commensal",
+    "alongside",
+    "subtle",
+    "hum"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

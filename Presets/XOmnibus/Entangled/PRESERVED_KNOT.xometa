@@ -1,48 +1,60 @@
 {
-  "name": "PRESERVED KNOT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Ouroboros",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.753
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.788,
+    "brightness": 0.128,
+    "density": 0.49,
+    "movement": 0.097,
+    "space": 0.918,
+    "warmth": 0.801
+  },
   "engines": [
-    "ORBITAL",
-    "OUROBOROS"
+    "Orbital",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.913,
+    "COUPLING": 0.876,
+    "MOVEMENT": 0.097,
+    "SPACE": 0.279
+  },
+  "mood": "Entangled",
+  "name": "PRESERVED KNOT",
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.157,
-      "macro_movement": 0.079,
       "macro_coupling": 0.015,
+      "macro_movement": 0.079,
       "macro_space": 0.708
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.786,
-      "macro_movement": 0.114,
       "macro_coupling": 0.178,
+      "macro_movement": 0.114,
       "macro_space": 0.955
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORBITAL",
-    "target": "OUROBOROS",
-    "amount": 0.753
-  },
-  "dna": {
-    "brightness": 0.128,
-    "warmth": 0.801,
-    "movement": 0.097,
-    "density": 0.49,
-    "space": 0.918,
-    "aggression": 0.788
-  },
-  "macros": {
-    "CHARACTER": 0.913,
-    "MOVEMENT": 0.097,
-    "COUPLING": 0.876,
-    "SPACE": 0.279
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "preserved"
-  ]
+  ],
+  "version": "1.0"
 }

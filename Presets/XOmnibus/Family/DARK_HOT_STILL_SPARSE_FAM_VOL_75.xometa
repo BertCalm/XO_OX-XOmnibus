@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_STILL_SPARSE_FAM_VOL_75",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ORPHICA",
-    "OPAL"
-  ],
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.538,
-      "macro_movement": 0.064,
-      "macro_coupling": 0.285,
-      "macro_space": 0.637
-    },
-    "OPAL": {
-      "macro_character": 0.542,
-      "macro_movement": 0.052,
-      "macro_coupling": 0.279,
-      "macro_space": 0.661
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "MODULATION_FLOW",
-    "source": "OPAL",
-    "target": "ORPHICA",
-    "amount": 0.67
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Orphica",
+        "type": "MODULATION_FLOW",
+        "amount": 0.67
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.549,
     "brightness": 0.128,
-    "warmth": 0.915,
-    "movement": 0.058,
     "density": 0.047,
+    "movement": 0.058,
     "space": 0.643,
-    "aggression": 0.549
+    "warmth": 0.915
   },
+  "engines": [
+    "Orphica",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.54,
-    "MOVEMENT": 0.058,
     "COUPLING": 0.282,
+    "MOVEMENT": 0.058,
     "SPACE": 0.649
   },
+  "mood": "Family",
+  "name": "Ember Vast",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.542,
+      "macro_coupling": 0.279,
+      "macro_movement": 0.052,
+      "macro_space": 0.661
+    },
+    "Orphica": {
+      "macro_character": 0.538,
+      "macro_coupling": 0.285,
+      "macro_movement": 0.064,
+      "macro_space": 0.637
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "still",
     "sparse",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

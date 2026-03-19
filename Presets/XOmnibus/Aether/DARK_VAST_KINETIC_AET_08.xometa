@@ -1,45 +1,56 @@
 {
-  "name": "DARK VAST KINETIC AET 08",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OPAL",
-    "OMBRE"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.211,
-      "macro_movement": 0.934,
-      "macro_coupling": 0.786,
-      "macro_space": 0.939
-    },
-    "OMBRE": {
-      "macro_character": 0.287,
-      "macro_movement": 1.0,
-      "macro_coupling": 0.632,
-      "macro_space": 1.0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OPAL",
-    "target": "OMBRE",
-    "amount": 0.826
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ombre",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.826
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.371,
     "brightness": 0.043,
-    "warmth": 0.379,
-    "movement": 0.934,
     "density": 0.604,
+    "movement": 0.934,
     "space": 0.939,
-    "aggression": 0.371
+    "warmth": 0.379
   },
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.211,
-    "MOVEMENT": 0.934,
     "COUPLING": 0.786,
+    "MOVEMENT": 0.934,
     "SPACE": 0.939
   },
+  "mood": "Aether",
+  "name": "DARK VAST KINETIC AET 08",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.287,
+      "macro_coupling": 0.632,
+      "macro_movement": 1.0,
+      "macro_space": 1.0
+    },
+    "Opal": {
+      "macro_character": 0.211,
+      "macro_coupling": 0.786,
+      "macro_movement": 0.934,
+      "macro_space": 0.939
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "dark",
@@ -47,5 +58,6 @@
     "kinetic",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

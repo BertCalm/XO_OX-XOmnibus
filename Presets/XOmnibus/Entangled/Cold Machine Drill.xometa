@@ -1,33 +1,48 @@
 {
-  "name": "Cold Machine Drill",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Oblique",
+        "type": "PHASE_LOCK",
+        "amount": 0.62
+      }
+    ]
+  },
+  "description": "Oblique mechanics drilling cold percussion at near-maximum velocity.",
   "engines": [
-    "OBLIQUE",
-    "ONSET"
+    "Oblique",
+    "Onset"
   ],
-  "mood": "Entangled",
-  "strategy": "Fast Cold",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8,
-    "MOVEMENT": 0.97,
     "COUPLING": 0.68,
+    "MOVEMENT": 0.97,
     "SPACE": 0.4
   },
+  "mood": "Entangled",
+  "name": "Cold Machine Drill",
+  "parameters": {
+    "Oblique": {},
+    "Onset": {}
+  },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.82,
     "brightness": 0.6,
-    "warmth": 0.06,
-    "movement": 0.97,
     "density": 0.75,
+    "movement": 0.97,
     "space": 0.38,
-    "aggression": 0.82
+    "warmth": 0.06
   },
-  "parameters": {},
-  "coupling": {
-    "type": "PHASE_LOCK",
-    "source": "ONSET",
-    "target": "OBLIQUE",
-    "amount": 0.62
-  },
+  "strategy": "Fast Cold",
   "tags": [
     "entangled",
     "cold",
@@ -35,5 +50,13 @@
     "aggressive",
     "industrial"
   ],
-  "description": "Oblique mechanics drilling cold percussion at near-maximum velocity."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

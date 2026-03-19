@@ -1,50 +1,62 @@
 {
-  "name": "HOT_KINETIC_VAST_SPARSE_PRS_3",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Origami",
+        "type": "FILTER_MOD",
+        "amount": 0.839
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.606,
+    "brightness": 0.615,
+    "density": 0.092,
+    "movement": 0.875,
+    "space": 0.868,
+    "warmth": 0.889
+  },
   "engines": [
-    "OVERWORLD",
-    "ORIGAMI"
+    "Overworld",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.611,
+    "COUPLING": 0.893,
+    "MOVEMENT": 0.875,
+    "SPACE": 0.868
+  },
+  "mood": "Prism",
+  "name": "HOT_KINETIC_VAST_SPARSE_PRS_3",
   "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.611,
+    "Origami": {
+      "macro_character": 0.495,
+      "macro_coupling": 0.624,
       "macro_movement": 0.875,
-      "macro_coupling": 0.893,
       "macro_space": 0.868
     },
-    "ORIGAMI": {
-      "macro_character": 0.495,
+    "Overworld": {
+      "macro_character": 0.611,
+      "macro_coupling": 0.893,
       "macro_movement": 0.875,
-      "macro_coupling": 0.624,
       "macro_space": 0.868
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERWORLD",
-    "target": "ORIGAMI",
-    "amount": 0.839
-  },
-  "dna": {
-    "brightness": 0.615,
-    "warmth": 0.889,
-    "movement": 0.875,
-    "density": 0.092,
-    "space": 0.868,
-    "aggression": 0.606
-  },
-  "macros": {
-    "CHARACTER": 0.611,
-    "MOVEMENT": 0.875,
-    "COUPLING": 0.893,
-    "SPACE": 0.868
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "hot",
     "kinetic",
     "vast",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

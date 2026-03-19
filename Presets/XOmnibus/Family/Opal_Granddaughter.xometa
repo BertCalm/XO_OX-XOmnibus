@@ -1,13 +1,61 @@
 {
-  "schema_version": 1,
-  "name": "Granddaughter",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OPAL in its softest register. Small grains, long envelope, gentle scatter. The granular engine as lullaby — grains just big enough to feel, small enough to float.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.48,
+    "density": 0.45,
+    "movement": 0.32,
+    "space": 0.62,
+    "warmth": 0.68
+  },
   "engines": [
     "Opal"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OPAL in its softest register. Small grains, long envelope, gentle scatter. The granular engine as lullaby — grains just big enough to feel, small enough to float.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Granddaughter",
+  "parameters": {
+    "Opal": {
+      "opal_attack": 0.5,
+      "opal_decay": 0.8,
+      "opal_delayMix": 0.0,
+      "opal_filterCutoff": 2000.0,
+      "opal_filterEnvAmt": 0.0,
+      "opal_filterReso": 0.12,
+      "opal_grainDensity": 0.55,
+      "opal_grainPitch": 0.0,
+      "opal_grainPitchSpread": 0.04,
+      "opal_grainPosition": 0.5,
+      "opal_grainPositionSpread": 0.15,
+      "opal_grainScatter": 0.18,
+      "opal_grainShape": 0,
+      "opal_grainSize": 0.35,
+      "opal_level": 0.75,
+      "opal_lfoDepth": 0.03,
+      "opal_lfoDest": 0,
+      "opal_lfoRate": 0.06,
+      "opal_release": 2.5,
+      "opal_reverbMix": 0.38,
+      "opal_reverbSize": 0.7,
+      "opal_sustain": 0.75
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "gentle",
@@ -16,54 +64,6 @@
     "lullaby",
     "beginner"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Opal": {
-      "opal_grainSize": 0.35,
-      "opal_grainDensity": 0.55,
-      "opal_grainScatter": 0.18,
-      "opal_grainPitch": 0.0,
-      "opal_grainPitchSpread": 0.04,
-      "opal_grainPosition": 0.5,
-      "opal_grainPositionSpread": 0.15,
-      "opal_grainShape": 0,
-      "opal_filterCutoff": 2000.0,
-      "opal_filterReso": 0.12,
-      "opal_filterEnvAmt": 0.0,
-      "opal_attack": 0.5,
-      "opal_decay": 0.8,
-      "opal_sustain": 0.75,
-      "opal_release": 2.5,
-      "opal_lfoRate": 0.06,
-      "opal_lfoDepth": 0.03,
-      "opal_lfoDest": 0,
-      "opal_reverbMix": 0.38,
-      "opal_reverbSize": 0.7,
-      "opal_delayMix": 0.0,
-      "opal_level": 0.75
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.48,
-    "warmth": 0.68,
-    "movement": 0.32,
-    "density": 0.45,
-    "space": 0.62,
-    "aggression": 0.05
-  }
+  "version": "1.0.0"
 }

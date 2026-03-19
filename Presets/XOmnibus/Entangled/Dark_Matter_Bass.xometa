@@ -1,48 +1,60 @@
 {
-  "name": "Dark Matter Bass",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ombre",
+        "type": "LFO_SYNC",
+        "amount": 0.66
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.74,
+    "brightness": 0.06,
+    "density": 0.82,
+    "movement": 0.23,
+    "space": 0.19,
+    "warmth": 0.65
+  },
   "engines": [
-    "OMBRE",
-    "ONSET"
+    "Ombre",
+    "Onset"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.35,
+    "COUPLING": 0.88,
+    "MOVEMENT": 0.23,
+    "SPACE": 0.19
+  },
+  "mood": "Entangled",
+  "name": "Dark Matter Bass",
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.6,
-      "macro_movement": 0.64,
       "macro_coupling": 0.74,
+      "macro_movement": 0.64,
       "macro_space": 0.78
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.53,
-      "macro_movement": 0.32,
       "macro_coupling": 0.58,
+      "macro_movement": 0.32,
       "macro_space": 0.33
     }
   },
-  "coupling": {
-    "type": "LFO_SYNC",
-    "source": "ONSET",
-    "target": "OMBRE",
-    "amount": 0.66
-  },
-  "dna": {
-    "brightness": 0.06,
-    "warmth": 0.65,
-    "movement": 0.23,
-    "density": 0.82,
-    "space": 0.19,
-    "aggression": 0.74
-  },
-  "macros": {
-    "CHARACTER": 0.35,
-    "MOVEMENT": 0.23,
-    "COUPLING": 0.88,
-    "SPACE": 0.19
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-  ]
+  ],
+  "version": "1.0"
 }

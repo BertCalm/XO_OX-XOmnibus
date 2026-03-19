@@ -1,50 +1,62 @@
 {
-  "name": "Indigo Fold",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oracle",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.63
+      }
+    ]
+  },
+  "description": "Origami shifts Oracle's prophetic frequencies at each crease — the oracle speaks in folds.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.0,
+    "density": 0.16,
+    "movement": 0.56,
+    "space": 0.87,
+    "warmth": 0.07
+  },
   "engines": [
-    "ORACLE",
-    "ORIGAMI"
+    "Oracle",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.21,
+    "COUPLING": 0.63,
+    "MOVEMENT": 0.56,
+    "SPACE": 0.87
+  },
+  "mood": "Entangled",
+  "name": "Indigo Fold",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.21,
-      "macro_movement": 0.56,
       "macro_coupling": 0.63,
+      "macro_movement": 0.56,
       "macro_space": 0.87
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.18,
-      "macro_movement": 0.51,
       "macro_coupling": 0.68,
+      "macro_movement": 0.51,
       "macro_space": 0.9
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ORIGAMI",
-    "target": "ORACLE",
-    "amount": 0.63
-  },
-  "dna": {
-    "brightness": 0.0,
-    "warmth": 0.07,
-    "movement": 0.56,
-    "density": 0.16,
-    "space": 0.87,
-    "aggression": 0.0
-  },
-  "macros": {
-    "CHARACTER": 0.21,
-    "MOVEMENT": 0.56,
-    "COUPLING": 0.63,
-    "SPACE": 0.87
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "indigo",
     "fold"
   ],
-  "description": "Origami shifts Oracle's prophetic frequencies at each crease \u2014 the oracle speaks in folds."
+  "version": "1.0"
 }

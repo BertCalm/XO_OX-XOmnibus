@@ -1,43 +1,57 @@
 {
-  "schema_version": 1,
-  "name": "Ole Cross Rhythm",
-  "mood": "Flux",
-  "engines": ["OLE"],
-  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
-  "version": "1.0.0",
-  "description": "Polyrhythmic interplay between the three Afro-Latin voices. Rhythm A and B never fully align — the tension between them IS the groove. Dense, kinetic, perpetually in motion.",
-  "tags": ["polyrhythm", "afro-latin", "groove", "flux", "kinetic", "cross-rhythm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.6,
-    "movement": 0.8,
-    "density": 0.65,
-    "space": 0.5,
-    "aggression": 0.5
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Polyrhythmic interplay between the three Afro-Latin voices. Rhythm A and B never fully align — the tension between them IS the groove. Dense, kinetic, perpetually in motion.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.6,
+    "density": 0.65,
+    "movement": 0.8,
+    "space": 0.5,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Ole Cross Rhythm",
   "parameters": {
-    "OLE": {
+    "Ole": {
+      "macro_character": 0.6,
+      "macro_coupling": 0.0,
+      "macro_movement": 0.8,
+      "macro_space": 0.5,
+      "ole_attackTime": 0.03,
       "ole_drama": 0.55,
+      "ole_filterCutoff": 0.68,
+      "ole_phaseOffset": 0.33,
+      "ole_releaseTime": 0.8,
       "ole_rhythmA": 0.6,
       "ole_rhythmB": 0.55,
       "ole_voiceA": 0.7,
       "ole_voiceB": 0.65,
-      "ole_voiceC": 0.6,
-      "ole_phaseOffset": 0.33,
-      "ole_attackTime": 0.03,
-      "ole_releaseTime": 0.8,
-      "ole_filterCutoff": 0.68,
-      "macro_character": 0.6,
-      "macro_movement": 0.8,
-      "macro_coupling": 0.0,
-      "macro_space": 0.5
+      "ole_voiceC": 0.6
     }
   },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "polyrhythm",
+    "afro-latin",
+    "groove",
+    "flux",
+    "kinetic",
+    "cross-rhythm"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

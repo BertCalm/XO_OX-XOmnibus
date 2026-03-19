@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_STILL_SPARSE_FAM_VOL_74",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Osprey",
+        "type": "HARMONIC_MESH",
+        "amount": 0.663
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.511,
+    "brightness": 0.035,
+    "density": 0.056,
+    "movement": 0.061,
+    "space": 0.493,
+    "warmth": 0.928
+  },
   "engines": [
-    "OLE",
-    "OSPREY"
+    "Ole",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.471,
+    "COUPLING": 0.282,
+    "MOVEMENT": 0.057,
+    "SPACE": 0.49
+  },
+  "mood": "Family",
+  "name": "Cocoa Edge",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.473,
-      "macro_movement": 0.08,
       "macro_coupling": 0.3,
+      "macro_movement": 0.08,
       "macro_space": 0.515
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.468,
-      "macro_movement": 0.033,
       "macro_coupling": 0.265,
+      "macro_movement": 0.033,
       "macro_space": 0.465
     }
   },
-  "coupling": {
-    "type": "HARMONIC_MESH",
-    "source": "OLE",
-    "target": "OSPREY",
-    "amount": 0.663
-  },
-  "dna": {
-    "brightness": 0.035,
-    "warmth": 0.928,
-    "movement": 0.061,
-    "density": 0.056,
-    "space": 0.493,
-    "aggression": 0.511
-  },
-  "macros": {
-    "CHARACTER": 0.471,
-    "MOVEMENT": 0.057,
-    "COUPLING": 0.282,
-    "SPACE": 0.49
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "still",
     "sparse",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Tail-Loop Assault",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "OUROBOROS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.67,
+        "engineA": "Outwit",
+        "engineB": "Ouroboros",
+        "type": "ENVELOPE_LINK"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OUROBOROS's recursive self-feeding character (strange-attractor topology). Coupling: Envelope Link.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "outwit",
-    "ouroboros",
-    "chaotic",
-    "generative"
+  "dna": {
+    "aggression": 0.79,
+    "brightness": 0.72,
+    "density": 0.8,
+    "movement": 0.02,
+    "space": 0.62,
+    "warmth": 0.78
+  },
+  "engines": [
+    "Outwit",
+    "Ouroboros"
   ],
   "macroLabels": [
     "ARMS",
@@ -25,78 +32,67 @@
   ],
   "macros": {
     "CHARACTER": 0.37,
-    "MOVEMENT": 0.72,
     "COUPLING": 0.66,
+    "MOVEMENT": 0.72,
     "SPACE": 0.61
   },
-  "couplingIntensity": "Moderate",
-  "sonic_dna": {
-    "brightness": 0.72,
-    "warmth": 0.78,
-    "movement": 0.02,
-    "density": 0.8,
-    "space": 0.62,
-    "aggression": 0.79
-  },
-  "dna": {
-    "brightness": 0.72,
-    "warmth": 0.78,
-    "movement": 0.02,
-    "density": 0.8,
-    "space": 0.62,
-    "aggression": 0.79
-  },
+  "mood": "Entangled",
+  "name": "Tail-Loop Assault",
   "parameters": {
-    "OUTWIT": {
-      "owit_rule": 126,
-      "owit_arms": 8,
-      "owit_cellSize": 0.41,
-      "owit_density": 0.56,
-      "owit_evolveRate": 0.51,
-      "owit_mutateProb": 0.07,
-      "owit_pitchSpread": 0.32,
-      "owit_filterCutoff": 0.36,
-      "owit_filterReso": 0.34,
+    "Ouroboros": {
+      "ouro_ampAttack": 0.4,
+      "ouro_ampRelease": 0.53,
+      "ouro_ampSustain": 0.84,
+      "ouro_character": 0.3,
+      "ouro_coupling": 0.53,
+      "ouro_couplingLevel": 0.7,
+      "ouro_filterCutoff": 0.31,
+      "ouro_filterReso": 0.3,
+      "ouro_movement": 0.44,
+      "ouro_outputLevel": 0.82,
+      "ouro_reverbMix": 0.4,
+      "ouro_space": 0.4
+    },
+    "Outwit": {
       "owit_ampAttack": 0.06,
       "owit_ampRelease": 0.5,
       "owit_armStagger": 0.16,
+      "owit_arms": 8,
       "owit_borderMode": 2,
-      "owit_inkCloudMix": 0.29,
+      "owit_cellSize": 0.41,
       "owit_chroma1": 0.55,
       "owit_chroma2": 0.86,
-      "owit_polyDepth": 0.37,
-      "owit_couplingLevel": 0.6,
       "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.6,
+      "owit_density": 0.56,
+      "owit_evolveRate": 0.51,
+      "owit_filterCutoff": 0.36,
+      "owit_filterReso": 0.34,
+      "owit_inkCloudMix": 0.29,
+      "owit_mutateProb": 0.07,
       "owit_outputLevel": 0.74,
-      "owit_outputPan": 0.24
-    },
-    "OUROBOROS": {
-      "ouro_character": 0.3,
-      "ouro_movement": 0.44,
-      "ouro_coupling": 0.53,
-      "ouro_space": 0.4,
-      "ouro_filterCutoff": 0.31,
-      "ouro_filterReso": 0.3,
-      "ouro_ampAttack": 0.4,
-      "ouro_ampSustain": 0.84,
-      "ouro_ampRelease": 0.53,
-      "ouro_reverbMix": 0.4,
-      "ouro_couplingLevel": 0.7,
-      "ouro_outputLevel": 0.82
+      "owit_outputPan": 0.24,
+      "owit_pitchSpread": 0.32,
+      "owit_polyDepth": 0.37,
+      "owit_rule": 126
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OUTWIT",
-    "target": "OUROBOROS",
-    "amount": 0.67,
-    "pairs": [
-      {
-        "engineA": "OUTWIT",
-        "engineB": "OUROBOROS",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.67
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.79,
+    "brightness": 0.72,
+    "density": 0.8,
+    "movement": 0.02,
+    "space": 0.62,
+    "warmth": 0.78
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "ouroboros",
+    "chaotic",
+    "generative"
+  ],
+  "version": "1.0.0"
 }

@@ -1,14 +1,86 @@
 {
-  "schema_version": 1,
-  "name": "DARK_COLD_DENSE_INTIMATE_ENT_3",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7388,
+        "source": "Optic",
+        "target": "OddOscar",
+        "type": "RESONANCE_SHARE"
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "description": "Dark Cold Dense Intimate character entanglement — OPTIC × ODDOSCAR via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.3134,
+    "brightness": 0.0836,
+    "density": 0.9242,
+    "movement": 0.3902,
+    "space": 0.1079,
+    "warmth": 0.1034
+  },
   "engines": [
-    "OPTIC",
-    "ODDOSCAR"
+    "Optic",
+    "OddOscar"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dark Cold Dense Intimate character entanglement \u2014 OPTIC \u00d7 ODDOSCAR via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "LENS",
+    "PRISM",
+    "REFRACT",
+    "RAY"
+  ],
+  "macros": {
+    "CHARACTER": 0.0935,
+    "COUPLING": 0.7388,
+    "MOVEMENT": 0.3902,
+    "SPACE": 0.1079
+  },
+  "mood": "Entangled",
+  "name": "DARK_COLD_DENSE_INTIMATE_ENT_3",
+  "parameters": {
+    "OddOscar": {
+      "amp_attack": 0.2971,
+      "amp_release": 0.1775,
+      "coupling_level": 0.6398,
+      "density": 0.9282,
+      "drive": 0.2921,
+      "filter_cutoff": 0.2628,
+      "filter_resonance": 0.2907,
+      "macro_character": 0.3307,
+      "macro_coupling": 0.7477,
+      "macro_movement": 0.3767,
+      "macro_space": 0.1006,
+      "output_level": 0.9303,
+      "reverb_mix": 0.1931,
+      "reverb_size": 0.2324
+    },
+    "Optic": {
+      "amp_attack": 0.2809,
+      "amp_release": 0.2035,
+      "coupling_level": 0.6701,
+      "density": 0.9365,
+      "drive": 0.2952,
+      "filter_cutoff": 0.2938,
+      "filter_resonance": 0.2949,
+      "macro_character": 0.3537,
+      "macro_coupling": 0.6826,
+      "macro_movement": 0.4212,
+      "macro_space": 0.0739,
+      "output_level": 0.9396,
+      "reverb_mix": 0.2408,
+      "reverb_size": 0.2811
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.3134,
+    "brightness": 0.0836,
+    "density": 0.9242,
+    "movement": 0.3902,
+    "space": 0.1079,
+    "warmth": 0.1034
+  },
   "tags": [
     "entangled",
     "dark",
@@ -17,81 +89,5 @@
     "intimate",
     "resonant"
   ],
-  "macroLabels": [
-    "LENS",
-    "PRISM",
-    "REFRACT",
-    "RAY"
-  ],
-  "couplingIntensity": "Medium",
-  "dna": {
-    "brightness": 0.0836,
-    "warmth": 0.1034,
-    "movement": 0.3902,
-    "density": 0.9242,
-    "space": 0.1079,
-    "aggression": 0.3134
-  },
-  "sonic_dna": {
-    "brightness": 0.0836,
-    "warmth": 0.1034,
-    "movement": 0.3902,
-    "density": 0.9242,
-    "space": 0.1079,
-    "aggression": 0.3134
-  },
-  "parameters": {
-    "OPTIC": {
-      "macro_character": 0.3537,
-      "macro_movement": 0.4212,
-      "macro_coupling": 0.6826,
-      "macro_space": 0.0739,
-      "filter_cutoff": 0.2938,
-      "filter_resonance": 0.2949,
-      "amp_attack": 0.2809,
-      "amp_release": 0.2035,
-      "reverb_mix": 0.2408,
-      "reverb_size": 0.2811,
-      "drive": 0.2952,
-      "density": 0.9365,
-      "output_level": 0.9396,
-      "coupling_level": 0.6701
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.3307,
-      "macro_movement": 0.3767,
-      "macro_coupling": 0.7477,
-      "macro_space": 0.1006,
-      "filter_cutoff": 0.2628,
-      "filter_resonance": 0.2907,
-      "amp_attack": 0.2971,
-      "amp_release": 0.1775,
-      "reverb_mix": 0.1931,
-      "reverb_size": 0.2324,
-      "drive": 0.2921,
-      "density": 0.9282,
-      "output_level": 0.9303,
-      "coupling_level": 0.6398
-    }
-  },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OPTIC",
-    "target": "ODDOSCAR",
-    "amount": 0.7388,
-    "pairs": [
-      {
-        "source": "OPTIC",
-        "target": "ODDOSCAR",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.7388
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.0935,
-    "MOVEMENT": 0.3902,
-    "COUPLING": 0.7388,
-    "SPACE": 0.1079
-  }
+  "version": "1.0.0"
 }

@@ -1,14 +1,86 @@
 {
-  "schema_version": 1,
-  "name": "HOT_DENSE_VAST_VIOLENT_ENT_2",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7002,
+        "source": "Odyssey",
+        "target": "Obese",
+        "type": "VELOCITY_COUPLE"
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "description": "Hot Dense Vast Violent character entanglement — ODYSSEY × OBESE via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.985,
+    "brightness": 0.5533,
+    "density": 0.9631,
+    "movement": 0.3776,
+    "space": 0.9121,
+    "warmth": 0.9337
+  },
   "engines": [
-    "ODYSSEY",
-    "OBESE"
+    "Odyssey",
+    "Obese"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Hot Dense Vast Violent character entanglement \u2014 ODYSSEY \u00d7 OBESE via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "WAVE",
+    "WANDER",
+    "GLIDE",
+    "HALL"
+  ],
+  "macros": {
+    "CHARACTER": 0.7435,
+    "COUPLING": 0.7002,
+    "MOVEMENT": 0.3776,
+    "SPACE": 0.9121
+  },
+  "mood": "Entangled",
+  "name": "HOT_DENSE_VAST_VIOLENT_ENT_2",
+  "parameters": {
+    "Obese": {
+      "amp_attack": 0.3227,
+      "amp_release": 0.6546,
+      "coupling_level": 0.927,
+      "density": 0.9261,
+      "drive": 0.8349,
+      "filter_cutoff": 0.5848,
+      "filter_resonance": 0.603,
+      "macro_character": 0.8254,
+      "macro_coupling": 0.93,
+      "macro_movement": 0.4153,
+      "macro_space": 0.9073,
+      "output_level": 0.9303,
+      "reverb_mix": 0.6399,
+      "reverb_size": 0.7132
+    },
+    "Odyssey": {
+      "amp_attack": 0.3092,
+      "amp_release": 0.6444,
+      "coupling_level": 0.9829,
+      "density": 0.9937,
+      "drive": 0.8525,
+      "filter_cutoff": 0.5533,
+      "filter_resonance": 0.6286,
+      "macro_character": 0.82,
+      "macro_coupling": 0.9169,
+      "macro_movement": 0.3515,
+      "macro_space": 0.9328,
+      "output_level": 0.9522,
+      "reverb_mix": 0.6568,
+      "reverb_size": 0.7537
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.985,
+    "brightness": 0.5533,
+    "density": 0.9631,
+    "movement": 0.3776,
+    "space": 0.9121,
+    "warmth": 0.9337
+  },
   "tags": [
     "entangled",
     "warm",
@@ -17,81 +89,5 @@
     "violent",
     "resonant"
   ],
-  "macroLabels": [
-    "WAVE",
-    "WANDER",
-    "GLIDE",
-    "HALL"
-  ],
-  "couplingIntensity": "Medium",
-  "dna": {
-    "brightness": 0.5533,
-    "warmth": 0.9337,
-    "movement": 0.3776,
-    "density": 0.9631,
-    "space": 0.9121,
-    "aggression": 0.985
-  },
-  "sonic_dna": {
-    "brightness": 0.5533,
-    "warmth": 0.9337,
-    "movement": 0.3776,
-    "density": 0.9631,
-    "space": 0.9121,
-    "aggression": 0.985
-  },
-  "parameters": {
-    "ODYSSEY": {
-      "macro_character": 0.82,
-      "macro_movement": 0.3515,
-      "macro_coupling": 0.9169,
-      "macro_space": 0.9328,
-      "filter_cutoff": 0.5533,
-      "filter_resonance": 0.6286,
-      "amp_attack": 0.3092,
-      "amp_release": 0.6444,
-      "reverb_mix": 0.6568,
-      "reverb_size": 0.7537,
-      "drive": 0.8525,
-      "density": 0.9937,
-      "output_level": 0.9522,
-      "coupling_level": 0.9829
-    },
-    "OBESE": {
-      "macro_character": 0.8254,
-      "macro_movement": 0.4153,
-      "macro_coupling": 0.93,
-      "macro_space": 0.9073,
-      "filter_cutoff": 0.5848,
-      "filter_resonance": 0.603,
-      "amp_attack": 0.3227,
-      "amp_release": 0.6546,
-      "reverb_mix": 0.6399,
-      "reverb_size": 0.7132,
-      "drive": 0.8349,
-      "density": 0.9261,
-      "output_level": 0.9303,
-      "coupling_level": 0.927
-    }
-  },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ODYSSEY",
-    "target": "OBESE",
-    "amount": 0.7002,
-    "pairs": [
-      {
-        "source": "ODYSSEY",
-        "target": "OBESE",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.7002
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.7435,
-    "MOVEMENT": 0.3776,
-    "COUPLING": 0.7002,
-    "SPACE": 0.9121
-  }
+  "version": "1.0.0"
 }

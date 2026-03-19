@@ -1,14 +1,40 @@
 {
-  "schema_version": 1,
-  "name": "Orbit and Obligation",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "ORBITAL elliptical pulse + OBBLIGATO dual wind — the planet and its breath. Celestial orbit carried by wind. BOND across the solar system.",
+  "dna": {
+    "aggression": 0.18,
+    "brightness": 0.62,
+    "density": 0.52,
+    "movement": 0.62,
+    "space": 0.82,
+    "warmth": 0.45
+  },
   "engines": [
-    "ORBITAL",
-    "OBBLIGATO"
+    "Orbital",
+    "Obbligato"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ORBITAL elliptical pulse + OBBLIGATO dual wind \u2014 the planet and its breath. Celestial orbit carried by wind. BOND across the solar system.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "ORBIT",
+    "RESONANCE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Orbit and Obligation",
+  "parameters": {
+    "Orbital": {},
+    "Obbligato": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "reunion",
@@ -19,29 +45,6 @@
     "celestial",
     "batch3-reunion"
   ],
-  "macroLabels": [
-    "ORBIT",
-    "RESONANCE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.62,
-    "warmth": 0.45,
-    "movement": 0.62,
-    "density": 0.52,
-    "space": 0.82,
-    "aggression": 0.18
-  }
+  "version": "1.0.0"
 }

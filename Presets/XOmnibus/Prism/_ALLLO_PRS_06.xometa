@@ -1,49 +1,61 @@
 {
-  "name": "ALLLO PRS 06",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Osteria",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.171
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.56,
+    "brightness": 0.036,
+    "density": 0.051,
+    "movement": 0.092,
+    "space": 0.099,
+    "warmth": 0.039
+  },
   "engines": [
-    "OHM",
-    "OSTERIA"
+    "Ohm",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.037,
+    "COUPLING": 0.33,
+    "MOVEMENT": 0.071,
+    "SPACE": 0.099
+  },
+  "mood": "Prism",
+  "name": "ALLLO PRS 06",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.037,
-      "macro_movement": 0.071,
       "macro_coupling": 0.33,
+      "macro_movement": 0.071,
       "macro_space": 0.099
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.037,
-      "macro_movement": 0.071,
       "macro_coupling": 0.33,
+      "macro_movement": 0.071,
       "macro_space": 0.099
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OHM",
-    "target": "OSTERIA",
-    "amount": 0.171
-  },
-  "dna": {
-    "brightness": 0.036,
-    "warmth": 0.039,
-    "movement": 0.092,
-    "density": 0.051,
-    "space": 0.099,
-    "aggression": 0.56
-  },
-  "macros": {
-    "CHARACTER": 0.037,
-    "MOVEMENT": 0.071,
-    "COUPLING": 0.33,
-    "SPACE": 0.099
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

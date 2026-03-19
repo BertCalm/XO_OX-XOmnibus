@@ -1,49 +1,61 @@
 {
-  "name": "ALLLO AET 02",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oblique",
+        "type": "PITCH_SYNC",
+        "amount": 0.154
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.076,
+    "brightness": 0.071,
+    "density": 0.027,
+    "movement": 0.035,
+    "space": 0.098,
+    "warmth": 0.588
+  },
   "engines": [
-    "ODDFELIX",
-    "OBLIQUE"
+    "OddfeliX",
+    "Oblique"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.329,
+    "COUPLING": 0.087,
+    "MOVEMENT": 0.031,
+    "SPACE": 0.098
+  },
+  "mood": "Aether",
+  "name": "ALLLO AET 02",
   "parameters": {
-    "ODDFELIX": {
+    "Oblique": {
       "macro_character": 0.329,
-      "macro_movement": 0.031,
       "macro_coupling": 0.087,
+      "macro_movement": 0.031,
       "macro_space": 0.098
     },
-    "OBLIQUE": {
+    "OddfeliX": {
       "macro_character": 0.329,
-      "macro_movement": 0.031,
       "macro_coupling": 0.087,
+      "macro_movement": 0.031,
       "macro_space": 0.098
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ODDFELIX",
-    "target": "OBLIQUE",
-    "amount": 0.154
-  },
-  "dna": {
-    "brightness": 0.071,
-    "warmth": 0.588,
-    "movement": 0.035,
-    "density": 0.027,
-    "space": 0.098,
-    "aggression": 0.076
-  },
-  "macros": {
-    "CHARACTER": 0.329,
-    "MOVEMENT": 0.031,
-    "COUPLING": 0.087,
-    "SPACE": 0.098
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

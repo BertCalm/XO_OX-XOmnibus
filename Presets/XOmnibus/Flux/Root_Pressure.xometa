@@ -33,7 +33,9 @@
     "space": 0.06,
     "aggression": 0.9
   },
-  "parameters": {},
+  "parameters": {
+    "Overbite": {}
+  },
   "tags": [
     "flux",
     "dense-flux",
@@ -41,5 +43,5 @@
     "root",
     "pressure"
   ],
-  "description": "Overbite root frequencies under maximum pressure \u2014 tectonic bass density."
+  "description": "Overbite root frequencies under maximum pressure — tectonic bass density."
 }

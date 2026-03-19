@@ -1,31 +1,46 @@
 {
-  "name": "Sage Shimmer",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Opal",
+        "type": "SYMPATHETIC_RESONANCE",
+        "amount": 0.65
+      }
+    ]
+  },
+  "description": "Opal shimmer and sage warmth dissolve into each other — granular community at rest",
   "engines": [
-    "OPAL",
-    "OHM"
+    "Opal",
+    "Ohm"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.45,
-    "MOVEMENT": 0.6,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.6,
     "SPACE": 0.7
   },
-  "sonic_dna": {
-    "brightness": 0.5,
-    "warmth": 0.63,
-    "movement": 0.6,
-    "density": 0.5,
-    "space": 0.7,
-    "aggression": 0.2
+  "mood": "Entangled",
+  "name": "Sage Shimmer",
+  "parameters": {
+    "Opal": {},
+    "Ohm": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "SYMPATHETIC_RESONANCE",
-    "source": "OHM",
-    "target": "OPAL",
-    "amount": 0.65
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2,
+    "brightness": 0.5,
+    "density": 0.5,
+    "movement": 0.6,
+    "space": 0.7,
+    "warmth": 0.63
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "ohm",
     "granular"
   ],
-  "description": "Opal shimmer and sage warmth dissolve into each other \u2014 granular community at rest"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

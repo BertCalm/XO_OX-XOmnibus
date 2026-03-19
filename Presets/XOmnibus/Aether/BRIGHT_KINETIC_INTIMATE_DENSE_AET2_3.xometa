@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_KINETIC_INTIMATE_DENSE_AET2_3",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OPAL",
-    "OBSCURA"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.9746,
-      "macro_movement": 0.99,
-      "macro_coupling": 0.9454,
-      "macro_space": 0.0204
-    },
-    "OBSCURA": {
-      "macro_character": 0.99,
-      "macro_movement": 0.99,
-      "macro_coupling": 0.9566,
-      "macro_space": 0.0495
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OPAL",
-    "target": "OBSCURA",
-    "amount": 0.501
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Obscura",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.501
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.4604,
     "brightness": 0.9812,
+    "density": 0.9283,
     "movement": 0.9718,
     "space": 0.0333,
-    "density": 0.9283,
-    "warmth": 0.3855,
-    "aggression": 0.4604
+    "warmth": 0.3855
   },
+  "engines": [
+    "Opal",
+    "Obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.9823,
-    "MOVEMENT": 0.99,
     "COUPLING": 0.501,
+    "MOVEMENT": 0.99,
     "SPACE": 0.0333
   },
+  "mood": "Aether",
+  "name": "Crystal Stream",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.99,
+      "macro_coupling": 0.9566,
+      "macro_movement": 0.99,
+      "macro_space": 0.0495
+    },
+    "Opal": {
+      "macro_character": 0.9746,
+      "macro_coupling": 0.9454,
+      "macro_movement": 0.99,
+      "macro_space": 0.0204
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +60,6 @@
     "intimate",
     "dense",
     "ethereal"
-  ]
+  ],
+  "version": "1.0"
 }

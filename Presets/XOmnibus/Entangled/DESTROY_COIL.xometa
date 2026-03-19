@@ -1,49 +1,61 @@
 {
-  "name": "DESTROY COIL",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORGANON",
-    "OCELOT"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.444,
-      "macro_movement": 0.108,
-      "macro_coupling": 0.307,
-      "macro_space": 0.509
-    },
-    "OCELOT": {
-      "macro_character": 0.515,
-      "macro_movement": 0.564,
-      "macro_coupling": 0.56,
-      "macro_space": 0.457
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORGANON",
-    "target": "OCELOT",
-    "amount": 0.493
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Ocelot",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.493
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.91,
     "brightness": 0.135,
-    "warmth": 0.887,
-    "movement": 0.642,
     "density": 0.42,
+    "movement": 0.642,
     "space": 0.985,
-    "aggression": 0.91
+    "warmth": 0.887
   },
+  "engines": [
+    "Organon",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.718,
-    "MOVEMENT": 0.571,
     "COUPLING": 0.5,
+    "MOVEMENT": 0.571,
     "SPACE": 0.376
   },
+  "mood": "Entangled",
+  "name": "DESTROY COIL",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.515,
+      "macro_coupling": 0.56,
+      "macro_movement": 0.564,
+      "macro_space": 0.457
+    },
+    "Organon": {
+      "macro_character": 0.444,
+      "macro_coupling": 0.307,
+      "macro_movement": 0.108,
+      "macro_space": 0.509
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aggressive",
     "obliterating",
     "fury",
     "brutal"
-  ]
+  ],
+  "version": "1.0"
 }

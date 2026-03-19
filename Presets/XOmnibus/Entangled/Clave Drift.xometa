@@ -1,31 +1,46 @@
 {
-  "name": "Clave Drift",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Ole",
+        "type": "RHYTHMIC_LOCK",
+        "amount": 0.7
+      }
+    ]
+  },
+  "description": "Afro-Latin clave rhythm modulates FM drift — percussion reshaping the odyssey path",
   "engines": [
-    "ODYSSEY",
-    "OLE"
+    "Odyssey",
+    "Ole"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.75,
     "COUPLING": 0.7,
+    "MOVEMENT": 0.75,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.61,
-    "warmth": 0.58,
-    "movement": 0.73,
-    "density": 0.57,
-    "space": 0.56,
-    "aggression": 0.41
+  "mood": "Entangled",
+  "name": "Clave Drift",
+  "parameters": {
+    "Odyssey": {},
+    "Ole": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "RHYTHMIC_LOCK",
-    "source": "ODYSSEY",
-    "target": "OLE",
-    "amount": 0.7
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.41,
+    "brightness": 0.61,
+    "density": 0.57,
+    "movement": 0.73,
+    "space": 0.56,
+    "warmth": 0.58
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "ole",
     "wavetable"
   ],
-  "description": "Afro-Latin clave rhythm modulates FM drift \u2014 percussion reshaping the odyssey path"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

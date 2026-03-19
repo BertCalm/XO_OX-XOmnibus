@@ -1,44 +1,62 @@
 {
-  "schema_version": 1,
-  "name": "Gentle Fold",
-  "mood": "Family",
-  "engines": ["Origami"],
-  "author": "Guru Bin — Family Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "A single gentle fold in warm paper. foldAmt at 0.08 — the waveform barely bends, no harmonic spray, no aggression. One layer, near-perfect symmetry at 0.98. The filter sits warm at 0.45 cutoff, soft and unhurried. Long attack (0.5s) and slow release (2.8s) let the note breathe like a held sheet slowly lowered to a table. Origami in repose.",
-  "tags": ["family", "pad", "gentle", "warm", "wavefold", "minimal", "soft", "beginner"],
-  "macroLabels": ["CHARACTER", "FOLD", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-16",
+  "description": "A single gentle fold in warm paper. foldAmt at 0.08 — the waveform barely bends, no harmonic spray, no aggression. One layer, near-perfect symmetry at 0.98. The filter sits warm at 0.45 cutoff, soft and unhurried. Long attack (0.5s) and slow release (2.8s) let the note breathe like a held sheet slowly lowered to a table. Origami in repose.",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.32,
+    "density": 0.3,
+    "movement": 0.14,
+    "space": 0.5,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Origami"
+  ],
   "legacy": {
-    "sourceInstrument": null,
     "sourceCategory": null,
+    "sourceInstrument": null,
     "sourcePresetName": null
   },
+  "macroLabels": [
+    "CHARACTER",
+    "FOLD",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Gentle Fold",
   "parameters": {
     "Origami": {
-      "origami_foldPoint": 0.70,
-      "origami_foldAmt": 0.08,
-      "origami_layers": 1,
-      "origami_symmetry": 0.98,
-      "origami_filterCutoff": 0.45,
-      "origami_filterReso": 0.12,
-      "origami_oscPitch": 0.0,
       "origami_ampAttack": 0.5,
       "origami_ampDecay": 0.6,
+      "origami_ampRelease": 2.8,
       "origami_ampSustain": 0.75,
-      "origami_ampRelease": 2.8
+      "origami_filterCutoff": 0.45,
+      "origami_filterReso": 0.12,
+      "origami_foldAmt": 0.08,
+      "origami_foldPoint": 0.7,
+      "origami_layers": 1,
+      "origami_oscPitch": 0.0,
+      "origami_symmetry": 0.98
     }
   },
-  "coupling": { "pairs": [] },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.32,
-    "warmth": 0.70,
-    "movement": 0.14,
-    "density": 0.30,
-    "space": 0.50,
-    "aggression": 0.06
-  }
+  "tags": [
+    "family",
+    "pad",
+    "gentle",
+    "warm",
+    "wavefold",
+    "minimal",
+    "soft",
+    "beginner"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

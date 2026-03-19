@@ -1,48 +1,60 @@
 {
-  "name": "HOLLOW CURRENT 8",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OVERLAP",
-    "OUROBOROS"
-  ],
-  "parameters": {
-    "OVERLAP": {
-      "macro_character": 0.2483,
-      "macro_movement": 0.8653,
-      "macro_coupling": 0.1597,
-      "macro_space": 0.3274
-    },
-    "OUROBOROS": {
-      "macro_character": 0.5777,
-      "macro_movement": 0.3127,
-      "macro_coupling": 0.7631,
-      "macro_space": 0.4983
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OVERLAP",
-    "target": "OUROBOROS",
-    "amount": 0.6088
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Ouroboros",
+        "type": "FILTER_MOD",
+        "amount": 0.6088
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.2902,
     "brightness": 0.4665,
-    "warmth": 0.2675,
-    "movement": 0.2479,
     "density": 0.0519,
+    "movement": 0.2479,
     "space": 0.1,
-    "aggression": 0.2902
+    "warmth": 0.2675
   },
+  "engines": [
+    "Overlap",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.4988,
-    "MOVEMENT": 0.3085,
     "COUPLING": 0.0232,
+    "MOVEMENT": 0.3085,
     "SPACE": 0.9452
   },
+  "mood": "Flux",
+  "name": "HOLLOW CURRENT 8",
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.5777,
+      "macro_coupling": 0.7631,
+      "macro_movement": 0.3127,
+      "macro_space": 0.4983
+    },
+    "Overlap": {
+      "macro_character": 0.2483,
+      "macro_coupling": 0.1597,
+      "macro_movement": 0.8653,
+      "macro_space": 0.3274
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "sparse",
     "minimal"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "HOT_STILL_DENSE_VAST_VIOLENT_FND_4",
-  "mood": "Foundation",
-  "engines": [
-    "ORIGAMI",
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Onset",
+        "type": "FILTER_MOD",
+        "amount": 0.709
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: HOT_STILL_DENSE_VAST_VIOLENT. Variant 4.",
+  "dna": {
+    "aggression": 0.936,
+    "brightness": 0.445,
+    "density": 0.961,
+    "movement": 0.089,
+    "space": 0.894,
+    "warmth": 0.961
+  },
+  "engines": [
+    "Origami",
+    "Onset"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.485,
+    "COUPLING": 0.967,
+    "MOVEMENT": 0.006,
+    "SPACE": 0.881
+  },
+  "mood": "Foundation",
+  "name": "Thread Packed",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.563,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.012,
+      "macro_space": 0.924
+    },
+    "Origami": {
+      "macro_character": 0.407,
+      "macro_coupling": 0.933,
+      "macro_movement": 0.0,
+      "macro_space": 0.839
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "hot",
     "extreme",
@@ -19,53 +70,6 @@
     "foundation",
     "dense"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.407,
-      "macro_movement": 0.0,
-      "macro_coupling": 0.933,
-      "macro_space": 0.839
-    },
-    "ONSET": {
-      "macro_character": 0.563,
-      "macro_movement": 0.012,
-      "macro_coupling": 1.0,
-      "macro_space": 0.924
-    }
-  },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ORIGAMI",
-    "target": "ONSET",
-    "amount": 0.709
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.445,
-    "warmth": 0.961,
-    "movement": 0.089,
-    "density": 0.961,
-    "space": 0.894,
-    "aggression": 0.936
-  },
-  "macros": {
-    "CHARACTER": 0.485,
-    "MOVEMENT": 0.006,
-    "COUPLING": 0.967,
-    "SPACE": 0.881
-  }
+  "version": "1.0.0"
 }

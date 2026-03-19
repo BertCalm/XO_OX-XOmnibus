@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT WARM DENSE BALANCED AET SPC 2",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oracle",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.747
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.085,
+    "brightness": 0.924,
+    "density": 0.873,
+    "movement": 0.326,
+    "space": 0.516,
+    "warmth": 0.9
+  },
   "engines": [
-    "OPAL",
-    "ORACLE"
+    "Opal",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.912,
+    "COUPLING": 0.603,
+    "MOVEMENT": 0.326,
+    "SPACE": 0.516
+  },
+  "mood": "Aether",
+  "name": "BRIGHT WARM DENSE BALANCED ...",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.912,
-      "macro_movement": 0.326,
       "macro_coupling": 0.603,
+      "macro_movement": 0.326,
       "macro_space": 0.516
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.936,
-      "macro_movement": 0.348,
       "macro_coupling": 0.577,
+      "macro_movement": 0.348,
       "macro_space": 0.5
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OPAL",
-    "target": "ORACLE",
-    "amount": 0.747
-  },
-  "dna": {
-    "brightness": 0.924,
-    "warmth": 0.9,
-    "movement": 0.326,
-    "density": 0.873,
-    "space": 0.516,
-    "aggression": 0.085
-  },
-  "macros": {
-    "CHARACTER": 0.912,
-    "MOVEMENT": 0.326,
-    "COUPLING": 0.603,
-    "SPACE": 0.516
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -49,5 +60,6 @@
     "bright",
     "warm",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,49 +1,61 @@
 {
-  "name": "LAVA SPECTRUM",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Octopus",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.382
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.878,
+    "brightness": 0.168,
+    "density": 0.116,
+    "movement": 0.505,
+    "space": 0.929,
+    "warmth": 0.905
+  },
   "engines": [
-    "OBSIDIAN",
-    "OCTOPUS"
+    "Obsidian",
+    "Octopus"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.076,
+    "COUPLING": 0.267,
+    "MOVEMENT": 0.229,
+    "SPACE": 0.368
+  },
+  "mood": "Prism",
+  "name": "LAVA SPECTRUM",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.154,
-      "macro_movement": 0.814,
       "macro_coupling": 0.337,
+      "macro_movement": 0.814,
       "macro_space": 0.704
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 1.0,
-      "macro_movement": 0.25,
       "macro_coupling": 0.314,
+      "macro_movement": 0.25,
       "macro_space": 0.946
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OBSIDIAN",
-    "target": "OCTOPUS",
-    "amount": 0.382
-  },
-  "dna": {
-    "brightness": 0.168,
-    "warmth": 0.905,
-    "movement": 0.505,
-    "density": 0.116,
-    "space": 0.929,
-    "aggression": 0.878
-  },
-  "macros": {
-    "CHARACTER": 0.076,
-    "MOVEMENT": 0.229,
-    "COUPLING": 0.267,
-    "SPACE": 0.368
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-  ]
+  ],
+  "version": "1.0"
 }

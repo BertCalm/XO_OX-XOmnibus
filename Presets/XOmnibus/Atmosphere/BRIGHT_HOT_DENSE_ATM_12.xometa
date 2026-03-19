@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT HOT DENSE ATM 12",
-  "version": "1.0",
-  "mood": "Atmosphere",
-  "engines": [
-    "OVERDUB",
-    "OCTOPUS"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.905,
-      "macro_movement": 0.676,
-      "macro_coupling": 0.55,
-      "macro_space": 0.661
-    },
-    "OCTOPUS": {
-      "macro_character": 0.755,
-      "macro_movement": 0.612,
-      "macro_coupling": 0.653,
-      "macro_space": 0.685
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OVERDUB",
-    "target": "OCTOPUS",
-    "amount": 0.862
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Octopus",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.862
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.546,
     "brightness": 0.891,
-    "warmth": 0.918,
-    "movement": 0.676,
     "density": 0.941,
+    "movement": 0.676,
     "space": 0.661,
-    "aggression": 0.546
+    "warmth": 0.918
   },
+  "engines": [
+    "Overdub",
+    "Octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.905,
-    "MOVEMENT": 0.676,
     "COUPLING": 0.55,
+    "MOVEMENT": 0.676,
     "SPACE": 0.661
   },
+  "mood": "Atmosphere",
+  "name": "BRIGHT HOT DENSE ATM 12",
+  "parameters": {
+    "Octopus": {
+      "macro_character": 0.755,
+      "macro_coupling": 0.653,
+      "macro_movement": 0.612,
+      "macro_space": 0.685
+    },
+    "Overdub": {
+      "macro_character": 0.905,
+      "macro_coupling": 0.55,
+      "macro_movement": 0.676,
+      "macro_space": 0.661
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
@@ -47,5 +58,6 @@
     "dense",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

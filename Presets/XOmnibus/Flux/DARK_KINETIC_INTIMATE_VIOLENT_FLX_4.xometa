@@ -1,45 +1,56 @@
 {
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FLX_4",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORIGAMI",
-    "OBLONG"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.1738,
-      "macro_movement": 0.9113,
-      "macro_coupling": 0.9026,
-      "macro_space": 0.1265
-    },
-    "OBLONG": {
-      "macro_character": 0.1139,
-      "macro_movement": 0.8394,
-      "macro_coupling": 0.7721,
-      "macro_space": 0.1275
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ORIGAMI",
-    "target": "OBLONG",
-    "amount": 0.9484
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oblong",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.9484
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.8954,
     "brightness": 0.0737,
-    "warmth": 0.6397,
-    "movement": 0.9343,
     "density": 0.6854,
+    "movement": 0.9343,
     "space": 0.0811,
-    "aggression": 0.8954
+    "warmth": 0.6397
   },
+  "engines": [
+    "Origami",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.1738,
-    "MOVEMENT": 0.9113,
     "COUPLING": 0.9026,
+    "MOVEMENT": 0.9113,
     "SPACE": 0.1265
   },
+  "mood": "Flux",
+  "name": "Shadow Pulse",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.1139,
+      "macro_coupling": 0.7721,
+      "macro_movement": 0.8394,
+      "macro_space": 0.1275
+    },
+    "Origami": {
+      "macro_character": 0.1738,
+      "macro_coupling": 0.9026,
+      "macro_movement": 0.9113,
+      "macro_space": 0.1265
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +59,6 @@
     "high-movement",
     "low-space",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

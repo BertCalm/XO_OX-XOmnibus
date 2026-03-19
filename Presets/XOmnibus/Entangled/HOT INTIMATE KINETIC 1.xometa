@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Obsidian \u00d7 Overdub \u2014 Filter Mod coupling at extreme DNA corner.",
+  "description": "Obsidian × Overdub — Filter Mod coupling at extreme DNA corner.",
   "tags": [
     "hot",
     "obsidian",
@@ -33,7 +33,10 @@
     "space": 0.043,
     "aggression": 0.595
   },
-  "parameters": {},
+  "parameters": {
+    "Obsidian": {},
+    "Overdub": {}
+  },
   "coupling": {
     "pairs": [
       {

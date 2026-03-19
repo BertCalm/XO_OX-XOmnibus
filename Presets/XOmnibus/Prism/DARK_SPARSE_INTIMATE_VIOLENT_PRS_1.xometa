@@ -1,50 +1,62 @@
 {
-  "name": "DARK_SPARSE_INTIMATE_VIOLENT_PRS_1",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Origami",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.855
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.979,
+    "brightness": 0.037,
+    "density": 0.09,
+    "movement": 0.553,
+    "space": 0.066,
+    "warmth": 0.41
+  },
   "engines": [
-    "ORPHICA",
-    "ORIGAMI"
+    "Orphica",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.508,
+    "COUPLING": 0.833,
+    "MOVEMENT": 0.553,
+    "SPACE": 0.066
+  },
+  "mood": "Prism",
+  "name": "Grain Grit",
   "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.508,
+    "Origami": {
+      "macro_character": 0.971,
+      "macro_coupling": 0.548,
       "macro_movement": 0.553,
-      "macro_coupling": 0.833,
       "macro_space": 0.066
     },
-    "ORIGAMI": {
-      "macro_character": 0.971,
+    "Orphica": {
+      "macro_character": 0.508,
+      "macro_coupling": 0.833,
       "macro_movement": 0.553,
-      "macro_coupling": 0.548,
       "macro_space": 0.066
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ORPHICA",
-    "target": "ORIGAMI",
-    "amount": 0.855
-  },
-  "dna": {
-    "brightness": 0.037,
-    "warmth": 0.41,
-    "movement": 0.553,
-    "density": 0.09,
-    "space": 0.066,
-    "aggression": 0.979
-  },
-  "macros": {
-    "CHARACTER": 0.508,
-    "MOVEMENT": 0.553,
-    "COUPLING": 0.833,
-    "SPACE": 0.066
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "sparse",
     "intimate",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

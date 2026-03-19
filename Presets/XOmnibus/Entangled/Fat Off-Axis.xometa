@@ -1,28 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Fat Off-Axis",
-  "mood": "Entangled",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "amount": 0.73,
+    "pairs": [
+      {
+        "amount": 0.73,
+        "engineA": "Obese",
+        "engineB": "Oblique",
+        "type": "Filter->Drive"
+      }
+    ],
+    "type": "Filter->Drive"
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OBESE crush modulates OBLIQUE angle. Off-axis harmonic density. [Filter->Drive]",
+  "dna": {
+    "aggression": 0.63,
     "brightness": 0.6,
-    "warmth": 0.535,
-    "movement": 0.612,
     "density": 0.615,
+    "movement": 0.612,
     "space": 0.487,
-    "aggression": 0.63
+    "warmth": 0.535
   },
   "engines": [
-    "XObese",
-    "XOblique"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBESE crush modulates OBLIQUE angle. Off-axis harmonic density. [Filter->Drive]",
-  "tags": [
-    "coupling",
-    "entangled",
-    "obese",
-    "oblique",
-    "fat"
+    "Obese",
+    "Oblique"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -30,45 +32,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.535,
-    "movement": 0.612,
-    "density": 0.615,
-    "space": 0.487,
-    "aggression": 0.63
-  },
+  "mood": "Entangled",
+  "name": "Fat Off-Axis",
   "parameters": {
-    "XObese": {
+    "Obese": {
+      "fat_aggression": 0.702,
+      "fat_brightness": 0.531,
+      "fat_couplingBus": 0,
+      "fat_couplingLevel": 0.56,
       "fat_outputLevel": 0.76,
       "fat_outputPan": 0.05,
-      "fat_couplingLevel": 0.56,
-      "fat_couplingBus": 0,
-      "fat_brightness": 0.531,
-      "fat_warmth": 0.629,
-      "fat_aggression": 0.702
+      "fat_warmth": 0.629
     },
-    "XOblique": {
+    "Oblique": {
+      "obl_aggression": 0.556,
+      "obl_brightness": 0.724,
+      "obl_couplingBus": 0,
+      "obl_couplingLevel": 0.76,
       "obl_outputLevel": 0.75,
       "obl_outputPan": -0.03,
-      "obl_couplingLevel": 0.76,
-      "obl_couplingBus": 0,
-      "obl_brightness": 0.724,
-      "obl_warmth": 0.445,
-      "obl_aggression": 0.556
+      "obl_warmth": 0.445
     }
   },
-  "coupling": {
-    "type": "Filter->Drive",
-    "amount": 0.73,
-    "pairs": [
-      {
-        "engineA": "XObese",
-        "engineB": "XOblique",
-        "type": "Filter->Drive",
-        "amount": 0.73
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.63,
+    "brightness": 0.6,
+    "density": 0.615,
+    "movement": 0.612,
+    "space": 0.487,
+    "warmth": 0.535
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "oblique",
+    "fat"
+  ],
+  "version": "1.0.0"
 }

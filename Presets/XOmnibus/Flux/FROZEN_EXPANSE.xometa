@@ -1,50 +1,62 @@
 {
-  "name": "FROZEN EXPANSE",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Orphica",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.642
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.417,
+    "brightness": 0.066,
+    "density": 0.318,
+    "movement": 0.351,
+    "space": 0.857,
+    "warmth": 0.115
+  },
   "engines": [
-    "ORGANON",
-    "ORPHICA"
+    "Organon",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.277,
+    "COUPLING": 0.966,
+    "MOVEMENT": 0.341,
+    "SPACE": 0.804
+  },
+  "mood": "Flux",
+  "name": "Frozen Expanse",
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.277,
-      "macro_movement": 0.341,
       "macro_coupling": 0.966,
+      "macro_movement": 0.341,
       "macro_space": 0.804
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.318,
-      "macro_movement": 0.417,
       "macro_coupling": 0.847,
+      "macro_movement": 0.417,
       "macro_space": 0.658
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORGANON",
-    "target": "ORPHICA",
-    "amount": 0.642
-  },
-  "dna": {
-    "brightness": 0.066,
-    "warmth": 0.115,
-    "movement": 0.351,
-    "density": 0.318,
-    "space": 0.857,
-    "aggression": 0.417
-  },
-  "macros": {
-    "CHARACTER": 0.277,
-    "MOVEMENT": 0.341,
-    "COUPLING": 0.966,
-    "SPACE": 0.804
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "cold",
     "vast",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

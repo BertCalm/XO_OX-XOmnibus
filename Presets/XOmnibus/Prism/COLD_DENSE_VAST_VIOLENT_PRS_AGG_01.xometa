@@ -1,45 +1,56 @@
 {
-  "name": "COLD DENSE VAST VIOLENT PRS AGG 1",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Origami",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.768
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.935,
+    "brightness": 0.439,
+    "density": 0.927,
+    "movement": 0.403,
+    "space": 0.894,
+    "warmth": 0.069
+  },
   "engines": [
-    "OCELOT",
-    "ORIGAMI"
+    "Ocelot",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.43,
+    "COUPLING": 0.868,
+    "MOVEMENT": 0.386,
+    "SPACE": 0.863
+  },
+  "mood": "Prism",
+  "name": "COLD DENSE VAST VIOLENT PRS...",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.437,
-      "macro_movement": 0.393,
       "macro_coupling": 0.838,
+      "macro_movement": 0.393,
       "macro_space": 0.867
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.424,
-      "macro_movement": 0.379,
       "macro_coupling": 0.898,
+      "macro_movement": 0.379,
       "macro_space": 0.86
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OCELOT",
-    "target": "ORIGAMI",
-    "amount": 0.768
-  },
-  "dna": {
-    "brightness": 0.439,
-    "warmth": 0.069,
-    "movement": 0.403,
-    "density": 0.927,
-    "space": 0.894,
-    "aggression": 0.935
-  },
-  "macros": {
-    "CHARACTER": 0.43,
-    "MOVEMENT": 0.386,
-    "COUPLING": 0.868,
-    "SPACE": 0.863
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "aggressive",
@@ -47,5 +58,6 @@
     "violent",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

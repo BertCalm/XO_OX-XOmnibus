@@ -1,50 +1,62 @@
 {
-  "name": "VAST OPEN BASE",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OPAL",
-    "OCELOT"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.051,
-      "macro_movement": 0.916,
-      "macro_coupling": 0.829,
-      "macro_space": 0.898
-    },
-    "OCELOT": {
-      "macro_character": 0.334,
-      "macro_movement": 0.866,
-      "macro_coupling": 0.98,
-      "macro_space": 0.905
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OPAL",
-    "target": "OCELOT",
-    "amount": 0.609
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ocelot",
+        "type": "PITCH_SYNC",
+        "amount": 0.609
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.505,
     "brightness": 0.343,
-    "warmth": 0.687,
-    "movement": 0.903,
     "density": 0.853,
+    "movement": 0.903,
     "space": 0.925,
-    "aggression": 0.505
+    "warmth": 0.687
   },
+  "engines": [
+    "Opal",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.706,
-    "MOVEMENT": 0.903,
     "COUPLING": 0.561,
+    "MOVEMENT": 0.903,
     "SPACE": 0.925
   },
+  "mood": "Foundation",
+  "name": "VAST OPEN BASE",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.334,
+      "macro_coupling": 0.98,
+      "macro_movement": 0.866,
+      "macro_space": 0.905
+    },
+    "Opal": {
+      "macro_character": 0.051,
+      "macro_coupling": 0.829,
+      "macro_movement": 0.916,
+      "macro_space": 0.898
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh",
     "movement-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

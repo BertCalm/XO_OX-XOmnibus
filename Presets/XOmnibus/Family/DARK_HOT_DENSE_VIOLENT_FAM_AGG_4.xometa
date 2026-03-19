@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_DENSE_VIOLENT_FAM_AGG_4",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ottoni",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.975
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.984,
+    "brightness": 0.065,
+    "density": 0.914,
+    "movement": 0.313,
+    "space": 0.477,
+    "warmth": 0.984
+  },
   "engines": [
-    "ORPHICA",
-    "OTTONI"
+    "Orphica",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.863,
+    "COUPLING": 0.761,
+    "MOVEMENT": 0.41,
+    "SPACE": 0.677
+  },
+  "mood": "Family",
+  "name": "Ember Storm",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.863,
-      "macro_movement": 0.41,
       "macro_coupling": 0.761,
+      "macro_movement": 0.41,
       "macro_space": 0.677
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.911,
-      "macro_movement": 0.396,
       "macro_coupling": 0.751,
+      "macro_movement": 0.396,
       "macro_space": 0.646
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORPHICA",
-    "target": "OTTONI",
-    "amount": 0.975
-  },
-  "dna": {
-    "brightness": 0.065,
-    "warmth": 0.984,
-    "movement": 0.313,
-    "density": 0.914,
-    "space": 0.477,
-    "aggression": 0.984
-  },
-  "macros": {
-    "CHARACTER": 0.863,
-    "MOVEMENT": 0.41,
-    "COUPLING": 0.761,
-    "SPACE": 0.677
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "dark",
     "hot",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

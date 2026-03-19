@@ -1,14 +1,40 @@
 {
-  "schema_version": 1,
-  "name": "Machine and Mass",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Light",
+  "created": "2026-03-16",
+  "description": "ONSET percussion + OBLONG chord mass — the rhythm section reunion. The groove laid, the harmony placed. Production essentials.",
+  "dna": {
+    "aggression": 0.52,
+    "brightness": 0.58,
+    "density": 0.72,
+    "movement": 0.78,
+    "space": 0.4,
+    "warmth": 0.42
+  },
   "engines": [
-    "ONSET",
-    "OBLONG"
+    "Onset",
+    "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ONSET percussion + OBLONG chord mass \u2014 the rhythm section reunion. The groove laid, the harmony placed. Production essentials.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "mood": "Family",
+  "name": "Machine and Mass",
+  "parameters": {
+    "Onset": {},
+    "Oblong": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "reunion",
@@ -19,29 +45,6 @@
     "rhythm",
     "batch3-reunion"
   ],
-  "macroLabels": [
-    "MACHINE",
-    "PUNCH",
-    "SPACE",
-    "MUTATE"
-  ],
-  "couplingIntensity": "Light",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.58,
-    "warmth": 0.42,
-    "movement": 0.78,
-    "density": 0.72,
-    "space": 0.4,
-    "aggression": 0.52
-  }
+  "version": "1.0.0"
 }

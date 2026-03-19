@@ -1,45 +1,56 @@
 {
-  "name": "DARK_HOT_STILL_VAST_FLX_4",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORIGAMI",
-    "ORGANON"
-  ],
-  "parameters": {
-    "ORIGAMI": {
-      "macro_character": 0.178,
-      "macro_movement": 0.1087,
-      "macro_coupling": 0.3738,
-      "macro_space": 0.907
-    },
-    "ORGANON": {
-      "macro_character": 0.1276,
-      "macro_movement": 0.0723,
-      "macro_coupling": 0.5634,
-      "macro_space": 0.9316
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "ORIGAMI",
-    "target": "ORGANON",
-    "amount": 0.6395
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Organon",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.6395
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.4331,
     "brightness": 0.0396,
-    "warmth": 0.9087,
-    "movement": 0.0304,
     "density": 0.3374,
+    "movement": 0.0304,
     "space": 0.9316,
-    "aggression": 0.4331
+    "warmth": 0.9087
   },
+  "engines": [
+    "Origami",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.178,
-    "MOVEMENT": 0.1087,
     "COUPLING": 0.3738,
+    "MOVEMENT": 0.1087,
     "SPACE": 0.907
   },
+  "mood": "Flux",
+  "name": "DARK_HOT_STILL_VAST_FLX_4",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.1276,
+      "macro_coupling": 0.5634,
+      "macro_movement": 0.0723,
+      "macro_space": 0.9316
+    },
+    "Origami": {
+      "macro_character": 0.178,
+      "macro_coupling": 0.3738,
+      "macro_movement": 0.1087,
+      "macro_space": 0.907
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +59,6 @@
     "high-warmth",
     "low-movement",
     "high-space"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Generational",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.27,
+      "destination": "Ole",
+      "source": "Ottoni",
+      "type": "AudioToFM"
+    }
+  ],
+  "couplingIntensity": "Medium",
+  "created": "2026-03-14",
+  "description": "The Tween cousin at attention. Trumpet and sax balanced — GROW at center, control earned.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.34,
+    "density": 0.47,
+    "movement": 0.04,
+    "space": 0.11,
+    "warmth": 0.75
+  },
   "engines": [
     "Ottoni",
     "Ole"
-  ],
-  "author": "Exo Meta \u2014 Family Dinner",
-  "version": "1.0.0",
-  "tags": [
-    "family",
-    "dinner",
-    "constellation",
-    "multi-engine",
-    "foundation"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,79 +29,71 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.34,
-    "warmth": 0.75,
-    "movement": 0.04,
-    "density": 0.47,
-    "space": 0.11,
-    "aggression": 0.0
-  },
+  "mood": "Foundation",
+  "name": "Generational",
   "parameters": {
-    "Ottoni": {
-      "otto_toddlerLevel": 0.458,
-      "otto_toddlerPressure": 0.151,
-      "otto_toddlerInst": 0,
-      "otto_tweenLevel": 0.694,
-      "otto_tweenEmbouchure": 0.323,
-      "otto_tweenValve": 0.586,
-      "otto_tweenInst": 0,
-      "otto_teenLevel": 0.538,
-      "otto_teenEmbouchure": 0.83,
-      "otto_teenBore": 0.476,
-      "otto_teenInst": 8,
-      "otto_teenVibratoRate": 1.0,
-      "otto_teenVibratoDepth": 0.269,
-      "otto_damping": 0.995,
-      "otto_sympatheticAmt": 0.322,
-      "otto_driftRate": 0.078,
-      "otto_driftDepth": 1.0,
-      "otto_foreignStretch": 0.055,
-      "otto_foreignDrift": 0.03,
-      "otto_foreignCold": 0.147,
-      "otto_reverbSize": 0.077,
-      "otto_chorusRate": 1.0,
-      "otto_driveAmount": 0.063,
-      "otto_delayMix": 0.393,
-      "otto_macroEmbouchure": 0.33,
-      "otto_macroGrow": 0.379,
-      "otto_macroForeign": 0.146,
-      "otto_macroLake": 0.062
-    },
     "Ole": {
+      "ole_allianceBlend": 0.332,
+      "ole_allianceConfig": 0,
+      "ole_aunt1Brightness": 0.737,
       "ole_aunt1Level": 0.833,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.737,
-      "ole_aunt2Level": 0.615,
       "ole_aunt2CoinPress": 0.133,
       "ole_aunt2GourdSize": 0.312,
+      "ole_aunt2Level": 0.615,
+      "ole_aunt3Brightness": 0.512,
       "ole_aunt3Level": 0.624,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.512,
       "ole_damping": 0.993,
-      "ole_sympatheticAmt": 0.324,
-      "ole_driftRate": 0.091,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 0,
-      "ole_allianceBlend": 0.332,
-      "ole_husbandOudLevel": 0.0,
+      "ole_driftRate": 0.091,
       "ole_husbandBouzLevel": 0.0,
+      "ole_husbandOudLevel": 0.0,
       "ole_husbandPinLevel": 0.0,
-      "ole_macroFuego": 0.647,
       "ole_macroDrama": 0.363,
+      "ole_macroFuego": 0.647,
+      "ole_macroIsla": 0.054,
       "ole_macroSides": 0.0,
-      "ole_macroIsla": 0.054
+      "ole_sympatheticAmt": 0.324
+    },
+    "Ottoni": {
+      "otto_chorusRate": 1.0,
+      "otto_damping": 0.995,
+      "otto_delayMix": 0.393,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.078,
+      "otto_driveAmount": 0.063,
+      "otto_foreignCold": 0.147,
+      "otto_foreignDrift": 0.03,
+      "otto_foreignStretch": 0.055,
+      "otto_macroEmbouchure": 0.33,
+      "otto_macroForeign": 0.146,
+      "otto_macroGrow": 0.379,
+      "otto_macroLake": 0.062,
+      "otto_reverbSize": 0.077,
+      "otto_sympatheticAmt": 0.322,
+      "otto_teenBore": 0.476,
+      "otto_teenEmbouchure": 0.83,
+      "otto_teenInst": 8,
+      "otto_teenLevel": 0.538,
+      "otto_teenVibratoDepth": 0.269,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 0,
+      "otto_toddlerLevel": 0.458,
+      "otto_toddlerPressure": 0.151,
+      "otto_tweenEmbouchure": 0.323,
+      "otto_tweenInst": 0,
+      "otto_tweenLevel": 0.694,
+      "otto_tweenValve": 0.586
     }
   },
-  "coupling": [
-    {
-      "source": "Ottoni",
-      "destination": "Ole",
-      "type": "AudioToFM",
-      "amount": 0.27
-    }
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "dinner",
+    "constellation",
+    "multi-engine",
+    "foundation"
   ],
-  "description": "The Tween cousin at attention. Trumpet and sax balanced \u2014 GROW at center, control earned."
+  "version": "1.0.0"
 }

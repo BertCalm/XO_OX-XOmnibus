@@ -1,54 +1,54 @@
 {
-  "schema_version": 1,
-  "name": "Rooted Resonance",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-08",
+  "description": "Rooted log drums sound with warm character.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.667,
+    "density": 0.42,
+    "movement": 0.275,
+    "space": 0.48,
+    "warmth": 0.306
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Rooted log drums sound with warm character.",
-  "tags": [
-    "pitched",
-    "sine",
-    "verdub"
-  ],
+  "legacy": {
+    "sourceCategory": "Log Drums",
+    "sourceInstrument": "Overdub",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Overdub",
-    "sourceCategory": "Log Drums",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Rooted Resonance",
   "parameters": {
     "Overdub": {
-      "dub_oscWave": 0.0,
-      "dub_oscOctave": 2.0,
-      "dub_pitchEnvDepth": 36.0,
-      "dub_pitchEnvDecay": 0.012,
-      "dub_filterCutoff": 2000.0,
       "dub_attack": 0.001,
       "dub_decay": 0.25,
-      "dub_sustain": 0.0,
+      "dub_filterCutoff": 2000.0,
+      "dub_oscOctave": 2.0,
+      "dub_oscWave": 0.0,
+      "dub_pitchEnvDecay": 0.012,
+      "dub_pitchEnvDepth": 36.0,
       "dub_release": 0.2,
-      "dub_subLevel": 0.4
+      "dub_subLevel": 0.4,
+      "dub_sustain": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.667,
-    "warmth": 0.306,
-    "movement": 0.275,
-    "density": 0.42,
-    "space": 0.48,
-    "aggression": 0.0
-  }
+  "tags": [
+    "pitched",
+    "sine",
+    "verdub"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

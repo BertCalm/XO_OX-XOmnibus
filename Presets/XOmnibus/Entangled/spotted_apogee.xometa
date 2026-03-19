@@ -1,49 +1,61 @@
 {
-  "name": "Spotted Apogee",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Orbital",
+        "type": "RHYTHM_SYNC",
+        "amount": 0.803
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.65,
+    "density": 0.45,
+    "movement": 0.9,
+    "space": 0.55,
+    "warmth": 0.7
+  },
   "engines": [
-    "OCELOT",
-    "ORBITAL"
+    "Ocelot",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.525,
+    "COUPLING": 0.803,
+    "MOVEMENT": 0.625,
+    "SPACE": 0.575
+  },
+  "mood": "Entangled",
+  "name": "Spotted Apogee",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.665,
-      "macro_movement": 0.715,
       "macro_coupling": 0.565,
+      "macro_movement": 0.715,
       "macro_space": 0.465
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.385,
-      "macro_movement": 0.535,
       "macro_coupling": 0.485,
+      "macro_movement": 0.535,
       "macro_space": 0.685
     }
   },
-  "coupling": {
-    "type": "RHYTHM_SYNC",
-    "source": "OCELOT",
-    "target": "ORBITAL",
-    "amount": 0.803
-  },
-  "dna": {
-    "brightness": 0.65,
-    "warmth": 0.7,
-    "movement": 0.9,
-    "density": 0.45,
-    "space": 0.55,
-    "aggression": 0.6
-  },
-  "macros": {
-    "CHARACTER": 0.525,
-    "MOVEMENT": 0.625,
-    "COUPLING": 0.803,
-    "SPACE": 0.575
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "rhythmic"
-  ]
+  ],
+  "version": "1.0"
 }

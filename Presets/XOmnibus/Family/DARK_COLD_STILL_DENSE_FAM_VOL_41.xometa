@@ -1,50 +1,62 @@
 {
-  "name": "DARK_COLD_STILL_DENSE_FAM_VOL_41",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ODDFELIX",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "ODDFELIX": {
-      "macro_character": 0.072,
-      "macro_movement": 0.129,
-      "macro_coupling": 0.661,
-      "macro_space": 0.672
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.077,
-      "macro_movement": 0.09,
-      "macro_coupling": 0.66,
-      "macro_space": 0.666
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OBBLIGATO",
-    "target": "ODDFELIX",
-    "amount": 0.426
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "OddfeliX",
+        "type": "PITCH_SYNC",
+        "amount": 0.426
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.376,
     "brightness": 0.051,
-    "warmth": 0.056,
-    "movement": 0.118,
     "density": 0.937,
+    "movement": 0.118,
     "space": 0.678,
-    "aggression": 0.376
+    "warmth": 0.056
   },
+  "engines": [
+    "OddfeliX",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.074,
-    "MOVEMENT": 0.11,
     "COUPLING": 0.661,
+    "MOVEMENT": 0.11,
     "SPACE": 0.669
   },
+  "mood": "Family",
+  "name": "Fragment Solid",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.077,
+      "macro_coupling": 0.66,
+      "macro_movement": 0.09,
+      "macro_space": 0.666
+    },
+    "OddfeliX": {
+      "macro_character": 0.072,
+      "macro_coupling": 0.661,
+      "macro_movement": 0.129,
+      "macro_space": 0.672
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "dark",
     "cold",
     "still",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

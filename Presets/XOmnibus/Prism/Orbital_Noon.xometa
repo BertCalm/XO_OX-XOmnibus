@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Orbital Noon",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.945,
-    "warmth": 0.2172,
-    "movement": 0.4781,
-    "density": 0.464,
-    "space": 0.8899,
-    "aggression": 0.1598
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Orbit at maximum altitude brightness",
   "dna": {
+    "aggression": 0.1598,
     "brightness": 0.945,
-    "warmth": 0.2172,
-    "movement": 0.4781,
     "density": 0.464,
+    "movement": 0.4781,
     "space": 0.8899,
-    "aggression": 0.1598
+    "warmth": 0.2172
   },
   "engines": [
-    "ORBITAL"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Orbit at maximum altitude brightness",
-  "tags": [
-    "prism",
-    "bright",
-    "ultra",
-    "spectral",
-    "anchor"
+    "Orbital"
   ],
   "macroLabels": [
     "ORBIT",
@@ -38,24 +23,39 @@
     "SPACE"
   ],
   "macros": {
+    "COUPLE": 0.2884,
     "ORBIT": 0.8192,
     "PHASE": 0.3067,
-    "COUPLE": 0.2884,
     "SPACE": 0.6686
   },
-  "couplingIntensity": "None",
+  "mood": "Prism",
+  "name": "Orbital Noon",
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
+      "orb_couplingBus": 0,
+      "orb_couplingLevel": 0.5,
+      "orb_macro_couple": 0.2884,
       "orb_macro_orbit": 0.8192,
       "orb_macro_phase": 0.3067,
-      "orb_macro_couple": 0.2884,
       "orb_macro_space": 0.6686,
-      "orb_outputLevel": 0.85,
-      "orb_couplingLevel": 0.5,
-      "orb_couplingBus": 0
+      "orb_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.1598,
+    "brightness": 0.945,
+    "density": 0.464,
+    "movement": 0.4781,
+    "space": 0.8899,
+    "warmth": 0.2172
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "ultra",
+    "spectral",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

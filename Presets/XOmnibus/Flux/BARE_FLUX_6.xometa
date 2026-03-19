@@ -1,48 +1,60 @@
 {
-  "name": "BARE FLUX 6",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OWLFISH",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.4166,
-      "macro_movement": 0.6644,
-      "macro_coupling": 0.0856,
-      "macro_space": 0.9747
-    },
-    "OBLONG": {
-      "macro_character": 0.0677,
-      "macro_movement": 0.5261,
-      "macro_coupling": 0.5073,
-      "macro_space": 0.9883
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OWLFISH",
-    "target": "OBLONG",
-    "amount": 0.6325
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Oblong",
+        "type": "PITCH_SYNC",
+        "amount": 0.6325
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.4292,
     "brightness": 0.0164,
-    "warmth": 0.5154,
-    "movement": 0.8837,
     "density": 0.0797,
+    "movement": 0.8837,
     "space": 0.1436,
-    "aggression": 0.4292
+    "warmth": 0.5154
   },
+  "engines": [
+    "Owlfish",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.3905,
-    "MOVEMENT": 0.4701,
     "COUPLING": 0.6357,
+    "MOVEMENT": 0.4701,
     "SPACE": 0.981
   },
+  "mood": "Flux",
+  "name": "BARE FLUX 6",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.0677,
+      "macro_coupling": 0.5073,
+      "macro_movement": 0.5261,
+      "macro_space": 0.9883
+    },
+    "Owlfish": {
+      "macro_character": 0.4166,
+      "macro_coupling": 0.0856,
+      "macro_movement": 0.6644,
+      "macro_space": 0.9747
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "sparse",
     "minimal"
-  ]
+  ],
+  "version": "1.0"
 }

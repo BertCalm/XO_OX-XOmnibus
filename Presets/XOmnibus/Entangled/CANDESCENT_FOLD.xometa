@@ -1,49 +1,61 @@
 {
-  "name": "CANDESCENT FOLD",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.862
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.848,
+    "brightness": 0.104,
+    "density": 0.843,
+    "movement": 0.54,
+    "space": 0.046,
+    "warmth": 0.957
+  },
   "engines": [
-    "ODDOSCAR",
-    "ODYSSEY"
+    "OddOscar",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.913,
+    "COUPLING": 0.882,
+    "MOVEMENT": 0.175,
+    "SPACE": 0.176
+  },
+  "mood": "Entangled",
+  "name": "CANDESCENT FOLD",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.964,
-      "macro_movement": 0.321,
       "macro_coupling": 0.646,
+      "macro_movement": 0.321,
       "macro_space": 0.908
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.089,
-      "macro_movement": 0.574,
       "macro_coupling": 0.535,
+      "macro_movement": 0.574,
       "macro_space": 0.723
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ODDOSCAR",
-    "target": "ODYSSEY",
-    "amount": 0.862
-  },
-  "dna": {
-    "brightness": 0.104,
-    "warmth": 0.957,
-    "movement": 0.54,
-    "density": 0.843,
-    "space": 0.046,
-    "aggression": 0.848
-  },
-  "macros": {
-    "CHARACTER": 0.913,
-    "MOVEMENT": 0.175,
-    "COUPLING": 0.882,
-    "SPACE": 0.176
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-  ]
+  ],
+  "version": "1.0"
 }

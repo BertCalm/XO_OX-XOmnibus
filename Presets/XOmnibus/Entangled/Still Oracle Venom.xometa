@@ -1,33 +1,48 @@
 {
-  "name": "Still Oracle Venom",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Overbite",
+        "type": "SPECTRAL_FOLD",
+        "amount": 0.8
+      }
+    ]
+  },
+  "description": "Oracle's vision delivered through Overbite's fangs — the prophecy is violence.",
   "engines": [
-    "OVERBITE",
-    "ORACLE"
+    "Overbite",
+    "Oracle"
   ],
-  "mood": "Entangled",
-  "strategy": "Still Aggressive",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.85,
-    "MOVEMENT": 0.04,
     "COUPLING": 0.88,
+    "MOVEMENT": 0.04,
     "SPACE": 0.55
   },
+  "mood": "Entangled",
+  "name": "Still Oracle Venom",
+  "parameters": {
+    "Overbite": {},
+    "Oracle": {}
+  },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.98,
     "brightness": 0.3,
-    "warmth": 0.48,
-    "movement": 0.04,
     "density": 0.8,
+    "movement": 0.04,
     "space": 0.52,
-    "aggression": 0.98
+    "warmth": 0.48
   },
-  "parameters": {},
-  "coupling": {
-    "type": "SPECTRAL_FOLD",
-    "source": "ORACLE",
-    "target": "OVERBITE",
-    "amount": 0.8
-  },
+  "strategy": "Still Aggressive",
   "tags": [
     "entangled",
     "aggressive",
@@ -35,5 +50,13 @@
     "prophecy",
     "venom"
   ],
-  "description": "Oracle's vision delivered through Overbite's fangs \u2014 the prophecy is violence."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

@@ -1,31 +1,46 @@
 {
-  "name": "Photographic Breath",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Obscura",
+        "type": "DAGUERREOTYPE_BLUR",
+        "amount": 0.55
+      }
+    ]
+  },
+  "description": "Obscura daguerreotype stiffness obligated to OBBLIGATO breath — each breath exposes the plate",
   "engines": [
-    "OBBLIGATO",
-    "OBSCURA"
+    "Obbligato",
+    "Obscura"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.55,
+    "MOVEMENT": 0.55,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.47,
-    "warmth": 0.57,
-    "movement": 0.53,
-    "density": 0.63,
-    "space": 0.58,
-    "aggression": 0.39
+  "mood": "Entangled",
+  "name": "Photographic Breath",
+  "parameters": {
+    "Obbligato": {},
+    "Obscura": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "DAGUERREOTYPE_BLUR",
-    "source": "OBBLIGATO",
-    "target": "OBSCURA",
-    "amount": 0.55
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.39,
+    "brightness": 0.47,
+    "density": 0.63,
+    "movement": 0.53,
+    "space": 0.58,
+    "warmth": 0.57
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "obscura",
     "wind"
   ],
-  "description": "Obscura daguerreotype stiffness obligated to OBBLIGATO breath \u2014 each breath exposes the plate"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

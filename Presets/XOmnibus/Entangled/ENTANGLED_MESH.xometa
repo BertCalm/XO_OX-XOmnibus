@@ -1,48 +1,60 @@
 {
-  "name": "ENTANGLED MESH",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Orbital",
+        "type": "FILTER_MOD",
+        "amount": 0.38
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.034,
+    "brightness": 0.575,
+    "density": 0.508,
+    "movement": 0.102,
+    "space": 0.103,
+    "warmth": 0.084
+  },
   "engines": [
-    "ONSET",
-    "ORBITAL"
+    "Onset",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.708,
+    "COUPLING": 0.999,
+    "MOVEMENT": 0.102,
+    "SPACE": 0.229
+  },
+  "mood": "Entangled",
+  "name": "ENTANGLED MESH",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.163,
-      "macro_movement": 0.095,
       "macro_coupling": 0.501,
+      "macro_movement": 0.095,
       "macro_space": 0.916
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.815,
-      "macro_movement": 0.108,
       "macro_coupling": 0.522,
+      "macro_movement": 0.108,
       "macro_space": 0.544
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "ONSET",
-    "target": "ORBITAL",
-    "amount": 0.38
-  },
-  "dna": {
-    "brightness": 0.575,
-    "warmth": 0.084,
-    "movement": 0.102,
-    "density": 0.508,
-    "space": 0.103,
-    "aggression": 0.034
-  },
-  "macros": {
-    "CHARACTER": 0.708,
-    "MOVEMENT": 0.102,
-    "COUPLING": 0.999,
-    "SPACE": 0.229
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "entangled"
-  ]
+  ],
+  "version": "1.0"
 }

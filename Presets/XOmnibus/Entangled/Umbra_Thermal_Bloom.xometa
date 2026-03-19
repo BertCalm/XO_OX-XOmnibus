@@ -1,48 +1,60 @@
 {
-  "name": "Umbra Thermal Bloom",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_SHARE",
+        "amount": 0.52
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.41,
+    "brightness": 0.06,
+    "density": 0.57,
+    "movement": 0.22,
+    "space": 0.44,
+    "warmth": 0.81
+  },
   "engines": [
-    "ODDOSCAR",
-    "ORACLE"
+    "OddOscar",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.74,
+    "COUPLING": 0.84,
+    "MOVEMENT": 0.22,
+    "SPACE": 0.44
+  },
+  "mood": "Entangled",
+  "name": "Umbra Thermal Bloom",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.79,
-      "macro_movement": 0.72,
       "macro_coupling": 0.74,
+      "macro_movement": 0.72,
       "macro_space": 0.59
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.78,
-      "macro_movement": 0.85,
       "macro_coupling": 0.79,
+      "macro_movement": 0.85,
       "macro_space": 0.84
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_SHARE",
-    "source": "ODDOSCAR",
-    "target": "ORACLE",
-    "amount": 0.52
-  },
-  "dna": {
-    "brightness": 0.06,
-    "warmth": 0.81,
-    "movement": 0.22,
-    "density": 0.57,
-    "space": 0.44,
-    "aggression": 0.41
-  },
-  "macros": {
-    "CHARACTER": 0.74,
-    "MOVEMENT": 0.22,
-    "COUPLING": 0.84,
-    "SPACE": 0.44
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-  ]
+  ],
+  "version": "1.0"
 }

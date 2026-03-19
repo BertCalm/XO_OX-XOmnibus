@@ -1,45 +1,56 @@
 {
-  "name": "DARK_KINETIC_DENSE_VAST_VIOLENT_FLX2_2",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.457
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9573,
+    "brightness": 0.0762,
+    "density": 0.9787,
+    "movement": 0.9312,
+    "space": 0.9119,
+    "warmth": 0.3456
+  },
   "engines": [
-    "OCEANIC",
-    "ORGANON"
+    "Oceanic",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1909,
+    "COUPLING": 0.9722,
+    "MOVEMENT": 0.9349,
+    "SPACE": 0.9185
+  },
+  "mood": "Flux",
+  "name": "Thread Deep 2",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.1963,
-      "macro_movement": 0.9116,
       "macro_coupling": 0.9579,
+      "macro_movement": 0.9116,
       "macro_space": 0.9274
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.1854,
-      "macro_movement": 0.9583,
       "macro_coupling": 0.9864,
+      "macro_movement": 0.9583,
       "macro_space": 0.9097
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OCEANIC",
-    "target": "ORGANON",
-    "amount": 0.457
-  },
-  "dna": {
-    "brightness": 0.0762,
-    "warmth": 0.3456,
-    "movement": 0.9312,
-    "density": 0.9787,
-    "space": 0.9119,
-    "aggression": 0.9573
-  },
-  "macros": {
-    "CHARACTER": 0.1909,
-    "MOVEMENT": 0.9349,
-    "COUPLING": 0.9722,
-    "SPACE": 0.9185
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -47,5 +58,6 @@
     "dense",
     "vast",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

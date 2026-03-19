@@ -330,7 +330,8 @@ public:
         p.push_back(std::make_unique<F>("otto_teenEmbouchure","Teen Embouchure",N{0,1},0.7f));
         p.push_back(std::make_unique<F>("otto_teenBore","Teen Bore",N{0,1},0.5f));
         p.push_back(std::make_unique<C>("otto_teenInst","Teen Inst",juce::StringArray{"French Horn","Trombone","Tuba","Euphonium","Tenor Sax","Dungchen","Serpent","Ophicleide","Sackbut","Bass Sax"},0));
-        p.push_back(std::make_unique<F>("otto_teenVibratoRate","Teen Vibrato Rate",N{3,8},5.0f));
+        // D005: rate floor lowered to 0.005 Hz for ultra-slow breathing modulation
+        p.push_back(std::make_unique<F>("otto_teenVibratoRate","Teen Vibrato Rate",N{0.005f,8.0f},5.0f));
         p.push_back(std::make_unique<F>("otto_teenVibratoDepth","Teen Vibrato Depth",N{0,1},0.3f));
 
         // Section D: Shared (4 params)

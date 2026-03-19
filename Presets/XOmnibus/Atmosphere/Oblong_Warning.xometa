@@ -1,13 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Oblong Warning",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Square wave with meaningful detune — the beating is present but slow, like a signal slightly off frequency. Filter resonance adds harmonic edge. An alarm being ignored.",
+  "dna": {
+    "aggression": 0.48,
+    "brightness": 0.58,
+    "density": 0.68,
+    "movement": 0.52,
+    "space": 0.58,
+    "warmth": 0.32
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "Square wave with meaningful detune \u2014 the beating is present but slow, like a signal slightly off frequency. Filter resonance adds harmonic edge. An alarm being ignored.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Oblong Warning",
+  "parameters": {
+    "Oblong": {
+      "bob_ampAttack": 0.5,
+      "bob_ampDecay": 0.8,
+      "bob_ampRelease": 3.0,
+      "bob_ampSustain": 0.72,
+      "bob_drive": 0.42,
+      "bob_fltCutoff": 0.55,
+      "bob_fltReso": 0.62,
+      "bob_lfo1Depth": 0.48,
+      "bob_lfo1Rate": 0.22,
+      "bob_macroCharacter": 0.0,
+      "bob_macroCoupling": 0.0,
+      "bob_macroMovement": 0.0,
+      "bob_macroSpace": 0.0,
+      "bob_oscDetune": 0.38,
+      "bob_oscWave": 1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "tense",
@@ -15,49 +58,6 @@
     "warning",
     "detuned"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oblong": {
-      "bob_oscWave": 1,
-      "bob_oscDetune": 0.38,
-      "bob_fltCutoff": 0.55,
-      "bob_fltReso": 0.62,
-      "bob_drive": 0.42,
-      "bob_lfo1Rate": 0.22,
-      "bob_lfo1Depth": 0.48,
-      "bob_ampAttack": 0.5,
-      "bob_ampDecay": 0.8,
-      "bob_ampSustain": 0.72,
-      "bob_ampRelease": 3.0,
-      "bob_macroCharacter": 0.0,
-      "bob_macroMovement": 0.0,
-      "bob_macroCoupling": 0.0,
-      "bob_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.58,
-    "warmth": 0.32,
-    "movement": 0.52,
-    "density": 0.68,
-    "space": 0.58,
-    "aggression": 0.48
-  }
+  "version": "1.0.0"
 }

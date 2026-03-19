@@ -1,56 +1,56 @@
 {
-  "schema_version": 1,
-  "name": "Digital Scream",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Focused leads tone with warm haze.",
+  "dna": {
+    "aggression": 0.363,
+    "brightness": 0.422,
+    "density": 0.075,
+    "movement": 0.0,
+    "space": 0.0,
+    "warmth": 0.144
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Focused leads tone with warm haze.",
-  "tags": [
-    "saturated",
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Leads",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Leads",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Digital Scream",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 3.0,
-      "drift_oscA_level": 0.9,
-      "drift_oscA_fmDepth": 0.6,
+      "drift_attack": 2.0,
+      "drift_decay": 250.0,
       "drift_filterCutoff": 4000.0,
+      "drift_filterEnvAmt": 0.6,
       "drift_filterReso": 0.3,
       "drift_filterSlope": 1.0,
       "drift_hazeAmount": 0.35,
-      "drift_attack": 2.0,
-      "drift_decay": 250.0,
-      "drift_sustain": 0.7,
+      "drift_level": -3.0,
+      "drift_oscA_fmDepth": 0.6,
+      "drift_oscA_level": 0.9,
+      "drift_oscA_mode": 3.0,
       "drift_release": 200.0,
-      "drift_filterEnvAmt": 0.6,
-      "drift_level": -3.0
+      "drift_sustain": 0.7
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.422,
-    "warmth": 0.144,
-    "movement": 0.0,
-    "density": 0.075,
-    "space": 0.0,
-    "aggression": 0.363
-  }
+  "tags": [
+    "saturated",
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

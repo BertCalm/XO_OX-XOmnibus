@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Light Pipe",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Flute brightness and clarinet warmth split into prismatic layers. Neither brother dominates.",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.83,
+    "density": 0.36,
+    "movement": 0.43,
+    "space": 0.38,
+    "warmth": 0.24
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "prism",
-    "bright",
-    "prism"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.83,
-    "warmth": 0.24,
-    "movement": 0.43,
-    "density": 0.36,
-    "space": 0.38,
-    "aggression": 0.06
-  },
+  "mood": "Prism",
+  "name": "Light Pipe",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.775,
-      "obbl_embouchureA": 0.454,
       "obbl_airFlutterA": 0.256,
-      "obbl_instrumentA": 2,
       "obbl_bodySizeA": 0.46,
-      "obbl_breathB": 0.631,
-      "obbl_reedStiffness": 0.374,
-      "obbl_reedBite": 0.198,
-      "obbl_instrumentB": 2,
       "obbl_bodySizeB": 0.387,
-      "obbl_voiceRouting": 0,
-      "obbl_damping": 0.995,
-      "obbl_sympatheticAmt": 0.426,
-      "obbl_driftRate": 0.123,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.225,
       "obbl_bondIntensity": 0.51,
       "obbl_bondRate": 0.161,
-      "obbl_fxAChorus": 0.216,
+      "obbl_bondStage": 0.225,
+      "obbl_breathA": 0.775,
+      "obbl_breathB": 0.631,
+      "obbl_damping": 0.995,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.123,
+      "obbl_embouchureA": 0.454,
       "obbl_fxABrightDelay": 0.242,
-      "obbl_fxAPlate": 0.16,
+      "obbl_fxAChorus": 0.216,
       "obbl_fxAExciter": 0.047,
-      "obbl_fxBPhaser": 0.109,
+      "obbl_fxAPlate": 0.16,
       "obbl_fxBDarkDelay": 0.221,
+      "obbl_fxBPhaser": 0.109,
       "obbl_fxBSpring": 0.108,
       "obbl_fxBTapeSat": 0.044,
-      "obbl_macroBreath": 0.653,
+      "obbl_instrumentA": 2,
+      "obbl_instrumentB": 2,
       "obbl_macroBond": 0.356,
+      "obbl_macroBreath": 0.653,
       "obbl_macroMischief": 0.0,
-      "obbl_macroWind": 0.287
+      "obbl_macroWind": 0.287,
+      "obbl_reedBite": 0.198,
+      "obbl_reedStiffness": 0.374,
+      "obbl_sympatheticAmt": 0.426,
+      "obbl_voiceRouting": 0
     }
   },
-  "coupling": null,
-  "description": "Flute brightness and clarinet warmth split into prismatic layers. Neither brother dominates."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "prism",
+    "bright",
+    "prism"
+  ],
+  "version": "1.0.0"
 }

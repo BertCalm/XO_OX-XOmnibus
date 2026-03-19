@@ -1,45 +1,56 @@
 {
-  "name": "DARK_HOT_STILL_DENSE_FLX_SLW_2",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Oceanic",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.861
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.464,
+    "brightness": 0.031,
+    "density": 0.919,
+    "movement": 0.084,
+    "space": 0.52,
+    "warmth": 0.947
+  },
   "engines": [
-    "OBLIQUE",
-    "OCEANIC"
+    "Oblique",
+    "Oceanic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.692,
+    "COUPLING": 0.754,
+    "MOVEMENT": 0.084,
+    "SPACE": 0.52
+  },
+  "mood": "Flux",
+  "name": "DARK_HOT_STILL_DENSE_FLX_SLW_2",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.951,
-      "macro_movement": 0.074,
       "macro_coupling": 0.903,
+      "macro_movement": 0.074,
       "macro_space": 0.499
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.848,
-      "macro_movement": 0.097,
       "macro_coupling": 0.841,
+      "macro_movement": 0.097,
       "macro_space": 0.526
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OBLIQUE",
-    "target": "OCEANIC",
-    "amount": 0.861
-  },
-  "dna": {
-    "brightness": 0.031,
-    "warmth": 0.947,
-    "movement": 0.084,
-    "density": 0.919,
-    "space": 0.52,
-    "aggression": 0.464
-  },
-  "macros": {
-    "CHARACTER": 0.692,
-    "MOVEMENT": 0.084,
-    "COUPLING": 0.754,
-    "SPACE": 0.52
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +58,6 @@
     "warm",
     "dense",
     "suspended-chaos"
-  ]
+  ],
+  "version": "1.0"
 }

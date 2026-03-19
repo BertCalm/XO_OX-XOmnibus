@@ -1,55 +1,55 @@
 {
-  "schema_version": 1,
-  "name": "Lichen Pad",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "Slow-growing texture that accumulates richness over time.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.35,
+    "density": 0.35,
+    "movement": 0.2,
+    "space": 0.2,
+    "warmth": 0.6
+  },
   "engines": [
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Slow-growing texture that accumulates richness over time.",
-  "tags": [
-    "slow",
-    "growing",
-    "accumulating",
-    "patient"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Lichen Pad",
   "parameters": {
     "Organon": {
-      "organon_metabolicRate": 0.2,
-      "organon_enzymeSelect": 1000.0,
       "organon_catalystDrive": 0.4,
       "organon_dampingCoeff": 0.1,
-      "organon_signalFlux": 0.5,
-      "organon_phasonShift": 0.0,
+      "organon_enzymeSelect": 1000.0,
       "organon_isotopeBalance": 0.4,
       "organon_lockIn": 0.0,
       "organon_membrane": 0.2,
-      "organon_noiseColor": 0.45
+      "organon_metabolicRate": 0.2,
+      "organon_noiseColor": 0.45,
+      "organon_phasonShift": 0.0,
+      "organon_signalFlux": 0.5
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.6,
-    "movement": 0.2,
-    "density": 0.35,
-    "space": 0.2,
-    "aggression": 0.05
-  }
+  "tags": [
+    "slow",
+    "growing",
+    "accumulating",
+    "patient"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

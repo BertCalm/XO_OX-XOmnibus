@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Orbital \u00d7 Origami \u2014 Velocity Couple coupling at extreme DNA corner.",
+  "description": "Orbital × Origami — Velocity Couple coupling at extreme DNA corner.",
   "tags": [
     "fury",
     "orbital",
@@ -33,7 +33,10 @@
     "space": 0.591,
     "aggression": 0.934
   },
-  "parameters": {},
+  "parameters": {
+    "Orbital": {},
+    "Origami": {}
+  },
   "coupling": {
     "pairs": [
       {

@@ -1,51 +1,62 @@
 {
-  "name": "Mass Fold Bloom",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Origami",
+        "type": "FILTER_MOD",
+        "amount": 0.8
+      }
+    ]
+  },
+  "created": "2026-03-16",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.6,
+    "density": 0.7,
+    "movement": 0.5,
+    "space": 0.4,
+    "warmth": 0.6
+  },
   "engines": [
-    "OBESE",
-    "ORIGAMI"
+    "Obese",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.8,
+    "MOVEMENT": 0.5,
+    "SPACE": 0.45
+  },
+  "mood": "Entangled",
+  "name": "Mass Fold Bloom",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.6,
-      "macro_movement": 0.5,
       "macro_coupling": 0.8,
+      "macro_movement": 0.5,
       "macro_space": 0.4
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.6,
-      "macro_movement": 0.5,
       "macro_coupling": 0.7,
+      "macro_movement": 0.5,
       "macro_space": 0.5
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OBESE",
-    "target": "ORIGAMI",
-    "amount": 0.8
-  },
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.6,
-    "movement": 0.5,
-    "density": 0.7,
-    "space": 0.4,
-    "aggression": 0.4
-  },
-  "macros": {
-    "CHARACTER": 0.6,
-    "MOVEMENT": 0.5,
-    "COUPLING": 0.8,
-    "SPACE": 0.45
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "obese",
     "origami"
   ],
-  "author": "XO_OX Coverage Pack 2026-03-16",
-  "created": "2026-03-16"
+  "version": "1.0"
 }

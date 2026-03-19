@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Clear Slant",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.754,
+        "engineA": "Obsidian",
+        "engineB": "Oblique",
+        "type": "FILTER_COUPLING"
+      }
+    ]
+  },
+  "couplingIntensity": "Subtle",
+  "created": "2026-03-16",
+  "description": "Ice-clear signal hits a slanted plane. OBSIDIAN purity couples with OBLIQUE angular drift.",
+  "dna": {
+    "aggression": 0.232,
+    "brightness": 0.732,
+    "density": 0.518,
+    "movement": 0.423,
+    "space": 0.664,
+    "warmth": 0.305
+  },
   "engines": [
     "Obsidian",
     "Oblique"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ice-clear signal hits a slanted plane. OBSIDIAN purity couples with OBLIQUE angular drift.",
-  "tags": [
-    "obsidian",
-    "oblique",
-    "crystal",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Subtle",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Clear Slant",
   "parameters": {
-    "Obsidian": {
-      "obsidian_brightness": 0.902,
-      "obsidian_warmth": 0.114,
-      "obsidian_movement": 0.351,
-      "obsidian_density": 0.535,
-      "obsidian_space": 0.614,
-      "obsidian_aggression": 0.159,
-      "obsidian_level": 0.717
-    },
     "Oblique": {
-      "oblique_brightness": 0.545,
-      "oblique_warmth": 0.579,
-      "oblique_movement": 0.504,
-      "oblique_density": 0.615,
-      "oblique_space": 0.644,
       "oblique_aggression": 0.425,
-      "oblique_level": 0.822
+      "oblique_brightness": 0.545,
+      "oblique_density": 0.615,
+      "oblique_level": 0.822,
+      "oblique_movement": 0.504,
+      "oblique_space": 0.644,
+      "oblique_warmth": 0.579
+    },
+    "Obsidian": {
+      "obsidian_aggression": 0.159,
+      "obsidian_brightness": 0.902,
+      "obsidian_density": 0.535,
+      "obsidian_level": 0.717,
+      "obsidian_movement": 0.351,
+      "obsidian_space": 0.614,
+      "obsidian_warmth": 0.114
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Oblique",
-        "type": "FILTER_COUPLING",
-        "amount": 0.754
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.732,
-    "warmth": 0.305,
-    "movement": 0.423,
-    "density": 0.518,
-    "space": 0.664,
-    "aggression": 0.232
-  }
+  "tags": [
+    "obsidian",
+    "oblique",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

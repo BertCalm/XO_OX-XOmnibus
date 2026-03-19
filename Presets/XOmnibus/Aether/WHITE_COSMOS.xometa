@@ -1,49 +1,61 @@
 {
-  "name": "WHITE COSMOS",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OUROBOROS",
-    "OBLIQUE"
-  ],
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.2,
-      "macro_movement": 0.136,
-      "macro_coupling": 0.074,
-      "macro_space": 0.173
-    },
-    "OBLIQUE": {
-      "macro_character": 0.713,
-      "macro_movement": 0.997,
-      "macro_coupling": 0.811,
-      "macro_space": 0.968
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OUROBOROS",
-    "target": "OBLIQUE",
-    "amount": 0.899
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oblique",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.899
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.947,
     "brightness": 0.932,
-    "warmth": 0.271,
-    "movement": 0.665,
     "density": 0.622,
+    "movement": 0.665,
     "space": 0.329,
-    "aggression": 0.947
+    "warmth": 0.271
   },
+  "engines": [
+    "Ouroboros",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.457,
-    "MOVEMENT": 0.567,
     "COUPLING": 0.443,
+    "MOVEMENT": 0.567,
     "SPACE": 0.571
   },
+  "mood": "Aether",
+  "name": "WHITE COSMOS",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.713,
+      "macro_coupling": 0.811,
+      "macro_movement": 0.997,
+      "macro_space": 0.968
+    },
+    "Ouroboros": {
+      "macro_character": 0.2,
+      "macro_coupling": 0.074,
+      "macro_movement": 0.136,
+      "macro_space": 0.173
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "bright",
     "extreme",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

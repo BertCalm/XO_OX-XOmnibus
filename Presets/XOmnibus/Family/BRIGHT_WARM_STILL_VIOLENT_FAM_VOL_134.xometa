@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_STILL_VIOLENT_FAM_VOL_134",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ole",
+        "type": "SPECTRAL_WEAVE",
+        "amount": 0.539
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.935,
+    "brightness": 0.967,
+    "density": 0.675,
+    "movement": 0.099,
+    "space": 0.513,
+    "warmth": 0.976
+  },
   "engines": [
-    "ODDOSCAR",
-    "OLE"
+    "OddOscar",
+    "Ole"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.967,
+    "COUPLING": 0.81,
+    "MOVEMENT": 0.086,
+    "SPACE": 0.514
+  },
+  "mood": "Family",
+  "name": "Solar Rage 4",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.978,
-      "macro_movement": 0.08,
       "macro_coupling": 0.808,
+      "macro_movement": 0.08,
       "macro_space": 0.537
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.956,
-      "macro_movement": 0.093,
       "macro_coupling": 0.811,
+      "macro_movement": 0.093,
       "macro_space": 0.492
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_WEAVE",
-    "source": "ODDOSCAR",
-    "target": "OLE",
-    "amount": 0.539
-  },
-  "dna": {
-    "brightness": 0.967,
-    "warmth": 0.976,
-    "movement": 0.099,
-    "density": 0.675,
-    "space": 0.513,
-    "aggression": 0.935
-  },
-  "macros": {
-    "CHARACTER": 0.967,
-    "MOVEMENT": 0.086,
-    "COUPLING": 0.81,
-    "SPACE": 0.514
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "still",
     "aggressive",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Organon \u00d7 Outwit \u2014 Frequency Shift coupling at extreme DNA corner.",
+  "description": "Organon × Outwit — Frequency Shift coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "organon",
@@ -33,7 +33,10 @@
     "space": 0.459,
     "aggression": 0.646
   },
-  "parameters": {},
+  "parameters": {
+    "Organon": {},
+    "Outwit": {}
+  },
   "coupling": {
     "pairs": [
       {

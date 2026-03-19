@@ -33,7 +33,9 @@
     "space": 0.92,
     "aggression": 0.22
   },
-  "parameters": {},
+  "parameters": {
+    "Opal": {}
+  },
   "tags": [
     "flux",
     "sparse-flux",
@@ -41,5 +43,5 @@
     "scattered",
     "light"
   ],
-  "description": "Opal granular particles scattered through maximum space \u2014 light without mass."
+  "description": "Opal granular particles scattered through maximum space — light without mass."
 }

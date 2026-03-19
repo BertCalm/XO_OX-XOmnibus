@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Orca Kill Strike",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "ORCA hunting strike — maximum power, density absolute, aggression apex.",
+  "dna": {
+    "aggression": 0.88,
+    "brightness": 0.2,
+    "density": 0.93,
+    "movement": 0.68,
+    "space": 0.18,
+    "warmth": 0.38
+  },
   "engines": [
-    "ORCA"
+    "Orca"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ORCA hunting strike \u2014 maximum power, density absolute, aggression apex.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "POWER",
+    "DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Orca Kill Strike",
+  "parameters": {
+    "Orca": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "portrait",
@@ -16,29 +41,6 @@
     "aggressive",
     "predator"
   ],
-  "macroLabels": [
-    "POWER",
-    "DEPTH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.2,
-    "warmth": 0.38,
-    "movement": 0.68,
-    "density": 0.93,
-    "space": 0.18,
-    "aggression": 0.88
-  }
+  "version": "1.0.0"
 }

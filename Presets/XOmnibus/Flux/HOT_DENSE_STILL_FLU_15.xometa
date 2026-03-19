@@ -1,45 +1,56 @@
 {
-  "name": "HOT DENSE STILL FLU 15",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Orca",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.732
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.337,
+    "brightness": 0.45,
+    "density": 0.886,
+    "movement": 0.113,
+    "space": 0.633,
+    "warmth": 0.894
+  },
   "engines": [
-    "OBLONG",
-    "ORCA"
+    "Oblong",
+    "Orca"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.672,
+    "COUPLING": 0.448,
+    "MOVEMENT": 0.113,
+    "SPACE": 0.633
+  },
+  "mood": "Flux",
+  "name": "HOT DENSE STILL FLU 15",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.672,
-      "macro_movement": 0.113,
       "macro_coupling": 0.448,
+      "macro_movement": 0.113,
       "macro_space": 0.633
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.766,
-      "macro_movement": 0.13,
       "macro_coupling": 0.795,
+      "macro_movement": 0.13,
       "macro_space": 0.651
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OBLONG",
-    "target": "ORCA",
-    "amount": 0.732
-  },
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.894,
-    "movement": 0.113,
-    "density": 0.886,
-    "space": 0.633,
-    "aggression": 0.337
-  },
-  "macros": {
-    "CHARACTER": 0.672,
-    "MOVEMENT": 0.113,
-    "COUPLING": 0.448,
-    "SPACE": 0.633
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "warm",
@@ -47,5 +58,6 @@
     "static",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

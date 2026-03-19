@@ -1,52 +1,62 @@
 {
-  "schema_version": 1,
-  "name": "Dissolving Membrane",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "OMBRE"
-  ],
-  "author": "XO_OX",
-  "macros": {
-    "CHARACTER": 0.41,
-    "MOVEMENT": 0.6,
-    "COUPLING": 0.75,
-    "SPACE": 0.77
-  },
-  "sonic_dna": {
-    "movement": 0.54,
-    "brightness": 0.55,
-    "aggression": 0.27,
-    "space": 0.77,
-    "warmth": 0.59,
-    "density": 0.64
-  },
-  "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.866,
-      "olap_decay": 0.59,
-      "olap_damping": 0.459,
-      "olap_diffusion": 0.671,
-      "olap_modDepth": 0.255,
-      "olap_modRate": 0.308,
-      "olap_preDelay": 0.248,
-      "olap_earlyMix": 0.307,
-      "olap_lateMix": 0.648,
-      "olap_filterCutoff": 0.644,
-      "olap_filterReso": 0.322,
-      "olap_outputLevel": 0.84,
-      "olap_couplingLevel": 0.602,
-      "olap_couplingBus": 0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_BLEND",
-    "source": "OVERLAP",
-    "target": "OMBRE",
-    "amount": 0.75
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Ombre",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.75
+      }
+    ]
   },
   "couplingIntensity": "Deep",
+  "description": "Ombre dual-narrative crossfade modulates OVERLAP early/late mix — memory and forgetting blend in time",
+  "engines": [
+    "Overlap",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.41,
+    "COUPLING": 0.75,
+    "MOVEMENT": 0.6,
+    "SPACE": 0.77
+  },
+  "mood": "Entangled",
+  "name": "Dissolving Membrane",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.602,
+      "olap_damping": 0.459,
+      "olap_decay": 0.59,
+      "olap_diffusion": 0.671,
+      "olap_earlyMix": 0.307,
+      "olap_filterCutoff": 0.644,
+      "olap_filterReso": 0.322,
+      "olap_lateMix": 0.648,
+      "olap_modDepth": 0.255,
+      "olap_modRate": 0.308,
+      "olap_outputLevel": 0.84,
+      "olap_preDelay": 0.248,
+      "olap_size": 0.866
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.27,
+    "brightness": 0.55,
+    "density": 0.64,
+    "movement": 0.54,
+    "space": 0.77,
+    "warmth": 0.59
+  },
   "tags": [
     "entangled",
     "coupling",
@@ -56,5 +66,13 @@
     "fdn",
     "reverb"
   ],
-  "description": "Ombre dual-narrative crossfade modulates OVERLAP early/late mix \u2014 memory and forgetting blend in time"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.644,
+    "warmth": 0.5,
+    "movement": 0.308,
+    "density": 0.5,
+    "space": 0.248,
+    "aggression": 0.3
+  }
 }

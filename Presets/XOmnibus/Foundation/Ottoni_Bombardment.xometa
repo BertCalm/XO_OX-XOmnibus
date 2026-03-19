@@ -33,7 +33,9 @@
     "space": 0.22,
     "aggression": 0.95
   },
-  "parameters": {},
+  "parameters": {
+    "Ottoni": {}
+  },
   "tags": [
     "siege",
     "ottoni",

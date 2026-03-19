@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "OddOscar Bedrock",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "The pure Oscar descend. Sub below sub.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.05,
+    "density": 0.95,
+    "movement": 0.15,
+    "space": 0.1,
+    "warmth": 0.75
+  },
   "engines": [
     "OddOscar"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "The pure Oscar descend. Sub below sub.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "OddOscar Bedrock",
+  "parameters": {
+    "OddOscar": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "bedrock",
     "oscar",
@@ -17,31 +42,6 @@
     "bass",
     "deep"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OddOscar": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.05,
-    "warmth": 0.75,
-    "movement": 0.15,
-    "density": 0.95,
-    "space": 0.1,
-    "aggression": 0.55
-  }
+  "version": "1.0.0"
 }

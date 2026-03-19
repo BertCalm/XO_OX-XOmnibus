@@ -1,48 +1,60 @@
 {
-  "name": "PULSE STEM",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OBLONG",
-    "OBESE"
-  ],
-  "parameters": {
-    "OBLONG": {
-      "macro_character": 0.463,
-      "macro_movement": 0.554,
-      "macro_coupling": 0.792,
-      "macro_space": 0.896
-    },
-    "OBESE": {
-      "macro_character": 0.45,
-      "macro_movement": 0.81,
-      "macro_coupling": 0.652,
-      "macro_space": 0.322
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OBLONG",
-    "target": "OBESE",
-    "amount": 0.481
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Obese",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.481
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.343,
     "brightness": 0.151,
-    "warmth": 0.062,
-    "movement": 0.104,
     "density": 0.086,
+    "movement": 0.104,
     "space": 0.899,
-    "aggression": 0.343
+    "warmth": 0.062
   },
+  "engines": [
+    "Oblong",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.714,
-    "MOVEMENT": 0.505,
     "COUPLING": 0.173,
+    "MOVEMENT": 0.505,
     "SPACE": 0.248
   },
+  "mood": "Entangled",
+  "name": "PULSE STEM",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.45,
+      "macro_coupling": 0.652,
+      "macro_movement": 0.81,
+      "macro_space": 0.322
+    },
+    "Oblong": {
+      "macro_character": 0.463,
+      "macro_coupling": 0.792,
+      "macro_movement": 0.554,
+      "macro_space": 0.896
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "trace",
     "residue"
-  ]
+  ],
+  "version": "1.0"
 }

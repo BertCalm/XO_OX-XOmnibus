@@ -1,50 +1,62 @@
 {
-  "name": "Threshold Lattice",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "ORACLE",
-    "ODYSSEY"
-  ],
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.09,
-      "macro_movement": 0.18,
-      "macro_coupling": 0.84,
-      "macro_space": 0.97
-    },
-    "ODYSSEY": {
-      "macro_character": 0.06,
-      "macro_movement": 0.13,
-      "macro_coupling": 0.89,
-      "macro_space": 1.0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ODYSSEY",
-    "target": "ORACLE",
-    "amount": 0.84
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.84
+      }
+    ]
   },
+  "description": "Odyssey envelope gates Oracle's breakpoints — a threshold crossed only in deepest space.",
   "dna": {
+    "aggression": 0.03,
     "brightness": 0.05,
-    "warmth": 0.1,
-    "movement": 0.18,
     "density": 0.07,
+    "movement": 0.18,
     "space": 0.97,
-    "aggression": 0.03
+    "warmth": 0.1
   },
+  "engines": [
+    "Oracle",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.09,
-    "MOVEMENT": 0.18,
     "COUPLING": 0.84,
+    "MOVEMENT": 0.18,
     "SPACE": 0.97
   },
+  "mood": "Entangled",
+  "name": "Threshold Lattice",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.06,
+      "macro_coupling": 0.89,
+      "macro_movement": 0.13,
+      "macro_space": 1.0
+    },
+    "Oracle": {
+      "macro_character": 0.09,
+      "macro_coupling": 0.84,
+      "macro_movement": 0.18,
+      "macro_space": 0.97
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "lattice",
     "void"
   ],
-  "description": "Odyssey envelope gates Oracle's breakpoints \u2014 a threshold crossed only in deepest space."
+  "version": "1.0"
 }

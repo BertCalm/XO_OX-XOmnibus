@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Oceanic Thermocline",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Temperature layer tone. Warm above, stable boundary.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.35,
+    "density": 0.7,
+    "movement": 0.2,
+    "space": 0.35,
+    "warmth": 0.85
+  },
   "engines": [
     "Oceanic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Temperature layer tone. Warm above, stable boundary.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Oceanic Thermocline",
+  "parameters": {
+    "Oceanic": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "tone",
     "layer",
@@ -16,31 +41,6 @@
     "foundation",
     "thermocline"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oceanic": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.85,
-    "movement": 0.2,
-    "density": 0.7,
-    "space": 0.35,
-    "aggression": 0.1
-  }
+  "version": "1.0.0"
 }

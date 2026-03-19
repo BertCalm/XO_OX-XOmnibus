@@ -1,51 +1,70 @@
 {
-  "schema_version": 1,
-  "name": "Ocean Texture",
-  "mood": "Atmosphere",
-  "engines": ["Obese"],
-  "author": "Guru Bin — B015/B008 Engine Deepening 2026-03-16",
-  "version": "1.0.0",
-  "description": "FAT-III scripture fulfilled: morph 1.0 routes all 13 oscillators through the noise generator, then through ZDF ladders at high resonance and very low cutoff. The ocean texture no synthesizer should be able to make. A sustained wash of filtered oscillator-noise — resonant, wet, vast. The whale dissolved into its own medium.",
-  "tags": ["atmosphere", "obese", "ocean", "texture", "noise", "zdf", "resonant", "fat-iii", "b015"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.28,
-    "warmth": 0.65,
-    "movement": 0.55,
-    "density": 0.72,
-    "space": 0.82,
-    "aggression": 0.18
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "FAT-III scripture fulfilled: morph 1.0 routes all 13 oscillators through the noise generator, then through ZDF ladders at high resonance and very low cutoff. The ocean texture no synthesizer should be able to make. A sustained wash of filtered oscillator-noise — resonant, wet, vast. The whale dissolved into its own medium.",
+  "dna": {
+    "aggression": 0.18,
+    "brightness": 0.28,
+    "density": 0.72,
+    "movement": 0.55,
+    "space": 0.82,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Ocean Texture",
   "parameters": {
     "Obese": {
-      "fat_morph": 1.0,
-      "fat_mojo": 0.6,
-      "fat_satDrive": 0.22,
-      "fat_filterCutoff": 0.25,
-      "fat_filterReso": 0.85,
-      "fat_noiseAmount": 0.75,
-      "fat_bitDepth": 1.0,
-      "fat_subLevel": 0.3,
-      "fat_groupMix": 0.65,
-      "fat_detune": 12.0,
-      "fat_stereoWidth": 0.7,
       "fat_ampAttack": 1.2,
       "fat_ampDecay": 0.8,
-      "fat_ampSustain": 0.82,
       "fat_ampRelease": 2.5,
+      "fat_ampSustain": 0.82,
+      "fat_bitDepth": 1.0,
+      "fat_detune": 12.0,
+      "fat_filterCutoff": 0.25,
+      "fat_filterReso": 0.85,
       "fat_fltEnvAmt": 0.18,
       "fat_fltEnvAttack": 0.5,
       "fat_fltEnvDecay": 1.0,
-      "fat_voiceMode": 0,
       "fat_glide": 0.12,
+      "fat_groupMix": 0.65,
       "fat_macroCharacter": 0.0,
-      "fat_macroMovement": 0.0,
       "fat_macroCoupling": 0.0,
-      "fat_macroSpace": 0.0
+      "fat_macroMovement": 0.0,
+      "fat_macroSpace": 0.0,
+      "fat_mojo": 0.6,
+      "fat_morph": 1.0,
+      "fat_noiseAmount": 0.75,
+      "fat_satDrive": 0.22,
+      "fat_stereoWidth": 0.7,
+      "fat_subLevel": 0.3,
+      "fat_voiceMode": 0
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "atmosphere",
+    "obese",
+    "ocean",
+    "texture",
+    "noise",
+    "zdf",
+    "resonant",
+    "fat-iii",
+    "b015"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

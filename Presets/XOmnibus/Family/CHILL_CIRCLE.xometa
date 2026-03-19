@@ -1,48 +1,60 @@
 {
-  "name": "CHILL CIRCLE",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OPAL",
-    "OMBRE"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.801,
-      "macro_movement": 0.109,
-      "macro_coupling": 0.192,
-      "macro_space": 0.536
-    },
-    "OMBRE": {
-      "macro_character": 0.14,
-      "macro_movement": 0.183,
-      "macro_coupling": 0.463,
-      "macro_space": 0.874
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMP_COUPLE",
-    "source": "OPAL",
-    "target": "OMBRE",
-    "amount": 0.345
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ombre",
+        "type": "AMP_COUPLE",
+        "amount": 0.345
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.054,
     "brightness": 0.109,
-    "warmth": 0.086,
-    "movement": 0.354,
     "density": 0.411,
+    "movement": 0.354,
     "space": 0.864,
-    "aggression": 0.054
+    "warmth": 0.086
   },
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.808,
-    "MOVEMENT": 0.856,
     "COUPLING": 0.098,
+    "MOVEMENT": 0.856,
     "SPACE": 0.652
   },
+  "mood": "Family",
+  "name": "CHILL CIRCLE",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.14,
+      "macro_coupling": 0.463,
+      "macro_movement": 0.183,
+      "macro_space": 0.874
+    },
+    "Opal": {
+      "macro_character": 0.801,
+      "macro_coupling": 0.192,
+      "macro_movement": 0.109,
+      "macro_space": 0.536
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "cold",
     "xlow-warmth"
-  ]
+  ],
+  "version": "1.0"
 }

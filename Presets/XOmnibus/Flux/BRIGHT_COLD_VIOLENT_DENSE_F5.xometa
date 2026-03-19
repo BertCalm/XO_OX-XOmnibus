@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT COLD VIOLENT DENSE F5",
-  "mood": "Flux",
-  "sonic_dna": {
-    "brightness": 0.923,
-    "warmth": 0.054,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Temporal",
+  "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme cold warmth, extreme violent aggression, extreme dense density. Maximum contrast character design.",
+  "dna": {
     "aggression": 0.954,
-    "movement": 0.47,
+    "brightness": 0.923,
     "density": 0.947,
-    "space": 0.574
+    "movement": 0.47,
+    "space": 0.574,
+    "warmth": 0.054
   },
   "engines": [
-    "OTTONI"
+    "Ottoni"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme bright brightness, extreme cold warmth, extreme violent aggression, extreme dense density. Maximum contrast character design.",
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "BRIGHT COLD VIOLENT DENSE F5",
+  "parameters": {
+    "Ottoni": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.954,
+    "brightness": 0.923,
+    "density": 0.947,
+    "movement": 0.47,
+    "space": 0.574,
+    "warmth": 0.054
+  },
   "tags": [
     "bright",
     "cold",
@@ -24,25 +44,5 @@
     "flux",
     "extreme"
   ],
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "couplingIntensity": "Temporal",
-  "dna": {
-    "brightness": 0.923,
-    "warmth": 0.054,
-    "movement": 0.47,
-    "density": 0.947,
-    "space": 0.574,
-    "aggression": 0.954
-  },
-  "parameters": {
-    "OTTONI": {}
-  },
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

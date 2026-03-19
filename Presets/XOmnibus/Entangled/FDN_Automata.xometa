@@ -1,22 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "FDN Automata",
-  "mood": "Entangled",
-  "engines": [
-    "OVERLAP",
-    "OUTWIT"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.733,
+        "engineA": "Overlap",
+        "engineB": "Outwit",
+        "type": "CHAOS_INJECT"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
   "description": "OVERLAP decay length modulates OUTWIT generation rate \u2014 the longer the tail, the faster the evolution",
-  "tags": [
-    "coupling",
-    "entangled",
-    "overlap",
-    "outwit",
-    "marquee",
-    "chaos",
-    "spatial"
+  "dna": {
+    "aggression": 0.077,
+    "brightness": 0.55,
+    "density": 0.872,
+    "movement": 0.65,
+    "space": 0.675,
+    "warmth": 0.475
+  },
+  "engines": [
+    "Overlap",
+    "Outwit"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,80 +32,74 @@
   ],
   "macros": {
     "CHARACTER": 0.731,
-    "MOVEMENT": 0.719,
     "COUPLING": 0.871,
+    "MOVEMENT": 0.719,
     "SPACE": 0.67
   },
-  "couplingIntensity": "Deep",
-  "dna": {
-    "brightness": 0.55,
-    "space": 0.675,
-    "aggression": 0.077,
-    "movement": 0.65,
-    "warmth": 0.475,
-    "density": 0.872
-  },
-  "sonic_dna": {
-    "brightness": 0.55,
-    "space": 0.675,
-    "aggression": 0.4,
-    "movement": 0.65,
-    "warmth": 0.475,
-    "density": 0.675
-  },
+  "mood": "Entangled",
+  "name": "FDN Automata II",
   "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.695,
-      "olap_decay": 0.899,
-      "olap_damping": 0.305,
-      "olap_diffusion": 0.697,
-      "olap_modDepth": 0.402,
-      "olap_modRate": 0.351,
-      "olap_preDelay": 0.046,
-      "olap_earlyMix": 0.256,
-      "olap_lateMix": 0.706,
-      "olap_filterCutoff": 0.648,
-      "olap_filterReso": 0.235,
-      "olap_outputLevel": 0.787,
-      "olap_couplingLevel": 0.69,
-      "olap_couplingBus": 0,
-      "olap_frondDensity": 0.426,
-      "olap_nodeCount": 14,
-      "olap_crossfeedAmt": 0.544,
-      "olap_spinRate": 0.023,
-      "olap_shimmerMix": 0.288
-    },
-    "OUTWIT": {
-      "owit_rule": 73,
-      "owit_arms": 6,
-      "owit_cellSize": 0.446,
-      "owit_density": 0.503,
-      "owit_evolveRate": 0.397,
-      "owit_mutateProb": 0.089,
-      "owit_pitchSpread": 0.201,
-      "owit_filterCutoff": 0.661,
-      "owit_filterReso": 0.388,
+    "Outwit": {
       "owit_ampAttack": 0.195,
       "owit_ampRelease": 0.683,
-      "owit_outputLevel": 0.767,
-      "owit_couplingLevel": 0.537,
-      "owit_couplingBus": 0,
       "owit_armStagger": 0.313,
+      "owit_arms": 6,
       "owit_borderMode": 2,
-      "owit_inkCloudMix": 0.228,
+      "owit_cellSize": 0.446,
       "owit_chroma1": 0.419,
       "owit_chroma2": 0.524,
-      "owit_polyDepth": 0.381
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.537,
+      "owit_density": 0.503,
+      "owit_evolveRate": 0.397,
+      "owit_filterCutoff": 0.661,
+      "owit_filterReso": 0.388,
+      "owit_inkCloudMix": 0.228,
+      "owit_mutateProb": 0.089,
+      "owit_outputLevel": 0.767,
+      "owit_pitchSpread": 0.201,
+      "owit_polyDepth": 0.381,
+      "owit_rule": 73
+    },
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.69,
+      "olap_crossfeedAmt": 0.544,
+      "olap_damping": 0.305,
+      "olap_decay": 0.899,
+      "olap_diffusion": 0.697,
+      "olap_earlyMix": 0.256,
+      "olap_filterCutoff": 0.648,
+      "olap_filterReso": 0.235,
+      "olap_frondDensity": 0.426,
+      "olap_lateMix": 0.706,
+      "olap_modDepth": 0.402,
+      "olap_modRate": 0.351,
+      "olap_nodeCount": 14,
+      "olap_outputLevel": 0.787,
+      "olap_preDelay": 0.046,
+      "olap_shimmerMix": 0.288,
+      "olap_size": 0.695,
+      "olap_spinRate": 0.023
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERLAP",
-        "engineB": "OUTWIT",
-        "type": "CHAOS_INJECT",
-        "amount": 0.733
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4,
+    "brightness": 0.55,
+    "density": 0.675,
+    "movement": 0.65,
+    "space": 0.675,
+    "warmth": 0.475
+  },
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "outwit",
+    "marquee",
+    "chaos",
+    "spatial"
+  ],
+  "version": "1.0.0"
 }

@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Ombre Into Nothing",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OMBRE gradient that ends in black — fade completed, no return.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.11,
+    "density": 0.7,
+    "movement": 0.28,
+    "space": 0.45,
+    "warmth": 0.2
+  },
   "engines": [
-    "OMBRE"
+    "Ombre"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OMBRE gradient that ends in black \u2014 fade completed, no return.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "FADE",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Ombre Into Nothing",
+  "parameters": {
+    "Ombre": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "portrait",
@@ -16,29 +41,6 @@
     "fade",
     "gradient"
   ],
-  "macroLabels": [
-    "FADE",
-    "COLOR",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.11,
-    "warmth": 0.2,
-    "movement": 0.28,
-    "density": 0.7,
-    "space": 0.45,
-    "aggression": 0.45
-  }
+  "version": "1.0.0"
 }

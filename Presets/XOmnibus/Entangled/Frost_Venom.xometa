@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Frost Venom",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.91,
+        "engineA": "Obsidian",
+        "engineB": "Overbite",
+        "type": "TIMBRAL_WARP"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Overbite BITE timbral-warping Obsidian crystal — fang at absolute zero.",
+  "dna": {
+    "aggression": 0.95,
+    "brightness": 0.11,
+    "density": 0.91,
+    "movement": 0.6,
+    "space": 0.1,
+    "warmth": 0.13
+  },
   "engines": [
-    "OBSIDIAN",
-    "OVERBITE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Overbite BITE timbral-warping Obsidian crystal \u2014 fang at absolute zero.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "cold",
-    "obsidian",
-    "overbite",
-    "frost"
+    "Obsidian",
+    "Overbite"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,32 @@
   ],
   "macros": {
     "CHARACTER": 0.92,
-    "MOVEMENT": 0.6,
     "COUPLING": 0.91,
+    "MOVEMENT": 0.6,
     "SPACE": 0.1
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.11,
-    "warmth": 0.13,
-    "movement": 0.6,
-    "density": 0.91,
-    "space": 0.1,
-    "aggression": 0.95
+  "mood": "Entangled",
+  "name": "Frost Venom",
+  "parameters": {
+    "Obsidian": {},
+    "Overbite": {}
   },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.95,
     "brightness": 0.11,
-    "warmth": 0.13,
-    "movement": 0.6,
     "density": 0.91,
+    "movement": 0.6,
     "space": 0.1,
-    "aggression": 0.95
+    "warmth": 0.13
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBSIDIAN",
-        "engineB": "OVERBITE",
-        "type": "TIMBRAL_WARP",
-        "amount": 0.91
-      }
-    ]
-  }
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obsidian",
+    "overbite",
+    "frost"
+  ],
+  "version": "1.0.0"
 }

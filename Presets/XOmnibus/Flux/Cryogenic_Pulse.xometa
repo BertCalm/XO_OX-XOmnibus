@@ -33,7 +33,9 @@
     "space": 0.68,
     "aggression": 0.4
   },
-  "parameters": {},
+  "parameters": {
+    "OddOscar": {}
+  },
   "tags": [
     "flux",
     "cold-flux",
@@ -41,5 +43,5 @@
     "cryogenic",
     "pulse"
   ],
-  "description": "OddOscar cold oscillator pair \u2014 cryogenic pulse through frozen tubes."
+  "description": "OddOscar cold oscillator pair — cryogenic pulse through frozen tubes."
 }

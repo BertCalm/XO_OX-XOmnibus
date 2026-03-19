@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Compressor Crush",
-  "mood": "Foundation",
-  "sonic_dna": {
-    "brightness": 0.2068,
-    "warmth": 0.6787,
-    "movement": 0.6636,
-    "density": 0.8663,
-    "space": 0.2923,
-    "aggression": 0.7598
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Machine-tight kick/snare with extreme punch",
   "dna": {
+    "aggression": 0.7598,
     "brightness": 0.2068,
-    "warmth": 0.6787,
-    "movement": 0.6636,
     "density": 0.8663,
+    "movement": 0.6636,
     "space": 0.2923,
-    "aggression": 0.7598
+    "warmth": 0.6787
   },
   "engines": [
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Machine-tight kick/snare with extreme punch",
-  "tags": [
-    "foundation",
-    "aggressive",
-    "extreme",
-    "anchor",
-    "drive"
+    "Onset"
   ],
   "macroLabels": [
     "MACHINE",
@@ -39,23 +24,38 @@
   ],
   "macros": {
     "MACHINE": 0.8146,
+    "MUTATE": 0.7902,
     "PUNCH": 0.7173,
-    "SPACE": 0.26,
-    "MUTATE": 0.7902
+    "SPACE": 0.26
   },
-  "couplingIntensity": "None",
+  "mood": "Foundation",
+  "name": "Compressor Crush",
   "parameters": {
-    "ONSET": {
+    "Onset": {
+      "onset_couplingBus": 0,
+      "onset_couplingLevel": 0.5,
       "onset_macro_machine": 0.8146,
+      "onset_macro_mutate": 0.7902,
       "onset_macro_punch": 0.7173,
       "onset_macro_space": 0.26,
-      "onset_macro_mutate": 0.7902,
-      "onset_outputLevel": 0.85,
-      "onset_couplingLevel": 0.5,
-      "onset_couplingBus": 0
+      "onset_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.7598,
+    "brightness": 0.2068,
+    "density": 0.8663,
+    "movement": 0.6636,
+    "space": 0.2923,
+    "warmth": 0.6787
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "extreme",
+    "anchor",
+    "drive"
+  ],
+  "version": "1.0.0"
 }

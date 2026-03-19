@@ -1,48 +1,60 @@
 {
-  "name": "GHOSTED SHADOW",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Osteria",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.443
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.557,
+    "brightness": 0.561,
+    "density": 0.086,
+    "movement": 0.622,
+    "space": 0.675,
+    "warmth": 0.767
+  },
   "engines": [
-    "OPTIC",
-    "OSTERIA"
+    "Optic",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.609,
+    "COUPLING": 0.693,
+    "MOVEMENT": 0.658,
+    "SPACE": 0.029
+  },
+  "mood": "Entangled",
+  "name": "GHOSTED SHADOW",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.155,
-      "macro_movement": 0.482,
       "macro_coupling": 0.847,
+      "macro_movement": 0.482,
       "macro_space": 0.35
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.556,
-      "macro_movement": 0.115,
       "macro_coupling": 0.279,
+      "macro_movement": 0.115,
       "macro_space": 0.226
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OPTIC",
-    "target": "OSTERIA",
-    "amount": 0.443
-  },
-  "dna": {
-    "brightness": 0.561,
-    "warmth": 0.767,
-    "movement": 0.622,
-    "density": 0.086,
-    "space": 0.675,
-    "aggression": 0.557
-  },
-  "macros": {
-    "CHARACTER": 0.609,
-    "MOVEMENT": 0.658,
-    "COUPLING": 0.693,
-    "SPACE": 0.029
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "minimal",
     "negative-space"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,45 +1,56 @@
 {
-  "name": "COLD_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_3",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oracle",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.824
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.8886,
+    "brightness": 0.6805,
+    "density": 0.893,
+    "movement": 0.9619,
+    "space": 0.13,
+    "warmth": 0.0576
+  },
   "engines": [
-    "OPTIC",
-    "ORACLE"
+    "Optic",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3871,
+    "COUPLING": 0.8755,
+    "MOVEMENT": 0.9624,
+    "SPACE": 0.1149
+  },
+  "mood": "Flux",
+  "name": "Mirror Flutter 2",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.3892,
-      "macro_movement": 0.9849,
       "macro_coupling": 0.8653,
+      "macro_movement": 0.9849,
       "macro_space": 0.1202
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.385,
-      "macro_movement": 0.9398,
       "macro_coupling": 0.8856,
+      "macro_movement": 0.9398,
       "macro_space": 0.1097
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OPTIC",
-    "target": "ORACLE",
-    "amount": 0.824
-  },
-  "dna": {
-    "brightness": 0.6805,
-    "warmth": 0.0576,
-    "movement": 0.9619,
-    "density": 0.893,
-    "space": 0.13,
-    "aggression": 0.8886
-  },
-  "macros": {
-    "CHARACTER": 0.3871,
-    "MOVEMENT": 0.9624,
-    "COUPLING": 0.8755,
-    "SPACE": 0.1149
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "cold",
@@ -47,5 +58,6 @@
     "dense",
     "intimate",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

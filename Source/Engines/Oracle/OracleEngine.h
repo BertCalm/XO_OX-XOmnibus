@@ -839,7 +839,9 @@ public:
                 // Stochastic depth: how much the breakpoints actually move.
                 // Controlled by the stochastic envelope (fades in/out with note)
                 // and the drift parameter (global evolution intensity).
-                float stochasticDepth = stochasticLevel * effectiveDrift;
+                // D001: velocity adds stochastic scatter — harder hits = more chaotic evolution
+                float velScatterBoost = voice.velocity * 0.25f;
+                float stochasticDepth = stochasticLevel * (effectiveDrift + velScatterBoost);
 
                 // --- Phase increment ---
                 float frequency = voice.currentFrequency;

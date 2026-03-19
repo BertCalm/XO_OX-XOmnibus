@@ -1,45 +1,56 @@
 {
-  "name": "FUSED GRID",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.8419
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.652,
+    "brightness": 0.9134,
+    "density": 0.9247,
+    "movement": 0.9884,
+    "space": 0.7924,
+    "warmth": 0.3812
+  },
   "engines": [
-    "ORACLE",
-    "ORGANON"
+    "Oracle",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1521,
+    "COUPLING": 0.7379,
+    "MOVEMENT": 0.9648,
+    "SPACE": 0.9654
+  },
+  "mood": "Entangled",
+  "name": "FUSED GRID",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.9329,
-      "macro_movement": 0.8696,
       "macro_coupling": 0.9923,
+      "macro_movement": 0.8696,
       "macro_space": 0.2388
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.383,
-      "macro_movement": 0.856,
       "macro_coupling": 0.7643,
+      "macro_movement": 0.856,
       "macro_space": 0.3182
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ORACLE",
-    "target": "ORGANON",
-    "amount": 0.8419
-  },
-  "dna": {
-    "brightness": 0.9134,
-    "warmth": 0.3812,
-    "movement": 0.9884,
-    "density": 0.9247,
-    "space": 0.7924,
-    "aggression": 0.652
-  },
-  "macros": {
-    "CHARACTER": 0.1521,
-    "MOVEMENT": 0.9648,
-    "COUPLING": 0.7379,
-    "SPACE": 0.9654
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -49,5 +60,6 @@
     "stacked",
     "iron",
     "xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Air Current",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Breath sustains through long phrases. WIND high — the air path reverbs into wide space. 'Air Current' keeps nothing still.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.36,
+    "density": 0.18,
+    "movement": 0.23,
+    "space": 0.71,
+    "warmth": 0.69
+  },
   "engines": [
     "Obbligato"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "wind",
-    "flute",
-    "atmosphere",
-    "pad",
-    "atmosphere"
   ],
   "macroLabels": [
     "BREATH",
@@ -20,50 +21,49 @@
     "MISCHIEF",
     "WIND"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.36,
-    "warmth": 0.69,
-    "movement": 0.23,
-    "density": 0.18,
-    "space": 0.71,
-    "aggression": 0.15
-  },
+  "mood": "Atmosphere",
+  "name": "Air Current",
   "parameters": {
     "Obbligato": {
-      "obbl_breathA": 0.668,
-      "obbl_embouchureA": 0.678,
       "obbl_airFlutterA": 0.148,
-      "obbl_instrumentA": 4,
       "obbl_bodySizeA": 0.648,
-      "obbl_breathB": 0.632,
-      "obbl_reedStiffness": 0.551,
-      "obbl_reedBite": 0.238,
-      "obbl_instrumentB": 4,
       "obbl_bodySizeB": 0.667,
-      "obbl_voiceRouting": 0,
-      "obbl_damping": 0.995,
-      "obbl_sympatheticAmt": 0.394,
-      "obbl_driftRate": 0.077,
-      "obbl_driftDepth": 1.0,
-      "obbl_bondStage": 0.395,
       "obbl_bondIntensity": 0.521,
       "obbl_bondRate": 0.299,
-      "obbl_fxAChorus": 0.173,
+      "obbl_bondStage": 0.395,
+      "obbl_breathA": 0.668,
+      "obbl_breathB": 0.632,
+      "obbl_damping": 0.995,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.077,
+      "obbl_embouchureA": 0.678,
       "obbl_fxABrightDelay": 0.121,
-      "obbl_fxAPlate": 0.353,
+      "obbl_fxAChorus": 0.173,
       "obbl_fxAExciter": 0.072,
-      "obbl_fxBPhaser": 0.19,
+      "obbl_fxAPlate": 0.353,
       "obbl_fxBDarkDelay": 0.226,
+      "obbl_fxBPhaser": 0.19,
       "obbl_fxBSpring": 0.201,
       "obbl_fxBTapeSat": 0.094,
-      "obbl_macroBreath": 0.329,
+      "obbl_instrumentA": 4,
+      "obbl_instrumentB": 4,
       "obbl_macroBond": 0.217,
+      "obbl_macroBreath": 0.329,
       "obbl_macroMischief": 0.075,
-      "obbl_macroWind": 0.364
+      "obbl_macroWind": 0.364,
+      "obbl_reedBite": 0.238,
+      "obbl_reedStiffness": 0.551,
+      "obbl_sympatheticAmt": 0.394,
+      "obbl_voiceRouting": 0
     }
   },
-  "coupling": null,
-  "description": "Breath sustains through long phrases. WIND high \u2014 the air path reverbs into wide space. 'Air Current' keeps nothing still."
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "atmosphere",
+    "pad",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
 }

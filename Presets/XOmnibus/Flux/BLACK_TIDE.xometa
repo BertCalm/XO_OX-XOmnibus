@@ -1,49 +1,61 @@
 {
-  "name": "BLACK TIDE",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OUROBOROS",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OUROBOROS": {
-      "macro_character": 0.844,
-      "macro_movement": 0.331,
-      "macro_coupling": 0.028,
-      "macro_space": 0.877
-    },
-    "OBLONG": {
-      "macro_character": 0.261,
-      "macro_movement": 0.581,
-      "macro_coupling": 0.984,
-      "macro_space": 0.038
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_LINK",
-    "source": "OUROBOROS",
-    "target": "OBLONG",
-    "amount": 0.708
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oblong",
+        "type": "RESONANCE_LINK",
+        "amount": 0.708
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.506,
     "brightness": 0.05,
-    "warmth": 0.439,
-    "movement": 0.02,
     "density": 0.664,
+    "movement": 0.02,
     "space": 0.411,
-    "aggression": 0.506
+    "warmth": 0.439
   },
+  "engines": [
+    "Ouroboros",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.552,
-    "MOVEMENT": 0.456,
     "COUPLING": 0.506,
+    "MOVEMENT": 0.456,
     "SPACE": 0.458
   },
+  "mood": "Flux",
+  "name": "BLACK TIDE",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.261,
+      "macro_coupling": 0.984,
+      "macro_movement": 0.581,
+      "macro_space": 0.038
+    },
+    "Ouroboros": {
+      "macro_character": 0.844,
+      "macro_coupling": 0.028,
+      "macro_movement": 0.331,
+      "macro_space": 0.877
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "extreme",
     "low-movement"
-  ]
+  ],
+  "version": "1.0"
 }

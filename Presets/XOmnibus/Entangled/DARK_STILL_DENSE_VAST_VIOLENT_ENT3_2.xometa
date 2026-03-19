@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "DARK_STILL_DENSE_VAST_VIOLENT_ENT3_2",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Opal",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.9556
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_STILL_DENSE_VAST_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "dna": {
+    "aggression": 0.9533,
+    "brightness": 0.0499,
+    "density": 0.8866,
+    "movement": 0.064,
+    "space": 0.8978,
+    "warmth": 0.4279
+  },
   "engines": [
-    "OCELOT",
-    "OPAL"
+    "Ocelot",
+    "Opal"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_STILL_DENSE_VAST_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8057,
+    "COUPLING": 0.8365,
+    "MOVEMENT": 0.0641,
+    "SPACE": 0.6251
+  },
+  "mood": "Entangled",
+  "name": "Fragment Strike 2",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.7033,
+      "macro_coupling": 0.8294,
+      "macro_movement": 0.0465,
+      "macro_space": 0.496
+    },
+    "Opal": {
+      "macro_character": 0.9081,
+      "macro_coupling": 0.8435,
+      "macro_movement": 0.0818,
+      "macro_space": 0.7543
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "frozen",
@@ -19,53 +70,6 @@
     "dense",
     "vast"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OCELOT": {
-      "macro_character": 0.7033,
-      "macro_movement": 0.0465,
-      "macro_coupling": 0.8294,
-      "macro_space": 0.496
-    },
-    "OPAL": {
-      "macro_character": 0.9081,
-      "macro_movement": 0.0818,
-      "macro_coupling": 0.8435,
-      "macro_space": 0.7543
-    }
-  },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OCELOT",
-    "target": "OPAL",
-    "amount": 0.9556
-  },
-  "macros": {
-    "CHARACTER": 0.8057,
-    "MOVEMENT": 0.0641,
-    "COUPLING": 0.8365,
-    "SPACE": 0.6251
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.0499,
-    "warmth": 0.4279,
-    "movement": 0.064,
-    "density": 0.8866,
-    "space": 0.8978,
-    "aggression": 0.9533
-  }
+  "version": "1.0.0"
 }

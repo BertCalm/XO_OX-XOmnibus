@@ -1,48 +1,60 @@
 {
-  "name": "HOLLOW CURRENT 3",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OTTONI",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.9745,
-      "macro_movement": 0.8184,
-      "macro_coupling": 0.6136,
-      "macro_space": 0.6427
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.0263,
-      "macro_movement": 0.9291,
-      "macro_coupling": 0.8295,
-      "macro_space": 0.2674
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OTTONI",
-    "target": "OBBLIGATO",
-    "amount": 0.4082
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Obbligato",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.4082
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.5741,
     "brightness": 0.1082,
-    "warmth": 0.8454,
-    "movement": 0.3676,
     "density": 0.0424,
+    "movement": 0.3676,
     "space": 0.9683,
-    "aggression": 0.5741
+    "warmth": 0.8454
   },
+  "engines": [
+    "Ottoni",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7027,
-    "MOVEMENT": 0.309,
     "COUPLING": 0.3398,
+    "MOVEMENT": 0.309,
     "SPACE": 0.0061
   },
+  "mood": "Flux",
+  "name": "HOLLOW CURRENT 3",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.0263,
+      "macro_coupling": 0.8295,
+      "macro_movement": 0.9291,
+      "macro_space": 0.2674
+    },
+    "Ottoni": {
+      "macro_character": 0.9745,
+      "macro_coupling": 0.6136,
+      "macro_movement": 0.8184,
+      "macro_space": 0.6427
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "sparse",
     "minimal"
-  ]
+  ],
+  "version": "1.0"
 }

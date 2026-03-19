@@ -1,19 +1,30 @@
 {
-  "schema_version": 1,
-  "name": "Warm Filament",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.845,
+        "description": "Owlfish drives Oblong via LFO_SYNC",
+        "source": "Owlfish",
+        "target": "Oblong",
+        "type": "LFO_SYNC"
+      }
+    ]
+  },
+  "couplingIntensity": "Light",
+  "created": "2026-03-16",
+  "description": "OBLONG's amber warmth tuned to OWLFISH's abyssal gold — two warm-spectrum oscillators harmonically related across depth zones.",
+  "dna": {
+    "aggression": 0.391,
+    "brightness": 0.521,
+    "density": 0.686,
+    "movement": 0.327,
+    "space": 0.42,
+    "warmth": 0.606
+  },
   "engines": [
     "Owlfish",
     "Oblong"
-  ],
-  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
-  "version": "1.0.0",
-  "description": "OBLONG's amber warmth tuned to OWLFISH's abyssal gold — two warm-spectrum oscillators harmonically related across depth zones.",
-  "tags": [
-    "entangled",
-    "coupling",
-    "owlfish",
-    "oblong"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -21,64 +32,53 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Light",
-  "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.521,
-    "warmth": 0.606,
-    "movement": 0.327,
-    "density": 0.686,
-    "space": 0.42,
-    "aggression": 0.391
-  },
+  "mood": "Entangled",
+  "name": "Warm Filament",
   "parameters": {
-    "Owlfish": {
-      "owl_filterCutoff": 0.495,
-      "owl_filterRes": 0.503,
-      "owl_oscPitch": 0.427,
-      "owl_oscLevel": 0.722,
-      "owl_subLevel": 0.241,
-      "owl_mixturSpread": 0.426,
-      "owl_mixturBlend": 0.315,
-      "owl_resonantPitch": 0.361,
-      "owl_resonantFeedback": 0.291,
-      "owl_abyssalDrive": 0.472,
-      "owl_ampAttack": 0.119,
-      "owl_ampDecay": 0.918,
-      "owl_ampSustain": 0.583,
-      "owl_ampRelease": 1.85,
-      "owl_lfoRate": 0.237,
-      "owl_lfoDepth": 0.264,
-      "owl_lfoShape": 0.126,
-      "owl_envDepth": 0.527,
-      "owl_hall": 0.389,
-      "owl_shimmer": 0.115,
-      "owl_macroCharacter": 0.0,
-      "owl_macroMovement": 0.0,
-      "owl_macroCoupling": 0.0,
-      "owl_macroSpace": 0.0
-    },
     "Oblong": {
+      "bob_attack": 0.015,
       "bob_fltCutoff": 0.534,
       "bob_fltReso": 0.349,
       "bob_lfoRate": 0.201,
-      "bob_attack": 0.015,
-      "bob_release": 1.0,
       "bob_macroCharacter": 0.0,
-      "bob_macroCoupling": 0.095
+      "bob_macroCoupling": 0.095,
+      "bob_release": 1.0
+    },
+    "Owlfish": {
+      "owl_abyssalDrive": 0.472,
+      "owl_ampAttack": 0.119,
+      "owl_ampDecay": 0.918,
+      "owl_ampRelease": 1.85,
+      "owl_ampSustain": 0.583,
+      "owl_envDepth": 0.527,
+      "owl_filterCutoff": 0.495,
+      "owl_filterRes": 0.503,
+      "owl_hall": 0.389,
+      "owl_lfoDepth": 0.264,
+      "owl_lfoRate": 0.237,
+      "owl_lfoShape": 0.126,
+      "owl_macroCharacter": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroSpace": 0.0,
+      "owl_mixturBlend": 0.315,
+      "owl_mixturSpread": 0.426,
+      "owl_oscLevel": 0.722,
+      "owl_oscPitch": 0.427,
+      "owl_resonantFeedback": 0.291,
+      "owl_resonantPitch": 0.361,
+      "owl_shimmer": 0.115,
+      "owl_subLevel": 0.241
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "source": "Owlfish",
-        "target": "Oblong",
-        "type": "LFO_SYNC",
-        "amount": 0.845,
-        "description": "Owlfish drives Oblong via LFO_SYNC"
-      }
-    ]
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "oblong"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

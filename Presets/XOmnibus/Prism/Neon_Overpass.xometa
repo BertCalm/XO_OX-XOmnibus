@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Neon Overpass",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.88,
-    "warmth": 0.18,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Glitch-shredded SNES palette, aggressive treble presence",
+  "dna": {
     "aggression": 0.2,
-    "movement": 0.6,
+    "brightness": 0.88,
     "density": 0.45,
-    "space": 0.65
+    "movement": 0.6,
+    "space": 0.65,
+    "warmth": 0.18
   },
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Glitch-shredded SNES palette, aggressive treble presence",
+  "macroLabels": [
+    "ERA",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Neon Overpass",
+  "parameters": {
+    "Overworld": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2,
+    "brightness": 0.88,
+    "density": 0.45,
+    "movement": 0.6,
+    "space": 0.65,
+    "warmth": 0.18
+  },
   "tags": [
     "prism",
     "bright",
@@ -24,23 +44,5 @@
     "glitch",
     "urban"
   ],
-  "macroLabels": [
-    "ERA",
-    "GLITCH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.88,
-    "warmth": 0.18,
-    "movement": 0.6,
-    "density": 0.45,
-    "space": 0.65,
-    "aggression": 0.2
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

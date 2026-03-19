@@ -1,34 +1,21 @@
 {
-  "schema_version": 1,
-  "name": "DARK COLD SPARSE VAST 4",
-  "mood": "Entangled",
-  "sonic_dna": {
-    "brightness": 0.0746,
-    "warmth": 0.0628,
-    "density": 0.0741,
-    "space": 0.9148,
-    "aggression": 0.4517,
-    "movement": 0.4559
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "High",
+  "couplingType": "MIRROR",
+  "description": "Ultra-diverse Entangled preset — dark cold sparse vast. Designed for MIRROR coupling with XOptic.",
   "dna": {
-    "brightness": 0.0746,
-    "warmth": 0.0628,
-    "density": 0.0741,
-    "space": 0.9148,
     "aggression": 0.4517,
-    "movement": 0.4559
+    "brightness": 0.0746,
+    "density": 0.0741,
+    "movement": 0.4559,
+    "space": 0.9148,
+    "warmth": 0.0628
   },
   "engines": [
-    "XOptic"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark cold sparse vast. Designed for MIRROR coupling with XOptic.",
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "mirror",
-    "optic"
+    "Optic"
   ],
   "macroLabels": [
     "FORGE",
@@ -36,15 +23,28 @@
     "LUSTER",
     "OPEN"
   ],
-  "couplingType": "MIRROR",
-  "couplingIntensity": "High",
+  "mood": "Foundation",
+  "name": "DARK COLD SPARSE VAST 4",
   "parameters": {
-    "XOptic": {
-      "couplingLevel": 0.543,
-      "couplingBus": 2
+    "Optic": {
+      "couplingBus": 2,
+      "couplingLevel": 0.543
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4517,
+    "brightness": 0.0746,
+    "density": 0.0741,
+    "movement": 0.4559,
+    "space": 0.9148,
+    "warmth": 0.0628
+  },
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "mirror",
+    "optic"
+  ],
+  "version": "1.0.0"
 }

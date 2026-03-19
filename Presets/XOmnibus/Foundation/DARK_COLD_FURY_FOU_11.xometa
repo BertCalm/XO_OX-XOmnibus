@@ -1,45 +1,56 @@
 {
-  "name": "DARK COLD FURY FOU 11",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OVERBITE",
-    "OCELOT"
-  ],
-  "parameters": {
-    "OVERBITE": {
-      "macro_character": 0.073,
-      "macro_movement": 0.348,
-      "macro_coupling": 0.515,
-      "macro_space": 0.435
-    },
-    "OCELOT": {
-      "macro_character": 0.0,
-      "macro_movement": 0.387,
-      "macro_coupling": 0.429,
-      "macro_space": 0.557
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OVERBITE",
-    "target": "OCELOT",
-    "amount": 0.944
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Ocelot",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.944
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.933,
     "brightness": 0.069,
-    "warmth": 0.077,
-    "movement": 0.348,
     "density": 0.39,
+    "movement": 0.348,
     "space": 0.435,
-    "aggression": 0.933
+    "warmth": 0.077
   },
+  "engines": [
+    "Overbite",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.073,
-    "MOVEMENT": 0.348,
     "COUPLING": 0.515,
+    "MOVEMENT": 0.348,
     "SPACE": 0.435
   },
+  "mood": "Foundation",
+  "name": "DARK COLD FURY FOU 11",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.0,
+      "macro_coupling": 0.429,
+      "macro_movement": 0.387,
+      "macro_space": 0.557
+    },
+    "Overbite": {
+      "macro_character": 0.073,
+      "macro_coupling": 0.515,
+      "macro_movement": 0.348,
+      "macro_space": 0.435
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "dark",
@@ -47,5 +58,6 @@
     "aggressive",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

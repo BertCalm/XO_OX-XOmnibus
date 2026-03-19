@@ -1,71 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Vitreous Geometric",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.514,
+        "engineA": "Obsidian",
+        "engineB": "Origami",
+        "type": "LFO->Pitch"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Sharp facets fold. Obsidian geometry meets paper crease mathematics.",
+  "dna": {
+    "aggression": 0.287,
+    "brightness": 0.823,
+    "density": 0.559,
+    "movement": 0.425,
+    "space": 0.556,
+    "warmth": 0.322
+  },
   "engines": [
     "Obsidian",
     "Origami"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Sharp facets fold. Obsidian geometry meets paper crease mathematics.",
-  "tags": [
-    "obsidian",
-    "origami",
-    "crystal",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Vitreous Geometric",
   "parameters": {
     "Obsidian": {
-      "obsidian_brightness": 0.949,
-      "obsidian_warmth": 0.144,
-      "obsidian_movement": 0.227,
-      "obsidian_density": 0.577,
-      "obsidian_space": 0.618,
       "obsidian_aggression": 0.143,
-      "obsidian_level": 0.791
+      "obsidian_brightness": 0.949,
+      "obsidian_density": 0.577,
+      "obsidian_level": 0.791,
+      "obsidian_movement": 0.227,
+      "obsidian_space": 0.618,
+      "obsidian_warmth": 0.144
     },
     "Origami": {
-      "origami_brightness": 0.762,
-      "origami_warmth": 0.462,
-      "origami_movement": 0.685,
-      "origami_density": 0.531,
-      "origami_space": 0.534,
       "origami_aggression": 0.494,
-      "origami_level": 0.838
+      "origami_brightness": 0.762,
+      "origami_density": 0.531,
+      "origami_level": 0.838,
+      "origami_movement": 0.685,
+      "origami_space": 0.534,
+      "origami_warmth": 0.462
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Origami",
-        "type": "LFO->Pitch",
-        "amount": 0.514
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.823,
-    "warmth": 0.322,
-    "movement": 0.425,
-    "density": 0.559,
-    "space": 0.556,
-    "aggression": 0.287
-  }
+  "tags": [
+    "obsidian",
+    "origami",
+    "crystal",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,51 +1,70 @@
 {
-  "schema_version": 1,
-  "name": "Four Bit Rampage",
-  "mood": "Flux",
-  "engines": ["Obese"],
-  "author": "Guru Bin — B015/B008 Engine Deepening 2026-03-16",
-  "version": "1.0.0",
-  "description": "FAT-II scripture enforced at maximum: bitDepth 0.0 = 4-bit destruction. 16 possible amplitude values. Every transient a staircase. Every sustain a quantization hum raised to satDrive 0.95. Noise at 0.8. Filter resonance 0.88 — the ladder screams at the staircase. This is not lo-fi aesthetic. This is lo-fi as weapon. The whale in a blender.",
-  "tags": ["flux", "obese", "4-bit", "destruction", "saturation", "noise", "aggression", "fat-ii", "b015"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "dna": {
-    "brightness": 0.38,
-    "warmth": 0.18,
-    "movement": 0.88,
-    "density": 0.75,
-    "space": 0.15,
-    "aggression": 0.96
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "FAT-II scripture enforced at maximum: bitDepth 0.0 = 4-bit destruction. 16 possible amplitude values. Every transient a staircase. Every sustain a quantization hum raised to satDrive 0.95. Noise at 0.8. Filter resonance 0.88 — the ladder screams at the staircase. This is not lo-fi aesthetic. This is lo-fi as weapon. The whale in a blender.",
+  "dna": {
+    "aggression": 0.96,
+    "brightness": 0.38,
+    "density": 0.75,
+    "movement": 0.88,
+    "space": 0.15,
+    "warmth": 0.18
+  },
+  "engines": [
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Four Bit Rampage",
   "parameters": {
     "Obese": {
-      "fat_morph": 0.35,
-      "fat_mojo": 0.72,
-      "fat_satDrive": 0.95,
-      "fat_filterCutoff": 0.52,
-      "fat_filterReso": 0.88,
-      "fat_noiseAmount": 0.8,
-      "fat_bitDepth": 0.0,
-      "fat_subLevel": 0.5,
-      "fat_groupMix": 0.82,
-      "fat_detune": 11.0,
-      "fat_stereoWidth": 0.5,
       "fat_ampAttack": 0.001,
       "fat_ampDecay": 0.15,
-      "fat_ampSustain": 0.58,
       "fat_ampRelease": 0.2,
+      "fat_ampSustain": 0.58,
+      "fat_bitDepth": 0.0,
+      "fat_detune": 11.0,
+      "fat_filterCutoff": 0.52,
+      "fat_filterReso": 0.88,
       "fat_fltEnvAmt": 0.72,
       "fat_fltEnvAttack": 0.001,
       "fat_fltEnvDecay": 0.12,
-      "fat_voiceMode": 1,
       "fat_glide": 0.0,
+      "fat_groupMix": 0.82,
       "fat_macroCharacter": 0.0,
-      "fat_macroMovement": 0.0,
       "fat_macroCoupling": 0.0,
-      "fat_macroSpace": 0.0
+      "fat_macroMovement": 0.0,
+      "fat_macroSpace": 0.0,
+      "fat_mojo": 0.72,
+      "fat_morph": 0.35,
+      "fat_noiseAmount": 0.8,
+      "fat_satDrive": 0.95,
+      "fat_stereoWidth": 0.5,
+      "fat_subLevel": 0.5,
+      "fat_voiceMode": 1
     }
   },
-  "coupling": { "pairs": [] },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "flux",
+    "obese",
+    "4-bit",
+    "destruction",
+    "saturation",
+    "noise",
+    "aggression",
+    "fat-ii",
+    "b015"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

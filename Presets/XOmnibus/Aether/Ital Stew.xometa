@@ -1,13 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Ital Stew",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-08",
+  "description": "Vast drone machines space with deep dub echo and vast reverb space.",
+  "dna": {
+    "aggression": 0.353,
+    "brightness": 0.534,
+    "density": 0.51,
+    "movement": 1.0,
+    "space": 0.773,
+    "warmth": 0.578
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Vast drone machines space with deep dub echo and vast reverb space.",
+  "legacy": {
+    "sourceCategory": "Drone Machines",
+    "sourceInstrument": "Overdub",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Ital Stew",
+  "parameters": {
+    "Overdub": {
+      "dub_attack": 1.5,
+      "dub_decay": 2.0,
+      "dub_delayFeedback": 0.8,
+      "dub_delayTime": 0.75,
+      "dub_delayWear": 0.5,
+      "dub_delayWow": 0.6,
+      "dub_drift": 0.3,
+      "dub_driveAmount": 2.0,
+      "dub_filterCutoff": 800.0,
+      "dub_filterReso": 0.55,
+      "dub_lfoDepth": 0.5,
+      "dub_lfoDest": 1.0,
+      "dub_lfoRate": 0.2,
+      "dub_noiseLevel": 0.15,
+      "dub_oscWave": 2.0,
+      "dub_release": 4.0,
+      "dub_reverbMix": 0.5,
+      "dub_reverbSize": 0.8,
+      "dub_sendLevel": 0.55,
+      "dub_subLevel": 0.4,
+      "dub_sustain": 0.7
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "wobbly",
     "worn",
@@ -16,53 +63,6 @@
     "spacious",
     "saw"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Overdub",
-    "sourceCategory": "Drone Machines",
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Overdub": {
-      "dub_oscWave": 2.0,
-      "dub_drift": 0.3,
-      "dub_noiseLevel": 0.15,
-      "dub_subLevel": 0.4,
-      "dub_filterCutoff": 800.0,
-      "dub_filterReso": 0.55,
-      "dub_lfoRate": 0.2,
-      "dub_lfoDepth": 0.5,
-      "dub_lfoDest": 1.0,
-      "dub_attack": 1.5,
-      "dub_decay": 2.0,
-      "dub_sustain": 0.7,
-      "dub_release": 4.0,
-      "dub_delayTime": 0.75,
-      "dub_delayFeedback": 0.8,
-      "dub_delayWow": 0.6,
-      "dub_delayWear": 0.5,
-      "dub_driveAmount": 2.0,
-      "dub_sendLevel": 0.55,
-      "dub_reverbSize": 0.8,
-      "dub_reverbMix": 0.5
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.534,
-    "warmth": 0.578,
-    "movement": 1.0,
-    "density": 0.51,
-    "space": 0.773,
-    "aggression": 0.353
-  }
+  "version": "1.0.0"
 }

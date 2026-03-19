@@ -1,49 +1,61 @@
 {
-  "name": "ALLHI PRS 04",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ohm",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.712
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.968,
+    "brightness": 0.892,
+    "density": 0.455,
+    "movement": 0.99,
+    "space": 0.955,
+    "warmth": 0.944
+  },
   "engines": [
-    "ORIGAMI",
-    "OHM"
+    "Origami",
+    "Ohm"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.918,
+    "COUPLING": 0.962,
+    "MOVEMENT": 0.723,
+    "SPACE": 0.955
+  },
+  "mood": "Prism",
+  "name": "ALLHI PRS 04",
   "parameters": {
-    "ORIGAMI": {
+    "Ohm": {
       "macro_character": 0.918,
-      "macro_movement": 0.723,
       "macro_coupling": 0.962,
+      "macro_movement": 0.723,
       "macro_space": 0.955
     },
-    "OHM": {
+    "Origami": {
       "macro_character": 0.918,
-      "macro_movement": 0.723,
       "macro_coupling": 0.962,
+      "macro_movement": 0.723,
       "macro_space": 0.955
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORIGAMI",
-    "target": "OHM",
-    "amount": 0.712
-  },
-  "dna": {
-    "brightness": 0.892,
-    "warmth": 0.944,
-    "movement": 0.99,
-    "density": 0.455,
-    "space": 0.955,
-    "aggression": 0.968
-  },
-  "macros": {
-    "CHARACTER": 0.918,
-    "MOVEMENT": 0.723,
-    "COUPLING": 0.962,
-    "SPACE": 0.955
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

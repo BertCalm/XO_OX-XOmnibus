@@ -1,78 +1,78 @@
 {
-  "schema_version": 1,
-  "name": "Phase Dense",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.848,
+        "engineA": "Orbital",
+        "engineB": "Overlap",
+        "type": "rhythm_sync"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "ORBITAL group envelope feeds OVERLAP FDN knot topology. Dense resonant mesh.",
+  "dna": {
+    "aggression": 0.51,
+    "brightness": 0.612,
+    "density": 0.645,
+    "movement": 0.586,
+    "space": 0.615,
+    "warmth": 0.585
+  },
   "engines": [
     "Orbital",
     "Overlap"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "ORBITAL group envelope feeds OVERLAP FDN knot topology. Dense resonant mesh.",
-  "tags": [
-    "orbital",
-    "overlap",
-    "coupling",
-    "entangled"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Moderate",
-  "tempo": 130,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Phase Dense",
   "parameters": {
     "Orbital": {
+      "orb_arcDecay": 0.436,
+      "orb_couplingIn": 0.579,
+      "orb_couplingOut": 0.762,
+      "orb_groupEnv": 0.55,
+      "orb_harmonicAmt": 0.365,
       "orb_macro1": 0.596,
       "orb_macro2": 0.607,
       "orb_macro3": 0.47,
       "orb_macro4": 0.551,
-      "orb_couplingOut": 0.762,
-      "orb_couplingIn": 0.579,
       "orb_outputLevel": 0.816,
       "orb_outputPan": -0.017,
-      "orb_groupEnv": 0.55,
       "orb_phaseSpread": 0.552,
-      "orb_arcDecay": 0.436,
-      "orb_harmonicAmt": 0.365,
       "orb_resonantPeak": 0.312
     },
     "Overlap": {
+      "olap_couplingIn": 0.671,
+      "olap_couplingOut": 0.558,
       "olap_macro1": 0.349,
       "olap_macro2": 0.359,
       "olap_macro3": 0.47,
       "olap_macro4": 0.605,
-      "olap_couplingOut": 0.558,
-      "olap_couplingIn": 0.671,
       "olap_outputLevel": 0.835,
       "olap_outputPan": 0.003
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Overlap",
-        "type": "rhythm_sync",
-        "amount": 0.848
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.612,
-    "warmth": 0.585,
-    "movement": 0.586,
-    "density": 0.645,
-    "space": 0.615,
-    "aggression": 0.51
-  }
+  "tags": [
+    "orbital",
+    "overlap",
+    "coupling",
+    "entangled"
+  ],
+  "tempo": 130,
+  "version": "1.0.0"
 }

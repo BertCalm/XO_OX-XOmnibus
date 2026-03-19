@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Refracted Strum",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "SIDES locked — a clean split between the odd aunt and the paired duo.",
+  "dna": {
+    "aggression": 0.22,
+    "brightness": 0.88,
+    "density": 0.45,
+    "movement": 0.36,
+    "space": 0.53,
+    "warmth": 0.28
+  },
   "engines": [
     "Ole"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "latin",
-    "strummed",
-    "prism",
-    "bright",
-    "prism"
   ],
   "macroLabels": [
     "FUEGO",
@@ -20,42 +21,41 @@
     "SIDES",
     "ISLA"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.88,
-    "warmth": 0.28,
-    "movement": 0.36,
-    "density": 0.45,
-    "space": 0.53,
-    "aggression": 0.22
-  },
+  "mood": "Prism",
+  "name": "Refracted Strum",
   "parameters": {
     "Ole": {
+      "ole_allianceBlend": 0.627,
+      "ole_allianceConfig": 1,
+      "ole_aunt1Brightness": 0.711,
       "ole_aunt1Level": 0.815,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.711,
-      "ole_aunt2Level": 0.558,
       "ole_aunt2CoinPress": 0.0,
       "ole_aunt2GourdSize": 0.482,
+      "ole_aunt2Level": 0.558,
+      "ole_aunt3Brightness": 0.38,
       "ole_aunt3Level": 0.646,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.38,
       "ole_damping": 0.992,
-      "ole_sympatheticAmt": 0.244,
-      "ole_driftRate": 0.132,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 1,
-      "ole_allianceBlend": 0.627,
-      "ole_husbandOudLevel": 0.0,
+      "ole_driftRate": 0.132,
       "ole_husbandBouzLevel": 0.0,
+      "ole_husbandOudLevel": 0.0,
       "ole_husbandPinLevel": 0.0,
-      "ole_macroFuego": 0.504,
       "ole_macroDrama": 0.0,
+      "ole_macroFuego": 0.504,
+      "ole_macroIsla": 0.196,
       "ole_macroSides": 0.029,
-      "ole_macroIsla": 0.196
+      "ole_sympatheticAmt": 0.244
     }
   },
-  "coupling": null,
-  "description": "SIDES locked \u2014 a clean split between the odd aunt and the paired duo."
+  "schema_version": 1,
+  "tags": [
+    "latin",
+    "strummed",
+    "prism",
+    "bright",
+    "prism"
+  ],
+  "version": "1.0.0"
 }

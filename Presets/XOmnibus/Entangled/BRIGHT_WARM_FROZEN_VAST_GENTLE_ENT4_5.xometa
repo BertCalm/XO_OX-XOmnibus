@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_WARM_FROZEN_VAST_GENTLE_ENT4_5",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overworld",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.887
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.088,
+    "brightness": 0.872,
+    "density": 0.357,
+    "movement": 0.032,
+    "space": 0.922,
+    "warmth": 0.932
+  },
   "engines": [
-    "OBLIQUE",
-    "OVERWORLD"
+    "Oblique",
+    "Overworld"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.911,
+    "COUPLING": 0.887,
+    "MOVEMENT": 0.03,
+    "SPACE": 0.934
+  },
+  "mood": "Entangled",
+  "name": "Golden Expanse",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.903,
-      "macro_movement": 0.029,
       "macro_coupling": 0.384,
+      "macro_movement": 0.029,
       "macro_space": 0.925
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.919,
-      "macro_movement": 0.032,
       "macro_coupling": 0.328,
+      "macro_movement": 0.032,
       "macro_space": 0.944
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBLIQUE",
-    "target": "OVERWORLD",
-    "amount": 0.887
-  },
-  "dna": {
-    "brightness": 0.872,
-    "warmth": 0.932,
-    "movement": 0.032,
-    "density": 0.357,
-    "space": 0.922,
-    "aggression": 0.088
-  },
-  "macros": {
-    "CHARACTER": 0.911,
-    "MOVEMENT": 0.03,
-    "COUPLING": 0.887,
-    "SPACE": 0.934
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +59,6 @@
     "warm",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

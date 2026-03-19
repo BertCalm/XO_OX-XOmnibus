@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Photon Bloom",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.92,
-    "warmth": 0.2,
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Rapid modulation scatter paints the treble sky",
+  "dna": {
     "aggression": 0.08,
-    "movement": 0.8,
+    "brightness": 0.92,
     "density": 0.25,
-    "space": 0.85
+    "movement": 0.8,
+    "space": 0.85,
+    "warmth": 0.2
   },
   "engines": [
-    "ODDFELIX"
+    "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Rapid modulation scatter paints the treble sky",
+  "macroLabels": [
+    "SHIMMER",
+    "SCATTER",
+    "COUPLING",
+    "AIR"
+  ],
+  "mood": "Prism",
+  "name": "Photon Bloom",
+  "parameters": {
+    "OddfeliX": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.08,
+    "brightness": 0.92,
+    "density": 0.25,
+    "movement": 0.8,
+    "space": 0.85,
+    "warmth": 0.2
+  },
   "tags": [
     "prism",
     "bright",
@@ -24,23 +44,5 @@
     "scatter",
     "radiant"
   ],
-  "macroLabels": [
-    "SHIMMER",
-    "SCATTER",
-    "COUPLING",
-    "AIR"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.92,
-    "warmth": 0.2,
-    "movement": 0.8,
-    "density": 0.25,
-    "space": 0.85,
-    "aggression": 0.08
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

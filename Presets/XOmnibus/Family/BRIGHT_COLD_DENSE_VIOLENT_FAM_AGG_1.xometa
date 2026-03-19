@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_COLD_DENSE_VIOLENT_FAM_AGG_1",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Ole",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.892
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.957,
+    "brightness": 0.948,
+    "density": 0.951,
+    "movement": 0.338,
+    "space": 0.414,
+    "warmth": 0.027
+  },
   "engines": [
-    "ODDFELIX",
-    "OLE"
+    "OddfeliX",
+    "Ole"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.744,
+    "COUPLING": 0.874,
+    "MOVEMENT": 0.894,
+    "SPACE": 0.55
+  },
+  "mood": "Family",
+  "name": "Prism Blade",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.744,
-      "macro_movement": 0.894,
       "macro_coupling": 0.874,
+      "macro_movement": 0.894,
       "macro_space": 0.55
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.752,
-      "macro_movement": 0.858,
       "macro_coupling": 0.859,
+      "macro_movement": 0.858,
       "macro_space": 0.597
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ODDFELIX",
-    "target": "OLE",
-    "amount": 0.892
-  },
-  "dna": {
-    "brightness": 0.948,
-    "warmth": 0.027,
-    "movement": 0.338,
-    "density": 0.951,
-    "space": 0.414,
-    "aggression": 0.957
-  },
-  "macros": {
-    "CHARACTER": 0.744,
-    "MOVEMENT": 0.894,
-    "COUPLING": 0.874,
-    "SPACE": 0.55
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "bright",
     "cold",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

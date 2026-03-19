@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_VAST_FAM_VOL_47",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OLE",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "OLE": {
-      "macro_character": 0.925,
-      "macro_movement": 0.967,
-      "macro_coupling": 0.581,
-      "macro_space": 0.906
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.901,
-      "macro_movement": 0.965,
-      "macro_coupling": 0.589,
-      "macro_space": 0.908
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OLE",
-    "target": "OBBLIGATO",
-    "amount": 0.535
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Obbligato",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.535
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.648,
     "brightness": 0.912,
-    "warmth": 0.887,
-    "movement": 0.984,
     "density": 0.483,
+    "movement": 0.984,
     "space": 0.904,
-    "aggression": 0.648
+    "warmth": 0.887
   },
+  "engines": [
+    "Ole",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.913,
-    "MOVEMENT": 0.966,
     "COUPLING": 0.585,
+    "MOVEMENT": 0.966,
     "SPACE": 0.907
   },
+  "mood": "Family",
+  "name": "Solar Drift",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.901,
+      "macro_coupling": 0.589,
+      "macro_movement": 0.965,
+      "macro_space": 0.908
+    },
+    "Ole": {
+      "macro_character": 0.925,
+      "macro_coupling": 0.581,
+      "macro_movement": 0.967,
+      "macro_space": 0.906
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "vast",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

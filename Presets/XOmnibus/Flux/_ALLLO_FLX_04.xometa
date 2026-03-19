@@ -1,49 +1,61 @@
 {
-  "name": "ALLLO FLX 04",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Ouroboros",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.194
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.11,
+    "brightness": 0.089,
+    "density": 0.483,
+    "movement": 0.067,
+    "space": 0.045,
+    "warmth": 0.036
+  },
   "engines": [
-    "OPTIC",
-    "OUROBOROS"
+    "Optic",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.062,
+    "COUPLING": 0.077,
+    "MOVEMENT": 0.275,
+    "SPACE": 0.045
+  },
+  "mood": "Flux",
+  "name": "ALLLO FLX 04",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.062,
-      "macro_movement": 0.275,
       "macro_coupling": 0.077,
+      "macro_movement": 0.275,
       "macro_space": 0.045
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.062,
-      "macro_movement": 0.275,
       "macro_coupling": 0.077,
+      "macro_movement": 0.275,
       "macro_space": 0.045
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OPTIC",
-    "target": "OUROBOROS",
-    "amount": 0.194
-  },
-  "dna": {
-    "brightness": 0.089,
-    "warmth": 0.036,
-    "movement": 0.067,
-    "density": 0.483,
-    "space": 0.045,
-    "aggression": 0.11
-  },
-  "macros": {
-    "CHARACTER": 0.062,
-    "MOVEMENT": 0.275,
-    "COUPLING": 0.077,
-    "SPACE": 0.045
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

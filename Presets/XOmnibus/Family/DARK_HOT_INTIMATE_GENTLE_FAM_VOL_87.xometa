@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_INTIMATE_GENTLE_FAM_VOL_87",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Obbligato",
+        "type": "DYNAMIC_CROSS",
+        "amount": 0.474
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.03,
+    "brightness": 0.099,
+    "density": 0.391,
+    "movement": 0.677,
+    "space": 0.029,
+    "warmth": 0.954
+  },
   "engines": [
-    "ODYSSEY",
-    "OBBLIGATO"
+    "Odyssey",
+    "Obbligato"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.532,
+    "COUPLING": 0.219,
+    "MOVEMENT": 0.661,
+    "SPACE": 0.01
+  },
+  "mood": "Family",
+  "name": "Mahogany Stream",
   "parameters": {
-    "ODYSSEY": {
-      "macro_character": 0.533,
-      "macro_movement": 0.652,
-      "macro_coupling": 0.213,
+    "Obbligato": {
+      "macro_character": 0.53,
+      "macro_coupling": 0.225,
+      "macro_movement": 0.671,
       "macro_space": 0.01
     },
-    "OBBLIGATO": {
-      "macro_character": 0.53,
-      "macro_movement": 0.671,
-      "macro_coupling": 0.225,
+    "Odyssey": {
+      "macro_character": 0.533,
+      "macro_coupling": 0.213,
+      "macro_movement": 0.652,
       "macro_space": 0.01
     }
   },
-  "coupling": {
-    "type": "DYNAMIC_CROSS",
-    "source": "ODYSSEY",
-    "target": "OBBLIGATO",
-    "amount": 0.474
-  },
-  "dna": {
-    "brightness": 0.099,
-    "warmth": 0.954,
-    "movement": 0.677,
-    "density": 0.391,
-    "space": 0.029,
-    "aggression": 0.03
-  },
-  "macros": {
-    "CHARACTER": 0.532,
-    "MOVEMENT": 0.661,
-    "COUPLING": 0.219,
-    "SPACE": 0.01
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "intimate",
     "gentle",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

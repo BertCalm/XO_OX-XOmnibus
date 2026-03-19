@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_COLD_STILL_VIOLENT_PRS_3",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.447
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.924,
+    "brightness": 0.933,
+    "density": 0.516,
+    "movement": 0.114,
+    "space": 0.611,
+    "warmth": 0.047
+  },
   "engines": [
-    "OWLFISH",
-    "ORACLE"
+    "Owlfish",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.929,
+    "COUPLING": 0.827,
+    "MOVEMENT": 0.114,
+    "SPACE": 0.611
+  },
+  "mood": "Prism",
+  "name": "Chrome Fang",
   "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.929,
+    "Oracle": {
+      "macro_character": 0.495,
+      "macro_coupling": 0.868,
       "macro_movement": 0.114,
-      "macro_coupling": 0.827,
       "macro_space": 0.611
     },
-    "ORACLE": {
-      "macro_character": 0.495,
+    "Owlfish": {
+      "macro_character": 0.929,
+      "macro_coupling": 0.827,
       "macro_movement": 0.114,
-      "macro_coupling": 0.868,
       "macro_space": 0.611
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OWLFISH",
-    "target": "ORACLE",
-    "amount": 0.447
-  },
-  "dna": {
-    "brightness": 0.933,
-    "warmth": 0.047,
-    "movement": 0.114,
-    "density": 0.516,
-    "space": 0.611,
-    "aggression": 0.924
-  },
-  "macros": {
-    "CHARACTER": 0.929,
-    "MOVEMENT": 0.114,
-    "COUPLING": 0.827,
-    "SPACE": 0.611
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "bright",
     "cold",
     "still",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

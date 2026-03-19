@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_HOT_VAST_GENTLE_AET3_4",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ombre",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.5957
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.1045,
+    "brightness": 0.9526,
+    "density": 0.4605,
+    "movement": 0.622,
+    "space": 0.9089,
+    "warmth": 0.8964
+  },
   "engines": [
-    "ODDOSCAR",
-    "OMBRE"
+    "OddOscar",
+    "Ombre"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9245,
+    "COUPLING": 0.5957,
+    "MOVEMENT": 0.622,
+    "SPACE": 0.9089
+  },
+  "mood": "Aether",
+  "name": "BRIGHT_HOT_VAST_GENTLE_AET3_4",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.5744,
-      "macro_movement": 0.8635,
       "macro_coupling": 0.6821,
+      "macro_movement": 0.8635,
       "macro_space": 0.3072
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.3047,
-      "macro_movement": 0.7587,
       "macro_coupling": 0.6042,
+      "macro_movement": 0.7587,
       "macro_space": 0.7603
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ODDOSCAR",
-    "target": "OMBRE",
-    "amount": 0.5957
-  },
-  "dna": {
-    "brightness": 0.9526,
-    "warmth": 0.8964,
-    "movement": 0.622,
-    "density": 0.4605,
-    "space": 0.9089,
-    "aggression": 0.1045
-  },
-  "macros": {
-    "CHARACTER": 0.9245,
-    "MOVEMENT": 0.622,
-    "COUPLING": 0.5957,
-    "SPACE": 0.9089
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "warm",
@@ -47,5 +58,6 @@
     "vast",
     "gentle",
     "transcendent"
-  ]
+  ],
+  "version": "1.0"
 }

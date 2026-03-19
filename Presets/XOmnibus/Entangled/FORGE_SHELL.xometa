@@ -1,45 +1,56 @@
 {
-  "name": "FORGE SHELL",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OWLFISH",
-    "OUROBOROS"
-  ],
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.5967,
-      "macro_movement": 0.0164,
-      "macro_coupling": 0.8062,
-      "macro_space": 0.2419
-    },
-    "OUROBOROS": {
-      "macro_character": 0.1436,
-      "macro_movement": 0.4292,
-      "macro_coupling": 0.8459,
-      "macro_space": 0.2406
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OWLFISH",
-    "target": "OUROBOROS",
-    "amount": 0.825
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Ouroboros",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.825
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.5261,
     "brightness": 0.6644,
-    "warmth": 0.0856,
-    "movement": 0.9747,
     "density": 0.8848,
+    "movement": 0.9747,
     "space": 0.0677,
-    "aggression": 0.5261
+    "warmth": 0.0856
   },
+  "engines": [
+    "Owlfish",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5073,
-    "MOVEMENT": 0.9883,
     "COUPLING": 0.8662,
+    "MOVEMENT": 0.9883,
     "SPACE": 0.3905
   },
+  "mood": "Entangled",
+  "name": "FORGE SHELL",
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.1436,
+      "macro_coupling": 0.8459,
+      "macro_movement": 0.4292,
+      "macro_space": 0.2406
+    },
+    "Owlfish": {
+      "macro_character": 0.5967,
+      "macro_coupling": 0.8062,
+      "macro_movement": 0.0164,
+      "macro_space": 0.2419
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -49,5 +60,6 @@
     "massive",
     "thick",
     "solid"
-  ]
+  ],
+  "version": "1.0"
 }

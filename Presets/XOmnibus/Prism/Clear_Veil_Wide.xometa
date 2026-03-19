@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Clear Veil Wide",
-  "mood": "Prism",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Arctic breath tone. Maximum air, minimum body.",
+  "dna": {
+    "aggression": 0.064,
     "brightness": 0.869,
-    "warmth": 0.174,
-    "movement": 0.225,
     "density": 0.091,
+    "movement": 0.225,
     "space": 0.649,
-    "aggression": 0.064
+    "warmth": 0.174
   },
   "engines": [
-    "OBLIQUE"
+    "Oblique"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Arctic breath tone. Maximum air, minimum body.",
+  "macroLabels": [
+    "PRISM",
+    "DISTANCE",
+    "COUPLING",
+    "TAIL"
+  ],
+  "mood": "Prism",
+  "name": "Clear Veil Wide",
+  "parameters": {
+    "Oblique": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.064,
+    "brightness": 0.869,
+    "density": 0.091,
+    "movement": 0.225,
+    "space": 0.649,
+    "warmth": 0.174
+  },
   "tags": [
     "prism",
     "cold",
@@ -24,23 +44,5 @@
     "airy",
     "bright"
   ],
-  "macroLabels": [
-    "PRISM",
-    "DISTANCE",
-    "COUPLING",
-    "TAIL"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.869,
-    "warmth": 0.174,
-    "movement": 0.225,
-    "density": 0.091,
-    "space": 0.649,
-    "aggression": 0.064
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

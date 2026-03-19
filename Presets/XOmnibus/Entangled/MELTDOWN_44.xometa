@@ -1,48 +1,60 @@
 {
-  "name": "MELTDOWN 44",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERWORLD",
-    "ORBITAL"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.989,
-      "macro_movement": 0.885,
-      "macro_coupling": 0.787,
-      "macro_space": 0.205
-    },
-    "ORBITAL": {
-      "macro_character": 0.83,
-      "macro_movement": 0.913,
-      "macro_coupling": 0.554,
-      "macro_space": 0.586
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OVERWORLD",
-    "target": "ORBITAL",
-    "amount": 0.907
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Orbital",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.907
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.639,
     "brightness": 0.233,
-    "warmth": 0.774,
-    "movement": 0.899,
     "density": 0.789,
+    "movement": 0.899,
     "space": 0.596,
-    "aggression": 0.639
+    "warmth": 0.774
   },
+  "engines": [
+    "Overworld",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.984,
-    "MOVEMENT": 0.899,
     "COUPLING": 0.988,
+    "MOVEMENT": 0.899,
     "SPACE": 0.54
   },
+  "mood": "Entangled",
+  "name": "MELTDOWN 44",
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.83,
+      "macro_coupling": 0.554,
+      "macro_movement": 0.913,
+      "macro_space": 0.586
+    },
+    "Overworld": {
+      "macro_character": 0.989,
+      "macro_coupling": 0.787,
+      "macro_movement": 0.885,
+      "macro_space": 0.205
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "chaotic",
     "high-energy"
-  ]
+  ],
+  "version": "1.0"
 }

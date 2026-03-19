@@ -1,72 +1,92 @@
 {
-  "name": "Subharmonic Stalk",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Owlfish",
+        "type": "FREQUENCY_MODULATION",
+        "amount": 0.591
+      }
+    ]
+  },
+  "description": "Mixtur-Trautonium deep tones as ground vibration — the ocelot reads the subharmonics through its paws.",
   "engines": [
     "Ocelot",
     "Owlfish"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.523,
-    "MOVEMENT": 0.621,
     "COUPLING": 0.672,
+    "MOVEMENT": 0.621,
     "SPACE": 0.669
   },
-  "sonic_dna": {
-    "brightness": 0.64,
-    "warmth": 0.696,
-    "movement": 0.597,
-    "density": 0.598,
-    "space": 0.467,
-    "aggression": 0.404
-  },
+  "mood": "Entangled",
+  "name": "Subharmonic Stalk",
   "parameters": {
+    "ocelot_ambushThreshold": 0.731,
+    "ocelot_ampAttack": 0.0172,
+    "ocelot_ampDecay": 0.341,
+    "ocelot_ampRelease": 1.098,
+    "ocelot_ampSustain": 0.683,
     "ocelot_biome": 0.26,
-    "ocelot_biomeShiftRate": 0.292,
     "ocelot_biomeBlend": 0.543,
+    "ocelot_biomeShiftRate": 0.292,
+    "ocelot_filterCutoff": 8466.0,
+    "ocelot_filterReso": 0.362,
+    "ocelot_level": 0.656,
+    "ocelot_lfo1Depth": 0.253,
+    "ocelot_lfo1Rate": 2.763,
+    "ocelot_lfo1Shape": 0.75,
+    "ocelot_lfo2Depth": 0.431,
+    "ocelot_lfo2Rate": 0.55,
+    "ocelot_lfo2Shape": 1.0,
+    "ocelot_modAttack": 0.0089,
+    "ocelot_modDecay": 0.245,
+    "ocelot_modRelease": 0.463,
+    "ocelot_modSustain": 0.469,
     "ocelot_rosetteDensity": 0.813,
     "ocelot_rosetteSize": 0.613,
     "ocelot_stalkDepth": 0.84,
     "ocelot_stalkRate": 0.491,
-    "ocelot_ambushThreshold": 0.731,
     "ocelot_territorialRange": 0.853,
-    "ocelot_filterCutoff": 8466.0,
-    "ocelot_filterReso": 0.362,
-    "ocelot_level": 0.656,
-    "ocelot_ampAttack": 0.0172,
-    "ocelot_ampDecay": 0.341,
-    "ocelot_ampSustain": 0.683,
-    "ocelot_ampRelease": 1.098,
-    "ocelot_modAttack": 0.0089,
-    "ocelot_modDecay": 0.245,
-    "ocelot_modSustain": 0.469,
-    "ocelot_modRelease": 0.463,
-    "ocelot_lfo1Rate": 2.763,
-    "ocelot_lfo1Depth": 0.253,
-    "ocelot_lfo1Shape": 0.75,
-    "ocelot_lfo2Rate": 0.55,
-    "ocelot_lfo2Depth": 0.431,
-    "ocelot_lfo2Shape": 1.0,
+    "owl_ampAttack": 0.0133,
+    "owl_ampDecay": 0.381,
+    "owl_ampRelease": 1.204,
+    "owl_ampSustain": 0.551,
     "owl_filterCutoff": 2614.0,
     "owl_filterReso": 0.575,
     "owl_level": 0.849,
-    "owl_ampAttack": 0.0133,
-    "owl_ampDecay": 0.381,
-    "owl_ampSustain": 0.551,
-    "owl_ampRelease": 1.204,
-    "owl_lfo1Rate": 1.992,
-    "owl_lfo1Depth": 0.533
+    "owl_lfo1Depth": 0.533,
+    "owl_lfo1Rate": 1.992
   },
-  "coupling": {
-    "type": "FREQUENCY_MODULATION",
-    "source": "Ocelot",
-    "target": "Owlfish",
-    "amount": 0.591
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.404,
+    "brightness": 0.64,
+    "density": 0.598,
+    "movement": 0.597,
+    "space": 0.467,
+    "warmth": 0.696
   },
   "tags": [
     "entangled",
     "coupling",
     "biome-shifting"
   ],
-  "description": "Mixtur-Trautonium deep tones as ground vibration — the ocelot reads the subharmonics through its paws."
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

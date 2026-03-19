@@ -1,50 +1,62 @@
 {
-  "name": "AGGRESSIVE VOID",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "ORCA",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "ORCA": {
-      "macro_character": 0.402,
-      "macro_movement": 0.985,
-      "macro_coupling": 0.49,
-      "macro_space": 0.989
-    },
-    "OCEANIC": {
-      "macro_character": 0.073,
-      "macro_movement": 0.924,
-      "macro_coupling": 0.608,
-      "macro_space": 0.938
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "ORCA",
-    "target": "OCEANIC",
-    "amount": 0.493
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Oceanic",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.493
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.885,
     "brightness": 0.867,
-    "warmth": 0.521,
-    "movement": 0.966,
     "density": 0.458,
+    "movement": 0.966,
     "space": 0.964,
-    "aggression": 0.885
+    "warmth": 0.521
   },
+  "engines": [
+    "Orca",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.633,
-    "MOVEMENT": 0.966,
     "COUPLING": 0.548,
+    "MOVEMENT": 0.966,
     "SPACE": 0.964
   },
+  "mood": "Aether",
+  "name": "AGGRESSIVE VOID",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.073,
+      "macro_coupling": 0.608,
+      "macro_movement": 0.924,
+      "macro_space": 0.938
+    },
+    "Orca": {
+      "macro_character": 0.402,
+      "macro_coupling": 0.49,
+      "macro_movement": 0.985,
+      "macro_space": 0.989
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh",
     "movement-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

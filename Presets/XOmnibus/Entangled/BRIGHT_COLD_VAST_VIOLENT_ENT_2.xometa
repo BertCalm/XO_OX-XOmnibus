@@ -1,14 +1,86 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_COLD_VAST_VIOLENT_ENT_2",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.9068,
+        "source": "Odyssey",
+        "target": "OddfeliX",
+        "type": "SPECTRAL_MORPH"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Bright Cold Vast Violent character entanglement — ODYSSEY × ODDFELIX via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.9371,
+    "brightness": 0.9801,
+    "density": 0.4859,
+    "movement": 0.3533,
+    "space": 0.9337,
+    "warmth": 0.0333
+  },
   "engines": [
-    "ODYSSEY",
-    "ODDFELIX"
+    "Odyssey",
+    "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bright Cold Vast Violent character entanglement \u2014 ODYSSEY \u00d7 ODDFELIX via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "macroLabels": [
+    "WAVE",
+    "WANDER",
+    "GLIDE",
+    "HALL"
+  ],
+  "macros": {
+    "CHARACTER": 0.5067,
+    "COUPLING": 0.9068,
+    "MOVEMENT": 0.3533,
+    "SPACE": 0.9337
+  },
+  "mood": "Entangled",
+  "name": "BRIGHT_COLD_VAST_VIOLENT_ENT_2",
+  "parameters": {
+    "OddfeliX": {
+      "amp_attack": 0.2808,
+      "amp_release": 0.6508,
+      "coupling_level": 0.8898,
+      "density": 0.4724,
+      "drive": 0.7929,
+      "filter_cutoff": 0.9175,
+      "filter_resonance": 0.5349,
+      "macro_character": 0.6025,
+      "macro_coupling": 0.9068,
+      "macro_movement": 0.3704,
+      "macro_space": 0.9206,
+      "output_level": 0.8188,
+      "reverb_mix": 0.6357,
+      "reverb_size": 0.7373
+    },
+    "Odyssey": {
+      "amp_attack": 0.3376,
+      "amp_release": 0.6562,
+      "coupling_level": 0.9039,
+      "density": 0.5081,
+      "drive": 0.7819,
+      "filter_cutoff": 0.8818,
+      "filter_resonance": 0.5412,
+      "macro_character": 0.6325,
+      "macro_coupling": 0.9221,
+      "macro_movement": 0.3847,
+      "macro_space": 0.9662,
+      "output_level": 0.8203,
+      "reverb_mix": 0.6836,
+      "reverb_size": 0.7874
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.9371,
+    "brightness": 0.9801,
+    "density": 0.4859,
+    "movement": 0.3533,
+    "space": 0.9337,
+    "warmth": 0.0333
+  },
   "tags": [
     "entangled",
     "bright",
@@ -17,81 +89,5 @@
     "violent",
     "resonant"
   ],
-  "macroLabels": [
-    "WAVE",
-    "WANDER",
-    "GLIDE",
-    "HALL"
-  ],
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.9801,
-    "warmth": 0.0333,
-    "movement": 0.3533,
-    "density": 0.4859,
-    "space": 0.9337,
-    "aggression": 0.9371
-  },
-  "sonic_dna": {
-    "brightness": 0.9801,
-    "warmth": 0.0333,
-    "movement": 0.3533,
-    "density": 0.4859,
-    "space": 0.9337,
-    "aggression": 0.9371
-  },
-  "parameters": {
-    "ODYSSEY": {
-      "macro_character": 0.6325,
-      "macro_movement": 0.3847,
-      "macro_coupling": 0.9221,
-      "macro_space": 0.9662,
-      "filter_cutoff": 0.8818,
-      "filter_resonance": 0.5412,
-      "amp_attack": 0.3376,
-      "amp_release": 0.6562,
-      "reverb_mix": 0.6836,
-      "reverb_size": 0.7874,
-      "drive": 0.7819,
-      "density": 0.5081,
-      "output_level": 0.8203,
-      "coupling_level": 0.9039
-    },
-    "ODDFELIX": {
-      "macro_character": 0.6025,
-      "macro_movement": 0.3704,
-      "macro_coupling": 0.9068,
-      "macro_space": 0.9206,
-      "filter_cutoff": 0.9175,
-      "filter_resonance": 0.5349,
-      "amp_attack": 0.2808,
-      "amp_release": 0.6508,
-      "reverb_mix": 0.6357,
-      "reverb_size": 0.7373,
-      "drive": 0.7929,
-      "density": 0.4724,
-      "output_level": 0.8188,
-      "coupling_level": 0.8898
-    }
-  },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ODYSSEY",
-    "target": "ODDFELIX",
-    "amount": 0.9068,
-    "pairs": [
-      {
-        "source": "ODYSSEY",
-        "target": "ODDFELIX",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.9068
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.5067,
-    "MOVEMENT": 0.3533,
-    "COUPLING": 0.9068,
-    "SPACE": 0.9337
-  }
+  "version": "1.0.0"
 }

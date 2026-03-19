@@ -1,43 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Forgetting Storm",
-  "mood": "Flux",
-  "engines": ["Ombre"],
-  "author": "Guru Bin — Flux Expansion 2026-03-16",
-  "version": "1.0.0",
-  "description": "Blend pinned deep into memory territory — but the grain is shattering. Ultra-short grain size produces a fractured stutter rather than smooth recall. High memoryDrift means the pitch of each grain wanders out of tune with itself. The brain is reaching for what it knew, finding only noise. A panic of forgetting.",
-  "tags": ["ombre", "flux", "forgetting", "grain", "stutter", "pitch-drift", "unstable"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "tempo": null,
   "created": "2026-03-16",
+  "description": "Blend pinned deep into memory territory — but the grain is shattering. Ultra-short grain size produces a fractured stutter rather than smooth recall. High memoryDrift means the pitch of each grain wanders out of tune with itself. The brain is reaching for what it knew, finding only noise. A panic of forgetting.",
+  "dna": {
+    "aggression": 0.72,
+    "brightness": 0.45,
+    "density": 0.8,
+    "movement": 0.88,
+    "space": 0.5,
+    "warmth": 0.25
+  },
+  "engines": [
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Forgetting Storm",
   "parameters": {
     "Ombre": {
+      "ombre_attack": 0.003,
       "ombre_blend": 0.12,
-      "ombre_interference": 0.78,
-      "ombre_memoryDecay": 0.4,
-      "ombre_memoryGrain": 8.0,
-      "ombre_memoryDrift": 0.95,
-      "ombre_oscShape": 0.9,
-      "ombre_reactivity": 0.82,
-      "ombre_subLevel": 0.2,
+      "ombre_decay": 0.25,
       "ombre_filterCutoff": 5500.0,
       "ombre_filterReso": 0.75,
-      "ombre_attack": 0.003,
-      "ombre_decay": 0.25,
-      "ombre_sustain": 0.3,
+      "ombre_interference": 0.78,
+      "ombre_level": 0.75,
+      "ombre_memoryDecay": 0.4,
+      "ombre_memoryDrift": 0.95,
+      "ombre_memoryGrain": 8.0,
+      "ombre_oscShape": 0.9,
+      "ombre_reactivity": 0.82,
       "ombre_release": 0.4,
-      "ombre_level": 0.75
+      "ombre_subLevel": 0.2,
+      "ombre_sustain": 0.3
     }
   },
-  "coupling": { "pairs": [] },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.25,
-    "movement": 0.88,
-    "density": 0.8,
-    "space": 0.5,
-    "aggression": 0.72
-  }
+  "tags": [
+    "ombre",
+    "flux",
+    "forgetting",
+    "grain",
+    "stutter",
+    "pitch-drift",
+    "unstable"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

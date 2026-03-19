@@ -1,45 +1,56 @@
 {
-  "name": "HOT KINETIC DENSE BALANCED AET SPC 4",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ombre",
+        "type": "FILTER_MOD",
+        "amount": 0.789
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.888,
+    "brightness": 0.585,
+    "density": 0.977,
+    "movement": 0.91,
+    "space": 0.374,
+    "warmth": 0.898
+  },
   "engines": [
-    "OBLIQUE",
-    "OMBRE"
+    "Oblique",
+    "Ombre"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.742,
+    "COUPLING": 0.529,
+    "MOVEMENT": 0.91,
+    "SPACE": 0.374
+  },
+  "mood": "Aether",
+  "name": "HOT KINETIC DENSE BALANCED ...",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.742,
-      "macro_movement": 0.91,
       "macro_coupling": 0.529,
+      "macro_movement": 0.91,
       "macro_space": 0.374
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.736,
-      "macro_movement": 0.913,
       "macro_coupling": 0.524,
+      "macro_movement": 0.913,
       "macro_space": 0.356
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OBLIQUE",
-    "target": "OMBRE",
-    "amount": 0.789
-  },
-  "dna": {
-    "brightness": 0.585,
-    "warmth": 0.898,
-    "movement": 0.91,
-    "density": 0.977,
-    "space": 0.374,
-    "aggression": 0.888
-  },
-  "macros": {
-    "CHARACTER": 0.742,
-    "MOVEMENT": 0.91,
-    "COUPLING": 0.529,
-    "SPACE": 0.374
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -49,5 +60,6 @@
     "warm",
     "kinetic",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

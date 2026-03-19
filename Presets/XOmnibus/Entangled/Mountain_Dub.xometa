@@ -1,14 +1,67 @@
 {
-  "schema_version": 1,
-  "name": "Mountain Dub",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.668,
+        "engineA": "Origami",
+        "engineB": "Overdub",
+        "type": "pitch_follow"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Origami × Overdub coupling (spectral cross). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.382,
+    "brightness": 0.6,
+    "density": 0.586,
+    "movement": 0.644,
+    "space": 0.653,
+    "warmth": 0.563
+  },
   "engines": [
     "Origami",
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Origami \u00d7 Overdub coupling (spectral cross). Stub preset \u2014 sound-design pass pending.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Mountain Dub",
+  "parameters": {
+    "Origami": {
+      "origami_couplingOut": 0.777,
+      "origami_crease": 0.63,
+      "origami_foldPoint": 0.305,
+      "origami_macro1": 0.579,
+      "origami_macro2": 0.552,
+      "origami_macro3": 0.568,
+      "origami_macro4": 0.435,
+      "origami_pleatRate": 0.689,
+      "origami_tessellate": 0.336,
+      "origami_valleyDepth": 0.283
+    },
+    "Overdub": {
+      "dub_couplingIn": 0.751,
+      "dub_couplingOut": 0.446,
+      "dub_macro1": 0.333,
+      "dub_macro2": 0.573,
+      "dub_macro3": 0.308,
+      "dub_macro4": 0.401
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "origami",
     "overdub",
@@ -16,59 +69,6 @@
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": 120,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Origami": {
-      "origami_foldPoint": 0.305,
-      "origami_crease": 0.63,
-      "origami_valleyDepth": 0.283,
-      "origami_pleatRate": 0.689,
-      "origami_tessellate": 0.336,
-      "origami_macro1": 0.579,
-      "origami_macro2": 0.552,
-      "origami_macro3": 0.568,
-      "origami_macro4": 0.435,
-      "origami_couplingOut": 0.777
-    },
-    "Overdub": {
-      "dub_macro1": 0.333,
-      "dub_macro2": 0.573,
-      "dub_macro3": 0.308,
-      "dub_macro4": 0.401,
-      "dub_couplingOut": 0.446,
-      "dub_couplingIn": 0.751
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Overdub",
-        "type": "pitch_follow",
-        "amount": 0.668
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.563,
-    "movement": 0.644,
-    "density": 0.586,
-    "space": 0.653,
-    "aggression": 0.382
-  }
+  "version": "1.0.0"
 }

@@ -1,48 +1,60 @@
 {
-  "name": "CRITICAL MASS 45",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overlap",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.602
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.56,
+    "brightness": 0.945,
+    "density": 0.764,
+    "movement": 0.919,
+    "space": 0.289,
+    "warmth": 0.767
+  },
   "engines": [
-    "OUROBOROS",
-    "OVERLAP"
+    "Ouroboros",
+    "Overlap"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.497,
+    "COUPLING": 0.431,
+    "MOVEMENT": 0.919,
+    "SPACE": 0.129
+  },
+  "mood": "Entangled",
+  "name": "CRITICAL MASS 45",
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.593,
-      "macro_movement": 0.891,
       "macro_coupling": 0.527,
+      "macro_movement": 0.891,
       "macro_space": 0.308
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.221,
-      "macro_movement": 0.948,
       "macro_coupling": 0.984,
+      "macro_movement": 0.948,
       "macro_space": 0.055
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OUROBOROS",
-    "target": "OVERLAP",
-    "amount": 0.602
-  },
-  "dna": {
-    "brightness": 0.945,
-    "warmth": 0.767,
-    "movement": 0.919,
-    "density": 0.764,
-    "space": 0.289,
-    "aggression": 0.56
-  },
-  "macros": {
-    "CHARACTER": 0.497,
-    "MOVEMENT": 0.919,
-    "COUPLING": 0.431,
-    "SPACE": 0.129
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "surge"
-  ]
+  ],
+  "version": "1.0"
 }

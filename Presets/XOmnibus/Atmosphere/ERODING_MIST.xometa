@@ -1,50 +1,62 @@
 {
-  "name": "ERODING MIST",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Owlfish",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.627
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.91,
+    "brightness": 0.931,
+    "density": 0.63,
+    "movement": 0.521,
+    "space": 0.245,
+    "warmth": 0.691
+  },
   "engines": [
-    "ORPHICA",
-    "OWLFISH"
+    "Orphica",
+    "Owlfish"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.702,
+    "COUPLING": 0.287,
+    "MOVEMENT": 0.727,
+    "SPACE": 0.245
+  },
+  "mood": "Atmosphere",
+  "name": "ERODING MIST",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.6,
-      "macro_movement": 0.822,
       "macro_coupling": 0.677,
+      "macro_movement": 0.822,
       "macro_space": 0.654
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.391,
-      "macro_movement": 0.676,
       "macro_coupling": 0.876,
+      "macro_movement": 0.676,
       "macro_space": 0.135
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ORPHICA",
-    "target": "OWLFISH",
-    "amount": 0.627
-  },
-  "dna": {
-    "brightness": 0.931,
-    "warmth": 0.691,
-    "movement": 0.521,
-    "density": 0.63,
-    "space": 0.245,
-    "aggression": 0.91
-  },
-  "macros": {
-    "CHARACTER": 0.702,
-    "MOVEMENT": 0.727,
-    "COUPLING": 0.287,
-    "SPACE": 0.245
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_DENSE_VIOLENT_FAM_AGG_3",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ODDFELIX",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "ODDFELIX": {
-      "macro_character": 0.843,
-      "macro_movement": 0.696,
-      "macro_coupling": 0.808,
-      "macro_space": 0.455
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.845,
-      "macro_movement": 0.69,
-      "macro_coupling": 0.786,
-      "macro_space": 0.505
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ODDFELIX",
-    "target": "ODDOSCAR",
-    "amount": 0.884
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.884
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.962,
     "brightness": 0.897,
-    "warmth": 0.951,
-    "movement": 0.644,
     "density": 0.94,
+    "movement": 0.644,
     "space": 0.308,
-    "aggression": 0.962
+    "warmth": 0.951
   },
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.843,
-    "MOVEMENT": 0.696,
     "COUPLING": 0.808,
+    "MOVEMENT": 0.696,
     "SPACE": 0.455
   },
+  "mood": "Family",
+  "name": "Sunrise Fang",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.845,
+      "macro_coupling": 0.786,
+      "macro_movement": 0.69,
+      "macro_space": 0.505
+    },
+    "OddfeliX": {
+      "macro_character": 0.843,
+      "macro_coupling": 0.808,
+      "macro_movement": 0.696,
+      "macro_space": 0.455
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "bright",
     "warm",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

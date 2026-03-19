@@ -1,48 +1,60 @@
 {
-  "name": "BLACK CRYSTAL",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OSTERIA",
-    "ORGANON"
-  ],
-  "parameters": {
-    "OSTERIA": {
-      "macro_character": 0.404,
-      "macro_movement": 0.501,
-      "macro_coupling": 0.751,
-      "macro_space": 0.242
-    },
-    "ORGANON": {
-      "macro_character": 0.756,
-      "macro_movement": 0.433,
-      "macro_coupling": 0.831,
-      "macro_space": 0.268
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OSTERIA",
-    "target": "ORGANON",
-    "amount": 0.634
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Organon",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.634
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.078,
     "brightness": 0.113,
-    "warmth": 0.459,
-    "movement": 0.472,
     "density": 0.926,
+    "movement": 0.472,
     "space": 0.866,
-    "aggression": 0.078
+    "warmth": 0.459
   },
+  "engines": [
+    "Osteria",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.884,
-    "MOVEMENT": 0.246,
     "COUPLING": 0.511,
+    "MOVEMENT": 0.246,
     "SPACE": 0.952
   },
+  "mood": "Prism",
+  "name": "BLACK CRYSTAL",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.756,
+      "macro_coupling": 0.831,
+      "macro_movement": 0.433,
+      "macro_space": 0.268
+    },
+    "Osteria": {
+      "macro_character": 0.404,
+      "macro_coupling": 0.751,
+      "macro_movement": 0.501,
+      "macro_space": 0.242
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-  ]
+  ],
+  "version": "1.0"
 }

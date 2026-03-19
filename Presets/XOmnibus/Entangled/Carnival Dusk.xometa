@@ -1,31 +1,46 @@
 {
-  "name": "Carnival Dusk",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Ombre",
+        "type": "GRADIENT_DISSOLVE",
+        "amount": 0.55
+      }
+    ]
+  },
+  "description": "Afro-Latin celebration winding down — the drums fade through gradient twilight",
   "engines": [
-    "OLE",
-    "OMBRE"
+    "Ole",
+    "Ombre"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7,
-    "MOVEMENT": 0.8,
     "COUPLING": 0.55,
+    "MOVEMENT": 0.8,
     "SPACE": 0.6
   },
-  "sonic_dna": {
-    "brightness": 0.66,
-    "warmth": 0.66,
-    "movement": 0.71,
-    "density": 0.56,
-    "space": 0.6,
-    "aggression": 0.4
+  "mood": "Entangled",
+  "name": "Carnival Dusk",
+  "parameters": {
+    "Ole": {},
+    "Ombre": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "GRADIENT_DISSOLVE",
-    "source": "OLE",
-    "target": "OMBRE",
-    "amount": 0.55
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.4,
+    "brightness": 0.66,
+    "density": 0.56,
+    "movement": 0.71,
+    "space": 0.6,
+    "warmth": 0.66
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "ombre",
     "afro-latin"
   ],
-  "description": "Afro-Latin celebration winding down \u2014 the drums fade through gradient twilight"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

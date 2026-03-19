@@ -1,22 +1,35 @@
 {
-  "schema_version": 1,
-  "name": "Neon Attractor",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Ouroboros",
+        "engineB": "OddfeliX",
+        "type": "CV->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Strange attractor geometry colours OddfeliX's neon tetra filter sweeps. Chaos traces fluorescent arcs.",
+  "dna": {
+    "aggression": 0.63,
+    "brightness": 0.515,
+    "density": 0.926,
+    "movement": 0.484,
+    "space": 0.615,
+    "warmth": 0.46
+  },
   "engines": [
     "Ouroboros",
     "OddfeliX"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Strange attractor geometry colours OddfeliX's neon tetra filter sweeps. Chaos traces fluorescent arcs.",
-  "tags": [
-    "attractor",
-    "filter-chaos",
-    "neon",
-    "entangled",
-    "ouroboros",
-    "oddfelix"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -25,52 +38,39 @@
   ],
   "macros": {
     "CHARACTER": 0.6,
-    "MOVEMENT": 0.75,
     "COUPLING": 0.65,
+    "MOVEMENT": 0.75,
     "SPACE": 0.5
   },
-  "couplingIntensity": "Deep",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Entangled",
+  "name": "Neon Attractor",
   "parameters": {
-    "Ouroboros": {
-      "ouro_topology": 1,
-      "ouro_rate": 85.0,
-      "ouro_chaosIndex": 0.6,
-      "ouro_leash": 0.4,
-      "ouro_theta": 0.0,
-      "ouro_phi": 0.35,
-      "ouro_damping": 0.3,
-      "ouro_injection": 0.0
-    },
     "OddfeliX": {
       "snap_filterCutoff": 0.6,
       "snap_lfoRate": 0.5,
       "snap_resoAmount": 0.4
+    },
+    "Ouroboros": {
+      "ouro_chaosIndex": 0.6,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.0,
+      "ouro_leash": 0.4,
+      "ouro_phi": 0.35,
+      "ouro_rate": 85.0,
+      "ouro_theta": 0.0,
+      "ouro_topology": 1
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "OddfeliX",
-        "type": "CV->Filter",
-        "amount": 0.65
-      }
-    ]
-  },
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.515,
-    "warmth": 0.46,
-    "movement": 0.484,
-    "density": 0.926,
-    "space": 0.615,
-    "aggression": 0.63
-  }
+  "tags": [
+    "attractor",
+    "filter-chaos",
+    "neon",
+    "entangled",
+    "ouroboros",
+    "oddfelix"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

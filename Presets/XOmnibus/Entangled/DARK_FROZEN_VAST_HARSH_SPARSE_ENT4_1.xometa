@@ -1,45 +1,56 @@
 {
-  "name": "DARK_FROZEN_VAST_HARSH_SPARSE_ENT4_1",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Osteria",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.846
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.901,
+    "brightness": 0.111,
+    "density": 0.102,
+    "movement": 0.091,
+    "space": 0.927,
+    "warmth": 0.519
+  },
   "engines": [
-    "OBLIQUE",
-    "OSTERIA"
+    "Oblique",
+    "Osteria"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.312,
+    "COUPLING": 0.846,
+    "MOVEMENT": 0.086,
+    "SPACE": 0.909
+  },
+  "mood": "Entangled",
+  "name": "Tone Vast",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.323,
-      "macro_movement": 0.086,
       "macro_coupling": 0.077,
+      "macro_movement": 0.086,
       "macro_space": 0.914
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.301,
-      "macro_movement": 0.087,
       "macro_coupling": 0.104,
+      "macro_movement": 0.087,
       "macro_space": 0.905
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBLIQUE",
-    "target": "OSTERIA",
-    "amount": 0.846
-  },
-  "dna": {
-    "brightness": 0.111,
-    "warmth": 0.519,
-    "movement": 0.091,
-    "density": 0.102,
-    "space": 0.927,
-    "aggression": 0.901
-  },
-  "macros": {
-    "CHARACTER": 0.312,
-    "MOVEMENT": 0.086,
-    "COUPLING": 0.846,
-    "SPACE": 0.909
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +59,6 @@
     "sparse",
     "vast",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

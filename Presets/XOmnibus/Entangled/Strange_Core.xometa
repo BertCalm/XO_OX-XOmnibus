@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Strange Core",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.841,
+        "engineA": "Orca",
+        "engineB": "Obbligato",
+        "type": "ENVELOPE_FOLLOW"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "aggression": 0.595,
+    "brightness": 0.405,
+    "density": 0.995,
+    "movement": 0.665,
+    "space": 0.6,
+    "warmth": 0.5
+  },
   "engines": [
-    "OBBLIGATO",
-    "ORCA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "obbligato",
-    "orca"
+    "Obbligato",
+    "Orca"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.462,
-    "MOVEMENT": 0.644,
     "COUPLING": 0.708,
+    "MOVEMENT": 0.644,
     "SPACE": 0.481
   },
-  "couplingIntensity": "Strong",
-  "dna": {
-    "brightness": 0.405,
-    "warmth": 0.5,
-    "movement": 0.665,
-    "density": 0.995,
-    "space": 0.6,
-    "aggression": 0.595
-  },
-  "sonic_dna": {
-    "brightness": 0.405,
-    "warmth": 0.5,
-    "movement": 0.665,
-    "density": 0.995,
-    "space": 0.6,
-    "aggression": 0.595
-  },
+  "mood": "Entangled",
+  "name": "Strange Core",
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.699,
-      "macro_movement": 0.597,
       "macro_coupling": 0.693,
+      "macro_movement": 0.597,
       "macro_space": 0.573
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.516,
-      "macro_movement": 0.75,
       "macro_coupling": 0.56,
+      "macro_movement": 0.75,
       "macro_space": 0.395
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORCA",
-        "engineB": "OBBLIGATO",
-        "type": "ENVELOPE_FOLLOW",
-        "amount": 0.841
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.595,
+    "brightness": 0.405,
+    "density": 0.995,
+    "movement": 0.665,
+    "space": 0.6,
+    "warmth": 0.5
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "obbligato",
+    "orca"
+  ],
+  "version": "1.0.0"
 }

@@ -1,48 +1,60 @@
 {
-  "name": "Dub Reed",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERDUB",
-    "ORGANON"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.74,
-      "macro_movement": 0.71,
-      "macro_coupling": 0.8,
-      "macro_space": 0.25
-    },
-    "ORGANON": {
-      "macro_character": 0.86,
-      "macro_movement": 0.49,
-      "macro_coupling": 0.87,
-      "macro_space": 0.31
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OVERDUB",
-    "target": "ORGANON",
-    "amount": 0.84
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Organon",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.84
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.65,
     "brightness": 0.51,
-    "warmth": 0.93,
-    "movement": 0.65,
     "density": 0.95,
+    "movement": 0.65,
     "space": 0.25,
-    "aggression": 0.65
+    "warmth": 0.93
   },
+  "engines": [
+    "Overdub",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8,
-    "MOVEMENT": 0.6,
     "COUPLING": 0.83,
+    "MOVEMENT": 0.6,
     "SPACE": 0.28
   },
+  "mood": "Entangled",
+  "name": "Dub Reed",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.86,
+      "macro_coupling": 0.87,
+      "macro_movement": 0.49,
+      "macro_space": 0.31
+    },
+    "Overdub": {
+      "macro_character": 0.74,
+      "macro_coupling": 0.8,
+      "macro_movement": 0.71,
+      "macro_space": 0.25
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-  ]
+  ],
+  "version": "1.0"
 }

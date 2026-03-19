@@ -1,14 +1,45 @@
 {
-  "schema_version": 1,
-  "name": "Obligate with Oblique",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.666,
+        "engineA": "Obbligato",
+        "engineB": "Oblique",
+        "type": "Pitch->Filter"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "OBLIQUE prism scatter refracts OBBLIGATO's BOND — coral reeds split into prismatic violet threads.",
+  "dna": {
+    "aggression": 0.301,
+    "brightness": 0.851,
+    "density": 0.589,
+    "movement": 0.842,
+    "space": 0.6,
+    "warmth": 0.548
+  },
   "engines": [
-    "OBBLIGATO",
-    "OBLIQUE"
+    "Obbligato",
+    "Oblique"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBLIQUE prism scatter refracts OBBLIGATO's BOND \u2014 coral reeds split into prismatic violet threads.",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Obligate with Oblique",
+  "parameters": {
+    "obbl_breathA": 0.652,
+    "obbl_breathB": 0.649,
+    "obbl_macroBond": 0.523
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -17,37 +48,6 @@
     "prism",
     "prismatic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "obbl_breathA": 0.652,
-    "obbl_breathB": 0.649,
-    "obbl_macroBond": 0.523
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBBLIGATO",
-        "engineB": "OBLIQUE",
-        "type": "Pitch->Filter",
-        "amount": 0.666
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.851,
-    "warmth": 0.548,
-    "movement": 0.842,
-    "density": 0.589,
-    "space": 0.6,
-    "aggression": 0.301
-  }
+  "version": "1.0.0"
 }

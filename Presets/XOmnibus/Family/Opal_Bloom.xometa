@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Opal Bloom",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "OPAL at maximum warmth and space — granular bloom, every grain a warm planet.",
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.55,
+    "density": 0.3,
+    "movement": 0.68,
+    "space": 0.88,
+    "warmth": 0.92
+  },
   "engines": [
-    "OPAL"
+    "Opal"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OPAL at maximum warmth and space \u2014 granular bloom, every grain a warm planet.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "GRAIN",
+    "SHIMMER",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Opal Bloom",
+  "parameters": {
+    "Opal": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "portrait",
@@ -16,29 +41,6 @@
     "spatial",
     "granular"
   ],
-  "macroLabels": [
-    "GRAIN",
-    "SHIMMER",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.92,
-    "movement": 0.68,
-    "density": 0.3,
-    "space": 0.88,
-    "aggression": 0.12
-  }
+  "version": "1.0.0"
 }

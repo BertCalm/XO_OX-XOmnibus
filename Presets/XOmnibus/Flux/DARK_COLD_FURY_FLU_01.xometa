@@ -1,45 +1,56 @@
 {
-  "name": "DARK COLD FURY FLU 01",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Optic",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.871
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.961,
+    "brightness": 0.092,
+    "density": 0.543,
+    "movement": 0.32,
+    "space": 0.499,
+    "warmth": 0.097
+  },
   "engines": [
-    "OBESE",
-    "OPTIC"
+    "Obese",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.095,
+    "COUPLING": 0.543,
+    "MOVEMENT": 0.32,
+    "SPACE": 0.499
+  },
+  "mood": "Flux",
+  "name": "DARK COLD FURY FLU 01",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.095,
-      "macro_movement": 0.32,
       "macro_coupling": 0.543,
+      "macro_movement": 0.32,
       "macro_space": 0.499
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.127,
-      "macro_movement": 0.276,
       "macro_coupling": 0.84,
+      "macro_movement": 0.276,
       "macro_space": 0.535
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBESE",
-    "target": "OPTIC",
-    "amount": 0.871
-  },
-  "dna": {
-    "brightness": 0.092,
-    "warmth": 0.097,
-    "movement": 0.32,
-    "density": 0.543,
-    "space": 0.499,
-    "aggression": 0.961
-  },
-  "macros": {
-    "CHARACTER": 0.095,
-    "MOVEMENT": 0.32,
-    "COUPLING": 0.543,
-    "SPACE": 0.499
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -47,5 +58,6 @@
     "aggressive",
     "extreme",
     "diversity-push"
-  ]
+  ],
+  "version": "1.0"
 }

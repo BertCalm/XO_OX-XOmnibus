@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_WARM_STILL_SPARSE_FND_2",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Origami",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.529
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.479,
+    "brightness": 0.906,
+    "density": 0.138,
+    "movement": 0.054,
+    "space": 0.561,
+    "warmth": 0.967
+  },
   "engines": [
-    "ODDOSCAR",
-    "ORIGAMI"
+    "OddOscar",
+    "Origami"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.512,
+    "COUPLING": 0.242,
+    "MOVEMENT": 0.216,
+    "SPACE": 0.121
+  },
+  "mood": "Foundation",
+  "name": "BRIGHT_WARM_STILL_SPARSE_FND_2",
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.503,
-      "macro_movement": 0.886,
       "macro_coupling": 0.66,
+      "macro_movement": 0.886,
       "macro_space": 0.512
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.851,
-      "macro_movement": 0.295,
       "macro_coupling": 0.389,
+      "macro_movement": 0.295,
       "macro_space": 0.858
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ODDOSCAR",
-    "target": "ORIGAMI",
-    "amount": 0.529
-  },
-  "dna": {
-    "brightness": 0.906,
-    "warmth": 0.967,
-    "movement": 0.054,
-    "density": 0.138,
-    "space": 0.561,
-    "aggression": 0.479
-  },
-  "macros": {
-    "CHARACTER": 0.512,
-    "MOVEMENT": 0.216,
-    "COUPLING": 0.242,
-    "SPACE": 0.121
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -47,5 +58,6 @@
     "warm",
     "still",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

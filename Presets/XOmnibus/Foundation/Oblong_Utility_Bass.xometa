@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Oblong Utility Bass",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "No character, all function. The bass that fits every context.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.35,
+    "density": 0.75,
+    "movement": 0.45,
+    "space": 0.25,
+    "warmth": 0.65
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "No character, all function. The bass that fits every context.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Oblong Utility Bass",
+  "parameters": {
+    "Oblong": {
+      "ob_body": 0.75,
+      "ob_decay": 0.5,
+      "ob_drive": 0.45,
+      "ob_sub": 0.7,
+      "ob_tone": 0.35
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "work-horse",
     "versatile",
@@ -16,37 +47,6 @@
     "bass",
     "workhorse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oblong": {
-      "ob_drive": 0.45,
-      "ob_body": 0.75,
-      "ob_tone": 0.35,
-      "ob_decay": 0.5,
-      "ob_sub": 0.7
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.65,
-    "movement": 0.45,
-    "density": 0.75,
-    "space": 0.25,
-    "aggression": 0.45
-  }
+  "version": "1.0.0"
 }

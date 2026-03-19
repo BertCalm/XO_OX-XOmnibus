@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Orca \u00d7 Oracle \u2014 Spectral Morph coupling at extreme DNA corner.",
+  "description": "Orca × Oracle — Spectral Morph coupling at extreme DNA corner.",
   "tags": [
     "bright",
     "orca",
@@ -33,7 +33,10 @@
     "space": 0.948,
     "aggression": 0.391
   },
-  "parameters": {},
+  "parameters": {
+    "Orca": {},
+    "Oracle": {}
+  },
   "coupling": {
     "pairs": [
       {

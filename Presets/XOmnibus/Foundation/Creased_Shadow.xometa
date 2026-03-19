@@ -1,17 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Creased Shadow",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "ORIGAMI — dark extreme brightness preset for Foundation.",
+  "dna": {
+    "aggression": 0.54,
+    "brightness": 0.09,
+    "density": 0.54,
+    "movement": 0.71,
+    "space": 0.76,
+    "warmth": 0.4
+  },
   "engines": [
-    "ORIGAMI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
-  "description": "ORIGAMI \u2014 dark extreme brightness preset for Foundation.",
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme-brightness"
+    "Origami"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -19,44 +22,41 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "sonic_dna": {
-    "brightness": 0.09,
-    "warmth": 0.4,
-    "movement": 0.71,
-    "density": 0.54,
-    "space": 0.76,
-    "aggression": 0.54
-  },
-  "dna": {
-    "brightness": 0.09,
-    "warmth": 0.4,
-    "movement": 0.71,
-    "density": 0.54,
-    "space": 0.76,
-    "aggression": 0.54
-  },
+  "mood": "Foundation",
+  "name": "Creased Shadow",
   "parameters": {
-    "ORIGAMI": {
-      "ori_foldDepth": 0.72,
-      "ori_foldRate": 0.38,
-      "ori_filterCutoff": 0.4,
-      "ori_filterReso": 0.15,
+    "Origami": {
       "ori_ampAttack": 551.7,
       "ori_ampDecay": 714.7,
-      "ori_ampSustain": 0.9,
       "ori_ampRelease": 708.9,
-      "ori_lfoRate": 0.78,
-      "ori_lfoDepth": 0.22,
-      "ori_reverbMix": 0.8,
-      "ori_delayMix": 0.7,
+      "ori_ampSustain": 0.9,
       "ori_character": 0.46,
+      "ori_coupling": 0.12,
+      "ori_delayMix": 0.7,
+      "ori_filterCutoff": 0.4,
+      "ori_filterReso": 0.15,
+      "ori_foldDepth": 0.72,
+      "ori_foldRate": 0.38,
+      "ori_lfoDepth": 0.22,
+      "ori_lfoRate": 0.78,
       "ori_movement": 0.56,
-      "ori_space": 0.92,
-      "ori_coupling": 0.12
+      "ori_reverbMix": 0.8,
+      "ori_space": 0.92
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.54,
+    "brightness": 0.09,
+    "density": 0.54,
+    "movement": 0.71,
+    "space": 0.76,
+    "warmth": 0.4
+  },
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+  ],
+  "version": "1.0"
 }

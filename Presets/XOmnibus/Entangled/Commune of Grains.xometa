@@ -1,33 +1,48 @@
 {
-  "name": "Commune of Grains",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Opal",
+        "type": "GRANULAR_SYNC",
+        "amount": 0.7
+      }
+    ]
+  },
+  "description": "OHM's communal warmth scattered into Opal's granular mist — sparse and glowing.",
   "engines": [
-    "OHM",
-    "OPAL"
+    "Ohm",
+    "Opal"
   ],
-  "mood": "Entangled",
-  "strategy": "Warm Sparse",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5,
-    "MOVEMENT": 0.4,
     "COUPLING": 0.75,
+    "MOVEMENT": 0.4,
     "SPACE": 0.85
   },
+  "mood": "Entangled",
+  "name": "Commune of Grains",
+  "parameters": {
+    "Ohm": {},
+    "Opal": {}
+  },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.1,
     "brightness": 0.45,
-    "warmth": 0.93,
-    "movement": 0.38,
     "density": 0.08,
+    "movement": 0.38,
     "space": 0.82,
-    "aggression": 0.1
+    "warmth": 0.93
   },
-  "parameters": {},
-  "coupling": {
-    "type": "GRANULAR_SYNC",
-    "source": "OHM",
-    "target": "OPAL",
-    "amount": 0.7
-  },
+  "strategy": "Warm Sparse",
   "tags": [
     "entangled",
     "warm",
@@ -35,5 +50,13 @@
     "granular",
     "commune"
   ],
-  "description": "OHM's communal warmth scattered into Opal's granular mist \u2014 sparse and glowing."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

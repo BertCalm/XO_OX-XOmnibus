@@ -33,7 +33,9 @@
     "space": 0.05,
     "aggression": 0.96
   },
-  "parameters": {},
+  "parameters": {
+    "Obese": {}
+  },
   "tags": [
     "flux",
     "maximum",
@@ -41,5 +43,5 @@
     "meltdown",
     "saturation"
   ],
-  "description": "BELLY maxed, MOJO maxed \u2014 thermal runaway in the harmonic chain."
+  "description": "BELLY maxed, MOJO maxed — thermal runaway in the harmonic chain."
 }

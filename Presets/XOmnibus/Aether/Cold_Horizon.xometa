@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Cold Horizon",
-  "mood": "Aether",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Void accumulation: cold resonance packed into black mass.",
+  "dna": {
+    "aggression": 0.551,
     "brightness": 0.327,
-    "warmth": 0.072,
-    "movement": 0.38,
     "density": 0.882,
+    "movement": 0.38,
     "space": 0.31,
-    "aggression": 0.551
+    "warmth": 0.072
   },
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Void accumulation: cold resonance packed into black mass.",
+  "macroLabels": [
+    "PRESSURE",
+    "DEPTH",
+    "COUPLING",
+    "MASS"
+  ],
+  "mood": "Aether",
+  "name": "Cold Horizon",
+  "parameters": {
+    "Obsidian": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.551,
+    "brightness": 0.327,
+    "density": 0.882,
+    "movement": 0.38,
+    "space": 0.31,
+    "warmth": 0.072
+  },
   "tags": [
     "aether",
     "cold",
@@ -24,23 +44,5 @@
     "pressure",
     "aggressive"
   ],
-  "macroLabels": [
-    "PRESSURE",
-    "DEPTH",
-    "COUPLING",
-    "MASS"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.327,
-    "warmth": 0.072,
-    "movement": 0.38,
-    "density": 0.882,
-    "space": 0.31,
-    "aggression": 0.551
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

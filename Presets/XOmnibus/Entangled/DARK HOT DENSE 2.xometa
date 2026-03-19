@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Orbital \u00d7 OddOscar \u2014 Pitch Sync coupling at extreme DNA corner.",
+  "description": "Orbital × OddOscar — Pitch Sync coupling at extreme DNA corner.",
   "tags": [
     "dark",
     "orbital",
@@ -33,7 +33,10 @@
     "space": 0.487,
     "aggression": 0.616
   },
-  "parameters": {},
+  "parameters": {
+    "Orbital": {},
+    "OddOscar": {}
+  },
   "coupling": {
     "pairs": [
       {

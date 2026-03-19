@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT WARM DENSE BALANCED AET SPC 1",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "OddfeliX",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.779
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.067,
+    "brightness": 0.885,
+    "density": 0.902,
+    "movement": 0.52,
+    "space": 0.612,
+    "warmth": 0.927
+  },
   "engines": [
-    "OCEANIC",
-    "ODDFELIX"
+    "Oceanic",
+    "OddfeliX"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.906,
+    "COUPLING": 0.821,
+    "MOVEMENT": 0.52,
+    "SPACE": 0.612
+  },
+  "mood": "Aether",
+  "name": "BRIGHT WARM DENSE BALANCED ...",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.906,
-      "macro_movement": 0.52,
       "macro_coupling": 0.821,
+      "macro_movement": 0.52,
       "macro_space": 0.612
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.9,
-      "macro_movement": 0.53,
       "macro_coupling": 0.813,
+      "macro_movement": 0.53,
       "macro_space": 0.636
     }
   },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OCEANIC",
-    "target": "ODDFELIX",
-    "amount": 0.779
-  },
-  "dna": {
-    "brightness": 0.885,
-    "warmth": 0.927,
-    "movement": 0.52,
-    "density": 0.902,
-    "space": 0.612,
-    "aggression": 0.067
-  },
-  "macros": {
-    "CHARACTER": 0.906,
-    "MOVEMENT": 0.52,
-    "COUPLING": 0.821,
-    "SPACE": 0.612
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -49,5 +60,6 @@
     "bright",
     "warm",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

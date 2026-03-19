@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT COLD STILL INTIMATE GENTLE FAM2 1",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OSPREY",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.506,
-      "macro_movement": 0.035,
-      "macro_coupling": 0.191,
-      "macro_space": 0.112
-    },
-    "OBLONG": {
-      "macro_character": 0.487,
-      "macro_movement": 0.02,
-      "macro_coupling": 0.174,
-      "macro_space": 0.139
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OSPREY",
-    "target": "OBLONG",
-    "amount": 0.191
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Oblong",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.191
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.067,
     "brightness": 0.959,
-    "warmth": 0.054,
-    "movement": 0.035,
     "density": 0.315,
+    "movement": 0.035,
     "space": 0.112,
-    "aggression": 0.067
+    "warmth": 0.054
   },
+  "engines": [
+    "Osprey",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.506,
-    "MOVEMENT": 0.035,
     "COUPLING": 0.191,
+    "MOVEMENT": 0.035,
     "SPACE": 0.112
   },
+  "mood": "Family",
+  "name": "BRIGHT COLD STILL INTIMATE ...",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.487,
+      "macro_coupling": 0.174,
+      "macro_movement": 0.02,
+      "macro_space": 0.139
+    },
+    "Osprey": {
+      "macro_character": 0.506,
+      "macro_coupling": 0.191,
+      "macro_movement": 0.035,
+      "macro_space": 0.112
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
@@ -47,5 +58,6 @@
     "still",
     "intimate",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

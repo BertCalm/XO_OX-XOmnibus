@@ -33,7 +33,9 @@
     "space": 0.07,
     "aggression": 0.85
   },
-  "parameters": {},
+  "parameters": {
+    "Orbital": {}
+  },
   "tags": [
     "flux",
     "dense-flux",
@@ -41,5 +43,5 @@
     "debris",
     "field"
   ],
-  "description": "Orbital ring collapsed \u2014 dense debris field with no clear space between particles."
+  "description": "Orbital ring collapsed — dense debris field with no clear space between particles."
 }

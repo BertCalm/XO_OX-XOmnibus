@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Dub Foundation",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "The bass that holds the riddim steady. Roots.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.15,
+    "density": 0.8,
+    "movement": 0.2,
+    "space": 0.25,
+    "warmth": 0.9
+  },
   "engines": [
     "Overdub"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "The bass that holds the riddim steady. Roots.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Dub Foundation II",
+  "parameters": {
+    "Overdub": {
+      "dub_bass_resonance": 0.7,
+      "dub_delay_mix": 0.1,
+      "dub_send_vca": 0.4,
+      "dub_tape_drive": 0.5,
+      "dub_warmth": 0.9
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "bedrock",
     "dub",
@@ -16,37 +47,6 @@
     "foundation",
     "bass"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Overdub": {
-      "dub_delay_mix": 0.1,
-      "dub_tape_drive": 0.5,
-      "dub_bass_resonance": 0.7,
-      "dub_send_vca": 0.4,
-      "dub_warmth": 0.9
-    }
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.15,
-    "warmth": 0.9,
-    "movement": 0.2,
-    "density": 0.8,
-    "space": 0.25,
-    "aggression": 0.45
-  }
+  "version": "1.0.0"
 }

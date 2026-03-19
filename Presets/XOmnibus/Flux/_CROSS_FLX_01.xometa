@@ -1,49 +1,61 @@
 {
-  "name": "CROSS FLX 01",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Odyssey",
+        "type": "PITCH_SYNC",
+        "amount": 0.457
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.088,
+    "brightness": 0.931,
+    "density": 0.088,
+    "movement": 0.926,
+    "space": 0.538,
+    "warmth": 0.909
+  },
   "engines": [
-    "OVERDUB",
-    "ODYSSEY"
+    "Overdub",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.92,
+    "COUPLING": 0.313,
+    "MOVEMENT": 0.507,
+    "SPACE": 0.538
+  },
+  "mood": "Flux",
+  "name": "CROSS FLX 01",
   "parameters": {
-    "OVERDUB": {
+    "Odyssey": {
       "macro_character": 0.92,
-      "macro_movement": 0.507,
       "macro_coupling": 0.313,
+      "macro_movement": 0.507,
       "macro_space": 0.538
     },
-    "ODYSSEY": {
+    "Overdub": {
       "macro_character": 0.92,
-      "macro_movement": 0.507,
       "macro_coupling": 0.313,
+      "macro_movement": 0.507,
       "macro_space": 0.538
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OVERDUB",
-    "target": "ODYSSEY",
-    "amount": 0.457
-  },
-  "dna": {
-    "brightness": 0.931,
-    "warmth": 0.909,
-    "movement": 0.926,
-    "density": 0.088,
-    "space": 0.538,
-    "aggression": 0.088
-  },
-  "macros": {
-    "CHARACTER": 0.92,
-    "MOVEMENT": 0.507,
-    "COUPLING": 0.313,
-    "SPACE": 0.538
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-  ]
+  ],
+  "version": "1.0"
 }

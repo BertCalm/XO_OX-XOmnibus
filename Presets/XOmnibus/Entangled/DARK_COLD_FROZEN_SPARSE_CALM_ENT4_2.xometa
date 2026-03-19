@@ -1,45 +1,56 @@
 {
-  "name": "DARK_COLD_FROZEN_SPARSE_CALM_ENT4_2",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.115,
-      "macro_movement": 0.085,
-      "macro_coupling": 0.078,
-      "macro_space": 0.313
-    },
-    "OCEANIC": {
-      "macro_character": 0.102,
-      "macro_movement": 0.069,
-      "macro_coupling": 0.102,
-      "macro_space": 0.366
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OUTWIT",
-    "target": "OCEANIC",
-    "amount": 0.914
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Oceanic",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.914
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.089,
     "brightness": 0.099,
-    "warmth": 0.127,
-    "movement": 0.079,
     "density": 0.076,
+    "movement": 0.079,
     "space": 0.343,
-    "aggression": 0.089
+    "warmth": 0.127
   },
+  "engines": [
+    "Outwit",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.108,
-    "MOVEMENT": 0.077,
     "COUPLING": 0.914,
+    "MOVEMENT": 0.077,
     "SPACE": 0.34
   },
+  "mood": "Entangled",
+  "name": "Flux Flux",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.102,
+      "macro_coupling": 0.102,
+      "macro_movement": 0.069,
+      "macro_space": 0.366
+    },
+    "Outwit": {
+      "macro_character": 0.115,
+      "macro_coupling": 0.078,
+      "macro_movement": 0.085,
+      "macro_space": 0.313
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +59,6 @@
     "cold",
     "sparse",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

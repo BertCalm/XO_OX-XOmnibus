@@ -1,0 +1,5 @@
+# XOmnibus Python Tools Dependencies
+# Most tools use only the Python standard library (json, os, pathlib, etc.)
+# Listed below are any external dependencies used by specific tools.
+
+# None currently required - all tools use Python 3.8+ standard library

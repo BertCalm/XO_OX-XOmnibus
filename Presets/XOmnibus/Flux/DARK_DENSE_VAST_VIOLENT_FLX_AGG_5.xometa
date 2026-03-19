@@ -1,50 +1,62 @@
 {
-  "name": "DARK_DENSE_VAST_VIOLENT_FLX_AGG_5",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overdub",
+        "type": "CHAOS_INJECT",
+        "amount": 0.88
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.886,
+    "brightness": 0.023,
+    "density": 0.873,
+    "movement": 0.526,
+    "space": 0.947,
+    "warmth": 0.458
+  },
   "engines": [
-    "OBLIQUE",
-    "OVERDUB"
+    "Oblique",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.453,
+    "COUPLING": 0.841,
+    "MOVEMENT": 0.526,
+    "SPACE": 0.947
+  },
+  "mood": "Flux",
+  "name": "Flux Expanse 2",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.535,
-      "macro_movement": 0.521,
       "macro_coupling": 0.841,
+      "macro_movement": 0.521,
       "macro_space": 0.931
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.37,
-      "macro_movement": 0.564,
       "macro_coupling": 0.823,
+      "macro_movement": 0.564,
       "macro_space": 0.992
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OBLIQUE",
-    "target": "OVERDUB",
-    "amount": 0.88
-  },
-  "dna": {
-    "brightness": 0.023,
-    "warmth": 0.458,
-    "movement": 0.526,
-    "density": 0.873,
-    "space": 0.947,
-    "aggression": 0.886
-  },
-  "macros": {
-    "CHARACTER": 0.453,
-    "MOVEMENT": 0.526,
-    "COUPLING": 0.841,
-    "SPACE": 0.947
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "dark",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

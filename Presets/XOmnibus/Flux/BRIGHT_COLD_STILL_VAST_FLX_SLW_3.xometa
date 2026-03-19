@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_COLD_STILL_VAST_FLX_SLW_3",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Optic",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.771
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.403,
+    "brightness": 0.986,
+    "density": 0.698,
+    "movement": 0.013,
+    "space": 0.984,
+    "warmth": 0.041
+  },
   "engines": [
-    "OPAL",
-    "OPTIC"
+    "Opal",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.758,
+    "MOVEMENT": 0.013,
+    "SPACE": 0.984
+  },
+  "mood": "Flux",
+  "name": "Silver Canyon",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.385,
-      "macro_movement": 0.015,
       "macro_coupling": 0.699,
+      "macro_movement": 0.015,
       "macro_space": 0.995
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.615,
-      "macro_movement": 0.011,
       "macro_coupling": 0.736,
+      "macro_movement": 0.011,
       "macro_space": 1.0
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OPAL",
-    "target": "OPTIC",
-    "amount": 0.771
-  },
-  "dna": {
-    "brightness": 0.986,
-    "warmth": 0.041,
-    "movement": 0.013,
-    "density": 0.698,
-    "space": 0.984,
-    "aggression": 0.403
-  },
-  "macros": {
-    "CHARACTER": 0.55,
-    "MOVEMENT": 0.013,
-    "COUPLING": 0.758,
-    "SPACE": 0.984
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +58,6 @@
     "cold",
     "vast",
     "imperceptible-morph"
-  ]
+  ],
+  "version": "1.0"
 }

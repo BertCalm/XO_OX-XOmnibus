@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_COLD_DENSE_INTIMATE_VIOLENT_PRS_2",
-  "mood": "Prism",
-  "engines": [
-    "ORPHICA",
-    "OVERWORLD"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Overworld",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.928
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_DENSE_INTIMATE_VIOLENT. Variant 2.",
+  "dna": {
+    "aggression": 0.937,
+    "brightness": 0.93,
+    "density": 0.934,
+    "movement": 0.352,
+    "space": 0.045,
+    "warmth": 0.067
+  },
+  "engines": [
+    "Orphica",
+    "Overworld"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.914,
+    "COUPLING": 0.955,
+    "MOVEMENT": 0.356,
+    "SPACE": 0.035
+  },
+  "mood": "Prism",
+  "name": "Silver Rage 2",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.945,
+      "macro_coupling": 0.909,
+      "macro_movement": 0.394,
+      "macro_space": 0.0
+    },
+    "Overworld": {
+      "macro_character": 0.884,
+      "macro_coupling": 1.0,
+      "macro_movement": 0.317,
+      "macro_space": 0.069
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "cold",
@@ -19,53 +70,6 @@
     "prism",
     "dense"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORPHICA": {
-      "macro_character": 0.945,
-      "macro_movement": 0.394,
-      "macro_coupling": 0.909,
-      "macro_space": 0.0
-    },
-    "OVERWORLD": {
-      "macro_character": 0.884,
-      "macro_movement": 0.317,
-      "macro_coupling": 1.0,
-      "macro_space": 0.069
-    }
-  },
-  "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "ORPHICA",
-    "target": "OVERWORLD",
-    "amount": 0.928
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.93,
-    "warmth": 0.067,
-    "movement": 0.352,
-    "density": 0.934,
-    "space": 0.045,
-    "aggression": 0.937
-  },
-  "macros": {
-    "CHARACTER": 0.914,
-    "MOVEMENT": 0.356,
-    "COUPLING": 0.955,
-    "SPACE": 0.035
-  }
+  "version": "1.0.0"
 }

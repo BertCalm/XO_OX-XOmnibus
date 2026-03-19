@@ -1,54 +1,63 @@
 {
-  "schema_version": 1,
-  "name": "Hibiscus Biome",
-  "mood": "Entangled",
-  "engines": [
-    "OLE",
-    "ORGANON"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "Timbre blend \u2014 DRAMA's tropical palette colors ORGANON's bio-signal vermillion.",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Organon",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.76
+      }
+    ]
+  },
+  "description": "Timbre blend — DRAMA's tropical palette colors ORGANON's bio-signal vermillion.",
+  "dna": {
+    "aggression": 0.86,
+    "brightness": 0.62,
+    "density": 0.926,
+    "movement": 0.44,
+    "space": 0.7,
+    "warmth": 0.76
+  },
+  "engines": [
+    "Ole",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.76,
+    "COUPLING": 0.76,
+    "MOVEMENT": 0.7,
+    "SPACE": 0.4
+  },
+  "mood": "Entangled",
+  "name": "Hibiscus Biome",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.76,
-      "macro_movement": 0.7,
       "macro_coupling": 0.76,
+      "macro_movement": 0.7,
       "macro_space": 0.4
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.6,
-      "macro_movement": 0.68,
       "macro_coupling": 0.65,
+      "macro_movement": 0.68,
       "macro_space": 0.52
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OLE",
-    "target": "ORGANON",
-    "amount": 0.76,
-    "intensity": "Deep"
-  },
-  "dna": {
-    "brightness": 0.62,
-    "warmth": 0.76,
-    "movement": 0.44,
-    "density": 0.926,
-    "space": 0.7,
-    "aggression": 0.86
-  },
-  "macros": {
-    "CHARACTER": 0.76,
-    "MOVEMENT": 0.7,
-    "COUPLING": 0.76,
-    "SPACE": 0.4
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "ole",
     "organon",
     "timbre",
     "tropical"
-  ]
+  ],
+  "version": "1.0"
 }

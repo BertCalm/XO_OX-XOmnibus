@@ -1,49 +1,61 @@
 {
-  "name": "STELLAR DRIFT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Odyssey",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.612
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.129,
+    "brightness": 0.116,
+    "density": 0.598,
+    "movement": 0.682,
+    "space": 0.915,
+    "warmth": 0.332
+  },
   "engines": [
-    "OBESE",
-    "ODYSSEY"
+    "Obese",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.141,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.245,
+    "SPACE": 0.915
+  },
+  "mood": "Entangled",
+  "name": "STELLAR DRIFT",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.511,
-      "macro_movement": 0.101,
       "macro_coupling": 0.054,
+      "macro_movement": 0.101,
       "macro_space": 0.938
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.132,
-      "macro_movement": 0.824,
       "macro_coupling": 0.638,
+      "macro_movement": 0.824,
       "macro_space": 0.894
     }
   },
-  "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OBESE",
-    "target": "ODYSSEY",
-    "amount": 0.612
-  },
-  "dna": {
-    "brightness": 0.116,
-    "warmth": 0.332,
-    "movement": 0.682,
-    "density": 0.598,
-    "space": 0.915,
-    "aggression": 0.129
-  },
-  "macros": {
-    "CHARACTER": 0.141,
-    "MOVEMENT": 0.245,
-    "COUPLING": 0.65,
-    "SPACE": 0.915
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "vast",
     "cosmic",
     "xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

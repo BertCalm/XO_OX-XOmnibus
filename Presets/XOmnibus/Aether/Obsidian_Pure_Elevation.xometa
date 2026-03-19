@@ -1,19 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Pure Elevation",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Obsidian freed of darkness. The volcanic glass becomes a window — everything that passed through it left its high frequencies behind.",
+  "dna": {
+    "aggression": 0.04,
+    "brightness": 0.75,
+    "density": 0.25,
+    "movement": 0.2,
+    "space": 0.88,
+    "warmth": 0.3
+  },
   "engines": [
     "Obsidian"
-  ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "Obsidian freed of darkness. The volcanic glass becomes a window \u2014 everything that passed through it left its high frequencies behind.",
-  "tags": [
-    "aether",
-    "transcendent",
-    "elevated",
-    "refined",
-    "volcanic"
   ],
   "macroLabels": [
     "EDGE",
@@ -21,35 +22,34 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.75,
-    "warmth": 0.3,
-    "movement": 0.2,
-    "density": 0.25,
-    "space": 0.88,
-    "aggression": 0.04
-  },
+  "mood": "Aether",
+  "name": "Pure Elevation",
   "parameters": {
     "Obsidian": {
-      "obsidian_filterCutoff": 0.82,
-      "obsidian_filterReso": 0.2,
-      "obsidian_oscShape": 0.5,
-      "obsidian_subLevel": 0.3,
       "obsidian_ampAttack": 2.0,
       "obsidian_ampDecay": 1.0,
-      "obsidian_ampSustain": 0.85,
       "obsidian_ampRelease": 6.0,
-      "obsidian_reverbMix": 0.82,
+      "obsidian_ampSustain": 0.85,
       "obsidian_delayFeedback": 0.35,
-      "obsidian_macroEdge": 0.0,
-      "obsidian_macroDarkness": 0.0,
+      "obsidian_filterCutoff": 0.82,
+      "obsidian_filterReso": 0.2,
       "obsidian_macroCoupling": 0.0,
-      "obsidian_macroSpace": 0.0
+      "obsidian_macroDarkness": 0.0,
+      "obsidian_macroEdge": 0.0,
+      "obsidian_macroSpace": 0.0,
+      "obsidian_oscShape": 0.5,
+      "obsidian_reverbMix": 0.82,
+      "obsidian_subLevel": 0.3
     }
   },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "transcendent",
+    "elevated",
+    "refined",
+    "volcanic"
+  ],
+  "version": "1.0.0"
 }

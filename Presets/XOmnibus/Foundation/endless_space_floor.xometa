@@ -1,50 +1,62 @@
 {
-  "name": "ENDLESS SPACE FLOOR",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "OddOscar",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.791
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.8,
+    "brightness": 0.926,
+    "density": 0.163,
+    "movement": 0.962,
+    "space": 0.988,
+    "warmth": 0.237
+  },
   "engines": [
-    "OCELOT",
-    "ODDOSCAR"
+    "Ocelot",
+    "OddOscar"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.383,
+    "COUPLING": 0.039,
+    "MOVEMENT": 0.962,
+    "SPACE": 0.988
+  },
+  "mood": "Foundation",
+  "name": "ENDLESS SPACE FLOOR",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.179,
-      "macro_movement": 1.004,
       "macro_coupling": 0.782,
+      "macro_movement": 1.004,
       "macro_space": 0.983
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.67,
-      "macro_movement": 0.986,
       "macro_coupling": 0.248,
+      "macro_movement": 0.986,
       "macro_space": 0.968
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OCELOT",
-    "target": "ODDOSCAR",
-    "amount": 0.791
-  },
-  "dna": {
-    "brightness": 0.926,
-    "warmth": 0.237,
-    "movement": 0.962,
-    "density": 0.163,
-    "space": 0.988,
-    "aggression": 0.8
-  },
-  "macros": {
-    "CHARACTER": 0.383,
-    "MOVEMENT": 0.962,
-    "COUPLING": 0.039,
-    "SPACE": 0.988
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh",
     "movement-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,48 +1,60 @@
 {
-  "name": "RAMPAGE 25",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OSPREY",
-    "OCEANIC"
-  ],
-  "parameters": {
-    "OSPREY": {
-      "macro_character": 0.538,
-      "macro_movement": 0.88,
-      "macro_coupling": 0.719,
-      "macro_space": 0.742
-    },
-    "OCEANIC": {
-      "macro_character": 0.671,
-      "macro_movement": 0.973,
-      "macro_coupling": 0.364,
-      "macro_space": 0.07
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OSPREY",
-    "target": "OCEANIC",
-    "amount": 0.832
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Oceanic",
+        "type": "CHAOS_INJECT",
+        "amount": 0.832
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.65,
     "brightness": 0.33,
-    "warmth": 0.314,
-    "movement": 0.926,
     "density": 0.848,
+    "movement": 0.926,
     "space": 0.72,
-    "aggression": 0.65
+    "warmth": 0.314
   },
+  "engines": [
+    "Osprey",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.309,
-    "MOVEMENT": 0.926,
     "COUPLING": 0.408,
+    "MOVEMENT": 0.926,
     "SPACE": 0.402
   },
+  "mood": "Entangled",
+  "name": "RAMPAGE 25",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.671,
+      "macro_coupling": 0.364,
+      "macro_movement": 0.973,
+      "macro_space": 0.07
+    },
+    "Osprey": {
+      "macro_character": 0.538,
+      "macro_coupling": 0.719,
+      "macro_movement": 0.88,
+      "macro_space": 0.742
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "explosive",
     "unstable"
-  ]
+  ],
+  "version": "1.0"
 }

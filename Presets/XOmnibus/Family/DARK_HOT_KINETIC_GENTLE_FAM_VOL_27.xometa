@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_KINETIC_GENTLE_FAM_VOL_27",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "ODYSSEY",
-    "ODDFELIX"
-  ],
-  "parameters": {
-    "ODYSSEY": {
-      "macro_character": 0.471,
-      "macro_movement": 0.99,
-      "macro_coupling": 0.293,
-      "macro_space": 0.707
-    },
-    "ODDFELIX": {
-      "macro_character": 0.522,
-      "macro_movement": 0.99,
-      "macro_coupling": 0.315,
-      "macro_space": 0.715
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "ODDFELIX",
-    "target": "ODYSSEY",
-    "amount": 0.871
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Odyssey",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.871
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.037,
     "brightness": 0.104,
-    "warmth": 0.892,
-    "movement": 0.983,
     "density": 0.603,
+    "movement": 0.983,
     "space": 0.693,
-    "aggression": 0.037
+    "warmth": 0.892
   },
+  "engines": [
+    "Odyssey",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.496,
-    "MOVEMENT": 0.99,
     "COUPLING": 0.304,
+    "MOVEMENT": 0.99,
     "SPACE": 0.711
   },
+  "mood": "Family",
+  "name": "Smoke Surge",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.522,
+      "macro_coupling": 0.315,
+      "macro_movement": 0.99,
+      "macro_space": 0.715
+    },
+    "Odyssey": {
+      "macro_character": 0.471,
+      "macro_coupling": 0.293,
+      "macro_movement": 0.99,
+      "macro_space": 0.707
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "kinetic",
     "gentle",
     "dark"
-  ]
+  ],
+  "version": "1.0"
 }

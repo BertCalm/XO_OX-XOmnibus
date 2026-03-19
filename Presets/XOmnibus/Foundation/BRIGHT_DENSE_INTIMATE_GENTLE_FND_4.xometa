@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_DENSE_INTIMATE_GENTLE_FND_4",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overbite",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.509
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.067,
+    "brightness": 0.961,
+    "density": 0.899,
+    "movement": 0.446,
+    "space": 0.081,
+    "warmth": 0.311
+  },
   "engines": [
-    "OBLONG",
-    "OVERBITE"
+    "Oblong",
+    "Overbite"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.162,
+    "COUPLING": 0.145,
+    "MOVEMENT": 0.336,
+    "SPACE": 0.314
+  },
+  "mood": "Foundation",
+  "name": "Quartz Titan",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.413,
-      "macro_movement": 0.259,
       "macro_coupling": 0.762,
+      "macro_movement": 0.259,
       "macro_space": 0.125
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.607,
-      "macro_movement": 0.367,
       "macro_coupling": 0.563,
+      "macro_movement": 0.367,
       "macro_space": 0.443
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBLONG",
-    "target": "OVERBITE",
-    "amount": 0.509
-  },
-  "dna": {
-    "brightness": 0.961,
-    "warmth": 0.311,
-    "movement": 0.446,
-    "density": 0.899,
-    "space": 0.081,
-    "aggression": 0.067
-  },
-  "macros": {
-    "CHARACTER": 0.162,
-    "MOVEMENT": 0.336,
-    "COUPLING": 0.145,
-    "SPACE": 0.314
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -47,5 +58,6 @@
     "dense",
     "intimate",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_VAST_GENTLE_PRS_DRK_1",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.8139
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.1276,
+    "brightness": 0.0417,
+    "density": 0.5928,
+    "movement": 0.3315,
+    "space": 0.9679,
+    "warmth": 0.9381
+  },
   "engines": [
-    "OLE",
-    "ORACLE"
+    "Ole",
+    "Oracle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5329,
+    "COUPLING": 0.5928,
+    "MOVEMENT": 0.3315,
+    "SPACE": 0.9679
+  },
+  "mood": "Prism",
+  "name": "DARK_HOT_VAST_GENTLE_PRS_DRK_1",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.5329,
-      "macro_movement": 0.3315,
       "macro_coupling": 0.5928,
+      "macro_movement": 0.3315,
       "macro_space": 0.9679
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.5686,
-      "macro_movement": 0.3047,
       "macro_coupling": 0.595,
+      "macro_movement": 0.3047,
       "macro_space": 0.9764
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OLE",
-    "target": "ORACLE",
-    "amount": 0.8139
-  },
-  "dna": {
-    "brightness": 0.0417,
-    "warmth": 0.9381,
-    "movement": 0.3315,
-    "density": 0.5928,
-    "space": 0.9679,
-    "aggression": 0.1276
-  },
-  "macros": {
-    "CHARACTER": 0.5329,
-    "MOVEMENT": 0.3315,
-    "COUPLING": 0.5928,
-    "SPACE": 0.9679
-  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "hot",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

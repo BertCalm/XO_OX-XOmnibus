@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_VOL_76",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OTTONI",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "OTTONI": {
-      "macro_character": 0.968,
-      "macro_movement": 0.857,
-      "macro_coupling": 0.776,
-      "macro_space": 0.379
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.951,
-      "macro_movement": 0.869,
-      "macro_coupling": 0.782,
-      "macro_space": 0.418
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_LINK",
-    "source": "OTTONI",
-    "target": "OBBLIGATO",
-    "amount": 0.584
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Obbligato",
+        "type": "FILTER_LINK",
+        "amount": 0.584
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.925,
     "brightness": 0.898,
-    "warmth": 0.981,
-    "movement": 0.882,
     "density": 0.609,
+    "movement": 0.882,
     "space": 0.398,
-    "aggression": 0.925
+    "warmth": 0.981
   },
+  "engines": [
+    "Ottoni",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.96,
-    "MOVEMENT": 0.863,
     "COUPLING": 0.779,
+    "MOVEMENT": 0.863,
     "SPACE": 0.398
   },
+  "mood": "Family",
+  "name": "Bloom Blade 2",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.951,
+      "macro_coupling": 0.782,
+      "macro_movement": 0.869,
+      "macro_space": 0.418
+    },
+    "Ottoni": {
+      "macro_character": 0.968,
+      "macro_coupling": 0.776,
+      "macro_movement": 0.857,
+      "macro_space": 0.379
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "aggressive",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

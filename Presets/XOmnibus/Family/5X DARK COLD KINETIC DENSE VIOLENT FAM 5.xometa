@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FAM 5",
-  "mood": "Family",
-  "engines": [
-    "ORACLE",
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Onset",
+        "type": "FILTER_SHARE",
+        "amount": 0.71
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.951,
+    "brightness": 0.051,
+    "density": 0.903,
+    "movement": 0.503,
+    "space": 0.055,
+    "warmth": 0.097
+  },
+  "engines": [
+    "Oracle",
+    "Onset"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.68,
+      "macro_coupling": 0.71,
+      "macro_movement": 0.99,
+      "macro_space": 0.27
+    },
+    "Oracle": {
+      "macro_character": 0.82,
+      "macro_coupling": 0.61,
+      "macro_movement": 0.88,
+      "macro_space": 0.49
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +62,6 @@
     "dense",
     "family"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ORACLE": {
-      "macro_character": 0.82,
-      "macro_movement": 0.88,
-      "macro_coupling": 0.61,
-      "macro_space": 0.49
-    },
-    "ONSET": {
-      "macro_character": 0.68,
-      "macro_movement": 0.99,
-      "macro_coupling": 0.71,
-      "macro_space": 0.27
-    }
-  },
-  "coupling": {
-    "type": "FILTER_SHARE",
-    "source": "ORACLE",
-    "target": "ONSET",
-    "amount": 0.71
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.051,
-    "warmth": 0.097,
-    "movement": 0.503,
-    "density": 0.903,
-    "space": 0.055,
-    "aggression": 0.951
-  }
+  "version": "1.0.0"
 }

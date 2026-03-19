@@ -1,48 +1,60 @@
 {
-  "name": "COLD FLUX 6",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Ohm",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.8788
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.1262,
+    "brightness": 0.929,
+    "density": 0.0204,
+    "movement": 0.1994,
+    "space": 0.1524,
+    "warmth": 0.0954
+  },
   "engines": [
-    "OBESE",
-    "OHM"
+    "Obese",
+    "Ohm"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1081,
+    "COUPLING": 0.312,
+    "MOVEMENT": 0.0257,
+    "SPACE": 0.6773
+  },
+  "mood": "Flux",
+  "name": "COLD FLUX 6",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.218,
-      "macro_movement": 0.6995,
       "macro_coupling": 0.7669,
+      "macro_movement": 0.6995,
       "macro_space": 0.1678
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.6072,
-      "macro_movement": 0.7479,
       "macro_coupling": 0.1145,
+      "macro_movement": 0.7479,
       "macro_space": 0.8193
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OBESE",
-    "target": "OHM",
-    "amount": 0.8788
-  },
-  "dna": {
-    "brightness": 0.929,
-    "warmth": 0.0954,
-    "movement": 0.1994,
-    "density": 0.0204,
-    "space": 0.1524,
-    "aggression": 0.1262
-  },
-  "macros": {
-    "CHARACTER": 0.1081,
-    "MOVEMENT": 0.0257,
-    "COUPLING": 0.312,
-    "SPACE": 0.6773
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "cold",
     "shifting"
-  ]
+  ],
+  "version": "1.0"
 }

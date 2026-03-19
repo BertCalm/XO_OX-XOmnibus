@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT WARM STILL INTIMATE DENSE FAM2 4",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Organon",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.74
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.528,
+    "brightness": 0.927,
+    "density": 0.953,
+    "movement": 0.09,
+    "space": 0.123,
+    "warmth": 0.99
+  },
   "engines": [
-    "OPAL",
-    "ORGANON"
+    "Opal",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.959,
+    "COUPLING": 0.74,
+    "MOVEMENT": 0.09,
+    "SPACE": 0.123
+  },
+  "mood": "Family",
+  "name": "BRIGHT WARM STILL INTIMATE ...",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.959,
-      "macro_movement": 0.09,
       "macro_coupling": 0.74,
+      "macro_movement": 0.09,
       "macro_space": 0.123
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.945,
-      "macro_movement": 0.105,
       "macro_coupling": 0.737,
+      "macro_movement": 0.105,
       "macro_space": 0.2
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OPAL",
-    "target": "ORGANON",
-    "amount": 0.74
-  },
-  "dna": {
-    "brightness": 0.927,
-    "warmth": 0.99,
-    "movement": 0.09,
-    "density": 0.953,
-    "space": 0.123,
-    "aggression": 0.528
-  },
-  "macros": {
-    "CHARACTER": 0.959,
-    "MOVEMENT": 0.09,
-    "COUPLING": 0.74,
-    "SPACE": 0.123
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "bright",
@@ -47,5 +58,6 @@
     "still",
     "dense",
     "intimate"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,27 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Tar Mass Pure",
-  "mood": "Foundation",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Dense analog body with thick sustain and minimal air.",
+  "dna": {
+    "aggression": 0.394,
     "brightness": 0.508,
-    "warmth": 0.891,
-    "movement": 0.484,
     "density": 0.962,
+    "movement": 0.484,
     "space": 0.292,
-    "aggression": 0.394
+    "warmth": 0.891
   },
   "engines": [
-    "OHM"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Dense analog body with thick sustain and minimal air.",
-  "tags": [
-    "foundation",
-    "warm",
-    "dense",
-    "analog",
-    "thick"
+    "Ohm"
   ],
   "macroLabels": [
     "WARMTH",
@@ -29,17 +22,26 @@
     "COUPLING",
     "DEPTH"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.508,
-    "warmth": 0.891,
-    "movement": 0.484,
-    "density": 0.962,
-    "space": 0.292,
-    "aggression": 0.394
+  "mood": "Foundation",
+  "name": "Tar Mass Pure",
+  "parameters": {
+    "Ohm": {}
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.394,
+    "brightness": 0.508,
+    "density": 0.962,
+    "movement": 0.484,
+    "space": 0.292,
+    "warmth": 0.891
+  },
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick"
+  ],
+  "version": "1.0.0"
 }

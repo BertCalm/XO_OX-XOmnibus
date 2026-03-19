@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 6",
-  "mood": "Entangled",
-  "engines": [
-    "OBSCURA",
-    "OCTOPUS"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Octopus",
+        "type": "FM_CROSS",
+        "amount": 0.92
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.524,
+    "brightness": 0.914,
+    "density": 0.044,
+    "movement": 0.092,
+    "space": 0.914,
+    "warmth": 0.954
+  },
+  "engines": [
+    "Obscura",
+    "Octopus"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.66,
+      "macro_coupling": 0.74,
+      "macro_movement": 0.96,
+      "macro_space": 0.44
+    },
+    "Octopus": {
+      "macro_character": 0.94,
+      "macro_coupling": 0.86,
+      "macro_movement": 0.91,
+      "macro_space": 0.33
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +62,6 @@
     "dense",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OBSCURA": {
-      "macro_character": 0.66,
-      "macro_movement": 0.96,
-      "macro_coupling": 0.74,
-      "macro_space": 0.44
-    },
-    "OCTOPUS": {
-      "macro_character": 0.94,
-      "macro_movement": 0.91,
-      "macro_coupling": 0.86,
-      "macro_space": 0.33
-    }
-  },
-  "coupling": {
-    "type": "FM_CROSS",
-    "source": "OBSCURA",
-    "target": "OCTOPUS",
-    "amount": 0.92
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.914,
-    "warmth": 0.954,
-    "movement": 0.092,
-    "density": 0.044,
-    "space": 0.914,
-    "aggression": 0.524
-  }
+  "version": "1.0.0"
 }

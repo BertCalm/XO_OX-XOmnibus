@@ -1,14 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT WARM KINETIC DENSE FAM 3",
-  "mood": "Family",
-  "engines": [
-    "OVERBITE",
-    "OBLIQUE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, bright, warm, kinetic.",
+  "coupling": [
+    {
+      "amount": 0.489,
+      "destination": "OBLIQUE",
+      "source": "OVERBITE",
+      "type": "VELOCITY_COUPLE"
+    }
+  ],
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — family, bright, warm, kinetic.",
+  "dna": {
+    "aggression": 0.542,
+    "brightness": 0.922,
+    "density": 0.912,
+    "movement": 0.902,
+    "space": 0.514,
+    "warmth": 0.932
+  },
+  "engines": [
+    "Overbite",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "BRIGHT WARM KINETIC DENSE F...",
+  "parameters": {
+    "Oblique": {
+      "level": 0.672,
+      "pan": -0.069
+    },
+    "Overbite": {
+      "level": 0.786,
+      "pan": 0.018
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "bright",
@@ -17,40 +51,6 @@
     "dense",
     "ultra-diverse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.922,
-    "warmth": 0.932,
-    "movement": 0.902,
-    "density": 0.912,
-    "space": 0.514,
-    "aggression": 0.542
-  },
-  "parameters": {
-    "OVERBITE": {
-      "level": 0.786,
-      "pan": 0.018
-    },
-    "OBLIQUE": {
-      "level": 0.672,
-      "pan": -0.069
-    }
-  },
-  "coupling": [
-    {
-      "source": "OVERBITE",
-      "destination": "OBLIQUE",
-      "type": "VELOCITY_COUPLE",
-      "amount": 0.489
-    }
-  ],
-  "sequencer": null
+  "version": "1.0.0"
 }

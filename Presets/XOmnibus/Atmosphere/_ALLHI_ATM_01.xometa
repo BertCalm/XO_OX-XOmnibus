@@ -1,49 +1,61 @@
 {
-  "name": "ALLHI ATM 01",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oceanic",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.738
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.939,
+    "brightness": 0.37,
+    "density": 0.941,
+    "movement": 0.923,
+    "space": 0.918,
+    "warmth": 0.893
+  },
   "engines": [
-    "OPAL",
-    "OCEANIC"
+    "Opal",
+    "Oceanic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.631,
+    "COUPLING": 0.928,
+    "MOVEMENT": 0.932,
+    "SPACE": 0.918
+  },
+  "mood": "Atmosphere",
+  "name": "ALLHI ATM 01",
   "parameters": {
-    "OPAL": {
+    "Oceanic": {
       "macro_character": 0.631,
-      "macro_movement": 0.932,
       "macro_coupling": 0.928,
+      "macro_movement": 0.932,
       "macro_space": 0.918
     },
-    "OCEANIC": {
+    "Opal": {
       "macro_character": 0.631,
-      "macro_movement": 0.932,
       "macro_coupling": 0.928,
+      "macro_movement": 0.932,
       "macro_space": 0.918
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OPAL",
-    "target": "OCEANIC",
-    "amount": 0.738
-  },
-  "dna": {
-    "brightness": 0.37,
-    "warmth": 0.893,
-    "movement": 0.923,
-    "density": 0.941,
-    "space": 0.918,
-    "aggression": 0.939
-  },
-  "macros": {
-    "CHARACTER": 0.631,
-    "MOVEMENT": 0.932,
-    "COUPLING": 0.928,
-    "SPACE": 0.918
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

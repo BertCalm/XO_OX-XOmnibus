@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_SPARSE_VAST_GENTLE_ATM_5",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Osprey",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.459
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.117,
+    "brightness": 0.959,
+    "density": 0.118,
+    "movement": 0.516,
+    "space": 0.905,
+    "warmth": 0.369
+  },
   "engines": [
-    "OPAL",
-    "OSPREY"
+    "Opal",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.391,
+    "COUPLING": 0.674,
+    "MOVEMENT": 0.45,
+    "SPACE": 0.895
+  },
+  "mood": "Atmosphere",
+  "name": "Silver Orbit",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.391,
-      "macro_movement": 0.45,
       "macro_coupling": 0.674,
+      "macro_movement": 0.45,
       "macro_space": 0.895
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.458,
-      "macro_movement": 0.594,
       "macro_coupling": 0.544,
+      "macro_movement": 0.594,
       "macro_space": 0.89
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OPAL",
-    "target": "OSPREY",
-    "amount": 0.459
-  },
-  "dna": {
-    "brightness": 0.959,
-    "warmth": 0.369,
-    "movement": 0.516,
-    "density": 0.118,
-    "space": 0.905,
-    "aggression": 0.117
-  },
-  "macros": {
-    "CHARACTER": 0.391,
-    "MOVEMENT": 0.45,
-    "COUPLING": 0.674,
-    "SPACE": 0.895
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "sparse",
     "vast",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,49 +1,61 @@
 {
-  "name": "ALLLO PRS 02",
-  "version": "1.0",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Orphica",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.157
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.092,
+    "density": 0.024,
+    "movement": 0.071,
+    "space": 0.068,
+    "warmth": 0.589
+  },
   "engines": [
-    "OCELOT",
-    "ORPHICA"
+    "Ocelot",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.34,
+    "COUPLING": 0.074,
+    "MOVEMENT": 0.048,
+    "SPACE": 0.068
+  },
+  "mood": "Prism",
+  "name": "ALLLO PRS 02",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.34,
-      "macro_movement": 0.048,
       "macro_coupling": 0.074,
+      "macro_movement": 0.048,
       "macro_space": 0.068
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.34,
-      "macro_movement": 0.048,
       "macro_coupling": 0.074,
+      "macro_movement": 0.048,
       "macro_space": 0.068
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "OCELOT",
-    "target": "ORPHICA",
-    "amount": 0.157
-  },
-  "dna": {
-    "brightness": 0.092,
-    "warmth": 0.589,
-    "movement": 0.071,
-    "density": 0.024,
-    "space": 0.068,
-    "aggression": 0.08
-  },
-  "macros": {
-    "CHARACTER": 0.34,
-    "MOVEMENT": 0.048,
-    "COUPLING": 0.074,
-    "SPACE": 0.068
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

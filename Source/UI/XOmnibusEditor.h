@@ -10,10 +10,31 @@ namespace xomnibus {
 // Light mode is the primary presentation (brand rule). Dark mode is a toggle.
 namespace GalleryColors {
 
-    // Theme state — light by default (brand rule)
+    // Theme state — light by default (brand rule), persisted to disk.
+    inline bool loadDarkModePref()
+    {
+        juce::PropertiesFile::Options opts;
+        opts.applicationName = "XOmnibus";
+        opts.folderName = "XO_OX";
+        opts.filenameSuffix = ".settings";
+        juce::PropertiesFile props(opts);
+        return props.getBoolValue("darkMode", false);
+    }
+
+    inline void saveDarkModePref(bool dark)
+    {
+        juce::PropertiesFile::Options opts;
+        opts.applicationName = "XOmnibus";
+        opts.folderName = "XO_OX";
+        opts.filenameSuffix = ".settings";
+        juce::PropertiesFile props(opts);
+        props.setValue("darkMode", dark);
+        props.saveIfNeeded();
+    }
+
     inline bool& darkMode()
     {
-        static bool dark = false;
+        static bool dark = loadDarkModePref();
         return dark;
     }
 
@@ -95,9 +116,13 @@ namespace GalleryColors {
         if (id == "Obbligato") return juce::Colour(0xFFFF8A7A); // Rascal Coral
         if (id == "Ottoni")    return juce::Colour(0xFF5B8A72); // Patina
         if (id == "Ole")       return juce::Colour(0xFFC9377A); // Hibiscus
+        // Newest engines (2026-03-15)
+        if (id == "Ombre")     return juce::Colour(0xFF7B6B8A); // Shadow Mauve
+        if (id == "Orca")      return juce::Colour(0xFF1B2838); // Deep Ocean
+        if (id == "Octopus")   return juce::Colour(0xFFE040FB); // Chromatophore Magenta
         // Standalone adapters (Phase 4)
-        if (id == "XOverlap")  return juce::Colour(0xFF00FFB4); // Bioluminescent Cyan-Green
-        if (id == "XOutwit")   return juce::Colour(0xFFCC6600); // Chromatophore Amber
+        if (id == "Overlap" || id == "XOverlap")  return juce::Colour(0xFF00FFB4); // Bioluminescent Cyan-Green
+        if (id == "Outwit"  || id == "XOutwit")   return juce::Colour(0xFFCC6600); // Chromatophore Amber
         return get(borderGray());
     }
 
@@ -277,8 +302,7 @@ public:
         // Focus ring (WCAG 2.4.7) — use focus colour instead of border when focused
         if (btn.hasKeyboardFocus (true))
         {
-            g.setColour (A11y::focusRingColour());
-            g.drawRoundedRectangle (b, 5.0f, 2.0f);
+            A11y::drawFocusRing (g, b, 5.0f);
         }
         else
         {
@@ -2072,6 +2096,7 @@ public:
         themeToggleBtn.onClick = [this]
         {
             GalleryColors::darkMode() = themeToggleBtn.getToggleState();
+            GalleryColors::saveDarkModePref(themeToggleBtn.getToggleState());
             laf->applyTheme();
             repaint();
             for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
@@ -2136,6 +2161,18 @@ public:
             return true;
         }
         return false;
+    }
+
+    std::unique_ptr<juce::AccessibilityHandler> createAccessibilityHandler() override
+    {
+        return std::make_unique<juce::AccessibilityHandler> (
+            *this,
+            juce::AccessibilityRole::group,
+            juce::AccessibilityActions{}
+                .addAction (juce::AccessibilityActionType::showMenu, [this] {
+                    // Focus the preset browser when accessibility requests a menu
+                    presetBrowser.grabKeyboardFocus();
+                }));
     }
 
     void paint(juce::Graphics& g) override

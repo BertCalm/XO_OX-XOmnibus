@@ -1,48 +1,60 @@
 {
-  "name": "FRANTIC PULSE 35",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Ole",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.707
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.775,
+    "brightness": 0.717,
+    "density": 0.771,
+    "movement": 0.918,
+    "space": 0.005,
+    "warmth": 0.101
+  },
   "engines": [
-    "OBSIDIAN",
-    "OLE"
+    "Obsidian",
+    "Ole"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.929,
+    "COUPLING": 0.407,
+    "MOVEMENT": 0.918,
+    "SPACE": 0.935
+  },
+  "mood": "Entangled",
+  "name": "FRANTIC PULSE 35",
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.587,
-      "macro_movement": 0.894,
       "macro_coupling": 0.242,
+      "macro_movement": 0.894,
       "macro_space": 0.67
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.531,
-      "macro_movement": 0.942,
       "macro_coupling": 0.638,
+      "macro_movement": 0.942,
       "macro_space": 0.052
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OBSIDIAN",
-    "target": "OLE",
-    "amount": 0.707
-  },
-  "dna": {
-    "brightness": 0.717,
-    "warmth": 0.101,
-    "movement": 0.918,
-    "density": 0.771,
-    "space": 0.005,
-    "aggression": 0.775
-  },
-  "macros": {
-    "CHARACTER": 0.929,
-    "MOVEMENT": 0.918,
-    "COUPLING": 0.407,
-    "SPACE": 0.935
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "rupture",
     "intensity"
-  ]
+  ],
+  "version": "1.0"
 }

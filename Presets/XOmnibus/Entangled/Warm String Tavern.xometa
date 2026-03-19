@@ -1,14 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Warm String Tavern",
-  "mood": "Entangled",
-  "engines": [
-    "OSTERIA",
-    "OBLONG"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Osteria",
+        "engineB": "Oblong",
+        "type": "Audio->Wavetable"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
   "description": "OBLONG strings fill the osteria with folk warmth on a cold harbour evening.",
+  "dna": {
+    "aggression": 0.32,
+    "brightness": 0.57,
+    "density": 0.62,
+    "movement": 0.42,
+    "space": 0.5,
+    "warmth": 0.76
+  },
+  "engines": [
+    "Osteria",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.65,
+    "MOVEMENT": 0.4,
+    "SPACE": 0.5
+  },
+  "mood": "Entangled",
+  "name": "Warm String Tavern",
+  "parameters": {
+    "Osteria": {},
+    "Oblong": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -19,38 +54,6 @@
     "folk",
     "warm"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.55,
-    "MOVEMENT": 0.4,
-    "COUPLING": 0.65,
-    "SPACE": 0.5
-  },
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.57,
-    "warmth": 0.76,
-    "movement": 0.42,
-    "density": 0.62,
-    "space": 0.5,
-    "aggression": 0.32
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OSTERIA",
-        "engineB": "OBLONG",
-        "type": "Audio->Wavetable",
-        "amount": 0.6
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

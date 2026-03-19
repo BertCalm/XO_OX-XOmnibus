@@ -1,19 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Spectral Ascent",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The oracle's vision climbs frequencies that no ear can follow. The ascent continues past the limit of perception — you feel the destination rather than hear it.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.93,
+    "density": 0.22,
+    "movement": 0.3,
+    "space": 0.9,
+    "warmth": 0.1
+  },
   "engines": [
     "Oracle"
-  ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "The oracle's vision climbs frequencies that no ear can follow. The ascent continues past the limit of perception \u2014 you feel the destination rather than hear it.",
-  "tags": [
-    "aether",
-    "transcendent",
-    "spectral",
-    "ascending",
-    "visionary"
   ],
   "macroLabels": [
     "VISION",
@@ -21,34 +22,33 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.93,
-    "warmth": 0.1,
-    "movement": 0.3,
-    "density": 0.22,
-    "space": 0.9,
-    "aggression": 0.05
-  },
+  "mood": "Aether",
+  "name": "Spectral Ascent",
   "parameters": {
     "Oracle": {
-      "oracle_spectralBlur": 0.9,
-      "oracle_harmonicSpread": 0.85,
+      "oracle_ampAttack": 2.0,
+      "oracle_ampRelease": 6.0,
+      "oracle_delayFeedback": 0.4,
       "oracle_feedbackAmt": 0.35,
       "oracle_filterCutoff": 0.95,
       "oracle_filterReso": 0.15,
-      "oracle_ampAttack": 2.0,
-      "oracle_ampRelease": 6.0,
-      "oracle_reverbMix": 0.88,
-      "oracle_delayFeedback": 0.4,
-      "oracle_macroVision": 0.0,
-      "oracle_macroDepth": 0.0,
+      "oracle_harmonicSpread": 0.85,
       "oracle_macroCoupling": 0.0,
-      "oracle_macroSpace": 0.0
+      "oracle_macroDepth": 0.0,
+      "oracle_macroSpace": 0.0,
+      "oracle_macroVision": 0.0,
+      "oracle_reverbMix": 0.88,
+      "oracle_spectralBlur": 0.9
     }
   },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "transcendent",
+    "spectral",
+    "ascending",
+    "visionary"
+  ],
+  "version": "1.0.0"
 }

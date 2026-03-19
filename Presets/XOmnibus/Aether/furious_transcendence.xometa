@@ -1,50 +1,62 @@
 {
-  "name": "FURIOUS TRANSCENDENCE",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "ODDFELIX",
-    "OBSIDIAN"
-  ],
-  "parameters": {
-    "ODDFELIX": {
-      "macro_character": 0.739,
-      "macro_movement": 0.952,
-      "macro_coupling": 0.556,
-      "macro_space": 0.837
-    },
-    "OBSIDIAN": {
-      "macro_character": 0.562,
-      "macro_movement": 0.904,
-      "macro_coupling": 0.122,
-      "macro_space": 0.823
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "ODDFELIX",
-    "target": "OBSIDIAN",
-    "amount": 0.766
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obsidian",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.766
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.953,
     "brightness": 0.153,
-    "warmth": 0.923,
-    "movement": 0.921,
     "density": 0.067,
+    "movement": 0.921,
     "space": 0.832,
-    "aggression": 0.953
+    "warmth": 0.923
   },
+  "engines": [
+    "OddfeliX",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.75,
-    "MOVEMENT": 0.921,
     "COUPLING": 0.868,
+    "MOVEMENT": 0.921,
     "SPACE": 0.832
   },
+  "mood": "Aether",
+  "name": "FURIOUS TRANSCENDENCE",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.562,
+      "macro_coupling": 0.122,
+      "macro_movement": 0.904,
+      "macro_space": 0.823
+    },
+    "OddfeliX": {
+      "macro_character": 0.739,
+      "macro_coupling": 0.556,
+      "macro_movement": 0.952,
+      "macro_space": 0.837
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh",
     "movement-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

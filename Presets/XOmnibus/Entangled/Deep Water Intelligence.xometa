@@ -1,68 +1,78 @@
 {
-  "schema_version": 1,
-  "name": "Deep Water Intelligence",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OUTWIT",
-    "OVERLAP"
-  ],
-  "author": "XO_OX",
-  "macros": {
-    "CHARACTER": 0.36,
-    "MOVEMENT": 0.5,
-    "COUPLING": 0.72,
-    "SPACE": 0.83
-  },
-  "sonic_dna": {
-    "brightness": 0.58,
-    "warmth": 0.58,
-    "movement": 0.7,
-    "density": 0.72,
-    "space": 0.83,
-    "aggression": 0.33
-  },
-  "parameters": {
-    "OUTWIT": {
-      "owit_rule": 110,
-      "owit_arms": 5,
-      "owit_cellSize": 0.364,
-      "owit_density": 0.731,
-      "owit_evolveRate": 0.366,
-      "owit_mutateProb": 0.182,
-      "owit_pitchSpread": 0.443,
-      "owit_filterCutoff": 0.736,
-      "owit_filterReso": 0.425,
-      "owit_ampAttack": 0.116,
-      "owit_ampRelease": 0.614,
-      "owit_outputLevel": 0.793,
-      "owit_couplingLevel": 0.62,
-      "owit_couplingBus": 0
-    },
-    "OVERLAP": {
-      "olap_size": 0.819,
-      "olap_decay": 0.649,
-      "olap_damping": 0.61,
-      "olap_diffusion": 0.672,
-      "olap_modDepth": 0.187,
-      "olap_modRate": 0.069,
-      "olap_preDelay": 0.005,
-      "olap_earlyMix": 0.394,
-      "olap_lateMix": 0.635,
-      "olap_filterCutoff": 0.403,
-      "olap_filterReso": 0.312,
-      "olap_outputLevel": 0.662,
-      "olap_couplingLevel": 0.567,
-      "olap_couplingBus": 0
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_BLEND",
-    "source": "OUTWIT",
-    "target": "OVERLAP",
-    "amount": 0.72
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Overlap",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.72
+      }
+    ]
   },
   "couplingIntensity": "Deep",
+  "description": "Two abyssal intelligences in harmonic resonance — Wolfram rules translated into FDN mode frequencies; pattern and space become one organism",
+  "engines": [
+    "Outwit",
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.36,
+    "COUPLING": 0.72,
+    "MOVEMENT": 0.5,
+    "SPACE": 0.83
+  },
+  "mood": "Entangled",
+  "name": "Deep Water Intelligence",
+  "parameters": {
+    "Outwit": {
+      "owit_ampAttack": 0.116,
+      "owit_ampRelease": 0.614,
+      "owit_arms": 5,
+      "owit_cellSize": 0.364,
+      "owit_couplingBus": 0,
+      "owit_couplingLevel": 0.62,
+      "owit_density": 0.731,
+      "owit_evolveRate": 0.366,
+      "owit_filterCutoff": 0.736,
+      "owit_filterReso": 0.425,
+      "owit_mutateProb": 0.182,
+      "owit_outputLevel": 0.793,
+      "owit_pitchSpread": 0.443,
+      "owit_rule": 110
+    },
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.567,
+      "olap_damping": 0.61,
+      "olap_decay": 0.649,
+      "olap_diffusion": 0.672,
+      "olap_earlyMix": 0.394,
+      "olap_filterCutoff": 0.403,
+      "olap_filterReso": 0.312,
+      "olap_lateMix": 0.635,
+      "olap_modDepth": 0.187,
+      "olap_modRate": 0.069,
+      "olap_outputLevel": 0.662,
+      "olap_preDelay": 0.005,
+      "olap_size": 0.819
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.33,
+    "brightness": 0.58,
+    "density": 0.72,
+    "movement": 0.7,
+    "space": 0.83,
+    "warmth": 0.58
+  },
   "tags": [
     "entangled",
     "coupling",
@@ -74,5 +84,13 @@
     "deep-water",
     "intelligence"
   ],
-  "description": "Two abyssal intelligences in harmonic resonance \u2014 Wolfram rules translated into FDN mode frequencies; pattern and space become one organism"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.736,
+    "warmth": 0.5,
+    "movement": 0.366,
+    "density": 0.731,
+    "space": 0.005,
+    "aggression": 0.116
+  }
 }

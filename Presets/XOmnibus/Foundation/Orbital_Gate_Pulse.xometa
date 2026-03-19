@@ -1,13 +1,38 @@
 {
-  "schema_version": 1,
-  "name": "Orbital Gate Pulse",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Gated orbital rhythm. Regular, metronomic, dependable.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.45,
+    "density": 0.75,
+    "movement": 0.65,
+    "space": 0.3,
+    "warmth": 0.5
+  },
   "engines": [
     "Orbital"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Gated orbital rhythm. Regular, metronomic, dependable.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Orbital Gate Pulse",
+  "parameters": {
+    "Orbital": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "pulse",
     "work-horse",
@@ -17,31 +42,6 @@
     "workhorse",
     "gate"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Orbital": {}
-  },
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.5,
-    "movement": 0.65,
-    "density": 0.75,
-    "space": 0.3,
-    "aggression": 0.45
-  }
+  "version": "1.0.0"
 }

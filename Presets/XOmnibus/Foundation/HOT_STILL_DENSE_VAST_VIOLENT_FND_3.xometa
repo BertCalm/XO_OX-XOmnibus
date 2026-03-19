@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "HOT_STILL_DENSE_VAST_VIOLENT_FND_3",
-  "mood": "Foundation",
-  "engines": [
-    "OBESE",
-    "ODDFELIX"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "OddfeliX",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.548
+      }
+    ]
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: HOT_STILL_DENSE_VAST_VIOLENT. Variant 3.",
+  "dna": {
+    "aggression": 0.919,
+    "brightness": 0.488,
+    "density": 0.883,
+    "movement": 0.055,
+    "space": 0.889,
+    "warmth": 0.919
+  },
+  "engines": [
+    "Obese",
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.52,
+    "COUPLING": 0.98,
+    "MOVEMENT": 0.0,
+    "SPACE": 0.921
+  },
+  "mood": "Foundation",
+  "name": "Grain Strike",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.438,
+      "macro_coupling": 0.965,
+      "macro_movement": 0.0,
+      "macro_space": 0.962
+    },
+    "OddfeliX": {
+      "macro_character": 0.603,
+      "macro_coupling": 0.994,
+      "macro_movement": 0.0,
+      "macro_space": 0.881
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "hot",
     "extreme",
@@ -19,53 +70,6 @@
     "foundation",
     "dense"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OBESE": {
-      "macro_character": 0.438,
-      "macro_movement": 0.0,
-      "macro_coupling": 0.965,
-      "macro_space": 0.962
-    },
-    "ODDFELIX": {
-      "macro_character": 0.603,
-      "macro_movement": 0.0,
-      "macro_coupling": 0.994,
-      "macro_space": 0.881
-    }
-  },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OBESE",
-    "target": "ODDFELIX",
-    "amount": 0.548
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.488,
-    "warmth": 0.919,
-    "movement": 0.055,
-    "density": 0.883,
-    "space": 0.889,
-    "aggression": 0.919
-  },
-  "macros": {
-    "CHARACTER": 0.52,
-    "MOVEMENT": 0.0,
-    "COUPLING": 0.98,
-    "SPACE": 0.921
-  }
+  "version": "1.0.0"
 }

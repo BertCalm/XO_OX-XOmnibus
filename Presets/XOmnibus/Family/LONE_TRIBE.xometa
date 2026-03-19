@@ -1,48 +1,60 @@
 {
-  "name": "LONE TRIBE",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "FILTER_COUPLE",
+        "amount": 0.756
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.349,
+    "brightness": 0.168,
+    "density": 0.071,
+    "movement": 0.022,
+    "space": 0.906,
+    "warmth": 0.51
+  },
   "engines": [
-    "ORACLE",
-    "ORGANON"
+    "Oracle",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.449,
+    "COUPLING": 0.564,
+    "MOVEMENT": 0.924,
+    "SPACE": 0.635
+  },
+  "mood": "Family",
+  "name": "LONE TRIBE",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.197,
-      "macro_movement": 0.602,
       "macro_coupling": 0.76,
+      "macro_movement": 0.602,
       "macro_space": 0.656
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.177,
-      "macro_movement": 0.773,
       "macro_coupling": 0.494,
+      "macro_movement": 0.773,
       "macro_space": 0.754
     }
   },
-  "coupling": {
-    "type": "FILTER_COUPLE",
-    "source": "ORACLE",
-    "target": "ORGANON",
-    "amount": 0.756
-  },
-  "dna": {
-    "brightness": 0.168,
-    "warmth": 0.51,
-    "movement": 0.022,
-    "density": 0.071,
-    "space": 0.906,
-    "aggression": 0.349
-  },
-  "macros": {
-    "CHARACTER": 0.449,
-    "MOVEMENT": 0.924,
-    "COUPLING": 0.564,
-    "SPACE": 0.635
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "sparse",
     "xlow-density"
-  ]
+  ],
+  "version": "1.0"
 }

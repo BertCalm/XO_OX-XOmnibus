@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_DENSE_FAM_VOL_6",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OPAL",
-    "OLE"
-  ],
-  "parameters": {
-    "OPAL": {
-      "macro_character": 0.919,
-      "macro_movement": 0.873,
-      "macro_coupling": 0.629,
-      "macro_space": 0.454
-    },
-    "OLE": {
-      "macro_character": 0.912,
-      "macro_movement": 0.874,
-      "macro_coupling": 0.64,
-      "macro_space": 0.449
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OPAL",
-    "target": "OLE",
-    "amount": 0.499
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ole",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.499
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.3,
     "brightness": 0.919,
-    "warmth": 0.936,
-    "movement": 0.891,
     "density": 0.94,
+    "movement": 0.891,
     "space": 0.433,
-    "aggression": 0.3
+    "warmth": 0.936
   },
+  "engines": [
+    "Opal",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.915,
-    "MOVEMENT": 0.873,
     "COUPLING": 0.635,
+    "MOVEMENT": 0.873,
     "SPACE": 0.452
   },
+  "mood": "Family",
+  "name": "Peach Heavy",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.912,
+      "macro_coupling": 0.64,
+      "macro_movement": 0.874,
+      "macro_space": 0.449
+    },
+    "Opal": {
+      "macro_character": 0.919,
+      "macro_coupling": 0.629,
+      "macro_movement": 0.873,
+      "macro_space": 0.454
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "dense",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

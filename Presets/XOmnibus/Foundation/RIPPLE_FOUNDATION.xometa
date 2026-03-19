@@ -1,48 +1,60 @@
 {
-  "name": "RIPPLE FOUNDATION",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OCTOPUS",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "OCTOPUS": {
-      "macro_character": 0.391,
-      "macro_movement": 0.907,
-      "macro_coupling": 0.406,
-      "macro_space": 0.599
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.47,
-      "macro_movement": 0.965,
-      "macro_coupling": 0.74,
-      "macro_space": 0.551
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OCTOPUS",
-    "target": "OBBLIGATO",
-    "amount": 0.825
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Obbligato",
+        "type": "CHAOS_INJECT",
+        "amount": 0.825
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.427,
     "brightness": 0.854,
-    "warmth": 0.346,
-    "movement": 0.949,
     "density": 0.479,
+    "movement": 0.949,
     "space": 0.566,
-    "aggression": 0.427
+    "warmth": 0.346
   },
+  "engines": [
+    "Octopus",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.438,
-    "MOVEMENT": 0.949,
     "COUPLING": 0.825,
+    "MOVEMENT": 0.949,
     "SPACE": 0.566
   },
+  "mood": "Foundation",
+  "name": "RIPPLE FOUNDATION",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.47,
+      "macro_coupling": 0.74,
+      "macro_movement": 0.965,
+      "macro_space": 0.551
+    },
+    "Octopus": {
+      "macro_character": 0.391,
+      "macro_coupling": 0.406,
+      "macro_movement": 0.907,
+      "macro_space": 0.599
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-  ]
+  ],
+  "version": "1.0"
 }

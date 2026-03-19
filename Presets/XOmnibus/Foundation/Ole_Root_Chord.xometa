@@ -1,18 +1,19 @@
 {
-  "schema_version": 1,
-  "name": "Root Chord Ole",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Strum and pluck in easy agreement. DRAMA low — the husbands stay outside. 'Root Chord' holds the moment without wavering.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.45,
+    "density": 0.5,
+    "movement": 0.05,
+    "space": 0.19,
+    "warmth": 0.59
+  },
   "engines": [
     "Ole"
-  ],
-  "author": "Exo Meta \u2014 Family Constellation",
-  "version": "1.0.0",
-  "tags": [
-    "latin",
-    "strummed",
-    "foundation",
-    "clean",
-    "foundation"
   ],
   "macroLabels": [
     "FUEGO",
@@ -20,42 +21,41 @@
     "SIDES",
     "ISLA"
   ],
-  "couplingIntensity": "None",
-  "created": "2026-03-14",
-  "dna": {
-    "brightness": 0.45,
-    "warmth": 0.59,
-    "movement": 0.05,
-    "density": 0.5,
-    "space": 0.19,
-    "aggression": 0.05
-  },
+  "mood": "Foundation",
+  "name": "Root Chord Ole",
   "parameters": {
     "Ole": {
+      "ole_allianceBlend": 0.446,
+      "ole_allianceConfig": 2,
+      "ole_aunt1Brightness": 0.519,
       "ole_aunt1Level": 0.577,
       "ole_aunt1StrumRate": 1.0,
-      "ole_aunt1Brightness": 0.519,
-      "ole_aunt2Level": 0.66,
       "ole_aunt2CoinPress": 0.149,
       "ole_aunt2GourdSize": 0.491,
+      "ole_aunt2Level": 0.66,
+      "ole_aunt3Brightness": 0.544,
       "ole_aunt3Level": 0.601,
       "ole_aunt3Tremolo": 1.0,
-      "ole_aunt3Brightness": 0.544,
       "ole_damping": 0.995,
-      "ole_sympatheticAmt": 0.362,
-      "ole_driftRate": 0.128,
       "ole_driftDepth": 1.0,
-      "ole_allianceConfig": 2,
-      "ole_allianceBlend": 0.446,
-      "ole_husbandOudLevel": 0.0,
+      "ole_driftRate": 0.128,
       "ole_husbandBouzLevel": 0.0,
+      "ole_husbandOudLevel": 0.0,
       "ole_husbandPinLevel": 0.0,
-      "ole_macroFuego": 0.604,
       "ole_macroDrama": 0.0,
+      "ole_macroFuego": 0.604,
+      "ole_macroIsla": 0.078,
       "ole_macroSides": 0.166,
-      "ole_macroIsla": 0.078
+      "ole_sympatheticAmt": 0.362
     }
   },
-  "coupling": null,
-  "description": "Strum and pluck in easy agreement. DRAMA low \u2014 the husbands stay outside. 'Root Chord' holds the moment without wavering."
+  "schema_version": 1,
+  "tags": [
+    "latin",
+    "strummed",
+    "foundation",
+    "clean",
+    "foundation"
+  ],
+  "version": "1.0.0"
 }

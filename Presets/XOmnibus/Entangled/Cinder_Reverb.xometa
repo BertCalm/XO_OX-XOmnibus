@@ -1,49 +1,61 @@
 {
-  "name": "Cinder Reverb",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERDUB",
-    "ORGANON"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.88,
-      "macro_movement": 0.51,
-      "macro_coupling": 0.72,
-      "macro_space": 0.72
-    },
-    "ORGANON": {
-      "macro_character": 0.72,
-      "macro_movement": 0.49,
-      "macro_coupling": 0.66,
-      "macro_space": 0.69
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_LOCK",
-    "source": "OVERDUB",
-    "target": "ORGANON",
-    "amount": 0.85
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Organon",
+        "type": "HARMONIC_LOCK",
+        "amount": 0.85
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.34,
     "brightness": 0.63,
-    "warmth": 0.94,
-    "movement": 0.61,
     "density": 0.63,
+    "movement": 0.61,
     "space": 0.74,
-    "aggression": 0.34
+    "warmth": 0.94
   },
+  "engines": [
+    "Overdub",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8,
-    "MOVEMENT": 0.5,
     "COUPLING": 0.69,
+    "MOVEMENT": 0.5,
     "SPACE": 0.7
   },
+  "mood": "Entangled",
+  "name": "Cinder Reverb",
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.72,
+      "macro_coupling": 0.66,
+      "macro_movement": 0.49,
+      "macro_space": 0.69
+    },
+    "Overdub": {
+      "macro_character": 0.88,
+      "macro_coupling": 0.72,
+      "macro_movement": 0.51,
+      "macro_space": 0.72
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "spatial"
-  ]
+  ],
+  "version": "1.0"
 }

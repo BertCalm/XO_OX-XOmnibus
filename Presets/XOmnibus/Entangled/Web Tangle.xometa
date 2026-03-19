@@ -1,14 +1,64 @@
 {
-  "schema_version": 1,
-  "name": "Web Tangle",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.729,
+        "engineA": "Overlap",
+        "engineB": "Oceanic",
+        "type": "SYNC_LFO"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "OVERLAP frond-spread follows OCEANIC current rate — slow drift, infinite room",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.769,
+    "density": 0.966,
+    "movement": 0.5,
+    "space": 1.0,
+    "warmth": 0.625
+  },
   "engines": [
-    "OVERLAP",
-    "OCEANIC"
+    "Overlap",
+    "Oceanic"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OVERLAP frond-spread follows OCEANIC current rate \u2014 slow drift, infinite room",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Web Tangle",
+  "parameters": {
+    "Overlap": {
+      "olap_couplingBus": 0,
+      "olap_couplingLevel": 0.601,
+      "olap_damping": 0.405,
+      "olap_decay": 0.827,
+      "olap_diffusion": 0.732,
+      "olap_earlyMix": 0.232,
+      "olap_filterCutoff": 0.509,
+      "olap_filterReso": 0.281,
+      "olap_lateMix": 0.621,
+      "olap_modDepth": 0.429,
+      "olap_modRate": 0.09,
+      "olap_outputLevel": 0.794,
+      "olap_preDelay": 0.029,
+      "olap_size": 0.553
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2,
+    "brightness": 0.575,
+    "density": 0.65,
+    "movement": 0.5,
+    "space": 0.875,
+    "warmth": 0.625
+  },
   "tags": [
     "coupling",
     "entangled",
@@ -19,55 +69,5 @@
     "fdn",
     "reverb"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
-  "dna": {
-    "aggression": 0.2,
-    "space": 1.0,
-    "warmth": 0.625,
-    "brightness": 0.769,
-    "density": 0.966,
-    "movement": 0.5
-  },
-  "sonic_dna": {
-    "aggression": 0.2,
-    "space": 0.875,
-    "warmth": 0.625,
-    "brightness": 0.575,
-    "density": 0.65,
-    "movement": 0.5
-  },
-  "parameters": {
-    "OVERLAP": {
-      "olap_size": 0.553,
-      "olap_decay": 0.827,
-      "olap_damping": 0.405,
-      "olap_diffusion": 0.732,
-      "olap_modDepth": 0.429,
-      "olap_modRate": 0.09,
-      "olap_preDelay": 0.029,
-      "olap_earlyMix": 0.232,
-      "olap_lateMix": 0.621,
-      "olap_filterCutoff": 0.509,
-      "olap_filterReso": 0.281,
-      "olap_outputLevel": 0.794,
-      "olap_couplingLevel": 0.601,
-      "olap_couplingBus": 0
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OVERLAP",
-        "engineB": "OCEANIC",
-        "type": "SYNC_LFO",
-        "amount": 0.729
-      }
-    ]
-  }
+  "version": "1.0.0"
 }

@@ -1,50 +1,62 @@
 {
-  "name": "DARK_KINETIC_DENSE_VIOLENT_AET4_5",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "OddfeliX",
+        "type": "CHAOS_INJECT",
+        "amount": 0.935
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9075,
+    "brightness": 0.0376,
+    "density": 0.9393,
+    "movement": 0.9093,
+    "space": 0.4234,
+    "warmth": 0.4993
+  },
   "engines": [
-    "OBLIQUE",
-    "ODDFELIX"
+    "Oblique",
+    "OddfeliX"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2685,
+    "COUPLING": 0.935,
+    "MOVEMENT": 0.9093,
+    "SPACE": 0.4234
+  },
+  "mood": "Aether",
+  "name": "Flux Molten",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.3614,
-      "macro_movement": 0.4647,
       "macro_coupling": 0.2379,
+      "macro_movement": 0.4647,
       "macro_space": 0.5712
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.8618,
-      "macro_movement": 0.6907,
       "macro_coupling": 0.5529,
+      "macro_movement": 0.6907,
       "macro_space": 0.6025
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OBLIQUE",
-    "target": "ODDFELIX",
-    "amount": 0.935
-  },
-  "dna": {
-    "brightness": 0.0376,
-    "warmth": 0.4993,
-    "movement": 0.9093,
-    "density": 0.9393,
-    "space": 0.4234,
-    "aggression": 0.9075
-  },
-  "macros": {
-    "CHARACTER": 0.2685,
-    "MOVEMENT": 0.9093,
-    "COUPLING": 0.935,
-    "SPACE": 0.4234
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "kinetic",
     "dark",
     "dense",
     "violent"
-  ]
+  ],
+  "version": "1.0"
 }

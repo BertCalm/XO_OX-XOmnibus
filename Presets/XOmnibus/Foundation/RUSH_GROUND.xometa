@@ -1,48 +1,60 @@
 {
-  "name": "RUSH GROUND",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OUTWIT",
-    "ONSET"
-  ],
-  "parameters": {
-    "OUTWIT": {
-      "macro_character": 0.669,
-      "macro_movement": 0.935,
-      "macro_coupling": 0.438,
-      "macro_space": 0.495
-    },
-    "ONSET": {
-      "macro_character": 0.68,
-      "macro_movement": 0.915,
-      "macro_coupling": 0.598,
-      "macro_space": 0.69
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPATIAL_COUPLE",
-    "source": "OUTWIT",
-    "target": "ONSET",
-    "amount": 0.496
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Onset",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.496
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.771,
     "brightness": 0.338,
-    "warmth": 0.633,
-    "movement": 0.923,
     "density": 0.94,
+    "movement": 0.923,
     "space": 0.646,
-    "aggression": 0.771
+    "warmth": 0.633
   },
+  "engines": [
+    "Outwit",
+    "Onset"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.716,
-    "MOVEMENT": 0.923,
     "COUPLING": 0.496,
+    "MOVEMENT": 0.923,
     "SPACE": 0.646
   },
+  "mood": "Foundation",
+  "name": "RUSH GROUND",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.68,
+      "macro_coupling": 0.598,
+      "macro_movement": 0.915,
+      "macro_space": 0.69
+    },
+    "Outwit": {
+      "macro_character": 0.669,
+      "macro_coupling": 0.438,
+      "macro_movement": 0.935,
+      "macro_space": 0.495
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-  ]
+  ],
+  "version": "1.0"
 }

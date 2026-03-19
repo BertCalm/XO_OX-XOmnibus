@@ -1,45 +1,56 @@
 {
-  "name": "DARK_FROZEN_DENSE_VAST_HARSH_ENT4_3",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ottoni",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.884
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.91,
+    "brightness": 0.051,
+    "density": 0.979,
+    "movement": 0.069,
+    "space": 0.975,
+    "warmth": 0.589
+  },
   "engines": [
-    "ORIGAMI",
-    "OTTONI"
+    "Origami",
+    "Ottoni"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.327,
+    "COUPLING": 0.884,
+    "MOVEMENT": 0.067,
+    "SPACE": 0.952
+  },
+  "mood": "Entangled",
+  "name": "Signal Massive",
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.33,
-      "macro_movement": 0.062,
       "macro_coupling": 0.99,
+      "macro_movement": 0.062,
       "macro_space": 0.95
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.324,
-      "macro_movement": 0.072,
       "macro_coupling": 0.969,
+      "macro_movement": 0.072,
       "macro_space": 0.953
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORIGAMI",
-    "target": "OTTONI",
-    "amount": 0.884
-  },
-  "dna": {
-    "brightness": 0.051,
-    "warmth": 0.589,
-    "movement": 0.069,
-    "density": 0.979,
-    "space": 0.975,
-    "aggression": 0.91
-  },
-  "macros": {
-    "CHARACTER": 0.327,
-    "MOVEMENT": 0.067,
-    "COUPLING": 0.884,
-    "SPACE": 0.952
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +59,6 @@
     "dense",
     "vast",
     "harsh"
-  ]
+  ],
+  "version": "1.0"
 }

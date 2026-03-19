@@ -419,8 +419,8 @@ public:
         // Computing once per block (not per sample) saves significant CPU while
         // being perceptually transparent for block sizes up to ~128 samples.
 
-        // D005 fix: minimal LFO added — 0.15 Hz BPF center wobble (±8%)
-        lfoPhase += (0.15 * juce::MathConstants<double>::twoPi) / sampleRate;
+        // D005: LFO rate floor lowered to 0.01 Hz for ultra-slow breathing
+        lfoPhase += (0.01 * juce::MathConstants<double>::twoPi) / sampleRate;
         if (lfoPhase >= juce::MathConstants<double>::twoPi) lfoPhase -= juce::MathConstants<double>::twoPi;
         // AmpToFilter coupling multiplier applied here — partner engine amplitude
         // opens/closes feliX's BPF center in tandem with the LFO wobble.
@@ -1010,7 +1010,7 @@ private:
     uint64_t voiceCounter = 0;
 
     // D005 fix: minimal LFO added
-    double lfoPhase = 0.0;  // BPF center drift accumulator (0.15 Hz)
+    double lfoPhase = 0.0;  // BPF center drift accumulator (0.01 Hz — D005 compliant)
 
     // ---- D006 Aftertouch — pressure opens BPF cutoff for brightness on pressure ----
     PolyAftertouch aftertouch;

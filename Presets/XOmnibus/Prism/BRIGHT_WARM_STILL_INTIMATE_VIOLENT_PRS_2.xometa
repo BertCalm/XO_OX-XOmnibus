@@ -1,14 +1,65 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT_WARM_STILL_INTIMATE_VIOLENT_PRS_2",
-  "mood": "Prism",
-  "engines": [
-    "OLE",
-    "ORIGAMI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Origami",
+        "type": "CHAOS_INJECT",
+        "amount": 0.96
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_WARM_STILL_INTIMATE_VIOLENT. Variant 2.",
+  "dna": {
+    "aggression": 0.926,
+    "brightness": 0.933,
+    "density": 0.522,
+    "movement": 0.129,
+    "space": 0.063,
+    "warmth": 0.931
+  },
+  "engines": [
+    "Ole",
+    "Origami"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.99,
+    "COUPLING": 0.449,
+    "MOVEMENT": 0.184,
+    "SPACE": 0.059
+  },
+  "mood": "Prism",
+  "name": "Solar Rage 2",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.987,
+      "macro_coupling": 0.472,
+      "macro_movement": 0.176,
+      "macro_space": 0.0
+    },
+    "Origami": {
+      "macro_character": 0.992,
+      "macro_coupling": 0.425,
+      "macro_movement": 0.192,
+      "macro_space": 0.119
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "still",
@@ -19,53 +70,6 @@
     "prism",
     "warm"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OLE": {
-      "macro_character": 0.987,
-      "macro_movement": 0.176,
-      "macro_coupling": 0.472,
-      "macro_space": 0.0
-    },
-    "ORIGAMI": {
-      "macro_character": 0.992,
-      "macro_movement": 0.192,
-      "macro_coupling": 0.425,
-      "macro_space": 0.119
-    }
-  },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OLE",
-    "target": "ORIGAMI",
-    "amount": 0.96
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.933,
-    "warmth": 0.931,
-    "movement": 0.129,
-    "density": 0.522,
-    "space": 0.063,
-    "aggression": 0.926
-  },
-  "macros": {
-    "CHARACTER": 0.99,
-    "MOVEMENT": 0.184,
-    "COUPLING": 0.449,
-    "SPACE": 0.059
-  }
+  "version": "1.0.0"
 }

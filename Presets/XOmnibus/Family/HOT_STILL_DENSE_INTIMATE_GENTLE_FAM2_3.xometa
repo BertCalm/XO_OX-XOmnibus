@@ -1,45 +1,56 @@
 {
-  "name": "HOT STILL DENSE INTIMATE GENTLE FAM2 3",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
+        "type": "FILTER_MOD",
+        "amount": 0.509
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.028,
+    "brightness": 0.453,
+    "density": 0.99,
+    "movement": 0.026,
+    "space": 0.02,
+    "warmth": 0.985
+  },
   "engines": [
-    "OBLONG",
-    "ODYSSEY"
+    "Oblong",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.719,
+    "COUPLING": 0.509,
+    "MOVEMENT": 0.026,
+    "SPACE": 0.02
+  },
+  "mood": "Family",
+  "name": "HOT STILL DENSE INTIMATE GE...",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.719,
-      "macro_movement": 0.026,
       "macro_coupling": 0.509,
+      "macro_movement": 0.026,
       "macro_space": 0.02
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.732,
-      "macro_movement": 0.02,
       "macro_coupling": 0.507,
+      "macro_movement": 0.02,
       "macro_space": 0.022
     }
   },
-  "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OBLONG",
-    "target": "ODYSSEY",
-    "amount": 0.509
-  },
-  "dna": {
-    "brightness": 0.453,
-    "warmth": 0.985,
-    "movement": 0.026,
-    "density": 0.99,
-    "space": 0.02,
-    "aggression": 0.028
-  },
-  "macros": {
-    "CHARACTER": 0.719,
-    "MOVEMENT": 0.026,
-    "COUPLING": 0.509,
-    "SPACE": 0.02
-  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
@@ -47,5 +58,6 @@
     "dense",
     "intimate",
     "gentle"
-  ]
+  ],
+  "version": "1.0"
 }

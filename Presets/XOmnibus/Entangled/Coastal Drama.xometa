@@ -1,14 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Coastal Drama",
-  "mood": "Entangled",
-  "engines": [
-    "OSPREY",
-    "OLE"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Afro-Latin rhythm rides beneath osprey's theatric dive \u2014 coastal DRAMA.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.65,
+        "engineA": "Osprey",
+        "engineB": "Ole",
+        "type": "HARMONIC_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Afro-Latin rhythm rides beneath osprey's theatric dive — coastal DRAMA.",
+  "dna": {
+    "aggression": 0.37,
+    "brightness": 0.67,
+    "density": 0.5,
+    "movement": 0.7,
+    "space": 0.65,
+    "warmth": 0.59
+  },
+  "engines": [
+    "Osprey",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "COUPLING": 0.7,
+    "MOVEMENT": 0.7,
+    "SPACE": 0.55
+  },
+  "mood": "Entangled",
+  "name": "Coastal Drama",
+  "parameters": {
+    "Osprey": {},
+    "Ole": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -19,38 +54,6 @@
     "rhythm",
     "drama"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.65,
-    "MOVEMENT": 0.7,
-    "COUPLING": 0.7,
-    "SPACE": 0.55
-  },
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.67,
-    "warmth": 0.59,
-    "movement": 0.7,
-    "density": 0.5,
-    "space": 0.65,
-    "aggression": 0.37
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OSPREY",
-        "engineB": "OLE",
-        "type": "HARMONIC_BLEND",
-        "amount": 0.65
-      }
-    ]
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

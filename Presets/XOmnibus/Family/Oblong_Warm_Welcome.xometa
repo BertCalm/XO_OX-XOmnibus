@@ -1,13 +1,82 @@
 {
-  "schema_version": 1,
-  "name": "Warm Welcome",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "BOB at his most hospitable. Slow attack, long release, gentle drift. The sound of someone opening the door before you knock. Perfect for pads, chords, first impressions.",
+  "dna": {
+    "aggression": 0.07,
+    "brightness": 0.42,
+    "density": 0.38,
+    "movement": 0.28,
+    "space": 0.45,
+    "warmth": 0.78
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "BOB at his most hospitable. Slow attack, long release, gentle drift. The sound of someone opening the door before you knock. Perfect for pads, chords, first impressions.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "GLIDE TIME",
+    "VIBRATO",
+    "FILTER"
+  ],
+  "mood": "Family",
+  "name": "Warm Welcome",
+  "parameters": {
+    "Oblong": {
+      "bob_ampAttack": 0.5,
+      "bob_ampDecay": 0.6,
+      "bob_ampRelease": 1.618,
+      "bob_ampSustain": 0.75,
+      "bob_bobMode": 0.35,
+      "bob_curAmount": 0.2,
+      "bob_curMode": 1,
+      "bob_dustAmount": 0.0,
+      "bob_dustTone": 0.5,
+      "bob_fltChar": 0.65,
+      "bob_fltCutoff": 1800.0,
+      "bob_fltDrive": 0.03,
+      "bob_fltEnvAmt": 0.2,
+      "bob_fltMode": 0,
+      "bob_fltReso": 0.22,
+      "bob_glide": 0.0,
+      "bob_level": 0.78,
+      "bob_lfo1Depth": 0.025,
+      "bob_lfo1Rate": 3.2,
+      "bob_lfo1Shape": 0,
+      "bob_lfo1Target": 0,
+      "bob_motAttack": 0.4,
+      "bob_motDecay": 0.5,
+      "bob_motDepth": 0.3,
+      "bob_motRelease": 0.8,
+      "bob_motSustain": 0.3,
+      "bob_oscA_drift": 0.08,
+      "bob_oscA_shape": 0.45,
+      "bob_oscA_tune": 0.0,
+      "bob_oscA_wave": 1,
+      "bob_oscB_blend": 0.35,
+      "bob_oscB_detune": 5.0,
+      "bob_oscB_fm": 0.0,
+      "bob_oscB_sync": 0,
+      "bob_oscB_wave": 0,
+      "bob_polyphony": 4,
+      "bob_texLevel": 0.02,
+      "bob_texMode": 0,
+      "bob_texTone": 0.45,
+      "bob_texWidth": 0.6,
+      "bob_voiceMode": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "gentle",
@@ -16,75 +85,6 @@
     "beginner",
     "chord"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "GLIDE TIME",
-    "VIBRATO",
-    "FILTER"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Oblong": {
-      "bob_oscA_wave": 1,
-      "bob_oscA_shape": 0.45,
-      "bob_oscA_tune": 0.0,
-      "bob_oscA_drift": 0.08,
-      "bob_oscB_wave": 0,
-      "bob_oscB_detune": 5.0,
-      "bob_oscB_blend": 0.35,
-      "bob_oscB_sync": 0,
-      "bob_oscB_fm": 0.0,
-      "bob_texMode": 0,
-      "bob_texLevel": 0.02,
-      "bob_texTone": 0.45,
-      "bob_texWidth": 0.6,
-      "bob_fltMode": 0,
-      "bob_fltCutoff": 1800.0,
-      "bob_fltReso": 0.22,
-      "bob_fltChar": 0.65,
-      "bob_fltDrive": 0.03,
-      "bob_fltEnvAmt": 0.2,
-      "bob_ampAttack": 0.5,
-      "bob_ampDecay": 0.6,
-      "bob_ampSustain": 0.75,
-      "bob_ampRelease": 1.618,
-      "bob_motAttack": 0.4,
-      "bob_motDecay": 0.5,
-      "bob_motSustain": 0.3,
-      "bob_motRelease": 0.8,
-      "bob_motDepth": 0.3,
-      "bob_lfo1Rate": 3.2,
-      "bob_lfo1Depth": 0.025,
-      "bob_lfo1Shape": 0,
-      "bob_lfo1Target": 0,
-      "bob_curMode": 1,
-      "bob_curAmount": 0.2,
-      "bob_bobMode": 0.35,
-      "bob_dustAmount": 0.0,
-      "bob_dustTone": 0.5,
-      "bob_level": 0.78,
-      "bob_voiceMode": 0,
-      "bob_glide": 0.0,
-      "bob_polyphony": 4
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.42,
-    "warmth": 0.78,
-    "movement": 0.28,
-    "density": 0.38,
-    "space": 0.45,
-    "aggression": 0.07
-  }
+  "version": "1.0.0"
 }

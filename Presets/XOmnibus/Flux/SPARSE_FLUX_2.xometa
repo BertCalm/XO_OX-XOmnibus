@@ -1,48 +1,60 @@
 {
-  "name": "SPARSE FLUX 2",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Ohm",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.6507
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.7242,
+    "brightness": 0.9854,
+    "density": 0.0315,
+    "movement": 0.9665,
+    "space": 0.8601,
+    "warmth": 0.1408
+  },
   "engines": [
-    "OBESE",
-    "OHM"
+    "Obese",
+    "Ohm"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8224,
+    "COUPLING": 0.1083,
+    "MOVEMENT": 0.9403,
+    "SPACE": 0.2338
+  },
+  "mood": "Flux",
+  "name": "SPARSE FLUX 2",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.8046,
-      "macro_movement": 0.3658,
       "macro_coupling": 0.7907,
+      "macro_movement": 0.3658,
       "macro_space": 0.0139
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.5366,
-      "macro_movement": 0.4548,
       "macro_coupling": 0.6728,
+      "macro_movement": 0.4548,
       "macro_space": 0.6723
     }
   },
-  "coupling": {
-    "type": "ENVELOPE_LINK",
-    "source": "OBESE",
-    "target": "OHM",
-    "amount": 0.6507
-  },
-  "dna": {
-    "brightness": 0.9854,
-    "warmth": 0.1408,
-    "movement": 0.9665,
-    "density": 0.0315,
-    "space": 0.8601,
-    "aggression": 0.7242
-  },
-  "macros": {
-    "CHARACTER": 0.8224,
-    "MOVEMENT": 0.9403,
-    "COUPLING": 0.1083,
-    "SPACE": 0.2338
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "sparse",
     "minimal"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Overdub \u00d7 Opal \u2014 Filter Mod coupling at extreme DNA corner.",
+  "description": "Overdub × Opal — Filter Mod coupling at extreme DNA corner.",
   "tags": [
     "kinetic",
     "overdub",
@@ -33,7 +33,10 @@
     "space": 0.938,
     "aggression": 0.508
   },
-  "parameters": {},
+  "parameters": {
+    "Overdub": {},
+    "Opal": {}
+  },
   "coupling": {
     "pairs": [
       {

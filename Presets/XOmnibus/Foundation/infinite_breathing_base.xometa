@@ -1,49 +1,61 @@
 {
-  "name": "INFINITE BREATHING BASE",
-  "version": "1.0",
-  "mood": "Foundation",
-  "engines": [
-    "OBSCURA",
-    "OBBLIGATO"
-  ],
-  "parameters": {
-    "OBSCURA": {
-      "macro_character": 0.32,
-      "macro_movement": 0.263,
-      "macro_coupling": 0.138,
-      "macro_space": 0.927
-    },
-    "OBBLIGATO": {
-      "macro_character": 0.694,
-      "macro_movement": 0.28,
-      "macro_coupling": 0.064,
-      "macro_space": 0.937
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBSCURA",
-    "target": "OBBLIGATO",
-    "amount": 0.68
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Obbligato",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.68
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.521,
     "brightness": 0.247,
-    "warmth": 0.012,
-    "movement": 0.259,
     "density": 0.766,
+    "movement": 0.259,
     "space": 0.943,
-    "aggression": 0.521
+    "warmth": 0.012
   },
+  "engines": [
+    "Obscura",
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.416,
-    "MOVEMENT": 0.259,
     "COUPLING": 0.207,
+    "MOVEMENT": 0.259,
     "SPACE": 0.943
   },
+  "mood": "Foundation",
+  "name": "INFINITE BREATHING BASE",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.694,
+      "macro_coupling": 0.064,
+      "macro_movement": 0.28,
+      "macro_space": 0.937
+    },
+    "Obscura": {
+      "macro_character": 0.32,
+      "macro_coupling": 0.138,
+      "macro_movement": 0.263,
+      "macro_space": 0.927
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "Red Hibiscus",
-  "mood": "Entangled",
-  "engines": [
-    "OLE",
-    "OUROBOROS"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0",
-  "description": "OLE warmth frequency-shifts into strange attractor territory \u2014 red hibiscus chaos.",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.58,
+        "engineA": "Ole",
+        "engineB": "Ouroboros",
+        "type": "FREQUENCY_SHIFT"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "OLE warmth frequency-shifts into strange attractor territory — red hibiscus chaos.",
+  "dna": {
+    "aggression": 0.65,
+    "brightness": 0.6,
+    "density": 0.55,
+    "movement": 0.68,
+    "space": 0.4,
+    "warmth": 0.72
+  },
+  "engines": [
+    "Ole",
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.64,
+    "COUPLING": 0.58,
+    "MOVEMENT": 0.685,
+    "SPACE": 0.41
+  },
+  "mood": "Entangled",
+  "name": "Red Hibiscus",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.68,
+      "macro_coupling": 0.58,
+      "macro_movement": 0.65,
+      "macro_space": 0.38
+    },
+    "Ouroboros": {
+      "macro_character": 0.6,
+      "macro_coupling": 0.58,
+      "macro_movement": 0.72,
+      "macro_space": 0.44
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -17,51 +62,6 @@
     "red",
     "shift"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Moderate",
   "tempo": null,
-  "dna": {
-    "brightness": 0.6,
-    "warmth": 0.72,
-    "movement": 0.68,
-    "density": 0.55,
-    "space": 0.4,
-    "aggression": 0.65
-  },
-  "parameters": {
-    "OLE": {
-      "macro_character": 0.68,
-      "macro_movement": 0.65,
-      "macro_coupling": 0.58,
-      "macro_space": 0.38
-    },
-    "OUROBOROS": {
-      "macro_character": 0.6,
-      "macro_movement": 0.72,
-      "macro_coupling": 0.58,
-      "macro_space": 0.44
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OLE",
-        "engineB": "OUROBOROS",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.58
-      }
-    ]
-  },
-  "macros": {
-    "CHARACTER": 0.64,
-    "MOVEMENT": 0.685,
-    "COUPLING": 0.58,
-    "SPACE": 0.41
-  },
-  "sequencer": null
+  "version": "1.0"
 }

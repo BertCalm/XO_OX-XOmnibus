@@ -1,50 +1,62 @@
 {
-  "name": "CRAMMED CLOUD",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Ohm",
+        "type": "CHAOS_INJECT",
+        "amount": 0.311
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.434,
+    "brightness": 0.931,
+    "density": 0.389,
+    "movement": 0.25,
+    "space": 0.061,
+    "warmth": 0.431
+  },
   "engines": [
-    "OCEANIC",
-    "OHM"
+    "Oceanic",
+    "Ohm"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.541,
+    "COUPLING": 0.175,
+    "MOVEMENT": 0.542,
+    "SPACE": 0.061
+  },
+  "mood": "Atmosphere",
+  "name": "CRAMMED CLOUD",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.842,
-      "macro_movement": 0.45,
       "macro_coupling": 0.659,
+      "macro_movement": 0.45,
       "macro_space": 0.061
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.879,
-      "macro_movement": 0.587,
       "macro_coupling": 0.291,
+      "macro_movement": 0.587,
       "macro_space": 0.03
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OCEANIC",
-    "target": "OHM",
-    "amount": 0.311
-  },
-  "dna": {
-    "brightness": 0.931,
-    "warmth": 0.431,
-    "movement": 0.25,
-    "density": 0.389,
-    "space": 0.061,
-    "aggression": 0.434
-  },
-  "macros": {
-    "CHARACTER": 0.541,
-    "MOVEMENT": 0.542,
-    "COUPLING": 0.175,
-    "SPACE": 0.061
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-  ]
+  ],
+  "version": "1.0"
 }

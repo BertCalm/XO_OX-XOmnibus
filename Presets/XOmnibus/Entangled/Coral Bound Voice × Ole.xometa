@@ -1,14 +1,45 @@
 {
-  "schema_version": 1,
-  "name": "Coral Bound Voice × Ole",
-  "mood": "Entangled",
-  "engines": [
-    "OBBLIGATO",
-    "OLE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.482,
+        "engineA": "Obbligato",
+        "engineB": "Ole",
+        "type": "Env->Morph"
+      }
+    ]
+  },
+  "couplingIntensity": "Light",
+  "created": "2026-03-16",
   "description": "OLE's hibiscus rhythms knot through OBBLIGATO's BOND macro in tonal solidarity.",
+  "dna": {
+    "aggression": 0.503,
+    "brightness": 0.603,
+    "density": 0.623,
+    "movement": 0.679,
+    "space": 0.6,
+    "warmth": 0.676
+  },
+  "engines": [
+    "Obbligato",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Coral Bound Voice × Ole",
+  "parameters": {
+    "obbl_breathA": 0.494,
+    "obbl_breathB": 0.694,
+    "obbl_macroBond": 0.903
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -17,37 +48,6 @@
     "afro-latin",
     "rhythmic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Light",
   "tempo": null,
-  "created": "2026-03-16",
-  "parameters": {
-    "obbl_breathA": 0.494,
-    "obbl_breathB": 0.694,
-    "obbl_macroBond": 0.903
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBBLIGATO",
-        "engineB": "OLE",
-        "type": "Env->Morph",
-        "amount": 0.482
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.603,
-    "warmth": 0.676,
-    "movement": 0.679,
-    "density": 0.623,
-    "space": 0.6,
-    "aggression": 0.503
-  }
+  "version": "1.0.0"
 }

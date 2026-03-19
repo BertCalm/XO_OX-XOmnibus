@@ -1,31 +1,46 @@
 {
-  "name": "Bob's Folk Lesson",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Ohm",
+        "type": "RESONANT_BRIDGE",
+        "amount": 0.5
+      }
+    ]
+  },
+  "description": "Oblong teaches ohm a few bar-chord tricks — character synth meets hippy jam session",
   "engines": [
-    "OHM",
-    "OBLONG"
+    "Ohm",
+    "Oblong"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.6,
-    "MOVEMENT": 0.55,
     "COUPLING": 0.5,
+    "MOVEMENT": 0.55,
     "SPACE": 0.65
   },
-  "sonic_dna": {
-    "brightness": 0.54,
-    "warmth": 0.71,
-    "movement": 0.56,
-    "density": 0.54,
-    "space": 0.62,
-    "aggression": 0.32
+  "mood": "Entangled",
+  "name": "Bob's Folk Lesson",
+  "parameters": {
+    "Ohm": {},
+    "Oblong": {}
   },
-  "parameters": {},
-  "coupling": {
-    "type": "RESONANT_BRIDGE",
-    "source": "OBLONG",
-    "target": "OHM",
-    "amount": 0.5
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.32,
+    "brightness": 0.54,
+    "density": 0.54,
+    "movement": 0.56,
+    "space": 0.62,
+    "warmth": 0.71
   },
   "tags": [
     "entangled",
@@ -35,5 +50,13 @@
     "oblong",
     "hippy"
   ],
-  "description": "Oblong teaches ohm a few bar-chord tricks \u2014 character synth meets hippy jam session"
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

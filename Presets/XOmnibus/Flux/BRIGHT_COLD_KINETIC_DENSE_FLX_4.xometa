@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_COLD_KINETIC_DENSE_FLX_4",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Odyssey",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8856
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5207,
+    "brightness": 0.8629,
+    "density": 0.8859,
+    "movement": 0.9154,
+    "space": 0.4213,
+    "warmth": 0.1157
+  },
   "engines": [
-    "OCEANIC",
-    "ODYSSEY"
+    "Oceanic",
+    "Odyssey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9405,
+    "COUPLING": 0.4963,
+    "MOVEMENT": 0.9641,
+    "SPACE": 0.3446
+  },
+  "mood": "Flux",
+  "name": "Quartz Current",
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.9405,
-      "macro_movement": 0.9641,
       "macro_coupling": 0.4963,
+      "macro_movement": 0.9641,
       "macro_space": 0.3446
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.941,
-      "macro_movement": 0.92,
       "macro_coupling": 0.6562,
+      "macro_movement": 0.92,
       "macro_space": 0.4705
     }
   },
-  "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "OCEANIC",
-    "target": "ODYSSEY",
-    "amount": 0.8856
-  },
-  "dna": {
-    "brightness": 0.8629,
-    "warmth": 0.1157,
-    "movement": 0.9154,
-    "density": 0.8859,
-    "space": 0.4213,
-    "aggression": 0.5207
-  },
-  "macros": {
-    "CHARACTER": 0.9405,
-    "MOVEMENT": 0.9641,
-    "COUPLING": 0.4963,
-    "SPACE": 0.3446
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +59,6 @@
     "low-warmth",
     "high-movement",
     "high-density"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,21 +1,41 @@
 {
-  "schema_version": 1,
-  "name": "Rare Filament Pure",
-  "mood": "Atmosphere",
-  "sonic_dna": {
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Sun through fog: radiant warmth, minimal presence.",
+  "dna": {
+    "aggression": 0.15,
     "brightness": 0.542,
-    "warmth": 0.867,
-    "movement": 0.714,
     "density": 0.042,
+    "movement": 0.714,
     "space": 0.628,
-    "aggression": 0.15
+    "warmth": 0.867
   },
   "engines": [
-    "ORACLE"
+    "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Sun through fog: radiant warmth, minimal presence.",
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Rare Filament Pure",
+  "parameters": {
+    "Oracle": {}
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.15,
+    "brightness": 0.542,
+    "density": 0.042,
+    "movement": 0.714,
+    "space": 0.628,
+    "warmth": 0.867
+  },
   "tags": [
     "atmosphere",
     "warm",
@@ -24,23 +44,5 @@
     "breath",
     "evolving"
   ],
-  "macroLabels": [
-    "SCATTER",
-    "DRIFT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.542,
-    "warmth": 0.867,
-    "movement": 0.714,
-    "density": 0.042,
-    "space": 0.628,
-    "aggression": 0.15
-  },
-  "parameters": {},
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0.0"
 }

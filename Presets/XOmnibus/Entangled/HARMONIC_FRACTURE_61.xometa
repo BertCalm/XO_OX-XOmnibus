@@ -1,48 +1,60 @@
 {
-  "name": "HARMONIC FRACTURE 61",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Ocelot",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.825
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.781,
+    "density": 0.754,
+    "movement": 0.959,
+    "space": 0.95,
+    "warmth": 0.652
+  },
   "engines": [
-    "OBESE",
-    "OCELOT"
+    "Obese",
+    "Ocelot"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.02,
+    "COUPLING": 0.152,
+    "MOVEMENT": 0.959,
+    "SPACE": 0.126
+  },
+  "mood": "Entangled",
+  "name": "HARMONIC FRACTURE 61",
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.252,
-      "macro_movement": 0.955,
       "macro_coupling": 0.082,
+      "macro_movement": 0.955,
       "macro_space": 0.019
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.539,
-      "macro_movement": 0.963,
       "macro_coupling": 1.0,
+      "macro_movement": 0.963,
       "macro_space": 0.35
     }
   },
-  "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OBESE",
-    "target": "OCELOT",
-    "amount": 0.825
-  },
-  "dna": {
-    "brightness": 0.781,
-    "warmth": 0.652,
-    "movement": 0.959,
-    "density": 0.754,
-    "space": 0.95,
-    "aggression": 0.6
-  },
-  "macros": {
-    "CHARACTER": 0.02,
-    "MOVEMENT": 0.959,
-    "COUPLING": 0.152,
-    "SPACE": 0.126
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frantic",
     "extreme"
-  ]
+  ],
+  "version": "1.0"
 }

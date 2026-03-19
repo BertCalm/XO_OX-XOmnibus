@@ -1,49 +1,61 @@
 {
-  "name": "ALLHI FAM 04",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "OddOscar",
+        "type": "CHAOS_INJECT",
+        "amount": 0.976
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.912,
+    "brightness": 0.973,
+    "density": 0.434,
+    "movement": 0.984,
+    "space": 0.959,
+    "warmth": 0.952
+  },
   "engines": [
-    "OHM",
-    "ODDOSCAR"
+    "Ohm",
+    "OddOscar"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.962,
+    "COUPLING": 0.935,
+    "MOVEMENT": 0.709,
+    "SPACE": 0.959
+  },
+  "mood": "Family",
+  "name": "ALLHI FAM 04",
   "parameters": {
-    "OHM": {
+    "OddOscar": {
       "macro_character": 0.962,
-      "macro_movement": 0.709,
       "macro_coupling": 0.935,
+      "macro_movement": 0.709,
       "macro_space": 0.959
     },
-    "ODDOSCAR": {
+    "Ohm": {
       "macro_character": 0.962,
-      "macro_movement": 0.709,
       "macro_coupling": 0.935,
+      "macro_movement": 0.709,
       "macro_space": 0.959
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OHM",
-    "target": "ODDOSCAR",
-    "amount": 0.976
-  },
-  "dna": {
-    "brightness": 0.973,
-    "warmth": 0.952,
-    "movement": 0.984,
-    "density": 0.434,
-    "space": 0.959,
-    "aggression": 0.912
-  },
-  "macros": {
-    "CHARACTER": 0.962,
-    "MOVEMENT": 0.709,
-    "COUPLING": 0.935,
-    "SPACE": 0.959
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

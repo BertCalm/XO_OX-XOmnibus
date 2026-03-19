@@ -1,49 +1,61 @@
 {
-  "name": "ALLLO FAM 06",
-  "version": "1.0",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "OddOscar",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.142
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.529,
+    "brightness": 0.031,
+    "density": 0.084,
+    "movement": 0.073,
+    "space": 0.054,
+    "warmth": 0.076
+  },
   "engines": [
-    "OBLONG",
-    "ODDOSCAR"
+    "Oblong",
+    "OddOscar"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.053,
+    "COUPLING": 0.292,
+    "MOVEMENT": 0.079,
+    "SPACE": 0.054
+  },
+  "mood": "Family",
+  "name": "ALLLO FAM 06",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.053,
-      "macro_movement": 0.079,
       "macro_coupling": 0.292,
+      "macro_movement": 0.079,
       "macro_space": 0.054
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.053,
-      "macro_movement": 0.079,
       "macro_coupling": 0.292,
+      "macro_movement": 0.079,
       "macro_space": 0.054
     }
   },
-  "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OBLONG",
-    "target": "ODDOSCAR",
-    "amount": 0.142
-  },
-  "dna": {
-    "brightness": 0.031,
-    "warmth": 0.076,
-    "movement": 0.073,
-    "density": 0.084,
-    "space": 0.054,
-    "aggression": 0.529
-  },
-  "macros": {
-    "CHARACTER": 0.053,
-    "MOVEMENT": 0.079,
-    "COUPLING": 0.292,
-    "SPACE": 0.054
-  },
+  "schema_version": 1,
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-  ]
+  ],
+  "version": "1.0"
 }

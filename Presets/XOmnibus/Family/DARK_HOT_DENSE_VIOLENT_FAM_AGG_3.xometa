@@ -1,50 +1,62 @@
 {
-  "name": "DARK_HOT_DENSE_VIOLENT_FAM_AGG_3",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OHM",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "OHM": {
-      "macro_character": 0.431,
-      "macro_movement": 0.622,
-      "macro_coupling": 0.752,
-      "macro_space": 0.796
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.476,
-      "macro_movement": 0.614,
-      "macro_coupling": 0.776,
-      "macro_space": 0.761
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OHM",
-    "target": "ODDOSCAR",
-    "amount": 0.89
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "OddOscar",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.89
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.976,
     "brightness": 0.035,
-    "warmth": 0.984,
-    "movement": 0.422,
     "density": 0.929,
+    "movement": 0.422,
     "space": 0.339,
-    "aggression": 0.976
+    "warmth": 0.984
   },
+  "engines": [
+    "Ohm",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.431,
-    "MOVEMENT": 0.622,
     "COUPLING": 0.752,
+    "MOVEMENT": 0.622,
     "SPACE": 0.796
   },
+  "mood": "Family",
+  "name": "Rust Strike",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.476,
+      "macro_coupling": 0.776,
+      "macro_movement": 0.614,
+      "macro_space": 0.761
+    },
+    "Ohm": {
+      "macro_character": 0.431,
+      "macro_coupling": 0.752,
+      "macro_movement": 0.622,
+      "macro_space": 0.796
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "dark",
     "hot",
     "dense"
-  ]
+  ],
+  "version": "1.0"
 }

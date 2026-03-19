@@ -1,20 +1,25 @@
 {
-  "schema_version": 1,
-  "name": "Memory Shutter",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Blend sits at 0.4 — leaning into memory, each note a reconstruction of dissolving grain traces. Mod wheel (CC#1) opens the shutter toward full perception: at full throw, the blend pushes to 0.4 + offset toward present-tense Opsis. The past recedes in real time as your hand rises. A gesture that decides how much you remember.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.4,
+    "density": 0.4,
+    "movement": 0.45,
+    "space": 0.65,
+    "warmth": 0.5
+  },
   "engines": [
     "Ombre"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Blend sits at 0.4 — leaning into memory, each note a reconstruction of dissolving grain traces. Mod wheel (CC#1) opens the shutter toward full perception: at full throw, the blend pushes to 0.4 + offset toward present-tense Opsis. The past recedes in real time as your hand rises. A gesture that decides how much you remember.",
-  "tags": [
-    "expressive",
-    "mod-wheel",
-    "memory",
-    "ambient",
-    "granular"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": "Ombre",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -22,50 +27,93 @@
     "SPACE"
   ],
   "macroTargets": [
-    { "macro": 1, "engineId": "Ombre", "parameterId": "ombre_blend", "min": 0.2, "max": 0.9 },
-    { "macro": 1, "engineId": "Ombre", "parameterId": "ombre_interference", "min": 0.0, "max": 0.6 },
-    { "macro": 2, "engineId": "Ombre", "parameterId": "ombre_memoryDrift", "min": 0.0, "max": 1.0 },
-    { "macro": 2, "engineId": "Ombre", "parameterId": "ombre_reactivity", "min": 0.0, "max": 1.0 },
-    { "macro": 3, "engineId": "Ombre", "parameterId": "ombre_memoryGrain", "min": 10.0, "max": 400.0 },
-    { "macro": 3, "engineId": "Ombre", "parameterId": "ombre_interference", "min": 0.0, "max": 0.9 },
-    { "macro": 4, "engineId": "Ombre", "parameterId": "ombre_memoryDecay", "min": 0.5, "max": 20.0 },
-    { "macro": 4, "engineId": "Ombre", "parameterId": "ombre_filterCutoff", "min": 300.0, "max": 14000.0 }
+    {
+      "engineId": "Ombre",
+      "macro": 1,
+      "max": 0.9,
+      "min": 0.2,
+      "parameterId": "ombre_blend"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 1,
+      "max": 0.6,
+      "min": 0.0,
+      "parameterId": "ombre_interference"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 2,
+      "max": 1.0,
+      "min": 0.0,
+      "parameterId": "ombre_memoryDrift"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 2,
+      "max": 1.0,
+      "min": 0.0,
+      "parameterId": "ombre_reactivity"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 3,
+      "max": 400.0,
+      "min": 10.0,
+      "parameterId": "ombre_memoryGrain"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 3,
+      "max": 0.9,
+      "min": 0.0,
+      "parameterId": "ombre_interference"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 4,
+      "max": 20.0,
+      "min": 0.5,
+      "parameterId": "ombre_memoryDecay"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 4,
+      "max": 14000.0,
+      "min": 300.0,
+      "parameterId": "ombre_filterCutoff"
+    }
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": "Ombre",
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Memory Shutter",
   "parameters": {
     "Ombre": {
+      "ombre_attack": 0.015,
       "ombre_blend": 0.4,
-      "ombre_interference": 0.25,
-      "ombre_memoryDecay": 5.0,
-      "ombre_memoryGrain": 80.0,
-      "ombre_memoryDrift": 0.2,
-      "ombre_oscShape": 1.0,
-      "ombre_reactivity": 0.45,
-      "ombre_subLevel": 0.25,
+      "ombre_decay": 0.6,
       "ombre_filterCutoff": 4800.0,
       "ombre_filterReso": 0.2,
-      "ombre_attack": 0.015,
-      "ombre_decay": 0.6,
-      "ombre_sustain": 0.55,
+      "ombre_interference": 0.25,
+      "ombre_level": 0.78,
+      "ombre_memoryDecay": 5.0,
+      "ombre_memoryDrift": 0.2,
+      "ombre_memoryGrain": 80.0,
+      "ombre_oscShape": 1.0,
+      "ombre_reactivity": 0.45,
       "ombre_release": 1.8,
-      "ombre_level": 0.78
+      "ombre_subLevel": 0.25,
+      "ombre_sustain": 0.55
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.40,
-    "warmth": 0.50,
-    "movement": 0.45,
-    "density": 0.40,
-    "space": 0.65,
-    "aggression": 0.08
-  }
+  "tags": [
+    "expressive",
+    "mod-wheel",
+    "memory",
+    "ambient",
+    "granular"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

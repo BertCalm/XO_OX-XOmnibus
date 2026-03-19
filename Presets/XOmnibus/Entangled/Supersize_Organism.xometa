@@ -1,14 +1,71 @@
 {
-  "schema_version": 1,
-  "name": "Supersize Organism",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.7,
+        "engineA": "Obese",
+        "engineB": "Organon",
+        "type": "Audio->FM"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-10",
+  "description": "FAT's massive harmonics become an all-you-can-eat buffet for Organon.",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.55,
+    "density": 0.8,
+    "movement": 0.35,
+    "space": 0.2,
+    "warmth": 0.45
+  },
   "engines": [
     "Obese",
     "Organon"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "FAT's massive harmonics become an all-you-can-eat buffet for Organon.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "FAT MASS",
+    "ORGANISM",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Supersize Organism",
+  "parameters": {
+    "Obese": {
+      "fat_ampAttack": 0.1,
+      "fat_ampDecay": 0.8,
+      "fat_ampRelease": 1.0,
+      "fat_ampSustain": 0.7,
+      "fat_detune": 0.3,
+      "fat_fltCutoff": 4000.0,
+      "fat_fltReso": 0.25,
+      "fat_level": 0.6,
+      "fat_oscMode": 1,
+      "fat_unisonVoices": 7
+    },
+    "Organon": {
+      "organon_catalystDrive": 0.8,
+      "organon_dampingCoeff": 0.2,
+      "organon_enzymeSelect": 2000.0,
+      "organon_isotopeBalance": 0.6,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.2,
+      "organon_metabolicRate": 1.5,
+      "organon_noiseColor": 0.5,
+      "organon_phasonShift": 0.0,
+      "organon_signalFlux": 0.9
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "fat",
     "organon",
@@ -16,63 +73,6 @@
     "supersize",
     "dense"
   ],
-  "macroLabels": [
-    "FAT MASS",
-    "ORGANISM",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Deep",
   "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Obese": {
-      "fat_oscMode": 1,
-      "fat_unisonVoices": 7,
-      "fat_detune": 0.3,
-      "fat_fltCutoff": 4000.0,
-      "fat_fltReso": 0.25,
-      "fat_ampAttack": 0.1,
-      "fat_ampDecay": 0.8,
-      "fat_ampSustain": 0.7,
-      "fat_ampRelease": 1.0,
-      "fat_level": 0.6
-    },
-    "Organon": {
-      "organon_metabolicRate": 1.5,
-      "organon_enzymeSelect": 2000.0,
-      "organon_catalystDrive": 0.8,
-      "organon_dampingCoeff": 0.2,
-      "organon_signalFlux": 0.9,
-      "organon_phasonShift": 0.0,
-      "organon_isotopeBalance": 0.6,
-      "organon_lockIn": 0.0,
-      "organon_membrane": 0.2,
-      "organon_noiseColor": 0.5
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obese",
-        "engineB": "Organon",
-        "type": "Audio->FM",
-        "amount": 0.7
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.55,
-    "warmth": 0.45,
-    "movement": 0.35,
-    "density": 0.8,
-    "space": 0.2,
-    "aggression": 0.25
-  }
+  "version": "1.0.0"
 }

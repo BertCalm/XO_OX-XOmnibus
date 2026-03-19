@@ -1,19 +1,25 @@
 {
-  "schema_version": 1,
-  "name": "Corrupt Archive",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Square wave aggressively fed into a short, rapidly drifting memory buffer. The result sounds like a corrupted data stream — digital artifacts from a failing hard drive of sound.",
+  "dna": {
+    "aggression": 0.8,
+    "brightness": 0.7,
+    "density": 0.5,
+    "movement": 0.9,
+    "space": 0.1,
+    "warmth": 0.1
+  },
   "engines": [
     "Ombre"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Square wave aggressively fed into a short, rapidly drifting memory buffer. The result sounds like a corrupted data stream — digital artifacts from a failing hard drive of sound.",
-  "tags": [
-    "digital",
-    "noise",
-    "harsh",
-    "experimental"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": "Ombre",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -21,50 +27,92 @@
     "SPACE"
   ],
   "macroTargets": [
-    { "macro": 1, "engineId": "Ombre", "parameterId": "ombre_blend", "min": 0.0, "max": 1.0 },
-    { "macro": 1, "engineId": "Ombre", "parameterId": "ombre_interference", "min": 0.0, "max": 0.8 },
-    { "macro": 2, "engineId": "Ombre", "parameterId": "ombre_memoryDrift", "min": 0.0, "max": 1.0 },
-    { "macro": 2, "engineId": "Ombre", "parameterId": "ombre_reactivity", "min": 0.0, "max": 1.0 },
-    { "macro": 3, "engineId": "Ombre", "parameterId": "ombre_interference", "min": 0.0, "max": 1.0 },
-    { "macro": 3, "engineId": "Ombre", "parameterId": "ombre_memoryGrain", "min": 5.0, "max": 500.0 },
-    { "macro": 4, "engineId": "Ombre", "parameterId": "ombre_memoryDecay", "min": 0.5, "max": 25.0 },
-    { "macro": 4, "engineId": "Ombre", "parameterId": "ombre_filterCutoff", "min": 200.0, "max": 12000.0 }
+    {
+      "engineId": "Ombre",
+      "macro": 1,
+      "max": 1.0,
+      "min": 0.0,
+      "parameterId": "ombre_blend"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 1,
+      "max": 0.8,
+      "min": 0.0,
+      "parameterId": "ombre_interference"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 2,
+      "max": 1.0,
+      "min": 0.0,
+      "parameterId": "ombre_memoryDrift"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 2,
+      "max": 1.0,
+      "min": 0.0,
+      "parameterId": "ombre_reactivity"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 3,
+      "max": 1.0,
+      "min": 0.0,
+      "parameterId": "ombre_interference"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 3,
+      "max": 500.0,
+      "min": 5.0,
+      "parameterId": "ombre_memoryGrain"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 4,
+      "max": 25.0,
+      "min": 0.5,
+      "parameterId": "ombre_memoryDecay"
+    },
+    {
+      "engineId": "Ombre",
+      "macro": 4,
+      "max": 12000.0,
+      "min": 200.0,
+      "parameterId": "ombre_filterCutoff"
+    }
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-14",
-  "legacy": {
-    "sourceInstrument": "Ombre",
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Corrupt Archive",
   "parameters": {
     "Ombre": {
+      "ombre_attack": 0.001,
       "ombre_blend": 0.3,
-      "ombre_interference": 0.9,
-      "ombre_memoryDecay": 0.3,
-      "ombre_memoryGrain": 5.0,
-      "ombre_memoryDrift": 1.0,
-      "ombre_oscShape": 2.0,
-      "ombre_reactivity": 0.6,
-      "ombre_subLevel": 0.1,
+      "ombre_decay": 0.05,
       "ombre_filterCutoff": 8000.0,
       "ombre_filterReso": 0.6,
-      "ombre_attack": 0.001,
-      "ombre_decay": 0.05,
-      "ombre_sustain": 0.3,
+      "ombre_interference": 0.9,
+      "ombre_level": 0.65,
+      "ombre_memoryDecay": 0.3,
+      "ombre_memoryDrift": 1.0,
+      "ombre_memoryGrain": 5.0,
+      "ombre_oscShape": 2.0,
+      "ombre_reactivity": 0.6,
       "ombre_release": 0.1,
-      "ombre_level": 0.65
+      "ombre_subLevel": 0.1,
+      "ombre_sustain": 0.3
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.70,
-    "warmth": 0.10,
-    "movement": 0.90,
-    "density": 0.50,
-    "space": 0.10,
-    "aggression": 0.80
-  }
+  "tags": [
+    "digital",
+    "noise",
+    "harsh",
+    "experimental"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

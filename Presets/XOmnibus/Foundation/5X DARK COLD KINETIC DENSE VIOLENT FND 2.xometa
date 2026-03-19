@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT FND 2",
-  "mood": "Foundation",
-  "engines": [
-    "ONSET",
-    "OPTIC"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Optic",
+        "type": "AMPLITUDE_SYNC",
+        "amount": 0.7
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.07,
+    "brightness": 0.954,
+    "density": 0.042,
+    "movement": 0.065,
+    "space": 0.913,
+    "warmth": 0.442
+  },
+  "engines": [
+    "Onset",
+    "Optic"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.82,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.95,
+      "macro_space": 0.23
+    },
+    "Optic": {
+      "macro_character": 0.93,
+      "macro_coupling": 0.82,
+      "macro_movement": 0.63,
+      "macro_space": 0.31
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +62,6 @@
     "dense",
     "foundation"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "ONSET": {
-      "macro_character": 0.82,
-      "macro_movement": 0.95,
-      "macro_coupling": 0.7,
-      "macro_space": 0.23
-    },
-    "OPTIC": {
-      "macro_character": 0.93,
-      "macro_movement": 0.63,
-      "macro_coupling": 0.82,
-      "macro_space": 0.31
-    }
-  },
-  "coupling": {
-    "type": "AMPLITUDE_SYNC",
-    "source": "ONSET",
-    "target": "OPTIC",
-    "amount": 0.7
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.954,
-    "warmth": 0.442,
-    "movement": 0.065,
-    "density": 0.042,
-    "space": 0.913,
-    "aggression": 0.07
-  }
+  "version": "1.0.0"
 }

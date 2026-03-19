@@ -1,14 +1,40 @@
 {
-  "schema_version": 1,
-  "name": "Oblique and Ocelot",
-  "mood": "Family",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "Medium",
+  "created": "2026-03-16",
+  "description": "OBLIQUE off-axis + OCELOT feline precision — the unexpected angle and the precise strike. Two ways of not going straight.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.62,
+    "density": 0.45,
+    "movement": 0.72,
+    "space": 0.6,
+    "warmth": 0.5
+  },
   "engines": [
-    "OBLIQUE",
-    "OCELOT"
+    "Oblique",
+    "Ocelot"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "OBLIQUE off-axis + OCELOT feline precision \u2014 the unexpected angle and the precise strike. Two ways of not going straight.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "ANGLE",
+    "SKEW",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Oblique and Ocelot",
+  "parameters": {
+    "Oblique": {},
+    "Ocelot": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "family",
     "reunion",
@@ -19,29 +45,6 @@
     "hunter",
     "batch3-reunion"
   ],
-  "macroLabels": [
-    "ANGLE",
-    "SKEW",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Medium",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {},
-  "coupling": null,
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.62,
-    "warmth": 0.5,
-    "movement": 0.72,
-    "density": 0.45,
-    "space": 0.6,
-    "aggression": 0.45
-  }
+  "version": "1.0.0"
 }

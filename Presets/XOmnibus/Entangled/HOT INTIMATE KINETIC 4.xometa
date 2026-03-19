@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ottoni \u00d7 Oceanic \u2014 Harmonic Fold coupling at extreme DNA corner.",
+  "description": "Ottoni × Oceanic — Harmonic Fold coupling at extreme DNA corner.",
   "tags": [
     "hot",
     "ottoni",
@@ -33,7 +33,10 @@
     "space": 0.053,
     "aggression": 0.504
   },
-  "parameters": {},
+  "parameters": {
+    "Ottoni": {},
+    "Oceanic": {}
+  },
   "coupling": {
     "pairs": [
       {

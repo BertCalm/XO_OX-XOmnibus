@@ -1,57 +1,57 @@
 {
-  "schema_version": 1,
-  "name": "Shimmer Bass",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Solid, grounding bass tone with warm character.",
+  "dna": {
+    "aggression": 0.062,
+    "brightness": 0.424,
+    "density": 0.108,
+    "movement": 0.0,
+    "space": 0.099,
+    "warmth": 0.179
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Solid, grounding bass tone with warm character.",
-  "tags": [
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Bass",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Bass",
-    "sourcePresetName": null
-  },
+  "mood": "Foundation",
+  "name": "Shimmer Bass",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 0.0,
-      "drift_oscA_level": 0.8,
-      "drift_subLevel": 0.5,
-      "drift_shimmerAmount": 0.2,
-      "drift_shimmerTone": 0.4,
-      "drift_filterCutoff": 2000.0,
-      "drift_filterReso": 0.15,
-      "drift_filterSlope": 1.0,
       "drift_attack": 3.0,
       "drift_decay": 400.0,
-      "drift_sustain": 0.5,
-      "drift_release": 250.0,
+      "drift_filterCutoff": 2000.0,
       "drift_filterEnvAmt": 0.35,
-      "drift_level": -3.0
+      "drift_filterReso": 0.15,
+      "drift_filterSlope": 1.0,
+      "drift_level": -3.0,
+      "drift_oscA_level": 0.8,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_release": 250.0,
+      "drift_shimmerAmount": 0.2,
+      "drift_shimmerTone": 0.4,
+      "drift_subLevel": 0.5,
+      "drift_sustain": 0.5
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.424,
-    "warmth": 0.179,
-    "movement": 0.0,
-    "density": 0.108,
-    "space": 0.099,
-    "aggression": 0.062
-  }
+  "tags": [
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

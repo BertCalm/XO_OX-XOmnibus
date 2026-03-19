@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_KINETIC_INTIMATE_DENSE_AET2_2",
-  "version": "1.0",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orbital",
+        "type": "CHAOS_INJECT",
+        "amount": 0.6124
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.3561,
+    "brightness": 0.9574,
+    "density": 0.893,
+    "movement": 0.9661,
+    "space": 0.0287,
+    "warmth": 0.5145
+  },
   "engines": [
-    "OBSCURA",
-    "ORBITAL"
+    "Obscura",
+    "Orbital"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9476,
+    "COUPLING": 0.6124,
+    "MOVEMENT": 0.9764,
+    "SPACE": 0.0287
+  },
+  "mood": "Aether",
+  "name": "Tone Shimmer 2",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.9828,
-      "macro_movement": 0.9627,
       "macro_coupling": 0.9147,
+      "macro_movement": 0.9627,
       "macro_space": 0.0317
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.9125,
-      "macro_movement": 0.99,
       "macro_coupling": 0.9266,
+      "macro_movement": 0.99,
       "macro_space": 0.0756
     }
   },
-  "coupling": {
-    "type": "CHAOS_INJECT",
-    "source": "OBSCURA",
-    "target": "ORBITAL",
-    "amount": 0.6124
-  },
-  "dna": {
-    "brightness": 0.9574,
-    "movement": 0.9661,
-    "space": 0.0287,
-    "density": 0.893,
-    "warmth": 0.5145,
-    "aggression": 0.3561
-  },
-  "macros": {
-    "CHARACTER": 0.9476,
-    "MOVEMENT": 0.9764,
-    "COUPLING": 0.6124,
-    "SPACE": 0.0287
-  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -49,5 +60,6 @@
     "intimate",
     "dense",
     "ethereal"
-  ]
+  ],
+  "version": "1.0"
 }

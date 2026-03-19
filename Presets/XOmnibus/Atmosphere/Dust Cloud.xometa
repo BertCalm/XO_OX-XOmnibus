@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Dust Cloud",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Floating textures texture with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.234,
+    "brightness": 0.411,
+    "density": 0.292,
+    "movement": 0.0,
+    "space": 0.495,
+    "warmth": 0.637
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Floating textures texture with bob character and analog drift.",
-  "tags": [
-    "texture",
-    "dust",
-    "ambient"
-  ],
+  "legacy": {
+    "sourceCategory": "Textures",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Textures",
-    "sourcePresetName": null
-  },
+  "mood": "Atmosphere",
+  "name": "Dust Cloud",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
+      "bob_ampAttack": 4.5,
+      "bob_ampRelease": 9.0,
+      "bob_ampSustain": 0.95,
+      "bob_bobMode": 0.62,
+      "bob_dustAmount": 0.58,
+      "bob_dustTone": 0.4,
+      "bob_fltCutoff": 3500.0,
+      "bob_fltMode": 3.0,
+      "bob_fltReso": 0.05,
       "bob_oscA_drift": 0.55,
       "bob_oscA_shape": 0.1,
+      "bob_oscA_wave": 0.0,
       "bob_texLevel": 0.78,
       "bob_texMode": 0.0,
       "bob_texTone": 0.62,
-      "bob_texWidth": 0.82,
-      "bob_dustAmount": 0.58,
-      "bob_dustTone": 0.4,
-      "bob_fltMode": 3.0,
-      "bob_fltCutoff": 3500.0,
-      "bob_fltReso": 0.05,
-      "bob_ampAttack": 4.5,
-      "bob_ampSustain": 0.95,
-      "bob_ampRelease": 9.0,
-      "bob_bobMode": 0.62
+      "bob_texWidth": 0.82
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.411,
-    "warmth": 0.637,
-    "movement": 0.0,
-    "density": 0.292,
-    "space": 0.495,
-    "aggression": 0.234
-  }
+  "tags": [
+    "texture",
+    "dust",
+    "ambient"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

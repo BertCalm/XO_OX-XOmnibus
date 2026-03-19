@@ -1,48 +1,60 @@
 {
-  "name": "VOID LATTICE",
-  "version": "1.0",
-  "mood": "Prism",
-  "engines": [
-    "OVERWORLD",
-    "ODDOSCAR"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.535,
-      "macro_movement": 0.941,
-      "macro_coupling": 0.789,
-      "macro_space": 0.64
-    },
-    "ODDOSCAR": {
-      "macro_character": 0.682,
-      "macro_movement": 0.449,
-      "macro_coupling": 0.618,
-      "macro_space": 0.503
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OVERWORLD",
-    "target": "ODDOSCAR",
-    "amount": 0.828
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "OddOscar",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.828
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.203,
     "brightness": 0.037,
-    "warmth": 0.257,
-    "movement": 0.88,
     "density": 0.037,
+    "movement": 0.88,
     "space": 0.039,
-    "aggression": 0.203
+    "warmth": 0.257
   },
+  "engines": [
+    "Overworld",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.957,
-    "MOVEMENT": 0.911,
     "COUPLING": 0.122,
+    "MOVEMENT": 0.911,
     "SPACE": 0.211
   },
+  "mood": "Prism",
+  "name": "VOID LATTICE",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.682,
+      "macro_coupling": 0.618,
+      "macro_movement": 0.449,
+      "macro_space": 0.503
+    },
+    "Overworld": {
+      "macro_character": 0.535,
+      "macro_coupling": 0.789,
+      "macro_movement": 0.941,
+      "macro_space": 0.64
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-  ]
+  ],
+  "version": "1.0"
 }

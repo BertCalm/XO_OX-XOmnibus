@@ -1,54 +1,54 @@
 {
-  "schema_version": 1,
-  "name": "Muted Pluck",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Bright keys character with warm character.",
+  "dna": {
+    "aggression": 0.041,
+    "brightness": 0.367,
+    "density": 0.062,
+    "movement": 0.0,
+    "space": 0.086,
+    "warmth": 0.0
+  },
   "engines": [
     "Odyssey"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Bright keys character with warm character.",
-  "tags": [
-    "dyssey"
-  ],
+  "legacy": {
+    "sourceCategory": "Keys",
+    "sourceInstrument": "Odyssey",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "JOURNEY",
     "BREATHE",
     "BLOOM",
     "FRACTURE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Odyssey",
-    "sourceCategory": "Keys",
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Muted Pluck",
   "parameters": {
     "Odyssey": {
-      "drift_oscA_mode": 0.0,
-      "drift_oscA_shape": 0.0,
-      "drift_oscA_level": 0.75,
-      "drift_filterCutoff": 2000.0,
-      "drift_filterReso": 0.1,
-      "drift_filterSlope": 1.0,
       "drift_attack": 1.0,
       "drift_decay": 200.0,
-      "drift_sustain": 0.0,
-      "drift_release": 200.0,
+      "drift_filterCutoff": 2000.0,
       "drift_filterEnvAmt": 0.4,
-      "drift_level": -3.0
+      "drift_filterReso": 0.1,
+      "drift_filterSlope": 1.0,
+      "drift_level": -3.0,
+      "drift_oscA_level": 0.75,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_release": 200.0,
+      "drift_sustain": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.367,
-    "warmth": 0.0,
-    "movement": 0.0,
-    "density": 0.062,
-    "space": 0.086,
-    "aggression": 0.041
-  }
+  "tags": [
+    "dyssey"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

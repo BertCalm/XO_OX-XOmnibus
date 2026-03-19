@@ -1,72 +1,92 @@
 {
-  "name": "Commune Daguerreotype",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Ohm",
+        "type": "SPECTRAL_TRANSFER",
+        "amount": 0.725
+      }
+    ]
+  },
+  "description": "A circle of people photographed in slow silver light — the sage resonance of togetherness preserved in emulsion.",
   "engines": [
     "Obscura",
     "Ohm"
   ],
-  "mood": "Entangled",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.472,
-    "MOVEMENT": 0.38,
     "COUPLING": 0.694,
+    "MOVEMENT": 0.38,
     "SPACE": 0.635
   },
-  "sonic_dna": {
-    "brightness": 0.433,
-    "warmth": 0.559,
-    "movement": 0.32,
-    "density": 0.536,
-    "space": 0.638,
-    "aggression": 0.335
-  },
+  "mood": "Entangled",
+  "name": "Commune Daguerreotype",
   "parameters": {
-    "obscura_stiffness": 0.411,
-    "obscura_dampening": 0.38,
-    "obscura_exciterType": 0.0,
-    "obscura_exciterAmount": 0.72,
-    "obscura_plateBlend": 0.539,
-    "obscura_silverTone": 0.589,
-    "obscura_exposureTime": 0.336,
-    "obscura_chemicalDepth": 0.469,
-    "obscura_grainSize": 0.171,
-    "obscura_filterCutoff": 7492.5,
-    "obscura_filterReso": 0.356,
-    "obscura_level": 0.654,
     "obscura_ampAttack": 0.0969,
     "obscura_ampDecay": 0.759,
-    "obscura_ampSustain": 0.565,
     "obscura_ampRelease": 1.692,
+    "obscura_ampSustain": 0.565,
+    "obscura_chemicalDepth": 0.469,
+    "obscura_dampening": 0.38,
+    "obscura_exciterAmount": 0.72,
+    "obscura_exciterType": 0.0,
+    "obscura_exposureTime": 0.336,
+    "obscura_filterCutoff": 7492.5,
+    "obscura_filterReso": 0.356,
+    "obscura_grainSize": 0.171,
+    "obscura_level": 0.654,
+    "obscura_lfo1Depth": 0.313,
+    "obscura_lfo1Rate": 0.804,
+    "obscura_lfo1Shape": 0.75,
+    "obscura_lfo2Depth": 0.084,
+    "obscura_lfo2Rate": 0.443,
+    "obscura_lfo2Shape": 1.0,
     "obscura_modAttack": 0.0567,
     "obscura_modDecay": 0.469,
-    "obscura_modSustain": 0.373,
     "obscura_modRelease": 1.126,
-    "obscura_lfo1Rate": 0.804,
-    "obscura_lfo1Depth": 0.313,
-    "obscura_lfo1Shape": 0.75,
-    "obscura_lfo2Rate": 0.443,
-    "obscura_lfo2Depth": 0.084,
-    "obscura_lfo2Shape": 1.0,
+    "obscura_modSustain": 0.373,
+    "obscura_plateBlend": 0.539,
+    "obscura_silverTone": 0.589,
+    "obscura_stiffness": 0.411,
+    "ohm_ampAttack": 0.0161,
+    "ohm_ampDecay": 0.436,
+    "ohm_ampRelease": 0.805,
+    "ohm_ampSustain": 0.684,
     "ohm_filterCutoff": 5482.5,
     "ohm_filterReso": 0.349,
     "ohm_level": 0.826,
-    "ohm_ampAttack": 0.0161,
-    "ohm_ampDecay": 0.436,
-    "ohm_ampSustain": 0.684,
-    "ohm_ampRelease": 0.805,
-    "ohm_lfo1Rate": 2.281,
-    "ohm_lfo1Depth": 0.107
+    "ohm_lfo1Depth": 0.107,
+    "ohm_lfo1Rate": 2.281
   },
-  "coupling": {
-    "type": "SPECTRAL_TRANSFER",
-    "source": "Obscura",
-    "target": "Ohm",
-    "amount": 0.725
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.335,
+    "brightness": 0.433,
+    "density": 0.536,
+    "movement": 0.32,
+    "space": 0.638,
+    "warmth": 0.559
   },
   "tags": [
     "entangled",
     "coupling",
     "daguerreotype"
   ],
-  "description": "A circle of people photographed in slow silver light — the sage resonance of togetherness preserved in emulsion."
+  "version": "1.0.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

@@ -1,13 +1,44 @@
 {
-  "schema_version": 1,
-  "name": "Convection Surge",
-  "mood": "Atmosphere",
-  "engines": [
-    "ORIGAMI"
-  ],
-  "author": "XO_OX",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
   "description": "Weather system in motion. High movement, active aggression. ORIGAMI kinetic register.",
+  "dna": {
+    "aggression": 0.47,
+    "brightness": 0.308,
+    "density": 0.666,
+    "movement": 0.849,
+    "space": 0.69,
+    "warmth": 0.308
+  },
+  "engines": [
+    "Origami"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "TENSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "COUPLING": 0.492,
+    "FOLD": 0.53,
+    "SPACE": 0.697,
+    "TENSION": 0.849
+  },
+  "mood": "Atmosphere",
+  "name": "Convection Surge",
+  "parameters": {
+    "Origami": {
+      "coupling": 0.492,
+      "fold": 0.53,
+      "space": 0.697,
+      "tension": 0.849
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "kinetic",
@@ -16,36 +47,5 @@
     "weather",
     "dynamic"
   ],
-  "macroLabels": [
-    "FOLD",
-    "TENSION",
-    "COUPLING",
-    "SPACE"
-  ],
-  "dna": {
-    "brightness": 0.308,
-    "warmth": 0.308,
-    "movement": 0.849,
-    "density": 0.666,
-    "space": 0.69,
-    "aggression": 0.47
-  },
-  "parameters": {
-    "ORIGAMI": {
-      "fold": 0.53,
-      "tension": 0.849,
-      "coupling": 0.492,
-      "space": 0.697
-    }
-  },
-  "macros": {
-    "FOLD": 0.53,
-    "TENSION": 0.849,
-    "COUPLING": 0.492,
-    "SPACE": 0.697
-  },
-  "couplingIntensity": "None",
-  "coupling": {
-    "pairs": []
-  }
+  "version": "1.0"
 }

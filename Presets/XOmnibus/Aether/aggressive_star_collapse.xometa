@@ -1,49 +1,61 @@
 {
-  "name": "AGGRESSIVE STAR COLLAPSE",
-  "version": "1.0",
-  "mood": "Aether",
-  "engines": [
-    "OWLFISH",
-    "OSTERIA"
-  ],
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.657,
-      "macro_movement": 0.83,
-      "macro_coupling": 0.873,
-      "macro_space": 0.668
-    },
-    "OSTERIA": {
-      "macro_character": 0.583,
-      "macro_movement": 0.753,
-      "macro_coupling": 0.35,
-      "macro_space": 0.706
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "VELOCITY_COUPLE",
-    "source": "OWLFISH",
-    "target": "OSTERIA",
-    "amount": 0.789
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Osteria",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.789
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.946,
     "brightness": 0.647,
-    "warmth": 0.066,
-    "movement": 0.789,
     "density": 0.095,
+    "movement": 0.789,
     "space": 0.678,
-    "aggression": 0.946
+    "warmth": 0.066
   },
+  "engines": [
+    "Owlfish",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.392,
-    "MOVEMENT": 0.789,
     "COUPLING": 0.595,
+    "MOVEMENT": 0.789,
     "SPACE": 0.678
   },
+  "mood": "Aether",
+  "name": "AGGRESSIVE STAR COLLAPSE",
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.583,
+      "macro_coupling": 0.35,
+      "macro_movement": 0.753,
+      "macro_space": 0.706
+    },
+    "Owlfish": {
+      "macro_character": 0.657,
+      "macro_coupling": 0.873,
+      "macro_movement": 0.83,
+      "macro_space": 0.668
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -9,6 +9,7 @@
 #include "CouplingTests/CouplingMatrixTests.h"
 #include "PresetTests/PresetRoundTripTests.h"
 #include "ExportTests/XPNExportTests.h"
+#include "DoctrineTests/DoctrineTests.h"
 
 #include <juce_core/juce_core.h>
 #include <juce_gui_basics/juce_gui_basics.h>
@@ -30,6 +31,7 @@ int main()
     totalFailures += coupling_tests::runAll();
     totalFailures += preset_tests::runAll();
     totalFailures += export_tests::runAll();
+    totalFailures += doctrine_tests::runAll();
 
     std::cout << "\n##################################################\n";
     if (totalFailures == 0)

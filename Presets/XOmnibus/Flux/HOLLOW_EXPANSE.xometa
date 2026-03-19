@@ -1,49 +1,61 @@
 {
-  "name": "HOLLOW EXPANSE",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "OPTIC",
-    "OPAL"
-  ],
-  "parameters": {
-    "OPTIC": {
-      "macro_character": 0.416,
-      "macro_movement": 0.328,
-      "macro_coupling": 0.568,
-      "macro_space": 0.898
-    },
-    "OPAL": {
-      "macro_character": 0.445,
-      "macro_movement": 0.442,
-      "macro_coupling": 0.585,
-      "macro_space": 0.903
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "RESONANCE_SHARE",
-    "source": "OPTIC",
-    "target": "OPAL",
-    "amount": 0.596
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Opal",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.596
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.403,
     "brightness": 0.435,
-    "warmth": 0.498,
-    "movement": 0.43,
     "density": 0.089,
+    "movement": 0.43,
     "space": 0.893,
-    "aggression": 0.403
+    "warmth": 0.498
   },
+  "engines": [
+    "Optic",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.416,
-    "MOVEMENT": 0.328,
     "COUPLING": 0.568,
+    "MOVEMENT": 0.328,
     "SPACE": 0.898
   },
+  "mood": "Flux",
+  "name": "HOLLOW EXPANSE",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.445,
+      "macro_coupling": 0.585,
+      "macro_movement": 0.442,
+      "macro_space": 0.903
+    },
+    "Optic": {
+      "macro_character": 0.416,
+      "macro_coupling": 0.568,
+      "macro_movement": 0.328,
+      "macro_space": 0.898
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "spatial",
     "sparse",
     "open"
-  ]
+  ],
+  "version": "1.0"
 }

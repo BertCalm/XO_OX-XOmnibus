@@ -1,19 +1,27 @@
 {
-  "schema_version": 1,
-  "name": "Wild Basin",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.821,
+        "engineA": "Orca",
+        "engineB": "Octopus",
+        "type": "PHASE_LOCK"
+      }
+    ]
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "aggression": 0.665,
+    "brightness": 0.37,
+    "density": 0.765,
+    "movement": 1.0,
+    "space": 0.565,
+    "warmth": 0.465
+  },
   "engines": [
-    "OCTOPUS",
-    "ORCA"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "octopus",
-    "orca"
+    "Octopus",
+    "Orca"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -23,49 +31,41 @@
   ],
   "macros": {
     "CHARACTER": 0.427,
-    "MOVEMENT": 0.899,
     "COUPLING": 0.539,
+    "MOVEMENT": 0.899,
     "SPACE": 0.499
   },
-  "couplingIntensity": "Strong",
-  "dna": {
-    "brightness": 0.37,
-    "warmth": 0.465,
-    "movement": 1.0,
-    "density": 0.765,
-    "space": 0.565,
-    "aggression": 0.665
-  },
-  "sonic_dna": {
-    "brightness": 0.37,
-    "warmth": 0.465,
-    "movement": 1.0,
-    "density": 0.765,
-    "space": 0.565,
-    "aggression": 0.665
-  },
+  "mood": "Entangled",
+  "name": "Wild Basin",
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.725,
-      "macro_movement": 0.629,
       "macro_coupling": 0.531,
+      "macro_movement": 0.629,
       "macro_space": 0.266
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.576,
-      "macro_movement": 0.775,
       "macro_coupling": 0.568,
+      "macro_movement": 0.775,
       "macro_space": 0.356
     }
   },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "ORCA",
-        "engineB": "OCTOPUS",
-        "type": "PHASE_LOCK",
-        "amount": 0.821
-      }
-    ]
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.665,
+    "brightness": 0.37,
+    "density": 0.765,
+    "movement": 1.0,
+    "space": 0.565,
+    "warmth": 0.465
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "octopus",
+    "orca"
+  ],
+  "version": "1.0.0"
 }

@@ -1,13 +1,46 @@
 {
-  "schema_version": 1,
-  "name": "Owlfish Hollow",
-  "mood": "Aether",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The owlfish has found the hollow place in the ocean where sound becomes architecture. It inhabits the formant completely — a living resonator in the dark.",
+  "dna": {
+    "aggression": 0.03,
+    "brightness": 0.09,
+    "density": 0.4,
+    "movement": 0.12,
+    "space": 0.91,
+    "warmth": 0.35
+  },
   "engines": [
     "Owlfish"
   ],
-  "author": "XPN Aether Expansion \u2014 2026-03-16",
-  "version": "1.0.0",
-  "description": "The owlfish has found the hollow place in the ocean where sound becomes architecture. It inhabits the formant completely \u2014 a living resonator in the dark.",
+  "macroLabels": [
+    "SCREECH",
+    "HOLLOW",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Owlfish Hollow",
+  "parameters": {
+    "Owlfish": {
+      "owl_ampAttack": 5.0,
+      "owl_ampRelease": 8.5,
+      "owl_filterCutoff": 0.06,
+      "owl_filterReso": 0.4,
+      "owl_formantShift": 0.3,
+      "owl_hollowAmt": 0.9,
+      "owl_macroCoupling": 0.0,
+      "owl_macroHollow": 0.0,
+      "owl_macroScreech": 0.0,
+      "owl_macroSpace": 0.0,
+      "owl_reverbMix": 0.9
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "dark-aether",
@@ -16,38 +49,5 @@
     "deep",
     "dark"
   ],
-  "macroLabels": [
-    "SCREECH",
-    "HOLLOW",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "dna": {
-    "brightness": 0.09,
-    "warmth": 0.35,
-    "movement": 0.12,
-    "density": 0.4,
-    "space": 0.91,
-    "aggression": 0.03
-  },
-  "parameters": {
-    "Owlfish": {
-      "owl_filterCutoff": 0.06,
-      "owl_filterReso": 0.4,
-      "owl_formantShift": 0.3,
-      "owl_hollowAmt": 0.9,
-      "owl_ampAttack": 5.0,
-      "owl_ampRelease": 8.5,
-      "owl_reverbMix": 0.9,
-      "owl_macroScreech": 0.0,
-      "owl_macroHollow": 0.0,
-      "owl_macroCoupling": 0.0,
-      "owl_macroSpace": 0.0
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null
+  "version": "1.0.0"
 }

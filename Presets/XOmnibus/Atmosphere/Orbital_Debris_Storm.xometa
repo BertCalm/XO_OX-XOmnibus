@@ -1,13 +1,53 @@
 {
-  "schema_version": 1,
-  "name": "Orbital Debris Storm",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Sixteen oscillators at maximum detune, group envelope rate near maximum. Not a chord ring — a debris field in rapid orbit. The atmosphere of breakdown: ordered system approaching noise.",
+  "dna": {
+    "aggression": 0.85,
+    "brightness": 0.88,
+    "density": 0.92,
+    "movement": 0.92,
+    "space": 0.55,
+    "warmth": 0.12
+  },
   "engines": [
     "Orbital"
   ],
-  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
-  "version": "1.0.0",
-  "description": "Sixteen oscillators at maximum detune, group envelope rate near maximum. Not a chord ring \u2014 a debris field in rapid orbit. The atmosphere of breakdown: ordered system approaching noise.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Orbital Debris Storm",
+  "parameters": {
+    "Orbital": {
+      "orb_ampAttack": 0.05,
+      "orb_ampDecay": 0.35,
+      "orb_ampRelease": 2.5,
+      "orb_ampSustain": 0.45,
+      "orb_brightness": 0.92,
+      "orb_detune": 0.78,
+      "orb_filterCutoff": 0.92,
+      "orb_filterReso": 0.68,
+      "orb_groupEnvDepth": 0.95,
+      "orb_groupEnvRate": 0.88,
+      "orb_oscCount": 16,
+      "orb_spread": 0.95
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "atmosphere",
     "storm",
@@ -15,46 +55,6 @@
     "debris",
     "field"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Orbital": {
-      "orb_brightness": 0.92,
-      "orb_groupEnvRate": 0.88,
-      "orb_groupEnvDepth": 0.95,
-      "orb_oscCount": 16,
-      "orb_spread": 0.95,
-      "orb_detune": 0.78,
-      "orb_filterCutoff": 0.92,
-      "orb_filterReso": 0.68,
-      "orb_ampAttack": 0.05,
-      "orb_ampDecay": 0.35,
-      "orb_ampSustain": 0.45,
-      "orb_ampRelease": 2.5
-    }
-  },
-  "coupling": {
-    "pairs": []
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.88,
-    "warmth": 0.12,
-    "movement": 0.92,
-    "density": 0.92,
-    "space": 0.55,
-    "aggression": 0.85
-  }
+  "version": "1.0.0"
 }

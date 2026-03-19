@@ -1,50 +1,62 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_SPARSE_FAM_VOL_95",
-  "version": "1.0",
-  "mood": "Family",
-  "engines": [
-    "OVERDUB",
-    "OSTERIA"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.92,
-      "macro_movement": 0.918,
-      "macro_coupling": 0.299,
-      "macro_space": 0.441
-    },
-    "OSTERIA": {
-      "macro_character": 0.931,
-      "macro_movement": 0.928,
-      "macro_coupling": 0.335,
-      "macro_space": 0.462
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "PHASE_COUPLE",
-    "source": "OSTERIA",
-    "target": "OVERDUB",
-    "amount": 0.691
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Overdub",
+        "type": "PHASE_COUPLE",
+        "amount": 0.691
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.529,
     "brightness": 0.894,
-    "warmth": 0.916,
-    "movement": 0.931,
     "density": 0.112,
+    "movement": 0.931,
     "space": 0.45,
-    "aggression": 0.529
+    "warmth": 0.916
   },
+  "engines": [
+    "Overdub",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.925,
-    "MOVEMENT": 0.923,
     "COUPLING": 0.317,
+    "MOVEMENT": 0.923,
     "SPACE": 0.452
   },
+  "mood": "Family",
+  "name": "Candlelight Stream 2",
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.931,
+      "macro_coupling": 0.335,
+      "macro_movement": 0.928,
+      "macro_space": 0.462
+    },
+    "Overdub": {
+      "macro_character": 0.92,
+      "macro_coupling": 0.299,
+      "macro_movement": 0.918,
+      "macro_space": 0.441
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "sparse",
     "bright"
-  ]
+  ],
+  "version": "1.0"
 }

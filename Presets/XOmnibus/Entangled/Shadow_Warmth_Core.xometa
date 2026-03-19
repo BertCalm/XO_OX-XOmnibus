@@ -1,48 +1,60 @@
 {
-  "name": "Shadow Warmth Core",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERDUB",
-    "OPAL"
-  ],
-  "parameters": {
-    "OVERDUB": {
-      "macro_character": 0.6,
-      "macro_movement": 0.61,
-      "macro_coupling": 0.66,
-      "macro_space": 0.82
-    },
-    "OPAL": {
-      "macro_character": 0.58,
-      "macro_movement": 0.88,
-      "macro_coupling": 0.83,
-      "macro_space": 0.26
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "LFO_SYNC",
-    "source": "OPAL",
-    "target": "OVERDUB",
-    "amount": 0.54
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Overdub",
+        "type": "LFO_SYNC",
+        "amount": 0.54
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.48,
     "brightness": 0.12,
-    "warmth": 0.84,
-    "movement": 0.37,
     "density": 0.71,
+    "movement": 0.37,
     "space": 0.16,
-    "aggression": 0.48
+    "warmth": 0.84
   },
+  "engines": [
+    "Overdub",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.11,
-    "MOVEMENT": 0.37,
     "COUPLING": 0.94,
+    "MOVEMENT": 0.37,
     "SPACE": 0.16
   },
+  "mood": "Entangled",
+  "name": "Shadow Warmth Core",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.58,
+      "macro_coupling": 0.83,
+      "macro_movement": 0.88,
+      "macro_space": 0.26
+    },
+    "Overdub": {
+      "macro_character": 0.6,
+      "macro_coupling": 0.66,
+      "macro_movement": 0.61,
+      "macro_space": 0.82
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-  ]
+  ],
+  "version": "1.0"
 }

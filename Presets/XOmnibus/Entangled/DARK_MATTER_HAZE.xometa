@@ -1,49 +1,61 @@
 {
-  "name": "DARK MATTER HAZE",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Organon",
+        "type": "PITCH_SYNC",
+        "amount": 0.94
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.982,
+    "density": 0.129,
+    "movement": 0.345,
+    "space": 0.92,
+    "warmth": 0.887
+  },
   "engines": [
-    "OCELOT",
-    "ORGANON"
+    "Ocelot",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.964,
+    "COUPLING": 0.169,
+    "MOVEMENT": 0.81,
+    "SPACE": 0.92
+  },
+  "mood": "Entangled",
+  "name": "DARK MATTER HAZE",
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.802,
-      "macro_movement": 0.687,
       "macro_coupling": 0.633,
+      "macro_movement": 0.687,
       "macro_space": 0.894
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.163,
-      "macro_movement": 0.762,
       "macro_coupling": 0.213,
+      "macro_movement": 0.762,
       "macro_space": 0.913
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "OCELOT",
-    "target": "ORGANON",
-    "amount": 0.94
-  },
-  "dna": {
-    "brightness": 0.982,
-    "warmth": 0.887,
-    "movement": 0.345,
-    "density": 0.129,
-    "space": 0.92,
-    "aggression": 0.15
-  },
-  "macros": {
-    "CHARACTER": 0.964,
-    "MOVEMENT": 0.81,
-    "COUPLING": 0.169,
-    "SPACE": 0.92
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "vast",
     "cosmic",
     "xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,48 +1,60 @@
 {
-  "name": "PETRIFIED CURRENT",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Orphica",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.4
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.196,
+    "brightness": 0.714,
+    "density": 0.555,
+    "movement": 0.085,
+    "space": 0.504,
+    "warmth": 0.502
+  },
   "engines": [
-    "OHM",
-    "ORPHICA"
+    "Ohm",
+    "Orphica"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.287,
+    "COUPLING": 0.69,
+    "MOVEMENT": 0.085,
+    "SPACE": 0.237
+  },
+  "mood": "Entangled",
+  "name": "PETRIFIED CURRENT",
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.852,
-      "macro_movement": 0.068,
       "macro_coupling": 0.788,
+      "macro_movement": 0.068,
       "macro_space": 0.355
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.033,
-      "macro_movement": 0.102,
       "macro_coupling": 0.022,
+      "macro_movement": 0.102,
       "macro_space": 0.077
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "OHM",
-    "target": "ORPHICA",
-    "amount": 0.4
-  },
-  "dna": {
-    "brightness": 0.714,
-    "warmth": 0.502,
-    "movement": 0.085,
-    "density": 0.555,
-    "space": 0.504,
-    "aggression": 0.196
-  },
-  "macros": {
-    "CHARACTER": 0.287,
-    "MOVEMENT": 0.085,
-    "COUPLING": 0.69,
-    "SPACE": 0.237
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "petrified"
-  ]
+  ],
+  "version": "1.0"
 }

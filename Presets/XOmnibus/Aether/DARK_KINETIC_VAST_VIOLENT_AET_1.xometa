@@ -1,14 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "DARK KINETIC VAST VIOLENT AET 1",
-  "mood": "Aether",
-  "engines": [
-    "ORGANON",
-    "OCEANIC"
-  ],
   "author": "XO_OX Designs",
-  "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, kinetic, vast.",
+  "coupling": [
+    {
+      "amount": 0.337,
+      "destination": "OCEANIC",
+      "source": "ORGANON",
+      "type": "SPECTRAL_MORPH"
+    }
+  ],
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — aether, dark, kinetic, vast.",
+  "dna": {
+    "aggression": 0.921,
+    "brightness": 0.059,
+    "density": 0.55,
+    "movement": 0.897,
+    "space": 0.919,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Organon",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "DARK KINETIC VAST VIOLENT A...",
+  "parameters": {
+    "Oceanic": {
+      "level": 0.766,
+      "pan": 0.13
+    },
+    "Organon": {
+      "level": 0.653,
+      "pan": -0.15
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "aether",
     "dark",
@@ -17,40 +51,6 @@
     "violent",
     "ultra-diverse"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "dna": {
-    "brightness": 0.059,
-    "warmth": 0.5,
-    "movement": 0.897,
-    "density": 0.55,
-    "space": 0.919,
-    "aggression": 0.921
-  },
-  "parameters": {
-    "ORGANON": {
-      "level": 0.653,
-      "pan": -0.15
-    },
-    "OCEANIC": {
-      "level": 0.766,
-      "pan": 0.13
-    }
-  },
-  "coupling": [
-    {
-      "source": "ORGANON",
-      "destination": "OCEANIC",
-      "type": "SPECTRAL_MORPH",
-      "amount": 0.337
-    }
-  ],
-  "sequencer": null
+  "version": "1.0.0"
 }

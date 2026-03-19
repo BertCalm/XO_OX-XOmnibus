@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_WARM_KINETIC_VAST_FLX_1",
-  "version": "1.0",
-  "mood": "Flux",
-  "engines": [
-    "ORGANON",
-    "ORACLE"
-  ],
-  "parameters": {
-    "ORGANON": {
-      "macro_character": 0.7325,
-      "macro_movement": 0.8063,
-      "macro_coupling": 0.6992,
-      "macro_space": 0.9385
-    },
-    "ORACLE": {
-      "macro_character": 0.7213,
-      "macro_movement": 0.7819,
-      "macro_coupling": 0.5952,
-      "macro_space": 0.9418
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "SPECTRAL_MORPH",
-    "source": "ORGANON",
-    "target": "ORACLE",
-    "amount": 0.8739
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oracle",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.8739
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.5776,
     "brightness": 0.8681,
-    "warmth": 0.8991,
-    "movement": 0.8604,
     "density": 0.4131,
+    "movement": 0.8604,
     "space": 0.9503,
-    "aggression": 0.5776
+    "warmth": 0.8991
   },
+  "engines": [
+    "Organon",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7325,
-    "MOVEMENT": 0.8063,
     "COUPLING": 0.6992,
+    "MOVEMENT": 0.8063,
     "SPACE": 0.9385
   },
+  "mood": "Flux",
+  "name": "BRIGHT_WARM_KINETIC_VAST_FLX_1",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.7213,
+      "macro_coupling": 0.5952,
+      "macro_movement": 0.7819,
+      "macro_space": 0.9418
+    },
+    "Organon": {
+      "macro_character": 0.7325,
+      "macro_coupling": 0.6992,
+      "macro_movement": 0.8063,
+      "macro_space": 0.9385
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +59,6 @@
     "high-warmth",
     "high-movement",
     "high-space"
-  ]
+  ],
+  "version": "1.0"
 }

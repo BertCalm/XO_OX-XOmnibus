@@ -1,21 +1,28 @@
 {
-  "schema_version": 1,
-  "name": "Prism Fang",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.85,
+        "engineA": "Oblique",
+        "engineB": "Overbite",
+        "type": "FREQUENCY_SMEAR"
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "description": "Prism bounce frequency smearing Overbite resonance — bright venom across the spectrum.",
+  "dna": {
+    "aggression": 0.9,
+    "brightness": 0.84,
+    "density": 0.71,
+    "movement": 0.76,
+    "space": 0.22,
+    "warmth": 0.16
+  },
   "engines": [
-    "OBLIQUE",
-    "OVERBITE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Prism bounce frequency smearing Overbite resonance \u2014 bright venom across the spectrum.",
-  "tags": [
-    "entangled",
-    "brutal",
-    "bright",
-    "oblique",
-    "overbite",
-    "prism-fang"
+    "Oblique",
+    "Overbite"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -25,36 +32,32 @@
   ],
   "macros": {
     "CHARACTER": 0.86,
-    "MOVEMENT": 0.76,
     "COUPLING": 0.85,
+    "MOVEMENT": 0.76,
     "SPACE": 0.22
   },
-  "couplingIntensity": "High",
-  "dna": {
-    "brightness": 0.84,
-    "warmth": 0.16,
-    "movement": 0.76,
-    "density": 0.71,
-    "space": 0.22,
-    "aggression": 0.9
+  "mood": "Entangled",
+  "name": "Prism Fang",
+  "parameters": {
+    "Oblique": {},
+    "Overbite": {}
   },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.9,
     "brightness": 0.84,
-    "warmth": 0.16,
-    "movement": 0.76,
     "density": 0.71,
+    "movement": 0.76,
     "space": 0.22,
-    "aggression": 0.9
+    "warmth": 0.16
   },
-  "parameters": {},
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OBLIQUE",
-        "engineB": "OVERBITE",
-        "type": "FREQUENCY_SMEAR",
-        "amount": 0.85
-      }
-    ]
-  }
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "oblique",
+    "overbite",
+    "prism-fang"
+  ],
+  "version": "1.0.0"
 }

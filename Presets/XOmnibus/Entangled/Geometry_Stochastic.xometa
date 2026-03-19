@@ -1,14 +1,67 @@
 {
-  "schema_version": 1,
-  "name": "Geometry Stochastic",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6,
+        "engineA": "Origami",
+        "engineB": "Oracle",
+        "type": "filter_modulation"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "Origami × Oracle coupling (rhythm sync). Stub preset — sound-design pass pending.",
+  "dna": {
+    "aggression": 0.427,
+    "brightness": 0.648,
+    "density": 0.621,
+    "movement": 0.615,
+    "space": 0.585,
+    "warmth": 0.412
+  },
   "engines": [
     "Origami",
     "Oracle"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Origami \u00d7 Oracle coupling (rhythm sync). Stub preset \u2014 sound-design pass pending.",
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Geometry Stochastic",
+  "parameters": {
+    "Oracle": {
+      "oracle_couplingIn": 0.539,
+      "oracle_couplingOut": 0.45,
+      "oracle_macro1": 0.65,
+      "oracle_macro2": 0.522,
+      "oracle_macro3": 0.494,
+      "oracle_macro4": 0.538
+    },
+    "Origami": {
+      "origami_couplingOut": 0.727,
+      "origami_crease": 0.838,
+      "origami_foldPoint": 0.393,
+      "origami_macro1": 0.36,
+      "origami_macro2": 0.551,
+      "origami_macro3": 0.34,
+      "origami_macro4": 0.342,
+      "origami_pleatRate": 0.24,
+      "origami_tessellate": 0.437,
+      "origami_valleyDepth": 0.258
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "origami",
     "oracle",
@@ -16,59 +69,6 @@
     "coupling",
     "entangled"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "Extreme",
   "tempo": 110,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "Origami": {
-      "origami_foldPoint": 0.393,
-      "origami_crease": 0.838,
-      "origami_valleyDepth": 0.258,
-      "origami_pleatRate": 0.24,
-      "origami_tessellate": 0.437,
-      "origami_macro1": 0.36,
-      "origami_macro2": 0.551,
-      "origami_macro3": 0.34,
-      "origami_macro4": 0.342,
-      "origami_couplingOut": 0.727
-    },
-    "Oracle": {
-      "oracle_macro1": 0.65,
-      "oracle_macro2": 0.522,
-      "oracle_macro3": 0.494,
-      "oracle_macro4": 0.538,
-      "oracle_couplingOut": 0.45,
-      "oracle_couplingIn": 0.539
-    }
-  },
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Oracle",
-        "type": "filter_modulation",
-        "amount": 0.6
-      }
-    ]
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.648,
-    "warmth": 0.412,
-    "movement": 0.615,
-    "density": 0.621,
-    "space": 0.585,
-    "aggression": 0.427
-  }
+  "version": "1.0.0"
 }

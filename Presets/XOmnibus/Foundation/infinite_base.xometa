@@ -1,50 +1,62 @@
 {
-  "name": "INFINITE BASE",
-  "version": "1.0",
-  "mood": "Foundation",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Optic",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.341
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.672,
+    "brightness": 0.69,
+    "density": 0.399,
+    "movement": 0.963,
+    "space": 0.984,
+    "warmth": 0.713
+  },
   "engines": [
-    "ONSET",
-    "OPTIC"
+    "Onset",
+    "Optic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.067,
+    "COUPLING": 0.031,
+    "MOVEMENT": 0.963,
+    "SPACE": 0.984
+  },
+  "mood": "Foundation",
+  "name": "INFINITE BASE",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.451,
-      "macro_movement": 0.938,
       "macro_coupling": 0.064,
+      "macro_movement": 0.938,
       "macro_space": 0.955
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.554,
-      "macro_movement": 0.972,
       "macro_coupling": 0.007,
+      "macro_movement": 0.972,
       "macro_space": 0.996
     }
   },
-  "coupling": {
-    "type": "FREQUENCY_SHIFT",
-    "source": "ONSET",
-    "target": "OPTIC",
-    "amount": 0.341
-  },
-  "dna": {
-    "brightness": 0.69,
-    "warmth": 0.713,
-    "movement": 0.963,
-    "density": 0.399,
-    "space": 0.984,
-    "aggression": 0.672
-  },
-  "macros": {
-    "CHARACTER": 0.067,
-    "MOVEMENT": 0.963,
-    "COUPLING": 0.031,
-    "SPACE": 0.984
-  },
+  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh",
     "movement-xhigh"
-  ]
+  ],
+  "version": "1.0"
 }

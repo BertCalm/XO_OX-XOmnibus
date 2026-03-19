@@ -31,7 +31,10 @@
     "space": 0.1,
     "aggression": 0.4
   },
-  "parameters": {},
+  "parameters": {
+    "Onset": {},
+    "Overbite": {}
+  },
   "coupling": {
     "pairs": [
       {

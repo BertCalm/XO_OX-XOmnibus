@@ -1,68 +1,68 @@
 {
-  "schema_version": 1,
-  "name": "Antenna",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Living living movement with analog drift and curious motion.",
+  "dna": {
+    "aggression": 0.189,
+    "brightness": 0.431,
+    "density": 0.218,
+    "movement": 0.815,
+    "space": 0.133,
+    "warmth": 0.238
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Living living movement with analog drift and curious motion.",
-  "tags": [
-    "moving",
-    "searching",
-    "electric"
-  ],
+  "legacy": {
+    "sourceCategory": "Living",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Living",
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Antenna",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
-      "bob_oscA_shape": 0.5,
-      "bob_oscA_drift": 0.4,
-      "bob_oscB_wave": 3.0,
-      "bob_oscB_blend": 0.48,
-      "bob_oscB_detune": 5.0,
-      "bob_fltMode": 1.0,
-      "bob_fltCutoff": 4500.0,
-      "bob_fltReso": 0.58,
-      "bob_fltEnvAmt": 0.7,
-      "bob_lfo1Rate": 1.5,
-      "bob_lfo1Depth": 0.55,
-      "bob_curMode": 2.0,
-      "bob_curAmount": 0.75,
-      "bob_motAttack": 0.3,
-      "bob_motDecay": 0.8,
-      "bob_motSustain": 0.5,
-      "bob_motRelease": 1.2,
-      "bob_motDepth": 0.72,
       "bob_ampAttack": 0.04,
       "bob_ampDecay": 0.6,
-      "bob_ampSustain": 0.72,
       "bob_ampRelease": 1.5,
-      "bob_glide": 0.1
+      "bob_ampSustain": 0.72,
+      "bob_curAmount": 0.75,
+      "bob_curMode": 2.0,
+      "bob_fltCutoff": 4500.0,
+      "bob_fltEnvAmt": 0.7,
+      "bob_fltMode": 1.0,
+      "bob_fltReso": 0.58,
+      "bob_glide": 0.1,
+      "bob_lfo1Depth": 0.55,
+      "bob_lfo1Rate": 1.5,
+      "bob_motAttack": 0.3,
+      "bob_motDecay": 0.8,
+      "bob_motDepth": 0.72,
+      "bob_motRelease": 1.2,
+      "bob_motSustain": 0.5,
+      "bob_oscA_drift": 0.4,
+      "bob_oscA_shape": 0.5,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.48,
+      "bob_oscB_detune": 5.0,
+      "bob_oscB_wave": 3.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.431,
-    "warmth": 0.238,
-    "movement": 0.815,
-    "density": 0.218,
-    "space": 0.133,
-    "aggression": 0.189
-  }
+  "tags": [
+    "moving",
+    "searching",
+    "electric"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

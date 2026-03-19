@@ -1,48 +1,60 @@
 {
-  "name": "GLITCH CASCADE 74",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overlap",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.703
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.732,
+    "brightness": 0.454,
+    "density": 0.158,
+    "movement": 0.912,
+    "space": 0.416,
+    "warmth": 0.689
+  },
   "engines": [
-    "OBLONG",
-    "OVERLAP"
+    "Oblong",
+    "Overlap"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.34,
+    "COUPLING": 0.144,
+    "MOVEMENT": 0.912,
+    "SPACE": 0.861
+  },
+  "mood": "Entangled",
+  "name": "GLITCH CASCADE 74",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.889,
-      "macro_movement": 0.942,
       "macro_coupling": 0.546,
+      "macro_movement": 0.942,
       "macro_space": 0.642
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.302,
-      "macro_movement": 0.883,
       "macro_coupling": 0.245,
+      "macro_movement": 0.883,
       "macro_space": 0.807
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBLONG",
-    "target": "OVERLAP",
-    "amount": 0.703
-  },
-  "dna": {
-    "brightness": 0.454,
-    "warmth": 0.689,
-    "movement": 0.912,
-    "density": 0.158,
-    "space": 0.416,
-    "aggression": 0.732
-  },
-  "macros": {
-    "CHARACTER": 0.34,
-    "MOVEMENT": 0.912,
-    "COUPLING": 0.144,
-    "SPACE": 0.861
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "wild",
     "movement"
-  ]
+  ],
+  "version": "1.0"
 }

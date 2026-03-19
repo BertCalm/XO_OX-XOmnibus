@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Overworld Blitz",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.3483,
-    "warmth": 0.3078,
-    "movement": 0.8179,
-    "density": 0.6732,
-    "space": 0.5287,
-    "aggression": 0.8441
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Chip-era glitch storm, movement fully unleashed",
   "dna": {
+    "aggression": 0.8441,
     "brightness": 0.3483,
-    "warmth": 0.3078,
-    "movement": 0.8179,
     "density": 0.6732,
+    "movement": 0.8179,
     "space": 0.5287,
-    "aggression": 0.8441
+    "warmth": 0.3078
   },
   "engines": [
-    "OVERWORLD"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Chip-era glitch storm, movement fully unleashed",
-  "tags": [
-    "prism",
-    "brutal",
-    "movement",
-    "aggressive",
-    "anchor"
+    "Overworld"
   ],
   "macroLabels": [
     "ERA",
@@ -38,24 +23,39 @@
     "SPACE"
   ],
   "macros": {
-    "ERA": 0.3515,
     "CHAOS": 0.8312,
     "COUPLE": 0.7072,
+    "ERA": 0.3515,
     "SPACE": 0.8836
   },
-  "couplingIntensity": "None",
+  "mood": "Prism",
+  "name": "Overworld Blitz",
   "parameters": {
-    "OVERWORLD": {
-      "ow_macro_era": 0.3515,
+    "Overworld": {
+      "ow_couplingBus": 0,
+      "ow_couplingLevel": 0.5,
       "ow_macro_chaos": 0.8312,
       "ow_macro_couple": 0.7072,
+      "ow_macro_era": 0.3515,
       "ow_macro_space": 0.8836,
-      "ow_outputLevel": 0.85,
-      "ow_couplingLevel": 0.5,
-      "ow_couplingBus": 0
+      "ow_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.8441,
+    "brightness": 0.3483,
+    "density": 0.6732,
+    "movement": 0.8179,
+    "space": 0.5287,
+    "warmth": 0.3078
+  },
+  "tags": [
+    "prism",
+    "brutal",
+    "movement",
+    "aggressive",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

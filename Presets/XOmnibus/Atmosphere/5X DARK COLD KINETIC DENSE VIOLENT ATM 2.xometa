@@ -1,14 +1,59 @@
 {
-  "schema_version": 1,
-  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 2",
-  "mood": "Atmosphere",
-  "engines": [
-    "OBESE",
-    "OLE"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Ole",
+        "type": "FILTER_SHARE",
+        "amount": 0.61
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.928,
+    "brightness": 0.553,
+    "density": 0.924,
+    "movement": 0.939,
+    "space": 0.095,
+    "warmth": 0.059
+  },
+  "engines": [
+    "Obese",
+    "Ole"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.83,
+      "macro_coupling": 0.69,
+      "macro_movement": 0.93,
+      "macro_space": 0.13
+    },
+    "Ole": {
+      "macro_character": 0.63,
+      "macro_coupling": 0.8,
+      "macro_movement": 0.98,
+      "macro_space": 0.1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -17,47 +62,6 @@
     "dense",
     "atmosphere"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "High",
   "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
-  "parameters": {
-    "OBESE": {
-      "macro_character": 0.83,
-      "macro_movement": 0.93,
-      "macro_coupling": 0.69,
-      "macro_space": 0.13
-    },
-    "OLE": {
-      "macro_character": 0.63,
-      "macro_movement": 0.98,
-      "macro_coupling": 0.8,
-      "macro_space": 0.1
-    }
-  },
-  "coupling": {
-    "type": "FILTER_SHARE",
-    "source": "OBESE",
-    "target": "OLE",
-    "amount": 0.61
-  },
-  "sequencer": null,
-  "dna": {
-    "brightness": 0.553,
-    "warmth": 0.059,
-    "movement": 0.939,
-    "density": 0.924,
-    "space": 0.095,
-    "aggression": 0.928
-  }
+  "version": "1.0.0"
 }

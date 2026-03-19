@@ -33,7 +33,9 @@
     "space": 0.12,
     "aggression": 0.9
   },
-  "parameters": {},
+  "parameters": {
+    "Overworld": {}
+  },
   "tags": [
     "flux",
     "maximum",
@@ -41,5 +43,5 @@
     "glitch",
     "collapse"
   ],
-  "description": "ERA triangle cornered in NES maximum \u2014 chip noise at the edge of meltdown."
+  "description": "ERA triangle cornered in NES maximum — chip noise at the edge of meltdown."
 }

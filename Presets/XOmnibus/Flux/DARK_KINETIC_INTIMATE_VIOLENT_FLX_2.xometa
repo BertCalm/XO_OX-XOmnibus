@@ -1,45 +1,56 @@
 {
-  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FLX_2",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ouroboros",
+        "type": "PITCH_SYNC",
+        "amount": 0.8432
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.8881,
+    "brightness": 0.1222,
+    "density": 0.4874,
+    "movement": 0.9209,
+    "space": 0.1284,
+    "warmth": 0.3498
+  },
   "engines": [
-    "ORIGAMI",
-    "OUROBOROS"
+    "Origami",
+    "Ouroboros"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1395,
+    "COUPLING": 0.7431,
+    "MOVEMENT": 0.9705,
+    "SPACE": 0.1596
+  },
+  "mood": "Flux",
+  "name": "Thread Stream 2",
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.1395,
-      "macro_movement": 0.9705,
       "macro_coupling": 0.7431,
+      "macro_movement": 0.9705,
       "macro_space": 0.1596
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.076,
-      "macro_movement": 0.8728,
       "macro_coupling": 0.7849,
+      "macro_movement": 0.8728,
       "macro_space": 0.2686
     }
   },
-  "coupling": {
-    "type": "PITCH_SYNC",
-    "source": "ORIGAMI",
-    "target": "OUROBOROS",
-    "amount": 0.8432
-  },
-  "dna": {
-    "brightness": 0.1222,
-    "warmth": 0.3498,
-    "movement": 0.9209,
-    "density": 0.4874,
-    "space": 0.1284,
-    "aggression": 0.8881
-  },
-  "macros": {
-    "CHARACTER": 0.1395,
-    "MOVEMENT": 0.9705,
-    "COUPLING": 0.7431,
-    "SPACE": 0.1596
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -48,5 +59,6 @@
     "high-movement",
     "low-space",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

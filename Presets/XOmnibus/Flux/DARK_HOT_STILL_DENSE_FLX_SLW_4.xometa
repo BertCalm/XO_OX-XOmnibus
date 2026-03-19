@@ -1,45 +1,56 @@
 {
-  "name": "DARK_HOT_STILL_DENSE_FLX_SLW_4",
-  "version": "1.0",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.608
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.433,
+    "brightness": 0.065,
+    "density": 0.881,
+    "movement": 0.018,
+    "space": 0.539,
+    "warmth": 0.87
+  },
   "engines": [
-    "ORACLE",
-    "ORGANON"
+    "Oracle",
+    "Organon"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.657,
+    "COUPLING": 0.836,
+    "MOVEMENT": 0.018,
+    "SPACE": 0.539
+  },
+  "mood": "Flux",
+  "name": "DARK_HOT_STILL_DENSE_FLX_SLW_4",
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.987,
-      "macro_movement": 0.021,
       "macro_coupling": 0.678,
+      "macro_movement": 0.021,
       "macro_space": 0.566
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.901,
-      "macro_movement": 0.015,
       "macro_coupling": 0.781,
+      "macro_movement": 0.015,
       "macro_space": 0.587
     }
   },
-  "coupling": {
-    "type": "AMPLITUDE_MOD",
-    "source": "ORACLE",
-    "target": "ORGANON",
-    "amount": 0.608
-  },
-  "dna": {
-    "brightness": 0.065,
-    "warmth": 0.87,
-    "movement": 0.018,
-    "density": 0.881,
-    "space": 0.539,
-    "aggression": 0.433
-  },
-  "macros": {
-    "CHARACTER": 0.657,
-    "MOVEMENT": 0.018,
-    "COUPLING": 0.836,
-    "SPACE": 0.539
-  },
+  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -47,5 +58,6 @@
     "warm",
     "dense",
     "suspended-chaos"
-  ]
+  ],
+  "version": "1.0"
 }

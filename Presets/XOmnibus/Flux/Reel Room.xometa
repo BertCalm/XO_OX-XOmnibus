@@ -1,60 +1,60 @@
 {
-  "schema_version": 1,
-  "name": "Reel Room",
-  "mood": "Flux",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Unpredictable lo-fi atmospheres motion with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.143,
+    "brightness": 0.503,
+    "density": 0.143,
+    "movement": 0.0,
+    "space": 0.249,
+    "warmth": 0.376
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Unpredictable lo-fi atmospheres motion with bob character and analog drift.",
-  "tags": [
-    "lofi",
-    "tape",
-    "room"
-  ],
+  "legacy": {
+    "sourceCategory": "Lo-Fi Atmospheres",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Lo-Fi Atmospheres",
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Reel Room",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 0.0,
-      "bob_oscA_drift": 0.35,
-      "bob_oscA_shape": 0.28,
-      "bob_oscB_wave": 1.0,
-      "bob_oscB_blend": 0.44,
-      "bob_oscB_detune": -3.0,
-      "bob_fltMode": 2.0,
-      "bob_fltCutoff": 2600.0,
-      "bob_fltChar": 0.42,
-      "bob_dustAmount": 0.38,
-      "bob_dustTone": 0.3,
       "bob_ampAttack": 0.4,
       "bob_ampDecay": 0.8,
-      "bob_ampSustain": 0.7,
       "bob_ampRelease": 2.2,
-      "bob_bobMode": 0.32
+      "bob_ampSustain": 0.7,
+      "bob_bobMode": 0.32,
+      "bob_dustAmount": 0.38,
+      "bob_dustTone": 0.3,
+      "bob_fltChar": 0.42,
+      "bob_fltCutoff": 2600.0,
+      "bob_fltMode": 2.0,
+      "bob_oscA_drift": 0.35,
+      "bob_oscA_shape": 0.28,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.44,
+      "bob_oscB_detune": -3.0,
+      "bob_oscB_wave": 1.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.503,
-    "warmth": 0.376,
-    "movement": 0.0,
-    "density": 0.143,
-    "space": 0.249,
-    "aggression": 0.143
-  }
+  "tags": [
+    "lofi",
+    "tape",
+    "room"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

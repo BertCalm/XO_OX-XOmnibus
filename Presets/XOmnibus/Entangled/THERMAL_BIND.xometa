@@ -1,49 +1,61 @@
 {
-  "name": "THERMAL BIND",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OVERWORLD",
-    "ORCA"
-  ],
-  "parameters": {
-    "OVERWORLD": {
-      "macro_character": 0.686,
-      "macro_movement": 0.923,
-      "macro_coupling": 0.888,
-      "macro_space": 0.77
-    },
-    "ORCA": {
-      "macro_character": 0.69,
-      "macro_movement": 0.639,
-      "macro_coupling": 0.941,
-      "macro_space": 0.368
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "TIMBRE_BLEND",
-    "source": "OVERWORLD",
-    "target": "ORCA",
-    "amount": 0.433
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Orca",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.433
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.15,
     "brightness": 0.041,
-    "warmth": 0.91,
-    "movement": 0.109,
     "density": 0.623,
+    "movement": 0.109,
     "space": 0.654,
-    "aggression": 0.15
+    "warmth": 0.91
   },
+  "engines": [
+    "Overworld",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.957,
-    "MOVEMENT": 0.478,
     "COUPLING": 0.455,
+    "MOVEMENT": 0.478,
     "SPACE": 0.989
   },
+  "mood": "Entangled",
+  "name": "THERMAL BIND",
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.69,
+      "macro_coupling": 0.941,
+      "macro_movement": 0.639,
+      "macro_space": 0.368
+    },
+    "Overworld": {
+      "macro_character": 0.686,
+      "macro_coupling": 0.888,
+      "macro_movement": 0.923,
+      "macro_space": 0.77
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-  ]
+  ],
+  "version": "1.0"
 }

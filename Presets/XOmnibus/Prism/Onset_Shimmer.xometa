@@ -1,35 +1,20 @@
 {
-  "schema_version": 1,
-  "name": "Onset Shimmer",
-  "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.94,
-    "warmth": 0.1182,
-    "movement": 0.5943,
-    "density": 0.4739,
-    "space": 0.7694,
-    "aggression": 0.2285
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
   },
+  "couplingIntensity": "None",
+  "description": "Transient shimmer prism — percussion gone spectral",
   "dna": {
+    "aggression": 0.2285,
     "brightness": 0.94,
-    "warmth": 0.1182,
-    "movement": 0.5943,
     "density": 0.4739,
+    "movement": 0.5943,
     "space": 0.7694,
-    "aggression": 0.2285
+    "warmth": 0.1182
   },
   "engines": [
-    "ONSET"
-  ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Transient shimmer prism \u2014 percussion gone spectral",
-  "tags": [
-    "prism",
-    "bright",
-    "ultra",
-    "spectral",
-    "anchor"
+    "Onset"
   ],
   "macroLabels": [
     "MACHINE",
@@ -39,23 +24,38 @@
   ],
   "macros": {
     "MACHINE": 0.8967,
+    "MUTATE": 0.7947,
     "PUNCH": 0.5542,
-    "SPACE": 0.4389,
-    "MUTATE": 0.7947
+    "SPACE": 0.4389
   },
-  "couplingIntensity": "None",
+  "mood": "Prism",
+  "name": "Onset Shimmer",
   "parameters": {
-    "ONSET": {
+    "Onset": {
+      "onset_couplingBus": 0,
+      "onset_couplingLevel": 0.5,
       "onset_macro_machine": 0.8967,
+      "onset_macro_mutate": 0.7947,
       "onset_macro_punch": 0.5542,
       "onset_macro_space": 0.4389,
-      "onset_macro_mutate": 0.7947,
-      "onset_outputLevel": 0.85,
-      "onset_couplingLevel": 0.5,
-      "onset_couplingBus": 0
+      "onset_outputLevel": 0.85
     }
   },
-  "coupling": {
-    "pairs": []
-  }
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.2285,
+    "brightness": 0.94,
+    "density": 0.4739,
+    "movement": 0.5943,
+    "space": 0.7694,
+    "warmth": 0.1182
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "ultra",
+    "spectral",
+    "anchor"
+  ],
+  "version": "1.0.0"
 }

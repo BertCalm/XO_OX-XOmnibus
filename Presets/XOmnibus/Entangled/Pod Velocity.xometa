@@ -1,33 +1,48 @@
 {
-  "name": "Pod Velocity",
-  "version": "1.0",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Orca",
+        "type": "SPECTRAL_FOLD",
+        "amount": 0.62
+      }
+    ]
+  },
+  "description": "The entire pod moving at OddFelix-driven speeds through Arctic cold.",
   "engines": [
-    "ORCA",
-    "ODDFELIX"
+    "Orca",
+    "OddfeliX"
   ],
-  "mood": "Entangled",
-  "strategy": "Fast Cold",
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.9,
-    "MOVEMENT": 0.96,
     "COUPLING": 0.68,
+    "MOVEMENT": 0.96,
     "SPACE": 0.45
   },
+  "mood": "Entangled",
+  "name": "Pod Velocity",
+  "parameters": {
+    "Orca": {},
+    "OddfeliX": {}
+  },
+  "schema_version": 1,
   "sonic_dna": {
+    "aggression": 0.7,
     "brightness": 0.6,
-    "warmth": 0.08,
-    "movement": 0.96,
     "density": 0.58,
+    "movement": 0.96,
     "space": 0.43,
-    "aggression": 0.7
+    "warmth": 0.08
   },
-  "parameters": {},
-  "coupling": {
-    "type": "SPECTRAL_FOLD",
-    "source": "ODDFELIX",
-    "target": "ORCA",
-    "amount": 0.62
-  },
+  "strategy": "Fast Cold",
   "tags": [
     "entangled",
     "cold",
@@ -35,5 +50,13 @@
     "pod",
     "eccentric"
   ],
-  "description": "The entire pod moving at OddFelix-driven speeds through Arctic cold."
+  "version": "1.0",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
 }

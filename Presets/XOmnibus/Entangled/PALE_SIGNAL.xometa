@@ -1,49 +1,61 @@
 {
-  "name": "PALE SIGNAL",
-  "version": "1.0",
-  "mood": "Entangled",
-  "engines": [
-    "OWLFISH",
-    "OBLONG"
-  ],
-  "parameters": {
-    "OWLFISH": {
-      "macro_character": 0.252,
-      "macro_movement": 0.116,
-      "macro_coupling": 0.773,
-      "macro_space": 0.865
-    },
-    "OBLONG": {
-      "macro_character": 0.825,
-      "macro_movement": 0.001,
-      "macro_coupling": 0.869,
-      "macro_space": 0.462
-    }
-  },
+  "author": "XO_OX Designs",
   "coupling": {
-    "type": "FILTER_MOD",
-    "source": "OWLFISH",
-    "target": "OBLONG",
-    "amount": 0.333
+    "pairs": [
+      {
+        "engineA": "Owlfish",
+        "engineB": "Oblong",
+        "type": "FILTER_MOD",
+        "amount": 0.333
+      }
+    ]
   },
   "dna": {
+    "aggression": 0.031,
     "brightness": 0.786,
-    "warmth": 0.087,
-    "movement": 0.364,
     "density": 0.655,
+    "movement": 0.364,
     "space": 0.331,
-    "aggression": 0.031
+    "warmth": 0.087
   },
+  "engines": [
+    "Owlfish",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.518,
-    "MOVEMENT": 0.623,
     "COUPLING": 0.498,
+    "MOVEMENT": 0.623,
     "SPACE": 0.442
   },
+  "mood": "Entangled",
+  "name": "PALE SIGNAL",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.825,
+      "macro_coupling": 0.869,
+      "macro_movement": 0.001,
+      "macro_space": 0.462
+    },
+    "Owlfish": {
+      "macro_character": 0.252,
+      "macro_coupling": 0.773,
+      "macro_movement": 0.116,
+      "macro_space": 0.865
+    }
+  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-  ]
+  ],
+  "version": "1.0"
 }

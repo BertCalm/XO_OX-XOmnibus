@@ -1,45 +1,56 @@
 {
-  "name": "BRIGHT_WARM_FROZEN_DENSE_VAST_ENT4_5",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Osprey",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.82
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.406,
+    "brightness": 0.908,
+    "density": 0.98,
+    "movement": 0.046,
+    "space": 0.925,
+    "warmth": 0.949
+  },
   "engines": [
-    "OBLIQUE",
-    "OSPREY"
+    "Oblique",
+    "Osprey"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.931,
+    "COUPLING": 0.82,
+    "MOVEMENT": 0.047,
+    "SPACE": 0.903
+  },
+  "mood": "Entangled",
+  "name": "Golden Titan",
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.934,
-      "macro_movement": 0.043,
       "macro_coupling": 0.99,
+      "macro_movement": 0.043,
       "macro_space": 0.903
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.928,
-      "macro_movement": 0.051,
       "macro_coupling": 0.99,
+      "macro_movement": 0.051,
       "macro_space": 0.904
     }
   },
-  "coupling": {
-    "type": "HARMONIC_FOLD",
-    "source": "OBLIQUE",
-    "target": "OSPREY",
-    "amount": 0.82
-  },
-  "dna": {
-    "brightness": 0.908,
-    "warmth": 0.949,
-    "movement": 0.046,
-    "density": 0.98,
-    "space": 0.925,
-    "aggression": 0.406
-  },
-  "macros": {
-    "CHARACTER": 0.931,
-    "MOVEMENT": 0.047,
-    "COUPLING": 0.82,
-    "SPACE": 0.903
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -48,5 +59,6 @@
     "warm",
     "dense",
     "vast"
-  ]
+  ],
+  "version": "1.0"
 }

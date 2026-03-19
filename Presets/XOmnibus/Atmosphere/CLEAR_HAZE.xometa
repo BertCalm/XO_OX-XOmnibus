@@ -1,49 +1,61 @@
 {
-  "name": "CLEAR HAZE",
-  "version": "1.0",
-  "mood": "Atmosphere",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Ombre",
+        "type": "PITCH_TRACK",
+        "amount": 0.408
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.887,
+    "brightness": 0.965,
+    "density": 0.216,
+    "movement": 0.586,
+    "space": 0.757,
+    "warmth": 0.568
+  },
   "engines": [
-    "ODYSSEY",
-    "OMBRE"
+    "Odyssey",
+    "Ombre"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.786,
+    "COUPLING": 0.371,
+    "MOVEMENT": 0.438,
+    "SPACE": 0.074
+  },
+  "mood": "Atmosphere",
+  "name": "CLEAR HAZE",
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.703,
-      "macro_movement": 0.309,
       "macro_coupling": 0.34,
+      "macro_movement": 0.309,
       "macro_space": 0.006
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.87,
-      "macro_movement": 0.566,
       "macro_coupling": 0.401,
+      "macro_movement": 0.566,
       "macro_space": 0.142
     }
   },
-  "coupling": {
-    "type": "PITCH_TRACK",
-    "source": "ODYSSEY",
-    "target": "OMBRE",
-    "amount": 0.408
-  },
-  "dna": {
-    "brightness": 0.965,
-    "warmth": 0.568,
-    "movement": 0.586,
-    "density": 0.216,
-    "space": 0.757,
-    "aggression": 0.887
-  },
-  "macros": {
-    "CHARACTER": 0.786,
-    "MOVEMENT": 0.438,
-    "COUPLING": 0.371,
-    "SPACE": 0.074
-  },
+  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "extreme",
     "high-aggression"
-  ]
+  ],
+  "version": "1.0"
 }

@@ -1,69 +1,69 @@
 {
-  "schema_version": 1,
-  "name": "Second Skin",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Cross-modulated living energy with analog drift and curious motion.",
+  "dna": {
+    "aggression": 0.137,
+    "brightness": 0.547,
+    "density": 0.263,
+    "movement": 0.653,
+    "space": 0.133,
+    "warmth": 0.217
+  },
   "engines": [
     "Oblong"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Cross-modulated living energy with analog drift and curious motion.",
-  "tags": [
-    "moving",
-    "organic",
-    "close"
-  ],
+  "legacy": {
+    "sourceCategory": "Living",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-08",
-  "legacy": {
-    "sourceInstrument": "Oblong",
-    "sourceCategory": "Living",
-    "sourcePresetName": null
-  },
+  "mood": "Flux",
+  "name": "Second Skin",
   "parameters": {
     "Oblong": {
-      "bob_oscA_wave": 3.0,
-      "bob_oscA_shape": 0.5,
-      "bob_oscA_drift": 0.35,
-      "bob_oscB_wave": 0.0,
-      "bob_oscB_blend": 0.5,
-      "bob_oscB_detune": 8.0,
-      "bob_fltMode": 2.0,
-      "bob_fltCutoff": 2600.0,
-      "bob_fltReso": 0.42,
-      "bob_fltChar": 0.58,
-      "bob_fltEnvAmt": 0.6,
-      "bob_lfo1Rate": 0.18,
-      "bob_lfo1Depth": 0.4,
-      "bob_curMode": 0.0,
-      "bob_curAmount": 0.55,
-      "bob_motAttack": 0.5,
-      "bob_motDecay": 1.2,
-      "bob_motSustain": 0.55,
-      "bob_motRelease": 1.8,
-      "bob_motDepth": 0.7,
       "bob_ampAttack": 0.3,
       "bob_ampDecay": 0.8,
-      "bob_ampSustain": 0.75,
       "bob_ampRelease": 2.0,
-      "bob_glide": 0.08
+      "bob_ampSustain": 0.75,
+      "bob_curAmount": 0.55,
+      "bob_curMode": 0.0,
+      "bob_fltChar": 0.58,
+      "bob_fltCutoff": 2600.0,
+      "bob_fltEnvAmt": 0.6,
+      "bob_fltMode": 2.0,
+      "bob_fltReso": 0.42,
+      "bob_glide": 0.08,
+      "bob_lfo1Depth": 0.4,
+      "bob_lfo1Rate": 0.18,
+      "bob_motAttack": 0.5,
+      "bob_motDecay": 1.2,
+      "bob_motDepth": 0.7,
+      "bob_motRelease": 1.8,
+      "bob_motSustain": 0.55,
+      "bob_oscA_drift": 0.35,
+      "bob_oscA_shape": 0.5,
+      "bob_oscA_wave": 3.0,
+      "bob_oscB_blend": 0.5,
+      "bob_oscB_detune": 8.0,
+      "bob_oscB_wave": 0.0
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.547,
-    "warmth": 0.217,
-    "movement": 0.653,
-    "density": 0.263,
-    "space": 0.133,
-    "aggression": 0.137
-  }
+  "tags": [
+    "moving",
+    "organic",
+    "close"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

@@ -1,20 +1,25 @@
 {
-  "schema_version": 1,
-  "name": "Smoke Expression",
-  "mood": "Prism",
+  "author": "XO_OX Designs",
+  "coupling": null,
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "The quartet sits mid-shore, Porto warmth already rising. Mod wheel (CC#1) rolls the smoke LPF darker — at full throw, a 4kHz additional roll-off buries the ensemble in a back-room Porto Wine haze. Wheel at zero: open room, bright folk strings. Wheel at full: cigarette smoke and candlelight.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.35,
+    "density": 0.55,
+    "movement": 0.3,
+    "space": 0.45,
+    "warmth": 0.75
+  },
   "engines": [
     "Osteria"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "The quartet sits mid-shore, Porto warmth already rising. Mod wheel (CC#1) rolls the smoke LPF darker — at full throw, a 4kHz additional roll-off buries the ensemble in a back-room Porto Wine haze. Wheel at zero: open room, bright folk strings. Wheel at full: cigarette smoke and candlelight.",
-  "tags": [
-    "expressive",
-    "mod-wheel",
-    "ensemble",
-    "dark",
-    "folk"
-  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": "Osteria",
+    "sourcePresetName": null
+  },
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -22,70 +27,113 @@
     "SPACE"
   ],
   "macroTargets": [
-    { "macro": 1, "engineId": "Osteria", "parameterId": "osteria_smoke", "min": 0.3, "max": 0.9 },
-    { "macro": 1, "engineId": "Osteria", "parameterId": "osteria_porto", "min": 0.2, "max": 0.8 },
-    { "macro": 2, "engineId": "Osteria", "parameterId": "osteria_qElastic", "min": 0.2, "max": 0.9 },
-    { "macro": 2, "engineId": "Osteria", "parameterId": "osteria_qStretch", "min": 0.0, "max": 0.7 },
-    { "macro": 3, "engineId": "Osteria", "parameterId": "osteria_qSympathy", "min": 0.0, "max": 1.0 },
-    { "macro": 3, "engineId": "Osteria", "parameterId": "osteria_qMemory", "min": 0.0, "max": 1.0 },
-    { "macro": 4, "engineId": "Osteria", "parameterId": "osteria_tavernMix", "min": 0.1, "max": 0.8 },
-    { "macro": 4, "engineId": "Osteria", "parameterId": "osteria_hall", "min": 0.0, "max": 0.6 }
+    {
+      "engineId": "Osteria",
+      "macro": 1,
+      "max": 0.9,
+      "min": 0.3,
+      "parameterId": "osteria_smoke"
+    },
+    {
+      "engineId": "Osteria",
+      "macro": 1,
+      "max": 0.8,
+      "min": 0.2,
+      "parameterId": "osteria_porto"
+    },
+    {
+      "engineId": "Osteria",
+      "macro": 2,
+      "max": 0.9,
+      "min": 0.2,
+      "parameterId": "osteria_qElastic"
+    },
+    {
+      "engineId": "Osteria",
+      "macro": 2,
+      "max": 0.7,
+      "min": 0.0,
+      "parameterId": "osteria_qStretch"
+    },
+    {
+      "engineId": "Osteria",
+      "macro": 3,
+      "max": 1.0,
+      "min": 0.0,
+      "parameterId": "osteria_qSympathy"
+    },
+    {
+      "engineId": "Osteria",
+      "macro": 3,
+      "max": 1.0,
+      "min": 0.0,
+      "parameterId": "osteria_qMemory"
+    },
+    {
+      "engineId": "Osteria",
+      "macro": 4,
+      "max": 0.8,
+      "min": 0.1,
+      "parameterId": "osteria_tavernMix"
+    },
+    {
+      "engineId": "Osteria",
+      "macro": 4,
+      "max": 0.6,
+      "min": 0.0,
+      "parameterId": "osteria_hall"
+    }
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": "Osteria",
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
+  "mood": "Prism",
+  "name": "Smoke Expression",
   "parameters": {
     "Osteria": {
-      "osteria_qBassShore": 1.5,
-      "osteria_qHarmShore": 2.0,
-      "osteria_qMelShore": 2.5,
-      "osteria_qRhythmShore": 1.8,
-      "osteria_qElastic": 0.45,
-      "osteria_qStretch": 0.3,
-      "osteria_qMemory": 0.5,
-      "osteria_qSympathy": 0.4,
+      "osteria_attack": 0.04,
       "osteria_bassLevel": 0.75,
-      "osteria_harmLevel": 0.65,
-      "osteria_melLevel": 0.8,
-      "osteria_rhythmLevel": 0.6,
-      "osteria_ensWidth": 0.65,
       "osteria_blendMode": 0.5,
-      "osteria_tavernMix": 0.35,
-      "osteria_tavernShore": 2.0,
+      "osteria_chorus": 0.2,
+      "osteria_decay": 0.5,
+      "osteria_ensWidth": 0.65,
+      "osteria_filterEnvDepth": 0.3,
+      "osteria_hall": 0.25,
+      "osteria_harmLevel": 0.65,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroSpace": 0.0,
+      "osteria_melLevel": 0.8,
       "osteria_murmur": 0.15,
-      "osteria_warmth": 0.55,
       "osteria_oceanBleed": 0.1,
       "osteria_patina": 0.3,
       "osteria_porto": 0.45,
-      "osteria_smoke": 0.5,
-      "osteria_filterEnvDepth": 0.3,
-      "osteria_attack": 0.04,
-      "osteria_decay": 0.5,
-      "osteria_sustain": 0.72,
+      "osteria_qBassShore": 1.5,
+      "osteria_qElastic": 0.45,
+      "osteria_qHarmShore": 2.0,
+      "osteria_qMelShore": 2.5,
+      "osteria_qMemory": 0.5,
+      "osteria_qRhythmShore": 1.8,
+      "osteria_qStretch": 0.3,
+      "osteria_qSympathy": 0.4,
       "osteria_release": 1.2,
+      "osteria_rhythmLevel": 0.6,
       "osteria_sessionDelay": 0.0,
-      "osteria_hall": 0.25,
-      "osteria_chorus": 0.2,
+      "osteria_smoke": 0.5,
+      "osteria_sustain": 0.72,
       "osteria_tape": 0.15,
-      "osteria_macroCharacter": 0.0,
-      "osteria_macroMovement": 0.0,
-      "osteria_macroCoupling": 0.0,
-      "osteria_macroSpace": 0.0
+      "osteria_tavernMix": 0.35,
+      "osteria_tavernShore": 2.0,
+      "osteria_warmth": 0.55
     }
   },
-  "coupling": null,
+  "schema_version": 1,
   "sequencer": null,
-  "dna": {
-    "brightness": 0.35,
-    "warmth": 0.75,
-    "movement": 0.30,
-    "density": 0.55,
-    "space": 0.45,
-    "aggression": 0.10
-  }
+  "tags": [
+    "expressive",
+    "mod-wheel",
+    "ensemble",
+    "dark",
+    "folk"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
 }

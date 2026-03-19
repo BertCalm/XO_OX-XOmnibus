@@ -1,48 +1,60 @@
 {
-  "name": "Void Between Stars",
-  "version": "1.0",
-  "mood": "Entangled",
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Overdub",
+        "type": "LFO_SYNC",
+        "amount": 0.65
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.33,
+    "brightness": 0.06,
+    "density": 0.29,
+    "movement": 0.43,
+    "space": 0.77,
+    "warmth": 0.39
+  },
   "engines": [
-    "OBSCURA",
-    "OVERDUB"
+    "Obscura",
+    "Overdub"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.54,
+    "COUPLING": 0.81,
+    "MOVEMENT": 0.43,
+    "SPACE": 0.77
+  },
+  "mood": "Entangled",
+  "name": "Void Between Stars II",
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.13,
-      "macro_movement": 0.83,
       "macro_coupling": 0.54,
+      "macro_movement": 0.83,
       "macro_space": 0.43
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.25,
-      "macro_movement": 0.81,
       "macro_coupling": 0.85,
+      "macro_movement": 0.81,
       "macro_space": 0.83
     }
   },
-  "coupling": {
-    "type": "LFO_SYNC",
-    "source": "OBSCURA",
-    "target": "OVERDUB",
-    "amount": 0.65
-  },
-  "dna": {
-    "brightness": 0.06,
-    "warmth": 0.39,
-    "movement": 0.43,
-    "density": 0.29,
-    "space": 0.77,
-    "aggression": 0.33
-  },
-  "macros": {
-    "CHARACTER": 0.54,
-    "MOVEMENT": 0.43,
-    "COUPLING": 0.81,
-    "SPACE": 0.77
-  },
+  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-  ]
+  ],
+  "version": "1.0"
 }
