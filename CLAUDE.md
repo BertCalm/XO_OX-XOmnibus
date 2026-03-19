@@ -4,11 +4,11 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **34 engines** are registered in XOmnibus
-(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS)
+and mutate into sounds impossible with any single synth. **35 engines** are registered in XOmnibus
+(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18)
 — see engine table below.
 
-- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS
+- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** 10,028 factory presets in `.xometa` format, 7 mood categories (incl. Family), 6D Sonic DNA
@@ -71,6 +71,7 @@ and mutate into sounds impossible with any single synth. **34 engines** are regi
 | OMBRE | XOmbre | Shadow Mauve `#7B6B8A` |
 | ORCA | XOrca | Deep Ocean `#1B2838` |
 | OCTOPUS | XOctopus | Chromatophore Magenta `#E040FB` |
+| OSTINATO | XOstinato | Firelight Orange `#E8701A` |
 
 ### V1 Concept Engines — DSP Build Pending (approved concepts, no source code yet)
 
@@ -80,7 +81,6 @@ are next up after current Opus sessions resume.
 
 | Short Name | Source Instrument | Accent Color |
 |-----------|------------------|-------------|
-| OSTINATO | XOstinato | Firelight Orange `#E8701A` |
 | OPENSKY | XOpenSky | Sunburst `#FF8C00` |
 | OCEANDEEP | XOceanDeep | Trench Violet `#2D0A4E` |
 | OUIE | XOuïe | Hammerhead Steel `#708090` |
@@ -124,6 +124,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Ombre | `ombre_` | `ombre_blend` |
 | Orca | `orca_` | `orca_huntMacro` |
 | Octopus | `octo_` | `octo_armDepth` |
+| Ostinato | `osti_` | `osti_macroGather` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.

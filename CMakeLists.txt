@@ -202,6 +202,10 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Obrix/ObrixEngine.h
     Source/Engines/Obrix/ObrixEngine.cpp
 
+    # V1 Concept Engines — Full DSP Builds
+    Source/Engines/Ostinato/OstinatoEngine.h
+    Source/Engines/Ostinato/OstinatoEngine.cpp
+
     # Export pipeline
     Source/Export/XPNCoverArt.h
     Source/Export/XPNExporter.h

@@ -35,6 +35,7 @@
 #include "Engines/Orca/OrcaEngine.h"
 #include "Engines/Octopus/OctopusEngine.h"
 #include "Engines/Obrix/ObrixEngine.h"
+#include "Engines/Ostinato/OstinatoEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -179,6 +180,10 @@ static bool registered_Obrix = xomnibus::EngineRegistry::instance().registerEngi
     "Obrix", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::ObrixEngine>();
     });
+static bool registered_Ostinato = xomnibus::EngineRegistry::instance().registerEngine(
+    "Ostinato", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OstinatoEngine>();
+    });
 
 namespace xomnibus {
 
@@ -317,6 +322,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OrcaEngine::addParameters(params);
     OctopusEngine::addParameters(params);
     ObrixEngine::addParameters(params);
+
+    // V1 Concept Engines — Full DSP Builds
+    OstinatoEngine::addParameters(params);
 
     // Chord Machine parameters
     params.push_back(std::make_unique<juce::AudioParameterBool>(
@@ -636,6 +644,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     // Mathematical FX Chain (16 params)
     MathFXChain::addParameters(params);
 
+    // Boutique FX Chain (25 params)
+    BoutiqueFXChain::addParameters(params);
+
     return { params.begin(), params.end() };
 }
 
@@ -648,6 +659,7 @@ void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     chordMachine.prepare(sampleRate, samplesPerBlock);
     aquaticFX.prepare(sampleRate);
     mathFX.prepare(sampleRate);
+    boutiqueFX.prepare(sampleRate);
     masterFX.prepare(sampleRate, samplesPerBlock, apvts);
 
     for (auto& buf : engineBuffers)
@@ -673,6 +685,7 @@ void XOmnibusProcessor::releaseResources()
     }
     aquaticFX.reset();
     mathFX.reset();
+    boutiqueFX.reset();
     masterFX.reset();
 }
 
@@ -880,6 +893,44 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             load(cachedParams.mfxAdDriveBase, 0.3f),
             load(cachedParams.mfxAdSpeed, 0.3f),
             load(cachedParams.mfxAdMix, 0.0f));
+    }
+
+    // Boutique FX Chain: anomaly → dissolving archive → artifact cathedral → submersion
+    if (buffer.getNumChannels() >= 2)
+    {
+        auto load = [](std::atomic<float>* p, float def) { return p ? p->load() : def; };
+        float* bfxL = buffer.getWritePointer(0);
+        float* bfxR = buffer.getWritePointer(1);
+        boutiqueFX.processBlock(bfxL, bfxR, numSamples,
+            // Anomaly
+            load(apvts.getRawParameterValue("bfx_anTextureBlend"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_anReverbSize"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_anTremoloRate"), 2.0f),
+            load(apvts.getRawParameterValue("bfx_anTimeSlip"), 0.0f) > 0.5f,
+            load(apvts.getRawParameterValue("bfx_anSlipSpeed"), 0.0f),
+            load(apvts.getRawParameterValue("bfx_anMix"), 0.0f),
+            // Dissolving Archive
+            load(apvts.getRawParameterValue("bfx_daChance"), 0.0f),
+            load(apvts.getRawParameterValue("bfx_daDissolve"), 0.0f),
+            load(apvts.getRawParameterValue("bfx_daGrainMix"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_daReverbMix"), 0.3f),
+            load(apvts.getRawParameterValue("bfx_daMix"), 0.0f),
+            // Artifact Cathedral
+            load(apvts.getRawParameterValue("bfx_acPacketLoss"), 0.0f),
+            load(apvts.getRawParameterValue("bfx_acBitCrush"), 0.0f),
+            load(apvts.getRawParameterValue("bfx_acDarkMix"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_acSunMix"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_acModDepth"), 0.3f),
+            load(apvts.getRawParameterValue("bfx_acDecay"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_acFreeze"), 0.0f) > 0.5f,
+            load(apvts.getRawParameterValue("bfx_acMix"), 0.0f),
+            // Submersion
+            static_cast<int>(load(apvts.getRawParameterValue("bfx_smStages"), 4.0f)),
+            load(apvts.getRawParameterValue("bfx_smLFORate"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_smLFODepth"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_smLoopFB"), 0.3f),
+            load(apvts.getRawParameterValue("bfx_smClock"), 0.5f),
+            load(apvts.getRawParameterValue("bfx_smMix"), 0.0f));
     }
 }
 
