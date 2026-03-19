@@ -20,6 +20,9 @@ on:
       - 'Tools/validate_presets.py'
       - 'Tools/validate_docs.py'
 
+permissions:
+  contents: read
+
 jobs:
   validate-docs:
     runs-on: ubuntu-latest
