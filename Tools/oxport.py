@@ -1477,6 +1477,31 @@ def cmd_validate(args) -> int:
                 print(f"    [FAIL] {xpm.name} — {e}")
                 checks_failed += 1
 
+        # Q-Link validation on all XPM files
+        if xpms:
+            try:
+                from xpn_qa_checker import check_xpm_qlinks
+                qlink_issues = 0
+                for xpm in xpms:
+                    qr = check_xpm_qlinks(xpm)
+                    if qr["overall"] == "PASS":
+                        qlinks_str = ", ".join(qr.get("qlinks", []))
+                        print(f"    [OK] {xpm.name} — Q-Links: {qlinks_str}")
+                        checks_passed += 1
+                    else:
+                        for issue in qr.get("issues", []):
+                            if issue == "QLINK_NAME_TOO_LONG":
+                                long_names = [n for n in qr.get("qlinks", []) if len(n) > 10]
+                                print(f"    [FAIL] {xpm.name} — Q-Link name too long: {long_names}")
+                            elif issue == "QLINK_MISSING":
+                                print(f"    [FAIL] {xpm.name} — No Q-Link assignments")
+                            checks_failed += 1
+                            qlink_issues += 1
+                if qlink_issues == 0:
+                    print(f"    Q-Link check: all {len(xpms)} programs have valid assignments")
+            except ImportError:
+                print("    [WARN] xpn_qa_checker not available — skipping Q-Link validation")
+
         print()
         print(f"  Pipeline checks — Passed: {checks_passed}  Failed: {checks_failed}")
         if checks_failed > 0:

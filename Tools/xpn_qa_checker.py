@@ -512,6 +512,68 @@ def _print_console_result(result: dict) -> None:
 
 
 # ---------------------------------------------------------------------------
+# XPM Q-Link validation (format-level, not WAV-level)
+# ---------------------------------------------------------------------------
+
+QLINK_MAX_NAME_LEN = 10  # MPC XL OLED display limit
+
+REMEDIATION["QLINK_NAME_TOO_LONG"] = (
+    "Q-Link label exceeds 10 characters — will be truncated on MPC XL OLED "
+    "display. Shorten the label in the exporter's Q-Link XML generation."
+)
+REMEDIATION["QLINK_MISSING"] = (
+    "No Q-Link assignments found in XPM. MPC Q-Link knobs will be unassigned. "
+    "Run through oxport with standardized macro mapping."
+)
+
+
+def check_xpm_qlinks(xpm_path: Path) -> dict:
+    """
+    Validate Q-Link assignments in an XPM program file.
+
+    Checks:
+      - Q-Link names exist and are ≤10 chars (MPC XL OLED limit)
+      - At least 1 Q-Link is assigned (missing = user gets blank knobs)
+
+    Returns dict with 'file', 'issues', 'qlinks' list, 'overall'.
+    """
+    import re
+
+    result: dict = {"file": xpm_path.name, "issues": [], "qlinks": []}
+
+    try:
+        content = xpm_path.read_text(encoding="utf-8")
+    except Exception as e:
+        result["overall"] = "ERROR"
+        result["error"] = str(e)
+        return result
+
+    # Extract Q-Link names
+    names = re.findall(r"<QLink[^>]*>.*?<Name>(.*?)</Name>.*?</QLink>",
+                       content, re.DOTALL)
+
+    if not names:
+        result["issues"].append("QLINK_MISSING")
+    else:
+        for name in names:
+            result["qlinks"].append(name)
+            if len(name) > QLINK_MAX_NAME_LEN:
+                result["issues"].append("QLINK_NAME_TOO_LONG")
+
+    result["overall"] = "FAIL" if result["issues"] else "PASS"
+    result["remediation"] = {i: REMEDIATION.get(i, "") for i in result["issues"]}
+    return result
+
+
+def check_xpm_directory(xpm_dir: Path) -> list[dict]:
+    """Run Q-Link validation on all .xpm files in a directory."""
+    results = []
+    for xpm in sorted(xpm_dir.rglob("*.xpm")):
+        results.append(check_xpm_qlinks(xpm))
+    return results
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
