@@ -9,7 +9,7 @@ and mutate into sounds impossible with any single synth. **34 engines** are regi
 — see engine table below.
 
 - **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS
-- **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
+- **Coupling:** Cross-engine modulation via MegaCouplingMatrix (13 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** 10,028 factory presets in `.xometa` format, 7 mood categories (incl. Family), 6D Sonic DNA
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
@@ -68,6 +68,8 @@ and mutate into sounds impossible with any single synth. **34 engines** are regi
 | OBBLIGATO | XObbligato | Rascal Coral `#FF8A7A` |
 | OTTONI | XOttoni | Patina `#5B8A72` |
 | OLE | XOlé | Hibiscus `#C9377A` |
+| OVERLAP | XOverlap | Bioluminescent Cyan-Green `#00FFB4` |
+| OUTWIT | XOutwit | Chromatophore Amber `#CC6600` |
 | OMBRE | XOmbre | Shadow Mauve `#7B6B8A` |
 | ORCA | XOrca | Deep Ocean `#1B2838` |
 | OCTOPUS | XOctopus | Chromatophore Magenta `#E040FB` |
@@ -124,6 +126,8 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Ombre | `ombre_` | `ombre_blend` |
 | Orca | `orca_` | `orca_huntMacro` |
 | Octopus | `octo_` | `octo_armDepth` |
+| XOverlap | `olap_` | `olap_knot` |
+| XOutwit | `owit_` | `owit_stepRate` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -146,7 +150,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Orca/OrcaEngine.h` | Apex predator engine (wavetable + echolocation + breach) |
 | `Source/Engines/Octopus/OctopusEngine.h` | Decentralized alien intelligence engine (arms + chromatophores + ink cloud) |
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
-| `Docs/xomnibus_sound_design_guides.md` | Sound design guide (30 of 34 engines in unified guide; 4 Constellation engines have dedicated guides in Docs/) |
+| `Docs/xomnibus_sound_design_guides.md` | Sound design guide (34 of 34 engines in unified guide; 5 Constellation engines also have dedicated guides in Docs/) |
 | `Source/DSP/` | Shared DSP library |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |
@@ -267,7 +271,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ### Prism Sweep — COMPLETE (2026-03-14)
 
-12-round progressive quality pass across all 26 original engines. **ALL 12 ROUNDS COMPLETE.**
+12-round progressive quality pass across all 24 original engines. **ALL 12 ROUNDS COMPLETE.**
 
 - All 6 doctrines resolved fleet-wide (D001–D006)
 - 22/22 engines with mod wheel | 23/23 engines with aftertouch (Optic intentionally exempt — visual engine)

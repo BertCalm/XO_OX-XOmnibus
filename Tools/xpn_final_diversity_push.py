@@ -222,7 +222,7 @@ def main():
     for corner in DNA_CORNERS:
         print(f"  {corner['name']}: {', '.join(corner['tags_extra'])}")
     print()
-    print("All 34 engines eligible. All 12 coupling types cycled.")
+    print("All 34 engines eligible. All 13 coupling types cycled.")
     print("Every preset: 3 DNA dimensions in extreme zones (<=0.12 or >=0.88).")
     print("Expected diversity impact: +0.008 to +0.015 → fleet DNA >=0.20")
 
