@@ -29,6 +29,18 @@ endif()
 # JUCE
 add_subdirectory(Libs/JUCE)
 
+# Rive C++ runtime (MIT licensed — https://github.com/rive-app/rive-cpp)
+# Clone into Libs/rive-cpp:
+#   git clone https://github.com/rive-app/rive-cpp Libs/rive-cpp
+add_subdirectory(Libs/rive-cpp)
+
+# Oscar character — oscar.riv embedded as C++ binary data.
+# Place the authored .riv file at Resources/Oscar/oscar.riv before building.
+# JUCE generates BinaryData::oscar_riv and BinaryData::oscar_rivSize.
+juce_add_binary_data(OscarRivData SOURCES
+    Resources/Oscar/oscar.riv
+)
+
 juce_add_plugin(XOmnibus
     COMPANY_NAME "XO_OX Designs"
     PLUGIN_MANUFACTURER_CODE XoOx
@@ -193,6 +205,11 @@ target_sources(XOmnibus PRIVATE
     Source/UI/OpticVisualizer/OpticVisualizer.h
     Source/UI/PresetBrowser/PresetBrowser.h
 
+    # Oscar (OddOscar animated companion)
+    Source/UI/OddOscar/OscarAnimState.h
+    Source/UI/OddOscar/OscarJuceRenderer.h
+    Source/UI/OddOscar/OscarRiveComponent.h
+
     # UI (Mobile — compiled on all platforms, gated by XO_MOBILE)
     Source/UI/Mobile/MobileTouchHandler.h
     Source/UI/Mobile/SensorManager.h
@@ -231,6 +248,8 @@ target_link_libraries(XOmnibus PRIVATE
     juce::juce_audio_processors
     juce::juce_dsp
     juce::juce_gui_extra
+    rive          # Rive C++ runtime
+    OscarRivData  # Embedded oscar.riv binary data
 )
 
 if(XO_MOBILE)

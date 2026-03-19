@@ -3,6 +3,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/FastMath.h"
+#include "../../UI/OddOscar/OscarAnimState.h"
 #include <array>
 #include <cmath>
 
@@ -707,6 +708,28 @@ public:
                 outputCacheRight[static_cast<size_t> (sampleIndex)] = outputRight;
             }
         }
+
+        //----------------------------------------------------------------------
+        // Update Oscar animation state (lock-free atomics, UI thread reads at 60 Hz)
+        //----------------------------------------------------------------------
+        if (oscarState != nullptr)
+        {
+            // Peak amplitude this block — drives gill sympathetic flutter
+            float blockPeak = 0.0f;
+            int peakSamples = std::min (numSamples, static_cast<int> (outputCacheLeft.size()));
+            for (int i = 0; i < peakSamples; ++i)
+                blockPeak = std::max (blockPeak, std::abs (outputCacheLeft[i]));
+
+            // Voice activity: any voice in Attack/Decay/Sustain (not releasing or off)
+            bool anyVoiceActive = false;
+            for (const auto& v : voices)
+                anyVoiceActive = anyVoiceActive || (v.active && !v.releasing);
+
+            oscarState->gillSpeed.store    (driftAmount,                              std::memory_order_relaxed);
+            oscarState->morphPosition.store (effectiveMorph,                          std::memory_order_relaxed);
+            oscarState->voiceActive.store   (anyVoiceActive,                          std::memory_order_relaxed);
+            oscarState->outputLevel.store   (juce::jlimit (0.0f, 1.0f, blockPeak),   std::memory_order_relaxed);
+        }
     }
 
     //==========================================================================
@@ -911,6 +934,10 @@ public:
     juce::String getEngineId() const override { return "OddOscar"; }
     juce::Colour getAccentColour() const override { return juce::Colour (0xFFE8839B); } // Axolotl Gill Pink
     int getMaxVoices() const override { return kMaxVoices; }
+
+    /// Wire Oscar's animation state. Call from the main thread before playback starts.
+    /// Pass nullptr to detach (headless / no UI mode).
+    void setOscarAnimState (OscarAnimState* state) { oscarState = state; }
 
 private:
     //==========================================================================
@@ -1196,6 +1223,9 @@ private:
     //-- Output cache for coupling reads ---------------------------------------
     std::vector<float> outputCacheLeft;         // left channel output (per-sample, for getSampleForCoupling)
     std::vector<float> outputCacheRight;        // right channel output
+
+    //-- Oscar animation state (optional — null if no UI is present) -----------
+    OscarAnimState* oscarState = nullptr;
 
     //-- Random number generator for drift initialization ----------------------
     juce::Random driftPhaseRandomizer;          // randomizes per-voice drift starting phase
