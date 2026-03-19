@@ -58,5 +58,9 @@
     "prophecy",
     "fold"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "A prophecy folded into paper — GENDY breakpoints and paper harmonics share one cold voice."
+>>>>>>> origin/v1-launch-prep
 }

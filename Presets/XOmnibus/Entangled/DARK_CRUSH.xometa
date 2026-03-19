@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK CRUSH",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Owlfish",
+    "Ole"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.5199,
+      "macro_movement": 0.8065,
+      "macro_coupling": 0.8747,
+      "macro_space": 0.9403
+    },
+    "Ole": {
+      "macro_character": 0.737,
+      "macro_movement": 0.197,
+      "macro_coupling": 0.7725,
+      "macro_space": 0.9489
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dense",
     "extreme-density",
     "entangled"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

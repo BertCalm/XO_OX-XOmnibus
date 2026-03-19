@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Indigo Plate",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Obscura"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.13,
+      "macro_movement": 0.25,
+      "macro_coupling": 0.79,
+      "macro_space": 0.94
+    },
+    "Obscura": {
+      "macro_character": 0.1,
+      "macro_movement": 0.2,
+      "macro_coupling": 0.84,
+      "macro_space": 0.97
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "indigo",
     "plate"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Oracle's indigo pitch anchors Obscura's silverpoint resonance — cold tonality fixed."
+>>>>>>> origin/v1-launch-prep
 }

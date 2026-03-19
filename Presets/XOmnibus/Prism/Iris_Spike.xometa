@@ -44,5 +44,27 @@
     "beam",
     "sharp"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "FOCUS",
+    "PRISM",
+    "COUPLING",
+    "DIFFUSE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.12,
+    "movement": 0.4,
+    "density": 0.2,
+    "space": 0.8,
+    "aggression": 0.1
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

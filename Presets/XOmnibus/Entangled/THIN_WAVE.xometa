@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "THIN WAVE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.656,
+      "macro_movement": 0.747,
+      "macro_coupling": 0.214,
+      "macro_space": 0.828
+    },
+    "Ocelot": {
+      "macro_character": 0.271,
+      "macro_movement": 0.562,
+      "macro_coupling": 0.272,
+      "macro_space": 0.109
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "bare",
     "skeletal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -22,6 +22,18 @@
   "engines": [
     "Oceanic",
     "Origami"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "oceanic",
+    "origami"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -51,6 +63,7 @@
       "macro_space": 0.467
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.0,
@@ -68,4 +81,16 @@
     "origami"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORIGAMI",
+        "engineB": "OCEANIC",
+        "type": "CHAOS_SYNC",
+        "amount": 0.791
+      }
+    ]
+  }
+>>>>>>> origin/v1-launch-prep
 }

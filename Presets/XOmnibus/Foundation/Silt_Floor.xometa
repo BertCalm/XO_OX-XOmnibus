@@ -15,6 +15,18 @@
   },
   "engines": [
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sub-kick foundation with felt-tip attack",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "MACHINE",
@@ -32,8 +44,11 @@
   "name": "Silt Floor",
   "parameters": {
     "Onset": {
+<<<<<<< HEAD
       "onset_couplingBus": 0,
       "onset_couplingLevel": 0.5,
+=======
+>>>>>>> origin/v1-launch-prep
       "onset_macro_machine": 0.1428,
       "onset_macro_mutate": 0.6264,
       "onset_macro_punch": 0.8557,
@@ -41,6 +56,7 @@
       "onset_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.1524,
@@ -57,4 +73,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

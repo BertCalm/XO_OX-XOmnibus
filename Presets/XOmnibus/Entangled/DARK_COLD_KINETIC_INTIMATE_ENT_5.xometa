@@ -24,6 +24,7 @@
     "Overlap",
     "Octopus"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "KNOT",
     "FOLD",
@@ -81,6 +82,11 @@
     "space": 0.0492,
     "warmth": 0.1267
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark Cold Kinetic Intimate character entanglement — OVERLAP × OCTOPUS via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "dark",
@@ -89,5 +95,85 @@
     "intimate",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "KNOT",
+    "FOLD",
+    "WEAVE",
+    "HALL"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.0327,
+    "warmth": 0.1267,
+    "movement": 0.8914,
+    "density": 0.685,
+    "space": 0.0492,
+    "aggression": 0.3434
+  },
+  "sonic_dna": {
+    "brightness": 0.0327,
+    "warmth": 0.1267,
+    "movement": 0.8914,
+    "density": 0.685,
+    "space": 0.0492,
+    "aggression": 0.3434
+  },
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.369,
+      "macro_movement": 0.8923,
+      "macro_coupling": 0.711,
+      "macro_space": 0.0553,
+      "filter_cutoff": 0.2033,
+      "filter_resonance": 0.2884,
+      "amp_attack": 0.0535,
+      "amp_release": 0.1635,
+      "reverb_mix": 0.1802,
+      "reverb_size": 0.2471,
+      "drive": 0.3441,
+      "density": 0.6987,
+      "output_level": 0.8603,
+      "coupling_level": 0.653
+    },
+    "Octopus": {
+      "macro_character": 0.3736,
+      "macro_movement": 0.8778,
+      "macro_coupling": 0.7053,
+      "macro_space": 0.077,
+      "filter_cutoff": 0.2405,
+      "filter_resonance": 0.2557,
+      "amp_attack": 0.0781,
+      "amp_release": 0.1222,
+      "reverb_mix": 0.1693,
+      "reverb_size": 0.2132,
+      "drive": 0.2949,
+      "density": 0.6786,
+      "output_level": 0.9064,
+      "coupling_level": 0.7016
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OVERLAP",
+    "target": "OCTOPUS",
+    "amount": 0.8977,
+    "pairs": [
+      {
+        "source": "OVERLAP",
+        "target": "OCTOPUS",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8977
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.0797,
+    "MOVEMENT": 0.8914,
+    "COUPLING": 0.8977,
+    "SPACE": 0.0492
+  }
+>>>>>>> origin/v1-launch-prep
 }

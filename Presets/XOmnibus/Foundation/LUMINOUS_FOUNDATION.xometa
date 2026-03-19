@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "LUMINOUS FOUNDATION",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Organon",
+    "Orbital"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.782,
+      "macro_movement": 0.265,
+      "macro_coupling": 0.623,
+      "macro_space": 0.397
+    },
+    "Orbital": {
+      "macro_character": 0.08,
+      "macro_movement": 0.329,
+      "macro_coupling": 0.674,
+      "macro_space": 0.534
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "low-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

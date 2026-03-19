@@ -16,6 +16,7 @@
   "engines": [
     "Osprey"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -36,6 +37,11 @@
     "space": 0.109,
     "warmth": 0.098
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme cold warmth, extreme kinetic movement, extreme tight space. Maximum contrast character design.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "dark",
     "cold",
@@ -44,5 +50,29 @@
     "flux",
     "extreme"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Harmonic",
+  "dna": {
+    "brightness": 0.084,
+    "warmth": 0.098,
+    "movement": 0.913,
+    "density": 0.426,
+    "space": 0.109,
+    "aggression": 0.409
+  },
+  "parameters": {
+    "Osprey": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

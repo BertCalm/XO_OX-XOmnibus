@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_DENSE_VAST_PRS_DRK_1",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Oracle",
+    "Optic"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.6282,
+      "macro_movement": 0.6017,
+      "macro_coupling": 0.984,
+      "macro_space": 0.8939
+    },
+    "Optic": {
+      "macro_character": 0.5974,
+      "macro_movement": 0.6375,
+      "macro_coupling": 0.9812,
+      "macro_space": 0.8744
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "hot",
     "dense",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "MAGMA LINK",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.222,
+      "macro_movement": 0.779,
+      "macro_coupling": 0.076,
+      "macro_space": 0.633
+    },
+    "Odyssey": {
+      "macro_character": 0.531,
+      "macro_movement": 0.194,
+      "macro_coupling": 0.776,
+      "macro_space": 0.351
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "hot",
     "molten",
     "furnace"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

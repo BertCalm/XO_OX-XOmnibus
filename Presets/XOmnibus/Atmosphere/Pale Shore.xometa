@@ -3,12 +3,15 @@
   "description": "The sky becomes gold before you notice. Space opens like held breath released.",
   "engines": [
     "Ohm"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.734,

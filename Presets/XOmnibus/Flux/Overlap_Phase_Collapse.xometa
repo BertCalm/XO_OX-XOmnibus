@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Phase Collapse",
+  "mood": "Flux",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Six voices drifting in phase until a critical threshold \u2014 then simultaneous collapse and restart. A natural Kuramoto phase transition mapped to audio. The moment of collapse is the sound.",
+  "tags": [
+    "phase",
+    "collapse",
+    "transition",
+    "kuramoto",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.9,
+    "density": 0.72,
+    "space": 0.78,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 0,
+      "olap_delayFeedback": 0.7,
+      "olap_diffusion": 0.68,
+      "olap_spread": 0.8,
+      "olap_decay": 7.5,
+      "olap_modDepth": 0.5,
+      "olap_modRate": 0.16,
+      "olap_damping": 0.38,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "VIOLENT FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Origami",
+    "Orbital"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.755,
+      "macro_movement": 0.329,
+      "macro_coupling": 0.34,
+      "macro_space": 0.504
+    },
+    "Orbital": {
+      "macro_character": 0.333,
+      "macro_movement": 0.41,
+      "macro_coupling": 0.617,
+      "macro_space": 0.474
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "aggressive",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

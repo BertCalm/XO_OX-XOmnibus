@@ -44,5 +44,27 @@
     "breath",
     "evolving"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.616,
+    "warmth": 0.863,
+    "movement": 0.594,
+    "density": 0.094,
+    "space": 0.664,
+    "aggression": 0.205
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "FURY GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Osprey",
+    "Ohm"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.353,
+      "macro_movement": 0.474,
+      "macro_coupling": 0.5,
+      "macro_space": 0.239
+    },
+    "Ohm": {
+      "macro_character": 0.735,
+      "macro_movement": 0.598,
+      "macro_coupling": 0.411,
+      "macro_space": 0.59
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "aggressive",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

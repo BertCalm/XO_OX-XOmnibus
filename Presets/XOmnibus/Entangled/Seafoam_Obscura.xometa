@@ -1,5 +1,32 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "schema_version": 1,
+  "name": "Seafoam Obscura",
+  "mood": "Entangled",
+  "engines": [
+    "Orphica",
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Chaos injection from OBSCURA's string network disturbs ORPHICA's crystalline calm.",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.68,
+      "macro_movement": 0.54,
+      "macro_coupling": 0.68,
+      "macro_space": 0.74
+    },
+    "Obscura": {
+      "macro_character": 0.54,
+      "macro_movement": 0.48,
+      "macro_coupling": 0.58,
+      "macro_space": 0.58
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {

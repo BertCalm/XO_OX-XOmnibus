@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Storm Pressure",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orca"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. ORCA aggressive register.",
   "dna": {
     "aggression": 0.762,
@@ -47,5 +58,40 @@
     "pressure",
     "fierce"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.509,
+    "warmth": 0.347,
+    "movement": 0.688,
+    "density": 0.674,
+    "space": 0.472,
+    "aggression": 0.762
+  },
+  "parameters": {
+    "Orca": {
+      "character": 0.856,
+      "movement": 0.599,
+      "coupling": 0.398,
+      "space": 0.513
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.856,
+    "MOVEMENT": 0.599,
+    "COUPLING": 0.398,
+    "SPACE": 0.513
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

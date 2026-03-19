@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Dense Nebula Core",
+  "mood": "Atmosphere",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Thick, heavy environment. Maximum density, warm compression. ORIGAMI dense register.",
   "dna": {
     "aggression": 0.207,
@@ -47,5 +58,40 @@
     "warm",
     "thick"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "FOLD",
+    "TENSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.444,
+    "warmth": 0.681,
+    "movement": 0.235,
+    "density": 0.815,
+    "space": 0.308,
+    "aggression": 0.207
+  },
+  "parameters": {
+    "Origami": {
+      "fold": 0.152,
+      "tension": 0.139,
+      "coupling": 0.314,
+      "space": 0.263
+    }
+  },
+  "macros": {
+    "FOLD": 0.152,
+    "TENSION": 0.139,
+    "COUPLING": 0.314,
+    "SPACE": 0.263
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

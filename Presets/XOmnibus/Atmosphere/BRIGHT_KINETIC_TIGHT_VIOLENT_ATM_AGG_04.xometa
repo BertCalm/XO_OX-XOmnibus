@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT KINETIC TIGHT VIOLENT ATM AGG 4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orbital",
+    "Oracle"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.97,
+      "macro_movement": 0.887,
+      "macro_coupling": 0.857,
+      "macro_space": 0.038
+    },
+    "Oracle": {
+      "macro_character": 0.903,
+      "macro_movement": 0.899,
+      "macro_coupling": 0.777,
+      "macro_space": 0.037
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "bright",
     "kinetic",
     "tight"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

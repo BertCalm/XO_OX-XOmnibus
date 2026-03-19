@@ -58,5 +58,9 @@
     "paper",
     "cloud"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Paper and grain cloud occupy spatially separated cold zones — neither intrudes."
+>>>>>>> origin/v1-launch-prep
 }

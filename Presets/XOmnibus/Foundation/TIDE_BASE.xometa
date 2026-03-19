@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "TIDE BASE",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Ole",
+    "Obese"
+  ],
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.65,
+      "macro_movement": 0.887,
+      "macro_coupling": 0.683,
+      "macro_space": 0.284
+    },
+    "Obese": {
+      "macro_character": 0.604,
+      "macro_movement": 0.976,
+      "macro_coupling": 0.674,
+      "macro_space": 0.257
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

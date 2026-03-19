@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ALL HIGH ENT2 2",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overbite",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.907,
+      "macro_movement": 0.424,
+      "macro_coupling": 0.954,
+      "macro_space": 0.922
+    },
+    "Obbligato": {
+      "macro_character": 0.863,
+      "macro_movement": 0.398,
+      "macro_coupling": 0.944,
+      "macro_space": 0.89
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "vast",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -59,6 +59,10 @@
     "low-warmth",
     "high-density",
     "low-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

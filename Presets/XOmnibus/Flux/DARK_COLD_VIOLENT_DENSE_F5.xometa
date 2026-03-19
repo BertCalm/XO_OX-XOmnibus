@@ -16,6 +16,7 @@
   "engines": [
     "Outwit"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -36,6 +37,11 @@
     "space": 0.542,
     "warmth": 0.041
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme cold warmth, extreme violent aggression, extreme dense density. Maximum contrast character design.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "dark",
     "cold",
@@ -44,5 +50,29 @@
     "flux",
     "extreme"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Sync",
+  "dna": {
+    "brightness": 0.044,
+    "warmth": 0.041,
+    "movement": 0.518,
+    "density": 0.891,
+    "space": 0.542,
+    "aggression": 0.929
+  },
+  "parameters": {
+    "Outwit": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

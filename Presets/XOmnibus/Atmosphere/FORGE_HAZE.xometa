@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "FORGE HAZE",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oracle",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.839,
+      "macro_movement": 0.625,
+      "macro_coupling": 0.698,
+      "macro_space": 0.163
+    },
+    "Ocelot": {
+      "macro_character": 0.762,
+      "macro_movement": 0.317,
+      "macro_coupling": 0.55,
+      "macro_space": 0.271
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "abrasive",
     "hostile",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -37,13 +37,21 @@
   "mood": "Flux",
   "name": "ALLHI FLX 04",
   "parameters": {
+<<<<<<< HEAD
     "Oblong": {
+=======
+    "Optic": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.936,
       "macro_coupling": 0.948,
       "macro_movement": 0.761,
       "macro_space": 0.985
     },
+<<<<<<< HEAD
     "Optic": {
+=======
+    "Oblong": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.936,
       "macro_coupling": 0.948,
       "macro_movement": 0.761,
@@ -56,6 +64,10 @@
     "pole-fill",
     "high-energy",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

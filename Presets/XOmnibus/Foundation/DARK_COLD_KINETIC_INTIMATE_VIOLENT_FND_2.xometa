@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "DARK_COLD_KINETIC_INTIMATE_VIOLENT_FND_2",
+  "mood": "Foundation",
+  "engines": [
+    "OddfeliX",
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_COLD_KINETIC_INTIMATE_VIOLENT. Variant 2.",
   "dna": {
     "aggression": 0.955,
@@ -71,5 +83,49 @@
     "foundation"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.126,
+      "macro_movement": 0.915,
+      "macro_coupling": 0.631,
+      "macro_space": 0.128
+    },
+    "Origami": {
+      "macro_character": 0.048,
+      "macro_movement": 0.875,
+      "macro_coupling": 0.469,
+      "macro_space": 0.052
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ODDFELIX",
+    "target": "ORIGAMI",
+    "amount": 0.657
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.055,
+    "warmth": 0.036,
+    "movement": 0.885,
+    "density": 0.55,
+    "space": 0.084,
+    "aggression": 0.955
+  },
+  "macros": {
+    "CHARACTER": 0.087,
+    "MOVEMENT": 0.895,
+    "COUPLING": 0.55,
+    "SPACE": 0.09
+  }
+>>>>>>> origin/v1-launch-prep
 }

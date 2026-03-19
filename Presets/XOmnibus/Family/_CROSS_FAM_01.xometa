@@ -37,13 +37,21 @@
   "mood": "Family",
   "name": "CROSS FAM 01",
   "parameters": {
+<<<<<<< HEAD
     "Ohm": {
+=======
+    "Ottoni": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.93,
       "macro_coupling": 0.333,
       "macro_movement": 0.527,
       "macro_space": 0.581
     },
+<<<<<<< HEAD
     "Ottoni": {
+=======
+    "Ohm": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.93,
       "macro_coupling": 0.333,
       "macro_movement": 0.527,
@@ -56,6 +64,10 @@
     "pole-fill",
     "cross-pole",
     "contrast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

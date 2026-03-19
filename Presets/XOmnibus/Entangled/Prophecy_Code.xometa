@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Deep",
+=======
+  "schema_version": 1,
+  "name": "Prophecy Code",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Oracle harmonic ratios seed OUTWIT Wolfram rules — prophetic tones become cellular law",
   "dna": {
     "aggression": 0.45,
@@ -40,6 +52,18 @@
   "name": "Prophecy Code",
   "parameters": {
     "Outwit": {
+<<<<<<< HEAD
+=======
+      "owit_rule": 150,
+      "owit_arms": 8,
+      "owit_cellSize": 0.241,
+      "owit_density": 0.397,
+      "owit_evolveRate": 0.504,
+      "owit_mutateProb": 0.088,
+      "owit_pitchSpread": 0.417,
+      "owit_filterCutoff": 0.724,
+      "owit_filterReso": 0.24,
+>>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.116,
       "owit_ampRelease": 0.23,
       "owit_armStagger": 0.215,

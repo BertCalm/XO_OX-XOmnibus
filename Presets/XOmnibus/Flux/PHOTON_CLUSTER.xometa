@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "PHOTON CLUSTER",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overlap",
+    "Oblique"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.705,
+      "macro_movement": 0.699,
+      "macro_coupling": 0.549,
+      "macro_space": 0.428
+    },
+    "Oblique": {
+      "macro_character": 0.603,
+      "macro_movement": 0.759,
+      "macro_coupling": 0.514,
+      "macro_space": 0.29
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "dense",
     "saturated"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

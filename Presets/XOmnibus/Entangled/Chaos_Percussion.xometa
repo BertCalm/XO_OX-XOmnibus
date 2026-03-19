@@ -23,6 +23,20 @@
   "engines": [
     "Obese",
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Onset drum voices timbral-warped by OBESE saturation — percussion with infinite harmonic weight.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "obese",
+    "onset",
+    "percussion"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

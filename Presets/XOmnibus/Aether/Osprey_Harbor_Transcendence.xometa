@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "Harbor Transcendence",
+  "mood": "Aether",
+  "engines": ["Osprey"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Harbor reverb at maximum — the port dissolves into infinite reverberant aether.",
+  "tags": ["aether", "harbor", "reverb", "infinite"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.55, "warmth": 0.55, "movement": 0.35, "density": 0.35, "space": 0.92, "aggression": 0.07},
+  "parameters": {
+    "Osprey": {
+      "osprey_brine": 0.35,
+      "osprey_foam": 0.3,
+      "osprey_fog": 0.6,
+      "osprey_hull": 0.4,
+      "osprey_depth": 0.35,
+      "osprey_coherence": 0.58,
+      "osprey_filterTilt": 0.5,
+      "osprey_filterEnvDepth": 0.05,
+      "osprey_harborVerb": 1.0,
+      "osprey_creatureRate": 0.08,
+      "osprey_creatureDepth": 0.15,
+      "osprey_glide": 0.7,
+      "osprey_ampAttack": 1.5,
+      "osprey_ampDecay": 0.7,
+      "osprey_ampSustain": 0.5,
+      "osprey_ampRelease": 5.0,
+      "osprey_macroCharacter": 0.42,
+      "osprey_macroMovement": 0.35,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroSpace": 0.92
+    }
+  },
+  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.92},
+  "coupling": {"pairs": []}
+}

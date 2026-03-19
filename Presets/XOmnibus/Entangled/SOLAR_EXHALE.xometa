@@ -37,6 +37,7 @@
   "mood": "Entangled",
   "name": "SOLAR EXHALE",
   "parameters": {
+<<<<<<< HEAD
     "Oceanic": {
       "macro_character": 0.876,
       "macro_coupling": 0.096,
@@ -47,6 +48,18 @@
       "macro_character": 0.69,
       "macro_coupling": 0.422,
       "macro_movement": 0.428,
+=======
+    "Ottoni": {
+      "macro_character": 0.69,
+      "macro_movement": 0.428,
+      "macro_coupling": 0.422,
+      "macro_space": 0.927
+    },
+    "Oceanic": {
+      "macro_character": 0.876,
+      "macro_movement": 0.699,
+      "macro_coupling": 0.096,
+>>>>>>> origin/v1-launch-prep
       "macro_space": 0.927
     }
   },
@@ -56,6 +69,10 @@
     "vast",
     "cosmic",
     "xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

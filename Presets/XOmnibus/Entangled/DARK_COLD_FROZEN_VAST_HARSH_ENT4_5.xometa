@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_FROZEN_VAST_HARSH_ENT4_5",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Osprey",
+    "Orca"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.12,
+      "macro_movement": 0.04,
+      "macro_coupling": 0.676,
+      "macro_space": 0.866
+    },
+    "Orca": {
+      "macro_character": 0.099,
+      "macro_movement": 0.029,
+      "macro_coupling": 0.67,
+      "macro_space": 0.895
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "cold",
     "vast",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

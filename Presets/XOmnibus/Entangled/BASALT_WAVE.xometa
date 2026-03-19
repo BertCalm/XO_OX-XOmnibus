@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BASALT WAVE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Oblong",
+    "Oblique"
+  ],
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.7908,
+      "macro_movement": 0.5678,
+      "macro_coupling": 0.9029,
+      "macro_space": 0.1755
+    },
+    "Oblique": {
+      "macro_character": 0.8561,
+      "macro_movement": 0.897,
+      "macro_coupling": 0.9308,
+      "macro_space": 0.5153
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "entangled",
     "compressed",
     "packed"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_SPARSE_VAST_FAM_VOL_19",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Overdub",
+    "Orphica"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.97,
+      "macro_movement": 0.367,
+      "macro_coupling": 0.393,
+      "macro_space": 0.888
+    },
+    "Orphica": {
+      "macro_character": 0.929,
+      "macro_movement": 0.391,
+      "macro_coupling": 0.385,
+      "macro_space": 0.891
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "sparse",
     "vast",
     "bright"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD_DENSE_INTIMATE_VIOLENT_ATM_4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Osprey",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.553,
+      "macro_movement": 0.567,
+      "macro_coupling": 0.527,
+      "macro_space": 0.114
+    },
+    "Oceanic": {
+      "macro_character": 0.429,
+      "macro_movement": 0.399,
+      "macro_coupling": 0.899,
+      "macro_space": 0.104
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dense",
     "intimate",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Entangled Spore",
+  "mood": "Entangled",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": ["cellular", "coupled", "generative", "colony"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.6,
+    "density": 0.65,
+    "space": 0.55,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 51000,
+      "org_stepRate": 6.0,
+      "org_scope": 8,
+      "org_mutate": 0.018,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.35,
+      "org_filterCutoff": 3000.0,
+      "org_filterRes": 0.42,
+      "org_velCutoff": 0.62,
+      "org_ampAtk": 0.01,
+      "org_ampDec": 0.25,
+      "org_ampSus": 0.64,
+      "org_ampRel": 0.65,
+      "org_lfo1Rate": 1.4,
+      "org_lfo1Depth": 0.38,
+      "org_lfo2Rate": 0.85,
+      "org_lfo2Depth": 0.34,
+      "org_reverbMix": 0.38,
+      "org_macroRule": 0.42,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.82,
+      "org_macroMutate": 0.055
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.64,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.82,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

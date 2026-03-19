@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Pyrosphere",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Opal"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.75,
+      "macro_movement": 0.46,
+      "macro_coupling": 0.55,
+      "macro_space": 0.83
+    },
+    "Opal": {
+      "macro_character": 0.81,
+      "macro_movement": 0.53,
+      "macro_coupling": 0.56,
+      "macro_space": 0.78
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "scorching",
     "spatial"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

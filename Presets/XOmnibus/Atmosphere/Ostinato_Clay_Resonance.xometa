@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Clay Resonance",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ostinato"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "textural",
+    "acoustic",
+    "evolving",
+    "drums"
+  ],
+  "macroLabels": [
+    "SPACE",
+    "GATHER",
+    "FIRE",
+    "CIRCLE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.7,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Ostinato": {
+      "osti_drumType": 4,
+      "osti_filterCutoff": 850,
+      "osti_filterRes": 0.41,
+      "osti_ampAtk": 0.006,
+      "osti_ampDec": 0.9,
+      "osti_ampSus": 0.18,
+      "osti_ampRel": 0.8,
+      "osti_velCutoffAmt": 0.4,
+      "osti_reverbMix": 0.45,
+      "osti_lfo1Rate": 0.3,
+      "osti_lfo1Depth": 0.22,
+      "osti_lfo2Rate": 0.8,
+      "osti_lfo2Depth": 0.18,
+      "osti_patternStep0": true,
+      "osti_patternStep1": false,
+      "osti_patternStep2": true,
+      "osti_patternStep3": true,
+      "osti_patternStep4": false,
+      "osti_patternStep5": true,
+      "osti_patternStep6": false,
+      "osti_patternStep7": false,
+      "osti_macroGather": 0.25,
+      "osti_macroFire": 0.35,
+      "osti_macroCircle": 0.5,
+      "osti_macroSpace": 0.5
+    }
+  },
+  "macros": {
+    "GATHER": 0.25,
+    "FIRE": 0.35,
+    "CIRCLE": 0.5,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

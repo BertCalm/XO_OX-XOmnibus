@@ -37,13 +37,21 @@
   "mood": "Atmosphere",
   "name": "ALLLO ATM 05",
   "parameters": {
+<<<<<<< HEAD
     "Optic": {
+=======
+    "Organon": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.041,
       "macro_coupling": 0.247,
       "macro_movement": 0.034,
       "macro_space": 0.435
     },
+<<<<<<< HEAD
     "Organon": {
+=======
+    "Optic": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.041,
       "macro_coupling": 0.247,
       "macro_movement": 0.034,
@@ -56,6 +64,10 @@
     "pole-fill",
     "minimal",
     "sparse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

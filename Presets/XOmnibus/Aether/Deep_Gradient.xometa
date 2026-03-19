@@ -16,6 +16,7 @@
   "engines": [
     "Ombre"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "FADE",
     "DEPTH",
@@ -36,6 +37,11 @@
     "space": 0.55,
     "warmth": 0.82
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Smooth descent into total darkness — no hard edge",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -44,5 +50,27 @@
     "fade",
     "deep"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "FADE",
+    "DEPTH",
+    "COUPLING",
+    "SHADE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.82,
+    "movement": 0.15,
+    "density": 0.6,
+    "space": 0.55,
+    "aggression": 0.12
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

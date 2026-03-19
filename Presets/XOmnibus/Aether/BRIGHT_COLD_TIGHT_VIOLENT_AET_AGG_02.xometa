@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT COLD TIGHT VIOLENT AET AGG 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Organon",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.871,
+      "macro_movement": 0.388,
+      "macro_coupling": 0.816,
+      "macro_space": 0.064
+    },
+    "Oceanic": {
+      "macro_character": 0.9,
+      "macro_movement": 0.381,
+      "macro_coupling": 0.843,
+      "macro_space": 0.065
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "bright",
     "tight"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

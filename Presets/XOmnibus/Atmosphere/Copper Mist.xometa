@@ -3,12 +3,15 @@
   "description": "A slow opening — like watching a flower find the sun. Patient and luminous.",
   "engines": [
     "Ohm"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.654,
@@ -37,6 +40,7 @@
     "dawn",
     "gentle"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.4,
@@ -46,4 +50,7 @@
     "space": 0.7,
     "aggression": 0.2
   }
+=======
+  "description": "A slow opening — like watching a flower find the sun. Patient and luminous."
+>>>>>>> origin/v1-launch-prep
 }

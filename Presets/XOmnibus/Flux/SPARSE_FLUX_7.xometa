@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SPARSE FLUX 7",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Organon",
+    "Orbital"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.6025,
+      "macro_movement": 0.8223,
+      "macro_coupling": 0.5455,
+      "macro_space": 0.3212
+    },
+    "Orbital": {
+      "macro_character": 0.0801,
+      "macro_movement": 0.6609,
+      "macro_coupling": 0.3065,
+      "macro_space": 0.6026
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "sparse",
     "minimal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

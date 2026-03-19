@@ -23,6 +23,20 @@
   "engines": [
     "Overbite",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "BITE macro chaos-injected by Ouroboros — the possum's fang at fractal frequency.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "overbite",
+    "ouroboros",
+    "fang"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

@@ -15,6 +15,18 @@
   },
   "engines": [
     "Owlfish"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Designed for multi-engine coupling — aggressive subharmonics with high coupling level for ecosystem entanglement",
+  "tags": [
+    "coupling",
+    "entangled",
+    "ecosystem",
+    "predator"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "DEPTH",
@@ -26,6 +38,7 @@
   "name": "Ecosystem Hunter",
   "parameters": {
     "Owlfish": {
+<<<<<<< HEAD
       "owl_ampAttack": 8,
       "owl_ampDecay": 250,
       "owl_ampRelease": 500,
@@ -55,6 +68,9 @@
       "owl_grainMix": 0.2,
       "owl_grainPitch": 0.2,
       "owl_grainSize": 0.25,
+=======
+      "owl_portamento": 0.15,
+>>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 1,
       "owl_mixtur": 0.45,
       "owl_morphGlide": 0.45,

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_STILL_INTIMATE_PRS_DRK_4",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Overworld",
+    "Ottoni"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.725,
+      "macro_movement": 0.068,
+      "macro_coupling": 0.508,
+      "macro_space": 0.1087
+    },
+    "Ottoni": {
+      "macro_character": 0.6906,
+      "macro_movement": 0.0811,
+      "macro_coupling": 0.4944,
+      "macro_space": 0.0938
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "hot",
     "still",
     "intimate"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

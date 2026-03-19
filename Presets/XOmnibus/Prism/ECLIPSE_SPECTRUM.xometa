@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ECLIPSE SPECTRUM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Onset",
+    "Obese"
+  ],
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.742,
+      "macro_movement": 0.092,
+      "macro_coupling": 0.556,
+      "macro_space": 0.575
+    },
+    "Obese": {
+      "macro_character": 0.423,
+      "macro_movement": 0.961,
+      "macro_coupling": 0.976,
+      "macro_space": 0.075
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "prism",
     "dark",
     "spectrum"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

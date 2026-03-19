@@ -1,0 +1,117 @@
+{
+<<<<<<< HEAD:Presets/XOmnibus/Aether/5X DARK COLD KINETIC DENSE VIOLENT ATH 8.xometa
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Ocelot",
+        "type": "ENVELOPE_SLAVE",
+        "amount": 0.65
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Violent Harp Void",
+  "mood": "Aether",
+  "engines": [
+    "Orphica",
+    "Ocelot"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Aether/Orph_Ocel_Violent_Harp_Void.xometa
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.941,
+    "brightness": 0.486,
+    "density": 0.925,
+    "movement": 0.908,
+    "space": 0.096,
+    "warmth": 0.058
+  },
+  "engines": [
+    "Orphica",
+    "Ocelot"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.76,
+      "macro_coupling": 0.61,
+      "macro_movement": 0.64,
+      "macro_space": 0.28
+    },
+    "Orphica": {
+      "macro_character": 0.69,
+      "macro_coupling": 0.76,
+      "macro_movement": 0.86,
+      "macro_space": 0.14
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "aether"
+  ],
+  "tempo": null,
+<<<<<<< HEAD:Presets/XOmnibus/Aether/5X DARK COLD KINETIC DENSE VIOLENT ATH 8.xometa
+  "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.69,
+      "macro_movement": 0.86,
+      "macro_coupling": 0.76,
+      "macro_space": 0.14
+    },
+    "Ocelot": {
+      "macro_character": 0.76,
+      "macro_movement": 0.64,
+      "macro_coupling": 0.61,
+      "macro_space": 0.28
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_SLAVE",
+    "source": "ORPHICA",
+    "target": "OCELOT",
+    "amount": 0.65
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.486,
+    "warmth": 0.058,
+    "movement": 0.908,
+    "density": 0.925,
+    "space": 0.096,
+    "aggression": 0.941
+  }
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Aether/Orph_Ocel_Violent_Harp_Void.xometa
+}

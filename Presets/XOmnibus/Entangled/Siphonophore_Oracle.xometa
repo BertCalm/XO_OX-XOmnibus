@@ -1,5 +1,32 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "schema_version": 1,
+  "name": "Siphonophore Oracle",
+  "mood": "Entangled",
+  "engines": [
+    "Orphica",
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Envelope linking: ORPHICA's sustain whisper triggers ORACLE's prophetic glissando arc.",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.68,
+      "macro_movement": 0.54,
+      "macro_coupling": 0.68,
+      "macro_space": 0.75
+    },
+    "Oracle": {
+      "macro_character": 0.54,
+      "macro_movement": 0.59,
+      "macro_coupling": 0.6,
+      "macro_space": 0.59
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {

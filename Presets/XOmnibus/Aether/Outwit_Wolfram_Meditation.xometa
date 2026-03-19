@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Wolfram Meditation",
+  "mood": "Aether",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 150 at near-zero step rate \u2014 the symmetric wave is so slow it becomes a mantra. Each arm completes one cycle in approximately fifteen seconds. Genuine drone territory.",
+  "tags": [
+    "aether",
+    "meditation",
+    "mantra",
+    "ultra-slow",
+    "drone"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.6,
+    "movement": 0.2,
+    "density": 0.5,
+    "space": 0.88,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 150,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.08,
+      "owit_armSpread": 0.5,
+      "owit_sync": 0.12,
+      "owit_feedbackAmt": 0.35,
+      "owit_chaos": 0.15,
+      "owit_density": 0.5,
+      "owit_ampAttack": 0.5,
+      "owit_ampDecay": 1.0,
+      "owit_ampSustain": 0.65,
+      "owit_ampRelease": 6.0,
+      "owit_filterCutoff": 0.45,
+      "owit_filterRes": 0.2,
+      "owit_lfoRate": 0.02,
+      "owit_lfoDepth": 0.08,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "TORRENT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Oblong"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.562,
+      "macro_movement": 0.93,
+      "macro_coupling": 0.262,
+      "macro_space": 0.26
+    },
+    "Oblong": {
+      "macro_character": 0.446,
+      "macro_movement": 0.919,
+      "macro_coupling": 0.996,
+      "macro_space": 0.286
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "wild",
     "movement"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

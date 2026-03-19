@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT WARM STILL INTIMATE DENSE FAM2 5",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Origami",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.957,
+      "macro_movement": 0.058,
+      "macro_coupling": 0.786,
+      "macro_space": 0.078
+    },
+    "Odyssey": {
+      "macro_character": 0.971,
+      "macro_movement": 0.041,
+      "macro_coupling": 0.822,
+      "macro_space": 0.044
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "still",
     "dense",
     "intimate"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

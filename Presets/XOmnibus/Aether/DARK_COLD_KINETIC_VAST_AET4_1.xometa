@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_KINETIC_VAST_AET4_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Origami",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.3617,
+      "macro_movement": 0.5843,
+      "macro_coupling": 0.4589,
+      "macro_space": 0.2832
+    },
+    "OddOscar": {
+      "macro_character": 0.7087,
+      "macro_movement": 0.6449,
+      "macro_coupling": 0.5952,
+      "macro_space": 0.4313
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dark",
     "cold",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

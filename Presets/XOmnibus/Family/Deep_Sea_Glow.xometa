@@ -15,6 +15,7 @@
   "engines": [
     "Owlfish"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -33,6 +34,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OWLFISH in the dark — GLOW macro lit, DEPTH resonant. Bioluminescence at 3000 meters. Patient. Necessary.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "extended-family",
@@ -43,5 +49,25 @@
     "batch2-extended"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.5,
+    "movement": 0.38,
+    "density": 0.55,
+    "space": 0.7,
+    "aggression": 0.22
+  }
+>>>>>>> origin/v1-launch-prep
 }

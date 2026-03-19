@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_FROZEN_VAST_HARSH_ENT4_4",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ohm",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.067,
+      "macro_movement": 0.075,
+      "macro_coupling": 0.561,
+      "macro_space": 0.884
+    },
+    "OddOscar": {
+      "macro_character": 0.083,
+      "macro_movement": 0.084,
+      "macro_coupling": 0.562,
+      "macro_space": 0.857
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "cold",
     "vast",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Thaw Sequence",
+  "mood": "Flux",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Frozen colony slowly melting into mutation, freeze decaying over time.",
+  "tags": ["flux", "thawing", "evolving", "transition"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Organism": {
+      "org_oscWave": 3,
+      "org_rule": 54,
+      "org_mutate": 0.4,
+      "org_freeze": 0.35,
+      "org_scope": 0.55,
+      "org_filterCutoff": 3200,
+      "org_filterRes": 0.25,
+      "org_ampAtk": 0.05,
+      "org_ampDec": 0.4,
+      "org_ampSus": 0.7,
+      "org_ampRel": 0.8,
+      "org_lfo1Rate": 1.0,
+      "org_lfo1Depth": 0.22,
+      "org_lfo2Rate": 0.25,
+      "org_lfo2Depth": 0.15,
+      "org_reverbMix": 0.35,
+      "org_macroRule": 0.4,
+      "org_macroMutate": 0.4,
+      "org_macroSeed": 0.5,
+      "org_macroCoupling": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.0,
+    "SPACE": 0.35
+  },
+  "coupling": {"pairs": []}
+}

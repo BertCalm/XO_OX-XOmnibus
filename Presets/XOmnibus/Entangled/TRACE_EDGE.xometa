@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "TRACE EDGE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.736,
+      "macro_movement": 0.677,
+      "macro_coupling": 0.892,
+      "macro_space": 0.087
+    },
+    "OddOscar": {
+      "macro_character": 0.422,
+      "macro_movement": 0.03,
+      "macro_coupling": 0.219,
+      "macro_space": 0.505
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "sparse",
     "spectral"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

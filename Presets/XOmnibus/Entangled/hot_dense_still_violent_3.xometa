@@ -16,6 +16,18 @@
   },
   "engines": [
     "Osteria"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — hot dense still violent. Designed for SPARK coupling with XOsteria.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "spark",
+    "osteria"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "FLOW",
@@ -27,6 +39,7 @@
   "name": "HOT DENSE STILL VIOLENT 3",
   "parameters": {
     "Osteria": {
+<<<<<<< HEAD
       "couplingBus": 0,
       "couplingLevel": 0.999
     }
@@ -47,4 +60,13 @@
     "osteria"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.999,
+      "couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

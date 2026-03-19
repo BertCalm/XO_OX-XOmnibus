@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Tarpit Horizon",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Shadowy environmental texture. Low brightness, expansive space. OMBRE in void register.",
   "dna": {
     "aggression": 0.118,
@@ -47,5 +58,40 @@
     "environmental",
     "deep"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "GRADIENT",
+    "WARMTH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.123,
+    "warmth": 0.552,
+    "movement": 0.395,
+    "density": 0.33,
+    "space": 0.701,
+    "aggression": 0.118
+  },
+  "parameters": {
+    "Ombre": {
+      "gradient": 0.233,
+      "warmth": 0.357,
+      "coupling": 0.176,
+      "space": 0.691
+    }
+  },
+  "macros": {
+    "GRADIENT": 0.233,
+    "WARMTH": 0.357,
+    "COUPLING": 0.176,
+    "SPACE": 0.691
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

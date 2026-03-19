@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Spectrum Bell",
+  "mood": "Prism",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Genesis FM bell pushed bright with SNES tint — metallic, wide, each overtone a different era.",
+  "tags": [
+    "spectrum",
+    "bell",
+    "prism",
+    "bright",
+    "fm",
+    "overworld"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.28,
+    "movement": 0.38,
+    "density": 0.5,
+    "space": 0.7,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_era": 1,
+      "ow_macro_era": 0.7,
+      "ow_macro_chaos": 0.12,
+      "ow_macro_couple": 0.0,
+      "ow_macro_space": 0.65,
+      "ow_outputLevel": 0.78,
+      "ow_couplingLevel": 0.0,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

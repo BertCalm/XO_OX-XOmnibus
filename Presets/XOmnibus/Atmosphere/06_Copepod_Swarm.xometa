@@ -15,6 +15,18 @@
   },
   "engines": [
     "Owlfish"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "High grain density creates crawling micro-granular texture — tiny organisms swarming in darkness",
+  "tags": [
+    "texture",
+    "granular",
+    "swarm",
+    "micro"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "DEPTH",
@@ -26,6 +38,7 @@
   "name": "Copepod Swarm",
   "parameters": {
     "Owlfish": {
+<<<<<<< HEAD
       "owl_ampAttack": 15,
       "owl_ampDecay": 400,
       "owl_ampRelease": 700,
@@ -55,6 +68,9 @@
       "owl_grainMix": 0.7,
       "owl_grainPitch": 0.45,
       "owl_grainSize": 0.2,
+=======
+      "owl_portamento": 0.15,
+>>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 1,
       "owl_mixtur": 0.45,
       "owl_morphGlide": 0.4,

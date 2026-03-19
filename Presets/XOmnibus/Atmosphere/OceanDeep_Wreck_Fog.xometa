@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Wreck Fog",
+  "mood": "Atmosphere",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "drone",
+    "dark",
+    "deep",
+    "abyssal"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.14,
+    "warmth": 0.72,
+    "movement": 0.18,
+    "density": 0.82,
+    "space": 0.88,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 3,
+      "deep_subOctave": -1,
+      "deep_harmonicLevel": 0.22,
+      "deep_pressure": 0.58,
+      "deep_bodyType": 0,
+      "deep_bodySize": 0.85,
+      "deep_bodyDamp": 0.6,
+      "deep_flashRate": 0.1,
+      "deep_flashBright": 0.15,
+      "deep_creatureSpeed": 0.15,
+      "deep_creatureDepth": 0.15,
+      "deep_darkness": 0.85,
+      "deep_filterReso": 0.28,
+      "deep_reverbMix": 0.72,
+      "deep_reverbSize": 0.88,
+      "deep_delayMix": 0.28,
+      "deep_rumble": 0.6,
+      "deep_attack": 0.5,
+      "deep_decay": 2.5,
+      "deep_sustain": 0.82,
+      "deep_release": 6.0
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.58,
+    "CREATURE": 0.15,
+    "WRECK": 0.75,
+    "ABYSS": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

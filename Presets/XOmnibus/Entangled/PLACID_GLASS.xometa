@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "PLACID GLASS",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ombre",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.795,
+      "macro_movement": 0.09,
+      "macro_coupling": 0.682,
+      "macro_space": 0.15
+    },
+    "Obsidian": {
+      "macro_character": 0.586,
+      "macro_movement": 0.072,
+      "macro_coupling": 0.352,
+      "macro_space": 0.156
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "placid"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_STILL_SPARSE_VAST_FLX_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Oracle",
+    "Opal"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.3752,
+      "macro_movement": 0.1083,
+      "macro_coupling": 0.5407,
+      "macro_space": 0.7903
+    },
+    "Opal": {
+      "macro_character": 0.3591,
+      "macro_movement": 0.0952,
+      "macro_coupling": 0.2952,
+      "macro_space": 0.8561
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "low-movement",
     "low-density",
     "high-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

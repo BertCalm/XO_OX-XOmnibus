@@ -14,12 +14,15 @@
   "engines": [
     "Ouroboros",
     "Optic"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.75,

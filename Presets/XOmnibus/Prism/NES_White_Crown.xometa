@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
@@ -15,6 +16,23 @@
   },
   "engines": [
     "Overworld"
+=======
+  "schema_version": 1,
+  "name": "NES White Crown",
+  "mood": "Prism",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERWORLD pushed to extreme brightness — brightness 0.90, movement 0.74, aggression 0.76. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "overworld"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,8 +44,12 @@
   "name": "NES White Crown",
   "parameters": {
     "Overworld": {
+<<<<<<< HEAD
       "ow_couplingBus": 0,
       "ow_couplingLevel": 0.018,
+=======
+      "ow_macro_era": 0.983,
+>>>>>>> origin/v1-launch-prep
       "ow_macro_chaos": 0.673,
       "ow_macro_couple": 0.175,
       "ow_macro_era": 0.983,
@@ -45,6 +67,7 @@
     "space": 0.543,
     "warmth": 0.095
   },
+<<<<<<< HEAD
   "tags": [
     "prism",
     "ultra-bright",
@@ -54,4 +77,7 @@
   ],
   "tempo": null,
   "version": "1.0.0"
+=======
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Dissolved Horizon",
+  "mood": "Atmosphere",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "The edge between sky and water when both are gray. Low filter, vast grain, slow drift. A pad that has no clear boundary — it just becomes the environment.",
+  "tags": ["atmosphere", "horizon", "gray", "vast", "ambient", "pad"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.5,
+    "movement": 0.35,
+    "density": 0.65,
+    "space": 0.92,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.08,
+      "ombre_interference": 0.28,
+      "ombre_memoryDecay": 25.0,
+      "ombre_memoryGrain": 450.0,
+      "ombre_memoryDrift": 0.5,
+      "ombre_oscShape": 3,
+      "ombre_reactivity": 0.25,
+      "ombre_subLevel": 0.4,
+      "ombre_filterCutoff": 2000.0,
+      "ombre_filterReso": 0.12,
+      "ombre_attack": 2.0,
+      "ombre_decay": 3.0,
+      "ombre_sustain": 0.82,
+      "ombre_release": 6.0,
+      "ombre_level": 0.65,
+      "ombre_velCutoffScale": 0.22,
+      "ombre_lfo1Rate": 0.04,
+      "ombre_lfo1Depth": 0.45,
+      "ombre_lfo2Rate": 0.03,
+      "ombre_lfo2Depth": 0.35,
+      "ombre_macroCharacter": 0.92,
+      "ombre_macroMovement": 0.35,
+      "ombre_macroCoupling": 0.4,
+      "ombre_macroSpace": 0.95
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

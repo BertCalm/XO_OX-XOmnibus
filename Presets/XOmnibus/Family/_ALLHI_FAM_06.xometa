@@ -37,13 +37,21 @@
   "mood": "Family",
   "name": "ALLHI FAM 06",
   "parameters": {
+<<<<<<< HEAD
     "OddOscar": {
+=======
+    "Orphica": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.955,
       "macro_coupling": 0.696,
       "macro_movement": 0.921,
       "macro_space": 0.969
     },
+<<<<<<< HEAD
     "Orphica": {
+=======
+    "OddOscar": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.955,
       "macro_coupling": 0.696,
       "macro_movement": 0.921,
@@ -56,6 +64,10 @@
     "pole-fill",
     "high-energy",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

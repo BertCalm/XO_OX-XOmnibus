@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK WARM TIGHT VIOLENT ATM AGG 4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OddfeliX",
+    "Oblique"
+  ],
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.027,
+      "macro_movement": 0.302,
+      "macro_coupling": 0.862,
+      "macro_space": 0.069
+    },
+    "Oblique": {
+      "macro_character": 0.026,
+      "macro_movement": 0.293,
+      "macro_coupling": 0.883,
+      "macro_space": 0.072
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "dark",
     "tight"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

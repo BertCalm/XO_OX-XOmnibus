@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Deepsea Layer",
+  "mood": "Atmosphere",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": ["generative", "cellular", "ambient", "pad"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.68,
+    "movement": 0.25,
+    "density": 0.65,
+    "space": 0.82,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 90.0,
+      "org_seed": 21000,
+      "org_stepRate": 1.0,
+      "org_scope": 15,
+      "org_mutate": 0.002,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.5,
+      "org_filterCutoff": 1500.0,
+      "org_filterRes": 0.18,
+      "org_velCutoff": 0.32,
+      "org_ampAtk": 0.1,
+      "org_ampDec": 0.8,
+      "org_ampSus": 0.9,
+      "org_ampRel": 2.8,
+      "org_lfo1Rate": 0.15,
+      "org_lfo1Depth": 0.32,
+      "org_lfo2Rate": 0.08,
+      "org_lfo2Depth": 0.28,
+      "org_reverbMix": 0.82,
+      "org_macroRule": 0.06,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.008
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

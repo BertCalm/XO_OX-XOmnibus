@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_KINETIC_VIOLENT_PRS_DRK_2",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Owlfish",
+    "Osteria"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.958,
+      "macro_movement": 0.9223,
+      "macro_coupling": 0.6257,
+      "macro_space": 0.6876
+    },
+    "Osteria": {
+      "macro_character": 0.9866,
+      "macro_movement": 0.9087,
+      "macro_coupling": 0.6412,
+      "macro_space": 0.6707
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "hot",
     "kinetic",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

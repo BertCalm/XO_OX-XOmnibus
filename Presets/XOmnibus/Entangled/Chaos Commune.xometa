@@ -14,12 +14,15 @@
   "engines": [
     "Ohm",
     "Ouroboros"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.7,
@@ -50,6 +53,7 @@
     "ouroboros",
     "hippy"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Ouroboros strange attractor leashed to ohm's warm gravitational centre — chaos with a hearth"
+>>>>>>> origin/v1-launch-prep
 }

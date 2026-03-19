@@ -23,6 +23,20 @@
   "engines": [
     "Ombre",
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ombre memory layer chaos-injected into Onset percussion — grief as machine barrage.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "ombre",
+    "onset",
+    "memory"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

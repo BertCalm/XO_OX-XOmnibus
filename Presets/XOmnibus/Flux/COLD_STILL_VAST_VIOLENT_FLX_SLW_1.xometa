@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD_STILL_VAST_VIOLENT_FLX_SLW_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Oracle",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.396,
+      "macro_movement": 0.018,
+      "macro_coupling": 0.778,
+      "macro_space": 0.98
+    },
+    "Oceanic": {
+      "macro_character": 0.401,
+      "macro_movement": 0.02,
+      "macro_coupling": 0.89,
+      "macro_space": 0.951
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "vast",
     "violent",
     "frozen-instability"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

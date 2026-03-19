@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Mariana Whisper",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Shadowy environmental texture. Low brightness, expansive space. OUROBOROS in void register.",
   "dna": {
     "aggression": 0.166,
@@ -47,5 +58,40 @@
     "environmental",
     "deep"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "CYCLE",
+    "TENSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.106,
+    "warmth": 0.566,
+    "movement": 0.146,
+    "density": 0.389,
+    "space": 0.842,
+    "aggression": 0.166
+  },
+  "parameters": {
+    "Ouroboros": {
+      "cycle": 0.202,
+      "tension": 0.233,
+      "coupling": 0.123,
+      "space": 0.859
+    }
+  },
+  "macros": {
+    "CYCLE": 0.202,
+    "TENSION": 0.233,
+    "COUPLING": 0.123,
+    "SPACE": 0.859
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_STILL_VAST_GENTLE_ATM_4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orbital",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.717,
+      "macro_movement": 0.275,
+      "macro_coupling": 0.854,
+      "macro_space": 0.932
+    },
+    "OddOscar": {
+      "macro_character": 0.601,
+      "macro_movement": 0.146,
+      "macro_coupling": 0.593,
+      "macro_space": 0.773
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "still",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_KINETIC_VAST_GENTLE_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Optic",
+    "Obscura"
+  ],
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.534,
+      "macro_movement": 0.831,
+      "macro_coupling": 0.631,
+      "macro_space": 0.953
+    },
+    "Obscura": {
+      "macro_character": 0.568,
+      "macro_movement": 0.878,
+      "macro_coupling": 0.827,
+      "macro_space": 0.826
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "kinetic",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

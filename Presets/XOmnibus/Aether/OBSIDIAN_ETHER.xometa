@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "OBSIDIAN ETHER",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Onset",
+    "Oblong"
+  ],
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.645,
+      "macro_movement": 0.977,
+      "macro_coupling": 0.09,
+      "macro_space": 0.594
+    },
+    "Oblong": {
+      "macro_character": 0.384,
+      "macro_movement": 0.58,
+      "macro_coupling": 0.954,
+      "macro_space": 0.739
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "extreme",
     "low-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

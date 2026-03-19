@@ -37,13 +37,21 @@
   "mood": "Flux",
   "name": "CROSS FLX 02",
   "parameters": {
+<<<<<<< HEAD
     "Optic": {
+=======
+    "Organon": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.509,
       "macro_coupling": 0.496,
       "macro_movement": 0.686,
       "macro_space": 0.951
     },
+<<<<<<< HEAD
     "Organon": {
+=======
+    "Optic": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.509,
       "macro_coupling": 0.496,
       "macro_movement": 0.686,
@@ -56,6 +64,10 @@
     "pole-fill",
     "cross-pole",
     "contrast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

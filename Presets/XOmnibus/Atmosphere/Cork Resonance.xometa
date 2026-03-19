@@ -3,12 +3,15 @@
   "description": "A cork floor in a warm room. Soft density, perfect absorption.",
   "engines": [
     "Ohm"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.722,

@@ -15,6 +15,17 @@
   },
   "engines": [
     "Obscura"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OBSCURA — dark extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme-brightness"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,6 +37,12 @@
   "name": "Occult Mist",
   "parameters": {
     "Obscura": {
+<<<<<<< HEAD
+=======
+      "obsc_veilDepth": 0.4,
+      "obsc_filterCutoff": 0.19,
+      "obsc_filterReso": 0.12,
+>>>>>>> origin/v1-launch-prep
       "obsc_ampAttack": 679.2,
       "obsc_ampDecay": 366.5,
       "obsc_ampRelease": 515.2,
@@ -43,6 +60,7 @@
       "obsc_veilDepth": 0.4
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.35,
@@ -58,4 +76,9 @@
     "extreme-brightness"
   ],
   "version": "1.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

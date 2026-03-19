@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CRYO FLUX 3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Orbital",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.6194,
+      "macro_movement": 0.4192,
+      "macro_coupling": 0.5837,
+      "macro_space": 0.5228
+    },
+    "Obsidian": {
+      "macro_character": 0.9347,
+      "macro_movement": 0.2043,
+      "macro_coupling": 0.7162,
+      "macro_space": 0.2387
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "cold",
     "shifting"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

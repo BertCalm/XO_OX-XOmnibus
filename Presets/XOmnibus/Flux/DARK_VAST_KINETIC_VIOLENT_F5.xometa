@@ -16,6 +16,7 @@
   "engines": [
     "Osteria"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -36,6 +37,11 @@
     "space": 0.894,
     "warmth": 0.532
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme violent aggression, extreme kinetic movement, extreme vast space. Maximum contrast character design.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "dark",
     "aggressive",
@@ -44,5 +50,29 @@
     "flux",
     "extreme"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.095,
+    "warmth": 0.532,
+    "movement": 0.903,
+    "density": 0.444,
+    "space": 0.894,
+    "aggression": 0.924
+  },
+  "parameters": {
+    "Osteria": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

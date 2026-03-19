@@ -16,6 +16,18 @@
   },
   "engines": [
     "Ottoni"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — cold intimate kinetic dark. Designed for PULSE coupling with XOttoni.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "pulse",
+    "ottoni"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "SHIMMER",
@@ -27,6 +39,7 @@
   "name": "COLD INTIMATE KINETIC DARK 3",
   "parameters": {
     "Ottoni": {
+<<<<<<< HEAD
       "couplingBus": 1,
       "couplingLevel": 0.949
     }
@@ -47,4 +60,13 @@
     "ottoni"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.949,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

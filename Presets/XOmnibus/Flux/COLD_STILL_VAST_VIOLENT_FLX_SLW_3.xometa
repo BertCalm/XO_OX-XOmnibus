@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD_STILL_VAST_VIOLENT_FLX_SLW_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overdub",
+    "Optic"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.574,
+      "macro_movement": 0.019,
+      "macro_coupling": 0.724,
+      "macro_space": 1.0
+    },
+    "Optic": {
+      "macro_character": 0.636,
+      "macro_movement": 0.018,
+      "macro_coupling": 0.823,
+      "macro_space": 0.971
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "vast",
     "violent",
     "frozen-instability"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

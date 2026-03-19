@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Manganese Crust",
+  "mood": "Foundation",
+  "engines": ["OceanDeep"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dense, mineral-textured sub tone modeled after deep-sea manganese nodule fields.",
+  "tags": ["sub-bass", "textured", "dense", "dark"],
+  "macroLabels": ["PRESSURE", "CREATURE", "DEPTH", "LIGHT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.5,
+    "movement": 0.1,
+    "density": 0.96,
+    "space": 0.28,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_attack": 0.01,
+      "deep_decay": 0.35,
+      "deep_sustain": 0.95,
+      "deep_release": 0.4,
+      "deep_bodyType": 0,
+      "deep_bodySize": 1.0,
+      "deep_bodyDamp": 0.85,
+      "deep_subOctave": 2,
+      "deep_subShape": 0,
+      "deep_harmonicLevel": 0.1,
+      "deep_pressure": 0.95,
+      "deep_darkness": 0.95,
+      "deep_filterReso": 0.12,
+      "deep_rumble": 0.75,
+      "deep_creatureDepth": 0.05,
+      "deep_creatureSpeed": 0.03,
+      "deep_flashBright": 0.02,
+      "deep_flashRate": 0.05,
+      "deep_reverbSize": 0.45,
+      "deep_reverbMix": 0.2,
+      "deep_delayMix": 0.0,
+      "deep_macroPressure": 0.95,
+      "deep_macroCreature": 0.05,
+      "deep_macroDepth": 1.0,
+      "deep_macroLight": 0.02
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.95,
+    "CREATURE": 0.05,
+    "DEPTH": 1.0,
+    "LIGHT": 0.02
+  },
+  "coupling": {"pairs": []}
+}

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SWELL BASE",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overlap",
+    "Outwit"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.502,
+      "macro_movement": 0.881,
+      "macro_coupling": 0.422,
+      "macro_space": 0.532
+    },
+    "Outwit": {
+      "macro_character": 0.485,
+      "macro_movement": 0.975,
+      "macro_coupling": 0.577,
+      "macro_space": 0.372
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

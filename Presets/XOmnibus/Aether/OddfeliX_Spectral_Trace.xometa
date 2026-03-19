@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Trace",
+  "mood": "Aether",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "A spectral trace in the aether — after-image of a bright school passage.",
+  "tags": ["spectral", "trace", "after-image", "aether"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.82, "warmth": 0.15, "movement": 0.32, "density": 0.15, "space": 0.9, "aggression": 0.05},
+  "parameters": {
+    "OddfeliX": {"snap_oscMode": 0, "snap_snap": 0.32, "snap_decay": 0.65, "snap_detune": 0.12, "snap_filterCutoff": 14000.0, "snap_filterReso": 0.62, "snap_filterEnvDepth": 0.38, "snap_unison": 2, "snap_sweepDirection": 1, "snap_pitchLock": 0.68, "snap_polyphony": 4, "snap_level": 0.3, "snap_macroDart": 0.2, "snap_macroDepth": 0.18, "snap_macroSchool": 0.15, "snap_macroSurface": 0.9}
+  },
+  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.32, "COUPLING": 0.0, "SPACE": 0.9},
+  "coupling": {"pairs": []}
+}

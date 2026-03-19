@@ -24,6 +24,7 @@
     "Owlfish",
     "Ohm"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "DEPTH",
     "FEEDING",
@@ -81,6 +82,11 @@
     "space": 0.458,
     "warmth": 0.8902
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Hot Kinetic Sparse Gentle character entanglement — OWLFISH × OHM via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "warm",
@@ -89,5 +95,85 @@
     "gentle",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
+  "couplingIntensity": "Medium",
+  "dna": {
+    "brightness": 0.4844,
+    "warmth": 0.8902,
+    "movement": 0.9389,
+    "density": 0.1104,
+    "space": 0.458,
+    "aggression": 0.0232
+  },
+  "sonic_dna": {
+    "brightness": 0.4844,
+    "warmth": 0.8902,
+    "movement": 0.9389,
+    "density": 0.1104,
+    "space": 0.458,
+    "aggression": 0.0232
+  },
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.7764,
+      "macro_movement": 0.9213,
+      "macro_coupling": 0.6388,
+      "macro_space": 0.4208,
+      "filter_cutoff": 0.5486,
+      "filter_resonance": 0.0913,
+      "amp_attack": 0.058,
+      "amp_release": 0.3678,
+      "reverb_mix": 0.406,
+      "reverb_size": 0.4397,
+      "drive": 0.051,
+      "density": 0.0814,
+      "output_level": 0.7036,
+      "coupling_level": 0.5901
+    },
+    "Ohm": {
+      "macro_character": 0.8035,
+      "macro_movement": 0.9494,
+      "macro_coupling": 0.6323,
+      "macro_space": 0.4816,
+      "filter_cutoff": 0.5783,
+      "filter_resonance": 0.1342,
+      "amp_attack": 0.0631,
+      "amp_release": 0.3784,
+      "reverb_mix": 0.4007,
+      "reverb_size": 0.5078,
+      "drive": 0.0688,
+      "density": 0.1015,
+      "output_level": 0.702,
+      "coupling_level": 0.5448
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OWLFISH",
+    "target": "OHM",
+    "amount": 0.7088,
+    "pairs": [
+      {
+        "source": "OWLFISH",
+        "target": "OHM",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.7088
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.6873,
+    "MOVEMENT": 0.9389,
+    "COUPLING": 0.7088,
+    "SPACE": 0.458
+  }
+>>>>>>> origin/v1-launch-prep
 }

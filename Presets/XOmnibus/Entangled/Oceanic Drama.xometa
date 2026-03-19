@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -44,6 +45,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "Oceanic Drama",
+  "mood": "Entangled",
+  "engines": [
+    "Oceanic",
+    "Ole"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OLE's Afro-Latin percussion drives OCEANIC swell — the ocean has rhythm, always.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",

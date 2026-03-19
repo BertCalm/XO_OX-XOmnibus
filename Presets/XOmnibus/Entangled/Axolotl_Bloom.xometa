@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Axolotl Bloom",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "OddOscar"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Axolotl gill pulse feeds OVERLAP modulation rate — regenerative rhythm in deep reflective water",
   "dna": {
     "aggression": 0.2,
@@ -40,9 +52,14 @@
   "name": "Axolotl Bloom",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.611,
       "olap_crossfeedAmt": 0.306,
+=======
+      "olap_size": 0.788,
+      "olap_decay": 0.77,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.344,
       "olap_decay": 0.77,
       "olap_diffusion": 0.548,

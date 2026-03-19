@@ -3,12 +3,15 @@
   "description": "Orchid mist over a still lake. Warmth accumulates with no sharp edges.",
   "engines": [
     "Orphica"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.74,

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FND_5",
+  "mood": "Foundation",
+  "engines": [
+    "Obsidian",
+    "Oblong"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT. Variant 5.",
   "dna": {
     "aggression": 0.924,
@@ -71,5 +83,49 @@
     "dense"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 1.0,
+      "macro_movement": 0.907,
+      "macro_coupling": 0.81,
+      "macro_space": 0.109
+    },
+    "Oblong": {
+      "macro_character": 0.943,
+      "macro_movement": 0.9,
+      "macro_coupling": 0.77,
+      "macro_space": 0.0
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBSIDIAN",
+    "target": "OBLONG",
+    "amount": 0.808
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.962,
+    "warmth": 0.543,
+    "movement": 0.965,
+    "density": 0.897,
+    "space": 0.077,
+    "aggression": 0.924
+  },
+  "macros": {
+    "CHARACTER": 0.972,
+    "MOVEMENT": 0.903,
+    "COUPLING": 0.79,
+    "SPACE": 0.054
+  }
+>>>>>>> origin/v1-launch-prep
 }

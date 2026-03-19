@@ -16,6 +16,7 @@
   "engines": [
     "Organon"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -36,6 +37,11 @@
     "space": 0.955,
     "warmth": 0.453
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme gentle aggression, extreme sparse density, extreme vast space. Maximum contrast character design.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "bright",
     "gentle",
@@ -44,5 +50,29 @@
     "flux",
     "extreme"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Spatial",
+  "dna": {
+    "brightness": 0.912,
+    "warmth": 0.453,
+    "movement": 0.529,
+    "density": 0.072,
+    "space": 0.955,
+    "aggression": 0.049
+  },
+  "parameters": {
+    "Organon": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

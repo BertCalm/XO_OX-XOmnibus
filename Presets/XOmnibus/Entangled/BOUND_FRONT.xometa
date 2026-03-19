@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BOUND FRONT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overbite",
+    "Octopus"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.8062,
+      "macro_movement": 0.9098,
+      "macro_coupling": 0.6428,
+      "macro_space": 0.0963
+    },
+    "Octopus": {
+      "macro_character": 0.1489,
+      "macro_movement": 0.1919,
+      "macro_coupling": 0.8106,
+      "macro_space": 0.8152
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "stacked",
     "coiled",
     "extreme-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

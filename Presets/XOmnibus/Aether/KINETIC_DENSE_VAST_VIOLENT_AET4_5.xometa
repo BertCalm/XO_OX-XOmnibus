@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "KINETIC_DENSE_VAST_VIOLENT_AET4_5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Overworld",
+    "Origami"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.9103,
+      "macro_movement": 0.9383,
+      "macro_coupling": 0.5463,
+      "macro_space": 0.4113
+    },
+    "Origami": {
+      "macro_character": 0.4864,
+      "macro_movement": 0.5956,
+      "macro_coupling": 0.9247,
+      "macro_space": 0.8127
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dense",
     "vast",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_DENSE_VIOLENT_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oracle",
+    "Opal"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.706,
+      "macro_movement": 0.388,
+      "macro_coupling": 0.707,
+      "macro_space": 0.582
+    },
+    "Opal": {
+      "macro_character": 0.372,
+      "macro_movement": 0.346,
+      "macro_coupling": 0.543,
+      "macro_space": 0.532
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "cold",
     "dense",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

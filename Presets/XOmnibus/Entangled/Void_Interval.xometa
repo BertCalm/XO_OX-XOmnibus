@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Void Interval",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Odyssey",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.15,
+      "macro_movement": 0.22,
+      "macro_coupling": 0.72,
+      "macro_space": 0.94
+    },
+    "Obsidian": {
+      "macro_character": 0.12,
+      "macro_movement": 0.17,
+      "macro_coupling": 0.77,
+      "macro_space": 0.97
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "void",
     "crystalline"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Odyssey wavetable drifts through a single spectral node — Obsidian crystallises the silence around it."
+>>>>>>> origin/v1-launch-prep
 }

@@ -15,6 +15,7 @@
   "engines": [
     "Obese"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -33,6 +34,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE maximum weight — sub dominant, saturation present. The bottom of the spectrum claimed entirely. Nothing apologetic here.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "signature",
@@ -44,5 +50,25 @@
     "batch1-signatures"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.72,
+    "movement": 0.28,
+    "density": 0.9,
+    "space": 0.38,
+    "aggression": 0.62
+  }
+>>>>>>> origin/v1-launch-prep
 }

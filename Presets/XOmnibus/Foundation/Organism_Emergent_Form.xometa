@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Emergent Form",
+  "mood": "Foundation",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "emergent",
+    "generative",
+    "pattern",
+    "living"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.52,
+    "space": 0.4,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 54.0,
+      "org_seed": 128,
+      "org_stepRate": 3.5,
+      "org_scope": 5,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.35,
+      "org_filterCutoff": 3000.0,
+      "org_filterRes": 0.3,
+      "org_velCutoff": 0.5,
+      "org_ampAtk": 0.015,
+      "org_ampDec": 0.35,
+      "org_ampSus": 0.7,
+      "org_ampRel": 0.7,
+      "org_lfo1Rate": 0.5,
+      "org_lfo1Depth": 0.2,
+      "org_lfo2Rate": 0.3,
+      "org_lfo2Depth": 0.22,
+      "org_reverbMix": 0.22,
+      "org_macroRule": 0.86,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.43,
+    "MOVEMENT": 0.43,
+    "COUPLING": 0.0,
+    "SPACE": 0.43
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

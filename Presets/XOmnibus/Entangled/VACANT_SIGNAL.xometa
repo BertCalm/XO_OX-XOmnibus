@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "VACANT SIGNAL",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.793,
+      "macro_movement": 0.595,
+      "macro_coupling": 0.824,
+      "macro_space": 0.921
+    },
+    "Oceanic": {
+      "macro_character": 0.439,
+      "macro_movement": 0.469,
+      "macro_coupling": 0.304,
+      "macro_space": 0.403
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "sparse",
     "minimal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

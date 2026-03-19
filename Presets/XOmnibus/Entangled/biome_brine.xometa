@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Biome Brine",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ocelot",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.655,
+      "macro_movement": 0.705,
+      "macro_coupling": 0.555,
+      "macro_space": 0.455
+    },
+    "Oceanic": {
+      "macro_character": 0.295,
+      "macro_movement": 0.345,
+      "macro_coupling": 0.445,
+      "macro_space": 0.795
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {

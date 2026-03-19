@@ -15,6 +15,19 @@
   },
   "engines": [
     "Origami"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Origami fold collapsed into maximum darkness",
+  "tags": [
+    "prism",
+    "dark",
+    "dense",
+    "extreme",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "FOLD",
@@ -32,7 +45,15 @@
   "name": "Fold Abyss",
   "parameters": {
     "Origami": {
+<<<<<<< HEAD
       "ori_couplingBus": 0,
+=======
+      "ori_macro_fold": 0.2187,
+      "ori_macro_tension": 0.7648,
+      "ori_macro_couple": 0.828,
+      "ori_macro_space": 0.6618,
+      "ori_outputLevel": 0.85,
+>>>>>>> origin/v1-launch-prep
       "ori_couplingLevel": 0.5,
       "ori_macro_couple": 0.828,
       "ori_macro_fold": 0.2187,
@@ -41,6 +62,7 @@
       "ori_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.751,
@@ -58,4 +80,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

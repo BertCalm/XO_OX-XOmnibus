@@ -37,13 +37,21 @@
   "mood": "Family",
   "name": "ALLHI FAM 05",
   "parameters": {
+<<<<<<< HEAD
     "OddOscar": {
+=======
+    "Opal": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.958,
       "macro_coupling": 0.643,
       "macro_movement": 0.967,
       "macro_space": 0.368
     },
+<<<<<<< HEAD
     "Opal": {
+=======
+    "OddOscar": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.958,
       "macro_coupling": 0.643,
       "macro_movement": 0.967,
@@ -56,6 +64,10 @@
     "pole-fill",
     "high-energy",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

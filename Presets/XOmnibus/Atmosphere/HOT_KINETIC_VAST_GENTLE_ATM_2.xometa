@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_KINETIC_VAST_GENTLE_ATM_2",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OddfeliX",
+    "Oblique"
+  ],
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.469,
+      "macro_movement": 0.955,
+      "macro_coupling": 0.761,
+      "macro_space": 0.784
+    },
+    "Oblique": {
+      "macro_character": 0.651,
+      "macro_movement": 0.788,
+      "macro_coupling": 0.499,
+      "macro_space": 0.827
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "kinetic",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

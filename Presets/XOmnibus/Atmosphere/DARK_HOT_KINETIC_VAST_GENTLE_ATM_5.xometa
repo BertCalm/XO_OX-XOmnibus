@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_KINETIC_VAST_GENTLE_ATM_5",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Osprey",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.4541,
+      "macro_movement": 0.9624,
+      "macro_coupling": 0.4087,
+      "macro_space": 0.9302
+    },
+    "OddfeliX": {
+      "macro_character": 0.4511,
+      "macro_movement": 0.9547,
+      "macro_coupling": 0.4072,
+      "macro_space": 0.9387
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

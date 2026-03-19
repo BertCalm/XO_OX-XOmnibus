@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "OBBLIGATO The Bond — Oceanic",
+  "mood": "Entangled",
+  "engines": [
+    "Obbligato",
+    "Oceanic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Coral reef breath: BOND ties OBBLIGATO's wind pair to OCEANIC's chromophore shimmer column.",
   "dna": {
     "aggression": 0.583,

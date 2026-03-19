@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT WARM KINETIC DENSE GENTLE FAM2 5",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Ottoni",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.911,
+      "macro_movement": 0.941,
+      "macro_coupling": 0.458,
+      "macro_space": 0.573
+    },
+    "Obbligato": {
+      "macro_character": 0.901,
+      "macro_movement": 0.942,
+      "macro_coupling": 0.438,
+      "macro_space": 0.542
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "dense",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

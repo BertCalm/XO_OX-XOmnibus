@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK TORRENT",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Owlfish",
+    "Ombre"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.597,
+      "macro_movement": 0.594,
+      "macro_coupling": 0.803,
+      "macro_space": 0.537
+    },
+    "Ombre": {
+      "macro_character": 0.559,
+      "macro_movement": 0.714,
+      "macro_coupling": 0.788,
+      "macro_space": 0.461
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "violent",
     "extreme"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

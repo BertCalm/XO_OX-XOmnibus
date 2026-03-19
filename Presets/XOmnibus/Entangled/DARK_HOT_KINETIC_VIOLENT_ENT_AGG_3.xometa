@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_KINETIC_VIOLENT_ENT_AGG_3",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Owlfish",
+    "Overdub"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.371,
+      "macro_movement": 0.91,
+      "macro_coupling": 0.839,
+      "macro_space": 0.544
+    },
+    "Overdub": {
+      "macro_character": 0.542,
+      "macro_movement": 0.851,
+      "macro_coupling": 0.806,
+      "macro_space": 0.508
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dark",
     "hot",
     "kinetic"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

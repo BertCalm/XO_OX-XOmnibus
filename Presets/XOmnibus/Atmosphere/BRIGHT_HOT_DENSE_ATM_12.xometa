@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT HOT DENSE ATM 12",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overdub",
+    "Octopus"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.905,
+      "macro_movement": 0.676,
+      "macro_coupling": 0.55,
+      "macro_space": 0.661
+    },
+    "Octopus": {
+      "macro_character": 0.755,
+      "macro_movement": 0.612,
+      "macro_coupling": 0.653,
+      "macro_space": 0.685
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

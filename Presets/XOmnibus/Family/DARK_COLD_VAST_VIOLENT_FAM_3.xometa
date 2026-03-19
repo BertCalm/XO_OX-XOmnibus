@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "DARK COLD VAST VIOLENT FAM 3",
+  "mood": "Family",
+  "engines": [
+    "Opal",
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — family, dark, cold, vast.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "dark",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.062,
+    "warmth": 0.099,
+    "movement": 0.489,
+    "density": 0.429,
+    "space": 0.934,
+    "aggression": 0.906
+  },
+  "parameters": {
+    "Opal": {
+      "level": 0.844,
+      "pan": 0.018
+    },
+    "Oracle": {
+      "level": 0.675,
+      "pan": -0.062
+    }
+  },
+  "coupling": [
+    {
+      "source": "OPAL",
+      "destination": "ORACLE",
+      "type": "HARMONIC_FOLD",
+      "amount": 0.506
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Crease Diffusion",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Lion's Mane knot-topology FDN entangled with ORIGAMI's folded geometric character (Vermillion fold-based synthesis). Coupling: Chaos Inject.",
   "dna": {
     "aggression": 0.29,
@@ -39,6 +51,7 @@
   "mood": "Entangled",
   "name": "Crease Diffusion",
   "parameters": {
+<<<<<<< HEAD
     "Origami": {
       "origami_ampAttack": 0.16,
       "origami_ampRelease": 0.55,
@@ -57,6 +70,11 @@
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.67,
       "olap_crossfeedAmt": 0.35,
+=======
+    "Overlap": {
+      "olap_size": 0.74,
+      "olap_decay": 0.73,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.55,
       "olap_decay": 0.73,
       "olap_diffusion": 0.54,
@@ -69,11 +87,29 @@
       "olap_modRate": 0.29,
       "olap_nodeCount": 12,
       "olap_outputLevel": 0.8,
+<<<<<<< HEAD
       "olap_outputPan": 0.18,
       "olap_preDelay": 0.15,
       "olap_shimmerMix": 0.3,
       "olap_size": 0.74,
       "olap_spinRate": 0.07
+=======
+      "olap_outputPan": 0.18
+    },
+    "Origami": {
+      "origami_character": 0.73,
+      "origami_movement": 0.53,
+      "origami_coupling": 0.55,
+      "origami_space": 0.37,
+      "origami_filterCutoff": 0.61,
+      "origami_filterReso": 0.17,
+      "origami_ampAttack": 0.16,
+      "origami_ampSustain": 0.65,
+      "origami_ampRelease": 0.55,
+      "origami_reverbMix": 0.14,
+      "origami_couplingLevel": 0.63,
+      "origami_outputLevel": 0.79
+>>>>>>> origin/v1-launch-prep
     }
   },
   "schema_version": 1,

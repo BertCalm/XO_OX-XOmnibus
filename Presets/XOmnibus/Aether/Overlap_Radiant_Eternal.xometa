@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Radiant Eternal",
+  "mood": "Aether",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Bright and near-infinite \u2014 an unknot with minimal damping held at maximum feedback. Every note adds its spectrum to an ever-brightening background. A sun that never sets, made of delay topology.",
+  "tags": [
+    "radiant",
+    "bright",
+    "infinite",
+    "unknot",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.5,
+    "movement": 0.35,
+    "density": 0.88,
+    "space": 0.98,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 0,
+      "olap_delayFeedback": 0.93,
+      "olap_diffusion": 0.88,
+      "olap_spread": 0.9,
+      "olap_decay": 50.0,
+      "olap_modDepth": 0.12,
+      "olap_modRate": 0.02,
+      "olap_damping": 0.18,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

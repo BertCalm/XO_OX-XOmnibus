@@ -15,6 +15,17 @@
   },
   "engines": [
     "Organon"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORGANON — dark extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,6 +37,7 @@
   "name": "Drawbar Depth",
   "parameters": {
     "Organon": {
+<<<<<<< HEAD
       "org_ampAttack": 145.8,
       "org_ampDecay": 332.8,
       "org_ampRelease": 740.0,
@@ -33,6 +45,8 @@
       "org_character": 0.25,
       "org_coupling": 0.38,
       "org_delayMix": 0.74,
+=======
+>>>>>>> origin/v1-launch-prep
       "org_drawbar1": 0.93,
       "org_drawbar2": 0.24,
       "org_drawbar3": 0.16,
@@ -44,6 +58,7 @@
       "org_space": 0.7
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.69,
@@ -59,4 +74,9 @@
     "extreme-brightness"
   ],
   "version": "1.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -58,5 +58,9 @@
     "divination",
     "sparse"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Oracle frequency-shifts grain positions — divination through spectral scarcity."
+>>>>>>> origin/v1-launch-prep
 }

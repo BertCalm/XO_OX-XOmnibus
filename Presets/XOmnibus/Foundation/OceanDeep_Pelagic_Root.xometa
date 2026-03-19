@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Pelagic Root",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "sub",
+    "deep",
+    "warm"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.8,
+    "movement": 0.12,
+    "density": 0.86,
+    "space": 0.72,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 2,
+      "deep_subOctave": -1,
+      "deep_harmonicLevel": 0.2,
+      "deep_pressure": 0.7,
+      "deep_bodyType": 2,
+      "deep_bodySize": 0.75,
+      "deep_bodyDamp": 0.75,
+      "deep_flashRate": 0.06,
+      "deep_flashBright": 0.1,
+      "deep_creatureSpeed": 0.1,
+      "deep_creatureDepth": 0.1,
+      "deep_darkness": 0.85,
+      "deep_filterReso": 0.18,
+      "deep_reverbMix": 0.48,
+      "deep_reverbSize": 0.82,
+      "deep_delayMix": 0.08,
+      "deep_rumble": 0.65,
+      "deep_attack": 0.01,
+      "deep_decay": 1.2,
+      "deep_sustain": 0.78,
+      "deep_release": 2.8
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.7,
+    "CREATURE": 0.1,
+    "WRECK": 0.15,
+    "ABYSS": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

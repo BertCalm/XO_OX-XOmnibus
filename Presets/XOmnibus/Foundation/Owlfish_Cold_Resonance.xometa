@@ -1,10 +1,37 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
+=======
+  "schema_version": 1,
+  "name": "Cold Resonance",
+  "mood": "Foundation",
+  "engines": [
+    "Owlfish"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Mixtur-Trautonium stripped of warmth — subharmonics silenced, body resonator cold, grain cloud off, reverb near-zero. The owlfish in total darkness above the thermocline where heat cannot reach. Inharmonic metallic partials, dry and clinical.",
+  "tags": [
+    "cold",
+    "dry",
+    "inharmonic",
+    "metallic",
+    "sparse",
+    "foundation"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
+>>>>>>> origin/v1-launch-prep
   "couplingIntensity": "None",
   "created": "2026-03-14",
+<<<<<<< HEAD
   "description": "Mixtur-Trautonium stripped of warmth — subharmonics silenced, body resonator cold, grain cloud off, reverb near-zero. The owlfish in total darkness above the thermocline where heat cannot reach. Inharmonic metallic partials, dry and clinical.",
   "dna": {
     "aggression": 0.28,
@@ -62,6 +89,16 @@
       "owl_grainMix": 0.0,
       "owl_grainPitch": 0.0,
       "owl_grainSize": 0.5,
+=======
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Owlfish": {
+      "owl_portamento": 0.0,
+>>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 0,
       "owl_mixtur": 0.12,
       "owl_morphGlide": 0.05,

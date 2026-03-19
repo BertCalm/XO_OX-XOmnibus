@@ -58,5 +58,9 @@
     "folded",
     "epoch"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Odyssey's drift envelope controls Origami fold rate — geological paper folding."
+>>>>>>> origin/v1-launch-prep
 }

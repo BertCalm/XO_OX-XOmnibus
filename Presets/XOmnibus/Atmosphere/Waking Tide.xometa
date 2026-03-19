@@ -3,12 +3,15 @@
   "description": "Lavender into amber. The transition between night and day held in sustained tone.",
   "engines": [
     "Oracle"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.66,

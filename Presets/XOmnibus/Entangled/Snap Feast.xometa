@@ -23,8 +23,23 @@
     "warmth": 0.703
   },
   "engines": [
+<<<<<<< HEAD
     "Overbite",
     "Osteria"
+=======
+    "XOverbite",
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERBITE bite at the OSTERIA table. Slow feast, fat bass. [Env->Morph]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overbite",
+    "osteria",
+    "bite"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -35,11 +50,24 @@
   "mood": "Entangled",
   "name": "Snap Feast",
   "parameters": {
+<<<<<<< HEAD
     "Osteria": {
       "ost_aggression": 0.481,
       "ost_brightness": 0.376,
       "ost_couplingBus": 0,
       "ost_couplingLevel": 0.57,
+=======
+    "XOverbite": {
+      "poss_outputLevel": 0.79,
+      "poss_outputPan": -0.01,
+      "poss_couplingLevel": 0.72,
+      "poss_couplingBus": 0,
+      "poss_brightness": 0.441,
+      "poss_warmth": 0.692,
+      "poss_aggression": 0.609
+    },
+    "Osteria": {
+>>>>>>> origin/v1-launch-prep
       "ost_outputLevel": 0.76,
       "ost_outputPan": 0.05,
       "ost_warmth": 0.735

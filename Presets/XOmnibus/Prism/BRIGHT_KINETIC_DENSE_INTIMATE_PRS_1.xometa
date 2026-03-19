@@ -37,15 +37,25 @@
   "mood": "Prism",
   "name": "Bloom Saturated",
   "parameters": {
+<<<<<<< HEAD
     "Optic": {
       "macro_character": 0.226,
       "macro_coupling": 0.725,
+=======
+    "Origami": {
+      "macro_character": 0.589,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.891,
       "macro_space": 0.138
     },
+<<<<<<< HEAD
     "Origami": {
       "macro_character": 0.589,
       "macro_coupling": 0.453,
+=======
+    "Optic": {
+      "macro_character": 0.226,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.891,
       "macro_space": 0.138
     }
@@ -57,6 +67,10 @@
     "kinetic",
     "dense",
     "intimate"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

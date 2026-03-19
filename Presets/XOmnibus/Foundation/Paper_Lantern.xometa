@@ -15,6 +15,17 @@
   },
   "engines": [
     "Origami"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORIGAMI — bright extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme-brightness"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,6 +37,13 @@
   "name": "Paper Lantern",
   "parameters": {
     "Origami": {
+<<<<<<< HEAD
+=======
+      "ori_foldDepth": 0.99,
+      "ori_foldRate": 0.31,
+      "ori_filterCutoff": 0.62,
+      "ori_filterReso": 0.61,
+>>>>>>> origin/v1-launch-prep
       "ori_ampAttack": 593.4,
       "ori_ampDecay": 758.3,
       "ori_ampRelease": 172.8,
@@ -44,6 +62,7 @@
       "ori_space": 0.59
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.78,
@@ -59,4 +78,9 @@
     "extreme-brightness"
   ],
   "version": "1.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

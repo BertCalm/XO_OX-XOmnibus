@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Tape Harmonium",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Organon"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.78,
+      "macro_movement": 0.59,
+      "macro_coupling": 0.58,
+      "macro_space": 0.57
+    },
+    "Organon": {
+      "macro_character": 0.71,
+      "macro_movement": 0.44,
+      "macro_coupling": 0.6,
+      "macro_space": 0.53
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "warm-dense",
     "scorching"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

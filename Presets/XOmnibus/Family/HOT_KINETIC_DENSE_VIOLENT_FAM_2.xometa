@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "HOT KINETIC DENSE VIOLENT FAM 2",
+  "mood": "Family",
+  "engines": [
+    "Ottoni",
+    "OddfeliX"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — family, warm, kinetic, dense.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "warm",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.53,
+    "warmth": 0.954,
+    "movement": 0.945,
+    "density": 0.91,
+    "space": 0.473,
+    "aggression": 0.891
+  },
+  "parameters": {
+    "Ottoni": {
+      "level": 0.754,
+      "pan": 0.116
+    },
+    "OddfeliX": {
+      "level": 0.818,
+      "pan": -0.004
+    }
+  },
+  "coupling": [
+    {
+      "source": "OTTONI",
+      "destination": "ODDFELIX",
+      "type": "AMPLITUDE_MOD",
+      "amount": 0.362
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

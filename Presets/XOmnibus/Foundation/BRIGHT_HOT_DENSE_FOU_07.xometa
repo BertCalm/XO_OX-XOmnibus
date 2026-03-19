@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT HOT DENSE FOU 07",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.913,
+      "macro_movement": 0.573,
+      "macro_coupling": 0.456,
+      "macro_space": 0.407
+    },
+    "Orbital": {
+      "macro_character": 0.899,
+      "macro_movement": 0.709,
+      "macro_coupling": 0.73,
+      "macro_space": 0.336
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

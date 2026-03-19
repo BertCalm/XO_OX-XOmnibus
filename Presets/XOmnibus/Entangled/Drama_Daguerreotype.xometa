@@ -1,5 +1,32 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "schema_version": 1,
+  "name": "Drama Daguerreotype",
+  "mood": "Entangled",
+  "engines": [
+    "Ole",
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Harmonic folds from DRAMA's percussive attack are preserved in OBSCURA's silver plate.",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.8,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.8,
+      "macro_space": 0.36
+    },
+    "Obscura": {
+      "macro_character": 0.65,
+      "macro_movement": 0.58,
+      "macro_coupling": 0.7,
+      "macro_space": 0.5
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +85,10 @@
     "obscura",
     "harmonic",
     "drama"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

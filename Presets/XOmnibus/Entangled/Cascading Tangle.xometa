@@ -1,5 +1,49 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "schema_version": 1,
+  "name": "Cascading Tangle",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.66,
+    "COUPLING": 0.85,
+    "SPACE": 0.65
+  },
+  "sonic_dna": {
+    "movement": 0.64,
+    "brightness": 0.59,
+    "aggression": 0.43,
+    "space": 0.65,
+    "warmth": 0.55,
+    "density": 0.74
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_size": 0.735,
+      "olap_decay": 0.547,
+      "olap_damping": 0.583,
+      "olap_diffusion": 0.689,
+      "olap_modDepth": 0.351,
+      "olap_modRate": 0.203,
+      "olap_preDelay": 0.068,
+      "olap_earlyMix": 0.492,
+      "olap_lateMix": 0.792,
+      "olap_filterCutoff": 0.497,
+      "olap_filterReso": 0.265,
+      "olap_outputLevel": 0.727,
+      "olap_couplingLevel": 0.78,
+      "olap_couplingBus": 0
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -66,6 +110,7 @@
     "fdn",
     "reverb"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.497,
@@ -75,4 +120,7 @@
     "space": 0.068,
     "aggression": 0.3
   }
+=======
+  "description": "Onset rhythmic density modulates OVERLAP mod rate — drum patterns animate the FDN's internal flutter"
+>>>>>>> origin/v1-launch-prep
 }

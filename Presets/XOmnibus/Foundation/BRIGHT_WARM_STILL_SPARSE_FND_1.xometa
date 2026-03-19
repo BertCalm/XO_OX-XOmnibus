@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_STILL_SPARSE_FND_1",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub",
+    "Oracle"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.181,
+      "macro_movement": 0.445,
+      "macro_coupling": 0.321,
+      "macro_space": 0.282
+    },
+    "Oracle": {
+      "macro_character": 0.346,
+      "macro_movement": 0.323,
+      "macro_coupling": 0.637,
+      "macro_space": 0.254
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "warm",
     "still",
     "sparse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -24,6 +24,7 @@
     "Oblong",
     "Organon"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "BOB",
     "FIDGET",
@@ -81,6 +82,11 @@
     "space": 0.967,
     "warmth": 0.424
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright Dense Vast Gentle character entanglement — OBLONG × ORGANON via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -89,5 +95,85 @@
     "gentle",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "BOB",
+    "FIDGET",
+    "WEAVE",
+    "CHAMBER"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.9033,
+    "warmth": 0.424,
+    "movement": 0.5045,
+    "density": 0.8944,
+    "space": 0.967,
+    "aggression": 0.079
+  },
+  "sonic_dna": {
+    "brightness": 0.9033,
+    "warmth": 0.424,
+    "movement": 0.5045,
+    "density": 0.8944,
+    "space": 0.967,
+    "aggression": 0.079
+  },
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.7551,
+      "macro_movement": 0.4698,
+      "macro_coupling": 0.6435,
+      "macro_space": 0.9854,
+      "filter_cutoff": 0.86,
+      "filter_resonance": 0.1041,
+      "amp_attack": 0.2151,
+      "amp_release": 0.675,
+      "reverb_mix": 0.6782,
+      "reverb_size": 0.7889,
+      "drive": 0.0979,
+      "density": 0.9137,
+      "output_level": 0.9429,
+      "coupling_level": 0.5512
+    },
+    "Organon": {
+      "macro_character": 0.7572,
+      "macro_movement": 0.5206,
+      "macro_coupling": 0.6007,
+      "macro_space": 1.0,
+      "filter_cutoff": 0.8341,
+      "filter_resonance": 0.1621,
+      "amp_attack": 0.2659,
+      "amp_release": 0.6536,
+      "reverb_mix": 0.6521,
+      "reverb_size": 0.8027,
+      "drive": 0.0947,
+      "density": 0.9253,
+      "output_level": 0.9453,
+      "coupling_level": 0.5439
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORGANON",
+    "target": "OBLONG",
+    "amount": 0.8657,
+    "pairs": [
+      {
+        "source": "ORGANON",
+        "target": "OBLONG",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.8657
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.6636,
+    "MOVEMENT": 0.5045,
+    "COUPLING": 0.8657,
+    "SPACE": 0.967
+  }
+>>>>>>> origin/v1-launch-prep
 }

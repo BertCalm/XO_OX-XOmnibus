@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Brass Web",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Ottoni"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Ottoni triple brass partials distribute across OVERLAP node matrix — brass in the FDN cathedral",
   "dna": {
     "aggression": 0.3,
@@ -40,9 +52,14 @@
   "name": "Brass Web",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.615,
       "olap_crossfeedAmt": 0.411,
+=======
+      "olap_size": 0.836,
+      "olap_decay": 0.634,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.308,
       "olap_decay": 0.634,
       "olap_diffusion": 0.515,

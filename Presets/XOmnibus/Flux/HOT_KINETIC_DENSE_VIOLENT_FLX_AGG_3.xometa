@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_KINETIC_DENSE_VIOLENT_FLX_AGG_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overworld",
+    "Optic"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.616,
+      "macro_movement": 0.921,
+      "macro_coupling": 0.93,
+      "macro_space": 0.502
+    },
+    "Optic": {
+      "macro_character": 0.502,
+      "macro_movement": 0.914,
+      "macro_coupling": 0.89,
+      "macro_space": 0.501
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "kinetic",
     "hot",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

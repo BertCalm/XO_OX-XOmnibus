@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "name": "Periodic Drone",
+  "mood": "Foundation",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Periodic-orbit drone with slight injection — steady predictable oscillation makes a reliable tone.",
+  "tags": ["periodic", "drone", "predictable", "steady", "foundation"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.42, "warmth": 0.6, "movement": 0.22, "density": 0.72, "space": 0.42, "aggression": 0.1},
+  "parameters": {"Ouroboros": {
+    "ouro_topology": 2,
+    "ouro_rate": 0.2,
+    "ouro_chaosIndex": 0.08,
+    "ouro_leash": 0.88,
+    "ouro_theta": 0.33,
+    "ouro_phi": 0.66,
+    "ouro_damping": 0.72,
+    "ouro_injection": 0.35
+  }},
+  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.22, "COUPLING": 0.5, "SPACE": 0.42},
+  "coupling": {"pairs": []}
+}

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "NOON TRIBE",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Orca",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.603,
+      "macro_movement": 0.928,
+      "macro_coupling": 0.335,
+      "macro_space": 0.454
+    },
+    "Odyssey": {
+      "macro_character": 0.641,
+      "macro_movement": 0.524,
+      "macro_coupling": 0.889,
+      "macro_space": 0.134
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "high-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

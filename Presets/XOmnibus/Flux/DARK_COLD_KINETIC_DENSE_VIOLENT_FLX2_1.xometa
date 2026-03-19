@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FLX2_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Oracle",
+    "Oblong"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.0959,
+      "macro_movement": 0.8742,
+      "macro_coupling": 0.9321,
+      "macro_space": 0.403
+    },
+    "Oblong": {
+      "macro_character": 0.0554,
+      "macro_movement": 0.8877,
+      "macro_coupling": 0.9255,
+      "macro_space": 0.4065
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "dense",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

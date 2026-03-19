@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "STILL HALO",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.949,
+      "macro_movement": 0.104,
+      "macro_coupling": 0.321,
+      "macro_space": 0.568
+    },
+    "Obsidian": {
+      "macro_character": 0.49,
+      "macro_movement": 0.051,
+      "macro_coupling": 0.032,
+      "macro_space": 0.894
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "still"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

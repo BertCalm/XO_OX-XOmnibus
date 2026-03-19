@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK VAST KINETIC FAM 08",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.236,
+      "macro_movement": 0.95,
+      "macro_coupling": 0.806,
+      "macro_space": 0.943
+    },
+    "Ombre": {
+      "macro_character": 0.319,
+      "macro_movement": 0.937,
+      "macro_coupling": 0.37,
+      "macro_space": 0.806
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -15,6 +15,19 @@
   },
   "engines": [
     "Oblique"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oblique angle into lowest spectral mass",
+  "tags": [
+    "prism",
+    "dark",
+    "dense",
+    "extreme",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "ANGLE",
@@ -32,7 +45,15 @@
   "name": "Dense Prism Black",
   "parameters": {
     "Oblique": {
+<<<<<<< HEAD
       "obl_couplingBus": 0,
+=======
+      "obl_macro_angle": 0.1963,
+      "obl_macro_motion": 0.4196,
+      "obl_macro_couple": 0.6243,
+      "obl_macro_space": 0.7441,
+      "obl_outputLevel": 0.85,
+>>>>>>> origin/v1-launch-prep
       "obl_couplingLevel": 0.5,
       "obl_macro_angle": 0.1963,
       "obl_macro_couple": 0.6243,
@@ -41,6 +62,7 @@
       "obl_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.7369,
@@ -58,4 +80,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

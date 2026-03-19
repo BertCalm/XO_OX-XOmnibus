@@ -23,6 +23,20 @@
   "engines": [
     "Overbite",
     "Optic"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Fang White meets Phosphor Green — BITE macro timbral-warped by Optic luminance.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "overbite",
+    "optic",
+    "white-strike"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

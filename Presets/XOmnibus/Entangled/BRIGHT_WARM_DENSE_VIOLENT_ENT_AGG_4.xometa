@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_DENSE_VIOLENT_ENT_AGG_4",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.385,
+      "macro_movement": 0.601,
+      "macro_coupling": 0.778,
+      "macro_space": 0.636
+    },
+    "Obbligato": {
+      "macro_character": 0.451,
+      "macro_movement": 0.515,
+      "macro_coupling": 0.808,
+      "macro_space": 0.6
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "warm",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,117 @@
+{
+<<<<<<< HEAD:Presets/XOmnibus/Flux/5X DARK COLD KINETIC DENSE VIOLENT FLX 3.xometa
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "OddOscar",
+        "type": "PITCH_FOLLOW",
+        "amount": 0.61
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Radiant Grain Flow",
+  "mood": "Flux",
+  "engines": [
+    "Opal",
+    "OddOscar"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Flux/Opal_OddO_Radiant_Grain_Flow.xometa
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.046,
+    "brightness": 0.938,
+    "density": 0.557,
+    "movement": 0.069,
+    "space": 0.951,
+    "warmth": 0.916
+  },
+  "engines": [
+    "Opal",
+    "OddOscar"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.91,
+      "macro_coupling": 0.9,
+      "macro_movement": 0.83,
+      "macro_space": 0.46
+    },
+    "Opal": {
+      "macro_character": 0.86,
+      "macro_coupling": 0.83,
+      "macro_movement": 0.81,
+      "macro_space": 0.13
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "flux"
+  ],
+  "tempo": null,
+<<<<<<< HEAD:Presets/XOmnibus/Flux/5X DARK COLD KINETIC DENSE VIOLENT FLX 3.xometa
+  "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.86,
+      "macro_movement": 0.81,
+      "macro_coupling": 0.83,
+      "macro_space": 0.13
+    },
+    "OddOscar": {
+      "macro_character": 0.91,
+      "macro_movement": 0.83,
+      "macro_coupling": 0.9,
+      "macro_space": 0.46
+    }
+  },
+  "coupling": {
+    "type": "PITCH_FOLLOW",
+    "source": "OPAL",
+    "target": "ODDOSCAR",
+    "amount": 0.61
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.938,
+    "warmth": 0.916,
+    "movement": 0.069,
+    "density": 0.557,
+    "space": 0.951,
+    "aggression": 0.046
+  }
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Flux/Opal_OddO_Radiant_Grain_Flow.xometa
+}

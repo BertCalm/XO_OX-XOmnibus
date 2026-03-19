@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Iron Keel",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "dark",
+    "deep",
+    "low-end"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.68,
+    "movement": 0.18,
+    "density": 0.88,
+    "space": 0.52,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 3,
+      "deep_subOctave": -1,
+      "deep_harmonicLevel": 0.3,
+      "deep_pressure": 0.75,
+      "deep_bodyType": 0,
+      "deep_bodySize": 0.7,
+      "deep_bodyDamp": 0.5,
+      "deep_flashRate": 0.08,
+      "deep_flashBright": 0.15,
+      "deep_creatureSpeed": 0.1,
+      "deep_creatureDepth": 0.12,
+      "deep_darkness": 0.82,
+      "deep_filterReso": 0.35,
+      "deep_reverbMix": 0.4,
+      "deep_reverbSize": 0.6,
+      "deep_delayMix": 0.2,
+      "deep_rumble": 0.65,
+      "deep_attack": 0.005,
+      "deep_decay": 0.9,
+      "deep_sustain": 0.72,
+      "deep_release": 2.0
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.75,
+    "CREATURE": 0.1,
+    "WRECK": 0.6,
+    "ABYSS": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

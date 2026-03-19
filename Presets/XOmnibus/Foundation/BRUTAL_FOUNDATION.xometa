@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRUTAL FOUNDATION",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Organon",
+    "Oracle"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.618,
+      "macro_movement": 0.486,
+      "macro_coupling": 0.651,
+      "macro_space": 0.525
+    },
+    "Oracle": {
+      "macro_character": 0.358,
+      "macro_movement": 0.318,
+      "macro_coupling": 0.319,
+      "macro_space": 0.698
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "aggressive",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

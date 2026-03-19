@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -44,6 +45,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "Serpent in the Cellar",
+  "mood": "Entangled",
+  "engines": [
+    "Osteria",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ouroboros cycles beneath floorboards of the osteria — ancient depths in an old building.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",

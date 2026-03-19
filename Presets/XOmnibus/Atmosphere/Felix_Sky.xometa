@@ -15,6 +15,17 @@
   },
   "engines": [
     "OddfeliX"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ODDFELIX — bright extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,6 +37,13 @@
   "name": "Felix Sky",
   "parameters": {
     "OddfeliX": {
+<<<<<<< HEAD
+=======
+      "oddf_oscAwave": 1,
+      "oddf_oscBwave": 1,
+      "oddf_filterCutoff": 0.75,
+      "oddf_filterReso": 0.78,
+>>>>>>> origin/v1-launch-prep
       "oddf_ampAttack": 191.0,
       "oddf_ampDecay": 195.1,
       "oddf_ampRelease": 628.6,
@@ -44,6 +62,7 @@
       "oddf_space": 0.78
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.66,
@@ -59,4 +78,9 @@
     "extreme-brightness"
   ],
   "version": "1.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,10 +1,38 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
+=======
+  "schema_version": 1,
+  "name": "Deep Metamorphosis",
+  "mood": "Prism",
+  "engines": [
+    "Owlfish"
+  ],
+  "author": "Guru Bin — B012/B014 Engine Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "morphGlide 0.92, portamento 0.7. Every legato note is a biological transformation — the body does not move to the new pitch, it becomes it. owl_bodyLevel high: the sine foundation witnesses the metamorphosis without participating. Divisions ÷3 and ÷6 create a tense hybrid of inharmonic color and octave grounding. Play slowly.",
+  "tags": [
+    "metamorphosis",
+    "morphGlide",
+    "legato",
+    "portamento",
+    "prism",
+    "transformation",
+    "hybrid-divisions"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
+>>>>>>> origin/v1-launch-prep
   "couplingIntensity": "None",
   "created": "2026-03-16",
+<<<<<<< HEAD
   "description": "morphGlide 0.92, portamento 0.7. Every legato note is a biological transformation — the body does not move to the new pitch, it becomes it. owl_bodyLevel high: the sine foundation witnesses the metamorphosis without participating. Divisions ÷3 and ÷6 create a tense hybrid of inharmonic color and octave grounding. Play slowly.",
   "dna": {
     "aggression": 0.2,
@@ -62,6 +90,16 @@
       "owl_grainMix": 0.0,
       "owl_grainPitch": 0.0,
       "owl_grainSize": 0.5,
+=======
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Owlfish": {
+      "owl_portamento": 0.7,
+>>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 1,
       "owl_mixtur": 0.55,
       "owl_morphGlide": 0.92,
@@ -85,7 +123,13 @@
       "owl_subWave": 0.35
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
+=======
+  "coupling": {
+    "pairs": []
+  },
+>>>>>>> origin/v1-launch-prep
   "sequencer": null,
   "tags": [
     "metamorphosis",

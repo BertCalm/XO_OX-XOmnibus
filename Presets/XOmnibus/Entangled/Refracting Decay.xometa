@@ -1,5 +1,49 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "schema_version": 1,
+  "name": "Refracting Decay",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Ottoni"
+  ],
+  "author": "XO_OX",
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.58,
+    "SPACE": 0.73
+  },
+  "sonic_dna": {
+    "movement": 0.56,
+    "brightness": 0.63,
+    "aggression": 0.39,
+    "space": 0.73,
+    "warmth": 0.57,
+    "density": 0.7
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_size": 0.898,
+      "olap_decay": 0.748,
+      "olap_damping": 0.346,
+      "olap_diffusion": 0.847,
+      "olap_modDepth": 0.15,
+      "olap_modRate": 0.188,
+      "olap_preDelay": 0.063,
+      "olap_earlyMix": 0.289,
+      "olap_lateMix": 0.404,
+      "olap_filterCutoff": 0.722,
+      "olap_filterReso": 0.37,
+      "olap_outputLevel": 0.786,
+      "olap_couplingLevel": 0.589,
+      "olap_couplingBus": 0
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -66,6 +110,7 @@
     "fdn",
     "reverb"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.722,
@@ -75,4 +120,7 @@
     "space": 0.063,
     "aggression": 0.3
   }
+=======
+  "description": "Ottoni bell sustain feeds OVERLAP decay time — brass ring and FDN tail merge into one shimmer"
+>>>>>>> origin/v1-launch-prep
 }

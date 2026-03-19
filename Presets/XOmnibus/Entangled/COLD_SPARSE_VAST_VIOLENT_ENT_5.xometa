@@ -24,6 +24,7 @@
     "Ouroboros",
     "Obscura"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "COIL",
     "CYCLE",
@@ -81,6 +82,11 @@
     "space": 0.8865,
     "warmth": 0.11
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cold Sparse Vast Violent character entanglement — OUROBOROS × OBSCURA via Resonance Share. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "cold",
@@ -89,5 +95,85 @@
     "violent",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "COIL",
+    "CYCLE",
+    "FEED",
+    "ABYSS"
+  ],
+  "couplingIntensity": "Medium",
+  "dna": {
+    "brightness": 0.3297,
+    "warmth": 0.11,
+    "movement": 0.3194,
+    "density": 0.0207,
+    "space": 0.8865,
+    "aggression": 0.9457
+  },
+  "sonic_dna": {
+    "brightness": 0.3297,
+    "warmth": 0.11,
+    "movement": 0.3194,
+    "density": 0.0207,
+    "space": 0.8865,
+    "aggression": 0.9457
+  },
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.4394,
+      "macro_movement": 0.2842,
+      "macro_coupling": 0.942,
+      "macro_space": 0.9212,
+      "filter_cutoff": 0.4638,
+      "filter_resonance": 0.5855,
+      "amp_attack": 0.2835,
+      "amp_release": 0.6345,
+      "reverb_mix": 0.6305,
+      "reverb_size": 0.6932,
+      "drive": 0.8244,
+      "density": 0.0236,
+      "output_level": 0.6881,
+      "coupling_level": 0.9285
+    },
+    "Obscura": {
+      "macro_character": 0.4587,
+      "macro_movement": 0.3138,
+      "macro_coupling": 0.9662,
+      "macro_space": 0.8608,
+      "filter_cutoff": 0.4642,
+      "filter_resonance": 0.5748,
+      "amp_attack": 0.3015,
+      "amp_release": 0.6415,
+      "reverb_mix": 0.6178,
+      "reverb_size": 0.7203,
+      "drive": 0.8302,
+      "density": 0.0,
+      "output_level": 0.7419,
+      "coupling_level": 0.925
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OUROBOROS",
+    "target": "OBSCURA",
+    "amount": 0.7014,
+    "pairs": [
+      {
+        "source": "OUROBOROS",
+        "target": "OBSCURA",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.7014
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.2198,
+    "MOVEMENT": 0.3194,
+    "COUPLING": 0.7014,
+    "SPACE": 0.8865
+  }
+>>>>>>> origin/v1-launch-prep
 }

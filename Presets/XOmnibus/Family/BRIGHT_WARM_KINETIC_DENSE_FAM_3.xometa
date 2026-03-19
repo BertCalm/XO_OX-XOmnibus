@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "BRIGHT WARM KINETIC DENSE FAM 3",
+  "mood": "Family",
+  "engines": [
+    "Overbite",
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — family, bright, warm, kinetic.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "bright",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.922,
+    "warmth": 0.932,
+    "movement": 0.902,
+    "density": 0.912,
+    "space": 0.514,
+    "aggression": 0.542
+  },
+  "parameters": {
+    "Overbite": {
+      "level": 0.786,
+      "pan": 0.018
+    },
+    "Oblique": {
+      "level": 0.672,
+      "pan": -0.069
+    }
+  },
+  "coupling": [
+    {
+      "source": "OVERBITE",
+      "destination": "OBLIQUE",
+      "type": "VELOCITY_COUPLE",
+      "amount": 0.489
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

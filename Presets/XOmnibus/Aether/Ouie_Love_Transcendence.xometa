@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Love Transcendence",
+  "mood": "Aether",
+  "engines": ["Ouie"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "LOVE axis reaching maximum — two voices ascending beyond the physical into ether.",
+  "tags": ["aether", "love", "ascending", "transcendent"],
+  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.3,
+    "space": 0.92,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_ampAtk": 0.4,
+      "ouie_ampDec": 1.2,
+      "ouie_ampSus": 0.45,
+      "ouie_ampRel": 3.5,
+      "ouie_filterACutoff": 3000,
+      "ouie_filterARes": 0.12,
+      "ouie_filterBCutoff": 3200,
+      "ouie_filterBRes": 0.1,
+      "ouie_hammerDepth": 0.2,
+      "ouie_hammerPos": 0.45,
+      "ouie_lfo1Rate": 0.06,
+      "ouie_lfo1Depth": 0.05,
+      "ouie_lfo1Target": 2,
+      "ouie_lfo2Rate": 0.04,
+      "ouie_lfo2Depth": 0.04,
+      "ouie_portaAuto": 0.6,
+      "ouie_macroHammer": 0.2,
+      "ouie_macroCartilage": 0.3,
+      "ouie_macroAmpullae": 0.35,
+      "ouie_macroCurrent": 0.98
+    }
+  },
+  "macros": {
+    "HAMMER": 0.2,
+    "CARTILAGE": 0.3,
+    "AMPULLAE": 0.35,
+    "CURRENT": 0.98
+  },
+  "coupling": {"pairs": []}
+}

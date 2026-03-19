@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_KINETIC_INTIMATE_FAM_VOL_113",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Odyssey",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.918,
+      "macro_movement": 0.883,
+      "macro_coupling": 0.507,
+      "macro_space": 0.042
+    },
+    "OddfeliX": {
+      "macro_character": 0.94,
+      "macro_movement": 0.867,
+      "macro_coupling": 0.458,
+      "macro_space": 0.081
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "kinetic",
     "intimate",
     "bright"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

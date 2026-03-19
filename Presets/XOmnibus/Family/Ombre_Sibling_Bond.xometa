@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Sibling Bond",
+  "mood": "Family",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Notes close in time share strong memory bonds. Play successive notes rapidly — each one carries substantial memory of its sibling note. Harmonically intimate, close-textured.",
+  "tags": ["family", "sibling", "bond", "close", "harmony", "intimate"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.7,
+    "movement": 0.28,
+    "density": 0.65,
+    "space": 0.58,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.45,
+      "ombre_interference": 0.52,
+      "ombre_memoryDecay": 5.0,
+      "ombre_memoryGrain": 80.0,
+      "ombre_memoryDrift": 0.15,
+      "ombre_oscShape": 3,
+      "ombre_reactivity": 0.55,
+      "ombre_subLevel": 0.4,
+      "ombre_filterCutoff": 3600.0,
+      "ombre_filterReso": 0.28,
+      "ombre_attack": 0.01,
+      "ombre_decay": 0.5,
+      "ombre_sustain": 0.68,
+      "ombre_release": 1.5,
+      "ombre_level": 0.76,
+      "ombre_velCutoffScale": 0.38,
+      "ombre_lfo1Rate": 0.32,
+      "ombre_lfo1Depth": 0.25,
+      "ombre_lfo2Rate": 0.2,
+      "ombre_lfo2Depth": 0.2,
+      "ombre_macroCharacter": 0.55,
+      "ombre_macroMovement": 0.28,
+      "ombre_macroCoupling": 0.55,
+      "ombre_macroSpace": 0.6
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK COLD DENSE BALANCED AET SPC 4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.115,
+      "macro_movement": 0.503,
+      "macro_coupling": 0.843,
+      "macro_space": 0.538
+    },
+    "OddOscar": {
+      "macro_character": 0.117,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.845,
+      "macro_space": 0.508
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "space-mid",
     "aggressive",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

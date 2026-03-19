@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_KINETIC_DENSE_FLX_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Ouroboros",
+    "Origami"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.8545,
+      "macro_movement": 0.8782,
+      "macro_coupling": 0.5372,
+      "macro_space": 0.594
+    },
+    "Origami": {
+      "macro_character": 0.8147,
+      "macro_movement": 0.9489,
+      "macro_coupling": 0.6594,
+      "macro_space": 0.3766
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "low-warmth",
     "high-movement",
     "high-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -23,6 +23,20 @@
   "engines": [
     "Oblong",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bob's amber warmth crushed under Ouroboros strange attractor — structure consumed by chaos.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "oblong",
+    "ouroboros",
+    "topology"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

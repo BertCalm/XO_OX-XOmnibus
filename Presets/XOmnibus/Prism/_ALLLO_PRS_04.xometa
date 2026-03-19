@@ -37,13 +37,21 @@
   "mood": "Prism",
   "name": "ALLLO PRS 04",
   "parameters": {
+<<<<<<< HEAD
     "Ole": {
+=======
+    "Oracle": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.075,
       "macro_coupling": 0.061,
       "macro_movement": 0.302,
       "macro_space": 0.064
     },
+<<<<<<< HEAD
     "Oracle": {
+=======
+    "Ole": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.075,
       "macro_coupling": 0.061,
       "macro_movement": 0.302,
@@ -56,6 +64,10 @@
     "pole-fill",
     "minimal",
     "sparse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

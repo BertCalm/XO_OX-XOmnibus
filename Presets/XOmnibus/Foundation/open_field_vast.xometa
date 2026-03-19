@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "OPEN FIELD VAST",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Ottoni",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.194,
+      "macro_movement": 0.044,
+      "macro_coupling": 0.494,
+      "macro_space": 0.903
+    },
+    "Obbligato": {
+      "macro_character": 0.656,
+      "macro_movement": -0.025,
+      "macro_coupling": 0.751,
+      "macro_space": 0.934
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "vast",
     "open",
     "space-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

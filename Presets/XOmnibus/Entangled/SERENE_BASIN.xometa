@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SERENE BASIN",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Osteria"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.721,
+      "macro_movement": 0.066,
+      "macro_coupling": 0.985,
+      "macro_space": 0.512
+    },
+    "Osteria": {
+      "macro_character": 0.057,
+      "macro_movement": 0.063,
+      "macro_coupling": 0.772,
+      "macro_space": 0.635
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "serene"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

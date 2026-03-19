@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Slow Clock",
+  "mood": "Foundation",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Slow clock-rate pulse. One beat every few seconds.",
+  "tags": [
+    "slow",
+    "clock",
+    "pulse",
+    "steady",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.4,
+    "movement": 0.3,
+    "density": 0.42,
+    "space": 0.28,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 0.25,
+      "optic_pulseShape": 1,
+      "optic_pulseAccent": 0.7,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 1,
+      "optic_pulseEvolve": 0.0,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.5,
+      "optic_inputGain": 0.7,
+      "optic_modDepth": 0.5,
+      "optic_modMixPulse": 0.8,
+      "optic_modMixSpec": 0.2,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.65,
+      "optic_vizSpeed": 0.3,
+      "optic_vizFeedback": 0.08
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

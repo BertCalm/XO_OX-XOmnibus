@@ -25,6 +25,7 @@
     "Overdub",
     "Osteria"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -60,6 +61,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_VAST. Designed to raise Entangled cosine diversity.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -71,5 +77,49 @@
     "vast"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.9849,
+      "macro_movement": 0.0783,
+      "macro_coupling": 0.9036,
+      "macro_space": 0.5734
+    },
+    "Osteria": {
+      "macro_character": 0.913,
+      "macro_movement": 0.0522,
+      "macro_coupling": 0.9362,
+      "macro_space": 0.2947
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OVERDUB",
+    "target": "OSTERIA",
+    "amount": 0.8463
+  },
+  "macros": {
+    "CHARACTER": 0.9489,
+    "MOVEMENT": 0.0653,
+    "COUPLING": 0.9199,
+    "SPACE": 0.4341
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.9824,
+    "warmth": 0.9478,
+    "movement": 0.0709,
+    "density": 0.8905,
+    "space": 0.9575,
+    "aggression": 0.3654
+  }
+>>>>>>> origin/v1-launch-prep
 }

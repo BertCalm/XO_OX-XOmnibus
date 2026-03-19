@@ -23,6 +23,20 @@
   "engines": [
     "Oblique",
     "Overbite"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Prism bounce frequency smearing Overbite resonance — bright venom across the spectrum.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "oblique",
+    "overbite",
+    "prism-fang"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

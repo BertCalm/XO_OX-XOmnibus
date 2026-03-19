@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "UMBRA FAMILY",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Osteria",
+    "Obese"
+  ],
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.611,
+      "macro_movement": 0.129,
+      "macro_coupling": 0.097,
+      "macro_space": 0.373
+    },
+    "Obese": {
+      "macro_character": 0.987,
+      "macro_movement": 0.558,
+      "macro_coupling": 0.366,
+      "macro_space": 0.144
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "extreme",
     "low-movement"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

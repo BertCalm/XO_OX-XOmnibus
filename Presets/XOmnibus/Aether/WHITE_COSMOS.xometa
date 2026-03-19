@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "WHITE COSMOS",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Ouroboros",
+    "Oblique"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.2,
+      "macro_movement": 0.136,
+      "macro_coupling": 0.074,
+      "macro_space": 0.173
+    },
+    "Oblique": {
+      "macro_character": 0.713,
+      "macro_movement": 0.997,
+      "macro_coupling": 0.811,
+      "macro_space": 0.968
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "high-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

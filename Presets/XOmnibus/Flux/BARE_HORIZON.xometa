@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BARE HORIZON",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Ohm",
+    "Obese"
+  ],
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.51,
+      "macro_movement": 0.383,
+      "macro_coupling": 0.669,
+      "macro_space": 0.917
+    },
+    "Obese": {
+      "macro_character": 0.365,
+      "macro_movement": 0.321,
+      "macro_coupling": 0.64,
+      "macro_space": 0.84
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "spatial",
     "sparse",
     "open"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

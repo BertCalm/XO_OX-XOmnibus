@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_STILL_GENTLE_AET3_2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Oceanic",
+    "Oblique"
+  ],
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.2521,
+      "macro_movement": 0.78,
+      "macro_coupling": 0.4634,
+      "macro_space": 0.5821
+    },
+    "Oblique": {
+      "macro_character": 0.7096,
+      "macro_movement": 0.8327,
+      "macro_coupling": 0.4484,
+      "macro_space": 0.2207
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dark",
     "still",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

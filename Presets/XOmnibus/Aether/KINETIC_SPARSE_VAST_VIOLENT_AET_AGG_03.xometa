@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "KINETIC SPARSE VAST VIOLENT AET AGG 3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Osprey",
+    "Oracle"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.369,
+      "macro_movement": 0.897,
+      "macro_coupling": 0.884,
+      "macro_space": 0.932
+    },
+    "Oracle": {
+      "macro_character": 0.367,
+      "macro_movement": 0.901,
+      "macro_coupling": 0.83,
+      "macro_space": 0.889
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "kinetic",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

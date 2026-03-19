@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "BRIGHT WARM KINETIC DENSE FAM 4",
+  "mood": "Family",
+  "engines": [
+    "Origami",
+    "Osprey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — family, bright, warm, kinetic.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "bright",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.903,
+    "warmth": 0.941,
+    "movement": 0.959,
+    "density": 0.959,
+    "space": 0.582,
+    "aggression": 0.532
+  },
+  "parameters": {
+    "Origami": {
+      "level": 0.718,
+      "pan": -0.046
+    },
+    "Osprey": {
+      "level": 0.771,
+      "pan": -0.073
+    }
+  },
+  "coupling": [
+    {
+      "source": "ORIGAMI",
+      "destination": "OSPREY",
+      "type": "FREQUENCY_SHIFT",
+      "amount": 0.697
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

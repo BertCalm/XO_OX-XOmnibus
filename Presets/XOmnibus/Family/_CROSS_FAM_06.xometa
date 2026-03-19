@@ -37,13 +37,21 @@
   "mood": "Family",
   "name": "CROSS FAM 06",
   "parameters": {
+<<<<<<< HEAD
     "OddOscar": {
+=======
+    "Opal": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.518,
       "macro_coupling": 0.791,
       "macro_movement": 0.534,
       "macro_space": 0.987
     },
+<<<<<<< HEAD
     "Opal": {
+=======
+    "OddOscar": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.518,
       "macro_coupling": 0.791,
       "macro_movement": 0.534,
@@ -56,6 +64,10 @@
     "pole-fill",
     "cross-pole",
     "contrast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

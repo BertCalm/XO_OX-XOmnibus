@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD STILL SPARSE BALANCED AET SPC 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Origami",
+    "Obscura"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.187,
+      "macro_movement": 0.082,
+      "macro_coupling": 0.647,
+      "macro_space": 0.543
+    },
+    "Obscura": {
+      "macro_character": 0.184,
+      "macro_movement": 0.072,
+      "macro_coupling": 0.67,
+      "macro_space": 0.53
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "room",
     "space-mid",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

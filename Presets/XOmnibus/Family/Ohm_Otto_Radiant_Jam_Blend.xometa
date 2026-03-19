@@ -1,0 +1,117 @@
+{
+<<<<<<< HEAD:Presets/XOmnibus/Family/5X DARK COLD KINETIC DENSE VIOLENT FAM 8.xometa
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ohm",
+        "engineB": "Ottoni",
+        "type": "FM_CROSS",
+        "amount": 0.71
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Radiant Jam Blend",
+  "mood": "Family",
+  "engines": [
+    "Ohm",
+    "Ottoni"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Family/Ohm_Otto_Radiant_Jam_Blend.xometa
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.519,
+    "brightness": 0.954,
+    "density": 0.056,
+    "movement": 0.068,
+    "space": 0.915,
+    "warmth": 0.945
+  },
+  "engines": [
+    "Ohm",
+    "Ottoni"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.67,
+      "macro_coupling": 0.67,
+      "macro_movement": 0.92,
+      "macro_space": 0.39
+    },
+    "Ottoni": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.52,
+      "macro_movement": 0.79,
+      "macro_space": 0.42
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "family"
+  ],
+  "tempo": null,
+<<<<<<< HEAD:Presets/XOmnibus/Family/5X DARK COLD KINETIC DENSE VIOLENT FAM 8.xometa
+  "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.67,
+      "macro_movement": 0.92,
+      "macro_coupling": 0.67,
+      "macro_space": 0.39
+    },
+    "Ottoni": {
+      "macro_character": 0.65,
+      "macro_movement": 0.79,
+      "macro_coupling": 0.52,
+      "macro_space": 0.42
+    }
+  },
+  "coupling": {
+    "type": "FM_CROSS",
+    "source": "OHM",
+    "target": "OTTONI",
+    "amount": 0.71
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.954,
+    "warmth": 0.945,
+    "movement": 0.068,
+    "density": 0.056,
+    "space": 0.915,
+    "aggression": 0.519
+  }
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Family/Ohm_Otto_Radiant_Jam_Blend.xometa
+}

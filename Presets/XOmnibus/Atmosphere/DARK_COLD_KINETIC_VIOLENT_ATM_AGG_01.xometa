@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK COLD KINETIC VIOLENT ATM AGG 1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Osprey",
+    "Oblique"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.043,
+      "macro_movement": 0.916,
+      "macro_coupling": 0.822,
+      "macro_space": 0.295
+    },
+    "Oblique": {
+      "macro_character": 0.042,
+      "macro_movement": 0.931,
+      "macro_coupling": 0.833,
+      "macro_space": 0.318
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "dark",
     "kinetic"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

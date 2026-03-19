@@ -3,12 +3,15 @@
   "description": "Soft light breaks across still water. Warmth builds slowly, movement a gentle tide.",
   "engines": [
     "Opal"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.662,

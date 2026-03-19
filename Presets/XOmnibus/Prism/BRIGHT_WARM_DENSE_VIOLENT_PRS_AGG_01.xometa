@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT WARM DENSE VIOLENT PRS AGG 1",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Oracle",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.815,
+      "macro_movement": 0.415,
+      "macro_coupling": 0.838,
+      "macro_space": 0.559
+    },
+    "Ocelot": {
+      "macro_character": 0.842,
+      "macro_movement": 0.442,
+      "macro_coupling": 0.83,
+      "macro_space": 0.581
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "bright",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

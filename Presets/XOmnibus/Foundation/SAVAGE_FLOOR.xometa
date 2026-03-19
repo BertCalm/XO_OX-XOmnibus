@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SAVAGE FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub",
+    "Ottoni"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.63,
+      "macro_movement": 0.646,
+      "macro_coupling": 0.523,
+      "macro_space": 0.442
+    },
+    "Ottoni": {
+      "macro_character": 0.466,
+      "macro_movement": 0.605,
+      "macro_coupling": 0.489,
+      "macro_space": 0.666
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "aggressive",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

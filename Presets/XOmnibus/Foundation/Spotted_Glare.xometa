@@ -15,6 +15,17 @@
   },
   "engines": [
     "Ocelot"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OCELOT — bright extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme-brightness"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,6 +37,12 @@
   "name": "Spotted Glare",
   "parameters": {
     "Ocelot": {
+<<<<<<< HEAD
+=======
+      "ocel_huntMode": 1,
+      "ocel_filterCutoff": 0.41,
+      "ocel_filterReso": 0.19,
+>>>>>>> origin/v1-launch-prep
       "ocel_ampAttack": 292.6,
       "ocel_ampDecay": 606.4,
       "ocel_ampRelease": 609.2,
@@ -44,6 +61,7 @@
       "ocel_space": 0.97
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.57,
@@ -59,4 +77,9 @@
     "extreme-brightness"
   ],
   "version": "1.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

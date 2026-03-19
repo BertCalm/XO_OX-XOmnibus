@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Beat Pulse",
+  "mood": "Foundation",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Clean on-beat pulse modulation. Tempo-synced and steady.",
+  "tags": [
+    "beat",
+    "pulse",
+    "tempo",
+    "steady",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.4,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.28,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 2.0,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.7,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 1,
+      "optic_pulseEvolve": 0.0,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.6,
+      "optic_inputGain": 0.7,
+      "optic_modDepth": 0.6,
+      "optic_modMixPulse": 0.85,
+      "optic_modMixSpec": 0.15,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.75,
+      "optic_vizSpeed": 0.5,
+      "optic_vizFeedback": 0.08
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

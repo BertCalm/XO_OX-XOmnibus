@@ -58,5 +58,9 @@
     "drift",
     "crease"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Origami paper timbres blend into cold Odyssey drift — paper dissolves into wavetable space."
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Schist Chord",
+  "mood": "Foundation",
+  "engines": ["Obsidian"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Schist-textured chord — layered mineral warmth, even sustain, soft release.",
+  "tags": ["schist", "chord", "layered", "warm"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.38, "warmth": 0.65, "movement": 0.15, "density": 0.7, "space": 0.4, "aggression": 0.12},
+  "parameters": {
+    "Obsidian": {
+      "obsidian_depth": 0.7,
+      "obsidian_character": 0.38,
+      "obsidian_brightness": 0.38,
+      "obsidian_warmth": 0.65,
+      "obsidian_attack": 0.03,
+      "obsidian_decay": 0.55,
+      "obsidian_sustain": 0.75,
+      "obsidian_release": 0.95,
+      "obsidian_filterCutoff": 4000,
+      "obsidian_filterReso": 0.2,
+      "obsidian_filterEnvAmt": 0.22,
+      "obsidian_lfoRate": 0.45,
+      "obsidian_lfoDepth": 0.1,
+      "obsidian_lfoDest": 0,
+      "obsidian_reverbSize": 0.38,
+      "obsidian_reverbMix": 0.18,
+      "obsidian_stereoWidth": 0.58,
+      "obsidian_voiceMode": 0,
+      "obsidian_glide": 0.0,
+      "obsidian_polyphony": 6,
+      "obsidian_level": 0.76
+    }
+  },
+  "macros": {"CHARACTER": 0.38, "MOVEMENT": 0.15, "COUPLING": 0.0, "SPACE": 0.4},
+  "coupling": {"pairs": []}
+}

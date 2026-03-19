@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FLX2_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Optic",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.1098,
+      "macro_movement": 0.946,
+      "macro_coupling": 0.9331,
+      "macro_space": 0.6762
+    },
+    "Odyssey": {
+      "macro_character": 0.0764,
+      "macro_movement": 0.9485,
+      "macro_coupling": 0.9478,
+      "macro_space": 0.6897
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "dense",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

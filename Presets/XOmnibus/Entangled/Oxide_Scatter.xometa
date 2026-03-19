@@ -37,6 +37,7 @@
   "mood": "Entangled",
   "name": "Oxide Scatter",
   "parameters": {
+<<<<<<< HEAD
     "Opal": {
       "macro_character": 0.81,
       "macro_coupling": 0.54,
@@ -47,6 +48,18 @@
       "macro_character": 0.94,
       "macro_coupling": 0.6,
       "macro_movement": 0.4,
+=======
+    "Overdub": {
+      "macro_character": 0.94,
+      "macro_movement": 0.4,
+      "macro_coupling": 0.6,
+      "macro_space": 0.18
+    },
+    "Opal": {
+      "macro_character": 0.81,
+      "macro_movement": 0.45,
+      "macro_coupling": 0.54,
+>>>>>>> origin/v1-launch-prep
       "macro_space": 0.18
     }
   },
@@ -55,6 +68,10 @@
     "entangled",
     "warm-dense",
     "scorching"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

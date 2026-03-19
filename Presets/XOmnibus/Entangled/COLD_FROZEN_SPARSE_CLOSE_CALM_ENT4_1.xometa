@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD_FROZEN_SPARSE_CLOSE_CALM_ENT4_1",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Owlfish",
+    "Organon"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.3,
+      "macro_movement": 0.072,
+      "macro_coupling": 0.062,
+      "macro_space": 0.063
+    },
+    "Organon": {
+      "macro_character": 0.281,
+      "macro_movement": 0.067,
+      "macro_coupling": 0.038,
+      "macro_space": 0.112
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "sparse",
     "close",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,4 +1,14 @@
 {
+<<<<<<< HEAD
+=======
+  "schema_version": 1,
+  "name": "Eternal Return",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Ottoni"
+  ],
+>>>>>>> origin/v1-launch-prep
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -63,5 +73,47 @@
     "return"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.65,
+    "movement": 0.65,
+    "density": 0.5,
+    "space": 0.42,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.5,
+      "macro_movement": 0.7,
+      "macro_coupling": 0.55,
+      "macro_space": 0.45
+    },
+    "Ottoni": {
+      "macro_character": 0.68,
+      "macro_movement": 0.48,
+      "macro_coupling": 0.55,
+      "macro_space": 0.38
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUROBOROS",
+        "engineB": "OTTONI",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.55
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.59,
+    "MOVEMENT": 0.59,
+    "COUPLING": 0.55,
+    "SPACE": 0.415
+  },
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

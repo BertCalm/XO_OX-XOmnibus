@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "FORGE DRIVE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Obscura"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.6245,
+      "macro_movement": 0.902,
+      "macro_coupling": 0.735,
+      "macro_space": 0.9239
+    },
+    "Obscura": {
+      "macro_character": 0.0412,
+      "macro_movement": 0.8638,
+      "macro_coupling": 0.6325,
+      "macro_space": 0.9485
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "heavy",
     "crushing",
     "coiled"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

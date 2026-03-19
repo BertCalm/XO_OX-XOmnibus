@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT COLD DENSE VIOLENT ATM AGG 4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Origami",
+    "Opal"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.962,
+      "macro_movement": 0.45,
+      "macro_coupling": 0.893,
+      "macro_space": 0.432
+    },
+    "Opal": {
+      "macro_character": 0.938,
+      "macro_movement": 0.438,
+      "macro_coupling": 0.87,
+      "macro_space": 0.413
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "bright",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_DENSE_VIOLENT_FND_AGG_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub",
+    "Obese"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.497,
+      "macro_movement": 0.627,
+      "macro_coupling": 0.512,
+      "macro_space": 0.905
+    },
+    "Obese": {
+      "macro_character": 0.516,
+      "macro_movement": 0.599,
+      "macro_coupling": 0.494,
+      "macro_space": 0.932
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dark",
     "cold",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

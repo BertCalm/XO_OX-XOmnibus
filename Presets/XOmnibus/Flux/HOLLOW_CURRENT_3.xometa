@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOLLOW CURRENT 3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Ottoni",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.9745,
+      "macro_movement": 0.8184,
+      "macro_coupling": 0.6136,
+      "macro_space": 0.6427
+    },
+    "Obbligato": {
+      "macro_character": 0.0263,
+      "macro_movement": 0.9291,
+      "macro_coupling": 0.8295,
+      "macro_space": 0.2674
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "sparse",
     "minimal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -14,12 +14,15 @@
   "engines": [
     "Overdub",
     "Oceanic"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.55,
@@ -50,6 +53,7 @@
     "oceanic",
     "dub"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Dub delay cycles with tidal rhythm — each repeat a wave receding up the shore"
+>>>>>>> origin/v1-launch-prep
 }

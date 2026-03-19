@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_KINETIC_INTIMATE_VIOLENT_ENT_AGG_5",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.665,
+      "macro_movement": 0.846,
+      "macro_coupling": 0.754,
+      "macro_space": 0.026
+    },
+    "Obsidian": {
+      "macro_character": 0.586,
+      "macro_movement": 0.844,
+      "macro_coupling": 0.719,
+      "macro_space": 0.029
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dark",
     "kinetic",
     "intimate"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

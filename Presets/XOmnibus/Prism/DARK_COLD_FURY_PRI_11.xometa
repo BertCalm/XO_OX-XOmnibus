@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK COLD FURY PRI 11",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Overbite",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.075,
+      "macro_movement": 0.317,
+      "macro_coupling": 0.593,
+      "macro_space": 0.582
+    },
+    "Ocelot": {
+      "macro_character": 0.171,
+      "macro_movement": 0.461,
+      "macro_coupling": 0.731,
+      "macro_space": 0.443
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "aggressive",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

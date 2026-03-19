@@ -23,6 +23,20 @@
   "engines": [
     "Obese",
     "Overbite"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "MOJO and BITE fused — two saturation architectures driving toward thermal collapse.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "obese",
+    "overbite",
+    "saturation"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

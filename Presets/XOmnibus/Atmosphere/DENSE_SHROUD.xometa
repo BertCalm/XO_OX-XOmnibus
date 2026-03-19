@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DENSE SHROUD",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ouroboros",
+    "Onset"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.226,
+      "macro_movement": 0.767,
+      "macro_coupling": 0.663,
+      "macro_space": 0.095
+    },
+    "Onset": {
+      "macro_character": 0.89,
+      "macro_movement": 0.623,
+      "macro_coupling": 0.106,
+      "macro_space": 0.069
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "intimate",
     "close",
     "space-xlow"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -37,6 +37,7 @@
   "mood": "Prism",
   "name": "BRIGHT DENSE TIGHT VIOLENT ...",
   "parameters": {
+<<<<<<< HEAD
     "Ocelot": {
       "macro_character": 0.934,
       "macro_coupling": 0.942,
@@ -47,6 +48,18 @@
       "macro_character": 0.949,
       "macro_coupling": 0.936,
       "macro_movement": 0.565,
+=======
+    "Orphica": {
+      "macro_character": 0.949,
+      "macro_movement": 0.565,
+      "macro_coupling": 0.936,
+      "macro_space": 0.07
+    },
+    "Ocelot": {
+      "macro_character": 0.934,
+      "macro_movement": 0.537,
+      "macro_coupling": 0.942,
+>>>>>>> origin/v1-launch-prep
       "macro_space": 0.07
     }
   },
@@ -59,6 +72,10 @@
     "bright",
     "dense",
     "tight"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

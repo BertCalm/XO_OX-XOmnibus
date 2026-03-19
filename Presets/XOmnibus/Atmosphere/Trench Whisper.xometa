@@ -3,12 +3,15 @@
   "description": "The deep ocean at rest. Vast space, mineral warmth, absolute stillness.",
   "engines": [
     "Ombre"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.423,

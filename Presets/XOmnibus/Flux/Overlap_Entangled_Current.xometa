@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Entangled Current",
+  "mood": "Flux",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A figure-eight where the two loops are driven by opposing ocean currents \u2014 modulation in one direction for loop A, opposing direction for loop B. The crossing point is where they collide.",
+  "tags": [
+    "opposing",
+    "currents",
+    "figure-eight",
+    "collision",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.52,
+    "movement": 0.8,
+    "density": 0.68,
+    "space": 0.78,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 2,
+      "olap_delayFeedback": 0.6,
+      "olap_diffusion": 0.72,
+      "olap_spread": 0.8,
+      "olap_decay": 6.0,
+      "olap_modDepth": 0.42,
+      "olap_modRate": 0.09,
+      "olap_damping": 0.42,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

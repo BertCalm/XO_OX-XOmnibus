@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Midnight Current",
+  "mood": "Submerged",
+  "engines": ["OceanDeep"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "A cold deep-water current flowing silently through total darkness at crushing depth.",
+  "tags": ["submerged", "dark", "cold", "flowing"],
+  "macroLabels": ["PRESSURE", "CREATURE", "DEPTH", "LIGHT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.2,
+    "movement": 0.35,
+    "density": 0.82,
+    "space": 0.6,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_attack": 0.25,
+      "deep_decay": 0.7,
+      "deep_sustain": 0.88,
+      "deep_release": 1.4,
+      "deep_bodyType": 0,
+      "deep_bodySize": 0.88,
+      "deep_bodyDamp": 0.9,
+      "deep_subOctave": 1,
+      "deep_subShape": 0,
+      "deep_harmonicLevel": 0.15,
+      "deep_pressure": 0.78,
+      "deep_darkness": 0.92,
+      "deep_filterReso": 0.15,
+      "deep_rumble": 0.5,
+      "deep_creatureDepth": 0.25,
+      "deep_creatureSpeed": 0.2,
+      "deep_flashBright": 0.12,
+      "deep_flashRate": 0.6,
+      "deep_reverbSize": 0.8,
+      "deep_reverbMix": 0.5,
+      "deep_delayMix": 0.12,
+      "deep_macroPressure": 0.78,
+      "deep_macroCreature": 0.25,
+      "deep_macroDepth": 0.92,
+      "deep_macroLight": 0.12
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.78,
+    "CREATURE": 0.25,
+    "DEPTH": 0.92,
+    "LIGHT": 0.12
+  },
+  "coupling": {"pairs": []}
+}

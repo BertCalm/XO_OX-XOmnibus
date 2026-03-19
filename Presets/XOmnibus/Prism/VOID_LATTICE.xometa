@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "VOID LATTICE",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Overworld",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.535,
+      "macro_movement": 0.941,
+      "macro_coupling": 0.789,
+      "macro_space": 0.64
+    },
+    "OddOscar": {
+      "macro_character": 0.682,
+      "macro_movement": 0.449,
+      "macro_coupling": 0.618,
+      "macro_space": 0.503
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "prism",
     "dark",
     "spectrum"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

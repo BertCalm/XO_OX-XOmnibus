@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT DENSE TIGHT VIOLENT PRS AGG 3",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Ottoni",
+    "Optic"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.852,
+      "macro_movement": 0.328,
+      "macro_coupling": 0.864,
+      "macro_space": 0.055
+    },
+    "Optic": {
+      "macro_character": 0.865,
+      "macro_movement": 0.337,
+      "macro_coupling": 0.788,
+      "macro_space": 0.051
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "bright",
     "dense",
     "tight"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

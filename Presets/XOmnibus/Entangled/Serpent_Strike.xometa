@@ -23,6 +23,20 @@
   "engines": [
     "Ouroboros",
     "Overbite"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ouroboros topology chaos feeding Overbite BITE macro — fractal fang.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "ouroboros",
+    "overbite",
+    "serpent"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

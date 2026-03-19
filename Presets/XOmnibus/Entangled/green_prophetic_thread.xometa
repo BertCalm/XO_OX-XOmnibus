@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Green Prophetic Thread",
+  "mood": "Entangled",
+  "engines": [
+    "Ohm",
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Hippie sage wisdom meets stochastic prophecy — OHM's COMMUNE axis channels through ORACLE's GENDY breakpoints.",
   "dna": {
     "aggression": 0.2,

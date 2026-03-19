@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SPARSE FLUX 4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overworld",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.4866,
+      "macro_movement": 0.6671,
+      "macro_coupling": 0.0454,
+      "macro_space": 0.3953
+    },
+    "Ocelot": {
+      "macro_character": 0.5993,
+      "macro_movement": 0.0077,
+      "macro_coupling": 0.3014,
+      "macro_space": 0.2112
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "sparse",
     "minimal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

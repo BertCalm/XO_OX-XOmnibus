@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Fluid Bongos",
+  "mood": "Flux",
+  "engines": [
+    "Ostinato"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "drums",
+    "percussion",
+    "evolving",
+    "groove"
+  ],
+  "macroLabels": [
+    "SPACE",
+    "GATHER",
+    "FIRE",
+    "CIRCLE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.48,
+    "movement": 0.85,
+    "density": 0.52,
+    "space": 0.35,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Ostinato": {
+      "osti_drumType": 3,
+      "osti_filterCutoff": 2000,
+      "osti_filterRes": 0.46,
+      "osti_ampAtk": 0.002,
+      "osti_ampDec": 0.28,
+      "osti_ampSus": 0.0,
+      "osti_ampRel": 0.22,
+      "osti_velCutoffAmt": 0.78,
+      "osti_reverbMix": 0.18,
+      "osti_lfo1Rate": 0.9,
+      "osti_lfo1Depth": 0.15,
+      "osti_lfo2Rate": 2.5,
+      "osti_lfo2Depth": 0.18,
+      "osti_patternStep0": true,
+      "osti_patternStep1": true,
+      "osti_patternStep2": true,
+      "osti_patternStep3": true,
+      "osti_patternStep4": true,
+      "osti_patternStep5": true,
+      "osti_patternStep6": true,
+      "osti_patternStep7": false,
+      "osti_macroGather": 0.5,
+      "osti_macroFire": 0.62,
+      "osti_macroCircle": 0.42,
+      "osti_macroSpace": 0.35
+    }
+  },
+  "macros": {
+    "GATHER": 0.5,
+    "FIRE": 0.62,
+    "CIRCLE": 0.42,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

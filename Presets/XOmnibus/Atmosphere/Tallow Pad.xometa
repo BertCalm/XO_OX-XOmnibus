@@ -3,12 +3,15 @@
   "description": "Tallow and beeswax — organic warmth that refuses to move.",
   "engines": [
     "OddOscar"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.553,
@@ -37,6 +40,7 @@
     "warm",
     "thick"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.4,
@@ -46,4 +50,7 @@
     "space": 0.7,
     "aggression": 0.2
   }
+=======
+  "description": "Tallow and beeswax — organic warmth that refuses to move."
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DENSE CORE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Osprey",
+    "Oblong"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.584,
+      "macro_movement": 0.393,
+      "macro_coupling": 0.692,
+      "macro_space": 0.089
+    },
+    "Oblong": {
+      "macro_character": 0.767,
+      "macro_movement": 0.947,
+      "macro_coupling": 0.774,
+      "macro_space": 0.09
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "claustrophobic",
     "intimate",
     "xlow"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

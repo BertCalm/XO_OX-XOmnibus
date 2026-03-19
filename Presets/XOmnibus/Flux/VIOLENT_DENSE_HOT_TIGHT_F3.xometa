@@ -16,6 +16,7 @@
   "engines": [
     "Optic"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -36,6 +37,11 @@
     "space": 0.09,
     "warmth": 0.908
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset — extreme hot warmth, extreme violent aggression, extreme dense density, extreme tight space. Maximum contrast character design.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "warm",
     "aggressive",
@@ -44,5 +50,29 @@
     "flux",
     "extreme"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Chaotic",
+  "dna": {
+    "brightness": 0.493,
+    "warmth": 0.908,
+    "movement": 0.521,
+    "density": 0.957,
+    "space": 0.09,
+    "aggression": 0.916
+  },
+  "parameters": {
+    "Optic": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -16,6 +16,18 @@
   },
   "engines": [
     "OddfeliX"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — violent dense hot intimate. Designed for PHASE coupling with XOddFelix.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "phase",
+    "oddfelix"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "IMPACT",
@@ -27,6 +39,7 @@
   "name": "VIOLENT DENSE HOT INTIMATE 4",
   "parameters": {
     "OddfeliX": {
+<<<<<<< HEAD
       "couplingBus": 1,
       "couplingLevel": 0.811
     }
@@ -47,4 +60,13 @@
     "oddfelix"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.811,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

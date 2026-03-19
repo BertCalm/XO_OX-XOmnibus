@@ -15,6 +15,17 @@
   },
   "engines": [
     "Ombre"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OMBRE — dark extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme-brightness"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,6 +37,7 @@
   "name": "Gradient Dusk",
   "parameters": {
     "Ombre": {
+<<<<<<< HEAD
       "ombr_ampAttack": 595.1,
       "ombr_ampDecay": 127.8,
       "ombr_ampRelease": 83.7,
@@ -33,6 +45,8 @@
       "ombr_character": 0.37,
       "ombr_coupling": 0.86,
       "ombr_delayMix": 0.03,
+=======
+>>>>>>> origin/v1-launch-prep
       "ombr_fadeDepth": 0.74,
       "ombr_filterCutoff": 0.95,
       "ombr_filterReso": 0.42,
@@ -43,6 +57,7 @@
       "ombr_space": 0.95
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.62,
@@ -58,4 +73,9 @@
     "extreme-brightness"
   ],
   "version": "1.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -23,6 +23,20 @@
   "engines": [
     "Ottoni",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Triple brass GROW macro with Ouroboros chaos injection — harmonic brass in fractal formation.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "ottoni",
+    "ouroboros",
+    "brass"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

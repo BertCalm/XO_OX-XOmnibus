@@ -25,6 +25,7 @@
     "Odyssey",
     "Ohm"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -60,6 +61,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: COLD_FROZEN_DENSE_VAST_VIOLENT. Designed to raise Entangled cosine diversity.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -71,5 +77,49 @@
     "vast"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.7222,
+      "macro_movement": 0.0708,
+      "macro_coupling": 0.9153,
+      "macro_space": 0.2344
+    },
+    "Ohm": {
+      "macro_character": 0.7276,
+      "macro_movement": 0.0887,
+      "macro_coupling": 0.8316,
+      "macro_space": 0.2221
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ODYSSEY",
+    "target": "OHM",
+    "amount": 0.9262
+  },
+  "macros": {
+    "CHARACTER": 0.7249,
+    "MOVEMENT": 0.0798,
+    "COUPLING": 0.8735,
+    "SPACE": 0.2283
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.6556,
+    "warmth": 0.08,
+    "movement": 0.0742,
+    "density": 0.9063,
+    "space": 0.8994,
+    "aggression": 0.9669
+  }
+>>>>>>> origin/v1-launch-prep
 }

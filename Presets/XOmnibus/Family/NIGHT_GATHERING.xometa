@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "NIGHT GATHERING",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Octopus",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Octopus": {
+      "macro_character": 0.681,
+      "macro_movement": 0.032,
+      "macro_coupling": 0.948,
+      "macro_space": 0.11
+    },
+    "Ocelot": {
+      "macro_character": 0.019,
+      "macro_movement": 0.314,
+      "macro_coupling": 0.151,
+      "macro_space": 0.691
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "extreme",
     "high-movement"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

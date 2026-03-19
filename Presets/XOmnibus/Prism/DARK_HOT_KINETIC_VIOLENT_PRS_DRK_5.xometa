@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_KINETIC_VIOLENT_PRS_DRK_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Ottoni",
+    "Oracle"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.9513,
+      "macro_movement": 0.897,
+      "macro_coupling": 0.6366,
+      "macro_space": 0.3454
+    },
+    "Oracle": {
+      "macro_character": 0.9346,
+      "macro_movement": 0.9134,
+      "macro_coupling": 0.6298,
+      "macro_space": 0.344
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "hot",
     "kinetic",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

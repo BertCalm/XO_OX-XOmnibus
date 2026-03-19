@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Resonant Ghost",
+  "mood": "Foundation",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "High resonance filter on a memory-heavy patch. The filter rings on the ghost frequencies. Play single notes to hear individual resonant ghosts of each previous pitch.",
+  "tags": ["foundation", "resonant", "filter", "ghost", "ringing"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.5,
+    "movement": 0.35,
+    "density": 0.62,
+    "space": 0.58,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.2,
+      "ombre_interference": 0.4,
+      "ombre_memoryDecay": 8.0,
+      "ombre_memoryGrain": 70.0,
+      "ombre_memoryDrift": 0.25,
+      "ombre_oscShape": 1,
+      "ombre_reactivity": 0.6,
+      "ombre_subLevel": 0.2,
+      "ombre_filterCutoff": 2500.0,
+      "ombre_filterReso": 0.72,
+      "ombre_attack": 0.01,
+      "ombre_decay": 0.5,
+      "ombre_sustain": 0.6,
+      "ombre_release": 1.5,
+      "ombre_level": 0.7,
+      "ombre_velCutoffScale": 0.45,
+      "ombre_lfo1Rate": 0.4,
+      "ombre_lfo1Depth": 0.2,
+      "ombre_lfo2Rate": 0.22,
+      "ombre_lfo2Depth": 0.25,
+      "ombre_macroCharacter": 0.65,
+      "ombre_macroMovement": 0.35,
+      "ombre_macroCoupling": 0.42,
+      "ombre_macroSpace": 0.6
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

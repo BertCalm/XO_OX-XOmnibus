@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_KINETIC_VAST_VIOLENT_ENT_AGG_2",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Owlfish",
+    "Oracle"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.533,
+      "macro_movement": 0.95,
+      "macro_coupling": 0.99,
+      "macro_space": 0.973
+    },
+    "Oracle": {
+      "macro_character": 0.471,
+      "macro_movement": 0.975,
+      "macro_coupling": 0.974,
+      "macro_space": 1.0
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "kinetic",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

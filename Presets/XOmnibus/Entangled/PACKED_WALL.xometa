@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "PACKED WALL",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Obscura"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.1099,
+      "macro_movement": 0.8664,
+      "macro_coupling": 0.6527,
+      "macro_space": 0.3582
+    },
+    "Obscura": {
+      "macro_character": 0.7884,
+      "macro_movement": 0.5889,
+      "macro_coupling": 0.6063,
+      "macro_space": 0.2654
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dark",
     "monolithic",
     "crushing"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

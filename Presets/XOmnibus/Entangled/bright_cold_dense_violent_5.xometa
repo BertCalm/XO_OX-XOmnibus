@@ -16,6 +16,18 @@
   },
   "engines": [
     "OddfeliX"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — bright cold dense violent. Designed for SPARK coupling with XOddFelix.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "spark",
+    "oddfelix"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "PRESS",
@@ -27,6 +39,7 @@
   "name": "BRIGHT COLD DENSE VIOLENT 5",
   "parameters": {
     "OddfeliX": {
+<<<<<<< HEAD
       "couplingBus": 2,
       "couplingLevel": 0.832
     }
@@ -47,4 +60,13 @@
     "oddfelix"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.832,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

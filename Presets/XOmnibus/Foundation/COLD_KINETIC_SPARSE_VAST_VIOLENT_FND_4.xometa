@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "COLD_KINETIC_SPARSE_VAST_VIOLENT_FND_4",
+  "mood": "Foundation",
+  "engines": [
+    "OddfeliX",
+    "Overdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: COLD_KINETIC_SPARSE_VAST_VIOLENT. Variant 4.",
   "dna": {
     "aggression": 0.887,
@@ -71,5 +83,49 @@
     "foundation"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.247,
+      "macro_movement": 1.0,
+      "macro_coupling": 0.192,
+      "macro_space": 0.94
+    },
+    "Overdub": {
+      "macro_character": 0.474,
+      "macro_movement": 0.982,
+      "macro_coupling": 0.033,
+      "macro_space": 0.94
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ODDFELIX",
+    "target": "OVERDUB",
+    "amount": 0.894
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.332,
+    "warmth": 0.116,
+    "movement": 0.944,
+    "density": 0.046,
+    "space": 0.98,
+    "aggression": 0.887
+  },
+  "macros": {
+    "CHARACTER": 0.36,
+    "MOVEMENT": 0.991,
+    "COUPLING": 0.113,
+    "SPACE": 0.94
+  }
+>>>>>>> origin/v1-launch-prep
 }

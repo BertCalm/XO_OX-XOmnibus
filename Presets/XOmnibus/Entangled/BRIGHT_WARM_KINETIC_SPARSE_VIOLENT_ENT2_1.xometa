@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT WARM KINETIC SPARSE VIOLENT ENT2 1",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Overlap"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.962,
+      "macro_movement": 0.941,
+      "macro_coupling": 0.489,
+      "macro_space": 0.376
+    },
+    "Overlap": {
+      "macro_character": 0.978,
+      "macro_movement": 0.953,
+      "macro_coupling": 0.472,
+      "macro_space": 0.423
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "sparse",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

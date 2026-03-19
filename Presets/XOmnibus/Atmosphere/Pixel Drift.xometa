@@ -3,12 +3,15 @@
   "description": "Pixel decay in slow motion. A signal losing integrity in beautiful increments.",
   "engines": [
     "Origami"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.482,

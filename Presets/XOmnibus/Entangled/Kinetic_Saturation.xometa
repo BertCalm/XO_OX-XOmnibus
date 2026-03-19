@@ -23,6 +23,20 @@
   "engines": [
     "Octopus",
     "Obese"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Octopus arm timbre warped by OBESE saturation — kinetic intelligence at full harmonic load.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "octopus",
+    "obese",
+    "kinetic"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

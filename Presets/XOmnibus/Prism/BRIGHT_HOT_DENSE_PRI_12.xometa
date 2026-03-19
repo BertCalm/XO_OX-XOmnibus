@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT HOT DENSE PRI 12",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Overdub",
+    "Octopus"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.946,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.761,
+      "macro_space": 0.51
+    },
+    "Octopus": {
+      "macro_character": 0.992,
+      "macro_movement": 0.546,
+      "macro_coupling": 0.596,
+      "macro_space": 0.651
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

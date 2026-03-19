@@ -44,5 +44,27 @@
     "snap",
     "bright-drum"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.89,
+    "warmth": 0.15,
+    "movement": 0.8,
+    "density": 0.55,
+    "space": 0.5,
+    "aggression": 0.35
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

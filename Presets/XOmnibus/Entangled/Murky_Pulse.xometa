@@ -22,6 +22,18 @@
   "engines": [
     "Obbligato",
     "Octopus"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "obbligato",
+    "octopus"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -51,6 +63,7 @@
       "macro_space": 0.346
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.47,
@@ -68,4 +81,16 @@
     "octopus"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OCTOPUS",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.528
+      }
+    ]
+  }
+>>>>>>> origin/v1-launch-prep
 }

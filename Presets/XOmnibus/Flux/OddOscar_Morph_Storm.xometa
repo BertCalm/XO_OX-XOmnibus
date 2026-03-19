@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
@@ -48,4 +49,23 @@
   ],
   "tempo": null,
   "version": "1.0.0"
+=======
+  "schema_version": 1,
+  "name": "Morph Storm",
+  "mood": "Flux",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Turbulent morph storm — chaotic bloom and drift collide in unpredictable patterns.",
+  "tags": ["storm", "chaotic", "turbulent", "collision"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.55, "warmth": 0.52, "movement": 0.88, "density": 0.65, "space": 0.38, "aggression": 0.52},
+  "parameters": {
+    "OddOscar": {"morph_morph": 0.78, "morph_bloom": 0.82, "morph_detune": 0.32, "morph_drift": 0.85, "morph_filterCutoff": 5800.0, "morph_filterReso": 0.62, "morph_filterEnvDepth": 0.75, "morph_sub": 0.28, "morph_decay": 0.35, "morph_sustain": 0.55, "morph_release": 0.7, "morph_glide": 0.05, "morph_voiceMode": 0, "morph_polyphony": 4, "morph_level": 0.76, "morph_macroBloom": 0.82, "morph_macroDepth": 0.75, "morph_macroDrift": 0.85, "morph_macroSpace": 0.38}
+  },
+  "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.88, "COUPLING": 0.0, "SPACE": 0.38},
+  "coupling": {"pairs": []}
+>>>>>>> origin/v1-launch-prep
 }

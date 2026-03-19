@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_DENSE_VAST_ATM_5",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Origami",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.665,
+      "macro_movement": 0.282,
+      "macro_coupling": 0.432,
+      "macro_space": 0.83
+    },
+    "OddOscar": {
+      "macro_character": 0.342,
+      "macro_movement": 0.308,
+      "macro_coupling": 0.853,
+      "macro_space": 0.842
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "warm",
     "dense",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

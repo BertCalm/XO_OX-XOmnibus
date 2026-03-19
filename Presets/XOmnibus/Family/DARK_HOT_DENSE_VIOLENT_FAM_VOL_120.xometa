@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_DENSE_VIOLENT_FAM_VOL_120",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Overdub",
+    "Osprey"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.524,
+      "macro_movement": 0.419,
+      "macro_coupling": 0.934,
+      "macro_space": 0.372
+    },
+    "Osprey": {
+      "macro_character": 0.547,
+      "macro_movement": 0.456,
+      "macro_coupling": 0.954,
+      "macro_space": 0.356
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dense",
     "aggressive",
     "dark"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

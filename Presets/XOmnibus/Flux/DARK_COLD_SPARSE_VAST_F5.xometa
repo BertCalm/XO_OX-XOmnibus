@@ -16,6 +16,7 @@
   "engines": [
     "Overdub"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -36,6 +37,11 @@
     "space": 0.94,
     "warmth": 0.094
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme cold warmth, extreme sparse density, extreme vast space. Maximum contrast character design.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "dark",
     "cold",
@@ -44,5 +50,29 @@
     "flux",
     "extreme"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Modulation",
+  "dna": {
+    "brightness": 0.059,
+    "warmth": 0.094,
+    "movement": 0.448,
+    "density": 0.071,
+    "space": 0.94,
+    "aggression": 0.497
+  },
+  "parameters": {
+    "Overdub": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

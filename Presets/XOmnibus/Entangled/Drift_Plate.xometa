@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Drift Plate",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Odyssey",
+    "Obscura"
+  ],
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.16,
+      "macro_movement": 0.4,
+      "macro_coupling": 0.7,
+      "macro_space": 0.92
+    },
+    "Obscura": {
+      "macro_character": 0.13,
+      "macro_movement": 0.35,
+      "macro_coupling": 0.75,
+      "macro_space": 0.95
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "drift",
     "plate"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Odyssey drift morphs through Obscura's silver resonance — a memory of motion on glass."
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Arp Bright",
+  "mood": "Foundation",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Foundational upward arp with bright filter sweep — clean building block for rhythm.",
+  "tags": ["arp", "bright", "upward", "rhythmic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.82, "warmth": 0.22, "movement": 0.65, "density": 0.32, "space": 0.4, "aggression": 0.25},
+  "parameters": {
+    "OddfeliX": {"snap_oscMode": 2, "snap_snap": 0.78, "snap_decay": 0.18, "snap_detune": 0.06, "snap_filterCutoff": 12000.0, "snap_filterReso": 0.3, "snap_filterEnvDepth": 0.62, "snap_unison": 1, "snap_sweepDirection": 0, "snap_pitchLock": 0.9, "snap_polyphony": 4, "snap_level": 0.78, "snap_macroDart": 0.68, "snap_macroDepth": 0.35, "snap_macroSchool": 0.28, "snap_macroSurface": 0.45}
+  },
+  "macros": {"CHARACTER": 0.6, "MOVEMENT": 0.65, "COUPLING": 0.0, "SPACE": 0.4},
+  "coupling": {"pairs": []}
+}

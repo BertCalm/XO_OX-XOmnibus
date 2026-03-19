@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_KINETIC_VAST_GENTLE_PRS_DRK_2",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Owlfish",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.3475,
+      "macro_movement": 0.9156,
+      "macro_coupling": 0.6634,
+      "macro_space": 0.9057
+    },
+    "Ocelot": {
+      "macro_character": 0.3563,
+      "macro_movement": 0.9348,
+      "macro_coupling": 0.6992,
+      "macro_space": 0.8823
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "kinetic",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

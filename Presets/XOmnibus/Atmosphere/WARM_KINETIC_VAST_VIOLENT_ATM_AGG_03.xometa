@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "WARM KINETIC VAST VIOLENT ATM AGG 3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oracle",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.65,
+      "macro_movement": 0.899,
+      "macro_coupling": 0.897,
+      "macro_space": 0.943
+    },
+    "OddfeliX": {
+      "macro_character": 0.625,
+      "macro_movement": 0.925,
+      "macro_coupling": 0.862,
+      "macro_space": 0.958
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "kinetic",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

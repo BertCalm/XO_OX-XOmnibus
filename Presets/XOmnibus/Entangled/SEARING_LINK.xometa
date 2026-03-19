@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SEARING LINK",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.29,
+      "macro_movement": 0.957,
+      "macro_coupling": 0.483,
+      "macro_space": 0.805
+    },
+    "Obbligato": {
+      "macro_character": 0.685,
+      "macro_movement": 0.297,
+      "macro_coupling": 0.073,
+      "macro_space": 0.06
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "hot",
     "molten",
     "furnace"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

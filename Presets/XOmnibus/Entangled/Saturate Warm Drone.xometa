@@ -23,8 +23,23 @@
     "warmth": 0.713
   },
   "engines": [
+<<<<<<< HEAD
     "Obese",
     "Ohm"
+=======
+    "XObese",
+    "Ohm"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE drive softened by OHM commune warmth. Hot hippie. [Filter->Drive]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "ohm",
+    "fat"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -45,10 +60,13 @@
       "fat_warmth": 0.741
     },
     "Ohm": {
+<<<<<<< HEAD
       "ohm_aggression": 0.391,
       "ohm_brightness": 0.476,
       "ohm_couplingBus": 0,
       "ohm_couplingLevel": 0.57,
+=======
+>>>>>>> origin/v1-launch-prep
       "ohm_outputLevel": 0.88,
       "ohm_outputPan": 0.03,
       "ohm_warmth": 0.774

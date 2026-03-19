@@ -23,6 +23,20 @@
   "engines": [
     "Optic",
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Optic AutoPulse velocity triggering Onset percussive events — light as drumstick.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "optic",
+    "onset",
+    "light"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

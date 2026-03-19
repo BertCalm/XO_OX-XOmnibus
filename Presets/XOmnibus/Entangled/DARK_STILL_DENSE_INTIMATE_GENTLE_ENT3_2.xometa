@@ -25,6 +25,7 @@
     "Orca",
     "Oblong"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -60,6 +61,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_STILL_DENSE_INTIMATE_GENTLE. Designed to raise Entangled cosine diversity.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -71,5 +77,49 @@
     "intimate"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.7204,
+      "macro_movement": 0.0893,
+      "macro_coupling": 0.9444,
+      "macro_space": 0.6541
+    },
+    "Oblong": {
+      "macro_character": 0.7331,
+      "macro_movement": 0.0805,
+      "macro_coupling": 0.7862,
+      "macro_space": 0.1526
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORCA",
+    "target": "OBLONG",
+    "amount": 0.9858
+  },
+  "macros": {
+    "CHARACTER": 0.7268,
+    "MOVEMENT": 0.0849,
+    "COUPLING": 0.8653,
+    "SPACE": 0.4033
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.1115,
+    "warmth": 0.3307,
+    "movement": 0.0964,
+    "density": 0.9726,
+    "space": 0.0877,
+    "aggression": 0.0758
+  }
+>>>>>>> origin/v1-launch-prep
 }

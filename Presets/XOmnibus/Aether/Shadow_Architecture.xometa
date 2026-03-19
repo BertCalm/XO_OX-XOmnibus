@@ -16,6 +16,7 @@
   "engines": [
     "Obscura"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "SHADOW",
     "BLUR",
@@ -36,6 +37,11 @@
     "space": 0.5,
     "warmth": 0.7
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Structural shadow — form defined only by absence",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -44,5 +50,27 @@
     "structure",
     "negative"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "SHADOW",
+    "BLUR",
+    "COUPLING",
+    "VEIL"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.13,
+    "warmth": 0.7,
+    "movement": 0.18,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.22
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_KINETIC_DENSE_FND_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Oracle",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.653,
+      "macro_movement": 0.685,
+      "macro_coupling": 0.389,
+      "macro_space": 0.699
+    },
+    "OddfeliX": {
+      "macro_character": 0.794,
+      "macro_movement": 0.116,
+      "macro_coupling": 0.793,
+      "macro_space": 0.685
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "hot",
     "kinetic",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

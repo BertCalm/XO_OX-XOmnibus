@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK KINETIC DENSE VIOLENT ATM AGG 3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Optic",
+    "Opal"
+  ],
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.019,
+      "macro_movement": 0.871,
+      "macro_coupling": 0.832,
+      "macro_space": 0.59
+    },
+    "Opal": {
+      "macro_character": 0.02,
+      "macro_movement": 0.912,
+      "macro_coupling": 0.917,
+      "macro_space": 0.576
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "dark",
     "kinetic",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

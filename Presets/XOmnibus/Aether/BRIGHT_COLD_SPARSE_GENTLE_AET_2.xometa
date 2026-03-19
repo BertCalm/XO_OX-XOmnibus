@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "BRIGHT COLD SPARSE GENTLE AET 2",
+  "mood": "Aether",
+  "engines": [
+    "Obscura",
+    "Owlfish"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — aether, bright, cold, sparse.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "bright",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.955,
+    "warmth": 0.043,
+    "movement": 0.509,
+    "density": 0.099,
+    "space": 0.49,
+    "aggression": 0.093
+  },
+  "parameters": {
+    "Obscura": {
+      "level": 0.688,
+      "pan": 0.063
+    },
+    "Owlfish": {
+      "level": 0.826,
+      "pan": -0.111
+    }
+  },
+  "coupling": [
+    {
+      "source": "OBSCURA",
+      "destination": "OWLFISH",
+      "type": "TIMBRE_BLEND",
+      "amount": 0.538
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

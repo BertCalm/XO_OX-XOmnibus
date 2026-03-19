@@ -14,12 +14,15 @@
   "engines": [
     "Odyssey",
     "Oceanic"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.5,
@@ -50,6 +53,7 @@
     "oceanic",
     "wavetable"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Drift trajectory lit by bioluminescent wake — oceanic phosphorescence marking the path"
+>>>>>>> origin/v1-launch-prep
 }

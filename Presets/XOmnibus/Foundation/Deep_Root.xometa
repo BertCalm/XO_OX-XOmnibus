@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DEEP ROOT",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OddfeliX",
+    "Oblong"
+  ],
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.308,
+      "macro_movement": 0.749,
+      "macro_coupling": 0.569,
+      "macro_space": 0.289
+    },
+    "Oblong": {
+      "macro_character": 0.124,
+      "macro_movement": 0.689,
+      "macro_coupling": 0.7,
+      "macro_space": 0.943
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "extreme",
     "high-movement"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

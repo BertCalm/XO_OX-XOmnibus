@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_STILL_VIOLENT_FLX_SLW_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Optic",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.44,
+      "macro_movement": 0.075,
+      "macro_coupling": 0.706,
+      "macro_space": 0.553
+    },
+    "Odyssey": {
+      "macro_character": 0.567,
+      "macro_movement": 0.084,
+      "macro_coupling": 0.696,
+      "macro_space": 0.586
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "cold",
     "violent",
     "frozen-instability"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

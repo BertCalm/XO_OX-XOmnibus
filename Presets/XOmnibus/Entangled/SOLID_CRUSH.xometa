@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SOLID CRUSH",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Owlfish",
+    "Organon"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.2121,
+      "macro_movement": 0.7978,
+      "macro_coupling": 0.7361,
+      "macro_space": 0.8803
+    },
+    "Organon": {
+      "macro_character": 0.7012,
+      "macro_movement": 0.2763,
+      "macro_coupling": 0.6041,
+      "macro_space": 0.9481
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "bound",
     "crushing",
     "stacked"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,49 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "schema_version": 1,
+  "name": "Tangled Bloom",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Orphica"
+  ],
+  "author": "XO_OX",
+  "macros": {
+    "CHARACTER": 0.59,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.69,
+    "SPACE": 0.81
+  },
+  "sonic_dna": {
+    "movement": 0.64,
+    "brightness": 0.71,
+    "aggression": 0.25,
+    "space": 0.81,
+    "warmth": 0.53,
+    "density": 0.6
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_size": 0.589,
+      "olap_decay": 0.753,
+      "olap_damping": 0.599,
+      "olap_diffusion": 0.669,
+      "olap_modDepth": 0.343,
+      "olap_modRate": 0.321,
+      "olap_preDelay": 0.011,
+      "olap_earlyMix": 0.479,
+      "olap_lateMix": 0.517,
+      "olap_filterCutoff": 0.55,
+      "olap_filterReso": 0.144,
+      "olap_outputLevel": 0.756,
+      "olap_couplingLevel": 0.691,
+      "olap_couplingBus": 0
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -66,6 +110,7 @@
     "fdn",
     "reverb"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.55,
@@ -75,4 +120,7 @@
     "space": 0.011,
     "aggression": 0.3
   }
+=======
+  "description": "Orphica pluck brightness modulates OVERLAP filter cutoff — string attack shapes the reverb tone"
+>>>>>>> origin/v1-launch-prep
 }

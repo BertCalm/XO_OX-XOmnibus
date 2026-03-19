@@ -16,6 +16,7 @@
     "Orbital",
     "Obbligato"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -35,6 +36,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORBITAL elliptical pulse + OBBLIGATO dual wind — the planet and its breath. Celestial orbit carried by wind. BOND across the solar system.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "reunion",
@@ -46,5 +52,25 @@
     "batch3-reunion"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.45,
+    "movement": 0.62,
+    "density": 0.52,
+    "space": 0.82,
+    "aggression": 0.18
+  }
+>>>>>>> origin/v1-launch-prep
 }

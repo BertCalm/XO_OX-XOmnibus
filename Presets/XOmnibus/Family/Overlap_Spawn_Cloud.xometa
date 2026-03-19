@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Spawn Cloud",
+  "mood": "Family",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A jellyfish spawn cloud \u2014 thousands of ephemeral nodes, each briefly independent, then dissipating. The unknot topology handles the diffuse initial burst. The tail is much longer than the attack suggests.",
+  "tags": [
+    "spawn",
+    "ephemeral",
+    "unknot",
+    "cloud",
+    "family"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.55,
+    "movement": 0.62,
+    "density": 0.7,
+    "space": 0.85,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 0,
+      "olap_delayFeedback": 0.55,
+      "olap_diffusion": 0.82,
+      "olap_spread": 0.88,
+      "olap_decay": 5.0,
+      "olap_modDepth": 0.3,
+      "olap_modRate": 0.1,
+      "olap_damping": 0.35,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

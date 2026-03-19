@@ -14,12 +14,15 @@
   "engines": [
     "Obbligato",
     "OddOscar"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.55,
@@ -50,6 +53,7 @@
     "oddoscar",
     "wind"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "OBBLIGATO BOND macro tied to OddOscar morph depth — wind must breathe with the axolotl"
+>>>>>>> origin/v1-launch-prep
 }

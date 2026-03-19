@@ -1,5 +1,49 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "schema_version": 1,
+  "name": "Propagating Veil",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Ouroboros"
+  ],
+  "author": "XO_OX",
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.76,
+    "SPACE": 0.71
+  },
+  "sonic_dna": {
+    "movement": 0.66,
+    "brightness": 0.57,
+    "aggression": 0.37,
+    "space": 0.71,
+    "warmth": 0.53,
+    "density": 0.74
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_size": 0.854,
+      "olap_decay": 0.581,
+      "olap_damping": 0.47,
+      "olap_diffusion": 0.853,
+      "olap_modDepth": 0.253,
+      "olap_modRate": 0.259,
+      "olap_preDelay": 0.03,
+      "olap_earlyMix": 0.541,
+      "olap_lateMix": 0.644,
+      "olap_filterCutoff": 0.496,
+      "olap_filterReso": 0.148,
+      "olap_outputLevel": 0.76,
+      "olap_couplingLevel": 0.688,
+      "olap_couplingBus": 0
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -66,6 +110,7 @@
     "fdn",
     "reverb"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.496,
@@ -75,4 +120,7 @@
     "space": 0.03,
     "aggression": 0.3
   }
+=======
+  "description": "Ouroboros loop phase modulates OVERLAP decay length — the coil's rotation is the reverb's clock"
+>>>>>>> origin/v1-launch-prep
 }

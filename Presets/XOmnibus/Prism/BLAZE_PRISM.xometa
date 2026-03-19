@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BLAZE PRISM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Outwit",
+    "Ombre"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.355,
+      "macro_movement": 0.907,
+      "macro_coupling": 0.629,
+      "macro_space": 0.176
+    },
+    "Ombre": {
+      "macro_character": 0.356,
+      "macro_movement": 0.46,
+      "macro_coupling": 0.369,
+      "macro_space": 0.429
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "spectrum",
     "fire"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -54,6 +55,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "Hidden Drama",
+  "mood": "Entangled",
+  "engines": [
+    "Ole",
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "OLE drama spatially coupled into Obscura's depth — the dancer disappears.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -63,5 +76,47 @@
     "drama"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.68,
+    "movement": 0.62,
+    "density": 0.55,
+    "space": 0.7,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.7,
+      "macro_movement": 0.62,
+      "macro_coupling": 0.68,
+      "macro_space": 0.4
+    },
+    "Obscura": {
+      "macro_character": 0.52,
+      "macro_movement": 0.58,
+      "macro_coupling": 0.68,
+      "macro_space": 0.72
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OLE",
+        "engineB": "OBSCURA",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.68
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.61,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.68,
+    "SPACE": 0.56
+  },
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

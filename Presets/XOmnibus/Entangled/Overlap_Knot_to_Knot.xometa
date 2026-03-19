@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Knot to Knot",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A bidirectional coupling between two OVERLAP instances \u2014 knot topologies feeding each other, creating recursive tangle structures impossible with a single instance. An infinite regress of crossings.",
+  "tags": [
+    "recursive",
+    "bidirectional",
+    "trefoil",
+    "infinite",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.68,
+    "density": 0.78,
+    "space": 0.85,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.7,
+      "olap_diffusion": 0.78,
+      "olap_spread": 0.85,
+      "olap_decay": 9.0,
+      "olap_modDepth": 0.3,
+      "olap_modRate": 0.09,
+      "olap_damping": 0.38,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

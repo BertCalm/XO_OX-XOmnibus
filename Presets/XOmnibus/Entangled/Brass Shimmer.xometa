@@ -24,6 +24,18 @@
   "engines": [
     "Orphica",
     "Ottoni"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORPHICA and OTTONI coupled via Env->Morph. Blended Constellation DNA — stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "orphica",
+    "ottoni"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "WARMTH",

@@ -23,6 +23,20 @@
   "engines": [
     "Obsidian",
     "OddOscar"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Axolotl morph timbral-warped by Obsidian crystal density — regeneration under absolute cold.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obsidian",
+    "oddoscar",
+    "crystal"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

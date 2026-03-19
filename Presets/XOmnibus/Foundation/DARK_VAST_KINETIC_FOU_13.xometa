@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK VAST KINETIC FOU 13",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Ottoni",
+    "Osprey"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.277,
+      "macro_movement": 0.946,
+      "macro_coupling": 0.601,
+      "macro_space": 0.969
+    },
+    "Osprey": {
+      "macro_character": 0.386,
+      "macro_movement": 0.871,
+      "macro_coupling": 0.477,
+      "macro_space": 0.954
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

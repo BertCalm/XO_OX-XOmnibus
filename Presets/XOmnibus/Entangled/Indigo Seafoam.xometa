@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -54,6 +55,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "Indigo Seafoam",
+  "mood": "Entangled",
+  "engines": [
+    "Orphica",
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Seafoam microsound spectrally morphs Oracle's indigo space — depth of vision.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -63,5 +76,47 @@
     "spectral"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "dna": {
+    "brightness": 0.695,
+    "warmth": 0.38,
+    "movement": 0.24,
+    "density": 0.4,
+    "space": 1.0,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.68,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.72,
+      "macro_space": 0.78
+    },
+    "Oracle": {
+      "macro_character": 0.55,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.72,
+      "macro_space": 0.62
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORPHICA",
+        "engineB": "ORACLE",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.72
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.615,
+    "MOVEMENT": 0.575,
+    "COUPLING": 0.72,
+    "SPACE": 0.7
+  },
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

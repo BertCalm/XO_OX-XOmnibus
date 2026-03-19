@@ -16,6 +16,7 @@
   "engines": [
     "Oceanic"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -36,6 +37,11 @@
     "space": 0.107,
     "warmth": 0.072
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset — extreme cold warmth, extreme kinetic movement, extreme dense density, extreme tight space. Maximum contrast character design.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "cold",
     "kinetic",
@@ -44,5 +50,29 @@
     "flux",
     "extreme"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Rhythmic",
+  "dna": {
+    "brightness": 0.465,
+    "warmth": 0.072,
+    "movement": 0.952,
+    "density": 0.909,
+    "space": 0.107,
+    "aggression": 0.468
+  },
+  "parameters": {
+    "Oceanic": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

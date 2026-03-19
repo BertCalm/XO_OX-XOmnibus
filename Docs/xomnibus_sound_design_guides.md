@@ -1,7 +1,11 @@
 # XOmnibus — Sound Design Guide
 *Per-engine reference for sound designers, preset builders, and performers.*
+<<<<<<< HEAD
 *Covers 34 of 34 registered engines: features, key parameters, coupling strategies, and recommended pairings.*
 *5 Constellation engines (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) have dedicated synthesis guides in Docs/ (e.g. ohm_synthesis_guide.md) but are not yet integrated into this unified guide.*
+=======
+*Covers all 34 registered engines: features, key parameters, coupling strategies, and recommended pairings.*
+>>>>>>> origin/v1-launch-prep
 *V2 concept engines (OSTINATO, OPENSKY, OCEANDEEP, OUIE) are not registered in XOmnibus and are out of scope for this guide.*
 
 ---
@@ -2125,6 +2129,7 @@ The ink cloud is a performance weapon, not a mixing tool. Set `octo_inkThreshold
 
 ---
 
+<<<<<<< HEAD
 ## 31. OVERLAP — Knot-Topology Feedback Delay Network
 
 **Gallery code:** OVERLAP | **Accent:** Phosphorescent Teal → Neon Green `#00FFB4`
@@ -2366,3 +2371,372 @@ Three divider channels (`owl_divider1`, `owl_divider2`, `owl_divider3`) each sel
 OWLFISH demands that you approach `owl_bodyFreq` as a compositional decision before you touch anything else. Choose a frequency that fits your key or drone: 55 Hz (A1) for deep bass, 110 Hz (A2) for cello register, 165 Hz (E3) for a slightly higher anchor. That frequency IS the instrument. The dividers then build a subharmonic structure beneath it that is entirely determined by integer mathematics — not by equal temperament, not by standard intervals. This is why ÷3 and ÷5 feel uncanny: they produce ratios that do not appear in 12-tone equal temperament and never will.
 
 The duophonic architecture (OWL-II) means OWLFISH can voice two independent bodyFreq+divider configurations simultaneously. Use this for internal harmony or for a Trautonium-style melody-plus-drone texture. Keep morphGlide between 1–4 seconds for the metamorphosis character; shorter is more mechanical, longer approaches a slow vowel-like spectral drift. Velocity should shape filter brightness (D001) — higher velocity opens the filter, simulating the Trautonium's pressure-sensitive ribbon dynamic.
+=======
+## 31. OPENSKY — Euphoric Shimmer Poly Synth
+
+**Gallery code:** OPENSKY | **Accent:** Sunburst `#FF8C00`
+**Parameter prefix:** `sky_`
+**Aquatic mythology:** The Flying Fish School — surface breakers launching into open air. OPENSKY lives at the very top of the XO_OX water column, where sunlight is total and the only direction is upward. It is the engine of euphoria: seven detuned saws stacked into a supersaw wall, topped by four shimmer voices pitched at octave and fifth intervals above the fundamental. Pure feliX polarity — no Oscar anywhere, nothing dark or heavy. Where OCEANDEEP pulls everything toward the trench floor, OPENSKY launches skyward in synchronized arcs.
+**Synthesis type:** 8-voice polyphonic supersaw (7 detuned saws per voice) + 4-voice shimmer layer (sine voices at Oct, Oct+5th, 2Oct, 2Oct+5th intervals), one-pole brightness filter, Schroeder sky reverb, stereo chorus
+**Polyphony:** Poly8 (default)
+
+### Core Parameters
+
+| Parameter | Range | Default | Sweet Spot |
+|-----------|-------|---------|------------|
+| `sky_sawDetune` | 0–1 | 0.5 | 0.3–0.7 (0=pure unison, 1=±20 cents spread per voice) |
+| `sky_sawLevel` | 0–1 | 1.0 | 0.7–1.0 |
+| `sky_filterFc` | 500–18000 Hz | 8000 | 4000–14000 (brightness filter — keeps shimmer, removes mud) |
+| `sky_filterRes` | 0–1 | 0.0 | 0–0.3 (subtle resonance peak on brightness filter) |
+| `sky_ampAttack` | 0.001–4 s | 0.05 | 0.02–0.3 (slow attack for pad swells) |
+| `sky_ampDecay` | 0.01–4 s | 0.3 | 0.1–1.0 |
+| `sky_ampSustain` | 0–1 | 0.8 | 0.7–1.0 |
+| `sky_ampRelease` | 0.01–8 s | 0.8 | 0.3–3.0 |
+| `sky_shimmerMix` | 0–1 | 0.5 | 0.3–0.8 (blend shimmer layer vs fundamental) |
+| `sky_shimmerDecay` | 0.05–8 s | 2.5 | 1.5–5.0 (shimmer tail length — longer = more angelic) |
+| `sky_shimmerOct` | 0–1 | 1.0 | 0.5–1.0 (fractional octave shift on all shimmer voices) |
+| `sky_shimmerBright` | 0–1 | 0.7 | 0.5–0.9 |
+| `sky_lfoRate` | 0.01–4 Hz | 0.08 | 0.04–0.3 (per-voice shimmer pitch wander rate) |
+| `sky_lfoDepth` | 0–24 semitones | 8.0 | 4–12 (wander depth in semitones) |
+| `sky_lfoShape` | 0–1 | 0.0 | 0=triangle, 1=sine |
+| `sky_chorusMix` | 0–1 | 0.3 | 0.2–0.5 (stereo width on shimmer layer) |
+| `sky_chorusRate` | 0.01–4 Hz | 0.25 | 0.1–0.5 |
+| `sky_chorusDepth` | 0–20 ms | 8.0 | 5–12 |
+| `sky_reverbMix` | 0–1 | 0.4 | 0.3–0.7 |
+| `sky_reverbSize` | 0–1 | 0.7 | 0.5–0.9 (scales reverb feedback 0.70→0.93) |
+| `sky_outputGain` | 0–1 | 0.8 | 0.7–0.9 |
+| `sky_couplingAmt` | 0–1 | 0.0 | 0–0.5 |
+| `sky_shimmerSpread` | 0–1 | 0.5 | 0.3–0.7 (shimmer voice stereo spread) |
+| `sky_shimmerPhase` | 0–1 | 0.0 | 0–0.5 |
+| `sky_velSensitivity` | 0–1 | 0.8 | 0.6–1.0 (1.0=full velocity range, 0.0=always 70%) |
+| `sky_glide` | 0–2 s | 0.0 | 0–0.3 (portamento for smooth chord transitions) |
+| `sky_macroCharacter` | 0–1 | 0.5 | 0.3–0.8 |
+| `sky_macroMovement` | 0–1 | 0.4 | 0.2–0.7 |
+| `sky_macroCoupling` | 0–1 | 0.0 | 0–0.5 |
+| `sky_macroSpace` | 0–1 | 0.5 | 0.3–0.8 |
+
+### Macro Mappings
+- **M1 CHARACTER**: Shimmer mix depth additive boost — drives how much the shimmer layer dominates the sound. At full, the fundamental supersaw recedes and only the shimmer cloud remains. Also responds to mod wheel (CC#1) and aftertouch simultaneously
+- **M2 MOVEMENT**: Shimmer LFO rate multiplier (0.5×–2.5× base rate) + chorus rate offset — how fast the shimmer voices wander and the stereo image breathes
+- **M3 COUPLING**: Coupling amount — controls how strongly OPENSKY sends shimmer energy to coupled partners (typically OPAL for grain capture or OVERDUB for tape shimmer)
+- **M4 SPACE**: Reverb mix additive offset + reverb size additive offset — how large the sky feels
+
+### Coupling Compatibility
+OPENSKY accepts: `LFOToPitch` (external LFO → pitch modulation on all voices, adds depth sweeps from OSCILLOGRAPH or OPTIC), `AmpToFilter` (external amplitude → shimmer depth multiplier, makes shimmer layer respond to upstream dynamics), `EnvToMorph` (external envelope → shimmer depth boost, the primary OPENSKY→OPAL path where shimmer drives OPAL's grain buffer)
+
+### Starter Recipes
+**Sky Pad:** sky_sawDetune=0.5, sky_shimmerMix=0.6, sky_shimmerDecay=4.0, sky_reverbMix=0.6, sky_reverbSize=0.85, sky_ampAttack=0.15 — slow attack, long shimmer tails, wide reverb; archetypal OPENSKY euphoric wash
+**Flying Fish Lead:** sky_sawDetune=0.35, sky_shimmerMix=0.3, sky_shimmerDecay=0.8, sky_reverbMix=0.2, sky_ampAttack=0.01 — faster attack, less shimmer dominance, shorter tails; supersaw lead that still has iridescent harmonic sheen
+**Shimmer Cloud:** sky_shimmerMix=0.9, sky_shimmerDecay=6.0, sky_lfoDepth=12.0, sky_lfoRate=0.12, sky_sawDetune=0.2 — shimmer layer dominates completely; the supersaw foundation is still there but almost inaudible; all you hear is the floating shimmer cloud
+
+### Designer Notes
+OPENSKY is defined by the shimmer layer — the four sine voices pitched at oct, oct+fifth, 2oct, and 2oct+fifth intervals above the fundamental. Each voice has its own per-voice triangle LFO for gentle pitch wander, and together they produce the characteristic "angel choir" shimmer that makes OPENSKY unmistakable. `sky_shimmerDecay` is the most important parameter: it controls how long the shimmer layer sustains after the supersaw has released. Set it to 3–5 seconds and play staccato chords — the shimmer will bloom outward and hover long after your finger leaves the key.
+
+The supersaw foundation (7 detuned saws) is the body. The shimmer layer is the soul. CHARACTER (M1) is the crossfader between them: at M1=0 you have a pure supersaw pad with no shimmer contribution; at M1=1 the shimmer dominates and the saw becomes a supporting substrate. The mod wheel and aftertouch both write to the same CHARACTER destination — use them live for crescendo-style builds where the shimmer surges on an emotional peak.
+
+OPENSKY's primary coupling partner is OPAL. When `sky_couplingAmt` > 0 and OPAL is listening on `EnvToMorph`, each shimmer burst becomes a grain trigger for OPAL's granular layer. The result is a texture that shimmers in two simultaneous ways — OPENSKY's harmonic overtone shimmer and OPAL's grain-based shimmer — creating a depth of iridescence impossible from either engine alone.
+
+---
+
+## 32. OSTINATO — Communal Drum Circle
+
+**Gallery code:** OSTINATO | **Accent:** Firelight Orange `#E8701A`
+**Parameter prefix:** `osti_`
+**Aquatic mythology:** The Drum Circle Tide Pool — the bioluminescent tidal zone where rhythm meets community. Eight seats around the fire, twelve world percussion voices, one shared pulse. OSTINATO models the physics of struck membranes: white noise excitation feeding into single-pole lowpass resonant filters with exponential decay envelopes. The firelight FIRE macro intensifies everything simultaneously. The GATHER macro tightens the circle from loose organic feel to machine precision. The CIRCLE macro enables voices to modulate each other's resonant filter — inter-seat sympathetic vibration.
+**Synthesis type:** 4-voice noise exciter into single-pole lowpass filters (membrane resonance model), exponential ADSD decay envelope per voice, Schroeder reverb, 2 LFOs (tremolo + filter wobble), 8-step pattern gate sequencer
+**Polyphony:** 4 voices (drum circle seats), percussion only (note-off ignored)
+
+### Core Parameters
+
+| Parameter | Range | Default | Sweet Spot |
+|-----------|-------|---------|------------|
+| `osti_drumType` | 0–11 int | 0 (Djembe) | — (0=Djembe, 1=Dundun, 2=Conga, 3=Bongos, 4=Cajón, 5=Taiko, 6=Tabla, 7=Doumbek, 8=Frame Drum, 9=Surdo, 10=Tongue Drum, 11=Beatbox) |
+| `osti_filterCutoff` | 200–8000 Hz | 2000 | 500–4000 (blended 50/50 with drum character preset cutoff) |
+| `osti_filterRes` | 0–0.95 | 0.3 | 0.2–0.6 (blended with drum preset resonance) |
+| `osti_ampAtk` | 0.001–0.1 s | 0.003 | 0.001–0.01 (percussion: very short attack) |
+| `osti_ampDec` | 0.1–3.0 s | 0.5 | 0.2–1.5 (hold stage duration at plateau) |
+| `osti_ampSus` | 0–1 | 0.0 | 0–0.4 (plateau amplitude — 0=immediate decay) |
+| `osti_ampRel` | 0.1–2.0 s | 0.3 | 0.15–0.8 (exponential decay time) |
+| `osti_velCutoffAmt` | 0–1 | 0.5 | 0.3–0.8 (velocity → filter cutoff: soft hits are darker) |
+| `osti_reverbMix` | 0–1 | 0.2 | 0.1–0.4 |
+| `osti_lfo1Rate` | 0.01–10 Hz | 0.5 | 0.1–2.0 (slow tremolo — amplitude wobble) |
+| `osti_lfo1Depth` | 0–1 | 0.1 | 0.05–0.3 |
+| `osti_lfo2Rate` | 0.01–10 Hz | 1.5 | 0.5–4.0 (filter wobble rate) |
+| `osti_lfo2Depth` | 0–1 | 0.1 | 0.05–0.3 (±500 Hz filter modulation at depth=1) |
+| `osti_patternStep0`–`osti_patternStep7` | bool | 1,0,1,0,1,0,0,0 | — (8-step gate mask: each true step passes note-ons through) |
+| `osti_macroGather` | 0–1 | 0.5 | 0.3–0.8 |
+| `osti_macroFire` | 0–1 | 0.5 | 0.3–1.0 |
+| `osti_macroCircle` | 0–1 | 0.3 | 0.1–0.6 |
+| `osti_macroSpace` | 0–1 | 0.4 | 0.2–0.7 |
+
+### Macro Mappings
+- **M1 GATHER**: Inter-voice timing tightness — at 0 each voice has up to ±400 Hz cutoff spread (organic looseness, each seat sounds slightly different); at 1 all voices have identical cutoff (machine-tight unison)
+- **M2 FIRE**: Master intensity — scales amplitude output 0.5×→1.5× and filter brightness 1×→2.5×. The mod wheel (CC#1) additively drives FIRE. Push FIRE to 0.8+ for climax moments
+- **M3 CIRCLE**: Inter-voice sympathetic resonance — each voice is modulated by the summed output of all other voices (±800 Hz cutoff cross-modulation). At full CIRCLE the drum circle feeds back on itself like a room full of drummers affecting each other
+- **M4 SPACE**: Reverb mix depth — scales overall reverb wet level and reverb room size simultaneously
+
+### Coupling Compatibility
+OSTINATO accepts: `AmpToFilter` (external amplitude → FIRE intensity additive, making the drum circle respond to upstream engine dynamics), `LFOToPitch` (external LFO → filter cutoff modulation offset — applied as a cutoff shift since drums don't track pitch), `RhythmToBlend` (external rhythm signal → retrigger all voices on strong pulses — OSTINATO synchronizes to upstream rhythmic events), `EnvToDecay` (external envelope → decay time multiplier — upstream envelopes stretch or compress the drum tails)
+
+### Starter Recipes
+**Djembe Fire Circle:** osti_drumType=0, osti_macroFire=0.7, osti_macroCircle=0.4, osti_macroGather=0.4, osti_ampDec=0.4 — traditional djembe with strong FIRE and moderate CIRCLE cross-modulation; voices bleed into each other like drummers feeding off the group energy
+**Taiko Machine:** osti_drumType=5, osti_macroGather=1.0, osti_macroFire=0.8, osti_ampDec=1.2, osti_ampRel=0.8 — full GATHER tightness, taiko character (low resonance, long decay); dense machine-precise pulse
+**Tabla Improvisation:** osti_drumType=6, osti_macroGather=0.2, osti_macroCircle=0.6, osti_velCutoffAmt=0.8, osti_filterRes=0.5 — loose GATHER, high CIRCLE, strong velocity-to-brightness; play at varying velocities for tabla-style dynamic shaping with strong sympathetic resonance
+
+### Designer Notes
+The 8-step pattern gate is OSTINATO's unique rhythmic dimension. Each step's boolean parameter (`osti_patternStep0` through `osti_patternStep7`) acts as a gate mask: when false, any MIDI note-on arriving during that step is silently consumed. The step advances on every note-on, wrapping 0→7. This means OSTINATO can generate polyrhythmic mute patterns without a sequencer — just trigger it on continuous 16th notes and let the pattern mask carve the rhythm.
+
+The CIRCLE macro produces the engine's most distinctive behavior: sympathetic resonance between seats. When active, each voice is fed the summed output of all other voices as an additive cutoff modulation (±800 Hz). On a single hit this is barely audible. But when all four voices are firing at high density, the cross-modulation creates a swirling resonance where the drum circle literally feeds back on itself. At CIRCLE=0.6+, the filter cutoffs of all voices begin to track each other's acoustic energy — a physical model of what actually happens when multiple drummers play together in a small room.
+
+The 12 drum characters (osti_drumType) are defined by three physical parameters — filter cutoff, resonance, and decay time — blended 50/50 with any manual filter/decay overrides. Surdo (type 9) is the most abyssal: 130 Hz cutoff, 0.28 resonance, 1.6-second decay — ideal for sub-bass thump in coupled configurations with OCEANDEEP.
+
+---
+
+## 33. OCEANDEEP — Abyssal Bass Synthesizer
+
+**Gallery code:** OCEANDEEP | **Accent:** Trench Violet `#2D0A4E`
+**Parameter prefix:** `deep_`
+**Aquatic mythology:** The Anglerfish and Gulper Eel — bottom-of-the-water-column predators in the hadal zone (6,000–11,000 m depth). OCEANDEEP is pure Oscar polarity: sub-bass presence that displaces air before sound reaches your ears. Three sine oscillators stacked at fundamental, -1 octave, and -2 octave create the sub stack. A hydrostatic compressor (peak-sensing gain reduction) models the weight of the water column pressing down. A waveguide body (comb filter) resonates like a shipwreck hull or underwater cave. A bioluminescent exciter emits intermittent bandpass noise bursts — alien light pulses in the void. A 2-pole Butterworth darkness filter (50–800 Hz) rolls off everything above the trench floor.
+**Synthesis type:** Monophonic sub oscillator stack (3 sine oscs: fundamental + sub1 -1oct + sub2 -2oct) → hydrostatic compressor → waveguide body (comb filter) → bioluminescent noise exciter → 2-pole Butterworth darkness filter → ADSR amp envelope → abyssal reverb
+**Polyphony:** Mono (bass engine — phase-resets on each note-on)
+
+### Core Parameters
+
+| Parameter | Range | Default | Sweet Spot |
+|-----------|-------|---------|------------|
+| `deep_subLevel` | 0–1 | 0.7 | 0.5–0.9 (overall sub oscillator stack level) |
+| `deep_subOctMix` | 0–1 | 0.4 | 0.2–0.6 (blend of -1oct and -2oct sub voices into stack) |
+| `deep_filterCutoff` | 50–800 Hz | 400 | 150–600 (darkness filter — hard ceiling keeps signal abyssal) |
+| `deep_filterRes` | 0–0.95 | 0.5 | 0.3–0.8 (Butterworth Q 0.5→12.0 — higher = narrower resonance peak) |
+| `deep_velCutoffAmt` | 0–1 | 0.4 | 0.2–0.6 (velocity → +0–150 Hz cutoff boost) |
+| `deep_bodyChar` | 0–2 int | 0 | 0=open water, 1=cave, 2=wreck |
+| `deep_bodyFeedback` | 0–0.9 | 0.45 | 0.3–0.75 (comb filter feedback — higher = more resonant body) |
+| `deep_bodyMix` | 0–1 | 0.3 | 0.1–0.5 (waveguide body dry/wet mix) |
+| `deep_bioRate` | 0.01–0.5 Hz | 0.08 | 0.03–0.2 (bioluminescent exciter pulse rate) |
+| `deep_bioMix` | 0–1 | 0.15 | 0.05–0.3 (exciter wet level — keep subtle or it becomes noise-heavy) |
+| `deep_bioBrightness` | 200–4000 Hz | 800 | 400–2000 (bandpass center of the creature noise burst) |
+| `deep_pressureAmt` | 0–1 | 0.6 | 0.4–0.9 (hydrostatic compressor depth — higher = more gain reduction) |
+| `deep_ampAtk` | 0.001–0.5 s | 0.01 | 0.005–0.05 |
+| `deep_ampDec` | 0.1–5.0 s | 0.5 | 0.2–2.0 |
+| `deep_ampSus` | 0–1 | 0.8 | 0.6–1.0 |
+| `deep_ampRel` | 0.2–8.0 s | 1.5 | 0.5–3.0 (long release for bass tail) |
+| `deep_lfo1Rate` | 0.01–2.0 Hz | 0.15 | 0.05–0.5 (creature modulation: modulates bio rate and filter cutoff) |
+| `deep_lfo1Depth` | 0–1 | 0.3 | 0.1–0.5 |
+| `deep_lfo2Rate` | 0.01–0.5 Hz | 0.05 | 0.02–0.15 (pressure wobble: very slow pitch and compression breathing) |
+| `deep_lfo2Depth` | 0–1 | 0.2 | 0.1–0.4 (±0.5% pitch wobble and ±15% compression variation) |
+| `deep_reverbMix` | 0–1 | 0.35 | 0.2–0.5 |
+| `deep_macroPressure` | 0–1 | 0.5 | 0.3–0.8 |
+| `deep_macroCreature` | 0–1 | 0.3 | 0.1–0.6 |
+| `deep_macroWreck` | 0–1 | 0.4 | 0.2–0.7 |
+| `deep_macroAbyss` | 0–1 | 0.5 | 0.3–0.8 |
+
+### Macro Mappings
+- **M1 PRESSURE**: Hydrostatic compression depth additive offset + sub level boost — how hard the water column squeezes the signal. Mod wheel (CC#1) drives this down by -200 Hz on the darkness filter. Aftertouch adds to pressure compression
+- **M2 CREATURE**: Bioluminescent exciter mix + rate boost — how actively the alien life pulses. At CREATURE=0 the engine is pure sub-bass, silent creature. At CREATURE=1 the intermittent noise bursts come fast and loud, like an anglerfish's lure in frenzy
+- **M3 WRECK**: Waveguide body mix + feedback increase, plus automatic shift toward `deep_bodyChar=2` (wreck mode with allpass diffusion) above 0.7. Pulls the clean sub oscillator into resonant hull-mode territory
+- **M4 ABYSS**: Darkness filter sweep — lowers the cutoff by up to 350 Hz and increases reverb mix simultaneously. Turn up for maximum trench-floor darkness
+
+### Coupling Compatibility
+OCEANDEEP accepts: `AmpToFilter` (external amplitude → ±200 Hz darkness filter modulation), `AmpToPitch` / `PitchToPitch` (external → pitch offset in semitones, applied to all three oscillators). OCEANDEEP sends its monophonic sub-bass output for coupling (primarily useful as a low-end trigger or sidechain input for compression-based coupling types).
+
+### Starter Recipes
+**Trench Floor:** deep_filterCutoff=250, deep_subOctMix=0.5, deep_macroPressure=0.8, deep_macroAbyss=0.7, deep_bodyChar=0, deep_ampRel=2.0 — pure sub pressure at maximum depth; nothing above 300 Hz survives
+**Shipwreck Hull:** deep_macroWreck=0.9, deep_bodyFeedback=0.7, deep_bodyMix=0.4, deep_filterCutoff=500, deep_filterRes=0.7 — waveguide feedback at near-instability with high resonance; the hull modes ring audibly on each note
+**Creature Pulse:** deep_macroCreature=0.7, deep_bioRate=0.15, deep_bioBrightness=1200, deep_bioMix=0.25, deep_lfo1Rate=0.3 — bioluminescent exciter at high rate with bright bandpass center; sub-bass with alien nerve-signal interruptions
+
+### Designer Notes
+OCEANDEEP's most powerful design principle is darkness by subtraction — every mechanism removes high frequencies rather than adding them. The Butterworth darkness filter hard-caps everything above 800 Hz (at default cutoff 400 Hz with resonance, even less gets through). The hydrostatic compressor reduces gain as amplitude rises, modeling the way water pressure creates an inescapable ceiling. The abyssal reverb has very dark damping: the high-frequency content of comb filters is heavily absorbed, leaving only the densest low-frequency reflections.
+
+The waveguide body (`deep_bodyChar`) is a subtle but unmistakable element. At mode 0 (open water) the comb tuning follows the fundamental frequency exactly, adding resonant reinforcement that deepens the sub. At mode 1 (cave) the comb is tuned 1.2% flat relative to fundamental, creating slight beat-frequency interference that sounds like cave-wall reflections. At mode 2 (wreck) — triggered automatically when WRECK macro exceeds 0.7 — an allpass diffusion element is added inside the comb loop, producing the complex hull modal resonance of a sunken ship. Start at bodyMix=0.3 and work upward.
+
+For maximum sub-bass impact in a coupling context, route OCEANDEEP into OSTINATO via `AmpToFilter`: OCEANDEEP's low-frequency output drives the drum circle's filter brightness, so as the bass note sustains the drums brighten sympathetically. This mimics the physical reality of a subwoofer making everything else in the room resonate.
+
+---
+
+## 34. OUIE — Duophonic Hammerhead Shark Synthesis
+
+**Gallery code:** OUIE | **Accent:** Hammerhead Steel `#708090`
+**Parameter prefix:** `ouie_`
+**Aquatic mythology:** The Hammerhead Shark — its cephalofoil (the distinctive T-shaped head) gives it lateralized sensory organs that operate independently. OUIE maps this anatomy directly: two independent synthesis voices (A and B) each select their own algorithm, have their own filter and ADSR envelope, and meet at the HAMMER interaction stage where their relationship ranges from STRIFE (Voice A cross-FM-modulates Voice B with ring mod blend, producing maximum dissonance) through Independent (parallel sum) to LOVE (spectral crossfade with harmonic locking, Voice B snaps to nearest harmonic of Voice A fundamental). The STRIFE↔LOVE axis gives OUIE its dramatic expressive range.
+**Synthesis type:** Duophonic — Voice A and Voice B each select from: VA Saw (anti-aliased), Wavetable (4-frame morph: sine/tri/saw/square), FM (2-operator), or KS Pluck (Karplus-Strong). Shared HAMMER interaction stage. Master amp envelope shared across both voices. SVF filter per voice.
+**Polyphony:** 2 voices (duophonic — Voice A and Voice B respond to MIDI based on Voice Mode)
+
+### Core Parameters
+
+| Parameter | Range | Default | Sweet Spot |
+|-----------|-------|---------|------------|
+| `ouie_voiceAAlgo` | 0–3 choice | 0 (VA Saw) | 0=VA Saw, 1=Wavetable, 2=FM, 3=KS Pluck |
+| `ouie_voiceAPitch` | -12–12 st | 0.0 | -7–7 (pitch offset relative to played note) |
+| `ouie_voiceALevel` | 0–1 | 0.8 | 0.6–1.0 |
+| `ouie_voiceBAlgo` | 0–3 choice | 1 (Wavetable) | — |
+| `ouie_voiceBPitch` | -12–12 st | 7.0 | -12–12 (default +7 st = fifth above Voice A) |
+| `ouie_voiceBLevel` | 0–1 | 0.8 | 0.6–1.0 |
+| `ouie_filterACutoff` | 200–12000 Hz | 4000 | 1500–8000 |
+| `ouie_filterARes` | 0–0.95 | 0.2 | 0–0.5 |
+| `ouie_filterBCutoff` | 200–12000 Hz | 4000 | 1500–8000 |
+| `ouie_filterBRes` | 0–0.95 | 0.2 | 0–0.5 |
+| `ouie_ampAtk` | 0.001–2.0 s | 0.01 | 0.005–0.2 |
+| `ouie_ampDec` | 0.01–3.0 s | 0.2 | 0.1–1.0 |
+| `ouie_ampSus` | 0–1 | 0.8 | 0.6–1.0 |
+| `ouie_ampRel` | 0.05–5.0 s | 0.4 | 0.2–2.0 |
+| `ouie_hammerPos` | -1–1 | 0.0 | — (-1=STRIFE, 0=independent, +1=LOVE) |
+| `ouie_hammerDepth` | 0–1 | 0.5 | 0.3–0.8 (depth of HAMMER interaction effect) |
+| `ouie_voiceMode` | 0–2 choice | 1 (Layer) | 0=Duo (A lower/B higher), 1=Layer (both same note), 2=Split |
+| `ouie_splitPoint` | 0–127 | 60 | — (only used when voiceMode=2) |
+| `ouie_velCutoffAmt` | 0–1 | 0.5 | 0.3–0.8 |
+| `ouie_portaTime` | 0–5.0 s | 0.0 | 0–0.5 |
+| `ouie_portaAuto` | bool | false | — |
+| `ouie_lfo1Rate` | 0.01–20 Hz | 5.0 | 0.05–8.0 |
+| `ouie_lfo1Depth` | 0–1 | 0.0 | 0–0.5 |
+| `ouie_lfo1Target` | 0–2 choice | 0 (Pitch) | 0=Pitch, 1=Filter, 2=Hammer |
+| `ouie_lfo2Rate` | 0.01–20 Hz | 3.0 | 0.05–6.0 |
+| `ouie_lfo2Depth` | 0–1 | 0.0 | 0–0.4 |
+| `ouie_reverbMix` | 0–1 | 0.2 | 0.1–0.4 |
+| `ouie_macroHammer` | -1–1 | 0.0 | — (bipolar: -1=full STRIFE, 0=independent, +1=full LOVE) |
+| `ouie_macroAmpullae` | 0–1 | 0.0 | 0–0.6 |
+| `ouie_macroCartilage` | 0–1 | 0.0 | 0–0.5 |
+| `ouie_macroCurrent` | 0–1 | 0.0 | 0–0.5 |
+
+### Macro Mappings
+- **M1 HAMMER**: Bipolar HAMMER position sweep — directly drives `ouie_hammerPos` and `ouie_hammerDepth` interaction. Negative values sweep toward STRIFE (dissonance, FM cross-modulation, ring mod), positive values toward LOVE (spectral crossfade, harmonic locking). The full dramatic arc from tension to resolution lives on this single macro
+- **M2 AMPULLAE**: Ampullae of Lorenzini — the hammerhead's electrical field sensors. Controls velocity sensitivity and expression responsiveness; affects filter brightness sensitivity and overall dynamic range
+- **M3 CARTILAGE**: Structural stiffness — controls filter resonance on both voices and the LFO depth range; higher CARTILAGE makes the harmonic structure sharper and more defined
+- **M4 CURRENT**: Environmental coupling depth — controls how strongly OUIE responds to coupled partners; equivalent to the hammerhead's sensitivity to ocean current signals
+
+### Coupling Compatibility
+OUIE accepts: `LFOToPitch` (external LFO → shared pitch modulation on both voices), `AmpToFilter` (external amplitude → filter cutoff modulation on Voice A or B based on routing). OUIE sends both voice outputs independently — useful as a dissonant-to-consonant source for coupled engines that morph based on spectral content.
+
+### Starter Recipes
+**Harmonic Lock (LOVE):** ouie_hammerPos=1.0, ouie_hammerDepth=0.7, ouie_voiceBPitch=7.0, ouie_voiceAAlgo=0, ouie_voiceBAlgo=1, ouie_voiceMode=1 — Voice B snaps to nearest harmonic of Voice A; perfect fifths become locked partials; playing melodies produces spectral "orbits" where Voice B follows Voice A's harmonic series
+**STRIFE Tension:** ouie_hammerPos=-1.0, ouie_hammerDepth=0.6, ouie_voiceAAlgo=2, ouie_voiceBAlgo=0, ouie_voiceBPitch=0.0 — FM cross-modulation + ring mod between voices; maximum dissonance; the cephalofoil sensing two conflicting signals simultaneously
+**Duo Split:** ouie_voiceMode=0, ouie_voiceAPitch=0.0, ouie_voiceBPitch=0.0, ouie_hammerPos=0.3, ouie_hammerDepth=0.4 — Duo mode with A taking lower notes, B taking higher; HAMMER at 0.3 adds subtle LOVE harmonic affinity without full lock; like two independent soloists who occasionally align
+
+### Designer Notes
+The HAMMER interaction stage is the heart of OUIE's identity. At position 0, the voices are independent — they share only the output mix and master envelope, running their own filters and algorithms. As HAMMER moves toward STRIFE (-1), Voice A begins to FM-modulate Voice B's oscillator phase, and a ring modulator blends into the output. The result is clangorous and dissonant in direct proportion to the pitch interval between the two voices. A unison interval at STRIFE produces subtle sidebands; a tritone produces spectral chaos.
+
+As HAMMER moves toward LOVE (+1), the interaction reverses: instead of A distorting B, B's pitch is continuously pulled toward the nearest harmonic in A's harmonic series. At full LOVE the effect is locked — Voice B plays only harmonics of Voice A, making any note combination sound like different timbre settings of a single instrument rather than two independent voices. This is the hammerhead's sensory lateralization working in synthesis: the left and right lateral line sensors fusing into a single electromagnetic field model.
+
+The LFO target choice (`ouie_lfo1Target=2` = Hammer) allows the HAMMER position to oscillate between STRIFE and LOVE autonomously, creating a synthesizer that breathes between tension and resolution at a controllable rate. Set `ouie_lfo1Rate=0.1 Hz`, `ouie_lfo1Target=2`, `ouie_lfo1Depth=0.4`: the HAMMER sweeps 0.4 units in each direction from center, creating a slow tide of harmonic convergence and divergence.
+
+---
+
+## 35. OVERTONE — Continued Fraction Spectral Synthesis
+
+**Gallery code:** OVERTONE | **Accent:** Spectral Ice `#A8D8EA`
+**Parameter prefix:** `over_`
+**Aquatic mythology:** The Nautilus — mid-column dweller with a logarithmic spiral shell. Each new chamber is a rational approximation to an irrational proportion. OVERTONE embodies this: 8 additive sine partials tuned not to integer multiples but to the continued fraction convergents of Pi (3/1, 22/7, 333/106...), Euler's E (2/1, 3/1, 8/3...), the Golden Ratio Phi (1/1, 2/1, 3/2, 5/3... — Fibonacci ratios), and Sqrt2 (1/1, 3/2, 7/5, 17/12...). As DEPTH increases, partials spiral outward from clean integer ratios toward their irrational ideal — "metallic" inharmonicity that shimmers and breathes.
+**Synthesis type:** Monophonic additive synthesis (8 phase-accumulator sine partials), partial frequencies tuned to continued fraction convergents of Pi/E/Phi/Sqrt2 (interpolated), per-partial amplitude control, 2-pole Butterworth brightness filter, allpass resonator tuned to fundamental, Schroeder spectral reverb, ADSR amp envelope
+**Polyphony:** Monophonic (phase-resets on each note-on for clean spectral onset)
+
+### Core Parameters
+
+| Parameter | Range | Default | Sweet Spot |
+|-----------|-------|---------|------------|
+| `over_constant` | 0–3 int | 2 (Phi) | 0=Pi, 1=E, 2=Phi (most musical — Fibonacci), 3=Sqrt2 |
+| `over_depth` | 0–7 | 2.0 | 0–4 (convergent table index; 0=integer ratios, 7=closest to irrational) |
+| `over_partial0` | 0–1 | 1.0 | 0.7–1.0 (fundamental amplitude) |
+| `over_partial1` | 0–1 | 0.5 | 0.2–0.7 |
+| `over_partial2` | 0–1 | 0.333 | 0.1–0.5 |
+| `over_partial3` | 0–1 | 0.25 | 0.1–0.4 |
+| `over_partial4` | 0–1 | 0.2 | 0–0.4 (upper partials boosted by COLOR macro) |
+| `over_partial5` | 0–1 | 0.167 | 0–0.3 |
+| `over_partial6` | 0–1 | 0.143 | 0–0.25 |
+| `over_partial7` | 0–1 | 0.125 | 0–0.2 |
+| `over_velBright` | 0–1 | 0.4 | 0.2–0.7 (velocity → upper partial amplitude + filter cutoff boost) |
+| `over_filterCutoff` | 1000–20000 Hz | 12000 | 6000–18000 (brightness shaping — high enough to pass all partials) |
+| `over_filterRes` | 0–0.8 | 0.3 | 0.1–0.5 (Q factor 0.5–4.9) |
+| `over_ampAtk` | 0.001–4.0 s | 0.02 | 0.01–0.3 |
+| `over_ampDec` | 0.05–5.0 s | 0.3 | 0.1–1.5 |
+| `over_ampSus` | 0–1 | 0.7 | 0.5–0.9 |
+| `over_ampRel` | 0.05–8.0 s | 1.0 | 0.3–4.0 |
+| `over_lfo1Rate` | 0.01–10 Hz | 0.25 | 0.05–1.0 (LFO1 sweeps convergent depth index ±1.5 units) |
+| `over_lfo1Depth` | 0–1 | 0.2 | 0.1–0.5 |
+| `over_lfo2Rate` | 0.01–10 Hz | 0.1 | 0.02–0.5 (LFO2 modulates partial phase rotation for shimmer) |
+| `over_lfo2Depth` | 0–1 | 0.15 | 0.05–0.4 |
+| `over_resoMix` | 0–1 | 0.15 | 0.05–0.35 (allpass resonator tuned to fundamental) |
+| `over_macroDepth` | 0–1 | 0.35 | 0.2–0.8 |
+| `over_macroColor` | 0–1 | 0.5 | 0.3–0.8 |
+| `over_macroCoupling` | 0–1 | 0.0 | 0–0.5 |
+| `over_macroSpace` | 0–1 | 0.3 | 0.2–0.7 |
+
+### Macro Mappings
+- **M1 DEPTH**: Convergent index sweep — drives `over_depth` additive offset (+0 to +5 units). Mod wheel (CC#1) additively adds up to +4 more depth units. At DEPTH=0 partials sit at clean integer ratios; at DEPTH=1 they spiral toward maximum irrationality. The Phi constant at full depth approaches the Golden Ratio 1.61803
+- **M2 COLOR**: Upper partial brightness — boosts amplitude of partials 4–7 by up to +0.5. Also raises filter cutoff by +6000 Hz. Aftertouch drives COLOR independently (timbre shimmer on performance peaks). At COLOR=1 with upper partial boosts, the tone becomes bell-like crystalline
+- **M3 COUPLING**: Receive sensitivity scaling (0.5×–1.0×) for all coupling inputs, plus a subtle autonomous shimmer on partials 4–7 (±0.1 amplitude flutter at phase offsets π/4 per partial) even without a partner engine
+- **M4 SPACE**: Resonator mix additive offset + spectral reverb wet level (macroSpace × 0.6 wet). The reverb is tuned for crystalline brightness — feedback 0.72→0.88 with minimal high-frequency damping
+
+### Coupling Compatibility
+OVERTONE accepts: `AmpToFilter` (external amplitude → ±4000 Hz brightness filter sweep, the widest spectral sweep in the fleet), `AmpToPitch` / `PitchToPitch` (pitch offset in semitones, scaled by COUPLING macro), `EnvToMorph` (external envelope → convergent depth index additive offset ±3.0 units — the primary path for dynamically metallic coupling from OPENSKY or ORCA)
+
+### Starter Recipes
+**Phi Crystalline:** over_constant=2, over_depth=4.0, over_macroDepth=0.5, over_macroColor=0.6, over_resoMix=0.25, over_ampRel=2.0 — Fibonacci ratios near golden; middle upper partials boosted; resonator audible; long release lets the partial shimmer decay slowly
+**Pi Bell:** over_constant=0, over_depth=7.0, over_macroDepth=1.0, over_partial0=0.8, over_partial3=0.4, over_partial6=0.3, over_filterCutoff=18000 — Pi convergents at maximum depth produce a metallic bell spectrum; reduce fundamental amplitude and boost scattered partials for an inharmonic chime
+**E Breathing:** over_constant=1, over_depth=2.0, over_lfo1Rate=0.15, over_lfo1Depth=0.4, over_lfo2Rate=0.08, over_lfo2Depth=0.3, over_macroDepth=0.3 — Euler's E convergents with both LFOs active; LFO1 sweeps depth index producing metallic breathing; LFO2 rotates partial phases for slow spectral shimmer
+
+### Designer Notes
+The continued fraction mathematics is not decorative — it directly determines what partials are audible. At `over_depth=0` the first convergent ratio for Phi is 1/1 (exactly the fundamental), so all 8 partials start at intervals derived from the first Fibonacci ratios: 1, 2, 3/2, 5/3, 8/5... — these are recognizably harmonic-series-adjacent. As depth increases, the table index shifts and partials move to progressively "better" rational approximations of the irrational number. The result is spectrally coherent inharmonicity — the partials are spaced according to a mathematical law, not randomly, which is why OVERTONE sounds crystalline rather than clangorous even at deep settings.
+
+LFO1's depth sweep is the engine's primary animation: it oscillates the `over_depth` parameter ±1.5 units around `effectiveDepth`, so the partials continuously morph between two adjacent convergent levels. The perceptual result is a beating shimmer where the harmonic structure breathes in and out of alignment with itself — audibly distinct from vibrato or chorus because the pitch of individual partials changes differently based on their position in the convergent table.
+
+OVERTONE is the most mathematically demanding engine to preset but the most rewarding. A useful design entry point: start with Phi (constant=2), set depth=2, raise macroDepth to 0.4, enable LFO1 at 0.15 Hz, depth=0.3. This is the "living nautilus" baseline — stable enough to be musical, dynamic enough to breathe. Then adjust individual partial amplitudes to sculpt the spectrum: zeroing partials 1–3 and boosting 4–7 creates an inharmonic bell; boosting 0 and 4 with zeros elsewhere creates a hollow fifth-partial tone.
+
+---
+
+## 36. ORGANISM — Cellular Automata Generative Synthesizer
+
+**Gallery code:** ORGANISM | **Accent:** Emergence Lime `#C6E377`
+**Parameter prefix:** `org_`
+**Aquatic mythology:** The Coral Colony — millions of polyps following simple local rules producing global architecture that no single polyp could ever plan. ORGANISM lives in the mid-water column, neither feliX nor Oscar — it is the engine of emergence itself. A 16-cell 1D Wolfram elementary cellular automaton (circular wrap) runs at an adjustable step rate. Each generation's cell state is mapped to synthesis parameters: cells 0–3 sweep filter cutoff, cells 4–7 modulate envelope rate, cells 8–11 offset pitch (±6 semitones), cells 12–15 control reverb amount. The RULE macro sweeps through curated interesting rules (30, 90, 110, 184, 150, 18, 54, 22). The SEED macro randomizes the initial 16-bit state. MUTATE introduces probabilistic bit-flip mutations per step.
+**Synthesis type:** Monophonic — saw/square/triangle oscillator + sub square oscillator, 2-pole biquad lowpass filter, ADSR amp envelope (rate modulated by automaton), cellular automaton driving filter/pitch/envelope/reverb, allpass-based reverb tail
+**Polyphony:** Monophonic (phase-resets on each note-on; seed XORed with note number for per-note variation)
+
+### Core Parameters
+
+| Parameter | Range | Default | Sweet Spot |
+|-----------|-------|---------|------------|
+| `org_rule` | 0–255 | 110 | 30 (chaos), 90 (fractal), 110 (universal), 184 (traffic flow) |
+| `org_seed` | 0–65535 int | 42 | — (initial 16-bit CA state; XORed with note number at note-on) |
+| `org_stepRate` | 0.5–32 Hz | 4.0 | 2–16 (how many CA generations per second) |
+| `org_scope` | 1–16 int | 4 | 2–8 (moving average window over past N generations) |
+| `org_mutate` | 0–1 | 0.0 | 0–0.05 (mutation probability per cell per step — keep very low) |
+| `org_freeze` | bool | false | — (true=CA frozen at current state, only audio changes) |
+| `org_oscWave` | 0–2 int | 0 (saw) | 0=saw, 1=square, 2=triangle |
+| `org_subLevel` | 0–1 | 0.35 | 0.1–0.5 (square sub oscillator one octave below) |
+| `org_filterCutoff` | 200–8000 Hz | 3000 | 500–6000 (base cutoff; CA cells 0–3 modulate ±40% around this) |
+| `org_filterRes` | 0–0.9 | 0.3 | 0.1–0.6 (Q factor 0.5–12.0) |
+| `org_velCutoff` | 0–1 | 0.5 | 0.2–0.7 (velocity → +0–3000 Hz cutoff boost) |
+| `org_ampAtk` | 0.001–2.0 s | 0.015 | 0.005–0.1 |
+| `org_ampDec` | 0.05–4.0 s | 0.35 | 0.1–1.5 |
+| `org_ampSus` | 0–1 | 0.7 | 0.5–0.9 |
+| `org_ampRel` | 0.05–5.0 s | 0.6 | 0.2–2.5 |
+| `org_lfo1Rate` | 0.01–10 Hz | 0.5 | 0.1–2.0 (LFO1 modulates filter cutoff additively ±600 Hz at depth=1) |
+| `org_lfo1Depth` | 0–1 | 0.2 | 0.05–0.4 |
+| `org_lfo2Rate` | 0.01–10 Hz | 0.3 | 0.1–2.0 (LFO2 modulates filter cutoff ±1000 Hz at depth=1) |
+| `org_lfo2Depth` | 0–1 | 0.25 | 0.1–0.5 |
+| `org_reverbMix` | 0–1 | 0.2 | 0.1–0.4 (cells 12–15 add up to +0.3 on top of this) |
+| `org_macroRule` | 0–1 | 0.25 | — (maps 0–1 across 8 curated rules: 30/90/110/184/150/18/54/22) |
+| `org_macroSeed` | 0–1 | 0.0 | — (>0.01 triggers re-seed; re-seeds once per gesture, then latches) |
+| `org_macroCoupling` | 0–1 | 0.0 | 0–0.5 |
+| `org_macroMutate` | 0–1 | 0.0 | 0–0.1 (combined with org_mutate; keep total mutation rate low) |
+
+### Macro Mappings
+- **M1 RULE**: Sweeps through 8 curated interesting Wolfram rules across the 0–1 range (rule 30 at 0.0, rule 22 at 1.0). Mod wheel (CC#1) additively offsets the rule index by up to +2 positions. Adjacent curated rules are blended bit-by-bit based on fractional position — transitions are smooth in terms of rule behavior
+- **M2 SEED**: Re-seeds the 16-cell automaton state when nudged above 0.01, then latches (re-seeds only once per macro gesture, preventing continuous re-triggering). Each MIDI note already XORs the seed with the note number, so each pitch produces a different evolutionary trajectory
+- **M3 COUPLING**: Scales all coupling receive sensitivity (0.5×–1.0×). Also adds a subtle autonomous mutation boost (+0.01 probability per step) — COUPLING engaged makes the colony slightly more unpredictable even without a partner engine
+- **M4 MUTATE**: Additive mutation rate — added to `org_mutate` and aftertouch. Aftertouch (D006) controls mutation rate override. At total mutation > 0.1 the colony rapidly diverges from rule-governed behavior; above 0.3 it becomes effectively random
+
+### Coupling Compatibility
+ORGANISM accepts: `AmpToFilter` (external amplitude → ±1000 Hz filter cutoff modulation, scaled by COUPLING macro), `AmpToPitch` / `PitchToPitch` (pitch offset in semitones, scaled by COUPLING). ORGANISM sends its output for coupling — useful as an irregular trigger source for rhythm-sensitive engines or as a timbral-texture layer for OPAL granular capture.
+
+### Starter Recipes
+**Rule 110 Universal:** org_macroRule=0.25, org_stepRate=4.0, org_scope=4, org_filterCutoff=3000, org_oscWave=0, org_ampSus=0.7 — Rule 110 (Wolfram's universal CA) produces complex non-periodic patterns; scope=4 smooths the output into evolving timbral zones rather than sharp filter jumps
+**Rule 30 Chaos:** org_rule=30, org_stepRate=8.0, org_scope=2, org_filterRes=0.5, org_mutate=0.01 — Rule 30 is maximally chaotic; fast step rate with low scope = rapid unpredictable filter sweeps; small mutation rate keeps it from ever settling
+**Frozen Colony:** org_freeze=true, org_macroSeed=0.5 (trigger once), org_stepRate=0.0, org_filterCutoff=2000, org_filterRes=0.4, org_lfo1Rate=0.3 — freeze the CA at a chosen state (use macroSeed to find a musically useful one), then let only the LFOs animate the filter; makes ORGANISM behave like a fixed-timbre synth with unusual harmonic structure determined by the frozen cell state
+
+### Designer Notes
+ORGANISM's cellular automaton is genuinely generative in a way that most "generative" synthesizers are not. A Wolfram elementary CA has a precisely defined mathematical character for each rule — Rule 110 is provably computationally universal (Wolfram, "A New Kind of Science"), meaning it can simulate any computable process given sufficient state. This is not metaphor: the filter cutoffs, envelope rates, pitch offsets, and reverb amounts output by the CA at Rule 110 are literally the output of a universal computation, seeded by the combination of `org_seed` and the MIDI note number. Every note on every pitch is a different simulation.
+
+The scope parameter (`org_scope`) is the key to musical usability. At scope=1 the raw CA output changes abruptly every step — abrupt filter jumps, sudden pitch hops, staccato envelope acceleration. At scope=8 the moving average smooths the CA output so that only broader population trends drive synthesis parameters. The filter no longer jumps but sweeps; the pitch no longer hops but drifts. Sweet spot is 3–6: enough averaging to prevent jarring discontinuities while preserving the CA's characteristic non-periodic patterning.
+
+The curated rules in the RULE macro (30, 90, 110, 184, 150, 18, 54, 22) are not arbitrary — they represent the most musically interesting behavioral classes. Rule 30: Class 3 (chaotic/random-appearing). Rule 90: Class 3 (fractal self-similar). Rule 110: Class 4 (complex/universal). Rule 184: Class 2 (stable traveling patterns — acts like a conveyor belt). Rule 150: Class 3 (XOR rule, symmetric patterns). Rules 18, 54, 22: Class 3 variants with distinctive patterning. Navigate from rule 184 (predictable) through 110 (complex) to 30 (chaotic) for a journey from order into emergence.
+>>>>>>> origin/v1-launch-prep

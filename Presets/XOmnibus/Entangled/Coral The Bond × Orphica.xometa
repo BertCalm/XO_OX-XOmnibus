@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Coral The Bond × Orphica",
+  "mood": "Entangled",
+  "engines": [
+    "Obbligato",
+    "Orphica"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Siphonophore colony meets dual wind: BOND macro synchronises OBBLIGATO's voices with ORPHICA's grain clusters.",
   "dna": {
     "aggression": 0.366,

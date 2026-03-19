@@ -37,15 +37,25 @@
   "mood": "Prism",
   "name": "DARK_COLD_KINETIC_VAST_PRS_2",
   "parameters": {
+<<<<<<< HEAD
     "Osteria": {
       "macro_character": 0.732,
       "macro_coupling": 0.532,
+=======
+    "Ottoni": {
+      "macro_character": 0.27,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.968,
       "macro_space": 0.946
     },
+<<<<<<< HEAD
     "Ottoni": {
       "macro_character": 0.27,
       "macro_coupling": 0.851,
+=======
+    "Osteria": {
+      "macro_character": 0.732,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.968,
       "macro_space": 0.946
     }
@@ -57,6 +67,10 @@
     "cold",
     "kinetic",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

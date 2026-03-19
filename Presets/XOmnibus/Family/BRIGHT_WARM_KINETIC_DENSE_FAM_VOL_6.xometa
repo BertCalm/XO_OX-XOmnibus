@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_KINETIC_DENSE_FAM_VOL_6",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Opal",
+    "Ole"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.919,
+      "macro_movement": 0.873,
+      "macro_coupling": 0.629,
+      "macro_space": 0.454
+    },
+    "Ole": {
+      "macro_character": 0.912,
+      "macro_movement": 0.874,
+      "macro_coupling": 0.64,
+      "macro_space": 0.449
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "kinetic",
     "dense",
     "bright"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

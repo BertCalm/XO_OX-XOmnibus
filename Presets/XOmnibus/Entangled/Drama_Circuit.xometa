@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -37,6 +38,18 @@
   },
   "mood": "Entangled",
   "name": "Drama Circuit",
+=======
+  "schema_version": 1,
+  "name": "Drama Circuit",
+  "mood": "Entangled",
+  "engines": [
+    "Ole",
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Filter sweeps from OLE's DRAMA macro trigger ORGANON's enzymatic filters — aggression 0.88.",
+>>>>>>> origin/v1-launch-prep
   "parameters": {
     "Ole": {
       "macro_character": 0.8,
@@ -58,6 +71,10 @@
     "organon",
     "filter",
     "drama"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -58,5 +58,9 @@
     "wavetable",
     "fold"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Odyssey wavetable morphs along Origami crease paths — spectral architecture in motion."
+>>>>>>> origin/v1-launch-prep
 }

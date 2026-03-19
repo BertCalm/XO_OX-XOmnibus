@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ABYSS STRIKE",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Ocelot",
+    "Obscura"
+  ],
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.559,
+      "macro_movement": 0.47,
+      "macro_coupling": 0.479,
+      "macro_space": 0.558
+    },
+    "Obscura": {
+      "macro_character": 0.514,
+      "macro_movement": 0.341,
+      "macro_coupling": 0.402,
+      "macro_space": 0.493
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "violent",
     "extreme"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

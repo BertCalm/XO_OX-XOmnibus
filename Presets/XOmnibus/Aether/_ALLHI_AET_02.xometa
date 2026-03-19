@@ -37,13 +37,21 @@
   "mood": "Aether",
   "name": "ALLHI AET 02",
   "parameters": {
+<<<<<<< HEAD
     "Oblique": {
+=======
+    "Oceanic": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.748,
       "macro_coupling": 0.966,
       "macro_movement": 0.929,
       "macro_space": 0.961
     },
+<<<<<<< HEAD
     "Oceanic": {
+=======
+    "Oblique": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.748,
       "macro_coupling": 0.966,
       "macro_movement": 0.929,
@@ -56,6 +64,10 @@
     "pole-fill",
     "high-energy",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_DENSE_VAST_PRS_DRK_3",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Ottoni",
+    "Orphica"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.744,
+      "macro_movement": 0.5762,
+      "macro_coupling": 0.9453,
+      "macro_space": 0.8822
+    },
+    "Orphica": {
+      "macro_character": 0.7493,
+      "macro_movement": 0.5395,
+      "macro_coupling": 0.9479,
+      "macro_space": 0.8951
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "hot",
     "dense",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

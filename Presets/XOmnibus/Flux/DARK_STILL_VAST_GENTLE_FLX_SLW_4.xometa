@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_STILL_VAST_GENTLE_FLX_SLW_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Ouroboros",
+    "Optic"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.669,
+      "macro_movement": 0.014,
+      "macro_coupling": 0.764,
+      "macro_space": 0.88
+    },
+    "Optic": {
+      "macro_character": 0.316,
+      "macro_movement": 0.014,
+      "macro_coupling": 0.815,
+      "macro_space": 0.9
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "vast",
     "gentle",
     "suspended-chaos"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

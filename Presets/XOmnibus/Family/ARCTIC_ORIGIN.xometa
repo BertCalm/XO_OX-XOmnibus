@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ARCTIC ORIGIN",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Ottoni",
+    "Osprey"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.706,
+      "macro_movement": 0.561,
+      "macro_coupling": 0.112,
+      "macro_space": 0.945
+    },
+    "Osprey": {
+      "macro_character": 0.691,
+      "macro_movement": 0.149,
+      "macro_coupling": 0.036,
+      "macro_space": 0.369
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "family",
     "cold",
     "xlow-warmth"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -25,6 +25,18 @@
     "Obbligato",
     "OddfeliX"
   ],
+<<<<<<< HEAD
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBBLIGATO and OddfeliX coupled via Amp->Filter. Blended Constellation DNA — stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "obbligato",
+    "oddfelix"
+  ],
+>>>>>>> origin/v1-launch-prep
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",

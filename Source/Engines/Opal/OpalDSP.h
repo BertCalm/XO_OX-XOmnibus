@@ -527,7 +527,8 @@ public:
         {
             case OscSource::Sine:
             {
-                float s = std::sin(static_cast<float>(phase1 * 6.283185307));
+                // SRO: fastSin replaces std::sin (per-sample oscillator)
+                float s = fastSin(static_cast<float>(phase1 * 6.283185307f));
                 outL = outR = s;
                 phase1 += inc1;
                 break;
@@ -559,7 +560,8 @@ public:
 
             case OscSource::TwoOsc:
             {
-                float s1 = std::sin(static_cast<float>(phase1 * 6.283185307));
+                // SRO: fastSin replaces std::sin (per-sample oscillator)
+                float s1 = fastSin(static_cast<float>(phase1 * 6.283185307f));
                 float s2 = static_cast<float>(2.0 * phase2 - 1.0); // detuned saw
                 outL = s1;
                 outR = s2;

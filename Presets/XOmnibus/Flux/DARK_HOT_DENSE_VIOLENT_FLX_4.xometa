@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_DENSE_VIOLENT_FLX_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Organon",
+    "Optic"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.1159,
+      "macro_movement": 0.4655,
+      "macro_coupling": 0.8879,
+      "macro_space": 0.5514
+    },
+    "Optic": {
+      "macro_character": 0.2372,
+      "macro_movement": 0.3647,
+      "macro_coupling": 0.8523,
+      "macro_space": 0.6905
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "high-warmth",
     "high-density",
     "high-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

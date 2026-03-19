@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "AMBER SPECTRUM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Oracle",
+    "Ombre"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.825,
+      "macro_movement": 0.898,
+      "macro_coupling": 0.335,
+      "macro_space": 0.866
+    },
+    "Ombre": {
+      "macro_character": 0.857,
+      "macro_movement": 0.66,
+      "macro_coupling": 0.354,
+      "macro_space": 0.624
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "spectrum",
     "fire"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

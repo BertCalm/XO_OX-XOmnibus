@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Deep",
+=======
+  "schema_version": 1,
+  "name": "Fat Frond",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Obese"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Obese saturation drives OVERLAP shimmer intensity — the fatter the signal, the denser the frond",
   "dna": {
     "aggression": 0.475,
@@ -40,9 +52,14 @@
   "name": "Fat Frond",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.784,
       "olap_crossfeedAmt": 0.58,
+=======
+      "olap_size": 0.929,
+      "olap_decay": 0.53,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.505,
       "olap_decay": 0.53,
       "olap_diffusion": 0.645,

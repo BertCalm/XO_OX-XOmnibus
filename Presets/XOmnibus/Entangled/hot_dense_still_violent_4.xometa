@@ -16,6 +16,18 @@
   },
   "engines": [
     "Owlfish"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — hot dense still violent. Designed for BIND coupling with XOwlfish.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "bind",
+    "owlfish"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "BURN",
@@ -27,6 +39,7 @@
   "name": "HOT DENSE STILL VIOLENT 4",
   "parameters": {
     "Owlfish": {
+<<<<<<< HEAD
       "couplingBus": 0,
       "couplingLevel": 0.917
     }
@@ -47,4 +60,13 @@
     "owlfish"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.917,
+      "couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

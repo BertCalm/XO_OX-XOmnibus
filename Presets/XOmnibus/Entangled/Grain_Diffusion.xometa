@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Deep",
+=======
+  "schema_version": 1,
+  "name": "Grain Diffusion",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Opal"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "OPAL grain density feeds OVERLAP diffusion rate — granular cloud refracts through Lion's Mane FDN",
   "dna": {
     "aggression": 0.2,
@@ -40,9 +52,14 @@
   "name": "Grain Diffusion",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.702,
       "olap_crossfeedAmt": 0.361,
+=======
+      "olap_size": 0.873,
+      "olap_decay": 0.775,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.626,
       "olap_decay": 0.775,
       "olap_diffusion": 0.795,

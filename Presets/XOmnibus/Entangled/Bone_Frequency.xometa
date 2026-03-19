@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Bone Frequency",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Odyssey",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.25,
+      "macro_movement": 0.18,
+      "macro_coupling": 0.78,
+      "macro_space": 0.88
+    },
+    "Obsidian": {
+      "macro_character": 0.22,
+      "macro_movement": 0.13,
+      "macro_coupling": 0.83,
+      "macro_space": 0.91
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "void",
     "drone"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "A single harmonic bone — Obsidian locks Odyssey's pitch to sub-zero stillness."
+>>>>>>> origin/v1-launch-prep
 }

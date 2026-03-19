@@ -1,0 +1,117 @@
+{
+<<<<<<< HEAD:Presets/XOmnibus/Flux/5X DARK COLD KINETIC DENSE VIOLENT FLX 11.xometa
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Owlfish",
+        "type": "PHASE_LOCK",
+        "amount": 0.93
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Radiant Knot Flow",
+  "mood": "Flux",
+  "engines": [
+    "Overlap",
+    "Owlfish"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Flux/Over_Owlf_Radiant_Knot_Flow.xometa
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.092,
+    "brightness": 0.949,
+    "density": 0.046,
+    "movement": 0.087,
+    "space": 0.952,
+    "warmth": 0.467
+  },
+  "engines": [
+    "Overlap",
+    "Owlfish"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.98,
+      "macro_coupling": 0.53,
+      "macro_movement": 0.63,
+      "macro_space": 0.47
+    },
+    "Owlfish": {
+      "macro_character": 0.78,
+      "macro_coupling": 0.64,
+      "macro_movement": 0.85,
+      "macro_space": 0.23
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "flux"
+  ],
+  "tempo": null,
+<<<<<<< HEAD:Presets/XOmnibus/Flux/5X DARK COLD KINETIC DENSE VIOLENT FLX 11.xometa
+  "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.98,
+      "macro_movement": 0.63,
+      "macro_coupling": 0.53,
+      "macro_space": 0.47
+    },
+    "Owlfish": {
+      "macro_character": 0.78,
+      "macro_movement": 0.85,
+      "macro_coupling": 0.64,
+      "macro_space": 0.23
+    }
+  },
+  "coupling": {
+    "type": "PHASE_LOCK",
+    "source": "OVERLAP",
+    "target": "OWLFISH",
+    "amount": 0.93
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.949,
+    "warmth": 0.467,
+    "movement": 0.087,
+    "density": 0.046,
+    "space": 0.952,
+    "aggression": 0.092
+  }
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Flux/Over_Owlf_Radiant_Knot_Flow.xometa
+}

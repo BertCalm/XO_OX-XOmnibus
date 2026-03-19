@@ -14,12 +14,15 @@
   "engines": [
     "Odyssey",
     "Ombre"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.5,
@@ -50,6 +53,7 @@
     "ombre",
     "wavetable"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Drift violet and shadow mauve bleed together — FM journey softening at the horizon"
+>>>>>>> origin/v1-launch-prep
 }

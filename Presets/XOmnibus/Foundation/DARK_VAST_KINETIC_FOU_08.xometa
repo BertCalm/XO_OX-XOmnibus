@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK VAST KINETIC FOU 08",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.356,
+      "macro_movement": 0.958,
+      "macro_coupling": 0.476,
+      "macro_space": 0.938
+    },
+    "Ombre": {
+      "macro_character": 0.368,
+      "macro_movement": 1.0,
+      "macro_coupling": 0.79,
+      "macro_space": 0.788
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

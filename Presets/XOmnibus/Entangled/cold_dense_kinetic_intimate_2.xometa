@@ -16,6 +16,18 @@
   },
   "engines": [
     "Ottoni"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — cold dense kinetic intimate. Designed for ORBIT coupling with XOttoni.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "orbit",
+    "ottoni"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "SURGE",
@@ -27,6 +39,7 @@
   "name": "COLD DENSE KINETIC INTIMATE 2",
   "parameters": {
     "Ottoni": {
+<<<<<<< HEAD
       "couplingBus": 0,
       "couplingLevel": 0.538
     }
@@ -47,4 +60,13 @@
     "ottoni"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.538,
+      "couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

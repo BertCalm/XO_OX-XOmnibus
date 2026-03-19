@@ -15,6 +15,19 @@
   },
   "engines": [
     "OddfeliX"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Felix fundamental with extreme brightness, low density",
+  "tags": [
+    "foundation",
+    "bright",
+    "sparse",
+    "crystalline",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "VOICE",
@@ -32,7 +45,15 @@
   "name": "Sunlit Bottom",
   "parameters": {
     "OddfeliX": {
+<<<<<<< HEAD
       "felix_couplingBus": 0,
+=======
+      "felix_macro_voice": 0.8886,
+      "felix_macro_motion": 0.7716,
+      "felix_macro_couple": 0.5222,
+      "felix_macro_space": 0.4136,
+      "felix_outputLevel": 0.85,
+>>>>>>> origin/v1-launch-prep
       "felix_couplingLevel": 0.5,
       "felix_macro_couple": 0.5222,
       "felix_macro_motion": 0.7716,
@@ -41,6 +62,7 @@
       "felix_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.2217,
@@ -58,4 +80,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

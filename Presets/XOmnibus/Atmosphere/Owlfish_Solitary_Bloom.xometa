@@ -1,7 +1,42 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
+=======
+  "schema_version": 1,
+  "name": "Solitary Bloom",
+  "mood": "Atmosphere",
+  "engines": [
+    "Owlfish"
+  ],
+  "author": "Guru Bin — OWLFISH Retreat 2026-03-15",
+  "version": "1.0.0",
+  "description": "morphGlide=0.9 + portamento=0.8 — during legato glide, mixtur sweeps +0.45 above base. Each interval is a metamorphosis. The owlfish changes color as it moves. Play slowly. Each note-to-note transition blooms and fades.",
+  "tags": [
+    "portamento",
+    "morph-glide",
+    "legato",
+    "bloom",
+    "atmosphere",
+    "awakening"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.65,
+    "density": 0.4,
+    "space": 0.6,
+    "aggression": 0.15
+>>>>>>> origin/v1-launch-prep
   },
   "couplingIntensity": "None",
   "description": "morphGlide=0.9 + portamento=0.8 — during legato glide, mixtur sweeps +0.45 above base. Each interval is a metamorphosis. The owlfish changes color as it moves. Play slowly. Each note-to-note transition blooms and fades.",
@@ -26,6 +61,7 @@
   "name": "Solitary Bloom",
   "parameters": {
     "Owlfish": {
+<<<<<<< HEAD
       "owl_ampAttack": 80,
       "owl_ampDecay": 600,
       "owl_ampRelease": 1618,
@@ -56,6 +92,9 @@
       "owl_grainMix": 0.15,
       "owl_grainPitch": 0.05,
       "owl_grainSize": 0.5,
+=======
+      "owl_portamento": 0.8,
+>>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 1,
       "owl_mixtur": 0.15,
       "owl_morphGlide": 0.9,
@@ -79,6 +118,7 @@
       "owl_subWave": 0.2
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sequencer": null,
   "tags": [
@@ -91,4 +131,10 @@
   ],
   "tempo": null,
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

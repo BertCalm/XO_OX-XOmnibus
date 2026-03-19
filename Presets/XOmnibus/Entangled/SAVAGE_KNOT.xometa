@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SAVAGE KNOT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Ottoni"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.816,
+      "macro_movement": 0.777,
+      "macro_coupling": 0.3,
+      "macro_space": 0.608
+    },
+    "Ottoni": {
+      "macro_character": 0.541,
+      "macro_movement": 0.2,
+      "macro_coupling": 0.342,
+      "macro_space": 0.527
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "aggressive",
     "violent",
     "entangled"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

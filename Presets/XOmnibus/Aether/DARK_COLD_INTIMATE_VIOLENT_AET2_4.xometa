@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_INTIMATE_VIOLENT_AET2_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Origami",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.0517,
+      "macro_movement": 0.6017,
+      "macro_coupling": 0.3341,
+      "macro_space": 0.0279
+    },
+    "OddfeliX": {
+      "macro_character": 0.0524,
+      "macro_movement": 0.5764,
+      "macro_coupling": 0.3326,
+      "macro_space": 0.075
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "intimate",
     "violent",
     "compressed"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

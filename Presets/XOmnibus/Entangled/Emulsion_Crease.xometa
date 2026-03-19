@@ -58,5 +58,9 @@
     "emulsion",
     "crease"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Origami paper timbres blend into Obscura's emulsion — both surfaces dissolve in cold light."
+>>>>>>> origin/v1-launch-prep
 }

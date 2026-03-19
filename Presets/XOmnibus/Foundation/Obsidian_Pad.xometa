@@ -15,6 +15,18 @@
   },
   "engines": [
     "Opal"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dense granular darkness, no brightness artifacts",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "GRAIN",
@@ -32,15 +44,19 @@
   "name": "Obsidian Pad",
   "parameters": {
     "Opal": {
+<<<<<<< HEAD
       "opal_couplingBus": 0,
       "opal_couplingLevel": 0.5,
       "opal_macro_density": 0.3595,
+=======
+>>>>>>> origin/v1-launch-prep
       "opal_macro_grain": 0.1199,
       "opal_macro_scatter": 0.2321,
       "opal_macro_space": 0.6582,
       "opal_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.2443,
@@ -57,4 +73,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

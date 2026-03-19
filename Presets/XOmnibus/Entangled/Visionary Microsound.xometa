@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -54,6 +55,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "Visionary Microsound",
+  "mood": "Entangled",
+  "engines": [
+    "Orphica",
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "ORPHICA resonance nodes shared with Oracle's prophetic harmonics — sea seer.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -63,5 +76,47 @@
     "microsound"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.08,
+    "movement": 0.55,
+    "density": 0.07,
+    "space": 0.61,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.65,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.7,
+      "macro_space": 0.78
+    },
+    "Oracle": {
+      "macro_character": 0.55,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.7,
+      "macro_space": 0.62
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORPHICA",
+        "engineB": "ORACLE",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.7
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.7,
+    "SPACE": 0.7
+  },
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

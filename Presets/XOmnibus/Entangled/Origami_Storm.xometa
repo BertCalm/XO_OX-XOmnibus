@@ -23,6 +23,20 @@
   "engines": [
     "Origami",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Origami fold point chaos-injected by Ouroboros — paper crane in topological storm.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "origami",
+    "ouroboros",
+    "storm"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

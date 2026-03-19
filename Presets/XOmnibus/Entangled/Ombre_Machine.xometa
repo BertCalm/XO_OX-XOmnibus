@@ -23,6 +23,20 @@
   "engines": [
     "Ombre",
     "Orca"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orca predator chaos injected into Ombre dual narrative — the hunt as cold memory.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "ombre",
+    "orca",
+    "machine"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

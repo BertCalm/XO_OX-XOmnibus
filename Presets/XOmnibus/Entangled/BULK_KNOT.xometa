@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BULK KNOT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Obscura"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.4061,
+      "macro_movement": 0.8337,
+      "macro_coupling": 0.7215,
+      "macro_space": 0.2102
+    },
+    "Obscura": {
+      "macro_character": 0.7858,
+      "macro_movement": 0.6067,
+      "macro_coupling": 0.7289,
+      "macro_space": 0.4418
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "fused",
     "deep",
     "layered"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -37,15 +37,25 @@
   "mood": "Prism",
   "name": "Wave Storm 2",
   "parameters": {
+<<<<<<< HEAD
     "Ohm": {
       "macro_character": 0.528,
       "macro_coupling": 0.622,
+=======
+    "Oracle": {
+      "macro_character": 0.948,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.366,
       "macro_space": 0.134
     },
+<<<<<<< HEAD
     "Oracle": {
       "macro_character": 0.948,
       "macro_coupling": 0.308,
+=======
+    "Ohm": {
+      "macro_character": 0.528,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.366,
       "macro_space": 0.134
     }
@@ -57,6 +67,10 @@
     "dense",
     "intimate",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

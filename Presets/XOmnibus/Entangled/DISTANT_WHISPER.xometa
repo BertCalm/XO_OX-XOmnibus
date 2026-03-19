@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DISTANT WHISPER",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.241,
+      "macro_movement": 0.417,
+      "macro_coupling": 0.664,
+      "macro_space": 0.086
+    },
+    "Ocelot": {
+      "macro_character": 0.975,
+      "macro_movement": 0.068,
+      "macro_coupling": 0.526,
+      "macro_space": 0.507
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "hollow",
     "void"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -15,6 +15,7 @@
   "engines": [
     "Overbite"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -33,6 +34,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERBITE signature — BITE forward, warmth underneath. Gallery code OVERBITE: bass-forward character with Fang White accent. The synth that bites back softly.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "signature",
@@ -44,5 +50,25 @@
     "batch1-signatures"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.52,
+    "density": 0.68,
+    "space": 0.48,
+    "aggression": 0.48
+  }
+>>>>>>> origin/v1-launch-prep
 }

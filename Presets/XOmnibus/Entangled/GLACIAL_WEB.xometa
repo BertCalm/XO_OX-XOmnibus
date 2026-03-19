@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "GLACIAL WEB",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Obscura"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.311,
+      "macro_movement": 0.092,
+      "macro_coupling": 0.148,
+      "macro_space": 0.168
+    },
+    "Obscura": {
+      "macro_character": 0.62,
+      "macro_movement": 0.071,
+      "macro_coupling": 0.154,
+      "macro_space": 0.359
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "glacial"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

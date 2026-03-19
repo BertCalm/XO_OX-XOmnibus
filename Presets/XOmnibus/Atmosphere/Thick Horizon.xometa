@@ -3,12 +3,15 @@
   "description": "Bronze singing bowl at rest. Rich overtones decaying over geological time.",
   "engines": [
     "Obbligato"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.574,

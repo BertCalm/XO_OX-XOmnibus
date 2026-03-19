@@ -15,6 +15,19 @@
   },
   "engines": [
     "Overdub"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright dub tone — clean tape, no saturation",
+  "tags": [
+    "foundation",
+    "bright",
+    "sparse",
+    "crystalline",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "VOICE",
@@ -32,8 +45,13 @@
   "name": "Daylight Bass",
   "parameters": {
     "Overdub": {
+<<<<<<< HEAD
       "dub_couplingBus": 0,
       "dub_couplingLevel": 0.5,
+=======
+      "dub_macro_voice": 0.9216,
+      "dub_macro_send": 0.644,
+>>>>>>> origin/v1-launch-prep
       "dub_macro_echo": 0.3848,
       "dub_macro_panic": 0.542,
       "dub_macro_send": 0.644,
@@ -41,6 +59,7 @@
       "dub_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.1935,
@@ -58,4 +77,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

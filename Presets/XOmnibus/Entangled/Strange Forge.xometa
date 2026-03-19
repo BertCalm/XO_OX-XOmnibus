@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -54,6 +55,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "Strange Forge",
+  "mood": "Entangled",
+  "engines": [
+    "Ottoni",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Strange attractor filter events reshape OTTONI brass formants — chaotic timbre.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -63,5 +76,47 @@
     "intense"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.75,
+    "movement": 0.75,
+    "density": 0.65,
+    "space": 0.32,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.6,
+      "macro_movement": 0.55,
+      "macro_coupling": 0.78,
+      "macro_space": 0.35
+    },
+    "Ouroboros": {
+      "macro_character": 0.65,
+      "macro_movement": 0.75,
+      "macro_coupling": 0.78,
+      "macro_space": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OTTONI",
+        "engineB": "OUROBOROS",
+        "type": "FILTER_MOD",
+        "amount": 0.78
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.625,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.78,
+    "SPACE": 0.375
+  },
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_VAST_SPARSE_AET3_2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Oracle",
+    "Ombre"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.9335,
+      "macro_movement": 0.5995,
+      "macro_coupling": 0.2943,
+      "macro_space": 0.6948
+    },
+    "Ombre": {
+      "macro_character": 0.9101,
+      "macro_movement": 0.3238,
+      "macro_coupling": 0.5958,
+      "macro_space": 0.6549
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dark",
     "vast",
     "sparse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

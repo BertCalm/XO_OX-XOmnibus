@@ -1,5 +1,6 @@
 #pragma once
 #include "MegaCouplingMatrix.h"
+#include "../DSP/FastMath.h"
 #include <string>
 #include <unordered_map>
 #include <functional>
@@ -140,7 +141,8 @@ public:
         s.meddling += s.drama * k;
 
         // DRAMA ↑ → BOND destabilized (aunts' fighting stresses the brothers)
-        s.bond += s.drama * k * 0.5f * std::sin (s.bond * 6.28f); // oscillation
+        // SRO: fastSin replaces std::sin (per-block macro bleed)
+        s.bond += s.drama * k * 0.5f * fastSin (s.bond * 6.28f); // oscillation
 
         // MEDDLING ↑ → SURFACE shifts (in-law interference makes wife react)
         s.surface += (s.meddling - 0.5f) * k;

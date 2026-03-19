@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_STILL_DENSE_FAM_VOL_45",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Ole",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.054,
+      "macro_movement": 0.06,
+      "macro_coupling": 0.694,
+      "macro_space": 0.656
+    },
+    "Odyssey": {
+      "macro_character": 0.077,
+      "macro_movement": 0.05,
+      "macro_coupling": 0.707,
+      "macro_space": 0.654
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "cold",
     "still",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

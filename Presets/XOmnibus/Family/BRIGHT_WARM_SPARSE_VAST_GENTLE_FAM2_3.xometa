@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT WARM SPARSE VAST GENTLE FAM2 3",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Orphica",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.924,
+      "macro_movement": 0.318,
+      "macro_coupling": 0.084,
+      "macro_space": 0.913
+    },
+    "Obbligato": {
+      "macro_character": 0.916,
+      "macro_movement": 0.393,
+      "macro_coupling": 0.11,
+      "macro_space": 0.915
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "sparse",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

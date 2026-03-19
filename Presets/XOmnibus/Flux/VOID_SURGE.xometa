@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "VOID SURGE",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overlap",
+    "Orbital"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.527,
+      "macro_movement": 0.465,
+      "macro_coupling": 0.44,
+      "macro_space": 0.617
+    },
+    "Orbital": {
+      "macro_character": 0.386,
+      "macro_movement": 0.414,
+      "macro_coupling": 0.444,
+      "macro_space": 0.551
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "violent",
     "extreme"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

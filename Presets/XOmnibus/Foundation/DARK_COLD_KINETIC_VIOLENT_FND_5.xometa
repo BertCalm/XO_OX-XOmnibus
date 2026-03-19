@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_KINETIC_VIOLENT_FND_5",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub",
+    "Obese"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.529,
+      "macro_movement": 0.844,
+      "macro_coupling": 0.241,
+      "macro_space": 0.222
+    },
+    "Obese": {
+      "macro_character": 0.554,
+      "macro_movement": 0.846,
+      "macro_coupling": 0.791,
+      "macro_space": 0.655
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "kinetic",
     "violent",
     "aggressive"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

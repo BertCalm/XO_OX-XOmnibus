@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ALUMINIUM TRACE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Osprey",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.595,
+      "macro_movement": 0.824,
+      "macro_coupling": 0.921,
+      "macro_space": 0.439
+    },
+    "Odyssey": {
+      "macro_character": 0.469,
+      "macro_movement": 0.304,
+      "macro_coupling": 0.403,
+      "macro_space": 0.272
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "cold",
     "clinical",
     "icy"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

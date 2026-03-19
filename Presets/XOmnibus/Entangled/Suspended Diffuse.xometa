@@ -1,5 +1,49 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "schema_version": 1,
+  "name": "Suspended Diffuse",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Obbligato"
+  ],
+  "author": "XO_OX",
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.78,
+    "SPACE": 0.75
+  },
+  "sonic_dna": {
+    "movement": 0.6,
+    "brightness": 0.61,
+    "aggression": 0.33,
+    "space": 0.75,
+    "warmth": 0.59,
+    "density": 0.68
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_size": 0.81,
+      "olap_decay": 0.841,
+      "olap_damping": 0.591,
+      "olap_diffusion": 0.827,
+      "olap_modDepth": 0.233,
+      "olap_modRate": 0.145,
+      "olap_preDelay": 0.18,
+      "olap_earlyMix": 0.466,
+      "olap_lateMix": 0.749,
+      "olap_filterCutoff": 0.414,
+      "olap_filterReso": 0.121,
+      "olap_outputLevel": 0.776,
+      "olap_couplingLevel": 0.78,
+      "olap_couplingBus": 0
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -66,6 +110,7 @@
     "fdn",
     "reverb"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.414,
@@ -75,4 +120,7 @@
     "space": 0.18,
     "aggression": 0.3
   }
+=======
+  "description": "Obbligato breath pressure drives OVERLAP pre-delay — each exhalation opens the room wider"
+>>>>>>> origin/v1-launch-prep
 }

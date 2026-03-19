@@ -1,10 +1,38 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
+=======
+  "schema_version": 1,
+  "name": "The A Ground",
+  "mood": "Aether",
+  "engines": [
+    "Owlfish"
+  ],
+  "author": "Guru Bin — B012/B014 Engine Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "bodyFreq 55 Hz (A1). A is the permanent tonal center — not imposed harmonically but enforced gravitationally. Mixed divisions ÷2 (octave clarity) and ÷5 (inharmonic color). Slow portamento: the melodic voice takes its time arriving at any note, because the ground has already decided. Scripture: 'A is not chosen. A is the shape of the pressure.'",
+  "tags": [
+    "55hz",
+    "A1",
+    "tonal-center",
+    "mixed-divisions",
+    "portamento",
+    "aether",
+    "permanence"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
+>>>>>>> origin/v1-launch-prep
   "couplingIntensity": "None",
   "created": "2026-03-16",
+<<<<<<< HEAD
   "description": "bodyFreq 55 Hz (A1). A is the permanent tonal center — not imposed harmonically but enforced gravitationally. Mixed divisions ÷2 (octave clarity) and ÷5 (inharmonic color). Slow portamento: the melodic voice takes its time arriving at any note, because the ground has already decided. Scripture: 'A is not chosen. A is the shape of the pressure.'",
   "dna": {
     "aggression": 0.15,
@@ -62,6 +90,16 @@
       "owl_grainMix": 0.0,
       "owl_grainPitch": 0.0,
       "owl_grainSize": 0.5,
+=======
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Owlfish": {
+      "owl_portamento": 0.55,
+>>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 1,
       "owl_mixtur": 0.45,
       "owl_morphGlide": 0.3,
@@ -85,7 +123,13 @@
       "owl_subWave": 0.25
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
+=======
+  "coupling": {
+    "pairs": []
+  },
+>>>>>>> origin/v1-launch-prep
   "sequencer": null,
   "tags": [
     "55hz",

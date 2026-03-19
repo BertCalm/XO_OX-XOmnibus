@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Drift Root",
+  "mood": "Foundation",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Drifting root morph — high drift parameter creates constant gentle variation on a stable base.",
+  "tags": ["drift", "root", "variation", "stable"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.4, "warmth": 0.65, "movement": 0.62, "density": 0.52, "space": 0.5, "aggression": 0.12},
+  "parameters": {
+    "OddOscar": {"morph_morph": 0.5, "morph_bloom": 0.48, "morph_detune": 0.12, "morph_drift": 0.75, "morph_filterCutoff": 4000.0, "morph_filterReso": 0.3, "morph_filterEnvDepth": 0.38, "morph_sub": 0.38, "morph_decay": 1.0, "morph_sustain": 0.78, "morph_release": 2.0, "morph_glide": 0.1, "morph_voiceMode": 0, "morph_polyphony": 5, "morph_level": 0.74, "morph_macroBloom": 0.48, "morph_macroDepth": 0.5, "morph_macroDrift": 0.75, "morph_macroSpace": 0.5}
+  },
+  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.62, "COUPLING": 0.0, "SPACE": 0.5},
+  "coupling": {"pairs": []}
+}

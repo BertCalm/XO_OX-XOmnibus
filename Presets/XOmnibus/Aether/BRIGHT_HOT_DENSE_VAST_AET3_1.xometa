@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_HOT_DENSE_VAST_AET3_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Osprey",
+    "Ombre"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.4225,
+      "macro_movement": 0.9265,
+      "macro_coupling": 0.6344,
+      "macro_space": 0.6066
+    },
+    "Ombre": {
+      "macro_character": 0.761,
+      "macro_movement": 0.2429,
+      "macro_coupling": 0.6381,
+      "macro_space": 0.5771
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "dense",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

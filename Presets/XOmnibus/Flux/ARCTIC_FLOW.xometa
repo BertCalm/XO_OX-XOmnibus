@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ARCTIC FLOW",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Osprey",
+    "Organon"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.9429,
+      "macro_movement": 0.8764,
+      "macro_coupling": 0.3147,
+      "macro_space": 0.6554
+    },
+    "Organon": {
+      "macro_character": 0.3956,
+      "macro_movement": 0.9145,
+      "macro_coupling": 0.4589,
+      "macro_space": 0.2649
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "cold",
     "shifting"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

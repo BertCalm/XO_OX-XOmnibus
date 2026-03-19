@@ -37,15 +37,25 @@
   "mood": "Prism",
   "name": "DARK_STILL_SPARSE_VAST_PRS_1",
   "parameters": {
+<<<<<<< HEAD
     "Ocelot": {
       "macro_character": 0.698,
       "macro_coupling": 0.466,
+=======
+    "Oracle": {
+      "macro_character": 0.279,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.091,
       "macro_space": 0.951
     },
+<<<<<<< HEAD
     "Oracle": {
       "macro_character": 0.279,
       "macro_coupling": 0.804,
+=======
+    "Ocelot": {
+      "macro_character": 0.698,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.091,
       "macro_space": 0.951
     }
@@ -57,6 +67,10 @@
     "still",
     "sparse",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

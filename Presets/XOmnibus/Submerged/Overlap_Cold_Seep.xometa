@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Cold Seep",
+  "mood": "Submerged",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A cold seep vent \u2014 brine and methane escaping slowly from the seafloor. A trefoil knot at very low temperature: slow, viscous, cold. The brine absorbs everything above 800 Hz.",
+  "tags": [
+    "cold-seep",
+    "brine",
+    "trefoil",
+    "submerged",
+    "cold"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.65,
+    "movement": 0.35,
+    "density": 0.78,
+    "space": 0.88,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.7,
+      "olap_diffusion": 0.72,
+      "olap_spread": 0.8,
+      "olap_decay": 15.0,
+      "olap_modDepth": 0.15,
+      "olap_modRate": 0.03,
+      "olap_damping": 0.82,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

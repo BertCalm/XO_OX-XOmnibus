@@ -37,6 +37,7 @@
   "mood": "Entangled",
   "name": "BRIGHT KINETIC VAST SPARSE ...",
   "parameters": {
+<<<<<<< HEAD
     "Oblique": {
       "macro_character": 0.628,
       "macro_coupling": 0.56,
@@ -47,6 +48,18 @@
       "macro_character": 0.584,
       "macro_coupling": 0.532,
       "macro_movement": 0.856,
+=======
+    "Origami": {
+      "macro_character": 0.584,
+      "macro_movement": 0.856,
+      "macro_coupling": 0.532,
+      "macro_space": 0.99
+    },
+    "Oblique": {
+      "macro_character": 0.628,
+      "macro_movement": 0.8,
+      "macro_coupling": 0.56,
+>>>>>>> origin/v1-launch-prep
       "macro_space": 0.99
     }
   },
@@ -58,6 +71,10 @@
     "sparse",
     "vast",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

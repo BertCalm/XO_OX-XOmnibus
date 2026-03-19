@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -36,6 +37,26 @@
     "Osprey",
     "Osteria",
     "Oceanic"
+=======
+  "schema_version": 1,
+  "name": "Shore Trinity",
+  "mood": "Entangled",
+  "engines": [
+    "Osprey",
+    "Osteria",
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The three shore engines in full communion — coastline, cuisine, and current as one.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "trinity",
+    "coastal",
+    "three-way"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

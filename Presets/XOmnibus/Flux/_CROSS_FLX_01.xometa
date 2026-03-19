@@ -37,13 +37,21 @@
   "mood": "Flux",
   "name": "CROSS FLX 01",
   "parameters": {
+<<<<<<< HEAD
     "Odyssey": {
+=======
+    "Overdub": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.92,
       "macro_coupling": 0.313,
       "macro_movement": 0.507,
       "macro_space": 0.538
     },
+<<<<<<< HEAD
     "Overdub": {
+=======
+    "Odyssey": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.92,
       "macro_coupling": 0.313,
       "macro_movement": 0.507,
@@ -56,6 +64,10 @@
     "pole-fill",
     "cross-pole",
     "contrast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Black Smoker",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "deep",
+    "dark",
+    "abyssal"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.75,
+    "movement": 0.38,
+    "density": 0.9,
+    "space": 0.72,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 2,
+      "deep_subOctave": -2,
+      "deep_harmonicLevel": 0.22,
+      "deep_pressure": 0.8,
+      "deep_bodyType": 1,
+      "deep_bodySize": 0.8,
+      "deep_bodyDamp": 0.7,
+      "deep_flashRate": 0.3,
+      "deep_flashBright": 0.4,
+      "deep_creatureSpeed": 0.35,
+      "deep_creatureDepth": 0.3,
+      "deep_darkness": 0.87,
+      "deep_filterReso": 0.3,
+      "deep_reverbMix": 0.5,
+      "deep_reverbSize": 0.82,
+      "deep_delayMix": 0.15,
+      "deep_rumble": 0.72,
+      "deep_attack": 0.008,
+      "deep_decay": 1.0,
+      "deep_sustain": 0.78,
+      "deep_release": 2.2
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.8,
+    "CREATURE": 0.35,
+    "WRECK": 0.2,
+    "ABYSS": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

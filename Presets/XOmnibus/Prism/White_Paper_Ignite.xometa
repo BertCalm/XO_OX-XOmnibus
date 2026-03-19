@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
@@ -15,6 +16,23 @@
   },
   "engines": [
     "Origami"
+=======
+  "schema_version": 1,
+  "name": "White Paper Ignite",
+  "mood": "Prism",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORIGAMI pushed to extreme brightness — brightness 0.94, movement 0.90, aggression 0.42. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "origami"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,7 +44,15 @@
   "name": "White Paper Ignite",
   "parameters": {
     "Origami": {
+<<<<<<< HEAD
       "ori_couplingBus": 0,
+=======
+      "ori_macro_fold": 0.28,
+      "ori_macro_tension": 0.793,
+      "ori_macro_couple": 0.392,
+      "ori_macro_space": 0.606,
+      "ori_outputLevel": 0.864,
+>>>>>>> origin/v1-launch-prep
       "ori_couplingLevel": 0.104,
       "ori_macro_couple": 0.392,
       "ori_macro_fold": 0.28,
@@ -45,6 +71,7 @@
     "space": 0.665,
     "warmth": 0.184
   },
+<<<<<<< HEAD
   "tags": [
     "prism",
     "ultra-bright",
@@ -54,4 +81,7 @@
   ],
   "tempo": null,
   "version": "1.0.0"
+=======
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

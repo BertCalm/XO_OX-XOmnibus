@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT KINETIC VAST VIOLENT ATM AGG 3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Osprey",
+    "Oracle"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.865,
+      "macro_movement": 0.886,
+      "macro_coupling": 0.874,
+      "macro_space": 0.87
+    },
+    "Oracle": {
+      "macro_character": 0.879,
+      "macro_movement": 0.876,
+      "macro_coupling": 0.872,
+      "macro_space": 0.912
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "bright",
     "kinetic",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

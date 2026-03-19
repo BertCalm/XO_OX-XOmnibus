@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Hammer Init",
+  "mood": "Foundation",
+  "engines": ["Ouie"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Default duophonic initialization — two voices balanced, hammer at mid-depth.",
+  "tags": ["foundation", "duophonic", "balanced", "init"],
+  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.45,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_ampAtk": 0.02,
+      "ouie_ampDec": 0.3,
+      "ouie_ampSus": 0.7,
+      "ouie_ampRel": 0.6,
+      "ouie_filterACutoff": 3500,
+      "ouie_filterARes": 0.25,
+      "ouie_filterBCutoff": 3500,
+      "ouie_filterBRes": 0.25,
+      "ouie_hammerDepth": 0.5,
+      "ouie_hammerPos": 0.5,
+      "ouie_lfo1Rate": 0.5,
+      "ouie_lfo1Depth": 0.15,
+      "ouie_lfo1Target": 0,
+      "ouie_lfo2Rate": 0.3,
+      "ouie_lfo2Depth": 0.1,
+      "ouie_portaAuto": 0.0,
+      "ouie_macroHammer": 0.5,
+      "ouie_macroCartilage": 0.5,
+      "ouie_macroAmpullae": 0.5,
+      "ouie_macroCurrent": 0.45
+    }
+  },
+  "macros": {
+    "HAMMER": 0.5,
+    "CARTILAGE": 0.5,
+    "AMPULLAE": 0.5,
+    "CURRENT": 0.45
+  },
+  "coupling": {"pairs": []}
+}

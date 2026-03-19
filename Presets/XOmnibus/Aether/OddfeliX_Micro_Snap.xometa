@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Micro Snap",
+  "mood": "Aether",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Microscopic snap impulse — barely audible, the smallest possible feliX event.",
+  "tags": ["micro", "impulse", "aether", "tiny"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.85, "warmth": 0.1, "movement": 0.55, "density": 0.06, "space": 0.92, "aggression": 0.08},
+  "parameters": {
+    "OddfeliX": {"snap_oscMode": 0, "snap_snap": 0.82, "snap_decay": 0.04, "snap_detune": 0.01, "snap_filterCutoff": 16000.0, "snap_filterReso": 0.42, "snap_filterEnvDepth": 0.9, "snap_unison": 1, "snap_sweepDirection": 0, "snap_pitchLock": 0.99, "snap_polyphony": 2, "snap_level": 0.25, "snap_macroDart": 0.55, "snap_macroDepth": 0.1, "snap_macroSchool": 0.02, "snap_macroSurface": 0.95}
+  },
+  "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.92},
+  "coupling": {"pairs": []}
+}

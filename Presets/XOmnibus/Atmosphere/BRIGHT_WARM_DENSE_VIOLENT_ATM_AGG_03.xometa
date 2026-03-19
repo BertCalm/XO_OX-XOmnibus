@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT WARM DENSE VIOLENT ATM AGG 3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orbital",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.957,
+      "macro_movement": 0.345,
+      "macro_coupling": 0.945,
+      "macro_space": 0.446
+    },
+    "Oceanic": {
+      "macro_character": 0.957,
+      "macro_movement": 0.356,
+      "macro_coupling": 0.921,
+      "macro_space": 0.426
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "bright",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

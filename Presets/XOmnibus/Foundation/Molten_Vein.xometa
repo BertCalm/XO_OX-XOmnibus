@@ -15,6 +15,19 @@
   },
   "engines": [
     "Overbite"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Tar-slow attack into a saturated, immovable bed of sound.",
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "BODY",
@@ -27,6 +40,7 @@
   "parameters": {
     "Overbite": {}
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.438,
@@ -44,4 +58,10 @@
     "thick"
   ],
   "version": "1.0.0"
+=======
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

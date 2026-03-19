@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "VOID CIRCLE",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Orphica",
+    "Onset"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.131,
+      "macro_movement": 0.371,
+      "macro_coupling": 0.562,
+      "macro_space": 0.319
+    },
+    "Onset": {
+      "macro_character": 0.466,
+      "macro_movement": 0.267,
+      "macro_coupling": 0.248,
+      "macro_space": 0.097
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "extreme",
     "high-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

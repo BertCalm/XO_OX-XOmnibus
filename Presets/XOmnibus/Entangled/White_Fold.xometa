@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "White Fold",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.22,
+      "macro_movement": 0.55,
+      "macro_coupling": 0.62,
+      "macro_space": 0.86
+    },
+    "Obsidian": {
+      "macro_character": 0.19,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.67,
+      "macro_space": 0.89
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "white",
     "fold"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Obsidian locks pitch to a paper crease — white on white on white."
+>>>>>>> origin/v1-launch-prep
 }

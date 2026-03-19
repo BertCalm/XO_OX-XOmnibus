@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Abyssal Automata",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Owlfish"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Owlfish subharmonic depth aligns OUTWIT arm frequencies — abyssal intelligence meets digital cells",
   "dna": {
     "aggression": 0.425,
@@ -40,6 +52,18 @@
   "name": "Abyssal Automata",
   "parameters": {
     "Outwit": {
+<<<<<<< HEAD
+=======
+      "owit_rule": 184,
+      "owit_arms": 6,
+      "owit_cellSize": 0.535,
+      "owit_density": 0.664,
+      "owit_evolveRate": 0.446,
+      "owit_mutateProb": 0.224,
+      "owit_pitchSpread": 0.622,
+      "owit_filterCutoff": 0.455,
+      "owit_filterReso": 0.251,
+>>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.16,
       "owit_ampRelease": 0.719,
       "owit_armStagger": 0.369,

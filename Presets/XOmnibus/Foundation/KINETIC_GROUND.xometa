@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "KINETIC GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Oracle",
+    "Obscura"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.365,
+      "macro_movement": 0.952,
+      "macro_coupling": 0.79,
+      "macro_space": 0.281
+    },
+    "Obscura": {
+      "macro_character": 0.521,
+      "macro_movement": 0.9,
+      "macro_coupling": 0.653,
+      "macro_space": 0.48
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "VAST CATHEDRAL BASE",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub",
+    "Orbital"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.758,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.646,
+      "macro_space": 0.978
+    },
+    "Orbital": {
+      "macro_character": 0.793,
+      "macro_movement": 0.66,
+      "macro_coupling": 0.222,
+      "macro_space": 0.991
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "vast",
     "open",
     "space-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

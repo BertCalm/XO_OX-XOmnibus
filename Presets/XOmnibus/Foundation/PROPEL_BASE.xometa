@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "PROPEL BASE",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub",
+    "Ottoni"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.645,
+      "macro_movement": 0.923,
+      "macro_coupling": 0.535,
+      "macro_space": 0.216
+    },
+    "Ottoni": {
+      "macro_character": 0.444,
+      "macro_movement": 0.937,
+      "macro_coupling": 0.441,
+      "macro_space": 0.63
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

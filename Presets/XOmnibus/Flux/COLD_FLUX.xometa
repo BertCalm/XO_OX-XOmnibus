@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD FLUX",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OddfeliX",
+    "Obese"
+  ],
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.4219,
+      "macro_movement": 0.0298,
+      "macro_coupling": 0.2186,
+      "macro_space": 0.5054
+    },
+    "Obese": {
+      "macro_character": 0.0265,
+      "macro_movement": 0.1988,
+      "macro_coupling": 0.6499,
+      "macro_space": 0.5449
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "cold",
     "shifting"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

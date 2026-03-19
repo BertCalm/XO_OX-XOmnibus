@@ -37,13 +37,21 @@
   "mood": "Atmosphere",
   "name": "CROSS ATM 05",
   "parameters": {
+<<<<<<< HEAD
     "Oblique": {
+=======
+    "Oracle": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.534,
       "macro_coupling": 0.508,
       "macro_movement": 0.734,
       "macro_space": 0.034
     },
+<<<<<<< HEAD
     "Oracle": {
+=======
+    "Oblique": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.534,
       "macro_coupling": 0.508,
       "macro_movement": 0.734,
@@ -56,6 +64,10 @@
     "pole-fill",
     "cross-pole",
     "contrast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

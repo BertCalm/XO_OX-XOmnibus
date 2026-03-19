@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 3",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OddOscar",
+    "Obbligato"
+  ],
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.493,
+      "macro_movement": 0.726,
+      "macro_coupling": 0.499,
+      "macro_space": 0.08
+    },
+    "Obbligato": {
+      "macro_character": 0.483,
+      "macro_movement": 0.739,
+      "macro_coupling": 0.505,
+      "macro_space": 0.047
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "intimate",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

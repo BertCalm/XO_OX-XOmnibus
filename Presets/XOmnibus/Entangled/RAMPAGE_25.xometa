@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "RAMPAGE 25",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Osprey",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.538,
+      "macro_movement": 0.88,
+      "macro_coupling": 0.719,
+      "macro_space": 0.742
+    },
+    "Oceanic": {
+      "macro_character": 0.671,
+      "macro_movement": 0.973,
+      "macro_coupling": 0.364,
+      "macro_space": 0.07
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "explosive",
     "unstable"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

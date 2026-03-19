@@ -22,6 +22,18 @@
   "engines": [
     "Ombre",
     "Orca"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "ombre",
+    "orca"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -51,6 +63,7 @@
       "macro_space": 0.463
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.44,
@@ -68,4 +81,16 @@
     "orca"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OMBRE",
+        "engineB": "ORCA",
+        "type": "SPECTRAL_BLEND",
+        "amount": 0.833
+      }
+    ]
+  }
+>>>>>>> origin/v1-launch-prep
 }

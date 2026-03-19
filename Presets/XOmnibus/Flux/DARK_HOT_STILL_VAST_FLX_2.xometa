@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_STILL_VAST_FLX_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overdub",
+    "Opal"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.1571,
+      "macro_movement": 0.1742,
+      "macro_coupling": 0.5455,
+      "macro_space": 0.859
+    },
+    "Opal": {
+      "macro_character": 0.0833,
+      "macro_movement": 0.0941,
+      "macro_coupling": 0.393,
+      "macro_space": 0.8412
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "high-warmth",
     "low-movement",
     "high-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

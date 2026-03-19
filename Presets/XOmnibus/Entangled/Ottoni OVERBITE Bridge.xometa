@@ -24,6 +24,18 @@
   "engines": [
     "Ottoni",
     "Overbite"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OTTONI and OVERBITE coupled via Gate->Env. Blended Constellation DNA — stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "ottoni",
+    "overbite"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "WARMTH",

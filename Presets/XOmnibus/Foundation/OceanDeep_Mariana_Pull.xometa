@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Mariana Pull",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "sub",
+    "abyssal",
+    "deep",
+    "massive"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.03,
+    "warmth": 0.85,
+    "movement": 0.08,
+    "density": 0.98,
+    "space": 0.95,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 1,
+      "deep_subOctave": -2,
+      "deep_harmonicLevel": 0.08,
+      "deep_pressure": 0.95,
+      "deep_bodyType": 3,
+      "deep_bodySize": 1.0,
+      "deep_bodyDamp": 0.85,
+      "deep_flashRate": 0.02,
+      "deep_flashBright": 0.1,
+      "deep_creatureSpeed": 0.08,
+      "deep_creatureDepth": 0.08,
+      "deep_darkness": 0.98,
+      "deep_filterReso": 0.1,
+      "deep_reverbMix": 0.7,
+      "deep_reverbSize": 1.0,
+      "deep_delayMix": 0.05,
+      "deep_rumble": 0.95,
+      "deep_attack": 0.02,
+      "deep_decay": 2.5,
+      "deep_sustain": 0.9,
+      "deep_release": 5.0
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.95,
+    "CREATURE": 0.08,
+    "WRECK": 0.15,
+    "ABYSS": 0.9
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

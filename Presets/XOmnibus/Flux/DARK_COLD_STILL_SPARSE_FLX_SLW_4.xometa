@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_STILL_SPARSE_FLX_SLW_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overdub",
+    "Ouroboros"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.49,
+      "macro_movement": 0.053,
+      "macro_coupling": 0.756,
+      "macro_space": 0.505
+    },
+    "Ouroboros": {
+      "macro_character": 0.432,
+      "macro_movement": 0.041,
+      "macro_coupling": 0.733,
+      "macro_space": 0.515
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "cold",
     "sparse",
     "imperceptible-morph"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -16,6 +16,7 @@
   "engines": [
     "Ottoni"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "GROW",
     "BELL",
@@ -36,6 +37,11 @@
     "space": 0.7,
     "warmth": 0.25
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sustained brass bell ring — bright, resonant, tall",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "prism",
     "bright",
@@ -44,5 +50,27 @@
     "resonant",
     "brass"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "GROW",
+    "BELL",
+    "COUPLING",
+    "HALL"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.91,
+    "warmth": 0.25,
+    "movement": 0.4,
+    "density": 0.55,
+    "space": 0.7,
+    "aggression": 0.2
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

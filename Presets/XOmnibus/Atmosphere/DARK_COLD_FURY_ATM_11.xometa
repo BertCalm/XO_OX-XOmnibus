@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK COLD FURY ATM 11",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overbite",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.076,
+      "macro_movement": 0.328,
+      "macro_coupling": 0.824,
+      "macro_space": 0.432
+    },
+    "Ocelot": {
+      "macro_character": 0.016,
+      "macro_movement": 0.271,
+      "macro_coupling": 0.733,
+      "macro_space": 0.403
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "aggressive",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

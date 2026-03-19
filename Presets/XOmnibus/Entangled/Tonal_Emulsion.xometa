@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Tonal Emulsion",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Odyssey",
+    "Obscura"
+  ],
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.1,
+      "macro_movement": 0.18,
+      "macro_coupling": 0.82,
+      "macro_space": 0.96
+    },
+    "Obscura": {
+      "macro_character": 0.07,
+      "macro_movement": 0.13,
+      "macro_coupling": 0.87,
+      "macro_space": 0.99
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "tonal",
     "emulsion"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Obscura's decay controls Odyssey's envelope — the image fades before it can form."
+>>>>>>> origin/v1-launch-prep
 }

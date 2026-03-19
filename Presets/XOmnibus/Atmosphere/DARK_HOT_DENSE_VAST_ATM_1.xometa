@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_DENSE_VAST_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orbital",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.707,
+      "macro_movement": 0.528,
+      "macro_coupling": 0.823,
+      "macro_space": 0.915
+    },
+    "OddfeliX": {
+      "macro_character": 0.382,
+      "macro_movement": 0.557,
+      "macro_coupling": 0.602,
+      "macro_space": 0.923
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "warm",
     "dense",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -16,6 +16,7 @@
   "engines": [
     "Overdub"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "DRIVE",
     "TAPE",
@@ -36,6 +37,11 @@
     "space": 0.5,
     "warmth": 0.85
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Saturated tape — all HF eaten by magnetic oxide",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -44,5 +50,27 @@
     "saturation",
     "dub"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "DRIVE",
+    "TAPE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.85,
+    "movement": 0.18,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.42
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

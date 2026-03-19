@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "MAGMA PRISM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Osprey",
+    "Orphica"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.765,
+      "macro_movement": 0.778,
+      "macro_coupling": 0.726,
+      "macro_space": 0.894
+    },
+    "Orphica": {
+      "macro_character": 0.404,
+      "macro_movement": 0.097,
+      "macro_coupling": 0.334,
+      "macro_space": 0.02
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "spectrum",
     "fire"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

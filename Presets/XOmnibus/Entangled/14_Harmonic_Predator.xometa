@@ -15,6 +15,18 @@
   },
   "engines": [
     "Owlfish"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Designed for ORBITAL coupling — balanced subharmonics ready to entangle with additive partials",
+  "tags": [
+    "coupling",
+    "entangled",
+    "orbital",
+    "harmonic"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "DEPTH",
@@ -26,6 +38,7 @@
   "name": "Harmonic Predator",
   "parameters": {
     "Owlfish": {
+<<<<<<< HEAD
       "owl_ampAttack": 10,
       "owl_ampDecay": 300,
       "owl_ampRelease": 600,
@@ -55,6 +68,9 @@
       "owl_grainMix": 0.12,
       "owl_grainPitch": 0.1,
       "owl_grainSize": 0.3,
+=======
+      "owl_portamento": 0.2,
+>>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 1,
       "owl_mixtur": 0.3,
       "owl_morphGlide": 0.5,

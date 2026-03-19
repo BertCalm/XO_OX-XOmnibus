@@ -37,13 +37,21 @@
   "mood": "Foundation",
   "name": "ALLLO FND 03",
   "parameters": {
+<<<<<<< HEAD
     "Oblong": {
+=======
+    "Ouroboros": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.043,
       "macro_coupling": 0.087,
       "macro_movement": 0.281,
       "macro_space": 0.073
     },
+<<<<<<< HEAD
     "Ouroboros": {
+=======
+    "Oblong": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.043,
       "macro_coupling": 0.087,
       "macro_movement": 0.281,
@@ -56,6 +64,10 @@
     "pole-fill",
     "minimal",
     "sparse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

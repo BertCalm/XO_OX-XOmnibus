@@ -16,6 +16,7 @@
   "engines": [
     "Owlfish"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "DEPTH",
     "FEEDING",
@@ -36,6 +37,11 @@
     "space": 0.4,
     "warmth": 0.82
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "All bioluminescence extinguished — only weight remains",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -44,5 +50,27 @@
     "deep",
     "owlfish"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "COUPLING",
+    "PRESSURE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.82,
+    "movement": 0.35,
+    "density": 0.8,
+    "space": 0.4,
+    "aggression": 0.4
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

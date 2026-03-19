@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Memory Fog",
+  "mood": "Atmosphere",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Long decay, high drift, fine grain — a fog of memory. Notes dissolve into the air and linger as particulate. Good for sustained backgrounds and texture layers.",
+  "tags": ["atmosphere", "fog", "ambient", "drift", "dissolve"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.68,
+    "movement": 0.45,
+    "density": 0.72,
+    "space": 0.85,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.12,
+      "ombre_interference": 0.35,
+      "ombre_memoryDecay": 18.0,
+      "ombre_memoryGrain": 120.0,
+      "ombre_memoryDrift": 0.65,
+      "ombre_oscShape": 0,
+      "ombre_reactivity": 0.3,
+      "ombre_subLevel": 0.35,
+      "ombre_filterCutoff": 3200.0,
+      "ombre_filterReso": 0.15,
+      "ombre_attack": 1.5,
+      "ombre_decay": 2.5,
+      "ombre_sustain": 0.8,
+      "ombre_release": 5.0,
+      "ombre_level": 0.68,
+      "ombre_velCutoffScale": 0.25,
+      "ombre_lfo1Rate": 0.06,
+      "ombre_lfo1Depth": 0.4,
+      "ombre_lfo2Rate": 0.04,
+      "ombre_lfo2Depth": 0.3,
+      "ombre_macroCharacter": 0.88,
+      "ombre_macroMovement": 0.45,
+      "ombre_macroCoupling": 0.4,
+      "ombre_macroSpace": 0.88
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

@@ -57,6 +57,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <cstring>
@@ -1557,6 +1558,8 @@ public:
         sr = sampleRate;
         blockSize = maxBlockSize;
         couplingBuffer.setSize (2, maxBlockSize);
+        silenceGate.prepare (sampleRate, maxBlockSize);
+        silenceGate.setHoldTime (100.0f); // Percussive — short hold
         couplingBuffer.clear();
 
         masterFilter.setMode (CytomicSVF::Mode::LowPass);
@@ -1735,6 +1738,7 @@ public:
             auto msg = metadata.getMessage();
             if (msg.isNoteOn())
             {
+                silenceGate.wake();
                 int voiceIdx = noteToVoice (msg.getNoteNumber());
                 if (voiceIdx < 0) continue;
 
@@ -1761,6 +1765,13 @@ public:
             // increasingly unpredictable with each trigger.
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
+        }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
         }
 
         // ---- 3. Precompute block-constant voice gains ----
@@ -1838,6 +1849,11 @@ public:
         couplingFilterMod = 0.0f;
         couplingDecayMod = 0.0f;
         couplingBlendMod = 0.0f;
+
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
+                                  numSamples);
     }
 
     //-- Coupling ----------------------------------------------------------------
@@ -1927,6 +1943,8 @@ public:
     int getMaxVoices() const override { return kNumVoices; }
 
 private:
+    SilenceGate silenceGate;
+
     std::array<OnsetVoice, kNumVoices> voices;
     juce::AudioBuffer<float> couplingBuffer;
     CytomicSVF masterFilter;   // QA I1: master tone LP filter (L channel)

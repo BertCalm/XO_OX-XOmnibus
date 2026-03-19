@@ -15,6 +15,7 @@
   "engines": [
     "Origami"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -33,6 +34,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORIGAMI under maximum fold tension — geometry stressed to densest possible form.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "portrait",
@@ -42,5 +48,25 @@
     "geometric"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.35,
+    "movement": 0.55,
+    "density": 0.85,
+    "space": 0.2,
+    "aggression": 0.75
+  }
+>>>>>>> origin/v1-launch-prep
 }

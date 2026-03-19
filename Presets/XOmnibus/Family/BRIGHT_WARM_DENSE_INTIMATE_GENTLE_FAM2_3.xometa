@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT WARM DENSE INTIMATE GENTLE FAM2 3",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Ottoni",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.901,
+      "macro_movement": 0.37,
+      "macro_coupling": 0.511,
+      "macro_space": 0.141
+    },
+    "Odyssey": {
+      "macro_character": 0.891,
+      "macro_movement": 0.329,
+      "macro_coupling": 0.53,
+      "macro_space": 0.2
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "intimate",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

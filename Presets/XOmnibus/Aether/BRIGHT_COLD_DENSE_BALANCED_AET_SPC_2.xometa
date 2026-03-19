@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT COLD DENSE BALANCED AET SPC 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Orbital",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.545,
+      "macro_movement": 0.476,
+      "macro_coupling": 0.536,
+      "macro_space": 0.441
+    },
+    "OddfeliX": {
+      "macro_character": 0.517,
+      "macro_movement": 0.472,
+      "macro_coupling": 0.525,
+      "macro_space": 0.426
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "gentle",
     "bright",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

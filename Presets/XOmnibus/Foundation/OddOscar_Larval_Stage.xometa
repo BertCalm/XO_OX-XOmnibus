@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Larval Stage",
+  "mood": "Foundation",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Early-stage morph with very low drift — pure undeveloped potential held in suspension.",
+  "tags": ["larval", "early", "pure", "foundation"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.35, "warmth": 0.58, "movement": 0.35, "density": 0.45, "space": 0.62, "aggression": 0.1},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.28,
+      "morph_bloom": 0.35,
+      "morph_detune": 0.08,
+      "morph_drift": 0.15,
+      "morph_filterCutoff": 3200.0,
+      "morph_filterReso": 0.28,
+      "morph_filterEnvDepth": 0.28,
+      "morph_sub": 0.5,
+      "morph_decay": 0.9,
+      "morph_sustain": 0.8,
+      "morph_release": 1.8,
+      "morph_glide": 0.0,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 8,
+      "morph_level": 0.7,
+      "morph_macroBloom": 0.35,
+      "morph_macroDepth": 0.45,
+      "morph_macroDrift": 0.15,
+      "morph_macroSpace": 0.62
+    }
+  },
+  "macros": {"CHARACTER": 0.35, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.62},
+  "coupling": {"pairs": []}
+}

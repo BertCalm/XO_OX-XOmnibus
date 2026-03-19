@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Fading Emulsion",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Opal",
+    "Obscura"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.12,
+      "macro_movement": 0.28,
+      "macro_coupling": 0.8,
+      "macro_space": 0.93
+    },
+    "Obscura": {
+      "macro_character": 0.09,
+      "macro_movement": 0.23,
+      "macro_coupling": 0.85,
+      "macro_space": 0.96
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "emulsion",
     "fading"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Grain envelope shapes Obscura's decay — both dissolve before the eye can fix them."
+>>>>>>> origin/v1-launch-prep
 }

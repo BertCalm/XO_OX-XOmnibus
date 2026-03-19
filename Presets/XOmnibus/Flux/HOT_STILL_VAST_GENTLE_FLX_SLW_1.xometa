@@ -37,6 +37,7 @@
   "mood": "Flux",
   "name": "Thread Orbit 2",
   "parameters": {
+<<<<<<< HEAD
     "Oblong": {
       "macro_character": 0.4,
       "macro_coupling": 0.923,
@@ -47,6 +48,18 @@
       "macro_character": 0.496,
       "macro_coupling": 0.865,
       "macro_movement": 0.026,
+=======
+    "Organon": {
+      "macro_character": 0.496,
+      "macro_movement": 0.026,
+      "macro_coupling": 0.865,
+      "macro_space": 0.951
+    },
+    "Oblong": {
+      "macro_character": 0.4,
+      "macro_movement": 0.031,
+      "macro_coupling": 0.923,
+>>>>>>> origin/v1-launch-prep
       "macro_space": 0.951
     }
   },
@@ -58,6 +71,10 @@
     "vast",
     "gentle",
     "suspended-chaos"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

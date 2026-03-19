@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "WRATHFUL ETHER SURGE",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Origami",
+    "Oblong"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.457,
+      "macro_movement": 0.552,
+      "macro_coupling": 0.583,
+      "macro_space": 0.488
+    },
+    "Oblong": {
+      "macro_character": 0.281,
+      "macro_movement": 0.588,
+      "macro_coupling": 0.843,
+      "macro_space": 0.525
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "violent",
     "transcendence",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

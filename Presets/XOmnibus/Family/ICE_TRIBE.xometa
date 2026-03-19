@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ICE TRIBE",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Ottoni",
+    "Osprey"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.589,
+      "macro_movement": 0.429,
+      "macro_coupling": 0.569,
+      "macro_space": 0.06
+    },
+    "Osprey": {
+      "macro_character": 0.96,
+      "macro_movement": 0.099,
+      "macro_coupling": 0.763,
+      "macro_space": 0.626
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "family",
     "cold",
     "xlow-warmth"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

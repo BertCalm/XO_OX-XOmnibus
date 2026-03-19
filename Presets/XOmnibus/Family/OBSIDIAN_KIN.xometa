@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "OBSIDIAN KIN",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Ohm",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.153,
+      "macro_movement": 0.165,
+      "macro_coupling": 0.323,
+      "macro_space": 0.709
+    },
+    "Ocelot": {
+      "macro_character": 0.346,
+      "macro_movement": 0.941,
+      "macro_coupling": 0.895,
+      "macro_space": 0.846
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "extreme",
     "high-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "WRATHFUL NEBULA BURST",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Optic",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.505,
+      "macro_movement": 0.443,
+      "macro_coupling": 0.248,
+      "macro_space": 0.895
+    },
+    "Odyssey": {
+      "macro_character": 0.439,
+      "macro_movement": 0.478,
+      "macro_coupling": 0.159,
+      "macro_space": 0.891
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "violent",
     "transcendence",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

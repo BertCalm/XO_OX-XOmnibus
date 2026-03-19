@@ -37,15 +37,25 @@
   "mood": "Prism",
   "name": "BRIGHT_WARM_DENSE_GENTLE_PRS_2",
   "parameters": {
+<<<<<<< HEAD
     "Optic": {
       "macro_character": 0.093,
       "macro_coupling": 0.858,
+=======
+    "Osteria": {
+      "macro_character": 0.53,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.522,
       "macro_space": 0.638
     },
+<<<<<<< HEAD
     "Osteria": {
       "macro_character": 0.53,
       "macro_coupling": 0.831,
+=======
+    "Optic": {
+      "macro_character": 0.093,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.522,
       "macro_space": 0.638
     }
@@ -57,6 +67,10 @@
     "warm",
     "dense",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

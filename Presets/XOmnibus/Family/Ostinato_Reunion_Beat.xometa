@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Reunion Beat",
+  "mood": "Family",
+  "engines": [
+    "Ostinato"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "drums",
+    "percussion",
+    "groove",
+    "tribal"
+  ],
+  "macroLabels": [
+    "SPACE",
+    "GATHER",
+    "FIRE",
+    "CIRCLE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.65,
+    "movement": 0.78,
+    "density": 0.65,
+    "space": 0.4,
+    "aggression": 0.48
+  },
+  "parameters": {
+    "Ostinato": {
+      "osti_drumType": 2,
+      "osti_filterCutoff": 1200,
+      "osti_filterRes": 0.52,
+      "osti_ampAtk": 0.003,
+      "osti_ampDec": 0.5,
+      "osti_ampSus": 0.08,
+      "osti_ampRel": 0.42,
+      "osti_velCutoffAmt": 0.58,
+      "osti_reverbMix": 0.32,
+      "osti_lfo1Rate": 0.45,
+      "osti_lfo1Depth": 0.18,
+      "osti_lfo2Rate": 1.2,
+      "osti_lfo2Depth": 0.16,
+      "osti_patternStep0": true,
+      "osti_patternStep1": true,
+      "osti_patternStep2": true,
+      "osti_patternStep3": false,
+      "osti_patternStep4": true,
+      "osti_patternStep5": true,
+      "osti_patternStep6": true,
+      "osti_patternStep7": false,
+      "osti_macroGather": 0.4,
+      "osti_macroFire": 0.55,
+      "osti_macroCircle": 0.5,
+      "osti_macroSpace": 0.4
+    }
+  },
+  "macros": {
+    "GATHER": 0.4,
+    "FIRE": 0.55,
+    "CIRCLE": 0.5,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

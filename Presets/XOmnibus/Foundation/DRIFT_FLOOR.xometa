@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DRIFT FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Orca",
+    "Optic"
+  ],
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.783,
+      "macro_movement": 0.917,
+      "macro_coupling": 0.435,
+      "macro_space": 0.604
+    },
+    "Optic": {
+      "macro_character": 0.569,
+      "macro_movement": 0.931,
+      "macro_coupling": 0.542,
+      "macro_space": 0.418
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

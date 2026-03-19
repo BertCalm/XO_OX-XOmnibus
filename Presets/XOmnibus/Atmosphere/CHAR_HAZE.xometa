@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CHAR HAZE",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ouroboros",
+    "Onset"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.689,
+      "macro_movement": 0.499,
+      "macro_coupling": 0.41,
+      "macro_space": 0.191
+    },
+    "Onset": {
+      "macro_character": 0.309,
+      "macro_movement": 0.308,
+      "macro_coupling": 0.457,
+      "macro_space": 0.549
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "abrasive",
     "hostile",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

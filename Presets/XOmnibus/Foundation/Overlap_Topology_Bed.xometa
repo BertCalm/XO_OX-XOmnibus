@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Topology Bed",
+  "mood": "Foundation",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A wide, low-feedback torus knot functioning as a bed texture. The topology creates gentle cross-routing without building up. A sustain pad replacement that breathes with the room.",
+  "tags": [
+    "bed",
+    "torus",
+    "wide",
+    "sustain",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.32,
+    "density": 0.55,
+    "space": 0.8,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 3,
+      "olap_delayFeedback": 0.48,
+      "olap_diffusion": 0.68,
+      "olap_spread": 0.88,
+      "olap_decay": 6.0,
+      "olap_modDepth": 0.1,
+      "olap_modRate": 0.06,
+      "olap_damping": 0.5,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

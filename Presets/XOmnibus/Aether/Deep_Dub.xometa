@@ -16,6 +16,7 @@
   "engines": [
     "Overdub"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "DRIVE",
     "TAPE",
@@ -36,6 +37,11 @@
     "space": 0.55,
     "warmth": 0.93
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dub at maximum tape saturation — treble is myth",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -44,5 +50,27 @@
     "tape",
     "saturation"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "DRIVE",
+    "TAPE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.03,
+    "warmth": 0.93,
+    "movement": 0.25,
+    "density": 0.72,
+    "space": 0.55,
+    "aggression": 0.48
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

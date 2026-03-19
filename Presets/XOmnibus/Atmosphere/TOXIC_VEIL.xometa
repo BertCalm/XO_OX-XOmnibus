@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "TOXIC VEIL",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overworld",
+    "Ole"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.896,
+      "macro_movement": 0.524,
+      "macro_coupling": 0.463,
+      "macro_space": 0.36
+    },
+    "Ole": {
+      "macro_character": 0.179,
+      "macro_movement": 0.661,
+      "macro_coupling": 0.782,
+      "macro_space": 0.584
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "abrasive",
     "hostile",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

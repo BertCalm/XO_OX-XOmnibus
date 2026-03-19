@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_FAM_AGG_5",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Ole",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.798,
+      "macro_movement": 0.455,
+      "macro_coupling": 0.429,
+      "macro_space": 0.674
+    },
+    "OddfeliX": {
+      "macro_character": 0.845,
+      "macro_movement": 0.458,
+      "macro_coupling": 0.47,
+      "macro_space": 0.707
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "warm",
     "intimate"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

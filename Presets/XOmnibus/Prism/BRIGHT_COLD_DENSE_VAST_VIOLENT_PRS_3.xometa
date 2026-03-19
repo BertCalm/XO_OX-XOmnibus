@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "BRIGHT_COLD_DENSE_VAST_VIOLENT_PRS_3",
+  "mood": "Prism",
+  "engines": [
+    "Oblique",
+    "Orphica"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_DENSE_VAST_VIOLENT. Variant 3.",
   "dna": {
     "aggression": 0.976,
@@ -71,5 +83,49 @@
     "dense"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.952,
+      "macro_movement": 0.462,
+      "macro_coupling": 0.923,
+      "macro_space": 0.93
+    },
+    "Orphica": {
+      "macro_character": 0.998,
+      "macro_movement": 0.518,
+      "macro_coupling": 0.816,
+      "macro_space": 0.859
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OBLIQUE",
+    "target": "ORPHICA",
+    "amount": 0.883
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.904,
+    "warmth": 0.071,
+    "movement": 0.559,
+    "density": 0.907,
+    "space": 0.913,
+    "aggression": 0.976
+  },
+  "macros": {
+    "CHARACTER": 0.975,
+    "MOVEMENT": 0.49,
+    "COUPLING": 0.869,
+    "SPACE": 0.895
+  }
+>>>>>>> origin/v1-launch-prep
 }

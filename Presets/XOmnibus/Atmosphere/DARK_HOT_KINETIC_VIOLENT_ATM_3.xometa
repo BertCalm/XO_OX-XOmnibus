@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_KINETIC_VIOLENT_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Opal",
+    "Oblique"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.729,
+      "macro_movement": 0.725,
+      "macro_coupling": 0.719,
+      "macro_space": 0.413
+    },
+    "Oblique": {
+      "macro_character": 0.401,
+      "macro_movement": 0.836,
+      "macro_coupling": 0.598,
+      "macro_space": 0.375
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "warm",
     "kinetic",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -24,6 +24,7 @@
     "Overlap",
     "Orphica"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "KNOT",
     "FOLD",
@@ -81,6 +82,11 @@
     "space": 0.5277,
     "warmth": 0.8899
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark Hot Sparse Gentle character entanglement — OVERLAP × ORPHICA via Resonance Share. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "dark",
@@ -89,5 +95,85 @@
     "gentle",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "KNOT",
+    "FOLD",
+    "WEAVE",
+    "HALL"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.0279,
+    "warmth": 0.8899,
+    "movement": 0.423,
+    "density": 0.1024,
+    "space": 0.5277,
+    "aggression": 0.0517
+  },
+  "sonic_dna": {
+    "brightness": 0.0279,
+    "warmth": 0.8899,
+    "movement": 0.423,
+    "density": 0.1024,
+    "space": 0.5277,
+    "aggression": 0.0517
+  },
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.6997,
+      "macro_movement": 0.423,
+      "macro_coupling": 0.6176,
+      "macro_space": 0.4941,
+      "filter_cutoff": 0.1827,
+      "filter_resonance": 0.1205,
+      "amp_attack": 0.2666,
+      "amp_release": 0.3966,
+      "reverb_mix": 0.4075,
+      "reverb_size": 0.5536,
+      "drive": 0.1183,
+      "density": 0.1084,
+      "output_level": 0.7617,
+      "coupling_level": 0.6107
+    },
+    "Orphica": {
+      "macro_character": 0.6781,
+      "macro_movement": 0.4046,
+      "macro_coupling": 0.5813,
+      "macro_space": 0.5482,
+      "filter_cutoff": 0.2171,
+      "filter_resonance": 0.138,
+      "amp_attack": 0.3141,
+      "amp_release": 0.3911,
+      "reverb_mix": 0.447,
+      "reverb_size": 0.5274,
+      "drive": 0.0907,
+      "density": 0.0697,
+      "output_level": 0.7134,
+      "coupling_level": 0.5574
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ORPHICA",
+    "target": "OVERLAP",
+    "amount": 0.8842,
+    "pairs": [
+      {
+        "source": "ORPHICA",
+        "target": "OVERLAP",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.8842
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.4589,
+    "MOVEMENT": 0.423,
+    "COUPLING": 0.8842,
+    "SPACE": 0.5277
+  }
+>>>>>>> origin/v1-launch-prep
 }

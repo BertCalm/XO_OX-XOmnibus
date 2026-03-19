@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "DARK SPARSE STILL GENTLE FAM 4",
+  "mood": "Family",
+  "engines": [
+    "Optic",
+    "Obbligato"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — family, dark, still, sparse.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "dark",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.095,
+    "warmth": 0.454,
+    "movement": 0.101,
+    "density": 0.074,
+    "space": 0.512,
+    "aggression": 0.099
+  },
+  "parameters": {
+    "Optic": {
+      "level": 0.715,
+      "pan": 0.149
+    },
+    "Obbligato": {
+      "level": 0.728,
+      "pan": 0.035
+    }
+  },
+  "coupling": [
+    {
+      "source": "OPTIC",
+      "destination": "OBBLIGATO",
+      "type": "ENVELOPE_LINK",
+      "amount": 0.543
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

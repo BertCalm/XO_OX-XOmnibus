@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BARE GATHERING",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Outwit",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.091,
+      "macro_movement": 0.348,
+      "macro_coupling": 0.333,
+      "macro_space": 0.67
+    },
+    "Oceanic": {
+      "macro_character": 0.858,
+      "macro_movement": 0.33,
+      "macro_coupling": 0.694,
+      "macro_space": 0.288
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "family",
     "sparse",
     "xlow-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

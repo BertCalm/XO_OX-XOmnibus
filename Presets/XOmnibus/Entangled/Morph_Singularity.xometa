@@ -23,6 +23,20 @@
   "engines": [
     "OddOscar",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Morph parameter frequency-smeared by Ouroboros — axolotl regeneration as brutal topology.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "oddoscar",
+    "ouroboros",
+    "morph"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

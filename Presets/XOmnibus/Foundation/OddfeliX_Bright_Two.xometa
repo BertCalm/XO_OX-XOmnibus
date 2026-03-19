@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Bright Two",
+  "mood": "Foundation",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Two bright voices in perfect unison — a clean minimal duet with tight synchrony.",
+  "tags": ["two", "duet", "bright", "minimal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.82, "warmth": 0.22, "movement": 0.44, "density": 0.25, "space": 0.44, "aggression": 0.2},
+  "parameters": {
+    "OddfeliX": {"snap_oscMode": 0, "snap_snap": 0.74, "snap_decay": 0.24, "snap_detune": 0.06, "snap_filterCutoff": 11000.0, "snap_filterReso": 0.3, "snap_filterEnvDepth": 0.52, "snap_unison": 2, "snap_sweepDirection": 0, "snap_pitchLock": 0.9, "snap_polyphony": 6, "snap_level": 0.75, "snap_macroDart": 0.44, "snap_macroDepth": 0.42, "snap_macroSchool": 0.3, "snap_macroSurface": 0.46}
+  },
+  "macros": {"CHARACTER": 0.52, "MOVEMENT": 0.44, "COUPLING": 0.0, "SPACE": 0.44},
+  "coupling": {"pairs": []}
+}

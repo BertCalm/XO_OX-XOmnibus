@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_STILL_DENSE_PRS_DRK_1",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Orphica",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.2748,
+      "macro_movement": 0.04,
+      "macro_coupling": 0.8955,
+      "macro_space": 0.6191
+    },
+    "Ocelot": {
+      "macro_character": 0.3106,
+      "macro_movement": 0.01,
+      "macro_coupling": 0.9131,
+      "macro_space": 0.6182
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "cold",
     "still",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

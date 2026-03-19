@@ -37,13 +37,21 @@
   "mood": "Foundation",
   "name": "ALLLO FND 06",
   "parameters": {
+<<<<<<< HEAD
     "OddOscar": {
+=======
+    "Overdub": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.04,
       "macro_coupling": 0.363,
       "macro_movement": 0.053,
       "macro_space": 0.085
     },
+<<<<<<< HEAD
     "Overdub": {
+=======
+    "OddOscar": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.04,
       "macro_coupling": 0.363,
       "macro_movement": 0.053,
@@ -56,6 +64,10 @@
     "pole-fill",
     "minimal",
     "sparse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

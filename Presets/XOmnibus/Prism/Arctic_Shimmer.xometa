@@ -44,5 +44,27 @@
     "shimmer",
     "airy"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "SHIMMER",
+    "SCATTER",
+    "COUPLING",
+    "AIR"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.97,
+    "warmth": 0.15,
+    "movement": 0.65,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.1
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

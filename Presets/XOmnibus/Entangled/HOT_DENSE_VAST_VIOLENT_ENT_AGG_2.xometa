@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_DENSE_VAST_VIOLENT_ENT_AGG_2",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Opal"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.468,
+      "macro_movement": 0.495,
+      "macro_coupling": 0.853,
+      "macro_space": 0.931
+    },
+    "Opal": {
+      "macro_character": 0.552,
+      "macro_movement": 0.572,
+      "macro_coupling": 0.857,
+      "macro_space": 0.953
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "hot",
     "dense",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

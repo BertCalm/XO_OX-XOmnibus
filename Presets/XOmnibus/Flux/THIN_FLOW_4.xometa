@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "THIN FLOW 4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Origami",
+    "Octopus"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.0423,
+      "macro_movement": 0.0187,
+      "macro_coupling": 0.9212,
+      "macro_space": 0.8621
+    },
+    "Octopus": {
+      "macro_character": 0.5758,
+      "macro_movement": 0.5734,
+      "macro_coupling": 0.7095,
+      "macro_space": 0.4177
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "sparse",
     "minimal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

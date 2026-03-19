@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Deep Emergence",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Oceanic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Oceanic pressure zone index modulates OUTWIT arm count — deeper water, more arms unfurl",
   "dna": {
     "aggression": 0.375,
@@ -40,6 +52,18 @@
   "name": "Deep Emergence",
   "parameters": {
     "Outwit": {
+<<<<<<< HEAD
+=======
+      "owit_rule": 22,
+      "owit_arms": 7,
+      "owit_cellSize": 0.373,
+      "owit_density": 0.536,
+      "owit_evolveRate": 0.358,
+      "owit_mutateProb": 0.199,
+      "owit_pitchSpread": 0.355,
+      "owit_filterCutoff": 0.355,
+      "owit_filterReso": 0.371,
+>>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.123,
       "owit_ampRelease": 0.519,
       "owit_armStagger": 0.492,

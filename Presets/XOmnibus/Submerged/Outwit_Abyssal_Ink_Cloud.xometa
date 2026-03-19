@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Ink Cloud",
+  "mood": "Submerged",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "High ink cloud mix, maximum reverb, Rule 225 \u2014 the ink defense in total darkness. The cloud diffuses through still water until it occupies the entire space.",
+  "tags": [
+    "submerged",
+    "ink",
+    "cloud",
+    "defense",
+    "darkness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.38,
+    "movement": 0.35,
+    "density": 0.38,
+    "space": 0.92,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 225,
+      "owit_armBalance": 0.48,
+      "owit_mutationRate": 0.12,
+      "owit_armSpread": 0.55,
+      "owit_sync": 0.08,
+      "owit_feedbackAmt": 0.55,
+      "owit_chaos": 0.25,
+      "owit_density": 0.38,
+      "owit_ampAttack": 0.35,
+      "owit_ampDecay": 0.75,
+      "owit_ampSustain": 0.55,
+      "owit_ampRelease": 4.5,
+      "owit_filterCutoff": 0.3,
+      "owit_filterRes": 0.2,
+      "owit_lfoRate": 0.03,
+      "owit_lfoDepth": 0.1,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

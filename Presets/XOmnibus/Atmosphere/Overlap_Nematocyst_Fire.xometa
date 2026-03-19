@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Nematocyst Fire",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A trefoil with sharp modulation bursts \u2014 the crossing points fire like nematocysts, injecting a sudden brightening into the reverb tail at irregular intervals. Gorgeous and slightly dangerous.",
+  "tags": [
+    "nematocyst",
+    "bursting",
+    "trefoil",
+    "irregular",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.5,
+    "movement": 0.78,
+    "density": 0.65,
+    "space": 0.8,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.62,
+      "olap_diffusion": 0.7,
+      "olap_spread": 0.8,
+      "olap_decay": 7.0,
+      "olap_modDepth": 0.45,
+      "olap_modRate": 0.12,
+      "olap_damping": 0.38,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

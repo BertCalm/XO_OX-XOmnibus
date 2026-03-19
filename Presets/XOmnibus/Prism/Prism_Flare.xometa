@@ -16,6 +16,7 @@
   "engines": [
     "Optic"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "FOCUS",
     "PRISM",
@@ -36,6 +37,11 @@
     "space": 0.9,
     "warmth": 0.08
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Diffracted light — pure spectral white",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "prism",
     "bright",
@@ -44,5 +50,27 @@
     "diffraction",
     "white"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "FOCUS",
+    "PRISM",
+    "COUPLING",
+    "DIFFUSE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.99,
+    "warmth": 0.08,
+    "movement": 0.55,
+    "density": 0.15,
+    "space": 0.9,
+    "aggression": 0.05
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

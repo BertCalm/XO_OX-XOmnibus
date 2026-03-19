@@ -1,8 +1,17 @@
 {
   "author": "XO_OX Designs",
+<<<<<<< HEAD
   "coupling": {
     "pairs": []
   },
+=======
+  "version": "1.0",
+  "name": "Oscar Pressure",
+  "mood": "Flux",
+  "engines": [
+    "OddOscar"
+  ],
+>>>>>>> origin/v1-launch-prep
   "couplingIntensity": "None",
   "description": "Morph fully loaded but unmoved — gill pink compressed under motionless surface.",
   "dna": {
@@ -42,6 +51,10 @@
     "pressure",
     "morph"
   ],
+<<<<<<< HEAD
   "tempo": null,
   "version": "1.0"
+=======
+  "description": "Morph fully loaded but unmoved — gill pink compressed under motionless surface."
+>>>>>>> origin/v1-launch-prep
 }

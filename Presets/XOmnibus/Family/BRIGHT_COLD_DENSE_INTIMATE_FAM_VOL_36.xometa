@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_DENSE_INTIMATE_FAM_VOL_36",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Ottoni",
+    "Organon"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.524,
+      "macro_movement": 0.362,
+      "macro_coupling": 0.72,
+      "macro_space": 0.085
+    },
+    "Organon": {
+      "macro_character": 0.478,
+      "macro_movement": 0.31,
+      "macro_coupling": 0.765,
+      "macro_space": 0.062
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dense",
     "intimate",
     "cool"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

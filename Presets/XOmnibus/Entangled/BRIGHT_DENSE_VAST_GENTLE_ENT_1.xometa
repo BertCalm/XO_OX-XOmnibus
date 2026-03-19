@@ -24,6 +24,7 @@
     "Owlfish",
     "Obbligato"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "DEPTH",
     "FEEDING",
@@ -81,6 +82,11 @@
     "space": 0.985,
     "warmth": 0.6431
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright Dense Vast Gentle character entanglement — OWLFISH × OBBLIGATO via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -89,5 +95,85 @@
     "gentle",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
+  "couplingIntensity": "Medium",
+  "dna": {
+    "brightness": 0.8849,
+    "warmth": 0.6431,
+    "movement": 0.4765,
+    "density": 0.8701,
+    "space": 0.985,
+    "aggression": 0.0423
+  },
+  "sonic_dna": {
+    "brightness": 0.8849,
+    "warmth": 0.6431,
+    "movement": 0.4765,
+    "density": 0.8701,
+    "space": 0.985,
+    "aggression": 0.0423
+  },
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.7954,
+      "macro_movement": 0.5111,
+      "macro_coupling": 0.5967,
+      "macro_space": 0.9974,
+      "filter_cutoff": 0.7994,
+      "filter_resonance": 0.1109,
+      "amp_attack": 0.2917,
+      "amp_release": 0.6642,
+      "reverb_mix": 0.6835,
+      "reverb_size": 0.7754,
+      "drive": 0.0998,
+      "density": 0.8488,
+      "output_level": 0.9299,
+      "coupling_level": 0.5832
+    },
+    "Obbligato": {
+      "macro_character": 0.7828,
+      "macro_movement": 0.4746,
+      "macro_coupling": 0.5854,
+      "macro_space": 0.9631,
+      "filter_cutoff": 0.8338,
+      "filter_resonance": 0.0819,
+      "amp_attack": 0.275,
+      "amp_release": 0.7164,
+      "reverb_mix": 0.7309,
+      "reverb_size": 0.7848,
+      "drive": 0.0544,
+      "density": 0.8358,
+      "output_level": 0.9081,
+      "coupling_level": 0.5854
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OBBLIGATO",
+    "target": "OWLFISH",
+    "amount": 0.6949,
+    "pairs": [
+      {
+        "source": "OBBLIGATO",
+        "target": "OWLFISH",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.6949
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.764,
+    "MOVEMENT": 0.4765,
+    "COUPLING": 0.6949,
+    "SPACE": 0.985
+  }
+>>>>>>> origin/v1-launch-prep
 }

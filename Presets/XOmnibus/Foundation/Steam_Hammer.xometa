@@ -15,6 +15,19 @@
   },
   "engines": [
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Industrial machine beat, maximum punch and density",
+  "tags": [
+    "foundation",
+    "aggressive",
+    "extreme",
+    "anchor",
+    "drive"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "MACHINE",
@@ -32,8 +45,11 @@
   "name": "Steam Hammer",
   "parameters": {
     "Onset": {
+<<<<<<< HEAD
       "onset_couplingBus": 0,
       "onset_couplingLevel": 0.5,
+=======
+>>>>>>> origin/v1-launch-prep
       "onset_macro_machine": 0.6089,
       "onset_macro_mutate": 0.62,
       "onset_macro_punch": 0.9402,
@@ -41,6 +57,7 @@
       "onset_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.7597,
@@ -58,4 +75,9 @@
     "drive"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Hovering Mass",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "An unknot with maximum diffusion \u2014 the signal dissolves into an evenly-distributed mass that hangs in the air without decaying. Not infinite but approaching it. Meditative stasis.",
+  "tags": [
+    "hovering",
+    "diffuse",
+    "stasis",
+    "unknot",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.38,
+    "density": 0.85,
+    "space": 0.95,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 0,
+      "olap_delayFeedback": 0.82,
+      "olap_diffusion": 0.92,
+      "olap_spread": 0.88,
+      "olap_decay": 20.0,
+      "olap_modDepth": 0.15,
+      "olap_modRate": 0.03,
+      "olap_damping": 0.28,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -56,6 +56,10 @@
     "chaos",
     "brutal",
     "aggressive"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

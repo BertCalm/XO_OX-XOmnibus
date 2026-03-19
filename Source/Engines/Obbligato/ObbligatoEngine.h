@@ -2,6 +2,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/FamilyWaveguide.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 
@@ -30,7 +31,7 @@ struct ObbligatoAdapterVoice {
 
 class ObbligatoEngine : public SynthEngine {
 public:
-    void prepare(double sampleRate,int) override {sr=sampleRate;for(auto&v:voices)v.prepare(sampleRate);}
+    void prepare(double sampleRate,int maxBlockSize) override {sr=sampleRate;for(auto&v:voices)v.prepare(sampleRate);silenceGate.prepare(sampleRate,maxBlockSize);}
     void releaseResources() override {for(auto&v:voices)v.reset();}
     void reset() override {for(auto&v:voices)v.reset();lastL=lastR=0;}
 
@@ -38,6 +39,7 @@ public:
         for(const auto m:midi){
             auto msg=m.getMessage();
             if(msg.isNoteOn()){
+                silenceGate.wake();
                 int t=-1;for(int i=0;i<kV;++i)if(!voices[i].active){t=i;break;}
                 if(t<0)t=nv%kV;nv=(t+1)%kV;
 
@@ -62,9 +64,9 @@ public:
                         voices[t2].noteOn(msg.getNoteNumber(),msg.getVelocity()/127.f);
                     }
                 }
-            }else if(msg.isNoteOff())
-                for(auto&v:voices)if(v.active&&v.note==msg.getNoteNumber())v.noteOff();
-            else if (msg.isChannelPressure()) {
+            } else if (msg.isNoteOff()) {
+                for (auto& v : voices) if (v.active && v.note == msg.getNoteNumber()) v.noteOff();
+            } else if (msg.isChannelPressure()) {
                 float atPressure = (float)msg.getChannelPressureValue() / 127.f;
                 for (auto& v : voices)
                     if (v.active) v.vel = juce::jmax(v.vel, atPressure);
@@ -75,6 +77,9 @@ public:
                     if (v.active) v.vel = juce::jmax(v.vel, modWheel * 0.7f);
             }
         }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if(silenceGate.isBypassed() && midi.isEmpty()){buf.clear();return;}
 
         // --- Read all parameter values once per block ---
         // Section A: Brother A
@@ -306,6 +311,8 @@ public:
             oL[i]+=wetL;oR[i]+=wetR;lastL=wetL;lastR=wetR;
         }
         ac=0;for(auto&v:voices)if(v.active)++ac;
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock(buf.getReadPointer(0),buf.getNumChannels()>1?buf.getReadPointer(1):nullptr,ns);
     }
 
     float getSampleForCoupling(int ch,int) const override {return ch==0?lastL:lastR;}
@@ -428,6 +435,7 @@ public:
     int getActiveVoiceCount() const override {return ac;}
 
 private:
+    SilenceGate silenceGate;
     static constexpr int kV=12;
     double sr=44100; int nv=0,ac=0; float lastL=0,lastR=0;
     std::array<ObbligatoAdapterVoice,kV> voices;

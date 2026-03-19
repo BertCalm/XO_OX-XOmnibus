@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HELIOSPHERE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Obscura"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.669,
+      "macro_movement": 0.949,
+      "macro_coupling": 0.177,
+      "macro_space": 0.943
+    },
+    "Obscura": {
+      "macro_character": 0.519,
+      "macro_movement": 0.549,
+      "macro_coupling": 0.096,
+      "macro_space": 0.911
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "vast",
     "cosmic",
     "xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

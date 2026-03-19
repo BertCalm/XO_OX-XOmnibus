@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_SPARSE_VAST_VIOLENT_PRS_DRK_3",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Optic",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.6821,
+      "macro_movement": 0.599,
+      "macro_coupling": 0.0801,
+      "macro_space": 0.9424
+    },
+    "Ocelot": {
+      "macro_character": 0.6732,
+      "macro_movement": 0.6125,
+      "macro_coupling": 0.104,
+      "macro_space": 0.9603
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "sparse",
     "vast",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

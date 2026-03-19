@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_STILL_DENSE_VIOLENT_FLX2_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Odyssey",
+    "Oblique"
+  ],
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.0407,
+      "macro_movement": 0.0307,
+      "macro_coupling": 0.9253,
+      "macro_space": 0.5449
+    },
+    "Oblique": {
+      "macro_character": 0.0466,
+      "macro_movement": 0.0306,
+      "macro_coupling": 0.9417,
+      "macro_space": 0.559
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "still",
     "dense",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

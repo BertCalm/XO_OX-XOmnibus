@@ -58,5 +58,9 @@
     "lattice",
     "grain"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Obsidian's crystal envelope gates grain emergence — grains born from lattice vacancies."
+>>>>>>> origin/v1-launch-prep
 }

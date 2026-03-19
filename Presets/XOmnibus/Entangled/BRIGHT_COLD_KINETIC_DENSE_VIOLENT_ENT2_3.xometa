@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT COLD KINETIC DENSE VIOLENT ENT2 3",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Obese"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.495,
+      "macro_movement": 0.918,
+      "macro_coupling": 0.969,
+      "macro_space": 0.444
+    },
+    "Obese": {
+      "macro_character": 0.516,
+      "macro_movement": 0.887,
+      "macro_coupling": 0.942,
+      "macro_space": 0.45
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "dense",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

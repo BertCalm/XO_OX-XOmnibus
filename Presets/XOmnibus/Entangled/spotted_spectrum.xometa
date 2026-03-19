@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Spotted Spectrum",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ocelot",
+    "Oblique"
+  ],
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.688,
+      "macro_movement": 0.738,
+      "macro_coupling": 0.588,
+      "macro_space": 0.488
+    },
+    "Oblique": {
+      "macro_character": 0.762,
+      "macro_movement": 0.712,
+      "macro_coupling": 0.612,
+      "macro_space": 0.512
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {

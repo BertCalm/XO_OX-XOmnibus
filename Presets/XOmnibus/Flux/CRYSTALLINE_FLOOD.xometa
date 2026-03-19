@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CRYSTALLINE FLOOD",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Ouroboros",
+    "Oracle"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.732,
+      "macro_movement": 0.653,
+      "macro_coupling": 0.955,
+      "macro_space": 0.496
+    },
+    "Oracle": {
+      "macro_character": 0.653,
+      "macro_movement": 0.552,
+      "macro_coupling": 1.0,
+      "macro_space": 0.399
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "dense",
     "saturated"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

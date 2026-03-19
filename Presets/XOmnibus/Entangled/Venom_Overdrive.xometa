@@ -23,6 +23,20 @@
   "engines": [
     "Obese",
     "Overbite"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Overbite fang venom soaking OBESE harmonic chain — poisoned saturation at maximum density.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "obese",
+    "overbite",
+    "venom"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

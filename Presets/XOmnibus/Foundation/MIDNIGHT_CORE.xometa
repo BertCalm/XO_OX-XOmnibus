@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "MIDNIGHT CORE",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub",
+    "Ombre"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.127,
+      "macro_movement": 0.046,
+      "macro_coupling": 0.055,
+      "macro_space": 0.292
+    },
+    "Ombre": {
+      "macro_character": 0.944,
+      "macro_movement": 0.638,
+      "macro_coupling": 0.753,
+      "macro_space": 0.103
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "extreme",
     "low-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_STILL_VAST_FAM_VOL_62",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Osprey",
+    "Organon"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.928,
+      "macro_movement": 0.055,
+      "macro_coupling": 0.492,
+      "macro_space": 0.959
+    },
+    "Organon": {
+      "macro_character": 0.957,
+      "macro_movement": 0.059,
+      "macro_coupling": 0.502,
+      "macro_space": 0.949
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "still",
     "vast",
     "bright"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

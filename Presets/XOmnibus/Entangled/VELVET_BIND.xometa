@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "VELVET BIND",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Octopus"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.118,
+      "macro_movement": 0.764,
+      "macro_coupling": 0.417,
+      "macro_space": 0.106
+    },
+    "Octopus": {
+      "macro_character": 0.792,
+      "macro_movement": 0.723,
+      "macro_coupling": 0.879,
+      "macro_space": 0.828
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "delicate",
     "yielding",
     "tender"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

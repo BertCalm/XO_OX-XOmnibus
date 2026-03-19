@@ -23,6 +23,20 @@
   "engines": [
     "Ombre",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Shadow mauve frequency-smeared by Ouroboros — the memory's topology consumed by chaos.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "ombre",
+    "ouroboros",
+    "shadow"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

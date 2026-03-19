@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HARMONIC ERUPTION 53",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Obscura"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.299,
+      "macro_movement": 0.975,
+      "macro_coupling": 0.962,
+      "macro_space": 0.69
+    },
+    "Obscura": {
+      "macro_character": 0.457,
+      "macro_movement": 0.979,
+      "macro_coupling": 0.302,
+      "macro_space": 0.999
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "kinetic",
     "turbulent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Opal",
+    "Oblique"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.7352,
+      "macro_movement": 0.9797,
+      "macro_coupling": 0.8867,
+      "macro_space": 0.033
+    },
+    "Oblique": {
+      "macro_character": 0.6981,
+      "macro_movement": 0.9709,
+      "macro_coupling": 0.923,
+      "macro_space": 0.0519
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "intimate",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

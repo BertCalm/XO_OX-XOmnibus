@@ -3,12 +3,15 @@
   "description": "Rose light on stone. Ancient and gentle. A pad with geological patience.",
   "engines": [
     "Ole"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.71,

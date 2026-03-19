@@ -1,8 +1,19 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": null,
   "couplingIntensity": "None",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Quartz Lattice",
+  "mood": "Prism",
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Atomic quartz structure resonating at pure frequency — perfect crystalline lattice.",
   "dna": {
     "aggression": 0.08,
@@ -60,5 +71,46 @@
     "prism"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "OddFelix",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OddfeliX": {
+      "oddfelix_harmonicBlend": 0.855,
+      "oddfelix_spectralTilt": 0.665,
+      "oddfelix_pitchMod": 0.088,
+      "oddfelix_lfoRate": 1.49,
+      "oddfelix_lfoDepth": 0.066,
+      "oddfelix_reverbMix": 0.56,
+      "oddfelix_filterCutoff": 17300.0,
+      "oddfelix_filterReso": 0.124,
+      "oddfelix_ampAttack": 0.0055,
+      "oddfelix_ampDecay": 1.04,
+      "oddfelix_ampSustain": 0.785,
+      "oddfelix_ampRelease": 2.0,
+      "oddfelix_stereoWidth": 0.82,
+      "oddfelix_level": 0.8,
+      "oddfelix_macroCharacter": 0.76,
+      "oddfelix_macroMovement": 0.22,
+      "oddfelix_macroCoupling": 0.0,
+      "oddfelix_macroSpace": 0.8
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.08,
+    "movement": 0.22,
+    "density": 0.25,
+    "space": 0.8,
+    "aggression": 0.08
+  }
+>>>>>>> origin/v1-launch-prep
 }

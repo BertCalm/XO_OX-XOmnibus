@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Lavender Void",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Opal",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.18,
+      "macro_movement": 0.35,
+      "macro_coupling": 0.67,
+      "macro_space": 0.93
+    },
+    "Odyssey": {
+      "macro_character": 0.15,
+      "macro_movement": 0.3,
+      "macro_coupling": 0.72,
+      "macro_space": 0.96
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {

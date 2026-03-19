@@ -15,6 +15,17 @@
   },
   "engines": [
     "Octopus"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OCTOPUS — bright extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,6 +37,13 @@
   "name": "Biolume Bloom",
   "parameters": {
     "Octopus": {
+<<<<<<< HEAD
+=======
+      "oct_armCount": 0.61,
+      "oct_inkCloud": 0.78,
+      "oct_filterCutoff": 0.03,
+      "oct_filterReso": 0.07,
+>>>>>>> origin/v1-launch-prep
       "oct_ampAttack": 623.9,
       "oct_ampDecay": 296.2,
       "oct_ampRelease": 456.0,
@@ -44,6 +62,7 @@
       "oct_space": 0.53
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.17,
@@ -59,4 +78,9 @@
     "extreme-brightness"
   ],
   "version": "1.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

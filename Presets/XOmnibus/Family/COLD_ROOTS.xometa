@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD ROOTS",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Overbite",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.073,
+      "macro_movement": 0.458,
+      "macro_coupling": 0.998,
+      "macro_space": 0.996
+    },
+    "Ocelot": {
+      "macro_character": 0.073,
+      "macro_movement": 0.213,
+      "macro_coupling": 0.265,
+      "macro_space": 0.933
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "family",
     "cold",
     "xlow-warmth"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

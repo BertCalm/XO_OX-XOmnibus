@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_DENSE_VIOLENT_FAM_VOL_116",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Orphica",
+    "Oblong"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.482,
+      "macro_movement": 0.364,
+      "macro_coupling": 0.928,
+      "macro_space": 0.687
+    },
+    "Oblong": {
+      "macro_character": 0.531,
+      "macro_movement": 0.328,
+      "macro_coupling": 0.94,
+      "macro_space": 0.683
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dense",
     "aggressive",
     "dark"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

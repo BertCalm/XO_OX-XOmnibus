@@ -37,6 +37,7 @@
   "mood": "Entangled",
   "name": "ALL HIGH ENT2 3",
   "parameters": {
+<<<<<<< HEAD
     "Ole": {
       "macro_character": 0.903,
       "macro_coupling": 0.951,
@@ -47,6 +48,18 @@
       "macro_character": 0.933,
       "macro_coupling": 0.926,
       "macro_movement": 0.447,
+=======
+    "Owlfish": {
+      "macro_character": 0.933,
+      "macro_movement": 0.447,
+      "macro_coupling": 0.926,
+      "macro_space": 0.99
+    },
+    "Ole": {
+      "macro_character": 0.903,
+      "macro_movement": 0.473,
+      "macro_coupling": 0.951,
+>>>>>>> origin/v1-launch-prep
       "macro_space": 0.99
     }
   },
@@ -58,6 +71,10 @@
     "dense",
     "vast",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

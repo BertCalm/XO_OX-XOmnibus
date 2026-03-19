@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Bloom Cloud",
+  "mood": "Atmosphere",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Billowing bloom atmosphere — high bloom with long release and drifting detune.",
+  "tags": ["bloom", "cloud", "atmosphere", "billowing"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.38, "warmth": 0.7, "movement": 0.45, "density": 0.7, "space": 0.8, "aggression": 0.1},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.4,
+      "morph_bloom": 0.88,
+      "morph_detune": 0.28,
+      "morph_drift": 0.4,
+      "morph_filterCutoff": 3500.0,
+      "morph_filterReso": 0.42,
+      "morph_filterEnvDepth": 0.28,
+      "morph_sub": 0.45,
+      "morph_decay": 2.0,
+      "morph_sustain": 0.78,
+      "morph_release": 4.0,
+      "morph_glide": 0.2,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 6,
+      "morph_level": 0.65,
+      "morph_macroBloom": 0.88,
+      "morph_macroDepth": 0.55,
+      "morph_macroDrift": 0.4,
+      "morph_macroSpace": 0.8
+    }
+  },
+  "macros": {"CHARACTER": 0.4, "MOVEMENT": 0.45, "COUPLING": 0.0, "SPACE": 0.8},
+  "coupling": {"pairs": []}
+}

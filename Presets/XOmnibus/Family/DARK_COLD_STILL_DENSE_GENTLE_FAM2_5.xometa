@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK COLD STILL DENSE GENTLE FAM2 5",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Orphica",
+    "Opal"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.06,
+      "macro_movement": 0.049,
+      "macro_coupling": 0.482,
+      "macro_space": 0.609
+    },
+    "Opal": {
+      "macro_character": 0.029,
+      "macro_movement": 0.044,
+      "macro_coupling": 0.46,
+      "macro_space": 0.573
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "still",
     "dense",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

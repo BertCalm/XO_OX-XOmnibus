@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Prophecy Cave",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Oracle harmonic prophecy feeds OVERLAP cavern resonance — the future echoes through FDN chambers",
   "dna": {
     "aggression": 0.25,
@@ -40,9 +52,14 @@
   "name": "Prophecy Cave",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.582,
       "olap_crossfeedAmt": 0.43,
+=======
+      "olap_size": 0.6,
+      "olap_decay": 0.768,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.476,
       "olap_decay": 0.768,
       "olap_diffusion": 0.587,

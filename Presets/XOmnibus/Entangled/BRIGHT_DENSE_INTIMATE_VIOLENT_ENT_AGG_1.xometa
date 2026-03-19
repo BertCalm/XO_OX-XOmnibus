@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_ENT_AGG_1",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Obese"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.564,
+      "macro_movement": 0.528,
+      "macro_coupling": 0.888,
+      "macro_space": 0.062
+    },
+    "Obese": {
+      "macro_character": 0.603,
+      "macro_movement": 0.534,
+      "macro_coupling": 0.894,
+      "macro_space": 0.081
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "dense",
     "intimate"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

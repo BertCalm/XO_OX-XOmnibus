@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CLAUSTRAL MIST",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Optic",
+    "Obscura"
+  ],
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.696,
+      "macro_movement": 0.531,
+      "macro_coupling": 0.698,
+      "macro_space": 0.045
+    },
+    "Obscura": {
+      "macro_character": 0.567,
+      "macro_movement": 0.39,
+      "macro_coupling": 0.898,
+      "macro_space": 0.054
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "intimate",
     "close",
     "space-xlow"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

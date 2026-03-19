@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Living Tide",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "living",
+    "organic",
+    "evolving",
+    "cellular"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.62,
+    "movement": 0.48,
+    "density": 0.58,
+    "space": 0.7,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 54.0,
+      "org_seed": 25000,
+      "org_stepRate": 2.5,
+      "org_scope": 10,
+      "org_mutate": 0.02,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.45,
+      "org_filterCutoff": 2300.0,
+      "org_filterRes": 0.25,
+      "org_velCutoff": 0.4,
+      "org_ampAtk": 0.2,
+      "org_ampDec": 1.0,
+      "org_ampSus": 0.85,
+      "org_ampRel": 2.0,
+      "org_lfo1Rate": 0.15,
+      "org_lfo1Depth": 0.25,
+      "org_lfo2Rate": 0.09,
+      "org_lfo2Depth": 0.3,
+      "org_reverbMix": 0.62,
+      "org_macroRule": 0.86,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.05
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

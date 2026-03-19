@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "RHYTHMIC GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Orbital",
+    "Opal"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.732,
+      "macro_movement": 0.908,
+      "macro_coupling": 0.327,
+      "macro_space": 0.527
+    },
+    "Opal": {
+      "macro_character": 0.623,
+      "macro_movement": 0.929,
+      "macro_coupling": 0.33,
+      "macro_space": 0.564
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

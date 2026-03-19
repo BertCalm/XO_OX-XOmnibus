@@ -16,6 +16,7 @@
   "engines": [
     "Obscura"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -36,6 +37,11 @@
     "space": 0.106,
     "warmth": 0.933
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset — extreme hot warmth, extreme violent aggression, extreme dense density, extreme tight space. Maximum contrast character design.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "warm",
     "aggressive",
@@ -44,5 +50,29 @@
     "flux",
     "extreme"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Spatial",
+  "dna": {
+    "brightness": 0.568,
+    "warmth": 0.933,
+    "movement": 0.495,
+    "density": 0.898,
+    "space": 0.106,
+    "aggression": 0.907
+  },
+  "parameters": {
+    "Obscura": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

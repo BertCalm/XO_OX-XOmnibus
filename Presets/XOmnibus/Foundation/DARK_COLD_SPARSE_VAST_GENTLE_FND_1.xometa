@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "DARK_COLD_SPARSE_VAST_GENTLE_FND_1",
+  "mood": "Foundation",
+  "engines": [
+    "OddfeliX",
+    "Obsidian"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_COLD_SPARSE_VAST_GENTLE. Variant 1.",
   "dna": {
     "aggression": 0.096,
@@ -71,5 +83,49 @@
     "gentle"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.0,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.156,
+      "macro_space": 0.915
+    },
+    "Obsidian": {
+      "macro_character": 0.139,
+      "macro_movement": 0.587,
+      "macro_coupling": 0.115,
+      "macro_space": 0.874
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ODDFELIX",
+    "target": "OBSIDIAN",
+    "amount": 0.94
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.055,
+    "movement": 0.516,
+    "density": 0.035,
+    "space": 0.898,
+    "aggression": 0.096
+  },
+  "macros": {
+    "CHARACTER": 0.07,
+    "MOVEMENT": 0.543,
+    "COUPLING": 0.136,
+    "SPACE": 0.895
+  }
+>>>>>>> origin/v1-launch-prep
 }

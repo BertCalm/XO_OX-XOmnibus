@@ -15,6 +15,19 @@
   },
   "engines": [
     "Orbital"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbit at maximum angular velocity, brutal phase",
+  "tags": [
+    "prism",
+    "brutal",
+    "movement",
+    "aggressive",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "ORBIT",
@@ -32,15 +45,19 @@
   "name": "Orbital Fury",
   "parameters": {
     "Orbital": {
+<<<<<<< HEAD
       "orb_couplingBus": 0,
       "orb_couplingLevel": 0.5,
       "orb_macro_couple": 0.7551,
+=======
+>>>>>>> origin/v1-launch-prep
       "orb_macro_orbit": 0.6521,
       "orb_macro_phase": 0.7554,
       "orb_macro_space": 0.2651,
       "orb_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.9098,
@@ -58,4 +75,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

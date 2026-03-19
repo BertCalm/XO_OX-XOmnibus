@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Ember Tangle",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Osprey"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.72,
+      "macro_movement": 0.43,
+      "macro_coupling": 0.65,
+      "macro_space": 0.34
+    },
+    "Osprey": {
+      "macro_character": 0.87,
+      "macro_movement": 0.37,
+      "macro_coupling": 0.7,
+      "macro_space": 0.39
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "scorching",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -3,12 +3,15 @@
   "description": "Grid interference mapped as tone. Every frequency a data artifact.",
   "engines": [
     "Optic"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.561,

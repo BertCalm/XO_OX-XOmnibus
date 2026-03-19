@@ -21,7 +21,7 @@ from pathlib import Path
 # Constants
 # ---------------------------------------------------------------------------
 
-MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Submerged"]
 DNA_KEYS = ["brightness", "warmth", "movement", "density", "space", "aggression"]
 ENTANGLED_PAIRS_TOTAL = 561
 

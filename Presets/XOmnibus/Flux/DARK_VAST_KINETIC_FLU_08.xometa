@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK VAST KINETIC FLU 08",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.375,
+      "macro_movement": 0.957,
+      "macro_coupling": 0.889,
+      "macro_space": 0.942
+    },
+    "Ombre": {
+      "macro_character": 0.344,
+      "macro_movement": 0.864,
+      "macro_coupling": 0.466,
+      "macro_space": 1.0
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Cell",
+  "mood": "Prism",
+  "engines": ["Organon"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Metabolic spectrum at full brightness — every enzymatic pathway radiating its own color.",
+  "tags": ["spectral", "bright", "prism", "cellular", "enzyme", "organic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.88, "warmth": 0.35, "movement": 0.65, "density": 0.62, "space": 0.5, "aggression": 0.55},
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.72,
+      "organon_membrane": 0.42,
+      "organon_enzymeSelect": 0,
+      "organon_catalystDrive": 0.8,
+      "organon_isotopeBalance": 0.55,
+      "organon_phasonShift": 0.45,
+      "organon_dampingCoeff": 0.3,
+      "organon_signalFlux": 0.72,
+      "organon_noiseColor": 3,
+      "organon_lockIn": 0.25
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

@@ -16,6 +16,18 @@
   },
   "engines": [
     "Ohm"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — bright hot violent kinetic. Designed for SPARK coupling with XOhm.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "spark",
+    "ohm"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "FLARE",
@@ -27,6 +39,7 @@
   "name": "BRIGHT HOT VIOLENT KINETIC 4",
   "parameters": {
     "Ohm": {
+<<<<<<< HEAD
       "couplingBus": 3,
       "couplingLevel": 0.626
     }
@@ -47,4 +60,13 @@
     "ohm"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.626,
+      "couplingBus": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_SPARSE_VAST_FND_3",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Oracle",
+    "Obese"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.152,
+      "macro_movement": 0.478,
+      "macro_coupling": 0.477,
+      "macro_space": 0.107
+    },
+    "Obese": {
+      "macro_character": 0.494,
+      "macro_movement": 0.468,
+      "macro_coupling": 0.743,
+      "macro_space": 0.472
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "sparse",
     "vast",
     "spatial"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

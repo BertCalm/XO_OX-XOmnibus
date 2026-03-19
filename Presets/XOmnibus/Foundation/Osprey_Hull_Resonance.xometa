@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "Hull Resonance",
+  "mood": "Foundation",
+  "engines": ["Osprey"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Hull resonance pushed high — wooden boat acoustic body in the coastal foundation.",
+  "tags": ["foundation", "hull", "resonance", "boat"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.45, "warmth": 0.7, "movement": 0.35, "density": 0.6, "space": 0.45, "aggression": 0.2},
+  "parameters": {
+    "Osprey": {
+      "osprey_brine": 0.35,
+      "osprey_foam": 0.2,
+      "osprey_fog": 0.1,
+      "osprey_hull": 0.85,
+      "osprey_depth": 0.35,
+      "osprey_coherence": 0.65,
+      "osprey_filterTilt": 0.4,
+      "osprey_filterEnvDepth": 0.15,
+      "osprey_harborVerb": 0.4,
+      "osprey_creatureRate": 0.3,
+      "osprey_creatureDepth": 0.15,
+      "osprey_glide": 0.1,
+      "osprey_ampAttack": 0.04,
+      "osprey_ampDecay": 0.35,
+      "osprey_ampSustain": 0.75,
+      "osprey_ampRelease": 0.6,
+      "osprey_macroCharacter": 0.6,
+      "osprey_macroMovement": 0.35,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroSpace": 0.45
+    }
+  },
+  "macros": {"CHARACTER": 0.6, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.45},
+  "coupling": {"pairs": []}
+}

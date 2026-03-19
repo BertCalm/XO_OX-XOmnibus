@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Noctilucent",
+  "mood": "Atmosphere",
+  "engines": ["OpenSky"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Night-shining clouds at the edge of space, ethereal blue-silver luminosity in the upper atmosphere.",
+  "tags": ["luminous", "night", "ethereal", "high-altitude"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.28,
+    "movement": 0.38,
+    "density": 0.22,
+    "space": 0.95,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_ampAttack": 1.2,
+      "sky_ampDecay": 1.5,
+      "sky_ampSustain": 0.55,
+      "sky_ampRelease": 3.0,
+      "sky_filterFc": 14000,
+      "sky_filterRes": 0.18,
+      "sky_glide": 0.0,
+      "sky_lfoRate": 0.08,
+      "sky_lfoDepth": 0.3,
+      "sky_lfoShape": 0,
+      "sky_chorusRate": 0.15,
+      "sky_chorusDepth": 0.5,
+      "sky_chorusMix": 0.6,
+      "sky_reverbMix": 0.88,
+      "sky_outputGain": 0.6,
+      "sky_couplingAmt": 0.0,
+      "sky_shimmerOct": 2,
+      "sky_shimmerMix": 0.6,
+      "sky_velSensitivity": 0.35,
+      "sky_macroCharacter": 0.25,
+      "sky_macroMovement": 0.38,
+      "sky_macroCoupling": 0.0,
+      "sky_macroSpace": 0.95
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.0,
+    "SPACE": 0.95
+  },
+  "coupling": {"pairs": []}
+}

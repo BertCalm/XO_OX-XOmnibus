@@ -23,6 +23,20 @@
   "engines": [
     "Optic",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Optic luminance driven by Ouroboros topology — fractal light at kinetic velocity.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "optic",
+    "ouroboros",
+    "prism"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

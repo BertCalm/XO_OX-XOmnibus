@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Sub-Surface Light",
+  "mood": "Atmosphere",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 54 \u2014 just below the photosynthetic zone. Brief flashes of brightness (high filter, fast steps) soften as they descend through the water column.",
+  "tags": [
+    "atmosphere",
+    "light",
+    "sub-surface",
+    "descending",
+    "filter"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.48,
+    "density": 0.42,
+    "space": 0.7,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 54,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.18,
+      "owit_armSpread": 0.62,
+      "owit_sync": 0.28,
+      "owit_feedbackAmt": 0.38,
+      "owit_chaos": 0.32,
+      "owit_density": 0.42,
+      "owit_ampAttack": 0.18,
+      "owit_ampDecay": 0.45,
+      "owit_ampSustain": 0.68,
+      "owit_ampRelease": 2.0,
+      "owit_filterCutoff": 0.58,
+      "owit_filterRes": 0.3,
+      "owit_lfoRate": 0.08,
+      "owit_lfoDepth": 0.18,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

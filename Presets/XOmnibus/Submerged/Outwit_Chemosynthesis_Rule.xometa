@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Chemosynthesis Rule",
+  "mood": "Submerged",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 110 at extreme depth \u2014 life without sunlight. The complex rule as chemosynthetic engine, deriving order from chemical gradients rather than light. Dense, persistent, impossible.",
+  "tags": [
+    "submerged",
+    "chemosynthesis",
+    "life",
+    "extreme",
+    "persistent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.5,
+    "movement": 0.48,
+    "density": 0.6,
+    "space": 0.78,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 110,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.2,
+      "owit_armSpread": 0.5,
+      "owit_sync": 0.12,
+      "owit_feedbackAmt": 0.48,
+      "owit_chaos": 0.35,
+      "owit_density": 0.6,
+      "owit_ampAttack": 0.25,
+      "owit_ampDecay": 0.6,
+      "owit_ampSustain": 0.65,
+      "owit_ampRelease": 3.2,
+      "owit_filterCutoff": 0.32,
+      "owit_filterRes": 0.25,
+      "owit_lfoRate": 0.04,
+      "owit_lfoDepth": 0.12,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -15,6 +15,18 @@
   },
   "engines": [
     "Overdub"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Single-cycle sine at extreme low, dub-processed",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "VOICE",
@@ -32,8 +44,13 @@
   "name": "Depth Charge Sine",
   "parameters": {
     "Overdub": {
+<<<<<<< HEAD
       "dub_couplingBus": 0,
       "dub_couplingLevel": 0.5,
+=======
+      "dub_macro_voice": 0.1447,
+      "dub_macro_send": 0.8131,
+>>>>>>> origin/v1-launch-prep
       "dub_macro_echo": 0.3844,
       "dub_macro_panic": 0.5504,
       "dub_macro_send": 0.8131,
@@ -41,6 +58,7 @@
       "dub_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.2134,
@@ -57,4 +75,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

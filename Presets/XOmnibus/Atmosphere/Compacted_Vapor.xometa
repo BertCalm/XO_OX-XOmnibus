@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Compacted Vapor",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Thick, heavy environment. Maximum density, warm compression. OVERDUB dense register.",
   "dna": {
     "aggression": 0.384,
@@ -47,5 +58,40 @@
     "warm",
     "thick"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "TAPE",
+    "DRIVE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.766,
+    "movement": 0.233,
+    "density": 0.919,
+    "space": 0.374,
+    "aggression": 0.384
+  },
+  "parameters": {
+    "Overdub": {
+      "tape": 0.411,
+      "drive": 0.338,
+      "coupling": 0.213,
+      "space": 0.334
+    }
+  },
+  "macros": {
+    "TAPE": 0.411,
+    "DRIVE": 0.338,
+    "COUPLING": 0.213,
+    "SPACE": 0.334
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

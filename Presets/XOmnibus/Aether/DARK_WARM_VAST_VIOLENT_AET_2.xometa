@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "DARK WARM VAST VIOLENT AET 2",
+  "mood": "Aether",
+  "engines": [
+    "Overdub",
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — aether, dark, warm, vast.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.074,
+    "warmth": 0.92,
+    "movement": 0.562,
+    "density": 0.58,
+    "space": 0.959,
+    "aggression": 0.96
+  },
+  "parameters": {
+    "Overdub": {
+      "level": 0.684,
+      "pan": 0.005
+    },
+    "Orbital": {
+      "level": 0.686,
+      "pan": 0.012
+    }
+  },
+  "coupling": [
+    {
+      "source": "OVERDUB",
+      "destination": "ORBITAL",
+      "type": "FREQUENCY_SHIFT",
+      "amount": 0.374
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

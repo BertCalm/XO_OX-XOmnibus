@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "THERMAL CRYSTAL",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Overworld",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.167,
+      "macro_movement": 0.224,
+      "macro_coupling": 0.721,
+      "macro_space": 0.592
+    },
+    "OddOscar": {
+      "macro_character": 0.397,
+      "macro_movement": 0.057,
+      "macro_coupling": 0.935,
+      "macro_space": 0.684
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "spectrum",
     "fire"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -15,6 +15,19 @@
   },
   "engines": [
     "Optic"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Full spectral decomposition into shadow register",
+  "tags": [
+    "prism",
+    "dark",
+    "dense",
+    "extreme",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "REFRACT",
@@ -32,8 +45,11 @@
   "name": "Refract Black",
   "parameters": {
     "Optic": {
+<<<<<<< HEAD
       "optic_couplingBus": 0,
       "optic_couplingLevel": 0.5,
+=======
+>>>>>>> origin/v1-launch-prep
       "optic_macro_refract": 0.264,
       "optic_macro_scatter": 0.5461,
       "optic_macro_space": 0.7877,
@@ -41,6 +57,7 @@
       "optic_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.776,
@@ -58,4 +75,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

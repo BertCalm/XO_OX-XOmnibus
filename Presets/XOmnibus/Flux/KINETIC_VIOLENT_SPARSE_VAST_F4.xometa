@@ -16,6 +16,7 @@
   "engines": [
     "Owlfish"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -36,6 +37,11 @@
     "space": 0.911,
     "warmth": 0.435
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset — extreme violent aggression, extreme kinetic movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aggressive",
     "kinetic",
@@ -44,5 +50,29 @@
     "flux",
     "extreme"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Timbral",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.435,
+    "movement": 0.918,
+    "density": 0.098,
+    "space": 0.911,
+    "aggression": 0.93
+  },
+  "parameters": {
+    "Owlfish": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

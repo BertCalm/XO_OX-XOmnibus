@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK FLUX",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Owlfish",
+    "Orca"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.709,
+      "macro_movement": 0.002,
+      "macro_coupling": 0.926,
+      "macro_space": 0.538
+    },
+    "Orca": {
+      "macro_character": 0.719,
+      "macro_movement": 0.742,
+      "macro_coupling": 0.671,
+      "macro_space": 0.364
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "extreme",
     "high-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

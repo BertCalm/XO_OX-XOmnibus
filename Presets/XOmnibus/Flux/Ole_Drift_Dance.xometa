@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Drift Dance",
+  "mood": "Flux",
+  "engines": ["Ole"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "High drift depth and rate with all voices dancing, the family in rhythmic unstable flux.",
+  "tags": ["latin", "drift", "dance", "unstable", "flux"],
+  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.58, "warmth": 0.68, "movement": 0.8, "density": 0.55, "space": 0.62, "aggression": 0.42},
+  "parameters": {
+    "Ole": {
+      "ole_allianceConfig": 0,
+      "ole_allianceBlend": 0.62,
+      "ole_aunt1Level": 0.8,
+      "ole_aunt1Brightness": 0.62,
+      "ole_aunt1StrumRate": 6.0,
+      "ole_aunt2Level": 0.75,
+      "ole_aunt2GourdSize": 0.55,
+      "ole_aunt2CoinPress": 0.78,
+      "ole_aunt3Level": 0.8,
+      "ole_aunt3Brightness": 0.65,
+      "ole_aunt3Tremolo": 0.72,
+      "ole_husbandOudLevel": 0.7,
+      "ole_husbandBouzLevel": 0.65,
+      "ole_husbandPinLevel": 0.6,
+      "ole_damping": 0.22,
+      "ole_sympatheticAmt": 0.52,
+      "ole_driftRate": 6.0,
+      "ole_driftDepth": 0.72,
+      "ole_macroDrama": 0.72,
+      "ole_macroFuego": 0.78,
+      "ole_macroIsla": 0.38,
+      "ole_macroSides": 0.52
+    }
+  },
+  "macros": {"DRAMA": 0.72, "FUEGO": 0.78, "ISLA": 0.38, "SIDES": 0.52},
+  "coupling": {"pairs": []}
+}

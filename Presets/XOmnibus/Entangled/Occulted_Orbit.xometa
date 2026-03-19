@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Occulted Orbit",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Opal",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.24,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.71,
+      "macro_space": 0.86
+    },
+    "Oceanic": {
+      "macro_character": 0.31,
+      "macro_movement": 0.69,
+      "macro_coupling": 0.63,
+      "macro_space": 0.75
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "dark",
     "low-brightness"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

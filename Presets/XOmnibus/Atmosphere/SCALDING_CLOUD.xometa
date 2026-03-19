@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SCALDING CLOUD",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Origami",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.611,
+      "macro_movement": 0.598,
+      "macro_coupling": 0.15,
+      "macro_space": 0.291
+    },
+    "Obsidian": {
+      "macro_character": 0.5,
+      "macro_movement": 0.529,
+      "macro_coupling": 0.606,
+      "macro_space": 0.769
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "abrasive",
     "hostile",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

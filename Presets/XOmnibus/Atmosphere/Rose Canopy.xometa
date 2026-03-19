@@ -3,12 +3,15 @@
   "description": "Something golden and weightless. A chord built from early light.",
   "engines": [
     "Opal"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.708,

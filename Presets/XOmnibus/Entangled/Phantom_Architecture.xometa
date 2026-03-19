@@ -23,6 +23,20 @@
   "engines": [
     "Obscura",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Daguerreotype silver structure chaos-injected by Ouroboros — the photograph as topological weapon.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obscura",
+    "ouroboros",
+    "phantom"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

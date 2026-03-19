@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_DENSE_VAST_GENTLE_FND_1",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.809,
+      "macro_movement": 0.792,
+      "macro_coupling": 0.655,
+      "macro_space": 0.318
+    },
+    "OddfeliX": {
+      "macro_character": 0.633,
+      "macro_movement": 0.669,
+      "macro_coupling": 0.867,
+      "macro_space": 0.363
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "vast",
     "gentle",
     "spatial"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

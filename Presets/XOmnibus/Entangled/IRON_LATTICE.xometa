@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "IRON LATTICE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overbite",
+    "Oblique"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.949,
+      "macro_movement": 0.8242,
+      "macro_coupling": 0.6367,
+      "macro_space": 0.2121
+    },
+    "Oblique": {
+      "macro_character": 0.6395,
+      "macro_movement": 0.9711,
+      "macro_coupling": 0.6202,
+      "macro_space": 0.3335
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "monolithic",
     "pressure",
     "thick"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

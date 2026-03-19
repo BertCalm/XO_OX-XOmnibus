@@ -16,6 +16,7 @@
   "engines": [
     "Obese"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -36,6 +37,11 @@
     "space": 0.937,
     "warmth": 0.557
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset — extreme violent aggression, extreme kinetic movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aggressive",
     "kinetic",
@@ -44,5 +50,29 @@
     "flux",
     "extreme"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Sync",
+  "dna": {
+    "brightness": 0.442,
+    "warmth": 0.557,
+    "movement": 0.913,
+    "density": 0.071,
+    "space": 0.937,
+    "aggression": 0.932
+  },
+  "parameters": {
+    "Obese": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

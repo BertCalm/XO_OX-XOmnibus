@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ANNIHILATE MESH",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Owlfish",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.117,
+      "macro_movement": 0.304,
+      "macro_coupling": 0.102,
+      "macro_space": 0.274
+    },
+    "Oceanic": {
+      "macro_character": 0.158,
+      "macro_movement": 0.439,
+      "macro_coupling": 0.66,
+      "macro_space": 0.533
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "entangled",
     "violent",
     "aggressive"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -46,5 +46,27 @@
     "spacious",
     "bright"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.862,
+    "movement": 0.689,
+    "density": 0.098,
+    "space": 0.723,
+    "aggression": 0.125
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

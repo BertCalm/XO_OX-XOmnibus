@@ -3,12 +3,15 @@
   "description": "Hadal zone gravity. Sound compresses. Everything hums at a lower register.",
   "engines": [
     "Owlfish"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.345,

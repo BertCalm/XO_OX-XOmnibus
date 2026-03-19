@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ACTIVE GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overworld",
+    "Ole"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.383,
+      "macro_movement": 0.904,
+      "macro_coupling": 0.564,
+      "macro_space": 0.503
+    },
+    "Ole": {
+      "macro_character": 0.782,
+      "macro_movement": 0.904,
+      "macro_coupling": 0.764,
+      "macro_space": 0.578
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

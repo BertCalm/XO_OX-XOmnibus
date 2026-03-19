@@ -14,12 +14,15 @@
   "engines": [
     "Ohm",
     "Oceanic"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.6,
@@ -50,6 +53,7 @@
     "oceanic",
     "hippy"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Ohm warmth meeting oceanic phosphorescent pulse — campfire at the edge of a glowing sea"
+>>>>>>> origin/v1-launch-prep
 }

@@ -16,6 +16,7 @@
   "engines": [
     "Origami"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "FOLD",
     "CREASE",
@@ -36,6 +37,11 @@
     "space": 0.75,
     "warmth": 0.2
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Crease lines become frequency partials — luminous structure",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "prism",
     "bright",
@@ -44,5 +50,27 @@
     "structure",
     "bright"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "FOLD",
+    "CREASE",
+    "COUPLING",
+    "UNFOLD"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.2,
+    "movement": 0.6,
+    "density": 0.3,
+    "space": 0.75,
+    "aggression": 0.15
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CINDERBLOCK SPECTRUM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Outwit",
+    "Oblong"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.086,
+      "macro_movement": 0.754,
+      "macro_coupling": 0.175,
+      "macro_space": 0.779
+    },
+    "Oblong": {
+      "macro_character": 0.062,
+      "macro_movement": 0.645,
+      "macro_coupling": 0.133,
+      "macro_space": 0.499
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "spectrum",
     "fire"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

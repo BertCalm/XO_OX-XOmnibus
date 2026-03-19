@@ -23,6 +23,20 @@
   "engines": [
     "Oblong",
     "Optic"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bob's warmth timbral-warped by Optic luminance modulation — amber light at brutal intensity.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "oblong",
+    "optic",
+    "phosphor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

@@ -37,6 +37,7 @@
   "mood": "Entangled",
   "name": "Tone Expanse 2",
   "parameters": {
+<<<<<<< HEAD
     "Ole": {
       "macro_character": 0.302,
       "macro_coupling": 0.931,
@@ -47,6 +48,18 @@
       "macro_character": 0.288,
       "macro_coupling": 0.961,
       "macro_movement": 0.011,
+=======
+    "Oracle": {
+      "macro_character": 0.288,
+      "macro_movement": 0.011,
+      "macro_coupling": 0.961,
+      "macro_space": 0.99
+    },
+    "Ole": {
+      "macro_character": 0.302,
+      "macro_movement": 0.01,
+      "macro_coupling": 0.931,
+>>>>>>> origin/v1-launch-prep
       "macro_space": 0.99
     }
   },
@@ -59,6 +72,10 @@
     "dense",
     "vast",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

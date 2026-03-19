@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_SPARSE_VAST_FAM_VOL_99",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OddOscar",
+    "Oblong"
+  ],
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.503,
+      "macro_movement": 0.303,
+      "macro_coupling": 0.385,
+      "macro_space": 0.945
+    },
+    "Oblong": {
+      "macro_character": 0.51,
+      "macro_movement": 0.33,
+      "macro_coupling": 0.372,
+      "macro_space": 0.989
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "cold",
     "sparse",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

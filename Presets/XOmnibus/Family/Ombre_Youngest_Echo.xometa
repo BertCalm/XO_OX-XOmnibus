@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Youngest Echo",
+  "mood": "Family",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "The newest note carries the least accumulated memory. High Opsis with a very light memory touch. Bright, fresh, responsive — but not without the warmth of family.",
+  "tags": ["family", "youngest", "fresh", "bright", "responsive", "warmth"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.65,
+    "movement": 0.3,
+    "density": 0.48,
+    "space": 0.55,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.72,
+      "ombre_interference": 0.22,
+      "ombre_memoryDecay": 3.0,
+      "ombre_memoryGrain": 50.0,
+      "ombre_memoryDrift": 0.2,
+      "ombre_oscShape": 1,
+      "ombre_reactivity": 0.72,
+      "ombre_subLevel": 0.22,
+      "ombre_filterCutoff": 5000.0,
+      "ombre_filterReso": 0.28,
+      "ombre_attack": 0.005,
+      "ombre_decay": 0.3,
+      "ombre_sustain": 0.62,
+      "ombre_release": 0.8,
+      "ombre_level": 0.78,
+      "ombre_velCutoffScale": 0.5,
+      "ombre_lfo1Rate": 0.6,
+      "ombre_lfo1Depth": 0.22,
+      "ombre_lfo2Rate": 0.38,
+      "ombre_lfo2Depth": 0.2,
+      "ombre_macroCharacter": 0.35,
+      "ombre_macroMovement": 0.3,
+      "ombre_macroCoupling": 0.42,
+      "ombre_macroSpace": 0.5
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

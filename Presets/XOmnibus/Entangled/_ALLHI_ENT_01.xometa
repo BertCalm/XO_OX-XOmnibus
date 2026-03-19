@@ -37,13 +37,21 @@
   "mood": "Entangled",
   "name": "ALLHI ENT 01",
   "parameters": {
+<<<<<<< HEAD
     "Obbligato": {
+=======
+    "Obscura": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.66,
       "macro_coupling": 0.973,
       "macro_movement": 0.953,
       "macro_space": 0.97
     },
+<<<<<<< HEAD
     "Obscura": {
+=======
+    "Obbligato": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.66,
       "macro_coupling": 0.973,
       "macro_movement": 0.953,
@@ -56,6 +64,10 @@
     "pole-fill",
     "high-energy",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

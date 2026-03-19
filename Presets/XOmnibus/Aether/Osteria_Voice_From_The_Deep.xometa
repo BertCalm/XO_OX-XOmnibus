@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Voice From The Deep",
+  "mood": "Aether",
+  "engines": [
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "A single voice rising from the deepest ocean floor.",
+  "tags": [
+    "voice",
+    "deep",
+    "ocean",
+    "rising",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.9,
+    "movement": 0.32,
+    "density": 0.85,
+    "space": 0.1,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_porto": 0.18,
+      "osteria_patina": 0.65,
+      "osteria_murmur": 0.05,
+      "osteria_oceanBleed": 0.92,
+      "osteria_blendMode": 0,
+      "osteria_bassLevel": 0.48,
+      "osteria_melLevel": 0.55,
+      "osteria_harmLevel": 0.52,
+      "osteria_rhythmLevel": 0.35,
+      "osteria_qBassShore": 0.65,
+      "osteria_qMelShore": 0.35,
+      "osteria_qHarmShore": 0.48,
+      "osteria_qRhythmShore": 0.28,
+      "osteria_qElastic": 0.62,
+      "osteria_qMemory": 0.78,
+      "osteria_qStretch": 0.72,
+      "osteria_qSympathy": 0.65,
+      "osteria_attack": 0.1,
+      "osteria_decay": 0.68,
+      "osteria_sustain": 0.82,
+      "osteria_release": 2.5,
+      "osteria_chorus": 0.08,
+      "osteria_hall": 0.52,
+      "osteria_ensWidth": 0.98,
+      "osteria_tape": 0.04,
+      "osteria_sessionDelay": 0.42,
+      "osteria_filterEnvDepth": 0.06,
+      "osteria_warmth": 0.85,
+      "osteria_smoke": 0.06,
+      "osteria_tavernMix": 0.42,
+      "osteria_tavernShore": 0.28,
+      "osteria_macroCharacter": 0.18,
+      "osteria_macroMovement": 0.52,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "DARK_HOT_KINETIC_VAST_VIOLENT_PRS_2",
+  "mood": "Prism",
+  "engines": [
+    "Ocelot",
+    "Ottoni"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_KINETIC_VAST_VIOLENT. Variant 2.",
   "dna": {
     "aggression": 0.894,
@@ -71,5 +83,49 @@
     "prism"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.12,
+      "macro_movement": 1.0,
+      "macro_coupling": 0.419,
+      "macro_space": 0.982
+    },
+    "Ottoni": {
+      "macro_character": 0.133,
+      "macro_movement": 0.912,
+      "macro_coupling": 0.494,
+      "macro_space": 1.0
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OCELOT",
+    "target": "OTTONI",
+    "amount": 0.488
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.056,
+    "warmth": 0.904,
+    "movement": 0.964,
+    "density": 0.446,
+    "space": 0.982,
+    "aggression": 0.894
+  },
+  "macros": {
+    "CHARACTER": 0.127,
+    "MOVEMENT": 0.956,
+    "COUPLING": 0.457,
+    "SPACE": 0.991
+  }
+>>>>>>> origin/v1-launch-prep
 }

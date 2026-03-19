@@ -3,12 +3,15 @@
   "description": "The basin as instrument. Bottomless resonance, infinite sustain.",
   "engines": [
     "Overdub"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.309,

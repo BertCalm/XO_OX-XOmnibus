@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -21,10 +22,16 @@
     "space": 0.481,
     "warmth": 0.377
   },
+=======
+  "schema_version": 1,
+  "name": "Coral Bound Voice × Oracle",
+  "mood": "Entangled",
+>>>>>>> origin/v1-launch-prep
   "engines": [
     "Obbligato",
     "Oracle"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -40,6 +47,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "GENDY maqam lattice meets dual wind BOND — OBBLIGATO's voices are bound to ORACLE's spectral decree.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "obbligato",

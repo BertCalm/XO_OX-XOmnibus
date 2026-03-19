@@ -16,6 +16,18 @@
   },
   "engines": [
     "Osprey"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — hot violent kinetic bright. Designed for MIRROR coupling with XOsprey.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "mirror",
+    "osprey"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "STRIKE",
@@ -27,6 +39,7 @@
   "name": "HOT VIOLENT KINETIC BRIGHT 5",
   "parameters": {
     "Osprey": {
+<<<<<<< HEAD
       "couplingBus": 1,
       "couplingLevel": 0.951
     }
@@ -47,4 +60,13 @@
     "osprey"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.951,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

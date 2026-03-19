@@ -377,6 +377,20 @@ def main() -> int:
 
     tools_dir = os.path.abspath(args.tools_dir) if args.tools_dir else _tools_dir_default()
 
+    # Preflight: verify all sub-tool scripts exist before spawning any subprocess
+    required_tools = [
+        "xpn_manifest_validator.py",
+        "xpn_sample_audit.py",
+        "xpn_cover_art_audit.py",
+        "xpn_dedup_checker.py",
+        "xpn_kit_validator.py",
+    ]
+    missing_tools = [t for t in required_tools if not os.path.isfile(os.path.join(tools_dir, t))]
+    if missing_tools:
+        for t in missing_tools:
+            print(f"ERROR: missing tool: {t}", file=sys.stderr)
+        return 2
+
     sections: Dict[str, dict] = {}
     sections["manifest"]     = run_manifest(xpn, tools_dir)
     sections["samples"]      = run_samples(xpn, tools_dir)

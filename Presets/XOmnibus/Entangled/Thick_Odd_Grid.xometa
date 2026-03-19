@@ -37,6 +37,7 @@
   "mood": "Entangled",
   "name": "Thick Odd Grid",
   "parameters": {
+<<<<<<< HEAD
     "Oblong": {
       "macro_character": 0.81,
       "macro_coupling": 0.5,
@@ -47,6 +48,18 @@
       "macro_character": 0.92,
       "macro_coupling": 0.67,
       "macro_movement": 0.23,
+=======
+    "OddOscar": {
+      "macro_character": 0.92,
+      "macro_movement": 0.23,
+      "macro_coupling": 0.67,
+      "macro_space": 0.4
+    },
+    "Oblong": {
+      "macro_character": 0.81,
+      "macro_movement": 0.3,
+      "macro_coupling": 0.5,
+>>>>>>> origin/v1-launch-prep
       "macro_space": 0.4
     }
   },
@@ -55,6 +68,10 @@
     "entangled",
     "warm-dense",
     "scorching"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

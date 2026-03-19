@@ -58,5 +58,9 @@
     "cyanotype",
     "fold"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Obscura pitch-locks Origami's crease angle — blue cold chemistry etched in paper."
+>>>>>>> origin/v1-launch-prep
 }

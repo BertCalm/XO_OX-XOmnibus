@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "AMPLITUDE RAMPAGE 56",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ombre",
+    "Ohm"
+  ],
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.175,
+      "macro_movement": 0.938,
+      "macro_coupling": 0.519,
+      "macro_space": 0.442
+    },
+    "Ohm": {
+      "macro_character": 0.278,
+      "macro_movement": 0.956,
+      "macro_coupling": 0.997,
+      "macro_space": 0.436
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "storm",
     "vortex"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

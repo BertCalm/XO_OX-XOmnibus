@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK HOT DENSE INTIMATE VIOLENT ENT2 1",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.497,
+      "macro_movement": 0.644,
+      "macro_coupling": 0.968,
+      "macro_space": 0.051
+    },
+    "Ocelot": {
+      "macro_character": 0.471,
+      "macro_movement": 0.602,
+      "macro_coupling": 0.966,
+      "macro_space": 0.024
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "intimate",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

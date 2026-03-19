@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Mutant Herd",
+  "mood": "Flux",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "High mutation + high synapse \u2014 mutations spread from arm to arm instantly like a contagion. Within seconds the entire eight-arm system has been genetically transformed.",
+  "tags": [
+    "flux",
+    "mutation",
+    "contagion",
+    "synapse",
+    "transforming"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.42,
+    "movement": 0.85,
+    "density": 0.62,
+    "space": 0.5,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 110,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.8,
+      "owit_armSpread": 0.58,
+      "owit_sync": 0.2,
+      "owit_feedbackAmt": 0.58,
+      "owit_chaos": 0.7,
+      "owit_density": 0.62,
+      "owit_ampAttack": 0.04,
+      "owit_ampDecay": 0.2,
+      "owit_ampSustain": 0.72,
+      "owit_ampRelease": 0.75,
+      "owit_filterCutoff": 0.6,
+      "owit_filterRes": 0.42,
+      "owit_lfoRate": 0.24,
+      "owit_lfoDepth": 0.3,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

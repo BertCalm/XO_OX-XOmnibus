@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -54,6 +55,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "Prophecy Harp",
+  "mood": "Entangled",
+  "engines": [
+    "Orphica",
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "ORPHICA harp harmonics fold into Oracle's vision — micro-prophecy.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -63,5 +76,47 @@
     "harmonic"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.4,
+    "movement": 0.55,
+    "density": 0.42,
+    "space": 0.75,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.65,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.68,
+      "macro_space": 0.75
+    },
+    "Oracle": {
+      "macro_character": 0.56,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.68,
+      "macro_space": 0.62
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORPHICA",
+        "engineB": "ORACLE",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.68
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.605,
+    "MOVEMENT": 0.585,
+    "COUPLING": 0.68,
+    "SPACE": 0.685
+  },
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

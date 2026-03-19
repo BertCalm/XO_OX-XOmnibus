@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BARE FLUX 2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Optic",
+    "Obscura"
+  ],
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.0327,
+      "macro_movement": 0.3705,
+      "macro_coupling": 0.4434,
+      "macro_space": 0.9506
+    },
+    "Obscura": {
+      "macro_character": 0.8555,
+      "macro_movement": 0.0994,
+      "macro_coupling": 0.6857,
+      "macro_space": 0.5445
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "sparse",
     "minimal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

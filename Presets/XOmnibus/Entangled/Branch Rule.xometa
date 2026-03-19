@@ -24,6 +24,7 @@
     "Outwit",
     "Origami"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -59,6 +60,11 @@
     "space": 0.575,
     "warmth": 0.45
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Origami fold depth increases OUTWIT branch count — geometry births geometry",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "entangled",
@@ -69,5 +75,59 @@
     "cellular-automata",
     "wolfram"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "aggression": 0.45,
+    "space": 0.575,
+    "warmth": 0.45,
+    "brightness": 0.6,
+    "density": 0.575,
+    "movement": 0.75
+  },
+  "sonic_dna": {
+    "aggression": 0.45,
+    "space": 0.575,
+    "warmth": 0.45,
+    "brightness": 0.6,
+    "density": 0.575,
+    "movement": 0.75
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 90,
+      "owit_arms": 4,
+      "owit_cellSize": 0.204,
+      "owit_density": 0.515,
+      "owit_evolveRate": 0.482,
+      "owit_mutateProb": 0.134,
+      "owit_pitchSpread": 0.552,
+      "owit_filterCutoff": 0.461,
+      "owit_filterReso": 0.433,
+      "owit_ampAttack": 0.069,
+      "owit_ampRelease": 0.701,
+      "owit_outputLevel": 0.744,
+      "owit_couplingLevel": 0.725,
+      "owit_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "ORIGAMI",
+        "type": "PITCH_MOD",
+        "amount": 0.803
+      }
+    ]
+  }
+>>>>>>> origin/v1-launch-prep
 }

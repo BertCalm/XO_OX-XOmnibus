@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SOLAR CLOUD",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OddOscar",
+    "Oblong"
+  ],
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.657,
+      "macro_movement": 0.224,
+      "macro_coupling": 0.108,
+      "macro_space": 0.845
+    },
+    "Oblong": {
+      "macro_character": 0.368,
+      "macro_movement": 0.763,
+      "macro_coupling": 0.574,
+      "macro_space": 0.807
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "high-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

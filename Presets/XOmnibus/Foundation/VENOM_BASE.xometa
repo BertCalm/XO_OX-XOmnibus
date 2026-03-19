@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "VENOM BASE",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Ole",
+    "Obese"
+  ],
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.397,
+      "macro_movement": 0.571,
+      "macro_coupling": 0.585,
+      "macro_space": 0.42
+    },
+    "Obese": {
+      "macro_character": 0.685,
+      "macro_movement": 0.611,
+      "macro_coupling": 0.551,
+      "macro_space": 0.409
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "aggressive",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

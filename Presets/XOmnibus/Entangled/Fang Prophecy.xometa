@@ -14,12 +14,15 @@
   "engines": [
     "Overbite",
     "Oracle"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.9,
@@ -50,6 +53,7 @@
     "bass",
     "oracle"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Overbite's fang-sharp attack biting into Oracle's still prophecy — venom suspended in time."
+>>>>>>> origin/v1-launch-prep
 }

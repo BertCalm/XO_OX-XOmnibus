@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "FLOW GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Osprey",
+    "Ohm"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.78,
+      "macro_movement": 0.921,
+      "macro_coupling": 0.668,
+      "macro_space": 0.529
+    },
+    "Ohm": {
+      "macro_character": 0.442,
+      "macro_movement": 0.963,
+      "macro_coupling": 0.632,
+      "macro_space": 0.51
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

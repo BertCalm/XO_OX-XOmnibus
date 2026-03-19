@@ -3,12 +3,15 @@
   "description": "Charged atmosphere before a plasma storm. Everything bright, nothing warm.",
   "engines": [
     "Onset"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.579,

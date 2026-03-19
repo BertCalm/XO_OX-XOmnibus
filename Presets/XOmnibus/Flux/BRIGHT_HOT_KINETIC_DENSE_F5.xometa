@@ -16,6 +16,7 @@
   "engines": [
     "Obsidian"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -36,6 +37,11 @@
     "space": 0.437,
     "warmth": 0.898
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme hot warmth, extreme kinetic movement, extreme dense density. Maximum contrast character design.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "bright",
     "warm",
@@ -44,5 +50,29 @@
     "flux",
     "extreme"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Dynamic",
+  "dna": {
+    "brightness": 0.946,
+    "warmth": 0.898,
+    "movement": 0.928,
+    "density": 0.9,
+    "space": 0.437,
+    "aggression": 0.438
+  },
+  "parameters": {
+    "Obsidian": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ECLIPSE TRIBE",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Origami",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.537,
+      "macro_movement": 0.847,
+      "macro_coupling": 0.431,
+      "macro_space": 0.882
+    },
+    "Obsidian": {
+      "macro_character": 0.728,
+      "macro_movement": 0.764,
+      "macro_coupling": 0.366,
+      "macro_space": 0.401
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "extreme",
     "low-movement"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

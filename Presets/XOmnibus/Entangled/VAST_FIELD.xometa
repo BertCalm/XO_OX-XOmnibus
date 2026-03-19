@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "VAST FIELD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.941,
+      "macro_movement": 0.08,
+      "macro_coupling": 0.458,
+      "macro_space": 0.693
+    },
+    "Oceanic": {
+      "macro_character": 0.14,
+      "macro_movement": 0.066,
+      "macro_coupling": 0.253,
+      "macro_space": 0.408
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,117 @@
+{
+<<<<<<< HEAD:Presets/XOmnibus/Flux/5X DARK COLD KINETIC DENSE VIOLENT FLX 5.xometa
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Oracle",
+        "type": "AMPLITUDE_SYNC",
+        "amount": 0.9
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Radiant Fold Flow",
+  "mood": "Flux",
+  "engines": [
+    "Origami",
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Flux/Orig_Orac_Radiant_Fold_Flow.xometa
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.093,
+    "brightness": 0.944,
+    "density": 0.041,
+    "movement": 0.066,
+    "space": 0.905,
+    "warmth": 0.507
+  },
+  "engines": [
+    "Origami",
+    "Oracle"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.72,
+      "macro_coupling": 0.66,
+      "macro_movement": 0.71,
+      "macro_space": 0.4
+    },
+    "Origami": {
+      "macro_character": 0.62,
+      "macro_coupling": 0.79,
+      "macro_movement": 0.65,
+      "macro_space": 0.26
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "flux"
+  ],
+  "tempo": null,
+<<<<<<< HEAD:Presets/XOmnibus/Flux/5X DARK COLD KINETIC DENSE VIOLENT FLX 5.xometa
+  "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.62,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.79,
+      "macro_space": 0.26
+    },
+    "Oracle": {
+      "macro_character": 0.72,
+      "macro_movement": 0.71,
+      "macro_coupling": 0.66,
+      "macro_space": 0.4
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_SYNC",
+    "source": "ORIGAMI",
+    "target": "ORACLE",
+    "amount": 0.9
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.944,
+    "warmth": 0.507,
+    "movement": 0.066,
+    "density": 0.041,
+    "space": 0.905,
+    "aggression": 0.093
+  }
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Flux/Orig_Orac_Radiant_Fold_Flow.xometa
+}

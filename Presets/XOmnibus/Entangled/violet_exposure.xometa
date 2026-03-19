@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Violet Exposure",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Oblique"
+  ],
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.375,
+      "macro_movement": 0.275,
+      "macro_coupling": 0.575,
+      "macro_space": 0.625
+    },
+    "Oblique": {
+      "macro_character": 0.775,
+      "macro_movement": 0.725,
+      "macro_coupling": 0.625,
+      "macro_space": 0.525
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {

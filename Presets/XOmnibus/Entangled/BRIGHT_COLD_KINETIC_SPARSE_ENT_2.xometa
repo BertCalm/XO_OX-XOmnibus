@@ -24,6 +24,7 @@
     "Ohm",
     "Orbital"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "COMMUNE",
     "MEDDLING",
@@ -81,6 +82,11 @@
     "space": 0.3215,
     "warmth": 0.0997
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright Cold Kinetic Sparse character entanglement — OHM × ORBITAL via Phase Lock. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -89,5 +95,85 @@
     "sparse",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "COMMUNE",
+    "MEDDLING",
+    "RESONANCE",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.9886,
+    "warmth": 0.0997,
+    "movement": 0.9301,
+    "density": 0.1272,
+    "space": 0.3215,
+    "aggression": 0.4748
+  },
+  "sonic_dna": {
+    "brightness": 0.9886,
+    "warmth": 0.0997,
+    "movement": 0.9301,
+    "density": 0.1272,
+    "space": 0.3215,
+    "aggression": 0.4748
+  },
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.6729,
+      "macro_movement": 0.9218,
+      "macro_coupling": 0.7881,
+      "macro_space": 0.2839,
+      "filter_cutoff": 0.8739,
+      "filter_resonance": 0.3768,
+      "amp_attack": 0.0772,
+      "amp_release": 0.2814,
+      "reverb_mix": 0.3621,
+      "reverb_size": 0.3874,
+      "drive": 0.4442,
+      "density": 0.1401,
+      "output_level": 0.6987,
+      "coupling_level": 0.7494
+    },
+    "Orbital": {
+      "macro_character": 0.6603,
+      "macro_movement": 0.9471,
+      "macro_coupling": 0.7328,
+      "macro_space": 0.2938,
+      "filter_cutoff": 0.9089,
+      "filter_resonance": 0.3481,
+      "amp_attack": 0.0972,
+      "amp_release": 0.2782,
+      "reverb_mix": 0.2953,
+      "reverb_size": 0.3533,
+      "drive": 0.4145,
+      "density": 0.116,
+      "output_level": 0.7134,
+      "coupling_level": 0.7105
+    }
+  },
+  "coupling": {
+    "type": "PHASE_LOCK",
+    "source": "ORBITAL",
+    "target": "OHM",
+    "amount": 0.7658,
+    "pairs": [
+      {
+        "source": "ORBITAL",
+        "target": "OHM",
+        "type": "PHASE_LOCK",
+        "amount": 0.7658
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.5442,
+    "MOVEMENT": 0.9301,
+    "COUPLING": 0.7658,
+    "SPACE": 0.3215
+  }
+>>>>>>> origin/v1-launch-prep
 }

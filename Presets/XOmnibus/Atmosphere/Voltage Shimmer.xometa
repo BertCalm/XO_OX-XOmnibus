@@ -3,12 +3,15 @@
   "description": "Voltage shimmer from a transformer bank. Industrial brightness, controlled drift.",
   "engines": [
     "Osteria"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.569,

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "GLEAM FLOW",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Outwit",
+    "Obscura"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.85,
+      "macro_movement": 0.6,
+      "macro_coupling": 0.121,
+      "macro_space": 0.984
+    },
+    "Obscura": {
+      "macro_character": 0.783,
+      "macro_movement": 0.347,
+      "macro_coupling": 0.428,
+      "macro_space": 0.371
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "high-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

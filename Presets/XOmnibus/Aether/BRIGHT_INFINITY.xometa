@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT INFINITY",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Owlfish",
+    "Ohm"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.174,
+      "macro_movement": 0.361,
+      "macro_coupling": 0.224,
+      "macro_space": 0.985
+    },
+    "Ohm": {
+      "macro_character": 0.792,
+      "macro_movement": 0.237,
+      "macro_coupling": 0.494,
+      "macro_space": 0.361
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "low-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

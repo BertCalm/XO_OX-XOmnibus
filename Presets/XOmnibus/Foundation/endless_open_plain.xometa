@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ENDLESS OPEN PLAIN",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Ouroboros",
+    "Obese"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.901,
+      "macro_movement": 0.096,
+      "macro_coupling": 0.17,
+      "macro_space": 0.912
+    },
+    "Obese": {
+      "macro_character": 0.515,
+      "macro_movement": 0.079,
+      "macro_coupling": 0.335,
+      "macro_space": 0.956
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "vast",
     "open",
     "space-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

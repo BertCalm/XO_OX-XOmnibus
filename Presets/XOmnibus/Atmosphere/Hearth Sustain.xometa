@@ -3,12 +3,15 @@
   "description": "A fireplace turned to tone. Thick, radiant, absolutely still.",
   "engines": [
     "Osteria"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.627,

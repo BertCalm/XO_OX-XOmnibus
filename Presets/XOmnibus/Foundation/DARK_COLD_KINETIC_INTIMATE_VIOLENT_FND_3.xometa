@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "DARK_COLD_KINETIC_INTIMATE_VIOLENT_FND_3",
+  "mood": "Foundation",
+  "engines": [
+    "Obese",
+    "Overdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_COLD_KINETIC_INTIMATE_VIOLENT. Variant 3.",
   "dna": {
     "aggression": 0.952,
@@ -71,5 +83,49 @@
     "foundation"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.162,
+      "macro_movement": 0.919,
+      "macro_coupling": 0.428,
+      "macro_space": 0.137
+    },
+    "Overdub": {
+      "macro_character": 0.116,
+      "macro_movement": 0.832,
+      "macro_coupling": 0.358,
+      "macro_space": 0.158
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBESE",
+    "target": "OVERDUB",
+    "amount": 0.901
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.054,
+    "movement": 0.908,
+    "density": 0.402,
+    "space": 0.125,
+    "aggression": 0.952
+  },
+  "macros": {
+    "CHARACTER": 0.139,
+    "MOVEMENT": 0.875,
+    "COUPLING": 0.393,
+    "SPACE": 0.148
+  }
+>>>>>>> origin/v1-launch-prep
 }

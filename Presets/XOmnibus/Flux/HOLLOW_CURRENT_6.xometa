@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOLLOW CURRENT 6",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Orca",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.3325,
+      "macro_movement": 0.0443,
+      "macro_coupling": 0.546,
+      "macro_space": 0.8135
+    },
+    "Oceanic": {
+      "macro_character": 0.1751,
+      "macro_movement": 0.7791,
+      "macro_coupling": 0.4646,
+      "macro_space": 0.6954
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "sparse",
     "minimal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK HOT KINETIC BALANCED AET SPC 5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Opal",
+    "Obscura"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.518,
+      "macro_movement": 0.989,
+      "macro_coupling": 0.649,
+      "macro_space": 0.546
+    },
+    "Obscura": {
+      "macro_character": 0.494,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.625,
+      "macro_space": 0.571
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "aggressive",
     "warm",
     "kinetic"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,4 +1,14 @@
 {
+<<<<<<< HEAD
+=======
+  "schema_version": 1,
+  "name": "Brass Announcement",
+  "mood": "Entangled",
+  "engines": [
+    "Osteria",
+    "Ottoni"
+  ],
+>>>>>>> origin/v1-launch-prep
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [

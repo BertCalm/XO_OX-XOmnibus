@@ -23,6 +23,20 @@
   "engines": [
     "Outwit",
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Outwit CA chaos injected into Onset percussive triggers — alien cellular intelligence as drum computer.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "outwit",
+    "onset",
+    "cellular"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Siphonophore Chain",
+  "mood": "Submerged",
+  "engines": ["OceanDeep"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "A colonial organism stretching through the deep, each pulse a linked bioluminescent beat.",
+  "tags": ["submerged", "creature", "pulsing", "alien"],
+  "macroLabels": ["PRESSURE", "CREATURE", "DEPTH", "LIGHT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.3,
+    "movement": 0.7,
+    "density": 0.68,
+    "space": 0.72,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_attack": 0.12,
+      "deep_decay": 0.5,
+      "deep_sustain": 0.6,
+      "deep_release": 0.9,
+      "deep_bodyType": 2,
+      "deep_bodySize": 0.65,
+      "deep_bodyDamp": 0.45,
+      "deep_subOctave": 0,
+      "deep_subShape": 1,
+      "deep_harmonicLevel": 0.5,
+      "deep_pressure": 0.55,
+      "deep_darkness": 0.72,
+      "deep_filterReso": 0.55,
+      "deep_rumble": 0.25,
+      "deep_creatureDepth": 0.78,
+      "deep_creatureSpeed": 0.7,
+      "deep_flashBright": 0.72,
+      "deep_flashRate": 5.0,
+      "deep_reverbSize": 0.72,
+      "deep_reverbMix": 0.48,
+      "deep_delayMix": 0.35,
+      "deep_macroPressure": 0.55,
+      "deep_macroCreature": 0.78,
+      "deep_macroDepth": 0.72,
+      "deep_macroLight": 0.72
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.55,
+    "CREATURE": 0.78,
+    "DEPTH": 0.72,
+    "LIGHT": 0.72
+  },
+  "coupling": {"pairs": []}
+}

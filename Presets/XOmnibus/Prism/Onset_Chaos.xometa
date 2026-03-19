@@ -15,6 +15,19 @@
   },
   "engines": [
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Percussion prism exploding with brutal movement",
+  "tags": [
+    "prism",
+    "brutal",
+    "movement",
+    "aggressive",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "MACHINE",
@@ -32,8 +45,11 @@
   "name": "Onset Chaos",
   "parameters": {
     "Onset": {
+<<<<<<< HEAD
       "onset_couplingBus": 0,
       "onset_couplingLevel": 0.5,
+=======
+>>>>>>> origin/v1-launch-prep
       "onset_macro_machine": 0.893,
       "onset_macro_mutate": 0.6267,
       "onset_macro_punch": 0.885,
@@ -41,6 +57,7 @@
       "onset_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.9318,
@@ -58,4 +75,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

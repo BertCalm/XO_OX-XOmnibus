@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "BRIGHT STILL INTIMATE DENSE FAM 1",
+  "mood": "Family",
+  "engines": [
+    "Overworld",
+    "Origami"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — family, bright, still, dense.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "bright",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.896,
+    "warmth": 0.469,
+    "movement": 0.092,
+    "density": 0.899,
+    "space": 0.106,
+    "aggression": 0.573
+  },
+  "parameters": {
+    "Overworld": {
+      "level": 0.806,
+      "pan": 0.097
+    },
+    "Origami": {
+      "level": 0.745,
+      "pan": 0.058
+    }
+  },
+  "coupling": [
+    {
+      "source": "OVERWORLD",
+      "destination": "ORIGAMI",
+      "type": "PITCH_SYNC",
+      "amount": 0.609
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

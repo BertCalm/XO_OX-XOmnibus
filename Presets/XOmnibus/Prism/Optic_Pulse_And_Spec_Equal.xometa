@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Pulse And Spec Equal",
+  "mood": "Prism",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Equal contributions from pulse and spectral mod sources.",
+  "tags": [
+    "equal",
+    "pulse",
+    "spectral",
+    "balanced",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.22,
+    "movement": 0.6,
+    "density": 0.55,
+    "space": 0.35,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 1.5,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.62,
+      "optic_pulseSwing": 0.1,
+      "optic_pulseSubdiv": 2,
+      "optic_pulseEvolve": 0.15,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.78,
+      "optic_inputGain": 0.8,
+      "optic_modDepth": 0.72,
+      "optic_modMixPulse": 0.5,
+      "optic_modMixSpec": 0.5,
+      "optic_vizMode": 1,
+      "optic_vizIntensity": 0.92,
+      "optic_vizSpeed": 0.65,
+      "optic_vizFeedback": 0.2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

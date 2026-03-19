@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "DARK_STILL_DENSE_VAST_GENTLE_PRS_1",
+  "mood": "Prism",
+  "engines": [
+    "Origami",
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_STILL_DENSE_VAST_GENTLE. Variant 1.",
   "dna": {
     "aggression": 0.032,
@@ -71,5 +83,49 @@
     "dense"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.026,
+      "macro_movement": 0.086,
+      "macro_coupling": 1.0,
+      "macro_space": 1.0
+    },
+    "Optic": {
+      "macro_character": 0.073,
+      "macro_movement": 0.0,
+      "macro_coupling": 0.82,
+      "macro_space": 0.835
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORIGAMI",
+    "target": "OPTIC",
+    "amount": 0.681
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.083,
+    "warmth": 0.512,
+    "movement": 0.064,
+    "density": 0.948,
+    "space": 0.9,
+    "aggression": 0.032
+  },
+  "macros": {
+    "CHARACTER": 0.049,
+    "MOVEMENT": 0.043,
+    "COUPLING": 0.91,
+    "SPACE": 0.917
+  }
+>>>>>>> origin/v1-launch-prep
 }

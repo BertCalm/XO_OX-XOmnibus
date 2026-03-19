@@ -3,12 +3,15 @@
   "description": "UV lattice spreading across a dark room. Electric, cool, textural.",
   "engines": [
     "Origami"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.51,

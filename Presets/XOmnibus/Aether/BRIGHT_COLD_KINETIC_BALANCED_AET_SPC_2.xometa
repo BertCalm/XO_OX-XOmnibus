@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT COLD KINETIC BALANCED AET SPC 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Ombre",
+    "Obscura"
+  ],
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.479,
+      "macro_movement": 0.955,
+      "macro_coupling": 0.666,
+      "macro_space": 0.384
+    },
+    "Obscura": {
+      "macro_character": 0.482,
+      "macro_movement": 0.951,
+      "macro_coupling": 0.639,
+      "macro_space": 0.376
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "aggressive",
     "bright",
     "kinetic"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

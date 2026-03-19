@@ -58,5 +58,9 @@
     "prophecy",
     "grain"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Oracle breakpoints scatter Opal grains — each grain lands on a prophesied frequency."
+>>>>>>> origin/v1-launch-prep
 }

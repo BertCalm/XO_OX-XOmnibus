@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Parallel Filaments",
+  "mood": "Foundation",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Six voices arranged with near-zero spread \u2014 a tight cluster of delay lines running in parallel before any coupling. The result is a focused, dense center with a hint of the FDN topology working behind it.",
+  "tags": [
+    "parallel",
+    "focused",
+    "dense",
+    "mono",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.58,
+    "movement": 0.22,
+    "density": 0.65,
+    "space": 0.38,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 0,
+      "olap_delayFeedback": 0.55,
+      "olap_diffusion": 0.5,
+      "olap_spread": 0.25,
+      "olap_decay": 3.2,
+      "olap_modDepth": 0.09,
+      "olap_modRate": 0.1,
+      "olap_damping": 0.48,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

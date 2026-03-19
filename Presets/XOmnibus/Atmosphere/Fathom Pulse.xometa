@@ -3,12 +3,15 @@
   "description": "Pressure at depth makes everything resonant. The hull groans beautifully.",
   "engines": [
     "Obsidian"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.42,

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Plate Erosion",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Opal",
+    "Obscura"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.1,
+      "macro_movement": 0.2,
+      "macro_coupling": 0.77,
+      "macro_space": 0.95
+    },
+    "Obscura": {
+      "macro_character": 0.07,
+      "macro_movement": 0.15,
+      "macro_coupling": 0.82,
+      "macro_space": 0.98
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "erosion",
     "spectral"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "A daguerreotype plate dissolving in cold space — grains and silver both erase."
+>>>>>>> origin/v1-launch-prep
 }

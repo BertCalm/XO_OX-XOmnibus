@@ -16,6 +16,7 @@
   "engines": [
     "Obbligato"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "COLLAPSE",
     "FEEDBACK",
@@ -36,6 +37,11 @@
     "space": 0.38,
     "warmth": 0.082
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cold iron mass — dense, toneless, infinite pressure.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "cold",
@@ -44,5 +50,27 @@
     "pressure",
     "aggressive"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "COLLAPSE",
+    "FEEDBACK",
+    "COUPLING",
+    "DARK"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.376,
+    "warmth": 0.082,
+    "movement": 0.321,
+    "density": 0.93,
+    "space": 0.38,
+    "aggression": 0.516
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -16,6 +16,7 @@
   "engines": [
     "Optic"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "FOCUS",
     "PRISM",
@@ -36,6 +37,11 @@
     "space": 0.88,
     "warmth": 0.12
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Self-similar bright structure — recursive upper harmonics",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "prism",
     "bright",
@@ -44,5 +50,27 @@
     "recursive",
     "apex"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "FOCUS",
+    "PRISM",
+    "COUPLING",
+    "DIFFUSE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.12,
+    "movement": 0.65,
+    "density": 0.25,
+    "space": 0.88,
+    "aggression": 0.08
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

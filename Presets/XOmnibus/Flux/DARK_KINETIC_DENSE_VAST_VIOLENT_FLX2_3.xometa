@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_KINETIC_DENSE_VAST_VIOLENT_FLX2_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Opal",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.281,
+      "macro_movement": 0.9482,
+      "macro_coupling": 0.964,
+      "macro_space": 0.9337
+    },
+    "Oceanic": {
+      "macro_character": 0.2803,
+      "macro_movement": 0.9521,
+      "macro_coupling": 0.9644,
+      "macro_space": 0.9443
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "vast",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

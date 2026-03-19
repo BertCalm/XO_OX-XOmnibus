@@ -23,6 +23,20 @@
   "engines": [
     "Octopus",
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Octopus CA rule 30 chaos injected into Onset drum voices — alien intelligence driving drums.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "octopus",
+    "onset",
+    "arm"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

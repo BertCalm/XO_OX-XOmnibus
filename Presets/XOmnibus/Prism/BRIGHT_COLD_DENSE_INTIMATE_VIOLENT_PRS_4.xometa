@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "BRIGHT_COLD_DENSE_INTIMATE_VIOLENT_PRS_4",
+  "mood": "Prism",
+  "engines": [
+    "Oblique",
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_DENSE_INTIMATE_VIOLENT. Variant 4.",
   "dna": {
     "aggression": 0.952,
@@ -71,5 +83,49 @@
     "dense"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblique": {
+      "macro_character": 1.0,
+      "macro_movement": 0.504,
+      "macro_coupling": 0.894,
+      "macro_space": 0.0
+    },
+    "Optic": {
+      "macro_character": 1.0,
+      "macro_movement": 0.394,
+      "macro_coupling": 0.899,
+      "macro_space": 0.041
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OBLIQUE",
+    "target": "OPTIC",
+    "amount": 0.899
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.984,
+    "warmth": 0.089,
+    "movement": 0.486,
+    "density": 0.938,
+    "space": 0.084,
+    "aggression": 0.952
+  },
+  "macros": {
+    "CHARACTER": 1.0,
+    "MOVEMENT": 0.449,
+    "COUPLING": 0.897,
+    "SPACE": 0.021
+  }
+>>>>>>> origin/v1-launch-prep
 }

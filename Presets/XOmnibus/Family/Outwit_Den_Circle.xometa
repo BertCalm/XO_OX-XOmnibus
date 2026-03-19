@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Den Circle",
+  "mood": "Family",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Arms circling the den entrance \u2014 equal spacing, equal volume, equal rule. Rule 150 symmetric wave traveling clockwise. A protective formation.",
+  "tags": [
+    "family",
+    "circle",
+    "protective",
+    "symmetric",
+    "equal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.45,
+    "density": 0.65,
+    "space": 0.55,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 150,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.08,
+      "owit_armSpread": 0.48,
+      "owit_sync": 0.62,
+      "owit_feedbackAmt": 0.28,
+      "owit_chaos": 0.2,
+      "owit_density": 0.65,
+      "owit_ampAttack": 0.08,
+      "owit_ampDecay": 0.3,
+      "owit_ampSustain": 0.88,
+      "owit_ampRelease": 1.2,
+      "owit_filterCutoff": 0.55,
+      "owit_filterRes": 0.22,
+      "owit_lfoRate": 0.07,
+      "owit_lfoDepth": 0.12,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

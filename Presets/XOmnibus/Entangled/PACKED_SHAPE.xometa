@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "PACKED SHAPE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.4906,
+      "macro_movement": 0.3558,
+      "macro_coupling": 0.9765,
+      "macro_space": 0.4318
+    },
+    "OddfeliX": {
+      "macro_character": 0.6797,
+      "macro_movement": 0.6607,
+      "macro_coupling": 0.6343,
+      "macro_space": 0.6186
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "welded",
     "monolithic",
     "xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

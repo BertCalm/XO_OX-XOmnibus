@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRUTAL GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Oracle",
+    "Obscura"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.526,
+      "macro_movement": 0.391,
+      "macro_coupling": 0.469,
+      "macro_space": 0.427
+    },
+    "Obscura": {
+      "macro_character": 0.508,
+      "macro_movement": 0.338,
+      "macro_coupling": 0.513,
+      "macro_space": 0.533
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "aggressive",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

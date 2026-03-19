@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DISTANT HAZE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Orphica"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.401,
+      "macro_movement": 0.095,
+      "macro_coupling": 0.982,
+      "macro_space": 0.477
+    },
+    "Orphica": {
+      "macro_character": 0.936,
+      "macro_movement": 0.007,
+      "macro_coupling": 0.384,
+      "macro_space": 0.447
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "minimal",
     "negative-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

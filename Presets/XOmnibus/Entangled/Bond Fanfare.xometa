@@ -24,6 +24,18 @@
   "engines": [
     "Obbligato",
     "Ottoni"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBBLIGATO and OTTONI coupled via LFO->Pitch. Blended Constellation DNA — stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "obbligato",
+    "ottoni"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

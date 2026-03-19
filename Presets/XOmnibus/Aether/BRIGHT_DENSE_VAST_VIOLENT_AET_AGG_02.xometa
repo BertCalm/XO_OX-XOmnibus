@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT DENSE VAST VIOLENT AET AGG 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Organon",
+    "Oblique"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.878,
+      "macro_movement": 0.51,
+      "macro_coupling": 0.799,
+      "macro_space": 0.884
+    },
+    "Oblique": {
+      "macro_character": 0.826,
+      "macro_movement": 0.503,
+      "macro_coupling": 0.8,
+      "macro_space": 0.837
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "bright",
     "dense",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

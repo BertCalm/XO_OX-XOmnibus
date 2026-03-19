@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ICE FLUX 6",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Optic",
+    "Obscura"
+  ],
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.8082,
+      "macro_movement": 0.5382,
+      "macro_coupling": 0.4835,
+      "macro_space": 0.4356
+    },
+    "Obscura": {
+      "macro_character": 0.731,
+      "macro_movement": 0.2684,
+      "macro_coupling": 0.8517,
+      "macro_space": 0.8307
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "cold",
     "shifting"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

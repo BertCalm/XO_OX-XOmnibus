@@ -23,6 +23,20 @@
   "engines": [
     "OddOscar",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Axolotl morph parameter chaos-injected by Ouroboros topology — gill pink frozen at fractal cold.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "oddoscar",
+    "ouroboros",
+    "axolotl"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

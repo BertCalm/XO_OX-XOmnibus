@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "name": "Hopf Base",
+  "mood": "Foundation",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Hopf fibration topology as a stable base — linked circles forming a rich foundational texture.",
+  "tags": ["hopf", "fibration", "linked", "circles", "foundation"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.5, "warmth": 0.55, "movement": 0.25, "density": 0.7, "space": 0.48, "aggression": 0.12},
+  "parameters": {"Ouroboros": {
+    "ouro_topology": 4,
+    "ouro_rate": 0.28,
+    "ouro_chaosIndex": 0.1,
+    "ouro_leash": 0.82,
+    "ouro_theta": 0.5,
+    "ouro_phi": 0.5,
+    "ouro_damping": 0.68,
+    "ouro_injection": 0.3
+  }},
+  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.25, "COUPLING": 0.5, "SPACE": 0.48},
+  "coupling": {"pairs": []}
+}

@@ -57,6 +57,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
+if sys.version_info < (3, 9):
+    sys.exit("Error: XOmnibus tools require Python 3.9+")
+
 # ---------------------------------------------------------------------------
 # Resolve Tools/ directory so sibling imports work when invoked from anywhere
 # ---------------------------------------------------------------------------
@@ -957,9 +960,14 @@ def cmd_status(args) -> int:
 
 
 def cmd_validate(args) -> int:
+<<<<<<< HEAD
     """Validate pipeline output AND/OR .xometa presets."""
+=======
+    """Validate a pipeline output using xpn_validator.py."""
+>>>>>>> origin/v1-launch-prep
     print(BANNER)
 
+<<<<<<< HEAD
     exit_code = 0
 
     # --- Mode 1: Validate pipeline output directory (structural checks) ---
@@ -978,6 +986,32 @@ def cmd_validate(args) -> int:
         else:
             print(f"    [FAIL] No .xpm programs found")
             checks_failed += 1
+=======
+    # Find .xpn files to validate
+    xpns = list(output_dir.glob("*.xpn"))
+    if not xpns:
+        # Also search one level deep (e.g. output_dir/EngineName/Pack.xpn)
+        xpns = list(output_dir.glob("**/*.xpn"))
+    if not xpns:
+        print(f"  [ERROR] No .xpn files found in {output_dir}")
+        print("  Run `oxport.py run` first to generate a .xpn archive.")
+        return 1
+
+    try:
+        from xpn_validator import validate_xpn, CRITICAL
+    except ImportError:
+        print("  [ERROR] xpn_validator.py not found in Tools directory")
+        return 1
+
+    any_critical = False
+    for xpn_path in sorted(xpns):
+        print(f"  Validating: {xpn_path.name}")
+        result = validate_xpn(str(xpn_path))
+        result.print_report()
+        counts = result.counts
+        if counts[CRITICAL] > 0:
+            any_critical = True
+>>>>>>> origin/v1-launch-prep
 
         xpns = list(output_dir.glob("*.xpn"))
         if xpns:
@@ -1061,6 +1095,7 @@ def cmd_validate(args) -> int:
         return 1
 
     print()
+<<<<<<< HEAD
     return exit_code
 
 
@@ -1128,6 +1163,14 @@ def cmd_batch(args) -> int:
     print()
     print(f"  Passed: {passed}  Failed: {failed}  Total: {len(results)}")
     return 1 if failed > 0 else 0
+=======
+    if any_critical:
+        print("  RESULT: CRITICAL findings detected — fix before distribution.")
+        return 1
+    else:
+        print("  RESULT: No CRITICAL findings.")
+        return 0
+>>>>>>> origin/v1-launch-prep
 
 
 # ---------------------------------------------------------------------------

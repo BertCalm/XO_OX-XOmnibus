@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Bioluminescent",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "biological",
+    "living",
+    "organic",
+    "cellular"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.52,
+    "movement": 0.55,
+    "density": 0.52,
+    "space": 0.8,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 28000,
+      "org_stepRate": 3.0,
+      "org_scope": 8,
+      "org_mutate": 0.025,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.38,
+      "org_filterCutoff": 3000.0,
+      "org_filterRes": 0.28,
+      "org_velCutoff": 0.48,
+      "org_ampAtk": 0.12,
+      "org_ampDec": 0.7,
+      "org_ampSus": 0.82,
+      "org_ampRel": 2.0,
+      "org_lfo1Rate": 0.2,
+      "org_lfo1Depth": 0.3,
+      "org_lfo2Rate": 0.12,
+      "org_lfo2Depth": 0.35,
+      "org_reverbMix": 0.72,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.07
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

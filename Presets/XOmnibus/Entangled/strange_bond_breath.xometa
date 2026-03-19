@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Light",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Strange Bond Breath",
+  "mood": "Entangled",
+  "engines": [
+    "Obbligato",
+    "Ouroboros"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Coral wind tangles the serpent — OBBLIGATO's dual breath couples into OUROBOROS's recursive topology.",
   "dna": {
     "aggression": 0.85,

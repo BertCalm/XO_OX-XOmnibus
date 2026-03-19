@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Angular Drift",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.16,
+      "macro_movement": 0.38,
+      "macro_coupling": 0.72,
+      "macro_space": 0.92
+    },
+    "Odyssey": {
+      "macro_character": 0.13,
+      "macro_movement": 0.33,
+      "macro_coupling": 0.77,
+      "macro_space": 0.95
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "angular",
     "drift"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Odyssey pitch-syncs Origami's fold angles — geometry and frequency align in cold space."
+>>>>>>> origin/v1-launch-prep
 }

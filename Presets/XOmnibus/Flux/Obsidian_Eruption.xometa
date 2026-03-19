@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Eruption",
+  "mood": "Flux",
+  "engines": ["Obsidian"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Volcanic eruption — extreme aggression, full filter open, maximum density burst.",
+  "tags": ["eruption", "volcanic", "extreme", "burst"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.58, "warmth": 0.42, "movement": 0.95, "density": 0.88, "space": 0.18, "aggression": 0.95},
+  "parameters": {
+    "Obsidian": {
+      "obsidian_depth": 0.88,
+      "obsidian_character": 0.58,
+      "obsidian_brightness": 0.58,
+      "obsidian_warmth": 0.42,
+      "obsidian_attack": 0.001,
+      "obsidian_decay": 0.3,
+      "obsidian_sustain": 0.5,
+      "obsidian_release": 0.4,
+      "obsidian_filterCutoff": 10000,
+      "obsidian_filterReso": 0.78,
+      "obsidian_filterEnvAmt": 0.98,
+      "obsidian_lfoRate": 14.0,
+      "obsidian_lfoDepth": 0.92,
+      "obsidian_lfoDest": 0,
+      "obsidian_reverbSize": 0.18,
+      "obsidian_reverbMix": 0.08,
+      "obsidian_stereoWidth": 0.38,
+      "obsidian_voiceMode": 0,
+      "obsidian_glide": 0.0,
+      "obsidian_polyphony": 3,
+      "obsidian_level": 0.72
+    }
+  },
+  "macros": {"CHARACTER": 0.58, "MOVEMENT": 0.95, "COUPLING": 0.0, "SPACE": 0.18},
+  "coupling": {"pairs": []}
+}

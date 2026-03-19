@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Solve Chases Drift",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Odyssey"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "OUTWIT SOLVE GA chasing a bright target while ODYSSEY mirrors its movement \u2014 the genetic algorithm's evolutionary state and the drift synth's wavetable position evolve in parallel.",
+  "tags": [
+    "entangled",
+    "solve",
+    "odyssey",
+    "parallel-evolution",
+    "chase"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.45,
+    "movement": 0.75,
+    "density": 0.55,
+    "space": 0.62,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 110,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.45,
+      "owit_armSpread": 0.6,
+      "owit_sync": 0.32,
+      "owit_feedbackAmt": 0.4,
+      "owit_chaos": 0.55,
+      "owit_density": 0.55,
+      "owit_ampAttack": 0.06,
+      "owit_ampDecay": 0.25,
+      "owit_ampSustain": 0.72,
+      "owit_ampRelease": 1.2,
+      "owit_filterCutoff": 0.65,
+      "owit_filterRes": 0.38,
+      "owit_lfoRate": 0.15,
+      "owit_lfoDepth": 0.22,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    },
+    "Odyssey": {
+      "drift_oscA_mode": 1,
+      "drift_filterCutoff": 0.65,
+      "drift_ampAttack": 0.08,
+      "drift_ampRelease": 2.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Outwit",
+        "target": "Odyssey",
+        "type": "EnvToMorph",
+        "amount": 0.65,
+        "description": "Outwit SOLVE GA state drives Odyssey wavetable morphing in parallel evolution"
+      }
+    ]
+  },
+  "sequencer": null
+}

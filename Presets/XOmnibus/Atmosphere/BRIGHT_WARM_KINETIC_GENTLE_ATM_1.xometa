@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_KINETIC_GENTLE_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orbital",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.597,
+      "macro_movement": 0.822,
+      "macro_coupling": 0.53,
+      "macro_space": 0.687
+    },
+    "OddfeliX": {
+      "macro_character": 0.713,
+      "macro_movement": 0.75,
+      "macro_coupling": 0.672,
+      "macro_space": 0.558
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "warm",
     "kinetic",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

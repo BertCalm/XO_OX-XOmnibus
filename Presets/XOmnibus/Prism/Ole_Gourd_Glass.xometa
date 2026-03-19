@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Gourd Glass",
+  "mood": "Prism",
+  "engines": ["Ole"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Small gourd size creating glassy resonance with maximum coin press — tiny gourd refracting all light.",
+  "tags": ["latin", "gourd", "glass", "resonant", "prismatic"],
+  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.62, "warmth": 0.62, "movement": 0.52, "density": 0.48, "space": 0.65, "aggression": 0.28},
+  "parameters": {
+    "Ole": {
+      "ole_allianceConfig": 0,
+      "ole_allianceBlend": 0.58,
+      "ole_aunt1Level": 0.65,
+      "ole_aunt1Brightness": 0.62,
+      "ole_aunt1StrumRate": 4.0,
+      "ole_aunt2Level": 0.88,
+      "ole_aunt2GourdSize": 0.05,
+      "ole_aunt2CoinPress": 0.95,
+      "ole_aunt3Level": 0.65,
+      "ole_aunt3Brightness": 0.65,
+      "ole_aunt3Tremolo": 0.6,
+      "ole_husbandOudLevel": 0.55,
+      "ole_husbandBouzLevel": 0.5,
+      "ole_husbandPinLevel": 0.45,
+      "ole_damping": 0.22,
+      "ole_sympatheticAmt": 0.58,
+      "ole_driftRate": 2.2,
+      "ole_driftDepth": 0.38,
+      "ole_macroDrama": 0.5,
+      "ole_macroFuego": 0.62,
+      "ole_macroIsla": 0.45,
+      "ole_macroSides": 0.48
+    }
+  },
+  "macros": {"DRAMA": 0.5, "FUEGO": 0.62, "ISLA": 0.45, "SIDES": 0.48},
+  "coupling": {"pairs": []}
+}

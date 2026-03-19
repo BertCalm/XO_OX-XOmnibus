@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "White Infinity",
+  "mood": "Aether",
+  "engines": ["OpenSky"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Undifferentiated pure white — all frequencies equal, all directions open, just luminous space.",
+  "tags": ["aether", "white", "infinite", "pure"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 1.0,
+    "warmth": 0.5,
+    "movement": 0.15,
+    "density": 0.1,
+    "space": 1.0,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_ampAttack": 3.0,
+      "sky_ampDecay": 3.0,
+      "sky_ampSustain": 0.4,
+      "sky_ampRelease": 6.0,
+      "sky_filterFc": 18000,
+      "sky_filterRes": 0.0,
+      "sky_glide": 0.5,
+      "sky_lfoRate": 0.03,
+      "sky_lfoDepth": 0.2,
+      "sky_lfoShape": 0,
+      "sky_chorusRate": 0.05,
+      "sky_chorusDepth": 0.8,
+      "sky_chorusMix": 0.8,
+      "sky_reverbMix": 1.0,
+      "sky_outputGain": 0.45,
+      "sky_couplingAmt": 0.0,
+      "sky_shimmerOct": 2,
+      "sky_shimmerMix": 1.0,
+      "sky_velSensitivity": 0.15,
+      "sky_macroCharacter": 0.15,
+      "sky_macroMovement": 0.15,
+      "sky_macroCoupling": 0.0,
+      "sky_macroSpace": 1.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 1.0
+  },
+  "coupling": {"pairs": []}
+}

@@ -15,6 +15,7 @@
   "engines": [
     "Ombre"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -33,6 +34,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OMBRE gradient that ends in black — fade completed, no return.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "portrait",
@@ -42,5 +48,25 @@
     "gradient"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.2,
+    "movement": 0.28,
+    "density": 0.7,
+    "space": 0.45,
+    "aggression": 0.45
+  }
+>>>>>>> origin/v1-launch-prep
 }

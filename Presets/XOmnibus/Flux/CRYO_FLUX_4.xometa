@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CRYO FLUX 4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Organon",
+    "Orbital"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.3283,
+      "macro_movement": 0.8644,
+      "macro_coupling": 0.9669,
+      "macro_space": 0.2791
+    },
+    "Orbital": {
+      "macro_character": 0.6415,
+      "macro_movement": 0.3997,
+      "macro_coupling": 0.9811,
+      "macro_space": 0.5362
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "cold",
     "shifting"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

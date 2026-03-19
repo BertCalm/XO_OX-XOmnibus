@@ -1,5 +1,32 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "schema_version": 1,
+  "name": "Seafoam Biome",
+  "mood": "Entangled",
+  "engines": [
+    "Orphica",
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Timbre blend: ORPHICA's harmonic shimmer colors ORGANON's bio-signal teal.",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.7,
+      "macro_movement": 0.55,
+      "macro_coupling": 0.7,
+      "macro_space": 0.72
+    },
+    "Organon": {
+      "macro_character": 0.52,
+      "macro_movement": 0.63,
+      "macro_coupling": 0.6,
+      "macro_space": 0.58
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +85,10 @@
     "organon",
     "timbre",
     "seafoam"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

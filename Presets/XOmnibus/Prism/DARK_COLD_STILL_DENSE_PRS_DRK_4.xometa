@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_STILL_DENSE_PRS_DRK_4",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Optic",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.22,
+      "macro_movement": 0.1274,
+      "macro_coupling": 0.933,
+      "macro_space": 0.4132
+    },
+    "Ocelot": {
+      "macro_character": 0.2042,
+      "macro_movement": 0.144,
+      "macro_coupling": 0.9031,
+      "macro_space": 0.3768
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "cold",
     "still",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

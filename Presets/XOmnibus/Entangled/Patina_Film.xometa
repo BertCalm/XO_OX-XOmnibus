@@ -1,5 +1,32 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "schema_version": 1,
+  "name": "Patina Film",
+  "mood": "Entangled",
+  "engines": [
+    "Ottoni",
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Chaos injection sends OBSCURA's stiff strings into unpredictable resonant territories.",
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.68,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.68,
+      "macro_space": 0.5
+    },
+    "Obscura": {
+      "macro_character": 0.55,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.6,
+      "macro_space": 0.55
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {

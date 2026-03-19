@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Feral Impala",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ocelot",
+    "Oblique"
+  ],
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.67,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.57,
+      "macro_space": 0.47
+    },
+    "Oblique": {
+      "macro_character": 0.78,
+      "macro_movement": 0.73,
+      "macro_coupling": 0.63,
+      "macro_space": 0.53
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {

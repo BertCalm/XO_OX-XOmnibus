@@ -16,6 +16,18 @@
   },
   "engines": [
     "Orphica"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — cold intimate kinetic dark. Designed for ORBIT coupling with XOrphica.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "orbit",
+    "orphica"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "EXPANSE",
@@ -27,6 +39,7 @@
   "name": "COLD INTIMATE KINETIC DARK 1",
   "parameters": {
     "Orphica": {
+<<<<<<< HEAD
       "couplingBus": 1,
       "couplingLevel": 0.546
     }
@@ -47,4 +60,13 @@
     "orphica"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.546,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

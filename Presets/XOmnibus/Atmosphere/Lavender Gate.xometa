@@ -3,12 +3,15 @@
   "description": "The world before it fully wakes. Gilded texture, low movement, enormous space.",
   "engines": [
     "Osprey"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.699,

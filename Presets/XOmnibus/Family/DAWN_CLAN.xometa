@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DAWN CLAN",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Osteria",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.574,
+      "macro_movement": 0.535,
+      "macro_coupling": 0.723,
+      "macro_space": 0.937
+    },
+    "Odyssey": {
+      "macro_character": 0.913,
+      "macro_movement": 0.175,
+      "macro_coupling": 0.882,
+      "macro_space": 0.176
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "low-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

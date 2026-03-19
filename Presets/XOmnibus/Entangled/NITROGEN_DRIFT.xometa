@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "NITROGEN DRIFT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Overbite"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.775,
+      "macro_movement": 0.465,
+      "macro_coupling": 0.826,
+      "macro_space": 0.592
+    },
+    "Overbite": {
+      "macro_character": 0.322,
+      "macro_movement": 0.245,
+      "macro_coupling": 0.935,
+      "macro_space": 0.279
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "cold",
     "clinical",
     "icy"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

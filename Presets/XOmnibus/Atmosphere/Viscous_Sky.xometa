@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Viscous Sky",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orca"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Thick, heavy environment. Maximum density, warm compression. ORCA dense register.",
   "dna": {
     "aggression": 0.233,
@@ -47,5 +58,40 @@
     "warm",
     "thick"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.345,
+    "warmth": 0.668,
+    "movement": 0.309,
+    "density": 0.864,
+    "space": 0.474,
+    "aggression": 0.233
+  },
+  "parameters": {
+    "Orca": {
+      "character": 0.309,
+      "movement": 0.277,
+      "coupling": 0.201,
+      "space": 0.398
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.309,
+    "MOVEMENT": 0.277,
+    "COUPLING": 0.201,
+    "SPACE": 0.398
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

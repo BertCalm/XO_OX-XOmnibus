@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "MOLTEN CORE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Overbite"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.061,
+      "macro_movement": 0.479,
+      "macro_coupling": 0.402,
+      "macro_space": 0.686
+    },
+    "Overbite": {
+      "macro_character": 0.49,
+      "macro_movement": 0.91,
+      "macro_coupling": 0.073,
+      "macro_space": 0.081
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "hot",
     "molten",
     "furnace"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

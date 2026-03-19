@@ -37,6 +37,7 @@
   "mood": "Entangled",
   "name": "Dark Coupling Engine",
   "parameters": {
+<<<<<<< HEAD
     "Obese": {
       "macro_character": 0.44,
       "macro_coupling": 0.55,
@@ -47,6 +48,18 @@
       "macro_character": 0.31,
       "macro_coupling": 0.9,
       "macro_movement": 0.33,
+=======
+    "Obsidian": {
+      "macro_character": 0.31,
+      "macro_movement": 0.33,
+      "macro_coupling": 0.9,
+      "macro_space": 0.37
+    },
+    "Obese": {
+      "macro_character": 0.44,
+      "macro_movement": 0.71,
+      "macro_coupling": 0.55,
+>>>>>>> origin/v1-launch-prep
       "macro_space": 0.37
     }
   },
@@ -55,6 +68,10 @@
     "entangled",
     "dark",
     "low-brightness"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

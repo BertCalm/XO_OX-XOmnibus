@@ -24,6 +24,7 @@
     "Odyssey",
     "Orca"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "WAVE",
     "WANDER",
@@ -81,6 +82,11 @@
     "space": 0.9118,
     "warmth": 0.8803
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark Hot Vast Violent character entanglement — ODYSSEY × ORCA via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "dark",
@@ -89,5 +95,85 @@
     "violent",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "WAVE",
+    "WANDER",
+    "GLIDE",
+    "HALL"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.1213,
+    "warmth": 0.8803,
+    "movement": 0.6325,
+    "density": 0.5921,
+    "space": 0.9118,
+    "aggression": 0.9112
+  },
+  "sonic_dna": {
+    "brightness": 0.1213,
+    "warmth": 0.8803,
+    "movement": 0.6325,
+    "density": 0.5921,
+    "space": 0.9118,
+    "aggression": 0.9112
+  },
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.6563,
+      "macro_movement": 0.6503,
+      "macro_coupling": 0.9151,
+      "macro_space": 0.8772,
+      "filter_cutoff": 0.2485,
+      "filter_resonance": 0.5725,
+      "amp_attack": 0.1588,
+      "amp_release": 0.6345,
+      "reverb_mix": 0.6202,
+      "reverb_size": 0.7711,
+      "drive": 0.8134,
+      "density": 0.6113,
+      "output_level": 0.8493,
+      "coupling_level": 0.9187
+    },
+    "Orca": {
+      "macro_character": 0.675,
+      "macro_movement": 0.6266,
+      "macro_coupling": 0.9159,
+      "macro_space": 0.9356,
+      "filter_cutoff": 0.2953,
+      "filter_resonance": 0.5305,
+      "amp_attack": 0.2096,
+      "amp_release": 0.6387,
+      "reverb_mix": 0.6705,
+      "reverb_size": 0.7777,
+      "drive": 0.775,
+      "density": 0.5865,
+      "output_level": 0.8084,
+      "coupling_level": 0.8917
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ODYSSEY",
+    "target": "ORCA",
+    "amount": 0.8272,
+    "pairs": [
+      {
+        "source": "ODYSSEY",
+        "target": "ORCA",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.8272
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.5008,
+    "MOVEMENT": 0.6325,
+    "COUPLING": 0.8272,
+    "SPACE": 0.9118
+  }
+>>>>>>> origin/v1-launch-prep
 }

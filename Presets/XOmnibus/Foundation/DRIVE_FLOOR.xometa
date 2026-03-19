@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DRIVE FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Osteria",
+    "Octopus"
+  ],
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.397,
+      "macro_movement": 0.975,
+      "macro_coupling": 0.648,
+      "macro_space": 0.447
+    },
+    "Octopus": {
+      "macro_character": 0.422,
+      "macro_movement": 0.903,
+      "macro_coupling": 0.628,
+      "macro_space": 0.203
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

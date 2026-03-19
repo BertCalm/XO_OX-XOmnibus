@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_STILL_INTIMATE_AET2_2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Orbital",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.9072,
+      "macro_movement": 0.0399,
+      "macro_coupling": 0.4314,
+      "macro_space": 0.0127
+    },
+    "OddOscar": {
+      "macro_character": 0.9192,
+      "macro_movement": 0.0695,
+      "macro_coupling": 0.4889,
+      "macro_space": 0.0133
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "still",
     "intimate",
     "frozen"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

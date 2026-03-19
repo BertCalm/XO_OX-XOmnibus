@@ -23,6 +23,20 @@
   "engines": [
     "Ottoni",
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ottoni triple brass velocity coupled into Onset percussion — martial brass storm.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "ottoni",
+    "onset",
+    "brass"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

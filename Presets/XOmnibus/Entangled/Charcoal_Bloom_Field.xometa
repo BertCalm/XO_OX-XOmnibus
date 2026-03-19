@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Charcoal Bloom Field",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Oracle"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.77,
+      "macro_movement": 0.47,
+      "macro_coupling": 0.68,
+      "macro_space": 0.8
+    },
+    "Oracle": {
+      "macro_character": 0.63,
+      "macro_movement": 0.34,
+      "macro_coupling": 0.69,
+      "macro_space": 0.67
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "dark",
     "low-brightness"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

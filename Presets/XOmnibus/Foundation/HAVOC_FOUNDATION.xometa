@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HAVOC FOUNDATION",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Owlfish",
+    "Oblong"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.531,
+      "macro_movement": 0.315,
+      "macro_coupling": 0.484,
+      "macro_space": 0.344
+    },
+    "Oblong": {
+      "macro_character": 0.622,
+      "macro_movement": 0.691,
+      "macro_coupling": 0.345,
+      "macro_space": 0.497
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "aggressive",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

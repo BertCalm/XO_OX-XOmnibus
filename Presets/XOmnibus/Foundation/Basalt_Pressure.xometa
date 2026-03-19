@@ -15,6 +15,17 @@
   },
   "engines": [
     "Oblong"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OBLONG — dark extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,6 +37,13 @@
   "name": "Basalt Pressure",
   "parameters": {
     "Oblong": {
+<<<<<<< HEAD
+=======
+      "bob_osc1wave": 1,
+      "bob_osc2wave": 0,
+      "bob_filterCutoff": 0.38,
+      "bob_filterReso": 0.6,
+>>>>>>> origin/v1-launch-prep
       "bob_ampAttack": 377.1,
       "bob_ampDecay": 204.9,
       "bob_ampRelease": 754.2,
@@ -44,6 +62,7 @@
       "bob_space": 0.29
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.72,
@@ -59,4 +78,9 @@
     "extreme-brightness"
   ],
   "version": "1.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -23,6 +23,20 @@
   "engines": [
     "Overlap",
     "Organon"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Organon pipe resonance propagates through OVERLAP web — the pipe organ acquires an infinite cave",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "organon",
+    "pipe",
+    "resonant"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -40,9 +54,14 @@
   "name": "Pipe Cathedral",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.756,
       "olap_crossfeedAmt": 0.511,
+=======
+      "olap_size": 0.609,
+      "olap_decay": 0.518,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.644,
       "olap_decay": 0.518,
       "olap_diffusion": 0.745,

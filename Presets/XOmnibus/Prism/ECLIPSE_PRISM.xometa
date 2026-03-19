@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ECLIPSE PRISM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Osteria",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.862,
+      "macro_movement": 0.314,
+      "macro_coupling": 0.556,
+      "macro_space": 0.145
+    },
+    "OddfeliX": {
+      "macro_character": 0.681,
+      "macro_movement": 0.162,
+      "macro_coupling": 0.085,
+      "macro_space": 0.612
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "prism",
     "dark",
     "spectrum"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

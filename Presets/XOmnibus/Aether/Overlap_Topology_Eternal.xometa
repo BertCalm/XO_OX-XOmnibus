@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Topology Eternal",
+  "mood": "Aether",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Near-unity feedback on a trefoil \u2014 the knot sustains indefinitely. Each traversal of the crossings adds a fractional harmonic shift so the timbre evolves over minutes. This preset doesn't end; it transforms.",
+  "tags": [
+    "infinite",
+    "trefoil",
+    "eternal",
+    "transforming",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.4,
+    "density": 0.88,
+    "space": 0.98,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.95,
+      "olap_diffusion": 0.88,
+      "olap_spread": 0.92,
+      "olap_decay": 60.0,
+      "olap_modDepth": 0.15,
+      "olap_modRate": 0.02,
+      "olap_damping": 0.2,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

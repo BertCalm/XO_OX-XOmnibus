@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BLACK CRYSTAL",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Osteria",
+    "Organon"
+  ],
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.404,
+      "macro_movement": 0.501,
+      "macro_coupling": 0.751,
+      "macro_space": 0.242
+    },
+    "Organon": {
+      "macro_character": 0.756,
+      "macro_movement": 0.433,
+      "macro_coupling": 0.831,
+      "macro_space": 0.268
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "prism",
     "dark",
     "spectrum"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

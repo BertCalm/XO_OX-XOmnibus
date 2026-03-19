@@ -14,12 +14,15 @@
   "engines": [
     "Ole",
     "Orca"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.7,
@@ -50,6 +53,7 @@
     "orca",
     "afro-latin"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Afro-Latin percussion drives orca migration — drums become echolocation signal"
+>>>>>>> origin/v1-launch-prep
 }

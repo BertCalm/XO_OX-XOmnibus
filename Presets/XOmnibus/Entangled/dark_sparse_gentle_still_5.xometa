@@ -16,6 +16,18 @@
   },
   "engines": [
     "Obbligato"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — dark sparse gentle still. Designed for SPARK coupling with XObbligato.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "spark",
+    "obbligato"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "GLEAM",
@@ -27,6 +39,7 @@
   "name": "DARK SPARSE GENTLE STILL 5",
   "parameters": {
     "Obbligato": {
+<<<<<<< HEAD
       "couplingBus": 2,
       "couplingLevel": 0.843
     }
@@ -47,4 +60,13 @@
     "obbligato"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.843,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

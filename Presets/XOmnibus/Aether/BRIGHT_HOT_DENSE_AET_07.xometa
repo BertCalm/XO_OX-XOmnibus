@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT HOT DENSE AET 07",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.909,
+      "macro_movement": 0.433,
+      "macro_coupling": 0.655,
+      "macro_space": 0.504
+    },
+    "Orbital": {
+      "macro_character": 0.864,
+      "macro_movement": 0.501,
+      "macro_coupling": 0.949,
+      "macro_space": 0.599
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

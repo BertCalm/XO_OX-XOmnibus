@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT COLD KINETIC BALANCED AET SPC 4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Osprey",
+    "Ombre"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.478,
+      "macro_movement": 0.892,
+      "macro_coupling": 0.854,
+      "macro_space": 0.585
+    },
+    "Ombre": {
+      "macro_character": 0.454,
+      "macro_movement": 0.914,
+      "macro_coupling": 0.876,
+      "macro_space": 0.568
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "aggressive",
     "bright",
     "kinetic"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

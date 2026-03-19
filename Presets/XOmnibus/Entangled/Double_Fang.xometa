@@ -23,6 +23,20 @@
   "engines": [
     "Overbite",
     "Obese"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Both BITE and MOJO maxed and coupled — double bite architecture at total density.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "overbite",
+    "obese",
+    "double-fang"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

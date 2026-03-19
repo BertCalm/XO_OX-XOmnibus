@@ -24,6 +24,7 @@
     "Ombre",
     "Oblique"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "SHADE",
     "GRADIENT",
@@ -81,6 +82,11 @@
     "space": 0.5805,
     "warmth": 0.9657
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark Hot Sparse Gentle character entanglement — OMBRE × OBLIQUE via Resonance Share. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "dark",
@@ -89,5 +95,85 @@
     "gentle",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "SHADE",
+    "GRADIENT",
+    "FADE",
+    "DRIFT"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.0433,
+    "warmth": 0.9657,
+    "movement": 0.4361,
+    "density": 0.1168,
+    "space": 0.5805,
+    "aggression": 0.0504
+  },
+  "sonic_dna": {
+    "brightness": 0.0433,
+    "warmth": 0.9657,
+    "movement": 0.4361,
+    "density": 0.1168,
+    "space": 0.5805,
+    "aggression": 0.0504
+  },
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.7169,
+      "macro_movement": 0.4352,
+      "macro_coupling": 0.6383,
+      "macro_space": 0.5957,
+      "filter_cutoff": 0.242,
+      "filter_resonance": 0.1245,
+      "amp_attack": 0.299,
+      "amp_release": 0.4157,
+      "reverb_mix": 0.447,
+      "reverb_size": 0.5636,
+      "drive": 0.0748,
+      "density": 0.1233,
+      "output_level": 0.7271,
+      "coupling_level": 0.5727
+    },
+    "Oblique": {
+      "macro_character": 0.6933,
+      "macro_movement": 0.4558,
+      "macro_coupling": 0.6041,
+      "macro_space": 0.5967,
+      "filter_cutoff": 0.212,
+      "filter_resonance": 0.1053,
+      "amp_attack": 0.2453,
+      "amp_release": 0.4237,
+      "reverb_mix": 0.4389,
+      "reverb_size": 0.5512,
+      "drive": 0.1113,
+      "density": 0.0916,
+      "output_level": 0.7065,
+      "coupling_level": 0.5689
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OMBRE",
+    "target": "OBLIQUE",
+    "amount": 0.9723,
+    "pairs": [
+      {
+        "source": "OMBRE",
+        "target": "OBLIQUE",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.9723
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.5045,
+    "MOVEMENT": 0.4361,
+    "COUPLING": 0.9723,
+    "SPACE": 0.5805
+  }
+>>>>>>> origin/v1-launch-prep
 }

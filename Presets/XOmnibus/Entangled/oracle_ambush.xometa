@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Deep",
+=======
+  "schema_version": 1,
+  "name": "Oracle Ambush",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORACLE's prophetic stochastic character (GENDY + Maqam liminal tones). Coupling: Spectral Morph.",
   "dna": {
     "aggression": 0.16,
@@ -39,6 +51,7 @@
   "mood": "Entangled",
   "name": "Oracle Ambush",
   "parameters": {
+<<<<<<< HEAD
     "Oracle": {
       "oracle_ampAttack": 0.35,
       "oracle_ampRelease": 0.71,
@@ -54,6 +67,18 @@
       "oracle_space": 0.34
     },
     "Outwit": {
+=======
+    "Outwit": {
+      "owit_rule": 150,
+      "owit_arms": 8,
+      "owit_cellSize": 0.48,
+      "owit_density": 0.73,
+      "owit_evolveRate": 0.42,
+      "owit_mutateProb": 0.35,
+      "owit_pitchSpread": 0.65,
+      "owit_filterCutoff": 0.52,
+      "owit_filterReso": 0.25,
+>>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.09,
       "owit_ampRelease": 0.39,
       "owit_armStagger": 0.15,
@@ -71,10 +96,28 @@
       "owit_inkCloudMix": 0.2,
       "owit_mutateProb": 0.35,
       "owit_outputLevel": 0.72,
+<<<<<<< HEAD
       "owit_outputPan": 0.14,
       "owit_pitchSpread": 0.65,
       "owit_polyDepth": 0.55,
       "owit_rule": 150
+=======
+      "owit_outputPan": 0.14
+    },
+    "Oracle": {
+      "oracle_character": 0.58,
+      "oracle_movement": 0.66,
+      "oracle_coupling": 0.52,
+      "oracle_space": 0.34,
+      "oracle_filterCutoff": 0.53,
+      "oracle_filterReso": 0.24,
+      "oracle_ampAttack": 0.35,
+      "oracle_ampSustain": 0.89,
+      "oracle_ampRelease": 0.71,
+      "oracle_reverbMix": 0.35,
+      "oracle_couplingLevel": 0.78,
+      "oracle_outputLevel": 0.69
+>>>>>>> origin/v1-launch-prep
     }
   },
   "schema_version": 1,

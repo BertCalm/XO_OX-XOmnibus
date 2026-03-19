@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_VOL_76",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Ottoni",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.968,
+      "macro_movement": 0.857,
+      "macro_coupling": 0.776,
+      "macro_space": 0.379
+    },
+    "Obbligato": {
+      "macro_character": 0.951,
+      "macro_movement": 0.869,
+      "macro_coupling": 0.782,
+      "macro_space": 0.418
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "kinetic",
     "aggressive",
     "bright"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

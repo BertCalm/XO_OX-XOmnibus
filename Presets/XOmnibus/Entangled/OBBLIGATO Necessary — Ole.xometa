@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -21,10 +22,16 @@
     "space": 0.6,
     "warmth": 0.951
   },
+=======
+  "schema_version": 1,
+  "name": "OBBLIGATO Necessary — Ole",
+  "mood": "Entangled",
+>>>>>>> origin/v1-launch-prep
   "engines": [
     "Obbligato",
     "Ole"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -40,6 +47,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBBLIGATO rascal coral answers OLE's communal call — BOND creates an obligate rhythmic breath tie.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "obbligato",

@@ -23,6 +23,20 @@
   "engines": [
     "Overworld",
     "Obese"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ERA crossfade timbral-warped by OBESE mojo — chip eras dissolving in saturation heat.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "overworld",
+    "obese",
+    "era"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

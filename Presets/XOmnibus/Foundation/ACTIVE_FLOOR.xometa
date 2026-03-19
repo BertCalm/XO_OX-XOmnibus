@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ACTIVE FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub",
+    "Ottoni"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.618,
+      "macro_movement": 0.943,
+      "macro_coupling": 0.482,
+      "macro_space": 0.385
+    },
+    "Ottoni": {
+      "macro_character": 0.405,
+      "macro_movement": 0.969,
+      "macro_coupling": 0.433,
+      "macro_space": 0.668
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Deep",
+=======
+  "schema_version": 1,
+  "name": "Shadow Strike",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Obscura"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OBSCURA's daguerreotype-veiled spectral character (plate physics and silver grain). Coupling: Frequency Shift.",
   "dna": {
     "aggression": 0.61,
@@ -39,6 +51,7 @@
   "mood": "Entangled",
   "name": "Shadow Strike",
   "parameters": {
+<<<<<<< HEAD
     "Obscura": {
       "obscura_ampAttack": 0.19,
       "obscura_ampRelease": 0.24,
@@ -54,6 +67,18 @@
       "obscura_space": 0.35
     },
     "Outwit": {
+=======
+    "Outwit": {
+      "owit_rule": 22,
+      "owit_arms": 8,
+      "owit_cellSize": 0.46,
+      "owit_density": 0.6,
+      "owit_evolveRate": 0.57,
+      "owit_mutateProb": 0.06,
+      "owit_pitchSpread": 0.24,
+      "owit_filterCutoff": 0.61,
+      "owit_filterReso": 0.42,
+>>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.05,
       "owit_ampRelease": 0.34,
       "owit_armStagger": 0.48,
@@ -71,10 +96,28 @@
       "owit_inkCloudMix": 0.42,
       "owit_mutateProb": 0.06,
       "owit_outputLevel": 0.76,
+<<<<<<< HEAD
       "owit_outputPan": -0.22,
       "owit_pitchSpread": 0.24,
       "owit_polyDepth": 0.57,
       "owit_rule": 22
+=======
+      "owit_outputPan": -0.22
+    },
+    "Obscura": {
+      "obscura_character": 0.57,
+      "obscura_movement": 0.59,
+      "obscura_coupling": 0.59,
+      "obscura_space": 0.35,
+      "obscura_filterCutoff": 0.37,
+      "obscura_filterReso": 0.21,
+      "obscura_ampAttack": 0.19,
+      "obscura_ampSustain": 0.49,
+      "obscura_ampRelease": 0.24,
+      "obscura_reverbMix": 0.25,
+      "obscura_couplingLevel": 0.57,
+      "obscura_outputLevel": 0.73
+>>>>>>> origin/v1-launch-prep
     }
   },
   "schema_version": 1,

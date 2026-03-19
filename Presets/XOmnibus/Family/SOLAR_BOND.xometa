@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SOLAR BOND",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Overworld",
+    "Opal"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.714,
+      "macro_movement": 0.346,
+      "macro_coupling": 0.442,
+      "macro_space": 0.256
+    },
+    "Opal": {
+      "macro_character": 0.479,
+      "macro_movement": 0.202,
+      "macro_coupling": 0.539,
+      "macro_space": 0.933
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "high-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

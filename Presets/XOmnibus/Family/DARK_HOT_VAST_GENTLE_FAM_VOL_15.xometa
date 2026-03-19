@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_VAST_GENTLE_FAM_VOL_15",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Oblong",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.485,
+      "macro_movement": 0.506,
+      "macro_coupling": 0.292,
+      "macro_space": 0.92
+    },
+    "Obbligato": {
+      "macro_character": 0.492,
+      "macro_movement": 0.551,
+      "macro_coupling": 0.29,
+      "macro_space": 0.905
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "vast",
     "gentle",
     "dark"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

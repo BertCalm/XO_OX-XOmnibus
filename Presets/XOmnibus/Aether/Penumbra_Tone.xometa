@@ -16,6 +16,7 @@
   "engines": [
     "Obscura"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "SHADOW",
     "BLUR",
@@ -36,6 +37,11 @@
     "space": 0.68,
     "warmth": 0.68
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Half-shadow region — almost dark, never light",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -44,5 +50,27 @@
     "shadow",
     "half"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "SHADOW",
+    "BLUR",
+    "COUPLING",
+    "VEIL"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.68,
+    "movement": 0.22,
+    "density": 0.58,
+    "space": 0.68,
+    "aggression": 0.18
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

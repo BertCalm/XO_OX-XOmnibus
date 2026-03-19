@@ -1,0 +1,117 @@
+{
+<<<<<<< HEAD:Presets/XOmnibus/Aether/5X DARK COLD KINETIC DENSE VIOLENT ATH 3.xometa
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oceanic",
+        "type": "PITCH_FOLLOW",
+        "amount": 0.66
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Radiant Cell Void",
+  "mood": "Aether",
+  "engines": [
+    "Organon",
+    "Oceanic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Aether/Orga_Ocea_Radiant_Cell_Void.xometa
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.491,
+    "brightness": 0.958,
+    "density": 0.056,
+    "movement": 0.098,
+    "space": 0.907,
+    "warmth": 0.911
+  },
+  "engines": [
+    "Organon",
+    "Oceanic"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.8,
+      "macro_coupling": 0.74,
+      "macro_movement": 0.88,
+      "macro_space": 0.41
+    },
+    "Organon": {
+      "macro_character": 0.77,
+      "macro_coupling": 0.79,
+      "macro_movement": 0.99,
+      "macro_space": 0.25
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "aether"
+  ],
+  "tempo": null,
+<<<<<<< HEAD:Presets/XOmnibus/Aether/5X DARK COLD KINETIC DENSE VIOLENT ATH 3.xometa
+  "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.77,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.79,
+      "macro_space": 0.25
+    },
+    "Oceanic": {
+      "macro_character": 0.8,
+      "macro_movement": 0.88,
+      "macro_coupling": 0.74,
+      "macro_space": 0.41
+    }
+  },
+  "coupling": {
+    "type": "PITCH_FOLLOW",
+    "source": "ORGANON",
+    "target": "OCEANIC",
+    "amount": 0.66
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.958,
+    "warmth": 0.911,
+    "movement": 0.098,
+    "density": 0.056,
+    "space": 0.907,
+    "aggression": 0.491
+  }
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Aether/Orga_Ocea_Radiant_Cell_Void.xometa
+}

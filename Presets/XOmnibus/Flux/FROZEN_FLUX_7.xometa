@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "FROZEN FLUX 7",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OddfeliX",
+    "Obese"
+  ],
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.836,
+      "macro_movement": 0.5752,
+      "macro_coupling": 0.9508,
+      "macro_space": 0.9996
+    },
+    "Obese": {
+      "macro_character": 0.6723,
+      "macro_movement": 0.2695,
+      "macro_coupling": 0.0402,
+      "macro_space": 0.7563
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "cold",
     "shifting"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

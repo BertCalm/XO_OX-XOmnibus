@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Wash",
+  "mood": "Prism",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Oubli washes with slow LFO2 sweeping through the spectral range. Long grain creates a wash effect. Memory decays slowly, leaving a full spectral impression of the chord.",
+  "tags": ["prism", "spectral", "wash", "sweep", "full-spectrum"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.6,
+    "movement": 0.52,
+    "density": 0.65,
+    "space": 0.78,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.32,
+      "ombre_interference": 0.38,
+      "ombre_memoryDecay": 10.0,
+      "ombre_memoryGrain": 200.0,
+      "ombre_memoryDrift": 0.48,
+      "ombre_oscShape": 1,
+      "ombre_reactivity": 0.52,
+      "ombre_subLevel": 0.2,
+      "ombre_filterCutoff": 4500.0,
+      "ombre_filterReso": 0.38,
+      "ombre_attack": 0.3,
+      "ombre_decay": 1.0,
+      "ombre_sustain": 0.7,
+      "ombre_release": 3.0,
+      "ombre_level": 0.7,
+      "ombre_velCutoffScale": 0.38,
+      "ombre_lfo1Rate": 0.35,
+      "ombre_lfo1Depth": 0.45,
+      "ombre_lfo2Rate": 0.2,
+      "ombre_lfo2Depth": 0.72,
+      "ombre_macroCharacter": 0.65,
+      "ombre_macroMovement": 0.52,
+      "ombre_macroCoupling": 0.45,
+      "ombre_macroSpace": 0.78
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

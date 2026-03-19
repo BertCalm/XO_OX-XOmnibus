@@ -44,5 +44,27 @@
     "thick",
     "aggressive"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "CHARACTER",
+    "DRIVE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.283,
+    "warmth": 0.828,
+    "movement": 0.408,
+    "density": 0.881,
+    "space": 0.274,
+    "aggression": 0.511
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

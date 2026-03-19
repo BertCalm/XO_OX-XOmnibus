@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "BRIGHT WARM KINETIC DENSE FAM 5",
+  "mood": "Family",
+  "engines": [
+    "Oracle",
+    "Osteria"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — family, bright, warm, kinetic.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "bright",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.949,
+    "warmth": 0.893,
+    "movement": 0.924,
+    "density": 0.892,
+    "space": 0.562,
+    "aggression": 0.451
+  },
+  "parameters": {
+    "Oracle": {
+      "level": 0.801,
+      "pan": -0.09
+    },
+    "Osteria": {
+      "level": 0.705,
+      "pan": 0.103
+    }
+  },
+  "coupling": [
+    {
+      "source": "ORACLE",
+      "destination": "OSTERIA",
+      "type": "AMPLITUDE_MOD",
+      "amount": 0.48
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

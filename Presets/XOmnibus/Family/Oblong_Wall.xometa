@@ -15,6 +15,7 @@
   "engines": [
     "Oblong"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -33,6 +34,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBLONG as total wall — shape fills every frequency gap, no air remains.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "portrait",
@@ -42,5 +48,25 @@
     "massive"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.5,
+    "movement": 0.48,
+    "density": 0.96,
+    "space": 0.12,
+    "aggression": 0.8
+  }
+>>>>>>> origin/v1-launch-prep
 }

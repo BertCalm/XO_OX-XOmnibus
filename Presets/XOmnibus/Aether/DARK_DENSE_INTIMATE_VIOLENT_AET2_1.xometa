@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_DENSE_INTIMATE_VIOLENT_AET2_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Oracle",
+    "Oblique"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.0917,
+      "macro_movement": 0.367,
+      "macro_coupling": 0.9241,
+      "macro_space": 0.0268
+    },
+    "Oblique": {
+      "macro_character": 0.0324,
+      "macro_movement": 0.3734,
+      "macro_coupling": 0.8997,
+      "macro_space": 0.0246
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "intimate",
     "violent",
     "abyssal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

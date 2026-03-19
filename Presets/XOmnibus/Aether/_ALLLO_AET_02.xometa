@@ -37,13 +37,21 @@
   "mood": "Aether",
   "name": "ALLLO AET 02",
   "parameters": {
+<<<<<<< HEAD
     "Oblique": {
+=======
+    "OddfeliX": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.329,
       "macro_coupling": 0.087,
       "macro_movement": 0.031,
       "macro_space": 0.098
     },
+<<<<<<< HEAD
     "OddfeliX": {
+=======
+    "Oblique": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.329,
       "macro_coupling": 0.087,
       "macro_movement": 0.031,
@@ -56,6 +64,10 @@
     "pole-fill",
     "minimal",
     "sparse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

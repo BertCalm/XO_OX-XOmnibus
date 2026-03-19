@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "STELLAR FLUX",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.35,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.781,
+      "macro_space": 0.652
+    },
+    "Orbital": {
+      "macro_character": 0.754,
+      "macro_movement": 0.95,
+      "macro_coupling": 0.199,
+      "macro_space": 0.02
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "low-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

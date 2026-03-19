@@ -1,8 +1,19 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": null,
   "couplingIntensity": "None",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Photon Cascade",
+  "mood": "Prism",
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Harmonic overtones cascade like photons through a prism — pure spectral radiance.",
   "dna": {
     "aggression": 0.12,
@@ -60,5 +71,46 @@
     "prism"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "OddFelix",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OddfeliX": {
+      "oddfelix_harmonicBlend": 0.828,
+      "oddfelix_spectralTilt": 0.644,
+      "oddfelix_pitchMod": 0.14,
+      "oddfelix_lfoRate": 2.075,
+      "oddfelix_lfoDepth": 0.105,
+      "oddfelix_reverbMix": 0.504,
+      "oddfelix_filterCutoff": 16880.0,
+      "oddfelix_filterReso": 0.136,
+      "oddfelix_ampAttack": 0.007,
+      "oddfelix_ampDecay": 0.976,
+      "oddfelix_ampSustain": 0.776,
+      "oddfelix_ampRelease": 1.88,
+      "oddfelix_stereoWidth": 0.788,
+      "oddfelix_level": 0.8,
+      "oddfelix_macroCharacter": 0.736,
+      "oddfelix_macroMovement": 0.35,
+      "oddfelix_macroCoupling": 0.0,
+      "oddfelix_macroSpace": 0.72
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.18,
+    "movement": 0.35,
+    "density": 0.4,
+    "space": 0.72,
+    "aggression": 0.12
+  }
+>>>>>>> origin/v1-launch-prep
 }

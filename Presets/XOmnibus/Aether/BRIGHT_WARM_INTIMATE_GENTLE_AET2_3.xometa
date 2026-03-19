@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_INTIMATE_GENTLE_AET2_3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Oracle",
+    "Opal"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.8669,
+      "macro_movement": 0.4195,
+      "macro_coupling": 0.3609,
+      "macro_space": 0.0464
+    },
+    "Opal": {
+      "macro_character": 0.8573,
+      "macro_movement": 0.4583,
+      "macro_coupling": 0.3634,
+      "macro_space": 0.0573
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "intimate",
     "gentle",
     "celestial"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

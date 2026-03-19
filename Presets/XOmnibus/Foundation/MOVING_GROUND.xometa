@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "MOVING GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OddOscar",
+    "Oblique"
+  ],
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.432,
+      "macro_movement": 0.961,
+      "macro_coupling": 0.322,
+      "macro_space": 0.43
+    },
+    "Oblique": {
+      "macro_character": 0.362,
+      "macro_movement": 0.881,
+      "macro_coupling": 0.761,
+      "macro_space": 0.239
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

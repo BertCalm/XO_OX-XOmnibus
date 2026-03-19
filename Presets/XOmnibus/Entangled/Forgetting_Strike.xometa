@@ -23,6 +23,20 @@
   "engines": [
     "Ombre",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Forgetting layer chaos-injected by Ouroboros topology — the narrative erased by mathematics.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "ombre",
+    "ouroboros",
+    "forgetting"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "MUFFLED ZONE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Oblong",
+    "Obese"
+  ],
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.896,
+      "macro_movement": 0.048,
+      "macro_coupling": 0.656,
+      "macro_space": 0.631
+    },
+    "Obese": {
+      "macro_character": 0.946,
+      "macro_movement": 0.06,
+      "macro_coupling": 0.409,
+      "macro_space": 0.28
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "muffled"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

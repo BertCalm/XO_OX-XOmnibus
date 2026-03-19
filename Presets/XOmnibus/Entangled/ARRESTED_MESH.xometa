@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ARRESTED MESH",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Oracle"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.677,
+      "macro_movement": 0.064,
+      "macro_coupling": 0.765,
+      "macro_space": 0.13
+    },
+    "Oracle": {
+      "macro_character": 0.525,
+      "macro_movement": 0.09,
+      "macro_coupling": 0.316,
+      "macro_space": 0.299
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "arrested"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

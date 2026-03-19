@@ -1,4 +1,14 @@
 {
+<<<<<<< HEAD
+=======
+  "schema_version": 1,
+  "name": "Granular Coastline",
+  "mood": "Entangled",
+  "engines": [
+    "Osprey",
+    "Opal"
+  ],
+>>>>>>> origin/v1-launch-prep
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [

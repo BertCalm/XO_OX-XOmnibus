@@ -25,6 +25,7 @@
     "Origami",
     "Oceanic"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -60,6 +61,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_GENTLE. Designed to raise Entangled cosine diversity.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -71,5 +77,49 @@
     "dense"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.7952,
+      "macro_movement": 0.031,
+      "macro_coupling": 0.8463,
+      "macro_space": 0.1342
+    },
+    "Oceanic": {
+      "macro_character": 0.8497,
+      "macro_movement": 0.0354,
+      "macro_coupling": 0.943,
+      "macro_space": 0.5414
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORIGAMI",
+    "target": "OCEANIC",
+    "amount": 0.7835
+  },
+  "macros": {
+    "CHARACTER": 0.8225,
+    "MOVEMENT": 0.0332,
+    "COUPLING": 0.8946,
+    "SPACE": 0.3378
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.8843,
+    "warmth": 0.987,
+    "movement": 0.0494,
+    "density": 0.9654,
+    "space": 0.4356,
+    "aggression": 0.1233
+  }
+>>>>>>> origin/v1-launch-prep
 }

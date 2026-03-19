@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Folded Crystal",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.14,
+      "macro_movement": 0.22,
+      "macro_coupling": 0.73,
+      "macro_space": 0.93
+    },
+    "Obsidian": {
+      "macro_character": 0.11,
+      "macro_movement": 0.17,
+      "macro_coupling": 0.78,
+      "macro_space": 0.96
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "origami",
     "crystalline"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "A paper fold frozen mid-crease — Origami's vermillion edge meets Obsidian's white silence."
+>>>>>>> origin/v1-launch-prep
 }

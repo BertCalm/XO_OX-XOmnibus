@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Rumble Haze",
+  "mood": "Atmosphere",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "drone",
+    "rumble",
+    "deep",
+    "abyssal"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.8,
+    "movement": 0.12,
+    "density": 0.86,
+    "space": 0.95,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 2,
+      "deep_subOctave": -2,
+      "deep_harmonicLevel": 0.1,
+      "deep_pressure": 0.68,
+      "deep_bodyType": 1,
+      "deep_bodySize": 0.9,
+      "deep_bodyDamp": 0.88,
+      "deep_flashRate": 0.08,
+      "deep_flashBright": 0.1,
+      "deep_creatureSpeed": 0.12,
+      "deep_creatureDepth": 0.1,
+      "deep_darkness": 0.92,
+      "deep_filterReso": 0.12,
+      "deep_reverbMix": 0.78,
+      "deep_reverbSize": 0.98,
+      "deep_delayMix": 0.08,
+      "deep_rumble": 0.88,
+      "deep_attack": 0.8,
+      "deep_decay": 3.5,
+      "deep_sustain": 0.88,
+      "deep_release": 7.0
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.68,
+    "CREATURE": 0.12,
+    "WRECK": 0.22,
+    "ABYSS": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

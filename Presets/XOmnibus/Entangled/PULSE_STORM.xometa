@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "PULSE STORM",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Obscura"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.295,
+      "macro_movement": 0.918,
+      "macro_coupling": 0.506,
+      "macro_space": 0.43
+    },
+    "Obscura": {
+      "macro_character": 0.793,
+      "macro_movement": 0.94,
+      "macro_coupling": 0.114,
+      "macro_space": 0.655
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "wild",
     "movement"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

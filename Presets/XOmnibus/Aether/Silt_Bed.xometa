@@ -16,6 +16,7 @@
   "engines": [
     "OddOscar"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "WEIGHT",
     "GRIND",
@@ -36,6 +37,11 @@
     "space": 0.2,
     "warmth": 0.9
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Settled sediment — the lowest resonant floor",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -44,5 +50,27 @@
     "low",
     "settled"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "WEIGHT",
+    "GRIND",
+    "COUPLING",
+    "CAVE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.9,
+    "movement": 0.15,
+    "density": 0.9,
+    "space": 0.2,
+    "aggression": 0.25
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

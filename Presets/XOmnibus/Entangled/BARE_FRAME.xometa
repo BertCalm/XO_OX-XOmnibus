@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BARE FRAME",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Ombre"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.226,
+      "macro_movement": 0.676,
+      "macro_coupling": 0.674,
+      "macro_space": 0.397
+    },
+    "Ombre": {
+      "macro_character": 0.846,
+      "macro_movement": 0.557,
+      "macro_coupling": 0.09,
+      "macro_space": 0.395
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "sparse",
     "spectral"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

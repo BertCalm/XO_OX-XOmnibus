@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_KINETIC_SPARSE_FAM_VOL_93",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Odyssey",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.96,
+      "macro_movement": 0.979,
+      "macro_coupling": 0.377,
+      "macro_space": 0.605
+    },
+    "OddfeliX": {
+      "macro_character": 0.988,
+      "macro_movement": 0.975,
+      "macro_coupling": 0.356,
+      "macro_space": 0.584
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "kinetic",
     "sparse",
     "bright"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

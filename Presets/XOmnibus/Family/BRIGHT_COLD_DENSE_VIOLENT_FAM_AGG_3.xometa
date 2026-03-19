@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_DENSE_VIOLENT_FAM_AGG_3",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Overdub",
+    "Opal"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.411,
+      "macro_movement": 0.813,
+      "macro_coupling": 0.851,
+      "macro_space": 0.88
+    },
+    "Opal": {
+      "macro_character": 0.365,
+      "macro_movement": 0.797,
+      "macro_coupling": 0.878,
+      "macro_space": 0.843
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "cold",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK LATTICE",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Onset",
+    "Oblique"
+  ],
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.537,
+      "macro_movement": 0.738,
+      "macro_coupling": 0.641,
+      "macro_space": 0.248
+    },
+    "Oblique": {
+      "macro_character": 0.614,
+      "macro_movement": 0.236,
+      "macro_coupling": 0.5,
+      "macro_space": 0.307
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "prism",
     "dark",
     "spectrum"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

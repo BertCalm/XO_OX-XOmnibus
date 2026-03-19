@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Phase Transition",
+  "mood": "Flux",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "State change — the moment between solid and liquid. LFO1 and LFO2 out of sync, creating unpredictable phase interaction between blend and filter. Unstable but exciting.",
+  "tags": ["flux", "phase", "transition", "unstable", "state-change"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.52,
+    "movement": 0.75,
+    "density": 0.58,
+    "space": 0.62,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.5,
+      "ombre_interference": 0.48,
+      "ombre_memoryDecay": 5.0,
+      "ombre_memoryGrain": 85.0,
+      "ombre_memoryDrift": 0.55,
+      "ombre_oscShape": 1,
+      "ombre_reactivity": 0.65,
+      "ombre_subLevel": 0.22,
+      "ombre_filterCutoff": 4800.0,
+      "ombre_filterReso": 0.45,
+      "ombre_attack": 0.05,
+      "ombre_decay": 0.5,
+      "ombre_sustain": 0.65,
+      "ombre_release": 1.8,
+      "ombre_level": 0.72,
+      "ombre_velCutoffScale": 0.45,
+      "ombre_lfo1Rate": 1.3,
+      "ombre_lfo1Depth": 0.65,
+      "ombre_lfo2Rate": 2.1,
+      "ombre_lfo2Depth": 0.7,
+      "ombre_macroCharacter": 0.5,
+      "ombre_macroMovement": 0.75,
+      "ombre_macroCoupling": 0.48,
+      "ombre_macroSpace": 0.62
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Violent Updraft",
+  "mood": "Atmosphere",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. ONSET aggressive register.",
   "dna": {
     "aggression": 0.726,
@@ -47,5 +58,40 @@
     "pressure",
     "fierce"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "dna": {
+    "brightness": 0.483,
+    "warmth": 0.345,
+    "movement": 0.794,
+    "density": 0.69,
+    "space": 0.562,
+    "aggression": 0.726
+  },
+  "parameters": {
+    "Onset": {
+      "machine": 0.643,
+      "punch": 0.852,
+      "space": 0.468,
+      "mutate": 0.661
+    }
+  },
+  "macros": {
+    "MACHINE": 0.643,
+    "PUNCH": 0.852,
+    "SPACE": 0.468,
+    "MUTATE": 0.661
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

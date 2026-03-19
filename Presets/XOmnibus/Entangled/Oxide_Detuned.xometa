@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Oxide Detuned",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.99,
+      "macro_movement": 0.41,
+      "macro_coupling": 0.64,
+      "macro_space": 0.52
+    },
+    "OddOscar": {
+      "macro_character": 0.81,
+      "macro_movement": 0.38,
+      "macro_coupling": 0.64,
+      "macro_space": 0.27
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "warm-dense",
     "scorching"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

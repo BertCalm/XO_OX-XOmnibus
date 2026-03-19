@@ -1,4 +1,14 @@
 {
+<<<<<<< HEAD
+=======
+  "schema_version": 1,
+  "name": "Hibiscus Pulse",
+  "mood": "Entangled",
+  "engines": [
+    "Ole",
+    "Organon"
+  ],
+>>>>>>> origin/v1-launch-prep
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [

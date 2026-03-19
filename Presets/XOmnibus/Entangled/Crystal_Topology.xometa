@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "High",
+=======
+  "schema_version": 1,
+  "name": "Crystal Topology",
+  "mood": "Entangled",
+  "engines": [
+    "Obsidian",
+    "Ouroboros"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Frequency smear from the topology loop corrupting Obsidian's crystal silence.",
   "dna": {
     "aggression": 0.95,

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_KINETIC_DENSE_VIOLENT_FLX2_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Optic",
+    "Opal"
+  ],
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.9312,
+      "macro_movement": 0.9849,
+      "macro_coupling": 0.8843,
+      "macro_space": 0.6405
+    },
+    "Opal": {
+      "macro_character": 0.9671,
+      "macro_movement": 0.9635,
+      "macro_coupling": 0.9215,
+      "macro_space": 0.6333
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "dense",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

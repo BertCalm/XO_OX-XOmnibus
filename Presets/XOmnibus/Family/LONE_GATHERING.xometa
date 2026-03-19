@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "LONE GATHERING",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Outwit",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.968,
+      "macro_movement": 0.6,
+      "macro_coupling": 0.352,
+      "macro_space": 0.578
+    },
+    "Oceanic": {
+      "macro_character": 0.213,
+      "macro_movement": 0.657,
+      "macro_coupling": 0.224,
+      "macro_space": 0.108
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "family",
     "sparse",
     "xlow-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

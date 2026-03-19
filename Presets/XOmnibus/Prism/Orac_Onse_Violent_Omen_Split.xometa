@@ -1,0 +1,117 @@
+{
+<<<<<<< HEAD:Presets/XOmnibus/Prism/5X DARK COLD KINETIC DENSE VIOLENT PRM 5.xometa
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Onset",
+        "type": "RING_MOD",
+        "amount": 0.62
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Violent Omen Split",
+  "mood": "Prism",
+  "engines": [
+    "Oracle",
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Prism/Orac_Onse_Violent_Omen_Split.xometa
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.941,
+    "brightness": 0.452,
+    "density": 0.911,
+    "movement": 0.905,
+    "space": 0.076,
+    "warmth": 0.098
+  },
+  "engines": [
+    "Oracle",
+    "Onset"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.67,
+      "macro_coupling": 0.59,
+      "macro_movement": 0.71,
+      "macro_space": 0.18
+    },
+    "Oracle": {
+      "macro_character": 0.86,
+      "macro_coupling": 0.83,
+      "macro_movement": 0.91,
+      "macro_space": 0.12
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "prism"
+  ],
+  "tempo": null,
+<<<<<<< HEAD:Presets/XOmnibus/Prism/5X DARK COLD KINETIC DENSE VIOLENT PRM 5.xometa
+  "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.86,
+      "macro_movement": 0.91,
+      "macro_coupling": 0.83,
+      "macro_space": 0.12
+    },
+    "Onset": {
+      "macro_character": 0.67,
+      "macro_movement": 0.71,
+      "macro_coupling": 0.59,
+      "macro_space": 0.18
+    }
+  },
+  "coupling": {
+    "type": "RING_MOD",
+    "source": "ORACLE",
+    "target": "ONSET",
+    "amount": 0.62
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.452,
+    "warmth": 0.098,
+    "movement": 0.905,
+    "density": 0.911,
+    "space": 0.076,
+    "aggression": 0.941
+  }
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Prism/Orac_Onse_Violent_Omen_Split.xometa
+}

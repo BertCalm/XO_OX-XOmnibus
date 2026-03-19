@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_SPARSE_VAST_FLX_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overworld",
+    "Opal"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.0776,
+      "macro_movement": 0.3798,
+      "macro_coupling": 0.6573,
+      "macro_space": 0.8348
+    },
+    "Opal": {
+      "macro_character": 0.1088,
+      "macro_movement": 0.497,
+      "macro_coupling": 0.4998,
+      "macro_space": 0.8287
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "low-warmth",
     "low-density",
     "high-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

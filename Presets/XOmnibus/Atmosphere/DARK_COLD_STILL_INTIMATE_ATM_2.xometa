@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_STILL_INTIMATE_ATM_2",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Osprey",
+    "Oracle"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.755,
+      "macro_movement": 0.111,
+      "macro_coupling": 0.761,
+      "macro_space": 0.279
+    },
+    "Oracle": {
+      "macro_character": 0.671,
+      "macro_movement": 0.162,
+      "macro_coupling": 0.752,
+      "macro_space": 0.21
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "cold",
     "still",
     "intimate"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

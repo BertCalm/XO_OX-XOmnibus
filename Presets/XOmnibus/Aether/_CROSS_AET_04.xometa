@@ -37,13 +37,21 @@
   "mood": "Aether",
   "name": "CROSS AET 04",
   "parameters": {
+<<<<<<< HEAD
     "Oracle": {
+=======
+    "Organon": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.694,
       "macro_coupling": 0.958,
       "macro_movement": 0.064,
       "macro_space": 0.958
     },
+<<<<<<< HEAD
     "Organon": {
+=======
+    "Oracle": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.694,
       "macro_coupling": 0.958,
       "macro_movement": 0.064,
@@ -56,6 +64,10 @@
     "pole-fill",
     "cross-pole",
     "contrast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

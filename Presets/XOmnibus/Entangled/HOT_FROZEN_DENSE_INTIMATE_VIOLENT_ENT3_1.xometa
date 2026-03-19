@@ -25,6 +25,7 @@
     "Ohm",
     "Organon"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -60,6 +61,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: HOT_FROZEN_DENSE_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -71,5 +77,49 @@
     "intimate"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.7836,
+      "macro_movement": 0.1227,
+      "macro_coupling": 0.9729,
+      "macro_space": 0.5894
+    },
+    "Organon": {
+      "macro_character": 0.6839,
+      "macro_movement": 0.1101,
+      "macro_coupling": 0.976,
+      "macro_space": 0.2686
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OHM",
+    "target": "ORGANON",
+    "amount": 0.8083
+  },
+  "macros": {
+    "CHARACTER": 0.7337,
+    "MOVEMENT": 0.1164,
+    "COUPLING": 0.9745,
+    "SPACE": 0.429
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.4476,
+    "warmth": 0.9427,
+    "movement": 0.1064,
+    "density": 0.9562,
+    "space": 0.1056,
+    "aggression": 0.8897
+  }
+>>>>>>> origin/v1-launch-prep
 }

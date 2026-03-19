@@ -24,6 +24,7 @@
     "Ouroboros",
     "OddOscar"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "COIL",
     "CYCLE",
@@ -81,6 +82,11 @@
     "space": 0.3795,
     "warmth": 0.8962
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright Warm Still Dense character entanglement — OUROBOROS × ODDOSCAR via Chaos Inject. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -89,5 +95,85 @@
     "dense",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "COIL",
+    "CYCLE",
+    "FEED",
+    "ABYSS"
+  ],
+  "couplingIntensity": "Medium",
+  "dna": {
+    "brightness": 0.8736,
+    "warmth": 0.8962,
+    "movement": 0.0756,
+    "density": 0.8732,
+    "space": 0.3795,
+    "aggression": 0.56
+  },
+  "sonic_dna": {
+    "brightness": 0.8736,
+    "warmth": 0.8962,
+    "movement": 0.0756,
+    "density": 0.8732,
+    "space": 0.3795,
+    "aggression": 0.56
+  },
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.9454,
+      "macro_movement": 0.0361,
+      "macro_coupling": 0.8205,
+      "macro_space": 0.3954,
+      "filter_cutoff": 0.7987,
+      "filter_resonance": 0.3524,
+      "amp_attack": 0.4564,
+      "amp_release": 0.3146,
+      "reverb_mix": 0.3261,
+      "reverb_size": 0.3954,
+      "drive": 0.5258,
+      "density": 0.8815,
+      "output_level": 0.9429,
+      "coupling_level": 0.7924
+    },
+    "OddOscar": {
+      "macro_character": 0.9235,
+      "macro_movement": 0.1134,
+      "macro_coupling": 0.7863,
+      "macro_space": 0.3837,
+      "filter_cutoff": 0.8379,
+      "filter_resonance": 0.3895,
+      "amp_attack": 0.4487,
+      "amp_release": 0.3339,
+      "reverb_mix": 0.3751,
+      "reverb_size": 0.3914,
+      "drive": 0.4762,
+      "density": 0.8564,
+      "output_level": 0.8847,
+      "coupling_level": 0.7526
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ODDOSCAR",
+    "target": "OUROBOROS",
+    "amount": 0.7249,
+    "pairs": [
+      {
+        "source": "ODDOSCAR",
+        "target": "OUROBOROS",
+        "type": "CHAOS_INJECT",
+        "amount": 0.7249
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.8849,
+    "MOVEMENT": 0.0756,
+    "COUPLING": 0.7249,
+    "SPACE": 0.3795
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "HOT KINETIC DENSE VIOLENT FAM 3",
+  "mood": "Family",
+  "engines": [
+    "Ole",
+    "OddOscar"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — family, warm, kinetic, dense.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "warm",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.559,
+    "warmth": 0.929,
+    "movement": 0.958,
+    "density": 0.922,
+    "space": 0.522,
+    "aggression": 0.932
+  },
+  "parameters": {
+    "Ole": {
+      "level": 0.836,
+      "pan": 0.051
+    },
+    "OddOscar": {
+      "level": 0.715,
+      "pan": -0.074
+    }
+  },
+  "coupling": [
+    {
+      "source": "OLE",
+      "destination": "ODDOSCAR",
+      "type": "FILTER_MOD",
+      "amount": 0.607
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

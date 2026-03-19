@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Leviathan Wake",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "massive",
+    "dark",
+    "abyssal"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.82,
+    "movement": 0.78,
+    "density": 1.0,
+    "space": 0.98,
+    "aggression": 0.92
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 2,
+      "deep_subOctave": -2,
+      "deep_harmonicLevel": 0.25,
+      "deep_pressure": 1.0,
+      "deep_bodyType": 0,
+      "deep_bodySize": 1.0,
+      "deep_bodyDamp": 0.55,
+      "deep_flashRate": 0.75,
+      "deep_flashBright": 0.9,
+      "deep_creatureSpeed": 0.7,
+      "deep_creatureDepth": 0.75,
+      "deep_darkness": 0.95,
+      "deep_filterReso": 0.42,
+      "deep_reverbMix": 0.72,
+      "deep_reverbSize": 1.0,
+      "deep_delayMix": 0.28,
+      "deep_rumble": 1.0,
+      "deep_attack": 0.008,
+      "deep_decay": 2.0,
+      "deep_sustain": 0.9,
+      "deep_release": 5.0
+    }
+  },
+  "macros": {
+    "PRESSURE": 1.0,
+    "CREATURE": 0.8,
+    "WRECK": 0.6,
+    "ABYSS": 1.0
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

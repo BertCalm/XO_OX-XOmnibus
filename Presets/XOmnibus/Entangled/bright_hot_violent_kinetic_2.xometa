@@ -16,6 +16,18 @@
   },
   "engines": [
     "Osteria"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — bright hot violent kinetic. Designed for PHASE coupling with XOsteria.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "phase",
+    "osteria"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "DRIFT",
@@ -27,6 +39,7 @@
   "name": "BRIGHT HOT VIOLENT KINETIC 2",
   "parameters": {
     "Osteria": {
+<<<<<<< HEAD
       "couplingBus": 3,
       "couplingLevel": 0.798
     }
@@ -47,4 +60,13 @@
     "osteria"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.798,
+      "couplingBus": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

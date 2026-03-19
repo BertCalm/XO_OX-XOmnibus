@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Thermocline Drift",
+  "mood": "Atmosphere",
+  "engines": ["Ouie"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Filter A warm, filter B cool — crossing a thermal layer boundary in the ocean.",
+  "tags": ["atmosphere", "thermocline", "boundary", "contrast"],
+  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.45,
+    "density": 0.5,
+    "space": 0.75,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_ampAtk": 0.18,
+      "ouie_ampDec": 0.65,
+      "ouie_ampSus": 0.62,
+      "ouie_ampRel": 1.6,
+      "ouie_filterACutoff": 1200,
+      "ouie_filterARes": 0.25,
+      "ouie_filterBCutoff": 6000,
+      "ouie_filterBRes": 0.22,
+      "ouie_hammerDepth": 0.45,
+      "ouie_hammerPos": 0.5,
+      "ouie_lfo1Rate": 0.18,
+      "ouie_lfo1Depth": 0.18,
+      "ouie_lfo1Target": 0,
+      "ouie_lfo2Rate": 0.12,
+      "ouie_lfo2Depth": 0.12,
+      "ouie_portaAuto": 0.2,
+      "ouie_macroHammer": 0.45,
+      "ouie_macroCartilage": 0.5,
+      "ouie_macroAmpullae": 0.55,
+      "ouie_macroCurrent": 0.75
+    }
+  },
+  "macros": {
+    "HAMMER": 0.45,
+    "CARTILAGE": 0.5,
+    "AMPULLAE": 0.55,
+    "CURRENT": 0.75
+  },
+  "coupling": {"pairs": []}
+}

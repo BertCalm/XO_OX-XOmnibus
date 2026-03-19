@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Gradius Option",
+  "mood": "Prism",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The glowing orange orb that trails behind your ship, duplicating your shots. Mid-ERA blend between NES and Genesis FM, high harmonic density, just enough chaos to feel alive. Miki Higashino's shooter aesthetic: dangerous and beautiful in equal measure.",
+  "tags": [
+    "gradius",
+    "konami",
+    "shooter",
+    "prism",
+    "NES-Genesis",
+    "FM",
+    "lead",
+    "harmonics"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.42,
+    "movement": 0.45,
+    "density": 0.68,
+    "space": 0.38,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_macro_era": 0.32,
+      "ow_macro_chaos": 0.22,
+      "ow_macro_couple": 0.25,
+      "ow_macro_space": 0.38,
+      "ow_outputLevel": 0.87,
+      "ow_couplingLevel": 0.2,
+      "ow_couplingBus": 0
+    }
+  },
+  "macros": {
+    "ERA": 0.32,
+    "CHAOS": 0.22,
+    "COUPLE": 0.25,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

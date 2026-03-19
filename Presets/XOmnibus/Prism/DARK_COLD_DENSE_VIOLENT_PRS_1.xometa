@@ -37,15 +37,25 @@
   "mood": "Prism",
   "name": "DARK_COLD_DENSE_VIOLENT_PRS_1",
   "parameters": {
+<<<<<<< HEAD
     "Oracle": {
       "macro_character": 0.929,
       "macro_coupling": 0.393,
+=======
+    "Overworld": {
+      "macro_character": 0.467,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.414,
       "macro_space": 0.517
     },
+<<<<<<< HEAD
     "Overworld": {
       "macro_character": 0.467,
       "macro_coupling": 0.745,
+=======
+    "Oracle": {
+      "macro_character": 0.929,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.414,
       "macro_space": 0.517
     }
@@ -57,6 +67,10 @@
     "cold",
     "dense",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

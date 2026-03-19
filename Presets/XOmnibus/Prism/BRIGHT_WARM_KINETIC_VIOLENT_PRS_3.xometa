@@ -37,15 +37,25 @@
   "mood": "Prism",
   "name": "Sunrise Drift 2",
   "parameters": {
+<<<<<<< HEAD
     "Ocelot": {
       "macro_character": 0.47,
       "macro_coupling": 0.446,
+=======
+    "Ole": {
+      "macro_character": 0.941,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.929,
       "macro_space": 0.584
     },
+<<<<<<< HEAD
     "Ole": {
       "macro_character": 0.941,
       "macro_coupling": 0.807,
+=======
+    "Ocelot": {
+      "macro_character": 0.47,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.929,
       "macro_space": 0.584
     }
@@ -57,6 +67,10 @@
     "warm",
     "kinetic",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

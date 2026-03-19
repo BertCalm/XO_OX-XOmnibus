@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "LEAN PULSE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Oracle"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.194,
+      "macro_movement": 0.678,
+      "macro_coupling": 0.57,
+      "macro_space": 0.441
+    },
+    "Oracle": {
+      "macro_character": 0.769,
+      "macro_movement": 0.778,
+      "macro_coupling": 0.503,
+      "macro_space": 0.419
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "hollow",
     "void"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

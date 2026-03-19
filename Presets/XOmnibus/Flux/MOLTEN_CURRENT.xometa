@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "MOLTEN CURRENT",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Ocelot",
+    "Obscura"
+  ],
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.458,
+      "macro_movement": 0.791,
+      "macro_coupling": 0.48,
+      "macro_space": 0.61
+    },
+    "Obscura": {
+      "macro_character": 0.447,
+      "macro_movement": 0.8,
+      "macro_coupling": 0.498,
+      "macro_space": 0.555
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "kinetic",
     "movement"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Sunken Cosmos",
+  "mood": "Aether",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "abyssal",
+    "drone",
+    "deep",
+    "dark"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.74,
+    "movement": 0.18,
+    "density": 0.76,
+    "space": 1.0,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 0,
+      "deep_subOctave": -2,
+      "deep_harmonicLevel": 0.1,
+      "deep_pressure": 0.62,
+      "deep_bodyType": 3,
+      "deep_bodySize": 1.0,
+      "deep_bodyDamp": 0.96,
+      "deep_flashRate": 0.14,
+      "deep_flashBright": 0.18,
+      "deep_creatureSpeed": 0.18,
+      "deep_creatureDepth": 0.15,
+      "deep_darkness": 0.97,
+      "deep_filterReso": 0.08,
+      "deep_reverbMix": 0.93,
+      "deep_reverbSize": 1.0,
+      "deep_delayMix": 0.06,
+      "deep_rumble": 0.62,
+      "deep_attack": 1.8,
+      "deep_decay": 4.0,
+      "deep_sustain": 0.86,
+      "deep_release": 8.0
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.62,
+    "CREATURE": 0.18,
+    "WRECK": 0.15,
+    "ABYSS": 0.96
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

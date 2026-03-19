@@ -58,5 +58,9 @@
     "fold",
     "exposure"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Obscura's exposure duration controls Origami's fold speed — slow chemistry, cold geometry."
+>>>>>>> origin/v1-launch-prep
 }

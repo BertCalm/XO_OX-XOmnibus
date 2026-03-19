@@ -1,4 +1,14 @@
 {
+<<<<<<< HEAD
+=======
+  "schema_version": 1,
+  "name": "Warm String Tavern",
+  "mood": "Entangled",
+  "engines": [
+    "Osteria",
+    "Oblong"
+  ],
+>>>>>>> origin/v1-launch-prep
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -44,6 +45,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "Commune at the Water",
+  "mood": "Entangled",
+  "engines": [
+    "Osprey",
+    "Ohm"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OHM's meditative drone grounds osprey's altitude — sky meets sea floor.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",

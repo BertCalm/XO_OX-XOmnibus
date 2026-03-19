@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "KNOTTED PRESS",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.4689,
+      "macro_movement": 0.6314,
+      "macro_coupling": 0.9185,
+      "macro_space": 0.5914
+    },
+    "Obsidian": {
+      "macro_character": 0.3519,
+      "macro_movement": 0.0742,
+      "macro_coupling": 0.7847,
+      "macro_space": 0.0376
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "heavy",
     "xhigh",
     "massive"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

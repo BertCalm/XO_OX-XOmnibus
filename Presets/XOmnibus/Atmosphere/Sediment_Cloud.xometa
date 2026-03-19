@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Sediment Cloud",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Thick, heavy environment. Maximum density, warm compression. ORGANON dense register.",
   "dna": {
     "aggression": 0.387,
@@ -47,5 +58,40 @@
     "warm",
     "thick"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "SYSTEM",
+    "LOGIC",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.285,
+    "warmth": 0.77,
+    "movement": 0.36,
+    "density": 0.841,
+    "space": 0.253,
+    "aggression": 0.387
+  },
+  "parameters": {
+    "Organon": {
+      "system": 0.308,
+      "logic": 0.44,
+      "coupling": 0.295,
+      "space": 0.305
+    }
+  },
+  "macros": {
+    "SYSTEM": 0.308,
+    "LOGIC": 0.44,
+    "COUPLING": 0.295,
+    "SPACE": 0.305
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

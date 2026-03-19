@@ -24,6 +24,7 @@
     "Overlap",
     "Owlfish"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "KNOT",
     "FOLD",
@@ -81,6 +82,11 @@
     "space": 0.3184,
     "warmth": 0.4775
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright Kinetic Dense Violent character entanglement — OVERLAP × OWLFISH via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -89,5 +95,85 @@
     "violent",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "KNOT",
+    "FOLD",
+    "WEAVE",
+    "HALL"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.9747,
+    "warmth": 0.4775,
+    "movement": 0.9533,
+    "density": 0.9784,
+    "space": 0.3184,
+    "aggression": 0.9655
+  },
+  "sonic_dna": {
+    "brightness": 0.9747,
+    "warmth": 0.4775,
+    "movement": 0.9533,
+    "density": 0.9784,
+    "space": 0.3184,
+    "aggression": 0.9655
+  },
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.7859,
+      "macro_movement": 0.9586,
+      "macro_coupling": 0.9613,
+      "macro_space": 0.292,
+      "filter_cutoff": 0.8486,
+      "filter_resonance": 0.6124,
+      "amp_attack": 0.0783,
+      "amp_release": 0.2703,
+      "reverb_mix": 0.3581,
+      "reverb_size": 0.3624,
+      "drive": 0.8193,
+      "density": 0.9587,
+      "output_level": 0.925,
+      "coupling_level": 0.897
+    },
+    "Owlfish": {
+      "macro_character": 0.8078,
+      "macro_movement": 0.9854,
+      "macro_coupling": 0.9521,
+      "macro_space": 0.291,
+      "filter_cutoff": 0.8776,
+      "filter_resonance": 0.5703,
+      "amp_attack": 0.0757,
+      "amp_release": 0.3021,
+      "reverb_mix": 0.319,
+      "reverb_size": 0.371,
+      "drive": 0.85,
+      "density": 0.9543,
+      "output_level": 0.9354,
+      "coupling_level": 0.9349
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OVERLAP",
+    "target": "OWLFISH",
+    "amount": 0.7774,
+    "pairs": [
+      {
+        "source": "OVERLAP",
+        "target": "OWLFISH",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.7774
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.7261,
+    "MOVEMENT": 0.9533,
+    "COUPLING": 0.7774,
+    "SPACE": 0.3184
+  }
+>>>>>>> origin/v1-launch-prep
 }

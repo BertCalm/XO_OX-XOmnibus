@@ -58,5 +58,9 @@
     "facet",
     "dispersion"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Opal frequency-shifts Obsidian's crystal facets — each facet refracts a different grain."
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Mass Accumulation",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oblong"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Thick, heavy environment. Maximum density, warm compression. OBLONG dense register.",
   "dna": {
     "aggression": 0.327,
@@ -47,5 +58,40 @@
     "warm",
     "thick"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.201,
+    "warmth": 0.663,
+    "movement": 0.328,
+    "density": 0.844,
+    "space": 0.319,
+    "aggression": 0.327
+  },
+  "parameters": {
+    "Oblong": {
+      "character": 0.403,
+      "movement": 0.342,
+      "coupling": 0.375,
+      "space": 0.404
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.403,
+    "MOVEMENT": 0.342,
+    "COUPLING": 0.375,
+    "SPACE": 0.404
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

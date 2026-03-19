@@ -37,13 +37,21 @@
   "mood": "Family",
   "name": "ALLLO FAM 03",
   "parameters": {
+<<<<<<< HEAD
     "Oblong": {
+=======
+    "OddfeliX": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.037,
       "macro_coupling": 0.043,
       "macro_movement": 0.253,
       "macro_space": 0.026
     },
+<<<<<<< HEAD
     "OddfeliX": {
+=======
+    "Oblong": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.037,
       "macro_coupling": 0.043,
       "macro_movement": 0.253,
@@ -56,6 +64,10 @@
     "pole-fill",
     "minimal",
     "sparse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

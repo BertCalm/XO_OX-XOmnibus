@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Neon Automata",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "OddfeliX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Neon tetra brightness maps to OUTWIT cell density — electric colour becomes cellular population",
   "dna": {
     "aggression": 0.475,
@@ -40,6 +52,18 @@
   "name": "Neon Automata",
   "parameters": {
     "Outwit": {
+<<<<<<< HEAD
+=======
+      "owit_rule": 73,
+      "owit_arms": 7,
+      "owit_cellSize": 0.286,
+      "owit_density": 0.434,
+      "owit_evolveRate": 0.431,
+      "owit_mutateProb": 0.274,
+      "owit_pitchSpread": 0.481,
+      "owit_filterCutoff": 0.68,
+      "owit_filterReso": 0.181,
+>>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.114,
       "owit_ampRelease": 0.799,
       "owit_armStagger": 0.061,

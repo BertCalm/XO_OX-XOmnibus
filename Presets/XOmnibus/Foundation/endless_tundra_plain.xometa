@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ENDLESS TUNDRA PLAIN",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Orbital",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.267,
+      "macro_movement": 0.696,
+      "macro_coupling": 0.726,
+      "macro_space": 0.974
+    },
+    "OddfeliX": {
+      "macro_character": 0.58,
+      "macro_movement": 0.762,
+      "macro_coupling": 0.865,
+      "macro_space": 0.951
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "vast",
     "open",
     "space-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

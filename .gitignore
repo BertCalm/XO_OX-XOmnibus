@@ -53,3 +53,4 @@ firebase-debug.*.log
 # Claude Code — ignore all except skills (needed for CLI + web compatibility)
 .claude/*
 !.claude/skills/
+.claude/journal/

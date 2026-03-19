@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Oscar Anchor",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OddOscar",
+    "Oblong"
+  ],
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.82,
+      "macro_movement": 0.47,
+      "macro_coupling": 0.56,
+      "macro_space": 0.39
+    },
+    "Oblong": {
+      "macro_character": 0.73,
+      "macro_movement": 0.33,
+      "macro_coupling": 0.56,
+      "macro_space": 0.49
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "warm-dense",
     "scorching"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

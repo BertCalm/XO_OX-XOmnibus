@@ -44,5 +44,27 @@
     "speed",
     "radiant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "DIVE",
+    "THERMAL",
+    "COUPLING",
+    "SOAR"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.08,
+    "movement": 0.85,
+    "density": 0.15,
+    "space": 0.7,
+    "aggression": 0.18
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

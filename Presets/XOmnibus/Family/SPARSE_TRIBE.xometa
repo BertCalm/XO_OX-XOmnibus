@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SPARSE TRIBE",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.833,
+      "macro_movement": 0.903,
+      "macro_coupling": 0.776,
+      "macro_space": 0.23
+    },
+    "Orbital": {
+      "macro_character": 0.802,
+      "macro_movement": 0.219,
+      "macro_coupling": 0.19,
+      "macro_space": 0.251
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "family",
     "sparse",
     "xlow-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

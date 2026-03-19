@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "FROZEN FLUX 3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Orca",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.8346,
+      "macro_movement": 0.5825,
+      "macro_coupling": 0.1481,
+      "macro_space": 0.1274
+    },
+    "Oceanic": {
+      "macro_character": 0.3083,
+      "macro_movement": 0.899,
+      "macro_coupling": 0.7961,
+      "macro_space": 0.8607
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "cold",
     "shifting"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

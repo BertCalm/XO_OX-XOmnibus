@@ -3,12 +3,15 @@
   "description": "Electron cloud above a supercooled magnet. Eerie, bright, faintly alive.",
   "engines": [
     "Overworld"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.562,

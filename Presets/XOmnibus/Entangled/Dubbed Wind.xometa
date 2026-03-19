@@ -14,12 +14,15 @@
   "engines": [
     "Obbligato",
     "Overdub"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.55,
@@ -50,6 +53,7 @@
     "overdub",
     "wind"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Dual wind obligated to tape echo returns — every breath echoes back a beat later"
+>>>>>>> origin/v1-launch-prep
 }

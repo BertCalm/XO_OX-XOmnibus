@@ -23,6 +23,20 @@
   "engines": [
     "Overworld",
     "Oblique"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Overworld chip timbral-warped by Oblique prism — neon spectrum through bounced geometry.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "overworld",
+    "oblique",
+    "neon"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

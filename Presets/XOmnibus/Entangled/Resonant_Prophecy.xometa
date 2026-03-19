@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Deep",
+=======
+  "schema_version": 1,
+  "name": "Resonant Prophecy",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Oracle GENDY stochastic contour seeds OVERLAP FDN modulation envelope — unpredictable sacred space",
   "dna": {
     "aggression": 0.25,
@@ -40,9 +52,14 @@
   "name": "Resonant Prophecy",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.695,
       "olap_crossfeedAmt": 0.362,
+=======
+      "olap_size": 0.561,
+      "olap_decay": 0.518,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.507,
       "olap_decay": 0.518,
       "olap_diffusion": 0.731,

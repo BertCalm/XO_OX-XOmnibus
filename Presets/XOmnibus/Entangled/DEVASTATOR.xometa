@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DEVASTATOR",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Odyssey",
+    "Oblong"
+  ],
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.291,
+      "macro_movement": 0.141,
+      "macro_coupling": 0.824,
+      "macro_space": 0.281
+    },
+    "Oblong": {
+      "macro_character": 0.286,
+      "macro_movement": 0.18,
+      "macro_coupling": 0.364,
+      "macro_space": 0.478
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "obliterating",
     "entangled",
     "brutal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

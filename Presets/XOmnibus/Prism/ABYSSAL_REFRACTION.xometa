@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ABYSSAL REFRACTION",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Ohm",
+    "Octopus"
+  ],
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.996,
+      "macro_movement": 0.327,
+      "macro_coupling": 0.074,
+      "macro_space": 0.123
+    },
+    "Octopus": {
+      "macro_character": 0.136,
+      "macro_movement": 0.945,
+      "macro_coupling": 0.04,
+      "macro_space": 0.206
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "prism",
     "dark",
     "spectrum"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

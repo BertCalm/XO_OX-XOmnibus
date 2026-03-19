@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "VAST RESONANT GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Osprey",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.652,
+      "macro_movement": 0.107,
+      "macro_coupling": 0.95,
+      "macro_space": 0.905
+    },
+    "Obbligato": {
+      "macro_character": 0.02,
+      "macro_movement": 0.047,
+      "macro_coupling": 0.126,
+      "macro_space": 0.933
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "vast",
     "open",
     "space-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

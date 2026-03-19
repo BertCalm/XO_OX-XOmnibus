@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "KINETIC FOUNDATION",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Organon",
+    "Oracle"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.626,
+      "macro_movement": 0.891,
+      "macro_coupling": 0.57,
+      "macro_space": 0.207
+    },
+    "Oracle": {
+      "macro_character": 0.347,
+      "macro_movement": 0.899,
+      "macro_coupling": 0.677,
+      "macro_space": 0.318
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

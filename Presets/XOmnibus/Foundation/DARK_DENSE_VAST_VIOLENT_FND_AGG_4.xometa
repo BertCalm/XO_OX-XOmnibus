@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_DENSE_VAST_VIOLENT_FND_AGG_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub",
+    "Overbite"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.712,
+      "macro_movement": 0.482,
+      "macro_coupling": 0.482,
+      "macro_space": 0.612
+    },
+    "Overbite": {
+      "macro_character": 0.665,
+      "macro_movement": 0.466,
+      "macro_coupling": 0.5,
+      "macro_space": 0.602
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dark",
     "dense",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

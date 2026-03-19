@@ -16,6 +16,7 @@
   "engines": [
     "Ouroboros"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "CYCLE",
     "CONSUME",
@@ -36,6 +37,11 @@
     "space": 0.38,
     "warmth": 0.76
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Underground root network — exchange in total darkness",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -44,5 +50,27 @@
     "underground",
     "system"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "CYCLE",
+    "CONSUME",
+    "COUPLING",
+    "VOID"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.76,
+    "movement": 0.3,
+    "density": 0.78,
+    "space": 0.38,
+    "aggression": 0.28
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

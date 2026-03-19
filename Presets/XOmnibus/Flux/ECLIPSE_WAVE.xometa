@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ECLIPSE WAVE",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Opal",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.621,
+      "macro_movement": 0.155,
+      "macro_coupling": 0.93,
+      "macro_space": 0.865
+    },
+    "Oceanic": {
+      "macro_character": 0.976,
+      "macro_movement": 0.811,
+      "macro_coupling": 0.881,
+      "macro_space": 0.025
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "extreme",
     "high-warmth"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

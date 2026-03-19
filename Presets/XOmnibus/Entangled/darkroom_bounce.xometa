@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Darkroom Bounce",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Oblique"
+  ],
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.355,
+      "macro_movement": 0.255,
+      "macro_coupling": 0.555,
+      "macro_space": 0.605
+    },
+    "Oblique": {
+      "macro_character": 0.795,
+      "macro_movement": 0.745,
+      "macro_coupling": 0.645,
+      "macro_space": 0.545
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {

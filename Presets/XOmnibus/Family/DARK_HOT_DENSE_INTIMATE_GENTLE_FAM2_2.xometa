@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Osteria",
+    "Orphica"
+  ],
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.525,
+      "macro_movement": 0.606,
+      "macro_coupling": 0.536,
+      "macro_space": 0.088
+    },
+    "Orphica": {
+      "macro_character": 0.569,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.514,
+      "macro_space": 0.112
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "intimate",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

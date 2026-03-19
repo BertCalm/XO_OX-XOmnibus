@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK COLD FURY AET 11",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Overbite",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.074,
+      "macro_movement": 0.49,
+      "macro_coupling": 0.85,
+      "macro_space": 0.325
+    },
+    "Ocelot": {
+      "macro_character": 0.138,
+      "macro_movement": 0.491,
+      "macro_coupling": 0.474,
+      "macro_space": 0.249
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "aggressive",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

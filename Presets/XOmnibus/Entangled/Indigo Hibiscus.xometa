@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -54,6 +55,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "Indigo Hibiscus",
+  "mood": "Entangled",
+  "engines": [
+    "Ole",
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "OLE hibiscus harmonics fold into Oracle's indigo depth — mystic tropics.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -63,5 +76,47 @@
     "deep"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.68,
+    "movement": 0.65,
+    "density": 0.65,
+    "space": 0.55,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.72,
+      "macro_movement": 0.6,
+      "macro_coupling": 0.7,
+      "macro_space": 0.36
+    },
+    "Oracle": {
+      "macro_character": 0.55,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.7,
+      "macro_space": 0.62
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OLE",
+        "engineB": "ORACLE",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.7
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.635,
+    "MOVEMENT": 0.64,
+    "COUPLING": 0.7,
+    "SPACE": 0.49
+  },
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "DARK SPARSE STILL GENTLE FAM 2",
+  "mood": "Family",
+  "engines": [
+    "Oceanic",
+    "Ohm"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — family, dark, still, sparse.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "dark",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.076,
+    "warmth": 0.504,
+    "movement": 0.063,
+    "density": 0.062,
+    "space": 0.468,
+    "aggression": 0.053
+  },
+  "parameters": {
+    "Oceanic": {
+      "level": 0.848,
+      "pan": 0.109
+    },
+    "Ohm": {
+      "level": 0.685,
+      "pan": -0.073
+    }
+  },
+  "coupling": [
+    {
+      "source": "OCEANIC",
+      "destination": "OHM",
+      "type": "PITCH_SYNC",
+      "amount": 0.726
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

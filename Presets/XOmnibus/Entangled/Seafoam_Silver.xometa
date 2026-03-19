@@ -1,5 +1,32 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "schema_version": 1,
+  "name": "Seafoam Silver",
+  "mood": "Entangled",
+  "engines": [
+    "Orphica",
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Spectral morphing: OBSCURA's silver plate becomes ORPHICA's resonant canvas — brightness 0.92.",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.78,
+      "macro_movement": 0.64,
+      "macro_coupling": 0.78,
+      "macro_space": 0.7
+    },
+    "Obscura": {
+      "macro_character": 0.64,
+      "macro_movement": 0.57,
+      "macro_coupling": 0.68,
+      "macro_space": 0.54
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +85,10 @@
     "obscura",
     "spectral",
     "seafoam"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Sky Cathedral",
+  "mood": "Atmosphere",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "pad",
+    "expansive",
+    "meditative",
+    "drone"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.25,
+    "density": 0.48,
+    "space": 0.88,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_sawDetune": 0.35,
+      "sky_sawLevel": 0.9,
+      "sky_filterFc": 9000.0,
+      "sky_filterRes": 0.0,
+      "sky_ampAttack": 2.0,
+      "sky_ampDecay": 1.0,
+      "sky_ampSustain": 0.65,
+      "sky_ampRelease": 4.0,
+      "sky_shimmerMix": 0.52,
+      "sky_shimmerDecay": 6.0,
+      "sky_shimmerOct": 0.9,
+      "sky_shimmerBright": 0.65,
+      "sky_lfoRate": 0.025,
+      "sky_lfoDepth": 6.0,
+      "sky_lfoShape": 0.6,
+      "sky_chorusMix": 0.28,
+      "sky_chorusRate": 0.1,
+      "sky_chorusDepth": 8.0,
+      "sky_reverbMix": 0.65,
+      "sky_reverbSize": 0.92,
+      "sky_outputGain": 0.72,
+      "sky_couplingAmt": 0.0,
+      "sky_macroCharacter": 0.55,
+      "sky_macroMovement": 0.25,
+      "sky_macroCoupling": 0.0,
+      "sky_macroSpace": 0.85,
+      "sky_shimmerSpread": 0.6,
+      "sky_shimmerPhase": 0.0,
+      "sky_velSensitivity": 0.6,
+      "sky_glide": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.85
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

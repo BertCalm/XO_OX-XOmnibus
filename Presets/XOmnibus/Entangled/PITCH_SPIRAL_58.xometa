@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "PITCH SPIRAL 58",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.088,
+      "macro_movement": 0.963,
+      "macro_coupling": 0.844,
+      "macro_space": 0.243
+    },
+    "Obsidian": {
+      "macro_character": 0.589,
+      "macro_movement": 0.972,
+      "macro_coupling": 0.524,
+      "macro_space": 0.396
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "chaotic",
     "high-energy"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

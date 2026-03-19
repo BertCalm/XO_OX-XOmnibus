@@ -1,0 +1,117 @@
+{
+<<<<<<< HEAD:Presets/XOmnibus/Foundation/5X DARK COLD KINETIC DENSE VIOLENT FND 7.xometa
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Oblique",
+        "type": "CHAOS_INJECT",
+        "amount": 0.7
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Violent Shore Base",
+  "mood": "Foundation",
+  "engines": [
+    "Osprey",
+    "Oblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Foundation/Ospr_Obli_Violent_Shore_Base.xometa
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.903,
+    "brightness": 0.546,
+    "density": 0.935,
+    "movement": 0.952,
+    "space": 0.082,
+    "warmth": 0.077
+  },
+  "engines": [
+    "Osprey",
+    "Oblique"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.85,
+      "macro_coupling": 0.54,
+      "macro_movement": 0.91,
+      "macro_space": 0.27
+    },
+    "Osprey": {
+      "macro_character": 0.74,
+      "macro_coupling": 0.54,
+      "macro_movement": 0.72,
+      "macro_space": 0.49
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "foundation"
+  ],
+  "tempo": null,
+<<<<<<< HEAD:Presets/XOmnibus/Foundation/5X DARK COLD KINETIC DENSE VIOLENT FND 7.xometa
+  "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.74,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.54,
+      "macro_space": 0.49
+    },
+    "Oblique": {
+      "macro_character": 0.85,
+      "macro_movement": 0.91,
+      "macro_coupling": 0.54,
+      "macro_space": 0.27
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OSPREY",
+    "target": "OBLIQUE",
+    "amount": 0.7
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.546,
+    "warmth": 0.077,
+    "movement": 0.952,
+    "density": 0.935,
+    "space": 0.082,
+    "aggression": 0.903
+  }
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Foundation/Ospr_Obli_Violent_Shore_Base.xometa
+}

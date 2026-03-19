@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_STILL_GENTLE_FND_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub",
+    "Onset"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.401,
+      "macro_movement": 0.617,
+      "macro_coupling": 0.471,
+      "macro_space": 0.893
+    },
+    "Onset": {
+      "macro_character": 0.236,
+      "macro_movement": 0.124,
+      "macro_coupling": 0.667,
+      "macro_space": 0.27
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "cold",
     "still",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

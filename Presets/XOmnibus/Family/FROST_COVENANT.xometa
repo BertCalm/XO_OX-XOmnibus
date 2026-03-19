@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "FROST COVENANT",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Outwit",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.606,
+      "macro_movement": 0.511,
+      "macro_coupling": 0.385,
+      "macro_space": 0.577
+    },
+    "Oceanic": {
+      "macro_character": 0.255,
+      "macro_movement": 0.709,
+      "macro_coupling": 0.002,
+      "macro_space": 0.926
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "family",
     "cold",
     "xlow-warmth"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

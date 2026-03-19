@@ -23,8 +23,23 @@
     "warmth": 0.676
   },
   "engines": [
+<<<<<<< HEAD
     "Obese",
     "Ottoni"
+=======
+    "XObese",
+    "Ottoni"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE saturation into OTTONI brass. Thick fanfare. [Amp->Filter]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "ottoni",
+    "fat"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -45,10 +60,13 @@
       "fat_warmth": 0.666
     },
     "Ottoni": {
+<<<<<<< HEAD
       "ott_aggression": 0.628,
       "ott_brightness": 0.565,
       "ott_couplingBus": 0,
       "ott_couplingLevel": 0.75,
+=======
+>>>>>>> origin/v1-launch-prep
       "ott_outputLevel": 0.86,
       "ott_outputPan": 0.01,
       "ott_warmth": 0.593

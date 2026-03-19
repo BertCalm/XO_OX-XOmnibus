@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "BRIGHT WARM VAST GENTLE FAM 1",
+  "mood": "Family",
+  "engines": [
+    "Osprey",
+    "Ole"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — family, bright, warm, vast.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "bright",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.956,
+    "warmth": 0.903,
+    "movement": 0.454,
+    "density": 0.508,
+    "space": 0.915,
+    "aggression": 0.072
+  },
+  "parameters": {
+    "Osprey": {
+      "level": 0.687,
+      "pan": -0.134
+    },
+    "Ole": {
+      "level": 0.687,
+      "pan": -0.104
+    }
+  },
+  "coupling": [
+    {
+      "source": "OSPREY",
+      "destination": "OLE",
+      "type": "CHAOS_INJECT",
+      "amount": 0.589
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SAVAGE GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overworld",
+    "Ole"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.643,
+      "macro_movement": 0.598,
+      "macro_coupling": 0.325,
+      "macro_space": 0.503
+    },
+    "Ole": {
+      "macro_character": 0.548,
+      "macro_movement": 0.662,
+      "macro_coupling": 0.443,
+      "macro_space": 0.599
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "aggressive",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

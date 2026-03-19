@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Fang Reverb",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Overbite"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Overbite bite depth punctures OVERLAP FDN silence — aggression followed by infinite bloom",
   "dna": {
     "aggression": 0.425,
@@ -40,9 +52,14 @@
   "name": "Fang Reverb",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.767,
       "olap_crossfeedAmt": 0.592,
+=======
+      "olap_size": 0.907,
+      "olap_decay": 0.834,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.465,
       "olap_decay": 0.834,
       "olap_diffusion": 0.794,

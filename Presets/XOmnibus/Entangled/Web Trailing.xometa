@@ -24,6 +24,7 @@
     "Overlap",
     "Orbital"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -59,6 +60,11 @@
     "space": 0.75,
     "warmth": 0.475
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbital additive partials spread across OVERLAP FDN matrix — harmonic diffusion",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "entangled",
@@ -69,5 +75,59 @@
     "fdn",
     "reverb"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "aggression": 0.135,
+    "space": 0.75,
+    "warmth": 0.475,
+    "brightness": 0.65,
+    "density": 0.363,
+    "movement": 0.55
+  },
+  "sonic_dna": {
+    "aggression": 0.3,
+    "space": 0.75,
+    "warmth": 0.475,
+    "brightness": 0.65,
+    "density": 0.6,
+    "movement": 0.55
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_size": 0.609,
+      "olap_decay": 0.551,
+      "olap_damping": 0.408,
+      "olap_diffusion": 0.815,
+      "olap_modDepth": 0.379,
+      "olap_modRate": 0.308,
+      "olap_preDelay": 0.225,
+      "olap_earlyMix": 0.263,
+      "olap_lateMix": 0.5,
+      "olap_filterCutoff": 0.441,
+      "olap_filterReso": 0.334,
+      "olap_outputLevel": 0.827,
+      "olap_couplingLevel": 0.652,
+      "olap_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "ORBITAL",
+        "type": "PITCH_MOD",
+        "amount": 0.704
+      }
+    ]
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ARRESTED POINT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overbite",
+    "Orca"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.034,
+      "macro_movement": 0.088,
+      "macro_coupling": 0.98,
+      "macro_space": 0.571
+    },
+    "Orca": {
+      "macro_character": 0.567,
+      "macro_movement": 0.112,
+      "macro_coupling": 0.395,
+      "macro_space": 0.054
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "arrested"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

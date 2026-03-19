@@ -15,6 +15,18 @@
   },
   "engines": [
     "Oblong"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Coal-black fundamental, no overtone relief",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -32,7 +44,15 @@
   "name": "Anthracite Low",
   "parameters": {
     "Oblong": {
+<<<<<<< HEAD
       "bob_couplingBus": 0,
+=======
+      "bob_macro_character": 0.2704,
+      "bob_macro_movement": 0.8025,
+      "bob_macro_coupling": 0.208,
+      "bob_macro_space": 0.7045,
+      "bob_outputLevel": 0.85,
+>>>>>>> origin/v1-launch-prep
       "bob_couplingLevel": 0.5,
       "bob_macro_character": 0.2704,
       "bob_macro_coupling": 0.208,
@@ -41,6 +61,7 @@
       "bob_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.2323,
@@ -57,4 +78,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

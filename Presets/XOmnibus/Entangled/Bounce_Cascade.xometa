@@ -23,6 +23,20 @@
   "engines": [
     "Oblique",
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "RTJ-mode prism with velocity coupling to Onset — percussive light cascade.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "oblique",
+    "onset",
+    "bounce"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

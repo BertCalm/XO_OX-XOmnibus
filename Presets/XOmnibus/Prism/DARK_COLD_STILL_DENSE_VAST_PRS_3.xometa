@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "DARK_COLD_STILL_DENSE_VAST_PRS_3",
+  "mood": "Prism",
+  "engines": [
+    "Oblique",
+    "Ole"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_COLD_STILL_DENSE_VAST. Variant 3.",
   "dna": {
     "aggression": 0.606,
@@ -71,5 +83,49 @@
     "dense"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.059,
+      "macro_movement": 0.0,
+      "macro_coupling": 0.823,
+      "macro_space": 0.969
+    },
+    "Ole": {
+      "macro_character": 0.084,
+      "macro_movement": 0.069,
+      "macro_coupling": 0.836,
+      "macro_space": 0.863
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBLIQUE",
+    "target": "OLE",
+    "amount": 0.959
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.028,
+    "warmth": 0.123,
+    "movement": 0.023,
+    "density": 0.919,
+    "space": 0.962,
+    "aggression": 0.606
+  },
+  "macros": {
+    "CHARACTER": 0.072,
+    "MOVEMENT": 0.035,
+    "COUPLING": 0.829,
+    "SPACE": 0.916
+  }
+>>>>>>> origin/v1-launch-prep
 }

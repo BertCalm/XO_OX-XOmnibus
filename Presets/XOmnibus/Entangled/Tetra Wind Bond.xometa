@@ -14,12 +14,15 @@
   "engines": [
     "Obbligato",
     "OddfeliX"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.55,
@@ -50,6 +53,7 @@
     "oddfelix",
     "wind"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "OddfeliX sharp modulation obligated to OBBLIGATO's breath pattern — neon must follow the reed"
+>>>>>>> origin/v1-launch-prep
 }

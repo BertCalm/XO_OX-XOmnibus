@@ -23,6 +23,20 @@
   "engines": [
     "Obsidian",
     "Orca"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orca chaos injected into Obsidian crystal — the predator in the abyss, zero warmth, maximum kill.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obsidian",
+    "orca",
+    "abyss"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

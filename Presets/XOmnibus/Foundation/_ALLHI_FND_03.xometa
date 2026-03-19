@@ -37,13 +37,21 @@
   "mood": "Foundation",
   "name": "ALLHI FND 03",
   "parameters": {
+<<<<<<< HEAD
     "OddfeliX": {
+=======
+    "Overbite": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.936,
       "macro_coupling": 0.939,
       "macro_movement": 0.698,
       "macro_space": 0.912
     },
+<<<<<<< HEAD
     "Overbite": {
+=======
+    "OddfeliX": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.936,
       "macro_coupling": 0.939,
       "macro_movement": 0.698,
@@ -56,6 +64,10 @@
     "pole-fill",
     "high-energy",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

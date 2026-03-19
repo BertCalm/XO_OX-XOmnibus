@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "NOCTURNE SPECTRUM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Orbital",
+    "Oracle"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.311,
+      "macro_movement": 0.148,
+      "macro_coupling": 0.929,
+      "macro_space": 0.643
+    },
+    "Oracle": {
+      "macro_character": 0.538,
+      "macro_movement": 0.526,
+      "macro_coupling": 0.551,
+      "macro_space": 0.75
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "prism",
     "dark",
     "spectrum"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

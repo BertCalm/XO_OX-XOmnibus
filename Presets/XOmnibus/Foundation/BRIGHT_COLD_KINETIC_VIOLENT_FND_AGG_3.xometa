@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_KINETIC_VIOLENT_FND_AGG_3",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Oracle",
+    "Obese"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.82,
+      "macro_movement": 0.558,
+      "macro_coupling": 0.607,
+      "macro_space": 0.572
+    },
+    "Obese": {
+      "macro_character": 0.821,
+      "macro_movement": 0.542,
+      "macro_coupling": 0.642,
+      "macro_space": 0.604
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "cold",
     "kinetic"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_HOT_KINETIC_SPARSE_AET4_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Osprey",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.923,
+      "macro_movement": 0.2456,
+      "macro_coupling": 0.5592,
+      "macro_space": 0.5012
+    },
+    "OddfeliX": {
+      "macro_character": 0.7146,
+      "macro_movement": 0.5677,
+      "macro_coupling": 0.8823,
+      "macro_space": 0.2551
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "warm",
     "sparse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

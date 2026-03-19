@@ -14,12 +14,15 @@
   "engines": [
     "Odyssey",
     "Orphica"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.5,
@@ -50,6 +53,7 @@
     "orphica",
     "wavetable"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Orphica microsound cloud seeded into drift FM — grain particles carried on the odyssey"
+>>>>>>> origin/v1-launch-prep
 }

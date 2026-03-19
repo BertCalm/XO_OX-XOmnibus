@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "FURNACE PRISM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Optic",
+    "Opal"
+  ],
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.319,
+      "macro_movement": 0.179,
+      "macro_coupling": 0.538,
+      "macro_space": 0.699
+    },
+    "Opal": {
+      "macro_character": 0.627,
+      "macro_movement": 0.361,
+      "macro_coupling": 0.809,
+      "macro_space": 0.771
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "spectrum",
     "fire"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

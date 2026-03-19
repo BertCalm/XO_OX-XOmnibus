@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD FLUX 8",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overworld",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.6937,
+      "macro_movement": 0.2882,
+      "macro_coupling": 0.9452,
+      "macro_space": 0.8136
+    },
+    "Ocelot": {
+      "macro_character": 0.5501,
+      "macro_movement": 0.4548,
+      "macro_coupling": 0.3145,
+      "macro_space": 0.3233
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "cold",
     "shifting"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

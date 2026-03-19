@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Pressure Bloom",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Thick, heavy environment. Maximum density, warm compression. ORACLE dense register.",
   "dna": {
     "aggression": 0.269,
@@ -47,5 +58,40 @@
     "warm",
     "thick"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "VISION",
+    "FLOW",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.317,
+    "warmth": 0.66,
+    "movement": 0.205,
+    "density": 0.808,
+    "space": 0.532,
+    "aggression": 0.269
+  },
+  "parameters": {
+    "Oracle": {
+      "vision": 0.375,
+      "flow": 0.205,
+      "coupling": 0.13,
+      "space": 0.558
+    }
+  },
+  "macros": {
+    "VISION": 0.375,
+    "FLOW": 0.205,
+    "COUPLING": 0.13,
+    "SPACE": 0.558
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

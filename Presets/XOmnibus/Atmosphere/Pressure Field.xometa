@@ -3,12 +3,15 @@
   "description": "Below the thermocline. Where sound travels differently and time slows.",
   "engines": [
     "Odyssey"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.304,

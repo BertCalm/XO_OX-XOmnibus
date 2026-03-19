@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT COLD STILL INTIMATE GENTLE FAM2 2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Organon",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.516,
+      "macro_movement": 0.02,
+      "macro_coupling": 0.156,
+      "macro_space": 0.096
+    },
+    "Obbligato": {
+      "macro_character": 0.499,
+      "macro_movement": 0.052,
+      "macro_coupling": 0.164,
+      "macro_space": 0.057
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "still",
     "intimate",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

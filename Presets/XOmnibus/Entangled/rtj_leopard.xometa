@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "RTJ Leopard",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ocelot",
+    "Oblique"
+  ],
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.678,
+      "macro_movement": 0.728,
+      "macro_coupling": 0.578,
+      "macro_space": 0.478
+    },
+    "Oblique": {
+      "macro_character": 0.772,
+      "macro_movement": 0.722,
+      "macro_coupling": 0.622,
+      "macro_space": 0.522
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {

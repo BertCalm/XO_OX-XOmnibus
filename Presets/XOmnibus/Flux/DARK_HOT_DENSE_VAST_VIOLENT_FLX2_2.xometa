@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_DENSE_VAST_VIOLENT_FLX2_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Oblong",
+    "Oblique"
+  ],
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.4873,
+      "macro_movement": 0.3286,
+      "macro_coupling": 0.9136,
+      "macro_space": 0.8916
+    },
+    "Oblique": {
+      "macro_character": 0.4541,
+      "macro_movement": 0.3648,
+      "macro_coupling": 0.9239,
+      "macro_space": 0.8878
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "vast",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

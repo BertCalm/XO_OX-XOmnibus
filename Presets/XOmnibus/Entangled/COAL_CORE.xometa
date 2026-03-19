@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COAL CORE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Orphica"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.491,
+      "macro_movement": 0.123,
+      "macro_coupling": 0.853,
+      "macro_space": 0.452
+    },
+    "Orphica": {
+      "macro_character": 0.899,
+      "macro_movement": 0.445,
+      "macro_coupling": 0.088,
+      "macro_space": 0.682
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "hot",
     "molten",
     "furnace"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

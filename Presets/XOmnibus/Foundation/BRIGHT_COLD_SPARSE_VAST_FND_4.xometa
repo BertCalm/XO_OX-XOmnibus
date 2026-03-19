@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_SPARSE_VAST_FND_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overworld",
+    "Onset"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.202,
+      "macro_movement": 0.839,
+      "macro_coupling": 0.699,
+      "macro_space": 0.159
+    },
+    "Onset": {
+      "macro_character": 0.673,
+      "macro_movement": 0.252,
+      "macro_coupling": 0.689,
+      "macro_space": 0.8
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "sparse",
     "vast",
     "spatial"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

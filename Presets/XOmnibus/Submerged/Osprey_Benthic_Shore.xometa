@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "Benthic Shore",
+  "mood": "Submerged",
+  "engines": ["Osprey"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Seafloor benthic zone at the coastal margin — sediment-thick, dark, and resonant.",
+  "tags": ["submerged", "benthic", "seafloor", "sediment"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.2, "warmth": 0.65, "movement": 0.35, "density": 0.72, "space": 0.52, "aggression": 0.22},
+  "parameters": {
+    "Osprey": {
+      "osprey_brine": 0.7,
+      "osprey_foam": 0.05,
+      "osprey_fog": 0.0,
+      "osprey_hull": 0.75,
+      "osprey_depth": 0.95,
+      "osprey_coherence": 0.5,
+      "osprey_filterTilt": 0.25,
+      "osprey_filterEnvDepth": 0.3,
+      "osprey_harborVerb": 0.42,
+      "osprey_creatureRate": 0.2,
+      "osprey_creatureDepth": 0.45,
+      "osprey_glide": 0.2,
+      "osprey_ampAttack": 0.08,
+      "osprey_ampDecay": 0.5,
+      "osprey_ampSustain": 0.7,
+      "osprey_ampRelease": 1.0,
+      "osprey_macroCharacter": 0.7,
+      "osprey_macroMovement": 0.35,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroSpace": 0.52
+    }
+  },
+  "macros": {"CHARACTER": 0.7, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.52},
+  "coupling": {"pairs": []}
+}

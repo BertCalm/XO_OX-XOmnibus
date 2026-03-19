@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK WARM DENSE VIOLENT AET AGG 1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Osprey",
+    "Oblique"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.108,
+      "macro_movement": 0.668,
+      "macro_coupling": 0.852,
+      "macro_space": 0.41
+    },
+    "Oblique": {
+      "macro_character": 0.114,
+      "macro_movement": 0.652,
+      "macro_coupling": 0.912,
+      "macro_space": 0.426
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "dark",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

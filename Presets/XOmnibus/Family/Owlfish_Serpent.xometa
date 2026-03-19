@@ -1,10 +1,39 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
+=======
+  "schema_version": 1,
+  "name": "Serpent",
+  "mood": "Family",
+  "engines": [
+    "Owlfish"
+  ],
+  "author": "Guru Bin — B012/B014 Engine Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "The preset Oskar Sala reached for when the director wanted alien and uncanny. Odd divisions only — ÷3, ÷5, ÷7. bodyFreq 62 Hz (≈B♭1), deliberately between pitch classes. morphGlide 0.85: each note slides into its own undoing. This is the sound from the seance scripture: 'the serpent does not play notes, it changes shape between them.'",
+  "tags": [
+    "oskar-sala",
+    "trautonium",
+    "inharmonic",
+    "alien",
+    "uncanny",
+    "odd-divisions",
+    "serpent",
+    "family"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
+>>>>>>> origin/v1-launch-prep
   "couplingIntensity": "None",
   "created": "2026-03-16",
+<<<<<<< HEAD
   "description": "The preset Oskar Sala reached for when the director wanted alien and uncanny. Odd divisions only — ÷3, ÷5, ÷7. bodyFreq 62 Hz (≈B♭1), deliberately between pitch classes. morphGlide 0.85: each note slides into its own undoing. This is the sound from the seance scripture: 'the serpent does not play notes, it changes shape between them.'",
   "dna": {
     "aggression": 0.55,
@@ -62,6 +91,16 @@
       "owl_grainMix": 0.0,
       "owl_grainPitch": 0.0,
       "owl_grainSize": 0.4,
+=======
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Owlfish": {
+      "owl_portamento": 0.35,
+>>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 1,
       "owl_mixtur": 0.65,
       "owl_morphGlide": 0.85,
@@ -85,7 +124,13 @@
       "owl_subWave": 0.4
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
+=======
+  "coupling": {
+    "pairs": []
+  },
+>>>>>>> origin/v1-launch-prep
   "sequencer": null,
   "tags": [
     "oskar-sala",

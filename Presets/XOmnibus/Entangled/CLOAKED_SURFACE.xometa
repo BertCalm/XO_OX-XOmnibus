@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CLOAKED SURFACE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ottoni",
+    "Oblong"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.057,
+      "macro_movement": 0.104,
+      "macro_coupling": 0.795,
+      "macro_space": 0.776
+    },
+    "Oblong": {
+      "macro_character": 0.908,
+      "macro_movement": 0.11,
+      "macro_coupling": 0.68,
+      "macro_space": 0.844
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "cloaked"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

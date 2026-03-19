@@ -15,6 +15,7 @@
   "engines": [
     "Oblong"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -33,6 +34,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBLONG at full mass — chord mode engaged, harmonic density rich. XOblongBob's warm plural voice doing what it was born for.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "signature",
@@ -44,5 +50,25 @@
     "batch1-signatures"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.8,
+    "movement": 0.3,
+    "density": 0.78,
+    "space": 0.45,
+    "aggression": 0.35
+  }
+>>>>>>> origin/v1-launch-prep
 }

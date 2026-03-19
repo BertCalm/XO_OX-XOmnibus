@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Grain Drift",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Opal",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.15,
+      "macro_movement": 0.48,
+      "macro_coupling": 0.71,
+      "macro_space": 0.92
+    },
+    "Odyssey": {
+      "macro_character": 0.12,
+      "macro_movement": 0.43,
+      "macro_coupling": 0.76,
+      "macro_space": 0.95
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "grain",
     "drift"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Single grains drift through Odyssey wavetable space — cloud becomes singular trajectory."
+>>>>>>> origin/v1-launch-prep
 }

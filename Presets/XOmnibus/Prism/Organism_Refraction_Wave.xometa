@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Refraction Wave",
+  "mood": "Prism",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sine colony rule 129 bending light into spectral waves of warm refraction.",
+  "tags": ["prism", "refraction", "wave", "warm"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.6,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.6,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Organism": {
+      "org_oscWave": 0,
+      "org_rule": 129,
+      "org_mutate": 0.16,
+      "org_freeze": 0.1,
+      "org_scope": 0.72,
+      "org_filterCutoff": 6500,
+      "org_filterRes": 0.28,
+      "org_ampAtk": 0.08,
+      "org_ampDec": 0.4,
+      "org_ampSus": 0.65,
+      "org_ampRel": 1.1,
+      "org_lfo1Rate": 0.7,
+      "org_lfo1Depth": 0.2,
+      "org_lfo2Rate": 0.16,
+      "org_lfo2Depth": 0.12,
+      "org_reverbMix": 0.5,
+      "org_macroRule": 0.58,
+      "org_macroMutate": 0.16,
+      "org_macroSeed": 0.5,
+      "org_macroCoupling": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {"pairs": []}
+}

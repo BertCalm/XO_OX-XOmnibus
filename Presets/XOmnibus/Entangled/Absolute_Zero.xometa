@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Absolute Zero",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Odyssey",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.08,
+      "macro_movement": 0.12,
+      "macro_coupling": 0.82,
+      "macro_space": 0.97
+    },
+    "Obsidian": {
+      "macro_character": 0.05,
+      "macro_movement": 0.07,
+      "macro_coupling": 0.87,
+      "macro_space": 1.0
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "void",
     "silence"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Temperature floor: Obsidian envelope controls Odyssey's emergence into near-silence."
+>>>>>>> origin/v1-launch-prep
 }

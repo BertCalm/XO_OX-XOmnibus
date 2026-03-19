@@ -23,6 +23,20 @@
   "engines": [
     "Outwit",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Outwit 8-arm Wolfram CA chaos-injected by Ouroboros topology — cellular automation in fractal storm.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "outwit",
+    "ouroboros",
+    "kinetic"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

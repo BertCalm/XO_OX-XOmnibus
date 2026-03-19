@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DEEP SPACE PULSE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Octopus"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.843,
+      "macro_movement": 0.402,
+      "macro_coupling": 0.659,
+      "macro_space": 0.977
+    },
+    "Octopus": {
+      "macro_character": 0.623,
+      "macro_movement": 0.331,
+      "macro_coupling": 0.152,
+      "macro_space": 0.951
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "vast",
     "cosmic",
     "xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

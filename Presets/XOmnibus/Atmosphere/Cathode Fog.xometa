@@ -3,12 +3,15 @@
   "description": "Neon tubes humming in an empty corridor. The sound of artificial light.",
   "engines": [
     "Overworld"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.531,

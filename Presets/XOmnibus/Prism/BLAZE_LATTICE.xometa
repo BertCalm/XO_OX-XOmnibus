@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BLAZE LATTICE",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Ottoni",
+    "Ombre"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.171,
+      "macro_movement": 0.581,
+      "macro_coupling": 0.9,
+      "macro_space": 0.281
+    },
+    "Ombre": {
+      "macro_character": 0.372,
+      "macro_movement": 0.099,
+      "macro_coupling": 0.844,
+      "macro_space": 0.939
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "spectrum",
     "fire"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

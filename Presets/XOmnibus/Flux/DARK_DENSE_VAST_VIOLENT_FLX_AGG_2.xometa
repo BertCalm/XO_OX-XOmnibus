@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_DENSE_VAST_VIOLENT_FLX_AGG_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overdub",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.656,
+      "macro_movement": 0.484,
+      "macro_coupling": 0.9,
+      "macro_space": 0.921
+    },
+    "Odyssey": {
+      "macro_character": 0.559,
+      "macro_movement": 0.463,
+      "macro_coupling": 0.887,
+      "macro_space": 0.939
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dark",
     "dense",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

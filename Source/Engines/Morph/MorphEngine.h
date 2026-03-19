@@ -3,7 +3,11 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/FastMath.h"
+<<<<<<< HEAD
 #include "../../UI/OddOscar/OscarAnimState.h"
+=======
+#include "../../DSP/SRO/SilenceGate.h"
+>>>>>>> origin/v1-launch-prep
 #include <array>
 #include <cmath>
 
@@ -353,6 +357,7 @@ public:
         cachedSampleRate = sampleRate;
         cachedSampleRateFloat = static_cast<float> (cachedSampleRate);
         lfoPhase = 0.0;
+        silenceGate.prepare (sampleRate, maxBlockSize);
 
         aftertouch.prepare (sampleRate);  // D006: 5ms attack / 20ms release smoothing
 
@@ -479,6 +484,7 @@ public:
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
             {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
                         effectiveDetune, effectiveMorph, effectiveCutoff, filterResonance,
                         effectivePolyphony, monoMode, legatoMode, glideCoefficient);
@@ -524,6 +530,13 @@ public:
                     modWheelMorphOffset = static_cast<float> (controllerValue) / 127.0f * 3.0f;
                 }
             }
+        }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
         }
 
         //----------------------------------------------------------------------
@@ -709,6 +722,7 @@ public:
             }
         }
 
+<<<<<<< HEAD
         //----------------------------------------------------------------------
         // Update Oscar animation state (lock-free atomics, UI thread reads at 60 Hz)
         //----------------------------------------------------------------------
@@ -730,6 +744,12 @@ public:
             oscarState->voiceActive.store   (anyVoiceActive,                          std::memory_order_relaxed);
             oscarState->outputLevel.store   (juce::jlimit (0.0f, 1.0f, blockPeak),   std::memory_order_relaxed);
         }
+=======
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
+                                  numSamples);
+>>>>>>> origin/v1-launch-prep
     }
 
     //==========================================================================
@@ -940,6 +960,8 @@ public:
     void setOscarAnimState (OscarAnimState* state) { oscarState = state; }
 
 private:
+    SilenceGate silenceGate;
+
     //==========================================================================
     //  VOICE MANAGEMENT
     //==========================================================================

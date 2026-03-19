@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Light",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "OBBLIGATO Folded Bond",
+  "mood": "Entangled",
+  "engines": [
+    "Obbligato",
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Two reeds fold themselves into geometry — OBBLIGATO's BOND creases through ORIGAMI's architectural patience.",
   "dna": {
     "aggression": 0.2,

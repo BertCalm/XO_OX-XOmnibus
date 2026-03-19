@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "AGGRESSIVE AETHER STORM",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Overworld",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.51,
+      "macro_movement": 0.906,
+      "macro_coupling": 0.51,
+      "macro_space": 0.364
+    },
+    "Ocelot": {
+      "macro_character": 0.349,
+      "macro_movement": 0.968,
+      "macro_coupling": 0.819,
+      "macro_space": 0.359
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "transcendence",
     "aggression-xhigh",
     "movement-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

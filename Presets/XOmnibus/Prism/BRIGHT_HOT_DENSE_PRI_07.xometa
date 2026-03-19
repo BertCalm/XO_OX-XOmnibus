@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT HOT DENSE PRI 07",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.913,
+      "macro_movement": 0.671,
+      "macro_coupling": 0.887,
+      "macro_space": 0.579
+    },
+    "Orbital": {
+      "macro_character": 0.835,
+      "macro_movement": 0.569,
+      "macro_coupling": 0.719,
+      "macro_space": 0.595
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

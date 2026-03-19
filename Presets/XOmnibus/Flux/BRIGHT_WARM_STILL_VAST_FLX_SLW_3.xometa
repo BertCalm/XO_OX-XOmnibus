@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_STILL_VAST_FLX_SLW_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overworld",
+    "Organon"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.651,
+      "macro_movement": 0.013,
+      "macro_coupling": 0.86,
+      "macro_space": 0.939
+    },
+    "Organon": {
+      "macro_character": 0.671,
+      "macro_movement": 0.011,
+      "macro_coupling": 0.891,
+      "macro_space": 0.827
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "warm",
     "vast",
     "suspended-chaos"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

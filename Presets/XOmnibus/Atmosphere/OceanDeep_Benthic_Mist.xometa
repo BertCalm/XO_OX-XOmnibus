@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Benthic Mist",
+  "mood": "Atmosphere",
+  "engines": ["OceanDeep"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Suspended particles drift in the benthic zone, a diffuse bass atmosphere with bioluminescent flicker.",
+  "tags": ["atmosphere", "dark", "ambient", "bioluminescent"],
+  "macroLabels": ["PRESSURE", "CREATURE", "DEPTH", "LIGHT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.45,
+    "movement": 0.4,
+    "density": 0.72,
+    "space": 0.75,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_attack": 0.6,
+      "deep_decay": 1.2,
+      "deep_sustain": 0.7,
+      "deep_release": 2.0,
+      "deep_bodyType": 1,
+      "deep_bodySize": 0.7,
+      "deep_bodyDamp": 0.4,
+      "deep_subOctave": 0,
+      "deep_subShape": 0,
+      "deep_harmonicLevel": 0.45,
+      "deep_pressure": 0.5,
+      "deep_darkness": 0.65,
+      "deep_filterReso": 0.3,
+      "deep_rumble": 0.3,
+      "deep_creatureDepth": 0.55,
+      "deep_creatureSpeed": 0.3,
+      "deep_flashBright": 0.4,
+      "deep_flashRate": 1.2,
+      "deep_reverbSize": 0.85,
+      "deep_reverbMix": 0.6,
+      "deep_delayMix": 0.2,
+      "deep_macroPressure": 0.5,
+      "deep_macroCreature": 0.55,
+      "deep_macroDepth": 0.65,
+      "deep_macroLight": 0.4
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.5,
+    "CREATURE": 0.55,
+    "DEPTH": 0.65,
+    "LIGHT": 0.4
+  },
+  "coupling": {"pairs": []}
+}

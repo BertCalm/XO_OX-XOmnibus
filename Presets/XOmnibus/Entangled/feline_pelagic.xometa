@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Feline Pelagic",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ocelot",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.665,
+      "macro_movement": 0.715,
+      "macro_coupling": 0.565,
+      "macro_space": 0.465
+    },
+    "Oceanic": {
+      "macro_character": 0.285,
+      "macro_movement": 0.335,
+      "macro_coupling": 0.435,
+      "macro_space": 0.785
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {

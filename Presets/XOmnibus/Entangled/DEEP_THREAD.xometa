@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DEEP THREAD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OddfeliX",
+    "Oblique"
+  ],
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.6728,
+      "macro_movement": 0.6723,
+      "macro_coupling": 0.8338,
+      "macro_space": 0.8224
+    },
+    "Oblique": {
+      "macro_character": 0.9403,
+      "macro_movement": 0.1083,
+      "macro_coupling": 0.6935,
+      "macro_space": 0.025
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "thick",
     "xhigh",
     "granite"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

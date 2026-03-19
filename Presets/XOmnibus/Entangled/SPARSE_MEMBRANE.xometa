@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SPARSE MEMBRANE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Ole"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.779,
+      "macro_movement": 0.366,
+      "macro_coupling": 0.383,
+      "macro_space": 0.567
+    },
+    "Ole": {
+      "macro_character": 0.605,
+      "macro_movement": 0.679,
+      "macro_coupling": 0.949,
+      "macro_space": 0.372
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "hollow",
     "void"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "Tape Wobble",
+  "mood": "Flux",
+  "engines": ["Overbite"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Tape-saturated bass with slow pitch drift and mod echo — worn cassette opossum energy.",
+  "tags": ["bass", "tape", "wobble", "lo-fi"],
+  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.4, "warmth": 0.75, "movement": 0.55, "density": 0.55, "space": 0.35, "aggression": 0.3},
+  "parameters": {
+    "Overbite": {
+      "poss_oscAWaveform": 2,
+      "poss_oscADrift": 0.4,
+      "poss_subLevel": 0.45,
+      "poss_filterCutoff": 1400,
+      "poss_filterReso": 0.15,
+      "poss_ampAttack": 0.01,
+      "poss_ampDecay": 0.5,
+      "poss_ampSustain": 0.65,
+      "poss_ampRelease": 0.3,
+      "poss_driveAmount": 0.45,
+      "poss_driveType": 2,
+      "poss_fxEchoTime": 0.5,
+      "poss_fxEchoFeedback": 0.3,
+      "poss_fxEchoType": 1,
+      "poss_fxEchoMix": 0.25,
+      "poss_macroBelly": 0.5,
+      "poss_macroBite": 0.3,
+      "poss_macroScurry": 0.55,
+      "poss_macroTrash": 0.25,
+      "poss_macroPlayDead": 0.2
+    }
+  },
+  "macros": {"BELLY": 0.5, "BITE": 0.3, "SCURRY": 0.55, "TRASH": 0.25, "PLAY DEAD": 0.2},
+  "coupling": {"pairs": []}
+}

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Warm Expanse",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Opal"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.87,
+      "macro_movement": 0.61,
+      "macro_coupling": 0.81,
+      "macro_space": 0.88
+    },
+    "Opal": {
+      "macro_character": 0.66,
+      "macro_movement": 0.43,
+      "macro_coupling": 0.59,
+      "macro_space": 0.94
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "scorching",
     "spatial"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

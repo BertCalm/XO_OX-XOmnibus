@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Murk Bite",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overbite",
+    "Obscura"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.75,
+      "macro_movement": 0.55,
+      "macro_coupling": 0.65,
+      "macro_space": 0.3
+    },
+    "Obscura": {
+      "macro_character": 0.6,
+      "macro_movement": 0.7,
+      "macro_coupling": 0.6,
+      "macro_space": 0.4
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "bass",
     "harmonic",
     "murk"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

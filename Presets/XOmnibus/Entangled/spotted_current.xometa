@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Spotted Current",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ocelot",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.66,
+      "macro_movement": 0.71,
+      "macro_coupling": 0.56,
+      "macro_space": 0.46
+    },
+    "Oceanic": {
+      "macro_character": 0.29,
+      "macro_movement": 0.34,
+      "macro_coupling": 0.44,
+      "macro_space": 0.79
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {

@@ -4,20 +4,26 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **34 engines** are registered in XOmnibus
-(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS)
+and mutate into sounds impossible with any single synth. **40 engines** are registered in XOmnibus
+(26 original; +5 Constellation 2026-03-14; +OVERLAP+OUTWIT 2026-03-15; +OMBRE+ORCA+OCTOPUS 2026-03-15;
++OPENSKY+OSTINATO+OCEANDEEP+OUIE V1 concept engines 2026-03-17; +OVERTONE+ORGANISM V2 Theorem engines 2026-03-17)
 — see engine table below.
 
-- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS
-- **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
+- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OPENSKY, OSTINATO, OCEANDEEP, OUIE, OVERTONE, ORGANISM
+- **Coupling:** Cross-engine modulation via MegaCouplingMatrix (13 coupling types: 12 original + KnotTopology)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
+<<<<<<< HEAD
 - **Presets:** 10,028 factory presets in `.xometa` format, 7 mood categories (incl. Family), 6D Sonic DNA
+=======
+- **Presets:** 19,559+ factory presets in `.xometa` format, 8 mood categories (incl. Family, Submerged), 6D Sonic DNA
+>>>>>>> origin/v1-launch-prep
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
 - **Design:** Gallery Model — warm white shell frames engine accent colors. Light mode default.
 
 ## Brand Rules
 
 - All XO_OX instruments follow the **XO + O-word** naming convention
+- Effect engines use the **fXO_ + O-word** naming convention (e.g., `fXO_Obsession`, `fXO_Orbit`)
 - Character over feature count — every feature must support a sonic pillar
 - Dry patches must sound compelling before effects are applied
 - Presets are a core product feature, not an afterthought
@@ -85,6 +91,14 @@ are next up after current Opus sessions resume.
 | OCEANDEEP | XOceanDeep | Trench Violet `#2D0A4E` |
 | OUIE | XOuïe | Hammerhead Steel `#708090` |
 
+### Phase 2 Architecture — Effects Ecosystem & Prime Movers (approved 2026-03-17)
+
+**Prime Mover engines:** A new send-only engine class that drives a 4-slot effects chain. Prime Movers generate source audio and feed it into the coupling matrix but never receive coupling input. `MaxSlots` remains 4 for generators; the Prime Mover occupies a separate dedicated slot. Candidates: `XO_Origin` (multi-osc), `XO_Overture` (sample player), `XO_Oscillograph` (wavetable+FM), `XO_Ouverture` (mic/line input).
+
+**fXO_ effects engines:** Built on 6-8 shared effect cores (`ReverbCore`, `DelayCore`, `SaturationCore`, `ModulationCore`, `FilterCore`, `SpatialCore`, `PitchCore`, `DynamicsCore`). Regional engines (e.g., `fXO_Outpost` for Midwest, `fXO_Overcast` for Nordic) are thin adapters that configure 2-3 shared cores into a curated chain. Effects extend `SynthEngine` with optional audio input (Path B). Full design: `Skills/sro-optimizer/SKILL.md` §Phase 2 Roadmap.
+
+**Dynamic oversampling:** Early Phase 2 — `OversamplingManager` component triggers 4×→2×→1× reduction based on `SROAuditor` budget alarm.
+
 ### Engine ID vs Parameter Prefix
 
 Engine IDs (used in preset `"engines"` arrays, `"parameters"` keys, UI, and coupling routes)
@@ -146,8 +160,9 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Orca/OrcaEngine.h` | Apex predator engine (wavetable + echolocation + breach) |
 | `Source/Engines/Octopus/OctopusEngine.h` | Decentralized alien intelligence engine (arms + chromatophores + ink cloud) |
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
-| `Docs/xomnibus_sound_design_guides.md` | Sound design guide (30 of 34 engines in unified guide; 4 Constellation engines have dedicated guides in Docs/) |
+| `Docs/xomnibus_sound_design_guides.md` | Sound design guide (40/40 engines — complete fleet coverage) |
 | `Source/DSP/` | Shared DSP library |
+| `Source/DSP/SRO/` | SRO framework (SilenceGate, ControlRateReducer, LookupTable, SROAuditor) |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |
 | `Presets/XOmnibus/{mood}/` | Factory presets by mood |
@@ -157,7 +172,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 ## Preset System
 
 - `.xometa` JSON files are the source of truth (version-controlled)
-- 7 moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family
+- 8 moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged
 - 4 macros: CHARACTER, MOVEMENT, COUPLING, SPACE
 - 6D Sonic DNA: brightness, warmth, movement, density, space, aggression
 - Naming: 2-3 words, evocative, max 30 chars, no duplicates, no jargon
@@ -210,7 +225,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ## Seance Findings
 
-29 seances complete (2026-03-14) — all 29 registered engines covered (24 original + 5 Constellation). Constellation seances (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) completed same day; findings committed 836e85a. Full data in:
+40 seances complete (2026-03-17) — all 40 registered engines covered. Constellation (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) + OVERLAP/OUTWIT/OMBRE/ORCA/OCTOPUS + OPENSKY/OSTINATO/OCEANDEEP/OUIE/OVERTONE/ORGANISM seances committed across multiple sessions. Full data in:
 - Grand Survey: `Docs/xomnibus_landscape_2026.md`
 - Knowledge tree: `~/.claude/skills/synth-seance/knowledge/index.md`
 - Cross-reference: `Docs/seance_cross_reference.md`
@@ -271,7 +286,11 @@ New engines are designed as standalone instruments first, then integrated into X
 
 - All 6 doctrines resolved fleet-wide (D001–D006)
 - 22/22 engines with mod wheel | 23/23 engines with aftertouch (Optic intentionally exempt — visual engine)
+<<<<<<< HEAD
 - 10,028 presets, 0 duplicates, 100% DNA coverage, health score ~92/100
+=======
+- 19,559+ presets (as of 2026-03-17), 0 duplicates, 100% DNA coverage, health score ~92/100
+>>>>>>> origin/v1-launch-prep
 - Build PASS + auval PASS
 - **Full history**: `Docs/prism_sweep_final_report.md` | Master index: `Docs/prism_sweep_index.md`
 
@@ -290,6 +309,7 @@ Reusable skill guides live in `Skills/` — invoke the relevant one before start
 | [engine-health-check](Skills/engine-health-check/SKILL.md) | `/engine-health-check` | Quick D001–D006 doctrine check on any engine |
 | [dna-designer](Skills/dna-designer/SKILL.md) | `/dna-designer` | Assigning accurate 6D Sonic DNA to presets |
 | [xpn-export-specialist](Skills/xpn-export-specialist/SKILL.md) | `/xpn-export-specialist` | Full XPN/MPC export pipeline |
+| [sro-optimizer](Skills/sro-optimizer/SKILL.md) | `/sro-optimizer` | CPU audit, zero-idle bypass, LUT replacement, control-rate coupling optimization |
 | synth-seance (`~/.claude/skills/`) | `/synth-seance` | Ghost council full engine quality evaluation |
 | post-engine-completion-checklist (`~/.claude/skills/`) | `/post-engine-completion-checklist` | 5-point post-build audit |
 | producers-guild (`~/.claude/skills/`) | `/producers-guild` | 12-specialist market/product review |

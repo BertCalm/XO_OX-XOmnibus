@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "THIN FLOW 5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Oracle",
+    "Ole"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.5827,
+      "macro_movement": 0.1414,
+      "macro_coupling": 0.3498,
+      "macro_space": 0.9677
+    },
+    "Ole": {
+      "macro_character": 0.6985,
+      "macro_movement": 0.392,
+      "macro_coupling": 0.595,
+      "macro_space": 0.938
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "sparse",
     "minimal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

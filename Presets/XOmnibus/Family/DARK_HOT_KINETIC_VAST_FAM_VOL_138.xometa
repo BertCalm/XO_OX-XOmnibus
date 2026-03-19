@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_KINETIC_VAST_FAM_VOL_138",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Origami",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.475,
+      "macro_movement": 0.95,
+      "macro_coupling": 0.483,
+      "macro_space": 0.894
+    },
+    "OddOscar": {
+      "macro_character": 0.482,
+      "macro_movement": 0.929,
+      "macro_coupling": 0.462,
+      "macro_space": 0.85
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "kinetic",
     "vast",
     "dark"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

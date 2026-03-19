@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "EMPTY FLUX 2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Outwit",
+    "Opal"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.3238,
+      "macro_movement": 0.1742,
+      "macro_coupling": 0.0524,
+      "macro_space": 0.7417
+    },
+    "Opal": {
+      "macro_character": 0.5261,
+      "macro_movement": 0.7457,
+      "macro_coupling": 0.4762,
+      "macro_space": 0.778
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "sparse",
     "minimal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

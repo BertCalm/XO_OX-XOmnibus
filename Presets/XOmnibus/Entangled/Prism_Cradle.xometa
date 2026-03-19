@@ -22,6 +22,18 @@
   "engines": [
     "Ottoni",
     "Owlfish"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "ottoni",
+    "owlfish"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -51,6 +63,7 @@
       "macro_space": 0.39
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.495,
@@ -68,4 +81,16 @@
     "owlfish"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OTTONI",
+        "engineB": "OWLFISH",
+        "type": "SPECTRAL_BLEND",
+        "amount": 0.55
+      }
+    ]
+  }
+>>>>>>> origin/v1-launch-prep
 }

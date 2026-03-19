@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FND_4",
+  "mood": "Foundation",
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT. Variant 4.",
   "dna": {
     "aggression": 0.939,
@@ -71,5 +83,49 @@
     "dense"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 1.0,
+      "macro_movement": 0.954,
+      "macro_coupling": 0.801,
+      "macro_space": 0.142
+    },
+    "OddOscar": {
+      "macro_character": 0.915,
+      "macro_movement": 0.904,
+      "macro_coupling": 0.948,
+      "macro_space": 0.077
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ODDFELIX",
+    "target": "ODDOSCAR",
+    "amount": 0.512
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.954,
+    "warmth": 0.351,
+    "movement": 0.974,
+    "density": 0.929,
+    "space": 0.116,
+    "aggression": 0.939
+  },
+  "macros": {
+    "CHARACTER": 0.958,
+    "MOVEMENT": 0.929,
+    "COUPLING": 0.875,
+    "SPACE": 0.109
+  }
+>>>>>>> origin/v1-launch-prep
 }

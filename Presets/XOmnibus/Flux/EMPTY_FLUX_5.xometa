@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "EMPTY FLUX 5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overdub",
+    "Outwit"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.9663,
+      "macro_movement": 0.8169,
+      "macro_coupling": 0.8013,
+      "macro_space": 0.1384
+    },
+    "Outwit": {
+      "macro_character": 0.25,
+      "macro_movement": 0.6412,
+      "macro_coupling": 0.8741,
+      "macro_space": 0.5545
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "sparse",
     "minimal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

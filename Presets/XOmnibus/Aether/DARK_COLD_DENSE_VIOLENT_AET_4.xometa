@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "DARK COLD DENSE VIOLENT AET 4",
+  "mood": "Aether",
+  "engines": [
+    "Odyssey",
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — aether, dark, cold, dense.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.072,
+    "warmth": 0.101,
+    "movement": 0.541,
+    "density": 0.93,
+    "space": 0.405,
+    "aggression": 0.94
+  },
+  "parameters": {
+    "Odyssey": {
+      "level": 0.723,
+      "pan": -0.023
+    },
+    "Organon": {
+      "level": 0.73,
+      "pan": 0.026
+    }
+  },
+  "coupling": [
+    {
+      "source": "ODYSSEY",
+      "destination": "ORGANON",
+      "type": "PITCH_SYNC",
+      "amount": 0.524
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Atmospheric Churn",
+  "mood": "Atmosphere",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Weather system in motion. High movement, active aggression. OPTIC kinetic register.",
   "dna": {
     "aggression": 0.495,
@@ -47,5 +58,40 @@
     "weather",
     "dynamic"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "FOCUS",
+    "ABERRATION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.309,
+    "warmth": 0.443,
+    "movement": 0.82,
+    "density": 0.565,
+    "space": 0.415,
+    "aggression": 0.495
+  },
+  "parameters": {
+    "Optic": {
+      "focus": 0.448,
+      "aberration": 0.802,
+      "coupling": 0.404,
+      "space": 0.391
+    }
+  },
+  "macros": {
+    "FOCUS": 0.448,
+    "ABERRATION": 0.802,
+    "COUPLING": 0.404,
+    "SPACE": 0.391
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

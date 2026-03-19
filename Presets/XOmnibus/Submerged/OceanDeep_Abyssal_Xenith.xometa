@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Xenith",
+  "mood": "Submerged",
+  "engines": ["OceanDeep"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The farthest point below — total silence interrupted only by alien pressure and distant rumble.",
+  "tags": ["submerged", "extreme-depth", "alien", "pressurized"],
+  "macroLabels": ["PRESSURE", "CREATURE", "DEPTH", "LIGHT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.03,
+    "warmth": 0.25,
+    "movement": 0.12,
+    "density": 0.95,
+    "space": 0.55,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_attack": 0.02,
+      "deep_decay": 0.3,
+      "deep_sustain": 0.92,
+      "deep_release": 0.5,
+      "deep_bodyType": 0,
+      "deep_bodySize": 0.98,
+      "deep_bodyDamp": 0.95,
+      "deep_subOctave": 2,
+      "deep_subShape": 0,
+      "deep_harmonicLevel": 0.05,
+      "deep_pressure": 1.0,
+      "deep_darkness": 1.0,
+      "deep_filterReso": 0.08,
+      "deep_rumble": 0.85,
+      "deep_creatureDepth": 0.08,
+      "deep_creatureSpeed": 0.04,
+      "deep_flashBright": 0.03,
+      "deep_flashRate": 0.08,
+      "deep_reverbSize": 0.55,
+      "deep_reverbMix": 0.22,
+      "deep_delayMix": 0.0,
+      "deep_macroPressure": 1.0,
+      "deep_macroCreature": 0.08,
+      "deep_macroDepth": 1.0,
+      "deep_macroLight": 0.03
+    }
+  },
+  "macros": {
+    "PRESSURE": 1.0,
+    "CREATURE": 0.08,
+    "DEPTH": 1.0,
+    "LIGHT": 0.03
+  },
+  "coupling": {"pairs": []}
+}

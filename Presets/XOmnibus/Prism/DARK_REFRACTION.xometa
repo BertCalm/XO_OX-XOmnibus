@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK REFRACTION",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Orbital",
+    "Obscura"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.772,
+      "macro_movement": 0.552,
+      "macro_coupling": 0.923,
+      "macro_space": 0.45
+    },
+    "Obscura": {
+      "macro_character": 0.33,
+      "macro_movement": 0.481,
+      "macro_coupling": 0.509,
+      "macro_space": 0.765
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "prism",
     "dark",
     "spectrum"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

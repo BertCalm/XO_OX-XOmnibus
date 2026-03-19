@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "OPEN CLAN",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Ottoni",
+    "Osprey"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.114,
+      "macro_movement": 0.064,
+      "macro_coupling": 0.448,
+      "macro_space": 0.362
+    },
+    "Osprey": {
+      "macro_character": 0.594,
+      "macro_movement": 0.452,
+      "macro_coupling": 0.222,
+      "macro_space": 0.615
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "family",
     "sparse",
     "xlow-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

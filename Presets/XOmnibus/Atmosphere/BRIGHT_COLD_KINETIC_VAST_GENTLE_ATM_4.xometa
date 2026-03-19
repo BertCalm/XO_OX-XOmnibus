@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_KINETIC_VAST_GENTLE_ATM_4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OddOscar",
+    "Oceanic"
+  ],
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.4584,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.5705,
+      "macro_space": 0.9263
+    },
+    "Oceanic": {
+      "macro_character": 0.4617,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.5326,
+      "macro_space": 0.9624
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

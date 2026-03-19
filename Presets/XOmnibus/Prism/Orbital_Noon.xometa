@@ -15,6 +15,19 @@
   },
   "engines": [
     "Orbital"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbit at maximum altitude brightness",
+  "tags": [
+    "prism",
+    "bright",
+    "ultra",
+    "spectral",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "ORBIT",
@@ -32,15 +45,19 @@
   "name": "Orbital Noon",
   "parameters": {
     "Orbital": {
+<<<<<<< HEAD
       "orb_couplingBus": 0,
       "orb_couplingLevel": 0.5,
       "orb_macro_couple": 0.2884,
+=======
+>>>>>>> origin/v1-launch-prep
       "orb_macro_orbit": 0.8192,
       "orb_macro_phase": 0.3067,
       "orb_macro_space": 0.6686,
       "orb_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.1598,
@@ -58,4 +75,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

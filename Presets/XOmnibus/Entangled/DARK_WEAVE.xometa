@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK WEAVE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ombre",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.0187,
+      "macro_movement": 0.9212,
+      "macro_coupling": 0.9448,
+      "macro_space": 0.5758
+    },
+    "OddfeliX": {
+      "macro_character": 0.5734,
+      "macro_movement": 0.7095,
+      "macro_coupling": 0.7671,
+      "macro_space": 0.1152
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "compressed",
     "dense",
     "extreme-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

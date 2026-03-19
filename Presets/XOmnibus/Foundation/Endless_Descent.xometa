@@ -15,6 +15,17 @@
   },
   "engines": [
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OUROBOROS — dark extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,6 +37,7 @@
   "name": "Endless Descent",
   "parameters": {
     "Ouroboros": {
+<<<<<<< HEAD
       "uro_ampAttack": 589.0,
       "uro_ampDecay": 640.9,
       "uro_ampRelease": 393.1,
@@ -34,6 +46,8 @@
       "uro_coupling": 0.92,
       "uro_cycle": 0.98,
       "uro_delayMix": 0.67,
+=======
+>>>>>>> origin/v1-launch-prep
       "uro_feedbackLoop": 0.89,
       "uro_filterCutoff": 0.84,
       "uro_filterReso": 0.54,
@@ -44,6 +58,7 @@
       "uro_space": 0.84
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.38,
@@ -59,4 +74,9 @@
     "extreme-brightness"
   ],
   "version": "1.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

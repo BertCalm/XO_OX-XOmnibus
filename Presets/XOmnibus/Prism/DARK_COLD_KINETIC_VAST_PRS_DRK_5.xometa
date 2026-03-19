@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_KINETIC_VAST_PRS_DRK_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Oracle",
+    "Ohm"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.3033,
+      "macro_movement": 0.9563,
+      "macro_coupling": 0.5019,
+      "macro_space": 0.9697
+    },
+    "Ohm": {
+      "macro_character": 0.2831,
+      "macro_movement": 0.9673,
+      "macro_coupling": 0.5232,
+      "macro_space": 0.9714
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "cold",
     "kinetic",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

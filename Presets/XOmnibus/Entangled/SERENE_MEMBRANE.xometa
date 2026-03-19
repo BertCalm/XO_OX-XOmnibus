@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SERENE MEMBRANE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.832,
+      "macro_movement": 0.096,
+      "macro_coupling": 0.878,
+      "macro_space": 0.784
+    },
+    "OddOscar": {
+      "macro_character": 0.508,
+      "macro_movement": 0.043,
+      "macro_coupling": 0.777,
+      "macro_space": 0.746
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "serene"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

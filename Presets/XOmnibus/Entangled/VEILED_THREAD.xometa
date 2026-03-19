@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "VEILED THREAD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Ole"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.132,
+      "macro_movement": 0.057,
+      "macro_coupling": 0.913,
+      "macro_space": 0.98
+    },
+    "Ole": {
+      "macro_character": 0.201,
+      "macro_movement": 0.1,
+      "macro_coupling": 0.521,
+      "macro_space": 0.031
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "veiled"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

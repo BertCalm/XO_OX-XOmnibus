@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_AET4_5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Origami",
+    "Opal"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.7933,
+      "macro_movement": 0.8643,
+      "macro_coupling": 0.4367,
+      "macro_space": 0.4326
+    },
+    "Opal": {
+      "macro_character": 0.4987,
+      "macro_movement": 0.8116,
+      "macro_coupling": 0.555,
+      "macro_space": 0.2275
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "intimate",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

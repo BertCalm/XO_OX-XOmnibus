@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Gilded Weave",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Ohm"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.83,
+      "macro_movement": 0.38,
+      "macro_coupling": 0.64,
+      "macro_space": 0.38
+    },
+    "Ohm": {
+      "macro_character": 0.69,
+      "macro_movement": 0.31,
+      "macro_coupling": 0.62,
+      "macro_space": 0.48
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "scorching",
     "bright"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

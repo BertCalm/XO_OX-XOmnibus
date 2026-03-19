@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -54,6 +55,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "Daguerreotype Dance",
+  "mood": "Entangled",
+  "engines": [
+    "Ole",
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "OLE vibrant timbre blended with Obscura's silver grain — vintage dance floor.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -63,5 +76,47 @@
     "vintage"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.62,
+    "density": 0.55,
+    "space": 0.62,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.68,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.6,
+      "macro_space": 0.38
+    },
+    "Obscura": {
+      "macro_character": 0.52,
+      "macro_movement": 0.58,
+      "macro_coupling": 0.6,
+      "macro_space": 0.68
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OLE",
+        "engineB": "OBSCURA",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.6
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.615,
+    "COUPLING": 0.6,
+    "SPACE": 0.53
+  },
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

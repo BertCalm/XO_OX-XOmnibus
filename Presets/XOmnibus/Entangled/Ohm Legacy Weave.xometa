@@ -25,6 +25,18 @@
     "Ohm",
     "Overdub"
   ],
+<<<<<<< HEAD
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OHM and Overdub coupled via Env->Level. Blended Constellation DNA — stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "ohm",
+    "overdub"
+  ],
+>>>>>>> origin/v1-launch-prep
   "macroLabels": [
     "VOICE",
     "SWELL",

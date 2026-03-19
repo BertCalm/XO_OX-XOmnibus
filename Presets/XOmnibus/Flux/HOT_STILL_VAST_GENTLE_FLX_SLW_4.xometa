@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_STILL_VAST_GENTLE_FLX_SLW_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Ouroboros",
+    "Oracle"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.531,
+      "macro_movement": 0.041,
+      "macro_coupling": 0.777,
+      "macro_space": 0.813
+    },
+    "Oracle": {
+      "macro_character": 0.344,
+      "macro_movement": 0.044,
+      "macro_coupling": 0.747,
+      "macro_space": 0.971
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "vast",
     "gentle",
     "suspended-chaos"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

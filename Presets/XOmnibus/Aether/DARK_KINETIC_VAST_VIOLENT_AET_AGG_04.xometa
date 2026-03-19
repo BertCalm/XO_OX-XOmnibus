@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK KINETIC VAST VIOLENT AET AGG 4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Overworld",
+    "Oblique"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.025,
+      "macro_movement": 0.954,
+      "macro_coupling": 0.892,
+      "macro_space": 0.845
+    },
+    "Oblique": {
+      "macro_character": 0.024,
+      "macro_movement": 0.924,
+      "macro_coupling": 0.935,
+      "macro_space": 0.907
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "dark",
     "kinetic",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -25,6 +25,7 @@
     "Obbligato",
     "Overdub"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -40,6 +41,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Tape warmth embraces OBBLIGATO's BOND — coral reeds echo into OVERDUB's olive spring reverb.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "obbligato",

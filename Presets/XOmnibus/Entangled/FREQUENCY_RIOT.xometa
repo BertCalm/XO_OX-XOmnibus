@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "FREQUENCY RIOT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Opal"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.585,
+      "macro_movement": 0.947,
+      "macro_coupling": 0.822,
+      "macro_space": 0.94
+    },
+    "Opal": {
+      "macro_character": 0.108,
+      "macro_movement": 0.947,
+      "macro_coupling": 0.234,
+      "macro_space": 0.025
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "chaotic",
     "high-energy"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

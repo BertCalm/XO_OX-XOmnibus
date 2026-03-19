@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "THUNDERHEAD 29",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Ohm"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.92,
+      "macro_movement": 0.952,
+      "macro_coupling": 0.981,
+      "macro_space": 0.534
+    },
+    "Ohm": {
+      "macro_character": 0.907,
+      "macro_movement": 0.964,
+      "macro_coupling": 0.592,
+      "macro_space": 0.663
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "explosive",
     "unstable"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

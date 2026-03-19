@@ -1,5 +1,32 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "schema_version": 1,
+  "name": "Brass Exposure",
+  "mood": "Entangled",
+  "engines": [
+    "Ottoni",
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Spatial coupling spreads triple brass across OBSCURA's reverberant field.",
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.7,
+      "macro_movement": 0.55,
+      "macro_coupling": 0.72,
+      "macro_space": 0.46
+    },
+    "Obscura": {
+      "macro_character": 0.58,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.64,
+      "macro_space": 0.52
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +85,10 @@
     "obscura",
     "spatial",
     "exposure"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

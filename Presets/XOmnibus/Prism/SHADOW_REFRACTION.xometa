@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SHADOW REFRACTION",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OddOscar",
+    "Obbligato"
+  ],
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.843,
+      "macro_movement": 0.286,
+      "macro_coupling": 0.727,
+      "macro_space": 0.585
+    },
+    "Obbligato": {
+      "macro_character": 0.902,
+      "macro_movement": 0.215,
+      "macro_coupling": 0.292,
+      "macro_space": 0.55
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "prism",
     "dark",
     "spectrum"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

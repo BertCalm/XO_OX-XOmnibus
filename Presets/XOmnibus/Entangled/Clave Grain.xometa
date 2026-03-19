@@ -14,12 +14,15 @@
   "engines": [
     "Opal",
     "Ole"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.45,
@@ -50,6 +53,7 @@
     "ole",
     "granular"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Afro-Latin clave rhythm scattered across grain field — percussion becoming texture"
+>>>>>>> origin/v1-launch-prep
 }

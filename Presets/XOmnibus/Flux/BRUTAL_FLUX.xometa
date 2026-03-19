@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRUTAL FLUX",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Onset",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.582,
+      "macro_movement": 0.488,
+      "macro_coupling": 0.466,
+      "macro_space": 0.616
+    },
+    "Odyssey": {
+      "macro_character": 0.489,
+      "macro_movement": 0.499,
+      "macro_coupling": 0.358,
+      "macro_space": 0.521
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "violent",
     "extreme"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -16,6 +16,18 @@
   },
   "engines": [
     "Obbligato"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — cold dense kinetic intimate. Designed for DRIFT coupling with XObbligato.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "drift",
+    "obbligato"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "EMBER",
@@ -27,6 +39,7 @@
   "name": "COLD DENSE KINETIC INTIMATE 1",
   "parameters": {
     "Obbligato": {
+<<<<<<< HEAD
       "couplingBus": 0,
       "couplingLevel": 0.653
     }
@@ -47,4 +60,13 @@
     "obbligato"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.653,
+      "couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

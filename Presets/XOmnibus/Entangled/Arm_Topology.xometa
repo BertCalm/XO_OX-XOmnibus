@@ -23,6 +23,20 @@
   "engines": [
     "Outwit",
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Outwit 8-arm velocity coupled into Onset XVC — Wolfram CA feeding drum velocity at maximum kinetics.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "outwit",
+    "onset",
+    "arm"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

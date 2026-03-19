@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Pyroclastic Bite",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overbite",
+    "Oblong"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.73,
+      "macro_movement": 0.48,
+      "macro_coupling": 0.9,
+      "macro_space": 0.34
+    },
+    "Oblong": {
+      "macro_character": 0.79,
+      "macro_movement": 0.31,
+      "macro_coupling": 0.86,
+      "macro_space": 0.36
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "scorching",
     "aggressive"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

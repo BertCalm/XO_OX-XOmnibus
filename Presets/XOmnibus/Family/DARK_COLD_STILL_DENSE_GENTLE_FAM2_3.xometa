@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK COLD STILL DENSE GENTLE FAM2 3",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Osprey",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.032,
+      "macro_movement": 0.021,
+      "macro_coupling": 0.448,
+      "macro_space": 0.583
+    },
+    "Odyssey": {
+      "macro_character": 0.042,
+      "macro_movement": 0.02,
+      "macro_coupling": 0.41,
+      "macro_space": 0.588
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "still",
     "dense",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_STILL_INTIMATE_SPARSE_AET2_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OddfeliX",
+    "Oceanic"
+  ],
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.1482,
+      "macro_movement": 0.1458,
+      "macro_coupling": 0.1111,
+      "macro_space": 0.0129
+    },
+    "Oceanic": {
+      "macro_character": 0.088,
+      "macro_movement": 0.1563,
+      "macro_coupling": 0.1087,
+      "macro_space": 0.0319
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "intimate",
     "sparse",
     "void"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

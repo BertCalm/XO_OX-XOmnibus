@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "BRIGHT_WARM_KINETIC_VAST_GENTLE_FND_2",
+  "mood": "Foundation",
+  "engines": [
+    "Obsidian",
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_WARM_KINETIC_VAST_GENTLE. Variant 2.",
   "dna": {
     "aggression": 0.122,
@@ -71,5 +83,49 @@
     "gentle"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.908,
+      "macro_movement": 0.878,
+      "macro_coupling": 0.494,
+      "macro_space": 1.0
+    },
+    "Origami": {
+      "macro_character": 0.98,
+      "macro_movement": 0.877,
+      "macro_coupling": 0.414,
+      "macro_space": 1.0
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBSIDIAN",
+    "target": "ORIGAMI",
+    "amount": 0.485
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.984,
+    "warmth": 0.89,
+    "movement": 0.933,
+    "density": 0.543,
+    "space": 0.986,
+    "aggression": 0.122
+  },
+  "macros": {
+    "CHARACTER": 0.944,
+    "MOVEMENT": 0.877,
+    "COUPLING": 0.454,
+    "SPACE": 1.0
+  }
+>>>>>>> origin/v1-launch-prep
 }

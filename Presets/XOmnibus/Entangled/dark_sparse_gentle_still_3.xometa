@@ -16,6 +16,18 @@
   },
   "engines": [
     "Ohm"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — dark sparse gentle still. Designed for PHASE coupling with XOhm.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "phase",
+    "ohm"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "FORCE",
@@ -27,6 +39,7 @@
   "name": "DARK SPARSE GENTLE STILL 3",
   "parameters": {
     "Ohm": {
+<<<<<<< HEAD
       "couplingBus": 2,
       "couplingLevel": 0.794
     }
@@ -47,4 +60,13 @@
     "ohm"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.794,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

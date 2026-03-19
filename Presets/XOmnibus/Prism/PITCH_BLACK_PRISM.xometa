@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "PITCH BLACK PRISM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Ocelot",
+    "Obese"
+  ],
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.67,
+      "macro_movement": 0.822,
+      "macro_coupling": 0.226,
+      "macro_space": 0.268
+    },
+    "Obese": {
+      "macro_character": 0.047,
+      "macro_movement": 0.983,
+      "macro_coupling": 0.042,
+      "macro_space": 0.74
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "prism",
     "dark",
     "spectrum"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

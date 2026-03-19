@@ -23,6 +23,20 @@
   "engines": [
     "Oblong",
     "Obese"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bob's amber warmth ground through OBESE saturation — character crushed into harmonic bone dust.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "oblong",
+    "obese",
+    "grind"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

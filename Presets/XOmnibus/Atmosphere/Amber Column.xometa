@@ -3,12 +3,15 @@
   "description": "Amber resin hardened around a sustained note. Dense, immovable, warm.",
   "engines": [
     "OddOscar"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.689,

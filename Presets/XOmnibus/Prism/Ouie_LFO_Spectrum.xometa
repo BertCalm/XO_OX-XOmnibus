@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "LFO Spectrum",
+  "mood": "Prism",
+  "engines": ["Ouie"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "LFO targeting filter B sweeps through the spectrum while filter A holds anchor.",
+  "tags": ["prism", "LFO", "sweeping", "spectral"],
+  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.5,
+    "movement": 0.72,
+    "density": 0.5,
+    "space": 0.52,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_ampAtk": 0.03,
+      "ouie_ampDec": 0.38,
+      "ouie_ampSus": 0.7,
+      "ouie_ampRel": 0.75,
+      "ouie_filterACutoff": 3500,
+      "ouie_filterARes": 0.3,
+      "ouie_filterBCutoff": 5000,
+      "ouie_filterBRes": 0.6,
+      "ouie_hammerDepth": 0.52,
+      "ouie_hammerPos": 0.5,
+      "ouie_lfo1Rate": 1.5,
+      "ouie_lfo1Depth": 0.45,
+      "ouie_lfo1Target": 1,
+      "ouie_lfo2Rate": 0.8,
+      "ouie_lfo2Depth": 0.2,
+      "ouie_portaAuto": 0.08,
+      "ouie_macroHammer": 0.52,
+      "ouie_macroCartilage": 0.62,
+      "ouie_macroAmpullae": 0.72,
+      "ouie_macroCurrent": 0.52
+    }
+  },
+  "macros": {
+    "HAMMER": 0.52,
+    "CARTILAGE": 0.62,
+    "AMPULLAE": 0.72,
+    "CURRENT": 0.52
+  },
+  "coupling": {"pairs": []}
+}

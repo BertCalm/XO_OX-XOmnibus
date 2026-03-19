@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT HOT DENSE FOU 12",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub",
+    "Octopus"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.893,
+      "macro_movement": 0.568,
+      "macro_coupling": 0.686,
+      "macro_space": 0.353
+    },
+    "Octopus": {
+      "macro_character": 0.978,
+      "macro_movement": 0.66,
+      "macro_coupling": 0.543,
+      "macro_space": 0.232
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

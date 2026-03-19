@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "PERMAFROST FLUX",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overlap",
+    "Osprey"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.386,
+      "macro_movement": 0.611,
+      "macro_coupling": 0.893,
+      "macro_space": 0.736
+    },
+    "Osprey": {
+      "macro_character": 0.409,
+      "macro_movement": 0.69,
+      "macro_coupling": 0.796,
+      "macro_space": 0.742
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "cold",
     "vast",
     "extreme"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

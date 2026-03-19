@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_FROZEN_VAST_HARSH_SPARSE_ENT4_2",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Obese"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.336,
+      "macro_movement": 0.076,
+      "macro_coupling": 0.039,
+      "macro_space": 0.94
+    },
+    "Obese": {
+      "macro_character": 0.327,
+      "macro_movement": 0.072,
+      "macro_coupling": 0.01,
+      "macro_space": 0.91
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "sparse",
     "vast",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

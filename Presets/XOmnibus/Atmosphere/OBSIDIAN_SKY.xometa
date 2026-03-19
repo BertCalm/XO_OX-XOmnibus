@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "OBSIDIAN SKY",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ottoni",
+    "Oblique"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.911,
+      "macro_movement": 0.745,
+      "macro_coupling": 0.833,
+      "macro_space": 0.903
+    },
+    "Oblique": {
+      "macro_character": 0.776,
+      "macro_movement": 0.23,
+      "macro_coupling": 0.802,
+      "macro_space": 0.219
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "extreme",
     "low-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

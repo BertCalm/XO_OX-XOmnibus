@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_SPARSE_INTIMATE_GENTLE_AET2_3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Organon",
+    "Obscura"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.9428,
+      "macro_movement": 0.405,
+      "macro_coupling": 0.1321,
+      "macro_space": 0.0709
+    },
+    "Obscura": {
+      "macro_character": 0.9605,
+      "macro_movement": 0.3811,
+      "macro_coupling": 0.1404,
+      "macro_space": 0.0668
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "intimate",
     "gentle",
     "airy"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

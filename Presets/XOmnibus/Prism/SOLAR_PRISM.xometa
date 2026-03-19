@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SOLAR PRISM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Owlfish",
+    "Overbite"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.536,
+      "macro_movement": 0.334,
+      "macro_coupling": 0.001,
+      "macro_space": 0.39
+    },
+    "Overbite": {
+      "macro_character": 0.526,
+      "macro_movement": 0.083,
+      "macro_coupling": 0.723,
+      "macro_space": 0.896
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "spectrum",
     "fire"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

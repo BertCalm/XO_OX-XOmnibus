@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_ENT_AGG_5",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ohm",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.401,
+      "macro_movement": 0.375,
+      "macro_coupling": 0.977,
+      "macro_space": 0.05
+    },
+    "Odyssey": {
+      "macro_character": 0.631,
+      "macro_movement": 0.351,
+      "macro_coupling": 0.978,
+      "macro_space": 0.043
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "cold",
     "intimate"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

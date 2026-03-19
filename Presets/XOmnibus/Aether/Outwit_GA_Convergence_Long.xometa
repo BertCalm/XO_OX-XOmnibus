@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "GA Convergence Long",
+  "mood": "Aether",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "SOLVE at slow hunt rate \u2014 the genetic algorithm takes minutes to converge. You are witnessing evolutionary time. By the note's end, the target DNA has been found.",
+  "tags": [
+    "aether",
+    "solve",
+    "convergence",
+    "evolutionary",
+    "patience"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.4,
+    "movement": 0.45,
+    "density": 0.5,
+    "space": 0.82,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 110,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.3,
+      "owit_armSpread": 0.6,
+      "owit_sync": 0.12,
+      "owit_feedbackAmt": 0.45,
+      "owit_chaos": 0.4,
+      "owit_density": 0.5,
+      "owit_ampAttack": 0.4,
+      "owit_ampDecay": 0.85,
+      "owit_ampSustain": 0.55,
+      "owit_ampRelease": 4.5,
+      "owit_filterCutoff": 0.5,
+      "owit_filterRes": 0.3,
+      "owit_lfoRate": 0.03,
+      "owit_lfoDepth": 0.12,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

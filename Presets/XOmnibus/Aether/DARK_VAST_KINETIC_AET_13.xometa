@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK VAST KINETIC AET 13",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Ottoni",
+    "Osprey"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.323,
+      "macro_movement": 0.939,
+      "macro_coupling": 0.691,
+      "macro_space": 0.959
+    },
+    "Osprey": {
+      "macro_character": 0.278,
+      "macro_movement": 1.0,
+      "macro_coupling": 0.531,
+      "macro_space": 0.927
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

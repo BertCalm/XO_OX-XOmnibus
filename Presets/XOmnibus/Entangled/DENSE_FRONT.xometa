@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DENSE FRONT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.3333,
+      "macro_movement": 0.6701,
+      "macro_coupling": 0.9431,
+      "macro_space": 0.3298
+    },
+    "OddOscar": {
+      "macro_character": 0.6937,
+      "macro_movement": 0.2882,
+      "macro_coupling": 0.9781,
+      "macro_space": 0.8136
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "compressed",
     "granite",
     "extreme-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

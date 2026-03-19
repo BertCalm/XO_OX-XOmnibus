@@ -16,6 +16,18 @@
   },
   "engines": [
     "Ohm"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — hot dense still violent. Designed for DRIFT coupling with XOhm.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "drift",
+    "ohm"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "HEAT",
@@ -27,6 +39,7 @@
   "name": "HOT DENSE STILL VIOLENT 5",
   "parameters": {
     "Ohm": {
+<<<<<<< HEAD
       "couplingBus": 0,
       "couplingLevel": 0.945
     }
@@ -47,4 +60,13 @@
     "ohm"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.945,
+      "couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

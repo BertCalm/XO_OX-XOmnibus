@@ -15,6 +15,19 @@
   },
   "engines": [
     "Obsidian"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Permafrost texture — dense and cold as geological strata.",
+  "tags": [
+    "aether",
+    "cold",
+    "dense",
+    "dark",
+    "pressure"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CYCLE",
@@ -27,6 +40,7 @@
   "parameters": {
     "Obsidian": {}
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.454,
@@ -44,4 +58,10 @@
     "pressure"
   ],
   "version": "1.0.0"
+=======
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

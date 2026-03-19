@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Fold Frequency",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.19,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.65,
+      "macro_space": 0.89
+    },
+    "Odyssey": {
+      "macro_character": 0.16,
+      "macro_movement": 0.47,
+      "macro_coupling": 0.7,
+      "macro_space": 0.92
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "fold",
     "frequency"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Origami shifts Odyssey's frequency at each crease — partials scattered by paper logic."
+>>>>>>> origin/v1-launch-prep
 }

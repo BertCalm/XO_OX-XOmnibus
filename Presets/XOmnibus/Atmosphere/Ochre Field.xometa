@@ -3,12 +3,15 @@
   "description": "Ochre clay walls absorbing sound. A room that breathes as one drone.",
   "engines": [
     "Osteria"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.641,

@@ -38,14 +38,26 @@
   "mood": "Entangled",
   "name": "Obsidian Voyage",
   "parameters": {
+<<<<<<< HEAD
     "Obsidian": {
       "macro_character": 0.9,
+=======
+    "Odyssey": {
+      "macro_character": 0.4,
+      "macro_movement": 0.4,
+>>>>>>> origin/v1-launch-prep
       "macro_coupling": 0.9,
       "macro_movement": 0.3,
       "macro_space": 0.2
     },
+<<<<<<< HEAD
     "Odyssey": {
       "macro_character": 0.4,
+=======
+    "Obsidian": {
+      "macro_character": 0.9,
+      "macro_movement": 0.3,
+>>>>>>> origin/v1-launch-prep
       "macro_coupling": 0.9,
       "macro_movement": 0.4,
       "macro_space": 0.2

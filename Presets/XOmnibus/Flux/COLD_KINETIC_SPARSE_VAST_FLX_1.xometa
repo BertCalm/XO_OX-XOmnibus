@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD_KINETIC_SPARSE_VAST_FLX_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Oblong",
+    "Oblique"
+  ],
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.2925,
+      "macro_movement": 0.8909,
+      "macro_coupling": 0.7653,
+      "macro_space": 0.8629
+    },
+    "Oblique": {
+      "macro_character": 0.3705,
+      "macro_movement": 0.9445,
+      "macro_coupling": 0.6211,
+      "macro_space": 0.9451
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "high-movement",
     "low-density",
     "high-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

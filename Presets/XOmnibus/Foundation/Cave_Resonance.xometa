@@ -15,6 +15,18 @@
   },
   "engines": [
     "Overdub"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cavernous dub tone, heavy tape saturation",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "VOICE",
@@ -32,8 +44,13 @@
   "name": "Cave Resonance",
   "parameters": {
     "Overdub": {
+<<<<<<< HEAD
       "dub_couplingBus": 0,
       "dub_couplingLevel": 0.5,
+=======
+      "dub_macro_voice": 0.3433,
+      "dub_macro_send": 0.765,
+>>>>>>> origin/v1-launch-prep
       "dub_macro_echo": 0.7108,
       "dub_macro_panic": 0.5754,
       "dub_macro_send": 0.765,
@@ -41,6 +58,7 @@
       "dub_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.3119,
@@ -57,4 +75,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

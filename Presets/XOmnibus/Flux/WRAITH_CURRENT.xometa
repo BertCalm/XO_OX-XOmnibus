@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "WRAITH CURRENT",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overlap",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.587,
+      "macro_movement": 0.547,
+      "macro_coupling": 0.642,
+      "macro_space": 0.431
+    },
+    "Obbligato": {
+      "macro_character": 0.719,
+      "macro_movement": 0.568,
+      "macro_coupling": 0.666,
+      "macro_space": 0.293
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "violent",
     "extreme"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

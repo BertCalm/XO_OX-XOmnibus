@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Ignis Expanse",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Opal",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.71,
+      "macro_movement": 0.44,
+      "macro_coupling": 0.63,
+      "macro_space": 0.91
+    },
+    "Odyssey": {
+      "macro_character": 0.78,
+      "macro_movement": 0.38,
+      "macro_coupling": 0.62,
+      "macro_space": 0.78
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "scorching",
     "spatial"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "WAVE GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Orphica",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.728,
+      "macro_movement": 0.949,
+      "macro_coupling": 0.683,
+      "macro_space": 0.39
+    },
+    "Ocelot": {
+      "macro_character": 0.303,
+      "macro_movement": 0.951,
+      "macro_coupling": 0.476,
+      "macro_space": 0.577
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

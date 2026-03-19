@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "FUSION WIRE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.561,
+      "macro_movement": 0.998,
+      "macro_coupling": 0.478,
+      "macro_space": 0.377
+    },
+    "Obsidian": {
+      "macro_character": 0.957,
+      "macro_movement": 0.46,
+      "macro_coupling": 0.533,
+      "macro_space": 0.546
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "hot",
     "molten",
     "furnace"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

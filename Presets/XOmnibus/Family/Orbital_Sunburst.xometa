@@ -15,6 +15,7 @@
   "engines": [
     "Orbital"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -33,6 +34,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORBITAL resonance at maximum — the orbit closest to the star, pure radiant spin.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "portrait",
@@ -42,5 +48,25 @@
     "orbital"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.55,
+    "movement": 0.82,
+    "density": 0.25,
+    "space": 0.8,
+    "aggression": 0.2
+  }
+>>>>>>> origin/v1-launch-prep
 }

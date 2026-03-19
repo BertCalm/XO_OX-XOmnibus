@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD KINETIC DENSE VIOLENT AET AGG 4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Osprey",
+    "Ombre"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.571,
+      "macro_movement": 0.911,
+      "macro_coupling": 0.942,
+      "macro_space": 0.616
+    },
+    "Ombre": {
+      "macro_character": 0.565,
+      "macro_movement": 0.881,
+      "macro_coupling": 0.886,
+      "macro_space": 0.614
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "kinetic",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

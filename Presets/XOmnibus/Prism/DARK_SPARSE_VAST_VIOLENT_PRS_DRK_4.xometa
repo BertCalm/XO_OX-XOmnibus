@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_SPARSE_VAST_VIOLENT_PRS_DRK_4",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Ottoni",
+    "Oblique"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.8044,
+      "macro_movement": 0.6923,
+      "macro_coupling": 0.0788,
+      "macro_space": 0.9788
+    },
+    "Oblique": {
+      "macro_character": 0.7753,
+      "macro_movement": 0.6892,
+      "macro_coupling": 0.0428,
+      "macro_space": 0.9691
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "sparse",
     "vast",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

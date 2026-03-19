@@ -24,6 +24,7 @@
     "Obese",
     "OddfeliX"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "FAT",
     "PULSE",
@@ -81,6 +82,11 @@
     "space": 0.0463,
     "warmth": 0.1228
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark Cold Kinetic Intimate character entanglement — OBESE × ODDFELIX via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "dark",
@@ -89,5 +95,85 @@
     "intimate",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "FAT",
+    "PULSE",
+    "BIND",
+    "MASS"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.0775,
+    "warmth": 0.1228,
+    "movement": 0.8945,
+    "density": 0.5865,
+    "space": 0.0463,
+    "aggression": 0.4583
+  },
+  "sonic_dna": {
+    "brightness": 0.0775,
+    "warmth": 0.1228,
+    "movement": 0.8945,
+    "density": 0.5865,
+    "space": 0.0463,
+    "aggression": 0.4583
+  },
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.3925,
+      "macro_movement": 0.8603,
+      "macro_coupling": 0.7571,
+      "macro_space": 0.0862,
+      "filter_cutoff": 0.294,
+      "filter_resonance": 0.295,
+      "amp_attack": 0.0693,
+      "amp_release": 0.109,
+      "reverb_mix": 0.2102,
+      "reverb_size": 0.2583,
+      "drive": 0.4469,
+      "density": 0.5761,
+      "output_level": 0.8192,
+      "coupling_level": 0.76
+    },
+    "OddfeliX": {
+      "macro_character": 0.3887,
+      "macro_movement": 0.9034,
+      "macro_coupling": 0.7994,
+      "macro_space": 0.0586,
+      "filter_cutoff": 0.2149,
+      "filter_resonance": 0.3545,
+      "amp_attack": 0.0762,
+      "amp_release": 0.1409,
+      "reverb_mix": 0.2106,
+      "reverb_size": 0.1985,
+      "drive": 0.3858,
+      "density": 0.5551,
+      "output_level": 0.8509,
+      "coupling_level": 0.7151
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OBESE",
+    "target": "ODDFELIX",
+    "amount": 0.752,
+    "pairs": [
+      {
+        "source": "OBESE",
+        "target": "ODDFELIX",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.752
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.1002,
+    "MOVEMENT": 0.8945,
+    "COUPLING": 0.752,
+    "SPACE": 0.0463
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD CLOUD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Optic",
+    "Ohm"
+  ],
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.894,
+      "macro_movement": 0.097,
+      "macro_coupling": 0.422,
+      "macro_space": 0.571
+    },
+    "Ohm": {
+      "macro_character": 0.879,
+      "macro_movement": 0.102,
+      "macro_coupling": 0.239,
+      "macro_space": 0.915
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "cold"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

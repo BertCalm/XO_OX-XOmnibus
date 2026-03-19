@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Register Flood",
+  "mood": "Flux",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "All chip registers active simultaneously — the noise floor rising as every channel speaks.",
+  "tags": [
+    "register",
+    "flood",
+    "flux",
+    "dense",
+    "chip",
+    "overworld"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.28,
+    "movement": 0.75,
+    "density": 0.88,
+    "space": 0.35,
+    "aggression": 0.75
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_era": 0,
+      "ow_macro_era": 0.4,
+      "ow_macro_chaos": 0.65,
+      "ow_macro_couple": 0.0,
+      "ow_macro_space": 0.3,
+      "ow_outputLevel": 0.8,
+      "ow_couplingLevel": 0.0,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

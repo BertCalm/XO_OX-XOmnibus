@@ -37,13 +37,21 @@
   "mood": "Aether",
   "name": "ALLLO AET 06",
   "parameters": {
+<<<<<<< HEAD
     "Ombre": {
+=======
+    "Opal": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.095,
       "macro_coupling": 0.255,
       "macro_movement": 0.098,
       "macro_space": 0.09
     },
+<<<<<<< HEAD
     "Opal": {
+=======
+    "Ombre": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.095,
       "macro_coupling": 0.255,
       "macro_movement": 0.098,
@@ -56,6 +64,10 @@
     "pole-fill",
     "minimal",
     "sparse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

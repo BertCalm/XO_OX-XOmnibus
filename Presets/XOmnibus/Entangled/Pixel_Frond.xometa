@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Pixel Frond",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Overworld chip glitch scatters OVERLAP diffusion coefficients — pixels dissolve into reverb geometry",
   "dna": {
     "aggression": 0.325,
@@ -40,9 +52,14 @@
   "name": "Pixel Frond",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.729,
       "olap_crossfeedAmt": 0.375,
+=======
+      "olap_size": 0.859,
+      "olap_decay": 0.64,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.454,
       "olap_decay": 0.64,
       "olap_diffusion": 0.772,

@@ -37,13 +37,21 @@
   "mood": "Foundation",
   "name": "CROSS FND 02",
   "parameters": {
+<<<<<<< HEAD
     "Ouroboros": {
+=======
+    "Overdub": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.498,
       "macro_coupling": 0.473,
       "macro_movement": 0.793,
       "macro_space": 0.921
     },
+<<<<<<< HEAD
     "Overdub": {
+=======
+    "Ouroboros": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.498,
       "macro_coupling": 0.473,
       "macro_movement": 0.793,
@@ -56,6 +64,10 @@
     "pole-fill",
     "cross-pole",
     "contrast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

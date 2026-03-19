@@ -44,5 +44,27 @@
     "formal",
     "minimal"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "LOGIC",
+    "ARGUMENT",
+    "COUPLING",
+    "FORM"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.65,
+    "movement": 0.08,
+    "density": 0.6,
+    "space": 0.65,
+    "aggression": 0.15
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

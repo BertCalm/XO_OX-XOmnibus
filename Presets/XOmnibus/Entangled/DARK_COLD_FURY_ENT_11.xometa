@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK COLD FURY ENT 11",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overbite",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.085,
+      "macro_movement": 0.58,
+      "macro_coupling": 0.443,
+      "macro_space": 0.304
+    },
+    "Ocelot": {
+      "macro_character": 0.082,
+      "macro_movement": 0.657,
+      "macro_coupling": 0.817,
+      "macro_space": 0.348
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "aggressive",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

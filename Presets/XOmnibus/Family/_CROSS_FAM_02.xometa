@@ -37,13 +37,21 @@
   "mood": "Family",
   "name": "CROSS FAM 02",
   "parameters": {
+<<<<<<< HEAD
     "Ohm": {
+=======
+    "Overdub": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.493,
       "macro_coupling": 0.507,
       "macro_movement": 0.688,
       "macro_space": 0.933
     },
+<<<<<<< HEAD
     "Overdub": {
+=======
+    "Ohm": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.493,
       "macro_coupling": 0.507,
       "macro_movement": 0.688,
@@ -56,6 +64,10 @@
     "pole-fill",
     "cross-pole",
     "contrast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT AIR",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overbite",
+    "Obscura"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.776,
+      "macro_movement": 0.351,
+      "macro_coupling": 0.958,
+      "macro_space": 0.645
+    },
+    "Obscura": {
+      "macro_character": 0.148,
+      "macro_movement": 0.103,
+      "macro_coupling": 0.256,
+      "macro_space": 0.173
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "high-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

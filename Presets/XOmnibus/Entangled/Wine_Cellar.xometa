@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Wine Cellar",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Osteria warmth and density settle into OVERLAP room size — Porto wine in a vaulted FDN hall",
   "dna": {
     "aggression": 0.25,
@@ -40,9 +52,14 @@
   "name": "Wine Cellar",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.617,
       "olap_crossfeedAmt": 0.531,
+=======
+      "olap_size": 0.563,
+      "olap_decay": 0.615,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.363,
       "olap_decay": 0.615,
       "olap_diffusion": 0.844,

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Silver Pattern",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Obscura"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Obscura plate vibration randomness seeds OUTWIT initial pattern — historic physics in digital cells",
   "dna": {
     "aggression": 0.475,
@@ -40,6 +52,18 @@
   "name": "Silver Pattern",
   "parameters": {
     "Outwit": {
+<<<<<<< HEAD
+=======
+      "owit_rule": 150,
+      "owit_arms": 6,
+      "owit_cellSize": 0.258,
+      "owit_density": 0.432,
+      "owit_evolveRate": 0.322,
+      "owit_mutateProb": 0.244,
+      "owit_pitchSpread": 0.231,
+      "owit_filterCutoff": 0.67,
+      "owit_filterReso": 0.489,
+>>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.027,
       "owit_ampRelease": 0.521,
       "owit_armStagger": 0.079,

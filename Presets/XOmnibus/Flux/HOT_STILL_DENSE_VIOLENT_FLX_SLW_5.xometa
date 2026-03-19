@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_STILL_DENSE_VIOLENT_FLX_SLW_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overworld",
+    "Oblique"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.838,
+      "macro_movement": 0.093,
+      "macro_coupling": 0.679,
+      "macro_space": 0.399
+    },
+    "Oblique": {
+      "macro_character": 0.92,
+      "macro_movement": 0.08,
+      "macro_coupling": 0.87,
+      "macro_space": 0.443
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "violent",
     "imperceptible-morph"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

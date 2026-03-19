@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_DENSE_INTIMATE_GENTLE_AET3_5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Orbital",
+    "Oblique"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.4451,
+      "macro_movement": 0.7709,
+      "macro_coupling": 0.4843,
+      "macro_space": 0.764
+    },
+    "Oblique": {
+      "macro_character": 0.8239,
+      "macro_movement": 0.3892,
+      "macro_coupling": 0.2614,
+      "macro_space": 0.2145
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dense",
     "intimate",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

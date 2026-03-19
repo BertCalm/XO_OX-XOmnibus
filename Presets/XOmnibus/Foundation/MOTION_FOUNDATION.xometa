@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "MOTION FOUNDATION",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Owlfish",
+    "Oblong"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.598,
+      "macro_movement": 0.957,
+      "macro_coupling": 0.775,
+      "macro_space": 0.646
+    },
+    "Oblong": {
+      "macro_character": 0.606,
+      "macro_movement": 0.891,
+      "macro_coupling": 0.66,
+      "macro_space": 0.452
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

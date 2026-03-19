@@ -23,6 +23,20 @@
   "engines": [
     "Obsidian",
     "Overbite"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Overbite BITE timbral-warping Obsidian crystal — fang at absolute zero.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obsidian",
+    "overbite",
+    "frost"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

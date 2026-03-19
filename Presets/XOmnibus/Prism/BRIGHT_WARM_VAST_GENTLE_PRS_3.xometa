@@ -37,15 +37,25 @@
   "mood": "Prism",
   "name": "BRIGHT_WARM_VAST_GENTLE_PRS_3",
   "parameters": {
+<<<<<<< HEAD
     "Ole": {
       "macro_character": 0.074,
       "macro_coupling": 0.334,
+=======
+    "Osteria": {
+      "macro_character": 0.542,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.301,
       "macro_space": 0.971
     },
+<<<<<<< HEAD
     "Osteria": {
       "macro_character": 0.542,
       "macro_coupling": 0.749,
+=======
+    "Ole": {
+      "macro_character": 0.074,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.301,
       "macro_space": 0.971
     }
@@ -57,6 +67,10 @@
     "warm",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

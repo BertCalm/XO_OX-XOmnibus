@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD ORIGIN",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.311,
+      "macro_movement": 0.579,
+      "macro_coupling": 0.929,
+      "macro_space": 0.576
+    },
+    "Orbital": {
+      "macro_character": 0.908,
+      "macro_movement": 0.375,
+      "macro_coupling": 0.941,
+      "macro_space": 0.198
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "family",
     "cold",
     "xlow-warmth"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

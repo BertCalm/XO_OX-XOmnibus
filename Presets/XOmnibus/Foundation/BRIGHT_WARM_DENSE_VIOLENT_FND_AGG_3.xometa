@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_DENSE_VIOLENT_FND_AGG_3",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overbite",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.607,
+      "macro_movement": 0.356,
+      "macro_coupling": 0.395,
+      "macro_space": 0.88
+    },
+    "OddfeliX": {
+      "macro_character": 0.647,
+      "macro_movement": 0.361,
+      "macro_coupling": 0.428,
+      "macro_space": 0.888
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "warm",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

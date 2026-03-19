@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Geometric Prophecy",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Oracle"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.21,
+      "macro_movement": 0.58,
+      "macro_coupling": 0.63,
+      "macro_space": 0.87
+    },
+    "Oracle": {
+      "macro_character": 0.18,
+      "macro_movement": 0.53,
+      "macro_coupling": 0.68,
+      "macro_space": 0.9
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "geometric",
     "prophecy"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Origami fold geometry shifts Oracle's prophecy frequencies — the shape of cold knowledge."
+>>>>>>> origin/v1-launch-prep
 }

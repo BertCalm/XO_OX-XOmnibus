@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "RAW PRESSURE",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Opal",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.135,
+      "macro_movement": 0.26,
+      "macro_coupling": 0.134,
+      "macro_space": 0.335
+    },
+    "Odyssey": {
+      "macro_character": 0.512,
+      "macro_movement": 0.891,
+      "macro_coupling": 0.534,
+      "macro_space": 0.847
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "abrasive",
     "hostile",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Cold Scripture",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Oracle"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.08,
+      "macro_movement": 0.12,
+      "macro_coupling": 0.86,
+      "macro_space": 0.97
+    },
+    "Oracle": {
+      "macro_character": 0.05,
+      "macro_movement": 0.07,
+      "macro_coupling": 0.91,
+      "macro_space": 1.0
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "scripture",
     "cold"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Oracle's envelope is the scripture — Origami folds along prescribed rhythms of silence."
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Silver Dispersal",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Opal",
+    "Obscura"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.2,
+      "macro_movement": 0.4,
+      "macro_coupling": 0.74,
+      "macro_space": 0.89
+    },
+    "Obscura": {
+      "macro_character": 0.17,
+      "macro_movement": 0.35,
+      "macro_coupling": 0.79,
+      "macro_space": 0.92
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "silver",
     "dispersal"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Obscura silver plate blends into Opal granular spray — both vanish into the mix."
+>>>>>>> origin/v1-launch-prep
 }

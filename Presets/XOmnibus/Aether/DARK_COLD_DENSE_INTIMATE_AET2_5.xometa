@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_DENSE_INTIMATE_AET2_5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Organon",
+    "Oracle"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.0747,
+      "macro_movement": 0.4712,
+      "macro_coupling": 0.9797,
+      "macro_space": 0.0721
+    },
+    "Oracle": {
+      "macro_character": 0.1098,
+      "macro_movement": 0.5074,
+      "macro_coupling": 0.9753,
+      "macro_space": 0.0422
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "dense",
     "intimate",
     "compressed"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

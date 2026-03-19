@@ -15,6 +15,19 @@
   },
   "engines": [
     "Organon"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Packed formant stack — rich overtones, no breath to spare.",
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "WARMTH",
@@ -27,6 +40,7 @@
   "parameters": {
     "Organon": {}
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.413,
@@ -44,4 +58,10 @@
     "thick"
   ],
   "version": "1.0.0"
+=======
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

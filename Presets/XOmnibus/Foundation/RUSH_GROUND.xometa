@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "RUSH GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Outwit",
+    "Onset"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.669,
+      "macro_movement": 0.935,
+      "macro_coupling": 0.438,
+      "macro_space": 0.495
+    },
+    "Onset": {
+      "macro_character": 0.68,
+      "macro_movement": 0.915,
+      "macro_coupling": 0.598,
+      "macro_space": 0.69
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

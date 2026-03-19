@@ -23,6 +23,20 @@
   "engines": [
     "Origami",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ouroboros timbral warping Origami fold timbre — vermillion crease fractal.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "origami",
+    "ouroboros",
+    "vermillion"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

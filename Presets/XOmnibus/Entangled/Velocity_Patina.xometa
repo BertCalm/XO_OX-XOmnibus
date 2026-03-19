@@ -1,5 +1,32 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "schema_version": 1,
+  "name": "Velocity Patina",
+  "mood": "Entangled",
+  "engines": [
+    "Ottoni",
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Velocity coupling: harder strikes age the patina faster, bowing OBSCURA's plate inward.",
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.66,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.66,
+      "macro_space": 0.52
+    },
+    "Obscura": {
+      "macro_character": 0.54,
+      "macro_movement": 0.48,
+      "macro_coupling": 0.58,
+      "macro_space": 0.56
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ABRADE CLOUD",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Owlfish",
+    "Ohm"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.391,
+      "macro_movement": 0.741,
+      "macro_coupling": 0.644,
+      "macro_space": 0.61
+    },
+    "Ohm": {
+      "macro_character": 0.214,
+      "macro_movement": 0.586,
+      "macro_coupling": 0.725,
+      "macro_space": 0.862
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "abrasive",
     "hostile",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

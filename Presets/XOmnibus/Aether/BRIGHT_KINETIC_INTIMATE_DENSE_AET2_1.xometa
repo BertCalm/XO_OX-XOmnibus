@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_KINETIC_INTIMATE_DENSE_AET2_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Origami",
+    "Oblique"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.9377,
+      "macro_movement": 0.926,
+      "macro_coupling": 0.9706,
+      "macro_space": 0.0997
+    },
+    "Oblique": {
+      "macro_character": 0.8836,
+      "macro_movement": 0.95,
+      "macro_coupling": 0.99,
+      "macro_space": 0.034
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "intimate",
     "dense",
     "ethereal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

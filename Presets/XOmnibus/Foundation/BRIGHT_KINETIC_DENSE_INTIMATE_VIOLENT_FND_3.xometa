@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FND_3",
+  "mood": "Foundation",
+  "engines": [
+    "Origami",
+    "Ouroboros"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT. Variant 3.",
   "dna": {
     "aggression": 0.884,
@@ -71,5 +83,49 @@
     "dense"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "macro_character": 1.0,
+      "macro_movement": 0.967,
+      "macro_coupling": 0.823,
+      "macro_space": 0.013
+    },
+    "Ouroboros": {
+      "macro_character": 0.964,
+      "macro_movement": 0.942,
+      "macro_coupling": 0.772,
+      "macro_space": 0.0
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORIGAMI",
+    "target": "OUROBOROS",
+    "amount": 0.738
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.954,
+    "warmth": 0.408,
+    "movement": 0.9,
+    "density": 0.884,
+    "space": 0.041,
+    "aggression": 0.884
+  },
+  "macros": {
+    "CHARACTER": 0.982,
+    "MOVEMENT": 0.954,
+    "COUPLING": 0.797,
+    "SPACE": 0.006
+  }
+>>>>>>> origin/v1-launch-prep
 }

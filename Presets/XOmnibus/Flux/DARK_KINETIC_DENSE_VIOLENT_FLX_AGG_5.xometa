@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_KINETIC_DENSE_VIOLENT_FLX_AGG_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Oceanic",
+    "Oblique"
+  ],
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.402,
+      "macro_movement": 0.852,
+      "macro_coupling": 0.86,
+      "macro_space": 0.438
+    },
+    "Oblique": {
+      "macro_character": 0.608,
+      "macro_movement": 0.907,
+      "macro_coupling": 0.828,
+      "macro_space": 0.43
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "kinetic",
     "dark",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

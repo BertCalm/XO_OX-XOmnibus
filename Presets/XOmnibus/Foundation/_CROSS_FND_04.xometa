@@ -37,13 +37,21 @@
   "mood": "Foundation",
   "name": "CROSS FND 04",
   "parameters": {
+<<<<<<< HEAD
     "Obese": {
+=======
+    "Onset": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.797,
       "macro_coupling": 0.944,
       "macro_movement": 0.083,
       "macro_space": 0.93
     },
+<<<<<<< HEAD
     "Onset": {
+=======
+    "Obese": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.797,
       "macro_coupling": 0.944,
       "macro_movement": 0.083,
@@ -56,6 +64,10 @@
     "pole-fill",
     "cross-pole",
     "contrast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

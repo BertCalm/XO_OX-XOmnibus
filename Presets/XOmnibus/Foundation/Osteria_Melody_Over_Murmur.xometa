@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Melody Over Murmur",
+  "mood": "Foundation",
+  "engines": [
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Melodic voice floating over background tavern murmur.",
+  "tags": [
+    "melody",
+    "murmur",
+    "floating",
+    "tavern",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.18,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_porto": 0.35,
+      "osteria_patina": 0.45,
+      "osteria_murmur": 0.45,
+      "osteria_oceanBleed": 0.1,
+      "osteria_blendMode": 0,
+      "osteria_bassLevel": 0.55,
+      "osteria_melLevel": 0.8,
+      "osteria_harmLevel": 0.6,
+      "osteria_rhythmLevel": 0.45,
+      "osteria_qBassShore": 0.2,
+      "osteria_qMelShore": 0.4,
+      "osteria_qHarmShore": 0.25,
+      "osteria_qRhythmShore": 0.15,
+      "osteria_qElastic": 0.4,
+      "osteria_qMemory": 0.3,
+      "osteria_qStretch": 0.45,
+      "osteria_qSympathy": 0.45,
+      "osteria_attack": 0.02,
+      "osteria_decay": 0.3,
+      "osteria_sustain": 0.65,
+      "osteria_release": 0.88,
+      "osteria_chorus": 0.15,
+      "osteria_hall": 0.2,
+      "osteria_ensWidth": 0.58,
+      "osteria_tape": 0.05,
+      "osteria_sessionDelay": 0.18,
+      "osteria_filterEnvDepth": 0.12,
+      "osteria_warmth": 0.6,
+      "osteria_smoke": 0.1,
+      "osteria_tavernMix": 0.55,
+      "osteria_tavernShore": 0.3,
+      "osteria_macroCharacter": 0.3,
+      "osteria_macroMovement": 0.3,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

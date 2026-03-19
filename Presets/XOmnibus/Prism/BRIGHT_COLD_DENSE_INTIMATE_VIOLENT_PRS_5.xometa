@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "BRIGHT_COLD_DENSE_INTIMATE_VIOLENT_PRS_5",
+  "mood": "Prism",
+  "engines": [
+    "Ole",
+    "Ocelot"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_DENSE_INTIMATE_VIOLENT. Variant 5.",
   "dna": {
     "aggression": 0.965,
@@ -71,5 +83,49 @@
     "dense"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.894,
+      "macro_movement": 0.583,
+      "macro_coupling": 0.879,
+      "macro_space": 0.124
+    },
+    "Ocelot": {
+      "macro_character": 1.0,
+      "macro_movement": 0.438,
+      "macro_coupling": 0.85,
+      "macro_space": 0.069
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OLE",
+    "target": "OCELOT",
+    "amount": 0.723
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.973,
+    "warmth": 0.088,
+    "movement": 0.503,
+    "density": 0.926,
+    "space": 0.081,
+    "aggression": 0.965
+  },
+  "macros": {
+    "CHARACTER": 0.947,
+    "MOVEMENT": 0.51,
+    "COUPLING": 0.865,
+    "SPACE": 0.097
+  }
+>>>>>>> origin/v1-launch-prep
 }

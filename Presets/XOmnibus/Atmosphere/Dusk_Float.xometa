@@ -16,6 +16,7 @@
   "engines": [
     "Osprey"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "SCATTER",
     "DRIFT",
@@ -36,6 +37,11 @@
     "space": 0.643,
     "warmth": 0.888
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Rare-earth warmth — light touch, maximum space around it.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "atmosphere",
     "warm",
@@ -45,5 +51,27 @@
     "evolving",
     "bright"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.775,
+    "warmth": 0.888,
+    "movement": 0.585,
+    "density": 0.119,
+    "space": 0.643,
+    "aggression": 0.125
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

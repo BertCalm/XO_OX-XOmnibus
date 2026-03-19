@@ -3,12 +3,15 @@
   "description": "Dew on spider silk. Bright but fragile, trembling with first warmth.",
   "engines": [
     "Oceanic"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.751,

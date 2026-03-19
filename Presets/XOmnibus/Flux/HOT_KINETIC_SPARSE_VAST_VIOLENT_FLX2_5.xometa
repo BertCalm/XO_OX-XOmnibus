@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_KINETIC_SPARSE_VAST_VIOLENT_FLX2_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Oceanic",
+    "Oblique"
+  ],
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.7726,
+      "macro_movement": 0.9326,
+      "macro_coupling": 0.1191,
+      "macro_space": 0.8733
+    },
+    "Oblique": {
+      "macro_character": 0.7642,
+      "macro_movement": 0.925,
+      "macro_coupling": 0.1382,
+      "macro_space": 0.8724
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "sparse",
     "vast",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

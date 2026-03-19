@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BLACK COSMOS",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Overworld",
+    "Ohm"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.273,
+      "macro_movement": 0.905,
+      "macro_coupling": 0.147,
+      "macro_space": 0.437
+    },
+    "Ohm": {
+      "macro_character": 0.946,
+      "macro_movement": 0.222,
+      "macro_coupling": 0.451,
+      "macro_space": 0.35
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "extreme",
     "high-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

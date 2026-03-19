@@ -24,6 +24,7 @@
     "Orphica",
     "Orbital"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "PLUCK",
     "SCATTER",
@@ -81,6 +82,11 @@
     "space": 0.6966,
     "warmth": 0.9775
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Hot Kinetic Sparse Gentle character entanglement — ORPHICA × ORBITAL via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "warm",
@@ -89,5 +95,85 @@
     "gentle",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "PLUCK",
+    "SCATTER",
+    "RESONATE",
+    "HALL"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.3876,
+    "warmth": 0.9775,
+    "movement": 0.9634,
+    "density": 0.0264,
+    "space": 0.6966,
+    "aggression": 0.0782
+  },
+  "sonic_dna": {
+    "brightness": 0.3876,
+    "warmth": 0.9775,
+    "movement": 0.9634,
+    "density": 0.0264,
+    "space": 0.6966,
+    "aggression": 0.0782
+  },
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.7753,
+      "macro_movement": 0.9759,
+      "macro_coupling": 0.6087,
+      "macro_space": 0.7219,
+      "filter_cutoff": 0.5047,
+      "filter_resonance": 0.1036,
+      "amp_attack": 0.1043,
+      "amp_release": 0.4956,
+      "reverb_mix": 0.5608,
+      "reverb_size": 0.6418,
+      "drive": 0.101,
+      "density": 0.0535,
+      "output_level": 0.7342,
+      "coupling_level": 0.5554
+    },
+    "Orbital": {
+      "macro_character": 0.8147,
+      "macro_movement": 0.9879,
+      "macro_coupling": 0.6432,
+      "macro_space": 0.7297,
+      "filter_cutoff": 0.4336,
+      "filter_resonance": 0.1551,
+      "amp_attack": 0.1004,
+      "amp_release": 0.5231,
+      "reverb_mix": 0.5381,
+      "reverb_size": 0.5931,
+      "drive": 0.1516,
+      "density": 0.0569,
+      "output_level": 0.706,
+      "coupling_level": 0.566
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORBITAL",
+    "target": "ORPHICA",
+    "amount": 0.9899,
+    "pairs": [
+      {
+        "source": "ORBITAL",
+        "target": "ORPHICA",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.9899
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.6825,
+    "MOVEMENT": 0.9634,
+    "COUPLING": 0.9899,
+    "SPACE": 0.6966
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Pipe Commune",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Ohm"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.9,
+      "macro_movement": 0.26,
+      "macro_coupling": 0.76,
+      "macro_space": 0.3
+    },
+    "Ohm": {
+      "macro_character": 0.69,
+      "macro_movement": 0.21,
+      "macro_coupling": 0.47,
+      "macro_space": 0.14
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "warm-dense",
     "scorching"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

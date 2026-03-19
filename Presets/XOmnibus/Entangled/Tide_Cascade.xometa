@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Tide Cascade",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Odyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Odyssey tidal swell expands OVERLAP room size in lock-step — tide and tail rise and fall as one",
   "dna": {
     "aggression": 0.225,
@@ -40,9 +52,14 @@
   "name": "Tide Cascade",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.633,
       "olap_crossfeedAmt": 0.455,
+=======
+      "olap_size": 0.771,
+      "olap_decay": 0.609,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.492,
       "olap_decay": 0.609,
       "olap_diffusion": 0.787,

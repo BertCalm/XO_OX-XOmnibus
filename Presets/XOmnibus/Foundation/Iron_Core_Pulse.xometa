@@ -15,6 +15,17 @@
   },
   "engines": [
     "Oblong"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OBLONG — dark extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,6 +37,13 @@
   "name": "Iron Core Pulse",
   "parameters": {
     "Oblong": {
+<<<<<<< HEAD
+=======
+      "bob_osc1wave": 0,
+      "bob_osc2wave": 0,
+      "bob_filterCutoff": 0.87,
+      "bob_filterReso": 0.3,
+>>>>>>> origin/v1-launch-prep
       "bob_ampAttack": 513.0,
       "bob_ampDecay": 489.1,
       "bob_ampRelease": 611.2,
@@ -44,6 +62,7 @@
       "bob_space": 0.93
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.88,
@@ -59,4 +78,9 @@
     "extreme-brightness"
   ],
   "version": "1.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

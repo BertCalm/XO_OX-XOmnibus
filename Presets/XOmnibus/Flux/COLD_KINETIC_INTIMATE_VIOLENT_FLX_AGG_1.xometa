@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD_KINETIC_INTIMATE_VIOLENT_FLX_AGG_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overworld",
+    "Oblong"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.387,
+      "macro_movement": 0.969,
+      "macro_coupling": 0.916,
+      "macro_space": 0.061
+    },
+    "Oblong": {
+      "macro_character": 0.439,
+      "macro_movement": 0.958,
+      "macro_coupling": 0.904,
+      "macro_space": 0.124
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "cold",
     "kinetic",
     "intimate"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

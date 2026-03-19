@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CRYO FLUX 5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Ouroboros",
+    "Onset"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.5479,
+      "macro_movement": 0.8972,
+      "macro_coupling": 0.7437,
+      "macro_space": 0.4747
+    },
+    "Onset": {
+      "macro_character": 0.2592,
+      "macro_movement": 0.2472,
+      "macro_coupling": 0.6377,
+      "macro_space": 0.7658
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "cold",
     "shifting"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

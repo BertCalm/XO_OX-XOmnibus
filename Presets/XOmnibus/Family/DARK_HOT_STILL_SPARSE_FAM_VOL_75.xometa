@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_STILL_SPARSE_FAM_VOL_75",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Orphica",
+    "Opal"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.538,
+      "macro_movement": 0.064,
+      "macro_coupling": 0.285,
+      "macro_space": 0.637
+    },
+    "Opal": {
+      "macro_character": 0.542,
+      "macro_movement": 0.052,
+      "macro_coupling": 0.279,
+      "macro_space": 0.661
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "still",
     "sparse",
     "dark"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

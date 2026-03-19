@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_KINETIC_INTIMATE_AET2_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Orbital",
+    "Oracle"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.0457,
+      "macro_movement": 0.9455,
+      "macro_coupling": 0.5918,
+      "macro_space": 0.0899
+    },
+    "Oracle": {
+      "macro_character": 0.0714,
+      "macro_movement": 0.9307,
+      "macro_coupling": 0.6262,
+      "macro_space": 0.1259
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "kinetic",
     "intimate",
     "smoldering"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

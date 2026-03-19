@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_KINETIC_VAST_FAM_VOL_69",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Organon",
+    "Ohm"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.529,
+      "macro_movement": 0.92,
+      "macro_coupling": 0.558,
+      "macro_space": 0.918
+    },
+    "Ohm": {
+      "macro_character": 0.515,
+      "macro_movement": 0.918,
+      "macro_coupling": 0.564,
+      "macro_space": 0.934
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "cold",
     "kinetic",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

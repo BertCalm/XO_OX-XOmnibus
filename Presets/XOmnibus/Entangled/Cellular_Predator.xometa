@@ -23,6 +23,20 @@
   "engines": [
     "Outwit",
     "Orca"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orca hunt velocity coupling into Outwit arm evolution — apex predator driving cellular automata.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "outwit",
+    "orca",
+    "cellular"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

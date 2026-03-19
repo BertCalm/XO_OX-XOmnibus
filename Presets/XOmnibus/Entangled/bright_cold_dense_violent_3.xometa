@@ -16,6 +16,18 @@
   },
   "engines": [
     "Overlap"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — bright cold dense violent. Designed for PHASE coupling with XOverlap.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "phase",
+    "overlap"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "FLARE",
@@ -27,6 +39,7 @@
   "name": "BRIGHT COLD DENSE VIOLENT 3",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "couplingBus": 2,
       "couplingLevel": 0.522
     }
@@ -47,4 +60,13 @@
     "overlap"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.522,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

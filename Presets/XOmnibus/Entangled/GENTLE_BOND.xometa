@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "GENTLE BOND",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Orca",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.384,
+      "macro_movement": 0.307,
+      "macro_coupling": 0.324,
+      "macro_space": 0.577
+    },
+    "Oceanic": {
+      "macro_character": 0.804,
+      "macro_movement": 0.545,
+      "macro_coupling": 0.513,
+      "macro_space": 0.253
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "tender",
     "gentle",
     "entangled"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

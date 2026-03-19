@@ -23,6 +23,20 @@
   "engines": [
     "Optic",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Optic AutoPulse at maximum rate chaos-injected by Ouroboros — light as pure mathematical violence.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "optic",
+    "ouroboros",
+    "phosphor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

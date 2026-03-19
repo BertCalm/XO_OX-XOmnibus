@@ -16,6 +16,7 @@
     "Octopus",
     "Optic"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -35,6 +36,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OCTOPUS distributed intelligence + OPTIC prismatic light — the problem solver and the spectrum. Eight arms catching every frequency.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "reunion",
@@ -46,5 +52,25 @@
     "batch3-reunion"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.48,
+    "movement": 0.82,
+    "density": 0.58,
+    "space": 0.55,
+    "aggression": 0.45
+  }
+>>>>>>> origin/v1-launch-prep
 }

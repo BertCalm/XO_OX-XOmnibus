@@ -16,6 +16,18 @@
   },
   "engines": [
     "Owlfish"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — dark sparse gentle still. Designed for TANGLE coupling with XOwlfish.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "tangle",
+    "owlfish"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "SURGE",
@@ -27,6 +39,7 @@
   "name": "DARK SPARSE GENTLE STILL 2",
   "parameters": {
     "Owlfish": {
+<<<<<<< HEAD
       "couplingBus": 2,
       "couplingLevel": 0.501
     }
@@ -47,4 +60,13 @@
     "owlfish"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.501,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

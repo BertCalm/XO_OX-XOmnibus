@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK COLD DENSE BALANCED AET SPC 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Oracle",
+    "Obscura"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.072,
+      "macro_movement": 0.699,
+      "macro_coupling": 0.806,
+      "macro_space": 0.498
+    },
+    "Obscura": {
+      "macro_character": 0.078,
+      "macro_movement": 0.692,
+      "macro_coupling": 0.812,
+      "macro_space": 0.496
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "space-mid",
     "aggressive",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_KINETIC_VAST_FLX_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Odyssey",
+    "Oblong"
+  ],
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.8485,
+      "macro_movement": 0.9787,
+      "macro_coupling": 0.493,
+      "macro_space": 0.8419
+    },
+    "Oblong": {
+      "macro_character": 0.8085,
+      "macro_movement": 0.862,
+      "macro_coupling": 0.6128,
+      "macro_space": 0.8472
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "high-warmth",
     "high-movement",
     "high-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

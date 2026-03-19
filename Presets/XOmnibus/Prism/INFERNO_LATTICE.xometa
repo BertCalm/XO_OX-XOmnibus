@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "INFERNO LATTICE",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OddOscar",
+    "Ocelot"
+  ],
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.801,
+      "macro_movement": 0.397,
+      "macro_coupling": 0.902,
+      "macro_space": 0.491
+    },
+    "Ocelot": {
+      "macro_character": 0.11,
+      "macro_movement": 0.296,
+      "macro_coupling": 0.94,
+      "macro_space": 0.643
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "spectrum",
     "fire"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

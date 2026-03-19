@@ -1,4 +1,15 @@
 {
+<<<<<<< HEAD
+=======
+  "schema_version": 1,
+  "name": "Tidal Table",
+  "mood": "Entangled",
+  "engines": [
+    "Osprey",
+    "Osteria",
+    "Oceanic"
+  ],
+>>>>>>> origin/v1-launch-prep
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CORROSIVE FOUNDATION",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Octopus",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Octopus": {
+      "macro_character": 0.718,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.568,
+      "macro_space": 0.516
+    },
+    "Obbligato": {
+      "macro_character": 0.588,
+      "macro_movement": 0.587,
+      "macro_coupling": 0.446,
+      "macro_space": 0.201
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "aggressive",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

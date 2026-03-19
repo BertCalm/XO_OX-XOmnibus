@@ -58,5 +58,9 @@
     "maqam",
     "grain"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Maqam intervals as grain positions — ancient intervals suspend in cold space."
+>>>>>>> origin/v1-launch-prep
 }

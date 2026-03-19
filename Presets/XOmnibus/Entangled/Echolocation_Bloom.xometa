@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Echolocation Bloom",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Orca"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Orca echolocation pulse fires into OVERLAP FDN — the apex predator's sonar maps the infinite room",
   "dna": {
     "aggression": 0.45,
@@ -40,9 +52,14 @@
   "name": "Echolocation Bloom",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.81,
       "olap_crossfeedAmt": 0.52,
+=======
+      "olap_size": 0.568,
+      "olap_decay": 0.58,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.267,
       "olap_decay": 0.58,
       "olap_diffusion": 0.873,

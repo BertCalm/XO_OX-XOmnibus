@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "FURIOUS ASCENT",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Overlap",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.765,
+      "macro_movement": 0.917,
+      "macro_coupling": 0.216,
+      "macro_space": 0.148
+    },
+    "Obbligato": {
+      "macro_character": 0.329,
+      "macro_movement": 0.911,
+      "macro_coupling": 0.901,
+      "macro_space": 0.096
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "transcendence",
     "aggression-xhigh",
     "movement-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

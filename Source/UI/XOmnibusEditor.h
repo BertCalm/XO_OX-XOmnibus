@@ -123,8 +123,21 @@ namespace GalleryColors {
         if (id == "Orca")      return juce::Colour(0xFF1B2838); // Deep Ocean
         if (id == "Octopus")   return juce::Colour(0xFFE040FB); // Chromatophore Magenta
         // Standalone adapters (Phase 4)
+<<<<<<< HEAD
         if (id == "Overlap" || id == "XOverlap")  return juce::Colour(0xFF00FFB4); // Bioluminescent Cyan-Green
         if (id == "Outwit"  || id == "XOutwit")   return juce::Colour(0xFFCC6600); // Chromatophore Amber
+=======
+        if (id == "XOverlap")  return juce::Colour(0xFF00FFB4); // Bioluminescent Cyan-Green
+        if (id == "XOutwit")   return juce::Colour(0xFFCC6600); // Chromatophore Amber
+        // V1 Concept Engines
+        if (id == "OpenSky")   return juce::Colour(0xFFFF8C00); // Sunburst
+        if (id == "Ostinato")  return juce::Colour(0xFFE8701A); // Firelight Orange
+        if (id == "Oceandeep") return juce::Colour(0xFF2D0A4E); // Trench Violet
+        if (id == "Ouie")      return juce::Colour(0xFF708090); // Hammerhead Steel
+        // V2 Theorem Engines
+        if (id == "Overtone")  return juce::Colour(0xFFA8D8EA); // Spectral Ice
+        if (id == "Organism")  return juce::Colour(0xFFC6E377); // Emergence Lime
+>>>>>>> origin/v1-launch-prep
         return get(borderGray());
     }
 

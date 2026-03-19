@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SKELETAL STRAND",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.151,
+      "macro_movement": 0.691,
+      "macro_coupling": 0.41,
+      "macro_space": 0.775
+    },
+    "Obsidian": {
+      "macro_character": 0.921,
+      "macro_movement": 0.873,
+      "macro_coupling": 0.736,
+      "macro_space": 0.062
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "minimal",
     "negative-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

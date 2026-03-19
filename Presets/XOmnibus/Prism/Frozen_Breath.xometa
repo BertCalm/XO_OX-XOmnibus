@@ -16,6 +16,7 @@
   "engines": [
     "Overworld"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "SCATTER",
     "DRIFT",
@@ -36,6 +37,11 @@
     "space": 0.71,
     "warmth": 0.061
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Crystal lattice tone — intervals measured, density absent.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "prism",
     "cold",
@@ -45,5 +51,27 @@
     "spacious",
     "bright"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.774,
+    "warmth": 0.061,
+    "movement": 0.35,
+    "density": 0.123,
+    "space": 0.71,
+    "aggression": 0.07
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

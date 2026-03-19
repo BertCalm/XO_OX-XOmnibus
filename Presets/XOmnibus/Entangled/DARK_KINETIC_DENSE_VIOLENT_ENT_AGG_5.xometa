@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_KINETIC_DENSE_VIOLENT_ENT_AGG_5",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Orca",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.658,
+      "macro_movement": 0.921,
+      "macro_coupling": 0.768,
+      "macro_space": 0.583
+    },
+    "Obsidian": {
+      "macro_character": 0.679,
+      "macro_movement": 0.925,
+      "macro_coupling": 0.756,
+      "macro_space": 0.626
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dark",
     "kinetic",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

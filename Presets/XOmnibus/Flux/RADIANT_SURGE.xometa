@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "RADIANT SURGE",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Owlfish",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.511,
+      "macro_movement": 0.794,
+      "macro_coupling": 0.96,
+      "macro_space": 0.736
+    },
+    "Obbligato": {
+      "macro_character": 0.659,
+      "macro_movement": 0.284,
+      "macro_coupling": 0.664,
+      "macro_space": 0.619
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "low-warmth"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

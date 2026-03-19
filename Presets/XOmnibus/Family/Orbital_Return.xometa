@@ -15,6 +15,7 @@
   "engines": [
     "Orbital"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -33,6 +34,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORBITAL completing its ellipse — the long orbit coming home. Extended resonance, slow pulse. The planet that remembers its path.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "extended-family",
@@ -43,5 +49,25 @@
     "batch2-extended"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.48,
+    "movement": 0.62,
+    "density": 0.48,
+    "space": 0.88,
+    "aggression": 0.18
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Wind Tie with Odyssey",
+  "mood": "Entangled",
+  "engines": [
+    "Obbligato",
+    "Odyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "ODYSSEY's tidal drift modulates OBBLIGATO's BOND, spreading the coral reed pair across the voyage.",
   "dna": {
     "aggression": 0.576,

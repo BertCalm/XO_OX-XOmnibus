@@ -25,6 +25,7 @@
     "Ocelot",
     "Overbite"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -60,6 +61,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_COLD_FROZEN_DENSE_GENTLE. Designed to raise Entangled cosine diversity.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -71,5 +77,49 @@
     "dense"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.7213,
+      "macro_movement": 0.018,
+      "macro_coupling": 0.8048,
+      "macro_space": 0.3881
+    },
+    "Overbite": {
+      "macro_character": 0.7038,
+      "macro_movement": 0.0265,
+      "macro_coupling": 0.7728,
+      "macro_space": 0.4627
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OCELOT",
+    "target": "OVERBITE",
+    "amount": 0.9789
+  },
+  "macros": {
+    "CHARACTER": 0.7126,
+    "MOVEMENT": 0.0222,
+    "COUPLING": 0.7888,
+    "SPACE": 0.4254
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.9244,
+    "warmth": 0.0866,
+    "movement": 0.0199,
+    "density": 0.9542,
+    "space": 0.6411,
+    "aggression": 0.0916
+  }
+>>>>>>> origin/v1-launch-prep
 }

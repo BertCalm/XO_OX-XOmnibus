@@ -24,6 +24,7 @@
     "Overlap",
     "Odyssey"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -59,6 +60,11 @@
     "space": 0.8,
     "warmth": 0.6
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERLAP trailing decay follows ODYSSEY phrase shape — the sea remembers",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "entangled",
@@ -69,5 +75,59 @@
     "fdn",
     "reverb"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.0,
+    "space": 0.568,
+    "warmth": 0.6,
+    "brightness": 0.962,
+    "density": 0.6,
+    "movement": 0.65
+  },
+  "sonic_dna": {
+    "aggression": 0.25,
+    "space": 0.8,
+    "warmth": 0.6,
+    "brightness": 0.625,
+    "density": 0.6,
+    "movement": 0.65
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_size": 0.839,
+      "olap_decay": 0.853,
+      "olap_damping": 0.502,
+      "olap_diffusion": 0.585,
+      "olap_modDepth": 0.266,
+      "olap_modRate": 0.172,
+      "olap_preDelay": 0.024,
+      "olap_earlyMix": 0.398,
+      "olap_lateMix": 0.542,
+      "olap_filterCutoff": 0.564,
+      "olap_filterReso": 0.359,
+      "olap_outputLevel": 0.661,
+      "olap_couplingLevel": 0.713,
+      "olap_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "ODYSSEY",
+        "type": "AMP_MOD",
+        "amount": 0.689
+      }
+    ]
+  }
+>>>>>>> origin/v1-launch-prep
 }

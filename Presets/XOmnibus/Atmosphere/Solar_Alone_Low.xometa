@@ -44,5 +44,27 @@
     "breath",
     "spacious"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "WARMTH",
+    "BREATH",
+    "COUPLING",
+    "OPEN"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.583,
+    "warmth": 0.844,
+    "movement": 0.429,
+    "density": 0.056,
+    "space": 0.791,
+    "aggression": 0.205
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

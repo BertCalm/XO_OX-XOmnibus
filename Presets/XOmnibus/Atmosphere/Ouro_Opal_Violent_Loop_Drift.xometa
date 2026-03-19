@@ -1,0 +1,117 @@
+{
+<<<<<<< HEAD:Presets/XOmnibus/Atmosphere/5X DARK COLD KINETIC DENSE VIOLENT ATM 4.xometa
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Opal",
+        "type": "RING_MOD",
+        "amount": 0.88
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Violent Loop Drift",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ouroboros",
+    "Opal"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Atmosphere/Ouro_Opal_Violent_Loop_Drift.xometa
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.903,
+    "brightness": 0.064,
+    "density": 0.931,
+    "movement": 0.57,
+    "space": 0.045,
+    "warmth": 0.053
+  },
+  "engines": [
+    "Ouroboros",
+    "Opal"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.76,
+      "macro_coupling": 0.88,
+      "macro_movement": 0.85,
+      "macro_space": 0.49
+    },
+    "Ouroboros": {
+      "macro_character": 0.7,
+      "macro_coupling": 0.7,
+      "macro_movement": 0.87,
+      "macro_space": 0.47
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "atmosphere"
+  ],
+  "tempo": null,
+<<<<<<< HEAD:Presets/XOmnibus/Atmosphere/5X DARK COLD KINETIC DENSE VIOLENT ATM 4.xometa
+  "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.7,
+      "macro_movement": 0.87,
+      "macro_coupling": 0.7,
+      "macro_space": 0.47
+    },
+    "Opal": {
+      "macro_character": 0.76,
+      "macro_movement": 0.85,
+      "macro_coupling": 0.88,
+      "macro_space": 0.49
+    }
+  },
+  "coupling": {
+    "type": "RING_MOD",
+    "source": "OUROBOROS",
+    "target": "OPAL",
+    "amount": 0.88
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.064,
+    "warmth": 0.053,
+    "movement": 0.57,
+    "density": 0.931,
+    "space": 0.045,
+    "aggression": 0.903
+  }
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Atmosphere/Ouro_Opal_Violent_Loop_Drift.xometa
+}

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "FURIOUS VOID RISE",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Ocelot",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.137,
+      "macro_movement": 0.929,
+      "macro_coupling": 0.328,
+      "macro_space": -0.022
+    },
+    "Obsidian": {
+      "macro_character": 0.747,
+      "macro_movement": 0.921,
+      "macro_coupling": 0.38,
+      "macro_space": 0.02
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "transcendence",
     "aggression-xhigh",
     "movement-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK COLD FURY FOU 11",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overbite",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.073,
+      "macro_movement": 0.348,
+      "macro_coupling": 0.515,
+      "macro_space": 0.435
+    },
+    "Ocelot": {
+      "macro_character": 0.0,
+      "macro_movement": 0.387,
+      "macro_coupling": 0.429,
+      "macro_space": 0.557
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "aggressive",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

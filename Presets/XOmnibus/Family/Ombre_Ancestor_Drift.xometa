@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Ancestor Drift",
+  "mood": "Family",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "The ancestral memory drifts into each note from a great distance. High drift, long decay — by the time the memory reaches the current note, it's changed. Family seen across time.",
+  "tags": ["family", "ancestor", "drift", "distant", "time", "change"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.65,
+    "movement": 0.48,
+    "density": 0.65,
+    "space": 0.78,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.3,
+      "ombre_interference": 0.42,
+      "ombre_memoryDecay": 14.0,
+      "ombre_memoryGrain": 180.0,
+      "ombre_memoryDrift": 0.65,
+      "ombre_oscShape": 0,
+      "ombre_reactivity": 0.45,
+      "ombre_subLevel": 0.4,
+      "ombre_filterCutoff": 3200.0,
+      "ombre_filterReso": 0.22,
+      "ombre_attack": 0.08,
+      "ombre_decay": 0.8,
+      "ombre_sustain": 0.72,
+      "ombre_release": 3.0,
+      "ombre_level": 0.73,
+      "ombre_velCutoffScale": 0.3,
+      "ombre_lfo1Rate": 0.22,
+      "ombre_lfo1Depth": 0.38,
+      "ombre_lfo2Rate": 0.14,
+      "ombre_lfo2Depth": 0.3,
+      "ombre_macroCharacter": 0.68,
+      "ombre_macroMovement": 0.48,
+      "ombre_macroCoupling": 0.5,
+      "ombre_macroSpace": 0.8
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

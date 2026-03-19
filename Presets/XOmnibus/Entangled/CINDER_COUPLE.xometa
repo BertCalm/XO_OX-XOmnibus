@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CINDER COUPLE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Oblong"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.364,
+      "macro_movement": 0.918,
+      "macro_coupling": 0.387,
+      "macro_space": 0.774
+    },
+    "Oblong": {
+      "macro_character": 0.679,
+      "macro_movement": 0.052,
+      "macro_coupling": 0.631,
+      "macro_space": 0.335
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "hot",
     "molten",
     "furnace"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

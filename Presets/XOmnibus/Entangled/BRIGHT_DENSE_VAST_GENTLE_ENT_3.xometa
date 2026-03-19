@@ -24,6 +24,7 @@
     "Obbligato",
     "Obese"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "WIND",
     "BOND",
@@ -81,6 +82,11 @@
     "space": 0.8765,
     "warmth": 0.5038
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright Dense Vast Gentle character entanglement — OBBLIGATO × OBESE via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -89,5 +95,85 @@
     "gentle",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "WIND",
+    "BOND",
+    "FLOW",
+    "AIR"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.9321,
+    "warmth": 0.5038,
+    "movement": 0.5991,
+    "density": 0.9055,
+    "space": 0.8765,
+    "aggression": 0.1188
+  },
+  "sonic_dna": {
+    "brightness": 0.9321,
+    "warmth": 0.5038,
+    "movement": 0.5991,
+    "density": 0.9055,
+    "space": 0.8765,
+    "aggression": 0.1188
+  },
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.7812,
+      "macro_movement": 0.6066,
+      "macro_coupling": 0.6439,
+      "macro_space": 0.9147,
+      "filter_cutoff": 0.8915,
+      "filter_resonance": 0.1941,
+      "amp_attack": 0.181,
+      "amp_release": 0.6548,
+      "reverb_mix": 0.6376,
+      "reverb_size": 0.7151,
+      "drive": 0.1596,
+      "density": 0.9265,
+      "output_level": 0.9628,
+      "coupling_level": 0.6191
+    },
+    "Obese": {
+      "macro_character": 0.7425,
+      "macro_movement": 0.5645,
+      "macro_coupling": 0.6226,
+      "macro_space": 0.8397,
+      "filter_cutoff": 0.8173,
+      "filter_resonance": 0.1825,
+      "amp_attack": 0.2109,
+      "amp_release": 0.6362,
+      "reverb_mix": 0.6322,
+      "reverb_size": 0.7191,
+      "drive": 0.1611,
+      "density": 0.8721,
+      "output_level": 0.9293,
+      "coupling_level": 0.6068
+    }
+  },
+  "coupling": {
+    "type": "TIMBRAL_BLEED",
+    "source": "OBBLIGATO",
+    "target": "OBESE",
+    "amount": 0.8183,
+    "pairs": [
+      {
+        "source": "OBBLIGATO",
+        "target": "OBESE",
+        "type": "TIMBRAL_BLEED",
+        "amount": 0.8183
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.718,
+    "MOVEMENT": 0.5991,
+    "COUPLING": 0.8183,
+    "SPACE": 0.8765
+  }
+>>>>>>> origin/v1-launch-prep
 }

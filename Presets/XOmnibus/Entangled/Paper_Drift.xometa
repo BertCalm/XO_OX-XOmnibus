@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Paper Drift",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.17,
+      "macro_movement": 0.42,
+      "macro_coupling": 0.69,
+      "macro_space": 0.91
+    },
+    "Odyssey": {
+      "macro_character": 0.14,
+      "macro_movement": 0.37,
+      "macro_coupling": 0.74,
+      "macro_space": 0.94
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "paper",
     "drift"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "A paper fold drifts across wavetable space — folded harmonics dispersing on cold air."
+>>>>>>> origin/v1-launch-prep
 }

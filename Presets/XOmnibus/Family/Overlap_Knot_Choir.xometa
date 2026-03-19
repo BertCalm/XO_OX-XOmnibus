@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Knot Choir",
+  "mood": "Family",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Six voices tuned like a choir \u2014 spread across the stereo field with gentle Kuramoto coupling keeping them in rhythm. The trefoil crossings are the moments of harmonic agreement. A topology singing.",
+  "tags": [
+    "choir",
+    "harmonic",
+    "trefoil",
+    "singing",
+    "family"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.65,
+    "movement": 0.45,
+    "density": 0.65,
+    "space": 0.85,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.55,
+      "olap_diffusion": 0.72,
+      "olap_spread": 0.9,
+      "olap_decay": 5.5,
+      "olap_modDepth": 0.18,
+      "olap_modRate": 0.1,
+      "olap_damping": 0.38,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

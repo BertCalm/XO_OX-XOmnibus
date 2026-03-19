@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "RAGE TETHER",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.679,
+      "macro_movement": 0.692,
+      "macro_coupling": 0.469,
+      "macro_space": 0.686
+    },
+    "Obbligato": {
+      "macro_character": 0.382,
+      "macro_movement": 0.212,
+      "macro_coupling": 0.537,
+      "macro_space": 0.247
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "brutal",
     "savage",
     "obliterating"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

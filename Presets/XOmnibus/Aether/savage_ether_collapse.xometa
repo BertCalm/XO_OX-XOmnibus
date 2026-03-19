@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SAVAGE ETHER COLLAPSE",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Overdub",
+    "Onset"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.917,
+      "macro_movement": 0.222,
+      "macro_coupling": 0.831,
+      "macro_space": 0.351
+    },
+    "Onset": {
+      "macro_character": 0.469,
+      "macro_movement": 0.237,
+      "macro_coupling": 0.906,
+      "macro_space": 0.306
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "violent",
     "transcendence",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

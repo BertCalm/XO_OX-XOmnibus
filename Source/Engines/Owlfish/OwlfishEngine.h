@@ -2,6 +2,7 @@
 
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include "OwlfishVoice.h"
 #include "OwlfishParamSnapshot.h"
 #include "OwlfishParameters.h"
@@ -46,6 +47,7 @@ public:
         outputCacheL.assign (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.assign (static_cast<size_t> (maxBlockSize), 0.0f);
         lastNoteOn = -1;
+        silenceGate.prepare (sampleRate, maxBlockSize);
     }
 
     //--------------------------------------------------------------------------
@@ -79,6 +81,7 @@ public:
 
             if (msg.isNoteOn())
             {
+                silenceGate.wake();
                 lastNoteOn = msg.getNoteNumber();
                 voice.noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), snapshot);
             }
@@ -104,6 +107,8 @@ public:
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         aftertouch.updateBlock (numSamples);
         const float atPressure = aftertouch.getSmoothedPressure (0);
@@ -131,6 +136,8 @@ public:
             outputCacheL[static_cast<size_t> (i)] = outL[i];
             outputCacheR[static_cast<size_t> (i)] = outR[i];
         }
+
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
 
     //--------------------------------------------------------------------------
@@ -187,6 +194,7 @@ public:
     int getActiveVoiceCount() const override { return voice.isActive() ? 1 : 0; }
 
 private:
+    xomnibus::SilenceGate      silenceGate;
     OwlfishVoice               voice;
     OwlfishParamSnapshot       snapshot;
     xomnibus::PolyAftertouch   aftertouch;

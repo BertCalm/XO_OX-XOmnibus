@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_DENSE_VIOLENT_ENT_AGG_5",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Oblong"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.741,
+      "macro_movement": 0.541,
+      "macro_coupling": 0.919,
+      "macro_space": 0.371
+    },
+    "Oblong": {
+      "macro_character": 0.654,
+      "macro_movement": 0.527,
+      "macro_coupling": 0.905,
+      "macro_space": 0.347
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dark",
     "cold",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

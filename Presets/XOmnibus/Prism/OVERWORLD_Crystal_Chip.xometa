@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Chip",
+  "mood": "Prism",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "SNES with space cranked high — crystalline SPC700 harmonics refracting through the reverb field.",
+  "tags": [
+    "crystal",
+    "chip",
+    "prism",
+    "snes",
+    "space",
+    "overworld"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.4,
+    "movement": 0.35,
+    "density": 0.45,
+    "space": 0.8,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_era": 2,
+      "ow_macro_era": 0.9,
+      "ow_macro_chaos": 0.1,
+      "ow_macro_couple": 0.0,
+      "ow_macro_space": 0.78,
+      "ow_outputLevel": 0.75,
+      "ow_couplingLevel": 0.0,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

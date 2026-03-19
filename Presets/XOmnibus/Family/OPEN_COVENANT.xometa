@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "OPEN COVENANT",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.201,
+      "macro_movement": 0.787,
+      "macro_coupling": 0.876,
+      "macro_space": 0.366
+    },
+    "Ombre": {
+      "macro_character": 0.502,
+      "macro_movement": 0.273,
+      "macro_coupling": 0.165,
+      "macro_space": 0.914
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "family",
     "sparse",
     "xlow-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -16,6 +16,7 @@
   "engines": [
     "Orca"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "HUNT",
     "DIVE",
@@ -36,6 +37,11 @@
     "space": 0.35,
     "warmth": 0.7
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Maximum depth pursuit — bass frequencies only",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -44,5 +50,27 @@
     "abyssal",
     "predator"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "HUNT",
+    "DIVE",
+    "COUPLING",
+    "DEPTH"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.02,
+    "warmth": 0.7,
+    "movement": 0.45,
+    "density": 0.75,
+    "space": 0.35,
+    "aggression": 0.65
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

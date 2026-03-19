@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "HOT_KINETIC_DENSE_INTIMATE_GENTLE_PRS_3",
+  "mood": "Prism",
+  "engines": [
+    "Ohm",
+    "Owlfish"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: HOT_KINETIC_DENSE_INTIMATE_GENTLE. Variant 3.",
   "dna": {
     "aggression": 0.051,
@@ -71,5 +83,49 @@
     "dense"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.589,
+      "macro_movement": 0.998,
+      "macro_coupling": 1.0,
+      "macro_space": 0.01
+    },
+    "Owlfish": {
+      "macro_character": 0.609,
+      "macro_movement": 0.908,
+      "macro_coupling": 0.992,
+      "macro_space": 0.138
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OHM",
+    "target": "OWLFISH",
+    "amount": 0.598
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.652,
+    "warmth": 0.927,
+    "movement": 0.948,
+    "density": 0.961,
+    "space": 0.052,
+    "aggression": 0.051
+  },
+  "macros": {
+    "CHARACTER": 0.599,
+    "MOVEMENT": 0.953,
+    "COUPLING": 0.996,
+    "SPACE": 0.074
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -3,12 +3,15 @@
   "description": "Monolith of warm frequency. Singular, dense, and completely still.",
   "engines": [
     "OddOscar"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.613,

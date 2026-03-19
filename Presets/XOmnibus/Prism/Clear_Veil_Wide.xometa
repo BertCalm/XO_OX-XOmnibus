@@ -44,5 +44,27 @@
     "airy",
     "bright"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "PRISM",
+    "DISTANCE",
+    "COUPLING",
+    "TAIL"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.869,
+    "warmth": 0.174,
+    "movement": 0.225,
+    "density": 0.091,
+    "space": 0.649,
+    "aggression": 0.064
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

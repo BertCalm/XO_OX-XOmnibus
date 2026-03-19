@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_KINETIC_DENSE_VIOLENT_FAM_AGG_2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Osprey",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.376,
+      "macro_movement": 0.82,
+      "macro_coupling": 0.87,
+      "macro_space": 0.663
+    },
+    "OddOscar": {
+      "macro_character": 0.372,
+      "macro_movement": 0.866,
+      "macro_coupling": 0.826,
+      "macro_space": 0.661
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "hot",
     "kinetic",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

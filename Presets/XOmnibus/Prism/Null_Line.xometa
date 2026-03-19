@@ -44,5 +44,27 @@
     "airy",
     "spacious"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "FREEZE",
+    "GLINT",
+    "COUPLING",
+    "VOID"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.571,
+    "warmth": 0.006,
+    "movement": 0.309,
+    "density": 0.085,
+    "space": 0.805,
+    "aggression": 0.108
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

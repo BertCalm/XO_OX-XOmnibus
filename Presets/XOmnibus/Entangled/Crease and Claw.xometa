@@ -14,12 +14,15 @@
   "engines": [
     "Ocelot",
     "Origami"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.8,
@@ -50,6 +53,7 @@
     "aggressive",
     "tension"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Claws through cold paper at maximum speed — tension and release at velocity."
+>>>>>>> origin/v1-launch-prep
 }

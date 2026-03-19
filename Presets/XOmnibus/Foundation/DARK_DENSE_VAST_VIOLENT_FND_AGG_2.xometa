@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_DENSE_VAST_VIOLENT_FND_AGG_2",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Onset",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.516,
+      "macro_movement": 0.817,
+      "macro_coupling": 0.641,
+      "macro_space": 0.494
+    },
+    "Obsidian": {
+      "macro_character": 0.51,
+      "macro_movement": 0.838,
+      "macro_coupling": 0.614,
+      "macro_space": 0.478
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dark",
     "dense",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

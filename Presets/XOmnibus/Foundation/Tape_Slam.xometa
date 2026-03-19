@@ -15,6 +15,19 @@
   },
   "engines": [
     "Overdub"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Saturated tape overdrive at maximum send",
+  "tags": [
+    "foundation",
+    "aggressive",
+    "extreme",
+    "anchor",
+    "drive"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "VOICE",
@@ -32,8 +45,13 @@
   "name": "Tape Slam",
   "parameters": {
     "Overdub": {
+<<<<<<< HEAD
       "dub_couplingBus": 0,
       "dub_couplingLevel": 0.5,
+=======
+      "dub_macro_voice": 0.4962,
+      "dub_macro_send": 0.7503,
+>>>>>>> origin/v1-launch-prep
       "dub_macro_echo": 0.5775,
       "dub_macro_panic": 0.6779,
       "dub_macro_send": 0.7503,
@@ -41,6 +59,7 @@
       "dub_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.8983,
@@ -58,4 +77,9 @@
     "drive"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

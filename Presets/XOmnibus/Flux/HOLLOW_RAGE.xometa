@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOLLOW RAGE",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Orbital",
+    "Octopus"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.576,
+      "macro_movement": 0.42,
+      "macro_coupling": 0.559,
+      "macro_space": 0.576
+    },
+    "Octopus": {
+      "macro_character": 0.465,
+      "macro_movement": 0.464,
+      "macro_coupling": 0.546,
+      "macro_space": 0.705
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "violent",
     "extreme"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

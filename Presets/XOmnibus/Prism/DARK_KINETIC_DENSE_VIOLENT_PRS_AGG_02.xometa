@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK KINETIC DENSE VIOLENT PRS AGG 2",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Ottoni",
+    "Optic"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.049,
+      "macro_movement": 0.834,
+      "macro_coupling": 0.901,
+      "macro_space": 0.408
+    },
+    "Optic": {
+      "macro_character": 0.048,
+      "macro_movement": 0.819,
+      "macro_coupling": 0.93,
+      "macro_space": 0.388
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "dark",
     "kinetic",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

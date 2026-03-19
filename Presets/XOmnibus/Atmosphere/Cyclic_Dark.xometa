@@ -15,6 +15,17 @@
   },
   "engines": [
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OUROBOROS — dark extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme-brightness"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,6 +37,7 @@
   "name": "Cyclic Dark",
   "parameters": {
     "Ouroboros": {
+<<<<<<< HEAD
       "uro_ampAttack": 208.1,
       "uro_ampDecay": 265.9,
       "uro_ampRelease": 598.9,
@@ -34,6 +46,8 @@
       "uro_coupling": 0.86,
       "uro_cycle": 0.04,
       "uro_delayMix": 0.5,
+=======
+>>>>>>> origin/v1-launch-prep
       "uro_feedbackLoop": 0.3,
       "uro_filterCutoff": 0.21,
       "uro_filterReso": 0.14,
@@ -44,6 +58,7 @@
       "uro_space": 0.07
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.06,
@@ -59,4 +74,9 @@
     "extreme-brightness"
   ],
   "version": "1.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "Foam Veil",
+  "mood": "Atmosphere",
+  "engines": ["Osprey"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Surface foam at maximum veils the signal — everything heard through white coastal gauze.",
+  "tags": ["atmosphere", "foam", "veil", "filtered"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.5, "warmth": 0.55, "movement": 0.4, "density": 0.5, "space": 0.68, "aggression": 0.15},
+  "parameters": {
+    "Osprey": {
+      "osprey_brine": 0.4,
+      "osprey_foam": 0.9,
+      "osprey_fog": 0.35,
+      "osprey_hull": 0.4,
+      "osprey_depth": 0.4,
+      "osprey_coherence": 0.55,
+      "osprey_filterTilt": 0.48,
+      "osprey_filterEnvDepth": 0.05,
+      "osprey_harborVerb": 0.55,
+      "osprey_creatureRate": 0.25,
+      "osprey_creatureDepth": 0.2,
+      "osprey_glide": 0.28,
+      "osprey_ampAttack": 0.45,
+      "osprey_ampDecay": 0.45,
+      "osprey_ampSustain": 0.65,
+      "osprey_ampRelease": 1.8,
+      "osprey_macroCharacter": 0.5,
+      "osprey_macroMovement": 0.4,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroSpace": 0.68
+    }
+  },
+  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.4, "COUPLING": 0.0, "SPACE": 0.68},
+  "coupling": {"pairs": []}
+}

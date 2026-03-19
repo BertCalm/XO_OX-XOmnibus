@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "Storm Surge",
+  "mood": "Flux",
+  "engines": ["Osprey"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Atlantic storm surge — brine and foam colliding at maximum flux, hull grinding.",
+  "tags": ["flux", "storm", "surge", "violent"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.5, "warmth": 0.4, "movement": 0.88, "density": 0.7, "space": 0.4, "aggression": 0.75},
+  "parameters": {
+    "Osprey": {
+      "osprey_brine": 0.85,
+      "osprey_foam": 0.8,
+      "osprey_fog": 0.5,
+      "osprey_hull": 0.75,
+      "osprey_depth": 0.65,
+      "osprey_coherence": 0.35,
+      "osprey_filterTilt": 0.5,
+      "osprey_filterEnvDepth": 0.35,
+      "osprey_harborVerb": 0.45,
+      "osprey_creatureRate": 5.0,
+      "osprey_creatureDepth": 0.7,
+      "osprey_glide": 0.0,
+      "osprey_ampAttack": 0.005,
+      "osprey_ampDecay": 0.2,
+      "osprey_ampSustain": 0.6,
+      "osprey_ampRelease": 0.3,
+      "osprey_macroCharacter": 0.8,
+      "osprey_macroMovement": 0.88,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroSpace": 0.4
+    }
+  },
+  "macros": {"CHARACTER": 0.8, "MOVEMENT": 0.88, "COUPLING": 0.0, "SPACE": 0.4},
+  "coupling": {"pairs": []}
+}

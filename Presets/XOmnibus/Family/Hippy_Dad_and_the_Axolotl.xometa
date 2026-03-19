@@ -16,6 +16,7 @@
     "Ohm",
     "OddOscar"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -35,6 +36,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OHM commune warmth + OddOscar regenerative bloom — the generational reunion. Father drone holding the room; Oscar breathing slow underneath.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "reunion",
@@ -46,5 +52,25 @@
     "batch3-reunion"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.82,
+    "movement": 0.3,
+    "density": 0.55,
+    "space": 0.72,
+    "aggression": 0.1
+  }
+>>>>>>> origin/v1-launch-prep
 }

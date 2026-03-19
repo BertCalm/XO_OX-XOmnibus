@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "EMPTY FLUX",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overlap",
+    "Ouroboros"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.1756,
+      "macro_movement": 0.1322,
+      "macro_coupling": 0.5394,
+      "macro_space": 0.9715
+    },
+    "Ouroboros": {
+      "macro_character": 0.5309,
+      "macro_movement": 0.9135,
+      "macro_coupling": 0.8305,
+      "macro_space": 0.257
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "sparse",
     "minimal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

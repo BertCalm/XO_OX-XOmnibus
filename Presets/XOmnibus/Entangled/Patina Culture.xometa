@@ -1,4 +1,14 @@
 {
+<<<<<<< HEAD
+=======
+  "schema_version": 1,
+  "name": "Patina Culture",
+  "mood": "Entangled",
+  "engines": [
+    "Ottoni",
+    "Organon"
+  ],
+>>>>>>> origin/v1-launch-prep
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -63,5 +73,47 @@
     "layered"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.65,
+    "movement": 0.5,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.6,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.58,
+      "macro_space": 0.45
+    },
+    "Organon": {
+      "macro_character": 0.6,
+      "macro_movement": 0.55,
+      "macro_coupling": 0.58,
+      "macro_space": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OTTONI",
+        "engineB": "ORGANON",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.58
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.525,
+    "COUPLING": 0.58,
+    "SPACE": 0.525
+  },
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD_KINETIC_INTIMATE_DENSE_AET2_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Orbital",
+    "Opal"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.4672,
+      "macro_movement": 0.9125,
+      "macro_coupling": 0.8446,
+      "macro_space": 0.01
+    },
+    "Opal": {
+      "macro_character": 0.4567,
+      "macro_movement": 0.92,
+      "macro_coupling": 0.8793,
+      "macro_space": 0.0564
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "intimate",
     "dense",
     "mechanical"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

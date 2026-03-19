@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "FORGE KINETIC",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Osteria",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.579,
+      "macro_movement": 0.837,
+      "macro_coupling": 0.952,
+      "macro_space": 0.527
+    },
+    "Oceanic": {
+      "macro_character": 0.723,
+      "macro_movement": 0.847,
+      "macro_coupling": 1.0,
+      "macro_space": 0.555
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "kinetic",
     "movement"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

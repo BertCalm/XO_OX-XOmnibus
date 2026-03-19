@@ -37,13 +37,21 @@
   "mood": "Atmosphere",
   "name": "ALLLO ATM 06",
   "parameters": {
+<<<<<<< HEAD
     "Opal": {
+=======
+    "Organon": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.075,
       "macro_coupling": 0.264,
       "macro_movement": 0.067,
       "macro_space": 0.099
     },
+<<<<<<< HEAD
     "Organon": {
+=======
+    "Opal": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.075,
       "macro_coupling": 0.264,
       "macro_movement": 0.067,
@@ -56,6 +64,10 @@
     "pole-fill",
     "minimal",
     "sparse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

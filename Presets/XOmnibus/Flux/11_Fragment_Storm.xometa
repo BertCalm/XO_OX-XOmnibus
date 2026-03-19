@@ -15,6 +15,18 @@
   },
   "engines": [
     "Owlfish"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Fast armor decay with high scatter and delay feedback — a storm of pitch-shifted fragments",
+  "tags": [
+    "chaotic",
+    "armor",
+    "delay",
+    "scattered"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "DEPTH",
@@ -26,6 +38,7 @@
   "name": "Fragment Storm",
   "parameters": {
     "Owlfish": {
+<<<<<<< HEAD
       "owl_ampAttack": 1,
       "owl_ampDecay": 100,
       "owl_ampRelease": 200,
@@ -55,6 +68,9 @@
       "owl_grainMix": 0.25,
       "owl_grainPitch": 0.3,
       "owl_grainSize": 0.2,
+=======
+      "owl_portamento": 0.05,
+>>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 0,
       "owl_mixtur": 0.5,
       "owl_morphGlide": 0.2,

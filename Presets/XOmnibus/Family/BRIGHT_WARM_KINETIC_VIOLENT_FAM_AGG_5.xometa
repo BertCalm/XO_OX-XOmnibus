@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_5",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Ohm",
+    "Oblong"
+  ],
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.588,
+      "macro_movement": 0.795,
+      "macro_coupling": 0.612,
+      "macro_space": 0.626
+    },
+    "Oblong": {
+      "macro_character": 0.546,
+      "macro_movement": 0.776,
+      "macro_coupling": 0.605,
+      "macro_space": 0.616
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "warm",
     "kinetic"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_KINETIC_DENSE_VIOLENT_PRS_DRK_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Oracle",
+    "Optic"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.6428,
+      "macro_movement": 0.9636,
+      "macro_coupling": 0.9761,
+      "macro_space": 0.4626
+    },
+    "Optic": {
+      "macro_character": 0.6677,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.9381,
+      "macro_space": 0.4815
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "kinetic",
     "dense",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

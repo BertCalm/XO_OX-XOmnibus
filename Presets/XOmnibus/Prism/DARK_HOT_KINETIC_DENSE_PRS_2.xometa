@@ -37,15 +37,25 @@
   "mood": "Prism",
   "name": "DARK_HOT_KINETIC_DENSE_PRS_2",
   "parameters": {
+<<<<<<< HEAD
     "Oblique": {
       "macro_character": 0.644,
       "macro_coupling": 0.506,
+=======
+    "Overworld": {
+      "macro_character": 0.22,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.893,
       "macro_space": 0.604
     },
+<<<<<<< HEAD
     "Overworld": {
       "macro_character": 0.22,
       "macro_coupling": 0.515,
+=======
+    "Oblique": {
+      "macro_character": 0.644,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.893,
       "macro_space": 0.604
     }
@@ -57,6 +67,10 @@
     "hot",
     "kinetic",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

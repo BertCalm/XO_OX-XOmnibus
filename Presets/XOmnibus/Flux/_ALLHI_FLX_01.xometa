@@ -37,13 +37,21 @@
   "mood": "Flux",
   "name": "ALLHI FLX 01",
   "parameters": {
+<<<<<<< HEAD
     "Odyssey": {
+=======
+    "Organon": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.636,
       "macro_coupling": 0.956,
       "macro_movement": 0.928,
       "macro_space": 0.924
     },
+<<<<<<< HEAD
     "Organon": {
+=======
+    "Odyssey": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.636,
       "macro_coupling": 0.956,
       "macro_movement": 0.928,
@@ -56,6 +64,10 @@
     "pole-fill",
     "high-energy",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

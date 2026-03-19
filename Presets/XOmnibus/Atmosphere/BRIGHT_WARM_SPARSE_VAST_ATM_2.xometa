@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_SPARSE_VAST_ATM_2",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OddOscar",
+    "Oblique"
+  ],
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.454,
+      "macro_movement": 0.507,
+      "macro_coupling": 0.612,
+      "macro_space": 0.754
+    },
+    "Oblique": {
+      "macro_character": 0.516,
+      "macro_movement": 0.535,
+      "macro_coupling": 0.772,
+      "macro_space": 0.822
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "warm",
     "sparse",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BARE CIRCLE",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.657,
+      "macro_movement": 0.906,
+      "macro_coupling": 0.873,
+      "macro_space": 0.333
+    },
+    "Orbital": {
+      "macro_character": 0.583,
+      "macro_movement": 0.141,
+      "macro_coupling": 0.35,
+      "macro_space": 0.968
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "family",
     "sparse",
     "xlow-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

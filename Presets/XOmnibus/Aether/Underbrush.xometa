@@ -44,5 +44,27 @@
     "dense",
     "cover"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "STALK",
+    "STRIKE",
+    "COUPLING",
+    "JUNGLE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.8,
+    "movement": 0.35,
+    "density": 0.7,
+    "space": 0.3,
+    "aggression": 0.45
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -16,6 +16,18 @@
   },
   "engines": [
     "Osprey"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — bright hot violent kinetic. Designed for TANGLE coupling with XOsprey.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "tangle",
+    "osprey"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "BURN",
@@ -27,6 +39,7 @@
   "name": "BRIGHT HOT VIOLENT KINETIC 1",
   "parameters": {
     "Osprey": {
+<<<<<<< HEAD
       "couplingBus": 3,
       "couplingLevel": 0.626
     }
@@ -47,4 +60,13 @@
     "osprey"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.626,
+      "couplingBus": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

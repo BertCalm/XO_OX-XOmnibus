@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Photon Trail",
+  "mood": "Prism",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A figure-eight that captures the path of photons scattering through water \u2014 fast, brilliant, multi-directional. Short decay but high diffusion creates a sparkling burst rather than a tail.",
+  "tags": [
+    "photon",
+    "sparkling",
+    "figure-eight",
+    "burst",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.32,
+    "movement": 0.58,
+    "density": 0.45,
+    "space": 0.68,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 2,
+      "olap_delayFeedback": 0.35,
+      "olap_diffusion": 0.85,
+      "olap_spread": 0.85,
+      "olap_decay": 1.5,
+      "olap_modDepth": 0.25,
+      "olap_modRate": 0.14,
+      "olap_damping": 0.2,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

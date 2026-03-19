@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_VAST_VIOLENT_PRS_DRK_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Osteria",
+    "Ohm"
+  ],
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.487,
+      "macro_movement": 0.5158,
+      "macro_coupling": 0.6115,
+      "macro_space": 0.9336
+    },
+    "Ohm": {
+      "macro_character": 0.476,
+      "macro_movement": 0.5546,
+      "macro_coupling": 0.636,
+      "macro_space": 0.9128
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "cold",
     "vast",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

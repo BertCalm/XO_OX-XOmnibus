@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "AGGRESSIVE STAR COLLAPSE",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Owlfish",
+    "Osteria"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.657,
+      "macro_movement": 0.83,
+      "macro_coupling": 0.873,
+      "macro_space": 0.668
+    },
+    "Osteria": {
+      "macro_character": 0.583,
+      "macro_movement": 0.753,
+      "macro_coupling": 0.35,
+      "macro_space": 0.706
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "violent",
     "transcendence",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

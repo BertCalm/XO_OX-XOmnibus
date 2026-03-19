@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_DENSE_GENTLE_FAM_VOL_84",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Opal",
+    "Oblong"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.942,
+      "macro_movement": 0.529,
+      "macro_coupling": 0.46,
+      "macro_space": 0.505
+    },
+    "Oblong": {
+      "macro_character": 0.907,
+      "macro_movement": 0.536,
+      "macro_coupling": 0.43,
+      "macro_space": 0.471
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dense",
     "gentle",
     "bright"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

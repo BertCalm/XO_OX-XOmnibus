@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "KINETIC SPARSE VAST VIOLENT AET AGG 4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Overworld",
+    "Orbital"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.506,
+      "macro_movement": 0.854,
+      "macro_coupling": 0.912,
+      "macro_space": 0.811
+    },
+    "Orbital": {
+      "macro_character": 0.52,
+      "macro_movement": 0.836,
+      "macro_coupling": 0.868,
+      "macro_space": 0.872
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "kinetic",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

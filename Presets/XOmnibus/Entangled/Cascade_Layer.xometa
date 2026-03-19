@@ -22,6 +22,18 @@
   "engines": [
     "Orca",
     "Owlfish"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "orca",
+    "owlfish"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -51,6 +63,7 @@
       "macro_space": 0.641
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.56,
@@ -68,4 +81,16 @@
     "owlfish"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORCA",
+        "engineB": "OWLFISH",
+        "type": "AMPLITUDE_LOCK",
+        "amount": 0.495
+      }
+    ]
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -334,6 +334,26 @@ ENGINE_DEFS = {
     },
 }
 
+# ---------------------------------------------------------------------------
+# Legacy name aliases — map old engine names to canonical O-prefix entries.
+# Resolved at runtime in get_pad_color_hex / generate_cover so callers using
+# legacy names (SNAP, MORPH, DUB, DRIFT, BOB, FAT, BITE) still work.
+# ---------------------------------------------------------------------------
+_LEGACY_ALIASES: dict = {
+    "SNAP":  "ODDFELIX",
+    "MORPH": "ODDOSCAR",
+    "DUB":   "OVERDUB",
+    "DRIFT": "ODYSSEY",
+    "BOB":   "OBLONG",
+    "FAT":   "OBESE",
+    "BITE":  "OVERBITE",
+}
+
+def _resolve_engine_key(engine_name: str) -> str:
+    """Return the canonical ENGINE_DEFS key for an engine name (handles legacy aliases)."""
+    key = engine_name.upper()
+    return _LEGACY_ALIASES.get(key, key)
+
 XO_GOLD = (233, 196, 106)
 WARM_WHITE = (248, 246, 243)
 
@@ -358,7 +378,7 @@ def get_pad_color_hex(engine_name: str) -> str:
     Returns:
         Hex string with leading '#', e.g. "#0066FF".
     """
-    eng = ENGINE_DEFS.get(engine_name.upper(), ENGINE_DEFS["DEFAULT"])
+    eng = ENGINE_DEFS.get(_resolve_engine_key(engine_name), ENGINE_DEFS["DEFAULT"])
     r, g, b = eng["accent"]
     return f"#{r:02X}{g:02X}{b:02X}"
 
@@ -898,7 +918,7 @@ def generate_cover(
     if not resolutions:
         resolutions = [500]
 
-    engine_key = engine.upper()
+    engine_key = _resolve_engine_key(engine)
     eng = ENGINE_DEFS.get(engine_key, ENGINE_DEFS["DEFAULT"])
     rng = random.Random(seed)
     np_rng = np.random.RandomState(seed if seed is not None else rng.randint(0, 2**31))

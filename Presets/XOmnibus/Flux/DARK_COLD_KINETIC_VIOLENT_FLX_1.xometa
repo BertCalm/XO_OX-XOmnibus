@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overdub",
+    "Oblong"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.0875,
+      "macro_movement": 0.8851,
+      "macro_coupling": 0.9131,
+      "macro_space": 0.4469
+    },
+    "Oblong": {
+      "macro_character": 0.1415,
+      "macro_movement": 0.9098,
+      "macro_coupling": 0.8918,
+      "macro_space": 0.4581
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "low-warmth",
     "high-movement",
     "high-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

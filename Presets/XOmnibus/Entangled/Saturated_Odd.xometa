@@ -37,6 +37,7 @@
   "mood": "Entangled",
   "name": "Saturated Odd",
   "parameters": {
+<<<<<<< HEAD
     "OddOscar": {
       "macro_character": 0.87,
       "macro_coupling": 0.89,
@@ -47,6 +48,18 @@
       "macro_character": 0.71,
       "macro_coupling": 0.79,
       "macro_movement": 0.81,
+=======
+    "Overdub": {
+      "macro_character": 0.71,
+      "macro_movement": 0.81,
+      "macro_coupling": 0.79,
+      "macro_space": 0.52
+    },
+    "OddOscar": {
+      "macro_character": 0.87,
+      "macro_movement": 0.66,
+      "macro_coupling": 0.89,
+>>>>>>> origin/v1-launch-prep
       "macro_space": 0.52
     }
   },
@@ -55,6 +68,10 @@
     "entangled",
     "warm-dense",
     "scorching"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

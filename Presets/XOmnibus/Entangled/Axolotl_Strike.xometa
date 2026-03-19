@@ -23,6 +23,20 @@
   "engines": [
     "OddOscar",
     "Orca"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orca strike velocity coupled into Oddoscar morph — gill pink meets apex predator cold.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "oddoscar",
+    "orca",
+    "axolotl"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

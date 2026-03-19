@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "ERA Ghost",
+  "mood": "Aether",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Three chip eras bleeding into each other in the reverb tail — ghosts of NES, Genesis, SNES.",
+  "tags": [
+    "era",
+    "ghost",
+    "aether",
+    "reverb",
+    "ethereal",
+    "overworld"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.42,
+    "movement": 0.22,
+    "density": 0.35,
+    "space": 0.92,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_era": 0,
+      "ow_macro_era": 0.5,
+      "ow_macro_chaos": 0.05,
+      "ow_macro_couple": 0.0,
+      "ow_macro_space": 0.92,
+      "ow_outputLevel": 0.6,
+      "ow_couplingLevel": 0.0,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

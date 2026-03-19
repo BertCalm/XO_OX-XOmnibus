@@ -15,6 +15,19 @@
   },
   "engines": [
     "Opal"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Granular impact cloud — every grain hits hard",
+  "tags": [
+    "foundation",
+    "aggressive",
+    "extreme",
+    "anchor",
+    "drive"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "GRAIN",
@@ -32,15 +45,19 @@
   "name": "Hammer Pad",
   "parameters": {
     "Opal": {
+<<<<<<< HEAD
       "opal_couplingBus": 0,
       "opal_couplingLevel": 0.5,
       "opal_macro_density": 0.8549,
+=======
+>>>>>>> origin/v1-launch-prep
       "opal_macro_grain": 0.35,
       "opal_macro_scatter": 0.8182,
       "opal_macro_space": 0.5997,
       "opal_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.8637,
@@ -58,4 +75,9 @@
     "drive"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ETCH MIST",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ottoni",
+    "Orbital"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.781,
+      "macro_movement": 0.669,
+      "macro_coupling": 0.842,
+      "macro_space": 0.813
+    },
+    "Orbital": {
+      "macro_character": 0.735,
+      "macro_movement": 0.507,
+      "macro_coupling": 0.197,
+      "macro_space": 0.61
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "abrasive",
     "hostile",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

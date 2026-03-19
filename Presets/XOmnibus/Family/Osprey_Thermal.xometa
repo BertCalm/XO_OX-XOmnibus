@@ -15,6 +15,7 @@
   "engines": [
     "Osprey"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -33,6 +34,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OSPREY riding warm thermal updraft — maximum warmth, maximum space, effortless.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "portrait",
@@ -42,5 +48,25 @@
     "soaring"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.83,
+    "movement": 0.45,
+    "density": 0.22,
+    "space": 0.92,
+    "aggression": 0.12
+  }
+>>>>>>> origin/v1-launch-prep
 }

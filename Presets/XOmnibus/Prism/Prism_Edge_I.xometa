@@ -16,6 +16,7 @@
   "engines": [
     "Onset"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "CRYSTAL",
     "BREATH",
@@ -36,6 +37,11 @@
     "space": 0.881,
     "warmth": 0.13
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Frozen millisecond — cold attack, instant decay, vast tail.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "prism",
     "cold",
@@ -44,5 +50,27 @@
     "airy",
     "spacious"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "CRYSTAL",
+    "BREATH",
+    "COUPLING",
+    "OPEN"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.63,
+    "warmth": 0.13,
+    "movement": 0.168,
+    "density": 0.107,
+    "space": 0.881,
+    "aggression": 0.148
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -14,12 +14,15 @@
   "engines": [
     "Opal",
     "Ocelot"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.55,
@@ -50,6 +53,7 @@
     "ocelot",
     "granular"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Opal shimmer filters through jungle foliage — feline presence shaping the grain density"
+>>>>>>> origin/v1-launch-prep
 }

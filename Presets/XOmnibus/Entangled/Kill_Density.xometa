@@ -23,6 +23,20 @@
   "engines": [
     "Orca",
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orca kill velocity coupling into Onset XVC — every breach triggers percussion cascade.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "orca",
+    "onset",
+    "predator"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

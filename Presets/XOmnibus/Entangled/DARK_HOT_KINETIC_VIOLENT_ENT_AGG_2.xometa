@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_KINETIC_VIOLENT_ENT_AGG_2",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Ombre"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.664,
+      "macro_movement": 0.984,
+      "macro_coupling": 0.807,
+      "macro_space": 0.584
+    },
+    "Ombre": {
+      "macro_character": 0.444,
+      "macro_movement": 0.925,
+      "macro_coupling": 0.821,
+      "macro_space": 0.551
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dark",
     "hot",
     "kinetic"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Violet Savanna",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ocelot",
+    "Oblique"
+  ],
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.665,
+      "macro_movement": 0.715,
+      "macro_coupling": 0.565,
+      "macro_space": 0.465
+    },
+    "Oblique": {
+      "macro_character": 0.785,
+      "macro_movement": 0.735,
+      "macro_coupling": 0.635,
+      "macro_space": 0.535
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Predicate Strike",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Organon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORGANON's logical-metabolic character (Aristotelian organ-pipe variational synthesis). Coupling: Spatial Couple.",
   "dna": {
     "aggression": 0.36,
@@ -39,6 +51,7 @@
   "mood": "Entangled",
   "name": "Predicate Strike",
   "parameters": {
+<<<<<<< HEAD
     "Organon": {
       "organon_ampAttack": 0.29,
       "organon_ampRelease": 0.56,
@@ -54,6 +67,18 @@
       "organon_space": 0.47
     },
     "Outwit": {
+=======
+    "Outwit": {
+      "owit_rule": 90,
+      "owit_arms": 8,
+      "owit_cellSize": 0.33,
+      "owit_density": 0.46,
+      "owit_evolveRate": 0.41,
+      "owit_mutateProb": 0.26,
+      "owit_pitchSpread": 0.26,
+      "owit_filterCutoff": 0.5,
+      "owit_filterReso": 0.16,
+>>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.03,
       "owit_ampRelease": 0.27,
       "owit_armStagger": 0.37,
@@ -71,10 +96,28 @@
       "owit_inkCloudMix": 0.15,
       "owit_mutateProb": 0.26,
       "owit_outputLevel": 0.79,
+<<<<<<< HEAD
       "owit_outputPan": -0.09,
       "owit_pitchSpread": 0.26,
       "owit_polyDepth": 0.8,
       "owit_rule": 90
+=======
+      "owit_outputPan": -0.09
+    },
+    "Organon": {
+      "organon_character": 0.31,
+      "organon_movement": 0.43,
+      "organon_coupling": 0.76,
+      "organon_space": 0.47,
+      "organon_filterCutoff": 0.78,
+      "organon_filterReso": 0.38,
+      "organon_ampAttack": 0.29,
+      "organon_ampSustain": 0.58,
+      "organon_ampRelease": 0.56,
+      "organon_reverbMix": 0.19,
+      "organon_couplingLevel": 0.64,
+      "organon_outputLevel": 0.85
+>>>>>>> origin/v1-launch-prep
     }
   },
   "schema_version": 1,

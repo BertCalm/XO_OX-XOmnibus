@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Score of Ice",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.18,
+      "macro_movement": 0.38,
+      "macro_coupling": 0.68,
+      "macro_space": 0.9
+    },
+    "Obsidian": {
+      "macro_character": 0.15,
+      "macro_movement": 0.33,
+      "macro_coupling": 0.73,
+      "macro_space": 0.93
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "score",
     "ice"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Obsidian crystal timbres blend into Origami's paper harmonics — cold scored silence."
+>>>>>>> origin/v1-launch-prep
 }

@@ -15,6 +15,7 @@
   "engines": [
     "Ouroboros"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -33,6 +34,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OUROBOROS tail-biting — Lorenz attractor spiraling at medium chaos. The self-devouring pattern at its most hypnotic.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "signature",
@@ -44,5 +50,25 @@
     "batch1-signatures"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.5,
+    "movement": 0.88,
+    "density": 0.6,
+    "space": 0.55,
+    "aggression": 0.45
+  }
+>>>>>>> origin/v1-launch-prep
 }

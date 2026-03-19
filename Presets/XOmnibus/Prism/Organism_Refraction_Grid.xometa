@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Refraction Grid",
+  "mood": "Prism",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": ["cellular", "generative", "bright", "emergent"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.2,
+    "movement": 0.78,
+    "density": 0.42,
+    "space": 0.32,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 22.0,
+      "org_seed": 6300,
+      "org_stepRate": 11.0,
+      "org_scope": 2,
+      "org_mutate": 0.02,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.16,
+      "org_filterCutoff": 6800.0,
+      "org_filterRes": 0.62,
+      "org_velCutoff": 0.8,
+      "org_ampAtk": 0.003,
+      "org_ampDec": 0.11,
+      "org_ampSus": 0.5,
+      "org_ampRel": 0.24,
+      "org_lfo1Rate": 4.8,
+      "org_lfo1Depth": 0.5,
+      "org_lfo2Rate": 3.1,
+      "org_lfo2Depth": 0.44,
+      "org_reverbMix": 0.17,
+      "org_macroRule": 0.86,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.05
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.74,
+    "MOVEMENT": 0.78,
+    "COUPLING": 0.0,
+    "SPACE": 0.32
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

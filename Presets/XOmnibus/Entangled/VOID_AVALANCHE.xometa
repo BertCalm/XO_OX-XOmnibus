@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "VOID AVALANCHE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Oracle"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.779,
+      "macro_movement": 0.883,
+      "macro_coupling": 0.366,
+      "macro_space": 0.383
+    },
+    "Oracle": {
+      "macro_character": 0.567,
+      "macro_movement": 0.887,
+      "macro_coupling": 0.605,
+      "macro_space": 0.679
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "chaotic",
     "high-energy"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

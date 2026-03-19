@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "AGGRESSIVE GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OddOscar",
+    "Oblique"
+  ],
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.658,
+      "macro_movement": 0.504,
+      "macro_coupling": 0.437,
+      "macro_space": 0.617
+    },
+    "Oblique": {
+      "macro_character": 0.79,
+      "macro_movement": 0.397,
+      "macro_coupling": 0.576,
+      "macro_space": 0.392
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "aggressive",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

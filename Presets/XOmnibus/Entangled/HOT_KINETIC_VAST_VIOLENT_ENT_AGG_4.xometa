@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_KINETIC_VAST_VIOLENT_ENT_AGG_4",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ottoni",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.449,
+      "macro_movement": 0.949,
+      "macro_coupling": 0.82,
+      "macro_space": 0.901
+    },
+    "Odyssey": {
+      "macro_character": 0.389,
+      "macro_movement": 0.974,
+      "macro_coupling": 0.793,
+      "macro_space": 0.909
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "hot",
     "kinetic",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

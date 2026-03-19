@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_KINETIC_SPARSE_VIOLENT_FLX_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Odyssey",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.8604,
+      "macro_movement": 0.8747,
+      "macro_coupling": 0.9327,
+      "macro_space": 0.3513
+    },
+    "Oceanic": {
+      "macro_character": 0.776,
+      "macro_movement": 0.9464,
+      "macro_coupling": 0.897,
+      "macro_space": 0.2517
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "high-movement",
     "low-density",
     "high-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

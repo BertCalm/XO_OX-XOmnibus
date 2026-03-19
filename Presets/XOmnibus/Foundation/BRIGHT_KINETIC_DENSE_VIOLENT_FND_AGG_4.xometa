@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FND_AGG_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OddOscar",
+    "Obsidian"
+  ],
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.604,
+      "macro_movement": 0.477,
+      "macro_coupling": 0.674,
+      "macro_space": 0.788
+    },
+    "Obsidian": {
+      "macro_character": 0.574,
+      "macro_movement": 0.458,
+      "macro_coupling": 0.724,
+      "macro_space": 0.803
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "kinetic",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

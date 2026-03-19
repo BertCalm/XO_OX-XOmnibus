@@ -37,6 +37,7 @@
   "mood": "Family",
   "name": "BRIGHT WARM VAST STILL GENT...",
   "parameters": {
+<<<<<<< HEAD
     "Origami": {
       "macro_character": 0.95,
       "macro_coupling": 0.209,
@@ -47,6 +48,18 @@
       "macro_character": 0.938,
       "macro_coupling": 0.258,
       "macro_movement": 0.049,
+=======
+    "Osprey": {
+      "macro_character": 0.938,
+      "macro_movement": 0.049,
+      "macro_coupling": 0.258,
+      "macro_space": 0.99
+    },
+    "Origami": {
+      "macro_character": 0.95,
+      "macro_movement": 0.057,
+      "macro_coupling": 0.209,
+>>>>>>> origin/v1-launch-prep
       "macro_space": 0.99
     }
   },
@@ -58,6 +71,10 @@
     "still",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

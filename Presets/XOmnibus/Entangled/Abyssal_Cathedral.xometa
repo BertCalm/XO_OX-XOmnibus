@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Abyssal Cathedral",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Owlfish"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Owlfish Mixtur-Trautonium partials align OVERLAP FDN nodes — subharmonic series in deep reverb",
   "dna": {
     "aggression": 0.225,
@@ -40,9 +52,14 @@
   "name": "Abyssal Cathedral",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.801,
       "olap_crossfeedAmt": 0.6,
+=======
+      "olap_size": 0.825,
+      "olap_decay": 0.78,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.627,
       "olap_decay": 0.78,
       "olap_diffusion": 0.7,

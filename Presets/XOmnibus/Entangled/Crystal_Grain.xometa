@@ -58,5 +58,9 @@
     "crystal",
     "grain"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Crystal harmonics morph into granular clouds — facets dissolving into suspended particles."
+>>>>>>> origin/v1-launch-prep
 }

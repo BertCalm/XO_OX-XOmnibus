@@ -3,12 +3,15 @@
   "description": "Static electricity before the lightning. Highly charged ambient tension.",
   "engines": [
     "Onset"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.602,

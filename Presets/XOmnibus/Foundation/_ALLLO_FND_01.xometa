@@ -37,13 +37,21 @@
   "mood": "Foundation",
   "name": "ALLLO FND 01",
   "parameters": {
+<<<<<<< HEAD
     "Obese": {
+=======
+    "Oblong": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.227,
       "macro_coupling": 0.076,
       "macro_movement": 0.093,
       "macro_space": 0.07
     },
+<<<<<<< HEAD
     "Oblong": {
+=======
+    "Obese": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.227,
       "macro_coupling": 0.076,
       "macro_movement": 0.093,
@@ -56,6 +64,10 @@
     "pole-fill",
     "minimal",
     "sparse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

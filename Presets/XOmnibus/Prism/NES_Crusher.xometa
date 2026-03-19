@@ -15,6 +15,19 @@
   },
   "engines": [
     "Overworld"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "YM2612 dense crunch, brightness cut to zero",
+  "tags": [
+    "prism",
+    "dark",
+    "dense",
+    "extreme",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "ERA",
@@ -32,8 +45,12 @@
   "name": "NES Crusher",
   "parameters": {
     "Overworld": {
+<<<<<<< HEAD
       "ow_couplingBus": 0,
       "ow_couplingLevel": 0.5,
+=======
+      "ow_macro_era": 0.1534,
+>>>>>>> origin/v1-launch-prep
       "ow_macro_chaos": 0.6583,
       "ow_macro_couple": 0.5255,
       "ow_macro_era": 0.1534,
@@ -41,6 +58,7 @@
       "ow_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.736,
@@ -58,4 +76,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

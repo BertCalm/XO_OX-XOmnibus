@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "VIOLENT BOND",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Origami"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.477,
+      "macro_movement": 0.779,
+      "macro_coupling": 0.682,
+      "macro_space": 0.665
+    },
+    "Origami": {
+      "macro_character": 0.515,
+      "macro_movement": 0.549,
+      "macro_coupling": 0.898,
+      "macro_space": 0.483
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "entangled",
     "violent",
     "fury"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

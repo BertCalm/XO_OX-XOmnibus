@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD STILL SPARSE INTIMATE GENTLE ENT2 5",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.163,
+      "macro_movement": 0.109,
+      "macro_coupling": 0.103,
+      "macro_space": 0.051
+    },
+    "Obbligato": {
+      "macro_character": 0.162,
+      "macro_movement": 0.108,
+      "macro_coupling": 0.088,
+      "macro_space": 0.032
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "sparse",
     "intimate",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

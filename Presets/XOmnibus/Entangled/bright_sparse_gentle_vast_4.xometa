@@ -16,6 +16,18 @@
   },
   "engines": [
     "Ocelot"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — bright sparse gentle vast. Designed for SURGE coupling with XOcelot.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "surge",
+    "ocelot"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "GLEAM",
@@ -27,6 +39,7 @@
   "name": "BRIGHT SPARSE GENTLE VAST 4",
   "parameters": {
     "Ocelot": {
+<<<<<<< HEAD
       "couplingBus": 3,
       "couplingLevel": 0.643
     }
@@ -47,4 +60,13 @@
     "ocelot"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.643,
+      "couplingBus": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

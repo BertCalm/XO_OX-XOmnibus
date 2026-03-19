@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT WARM SPARSE BALANCED AET SPC 3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Organon",
+    "Obscura"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.938,
+      "macro_movement": 0.486,
+      "macro_coupling": 0.859,
+      "macro_space": 0.464
+    },
+    "Obscura": {
+      "macro_character": 0.928,
+      "macro_movement": 0.509,
+      "macro_coupling": 0.871,
+      "macro_space": 0.451
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "aggressive",
     "bright",
     "warm"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

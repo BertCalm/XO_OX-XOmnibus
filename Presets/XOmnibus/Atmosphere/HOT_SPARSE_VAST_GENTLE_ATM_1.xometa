@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_SPARSE_VAST_GENTLE_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orbital",
+    "Oblique"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.383,
+      "macro_movement": 0.643,
+      "macro_coupling": 0.838,
+      "macro_space": 0.837
+    },
+    "Oblique": {
+      "macro_character": 0.365,
+      "macro_movement": 0.634,
+      "macro_coupling": 0.845,
+      "macro_space": 0.749
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "sparse",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

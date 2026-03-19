@@ -25,6 +25,7 @@
     "Obbligato",
     "Oblong"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -40,6 +41,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Amber warmth from OBLONG holds OBBLIGATO's BOND — coral reed and amber filter in necessary harmony.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "obbligato",

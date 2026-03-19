@@ -44,5 +44,27 @@
     "dissolve",
     "water"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "FADE",
+    "DEPTH",
+    "COUPLING",
+    "SHADE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.75,
+    "movement": 0.2,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.1
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

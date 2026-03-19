@@ -3,6 +3,7 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/WavetableOscillator.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/Effects/LushReverb.h"
 #include <array>
 #include <cmath>
@@ -384,6 +385,8 @@ public:
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
+        silenceGate.prepare (sampleRate, maxBlockSize);
+
         // Build procedural organic wavetable
         buildOctopusWavetable();
 
@@ -548,6 +551,8 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(), maxPoly, monoMode, legatoMode, glideCoeff,
                         pAmpA, pAmpD, pAmpS, pAmpR, pModA, pModD, pModS, pModR,
                         pSuckerDecay,
@@ -555,6 +560,7 @@ public:
                         effectiveCutoff, effectiveReso, effectiveArmRate, pArmSpread, pArmCount,
                         pInkThreshold, pInkDensity, effectiveInkDecay,
                         pShiftMicro);
+            }
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -562,6 +568,8 @@ public:
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         // --- Update per-voice MPE expression from MPEManager ---
         if (mpeManager != nullptr)
@@ -673,6 +681,7 @@ public:
 
                 // --- LFO modulation ---
                 float lfo1Val = voice.lfo1.process() * pLfo1Depth;
+                // LFO2 modulates chromatophore morph position (skin-color shift rate)
                 float lfo2Val = voice.lfo2.process() * pLfo2Depth;
 
                 // =====================================================
@@ -688,6 +697,10 @@ public:
                 voice.wtOsc.setFrequency (freqMod, srf);
 
                 float voiceSignal = voice.wtOsc.processSample();
+
+                // AudioToRing coupling: ring modulate the carrier with the incoming signal
+                if (couplingRingModSrc != 0.0f)
+                    voiceSignal *= (1.0f + couplingRingModSrc);
 
                 // =====================================================
                 // 5. SUCKERS — Ultra-fast transient pluck
@@ -731,29 +744,31 @@ public:
 
                     // Morph filter type: LP → BP → HP → Notch
                     // We process through LP and HP, then blend
+                    // LFO2 continuously shifts the chromatophore morph position
+                    float voiceMorphTarget = clamp (chromaMorphTarget + lfo2Val * 0.5f, 0.0f, 1.0f);
                     voice.chromaFilter.setMode (CytomicSVF::Mode::LowPass);
                     voice.chromaFilter.setCoefficients (chromaFreqMod, 0.5f + smoothedChromaDepth * 0.4f, srf);
                     float lpOut = voice.chromaFilter.processSample (voiceSignal);
 
                     // Use morph to blend between filter types
                     float morphedFilter;
-                    if (chromaMorphTarget < 0.33f)
+                    if (voiceMorphTarget < 0.33f)
                     {
                         // LP dominant
-                        float t = chromaMorphTarget / 0.33f;
+                        float t = voiceMorphTarget / 0.33f;
                         morphedFilter = lpOut * (1.0f - t) + voiceSignal * t; // LP → dry (towards BP)
                     }
-                    else if (chromaMorphTarget < 0.66f)
+                    else if (voiceMorphTarget < 0.66f)
                     {
                         // BP zone — use bandpass-like response
-                        float t = (chromaMorphTarget - 0.33f) / 0.33f;
+                        float t = (voiceMorphTarget - 0.33f) / 0.33f;
                         float bpLike = voiceSignal - lpOut; // crude HP
                         morphedFilter = lpOut * (1.0f - t) + bpLike * t;
                     }
                     else
                     {
                         // HP → Notch zone
-                        float t = (chromaMorphTarget - 0.66f) / 0.34f;
+                        float t = (voiceMorphTarget - 0.66f) / 0.34f;
                         float hpLike = voiceSignal - lpOut;
                         float notchLike = voiceSignal - lpOut * 0.5f;
                         morphedFilter = hpLike * (1.0f - t) + notchLike * t;
@@ -763,8 +778,10 @@ public:
                 }
 
                 // --- Main filter with arm modulation ---
+                // D001: continuous velocity→timbre — higher velocity opens the filter further
                 float filterCutoffMod = clamp (
-                    effectiveCutoff + armMods[ArmFilterCutoff] * 4000.0f,
+                    effectiveCutoff + armMods[ArmFilterCutoff] * 4000.0f
+                    + voice.velocity * 0.3f * 3000.0f,
                     20.0f, 20000.0f);
                 voice.mainFilter.setCoefficients (filterCutoffMod, effectiveReso, srf);
                 voiceSignal = voice.mainFilter.processSample (voiceSignal);
@@ -838,6 +855,7 @@ public:
             if (v.active) ++count;
         activeVoices = count;
 
+<<<<<<< HEAD
         // Reset coupling accumulators AFTER render loop so they're consumed first
         // (Sisters S-014: was before the loop, making couplingPitchMod always 0)
         couplingWTPosMod = 0.0f;
@@ -845,6 +863,9 @@ public:
         couplingArmRateMod = 0.0f;
         couplingRingModSrc = 0.0f;
         couplingPitchMod = 0.0f;
+=======
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
+>>>>>>> origin/v1-launch-prep
     }
 
     //==========================================================================
@@ -1172,6 +1193,9 @@ public:
     int getActiveVoiceCount() const override { return activeVoices; }
 
 private:
+
+    SilenceGate silenceGate;
+
     //==========================================================================
     // Safe parameter load
     //==========================================================================

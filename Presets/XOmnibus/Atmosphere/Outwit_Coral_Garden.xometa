@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Coral Garden",
+  "mood": "Atmosphere",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 110 at medium chaos \u2014 a reef at dusk. The polyps are partially retracted but the structural complexity is still audible. LFO creates a tidal swell.",
+  "tags": [
+    "atmosphere",
+    "coral",
+    "reef",
+    "dusk",
+    "tidal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.65,
+    "movement": 0.45,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 110,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.2,
+      "owit_armSpread": 0.55,
+      "owit_sync": 0.35,
+      "owit_feedbackAmt": 0.35,
+      "owit_chaos": 0.28,
+      "owit_density": 0.55,
+      "owit_ampAttack": 0.2,
+      "owit_ampDecay": 0.5,
+      "owit_ampSustain": 0.72,
+      "owit_ampRelease": 2.0,
+      "owit_filterCutoff": 0.52,
+      "owit_filterRes": 0.28,
+      "owit_lfoRate": 0.07,
+      "owit_lfoDepth": 0.16,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

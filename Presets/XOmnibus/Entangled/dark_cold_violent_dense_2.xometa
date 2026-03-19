@@ -16,6 +16,18 @@
   },
   "engines": [
     "OddOscar"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — dark cold violent dense. Designed for ORBIT coupling with XOddOscar.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "orbit",
+    "oddoscar"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "LUSTER",
@@ -27,6 +39,7 @@
   "name": "DARK COLD VIOLENT DENSE 2",
   "parameters": {
     "OddOscar": {
+<<<<<<< HEAD
       "couplingBus": 0,
       "couplingLevel": 0.849
     }
@@ -47,4 +60,13 @@
     "oddoscar"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.849,
+      "couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

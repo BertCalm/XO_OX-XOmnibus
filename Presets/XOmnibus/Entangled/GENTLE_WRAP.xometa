@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "GENTLE WRAP",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Onset"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.874,
+      "macro_movement": 0.889,
+      "macro_coupling": 0.634,
+      "macro_space": 0.668
+    },
+    "Onset": {
+      "macro_character": 0.54,
+      "macro_movement": 0.332,
+      "macro_coupling": 0.34,
+      "macro_space": 0.226
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "soft",
     "tender",
     "calm"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

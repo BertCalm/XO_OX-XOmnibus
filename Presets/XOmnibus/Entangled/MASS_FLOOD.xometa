@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "MASS FLOOD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ombre",
+    "Ohm"
+  ],
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.9144,
+      "macro_movement": 0.6956,
+      "macro_coupling": 0.8815,
+      "macro_space": 0.3966
+    },
+    "Ohm": {
+      "macro_character": 0.2393,
+      "macro_movement": 0.3216,
+      "macro_coupling": 0.7132,
+      "macro_space": 0.4663
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "compressed",
     "bound",
     "solid"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

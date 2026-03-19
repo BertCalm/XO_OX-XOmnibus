@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_STILL_DENSE_FAM_VOL_22",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Osprey",
+    "Ole"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.973,
+      "macro_movement": 0.028,
+      "macro_coupling": 0.635,
+      "macro_space": 0.418
+    },
+    "Ole": {
+      "macro_character": 0.932,
+      "macro_movement": 0.041,
+      "macro_coupling": 0.634,
+      "macro_space": 0.401
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "still",
     "dense",
     "bright"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

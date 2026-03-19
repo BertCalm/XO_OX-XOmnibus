@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT COLD DENSE VIOLENT ATM AGG 1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oceanic",
+    "Obscura"
+  ],
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.886,
+      "macro_movement": 0.598,
+      "macro_coupling": 0.868,
+      "macro_space": 0.317
+    },
+    "Obscura": {
+      "macro_character": 0.892,
+      "macro_movement": 0.593,
+      "macro_coupling": 0.861,
+      "macro_space": 0.338
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "bright",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

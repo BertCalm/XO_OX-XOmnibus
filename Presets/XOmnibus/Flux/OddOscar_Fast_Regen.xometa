@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Fast Regen",
+  "mood": "Flux",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Fast regeneration pulse — rapid cycling morph simulates accelerated limb regrowth.",
+  "tags": ["fast", "regen", "rapid", "accelerated"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.52, "warmth": 0.55, "movement": 0.85, "density": 0.52, "space": 0.4, "aggression": 0.45},
+  "parameters": {
+    "OddOscar": {"morph_morph": 0.68, "morph_bloom": 0.72, "morph_detune": 0.12, "morph_drift": 0.62, "morph_filterCutoff": 5200.0, "morph_filterReso": 0.55, "morph_filterEnvDepth": 0.82, "morph_sub": 0.25, "morph_decay": 0.18, "morph_sustain": 0.5, "morph_release": 0.4, "morph_glide": 0.03, "morph_voiceMode": 0, "morph_polyphony": 4, "morph_level": 0.78, "morph_macroBloom": 0.72, "morph_macroDepth": 0.78, "morph_macroDrift": 0.62, "morph_macroSpace": 0.4}
+  },
+  "macros": {"CHARACTER": 0.68, "MOVEMENT": 0.85, "COUPLING": 0.0, "SPACE": 0.4},
+  "coupling": {"pairs": []}
+}

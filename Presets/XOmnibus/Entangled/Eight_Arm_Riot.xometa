@@ -23,6 +23,20 @@
   "engines": [
     "Octopus",
     "Obese"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Octopus eight arms saturated by OBESE MOJO — decentralized alien intelligence at harmonic maximum.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "octopus",
+    "obese",
+    "eight-arm"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

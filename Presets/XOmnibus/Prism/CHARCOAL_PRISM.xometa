@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CHARCOAL PRISM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Outwit",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.996,
+      "macro_movement": 0.711,
+      "macro_coupling": 0.823,
+      "macro_space": 0.435
+    },
+    "Obbligato": {
+      "macro_character": 0.292,
+      "macro_movement": 0.294,
+      "macro_coupling": 0.1,
+      "macro_space": 0.182
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "prism",
     "dark",
     "spectrum"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

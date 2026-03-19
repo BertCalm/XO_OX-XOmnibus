@@ -1,0 +1,117 @@
+{
+<<<<<<< HEAD:Presets/XOmnibus/Prism/5X DARK COLD KINETIC DENSE VIOLENT PRM 2.xometa
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Optic",
+        "type": "PITCH_FOLLOW",
+        "amount": 0.91
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Radiant Drum Split",
+  "mood": "Prism",
+  "engines": [
+    "Onset",
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Prism/Onse_Opti_Radiant_Drum_Split.xometa
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.916,
+    "density": 0.489,
+    "movement": 0.067,
+    "space": 0.957,
+    "warmth": 0.947
+  },
+  "engines": [
+    "Onset",
+    "Optic"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.61,
+      "macro_coupling": 0.85,
+      "macro_movement": 0.69,
+      "macro_space": 0.16
+    },
+    "Optic": {
+      "macro_character": 0.66,
+      "macro_coupling": 0.9,
+      "macro_movement": 0.9,
+      "macro_space": 0.22
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "prism"
+  ],
+  "tempo": null,
+<<<<<<< HEAD:Presets/XOmnibus/Prism/5X DARK COLD KINETIC DENSE VIOLENT PRM 2.xometa
+  "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.61,
+      "macro_movement": 0.69,
+      "macro_coupling": 0.85,
+      "macro_space": 0.16
+    },
+    "Optic": {
+      "macro_character": 0.66,
+      "macro_movement": 0.9,
+      "macro_coupling": 0.9,
+      "macro_space": 0.22
+    }
+  },
+  "coupling": {
+    "type": "PITCH_FOLLOW",
+    "source": "ONSET",
+    "target": "OPTIC",
+    "amount": 0.91
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.916,
+    "warmth": 0.947,
+    "movement": 0.067,
+    "density": 0.489,
+    "space": 0.957,
+    "aggression": 0.1
+  }
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Prism/Onse_Opti_Radiant_Drum_Split.xometa
+}

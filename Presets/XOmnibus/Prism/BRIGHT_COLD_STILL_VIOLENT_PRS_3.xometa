@@ -37,15 +37,25 @@
   "mood": "Prism",
   "name": "Chrome Fang",
   "parameters": {
+<<<<<<< HEAD
     "Oracle": {
       "macro_character": 0.495,
       "macro_coupling": 0.868,
+=======
+    "Owlfish": {
+      "macro_character": 0.929,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.114,
       "macro_space": 0.611
     },
+<<<<<<< HEAD
     "Owlfish": {
       "macro_character": 0.929,
       "macro_coupling": 0.827,
+=======
+    "Oracle": {
+      "macro_character": 0.495,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.114,
       "macro_space": 0.611
     }
@@ -57,6 +67,10 @@
     "cold",
     "still",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -25,6 +25,7 @@
     "Optic",
     "Owlfish"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -60,6 +61,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_VAST. Designed to raise Entangled cosine diversity.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -71,5 +77,49 @@
     "vast"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.9828,
+      "macro_movement": 0.0937,
+      "macro_coupling": 0.9553,
+      "macro_space": 0.8365
+    },
+    "Owlfish": {
+      "macro_character": 0.7222,
+      "macro_movement": 0.0927,
+      "macro_coupling": 0.9502,
+      "macro_space": 0.2383
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OPTIC",
+    "target": "OWLFISH",
+    "amount": 0.8141
+  },
+  "macros": {
+    "CHARACTER": 0.8525,
+    "MOVEMENT": 0.0932,
+    "COUPLING": 0.9527,
+    "SPACE": 0.5374
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.9052,
+    "warmth": 0.9454,
+    "movement": 0.0985,
+    "density": 0.9134,
+    "space": 0.8931,
+    "aggression": 0.3278
+  }
+>>>>>>> origin/v1-launch-prep
 }

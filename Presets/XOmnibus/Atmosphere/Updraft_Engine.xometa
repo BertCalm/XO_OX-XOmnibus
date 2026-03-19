@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Updraft Engine",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Weather system in motion. High movement, active aggression. OVERWORLD kinetic register.",
   "dna": {
     "aggression": 0.452,
@@ -47,5 +58,40 @@
     "weather",
     "dynamic"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "ERA",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.547,
+    "warmth": 0.269,
+    "movement": 0.861,
+    "density": 0.586,
+    "space": 0.525,
+    "aggression": 0.452
+  },
+  "parameters": {
+    "Overworld": {
+      "era": 0.457,
+      "glitch": 0.977,
+      "coupling": 0.334,
+      "space": 0.564
+    }
+  },
+  "macros": {
+    "ERA": 0.457,
+    "GLITCH": 0.977,
+    "COUPLING": 0.334,
+    "SPACE": 0.564
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

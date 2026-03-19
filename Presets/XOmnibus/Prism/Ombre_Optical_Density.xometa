@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Optical Density",
+  "mood": "Prism",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Dense granular memory with high filter reso — optically 'thick' with color. Notes move through this medium as if through glass, their frequency bending.",
+  "tags": ["prism", "density", "thick", "optical", "resonant", "glass"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.52,
+    "movement": 0.48,
+    "density": 0.75,
+    "space": 0.65,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.35,
+      "ombre_interference": 0.55,
+      "ombre_memoryDecay": 7.0,
+      "ombre_memoryGrain": 110.0,
+      "ombre_memoryDrift": 0.5,
+      "ombre_oscShape": 1,
+      "ombre_reactivity": 0.6,
+      "ombre_subLevel": 0.18,
+      "ombre_filterCutoff": 4000.0,
+      "ombre_filterReso": 0.7,
+      "ombre_attack": 0.02,
+      "ombre_decay": 0.5,
+      "ombre_sustain": 0.65,
+      "ombre_release": 2.0,
+      "ombre_level": 0.68,
+      "ombre_velCutoffScale": 0.5,
+      "ombre_lfo1Rate": 0.8,
+      "ombre_lfo1Depth": 0.45,
+      "ombre_lfo2Rate": 0.5,
+      "ombre_lfo2Depth": 0.65,
+      "ombre_macroCharacter": 0.62,
+      "ombre_macroMovement": 0.48,
+      "ombre_macroCoupling": 0.5,
+      "ombre_macroSpace": 0.68
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

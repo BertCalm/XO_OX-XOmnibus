@@ -15,6 +15,18 @@
   },
   "engines": [
     "Owlfish"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Pure subharmonic bass — 1:2 and 1:3 divisions with heavy body sine and clean Mixtur layering",
+  "tags": [
+    "bass",
+    "sub",
+    "abyssal",
+    "foundation"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "DEPTH",
@@ -26,6 +38,7 @@
   "name": "Bathyal Floor",
   "parameters": {
     "Owlfish": {
+<<<<<<< HEAD
       "owl_ampAttack": 5,
       "owl_ampDecay": 250,
       "owl_ampRelease": 400,
@@ -55,6 +68,9 @@
       "owl_grainMix": 0.0,
       "owl_grainPitch": 0.0,
       "owl_grainSize": 0.3,
+=======
+      "owl_portamento": 0.1,
+>>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 1,
       "owl_mixtur": 0.1,
       "owl_morphGlide": 0.3,

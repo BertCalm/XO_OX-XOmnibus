@@ -34,6 +34,12 @@
 #include "Engines/Ombre/OmbreEngine.h"
 #include "Engines/Orca/OrcaEngine.h"
 #include "Engines/Octopus/OctopusEngine.h"
+#include "Engines/OpenSky/OpenSkyEngine.h"
+#include "Engines/Ostinato/OstinatoEngine.h"
+#include "Engines/OceanDeep/OceandeepEngine.h"
+#include "Engines/Ouie/OuieEngine.h"
+#include "Engines/Overtone/OvertoneEngine.h"
+#include "Engines/Organism/OrganismEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -174,6 +180,36 @@ static bool registered_Octopus = xomnibus::EngineRegistry::instance().registerEn
     "Octopus", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OctopusEngine>();
     });
+// V1 Concept Engines — OPENSKY
+static bool registered_OpenSky = xomnibus::EngineRegistry::instance().registerEngine(
+    "OpenSky", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OpenSkyEngine>();
+    });
+// V1 Concept Engines — OSTINATO
+static bool registered_Ostinato = xomnibus::EngineRegistry::instance().registerEngine(
+    "Ostinato", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OstinatoEngine>();
+    });
+// V1 Concept Engines — OCEANDEEP
+static bool registered_Oceandeep = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oceandeep", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OceandeepEngine>();
+    });
+// V1 Concept Engines — OUIE
+static bool registered_Ouie = xomnibus::EngineRegistry::instance().registerEngine(
+    "Ouie", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OuieEngine>();
+    });
+// Theorem Engine — OVERTONE (continued fraction spectral synthesis)
+static bool registered_Overtone = xomnibus::EngineRegistry::instance().registerEngine(
+    "Overtone", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OvertoneEngine>();
+    });
+// Theorem Engine — ORGANISM (cellular automata generative synthesis)
+static bool registered_Organism = xomnibus::EngineRegistry::instance().registerEngine(
+    "Organism", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OrganismEngine>();
+    });
 
 namespace xomnibus {
 
@@ -269,6 +305,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OmbreEngine::addParameters(params);
     OrcaEngine::addParameters(params);
     OctopusEngine::addParameters(params);
+    // V1 Concept Engines
+    OpenSkyEngine::addParameters(params);
+    OceandeepEngine::addParameters(params);
 
     // Chord Machine parameters
     params.push_back(std::make_unique<juce::AudioParameterBool>(
@@ -468,10 +507,10 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqTarget1", 1), "Master Seq Target 1",
-        juce::NormalisableRange<float>(0.0f, 15.0f, 1.0f), 0.0f));
+        juce::NormalisableRange<float>(0.0f, 17.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqTarget2", 1), "Master Seq Target 2",
-        juce::NormalisableRange<float>(0.0f, 15.0f, 1.0f), 0.0f));
+        juce::NormalisableRange<float>(0.0f, 17.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqPattern", 1), "Master Seq Pattern",
         juce::NormalisableRange<float>(0.0f, 7.0f, 1.0f), 0.0f));
@@ -582,7 +621,85 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::ParameterID("master_pwidthMix", 1), "Master PWidth Mix",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
+    // Stage 20: Brickwall Limiter
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_limCeiling", 1), "Master Limiter Ceiling",
+        juce::NormalisableRange<float>(-6.0f, 0.0f), -0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_limRelease", 1), "Master Limiter Release",
+        juce::NormalisableRange<float>(10.0f, 500.0f, 0.0f, 0.4f), 50.0f));
+
+    // Stage 6: fXOsmosis (Membrane Transfer)
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_osmMembrane", 1), "Master Osmosis Membrane",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_osmReactivity", 1), "Master Osmosis Reactivity",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_osmResonance", 1), "Master Osmosis Resonance",
+        juce::NormalisableRange<float>(0.0f, 0.85f), 0.4f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_osmSaturation", 1), "Master Osmosis Saturation",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_osmMix", 1), "Master Osmosis Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+
+    // Stage 12: fXOneiric (Dream State)
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onDelayTime", 1), "Master Oneiric Delay",
+        juce::NormalisableRange<float>(1.0f, 1500.0f, 0.0f, 0.3f), 350.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onShiftHz", 1), "Master Oneiric Shift",
+        juce::NormalisableRange<float>(-500.0f, 500.0f), 5.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onFeedback", 1), "Master Oneiric Feedback",
+        juce::NormalisableRange<float>(0.0f, 0.92f), 0.6f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onDamping", 1), "Master Oneiric Damping",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onSpread", 1), "Master Oneiric Spread",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onMix", 1), "Master Oneiric Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+
     return { params.begin(), params.end() };
+}
+
+// SRO: Engine-specific silence gate hold times.
+// Tuned to each engine's tail characteristics per SilenceGate.h guidance:
+//   Percussive (fast decay, no internal reverb):           100ms
+//   Standard (typical synth voices):                       200ms
+//   Reverb-tail (internal delay/reverb/granular):          500ms
+//   Infinite-sustain (self-sustaining feedback/metabolic): 1000ms
+//   Visual-only (OPTIC — no audio output):                  50ms
+static float silenceGateHoldMs(const juce::String& engineId)
+{
+    // Percussive — 100ms
+    if (engineId == "Onset"     || engineId == "Bite"      || engineId == "OddfeliX"
+     || engineId == "Origami")
+        return 100.0f;
+
+    // Reverb-tail / granular / delay — 500ms
+    if (engineId == "Overdub"   || engineId == "Opal"      || engineId == "Oceanic"
+     || engineId == "Obscura"   || engineId == "Osprey"    || engineId == "Osteria"
+     || engineId == "Ombre"     || engineId == "Overlap")
+        return 500.0f;
+
+    // Infinite-sustain / self-exciting feedback — 1000ms
+    if (engineId == "Organon"   || engineId == "Ouroboros"  || engineId == "Oracle"
+     || engineId == "Owlfish")
+        return 1000.0f;
+
+    // Visual-only — 50ms (Optic generates no audio; gate closes fast)
+    if (engineId == "Optic")
+        return 50.0f;
+
+    // Standard — 200ms (all remaining engines)
+    return 200.0f;
 }
 
 void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
@@ -594,6 +711,11 @@ void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     chordMachine.prepare(sampleRate, samplesPerBlock);
     masterFX.prepare(sampleRate, samplesPerBlock, apvts);
 
+    // SRO: Prepare profilers and auditor
+    for (auto& prof : engineProfilers)
+        prof.prepare(sampleRate, samplesPerBlock);
+    sroAuditor.prepare(sampleRate, samplesPerBlock);
+
     for (auto& buf : engineBuffers)
         buf.setSize(2, samplesPerBlock);
 
@@ -603,7 +725,11 @@ void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     {
         auto eng = std::atomic_load(&engines[i]);
         if (eng)
+        {
             eng->prepare(sampleRate, samplesPerBlock);
+            eng->prepareSilenceGate(sampleRate, samplesPerBlock,
+                                    silenceGateHoldMs(eng->getEngineId()));
+        }
     }
 }
 
@@ -688,8 +814,36 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         if (!enginePtrs[i])
             continue;
 
+        // SRO: Wake silence gate on note-on events (BEFORE bypass check)
+        for (const auto metadata : slotMidi[i])
+        {
+            if (metadata.getMessage().isNoteOn())
+            {
+                enginePtrs[i]->wakeSilenceGate();
+                break;  // One wake per block is sufficient
+            }
+        }
+
+        // SRO: Skip DSP if silence gate says engine output is silent
         engineBuffers[i].clear();
-        enginePtrs[i]->renderBlock(engineBuffers[i], slotMidi[i], numSamples);
+        if (enginePtrs[i]->isSilenceGateBypassed() && slotMidi[i].isEmpty())
+        {
+            // Still record as active-but-bypassed for the auditor
+            sroAuditor.recordSlot(i, engineProfilers[i].getStats(), true);
+            continue;
+        }
+
+        {
+            EngineProfiler::ScopedMeasurement measurement (engineProfilers[i]);
+            enginePtrs[i]->renderBlock(engineBuffers[i], slotMidi[i], numSamples);
+        }
+
+        // SRO: Feed output to silence gate for analysis
+        enginePtrs[i]->analyzeForSilenceGate(engineBuffers[i], numSamples);
+
+        // SRO: Record slot stats for auditor (CPU + silence gate state)
+        sroAuditor.recordSlot(i, engineProfilers[i].getStats(),
+                              enginePtrs[i]->isSilenceGateBypassed());
     }
 
     // Apply coupling matrix between engines.
@@ -842,6 +996,8 @@ void XOmnibusProcessor::loadEngine(int slot, const std::string& engineId)
 
     newEngine->attachParameters(apvts);
     newEngine->prepare(currentSampleRate, currentBlockSize);
+    newEngine->prepareSilenceGate(currentSampleRate, currentBlockSize,
+                                  silenceGateHoldMs(newEngine->getEngineId()));
 
     // Move the old engine to crossfade-out state
     auto oldEngine = std::atomic_load(&engines[slot]);
@@ -877,6 +1033,10 @@ void XOmnibusProcessor::unloadEngine(int slot)
 
     std::shared_ptr<SynthEngine> empty;
     std::atomic_store(&engines[slot], empty);
+
+    // SRO: Clear profiler and auditor for this slot
+    engineProfilers[slot].reset();
+    sroAuditor.clearSlot(slot);
 
     if (onEngineChanged)
         juce::MessageManager::callAsync([this, slot]{ if (onEngineChanged) onEngineChanged(slot); });

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_KINETIC_SPARSE_GENTLE_FND_2",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overbite",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.664,
+      "macro_movement": 0.23,
+      "macro_coupling": 0.701,
+      "macro_space": 0.353
+    },
+    "OddOscar": {
+      "macro_character": 0.527,
+      "macro_movement": 0.34,
+      "macro_coupling": 0.456,
+      "macro_space": 0.788
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "sparse",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Suspended Animation",
+  "mood": "Aether",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "All motion nearly frozen — LFOs at minimal rate, long grain, slow attack and release. The note exists in a kind of suspended temporal state. Neither beginning nor ending.",
+  "tags": ["aether", "suspended", "frozen", "static", "temporal", "minimal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.58,
+    "movement": 0.08,
+    "density": 0.62,
+    "space": 0.88,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.28,
+      "ombre_interference": 0.25,
+      "ombre_memoryDecay": 20.0,
+      "ombre_memoryGrain": 400.0,
+      "ombre_memoryDrift": 0.05,
+      "ombre_oscShape": 0,
+      "ombre_reactivity": 0.25,
+      "ombre_subLevel": 0.38,
+      "ombre_filterCutoff": 2500.0,
+      "ombre_filterReso": 0.15,
+      "ombre_attack": 5.0,
+      "ombre_decay": 5.0,
+      "ombre_sustain": 0.88,
+      "ombre_release": 10.0,
+      "ombre_level": 0.62,
+      "ombre_velCutoffScale": 0.18,
+      "ombre_lfo1Rate": 0.01,
+      "ombre_lfo1Depth": 0.15,
+      "ombre_lfo2Rate": 0.01,
+      "ombre_lfo2Depth": 0.12,
+      "ombre_macroCharacter": 0.78,
+      "ombre_macroMovement": 0.08,
+      "ombre_macroCoupling": 0.35,
+      "ombre_macroSpace": 0.92
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

@@ -15,6 +15,19 @@
   },
   "engines": [
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Void accumulation: cold resonance packed into black mass.",
+  "tags": [
+    "aether",
+    "cold",
+    "dense",
+    "dark",
+    "pressure"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "COLLAPSE",
@@ -27,6 +40,7 @@
   "parameters": {
     "Ouroboros": {}
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.362,
@@ -44,4 +58,10 @@
     "pressure"
   ],
   "version": "1.0.0"
+=======
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

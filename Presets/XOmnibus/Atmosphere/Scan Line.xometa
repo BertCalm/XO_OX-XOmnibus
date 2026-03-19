@@ -3,12 +3,15 @@
   "description": "Scan lines refreshing faster than perception. Electric texture, cool warmth.",
   "engines": [
     "OddfeliX"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.582,

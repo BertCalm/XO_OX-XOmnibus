@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CHILL CIRCLE",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.801,
+      "macro_movement": 0.109,
+      "macro_coupling": 0.192,
+      "macro_space": 0.536
+    },
+    "Ombre": {
+      "macro_character": 0.14,
+      "macro_movement": 0.183,
+      "macro_coupling": 0.463,
+      "macro_space": 0.874
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "family",
     "cold",
     "xlow-warmth"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

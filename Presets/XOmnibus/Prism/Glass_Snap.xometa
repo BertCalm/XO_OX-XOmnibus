@@ -44,5 +44,27 @@
     "transient",
     "crack"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "BOB",
+    "SNAP",
+    "COUPLING",
+    "ROOM"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.91,
+    "warmth": 0.25,
+    "movement": 0.85,
+    "density": 0.4,
+    "space": 0.55,
+    "aggression": 0.3
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "LAYERED BLOCK",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OddfeliX",
+    "Ocelot"
+  ],
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.0514,
+      "macro_movement": 0.4804,
+      "macro_coupling": 0.8097,
+      "macro_space": 0.7212
+    },
+    "Ocelot": {
+      "macro_character": 0.7746,
+      "macro_movement": 0.3802,
+      "macro_coupling": 0.9287,
+      "macro_space": 0.2422
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "deep",
     "tectonic",
     "compressed"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

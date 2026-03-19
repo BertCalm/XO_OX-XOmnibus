@@ -23,6 +23,20 @@
   "engines": [
     "Ouroboros",
     "Oblong"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ouroboros fractal frequency smearing Bob's filter cutoff — warmth buried under mathematical weight.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "ouroboros",
+    "oblong",
+    "fractal"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

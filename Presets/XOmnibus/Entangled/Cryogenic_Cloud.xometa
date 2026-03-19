@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Cryogenic Cloud",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Opal",
+    "Obscura"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.22,
+      "macro_movement": 0.62,
+      "macro_coupling": 0.62,
+      "macro_space": 0.87
+    },
+    "Obscura": {
+      "macro_character": 0.19,
+      "macro_movement": 0.57,
+      "macro_coupling": 0.67,
+      "macro_space": 0.9
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {

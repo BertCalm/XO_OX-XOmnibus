@@ -3,12 +3,15 @@
   "description": "Copper warmth spreads across the canopy. The day arrives without announcement.",
   "engines": [
     "Oceanic"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.791,

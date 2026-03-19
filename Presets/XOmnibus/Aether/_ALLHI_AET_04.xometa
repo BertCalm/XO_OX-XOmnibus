@@ -37,13 +37,21 @@
   "mood": "Aether",
   "name": "ALLHI AET 04",
   "parameters": {
+<<<<<<< HEAD
     "Opal": {
+=======
+    "Origami": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.947,
       "macro_coupling": 0.962,
       "macro_movement": 0.675,
       "macro_space": 0.937
     },
+<<<<<<< HEAD
     "Origami": {
+=======
+    "Opal": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.947,
       "macro_coupling": 0.962,
       "macro_movement": 0.675,
@@ -56,6 +64,10 @@
     "pole-fill",
     "high-energy",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

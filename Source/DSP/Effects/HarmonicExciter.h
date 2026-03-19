@@ -1,6 +1,7 @@
 #pragma once
 #include <cmath>
 #include <algorithm>
+#include "../FastMath.h"
 
 namespace xomnibus {
 
@@ -31,8 +32,25 @@ public:
     }
 
     void setDrive (float d) { drive = std::clamp (d, 0.0f, 1.0f); }
-    void setFreq (float f)  { hpfFreq = std::clamp (f, 1000.0f, 12000.0f); recalcHPF(); }
-    void setTone (float t)  { tone = std::clamp (t, 0.0f, 1.0f); recalcToneLPF(); }
+    // SRO: Dirty-flag coefficient caching — skip recalc if value unchanged
+    void setFreq (float f)
+    {
+        float clamped = std::clamp (f, 1000.0f, 12000.0f);
+        if (std::abs (clamped - hpfFreq) > 0.01f)
+        {
+            hpfFreq = clamped;
+            recalcHPF();
+        }
+    }
+    void setTone (float t)
+    {
+        float clamped = std::clamp (t, 0.0f, 1.0f);
+        if (std::abs (clamped - tone) > 0.0001f)
+        {
+            tone = clamped;
+            recalcToneLPF();
+        }
+    }
     void setMix (float m)   { mix = std::clamp (m, 0.0f, 1.0f); }
 
     void processBlock (float* left, float* right, int numSamples)
@@ -100,9 +118,10 @@ private:
 
     void recalcHPF()
     {
+        // SRO: fastSin/fastCos replace std:: trig (per-setter coefficient calc)
         float w0 = 2.0f * 3.14159265f * hpfFreq / static_cast<float> (sr);
-        float cosW0 = std::cos (w0);
-        float sinW0 = std::sin (w0);
+        float cosW0 = fastCos (w0);
+        float sinW0 = fastSin (w0);
         float alpha = sinW0 / (2.0f * 0.707f); // Q = 0.707
 
         float a0 = 1.0f + alpha;
@@ -117,9 +136,10 @@ private:
     {
         // Tone maps 0..1 to 2kHz..16kHz
         float freq = 2000.0f + tone * 14000.0f;
+        // SRO: fastSin/fastCos replace std:: trig (per-setter coefficient calc)
         float w0 = 2.0f * 3.14159265f * freq / static_cast<float> (sr);
-        float cosW0 = std::cos (w0);
-        float sinW0 = std::sin (w0);
+        float cosW0 = fastCos (w0);
+        float sinW0 = fastSin (w0);
         float alpha = sinW0 / (2.0f * 0.707f);
 
         float a0 = 1.0f + alpha;
@@ -155,11 +175,12 @@ private:
         return x - (x * x * x) / 3.0f;
     }
 
+    // SRO: Use shared flushDenormal from FastMath.h
     void flushStates()
     {
         auto flush = [] (BiquadState& s) {
-            auto fd = [] (float& v) { if (std::abs (v) < 1e-15f) v = 0.0f; };
-            fd (s.x1); fd (s.x2); fd (s.y1); fd (s.y2);
+            s.x1 = flushDenormal (s.x1); s.x2 = flushDenormal (s.x2);
+            s.y1 = flushDenormal (s.y1); s.y2 = flushDenormal (s.y2);
         };
         flush (hpfStateL); flush (hpfStateR);
         flush (toneStateL); flush (toneStateR);

@@ -23,6 +23,20 @@
   "engines": [
     "Ottoni",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "GROW macro timbral-warped by Ouroboros topology — brass expansion without harmonic ceiling.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "ottoni",
+    "ouroboros",
+    "grow"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

@@ -23,6 +23,20 @@
   "engines": [
     "Obsidian",
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Obsidian crystal density driving Onset percussion velocity — cold machine with perfect silence between hits.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obsidian",
+    "onset",
+    "machine"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

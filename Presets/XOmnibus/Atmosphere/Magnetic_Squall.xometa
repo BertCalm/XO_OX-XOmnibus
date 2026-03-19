@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Magnetic Squall",
+  "mood": "Atmosphere",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Weather system in motion. High movement, active aggression. OPTIC kinetic register.",
   "dna": {
     "aggression": 0.544,
@@ -47,5 +58,40 @@
     "weather",
     "dynamic"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "FOCUS",
+    "ABERRATION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.555,
+    "warmth": 0.344,
+    "movement": 0.891,
+    "density": 0.578,
+    "space": 0.516,
+    "aggression": 0.544
+  },
+  "parameters": {
+    "Optic": {
+      "focus": 0.508,
+      "aberration": 0.939,
+      "coupling": 0.101,
+      "space": 0.601
+    }
+  },
+  "macros": {
+    "FOCUS": 0.508,
+    "ABERRATION": 0.939,
+    "COUPLING": 0.101,
+    "SPACE": 0.601
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

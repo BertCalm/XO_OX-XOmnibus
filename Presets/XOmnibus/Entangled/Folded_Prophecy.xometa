@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Folded Prophecy",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Oracle"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.15,
+      "macro_movement": 0.34,
+      "macro_coupling": 0.72,
+      "macro_space": 0.92
+    },
+    "Oracle": {
+      "macro_character": 0.12,
+      "macro_movement": 0.29,
+      "macro_coupling": 0.77,
+      "macro_space": 0.95
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "fold",
     "prophecy"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Each crease reveals a new prophetic partial — Origami and Oracle unfold together in cold air."
+>>>>>>> origin/v1-launch-prep
 }

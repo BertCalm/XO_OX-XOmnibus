@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD_DENSE_INTIMATE_VIOLENT_FND_AGG_2",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Origami",
+    "Onset"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.464,
+      "macro_movement": 0.377,
+      "macro_coupling": 0.612,
+      "macro_space": 0.662
+    },
+    "Onset": {
+      "macro_character": 0.495,
+      "macro_movement": 0.396,
+      "macro_coupling": 0.656,
+      "macro_space": 0.686
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "cold",
     "dense",
     "intimate"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

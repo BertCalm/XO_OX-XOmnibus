@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "YIELDING MESH",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ole",
+    "Oblong"
+  ],
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.184,
+      "macro_movement": 0.869,
+      "macro_coupling": 0.608,
+      "macro_space": 0.763
+    },
+    "Oblong": {
+      "macro_character": 0.666,
+      "macro_movement": 0.448,
+      "macro_coupling": 0.687,
+      "macro_space": 0.872
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "entangled",
     "delicate",
     "tender"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

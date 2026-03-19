@@ -37,15 +37,25 @@
   "mood": "Prism",
   "name": "BRIGHT_WARM_VAST_GENTLE_PRS_1",
   "parameters": {
+<<<<<<< HEAD
     "Ocelot": {
       "macro_character": 0.056,
       "macro_coupling": 0.78,
+=======
+    "Oracle": {
+      "macro_character": 0.485,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.614,
       "macro_space": 0.883
     },
+<<<<<<< HEAD
     "Oracle": {
       "macro_character": 0.485,
       "macro_coupling": 0.737,
+=======
+    "Ocelot": {
+      "macro_character": 0.056,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.614,
       "macro_space": 0.883
     }
@@ -57,6 +67,10 @@
     "warm",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

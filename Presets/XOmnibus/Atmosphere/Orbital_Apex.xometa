@@ -15,6 +15,17 @@
   },
   "engines": [
     "Orbital"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORBITAL — bright extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,6 +37,7 @@
   "name": "Orbital Apex",
   "parameters": {
     "Orbital": {
+<<<<<<< HEAD
       "orb_ampAttack": 512.0,
       "orb_ampDecay": 636.0,
       "orb_ampRelease": 101.5,
@@ -33,6 +45,9 @@
       "orb_character": 0.55,
       "orb_coupling": 0.55,
       "orb_delayMix": 0.03,
+=======
+      "orb_orbitPeriod": 0.89,
+>>>>>>> origin/v1-launch-prep
       "orb_eccentricity": 0.85,
       "orb_filterCutoff": 0.71,
       "orb_filterReso": 0.93,
@@ -44,6 +59,7 @@
       "orb_space": 0.8
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.51,
@@ -59,4 +75,9 @@
     "extreme-brightness"
   ],
   "version": "1.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

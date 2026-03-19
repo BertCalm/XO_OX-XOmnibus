@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_STILL_INTIMATE_PRS_DRK_3",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Owlfish",
+    "Osteria"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.6649,
+      "macro_movement": 0.0396,
+      "macro_coupling": 0.685,
+      "macro_space": 0.0492
+    },
+    "Osteria": {
+      "macro_character": 0.6598,
+      "macro_movement": 0.0783,
+      "macro_coupling": 0.6543,
+      "macro_space": 0.0812
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "hot",
     "still",
     "intimate"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

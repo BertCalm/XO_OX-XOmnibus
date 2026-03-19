@@ -3,12 +3,15 @@
   "description": "Terra cotta resonance. Earthy and rich. A drone that smells like afternoon.",
   "engines": [
     "Ottoni"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.618,

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Harp Automata",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Orphica"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Orphica microsound harp grain rate syncs OUTWIT generation clock — each tiny pluck a cellular step",
   "dna": {
     "aggression": 0.4,
@@ -40,6 +52,18 @@
   "name": "Harp Automata",
   "parameters": {
     "Outwit": {
+<<<<<<< HEAD
+=======
+      "owit_rule": 73,
+      "owit_arms": 5,
+      "owit_cellSize": 0.263,
+      "owit_density": 0.48,
+      "owit_evolveRate": 0.443,
+      "owit_mutateProb": 0.18,
+      "owit_pitchSpread": 0.447,
+      "owit_filterCutoff": 0.713,
+      "owit_filterReso": 0.349,
+>>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.126,
       "owit_ampRelease": 0.24,
       "owit_armStagger": 0.493,

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT WARM STILL INTIMATE DENSE FAM2 3",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Overdub",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.979,
+      "macro_movement": 0.089,
+      "macro_coupling": 0.784,
+      "macro_space": 0.102
+    },
+    "Obbligato": {
+      "macro_character": 0.99,
+      "macro_movement": 0.084,
+      "macro_coupling": 0.798,
+      "macro_space": 0.113
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "still",
     "dense",
     "intimate"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

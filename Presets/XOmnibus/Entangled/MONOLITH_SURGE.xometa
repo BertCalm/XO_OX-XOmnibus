@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "MONOLITH SURGE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Oceanic",
+    "Oblong"
+  ],
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.8741,
+      "macro_movement": 0.5545,
+      "macro_coupling": 0.641,
+      "macro_space": 0.8459
+    },
+    "Oblong": {
+      "macro_character": 0.8512,
+      "macro_movement": 0.2851,
+      "macro_coupling": 0.9052,
+      "macro_space": 0.2728
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dense",
     "welded",
     "solid"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

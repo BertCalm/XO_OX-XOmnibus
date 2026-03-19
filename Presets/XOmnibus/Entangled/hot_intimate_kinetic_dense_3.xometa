@@ -16,6 +16,18 @@
   },
   "engines": [
     "Ombre"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — hot intimate kinetic dense. Designed for ORBIT coupling with XOmbre.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "orbit",
+    "ombre"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "DEPTH",
@@ -27,6 +39,7 @@
   "name": "HOT INTIMATE KINETIC DENSE 3",
   "parameters": {
     "Ombre": {
+<<<<<<< HEAD
       "couplingBus": 3,
       "couplingLevel": 0.547
     }
@@ -47,4 +60,13 @@
     "ombre"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.547,
+      "couplingBus": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

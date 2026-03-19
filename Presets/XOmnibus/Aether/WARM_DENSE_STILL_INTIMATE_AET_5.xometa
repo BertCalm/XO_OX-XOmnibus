@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "WARM DENSE STILL INTIMATE AET 5",
+  "mood": "Aether",
+  "engines": [
+    "Ohm",
+    "Octopus"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — aether, warm, still, dense.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "warm",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.585,
+    "warmth": 0.912,
+    "movement": 0.055,
+    "density": 0.922,
+    "space": 0.109,
+    "aggression": 0.576
+  },
+  "parameters": {
+    "Ohm": {
+      "level": 0.787,
+      "pan": 0.108
+    },
+    "Octopus": {
+      "level": 0.786,
+      "pan": 0.127
+    }
+  },
+  "coupling": [
+    {
+      "source": "OHM",
+      "destination": "OCTOPUS",
+      "type": "FREQUENCY_SHIFT",
+      "amount": 0.475
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

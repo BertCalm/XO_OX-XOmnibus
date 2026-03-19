@@ -23,6 +23,20 @@
   "engines": [
     "Overworld",
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Overworld chip oscillator velocity coupling into Onset — NES era collapse as kinetic percussion.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "overworld",
+    "onset",
+    "world"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

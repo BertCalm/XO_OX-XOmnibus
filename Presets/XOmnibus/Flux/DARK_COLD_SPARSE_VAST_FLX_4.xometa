@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_SPARSE_VAST_FLX_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Oracle",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.1411,
+      "macro_movement": 0.6347,
+      "macro_coupling": 0.4027,
+      "macro_space": 0.7854
+    },
+    "Odyssey": {
+      "macro_character": 0.1773,
+      "macro_movement": 0.5068,
+      "macro_coupling": 0.6245,
+      "macro_space": 0.9498
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "low-warmth",
     "low-density",
     "high-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

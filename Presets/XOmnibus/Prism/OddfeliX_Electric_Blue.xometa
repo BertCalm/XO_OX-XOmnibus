@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "Electric Blue",
+  "mood": "Prism",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The signature electric-blue stripe of the neon tetra — single-voice, ultra-precise.",
+  "tags": ["electric", "blue", "signature", "precise"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.95, "warmth": 0.08, "movement": 0.52, "density": 0.2, "space": 0.48, "aggression": 0.28},
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.88,
+      "snap_decay": 0.28,
+      "snap_detune": 0.02,
+      "snap_filterCutoff": 16000.0,
+      "snap_filterReso": 0.82,
+      "snap_filterEnvDepth": 0.82,
+      "snap_unison": 1,
+      "snap_sweepDirection": 0,
+      "snap_pitchLock": 0.98,
+      "snap_polyphony": 6,
+      "snap_level": 0.82,
+      "snap_macroDart": 0.62,
+      "snap_macroDepth": 0.28,
+      "snap_macroSchool": 0.05,
+      "snap_macroSurface": 0.9
+    }
+  },
+  "macros": {"CHARACTER": 0.88, "MOVEMENT": 0.52, "COUPLING": 0.0, "SPACE": 0.48},
+  "coupling": {"pairs": []}
+}

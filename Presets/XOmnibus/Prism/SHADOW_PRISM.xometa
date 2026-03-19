@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SHADOW PRISM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Orbital",
+    "Optic"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.793,
+      "macro_movement": 0.894,
+      "macro_coupling": 0.732,
+      "macro_space": 0.286
+    },
+    "Optic": {
+      "macro_character": 0.337,
+      "macro_movement": 0.405,
+      "macro_coupling": 0.727,
+      "macro_space": 0.745
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "prism",
     "dark",
     "spectrum"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

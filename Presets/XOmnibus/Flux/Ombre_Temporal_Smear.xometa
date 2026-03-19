@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Temporal Smear",
+  "mood": "Flux",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Time smears across the notes. High interference and drift blur the edges between present and past. Notes feel temporally extended — beginning and ending simultaneously.",
+  "tags": ["flux", "smear", "temporal", "blur", "extended", "time"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.62,
+    "density": 0.7,
+    "space": 0.72,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.42,
+      "ombre_interference": 0.68,
+      "ombre_memoryDecay": 8.0,
+      "ombre_memoryGrain": 130.0,
+      "ombre_memoryDrift": 0.78,
+      "ombre_oscShape": 3,
+      "ombre_reactivity": 0.55,
+      "ombre_subLevel": 0.28,
+      "ombre_filterCutoff": 3800.0,
+      "ombre_filterReso": 0.35,
+      "ombre_attack": 0.15,
+      "ombre_decay": 0.8,
+      "ombre_sustain": 0.7,
+      "ombre_release": 2.5,
+      "ombre_level": 0.7,
+      "ombre_velCutoffScale": 0.38,
+      "ombre_lfo1Rate": 0.8,
+      "ombre_lfo1Depth": 0.62,
+      "ombre_lfo2Rate": 0.5,
+      "ombre_lfo2Depth": 0.55,
+      "ombre_macroCharacter": 0.58,
+      "ombre_macroMovement": 0.62,
+      "ombre_macroCoupling": 0.5,
+      "ombre_macroSpace": 0.75
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

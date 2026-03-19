@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Coral Deep Link",
+  "mood": "Entangled",
+  "engines": [
+    "Obbligato",
+    "Obsidian"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Rascal coral fractures crystal — OBBLIGATO's obligatory voice resonates inside OBSIDIAN's mirror depth.",
   "dna": {
     "aggression": 0.28,

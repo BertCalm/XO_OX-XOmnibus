@@ -14,12 +14,15 @@
   "engines": [
     "Obbligato",
     "Opal"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.55,
@@ -50,6 +53,7 @@
     "opal",
     "wind"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Opal grain cloud shaped by OBBLIGATO breath envelope — each breath a new grain cluster"
+>>>>>>> origin/v1-launch-prep
 }

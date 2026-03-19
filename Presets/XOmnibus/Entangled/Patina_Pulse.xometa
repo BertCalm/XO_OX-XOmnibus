@@ -1,5 +1,32 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "schema_version": 1,
+  "name": "Patina Pulse",
+  "mood": "Entangled",
+  "engines": [
+    "Ottoni",
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "OTTONI's amplitude envelope breathes life into ORGANON's cellular texture.",
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.65,
+      "macro_movement": 0.6,
+      "macro_coupling": 0.68,
+      "macro_space": 0.5
+    },
+    "Organon": {
+      "macro_character": 0.55,
+      "macro_movement": 0.7,
+      "macro_coupling": 0.55,
+      "macro_space": 0.48
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +85,10 @@
     "organon",
     "warmth",
     "pulse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

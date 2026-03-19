@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Chiaroscuro",
+  "mood": "Atmosphere",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Dramatic light and shadow. High LFO1 depth oscillates blend between full Oubli and full Opsis. The sound alternates between ghost and presence like candlelight.",
+  "tags": ["atmosphere", "chiaroscuro", "contrast", "dramatic", "candlelight"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.65,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.5,
+      "ombre_interference": 0.4,
+      "ombre_memoryDecay": 7.0,
+      "ombre_memoryGrain": 110.0,
+      "ombre_memoryDrift": 0.35,
+      "ombre_oscShape": 1,
+      "ombre_reactivity": 0.55,
+      "ombre_subLevel": 0.25,
+      "ombre_filterCutoff": 4500.0,
+      "ombre_filterReso": 0.3,
+      "ombre_attack": 0.2,
+      "ombre_decay": 0.8,
+      "ombre_sustain": 0.72,
+      "ombre_release": 2.5,
+      "ombre_level": 0.72,
+      "ombre_velCutoffScale": 0.38,
+      "ombre_lfo1Rate": 0.8,
+      "ombre_lfo1Depth": 0.85,
+      "ombre_lfo2Rate": 0.45,
+      "ombre_lfo2Depth": 0.35,
+      "ombre_macroCharacter": 0.5,
+      "ombre_macroMovement": 0.65,
+      "ombre_macroCoupling": 0.4,
+      "ombre_macroSpace": 0.68
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

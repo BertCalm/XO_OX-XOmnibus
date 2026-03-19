@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Medium",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "DARK_COLD_KINETIC_INTIMATE_VIOLENT_FND_5",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub",
+    "Ouroboros"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_COLD_KINETIC_INTIMATE_VIOLENT. Variant 5.",
   "dna": {
     "aggression": 0.974,
@@ -71,5 +83,49 @@
     "foundation"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.015,
+      "macro_movement": 0.898,
+      "macro_coupling": 0.333,
+      "macro_space": 0.0
+    },
+    "Ouroboros": {
+      "macro_character": 0.055,
+      "macro_movement": 0.995,
+      "macro_coupling": 0.465,
+      "macro_space": 0.098
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OVERDUB",
+    "target": "OUROBOROS",
+    "amount": 0.532
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.04,
+    "warmth": 0.097,
+    "movement": 0.907,
+    "density": 0.436,
+    "space": 0.021,
+    "aggression": 0.974
+  },
+  "macros": {
+    "CHARACTER": 0.035,
+    "MOVEMENT": 0.947,
+    "COUPLING": 0.399,
+    "SPACE": 0.049
+  }
+>>>>>>> origin/v1-launch-prep
 }

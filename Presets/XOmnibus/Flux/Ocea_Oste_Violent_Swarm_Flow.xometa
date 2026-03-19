@@ -1,0 +1,117 @@
+{
+<<<<<<< HEAD:Presets/XOmnibus/Flux/5X DARK COLD KINETIC DENSE VIOLENT FLX 6.xometa
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Osteria",
+        "type": "RING_MOD",
+        "amount": 0.74
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Violent Swarm Flow",
+  "mood": "Flux",
+  "engines": [
+    "Oceanic",
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Flux/Ocea_Oste_Violent_Swarm_Flow.xometa
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.908,
+    "brightness": 0.094,
+    "density": 0.935,
+    "movement": 0.547,
+    "space": 0.049,
+    "warmth": 0.073
+  },
+  "engines": [
+    "Oceanic",
+    "Osteria"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.98,
+      "macro_coupling": 0.79,
+      "macro_movement": 1.0,
+      "macro_space": 0.38
+    },
+    "Osteria": {
+      "macro_character": 0.88,
+      "macro_coupling": 0.69,
+      "macro_movement": 0.94,
+      "macro_space": 0.34
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "flux"
+  ],
+  "tempo": null,
+<<<<<<< HEAD:Presets/XOmnibus/Flux/5X DARK COLD KINETIC DENSE VIOLENT FLX 6.xometa
+  "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.98,
+      "macro_movement": 1.0,
+      "macro_coupling": 0.79,
+      "macro_space": 0.38
+    },
+    "Osteria": {
+      "macro_character": 0.88,
+      "macro_movement": 0.94,
+      "macro_coupling": 0.69,
+      "macro_space": 0.34
+    }
+  },
+  "coupling": {
+    "type": "RING_MOD",
+    "source": "OCEANIC",
+    "target": "OSTERIA",
+    "amount": 0.74
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.094,
+    "warmth": 0.073,
+    "movement": 0.547,
+    "density": 0.935,
+    "space": 0.049,
+    "aggression": 0.908
+  }
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Flux/Ocea_Oste_Violent_Swarm_Flow.xometa
+}

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_STILL_SPARSE_FND_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Origami",
+    "Onset"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.457,
+      "macro_movement": 0.831,
+      "macro_coupling": 0.785,
+      "macro_space": 0.714
+    },
+    "Onset": {
+      "macro_character": 0.134,
+      "macro_movement": 0.547,
+      "macro_coupling": 0.347,
+      "macro_space": 0.256
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "warm",
     "still",
     "sparse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

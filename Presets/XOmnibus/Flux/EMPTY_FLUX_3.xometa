@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "EMPTY FLUX 3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OddfeliX",
+    "Obese"
+  ],
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.4198,
+      "macro_movement": 0.3409,
+      "macro_coupling": 0.3701,
+      "macro_space": 0.7216
+    },
+    "Obese": {
+      "macro_character": 0.7768,
+      "macro_movement": 0.5676,
+      "macro_coupling": 0.085,
+      "macro_space": 0.0526
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "sparse",
     "minimal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

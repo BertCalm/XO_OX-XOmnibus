@@ -16,6 +16,18 @@
   },
   "engines": [
     "Overlap"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — violent dense hot intimate. Designed for SURGE coupling with XOverlap.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "surge",
+    "overlap"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "LAYER",
@@ -27,6 +39,7 @@
   "name": "VIOLENT DENSE HOT INTIMATE 2",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "couplingBus": 1,
       "couplingLevel": 0.661
     }
@@ -47,4 +60,13 @@
     "overlap"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.661,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

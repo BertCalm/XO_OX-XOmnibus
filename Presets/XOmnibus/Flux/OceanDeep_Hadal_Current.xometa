@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Hadal Current",
+  "mood": "Flux",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "sub",
+    "abyssal",
+    "dark"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.82,
+    "movement": 0.28,
+    "density": 0.92,
+    "space": 0.88,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 2,
+      "deep_subOctave": -2,
+      "deep_harmonicLevel": 0.14,
+      "deep_pressure": 0.85,
+      "deep_bodyType": 1,
+      "deep_bodySize": 0.88,
+      "deep_bodyDamp": 0.7,
+      "deep_flashRate": 0.2,
+      "deep_flashBright": 0.28,
+      "deep_creatureSpeed": 0.25,
+      "deep_creatureDepth": 0.28,
+      "deep_darkness": 0.92,
+      "deep_filterReso": 0.32,
+      "deep_reverbMix": 0.65,
+      "deep_reverbSize": 0.95,
+      "deep_delayMix": 0.16,
+      "deep_rumble": 0.85,
+      "deep_attack": 0.008,
+      "deep_decay": 1.0,
+      "deep_sustain": 0.82,
+      "deep_release": 2.8
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.85,
+    "CREATURE": 0.25,
+    "WRECK": 0.28,
+    "ABYSS": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

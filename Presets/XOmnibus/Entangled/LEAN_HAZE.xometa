@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "LEAN HAZE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Onset"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.153,
+      "macro_movement": 0.763,
+      "macro_coupling": 0.539,
+      "macro_space": 0.779
+    },
+    "Onset": {
+      "macro_character": 0.53,
+      "macro_movement": 0.001,
+      "macro_coupling": 0.324,
+      "macro_space": 0.019
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "bare",
     "skeletal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

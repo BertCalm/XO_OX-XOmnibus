@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "DARK_HOT_KINETIC_VAST_VIOLENT_PRS_1",
+  "mood": "Prism",
+  "engines": [
+    "Oracle",
+    "Ottoni"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_KINETIC_VAST_VIOLENT. Variant 1.",
   "dna": {
     "aggression": 0.91,
@@ -71,5 +83,49 @@
     "prism"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.106,
+      "macro_movement": 0.922,
+      "macro_coupling": 0.416,
+      "macro_space": 0.92
+    },
+    "Ottoni": {
+      "macro_character": 0.115,
+      "macro_movement": 0.847,
+      "macro_coupling": 0.492,
+      "macro_space": 1.0
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ORACLE",
+    "target": "OTTONI",
+    "amount": 0.857
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.085,
+    "warmth": 0.893,
+    "movement": 0.883,
+    "density": 0.422,
+    "space": 0.984,
+    "aggression": 0.91
+  },
+  "macros": {
+    "CHARACTER": 0.111,
+    "MOVEMENT": 0.885,
+    "COUPLING": 0.454,
+    "SPACE": 0.96
+  }
+>>>>>>> origin/v1-launch-prep
 }

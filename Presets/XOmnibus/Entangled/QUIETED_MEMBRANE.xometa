@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "QUIETED MEMBRANE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OddOscar",
+    "Obsidian"
+  ],
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.389,
+      "macro_movement": 0.101,
+      "macro_coupling": 0.763,
+      "macro_space": 0.874
+    },
+    "Obsidian": {
+      "macro_character": 0.11,
+      "macro_movement": 0.047,
+      "macro_coupling": 0.965,
+      "macro_space": 0.403
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "quieted"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

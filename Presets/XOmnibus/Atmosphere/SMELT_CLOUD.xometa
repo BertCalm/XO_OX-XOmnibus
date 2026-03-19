@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SMELT CLOUD",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Osprey",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.311,
+      "macro_movement": 0.487,
+      "macro_coupling": 0.866,
+      "macro_space": 0.743
+    },
+    "OddfeliX": {
+      "macro_character": 0.339,
+      "macro_movement": 0.853,
+      "macro_coupling": 0.886,
+      "macro_space": 0.323
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "abrasive",
     "hostile",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

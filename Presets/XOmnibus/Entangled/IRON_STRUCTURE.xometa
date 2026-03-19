@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "IRON STRUCTURE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Orphica"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.8814,
+      "macro_movement": 0.0248,
+      "macro_coupling": 0.8946,
+      "macro_space": 0.3322
+    },
+    "Orphica": {
+      "macro_character": 0.9308,
+      "macro_movement": 0.8022,
+      "macro_coupling": 0.9456,
+      "macro_space": 0.8107
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "tectonic",
     "crushing",
     "welded"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

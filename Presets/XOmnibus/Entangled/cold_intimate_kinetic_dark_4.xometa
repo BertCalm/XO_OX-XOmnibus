@@ -16,6 +16,18 @@
   },
   "engines": [
     "Ole"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — cold intimate kinetic dark. Designed for WEAVE coupling with XOle.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "weave",
+    "ole"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "SWEEP",
@@ -27,6 +39,7 @@
   "name": "COLD INTIMATE KINETIC DARK 4",
   "parameters": {
     "Ole": {
+<<<<<<< HEAD
       "couplingBus": 1,
       "couplingLevel": 0.988
     }
@@ -47,4 +60,13 @@
     "ole"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.988,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

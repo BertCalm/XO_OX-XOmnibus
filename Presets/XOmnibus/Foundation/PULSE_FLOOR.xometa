@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "PULSE FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Opal",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.304,
+      "macro_movement": 0.951,
+      "macro_coupling": 0.654,
+      "macro_space": 0.229
+    },
+    "OddOscar": {
+      "macro_character": 0.334,
+      "macro_movement": 0.92,
+      "macro_coupling": 0.316,
+      "macro_space": 0.365
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -3,12 +3,15 @@
   "description": "First birdsong over dew-covered grass. Bright, tender, unhurried.",
   "engines": [
     "Osprey"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.726,

@@ -23,6 +23,21 @@
   "engines": [
     "Overlap",
     "Outwit"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OUTWIT arm patterns feed OVERLAP FDN node routing — cellular intelligence chooses the reflection path",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "outwit",
+    "marquee",
+    "generative",
+    "spatial"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -39,7 +54,41 @@
   "mood": "Entangled",
   "name": "Cellular Bloom II",
   "parameters": {
+<<<<<<< HEAD
     "Outwit": {
+=======
+    "Overlap": {
+      "olap_size": 0.944,
+      "olap_decay": 0.842,
+      "olap_damping": 0.597,
+      "olap_diffusion": 0.652,
+      "olap_modDepth": 0.281,
+      "olap_modRate": 0.342,
+      "olap_preDelay": 0.049,
+      "olap_earlyMix": 0.324,
+      "olap_lateMix": 0.702,
+      "olap_filterCutoff": 0.701,
+      "olap_filterReso": 0.339,
+      "olap_outputLevel": 0.666,
+      "olap_couplingLevel": 0.74,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.567,
+      "olap_nodeCount": 9,
+      "olap_crossfeedAmt": 0.265,
+      "olap_spinRate": 0.107,
+      "olap_shimmerMix": 0.396
+    },
+    "Outwit": {
+      "owit_rule": 73,
+      "owit_arms": 5,
+      "owit_cellSize": 0.408,
+      "owit_density": 0.729,
+      "owit_evolveRate": 0.638,
+      "owit_mutateProb": 0.111,
+      "owit_pitchSpread": 0.214,
+      "owit_filterCutoff": 0.458,
+      "owit_filterReso": 0.207,
+>>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.05,
       "owit_ampRelease": 0.81,
       "owit_armStagger": 0.328,

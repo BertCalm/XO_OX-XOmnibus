@@ -23,6 +23,20 @@
   "engines": [
     "Obscura",
     "Orca"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orca breach timbral-warping Obscura stiffness model — cold silver with hunter's velocity.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obscura",
+    "orca",
+    "silver"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

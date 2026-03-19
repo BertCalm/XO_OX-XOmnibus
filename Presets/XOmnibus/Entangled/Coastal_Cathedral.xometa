@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Coastal Cathedral",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Osprey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Osprey shore system feeds OVERLAP room character — five coastlines, five distinct acoustic spaces",
   "dna": {
     "aggression": 0.275,
@@ -40,9 +52,14 @@
   "name": "Coastal Cathedral",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.803,
       "olap_crossfeedAmt": 0.415,
+=======
+      "olap_size": 0.948,
+      "olap_decay": 0.687,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.602,
       "olap_decay": 0.687,
       "olap_diffusion": 0.699,

@@ -16,6 +16,7 @@
   "engines": [
     "Ouroboros"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "COLLAPSE",
     "FEEDBACK",
@@ -36,6 +37,11 @@
     "space": 0.248,
     "warmth": 0.153
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Permafrost texture — dense and cold as geological strata.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "cold",
@@ -44,5 +50,27 @@
     "pressure",
     "aggressive"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "COLLAPSE",
+    "FEEDBACK",
+    "COUPLING",
+    "DARK"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.358,
+    "warmth": 0.153,
+    "movement": 0.506,
+    "density": 0.824,
+    "space": 0.248,
+    "aggression": 0.578
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

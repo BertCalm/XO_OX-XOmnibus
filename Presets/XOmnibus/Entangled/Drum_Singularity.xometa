@@ -23,6 +23,20 @@
   "engines": [
     "Ouroboros",
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ouroboros velocity coupling feeding Onset percussive triggers — a drum singularity event.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "ouroboros",
+    "onset",
+    "singularity"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

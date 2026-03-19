@@ -15,6 +15,17 @@
   },
   "engines": [
     "Oblique"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OBLIQUE — bright extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme-brightness"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,6 +37,12 @@
   "name": "Refraction Edge",
   "parameters": {
     "Oblique": {
+<<<<<<< HEAD
+=======
+      "oblq_warpAngle": 0.05,
+      "oblq_filterCutoff": 0.94,
+      "oblq_filterReso": 0.48,
+>>>>>>> origin/v1-launch-prep
       "oblq_ampAttack": 658.6,
       "oblq_ampDecay": 323.6,
       "oblq_ampRelease": 505.4,
@@ -44,6 +61,7 @@
       "oblq_warpAngle": 0.05
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.21,
@@ -59,4 +77,9 @@
     "extreme-brightness"
   ],
   "version": "1.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
+#include <juce_audio_formats/juce_audio_formats.h>
 #include "../Core/PresetManager.h"
 #include "../Core/EngineRegistry.h"
 #include "../Core/MegaCouplingMatrix.h"

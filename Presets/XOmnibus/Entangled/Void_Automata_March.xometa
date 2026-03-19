@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Void Automata March",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Onset"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.46,
+      "macro_movement": 0.45,
+      "macro_coupling": 0.58,
+      "macro_space": 0.43
+    },
+    "Onset": {
+      "macro_character": 0.17,
+      "macro_movement": 0.15,
+      "macro_coupling": 0.62,
+      "macro_space": 0.62
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "dark",
     "low-brightness"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

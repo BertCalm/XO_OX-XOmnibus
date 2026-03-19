@@ -3,12 +3,15 @@
   "description": "Down past the mesopelagic, into true dark. A pad with gravitational mass.",
   "engines": [
     "Oracle"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.294,

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT COLD DENSE BALANCED AET SPC 4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Osprey",
+    "Oracle"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.515,
+      "macro_movement": 0.497,
+      "macro_coupling": 0.812,
+      "macro_space": 0.454
+    },
+    "Oracle": {
+      "macro_character": 0.502,
+      "macro_movement": 0.524,
+      "macro_coupling": 0.831,
+      "macro_space": 0.457
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "gentle",
     "bright",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

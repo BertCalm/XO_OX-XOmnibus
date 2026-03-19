@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Torrent Algorithm",
+  "mood": "Atmosphere",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Weather system in motion. High movement, active aggression. ORIGAMI kinetic register.",
   "dna": {
     "aggression": 0.455,
@@ -47,5 +58,40 @@
     "weather",
     "dynamic"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "FOLD",
+    "TENSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.447,
+    "warmth": 0.474,
+    "movement": 0.882,
+    "density": 0.601,
+    "space": 0.466,
+    "aggression": 0.455
+  },
+  "parameters": {
+    "Origami": {
+      "fold": 0.464,
+      "tension": 0.788,
+      "coupling": 0.234,
+      "space": 0.502
+    }
+  },
+  "macros": {
+    "FOLD": 0.464,
+    "TENSION": 0.788,
+    "COUPLING": 0.234,
+    "SPACE": 0.502
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

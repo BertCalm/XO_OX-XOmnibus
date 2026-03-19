@@ -23,6 +23,20 @@
   "engines": [
     "Overlap",
     "Obbligato"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Obbligato dual winds breathe into OVERLAP FDN room size — flute/oboe vibrato becomes room modulation",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "obbligato",
+    "wind",
+    "breath"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -40,9 +54,14 @@
   "name": "Wind Cathedral",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.795,
       "olap_crossfeedAmt": 0.366,
+=======
+      "olap_size": 0.698,
+      "olap_decay": 0.874,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.535,
       "olap_decay": 0.874,
       "olap_diffusion": 0.706,

@@ -23,6 +23,20 @@
   "engines": [
     "Outwit",
     "Obbligato"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Obbligato BOND macro depth modulates OUTWIT mutation probability — tight bond tightens cellular order",
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "obbligato",
+    "wind",
+    "ordered"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -40,6 +54,18 @@
   "name": "Wind Cells",
   "parameters": {
     "Outwit": {
+<<<<<<< HEAD
+=======
+      "owit_rule": 45,
+      "owit_arms": 5,
+      "owit_cellSize": 0.373,
+      "owit_density": 0.582,
+      "owit_evolveRate": 0.414,
+      "owit_mutateProb": 0.23,
+      "owit_pitchSpread": 0.273,
+      "owit_filterCutoff": 0.795,
+      "owit_filterReso": 0.396,
+>>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.067,
       "owit_ampRelease": 0.385,
       "owit_armStagger": 0.354,

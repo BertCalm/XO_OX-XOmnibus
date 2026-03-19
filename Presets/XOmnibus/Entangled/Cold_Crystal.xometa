@@ -58,5 +58,9 @@
     "cold",
     "crystal"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Obsidian pitch-syncs grain positions — crystal geometry determines grain coordinates."
+>>>>>>> origin/v1-launch-prep
 }

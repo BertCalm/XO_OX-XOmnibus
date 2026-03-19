@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT WARM SPARSE VAST GENTLE FAM2 5",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Origami",
+    "Ohm"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.917,
+      "macro_movement": 0.39,
+      "macro_coupling": 0.051,
+      "macro_space": 0.947
+    },
+    "Ohm": {
+      "macro_character": 0.895,
+      "macro_movement": 0.406,
+      "macro_coupling": 0.037,
+      "macro_space": 0.931
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "sparse",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

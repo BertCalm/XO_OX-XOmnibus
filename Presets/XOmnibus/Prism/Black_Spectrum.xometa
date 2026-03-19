@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BLACK SPECTRUM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Obscura",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.164,
+      "macro_movement": 0.979,
+      "macro_coupling": 0.864,
+      "macro_space": 0.67
+    },
+    "Obbligato": {
+      "macro_character": 0.641,
+      "macro_movement": 0.307,
+      "macro_coupling": 0.184,
+      "macro_space": 0.291
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "prism",
     "dark",
     "spectrum"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

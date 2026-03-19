@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "THIN FLOW 3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overbite",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.215,
+      "macro_movement": 0.4516,
+      "macro_coupling": 0.2285,
+      "macro_space": 0.3389
+    },
+    "OddfeliX": {
+      "macro_character": 0.4535,
+      "macro_movement": 0.416,
+      "macro_coupling": 0.0951,
+      "macro_space": 0.4268
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "sparse",
     "minimal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

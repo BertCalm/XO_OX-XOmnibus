@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "Tank Bright",
+  "mood": "Foundation",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Aquarium-wide brightness — full polyphony snap with a warm resonant room.",
+  "tags": ["aquarium", "bright", "poly", "full"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.75, "warmth": 0.35, "movement": 0.42, "density": 0.65, "space": 0.6, "aggression": 0.18},
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.65,
+      "snap_decay": 0.38,
+      "snap_detune": 0.1,
+      "snap_filterCutoff": 8500.0,
+      "snap_filterReso": 0.4,
+      "snap_filterEnvDepth": 0.35,
+      "snap_unison": 2,
+      "snap_sweepDirection": 0,
+      "snap_pitchLock": 0.8,
+      "snap_polyphony": 8,
+      "snap_level": 0.7,
+      "snap_macroDart": 0.35,
+      "snap_macroDepth": 0.6,
+      "snap_macroSchool": 0.55,
+      "snap_macroSurface": 0.4
+    }
+  },
+  "macros": {"CHARACTER": 0.4, "MOVEMENT": 0.42, "COUPLING": 0.0, "SPACE": 0.6},
+  "coupling": {"pairs": []}
+}

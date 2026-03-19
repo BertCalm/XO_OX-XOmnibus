@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "DARK COLD DENSE VIOLENT AET 5",
+  "mood": "Aether",
+  "engines": [
+    "Oblong",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — aether, dark, cold, dense.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.048,
+    "warmth": 0.075,
+    "movement": 0.55,
+    "density": 0.932,
+    "space": 0.498,
+    "aggression": 0.954
+  },
+  "parameters": {
+    "Oblong": {
+      "level": 0.702,
+      "pan": -0.024
+    },
+    "Ouroboros": {
+      "level": 0.835,
+      "pan": -0.006
+    }
+  },
+  "coupling": [
+    {
+      "source": "OBLONG",
+      "destination": "OUROBOROS",
+      "type": "TIMBRE_BLEND",
+      "amount": 0.533
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

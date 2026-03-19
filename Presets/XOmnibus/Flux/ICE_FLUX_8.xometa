@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ICE FLUX 8",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Osprey",
+    "Organon"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.8347,
+      "macro_movement": 0.9802,
+      "macro_coupling": 0.2437,
+      "macro_space": 0.5513
+    },
+    "Organon": {
+      "macro_character": 0.3836,
+      "macro_movement": 0.9219,
+      "macro_coupling": 0.5082,
+      "macro_space": 0.8793
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "cold",
     "shifting"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

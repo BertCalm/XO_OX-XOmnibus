@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "LIGHT YEAR",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Owlfish",
+    "Oracle"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.884,
+      "macro_movement": 0.464,
+      "macro_coupling": 0.11,
+      "macro_space": 0.965
+    },
+    "Oracle": {
+      "macro_character": 0.666,
+      "macro_movement": 0.062,
+      "macro_coupling": 0.866,
+      "macro_space": 0.98
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "vast",
     "cosmic",
     "xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

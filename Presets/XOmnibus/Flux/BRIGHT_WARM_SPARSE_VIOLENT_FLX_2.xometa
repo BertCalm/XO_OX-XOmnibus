@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_SPARSE_VIOLENT_FLX_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overdub",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.7764,
+      "macro_movement": 0.6142,
+      "macro_coupling": 0.7339,
+      "macro_space": 0.5642
+    },
+    "Oceanic": {
+      "macro_character": 0.888,
+      "macro_movement": 0.7195,
+      "macro_coupling": 0.7644,
+      "macro_space": 0.6926
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "high-warmth",
     "low-density",
     "high-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_SPARSE_VAST_GENTLE_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Osprey",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.4889,
+      "macro_movement": 0.5729,
+      "macro_coupling": 0.1216,
+      "macro_space": 0.99
+    },
+    "Oceanic": {
+      "macro_character": 0.4544,
+      "macro_movement": 0.553,
+      "macro_coupling": 0.1161,
+      "macro_space": 0.9752
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "sparse",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

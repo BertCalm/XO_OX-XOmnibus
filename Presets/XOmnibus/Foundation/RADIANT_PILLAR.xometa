@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "RADIANT PILLAR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Ouroboros",
+    "Orphica"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.348,
+      "macro_movement": 0.333,
+      "macro_coupling": 0.67,
+      "macro_space": 0.858
+    },
+    "Orphica": {
+      "macro_character": 0.33,
+      "macro_movement": 0.694,
+      "macro_coupling": 0.288,
+      "macro_space": 0.945
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "high-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

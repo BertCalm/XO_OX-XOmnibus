@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Mega Drive Demo Scene",
+  "mood": "Prism",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The European demo scene discovered the Mega Drive's YM2612 could do things Sega never intended. Rich harmonic stacking, FM operators pushed into beating partials, neon vectors on a black screen at 50Hz. This is what blast processing actually sounds like when it's art.",
+  "tags": [
+    "genesis",
+    "demo-scene",
+    "YM2612",
+    "FM",
+    "prism",
+    "Europe",
+    "harmonic",
+    "bright"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.44,
+    "movement": 0.55,
+    "density": 0.82,
+    "space": 0.42,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_macro_era": 0.52,
+      "ow_macro_chaos": 0.35,
+      "ow_macro_couple": 0.38,
+      "ow_macro_space": 0.42,
+      "ow_outputLevel": 0.88,
+      "ow_couplingLevel": 0.3,
+      "ow_couplingBus": 0
+    }
+  },
+  "macros": {
+    "ERA": 0.52,
+    "CHAOS": 0.35,
+    "COUPLE": 0.38,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

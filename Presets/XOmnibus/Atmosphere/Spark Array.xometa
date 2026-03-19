@@ -3,12 +3,15 @@
   "description": "A rack of synthesizers nobody is playing. Electric presence without gesture.",
   "engines": [
     "Optic"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.574,

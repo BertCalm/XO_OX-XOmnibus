@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Maximum State Flux",
+  "mood": "Flux",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "All parameters at maximum. Total flux.",
+  "tags": [
+    "maximum",
+    "all",
+    "total",
+    "flux",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.3,
+    "movement": 0.99,
+    "density": 0.75,
+    "space": 0.45,
+    "aggression": 0.85
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 10.0,
+      "optic_pulseShape": 4,
+      "optic_pulseAccent": 0.98,
+      "optic_pulseSwing": 0.5,
+      "optic_pulseSubdiv": 8,
+      "optic_pulseEvolve": 0.99,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.99,
+      "optic_inputGain": 0.99,
+      "optic_modDepth": 0.99,
+      "optic_modMixPulse": 0.5,
+      "optic_modMixSpec": 0.5,
+      "optic_vizMode": 4,
+      "optic_vizIntensity": 0.99,
+      "optic_vizSpeed": 0.99,
+      "optic_vizFeedback": 0.99
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

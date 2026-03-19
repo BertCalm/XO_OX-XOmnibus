@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Perpetual Motion",
+  "mood": "Flux",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "The blend never stops oscillating. LFO1 depth near maximum, rate at a comfortable tempo-aligned speed. The motion between memory and perception is steady and perpetual.",
+  "tags": ["flux", "perpetual", "motion", "steady", "oscillating", "cyclic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.58,
+    "movement": 0.82,
+    "density": 0.55,
+    "space": 0.6,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.5,
+      "ombre_interference": 0.42,
+      "ombre_memoryDecay": 5.0,
+      "ombre_memoryGrain": 90.0,
+      "ombre_memoryDrift": 0.4,
+      "ombre_oscShape": 3,
+      "ombre_reactivity": 0.6,
+      "ombre_subLevel": 0.22,
+      "ombre_filterCutoff": 4500.0,
+      "ombre_filterReso": 0.3,
+      "ombre_attack": 0.04,
+      "ombre_decay": 0.45,
+      "ombre_sustain": 0.68,
+      "ombre_release": 1.5,
+      "ombre_level": 0.74,
+      "ombre_velCutoffScale": 0.4,
+      "ombre_lfo1Rate": 0.5,
+      "ombre_lfo1Depth": 0.98,
+      "ombre_lfo2Rate": 0.3,
+      "ombre_lfo2Depth": 0.55,
+      "ombre_macroCharacter": 0.5,
+      "ombre_macroMovement": 0.82,
+      "ombre_macroCoupling": 0.45,
+      "ombre_macroSpace": 0.62
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

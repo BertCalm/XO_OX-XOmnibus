@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_STILL_INTIMATE_VIOLENT_FLX_SLW_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overworld",
+    "Opal"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.624,
+      "macro_movement": 0.039,
+      "macro_coupling": 0.882,
+      "macro_space": 0.116
+    },
+    "Opal": {
+      "macro_character": 0.513,
+      "macro_movement": 0.036,
+      "macro_coupling": 0.948,
+      "macro_space": 0.122
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "intimate",
     "violent",
     "frozen-instability"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

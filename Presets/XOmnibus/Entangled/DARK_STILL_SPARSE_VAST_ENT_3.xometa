@@ -24,6 +24,7 @@
     "Ouroboros",
     "Obsidian"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "COIL",
     "CYCLE",
@@ -81,6 +82,11 @@
     "space": 0.9523,
     "warmth": 0.3243
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark Still Sparse Vast character entanglement — OUROBOROS × OBSIDIAN via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "dark",
@@ -89,5 +95,85 @@
     "vast",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "COIL",
+    "CYCLE",
+    "FEED",
+    "ABYSS"
+  ],
+  "couplingIntensity": "Medium",
+  "dna": {
+    "brightness": 0.126,
+    "warmth": 0.3243,
+    "movement": 0.0727,
+    "density": 0.0642,
+    "space": 0.9523,
+    "aggression": 0.4961
+  },
+  "sonic_dna": {
+    "brightness": 0.126,
+    "warmth": 0.3243,
+    "movement": 0.0727,
+    "density": 0.0642,
+    "space": 0.9523,
+    "aggression": 0.4961
+  },
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.4762,
+      "macro_movement": 0.038,
+      "macro_coupling": 0.7556,
+      "macro_space": 0.9629,
+      "filter_cutoff": 0.2921,
+      "filter_resonance": 0.334,
+      "amp_attack": 0.4605,
+      "amp_release": 0.6738,
+      "reverb_mix": 0.6701,
+      "reverb_size": 0.7798,
+      "drive": 0.4148,
+      "density": 0.0803,
+      "output_level": 0.7442,
+      "coupling_level": 0.7605
+    },
+    "Obsidian": {
+      "macro_character": 0.489,
+      "macro_movement": 0.0904,
+      "macro_coupling": 0.7508,
+      "macro_space": 0.9484,
+      "filter_cutoff": 0.2665,
+      "filter_resonance": 0.3351,
+      "amp_attack": 0.4172,
+      "amp_release": 0.6647,
+      "reverb_mix": 0.6414,
+      "reverb_size": 0.7655,
+      "drive": 0.4601,
+      "density": 0.0541,
+      "output_level": 0.6882,
+      "coupling_level": 0.7822
+    }
+  },
+  "coupling": {
+    "type": "SUBHARMONIC_WEAVE",
+    "source": "OUROBOROS",
+    "target": "OBSIDIAN",
+    "amount": 0.675,
+    "pairs": [
+      {
+        "source": "OUROBOROS",
+        "target": "OBSIDIAN",
+        "type": "SUBHARMONIC_WEAVE",
+        "amount": 0.675
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.2251,
+    "MOVEMENT": 0.0727,
+    "COUPLING": 0.675,
+    "SPACE": 0.9523
+  }
+>>>>>>> origin/v1-launch-prep
 }

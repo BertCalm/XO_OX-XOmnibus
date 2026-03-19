@@ -22,6 +22,18 @@
   "engines": [
     "Orca",
     "Osprey"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "orca",
+    "osprey"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -51,6 +63,7 @@
       "macro_space": 0.599
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.63,
@@ -68,4 +81,16 @@
     "osprey"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORCA",
+        "engineB": "OSPREY",
+        "type": "PITCH_TRACK",
+        "amount": 0.751
+      }
+    ]
+  }
+>>>>>>> origin/v1-launch-prep
 }

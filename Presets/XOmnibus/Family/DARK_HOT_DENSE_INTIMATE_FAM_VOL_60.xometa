@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_DENSE_INTIMATE_FAM_VOL_60",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Osprey",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.49,
+      "macro_movement": 0.64,
+      "macro_coupling": 0.711,
+      "macro_space": 0.037
+    },
+    "Obbligato": {
+      "macro_character": 0.468,
+      "macro_movement": 0.615,
+      "macro_coupling": 0.677,
+      "macro_space": 0.042
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dense",
     "intimate",
     "dark"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

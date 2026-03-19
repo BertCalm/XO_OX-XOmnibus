@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "UMBRA AETHER",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Orphica",
+    "Origami"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.769,
+      "macro_movement": 0.778,
+      "macro_coupling": 0.503,
+      "macro_space": 0.419
+    },
+    "Origami": {
+      "macro_character": 0.162,
+      "macro_movement": 0.2,
+      "macro_coupling": 0.605,
+      "macro_space": 0.873
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "extreme",
     "high-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

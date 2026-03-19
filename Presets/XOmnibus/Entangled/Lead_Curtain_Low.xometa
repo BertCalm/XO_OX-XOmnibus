@@ -37,6 +37,7 @@
   "mood": "Entangled",
   "name": "Lead Curtain Low",
   "parameters": {
+<<<<<<< HEAD
     "Obsidian": {
       "macro_character": 0.66,
       "macro_coupling": 0.85,
@@ -47,6 +48,18 @@
       "macro_character": 0.18,
       "macro_coupling": 0.63,
       "macro_movement": 0.44,
+=======
+    "Ombre": {
+      "macro_character": 0.18,
+      "macro_movement": 0.44,
+      "macro_coupling": 0.63,
+      "macro_space": 0.38
+    },
+    "Obsidian": {
+      "macro_character": 0.66,
+      "macro_movement": 0.85,
+      "macro_coupling": 0.85,
+>>>>>>> origin/v1-launch-prep
       "macro_space": 0.38
     }
   },
@@ -55,6 +68,10 @@
     "entangled",
     "dark",
     "low-brightness"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

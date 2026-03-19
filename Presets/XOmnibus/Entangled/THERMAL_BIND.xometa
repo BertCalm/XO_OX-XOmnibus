@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "THERMAL BIND",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Orca"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.686,
+      "macro_movement": 0.923,
+      "macro_coupling": 0.888,
+      "macro_space": 0.77
+    },
+    "Orca": {
+      "macro_character": 0.69,
+      "macro_movement": 0.639,
+      "macro_coupling": 0.941,
+      "macro_space": 0.368
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "hot",
     "molten",
     "furnace"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

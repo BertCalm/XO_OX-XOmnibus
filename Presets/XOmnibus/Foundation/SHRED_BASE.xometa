@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SHRED BASE",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overlap",
+    "Outwit"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.618,
+      "macro_movement": 0.692,
+      "macro_coupling": 0.427,
+      "macro_space": 0.208
+    },
+    "Outwit": {
+      "macro_character": 0.694,
+      "macro_movement": 0.438,
+      "macro_coupling": 0.666,
+      "macro_space": 0.514
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "aggressive",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

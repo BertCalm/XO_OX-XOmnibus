@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_DENSE_VIOLENT_FAM_AGG_5",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Ottoni",
+    "Orphica"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.831,
+      "macro_movement": 0.433,
+      "macro_coupling": 0.5,
+      "macro_space": 0.735
+    },
+    "Orphica": {
+      "macro_character": 0.868,
+      "macro_movement": 0.438,
+      "macro_coupling": 0.46,
+      "macro_space": 0.77
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "cold",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

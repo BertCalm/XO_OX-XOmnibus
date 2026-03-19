@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Woven Forever",
+  "mood": "Aether",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "High diffusion, near-infinite decay on a trefoil \u2014 the tails weave together into an undifferentiated fabric of sound. Individual notes are indistinguishable within twenty seconds. Fabric, not individual threads.",
+  "tags": [
+    "woven",
+    "fabric",
+    "trefoil",
+    "diffuse",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.38,
+    "density": 0.95,
+    "space": 0.98,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.93,
+      "olap_diffusion": 0.95,
+      "olap_spread": 0.9,
+      "olap_decay": 50.0,
+      "olap_modDepth": 0.12,
+      "olap_modRate": 0.02,
+      "olap_damping": 0.25,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

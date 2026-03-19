@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "GRIND GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Outwit",
+    "Onset"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.332,
+      "macro_movement": 0.61,
+      "macro_coupling": 0.529,
+      "macro_space": 0.347
+    },
+    "Onset": {
+      "macro_character": 0.322,
+      "macro_movement": 0.38,
+      "macro_coupling": 0.321,
+      "macro_space": 0.667
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "aggressive",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

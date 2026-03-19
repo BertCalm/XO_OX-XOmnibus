@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SLAB FORM",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Opal"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.6974,
+      "macro_movement": 0.1263,
+      "macro_coupling": 0.9474,
+      "macro_space": 0.4909
+    },
+    "Opal": {
+      "macro_character": 0.8727,
+      "macro_movement": 0.5741,
+      "macro_coupling": 0.7878,
+      "macro_space": 0.4405
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dense",
     "dark",
     "layered"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

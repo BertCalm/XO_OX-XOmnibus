@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Pouch Warmth",
+  "mood": "Atmosphere",
+  "engines": ["Overbite"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Warm sheltered pad texture like being carried in a marsupial pouch — soft, enclosed, protected.",
+  "tags": ["pad", "warm", "soft", "ambient"],
+  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.3, "warmth": 0.85, "movement": 0.2, "density": 0.5, "space": 0.6, "aggression": 0.1},
+  "parameters": {
+    "Overbite": {
+      "poss_oscAWaveform": 0,
+      "poss_oscBWaveform": 1,
+      "poss_oscMix": 0.5,
+      "poss_unisonVoices": 4,
+      "poss_unisonDetune": 0.2,
+      "poss_unisonSpread": 0.7,
+      "poss_filterCutoff": 1200,
+      "poss_filterReso": 0.05,
+      "poss_ampAttack": 1.2,
+      "poss_ampDecay": 0.4,
+      "poss_ampSustain": 0.85,
+      "poss_ampRelease": 1.5,
+      "poss_furAmount": 0.35,
+      "poss_fxSpaceSize": 0.65,
+      "poss_fxSpaceDecay": 0.55,
+      "poss_fxSpaceType": 0,
+      "poss_fxSpaceMix": 0.35,
+      "poss_macroBelly": 0.6,
+      "poss_macroBite": 0.05,
+      "poss_macroScurry": 0.15,
+      "poss_macroTrash": 0.05,
+      "poss_macroPlayDead": 0.55
+    }
+  },
+  "macros": {"BELLY": 0.6, "BITE": 0.05, "SCURRY": 0.15, "TRASH": 0.05, "PLAY DEAD": 0.55},
+  "coupling": {"pairs": []}
+}

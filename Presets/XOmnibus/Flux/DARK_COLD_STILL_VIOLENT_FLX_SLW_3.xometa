@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_STILL_VIOLENT_FLX_SLW_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Origami",
+    "Opal"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.64,
+      "macro_movement": 0.022,
+      "macro_coupling": 0.807,
+      "macro_space": 0.624
+    },
+    "Opal": {
+      "macro_character": 0.645,
+      "macro_movement": 0.016,
+      "macro_coupling": 0.887,
+      "macro_space": 0.652
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "cold",
     "violent",
     "frozen-instability"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

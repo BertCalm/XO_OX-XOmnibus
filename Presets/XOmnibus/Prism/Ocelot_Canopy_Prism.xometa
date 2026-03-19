@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Canopy Prism",
+  "mood": "Prism",
+  "engines": ["Ocelot"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Canopy at maximum shimmer — sunlight prismatic through the highest forest layer.",
+  "tags": ["canopy", "prism", "shimmer", "bright", "sunlight", "jungle"],
+  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.92, "warmth": 0.42, "movement": 0.58, "density": 0.55, "space": 0.65, "aggression": 0.35},
+  "parameters": {
+    "Ocelot": {
+      "ocelot_biome": 3,
+      "ocelot_strataBalance": 0.95,
+      "ocelot_ecosystemDepth": 0.62,
+      "ocelot_humidity": 0.5,
+      "ocelot_swing": 0.15,
+      "ocelot_density": 0.55,
+      "ocelot_floorModel": 2,
+      "ocelot_floorTension": 0.35,
+      "ocelot_floorStrike": 0.38,
+      "ocelot_floorDamping": 0.7,
+      "ocelot_floorLevel": 0.1,
+      "ocelot_canopyLevel": 0.92,
+      "ocelot_canopyShimmer": 0.95,
+      "ocelot_canopyBreathe": 0.65,
+      "ocelot_creatureType": 1,
+      "ocelot_creatureRate": 3.0,
+      "ocelot_creatureLevel": 0.6,
+      "ocelot_reverbMix": 0.58,
+      "ocelot_delayMix": 0.2,
+      "ocelot_prowl": 0.2,
+      "ocelot_foliage": 0.65,
+      "ocelot_ecosystem": 0.6,
+      "ocelot_canopy": 0.92
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

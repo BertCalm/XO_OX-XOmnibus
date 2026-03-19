@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_STILL_VIOLENT_FAM_VOL_133",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Ottoni",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.894,
+      "macro_movement": 0.085,
+      "macro_coupling": 0.8,
+      "macro_space": 0.65
+    },
+    "Odyssey": {
+      "macro_character": 0.883,
+      "macro_movement": 0.061,
+      "macro_coupling": 0.804,
+      "macro_space": 0.659
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "still",
     "aggressive",
     "bright"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

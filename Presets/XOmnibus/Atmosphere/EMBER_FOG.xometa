@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "EMBER FOG",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Onset",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.851,
+      "macro_movement": 0.704,
+      "macro_coupling": 0.259,
+      "macro_space": 0.371
+    },
+    "Obbligato": {
+      "macro_character": 0.5,
+      "macro_movement": 0.136,
+      "macro_coupling": 0.21,
+      "macro_space": 0.507
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "abrasive",
     "hostile",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

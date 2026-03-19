@@ -37,13 +37,21 @@
   "mood": "Atmosphere",
   "name": "ALLHI ATM 01",
   "parameters": {
+<<<<<<< HEAD
     "Oceanic": {
+=======
+    "Opal": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.631,
       "macro_coupling": 0.928,
       "macro_movement": 0.932,
       "macro_space": 0.918
     },
+<<<<<<< HEAD
     "Opal": {
+=======
+    "Oceanic": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.631,
       "macro_coupling": 0.928,
       "macro_movement": 0.932,
@@ -56,6 +64,10 @@
     "pole-fill",
     "high-energy",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

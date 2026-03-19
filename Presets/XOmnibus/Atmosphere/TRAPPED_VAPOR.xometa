@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "TRAPPED VAPOR",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ocelot",
+    "Oblong"
+  ],
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.586,
+      "macro_movement": 0.698,
+      "macro_coupling": 0.192,
+      "macro_space": 0.022
+    },
+    "Oblong": {
+      "macro_character": 0.872,
+      "macro_movement": 0.186,
+      "macro_coupling": 0.121,
+      "macro_space": 0.086
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "intimate",
     "close",
     "space-xlow"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

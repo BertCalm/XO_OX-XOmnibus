@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ICE FLUX 2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Oracle",
+    "Ole"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.2247,
+      "macro_movement": 0.3381,
+      "macro_coupling": 0.5883,
+      "macro_space": 0.2301
+    },
+    "Ole": {
+      "macro_character": 0.2202,
+      "macro_movement": 0.071,
+      "macro_coupling": 0.6311,
+      "macro_space": 0.2289
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "cold",
     "shifting"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

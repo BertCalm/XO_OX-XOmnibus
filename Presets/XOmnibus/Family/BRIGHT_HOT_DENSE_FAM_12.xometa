@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT HOT DENSE FAM 12",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Overdub",
+    "Octopus"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.941,
+      "macro_movement": 0.41,
+      "macro_coupling": 0.719,
+      "macro_space": 0.679
+    },
+    "Octopus": {
+      "macro_character": 1.0,
+      "macro_movement": 0.464,
+      "macro_coupling": 0.718,
+      "macro_space": 0.572
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

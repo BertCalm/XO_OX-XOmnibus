@@ -1,0 +1,117 @@
+{
+<<<<<<< HEAD:Presets/XOmnibus/Aether/5X DARK COLD KINETIC DENSE VIOLENT ATH 11.xometa
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
+        "type": "PHASE_LOCK",
+        "amount": 0.64
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Radiant Spark Void",
+  "mood": "Aether",
+  "engines": [
+    "OddfeliX",
+    "Obese"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Aether/Oddf_Obes_Radiant_Spark_Void.xometa
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.071,
+    "brightness": 0.928,
+    "density": 0.454,
+    "movement": 0.088,
+    "space": 0.905,
+    "warmth": 0.954
+  },
+  "engines": [
+    "OddfeliX",
+    "Obese"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.64,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.94,
+      "macro_space": 0.38
+    },
+    "OddfeliX": {
+      "macro_character": 0.79,
+      "macro_coupling": 0.61,
+      "macro_movement": 0.93,
+      "macro_space": 0.16
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "aether"
+  ],
+  "tempo": null,
+<<<<<<< HEAD:Presets/XOmnibus/Aether/5X DARK COLD KINETIC DENSE VIOLENT ATH 11.xometa
+  "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.79,
+      "macro_movement": 0.93,
+      "macro_coupling": 0.61,
+      "macro_space": 0.16
+    },
+    "Obese": {
+      "macro_character": 0.64,
+      "macro_movement": 0.94,
+      "macro_coupling": 0.65,
+      "macro_space": 0.38
+    }
+  },
+  "coupling": {
+    "type": "PHASE_LOCK",
+    "source": "ODDFELIX",
+    "target": "OBESE",
+    "amount": 0.64
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.928,
+    "warmth": 0.954,
+    "movement": 0.088,
+    "density": 0.454,
+    "space": 0.905,
+    "aggression": 0.071
+  }
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Aether/Oddf_Obes_Radiant_Spark_Void.xometa
+}

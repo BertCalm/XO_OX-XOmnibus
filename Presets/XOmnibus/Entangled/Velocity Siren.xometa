@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -54,6 +55,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "Velocity Siren",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Ouroboros velocity output drives ORPHICA harp intensity — siren song emerges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -63,5 +76,47 @@
     "harp"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.4,
+    "movement": 0.68,
+    "density": 0.42,
+    "space": 0.74,
+    "aggression": 0.44
+  },
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.58,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.7,
+      "macro_space": 0.44
+    },
+    "Orphica": {
+      "macro_character": 0.68,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.7,
+      "macro_space": 0.76
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUROBOROS",
+        "engineB": "ORPHICA",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.7
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.61,
+    "COUPLING": 0.7,
+    "SPACE": 0.6
+  },
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

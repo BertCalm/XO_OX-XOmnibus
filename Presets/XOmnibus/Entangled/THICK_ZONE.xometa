@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "THICK ZONE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Ohm"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.76,
+      "macro_movement": 0.2036,
+      "macro_coupling": 0.8197,
+      "macro_space": 0.9277
+    },
+    "Ohm": {
+      "macro_character": 0.4381,
+      "macro_movement": 0.6983,
+      "macro_coupling": 0.6486,
+      "macro_space": 0.9731
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "solid",
     "welded",
     "xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

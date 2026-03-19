@@ -189,6 +189,31 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Octopus/OctopusEngine.h
     Source/Engines/Octopus/OctopusEngine.cpp
 
+    # V1 Concept Engines — DSP build (OPENSKY first)
+    Source/Engines/OpenSky/OpenSkyEngine.h
+    Source/Engines/OpenSky/OpenSkyEngine.cpp
+
+    Source/Engines/Ostinato/OstinatoEngine.h
+    Source/Engines/Ostinato/OstinatoEngine.cpp
+
+    Source/Engines/OceanDeep/OceandeepEngine.h
+    Source/Engines/OceanDeep/OceandeepEngine.cpp
+
+    Source/Engines/Ouie/OuieEngine.h
+    Source/Engines/Ouie/OuieEngine.cpp
+
+    Source/Engines/Overtone/OvertoneEngine.h
+    Source/Engines/Overtone/OvertoneEngine.cpp
+
+    Source/Engines/Organism/OrganismEngine.h
+    Source/Engines/Organism/OrganismEngine.cpp
+
+    Source/Engines/Osprey/OspreyEngine.h
+    Source/Engines/Osprey/OspreyEngine.cpp
+
+    Source/Engines/Osteria/OsteriaEngine.h
+    Source/Engines/Osteria/OsteriaEngine.cpp
+
     # Export pipeline
     Source/Export/XPNCoverArt.h
     Source/Export/XPNExporter.h
@@ -224,9 +249,9 @@ target_sources(XOmnibus PRIVATE
     Source/XOmnibusProcessor.cpp
 )
 
-# XOverworld DSP headers — included by OverworldEngine adapter
+# XOverworld DSP headers — self-contained under Source/Engines/Overworld/
 target_include_directories(XOmnibus PRIVATE
-    "${CMAKE_CURRENT_SOURCE_DIR}/../XOverworld/src"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Source/Engines/Overworld"
 )
 
 # XOverlap and XOutwit DSP headers are resolved via relative-path symlinks:
@@ -273,7 +298,7 @@ add_executable(XOmnibusTests
 
 target_include_directories(XOmnibusTests PRIVATE
     Source
-    "${CMAKE_CURRENT_SOURCE_DIR}/../XOverworld/src"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Source/Engines/Overworld"
 )
 
 target_link_libraries(XOmnibusTests PRIVATE

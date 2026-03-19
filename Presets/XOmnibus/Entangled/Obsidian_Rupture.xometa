@@ -23,6 +23,20 @@
   "engines": [
     "Obsidian",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Crystal surface shattered by Ouroboros strange attractor — cold brutality as topology event.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obsidian",
+    "ouroboros",
+    "rupture"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

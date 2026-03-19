@@ -24,6 +24,7 @@
     "Ombre",
     "Outwit"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "SHADE",
     "GRADIENT",
@@ -81,6 +82,11 @@
     "space": 0.0915,
     "warmth": 0.0831
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cold Still Intimate Gentle character entanglement — OMBRE × OUTWIT via Resonance Share. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "cold",
@@ -89,5 +95,85 @@
     "gentle",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "SHADE",
+    "GRADIENT",
+    "FADE",
+    "DRIFT"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.6052,
+    "warmth": 0.0831,
+    "movement": 0.0782,
+    "density": 0.4592,
+    "space": 0.0915,
+    "aggression": 0.0475
+  },
+  "sonic_dna": {
+    "brightness": 0.6052,
+    "warmth": 0.0831,
+    "movement": 0.0782,
+    "density": 0.4592,
+    "space": 0.0915,
+    "aggression": 0.0475
+  },
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.5058,
+      "macro_movement": 0.0831,
+      "macro_coupling": 0.5975,
+      "macro_space": 0.0723,
+      "filter_cutoff": 0.6193,
+      "filter_resonance": 0.1634,
+      "amp_attack": 0.4015,
+      "amp_release": 0.1882,
+      "reverb_mix": 0.1996,
+      "reverb_size": 0.2247,
+      "drive": 0.1162,
+      "density": 0.4554,
+      "output_level": 0.8467,
+      "coupling_level": 0.5646
+    },
+    "Outwit": {
+      "macro_character": 0.4818,
+      "macro_movement": 0.0928,
+      "macro_coupling": 0.6442,
+      "macro_space": 0.0771,
+      "filter_cutoff": 0.6114,
+      "filter_resonance": 0.0889,
+      "amp_attack": 0.4221,
+      "amp_release": 0.1862,
+      "reverb_mix": 0.2284,
+      "reverb_size": 0.2718,
+      "drive": 0.1222,
+      "density": 0.4702,
+      "output_level": 0.8383,
+      "coupling_level": 0.5697
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OMBRE",
+    "target": "OUTWIT",
+    "amount": 0.9001,
+    "pairs": [
+      {
+        "source": "OMBRE",
+        "target": "OUTWIT",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.9001
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.3441,
+    "MOVEMENT": 0.0782,
+    "COUPLING": 0.9001,
+    "SPACE": 0.0915
+  }
+>>>>>>> origin/v1-launch-prep
 }

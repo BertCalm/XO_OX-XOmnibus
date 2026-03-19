@@ -16,6 +16,7 @@
   "engines": [
     "Oblong"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "BOB",
     "SNAP",
@@ -36,6 +37,11 @@
     "space": 0.6,
     "warmth": 0.3
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Rapid room reflections — bright and percussive",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "prism",
     "bright",
@@ -44,5 +50,27 @@
     "bounce",
     "percussive"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "BOB",
+    "SNAP",
+    "COUPLING",
+    "ROOM"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.3,
+    "movement": 0.75,
+    "density": 0.5,
+    "space": 0.6,
+    "aggression": 0.25
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

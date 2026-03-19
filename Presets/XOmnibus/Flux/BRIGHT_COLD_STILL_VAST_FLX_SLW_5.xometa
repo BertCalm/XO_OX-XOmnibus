@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_STILL_VAST_FLX_SLW_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Organon",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.501,
+      "macro_movement": 0.024,
+      "macro_coupling": 0.866,
+      "macro_space": 0.949
+    },
+    "Odyssey": {
+      "macro_character": 0.653,
+      "macro_movement": 0.024,
+      "macro_coupling": 0.693,
+      "macro_space": 0.979
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "cold",
     "vast",
     "imperceptible-morph"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

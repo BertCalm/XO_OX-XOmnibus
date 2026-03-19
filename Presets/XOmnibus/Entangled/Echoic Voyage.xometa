@@ -14,12 +14,15 @@
   "engines": [
     "Odyssey",
     "Orca"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.5,
@@ -50,6 +53,7 @@
     "orca",
     "wavetable"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Click train and FM sideband merge — cetacean intelligence guiding the odyssey path"
+>>>>>>> origin/v1-launch-prep
 }

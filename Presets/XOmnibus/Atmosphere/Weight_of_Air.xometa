@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Weight of Air",
+  "mood": "Atmosphere",
+  "engines": [
+    "Obese"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Thick, heavy environment. Maximum density, warm compression. OBESE dense register.",
   "dna": {
     "aggression": 0.292,
@@ -47,5 +58,40 @@
     "warm",
     "thick"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "MASS",
+    "DENSITY",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.407,
+    "warmth": 0.568,
+    "movement": 0.2,
+    "density": 0.846,
+    "space": 0.475,
+    "aggression": 0.292
+  },
+  "parameters": {
+    "Obese": {
+      "mass": 0.264,
+      "density": 0.131,
+      "coupling": 0.375,
+      "space": 0.515
+    }
+  },
+  "macros": {
+    "MASS": 0.264,
+    "DENSITY": 0.131,
+    "COUPLING": 0.375,
+    "SPACE": 0.515
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

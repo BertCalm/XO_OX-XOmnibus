@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Ferment Code",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Osteria fermentation depth feeds OUTWIT mutation probability — slow organic transformation",
   "dna": {
     "aggression": 0.45,
@@ -40,6 +52,18 @@
   "name": "Ferment Code",
   "parameters": {
     "Outwit": {
+<<<<<<< HEAD
+=======
+      "owit_rule": 110,
+      "owit_arms": 7,
+      "owit_cellSize": 0.546,
+      "owit_density": 0.586,
+      "owit_evolveRate": 0.555,
+      "owit_mutateProb": 0.153,
+      "owit_pitchSpread": 0.613,
+      "owit_filterCutoff": 0.494,
+      "owit_filterReso": 0.41,
+>>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.139,
       "owit_ampRelease": 0.187,
       "owit_armStagger": 0.165,

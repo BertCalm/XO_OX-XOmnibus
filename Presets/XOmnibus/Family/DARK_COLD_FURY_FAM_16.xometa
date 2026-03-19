@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK COLD FURY FAM 16",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Outwit",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.057,
+      "macro_movement": 0.657,
+      "macro_coupling": 0.719,
+      "macro_space": 0.585
+    },
+    "Oceanic": {
+      "macro_character": 0.06,
+      "macro_movement": 0.543,
+      "macro_coupling": 0.707,
+      "macro_space": 0.477
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "aggressive",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

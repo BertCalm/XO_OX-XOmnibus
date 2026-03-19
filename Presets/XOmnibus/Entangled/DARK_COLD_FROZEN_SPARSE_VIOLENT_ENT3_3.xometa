@@ -25,6 +25,7 @@
     "OddfeliX",
     "Origami"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -60,6 +61,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_COLD_FROZEN_SPARSE_VIOLENT. Designed to raise Entangled cosine diversity.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -71,5 +77,49 @@
     "sparse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.7009,
+      "macro_movement": 0.0188,
+      "macro_coupling": 0.9071,
+      "macro_space": 0.2312
+    },
+    "Origami": {
+      "macro_character": 0.9749,
+      "macro_movement": 0.026,
+      "macro_coupling": 0.8313,
+      "macro_space": 0.6888
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ODDFELIX",
+    "target": "ORIGAMI",
+    "amount": 0.9546
+  },
+  "macros": {
+    "CHARACTER": 0.8379,
+    "MOVEMENT": 0.0224,
+    "COUPLING": 0.8692,
+    "SPACE": 0.46
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.1262,
+    "warmth": 0.0565,
+    "movement": 0.02,
+    "density": 0.113,
+    "space": 0.3399,
+    "aggression": 0.9793
+  }
+>>>>>>> origin/v1-launch-prep
 }

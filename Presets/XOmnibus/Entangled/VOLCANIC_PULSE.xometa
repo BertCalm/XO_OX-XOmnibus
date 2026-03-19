@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "VOLCANIC PULSE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Ombre"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.063,
+      "macro_movement": 0.776,
+      "macro_coupling": 0.458,
+      "macro_space": 0.293
+    },
+    "Ombre": {
+      "macro_character": 0.044,
+      "macro_movement": 0.199,
+      "macro_coupling": 0.042,
+      "macro_space": 0.933
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "hot",
     "molten",
     "furnace"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

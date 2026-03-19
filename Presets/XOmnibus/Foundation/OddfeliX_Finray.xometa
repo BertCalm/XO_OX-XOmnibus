@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "Finray",
+  "mood": "Foundation",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Precise single-voice snap tuned to emphasize the thin razor quality of a tetra fin.",
+  "tags": ["precise", "thin", "snap", "sharp"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.88, "warmth": 0.1, "movement": 0.38, "density": 0.15, "space": 0.38, "aggression": 0.3},
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.9,
+      "snap_decay": 0.12,
+      "snap_detune": 0.01,
+      "snap_filterCutoff": 15000.0,
+      "snap_filterReso": 0.65,
+      "snap_filterEnvDepth": 0.7,
+      "snap_unison": 1,
+      "snap_sweepDirection": 0,
+      "snap_pitchLock": 0.99,
+      "snap_polyphony": 4,
+      "snap_level": 0.76,
+      "snap_macroDart": 0.55,
+      "snap_macroDepth": 0.2,
+      "snap_macroSchool": 0.05,
+      "snap_macroSurface": 0.8
+    }
+  },
+  "macros": {"CHARACTER": 0.85, "MOVEMENT": 0.38, "COUPLING": 0.0, "SPACE": 0.38},
+  "coupling": {"pairs": []}
+}

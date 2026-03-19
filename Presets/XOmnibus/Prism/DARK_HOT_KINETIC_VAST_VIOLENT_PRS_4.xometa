@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "DARK_HOT_KINETIC_VAST_VIOLENT_PRS_4",
+  "mood": "Prism",
+  "engines": [
+    "Overworld",
+    "Ohm"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_KINETIC_VAST_VIOLENT. Variant 4.",
   "dna": {
     "aggression": 0.963,
@@ -71,5 +83,49 @@
     "prism"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.143,
+      "macro_movement": 0.985,
+      "macro_coupling": 0.432,
+      "macro_space": 0.886
+    },
+    "Ohm": {
+      "macro_character": 0.184,
+      "macro_movement": 0.943,
+      "macro_coupling": 0.432,
+      "macro_space": 0.837
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OVERWORLD",
+    "target": "OHM",
+    "amount": 0.812
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.077,
+    "warmth": 0.94,
+    "movement": 0.939,
+    "density": 0.478,
+    "space": 0.917,
+    "aggression": 0.963
+  },
+  "macros": {
+    "CHARACTER": 0.163,
+    "MOVEMENT": 0.964,
+    "COUPLING": 0.432,
+    "SPACE": 0.861
+  }
+>>>>>>> origin/v1-launch-prep
 }

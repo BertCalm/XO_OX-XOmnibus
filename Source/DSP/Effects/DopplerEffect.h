@@ -2,6 +2,8 @@
 #include <cmath>
 #include <algorithm>
 #include <array>
+#include <vector>
+#include "../FastMath.h"
 
 namespace xomnibus {
 
@@ -46,7 +48,8 @@ public:
         if (mix < 0.001f)
             return;
 
-        const float smoothCoeff = 1.0f - std::exp (-speed * 10.0f
+        // SRO: fastExp replaces std::exp (per-block, ~4% accuracy sufficient)
+        const float smoothCoeff = 1.0f - fastExp (-speed * 10.0f
             / static_cast<float> (sr));
 
         for (int i = 0; i < numSamples; ++i)
@@ -81,7 +84,8 @@ public:
 
             // 3. Air absorption LPF (distance-dependent cutoff)
             // Near: cutoff ~18kHz (transparent), Far: cutoff ~800Hz (muffled)
-            float cutoff = 18000.0f * std::pow (0.044f, dist); // 18000 * 0.044^1 ≈ 800Hz
+            // SRO: fastExp replaces std::pow (pow(0.044,d) = exp(d*ln(0.044)) = exp(d*-3.1242))
+            float cutoff = 18000.0f * fastExp (dist * -3.1242f);
             float rc = 1.0f / (2.0f * 3.14159265f * cutoff);
             float dt = 1.0f / static_cast<float> (sr);
             float alpha = dt / (rc + dt);
@@ -103,6 +107,7 @@ public:
             right[i] = dryR + mix * (wetR - dryR);
         }
 
+        // SRO: per-sample flushDenormal (was post-block only)
         lpfL = flushDenormal (lpfL);
         lpfR = flushDenormal (lpfR);
     }
@@ -130,11 +135,6 @@ private:
 
     // LPF state
     float lpfL = 0.0f, lpfR = 0.0f;
-
-    static float flushDenormal (float x)
-    {
-        return (std::abs (x) < 1.0e-15f) ? 0.0f : x;
-    }
 };
 
 } // namespace xomnibus

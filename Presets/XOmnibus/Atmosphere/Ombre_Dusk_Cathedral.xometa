@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Dusk Cathedral",
+  "mood": "Atmosphere",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Large space, long release, reverberant character from the memory grain. The engine's natural reverb — each note decays into a resonant space that the next note inherits.",
+  "tags": ["atmosphere", "cathedral", "reverb", "space", "dusk", "sacred"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.72,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.9,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.22,
+      "ombre_interference": 0.22,
+      "ombre_memoryDecay": 22.0,
+      "ombre_memoryGrain": 350.0,
+      "ombre_memoryDrift": 0.3,
+      "ombre_oscShape": 0,
+      "ombre_reactivity": 0.35,
+      "ombre_subLevel": 0.3,
+      "ombre_filterCutoff": 3500.0,
+      "ombre_filterReso": 0.18,
+      "ombre_attack": 0.5,
+      "ombre_decay": 2.0,
+      "ombre_sustain": 0.75,
+      "ombre_release": 7.0,
+      "ombre_level": 0.7,
+      "ombre_velCutoffScale": 0.28,
+      "ombre_lfo1Rate": 0.08,
+      "ombre_lfo1Depth": 0.35,
+      "ombre_lfo2Rate": 0.05,
+      "ombre_lfo2Depth": 0.28,
+      "ombre_macroCharacter": 0.75,
+      "ombre_macroMovement": 0.3,
+      "ombre_macroCoupling": 0.4,
+      "ombre_macroSpace": 0.92
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

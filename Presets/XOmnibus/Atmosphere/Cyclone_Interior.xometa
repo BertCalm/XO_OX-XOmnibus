@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Cyclone Interior",
+  "mood": "Atmosphere",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Weather system in motion. High movement, active aggression. OUTWIT kinetic register.",
   "dna": {
     "aggression": 0.429,
@@ -47,5 +58,40 @@
     "weather",
     "dynamic"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "CUNNING",
+    "REFLEX",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.586,
+    "warmth": 0.34,
+    "movement": 0.9,
+    "density": 0.685,
+    "space": 0.44,
+    "aggression": 0.429
+  },
+  "parameters": {
+    "Outwit": {
+      "cunning": 0.356,
+      "reflex": 0.911,
+      "coupling": 0.209,
+      "space": 0.461
+    }
+  },
+  "macros": {
+    "CUNNING": 0.356,
+    "REFLEX": 0.911,
+    "COUPLING": 0.209,
+    "SPACE": 0.461
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

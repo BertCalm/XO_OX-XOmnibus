@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "MOVING FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Ouroboros",
+    "Osteria"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.692,
+      "macro_movement": 0.928,
+      "macro_coupling": 0.631,
+      "macro_space": 0.443
+    },
+    "Osteria": {
+      "macro_character": 0.395,
+      "macro_movement": 0.966,
+      "macro_coupling": 0.409,
+      "macro_space": 0.229
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -22,6 +22,18 @@
   "engines": [
     "Obbligato",
     "Orca"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "obbligato",
+    "orca"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -51,6 +63,7 @@
       "macro_space": 0.395
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.595,
@@ -68,4 +81,16 @@
     "orca"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORCA",
+        "engineB": "OBBLIGATO",
+        "type": "ENVELOPE_FOLLOW",
+        "amount": 0.841
+      }
+    ]
+  }
+>>>>>>> origin/v1-launch-prep
 }

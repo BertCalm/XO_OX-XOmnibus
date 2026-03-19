@@ -16,6 +16,18 @@
   },
   "engines": [
     "Outwit"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — bright cold dense violent. Designed for FLOW coupling with XOutwit.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "flow",
+    "outwit"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "PACK",
@@ -27,6 +39,7 @@
   "name": "BRIGHT COLD DENSE VIOLENT 4",
   "parameters": {
     "Outwit": {
+<<<<<<< HEAD
       "couplingBus": 2,
       "couplingLevel": 0.812
     }
@@ -47,4 +60,13 @@
     "outwit"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.812,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

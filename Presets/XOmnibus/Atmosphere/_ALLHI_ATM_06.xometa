@@ -37,13 +37,21 @@
   "mood": "Atmosphere",
   "name": "ALLHI ATM 06",
   "parameters": {
+<<<<<<< HEAD
     "Optic": {
+=======
+    "Orbital": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.959,
       "macro_coupling": 0.679,
       "macro_movement": 0.968,
       "macro_space": 0.962
     },
+<<<<<<< HEAD
     "Orbital": {
+=======
+    "Optic": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.959,
       "macro_coupling": 0.679,
       "macro_movement": 0.968,
@@ -56,6 +64,10 @@
     "pole-fill",
     "high-energy",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

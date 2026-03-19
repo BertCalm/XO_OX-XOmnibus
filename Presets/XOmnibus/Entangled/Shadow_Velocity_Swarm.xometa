@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Shadow Velocity Swarm",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Origami"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.71,
+      "macro_movement": 0.62,
+      "macro_coupling": 0.81,
+      "macro_space": 0.39
+    },
+    "Origami": {
+      "macro_character": 0.32,
+      "macro_movement": 0.89,
+      "macro_coupling": 0.66,
+      "macro_space": 0.79
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "dark",
     "low-brightness"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

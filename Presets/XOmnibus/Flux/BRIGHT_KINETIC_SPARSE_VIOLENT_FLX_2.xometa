@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_KINETIC_SPARSE_VIOLENT_FLX_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Origami",
+    "Optic"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.9084,
+      "macro_movement": 0.8979,
+      "macro_coupling": 0.8879,
+      "macro_space": 0.5029
+    },
+    "Optic": {
+      "macro_character": 0.7822,
+      "macro_movement": 0.9738,
+      "macro_coupling": 0.9203,
+      "macro_space": 0.4563
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "high-movement",
     "low-density",
     "high-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

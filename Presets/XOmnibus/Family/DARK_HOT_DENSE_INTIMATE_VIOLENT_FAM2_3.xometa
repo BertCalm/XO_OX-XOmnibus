@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK HOT DENSE INTIMATE VIOLENT FAM2 3",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Overdub",
+    "Opal"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.51,
+      "macro_movement": 0.335,
+      "macro_coupling": 0.968,
+      "macro_space": 0.058
+    },
+    "Opal": {
+      "macro_character": 0.528,
+      "macro_movement": 0.3,
+      "macro_coupling": 0.982,
+      "macro_space": 0.06
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "intimate",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

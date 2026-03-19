@@ -58,5 +58,9 @@
     "void",
     "oracle"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Obsidian locks Oracle's pitch into crystalline void — absolute cold prophecy."
+>>>>>>> origin/v1-launch-prep
 }

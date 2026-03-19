@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_DENSE_INTIMATE_VIOLENT_FLX_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overdub",
+    "Ouroboros"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.6759,
+      "macro_movement": 0.2703,
+      "macro_coupling": 0.9139,
+      "macro_space": 0.1435
+    },
+    "Ouroboros": {
+      "macro_character": 0.7045,
+      "macro_movement": 0.2706,
+      "macro_coupling": 0.8905,
+      "macro_space": 0.1025
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "high-density",
     "low-space",
     "high-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

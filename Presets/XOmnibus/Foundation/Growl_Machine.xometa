@@ -15,6 +15,19 @@
   },
   "engines": [
     "OddOscar"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oscar vocal growl pushed into full aggression",
+  "tags": [
+    "foundation",
+    "aggressive",
+    "extreme",
+    "anchor",
+    "drive"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "WEIGHT",
@@ -32,8 +45,12 @@
   "name": "Growl Machine",
   "parameters": {
     "OddOscar": {
+<<<<<<< HEAD
       "oscar_couplingBus": 0,
       "oscar_couplingLevel": 0.5,
+=======
+      "oscar_macro_weight": 0.4367,
+>>>>>>> origin/v1-launch-prep
       "oscar_macro_breath": 0.7177,
       "oscar_macro_couple": 0.3611,
       "oscar_macro_space": 0.7578,
@@ -41,6 +58,7 @@
       "oscar_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.7882,
@@ -58,4 +76,9 @@
     "drive"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overdub",
+    "Optic"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.6908,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.9488,
+      "macro_space": 0.0774
+    },
+    "Optic": {
+      "macro_character": 0.7053,
+      "macro_movement": 0.9616,
+      "macro_coupling": 0.9392,
+      "macro_space": 0.0631
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "intimate",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

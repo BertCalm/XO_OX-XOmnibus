@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DIGITAL TEMPEST",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Oceanic",
+    "Oblong"
+  ],
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.705,
+      "macro_movement": 0.884,
+      "macro_coupling": 0.811,
+      "macro_space": 0.386
+    },
+    "Oblong": {
+      "macro_character": 0.664,
+      "macro_movement": 0.954,
+      "macro_coupling": 0.821,
+      "macro_space": 0.981
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "chaotic",
     "high-energy"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

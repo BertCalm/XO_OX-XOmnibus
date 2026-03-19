@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "EMBEDDED MIST",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Oracle"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.062,
+      "macro_movement": 0.044,
+      "macro_coupling": 0.947,
+      "macro_space": 0.924
+    },
+    "Oracle": {
+      "macro_character": 0.145,
+      "macro_movement": 0.091,
+      "macro_coupling": 0.853,
+      "macro_space": 0.216
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "embedded"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

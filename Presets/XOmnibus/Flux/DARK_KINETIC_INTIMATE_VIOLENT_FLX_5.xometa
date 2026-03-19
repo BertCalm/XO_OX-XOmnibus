@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FLX_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Origami",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.1292,
+      "macro_movement": 0.8426,
+      "macro_coupling": 0.8574,
+      "macro_space": 0.1393
+    },
+    "Odyssey": {
+      "macro_character": 0.1357,
+      "macro_movement": 0.9018,
+      "macro_coupling": 0.8628,
+      "macro_space": 0.2111
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "high-movement",
     "low-space",
     "high-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

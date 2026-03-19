@@ -16,6 +16,18 @@
   },
   "engines": [
     "Ole"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — hot intimate kinetic dense. Designed for DRIFT coupling with XOle.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "drift",
+    "ole"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "DEPTH",
@@ -27,6 +39,7 @@
   "name": "HOT INTIMATE KINETIC DENSE 2",
   "parameters": {
     "Ole": {
+<<<<<<< HEAD
       "couplingBus": 3,
       "couplingLevel": 0.669
     }
@@ -47,4 +60,13 @@
     "ole"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.669,
+      "couplingBus": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

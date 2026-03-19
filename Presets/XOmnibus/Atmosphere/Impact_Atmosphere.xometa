@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Impact Atmosphere",
+  "mood": "Atmosphere",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. OPTIC aggressive register.",
   "dna": {
     "aggression": 0.883,
@@ -47,5 +58,40 @@
     "pressure",
     "fierce"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "FOCUS",
+    "ABERRATION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.587,
+    "warmth": 0.466,
+    "movement": 0.782,
+    "density": 0.71,
+    "space": 0.488,
+    "aggression": 0.883
+  },
+  "parameters": {
+    "Optic": {
+      "focus": 0.923,
+      "aberration": 0.759,
+      "coupling": 0.276,
+      "space": 0.504
+    }
+  },
+  "macros": {
+    "FOCUS": 0.923,
+    "ABERRATION": 0.759,
+    "COUPLING": 0.276,
+    "SPACE": 0.504
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

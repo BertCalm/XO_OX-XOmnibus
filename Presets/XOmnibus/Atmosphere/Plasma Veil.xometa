@@ -3,12 +3,15 @@
   "description": "Cathode glow warming nothing but the eye. Cool brightness, restless movement.",
   "engines": [
     "OddfeliX"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.501,

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "THICK THREAD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Osprey",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.8731,
+      "macro_movement": 0.0819,
+      "macro_coupling": 0.7787,
+      "macro_space": 0.7038
+    },
+    "OddOscar": {
+      "macro_character": 0.0781,
+      "macro_movement": 0.5642,
+      "macro_coupling": 0.6247,
+      "macro_space": 0.5476
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "tectonic",
     "coiled",
     "fused"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

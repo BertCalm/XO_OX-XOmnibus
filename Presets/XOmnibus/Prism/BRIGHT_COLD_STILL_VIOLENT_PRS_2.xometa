@@ -37,15 +37,25 @@
   "mood": "Prism",
   "name": "Silver Strike 2",
   "parameters": {
+<<<<<<< HEAD
     "Ohm": {
       "macro_character": 0.538,
       "macro_coupling": 0.479,
+=======
+    "Ole": {
+      "macro_character": 0.899,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.105,
       "macro_space": 0.407
     },
+<<<<<<< HEAD
     "Ole": {
       "macro_character": 0.899,
       "macro_coupling": 0.822,
+=======
+    "Ohm": {
+      "macro_character": 0.538,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.105,
       "macro_space": 0.407
     }
@@ -57,6 +67,10 @@
     "cold",
     "still",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

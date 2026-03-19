@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -21,10 +22,16 @@
     "space": 0.342,
     "warmth": 0.707
   },
+=======
+  "schema_version": 1,
+  "name": "Coral Rascal × Ohm",
+  "mood": "Entangled",
+>>>>>>> origin/v1-launch-prep
   "engines": [
     "Obbligato",
     "Ohm"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -40,6 +47,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "A hippy-dad commune — OHM's commune axis holds OBBLIGATO's breath voices in harmonic orbit via BOND.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "obbligato",

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "FAINT CHAMBER",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Owlfish",
+    "Orphica"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.347,
+      "macro_movement": 0.058,
+      "macro_coupling": 0.545,
+      "macro_space": 0.597
+    },
+    "Orphica": {
+      "macro_character": 0.885,
+      "macro_movement": 0.115,
+      "macro_coupling": 0.324,
+      "macro_space": 0.339
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "faint"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

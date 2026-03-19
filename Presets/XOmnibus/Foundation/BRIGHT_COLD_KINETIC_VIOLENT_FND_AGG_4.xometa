@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_KINETIC_VIOLENT_FND_AGG_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub",
+    "Ouroboros"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.673,
+      "macro_movement": 0.64,
+      "macro_coupling": 0.611,
+      "macro_space": 0.789
+    },
+    "Ouroboros": {
+      "macro_character": 0.65,
+      "macro_movement": 0.675,
+      "macro_coupling": 0.644,
+      "macro_space": 0.748
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "cold",
     "kinetic"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

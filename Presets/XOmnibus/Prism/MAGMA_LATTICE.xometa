@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "MAGMA LATTICE",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Onset",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.55,
+      "macro_movement": 0.894,
+      "macro_coupling": 0.123,
+      "macro_space": 0.264
+    },
+    "Obbligato": {
+      "macro_character": 0.546,
+      "macro_movement": 0.24,
+      "macro_coupling": 0.791,
+      "macro_space": 0.842
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "spectrum",
     "fire"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

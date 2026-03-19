@@ -16,6 +16,7 @@
   "engines": [
     "OddOscar"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "WEIGHT",
     "GRIND",
@@ -36,6 +37,11 @@
     "space": 0.15,
     "warmth": 0.92
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Below freezing — matter compressed to maximum Oscar density",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -44,5 +50,27 @@
     "dense",
     "sub"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "WEIGHT",
+    "GRIND",
+    "COUPLING",
+    "CAVE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.92,
+    "movement": 0.1,
+    "density": 0.95,
+    "space": 0.15,
+    "aggression": 0.3
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

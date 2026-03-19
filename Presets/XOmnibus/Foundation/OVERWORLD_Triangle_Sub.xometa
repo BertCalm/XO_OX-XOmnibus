@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Triangle Sub",
+  "mood": "Foundation",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "NES triangle channel sub bass — the lowest voice in the 2A03, all body and no bite.",
+  "tags": [
+    "nes",
+    "triangle",
+    "sub",
+    "bass",
+    "chip",
+    "foundation"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.55,
+    "movement": 0.2,
+    "density": 0.8,
+    "space": 0.15,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_era": 0,
+      "ow_macro_era": 0.02,
+      "ow_macro_chaos": 0.03,
+      "ow_macro_couple": 0.0,
+      "ow_macro_space": 0.12,
+      "ow_outputLevel": 0.88,
+      "ow_couplingLevel": 0.0,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

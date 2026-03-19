@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BLINDING FLUX",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Ouroboros",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.073,
+      "macro_movement": 0.414,
+      "macro_coupling": 0.63,
+      "macro_space": 0.194
+    },
+    "Obsidian": {
+      "macro_character": 0.696,
+      "macro_movement": 0.494,
+      "macro_coupling": 0.244,
+      "macro_space": 0.656
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "low-movement"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

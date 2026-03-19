@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_KINETIC_INTIMATE_GENTLE_AET2_3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Orbital",
+    "Oracle"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.1447,
+      "macro_movement": 0.934,
+      "macro_coupling": 0.3343,
+      "macro_space": 0.0715
+    },
+    "Oracle": {
+      "macro_character": 0.1512,
+      "macro_movement": 0.8741,
+      "macro_coupling": 0.3497,
+      "macro_space": 0.0475
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "intimate",
     "gentle",
     "stirring"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

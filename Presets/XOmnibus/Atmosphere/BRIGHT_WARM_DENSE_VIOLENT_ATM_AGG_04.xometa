@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT WARM DENSE VIOLENT ATM AGG 4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Origami",
+    "Organon"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.811,
+      "macro_movement": 0.307,
+      "macro_coupling": 0.917,
+      "macro_space": 0.618
+    },
+    "Organon": {
+      "macro_character": 0.812,
+      "macro_movement": 0.316,
+      "macro_coupling": 0.867,
+      "macro_space": 0.665
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "bright",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

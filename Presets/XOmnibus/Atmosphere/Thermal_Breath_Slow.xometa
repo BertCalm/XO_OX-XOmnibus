@@ -44,5 +44,27 @@
     "breath",
     "evolving"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "BLOOM",
+    "EXHALE",
+    "COUPLING",
+    "HORIZON"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.647,
+    "warmth": 0.915,
+    "movement": 0.622,
+    "density": 0.083,
+    "space": 0.645,
+    "aggression": 0.205
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

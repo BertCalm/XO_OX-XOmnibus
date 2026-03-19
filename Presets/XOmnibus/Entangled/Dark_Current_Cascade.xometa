@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Dark Current Cascade",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Optic"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.66,
+      "macro_movement": 0.29,
+      "macro_coupling": 0.8,
+      "macro_space": 0.82
+    },
+    "Optic": {
+      "macro_character": 0.18,
+      "macro_movement": 0.21,
+      "macro_coupling": 0.66,
+      "macro_space": 0.3
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "dark",
     "low-brightness"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

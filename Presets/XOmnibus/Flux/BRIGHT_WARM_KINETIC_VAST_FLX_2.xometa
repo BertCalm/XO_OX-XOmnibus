@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_KINETIC_VAST_FLX_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overdub",
+    "Organon"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.8723,
+      "macro_movement": 0.8819,
+      "macro_coupling": 0.7613,
+      "macro_space": 0.9227
+    },
+    "Organon": {
+      "macro_character": 0.8991,
+      "macro_movement": 0.8984,
+      "macro_coupling": 0.7636,
+      "macro_space": 0.8622
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "high-warmth",
     "high-movement",
     "high-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

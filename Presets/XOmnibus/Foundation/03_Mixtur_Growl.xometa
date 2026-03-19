@@ -15,6 +15,18 @@
   },
   "engines": [
     "Owlfish"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "High Mixtur waveshaping drives aggressive sub-bass growl with saw-leaning subharmonics",
+  "tags": [
+    "bass",
+    "growl",
+    "aggressive",
+    "distorted"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "DEPTH",
@@ -26,6 +38,7 @@
   "name": "Mixtur Growl",
   "parameters": {
     "Owlfish": {
+<<<<<<< HEAD
       "owl_ampAttack": 2,
       "owl_ampDecay": 180,
       "owl_ampRelease": 300,
@@ -55,6 +68,9 @@
       "owl_grainMix": 0.0,
       "owl_grainPitch": 0.0,
       "owl_grainSize": 0.3,
+=======
+      "owl_portamento": 0.08,
+>>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 0,
       "owl_mixtur": 0.85,
       "owl_morphGlide": 0.25,

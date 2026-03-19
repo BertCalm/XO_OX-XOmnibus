@@ -15,6 +15,19 @@
   },
   "engines": [
     "Orbital"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbit phase locked in dense dark spectral field",
+  "tags": [
+    "prism",
+    "dark",
+    "dense",
+    "extreme",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "ORBIT",
@@ -32,15 +45,19 @@
   "name": "Orbital Dark",
   "parameters": {
     "Orbital": {
+<<<<<<< HEAD
       "orb_couplingBus": 0,
       "orb_couplingLevel": 0.5,
       "orb_macro_couple": 0.7938,
+=======
+>>>>>>> origin/v1-launch-prep
       "orb_macro_orbit": 0.3004,
       "orb_macro_phase": 0.8669,
       "orb_macro_space": 0.847,
       "orb_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.7536,
@@ -58,4 +75,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

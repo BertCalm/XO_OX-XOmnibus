@@ -20,7 +20,16 @@ inline const juce::StringArray validEngineNames {
     "Ocelot", "Osprey", "Osteria", "Owlfish",
     "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole",
     "Optic", "Oblique", "Ombre", "Orca", "Octopus",
+<<<<<<< HEAD
     "Overlap", "Outwit",
+=======
+    // Phase 4 engines
+    "Overlap", "Outwit",
+    // V1 concept engines
+    "OpenSky", "Ostinato", "OceanDeep", "Ouie",
+    // V2 theorem engines
+    "Overtone", "Organism",
+>>>>>>> origin/v1-launch-prep
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
@@ -65,6 +74,10 @@ inline juce::String resolveEngineAlias(const juce::String& name)
         { "XOverworld",  "Overworld" },
         { "XOrca",       "Orca"      },
         { "XOctopus",    "Octopus"   },
+<<<<<<< HEAD
+=======
+        // Phase 4 engine aliases
+>>>>>>> origin/v1-launch-prep
         { "XOverlap",    "Overlap"   },
         { "XOutwit",     "Outwit"    },
     };
@@ -110,8 +123,16 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Ombre",       "ombre"   },
         { "Orca",        "orca"    },
         { "Octopus",     "octo"    },
-        { "XOverlap",    "olap"    },
-        { "XOutwit",     "owit"    },
+        { "Overlap",     "olap"    },
+        { "Outwit",      "owit"    },
+        // V1 Concept Engines
+        { "OpenSky",     "sky"     },
+        { "Ostinato",    "osti"    },
+        { "OceanDeep",   "deep"    },
+        { "Ouie",        "ouie"    },
+        // V2 Theorem Engines
+        { "Overtone",    "over"    },
+        { "Organism",    "org"     },
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : engineId.toLowerCase();
@@ -144,9 +165,9 @@ inline juce::String resolveSnapParamAlias(const juce::String& paramId)
     return (it != renamed.end()) ? it->second : paramId;
 }
 
-// Valid moods — the 6 browsing categories plus User.
+// Valid moods — the 8 browsing categories plus User.
 inline const juce::StringArray validMoods {
-    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "User"
+    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Submerged", "User"
 };
 
 // Valid coupling intensity levels.
@@ -194,7 +215,7 @@ struct CouplingPair {
 struct PresetData {
     int schemaVersion = 1;
     juce::String name;
-    juce::String mood;                     // Foundation|Atmosphere|Entangled|Prism|Flux|Aether|User
+    juce::String mood;                     // Foundation|Atmosphere|Entangled|Prism|Flux|Aether|Family|Submerged|User
     juce::StringArray engines;             // 1-3 engine names
     juce::String author;
     juce::String version;

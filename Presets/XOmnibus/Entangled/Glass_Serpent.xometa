@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -37,6 +38,18 @@
   },
   "mood": "Entangled",
   "name": "Glass Serpent",
+=======
+  "schema_version": 1,
+  "name": "Glass Serpent",
+  "mood": "Entangled",
+  "engines": [
+    "Orphica",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "ORPHICA's harmonic folding braids with OUROBOROS's self-consuming loop — brightness 0.90.",
+>>>>>>> origin/v1-launch-prep
   "parameters": {
     "Orphica": {
       "macro_character": 0.76,
@@ -58,6 +71,10 @@
     "ouroboros",
     "harmonic",
     "glass"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -16,6 +16,18 @@
   },
   "engines": [
     "Ombre"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — cold intimate kinetic dark. Designed for MIRROR coupling with XOmbre.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "mirror",
+    "ombre"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "RADIANCE",
@@ -27,6 +39,7 @@
   "name": "COLD INTIMATE KINETIC DARK 5",
   "parameters": {
     "Ombre": {
+<<<<<<< HEAD
       "couplingBus": 1,
       "couplingLevel": 0.936
     }
@@ -47,4 +60,13 @@
     "ombre"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.936,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

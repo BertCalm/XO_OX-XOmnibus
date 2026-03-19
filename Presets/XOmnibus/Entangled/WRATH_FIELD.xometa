@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "WRATH FIELD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Opal"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.259,
+      "macro_movement": 0.507,
+      "macro_coupling": 0.5,
+      "macro_space": 0.136
+    },
+    "Opal": {
+      "macro_character": 0.21,
+      "macro_movement": 0.366,
+      "macro_coupling": 0.479,
+      "macro_space": 0.466
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "fury",
     "chaos",
     "obliterating"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

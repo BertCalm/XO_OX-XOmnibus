@@ -20,7 +20,11 @@
   },
   "engines": [
     "Optic",
+<<<<<<< HEAD
     "Obese"
+=======
+    "FAT"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -37,7 +41,11 @@
   "mood": "Entangled",
   "name": "ALLLO ENT 03",
   "parameters": {
+<<<<<<< HEAD
     "Obese": {
+=======
+    "Optic": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.082,
       "macro_coupling": 0.047,
       "macro_movement": 0.312,
@@ -56,6 +64,10 @@
     "pole-fill",
     "minimal",
     "sparse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

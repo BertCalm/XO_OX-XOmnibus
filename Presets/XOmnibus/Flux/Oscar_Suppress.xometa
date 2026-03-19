@@ -1,8 +1,17 @@
 {
   "author": "XO_OX Designs",
+<<<<<<< HEAD
   "coupling": {
     "pairs": []
   },
+=======
+  "version": "1.0",
+  "name": "Oscar Suppress",
+  "mood": "Flux",
+  "engines": [
+    "OddOscar"
+  ],
+>>>>>>> origin/v1-launch-prep
   "couplingIntensity": "None",
   "description": "Axolotl gill pink beneath still water — morph parameter caged at maximum saturation.",
   "dna": {
@@ -42,6 +51,10 @@
     "suppress",
     "axolotl"
   ],
+<<<<<<< HEAD
   "tempo": null,
   "version": "1.0"
+=======
+  "description": "Axolotl gill pink beneath still water — morph parameter caged at maximum saturation."
+>>>>>>> origin/v1-launch-prep
 }

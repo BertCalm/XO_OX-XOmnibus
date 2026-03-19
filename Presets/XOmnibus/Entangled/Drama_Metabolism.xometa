@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -37,6 +38,18 @@
   },
   "mood": "Entangled",
   "name": "Drama Metabolism II",
+=======
+  "schema_version": 1,
+  "name": "Drama Metabolism",
+  "mood": "Entangled",
+  "engines": [
+    "Ole",
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "OLE's percussive frequency spikes drive ORGANON into metabolic overdrive — aggression 0.86.",
+>>>>>>> origin/v1-launch-prep
   "parameters": {
     "Ole": {
       "macro_character": 0.78,
@@ -58,6 +71,10 @@
     "organon",
     "frequency",
     "drama"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -25,6 +25,7 @@
     "Oceanic",
     "Osprey"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -60,6 +61,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_STILL_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -71,5 +77,49 @@
     "vast"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.5217,
+      "macro_movement": 0.1009,
+      "macro_coupling": 0.8547,
+      "macro_space": 0.5419
+    },
+    "Osprey": {
+      "macro_character": 0.8366,
+      "macro_movement": 0.0765,
+      "macro_coupling": 0.9757,
+      "macro_space": 0.7265
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OCEANIC",
+    "target": "OSPREY",
+    "amount": 0.7668
+  },
+  "macros": {
+    "CHARACTER": 0.6792,
+    "MOVEMENT": 0.0887,
+    "COUPLING": 0.9152,
+    "SPACE": 0.6342
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.9416,
+    "warmth": 0.4383,
+    "movement": 0.0886,
+    "density": 0.068,
+    "space": 0.9881,
+    "aggression": 0.0327
+  }
+>>>>>>> origin/v1-launch-prep
 }

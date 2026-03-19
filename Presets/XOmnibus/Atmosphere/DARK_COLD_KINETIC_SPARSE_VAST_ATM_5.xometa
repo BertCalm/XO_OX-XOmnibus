@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_KINETIC_SPARSE_VAST_ATM_5",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oceanic",
+    "Obscura"
+  ],
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.1196,
+      "macro_movement": 0.8879,
+      "macro_coupling": 0.1408,
+      "macro_space": 0.8955
+    },
+    "Obscura": {
+      "macro_character": 0.1137,
+      "macro_movement": 0.8857,
+      "macro_coupling": 0.1378,
+      "macro_space": 0.8912
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "sparse",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

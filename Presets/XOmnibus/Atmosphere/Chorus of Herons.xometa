@@ -3,12 +3,15 @@
   "description": "Herons calling across flooded fields at dawn. Tonal, spacious, alive.",
   "engines": [
     "Opal"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.725,

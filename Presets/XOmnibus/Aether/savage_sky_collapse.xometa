@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SAVAGE SKY COLLAPSE",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Orca",
+    "Ombre"
+  ],
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.639,
+      "macro_movement": 0.028,
+      "macro_coupling": 0.627,
+      "macro_space": 0.638
+    },
+    "Ombre": {
+      "macro_character": 0.957,
+      "macro_movement": 0.026,
+      "macro_coupling": 0.805,
+      "macro_space": 0.662
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "violent",
     "transcendence",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

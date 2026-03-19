@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Midnight Bloom",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Full darkness, then a sudden bioluminescent bloom. Figure-eight topology with deep modulation \u2014 the crossing point is where the light fires. An event horizon: quiet on one side, luminous on the other.",
+  "tags": [
+    "midnight",
+    "bloom",
+    "bioluminescent",
+    "figure-eight",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.7,
+    "density": 0.72,
+    "space": 0.9,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 2,
+      "olap_delayFeedback": 0.75,
+      "olap_diffusion": 0.82,
+      "olap_spread": 0.88,
+      "olap_decay": 14.0,
+      "olap_modDepth": 0.42,
+      "olap_modRate": 0.06,
+      "olap_damping": 0.35,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

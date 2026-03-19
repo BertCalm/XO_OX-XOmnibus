@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Color Pop",
+  "mood": "Prism",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright chord pop — percussive chord hit that pops with full prismatic color.",
+  "tags": ["pop", "chord", "percussive", "color"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.9, "warmth": 0.25, "movement": 0.58, "density": 0.6, "space": 0.45, "aggression": 0.35},
+  "parameters": {
+    "OddfeliX": {"snap_oscMode": 1, "snap_snap": 0.88, "snap_decay": 0.18, "snap_detune": 0.12, "snap_filterCutoff": 14000.0, "snap_filterReso": 0.58, "snap_filterEnvDepth": 0.78, "snap_unison": 3, "snap_sweepDirection": 0, "snap_pitchLock": 0.88, "snap_polyphony": 6, "snap_level": 0.82, "snap_macroDart": 0.65, "snap_macroDepth": 0.48, "snap_macroSchool": 0.52, "snap_macroSurface": 0.68}
+  },
+  "macros": {"CHARACTER": 0.75, "MOVEMENT": 0.58, "COUPLING": 0.0, "SPACE": 0.45},
+  "coupling": {"pairs": []}
+}

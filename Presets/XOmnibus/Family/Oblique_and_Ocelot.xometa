@@ -16,6 +16,7 @@
     "Oblique",
     "Ocelot"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -35,6 +36,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBLIQUE off-axis + OCELOT feline precision — the unexpected angle and the precise strike. Two ways of not going straight.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "reunion",
@@ -46,5 +52,25 @@
     "batch3-reunion"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.5,
+    "movement": 0.72,
+    "density": 0.45,
+    "space": 0.6,
+    "aggression": 0.45
+  }
+>>>>>>> origin/v1-launch-prep
 }

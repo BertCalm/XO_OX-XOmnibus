@@ -15,6 +15,19 @@
   },
   "engines": [
     "Opal"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Granular foundation stripped to luminous core",
+  "tags": [
+    "foundation",
+    "bright",
+    "sparse",
+    "crystalline",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "GRAIN",
@@ -32,15 +45,19 @@
   "name": "Clear Foundation",
   "parameters": {
     "Opal": {
+<<<<<<< HEAD
       "opal_couplingBus": 0,
       "opal_couplingLevel": 0.5,
       "opal_macro_density": 0.4845,
+=======
+>>>>>>> origin/v1-launch-prep
       "opal_macro_grain": 0.6964,
       "opal_macro_scatter": 0.8189,
       "opal_macro_space": 0.6345,
       "opal_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.0706,
@@ -58,4 +75,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

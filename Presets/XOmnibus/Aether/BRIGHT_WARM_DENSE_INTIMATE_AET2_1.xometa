@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_DENSE_INTIMATE_AET2_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Organon",
+    "Oracle"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.8684,
+      "macro_movement": 0.5526,
+      "macro_coupling": 0.9676,
+      "macro_space": 0.0397
+    },
+    "Oracle": {
+      "macro_character": 0.8648,
+      "macro_movement": 0.5313,
+      "macro_coupling": 0.9495,
+      "macro_space": 0.0128
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "dense",
     "intimate",
     "lush"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

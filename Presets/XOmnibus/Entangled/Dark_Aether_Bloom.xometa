@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Dark Aether Bloom",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.52,
+      "macro_movement": 0.88,
+      "macro_coupling": 0.72,
+      "macro_space": 0.72
+    },
+    "Obsidian": {
+      "macro_character": 0.11,
+      "macro_movement": 0.38,
+      "macro_coupling": 0.68,
+      "macro_space": 0.74
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "dark",
     "low-brightness"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "RADIANT GATHERING",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Ottoni",
+    "Orphica"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.662,
+      "macro_movement": 0.525,
+      "macro_coupling": 0.314,
+      "macro_space": 0.173
+    },
+    "Orphica": {
+      "macro_character": 0.912,
+      "macro_movement": 0.342,
+      "macro_coupling": 0.354,
+      "macro_space": 0.772
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "low-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

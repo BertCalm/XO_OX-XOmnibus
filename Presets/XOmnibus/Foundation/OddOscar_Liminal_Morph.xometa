@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Liminal Morph",
+  "mood": "Foundation",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "In-between state morph — neither fully one thing nor another, suspended at the threshold.",
+  "tags": ["liminal", "morph", "threshold", "foundation"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.45, "warmth": 0.55, "movement": 0.52, "density": 0.58, "space": 0.6, "aggression": 0.16},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.62,
+      "morph_bloom": 0.5,
+      "morph_detune": 0.18,
+      "morph_drift": 0.38,
+      "morph_filterCutoff": 5200.0,
+      "morph_filterReso": 0.35,
+      "morph_filterEnvDepth": 0.42,
+      "morph_sub": 0.3,
+      "morph_decay": 1.2,
+      "morph_sustain": 0.72,
+      "morph_release": 2.0,
+      "morph_glide": 0.08,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 6,
+      "morph_level": 0.73,
+      "morph_macroBloom": 0.5,
+      "morph_macroDepth": 0.55,
+      "morph_macroDrift": 0.38,
+      "morph_macroSpace": 0.6
+    }
+  },
+  "macros": {"CHARACTER": 0.52, "MOVEMENT": 0.52, "COUPLING": 0.0, "SPACE": 0.6},
+  "coupling": {"pairs": []}
+}

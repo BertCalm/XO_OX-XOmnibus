@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT WARM DENSE BALANCED AET SPC 5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Oracle",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.97,
+      "macro_movement": 0.339,
+      "macro_coupling": 0.717,
+      "macro_space": 0.512
+    },
+    "Oceanic": {
+      "macro_character": 0.99,
+      "macro_movement": 0.363,
+      "macro_coupling": 0.697,
+      "macro_space": 0.482
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "bright",
     "warm",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

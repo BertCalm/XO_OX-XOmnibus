@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Barotrauma",
+  "mood": "Submerged",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "The sound of pressure injury \u2014 a figure-eight at extreme depth with sharp transient response. The crossing point delivers a focused pressure burst. Uncomfortable and precise. Do not use on headphones at high volume.",
+  "tags": [
+    "barotrauma",
+    "pressure",
+    "figure-eight",
+    "sharp",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.62,
+    "movement": 0.72,
+    "density": 0.72,
+    "space": 0.75,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 2,
+      "olap_delayFeedback": 0.68,
+      "olap_diffusion": 0.62,
+      "olap_spread": 0.75,
+      "olap_decay": 6.0,
+      "olap_modDepth": 0.42,
+      "olap_modRate": 0.14,
+      "olap_damping": 0.72,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

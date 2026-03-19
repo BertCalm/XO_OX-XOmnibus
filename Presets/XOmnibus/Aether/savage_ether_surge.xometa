@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SAVAGE ETHER SURGE",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Oracle",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.804,
+      "macro_movement": 0.368,
+      "macro_coupling": 0.149,
+      "macro_space": 0.064
+    },
+    "OddfeliX": {
+      "macro_character": 0.14,
+      "macro_movement": 0.409,
+      "macro_coupling": 0.319,
+      "macro_space": 0.034
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "violent",
     "transcendence",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

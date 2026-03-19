@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SKELETAL GRID",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.332,
+      "macro_movement": 0.931,
+      "macro_coupling": 0.802,
+      "macro_space": 0.864
+    },
+    "Obbligato": {
+      "macro_character": 0.811,
+      "macro_movement": 0.267,
+      "macro_coupling": 0.787,
+      "macro_space": 0.108
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "sparse",
     "spectral"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

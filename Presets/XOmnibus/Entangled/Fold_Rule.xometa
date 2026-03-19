@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Deep",
+=======
+  "schema_version": 1,
+  "name": "Fold Rule",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Origami fold count selects OUTWIT Wolfram rule index — the paper's geometry is the cellular law",
   "dna": {
     "aggression": 0.5,
@@ -40,6 +52,18 @@
   "name": "Fold Rule",
   "parameters": {
     "Outwit": {
+<<<<<<< HEAD
+=======
+      "owit_rule": 54,
+      "owit_arms": 6,
+      "owit_cellSize": 0.265,
+      "owit_density": 0.449,
+      "owit_evolveRate": 0.729,
+      "owit_mutateProb": 0.188,
+      "owit_pitchSpread": 0.405,
+      "owit_filterCutoff": 0.794,
+      "owit_filterReso": 0.249,
+>>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.143,
       "owit_ampRelease": 0.789,
       "owit_armStagger": 0.413,

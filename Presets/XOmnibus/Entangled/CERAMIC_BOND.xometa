@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CERAMIC BOND",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ottoni",
+    "Osprey"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.003,
+      "macro_movement": 0.451,
+      "macro_coupling": 0.594,
+      "macro_space": 0.291
+    },
+    "Osprey": {
+      "macro_character": 0.231,
+      "macro_movement": 0.707,
+      "macro_coupling": 0.703,
+      "macro_space": 0.454
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "cold",
     "clinical",
     "icy"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

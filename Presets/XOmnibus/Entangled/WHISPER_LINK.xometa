@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "WHISPER LINK",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Orbital"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.365,
+      "macro_movement": 0.662,
+      "macro_coupling": 0.317,
+      "macro_space": 0.301
+    },
+    "Orbital": {
+      "macro_character": 0.197,
+      "macro_movement": 0.254,
+      "macro_coupling": 0.196,
+      "macro_space": 0.529
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "quiet",
     "entangled",
     "delicate"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

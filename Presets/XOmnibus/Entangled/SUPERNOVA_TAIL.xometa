@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SUPERNOVA TAIL",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Orca",
+    "Oblique"
+  ],
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.965,
+      "macro_movement": 0.386,
+      "macro_coupling": 0.435,
+      "macro_space": 0.97
+    },
+    "Oblique": {
+      "macro_character": 0.201,
+      "macro_movement": 0.565,
+      "macro_coupling": 0.906,
+      "macro_space": 0.946
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "vast",
     "cosmic",
     "xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

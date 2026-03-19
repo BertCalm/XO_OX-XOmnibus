@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "AGGRESSIVE VOID STORM",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Overdub",
+    "Opal"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.981,
+      "macro_movement": 0.755,
+      "macro_coupling": 0.182,
+      "macro_space": 0.621
+    },
+    "Opal": {
+      "macro_character": 0.716,
+      "macro_movement": 0.801,
+      "macro_coupling": 0.037,
+      "macro_space": 0.625
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "violent",
     "transcendence",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

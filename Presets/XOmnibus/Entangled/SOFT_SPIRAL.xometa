@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SOFT SPIRAL",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ocelot",
+    "Oblong"
+  ],
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.272,
+      "macro_movement": 0.436,
+      "macro_coupling": 0.373,
+      "macro_space": 0.396
+    },
+    "Oblong": {
+      "macro_character": 0.677,
+      "macro_movement": 0.721,
+      "macro_coupling": 0.554,
+      "macro_space": 0.168
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "tender",
     "quiet",
     "entangled"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

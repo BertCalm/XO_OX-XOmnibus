@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "BRIGHT_HOT_STILL_INTIMATE_GENTLE_PRS_5",
+  "mood": "Prism",
+  "engines": [
+    "Orphica",
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_HOT_STILL_INTIMATE_GENTLE. Variant 5.",
   "dna": {
     "aggression": 0.106,
@@ -71,5 +83,49 @@
     "gentle"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.896,
+      "macro_movement": 0.044,
+      "macro_coupling": 0.205,
+      "macro_space": 0.021
+    },
+    "Osteria": {
+      "macro_character": 0.952,
+      "macro_movement": 0.172,
+      "macro_coupling": 0.263,
+      "macro_space": 0.155
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORPHICA",
+    "target": "OSTERIA",
+    "amount": 0.775
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.942,
+    "warmth": 0.964,
+    "movement": 0.115,
+    "density": 0.305,
+    "space": 0.066,
+    "aggression": 0.106
+  },
+  "macros": {
+    "CHARACTER": 0.924,
+    "MOVEMENT": 0.108,
+    "COUPLING": 0.234,
+    "SPACE": 0.088
+  }
+>>>>>>> origin/v1-launch-prep
 }

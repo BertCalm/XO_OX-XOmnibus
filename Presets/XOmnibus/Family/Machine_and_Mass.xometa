@@ -16,6 +16,7 @@
     "Onset",
     "Oblong"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -35,6 +36,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ONSET percussion + OBLONG chord mass — the rhythm section reunion. The groove laid, the harmony placed. Production essentials.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "reunion",
@@ -46,5 +52,25 @@
     "batch3-reunion"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.42,
+    "movement": 0.78,
+    "density": 0.72,
+    "space": 0.4,
+    "aggression": 0.52
+  }
+>>>>>>> origin/v1-launch-prep
 }

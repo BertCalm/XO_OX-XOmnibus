@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "BRIGHT_COLD_DENSE_VAST_VIOLENT_PRS_1",
+  "mood": "Prism",
+  "engines": [
+    "Ottoni",
+    "Oblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_DENSE_VAST_VIOLENT. Variant 1.",
   "dna": {
     "aggression": 0.915,
@@ -71,5 +83,49 @@
     "dense"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 1.0,
+      "macro_movement": 0.438,
+      "macro_coupling": 0.81,
+      "macro_space": 0.837
+    },
+    "Oblique": {
+      "macro_character": 0.942,
+      "macro_movement": 0.456,
+      "macro_coupling": 1.0,
+      "macro_space": 0.957
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OTTONI",
+    "target": "OBLIQUE",
+    "amount": 0.729
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.951,
+    "warmth": 0.106,
+    "movement": 0.427,
+    "density": 0.92,
+    "space": 0.888,
+    "aggression": 0.915
+  },
+  "macros": {
+    "CHARACTER": 0.971,
+    "MOVEMENT": 0.447,
+    "COUPLING": 0.905,
+    "SPACE": 0.897
+  }
+>>>>>>> origin/v1-launch-prep
 }

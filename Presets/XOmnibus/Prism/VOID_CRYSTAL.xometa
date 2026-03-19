@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "VOID CRYSTAL",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Organon",
+    "Onset"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.478,
+      "macro_movement": 0.465,
+      "macro_coupling": 0.846,
+      "macro_space": 0.155
+    },
+    "Onset": {
+      "macro_character": 0.17,
+      "macro_movement": 0.892,
+      "macro_coupling": 0.887,
+      "macro_space": 0.708
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "prism",
     "dark",
     "spectrum"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -38,6 +38,7 @@
   "mood": "Entangled",
   "name": "Pale Fracture Map",
   "parameters": {
+<<<<<<< HEAD
     "Obsidian": {
       "macro_character": 0.2,
       "macro_coupling": 0.6,
@@ -48,6 +49,18 @@
       "macro_character": 0.8,
       "macro_coupling": 0.5,
       "macro_movement": 0.6,
+=======
+    "Odyssey": {
+      "macro_character": 0.8,
+      "macro_movement": 0.6,
+      "macro_coupling": 0.5,
+      "macro_space": 0.9
+    },
+    "Obsidian": {
+      "macro_character": 0.2,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.6,
+>>>>>>> origin/v1-launch-prep
       "macro_space": 0.9
     }
   },

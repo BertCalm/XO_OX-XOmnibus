@@ -15,6 +15,18 @@
   },
   "engines": [
     "Owlfish"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Heavy compression meets filter resonance near self-oscillation — bioluminescent shimmer from the deep",
+  "tags": [
+    "crystalline",
+    "resonant",
+    "shimmering",
+    "bioluminescent"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "DEPTH",
@@ -26,6 +38,7 @@
   "name": "Deep Light",
   "parameters": {
     "Owlfish": {
+<<<<<<< HEAD
       "owl_ampAttack": 12,
       "owl_ampDecay": 500,
       "owl_ampRelease": 800,
@@ -55,6 +68,9 @@
       "owl_grainMix": 0.1,
       "owl_grainPitch": 0.08,
       "owl_grainSize": 0.35,
+=======
+      "owl_portamento": 0.2,
+>>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 1,
       "owl_mixtur": 0.08,
       "owl_morphGlide": 0.5,

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DESTROY COIL",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.444,
+      "macro_movement": 0.108,
+      "macro_coupling": 0.307,
+      "macro_space": 0.509
+    },
+    "Ocelot": {
+      "macro_character": 0.515,
+      "macro_movement": 0.564,
+      "macro_coupling": 0.56,
+      "macro_space": 0.457
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "obliterating",
     "fury",
     "brutal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

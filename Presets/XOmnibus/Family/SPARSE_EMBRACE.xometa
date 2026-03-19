@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SPARSE EMBRACE",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Overdub",
+    "Octopus"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.207,
+      "macro_movement": 0.216,
+      "macro_coupling": 0.87,
+      "macro_space": 0.329
+    },
+    "Octopus": {
+      "macro_character": 0.148,
+      "macro_movement": 0.901,
+      "macro_coupling": 0.003,
+      "macro_space": 0.858
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "family",
     "sparse",
     "xlow-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -24,6 +24,7 @@
     "Overlap",
     "Ouroboros"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "KNOT",
     "FOLD",
@@ -81,6 +82,11 @@
     "space": 0.9108,
     "warmth": 0.3722
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark Still Sparse Vast character entanglement — OVERLAP × OUROBOROS via Formant Bridge. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "dark",
@@ -89,5 +95,85 @@
     "vast",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "KNOT",
+    "FOLD",
+    "WEAVE",
+    "HALL"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.0494,
+    "warmth": 0.3722,
+    "movement": 0.0973,
+    "density": 0.054,
+    "space": 0.9108,
+    "aggression": 0.3024
+  },
+  "sonic_dna": {
+    "brightness": 0.0494,
+    "warmth": 0.3722,
+    "movement": 0.0973,
+    "density": 0.054,
+    "space": 0.9108,
+    "aggression": 0.3024
+  },
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.435,
+      "macro_movement": 0.108,
+      "macro_coupling": 0.6683,
+      "macro_space": 0.9305,
+      "filter_cutoff": 0.2118,
+      "filter_resonance": 0.2448,
+      "amp_attack": 0.3984,
+      "amp_release": 0.6361,
+      "reverb_mix": 0.6686,
+      "reverb_size": 0.7686,
+      "drive": 0.2973,
+      "density": 0.0208,
+      "output_level": 0.6777,
+      "coupling_level": 0.6436
+    },
+    "Ouroboros": {
+      "macro_character": 0.4731,
+      "macro_movement": 0.1112,
+      "macro_coupling": 0.6876,
+      "macro_space": 0.9238,
+      "filter_cutoff": 0.2335,
+      "filter_resonance": 0.2466,
+      "amp_attack": 0.393,
+      "amp_release": 0.6669,
+      "reverb_mix": 0.62,
+      "reverb_size": 0.7409,
+      "drive": 0.2746,
+      "density": 0.0683,
+      "output_level": 0.7124,
+      "coupling_level": 0.6844
+    }
+  },
+  "coupling": {
+    "type": "FORMANT_BRIDGE",
+    "source": "OVERLAP",
+    "target": "OUROBOROS",
+    "amount": 0.8425,
+    "pairs": [
+      {
+        "source": "OVERLAP",
+        "target": "OUROBOROS",
+        "type": "FORMANT_BRIDGE",
+        "amount": 0.8425
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.2108,
+    "MOVEMENT": 0.0973,
+    "COUPLING": 0.8425,
+    "SPACE": 0.9108
+  }
+>>>>>>> origin/v1-launch-prep
 }

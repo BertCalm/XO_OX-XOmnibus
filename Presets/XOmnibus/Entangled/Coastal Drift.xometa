@@ -14,12 +14,15 @@
   "engines": [
     "Odyssey",
     "Osprey"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.5,
@@ -50,6 +53,7 @@
     "osprey",
     "wavetable"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Wavetable tide pushes the odyssey toward shore — drift current meeting the azure dive"
+>>>>>>> origin/v1-launch-prep
 }

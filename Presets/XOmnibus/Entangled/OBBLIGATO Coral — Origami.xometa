@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "OBBLIGATO Coral — Origami",
+  "mood": "Entangled",
+  "engines": [
+    "Obbligato",
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Necessary voices, necessary folds: BOND ties OBBLIGATO's wind pair to ORIGAMI's vermillion crease.",
   "dna": {
     "aggression": 0.0,

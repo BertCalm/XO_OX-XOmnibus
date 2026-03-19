@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_VAST_GENTLE_FND_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Onset",
+    "Obese"
+  ],
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.665,
+      "macro_movement": 0.339,
+      "macro_coupling": 0.538,
+      "macro_space": 0.506
+    },
+    "Obese": {
+      "macro_character": 0.449,
+      "macro_movement": 0.425,
+      "macro_coupling": 0.68,
+      "macro_space": 0.518
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "vast",
     "gentle",
     "spatial"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

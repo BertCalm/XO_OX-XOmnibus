@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_KINETIC_SPARSE_GENTLE_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OddfeliX",
+    "Oceanic"
+  ],
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.64,
+      "macro_movement": 0.885,
+      "macro_coupling": 0.461,
+      "macro_space": 0.434
+    },
+    "Oceanic": {
+      "macro_character": 0.698,
+      "macro_movement": 0.87,
+      "macro_coupling": 0.742,
+      "macro_space": 0.444
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "kinetic",
     "sparse",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

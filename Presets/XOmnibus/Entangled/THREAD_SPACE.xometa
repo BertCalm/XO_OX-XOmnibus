@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "THREAD SPACE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Oblong"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.117,
+      "macro_movement": 0.045,
+      "macro_coupling": 0.037,
+      "macro_space": 0.996
+    },
+    "Oblong": {
+      "macro_character": 0.116,
+      "macro_movement": 0.235,
+      "macro_coupling": 0.538,
+      "macro_space": 0.389
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "minimal",
     "negative-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -14,12 +14,15 @@
   "engines": [
     "Octopus",
     "Overworld"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.8,
@@ -50,6 +53,7 @@
     "octopus",
     "chiptune"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Eight CA arms controlling OVERWORLD's chip oscillators at blitz speed — cold and hyper."
+>>>>>>> origin/v1-launch-prep
 }

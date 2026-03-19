@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_DENSE_INTIMATE_VIOLENT_FLX_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Oceanic",
+    "Oblique"
+  ],
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.7552,
+      "macro_movement": 0.5129,
+      "macro_coupling": 0.9289,
+      "macro_space": 0.0921
+    },
+    "Oblique": {
+      "macro_character": 0.6255,
+      "macro_movement": 0.3233,
+      "macro_coupling": 0.8581,
+      "macro_space": 0.1314
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "high-density",
     "low-space",
     "high-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

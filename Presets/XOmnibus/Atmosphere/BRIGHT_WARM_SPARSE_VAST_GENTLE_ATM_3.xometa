@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organon",
+    "Opal"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.9161,
+      "macro_movement": 0.3868,
+      "macro_coupling": 0.1266,
+      "macro_space": 0.9546
+    },
+    "Opal": {
+      "macro_character": 0.9334,
+      "macro_movement": 0.3346,
+      "macro_coupling": 0.1266,
+      "macro_space": 0.9615
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "sparse",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

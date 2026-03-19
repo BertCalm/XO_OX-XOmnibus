@@ -44,5 +44,27 @@
     "pressure",
     "aggressive"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "GRAVITY",
+    "CRUSH",
+    "COUPLING",
+    "DESCENT"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.516,
+    "warmth": 0.145,
+    "movement": 0.324,
+    "density": 0.829,
+    "space": 0.329,
+    "aggression": 0.617
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

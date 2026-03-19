@@ -14,12 +14,15 @@
   "engines": [
     "Overdub",
     "Ottoni"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.55,
@@ -50,6 +53,7 @@
     "ottoni",
     "dub"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Triple brass fanfare fed to dub delay — patina aged further by tape saturation"
+>>>>>>> origin/v1-launch-prep
 }

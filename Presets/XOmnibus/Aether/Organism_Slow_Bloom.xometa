@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Slow Bloom",
+  "mood": "Aether",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "organic",
+    "living",
+    "cellular",
+    "colony"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.75,
+    "movement": 0.2,
+    "density": 0.66,
+    "space": 0.86,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 54.0,
+      "org_seed": 38000,
+      "org_stepRate": 0.8,
+      "org_scope": 14,
+      "org_mutate": 0.006,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.55,
+      "org_filterCutoff": 2000.0,
+      "org_filterRes": 0.14,
+      "org_velCutoff": 0.28,
+      "org_ampAtk": 0.6,
+      "org_ampDec": 2.0,
+      "org_ampSus": 0.92,
+      "org_ampRel": 4.5,
+      "org_lfo1Rate": 0.04,
+      "org_lfo1Depth": 0.2,
+      "org_lfo2Rate": 0.025,
+      "org_lfo2Depth": 0.24,
+      "org_reverbMix": 0.84,
+      "org_macroRule": 0.86,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.015
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.0,
+    "SPACE": 0.84
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

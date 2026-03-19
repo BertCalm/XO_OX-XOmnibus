@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SEARING REFRACTION",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Overbite",
+    "Orca"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.608,
+      "macro_movement": 0.291,
+      "macro_coupling": 0.406,
+      "macro_space": 0.84
+    },
+    "Orca": {
+      "macro_character": 0.405,
+      "macro_movement": 0.191,
+      "macro_coupling": 0.796,
+      "macro_space": 0.949
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "spectrum",
     "fire"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

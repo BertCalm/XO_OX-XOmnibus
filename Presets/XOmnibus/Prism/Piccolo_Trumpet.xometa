@@ -44,5 +44,27 @@
     "trumpet",
     "high"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "GROW",
+    "BELL",
+    "COUPLING",
+    "HALL"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.96,
+    "warmth": 0.32,
+    "movement": 0.6,
+    "density": 0.45,
+    "space": 0.55,
+    "aggression": 0.28
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

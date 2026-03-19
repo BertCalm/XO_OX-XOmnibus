@@ -15,6 +15,17 @@
   },
   "engines": [
     "Orbital"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORBITAL — bright extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,6 +37,7 @@
   "name": "Aphelion Glow",
   "parameters": {
     "Orbital": {
+<<<<<<< HEAD
       "orb_ampAttack": 778.0,
       "orb_ampDecay": 515.7,
       "orb_ampRelease": 545.7,
@@ -33,6 +45,9 @@
       "orb_character": 0.18,
       "orb_coupling": 0.91,
       "orb_delayMix": 0.64,
+=======
+      "orb_orbitPeriod": 0.53,
+>>>>>>> origin/v1-launch-prep
       "orb_eccentricity": 0.77,
       "orb_filterCutoff": 0.82,
       "orb_filterReso": 0.07,
@@ -44,6 +59,7 @@
       "orb_space": 0.43
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.66,
@@ -59,4 +75,9 @@
     "extreme-brightness"
   ],
   "version": "1.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

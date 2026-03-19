@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BLACK CASCADE",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Oceanic",
+    "Oblong"
+  ],
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.611,
+      "macro_movement": 0.629,
+      "macro_coupling": 0.724,
+      "macro_space": 0.345
+    },
+    "Oblong": {
+      "macro_character": 0.465,
+      "macro_movement": 0.507,
+      "macro_coupling": 0.8,
+      "macro_space": 0.266
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "violent",
     "extreme"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

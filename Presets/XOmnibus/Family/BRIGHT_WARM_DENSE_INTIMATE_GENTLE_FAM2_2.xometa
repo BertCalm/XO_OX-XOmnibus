@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT WARM DENSE INTIMATE GENTLE FAM2 2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Orphica",
+    "Ole"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.871,
+      "macro_movement": 0.287,
+      "macro_coupling": 0.524,
+      "macro_space": 0.136
+    },
+    "Ole": {
+      "macro_character": 0.837,
+      "macro_movement": 0.209,
+      "macro_coupling": 0.534,
+      "macro_space": 0.2
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "intimate",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

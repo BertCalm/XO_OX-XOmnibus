@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SPARSE DRIFT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Oblong"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.238,
+      "macro_movement": 0.669,
+      "macro_coupling": 0.214,
+      "macro_space": 0.132
+    },
+    "Oblong": {
+      "macro_character": 0.936,
+      "macro_movement": 0.571,
+      "macro_coupling": 0.473,
+      "macro_space": 0.785
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "drift",
     "filament"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "WARM_FROZEN_DENSE_VAST_HARSH_ENT4_2",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overbite",
+    "Ole"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.657,
+      "macro_movement": 0.08,
+      "macro_coupling": 0.965,
+      "macro_space": 0.934
+    },
+    "Ole": {
+      "macro_character": 0.678,
+      "macro_movement": 0.09,
+      "macro_coupling": 0.964,
+      "macro_space": 0.917
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "dense",
     "vast",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Biolume Signal",
+  "mood": "Atmosphere",
+  "engines": ["Ouie"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Flickering bioluminescent signal duet, fast LFO on filter B creating pulses.",
+  "tags": ["atmosphere", "bioluminescent", "signal", "flickering"],
+  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.4,
+    "movement": 0.6,
+    "density": 0.4,
+    "space": 0.78,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_ampAtk": 0.12,
+      "ouie_ampDec": 0.5,
+      "ouie_ampSus": 0.55,
+      "ouie_ampRel": 1.5,
+      "ouie_filterACutoff": 2000,
+      "ouie_filterARes": 0.2,
+      "ouie_filterBCutoff": 4500,
+      "ouie_filterBRes": 0.4,
+      "ouie_hammerDepth": 0.42,
+      "ouie_hammerPos": 0.6,
+      "ouie_lfo1Rate": 0.15,
+      "ouie_lfo1Depth": 0.12,
+      "ouie_lfo1Target": 0,
+      "ouie_lfo2Rate": 2.5,
+      "ouie_lfo2Depth": 0.35,
+      "ouie_portaAuto": 0.1,
+      "ouie_macroHammer": 0.42,
+      "ouie_macroCartilage": 0.55,
+      "ouie_macroAmpullae": 0.65,
+      "ouie_macroCurrent": 0.78
+    }
+  },
+  "macros": {
+    "HAMMER": 0.42,
+    "CARTILAGE": 0.55,
+    "AMPULLAE": 0.65,
+    "CURRENT": 0.78
+  },
+  "coupling": {"pairs": []}
+}

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SPARSE FLUX 6",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Orbital",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.0267,
+      "macro_movement": 0.0533,
+      "macro_coupling": 0.502,
+      "macro_space": 0.2358
+    },
+    "Obsidian": {
+      "macro_character": 0.9945,
+      "macro_movement": 0.3749,
+      "macro_coupling": 0.0282,
+      "macro_space": 0.9308
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "sparse",
     "minimal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

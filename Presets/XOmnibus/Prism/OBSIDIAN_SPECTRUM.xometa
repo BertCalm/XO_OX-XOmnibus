@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "OBSIDIAN SPECTRUM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Ohm",
+    "Obese"
+  ],
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.972,
+      "macro_movement": 0.098,
+      "macro_coupling": 0.728,
+      "macro_space": 0.344
+    },
+    "Obese": {
+      "macro_character": 0.364,
+      "macro_movement": 0.69,
+      "macro_coupling": 0.5,
+      "macro_space": 0.136
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "prism",
     "dark",
     "spectrum"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

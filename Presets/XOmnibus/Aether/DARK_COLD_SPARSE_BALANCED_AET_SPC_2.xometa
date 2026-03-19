@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK COLD SPARSE BALANCED AET SPC 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Osprey",
+    "Ombre"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.08,
+      "macro_movement": 0.318,
+      "macro_coupling": 0.589,
+      "macro_space": 0.506
+    },
+    "Ombre": {
+      "macro_character": 0.076,
+      "macro_movement": 0.345,
+      "macro_coupling": 0.614,
+      "macro_space": 0.513
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "room",
     "space-mid",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

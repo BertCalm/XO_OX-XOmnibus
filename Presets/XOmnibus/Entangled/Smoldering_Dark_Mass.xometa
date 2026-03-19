@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Smoldering Dark Mass",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Ohm"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.62,
+      "macro_movement": 0.4,
+      "macro_coupling": 0.87,
+      "macro_space": 0.16
+    },
+    "Ohm": {
+      "macro_character": 0.5,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.74,
+      "macro_space": 0.48
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "dark",
     "low-brightness"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

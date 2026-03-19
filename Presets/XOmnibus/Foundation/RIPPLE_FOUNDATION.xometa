@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "RIPPLE FOUNDATION",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Octopus",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Octopus": {
+      "macro_character": 0.391,
+      "macro_movement": 0.907,
+      "macro_coupling": 0.406,
+      "macro_space": 0.599
+    },
+    "Obbligato": {
+      "macro_character": 0.47,
+      "macro_movement": 0.965,
+      "macro_coupling": 0.74,
+      "macro_space": 0.551
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "kinetic",
     "moving"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

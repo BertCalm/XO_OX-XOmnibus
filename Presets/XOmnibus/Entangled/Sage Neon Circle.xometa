@@ -14,12 +14,15 @@
   "engines": [
     "Ohm",
     "OddfeliX"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.6,
@@ -50,6 +53,7 @@
     "oddfelix",
     "hippy"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Warm ohm commune illuminated by neon tetra flash — folk warmth and electric shimmer share the same hearth"
+>>>>>>> origin/v1-launch-prep
 }

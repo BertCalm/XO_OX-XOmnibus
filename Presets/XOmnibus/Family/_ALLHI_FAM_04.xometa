@@ -37,13 +37,21 @@
   "mood": "Family",
   "name": "ALLHI FAM 04",
   "parameters": {
+<<<<<<< HEAD
     "OddOscar": {
+=======
+    "Ohm": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.962,
       "macro_coupling": 0.935,
       "macro_movement": 0.709,
       "macro_space": 0.959
     },
+<<<<<<< HEAD
     "Ohm": {
+=======
+    "OddOscar": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.962,
       "macro_coupling": 0.935,
       "macro_movement": 0.709,
@@ -56,6 +64,10 @@
     "pole-fill",
     "high-energy",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

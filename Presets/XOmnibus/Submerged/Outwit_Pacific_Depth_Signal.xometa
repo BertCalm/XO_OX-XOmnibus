@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Pacific Depth Signal",
+  "mood": "Submerged",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 45 \u2014 the chaotic rule filtered through 4000m of water. What arrives at the surface is unrecognizable but carries traces of the original pattern. A signal from below.",
+  "tags": [
+    "submerged",
+    "signal",
+    "filtered",
+    "depth",
+    "traces"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.5,
+    "movement": 0.42,
+    "density": 0.42,
+    "space": 0.85,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 45,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.18,
+      "owit_armSpread": 0.55,
+      "owit_sync": 0.12,
+      "owit_feedbackAmt": 0.48,
+      "owit_chaos": 0.32,
+      "owit_density": 0.42,
+      "owit_ampAttack": 0.3,
+      "owit_ampDecay": 0.68,
+      "owit_ampSustain": 0.58,
+      "owit_ampRelease": 3.5,
+      "owit_filterCutoff": 0.32,
+      "owit_filterRes": 0.22,
+      "owit_lfoRate": 0.04,
+      "owit_lfoDepth": 0.12,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

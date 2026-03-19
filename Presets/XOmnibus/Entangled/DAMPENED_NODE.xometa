@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DAMPENED NODE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Obese"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.164,
+      "macro_movement": 0.095,
+      "macro_coupling": 0.841,
+      "macro_space": 0.383
+    },
+    "Obese": {
+      "macro_character": 0.692,
+      "macro_movement": 0.068,
+      "macro_coupling": 0.705,
+      "macro_space": 0.281
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "dampened"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

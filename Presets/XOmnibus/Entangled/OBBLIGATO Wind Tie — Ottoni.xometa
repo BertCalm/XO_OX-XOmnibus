@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Light",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "OBBLIGATO Wind Tie — Ottoni",
+  "mood": "Entangled",
+  "engines": [
+    "Obbligato",
+    "Ottoni"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Coral and patina: BOND binds OBBLIGATO's dual reeds to OTTONI's third brass harmonic for obligate resonance.",
   "dna": {
     "aggression": 0.537,

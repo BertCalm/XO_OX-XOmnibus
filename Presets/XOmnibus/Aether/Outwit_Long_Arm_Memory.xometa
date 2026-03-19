@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Long Arm Memory",
+  "mood": "Aether",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 184 with maximum arm length \u2014 the traffic pattern extends across 64 cells, its memory reaching back 64 steps. Causality visible across a long time window.",
+  "tags": [
+    "aether",
+    "memory",
+    "long",
+    "causality",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.48,
+    "movement": 0.42,
+    "density": 0.52,
+    "space": 0.85,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 184,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.15,
+      "owit_armSpread": 0.6,
+      "owit_sync": 0.12,
+      "owit_feedbackAmt": 0.45,
+      "owit_chaos": 0.35,
+      "owit_density": 0.52,
+      "owit_ampAttack": 0.4,
+      "owit_ampDecay": 0.85,
+      "owit_ampSustain": 0.58,
+      "owit_ampRelease": 5.0,
+      "owit_filterCutoff": 0.48,
+      "owit_filterRes": 0.25,
+      "owit_lfoRate": 0.03,
+      "owit_lfoDepth": 0.1,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Gravity Zero",
+  "mood": "Aether",
+  "engines": ["Oracle"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Gravity extinguished — breakpoints orbit freely with no attractor to constrain them.",
+  "tags": ["aether", "zero-gravity", "free", "orbit"],
+  "macroLabels": ["DRIFT", "EVOLUTION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.6, "warmth": 0.3, "movement": 0.65, "density": 0.35, "space": 0.93, "aggression": 0.12},
+  "parameters": {
+    "Oracle": {
+      "oracle_breakpoints": 0.5,
+      "oracle_distribution": 2,
+      "oracle_drift": 0.65,
+      "oracle_gravity": 0.05,
+      "oracle_barrierElasticity": 0.8,
+      "oracle_ampStep": 0.45,
+      "oracle_glide": 0.6,
+      "oracle_level": 0.65,
+      "oracle_lfo1Rate": 0.07,
+      "oracle_lfo1Depth": 0.6,
+      "oracle_lfo1Shape": 1,
+      "oracle_lfo2Rate": 0.05,
+      "oracle_lfo2Depth": 0.45,
+      "oracle_lfo2Shape": 0,
+      "oracle_ampAttack": 1.2,
+      "oracle_ampDecay": 0.65,
+      "oracle_ampSustain": 0.5,
+      "oracle_ampRelease": 4.0,
+      "oracle_macroDrift": 0.65,
+      "oracle_macroEvolution": 0.65,
+      "oracle_macroCoupling": 0.0,
+      "oracle_macroSpace": 0.93
+    }
+  },
+  "macros": {"DRIFT": 0.65, "EVOLUTION": 0.65, "COUPLING": 0.0, "SPACE": 0.93},
+  "coupling": {"pairs": []}
+}

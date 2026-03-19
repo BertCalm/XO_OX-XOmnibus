@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "TIGHT VAPOR",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organon",
+    "Opal"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.489,
+      "macro_movement": 0.252,
+      "macro_coupling": 0.274,
+      "macro_space": 0.089
+    },
+    "Opal": {
+      "macro_character": 0.689,
+      "macro_movement": 0.149,
+      "macro_coupling": 0.351,
+      "macro_space": 0.025
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "intimate",
     "close",
     "space-xlow"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

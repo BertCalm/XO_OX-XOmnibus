@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Iron Chord",
+  "mood": "Foundation",
+  "engines": ["Obsidian"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dense metallic chord — high depth with wide stereo spread and iron-warm character.",
+  "tags": ["chord", "metallic", "dense", "warm"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.35, "warmth": 0.62, "movement": 0.18, "density": 0.82, "space": 0.42, "aggression": 0.2},
+  "parameters": {
+    "Obsidian": {
+      "obsidian_depth": 0.78,
+      "obsidian_character": 0.42,
+      "obsidian_brightness": 0.35,
+      "obsidian_warmth": 0.62,
+      "obsidian_attack": 0.025,
+      "obsidian_decay": 0.55,
+      "obsidian_sustain": 0.72,
+      "obsidian_release": 0.85,
+      "obsidian_filterCutoff": 4200,
+      "obsidian_filterReso": 0.22,
+      "obsidian_filterEnvAmt": 0.28,
+      "obsidian_lfoRate": 0.4,
+      "obsidian_lfoDepth": 0.12,
+      "obsidian_lfoDest": 0,
+      "obsidian_reverbSize": 0.42,
+      "obsidian_reverbMix": 0.22,
+      "obsidian_stereoWidth": 0.72,
+      "obsidian_voiceMode": 0,
+      "obsidian_glide": 0.0,
+      "obsidian_polyphony": 6,
+      "obsidian_level": 0.76
+    }
+  },
+  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.18, "COUPLING": 0.0, "SPACE": 0.42},
+  "coupling": {"pairs": []}
+}

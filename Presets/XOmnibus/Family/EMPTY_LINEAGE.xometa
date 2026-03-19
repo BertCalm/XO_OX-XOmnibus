@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "EMPTY LINEAGE",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.362,
+      "macro_movement": 0.363,
+      "macro_coupling": 0.18,
+      "macro_space": 0.214
+    },
+    "Ombre": {
+      "macro_character": 0.948,
+      "macro_movement": 0.486,
+      "macro_coupling": 0.227,
+      "macro_space": 0.138
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "family",
     "sparse",
     "xlow-density"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

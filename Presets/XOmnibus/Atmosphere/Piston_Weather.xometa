@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Piston Weather",
+  "mood": "Atmosphere",
+  "engines": [
+    "Octopus"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Weather system in motion. High movement, active aggression. OCTOPUS kinetic register.",
   "dna": {
     "aggression": 0.612,
@@ -47,5 +58,40 @@
     "weather",
     "dynamic"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "SPREAD",
+    "PULSE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.362,
+    "warmth": 0.537,
+    "movement": 0.878,
+    "density": 0.463,
+    "space": 0.475,
+    "aggression": 0.612
+  },
+  "parameters": {
+    "Octopus": {
+      "spread": 0.626,
+      "pulse": 0.956,
+      "coupling": 0.367,
+      "space": 0.573
+    }
+  },
+  "macros": {
+    "SPREAD": 0.626,
+    "PULSE": 0.956,
+    "COUPLING": 0.367,
+    "SPACE": 0.573
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

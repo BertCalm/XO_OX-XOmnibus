@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Moderate Cross",
+  "mood": "Foundation",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A balanced figure-eight \u2014 equal weight in both loops, neutral damping, mid-range decay. The crossing point adds just enough color. This is the reference preset: if you don't know where to start, start here.",
+  "tags": [
+    "reference",
+    "balanced",
+    "figure-eight",
+    "utility",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.52,
+    "movement": 0.25,
+    "density": 0.48,
+    "space": 0.65,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 2,
+      "olap_delayFeedback": 0.55,
+      "olap_diffusion": 0.6,
+      "olap_spread": 0.78,
+      "olap_decay": 3.8,
+      "olap_modDepth": 0.08,
+      "olap_modRate": 0.1,
+      "olap_damping": 0.45,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

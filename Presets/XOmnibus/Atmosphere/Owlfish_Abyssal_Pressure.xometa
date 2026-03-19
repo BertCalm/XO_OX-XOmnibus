@@ -1,10 +1,38 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
+=======
+  "schema_version": 1,
+  "name": "Abyssal Pressure",
+  "mood": "Atmosphere",
+  "engines": [
+    "Owlfish"
+  ],
+  "author": "Guru Bin — B012/B014 Engine Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "bodyFreq 28 Hz — seismic. Below the threshold of pitch, felt in the chest rather than heard by the ear. Even divisions (÷2, ÷4) provide harmonic clarity above the subterranean foundation. owl_bodyLevel 0.8. The melodic voice plays against a pressure that does not acknowledge melody.",
+  "tags": [
+    "28hz",
+    "seismic",
+    "sub-bass",
+    "abyssal",
+    "even-divisions",
+    "atmosphere",
+    "pressure"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
+>>>>>>> origin/v1-launch-prep
   "couplingIntensity": "None",
   "created": "2026-03-16",
+<<<<<<< HEAD
   "description": "bodyFreq 28 Hz — seismic. Below the threshold of pitch, felt in the chest rather than heard by the ear. Even divisions (÷2, ÷4) provide harmonic clarity above the subterranean foundation. owl_bodyLevel 0.8. The melodic voice plays against a pressure that does not acknowledge melody.",
   "dna": {
     "aggression": 0.25,
@@ -62,6 +90,16 @@
       "owl_grainMix": 0.0,
       "owl_grainPitch": 0.0,
       "owl_grainSize": 0.5,
+=======
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Owlfish": {
+      "owl_portamento": 0.1,
+>>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 0,
       "owl_mixtur": 0.35,
       "owl_morphGlide": 0.2,
@@ -85,7 +123,13 @@
       "owl_subWave": 0.2
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
+=======
+  "coupling": {
+    "pairs": []
+  },
+>>>>>>> origin/v1-launch-prep
   "sequencer": null,
   "tags": [
     "28hz",

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Genesis Brass Corps",
+  "mood": "Foundation",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The YM2612 FM brass stab — that unmistakable Mega Drive brass that powered the Streets of Rage intros and Sonic boss battles. Four operators locked in tight formation, ready to announce something important.",
+  "tags": [
+    "genesis",
+    "YM2612",
+    "FM",
+    "brass",
+    "foundation",
+    "mega-drive",
+    "stab",
+    "streets-of-rage"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.52,
+    "movement": 0.18,
+    "density": 0.72,
+    "space": 0.28,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_macro_era": 0.5,
+      "ow_macro_chaos": 0.04,
+      "ow_macro_couple": 0.0,
+      "ow_macro_space": 0.25,
+      "ow_outputLevel": 0.9,
+      "ow_couplingLevel": 0.0,
+      "ow_couplingBus": 0
+    }
+  },
+  "macros": {
+    "ERA": 0.5,
+    "CHAOS": 0.04,
+    "COUPLE": 0.0,
+    "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

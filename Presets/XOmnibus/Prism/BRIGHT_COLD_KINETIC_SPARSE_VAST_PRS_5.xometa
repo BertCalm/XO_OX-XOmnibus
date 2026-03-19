@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "BRIGHT_COLD_KINETIC_SPARSE_VAST_PRS_5",
+  "mood": "Prism",
+  "engines": [
+    "Origami",
+    "Ocelot"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_KINETIC_SPARSE_VAST. Variant 5.",
   "dna": {
     "aggression": 0.382,
@@ -71,5 +83,49 @@
     "prism"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.959,
+      "macro_movement": 0.886,
+      "macro_coupling": 0.0,
+      "macro_space": 1.0
+    },
+    "Ocelot": {
+      "macro_character": 0.972,
+      "macro_movement": 0.894,
+      "macro_coupling": 0.148,
+      "macro_space": 0.964
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORIGAMI",
+    "target": "OCELOT",
+    "amount": 0.868
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.954,
+    "warmth": 0.041,
+    "movement": 0.923,
+    "density": 0.066,
+    "space": 0.92,
+    "aggression": 0.382
+  },
+  "macros": {
+    "CHARACTER": 0.966,
+    "MOVEMENT": 0.89,
+    "COUPLING": 0.074,
+    "SPACE": 0.982
+  }
+>>>>>>> origin/v1-launch-prep
 }

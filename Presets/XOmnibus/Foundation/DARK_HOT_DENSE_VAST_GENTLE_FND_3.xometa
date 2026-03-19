@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "DARK_HOT_DENSE_VAST_GENTLE_FND_3",
+  "mood": "Foundation",
+  "engines": [
+    "Overbite",
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_DENSE_VAST_GENTLE. Variant 3.",
   "dna": {
     "aggression": 0.074,
@@ -71,5 +83,49 @@
     "dense"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.114,
+      "macro_movement": 0.333,
+      "macro_coupling": 1.0,
+      "macro_space": 0.912
+    },
+    "Origami": {
+      "macro_character": 0.123,
+      "macro_movement": 0.283,
+      "macro_coupling": 0.819,
+      "macro_space": 0.979
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OVERBITE",
+    "target": "ORIGAMI",
+    "amount": 0.734
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.087,
+    "warmth": 0.956,
+    "movement": 0.381,
+    "density": 0.946,
+    "space": 0.902,
+    "aggression": 0.074
+  },
+  "macros": {
+    "CHARACTER": 0.118,
+    "MOVEMENT": 0.308,
+    "COUPLING": 0.909,
+    "SPACE": 0.946
+  }
+>>>>>>> origin/v1-launch-prep
 }

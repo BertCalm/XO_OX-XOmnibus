@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT COLD KINETIC DENSE VIOLENT ENT2 5",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Origami"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.531,
+      "macro_movement": 0.947,
+      "macro_coupling": 0.97,
+      "macro_space": 0.437
+    },
+    "Origami": {
+      "macro_character": 0.541,
+      "macro_movement": 0.953,
+      "macro_coupling": 0.954,
+      "macro_space": 0.477
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "dense",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

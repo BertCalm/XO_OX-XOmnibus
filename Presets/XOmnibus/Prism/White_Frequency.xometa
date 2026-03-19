@@ -16,6 +16,7 @@
   "engines": [
     "OddfeliX"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "SHIMMER",
     "SCATTER",
@@ -36,6 +37,11 @@
     "space": 0.95,
     "warmth": 0.05
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Flat spectral energy — maximum brightness, minimal character",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "prism",
     "bright",
@@ -44,5 +50,27 @@
     "flat",
     "spectral"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "SHIMMER",
+    "SCATTER",
+    "COUPLING",
+    "AIR"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.98,
+    "warmth": 0.05,
+    "movement": 0.5,
+    "density": 0.1,
+    "space": 0.95,
+    "aggression": 0.03
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -15,6 +15,17 @@
   },
   "engines": [
     "Oracle"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORACLE — dark extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,6 +37,12 @@
   "name": "Prophecy Pit",
   "parameters": {
     "Oracle": {
+<<<<<<< HEAD
+=======
+      "orc_prophecyDepth": 0.51,
+      "orc_filterCutoff": 0.79,
+      "orc_filterReso": 0.96,
+>>>>>>> origin/v1-launch-prep
       "orc_ampAttack": 590.1,
       "orc_ampDecay": 528.8,
       "orc_ampRelease": 532.8,
@@ -44,6 +61,7 @@
       "orc_vision": 0.98
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.62,
@@ -59,4 +77,9 @@
     "extreme-brightness"
   ],
   "version": "1.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

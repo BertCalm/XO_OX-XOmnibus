@@ -14,12 +14,15 @@
   "engines": [
     "Ole",
     "Overdub"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.9,
@@ -50,6 +53,7 @@
     "afro-latin",
     "dub"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Olé's fiery warmth stretched into amber dub delays — sparse and deeply soulful."
+>>>>>>> origin/v1-launch-prep
 }

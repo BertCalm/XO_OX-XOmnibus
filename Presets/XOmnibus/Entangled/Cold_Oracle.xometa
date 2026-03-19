@@ -58,5 +58,9 @@
     "cold",
     "oracle"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Lavender grain and prophecy indigo blend — a cold oracle speaking in scattered light."
+>>>>>>> origin/v1-launch-prep
 }

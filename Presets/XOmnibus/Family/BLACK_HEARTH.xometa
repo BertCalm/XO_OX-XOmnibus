@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BLACK HEARTH",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Osprey",
+    "Orca"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.516,
+      "macro_movement": 0.328,
+      "macro_coupling": 0.613,
+      "macro_space": 0.163
+    },
+    "Orca": {
+      "macro_character": 0.991,
+      "macro_movement": 0.739,
+      "macro_coupling": 0.299,
+      "macro_space": 0.336
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "extreme",
     "low-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "PRESSURE THREAD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ottoni",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.2033,
+      "macro_movement": 0.6467,
+      "macro_coupling": 0.9689,
+      "macro_space": 0.8471
+    },
+    "Obsidian": {
+      "macro_character": 0.0925,
+      "macro_movement": 0.7246,
+      "macro_coupling": 0.6762,
+      "macro_space": 0.2685
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "iron",
     "tectonic",
     "monolithic"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

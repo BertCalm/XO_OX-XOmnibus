@@ -27,6 +27,7 @@
 #include "DSP/ParamSnapshot.h"
 #include "DSP/KnotMatrix.h"
 #include "DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 
 #include <array>
 #include <cmath>
@@ -39,9 +40,11 @@ class XOverlapEngine : public SynthEngine
 {
 public:
     //==========================================================================
-    void prepare(double sampleRate, int /*maxBlockSize*/) override
+    void prepare(double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
+
+        silenceGate.prepare(sampleRate, maxBlockSize);
 
         for (int i = 0; i < kVoices; ++i)
         {
@@ -71,6 +74,8 @@ public:
         extFilterMod = 0.0f;
         extRingMod   = 0.0f;
         extDelayMod  = 0.0f;
+
+        currentDriftPhase = 0.0f;
 
         lastSampleL = lastSampleR = 0.0f;
         activeCount = 0;
@@ -110,6 +115,16 @@ public:
         for (auto& v : voices)
             if (v.isActive())
                 v.env.setParams(params.attack, params.decay, params.sustain, params.release);
+
+        // D004 fix: wire olap_glide to voice glide smoother coefficient.
+        // params.glide is in ms; 0 ms → instant (coeff = 1.0), 500 ms → slow glide.
+        {
+            float glideCoeff = (params.glide > 0.5f)
+                ? (1.0f - fastExp(-1.0f / (params.glide * 0.001f * static_cast<float>(sr))))
+                : 1.0f;
+            for (auto& v : voices)
+                v.glideCoeff = glideCoeff;
+        }
 
         // Modulated working copies for this block
         float modTangleDepth     = params.tangleDepth;
@@ -160,7 +175,7 @@ public:
 
             float mb = params.macroBloom;
             modBioluminescence = mb * 0.8f;
-            modFilterCutoff    = std::clamp(modFilterCutoff * (1.0f + mb), 20.0f, 20000.0f);
+            modFilterCutoff    = clamp(modFilterCutoff * (1.0f + mb), 20.0f, 20000.0f);
         }
 
         // Apply expression routing
@@ -168,27 +183,43 @@ public:
             float mwMod = modWheelValue * params.modWheelDepth;
             switch (params.modWheelDest)
             {
-                case 0: modTangleDepth = std::clamp(modTangleDepth + mwMod, 0.0f, 1.0f); break;
-                case 1: modEntrain     = std::clamp(modEntrain + mwMod, 0.0f, 1.0f); break;
-                case 2: modBioluminescence = std::clamp(modBioluminescence + mwMod, 0.0f, 1.0f); break;
-                case 3: modFilterCutoff = std::clamp(modFilterCutoff * std::pow(2.0f, mwMod * 3.0f), 20.0f, 20000.0f); break;
+                case 0: modTangleDepth = clamp(modTangleDepth + mwMod, 0.0f, 1.0f); break;
+                case 1: modEntrain     = clamp(modEntrain + mwMod, 0.0f, 1.0f); break;
+                case 2: modBioluminescence = clamp(modBioluminescence + mwMod, 0.0f, 1.0f); break;
+                case 3: modFilterCutoff = clamp(modFilterCutoff * fastPow2(mwMod * 3.0f), 20.0f, 20000.0f); break;
                 default: break;
             }
             float atMod = aftertouchValue * params.atPressureDepth;
             switch (params.atPressureDest)
             {
-                case 0: modTangleDepth = std::clamp(modTangleDepth + atMod, 0.0f, 1.0f); break;
-                case 1: modEntrain     = std::clamp(modEntrain + atMod, 0.0f, 1.0f); break;
-                case 2: modBioluminescence = std::clamp(modBioluminescence + atMod, 0.0f, 1.0f); break;
-                case 3: modPulseRate   = std::max(0.01f, modPulseRate * (1.0f + atMod)); break;
+                case 0: modTangleDepth = clamp(modTangleDepth + atMod, 0.0f, 1.0f); break;
+                case 1: modEntrain     = clamp(modEntrain + atMod, 0.0f, 1.0f); break;
+                case 2: modBioluminescence = clamp(modBioluminescence + atMod, 0.0f, 1.0f); break;
+                case 3: modPulseRate   = juce::jmax(0.01f, modPulseRate * (1.0f + atMod)); break;
                 default: break;
             }
         }
 
         // Apply coupling inputs
-        modDelayBase   = std::max(1.0f, modDelayBase * (1.0f + extDelayMod * 0.3f));
-        modFilterCutoff = std::clamp(modFilterCutoff + extFilterMod, 20.0f, 20000.0f);
-        modTangleDepth  = std::clamp(modTangleDepth + extPitchMod * 0.05f, 0.0f, 1.0f);
+        modDelayBase   = juce::jmax(1.0f, modDelayBase * (1.0f + extDelayMod * 0.3f));
+        modFilterCutoff = clamp(modFilterCutoff + extFilterMod, 20.0f, 20000.0f);
+        modTangleDepth  = clamp(modTangleDepth + extPitchMod * 0.05f, 0.0f, 1.0f);
+
+        // D004 fix: Ocean Current — slow DC pitch bias applied to voice targetGlideFreq.
+        // currentDriftPhase advances at olap_currentRate Hz; sine output gives bipolar
+        // drift of ±olap_current semitones.  One block of advance is enough resolution.
+        {
+            float driftSemitones = fastSin(currentDriftPhase * 6.28318530f) * params.current * 2.0f;
+            float driftRatio = fastPow2(driftSemitones / 12.0f);
+            for (int i = 0; i < kVoices; ++i)
+            {
+                auto& v = voices[static_cast<size_t>(i)];
+                if (v.isActive())
+                    v.targetGlideFreq = midiToFreq(v.midiNote) * driftRatio;
+            }
+            currentDriftPhase += params.currentRate * static_cast<float>(numSamples) / static_cast<float>(sr);
+            if (currentDriftPhase >= 1.0f) currentDriftPhase -= 1.0f;
+        }
 
         // Update FDN matrix based on knot type + tangle depth
         xoverlap::KnotMatrix::Matrix knotMat;
@@ -218,14 +249,31 @@ public:
 
         // SVF filter coefficients (once per block)
         float envMod = filterEnvLevel * filterEnvVelocity * params.filterEnvAmt;
+<<<<<<< HEAD
         float effectiveCutoff = modFilterCutoff * std::pow(2.0f, envMod * 4.0f);
         effectiveCutoff = std::clamp(effectiveCutoff, 20.0f,
                                      std::min(20000.0f, static_cast<float>(sr) * 0.45f));
         modFilterCutoffCache = effectiveCutoff;  // fix: FilterToFilter coupling reads live cutoff
         float g_svf   = std::tan(3.14159265f * effectiveCutoff / static_cast<float>(sr));
+=======
+        float effectiveCutoff = modFilterCutoff * fastPow2(envMod * 4.0f);
+        effectiveCutoff = clamp(effectiveCutoff, 20.0f,
+                                     juce::jmin(20000.0f, static_cast<float>(sr) * 0.45f));
+
+        // D004 fix: update cache so FilterToFilter coupling reflects running filter state
+        modFilterCutoffCache = effectiveCutoff;
+        float g_svf   = fastTan(3.14159265f * effectiveCutoff / static_cast<float>(sr));
+>>>>>>> origin/v1-launch-prep
         float k_svf   = 2.0f - 2.0f * params.filterRes;
-        k_svf         = std::max(k_svf, 0.01f);
+        k_svf         = juce::jmax(k_svf, 0.01f);
         float svfDen  = 1.0f / (1.0f + k_svf * g_svf + g_svf * g_svf);
+
+        // SilenceGate: pre-pass scan for note-on to wake gate before bypass check
+        for (const auto& meta : midi)
+            if (meta.getMessage().isNoteOn())
+                silenceGate.wake();
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         // Get write pointers
         auto* outL = buffer.getWritePointer(0);
@@ -287,15 +335,17 @@ public:
 
                 float pan     = kPanPositions[i] * modSpread;
                 float panNorm = (pan + 1.0f) * 0.5f;
-                float lGain   = std::cos(panNorm * 1.5707963f);
-                float rGain   = std::sin(panNorm * 1.5707963f);
+                float lGain   = fastCos(panNorm * 1.5707963f);
+                float rGain   = fastSin(panNorm * 1.5707963f);
                 left  += fdnOut * lGain;
                 right += fdnOut * rGain;
             }
             fdnMono *= (1.0f / static_cast<float>(kVoices));
 
             // e. Bioluminescence layer
-            float bioSample = biolum.process(fdnMono, modDelayBase, modBioluminescence);
+            // D004 fix: brightness scales shimmer amplitude (0→muted, 1→full shimmer)
+            float bioSample = biolum.process(fdnMono, modDelayBase,
+                                             modBioluminescence * (0.2f + params.brightness * 0.8f));
             left  += bioSample;
             right += bioSample;
 
@@ -360,6 +410,10 @@ public:
         activeCount = 0;
         for (auto& v : voices)
             if (v.isActive()) ++activeCount;
+
+        const float* rL = buffer.getReadPointer(0);
+        const float* rR = buffer.getNumChannels() > 1 ? buffer.getReadPointer(1) : nullptr;
+        silenceGate.analyzeBlock(rL, rR, numSamples);
     }
 
     //==========================================================================
@@ -531,6 +585,8 @@ public:
 
 private:
     //==========================================================================
+    SilenceGate silenceGate;
+
     static constexpr int kVoices = 6;
     static constexpr float kPanPositions[6] = { -1.0f, -0.6f, -0.2f, 0.2f, 0.6f, 1.0f };
 
@@ -583,6 +639,11 @@ private:
     float extRingMod   = 0.0f;  // amplitude factor — AudioToRing
     float extDelayMod  = 0.0f;  // relative modulation of FDN delay base — AudioToFM
 
+    // D004 fix: Ocean Current drift state (olap_current / olap_currentRate)
+    // currentDrift is a slow-moving DC bias in semitones [-olap_current, +olap_current].
+    // driftPhase advances at olap_currentRate Hz and drives a sine for smooth bipolar drift.
+    float currentDriftPhase = 0.0f;  // 0..1, wraps
+
     // Cached filter cutoff for FilterToFilter coupling (set during renderBlock)
     float modFilterCutoffCache = 8000.0f;
 
@@ -608,7 +669,7 @@ private:
     {
         switch (shape)
         {
-            case 0: return std::sin(phase * 6.28318530f);
+            case 0: return fastSin(phase * 6.28318530f);
             case 1: return 2.0f * std::fabs(2.0f * phase - 1.0f) - 1.0f;
             case 2: return 1.0f - 2.0f * phase;
             case 3: return phase < 0.5f ? 1.0f : -1.0f;
@@ -625,12 +686,12 @@ private:
         float mod = lfoValue * depth;
         switch (dest)
         {
-            case 0: tangleDepth  = std::clamp(tangleDepth + mod * 0.5f, 0.0f, 1.0f); break;
-            case 1: dampening    = std::clamp(dampening + mod * 0.5f, 0.0f, 1.0f); break;
-            case 2: pulseRate    = std::max(0.01f, pulseRate * (1.0f + mod * 0.5f)); break;
-            case 3: delayBase    = std::max(1.0f, delayBase * (1.0f + mod * 0.3f)); break;
-            case 4: filterCutoff = std::clamp(filterCutoff * std::pow(2.0f, mod * 2.0f), 20.0f, 20000.0f); break;
-            case 5: spread       = std::clamp(spread + mod * 0.5f, 0.0f, 1.0f); break;
+            case 0: tangleDepth  = clamp(tangleDepth + mod * 0.5f, 0.0f, 1.0f); break;
+            case 1: dampening    = clamp(dampening + mod * 0.5f, 0.0f, 1.0f); break;
+            case 2: pulseRate    = juce::jmax(0.01f, pulseRate * (1.0f + mod * 0.5f)); break;
+            case 3: delayBase    = juce::jmax(1.0f, delayBase * (1.0f + mod * 0.3f)); break;
+            case 4: filterCutoff = clamp(filterCutoff * fastPow2(mod * 2.0f), 20.0f, 20000.0f); break;
+            case 5: spread       = clamp(spread + mod * 0.5f, 0.0f, 1.0f); break;
         }
     }
 
@@ -669,7 +730,33 @@ private:
 
     void handleNoteOn(int note, float velocity) noexcept
     {
-        int idx = allocateVoice();
+        int idx;
+        // D004 fix: Mono mode — steal the single playing voice (lowest midiNote wins).
+        // Legato mode does the same steal but without resetting the envelope phase.
+        if (params.voiceMode == 1 || params.voiceMode == 2)
+        {
+            // First silence all voices except the one we'll steal
+            int stealIdx = 0;
+            int lowestNote = 128;
+            for (int i = 0; i < kVoices; ++i)
+            {
+                auto& vi = voices[static_cast<size_t>(i)];
+                if (vi.isActive() && vi.midiNote < lowestNote)
+                {
+                    lowestNote = vi.midiNote;
+                    stealIdx   = i;
+                }
+            }
+            // Release all other active voices immediately
+            for (int i = 0; i < kVoices; ++i)
+                if (i != stealIdx && voices[static_cast<size_t>(i)].isActive())
+                    voices[static_cast<size_t>(i)].noteOff(++noteOrderCounter);
+            idx = stealIdx;
+        }
+        else
+        {
+            idx = allocateVoice();
+        }
         auto& v = voices[static_cast<size_t>(idx)];
         v.noteOn(note, velocity, ++noteOrderCounter);
         v.env.setParams(params.attack, params.decay, params.sustain, params.release);

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_KINETIC_INTIMATE_GENTLE_AET2_2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.4738,
+      "macro_movement": 0.9659,
+      "macro_coupling": 0.6248,
+      "macro_space": 0.0866
+    },
+    "OddOscar": {
+      "macro_character": 0.5064,
+      "macro_movement": 0.9392,
+      "macro_coupling": 0.6255,
+      "macro_space": 0.0152
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "intimate",
     "gentle",
     "tender"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

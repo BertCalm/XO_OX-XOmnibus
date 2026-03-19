@@ -37,13 +37,21 @@
   "mood": "Flux",
   "name": "CROSS FLX 05",
   "parameters": {
+<<<<<<< HEAD
     "Organon": {
+=======
+    "Overdub": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.51,
       "macro_coupling": 0.522,
       "macro_movement": 0.722,
       "macro_space": 0.104
     },
+<<<<<<< HEAD
     "Overdub": {
+=======
+    "Organon": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.51,
       "macro_coupling": 0.522,
       "macro_movement": 0.722,
@@ -56,6 +64,10 @@
     "pole-fill",
     "cross-pole",
     "contrast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

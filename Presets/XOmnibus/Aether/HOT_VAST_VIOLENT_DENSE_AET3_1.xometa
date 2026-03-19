@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_VAST_VIOLENT_DENSE_AET3_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Orbital",
+    "Oracle"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.4707,
+      "macro_movement": 0.4267,
+      "macro_coupling": 0.731,
+      "macro_space": 0.2949
+    },
+    "Oracle": {
+      "macro_character": 0.2341,
+      "macro_movement": 0.2409,
+      "macro_coupling": 0.4191,
+      "macro_space": 0.9081
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "vast",
     "violent",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -37,15 +37,25 @@
   "mood": "Prism",
   "name": "DARK_HOT_KINETIC_DENSE_PRS_3",
   "parameters": {
+<<<<<<< HEAD
     "Ottoni": {
       "macro_character": 0.691,
       "macro_coupling": 0.528,
+=======
+    "Owlfish": {
+      "macro_character": 0.226,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.875,
       "macro_space": 0.332
     },
+<<<<<<< HEAD
     "Owlfish": {
       "macro_character": 0.226,
       "macro_coupling": 0.82,
+=======
+    "Ottoni": {
+      "macro_character": 0.691,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.875,
       "macro_space": 0.332
     }
@@ -57,6 +67,10 @@
     "hot",
     "kinetic",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

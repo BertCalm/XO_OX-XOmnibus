@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -36,6 +37,26 @@
     "Osprey",
     "Osteria",
     "Oceanic"
+=======
+  "schema_version": 1,
+  "name": "Rocky Shore Rite",
+  "mood": "Entangled",
+  "engines": [
+    "Osprey",
+    "Osteria",
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Windswept ritual on the rocks — flight, fire, and foam in deep entanglement.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "ritual",
+    "wind",
+    "rocky"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

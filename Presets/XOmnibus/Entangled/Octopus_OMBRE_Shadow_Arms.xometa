@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "OMBRE Shadow Arms",
+  "mood": "Entangled",
+  "engines": ["Octopus", "Ombre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OMBRE's gradient shadow quality feeding into OCTOPUS arm modulation depth. The forgetting narrative of OMBRE drives chromatophore fade. As shadow deepens, the octopus skin darkens. Memory loss as camouflage.",
+  "tags": ["octopus", "ombre", "entangled", "shadow", "arms", "fade", "memory"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-03-17",
+  "parameters": {
+    "Octopus": {
+      "octo_armCount": 7.0,
+      "octo_armSpread": 0.7,
+      "octo_armBaseRate": 0.12,
+      "octo_armDepth": 0.48,
+      "octo_chromaSens": 0.55,
+      "octo_chromaSpeed": 0.1,
+      "octo_chromaMorph": 0.2,
+      "octo_chromaDepth": 0.5,
+      "octo_chromaFreq": 2000.0,
+      "octo_inkThreshold": 0.92,
+      "octo_inkDensity": 0.35,
+      "octo_inkDecay": 4.0,
+      "octo_inkMix": 0.22,
+      "octo_shiftMicro": 0.3,
+      "octo_shiftGlide": 0.12,
+      "octo_shiftDrift": 0.28,
+      "octo_suckerReso": 0.42,
+      "octo_suckerFreq": 1800.0,
+      "octo_suckerDecay": 0.25,
+      "octo_suckerMix": 0.22,
+      "octo_wtPosition": 0.3,
+      "octo_wtScanRate": 0.1,
+      "octo_filterCutoff": 4500.0,
+      "octo_filterReso": 0.38,
+      "octo_level": 0.72,
+      "octo_ampAttack": 0.3,
+      "octo_ampDecay": 0.9,
+      "octo_ampSustain": 0.82,
+      "octo_ampRelease": 3.5,
+      "octo_modAttack": 0.38,
+      "octo_modDecay": 1.1,
+      "octo_modSustain": 0.68,
+      "octo_modRelease": 2.8,
+      "octo_lfo1Rate": 0.1,
+      "octo_lfo1Depth": 0.32,
+      "octo_lfo1Shape": 0.0,
+      "octo_lfo2Rate": 0.06,
+      "octo_lfo2Depth": 0.24,
+      "octo_lfo2Shape": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "sourceEngine": "Ombre",
+        "targetEngine": "Octopus",
+        "type": "EnvToMorph",
+        "amount": 0.5,
+        "bipolar": false
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.48,
+    "movement": 0.42,
+    "density": 0.58,
+    "space": 0.72,
+    "aggression": 0.25
+  }
+}

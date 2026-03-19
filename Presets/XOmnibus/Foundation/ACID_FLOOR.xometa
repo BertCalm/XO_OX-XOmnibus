@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ACID FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Orca",
+    "Optic"
+  ],
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.759,
+      "macro_movement": 0.489,
+      "macro_coupling": 0.716,
+      "macro_space": 0.579
+    },
+    "Optic": {
+      "macro_character": 0.535,
+      "macro_movement": 0.546,
+      "macro_coupling": 0.753,
+      "macro_space": 0.21
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "aggressive",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

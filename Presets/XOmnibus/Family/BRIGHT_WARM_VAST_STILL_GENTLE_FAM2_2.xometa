@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT WARM VAST STILL GENTLE FAM2 2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Osteria",
+    "Ohm"
+  ],
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.897,
+      "macro_movement": 0.12,
+      "macro_coupling": 0.226,
+      "macro_space": 0.953
+    },
+    "Ohm": {
+      "macro_character": 0.888,
+      "macro_movement": 0.156,
+      "macro_coupling": 0.245,
+      "macro_space": 0.956
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "still",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

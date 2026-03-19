@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -54,6 +55,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "Latin Enzyme",
+  "mood": "Entangled",
+  "engines": [
+    "Ole",
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Organon enzyme kinetics filter-modulate OLE's brightness — bio-rhythmic drama.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -63,5 +76,47 @@
     "drive"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.68,
+    "movement": 0.75,
+    "density": 0.65,
+    "space": 0.35,
+    "aggression": 0.7
+  },
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.7,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.75,
+      "macro_space": 0.35
+    },
+    "Organon": {
+      "macro_character": 0.55,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.75,
+      "macro_space": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OLE",
+        "engineB": "ORGANON",
+        "type": "FILTER_MOD",
+        "amount": 0.75
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.625,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.75,
+    "SPACE": 0.425
+  },
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

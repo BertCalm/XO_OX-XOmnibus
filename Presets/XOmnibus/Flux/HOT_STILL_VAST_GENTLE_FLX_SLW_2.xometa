@@ -37,6 +37,7 @@
   "mood": "Flux",
   "name": "Node Horizon",
   "parameters": {
+<<<<<<< HEAD
     "Oracle": {
       "macro_character": 0.621,
       "macro_coupling": 0.918,
@@ -47,6 +48,18 @@
       "macro_character": 0.567,
       "macro_coupling": 0.696,
       "macro_movement": 0.04,
+=======
+    "Ouroboros": {
+      "macro_character": 0.567,
+      "macro_movement": 0.04,
+      "macro_coupling": 0.696,
+      "macro_space": 1.0
+    },
+    "Oracle": {
+      "macro_character": 0.621,
+      "macro_movement": 0.037,
+      "macro_coupling": 0.918,
+>>>>>>> origin/v1-launch-prep
       "macro_space": 1.0
     }
   },
@@ -58,6 +71,10 @@
     "vast",
     "gentle",
     "suspended-chaos"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_KINETIC_DENSE_VIOLENT_AET4_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Overworld",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.7758,
+      "macro_movement": 0.2968,
+      "macro_coupling": 0.5771,
+      "macro_space": 0.8512
+    },
+    "OddfeliX": {
+      "macro_character": 0.8235,
+      "macro_movement": 0.5886,
+      "macro_coupling": 0.4281,
+      "macro_space": 0.3215
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dark",
     "dense",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

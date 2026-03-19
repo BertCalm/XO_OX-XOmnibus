@@ -15,6 +15,18 @@
   },
   "engines": [
     "Odyssey"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Limitless sustain in pure darkness",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "ODYSSEY",
@@ -32,7 +44,15 @@
   "name": "Void Sustain",
   "parameters": {
     "Odyssey": {
+<<<<<<< HEAD
       "od_couplingBus": 0,
+=======
+      "od_macro_odyssey": 0.108,
+      "od_macro_motion": 0.79,
+      "od_macro_coupling": 0.7432,
+      "od_macro_space": 0.6789,
+      "od_outputLevel": 0.85,
+>>>>>>> origin/v1-launch-prep
       "od_couplingLevel": 0.5,
       "od_macro_coupling": 0.7432,
       "od_macro_motion": 0.79,
@@ -41,6 +61,7 @@
       "od_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.2392,
@@ -57,4 +78,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

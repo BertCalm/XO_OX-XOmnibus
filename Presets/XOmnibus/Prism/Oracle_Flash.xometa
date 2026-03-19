@@ -15,6 +15,19 @@
   },
   "engines": [
     "Oracle"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Signal burst at peak brightness, sparse warmth",
+  "tags": [
+    "prism",
+    "bright",
+    "ultra",
+    "spectral",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "SIGNAL",
@@ -32,7 +45,15 @@
   "name": "Oracle Flash",
   "parameters": {
     "Oracle": {
+<<<<<<< HEAD
       "orc_couplingBus": 0,
+=======
+      "orc_macro_signal": 0.755,
+      "orc_macro_drift": 0.2136,
+      "orc_macro_couple": 0.5776,
+      "orc_macro_space": 0.8999,
+      "orc_outputLevel": 0.85,
+>>>>>>> origin/v1-launch-prep
       "orc_couplingLevel": 0.5,
       "orc_macro_couple": 0.5776,
       "orc_macro_drift": 0.2136,
@@ -41,6 +62,7 @@
       "orc_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.1757,
@@ -58,4 +80,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

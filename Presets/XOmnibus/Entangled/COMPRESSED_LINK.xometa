@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COMPRESSED LINK",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Obese"
+  ],
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.9512,
+      "macro_movement": 0.3417,
+      "macro_coupling": 0.9065,
+      "macro_space": 0.192
+    },
+    "Obese": {
+      "macro_character": 1.0,
+      "macro_movement": 0.1549,
+      "macro_coupling": 0.7183,
+      "macro_space": 0.7881
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "granite",
     "layered",
     "crushing"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

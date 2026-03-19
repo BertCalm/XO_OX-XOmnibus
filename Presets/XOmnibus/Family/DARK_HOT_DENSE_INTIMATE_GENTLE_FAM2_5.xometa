@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 5",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Ole",
+    "Ohm"
+  ],
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.519,
+      "macro_movement": 0.628,
+      "macro_coupling": 0.529,
+      "macro_space": 0.095
+    },
+    "Ohm": {
+      "macro_character": 0.498,
+      "macro_movement": 0.59,
+      "macro_coupling": 0.524,
+      "macro_space": 0.084
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "intimate",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

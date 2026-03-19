@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_KINETIC_DENSE_VIOLENT_FND_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overbite",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.812,
+      "macro_movement": 0.831,
+      "macro_coupling": 0.881,
+      "macro_space": 0.377
+    },
+    "OddOscar": {
+      "macro_character": 0.666,
+      "macro_movement": 0.205,
+      "macro_coupling": 0.722,
+      "macro_space": 0.79
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "dense",
     "violent",
     "aggressive"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

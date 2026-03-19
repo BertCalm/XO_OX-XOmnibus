@@ -24,6 +24,7 @@
     "Orbital",
     "Oblique"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "ORBIT",
     "SPIN",
@@ -81,6 +82,11 @@
     "space": 0.049,
     "warmth": 0.0989
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark Cold Kinetic Intimate character entanglement — ORBITAL × OBLIQUE via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "dark",
@@ -89,5 +95,85 @@
     "intimate",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "ORBIT",
+    "SPIN",
+    "HARMONIC",
+    "SPHERE"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.0865,
+    "warmth": 0.0989,
+    "movement": 0.8944,
+    "density": 0.5537,
+    "space": 0.049,
+    "aggression": 0.4954
+  },
+  "sonic_dna": {
+    "brightness": 0.0865,
+    "warmth": 0.0989,
+    "movement": 0.8944,
+    "density": 0.5537,
+    "space": 0.049,
+    "aggression": 0.4954
+  },
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.3594,
+      "macro_movement": 0.8765,
+      "macro_coupling": 0.7337,
+      "macro_space": 0.0707,
+      "filter_cutoff": 0.2716,
+      "filter_resonance": 0.3287,
+      "amp_attack": 0.1115,
+      "amp_release": 0.1335,
+      "reverb_mix": 0.1711,
+      "reverb_size": 0.1902,
+      "drive": 0.4123,
+      "density": 0.5843,
+      "output_level": 0.8707,
+      "coupling_level": 0.7518
+    },
+    "Oblique": {
+      "macro_character": 0.3923,
+      "macro_movement": 0.901,
+      "macro_coupling": 0.7452,
+      "macro_space": 0.0192,
+      "filter_cutoff": 0.2453,
+      "filter_resonance": 0.3796,
+      "amp_attack": 0.1159,
+      "amp_release": 0.1583,
+      "reverb_mix": 0.2088,
+      "reverb_size": 0.2062,
+      "drive": 0.4263,
+      "density": 0.5219,
+      "output_level": 0.8608,
+      "coupling_level": 0.7789
+    }
+  },
+  "coupling": {
+    "type": "SUBHARMONIC_WEAVE",
+    "source": "ORBITAL",
+    "target": "OBLIQUE",
+    "amount": 0.9377,
+    "pairs": [
+      {
+        "source": "ORBITAL",
+        "target": "OBLIQUE",
+        "type": "SUBHARMONIC_WEAVE",
+        "amount": 0.9377
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.0927,
+    "MOVEMENT": 0.8944,
+    "COUPLING": 0.9377,
+    "SPACE": 0.049
+  }
+>>>>>>> origin/v1-launch-prep
 }

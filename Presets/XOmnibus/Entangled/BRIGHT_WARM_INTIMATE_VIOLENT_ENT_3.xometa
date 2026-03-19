@@ -24,6 +24,7 @@
     "Overlap",
     "OddOscar"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "KNOT",
     "FOLD",
@@ -81,6 +82,11 @@
     "space": 0.0695,
     "warmth": 0.8827
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright Warm Intimate Violent character entanglement — OVERLAP × ODDOSCAR via Resonance Share. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -89,5 +95,85 @@
     "violent",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "KNOT",
+    "FOLD",
+    "WEAVE",
+    "HALL"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.9318,
+    "warmth": 0.8827,
+    "movement": 0.3967,
+    "density": 0.349,
+    "space": 0.0695,
+    "aggression": 0.8869
+  },
+  "sonic_dna": {
+    "brightness": 0.9318,
+    "warmth": 0.8827,
+    "movement": 0.3967,
+    "density": 0.349,
+    "space": 0.0695,
+    "aggression": 0.8869
+  },
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.9261,
+      "macro_movement": 0.4337,
+      "macro_coupling": 0.9426,
+      "macro_space": 0.0946,
+      "filter_cutoff": 0.887,
+      "filter_resonance": 0.5611,
+      "amp_attack": 0.2665,
+      "amp_release": 0.1144,
+      "reverb_mix": 0.2279,
+      "reverb_size": 0.239,
+      "drive": 0.7898,
+      "density": 0.3488,
+      "output_level": 0.7545,
+      "coupling_level": 0.8963
+    },
+    "OddOscar": {
+      "macro_character": 0.9292,
+      "macro_movement": 0.376,
+      "macro_coupling": 0.9171,
+      "macro_space": 0.0334,
+      "filter_cutoff": 0.8348,
+      "filter_resonance": 0.5512,
+      "amp_attack": 0.3187,
+      "amp_release": 0.1555,
+      "reverb_mix": 0.1711,
+      "reverb_size": 0.2024,
+      "drive": 0.7281,
+      "density": 0.3197,
+      "output_level": 0.7685,
+      "coupling_level": 0.8941
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ODDOSCAR",
+    "target": "OVERLAP",
+    "amount": 0.9714,
+    "pairs": [
+      {
+        "source": "ODDOSCAR",
+        "target": "OVERLAP",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.9714
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.9073,
+    "MOVEMENT": 0.3967,
+    "COUPLING": 0.9714,
+    "SPACE": 0.0695
+  }
+>>>>>>> origin/v1-launch-prep
 }

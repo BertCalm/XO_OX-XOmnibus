@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -37,6 +38,18 @@
   },
   "mood": "Entangled",
   "name": "DRAMA Filter Oracle",
+=======
+  "schema_version": 1,
+  "name": "DRAMA Filter Oracle",
+  "mood": "Entangled",
+  "engines": [
+    "Ole",
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Filter coupling — DRAMA macro sweeps forward into ORACLE's GENDY resonant body — aggression 0.86.",
+>>>>>>> origin/v1-launch-prep
   "parameters": {
     "Ole": {
       "macro_character": 0.8,
@@ -58,6 +71,10 @@
     "oracle",
     "filter",
     "drama"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

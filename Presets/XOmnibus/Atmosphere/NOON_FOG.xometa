@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "NOON FOG",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orca",
+    "Obese"
+  ],
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.487,
+      "macro_movement": 0.667,
+      "macro_coupling": 0.045,
+      "macro_space": 0.395
+    },
+    "Obese": {
+      "macro_character": 0.599,
+      "macro_movement": 0.008,
+      "macro_coupling": 0.301,
+      "macro_space": 0.211
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "low-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

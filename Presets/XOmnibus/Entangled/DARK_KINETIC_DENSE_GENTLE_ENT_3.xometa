@@ -24,6 +24,7 @@
     "Overdub",
     "Orphica"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "VOICE",
     "DRIVE",
@@ -81,6 +82,11 @@
     "space": 0.315,
     "warmth": 0.5996
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark Kinetic Dense Gentle character entanglement — OVERDUB × ORPHICA via Chaos Inject. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "dark",
@@ -89,5 +95,85 @@
     "gentle",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "VOICE",
+    "DRIVE",
+    "DELAY",
+    "SPRING"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.0405,
+    "warmth": 0.5996,
+    "movement": 0.9747,
+    "density": 0.9047,
+    "space": 0.315,
+    "aggression": 0.0528
+  },
+  "sonic_dna": {
+    "brightness": 0.0405,
+    "warmth": 0.5996,
+    "movement": 0.9747,
+    "density": 0.9047,
+    "space": 0.315,
+    "aggression": 0.0528
+  },
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.5483,
+      "macro_movement": 0.986,
+      "macro_coupling": 0.6204,
+      "macro_space": 0.3461,
+      "filter_cutoff": 0.199,
+      "filter_resonance": 0.1267,
+      "amp_attack": 0.0419,
+      "amp_release": 0.3137,
+      "reverb_mix": 0.3098,
+      "reverb_size": 0.4075,
+      "drive": 0.1041,
+      "density": 0.9222,
+      "output_level": 0.8873,
+      "coupling_level": 0.5581
+    },
+    "Orphica": {
+      "macro_character": 0.5356,
+      "macro_movement": 0.9887,
+      "macro_coupling": 0.594,
+      "macro_space": 0.3239,
+      "filter_cutoff": 0.2394,
+      "filter_resonance": 0.1188,
+      "amp_attack": 0.0543,
+      "amp_release": 0.2752,
+      "reverb_mix": 0.3154,
+      "reverb_size": 0.3566,
+      "drive": 0.1307,
+      "density": 0.9029,
+      "output_level": 0.9611,
+      "coupling_level": 0.5316
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OVERDUB",
+    "target": "ORPHICA",
+    "amount": 0.9657,
+    "pairs": [
+      {
+        "source": "OVERDUB",
+        "target": "ORPHICA",
+        "type": "CHAOS_INJECT",
+        "amount": 0.9657
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.3201,
+    "MOVEMENT": 0.9747,
+    "COUPLING": 0.9657,
+    "SPACE": 0.315
+  }
+>>>>>>> origin/v1-launch-prep
 }

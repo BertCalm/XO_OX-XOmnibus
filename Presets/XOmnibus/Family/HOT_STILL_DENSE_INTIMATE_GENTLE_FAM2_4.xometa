@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT STILL DENSE INTIMATE GENTLE FAM2 4",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Ottoni",
+    "Osprey"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.735,
+      "macro_movement": 0.047,
+      "macro_coupling": 0.534,
+      "macro_space": 0.045
+    },
+    "Osprey": {
+      "macro_character": 0.744,
+      "macro_movement": 0.04,
+      "macro_coupling": 0.543,
+      "macro_space": 0.037
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "intimate",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -23,6 +23,20 @@
   "engines": [
     "Obscura",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ouroboros timbral warp corrupting Obscura plate stiffness — silver daguerreotype at fractal resolution.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obscura",
+    "ouroboros",
+    "silver"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

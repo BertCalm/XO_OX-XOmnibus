@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_DENSE_INTIMATE_FLX_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Oracle",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.8982,
+      "macro_movement": 0.5216,
+      "macro_coupling": 0.1811,
+      "macro_space": 0.1897
+    },
+    "Oceanic": {
+      "macro_character": 0.8352,
+      "macro_movement": 0.4944,
+      "macro_coupling": 0.3929,
+      "macro_space": 0.1781
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "low-warmth",
     "high-density",
     "low-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

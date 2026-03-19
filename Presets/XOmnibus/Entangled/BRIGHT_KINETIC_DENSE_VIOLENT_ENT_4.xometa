@@ -24,6 +24,7 @@
     "Outwit",
     "Osteria"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "CELL",
     "MUTATE",
@@ -81,6 +82,11 @@
     "space": 0.4181,
     "warmth": 0.5288
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright Kinetic Dense Violent character entanglement — OUTWIT × OSTERIA via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -89,5 +95,85 @@
     "violent",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "CELL",
+    "MUTATE",
+    "EVOLVE",
+    "CHAOS"
+  ],
+  "couplingIntensity": "Medium",
+  "dna": {
+    "brightness": 0.8985,
+    "warmth": 0.5288,
+    "movement": 0.939,
+    "density": 0.9891,
+    "space": 0.4181,
+    "aggression": 0.9874
+  },
+  "sonic_dna": {
+    "brightness": 0.8985,
+    "warmth": 0.5288,
+    "movement": 0.939,
+    "density": 0.9891,
+    "space": 0.4181,
+    "aggression": 0.9874
+  },
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.796,
+      "macro_movement": 0.9586,
+      "macro_coupling": 0.9095,
+      "macro_space": 0.4266,
+      "filter_cutoff": 0.8286,
+      "filter_resonance": 0.626,
+      "amp_attack": 0.0573,
+      "amp_release": 0.3748,
+      "reverb_mix": 0.3886,
+      "reverb_size": 0.4391,
+      "drive": 0.8508,
+      "density": 0.9988,
+      "output_level": 0.9615,
+      "coupling_level": 0.9627
+    },
+    "Osteria": {
+      "macro_character": 0.7938,
+      "macro_movement": 0.9661,
+      "macro_coupling": 0.9559,
+      "macro_space": 0.4504,
+      "filter_cutoff": 0.8406,
+      "filter_resonance": 0.5784,
+      "amp_attack": 0.0697,
+      "amp_release": 0.3573,
+      "reverb_mix": 0.3986,
+      "reverb_size": 0.4181,
+      "drive": 0.8235,
+      "density": 1.0,
+      "output_level": 0.9214,
+      "coupling_level": 0.9156
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OSTERIA",
+    "target": "OUTWIT",
+    "amount": 0.7433,
+    "pairs": [
+      {
+        "source": "OSTERIA",
+        "target": "OUTWIT",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.7433
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.7137,
+    "MOVEMENT": 0.939,
+    "COUPLING": 0.7433,
+    "SPACE": 0.4181
+  }
+>>>>>>> origin/v1-launch-prep
 }

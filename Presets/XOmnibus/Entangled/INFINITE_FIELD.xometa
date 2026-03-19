@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "INFINITE FIELD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.727,
+      "macro_movement": 0.095,
+      "macro_coupling": 0.462,
+      "macro_space": 0.928
+    },
+    "Oceanic": {
+      "macro_character": 0.444,
+      "macro_movement": 0.206,
+      "macro_coupling": 0.439,
+      "macro_space": 0.897
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "vast",
     "cosmic",
     "xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

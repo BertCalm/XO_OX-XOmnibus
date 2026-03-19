@@ -1,5 +1,32 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "schema_version": 1,
+  "name": "Verdigris Daguerreotype",
+  "mood": "Entangled",
+  "engines": [
+    "Ottoni",
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Spectral morphing captures brass formants in OBSCURA's photographic resonance — warmth 0.86.",
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.78,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.8,
+      "macro_space": 0.38
+    },
+    "Obscura": {
+      "macro_character": 0.68,
+      "macro_movement": 0.6,
+      "macro_coupling": 0.74,
+      "macro_space": 0.44
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +85,10 @@
     "obscura",
     "spectral",
     "daguerreotype"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

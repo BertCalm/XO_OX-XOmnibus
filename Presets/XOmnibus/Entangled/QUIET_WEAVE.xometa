@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "QUIET WEAVE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.658,
+      "macro_movement": 0.201,
+      "macro_coupling": 0.795,
+      "macro_space": 0.493
+    },
+    "Oceanic": {
+      "macro_character": 0.798,
+      "macro_movement": 0.559,
+      "macro_coupling": 0.476,
+      "macro_space": 0.452
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "entangled",
     "gentle",
     "tender"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

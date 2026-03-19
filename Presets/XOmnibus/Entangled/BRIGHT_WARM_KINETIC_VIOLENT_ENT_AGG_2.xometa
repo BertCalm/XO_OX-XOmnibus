@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_ENT_AGG_2",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.511,
+      "macro_movement": 0.967,
+      "macro_coupling": 0.759,
+      "macro_space": 0.36
+    },
+    "Odyssey": {
+      "macro_character": 0.366,
+      "macro_movement": 0.902,
+      "macro_coupling": 0.79,
+      "macro_space": 0.322
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "warm",
     "kinetic"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

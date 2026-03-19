@@ -15,6 +15,19 @@
   },
   "engines": [
     "Odyssey"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Glassy oscillator with minimal density, pure shimmer",
+  "tags": [
+    "foundation",
+    "bright",
+    "sparse",
+    "crystalline",
+    "anchor"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "ODYSSEY",
@@ -32,7 +45,15 @@
   "name": "Glass Tone",
   "parameters": {
     "Odyssey": {
+<<<<<<< HEAD
       "od_couplingBus": 0,
+=======
+      "od_macro_odyssey": 0.6903,
+      "od_macro_motion": 0.4096,
+      "od_macro_coupling": 0.6644,
+      "od_macro_space": 0.8573,
+      "od_outputLevel": 0.85,
+>>>>>>> origin/v1-launch-prep
       "od_couplingLevel": 0.5,
       "od_macro_coupling": 0.6644,
       "od_macro_motion": 0.4096,
@@ -41,6 +62,7 @@
       "od_outputLevel": 0.85
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.0516,
@@ -58,4 +80,9 @@
     "anchor"
   ],
   "version": "1.0.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

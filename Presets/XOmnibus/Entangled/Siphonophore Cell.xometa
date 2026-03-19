@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -54,6 +55,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "Siphonophore Cell",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Organon cellular envelope linked to ORPHICA — colony modulates harp breath.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -63,5 +76,47 @@
     "marine"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.45,
+    "movement": 0.65,
+    "density": 0.42,
+    "space": 0.75,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.52,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.65,
+      "macro_space": 0.55
+    },
+    "Orphica": {
+      "macro_character": 0.62,
+      "macro_movement": 0.55,
+      "macro_coupling": 0.65,
+      "macro_space": 0.72
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORGANON",
+        "engineB": "ORPHICA",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.65
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.57,
+    "MOVEMENT": 0.635,
+    "COUPLING": 0.65,
+    "SPACE": 0.635
+  },
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

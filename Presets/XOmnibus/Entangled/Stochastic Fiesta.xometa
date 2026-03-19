@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -54,6 +55,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "Stochastic Fiesta",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Ole"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "GENDY stochastic chaos injected into OLE — unpredictable celebration.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -63,5 +76,47 @@
     "chaos"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.47,
+    "movement": 0.72,
+    "density": 0.011,
+    "space": 0.42,
+    "aggression": 0.528
+  },
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.55,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.65,
+      "macro_space": 0.55
+    },
+    "Ole": {
+      "macro_character": 0.7,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.65,
+      "macro_space": 0.36
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORACLE",
+        "engineB": "OLE",
+        "type": "CHAOS_INJECT",
+        "amount": 0.65
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.625,
+    "MOVEMENT": 0.685,
+    "COUPLING": 0.65,
+    "SPACE": 0.455
+  },
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

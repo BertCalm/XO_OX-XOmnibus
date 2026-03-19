@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT HOT DENSE ATM 07",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orphica",
+    "Orbital"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.96,
+      "macro_movement": 0.653,
+      "macro_coupling": 0.865,
+      "macro_space": 0.595
+    },
+    "Orbital": {
+      "macro_character": 1.0,
+      "macro_movement": 0.746,
+      "macro_coupling": 0.731,
+      "macro_space": 0.681
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

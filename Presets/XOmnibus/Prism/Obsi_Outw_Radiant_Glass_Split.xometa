@@ -1,0 +1,117 @@
+{
+<<<<<<< HEAD:Presets/XOmnibus/Prism/5X DARK COLD KINETIC DENSE VIOLENT PRM 4.xometa
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Outwit",
+        "type": "AMPLITUDE_SYNC",
+        "amount": 0.67
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Radiant Glass Split",
+  "mood": "Prism",
+  "engines": [
+    "Obsidian",
+    "Outwit"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Prism/Obsi_Outw_Radiant_Glass_Split.xometa
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.549,
+    "brightness": 0.933,
+    "density": 0.075,
+    "movement": 0.043,
+    "space": 0.93,
+    "warmth": 0.945
+  },
+  "engines": [
+    "Obsidian",
+    "Outwit"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.84,
+      "macro_coupling": 0.66,
+      "macro_movement": 0.74,
+      "macro_space": 0.31
+    },
+    "Outwit": {
+      "macro_character": 0.82,
+      "macro_coupling": 0.71,
+      "macro_movement": 0.86,
+      "macro_space": 0.38
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "prism"
+  ],
+  "tempo": null,
+<<<<<<< HEAD:Presets/XOmnibus/Prism/5X DARK COLD KINETIC DENSE VIOLENT PRM 4.xometa
+  "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.84,
+      "macro_movement": 0.74,
+      "macro_coupling": 0.66,
+      "macro_space": 0.31
+    },
+    "Outwit": {
+      "macro_character": 0.82,
+      "macro_movement": 0.86,
+      "macro_coupling": 0.71,
+      "macro_space": 0.38
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_SYNC",
+    "source": "OBSIDIAN",
+    "target": "OUTWIT",
+    "amount": 0.67
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.933,
+    "warmth": 0.945,
+    "movement": 0.043,
+    "density": 0.075,
+    "space": 0.93,
+    "aggression": 0.549
+  }
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Prism/Obsi_Outw_Radiant_Glass_Split.xometa
+}

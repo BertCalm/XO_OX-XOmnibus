@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "LIGHT BURST",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Opal",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.84,
+      "macro_movement": 0.277,
+      "macro_coupling": 0.778,
+      "macro_space": 0.485
+    },
+    "Odyssey": {
+      "macro_character": 0.239,
+      "macro_movement": 0.44,
+      "macro_coupling": 0.714,
+      "macro_space": 0.234
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "high-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_COLD_FROZEN_VAST_HARSH_ENT4_2",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Odyssey",
+    "Obese"
+  ],
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.547,
+      "macro_movement": 0.095,
+      "macro_coupling": 0.384,
+      "macro_space": 0.915
+    },
+    "Obese": {
+      "macro_character": 0.566,
+      "macro_movement": 0.091,
+      "macro_coupling": 0.384,
+      "macro_space": 0.938
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "cold",
     "vast",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_STILL_DENSE_FAM_VOL_21",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Overdub",
+    "Origami"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.89,
+      "macro_movement": 0.04,
+      "macro_coupling": 0.749,
+      "macro_space": 0.668
+    },
+    "Origami": {
+      "macro_character": 0.9,
+      "macro_movement": 0.013,
+      "macro_coupling": 0.722,
+      "macro_space": 0.677
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "still",
     "dense",
     "bright"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

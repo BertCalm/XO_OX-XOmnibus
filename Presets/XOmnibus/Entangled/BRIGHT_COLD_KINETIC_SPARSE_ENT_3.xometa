@@ -24,6 +24,7 @@
     "Oblong",
     "Orbital"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "BOB",
     "FIDGET",
@@ -81,6 +82,11 @@
     "space": 0.3105,
     "warmth": 0.0694
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright Cold Kinetic Sparse character entanglement — OBLONG × ORBITAL via Resonance Share. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -89,5 +95,85 @@
     "sparse",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "BOB",
+    "FIDGET",
+    "WEAVE",
+    "CHAMBER"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.8925,
+    "warmth": 0.0694,
+    "movement": 0.9366,
+    "density": 0.0649,
+    "space": 0.3105,
+    "aggression": 0.4416
+  },
+  "sonic_dna": {
+    "brightness": 0.8925,
+    "warmth": 0.0694,
+    "movement": 0.9366,
+    "density": 0.0649,
+    "space": 0.3105,
+    "aggression": 0.4416
+  },
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.5863,
+      "macro_movement": 0.9199,
+      "macro_coupling": 0.7456,
+      "macro_space": 0.2773,
+      "filter_cutoff": 0.8568,
+      "filter_resonance": 0.3532,
+      "amp_attack": 0.1137,
+      "amp_release": 0.2921,
+      "reverb_mix": 0.2944,
+      "reverb_size": 0.3768,
+      "drive": 0.3744,
+      "density": 0.049,
+      "output_level": 0.7156,
+      "coupling_level": 0.6917
+    },
+    "Orbital": {
+      "macro_character": 0.5903,
+      "macro_movement": 0.9303,
+      "macro_coupling": 0.7533,
+      "macro_space": 0.2767,
+      "filter_cutoff": 0.8048,
+      "filter_resonance": 0.3005,
+      "amp_attack": 0.0854,
+      "amp_release": 0.2938,
+      "reverb_mix": 0.2964,
+      "reverb_size": 0.3549,
+      "drive": 0.3877,
+      "density": 0.1008,
+      "output_level": 0.7028,
+      "coupling_level": 0.7362
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBLONG",
+    "target": "ORBITAL",
+    "amount": 0.8533,
+    "pairs": [
+      {
+        "source": "OBLONG",
+        "target": "ORBITAL",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.8533
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.4809,
+    "MOVEMENT": 0.9366,
+    "COUPLING": 0.8533,
+    "SPACE": 0.3105
+  }
+>>>>>>> origin/v1-launch-prep
 }

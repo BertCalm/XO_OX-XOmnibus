@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Crease Divination",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Oracle"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.12,
+      "macro_movement": 0.26,
+      "macro_coupling": 0.79,
+      "macro_space": 0.95
+    },
+    "Oracle": {
+      "macro_character": 0.09,
+      "macro_movement": 0.21,
+      "macro_coupling": 0.84,
+      "macro_space": 0.98
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "crease",
     "divination"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Oracle pitch-locks Origami's crease angles — divination through paper geometry."
+>>>>>>> origin/v1-launch-prep
 }

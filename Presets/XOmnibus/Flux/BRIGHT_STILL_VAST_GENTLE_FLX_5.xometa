@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_STILL_VAST_GENTLE_FLX_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Origami",
+    "Oblong"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.8221,
+      "macro_movement": 0.0577,
+      "macro_coupling": 0.1675,
+      "macro_space": 0.8242
+    },
+    "Oblong": {
+      "macro_character": 0.7838,
+      "macro_movement": 0.1403,
+      "macro_coupling": 0.2604,
+      "macro_space": 0.8138
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "low-movement",
     "high-space",
     "low-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

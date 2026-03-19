@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK VAST KINETIC ATM 08",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.376,
+      "macro_movement": 0.9,
+      "macro_coupling": 0.798,
+      "macro_space": 0.921
+    },
+    "Ombre": {
+      "macro_character": 0.233,
+      "macro_movement": 0.808,
+      "macro_coupling": 0.462,
+      "macro_space": 1.0
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

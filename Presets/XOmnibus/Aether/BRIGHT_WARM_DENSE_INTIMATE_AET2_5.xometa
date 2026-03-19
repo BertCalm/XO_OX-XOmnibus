@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_DENSE_INTIMATE_AET2_5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Osprey",
+    "Obscura"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.9812,
+      "macro_movement": 0.6894,
+      "macro_coupling": 0.9719,
+      "macro_space": 0.0644
+    },
+    "Obscura": {
+      "macro_character": 0.9722,
+      "macro_movement": 0.6713,
+      "macro_coupling": 0.9614,
+      "macro_space": 0.0687
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "dense",
     "intimate",
     "lush"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

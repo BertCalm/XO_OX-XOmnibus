@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "All Modes Storm",
+  "mood": "Flux",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "All visualization modes cycling through storm state.",
+  "tags": [
+    "all",
+    "modes",
+    "cycling",
+    "storm",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.28,
+    "movement": 0.88,
+    "density": 0.68,
+    "space": 0.42,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 4.0,
+      "optic_pulseShape": 2,
+      "optic_pulseAccent": 0.8,
+      "optic_pulseSwing": 0.35,
+      "optic_pulseSubdiv": 5,
+      "optic_pulseEvolve": 0.88,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.88,
+      "optic_inputGain": 0.85,
+      "optic_modDepth": 0.88,
+      "optic_modMixPulse": 0.62,
+      "optic_modMixSpec": 0.38,
+      "optic_vizMode": 2,
+      "optic_vizIntensity": 0.98,
+      "optic_vizSpeed": 0.92,
+      "optic_vizFeedback": 0.72
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

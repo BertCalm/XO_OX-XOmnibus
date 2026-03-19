@@ -16,6 +16,18 @@
   },
   "engines": [
     "OddOscar"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — violent dense hot intimate. Designed for FLOW coupling with XOddOscar.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "flow",
+    "oddoscar"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "VOID",
@@ -27,6 +39,7 @@
   "name": "VIOLENT DENSE HOT INTIMATE 5",
   "parameters": {
     "OddOscar": {
+<<<<<<< HEAD
       "couplingBus": 1,
       "couplingLevel": 0.855
     }
@@ -47,4 +60,13 @@
     "oddoscar"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.855,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

@@ -23,7 +23,20 @@
   },
   "engines": [
     "Ole",
+<<<<<<< HEAD
     "Overdub"
+=======
+    "OVERDRIVE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OLE and OVERDRIVE coupled via LFO->Pitch. Blended Constellation DNA — stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "ole",
+    "overdrive"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "TEXTURE",

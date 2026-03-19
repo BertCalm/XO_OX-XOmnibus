@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Terminal Decay",
+  "mood": "Aether",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "The end of memory. Short decay, high drift — everything fades fast but continues circling. A sound approaching its own terminal state. Melancholy and inevitable.",
+  "tags": ["aether", "terminal", "decay", "end", "melancholy", "final"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.48,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.78,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.32,
+      "ombre_interference": 0.5,
+      "ombre_memoryDecay": 2.0,
+      "ombre_memoryGrain": 60.0,
+      "ombre_memoryDrift": 0.88,
+      "ombre_oscShape": 0,
+      "ombre_reactivity": 0.45,
+      "ombre_subLevel": 0.22,
+      "ombre_filterCutoff": 2800.0,
+      "ombre_filterReso": 0.28,
+      "ombre_attack": 0.5,
+      "ombre_decay": 1.5,
+      "ombre_sustain": 0.55,
+      "ombre_release": 4.0,
+      "ombre_level": 0.65,
+      "ombre_velCutoffScale": 0.3,
+      "ombre_lfo1Rate": 0.55,
+      "ombre_lfo1Depth": 0.62,
+      "ombre_lfo2Rate": 0.35,
+      "ombre_lfo2Depth": 0.52,
+      "ombre_macroCharacter": 0.72,
+      "ombre_macroMovement": 0.55,
+      "ombre_macroCoupling": 0.45,
+      "ombre_macroSpace": 0.8
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

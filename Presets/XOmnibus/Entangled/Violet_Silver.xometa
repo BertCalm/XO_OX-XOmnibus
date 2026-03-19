@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Violet Silver",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Odyssey",
+    "Obscura"
+  ],
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.2,
+      "macro_movement": 0.58,
+      "macro_coupling": 0.64,
+      "macro_space": 0.88
+    },
+    "Obscura": {
+      "macro_character": 0.17,
+      "macro_movement": 0.53,
+      "macro_coupling": 0.69,
+      "macro_space": 0.91
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "violet",
     "silver"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Obscura silver chemistry shifts Odyssey's violet frequencies — cold tonal distortion."
+>>>>>>> origin/v1-launch-prep
 }

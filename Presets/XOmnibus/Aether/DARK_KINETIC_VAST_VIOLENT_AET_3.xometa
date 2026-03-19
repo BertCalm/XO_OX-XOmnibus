@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "DARK KINETIC VAST VIOLENT AET 3",
+  "mood": "Aether",
+  "engines": [
+    "Obsidian",
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — aether, dark, kinetic, vast.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.106,
+    "warmth": 0.498,
+    "movement": 0.94,
+    "density": 0.427,
+    "space": 0.906,
+    "aggression": 0.931
+  },
+  "parameters": {
+    "Obsidian": {
+      "level": 0.842,
+      "pan": 0.113
+    },
+    "Optic": {
+      "level": 0.751,
+      "pan": -0.125
+    }
+  },
+  "coupling": [
+    {
+      "source": "OBSIDIAN",
+      "destination": "OPTIC",
+      "type": "FREQUENCY_SHIFT",
+      "amount": 0.601
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

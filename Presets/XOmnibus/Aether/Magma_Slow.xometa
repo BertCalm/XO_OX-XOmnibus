@@ -16,6 +16,7 @@
   "engines": [
     "Obsidian"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "EDGE",
     "DENSITY",
@@ -36,6 +37,11 @@
     "space": 0.15,
     "warmth": 0.88
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Molten rock at minimum movement — near-static dark mass",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -44,5 +50,27 @@
     "slow",
     "molten"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "EDGE",
+    "DENSITY",
+    "COUPLING",
+    "PRESSURE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.88,
+    "movement": 0.08,
+    "density": 0.95,
+    "space": 0.15,
+    "aggression": 0.35
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

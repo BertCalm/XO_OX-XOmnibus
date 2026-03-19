@@ -2,6 +2,7 @@
 #include <cmath>
 #include <algorithm>
 #include <vector>
+#include "../FastMath.h"
 
 namespace xomnibus {
 
@@ -42,7 +43,16 @@ public:
 
     void setWidth (float w)    { width    = std::clamp (w, 0.0f, 1.0f); }
     void setHaasMs (float ms)  { haasMs   = std::clamp (ms, 0.1f, 30.0f); }
-    void setCombFreq (float f) { combFreq = std::clamp (f, 200.0f, 2000.0f); recalcComb(); }
+    // SRO: Dirty-flag coefficient caching — skip recalc if value unchanged
+    void setCombFreq (float f)
+    {
+        float clamped = std::clamp (f, 200.0f, 2000.0f);
+        if (std::abs (clamped - combFreq) > 0.01f)
+        {
+            combFreq = clamped;
+            recalcComb();
+        }
+    }
     void setMonoSafe (float s) { monoSafe = std::clamp (s, 0.0f, 1.0f); }
     void setMix (float m)      { mix      = std::clamp (m, 0.0f, 1.0f); }
 
@@ -142,10 +152,7 @@ private:
         combFB = std::clamp (combFB, 0.05f, 0.35f);
     }
 
-    static float flushDenormal (float x)
-    {
-        return (std::abs (x) < 1e-15f) ? 0.0f : x;
-    }
+    // SRO: uses shared flushDenormal from FastMath.h
 };
 
 } // namespace xomnibus

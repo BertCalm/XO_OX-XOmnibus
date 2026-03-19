@@ -23,6 +23,20 @@
   "engines": [
     "Orca",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orca echolocation pulse shattered by Ouroboros topology — predator meets singularity.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "orca",
+    "ouroboros",
+    "predator"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

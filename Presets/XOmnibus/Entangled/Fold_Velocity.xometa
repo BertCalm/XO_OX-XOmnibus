@@ -23,6 +23,20 @@
   "engines": [
     "Origami",
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Origami fold velocity coupled into Onset percussion — paper crane at drumstick speed.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "origami",
+    "onset",
+    "fold"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

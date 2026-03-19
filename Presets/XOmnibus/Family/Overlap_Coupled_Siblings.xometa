@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Coupled Siblings",
+  "mood": "Family",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Six voices configured as sibling pairs \u2014 voices (1,2), (3,4), (5,6) coupled through the figure-eight crossing. Each pair entrains separately; the pairs entrain to each other more loosely. A family of families.",
+  "tags": [
+    "siblings",
+    "pairs",
+    "figure-eight",
+    "hierarchical",
+    "family"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.6,
+    "movement": 0.52,
+    "density": 0.65,
+    "space": 0.82,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 2,
+      "olap_delayFeedback": 0.58,
+      "olap_diffusion": 0.72,
+      "olap_spread": 0.85,
+      "olap_decay": 5.5,
+      "olap_modDepth": 0.22,
+      "olap_modRate": 0.09,
+      "olap_damping": 0.42,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

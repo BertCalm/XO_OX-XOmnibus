@@ -25,6 +25,7 @@
     "Ocelot",
     "Osprey"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -60,6 +61,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: COLD_FROZEN_SPARSE_INTIMATE_GENTLE. Designed to raise Entangled cosine diversity.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -71,5 +77,49 @@
     "intimate"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.8236,
+      "macro_movement": 0.054,
+      "macro_coupling": 0.7877,
+      "macro_space": 0.2477
+    },
+    "Osprey": {
+      "macro_character": 0.5013,
+      "macro_movement": 0.0627,
+      "macro_coupling": 0.8581,
+      "macro_space": 0.6047
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OCELOT",
+    "target": "OSPREY",
+    "amount": 0.8191
+  },
+  "macros": {
+    "CHARACTER": 0.6624,
+    "MOVEMENT": 0.0583,
+    "COUPLING": 0.8229,
+    "SPACE": 0.4262
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.4222,
+    "warmth": 0.0883,
+    "movement": 0.071,
+    "density": 0.1014,
+    "space": 0.1242,
+    "aggression": 0.0429
+  }
+>>>>>>> origin/v1-launch-prep
 }

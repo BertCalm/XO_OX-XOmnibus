@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Dub Odd Bass",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.7,
+      "macro_movement": 0.74,
+      "macro_coupling": 0.61,
+      "macro_space": 0.5
+    },
+    "OddOscar": {
+      "macro_character": 0.87,
+      "macro_movement": 0.55,
+      "macro_coupling": 0.74,
+      "macro_space": 0.49
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "warm-dense",
     "scorching"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

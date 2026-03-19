@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Moorish Evening",
+  "mood": "Atmosphere",
+  "engines": [
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "North African influences at dusk. Oud and ney resonances.",
+  "tags": [
+    "moorish",
+    "north-african",
+    "oud",
+    "evening",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.68,
+    "movement": 0.42,
+    "density": 0.62,
+    "space": 0.2,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_porto": 0.45,
+      "osteria_patina": 0.58,
+      "osteria_murmur": 0.38,
+      "osteria_oceanBleed": 0.25,
+      "osteria_blendMode": 2,
+      "osteria_bassLevel": 0.62,
+      "osteria_melLevel": 0.72,
+      "osteria_harmLevel": 0.68,
+      "osteria_rhythmLevel": 0.52,
+      "osteria_qBassShore": 0.28,
+      "osteria_qMelShore": 0.38,
+      "osteria_qHarmShore": 0.32,
+      "osteria_qRhythmShore": 0.22,
+      "osteria_qElastic": 0.42,
+      "osteria_qMemory": 0.52,
+      "osteria_qStretch": 0.48,
+      "osteria_qSympathy": 0.52,
+      "osteria_attack": 0.03,
+      "osteria_decay": 0.42,
+      "osteria_sustain": 0.7,
+      "osteria_release": 1.1,
+      "osteria_chorus": 0.15,
+      "osteria_hall": 0.32,
+      "osteria_ensWidth": 0.7,
+      "osteria_tape": 0.08,
+      "osteria_sessionDelay": 0.22,
+      "osteria_filterEnvDepth": 0.18,
+      "osteria_warmth": 0.68,
+      "osteria_smoke": 0.2,
+      "osteria_tavernMix": 0.55,
+      "osteria_tavernShore": 0.35,
+      "osteria_macroCharacter": 0.3,
+      "osteria_macroMovement": 0.55,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

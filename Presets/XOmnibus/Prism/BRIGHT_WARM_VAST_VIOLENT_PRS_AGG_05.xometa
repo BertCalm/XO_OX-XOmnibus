@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT WARM VAST VIOLENT PRS AGG 5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Ohm",
+    "Oblique"
+  ],
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.911,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.878,
+      "macro_space": 0.834
+    },
+    "Oblique": {
+      "macro_character": 0.916,
+      "macro_movement": 0.489,
+      "macro_coupling": 0.816,
+      "macro_space": 0.876
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "bright",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

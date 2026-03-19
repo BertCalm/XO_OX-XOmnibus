@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "FIRESTORM",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Ombre"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.38,
+      "macro_movement": 0.966,
+      "macro_coupling": 0.006,
+      "macro_space": 0.352
+    },
+    "Ombre": {
+      "macro_character": 0.753,
+      "macro_movement": 0.957,
+      "macro_coupling": 0.853,
+      "macro_space": 0.953
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "storm",
     "vortex"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

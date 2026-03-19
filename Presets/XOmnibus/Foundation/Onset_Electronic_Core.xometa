@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Electronic Core",
+  "mood": "Foundation",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Modern electronic percussion. Clean transients, digital precision.",
+  "tags": [
+    "electronic",
+    "clean",
+    "digital",
+    "core",
+    "foundation"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.25,
+    "movement": 0.4,
+    "density": 0.55,
+    "space": 0.12,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macro_machine": 0.6,
+      "perc_macro_punch": 0.55,
+      "perc_macro_space": 0.12,
+      "perc_macro_mutate": 0.12,
+      "perc_drive": 0.35,
+      "perc_level": 0.82,
+      "perc_masterTone": 0.65,
+      "perc_char_grit": 0.2,
+      "perc_char_warmth": 0.25,
+      "perc_fx_reverb_size": 0.1,
+      "perc_fx_reverb_decay": 0.15,
+      "perc_fx_reverb_mix": 0.08,
+      "perc_fx_delay_time": 0.2,
+      "perc_fx_delay_feedback": 0.08,
+      "perc_fx_delay_mix": 0.03,
+      "perc_fx_lofi_bits": 16,
+      "perc_fx_lofi_mix": 0.0,
+      "perc_xvc_global_amount": 0.15,
+      "perc_xvc_kick_to_snare_filter": 0.2,
+      "perc_xvc_kick_to_tom_pitch": 0.1,
+      "perc_xvc_snare_to_hat_decay": 0.05,
+      "perc_xvc_snare_to_perc_blend": 0.15,
+      "perc_xvc_hat_choke": 0.25
+    }
+  },
+  "macros": {
+    "MACHINE": 0.6,
+    "PUNCH": 0.55,
+    "SPACE": 0.12,
+    "MUTATE": 0.12
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Fractured Light",
+  "mood": "Prism",
+  "engines": ["Obsidian"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Light split through fractured crystal — shimmer and scatter at prism maximum.",
+  "tags": ["fracture", "light", "scatter", "shimmer"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.85, "warmth": 0.22, "movement": 0.55, "density": 0.38, "space": 0.6, "aggression": 0.35},
+  "parameters": {
+    "Obsidian": {
+      "obsidian_depth": 0.38,
+      "obsidian_character": 0.85,
+      "obsidian_brightness": 0.85,
+      "obsidian_warmth": 0.22,
+      "obsidian_attack": 0.02,
+      "obsidian_decay": 0.35,
+      "obsidian_sustain": 0.55,
+      "obsidian_release": 0.62,
+      "obsidian_filterCutoff": 9500,
+      "obsidian_filterReso": 0.58,
+      "obsidian_filterEnvAmt": 0.48,
+      "obsidian_lfoRate": 3.2,
+      "obsidian_lfoDepth": 0.32,
+      "obsidian_lfoDest": 1,
+      "obsidian_reverbSize": 0.55,
+      "obsidian_reverbMix": 0.32,
+      "obsidian_stereoWidth": 0.82,
+      "obsidian_voiceMode": 0,
+      "obsidian_glide": 0.0,
+      "obsidian_polyphony": 5,
+      "obsidian_level": 0.72
+    }
+  },
+  "macros": {"CHARACTER": 0.85, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.6},
+  "coupling": {"pairs": []}
+}

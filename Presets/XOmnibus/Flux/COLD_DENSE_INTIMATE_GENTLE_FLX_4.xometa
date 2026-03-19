@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD_DENSE_INTIMATE_GENTLE_FLX_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Origami",
+    "Organon"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.2836,
+      "macro_movement": 0.259,
+      "macro_coupling": 0.1366,
+      "macro_space": 0.0955
+    },
+    "Organon": {
+      "macro_character": 0.3849,
+      "macro_movement": 0.3856,
+      "macro_coupling": 0.072,
+      "macro_space": 0.0948
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "high-density",
     "low-space",
     "low-aggression"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

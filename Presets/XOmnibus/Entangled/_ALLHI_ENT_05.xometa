@@ -37,13 +37,21 @@
   "mood": "Entangled",
   "name": "ALLHI ENT 05",
   "parameters": {
+<<<<<<< HEAD
     "Odyssey": {
+=======
+    "Osteria": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.946,
       "macro_coupling": 0.694,
       "macro_movement": 0.939,
       "macro_space": 0.426
     },
+<<<<<<< HEAD
     "Osteria": {
+=======
+    "Odyssey": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.946,
       "macro_coupling": 0.694,
       "macro_movement": 0.939,
@@ -56,6 +64,10 @@
     "pole-fill",
     "high-energy",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_KINETIC_SPARSE_GENTLE_ATM_5",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orbital",
+    "Optic"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.9406,
+      "macro_movement": 0.9722,
+      "macro_coupling": 0.0514,
+      "macro_space": 0.5234
+    },
+    "Optic": {
+      "macro_character": 0.9791,
+      "macro_movement": 0.9474,
+      "macro_coupling": 0.0275,
+      "macro_space": 0.5186
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "sparse",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_KINETIC_INTIMATE_GENTLE_AET2_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Osprey",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.1265,
+      "macro_movement": 0.9795,
+      "macro_coupling": 0.4483,
+      "macro_space": 0.0691
+    },
+    "Oceanic": {
+      "macro_character": 0.158,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.5047,
+      "macro_space": 0.0541
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "intimate",
     "gentle",
     "stirring"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Iris Pattern",
+  "mood": "Prism",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "cellular",
+    "pattern",
+    "generative",
+    "emergent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.35,
+    "movement": 0.68,
+    "density": 0.48,
+    "space": 0.43,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 90.0,
+      "org_seed": 5500,
+      "org_stepRate": 8.0,
+      "org_scope": 3,
+      "org_mutate": 0.015,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.22,
+      "org_filterCutoff": 5000.0,
+      "org_filterRes": 0.52,
+      "org_velCutoff": 0.72,
+      "org_ampAtk": 0.006,
+      "org_ampDec": 0.2,
+      "org_ampSus": 0.6,
+      "org_ampRel": 0.4,
+      "org_lfo1Rate": 2.2,
+      "org_lfo1Depth": 0.38,
+      "org_lfo2Rate": 1.6,
+      "org_lfo2Depth": 0.32,
+      "org_reverbMix": 0.32,
+      "org_macroRule": 0.14,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.04
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

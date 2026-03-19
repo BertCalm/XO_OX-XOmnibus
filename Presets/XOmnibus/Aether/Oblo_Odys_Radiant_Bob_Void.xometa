@@ -1,0 +1,117 @@
+{
+<<<<<<< HEAD:Presets/XOmnibus/Aether/5X DARK COLD KINETIC DENSE VIOLENT ATH 1.xometa
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
+        "type": "RHYTHM_GATE",
+        "amount": 0.63
+      }
+    ]
+  },
+  "couplingIntensity": "High",
+  "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "Radiant Bob Void",
+  "mood": "Aether",
+  "engines": [
+    "Oblong",
+    "Odyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Aether/Oblo_Odys_Radiant_Bob_Void.xometa
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.057,
+    "brightness": 0.901,
+    "density": 0.551,
+    "movement": 0.06,
+    "space": 0.958,
+    "warmth": 0.912
+  },
+  "engines": [
+    "Oblong",
+    "Odyssey"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "5X DARK COLD KINETIC DENSE ...",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.9,
+      "macro_coupling": 0.6,
+      "macro_movement": 0.94,
+      "macro_space": 0.4
+    },
+    "Odyssey": {
+      "macro_character": 0.95,
+      "macro_coupling": 0.54,
+      "macro_movement": 0.94,
+      "macro_space": 0.29
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "aether"
+  ],
+  "tempo": null,
+<<<<<<< HEAD:Presets/XOmnibus/Aether/5X DARK COLD KINETIC DENSE VIOLENT ATH 1.xometa
+  "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.9,
+      "macro_movement": 0.94,
+      "macro_coupling": 0.6,
+      "macro_space": 0.4
+    },
+    "Odyssey": {
+      "macro_character": 0.95,
+      "macro_movement": 0.94,
+      "macro_coupling": 0.54,
+      "macro_space": 0.29
+    }
+  },
+  "coupling": {
+    "type": "RHYTHM_GATE",
+    "source": "OBLONG",
+    "target": "ODYSSEY",
+    "amount": 0.63
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.901,
+    "warmth": 0.912,
+    "movement": 0.06,
+    "density": 0.551,
+    "space": 0.958,
+    "aggression": 0.057
+  }
+>>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Aether/Oblo_Odys_Radiant_Bob_Void.xometa
+}

@@ -37,13 +37,21 @@
   "mood": "Prism",
   "name": "ALLHI PRS 04",
   "parameters": {
+<<<<<<< HEAD
     "Ohm": {
+=======
+    "Origami": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.918,
       "macro_coupling": 0.962,
       "macro_movement": 0.723,
       "macro_space": 0.955
     },
+<<<<<<< HEAD
     "Origami": {
+=======
+    "Ohm": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.918,
       "macro_coupling": 0.962,
       "macro_movement": 0.723,
@@ -56,6 +64,10 @@
     "pole-fill",
     "high-energy",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

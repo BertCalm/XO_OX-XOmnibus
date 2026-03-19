@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Slow Exposure",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Odyssey",
+    "Obscura"
+  ],
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.14,
+      "macro_movement": 0.24,
+      "macro_coupling": 0.76,
+      "macro_space": 0.94
+    },
+    "Obscura": {
+      "macro_character": 0.11,
+      "macro_movement": 0.19,
+      "macro_coupling": 0.81,
+      "macro_space": 0.97
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "exposure",
     "slow"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "A long-exposure photograph of a cold drift — blurred with silver chemistry."
+>>>>>>> origin/v1-launch-prep
 }

@@ -37,13 +37,21 @@
   "mood": "Aether",
   "name": "CROSS AET 03",
   "parameters": {
+<<<<<<< HEAD
     "OddfeliX": {
+=======
+    "Organon": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.248,
       "macro_coupling": 0.546,
       "macro_movement": 0.944,
       "macro_space": 0.105
     },
+<<<<<<< HEAD
     "Organon": {
+=======
+    "OddfeliX": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.248,
       "macro_coupling": 0.546,
       "macro_movement": 0.944,
@@ -56,6 +64,10 @@
     "pole-fill",
     "cross-pole",
     "contrast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

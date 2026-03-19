@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOLLOW CURRENT 8",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overlap",
+    "Ouroboros"
+  ],
+  "parameters": {
+    "Overlap": {
+      "macro_character": 0.2483,
+      "macro_movement": 0.8653,
+      "macro_coupling": 0.1597,
+      "macro_space": 0.3274
+    },
+    "Ouroboros": {
+      "macro_character": 0.5777,
+      "macro_movement": 0.3127,
+      "macro_coupling": 0.7631,
+      "macro_space": 0.4983
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "sparse",
     "minimal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ANECHOIC HOLD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overbite",
+    "Osprey"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.597,
+      "macro_movement": 0.867,
+      "macro_coupling": 0.846,
+      "macro_space": 0.03
+    },
+    "Osprey": {
+      "macro_character": 0.138,
+      "macro_movement": 0.964,
+      "macro_coupling": 0.647,
+      "macro_space": 0.059
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "claustrophobic",
     "intimate",
     "xlow"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -15,6 +15,7 @@
   "engines": [
     "Ole"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -33,6 +34,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OLE DRAMA macro at peak — Afro-Latin trio in full voice. The circle that drives itself. Nobody sitting down.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "extended-family",
@@ -43,5 +49,25 @@
     "batch2-extended"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.68,
+    "movement": 0.82,
+    "density": 0.58,
+    "space": 0.52,
+    "aggression": 0.48
+  }
+>>>>>>> origin/v1-launch-prep
 }

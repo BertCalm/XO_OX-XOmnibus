@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SOLID ZONE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Orphica",
+    "Ombre"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.5311,
+      "macro_movement": 0.5589,
+      "macro_coupling": 0.7269,
+      "macro_space": 0.7553
+    },
+    "Ombre": {
+      "macro_character": 0.4426,
+      "macro_movement": 0.815,
+      "macro_coupling": 0.9568,
+      "macro_space": 0.4267
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "xhigh",
     "heavy",
     "coiled"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

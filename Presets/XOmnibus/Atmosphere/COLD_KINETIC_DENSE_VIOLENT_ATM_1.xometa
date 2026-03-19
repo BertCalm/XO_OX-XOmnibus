@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD_KINETIC_DENSE_VIOLENT_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orbital",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.527,
+      "macro_movement": 0.802,
+      "macro_coupling": 0.556,
+      "macro_space": 0.469
+    },
+    "OddOscar": {
+      "macro_character": 0.599,
+      "macro_movement": 0.777,
+      "macro_coupling": 0.409,
+      "macro_space": 0.415
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "kinetic",
     "dense",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

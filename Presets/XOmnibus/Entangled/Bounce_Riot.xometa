@@ -23,6 +23,20 @@
   "engines": [
     "Oblique",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Prism walls chaos-injected by Ouroboros — the bounce has no predictable reflection.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "oblique",
+    "ouroboros",
+    "bounce"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

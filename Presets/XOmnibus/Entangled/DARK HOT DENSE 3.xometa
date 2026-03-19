@@ -24,6 +24,7 @@
     "OddfeliX",
     "Onset"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "EDGE",
     "BODY",
@@ -38,6 +39,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddFelix × Onset — Timbre Blend coupling at extreme DNA corner.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "dark",
     "oddfelix",
@@ -47,5 +53,28 @@
     "diversity-push"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "dna": {
+    "brightness": 0.113,
+    "warmth": 0.89,
+    "movement": 0.591,
+    "density": 0.891,
+    "space": 0.489,
+    "aggression": 0.517
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddFelix",
+        "engineB": "Onset",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.837
+      }
+    ]
+  },
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

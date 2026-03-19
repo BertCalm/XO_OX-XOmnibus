@@ -3,6 +3,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/EngineProfiler.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <cstring>
@@ -792,6 +793,9 @@ public:
         profiler.prepare (sampleRate, maxBlockSize);
         profiler.setCpuBudgetFraction (0.22f);  // 22% CPU budget — generous for RK4 at 4x oversample
         aftertouch.prepare (sampleRate);
+
+        silenceGate.prepare (sampleRate, maxBlockSize);
+        silenceGate.setHoldTime (1000.0f);  // Ouroboros has infinite-sustain attractor voices
     }
 
     void releaseResources() override
@@ -873,7 +877,10 @@ public:
         {
             auto message = metadata.getMessage();
             if (message.isNoteOn())
+            {
+                silenceGate.wake();
                 handleNoteOn (message.getNoteNumber(), message.getFloatVelocity());
+            }
             else if (message.isNoteOff())
                 handleNoteOff (message.getNoteNumber());
             else if (message.isAllNotesOff() || message.isAllSoundOff())
@@ -891,6 +898,8 @@ public:
             else if (message.isController() && message.getControllerNumber() == 1)
                 modWheelAmount = message.getControllerValue() / 127.0f;
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         // D006: smooth aftertouch pressure and compute modulation value
         aftertouch.updateBlock (numSamples);
@@ -1281,6 +1290,8 @@ public:
         for (const auto& voice : voices)
             if (voice.active) ++count;
         activeVoiceCount.store (count, std::memory_order_relaxed);
+
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
 
     //==========================================================================
@@ -1402,6 +1413,8 @@ public:
     }
 
 private:
+
+    SilenceGate silenceGate;
 
     //==========================================================================
     //  PARAMETER DEFINITIONS

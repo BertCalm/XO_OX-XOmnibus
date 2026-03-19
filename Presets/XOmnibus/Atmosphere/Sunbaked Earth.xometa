@@ -3,12 +3,15 @@
   "description": "Sunbaked stone holding the heat of the afternoon. Dense mineral warmth.",
   "engines": [
     "Ottoni"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.622,

@@ -14,12 +14,15 @@
   "engines": [
     "Octopus",
     "Overworld"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.85,
@@ -50,6 +53,7 @@
     "aggressive",
     "overdrive"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Cephalopod intelligence at maximum overdrive — chip reality fractured by cold speed."
+>>>>>>> origin/v1-launch-prep
 }

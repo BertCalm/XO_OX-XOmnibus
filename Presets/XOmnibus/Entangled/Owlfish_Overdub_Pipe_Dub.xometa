@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -9,6 +10,40 @@
         "amount": 0.4
       }
     ]
+=======
+  "schema_version": 1,
+  "name": "Pipe Dub",
+  "mood": "Entangled",
+  "engines": [
+    "Owlfish",
+    "Overdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OWLFISH's massive pipe organ sub tones drive OVERDUB's filter cutoff via amplitude coupling. When the organ swells, the dub filter opens. When the organ sustains, the delay blooms. The oldest instrument class meeting the deepest Caribbean tradition — cathedral organ as dub send.",
+  "tags": [
+    "coupling",
+    "organ",
+    "dub",
+    "filter",
+    "sub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.75,
+    "movement": 0.45,
+    "density": 0.6,
+    "space": 0.7,
+    "aggression": 0.2
+>>>>>>> origin/v1-launch-prep
   },
   "couplingIntensity": "Medium",
   "description": "OWLFISH's massive pipe organ sub tones drive OVERDUB's filter cutoff via amplitude coupling. When the organ swells, the dub filter opens. When the organ sustains, the delay blooms. The oldest instrument class meeting the deepest Caribbean tradition — cathedral organ as dub send.",
@@ -33,6 +68,7 @@
   "mood": "Entangled",
   "name": "Pipe Dub",
   "parameters": {
+<<<<<<< HEAD
     "Overdub": {
       "dub_attack": 0.15,
       "dub_decay": 1.2,
@@ -58,6 +94,10 @@
       "owl_compRatio": 2.0,
       "owl_compThreshold": -12.0,
       "owl_fundWave": 0,
+=======
+    "Owlfish": {
+      "owl_portamento": 0.05,
+>>>>>>> origin/v1-launch-prep
       "owl_legatoMode": true,
       "owl_mixtur": 0.4,
       "owl_morphGlide": 0.3,

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK COLD FURY PRI 16",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Outwit",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.053,
+      "macro_movement": 0.304,
+      "macro_coupling": 0.479,
+      "macro_space": 0.66
+    },
+    "Oceanic": {
+      "macro_character": 0.007,
+      "macro_movement": 0.33,
+      "macro_coupling": 0.663,
+      "macro_space": 0.637
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "aggressive",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

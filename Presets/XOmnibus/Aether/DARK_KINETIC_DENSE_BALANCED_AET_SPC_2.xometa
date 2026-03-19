@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK KINETIC DENSE BALANCED AET SPC 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Overworld",
+    "Origami"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.176,
+      "macro_movement": 0.877,
+      "macro_coupling": 0.758,
+      "macro_space": 0.633
+    },
+    "Origami": {
+      "macro_character": 0.174,
+      "macro_movement": 0.873,
+      "macro_coupling": 0.739,
+      "macro_space": 0.606
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "gentle",
     "kinetic",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -25,6 +25,7 @@
     "Obbligato",
     "Ottoni"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -40,6 +41,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Triple brass GROW meets OBBLIGATO's BOND — two reeds locked to three brass voices in patina warmth.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "obbligato",

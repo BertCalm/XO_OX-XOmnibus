@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "VACANT EXPANSE",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overdub",
+    "Organon"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.511,
+      "macro_movement": 0.355,
+      "macro_coupling": 0.554,
+      "macro_space": 0.962
+    },
+    "Organon": {
+      "macro_character": 0.472,
+      "macro_movement": 0.387,
+      "macro_coupling": 0.693,
+      "macro_space": 1.0
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "spatial",
     "sparse",
     "open"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

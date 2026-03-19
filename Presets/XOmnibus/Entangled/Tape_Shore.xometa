@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Tape Shore",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Osprey"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.75,
+      "macro_movement": 0.53,
+      "macro_coupling": 0.68,
+      "macro_space": 0.44
+    },
+    "Osprey": {
+      "macro_character": 0.82,
+      "macro_movement": 0.33,
+      "macro_coupling": 0.68,
+      "macro_space": 0.38
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "warm-dense",
     "scorching"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

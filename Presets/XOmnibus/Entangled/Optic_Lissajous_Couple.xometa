@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Lissajous Couple",
+  "mood": "Entangled",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Lissajous mode with coupling output modulation active.",
+  "tags": [
+    "lissajous",
+    "couple",
+    "output",
+    "active",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.42,
+    "movement": 0.58,
+    "density": 0.52,
+    "space": 0.38,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 1.5,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.62,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 2,
+      "optic_pulseEvolve": 0.2,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.75,
+      "optic_inputGain": 0.78,
+      "optic_modDepth": 0.72,
+      "optic_modMixPulse": 0.5,
+      "optic_modMixSpec": 0.5,
+      "optic_vizMode": 2,
+      "optic_vizIntensity": 0.85,
+      "optic_vizSpeed": 0.6,
+      "optic_vizFeedback": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

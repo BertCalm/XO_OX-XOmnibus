@@ -15,6 +15,19 @@
   },
   "engines": [
     "Overbite"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cauldron harmonic — boiling slowly, dense as cast iron.",
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -27,6 +40,7 @@
   "parameters": {
     "Overbite": {}
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.381,
@@ -44,4 +58,10 @@
     "thick"
   ],
   "version": "1.0.0"
+=======
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

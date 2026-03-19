@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SOLAR STORM",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overdub",
+    "Obbligato"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.121,
+      "macro_movement": 0.133,
+      "macro_coupling": 0.465,
+      "macro_space": 0.531
+    },
+    "Obbligato": {
+      "macro_character": 0.559,
+      "macro_movement": 0.317,
+      "macro_coupling": 0.755,
+      "macro_space": 0.443
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "extreme",
     "high-warmth"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

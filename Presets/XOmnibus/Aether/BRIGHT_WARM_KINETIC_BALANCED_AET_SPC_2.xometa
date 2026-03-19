@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT WARM KINETIC BALANCED AET SPC 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Overworld",
+    "Obscura"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.942,
+      "macro_movement": 0.896,
+      "macro_coupling": 0.625,
+      "macro_space": 0.593
+    },
+    "Obscura": {
+      "macro_character": 0.925,
+      "macro_movement": 0.912,
+      "macro_coupling": 0.601,
+      "macro_space": 0.586
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "bright",
     "warm",
     "kinetic"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

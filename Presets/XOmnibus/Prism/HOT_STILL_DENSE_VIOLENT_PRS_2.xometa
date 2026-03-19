@@ -37,15 +37,25 @@
   "mood": "Prism",
   "name": "HOT_STILL_DENSE_VIOLENT_PRS_2",
   "parameters": {
+<<<<<<< HEAD
     "Orphica": {
       "macro_character": 0.678,
       "macro_coupling": 0.363,
+=======
+    "Ottoni": {
+      "macro_character": 0.754,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.041,
       "macro_space": 0.64
     },
+<<<<<<< HEAD
     "Ottoni": {
       "macro_character": 0.754,
       "macro_coupling": 0.793,
+=======
+    "Orphica": {
+      "macro_character": 0.678,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.041,
       "macro_space": 0.64
     }
@@ -57,6 +67,10 @@
     "still",
     "dense",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

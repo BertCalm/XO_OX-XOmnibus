@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_DENSE_VIOLENT_FAM_VOL_103",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OddfeliX",
+    "Oblong"
+  ],
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.08,
+      "macro_movement": 0.627,
+      "macro_coupling": 0.939,
+      "macro_space": 0.297
+    },
+    "Oblong": {
+      "macro_character": 0.057,
+      "macro_movement": 0.592,
+      "macro_coupling": 0.945,
+      "macro_space": 0.295
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "cold",
     "dense",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

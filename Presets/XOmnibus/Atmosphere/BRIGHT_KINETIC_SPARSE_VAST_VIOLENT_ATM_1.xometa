@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_KINETIC_SPARSE_VAST_VIOLENT_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organon",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.8539,
+      "macro_movement": 0.894,
+      "macro_coupling": 0.1111,
+      "macro_space": 0.9298
+    },
+    "Oceanic": {
+      "macro_character": 0.8074,
+      "macro_movement": 0.8911,
+      "macro_coupling": 0.1005,
+      "macro_space": 0.9443
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "sparse",
     "vast",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

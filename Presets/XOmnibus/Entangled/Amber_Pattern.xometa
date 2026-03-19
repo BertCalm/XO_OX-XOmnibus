@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Deep",
+=======
+  "schema_version": 1,
+  "name": "Amber Pattern",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Oblong"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Oblong harmonic weight biases OUTWIT cell birth/death ratios — warmth shapes the automata population",
   "dna": {
     "aggression": 0.45,
@@ -40,6 +52,18 @@
   "name": "Amber Pattern",
   "parameters": {
     "Outwit": {
+<<<<<<< HEAD
+=======
+      "owit_rule": 73,
+      "owit_arms": 4,
+      "owit_cellSize": 0.378,
+      "owit_density": 0.456,
+      "owit_evolveRate": 0.592,
+      "owit_mutateProb": 0.129,
+      "owit_pitchSpread": 0.302,
+      "owit_filterCutoff": 0.345,
+      "owit_filterReso": 0.491,
+>>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.154,
       "owit_ampRelease": 0.643,
       "owit_armStagger": 0.15,

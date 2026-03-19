@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "FROZEN FLUX 6",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Outwit",
+    "Opal"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.3308,
+      "macro_movement": 0.7029,
+      "macro_coupling": 0.2709,
+      "macro_space": 0.2514
+    },
+    "Opal": {
+      "macro_character": 0.1207,
+      "macro_movement": 0.1926,
+      "macro_coupling": 0.1196,
+      "macro_space": 0.5359
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "cold",
     "shifting"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

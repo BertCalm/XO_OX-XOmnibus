@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Black Kelp Forest",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Shadowy environmental texture. Low brightness, expansive space. OUROBOROS in void register.",
   "dna": {
     "aggression": 0.142,
@@ -47,5 +58,40 @@
     "environmental",
     "deep"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "CYCLE",
+    "TENSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.138,
+    "warmth": 0.444,
+    "movement": 0.297,
+    "density": 0.419,
+    "space": 0.829,
+    "aggression": 0.142
+  },
+  "parameters": {
+    "Ouroboros": {
+      "cycle": 0.108,
+      "tension": 0.259,
+      "coupling": 0.325,
+      "space": 0.782
+    }
+  },
+  "macros": {
+    "CYCLE": 0.108,
+    "TENSION": 0.259,
+    "COUPLING": 0.325,
+    "SPACE": 0.782
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

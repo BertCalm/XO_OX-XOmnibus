@@ -16,6 +16,18 @@
   },
   "engines": [
     "Owlfish"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — bright hot violent kinetic. Designed for FLOW coupling with XOwlfish.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "flow",
+    "owlfish"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "RADIANCE",
@@ -27,6 +39,7 @@
   "name": "BRIGHT HOT VIOLENT KINETIC 3",
   "parameters": {
     "Owlfish": {
+<<<<<<< HEAD
       "couplingBus": 3,
       "couplingLevel": 0.646
     }
@@ -47,4 +60,13 @@
     "owlfish"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.646,
+      "couplingBus": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

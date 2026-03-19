@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Tape Slab",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Oblong"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.81,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.92,
+      "macro_space": 0.15
+    },
+    "Oblong": {
+      "macro_character": 0.74,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.83,
+      "macro_space": 0.29
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "warm-dense",
     "scorching"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

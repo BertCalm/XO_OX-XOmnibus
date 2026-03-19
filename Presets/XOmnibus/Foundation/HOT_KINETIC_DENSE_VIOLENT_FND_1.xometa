@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT_KINETIC_DENSE_VIOLENT_FND_1",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Oracle",
+    "Obsidian"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.278,
+      "macro_movement": 0.12,
+      "macro_coupling": 0.551,
+      "macro_space": 0.753
+    },
+    "Obsidian": {
+      "macro_character": 0.45,
+      "macro_movement": 0.272,
+      "macro_coupling": 0.473,
+      "macro_space": 0.798
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "dense",
     "violent",
     "aggressive"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

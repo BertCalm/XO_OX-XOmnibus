@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Submarine Haze",
+  "mood": "Aether",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "biological",
+    "colony",
+    "organic",
+    "living"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.17,
+    "warmth": 0.83,
+    "movement": 0.17,
+    "density": 0.73,
+    "space": 0.91,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 22.0,
+      "org_seed": 40000,
+      "org_stepRate": 0.5,
+      "org_scope": 16,
+      "org_mutate": 0.004,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.67,
+      "org_filterCutoff": 1500.0,
+      "org_filterRes": 0.1,
+      "org_velCutoff": 0.22,
+      "org_ampAtk": 0.85,
+      "org_ampDec": 2.4,
+      "org_ampSus": 0.94,
+      "org_ampRel": 5.0,
+      "org_lfo1Rate": 0.025,
+      "org_lfo1Depth": 0.15,
+      "org_lfo2Rate": 0.015,
+      "org_lfo2Depth": 0.18,
+      "org_reverbMix": 0.9,
+      "org_macroRule": 1.0,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.01
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.22,
+    "MOVEMENT": 0.16,
+    "COUPLING": 0.0,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

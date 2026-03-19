@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -54,6 +55,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "Red Hibiscus",
+  "mood": "Entangled",
+  "engines": [
+    "Ole",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "OLE warmth frequency-shifts into strange attractor territory — red hibiscus chaos.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -63,5 +76,47 @@
     "shift"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.72,
+    "movement": 0.68,
+    "density": 0.55,
+    "space": 0.4,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.68,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.58,
+      "macro_space": 0.38
+    },
+    "Ouroboros": {
+      "macro_character": 0.6,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.58,
+      "macro_space": 0.44
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OLE",
+        "engineB": "OUROBOROS",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.58
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.64,
+    "MOVEMENT": 0.685,
+    "COUPLING": 0.58,
+    "SPACE": 0.41
+  },
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

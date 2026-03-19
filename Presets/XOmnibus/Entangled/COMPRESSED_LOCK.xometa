@@ -58,6 +58,10 @@
     "xhigh",
     "tectonic",
     "packed"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

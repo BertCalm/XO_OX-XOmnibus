@@ -37,13 +37,21 @@
   "mood": "Entangled",
   "name": "CROSS ENT 01",
   "parameters": {
+<<<<<<< HEAD
     "Ombre": {
+=======
+    "Osteria": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.956,
       "macro_coupling": 0.307,
       "macro_movement": 0.517,
       "macro_space": 0.514
     },
+<<<<<<< HEAD
     "Osteria": {
+=======
+    "Ombre": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.956,
       "macro_coupling": 0.307,
       "macro_movement": 0.517,
@@ -56,6 +64,10 @@
     "pole-fill",
     "cross-pole",
     "contrast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "name": "Leash Drift",
+  "mood": "Atmosphere",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Leash held loosely — attractor drifts gently across the basin, creating soft atmospheric movement.",
+  "tags": ["leash", "drift", "loose", "soft", "atmosphere"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.5, "warmth": 0.52, "movement": 0.4, "density": 0.45, "space": 0.82, "aggression": 0.15},
+  "parameters": {"Ouroboros": {
+    "ouro_topology": 2,
+    "ouro_rate": 0.32,
+    "ouro_chaosIndex": 0.28,
+    "ouro_leash": 0.52,
+    "ouro_theta": 0.45,
+    "ouro_phi": 0.55,
+    "ouro_damping": 0.42,
+    "ouro_injection": 0.32
+  }},
+  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.4, "COUPLING": 0.5, "SPACE": 0.8},
+  "coupling": {"pairs": []}
+}

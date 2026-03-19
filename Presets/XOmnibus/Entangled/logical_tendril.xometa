@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Deep",
+=======
+  "schema_version": 1,
+  "name": "Logical Tendril",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Organon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Lion's Mane knot-topology FDN entangled with ORGANON's logical-metabolic character (Aristotelian organ-pipe variational synthesis). Coupling: Pitch Sync.",
   "dna": {
     "aggression": 0.26,
@@ -39,6 +51,7 @@
   "mood": "Entangled",
   "name": "Logical Tendril",
   "parameters": {
+<<<<<<< HEAD
     "Organon": {
       "organon_ampAttack": 0.31,
       "organon_ampRelease": 0.5,
@@ -57,6 +70,11 @@
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.86,
       "olap_crossfeedAmt": 0.31,
+=======
+    "Overlap": {
+      "olap_size": 0.56,
+      "olap_decay": 0.77,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.41,
       "olap_decay": 0.77,
       "olap_diffusion": 0.62,
@@ -69,11 +87,29 @@
       "olap_modRate": 0.18,
       "olap_nodeCount": 15,
       "olap_outputLevel": 0.77,
+<<<<<<< HEAD
       "olap_outputPan": -0.06,
       "olap_preDelay": 0.05,
       "olap_shimmerMix": 0.22,
       "olap_size": 0.56,
       "olap_spinRate": 0.22
+=======
+      "olap_outputPan": -0.06
+    },
+    "Organon": {
+      "organon_character": 0.49,
+      "organon_movement": 0.67,
+      "organon_coupling": 0.59,
+      "organon_space": 0.58,
+      "organon_filterCutoff": 0.78,
+      "organon_filterReso": 0.46,
+      "organon_ampAttack": 0.31,
+      "organon_ampSustain": 0.45,
+      "organon_ampRelease": 0.5,
+      "organon_reverbMix": 0.38,
+      "organon_couplingLevel": 0.66,
+      "organon_outputLevel": 0.87
+>>>>>>> origin/v1-launch-prep
     }
   },
   "schema_version": 1,

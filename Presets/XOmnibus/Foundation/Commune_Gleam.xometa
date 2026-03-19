@@ -15,6 +15,17 @@
   },
   "engines": [
     "Ohm"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OHM — bright extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme-brightness"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -26,6 +37,13 @@
   "name": "Commune Gleam",
   "parameters": {
     "Ohm": {
+<<<<<<< HEAD
+=======
+      "ohm_commune": 0.34,
+      "ohm_meddling": 0.69,
+      "ohm_filterCutoff": 0.65,
+      "ohm_filterReso": 0.85,
+>>>>>>> origin/v1-launch-prep
       "ohm_ampAttack": 682.6,
       "ohm_ampDecay": 688.2,
       "ohm_ampRelease": 256.7,
@@ -44,6 +62,7 @@
       "ohm_space": 0.92
     }
   },
+<<<<<<< HEAD
   "schema_version": 1,
   "sonic_dna": {
     "aggression": 0.87,
@@ -59,4 +78,9 @@
     "extreme-brightness"
   ],
   "version": "1.0"
+=======
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

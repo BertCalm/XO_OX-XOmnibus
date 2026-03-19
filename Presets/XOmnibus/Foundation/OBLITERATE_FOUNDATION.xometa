@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "OBLITERATE FOUNDATION",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OddOscar",
+    "Oblique"
+  ],
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.476,
+      "macro_movement": 0.317,
+      "macro_coupling": 0.735,
+      "macro_space": 0.376
+    },
+    "Oblique": {
+      "macro_character": 0.799,
+      "macro_movement": 0.41,
+      "macro_coupling": 0.79,
+      "macro_space": 0.674
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "aggressive",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

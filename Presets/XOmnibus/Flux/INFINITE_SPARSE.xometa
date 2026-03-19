@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "INFINITE SPARSE",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overbite",
+    "Ohm"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.547,
+      "macro_movement": 0.44,
+      "macro_coupling": 0.425,
+      "macro_space": 0.924
+    },
+    "Ohm": {
+      "macro_character": 0.557,
+      "macro_movement": 0.488,
+      "macro_coupling": 0.296,
+      "macro_space": 0.968
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "spatial",
     "sparse",
     "open"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

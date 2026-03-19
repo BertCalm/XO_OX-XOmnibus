@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Deep",
+=======
+  "schema_version": 1,
+  "name": "Chromatophore Diffusion",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Octopus"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Octopus chromatophore modulation feeds OVERLAP shimmer channels — skin color becomes spectral bloom",
   "dna": {
     "aggression": 0.4,
@@ -40,9 +52,14 @@
   "name": "Chromatophore Diffusion",
   "parameters": {
     "Overlap": {
+<<<<<<< HEAD
       "olap_couplingBus": 0,
       "olap_couplingLevel": 0.684,
       "olap_crossfeedAmt": 0.476,
+=======
+      "olap_size": 0.697,
+      "olap_decay": 0.819,
+>>>>>>> origin/v1-launch-prep
       "olap_damping": 0.357,
       "olap_decay": 0.819,
       "olap_diffusion": 0.533,

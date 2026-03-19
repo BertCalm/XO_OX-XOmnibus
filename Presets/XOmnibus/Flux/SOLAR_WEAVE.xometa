@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SOLAR WEAVE",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overworld",
+    "Overdub"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.721,
+      "macro_movement": 0.552,
+      "macro_coupling": 0.912,
+      "macro_space": 0.343
+    },
+    "Overdub": {
+      "macro_character": 0.723,
+      "macro_movement": 0.477,
+      "macro_coupling": 1.0,
+      "macro_space": 0.208
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "bright",
     "dense",
     "saturated"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

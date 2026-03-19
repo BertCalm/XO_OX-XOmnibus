@@ -14,12 +14,15 @@
   "engines": [
     "Ole",
     "Octopus"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.7,
@@ -50,6 +53,7 @@
     "octopus",
     "afro-latin"
   ],
+<<<<<<< HEAD
   "version": "1.0",
   "dna": {
     "brightness": 0.5,
@@ -59,4 +63,7 @@
     "space": 0.5,
     "aggression": 0.4
   }
+=======
+  "description": "Octopus cloud conceals the rhythm — African pulse heard dimly through dark water"
+>>>>>>> origin/v1-launch-prep
 }

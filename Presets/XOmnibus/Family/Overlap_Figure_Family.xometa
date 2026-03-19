@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Figure Family",
+  "mood": "Family",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A figure-eight topology as family structure \u2014 two parent loops connected at the crossing point, six children voices distributing between them. Each loop has a distinct acoustic character, a nature and nurture.",
+  "tags": [
+    "family",
+    "figure-eight",
+    "parent-child",
+    "structural",
+    "family"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.62,
+    "movement": 0.48,
+    "density": 0.65,
+    "space": 0.82,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 2,
+      "olap_delayFeedback": 0.58,
+      "olap_diffusion": 0.72,
+      "olap_spread": 0.85,
+      "olap_decay": 5.5,
+      "olap_modDepth": 0.2,
+      "olap_modRate": 0.09,
+      "olap_damping": 0.42,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Submarine Drift",
+  "mood": "Submerged",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 126 in ocean current \u2014 arms drifting downward on a thermohaline conveyor. The fractal structure slowly sinks through water density layers, changing character with depth.",
+  "tags": [
+    "submerged",
+    "drifting",
+    "current",
+    "sinking",
+    "fractal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.6,
+    "movement": 0.38,
+    "density": 0.48,
+    "space": 0.8,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 126,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.18,
+      "owit_armSpread": 0.58,
+      "owit_sync": 0.15,
+      "owit_feedbackAmt": 0.42,
+      "owit_chaos": 0.3,
+      "owit_density": 0.48,
+      "owit_ampAttack": 0.25,
+      "owit_ampDecay": 0.6,
+      "owit_ampSustain": 0.62,
+      "owit_ampRelease": 3.0,
+      "owit_filterCutoff": 0.35,
+      "owit_filterRes": 0.22,
+      "owit_lfoRate": 0.05,
+      "owit_lfoDepth": 0.14,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

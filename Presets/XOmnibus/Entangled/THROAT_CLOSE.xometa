@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "THROAT CLOSE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Ottoni",
+    "Orphica"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.728,
+      "macro_movement": 0.318,
+      "macro_coupling": 0.935,
+      "macro_space": 0.061
+    },
+    "Orphica": {
+      "macro_character": 0.075,
+      "macro_movement": 0.846,
+      "macro_coupling": 0.873,
+      "macro_space": 0.015
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "claustrophobic",
     "intimate",
     "xlow"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -3,12 +3,15 @@
   "description": "Phosphor coating on a CRT screen. Bright, buzzing, slightly toxic.",
   "engines": [
     "Optic"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.571,

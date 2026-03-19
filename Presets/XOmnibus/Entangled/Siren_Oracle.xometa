@@ -1,5 +1,32 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "schema_version": 1,
+  "name": "Siren Oracle",
+  "mood": "Entangled",
+  "engines": [
+    "Orphica",
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Filter coupling — ORPHICA's bright filter lattice intersects ORACLE's maqam framework — brightness 0.90.",
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.74,
+      "macro_movement": 0.6,
+      "macro_coupling": 0.74,
+      "macro_space": 0.72
+    },
+    "Oracle": {
+      "macro_character": 0.6,
+      "macro_movement": 0.64,
+      "macro_coupling": 0.66,
+      "macro_space": 0.56
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {

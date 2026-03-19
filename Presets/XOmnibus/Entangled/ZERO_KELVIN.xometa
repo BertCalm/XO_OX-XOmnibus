@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "ZERO KELVIN",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.075,
+      "macro_movement": 0.754,
+      "macro_coupling": 0.226,
+      "macro_space": 0.676
+    },
+    "Odyssey": {
+      "macro_character": 0.674,
+      "macro_movement": 0.397,
+      "macro_coupling": 0.846,
+      "macro_space": 0.557
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "cold",
     "clinical",
     "icy"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

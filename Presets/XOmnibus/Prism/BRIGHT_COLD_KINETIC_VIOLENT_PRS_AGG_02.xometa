@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT COLD KINETIC VIOLENT PRS AGG 2",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Ole",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.939,
+      "macro_movement": 0.888,
+      "macro_coupling": 0.872,
+      "macro_space": 0.517
+    },
+    "Ocelot": {
+      "macro_character": 0.961,
+      "macro_movement": 0.881,
+      "macro_coupling": 0.913,
+      "macro_space": 0.527
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "bright",
     "kinetic"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Waterfall Together",
+  "mood": "Family",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Waterfall visualization of shared family signal.",
+  "tags": [
+    "waterfall",
+    "shared",
+    "together",
+    "family",
+    "family"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.48,
+    "movement": 0.45,
+    "density": 0.5,
+    "space": 0.38,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 0.8,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.5,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 1,
+      "optic_pulseEvolve": 0.08,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.68,
+      "optic_inputGain": 0.75,
+      "optic_modDepth": 0.55,
+      "optic_modMixPulse": 0.38,
+      "optic_modMixSpec": 0.62,
+      "optic_vizMode": 3,
+      "optic_vizIntensity": 0.75,
+      "optic_vizSpeed": 0.45,
+      "optic_vizFeedback": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

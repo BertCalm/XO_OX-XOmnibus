@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BARE FLUX 7",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Ohm",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Ohm": {
+      "macro_character": 0.2496,
+      "macro_movement": 0.1134,
+      "macro_coupling": 0.7357,
+      "macro_space": 0.499
+    },
+    "OddOscar": {
+      "macro_character": 0.387,
+      "macro_movement": 0.5617,
+      "macro_coupling": 0.2618,
+      "macro_space": 0.2603
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "sparse",
     "minimal"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

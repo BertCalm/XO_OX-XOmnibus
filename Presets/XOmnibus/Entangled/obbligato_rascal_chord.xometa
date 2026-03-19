@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "Extreme",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "OBBLIGATO Rascal Chord",
+  "mood": "Entangled",
+  "engines": [
+    "Obbligato",
+    "Organon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Obligatory reeds breathe through variational metabolism — OBBLIGATO's BOND macro drives ORGANON's cellular respiration.",
   "dna": {
     "aggression": 0.2,

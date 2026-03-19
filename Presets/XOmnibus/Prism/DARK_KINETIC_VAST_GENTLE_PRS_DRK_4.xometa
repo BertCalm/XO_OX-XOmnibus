@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_KINETIC_VAST_GENTLE_PRS_DRK_4",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Owlfish",
+    "Origami"
+  ],
+  "parameters": {
+    "Owlfish": {
+      "macro_character": 0.3962,
+      "macro_movement": 0.9645,
+      "macro_coupling": 0.55,
+      "macro_space": 0.9493
+    },
+    "Origami": {
+      "macro_character": 0.3681,
+      "macro_movement": 0.9458,
+      "macro_coupling": 0.5214,
+      "macro_space": 0.9141
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "kinetic",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

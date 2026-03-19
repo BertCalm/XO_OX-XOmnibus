@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK VAST KINETIC PRI 08",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.392,
+      "macro_movement": 0.922,
+      "macro_coupling": 0.758,
+      "macro_space": 0.955
+    },
+    "Ombre": {
+      "macro_character": 0.324,
+      "macro_movement": 1.0,
+      "macro_coupling": 0.798,
+      "macro_space": 0.878
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "kinetic",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

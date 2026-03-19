@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Radiant Passage",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Opal",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.96,
+      "macro_movement": 0.43,
+      "macro_coupling": 0.68,
+      "macro_space": 0.75
+    },
+    "Odyssey": {
+      "macro_character": 0.79,
+      "macro_movement": 0.51,
+      "macro_coupling": 0.74,
+      "macro_space": 0.6
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "scorching",
     "spatial"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

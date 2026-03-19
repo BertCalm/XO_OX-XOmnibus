@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "BRIGHT STILL INTIMATE DENSE FAM 3",
+  "mood": "Family",
+  "engines": [
+    "Orbital",
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — family, bright, still, dense.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "bright",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.942,
+    "warmth": 0.518,
+    "movement": 0.086,
+    "density": 0.907,
+    "space": 0.066,
+    "aggression": 0.449
+  },
+  "parameters": {
+    "Orbital": {
+      "level": 0.711,
+      "pan": 0.053
+    },
+    "Obscura": {
+      "level": 0.786,
+      "pan": 0.02
+    }
+  },
+  "coupling": [
+    {
+      "source": "ORBITAL",
+      "destination": "OBSCURA",
+      "type": "ENVELOPE_LINK",
+      "amount": 0.438
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

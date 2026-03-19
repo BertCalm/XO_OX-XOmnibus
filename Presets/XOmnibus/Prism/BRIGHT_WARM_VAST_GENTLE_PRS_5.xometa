@@ -37,15 +37,25 @@
   "mood": "Prism",
   "name": "BRIGHT_WARM_VAST_GENTLE_PRS_5",
   "parameters": {
+<<<<<<< HEAD
     "Oblique": {
       "macro_character": 0.066,
       "macro_coupling": 0.379,
+=======
+    "Ole": {
+      "macro_character": 0.538,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.586,
       "macro_space": 0.907
     },
+<<<<<<< HEAD
     "Ole": {
       "macro_character": 0.538,
       "macro_coupling": 0.604,
+=======
+    "Oblique": {
+      "macro_character": 0.066,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.586,
       "macro_space": 0.907
     }
@@ -57,6 +67,10 @@
     "warm",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

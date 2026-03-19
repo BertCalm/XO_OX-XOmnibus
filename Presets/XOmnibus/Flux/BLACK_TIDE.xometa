@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BLACK TIDE",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Ouroboros",
+    "Oblong"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.844,
+      "macro_movement": 0.331,
+      "macro_coupling": 0.028,
+      "macro_space": 0.877
+    },
+    "Oblong": {
+      "macro_character": 0.261,
+      "macro_movement": 0.581,
+      "macro_coupling": 0.984,
+      "macro_space": 0.038
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "extreme",
     "low-movement"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

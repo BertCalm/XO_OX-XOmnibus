@@ -4,6 +4,7 @@
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 
@@ -241,6 +242,7 @@ public:
     {
         sampleRate = newSampleRate;
         sampleRateFloat = static_cast<float> (sampleRate);
+        silenceGate.prepare (newSampleRate, maxBlockSize);
 
         // Pre-allocate output cache buffers for coupling reads.
         // Other engines read our output via getSampleForCoupling().
@@ -369,6 +371,7 @@ public:
             const auto message = metadata.getMessage();
             if (message.isNoteOn())
             {
+                silenceGate.wake();
                 noteOn (message.getNoteNumber(), message.getFloatVelocity(),
                         effectiveSnap, pitchLocked, sweepDirection, effectiveDetune, unisonCount,
                         effectiveCutoff, effectiveResonance, maxPolyphony,
@@ -392,6 +395,13 @@ public:
             {
                 modWheelValue = message.getControllerValue() / 127.0f;
             }
+        }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
         }
 
         // D006: smooth aftertouch pressure and compute modulation values
@@ -676,6 +686,11 @@ public:
 
         // Store peak envelope for coupling output (channel 2)
         envelopeOutput = peakEnvelopeLevel;
+
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
+                                  numSamples);
     }
 
     //==========================================================================
@@ -867,6 +882,8 @@ public:
     int getMaxVoices() const override { return kMaxVoices; }
 
 private:
+    SilenceGate silenceGate;
+
     //==========================================================================
     //  Note Handling
     //==========================================================================

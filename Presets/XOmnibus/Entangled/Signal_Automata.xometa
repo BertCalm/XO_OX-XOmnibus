@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Deep",
+=======
+  "schema_version": 1,
+  "name": "Signal Automata",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "OPTIC zero-audio signal purity feeds OUTWIT without acoustic contamination — pure pattern",
   "dna": {
     "aggression": 0.525,
@@ -40,6 +52,18 @@
   "name": "Signal Automata",
   "parameters": {
     "Outwit": {
+<<<<<<< HEAD
+=======
+      "owit_rule": 30,
+      "owit_arms": 5,
+      "owit_cellSize": 0.193,
+      "owit_density": 0.395,
+      "owit_evolveRate": 0.267,
+      "owit_mutateProb": 0.225,
+      "owit_pitchSpread": 0.516,
+      "owit_filterCutoff": 0.324,
+      "owit_filterReso": 0.396,
+>>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.086,
       "owit_ampRelease": 0.314,
       "owit_armStagger": 0.028,

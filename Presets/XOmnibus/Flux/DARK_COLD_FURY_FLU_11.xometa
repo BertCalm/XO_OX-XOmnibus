@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK COLD FURY FLU 11",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overbite",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.055,
+      "macro_movement": 0.37,
+      "macro_coupling": 0.773,
+      "macro_space": 0.597
+    },
+    "Ocelot": {
+      "macro_character": 0.138,
+      "macro_movement": 0.374,
+      "macro_coupling": 0.521,
+      "macro_space": 0.598
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "aggressive",
     "extreme",
     "diversity-push"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

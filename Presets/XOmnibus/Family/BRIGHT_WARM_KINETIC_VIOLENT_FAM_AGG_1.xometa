@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_1",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "Opal",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.571,
+      "macro_movement": 0.808,
+      "macro_coupling": 0.694,
+      "macro_space": 0.834
+    },
+    "OddOscar": {
+      "macro_character": 0.606,
+      "macro_movement": 0.855,
+      "macro_coupling": 0.726,
+      "macro_space": 0.845
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "warm",
     "kinetic"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

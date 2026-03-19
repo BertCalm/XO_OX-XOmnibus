@@ -23,6 +23,20 @@
   "engines": [
     "Overworld",
     "Ouroboros"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "NES 2A03 glitch noise at maximum chaos injection from Ouroboros — chip fury without ceiling.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "overworld",
+    "ouroboros",
+    "chip"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

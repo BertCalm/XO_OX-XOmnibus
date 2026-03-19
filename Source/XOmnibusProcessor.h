@@ -7,6 +7,8 @@
 #include "Core/ChordMachine.h"
 #include "Core/MPEManager.h"
 #include "Core/PresetManager.h"
+#include "DSP/EngineProfiler.h"
+#include "DSP/SRO/SROAuditor.h"
 #include <atomic>
 #include <memory>
 
@@ -67,6 +69,9 @@ public:
     // MPE Manager — per-note expression for Roli Seaboard, Linnstrument, Sensel, etc.
     MPEManager& getMPEManager() { return mpeManager; }
 
+    // SRO: CPU profiling and resource optimization report (UI thread safe)
+    SROAuditor::Report getSROReport() const { return sroAuditor.getReport(); }
+
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
@@ -98,6 +103,10 @@ private:
 
     double currentSampleRate = 44100.0;
     int currentBlockSize = 512;
+
+    // SRO: Per-slot CPU profiling + fleet-wide auditor
+    std::array<EngineProfiler, MaxSlots> engineProfilers;
+    SROAuditor sroAuditor;
 
     // Cached raw parameter pointers — resolved once in prepareToPlay, read per-block.
     // Eliminates string-based hash map lookups from the audio thread.

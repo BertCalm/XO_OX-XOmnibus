@@ -25,6 +25,7 @@
     "Onset",
     "Ouroboros"
   ],
+<<<<<<< HEAD
   "legacy": {
     "sourceCategory": null,
     "sourceInstrument": null,
@@ -60,6 +61,11 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_SPARSE_INTIMATE. Designed to raise Entangled cosine diversity.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -71,5 +77,49 @@
     "intimate"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.6397,
+      "macro_movement": 0.0903,
+      "macro_coupling": 0.9331,
+      "macro_space": 0.3319
+    },
+    "Ouroboros": {
+      "macro_character": 0.5722,
+      "macro_movement": 0.063,
+      "macro_coupling": 0.855,
+      "macro_space": 0.9045
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ONSET",
+    "target": "OUROBOROS",
+    "amount": 0.9623
+  },
+  "macros": {
+    "CHARACTER": 0.6059,
+    "MOVEMENT": 0.0766,
+    "COUPLING": 0.8941,
+    "SPACE": 0.6182
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.8866,
+    "warmth": 0.9,
+    "movement": 0.0741,
+    "density": 0.1162,
+    "space": 0.081,
+    "aggression": 0.341
+  }
+>>>>>>> origin/v1-launch-prep
 }

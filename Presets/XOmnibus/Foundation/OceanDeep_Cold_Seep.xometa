@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Cold Seep",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "deep",
+    "warm",
+    "sub"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.72,
+    "movement": 0.2,
+    "density": 0.82,
+    "space": 0.65,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 0,
+      "deep_subOctave": -1,
+      "deep_harmonicLevel": 0.22,
+      "deep_pressure": 0.62,
+      "deep_bodyType": 2,
+      "deep_bodySize": 0.68,
+      "deep_bodyDamp": 0.72,
+      "deep_flashRate": 0.12,
+      "deep_flashBright": 0.18,
+      "deep_creatureSpeed": 0.18,
+      "deep_creatureDepth": 0.18,
+      "deep_darkness": 0.8,
+      "deep_filterReso": 0.22,
+      "deep_reverbMix": 0.42,
+      "deep_reverbSize": 0.72,
+      "deep_delayMix": 0.15,
+      "deep_rumble": 0.55,
+      "deep_attack": 0.015,
+      "deep_decay": 1.4,
+      "deep_sustain": 0.7,
+      "deep_release": 2.8
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.62,
+    "CREATURE": 0.18,
+    "WRECK": 0.28,
+    "ABYSS": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

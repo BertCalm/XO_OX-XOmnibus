@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Bellows Om Wall",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Ohm"
+  ],
+  "parameters": {
+    "Organon": {
+      "macro_character": 0.82,
+      "macro_movement": 0.6,
+      "macro_coupling": 0.77,
+      "macro_space": 0.65
+    },
+    "Ohm": {
+      "macro_character": 0.84,
+      "macro_movement": 0.74,
+      "macro_coupling": 0.62,
+      "macro_space": 0.62
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "warm-dense",
     "scorching"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Thermal Bloom",
+  "mood": "Atmosphere",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "pad",
+    "warm",
+    "evolving",
+    "shimmer"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.58,
+    "movement": 0.52,
+    "density": 0.58,
+    "space": 0.62,
+    "aggression": 0.16
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_sawDetune": 0.45,
+      "sky_sawLevel": 0.9,
+      "sky_filterFc": 9800.0,
+      "sky_filterRes": 0.14,
+      "sky_ampAttack": 0.25,
+      "sky_ampDecay": 0.42,
+      "sky_ampSustain": 0.82,
+      "sky_ampRelease": 2.0,
+      "sky_shimmerMix": 0.52,
+      "sky_shimmerDecay": 2.8,
+      "sky_shimmerOct": 0.88,
+      "sky_shimmerBright": 0.72,
+      "sky_lfoRate": 0.14,
+      "sky_lfoDepth": 9.5,
+      "sky_lfoShape": 0.38,
+      "sky_chorusMix": 0.38,
+      "sky_chorusRate": 0.36,
+      "sky_chorusDepth": 10.5,
+      "sky_reverbMix": 0.45,
+      "sky_reverbSize": 0.67,
+      "sky_outputGain": 0.82,
+      "sky_couplingAmt": 0.0,
+      "sky_macroCharacter": 0.62,
+      "sky_macroMovement": 0.5,
+      "sky_macroCoupling": 0.0,
+      "sky_macroSpace": 0.62,
+      "sky_shimmerSpread": 0.6,
+      "sky_shimmerPhase": 0.18,
+      "sky_velSensitivity": 0.78,
+      "sky_glide": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.62
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -24,6 +24,7 @@
     "Orca",
     "Overdub"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "HUNT",
     "BREACH",
@@ -81,6 +82,11 @@
     "space": 0.3402,
     "warmth": 0.9872
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark Hot Sparse Gentle character entanglement — ORCA × OVERDUB via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "dark",
@@ -89,5 +95,85 @@
     "gentle",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "HUNT",
+    "BREACH",
+    "ECHO",
+    "DEEP"
+  ],
+  "couplingIntensity": "Medium",
+  "dna": {
+    "brightness": 0.0997,
+    "warmth": 0.9872,
+    "movement": 0.5099,
+    "density": 0.0511,
+    "space": 0.3402,
+    "aggression": 0.0414
+  },
+  "sonic_dna": {
+    "brightness": 0.0997,
+    "warmth": 0.9872,
+    "movement": 0.5099,
+    "density": 0.0511,
+    "space": 0.3402,
+    "aggression": 0.0414
+  },
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.7275,
+      "macro_movement": 0.4918,
+      "macro_coupling": 0.6524,
+      "macro_space": 0.3445,
+      "filter_cutoff": 0.2856,
+      "filter_resonance": 0.0908,
+      "amp_attack": 0.2755,
+      "amp_release": 0.3034,
+      "reverb_mix": 0.3669,
+      "reverb_size": 0.41,
+      "drive": 0.0807,
+      "density": 0.0463,
+      "output_level": 0.6875,
+      "coupling_level": 0.5307
+    },
+    "Overdub": {
+      "macro_character": 0.7601,
+      "macro_movement": 0.5081,
+      "macro_coupling": 0.6403,
+      "macro_space": 0.3323,
+      "filter_cutoff": 0.2357,
+      "filter_resonance": 0.1311,
+      "amp_attack": 0.2103,
+      "amp_release": 0.276,
+      "reverb_mix": 0.3421,
+      "reverb_size": 0.3884,
+      "drive": 0.1226,
+      "density": 0.0206,
+      "output_level": 0.734,
+      "coupling_level": 0.5751
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORCA",
+    "target": "OVERDUB",
+    "amount": 0.711,
+    "pairs": [
+      {
+        "source": "ORCA",
+        "target": "OVERDUB",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.711
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.5434,
+    "MOVEMENT": 0.5099,
+    "COUPLING": 0.711,
+    "SPACE": 0.3402
+  }
+>>>>>>> origin/v1-launch-prep
 }

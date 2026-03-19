@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -12,6 +13,17 @@
   },
   "couplingIntensity": "High",
   "created": "2026-03-16",
+=======
+  "schema_version": 1,
+  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_FND_3",
+  "mood": "Foundation",
+  "engines": [
+    "Onset",
+    "Obese"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_WARM_SPARSE_VAST_GENTLE. Variant 3.",
   "dna": {
     "aggression": 0.091,
@@ -71,5 +83,49 @@
     "gentle"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Onset": {
+      "macro_character": 1.0,
+      "macro_movement": 0.481,
+      "macro_coupling": 0.057,
+      "macro_space": 0.988
+    },
+    "Obese": {
+      "macro_character": 1.0,
+      "macro_movement": 0.643,
+      "macro_coupling": 0.047,
+      "macro_space": 1.0
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ONSET",
+    "target": "OBESE",
+    "amount": 0.91
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.943,
+    "warmth": 0.948,
+    "movement": 0.554,
+    "density": 0.071,
+    "space": 0.954,
+    "aggression": 0.091
+  },
+  "macros": {
+    "CHARACTER": 1.0,
+    "MOVEMENT": 0.562,
+    "COUPLING": 0.052,
+    "SPACE": 0.994
+  }
+>>>>>>> origin/v1-launch-prep
 }

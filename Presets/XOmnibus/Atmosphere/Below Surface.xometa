@@ -3,12 +3,15 @@
   "description": "Abyssal plain stretching past comprehension. A drone built from fathoms.",
   "engines": [
     "Organon"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.336,

@@ -58,5 +58,9 @@
     "folded",
     "cloud"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Origami envelope shapes grain cloud density — the cloud folds into almost nothing."
+>>>>>>> origin/v1-launch-prep
 }

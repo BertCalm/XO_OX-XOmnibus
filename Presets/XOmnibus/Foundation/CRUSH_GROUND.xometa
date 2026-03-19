@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CRUSH GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Odyssey",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.798,
+      "macro_movement": 0.414,
+      "macro_coupling": 0.758,
+      "macro_space": 0.446
+    },
+    "OddfeliX": {
+      "macro_character": 0.361,
+      "macro_movement": 0.641,
+      "macro_coupling": 0.526,
+      "macro_space": 0.649
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "aggressive",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

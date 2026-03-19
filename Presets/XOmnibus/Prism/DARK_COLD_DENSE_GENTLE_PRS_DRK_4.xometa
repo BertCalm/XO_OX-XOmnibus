@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_COLD_DENSE_GENTLE_PRS_DRK_4",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "Orphica",
+    "Ole"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.0875,
+      "macro_movement": 0.5316,
+      "macro_coupling": 0.8748,
+      "macro_space": 0.3328
+    },
+    "Ole": {
+      "macro_character": 0.0638,
+      "macro_movement": 0.5489,
+      "macro_coupling": 0.8539,
+      "macro_space": 0.3245
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "cold",
     "dense",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

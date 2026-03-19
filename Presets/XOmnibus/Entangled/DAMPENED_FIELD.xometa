@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DAMPENED FIELD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Oblong"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.79,
+      "macro_movement": 0.071,
+      "macro_coupling": 0.663,
+      "macro_space": 0.675
+    },
+    "Oblong": {
+      "macro_character": 0.116,
+      "macro_movement": 0.096,
+      "macro_coupling": 0.075,
+      "macro_space": 0.1
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "dampened"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

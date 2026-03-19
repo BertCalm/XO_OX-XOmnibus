@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Vermillion Void",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.11,
+      "macro_movement": 0.22,
+      "macro_coupling": 0.77,
+      "macro_space": 0.94
+    },
+    "Odyssey": {
+      "macro_character": 0.08,
+      "macro_movement": 0.17,
+      "macro_coupling": 0.82,
+      "macro_space": 0.97
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "vermillion",
     "void"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Odyssey's violet cools Origami's vermillion — two bright tones become cold grey."
+>>>>>>> origin/v1-launch-prep
 }

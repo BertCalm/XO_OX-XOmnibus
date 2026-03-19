@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": [
     {
@@ -43,6 +44,18 @@
   },
   "schema_version": 1,
   "sequencer": null,
+=======
+  "schema_version": 1,
+  "name": "HOT KINETIC DENSE VIOLENT FAM 4",
+  "mood": "Family",
+  "engines": [
+    "Ombre",
+    "Overdub"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners — family, warm, kinetic, dense.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "warm",
@@ -52,5 +65,36 @@
     "ultra-diverse"
   ],
   "tempo": null,
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.492,
+    "warmth": 0.914,
+    "movement": 0.948,
+    "density": 0.927,
+    "space": 0.506,
+    "aggression": 0.897
+  },
+  "parameters": {
+    "Ombre": {
+      "level": 0.705,
+      "pan": -0.139
+    },
+    "Overdub": {
+      "level": 0.768,
+      "pan": -0.129
+    }
+  },
+  "coupling": [
+    {
+      "source": "OMBRE",
+      "destination": "OVERDUB",
+      "type": "PITCH_SYNC",
+      "amount": 0.715
+    }
+  ],
+  "sequencer": null
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "HOT KINETIC DENSE VAST VIOLENT ENT2 5",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Orphica",
+    "Ocelot"
+  ],
+  "parameters": {
+    "Orphica": {
+      "macro_character": 0.716,
+      "macro_movement": 0.957,
+      "macro_coupling": 0.958,
+      "macro_space": 0.945
+    },
+    "Ocelot": {
+      "macro_character": 0.713,
+      "macro_movement": 0.947,
+      "macro_coupling": 0.958,
+      "macro_space": 0.972
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "vast",
     "violent"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

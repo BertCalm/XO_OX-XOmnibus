@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CRYO FLUX 8",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Origami",
+    "Octopus"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.5492,
+      "macro_movement": 0.9277,
+      "macro_coupling": 0.4381,
+      "macro_space": 0.6983
+    },
+    "Octopus": {
+      "macro_character": 0.1214,
+      "macro_movement": 0.9731,
+      "macro_coupling": 0.6089,
+      "macro_space": 0.2393
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "flux",
     "cold",
     "shifting"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

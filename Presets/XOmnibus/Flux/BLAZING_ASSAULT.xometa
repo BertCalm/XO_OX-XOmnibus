@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BLAZING ASSAULT",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.892,
+      "macro_movement": 0.466,
+      "macro_coupling": 0.683,
+      "macro_space": 0.452
+    },
+    "OddOscar": {
+      "macro_character": 0.879,
+      "macro_movement": 0.359,
+      "macro_coupling": 0.59,
+      "macro_space": 0.482
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "hot",
     "violent",
     "extreme"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

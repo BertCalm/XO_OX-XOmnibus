@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Thermal Cathedral",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Opal"
+  ],
+  "parameters": {
+    "Overdub": {
+      "macro_character": 0.73,
+      "macro_movement": 0.56,
+      "macro_coupling": 0.68,
+      "macro_space": 0.54
+    },
+    "Opal": {
+      "macro_character": 0.82,
+      "macro_movement": 0.76,
+      "macro_coupling": 0.49,
+      "macro_space": 0.63
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "warm",
     "scorching",
     "spatial"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

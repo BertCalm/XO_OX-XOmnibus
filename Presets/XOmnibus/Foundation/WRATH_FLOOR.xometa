@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "WRATH FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Osteria",
+    "Octopus"
+  ],
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.68,
+      "macro_movement": 0.562,
+      "macro_coupling": 0.389,
+      "macro_space": 0.586
+    },
+    "Octopus": {
+      "macro_character": 0.547,
+      "macro_movement": 0.602,
+      "macro_coupling": 0.68,
+      "macro_space": 0.424
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "foundation",
     "aggressive",
     "harsh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

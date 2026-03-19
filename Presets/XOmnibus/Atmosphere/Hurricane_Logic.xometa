@@ -1,9 +1,20 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": []
   },
   "couplingIntensity": "None",
+=======
+  "schema_version": 1,
+  "name": "Hurricane Logic",
+  "mood": "Atmosphere",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Weather system in motion. High movement, active aggression. ONSET kinetic register.",
   "dna": {
     "aggression": 0.559,
@@ -47,5 +58,40 @@
     "weather",
     "dynamic"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "dna": {
+    "brightness": 0.614,
+    "warmth": 0.473,
+    "movement": 0.871,
+    "density": 0.515,
+    "space": 0.474,
+    "aggression": 0.559
+  },
+  "parameters": {
+    "Onset": {
+      "machine": 0.65,
+      "punch": 0.89,
+      "space": 0.351,
+      "mutate": 0.429
+    }
+  },
+  "macros": {
+    "MACHINE": 0.65,
+    "PUNCH": 0.89,
+    "SPACE": 0.351,
+    "MUTATE": 0.429
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

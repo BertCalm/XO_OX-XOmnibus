@@ -16,6 +16,18 @@
   },
   "engines": [
     "Ombre"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — cold dense kinetic intimate. Designed for PULSE coupling with XOmbre.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "pulse",
+    "ombre"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "FLOW",
@@ -27,6 +39,7 @@
   "name": "COLD DENSE KINETIC INTIMATE 4",
   "parameters": {
     "Ombre": {
+<<<<<<< HEAD
       "couplingBus": 0,
       "couplingLevel": 0.874
     }
@@ -47,4 +60,13 @@
     "ombre"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.874,
+      "couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

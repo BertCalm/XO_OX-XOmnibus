@@ -1,4 +1,14 @@
 {
+<<<<<<< HEAD
+=======
+  "schema_version": 1,
+  "name": "Afro Enzyme",
+  "mood": "Entangled",
+  "engines": [
+    "Ole",
+    "Organon"
+  ],
+>>>>>>> origin/v1-launch-prep
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -58,6 +68,10 @@
     "organon",
     "envelope",
     "afro"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

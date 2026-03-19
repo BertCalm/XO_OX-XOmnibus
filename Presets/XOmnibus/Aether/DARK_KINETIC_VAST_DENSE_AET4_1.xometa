@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_KINETIC_VAST_DENSE_AET4_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Origami",
+    "Oracle"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.3692,
+      "macro_movement": 0.7072,
+      "macro_coupling": 0.7058,
+      "macro_space": 0.4981
+    },
+    "Oracle": {
+      "macro_character": 0.8343,
+      "macro_movement": 0.618,
+      "macro_coupling": 0.2677,
+      "macro_space": 0.4959
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "dark",
     "vast",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

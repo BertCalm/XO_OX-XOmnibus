@@ -58,5 +58,9 @@
     "lattice",
     "oracle"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Oracle shifts Obsidian's crystal lattice frequencies — prophecy encoded in facets."
+>>>>>>> origin/v1-launch-prep
 }

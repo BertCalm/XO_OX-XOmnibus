@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Spectrum Storm",
+  "mood": "Flux",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Spectral analyzer in storm mode. All frequencies active.",
+  "tags": [
+    "spectrum",
+    "storm",
+    "all",
+    "frequencies",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.25,
+    "movement": 0.82,
+    "density": 0.65,
+    "space": 0.38,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 3.0,
+      "optic_pulseShape": 4,
+      "optic_pulseAccent": 0.75,
+      "optic_pulseSwing": 0.25,
+      "optic_pulseSubdiv": 4,
+      "optic_pulseEvolve": 0.8,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.95,
+      "optic_inputGain": 0.88,
+      "optic_modDepth": 0.82,
+      "optic_modMixPulse": 0.12,
+      "optic_modMixSpec": 0.88,
+      "optic_vizMode": 1,
+      "optic_vizIntensity": 0.95,
+      "optic_vizSpeed": 0.88,
+      "optic_vizFeedback": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

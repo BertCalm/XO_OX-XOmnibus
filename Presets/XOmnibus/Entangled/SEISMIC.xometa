@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "SEISMIC",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "OddfeliX"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.612,
+      "macro_movement": 0.96,
+      "macro_coupling": 0.086,
+      "macro_space": 0.309
+    },
+    "OddfeliX": {
+      "macro_character": 1.0,
+      "macro_movement": 0.935,
+      "macro_coupling": 0.719,
+      "macro_space": 0.526
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "chaotic",
     "high-energy"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_STILL_DENSE_VIOLENT_FLX_SLW_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Oracle",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.917,
+      "macro_movement": 0.028,
+      "macro_coupling": 0.939,
+      "macro_space": 0.408
+    },
+    "Oceanic": {
+      "macro_character": 0.849,
+      "macro_movement": 0.023,
+      "macro_coupling": 0.872,
+      "macro_space": 0.416
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "dense",
     "violent",
     "frozen-instability"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

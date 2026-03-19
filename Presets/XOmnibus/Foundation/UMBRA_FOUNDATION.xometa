@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "UMBRA FOUNDATION",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Ouroboros",
+    "Optic"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.99,
+      "macro_movement": 0.305,
+      "macro_coupling": 0.621,
+      "macro_space": 0.61
+    },
+    "Optic": {
+      "macro_character": 0.74,
+      "macro_movement": 0.948,
+      "macro_coupling": 0.208,
+      "macro_space": 0.211
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -56,6 +80,10 @@
     "dark",
     "extreme",
     "high-space"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

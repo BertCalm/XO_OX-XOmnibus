@@ -24,6 +24,7 @@
     "Oracle",
     "Overworld"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "SIGHT",
     "OMEN",
@@ -81,6 +82,11 @@
     "space": 0.1151,
     "warmth": 0.0883
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark Cold Kinetic Intimate character entanglement — ORACLE × OVERWORLD via Phase Lock. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "dark",
@@ -89,5 +95,85 @@
     "intimate",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "SIGHT",
+    "OMEN",
+    "VISION",
+    "ETHER"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.0647,
+    "warmth": 0.0883,
+    "movement": 0.8885,
+    "density": 0.672,
+    "space": 0.1151,
+    "aggression": 0.6905
+  },
+  "sonic_dna": {
+    "brightness": 0.0647,
+    "warmth": 0.0883,
+    "movement": 0.8885,
+    "density": 0.672,
+    "space": 0.1151,
+    "aggression": 0.6905
+  },
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.3736,
+      "macro_movement": 0.8751,
+      "macro_coupling": 0.8762,
+      "macro_space": 0.1393,
+      "filter_cutoff": 0.2744,
+      "filter_resonance": 0.4702,
+      "amp_attack": 0.0759,
+      "amp_release": 0.1921,
+      "reverb_mix": 0.1819,
+      "reverb_size": 0.2989,
+      "drive": 0.6311,
+      "density": 0.6498,
+      "output_level": 0.8933,
+      "coupling_level": 0.823
+    },
+    "Overworld": {
+      "macro_character": 0.3391,
+      "macro_movement": 0.9121,
+      "macro_coupling": 0.8199,
+      "macro_space": 0.077,
+      "filter_cutoff": 0.2208,
+      "filter_resonance": 0.4316,
+      "amp_attack": 0.1237,
+      "amp_release": 0.2065,
+      "reverb_mix": 0.1956,
+      "reverb_size": 0.2804,
+      "drive": 0.5944,
+      "density": 0.7105,
+      "output_level": 0.8709,
+      "coupling_level": 0.8613
+    }
+  },
+  "coupling": {
+    "type": "PHASE_LOCK",
+    "source": "ORACLE",
+    "target": "OVERWORLD",
+    "amount": 0.9497,
+    "pairs": [
+      {
+        "source": "ORACLE",
+        "target": "OVERWORLD",
+        "type": "PHASE_LOCK",
+        "amount": 0.9497
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.0765,
+    "MOVEMENT": 0.8885,
+    "COUPLING": 0.9497,
+    "SPACE": 0.1151
+  }
+>>>>>>> origin/v1-launch-prep
 }

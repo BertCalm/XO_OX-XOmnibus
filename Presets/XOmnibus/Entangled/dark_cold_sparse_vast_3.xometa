@@ -16,6 +16,18 @@
   },
   "engines": [
     "Ocelot"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — dark cold sparse vast. Designed for WEAVE coupling with XOcelot.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "weave",
+    "ocelot"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "DEPTH",
@@ -27,6 +39,7 @@
   "name": "DARK COLD SPARSE VAST 3",
   "parameters": {
     "Ocelot": {
+<<<<<<< HEAD
       "couplingBus": 2,
       "couplingLevel": 0.668
     }
@@ -47,4 +60,13 @@
     "ocelot"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.668,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

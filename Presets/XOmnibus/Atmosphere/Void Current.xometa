@@ -3,12 +3,15 @@
   "description": "Cold dark water moving in geological time. Low, warm, unreachable.",
   "engines": [
     "Oracle"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.338,

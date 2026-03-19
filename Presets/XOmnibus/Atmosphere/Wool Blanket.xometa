@@ -3,12 +3,15 @@
   "description": "Wool blanket of low harmonics. Heavy warmth, near-zero movement.",
   "engines": [
     "Oblong"
+<<<<<<< HEAD
   ],
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
+=======
+>>>>>>> origin/v1-launch-prep
   ],
   "macros": {
     "CHARACTER": 0.724,

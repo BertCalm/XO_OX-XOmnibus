@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COLD_KINETIC_VAST_VIOLENT_FND_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Overworld",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.592,
+      "macro_movement": 0.811,
+      "macro_coupling": 0.735,
+      "macro_space": 0.274
+    },
+    "OddOscar": {
+      "macro_character": 0.25,
+      "macro_movement": 0.33,
+      "macro_coupling": 0.846,
+      "macro_space": 0.841
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "violent",
     "aggressive",
     "spatial"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

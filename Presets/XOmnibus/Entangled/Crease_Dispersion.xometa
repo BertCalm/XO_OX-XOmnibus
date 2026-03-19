@@ -58,5 +58,9 @@
     "crease",
     "dispersion"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Opal frequency-shifts Origami partials along grain scatter — crease becomes spectrum."
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Reactive Chaos",
+  "mood": "Flux",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Maximum reactivity in full chaos mode.",
+  "tags": [
+    "reactive",
+    "chaos",
+    "maximum",
+    "flux",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.28,
+    "movement": 0.92,
+    "density": 0.7,
+    "space": 0.38,
+    "aggression": 0.75
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 5.0,
+      "optic_pulseShape": 4,
+      "optic_pulseAccent": 0.88,
+      "optic_pulseSwing": 0.45,
+      "optic_pulseSubdiv": 5,
+      "optic_pulseEvolve": 0.92,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.99,
+      "optic_inputGain": 0.95,
+      "optic_modDepth": 0.88,
+      "optic_modMixPulse": 0.68,
+      "optic_modMixSpec": 0.32,
+      "optic_vizMode": 1,
+      "optic_vizIntensity": 0.98,
+      "optic_vizSpeed": 0.92,
+      "optic_vizFeedback": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

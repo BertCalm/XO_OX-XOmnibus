@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Mantle Pressure",
+  "mood": "Foundation",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 150 \u2014 symmetric and self-similar. The arms apply even, downward pressure like the mantle bearing the crust. Dense, warm, immovable.",
+  "tags": [
+    "foundation",
+    "symmetric",
+    "pressure",
+    "deep",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.65,
+    "movement": 0.3,
+    "density": 0.75,
+    "space": 0.4,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 150,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.03,
+      "owit_armSpread": 0.3,
+      "owit_sync": 0.8,
+      "owit_feedbackAmt": 0.3,
+      "owit_chaos": 0.12,
+      "owit_density": 0.75,
+      "owit_ampAttack": 0.12,
+      "owit_ampDecay": 0.35,
+      "owit_ampSustain": 0.92,
+      "owit_ampRelease": 1.1,
+      "owit_filterCutoff": 0.45,
+      "owit_filterRes": 0.2,
+      "owit_lfoRate": 0.05,
+      "owit_lfoDepth": 0.07,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

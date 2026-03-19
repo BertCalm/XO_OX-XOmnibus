@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DIM CLOUD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Osprey",
+    "Oblong"
+  ],
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.908,
+      "macro_movement": 0.113,
+      "macro_coupling": 0.22,
+      "macro_space": 0.812
+    },
+    "Oblong": {
+      "macro_character": 0.978,
+      "macro_movement": 0.045,
+      "macro_coupling": 0.655,
+      "macro_space": 0.444
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -55,6 +79,10 @@
     "entangled",
     "stillness",
     "dim"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -37,15 +37,25 @@
   "mood": "Prism",
   "name": "HOT_KINETIC_VAST_SPARSE_PRS_3",
   "parameters": {
+<<<<<<< HEAD
     "Origami": {
       "macro_character": 0.495,
       "macro_coupling": 0.624,
+=======
+    "Overworld": {
+      "macro_character": 0.611,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.875,
       "macro_space": 0.868
     },
+<<<<<<< HEAD
     "Overworld": {
       "macro_character": 0.611,
       "macro_coupling": 0.893,
+=======
+    "Origami": {
+      "macro_character": 0.495,
+>>>>>>> origin/v1-launch-prep
       "macro_movement": 0.875,
       "macro_space": 0.868
     }
@@ -57,6 +67,10 @@
     "kinetic",
     "vast",
     "sparse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

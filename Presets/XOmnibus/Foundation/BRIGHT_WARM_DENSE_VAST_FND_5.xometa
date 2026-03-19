@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_WARM_DENSE_VAST_FND_5",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "Ouroboros",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.312,
+      "macro_movement": 0.678,
+      "macro_coupling": 0.432,
+      "macro_space": 0.531
+    },
+    "OddOscar": {
+      "macro_character": 0.375,
+      "macro_movement": 0.833,
+      "macro_coupling": 0.569,
+      "macro_space": 0.511
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -59,6 +83,10 @@
     "dense",
     "vast",
     "spatial"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CRUCIBLE FOG",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overbite",
+    "Obscura"
+  ],
+  "parameters": {
+    "Overbite": {
+      "macro_character": 0.803,
+      "macro_movement": 0.482,
+      "macro_coupling": 0.26,
+      "macro_space": 0.848
+    },
+    "Obscura": {
+      "macro_character": 0.357,
+      "macro_movement": 0.617,
+      "macro_coupling": 0.826,
+      "macro_space": 0.871
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "abrasive",
     "hostile",
     "aggression-xhigh"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

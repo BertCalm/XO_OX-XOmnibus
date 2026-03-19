@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "BRIGHT_KINETIC_VAST_GENTLE_AET4_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Orbital",
+    "Opal"
+  ],
+  "parameters": {
+    "Orbital": {
+      "macro_character": 0.7837,
+      "macro_movement": 0.9302,
+      "macro_coupling": 0.883,
+      "macro_space": 0.7589
+    },
+    "Opal": {
+      "macro_character": 0.8246,
+      "macro_movement": 0.8772,
+      "macro_coupling": 0.7818,
+      "macro_space": 0.3726
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "bright",
     "vast",
     "gentle"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "CONCRETE FRONT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Ole"
+  ],
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.2998,
+      "macro_movement": 0.7827,
+      "macro_coupling": 0.7444,
+      "macro_space": 0.9442
+    },
+    "Ole": {
+      "macro_character": 0.7209,
+      "macro_movement": 0.4958,
+      "macro_coupling": 0.8467,
+      "macro_space": 0.4579
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -60,6 +84,10 @@
     "extreme-density",
     "monolithic",
     "coiled"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

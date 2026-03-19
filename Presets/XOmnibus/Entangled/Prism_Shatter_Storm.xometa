@@ -23,6 +23,20 @@
   "engines": [
     "Oblique",
     "Onset"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Prism bounce frequency smearing Onset percussion — shattered light spectrum as percussion.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "oblique",
+    "onset",
+    "prism"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

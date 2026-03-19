@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK_HOT_STILL_DENSE_FLX_SLW_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "Overworld",
+    "Odyssey"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.971,
+      "macro_movement": 0.052,
+      "macro_coupling": 0.763,
+      "macro_space": 0.599
+    },
+    "Odyssey": {
+      "macro_character": 0.901,
+      "macro_movement": 0.058,
+      "macro_coupling": 0.693,
+      "macro_space": 0.649
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "warm",
     "dense",
     "suspended-chaos"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

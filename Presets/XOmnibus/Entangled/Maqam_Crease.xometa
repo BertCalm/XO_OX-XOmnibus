@@ -58,5 +58,9 @@
     "maqam",
     "crease"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Maqam intervals folded along Origami creases — microtonal architecture in paper."
+>>>>>>> origin/v1-launch-prep
 }

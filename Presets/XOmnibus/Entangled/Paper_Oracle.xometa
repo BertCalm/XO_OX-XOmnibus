@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "Paper Oracle",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Oracle"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.18,
+      "macro_movement": 0.46,
+      "macro_coupling": 0.67,
+      "macro_space": 0.9
+    },
+    "Oracle": {
+      "macro_character": 0.15,
+      "macro_movement": 0.41,
+      "macro_coupling": 0.72,
+      "macro_space": 0.93
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,5 +82,9 @@
     "paper",
     "oracle"
   ],
+<<<<<<< HEAD
   "version": "1.0"
+=======
+  "description": "Oracle's timbre blends with Origami paper harmonics — prophecy written in folded sheets."
+>>>>>>> origin/v1-launch-prep
 }

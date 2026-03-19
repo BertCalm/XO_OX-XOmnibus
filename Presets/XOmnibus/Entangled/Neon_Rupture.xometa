@@ -23,6 +23,20 @@
   "engines": [
     "Overworld",
     "Obese"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Overworld neon green running through OBESE saturation — chip signal with infinite harmonic weight.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "overworld",
+    "obese",
+    "neon"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",

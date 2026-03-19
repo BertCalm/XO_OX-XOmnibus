@@ -16,6 +16,18 @@
   },
   "engines": [
     "Obbligato"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — cold intimate kinetic dark. Designed for ECHO coupling with XObbligato.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "echo",
+    "obbligato"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "EXPANSE",
@@ -27,6 +39,7 @@
   "name": "COLD INTIMATE KINETIC DARK 2",
   "parameters": {
     "Obbligato": {
+<<<<<<< HEAD
       "couplingBus": 1,
       "couplingLevel": 0.556
     }
@@ -47,4 +60,13 @@
     "obbligato"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.556,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

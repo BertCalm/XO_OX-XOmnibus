@@ -16,6 +16,18 @@
   },
   "engines": [
     "Osteria"
+<<<<<<< HEAD
+=======
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset — dark sparse gentle still. Designed for SURGE coupling with XOsteria.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "surge",
+    "osteria"
+>>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "WEIGHT",
@@ -27,6 +39,7 @@
   "name": "DARK SPARSE GENTLE STILL 1",
   "parameters": {
     "Osteria": {
+<<<<<<< HEAD
       "couplingBus": 2,
       "couplingLevel": 0.893
     }
@@ -47,4 +60,13 @@
     "osteria"
   ],
   "version": "1.0.0"
+=======
+      "couplingLevel": 0.893,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+>>>>>>> origin/v1-launch-prep
 }

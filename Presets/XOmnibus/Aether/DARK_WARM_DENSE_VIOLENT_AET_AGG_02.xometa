@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "DARK WARM DENSE VIOLENT AET AGG 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "Overworld",
+    "OddOscar"
+  ],
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.081,
+      "macro_movement": 0.304,
+      "macro_coupling": 0.827,
+      "macro_space": 0.599
+    },
+    "OddOscar": {
+      "macro_character": 0.08,
+      "macro_movement": 0.308,
+      "macro_coupling": 0.855,
+      "macro_space": 0.602
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "dark",
     "dense"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

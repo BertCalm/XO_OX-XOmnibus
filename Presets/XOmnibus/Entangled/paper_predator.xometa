@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
   "coupling": {
     "pairs": [
@@ -11,6 +12,17 @@
     ]
   },
   "couplingIntensity": "Moderate",
+=======
+  "schema_version": 1,
+  "name": "Paper Predator",
+  "mood": "Entangled",
+  "engines": [
+    "Outwit",
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+>>>>>>> origin/v1-launch-prep
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORIGAMI's folded geometric character (Vermillion fold-based synthesis). Coupling: Filter Mod.",
   "dna": {
     "aggression": 0.87,
@@ -39,6 +51,7 @@
   "mood": "Entangled",
   "name": "Paper Predator",
   "parameters": {
+<<<<<<< HEAD
     "Origami": {
       "origami_ampAttack": 0.2,
       "origami_ampRelease": 0.18,
@@ -54,6 +67,18 @@
       "origami_space": 0.51
     },
     "Outwit": {
+=======
+    "Outwit": {
+      "owit_rule": 90,
+      "owit_arms": 8,
+      "owit_cellSize": 0.19,
+      "owit_density": 0.6,
+      "owit_evolveRate": 0.57,
+      "owit_mutateProb": 0.15,
+      "owit_pitchSpread": 0.59,
+      "owit_filterCutoff": 0.28,
+      "owit_filterReso": 0.28,
+>>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.01,
       "owit_ampRelease": 0.73,
       "owit_armStagger": 0.38,
@@ -71,10 +96,28 @@
       "owit_inkCloudMix": 0.47,
       "owit_mutateProb": 0.15,
       "owit_outputLevel": 0.76,
+<<<<<<< HEAD
       "owit_outputPan": 0.07,
       "owit_pitchSpread": 0.59,
       "owit_polyDepth": 0.71,
       "owit_rule": 90
+=======
+      "owit_outputPan": 0.07
+    },
+    "Origami": {
+      "origami_character": 0.54,
+      "origami_movement": 0.42,
+      "origami_coupling": 0.88,
+      "origami_space": 0.51,
+      "origami_filterCutoff": 0.37,
+      "origami_filterReso": 0.21,
+      "origami_ampAttack": 0.2,
+      "origami_ampSustain": 0.63,
+      "origami_ampRelease": 0.18,
+      "origami_reverbMix": 0.18,
+      "origami_couplingLevel": 0.77,
+      "origami_outputLevel": 0.88
+>>>>>>> origin/v1-launch-prep
     }
   },
   "schema_version": 1,

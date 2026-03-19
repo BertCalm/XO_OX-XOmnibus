@@ -37,13 +37,21 @@
   "mood": "Prism",
   "name": "ALLLO PRS 03",
   "parameters": {
+<<<<<<< HEAD
     "Oblique": {
+=======
+    "Osteria": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.095,
       "macro_coupling": 0.086,
       "macro_movement": 0.244,
       "macro_space": 0.077
     },
+<<<<<<< HEAD
     "Osteria": {
+=======
+    "Oblique": {
+>>>>>>> origin/v1-launch-prep
       "macro_character": 0.095,
       "macro_coupling": 0.086,
       "macro_movement": 0.244,
@@ -56,6 +64,10 @@
     "pole-fill",
     "minimal",
     "sparse"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

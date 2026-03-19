@@ -24,6 +24,7 @@
     "Odyssey",
     "Overdub"
   ],
+<<<<<<< HEAD
   "macroLabels": [
     "WAVE",
     "WANDER",
@@ -81,6 +82,11 @@
     "space": 0.6438,
     "warmth": 0.0562
   },
+=======
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright Cold Kinetic Sparse character entanglement — ODYSSEY × OVERDUB via Resonance Share. Extreme DNA zones push sound design to the edges.",
+>>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -89,5 +95,85 @@
     "sparse",
     "resonant"
   ],
+<<<<<<< HEAD
   "version": "1.0.0"
+=======
+  "macroLabels": [
+    "WAVE",
+    "WANDER",
+    "GLIDE",
+    "HALL"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.9665,
+    "warmth": 0.0562,
+    "movement": 0.9102,
+    "density": 0.1097,
+    "space": 0.6438,
+    "aggression": 0.6897
+  },
+  "sonic_dna": {
+    "brightness": 0.9665,
+    "warmth": 0.0562,
+    "movement": 0.9102,
+    "density": 0.1097,
+    "space": 0.6438,
+    "aggression": 0.6897
+  },
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.5885,
+      "macro_movement": 0.8953,
+      "macro_coupling": 0.8786,
+      "macro_space": 0.6813,
+      "filter_cutoff": 0.8598,
+      "filter_resonance": 0.4604,
+      "amp_attack": 0.0852,
+      "amp_release": 0.4924,
+      "reverb_mix": 0.4835,
+      "reverb_size": 0.5764,
+      "drive": 0.6271,
+      "density": 0.1011,
+      "output_level": 0.6965,
+      "coupling_level": 0.831
+    },
+    "Overdub": {
+      "macro_character": 0.6198,
+      "macro_movement": 0.9139,
+      "macro_coupling": 0.8559,
+      "macro_space": 0.6478,
+      "filter_cutoff": 0.9127,
+      "filter_resonance": 0.4417,
+      "amp_attack": 0.1026,
+      "amp_release": 0.4814,
+      "reverb_mix": 0.4874,
+      "reverb_size": 0.6017,
+      "drive": 0.6273,
+      "density": 0.1334,
+      "output_level": 0.7201,
+      "coupling_level": 0.8258
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OVERDUB",
+    "target": "ODYSSEY",
+    "amount": 0.759,
+    "pairs": [
+      {
+        "source": "OVERDUB",
+        "target": "ODYSSEY",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.759
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.5113,
+    "MOVEMENT": 0.9102,
+    "COUPLING": 0.759,
+    "SPACE": 0.6438
+  }
+>>>>>>> origin/v1-launch-prep
 }

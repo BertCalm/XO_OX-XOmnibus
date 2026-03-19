@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "COMPACT SHROUD",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ottoni",
+    "Oceanic"
+  ],
+  "parameters": {
+    "Ottoni": {
+      "macro_character": 0.481,
+      "macro_movement": 0.669,
+      "macro_coupling": 0.459,
+      "macro_space": 0.084
+    },
+    "Oceanic": {
+      "macro_character": 0.335,
+      "macro_movement": 0.424,
+      "macro_coupling": 0.295,
+      "macro_space": 0.021
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -57,6 +81,10 @@
     "intimate",
     "close",
     "space-xlow"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }

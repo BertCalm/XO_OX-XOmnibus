@@ -1,5 +1,29 @@
 {
+<<<<<<< HEAD
   "author": "XO_OX Designs",
+=======
+  "name": "WARM KINETIC VAST VIOLENT ATM AGG 5",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "Origami",
+    "Oblique"
+  ],
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.311,
+      "macro_movement": 0.897,
+      "macro_coupling": 0.847,
+      "macro_space": 0.949
+    },
+    "Oblique": {
+      "macro_character": 0.322,
+      "macro_movement": 0.89,
+      "macro_coupling": 0.843,
+      "macro_space": 0.945
+    }
+  },
+>>>>>>> origin/v1-launch-prep
   "coupling": {
     "pairs": [
       {
@@ -58,6 +82,10 @@
     "violent",
     "kinetic",
     "vast"
+<<<<<<< HEAD
   ],
   "version": "1.0"
+=======
+  ]
+>>>>>>> origin/v1-launch-prep
 }
