@@ -106,6 +106,9 @@ public:
         float modDenMix      = snap.denMix;
         float modArmLevelScale = 1.0f;
 
+        // Apply pitch wheel → step rate multiplier
+        modStepRate   *= pitchWheelStepMul;
+
         // Apply coupling ext mods
         modStepRate    += extStepRateMod;
         modChromAmount  = std::clamp(modChromAmount + extChromMod,  0.0f, 1.0f);
@@ -113,11 +116,12 @@ public:
         modArmLevelScale *= extAmpMod;
 
         // 4. Apply LFOs
+        float lfoFilterMod = 0.0f;  // accumulated LFO→FilterCutoff modulation (Hz offset)
         auto applyLfo = [&](float lfoVal, float depth, int dest) {
             float mod = lfoVal * depth;
             switch (dest) {
                 case 0: modStepRate    = std::max(0.01f, modStepRate * (1.0f + mod * 0.5f)); break;
-                case 1: /* FilterCutoff — applied per-arm via extFilterMod */ break;
+                case 1: lfoFilterMod  += mod * 4000.0f; break;  // ±4kHz per-arm filter cutoff offset
                 case 2: modChromAmount = std::clamp(modChromAmount + mod * 0.5f, 0.0f, 1.0f); break;
                 case 3: modArmLevelScale = std::clamp(modArmLevelScale + mod * 0.5f, 0.0f, 1.5f); break;
                 default: break;
@@ -128,9 +132,11 @@ public:
 
         // 5. Apply macros
         {
-            float ms = snap.macroSolve;
-            float modSolveAmt = snap.solve + ms;
-            juce::ignoreUnused(modSolveAmt);
+            // M1 SOLVE: increases step rate + chromatophore + synapse simultaneously
+            // (gives the octopus more energy — faster CA evolution, brighter colour, tighter coupling)
+            float modSolveAmt = std::clamp(snap.solve + snap.macroSolve, 0.0f, 1.0f);
+            modStepRate    = std::max(0.01f, modStepRate * (1.0f + modSolveAmt * 2.0f));
+            modChromAmount = std::clamp(modChromAmount + modSolveAmt * 0.3f, 0.0f, 1.0f);
 
             modSynapse      = std::clamp(modSynapse      + snap.macroSynapse * 0.6f,        0.0f, 1.0f);
             modChromAmount  = std::clamp(modChromAmount  + snap.macroChromatophore * 0.7f,  0.0f, 1.0f);
@@ -157,7 +163,7 @@ public:
         for (int n = 0; n < 8; ++n)
         {
             auto i = static_cast<size_t>(n);
-            float armFilterHz = std::clamp(snap.armFilter[i] + extFilterMod + velFilterMod * 8000.0f, 20.0f, 20000.0f);
+            float armFilterHz = std::clamp(snap.armFilter[i] + extFilterMod + lfoFilterMod + velFilterMod * 8000.0f, 20.0f, 20000.0f);
             // extPitchMod: semitone offset added to arm pitch
             int   armPitchSt  = snap.armPitch[i] + static_cast<int>(std::round(extPitchMod));
             arms[i].setParams(snap.armRule[i], snap.armLength[i],
@@ -294,7 +300,7 @@ public:
                 prefix + "Wave", "Arm " + juce::String(n) + " Wave",
                 juce::StringArray{"Saw", "Pulse", "Sine"}, 0));
 
-            auto defaultPan = std::array<float,8>{-0.8f, -0.5f, -0.2f, 0.1f, 0.3f, 0.5f, 0.7f, 0.9f}[static_cast<size_t>(n)];
+            auto defaultPan = std::array<float,8>{-0.875f, -0.625f, -0.375f, -0.125f, 0.125f, 0.375f, 0.625f, 0.875f}[static_cast<size_t>(n)];
             params.push_back(std::make_unique<juce::AudioParameterFloat>(
                 prefix + "Pan", "Arm " + juce::String(n) + " Pan",
                 juce::NormalisableRange<float>(-1.0f, 1.0f), defaultPan));
@@ -446,6 +452,7 @@ private:
 
     float modWheelValue = 0.0f;
     float aftertouchValue = 0.0f;
+    float pitchWheelStepMul = 1.0f;  // PW → step rate multiplier [0.25, 4.0]
 
     float lastSampleL = 0.0f, lastSampleR = 0.0f;
 
@@ -523,6 +530,13 @@ private:
             modWheelValue = msg.getControllerValue() / 127.0f;
         else if (msg.isChannelPressure())
             aftertouchValue = msg.getChannelPressureValue() / 127.0f;
+        else if (msg.isPitchWheel())
+        {
+            // Pitch wheel → step rate multiplier: the wheel controls how fast the octopus thinks.
+            // PW center = 1.0x (no change). Full up = 4x faster. Full down = 0.25x slower.
+            float pw = msg.getPitchWheelValue() / 8192.0f;  // [-1, +1]
+            pitchWheelStepMul = std::pow(4.0f, pw);         // [0.25, 4.0] exponential
+        }
     }
 
     // Render one sample — shared by MIDI-interleaved and tail loops
