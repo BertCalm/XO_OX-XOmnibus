@@ -277,6 +277,10 @@ struct OrcaVoice
     CytomicSVF bandSplitLP;   // belly (low, clean)
     CytomicSVF bandSplitHP;   // dorsal (high, crushed)
 
+    // Countershading sample-rate reduction state (per-voice, Sisters S-006 fix)
+    float crushHold = 0.0f;
+    float crushCounter = 0.0f;
+
     // Voice stealing crossfade
     float fadeGain = 1.0f;
     bool fadingOut = false;
@@ -304,6 +308,8 @@ struct OrcaVoice
         mainFilter.reset();
         bandSplitLP.reset();
         bandSplitHP.reset();
+        crushHold = 0.0f;
+        crushCounter = 0.0f;
     }
 };
 
@@ -686,18 +692,16 @@ public:
                     // Quantize to reduced bit depth
                     float crushed = std::round (dorsal * crushStep) / crushStep;
 
-                    // Sample-rate reduction on dorsal
-                    static thread_local float crushHold = 0.0f;
-                    static thread_local float crushCounter = 0.0f;
-                    crushCounter += 1.0f;
-                    if (crushCounter >= crushDownsample)
+                    // Sample-rate reduction on dorsal (per-voice state, Sisters S-006 fix)
+                    voice.crushCounter += 1.0f;
+                    if (voice.crushCounter >= crushDownsample)
                     {
-                        crushHold = crushed;
-                        crushCounter = 0.0f;
+                        voice.crushHold = crushed;
+                        voice.crushCounter = 0.0f;
                     }
 
                     // Recombine: clean belly + crushed dorsal
-                    float countershaded = belly + crushHold;
+                    float countershaded = belly + voice.crushHold;
 
                     // Mix with dry signal
                     voiceSignal = voiceSignal * (1.0f - smoothedCrushMix) + countershaded * smoothedCrushMix;

@@ -539,12 +539,9 @@ public:
         // Chromatophore filter morph target: 0=LP, 0.33=BP, 0.66=HP, 1.0=Notch
         float chromaMorphTarget = clamp (pChromaMorph + macroMove * 0.3f, 0.0f, 1.0f);
 
-        // Reset coupling accumulators
-        couplingWTPosMod = 0.0f;
-        couplingChromaMod = 0.0f;
-        couplingArmRateMod = 0.0f;
-        couplingRingModSrc = 0.0f;
-        couplingPitchMod = 0.0f;
+        // NOTE: Coupling accumulators are reset AFTER the render loop (end of renderBlock),
+        // not before. This ensures values set by applyCouplingInput() between blocks
+        // survive into the sample loop where they are read. (Sisters S-014 fix)
 
         // --- Process MIDI events ---
         for (const auto metadata : midi)
@@ -840,6 +837,14 @@ public:
         for (const auto& v : voices)
             if (v.active) ++count;
         activeVoices = count;
+
+        // Reset coupling accumulators AFTER render loop so they're consumed first
+        // (Sisters S-014: was before the loop, making couplingPitchMod always 0)
+        couplingWTPosMod = 0.0f;
+        couplingChromaMod = 0.0f;
+        couplingArmRateMod = 0.0f;
+        couplingRingModSrc = 0.0f;
+        couplingPitchMod = 0.0f;
     }
 
     //==========================================================================
