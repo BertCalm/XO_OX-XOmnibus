@@ -33,8 +33,20 @@ Usage:
     # Show pipeline status
     python3 oxport.py status --output-dir /path/to/out
 
-    # Validate (placeholder)
+    # Validate pipeline output (structural checks)
     python3 oxport.py validate --output-dir /path/to/out
+
+    # Validate .xometa presets (10-point quality check)
+    python3 oxport.py validate --presets
+    python3 oxport.py validate --presets --fix --strict
+
+    # Both at once
+    python3 oxport.py validate --output-dir /path/to/out --presets
+
+    # Batch export multiple engines from a config file
+    python3 oxport.py batch --config batch.json
+    python3 oxport.py batch --config batch.json --parallel 4 --skip-failed
+    python3 oxport.py batch --config batch.json --dry-run
 """
 
 import argparse
@@ -945,68 +957,177 @@ def cmd_status(args) -> int:
 
 
 def cmd_validate(args) -> int:
-    """Validate a pipeline output (placeholder)."""
+    """Validate pipeline output AND/OR .xometa presets."""
     print(BANNER)
-    output_dir = Path(args.output_dir)
-    print(f"  Validate: {output_dir}")
-    print()
 
-    # Basic structural checks
-    checks_passed = 0
-    checks_failed = 0
+    exit_code = 0
 
-    # Check for .xpm files
-    xpms = list(output_dir.rglob("*.xpm"))
-    if xpms:
-        print(f"    [OK] Found {len(xpms)} .xpm program(s)")
-        checks_passed += 1
-    else:
-        print(f"    [FAIL] No .xpm programs found")
-        checks_failed += 1
+    # --- Mode 1: Validate pipeline output directory (structural checks) ---
+    if args.output_dir:
+        output_dir = Path(args.output_dir)
+        print(f"  Validate pipeline output: {output_dir}")
+        print()
 
-    # Check for .xpn files
-    xpns = list(output_dir.glob("*.xpn"))
-    if xpns:
-        for xpn in xpns:
-            size_kb = xpn.stat().st_size / 1024
-            print(f"    [OK] {xpn.name} ({size_kb:.1f} KB)")
+        checks_passed = 0
+        checks_failed = 0
+
+        xpms = list(output_dir.rglob("*.xpm"))
+        if xpms:
+            print(f"    [OK] Found {len(xpms)} .xpm program(s)")
             checks_passed += 1
-    else:
-        print(f"    [INFO] No .xpn archives found (run full pipeline to generate)")
-
-    # Check for artwork
-    artwork = list(output_dir.rglob("artwork.png"))
-    if artwork:
-        print(f"    [OK] Cover art found ({len(artwork)} file(s))")
-        checks_passed += 1
-    else:
-        print(f"    [INFO] No cover art found")
-
-    # Check for WAV samples
-    wavs = list(output_dir.rglob("*.wav")) + list(output_dir.rglob("*.WAV"))
-    if wavs:
-        print(f"    [OK] {len(wavs)} WAV sample(s)")
-        checks_passed += 1
-    else:
-        print(f"    [INFO] No WAV samples found")
-
-    # Check XPM validity (basic XML check)
-    for xpm in xpms[:5]:  # spot-check first 5
-        try:
-            content = xpm.read_text(encoding="utf-8")
-            if "<MPCVObject>" in content and "</MPCVObject>" in content:
-                print(f"    [OK] {xpm.name} — valid XML structure")
-                checks_passed += 1
-            else:
-                print(f"    [FAIL] {xpm.name} — missing MPCVObject tags")
-                checks_failed += 1
-        except Exception as e:
-            print(f"    [FAIL] {xpm.name} — {e}")
+        else:
+            print(f"    [FAIL] No .xpm programs found")
             checks_failed += 1
 
+        xpns = list(output_dir.glob("*.xpn"))
+        if xpns:
+            for xpn in xpns:
+                size_kb = xpn.stat().st_size / 1024
+                print(f"    [OK] {xpn.name} ({size_kb:.1f} KB)")
+                checks_passed += 1
+        else:
+            print(f"    [INFO] No .xpn archives found (run full pipeline to generate)")
+
+        artwork = list(output_dir.rglob("artwork.png"))
+        if artwork:
+            print(f"    [OK] Cover art found ({len(artwork)} file(s))")
+            checks_passed += 1
+        else:
+            print(f"    [INFO] No cover art found")
+
+        wavs = list(output_dir.rglob("*.wav")) + list(output_dir.rglob("*.WAV"))
+        if wavs:
+            print(f"    [OK] {len(wavs)} WAV sample(s)")
+            checks_passed += 1
+        else:
+            print(f"    [INFO] No WAV samples found")
+
+        for xpm in xpms[:5]:
+            try:
+                content = xpm.read_text(encoding="utf-8")
+                if "<MPCVObject>" in content and "</MPCVObject>" in content:
+                    print(f"    [OK] {xpm.name} — valid XML structure")
+                    checks_passed += 1
+                else:
+                    print(f"    [FAIL] {xpm.name} — missing MPCVObject tags")
+                    checks_failed += 1
+            except Exception as e:
+                print(f"    [FAIL] {xpm.name} — {e}")
+                checks_failed += 1
+
+        print()
+        print(f"  Pipeline checks — Passed: {checks_passed}  Failed: {checks_failed}")
+        if checks_failed > 0:
+            exit_code = 1
+
+    # --- Mode 2: Validate .xometa presets (delegates to validate_presets.py) ---
+    if args.presets:
+        print()
+        print(f"  Validate .xometa presets …")
+        print()
+        try:
+            import validate_presets as vp
+            # Build the argv that validate_presets expects
+            vp_argv = []
+            if args.fix:
+                vp_argv.append("--fix")
+            if args.strict:
+                vp_argv.append("--strict")
+            vp_argv.append("--report")
+
+            # validate_presets uses sys.argv internally, so we patch it
+            import sys as _sys
+            old_argv = _sys.argv
+            _sys.argv = ["validate_presets.py"] + vp_argv
+            try:
+                vp_rc = vp.main() if hasattr(vp, "main") else 0
+            except SystemExit as e:
+                vp_rc = e.code if e.code is not None else 0
+            finally:
+                _sys.argv = old_argv
+
+            if vp_rc != 0:
+                exit_code = max(exit_code, vp_rc)
+        except ImportError:
+            print("    [ERROR] validate_presets.py not found in Tools/")
+            exit_code = 2
+        except Exception as e:
+            print(f"    [ERROR] Preset validation failed: {e}")
+            exit_code = 2
+
+    if not args.output_dir and not args.presets:
+        print("  Nothing to validate. Use --output-dir and/or --presets.")
+        print()
+        return 1
+
     print()
-    print(f"  Passed: {checks_passed}  Failed: {checks_failed}")
-    return 1 if checks_failed > 0 else 0
+    return exit_code
+
+
+def cmd_batch(args) -> int:
+    """Run the pipeline for multiple engines from a JSON config file."""
+    print(BANNER)
+
+    config_path = Path(args.config)
+    if not config_path.exists():
+        print(f"  [ERROR] Config file not found: {config_path}")
+        return 2
+
+    try:
+        config = json.loads(config_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        print(f"  [ERROR] Invalid JSON in config: {e}")
+        return 2
+
+    batch_name = config.get("batch_name", config_path.stem)
+    output_base = Path(config.get("output_base_dir", "./dist/"))
+    jobs = config.get("jobs", [])
+
+    if not jobs:
+        print(f"  [ERROR] No jobs found in config")
+        return 2
+
+    print(f"  Batch: {batch_name}")
+    print(f"  Output: {output_base}")
+    print(f"  Jobs: {len(jobs)}")
+    print()
+
+    try:
+        import xpn_batch_export as batcher
+    except ImportError:
+        print("  [ERROR] xpn_batch_export.py not found in Tools/")
+        return 2
+
+    parallel = getattr(args, "parallel", 1)
+    dry_run = getattr(args, "dry_run", False)
+    skip_failed = getattr(args, "skip_failed", False)
+
+    if parallel > 1:
+        results = batcher.run_jobs_parallel(
+            jobs, output_base, dry_run, parallel, skip_failed)
+    else:
+        results = []
+        for job in jobs:
+            result = batcher.run_job(job, output_base, dry_run)
+            results.append(result)
+            if not result.passed and not skip_failed:
+                print(f"  [ABORT] {result.engine} failed — stopping batch")
+                break
+
+    # Summary
+    print()
+    print(f"  {'='*50}")
+    print(f"  BATCH SUMMARY: {batch_name}")
+    print(f"  {'='*50}")
+    passed = sum(1 for r in results if r.passed)
+    failed = len(results) - passed
+    for r in results:
+        duration = f"{r.duration:.1f}s" if r.duration > 0 else "—"
+        xpn = r.output_xpn.name if r.output_xpn else "—"
+        print(f"    {r.status_label:6s}  {r.engine:<20s}  {duration:>8s}  {xpn}")
+    print()
+    print(f"  Passed: {passed}  Failed: {failed}  Total: {len(results)}")
+    return 1 if failed > 0 else 0
 
 
 # ---------------------------------------------------------------------------
@@ -1073,9 +1194,28 @@ def main():
 
     # --- validate ---
     p_validate = sub.add_parser("validate",
-                                help="Validate a pipeline output")
-    p_validate.add_argument("--output-dir", required=True,
-                            help="Output directory to validate")
+                                help="Validate pipeline output and/or .xometa presets")
+    p_validate.add_argument("--output-dir", default=None,
+                            help="Output directory to validate (structural XPM/XPN checks)")
+    p_validate.add_argument("--presets",    action="store_true",
+                            help="Run 10-point .xometa preset validation (schema, DNA, naming, "
+                                 "coupling, parameters, mood balance)")
+    p_validate.add_argument("--fix",        action="store_true",
+                            help="Auto-fix trivially correctable preset issues")
+    p_validate.add_argument("--strict",     action="store_true",
+                            help="Treat warnings as errors (for CI)")
+
+    # --- batch ---
+    p_batch = sub.add_parser("batch",
+                             help="Run the pipeline for multiple engines from a JSON config")
+    p_batch.add_argument("--config",       required=True, metavar="FILE",
+                         help="JSON config file with batch job definitions")
+    p_batch.add_argument("--parallel",     type=int, default=1, metavar="N",
+                         help="Number of parallel jobs (default: 1 = sequential)")
+    p_batch.add_argument("--dry-run",      action="store_true", dest="dry_run",
+                         help="Show commands without executing")
+    p_batch.add_argument("--skip-failed",  action="store_true", dest="skip_failed",
+                         help="Continue batch even if a job fails")
 
     args = parser.parse_args()
     if not args.command:
@@ -1086,6 +1226,7 @@ def main():
         "run":      cmd_run,
         "status":   cmd_status,
         "validate": cmd_validate,
+        "batch":    cmd_batch,
     }
     return dispatch[args.command](args)
 
